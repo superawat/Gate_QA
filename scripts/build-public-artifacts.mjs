@@ -12,6 +12,7 @@ import { buildDaPublicArtifacts } from "./da-pipeline/build-da-artifacts.mjs";
 import { buildTrackYearSetKey, getQuestionTrack, isItQuestion } from "../src/utils/examTrack.js";
 import { resolveQuestionType } from "../src/utils/questionTypeResolution.js";
 import { buildHomepageSearchCatalog } from "./build-homepage-search-catalog.mjs";
+import { enrichShardsWithSolutions } from "./pipeline/enrich-shards-with-solutions.mjs";
 
 const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -2278,6 +2279,7 @@ async function buildArtifacts() {
   writeText(path.join(DOCS_GENERATED_DIR, "DATA_STATUS.md"), `${dataStatusMarkdown}\n`);
   writeJson(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
 
+  enrichShardsWithSolutions(DETAIL_SHARDS_DIR);
   await buildDaPublicArtifacts();
   await buildHomepageSearchCatalog({ searchIndex });
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:12:14.234Z",
+  "generatedAt": "2026-10-17T18:29:25.621Z",
   "shardKey": "2013-s0",
   "yearSetKey": "2013-s0",
   "yearSetIdentity": "cse:2013:set-0",
@@ -46,7 +46,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Binary Operation",
+        "markdown": "Checking each statement:\n\n- Commutative: $x^2+y^2=y^2+x^2$ $\\rightarrow$ yes\n\n- Associative: $(x\\oplus y)\\oplus z=(x^2+y^2)^2+z^2$ but $x\\oplus(y\\oplus z)=x^2+(y^2+z^2)^2$. For x = 1, y = 1, z = 0: $(1+1)^2+0=4$ but $1+(1+0)^2=2$ $\\rightarrow$ not associative",
+        "images": []
+      }
     },
     "go:62": {
       "title": "GATE CSE 2013 | Question: 2",
@@ -85,7 +90,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Poisson with mean 3: $P(k)=\\frac{e^{-3}3^k}{k!}$\n\n$P(p\\lt3)=e^{-3}\\left(1+3+\\frac92\\right)=\\frac{17}{2e^3}$",
+        "images": []
+      }
     },
     "go:1412": {
       "title": "GATE CSE 2013 | Question: 3",
@@ -125,6 +135,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Adding one row/column to another does not change a determinant:\n\n- Option 2: add column 1 to columns 2 and 3 $\\rightarrow$ same\n\n- Option 3: $R_1-R_2$, $R_2-R_3$ $\\rightarrow$ same\n\n- Option 4: $R_1+R_2$, $R_2+R_3$, then undo with row operations $\\rightarrow$ same\n\n- Option 1: columns 1, $x^2+x$, $x+1$ reduce to columns 1, $x^2$, x, i.e. columns 2 and 3 swapped $\\rightarrow$ the sign changes",
+        "images": []
       }
     },
     "go:1413": {
@@ -164,7 +179,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "8-bit 2's complement range is $-2^7$ to $2^7-1$, i.e. $-$128 to 127.",
+        "images": []
+      }
     },
     "go:1414": {
       "title": "GATE CSE 2013 | Question: 5",
@@ -203,7 +223,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Digital Circuits",
+        "markdown": "The output gives the index of the highest-numbered input that is 1 (lower inputs are \"don't care\"), and V shows that some input is active. That is a 4-to-2 priority encoder.",
+        "images": []
+      }
     },
     "go:1415": {
       "title": "GATE CSE 2013 | Question: 6",
@@ -243,6 +268,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Sorting",
+        "markdown": "Selection sort does at most one swap per pass, so at most n $-$ 1 swaps.",
+        "images": []
       }
     },
     "go:1416": {
@@ -282,7 +312,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "A BST may be skewed (height n $-$ 1), so insertion may walk all n nodes.",
+        "images": []
+      }
     },
     "go:1417": {
       "title": "GATE CSE 2013 | Question: 8",
@@ -322,6 +357,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Language",
+        "markdown": "$L_1L_2^*=\\phi\\cdot L_2^*=\\phi$ (concatenating with the empty set gives the empty set).\n\n$L_1^*=\\phi^*=\\{\\epsilon\\}$\n\nUnion = {$\\epsilon$}",
+        "images": []
       }
     },
     "go:1418": {
@@ -361,7 +401,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "With no $\\epsilon$ or unit productions, every reduction replaces at least 2 symbols by 1, so each reduce lowers the number of symbols on the stack by at least 1.\n\nFrom n tokens down to the single start symbol: at most n $-$ 1 reductions.",
+        "images": []
+      }
     },
     "go:1419": {
       "title": "GATE CSE 2013 | Question: 10",
@@ -400,7 +445,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "The process that has waited longest gets the highest priority. After running for T units its waiting time (priority) resets, so it goes to the back. Processes take turns in a cycle, like round robin.",
+        "images": []
+      }
     },
     "go:1420": {
       "title": "GATE CSE 2013 | Question: 11",
@@ -448,6 +498,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "Checking each statement:\n\n- Service oriented computing: publish-find-bind (3)\n\n- Heterogeneous communicating systems: interoperability (1)\n\n- Information representation: XML (4)\n\n- Process description: BPMN (2)",
+        "images": []
       }
     },
     "go:1421": {
@@ -488,7 +543,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - TCP",
+        "markdown": "Checking each statement:\n\n- Real-time multimedia: UDP (speed over reliability)\n\n- File transfer: TCP (reliable)\n\n- DNS: UDP (short queries)\n\n- Email (SMTP): TCP",
+        "images": []
+      }
     },
     "go:1435": {
       "title": "GATE CSE 2013 | Question: 13",
@@ -534,6 +594,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "Checking each statement:\n\n- Signing: X uses its own private key; encrypting for Y: Y's public key.\n\n- Y decrypts with its private key, then verifies the signature with X's public key.",
+        "images": []
       }
     },
     "go:1436": {
@@ -573,7 +638,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Network Layering",
+        "markdown": "Checking each statement:\n\n- Network layer: at S, both routers, and D = 4 times\n\n- Data link layer: S (send) + 2 per router (receive and send) + D (receive) = 1 + 4 + 1 = 6 times",
+        "images": []
+      }
     },
     "go:1437": {
       "title": "GATE CSE 2013 | Question: 15",
@@ -612,7 +682,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Indexing",
+        "markdown": "A clustered index is one where the data records are stored in (about) the same order as the index entries.",
+        "images": []
+      }
     },
     "go:1438": {
       "title": "GATE CSE 2013 | Question: 16",
@@ -651,7 +726,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Resource Allocation",
+        "markdown": "Deadlock is impossible if all processes request semaphores in one common global order.\n\nOption 2: X: b, a, c; Y: b, c, d; Z: a, c, d. All follow the order b $\\lt$ a $\\lt$ c $\\lt$ d, so there is no circular wait.\n\nThe other options have conflicting orders (e.g. one process takes b before c and another takes c before b).",
+        "images": []
+      }
     },
     "go:1439": {
       "title": "GATE CSE 2013 | Question: 17",
@@ -690,7 +770,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Closure Property",
+        "markdown": "Checking each statement:\n\n- 1: NTM = DTM in power $\\rightarrow$ True\n\n- 2: RE languages are NOT closed under complement $\\rightarrow$ False\n\n- 3: decidable languages are closed under intersection and complement $\\rightarrow$ True\n\n- 4: RE languages are closed under union and intersection $\\rightarrow$ True",
+        "images": []
+      }
     },
     "go:1440": {
       "title": "GATE CSE 2013 | Question: 18",
@@ -728,6 +813,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation",
+        "markdown": "Checking each statement:\n\n- 1: cycle detection by DFS is polynomial $\\rightarrow$ in P\n\n- 2: P $\\subseteq$ NP $\\rightarrow$ also in NP\n\n- 3: NP-complete problems are in NP, so they have a non-deterministic polynomial algorithm",
+        "images": []
       }
     },
     "go:1441": {
@@ -767,7 +857,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "Bellman-Ford takes $\\Theta(VE)$. A complete graph has $E=\\Theta(n^2)$.\n\n$n\\times n^2=\\Theta(n^3)$",
+        "images": []
+      }
     },
     "go:1442": {
       "title": "GATE CSE 2013 | Question: 20",
@@ -807,6 +902,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "Block j goes to set j mod v. The lines of set s are numbered s$\\cdot$k to s$\\cdot$k + (k $-$ 1).",
+        "images": []
       }
     },
     "go:1532": {
@@ -846,7 +946,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Boolean Algebra",
+        "markdown": "XNOR = $xy+x'y'=x\\oplus y'=x'\\oplus y$.\n\nBut $x'\\oplus y'=x\\oplus y$ (complementing both inputs cancels), which is XOR.",
+        "images": []
+      }
     },
     "go:1533": {
       "title": "GATE CSE 2013 | Question: 22",
@@ -885,7 +990,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Option 1 at x = 3: f(3) = 2, right limit 3 $-$ 1 = 2, left limit (3 + 3)/3 = 2 $\\rightarrow$ continuous.\n\n- Option 2: limit 5 $\\ne$ f(3) = 4\n\n- Option 3: left 6, right $-$1\n\n- Option 4: not defined at 3",
+        "images": []
+      }
     },
     "go:1534": {
       "title": "GATE CSE 2013 | Question: 23",
@@ -930,6 +1040,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "h = 0.3. Trapezoidal rule: $\\frac h2[f_0+f_{10}+2(f_1+\\dots+f_9)]$\n\nInner sum = 0.09 + 0.36 + 0.81 + 1.44 + 2.25 + 3.24 + 4.41 + 5.76 + 7.29 = 25.65\n\n$0.15\\times(0+9+51.3)=0.15\\times60.3=9.045$",
+        "images": []
       }
     },
     "go:1535": {
@@ -970,6 +1085,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Each set of 3 vertices forms a triangle with probability $(1/2)^3=1/8$.\n\nExpected triangles = $\\binom83\\times\\frac18=\\frac{56}{8}=7$",
+        "images": []
       }
     },
     "go:1536": {
@@ -1009,7 +1129,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Degree of Graph",
+        "markdown": "The sum of degrees = 2|E|, always even (Q). An even total forces the number of odd-degree vertices to be even (P).",
+        "images": []
+      }
     },
     "go:1537": {
       "title": "GATE CSE 2013 | Question: 26",
@@ -1048,7 +1173,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Connectivity",
+        "markdown": "Checking each statement:\n\n- P: consecutive edges of a cycle share a vertex in a ring, so the line graph is again a cycle $\\rightarrow$ True\n\n- Q: in $K_4$, edges 12 and 34 share no vertex, so the line graph is not complete $\\rightarrow$ False\n\n- R: the star $K_{1,5}$ is planar but its line graph is $K_5$ $\\rightarrow$ False\n\n- S: line graph of $K_{1,3}$ is a triangle, not a tree $\\rightarrow$ False",
+        "images": []
+      }
     },
     "go:1538": {
       "title": "GATE CSE 2013 | Question: 27",
@@ -1087,7 +1217,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "\"None of my friends are perfect\" = there is no x who is my friend and perfect.\n\n$\\neg\\exists x(F(x)\\wedge P(x))$",
+        "images": []
+      }
     },
     "go:1539": {
       "title": "GATE CSE 2013 | Question: 28",
@@ -1127,6 +1262,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Microprogramming",
+        "markdown": "The current PC is saved to memory (via MBR at address X, e.g. the stack), and PC is loaded with a new address Y (the service routine). This is what happens when an interrupt is serviced.",
+        "images": []
       }
     },
     "go:1540": {
@@ -1166,7 +1306,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Disk",
+        "markdown": "Checking each statement:\n\n- Sectors per cylinder = 16 $\\times$ 64 = 1024\n\n- File = 42797 KB / 0.5 KB = 85594 sectors\n\n- Start (1200, 9, 40) is sector 9 $\\times$ 64 + 40 = 616 of cylinder 1200, leaving 1024 $-$ 616 = 408 sectors there\n\n- Remaining = 85594 $-$ 408 = 85186 = 83 full cylinders (1201-1283) + 194 sectors\n\nThe last sector is in cylinder 1284.",
+        "images": []
+      }
     },
     "go:1541": {
       "title": "GATE CSE 2013 | Question: 30",
@@ -1207,6 +1352,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Sorting",
+        "markdown": "Heap sort on k elements takes $\\Theta(k\\log k)$. Set $k\\log k=\\Theta(\\log n)$:\n\n$k=\\Theta\\left(\\frac{\\log n}{\\log\\log n}\\right)$ (then $\\log k\\approx\\log\\log n$).",
+        "images": []
       }
     },
     "go:1542": {
@@ -1246,7 +1396,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Identify Function",
+        "markdown": "Checking each statement:\n\n- Outer loop: n/2 + 1 iterations\n\n- Inner loop (j doubles): about $\\log n$ iterations\n\n- Each adds n/2\n\n$k\\approx\\frac n2\\cdot\\log n\\cdot\\frac n2=\\Theta(n^2\\log n)$",
+        "images": []
+      }
     },
     "go:1543": {
       "title": "GATE CSE 2013 | Question: 32",
@@ -1285,7 +1440,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Identify Class Language",
+        "markdown": "Checking each statement:\n\n- L1 = 0*1*0* is regular, so its complement is also regular. \"Complement of L1 is context-free but not regular\" is FALSE.\n\n- L2 (p $\\ne$ r) is context-free, and $L_1\\cap L_2=L_2$ is context-free.\n\n- Complement of L2 is recursive (CFLs are decidable).",
+        "images": []
+      }
     },
     "go:1544": {
       "title": "GATE CSE 2013 | Question: 33",
@@ -1324,7 +1484,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "A accepts exactly the strings containing at least one 0: $1^*0(0+1)^*$.\n\n- 1: complement = 1*, regular so context-free $\\rightarrow$ True\n\n- 2: (11*0 + 0)(0+1)*0*1* = strings with a 0 $\\rightarrow$ True\n\n- 3: the start state and the \"1\" state are equivalent (both non-final, same moves), so A is not minimal $\\rightarrow$ False\n\n- 4: \"11\" is not accepted $\\rightarrow$ False",
+        "images": []
+      }
     },
     "go:1545": {
       "title": "GATE CSE 2013 | Question: 34",
@@ -1363,7 +1528,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Synchronization",
+        "markdown": "S = 2 lets two processes be inside at once. To maximise x, make the decrements get lost:\n\n- W reads x = 0 (and holds).\n\n- Y runs fully: x = $-$2; then Z runs fully: x = $-$4.\n\n- W stores 0 + 1 = 1 (overwriting $-$4).\n\n- X runs: x = 2.",
+        "images": []
+      }
     },
     "go:1546": {
       "title": "GATE CSE 2013 | Question: 35",
@@ -1403,7 +1573,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "All four ask for names of students with more than 90% in course 107:\n\n- I: SQL join with conditions and DISTINCT\n\n- II: relational algebra (projection removes duplicates)\n\n- III: tuple relational calculus\n\n- IV: domain relational calculus",
+        "images": []
+      }
     },
     "go:1547": {
       "title": "GATE CSE 2013 | Question: 36",
@@ -1442,7 +1617,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Ethernet",
+        "markdown": "Ethernet needs $T_t\\ge2T_p$:\n\n$T_t=\\frac{10^4}{5\\times10^8}=20\\,\\mu s\\Rightarrow T_p\\le10\\,\\mu s$\n\nLength = 200000 km/s $\\times$ 10 $\\mu s$ = 2 km",
+        "images": []
+      }
     },
     "go:1548": {
       "title": "GATE CSE 2013 | Question: 37",
@@ -1481,7 +1661,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - IP Addressing",
+        "markdown": "Checking each statement:\n\n- M = 0 and offset $\\ne$ 0 $\\rightarrow$ last fragment\n\n- First byte = 300 $\\times$ 8 = 2400\n\n- Header = 10 $\\times$ 4 = 40 B, data = 400 $-$ 40 = 360 B\n\n- Last byte = 2400 + 360 $-$ 1 = 2759",
+        "images": []
+      }
     },
     "go:1549": {
       "title": "GATE CSE 2013 | Question: 38",
@@ -1526,6 +1711,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "The official GATE key is \"no change\": moving one method while keeping the attributes in place does not change the overall module-level cohesion/coupling measure used in the question.\n\n(Note: if you count only m's own links, 1 to M1 and 2 to M2, the move seems to reduce coupling. This question was debated, but the key is option 1.)",
+        "images": []
       }
     },
     "go:1550": {
@@ -1565,7 +1755,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Synchronization",
+        "markdown": "Y must not use a[i] before X has produced it, and X must not run ahead.\n\n- ExitX: P(S); V(R)\n\n- EntryY: V(S); P(R)\n\nY signals S (ready), X waits on S, then signals R after a[i] is written, and Y waits on R. The two stay in step without deadlock.",
+        "images": []
+      }
     },
     "go:1551": {
       "title": "GATE CSE 2013 | Question: 40",
@@ -1604,7 +1799,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "Both sets have the same core (same items, different lookaheads), so LALR merges them. The merged set has no reduce items (only shifts on c and d), so there is no S-R or R-R conflict. GOTO on c from both lead to sets that are also merged.\n\nSo all four statements are false.",
+        "images": []
+      }
     },
     "go:1553": {
       "title": "GATE CSE 2013 | Question: 41",
@@ -1643,7 +1843,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Decidability",
+        "markdown": "Checking each statement:\n\n- 1: emptiness of a CFG is decidable\n\n- 2: whether L(G) = $\\Sigma^*$ for a CFG is undecidable\n\n- 3: regularity of L(M) for a TM is undecidable (Rice's theorem)\n\n- 4: equivalence of a DFA and an NFA is decidable (convert and minimise)",
+        "images": []
+      }
     },
     "go:60": {
       "title": "GATE CSE 2013 | Question: 42",
@@ -1686,6 +1891,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Parameter Passing",
+        "markdown": "x is the same variable p (by reference), c is copied. Each call does x = x + 1 before the recursion, and multiplies by x only after returning:\n\np goes 5 $\\rightarrow$ 6 $\\rightarrow$ 7 $\\rightarrow$ 8 $\\rightarrow$ 9, then c reaches 0 and returns 1. On the way back each of the 4 levels multiplies by x, which is now 9.\n\n$9^4=6561$",
+        "images": []
       }
     },
     "go:1554": {
@@ -1725,7 +1935,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Build the BST from the preorder: 30 root; left: 20 (10 with right child 15, 25 with left child 23); right: 39 (35, 42).\n\nPostorder (left, right, root): 15, 10, 23, 25, 20, 35, 42, 39, 30",
+        "images": []
+      }
     },
     "go:61": {
       "title": "GATE CSE 2013 | Question: 44",
@@ -1765,7 +1980,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Each element is enqueued once and can be dequeued at most once. Across n operations, the total dequeues (including those inside MultiDequeue) cannot exceed the number of enqueues.\n\nTotal work = $\\Theta(n)$ (amortised).",
+        "images": []
+      }
     },
     "go:330": {
       "title": "GATE CSE 2013 | Question: 45",
@@ -1805,6 +2025,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "Clock = slowest stage + buffer = 10 + 1 = 11 ns.\n\nI4 is a branch, resolved after its EI stage (cycle 7). I5-I8 are discarded and I9 is fetched in cycle 8. I9-I12 then finish at cycle 8 + 4 + 3 = 15.\n\nTime = 15 $\\times$ 11 = 165 ns",
+        "images": []
       }
     },
     "go:1555": {
@@ -1852,6 +2077,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Memory Interfacing",
+        "markdown": "16K $\\times$ 16 needs 16 rows of chips (2 chips per row for 16 bits). Selecting a row needs a 4-to-16 decoder.\n\nBuilt from 2$\\times$4 decoders: 4 decoders for the 16 outputs + 1 decoder to enable them = 5",
+        "images": []
       }
     },
     "go:80": {
@@ -1893,6 +2123,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "$\\neg\\exists x(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta)\\equiv\\forall x(\\neg\\forall y\\,\\alpha\\vee\\neg\\forall z\\,\\beta)\\equiv\\forall x(\\forall y\\,\\alpha\\rightarrow\\exists z\\,\\neg\\beta)$, which is option 3 (option 2 is the same form).\n\n- Option 1: $\\forall x(\\exists z\\neg\\beta\\rightarrow\\forall y\\,\\alpha)\\equiv\\forall x(\\forall z\\,\\beta\\vee\\forall y\\,\\alpha)$ $\\rightarrow$ not equivalent\n\n- Option 4: $\\forall x(\\exists y\\neg\\alpha\\rightarrow\\exists z\\neg\\beta)\\equiv\\forall x(\\forall y\\,\\alpha\\vee\\exists z\\neg\\beta)$ $\\rightarrow$ not equivalent\n\nTwo options are not equivalent, so marks were given to all.\n\n<b>Answer: Options 1 and 4</b>\n\nIn GATE 2013 marks were given to all for this question",
+        "images": []
       }
     },
     "go:1556": {
@@ -1933,7 +2168,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Code Optimization",
+        "markdown": "a stays live till the end (used in x $\\gt$ a and y = a * a), and c is needed for d, e and x. While computing d or e, three values (a, c, the new result) are live, but there are only 2 registers.\n\nSo at least one spill is needed. Using code motion (computing things where they are needed) one spill is enough.",
+        "images": []
+      }
     },
     "go:43293": {
       "title": "GATE CSE 2013 | Question: 49",
@@ -1976,6 +2216,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "Without moving code, after e = c + a the values a, c, d, e are all live (c is still needed for x = c * c, and d, e for the else part). That is 4 live values at once.\n\nAfter that, x replaces c, keeping at most 4 live. So 4 registers suffice and fewer will not.",
+        "images": []
       }
     },
     "go:1557": {
@@ -2015,7 +2260,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "The flaw: a character already replaced can be replaced again later in the j loop, if newc[j] equals a later oldc[k] (k $\\gt$ j).\n\n- (1) abc$\\rightarrow$dab: b$\\rightarrow$a, but a comes earlier in oldc $\\rightarrow$ no chain\n\n- (2) cde$\\rightarrow$bcd: no chain\n\n- (3) bca$\\rightarrow$cda: b$\\rightarrow$c, then c$\\rightarrow$d $\\rightarrow$ flaw shown\n\n- (4) abc$\\rightarrow$bac: a$\\rightarrow$b, then b$\\rightarrow$a $\\rightarrow$ flaw shown",
+        "images": []
+      }
     },
     "go:43291": {
       "title": "GATE CSE 2013 | Question: 51",
@@ -2054,7 +2304,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "From the previous analysis, only cases 3 (b becomes c then d) and 4 (a becomes b then a) contain a chained replacement. \"abcde\" contains both a and b, so both cases show the wrong output.",
+        "images": []
+      }
     },
     "go:379": {
       "title": "GATE CSE 2013 | Question: 52",
@@ -2094,6 +2349,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Virtual Memory",
+        "markdown": "Let page size = $2^p$ bytes. Each table page holds $2^p/4=2^{p-2}$ entries, and T1 fits in one page.\n\n$46=p+3(p-2)\\Rightarrow4p=52\\Rightarrow p=13$\n\nPage size = $2^{13}$ = 8 KB",
+        "images": []
       }
     },
     "go:43294": {
@@ -2134,6 +2394,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Virtual Memory",
+        "markdown": "One cache way = 1 MB / 16 = 64 KB, so set index + block offset use 16 address bits. The page offset is only 13 bits, so 16 $-$ 13 = 3 virtual page bits pick the set.\n\nPage colours needed = $2^3=8$",
+        "images": []
       }
     },
     "go:1558": {
@@ -2173,7 +2438,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "D appears on no right side, so it is in every key. Closures:\n\n- $A^+=\\{A,B,C,F,H,E,G\\}$ $\\rightarrow$ AD is a key\n\n- $B^+$, $E^+$, $F^+$ also give everything except D $\\rightarrow$ BD, ED, FD are keys\n\n- C, G, H (even CH) do not reach the others\n\nCandidate keys: AD, BD, DE, DF = 4",
+        "images": []
+      }
     },
     "go:43290": {
       "title": "GATE CSE 2013 | Question: 55",
@@ -2212,7 +2482,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "Prime attributes: A, B, D, E, F. Non-prime: C, G, H.\n\nA $\\rightarrow$ C, where A is only part of the key AD. So non-prime C depends on part of a key: a partial dependency. R is not in 2NF.",
+        "images": []
+      }
     },
     "go:1559": {
       "title": "GATE CSE 2013 | Question: 56",
@@ -2251,7 +2526,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Nadir = the lowest point (opposite of zenith).",
+        "images": []
+      }
     },
     "go:1560": {
       "title": "GATE CSE 2013 | Question: 57",
@@ -2291,6 +2571,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Universalism and particularism are opposite cultural dimensions. The opposite of diffuseness is specificity.",
+        "images": []
       }
     },
     "go:1562": {
@@ -2330,7 +2615,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "The sum is largest when we stop before the terms become negative: 44 + 42 + ... + 2 (+ 0).\n\n= 2(22 + 21 + ... + 1) = 2 $\\times$ 253 = 506",
+        "images": []
+      }
     },
     "go:1563": {
       "title": "GATE CSE 2013 | Question: 59",
@@ -2369,7 +2659,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "\"Were you a bird\" is an unreal condition (= If you were a bird), so the result uses \"would\": you would fly.",
+        "images": []
+      }
     },
     "go:1564": {
       "title": "GATE CSE 2013 | Question: 60",
@@ -2408,7 +2703,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "\"European\" starts with a \"yoo\" sound (a consonant sound), so it takes \"a\": a European.",
+        "images": []
+      }
     },
     "go:1565": {
       "title": "GATE CSE 2013 | Question: 61",
@@ -2447,7 +2747,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Rationalise: $\\frac{1}{\\sqrt k+\\sqrt{k+1}}=\\sqrt{k+1}-\\sqrt k$\n\nThe sum telescopes: $\\sqrt{81}-\\sqrt1=9-1=8$",
+        "images": []
+      }
     },
     "go:1566": {
       "title": "GATE CSE 2013 | Question: 62",
@@ -2487,7 +2792,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Two-digit numbers: 10 to 99 = 90. Multiples of 7: 14, 21, ..., 98 = 13.\n\nNot divisible = 90 $-$ 13 = 77 $\\rightarrow$ probability 77/90",
+        "images": []
+      }
     },
     "go:1567": {
       "title": "GATE CSE 2013 | Question: 63",
@@ -2526,7 +2836,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Bruce was about to give up but the spider's persistence gave him hope, and he went on to win. The message: no difficulty justifies losing hope.",
+        "images": []
+      }
     },
     "go:1568": {
       "title": "GATE CSE 2013 | Question: 64",
@@ -2565,7 +2880,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Let total distance = D.\n\n- Train D/2 at 60: D/120\n\n- Bus D/4 at 30: D/120\n\n- Cycle D/4 at 10: D/40 = 3D/120\n\nTotal time = 5D/120 = D/24 $\\rightarrow$ average speed = 24 km/h",
+        "images": []
+      }
     },
     "go:1569": {
       "title": "GATE CSE 2013 | Question: 65",
@@ -2604,7 +2924,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Cost $\\propto$ wage per day $\\times$ working time.\n\nNew cost = $13200\\times\\frac65\\times\\frac{23}{24}=13200\\times1.15=15180$",
+        "images": []
+      }
     }
   }
 }

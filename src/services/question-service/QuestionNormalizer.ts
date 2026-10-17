@@ -822,6 +822,7 @@ export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any =
   return {
     ...normalizedDetail,
     ...(rawAnswerMeta ? { answer_meta: rawAnswerMeta, answerMeta: rawAnswerMeta } : {}),
+    detailed_solution: rawQuestion?.detailed_solution || normalizedDetail?.detailed_solution || null,
     preview: indexedQuestion?.preview || "",
     searchText: indexedQuestion?.searchText || "",
     detailShardKey: this.getDetailShardKey(indexedQuestion || normalizedDetail),

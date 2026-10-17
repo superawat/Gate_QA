@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  getBranchGateOverflowBaseHost,
+  getGateOverflowSearchUrl,
   getGateOverflowSolutionLink,
+  getQuestionBranch,
   getQuestionSolutionLink,
   getSpecialAptitudeSolutionLink,
   isSpecialAptitudeQuestion,
@@ -150,6 +153,84 @@ describe("getGateOverflowSolutionLink", () => {
         link: "https://gateoverflow.in/marks-distribution",
       })
     ).toBe("");
+  });
+
+  it("accepts and normalizes branch subdomain URLs and .com domains", () => {
+    expect(
+      getGateOverflowSolutionLink({
+        link: "https://me.gateoverflow.in/1720/gate-me-2020-question-1",
+      })
+    ).toBe("https://me.gateoverflow.in/1720/gate-me-2020-question-1");
+
+    expect(
+      getGateOverflowSolutionLink({
+        reference_link: "http://ee.gateoverflow.com/4567/gate-ee-2019-question-2",
+      })
+    ).toBe("https://ee.gateoverflow.in/4567/gate-ee-2019-question-2");
+  });
+});
+
+describe("Branch detection and GateOverflow search URLs", () => {
+  it("detects branch correctly from track, branch, question_uid, or title", () => {
+    expect(getQuestionBranch({ track: "me" })).toBe("me");
+    expect(getQuestionBranch({ source_branch: "ee" })).toBe("ee");
+    expect(getQuestionBranch({ question_uid: "pp:ec:2021:q5" })).toBe("ec");
+    expect(getQuestionBranch({ exam_uid: "ce:2018:set1:q2" })).toBe("ce");
+    expect(getQuestionBranch({ title: "GATE IN 2020 | Question 1" })).toBe("in");
+    expect(getQuestionBranch({ title: "GATE Chemical 2020" })).toBe("ch");
+    expect(getQuestionBranch({ track: "cse" })).toBe("cse");
+    expect(getQuestionBranch({ track: "da" })).toBe("da");
+    expect(getQuestionBranch({})).toBe("cse");
+  });
+
+  it("maps engineering branches to official GateOverflow base hosts", () => {
+    expect(getBranchGateOverflowBaseHost("me")).toBe("https://me.gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("ee")).toBe("https://ee.gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("ec")).toBe("https://ec.gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("ce")).toBe("https://civil.gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("in")).toBe("https://in.gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("ch")).toBe("https://ch.gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("cse")).toBe("https://gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("da")).toBe("https://gateoverflow.in");
+    expect(getBranchGateOverflowBaseHost("")).toBe("https://gateoverflow.in");
+  });
+
+  it("builds clean branch-specific search URLs", () => {
+    expect(
+      getGateOverflowSearchUrl({
+        title: "GATE ME 2020 | Set 1 | Question: 1",
+        track: "me",
+      })
+    ).toBe("https://me.gateoverflow.in/?qa=search&q=GATE%20ME%202020%20Set%201%20Question%201");
+
+    expect(
+      getGateOverflowSearchUrl({
+        title: "GATE EE 2019 | Question: 14",
+        track: "ee",
+      })
+    ).toBe("https://ee.gateoverflow.in/?qa=search&q=GATE%20EE%202019%20Question%2014");
+
+    expect(
+      getGateOverflowSearchUrl({
+        title: "GATE CE 2018 | Question: 2",
+        track: "ce",
+      })
+    ).toBe("https://civil.gateoverflow.in/?qa=search&q=GATE%20CE%202018%20Question%202");
+
+    expect(
+      getGateOverflowSearchUrl({
+        title: "GATE EC 2021 | Question: 5",
+        track: "ec",
+      })
+    ).toBe("https://ec.gateoverflow.in/?qa=search&q=GATE%20EC%202021%20Question%205");
+
+    expect(
+      getGateOverflowSearchUrl({
+        year: "2020",
+        qNum: "1",
+        track: "me",
+      })
+    ).toBe("https://me.gateoverflow.in/?qa=search&q=GATE%20ME%202020%20Question%201");
   });
 });
 

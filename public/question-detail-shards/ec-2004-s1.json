@@ -50,7 +50,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Graph Theory and State Equations",
-        "markdown": "It is forming a closed loop. So it can't be a tree.\n\nTherefore, the correct answer is **B**."
+        "markdown": "It is forming a closed loop. So it can't be a tree.",
+        "images": []
       }
     },
     "pp:ec:2004:q2": {
@@ -94,7 +95,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-1ff387c4a4.webp\" />\n\nIf current enters the dotte terminals of coil 1 then a voltage is developed across coil 2 whose higher potential is at dotted terminals.\n\n$$\\begin{aligned} V &=\\frac{-M d I}{d t}+\\frac{L_{1} d I}{d t}-\\frac{M d I}{d t}+L_{2} \\frac{d I}{d t} \\\\ &=\\left(L_{1}+L_{2}-2 M\\right) \\frac{d I}{d t}\\\\  V&=L_{e q} \\frac{d I}{d t} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-1ff387c4a4.webp\" />\n\nIf current enters the dotte terminals of coil 1 then a voltage is developed across coil 2 whose higher potential is at dotted terminals.\n\n$$\\begin{aligned} V &=\\frac{-M d I}{d t}+\\frac{L_{1} d I}{d t}-\\frac{M d I}{d t}+L_{2} \\frac{d I}{d t} \\\\ &=\\left(L_{1}+L_{2}-2 M\\right) \\frac{d I}{d t}\\\\  V&=L_{e q} \\frac{d I}{d t} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-1ff387c4a4.webp"
+        ]
       }
     },
     "pp:ec:2004:q3": {
@@ -138,7 +142,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "$$\\begin{aligned} i(t)=& V(t), Y \\\\ Y=& V(t)\\left[\\frac{1}{R_{1}}+\\frac{1}{j \\omega L}+j \\omega C\\right] \\\\ =& \\sin 2 t\\left[3+\\frac{4}{2 j}+j \\times 2 \\times 3\\right] \\\\ =& \\sin 2 t[3-2 j+6 j]=\\sin 2 t[3+4 j] \\\\ =& 5 \\sin 2 t \\angle \\tan ^{-1} \\frac{4}{3}=5 \\sin \\left(2 t+53.1^{\\circ}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} i(t)=& V(t), Y \\\\ Y=& V(t)\\left[\\frac{1}{R_{1}}+\\frac{1}{j \\omega L}+j \\omega C\\right] \\\\ =& \\sin 2 t\\left[3+\\frac{4}{2 j}+j \\times 2 \\times 3\\right] \\\\ =& \\sin 2 t[3-2 j+6 j]=\\sin 2 t[3+4 j] \\\\ =& 5 \\sin 2 t \\angle \\tan ^{-1} \\frac{4}{3}=5 \\sin \\left(2 t+53.1^{\\circ}\\right) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q4": {
@@ -182,7 +187,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "$$\\begin{aligned} v_{0}(t)&=\\frac{\\frac{1}{j \\omega C}}{R+\\frac{1}{j \\omega C}}\\; v_{i}(t)=\\frac{1}{1+j \\omega C R} \\sqrt{2} \\sin 10^{3} t \\\\ &=\\frac{1}{1+j \\times 10^{3} \\times 10^{-3}} \\sqrt{2} \\sin 10^{3} t \\\\ v_{0}(t) &=\\sin \\left(10^{3} t-45^{\\circ}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} v_{0}(t)&=\\frac{\\frac{1}{j \\omega C}}{R+\\frac{1}{j \\omega C}}\\; v_{i}(t)=\\frac{1}{1+j \\omega C R} \\sqrt{2} \\sin 10^{3} t \\\\ &=\\frac{1}{1+j \\times 10^{3} \\times 10^{-3}} \\sqrt{2} \\sin 10^{3} t \\\\ v_{0}(t) &=\\sin \\left(10^{3} t-45^{\\circ}\\right) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q5": {
@@ -226,7 +232,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "$$\\begin{aligned} I(s)&=\\frac{V(s)}{s+2}=\\frac{1}{s(s+2)} \\\\ I(s)&=\\frac{1}{s(s+2)}=\\frac{1}{2}\\left[\\frac{1}{s}-\\frac{1}{s+2}\\right] \\\\ i(t)&=\\frac{1}{2}\\left(1-e^{-2 t}\\right) \\\\ \\text { At } \\quad t&=0, i(t)=0 \\\\ t&=\\infty, i(t)=0.5 \\\\ t&=\\frac{1}{2}, i(t)=0.31 \\end{aligned}$$\n\n<img src=\"/question-images/ec/2004/ec-2004-8fa71357bc.webp\" />\n\nGraph (c) satisfies all conditions .\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} I(s)&=\\frac{V(s)}{s+2}=\\frac{1}{s(s+2)} \\\\ I(s)&=\\frac{1}{s(s+2)}=\\frac{1}{2}\\left[\\frac{1}{s}-\\frac{1}{s+2}\\right] \\\\ i(t)&=\\frac{1}{2}\\left(1-e^{-2 t}\\right) \\\\ \\text { At } \\quad t&=0, i(t)=0 \\\\ t&=\\infty, i(t)=0.5 \\\\ t&=\\frac{1}{2}, i(t)=0.31 \\end{aligned}$$\n\n<img src=\"/question-images/ec/2004/ec-2004-8fa71357bc.webp\" />\n\nGraph (c) satisfies all conditions .",
+        "images": [
+          "/question-images/ec/2004/ec-2004-8fa71357bc.webp"
+        ]
       }
     },
     "pp:ec:2004:q6": {
@@ -268,10 +277,7 @@
           "basic-semiconductor-physics"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electronic Devices** (specifically *Basic Semiconductor Physics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Basic Semiconductor Physics**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *Boron*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (Boron)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q7": {
       "question_uid": "pp:ec:2004:q7",
@@ -312,10 +318,7 @@
           "bjt-and-fet-basics"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electronic Devices** (specifically *BJT and FET Basics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **BJT and FET Basics**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *normal active mode*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (normal active mode)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q8": {
       "question_uid": "pp:ec:2004:q8",
@@ -358,7 +361,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$\\beta=\\frac{I_{C}}{I_{B}}=\\frac{\\alpha}{1-\\alpha}$\n\nWhen base width increases, recombination in base region increases and $\\alpha$ decreases and hence $\\beta$ decreases.\n\nIf doping in base region increases , then recombination in base increases and $\\alpha$ decreases, thereby decreasing $\\beta.$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\beta=\\frac{I_{C}}{I_{B}}=\\frac{\\alpha}{1-\\alpha}$\n\nWhen base width increases, recombination in base region increases and $\\alpha$ decreases and hence $\\beta$ decreases.\n\nIf doping in base region increases , then recombination in base increases and $\\alpha$ decreases, thereby decreasing $\\beta.$",
+        "images": []
       }
     },
     "pp:ec:2004:q9": {
@@ -400,10 +404,7 @@
           "operational-amplifiers"
         ]
       },
-      "detailed_solution": {
-        "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Circuits** (specifically *Operational Amplifiers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Operational Amplifiers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *voltage controlled voltage source*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (voltage controlled voltage source)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q10": {
       "question_uid": "pp:ec:2004:q10",
@@ -444,10 +445,7 @@
           "feedback-amplifiers"
         ]
       },
-      "detailed_solution": {
-        "concept": "Analog Circuits - Feedback Amplifiers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Circuits** (specifically *Feedback Amplifiers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Feedback Amplifiers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *increase in input impedance and decrease in output impedance*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (increase in input impedance and decrease in output impedance)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q11": {
       "question_uid": "pp:ec:2004:q11",
@@ -490,7 +488,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "$$\\begin{array}{l} \\text { At } \\omega=\\infty, \\frac{V_{0}}{V_{\\text {in }}}=0 \\\\ \\text { and at } \\omega=0, \\quad \\frac{V_{0}}{V_{\\text {in }}}=1 \\end{array}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{array}{l} \\text { At } \\omega=\\infty, \\frac{V_{0}}{V_{\\text {in }}}=0 \\\\ \\text { and at } \\omega=0, \\quad \\frac{V_{0}}{V_{\\text {in }}}=1 \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q12": {
@@ -534,7 +533,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "$$\\begin{aligned} V_{C E} &=V_{C C}-I_{C} R_{C} \\\\ 0.2 &=3-I_{C} \\times 1 \\mathrm{k} \\\\ I_{C} &=2.8 \\mathrm{mA} \\\\ \\beta &=\\frac{I_{C}}{I_{B}}, I_{B}=\\frac{I_{C}}{\\beta}=\\frac{2.8 \\mathrm{mA}}{50} \\\\ &=0.056 \\mathrm{mA}=56 \\mu \\mathrm{A} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} V_{C E} &=V_{C C}-I_{C} R_{C} \\\\ 0.2 &=3-I_{C} \\times 1 \\mathrm{k} \\\\ I_{C} &=2.8 \\mathrm{mA} \\\\ \\beta &=\\frac{I_{C}}{I_{B}}, I_{B}=\\frac{I_{C}}{\\beta}=\\frac{2.8 \\mathrm{mA}}{50} \\\\ &=0.056 \\mathrm{mA}=56 \\mu \\mathrm{A} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q13": {
@@ -576,10 +576,7 @@
           "sequential-circuits"
         ]
       },
-      "detailed_solution": {
-        "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Circuits** (specifically *Sequential Circuits*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Sequential Circuits**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *change in the output occurs when the state of the slave is affected*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (change in the output occurs when the state of the slave is affected)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q14": {
       "question_uid": "pp:ec:2004:q14",
@@ -622,7 +619,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Number Systems",
-        "markdown": "$$\\begin{aligned} \\text { Range } &=-\\left(2^{n-1}-1\\right) \\text { to }+\\left(2^{n-1}-1\\right) \\\\ &=-\\left(2^{6-1}-1\\right) \\text { to }+\\left(2^{6-1}-1\\right) \\\\ &=-31 \\text { to }+31 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\text { Range } &=-\\left(2^{n-1}-1\\right) \\text { to }+\\left(2^{n-1}-1\\right) \\\\ &=-\\left(2^{6-1}-1\\right) \\text { to }+\\left(2^{6-1}-1\\right) \\\\ &=-31 \\text { to }+31 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q15": {
@@ -666,7 +664,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
-        "markdown": "$$\\begin{aligned} 2^{n}&\\geq100\\\\ \\therefore \\quad n&\\geq7 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} 2^{n}&\\geq100\\\\ \\therefore \\quad n&\\geq7 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q16": {
@@ -708,10 +707,7 @@
           "digital-communications"
         ]
       },
-      "detailed_solution": {
-        "concept": "Communication Systems - Digital Communications",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Communication Systems** (specifically *Digital Communications*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Digital Communications**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *P - 3, Q - 1, R - 2*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (P - 3, Q - 1, R - 2)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q17": {
       "question_uid": "pp:ec:2004:q17",
@@ -754,7 +750,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Families",
-        "markdown": "For TTL logic floating input =1\n\n$\\therefore \\quad Y=(A B+1)^{\\prime}=\\overline{A B} \\cdot 0=0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For TTL logic floating input =1\n\n$\\therefore \\quad Y=(A B+1)^{\\prime}=\\overline{A B} \\cdot 0=0$",
+        "images": []
       }
     },
     "pp:ec:2004:q18": {
@@ -796,10 +793,7 @@
           "logic-families"
         ]
       },
-      "detailed_solution": {
-        "concept": "Digital Circuits - Logic Families",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Circuits** (specifically *Logic Families*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Logic Families**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *a CMOS inverter*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (a CMOS inverter)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q19": {
       "question_uid": "pp:ec:2004:q19",
@@ -842,7 +836,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "$$\\begin{aligned} \\sum_{k=-\\infty}^{\\infty} h(k)=& \\sum_{k=-3}^{\\infty} u(k+3)+\\sum_{k=2}^{\\infty} u(k-2) \\\\ &-2 \\sum_{k=7}^{\\infty} u(k-7) \\\\ =& \\sum_{k=-3}^{6} 1+\\sum_{k=2}^{6} 1 \\\\ =& 10+5=15 \\lt \\infty \\end{aligned}$$\n\nFor bounded input, bounded output. So system is stable.\n\nResponse depends on future value of input signal i.e. u(n + 3).\n\nSo, system is not causal\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\sum_{k=-\\infty}^{\\infty} h(k)=& \\sum_{k=-3}^{\\infty} u(k+3)+\\sum_{k=2}^{\\infty} u(k-2) \\\\ &-2 \\sum_{k=7}^{\\infty} u(k-7) \\\\ =& \\sum_{k=-3}^{6} 1+\\sum_{k=2}^{6} 1 \\\\ =& 10+5=15 \\lt \\infty \\end{aligned}$$\n\nFor bounded input, bounded output. So system is stable.\n\nResponse depends on future value of input signal i.e. u(n + 3).\n\nSo, system is not causal",
+        "images": []
       }
     },
     "pp:ec:2004:q20": {
@@ -886,7 +881,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "$$\\begin{array}{l} P(x=1)=F_{x}\\left(x=1^{+}\\right)-F_{x}(x=1) \\\\ =0.55-0.25=0.30 \\end{array}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{array}{l} P(x=1)=F_{x}\\left(x=1^{+}\\right)-F_{x}(x=1) \\\\ =0.55-0.25=0.30 \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q21": {
@@ -930,7 +926,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$$\\begin{aligned} H(z)&=\\frac{z}{z-0.2}=\\frac{z}{z\\left(1-0.2 z^{-1}\\right)} \\\\ H(z)&=\\frac{1}{1-0.2 z^{-1}} \\end{aligned}$$\n\nROC is $|z|\\lt 0.2$\n\nComparing with,\n\n$-a^{n} u(-n-1) \\rightarrow \\frac{1}{1-a z^{-1}},|z|\\lt a$\n\nWe get,  $h(n)=-(0.2)^{n} u(-n-1)$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} H(z)&=\\frac{z}{z-0.2}=\\frac{z}{z\\left(1-0.2 z^{-1}\\right)} \\\\ H(z)&=\\frac{1}{1-0.2 z^{-1}} \\end{aligned}$$\n\nROC is $|z|\\lt 0.2$\n\nComparing with,\n\n$-a^{n} u(-n-1) \\rightarrow \\frac{1}{1-a z^{-1}},|z|\\lt a$\n\nWe get,  $h(n)=-(0.2)^{n} u(-n-1)$",
+        "images": []
       }
     },
     "pp:ec:2004:q22": {
@@ -972,10 +969,7 @@
           "fourier-transforms-frequency-response-and-correlation"
         ]
       },
-      "detailed_solution": {
-        "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Signals and Systems** (specifically *Fourier Transforms, Frequency Response and Correlation*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Fourier Transforms, Frequency Response and Correlation**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *real*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (real)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q23": {
       "question_uid": "pp:ec:2004:q23",
@@ -1018,7 +1012,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
-        "markdown": "$$\\begin{aligned} \\angle G(s) H(s) &=-180^{\\circ}+\\tan ^{-1} \\omega \\\\ \\text{For}\\quad\\omega_{\\theta} &=-180^{\\circ}+\\tan ^{-1} \\omega=-180^{\\circ} \\\\ \\omega &=0 \\\\ |G(s) H(s)| &=\\frac{2 \\sqrt{1+\\omega^{2}}}{\\omega^{2}}=\\infty \\\\ G \\cdot M \\cdot &=\\frac{1}{\\infty}=0 \\\\ \\ln \\quad d B G \\cdot M &=\\infty \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\angle G(s) H(s) &=-180^{\\circ}+\\tan ^{-1} \\omega \\\\ \\text{For}\\quad\\omega_{\\theta} &=-180^{\\circ}+\\tan ^{-1} \\omega=-180^{\\circ} \\\\ \\omega &=0 \\\\ |G(s) H(s)| &=\\frac{2 \\sqrt{1+\\omega^{2}}}{\\omega^{2}}=\\infty \\\\ G \\cdot M \\cdot &=\\frac{1}{\\infty}=0 \\\\ \\ln \\quad d B G \\cdot M &=\\infty \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q24": {
@@ -1062,7 +1057,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
-        "markdown": "$\\text { Centroid }=\\frac{\\Sigma P-\\Sigma Z}{P-Z}=\\frac{-1-3}{3}=-1.33$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$\\text { Centroid }=\\frac{\\Sigma P-\\Sigma Z}{P-Z}=\\frac{-1-3}{3}=-1.33$",
+        "images": []
       }
     },
     "pp:ec:2004:q25": {
@@ -1106,7 +1102,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "For every 1 bit  $\\mathrm{SNR}_{9}$  improves by a factor of 4.\n\nThus for 2 bits increase in message the  $\\mathrm{SNR}_{9}$\n\nincreases by a factor of 16.\n\nTherefore, the correct answer is **C**."
+        "markdown": "For every 1 bit  $\\mathrm{SNR}_{9}$  improves by a factor of 4.\n\nThus for 2 bits increase in message the  $\\mathrm{SNR}_{9}$\n\nincreases by a factor of 16.",
+        "images": []
       }
     },
     "pp:ec:2004:q26": {
@@ -1150,7 +1147,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "$\\frac{1}{f_{c}} \\lt R C \\leq \\frac{1}{f_{m}}$\n\n(where $1 / f_{c}=$ to avoid fluctuations at recovered output and $1 / f_{m}=$ to avoid diagonal clipping)\n\n$1 \\mu \\sec  \\lt R C \\leq \\frac{1}{2 k H z}$\n\n$1 \\mu \\mathrm{sec} \\lt R C \\leq 0.5 \\mathrm{ms}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$\\frac{1}{f_{c}} \\lt R C \\leq \\frac{1}{f_{m}}$\n\n(where $1 / f_{c}=$ to avoid fluctuations at recovered output and $1 / f_{m}=$ to avoid diagonal clipping)\n\n$1 \\mu \\sec  \\lt R C \\leq \\frac{1}{2 k H z}$\n\n$1 \\mu \\mathrm{sec} \\lt R C \\leq 0.5 \\mathrm{ms}$",
+        "images": []
       }
     },
     "pp:ec:2004:q27": {
@@ -1194,7 +1192,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "$$\\begin{array}{c} s(t)=A_{c} \\cos \\omega_{c} t+\\frac{A_{c} \\beta}{2} \\cos \\left(\\omega_{c}+\\omega_{m}\\right) t \\\\ -\\frac{A_{c} \\beta}{2} \\cos \\left(\\omega_{c}-\\omega_{m}\\right) \\\\ s(t)_{A M}=A_{c} \\cos \\omega_{c} t+\\frac{A_{c} m_{a}}{2} \\\\ \\cos \\left(\\omega_{c}+\\omega_{m}\\right) t+\\frac{A_{c} m_{a}}{2} \\cos \\left(\\omega_{c}-\\omega_{m}\\right) \\\\ s(t)+s(t)_{A M}=\\text { carrier }+\\cup S B \\\\ =S S B \\text { with carrier. } \\\\ \\text { Note: }-s(t)+s(t)_{A M}=S S B+S C \\end{array}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{array}{c} s(t)=A_{c} \\cos \\omega_{c} t+\\frac{A_{c} \\beta}{2} \\cos \\left(\\omega_{c}+\\omega_{m}\\right) t \\\\ -\\frac{A_{c} \\beta}{2} \\cos \\left(\\omega_{c}-\\omega_{m}\\right) \\\\ s(t)_{A M}=A_{c} \\cos \\omega_{c} t+\\frac{A_{c} m_{a}}{2} \\\\ \\cos \\left(\\omega_{c}+\\omega_{m}\\right) t+\\frac{A_{c} m_{a}}{2} \\cos \\left(\\omega_{c}-\\omega_{m}\\right) \\\\ s(t)+s(t)_{A M}=\\text { carrier }+\\cup S B \\\\ =S S B \\text { with carrier. } \\\\ \\text { Note: }-s(t)+s(t)_{A M}=S S B+S C \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q28": {
@@ -1238,7 +1237,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "In between the two adjacent sampled values, if\n\nthe base band signal changes an amount less\n\nthan the step size, the output of the OM is a\n\nsequence of alternate positive and negative\n\npulses. This small change in base band signal\n\nindicated that the base band is almost constant.\n\nTherefore, the correct answer is **A**."
+        "markdown": "In between the two adjacent sampled values, if\n\nthe base band signal changes an amount less\n\nthan the step size, the output of the OM is a\n\nsequence of alternate positive and negative\n\npulses. This small change in base band signal\n\nindicated that the base band is almost constant.",
+        "images": []
       }
     },
     "pp:ec:2004:q29": {
@@ -1280,10 +1280,7 @@
           "waveguides"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electromagnetics - Waveguides",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electromagnetics** (specifically *Waveguides*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Waveguides**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *greater than the velocity of light in free space*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (greater than the velocity of light in free space)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q30": {
       "question_uid": "pp:ec:2004:q30",
@@ -1326,7 +1323,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
-        "markdown": "When an antenna is lossless then the antenna\n\nefficiency is 100%. In such case whole of the\n\npower fed to antenna is radiated in the form of\n\nradiation. Therefore, if power fed to antenna is\n\n1 mW then total radiated power is also 1 mW.\n\nTherefore, the correct answer is **A**."
+        "markdown": "When an antenna is lossless then the antenna\n\nefficiency is 100%. In such case whole of the\n\npower fed to antenna is radiated in the form of\n\nradiation. Therefore, if power fed to antenna is\n\n1 mW then total radiated power is also 1 mW.",
+        "images": []
       }
     },
     "pp:ec:2004:q31": {
@@ -1370,7 +1368,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "For Lattice network, Z-parameter is given as\n\n$$\\begin{array}{l} {\\left[\\begin{array}{cc} \\frac{Z_{a}+Z_{b}}{2} \\frac{Z_{a}-Z_{b}}{2} \\\\ \\frac{Z_{a}-Z_{b}}{2} \\frac{Z_{a}+Z_{b}}{2} \\end{array}\\right]} \\\\ Z_{a}=2 j, Z_{b}=2 \\Omega \\\\ {\\left[\\begin{array}{cc} 1+j & -1+j \\\\ -1+j & 1+j \\end{array}\\right]} \\end{array}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "For Lattice network, Z-parameter is given as\n\n$$\\begin{array}{l} {\\left[\\begin{array}{cc} \\frac{Z_{a}+Z_{b}}{2} \\frac{Z_{a}-Z_{b}}{2} \\\\ \\frac{Z_{a}-Z_{b}}{2} \\frac{Z_{a}+Z_{b}}{2} \\end{array}\\right]} \\\\ Z_{a}=2 j, Z_{b}=2 \\Omega \\\\ {\\left[\\begin{array}{cc} 1+j & -1+j \\\\ -1+j & 1+j \\end{array}\\right]} \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q32": {
@@ -1414,7 +1413,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "$\\mathrm{KVL}, \\quad v(t)=R i(t)+\\frac{L d i(t)}{d t}+\\frac{1}{C} \\int_{0}^{\\infty} i(t) d t$\n\nTaking Laplace transform on both sides,\n\n$V(s)=R I(s)+L s I(s)-L I\\left(0^{+}\\right)+\\frac{I(s)}{s C}+\\frac{V_{c}\\left(0^{+}\\right)}{s}$\n\n$\\Rightarrow \\frac{1}{s}=I(s)+s I(s)-1+\\frac{I(s)}{s}-\\frac{1}{s}$\n\n$\\frac{2}{s}+1=\\frac{I(s)}{s}\\left[s^{2}+s+1\\right]$\n\n$I(s)=\\frac{s+2}{s^{2}+s+1}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$\\mathrm{KVL}, \\quad v(t)=R i(t)+\\frac{L d i(t)}{d t}+\\frac{1}{C} \\int_{0}^{\\infty} i(t) d t$\n\nTaking Laplace transform on both sides,\n\n$V(s)=R I(s)+L s I(s)-L I\\left(0^{+}\\right)+\\frac{I(s)}{s C}+\\frac{V_{c}\\left(0^{+}\\right)}{s}$\n\n$\\Rightarrow \\frac{1}{s}=I(s)+s I(s)-1+\\frac{I(s)}{s}-\\frac{1}{s}$\n\n$\\frac{2}{s}+1=\\frac{I(s)}{s}\\left[s^{2}+s+1\\right]$\n\n$I(s)=\\frac{s+2}{s^{2}+s+1}$",
+        "images": []
       }
     },
     "pp:ec:2004:q33": {
@@ -1458,7 +1458,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$$\\begin{aligned} 20 \\log K &=-20 \\mathrm{dB} \\\\ \\Rightarrow \\quad K &=10^{-1}=0.1 \\\\ \\text { Zero at } \\omega=1 & \\& \\text { poles at } \\omega=10,100 \\\\ H(s) &=\\frac{K(s+1)}{\\left(\\frac{s}{10}+1\\right)\\left(\\frac{s}{100}+1\\right)} \\\\ &=\\frac{0.1(s+1) \\times 10 \\times 100}{(s+10)(s+100)} \\\\ &=\\frac{10^2 (s+1)}{(s+10)(s+100)} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} 20 \\log K &=-20 \\mathrm{dB} \\\\ \\Rightarrow \\quad K &=10^{-1}=0.1 \\\\ \\text { Zero at } \\omega=1 & \\& \\text { poles at } \\omega=10,100 \\\\ H(s) &=\\frac{K(s+1)}{\\left(\\frac{s}{10}+1\\right)\\left(\\frac{s}{100}+1\\right)} \\\\ &=\\frac{0.1(s+1) \\times 10 \\times 100}{(s+10)(s+100)} \\\\ &=\\frac{10^2 (s+1)}{(s+10)(s+100)} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q34": {
@@ -1502,7 +1503,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "$$\\begin{array}{l} \\text { Characteristic equation }=s^{2}+20 s+10^{6} \\\\ Q=\\frac{\\omega_{0}}{B W}, \\omega_{0}=\\sqrt{10^{6}} \\\\ Q=\\frac{10^{3}}{20}=\\frac{1000}{20}=50 \\end{array}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{array}{l} \\text { Characteristic equation }=s^{2}+20 s+10^{6} \\\\ Q=\\frac{\\omega_{0}}{B W}, \\omega_{0}=\\sqrt{10^{6}} \\\\ Q=\\frac{10^{3}}{20}=\\frac{1000}{20}=50 \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q35": {
@@ -1546,7 +1548,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "$$\\begin{aligned} H(s) &=\\frac{\\frac{1}{s C}}{R+s L+\\frac{1}{s C}}=\\frac{1}{s^{2} L C+s C R+1} \\\\ &=\\frac{1}{s^{2}\\left(10 \\times 10^{-3} \\times 100 \\times 10^{-6}\\right)} \\\\ &+s\\left(10 \\times 10^{3} \\times 100 \\times 10^{-6}\\right)+1 \\\\ H(s) &=\\frac{1}{10^{-6} s^{2}+s+1}=\\frac{10^{6}}{s^{2}+10^{6} s+10^{6}} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} H(s) &=\\frac{\\frac{1}{s C}}{R+s L+\\frac{1}{s C}}=\\frac{1}{s^{2} L C+s C R+1} \\\\ &=\\frac{1}{s^{2}\\left(10 \\times 10^{-3} \\times 100 \\times 10^{-6}\\right)} \\\\ &+s\\left(10 \\times 10^{3} \\times 100 \\times 10^{-6}\\right)+1 \\\\ H(s) &=\\frac{1}{10^{-6} s^{2}+s+1}=\\frac{10^{6}}{s^{2}+10^{6} s+10^{6}} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q36": {
@@ -1590,7 +1593,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$$\\begin{aligned} \\frac{d^{2} y}{d t^{2}}+\\frac{3 d y}{d t}+2 y &=X(t) \\\\ s^{2} Y(s)+3 s Y(s)+2 Y(s) &=X(s) \\\\ x(t) &=2 u(t) \\\\ X(s) &=\\frac{2}{s} \\\\ \\therefore \\quad\\left(s^{2}+3 s+2\\right) Y(s) &=\\frac{2}{s} \\\\ r(s) &=\\frac{2}{s(s+2)(s+1)} \\\\ \\frac{2}{s(s+2)(s+1)} &=\\frac{A}{s}+\\frac{B}{s+2}+\\frac{C}{s+1} \\end{aligned}$$\n\n$$\\begin{aligned} 2&=A(s+2)(s+1)+B s(s+1)+C(s+2) s \\\\ s&=0,2=2 A \\Rightarrow A=1 \\\\ s&=-1,2=-C \\Rightarrow C=-2 \\\\ s&=-2,2=2 B \\Rightarrow B=1 \\\\ Y(s)&=\\frac{1}{s}+\\frac{1}{s+2}-\\frac{2}{s+1} \\\\ y(t)&=(1+e^{-2 t}-2 e^{-t}) u(t)  \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\frac{d^{2} y}{d t^{2}}+\\frac{3 d y}{d t}+2 y &=X(t) \\\\ s^{2} Y(s)+3 s Y(s)+2 Y(s) &=X(s) \\\\ x(t) &=2 u(t) \\\\ X(s) &=\\frac{2}{s} \\\\ \\therefore \\quad\\left(s^{2}+3 s+2\\right) Y(s) &=\\frac{2}{s} \\\\ r(s) &=\\frac{2}{s(s+2)(s+1)} \\\\ \\frac{2}{s(s+2)(s+1)} &=\\frac{A}{s}+\\frac{B}{s+2}+\\frac{C}{s+1} \\end{aligned}$$\n\n$$\\begin{aligned} 2&=A(s+2)(s+1)+B s(s+1)+C(s+2) s \\\\ s&=0,2=2 A \\Rightarrow A=1 \\\\ s&=-1,2=-C \\Rightarrow C=-2 \\\\ s&=-2,2=2 B \\Rightarrow B=1 \\\\ Y(s)&=\\frac{1}{s}+\\frac{1}{s+2}-\\frac{2}{s+1} \\\\ y(t)&=(1+e^{-2 t}-2 e^{-t}) u(t)  \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q37": {
@@ -1634,7 +1638,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "$S_{1}$: Impedance of series RLC circuit at resonant frequency is minimum\n\n$Z=R+j\\left(\\omega L-\\frac{1}{\\omega C}\\right)$\n\n$\\omega L-\\frac{1}{\\omega C}=0$\n\n$Z=R \\text{(Purely resistive)}$\n\n$S_{2}: Q=R \\sqrt{\\frac{C}{L}}$\n\n$G=\\frac{1}{R} \\Rightarrow Q=\\frac{1}{G} \\sqrt{\\frac{C}{L}}$\n\n$G \\uparrow$ then $Q \\downarrow$ if $C \\& L$ are same\n\nTherefore, the correct answer is **D**."
+        "markdown": "$S_{1}$: Impedance of series RLC circuit at resonant frequency is minimum\n\n$Z=R+j\\left(\\omega L-\\frac{1}{\\omega C}\\right)$\n\n$\\omega L-\\frac{1}{\\omega C}=0$\n\n$Z=R \\text{(Purely resistive)}$\n\n$S_{2}: Q=R \\sqrt{\\frac{C}{L}}$\n\n$G=\\frac{1}{R} \\Rightarrow Q=\\frac{1}{G} \\sqrt{\\frac{C}{L}}$\n\n$G \\uparrow$ then $Q \\downarrow$ if $C \\& L$ are same",
+        "images": []
       }
     },
     "pp:ec:2004:q38": {
@@ -1678,7 +1683,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "$$\\begin{aligned} \\frac{\\omega_{n}}{\\omega_{p}}&=\\frac{N_{A}}{N_{D}} \\qquad \\omega \\simeq \\omega_{n} \\quad\\left(\\because \\omega_{n}\\gt \\gt \\omega_{p}\\right) \\\\ \\omega_{p}&=\\frac{\\omega_{n} \\times N_{D}}{N_{A}}=\\frac{3 \\mu m \\times 10^{16}}{9 \\times 10^{16}}=0.3 \\mu \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\frac{\\omega_{n}}{\\omega_{p}}&=\\frac{N_{A}}{N_{D}} \\qquad \\omega \\simeq \\omega_{n} \\quad\\left(\\because \\omega_{n}\\gt \\gt \\omega_{p}\\right) \\\\ \\omega_{p}&=\\frac{\\omega_{n} \\times N_{D}}{N_{A}}=\\frac{3 \\mu m \\times 10^{16}}{9 \\times 10^{16}}=0.3 \\mu \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q39": {
@@ -1722,7 +1728,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "$$\\begin{aligned} \\rho &=\\frac{1}{n q \\mu_{n}} \\\\ n &=N_{D} \\\\ N_{D} &=\\frac{1}{q \\mu_{n} \\rho}=\\frac{1}{1.6 \\times 10^{-19} \\times 1250 \\times 0.5} \\\\ &=10^{16} / \\mathrm{cm}^{3} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\rho &=\\frac{1}{n q \\mu_{n}} \\\\ n &=N_{D} \\\\ N_{D} &=\\frac{1}{q \\mu_{n} \\rho}=\\frac{1}{1.6 \\times 10^{-19} \\times 1250 \\times 0.5} \\\\ &=10^{16} / \\mathrm{cm}^{3} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q40": {
@@ -1766,7 +1773,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "$$\\begin{aligned} C_{j} & \\propto V_{i}^{-1 / 2} \\\\ \\frac{C_{i 2}}{C_{i_{1}}} &=\\sqrt{\\frac{V_{1}}{V_{2}}}=\\sqrt{\\frac{1}{4}}=\\frac{1}{2} \\\\ C_{i_{2}} &=\\frac{C_{h}}{2}=\\frac{1 \\mathrm{pF}}{2}=0.5 \\mathrm{pF} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} C_{j} & \\propto V_{i}^{-1 / 2} \\\\ \\frac{C_{i 2}}{C_{i_{1}}} &=\\sqrt{\\frac{V_{1}}{V_{2}}}=\\sqrt{\\frac{1}{4}}=\\frac{1}{2} \\\\ C_{i_{2}} &=\\frac{C_{h}}{2}=\\frac{1 \\mathrm{pF}}{2}=0.5 \\mathrm{pF} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q41": {
@@ -1810,7 +1818,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$S_{2}: V_{T}$ of $\\mathrm{N}-\\mathrm{MOS}$ is increased by adding extra  p-type impurities i.e. $V_{T}$ of a MOS increases by  increase in substrate doping concentration. (True)\n\n$S_{1}: C_{o x}=\\frac{\\epsilon_{o x}}{t_{o x}} \\quad t_{o x}=$ gate oxide thickners\n\n$V_{T}=\\phi_{G C}-2 \\phi_{F}-\\frac{Q_{R}}{C_{O x}}-\\frac{Q_{o x}}{C_{O x}}$\n\nIf $C_{\\text {ox }}$ increases $\\frac{Q_{B}}{C_{\\text {ox }}}$ and $\\frac{Q_{\\text {ox }}}{C_{\\text {ox }}}$ decreases and $V_{T}$ increases.\n\n$C_{o x}$ decreases when $t_{o x}$ increases.\n\nTherefore, the correct answer is **C**."
+        "markdown": "$S_{2}: V_{T}$ of $\\mathrm{N}-\\mathrm{MOS}$ is increased by adding extra  p-type impurities i.e. $V_{T}$ of a MOS increases by  increase in substrate doping concentration. (True)\n\n$S_{1}: C_{o x}=\\frac{\\epsilon_{o x}}{t_{o x}} \\quad t_{o x}=$ gate oxide thickners\n\n$V_{T}=\\phi_{G C}-2 \\phi_{F}-\\frac{Q_{R}}{C_{O x}}-\\frac{Q_{o x}}{C_{O x}}$\n\nIf $C_{\\text {ox }}$ increases $\\frac{Q_{B}}{C_{\\text {ox }}}$ and $\\frac{Q_{\\text {ox }}}{C_{\\text {ox }}}$ decreases and $V_{T}$ increases.\n\n$C_{o x}$ decreases when $t_{o x}$ increases.",
+        "images": []
       }
     },
     "pp:ec:2004:q42": {
@@ -1854,7 +1863,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$$\\begin{aligned} I_{D} &=K\\left(V_{G S}-V_{T}\\right)^{2} \\\\ 1 m A &=K(2-1)^{2} \\\\ K &=1 \\mathrm{mAN}^{2} \\\\ \\text { Again, } \\quad I_{D} &=K\\left(V_{G S}-V_{T}\\right)^{2}=4 \\mathrm{mA} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} I_{D} &=K\\left(V_{G S}-V_{T}\\right)^{2} \\\\ 1 m A &=K(2-1)^{2} \\\\ K &=1 \\mathrm{mAN}^{2} \\\\ \\text { Again, } \\quad I_{D} &=K\\left(V_{G S}-V_{T}\\right)^{2}=4 \\mathrm{mA} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q43": {
@@ -1898,7 +1908,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "$E_{g}=\\frac{1.24}{\\lambda(\\mu \\mathrm{m})} \\mathrm{eV}=\\frac{1.24}{0.87 \\mu \\mathrm{m}} \\mathrm{eV}=1.425 \\mathrm{eV}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$E_{g}=\\frac{1.24}{\\lambda(\\mu \\mathrm{m})} \\mathrm{eV}=\\frac{1.24}{0.87 \\mu \\mathrm{m}} \\mathrm{eV}=1.425 \\mathrm{eV}$",
+        "images": []
       }
     },
     "pp:ec:2004:q44": {
@@ -1942,7 +1953,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "$$\\begin{aligned} J_{C} &=q D_{n} \\frac{d n}{d x} \\\\ &=1.6 \\times 10^{-19} \\times 25 \\times \\frac{10^{14}}{0.5 \\times 10^{-4}} \\\\ J_{C} &=8 \\mathrm{A} / \\mathrm{cm}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} J_{C} &=q D_{n} \\frac{d n}{d x} \\\\ &=1.6 \\times 10^{-19} \\times 25 \\times \\frac{10^{14}}{0.5 \\times 10^{-4}} \\\\ J_{C} &=8 \\mathrm{A} / \\mathrm{cm}^{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q45": {
@@ -1986,7 +1998,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-93418639a2.webp\" />\n\n$$\\begin{aligned} V_{Th}&=\\frac{R_{2}}{R_{1}R_{2}}V_{C C}=\\frac{1}{5} \\times 5=1\\\\ R_{Th}&=R_{1} \\| R_{2}=\\frac{4}{5} k \\Omega\\\\ I_{C}&\\simeq \\frac{1}{0.3 k \\Omega}=1 \\mathrm{mA}\\left(\\because \\beta \\text { is large } I_{B} \\simeq 0\\right)\\\\ V_{CE}&=V_{C C}-I_{C} R_{C}-I_{E} R_{E}\\left(I_{E}=I_{C}\\text { as } \\right. \\\\ V_{CE}&=5-2.2 \\times 1-0.3 \\times 1 \\\\ V_{CE}&=2.5 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-93418639a2.webp\" />\n\n$$\\begin{aligned} V_{Th}&=\\frac{R_{2}}{R_{1}R_{2}}V_{C C}=\\frac{1}{5} \\times 5=1\\\\ R_{Th}&=R_{1} \\| R_{2}=\\frac{4}{5} k \\Omega\\\\ I_{C}&\\simeq \\frac{1}{0.3 k \\Omega}=1 \\mathrm{mA}\\left(\\because \\beta \\text { is large } I_{B} \\simeq 0\\right)\\\\ V_{CE}&=V_{C C}-I_{C} R_{C}-I_{E} R_{E}\\left(I_{E}=I_{C}\\text { as } \\right. \\\\ V_{CE}&=5-2.2 \\times 1-0.3 \\times 1 \\\\ V_{CE}&=2.5 \\mathrm{V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-93418639a2.webp"
+        ]
       }
     },
     "pp:ec:2004:q46": {
@@ -2030,7 +2045,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Frequency Response of Amplifier",
-        "markdown": "$$\\begin{array}{l} g_{m}=\\frac{I_{C}}{V_{T}}=\\frac{1 \\mathrm{mA}}{25 \\mathrm{mV}}=0.04=40 \\mathrm{mAV} \\\\ h_{\\mathrm{fe}}=g_{m} \\cdot r_{\\pi}, h_{\\mathrm{fe}}=\\beta \\\\ r_{\\pi}=\\frac{\\beta}{g_{m}}=\\frac{100}{40 \\times 10^{-3}}=2.5 \\mathrm{k} \\Omega \\end{array}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{array}{l} g_{m}=\\frac{I_{C}}{V_{T}}=\\frac{1 \\mathrm{mA}}{25 \\mathrm{mV}}=0.04=40 \\mathrm{mAV} \\\\ h_{\\mathrm{fe}}=g_{m} \\cdot r_{\\pi}, h_{\\mathrm{fe}}=\\beta \\\\ r_{\\pi}=\\frac{\\beta}{g_{m}}=\\frac{100}{40 \\times 10^{-3}}=2.5 \\mathrm{k} \\Omega \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q47": {
@@ -2074,7 +2090,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Oscillator Circuits",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-02b475cde0.webp\" />\n\n$$\\begin{aligned} R &=1 \\mathrm{k} \\\\ \\frac{V_{o}-V_{1}}{X_{C}+R} &=\\frac{V_{1}}{X_{C}}+\\frac{V_{1}}{R} \\\\ \\frac{V_{o}-V_{1}}{X_{C}+R} &=V_{1}\\left(\\frac{X_{C}+R}{X_{C} \\cdot R}\\right) \\\\ \\frac{V_{o}}{V_{1}} &=\\frac{\\left(X_{C}+R\\right)^{2}}{X_{C} \\cdot R}+1 \\quad\\left[X_{C}=-\\frac{j}{\\omega C}\\right] \\\\ \\frac{V_{o}}{V_{1}} &=\\frac{-\\frac{1}{\\omega^{2} C^{2}}+R^{2}-\\frac{2 j R}{\\omega C}}{\\frac{R}{j \\omega C}}+1 \\\\ \\frac{V_{0}}{V_{1}} &=+\\frac{j \\omega C}{R}\\left(-\\frac{1}{\\omega^{2} C^{2}}+R^{2}-\\frac{2 j R}{\\omega C}\\right)+1 \\end{aligned}$$\n\nFor oscillation imaginary part is zero.\n\ni.e. $j\\left[\\frac{\\omega C}{R} \\times \\frac{-1}{\\omega^{2} C^{2}}+\\frac{\\omega C}{R} \\times R^{2}\\right]=0$\n\n$$\\begin{aligned} \\frac{-1}{\\omega C A}+\\omega C R&=0\\\\ \\omega^{2} C^{2} R^{2}-1&=0 \\\\ \\omega^{2}&=\\frac{1}{R^{2} C^{2}} \\\\ C&=\\frac{1}{\\omega R}=\\frac{1}{2 \\pi \\times 10^{3} \\times 10^{3}} \\\\ C&=\\frac{1}{2 \\pi} \\mu \\mathrm{F} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-02b475cde0.webp\" />\n\n$$\\begin{aligned} R &=1 \\mathrm{k} \\\\ \\frac{V_{o}-V_{1}}{X_{C}+R} &=\\frac{V_{1}}{X_{C}}+\\frac{V_{1}}{R} \\\\ \\frac{V_{o}-V_{1}}{X_{C}+R} &=V_{1}\\left(\\frac{X_{C}+R}{X_{C} \\cdot R}\\right) \\\\ \\frac{V_{o}}{V_{1}} &=\\frac{\\left(X_{C}+R\\right)^{2}}{X_{C} \\cdot R}+1 \\quad\\left[X_{C}=-\\frac{j}{\\omega C}\\right] \\\\ \\frac{V_{o}}{V_{1}} &=\\frac{-\\frac{1}{\\omega^{2} C^{2}}+R^{2}-\\frac{2 j R}{\\omega C}}{\\frac{R}{j \\omega C}}+1 \\\\ \\frac{V_{0}}{V_{1}} &=+\\frac{j \\omega C}{R}\\left(-\\frac{1}{\\omega^{2} C^{2}}+R^{2}-\\frac{2 j R}{\\omega C}\\right)+1 \\end{aligned}$$\n\nFor oscillation imaginary part is zero.\n\ni.e. $j\\left[\\frac{\\omega C}{R} \\times \\frac{-1}{\\omega^{2} C^{2}}+\\frac{\\omega C}{R} \\times R^{2}\\right]=0$\n\n$$\\begin{aligned} \\frac{-1}{\\omega C A}+\\omega C R&=0\\\\ \\omega^{2} C^{2} R^{2}-1&=0 \\\\ \\omega^{2}&=\\frac{1}{R^{2} C^{2}} \\\\ C&=\\frac{1}{\\omega R}=\\frac{1}{2 \\pi \\times 10^{3} \\times 10^{3}} \\\\ C&=\\frac{1}{2 \\pi} \\mu \\mathrm{F} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-02b475cde0.webp"
+        ]
       }
     },
     "pp:ec:2004:q48": {
@@ -2118,7 +2137,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-84bc7b5ff4.webp\" />\n\n$$\\begin{aligned} \\frac{V}{R_{2}}+\\frac{V}{R_{L}}+\\frac{V}{R_{2}}&=\\frac{V_{0}}{R_{2}} \\\\ \\frac{2 V}{R_{2}}+\\frac{V}{R_{L}}&=\\frac{V_{0}}{R_{2}} &\\ldots(i)\\\\ \\frac{V_{s}-V}{R_{1}}&=\\frac{V-V_{0}}{R_{1}} \\\\ V_{s}-2 V&=-V_{0} &\\ldots(ii)\\\\ \\text{Putting } V_{o} \\text{ from (i)},\\\\ \\frac{-V_{s}+2 V}{R_{2}} &=+\\left(\\frac{2 V}{R_{2}}+\\frac{V}{R_{L}}\\right) \\\\ i_{L} &=\\frac{V}{R_{L}}=-\\frac{V_{S}}{R_{2}}=\\left[\\frac{V}{R_{L}}=i_{L}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-84bc7b5ff4.webp\" />\n\n$$\\begin{aligned} \\frac{V}{R_{2}}+\\frac{V}{R_{L}}+\\frac{V}{R_{2}}&=\\frac{V_{0}}{R_{2}} \\\\ \\frac{2 V}{R_{2}}+\\frac{V}{R_{L}}&=\\frac{V_{0}}{R_{2}} &\\ldots(i)\\\\ \\frac{V_{s}-V}{R_{1}}&=\\frac{V-V_{0}}{R_{1}} \\\\ V_{s}-2 V&=-V_{0} &\\ldots(ii)\\\\ \\text{Putting } V_{o} \\text{ from (i)},\\\\ \\frac{-V_{s}+2 V}{R_{2}} &=+\\left(\\frac{2 V}{R_{2}}+\\frac{V}{R_{L}}\\right) \\\\ i_{L} &=\\frac{V}{R_{L}}=-\\frac{V_{S}}{R_{2}}=\\left[\\frac{V}{R_{L}}=i_{L}\\right] \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-84bc7b5ff4.webp"
+        ]
       }
     },
     "pp:ec:2004:q49": {
@@ -2162,7 +2184,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "$$\\begin{aligned} I&=I_{z}+I_{L}=I_{2 \\min }+I_{L m_{a x}} \\\\ &=0+500 \\mathrm{mA} \\\\ R&=\\frac{V_{\\text {in }}-V_{z}}{I}=\\frac{12-5}{500 \\mathrm{mA}}=14 \\mathrm{a} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} I&=I_{z}+I_{L}=I_{2 \\min }+I_{L m_{a x}} \\\\ &=0+500 \\mathrm{mA} \\\\ R&=\\frac{V_{\\text {in }}-V_{z}}{I}=\\frac{12-5}{500 \\mathrm{mA}}=14 \\mathrm{a} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q50": {
@@ -2204,10 +2227,7 @@
           "diodes-applications"
         ]
       },
-      "detailed_solution": {
-        "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Circuits** (specifically *Diodes Applications*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Diodes Applications**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$I_{dc}=2\\frac{V_{m}}{\\pi}, PIV=2 V_{m}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($I_{dc}=2\\frac{V_{m}}{\\pi}, PIV=2 V_{m}$)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q51": {
       "question_uid": "pp:ec:2004:q51",
@@ -2250,7 +2270,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "$$\\begin{aligned} \\text { No. of } M U X &=\\frac{4}{2}=2 \\\\ \\frac{2}{2} &=1\\\\ \\therefore \\quad \\text { Total }&=2+1=3 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\text { No. of } M U X &=\\frac{4}{2}=2 \\\\ \\frac{2}{2} &=1\\\\ \\therefore \\quad \\text { Total }&=2+1=3 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q52": {
@@ -2294,7 +2315,14 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
-        "markdown": "$AC+B\\overline{C}$\n\nWriting the SOP form of the above expression and  filling the K-map, we get,\n\n<img src=\"/question-images/ec/2004/ec-2004-eb7e09cdf1.webp\" />\n\nNow, writing the SOP for the given options, we get,\n\n(A) $\\overline{A}C+B\\overline{C}+AC$\n\n<img src=\"/question-images/ec/2004/ec-2004-b6caa7a2a8.webp\" />\n\n(B) $\\overline{B}C+AC+B\\overline{C}+\\overline{A}C\\overline{B}$\n\n<img src=\"/question-images/ec/2004/ec-2004-bf2c8c44be.webp\" />\n\n(C) $AC+ B\\overline{C}+ \\overline{B}C+ ABC$\n\n<img src=\"/question-images/ec/2004/ec-2004-5d1cf6d83e.webp\" />\n\n(D) $ABC+ \\overline{A}B\\overline{C}+ AB\\overline{C}+ A\\overline{B}C$\n\n<img src=\"/question-images/ec/2004/ec-2004-113d9f3527.webp\" />\n\nNow, comparing it which the expression given in the question, we find option (D) satisfies the given condition.\n\nAlternate method\n\n$A B C+\\bar{A} B \\bar{C}+A B \\bar{C}+A \\bar{B} C$\n\n$A C(B+\\bar{B})+B \\bar{C}(A+\\bar{A})=A C+B \\bar{C}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$AC+B\\overline{C}$\n\nWriting the SOP form of the above expression and  filling the K-map, we get,\n\n<img src=\"/question-images/ec/2004/ec-2004-eb7e09cdf1.webp\" />\n\nNow, writing the SOP for the given options, we get,\n\n(A) $\\overline{A}C+B\\overline{C}+AC$\n\n<img src=\"/question-images/ec/2004/ec-2004-b6caa7a2a8.webp\" />\n\n(B) $\\overline{B}C+AC+B\\overline{C}+\\overline{A}C\\overline{B}$\n\n<img src=\"/question-images/ec/2004/ec-2004-bf2c8c44be.webp\" />\n\n(C) $AC+ B\\overline{C}+ \\overline{B}C+ ABC$\n\n<img src=\"/question-images/ec/2004/ec-2004-5d1cf6d83e.webp\" />\n\n(D) $ABC+ \\overline{A}B\\overline{C}+ AB\\overline{C}+ A\\overline{B}C$\n\n<img src=\"/question-images/ec/2004/ec-2004-113d9f3527.webp\" />\n\nNow, comparing it which the expression given in the question, we find option (D) satisfies the given condition.\n\nAlternate method\n\n$A B C+\\bar{A} B \\bar{C}+A B \\bar{C}+A \\bar{B} C$\n\n$A C(B+\\bar{B})+B \\bar{C}(A+\\bar{A})=A C+B \\bar{C}$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-eb7e09cdf1.webp",
+          "/question-images/ec/2004/ec-2004-b6caa7a2a8.webp",
+          "/question-images/ec/2004/ec-2004-bf2c8c44be.webp",
+          "/question-images/ec/2004/ec-2004-5d1cf6d83e.webp",
+          "/question-images/ec/2004/ec-2004-113d9f3527.webp"
+        ]
       }
     },
     "pp:ec:2004:q53": {
@@ -2338,7 +2366,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Number Systems",
-        "markdown": "$11001 \\rightarrow 00111(+7)$\n\n$1001 \\rightarrow 0111(+7)$\n\n$111001 \\rightarrow 000111(+7)$\n\n$\\therefore$ Numbers given in question in 2 's complement correspond to -7\n\nTherefore, the correct answer is **C**."
+        "markdown": "$11001 \\rightarrow 00111(+7)$\n\n$1001 \\rightarrow 0111(+7)$\n\n$111001 \\rightarrow 000111(+7)$\n\n$\\therefore$ Numbers given in question in 2 's complement correspond to -7",
+        "images": []
       }
     },
     "pp:ec:2004:q54": {
@@ -2380,10 +2409,7 @@
           "interfacing-and-peripheral-devices"
         ]
       },
-      "detailed_solution": {
-        "concept": "Microprocessors - Interfacing and Peripheral Devices",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Microprocessors** (specifically *Interfacing and Peripheral Devices*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Interfacing and Peripheral Devices**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Mode 2 for (i) and Mode 1 for (ii)*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Mode 2 for (i) and Mode 1 for (ii))."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q55": {
       "question_uid": "pp:ec:2004:q55",
@@ -2426,7 +2452,8 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Instructions of 8085 Microprocessor",
-        "markdown": "Memory cycles\n\n$LDA 3000 H \\rightarrow \\text{ Fetch, } \\frac{\\text { Re ad, Read, }}{\\text { address }} \\frac{\\text { Read }}{\\text { data }}$\n\n$\\mathrm{LXID}, \\mathrm{FOF} 1 \\mathrm{H} \\rightarrow \\text{Fetch, }\\frac{\\text { Read, Read }}{\\text { data }}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Memory cycles\n\n$LDA 3000 H \\rightarrow \\text{ Fetch, } \\frac{\\text { Re ad, Read, }}{\\text { address }} \\frac{\\text { Read }}{\\text { data }}$\n\n$\\mathrm{LXID}, \\mathrm{FOF} 1 \\mathrm{H} \\rightarrow \\text{Fetch, }\\frac{\\text { Read, Read }}{\\text { data }}$",
+        "images": []
       }
     },
     "pp:ec:2004:q56": {
@@ -2470,7 +2497,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "At the end of 6 th pulse all states should be cleared.\n\n$C B A=110 \\quad \\bar{C} \\bar{B} X=00 X$\n\nOutput of desired gate should be zero as clear is\n\ngiven active low.\n\nSo given gate should be OR as OR gate output is\n\nzero if both inputs are 0.\n\nTherefore, the correct answer is **C**."
+        "markdown": "At the end of 6 th pulse all states should be cleared.\n\n$C B A=110 \\quad \\bar{C} \\bar{B} X=00 X$\n\nOutput of desired gate should be zero as clear is\n\ngiven active low.\n\nSo given gate should be OR as OR gate output is\n\nzero if both inputs are 0.",
+        "images": []
       }
     },
     "pp:ec:2004:q57": {
@@ -2514,7 +2542,8 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Instructions of 8085 Microprocessor",
-        "markdown": "$\\mathrm{LXIH}, 9258 \\mathrm{H} \\Rightarrow \\mathrm{HL} \\leftarrow 9258 \\mathrm{H}$\n\nMOV A, M $\\Rightarrow A \\leftarrow$ contents of add. 9258 H\n\n$\\mathrm{CMA} \\Rightarrow$ Complement Accumulator\n\nMOV MA $\\Rightarrow$ Complement of $\\mathrm{A}$ is stored in\n\nMemory (9258H)\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\mathrm{LXIH}, 9258 \\mathrm{H} \\Rightarrow \\mathrm{HL} \\leftarrow 9258 \\mathrm{H}$\n\nMOV A, M $\\Rightarrow A \\leftarrow$ contents of add. 9258 H\n\n$\\mathrm{CMA} \\Rightarrow$ Complement Accumulator\n\nMOV MA $\\Rightarrow$ Complement of $\\mathrm{A}$ is stored in\n\nMemory (9258H)",
+        "images": []
       }
     },
     "pp:ec:2004:q58": {
@@ -2558,7 +2587,11 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
-        "markdown": "$$\\begin{array}{lll} x & y & f \\\\ 0 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 0 \\\\ 1 & 1 & 1 \\end{array}$$\n\n<img src=\"/question-images/ec/2004/ec-2004-09735bd9ef.webp\" />\n\nSince complements are not available\n\n<img src=\"/question-images/ec/2004/ec-2004-a12379afcb.webp\" />\n\n$\\therefore$ 2 units\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{array}{lll} x & y & f \\\\ 0 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 0 \\\\ 1 & 1 & 1 \\end{array}$$\n\n<img src=\"/question-images/ec/2004/ec-2004-09735bd9ef.webp\" />\n\nSince complements are not available\n\n<img src=\"/question-images/ec/2004/ec-2004-a12379afcb.webp\" />\n\n$\\therefore$ 2 units",
+        "images": [
+          "/question-images/ec/2004/ec-2004-09735bd9ef.webp",
+          "/question-images/ec/2004/ec-2004-a12379afcb.webp"
+        ]
       }
     },
     "pp:ec:2004:q59": {
@@ -2602,7 +2635,10 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Instructions of 8085 Microprocessor",
-        "markdown": "ADD B, OCR C, JNZ LOOP\n\n<img src=\"/question-images/ec/2004/ec-2004-de4654c55d.webp\" />\n\nTherefore, the correct answer is **D**."
+        "markdown": "ADD B, OCR C, JNZ LOOP\n\n<img src=\"/question-images/ec/2004/ec-2004-de4654c55d.webp\" />",
+        "images": [
+          "/question-images/ec/2004/ec-2004-de4654c55d.webp"
+        ]
       }
     },
     "pp:ec:2004:q60": {
@@ -2646,7 +2682,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "$$\\begin{array}{l} f_{s}=1.5 \\mathrm{kHz} \\\\ f_{m}=1 \\mathrm{kHz} \\end{array}$$\n\nAvailable frequency components are $n f_{s} \\pm f_{m^{\\prime}}$\n\nSo. $1 \\mathrm{kHz}, 2.5 \\mathrm{kHz}, 0.5 \\mathrm{kHz} \\ldots \\ldots$\n\nLPF has $f_{c}=0.8 \\mathrm{k}$\n\nonly 0.5 k will appear at output.\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{array}{l} f_{s}=1.5 \\mathrm{kHz} \\\\ f_{m}=1 \\mathrm{kHz} \\end{array}$$\n\nAvailable frequency components are $n f_{s} \\pm f_{m^{\\prime}}$\n\nSo. $1 \\mathrm{kHz}, 2.5 \\mathrm{kHz}, 0.5 \\mathrm{kHz} \\ldots \\ldots$\n\nLPF has $f_{c}=0.8 \\mathrm{k}$\n\nonly 0.5 k will appear at output.",
+        "images": []
       }
     },
     "pp:ec:2004:q61": {
@@ -2690,7 +2727,11 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "$$\\begin{aligned} T_{0}&=0.1 \\times 10^{-3}=10^{-4} \\\\ f_{0}&=\\frac{1}{T_{0}}=10^{4}=10 \\mathrm{kHz} \\\\ \\cos ^{2}\\left(4 \\pi \\times 10^{3} t\\right) &\\text { has frequency }=4 \\mathrm{kHz} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2004/ec-2004-3592ac3c9c.webp\" />\n\nSo only at '0', we get output after convolution.\n\n(Only odd harmonics are present.\n\n<img src=\"/question-images/ec/2004/ec-2004-56233a573d.webp\" />\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} T_{0}&=0.1 \\times 10^{-3}=10^{-4} \\\\ f_{0}&=\\frac{1}{T_{0}}=10^{4}=10 \\mathrm{kHz} \\\\ \\cos ^{2}\\left(4 \\pi \\times 10^{3} t\\right) &\\text { has frequency }=4 \\mathrm{kHz} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2004/ec-2004-3592ac3c9c.webp\" />\n\nSo only at '0', we get output after convolution.\n\n(Only odd harmonics are present.\n\n<img src=\"/question-images/ec/2004/ec-2004-56233a573d.webp\" />",
+        "images": [
+          "/question-images/ec/2004/ec-2004-3592ac3c9c.webp",
+          "/question-images/ec/2004/ec-2004-56233a573d.webp"
+        ]
       }
     },
     "pp:ec:2004:q62": {
@@ -2734,7 +2775,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
-        "markdown": "$$\\begin{aligned} x(n) &=[-4-j 5,1+2 j, 4] \\\\ x^{*}(-n) &=[4,1-2 j,-4+j 5] \\\\ x_{\\mathrm{CAS}}(n) &=\\frac{x(n)-x^{*}(-n)}{2} \\\\ &=[-4-j2.5 , \\underset{\\uparrow}{j2} , 4-j2.5]\\ \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} x(n) &=[-4-j 5,1+2 j, 4] \\\\ x^{*}(-n) &=[4,1-2 j,-4+j 5] \\\\ x_{\\mathrm{CAS}}(n) &=\\frac{x(n)-x^{*}(-n)}{2} \\\\ &=[-4-j2.5 , \\underset{\\uparrow}{j2} , 4-j2.5]\\ \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q63": {
@@ -2778,7 +2820,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$2 y[n]=\\alpha y[n-2]-2 x[n]+\\beta x[n-1]$\n\nTaking z-transform\n\n$$\\begin{array}{c} 2 Y(z)=\\alpha Y(z) z^{2}-2 X(z)+\\beta X(z) z^{-1} \\\\ Y z)\\left[2-\\alpha z^{2}\\right]=X(z)\\left[\\beta z^{-1}-2\\right] \\\\ \\frac{Y(z)}{X(z)}=\\left(\\begin{array}{c} \\beta z^{-1}-2 \\\\ 2-\\alpha z^{-2} \\end{array}\\right) \\end{array}$$\n\nFor system to be stable, $\\beta$ can be of any value.\n\n$$\\begin{aligned} 2-\\alpha z^{-2} &=0 \\\\ 2 z^{2}-\\alpha &=0 \\\\ z &=\\sqrt{\\frac{\\alpha}{2}} \\lt 1 \\\\ |\\alpha| & \\lt 2 \\end{aligned}$$\n\nFor system to be stable all poles should be inside unity circle.\n\nTherefore, the correct answer is **C**."
+        "markdown": "$2 y[n]=\\alpha y[n-2]-2 x[n]+\\beta x[n-1]$\n\nTaking z-transform\n\n$$\\begin{array}{c} 2 Y(z)=\\alpha Y(z) z^{2}-2 X(z)+\\beta X(z) z^{-1} \\\\ Y z)\\left[2-\\alpha z^{2}\\right]=X(z)\\left[\\beta z^{-1}-2\\right] \\\\ \\frac{Y(z)}{X(z)}=\\left(\\begin{array}{c} \\beta z^{-1}-2 \\\\ 2-\\alpha z^{-2} \\end{array}\\right) \\end{array}$$\n\nFor system to be stable, $\\beta$ can be of any value.\n\n$$\\begin{aligned} 2-\\alpha z^{-2} &=0 \\\\ 2 z^{2}-\\alpha &=0 \\\\ z &=\\sqrt{\\frac{\\alpha}{2}} \\lt 1 \\\\ |\\alpha| & \\lt 2 \\end{aligned}$$\n\nFor system to be stable all poles should be inside unity circle.",
+        "images": []
       }
     },
     "pp:ec:2004:q64": {
@@ -2822,7 +2865,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$$\\begin{aligned} H(s) &=\\frac{1}{s+2} \\\\ r(t) &=10 u(t) \\\\ R(s) &=\\frac{10}{s} \\\\ C(s) &=H(s) \\cdot R(s)=\\frac{1}{s+2} \\cdot \\frac{10}{s} \\\\ \\Rightarrow \\quad \\frac{10}{s(s+2)} &=\\frac{A}{s}+\\frac{B}{s+2} \\\\ 10 &=A(s+2)+B s \\\\ s &=0,10=2 A \\\\ \\Rightarrow \\quad A &=5 \\\\ s &=-2,10=-2 B \\\\ \\Rightarrow \\quad B &=-5 \\\\ \\therefore \\quad C(s) &=\\frac{5}{s}-\\frac{5}{s+2} \\\\ c(t) &=5\\left[1-e^{2 t}\\right] u(t) \\end{aligned}$$\n\nSteady state value when t=0 is 5.99% of steady\n\nstate value reaches at\n\n$$\\begin{aligned} & 5\\left[1-e^{2 t}\\right]=0.99 \\times 5 \\\\ \\Rightarrow \\quad & 1-e^{-2 t}=0.99 \\\\ & e^{2 t}=0.1 \\\\ \\Rightarrow \\quad &-2 t=\\ln 0.1 \\\\ \\Rightarrow \\quad & t=2.3 \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} H(s) &=\\frac{1}{s+2} \\\\ r(t) &=10 u(t) \\\\ R(s) &=\\frac{10}{s} \\\\ C(s) &=H(s) \\cdot R(s)=\\frac{1}{s+2} \\cdot \\frac{10}{s} \\\\ \\Rightarrow \\quad \\frac{10}{s(s+2)} &=\\frac{A}{s}+\\frac{B}{s+2} \\\\ 10 &=A(s+2)+B s \\\\ s &=0,10=2 A \\\\ \\Rightarrow \\quad A &=5 \\\\ s &=-2,10=-2 B \\\\ \\Rightarrow \\quad B &=-5 \\\\ \\therefore \\quad C(s) &=\\frac{5}{s}-\\frac{5}{s+2} \\\\ c(t) &=5\\left[1-e^{2 t}\\right] u(t) \\end{aligned}$$\n\nSteady state value when t=0 is 5.99% of steady\n\nstate value reaches at\n\n$$\\begin{aligned} & 5\\left[1-e^{2 t}\\right]=0.99 \\times 5 \\\\ \\Rightarrow \\quad & 1-e^{-2 t}=0.99 \\\\ & e^{2 t}=0.1 \\\\ \\Rightarrow \\quad &-2 t=\\ln 0.1 \\\\ \\Rightarrow \\quad & t=2.3 \\mathrm{sec} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q65": {
@@ -2866,7 +2910,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "$$\\begin{aligned} h(n)&= 4 \\sqrt{2} \\delta(n+2)-2 \\sqrt{2} \\delta(n+1) \\\\ &-2 \\sqrt{2} \\delta(n-1)+4 \\sqrt{2} \\delta(n-2) \\\\ x(n)&=e^{j \\pi n / 4} \\\\ y(n)&= x(n)^{*} h(n) \\\\ &=4 \\sqrt{2} \\delta(n+2)^{*} e^{j n \\pi / 4}+4 \\sqrt{2} \\delta(n-2)^{*} e^{i \\pi / 4} \\\\ &-2 \\sqrt{2}\\left[\\delta(n+1)^{*} e^{j m / 4}+\\delta(n-1) e^{j m / 4}\\right] \\\\ &\\quad x(n)^{\\star} \\delta(n-a) \\rightarrow x(n-a) \\\\ &y(n)=4 \\sqrt{2}\\left[e^{j \\pi / 4(n+2)}+e^{j \\pi / 4(n-2)}\\right] \\\\ &\\quad -2 \\sqrt{2}\\left[e^{j \\pi / 4(n+1)}+e^{j \\pi / 4(n-0)}\\right] \\\\ &=e^{j n \\pi / 4}\\left[4 \\sqrt{2}\\left(e^{j \\pi / 2}+e^{-j \\pi / 2}\\right)\\right] \\\\ &\\quad -2 \\sqrt{2}\\left(e^{i \\pi / 4}+e^{-j \\pi / 4}\\right) \\\\ &=e^{i n / 4}[0-2 \\sqrt{2} \\times 2 \\cos \\pi / 4] \\\\ y(n)&=-4 e^{i n \\pi / 4} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} h(n)&= 4 \\sqrt{2} \\delta(n+2)-2 \\sqrt{2} \\delta(n+1) \\\\ &-2 \\sqrt{2} \\delta(n-1)+4 \\sqrt{2} \\delta(n-2) \\\\ x(n)&=e^{j \\pi n / 4} \\\\ y(n)&= x(n)^{*} h(n) \\\\ &=4 \\sqrt{2} \\delta(n+2)^{*} e^{j n \\pi / 4}+4 \\sqrt{2} \\delta(n-2)^{*} e^{i \\pi / 4} \\\\ &-2 \\sqrt{2}\\left[\\delta(n+1)^{*} e^{j m / 4}+\\delta(n-1) e^{j m / 4}\\right] \\\\ &\\quad x(n)^{\\star} \\delta(n-a) \\rightarrow x(n-a) \\\\ &y(n)=4 \\sqrt{2}\\left[e^{j \\pi / 4(n+2)}+e^{j \\pi / 4(n-2)}\\right] \\\\ &\\quad -2 \\sqrt{2}\\left[e^{j \\pi / 4(n+1)}+e^{j \\pi / 4(n-0)}\\right] \\\\ &=e^{j n \\pi / 4}\\left[4 \\sqrt{2}\\left(e^{j \\pi / 2}+e^{-j \\pi / 2}\\right)\\right] \\\\ &\\quad -2 \\sqrt{2}\\left(e^{i \\pi / 4}+e^{-j \\pi / 4}\\right) \\\\ &=e^{i n / 4}[0-2 \\sqrt{2} \\times 2 \\cos \\pi / 4] \\\\ y(n)&=-4 e^{i n \\pi / 4} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q66": {
@@ -2910,7 +2955,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "$$\\begin{aligned} y(t) &=-x[2(t+1)] \\\\ x\\left(t-t_{0}\\right) & \\leftrightarrow x(f) e^{-/ 2 \\pi t t_{0}} \\\\ t_{0} &=-1 \\\\ x(a t) &=\\frac{1}{|a|} X\\left(\\frac{t}{a}\\right)\\\\ a &=-2 \\\\ \\therefore \\quad Y(f) &=-\\frac{1}{2} X\\left(\\frac{f}{2}\\right) \\mathrm{e}^{j 2 \\pi f} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} y(t) &=-x[2(t+1)] \\\\ x\\left(t-t_{0}\\right) & \\leftrightarrow x(f) e^{-/ 2 \\pi t t_{0}} \\\\ t_{0} &=-1 \\\\ x(a t) &=\\frac{1}{|a|} X\\left(\\frac{t}{a}\\right)\\\\ a &=-2 \\\\ \\therefore \\quad Y(f) &=-\\frac{1}{2} X\\left(\\frac{f}{2}\\right) \\mathrm{e}^{j 2 \\pi f} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q67": {
@@ -2954,7 +3000,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "Pole at 0.01 and 1 Hz gives $-180^{\\circ}$ phase.\n\nZero at 5 Hz gives $+90^{\\circ}$ phase\n\n$\\therefore \\quad$at $20Hz-90^{\\circ}$ phase shift is provided.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Pole at 0.01 and 1 Hz gives $-180^{\\circ}$ phase.\n\nZero at 5 Hz gives $+90^{\\circ}$ phase\n\n$\\therefore \\quad$at $20Hz-90^{\\circ}$ phase shift is provided.",
+        "images": []
       }
     },
     "pp:ec:2004:q68": {
@@ -2998,7 +3045,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "$$\\begin{array}{l} P_{1}=a b c d, \\quad \\Delta_{1}=1 \\\\ L_{1}=b e, L_{2}=c f, L_{3}=d g \\\\ \\text { Non-touching loops are } L_{1} \\& L_{3}=b e d g \\\\ \\therefore \\quad \\frac{X_{5}}{X_{1}}=\\frac{a b c d}{1-(b e+c f+d g)+b e d g} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{array}{l} P_{1}=a b c d, \\quad \\Delta_{1}=1 \\\\ L_{1}=b e, L_{2}=c f, L_{3}=d g \\\\ \\text { Non-touching loops are } L_{1} \\& L_{3}=b e d g \\\\ \\therefore \\quad \\frac{X_{5}}{X_{1}}=\\frac{a b c d}{1-(b e+c f+d g)+b e d g} \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q69": {
@@ -3040,10 +3088,7 @@
           "linear-algebra"
         ]
       },
-      "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Linear Algebra*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Linear Algebra**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$$\\frac{1}{3}\\begin{bmatrix} sin(-4t)+2sin(-t) &-2sin(-4t)+2sin(-t) \\\\ -sin(-4t)+sin(-t) & 2sin(-4t)+sin(-t) \\end{bmatrix}$$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($$\\frac{1}{3}\\begin{bmatrix} sin(-4t)+2sin(-t) &-2sin(-4t)+2sin(-t) \\\\ -sin(-4t)+sin(-t) & 2sin(-4t)+sin(-t) \\end{bmatrix}$$)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q70": {
       "question_uid": "pp:ec:2004:q70",
@@ -3086,7 +3131,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
-        "markdown": "$$\\begin{array}{l} G(s)=\\frac{K}{s\\left(s^{2}+s+2\\right)(s+3)} \\\\ H(s)=1\\\\ 1+G(s) H(s)=1+\\frac{K}{s\\left(s^{3}+3 s^{2}+s^{2}+3 s+2 s+6\\right)} \\\\ =\\frac{s^{4}+4 s^{3}+5 s^{2}+6 s+K}{s\\left(s^{3}+4 s^{2}+5 s+6\\right)} \\\\ 1+G(s) H(s)=0 \\end{array}$$\n\n$$\\begin{array}{l|ll}s^{4} & 1 & 5\\;K \\\\ s^{3} & 4 & 6 \\\\ s^{2} & \\frac{7}{2} & k \\\\ s & \\frac{\\frac{7}{2} \\times 6-4 K}{\\frac{7}{2}} & 0 \\\\ s^{0} & k & \\frac{7}{2}\\end{array}$$\n\nFor system to be stable, $K \\gt 0$\n\n$(21-4 K) \\cdot \\frac{2}{7}\\gt 0$\n\n$\\frac{21}{4} \\gt K \\Rightarrow K\\lt \\frac{21}{4}$\n\n$\\therefore \\quad \\frac{21}{4} \\gt K \\gt 0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{array}{l} G(s)=\\frac{K}{s\\left(s^{2}+s+2\\right)(s+3)} \\\\ H(s)=1\\\\ 1+G(s) H(s)=1+\\frac{K}{s\\left(s^{3}+3 s^{2}+s^{2}+3 s+2 s+6\\right)} \\\\ =\\frac{s^{4}+4 s^{3}+5 s^{2}+6 s+K}{s\\left(s^{3}+4 s^{2}+5 s+6\\right)} \\\\ 1+G(s) H(s)=0 \\end{array}$$\n\n$$\\begin{array}{l|ll}s^{4} & 1 & 5\\;K \\\\ s^{3} & 4 & 6 \\\\ s^{2} & \\frac{7}{2} & k \\\\ s & \\frac{\\frac{7}{2} \\times 6-4 K}{\\frac{7}{2}} & 0 \\\\ s^{0} & k & \\frac{7}{2}\\end{array}$$\n\nFor system to be stable, $K \\gt 0$\n\n$(21-4 K) \\cdot \\frac{2}{7}\\gt 0$\n\n$\\frac{21}{4} \\gt K \\Rightarrow K\\lt \\frac{21}{4}$\n\n$\\therefore \\quad \\frac{21}{4} \\gt K \\gt 0$",
+        "images": []
       }
     },
     "pp:ec:2004:q71": {
@@ -3130,7 +3176,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
-        "markdown": "$P(s)=s^{5}+s^{4}+2 s^{3}+2 s^{2}+3 s+15$\n\n$$\\begin{array}{c|ccc} s^{5}& 1 & 2 & 3 \\\\ s^{4} & 1 & 2 & 15 \\\\ s^{3} & 0(\\epsilon) & -12 & 0 \\\\ s^{2} & \\frac{2 \\epsilon+12}{\\epsilon} & 15 & 0 \\\\ s&\\frac{\\frac{\\frac{-12(2 \\epsilon+12)}{\\epsilon}}{\\epsilon }-15 \\epsilon }{\\frac{\\epsilon}{\\left(\\frac{2 \\epsilon+12}{\\epsilon}\\right)}}&& \\end{array}$$\n\n$\\frac{2 \\epsilon+12}{\\epsilon}=t$\n\nLet $\\in$ be a small positive no.\n\n$\\frac{-12 t-15 \\epsilon}{t}$\n\n$s \\Rightarrow-12-\\frac{15 \\epsilon}{t}$\n\n$s ^{0}\\quad 15$\n\n$\\therefore$ Two sign change from $s^{2}$ to s and s to $s^{0}$\n\n$\\therefore$ 2 roots on RHS of s plane.\n\nTherefore, the correct answer is **B**."
+        "markdown": "$P(s)=s^{5}+s^{4}+2 s^{3}+2 s^{2}+3 s+15$\n\n$$\\begin{array}{c|ccc} s^{5}& 1 & 2 & 3 \\\\ s^{4} & 1 & 2 & 15 \\\\ s^{3} & 0(\\epsilon) & -12 & 0 \\\\ s^{2} & \\frac{2 \\epsilon+12}{\\epsilon} & 15 & 0 \\\\ s&\\frac{\\frac{\\frac{-12(2 \\epsilon+12)}{\\epsilon}}{\\epsilon }-15 \\epsilon }{\\frac{\\epsilon}{\\left(\\frac{2 \\epsilon+12}{\\epsilon}\\right)}}&& \\end{array}$$\n\n$\\frac{2 \\epsilon+12}{\\epsilon}=t$\n\nLet $\\in$ be a small positive no.\n\n$\\frac{-12 t-15 \\epsilon}{t}$\n\n$s \\Rightarrow-12-\\frac{15 \\epsilon}{t}$\n\n$s ^{0}\\quad 15$\n\n$\\therefore$ Two sign change from $s^{2}$ to s and s to $s^{0}$\n\n$\\therefore$ 2 roots on RHS of s plane.",
+        "images": []
       }
     },
     "pp:ec:2004:q72": {
@@ -3174,7 +3221,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
-        "markdown": "$$\\begin{aligned} \\left[\\begin{array}{c}\\dot{x}_{1} \\\\\\dot{x}_{2}\\end{array}\\right]&=\\left[\\begin{array}{cc}-3 & -1 \\\\2 & 0\\end{array}\\right]\\left[\\begin{array}{l}x_{1} \\\\x_{2}\\end{array}\\right]+\\left[\\begin{array}{l}1 \\\\0\\end{array}\\right] u \\\\ y&=\\left[\\begin{array}{ll}1 & 0\\end{array}\\right]\\left[\\begin{array}{l}x_{1} \\\\x_{2}\\end{array}\\right]+\\left[\\begin{array}{l}1 \\\\0\\end{array}\\right] u \\\\ Q_{C}&=\\left[\\begin{array}{ll}B & A B\\end{array}\\right]\\\\ \\end{aligned}$$\n\n$$\\begin{aligned} A B&=\\left[\\begin{array}{c}-3 \\\\ 2\\end{array}\\right] \\\\ \\therefore \\quad a_{c}&=\\left[\\begin{array}{cc}1 & -3 \\\\ 0 & 2\\end{array}\\right] \\neq 0 \\\\ \\therefore \\text{Controllable } \\\\ Q_{0}&=\\left[C^{\\top} \\quad A^{\\top} C^{\\prime}\\right] \\\\ C^{T}&=\\left[\\begin{array}{l}1 \\\\ 0\\end{array}\\right], \\quad A^{T}&=\\left[\\begin{array}{ll}-3 & 2 \\\\ -1 & 0\\end{array}\\right] \\\\ A^{\\top} C^{T}&=\\left[\\begin{array}{l}-3 \\\\ -1\\end{array}\\right] \\\\ \\therefore \\quad Q_{0}&=\\left[\\begin{array}{ll}1 & -3 \\\\ 0 & -1\\end{array}\\right] \\neq 0 \\\\ \\therefore \\text{ Observable} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\left[\\begin{array}{c}\\dot{x}_{1} \\\\\\dot{x}_{2}\\end{array}\\right]&=\\left[\\begin{array}{cc}-3 & -1 \\\\2 & 0\\end{array}\\right]\\left[\\begin{array}{l}x_{1} \\\\x_{2}\\end{array}\\right]+\\left[\\begin{array}{l}1 \\\\0\\end{array}\\right] u \\\\ y&=\\left[\\begin{array}{ll}1 & 0\\end{array}\\right]\\left[\\begin{array}{l}x_{1} \\\\x_{2}\\end{array}\\right]+\\left[\\begin{array}{l}1 \\\\0\\end{array}\\right] u \\\\ Q_{C}&=\\left[\\begin{array}{ll}B & A B\\end{array}\\right]\\\\ \\end{aligned}$$\n\n$$\\begin{aligned} A B&=\\left[\\begin{array}{c}-3 \\\\ 2\\end{array}\\right] \\\\ \\therefore \\quad a_{c}&=\\left[\\begin{array}{cc}1 & -3 \\\\ 0 & 2\\end{array}\\right] \\neq 0 \\\\ \\therefore \\text{Controllable } \\\\ Q_{0}&=\\left[C^{\\top} \\quad A^{\\top} C^{\\prime}\\right] \\\\ C^{T}&=\\left[\\begin{array}{l}1 \\\\ 0\\end{array}\\right], \\quad A^{T}&=\\left[\\begin{array}{ll}-3 & 2 \\\\ -1 & 0\\end{array}\\right] \\\\ A^{\\top} C^{T}&=\\left[\\begin{array}{l}-3 \\\\ -1\\end{array}\\right] \\\\ \\therefore \\quad Q_{0}&=\\left[\\begin{array}{ll}1 & -3 \\\\ 0 & -1\\end{array}\\right] \\neq 0 \\\\ \\therefore \\text{ Observable} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q73": {
@@ -3218,7 +3266,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
-        "markdown": "$$\\begin{aligned} [s I-A] &=\\left[\\begin{array}{ll}s & 0 \\\\0 & s\\end{array}\\right]-\\left[\\begin{array}{ll}1 & 0 \\\\0 & 1\\end{array}\\right] \\\\ s I-A] & =\\left[\\begin{array}{cc}s-1 & 0 \\\\0 & s-1\\end{array}\\right] \\\\ e^{A t} & =[s I-A]^{-1}\\\\ &=\\left[\\begin{array}{cc}-\\frac{1}{s-1} & 0 \\\\ 0 & \\frac{1}{s-1}\\end{array}\\right]=\\left[\\begin{array}{ll}e^{t} & 0 \\\\ 0 & e^{t}\\end{array}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} [s I-A] &=\\left[\\begin{array}{ll}s & 0 \\\\0 & s\\end{array}\\right]-\\left[\\begin{array}{ll}1 & 0 \\\\0 & 1\\end{array}\\right] \\\\ s I-A] & =\\left[\\begin{array}{cc}s-1 & 0 \\\\0 & s-1\\end{array}\\right] \\\\ e^{A t} & =[s I-A]^{-1}\\\\ &=\\left[\\begin{array}{cc}-\\frac{1}{s-1} & 0 \\\\ 0 & \\frac{1}{s-1}\\end{array}\\right]=\\left[\\begin{array}{ll}e^{t} & 0 \\\\ 0 & e^{t}\\end{array}\\right] \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q74": {
@@ -3262,7 +3311,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "$h (t) = x(4-t)$\n\n<img src=\"/question-images/ec/2004/ec-2004-bc4d7b899a.webp\" />\n\nSlope in region t = 3 to 4 = -1\n\nTherefore, the correct answer is **B**."
+        "markdown": "$h (t) = x(4-t)$\n\n<img src=\"/question-images/ec/2004/ec-2004-bc4d7b899a.webp\" />\n\nSlope in region t = 3 to 4 = -1",
+        "images": [
+          "/question-images/ec/2004/ec-2004-bc4d7b899a.webp"
+        ]
       }
     },
     "pp:ec:2004:q75": {
@@ -3306,7 +3358,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "$$\\begin{aligned} \\mathrm{SNR} &=\\frac{P_{s}}{N_{0} B} \\\\ &=\\frac{10^{-3}}{10^{-20} \\times 100 \\times 10^{6}}=10^{9} \\\\ (\\mathrm{SNR})_{\\mathrm{dB}} &=10 \\log 10^{9}=90 \\mathrm{dB} \\\\ \\text { Cable loss } &=40 \\mathrm{dB}\\\\ \\therefore \\quad \\text{ SNR at }R_{x}&=(90-40) d B=50 \\mathrm{dB} \\end{aligned}\\\\$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\mathrm{SNR} &=\\frac{P_{s}}{N_{0} B} \\\\ &=\\frac{10^{-3}}{10^{-20} \\times 100 \\times 10^{6}}=10^{9} \\\\ (\\mathrm{SNR})_{\\mathrm{dB}} &=10 \\log 10^{9}=90 \\mathrm{dB} \\\\ \\text { Cable loss } &=40 \\mathrm{dB}\\\\ \\therefore \\quad \\text{ SNR at }R_{x}&=(90-40) d B=50 \\mathrm{dB} \\end{aligned}\\\\$$",
+        "images": []
       }
     },
     "pp:ec:2004:q76": {
@@ -3350,7 +3403,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-eb0647b417.webp\" />\n\n$$\\begin{array}{l} y(t)=\\frac{1}{2} \\cos \\left\\{2 \\pi \\times 101 \\times 10^{6}\\right\\} t+\\sin 2 \\pi \\times 100+10^{6} t \\\\ =\\frac{1}{2}\\left[\\cos \\left(2 \\pi 100 \\times 10^{6}\\right) t \\cos 10^{6} t \\cdot 2 \\pi-\\sin \\left(2 \\pi \\times 100 \\times 10^{6}\\right)\\right. \\\\ t \\sin 2 \\pi 10^{6} t+\\sin 2 \\pi \\times 100 \\times 10^{6} t \\\\ =\\frac{1}{2} \\cos 2 \\pi \\times 100 \\times 10^{6} t\\left[\\cos 2 \\pi \\times 10^{6} t\\right] \\\\ +\\frac{1}{2} \\sin 2 \\pi \\times 100 \\times 10^{6} t\\left[-\\sin 2 \\pi \\times 10^{6} t+2\\right] \\\\ =A \\cos 2 \\pi \\times 10^{6} t+B \\sin \\cos 2 \\pi \\times 10^{6} t \\\\ \\end{array}$$\n\nEnvelope\n\n$$\\begin{array}{l} =\\sqrt{A^{2}+B^{2}} \\\\ =\\sqrt{\\frac{1}{4} \\cos ^{2} 2 \\pi \\times 10^{6} t+\\frac{1}{4}\\left[\\sin 2 \\pi \\times 10^{6} t-2\\right]} \\end{array}$$\n\nEnvelope\n\n$=\\sqrt{\\frac{5}{4}-\\sin (2 \\pi \\times 10^{6} t)}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-eb0647b417.webp\" />\n\n$$\\begin{array}{l} y(t)=\\frac{1}{2} \\cos \\left\\{2 \\pi \\times 101 \\times 10^{6}\\right\\} t+\\sin 2 \\pi \\times 100+10^{6} t \\\\ =\\frac{1}{2}\\left[\\cos \\left(2 \\pi 100 \\times 10^{6}\\right) t \\cos 10^{6} t \\cdot 2 \\pi-\\sin \\left(2 \\pi \\times 100 \\times 10^{6}\\right)\\right. \\\\ t \\sin 2 \\pi 10^{6} t+\\sin 2 \\pi \\times 100 \\times 10^{6} t \\\\ =\\frac{1}{2} \\cos 2 \\pi \\times 100 \\times 10^{6} t\\left[\\cos 2 \\pi \\times 10^{6} t\\right] \\\\ +\\frac{1}{2} \\sin 2 \\pi \\times 100 \\times 10^{6} t\\left[-\\sin 2 \\pi \\times 10^{6} t+2\\right] \\\\ =A \\cos 2 \\pi \\times 10^{6} t+B \\sin \\cos 2 \\pi \\times 10^{6} t \\\\ \\end{array}$$\n\nEnvelope\n\n$$\\begin{array}{l} =\\sqrt{A^{2}+B^{2}} \\\\ =\\sqrt{\\frac{1}{4} \\cos ^{2} 2 \\pi \\times 10^{6} t+\\frac{1}{4}\\left[\\sin 2 \\pi \\times 10^{6} t-2\\right]} \\end{array}$$\n\nEnvelope\n\n$=\\sqrt{\\frac{5}{4}-\\sin (2 \\pi \\times 10^{6} t)}$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-eb0647b417.webp"
+        ]
       }
     },
     "pp:ec:2004:q77": {
@@ -3394,7 +3450,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "continuous sinusoidal signal is a periodic Every singnal\n\n$$\\begin{array}{c}\n\ns(t)=A \\cos [2 \\pi \\times 10 K t]+A \\cos [2 \\pi \\times 10.1 K t] \\\\\n\nT_{1}=\\frac{1}{10 K}=100 \\mu s \\\\\n\nT_{2}=\\frac{1}{10.1 K}=99 \\mu \\mathrm{s} \\\\\n\n\\frac{T_{1}}{T_{2}}=\\text { Rational }\n\n\\end{array}$$\n\n$\\therefore s(t)$ will be periodic with period LCM  of\n\n$T_{1} \\& T_{2}=9900 \\mu \\mathrm{s} ; 10,000 \\mu \\mathrm{s}$\n\n$\\therefore$ Frequency =0.1 kHz\n\nResulting is a sinusoidal signal with frequency\n\n0.1 kHz. Frequency detector converts frequency\n\nvariations to equivalent of voltage variations.\n\nBecause signal has constant frequency of\n\n0.1 kHz, frequency detector output is constant.\n\nTherefore, the correct answer is **A**."
+        "markdown": "continuous sinusoidal signal is a periodic Every singnal\n\n$$\\begin{array}{c}\n\ns(t)=A \\cos [2 \\pi \\times 10 K t]+A \\cos [2 \\pi \\times 10.1 K t] \\\\\n\nT_{1}=\\frac{1}{10 K}=100 \\mu s \\\\\n\nT_{2}=\\frac{1}{10.1 K}=99 \\mu \\mathrm{s} \\\\\n\n\\frac{T_{1}}{T_{2}}=\\text { Rational }\n\n\\end{array}$$\n\n$\\therefore s(t)$ will be periodic with period LCM  of\n\n$T_{1} \\& T_{2}=9900 \\mu \\mathrm{s} ; 10,000 \\mu \\mathrm{s}$\n\n$\\therefore$ Frequency =0.1 kHz\n\nResulting is a sinusoidal signal with frequency\n\n0.1 kHz. Frequency detector converts frequency\n\nvariations to equivalent of voltage variations.\n\nBecause signal has constant frequency of\n\n0.1 kHz, frequency detector output is constant.",
+        "images": []
       }
     },
     "pp:ec:2004:q78": {
@@ -3438,7 +3495,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-0cd4ad8012.webp\" />\n\nShaded areas show the probability of error.\n\n$$\\begin{aligned} P_e(0)&=\\frac{\\text{error}}{\\text{total}}\\\\ &=\\frac{0.25-2}{0.25-(-0.25)}\\\\ P_e(1)&=\\frac{0.2-0}{1-0}=0.2 \\end{aligned}$$\n\nSince probability of occurrences of 0 and 1 are equal\n\n$Avg.=\\frac{P_e(0)+P_e(1)}{2}=0.15$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-0cd4ad8012.webp\" />\n\nShaded areas show the probability of error.\n\n$$\\begin{aligned} P_e(0)&=\\frac{\\text{error}}{\\text{total}}\\\\ &=\\frac{0.25-2}{0.25-(-0.25)}\\\\ P_e(1)&=\\frac{0.2-0}{1-0}=0.2 \\end{aligned}$$\n\nSince probability of occurrences of 0 and 1 are equal\n\n$Avg.=\\frac{P_e(0)+P_e(1)}{2}=0.15$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-0cd4ad8012.webp"
+        ]
       }
     },
     "pp:ec:2004:q79": {
@@ -3482,7 +3542,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-a317c14dc5.webp\" />\n\n$Q_{e}=\\mathrm{s.v.}-\\mathrm{q} \\cdot \\mathrm{v}=x-x_{q}$\n\nMean square value of quantization noise\n\n$$\\begin{array}{l} =E\\left[\\left(x-x_{q}\\right)^{2}\\right] \\\\ =\\int_{0}^{1}\\left(x-x_{q}\\right)^{2} f_{X}(x) d x \\\\ =\\int_{0}^{1}\\left(x-x_{q}\\right)^{2} \\cdot 1 d x \\\\ \\int_{0}^{0.3}(x-0)^{2} d x+\\int_{0.3}^{1}(x-0.7)^{2} d x \\\\ =0.039 \\end{array}$$\n\nRoot mean square value of the quantization\n\narise\n\n$=\\sqrt{0.039}=0.198$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ec/2004/ec-2004-a317c14dc5.webp\" />\n\n$Q_{e}=\\mathrm{s.v.}-\\mathrm{q} \\cdot \\mathrm{v}=x-x_{q}$\n\nMean square value of quantization noise\n\n$$\\begin{array}{l} =E\\left[\\left(x-x_{q}\\right)^{2}\\right] \\\\ =\\int_{0}^{1}\\left(x-x_{q}\\right)^{2} f_{X}(x) d x \\\\ =\\int_{0}^{1}\\left(x-x_{q}\\right)^{2} \\cdot 1 d x \\\\ \\int_{0}^{0.3}(x-0)^{2} d x+\\int_{0.3}^{1}(x-0.7)^{2} d x \\\\ =0.039 \\end{array}$$\n\nRoot mean square value of the quantization\n\narise\n\n$=\\sqrt{0.039}=0.198$",
+        "images": [
+          "/question-images/ec/2004/ec-2004-a317c14dc5.webp"
+        ]
       }
     },
     "pp:ec:2004:q80": {
@@ -3524,10 +3587,7 @@
           "sequential-circuits"
         ]
       },
-      "detailed_solution": {
-        "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Circuits** (specifically *Sequential Circuits*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Sequential Circuits**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *1 - S, 2 - P, 3 - U, 4 - Q*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (1 - S, 2 - P, 3 - U, 4 - Q)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q81": {
       "question_uid": "pp:ec:2004:q81",
@@ -3570,7 +3630,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "$$\\begin{array}{l} f_{s}=2(1200+600+600)=4.8 \\mathrm{K} \\\\ R_{b}=n f_{s}=12 \\times 4.8 \\mathrm{K}=57.6 \\mathrm{Kbps} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{array}{l} f_{s}=2(1200+600+600)=4.8 \\mathrm{K} \\\\ R_{b}=n f_{s}=12 \\times 4.8 \\mathrm{K}=57.6 \\mathrm{Kbps} \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q82": {
@@ -3614,7 +3675,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "Peaks of X(f) are at 1 k and -1 k initially\n\nOutput of balanced modulator $=f_{c} \\pm 1 \\mathrm{k}$ and\n\n$$\\begin{aligned} f_{c} \\pm-1 k & \\\\ f_{c} \\pm 1 k &=11 \\mathrm{k}, 9 \\mathrm{k} \\\\ f_{c} \\pm-1 \\mathrm{k} &=9 \\mathrm{k}, 11 \\mathrm{k} \\end{aligned}$$\n\nOutput of HPF with $f_{c}=10 \\mathrm{k}$ will be 11 k frequency\n\ncomponent\n\n$$\\begin{aligned} \\therefore \\quad Y(f) &=13 \\mathrm{k} \\pm 11 \\mathrm{k} \\\\ &=24 \\mathrm{k} \\text { and } 2 \\mathrm{k} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Peaks of X(f) are at 1 k and -1 k initially\n\nOutput of balanced modulator $=f_{c} \\pm 1 \\mathrm{k}$ and\n\n$$\\begin{aligned} f_{c} \\pm-1 k & \\\\ f_{c} \\pm 1 k &=11 \\mathrm{k}, 9 \\mathrm{k} \\\\ f_{c} \\pm-1 \\mathrm{k} &=9 \\mathrm{k}, 11 \\mathrm{k} \\end{aligned}$$\n\nOutput of HPF with $f_{c}=10 \\mathrm{k}$ will be 11 k frequency\n\ncomponent\n\n$$\\begin{aligned} \\therefore \\quad Y(f) &=13 \\mathrm{k} \\pm 11 \\mathrm{k} \\\\ &=24 \\mathrm{k} \\text { and } 2 \\mathrm{k} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q83": {
@@ -3658,7 +3720,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
-        "markdown": "Displacement current,\n\n$$\\begin{aligned} I_{d} &=A J_{d} \\\\ &=A \\frac{\\partial D}{\\partial t}=A \\in \\frac{\\partial E}{\\partial t} \\\\ \\left|I_{d}\\right| &=|A \\in \\omega E|=A \\omega \\in \\frac{V}{d} \\end{aligned}$$\n\nAfter putting values, we get,\n\n$I_{d}=10 \\mathrm{mA}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Displacement current,\n\n$$\\begin{aligned} I_{d} &=A J_{d} \\\\ &=A \\frac{\\partial D}{\\partial t}=A \\in \\frac{\\partial E}{\\partial t} \\\\ \\left|I_{d}\\right| &=|A \\in \\omega E|=A \\omega \\in \\frac{V}{d} \\end{aligned}$$\n\nAfter putting values, we get,\n\n$I_{d}=10 \\mathrm{mA}$",
+        "images": []
       }
     },
     "pp:ec:2004:q84": {
@@ -3702,7 +3765,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "$$\\begin{aligned} R_{b}&=10 \\mathrm{k} \\\\ \\therefore \\quad B_{1}&=2 R_{b}=20 \\mathrm{k} \\\\ B_{2}&=R_{b}=10 \\mathrm{k} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} R_{b}&=10 \\mathrm{k} \\\\ \\therefore \\quad B_{1}&=2 R_{b}=20 \\mathrm{k} \\\\ B_{2}&=R_{b}=10 \\mathrm{k} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q85": {
@@ -3746,7 +3810,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "The $\\lambda / 4$ line has $Z_{\\text {in }}^{\\prime}=0 as Z_{L}=\\infty$\n\nCurrent $I_{\\text {in }}$ into the line $=\\frac{V}{50}=0.2 \\mathrm{A}$\n\nUsing current equation on the line\n\n$I(x)=I_{\\text {in }}=I_{L} \\cos \\beta x+\\frac{j V_{L}}{Z_{0}} \\sin \\beta x$\n\nwith $x=\\lambda / 4, I_{L}=0  \\; as \\;   Z_{L}=\\infty$\n\nOpen circuit end\n\n$V_{L}=60 \\mathrm{V}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The $\\lambda / 4$ line has $Z_{\\text {in }}^{\\prime}=0 as Z_{L}=\\infty$\n\nCurrent $I_{\\text {in }}$ into the line $=\\frac{V}{50}=0.2 \\mathrm{A}$\n\nUsing current equation on the line\n\n$I(x)=I_{\\text {in }}=I_{L} \\cos \\beta x+\\frac{j V_{L}}{Z_{0}} \\sin \\beta x$\n\nwith $x=\\lambda / 4, I_{L}=0  \\; as \\;   Z_{L}=\\infty$\n\nOpen circuit end\n\n$V_{L}=60 \\mathrm{V}$",
+        "images": []
       }
     },
     "pp:ec:2004:q86": {
@@ -3788,10 +3853,7 @@
           "miscellaneous-topics"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electromagnetics - Miscellaneous Topics",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electromagnetics** (specifically *Miscellaneous Topics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Miscellaneous Topics**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Because crystal detector fails at microwave frequencies*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Because crystal detector fails at microwave frequencies)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2004:q87": {
       "question_uid": "pp:ec:2004:q87",
@@ -3834,7 +3896,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
-        "markdown": "$$\\begin{aligned} \\vec{P}_{\\mathrm{avg}}=& \\frac{1}{2} \\text{Re}\\left[\\vec{E} \\times \\vec{H}^{*}\\right] \\\\ =& \\frac{1}{2} \\text{Re}\\left[\\left(\\hat{a}_{x}+j \\hat{a}_{y}\\right) e^{j k z-j \\omega t}\\right.\\\\ &\\left.\\times\\frac{k}{ \\omega\\mu}\\left(\\hat{a}_{x}+j \\hat{a}_{y} \\right)e^{j k z-j \\omega t} \\right ]\\\\ \\vec{P}_{\\mathrm{avg}}=& \\frac{k}{2 \\mu \\omega}[0]=0 \\\\ \\left[\\begin{array}{cc}1 &j\\\\-j&1\\end{array}\\right]=&1+j^{2}=1-1=0 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\vec{P}_{\\mathrm{avg}}=& \\frac{1}{2} \\text{Re}\\left[\\vec{E} \\times \\vec{H}^{*}\\right] \\\\ =& \\frac{1}{2} \\text{Re}\\left[\\left(\\hat{a}_{x}+j \\hat{a}_{y}\\right) e^{j k z-j \\omega t}\\right.\\\\ &\\left.\\times\\frac{k}{ \\omega\\mu}\\left(\\hat{a}_{x}+j \\hat{a}_{y} \\right)e^{j k z-j \\omega t} \\right ]\\\\ \\vec{P}_{\\mathrm{avg}}=& \\frac{k}{2 \\mu \\omega}[0]=0 \\\\ \\left[\\begin{array}{cc}1 &j\\\\-j&1\\end{array}\\right]=&1+j^{2}=1-1=0 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q88": {
@@ -3878,7 +3941,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "Movement on constant resistance circle by an $\\angle 45^{\\circ}$\n\nin clockwise direction.\n\nR is same and reactance increases i.e. addition of\n\nan inductance in series with Z.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Movement on constant resistance circle by an $\\angle 45^{\\circ}$\n\nin clockwise direction.\n\nR is same and reactance increases i.e. addition of\n\nan inductance in series with Z.",
+        "images": []
       }
     },
     "pp:ec:2004:q89": {
@@ -3922,7 +3986,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "$$\\begin{aligned} \\text{SWR} &=\\frac{E_{\\max }}{E_{\\min }} \\\\ \\Rightarrow \\quad s &=\\frac{5 E_{\\min }}{E_{\\min }}=5 \\\\ & 5=\\frac{1+|\\Gamma|}{1-|\\Gamma|}\\;|\\Gamma|=\\frac{2}{3} \\\\ & \\eta_{2}=\\frac{120 \\pi}{\\sqrt{\\epsilon_{r}}} \\text { and } \\eta_{2}=120 \\pi \\\\ \\text { As } & \\eta_{2} \\lt \\eta_{1} \\\\ \\Rightarrow -\\frac{2}{3}&=\\frac{\\eta_{2}-120 \\pi}{\\eta+120 \\pi} \\\\ \\Rightarrow \\eta_{2}&=24 \\pi \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\text{SWR} &=\\frac{E_{\\max }}{E_{\\min }} \\\\ \\Rightarrow \\quad s &=\\frac{5 E_{\\min }}{E_{\\min }}=5 \\\\ & 5=\\frac{1+|\\Gamma|}{1-|\\Gamma|}\\;|\\Gamma|=\\frac{2}{3} \\\\ & \\eta_{2}=\\frac{120 \\pi}{\\sqrt{\\epsilon_{r}}} \\text { and } \\eta_{2}=120 \\pi \\\\ \\text { As } & \\eta_{2} \\lt \\eta_{1} \\\\ \\Rightarrow -\\frac{2}{3}&=\\frac{\\eta_{2}-120 \\pi}{\\eta+120 \\pi} \\\\ \\Rightarrow \\eta_{2}&=24 \\pi \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2004:q90": {
@@ -3966,7 +4031,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "$\\mathrm{SWR}=\\frac{1+\\Gamma}{1-\\Gamma}$\n\n$\\Rightarrow \\quad 2=\\frac{1+\\Gamma}{1-\\Gamma}$\n\nVoltage reflection coefficient\n\n$\\Rightarrow \\quad \\Gamma=\\frac{1}{3}$\n\nPower reflection coefficient\n\n$\\therefore \\quad \\frac{P_{\\text {ref }}}{P_{\\text {inc }}}=\\Gamma^{2}=\\frac{1}{9}$\n\n$\\Rightarrow 11.11 \\%$ of $P_{i}$ is reflected\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\mathrm{SWR}=\\frac{1+\\Gamma}{1-\\Gamma}$\n\n$\\Rightarrow \\quad 2=\\frac{1+\\Gamma}{1-\\Gamma}$\n\nVoltage reflection coefficient\n\n$\\Rightarrow \\quad \\Gamma=\\frac{1}{3}$\n\nPower reflection coefficient\n\n$\\therefore \\quad \\frac{P_{\\text {ref }}}{P_{\\text {inc }}}=\\Gamma^{2}=\\frac{1}{9}$\n\n$\\Rightarrow 11.11 \\%$ of $P_{i}$ is reflected",
+        "images": []
       }
     }
   }

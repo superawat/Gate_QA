@@ -46,8 +46,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "We are given an upper triangular matrix:\n\n$$A = \\begin{bmatrix}\n\n2 & 3 & 4 & 5 \\\\\n\n0 & 6 & 7 & 8 \\\\\n\n0 & 0 & \\alpha & \\beta \\\\\n\n0 & 0 & 0 & \\gamma\n\n\\end{bmatrix}$$\n\nThe rank of a matrix is the number of non-zero rows in its row echelon form. For an upper triangular matrix, each non-zero pivot (i.e., leading diagonal entry) contributes to the rank.\n\nLet's analyze each case:\n\n(i) $\\alpha = 0$, $\\beta = \\gamma \\ne 0$\n\nRow 3 becomes $[0\\ 0\\ 0\\ \\beta]$ and row 4 is $[0\\ 0\\ 0\\ \\gamma]$, but $\\beta = \\gamma \\ne 0$. Since row 3 still has a non-zero entry (in column 4), and so does row 4, we still have all 4 non-zero rows. Hence, rank = 4 $\\geq 3$. Valid\n\n(ii) $\\alpha = \\beta = \\gamma = 0$\n\nThen rows 3 and 4 become all zero. Only rows 1 and 2 remain non-zero. So, rank = 2 $< 3$. Not valid\n\n(iii) $\\beta = \\gamma = 0$, $\\alpha \\ne 0$\n\nRow 3 is $[0\\ 0\\ \\alpha\\ 0]$, which is non-zero, and row 4 is zero. So we have 3 non-zero rows. Rank = 3  Valid\n\n(iv) $\\alpha = \\beta = \\gamma \\ne 0$\n\nThen all rows are non-zero. Rank = 4 $\\geq 3$ Valid\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EC) - Linear Algebra",
+        "markdown": "We are given an upper triangular matrix:\n\n$$A = \\begin{bmatrix}\n\n2 & 3 & 4 & 5 \\\\\n\n0 & 6 & 7 & 8 \\\\\n\n0 & 0 & \\alpha & \\beta \\\\\n\n0 & 0 & 0 & \\gamma\n\n\\end{bmatrix}$$\n\nThe rank of a matrix is the number of non-zero rows in its row echelon form. For an upper triangular matrix, each non-zero pivot (i.e., leading diagonal entry) contributes to the rank.\n\nLet's analyze each case:\n\n(i) $\\alpha = 0$, $\\beta = \\gamma \\ne 0$\n\nRow 3 becomes $[0\\ 0\\ 0\\ \\beta]$ and row 4 is $[0\\ 0\\ 0\\ \\gamma]$, but $\\beta = \\gamma \\ne 0$. Since row 3 still has a non-zero entry (in column 4), and so does row 4, we still have all 4 non-zero rows. Hence, rank = 4 $\\geq 3$. Valid\n\n(ii) $\\alpha = \\beta = \\gamma = 0$\n\nThen rows 3 and 4 become all zero. Only rows 1 and 2 remain non-zero. So, rank = 2 $< 3$. Not valid\n\n(iii) $\\beta = \\gamma = 0$, $\\alpha \\ne 0$\n\nRow 3 is $[0\\ 0\\ \\alpha\\ 0]$, which is non-zero, and row 4 is zero. So we have 3 non-zero rows. Rank = 3  Valid\n\n(iv) $\\alpha = \\beta = \\gamma \\ne 0$\n\nThen all rows are non-zero. Rank = 4 $\\geq 3$ Valid",
+        "images": []
       }
     },
     "pp:ec:2025:q2": {
@@ -87,8 +88,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "(i) $\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$\n\nThis is a p-series with $p = \\frac{1}{2} < 1$.\n\nA p-series $\\sum \\frac{1}{n^p}$ converges only if $p > 1$.\n\nSo this series diverges.\n\n(ii) $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$\n\nWe use partial fractions:\n\n$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$\n\nSo it becomes a telescoping series:\n\n$\\sum_{n=1}^{\\infty} \\left( \\frac{1}{n} - \\frac{1}{n+1} \\right) = 1 + \\left( \\frac{1}{2} - \\frac{1}{2} \\right) + \\left( \\frac{1}{3} - \\frac{1}{3} \\right) + \\cdots$\n\nAll terms cancel except the first one, so the sum is finite.\n\nThis series converges.\n\n(iii) $\\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nThis is a standard exponential series (part of $e^x$ expansion).\n\nSince $n!$ grows faster than any exponential or polynomial, this series converges absolutely.\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (EC) - Complex Variables",
+        "markdown": "(i) $\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$\n\nThis is a p-series with $p = \\frac{1}{2} < 1$.\n\nA p-series $\\sum \\frac{1}{n^p}$ converges only if $p > 1$.\n\nSo this series diverges.\n\n(ii) $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$\n\nWe use partial fractions:\n\n$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$\n\nSo it becomes a telescoping series:\n\n$\\sum_{n=1}^{\\infty} \\left( \\frac{1}{n} - \\frac{1}{n+1} \\right) = 1 + \\left( \\frac{1}{2} - \\frac{1}{2} \\right) + \\left( \\frac{1}{3} - \\frac{1}{3} \\right) + \\cdots$\n\nAll terms cancel except the first one, so the sum is finite.\n\nThis series converges.\n\n(iii) $\\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nThis is a standard exponential series (part of $e^x$ expansion).\n\nSince $n!$ grows faster than any exponential or polynomial, this series converges absolutely.",
+        "images": []
       }
     },
     "pp:ec:2025:q3": {
@@ -128,8 +130,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Total balls = 2 red + 2 blue = 4 balls\n\nWe draw 2 balls without replacement. Total number of ways to choose 2 balls from 4:\n\n$\\binom{4}{2} = 6$\n\nNow, we count the favorable outcomes where the two balls have different colours:\n\nChoose 1 red and 1 blue:\n\n$\\binom{2}{1} \\times \\binom{2}{1} = 2 \\times 2 = 4$ ways\n\nSo the probability is:\n\n$\\frac{\\text{Favorable outcomes}}{\\text{Total outcomes}} = \\frac{4}{6} = \\frac{2}{3}$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "markdown": "Total balls = 2 red + 2 blue = 4 balls\n\nWe draw 2 balls without replacement. Total number of ways to choose 2 balls from 4:\n\n$\\binom{4}{2} = 6$\n\nNow, we count the favorable outcomes where the two balls have different colours:\n\nChoose 1 red and 1 blue:\n\n$\\binom{2}{1} \\times \\binom{2}{1} = 2 \\times 2 = 4$ ways\n\nSo the probability is:\n\n$\\frac{\\text{Favorable outcomes}}{\\text{Total outcomes}} = \\frac{4}{6} = \\frac{2}{3}$",
+        "images": []
       }
     },
     "pp:ec:2025:q4": {
@@ -170,7 +173,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "The general form of an FM signal is:\n\n$f(t) = A_c \\cos\\left(2\\pi f_c t + \\phi(t)\\right)$,\n\nwhere $\\phi(t)$ is the instantaneous phase deviation.\n\nHere,\n\n$\\phi(t) = 3\\sin(2\\pi f_1 t) + 4\\sin(6\\pi f_1 t)$\n\nTo find instantaneous frequency deviation, we take the derivative of $\\phi(t)$:\n\n$\\frac{d\\phi(t)}{dt} = 3 \\cdot 2\\pi f_1 \\cos(2\\pi f_1 t) + 4 \\cdot 6\\pi f_1 \\cos(6\\pi f_1 t)$\n\n$= 6\\pi f_1 \\cos(2\\pi f_1 t) + 24\\pi f_1 \\cos(6\\pi f_1 t)$\n\nSo, instantaneous frequency deviation:\n\n$\\Delta f(t) = \\frac{1}{2\\pi} \\frac{d\\phi(t)}{dt} = 3f_1 \\cos(2\\pi f_1 t) + 12f_1 \\cos(6\\pi f_1 t)$\n\nPeak frequency deviation is the maximum absolute value of $\\Delta f(t)$:\n\n$\\Delta f_{\\text{peak}} = \\max|\\Delta f(t)| = 3f_1 + 12f_1 = 15f_1$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The general form of an FM signal is:\n\n$f(t) = A_c \\cos\\left(2\\pi f_c t + \\phi(t)\\right)$,\n\nwhere $\\phi(t)$ is the instantaneous phase deviation.\n\nHere,\n\n$\\phi(t) = 3\\sin(2\\pi f_1 t) + 4\\sin(6\\pi f_1 t)$\n\nTo find instantaneous frequency deviation, we take the derivative of $\\phi(t)$:\n\n$\\frac{d\\phi(t)}{dt} = 3 \\cdot 2\\pi f_1 \\cos(2\\pi f_1 t) + 4 \\cdot 6\\pi f_1 \\cos(6\\pi f_1 t)$\n\n$= 6\\pi f_1 \\cos(2\\pi f_1 t) + 24\\pi f_1 \\cos(6\\pi f_1 t)$\n\nSo, instantaneous frequency deviation:\n\n$\\Delta f(t) = \\frac{1}{2\\pi} \\frac{d\\phi(t)}{dt} = 3f_1 \\cos(2\\pi f_1 t) + 12f_1 \\cos(6\\pi f_1 t)$\n\nPeak frequency deviation is the maximum absolute value of $\\Delta f(t)$:\n\n$\\Delta f_{\\text{peak}} = \\max|\\Delta f(t)| = 3f_1 + 12f_1 = 15f_1$",
+        "images": []
       }
     },
     "pp:ec:2025:q5": {
@@ -211,7 +215,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "For an AWGN channel, the channel capacity is given by the Shannon?Hartley theorem:\n\n$C = W \\log_2\\left(1 + \\frac{P_{\\text{av}}}{W N_0}\\right) \\ \\text{bits/sec}$\n\nLet?s analyze this expression:\n\n$W$ is in both the linear multiplier and inside the denominator of the SNR.\n\nAs $W \\rightarrow 0$, capacity $C \\rightarrow 0$ because bandwidth is 0.\n\nAs $W \\rightarrow \\infty$, $\\frac{P_{\\text{av}}}{W N_0} \\rightarrow 0$, and we can use $\\log_2(1 + x) \\approx x/\\ln 2$ when $x \\ll 1$.\n\nSo,\n\n$C \\approx W \\cdot \\frac{P_{\\text{av}}}{W N_0 \\ln 2} = \\frac{P_{\\text{av}}}{N_0 \\ln 2}$\n\nThat is, capacity approaches a finite limit.\n\nConclusion:\n\nCapacity increases with $W$, but saturates to a constant as $W$ becomes large.\n\nThis corresponds to a concave increasing curve that flattens out, which matches Plot (A).\n\nTherefore, the correct answer is **A**."
+        "markdown": "For an AWGN channel, the channel capacity is given by the Shannon?Hartley theorem:\n\n$C = W \\log_2\\left(1 + \\frac{P_{\\text{av}}}{W N_0}\\right) \\ \\text{bits/sec}$\n\nLet?s analyze this expression:\n\n$W$ is in both the linear multiplier and inside the denominator of the SNR.\n\nAs $W \\rightarrow 0$, capacity $C \\rightarrow 0$ because bandwidth is 0.\n\nAs $W \\rightarrow \\infty$, $\\frac{P_{\\text{av}}}{W N_0} \\rightarrow 0$, and we can use $\\log_2(1 + x) \\approx x/\\ln 2$ when $x \\ll 1$.\n\nSo,\n\n$C \\approx W \\cdot \\frac{P_{\\text{av}}}{W N_0 \\ln 2} = \\frac{P_{\\text{av}}}{N_0 \\ln 2}$\n\nThat is, capacity approaches a finite limit.\n\nConclusion:\n\nCapacity increases with $W$, but saturates to a constant as $W$ becomes large.\n\nThis corresponds to a concave increasing curve that flattens out, which matches Plot (A).",
+        "images": []
       }
     },
     "pp:ec:2025:q6": {
@@ -252,7 +257,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "From the Nyquist plot:\n\nThe gain crossover frequency is the frequency at which the Nyquist plot crosses the unit circle, i.e., the magnitude of the open-loop transfer function $|G(j\\omega)H(j\\omega)| = 1$.\n\nThe phase crossover frequency is the frequency at which the phase is $-180^\\circ$, i.e., the Nyquist plot crosses the negative real axis.\n\nFrom the diagram:\n\nPoint S lies on the unit circle, so $\\omega_S$ is the gain crossover frequency.\n\nPoint P lies on the negative real axis, hence $\\omega_P$ is the phase crossover frequency.\n\nTherefore, the correct statement is:\n\n$\\omega_S$ is the gain crossover frequency and $\\omega_P$ is the phase crossover frequency.\n\nTherefore, the correct answer is **D**."
+        "markdown": "From the Nyquist plot:\n\nThe gain crossover frequency is the frequency at which the Nyquist plot crosses the unit circle, i.e., the magnitude of the open-loop transfer function $|G(j\\omega)H(j\\omega)| = 1$.\n\nThe phase crossover frequency is the frequency at which the phase is $-180^\\circ$, i.e., the Nyquist plot crosses the negative real axis.\n\nFrom the diagram:\n\nPoint S lies on the unit circle, so $\\omega_S$ is the gain crossover frequency.\n\nPoint P lies on the negative real axis, hence $\\omega_P$ is the phase crossover frequency.\n\nTherefore, the correct statement is:\n\n$\\omega_S$ is the gain crossover frequency and $\\omega_P$ is the phase crossover frequency.",
+        "images": []
       }
     },
     "pp:ec:2025:q7": {
@@ -293,7 +299,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "$$\\begin{aligned}\n\n& \\mathrm{y}_2[\\mathrm{n}]=\\left\\{\\mathrm{y}_1[\\mathrm{n}]+\\mathrm{b} \\delta[\\mathrm{n}]\\right\\} * \\mathrm{~h}_2[\\mathrm{n}] \\\\\n\n& \\text { Output } \\mathrm{y}[\\mathrm{n}]=\\left\\{\\mathrm{x}[\\mathrm{n}] * \\mathrm{~h}_1[\\mathrm{n}]+\\mathrm{b} \\delta[\\mathrm{n}]\\right\\} * \\mathrm{~h}_2[\\mathrm{n}]-\\mathrm{b} \\delta[\\mathrm{n}]\n\n\\end{aligned}$$\n\n$y(n) = \\underbrace{x[n] * h_1[n] * h_2[n]}_{\\text{This is LTI}} + \\underbrace{b\\, h_2[n] - b\\delta[n]}_{\\text{N.L. terms}}$\n\n$\\mathrm{h}_{2}[\\mathrm{n}] \\neq \\delta[\\mathrm{n}]$\n\nIf we consider $\\mathrm{h}_{2}[\\mathrm{n}]=\\mathrm{nu}[\\mathrm{n}]$\n\n$\\mathrm{y}[\\mathrm{n}]$ is variable function of time $\\Rightarrow$ Time variant So, Non Linear \\& Time variant.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned}\n\n& \\mathrm{y}_2[\\mathrm{n}]=\\left\\{\\mathrm{y}_1[\\mathrm{n}]+\\mathrm{b} \\delta[\\mathrm{n}]\\right\\} * \\mathrm{~h}_2[\\mathrm{n}] \\\\\n\n& \\text { Output } \\mathrm{y}[\\mathrm{n}]=\\left\\{\\mathrm{x}[\\mathrm{n}] * \\mathrm{~h}_1[\\mathrm{n}]+\\mathrm{b} \\delta[\\mathrm{n}]\\right\\} * \\mathrm{~h}_2[\\mathrm{n}]-\\mathrm{b} \\delta[\\mathrm{n}]\n\n\\end{aligned}$$\n\n$y(n) = \\underbrace{x[n] * h_1[n] * h_2[n]}_{\\text{This is LTI}} + \\underbrace{b\\, h_2[n] - b\\delta[n]}_{\\text{N.L. terms}}$\n\n$\\mathrm{h}_{2}[\\mathrm{n}] \\neq \\delta[\\mathrm{n}]$\n\nIf we consider $\\mathrm{h}_{2}[\\mathrm{n}]=\\mathrm{nu}[\\mathrm{n}]$\n\n$\\mathrm{y}[\\mathrm{n}]$ is variable function of time $\\Rightarrow$ Time variant So, Non Linear \\& Time variant.",
+        "images": []
       }
     },
     "pp:ec:2025:q8": {
@@ -334,7 +341,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "We are given that $F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-j\\omega t} dt$ exists.\n\nThis means that $f(t)$ is absolutely integrable, i.e., $\\int_{-\\infty}^{\\infty} |f(t)| dt < \\infty$.\n\nTo find a general bound on $|F(\\omega)|$, we apply the triangle inequality for integrals:\n\n$|F(\\omega)| = \\left| \\int_{-\\infty}^{\\infty} f(t) e^{-j\\omega t} dt \\right| \\le \\int_{-\\infty}^{\\infty} |f(t) e^{-j\\omega t}| dt = \\int_{-\\infty}^{\\infty} |f(t)| dt$\n\nThis inequality is always true.\n\nNow check the options:\n\n(A) $|F(\\omega)| \\le \\int_{-\\infty}^{\\infty} |f(t)| dt$ -- Correct\n\n(B) Strict inequality -- not always true\n\n(C) Inequality involving $\\int f(t) dt$ -- this can be 0 for symmetric signals (e.g., odd functions), but $|F(\\omega)|$ may be nonzero\n\n(D) Similar issue -- not always true\n\nTherefore, the correct answer is **A**."
+        "markdown": "We are given that $F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-j\\omega t} dt$ exists.\n\nThis means that $f(t)$ is absolutely integrable, i.e., $\\int_{-\\infty}^{\\infty} |f(t)| dt < \\infty$.\n\nTo find a general bound on $|F(\\omega)|$, we apply the triangle inequality for integrals:\n\n$|F(\\omega)| = \\left| \\int_{-\\infty}^{\\infty} f(t) e^{-j\\omega t} dt \\right| \\le \\int_{-\\infty}^{\\infty} |f(t) e^{-j\\omega t}| dt = \\int_{-\\infty}^{\\infty} |f(t)| dt$\n\nThis inequality is always true.\n\nNow check the options:\n\n(A) $|F(\\omega)| \\le \\int_{-\\infty}^{\\infty} |f(t)| dt$ -- Correct\n\n(B) Strict inequality -- not always true\n\n(C) Inequality involving $\\int f(t) dt$ -- this can be 0 for symmetric signals (e.g., odd functions), but $|F(\\omega)|$ may be nonzero\n\n(D) Similar issue -- not always true",
+        "images": []
       }
     },
     "pp:ec:2025:q9": {
@@ -375,7 +383,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-5537c78b0f.webp\"/>\n\n$I=\\frac{8-6}{2+1}=\\frac{2}{3} A$\n\nBy KVL, $-8+2 \\mathrm{I}+\\mathrm{V}_{\\mathrm{x}}=0$\n\n$\\mathrm{V}_{\\mathrm{x}}=8-2 \\mathrm{I}=8-\\left(2 \\times \\frac{2}{3}\\right)$\n\n$\\mathrm{V}_{\\mathrm{x}}=\\frac{24-4}{3}=\\frac{20}{3} \\mathrm{~V}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-5537c78b0f.webp\"/>\n\n$I=\\frac{8-6}{2+1}=\\frac{2}{3} A$\n\nBy KVL, $-8+2 \\mathrm{I}+\\mathrm{V}_{\\mathrm{x}}=0$\n\n$\\mathrm{V}_{\\mathrm{x}}=8-2 \\mathrm{I}=8-\\left(2 \\times \\frac{2}{3}\\right)$\n\n$\\mathrm{V}_{\\mathrm{x}}=\\frac{24-4}{3}=\\frac{20}{3} \\mathrm{~V}$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-5537c78b0f.webp"
+        ]
       }
     },
     "pp:ec:2025:q10": {
@@ -416,7 +427,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "$\\mathrm{i}_{\\mathrm{C}}=\\mathrm{V}\\left(\\mathrm{jB} \\mathrm{B}_{\\mathrm{C}}\\right)=\\left[1 \\angle 90^{\\circ}\\right][\\mathrm{j} 0.25]=0.25 \\angle+180^{\\circ} \\mathrm{A}$\n\n$\\mathrm{i}_{\\mathrm{L}}=\\mathrm{V}\\left(-\\mathrm{j} \\mathrm{B}_{\\mathrm{L}}\\right)=\\left[1 \\angle 90^{\\circ}\\right][-\\mathrm{j} 0.1]=0.1 \\angle 0^{\\circ} \\mathrm{A}$\n\n$\\mathrm{i}_{\\mathrm{R}}=\\mathrm{V}(0.2)=\\left[1 \\angle 90^{\\circ}\\right][0.2]=0.2 \\angle 90^{\\circ} \\mathrm{A}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\mathrm{i}_{\\mathrm{C}}=\\mathrm{V}\\left(\\mathrm{jB} \\mathrm{B}_{\\mathrm{C}}\\right)=\\left[1 \\angle 90^{\\circ}\\right][\\mathrm{j} 0.25]=0.25 \\angle+180^{\\circ} \\mathrm{A}$\n\n$\\mathrm{i}_{\\mathrm{L}}=\\mathrm{V}\\left(-\\mathrm{j} \\mathrm{B}_{\\mathrm{L}}\\right)=\\left[1 \\angle 90^{\\circ}\\right][-\\mathrm{j} 0.1]=0.1 \\angle 0^{\\circ} \\mathrm{A}$\n\n$\\mathrm{i}_{\\mathrm{R}}=\\mathrm{V}(0.2)=\\left[1 \\angle 90^{\\circ}\\right][0.2]=0.2 \\angle 90^{\\circ} \\mathrm{A}$",
+        "images": []
       }
     },
     "pp:ec:2025:q11": {
@@ -457,7 +469,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-3ee6edc09d.webp\"/>\n\n$\\mathrm{v}_{0}=-\\beta \\mathrm{i}_{\\mathrm{b}} \\mathrm{R}_{\\mathrm{L}}$\n\n$\\mathrm{v}_{\\mathrm{s}}=\\mathrm{i}_{\\mathrm{b}}\\left(\\mathrm{R}_{\\mathrm{S}}+\\mathrm{r}_{\\pi}\\right)$\n\n$\\frac{{v}_{0}}{{v}_{{s}}}=-\\frac{\\beta \\mathrm{R}_{\\mathrm{L}}}{\\mathrm{R}_{\\mathrm{S}}+\\mathrm{r}_{\\pi}}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-3ee6edc09d.webp\"/>\n\n$\\mathrm{v}_{0}=-\\beta \\mathrm{i}_{\\mathrm{b}} \\mathrm{R}_{\\mathrm{L}}$\n\n$\\mathrm{v}_{\\mathrm{s}}=\\mathrm{i}_{\\mathrm{b}}\\left(\\mathrm{R}_{\\mathrm{S}}+\\mathrm{r}_{\\pi}\\right)$\n\n$\\frac{{v}_{0}}{{v}_{{s}}}=-\\frac{\\beta \\mathrm{R}_{\\mathrm{L}}}{\\mathrm{R}_{\\mathrm{S}}+\\mathrm{r}_{\\pi}}$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-3ee6edc09d.webp"
+        ]
       }
     },
     "pp:ec:2025:q12": {
@@ -498,7 +513,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "Given $\\mathrm{I}_{\\mathrm{B}}=10 \\mu \\mathrm{~A}$ and $\\beta=100$\n\n$\\mathrm{I}_{\\mathrm{E}}=(\\beta+1) \\mathrm{I}_{\\mathrm{B}}=(101) 10 \\mu=1.01 \\mathrm{~mA}$\n\nApplying KVL at output loop, we have\n\n$10=\\mathrm{I}_{\\mathrm{E}}(5 \\mathrm{k})+\\mathrm{V}_{\\mathrm{CE}}+\\mathrm{I}_{\\mathrm{E}}(3 \\mathrm{k})$\n\n$\\Rightarrow \\mathrm{V}_{\\mathrm{CE}}=10-\\mathrm{I}_{\\mathrm{E}}(8 \\mathrm{k})=10-1.01 \\mathrm{~m}(8 \\mathrm{k})=1.92 \\mathrm{~V}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given $\\mathrm{I}_{\\mathrm{B}}=10 \\mu \\mathrm{~A}$ and $\\beta=100$\n\n$\\mathrm{I}_{\\mathrm{E}}=(\\beta+1) \\mathrm{I}_{\\mathrm{B}}=(101) 10 \\mu=1.01 \\mathrm{~mA}$\n\nApplying KVL at output loop, we have\n\n$10=\\mathrm{I}_{\\mathrm{E}}(5 \\mathrm{k})+\\mathrm{V}_{\\mathrm{CE}}+\\mathrm{I}_{\\mathrm{E}}(3 \\mathrm{k})$\n\n$\\Rightarrow \\mathrm{V}_{\\mathrm{CE}}=10-\\mathrm{I}_{\\mathrm{E}}(8 \\mathrm{k})=10-1.01 \\mathrm{~m}(8 \\mathrm{k})=1.92 \\mathrm{~V}$",
+        "images": []
       }
     },
     "pp:ec:2025:q13": {
@@ -539,7 +555,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
-        "markdown": "$$\\begin{array}{lllll}\n\n&  & X & Y & Z \\\\\n\n& 0 & 0 & 0 & 0 \\\\\n\n& 1 & 0 & 0 & 1 \\\\\n\n& 2 & 0 & 1 & 0 \\\\\n\n& 3 & 0 & 1 & 1 \\\\\n\n& 4 & 1 & 0 & 0 \\\\\n\n& 5 & 1 & 0 & 1 \\\\\n\n& 6 & 1 & 1 & 0 \\\\\n\n& 7 & 1 & 1 & 1 \\\\\n\n\\end{array}$$\n\n$F  =\\sum \\mathrm{m}(3,5,6,7)$\n\n<img src=\"/question-images/ec/2025/ec-2025-350fad000e.webp\"/>\n\n$F=XY+YZ+ZX$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{array}{lllll}\n\n&  & X & Y & Z \\\\\n\n& 0 & 0 & 0 & 0 \\\\\n\n& 1 & 0 & 0 & 1 \\\\\n\n& 2 & 0 & 1 & 0 \\\\\n\n& 3 & 0 & 1 & 1 \\\\\n\n& 4 & 1 & 0 & 0 \\\\\n\n& 5 & 1 & 0 & 1 \\\\\n\n& 6 & 1 & 1 & 0 \\\\\n\n& 7 & 1 & 1 & 1 \\\\\n\n\\end{array}$$\n\n$F  =\\sum \\mathrm{m}(3,5,6,7)$\n\n<img src=\"/question-images/ec/2025/ec-2025-350fad000e.webp\"/>\n\n$F=XY+YZ+ZX$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-350fad000e.webp"
+        ]
       }
     },
     "pp:ec:2025:q14": {
@@ -580,7 +599,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "In the circuit, when Z is set to 1 , the operands to full adder are $X, \\bar{Y}$ and input carry is 1\n\nSo,\n\n$$\\begin{aligned}\n\n\\mathrm{F} & =\\mathrm{X}+\\overline{\\mathrm{Y}}+1 \\\\\n\n& =\\mathrm{X}+2 \\text { 's complement of } \\mathrm{Y} \\\\\n\n& =\\mathrm{X}-\\mathrm{Y}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "In the circuit, when Z is set to 1 , the operands to full adder are $X, \\bar{Y}$ and input carry is 1\n\nSo,\n\n$$\\begin{aligned}\n\n\\mathrm{F} & =\\mathrm{X}+\\overline{\\mathrm{Y}}+1 \\\\\n\n& =\\mathrm{X}+2 \\text { 's complement of } \\mathrm{Y} \\\\\n\n& =\\mathrm{X}-\\mathrm{Y}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2025:q15": {
@@ -620,8 +640,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$f(x)=2 x^{3}-3 x^{2}+12 x+1$\n\n$f^{\\prime}(x)=6 x^{2}-6 x-12$\n\n$f^{\\prime \\prime}(x)=12 x-6$\n\nPut\n\n$$\\begin{aligned}\n\nf^{\\prime}(x)=0 &\\Rightarrow x^{2}-x-2=0 \\\\\n\n& \\Rightarrow(\\mathrm{x}-2)(\\mathrm{x}+1)=0 \\\\\n\n& \\Rightarrow \\mathrm{x}=2,-1\n\n\\end{aligned}$$\n\n$\\mathrm{f}^{\\prime \\prime}(2)=18>0 \\Rightarrow \\mathrm{x}=2$ is a local point of minima\n\n$\\mathrm{f}^{\\prime \\prime}(-1)=-18<0 \\Rightarrow \\mathrm{x}=-1$ is a local point of maxima\n\nf has no global maxima.\n\nf has no global minima.\n\nTherefore, the correct option(s) are **A, B**."
+        "concept": "Engineering Mathematics (EC) - Calculus",
+        "markdown": "$f(x)=2 x^{3}-3 x^{2}+12 x+1$\n\n$f^{\\prime}(x)=6 x^{2}-6 x-12$\n\n$f^{\\prime \\prime}(x)=12 x-6$\n\nPut\n\n$$\\begin{aligned}\n\nf^{\\prime}(x)=0 &\\Rightarrow x^{2}-x-2=0 \\\\\n\n& \\Rightarrow(\\mathrm{x}-2)(\\mathrm{x}+1)=0 \\\\\n\n& \\Rightarrow \\mathrm{x}=2,-1\n\n\\end{aligned}$$\n\n$\\mathrm{f}^{\\prime \\prime}(2)=18>0 \\Rightarrow \\mathrm{x}=2$ is a local point of minima\n\n$\\mathrm{f}^{\\prime \\prime}(-1)=-18<0 \\Rightarrow \\mathrm{x}=-1$ is a local point of maxima\n\nf has no global maxima.\n\nf has no global minima.",
+        "images": []
       }
     },
     "pp:ec:2025:q16": {
@@ -662,7 +683,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
-        "markdown": "We are given the root locus plot in Figure (ii), and we are to determine whether a closed-loop pole lies at the complex location $-1 + j1$ for any $K \\geq 0$.\n\nFrom control theory, the root locus shows the trajectory of the closed-loop poles as $K$ varies from $0$ to $\\infty$.\n\nWe inspect the root locus diagram in Figure (ii):\n\nThe root locus branches are symmetric about the real axis.\n\nThe point $-1 + j1$ lies outside the plotted root locus path.\n\nIt is not marked or touched by any of the root locus branches.\n\nHence, the closed-loop poles never pass through the point $-1 + j1$ for any positive value of $K$.\n\nTherefore, the correct answer is **C**."
+        "markdown": "We are given the root locus plot in Figure (ii), and we are to determine whether a closed-loop pole lies at the complex location $-1 + j1$ for any $K \\geq 0$.\n\nFrom control theory, the root locus shows the trajectory of the closed-loop poles as $K$ varies from $0$ to $\\infty$.\n\nWe inspect the root locus diagram in Figure (ii):\n\nThe root locus branches are symmetric about the real axis.\n\nThe point $-1 + j1$ lies outside the plotted root locus path.\n\nIt is not marked or touched by any of the root locus branches.\n\nHence, the closed-loop poles never pass through the point $-1 + j1$ for any positive value of $K$.",
+        "images": []
       }
     },
     "pp:ec:2025:q17": {
@@ -703,7 +725,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "(A) The DTFT does not always exist. It exists only if the signal is absolutely summable:\n\n$\\sum_{n=-\\infty}^{\\infty} |x[n]| < \\infty$\n\nSo this statement is False.\n\n(B) The region of convergence (RoC) contains no poles, but it can include zeros (since zeros do not affect convergence).\n\nSo this statement is False.\n\n(C) This is True. The DTFT of $x[n]$ exists iff the RoC of $X(z)$ includes the unit circle $|z| = 1$.\n\n(D) For $x[n] = \\alpha \\delta[n]$, the $z$-transform is $X(z) = \\alpha$ (a constant), which is defined for all $z \\in \\mathbb{C}$. Hence, the RoC is the entire z-plane, so this is True.\n\nTherefore, the correct option(s) are **C, D**."
+        "markdown": "(A) The DTFT does not always exist. It exists only if the signal is absolutely summable:\n\n$\\sum_{n=-\\infty}^{\\infty} |x[n]| < \\infty$\n\nSo this statement is False.\n\n(B) The region of convergence (RoC) contains no poles, but it can include zeros (since zeros do not affect convergence).\n\nSo this statement is False.\n\n(C) This is True. The DTFT of $x[n]$ exists iff the RoC of $X(z)$ includes the unit circle $|z| = 1$.\n\n(D) For $x[n] = \\alpha \\delta[n]$, the $z$-transform is $X(z) = \\alpha$ (a constant), which is defined for all $z \\in \\mathbb{C}$. Hence, the RoC is the entire z-plane, so this is True.",
+        "images": []
       }
     },
     "pp:ec:2025:q18": {
@@ -744,7 +767,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "Even if $m(t) > 0$ for all $t$, the carrier is suppressed, and therefore envelope detection fails.\n\nSo, Statement (i) is FALSE.\n\nStatement (ii):\n\nIn standard AM, the transmitted signal is:\n\n$f_{AM}(t) = A_c (1 + \\mu m(t)) \\cos(2\\pi f_c t)$\n\nTo ensure proper envelope detection, the envelope $A_c(1 + \\mu m(t))$ must not cross zero, i.e., it must be always positive.\n\nSo the condition is: $1 + \\mu m(t) > 0$ for all $t$.\n\nThis means not just $m(t) > 0$, but $m(t) > -1/\\mu$. So even if $m(t)$ is not strictly positive, envelope detection may still work depending on $\\mu$.\n\nTherefore, Statement (ii) is FALSE.\n\nTherefore, the correct option(s) are **A, D**."
+        "markdown": "Even if $m(t) > 0$ for all $t$, the carrier is suppressed, and therefore envelope detection fails.\n\nSo, Statement (i) is FALSE.\n\nStatement (ii):\n\nIn standard AM, the transmitted signal is:\n\n$f_{AM}(t) = A_c (1 + \\mu m(t)) \\cos(2\\pi f_c t)$\n\nTo ensure proper envelope detection, the envelope $A_c(1 + \\mu m(t))$ must not cross zero, i.e., it must be always positive.\n\nSo the condition is: $1 + \\mu m(t) > 0$ for all $t$.\n\nThis means not just $m(t) > 0$, but $m(t) > -1/\\mu$. So even if $m(t)$ is not strictly positive, envelope detection may still work depending on $\\mu$.\n\nTherefore, Statement (ii) is FALSE.",
+        "images": []
       }
     },
     "pp:ec:2025:q19": {
@@ -785,7 +809,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "For an ideal operational amplifier, the following properties are defined:\n\nInfinite input resistance\n\nThis ensures that no current flows into the input terminals.\n\n$\\Rightarrow$ Statement (A) is TRUE\n\nZero output resistance\n\nThis ensures the output can drive any load without voltage drop.\n\n$\\Rightarrow$ Statement (B) is FALSE (since it says infinite output resistance)\n\nInfinite open-loop differential gain\n\nThe opamp amplifies the difference between the inputs with infinite gain in the ideal case.\n\n$\\Rightarrow$ Statement (C) is TRUE\n\nZero open-loop common-mode gain\n\nIdeal opamps reject any signal common to both inputs perfectly. Hence, common-mode gain is zero, not infinite.\n\n$\\Rightarrow$ Statement (D) is FALSE\n\nTherefore, the correct option(s) are **A, C**."
+        "markdown": "For an ideal operational amplifier, the following properties are defined:\n\nInfinite input resistance\n\nThis ensures that no current flows into the input terminals.\n\n$\\Rightarrow$ Statement (A) is TRUE\n\nZero output resistance\n\nThis ensures the output can drive any load without voltage drop.\n\n$\\Rightarrow$ Statement (B) is FALSE (since it says infinite output resistance)\n\nInfinite open-loop differential gain\n\nThe opamp amplifies the difference between the inputs with infinite gain in the ideal case.\n\n$\\Rightarrow$ Statement (C) is TRUE\n\nZero open-loop common-mode gain\n\nIdeal opamps reject any signal common to both inputs perfectly. Hence, common-mode gain is zero, not infinite.\n\n$\\Rightarrow$ Statement (D) is FALSE",
+        "images": []
       }
     },
     "pp:ec:2025:q20": {
@@ -826,7 +851,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
-        "markdown": "Let us consider each configuration in the context of ideal MOSFETs (i.e., no body effect, channel-length modulation ignored, etc.) and DC coupling:\n\n(A) The common-gate amplifier has an infinite input resistance\n\nFalse. In a common-gate amplifier, the input is applied to the source terminal and the gate is grounded (or biased).\n\nThe input resistance is low, approximately $\\frac{1}{g_m}$.\n\nSo, Statement (A) is FALSE.\n\n(B) The common-source amplifier has an infinite input resistance\n\nTrue. The input is applied at the gate terminal, which draws no current ideally.\n\nHence, input resistance is infinite.\n\nSo, Statement (B) is TRUE.\n\n(C) The input and output voltages of the common-source amplifier are in phase\n\nFalse. A common-source amplifier introduces a 180? phase shift, i.e., the input and output are out of phase.\n\nSo, Statement (C) is FALSE.\n\n(D) The input and output voltages of the common-drain amplifier are in phase\n\nTrue. A common-drain amplifier (also called source follower) has no phase shift between input and output.\n\nSo, Statement (D) is TRUE.\n\nTherefore, the correct option(s) are **B, D**."
+        "markdown": "Let us consider each configuration in the context of ideal MOSFETs (i.e., no body effect, channel-length modulation ignored, etc.) and DC coupling:\n\n(A) The common-gate amplifier has an infinite input resistance\n\nFalse. In a common-gate amplifier, the input is applied to the source terminal and the gate is grounded (or biased).\n\nThe input resistance is low, approximately $\\frac{1}{g_m}$.\n\nSo, Statement (A) is FALSE.\n\n(B) The common-source amplifier has an infinite input resistance\n\nTrue. The input is applied at the gate terminal, which draws no current ideally.\n\nHence, input resistance is infinite.\n\nSo, Statement (B) is TRUE.\n\n(C) The input and output voltages of the common-source amplifier are in phase\n\nFalse. A common-source amplifier introduces a 180? phase shift, i.e., the input and output are out of phase.\n\nSo, Statement (C) is FALSE.\n\n(D) The input and output voltages of the common-drain amplifier are in phase\n\nTrue. A common-drain amplifier (also called source follower) has no phase shift between input and output.\n\nSo, Statement (D) is TRUE.",
+        "images": []
       }
     },
     "pp:ec:2025:q21": {
@@ -867,7 +893,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "Silicon is a group-IV element. To create an n-type semiconductor, we dope silicon with a group-V element, which donates an extra electron (free carrier).\n\nNow, let's evaluate each dopant:\n\n(A) Arsenic - Group V element $\\Rightarrow$ n-type dopant\n\n(B) Boron - Group III element $\\Rightarrow$ p-type dopant\n\n(C) Gallium - Group III element $\\Rightarrow$ p-type dopant\n\n(D) Phosphorous - Group V element $\\Rightarrow$ n-type dopant\n\nTherefore, the correct option(s) are **A, D**."
+        "markdown": "Silicon is a group-IV element. To create an n-type semiconductor, we dope silicon with a group-V element, which donates an extra electron (free carrier).\n\nNow, let's evaluate each dopant:\n\n(A) Arsenic - Group V element $\\Rightarrow$ n-type dopant\n\n(B) Boron - Group III element $\\Rightarrow$ p-type dopant\n\n(C) Gallium - Group III element $\\Rightarrow$ p-type dopant\n\n(D) Phosphorous - Group V element $\\Rightarrow$ n-type dopant",
+        "images": []
       }
     },
     "pp:ec:2025:q22": {
@@ -905,8 +932,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "We are given a second-order linear homogeneous differential equation:\n\n$t^2 y''(t) - 2t y'(t) + 2y(t) = 0$\n\nThis is a Cauchy-Euler equation. Let us try a solution of the form:\n\n$y(t) = t^r$\n\nThen,\n\n$y'(t) = r t^{r-1},\\quad y''(t) = r(r - 1) t^{r-2}$\n\nSubstitute into the equation:\n\n$t^2 \\cdot r(r - 1)t^{r - 2} - 2t \\cdot r t^{r - 1} + 2t^r = 0$\n\n$r(r - 1)t^r - 2r t^r + 2 t^r = 0$\n\n$\\left[r(r - 1) - 2r + 2\\right] t^r = 0$\n\nSimplify the coefficient:\n\n$r^2 - r - 2r + 2 = r^2 - 3r + 2$\n\nSo the auxiliary equation is:\n\n$r^2 - 3r + 2 = 0$\n\n$(r - 1)(r - 2) = 0$\n\n$\\Rightarrow r = 1, 2$\n\nSo the general solution is:\n\n$y(t) = A t^1 + B t^2 = At + Bt^2$\n\nNow compute $y'(t) = A + 2Bt$\n\nWe are given:\n\n$y'(0) = A = 1$\n\n$y'(1) = A + 2B = -1$\n\nFrom these:\n\nFrom $y'(0) = 1 \\Rightarrow A = 1$\n\nThen $y'(1) = 1 + 2B = -1 \\Rightarrow 2B = -2 \\Rightarrow B = -1$\n\nThus, the function is:\n\n$y(t) = t - t^2$\n\nNow find the maximum of $y(t) = t - t^2$ in $[0, 1]$\n\nThis is a downward-opening parabola. Maximum occurs at vertex:\n\n$t = \\frac{1}{2}$\n\n$y\\left(\\frac{1}{2}\\right) = \\frac{1}{2} - \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{2} - \\frac{1}{4} = \\frac{1}{4}$\n\nTherefore, the correct answer is **0.25**."
+        "concept": "Engineering Mathematics (EC) - Differential Equations",
+        "markdown": "We are given a second-order linear homogeneous differential equation:\n\n$t^2 y''(t) - 2t y'(t) + 2y(t) = 0$\n\nThis is a Cauchy-Euler equation. Let us try a solution of the form:\n\n$y(t) = t^r$\n\nThen,\n\n$y'(t) = r t^{r-1},\\quad y''(t) = r(r - 1) t^{r-2}$\n\nSubstitute into the equation:\n\n$t^2 \\cdot r(r - 1)t^{r - 2} - 2t \\cdot r t^{r - 1} + 2t^r = 0$\n\n$r(r - 1)t^r - 2r t^r + 2 t^r = 0$\n\n$\\left[r(r - 1) - 2r + 2\\right] t^r = 0$\n\nSimplify the coefficient:\n\n$r^2 - r - 2r + 2 = r^2 - 3r + 2$\n\nSo the auxiliary equation is:\n\n$r^2 - 3r + 2 = 0$\n\n$(r - 1)(r - 2) = 0$\n\n$\\Rightarrow r = 1, 2$\n\nSo the general solution is:\n\n$y(t) = A t^1 + B t^2 = At + Bt^2$\n\nNow compute $y'(t) = A + 2Bt$\n\nWe are given:\n\n$y'(0) = A = 1$\n\n$y'(1) = A + 2B = -1$\n\nFrom these:\n\nFrom $y'(0) = 1 \\Rightarrow A = 1$\n\nThen $y'(1) = 1 + 2B = -1 \\Rightarrow 2B = -2 \\Rightarrow B = -1$\n\nThus, the function is:\n\n$y(t) = t - t^2$\n\nNow find the maximum of $y(t) = t - t^2$ in $[0, 1]$\n\nThis is a downward-opening parabola. Maximum occurs at vertex:\n\n$t = \\frac{1}{2}$\n\n$y\\left(\\frac{1}{2}\\right) = \\frac{1}{2} - \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{2} - \\frac{1}{4} = \\frac{1}{4}$",
+        "images": []
       }
     },
     "pp:ec:2025:q23": {
@@ -945,7 +973,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "Given:\n\n$G$ is a $3 \\times 6$ generator matrix for a $(6,3)$ binary linear code.\n\nWe can generate all codewords by multiplying $G$ with all possible 3-bit input messages.\n\nLet $\\mathbf{u} = [u_1\\ u_2\\ u_3]$ be the message. Then codeword $\\mathbf{c} = \\mathbf{u} G$ (mod 2).\n\nWe generate all $2^3 = 8$ codewords and compute their Hamming weights (excluding the all-zero word).\n\nLet's compute:\n\n$\\mathbf{u} = 000 \\Rightarrow \\mathbf{c} = 000000 \\Rightarrow$weight = 0\n\n$\\mathbf{u} = 001 \\Rightarrow \\mathbf{c} = 001110 \\Rightarrow$weight = 3\n\n$\\mathbf{u} = 010 \\Rightarrow \\mathbf{c} = 010011 \\Rightarrow$weight = 3\n\n$\\mathbf{u} = 011 \\Rightarrow \\mathbf{c} = 011101 \\Rightarrow$weight = 4\n\n$\\mathbf{u} = 100 \\Rightarrow \\mathbf{c} = 100101 \\Rightarrow$weight = 3\n\n$\\mathbf{u} = 101 \\Rightarrow \\mathbf{c} = 101011 \\Rightarrow$weight = 4\n\n$\\mathbf{u} = 110 \\Rightarrow \\mathbf{c} = 110110 \\Rightarrow$weight = 4\n\n$\\mathbf{u} = 111 \\Rightarrow \\mathbf{c} = 111000 \\Rightarrow$weight = 3\n\nNow, among all non-zero codewords, the minimum Hamming weight is the minimum Hamming distance of the code.\n\nMinimum weight = 3\n\nTherefore, the correct answer is **3**."
+        "markdown": "Given:\n\n$G$ is a $3 \\times 6$ generator matrix for a $(6,3)$ binary linear code.\n\nWe can generate all codewords by multiplying $G$ with all possible 3-bit input messages.\n\nLet $\\mathbf{u} = [u_1\\ u_2\\ u_3]$ be the message. Then codeword $\\mathbf{c} = \\mathbf{u} G$ (mod 2).\n\nWe generate all $2^3 = 8$ codewords and compute their Hamming weights (excluding the all-zero word).\n\nLet's compute:\n\n$\\mathbf{u} = 000 \\Rightarrow \\mathbf{c} = 000000 \\Rightarrow$weight = 0\n\n$\\mathbf{u} = 001 \\Rightarrow \\mathbf{c} = 001110 \\Rightarrow$weight = 3\n\n$\\mathbf{u} = 010 \\Rightarrow \\mathbf{c} = 010011 \\Rightarrow$weight = 3\n\n$\\mathbf{u} = 011 \\Rightarrow \\mathbf{c} = 011101 \\Rightarrow$weight = 4\n\n$\\mathbf{u} = 100 \\Rightarrow \\mathbf{c} = 100101 \\Rightarrow$weight = 3\n\n$\\mathbf{u} = 101 \\Rightarrow \\mathbf{c} = 101011 \\Rightarrow$weight = 4\n\n$\\mathbf{u} = 110 \\Rightarrow \\mathbf{c} = 110110 \\Rightarrow$weight = 4\n\n$\\mathbf{u} = 111 \\Rightarrow \\mathbf{c} = 111000 \\Rightarrow$weight = 3\n\nNow, among all non-zero codewords, the minimum Hamming weight is the minimum Hamming distance of the code.\n\nMinimum weight = 3",
+        "images": []
       }
     },
     "pp:ec:2025:q24": {
@@ -984,7 +1013,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Frequency Response of Amplifier",
-        "markdown": "We are given:\n\nLower cutoff (high-pass) $f_L = 1\\ \\text{MHz}$\n\nWe can use the standard formulas for cutoff frequencies:\n\nHigh-pass cutoff (lower -3dB):\n\n$f_L = \\frac{1}{2\\pi R_{\\text{HP}} C_{\\text{HP}}} = \\frac{1}{2\\pi R \\cdot 10C}$\n\n$f_L = \\frac{1}{20\\pi RC}$\n\nGiven $f_L = 1\\ \\text{MHz} \\Rightarrow RC = \\frac{1}{20\\pi \\times 10^6}$\n\nKeep this for substitution.\n\nLow-pass cutoff (upper -3dB):\n\n$f_H = \\frac{1}{2\\pi R_{\\text{LP}} C_{\\text{LP}}} = \\frac{1}{2\\pi \\cdot 2R \\cdot 0.1C} = \\frac{1}{0.4\\pi RC}$\n\nNow plug in $RC = \\frac{1}{20\\pi \\cdot 10^6}$ into this:\n\n$f_H = \\frac{1}{0.4\\pi} \\cdot \\left( \\frac{20\\pi \\cdot 10^6}{1} \\right) = \\frac{20\\pi \\cdot 10^6}{0.4\\pi} = \\frac{20}{0.4} \\cdot 10^6 = 50 \\cdot 10^6 = 50\\ \\text{MHz}$\n\nTherefore, the correct answer is **50**."
+        "markdown": "We are given:\n\nLower cutoff (high-pass) $f_L = 1\\ \\text{MHz}$\n\nWe can use the standard formulas for cutoff frequencies:\n\nHigh-pass cutoff (lower -3dB):\n\n$f_L = \\frac{1}{2\\pi R_{\\text{HP}} C_{\\text{HP}}} = \\frac{1}{2\\pi R \\cdot 10C}$\n\n$f_L = \\frac{1}{20\\pi RC}$\n\nGiven $f_L = 1\\ \\text{MHz} \\Rightarrow RC = \\frac{1}{20\\pi \\times 10^6}$\n\nKeep this for substitution.\n\nLow-pass cutoff (upper -3dB):\n\n$f_H = \\frac{1}{2\\pi R_{\\text{LP}} C_{\\text{LP}}} = \\frac{1}{2\\pi \\cdot 2R \\cdot 0.1C} = \\frac{1}{0.4\\pi RC}$\n\nNow plug in $RC = \\frac{1}{20\\pi \\cdot 10^6}$ into this:\n\n$f_H = \\frac{1}{0.4\\pi} \\cdot \\left( \\frac{20\\pi \\cdot 10^6}{1} \\right) = \\frac{20\\pi \\cdot 10^6}{0.4\\pi} = \\frac{20}{0.4} \\cdot 10^6 = 50 \\cdot 10^6 = 50\\ \\text{MHz}$",
+        "images": []
       }
     },
     "pp:ec:2025:q25": {
@@ -1023,7 +1053,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
-        "markdown": "$V_{0}=-R\\left(\\frac{b_{3} V_{R E F}}{R}+\\frac{b_{2} V_{R E F}}{2 R}+\\frac{b_{1} V_{R E F}}{4 R}+\\frac{b_{0} V_{R E F}}{8 R}\\right)$\n\n$=-\\frac{\\mathrm{V}_{\\text {REF }} \\times \\mathrm{R}}{\\mathrm{R}}\\left[\\mathrm{b}_{3}+\\frac{\\mathrm{b}_{2}}{2}+\\frac{\\mathrm{b}_{1}}{4}+\\frac{\\mathrm{b}_{0}}{8}\\right]$\n\n$=-V_{\\text {REF }}\\left[\\mathrm{b}_{3}+\\frac{\\mathrm{b}_{2}}{2}+\\frac{\\mathrm{b}_{1}}{4}+\\frac{\\mathrm{b}_{0}}{8}\\right]$\n\nFor the input $\\mathrm{b}_{3} \\mathrm{~b}_{2} \\mathrm{~b}_{1} \\mathrm{~b}_{0}=1110$, the output voltage,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{0} & =-2\\left(1+\\frac{1}{2}+\\frac{1}{4}+0\\right) \\\\\n\n& =-2(1.75) \\\\\n\n& =-3.5 \\mathrm{~V}\n\n\\end{aligned}$$\n\nFor the input $\\mathrm{b}_{3} \\mathrm{~b}_{2} \\mathrm{~b}_{1} \\mathrm{~b}_{0}=1101$, the output voltage,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{0} & =-2\\left(1+\\frac{1}{2}+0+\\frac{1}{8}\\right) \\\\\n\n& =-2(1.625) \\\\\n\n& =-3.25 \\mathrm{~V}\n\n\\end{aligned}$$\n\nSo, the change in magnitude is 0.25 V and it is equal to 250 mV.\n\nTherefore, the correct answer is **250**."
+        "markdown": "$V_{0}=-R\\left(\\frac{b_{3} V_{R E F}}{R}+\\frac{b_{2} V_{R E F}}{2 R}+\\frac{b_{1} V_{R E F}}{4 R}+\\frac{b_{0} V_{R E F}}{8 R}\\right)$\n\n$=-\\frac{\\mathrm{V}_{\\text {REF }} \\times \\mathrm{R}}{\\mathrm{R}}\\left[\\mathrm{b}_{3}+\\frac{\\mathrm{b}_{2}}{2}+\\frac{\\mathrm{b}_{1}}{4}+\\frac{\\mathrm{b}_{0}}{8}\\right]$\n\n$=-V_{\\text {REF }}\\left[\\mathrm{b}_{3}+\\frac{\\mathrm{b}_{2}}{2}+\\frac{\\mathrm{b}_{1}}{4}+\\frac{\\mathrm{b}_{0}}{8}\\right]$\n\nFor the input $\\mathrm{b}_{3} \\mathrm{~b}_{2} \\mathrm{~b}_{1} \\mathrm{~b}_{0}=1110$, the output voltage,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{0} & =-2\\left(1+\\frac{1}{2}+\\frac{1}{4}+0\\right) \\\\\n\n& =-2(1.75) \\\\\n\n& =-3.5 \\mathrm{~V}\n\n\\end{aligned}$$\n\nFor the input $\\mathrm{b}_{3} \\mathrm{~b}_{2} \\mathrm{~b}_{1} \\mathrm{~b}_{0}=1101$, the output voltage,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{0} & =-2\\left(1+\\frac{1}{2}+0+\\frac{1}{8}\\right) \\\\\n\n& =-2(1.625) \\\\\n\n& =-3.25 \\mathrm{~V}\n\n\\end{aligned}$$\n\nSo, the change in magnitude is 0.25 V and it is equal to 250 mV.",
+        "images": []
       }
     },
     "pp:ec:2025:q26": {
@@ -1064,7 +1095,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
-        "markdown": "Statement (i): Given integral controller, integral controller adds pole at origin result system becomes unstable hence for closed loop system stability no integral controller,\n\nso statement (i) is true.\n\nStatement (ii): Given PD controller, which adds zero result system becomes stable, hence statement (ii) is also true.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Statement (i): Given integral controller, integral controller adds pole at origin result system becomes unstable hence for closed loop system stability no integral controller,\n\nso statement (i) is true.\n\nStatement (ii): Given PD controller, which adds zero result system becomes stable, hence statement (ii) is also true.",
+        "images": []
       }
     },
     "pp:ec:2025:q27": {
@@ -1105,7 +1137,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
-        "markdown": "Given $p(s)=s^{5}+7 s^{4}+3 s^{3}-33 s^{2}+2 s-40$\n\n$$\\begin{array}{l|lrl}\n\ns^{5} & 1 & 3 & 2 \\\\\n\ns^{4} & 7 & -33 & -40 \\\\\n\ns^{3} & \\frac{54}{7} & \\frac{54}{7} & 0 \\\\\n\ns^{2} & -40 & -40 & 0 \\\\\n\ns^{1} & 0(-80) & 0 & 0 \\\\\n\ns^{0} & -40 &  &  \\\\\n\n\\end{array}$$\n\nAuxiliary equation [A.E] $-40 \\mathrm{~s}^{2}-40=0$\n\nA.E $\\Rightarrow \\mathrm{s}^{2}+1=0 \\Rightarrow \\mathrm{~s}^{2}=-1 \\Rightarrow \\mathrm{~s}= \\pm 1 \\mathrm{j}$\n\nSo number of imaginary roots $[\\mathrm{I}]=2$\n\nIn the RH tabular, number of sign changes in the first column $=1$, hence number of poles in the right half of s-plane (or) roots with positive real parts $[R]=1$, number of poles in the left half of s-plane $[\\mathrm{L}]=5-2-1=2$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given $p(s)=s^{5}+7 s^{4}+3 s^{3}-33 s^{2}+2 s-40$\n\n$$\\begin{array}{l|lrl}\n\ns^{5} & 1 & 3 & 2 \\\\\n\ns^{4} & 7 & -33 & -40 \\\\\n\ns^{3} & \\frac{54}{7} & \\frac{54}{7} & 0 \\\\\n\ns^{2} & -40 & -40 & 0 \\\\\n\ns^{1} & 0(-80) & 0 & 0 \\\\\n\ns^{0} & -40 &  &  \\\\\n\n\\end{array}$$\n\nAuxiliary equation [A.E] $-40 \\mathrm{~s}^{2}-40=0$\n\nA.E $\\Rightarrow \\mathrm{s}^{2}+1=0 \\Rightarrow \\mathrm{~s}^{2}=-1 \\Rightarrow \\mathrm{~s}= \\pm 1 \\mathrm{j}$\n\nSo number of imaginary roots $[\\mathrm{I}]=2$\n\nIn the RH tabular, number of sign changes in the first column $=1$, hence number of poles in the right half of s-plane (or) roots with positive real parts $[R]=1$, number of poles in the left half of s-plane $[\\mathrm{L}]=5-2-1=2$",
+        "images": []
       }
     },
     "pp:ec:2025:q28": {
@@ -1146,7 +1179,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "We are given that $f(t)$ is bandlimited to $[-\\omega_c, \\omega_c]$, meaning its Fourier transform $F(j\\omega)$ is zero outside this interval.\n\nStep 1: Sampling process\n\nSampling is done using the impulse train:\n\n$p(t) = \\sum_{n=-\\infty}^{\\infty} \\delta(t - \\tau - nT_s)$\n\nMultiplying this with $f(t)$ gives:\n\n$y(t) = f(t) \\cdot p(t) = \\sum_{n=-\\infty}^{\\infty} f(\\tau + nT_s) \\cdot \\delta(t - \\tau - nT_s)$\n\nThis means we are taking samples of $f(t)$ at times $t = \\tau + nT_s$.\n\nStep 2: Filtering with ideal LPF\n\nThe sampled signal $y(t)$ is passed through an ideal lowpass filter with impulse response:\n\n$h(t) = T_s \\cdot \\text{sinc}\\left(\\frac{\\omega_c t}{\\pi}\\right)$\n\nThe output of the system is:\n\n$z(t) = y(t) * h(t) = \\sum_{n=-\\infty}^{\\infty} f(\\tau + nT_s) \\cdot h(t - \\tau - nT_s)$\n\nSubstitute $h(t)$:\n\n$z(t) = T_s \\sum_{n=-\\infty}^{\\infty} f(\\tau + nT_s) \\cdot \\text{sinc}\\left(\\frac{\\omega_c (t - \\tau - nT_s)}{\\pi}\\right)$\n\nThis is the reconstruction formula for $f(t)$, but it appears to reconstruct $f(t - \\tau)$ at first glance.\n\nStep 3: Time-invariance and interpretation\n\nHere's the key point:\n\nEven though the samples are taken at $t = \\tau + nT_s$, the reconstruction system is linear and time-invariant. A shift in sampling time does not affect the shape of the reconstructed signal, because the sinc interpolation is symmetric and consistent.\n\nHence, the filter effectively undoes the delay, and we recover the original signal $f(t)$.\n\nStep 4: Condition for perfect reconstruction\n\nPerfect reconstruction using sinc interpolation is possible only if there is no aliasing, which happens when:\n\n$T_s < \\dfrac{\\pi}{\\omega_c}$\n\nThis is the Nyquist condition for bandlimited signals.\n\nTherefore, the correct answer is **A**."
+        "markdown": "We are given that $f(t)$ is bandlimited to $[-\\omega_c, \\omega_c]$, meaning its Fourier transform $F(j\\omega)$ is zero outside this interval.\n\nStep 1: Sampling process\n\nSampling is done using the impulse train:\n\n$p(t) = \\sum_{n=-\\infty}^{\\infty} \\delta(t - \\tau - nT_s)$\n\nMultiplying this with $f(t)$ gives:\n\n$y(t) = f(t) \\cdot p(t) = \\sum_{n=-\\infty}^{\\infty} f(\\tau + nT_s) \\cdot \\delta(t - \\tau - nT_s)$\n\nThis means we are taking samples of $f(t)$ at times $t = \\tau + nT_s$.\n\nStep 2: Filtering with ideal LPF\n\nThe sampled signal $y(t)$ is passed through an ideal lowpass filter with impulse response:\n\n$h(t) = T_s \\cdot \\text{sinc}\\left(\\frac{\\omega_c t}{\\pi}\\right)$\n\nThe output of the system is:\n\n$z(t) = y(t) * h(t) = \\sum_{n=-\\infty}^{\\infty} f(\\tau + nT_s) \\cdot h(t - \\tau - nT_s)$\n\nSubstitute $h(t)$:\n\n$z(t) = T_s \\sum_{n=-\\infty}^{\\infty} f(\\tau + nT_s) \\cdot \\text{sinc}\\left(\\frac{\\omega_c (t - \\tau - nT_s)}{\\pi}\\right)$\n\nThis is the reconstruction formula for $f(t)$, but it appears to reconstruct $f(t - \\tau)$ at first glance.\n\nStep 3: Time-invariance and interpretation\n\nHere's the key point:\n\nEven though the samples are taken at $t = \\tau + nT_s$, the reconstruction system is linear and time-invariant. A shift in sampling time does not affect the shape of the reconstructed signal, because the sinc interpolation is symmetric and consistent.\n\nHence, the filter effectively undoes the delay, and we recover the original signal $f(t)$.\n\nStep 4: Condition for perfect reconstruction\n\nPerfect reconstruction using sinc interpolation is possible only if there is no aliasing, which happens when:\n\n$T_s < \\dfrac{\\pi}{\\omega_c}$\n\nThis is the Nyquist condition for bandlimited signals.",
+        "images": []
       }
     },
     "pp:ec:2025:q29": {
@@ -1187,7 +1221,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State",
-        "markdown": "$\\mathrm{v}_{\\mathrm{s}}(\\mathrm{t})=100 \\cos 200 \\mathrm{t}$\n\nRMS readings of $\\mathrm{M}_{1}$ voltmeter $=25 \\mathrm{~V}$\n\nRMS readings of $\\mathrm{M}_{2}$ ammeter $=5 \\mathrm{~A}$\n\nAcross RLC series circuit\n\nImpedance, $Z=R+j\\left(X_{L}-X_{C}\\right)$\n\n$|Z|=\\sqrt{R^{2}+\\left(X_{L}-X_{C}\\right)^{2}}$\n\n$\\frac{M_{1}}{M_{2}}=\\frac{|V|}{|I|}=\\sqrt{R^{2}+\\left(X_{L}-X_{C}\\right)^{2}}$\n\n$$\\begin{aligned}\n\n& 5=\\frac{25}{5}=\\sqrt{5^{2}+\\left(\\omega L-X_{C}\\right)^{2}}=\\sqrt{25+\\left(200-X_{C}\\right)^{2}} \\\\\n\n& 25=25+\\left(200-X_{C}\\right)^{2} \\\\\n\n& 200=X_{C} \\Rightarrow 200=\\frac{1}{\\omega C} \\\\\n\n& C=\\frac{1}{200 \\times 200}=\\frac{10^{-4}}{4}=25 \\times 10^{-6} \\\\\n\n& C=25 \\mu F\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\mathrm{v}_{\\mathrm{s}}(\\mathrm{t})=100 \\cos 200 \\mathrm{t}$\n\nRMS readings of $\\mathrm{M}_{1}$ voltmeter $=25 \\mathrm{~V}$\n\nRMS readings of $\\mathrm{M}_{2}$ ammeter $=5 \\mathrm{~A}$\n\nAcross RLC series circuit\n\nImpedance, $Z=R+j\\left(X_{L}-X_{C}\\right)$\n\n$|Z|=\\sqrt{R^{2}+\\left(X_{L}-X_{C}\\right)^{2}}$\n\n$\\frac{M_{1}}{M_{2}}=\\frac{|V|}{|I|}=\\sqrt{R^{2}+\\left(X_{L}-X_{C}\\right)^{2}}$\n\n$$\\begin{aligned}\n\n& 5=\\frac{25}{5}=\\sqrt{5^{2}+\\left(\\omega L-X_{C}\\right)^{2}}=\\sqrt{25+\\left(200-X_{C}\\right)^{2}} \\\\\n\n& 25=25+\\left(200-X_{C}\\right)^{2} \\\\\n\n& 200=X_{C} \\Rightarrow 200=\\frac{1}{\\omega C} \\\\\n\n& C=\\frac{1}{200 \\times 200}=\\frac{10^{-4}}{4}=25 \\times 10^{-6} \\\\\n\n& C=25 \\mu F\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2025:q30": {
@@ -1228,7 +1263,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "$\\Delta \\rightarrow \\mathrm{Y}$ conversion\n\n( $\\mathrm{Z} \\rightarrow \\mathrm{Z} / 3$ )\n\n<img src=\"/question-images/ec/2025/ec-2025-4f2a32f3f0.webp\"/>\n\nFor T-network, Z-parameters\n\n$$\\begin{aligned}\n\n& {\\left[\\begin{array}{ll}\n\n\\mathrm{Z}_{11} & \\mathrm{Z}_{12}\n\n\\mathrm{Z}_{21} & \\mathrm{Z}_{22}\n\n\\end{array}\\right]=\\left[\\begin{array}{cc}\n\n\\frac{8}{3}+\\frac{2}{3} & \\frac{2}{3}\n\n\\frac{2}{3} & \\frac{8}{3}+\\frac{2}{3}\n\n\\end{array}\\right]}\n\n& {[\\mathrm{Z}]=\\left[\\begin{array}{cc}\n\n\\frac{10}{3} & \\frac{2}{3}\n\n\\frac{2}{3} & \\frac{10}{3}\n\n\\end{array}\\right]}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\Delta \\rightarrow \\mathrm{Y}$ conversion\n\n( $\\mathrm{Z} \\rightarrow \\mathrm{Z} / 3$ )\n\n<img src=\"/question-images/ec/2025/ec-2025-4f2a32f3f0.webp\"/>\n\nFor T-network, Z-parameters\n\n$$\\begin{aligned}\n\n& {\\left[\\begin{array}{ll}\n\n\\mathrm{Z}_{11} & \\mathrm{Z}_{12}\n\n\\mathrm{Z}_{21} & \\mathrm{Z}_{22}\n\n\\end{array}\\right]=\\left[\\begin{array}{cc}\n\n\\frac{8}{3}+\\frac{2}{3} & \\frac{2}{3}\n\n\\frac{2}{3} & \\frac{8}{3}+\\frac{2}{3}\n\n\\end{array}\\right]}\n\n& {[\\mathrm{Z}]=\\left[\\begin{array}{cc}\n\n\\frac{10}{3} & \\frac{2}{3}\n\n\\frac{2}{3} & \\frac{10}{3}\n\n\\end{array}\\right]}\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-4f2a32f3f0.webp"
+        ]
       }
     },
     "pp:ec:2025:q31": {
@@ -1269,7 +1307,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "Given: $S \\in {-2,\\ 0,\\ 2}$ uniformly at random\n\n$Y = S + N$, where $N \\sim \\mathcal{N}(0,\\ \\sigma^2)$\n\nML decoder chooses the symbol closest to $Y$, so decision boundaries are at $Y = -1$ and $Y = 1$\n\nCase 1: $S = -2$\n\n$Y = -2 + N$\n\nError occurs when $Y > -1 \\Rightarrow N > 1$\n\nSo, $P_e|S = -2 = P(N > 1)$\n\nCase 2: $S = 0$\n\n$Y = N$\n\nError occurs when $|N| > 1$\n\nSo, $P_e|S = 0 = P(N < -1) + P(N > 1) = 2P(N > 1)$\n\nCase 3: $S = 2$\n\n$Y = 2 + N$\n\nError occurs when $Y < 1 \\Rightarrow N < -1$\n\nSo, $P_e|S = 2 = P(N < -1) = P(N > 1)$\n\nAverage probability of error:\n\n$P_e = \\frac{1}{3} \\left(P(N > 1) + 2P(N > 1) + P(N > 1)\\right)$\n\n$P_e = \\frac{4}{3} \\cdot P(N > 1)$\n\nSo, $\\alpha = \\frac{4}{3}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Given: $S \\in {-2,\\ 0,\\ 2}$ uniformly at random\n\n$Y = S + N$, where $N \\sim \\mathcal{N}(0,\\ \\sigma^2)$\n\nML decoder chooses the symbol closest to $Y$, so decision boundaries are at $Y = -1$ and $Y = 1$\n\nCase 1: $S = -2$\n\n$Y = -2 + N$\n\nError occurs when $Y > -1 \\Rightarrow N > 1$\n\nSo, $P_e|S = -2 = P(N > 1)$\n\nCase 2: $S = 0$\n\n$Y = N$\n\nError occurs when $|N| > 1$\n\nSo, $P_e|S = 0 = P(N < -1) + P(N > 1) = 2P(N > 1)$\n\nCase 3: $S = 2$\n\n$Y = 2 + N$\n\nError occurs when $Y < 1 \\Rightarrow N < -1$\n\nSo, $P_e|S = 2 = P(N < -1) = P(N > 1)$\n\nAverage probability of error:\n\n$P_e = \\frac{1}{3} \\left(P(N > 1) + 2P(N > 1) + P(N > 1)\\right)$\n\n$P_e = \\frac{4}{3} \\cdot P(N > 1)$\n\nSo, $\\alpha = \\frac{4}{3}$",
+        "images": []
       }
     },
     "pp:ec:2025:q32": {
@@ -1310,7 +1349,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "We are given:\n\n$f(t) = \\sum_{n=1}^{N} a_n , p(t - nT)$\n\n$a_n$: zero-mean, unit-variance, pairwise independent\n\n$p(t) = 1$ for $t \\in [0,\\ 0.5T]$, and 0 otherwise\n\n(i) Mean of $f(t)$:\n\nWe use linearity of expectation:\n\n$E[f(t)] = \\sum_{n=1}^{N} E[a_n] \\cdot p(t - nT)$\n\nBut $E[a_n] = 0$ for all $n$, so:\n\n$E[f(t)] = 0$ for all $t$ $\\Rightarrow$   Mean is zero and time-independent\n\nSo, (i) is TRUE\n\n(ii) Autocorrelation function $R_f(t, \\tau) = E[f(t)f(t + \\tau)]$:\n\nExpand:\n\n$f(t) = \\sum_{n=1}^{N} a_n p(t - nT)$\n\n$f(t + \\tau) = \\sum_{m=1}^{N} a_m p(t + \\tau - mT)$\n\nSo:\n\n$E[f(t)f(t + \\tau)] = E\\left[ \\sum_{n=1}^{N} \\sum_{m=1}^{N} a_n a_m , p(t - nT) p(t + \\tau - mT) \\right]$\n\nSince $a_n$ are zero-mean and pairwise independent:\n\n$E[a_n a_m] = 0$ for $n \\neq m$, and $E[a_n^2] = 1$\n\nSo only diagonal terms survive:\n\n$E[f(t)f(t + \\tau)] = \\sum_{n=1}^{N} p(t - nT) \\cdot p(t + \\tau - nT)$\n\nNote: $p(t - nT) \\cdot p(t + \\tau - nT)$ depends on $t$ and $\\tau$, so the sum depends on $t$\n\n$\\Rightarrow$ Autocorrelation is not time-invariant\n\nSo, (ii) is FALSE\n\nTherefore, the correct answer is **A**."
+        "markdown": "We are given:\n\n$f(t) = \\sum_{n=1}^{N} a_n , p(t - nT)$\n\n$a_n$: zero-mean, unit-variance, pairwise independent\n\n$p(t) = 1$ for $t \\in [0,\\ 0.5T]$, and 0 otherwise\n\n(i) Mean of $f(t)$:\n\nWe use linearity of expectation:\n\n$E[f(t)] = \\sum_{n=1}^{N} E[a_n] \\cdot p(t - nT)$\n\nBut $E[a_n] = 0$ for all $n$, so:\n\n$E[f(t)] = 0$ for all $t$ $\\Rightarrow$   Mean is zero and time-independent\n\nSo, (i) is TRUE\n\n(ii) Autocorrelation function $R_f(t, \\tau) = E[f(t)f(t + \\tau)]$:\n\nExpand:\n\n$f(t) = \\sum_{n=1}^{N} a_n p(t - nT)$\n\n$f(t + \\tau) = \\sum_{m=1}^{N} a_m p(t + \\tau - mT)$\n\nSo:\n\n$E[f(t)f(t + \\tau)] = E\\left[ \\sum_{n=1}^{N} \\sum_{m=1}^{N} a_n a_m , p(t - nT) p(t + \\tau - mT) \\right]$\n\nSince $a_n$ are zero-mean and pairwise independent:\n\n$E[a_n a_m] = 0$ for $n \\neq m$, and $E[a_n^2] = 1$\n\nSo only diagonal terms survive:\n\n$E[f(t)f(t + \\tau)] = \\sum_{n=1}^{N} p(t - nT) \\cdot p(t + \\tau - nT)$\n\nNote: $p(t - nT) \\cdot p(t + \\tau - nT)$ depends on $t$ and $\\tau$, so the sum depends on $t$\n\n$\\Rightarrow$ Autocorrelation is not time-invariant\n\nSo, (ii) is FALSE",
+        "images": []
       }
     },
     "pp:ec:2025:q33": {
@@ -1351,7 +1391,11 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
-        "markdown": "DC analysis (ac input voltages are considered zero)\n\n<img src=\"/question-images/ec/2025/ec-2025-fa79b7f72f.webp\"/>\n\n$\\mathrm{I}_{\\mathrm{D} 1}=\\mathrm{I}_{\\mathrm{D} 2}=\\frac{2 \\mathrm{~mA}}{2}=1 \\mathrm{~mA}$\n\n$\\mathrm{V}_{3(\\mathrm{DC})}=5-1 \\mathrm{~m}(1 \\mathrm{k})=4 \\mathrm{~V}$\n\nac analysis (DC voltages are considered 0V)\n\n<img src=\"/question-images/ec/2025/ec-2025-f3bfe5784c.webp\"/>\n\n$\\mathrm{V}_{3}=-\\mathrm{i}_{\\mathrm{d} 1}(1 \\mathrm{k} \\Omega)$ __________(1)\n\n$-\\mathrm{V}_{1}+\\mathrm{V}_{\\mathrm{gs} 1}-\\mathrm{V}_{\\mathrm{gs} 2}+\\mathrm{V}_{2}=0$\n\n$\\Rightarrow \\mathrm{V}_{1}-\\mathrm{V}_{2}=\\mathrm{V}_{\\mathrm{gsl}}-\\mathrm{V}_{\\mathrm{g}}$ __________(2)\n\nBut $\\mathrm{V}_{\\mathrm{gs} 1}=-\\mathrm{V}_{\\mathrm{gs} 2}=\\mathrm{V}_{\\mathrm{gs}}$ (in a differential amplifier)\n\n$\\mathrm{V}_{1}=-\\mathrm{V}_{2}=0.01 \\sin \\omega \\mathrm{t}$\n\n$\\mathrm{i}_{\\mathrm{d} 1}=-\\mathrm{i}_{\\mathrm{d} 2}=\\mathrm{i}_{\\mathrm{d}}$\n\n$\\therefore$ From (2)\n\n$0.01 \\sin \\omega \\mathrm{t}+0.01 \\sin \\omega \\mathrm{t}=2 \\mathrm{~V}_{\\mathrm{gs}}$\n\n$\\therefore \\frac{\\mathrm{V}_{3}}{\\mathrm{~V}_{1}-\\mathrm{V}_{2}}=\\frac{-\\mathrm{i}_{\\mathrm{d}}(1 \\mathrm{k})}{2 \\mathrm{~V}_{\\mathrm{gs}}}$\n\n$\\Rightarrow \\frac{\\mathrm{V}_{3}}{0.02 \\sin \\omega \\mathrm{t}}=\\frac{1}{2}\\left(-\\mathrm{g}_{\\mathrm{m}}\\right)(1 \\mathrm{k})$\n\n$\\mathrm{V}_{3}=\\frac{1}{2}(-5 \\mathrm{~m})(1 \\mathrm{k})(0.02 \\sin \\omega \\mathrm{t})$\n\n$\\mathrm{V}_{3}=-0.05 \\sin \\omega \\mathrm{t}$\n\n$\\therefore \\mathrm{V}_{3(\\text { total })}=\\mathrm{V}_{3(\\mathrm{DC})}+\\mathrm{V}_{3(\\mathrm{ac})}=4-0.05 \\sin \\omega \\mathrm{t}(\\mathrm{V})$\n\nTherefore, the correct answer is **D**."
+        "markdown": "DC analysis (ac input voltages are considered zero)\n\n<img src=\"/question-images/ec/2025/ec-2025-fa79b7f72f.webp\"/>\n\n$\\mathrm{I}_{\\mathrm{D} 1}=\\mathrm{I}_{\\mathrm{D} 2}=\\frac{2 \\mathrm{~mA}}{2}=1 \\mathrm{~mA}$\n\n$\\mathrm{V}_{3(\\mathrm{DC})}=5-1 \\mathrm{~m}(1 \\mathrm{k})=4 \\mathrm{~V}$\n\nac analysis (DC voltages are considered 0V)\n\n<img src=\"/question-images/ec/2025/ec-2025-f3bfe5784c.webp\"/>\n\n$\\mathrm{V}_{3}=-\\mathrm{i}_{\\mathrm{d} 1}(1 \\mathrm{k} \\Omega)$ __________(1)\n\n$-\\mathrm{V}_{1}+\\mathrm{V}_{\\mathrm{gs} 1}-\\mathrm{V}_{\\mathrm{gs} 2}+\\mathrm{V}_{2}=0$\n\n$\\Rightarrow \\mathrm{V}_{1}-\\mathrm{V}_{2}=\\mathrm{V}_{\\mathrm{gsl}}-\\mathrm{V}_{\\mathrm{g}}$ __________(2)\n\nBut $\\mathrm{V}_{\\mathrm{gs} 1}=-\\mathrm{V}_{\\mathrm{gs} 2}=\\mathrm{V}_{\\mathrm{gs}}$ (in a differential amplifier)\n\n$\\mathrm{V}_{1}=-\\mathrm{V}_{2}=0.01 \\sin \\omega \\mathrm{t}$\n\n$\\mathrm{i}_{\\mathrm{d} 1}=-\\mathrm{i}_{\\mathrm{d} 2}=\\mathrm{i}_{\\mathrm{d}}$\n\n$\\therefore$ From (2)\n\n$0.01 \\sin \\omega \\mathrm{t}+0.01 \\sin \\omega \\mathrm{t}=2 \\mathrm{~V}_{\\mathrm{gs}}$\n\n$\\therefore \\frac{\\mathrm{V}_{3}}{\\mathrm{~V}_{1}-\\mathrm{V}_{2}}=\\frac{-\\mathrm{i}_{\\mathrm{d}}(1 \\mathrm{k})}{2 \\mathrm{~V}_{\\mathrm{gs}}}$\n\n$\\Rightarrow \\frac{\\mathrm{V}_{3}}{0.02 \\sin \\omega \\mathrm{t}}=\\frac{1}{2}\\left(-\\mathrm{g}_{\\mathrm{m}}\\right)(1 \\mathrm{k})$\n\n$\\mathrm{V}_{3}=\\frac{1}{2}(-5 \\mathrm{~m})(1 \\mathrm{k})(0.02 \\sin \\omega \\mathrm{t})$\n\n$\\mathrm{V}_{3}=-0.05 \\sin \\omega \\mathrm{t}$\n\n$\\therefore \\mathrm{V}_{3(\\text { total })}=\\mathrm{V}_{3(\\mathrm{DC})}+\\mathrm{V}_{3(\\mathrm{ac})}=4-0.05 \\sin \\omega \\mathrm{t}(\\mathrm{V})$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-fa79b7f72f.webp",
+          "/question-images/ec/2025/ec-2025-f3bfe5784c.webp"
+        ]
       }
     },
     "pp:ec:2025:q34": {
@@ -1392,7 +1436,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
-        "markdown": "The maximum SNR for n bit\n\n$=6.02 \\times \\mathrm{n}+1.76 \\mathrm{~dB}$\n\nFor 10 bits $=6.02 \\times 10+1.76 \\mathrm{~dB}=61.96 \\mathrm{~dB}$\n\nThe sampling frequency is 1 MHz and each sample is converted into 10 bits. So, the data rate at the output $=10 \\times 1 \\mathrm{M}$ bits per second $=10 \\mathrm{Mbps}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The maximum SNR for n bit\n\n$=6.02 \\times \\mathrm{n}+1.76 \\mathrm{~dB}$\n\nFor 10 bits $=6.02 \\times 10+1.76 \\mathrm{~dB}=61.96 \\mathrm{~dB}$\n\nThe sampling frequency is 1 MHz and each sample is converted into 10 bits. So, the data rate at the output $=10 \\times 1 \\mathrm{M}$ bits per second $=10 \\mathrm{Mbps}$",
+        "images": []
       }
     },
     "pp:ec:2025:q35": {
@@ -1433,7 +1478,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-1f54a16303.webp\"/>\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-1f54a16303.webp\"/>",
+        "images": [
+          "/question-images/ec/2025/ec-2025-1f54a16303.webp"
+        ]
       }
     },
     "pp:ec:2025:q36": {
@@ -1474,7 +1522,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "We are given:\n\n$n_i = 2.5 \\times 10^{16}\\ \\text{m}^{-3}$\n\n$\\mu_n = 0.15\\ \\text{m}^2/\\text{V?s}$\n\n$\\mu_p = 0.05\\ \\text{m}^2/\\text{V?s}$\n\n$e = 1.6 \\times 10^{-19}\\ \\text{C}$\n\nThe intrinsic conductivity is given by:\n\n$\\sigma = e \\cdot n_i \\cdot (\\mu_n + \\mu_p)$\n\nSubstitute values:\n\n$\\sigma = 1.6 \\times 10^{-19} \\cdot 2.5 \\times 10^{16} \\cdot (0.15 + 0.05)$\n\n$\\sigma = 1.6 \\times 10^{-19} \\cdot 2.5 \\times 10^{16} \\cdot 0.20$\n\nFirst calculate:\n\n$1.6 \\times 2.5 = 4.0$\n\n$4.0 \\times 0.20 = 0.8$\n\nSo:\n\n$\\sigma = 0.8 \\times 10^{-3} = 8 \\times 10^{-4}\\ \\text{S/m}$\n\nThen resistivity is:\n\n$\\rho = \\frac{1}{\\sigma} = \\frac{1}{8 \\times 10^{-4}} = 1250\\ \\Omega \\cdot \\text{m} = 1.25\\ \\text{k}\\Omega \\cdot \\text{m}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "We are given:\n\n$n_i = 2.5 \\times 10^{16}\\ \\text{m}^{-3}$\n\n$\\mu_n = 0.15\\ \\text{m}^2/\\text{V?s}$\n\n$\\mu_p = 0.05\\ \\text{m}^2/\\text{V?s}$\n\n$e = 1.6 \\times 10^{-19}\\ \\text{C}$\n\nThe intrinsic conductivity is given by:\n\n$\\sigma = e \\cdot n_i \\cdot (\\mu_n + \\mu_p)$\n\nSubstitute values:\n\n$\\sigma = 1.6 \\times 10^{-19} \\cdot 2.5 \\times 10^{16} \\cdot (0.15 + 0.05)$\n\n$\\sigma = 1.6 \\times 10^{-19} \\cdot 2.5 \\times 10^{16} \\cdot 0.20$\n\nFirst calculate:\n\n$1.6 \\times 2.5 = 4.0$\n\n$4.0 \\times 0.20 = 0.8$\n\nSo:\n\n$\\sigma = 0.8 \\times 10^{-3} = 8 \\times 10^{-4}\\ \\text{S/m}$\n\nThen resistivity is:\n\n$\\rho = \\frac{1}{\\sigma} = \\frac{1}{8 \\times 10^{-4}} = 1250\\ \\Omega \\cdot \\text{m} = 1.25\\ \\text{k}\\Omega \\cdot \\text{m}$",
+        "images": []
       }
     },
     "pp:ec:2025:q37": {
@@ -1515,7 +1564,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-7c73f8ad26.webp\"/>\n\nGiven $\\beta=120$ and $\\mathrm{I}_{\\mathrm{Cl}}=12 \\mathrm{~mA}$\n\n$\\Rightarrow \\mathrm{I}_{\\mathrm{B} 1}=\\frac{12 \\mathrm{~mA}}{\\beta}=\\frac{12 \\mathrm{~m}}{120}=0.1 \\mathrm{~mA}$\n\n$\\mathrm{I}_{\\mathrm{E} 1}=\\mathrm{I}_{\\mathrm{C} 1}+\\mathrm{I}_{\\mathrm{B} 1}=12.1 \\mathrm{~mA}$\n\n$\\mathrm{I}_{\\mathrm{R} 1}=25 \\mathrm{~m}+\\mathrm{I}_{\\mathrm{B} 1}=25+0.1=25.1 \\mathrm{~mA}$\n\n$\\mathrm{V}_{\\mathrm{B} 1}=20-(0.7+5)=14.3 \\mathrm{~V}$\n\n$\\mathrm{R}_{1}=\\frac{\\mathrm{V}_{\\mathrm{Bl}}}{\\mathrm{I}_{\\mathrm{R} 1}}=\\frac{14.3}{25.1 \\mathrm{~m}}=0.569 \\mathrm{k} \\Omega \\simeq 0.6 \\mathrm{k} \\Omega$\n\n$\\mathrm{V}_{\\mathrm{E} 1}=0.7+\\mathrm{V}_{\\mathrm{B} 1}=0.7+14.3=15 \\mathrm{~V}$\n\n$\\mathrm{R}_{2}=\\frac{20-\\mathrm{V}_{\\mathrm{E} 1}}{\\mathrm{I}_{\\mathrm{E} 1}}=\\frac{20-15}{12.1 \\mathrm{~m}}=0.413 \\mathrm{k} \\Omega \\simeq 0.4 \\mathrm{k} \\Omega$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-7c73f8ad26.webp\"/>\n\nGiven $\\beta=120$ and $\\mathrm{I}_{\\mathrm{Cl}}=12 \\mathrm{~mA}$\n\n$\\Rightarrow \\mathrm{I}_{\\mathrm{B} 1}=\\frac{12 \\mathrm{~mA}}{\\beta}=\\frac{12 \\mathrm{~m}}{120}=0.1 \\mathrm{~mA}$\n\n$\\mathrm{I}_{\\mathrm{E} 1}=\\mathrm{I}_{\\mathrm{C} 1}+\\mathrm{I}_{\\mathrm{B} 1}=12.1 \\mathrm{~mA}$\n\n$\\mathrm{I}_{\\mathrm{R} 1}=25 \\mathrm{~m}+\\mathrm{I}_{\\mathrm{B} 1}=25+0.1=25.1 \\mathrm{~mA}$\n\n$\\mathrm{V}_{\\mathrm{B} 1}=20-(0.7+5)=14.3 \\mathrm{~V}$\n\n$\\mathrm{R}_{1}=\\frac{\\mathrm{V}_{\\mathrm{Bl}}}{\\mathrm{I}_{\\mathrm{R} 1}}=\\frac{14.3}{25.1 \\mathrm{~m}}=0.569 \\mathrm{k} \\Omega \\simeq 0.6 \\mathrm{k} \\Omega$\n\n$\\mathrm{V}_{\\mathrm{E} 1}=0.7+\\mathrm{V}_{\\mathrm{B} 1}=0.7+14.3=15 \\mathrm{~V}$\n\n$\\mathrm{R}_{2}=\\frac{20-\\mathrm{V}_{\\mathrm{E} 1}}{\\mathrm{I}_{\\mathrm{E} 1}}=\\frac{20-15}{12.1 \\mathrm{~m}}=0.413 \\mathrm{k} \\Omega \\simeq 0.4 \\mathrm{k} \\Omega$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-7c73f8ad26.webp"
+        ]
       }
     },
     "pp:ec:2025:q38": {
@@ -1556,7 +1608,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "Given: $\\mu_{\\mathrm{n}}=0.38 \\mathrm{~m}^{2} / \\mathrm{V}$-sec at $\\mathrm{T}=300^{\\circ} \\mathrm{K}$\n\nAs $D_{n}=\\mu_{n} V_{T}=\\mu_{n} \\cdot \\frac{T}{11600}$\n\nAt $300^{\\circ} \\mathrm{K}, \\mathrm{D}_{\\mathrm{n}}=0.38 \\times \\frac{300}{11600}$\n\n$\\therefore \\mathrm{D}_{\\mathrm{n}}=98.26 \\mathrm{~cm}^{2} / \\mathrm{sec}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given: $\\mu_{\\mathrm{n}}=0.38 \\mathrm{~m}^{2} / \\mathrm{V}$-sec at $\\mathrm{T}=300^{\\circ} \\mathrm{K}$\n\nAs $D_{n}=\\mu_{n} V_{T}=\\mu_{n} \\cdot \\frac{T}{11600}$\n\nAt $300^{\\circ} \\mathrm{K}, \\mathrm{D}_{\\mathrm{n}}=0.38 \\times \\frac{300}{11600}$\n\n$\\therefore \\mathrm{D}_{\\mathrm{n}}=98.26 \\mathrm{~cm}^{2} / \\mathrm{sec}$",
+        "images": []
       }
     },
     "pp:ec:2025:q39": {
@@ -1597,7 +1650,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$$\\begin{aligned}\n\n\\mathrm{Q} &=\\iint 4|\\mathrm{y}| \\mathrm{dx} \\mathrm{dy}=4 \\iint 4 \\mathrm{ydx} \\mathrm{dy} \\\\\n\n& =16 \\int \\mathrm{dx} \\int \\mathrm{ydy}=16[\\mathrm{x}]_{0}^{2}\\left[\\frac{\\mathrm{y}^{2}}{2}\\right]_{0}^{2} \\\\\n\n& =16 \\times 2 \\times \\frac{2^{2}}{2}=16 \\times 4=64 \\mu \\mathrm{C}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned}\n\n\\mathrm{Q} &=\\iint 4|\\mathrm{y}| \\mathrm{dx} \\mathrm{dy}=4 \\iint 4 \\mathrm{ydx} \\mathrm{dy} \\\\\n\n& =16 \\int \\mathrm{dx} \\int \\mathrm{ydy}=16[\\mathrm{x}]_{0}^{2}\\left[\\frac{\\mathrm{y}^{2}}{2}\\right]_{0}^{2} \\\\\n\n& =16 \\times 2 \\times \\frac{2^{2}}{2}=16 \\times 4=64 \\mu \\mathrm{C}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2025:q40": {
@@ -1638,7 +1692,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$\\mathrm{J}=\\sigma \\mathrm{E}=0.01 \\times 5.8 \\times 10^{7}$\n\nCurrent,\n\n$$\\begin{aligned}\n\nI &=J \\pi r^{2} \\\\\n\n& =0.01 \\times 5.8 \\times 10^{7} \\times \\pi \\times\\left(0.5 \\times 10^{-3}\\right)^{2} \\\\\n\n& =0.045 \\times 10^{7} \\times 10^{-6}=0.46 \\mathrm{~A}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\mathrm{J}=\\sigma \\mathrm{E}=0.01 \\times 5.8 \\times 10^{7}$\n\nCurrent,\n\n$$\\begin{aligned}\n\nI &=J \\pi r^{2} \\\\\n\n& =0.01 \\times 5.8 \\times 10^{7} \\times \\pi \\times\\left(0.5 \\times 10^{-3}\\right)^{2} \\\\\n\n& =0.045 \\times 10^{7} \\times 10^{-6}=0.46 \\mathrm{~A}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2025:q41": {
@@ -1678,8 +1733,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Given $\\mathrm{m}, \\mathrm{M}$ are min and max values of $\\mathrm{f}(\\mathrm{x})$\n\n$\\Rightarrow \\mathrm{m} \\leq \\mathrm{f}(\\mathrm{x}) \\leq \\mathrm{M}$\n\n$\\Rightarrow \\int_{a}^{b} m d x \\leq \\int_{a}^{b} f(x) d x \\leq \\int_{a}^{b} M d x$\n\n$\\Rightarrow \\int_{2}^{8} \\mathrm{mdx} \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\int_{2}^{8} \\mathrm{Mdx}$\n\n$\\Rightarrow 6 \\mathrm{~m} \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\int 6 \\mathrm{M}$ _____(1)\n\nGiven $\\beta \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\alpha$ _____(2)\n\nFrom (1) and (2) possible values of $\\alpha, \\beta$ are\n\n$\\beta=6 \\mathrm{~m}, \\alpha=5 \\mathrm{M}$\n\n$\\beta=7 \\mathrm{~m}, \\alpha=6 \\mathrm{M}$\n\n$\\beta=7 \\mathrm{~m}, \\alpha=5 \\mathrm{M}$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EC) - Calculus",
+        "markdown": "Given $\\mathrm{m}, \\mathrm{M}$ are min and max values of $\\mathrm{f}(\\mathrm{x})$\n\n$\\Rightarrow \\mathrm{m} \\leq \\mathrm{f}(\\mathrm{x}) \\leq \\mathrm{M}$\n\n$\\Rightarrow \\int_{a}^{b} m d x \\leq \\int_{a}^{b} f(x) d x \\leq \\int_{a}^{b} M d x$\n\n$\\Rightarrow \\int_{2}^{8} \\mathrm{mdx} \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\int_{2}^{8} \\mathrm{Mdx}$\n\n$\\Rightarrow 6 \\mathrm{~m} \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\int 6 \\mathrm{M}$ _____(1)\n\nGiven $\\beta \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\alpha$ _____(2)\n\nFrom (1) and (2) possible values of $\\alpha, \\beta$ are\n\n$\\beta=6 \\mathrm{~m}, \\alpha=5 \\mathrm{M}$\n\n$\\beta=7 \\mathrm{~m}, \\alpha=6 \\mathrm{M}$\n\n$\\beta=7 \\mathrm{~m}, \\alpha=5 \\mathrm{M}$",
+        "images": []
       }
     },
     "pp:ec:2025:q42": {
@@ -1719,8 +1775,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "Let $f(z)=e^{z}$\n\nThen the function $f(z)$ is every where analytic $\\Rightarrow f(z)$ is analytic at every inside and on the given region $|z|=1$ (or) unit circle.\n\n$\\therefore$ By a Cauchy's theorem, we have $\\oint_{C} f(z)=0$\n\nLet $\\mathrm{f}(\\mathrm{z})=\\mathrm{z}^{\\mathrm{n}}$, where ' n ' is an even integers\n\nThen $$f(z)= \\begin{cases}z^{n}, & n > 0 \\\\ \\frac{1}{z^{n}}, & n < 0\\end{cases}$$\n\nfor $\\mathrm{n}>0, \\mathrm{I}_{1}=\\oint_{\\mathrm{C}} \\mathrm{z}^{\\mathrm{n}} \\mathrm{dz}=0$\n\n$\\therefore\\left(f(z)=z^{n}\\right.$ is analytic every point inside and on a given region $|z|=1$ ).\n\nfor $\\mathrm{n}<0, \\mathrm{I}_{2}=\\oint_{\\mathrm{C}} \\frac{1}{\\mathrm{z}^{\\mathrm{n}}} \\mathrm{dz}$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\oint_{\\mathrm{C}} \\frac{1}{(\\mathrm{z}-0)^{\\mathrm{n}}} \\mathrm{dz} \\quad\\left(\\because \\int_{\\mathrm{C}} \\frac{\\phi(\\mathrm{z})}{\\left[\\overline{\\mathrm{z}}-\\mathrm{z}_{0}\\right]^{\\mathrm{n}}} \\mathrm{dz}=\\oint_{\\mathrm{C}} \\mathrm{f}(\\mathrm{z}) \\mathrm{dz}\\right)$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\frac{2 \\pi \\mathrm{i}}{(\\mathrm{n}-1)!} \\frac{\\mathrm{d}^{\\mathrm{n}-1}}{\\mathrm{dz}^{\\mathrm{n}-1}}(1)$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\frac{2 \\pi \\mathrm{i}}{(\\mathrm{n}-1)!}(0)=0$\n\nLet $\\mathrm{f}(\\mathrm{z})=\\cos (\\mathrm{z})$\n\nThen $f(z)$ is every where analytic\n\n$\\Rightarrow f(z)$ is analytic at every point inside and on the given region $|z|=1$.\n\n$\\therefore$ By a Cauchy's theorem, we have $\\oint_{C} f(z) d z=0$\n\nLet $f(z)=\\sec (z)$\n\nThen $f(z)=\\frac{1}{\\cos (z)}$\n\n$\\Rightarrow$ The singular points of $f(z)$ are given by $\\cos (\\mathrm{z})=0$\n\n$\\Rightarrow \\mathrm{z}=(2 \\mathrm{n}+1) \\frac{\\pi}{2}, \\mathrm{n} \\in \\mathrm{I}$\n\n$\\Rightarrow z= \\pm \\frac{\\pi}{2}, \\pm \\frac{3 \\pi}{2},--$ are singular points\n\nBut all the singular points lie outside the given region $|z|=1$\n\nBy a Cauchy's Theorem we have\n\n$\\oint_{C} f(z) d z=0$\n\nHence, options A and B are TRUE.\n\nTherefore, the correct option(s) are **A, B**."
+        "concept": "Engineering Mathematics (EC) - Complex Variables",
+        "markdown": "Let $f(z)=e^{z}$\n\nThen the function $f(z)$ is every where analytic $\\Rightarrow f(z)$ is analytic at every inside and on the given region $|z|=1$ (or) unit circle.\n\n$\\therefore$ By a Cauchy's theorem, we have $\\oint_{C} f(z)=0$\n\nLet $\\mathrm{f}(\\mathrm{z})=\\mathrm{z}^{\\mathrm{n}}$, where ' n ' is an even integers\n\nThen $$f(z)= \\begin{cases}z^{n}, & n > 0 \\\\ \\frac{1}{z^{n}}, & n < 0\\end{cases}$$\n\nfor $\\mathrm{n}>0, \\mathrm{I}_{1}=\\oint_{\\mathrm{C}} \\mathrm{z}^{\\mathrm{n}} \\mathrm{dz}=0$\n\n$\\therefore\\left(f(z)=z^{n}\\right.$ is analytic every point inside and on a given region $|z|=1$ ).\n\nfor $\\mathrm{n}<0, \\mathrm{I}_{2}=\\oint_{\\mathrm{C}} \\frac{1}{\\mathrm{z}^{\\mathrm{n}}} \\mathrm{dz}$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\oint_{\\mathrm{C}} \\frac{1}{(\\mathrm{z}-0)^{\\mathrm{n}}} \\mathrm{dz} \\quad\\left(\\because \\int_{\\mathrm{C}} \\frac{\\phi(\\mathrm{z})}{\\left[\\overline{\\mathrm{z}}-\\mathrm{z}_{0}\\right]^{\\mathrm{n}}} \\mathrm{dz}=\\oint_{\\mathrm{C}} \\mathrm{f}(\\mathrm{z}) \\mathrm{dz}\\right)$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\frac{2 \\pi \\mathrm{i}}{(\\mathrm{n}-1)!} \\frac{\\mathrm{d}^{\\mathrm{n}-1}}{\\mathrm{dz}^{\\mathrm{n}-1}}(1)$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\frac{2 \\pi \\mathrm{i}}{(\\mathrm{n}-1)!}(0)=0$\n\nLet $\\mathrm{f}(\\mathrm{z})=\\cos (\\mathrm{z})$\n\nThen $f(z)$ is every where analytic\n\n$\\Rightarrow f(z)$ is analytic at every point inside and on the given region $|z|=1$.\n\n$\\therefore$ By a Cauchy's theorem, we have $\\oint_{C} f(z) d z=0$\n\nLet $f(z)=\\sec (z)$\n\nThen $f(z)=\\frac{1}{\\cos (z)}$\n\n$\\Rightarrow$ The singular points of $f(z)$ are given by $\\cos (\\mathrm{z})=0$\n\n$\\Rightarrow \\mathrm{z}=(2 \\mathrm{n}+1) \\frac{\\pi}{2}, \\mathrm{n} \\in \\mathrm{I}$\n\n$\\Rightarrow z= \\pm \\frac{\\pi}{2}, \\pm \\frac{3 \\pi}{2},--$ are singular points\n\nBut all the singular points lie outside the given region $|z|=1$\n\nBy a Cauchy's Theorem we have\n\n$\\oint_{C} f(z) d z=0$\n\nHence, options A and B are TRUE.",
+        "images": []
       }
     },
     "pp:ec:2025:q43": {
@@ -1761,7 +1818,10 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
-        "markdown": "Here given \"A\" matrix is in the diagonal canonical form [D.C.F] hence\n\nT.F $=\\frac{\\mathrm{k}_{1}}{(\\mathrm{~s}-2)}+\\frac{\\mathrm{k}_{2}}{(\\mathrm{~s}+2)}+\\frac{\\mathrm{k}_{3}}{\\mathrm{~s}}$\n\nHere poles $\\Rightarrow \\mathrm{s}=-2,+2,0$\n\n<img src=\"/question-images/ec/2025/ec-2025-9c77c61653.webp\"/>\n\nHere one pole is in the right half of s-plane so at least one of the signals ${x}_{1}({t}), {x}_{2}({t})$ and ${x}_{3}({t})$ are unbounded.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Here given \"A\" matrix is in the diagonal canonical form [D.C.F] hence\n\nT.F $=\\frac{\\mathrm{k}_{1}}{(\\mathrm{~s}-2)}+\\frac{\\mathrm{k}_{2}}{(\\mathrm{~s}+2)}+\\frac{\\mathrm{k}_{3}}{\\mathrm{~s}}$\n\nHere poles $\\Rightarrow \\mathrm{s}=-2,+2,0$\n\n<img src=\"/question-images/ec/2025/ec-2025-9c77c61653.webp\"/>\n\nHere one pole is in the right half of s-plane so at least one of the signals ${x}_{1}({t}), {x}_{2}({t})$ and ${x}_{3}({t})$ are unbounded.",
+        "images": [
+          "/question-images/ec/2025/ec-2025-9c77c61653.webp"
+        ]
       }
     },
     "pp:ec:2025:q44": {
@@ -1802,7 +1862,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "X is having outcomes of random experiment.\n\nHence entropy $\\mathrm{H}(\\mathrm{x})$ will be maximum when are the events occur with equal probability.\n\n$\\mathrm{H}(\\mathrm{x})$ is Max at $\\mathrm{P}[\\mathrm{X}=-1]=\\mathrm{P}[\\mathrm{X}=0]=\\mathrm{P}[\\mathrm{X}=1]$ $=\\frac{1}{3}=0.33$\n\n<img src=\"/question-images/ec/2025/ec-2025-f893a3a61c.webp\"/>\n\n$\\mathrm{g}(0.4) > \\mathrm{g}(0.3) \\rightarrow$ wrong\n\n$\\mathrm{g}(0.3) > \\mathrm{g}(0.4) \\rightarrow$ correct\n\n$\\mathrm{g}(0.3) > \\mathrm{g}(0.25) \\rightarrow$ correct\n\n$\\mathrm{g}(0.25) > \\mathrm{g}(0.3) \\rightarrow$ wrong\n\nTherefore, the correct option(s) are **B, C**."
+        "markdown": "X is having outcomes of random experiment.\n\nHence entropy $\\mathrm{H}(\\mathrm{x})$ will be maximum when are the events occur with equal probability.\n\n$\\mathrm{H}(\\mathrm{x})$ is Max at $\\mathrm{P}[\\mathrm{X}=-1]=\\mathrm{P}[\\mathrm{X}=0]=\\mathrm{P}[\\mathrm{X}=1]$ $=\\frac{1}{3}=0.33$\n\n<img src=\"/question-images/ec/2025/ec-2025-f893a3a61c.webp\"/>\n\n$\\mathrm{g}(0.4) > \\mathrm{g}(0.3) \\rightarrow$ wrong\n\n$\\mathrm{g}(0.3) > \\mathrm{g}(0.4) \\rightarrow$ correct\n\n$\\mathrm{g}(0.3) > \\mathrm{g}(0.25) \\rightarrow$ correct\n\n$\\mathrm{g}(0.25) > \\mathrm{g}(0.3) \\rightarrow$ wrong",
+        "images": [
+          "/question-images/ec/2025/ec-2025-f893a3a61c.webp"
+        ]
       }
     },
     "pp:ec:2025:q45": {
@@ -1843,7 +1906,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "Let the original signal $f(t)$ have period $T_0$. Then:\n\n$f(t + T_0) = f(t)$\n\nNow consider the time-scaled signal:\n\n$y(t) = f(\\alpha t)$\n\nTo find its period, assume $y(t + T) = y(t)$:\n\n$f(\\alpha(t + T)) = f(\\alpha t) \\Rightarrow$  $f(\\alpha t + \\alpha T) = f(\\alpha t)$\n\nSince $f(t)$ is periodic with period $T_0$, this implies:\n\n$\\alpha T = T_0 \\Rightarrow T = \\frac{T_0}{\\alpha}$\n\nTherefore, $y(t)$ is periodic with fundamental period $\\frac{T_0}{\\alpha}$\n\nSo, (D) is TRUE, and (B) is FALSE\n\nFourier Series Comparison:\n\nThe Fourier series of $f(t)$ is:\n\n$f(t) = \\sum_{k=-\\infty}^{\\infty} c_k e^{j \\frac{2\\pi}{T_0}kt}$\n\nNow $y(t) = f(\\alpha t)$ ?\n\n$y(t) = \\sum_{k=-\\infty}^{\\infty} c_k e^{j \\frac{2\\pi}{T_0}k \\alpha t} = \\sum_{k=-\\infty}^{\\infty} d_k e^{j \\frac{2\\pi}{T_0/\\alpha}k t}$\n\nHence, $d_k = c_k$ for all $k$\n\nSo (A) is TRUE\n\n(C) is FALSE\n\nTherefore, the correct option(s) are **A, D**."
+        "markdown": "Let the original signal $f(t)$ have period $T_0$. Then:\n\n$f(t + T_0) = f(t)$\n\nNow consider the time-scaled signal:\n\n$y(t) = f(\\alpha t)$\n\nTo find its period, assume $y(t + T) = y(t)$:\n\n$f(\\alpha(t + T)) = f(\\alpha t) \\Rightarrow$  $f(\\alpha t + \\alpha T) = f(\\alpha t)$\n\nSince $f(t)$ is periodic with period $T_0$, this implies:\n\n$\\alpha T = T_0 \\Rightarrow T = \\frac{T_0}{\\alpha}$\n\nTherefore, $y(t)$ is periodic with fundamental period $\\frac{T_0}{\\alpha}$\n\nSo, (D) is TRUE, and (B) is FALSE\n\nFourier Series Comparison:\n\nThe Fourier series of $f(t)$ is:\n\n$f(t) = \\sum_{k=-\\infty}^{\\infty} c_k e^{j \\frac{2\\pi}{T_0}kt}$\n\nNow $y(t) = f(\\alpha t)$ ?\n\n$y(t) = \\sum_{k=-\\infty}^{\\infty} c_k e^{j \\frac{2\\pi}{T_0}k \\alpha t} = \\sum_{k=-\\infty}^{\\infty} d_k e^{j \\frac{2\\pi}{T_0/\\alpha}k t}$\n\nHence, $d_k = c_k$ for all $k$\n\nSo (A) is TRUE\n\n(C) is FALSE",
+        "images": []
       }
     },
     "pp:ec:2025:q46": {
@@ -1884,7 +1948,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "Using mason's gain formula, given block diagram\n\nOverall T.F $=\\frac{Y(s)}{R(s)}=\\frac{G_{1}+G_{2}}{1+G_{1}}$\n\nverify using options\n\n$\\frac{\\mathrm{Y}(\\mathrm{s})}{\\mathrm{R}(\\mathrm{s})}=\\frac{\\mathrm{G}_{1}+\\mathrm{G}_{2}}{1+\\mathrm{G}_{1}+\\mathrm{G}_{2}} \\rightarrow$ wrong\n\n$\\frac{\\mathrm{Y}(\\mathrm{s})}{\\mathrm{R}(\\mathrm{s})}=\\frac{\\mathrm{G}_{1}+\\mathrm{G}_{2}}{1+\\mathrm{G}_{1}} \\rightarrow$ correct\n\n$\\frac{\\mathrm{Y}(\\mathrm{s})}{\\mathrm{R}(\\mathrm{s})}=\\frac{\\mathrm{G}_{1}+\\mathrm{G}_{2}}{1-\\mathrm{G}_{1}-\\mathrm{G}_{2}} \\rightarrow$ wrong\n\n$\\frac{Y(s)}{R(s)}=\\frac{G_{1}+G_{2}}{1+G_{1}+G_{2}} \\rightarrow$ wrong\n\nTherefore, the correct answer is **B**."
+        "markdown": "Using mason's gain formula, given block diagram\n\nOverall T.F $=\\frac{Y(s)}{R(s)}=\\frac{G_{1}+G_{2}}{1+G_{1}}$\n\nverify using options\n\n$\\frac{\\mathrm{Y}(\\mathrm{s})}{\\mathrm{R}(\\mathrm{s})}=\\frac{\\mathrm{G}_{1}+\\mathrm{G}_{2}}{1+\\mathrm{G}_{1}+\\mathrm{G}_{2}} \\rightarrow$ wrong\n\n$\\frac{\\mathrm{Y}(\\mathrm{s})}{\\mathrm{R}(\\mathrm{s})}=\\frac{\\mathrm{G}_{1}+\\mathrm{G}_{2}}{1+\\mathrm{G}_{1}} \\rightarrow$ correct\n\n$\\frac{\\mathrm{Y}(\\mathrm{s})}{\\mathrm{R}(\\mathrm{s})}=\\frac{\\mathrm{G}_{1}+\\mathrm{G}_{2}}{1-\\mathrm{G}_{1}-\\mathrm{G}_{2}} \\rightarrow$ wrong\n\n$\\frac{Y(s)}{R(s)}=\\frac{G_{1}+G_{2}}{1+G_{1}+G_{2}} \\rightarrow$ wrong",
+        "images": []
       }
     },
     "pp:ec:2025:q47": {
@@ -1925,7 +1990,11 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "The circuit shown is a FWR\n\nduring positive cycle $V_0 = V_{\\text{in}}$, $I_1 = \\frac{V_{\\text{in}}}{R}$\n\n<img src=\"/question-images/ec/2025/ec-2025-7f41c0053e.webp\"/>\n\nDuring negative cycle of $V_{\\text{in}}$ $\\Rightarrow V_0 = -V_{\\text{in}}$\n\n$I_{\\text{in}} = \\frac{V_{\\text{in}}}{R}$ (y = mx, so here m = $\\frac{1}{R}$)\n\n<img src=\"/question-images/ec/2025/ec-2025-c90a461656.webp\"/>\n\nTherefore, the correct option(s) are **A, D**."
+        "markdown": "The circuit shown is a FWR\n\nduring positive cycle $V_0 = V_{\\text{in}}$, $I_1 = \\frac{V_{\\text{in}}}{R}$\n\n<img src=\"/question-images/ec/2025/ec-2025-7f41c0053e.webp\"/>\n\nDuring negative cycle of $V_{\\text{in}}$ $\\Rightarrow V_0 = -V_{\\text{in}}$\n\n$I_{\\text{in}} = \\frac{V_{\\text{in}}}{R}$ (y = mx, so here m = $\\frac{1}{R}$)\n\n<img src=\"/question-images/ec/2025/ec-2025-c90a461656.webp\"/>",
+        "images": [
+          "/question-images/ec/2025/ec-2025-7f41c0053e.webp",
+          "/question-images/ec/2025/ec-2025-c90a461656.webp"
+        ]
       }
     },
     "pp:ec:2025:q48": {
@@ -1963,8 +2032,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$\\mathrm{X}=\\{2,3,4,----12\\}$\n\n$$\\begin{array}{c|ccccccccccc}\n\nx & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\\\\n\n\\hline\n\n\\mathrm{P}(\\mathrm{x}) & \\frac{1}{36} & \\frac{2}{36} & \\frac{3}{36} & \\frac{4}{36}& \\frac{5}{36} & \\frac{6}{36} & \\frac{5}{36} & \\frac{4}{36} & \\frac{3}{36}& \\frac{2}{36} & \\frac{1}{36} \\\\\n\n\\end{array}$$\n\n$$\\begin{aligned}\n\n\\mathrm{E}(\\mathrm{X})&=\\sum \\mathrm{xP}(\\mathrm{x}) \\\\\n\n& =\\frac{1}{36}[2+6+12+20+30+42+40+36+30+22+12] \\\\\n\n& =\\frac{252}{36}=7\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **7** (acceptable range: [6.95, 7.05])."
+        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "markdown": "$\\mathrm{X}=\\{2,3,4,----12\\}$\n\n$$\\begin{array}{c|ccccccccccc}\n\nx & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\\\\n\n\\hline\n\n\\mathrm{P}(\\mathrm{x}) & \\frac{1}{36} & \\frac{2}{36} & \\frac{3}{36} & \\frac{4}{36}& \\frac{5}{36} & \\frac{6}{36} & \\frac{5}{36} & \\frac{4}{36} & \\frac{3}{36}& \\frac{2}{36} & \\frac{1}{36} \\\\\n\n\\end{array}$$\n\n$$\\begin{aligned}\n\n\\mathrm{E}(\\mathrm{X})&=\\sum \\mathrm{xP}(\\mathrm{x}) \\\\\n\n& =\\frac{1}{36}[2+6+12+20+30+42+40+36+30+22+12] \\\\\n\n& =\\frac{252}{36}=7\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2025:q49": {
@@ -2002,8 +2072,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Vector Analysis",
-        "markdown": "We are given:\n\n$$\\mathbf{a} = \\begin{bmatrix} 1 \\ 1 \\end{bmatrix}, \\quad \\mathbf{b} = \\begin{bmatrix} 0 \\ 3\\sqrt{2} \\end{bmatrix}$$\n\nWe need to minimize:\n\n$$| ax - b |_2 = \\left| \\begin{bmatrix} x \\ x \\end{bmatrix} - \\begin{bmatrix} 0 \\ 3\\sqrt{2} \\end{bmatrix} \\right|_2 = \\left| \\begin{bmatrix} x \\ x - 3\\sqrt{2} \\end{bmatrix} \\right|_2$$\n\nNow compute the square of the norm:\n\n$| ax - b |_2^2 = x^2 + (x - 3\\sqrt{2})^2$\n\nExpand:\n\n$| ax - b |_2^2 = x^2 + (x^2 - 6\\sqrt{2}x + 18) = 2x^2 - 6\\sqrt{2}x + 18$\n\nMinimize this quadratic in $x$. The minimum occurs at:\n\n$x = \\frac{6\\sqrt{2}}{2 \\cdot 2} = \\frac{3\\sqrt{2}}{2}$\n\nNow compute the minimum value:\n\n$$| ax - b |_2 = \\left| \\begin{bmatrix} x \\ x - 3\\sqrt{2} \\end{bmatrix} \\right|_2 = \\sqrt{x^2 + (x - 3\\sqrt{2})^2}$$\n\nSubstitute $x = \\dfrac{3\\sqrt{2}}{2}$ into the expression:\n\nFirst term:\n\n$x^2 = \\left( \\dfrac{3\\sqrt{2}}{2} \\right)^2 = \\dfrac{9 \\cdot 2}{4} = \\dfrac{18}{4} = 4.5$\n\nSecond term:\n\n$x - 3\\sqrt{2} = \\dfrac{3\\sqrt{2}}{2} - 3\\sqrt{2} = -\\dfrac{3\\sqrt{2}}{2}$\n\nSo, $(x - 3\\sqrt{2})^2 = \\left( -\\dfrac{3\\sqrt{2}}{2} \\right)^2 = 4.5$\n\nTherefore, the minimum norm is:\n\n$\\sqrt{4.5 + 4.5} = \\sqrt{9} = 3$\n\nTherefore, the correct answer is **3** (acceptable range: [2.95, 3.05])."
+        "concept": "Engineering Mathematics (EC) - Vector Analysis",
+        "markdown": "We are given:\n\n$$\\mathbf{a} = \\begin{bmatrix} 1 \\ 1 \\end{bmatrix}, \\quad \\mathbf{b} = \\begin{bmatrix} 0 \\ 3\\sqrt{2} \\end{bmatrix}$$\n\nWe need to minimize:\n\n$$| ax - b |_2 = \\left| \\begin{bmatrix} x \\ x \\end{bmatrix} - \\begin{bmatrix} 0 \\ 3\\sqrt{2} \\end{bmatrix} \\right|_2 = \\left| \\begin{bmatrix} x \\ x - 3\\sqrt{2} \\end{bmatrix} \\right|_2$$\n\nNow compute the square of the norm:\n\n$| ax - b |_2^2 = x^2 + (x - 3\\sqrt{2})^2$\n\nExpand:\n\n$| ax - b |_2^2 = x^2 + (x^2 - 6\\sqrt{2}x + 18) = 2x^2 - 6\\sqrt{2}x + 18$\n\nMinimize this quadratic in $x$. The minimum occurs at:\n\n$x = \\frac{6\\sqrt{2}}{2 \\cdot 2} = \\frac{3\\sqrt{2}}{2}$\n\nNow compute the minimum value:\n\n$$| ax - b |_2 = \\left| \\begin{bmatrix} x \\ x - 3\\sqrt{2} \\end{bmatrix} \\right|_2 = \\sqrt{x^2 + (x - 3\\sqrt{2})^2}$$\n\nSubstitute $x = \\dfrac{3\\sqrt{2}}{2}$ into the expression:\n\nFirst term:\n\n$x^2 = \\left( \\dfrac{3\\sqrt{2}}{2} \\right)^2 = \\dfrac{9 \\cdot 2}{4} = \\dfrac{18}{4} = 4.5$\n\nSecond term:\n\n$x - 3\\sqrt{2} = \\dfrac{3\\sqrt{2}}{2} - 3\\sqrt{2} = -\\dfrac{3\\sqrt{2}}{2}$\n\nSo, $(x - 3\\sqrt{2})^2 = \\left( -\\dfrac{3\\sqrt{2}}{2} \\right)^2 = 4.5$\n\nTherefore, the minimum norm is:\n\n$\\sqrt{4.5 + 4.5} = \\sqrt{9} = 3$",
+        "images": []
       }
     },
     "pp:ec:2025:q50": {
@@ -2042,7 +2113,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "The mutual information is given by:\n\n$I(X;Y) = \\sum_{x,y} P(x,y) \\log_2 \\left( \\frac{P(x,y)}{P(x)P(y)} \\right)$\n\nStep 1: Compute marginals\n\n$$\\begin{aligned}\n\nP(X=0) &= 0.06 + 0.14 = 0.20 \\\\\n\nP(X=1) &= 0.24 + 0.56 = 0.80 \\\\\n\nP(Y=0) &= 0.06 + 0.24 = 0.30 \\\\\n\nP(Y=1) &= 0.14 + 0.56 = 0.70\n\n\\end{aligned}$$\n\nStep 2: Compute mutual information\n\nWe compute $P(x,y) \\log_2 \\left( \\frac{P(x,y)}{P(x)P(y)} \\right)$ for each combination:\n\n(i) $x=0,\\ y=0$:\n\n$P = 0.06,\\quad P(X=0) = 0.20,\\quad P(Y=0) = 0.30 \\\n\n\\Rightarrow \\frac{0.06}{0.20 \\cdot 0.30} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.06 \\cdot 0 = 0$\n\n(ii) $x=0,\\ y=1$:\n\n$P = 0.14,\\quad P(X=0) = 0.20,\\quad P(Y=1) = 0.70 \\\n\n\\Rightarrow \\frac{0.14}{0.20 \\cdot 0.70} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.14 \\cdot 0 = 0$\n\n(iii) $x=1,\\ y=0$:\n\n$P = 0.24,\\quad P(X=1) = 0.80,\\quad P(Y=0) = 0.30 \\\n\n\\Rightarrow \\frac{0.24}{0.80 \\cdot 0.30} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.24 \\cdot 0 = 0$\n\n(iv) $x=1,\\ y=1$:\n\n$P = 0.56,\\quad P(X=1) = 0.80,\\quad P(Y=1) = 0.70 \\\n\n\\Rightarrow \\frac{0.56}{0.80 \\cdot 0.70} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.56 \\cdot 0 = 0$\n\nSo:\n\n$I(X;Y) = 0 + 0 + 0 + 0 = 0$\n\nTherefore, the correct answer is **0**."
+        "markdown": "The mutual information is given by:\n\n$I(X;Y) = \\sum_{x,y} P(x,y) \\log_2 \\left( \\frac{P(x,y)}{P(x)P(y)} \\right)$\n\nStep 1: Compute marginals\n\n$$\\begin{aligned}\n\nP(X=0) &= 0.06 + 0.14 = 0.20 \\\\\n\nP(X=1) &= 0.24 + 0.56 = 0.80 \\\\\n\nP(Y=0) &= 0.06 + 0.24 = 0.30 \\\\\n\nP(Y=1) &= 0.14 + 0.56 = 0.70\n\n\\end{aligned}$$\n\nStep 2: Compute mutual information\n\nWe compute $P(x,y) \\log_2 \\left( \\frac{P(x,y)}{P(x)P(y)} \\right)$ for each combination:\n\n(i) $x=0,\\ y=0$:\n\n$P = 0.06,\\quad P(X=0) = 0.20,\\quad P(Y=0) = 0.30 \\\n\n\\Rightarrow \\frac{0.06}{0.20 \\cdot 0.30} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.06 \\cdot 0 = 0$\n\n(ii) $x=0,\\ y=1$:\n\n$P = 0.14,\\quad P(X=0) = 0.20,\\quad P(Y=1) = 0.70 \\\n\n\\Rightarrow \\frac{0.14}{0.20 \\cdot 0.70} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.14 \\cdot 0 = 0$\n\n(iii) $x=1,\\ y=0$:\n\n$P = 0.24,\\quad P(X=1) = 0.80,\\quad P(Y=0) = 0.30 \\\n\n\\Rightarrow \\frac{0.24}{0.80 \\cdot 0.30} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.24 \\cdot 0 = 0$\n\n(iv) $x=1,\\ y=1$:\n\n$P = 0.56,\\quad P(X=1) = 0.80,\\quad P(Y=1) = 0.70 \\\n\n\\Rightarrow \\frac{0.56}{0.80 \\cdot 0.70} = 1.0,\\quad \\log_2(1) = 0 \\\n\n\\Rightarrow \\text{term} = 0.56 \\cdot 0 = 0$\n\nSo:\n\n$I(X;Y) = 0 + 0 + 0 + 0 = 0$",
+        "images": []
       }
     },
     "pp:ec:2025:q51": {
@@ -2081,7 +2153,13 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-5f9e790834.webp\"/>\n\n(1) $V_{\\text {in }}>-5 V(D-O N)$ and $V_{0}=-5 V$\n\n<img src=\"/question-images/ec/2025/ec-2025-1c3edd8ae5.webp\"/>\n\n(2) $V_{\\text {in }} \\leq-5 \\mathrm{~V}$ (D-OFF) and $V_{0}=V_{\\text {in }}$\n\n<img src=\"/question-images/ec/2025/ec-2025-ce4a537229.webp\"/>\n\n<img src=\"/question-images/ec/2025/ec-2025-0aeec8c51c.webp\"/>\n\nGiven $\\mathrm{V}_{\\mathrm{in}}=\\mathrm{V}_{\\mathrm{m}} \\sin \\omega \\mathrm{t}=10 \\sin 100 \\pi \\mathrm{t}$\n\n$\\omega=\\frac{2 \\pi}{\\mathrm{~T}}=100 \\pi \\Rightarrow \\mathrm{~T}=0.02 \\mathrm{sec}$\n\nDuration for diode OFF\n\n$=\\left(2 \\pi-\\frac{\\pi}{6}\\right)-\\left(\\pi+\\frac{\\pi}{6}\\right)=\\frac{2 \\pi}{3}$\n\nDuration for diode $\\mathrm{ON}=2 \\pi-\\frac{2 \\pi}{3}=\\frac{4 \\pi}{3}$\n\nTime for which the diode is ON\n\n$=\\frac{4 \\pi / 3}{2 \\pi} \\times 0.02$\n\n$=\\frac{2}{3} \\times 0.02=13.3 \\mathrm{~ms}$\n\nTherefore, the correct answer is **13.33** (acceptable range: [13.32, 13.34])."
+        "markdown": "<img src=\"/question-images/ec/2025/ec-2025-5f9e790834.webp\"/>\n\n(1) $V_{\\text {in }}>-5 V(D-O N)$ and $V_{0}=-5 V$\n\n<img src=\"/question-images/ec/2025/ec-2025-1c3edd8ae5.webp\"/>\n\n(2) $V_{\\text {in }} \\leq-5 \\mathrm{~V}$ (D-OFF) and $V_{0}=V_{\\text {in }}$\n\n<img src=\"/question-images/ec/2025/ec-2025-ce4a537229.webp\"/>\n\n<img src=\"/question-images/ec/2025/ec-2025-0aeec8c51c.webp\"/>\n\nGiven $\\mathrm{V}_{\\mathrm{in}}=\\mathrm{V}_{\\mathrm{m}} \\sin \\omega \\mathrm{t}=10 \\sin 100 \\pi \\mathrm{t}$\n\n$\\omega=\\frac{2 \\pi}{\\mathrm{~T}}=100 \\pi \\Rightarrow \\mathrm{~T}=0.02 \\mathrm{sec}$\n\nDuration for diode OFF\n\n$=\\left(2 \\pi-\\frac{\\pi}{6}\\right)-\\left(\\pi+\\frac{\\pi}{6}\\right)=\\frac{2 \\pi}{3}$\n\nDuration for diode $\\mathrm{ON}=2 \\pi-\\frac{2 \\pi}{3}=\\frac{4 \\pi}{3}$\n\nTime for which the diode is ON\n\n$=\\frac{4 \\pi / 3}{2 \\pi} \\times 0.02$\n\n$=\\frac{2}{3} \\times 0.02=13.3 \\mathrm{~ms}$",
+        "images": [
+          "/question-images/ec/2025/ec-2025-5f9e790834.webp",
+          "/question-images/ec/2025/ec-2025-1c3edd8ae5.webp",
+          "/question-images/ec/2025/ec-2025-ce4a537229.webp",
+          "/question-images/ec/2025/ec-2025-0aeec8c51c.webp"
+        ]
       }
     },
     "pp:ec:2025:q52": {
@@ -2120,7 +2198,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "Setup time constraint:\n\nTotal data delay from one flip-flop to the next must arrive before the next clock edge minus setup time.\n\nTotal data path delay =\n\nClock-to-Q delay (2 ns) + AND gate delay (1 ns) = 3 ns\n\nSetup time = 2 ns\n\nRequired clock period:\n\n$T_{\\text{clk}} \\geq \\text{Data path delay} + \\text{Setup time}$\n\n$T_{\\text{clk}} \\geq 3\\ \\text{ns} + 2\\ \\text{ns} = 5\\ \\text{ns}$\n\nMaximum clock frequency:\n\n$f_{\\text{max}} = \\frac{1}{T_{\\text{clk}}} = \\frac{1}{5 \\times 10^{-9}} = 200\\ \\text{MHz}$\n\nTherefore, the correct answer is **200**."
+        "markdown": "Setup time constraint:\n\nTotal data delay from one flip-flop to the next must arrive before the next clock edge minus setup time.\n\nTotal data path delay =\n\nClock-to-Q delay (2 ns) + AND gate delay (1 ns) = 3 ns\n\nSetup time = 2 ns\n\nRequired clock period:\n\n$T_{\\text{clk}} \\geq \\text{Data path delay} + \\text{Setup time}$\n\n$T_{\\text{clk}} \\geq 3\\ \\text{ns} + 2\\ \\text{ns} = 5\\ \\text{ns}$\n\nMaximum clock frequency:\n\n$f_{\\text{max}} = \\frac{1}{T_{\\text{clk}}} = \\frac{1}{5 \\times 10^{-9}} = 200\\ \\text{MHz}$",
+        "images": []
       }
     },
     "pp:ec:2025:q53": {
@@ -2159,7 +2238,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "$I = I_s \\left( e^{\\frac{eV}{k_BT}} - 1 \\right)$\n\nWhere:\n\n$I = 100\\ \\text{mA} = 0.1\\ \\text{A}$\n\n$I_s = 10\\ \\mu\\text{A} = 10 \\times 10^{-6}\\ \\text{A}$\n\n$T = 300\\ \\text{K}$\n\n$e = 1.6 \\times 10^{-19}\\ \\text{C}$\n\n$k_B = 1.38 \\times 10^{-23}\\ \\text{J/K}$\n\nApproximate since $I \\gg I_s$, so:\n\n$I \\approx I_s e^{\\frac{eV}{k_BT}}$\n\nTaking natural logarithm on both sides:\n\n$\\frac{eV}{k_BT} = \\ln\\left(\\frac{I}{I_s}\\right)$\n\n$V = \\frac{k_BT}{e} \\ln\\left(\\frac{I}{I_s}\\right)$\n\nNow plug in the values:\n\n$\\frac{k_BT}{e} = \\frac{1.38 \\times 10^{-23} \\times 300}{1.6 \\times 10^{-19}} = 0.025875\\ \\text{V}$\n\n$\\ln\\left(\\frac{0.1}{10 \\times 10^{-6}}\\right) = \\ln(10000) = \\ln(10^4) = 4 \\ln(10) \\approx 4 \\times 2.3026 = 9.2104$\n\nSo,\n\n$V = 0.025875 \\times 9.2104 \\approx 0.2382\\ \\text{V}$\n\nTherefore, the correct answer is **0.235** (acceptable range: [0.23, 0.24])."
+        "markdown": "$I = I_s \\left( e^{\\frac{eV}{k_BT}} - 1 \\right)$\n\nWhere:\n\n$I = 100\\ \\text{mA} = 0.1\\ \\text{A}$\n\n$I_s = 10\\ \\mu\\text{A} = 10 \\times 10^{-6}\\ \\text{A}$\n\n$T = 300\\ \\text{K}$\n\n$e = 1.6 \\times 10^{-19}\\ \\text{C}$\n\n$k_B = 1.38 \\times 10^{-23}\\ \\text{J/K}$\n\nApproximate since $I \\gg I_s$, so:\n\n$I \\approx I_s e^{\\frac{eV}{k_BT}}$\n\nTaking natural logarithm on both sides:\n\n$\\frac{eV}{k_BT} = \\ln\\left(\\frac{I}{I_s}\\right)$\n\n$V = \\frac{k_BT}{e} \\ln\\left(\\frac{I}{I_s}\\right)$\n\nNow plug in the values:\n\n$\\frac{k_BT}{e} = \\frac{1.38 \\times 10^{-23} \\times 300}{1.6 \\times 10^{-19}} = 0.025875\\ \\text{V}$\n\n$\\ln\\left(\\frac{0.1}{10 \\times 10^{-6}}\\right) = \\ln(10000) = \\ln(10^4) = 4 \\ln(10) \\approx 4 \\times 2.3026 = 9.2104$\n\nSo,\n\n$V = 0.025875 \\times 9.2104 \\approx 0.2382\\ \\text{V}$",
+        "images": []
       }
     },
     "pp:ec:2025:q54": {
@@ -2198,7 +2278,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "Step 1: Characteristic Impedance\n\nGiven:\n\n$Z_0 = 50\\ \\Omega$ (lossless line)\n\n$Z_L = 50 - j75\\ \\Omega$\n\nIncident power = $P_{\\text{inc}} = 10\\ \\text{mW}$\n\nStep 2: Reflection Coefficient\n\nReflection coefficient $\\Gamma = \\frac{Z_L - Z_0}{Z_L + Z_0}$\n\nFirst compute:\n\n$Z_L + Z_0 = (50 - j75) + 50 = 100 - j75$\n\n$Z_L - Z_0 = (50 - j75) - 50 = -j75$\n\nSo:\n\n$\\Gamma = \\frac{-j75}{100 - j75}$\n\nMultiply numerator and denominator by the complex conjugate of the denominator:\n\n$\\Gamma = \\frac{-j75 \\cdot (100 + j75)}{(100 - j75)(100 + j75)}$\n\nNumerator:\n\n$-j75(100 + j75) = -j7500 - j^2 75 \\cdot 75 = -j7500 + 5625$\n\nDenominator:\n\n$100^2 + 75^2 = 10000 + 5625 = 15625$\n\nSo:\n\n$\\Gamma = \\frac{5625 - j7500}{15625} = 0.36 - j0.48$\n\nStep 3: Reflected Power\n\n$|\\Gamma|^2 = (0.36)^2 + (0.48)^2 = 0.1296 + 0.2304 = 0.36$\n\nSo, reflected power = $P_{\\text{ref}} = |\\Gamma|^2 \\cdot P_{\\text{inc}} = 0.36 \\cdot 10 = 3.6\\ \\text{mW}$\n\nStep 4: Delivered Power\n\n$P_{\\text{delivered}} = P_{\\text{inc}} - P_{\\text{ref}} = 10 - 3.6 = \\boxed{6.4\\ \\text{mW}}$\n\nTherefore, the correct answer is **6.4** (acceptable range: [6.3, 6.5])."
+        "markdown": "Step 1: Characteristic Impedance\n\nGiven:\n\n$Z_0 = 50\\ \\Omega$ (lossless line)\n\n$Z_L = 50 - j75\\ \\Omega$\n\nIncident power = $P_{\\text{inc}} = 10\\ \\text{mW}$\n\nStep 2: Reflection Coefficient\n\nReflection coefficient $\\Gamma = \\frac{Z_L - Z_0}{Z_L + Z_0}$\n\nFirst compute:\n\n$Z_L + Z_0 = (50 - j75) + 50 = 100 - j75$\n\n$Z_L - Z_0 = (50 - j75) - 50 = -j75$\n\nSo:\n\n$\\Gamma = \\frac{-j75}{100 - j75}$\n\nMultiply numerator and denominator by the complex conjugate of the denominator:\n\n$\\Gamma = \\frac{-j75 \\cdot (100 + j75)}{(100 - j75)(100 + j75)}$\n\nNumerator:\n\n$-j75(100 + j75) = -j7500 - j^2 75 \\cdot 75 = -j7500 + 5625$\n\nDenominator:\n\n$100^2 + 75^2 = 10000 + 5625 = 15625$\n\nSo:\n\n$\\Gamma = \\frac{5625 - j7500}{15625} = 0.36 - j0.48$\n\nStep 3: Reflected Power\n\n$|\\Gamma|^2 = (0.36)^2 + (0.48)^2 = 0.1296 + 0.2304 = 0.36$\n\nSo, reflected power = $P_{\\text{ref}} = |\\Gamma|^2 \\cdot P_{\\text{inc}} = 0.36 \\cdot 10 = 3.6\\ \\text{mW}$\n\nStep 4: Delivered Power\n\n$P_{\\text{delivered}} = P_{\\text{inc}} - P_{\\text{ref}} = 10 - 3.6 = \\boxed{6.4\\ \\text{mW}}$",
+        "images": []
       }
     },
     "pp:ec:2025:q55": {
@@ -2237,7 +2318,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Miscellaneous Topics",
-        "markdown": "Given:\n\nLoop area, $A = 5\\ \\text{m}^2$\n\nMagnetic field, $B(t) = 0.5t\\ \\text{T}$\n\nTotal resistance in the loop = $2\\ \\Omega + 2\\ \\Omega = 4\\ \\Omega$\n\nWe use Faraday's Law of electromagnetic induction:\n\n$\\mathcal{E} = -\\frac{d\\Phi}{dt}$\n\nwhere $\\Phi = B(t) \\cdot A$ is the magnetic flux.\n\nSo,\n\n$\\Phi(t) = B(t) \\cdot A = 0.5t \\cdot 5 = 2.5t$\n\n$\\frac{d\\Phi}{dt} = \\frac{d}{dt}(2.5t) = 2.5\\ \\text{V}$\n\nSo, the induced EMF is:\n\n$\\mathcal{E} = -2.5\\ \\text{V}$\n\n(The negative sign indicates direction, but we are interested in magnitude of current)\n\nNow, using Ohm's Law:\n\n$I = \\frac{|\\mathcal{E}|}{R} = \\frac{2.5}{4} = 0.625\\ \\text{A}$\n\nTherefore, the correct answer is **0.625** (acceptable range: [0.62, 0.63])."
+        "markdown": "Given:\n\nLoop area, $A = 5\\ \\text{m}^2$\n\nMagnetic field, $B(t) = 0.5t\\ \\text{T}$\n\nTotal resistance in the loop = $2\\ \\Omega + 2\\ \\Omega = 4\\ \\Omega$\n\nWe use Faraday's Law of electromagnetic induction:\n\n$\\mathcal{E} = -\\frac{d\\Phi}{dt}$\n\nwhere $\\Phi = B(t) \\cdot A$ is the magnetic flux.\n\nSo,\n\n$\\Phi(t) = B(t) \\cdot A = 0.5t \\cdot 5 = 2.5t$\n\n$\\frac{d\\Phi}{dt} = \\frac{d}{dt}(2.5t) = 2.5\\ \\text{V}$\n\nSo, the induced EMF is:\n\n$\\mathcal{E} = -2.5\\ \\text{V}$\n\n(The negative sign indicates direction, but we are interested in magnitude of current)\n\nNow, using Ohm's Law:\n\n$I = \\frac{|\\mathcal{E}|}{R} = \\frac{2.5}{4} = 0.625\\ \\text{A}$",
+        "images": []
       }
     },
     "pp:ec:2025:q56": {
@@ -2276,8 +2358,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Group-I represents a descending order of negative intensity:\n\n$\\text{Abuse} \\rightarrow \\text{Insult} \\rightarrow \\text{Ridicule}$\n\nSo Group-II must represent a descending order of positive intensity.\n\n$\\text{Extol} \\rightarrow \\text{Praise} \\rightarrow \\text{Appreciate}$\n\nHere, Extol is a strong word meaning to praise enthusiastically or glorify.\n\nPraise is moderate, and Appreciate is a mild form of positive feedback.\n\nOther options:\n\nPrize: Means to value, not specifically praise strongly.\n\nAppropriate: Irrelevant here.\n\nEspouse: Means to adopt or support, not to praise.\n\nTherefore, the correct answer is **A**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Group-I represents a descending order of negative intensity:\n\n$\\text{Abuse} \\rightarrow \\text{Insult} \\rightarrow \\text{Ridicule}$\n\nSo Group-II must represent a descending order of positive intensity.\n\n$\\text{Extol} \\rightarrow \\text{Praise} \\rightarrow \\text{Appreciate}$\n\nHere, Extol is a strong word meaning to praise enthusiastically or glorify.\n\nPraise is moderate, and Appreciate is a mild form of positive feedback.\n\nOther options:\n\nPrize: Means to value, not specifically praise strongly.\n\nAppropriate: Irrelevant here.\n\nEspouse: Means to adopt or support, not to praise.",
+        "images": []
       }
     },
     "pp:ec:2025:q57": {
@@ -2316,8 +2399,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "The sentence begins with \"Had I learnt acting as a child,\" which is a third conditional sentence structure.\n\nThis refers to a hypothetical situation in the past and its imagined result in the past.\n\nThe structure is:\n\nIf + past perfect, would/could/might have + past participle\n\nSo, the correct completion is:\n\nHad I learnt acting as a child, I could have been a famous film star.\n\nOther options like \"will be\", \"can be\", and \"am going to be\" are used for present or future tenses, so they are incorrect here.\n\nTherefore, the correct answer is **D**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "The sentence begins with \"Had I learnt acting as a child,\" which is a third conditional sentence structure.\n\nThis refers to a hypothetical situation in the past and its imagined result in the past.\n\nThe structure is:\n\nIf + past perfect, would/could/might have + past participle\n\nSo, the correct completion is:\n\nHad I learnt acting as a child, I could have been a famous film star.\n\nOther options like \"will be\", \"can be\", and \"am going to be\" are used for present or future tenses, so they are incorrect here.",
+        "images": []
       }
     },
     "pp:ec:2025:q58": {
@@ -2356,8 +2440,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "We are given that each note's frequency is $\\sqrt[12]{2}$ times the previous note.\n\n$C$ is the first note. $F^\\#$ is the 7th note in the sequence (including $C$ as the 1st).\n\nThe number of steps from $C$ to $F^\\#$ is 6.\n\nSo the ratio of frequencies is:\n\n$\\frac{f_{F\\#}}{f_{C}} = \\left( \\sqrt[12]{2} \\right)^6 = 2^{6/12} = 2^{1/2} = \\sqrt{2}$\n\nTherefore, the correct answer is **B**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "We are given that each note's frequency is $\\sqrt[12]{2}$ times the previous note.\n\n$C$ is the first note. $F^\\#$ is the 7th note in the sequence (including $C$ as the 1st).\n\nThe number of steps from $C$ to $F^\\#$ is 6.\n\nSo the ratio of frequencies is:\n\n$\\frac{f_{F\\#}}{f_{C}} = \\left( \\sqrt[12]{2} \\right)^6 = 2^{6/12} = 2^{1/2} = \\sqrt{2}$",
+        "images": []
       }
     },
     "pp:ec:2025:q59": {
@@ -2396,8 +2481,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Let's analyze the pattern:\n\nIteration 0: 1 segment of length 1 ? total length = 1\n\nIteration 1: Replaces with 5 segments, each of length $\\frac{1}{3}$\n\nTotal length = $5 \\times \\frac{1}{3} = \\frac{5}{3}$\n\nIteration 2: Each of the 5 segments is again replaced with 5 smaller segments\n\nTotal segments = $5^2 = 25$\n\nLength of each = $\\frac{1}{3^2} = \\frac{1}{9}$\n\nTotal length = $25 \\times \\frac{1}{9} = \\frac{25}{9} = \\left( \\frac{5}{3} \\right)^2$\n\nSo at each iteration, the total length is multiplied by $\\frac{5}{3}$\n\nGeneral formula:\n\n$\\text{Length after Iteration } n = \\left( \\frac{5}{3} \\right)^n$\n\nTherefore, the correct answer is **B**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Let's analyze the pattern:\n\nIteration 0: 1 segment of length 1 ? total length = 1\n\nIteration 1: Replaces with 5 segments, each of length $\\frac{1}{3}$\n\nTotal length = $5 \\times \\frac{1}{3} = \\frac{5}{3}$\n\nIteration 2: Each of the 5 segments is again replaced with 5 smaller segments\n\nTotal segments = $5^2 = 25$\n\nLength of each = $\\frac{1}{3^2} = \\frac{1}{9}$\n\nTotal length = $25 \\times \\frac{1}{9} = \\frac{25}{9} = \\left( \\frac{5}{3} \\right)^2$\n\nSo at each iteration, the total length is multiplied by $\\frac{5}{3}$\n\nGeneral formula:\n\n$\\text{Length after Iteration } n = \\left( \\frac{5}{3} \\right)^n$",
+        "images": []
       }
     },
     "pp:ec:2025:q60": {
@@ -2436,8 +2522,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "We are given:\n\n$f(x) = -\\dfrac{|x|}{x}$ for $x \\ne 0$\n\nLet's analyze the function:\n\nFor $x > 0$:\n\n$|x| = x$\n\nSo, $f(x) = -\\dfrac{x}{x} = -1$\n\nFor $x < 0$:\n\n$|x| = -x$\n\nSo, $f(x) = -\\dfrac{-x}{x} = 1$\n\nTherefore,\n\n$$f(x) = \\begin{cases}\n\n1 & \\text{if } x < 0 \\\\\n\n-1 & \\text{if } x > 0\n\n\\end{cases}$$\n\nThis function has:\n\nValue $1$ for all negative $x$\n\nValue $-1$ for all positive $x$\n\nNot defined at $x = 0$\n\nFrom the options:\n\nOption (A) shows $f(x) = -1$ for $x > 0$ and $f(x) = 1$ for $x < 0$, which matches our analysis.\n\nHence, the correct plot is Option (A).\n\nTherefore, the correct answer is **A**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "We are given:\n\n$f(x) = -\\dfrac{|x|}{x}$ for $x \\ne 0$\n\nLet's analyze the function:\n\nFor $x > 0$:\n\n$|x| = x$\n\nSo, $f(x) = -\\dfrac{x}{x} = -1$\n\nFor $x < 0$:\n\n$|x| = -x$\n\nSo, $f(x) = -\\dfrac{-x}{x} = 1$\n\nTherefore,\n\n$$f(x) = \\begin{cases}\n\n1 & \\text{if } x < 0 \\\\\n\n-1 & \\text{if } x > 0\n\n\\end{cases}$$\n\nThis function has:\n\nValue $1$ for all negative $x$\n\nValue $-1$ for all positive $x$\n\nNot defined at $x = 0$\n\nFrom the options:\n\nOption (A) shows $f(x) = -1$ for $x > 0$ and $f(x) = 1$ for $x < 0$, which matches our analysis.\n\nHence, the correct plot is Option (A).",
+        "images": []
       }
     },
     "pp:ec:2025:q61": {
@@ -2476,8 +2563,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Let's evaluate the logical flow:\n\nQ introduces the topic: organisms adapt to their environment.\n\nS builds on Q by discussing how adaptation helps organisms survive in changing environments.\n\nR explains the driving force behind adaptation: natural selection.\n\nP concludes with the long-term impact-evolution and formation of new species.\n\nThus, the most coherent sequence is:\n\nQ $\\rightarrow$ S $\\rightarrow$ R $\\rightarrow$ P\n\nTherefore, the correct answer is **B**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Let's evaluate the logical flow:\n\nQ introduces the topic: organisms adapt to their environment.\n\nS builds on Q by discussing how adaptation helps organisms survive in changing environments.\n\nR explains the driving force behind adaptation: natural selection.\n\nP concludes with the long-term impact-evolution and formation of new species.\n\nThus, the most coherent sequence is:\n\nQ $\\rightarrow$ S $\\rightarrow$ R $\\rightarrow$ P",
+        "images": []
       }
     },
     "pp:ec:2025:q62": {
@@ -2516,8 +2604,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "The stick is broken at positions $b_1$ and $b_2$, where $0 < b_1 < b_2 < 1$.\n\nThis creates three segments:\n\n$L_1 = b_1$ (from 0 to $b_1$)\n\n$L_2 = b_2 - b_1$ (from $b_1$ to $b_2$)\n\n$L_3 = 1 - b_2$ (from $b_2$ to 1)\n\nTo form a triangle with these three segments, the triangle inequality must be satisfied:\n\nSum of any two sides must be greater than the third.\n\n1. $L_1 + L_2 > L_3$\n\n$b_1 + (b_2 - b_1) > 1 - b_2$\n\n$b_2 > 1 - b_2$\n\n$\\Rightarrow b_2 > 0.5$\n\n2. $L_2 + L_3 > L_1$\n\n$(b_2 - b_1) + (1 - b_2) > b_1$\n\n$1 - b_1 > b_1$\n\n$\\Rightarrow b_1 < 0.5$\n\n3. $L_1 + L_3 > L_2$\n\n$b_1 + (1 - b_2) > b_2 - b_1$\n\n$b_1 + 1 - b_2 > b_2 - b_1$\n\n$2b_1 + 1 - b_2 > b_2$\n\n$2b_1 + 1 > 2b_2$\n\n$\\Rightarrow b_2 < b_1 + 0.5$\n\nNow check each option:\n\n(A) $b_1 < 0.5$ - this is a necessary condition\n\n(B) $b_2 > 0.5$ - this is a necessary condition\n\n(C) $b_2 < b_1 + 0.5$ - this is a necessary condition\n\n(D) $b_1 + b_2 < 1$ - this is not required by any triangle inequality\n\nTherefore, the correct answer is **D**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "The stick is broken at positions $b_1$ and $b_2$, where $0 < b_1 < b_2 < 1$.\n\nThis creates three segments:\n\n$L_1 = b_1$ (from 0 to $b_1$)\n\n$L_2 = b_2 - b_1$ (from $b_1$ to $b_2$)\n\n$L_3 = 1 - b_2$ (from $b_2$ to 1)\n\nTo form a triangle with these three segments, the triangle inequality must be satisfied:\n\nSum of any two sides must be greater than the third.\n\n1. $L_1 + L_2 > L_3$\n\n$b_1 + (b_2 - b_1) > 1 - b_2$\n\n$b_2 > 1 - b_2$\n\n$\\Rightarrow b_2 > 0.5$\n\n2. $L_2 + L_3 > L_1$\n\n$(b_2 - b_1) + (1 - b_2) > b_1$\n\n$1 - b_1 > b_1$\n\n$\\Rightarrow b_1 < 0.5$\n\n3. $L_1 + L_3 > L_2$\n\n$b_1 + (1 - b_2) > b_2 - b_1$\n\n$b_1 + 1 - b_2 > b_2 - b_1$\n\n$2b_1 + 1 - b_2 > b_2$\n\n$2b_1 + 1 > 2b_2$\n\n$\\Rightarrow b_2 < b_1 + 0.5$\n\nNow check each option:\n\n(A) $b_1 < 0.5$ - this is a necessary condition\n\n(B) $b_2 > 0.5$ - this is a necessary condition\n\n(C) $b_2 < b_1 + 0.5$ - this is a necessary condition\n\n(D) $b_1 + b_2 < 1$ - this is not required by any triangle inequality",
+        "images": []
       }
     },
     "pp:ec:2025:q63": {
@@ -2556,8 +2645,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>AS PER OFFICIAL IIT KEY -MTA (MARKS TO ALL)</b>\n\nInitial clockwise arrangement:\n\nP, Q, R, S, T, U, V, W\n\n(Index positions: 0 $\\rightarrow$ P, 1 $\\rightarrow$ Q, ..., 7 $\\rightarrow$ W)\n\nRound 1: 4th student behind P\n\nFrom P (index 0), counting clockwise:\n\n1 $\\rightarrow$ Q\n\n2 $\\rightarrow$ R\n\n3 $\\rightarrow$ S\n\n4 $\\rightarrow$ T\n\nT is removed\n\nRemaining: P, Q, R, S, U, V, W\n\nNew order: P (0), Q (1), R (2), S (3), U (4), V (5), W (6)\n\nRound 2: 5th behind Q (index 1):\n\n1 $\\rightarrow$ R\n\n2 $\\rightarrow$ S\n\n3 $\\rightarrow$ U\n\n4 $\\rightarrow$ V\n\n5 $\\rightarrow$ W\n\nW is removed\n\nRemaining: P, Q, R, S, U, V\n\nNew order: P (0), Q (1), R (2), S (3), U (4), V (5)\n\nRound 3: 3rd behind V (index 5):\n\n1 $\\rightarrow$ P\n\n2 $\\rightarrow$ Q\n\n3 $\\rightarrow$ R\n\nR is removed\n\nRemaining: P, Q, S, U, V\n\nNew order: P (0), Q (1), S (2), U (3), V (4)\n\nRound 4: 4th behind U (index 3):\n\n1 $\\rightarrow$ V\n\n2 $\\rightarrow$ P\n\n3 $\\rightarrow$ Q\n\n4 $\\rightarrow$ S\n\nS is removed\n\nFinal remaining players: P, Q, U, V\n\nNow checking options:\n\n(A) P; T; Q; S ? T and S are eliminated\n\n(B) V; P; T; Q ? T is eliminated\n\n(C) W; R; Q; V ? W and R are eliminated\n\n(D) Q; T; V; W ? T and W are eliminated\n\nNone of the options are correct.\n\nCorrect remaining players: $\\boxed{\\text{P, Q, U, V}}$\n\nTherefore, the correct answer is **A**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "<b>AS PER OFFICIAL IIT KEY -MTA (MARKS TO ALL)</b>\n\nInitial clockwise arrangement:\n\nP, Q, R, S, T, U, V, W\n\n(Index positions: 0 $\\rightarrow$ P, 1 $\\rightarrow$ Q, ..., 7 $\\rightarrow$ W)\n\nRound 1: 4th student behind P\n\nFrom P (index 0), counting clockwise:\n\n1 $\\rightarrow$ Q\n\n2 $\\rightarrow$ R\n\n3 $\\rightarrow$ S\n\n4 $\\rightarrow$ T\n\nT is removed\n\nRemaining: P, Q, R, S, U, V, W\n\nNew order: P (0), Q (1), R (2), S (3), U (4), V (5), W (6)\n\nRound 2: 5th behind Q (index 1):\n\n1 $\\rightarrow$ R\n\n2 $\\rightarrow$ S\n\n3 $\\rightarrow$ U\n\n4 $\\rightarrow$ V\n\n5 $\\rightarrow$ W\n\nW is removed\n\nRemaining: P, Q, R, S, U, V\n\nNew order: P (0), Q (1), R (2), S (3), U (4), V (5)\n\nRound 3: 3rd behind V (index 5):\n\n1 $\\rightarrow$ P\n\n2 $\\rightarrow$ Q\n\n3 $\\rightarrow$ R\n\nR is removed\n\nRemaining: P, Q, S, U, V\n\nNew order: P (0), Q (1), S (2), U (3), V (4)\n\nRound 4: 4th behind U (index 3):\n\n1 $\\rightarrow$ V\n\n2 $\\rightarrow$ P\n\n3 $\\rightarrow$ Q\n\n4 $\\rightarrow$ S\n\nS is removed\n\nFinal remaining players: P, Q, U, V\n\nNow checking options:\n\n(A) P; T; Q; S ? T and S are eliminated\n\n(B) V; P; T; Q ? T is eliminated\n\n(C) W; R; Q; V ? W and R are eliminated\n\n(D) Q; T; V; W ? T and W are eliminated\n\nNone of the options are correct.\n\nCorrect remaining players: $\\boxed{\\text{P, Q, U, V}}$",
+        "images": []
       }
     },
     "pp:ec:2025:q64": {
@@ -2596,8 +2686,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Let's first calculate the total medals for each country:\n\nUSA: $40 + 44 + 41 = 125$\n\nCanada: $39 + 27 + 24 = 90$\n\nJapan: $20 + 12 + 13 = 45$\n\nAustralia: $17 + 19 + 16 = 52$\n\nFrance: $16 + 26 + 22 = 64$\n\nTotal medals across all five nations:\n\n$125 + 90 + 45 + 52 + 64 = 376$\n\nNow check each option:\n\n(A) France: 64, Japan: 45, Australia: 52\n\nSo top three by total medals: USA (125), Canada (90), France (64) (A is correct)\n\n(B) USA: 125, Canada: 90. No other nation has more than 90. So, order remains same\n\n(B is correct)\n\n(C) USA + Canada: $125 + 90 = 215$\n\nCheck 50% of 376: $\\frac{376}{2} = 188$\n\n215 is more than 188 (C is incorrect)\n\n(D) Canada: 90, Japan: 45\n\n$90 = 2 \\times 45$\n\n(D is correct)\n\nTherefore, the correct answer is **C**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Let's first calculate the total medals for each country:\n\nUSA: $40 + 44 + 41 = 125$\n\nCanada: $39 + 27 + 24 = 90$\n\nJapan: $20 + 12 + 13 = 45$\n\nAustralia: $17 + 19 + 16 = 52$\n\nFrance: $16 + 26 + 22 = 64$\n\nTotal medals across all five nations:\n\n$125 + 90 + 45 + 52 + 64 = 376$\n\nNow check each option:\n\n(A) France: 64, Japan: 45, Australia: 52\n\nSo top three by total medals: USA (125), Canada (90), France (64) (A is correct)\n\n(B) USA: 125, Canada: 90. No other nation has more than 90. So, order remains same\n\n(B is correct)\n\n(C) USA + Canada: $125 + 90 = 215$\n\nCheck 50% of 376: $\\frac{376}{2} = 188$\n\n215 is more than 188 (C is incorrect)\n\n(D) Canada: 90, Japan: 45\n\n$90 = 2 \\times 45$\n\n(D is correct)",
+        "images": []
       }
     },
     "pp:ec:2025:q65": {
@@ -2636,8 +2727,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Let the consulting fee be $x$.\n\nCase 1: $x \\leq 5{,}00{,}000$\n\nOverhead = $0.2x$\n\nTotal before tax = $x + 0.2x = 1.2x$\n\nTotal with GST (18%) = $1.18 \\times 1.2x = 1.416x$\n\nWe want: $1.416x \\leq 10{,}00{,}000$\n\n$x \\leq \\frac{10{,}00{,}000}{1.416} \\approx 7{,}06{,}199$\n\nBut this value of $x$ is greater than Rs. 5,00,000, so this case is invalid.\n\nCase 2: $x > 5{,}00{,}000$\n\nOverhead = $1{,}00{,}000 + 0.1(x - 5{,}00{,}000)$\n\n$= 1{,}00{,}000 + 0.1x - 50{,}000 = 0.1x + 50{,}000$\n\nTotal before tax = $x + 0.1x + 50{,}000 = 1.1x + 50{,}000$\n\nTotal with GST = $1.18(1.1x + 50{,}000) = 1.298x + 59{,}000$\n\nWe want: $1.298x + 59{,}000 \\leq 10{,}00{,}000$\n\n$1.298x \\leq 9{,}41{,}000$\n\n$x \\leq \\frac{9{,}41{,}000}{1.298} \\approx 7{,}24{,}961$\n\nTherefore, the correct answer is **B**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Let the consulting fee be $x$.\n\nCase 1: $x \\leq 5{,}00{,}000$\n\nOverhead = $0.2x$\n\nTotal before tax = $x + 0.2x = 1.2x$\n\nTotal with GST (18%) = $1.18 \\times 1.2x = 1.416x$\n\nWe want: $1.416x \\leq 10{,}00{,}000$\n\n$x \\leq \\frac{10{,}00{,}000}{1.416} \\approx 7{,}06{,}199$\n\nBut this value of $x$ is greater than Rs. 5,00,000, so this case is invalid.\n\nCase 2: $x > 5{,}00{,}000$\n\nOverhead = $1{,}00{,}000 + 0.1(x - 5{,}00{,}000)$\n\n$= 1{,}00{,}000 + 0.1x - 50{,}000 = 0.1x + 50{,}000$\n\nTotal before tax = $x + 0.1x + 50{,}000 = 1.1x + 50{,}000$\n\nTotal with GST = $1.18(1.1x + 50{,}000) = 1.298x + 59{,}000$\n\nWe want: $1.298x + 59{,}000 \\leq 10{,}00{,}000$\n\n$1.298x \\leq 9{,}41{,}000$\n\n$x \\leq \\frac{9{,}41{,}000}{1.298} \\approx 7{,}24{,}961$",
+        "images": []
       }
     }
   }

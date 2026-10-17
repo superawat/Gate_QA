@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag, FaStickyNote, FaLock } from "react-icons/fa";
+import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag, FaStickyNote, FaLock, FaBookOpen } from "react-icons/fa";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
 import { evaluateAnswer, evaluateMultiNatPart } from "../../utils/evaluateAnswer";
 import { trackEvent } from "../../utils/analytics";
 import Toast from "../Toast/Toast";
 import AskAIButton from "../AskAI/AskAIButton";
-import { getQuestionSolutionLink, isSpecialAptitudeQuestion } from "../../utils/solutionLink";
+import { getQuestionSolutionLink, isSpecialAptitudeQuestion, getGateOverflowSearchUrl } from "../../utils/solutionLink";
+import { buildReportIssueUrl } from "../../utils/reportIssue";
 import { buildSolvePath } from "../../utils/routes";
 import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 import { AnswerService } from "../../services/AnswerService";
@@ -36,7 +37,7 @@ export default function AnswerPanel({
   hasNote = false,
   isDetailedSolutionOpen = false,
   onToggleDetailedSolution,
-  hasDetailedSolution = false,
+  hasDetailedSolution = true,
 }) {
   const {
     toggleSolved,
@@ -143,7 +144,7 @@ export default function AnswerPanel({
     return PRACTICE_PROGRESS_STORAGE_KEY;
   }, [question, targetStorageKey]);
 
-  const hasDetailedSol = Boolean(hasDetailedSolution || question?.detailed_solution);
+  const hasDetailedSol = hasDetailedSolution !== undefined ? Boolean(hasDetailedSolution) : true;
 
   const hasAttempted = useMemo(() => {
     if (result !== null) return true;
@@ -361,20 +362,7 @@ export default function AnswerPanel({
   }, []);
 
   const reportIssueUrl = useMemo(() => {
-    const questionUid = String(question.question_uid || questionProgressId || "").trim() || "unknown-question";
-    const yearLabel = String(question.exam?.label || question.yearSetLabel || question.year || "Unknown").trim();
-    const subjectLabel = String(question.subjectLabel || question.subject || "Unknown").trim();
-    const pageUrl = typeof window !== "undefined" ? window.location.href : "";
-    const issueBody = [
-      `Question UID: ${questionUid}`,
-      `Year/Set: ${yearLabel}`,
-      `Subject: ${subjectLabel}`,
-      `Page: ${pageUrl}`,
-    ].join("\n");
-    const params = new URLSearchParams({
-      "entry.176806537": issueBody,
-    });
-    return `https://docs.google.com/forms/d/e/1FAIpQLSdSuxChEW-ndNaochXNbSj6FZ02xcxTkjTAECc-Ggeqn6ddkg/viewform?usp=pp_url&${params.toString()}`;
+    return buildReportIssueUrl(question, questionProgressId);
   }, [question, questionProgressId]);
 
   const fallbackCopyToClipboard = (text) => {
@@ -823,9 +811,11 @@ export default function AnswerPanel({
       onToggleDetailedSolution();
       if (willOpen) {
         setTimeout(() => {
-          const el = document.getElementById("detailed-solution-section");
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (typeof document !== "undefined" && typeof document.getElementById === "function") {
+            const el = document.getElementById("detailed-solution-section");
+            if (el && typeof el.scrollIntoView === "function") {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
           }
         }, 100);
       }
@@ -833,14 +823,48 @@ export default function AnswerPanel({
   }, [hasAttempted, isDetailedSolutionOpen, onToggleDetailedSolution, showToast]);
 
   const renderDetailedSolutionButton = (additionalClasses = "") => {
-    // Detailed solution button temporarily removed per user request while detailed solutions are being worked on
-    return null;
+    if (!hasDetailedSol) return null;
+
+    const isUnlocked = hasAttempted;
+
+    return (
+      <button
+        type="button"
+        onClick={handleToggleDetailedSolution}
+        title={
+          isUnlocked
+            ? isDetailedSolutionOpen
+              ? "Hide Detailed Solution"
+              : "View Detailed Solution"
+            : "Attempt the question at least once to view the detailed solution"
+        }
+        aria-label={
+          isDetailedSolutionOpen
+            ? "Hide Detailed Solution"
+            : "Detailed Solution"
+        }
+        aria-expanded={isDetailedSolutionOpen}
+        className={`min-h-[44px] px-4 sm:px-5 rounded-xl border font-bold text-sm shadow-sm transition flex items-center justify-center gap-2 select-none ${
+          isDetailedSolutionOpen
+            ? "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] shadow-inner"
+            : isUnlocked
+            ? "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
+            : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+        } ${additionalClasses}`}
+      >
+        <FaBookOpen className="text-sm shrink-0" />
+        <span>{isDetailedSolutionOpen ? "Hide Solution" : "Detailed Solution"}</span>
+        {!isUnlocked && (
+          <FaLock className="text-xs text-amber-500 shrink-0 ml-0.5" />
+        )}
+      </button>
+    );
   };
 
   const renderSolutionButton = (additionalClasses = "") => {
     const isSpecialAptitude = isSpecialAptitudeQuestion(question);
-    const fallbackSearchLink = !isSpecialAptitude && !solutionLink && question?.title
-      ? `https://gateoverflow.in/?qa=search&q=${encodeURIComponent(question.title)}`
+    const fallbackSearchLink = !isSpecialAptitude && !solutionLink
+      ? getGateOverflowSearchUrl(question)
       : null;
     const targetLink = solutionLink || fallbackSearchLink;
 
@@ -978,7 +1002,6 @@ export default function AnswerPanel({
           </div>
           <div className="flex items-center gap-2">
             {renderDetailedSolutionButton()}
-            {renderSolutionButton()}
             <AskAIButton question={question} onNotification={showToast} />
             {renderPreviousButton()}
             {renderNextButton()}
@@ -996,9 +1019,8 @@ export default function AnswerPanel({
             </div>
           )}
 
-          <div className="grid w-full grid-cols-2 gap-2">
-            {renderSolutionButton("w-full")}
-            <AskAIButton question={question} onNotification={showToast} isMobile />
+          <div>
+            <AskAIButton question={question} onNotification={showToast} isMobile className="w-full" />
           </div>
 
           <div className="flex items-center justify-between gap-2 pt-2.5 border-t border-[color:var(--color-border)]">

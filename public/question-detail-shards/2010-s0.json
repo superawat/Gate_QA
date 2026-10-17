@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:12:14.234Z",
+  "generatedAt": "2026-10-17T18:29:25.621Z",
   "shardKey": "2010-s0",
   "yearSetKey": "2010-s0",
   "yearSetIdentity": "cse:2010:set-0",
@@ -47,6 +47,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Degree of Graph",
+        "markdown": "$\\xi(G)=\\sum_d i_d\\cdot d$ is just the sum of all degrees = 2|E|.\n\nA tree with n vertices has n $-$ 1 edges, so $\\xi=2(n-1)$. Equal $\\xi$ means equal number of vertices.",
+        "images": []
       }
     },
     "go:1148": {
@@ -92,6 +97,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "$x_1=x_0-\\frac{f(x_0)}{f'(x_0)}=3.5-\\frac{3.5^2-13}{2\\times3.5}=3.5-\\frac{-0.75}{7}=3.5+0.107=3.607$",
+        "images": []
       }
     },
     "go:1149": {
@@ -132,6 +142,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Relations",
+        "markdown": "A reflexive relation must contain all 5 pairs (a, a). Each of the other $n^2-n=20$ pairs may or may not be included.\n\nNumber = $2^{20}$",
+        "images": []
       }
     },
     "go:1150": {
@@ -172,6 +187,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Group Theory",
+        "markdown": "Under multiplication:\n\n- Closed: $\\omega\\cdot\\omega^2=\\omega^3=1$, $\\omega^2\\cdot\\omega^2=\\omega$, ...\n\n- Identity 1, inverses: $\\omega^{-1}=\\omega^2$\n\nSo it is a group. It is not a ring/field, because it is not closed under addition ($1+\\omega\\notin S$).",
+        "images": []
       }
     },
     "go:1151": {
@@ -212,6 +232,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\left(1-\\frac1n\\right)^{2n}=\\left[\\left(1-\\frac1n\\right)^{n}\\right]^2\\rightarrow(e^{-1})^2=e^{-2}$",
+        "images": []
       }
     },
     "go:2177": {
@@ -252,6 +277,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Canonical Normal Form",
+        "markdown": "With PQR as the bit order:\n\n- PQ = 11x $\\rightarrow$ 6, 7\n\n- QR' = x10 $\\rightarrow$ 2, 6\n\n- PR' = 1x0 $\\rightarrow$ 4, 6\n\nf = $m_2+m_4+m_6+m_7$",
+        "images": []
       }
     },
     "go:2178": {
@@ -292,6 +322,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Memory Interfacing",
+        "markdown": "A refresh operation refreshes one whole row, and all 32 chips refresh in parallel. Each chip has $1K=2^{10}$ rows.\n\nTime = $2^{10}\\times100$ ns",
+        "images": []
       }
     },
     "go:2179": {
@@ -332,6 +367,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "Multiplying by 8 = left shift by 3 bits.\n\nF87B = 1111 1000 0111 1011 $\\rightarrow$ shift left 3 $\\rightarrow$ 1100 0011 1101 1000 = C3D8\n\n(P = $-$1925, 8P = $-$15400 still fits in 16 bits.)",
+        "images": []
       }
     },
     "go:2182": {
@@ -372,6 +412,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "With PQ as select lines:\n\n$f=\\bar P\\bar QR+\\bar PQ\\bar R+P\\bar Q\\bar R+PQR$\n\nf = 1 exactly when an odd number of P, Q, R are 1 $\\rightarrow$ $P\\oplus Q\\oplus R$.",
+        "images": []
       }
     },
     "go:2183": {
@@ -412,6 +457,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "If a node had exactly one child, its descendants = itself + child's descendants = 1 + odd = even, which contradicts the condition.\n\nSo no node has exactly one child.",
+        "images": []
       }
     },
     "go:2184": {
@@ -453,6 +503,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "Inside f, p = q makes p point to j (the change to p is local). *p = 2 sets j = 2. i is unchanged.\n\nOutput: 0 2",
+        "images": []
       }
     },
     "go:2185": {
@@ -493,6 +548,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Time Complexity",
+        "markdown": "B is preferred when $10n\\log_{10}n\\lt0.0001n^2\\Rightarrow10^5\\log_{10}n\\lt n$.\n\nWith $n=10^k$: $10^5k\\lt10^k$.\n\n- k = 5: $5\\times10^5\\lt10^5$? No\n\n- k = 6: $6\\times10^5\\lt10^6$? Yes",
+        "images": []
       }
     },
     "go:2186": {
@@ -533,6 +593,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Lexical Analysis",
+        "markdown": "The symbol table stores identifiers with their attributes (type, scope, location, ...).",
+        "images": []
       }
     },
     "go:2187": {
@@ -573,6 +638,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Runtime Environment",
+        "markdown": "Recursion needs only a stack, and globals need only static memory. Dynamic data structures (linked lists, trees created at run time with malloc/new) need memory whose lifetime is not tied to calls, i.e. a heap.",
+        "images": []
       }
     },
     "go:2188": {
@@ -613,6 +683,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - IP Packet",
+        "markdown": "Each router decrements TTL and drops the packet at 0. So a packet caught in a routing loop cannot circulate forever.",
+        "images": []
       }
     },
     "go:2189": {
@@ -652,6 +727,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Web Technologies",
+        "markdown": "Chat, web browsing and e-mail all have client and server programs. Ping just sends ICMP echo messages handled by the OS network stack, not by a server application.",
+        "images": []
       }
     },
     "go:2190": {
@@ -693,6 +773,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Recursive and Recursively Enumerable Languages",
+        "markdown": "Checking each statement:\n\n- L2 $-$ L1 = L2 $\\cap\\bar L_1$: RE $\\cap$ recursive = RE\n\n- L2 $\\cup$ L1 and L2 $\\cap$ L1: RE\n\n- L1 $-$ L3 = L1 $\\cap\\bar L_3$: $\\bar L_3$ is not RE, so this need not be RE",
+        "images": []
       }
     },
     "go:2191": {
@@ -733,6 +818,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - B Tree",
+        "markdown": "Max keys 5 $\\rightarrow$ max children (order) = 6.\n\nA non-root node must have at least $\\lceil6/2\\rceil=3$ children, i.e. 3 $-$ 1 = 2 keys.",
+        "images": []
       }
     },
     "go:2194": {
@@ -773,6 +863,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "AC reservations: pids 0, 1, 5, 3.\n\nKeep those with a passenger of age $\\gt$ 65:\n\n- 0: age 65 $\\rightarrow$ no\n\n- 1: 66 $\\rightarrow$ yes\n\n- 5: no such passenger $\\rightarrow$ no\n\n- 3: 69 $\\rightarrow$ yes",
+        "images": []
       }
     },
     "go:2196": {
@@ -813,6 +908,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Transaction and Concurrency",
+        "markdown": "Checking each statement:\n\n- 2PL guarantees conflict serializability but can deadlock.\n\n- Timestamp ordering is serializable in timestamp order and never waits in a cycle (it aborts instead) $\\rightarrow$ deadlock-free.",
+        "images": []
       }
     },
     "go:2199": {
@@ -857,6 +957,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Cyclomatic Complexity",
+        "markdown": "V = E $-$ N + 2. Joining A's exit to B's entry with one edge: edges = $E_A+E_B+1$, nodes = $N_A+N_B$.\n\n$V=(E_A+E_B+1)-(N_A+N_B)+2=(E_A-N_A+2)+(E_B-N_B+2)-1=V_A+V_B-1$\n\nV = 10 + 10 $-$ 1 = 19",
+        "images": []
       }
     },
     "go:2201": {
@@ -904,6 +1009,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Cyclomatic Complexity",
+        "markdown": "Checking each statement:\n\n- Requirements capture: domain analysis (2)\n\n- Design: structural and behavioural modelling (3)\n\n- Implementation: module development and integration (1)\n\n- Maintenance: performance tuning (4)",
+        "images": []
       }
     },
     "go:2202": {
@@ -944,6 +1054,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Process Synchronization",
+        "markdown": "P1 enters only when S1 $\\ne$ S2 and then makes them equal. P2 enters only when S1 = S2 and then makes them unequal.\n\n- Both can never be inside together $\\rightarrow$ mutual exclusion holds.\n\n- They must strictly alternate: if it is P1's turn but P1 does not want to enter, P2 waits forever $\\rightarrow$ no progress.",
+        "images": []
       }
     },
     "go:2203": {
@@ -984,6 +1099,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Page Replacement",
+        "markdown": "First pass: all 100 pages fault (100). Frames now hold the last 4 pages: 97, 98, 99, 100.\n\nReverse pass: 100, 99, 98, 97 are hits. The remaining 96 pages all fault.\n\nTotal = 100 + 96 = 196",
+        "images": []
       }
     },
     "go:2204": {
@@ -1024,6 +1144,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "Checking each statement:\n\n- I: long jobs may wait forever if short jobs keep arriving $\\rightarrow$ True\n\n- II: preemptive priority scheduling can starve low-priority processes $\\rightarrow$ True\n\n- III: RR gives every process the CPU quickly, so response time is better than FCFS $\\rightarrow$ True",
+        "images": []
       }
     },
     "go:1152": {
@@ -1064,6 +1189,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Declared faulty when:\n\n- faulty and the test is correct: pq\n\n- not faulty and the test is wrong: (1 $-$ p)(1 $-$ q)",
+        "images": []
       }
     },
     "go:1153": {
@@ -1104,6 +1234,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "$10^{99}=2^{99}5^{99}$ has $100\\times100$ divisors $2^a5^b$.\n\nMultiples of $10^{96}$ need $96\\le a,b\\le99$: 4 $\\times$ 4 = 16.\n\nProbability = 16/10000 = 1/625",
+        "images": []
       }
     },
     "go:1154": {
@@ -1143,6 +1278,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Degree of Graph",
+        "markdown": "Checking each statement:\n\n- IV: 8 vertices, so maximum degree is 7. A degree of 8 is impossible.\n\n- II: Havel-Hakimi: 6,6,6,6,3,3,2,2 $\\rightarrow$ 5,5,5,2,2,1,2 $\\rightarrow$ 5,5,5,2,2,2,1 $\\rightarrow$ 4,4,1,1,1,1 $\\rightarrow$ 3,0,0,0,1 $\\rightarrow$ 3,1,0,0,0. A 3 with only one non-zero vertex left $\\rightarrow$ impossible.\n\n- I and III pass the test.",
+        "images": []
       }
     },
     "go:1155": {
@@ -1183,6 +1323,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Checking each statement:\n\n- Trace: 2 + y = 4 + 8 $\\rightarrow$ y = 10\n\n- Determinant: 2y $-$ 3x = 32 $\\rightarrow$ 20 $-$ 3x = 32 $\\rightarrow$ x = $-$4",
+        "images": []
       }
     },
     "go:1156": {
@@ -1223,6 +1368,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "$\\forall x\\exists y\\exists t\\,\\neg F(x,y,t)$: for every person x, there is someone y and a time t when x cannot fool y.\n\nThat is $\\neg\\exists x\\forall y\\forall t\\,F(x,y,t)$: no one can fool everyone all the time.",
+        "images": []
       }
     },
     "go:2205": {
@@ -1263,6 +1413,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "Checking each statement:\n\n- Top: NOR of $\\overline{P+Q}$ and $\\overline{Q+R}$ = (P + Q)(Q + R) = Q + PR\n\n- Bottom: NOR of $\\overline{P+R}$ and $\\overline{Q+R}$ = (P + R)(Q + R) = R + PQ\n\n- Output: $\\overline{Q+PR+R+PQ}=\\overline{Q+R}$",
+        "images": []
       }
     },
     "go:2206": {
@@ -1303,6 +1458,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "Both T inputs are 1. FF0 toggles every clock; FF1 is clocked by Q0 and toggles when Q0 rises (0 $\\rightarrow$ 1).\n\n- 00 $\\rightarrow$ Q0 = 1 (rises, Q1 toggles) $\\rightarrow$ 11\n\n- $\\rightarrow$ Q0 = 0 $\\rightarrow$ 10\n\n- $\\rightarrow$ Q0 = 1 (Q1 toggles) $\\rightarrow$ 01\n\n- $\\rightarrow$ 00",
+        "images": []
       }
     },
     "go:2207": {
@@ -1343,6 +1503,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "Checking each statement:\n\n- I0 MUL: IF 1, ID 2, OF 3, PO 4-6, WO 7\n\n- I1 DIV: IF 2, ID 3, OF 4, PO 7-12, WO 13\n\n- I2 ADD (needs R5 from DIV, forwarded): PO 13, WO 14\n\n- I3 SUB (needs R2 from ADD, forwarded): PO 14, WO 15",
+        "images": []
       }
     },
     "go:2208": {
@@ -1383,6 +1548,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Dynamic Programming",
+        "markdown": "Either a0 is not taken: the best weight comes from the rest, i.e. Y.\n\nOr a0 is taken: a0 gets weight 1 and the rest of the chosen subsequence shifts one place, so its weights halve: $a_0+Y/2$.\n\nX = max(Y, $a_0+Y/2$)",
+        "images": []
       }
     },
     "go:2336": {
@@ -1424,6 +1594,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "Even value: add the rest; odd value: subtract the rest. From the end:\n\n- f(6) = 6\n\n- f(11, 6) = 11 $-$ 6 = 5\n\n- f(4, ...) = 4 + 5 = 9\n\n- f(13, ...) = 13 $-$ 9 = 4\n\n- f(7, ...) = 7 $-$ 4 = 3\n\n- f(12, ...) = 12 + 3 = 15",
+        "images": []
       }
     },
     "go:2337": {
@@ -1464,6 +1639,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "After the loop, p is the last node and q the second-last.\n\n- q-$\\gt$next = NULL (q becomes the new last node)\n\n- p-$\\gt$next = head (p points to the old first node)\n\n- head = p",
+        "images": []
       }
     },
     "go:2338": {
@@ -1505,6 +1685,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Register Allocation",
+        "markdown": "Track the live values:\n\n- a, b $\\rightarrow$ d = a + b (c, d live)\n\n- e = c + d (c, e live)\n\n- f = c + e (c, e, f live: 3)\n\n- b = c + e (b, f) $\\rightarrow$ e = b + f (e, f) $\\rightarrow$ d = 5 + e (d, f) $\\rightarrow$ return d + f\n\nAt most 3 values are live at once.",
+        "images": []
       }
     },
     "go:2339": {
@@ -1545,6 +1730,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Grammar",
+        "markdown": "The three alternatives start with different terminals a, b, c, so FIRST sets are disjoint $\\rightarrow$ LL(1).\n\nEvery LL(1) grammar is also LR(1).",
+        "images": []
       }
     },
     "go:2340": {
@@ -1585,6 +1775,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Expression",
+        "markdown": "$0^*(10^*10^*)^*$: leading 0s, then groups each containing exactly two 1s with any 0s around. This gives every string with an even number of 1s.\n\n- (0*10*1)* cannot make \"0\" or strings ending in 0.\n\n- 0*(10*1)*0* cannot make \"101\".\n\n- Option 4 needs at least two 1s, so it misses \"0\".",
+        "images": []
       }
     },
     "go:2341": {
@@ -1626,6 +1821,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Context Free Language",
+        "markdown": "Each needs only one counter comparison, which one stack can do:\n\n- L1: $0^i1^j$, i $\\ne$ j\n\n- L2: $0^i1^i$\n\n- L3: push 2 per 1 (check i = 2j + 1)\n\n- L4: i $\\ne$ 2j\n\nAll are context-free.",
+        "images": []
       }
     },
     "go:2342": {
@@ -1667,6 +1867,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "Build a chain of states $q_0\\rightarrow q_1\\rightarrow\\dots\\rightarrow q_n$ spelling w. Allowing a start anywhere (via $\\epsilon$ from $q_0$) and accepting anywhere gives exactly the substrings of w.\n\nThat needs n + 1 states.",
+        "images": []
       }
     },
     "go:2343": {
@@ -1707,6 +1912,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Transaction and Concurrency",
+        "markdown": "Conflicts:\n\n- T1 R(X), W(X) before T3 W(X) $\\rightarrow$ T1 $\\rightarrow$ T3\n\n- T1 W(X) before T2 R(X) $\\rightarrow$ T1 $\\rightarrow$ T2\n\n- T3 R(Y) before T2 W(Y) $\\rightarrow$ T3 $\\rightarrow$ T2\n\n- T3 W(X) before T2 R(X), W(X) $\\rightarrow$ T3 $\\rightarrow$ T2\n\nOrder: T1 $\\rightarrow$ T3 $\\rightarrow$ T2",
+        "images": []
       }
     },
     "go:2344": {
@@ -1748,6 +1958,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Natural Join",
+        "markdown": "In R, B $\\rightarrow$ A and A $\\rightarrow$ C, so B is a key of R. Each tuple of S (joined on B) matches at most one tuple of R.\n\nMax join size = |S| = 100",
+        "images": []
       }
     },
     "go:2345": {
@@ -1791,6 +2006,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Software Testing",
+        "markdown": "Checking each statement:\n\n- S1 needs a = b (T1 or T3).\n\n- S2 and S4 need a $\\ne$ b, c = d (T4).\n\n- S3 needs a $\\ne$ b, c $\\ne$ d (T2).\n\nT1, T2, T4 covers all four.",
+        "images": []
       }
     },
     "go:2347": {
@@ -1831,6 +2051,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Process Synchronization",
+        "markdown": "P0 prints once (S0 = 1), then releases S1 and S2. P1 and P2 then each release S0 once.\n\n- If both releases happen before P0 waits again, binary S0 stays 1 $\\rightarrow$ P0 prints once more (2 times).\n\n- If P0 consumes the first release before the second comes $\\rightarrow$ it prints twice more (3 times).\n\nSo it prints at least twice.",
+        "images": []
       }
     },
     "go:2348": {
@@ -1871,6 +2096,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Resource Allocation",
+        "markdown": "Deadlock needs an even process i holding $R_i$ and waiting for $R_{i+2}$, while an odd process j holds $R_{n-j}=R_{i+2}$ and waits for $R_{n-j-2}=R_i$. So j = n $-$ i $-$ 2 must be odd, with both i, j $\\lt$ k.\n\n- n = 21, k = 12: i = 8, j = 11 works $\\rightarrow$ deadlock possible.\n\n- n = 40 or 20: j = n $-$ i $-$ 2 is even $\\rightarrow$ impossible.\n\n- n = 41, k = 19: i + j = 39 needs one of them $\\ge$ 20 $\\rightarrow$ impossible.",
+        "images": []
       }
     },
     "go:2349": {
@@ -1911,6 +2141,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Subnetting",
+        "markdown": "Last octets: 113 = 0111 0001, 91 = 0101 1011. They agree only in the first 2 bits.\n\n- Masks .0, .128, .192 use at most the first 2 bits $\\rightarrow$ same network.\n\n- .224 uses 3 bits: 011 vs 010 $\\rightarrow$ different networks.",
+        "images": []
       }
     },
     "go:2352": {
@@ -1952,6 +2187,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "The L1 block (4 words) equals the bus width, so one transfer is enough: read from L2 (20 ns) + write into L1 (2 ns) = 22 ns.",
+        "images": []
       }
     },
     "go:43329": {
@@ -1992,6 +2232,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "Checking each statement:\n\n- Main memory $\\rightarrow$ L2: 16 words over a 4-word bus = 4 transfers, each 200 + 20 = 220 ns $\\rightarrow$ 880 ns\n\n- L2 $\\rightarrow$ L1: one 4-word transfer = 20 + 2 = 22 ns\n\nTotal = 880 + 22 = 902 ns",
+        "images": []
       }
     },
     "go:2355": {
@@ -2030,6 +2275,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms",
+        "markdown": "Build the MST on {1, 2, 3, 4} and then hang 0 as a leaf.\n\n- MST of {1, 2, 3, 4}: 3-4 (2), 2-4 (3), 1-3 (4) = 9\n\n- Attach 0 with its cheapest edge: 0-1 or 0-3 (1)\n\nTotal = 9 + 1 = 10",
+        "images": []
       }
     },
     "go:43328": {
@@ -2068,6 +2318,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms",
+        "markdown": "Paths from 1 to 2 with at most 3 edges:\n\n- 1-2: 12\n\n- 1-0-2: 9, 1-4-2: 12\n\n- 1-0-4-2: 1 + 4 + 3 = 8\n\n- 1-3-4-2: 4 + 2 + 3 = 9, 1-0-3-2: 9\n\n(The cheapest overall, 1-0-3-4-2 = 7, uses 4 edges.)",
+        "images": []
       }
     },
     "go:2360": {
@@ -2108,6 +2363,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Try 46, 34, 42, 23, 52, 33:\n\n- 46 $\\rightarrow$ 6, 34 $\\rightarrow$ 4, 42 $\\rightarrow$ 2, 23 $\\rightarrow$ 3\n\n- 52: 2, 3, 4 taken $\\rightarrow$ 5\n\n- 33: 3, 4, 5, 6 taken $\\rightarrow$ 7\n\nThis matches the table. (In the others, 52 or 33 lands in the wrong slot.)",
+        "images": []
       }
     },
     "go:43327": {
@@ -2148,6 +2408,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Checking each statement:\n\n- 42, 23, 34, 46 are in their home slots.\n\n- 52 (home 2) reached 5, so 42, 23, 34 must come before it.\n\n- 33 (home 3) reached 7, so it must be last.\n\nOrder 42, 23, 34 freely with 52 after them: 3! = 6 ways. Insert 46 anywhere among these 5 positions: 5 ways.\n\n6 $\\times$ 5 = 30",
+        "images": []
       }
     },
     "go:2362": {
@@ -2189,6 +2454,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Routing",
+        "markdown": "Check each link against the alternative path:\n\n- R1-R2 (6): R1-R3-R2 = 3 + 2 = 5 is shorter $\\rightarrow$ unused\n\n- R4-R6 (8): R4-R5-R6 = 1 + 4 = 5 is shorter $\\rightarrow$ unused\n\n- R3-R5 (9) is still better than R3-R2-R4-R5 = 10, and the other links are on shortest paths",
+        "images": []
       }
     },
     "go:43326": {
@@ -2230,6 +2500,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Routing",
+        "markdown": "Now R1-R2 = 2 and R4-R6 = 2.\n\n- R5-R6 (4): R5-R4-R6 = 1 + 2 = 3 is shorter, and no shortest path uses R5-R6 $\\rightarrow$ unused\n\n- R1-R3 (3 vs 4 via R2) and R3-R5 (9 vs 10 via R2, R4) are still used, as are all other links",
+        "images": []
       }
     },
     "go:2364": {
@@ -2270,6 +2545,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "\"Betrayed\" = revealed unintentionally. His casual remarks revealed his lack of seriousness. \"Belied\" would mean contradicted, which is the opposite.",
+        "images": []
       }
     },
     "go:2365": {
@@ -2310,6 +2590,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Circuitous = roundabout, not direct.",
+        "images": []
       }
     },
     "go:2366": {
@@ -2350,6 +2635,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "We conserve (protect and use wisely) natural resources.",
+        "images": []
       }
     },
     "go:2367": {
@@ -2389,6 +2679,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics",
+        "markdown": "Play at least one = 15 + 17 $-$ 10 = 22.\n\nNeither = 25 $-$ 22 = 3",
+        "images": []
       }
     },
     "go:2368": {
@@ -2429,6 +2724,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "An unemployed worker is a worker not being used; fallow land is land not being used (left uncultivated).",
+        "images": []
       }
     },
     "go:2369": {
@@ -2469,6 +2769,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Analytical Aptitude",
+        "markdown": "137 + 276 = 435 holds in base 8 (7 + 6 = 13 = 15 in octal, carry 1, ...).\n\nIn base 8: 731 + 672: 1 + 2 = 3; 3 + 7 = 10 = 12 in octal (write 2, carry 1); 7 + 6 + 1 = 14 = 16 in octal $\\rightarrow$ 1623",
+        "images": []
       }
     },
     "go:2370": {
@@ -2509,6 +2814,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Analytical Aptitude",
+        "markdown": "G and S differ by 1 year, so they are adjacent. G is not oldest and S not youngest.\n\n- HSIG: G and S are not adjacent $\\rightarrow$ fails (ii)\n\n- IGSH: I older than G and S older than H, so I + S $\\gt$ G + H $\\rightarrow$ fails (i)\n\n- IHSG: I older than H and S older than G, so I + S $\\gt$ H + G $\\rightarrow$ fails (i)\n\n- SGHI: S, G oldest pair; H + G $\\gt$ I + S is possible (e.g. ages 10, 9, 7, 5: 16 $\\gt$ 15)",
+        "images": []
       }
     },
     "go:2371": {
@@ -2549,6 +2859,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "The passage regretfully notes that there are people in military establishments who see chemical agents as useful tools. Option 4 restates this (as per the official key).",
+        "images": []
       }
     },
     "go:2372": {
@@ -2589,6 +2904,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Work per person per day (one wall = 1):\n\n- skilled = $\\frac{1}{5\\times20}=\\frac1{100}$, semi-skilled = $\\frac1{200}$, unskilled = $\\frac1{300}$\n\nTeam: $\\frac2{100}+\\frac6{200}+\\frac5{300}=\\frac{6+9+5}{300}=\\frac1{15}$ per day $\\rightarrow$ 15 days",
+        "images": []
       }
     },
     "go:2373": {
@@ -2629,6 +2949,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "First digit must be 3 or 4.\n\n- First 3: remaining 2, 2, 3, 3, 4, 4, 4, 4. All $3^3=27$ three-digit strings except 222 and 333 $\\rightarrow$ 25\n\n- First 4: remaining 2, 2, 3, 3, 3, 4, 4, 4. All 27 except 222 $\\rightarrow$ 26\n\nTotal = 25 + 26 = 51",
+        "images": []
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:12:14.234Z",
+  "generatedAt": "2026-10-17T18:29:25.621Z",
   "shardKey": "2011-s0",
   "yearSetKey": "2011-s0",
   "yearSetIdentity": "cse:2011:set-0",
@@ -46,7 +46,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Lexical Analysis",
+        "markdown": "Keywords (if, while, int, ...) are tokens. The lexical analyzer recognises them while splitting the source into tokens.",
+        "images": []
+      }
     },
     "go:2104": {
       "title": "GATE CSE 2011 | Question: 2",
@@ -92,6 +97,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "A layer-4 firewall sees IP addresses, protocols and port numbers, so it can block HTTP (port 80), ICMP, or traffic from an IP.\n\nWhich <i>user</i> on a multi-user machine sent a packet is not in any of these headers, so it cannot filter by user.",
+        "images": []
       }
     },
     "go:2105": {
@@ -132,6 +142,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Outcomes with at least one head: HH, HT, TH (equally likely).\n\nP(both heads) = 1/3",
+        "images": []
       }
     },
     "go:2106": {
@@ -171,7 +186,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Application Layer Protocols",
+        "markdown": "Checking each statement:\n\n- Client to server (sending): SMTP\n\n- Mailbox to client (downloading): POP\n\n- Webmail in a browser: HTTP",
+        "images": []
+      }
     },
     "go:2107": {
       "title": "GATE CSE 2011 | Question: 5, ISRO2016-64",
@@ -218,6 +238,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Project Cost",
+        "markdown": "Let L = LOC for L1 (L2 needs 2L).\n\n- Cost with L1 = $\\frac{L}{10000}\\times10{,}00{,}000+5\\times1{,}00{,}000=100L+5{,}00{,}000$\n\n- Cost with L2 = $\\frac{2L}{10000}\\times7{,}50{,}000+5\\times50{,}000=150L+2{,}50{,}000$\n\nEqual: 50L = 2,50,000 $\\rightarrow$ L = 5000",
+        "images": []
       }
     },
     "go:2108": {
@@ -258,7 +283,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Context Switch",
+        "markdown": "A process switch includes a mode switch plus saving/restoring the full process context (registers, memory map, TLB effects). So it costs more than a mode switch alone.",
+        "images": []
+      }
     },
     "go:2109": {
       "title": "GATE CSE 2011 | Question: 7",
@@ -304,6 +334,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - COCOMO Model",
+        "markdown": "Basic COCOMO: $E=a(KLOC)^b=2.8\\times40^{1.2}$.\n\n$40^{1.2}=e^{1.2\\ln40}\\approx83.66$, so E $\\approx$ 2.8 $\\times$ 83.66 = 234.25 person-months",
+        "images": []
       }
     },
     "go:2110": {
@@ -344,6 +379,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Non Determinism",
+        "markdown": "Checking each statement:\n\n- DFA = NFA (subset construction)\n\n- Deterministic TM = non-deterministic TM, and single-tape TM = multi-tape TM\n\n- DPDA accept only deterministic CFLs. NPDA accept all CFLs (e.g. $ww^R$ needs non-determinism)",
+        "images": []
       }
     },
     "go:2111": {
@@ -383,6 +423,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Web Technologies",
+        "markdown": "Pure HTML can embed objects (iframe, img) and refresh or redirect (meta refresh). The client's current time needs JavaScript (client-side scripting).",
+        "images": []
       }
     },
     "go:2112": {
@@ -428,6 +473,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Software Requirement Specification",
+        "markdown": "An SRS describes <i>what</i> the system must do (functional, non-functional requirements, goals). Algorithms are part of design/implementation, not requirements.",
+        "images": []
       }
     },
     "go:2113": {
@@ -467,7 +517,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Interrupts",
+        "markdown": "CPU over-heating can damage the hardware, so it needs the fastest response. Disk, keyboard and mouse can wait a little.",
+        "images": []
+      }
     },
     "go:2114": {
       "title": "GATE CSE 2011 | Question: 12",
@@ -506,7 +561,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Candidate Key",
+        "markdown": "A joint account can be the primary account of more than one student, so BankAccount_Number need not be unique $\\rightarrow$ it is not a candidate key. Option 1 is INCORRECT.\n\n- Registration_Number is unique $\\rightarrow$ can be primary key.\n\n- UID is unique within a country.\n\n- Adding attributes to a super key keeps it a super key.",
+        "images": []
+      }
     },
     "go:2115": {
       "title": "GATE CSE 2011 | Question: 13",
@@ -545,7 +605,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Digital Circuits",
+        "markdown": "Checking each statement:\n\n- A: $\\overline{A\\oplus B}$ = XNOR\n\n- B: $\\overline{\\bar A\\oplus\\bar B}=\\overline{A\\oplus B}$ = XNOR\n\n- C: $\\bar A\\oplus B=\\overline{A\\oplus B}$ = XNOR\n\n- D: working out its gates does not give the XNOR truth table",
+        "images": []
+      }
     },
     "go:2116": {
       "title": "GATE CSE 2011 | Question: 14",
@@ -584,7 +649,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Min Sum of Products Form",
+        "markdown": "The three factors are maxterms $M_3,M_2,M_1$ (PQR order). So F = $\\Pi(1,2,3)=\\Sigma(0,4,5,6,7)$.\n\n- 4, 5, 6, 7 $\\rightarrow$ P\n\n- 0, 4 $\\rightarrow$ $\\bar Q\\bar R$\n\nF = $P+\\bar Q\\bar R$",
+        "images": []
+      }
     },
     "go:2117": {
       "title": "GATE CSE 2011 | Question: 15",
@@ -623,7 +693,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Digital Counter",
+        "markdown": "A mod-258 counter needs 258 states. $2^8=256\\lt258\\le2^9=512$ $\\rightarrow$ 9 flip-flops.",
+        "images": []
+      }
     },
     "go:2118": {
       "title": "GATE CSE 2011 | Question: 16, UGCNET-June2013-III: 65",
@@ -664,6 +739,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Threads",
+        "markdown": "Threads of a process share its address space, so the OS keeps virtual memory information per process, not per thread.\n\nEach thread still has its own registers, stack, and scheduling state, so options 1, 2 and 4 are wrong.",
+        "images": []
       }
     },
     "go:2119": {
@@ -703,7 +783,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Planarity",
+        "markdown": "Checking each statement:\n\n- K4 can be drawn with one vertex inside the triangle of the other three, with no crossings.\n\n- Q3 (cube) can be drawn as a square inside a square with corners joined, with no crossings.",
+        "images": []
+      }
     },
     "go:2120": {
       "title": "GATE CSE 2011 | Question: 18",
@@ -744,6 +829,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "$R=E[X^2]-(E[X])^2$ is the variance of X, which can never be negative. It is 0 for a constant X.",
+        "images": []
       }
     },
     "go:2121": {
@@ -783,7 +873,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Lexical Analysis",
+        "markdown": "Tokens (identifiers, numbers, keywords) are described by regular expressions, so finite automata are both necessary and sufficient.",
+        "images": []
+      }
     },
     "go:2122": {
       "title": "GATE CSE 2011 | Question: 20, UGCNET-June2013-II: 48",
@@ -824,6 +919,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Virtual Memory",
+        "markdown": "EAT = $(1-10^{-6})\\times20\\,ns+10^{-6}\\times10\\,ms$\n\n$10^{-6}\\times10^{7}\\,ns=10\\,ns$, so EAT $\\approx$ 20 + 10 = 30 ns",
+        "images": []
       }
     },
     "go:2123": {
@@ -863,7 +963,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "CO & Architecture - Addressing Modes",
+        "markdown": "Effective address = constant 20 + contents of R2. A register plus a displacement is base (base-indexed / displacement) addressing.",
+        "images": []
+      }
     },
     "go:2124": {
       "title": "GATE CSE 2011 | Question: 22",
@@ -903,7 +1008,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "p[3] = 'E' (69), p[1] = 'A' (65), so p + 69 $-$ 65 = p + 4.\n\np + 4 points to \"2011\".",
+        "images": []
+      }
     },
     "go:2125": {
       "title": "GATE CSE 2011 | Question: 23",
@@ -942,7 +1052,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "A heap must be a complete binary tree with each parent $\\ge$ its children.\n\n- A: not complete (8 has one child while 5 has a child)\n\n- B: complete, and 10 $\\ge$ 8, 6; 8 $\\ge$ 4, 5; 6 $\\ge$ 1, 2 $\\rightarrow$ valid\n\n- C: 5 has child 8 $\\rightarrow$ invalid\n\n- D: root 5 has child 8 $\\rightarrow$ invalid",
+        "images": []
+      }
     },
     "go:3429": {
       "title": "GATE CSE 2011 | Question: 24",
@@ -982,6 +1097,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Language",
+        "markdown": "Regular languages are closed under complement, so $\\Sigma^*-P$ is regular.\n\nWith the example: $P\\cap Q=Q$, $P-Q$ and $\\Sigma^*-Q$ are not regular.",
+        "images": []
       }
     },
     "go:2127": {
@@ -1021,7 +1141,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Dynamic Programming",
+        "markdown": "$L_i$ is computed from the already-computed $L_{i+1}$ (a stored sub-result), going from right to left. That is dynamic programming.",
+        "images": []
+      }
     },
     "go:2128": {
       "title": "GATE CSE 2011 | Question: 26",
@@ -1060,7 +1185,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Identify Class Language",
+        "markdown": "Checking each statement:\n\n- L1 = 0*1* $\\rightarrow$ regular\n\n- L2 = $0^p1^p$ $\\rightarrow$ CFL\n\n- L3 = $0^p1^p0^p$ needs two comparisons $\\rightarrow$ not CFL (but a TM can recognise it)\n\nSo \"all three are context free\" is NOT true.",
+        "images": []
+      }
     },
     "go:2129": {
       "title": "GATE CSE 2011 | Question: 27",
@@ -1099,7 +1229,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "$\\uparrow$ binds tighter and is right associative: $3\\uparrow4\\uparrow3=3\\uparrow(4\\uparrow3)$.\n\n$\\downarrow$ is left associative: $(7\\downarrow X)\\downarrow2$.\n\nTree: root $\\downarrow$ with right child 2 and left child $7\\downarrow(3\\uparrow(4\\uparrow3))$, which is figure B.",
+        "images": []
+      }
     },
     "go:2130": {
       "title": "GATE CSE 2011 | Question: 28",
@@ -1138,7 +1273,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "CO & Architecture - DMA",
+        "markdown": "<b>Program:</b> each byte needs load (2) + store (2) + increment (1) + decrement (1) + branch (1) = 7 cycles.\n\n500 $\\times$ 7 + 2 (initialisation) = 3502 cycles\n\n<b>DMA:</b> 20 + 500 $\\times$ 2 = 1020 cycles\n\nSpeed-up = 3502 / 1020 $\\approx$ 3.4",
+        "images": []
+      }
     },
     "go:2131": {
       "title": "GATE CSE 2011 | Question: 29",
@@ -1176,7 +1316,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Binary Tree",
+        "markdown": "The in-order traversal of a BST must give the sorted order. The tree shape fixes the in-order sequence of positions, so the sorted values can be placed in exactly one way.",
+        "images": []
+      }
     },
     "go:2132": {
       "title": "GATE CSE 2011 | Question: 30",
@@ -1215,7 +1360,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "P(x): x $\\ne$ 1, and whenever y divides x (x = y$\\cdot$z), y must be 1 or x.\n\nSo x has no divisors other than 1 and itself, i.e. x is prime.",
+        "images": []
+      }
     },
     "go:2133": {
       "title": "GATE CSE 2011 | Question: 31",
@@ -1254,7 +1404,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\frac{\\cos x+i\\sin x}{\\cos x-i\\sin x}=\\frac{e^{ix}}{e^{-ix}}=e^{2ix}$\n\n$\\int_0^{\\pi/2}e^{2ix}dx=\\frac{e^{i\\pi}-1}{2i}=\\frac{-2}{2i}=-\\frac1i=i$",
+        "images": []
+      }
     },
     "go:2134": {
       "title": "GATE CSE 2011 | Question: 32",
@@ -1293,7 +1448,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "Rows: (1, 1), (2, 3), (3, 7), (4, 15), ... Each new Y = 2Y + 1, so $Y=2^X-1$.\n\nX = 7: Y = $2^7-1=127$",
+        "images": []
+      }
     },
     "go:2135": {
       "title": "GATE CSE 2011 | Question: 33",
@@ -1333,6 +1493,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Adding b shifts every value; multiplying by a (positive) scales the spread.\n\n- Mean: $\\mu_y=a\\mu_x+b$ (correct)\n\n- Mode and median keep their positions (order is preserved)\n\n- Standard deviation: $\\sigma_y=a\\sigma_x$, b does not appear $\\rightarrow$ option 4 is INCORRECT",
+        "images": []
       }
     },
     "go:2136": {
@@ -1373,6 +1538,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Ordered pairs (first, second): 5 $\\times$ 4 = 20.\n\nFavourable: (2, 1), (3, 2), (4, 3), (5, 4) = 4\n\nProbability = 4/20 = 1/5",
+        "images": []
       }
     },
     "go:2137": {
@@ -1412,7 +1582,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "Checking each statement:\n\n- 0-1: P0\n\n- 1: P1 arrives (4 $\\lt$ P0's remaining 8) $\\rightarrow$ P1 runs 1-5\n\n- 5-13: P0 (8 $\\lt$ P2's 9)\n\n- 13-22: P2\n\nWaiting: P0 = 13 $-$ 9 = 4, P1 = 0, P2 = 22 $-$ 2 $-$ 9 = 11\n\nAverage = 15/3 = 5 ms",
+        "images": []
+      }
     },
     "go:2138": {
       "title": "GATE CSE 2011 | Question: 36",
@@ -1451,7 +1626,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Register Allocation",
+        "markdown": "Evaluate the deeper right subtree first:\n\n- load c, d (2 registers); c + d $\\rightarrow$ R1\n\n- load e $\\rightarrow$ R2; e $-$ R1 $\\rightarrow$ R1 (1 register busy)\n\n- load a, b into R2, R3; a $-$ b $\\rightarrow$ R2; R2 + R1\n\nAt most 3 registers are in use at once, and 2 is not enough.",
+        "images": []
+      }
     },
     "go:2139": {
       "title": "GATE CSE 2011 | Question: 37",
@@ -1490,7 +1670,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Asymptotic Notations",
+        "markdown": "Checking each statement:\n\n- $f_3=n\\log n$ grows slower than $f_2=n^{1.5}$\n\n- $f_4=n^{\\log n}=2^{(\\log n)^2}$ is super-polynomial\n\n- but $(\\log n)^2\\lt n$, so $f_4\\lt f_1=2^n$",
+        "images": []
+      }
     },
     "go:2140": {
       "title": "GATE CSE 2011 | Question: 38",
@@ -1530,6 +1715,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Dynamic Programming",
+        "markdown": "Dimensions: 10$\\times$100, 100$\\times$20, 20$\\times$5, 5$\\times$80. Best order: $(M_1(M_2M_3))M_4$:\n\n- $M_2M_3$: 100 $\\times$ 20 $\\times$ 5 = 10000\n\n- $M_1(M_2M_3)$: 10 $\\times$ 100 $\\times$ 5 = 5000\n\n- $\\times$ $M_4$: 10 $\\times$ 5 $\\times$ 80 = 4000\n\nTotal = 19000",
+        "images": []
       }
     },
     "go:2141": {
@@ -1569,7 +1759,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Indexing",
+        "markdown": "Checking each statement:\n\n- Q1 is an equality search: a hash index finds it in about one access, faster than walking a tree.\n\n- Q2 is a range search: hashing scatters values, so it cannot do ranges. An ordered index can.",
+        "images": []
+      }
     },
     "go:2142": {
       "title": "GATE CSE 2011 | Question: 40",
@@ -1609,6 +1804,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "For an upper triangular matrix, the eigenvalues are the diagonal entries: 1, 4, 3.",
+        "images": []
       }
     },
     "go:2143": {
@@ -1649,6 +1849,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "Checking each statement:\n\n- Non-pipelined: 5 + 6 + 11 + 8 = 30 ns per instruction\n\n- Pipelined: clock = slowest stage + register = 11 + 1 = 12 ns per instruction\n\nSpeed-up = 30 / 12 = 2.5",
+        "images": []
       }
     },
     "go:2144": {
@@ -1689,7 +1894,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "L = {$a^n, a^{2n}, a^{3n}, \\dots$} (length a positive multiple of n).\n\nStates $q_0,\\dots,q_n$: count up to n, accept at $q_n$, then $q_n$ loops back through $q_1..q_n$. The empty string must be rejected, so $q_0$ is separate.\n\nThat is n + 1 states.",
+        "images": []
+      }
     },
     "go:2145": {
       "title": "GATE CSE 2011 | Question: 43",
@@ -1729,6 +1939,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "Checking each statement:\n\n- Blocks = 8 KB / 32 B = 256 $\\rightarrow$ index = 8 bits, offset = 5 bits\n\n- Tag = 32 $-$ 8 $-$ 5 = 19 bits\n\n- Per block: 19 + 1 (valid) + 1 (modified) = 21 bits\n\nTotal = 256 $\\times$ 21 = 5376 bits",
+        "images": []
       }
     },
     "go:2146": {
@@ -1768,7 +1983,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Disk",
+        "markdown": "6000 rpm $\\rightarrow$ one rotation = 10 ms, average rotational latency = 5 ms.\n\nPer library: 10 (seek) + 5 = 15 ms. 100 libraries: 1500 ms = 1.5 s.",
+        "images": []
+      }
     },
     "go:2147": {
       "title": "GATE CSE 2011 | Question: 45",
@@ -1808,7 +2028,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "In D, s and t are both accepting with self-loops on a, b, so they are equivalent and merge into one state. r is a dead state.\n\nResult: p -a$\\rightarrow$ s, p -b$\\rightarrow$ q, q -a$\\rightarrow$ s, q -b$\\rightarrow$ r, which is figure A. It accepts a(a+b)* + ba(a+b)*.",
+        "images": []
+      }
     },
     "go:2148": {
       "title": "GATE CSE 2011 | Question: 46",
@@ -1847,7 +2072,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "The join is on Bank_Manager:\n\n- Sunderajan: 2 rows in S $\\times$ 2 rows in T = 4\n\n- Ramgopal: 1 $\\times$ 1 = 1\n\nCount = 5",
+        "images": []
+      }
     },
     "go:2152": {
       "title": "GATE CSE 2011 | Question: 47",
@@ -1895,6 +2125,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Test Cases",
+        "markdown": "Input classes: a = 0 (T1, T2), discriminant $\\gt$ 0 (T5), = 0 (T3, T4), $\\lt$ 0 (T6).\n\nOne test per class is enough: one of T1/T2, one of T3/T4, T5, T6. Only option 3 (T2, T4, T5, T6) picks exactly one from each.",
+        "images": []
       }
     },
     "go:2154": {
@@ -1935,7 +2170,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "foo(n, r) adds the digits of n in base r.\n\nfoo(345, 10) = 5 + 4 + 3 = 12",
+        "images": []
+      }
     },
     "go:43324": {
       "title": "GATE CSE 2011 | Question: 49",
@@ -1975,7 +2215,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "foo(n, 2) adds the binary digits, i.e. counts the 1 bits.\n\n513 = 512 + 1 = 1000000001 (binary) $\\rightarrow$ 2 ones",
+        "images": []
+      }
     },
     "go:2157": {
       "title": "GATE CSE 2011 | Question: 50",
@@ -2015,7 +2260,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "From the circuit: $P^+=R$, $Q^+=\\overline{P+R}$, $R^+=Q\\cdot\\bar R$.\n\nPQR = 010: P = 0, Q = $\\overline{0+0}$ = 1, R = 1 $\\cdot$ 1 = 1 $\\rightarrow$ 011",
+        "images": []
+      }
     },
     "go:43318": {
       "title": "GATE CSE 2011 | Question: 51",
@@ -2054,7 +2304,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "Using $P^+=R$, $Q^+=\\overline{P+R}$, $R^+=Q\\bar R$ from 000:\n\n000 $\\rightarrow$ 010 $\\rightarrow$ 011 $\\rightarrow$ 100 $\\rightarrow$ 000 (repeats)\n\n4 distinct states",
+        "images": []
+      }
     },
     "go:2160": {
       "title": "GATE CSE 2011 | Question: 52",
@@ -2094,7 +2349,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Routing",
+        "markdown": "N3's neighbours are N2 (now cost 2) and N4 (cost 2). Vectors received:\n\nN2 = (1, 0, 2, 7, 3), N4 = (8, 7, 2, 0, 4)\n\n- to N1: min(2 + 1, 2 + 8) = 3\n\n- to N2: 2, to N4: 2\n\n- to N5: min(2 + 3, 2 + 4) = 5\n\nNew vector = (3, 2, 0, 2, 5)",
+        "images": []
+      }
     },
     "go:43317": {
       "title": "GATE CSE 2011 | Question: 53",
@@ -2134,7 +2394,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Routing",
+        "markdown": "N2 now reports N1 at $\\infty$. N4 still reports N1 at 8 (from the previous round).\n\nN3 to N1 = min(2 + $\\infty$, 2 + 8) = 10",
+        "images": []
+      }
     },
     "go:2162": {
       "title": "GATE CSE 2011 | Question: 54",
@@ -2175,6 +2440,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "Edge $(v_i,v_{i+1})$ costs 2i + 1 and $(v_i,v_{i+2})$ costs 2i + 2.\n\nMST: $v_1v_2$ (3), $v_1v_3$ (4), and for each $j\\ge4$ the cheaper edge $v_{j-2}v_j$ (2j $-$ 2).\n\n$3+4+\\sum_{j=4}^{n}(2j-2)=7+(n^2-n-6)=n^2-n+1$",
+        "images": []
       }
     },
     "go:43325": {
@@ -2216,6 +2486,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "The MST joins odd vertices in one chain ($v_1v_3, v_3v_5, \\dots$) and even vertices in another ($v_2v_4, v_4v_6, \\dots$), linked by $v_1v_2$.\n\nPath $v_5\\rightarrow v_3\\rightarrow v_1\\rightarrow v_2\\rightarrow v_4\\rightarrow v_6$: 8 + 4 + 3 + 6 + 10 = 31",
+        "images": []
       }
     },
     "go:2165": {
@@ -2255,7 +2530,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Inexplicable = cannot be explained or understood $\\rightarrow$ incomprehensible.",
+        "images": []
+      }
     },
     "go:2166": {
       "title": "GATE CSE 2011 | Question: 57",
@@ -2295,7 +2575,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Let log P = k. Then log Q = 2k and log R = 3k.\n\nlog(Q$^2$) = 4k and log(PR) = k + 3k = 4k $\\rightarrow$ Q$^2$ = PR",
+        "images": []
+      }
     },
     "go:2167": {
       "title": "GATE CSE 2011 | Question: 58",
@@ -2334,7 +2619,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "\"Contemplate\" is followed by a gerund (-ing form): \"contemplated visiting\".",
+        "images": []
+      }
     },
     "go:2169": {
       "title": "GATE CSE 2011 | Question: 59",
@@ -2373,7 +2663,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "The blank must be like \"understated\" and \"tentative\" (holding back). \"Restrained\" fits.",
+        "images": []
+      }
     },
     "go:2170": {
       "title": "GATE CSE 2011 | Question: 60",
@@ -2412,7 +2707,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Amalgamate = combine into one. Opposite: separate.",
+        "images": []
+      }
     },
     "go:2171": {
       "title": "GATE CSE 2011 | Question: 61",
@@ -2451,7 +2751,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "A bereavement unit is about coping with loss: emotions, condolence, supporting others. Leading causes of death is a medical/statistical topic, not about dealing with grief.",
+        "images": []
+      }
     },
     "go:2172": {
       "title": "GATE CSE 2011 | Question: 62",
@@ -2490,7 +2795,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Danger $\\propto$ potency $\\times$ growth (area $\\propto d^2$) $\\times$ toxicity. A lower \"mg needed to destroy\" value means more toxic, so divide by it:\n\n- P: 0.4 $\\times$ 2500 / 800 = 1.25\n\n- Q: 0.5 $\\times$ 1600 / 600 = 1.33\n\n- R: 0.4 $\\times$ 900 / 300 = 1.2\n\n- S: 0.8 $\\times$ 400 / 200 = 1.6 (highest)",
+        "images": []
+      }
     },
     "go:2173": {
       "title": "GATE CSE 2011 | Question: 63",
@@ -2529,7 +2839,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Total cost C = 4q + 100/q.\n\n$\\frac{dC}{dq}=4-\\frac{100}{q^2}=0\\Rightarrow q^2=25\\Rightarrow q=5$",
+        "images": []
+      }
     },
     "go:2174": {
       "title": "GATE CSE 2011 | Question: 64",
@@ -2568,7 +2883,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Let backlog = B, new orders per day = d, one truck clears c orders per day.\n\n- 7 $\\times$ 4c = B + 4d\n\n- 3 $\\times$ 10c = B + 10d\n\nSubtracting: 2c = 6d $\\rightarrow$ c = 3d, and B = 80d.\n\nFor 5 days: N $\\times$ 5 $\\times$ 3d $\\ge$ 80d + 5d $\\rightarrow$ N $\\ge$ 5.67 $\\rightarrow$ 6 trucks",
+        "images": []
+      }
     },
     "go:2175": {
       "title": "GATE CSE 2011 | Question: 65",
@@ -2607,7 +2927,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Each replacement keeps 9/10 of the spirit. After 3 replacements:\n\n$10\\times\\left(\\frac{9}{10}\\right)^3=7.29$ litres",
+        "images": []
+      }
     }
   }
 }

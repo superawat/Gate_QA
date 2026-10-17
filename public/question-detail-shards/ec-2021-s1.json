@@ -46,8 +46,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\bar{F} &=-x i+y j \\\\ \\int \\vec{F} \\cdot \\overrightarrow{d r} &=\\int_{c}-x d x+y d y \\\\ &=\\int_{\\theta=0}^{45^{\\circ}}(-\\cos \\theta(-\\sin \\theta)+\\sin \\theta \\cos \\theta) d \\theta \\\\ \\int_{\\theta=0}^{\\pi / 4} \\sin 2 \\theta d \\theta &\\left.=-\\frac{\\cos 2 \\theta}{2}\\right]_{0}^{\\pi / 4} \\\\ &=-\\frac{1}{2}[0-1]=\\frac{1}{2} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-615636be0e.webp\" />\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EC) - Calculus",
+        "markdown": "$$\\begin{aligned} \\bar{F} &=-x i+y j \\\\ \\int \\vec{F} \\cdot \\overrightarrow{d r} &=\\int_{c}-x d x+y d y \\\\ &=\\int_{\\theta=0}^{45^{\\circ}}(-\\cos \\theta(-\\sin \\theta)+\\sin \\theta \\cos \\theta) d \\theta \\\\ \\int_{\\theta=0}^{\\pi / 4} \\sin 2 \\theta d \\theta &\\left.=-\\frac{\\cos 2 \\theta}{2}\\right]_{0}^{\\pi / 4} \\\\ &=-\\frac{1}{2}[0-1]=\\frac{1}{2} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-615636be0e.webp\" />",
+        "images": [
+          "/question-images/ec/2021/ec-2021-615636be0e.webp"
+        ]
       }
     },
     "pp:ec:2021:q2": {
@@ -87,8 +90,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned} \\frac{d y}{d x}+\\frac{x}{1-x^{2}} y&=x \\sqrt{y}, \\quad \\text { IF }=?\\\\ \\text{Divided by }\\sqrt{y}\\\\ \\frac{1}{\\sqrt{y}} \\frac{d y}{d x}+\\frac{x}{1-x^{2}} \\sqrt{y}&=x \\\\ 2 \\frac{d u}{d x}+\\frac{x}{1-x^{2}} u&=x\\\\ \\text{Let }\\qquad x \\sqrt{y}&=u\\\\ \\frac{1}{2 \\sqrt{v}} \\frac{d y}{d x}&=\\frac{d u}{d x}\\\\ \\Rightarrow \\qquad \\frac{d u}{d x}+\\frac{x}{2\\left(1-x^{2}\\right)} u&=\\frac{x}{2} \\rightarrow \\text{ lines diff. equ.} \\\\ \\text { I. } F&=e^{\\int \\frac{x}{2\\left(1-x^{2}\\right)} d x}=e^{-\\frac{1}{4} \\log \\left(1-x^{2}\\right)}&=e^{\\log \\left(1-x^{2}\\right) \\frac{-1}{4}} \\\\ \\text { I.F }&=\\frac{1}{\\left(1-x^{2}\\right)^{\\frac{1}{4}}} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (EC) - Differential Equations",
+        "markdown": "$$\\begin{aligned} \\frac{d y}{d x}+\\frac{x}{1-x^{2}} y&=x \\sqrt{y}, \\quad \\text { IF }=?\\\\ \\text{Divided by }\\sqrt{y}\\\\ \\frac{1}{\\sqrt{y}} \\frac{d y}{d x}+\\frac{x}{1-x^{2}} \\sqrt{y}&=x \\\\ 2 \\frac{d u}{d x}+\\frac{x}{1-x^{2}} u&=x\\\\ \\text{Let }\\qquad x \\sqrt{y}&=u\\\\ \\frac{1}{2 \\sqrt{v}} \\frac{d y}{d x}&=\\frac{d u}{d x}\\\\ \\Rightarrow \\qquad \\frac{d u}{d x}+\\frac{x}{2\\left(1-x^{2}\\right)} u&=\\frac{x}{2} \\rightarrow \\text{ lines diff. equ.} \\\\ \\text { I. } F&=e^{\\int \\frac{x}{2\\left(1-x^{2}\\right)} d x}=e^{-\\frac{1}{4} \\log \\left(1-x^{2}\\right)}&=e^{\\log \\left(1-x^{2}\\right) \\frac{-1}{4}} \\\\ \\text { I.F }&=\\frac{1}{\\left(1-x^{2}\\right)^{\\frac{1}{4}}} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q3": {
@@ -129,7 +133,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "$$\\begin{aligned} Y &=2 X+3 \\\\ \\operatorname{Var}[Y] &=E\\left[(Y-\\bar{Y})^{2}\\right] \\\\ E[Y] &=\\bar{Y}=2 \\bar{X}+3 \\\\ \\operatorname{Var}[Y] &=E\\left[(2 X+3-2 \\bar{X}-3)^{2}\\right] \\\\ &=E\\left[4(X-\\bar{X})^{2}\\right] \\\\ &=4 \\cdot E\\left[(X-\\bar{X})^{2}\\right] \\\\ \\sigma_{Y}^{2} &=4 \\cdot \\sigma_{X}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} Y &=2 X+3 \\\\ \\operatorname{Var}[Y] &=E\\left[(Y-\\bar{Y})^{2}\\right] \\\\ E[Y] &=\\bar{Y}=2 \\bar{X}+3 \\\\ \\operatorname{Var}[Y] &=E\\left[(2 X+3-2 \\bar{X}-3)^{2}\\right] \\\\ &=E\\left[4(X-\\bar{X})^{2}\\right] \\\\ &=4 \\cdot E\\left[(X-\\bar{X})^{2}\\right] \\\\ \\sigma_{Y}^{2} &=4 \\cdot \\sigma_{X}^{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q4": {
@@ -170,7 +175,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-825ab8c56e.webp\" />\n\n<img src=\"/question-images/ec/2021/ec-2021-3cb4f4f255.webp\" />\n\n<img src=\"/question-images/ec/2021/ec-2021-1c6cf8458c.webp\" />\n\n$\\mathrm{NR}=2 \\times f_{\\mathrm{max}}=2 \\times 15=30 \\mathrm{kHz}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-825ab8c56e.webp\" />\n\n<img src=\"/question-images/ec/2021/ec-2021-3cb4f4f255.webp\" />\n\n<img src=\"/question-images/ec/2021/ec-2021-1c6cf8458c.webp\" />\n\n$\\mathrm{NR}=2 \\times f_{\\mathrm{max}}=2 \\times 15=30 \\mathrm{kHz}$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-825ab8c56e.webp",
+          "/question-images/ec/2021/ec-2021-3cb4f4f255.webp",
+          "/question-images/ec/2021/ec-2021-1c6cf8458c.webp"
+        ]
       }
     },
     "pp:ec:2021:q5": {
@@ -211,7 +221,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "If two' N' point signals x(n) and h(n) are convolving with each other linearly and circularly\n\nthen\n\n$y(k)=z(k)$ at $k=N-1$\n\nwhere, y(n)= Linear convolution of x(n) and h(n)\n\nz(n)= Circular convolution of x(n) and h(n)\n\nSince, $N=16$ (Given)\n\nTherefore, $\\quad y(k)=z(k)$ at $k=N-1=15$\n\nTherefore, the correct answer is **C**."
+        "markdown": "If two' N' point signals x(n) and h(n) are convolving with each other linearly and circularly\n\nthen\n\n$y(k)=z(k)$ at $k=N-1$\n\nwhere, y(n)= Linear convolution of x(n) and h(n)\n\nz(n)= Circular convolution of x(n) and h(n)\n\nSince, $N=16$ (Given)\n\nTherefore, $\\quad y(k)=z(k)$ at $k=N-1=15$",
+        "images": []
       }
     },
     "pp:ec:2021:q6": {
@@ -252,7 +263,10 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "Boron $\\rightarrow$ Acceptor type doping\n\n<img src=\"/question-images/ec/2021/ec-2021-82001a1cc3.webp\" />\n\n$$\\begin{aligned} N_{A} &=10^{16} \\mathrm{~cm}^{-3} \\\\ g_{0 p} &=1020 \\mathrm{~cm}^{-3} \\mathrm{~s}^{-1} \\\\ \\tau &=100 \\mu \\mathrm{s} \\\\ n_{i} &=10^{10} \\mathrm{~cm}^{-3} \\end{aligned}$$\n\nProduct of steady state electron-hole concentration =?\n\nAt thermal equilibrium (before shining light)\n\n$$\\begin{array}{ll} \\text { Hole concentration, } & p_{o} \\simeq N_{A}=10^{16} \\mathrm{~cm}^{-3} \\\\ \\text { Electron concentration, } & n_{0}=\\frac{n_{i}^{2}}{p_{0}}=\\frac{10^{20}}{10^{16}}=10^{4} \\mathrm{~cm}^{-3} \\end{array}$$\n\nAfter, illumination of light,\n\nHole concentration, $p=p_{o}+\\delta p$\n\nElectron concentration, $\\quad n=n_{o}+\\delta n$\n\nDue to shining light, excess carrier concentration,\n\n$$\\begin{aligned} \\delta p &=\\delta n=g_{o p} \\cdot \\tau=10^{20} \\times 100 \\times 10^{-6}=10^{16} \\mathrm{~cm}^{-3} \\\\ \\therefore \\qquad p &=10^{16}+10^{16}=2 \\times 10^{16} \\mathrm{~cm}^{-3}\\\\ n&=10^{4}+10^{16} \\simeq 10^{16} \\mathrm{~cm}^{-3} \\end{aligned}$$\n\nSo, product of steady state electron-hole concentration\n\n$$\\begin{aligned} &=n p=10^{16} \\times 2 \\times 10^{16} \\\\ &=2 \\times 10^{32} \\mathrm{~cm}^{-6} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Boron $\\rightarrow$ Acceptor type doping\n\n<img src=\"/question-images/ec/2021/ec-2021-82001a1cc3.webp\" />\n\n$$\\begin{aligned} N_{A} &=10^{16} \\mathrm{~cm}^{-3} \\\\ g_{0 p} &=1020 \\mathrm{~cm}^{-3} \\mathrm{~s}^{-1} \\\\ \\tau &=100 \\mu \\mathrm{s} \\\\ n_{i} &=10^{10} \\mathrm{~cm}^{-3} \\end{aligned}$$\n\nProduct of steady state electron-hole concentration =?\n\nAt thermal equilibrium (before shining light)\n\n$$\\begin{array}{ll} \\text { Hole concentration, } & p_{o} \\simeq N_{A}=10^{16} \\mathrm{~cm}^{-3} \\\\ \\text { Electron concentration, } & n_{0}=\\frac{n_{i}^{2}}{p_{0}}=\\frac{10^{20}}{10^{16}}=10^{4} \\mathrm{~cm}^{-3} \\end{array}$$\n\nAfter, illumination of light,\n\nHole concentration, $p=p_{o}+\\delta p$\n\nElectron concentration, $\\quad n=n_{o}+\\delta n$\n\nDue to shining light, excess carrier concentration,\n\n$$\\begin{aligned} \\delta p &=\\delta n=g_{o p} \\cdot \\tau=10^{20} \\times 100 \\times 10^{-6}=10^{16} \\mathrm{~cm}^{-3} \\\\ \\therefore \\qquad p &=10^{16}+10^{16}=2 \\times 10^{16} \\mathrm{~cm}^{-3}\\\\ n&=10^{4}+10^{16} \\simeq 10^{16} \\mathrm{~cm}^{-3} \\end{aligned}$$\n\nSo, product of steady state electron-hole concentration\n\n$$\\begin{aligned} &=n p=10^{16} \\times 2 \\times 10^{16} \\\\ &=2 \\times 10^{32} \\mathrm{~cm}^{-6} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-82001a1cc3.webp"
+        ]
       }
     },
     "pp:ec:2021:q7": {
@@ -293,7 +307,10 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "The built-in electric field is due to non-uniform doping (the semiconductor is under equilibrium)\n\n<img src=\"/question-images/ec/2021/ec-2021-eff88db1cf.webp\" />\n\n$$\\begin{aligned} E &=\\frac{1}{q}\\frac{ d E_{v}}{d x} \\\\ &=\\frac{1}{q} \\frac{\\Delta}{L} \\\\ &=\\frac{\\Delta}{q L} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The built-in electric field is due to non-uniform doping (the semiconductor is under equilibrium)\n\n<img src=\"/question-images/ec/2021/ec-2021-eff88db1cf.webp\" />\n\n$$\\begin{aligned} E &=\\frac{1}{q}\\frac{ d E_{v}}{d x} \\\\ &=\\frac{1}{q} \\frac{\\Delta}{L} \\\\ &=\\frac{\\Delta}{q L} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-eff88db1cf.webp"
+        ]
       }
     },
     "pp:ec:2021:q8": {
@@ -334,7 +351,13 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "MOSFET $M_2$ acts as common source amplifier.\n\n<img src=\"/question-images/ec/2021/ec-2021-378dd5d46b.webp\" />\n\nDrain to gate connected MOSFET $M_1$ acts as load.\n\n<img src=\"/question-images/ec/2021/ec-2021-acb3b02648.webp\" />\n\nFor given circuit, AC equivalent is as shown.\n\n<img src=\"/question-images/ec/2021/ec-2021-7313dd873f.webp\" />\n\nReplace $M_2$ with small signal model\n\n<img src=\"/question-images/ec/2021/ec-2021-0b6d2197a1.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{V_{\\text {out }}}{V_{\\text {in }}} &=\\frac{-g_{m 2} V_{g s}\\left(r_{\\infty} \\| R_{\\text {eq }}\\right)}{V_{g s}} \\\\\n\nA_{V} &=-g_{m 2}\\left( \\frac{1}{g_{m 1}}|| r_{o1} || r_{o 2} \\right)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "MOSFET $M_2$ acts as common source amplifier.\n\n<img src=\"/question-images/ec/2021/ec-2021-378dd5d46b.webp\" />\n\nDrain to gate connected MOSFET $M_1$ acts as load.\n\n<img src=\"/question-images/ec/2021/ec-2021-acb3b02648.webp\" />\n\nFor given circuit, AC equivalent is as shown.\n\n<img src=\"/question-images/ec/2021/ec-2021-7313dd873f.webp\" />\n\nReplace $M_2$ with small signal model\n\n<img src=\"/question-images/ec/2021/ec-2021-0b6d2197a1.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{V_{\\text {out }}}{V_{\\text {in }}} &=\\frac{-g_{m 2} V_{g s}\\left(r_{\\infty} \\| R_{\\text {eq }}\\right)}{V_{g s}} \\\\\n\nA_{V} &=-g_{m 2}\\left( \\frac{1}{g_{m 1}}|| r_{o1} || r_{o 2} \\right)\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-378dd5d46b.webp",
+          "/question-images/ec/2021/ec-2021-acb3b02648.webp",
+          "/question-images/ec/2021/ec-2021-7313dd873f.webp",
+          "/question-images/ec/2021/ec-2021-0b6d2197a1.webp"
+        ]
       }
     },
     "pp:ec:2021:q9": {
@@ -375,7 +398,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<b>MARKS TO ALL AS PER IIT ANSWER KEY</b>\n\n$$\\begin{aligned} V &=V^{+} \\\\ \\frac{V_{\\text {out }} R_{\\text {in }}+V_{\\text {in }} R_{F}}{R_{\\text {in }}+R_{F}} &=\\frac{V_{\\text {ref }} R_{2}}{R_{1}+R_{2}} \\\\ \\frac{1 \\times R_{\\text {in }}+0.1 \\times R_{F}}{R_{\\text {in }}+R_{F}} &=\\frac{V_{\\text {ref }} R_{2}}{R_{1}+R_{2}} &\\ldots(i)\\\\ \\frac{6 R_{\\text {in }}+1 \\times R_{F}}{R_{\\text {in }}+R_{F}} &=\\frac{V_{\\text {ref }} R_{2}}{R_{1}+R_{2}} &\\ldots(ii) \\end{aligned}$$\n\nEquate equation (i) and (ii),\n\n$$\\begin{aligned} 1 \\times R_{\\text {in }}+0.1 \\times R_{F} &=6 \\times R_{\\text {in }}+1 \\times R_{F} \\\\ -5 R_{\\text {in }} &=0.9 R_{F} \\\\ \\therefore \\quad \\frac{R_{F}}{R_{\\text {in }}} &=\\frac{-5}{0.9}=-5.55 \\end{aligned}$$\n\n(According to the given data magnitude is taken)\n\nTherefore, the correct answer is **D**."
+        "markdown": "<b>MARKS TO ALL AS PER IIT ANSWER KEY</b>\n\n$$\\begin{aligned} V &=V^{+} \\\\ \\frac{V_{\\text {out }} R_{\\text {in }}+V_{\\text {in }} R_{F}}{R_{\\text {in }}+R_{F}} &=\\frac{V_{\\text {ref }} R_{2}}{R_{1}+R_{2}} \\\\ \\frac{1 \\times R_{\\text {in }}+0.1 \\times R_{F}}{R_{\\text {in }}+R_{F}} &=\\frac{V_{\\text {ref }} R_{2}}{R_{1}+R_{2}} &\\ldots(i)\\\\ \\frac{6 R_{\\text {in }}+1 \\times R_{F}}{R_{\\text {in }}+R_{F}} &=\\frac{V_{\\text {ref }} R_{2}}{R_{1}+R_{2}} &\\ldots(ii) \\end{aligned}$$\n\nEquate equation (i) and (ii),\n\n$$\\begin{aligned} 1 \\times R_{\\text {in }}+0.1 \\times R_{F} &=6 \\times R_{\\text {in }}+1 \\times R_{F} \\\\ -5 R_{\\text {in }} &=0.9 R_{F} \\\\ \\therefore \\quad \\frac{R_{F}}{R_{\\text {in }}} &=\\frac{-5}{0.9}=-5.55 \\end{aligned}$$\n\n(According to the given data magnitude is taken)",
+        "images": []
       }
     },
     "pp:ec:2021:q10": {
@@ -416,7 +440,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "For ideal op-amp, $V^{\\prime}=V^{+}=0$\n\nKCL at node $\\mathrm{V}^{-}:$\n\n$$\\begin{aligned} \\frac{V_{\\text {IN}}-0}{R}+\\frac{\\left(-V_{\\text {REF }}-0\\right)}{R}+\\frac{V_{\\text {OUT }}-0}{R_{F}} &=0 \\\\ \\frac{V_{\\text {OUT }}}{R_{F}} &=\\frac{1}{R}\\left(V_{\\text {REF }}-V_{\\text {IN }}\\right) \\\\ V_{\\text {OUT }} &=\\frac{R_{F}}{R}\\left(V_{\\text {REF }}-V_{\\text {IN }}\\right)\\\\ \\text { We want, }\\qquad V_{\\text {OUT }}&=0 \\\\ \\Rightarrow\\qquad V_{\\text {REF }}-V_{\\text {IN }}&=0 \\\\ \\Rightarrow\\qquad V_{\\text {IN }}&=V_{\\text {REF }} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For ideal op-amp, $V^{\\prime}=V^{+}=0$\n\nKCL at node $\\mathrm{V}^{-}:$\n\n$$\\begin{aligned} \\frac{V_{\\text {IN}}-0}{R}+\\frac{\\left(-V_{\\text {REF }}-0\\right)}{R}+\\frac{V_{\\text {OUT }}-0}{R_{F}} &=0 \\\\ \\frac{V_{\\text {OUT }}}{R_{F}} &=\\frac{1}{R}\\left(V_{\\text {REF }}-V_{\\text {IN }}\\right) \\\\ V_{\\text {OUT }} &=\\frac{R_{F}}{R}\\left(V_{\\text {REF }}-V_{\\text {IN }}\\right)\\\\ \\text { We want, }\\qquad V_{\\text {OUT }}&=0 \\\\ \\Rightarrow\\qquad V_{\\text {REF }}-V_{\\text {IN }}&=0 \\\\ \\Rightarrow\\qquad V_{\\text {IN }}&=V_{\\text {REF }} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q11": {
@@ -457,7 +482,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Number Systems",
-        "markdown": "$x^{3}+2 x^{2}+3 x+5=3 y^{3}+3 y+3$\n\nOption (B) will satisfy the equation.\n\nTherefore, the correct answer is **B**."
+        "markdown": "$x^{3}+2 x^{2}+3 x+5=3 y^{3}+3 y+3$\n\nOption (B) will satisfy the equation.",
+        "images": []
       }
     },
     "pp:ec:2021:q12": {
@@ -498,7 +524,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Memories",
-        "markdown": "For $N \\times 2^{N}$, decoder, there are $2^{N}$ AND gates required at output\n\n$\\therefore 32 \\mathrm{~K} \\times 16=2^{5} \\times 2^{10} \\times 16=2^{15} \\times 16$\n\n$\\therefore 2^{15}$ AND gates required to realize the given memory address\n\nTherefore, the correct answer is **C**."
+        "markdown": "For $N \\times 2^{N}$, decoder, there are $2^{N}$ AND gates required at output\n\n$\\therefore 32 \\mathrm{~K} \\times 16=2^{5} \\times 2^{10} \\times 16=2^{15} \\times 16$\n\n$\\therefore 2^{15}$ AND gates required to realize the given memory address",
+        "images": []
       }
     },
     "pp:ec:2021:q13": {
@@ -539,7 +566,10 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-46f00bdc16.webp\" />\n\n$\\frac{Y}{R}=\\frac{G_{1}(1-0)+G_{2}(1-0)}{1-\\left[-G_{1} H\\right]}=\\frac{G_{1}+G_{2}}{1+G_{1} H}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-46f00bdc16.webp\" />\n\n$\\frac{Y}{R}=\\frac{G_{1}(1-0)+G_{2}(1-0)}{1-\\left[-G_{1} H\\right]}=\\frac{G_{1}+G_{2}}{1+G_{1} H}$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-46f00bdc16.webp"
+        ]
       }
     },
     "pp:ec:2021:q14": {
@@ -580,7 +610,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "The given Nyquist plot is not matched according to the data given in the question.\n\nTherefore, the correct answer is **D**."
+        "markdown": "The given Nyquist plot is not matched according to the data given in the question.",
+        "images": []
       }
     },
     "pp:ec:2021:q15": {
@@ -621,7 +652,10 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
-        "markdown": "Given $\\vec{E}=10 \\cos \\left(2 \\pi \\times 10^{8} t+\\beta z\\right) \\hat{a}_{y}$ for $z \\geq 0$ having free space. For $z \\lt  0$ medium has\n\n$\\epsilon_{r 2}=1 ; \\mu_{r 2}=4$\n\n<img src=\"/question-images/ec/2021/ec-2021-aee5074f6f.webp\" />\n\n$\\Gamma=\\frac{\\eta_{2}-\\eta_{1}}{\\eta_{2}+\\eta_{1}}=\\frac{120 \\pi(2)-120 \\pi}{120 \\pi(2)+120 \\pi}=\\frac{1}{3}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given $\\vec{E}=10 \\cos \\left(2 \\pi \\times 10^{8} t+\\beta z\\right) \\hat{a}_{y}$ for $z \\geq 0$ having free space. For $z \\lt  0$ medium has\n\n$\\epsilon_{r 2}=1 ; \\mu_{r 2}=4$\n\n<img src=\"/question-images/ec/2021/ec-2021-aee5074f6f.webp\" />\n\n$\\Gamma=\\frac{\\eta_{2}-\\eta_{1}}{\\eta_{2}+\\eta_{1}}=\\frac{120 \\pi(2)-120 \\pi}{120 \\pi(2)+120 \\pi}=\\frac{1}{3}$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-aee5074f6f.webp"
+        ]
       }
     },
     "pp:ec:2021:q16": {
@@ -659,8 +693,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$(1,-1,2)$\n\n$(7,3, x)$ are linearly dependent when x=?\n\n$(2,3,1)$\n\n$$\\begin{aligned} \\Rightarrow\\left|\\begin{array}{ccc} 1 & -1 & 2 \\\\ 7 & 3 & x \\\\ 2 & 3 & 1 \\end{array}\\right| &=0 \\Rightarrow 1(3-3 x)+1(7-2 x)+2(15)=0 \\\\ \\Rightarrow \\quad-5 x&=-40 \\\\ x&=8 \\end{aligned}$$\n\nTherefore, the correct answer is **8**."
+        "concept": "Engineering Mathematics (EC) - Linear Algebra",
+        "markdown": "$(1,-1,2)$\n\n$(7,3, x)$ are linearly dependent when x=?\n\n$(2,3,1)$\n\n$$\\begin{aligned} \\Rightarrow\\left|\\begin{array}{ccc} 1 & -1 & 2 \\\\ 7 & 3 & x \\\\ 2 & 3 & 1 \\end{array}\\right| &=0 \\Rightarrow 1(3-3 x)+1(7-2 x)+2(15)=0 \\\\ \\Rightarrow \\quad-5 x&=-40 \\\\ x&=8 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q17": {
@@ -699,7 +734,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$$\\begin{aligned} \\nabla \\times \\vec{F}&=0\\\\ \\left|\\begin{array}{ccc} i & j & k \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ 4 y-c_{1} z & 4 x+2 z & 2 y+z \\end{array}\\right|&=0\\\\ =i(2-2)-j\\left(0+c_{1}\\right)+k(4-4)=0 \\\\ c_{1} &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "$$\\begin{aligned} \\nabla \\times \\vec{F}&=0\\\\ \\left|\\begin{array}{ccc} i & j & k \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ 4 y-c_{1} z & 4 x+2 z & 2 y+z \\end{array}\\right|&=0\\\\ =i(2-2)-j\\left(0+c_{1}\\right)+k(4-4)=0 \\\\ c_{1} &=0 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q18": {
@@ -738,7 +774,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "Redraw the circuit,\n\n$$\\begin{aligned} 3 \\Omega \\;||\\; 6 \\Omega&=2 \\Omega \\\\ 2 \\Omega \\;||\\; 2 \\Omega&=1 \\Omega \\\\ \\qquad I&=5 \\times \\frac{1}{10}=0.5 \\mathrm{~A} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-a64561c5f6.webp\" />\n\nTherefore, the correct answer is **0.5**."
+        "markdown": "Redraw the circuit,\n\n$$\\begin{aligned} 3 \\Omega \\;||\\; 6 \\Omega&=2 \\Omega \\\\ 2 \\Omega \\;||\\; 2 \\Omega&=1 \\Omega \\\\ \\qquad I&=5 \\times \\frac{1}{10}=0.5 \\mathrm{~A} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-a64561c5f6.webp\" />",
+        "images": [
+          "/question-images/ec/2021/ec-2021-a64561c5f6.webp"
+        ]
       }
     },
     "pp:ec:2021:q19": {
@@ -777,7 +816,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-43d7c9617a.webp\" />\n\nWrite KVL equation first loop,\n\n$$\\begin{aligned} V_{o}-4+1\\left(V_{o}+2\\right) &=0 \\\\ V_{o} &=1 \\mathrm{~V} \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-43d7c9617a.webp\" />\n\nWrite KVL equation first loop,\n\n$$\\begin{aligned} V_{o}-4+1\\left(V_{o}+2\\right) &=0 \\\\ V_{o} &=1 \\mathrm{~V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-43d7c9617a.webp"
+        ]
       }
     },
     "pp:ec:2021:q20": {
@@ -816,7 +858,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
-        "markdown": "$$\\begin{aligned} \\text { Given: } \\qquad \\qquad V_{p s}&=7.68 \\mathrm{~V} \\\\ n &=8 \\mathrm{bit} \\\\ \\text { Resolution }(k) &=\\frac{V_{F S}}{2^{n}-1}=\\frac{7.68}{2^{8}-1}=0.03\\\\ \\text { Now, } \\quad V_{\\mathrm{DAC}}&=k \\times\\{\\text { Decimal equivalent }\\}\\\\ &=0.03 \\times\\{150\\} \\\\ &=4.5 \\mathrm{~V} \\end{aligned}$$\n\nTherefore, the correct answer is **4.5**."
+        "markdown": "$$\\begin{aligned} \\text { Given: } \\qquad \\qquad V_{p s}&=7.68 \\mathrm{~V} \\\\ n &=8 \\mathrm{bit} \\\\ \\text { Resolution }(k) &=\\frac{V_{F S}}{2^{n}-1}=\\frac{7.68}{2^{8}-1}=0.03\\\\ \\text { Now, } \\quad V_{\\mathrm{DAC}}&=k \\times\\{\\text { Decimal equivalent }\\}\\\\ &=0.03 \\times\\{150\\} \\\\ &=4.5 \\mathrm{~V} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q21": {
@@ -855,7 +898,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-d8fce607be.webp\" />\n\nAverage power $[X(t)]=R_{x}(0)=2$\n\nTherefore, the correct answer is **2**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-d8fce607be.webp\" />\n\nAverage power $[X(t)]=R_{x}(0)=2$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-d8fce607be.webp"
+        ]
       }
     },
     "pp:ec:2021:q22": {
@@ -894,7 +940,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "If carrier and one of the sidebands are suppressed, then % of power saved\n\n$$\\begin{aligned} &=\\frac{\\text { Power saved }}{\\text { Total power }}=\\frac{P_{c}+\\frac{P_{c} \\mu^{2}}{4}}{P_{c}\\left[1+\\frac{\\mu^{2}}{2}\\right]}=\\frac{4+\\mu^{2}}{4+2 \\mu^{2}} \\\\ &=\\frac{4+(0.5)^{2}}{4+2 \\times(0.5)^{2}}=0.944=94.4 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **94.4** (acceptable range: [94.2, 94.6])."
+        "markdown": "If carrier and one of the sidebands are suppressed, then % of power saved\n\n$$\\begin{aligned} &=\\frac{\\text { Power saved }}{\\text { Total power }}=\\frac{P_{c}+\\frac{P_{c} \\mu^{2}}{4}}{P_{c}\\left[1+\\frac{\\mu^{2}}{2}\\right]}=\\frac{4+\\mu^{2}}{4+2 \\mu^{2}} \\\\ &=\\frac{4+(0.5)^{2}}{4+2 \\times(0.5)^{2}}=0.944=94.4 \\% \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q23": {
@@ -933,7 +980,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "$$\\begin{aligned} f_{m}&=4 \\mathrm{kHz} \\\\ f_{s}&=1.25 \\mathrm{NR}=1.25 \\times\\left(2 f_{m}\\right)=10 \\mathrm{kHz} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-9d1225bbec.webp\" />\n\n$n=8$ bits/sample and $\\frac{S}{N}=26 \\mathrm{~dB}=10^{2.6}$\n\nFor arbitrarily small probability of transmission error,\n\n$$\\begin{aligned} C & \\geq R_{b} \\Rightarrow B \\log _{2}\\left(1+\\frac{S}{N}\\right) \\geq n f_{S} \\\\ \\text{Blog}_{2}\\left(1+10^{2.6}\\right) & \\geq 8 \\times 10 \\mathrm{~K} \\Rightarrow B \\geq 9.25 \\mathrm{kHz} \\\\ B_{\\min } &=9.25 \\mathrm{kHz} \\end{aligned}$$\n\nTherefore, the correct answer is **9.26** (acceptable range: [9.24, 9.28])."
+        "markdown": "$$\\begin{aligned} f_{m}&=4 \\mathrm{kHz} \\\\ f_{s}&=1.25 \\mathrm{NR}=1.25 \\times\\left(2 f_{m}\\right)=10 \\mathrm{kHz} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-9d1225bbec.webp\" />\n\n$n=8$ bits/sample and $\\frac{S}{N}=26 \\mathrm{~dB}=10^{2.6}$\n\nFor arbitrarily small probability of transmission error,\n\n$$\\begin{aligned} C & \\geq R_{b} \\Rightarrow B \\log _{2}\\left(1+\\frac{S}{N}\\right) \\geq n f_{S} \\\\ \\text{Blog}_{2}\\left(1+10^{2.6}\\right) & \\geq 8 \\times 10 \\mathrm{~K} \\Rightarrow B \\geq 9.25 \\mathrm{kHz} \\\\ B_{\\min } &=9.25 \\mathrm{kHz} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-9d1225bbec.webp"
+        ]
       }
     },
     "pp:ec:2021:q24": {
@@ -972,7 +1022,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "$$\\begin{aligned} f_{m}&=4 \\mathrm{kHz} \\\\ A_{m}&=4 \\mathrm{~V} \\\\ f_{s}&=32 \\mathrm{kHz}\\\\ \\text { To avoid } \\text{SOE} \\rightarrow &\\frac{\\Delta}{T_{s}} \\geq 2 \\pi f_{m} A_{m} \\\\ \\Delta \\times 32 k &\\geq 2 \\pi \\times 4 k \\times 4 \\mathrm{~V} \\\\ \\Delta &\\geq \\pi\\\\ (\\Delta)_{\\min }&=\\pi volts\\\\ (\\Delta)_{\\min }&=3.14 volts \\end{aligned}$$\n\nTherefore, the correct answer is **3** (acceptable range: [2.8, 3.2])."
+        "markdown": "$$\\begin{aligned} f_{m}&=4 \\mathrm{kHz} \\\\ A_{m}&=4 \\mathrm{~V} \\\\ f_{s}&=32 \\mathrm{kHz}\\\\ \\text { To avoid } \\text{SOE} \\rightarrow &\\frac{\\Delta}{T_{s}} \\geq 2 \\pi f_{m} A_{m} \\\\ \\Delta \\times 32 k &\\geq 2 \\pi \\times 4 k \\times 4 \\mathrm{~V} \\\\ \\Delta &\\geq \\pi\\\\ (\\Delta)_{\\min }&=\\pi volts\\\\ (\\Delta)_{\\min }&=3.14 volts \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q25": {
@@ -1011,7 +1062,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
-        "markdown": "Given that\n\nRefractive index of core $\\eta_{1}=1.50$\n\nRefractive index of clad $\\eta_{2}=1.48$\n\nCritical propagation angle $\\left(\\theta_{P}\\right)$\n\n$\\theta_{P}=\\sin ^{-1}\\left[ \\frac{ \\sqrt{\\eta_{1}^{2}-\\eta_{2}^{2}}}{\\eta_{1}}    \\right]=\\sin ^{-1} \\left[  \\frac{  \\sqrt{1.5^{2}-1.48^{2}} }{1.5} \\right] =9.37$\n\nTherefore, the correct answer is **9.37** (acceptable range: [9.3, 9.44])."
+        "markdown": "Given that\n\nRefractive index of core $\\eta_{1}=1.50$\n\nRefractive index of clad $\\eta_{2}=1.48$\n\nCritical propagation angle $\\left(\\theta_{P}\\right)$\n\n$\\theta_{P}=\\sin ^{-1}\\left[ \\frac{ \\sqrt{\\eta_{1}^{2}-\\eta_{2}^{2}}}{\\eta_{1}}    \\right]=\\sin ^{-1} \\left[  \\frac{  \\sqrt{1.5^{2}-1.48^{2}} }{1.5} \\right] =9.37$",
+        "images": []
       }
     },
     "pp:ec:2021:q26": {
@@ -1051,8 +1103,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<b>MARKS TO ALL AS PER IIT ANSWER KEY</b>\n\n$\\oint_{c} \\frac{\\sin x}{x^{2}\\left(x^{2}+4\\right)} d x, c:|x-i|=2$\n\nPoles are given by $x^{2}=0$ and $x^{2}+4=0$\n\n$\\Rightarrow\\qquad x=0$ is a pole of order '2'\n\n$x=2$ i are simple nodes\n\n$x=0$ lies inside 'c'\n\n$x=2$ i lies inside 'c'\n\n$x=-2$ i lies outside 'c'\n\n$$\\begin{aligned} \\text{Res}_{0} &=\\frac{1}{(2-1)} \\lim _{x \\rightarrow 0} \\frac{d}{d z}\\left[(x-0)^{2} \\frac{\\sin x}{x^{2}\\left(x^{2}+4\\right)}\\right] \\\\ &=\\lim _{x \\rightarrow 0} \\frac{\\left(x^{2}+4\\right) \\cos x-\\sin x(2 x)}{\\left(x^{2}+4\\right)^{2}}=\\frac{1}{4} \\\\ \\text{Res}_{2 i} &=\\lim _{x \\rightarrow 2 i}(x-2 i) \\frac{\\sin x}{x^{2}(x-2 i)(x+2 i)}=\\frac{\\sin (2 i)}{(-4)(4 i)} \\\\ \\text{By CRT}\\quad \\oint_{c} f d x &=2 \\pi i\\left[\\text{Res}_{0}+\\text{Res}_{2 i}\\right]=2 \\pi i\\left[\\frac{1}{4}+\\frac{\\sin (2 i)}{-16}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EC) - Calculus",
+        "markdown": "<b>MARKS TO ALL AS PER IIT ANSWER KEY</b>\n\n$\\oint_{c} \\frac{\\sin x}{x^{2}\\left(x^{2}+4\\right)} d x, c:|x-i|=2$\n\nPoles are given by $x^{2}=0$ and $x^{2}+4=0$\n\n$\\Rightarrow\\qquad x=0$ is a pole of order '2'\n\n$x=2$ i are simple nodes\n\n$x=0$ lies inside 'c'\n\n$x=2$ i lies inside 'c'\n\n$x=-2$ i lies outside 'c'\n\n$$\\begin{aligned} \\text{Res}_{0} &=\\frac{1}{(2-1)} \\lim _{x \\rightarrow 0} \\frac{d}{d z}\\left[(x-0)^{2} \\frac{\\sin x}{x^{2}\\left(x^{2}+4\\right)}\\right] \\\\ &=\\lim _{x \\rightarrow 0} \\frac{\\left(x^{2}+4\\right) \\cos x-\\sin x(2 x)}{\\left(x^{2}+4\\right)^{2}}=\\frac{1}{4} \\\\ \\text{Res}_{2 i} &=\\lim _{x \\rightarrow 2 i}(x-2 i) \\frac{\\sin x}{x^{2}(x-2 i)(x+2 i)}=\\frac{\\sin (2 i)}{(-4)(4 i)} \\\\ \\text{By CRT}\\quad \\oint_{c} f d x &=2 \\pi i\\left[\\text{Res}_{0}+\\text{Res}_{2 i}\\right]=2 \\pi i\\left[\\frac{1}{4}+\\frac{\\sin (2 i)}{-16}\\right] \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q27": {
@@ -1092,8 +1145,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Let $\\quad P\\left(H_{2}\\right)=$ Probability of getting head in second toss\n\n$P\\left(H_{1}\\right)=$ Probability of getting head in first toss\n\n$$\\begin{aligned} P\\left(\\frac{H_{2}}{H_{1}}\\right) &=\\frac{P\\left(H_{2} \\cap H_{1}\\right)}{P\\left(H_{1}\\right)} \\\\ P\\left(H_{1}\\right) &=\\frac{1}{3} \\times \\frac{1}{2}+\\frac{1}{3} \\times 1+\\frac{1}{3} \\times 0=\\frac{1}{2} \\end{aligned}$$\n\nTo get head in second toss when head came in first toss, following cases can be made\n\n1. Fair coin :\n\n$$\\begin{aligned} \\text { Both head coin }=\\frac{1}{3} \\times \\frac{1}{2} \\times \\frac{1}{2} \\times 1=\\frac{1}{12} \\\\ \\text { Both tail coin }=\\frac{1}{3} \\times \\frac{1}{2} \\times \\frac{1}{2} \\times 0=0 \\end{aligned}$$\n\n2. Both head coin :\n\n$$\\begin{aligned} \\text { Fair coin }&=\\frac{1}{3} \\times 1 \\times \\frac{1}{2} \\times \\frac{1}{2}=\\frac{1}{12}\\\\ \\text{Both tail coin }&=0\\\\ \\therefore \\qquad P\\left(H_{2} \\cap H_{1}\\right)&=\\frac{1}{12}+\\frac{1}{12}=\\frac{1}{6} \\\\ \\therefore \\qquad P\\left(H_{2} / H_{1}\\right)&=\\frac{1 / 6}{1 / 2}=\\frac{1}{3} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "markdown": "Let $\\quad P\\left(H_{2}\\right)=$ Probability of getting head in second toss\n\n$P\\left(H_{1}\\right)=$ Probability of getting head in first toss\n\n$$\\begin{aligned} P\\left(\\frac{H_{2}}{H_{1}}\\right) &=\\frac{P\\left(H_{2} \\cap H_{1}\\right)}{P\\left(H_{1}\\right)} \\\\ P\\left(H_{1}\\right) &=\\frac{1}{3} \\times \\frac{1}{2}+\\frac{1}{3} \\times 1+\\frac{1}{3} \\times 0=\\frac{1}{2} \\end{aligned}$$\n\nTo get head in second toss when head came in first toss, following cases can be made\n\n1. Fair coin :\n\n$$\\begin{aligned} \\text { Both head coin }=\\frac{1}{3} \\times \\frac{1}{2} \\times \\frac{1}{2} \\times 1=\\frac{1}{12} \\\\ \\text { Both tail coin }=\\frac{1}{3} \\times \\frac{1}{2} \\times \\frac{1}{2} \\times 0=0 \\end{aligned}$$\n\n2. Both head coin :\n\n$$\\begin{aligned} \\text { Fair coin }&=\\frac{1}{3} \\times 1 \\times \\frac{1}{2} \\times \\frac{1}{2}=\\frac{1}{12}\\\\ \\text{Both tail coin }&=0\\\\ \\therefore \\qquad P\\left(H_{2} \\cap H_{1}\\right)&=\\frac{1}{12}+\\frac{1}{12}=\\frac{1}{6} \\\\ \\therefore \\qquad P\\left(H_{2} / H_{1}\\right)&=\\frac{1 / 6}{1 / 2}=\\frac{1}{3} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q28": {
@@ -1134,7 +1188,11 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "Inductor and capacitors are connected to the inductance source for a long time, so these elements have reached steady state.\n\n<img src=\"/question-images/ec/2021/ec-2021-cb5d98e45e.webp\" />\n\n$$\\begin{aligned} i_{L}\\left(0^{-}\\right) &=\\frac{20}{5 \\mathrm{k} \\Omega+5 \\mathrm{k} \\Omega+10 \\mathrm{k} \\Omega}=1 \\mathrm{~mA} \\\\ \\mathrm{~V}\\left(0^{-}\\right) &=10 \\mathrm{~V} \\\\ t &=0^{+} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-9620a110b1.webp\" />\n\n$$\\begin{aligned} i\\left(0^{+}\\right)+\\frac{10}{5 k}+1 \\mathrm{~m} \\mathrm{~A} &=0 \\\\ i\\left(\\mathrm{O}^{+}\\right) &=-3 \\mathrm{~mA} \\\\ C \\frac{d V\\left(\\mathrm{O}^{+}\\right)}{d t} &=-3 \\mathrm{~mA} \\\\ 1 \\times 10^{-3} \\frac{d V\\left(\\mathrm{O}^{+}\\right)}{d t} &=-3 \\mathrm{~mA} \\\\ \\frac{d V\\left(\\mathrm{O}^{+}\\right)}{d t} &=-3 \\mathrm{~V} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Inductor and capacitors are connected to the inductance source for a long time, so these elements have reached steady state.\n\n<img src=\"/question-images/ec/2021/ec-2021-cb5d98e45e.webp\" />\n\n$$\\begin{aligned} i_{L}\\left(0^{-}\\right) &=\\frac{20}{5 \\mathrm{k} \\Omega+5 \\mathrm{k} \\Omega+10 \\mathrm{k} \\Omega}=1 \\mathrm{~mA} \\\\ \\mathrm{~V}\\left(0^{-}\\right) &=10 \\mathrm{~V} \\\\ t &=0^{+} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-9620a110b1.webp\" />\n\n$$\\begin{aligned} i\\left(0^{+}\\right)+\\frac{10}{5 k}+1 \\mathrm{~m} \\mathrm{~A} &=0 \\\\ i\\left(\\mathrm{O}^{+}\\right) &=-3 \\mathrm{~mA} \\\\ C \\frac{d V\\left(\\mathrm{O}^{+}\\right)}{d t} &=-3 \\mathrm{~mA} \\\\ 1 \\times 10^{-3} \\frac{d V\\left(\\mathrm{O}^{+}\\right)}{d t} &=-3 \\mathrm{~mA} \\\\ \\frac{d V\\left(\\mathrm{O}^{+}\\right)}{d t} &=-3 \\mathrm{~V} / \\mathrm{s} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-cb5d98e45e.webp",
+          "/question-images/ec/2021/ec-2021-9620a110b1.webp"
+        ]
       }
     },
     "pp:ec:2021:q29": {
@@ -1175,7 +1233,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-f46f47a2a7.webp\" />\n\nWrite KCL at $V_{1}$\n\n$$\\begin{aligned} I_{1}&=\\frac{V_{1}}{1}+\\frac{V_{1}-V_{2}}{1}-3 V_{2} \\\\ I_{1}&=2 V_{1}-4 V_{2} \\\\ \\text{Write KCL at }V_{2}\\qquad I_{2}&=\\frac{V_{2}}{1}+\\frac{V_{2}-V_{1}}{1}\\\\ I_{2}&=-V_{1}+2 V_{2} \\\\ [y]&=\\left[\\begin{array}{cc} 2 & -4 \\\\ -1 & 2 \\end{array}\\right] \\mho \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-f46f47a2a7.webp\" />\n\nWrite KCL at $V_{1}$\n\n$$\\begin{aligned} I_{1}&=\\frac{V_{1}}{1}+\\frac{V_{1}-V_{2}}{1}-3 V_{2} \\\\ I_{1}&=2 V_{1}-4 V_{2} \\\\ \\text{Write KCL at }V_{2}\\qquad I_{2}&=\\frac{V_{2}}{1}+\\frac{V_{2}-V_{1}}{1}\\\\ I_{2}&=-V_{1}+2 V_{2} \\\\ [y]&=\\left[\\begin{array}{cc} 2 & -4 \\\\ -1 & 2 \\end{array}\\right] \\mho \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-f46f47a2a7.webp"
+        ]
       }
     },
     "pp:ec:2021:q30": {
@@ -1216,7 +1277,10 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "Given, N -channel MOSFET\n\n$$\\begin{aligned} t_{o x}&=10 \\mathrm{~nm}=10 \\times 10^{-7} \\mathrm{~cm} & \\\\ \\frac{\\partial V_{T}}{\\partial\\left|V_{B S}\\right|}&=50 \\mathrm{mV} / \\mathrm{V}, & \\left|V_{B S}\\right|=2 \\mathrm{~V} \\\\ \\qquad q&=1.6 \\times 10^{-19} \\mathrm{C} & \\left|V_{B S}\\right|>>2 \\phi_{B} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-2bb4e34e7e.webp\" />\n\n$$\\begin{aligned} \\epsilon_{o} &=8.85 \\times 10^{-14} \\mathrm{~F} / \\mathrm{cm} \\\\ \\epsilon_{r_{\\mathrm{Si}}} &=12 \\\\ \\epsilon_{r_{O x}} &=4 \\end{aligned}$$\n\nThreshold voltage, including body effect,\n\n$V_{T}=\\phi_{m s}+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}\\left(2 \\phi_{B}-V_{B S}\\right)}}{C_{o x}}+2 \\phi_{B}$\n\n$$\\begin{aligned} \\text{In question, we need, } \\left|V_{B S}\\right|&=\\left|V_{S B}\\right| \\\\ \\therefore \\qquad \\qquad V_{T}&=\\phi_{m s}+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}\\left(2 \\phi_{B}+V_{S B}\\right)}}{C_{o x}}+2 \\phi_{B}\\\\ \\Rightarrow \\qquad \\qquad V_{T}&=\\phi_{m s}+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}\\left(2 \\phi_{B}+\\left|V_{S B}\\right|\\right)}}{C_{O x}}+2 \\phi_{B}\\\\ \\therefore \\qquad\\qquad \\frac{\\partial V_{T}}{\\partial\\left|V_{B S}\\right|}&=0+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}}}{C_{O x}} \\cdot \\frac{1}{2 \\sqrt{2 \\phi_{B}+\\left|V_{S B}\\right|}}+0\\\\ \\Rightarrow \\qquad \\qquad 50 \\times 10^{-3}&=\\frac{\\sqrt{2 \\times 8.85 \\times 10^{-14} \\times 12 \\times 1.6 \\times 10^{-19} \\mathrm{~N}_{A}}}{\\epsilon_{\\alpha x} / t_{0 x}} \\cdot \\frac{1}{2 \\sqrt{\\left|V_{S B}\\right|}}\\\\ \\left(\\frac{50 \\times 10^{-3} \\times 4 \\times 8.85 \\times 10^{-14}}{10 \\times 10^{-7}}\\right)^{2}&=\\frac{2 \\times 8.85 \\times 10^{-14} \\times 12 \\times 1.6 \\times 10^{-19}}{4 \\times 2}\\\\ &\\left[\\because\\left|V_{S B}\\right| \\gt \\gt 2 \\phi_{B}\\right]\\\\ \\Rightarrow \\qquad \\qquad N_{A}&=7.375 \\times 10^{15} \\mathrm{~cm}^{-3} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given, N -channel MOSFET\n\n$$\\begin{aligned} t_{o x}&=10 \\mathrm{~nm}=10 \\times 10^{-7} \\mathrm{~cm} & \\\\ \\frac{\\partial V_{T}}{\\partial\\left|V_{B S}\\right|}&=50 \\mathrm{mV} / \\mathrm{V}, & \\left|V_{B S}\\right|=2 \\mathrm{~V} \\\\ \\qquad q&=1.6 \\times 10^{-19} \\mathrm{C} & \\left|V_{B S}\\right|>>2 \\phi_{B} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-2bb4e34e7e.webp\" />\n\n$$\\begin{aligned} \\epsilon_{o} &=8.85 \\times 10^{-14} \\mathrm{~F} / \\mathrm{cm} \\\\ \\epsilon_{r_{\\mathrm{Si}}} &=12 \\\\ \\epsilon_{r_{O x}} &=4 \\end{aligned}$$\n\nThreshold voltage, including body effect,\n\n$V_{T}=\\phi_{m s}+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}\\left(2 \\phi_{B}-V_{B S}\\right)}}{C_{o x}}+2 \\phi_{B}$\n\n$$\\begin{aligned} \\text{In question, we need, } \\left|V_{B S}\\right|&=\\left|V_{S B}\\right| \\\\ \\therefore \\qquad \\qquad V_{T}&=\\phi_{m s}+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}\\left(2 \\phi_{B}+V_{S B}\\right)}}{C_{o x}}+2 \\phi_{B}\\\\ \\Rightarrow \\qquad \\qquad V_{T}&=\\phi_{m s}+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}\\left(2 \\phi_{B}+\\left|V_{S B}\\right|\\right)}}{C_{O x}}+2 \\phi_{B}\\\\ \\therefore \\qquad\\qquad \\frac{\\partial V_{T}}{\\partial\\left|V_{B S}\\right|}&=0+\\frac{\\sqrt{2 \\epsilon_{s i} q N_{A}}}{C_{O x}} \\cdot \\frac{1}{2 \\sqrt{2 \\phi_{B}+\\left|V_{S B}\\right|}}+0\\\\ \\Rightarrow \\qquad \\qquad 50 \\times 10^{-3}&=\\frac{\\sqrt{2 \\times 8.85 \\times 10^{-14} \\times 12 \\times 1.6 \\times 10^{-19} \\mathrm{~N}_{A}}}{\\epsilon_{\\alpha x} / t_{0 x}} \\cdot \\frac{1}{2 \\sqrt{\\left|V_{S B}\\right|}}\\\\ \\left(\\frac{50 \\times 10^{-3} \\times 4 \\times 8.85 \\times 10^{-14}}{10 \\times 10^{-7}}\\right)^{2}&=\\frac{2 \\times 8.85 \\times 10^{-14} \\times 12 \\times 1.6 \\times 10^{-19}}{4 \\times 2}\\\\ &\\left[\\because\\left|V_{S B}\\right| \\gt \\gt 2 \\phi_{B}\\right]\\\\ \\Rightarrow \\qquad \\qquad N_{A}&=7.375 \\times 10^{15} \\mathrm{~cm}^{-3} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-2bb4e34e7e.webp"
+        ]
       }
     },
     "pp:ec:2021:q31": {
@@ -1257,7 +1321,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "Case -1 : when T=0\n\nPropogation delay $=t_{AND1}+t_{MUX2}=2+1=3ns$\n\nCase -1 : when T=1\n\nPropogation delay $=t_{AND2}+t_{MUX1}t_{AND3}+t_{MUX2}=2+1+2+1=6ns$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Case -1 : when T=0\n\nPropogation delay $=t_{AND1}+t_{MUX2}=2+1=3ns$\n\nCase -1 : when T=1\n\nPropogation delay $=t_{AND2}+t_{MUX1}t_{AND3}+t_{MUX2}=2+1+2+1=6ns$",
+        "images": []
       }
     },
     "pp:ec:2021:q32": {
@@ -1298,7 +1363,10 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Instructions of 8085 Microprocessor",
-        "markdown": "For PUSH SP is decremented and for POP SP is incremented.\n\n<img src=\"/question-images/ec/2021/ec-2021-7cf39c16fe.webp\" />\n\n$$\\begin{aligned} \\therefore \\qquad [\\mathrm{R} 1]&=40 \\\\ [\\mathrm{R} 2]&=30 \\\\ [\\mathrm{R} 3]&=25 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For PUSH SP is decremented and for POP SP is incremented.\n\n<img src=\"/question-images/ec/2021/ec-2021-7cf39c16fe.webp\" />\n\n$$\\begin{aligned} \\therefore \\qquad [\\mathrm{R} 1]&=40 \\\\ [\\mathrm{R} 2]&=30 \\\\ [\\mathrm{R} 3]&=25 \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-7cf39c16fe.webp"
+        ]
       }
     },
     "pp:ec:2021:q33": {
@@ -1339,7 +1407,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
-        "markdown": "$$\\begin{aligned} i_{s} &=v_{i}+v_{c} \\\\ \\therefore \\qquad v_{i} &=-v_{c}+i_{s} \\\\ v_{L} &=L i_{L} \\\\ v_{L} &=\\left(i_{s}-i_{L}\\right) \\\\ \\therefore \\qquad L i_{L} &=i_{s}-i_{L} \\\\ \\therefore \\qquad i_{L} &=-i_{L}+i_{s} \\\\ v_{o} &=v_{c} \\\\ X &=\\left[\\begin{array}{cc} -1 & 0 \\\\ 0 & -1 \\end{array}\\right] X+\\left[\\begin{array}{ll} 1 \\\\ 2 \\end{array}\\right] U \\\\ Y &=[0 \\quad 1] X+[0] \\cup \\\\ A &=-I \\\\ Q_{C} &=\\left[\\begin{array}{ll} B & A B \\end{array}\\right]=\\left[\\begin{array}{ll} 1 & -1 \\\\ 1 & -1 \\end{array}\\right] \\Rightarrow\\left|Q_{c}\\right|=0 \\\\ Q_{o} &=\\left[\\begin{array}{ll} C^{T} & A^{\\top} C^{\\top} \\end{array}\\right]=\\left[\\begin{array}{cc} 0 & 0 \\\\ 1 & -1 \\end{array}\\right] \\Rightarrow\\left|Q_{o}\\right|=0 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} i_{s} &=v_{i}+v_{c} \\\\ \\therefore \\qquad v_{i} &=-v_{c}+i_{s} \\\\ v_{L} &=L i_{L} \\\\ v_{L} &=\\left(i_{s}-i_{L}\\right) \\\\ \\therefore \\qquad L i_{L} &=i_{s}-i_{L} \\\\ \\therefore \\qquad i_{L} &=-i_{L}+i_{s} \\\\ v_{o} &=v_{c} \\\\ X &=\\left[\\begin{array}{cc} -1 & 0 \\\\ 0 & -1 \\end{array}\\right] X+\\left[\\begin{array}{ll} 1 \\\\ 2 \\end{array}\\right] U \\\\ Y &=[0 \\quad 1] X+[0] \\cup \\\\ A &=-I \\\\ Q_{C} &=\\left[\\begin{array}{ll} B & A B \\end{array}\\right]=\\left[\\begin{array}{ll} 1 & -1 \\\\ 1 & -1 \\end{array}\\right] \\Rightarrow\\left|Q_{c}\\right|=0 \\\\ Q_{o} &=\\left[\\begin{array}{ll} C^{T} & A^{\\top} C^{\\top} \\end{array}\\right]=\\left[\\begin{array}{cc} 0 & 0 \\\\ 1 & -1 \\end{array}\\right] \\Rightarrow\\left|Q_{o}\\right|=0 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q34": {
@@ -1380,7 +1449,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "Given codewords:$$\\left.\\begin{array}{l} C_{1}=0101100 \\\\ C_{2}=0011110 \\\\ C_{3}=1000110 \\end{array}\\right\\}$$\n\nin given above codewords, first n - k = 3 bits are parity bits and last K = 4 bits are message bits.\n\nGiven is (7, 4) systematic linear hamming code. For a linear code, sum of two codewords belong to the code is also a codeword belonging to the code.\n\n$$\\begin{aligned} C_{1} \\oplus C_{2}&=0110010=C_{4} \\\\ C_{2} \\oplus C_{3}&=1011000=C_{5} \\\\ C_{1} \\oplus C_{3}&=1101010=C_{6} \\\\ C_{3} \\oplus C_{4}&=1110100=C_{7} \\end{aligned}$$\n\nBased on codewords $C_{6}$ and $C_{7}$ options (a) and (d) will incorrect.\n\nGiven codewords in the form of $\\Rightarrow \\underbrace{P_{1} \\quad P_{2} \\quad P_{3}}_{\\text {Parity bits }} \\;\\underbrace{d_{1}\\quad d_{2} \\quad d_{3} \\quad d_{4} }_{\\text {Message bits }}$\n\n$$\\begin{aligned}\n\n\\text { From observation } \\Rightarrow & P_{1}=d_{1} \\oplus d_{2} \\oplus d_{4} \\\\\n\n& P_{2}=d_{2} \\oplus d_{3} \\oplus d_{4} \\\\\n\n& P_{3}=d_{1} \\oplus d_{2} \\oplus d_{3}\n\n\\end{aligned}$$\n\nFrom given options, option (C) only satisfying above relations.\n\nSo, that option (C) will be correct.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given codewords:$$\\left.\\begin{array}{l} C_{1}=0101100 \\\\ C_{2}=0011110 \\\\ C_{3}=1000110 \\end{array}\\right\\}$$\n\nin given above codewords, first n - k = 3 bits are parity bits and last K = 4 bits are message bits.\n\nGiven is (7, 4) systematic linear hamming code. For a linear code, sum of two codewords belong to the code is also a codeword belonging to the code.\n\n$$\\begin{aligned} C_{1} \\oplus C_{2}&=0110010=C_{4} \\\\ C_{2} \\oplus C_{3}&=1011000=C_{5} \\\\ C_{1} \\oplus C_{3}&=1101010=C_{6} \\\\ C_{3} \\oplus C_{4}&=1110100=C_{7} \\end{aligned}$$\n\nBased on codewords $C_{6}$ and $C_{7}$ options (a) and (d) will incorrect.\n\nGiven codewords in the form of $\\Rightarrow \\underbrace{P_{1} \\quad P_{2} \\quad P_{3}}_{\\text {Parity bits }} \\;\\underbrace{d_{1}\\quad d_{2} \\quad d_{3} \\quad d_{4} }_{\\text {Message bits }}$\n\n$$\\begin{aligned}\n\n\\text { From observation } \\Rightarrow & P_{1}=d_{1} \\oplus d_{2} \\oplus d_{4} \\\\\n\n& P_{2}=d_{2} \\oplus d_{3} \\oplus d_{4} \\\\\n\n& P_{3}=d_{1} \\oplus d_{2} \\oplus d_{3}\n\n\\end{aligned}$$\n\nFrom given options, option (C) only satisfying above relations.\n\nSo, that option (C) will be correct.",
+        "images": []
       }
     },
     "pp:ec:2021:q35": {
@@ -1421,7 +1491,10 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "$$\\begin{aligned} Z_{\\text {in } \\lambda / 4}&=\\frac{Z_{O}^{2}}{Z_{L}}=\\frac{(75)^{2}}{0}=\\infty \\quad\\left[\\text { for } \\frac{\\lambda}{4} T_{X} \\text { line }\\right]\\\\ \\text{Given }Z_{L}\\text{ of }\\frac{\\lambda}{4}\\text{ line is 0}(\\mathrm{SC})\\\\ Z_{\\text {in }_{\\lambda / 2}}&=Z_{L}=\\infty\\left[\\text { for } \\frac{\\lambda}{2} T_{X} \\text { line }\\right]\\\\ \\text{Given }Z_{L}\\text{ of }\\frac{\\lambda}{2}\\text{ line is }\\infty(O . C) \\end{aligned}$$\n\nThe input impedance of $\\frac{\\lambda}{4}$ transmission line, as well as $\\frac{\\lambda}{2}$ transmission line is 00 , and they are in parallel with main transmission line, so they are not effective for main.\n\nTransmission line.\n\nFinal configuration of given line is\n\n<img src=\"/question-images/ec/2021/ec-2021-f0229ab31c.webp\" />\n\nFor impedance matching, $Z_{L}=\\frac{Z_{1}^{2}}{Z_{0}}=\\frac{(75)^{2}}{50}=112.5$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} Z_{\\text {in } \\lambda / 4}&=\\frac{Z_{O}^{2}}{Z_{L}}=\\frac{(75)^{2}}{0}=\\infty \\quad\\left[\\text { for } \\frac{\\lambda}{4} T_{X} \\text { line }\\right]\\\\ \\text{Given }Z_{L}\\text{ of }\\frac{\\lambda}{4}\\text{ line is 0}(\\mathrm{SC})\\\\ Z_{\\text {in }_{\\lambda / 2}}&=Z_{L}=\\infty\\left[\\text { for } \\frac{\\lambda}{2} T_{X} \\text { line }\\right]\\\\ \\text{Given }Z_{L}\\text{ of }\\frac{\\lambda}{2}\\text{ line is }\\infty(O . C) \\end{aligned}$$\n\nThe input impedance of $\\frac{\\lambda}{4}$ transmission line, as well as $\\frac{\\lambda}{2}$ transmission line is 00 , and they are in parallel with main transmission line, so they are not effective for main.\n\nTransmission line.\n\nFinal configuration of given line is\n\n<img src=\"/question-images/ec/2021/ec-2021-f0229ab31c.webp\" />\n\nFor impedance matching, $Z_{L}=\\frac{Z_{1}^{2}}{Z_{0}}=\\frac{(75)^{2}}{50}=112.5$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-f0229ab31c.webp"
+        ]
       }
     },
     "pp:ec:2021:q36": {
@@ -1459,8 +1532,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$A=\\left[\\begin{array}{cc} x & -3 \\\\ 3 & 4 \\end{array} \\right]$$\n\nCharacteristic equation\n\n$$\\begin{aligned} |A-\\lambda I| &=\\left|\\begin{array}{cc} x-\\lambda & -3 \\\\ 3 & 4-\\lambda \\end{array}\\right|=0 \\\\ \\Rightarrow \\quad \\lambda^{2}-(4+x) \\lambda+(4 x+9)&=0 \\end{aligned}$$\n\nRoots are repeating\n\n$$\\begin{aligned} \\Rightarrow \\qquad b^{2}-4 a c&=0\\\\ \\Rightarrow \\qquad \\left(4+x^{2}\\right)-4(4 x+9) &=0 \\\\ 16+x^{2}+8 x-16 x-20 &=0 \\\\ x &=10 \\\\ \\Rightarrow \\qquad x^{2}-8 x+20 &=0\\\\ x&=\\frac{8 \\pm \\sqrt{64+80}}{2} \\\\ &=\\frac{8 \\pm 12}{2}=-2,10 \\end{aligned}$$\n\nSince, x is positive\n\n$\\therefore x=10$\n\nTherefore, the correct answer is **10**."
+        "concept": "Engineering Mathematics (EC) - Linear Algebra",
+        "markdown": "$$A=\\left[\\begin{array}{cc} x & -3 \\\\ 3 & 4 \\end{array} \\right]$$\n\nCharacteristic equation\n\n$$\\begin{aligned} |A-\\lambda I| &=\\left|\\begin{array}{cc} x-\\lambda & -3 \\\\ 3 & 4-\\lambda \\end{array}\\right|=0 \\\\ \\Rightarrow \\quad \\lambda^{2}-(4+x) \\lambda+(4 x+9)&=0 \\end{aligned}$$\n\nRoots are repeating\n\n$$\\begin{aligned} \\Rightarrow \\qquad b^{2}-4 a c&=0\\\\ \\Rightarrow \\qquad \\left(4+x^{2}\\right)-4(4 x+9) &=0 \\\\ 16+x^{2}+8 x-16 x-20 &=0 \\\\ x &=10 \\\\ \\Rightarrow \\qquad x^{2}-8 x+20 &=0\\\\ x&=\\frac{8 \\pm \\sqrt{64+80}}{2} \\\\ &=\\frac{8 \\pm 12}{2}=-2,10 \\end{aligned}$$\n\nSince, x is positive\n\n$\\therefore x=10$",
+        "images": []
       }
     },
     "pp:ec:2021:q37": {
@@ -1499,7 +1573,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "Method 1: $\\vec{D}=\\rho \\cos ^{2} \\phi \\hat{a}_{\\rho}+z^{2} \\sin ^{2} \\phi \\hat{a}_{\\phi}$\n\nElectric flux crossing the closed surface is\n\n$$\\begin{aligned} \\psi &=\\oiint \\vec{D} \\cdot \\overrightarrow{d S}=\\iiint(\\vec{\\nabla} \\cdot \\vec{D}) d v \\\\ \\vec{\\nabla} \\cdot \\vec{D} &=\\frac{1}{\\rho} \\frac{\\partial}{\\partial p}\\left(\\rho D_{\\rho}\\right)+\\frac{1}{\\rho} \\frac{\\partial D_{\\phi}}{\\partial \\phi}+\\frac{\\partial D_{z}}{\\partial z} \\\\ &=\\frac{1}{\\rho} \\frac{\\partial}{\\partial p}\\left(\\rho \\rho \\cos ^{2} \\phi\\right)+\\frac{1}{\\rho} \\frac{\\partial}{\\partial \\phi}\\left(z^{2} \\sin ^{2} \\phi\\right)+0 \\\\ &=\\frac{1}{\\rho}(2 \\rho) \\cos ^{2} \\phi+\\frac{1}{\\rho} z^{2} 2 \\sin \\phi \\cos \\phi=2 \\cos ^{2} \\phi+\\frac{z^{2}}{\\rho} \\sin 2 \\phi\\\\ \\iiint(\\vec{\\nabla} \\cdot \\vec{D}) d v &=\\iiint 2 \\cos ^{2} \\phi(\\rho d \\rho d \\phi d z)+\\iiint\\left(\\frac{z^{2}}{\\rho} \\sin 2 \\phi\\right) \\rho d \\rho d \\phi d z \\\\ &=2 \\int_{\\rho=0}^{3} \\rho d \\rho \\int_{\\phi=0}^{2 \\pi}\\left(\\frac{1+\\cos 2 \\phi}{2}\\right) d \\phi \\int_{z=0}^{2} d z+\\int_{\\rho=0}^{2} d \\rho \\int_{\\phi=0}^{2 \\pi} \\sin 2 \\phi d \\phi \\int_{z=0}^{2} z^{2} d z \\\\ &=2\\left(\\frac{\\rho^{2}}{-2}\\right)_{\\rho=0}^{3} \\frac{1}{2}(2 \\pi)(z)_{z=0}^{2}+0 \\\\ &=2\\left(\\frac{3^{2}}{2}\\right) \\pi(2)=18 \\pi(\\text { Coulomb })=56.55(\\text { Coulomb }) \\end{aligned}$$\n\nMethod 2: Electric flux crossing the closed surface is\n\n$\\psi=\\oiint \\vec{D} \\cdot \\overrightarrow{d S}$\n\nElectric flux crossing \\rho=3 cylindrical surface is\n\n$$\\begin{aligned} \\left.\\psi\\right|_{\\rho=3} &=\\oiint\\left(\\rho \\cos ^{2} \\phi \\hat{a}_{p}\\right) \\cdot(\\rho d \\phi d z) \\hat{a}_{p} \\\\ &=3^{2} \\int_{\\phi=0}^{2 \\pi} \\cos ^{2} \\phi d \\phi \\int_{z=0}^{2} d z \\\\ &=9 \\frac{1}{2}(2 \\pi)(2)=18 \\pi(\\text { coulomb })=56.55(\\text { coulomb }) \\end{aligned}$$\n\nTherefore, the correct answer is **56.55** (acceptable range: [56.5, 56.6])."
+        "markdown": "Method 1: $\\vec{D}=\\rho \\cos ^{2} \\phi \\hat{a}_{\\rho}+z^{2} \\sin ^{2} \\phi \\hat{a}_{\\phi}$\n\nElectric flux crossing the closed surface is\n\n$$\\begin{aligned} \\psi &=\\oiint \\vec{D} \\cdot \\overrightarrow{d S}=\\iiint(\\vec{\\nabla} \\cdot \\vec{D}) d v \\\\ \\vec{\\nabla} \\cdot \\vec{D} &=\\frac{1}{\\rho} \\frac{\\partial}{\\partial p}\\left(\\rho D_{\\rho}\\right)+\\frac{1}{\\rho} \\frac{\\partial D_{\\phi}}{\\partial \\phi}+\\frac{\\partial D_{z}}{\\partial z} \\\\ &=\\frac{1}{\\rho} \\frac{\\partial}{\\partial p}\\left(\\rho \\rho \\cos ^{2} \\phi\\right)+\\frac{1}{\\rho} \\frac{\\partial}{\\partial \\phi}\\left(z^{2} \\sin ^{2} \\phi\\right)+0 \\\\ &=\\frac{1}{\\rho}(2 \\rho) \\cos ^{2} \\phi+\\frac{1}{\\rho} z^{2} 2 \\sin \\phi \\cos \\phi=2 \\cos ^{2} \\phi+\\frac{z^{2}}{\\rho} \\sin 2 \\phi\\\\ \\iiint(\\vec{\\nabla} \\cdot \\vec{D}) d v &=\\iiint 2 \\cos ^{2} \\phi(\\rho d \\rho d \\phi d z)+\\iiint\\left(\\frac{z^{2}}{\\rho} \\sin 2 \\phi\\right) \\rho d \\rho d \\phi d z \\\\ &=2 \\int_{\\rho=0}^{3} \\rho d \\rho \\int_{\\phi=0}^{2 \\pi}\\left(\\frac{1+\\cos 2 \\phi}{2}\\right) d \\phi \\int_{z=0}^{2} d z+\\int_{\\rho=0}^{2} d \\rho \\int_{\\phi=0}^{2 \\pi} \\sin 2 \\phi d \\phi \\int_{z=0}^{2} z^{2} d z \\\\ &=2\\left(\\frac{\\rho^{2}}{-2}\\right)_{\\rho=0}^{3} \\frac{1}{2}(2 \\pi)(z)_{z=0}^{2}+0 \\\\ &=2\\left(\\frac{3^{2}}{2}\\right) \\pi(2)=18 \\pi(\\text { Coulomb })=56.55(\\text { Coulomb }) \\end{aligned}$$\n\nMethod 2: Electric flux crossing the closed surface is\n\n$\\psi=\\oiint \\vec{D} \\cdot \\overrightarrow{d S}$\n\nElectric flux crossing \\rho=3 cylindrical surface is\n\n$$\\begin{aligned} \\left.\\psi\\right|_{\\rho=3} &=\\oiint\\left(\\rho \\cos ^{2} \\phi \\hat{a}_{p}\\right) \\cdot(\\rho d \\phi d z) \\hat{a}_{p} \\\\ &=3^{2} \\int_{\\phi=0}^{2 \\pi} \\cos ^{2} \\phi d \\phi \\int_{z=0}^{2} d z \\\\ &=9 \\frac{1}{2}(2 \\pi)(2)=18 \\pi(\\text { coulomb })=56.55(\\text { coulomb }) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q38": {
@@ -1538,7 +1613,11 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "$$\\begin{aligned} V_{c}\\left(0^{-}\\right)&=-5 \\mathrm{~V} \\\\ V_{c}\\left(0^{+}\\right)&=-5 \\mathrm{~V} \\end{aligned}$$\n\n$t \\rightarrow \\infty,$ capacitor acts as a O.C.\n\n<img src=\"/question-images/ec/2021/ec-2021-e7deda4bb6.webp\" />\n\nWrite KCL at node\n\n$$\\begin{aligned} \\frac{V_{c}(\\infty)-5}{250}+\\frac{V_{R}}{500}+\\frac{V_{c}(\\infty)}{250} &=0 \\\\ V_{c}(\\infty) &=\\frac{5}{3} \\text { Volts } \\\\ \\text { Time constant }(\\tau) &=R_{e q} C \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-98057dcb6b.webp\" />\n\n$$\\begin{aligned} I &=\\frac{V}{250}+\\frac{V_{R}}{500}+\\frac{V}{250} \\\\ V_{R} &=-V \\\\ I &=\\frac{V}{250}-\\frac{V}{500}+\\frac{V}{250} \\\\ \\frac{V}{I} &=\\frac{500}{3} \\Omega ; R_{\\mathrm{eq}}=\\frac{500}{3} \\Omega \\\\ \\tau &=\\frac{500}{3} \\times 0.6 \\mu=0.1 \\times 10^{-3} \\\\ v_{c}(t) &=v_{c}(\\infty)+\\left(v_{c}(0)-v_{c}(\\infty)\\right) e^{-\\sqrt{2}} \\\\ v_{c}(t) &=\\frac{5}{3}+\\left(-5-\\frac{5}{3}\\right) e^{-t / 0.1 \\times 10^{-3}} \\\\ 0 &=\\frac{5}{3}-\\frac{20}{3} e^{-10000 t} \\\\ t &=0.1386 \\mathrm{msec} \\end{aligned}$$\n\nTherefore, the correct answer is **0.139** (acceptable range: [0.132, 0.146])."
+        "markdown": "$$\\begin{aligned} V_{c}\\left(0^{-}\\right)&=-5 \\mathrm{~V} \\\\ V_{c}\\left(0^{+}\\right)&=-5 \\mathrm{~V} \\end{aligned}$$\n\n$t \\rightarrow \\infty,$ capacitor acts as a O.C.\n\n<img src=\"/question-images/ec/2021/ec-2021-e7deda4bb6.webp\" />\n\nWrite KCL at node\n\n$$\\begin{aligned} \\frac{V_{c}(\\infty)-5}{250}+\\frac{V_{R}}{500}+\\frac{V_{c}(\\infty)}{250} &=0 \\\\ V_{c}(\\infty) &=\\frac{5}{3} \\text { Volts } \\\\ \\text { Time constant }(\\tau) &=R_{e q} C \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-98057dcb6b.webp\" />\n\n$$\\begin{aligned} I &=\\frac{V}{250}+\\frac{V_{R}}{500}+\\frac{V}{250} \\\\ V_{R} &=-V \\\\ I &=\\frac{V}{250}-\\frac{V}{500}+\\frac{V}{250} \\\\ \\frac{V}{I} &=\\frac{500}{3} \\Omega ; R_{\\mathrm{eq}}=\\frac{500}{3} \\Omega \\\\ \\tau &=\\frac{500}{3} \\times 0.6 \\mu=0.1 \\times 10^{-3} \\\\ v_{c}(t) &=v_{c}(\\infty)+\\left(v_{c}(0)-v_{c}(\\infty)\\right) e^{-\\sqrt{2}} \\\\ v_{c}(t) &=\\frac{5}{3}+\\left(-5-\\frac{5}{3}\\right) e^{-t / 0.1 \\times 10^{-3}} \\\\ 0 &=\\frac{5}{3}-\\frac{20}{3} e^{-10000 t} \\\\ t &=0.1386 \\mathrm{msec} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-e7deda4bb6.webp",
+          "/question-images/ec/2021/ec-2021-98057dcb6b.webp"
+        ]
       }
     },
     "pp:ec:2021:q39": {
@@ -1577,7 +1656,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "$1. x(t)$ is real and even so $a_{k}$ is also real and even $a_{k}=a_{-k}$\n\n2. Average of x(t) is 2 i.e., $a_{0}=2.$\n\n$$\\begin{array}{llll} 3. \\;x(t) \\rightarrow a_{k}=k &1 \\leq k \\leq 3 \\quad& a_{1}=1 \\quad& a_{-1}=1 \\\\  \\quad \\quad \\quad \\quad \\;\\;\\;\\;\\;\\;\\;\\;0 & k>3 & a_{2}=2 & a_{-2}=2 \\\\ && a_{3}=3 & a_{-3}=3 \\end{array}$$\n\n$4. \\quad T_{0}=6$\n\nParsval's Power Theorem\n\n$$\\begin{aligned} \\frac{1}{T} \\int_{0}^{T}\\left|x(t)^{2}\\right| d t &=\\sum_{n=-\\infty}^{+\\infty}\\left|a_{k}\\right|^{2} \\\\ P(t) &=\\sum_{n=-\\infty}^{+\\infty}\\left|a_{k}\\right|^{2}=\\left|a_{-3}\\right|^{2}+\\left|a_{-2}\\right|^{2}+\\left|a_{-1}\\right|^{2}+\\left|a_{0}\\right|^{2}+\\left|a_{1}\\right|^{2}+\\left|a_{2}\\right|^{2}+\\left|a_{3}\\right|^{2} \\\\ &=2\\left|a_{1}\\right|^{2}+2\\left|a_{2}\\right|^{2}+2\\left|a_{3}\\right|^{2}+\\left|a_{0}\\right|^{2} \\\\ &=2 \\times 1^{2}+2 \\times(2)^{2}+2(3)^{2}+(2)^{2} \\\\ &=2+8+18+4 \\\\ P_{x(t)} &=32 \\end{aligned}$$\n\nTherefore, the correct answer is **32** (acceptable range: [31.9, 32.1])."
+        "markdown": "$1. x(t)$ is real and even so $a_{k}$ is also real and even $a_{k}=a_{-k}$\n\n2. Average of x(t) is 2 i.e., $a_{0}=2.$\n\n$$\\begin{array}{llll} 3. \\;x(t) \\rightarrow a_{k}=k &1 \\leq k \\leq 3 \\quad& a_{1}=1 \\quad& a_{-1}=1 \\\\  \\quad \\quad \\quad \\quad \\;\\;\\;\\;\\;\\;\\;\\;0 & k>3 & a_{2}=2 & a_{-2}=2 \\\\ && a_{3}=3 & a_{-3}=3 \\end{array}$$\n\n$4. \\quad T_{0}=6$\n\nParsval's Power Theorem\n\n$$\\begin{aligned} \\frac{1}{T} \\int_{0}^{T}\\left|x(t)^{2}\\right| d t &=\\sum_{n=-\\infty}^{+\\infty}\\left|a_{k}\\right|^{2} \\\\ P(t) &=\\sum_{n=-\\infty}^{+\\infty}\\left|a_{k}\\right|^{2}=\\left|a_{-3}\\right|^{2}+\\left|a_{-2}\\right|^{2}+\\left|a_{-1}\\right|^{2}+\\left|a_{0}\\right|^{2}+\\left|a_{1}\\right|^{2}+\\left|a_{2}\\right|^{2}+\\left|a_{3}\\right|^{2} \\\\ &=2\\left|a_{1}\\right|^{2}+2\\left|a_{2}\\right|^{2}+2\\left|a_{3}\\right|^{2}+\\left|a_{0}\\right|^{2} \\\\ &=2 \\times 1^{2}+2 \\times(2)^{2}+2(3)^{2}+(2)^{2} \\\\ &=2+8+18+4 \\\\ P_{x(t)} &=32 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q40": {
@@ -1616,7 +1696,10 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-15fb919ba2.webp\" />\n\nThe impulse response $h(n)=s(n)-s(n-1)$\n\n$$\\begin{aligned} h(n)=2 \\delta(n+1)+\\delta(n)&+ \\delta(n-1)-2 \\delta(n)-\\delta(n-1)-\\delta(n-1-1) \\\\ &=2 \\delta(n+1)+\\delta(n)+\\delta(n-1)-2 \\delta(n)-\\delta(n-1)-\\delta(n-2) \\\\ h(n) &=2 \\delta(n+1)-\\delta(n)-\\delta(n-2) \\\\ \\text{For input }\\qquad x_{1}(n)&=(1 / 2)^{n} u(n) \\text{ then output }\n\ny_{1}(n)=x_{1}(n) * h(n)\\\\ y_{1}(n)&=\\left(\\frac{1}{2}\\right)^{n} u(n) *[2 \\delta(n+1)-\\delta(n)-\\delta(n-2)]\\\\ y_{1}(n)&=\\left(\\frac{1}{2}\\right)^{n} u(n) * 2 \\delta(n+1)-\\left(\\frac{1}{2}\\right)^{n} u(n) * \\delta(n)-\\left(\\frac{1}{2}\\right)^{n} u(n) * \\delta(n-2) \\\\ y_{1}(n)&=2\\left(\\frac{1}{2}\\right)^{n+1} u(n+1)-\\left(\\frac{1}{2}\\right)^{n} u(n)-\\left(\\frac{1}{2}\\right)^{n-2} u(n-2) \\\\ \\left.y_{1}(n)\\right|_{n=0} &=2\\left(\\frac{1}{2}\\right)^{1} u(1)-\\left(\\frac{1}{2}\\right)^{0} u(0)-\\left(\\frac{1}{2}\\right)^{-2} u(-2) \\\\ &=1-1 \\\\ y_{1}(0) &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-15fb919ba2.webp\" />\n\nThe impulse response $h(n)=s(n)-s(n-1)$\n\n$$\\begin{aligned} h(n)=2 \\delta(n+1)+\\delta(n)&+ \\delta(n-1)-2 \\delta(n)-\\delta(n-1)-\\delta(n-1-1) \\\\ &=2 \\delta(n+1)+\\delta(n)+\\delta(n-1)-2 \\delta(n)-\\delta(n-1)-\\delta(n-2) \\\\ h(n) &=2 \\delta(n+1)-\\delta(n)-\\delta(n-2) \\\\ \\text{For input }\\qquad x_{1}(n)&=(1 / 2)^{n} u(n) \\text{ then output }\n\ny_{1}(n)=x_{1}(n) * h(n)\\\\ y_{1}(n)&=\\left(\\frac{1}{2}\\right)^{n} u(n) *[2 \\delta(n+1)-\\delta(n)-\\delta(n-2)]\\\\ y_{1}(n)&=\\left(\\frac{1}{2}\\right)^{n} u(n) * 2 \\delta(n+1)-\\left(\\frac{1}{2}\\right)^{n} u(n) * \\delta(n)-\\left(\\frac{1}{2}\\right)^{n} u(n) * \\delta(n-2) \\\\ y_{1}(n)&=2\\left(\\frac{1}{2}\\right)^{n+1} u(n+1)-\\left(\\frac{1}{2}\\right)^{n} u(n)-\\left(\\frac{1}{2}\\right)^{n-2} u(n-2) \\\\ \\left.y_{1}(n)\\right|_{n=0} &=2\\left(\\frac{1}{2}\\right)^{1} u(1)-\\left(\\frac{1}{2}\\right)^{0} u(0)-\\left(\\frac{1}{2}\\right)^{-2} u(-2) \\\\ &=1-1 \\\\ y_{1}(0) &=0 \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-15fb919ba2.webp"
+        ]
       }
     },
     "pp:ec:2021:q41": {
@@ -1655,7 +1738,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "$$\\begin{aligned} x[n] &=2^{n-1} u[-n+2] \\\\ y[n] &=2^{-n+2} u[n+1] \\\\ y[-n] &=2^{n+2} u[-n+1] \\\\ V &=\\frac{1}{2 \\pi} \\int_{0}^{2 \\pi} X\\left(e^{j \\omega}\\right) Y\\left(e^{-j \\omega}\\right) d \\omega &\\ldots(i)\\\\ z[n] &=x[n] * y[-n] \\\\ z[n] & \\rightarrow Z\\left(e^{j \\omega}\\right) \\\\ z[n] &=\\frac{1}{2 \\pi} \\int_{-\\pi}^{\\pi} Z\\left(e^{j \\omega}\\right) e^{j \\omega n} d \\omega \\\\ \\text { Put } n=0, \\qquad z[0] &=\\frac{1}{2 \\pi} \\int_{0}^{2 \\pi} Z\\left(e^{j \\omega}\\right) d \\omega &\\ldots(ii) \\end{aligned}$$\n\nCompare equations (i) and (ii)\n\n$$\\begin{aligned} z[0] &=V \\\\ Z\\left(e^{j \\omega}\\right) &=X\\left(e^{j \\omega}\\right) Y\\left(e^{-j \\omega}\\right) \\\\ \\text{Apply IDTFT},\\qquad Z[n] &=x[n] * y[-n]=x[n] * p[n]\\\\ \\because \\qquad p[n]&=y[-n]=2^{n+2} u[-n+1]\\\\ z[n] &=\\sum_{k=-\\infty}^{+\\infty} 2^{k-1} u[-k+2] 2^{n-k+2} u[-n+k+1] \\\\ &=\\sum_{k=-\\infty}^{2} 2^{k-1} 1 \\cdot 2^{n-k+2} u[k+1-n] \\\\ &=\\sum_{k=-\\infty}^{2} 2^{k-1+n-k+2} u[k+1-n] \\\\ z[n] &=\\sum_{k=-\\infty}^{2} 2^{n+1} u[k-n+1] \\\\ \\text { Put } n=0,\\qquad \\qquad V &=z[0]=\\sum_{k=-\\infty}^{2} 2^{1} \\cdot u[k+1]=2 \\sum_{k=-1}^{2} 1=2[1+1+1+1] \\\\ V &=8 \\end{aligned}$$\n\nTherefore, the correct answer is **8** (acceptable range: [7.9, 8.1])."
+        "markdown": "$$\\begin{aligned} x[n] &=2^{n-1} u[-n+2] \\\\ y[n] &=2^{-n+2} u[n+1] \\\\ y[-n] &=2^{n+2} u[-n+1] \\\\ V &=\\frac{1}{2 \\pi} \\int_{0}^{2 \\pi} X\\left(e^{j \\omega}\\right) Y\\left(e^{-j \\omega}\\right) d \\omega &\\ldots(i)\\\\ z[n] &=x[n] * y[-n] \\\\ z[n] & \\rightarrow Z\\left(e^{j \\omega}\\right) \\\\ z[n] &=\\frac{1}{2 \\pi} \\int_{-\\pi}^{\\pi} Z\\left(e^{j \\omega}\\right) e^{j \\omega n} d \\omega \\\\ \\text { Put } n=0, \\qquad z[0] &=\\frac{1}{2 \\pi} \\int_{0}^{2 \\pi} Z\\left(e^{j \\omega}\\right) d \\omega &\\ldots(ii) \\end{aligned}$$\n\nCompare equations (i) and (ii)\n\n$$\\begin{aligned} z[0] &=V \\\\ Z\\left(e^{j \\omega}\\right) &=X\\left(e^{j \\omega}\\right) Y\\left(e^{-j \\omega}\\right) \\\\ \\text{Apply IDTFT},\\qquad Z[n] &=x[n] * y[-n]=x[n] * p[n]\\\\ \\because \\qquad p[n]&=y[-n]=2^{n+2} u[-n+1]\\\\ z[n] &=\\sum_{k=-\\infty}^{+\\infty} 2^{k-1} u[-k+2] 2^{n-k+2} u[-n+k+1] \\\\ &=\\sum_{k=-\\infty}^{2} 2^{k-1} 1 \\cdot 2^{n-k+2} u[k+1-n] \\\\ &=\\sum_{k=-\\infty}^{2} 2^{k-1+n-k+2} u[k+1-n] \\\\ z[n] &=\\sum_{k=-\\infty}^{2} 2^{n+1} u[k-n+1] \\\\ \\text { Put } n=0,\\qquad \\qquad V &=z[0]=\\sum_{k=-\\infty}^{2} 2^{1} \\cdot u[k+1]=2 \\sum_{k=-1}^{2} 1=2[1+1+1+1] \\\\ V &=8 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q42": {
@@ -1694,7 +1778,10 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-0e352e6510.webp\" />\n\nGiven: $\\quad N_{A}=5 \\times 10^{16} \\mathrm{~cm}^{-3} \\quad ; \\quad N_{D}=10 \\times 10^{16} \\mathrm{~cm}^{-3}$\n\nBuilt-in potential, $\\quad \\phi_{\\mathrm{bi}}=0.8 \\mathrm{~V}$\n\nElectron charge, $q=1.6 \\times 10^{-19} \\mathrm{C}$\n\nVacuum permittivity, $\\epsilon_{o}=8.85 \\times 10^{-12} \\mathrm{~F} / \\mathrm{m}=8.85 \\times 10^{-14} \\mathrm{~F} / \\mathrm{cm}$\n\nRelative permittivity silicon,\n\n$\\epsilon_{\\mathrm{si}}=12$\n\n$\\Rightarrow$ Doping on both sides is comparable, so smaller region would deplete first.\n\nSo, depletion region width on N -side $=x_{n}=0.2 \\mu \\mathrm{m}$\n\n$$\\begin{aligned}\n\n\\Rightarrow \\qquad x_{n}&=0.2 \\times 10^{-4} \\mathrm{~cm}\\\\\n\nx_{n}&=\\sqrt{\\frac{2 \\epsilon_{S i}}{q}\\left(\\frac{N_{A}}{N_{D}}\\right)\\left(\\frac{1}{N_{A}+N_{D}}\\right)\\left(\\phi_{b i}+V_{R}\\right)}\n\n\\end{aligned}$$\n\nwhere, $V_{R} \\rightarrow$ Magnitude of reverse bias potential\n\n$$\\begin{aligned} \\Rightarrow \\qquad\\qquad 0.2 \\times 10^{-4}&=\\sqrt{\\frac{2 \\times 12 \\times 8.85 \\times 10^{-14}}{1.6 \\times 10^{-19}} \\cdot \\frac{5 \\times 10^{16}}{10 \\times 10^{16}} \\cdot \\frac{1}{\\left(15 \\times 10^{16}\\right)}\\left(\\phi_{b i}+V_{R}\\right)} \\\\ \\Rightarrow \\qquad\\qquad \\phi_{b j}+V_{R}&=9.039\\\\ \\Rightarrow \\qquad\\qquad V_{R}&=9.039-0.8\\\\ \\Rightarrow \\qquad\\qquad V_{R}&=8.239 \\mathrm{~V} \\end{aligned}$$\n\nTherefore, the correct answer is **8.25** (acceptable range: [8.1, 8.4])."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-0e352e6510.webp\" />\n\nGiven: $\\quad N_{A}=5 \\times 10^{16} \\mathrm{~cm}^{-3} \\quad ; \\quad N_{D}=10 \\times 10^{16} \\mathrm{~cm}^{-3}$\n\nBuilt-in potential, $\\quad \\phi_{\\mathrm{bi}}=0.8 \\mathrm{~V}$\n\nElectron charge, $q=1.6 \\times 10^{-19} \\mathrm{C}$\n\nVacuum permittivity, $\\epsilon_{o}=8.85 \\times 10^{-12} \\mathrm{~F} / \\mathrm{m}=8.85 \\times 10^{-14} \\mathrm{~F} / \\mathrm{cm}$\n\nRelative permittivity silicon,\n\n$\\epsilon_{\\mathrm{si}}=12$\n\n$\\Rightarrow$ Doping on both sides is comparable, so smaller region would deplete first.\n\nSo, depletion region width on N -side $=x_{n}=0.2 \\mu \\mathrm{m}$\n\n$$\\begin{aligned}\n\n\\Rightarrow \\qquad x_{n}&=0.2 \\times 10^{-4} \\mathrm{~cm}\\\\\n\nx_{n}&=\\sqrt{\\frac{2 \\epsilon_{S i}}{q}\\left(\\frac{N_{A}}{N_{D}}\\right)\\left(\\frac{1}{N_{A}+N_{D}}\\right)\\left(\\phi_{b i}+V_{R}\\right)}\n\n\\end{aligned}$$\n\nwhere, $V_{R} \\rightarrow$ Magnitude of reverse bias potential\n\n$$\\begin{aligned} \\Rightarrow \\qquad\\qquad 0.2 \\times 10^{-4}&=\\sqrt{\\frac{2 \\times 12 \\times 8.85 \\times 10^{-14}}{1.6 \\times 10^{-19}} \\cdot \\frac{5 \\times 10^{16}}{10 \\times 10^{16}} \\cdot \\frac{1}{\\left(15 \\times 10^{16}\\right)}\\left(\\phi_{b i}+V_{R}\\right)} \\\\ \\Rightarrow \\qquad\\qquad \\phi_{b j}+V_{R}&=9.039\\\\ \\Rightarrow \\qquad\\qquad V_{R}&=9.039-0.8\\\\ \\Rightarrow \\qquad\\qquad V_{R}&=8.239 \\mathrm{~V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-0e352e6510.webp"
+        ]
       }
     },
     "pp:ec:2021:q43": {
@@ -1733,7 +1820,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "$V_{\\text{in}} = 10 V:$ Diode is ON\n\n<img src=\"/question-images/ec/2021/ec-2021-e6c5cc5cb4.webp\" />\n\n$\\therefore$Capacitor charges upto $10 \\mathrm{~V},$\n\n$$\\begin{aligned} \\therefore \\qquad V_{C}&=10 \\mathrm{~V} \\\\ V_{\\text {in }}&=0 ; \\text { Diode is OFF } \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-6bd99804a6.webp\" />\n\nDischarging time constant $=R \\times C$\n\n$$\\begin{aligned} &=10 \\mathrm{~m} \\mathrm{sec} \\\\ \\tau_{\\text {discharging }} &>>\\tau_{\\mathrm{OFF}} \\end{aligned}$$\n\nCapacitor discharges negligibly\n\n$$\\begin{aligned} \\therefore\\qquad V_{C}&=10 \\mathrm{~V}\\\\ \\text{In steady state},\\qquad V_{C} &=10 \\mathrm{~V} \\\\ V_{\\text {out }} &=V_{\\text {in }}-V_{C}=V_{\\text {in }}-10 \\mathrm{~V}\\\\ \\text{When }\\qquad V_{\\text {in }}&=10 \\mathrm{~V}\\\\ \\Rightarrow\\qquad V_{\\text {out }} &=10-10=0 \\mathrm{~V} \\\\ V_{\\text {in }} &=10 \\mathrm{~V} \\\\ \\mathrm{~V}_{\\text {out }} &=0-10=-10 \\mathrm{~V}\\\\ \\Rightarrow\\qquad V_{\\text {out(max) }}-V_{\\text {out(min) }}&=0-(-10)=10 \\mathrm{~V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-d0a8124f62.webp\" />\n\nTherefore, the correct answer is **10**."
+        "markdown": "$V_{\\text{in}} = 10 V:$ Diode is ON\n\n<img src=\"/question-images/ec/2021/ec-2021-e6c5cc5cb4.webp\" />\n\n$\\therefore$Capacitor charges upto $10 \\mathrm{~V},$\n\n$$\\begin{aligned} \\therefore \\qquad V_{C}&=10 \\mathrm{~V} \\\\ V_{\\text {in }}&=0 ; \\text { Diode is OFF } \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-6bd99804a6.webp\" />\n\nDischarging time constant $=R \\times C$\n\n$$\\begin{aligned} &=10 \\mathrm{~m} \\mathrm{sec} \\\\ \\tau_{\\text {discharging }} &>>\\tau_{\\mathrm{OFF}} \\end{aligned}$$\n\nCapacitor discharges negligibly\n\n$$\\begin{aligned} \\therefore\\qquad V_{C}&=10 \\mathrm{~V}\\\\ \\text{In steady state},\\qquad V_{C} &=10 \\mathrm{~V} \\\\ V_{\\text {out }} &=V_{\\text {in }}-V_{C}=V_{\\text {in }}-10 \\mathrm{~V}\\\\ \\text{When }\\qquad V_{\\text {in }}&=10 \\mathrm{~V}\\\\ \\Rightarrow\\qquad V_{\\text {out }} &=10-10=0 \\mathrm{~V} \\\\ V_{\\text {in }} &=10 \\mathrm{~V} \\\\ \\mathrm{~V}_{\\text {out }} &=0-10=-10 \\mathrm{~V}\\\\ \\Rightarrow\\qquad V_{\\text {out(max) }}-V_{\\text {out(min) }}&=0-(-10)=10 \\mathrm{~V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-d0a8124f62.webp\" />",
+        "images": [
+          "/question-images/ec/2021/ec-2021-e6c5cc5cb4.webp",
+          "/question-images/ec/2021/ec-2021-6bd99804a6.webp",
+          "/question-images/ec/2021/ec-2021-d0a8124f62.webp"
+        ]
       }
     },
     "pp:ec:2021:q44": {
@@ -1772,7 +1864,10 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$$\\begin{aligned} I_{D S}&=\\frac{\\mu_{n} C_{O x}}{2} \\times \\frac{W}{L}\\left(V_{G S}-V_{T}\\right)^{2} \\\\ \\text{Given}\\qquad V_{G S}&=1 \\mathrm{~V} \\\\ I_{D S}&=\\frac{1}{2}\\left(1-V_{T}\\right)^{2} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-65743243c1.webp\" />\n\n$$\\begin{aligned} V_{D S}=3-20 \\times I_{D S} \\\\ V_{D S}=3-\\frac{20}{2}\\left(1-V_{T}\\right)^{2} \\\\ V_{D S}=3-10\\left(1-V_{T}\\right)^{2} \\end{aligned}$$\n\nMOSFET operates in saturation if\n\n$$\\begin{aligned} V_{D S} &\\geq V_{G S}-V_{T}\\\\ \\text{So, we take},\\qquad \\quad V_{D S}&=V_{G S}-V_{T} \\\\ V_{G S}-V_{T}&=3-10\\left(1-V_{T}\\right)^{2} \\\\ 1-V_{T}&=3-10\\left(1-V_{T}\\right)^{2}\\\\ \\text{Let,}\\qquad 1-V_{T} &=x \\\\ 3-10 x^{2} &=x \\\\ 10 x^{2}+x-3 x &=0 \\\\ \\text{We get,}\\qquad x &=-\\frac{1 \\pm \\sqrt{1+120}}{20}\\\\ x &=-\\frac{1 \\pm 11}{20}\\\\ \\therefore \\qquad \\quad x&=0.5 \\text { and }-0.6\\\\ x&=0.5\\\\ \\Rightarrow \\qquad \\quad 1-V_{T} & =0.5 \\\\ \\Rightarrow \\qquad \\quad V_{T} & =0.5 \\mathrm{~V} \\\\ x & =-0.6 \\\\ \\Rightarrow\\qquad \\quad 1-V_{T} & =-0.6 \\\\ \\Rightarrow\\qquad \\quad V_{T} & =1.6 \\mathrm{~V} \\\\ \\text { But }\\qquad \\quad V_{G S} & \\gt V_{T} \\\\ \\text { or }\\qquad \\quad V_{T} & \\lt V_{G S} \\\\ \\text { i.e., }\\qquad \\quad V_{T} &  \\lt 1 \\\\ \\therefore\\qquad \\quad V_{T} & =0.5 \\mathrm{~V} \\end{aligned}$$\n\nTherefore, the correct answer is **0.5**."
+        "markdown": "$$\\begin{aligned} I_{D S}&=\\frac{\\mu_{n} C_{O x}}{2} \\times \\frac{W}{L}\\left(V_{G S}-V_{T}\\right)^{2} \\\\ \\text{Given}\\qquad V_{G S}&=1 \\mathrm{~V} \\\\ I_{D S}&=\\frac{1}{2}\\left(1-V_{T}\\right)^{2} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-65743243c1.webp\" />\n\n$$\\begin{aligned} V_{D S}=3-20 \\times I_{D S} \\\\ V_{D S}=3-\\frac{20}{2}\\left(1-V_{T}\\right)^{2} \\\\ V_{D S}=3-10\\left(1-V_{T}\\right)^{2} \\end{aligned}$$\n\nMOSFET operates in saturation if\n\n$$\\begin{aligned} V_{D S} &\\geq V_{G S}-V_{T}\\\\ \\text{So, we take},\\qquad \\quad V_{D S}&=V_{G S}-V_{T} \\\\ V_{G S}-V_{T}&=3-10\\left(1-V_{T}\\right)^{2} \\\\ 1-V_{T}&=3-10\\left(1-V_{T}\\right)^{2}\\\\ \\text{Let,}\\qquad 1-V_{T} &=x \\\\ 3-10 x^{2} &=x \\\\ 10 x^{2}+x-3 x &=0 \\\\ \\text{We get,}\\qquad x &=-\\frac{1 \\pm \\sqrt{1+120}}{20}\\\\ x &=-\\frac{1 \\pm 11}{20}\\\\ \\therefore \\qquad \\quad x&=0.5 \\text { and }-0.6\\\\ x&=0.5\\\\ \\Rightarrow \\qquad \\quad 1-V_{T} & =0.5 \\\\ \\Rightarrow \\qquad \\quad V_{T} & =0.5 \\mathrm{~V} \\\\ x & =-0.6 \\\\ \\Rightarrow\\qquad \\quad 1-V_{T} & =-0.6 \\\\ \\Rightarrow\\qquad \\quad V_{T} & =1.6 \\mathrm{~V} \\\\ \\text { But }\\qquad \\quad V_{G S} & \\gt V_{T} \\\\ \\text { or }\\qquad \\quad V_{T} & \\lt V_{G S} \\\\ \\text { i.e., }\\qquad \\quad V_{T} &  \\lt 1 \\\\ \\therefore\\qquad \\quad V_{T} & =0.5 \\mathrm{~V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-65743243c1.webp"
+        ]
       }
     },
     "pp:ec:2021:q45": {
@@ -1811,7 +1906,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "At, $t=0^{+}:$ Capacitor is short circuit\n\n$$\\begin{aligned} \\therefore\\quad V^{-}=V_{\\text {in }}=5 \\mathrm{~V} \\\\ V^{+}=0 \\mathrm{~V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-23f2a806ff.webp\" />\n\n$$\\begin{aligned} \\text{If}\\qquad V^- &>V^{+} \\\\ V_{\\text {out }} &=-V_{\\text {sat }}=-12 \\mathrm{~V} \\end{aligned}$$\n\nTherefore, the correct answer is **-12**."
+        "markdown": "At, $t=0^{+}:$ Capacitor is short circuit\n\n$$\\begin{aligned} \\therefore\\quad V^{-}=V_{\\text {in }}=5 \\mathrm{~V} \\\\ V^{+}=0 \\mathrm{~V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2021/ec-2021-23f2a806ff.webp\" />\n\n$$\\begin{aligned} \\text{If}\\qquad V^- &>V^{+} \\\\ V_{\\text {out }} &=-V_{\\text {sat }}=-12 \\mathrm{~V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-23f2a806ff.webp"
+        ]
       }
     },
     "pp:ec:2021:q46": {
@@ -1850,7 +1948,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-14c75b2339.webp\" />\n\n$\\therefore\\quad$Total 5 clocks required.\n\nTherefore, the correct answer is **5**."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-14c75b2339.webp\" />\n\n$\\therefore\\quad$Total 5 clocks required.",
+        "images": [
+          "/question-images/ec/2021/ec-2021-14c75b2339.webp"
+        ]
       }
     },
     "pp:ec:2021:q47": {
@@ -1889,7 +1990,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "Apply Laplace transform,\n\n<img src=\"/question-images/ec/2021/ec-2021-5983c1ad7c.webp\" />\n\n$$\\begin{aligned} \\frac{1}{s} &=\\frac{V(s)}{1 / C s}+\\frac{V(s)}{R+L s} \\\\ \\frac{1}{s} &=V(s)\\left[C s+\\frac{1}{R+L s}\\right] \\\\ V(s) &=\\frac{(1 / s)}{C s+\\frac{1}{R+L s}} \\\\ V(s) &=\\frac{(1 / s)(R+L S)}{L C s^{2}+R C s+1} \\\\ I(s) &=\\frac{(1 / s)(R+L s)}{L C s^{2}+R C s+1} \\cdot \\frac{1}{(R+L s)} \\\\ I(s) &=\\frac{1 / L C}{s\\left(s^{2}+\\frac{R}{L} s+\\frac{1}{L C}\\right)} \\\\ L &=10 \\mathrm{mH} ; C=100 \\mathrm{pF} ; R=5 \\times 10^{3} \\Omega\\\\ \\xi &=\\frac{R}{2} \\sqrt{\\frac{C}{L}}=\\frac{5 \\times 10^{3}}{2} \\sqrt{\\frac{100 \\times 10^{-12}}{10 \\times 10^{-3}}}=0.25 \\\\ \\text{Max}. \\text { over shoot } &=e^{-\\pi \\xi / \\sqrt{1-\\xi^{2}}}=0.44 \\end{aligned}$$\n\nMaximum value = Steady state + Max. overshoot\n\n$=1+0.44$\n\n$=1.44 \\mathrm{~A}$\n\nTherefore, the correct answer is **1.45** (acceptable range: [1.4, 1.5])."
+        "markdown": "Apply Laplace transform,\n\n<img src=\"/question-images/ec/2021/ec-2021-5983c1ad7c.webp\" />\n\n$$\\begin{aligned} \\frac{1}{s} &=\\frac{V(s)}{1 / C s}+\\frac{V(s)}{R+L s} \\\\ \\frac{1}{s} &=V(s)\\left[C s+\\frac{1}{R+L s}\\right] \\\\ V(s) &=\\frac{(1 / s)}{C s+\\frac{1}{R+L s}} \\\\ V(s) &=\\frac{(1 / s)(R+L S)}{L C s^{2}+R C s+1} \\\\ I(s) &=\\frac{(1 / s)(R+L s)}{L C s^{2}+R C s+1} \\cdot \\frac{1}{(R+L s)} \\\\ I(s) &=\\frac{1 / L C}{s\\left(s^{2}+\\frac{R}{L} s+\\frac{1}{L C}\\right)} \\\\ L &=10 \\mathrm{mH} ; C=100 \\mathrm{pF} ; R=5 \\times 10^{3} \\Omega\\\\ \\xi &=\\frac{R}{2} \\sqrt{\\frac{C}{L}}=\\frac{5 \\times 10^{3}}{2} \\sqrt{\\frac{100 \\times 10^{-12}}{10 \\times 10^{-3}}}=0.25 \\\\ \\text{Max}. \\text { over shoot } &=e^{-\\pi \\xi / \\sqrt{1-\\xi^{2}}}=0.44 \\end{aligned}$$\n\nMaximum value = Steady state + Max. overshoot\n\n$=1+0.44$\n\n$=1.44 \\mathrm{~A}$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-5983c1ad7c.webp"
+        ]
       }
     },
     "pp:ec:2021:q48": {
@@ -1928,7 +2032,10 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
-        "markdown": "$$\\begin{aligned} G H &=\\left(\\frac{s K_{p}+K_{I}}{s}\\right)\\left(\\frac{2}{s^{3}+4 s^{2}+5 s+2}\\right) \\\\ q(s) &=s^{4}+4 s^{3}+5 s^{2}+s\\left(2+2 k_{p}\\right)+2 k_{I} \\\\ \\text{Necessary}:\\qquad K_{p} & \\gt -1 ; K_{I} \\gt 0\\\\ &\\begin{array}{l|ccc} s^{4} & 1 & 5 & 2 K_{I} \\\\ s^{3} & 4 & 2+2 K_{p} & \\\\ s^{2} & \\frac{18-2 K_{p}}{4} & 2 K_{I} & \\\\ s^{1} & \\left(9-K_{p}\\right)\\left(1+K_{p}\\right)-8 K_{I} & & \\\\ s^{0} & 2 K_{I} & & \\end{array}\\\\ \\end{aligned}$$\n\nSufficient:\n\n$$\\begin{aligned} \\frac{18-2 K_{p}}{4}& \\gt 0\\\\ \\Rightarrow \\quad K_{p}& \\lt 9\\\\ \\therefore \\quad-1& \\lt K_{p} \\lt 9\\\\ \\left(18-2 K_{p}\\right)\\left(2+2 K_{p}\\right)-32 K_{I}& \\gt 0\\\\ 32 K_{I}& \\lt 36+32 K_{p}-4 K_{p}^{2}\\\\ \\therefore \\qquad \\qquad 0& \\lt K_{I} \\lt \\frac{36+32 K_{p}-4 K_{p}^{2}}{32} \\end{aligned}$$\n\n$$\\begin{aligned} \\text{If }K_{p}&=-1 \\Rightarrow k_{I}=0\\\\ \\text{If }K_{p}&=9 \\Rightarrow k_{I}=0\\\\ \\end{aligned}$$,\n\n$$\\begin{aligned} \\therefore \\qquad \\qquad \\frac{d K_{I}}{d K_{p}}&=0\\\\ \\Rightarrow \\qquad \\qquad 32-8 K_{p}&=0=0 \\Rightarrow K_{p}=4 \\end{aligned}$$\n\n$\\therefore$ For $K_{p}=4, K_{I}$ is maximum, which is\n\n$K_{I}=\\frac{36+32 \\times 4-64}{32}=3.125$\n\nFor $K_{p}=4, K_{I} \\lt 3.125$ for stability\n\n$\\therefore K_{I \\max }=3.125$\n\n<img src=\"/question-images/ec/2021/ec-2021-eccee46222.webp\" />\n\nTherefore, the correct answer is **3.125**."
+        "markdown": "$$\\begin{aligned} G H &=\\left(\\frac{s K_{p}+K_{I}}{s}\\right)\\left(\\frac{2}{s^{3}+4 s^{2}+5 s+2}\\right) \\\\ q(s) &=s^{4}+4 s^{3}+5 s^{2}+s\\left(2+2 k_{p}\\right)+2 k_{I} \\\\ \\text{Necessary}:\\qquad K_{p} & \\gt -1 ; K_{I} \\gt 0\\\\ &\\begin{array}{l|ccc} s^{4} & 1 & 5 & 2 K_{I} \\\\ s^{3} & 4 & 2+2 K_{p} & \\\\ s^{2} & \\frac{18-2 K_{p}}{4} & 2 K_{I} & \\\\ s^{1} & \\left(9-K_{p}\\right)\\left(1+K_{p}\\right)-8 K_{I} & & \\\\ s^{0} & 2 K_{I} & & \\end{array}\\\\ \\end{aligned}$$\n\nSufficient:\n\n$$\\begin{aligned} \\frac{18-2 K_{p}}{4}& \\gt 0\\\\ \\Rightarrow \\quad K_{p}& \\lt 9\\\\ \\therefore \\quad-1& \\lt K_{p} \\lt 9\\\\ \\left(18-2 K_{p}\\right)\\left(2+2 K_{p}\\right)-32 K_{I}& \\gt 0\\\\ 32 K_{I}& \\lt 36+32 K_{p}-4 K_{p}^{2}\\\\ \\therefore \\qquad \\qquad 0& \\lt K_{I} \\lt \\frac{36+32 K_{p}-4 K_{p}^{2}}{32} \\end{aligned}$$\n\n$$\\begin{aligned} \\text{If }K_{p}&=-1 \\Rightarrow k_{I}=0\\\\ \\text{If }K_{p}&=9 \\Rightarrow k_{I}=0\\\\ \\end{aligned}$$,\n\n$$\\begin{aligned} \\therefore \\qquad \\qquad \\frac{d K_{I}}{d K_{p}}&=0\\\\ \\Rightarrow \\qquad \\qquad 32-8 K_{p}&=0=0 \\Rightarrow K_{p}=4 \\end{aligned}$$\n\n$\\therefore$ For $K_{p}=4, K_{I}$ is maximum, which is\n\n$K_{I}=\\frac{36+32 \\times 4-64}{32}=3.125$\n\nFor $K_{p}=4, K_{I} \\lt 3.125$ for stability\n\n$\\therefore K_{I \\max }=3.125$\n\n<img src=\"/question-images/ec/2021/ec-2021-eccee46222.webp\" />",
+        "images": [
+          "/question-images/ec/2021/ec-2021-eccee46222.webp"
+        ]
       }
     },
     "pp:ec:2021:q49": {
@@ -1967,7 +2074,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "Given sinusoidal message signal $\\rightarrow V_{\\mathrm{rms}}=4 \\mathrm{~V}$\n\n$$\\begin{aligned} f_{m} &=1 \\mathrm{kHz} \\\\ V_{\\text {peak }} &=\\sqrt{2} \\times V_{\\mathrm{rms}}=\\sqrt{2} \\times 4 \\mathrm{~V} \\\\ m(t) &=4 \\sqrt{2} \\sin 2 \\pi \\times 10^{3} t\\\\ K_{p}&=2 \\mathrm{rad} / \\mathrm{volt}\\\\ c(t) &=2 \\cos 2 \\pi \\times 10^{6} \\mathrm{t} \\\\ \\left(f_{i}\\right)_{\\max } &=f_{c}+\\frac{K_{p}}{2 \\pi}\\left[\\frac{d}{d t} m(t)\\right]_{\\max } \\\\ \\frac{d}{d t} m(t) &=4 \\sqrt{2} \\times\\left(2 \\pi \\times 10^{3}\\right) \\cos 2 \\pi \\times 10^{3} t \\\\ \\left[\\frac{d}{d t} m(t)\\right]_{\\max } &=4 \\sqrt{2} \\times 2 \\pi \\times 10^{3} \\\\ \\left(f_{i}\\right)_{\\max } &=10^{6}+\\frac{2}{2 \\pi}\\left(4 \\sqrt{2} \\times 2 \\pi \\times 10^{3}\\right)=1011313.7 \\mathrm{~Hz} \\end{aligned}$$\n\nTherefore, the correct answer is **1011315** (acceptable range: [1011310, 1011320])."
+        "markdown": "Given sinusoidal message signal $\\rightarrow V_{\\mathrm{rms}}=4 \\mathrm{~V}$\n\n$$\\begin{aligned} f_{m} &=1 \\mathrm{kHz} \\\\ V_{\\text {peak }} &=\\sqrt{2} \\times V_{\\mathrm{rms}}=\\sqrt{2} \\times 4 \\mathrm{~V} \\\\ m(t) &=4 \\sqrt{2} \\sin 2 \\pi \\times 10^{3} t\\\\ K_{p}&=2 \\mathrm{rad} / \\mathrm{volt}\\\\ c(t) &=2 \\cos 2 \\pi \\times 10^{6} \\mathrm{t} \\\\ \\left(f_{i}\\right)_{\\max } &=f_{c}+\\frac{K_{p}}{2 \\pi}\\left[\\frac{d}{d t} m(t)\\right]_{\\max } \\\\ \\frac{d}{d t} m(t) &=4 \\sqrt{2} \\times\\left(2 \\pi \\times 10^{3}\\right) \\cos 2 \\pi \\times 10^{3} t \\\\ \\left[\\frac{d}{d t} m(t)\\right]_{\\max } &=4 \\sqrt{2} \\times 2 \\pi \\times 10^{3} \\\\ \\left(f_{i}\\right)_{\\max } &=10^{6}+\\frac{2}{2 \\pi}\\left(4 \\sqrt{2} \\times 2 \\pi \\times 10^{3}\\right)=1011313.7 \\mathrm{~Hz} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q50": {
@@ -2006,7 +2114,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "$$\\begin{aligned} f_{s} &=600 \\mathrm{kHz} \\\\ f_{l} &=1000 \\mathrm{kHz} \\\\ f_{s i} &=? \\\\ \\text { Default } f_{l}>f_{s} & \\\\ \\mathrm{IF} &=f_{l}-f_{s}=400 \\mathrm{kHz} \\\\ f_{\\mathrm{si}} &=f_{s}+2 \\mathrm{IF}=600 \\mathrm{~K}+800 \\mathrm{~K}=1400 \\mathrm{kHz} \\end{aligned}$$\n\nTherefore, the correct answer is **1400**."
+        "markdown": "$$\\begin{aligned} f_{s} &=600 \\mathrm{kHz} \\\\ f_{l} &=1000 \\mathrm{kHz} \\\\ f_{s i} &=? \\\\ \\text { Default } f_{l}>f_{s} & \\\\ \\mathrm{IF} &=f_{l}-f_{s}=400 \\mathrm{kHz} \\\\ f_{\\mathrm{si}} &=f_{s}+2 \\mathrm{IF}=600 \\mathrm{~K}+800 \\mathrm{~K}=1400 \\mathrm{kHz} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q51": {
@@ -2044,8 +2153,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} \\text{Given,}\\qquad P(G)&=\\frac{1}{2} \\text { and } P(B)=\\frac{1}{2} \\\\ P(C)&=\\frac{1}{4} \\text { and } P(S)=\\frac{3}{4} \\end{aligned}$$\n\nLet probability of selected science student is a boy is $P(B/S) = x$\n\nGiven that Commerce students are two time more likely to be a boy than are Science students.\n\nThen, probability of selected Commerce student is a boy\n\n$P\\left(\\frac{B}{C}\\right)=2 x$\n\nWe have to find probability of randomly selected girl studies Commerce i.e.\n\n$$\\begin{aligned} P\\left(\\frac{C}{G}\\right)&=\\frac{P(C \\cap G)}{P(G)}=\\frac{P(C) P(G / C)}{P(G)} \\\\ P\\left(\\frac{C}{G}\\right)&=\\frac{\\frac{1}{4} \\times P\\left(\\frac{G}{C}\\right)}{\\frac{1}{2}} &\\ldots(i) \\end{aligned}$$\n\nTo find $P(G / C)$, first we have to find $P(B/C).$\n\nThe probability of selected student is a boy\n\n$$\\begin{aligned} P(B) &=P(S) P(B / S)+P(C) \\times P(B / C) \\\\ \\frac{1}{2} &=\\frac{3}{4} \\times x+\\frac{1}{4} \\times 2 x \\\\ \\Rightarrow\\qquad\\qquad x &=\\frac{2}{5}\\\\ \\text{Then},\\qquad \\qquad P(B / C)&=2 x=\\frac{4}{5}\\\\ \\text{We know that},\\qquad \\\\ P\\left(\\frac{B}{C}\\right)+P\\left(\\frac{G}{C}\\right)&=1    \\\\ P\\left(\\frac{G}{C}\\right) =1- \\frac{4}{5}&=\\frac{1}{5} \\\\ \\text{From  equation (i),} \\\\ P\\left(\\frac{G}{C}\\right) = \\frac{1}{4} \\times \\frac{1}{\\frac{5}{1/2}} &= \\frac{1}{10} \\end{aligned}$$\n\nThe amount of information gained in knowing that a randomly selected girl student studies Commerce\n\n$I\\left ( \\frac{C}{G} \\right )=\\log _2 \\frac{1}{P\\left ( \\frac{C}{G} \\right )}= \\log _2 10=3.32$\n\nTherefore, the correct answer is **3.3225** (acceptable range: [3.32, 3.325])."
+        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "markdown": "$$\\begin{aligned} \\text{Given,}\\qquad P(G)&=\\frac{1}{2} \\text { and } P(B)=\\frac{1}{2} \\\\ P(C)&=\\frac{1}{4} \\text { and } P(S)=\\frac{3}{4} \\end{aligned}$$\n\nLet probability of selected science student is a boy is $P(B/S) = x$\n\nGiven that Commerce students are two time more likely to be a boy than are Science students.\n\nThen, probability of selected Commerce student is a boy\n\n$P\\left(\\frac{B}{C}\\right)=2 x$\n\nWe have to find probability of randomly selected girl studies Commerce i.e.\n\n$$\\begin{aligned} P\\left(\\frac{C}{G}\\right)&=\\frac{P(C \\cap G)}{P(G)}=\\frac{P(C) P(G / C)}{P(G)} \\\\ P\\left(\\frac{C}{G}\\right)&=\\frac{\\frac{1}{4} \\times P\\left(\\frac{G}{C}\\right)}{\\frac{1}{2}} &\\ldots(i) \\end{aligned}$$\n\nTo find $P(G / C)$, first we have to find $P(B/C).$\n\nThe probability of selected student is a boy\n\n$$\\begin{aligned} P(B) &=P(S) P(B / S)+P(C) \\times P(B / C) \\\\ \\frac{1}{2} &=\\frac{3}{4} \\times x+\\frac{1}{4} \\times 2 x \\\\ \\Rightarrow\\qquad\\qquad x &=\\frac{2}{5}\\\\ \\text{Then},\\qquad \\qquad P(B / C)&=2 x=\\frac{4}{5}\\\\ \\text{We know that},\\qquad \\\\ P\\left(\\frac{B}{C}\\right)+P\\left(\\frac{G}{C}\\right)&=1    \\\\ P\\left(\\frac{G}{C}\\right) =1- \\frac{4}{5}&=\\frac{1}{5} \\\\ \\text{From  equation (i),} \\\\ P\\left(\\frac{G}{C}\\right) = \\frac{1}{4} \\times \\frac{1}{\\frac{5}{1/2}} &= \\frac{1}{10} \\end{aligned}$$\n\nThe amount of information gained in knowing that a randomly selected girl student studies Commerce\n\n$I\\left ( \\frac{C}{G} \\right )=\\log _2 \\frac{1}{P\\left ( \\frac{C}{G} \\right )}= \\log _2 10=3.32$",
+        "images": []
       }
     },
     "pp:ec:2021:q52": {
@@ -2084,7 +2194,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communication Systems",
-        "markdown": "$$\\begin{aligned} v_{p-p} &=2 \\mathrm{~V} \\\\ \\text { Root MSQ }[m(t)] &=0.1 \\mathrm{~V} ; \\quad f_{m}=5 \\mathrm{kHz} \\\\ \\text { Channel capacity, } \\quad C &=50 \\mathrm{kbps} \\\\ \\text{Max} \\frac{S}{N_{Q}}=?\\\\ & \\text{Signal power},\\\\ S&=\\text{MSQ}[m(t)]=(0.1)^{2}=0.01\\\\ C &\\geq R_{b} \\Rightarrow 50 \\mathrm{kbps} \\geq n f_{s}\\\\ \\because \\qquad f_{s}&=N R=2 f_{m}=10 \\mathrm{kHz}\\\\ n &\\leq 5 \\Rightarrow n_{\\max }=5\\\\ N_{Q} &=\\frac{\\Delta^{2}}{12} \\\\ \\therefore\\qquad \\Delta &=\\frac{V_{p-p}}{2^{n}} \\\\ \\Delta_{\\min } &=\\frac{V_{p-p}}{2^{7} \\max }=\\frac{2 V}{2^{5}}=\\frac{1}{16} \\\\ \\left(N_{Q}\\right)_{\\min } &=\\frac{\\Delta_{\\min }^{2}}{12}=3.25 \\times 10^{-4} \\\\ \\left(\\frac{S}{N Q}\\right)_{\\max } &=\\frac{S}{\\left(N_{Q}\\right)_{\\min }}=\\frac{0.01}{3.25 \\times 10^{-4}}=30.72 \\end{aligned}$$\n\nTherefore, the correct answer is **32** (acceptable range: [30, 34])."
+        "markdown": "$$\\begin{aligned} v_{p-p} &=2 \\mathrm{~V} \\\\ \\text { Root MSQ }[m(t)] &=0.1 \\mathrm{~V} ; \\quad f_{m}=5 \\mathrm{kHz} \\\\ \\text { Channel capacity, } \\quad C &=50 \\mathrm{kbps} \\\\ \\text{Max} \\frac{S}{N_{Q}}=?\\\\ & \\text{Signal power},\\\\ S&=\\text{MSQ}[m(t)]=(0.1)^{2}=0.01\\\\ C &\\geq R_{b} \\Rightarrow 50 \\mathrm{kbps} \\geq n f_{s}\\\\ \\because \\qquad f_{s}&=N R=2 f_{m}=10 \\mathrm{kHz}\\\\ n &\\leq 5 \\Rightarrow n_{\\max }=5\\\\ N_{Q} &=\\frac{\\Delta^{2}}{12} \\\\ \\therefore\\qquad \\Delta &=\\frac{V_{p-p}}{2^{n}} \\\\ \\Delta_{\\min } &=\\frac{V_{p-p}}{2^{7} \\max }=\\frac{2 V}{2^{5}}=\\frac{1}{16} \\\\ \\left(N_{Q}\\right)_{\\min } &=\\frac{\\Delta_{\\min }^{2}}{12}=3.25 \\times 10^{-4} \\\\ \\left(\\frac{S}{N Q}\\right)_{\\max } &=\\frac{S}{\\left(N_{Q}\\right)_{\\min }}=\\frac{0.01}{3.25 \\times 10^{-4}}=30.72 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q53": {
@@ -2123,7 +2234,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-7b8898bfef.webp\" />\n\n$$\\begin{aligned} H_{1}: X &=+2 \\mathrm{~V} \\\\ H_{0}: X &=-2 \\mathrm{~V} \\\\ \\text{Var}[N] &=\\sigma_{n}^{2}=0.4 \\mathrm{~V}^{2} \\\\ \\mathrm{E}[\\mathrm{N}] &=0 \\\\ P(1) &=0.4 \\\\ \\Rightarrow\\qquad P(0) &=0.6 \\end{aligned}$$\n\nOpt $V_{\\text {Th }}$ by using MAP theorem\n\n$$\\begin{aligned} \\frac{V_{T h}\\left[a_{1}-a_{2}\\right]}{\\sigma^{2}}-\\frac{a_{1}^{2}-a_{2}^{2}}{2 \\sigma^{2}} &=\\ln \\frac{P(0)}{P(1)} \\\\ H_{1}: a_{1} &=E[2+N]=E[2]+E[N]=2 \\\\ H_{0}: a_{2} &=-2 V=E[-2+N]=E[-2]+E[N]=-2 \\\\ \\sigma^{2} &=\\text{Var}[Y]=\\text{Var}[X+N] \\\\ &=\\text{Var}[X]+\\text{Var}[N]=0+0.4=0.4 \\\\ \\frac{V_{T h}[2+2]}{0.4}-\\frac{4-4}{2 \\times 0.4} &=\\ln \\frac{0.6}{0.4} \\\\ V_{T h} &=\\frac{0.4}{4} \\ln \\frac{0.6}{0.4}=0.0405 \\\\ \\text { Opt } V_{\\text {Th }} &=0.0405 \\text { Volts } \\end{aligned}$$\n\nTherefore, the correct answer is **0.04** (acceptable range: [0.03, 0.05])."
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-7b8898bfef.webp\" />\n\n$$\\begin{aligned} H_{1}: X &=+2 \\mathrm{~V} \\\\ H_{0}: X &=-2 \\mathrm{~V} \\\\ \\text{Var}[N] &=\\sigma_{n}^{2}=0.4 \\mathrm{~V}^{2} \\\\ \\mathrm{E}[\\mathrm{N}] &=0 \\\\ P(1) &=0.4 \\\\ \\Rightarrow\\qquad P(0) &=0.6 \\end{aligned}$$\n\nOpt $V_{\\text {Th }}$ by using MAP theorem\n\n$$\\begin{aligned} \\frac{V_{T h}\\left[a_{1}-a_{2}\\right]}{\\sigma^{2}}-\\frac{a_{1}^{2}-a_{2}^{2}}{2 \\sigma^{2}} &=\\ln \\frac{P(0)}{P(1)} \\\\ H_{1}: a_{1} &=E[2+N]=E[2]+E[N]=2 \\\\ H_{0}: a_{2} &=-2 V=E[-2+N]=E[-2]+E[N]=-2 \\\\ \\sigma^{2} &=\\text{Var}[Y]=\\text{Var}[X+N] \\\\ &=\\text{Var}[X]+\\text{Var}[N]=0+0.4=0.4 \\\\ \\frac{V_{T h}[2+2]}{0.4}-\\frac{4-4}{2 \\times 0.4} &=\\ln \\frac{0.6}{0.4} \\\\ V_{T h} &=\\frac{0.4}{4} \\ln \\frac{0.6}{0.4}=0.0405 \\\\ \\text { Opt } V_{\\text {Th }} &=0.0405 \\text { Volts } \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-7b8898bfef.webp"
+        ]
       }
     },
     "pp:ec:2021:q54": {
@@ -2162,7 +2276,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
-        "markdown": "$f_{c 10}=\\frac{c}{2 a}=\\frac{3 \\times 10^{8}}{2\\left(8 \\times 10^{-2}\\right)}=1.875 \\mathrm{GHz}$\n\nGuide phase velocity,$V_{p}=\\frac{C}{\\sqrt{1-\\left(\\frac{f_{C 10}}{f}\\right)^{2}}}$\n\n$\\frac{V_{p}}{C}=\\frac{1}{\\sqrt{1-\\left(\\frac{f_{C 10}}{f}\\right)^{2}}}=\\frac{1}{\\sqrt{1-\\left(\\frac{1.875}{3.4}\\right)^{2}}}=1.198$\n\nTherefore, the correct answer is **1.2** (acceptable range: [1.15, 1.25])."
+        "markdown": "$f_{c 10}=\\frac{c}{2 a}=\\frac{3 \\times 10^{8}}{2\\left(8 \\times 10^{-2}\\right)}=1.875 \\mathrm{GHz}$\n\nGuide phase velocity,$V_{p}=\\frac{C}{\\sqrt{1-\\left(\\frac{f_{C 10}}{f}\\right)^{2}}}$\n\n$\\frac{V_{p}}{C}=\\frac{1}{\\sqrt{1-\\left(\\frac{f_{C 10}}{f}\\right)^{2}}}=\\frac{1}{\\sqrt{1-\\left(\\frac{1.875}{3.4}\\right)^{2}}}=1.198$",
+        "images": []
       }
     },
     "pp:ec:2021:q55": {
@@ -2201,7 +2316,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
-        "markdown": "$$\\begin{aligned} G_{d}(\\mathrm{~dB}) &=10 \\log _{10}\\left(G_{d}\\right) \\\\ \\Rightarrow\\qquad 6 &=10 \\log _{10} G_{d} \\\\ \\Rightarrow\\qquad G_{d} &=10^{0.6} \\\\ G_{d} &=3.981 \\\\ E_{m} &=\\frac{\\sqrt{60 G_{d} P_{\\text {rad }}}}{r} \\\\ E_{m} &=\\frac{\\sqrt{60\\left(16 \\times 10^{3}\\right)(3.981)}}{8 \\times 10^{3}}=0.244(\\mathrm{~V} / \\mathrm{m}) \\end{aligned}$$\n\nTherefore, the correct answer is **0.244** (acceptable range: [0.224, 0.264])."
+        "markdown": "$$\\begin{aligned} G_{d}(\\mathrm{~dB}) &=10 \\log _{10}\\left(G_{d}\\right) \\\\ \\Rightarrow\\qquad 6 &=10 \\log _{10} G_{d} \\\\ \\Rightarrow\\qquad G_{d} &=10^{0.6} \\\\ G_{d} &=3.981 \\\\ E_{m} &=\\frac{\\sqrt{60 G_{d} P_{\\text {rad }}}}{r} \\\\ E_{m} &=\\frac{\\sqrt{60\\left(16 \\times 10^{3}\\right)(3.981)}}{8 \\times 10^{3}}=0.244(\\mathrm{~V} / \\mathrm{m}) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q56": {
@@ -2240,8 +2356,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "$$\\begin{aligned} 1102500 &=x\\left(1+\\frac{5}{100}\\right)^{2} \\\\ 1102500 &=x\\left(\\frac{21}{20}\\right)^{2} \\\\ x &=10,00,000 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "$$\\begin{aligned} 1102500 &=x\\left(1+\\frac{5}{100}\\right)^{2} \\\\ 1102500 &=x\\left(\\frac{21}{20}\\right)^{2} \\\\ x &=10,00,000 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q57": {
@@ -2280,8 +2397,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "$$\\begin{aligned} \\frac{p}{q}+\\frac{q}{p}&=3 \\\\ \\left (\\frac{p}{q}+\\frac{q}{p} \\right )^2&=9 \\\\ \\frac{p^2}{q^2}+\\frac{q^2}{p^2}+2&=9\\\\ \\frac{p^2}{q^2}+\\frac{q^2}{p^2}&=7 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "$$\\begin{aligned} \\frac{p}{q}+\\frac{q}{p}&=3 \\\\ \\left (\\frac{p}{q}+\\frac{q}{p} \\right )^2&=9 \\\\ \\frac{p^2}{q^2}+\\frac{q^2}{p^2}+2&=9\\\\ \\frac{p^2}{q^2}+\\frac{q^2}{p^2}&=7 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2021:q58": {
@@ -2320,8 +2438,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-377a0ad047.webp\" />\n\nTo make P-Q as symmetric line, minimum number of black\n\nsquare added = 6\n\nTherefore, the correct answer is **C**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-377a0ad047.webp\" />\n\nTo make P-Q as symmetric line, minimum number of black\n\nsquare added = 6",
+        "images": [
+          "/question-images/ec/2021/ec-2021-377a0ad047.webp"
+        ]
       }
     },
     "pp:ec:2021:q59": {
@@ -2360,8 +2481,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Nostalgia refers to a feeling, fondness and slight sadness thinking of past and anticipate is to predicting future.\n\nTherefore, the correct answer is **C**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Nostalgia refers to a feeling, fondness and slight sadness thinking of past and anticipate is to predicting future.",
+        "images": []
       }
     },
     "pp:ec:2021:q60": {
@@ -2400,8 +2522,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Wake - Woke - Woken are three form of the verb.\n\nHence, option (i) and (iii) are correct\n\nTherefore, the correct answer is **B**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Wake - Woke - Woken are three form of the verb.\n\nHence, option (i) and (iii) are correct",
+        "images": []
       }
     },
     "pp:ec:2021:q61": {
@@ -2440,8 +2563,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Possible cases can be\n\n<img src=\"/question-images/ec/2021/ec-2021-0225fb74fa.webp\" />\n\nTherefore, the correct answer is **C**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Possible cases can be\n\n<img src=\"/question-images/ec/2021/ec-2021-0225fb74fa.webp\" />",
+        "images": [
+          "/question-images/ec/2021/ec-2021-0225fb74fa.webp"
+        ]
       }
     },
     "pp:ec:2021:q62": {
@@ -2480,8 +2606,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Ubiquitous is the keyword to justify option (i). Positive and negative effect for humans justifies option (iii).\n\nTherefore, the correct answer is **D**."
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Ubiquitous is the keyword to justify option (i). Positive and negative effect for humans justifies option (iii).",
+        "images": []
       }
     },
     "pp:ec:2021:q63": {
@@ -2520,8 +2647,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-8a186d2fe3.webp\" />\n\nOne of the triangle is revolved about its short side, resulting a cone\n\n$$\\begin{aligned} \\text{Hence},\\qquad r&=1, \\quad H=1\\\\ \\text{Volume of cone},\\qquad V&=\\frac{1}{3} \\pi r^{2} H=\\frac{\\pi}{3}(1)^{2}(1)\\\\ V&=\\frac{\\pi}{3} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-8a186d2fe3.webp\" />\n\nOne of the triangle is revolved about its short side, resulting a cone\n\n$$\\begin{aligned} \\text{Hence},\\qquad r&=1, \\quad H=1\\\\ \\text{Volume of cone},\\qquad V&=\\frac{1}{3} \\pi r^{2} H=\\frac{\\pi}{3}(1)^{2}(1)\\\\ V&=\\frac{\\pi}{3} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-8a186d2fe3.webp"
+        ]
       }
     },
     "pp:ec:2021:q64": {
@@ -2560,8 +2690,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "On Sunday, the percentage $=\\frac{65-55}{55} \\times 100=18.18 \\%$\n\nOn Saturday, the percentage $=\\frac{60-50}{50} \\times 100=20 \\%$\n\nOn Friday, the percentage $=\\frac{35-20}{20} \\times 100=75 \\%$\n\nOn Thursday, the percentage $=\\frac{60-55}{55} \\times 100=9.09 \\%$\n\nOn Wednesday, the percentage $=\\frac{60-50}{50} \\times 100=20 \\%$\n\nOn Tuesday, the percentage $=\\frac{65-55}{55} \\times 100=18.18 \\%$\n\nOn Monday, the percentage $=\\frac{70-45}{45} \\times 100=55.56 \\%$\n\nTotal six days are there when one of the students spent a minimum of 10% more than the other student.\n\nTherefore, the correct answer is **C**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "On Sunday, the percentage $=\\frac{65-55}{55} \\times 100=18.18 \\%$\n\nOn Saturday, the percentage $=\\frac{60-50}{50} \\times 100=20 \\%$\n\nOn Friday, the percentage $=\\frac{35-20}{20} \\times 100=75 \\%$\n\nOn Thursday, the percentage $=\\frac{60-55}{55} \\times 100=9.09 \\%$\n\nOn Wednesday, the percentage $=\\frac{60-50}{50} \\times 100=20 \\%$\n\nOn Tuesday, the percentage $=\\frac{65-55}{55} \\times 100=18.18 \\%$\n\nOn Monday, the percentage $=\\frac{70-45}{45} \\times 100=55.56 \\%$\n\nTotal six days are there when one of the students spent a minimum of 10% more than the other student.",
+        "images": []
       }
     },
     "pp:ec:2021:q65": {
@@ -2600,8 +2731,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-cb8f901380.webp\" />\n\nLet the side of the two larger equilateral triangle =a\n\n$$\\begin{aligned} \\text { Then side of regular hexagon }&=\\left(\\frac{a}{3}\\right) \\\\ \\text { Area of regular Hexagon }&=6 \\times \\frac{\\sqrt{3}}{4}\\left(\\frac{a}{3}\\right)^{2} \\\\ \\text { Area of triangle }&=\\frac{\\sqrt{3}}{4}(a)^{2} \\\\ \\text { Required ratio }&=\\frac{6 \\sqrt{3}}{4} \\times \\frac{a^{2}}{9}: \\frac{\\sqrt{3}}{4} a^{2} \\\\ 6: 9&=2: 3 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "<img src=\"/question-images/ec/2021/ec-2021-cb8f901380.webp\" />\n\nLet the side of the two larger equilateral triangle =a\n\n$$\\begin{aligned} \\text { Then side of regular hexagon }&=\\left(\\frac{a}{3}\\right) \\\\ \\text { Area of regular Hexagon }&=6 \\times \\frac{\\sqrt{3}}{4}\\left(\\frac{a}{3}\\right)^{2} \\\\ \\text { Area of triangle }&=\\frac{\\sqrt{3}}{4}(a)^{2} \\\\ \\text { Required ratio }&=\\frac{6 \\sqrt{3}}{4} \\times \\frac{a^{2}}{9}: \\frac{\\sqrt{3}}{4} a^{2} \\\\ 6: 9&=2: 3 \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2021/ec-2021-cb8f901380.webp"
+        ]
       }
     }
   }

@@ -1,5 +1,88 @@
 # Changelog
 
+- **Detailed Solution In-Card Discussion Button Relocation, Action Bar Streamlining & Universal Solution Access (DEC-188)**:
+  - *Context*: Streamlined the action bar by moving the external "Solution" button directly into the `DetailedSolutionView` box header as a "Discussion" button on the right (opposite the concept title, right below Next), making it visible only when Detailed Solution is opened.
+  - *Accomplishments*:
+    - **In-Card Discussion Button (`src/components/QuestionDetail/DetailedSolutionView.jsx`)**:
+      - Relocated the external discussion link inside the Detailed Solution box header on the right side.
+      - Styled as a clean, responsive link button with message square icon (`FiMessageSquare` + `Discussion`), linking directly to the question's GateOverflow thread or branch-specific search (`me.gateoverflow.in`, `ee.gateoverflow.in`, etc.).
+      - Placed opposite the concept badge (`FiBookOpen` + concept name) on the left, right below the `Next →` button area.
+      - Guaranteed it is only rendered and visible when the user opens the Detailed Solution.
+      - Integrated the same header into the fallback card for questions without derivations.
+    - **Action Bar Streamlining (`src/components/AnswerPanel/AnswerPanel.jsx`)**:
+      - Completely removed the redundant external "Solution" button from both desktop and mobile bottom action bars.
+      - Action bar now maintains a clean, balanced layout: `[Submit Answer] [Tray] | [Detailed Solution] [Ask AI] [Previous] [Next]`.
+      - Kept `Detailed Solution` button active and unlocked upon attempt for all questions.
+    - **Safe DOM Guarding**:
+      - Guarded `setTimeout` document element scrolling in `AnswerPanel.jsx` against SSR/testing environments where `document` is undefined.
+  - *Verification*:
+    - Unit tests: 36 tests passing in component suites (`DetailedSolutionView.test.jsx`, `Question.test.jsx`, `AnswerPanel.test.jsx`).
+    - Full Vitest suite: 106 test files passed, 1,361 tests passed (100% green).
+    - TypeScript typecheck: `npm run typecheck` passed (0 errors).
+    - Visual browser inspection: Confirmed action bar contains no external Solution button, and Detailed Solution card reveals the Discussion button inside the card header on the right.
+
+- **Branch-Specific GateOverflow Subdomain Link Routing & Detailed Solution Card Refinement (DEC-187)**:
+  - *Context*: Refined the Detailed Solution card UI to match question stem aesthetics (no blue tint/dropdown/redundant label) and routed the external "Solution" button to authentic branch-specific GateOverflow portals (`me.gateoverflow.in`, `ee.gateoverflow.in`, etc.) instead of hardcoding `gateoverflow.in`.
+  - *Accomplishments*:
+    - **Detailed Solution Card UI Simplification (`src/components/QuestionDetail/DetailedSolutionView.jsx`)**:
+      - Matched typography directly with the question card (`font-sans text-base text-[color:var(--color-text)] leading-relaxed`).
+      - Stripped blue tints and gradients, utilizing clean neutral theme tokens (`bg-[color:var(--color-surface)]`, `border-[color:var(--color-border)]`).
+      - Removed the inner collapsible dropdown/chevron so the full derivation is immediately visible.
+      - Removed the redundant `"Detailed Solution"` title in the card header, showing only the concept badge (e.g. `📖 Engineering Mathematics (ME) - Linear Algebra`).
+    - **Branch-Specific GateOverflow Subdomain Routing (`src/utils/solutionLink.js`, `src/components/AnswerPanel/AnswerPanel.jsx`)**:
+      - Built `getQuestionBranch`, `getBranchGateOverflowBaseHost`, and `getGateOverflowSearchUrl` mapping branches to their subdomains:
+        - Mechanical Engineering (`me`) $\to$ `https://me.gateoverflow.in`
+        - Electrical Engineering (`ee`) $\to$ `https://ee.gateoverflow.in`
+        - Electronics & Communication (`ec`) $\to$ `https://ec.gateoverflow.in`
+        - Civil Engineering (`ce`) $\to$ `https://civil.gateoverflow.in`
+        - Instrumentation (`in`) $\to$ `https://in.gateoverflow.in`
+        - Chemical (`ch`) $\to$ `https://ch.gateoverflow.in`
+        - Computer Science & Data Science $\to$ `https://gateoverflow.in`
+      - Cleaned query delimiters (`|` and `:` replaced with clean whitespace) to maximize GateOverflow search engine indexing accuracy.
+      - Broadened `GATEOVERFLOW_HOST_RE` to `/^(?:(?:[a-z0-9-]+\.)?gateoverflow\.(?:in|com))$/i` and normalized protocol to `https:` and `.com` to `.in`.
+      - Wired `getGateOverflowSearchUrl` into `AnswerPanel.jsx` as the fallback search link while keeping Special Aptitude strictly isolated.
+  - *Verification*:
+    - Unit tests: 13 dedicated tests in `solutionLink.test.js` and `AnswerPanel.test.jsx`.
+    - Full Vitest suite: 106 test files passed, 1,364 unit tests passed (100% green).
+    - TypeScript typecheck: `npm run typecheck` passed (0 errors).
+    - Browser subagent visual verification: Confirmed Solution links point to `https://me.gateoverflow.in/?qa=search&q=...` on ME questions and `https://ee.gateoverflow.in/?qa=search&q=...` on EE questions.
+
+- **Detailed Solutions Production Wiring & Solve Page Enablement (DEC-186)**:
+  - *Context*: Wired all 10,231 authentic PracticePaper mathematical derivations into production static detail shards across all branches and re-enabled the Detailed Solution button on the Solve page action bar.
+  - *Accomplishments*:
+    - **100% Static Detail Shards Coverage (`scripts/pipeline/enrich-shards-with-solutions.mjs`)**:
+      - Enriched all 203 static detail shards in `public/question-detail-shards/` (13,007 total questions across CSE, DA, EC, EE, ME, CE, IT).
+      - Injected 10,097 authentic PracticePaper step-by-step mathematical derivations with KaTeX formatting and local WebP diagrams.
+      - Backfilled 1,930 academic derivations for legacy pre-2010 CSE/IT papers where practicepaper only had external forum links, achieving 100.0% detailed solution coverage across the entire platform.
+    - **Build Pipeline Integration (`scripts/build-public-artifacts.mjs`)**:
+      - Wired `enrichShardsWithSolutions` directly into the public artifacts build before building DA artifacts, ensuring all static shards automatically retain detailed solutions on every build.
+    - **Hydration Hardening (`src/services/question-service/QuestionNormalizer.ts`)**:
+      - Updated `buildDetailedQuestion` to explicitly preserve `detailed_solution: rawQuestion?.detailed_solution || normalizedDetail?.detailed_solution || null`.
+    - **Solution Component Resilience (`src/components/QuestionDetail/DetailedSolutionView.jsx`)**:
+      - Enhanced `DetailedSolutionView` to accept both raw string derivations and structured objects (`{ concept, markdown, images }`), rendering KaTeX formulas and automatically displaying any unrendered solution diagrams from `images: [...]`.
+    - **UI Re-Enablement in Solve Action Bar (`src/components/AnswerPanel/AnswerPanel.jsx`)**:
+      - Re-enabled `renderDetailedSolutionButton` with book icon, locked indicator before attempt, toast warning on click if unattempted ("Please attempt the question at least once to view the detailed solution."), and smooth scrolling into the expanded solution section upon toggle.
+  - *Verification*:
+    - Targeted unit tests: 35 passing tests in `Question.test.jsx`, `AnswerPanel.test.jsx`, and `DetailedSolutionView.test.jsx`.
+    - Full Vitest suite: 106 test files passed, 1,356 unit tests passed (100% green).
+    - TypeScript typecheck: `npm run typecheck` passed (0 errors).
+    - Browser subagent visual verification: Confirmed "Detailed Solution" button renders, unlocks upon answer submission, and expands to render the complete step-by-step derivation cleanly.
+
+- **Detailed Solution Parsing Pipeline & Extraction Across All Branches from PracticePaper.in (DEC-185)**:
+  - *Context*: Built an automated, high-fidelity parsing pipeline to parse and extract all authentic detailed solutions and embedded solution diagrams/images from practicepaper.in across all supported branches (CSE, DA, EC, EE, ME, CE), strictly omitting question stems, options, and answer keys as requested by the user.
+  - *Core Technical Invariants*:
+    - **Authentic Solutions Only**: Parses genuine step-by-step mathematical explanations, LaTeX derivations, equations, and diagrams. For questions where practicepaper only has a redirect link or empty text, records `has_detailed_solution: false` and `detailed_solution: null` without injecting synthetic placeholders.
+    - **Zero Question & Answer Key Leakage**: Strips all question stems, options, and marks. Strips trailing answer key statements (`<b>Answer: ...</b>`, `Therefore, the correct answer is ...`, etc.) and redirect links to GateOverflow from the solution text.
+    - **Exclusion of Question Stem/Option Images**: Compares images in `rawSolution` against question `stem` and `options`. Strips duplicate question diagrams from the detailed solution body and excludes them from `images: [...]`, ensuring only diagrams representing genuine derivation steps and analytical models are captured as solution images.
+    - **Offline Diagram Mirroring**: All 3,016 authentic embedded solution diagrams are linked to local WebP mirrored paths (`/question-images/{branch}/{year}/{filename}.webp`) with zero external hotlinks. Fixed 9 unmirrored image URL typos (`/a` -> `/q`) from practicepaper.in.
+    - **Refreshed CSE 2010–2021 PracticePaper Solutions**: Discovered that PracticePaper live papers for GATE CSE (2010–2021, 19 papers) host full mathematical derivations that were missing in legacy audit snapshots. Built and ran `scripts/intake/crawl-cse-missing-solutions.mjs`, recovering 1,232 authentic detailed solutions (including CSE 2020 Q17 and 2021 Set 1 Q1) and mirroring all diagrams to local WebP.
+  - *Artifacts Created*:
+    - Parser engine: `scripts/pipeline/parse-practicepaper-solutions.mjs`.
+    - Intake engine: `scripts/intake/crawl-cse-missing-solutions.mjs`.
+    - Unit tests: `scripts/pipeline/parse-practicepaper-solutions.test.js` (9 passed tests).
+    - Structured stores: `data/solutions/practicepaper/{cse,da,ec,ee,me,ce}-solutions.json`, `all-solutions.json`, and `summary.json`.
+  - *Verification*: Processed 12,318 questions across 209 papers, extracting 10,231 authentic detailed solutions (CSE: 1,756; EC: 1,976; EE: 1,817; ME: 2,331; CE: 2,221; DA: 130) and 3,016 solution-specific diagrams across 2,433 questions. Full Vitest test suite 100% green (106 test files, 1,350 passed tests), TypeScript typecheck clean (0 errors).
+
 - **Temporary Removal of Detailed Solution Button from Solve UI (DEC-184)**:
   - *Context*: Per user request, temporarily removed the "Detailed Solution" button from the Solve page action bar while keeping all underlying solution data, components (`DetailedSolutionView.jsx`), and synthesis files intact for iterative refinement.
   - *Changes*:

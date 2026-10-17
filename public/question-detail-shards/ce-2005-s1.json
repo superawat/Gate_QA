@@ -49,8 +49,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "With the given order we can say that order of matrices are as follows:\n\n$$\\begin{aligned}   X^{T} &\\rightarrow 3\\times 4 \\\\     Y & \\rightarrow 4\\times 3 \\\\   X^{T}Y & \\rightarrow 3\\times 3 \\\\   \\left ( X^{T}Y \\right )^{-1} & \\rightarrow 3\\times 3 \\\\     P & \\rightarrow 2\\times 3 \\\\    P^{T} & \\rightarrow 3\\times 2 \\\\   P\\left ( X^{T}Y \\right )^{-1}P^{T} & \\rightarrow \\left ( 2\\times 3 \\right )\\left ( 3\\times 3 \\right )\\left ( 3\\times 2 \\right ) \\\\     & \\rightarrow 2\\times 2 \\\\ \\therefore\\;\\; \\left ( P\\left ( X^{T}Y \\right )^{-1}P^{T} \\right )^{T} & \\rightarrow 2\\times 2 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "markdown": "With the given order we can say that order of matrices are as follows:\n\n$$\\begin{aligned}   X^{T} &\\rightarrow 3\\times 4 \\\\     Y & \\rightarrow 4\\times 3 \\\\   X^{T}Y & \\rightarrow 3\\times 3 \\\\   \\left ( X^{T}Y \\right )^{-1} & \\rightarrow 3\\times 3 \\\\     P & \\rightarrow 2\\times 3 \\\\    P^{T} & \\rightarrow 3\\times 2 \\\\   P\\left ( X^{T}Y \\right )^{-1}P^{T} & \\rightarrow \\left ( 2\\times 3 \\right )\\left ( 3\\times 3 \\right )\\left ( 3\\times 2 \\right ) \\\\     & \\rightarrow 2\\times 2 \\\\ \\therefore\\;\\; \\left ( P\\left ( X^{T}Y \\right )^{-1}P^{T} \\right )^{T} & \\rightarrow 2\\times 2 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q2": {
@@ -93,8 +94,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "In an over determined system having more equations than variables, it is necessary to have consistent unique solution, by definition.\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "markdown": "In an over determined system having more equations than variables, it is necessary to have consistent unique solution, by definition.",
+        "images": []
       }
     },
     "pp:ce:2005:q3": {
@@ -137,8 +139,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "(A) is true since\n\n$\\frac{Z_{1}}{Z_{2}}=\\frac{Z_{1}\\bar{Z_{2}}}{Z_{2}\\bar{Z_{2}}}=\\frac{Z_{1}\\bar{Z_{2}}}{\\left | Z_{2} \\right |^{2}}$\n\n(B) is true by triangle inequality of complex number.\n\n(C) is not true since $\\left | Z_{1}-Z_{2} \\right |\\geq \\left | Z_{1} \\right |-\\left | Z_{2} \\right |$\n\n(D) is true since\n\n$$\\begin{aligned}\\left | Z_{1}+Z_{2} \\right |^{2}&=\\left ( Z_{1}+Z_{2} \\right )\\left ( \\overline{Z_{1}+Z_{2}} \\right ) \\\\   &=\\left ( Z_{1}+Z_{2} \\right )\\left ( \\bar{Z_{1}}+\\bar{Z_{2}} \\right ) \\\\   &=Z_{1}\\bar{Z_{1}}+Z_{2}\\bar{Z_{2}}+Z_{2}\\bar{Z_{1}}+Z_{1}\\bar{Z_{2}} \\;\\;...(i)\\\\ \\left | Z_{1}-Z_{2} \\right |^{2}&=\\left ( Z_{1}+Z_{2} \\right )\\left ( \\overline{Z_{1}-Z_{2}} \\right ) \\\\   &=\\left ( Z_{1}-Z_{2} \\right )\\left ( \\bar{Z_{1}}-\\bar{Z_{2}} \\right ) \\\\   &=Z_{1}\\bar{Z_{1}}+Z_{2}\\bar{Z_{2}}-Z_{2}\\bar{Z_{1}}-Z_{1}\\bar{Z_{2}}\\;\\;...(ii)\\end{aligned}$$\n\nAdding (i) and (ii) we get,\n\n$\\left | Z_{1}+Z_{2} \\right |^{2}+\\left | Z_{1}-Z_{2} \\right |^{2}=2Z_{1}\\bar{Z_{2}}+2Z_{2}\\bar{Z_{2}} =2\\left | Z_{1} \\right |^{2}+2\\left | Z_{2} \\right |^{2}$\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (CE) - Calculus",
+        "markdown": "(A) is true since\n\n$\\frac{Z_{1}}{Z_{2}}=\\frac{Z_{1}\\bar{Z_{2}}}{Z_{2}\\bar{Z_{2}}}=\\frac{Z_{1}\\bar{Z_{2}}}{\\left | Z_{2} \\right |^{2}}$\n\n(B) is true by triangle inequality of complex number.\n\n(C) is not true since $\\left | Z_{1}-Z_{2} \\right |\\geq \\left | Z_{1} \\right |-\\left | Z_{2} \\right |$\n\n(D) is true since\n\n$$\\begin{aligned}\\left | Z_{1}+Z_{2} \\right |^{2}&=\\left ( Z_{1}+Z_{2} \\right )\\left ( \\overline{Z_{1}+Z_{2}} \\right ) \\\\   &=\\left ( Z_{1}+Z_{2} \\right )\\left ( \\bar{Z_{1}}+\\bar{Z_{2}} \\right ) \\\\   &=Z_{1}\\bar{Z_{1}}+Z_{2}\\bar{Z_{2}}+Z_{2}\\bar{Z_{1}}+Z_{1}\\bar{Z_{2}} \\;\\;...(i)\\\\ \\left | Z_{1}-Z_{2} \\right |^{2}&=\\left ( Z_{1}+Z_{2} \\right )\\left ( \\overline{Z_{1}-Z_{2}} \\right ) \\\\   &=\\left ( Z_{1}-Z_{2} \\right )\\left ( \\bar{Z_{1}}-\\bar{Z_{2}} \\right ) \\\\   &=Z_{1}\\bar{Z_{1}}+Z_{2}\\bar{Z_{2}}-Z_{2}\\bar{Z_{1}}-Z_{1}\\bar{Z_{2}}\\;\\;...(ii)\\end{aligned}$$\n\nAdding (i) and (ii) we get,\n\n$\\left | Z_{1}+Z_{2} \\right |^{2}+\\left | Z_{1}-Z_{2} \\right |^{2}=2Z_{1}\\bar{Z_{2}}+2Z_{2}\\bar{Z_{2}} =2\\left | Z_{1} \\right |^{2}+2\\left | Z_{2} \\right |^{2}$",
+        "images": []
       }
     },
     "pp:ce:2005:q4": {
@@ -181,8 +184,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "A, B, C are true\n\n(D) is not true since in a negatively skewed distribution, mode $\\gt$ median $\\gt$ mean\n\nTherefore, the correct answer is **D**."
+        "concept": "Engineering Mathematics (CE) - Probability and Statistics",
+        "markdown": "A, B, C are true\n\n(D) is not true since in a negatively skewed distribution, mode $\\gt$ median $\\gt$ mean",
+        "images": []
       }
     },
     "pp:ce:2005:q5": {
@@ -224,10 +228,7 @@
           "prestressed-concrete-beams"
         ]
       },
-      "detailed_solution": {
-        "concept": "RCC Structures - Prestressed Concrete Beams",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **RCC Structures** (specifically *Prestressed Concrete Beams*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Prestressed Concrete Beams**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *30 MPa, 40 MPa respectively*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (30 MPa, 40 MPa respectively)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q6": {
       "question_uid": "pp:ce:2005:q6",
@@ -268,10 +269,7 @@
           "tension-member"
         ]
       },
-      "detailed_solution": {
-        "concept": "Design of Steel Structures - Tension Member",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Design of Steel Structures** (specifically *Tension Member*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Tension Member**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *0.60 $f_{y}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (0.60 $f_{y}$)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q7": {
       "question_uid": "pp:ce:2005:q7",
@@ -312,10 +310,7 @@
           "working-stress-and-limit-state-method"
         ]
       },
-      "detailed_solution": {
-        "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **RCC Structures** (specifically *Working Stress and Limit State Method*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Working Stress and Limit State Method**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *1.5*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (1.5)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q8": {
       "question_uid": "pp:ce:2005:q8",
@@ -358,7 +353,10 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-6d79a0c519.webp\" />\n\nTaking moment equilibrium about the centre, we get\n\n$$\\begin{aligned} \\tau_{y x} \\times \\frac{d}{2}+\\tau_{y x} \\times \\frac{d}{2}&=\\tau_{x y} \\times \\frac{d}{2}+\\tau_{x y} \\times \\frac{d}{2} \\\\ \\therefore \\quad \\tau_{x y}&=\\tau_{y x} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-6d79a0c519.webp\" />\n\nTaking moment equilibrium about the centre, we get\n\n$$\\begin{aligned} \\tau_{y x} \\times \\frac{d}{2}+\\tau_{y x} \\times \\frac{d}{2}&=\\tau_{x y} \\times \\frac{d}{2}+\\tau_{x y} \\times \\frac{d}{2} \\\\ \\therefore \\quad \\tau_{x y}&=\\tau_{y x} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2005/ce-2005-6d79a0c519.webp"
+        ]
       }
     },
     "pp:ce:2005:q9": {
@@ -402,7 +400,8 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "In case of plane strain condition, the components\n\nof strain tensor at a point are $\\epsilon_{x}, \\in_{y} \\text{ and }\\phi_{x y} .$\n\nHere we have three unknowns so we require 3\n\nequations to find them and these unknowns can\n\nbe find by the equations of longitudinal strain,\n\n$\\epsilon_{1}=\\epsilon_{x} \\cos ^{2} \\theta_{1}+\\epsilon_{y} \\sin ^{2} \\theta_{1}+\\frac{\\phi_{x y}}{2} \\sin 2 \\theta_{1}$\n\n$\\epsilon_{2}=\\epsilon_{x} \\cos ^{2} \\theta_{2}+\\epsilon_{y} \\sin ^{2} \\theta_{2}+\\frac{\\phi_{x y}}{2} \\sin 2 \\theta_{2}$\n\n$\\epsilon_{3}=\\epsilon_{x} \\cos ^{2} \\theta_{3}+\\epsilon_{y} \\sin ^{2} \\theta_{3}+\\frac{\\phi_{x y}}{2} \\sin 2 \\theta_{3}$\n\nTherefore to find out component of strain tensor in\n\nplain strain condition, we measure longitudinal\n\nstrains $\\left(\\epsilon_{1}, \\epsilon_{2}\\text{ and }\\epsilon_{3}\\right)$ along any three arbitrary direction.\n\nTherefore, the correct answer is **B**."
+        "markdown": "In case of plane strain condition, the components\n\nof strain tensor at a point are $\\epsilon_{x}, \\in_{y} \\text{ and }\\phi_{x y} .$\n\nHere we have three unknowns so we require 3\n\nequations to find them and these unknowns can\n\nbe find by the equations of longitudinal strain,\n\n$\\epsilon_{1}=\\epsilon_{x} \\cos ^{2} \\theta_{1}+\\epsilon_{y} \\sin ^{2} \\theta_{1}+\\frac{\\phi_{x y}}{2} \\sin 2 \\theta_{1}$\n\n$\\epsilon_{2}=\\epsilon_{x} \\cos ^{2} \\theta_{2}+\\epsilon_{y} \\sin ^{2} \\theta_{2}+\\frac{\\phi_{x y}}{2} \\sin 2 \\theta_{2}$\n\n$\\epsilon_{3}=\\epsilon_{x} \\cos ^{2} \\theta_{3}+\\epsilon_{y} \\sin ^{2} \\theta_{3}+\\frac{\\phi_{x y}}{2} \\sin 2 \\theta_{3}$\n\nTherefore to find out component of strain tensor in\n\nplain strain condition, we measure longitudinal\n\nstrains $\\left(\\epsilon_{1}, \\epsilon_{2}\\text{ and }\\epsilon_{3}\\right)$ along any three arbitrary direction.",
+        "images": []
       }
     },
     "pp:ce:2005:q10": {
@@ -446,7 +445,8 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Determinacy and Indeterminacy",
-        "markdown": "Degree of kinematic indeterminacy or degree of freedom,\n\n$$\\begin{aligned} D_{k} &=3 j-r_{e}-m \\\\ &=3 \\times 4-3-1 \\\\ &=8 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Degree of kinematic indeterminacy or degree of freedom,\n\n$$\\begin{aligned} D_{k} &=3 j-r_{e}-m \\\\ &=3 \\times 4-3-1 \\\\ &=8 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q11": {
@@ -490,7 +490,8 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Matrix Method of Structural Analysis",
-        "markdown": "Stiffness matrix and deflection are related as,\n\n$P=K \\delta$\n\nThus, when stiffness matrix is doubled, then deflection will reduce to half of the existing value.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Stiffness matrix and deflection are related as,\n\n$P=K \\delta$\n\nThus, when stiffness matrix is doubled, then deflection will reduce to half of the existing value.",
+        "images": []
       }
     },
     "pp:ce:2005:q12": {
@@ -532,10 +533,7 @@
           "compaction-of-soil"
         ]
       },
-      "detailed_solution": {
-        "concept": "Geotechnical Engineering - Compaction of Soil",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Geotechnical Engineering** (specifically *Compaction of Soil*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Compaction of Soil**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Both the dry density and water content of the compacted soil are within the desirable limits*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Both the dry density and water content of the compacted soil are within the desirable limits)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q13": {
       "question_uid": "pp:ce:2005:q13",
@@ -576,10 +574,7 @@
           "consolidation-of-soils"
         ]
       },
-      "detailed_solution": {
-        "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Geotechnical Engineering** (specifically *Consolidation of Soils*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Consolidation of Soils**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$c_{v}$, coefficient of consolidation*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($c_{v}$, coefficient of consolidation)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q14": {
       "question_uid": "pp:ce:2005:q14",
@@ -622,7 +617,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
-        "markdown": "Negative skin friction is experienced when the soil around the pile settles at a faster rate than pile. Thus, piles installed in freshly prepared fills of soft compressive deposits are subject to a downward drag. This downward drag on the pile surface, where the soil moves down relative to the pile, adds to the structural loads and is called negative skin friction.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Negative skin friction is experienced when the soil around the pile settles at a faster rate than pile. Thus, piles installed in freshly prepared fills of soft compressive deposits are subject to a downward drag. This downward drag on the pile surface, where the soil moves down relative to the pile, adds to the structural loads and is called negative skin friction.",
+        "images": []
       }
     },
     "pp:ce:2005:q15": {
@@ -666,7 +662,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "L/b for square footing =1.0\n\nL/b for strip footing $\\rightarrow \\infty$\n\nThe stress along the centre line, $\\sigma_{z}=q I$\n\nwhere I is called influence value\n\n$\\therefore \\mathrm{I}_{\\text {strip }}>\\mathrm{I}_{\\text {square }}$\n\nTherefore, the pressure intensity at any depth\n\nbelow the base of the footing along the centre line\n\nwould be large for strip footing and small for square\n\nfooting.\n\nTherefore, the correct answer is **C**."
+        "markdown": "L/b for square footing =1.0\n\nL/b for strip footing $\\rightarrow \\infty$\n\nThe stress along the centre line, $\\sigma_{z}=q I$\n\nwhere I is called influence value\n\n$\\therefore \\mathrm{I}_{\\text {strip }}>\\mathrm{I}_{\\text {square }}$\n\nTherefore, the pressure intensity at any depth\n\nbelow the base of the footing along the centre line\n\nwould be large for strip footing and small for square\n\nfooting.",
+        "images": []
       }
     },
     "pp:ce:2005:q16": {
@@ -710,7 +707,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
-        "markdown": "Streamline: A stream line is an imaginary curve that is every where tangent to the instantaneous\n\nlocal velocity vector.\n\nPathline: Actual path travelled by any individual fluid partial over a time period is called pathline\n\nStreamtube: It is formed by the group of\n\nstreamlines\n\nStreakline: It is locus of all fluid particles passing through a fixed point at a particular time.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Streamline: A stream line is an imaginary curve that is every where tangent to the instantaneous\n\nlocal velocity vector.\n\nPathline: Actual path travelled by any individual fluid partial over a time period is called pathline\n\nStreamtube: It is formed by the group of\n\nstreamlines\n\nStreakline: It is locus of all fluid particles passing through a fixed point at a particular time.",
+        "images": []
       }
     },
     "pp:ce:2005:q17": {
@@ -754,7 +752,10 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-6a4850d2b1.webp\" />\n\nWhen a flow profile change from subcritical to\n\nsupercritical flow, critical depth act as a control\n\npoint.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-6a4850d2b1.webp\" />\n\nWhen a flow profile change from subcritical to\n\nsupercritical flow, critical depth act as a control\n\npoint.",
+        "images": [
+          "/question-images/ce/2005/ce-2005-6a4850d2b1.webp"
+        ]
       }
     },
     "pp:ce:2005:q18": {
@@ -798,7 +799,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Dynamics and Flow Measurements",
-        "markdown": "The manomeler reading of a venturimeter does not depend upon the inclination of venturimeter\n\nwith the horizontal\n\nTherefore, the correct answer is **C**."
+        "markdown": "The manomeler reading of a venturimeter does not depend upon the inclination of venturimeter\n\nwith the horizontal",
+        "images": []
       }
     },
     "pp:ce:2005:q19": {
@@ -842,7 +844,8 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
-        "markdown": "Maximum intensity $=\\frac{2.2\\times 10+1.5\\times 10}{10+10}=1.85 mm/minute$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Maximum intensity $=\\frac{2.2\\times 10+1.5\\times 10}{10+10}=1.85 mm/minute$",
+        "images": []
       }
     },
     "pp:ce:2005:q20": {
@@ -886,7 +889,8 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Flood Routing and Flood Control",
-        "markdown": "When outflow from a reservoir is uncontrolled as in freely operating spillway, then the peak of outflow hydrograph will occur at a point of intersection of inflow and outflow curves, whereas if outflow from a reservoir is controlled then peak will occur after the intersection of the curve.\n\nTherefore, the correct answer is **B**."
+        "markdown": "When outflow from a reservoir is uncontrolled as in freely operating spillway, then the peak of outflow hydrograph will occur at a point of intersection of inflow and outflow curves, whereas if outflow from a reservoir is controlled then peak will occur after the intersection of the curve.",
+        "images": []
       }
     },
     "pp:ce:2005:q21": {
@@ -928,10 +932,7 @@
           "design-of-stable-channels"
         ]
       },
-      "detailed_solution": {
-        "concept": "Irrigation Engineering - Design of Stable Channels",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Irrigation Engineering** (specifically *Design of Stable Channels*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Design of Stable Channels**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Upper Bari Doab canals*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Upper Bari Doab canals)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q22": {
       "question_uid": "pp:ce:2005:q22",
@@ -974,7 +975,8 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Theories of Seepage, Spillways and Miscellaneous",
-        "markdown": "For a spillway having a vertical u/s face, the d/s crest is given by the equation,\n\n$$\\begin{aligned} x^{1.85}&=-2 H_{d}^{0.85} \\times y\\\\ \\Rightarrow \\quad x^{1.85}&=-2 H_{d}^{0.85} y \\times \\frac{H_{d}}{H_{d}} \\\\ \\Rightarrow \\quad x^{1.85}&=-2 \\frac{H_{d}^{1.85} y}{H_{d}} \\\\ \\Rightarrow \\quad \\frac{x^{1.85}}{-2 H_{d}^{1.85}}&=\\frac{y}{H_{d}} \\\\ \\Rightarrow \\quad \\frac{y}{H_{d}}&=-0.5\\left(\\frac{\\dot{x}}{H_{d}}\\right)^{1.85} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For a spillway having a vertical u/s face, the d/s crest is given by the equation,\n\n$$\\begin{aligned} x^{1.85}&=-2 H_{d}^{0.85} \\times y\\\\ \\Rightarrow \\quad x^{1.85}&=-2 H_{d}^{0.85} y \\times \\frac{H_{d}}{H_{d}} \\\\ \\Rightarrow \\quad x^{1.85}&=-2 \\frac{H_{d}^{1.85} y}{H_{d}} \\\\ \\Rightarrow \\quad \\frac{x^{1.85}}{-2 H_{d}^{1.85}}&=\\frac{y}{H_{d}} \\\\ \\Rightarrow \\quad \\frac{y}{H_{d}}&=-0.5\\left(\\frac{\\dot{x}}{H_{d}}\\right)^{1.85} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q23": {
@@ -1018,7 +1020,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "Nitrification $$\\left\\{\\begin{array}{ll}\\text { Nitrosomonas Bacteria } & : \\mathrm{NH}_{3} \\text { to } \\mathrm{NO}_{2}^{-} \\\\ \\text {Nitrobacter Bacteria } & : \\mathrm{NO}_{2}^{-} \\text {to } \\mathrm{NO}_{3}^{-}\\end{array}\\right.$$\n\nDenitrification { Paracoccus Denitrificant : $\\mathrm{NO}_{3}^{-} to \\mathrm{N}_{2}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Nitrification $$\\left\\{\\begin{array}{ll}\\text { Nitrosomonas Bacteria } & : \\mathrm{NH}_{3} \\text { to } \\mathrm{NO}_{2}^{-} \\\\ \\text {Nitrobacter Bacteria } & : \\mathrm{NO}_{2}^{-} \\text {to } \\mathrm{NO}_{3}^{-}\\end{array}\\right.$$\n\nDenitrification { Paracoccus Denitrificant : $\\mathrm{NO}_{3}^{-} to \\mathrm{N}_{2}$",
+        "images": []
       }
     },
     "pp:ce:2005:q24": {
@@ -1062,7 +1065,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "The sum total of organic nitrogen and ammonia nitrogen is called Kjeldahl nitrogen.\n\nTherefore, the correct answer is **B**."
+        "markdown": "The sum total of organic nitrogen and ammonia nitrogen is called Kjeldahl nitrogen.",
+        "images": []
       }
     },
     "pp:ce:2005:q25": {
@@ -1106,7 +1110,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
-        "markdown": "1TCU is the colour produced by 1mg of platinum.\n\ncobalt in the form of chloroplatinate ions dissolved\n\nin 1 litre of distilled water.\n\nTherefore, the correct answer is **C**."
+        "markdown": "1TCU is the colour produced by 1mg of platinum.\n\ncobalt in the form of chloroplatinate ions dissolved\n\nin 1 litre of distilled water.",
+        "images": []
       }
     },
     "pp:ce:2005:q26": {
@@ -1148,10 +1153,7 @@
           "treatment-of-waste-water"
         ]
       },
-      "detailed_solution": {
-        "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Environmental Engineering** (specifically *Treatment of Waste Water*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Treatment of Waste Water**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *F/M$\\lt$0.3/d*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (F/M$\\lt$0.3/d)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q27": {
       "question_uid": "pp:ce:2005:q27",
@@ -1192,10 +1194,7 @@
           "geometric-design-of-highway-and-planning"
         ]
       },
-      "detailed_solution": {
-        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Geometric Design of Highway and Planning*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Geometric Design of Highway and Planning**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *2007*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (2007)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q28": {
       "question_uid": "pp:ce:2005:q28",
@@ -1236,10 +1235,7 @@
           "highway-materials"
         ]
       },
-      "detailed_solution": {
-        "concept": "Transportation Engineering - Highway Materials",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Highway Materials*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Highway Materials**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *P-2 Q-1 R-3*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (P-2 Q-1 R-3)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q29": {
       "question_uid": "pp:ce:2005:q29",
@@ -1282,7 +1278,8 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "Length of summit curve depends upon:\n\n(i) SSD for single lane two way highway\n\n(ii) OSD for two lane two way highway\n\nTherefore, the correct answer is **D**."
+        "markdown": "Length of summit curve depends upon:\n\n(i) SSD for single lane two way highway\n\n(ii) OSD for two lane two way highway",
+        "images": []
       }
     },
     "pp:ce:2005:q30": {
@@ -1324,10 +1321,7 @@
           "highway-materials"
         ]
       },
-      "detailed_solution": {
-        "concept": "Transportation Engineering - Highway Materials",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Highway Materials*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Highway Materials**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *coarse aggregate, fine aggregate, filler and bitumen*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (coarse aggregate, fine aggregate, filler and bitumen)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q31": {
       "question_uid": "pp:ce:2005:q31",
@@ -1369,8 +1363,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "If $A^{T}=A^{-1}$ i.e. A is orthogonal, we can only say that if $\\lambda$ is an eigen value of A then $1/\\lambda$ also will be an eigen value of A, which does not necessarily imply that,\n\n$\\left | \\lambda _{1} \\right |=1$ for all i.\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "markdown": "If $A^{T}=A^{-1}$ i.e. A is orthogonal, we can only say that if $\\lambda$ is an eigen value of A then $1/\\lambda$ also will be an eigen value of A, which does not necessarily imply that,\n\n$\\left | \\lambda _{1} \\right |=1$ for all i.",
+        "images": []
       }
     },
     "pp:ce:2005:q32": {
@@ -1413,8 +1408,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "Given,\n\n$$\\begin{aligned}\\frac{dy}{dt}+p\\left ( t \\right )y&=q\\left ( t \\right )y^{n};\\, n\\gt 0\\\\ \\text{putting }  v&=y^{1-n} \\\\    \\frac{dv}{dt}&=\\left ( 1-n \\right )y^{-n}\\frac{dy}{dt} \\\\    \\frac{dy}{dt}&=\\frac{1}{\\left ( 1-n \\right )y^{-n}}\\frac{dv}{dt}\\end{aligned}$$\n\nSubstituting in the given differential equation, we get,\n\n$\\frac{1}{\\left ( 1-n \\right )y^{-n}}\\frac{dy}{dt}+p\\left ( t \\right )y=q\\left ( t \\right )y^{n}$\n\nMultiplying by $\\left ( 1-n \\right )y^{-n}$, we get,\n\n$\\frac{dv}{dt}+p\\left ( t \\right )\\left ( 1-n \\right )y^{1-n}=q\\left ( t \\right )\\left ( 1-n \\right )$\n\nnow since $y^{1-n}=v$, we get\n\n$\\frac{dv}{dt}+\\left ( 1-n \\right )pv=\\left ( 1-n \\right )q$\n\nwhere p is p(t) and q is q(t).\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (CE) - Ordinary Differential Equation ",
+        "markdown": "Given,\n\n$$\\begin{aligned}\\frac{dy}{dt}+p\\left ( t \\right )y&=q\\left ( t \\right )y^{n};\\, n\\gt 0\\\\ \\text{putting }  v&=y^{1-n} \\\\    \\frac{dv}{dt}&=\\left ( 1-n \\right )y^{-n}\\frac{dy}{dt} \\\\    \\frac{dy}{dt}&=\\frac{1}{\\left ( 1-n \\right )y^{-n}}\\frac{dv}{dt}\\end{aligned}$$\n\nSubstituting in the given differential equation, we get,\n\n$\\frac{1}{\\left ( 1-n \\right )y^{-n}}\\frac{dy}{dt}+p\\left ( t \\right )y=q\\left ( t \\right )y^{n}$\n\nMultiplying by $\\left ( 1-n \\right )y^{-n}$, we get,\n\n$\\frac{dv}{dt}+p\\left ( t \\right )\\left ( 1-n \\right )y^{1-n}=q\\left ( t \\right )\\left ( 1-n \\right )$\n\nnow since $y^{1-n}=v$, we get\n\n$\\frac{dv}{dt}+\\left ( 1-n \\right )pv=\\left ( 1-n \\right )q$\n\nwhere p is p(t) and q is q(t).",
+        "images": []
       }
     },
     "pp:ce:2005:q33": {
@@ -1457,8 +1453,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Since the position of rail engine S(t) is continuous and differentiable function, according to Lagranges mean value theorem\n\n$\\exists t$ where $0\\leq t\\leq 8$ such that\n\n$$\\begin{aligned}{S}'\\left ( t \\right )&=v\\left ( t \\right )=\\frac{S\\left ( 8 \\right )-S\\left ( 0 \\right )}{8-0} \\\\  &=\\frac{\\left ( 280-0 \\right )}{\\left ( 8-0 \\right )}\\: m/sec \\\\ &=\\frac{280}{8}\\: m/sec \\\\  &=\\frac{280}{8}\\times \\frac{3600}{1000} \\;kmph\\\\  &=126 kmph \\end{aligned}$$\n\nwhere $v(t)$ is the velocity of the rail engine.\n\nTherefore, the correct answer is **D**."
+        "concept": "Engineering Mathematics (CE) - Calculus",
+        "markdown": "Since the position of rail engine S(t) is continuous and differentiable function, according to Lagranges mean value theorem\n\n$\\exists t$ where $0\\leq t\\leq 8$ such that\n\n$$\\begin{aligned}{S}'\\left ( t \\right )&=v\\left ( t \\right )=\\frac{S\\left ( 8 \\right )-S\\left ( 0 \\right )}{8-0} \\\\  &=\\frac{\\left ( 280-0 \\right )}{\\left ( 8-0 \\right )}\\: m/sec \\\\ &=\\frac{280}{8}\\: m/sec \\\\  &=\\frac{280}{8}\\times \\frac{3600}{1000} \\;kmph\\\\  &=126 kmph \\end{aligned}$$\n\nwhere $v(t)$ is the velocity of the rail engine.",
+        "images": []
       }
     },
     "pp:ce:2005:q34": {
@@ -1501,8 +1498,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$$\\begin{aligned} \\frac{d^{2}y}{dx^{2}}+2\\frac{dy}{dx}+17y&=0 \\\\     y\\left ( 0 \\right )&=1 \\\\    \\frac{\\mathrm{d} y}{\\mathrm{d} x}\\left ( \\frac{\\pi }{4} \\right )&=0 \\end{aligned}$$\n\nThis is a linear differential equation\n\n$$\\begin{aligned} D^{2}+2D+17&=0 \\\\   D&=-1\\pm 4i \\\\ \\therefore   \\;\\; y&=C_{1}e^{\\left ( -1+4i \\right )x}+C_{2}e^{\\left ( -1-4i \\right )x} \\\\    &=e^{-x}C_{1}e^{4xi}+C_{2}e^{-4xi} \\\\    &=e^{-x} \\\\ \\left [ C_{1}\\left ( \\cos 4x+i\\sin 4x \\right ) \\right ]& +C_{2}\\left [ \\cos \\left ( 4x \\right )+i\\sin \\left ( -4x \\right ) \\right ]\\\\ &=e^{-x}\\left [ \\left ( C_{1}+C_{2} \\right )\\cos 4x +\\left ( C_{1}-C_{2} \\right )i\\sin 4x \\right ] \\\\ \\text{Let } C_{1}+C_{2}&=C_{3} \\text{ and }\\left ( C_{1}-C_{2} \\right )i=C_{4} \\\\    y&=e^{-x}\\left ( C_{3}\\cos 4x+C_{4}\\sin 4x \\right )\\\\ \\text{Since } y\\left ( 0 \\right )&=1 \\\\ \\Rightarrow \\;\\;  1&=e^{-0}\\left ( C_{3}\\cos 0+C_{4}\\sin 0 \\right ) \\\\ \\Rightarrow \\;\\;  C_{3}&=1 \\\\   \\frac{\\mathrm{d} y}{\\mathrm{d} x}&=e^{-x}\\left (-4C_{3}\\sin 4x+4C_{4}\\cos 4x \\right ) \\\\ &-e^{-x}\\left [ C_{3}\\cos 4x+C_{4}\\sin 4x \\right ] \\\\    &=e^{-x}\\left [ \\left ( -4C_{3}-C_{4} \\right )\\sin 4x +\\left ( 4C_{4}-C_{3}\\cos 4x \\right ) \\right ] \\\\  \\frac{\\mathrm{d} y}{\\mathrm{d} x} \\text{ at } x&=\\frac{\\pi }{4} \\text{ is }0 \\\\ \\therefore \\; \\left ( -4C_{4}-C_{3} \\right )e^{-\\pi /4}&=0 \\\\    4C_{4}&=C_{3} \\\\    C_{4}&=\\frac{C_{3}}{4}=\\frac{1}{4} \\\\ \\therefore \\;\\;    C_{3}&=1 \\text{ and }C_{4}=\\frac{1}{4} \\\\    y&=e^{-x}\\left ( \\cos 4x+\\frac{1}{4}\\sin 4x \\right ) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (CE) - Ordinary Differential Equation ",
+        "markdown": "$$\\begin{aligned} \\frac{d^{2}y}{dx^{2}}+2\\frac{dy}{dx}+17y&=0 \\\\     y\\left ( 0 \\right )&=1 \\\\    \\frac{\\mathrm{d} y}{\\mathrm{d} x}\\left ( \\frac{\\pi }{4} \\right )&=0 \\end{aligned}$$\n\nThis is a linear differential equation\n\n$$\\begin{aligned} D^{2}+2D+17&=0 \\\\   D&=-1\\pm 4i \\\\ \\therefore   \\;\\; y&=C_{1}e^{\\left ( -1+4i \\right )x}+C_{2}e^{\\left ( -1-4i \\right )x} \\\\    &=e^{-x}C_{1}e^{4xi}+C_{2}e^{-4xi} \\\\    &=e^{-x} \\\\ \\left [ C_{1}\\left ( \\cos 4x+i\\sin 4x \\right ) \\right ]& +C_{2}\\left [ \\cos \\left ( 4x \\right )+i\\sin \\left ( -4x \\right ) \\right ]\\\\ &=e^{-x}\\left [ \\left ( C_{1}+C_{2} \\right )\\cos 4x +\\left ( C_{1}-C_{2} \\right )i\\sin 4x \\right ] \\\\ \\text{Let } C_{1}+C_{2}&=C_{3} \\text{ and }\\left ( C_{1}-C_{2} \\right )i=C_{4} \\\\    y&=e^{-x}\\left ( C_{3}\\cos 4x+C_{4}\\sin 4x \\right )\\\\ \\text{Since } y\\left ( 0 \\right )&=1 \\\\ \\Rightarrow \\;\\;  1&=e^{-0}\\left ( C_{3}\\cos 0+C_{4}\\sin 0 \\right ) \\\\ \\Rightarrow \\;\\;  C_{3}&=1 \\\\   \\frac{\\mathrm{d} y}{\\mathrm{d} x}&=e^{-x}\\left (-4C_{3}\\sin 4x+4C_{4}\\cos 4x \\right ) \\\\ &-e^{-x}\\left [ C_{3}\\cos 4x+C_{4}\\sin 4x \\right ] \\\\    &=e^{-x}\\left [ \\left ( -4C_{3}-C_{4} \\right )\\sin 4x +\\left ( 4C_{4}-C_{3}\\cos 4x \\right ) \\right ] \\\\  \\frac{\\mathrm{d} y}{\\mathrm{d} x} \\text{ at } x&=\\frac{\\pi }{4} \\text{ is }0 \\\\ \\therefore \\; \\left ( -4C_{4}-C_{3} \\right )e^{-\\pi /4}&=0 \\\\    4C_{4}&=C_{3} \\\\    C_{4}&=\\frac{C_{3}}{4}=\\frac{1}{4} \\\\ \\therefore \\;\\;    C_{3}&=1 \\text{ and }C_{4}=\\frac{1}{4} \\\\    y&=e^{-x}\\left ( \\cos 4x+\\frac{1}{4}\\sin 4x \\right ) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q35": {
@@ -1545,8 +1543,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Green's theorem is,\n\n$$\\begin{aligned} \\oint_{c} \\phi dx + \\Psi dy&=\\int_{E}\\left ( \\frac{\\partial \\Psi }{\\partial x}-\\frac{\\partial \\phi }{\\partial x} \\right )\\: dxdy\\\\ \\text{Here }  I&=\\oint_{c} \\left ( xydy\\: -\\: y^{2}dx \\right ) \\\\   &=\\oint_{c} \\left ( -y^{2} \\right )dx\\: +\\: \\left ( xy \\right )dy \\\\ \\therefore  \\;\\; \\phi &=-y^{2},\\; \\Psi = xy \\\\    \\frac{\\partial \\Psi }{\\partial x}&=y,\\; \\frac{\\partial \\phi }{\\partial y}=-2y\\end{aligned}$$\n\nSubstituting in Green's Theorem, we get,\n\n$$\\begin{aligned}  I&= \\int_{y=0}^{1}\\int_{x=0}^{1}\\left [ y-\\left ( -2y \\right ) \\right ]dx\\: dy \\\\   &= \\int_{y=0}^{1}\\int_{x=0}^{1}\\: 3y\\: dx\\: dy \\\\   &= \\int_{y=0}^{1}\\left [ 3xy \\right ]_{x=0}^{1}\\: dy \\\\   &= \\int_{y=0}^{1}3ydy=\\frac{3}{2}\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (CE) - Calculus",
+        "markdown": "Green's theorem is,\n\n$$\\begin{aligned} \\oint_{c} \\phi dx + \\Psi dy&=\\int_{E}\\left ( \\frac{\\partial \\Psi }{\\partial x}-\\frac{\\partial \\phi }{\\partial x} \\right )\\: dxdy\\\\ \\text{Here }  I&=\\oint_{c} \\left ( xydy\\: -\\: y^{2}dx \\right ) \\\\   &=\\oint_{c} \\left ( -y^{2} \\right )dx\\: +\\: \\left ( xy \\right )dy \\\\ \\therefore  \\;\\; \\phi &=-y^{2},\\; \\Psi = xy \\\\    \\frac{\\partial \\Psi }{\\partial x}&=y,\\; \\frac{\\partial \\phi }{\\partial y}=-2y\\end{aligned}$$\n\nSubstituting in Green's Theorem, we get,\n\n$$\\begin{aligned}  I&= \\int_{y=0}^{1}\\int_{x=0}^{1}\\left [ y-\\left ( -2y \\right ) \\right ]dx\\: dy \\\\   &= \\int_{y=0}^{1}\\int_{x=0}^{1}\\: 3y\\: dx\\: dy \\\\   &= \\int_{y=0}^{1}\\left [ 3xy \\right ]_{x=0}^{1}\\: dy \\\\   &= \\int_{y=0}^{1}3ydy=\\frac{3}{2}\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q36": {
@@ -1589,8 +1588,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$\\int \\sec z\\, dz=\\int \\frac{1}{\\cos z}dz$\n\nThe poles are at\n\n$z_{0}=\\left ( n+1/2 \\right )p =...-3\\pi /2,\\: -\\pi /2,\\: \\pi /2,\\: +3\\pi /2....$\n\nNone of these poles lie inside the unit circle $\\left | z \\right |=1$\n\nHence, sum of residues at poles =0\n\nTherefore, singularities set $=\\phi$ and\n\n$I=2\\pi i$ [sum of residues of $f(z)$ at the poles]\n\n$\\;\\; =2\\pi i\\times 0=0$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (CE) - Calculus",
+        "markdown": "$\\int \\sec z\\, dz=\\int \\frac{1}{\\cos z}dz$\n\nThe poles are at\n\n$z_{0}=\\left ( n+1/2 \\right )p =...-3\\pi /2,\\: -\\pi /2,\\: \\pi /2,\\: +3\\pi /2....$\n\nNone of these poles lie inside the unit circle $\\left | z \\right |=1$\n\nHence, sum of residues at poles =0\n\nTherefore, singularities set $=\\phi$ and\n\n$I=2\\pi i$ [sum of residues of $f(z)$ at the poles]\n\n$\\;\\; =2\\pi i\\times 0=0$",
+        "images": []
       }
     },
     "pp:ce:2005:q37": {
@@ -1634,7 +1634,8 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Prestressed Concrete Beams",
-        "markdown": "$$\\begin{aligned} \\sigma_{\\max } &=\\frac{P}{A}+\\frac{P e}{Z} \\\\ &=\\frac{400 \\times 10^{3}}{200 \\times 400}+\\frac{400 \\times 10^{3} \\times 100 \\times 6}{200 \\times(400)^{2}} \\\\ &=5+7.5=12.5 \\mathrm{N} / \\mathrm{mm}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\sigma_{\\max } &=\\frac{P}{A}+\\frac{P e}{Z} \\\\ &=\\frac{400 \\times 10^{3}}{200 \\times 400}+\\frac{400 \\times 10^{3} \\times 100 \\times 6}{200 \\times(400)^{2}} \\\\ &=5+7.5=12.5 \\mathrm{N} / \\mathrm{mm}^{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q38": {
@@ -1676,10 +1677,7 @@
           "structural-fasteners"
         ]
       },
-      "detailed_solution": {
-        "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Design of Steel Structures** (specifically *Structural Fasteners*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Structural Fasteners**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *None of the above*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (None of the above)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q39": {
       "question_uid": "pp:ce:2005:q39",
@@ -1722,7 +1720,8 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Beams",
-        "markdown": "The web depth to thickness ratio\n\n$$\\begin{aligned} &=\\frac{300-20}{10}=28 \\lt 85 \\\\ \\therefore \\;\\; V&=f_{s}t_{w}d \\\\  d&=300 mm, \\;f_{s}=0.4f_{y} \\\\  f_{y}&=0.4 \\times 250=100 N/mm^{2} \\\\  t_{W}&=10mm\\\\ \\Rightarrow \\;\\; V&=100\\times 10\\times 300=300 kN \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "The web depth to thickness ratio\n\n$$\\begin{aligned} &=\\frac{300-20}{10}=28 \\lt 85 \\\\ \\therefore \\;\\; V&=f_{s}t_{w}d \\\\  d&=300 mm, \\;f_{s}=0.4f_{y} \\\\  f_{y}&=0.4 \\times 250=100 N/mm^{2} \\\\  t_{W}&=10mm\\\\ \\Rightarrow \\;\\; V&=100\\times 10\\times 300=300 kN \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q40": {
@@ -1766,7 +1765,8 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "Total weld length $=\\left ( 100\\times 2 \\right )+50=250 mm$\n\nStrength of weld per mm length $=0.70\\times 6\\times 108=453.6N$\n\nMaximum load taken by joint\n\n$=\\frac{453.6\\times 250}{1000}=113.4kN$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Total weld length $=\\left ( 100\\times 2 \\right )+50=250 mm$\n\nStrength of weld per mm length $=0.70\\times 6\\times 108=453.6N$\n\nMaximum load taken by joint\n\n$=\\frac{453.6\\times 250}{1000}=113.4kN$",
+        "images": []
       }
     },
     "pp:ce:2005:q41": {
@@ -1810,7 +1810,10 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
-        "markdown": "Yielding starts at P, therefore yielding moment at the fixed end is given by,\n\n$M_{y}=PL$\n\n<img src=\"/question-images/ce/2005/ce-2005-2e7d0a77ae.webp\" />\n\nNow, if $W_{u}$ is the collapse load, then collapse moment at the fixed end is given by,\n\n$M_{p}=W_{u}L$\n\nBut, for rectangular beam,\n\n$$\\begin{aligned} \\frac{M_{p}}{M_{y}}& =1.5 \\\\ \\Rightarrow \\; \\; \\frac{W_{u}L}{PL}&=1.5 \\\\ \\Rightarrow \\;\\;W_{u}&=1.5P \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Yielding starts at P, therefore yielding moment at the fixed end is given by,\n\n$M_{y}=PL$\n\n<img src=\"/question-images/ce/2005/ce-2005-2e7d0a77ae.webp\" />\n\nNow, if $W_{u}$ is the collapse load, then collapse moment at the fixed end is given by,\n\n$M_{p}=W_{u}L$\n\nBut, for rectangular beam,\n\n$$\\begin{aligned} \\frac{M_{p}}{M_{y}}& =1.5 \\\\ \\Rightarrow \\; \\; \\frac{W_{u}L}{PL}&=1.5 \\\\ \\Rightarrow \\;\\;W_{u}&=1.5P \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2005/ce-2005-2e7d0a77ae.webp"
+        ]
       }
     },
     "pp:ce:2005:q42": {
@@ -1854,7 +1857,8 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "As per IS 456: 2000, the flexural strength of\n\nconcrete is given as,\n\n$f_{c r}=0.7 \\sqrt{f_{c k}}=0.7 \\sqrt{30}=3.83 \\mathrm{MPa}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "As per IS 456: 2000, the flexural strength of\n\nconcrete is given as,\n\n$f_{c r}=0.7 \\sqrt{f_{c k}}=0.7 \\sqrt{30}=3.83 \\mathrm{MPa}$",
+        "images": []
       }
     },
     "pp:ce:2005:q43": {
@@ -1898,7 +1902,8 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "As per IS 456: 2000, clause 15.3 three test specimens shall be made for each sample for testing at 28 days. As per clause 15.4 the individual variation should not be more than $\\pm15$ per cent of the average.\n\nTherefore, the correct answer is **D**."
+        "markdown": "As per IS 456: 2000, clause 15.3 three test specimens shall be made for each sample for testing at 28 days. As per clause 15.4 the individual variation should not be more than $\\pm15$ per cent of the average.",
+        "images": []
       }
     },
     "pp:ce:2005:q44": {
@@ -1942,7 +1947,8 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
-        "markdown": "The axial load on the column can be given as\n\n$$\\begin{aligned} P_{u} &=0.4 \\mathrm{f}_{\\mathrm{cK}} A_{c}+0.67 \\mathrm{f}_{\\mathrm{y}} A_{\\mathrm{sc}} \\\\ A_{c} &=A_{g}-A_{\\mathrm{sc}} \\\\ &=(250 \\times 400)-\\left[5 \\times \\frac{\\pi}{4} \\times(20)^{2}\\right] \\\\ &=98429.20 \\mathrm{mm}^{2} \\\\ f_{y} &=500 \\mathrm{N} / \\mathrm{mm}^{2} \\\\ A_{s c} &=5 \\times \\frac{\\pi}{4} \\times(20)^{2}=1570.8 \\mathrm{mm}^{2} \\\\ \\therefore \\quad P_{u} &=(0.4 \\times 30 \\times 98429.20) \\\\ &=1707.37 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The axial load on the column can be given as\n\n$$\\begin{aligned} P_{u} &=0.4 \\mathrm{f}_{\\mathrm{cK}} A_{c}+0.67 \\mathrm{f}_{\\mathrm{y}} A_{\\mathrm{sc}} \\\\ A_{c} &=A_{g}-A_{\\mathrm{sc}} \\\\ &=(250 \\times 400)-\\left[5 \\times \\frac{\\pi}{4} \\times(20)^{2}\\right] \\\\ &=98429.20 \\mathrm{mm}^{2} \\\\ f_{y} &=500 \\mathrm{N} / \\mathrm{mm}^{2} \\\\ A_{s c} &=5 \\times \\frac{\\pi}{4} \\times(20)^{2}=1570.8 \\mathrm{mm}^{2} \\\\ \\therefore \\quad P_{u} &=(0.4 \\times 30 \\times 98429.20) \\\\ &=1707.37 \\mathrm{kN} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q45": {
@@ -1986,7 +1992,8 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Torsion of Shafts and Pressure Vessels",
-        "markdown": "The symmetry of the shaft shows that there is no torsion on section AB,\n\n$\\therefore \\text{ Rotation, }\\theta_{1}=\\frac{T L}{G J_{1}}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "The symmetry of the shaft shows that there is no torsion on section AB,\n\n$\\therefore \\text{ Rotation, }\\theta_{1}=\\frac{T L}{G J_{1}}$",
+        "images": []
       }
     },
     "pp:ce:2005:q46": {
@@ -2030,7 +2037,8 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
-        "markdown": "$$\\begin{aligned} \\text { Maximum shear stress } &=\\frac{\\sigma_{1}-\\sigma_{2}}{2} \\\\ &=\\frac{20-(-10)}{2}=15 \\mathrm{MPa} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\text { Maximum shear stress } &=\\frac{\\sigma_{1}-\\sigma_{2}}{2} \\\\ &=\\frac{20-(-10)}{2}=15 \\mathrm{MPa} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q47": {
@@ -2074,7 +2082,8 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Shear Force and Bending Moment",
-        "markdown": "The bending moment to the left as well as right of\n\nsection aa' is constant which means shear force\n\nis zero at aa'.\n\nShear force at $\\mathrm{bb}^{\\prime}=\\frac{200-100}{2}=50 \\mathrm{kN}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The bending moment to the left as well as right of\n\nsection aa' is constant which means shear force\n\nis zero at aa'.\n\nShear force at $\\mathrm{bb}^{\\prime}=\\frac{200-100}{2}=50 \\mathrm{kN}$",
+        "images": []
       }
     },
     "pp:ce:2005:q48": {
@@ -2118,7 +2127,8 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
-        "markdown": "There are four cases which should be considered:\n\n(i) - During summer, critical combination of stresses\n\nat edges\n\n=wheel load stress due to edge loading\n\n+warping stress at edge region during summer\n\n- frictional stress during summer\n\n$= 32 + 8 - 5 = 35\\text{ kg/cm}^{2}$\n\n(ii) During winter, critical combination of stresses\n\nat edges.\n\n=wheel load stress due to edge loading\n\n+warping stress at edge region during winter\n\n+ frictional stress during winter\n\n$=32 + 6 + 4 = 42 \\text{kg/cm}^{2}$\n\n(iii) During summer, critical combination of stresses\n\nat corner regions\n\n=wheel load stress at cor,ner loading\n\n+ warping stress at corner region during\n\nsummer\n\n$=30 +9=39 \\text{kg/cm}^{2}$\n\n(iv) During winter, critical combination of stresses\n\nat corner region\n\n=wheel load stress at corner loading\n\n+ Warping stress at corner region during winter\n\n$=30+7=37 \\mathrm{kg} / \\mathrm{cm}^{2}$\n\nHence, the critical combination is\n\n$42 \\mathrm{kg} / \\mathrm{cm}^{2}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "There are four cases which should be considered:\n\n(i) - During summer, critical combination of stresses\n\nat edges\n\n=wheel load stress due to edge loading\n\n+warping stress at edge region during summer\n\n- frictional stress during summer\n\n$= 32 + 8 - 5 = 35\\text{ kg/cm}^{2}$\n\n(ii) During winter, critical combination of stresses\n\nat edges.\n\n=wheel load stress due to edge loading\n\n+warping stress at edge region during winter\n\n+ frictional stress during winter\n\n$=32 + 6 + 4 = 42 \\text{kg/cm}^{2}$\n\n(iii) During summer, critical combination of stresses\n\nat corner regions\n\n=wheel load stress at cor,ner loading\n\n+ warping stress at corner region during\n\nsummer\n\n$=30 +9=39 \\text{kg/cm}^{2}$\n\n(iv) During winter, critical combination of stresses\n\nat corner region\n\n=wheel load stress at corner loading\n\n+ Warping stress at corner region during winter\n\n$=30+7=37 \\mathrm{kg} / \\mathrm{cm}^{2}$\n\nHence, the critical combination is\n\n$42 \\mathrm{kg} / \\mathrm{cm}^{2}$",
+        "images": []
       }
     },
     "pp:ce:2005:q49": {
@@ -2160,10 +2170,7 @@
           "methods-of-structural-analysis"
         ]
       },
-      "detailed_solution": {
-        "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Structural Analysis** (specifically *Methods of Structural Analysis*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Methods of Structural Analysis**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *P-2 Q-2 R-1 S-1*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (P-2 Q-2 R-1 S-1)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q50": {
       "question_uid": "pp:ce:2005:q50",
@@ -2206,7 +2213,8 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "$$\\begin{aligned} \\text{For }A B, \\quad \\theta_{B}&=\\frac{M L}{4 E I} \\\\ \\Rightarrow \\text{ Stiffness at }\\quad B&=\\frac{4 E I}{L} \\\\ \\text{For }B C \\theta_{B}&=\\frac{M L}{3 E I} \\\\ \\Rightarrow \\text{Stiffness at }\\quad B&=\\frac{3 E I}{L}\\\\ \\text{For }BD, \\quad \\theta_{B}&=\\frac{M L}{4 E I} \\\\ \\Rightarrow \\text{ Stiffness at }\\quad B&=\\frac{4 E I}{L} \\\\ \\text{Total stiffness of }&\\text{the joint}\\\\ =\\frac{4 E I}{L}+\\frac{3 E I}{L}+\\frac{4 E I}{L}&=\\frac{11 E I}{L} \\\\ \\text{Rotation of joint }B&=\\frac{M L}{11 E I} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\text{For }A B, \\quad \\theta_{B}&=\\frac{M L}{4 E I} \\\\ \\Rightarrow \\text{ Stiffness at }\\quad B&=\\frac{4 E I}{L} \\\\ \\text{For }B C \\theta_{B}&=\\frac{M L}{3 E I} \\\\ \\Rightarrow \\text{Stiffness at }\\quad B&=\\frac{3 E I}{L}\\\\ \\text{For }BD, \\quad \\theta_{B}&=\\frac{M L}{4 E I} \\\\ \\Rightarrow \\text{ Stiffness at }\\quad B&=\\frac{4 E I}{L} \\\\ \\text{Total stiffness of }&\\text{the joint}\\\\ =\\frac{4 E I}{L}+\\frac{3 E I}{L}+\\frac{4 E I}{L}&=\\frac{11 E I}{L} \\\\ \\text{Rotation of joint }B&=\\frac{M L}{11 E I} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q51": {
@@ -2248,10 +2256,7 @@
           "classification-of-soils-and-clay-minerals"
         ]
       },
-      "detailed_solution": {
-        "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Geotechnical Engineering** (specifically *Classification of Soils and Clay Minerals*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Classification of Soils and Clay Minerals**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *gravelly silty sand having coefficient of uniformly greater than 60.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (gravelly silty sand having coefficient of uniformly greater than 60.)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q52": {
       "question_uid": "pp:ce:2005:q52",
@@ -2294,7 +2299,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "Total density is bulk density, $\\gamma_{t}=22 \\mathrm{kN} / \\mathrm{m}^{3}$\n\n$$\\begin{aligned} \\text { Dry density, } \\gamma_{d} &=\\frac{\\gamma_{1}}{1+w}=\\frac{22}{1+\\frac{10}{100}}=\\frac{22}{1.1} \\\\ &=20 \\mathrm{kN} / \\mathrm{m}^{3} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Total density is bulk density, $\\gamma_{t}=22 \\mathrm{kN} / \\mathrm{m}^{3}$\n\n$$\\begin{aligned} \\text { Dry density, } \\gamma_{d} &=\\frac{\\gamma_{1}}{1+w}=\\frac{22}{1+\\frac{10}{100}}=\\frac{22}{1.1} \\\\ &=20 \\mathrm{kN} / \\mathrm{m}^{3} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q53": {
@@ -2338,7 +2344,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "$$\\begin{aligned} Q &=k \\mathrm{i} A \\quad \\Rightarrow \\quad k=\\frac{Q}{i A}=\\frac{600 / 60}{0.5 \\times 10} \\\\ &=2.0 \\mathrm{cm} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} Q &=k \\mathrm{i} A \\quad \\Rightarrow \\quad k=\\frac{Q}{i A}=\\frac{600 / 60}{0.5 \\times 10} \\\\ &=2.0 \\mathrm{cm} / \\mathrm{s} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q54": {
@@ -2382,7 +2389,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "Since the river bed level does not change and the\n\ndepth of water is changing only above the river\n\nbed, the effective stress below the river bed will\n\nnot change.\n\nTotal stress at a depth of 10 m below river bed,\n\n$\\sigma=20 \\times 10=200 \\mathrm{kN} / \\mathrm{m}^{2}$\n\nPore water pressure,\n\n$u=10 \\times 10=100 \\mathrm{kN} / \\mathrm{m}^{2}$\n\n$\\therefore$ Effective stress,\n\n$$\\begin{aligned}\n\n\\bar{\\sigma} &=\\sigma-u=200-100 \\\\\n\n&=100 \\mathrm{kN} / \\mathrm{m}^{2}\n\n\\end{aligned}$$\n\nThus effective stress will be $100 \\mathrm{kN} / \\mathrm{m}^{2}$\n\neach in the month of February, July and December\n\nTherefore, the correct answer is **B**."
+        "markdown": "Since the river bed level does not change and the\n\ndepth of water is changing only above the river\n\nbed, the effective stress below the river bed will\n\nnot change.\n\nTotal stress at a depth of 10 m below river bed,\n\n$\\sigma=20 \\times 10=200 \\mathrm{kN} / \\mathrm{m}^{2}$\n\nPore water pressure,\n\n$u=10 \\times 10=100 \\mathrm{kN} / \\mathrm{m}^{2}$\n\n$\\therefore$ Effective stress,\n\n$$\\begin{aligned}\n\n\\bar{\\sigma} &=\\sigma-u=200-100 \\\\\n\n&=100 \\mathrm{kN} / \\mathrm{m}^{2}\n\n\\end{aligned}$$\n\nThus effective stress will be $100 \\mathrm{kN} / \\mathrm{m}^{2}$\n\neach in the month of February, July and December",
+        "images": []
       }
     },
     "pp:ce:2005:q55": {
@@ -2426,7 +2434,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "We know that\n\n$$\\begin{aligned} \\frac{\\sigma_{1}}{\\sigma_{1}}&=\\frac{1+\\sin \\theta}{1-\\sin \\theta} \\\\ \\Rightarrow \\quad \\sin \\theta&=\\frac{\\sigma_{1}-\\sigma_{2}}{\\sigma_{1}+\\sigma_{3}} \\\\ \\Rightarrow \\quad \\sin \\phi&=\\frac{100}{\\sigma_{1}+\\sigma_{3}-\\sigma_{3}+\\sigma_{3}} \\\\ \\Rightarrow \\quad \\sin \\phi&=\\frac{100}{\\left(\\sigma_{1}-\\sigma_{3}\\right)+2 \\sigma_{3}}\\\\ \\Rightarrow \\quad \\sin \\theta &=\\frac{100}{100+2 \\times 100} \\\\ \\Rightarrow \\quad \\theta &=\\sin ^{-1}\\left(\\frac{1}{3}\\right) \\\\ \\Rightarrow \\quad &=19.47^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "We know that\n\n$$\\begin{aligned} \\frac{\\sigma_{1}}{\\sigma_{1}}&=\\frac{1+\\sin \\theta}{1-\\sin \\theta} \\\\ \\Rightarrow \\quad \\sin \\theta&=\\frac{\\sigma_{1}-\\sigma_{2}}{\\sigma_{1}+\\sigma_{3}} \\\\ \\Rightarrow \\quad \\sin \\phi&=\\frac{100}{\\sigma_{1}+\\sigma_{3}-\\sigma_{3}+\\sigma_{3}} \\\\ \\Rightarrow \\quad \\sin \\phi&=\\frac{100}{\\left(\\sigma_{1}-\\sigma_{3}\\right)+2 \\sigma_{3}}\\\\ \\Rightarrow \\quad \\sin \\theta &=\\frac{100}{100+2 \\times 100} \\\\ \\Rightarrow \\quad \\theta &=\\sin ^{-1}\\left(\\frac{1}{3}\\right) \\\\ \\Rightarrow \\quad &=19.47^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q56": {
@@ -2470,7 +2479,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "The number of blows required for the first 150mm of penetration is disregarded, and only the number of blows required for the last 300 mm of penetration is added together.\n\n$\\therefore$ Number of blows,\n\n$N^{\\prime}=6+6+8+7=27$\n\n(i) Correction for overburden pressure\n\nCorrected value of observed\n\n$N^{\\prime}=C_{N} N^{\\prime}=1.0 \\times 27=27$\n\n(ii) Correction for dilatancy\n\nIt is to be applied when number of blows obtained after overburden correction exceeds 15 in saturated fine sands and silts.\n\n$\\therefore N=15+0.5(27-15)$\n\n$=15+6=21$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The number of blows required for the first 150mm of penetration is disregarded, and only the number of blows required for the last 300 mm of penetration is added together.\n\n$\\therefore$ Number of blows,\n\n$N^{\\prime}=6+6+8+7=27$\n\n(i) Correction for overburden pressure\n\nCorrected value of observed\n\n$N^{\\prime}=C_{N} N^{\\prime}=1.0 \\times 27=27$\n\n(ii) Correction for dilatancy\n\nIt is to be applied when number of blows obtained after overburden correction exceeds 15 in saturated fine sands and silts.\n\n$\\therefore N=15+0.5(27-15)$\n\n$=15+6=21$",
+        "images": []
       }
     },
     "pp:ce:2005:q57": {
@@ -2514,7 +2524,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
-        "markdown": "For dry or submerged slopes, Factor of safety\n\n$$\\begin{aligned} &=\\frac{\\tan \\phi}{\\tan \\beta} \\\\ \\Rightarrow \\quad \\tan \\beta &=\\frac{\\tan 30^{\\circ}}{1.5} \\\\ \\Rightarrow \\quad & \\beta=21.05^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For dry or submerged slopes, Factor of safety\n\n$$\\begin{aligned} &=\\frac{\\tan \\phi}{\\tan \\beta} \\\\ \\Rightarrow \\quad \\tan \\beta &=\\frac{\\tan 30^{\\circ}}{1.5} \\\\ \\Rightarrow \\quad & \\beta=21.05^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q58": {
@@ -2558,7 +2569,8 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "Load per metre length of footing\n\n$P=B \\times${ Minimum of bearing capacity and allowable soil pressure}\n\n$$\\begin{array}{l} =8 \\times \\text { Minimum of }[150,100] \\\\ =8 \\times 100=800 \\mathrm{kN} / \\mathrm{m} \\end{array}$$\n\nAllowable pressure for 25mm settlement\n\n$=\\frac{100 \\times 25}{40}=62.5 \\mathrm{kN} / \\mathrm{m}^{2}$\n\nLoad resisted = Width x Allowable pressure\n\n$$\\begin{array}{rr} & 800=B \\times 62.5 \\\\ \\Rightarrow \\quad & B=12.8 \\mathrm{m}\\end{array}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Load per metre length of footing\n\n$P=B \\times${ Minimum of bearing capacity and allowable soil pressure}\n\n$$\\begin{array}{l} =8 \\times \\text { Minimum of }[150,100] \\\\ =8 \\times 100=800 \\mathrm{kN} / \\mathrm{m} \\end{array}$$\n\nAllowable pressure for 25mm settlement\n\n$=\\frac{100 \\times 25}{40}=62.5 \\mathrm{kN} / \\mathrm{m}^{2}$\n\nLoad resisted = Width x Allowable pressure\n\n$$\\begin{array}{rr} & 800=B \\times 62.5 \\\\ \\Rightarrow \\quad & B=12.8 \\mathrm{m}\\end{array}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q59": {
@@ -2602,7 +2614,11 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
-        "markdown": "When the water tabel is at the base of footing the active earth pressure will be\n\n<img src=\"/question-images/ce/2005/ce-2005-0494fd2b00.webp\" />\n\n$$\\begin{aligned}\n\nP_{1} &=K_{a} \\gamma R=\\left(\\frac{1-\\sin \\phi}{1+\\sin \\phi}\\right) \\times \\gamma \\times z \\\\\n\n&=\\frac{1-\\sin 30^{\\circ}}{1+\\sin 30^{\\circ}} \\times 18 \\times 3 \\\\\n\n&=1 / 3 \\times 18 \\times 3=18 \\mathrm{kN} / \\mathrm{m}^{2}\n\n\\end{aligned}$$\n\nWhen the water table rises upto the surface, the\n\nthrust due to water will also be added to the active\n\nearth pressure.\n\n<img src=\"/question-images/ce/2005/ce-2005-3da53b2ee2.webp\" />\n\n$$\\begin{aligned} P_{2} &=K_{2} \\gamma z+\\gamma_{w} z \\\\ &=\\frac{1}{3} \\times(18-10) \\times 3+10 \\times 3 \\\\ &=8+30=38 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\n$\\therefore$ change in active earth pressure\n\n$$\\begin{array}{l} =P_{2}-P_{1}=38-18 \\\\ =20 \\mathrm{kN} / \\mathrm{m}^{2}(\\text { increase }) \\end{array}$$\n\nNote: In strict terms $\\gamma_{\\text {sat }}$ should be taker\n\nTherefore, the correct answer is **A**."
+        "markdown": "When the water tabel is at the base of footing the active earth pressure will be\n\n<img src=\"/question-images/ce/2005/ce-2005-0494fd2b00.webp\" />\n\n$$\\begin{aligned}\n\nP_{1} &=K_{a} \\gamma R=\\left(\\frac{1-\\sin \\phi}{1+\\sin \\phi}\\right) \\times \\gamma \\times z \\\\\n\n&=\\frac{1-\\sin 30^{\\circ}}{1+\\sin 30^{\\circ}} \\times 18 \\times 3 \\\\\n\n&=1 / 3 \\times 18 \\times 3=18 \\mathrm{kN} / \\mathrm{m}^{2}\n\n\\end{aligned}$$\n\nWhen the water table rises upto the surface, the\n\nthrust due to water will also be added to the active\n\nearth pressure.\n\n<img src=\"/question-images/ce/2005/ce-2005-3da53b2ee2.webp\" />\n\n$$\\begin{aligned} P_{2} &=K_{2} \\gamma z+\\gamma_{w} z \\\\ &=\\frac{1}{3} \\times(18-10) \\times 3+10 \\times 3 \\\\ &=8+30=38 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\n$\\therefore$ change in active earth pressure\n\n$$\\begin{array}{l} =P_{2}-P_{1}=38-18 \\\\ =20 \\mathrm{kN} / \\mathrm{m}^{2}(\\text { increase }) \\end{array}$$\n\nNote: In strict terms $\\gamma_{\\text {sat }}$ should be taker",
+        "images": [
+          "/question-images/ce/2005/ce-2005-0494fd2b00.webp",
+          "/question-images/ce/2005/ce-2005-3da53b2ee2.webp"
+        ]
       }
     },
     "pp:ce:2005:q60": {
@@ -2646,7 +2662,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "For Rectanguler channel,\n\n$E_{c}= 1.5y_{c}=1.5\\times 1.5=2.25m$\n\nTherefore, the correct answer is **D**."
+        "markdown": "For Rectanguler channel,\n\n$E_{c}= 1.5y_{c}=1.5\\times 1.5=2.25m$",
+        "images": []
       }
     },
     "pp:ce:2005:q61": {
@@ -2690,7 +2707,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "For hydraulic jump,\n\n$$\\begin{aligned} \\frac{y_{1}}{y_{2}}&=\\frac{1}{2}\\left[-1+\\sqrt{1+8 F_{2}^{2}}\\right]\\\\ \\text{Given},\\quad y_{2}&=3 \\mathrm{m} \\\\ F_{2} &=\\frac{1}{2 \\sqrt{2}} \\\\ \\therefore \\quad y_{1} &=\\frac{3}{2}\\left[-1+\\sqrt{1+8 \\times \\frac{1}{4 \\times 2}}\\right]\\\\ \\Rightarrow \\quad y_{1}&=0.62 \\mathrm{m} \\\\ \\end{aligned}$$\n\nSluice gate opening\n\n$=\\frac{y_{1}}{C_{c}}=\\frac{0.62}{0.9}=0.69 \\mathrm{m}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "For hydraulic jump,\n\n$$\\begin{aligned} \\frac{y_{1}}{y_{2}}&=\\frac{1}{2}\\left[-1+\\sqrt{1+8 F_{2}^{2}}\\right]\\\\ \\text{Given},\\quad y_{2}&=3 \\mathrm{m} \\\\ F_{2} &=\\frac{1}{2 \\sqrt{2}} \\\\ \\therefore \\quad y_{1} &=\\frac{3}{2}\\left[-1+\\sqrt{1+8 \\times \\frac{1}{4 \\times 2}}\\right]\\\\ \\Rightarrow \\quad y_{1}&=0.62 \\mathrm{m} \\\\ \\end{aligned}$$\n\nSluice gate opening\n\n$=\\frac{y_{1}}{C_{c}}=\\frac{0.62}{0.9}=0.69 \\mathrm{m}$",
+        "images": []
       }
     },
     "pp:ce:2005:q62": {
@@ -2734,7 +2752,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
-        "markdown": "The rate of flow is the difference in value of stream function at points A and B\n\n$$\\begin{aligned} \\therefore \\quad Q &=\\left|\\psi_{A}-\\psi_{B}\\right| \\\\ \\psi_{A} &=2 \\times(3)^{2} \\times 0+(3+1) \\times(0)^{2}=0 \\\\ \\psi_{B} &=2 \\times(0)^{2} \\times 2+(0+1) \\times(2)^{2}=4 \\\\ \\therefore & Q=|0-4|=4 \\text { units } \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The rate of flow is the difference in value of stream function at points A and B\n\n$$\\begin{aligned} \\therefore \\quad Q &=\\left|\\psi_{A}-\\psi_{B}\\right| \\\\ \\psi_{A} &=2 \\times(3)^{2} \\times 0+(3+1) \\times(0)^{2}=0 \\\\ \\psi_{B} &=2 \\times(0)^{2} \\times 2+(0+1) \\times(2)^{2}=4 \\\\ \\therefore & Q=|0-4|=4 \\text { units } \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q63": {
@@ -2778,7 +2797,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Hydrostatic Forces",
-        "markdown": "The vertical force on the surface bounded by square and triangle would be respectively,\n\n$F_{1}=4(S-1) \\gamma_{w}$ for square edge and acting at 1 m from P\n\n$F_{2}=x(S-1) \\gamma_{w}$ for inclined edge of triangle and acting at x / 3 from P\n\nTaking moments of both the forces about P, we get,\n\n$$\\begin{aligned} F_{ 1} \\times 1 &=F_{2} \\times \\frac{x}{3} \\\\ \\Rightarrow \\quad 4(\\mathrm{S}-1) \\gamma_{w} &=x(S-1) \\gamma_{w} \\times \\frac{x}{3} \\\\ \\Rightarrow \\quad x^{2} &=12 \\\\ \\Rightarrow \\quad x &=2 \\sqrt{3} \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The vertical force on the surface bounded by square and triangle would be respectively,\n\n$F_{1}=4(S-1) \\gamma_{w}$ for square edge and acting at 1 m from P\n\n$F_{2}=x(S-1) \\gamma_{w}$ for inclined edge of triangle and acting at x / 3 from P\n\nTaking moments of both the forces about P, we get,\n\n$$\\begin{aligned} F_{ 1} \\times 1 &=F_{2} \\times \\frac{x}{3} \\\\ \\Rightarrow \\quad 4(\\mathrm{S}-1) \\gamma_{w} &=x(S-1) \\gamma_{w} \\times \\frac{x}{3} \\\\ \\Rightarrow \\quad x^{2} &=12 \\\\ \\Rightarrow \\quad x &=2 \\sqrt{3} \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q64": {
@@ -2822,7 +2842,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
-        "markdown": "$$\\begin{aligned} \\text { Circulation } &=\\text { Vorticity } \\times \\text { Area } \\\\ &=\\left(\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right) \\times \\text { Area } \\\\ &=(0-3) \\times \\pi \\times(2)^{2} \\\\ &=-12 \\pi \\text { units } \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\text { Circulation } &=\\text { Vorticity } \\times \\text { Area } \\\\ &=\\left(\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right) \\times \\text { Area } \\\\ &=(0-3) \\times \\pi \\times(2)^{2} \\\\ &=-12 \\pi \\text { units } \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q65": {
@@ -2866,7 +2887,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Impact of Jets and Turbines",
-        "markdown": "Force in spring will be the force in horizonta direction.\n\n$$\\begin{aligned} \\therefore \\quad F_{H} &=\\rho Q V \\cos \\theta \\\\ &=1000 \\times 0.1 \\times 4 \\times \\cos 45^{\\circ} \\\\ &=\\frac{400}{\\sqrt{2}}=200 \\sqrt{2} \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Force in spring will be the force in horizonta direction.\n\n$$\\begin{aligned} \\therefore \\quad F_{H} &=\\rho Q V \\cos \\theta \\\\ &=1000 \\times 0.1 \\times 4 \\times \\cos 45^{\\circ} \\\\ &=\\frac{400}{\\sqrt{2}}=200 \\sqrt{2} \\mathrm{N} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q66": {
@@ -2910,7 +2932,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Source of Water Supply, Distribution System and Well Hydraulics",
-        "markdown": "The average flow velocity or discharge velocity,\n\n$v=k i=30 \\times\\left(\\frac{45-20}{1500}\\right)=0.5 \\mathrm{m} / \\mathrm{da}$\n\nSeepage velocity,\n\n$v_{s}=\\frac{v}{n}=\\frac{0.5}{0.25}=2 \\mathrm{m} / \\mathrm{day}$\n\n$\\therefore$ Travel time $=\\frac{1500}{2}=750 \\text{ days}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The average flow velocity or discharge velocity,\n\n$v=k i=30 \\times\\left(\\frac{45-20}{1500}\\right)=0.5 \\mathrm{m} / \\mathrm{da}$\n\nSeepage velocity,\n\n$v_{s}=\\frac{v}{n}=\\frac{0.5}{0.25}=2 \\mathrm{m} / \\mathrm{day}$\n\n$\\therefore$ Travel time $=\\frac{1500}{2}=750 \\text{ days}$",
+        "images": []
       }
     },
     "pp:ce:2005:q67": {
@@ -2954,7 +2977,8 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "By Manning's equation, $Q=\\frac{1}{n} R^{2 / 3} S^{1 / 2} A$\n\n$$\\begin{aligned} \\Rightarrow \\quad 25&=\\frac{1}{0.018} \\times\\left(\\frac{y}{2 \\sqrt{2}}\\right)^{2 / 3} \\times\\left(\\frac{1}{6000}\\right)^{1 / 2} \\times(y)^{2} \\\\ \\Rightarrow \\quad 25&=\\frac{1}{0.018} \\times(y)^{8 / 3} \\times \\frac{1}{154.92} \\\\ \\Rightarrow \\quad y&=4.91 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "By Manning's equation, $Q=\\frac{1}{n} R^{2 / 3} S^{1 / 2} A$\n\n$$\\begin{aligned} \\Rightarrow \\quad 25&=\\frac{1}{0.018} \\times\\left(\\frac{y}{2 \\sqrt{2}}\\right)^{2 / 3} \\times\\left(\\frac{1}{6000}\\right)^{1 / 2} \\times(y)^{2} \\\\ \\Rightarrow \\quad 25&=\\frac{1}{0.018} \\times(y)^{8 / 3} \\times \\frac{1}{154.92} \\\\ \\Rightarrow \\quad y&=4.91 \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q68": {
@@ -2998,7 +3022,8 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Theories of Seepage, Spillways and Miscellaneous",
-        "markdown": "$$\\begin{aligned} \\text{Uplift pressure at }\\mathrm{D}_{1}, \\phi_{D_{1}}&=100-\\phi_{\\mathrm{D}} \\\\ &=100-20=80 \\% \\\\ \\text{Uplift pressure at }C_{1}, \\phi_{C_{1}}&=100-\\phi_{E} \\\\ &=100-28=72 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\text{Uplift pressure at }\\mathrm{D}_{1}, \\phi_{D_{1}}&=100-\\phi_{\\mathrm{D}} \\\\ &=100-20=80 \\% \\\\ \\text{Uplift pressure at }C_{1}, \\phi_{C_{1}}&=100-\\phi_{E} \\\\ &=100-28=72 \\% \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q69": {
@@ -3042,7 +3067,8 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Design of Stable Channels",
-        "markdown": "Lacey's scour depth,\n\n$$\\begin{aligned} R=1.35\\left(\\frac{q^{2}}{f}\\right)^{1 / 3}&=1.35 \\times\\left(\\frac{6.5^{2}}{1}\\right)^{1 / 3}=4.7 \\mathrm{m} \\\\ \\text{Scour depth }&=2 R=9.4 \\mathrm{m} \\\\ \\therefore \\quad D&=2 R-4.4=5 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Lacey's scour depth,\n\n$$\\begin{aligned} R=1.35\\left(\\frac{q^{2}}{f}\\right)^{1 / 3}&=1.35 \\times\\left(\\frac{6.5^{2}}{1}\\right)^{1 / 3}=4.7 \\mathrm{m} \\\\ \\text{Scour depth }&=2 R=9.4 \\mathrm{m} \\\\ \\therefore \\quad D&=2 R-4.4=5 \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q70": {
@@ -3086,7 +3112,8 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
-        "markdown": "$$\\begin{aligned} \\text { Area under crop } &=2 \\times 10^{8} \\times \\frac{40}{100} \\\\ &=0.8 \\times 10^{8} \\mathrm{m}^{2} \\\\ \\text { Volume } &=\\text { Area } \\times \\Delta \\\\ &=0.8 \\times 10^{8} \\times 14 \\times 10^{-2} \\\\ &=1.2 \\times 10^{7} \\mathrm{m}^{3} \\\\ \\text { Discharge, } Q &=\\frac{1.12 \\times 10^{7}}{4 \\times 7 \\times 24 \\times 3600} \\\\ &=4.63 \\mathrm{m}^{3} / \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\text { Area under crop } &=2 \\times 10^{8} \\times \\frac{40}{100} \\\\ &=0.8 \\times 10^{8} \\mathrm{m}^{2} \\\\ \\text { Volume } &=\\text { Area } \\times \\Delta \\\\ &=0.8 \\times 10^{8} \\times 14 \\times 10^{-2} \\\\ &=1.2 \\times 10^{7} \\mathrm{m}^{3} \\\\ \\text { Discharge, } Q &=\\frac{1.12 \\times 10^{7}}{4 \\times 7 \\times 24 \\times 3600} \\\\ &=4.63 \\mathrm{m}^{3} / \\mathrm{sec} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q71": {
@@ -3130,7 +3157,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
-        "markdown": "$$\\begin{aligned} \\mathrm{pH} &=-\\log _{10}\\left[\\mathrm{H}^{+}\\right] \\\\ \\Rightarrow\\quad 4.1 &=-\\log _{10}\\left[\\mathrm{H}^{+}\\right] \\\\ \\Rightarrow\\quad 10^{-4.1} &=\\left[\\mathrm{H}^{+}\\right] \\\\ \\Rightarrow\\quad \\left[\\mathrm{H}^{+}\\right] &=7.94 \\times 10^{-5} \\mathrm{mol} / \\mathrm{L} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\mathrm{pH} &=-\\log _{10}\\left[\\mathrm{H}^{+}\\right] \\\\ \\Rightarrow\\quad 4.1 &=-\\log _{10}\\left[\\mathrm{H}^{+}\\right] \\\\ \\Rightarrow\\quad 10^{-4.1} &=\\left[\\mathrm{H}^{+}\\right] \\\\ \\Rightarrow\\quad \\left[\\mathrm{H}^{+}\\right] &=7.94 \\times 10^{-5} \\mathrm{mol} / \\mathrm{L} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q72": {
@@ -3174,7 +3202,10 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-593a57e6de.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-593a57e6de.webp\" />",
+        "images": [
+          "/question-images/ce/2005/ce-2005-593a57e6de.webp"
+        ]
       }
     },
     "pp:ce:2005:q73": {
@@ -3216,10 +3247,7 @@
           "treatment-of-waste-water"
         ]
       },
-      "detailed_solution": {
-        "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Environmental Engineering** (specifically *Treatment of Waste Water*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Treatment of Waste Water**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *P-4 Q-3 R-2 S-1*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (P-4 Q-3 R-2 S-1)."
-      }
+      "detailed_solution": null
     },
     "pp:ce:2005:q74": {
       "question_uid": "pp:ce:2005:q74",
@@ -3262,7 +3290,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Source of Water Supply, Distribution System and Well Hydraulics",
-        "markdown": "All of these are pipe appurtenances which are required for the proper functioning of the pipeline\n\nTherefore, the correct answer is **A**."
+        "markdown": "All of these are pipe appurtenances which are required for the proper functioning of the pipeline",
+        "images": []
       }
     },
     "pp:ce:2005:q75": {
@@ -3306,7 +3335,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Disposal of Sewage Effluents",
-        "markdown": "$$\\begin{aligned} DO_{mix} &=\\frac{Q_{W}DO_{W}+Q_{R}DO_{R}}{Q_{W}+Q_{R}} \\\\ &=\\frac{\\left ( 1.10\\times 2.00 \\right )+\\left ( 8.70\\times 8.3 \\right )}{1.10+8.70} \\\\ &=7.6\\: mg/L \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} DO_{mix} &=\\frac{Q_{W}DO_{W}+Q_{R}DO_{R}}{Q_{W}+Q_{R}} \\\\ &=\\frac{\\left ( 1.10\\times 2.00 \\right )+\\left ( 8.70\\times 8.3 \\right )}{1.10+8.70} \\\\ &=7.6\\: mg/L \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q76": {
@@ -3350,7 +3380,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "$$\\begin{aligned} \\text{Area of clarifier} &=\\frac{\\text{Average flow of waste water}}{\\text{Overflow rate}} \\\\ &=\\frac{5005}{35}=143\\; m^{2} \\\\ \\therefore \\; \\; \\frac{\\pi }{4}D^{2} &=143 \\\\ \\Rightarrow \\; \\; D^{2} &=\\frac{143\\times 4}{\\pi } \\\\ \\Rightarrow \\; \\; D &=13.5\\; \\text{m} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\text{Area of clarifier} &=\\frac{\\text{Average flow of waste water}}{\\text{Overflow rate}} \\\\ &=\\frac{5005}{35}=143\\; m^{2} \\\\ \\therefore \\; \\; \\frac{\\pi }{4}D^{2} &=143 \\\\ \\Rightarrow \\; \\; D^{2} &=\\frac{143\\times 4}{\\pi } \\\\ \\Rightarrow \\; \\; D &=13.5\\; \\text{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q77": {
@@ -3394,7 +3425,10 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-e301c641fe.webp\" />\n\nLayover time =5 hrs.\n\nTotal journey time for one round trip\n\n$$\\begin{array}{l}\n\n\\underset{(A \\text { to } B)}{85}+\\underset{\\text{(Layout)}}{5}\\underset{\\text(B to A)}{85}\\\\\n\n=175 \\text { hrs. }\n\n\\end{array}$$\n\nNumber of vehicles\n\n$=\\frac{175}{24}=7.3 \\approx 8 \\text { trucks }$\n\n(Rounding on a higher side)\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-e301c641fe.webp\" />\n\nLayover time =5 hrs.\n\nTotal journey time for one round trip\n\n$$\\begin{array}{l}\n\n\\underset{(A \\text { to } B)}{85}+\\underset{\\text{(Layout)}}{5}\\underset{\\text(B to A)}{85}\\\\\n\n=175 \\text { hrs. }\n\n\\end{array}$$\n\nNumber of vehicles\n\n$=\\frac{175}{24}=7.3 \\approx 8 \\text { trucks }$\n\n(Rounding on a higher side)",
+        "images": [
+          "/question-images/ce/2005/ce-2005-e301c641fe.webp"
+        ]
       }
     },
     "pp:ce:2005:q78": {
@@ -3438,7 +3472,8 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "Space headway,\n\n$$\\begin{aligned} S &=0.278 \\mathrm{V} t+\\frac{V^{2}}{254 \\mathrm{f}}+L \\\\ &=0.278 \\times 65 \\times 2.5+\\frac{(65)^{2}}{254 \\times 0.4}+5 \\\\ &=91.8 \\mathrm{m}\\\\ \\text{Capacity,}\\\\ C &=\\frac{1000 \\mathrm{V}}{S}=\\frac{1000 \\times 65}{91.8} \\\\ &=708.37 \\approx 710 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Space headway,\n\n$$\\begin{aligned} S &=0.278 \\mathrm{V} t+\\frac{V^{2}}{254 \\mathrm{f}}+L \\\\ &=0.278 \\times 65 \\times 2.5+\\frac{(65)^{2}}{254 \\times 0.4}+5 \\\\ &=91.8 \\mathrm{m}\\\\ \\text{Capacity,}\\\\ C &=\\frac{1000 \\mathrm{V}}{S}=\\frac{1000 \\times 65}{91.8} \\\\ &=708.37 \\approx 710 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q79": {
@@ -3482,7 +3517,10 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-a21f7353a1.webp\" />\n\nFrom graph,\n\n$0 B^{\\prime}=\\frac{400 \\times 5}{40}=50$\n\nEquivalent daily number of Repetitions for the\n\nstandard axle-load 80 are,\n\n400+50=450\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-a21f7353a1.webp\" />\n\nFrom graph,\n\n$0 B^{\\prime}=\\frac{400 \\times 5}{40}=50$\n\nEquivalent daily number of Repetitions for the\n\nstandard axle-load 80 are,\n\n400+50=450",
+        "images": [
+          "/question-images/ce/2005/ce-2005-a21f7353a1.webp"
+        ]
       }
     },
     "pp:ce:2005:q80": {
@@ -3526,7 +3564,8 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "$$\\begin{aligned} R &=\\frac{V^{2}}{127(e+f)} \\\\ \\Rightarrow \\;\\;e+f&=\\frac{V^{2}}{127 R} \\\\ \\Rightarrow \\;\\; \\quad f &=\\frac{V^{2}}{127 R}-e \\\\ &=\\frac{(100)^{2}}{127 \\times 400}-0.07 \\\\ &=0.13 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} R &=\\frac{V^{2}}{127(e+f)} \\\\ \\Rightarrow \\;\\;e+f&=\\frac{V^{2}}{127 R} \\\\ \\Rightarrow \\;\\; \\quad f &=\\frac{V^{2}}{127 R}-e \\\\ &=\\frac{(100)^{2}}{127 \\times 400}-0.07 \\\\ &=0.13 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q81": {
@@ -3569,8 +3608,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "To calculate $\\frac{1}{a}$ using N-R method, set up the equation as,\n\n$$\\begin{aligned} x&=\\frac{1}{a}\\\\    \\frac{1}{x}&=a \\\\ \\frac{1}{x_k}-a&=0\\\\  f\\left ( x \\right )&=\\frac{1}{x_{k}}-a=0\\\\ \\text{Now }  {f}'\\left ( x \\right )&=-\\frac{1}{x^{2}} \\\\    f\\left ( x_{k} \\right )&=\\frac{1}{x_{k}}-a \\\\    {f}'\\left ( x_{k} \\right )&=-\\frac{1}{x^{2}_{k}}\\\\ &\\text{For N-R method,}\\\\   x_{k+1}&=x_{k}-\\frac{f\\left ( x_{k} \\right )}{{f}'\\left ( x_{k} \\right )} \\\\ \\Rightarrow  \\;\\; x_{k+1}&=x_{k}-\\frac{\\left ( 1/x_{k}-a \\right )}{-\\frac{1}{x^{2}_{k}}} \\end{aligned}$$\n\nSimplifying which we get,\n\n$x_{k+1}=2x_{k}-ax^{2}_{k}$\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "markdown": "To calculate $\\frac{1}{a}$ using N-R method, set up the equation as,\n\n$$\\begin{aligned} x&=\\frac{1}{a}\\\\    \\frac{1}{x}&=a \\\\ \\frac{1}{x_k}-a&=0\\\\  f\\left ( x \\right )&=\\frac{1}{x_{k}}-a=0\\\\ \\text{Now }  {f}'\\left ( x \\right )&=-\\frac{1}{x^{2}} \\\\    f\\left ( x_{k} \\right )&=\\frac{1}{x_{k}}-a \\\\    {f}'\\left ( x_{k} \\right )&=-\\frac{1}{x^{2}_{k}}\\\\ &\\text{For N-R method,}\\\\   x_{k+1}&=x_{k}-\\frac{f\\left ( x_{k} \\right )}{{f}'\\left ( x_{k} \\right )} \\\\ \\Rightarrow  \\;\\; x_{k+1}&=x_{k}-\\frac{\\left ( 1/x_{k}-a \\right )}{-\\frac{1}{x^{2}_{k}}} \\end{aligned}$$\n\nSimplifying which we get,\n\n$x_{k+1}=2x_{k}-ax^{2}_{k}$",
+        "images": []
       }
     },
     "pp:ce:2005:q82": {
@@ -3613,8 +3653,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "For a=7 the iteration equation, becomes,\n\n$$\\begin{aligned} x_{k+1}&=2x_{k}-7x^{2}_{k}\\\\ \\text{with }    x_{0}&=0.2 \\\\    x_{1}&=2x_{0}-7x^{2}_{0} \\\\     &=2\\times 0.2-7\\left ( 0.2 \\right )^{2}=0.12\\\\ \\text{and }    x_{2}&=2x_{1}-7x_{1}^{2} \\\\     &=2\\times 0.12-7\\left ( 0.12 \\right )^{2}=0.1392 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "markdown": "For a=7 the iteration equation, becomes,\n\n$$\\begin{aligned} x_{k+1}&=2x_{k}-7x^{2}_{k}\\\\ \\text{with }    x_{0}&=0.2 \\\\    x_{1}&=2x_{0}-7x^{2}_{0} \\\\     &=2\\times 0.2-7\\left ( 0.2 \\right )^{2}=0.12\\\\ \\text{and }    x_{2}&=2x_{1}-7x_{1}^{2} \\\\     &=2\\times 0.12-7\\left ( 0.12 \\right )^{2}=0.1392 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q83": {
@@ -3658,7 +3699,10 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
-        "markdown": "since the truss is loaded symmetrically, the reactions will be equal.\n\nThus reaction at $B=R_{B}=\\frac{P}{2}$\n\nNow considering joint equilibrium at B.\n\n$$\\begin{aligned} \\because \\quad \\Sigma F_{y}&=0 \\\\ F_{B D} \\sin \\theta+\\frac{P}{2}&=0 \\;\\;\\;\\ldots(i)\\\\ \\because \\quad \\Sigma F_{x}&=0 \\\\ F_{B D} \\cos \\theta+F_{A B}&=0 \\;\\;\\;\\ldots(ii)\\\\ \\text{From (i), we have}\\\\ F_{BD} &=-\\frac{P}{2 \\sin 45^{\\circ}}=\\frac{-P}{\\sqrt{2}} \\\\ \\therefore \\quad F_{A B}&=-F_{BD} \\cos \\theta \\\\ &=-\\left(\\frac{-P}{\\sqrt{2}}\\right) \\times \\cos 45^{\\circ}=\\frac{P}{2} \\end{aligned}$$\n\n<img src=\"/question-images/ce/2005/ce-2005-044ab1c338.webp\" />\n\nTherefore, the correct answer is **C**."
+        "markdown": "since the truss is loaded symmetrically, the reactions will be equal.\n\nThus reaction at $B=R_{B}=\\frac{P}{2}$\n\nNow considering joint equilibrium at B.\n\n$$\\begin{aligned} \\because \\quad \\Sigma F_{y}&=0 \\\\ F_{B D} \\sin \\theta+\\frac{P}{2}&=0 \\;\\;\\;\\ldots(i)\\\\ \\because \\quad \\Sigma F_{x}&=0 \\\\ F_{B D} \\cos \\theta+F_{A B}&=0 \\;\\;\\;\\ldots(ii)\\\\ \\text{From (i), we have}\\\\ F_{BD} &=-\\frac{P}{2 \\sin 45^{\\circ}}=\\frac{-P}{\\sqrt{2}} \\\\ \\therefore \\quad F_{A B}&=-F_{BD} \\cos \\theta \\\\ &=-\\left(\\frac{-P}{\\sqrt{2}}\\right) \\times \\cos 45^{\\circ}=\\frac{P}{2} \\end{aligned}$$\n\n<img src=\"/question-images/ce/2005/ce-2005-044ab1c338.webp\" />",
+        "images": [
+          "/question-images/ce/2005/ce-2005-044ab1c338.webp"
+        ]
       }
     },
     "pp:ce:2005:q84": {
@@ -3702,7 +3746,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
-        "markdown": "It is evidence from the diagram that all the interior members will carry zero force.\n\n<img src=\"/question-images/ce/2005/ce-2005-6b7294678d.webp\" />\n\n<img src=\"/question-images/ce/2005/ce-2005-59974b2b5b.webp\" />\n\nAssuming tensile forces as positive and compressive forces as negative\n\n<img src=\"/question-images/ce/2005/ce-2005-407c9fa2b4.webp\" />\n\nDeflection at C, $\\delta_{c}=\\Sigma \\frac{P K L}{A E}$\n\nWhere K is the force in member when a unit load is applied at C.\n\n$$\\begin{aligned} &=\\frac{P L}{\\sqrt{2} A E}+\\frac{P L}{\\sqrt{2} A E}+\\frac{P L}{2 A E}\\\\ &=\\frac{\\sqrt{2} P L+\\sqrt{2} P L+P L}{2 A E} \\\\ &=\\left(\\frac{2 \\sqrt{2}+1}{2}\\right) \\frac{P L}{A E} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "It is evidence from the diagram that all the interior members will carry zero force.\n\n<img src=\"/question-images/ce/2005/ce-2005-6b7294678d.webp\" />\n\n<img src=\"/question-images/ce/2005/ce-2005-59974b2b5b.webp\" />\n\nAssuming tensile forces as positive and compressive forces as negative\n\n<img src=\"/question-images/ce/2005/ce-2005-407c9fa2b4.webp\" />\n\nDeflection at C, $\\delta_{c}=\\Sigma \\frac{P K L}{A E}$\n\nWhere K is the force in member when a unit load is applied at C.\n\n$$\\begin{aligned} &=\\frac{P L}{\\sqrt{2} A E}+\\frac{P L}{\\sqrt{2} A E}+\\frac{P L}{2 A E}\\\\ &=\\frac{\\sqrt{2} P L+\\sqrt{2} P L+P L}{2 A E} \\\\ &=\\left(\\frac{2 \\sqrt{2}+1}{2}\\right) \\frac{P L}{A E} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2005/ce-2005-6b7294678d.webp",
+          "/question-images/ce/2005/ce-2005-59974b2b5b.webp",
+          "/question-images/ce/2005/ce-2005-407c9fa2b4.webp"
+        ]
       }
     },
     "pp:ce:2005:q85": {
@@ -3746,7 +3795,10 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-aacdc21506.webp\" />\n\n$$\\begin{aligned} \\frac{A B}{A C}&=\\frac{0.002}{0.0035} \\\\ &\\text{[from assumed stress diagram]}\\\\ \\Rightarrow\\quad \\frac{A B}{A C} &=\\frac{4}{7} \\\\ \\Rightarrow\\quad A B &=\\frac{4}{7} x_{U} \\\\ \\text{But}\\quad B C &=A C-A B \\\\ &=x_{U}-\\frac{4}{7} x_{u}=\\frac{3}{7} x_{u} \\end{aligned}$$\n\nTotal compressive force\n\n$$\\begin{aligned} &=0.67 \\mathrm{f}_{c k} \\times \\frac{3}{7} x_{u} \\times b+\\frac{0.67 f_{c k}}{2} \\times \\frac{4}{7} x_{u} \\times b \\\\ &=0.48 \\mathrm{f}_{c k} b x_{u} \\end{aligned}$$\n\nTotal tensile force $=0.87 \\mathrm{f}_{\\mathrm{y}} A_{\\mathrm{st}}$\n\nFor actual depth of neutral axis,\n\nTotal compressive force = Total tensile force\n\n$$\\begin{aligned} \\Rightarrow 0.48 f_{c k} b x_{u}&=0.87 f_{y} A_{s t} \\\\ \\Rightarrow \\quad 0.48 &\\times 20 \\times 300 \\times x_{u} \\\\ &=0.87 \\times 415 \\times 3 \\times \\frac{\\pi}{4} \\times(16)^{2} \\\\ \\Rightarrow x_{u}&=75.84 \\simeq 76 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-aacdc21506.webp\" />\n\n$$\\begin{aligned} \\frac{A B}{A C}&=\\frac{0.002}{0.0035} \\\\ &\\text{[from assumed stress diagram]}\\\\ \\Rightarrow\\quad \\frac{A B}{A C} &=\\frac{4}{7} \\\\ \\Rightarrow\\quad A B &=\\frac{4}{7} x_{U} \\\\ \\text{But}\\quad B C &=A C-A B \\\\ &=x_{U}-\\frac{4}{7} x_{u}=\\frac{3}{7} x_{u} \\end{aligned}$$\n\nTotal compressive force\n\n$$\\begin{aligned} &=0.67 \\mathrm{f}_{c k} \\times \\frac{3}{7} x_{u} \\times b+\\frac{0.67 f_{c k}}{2} \\times \\frac{4}{7} x_{u} \\times b \\\\ &=0.48 \\mathrm{f}_{c k} b x_{u} \\end{aligned}$$\n\nTotal tensile force $=0.87 \\mathrm{f}_{\\mathrm{y}} A_{\\mathrm{st}}$\n\nFor actual depth of neutral axis,\n\nTotal compressive force = Total tensile force\n\n$$\\begin{aligned} \\Rightarrow 0.48 f_{c k} b x_{u}&=0.87 f_{y} A_{s t} \\\\ \\Rightarrow \\quad 0.48 &\\times 20 \\times 300 \\times x_{u} \\\\ &=0.87 \\times 415 \\times 3 \\times \\frac{\\pi}{4} \\times(16)^{2} \\\\ \\Rightarrow x_{u}&=75.84 \\simeq 76 \\mathrm{mm} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2005/ce-2005-aacdc21506.webp"
+        ]
       }
     },
     "pp:ce:2005:q86": {
@@ -3790,7 +3842,8 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "As per IS 456: 2000,\n\ntotal compressive force $=0.36 \\mathrm{f}_{\\mathrm{ck}} \\mathrm{bx}_{\\mathrm{u}}$\n\nand total tensile force $=0.87 \\mathrm{f}_{y} \\mathrm{A}_{\\mathrm{st}}$\n\n$\\therefore$ For actual depth of neutral axis\n\n$$\\begin{array}{c} 0.36 \\mathrm{f}_{c k} b x_{u}=0.87 \\mathrm{f}_{y} A_{\\mathrm{st}} \\\\ \\Rightarrow 0.36 \\times 20 \\times 300 \\times x_{u} \\\\ \\qquad =0.87 \\times 415 \\times 3 \\times \\frac{\\pi}{4} \\times(16)^{2} \\\\ \\Rightarrow x_{u}=100.82 \\simeq 101 \\mathrm{mm} \\end{array}$$\n\n$\\therefore$ Difference between the depth of neutral axis calculated as per given stress strain curve and the depth of neutral axis calculated as per IS 456: 2000 is $=101-76=25 \\mathrm{mm}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "As per IS 456: 2000,\n\ntotal compressive force $=0.36 \\mathrm{f}_{\\mathrm{ck}} \\mathrm{bx}_{\\mathrm{u}}$\n\nand total tensile force $=0.87 \\mathrm{f}_{y} \\mathrm{A}_{\\mathrm{st}}$\n\n$\\therefore$ For actual depth of neutral axis\n\n$$\\begin{array}{c} 0.36 \\mathrm{f}_{c k} b x_{u}=0.87 \\mathrm{f}_{y} A_{\\mathrm{st}} \\\\ \\Rightarrow 0.36 \\times 20 \\times 300 \\times x_{u} \\\\ \\qquad =0.87 \\times 415 \\times 3 \\times \\frac{\\pi}{4} \\times(16)^{2} \\\\ \\Rightarrow x_{u}=100.82 \\simeq 101 \\mathrm{mm} \\end{array}$$\n\n$\\therefore$ Difference between the depth of neutral axis calculated as per given stress strain curve and the depth of neutral axis calculated as per IS 456: 2000 is $=101-76=25 \\mathrm{mm}$",
+        "images": []
       }
     },
     "pp:ce:2005:q87": {
@@ -3834,7 +3887,10 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-bb70788682.webp\" />\n\n$\\therefore \\;\\; \\frac{1}{2}\\times Q_{P}\\times 80\\times 60\\times 60=720\\times 10^{6}\\times 1\\times 10^{-2}$\n\n$\\Rightarrow \\;\\; Q_{P}=50\\, m^{3}/sec$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ce/2005/ce-2005-bb70788682.webp\" />\n\n$\\therefore \\;\\; \\frac{1}{2}\\times Q_{P}\\times 80\\times 60\\times 60=720\\times 10^{6}\\times 1\\times 10^{-2}$\n\n$\\Rightarrow \\;\\; Q_{P}=50\\, m^{3}/sec$",
+        "images": [
+          "/question-images/ce/2005/ce-2005-bb70788682.webp"
+        ]
       }
     },
     "pp:ce:2005:q88": {
@@ -3878,7 +3934,8 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "Depth of precipitation =4 cm\n\nInfiltration in 4 hrs\n\n$=4\\times 1 =4 mm =0.4 cm$\n\nRun off depth $=4-0.4=3.6 cm$\n\nPeak of DRH of 4 hrs\n\n$=50\\times 3.6 =180m^{3}/sec$\n\nPeak of flood discharge,\n\n$Q=180+30 =210m^{3}/sec$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Depth of precipitation =4 cm\n\nInfiltration in 4 hrs\n\n$=4\\times 1 =4 mm =0.4 cm$\n\nRun off depth $=4-0.4=3.6 cm$\n\nPeak of DRH of 4 hrs\n\n$=50\\times 3.6 =180m^{3}/sec$\n\nPeak of flood discharge,\n\n$Q=180+30 =210m^{3}/sec$",
+        "images": []
       }
     },
     "pp:ce:2005:q89": {
@@ -3922,7 +3979,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "$$\\begin{aligned} \\text{Total surface area} &=\\frac{\\text{Design flow rate}}{\\text{Design loading rate}} \\\\ &=\\frac{0.5}{200/\\left ( 24\\times 60\\times 60 \\right )} \\\\ &=\\frac{24\\times 60\\times 60\\times 0.5}{200} \\\\ &=216\\; m^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\text{Total surface area} &=\\frac{\\text{Design flow rate}}{\\text{Design loading rate}} \\\\ &=\\frac{0.5}{200/\\left ( 24\\times 60\\times 60 \\right )} \\\\ &=\\frac{24\\times 60\\times 60\\times 0.5}{200} \\\\ &=216\\; m^{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2005:q90": {
@@ -3966,7 +4024,8 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "Number of filters\n\n$$\\begin{aligned} &=\\frac{\\text{Total surface area}}{\\text{Surface area of each filter box}} \\\\ &=\\frac{216}{50}=4.32\\simeq 5 \\end{aligned}$$\n\nAs per the option select 6 filters.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Number of filters\n\n$$\\begin{aligned} &=\\frac{\\text{Total surface area}}{\\text{Surface area of each filter box}} \\\\ &=\\frac{216}{50}=4.32\\simeq 5 \\end{aligned}$$\n\nAs per the option select 6 filters.",
+        "images": []
       }
     }
   }

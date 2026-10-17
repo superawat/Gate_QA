@@ -788,7 +788,7 @@ GateQA supports major engineering disciplines beyond Computer Science & IT (CSE)
 2. **Direct Simplified Solution Engine (`scripts/pipeline/`):**
    - Synthesizes clean, direct solutions with authentic mathematical steps, equations, derivations, and official answers without artificial boilerplate sections.
    - Enriched directly into static question detail shards (`public/question-detail-shards/`).
-   - Integrated into `AnswerPanel.jsx` with collapsible `DetailedSolutionView.jsx` while keeping external GateOverflow community discussion links 100% active and intact.
+   - Integrated into `DetailedSolutionView.jsx` with an in-card header housing the concept badge on the left and the **Discussion** link button on the right (opposite concept title, below Next, visible only when opened), routing to authentic branch-specific GateOverflow portals (`me.gateoverflow.in`, `ee.gateoverflow.in`, etc.). The main action bar is streamlined with no external Solution button (`[Submit Answer] [Tray] | [Detailed Solution] [Ask AI] [Previous] [Next]`).
 3. **Discipline Preference Engine & Onboarding Wall (`src/utils/branchPreference.ts`, `src/components/Branch/`):**
    - Follows official IIT GATE candidate rules: a student may enroll in at most 2 examination papers (`MAX_ALLOWED_BRANCHES = 2`).
    - `readBranchPreferences` and `writeBranchPreferences` persist state under `gateqa_branch_preferences_v1`.

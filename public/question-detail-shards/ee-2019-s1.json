@@ -47,7 +47,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "$$\\begin{aligned} L^{-1}\\left ( \\frac{s+3}{s^2+2s+1} \\right )&=L^{-1}\\left ( \\frac{s+1+2}{(s+1)^2} \\right )\\\\ &=L^{-1}\\left ( \\frac{1}{s+1}+\\frac{2}{(s+1)^2} \\right )\\\\ &=e^{-t}+2te^{-t} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} L^{-1}\\left ( \\frac{s+3}{s^2+2s+1} \\right )&=L^{-1}\\left ( \\frac{s+1+2}{(s+1)^2} \\right )\\\\ &=L^{-1}\\left ( \\frac{1}{s+1}+\\frac{2}{(s+1)^2} \\right )\\\\ &=e^{-t}+2te^{-t} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q2": {
@@ -87,8 +88,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "M is 2 x 2 matrix with eigen values 4 and 9. The eigen values of $M^2$ are 16 and 81.\n\nTherefore, the correct answer is **D**."
+        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "markdown": "M is 2 x 2 matrix with eigen values 4 and 9. The eigen values of $M^2$ are 16 and 81.",
+        "images": []
       }
     },
     "pp:ee:2019:q3": {
@@ -127,10 +129,7 @@
           "differential-equations"
         ]
       },
-      "detailed_solution": {
-        "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Differential Equations*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Differential Equations**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *wave equation*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (wave equation)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2019:q4": {
       "question_uid": "pp:ee:2019:q4",
@@ -169,8 +168,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-58d04fbe66.webp\" />\n\nBy Cauchy integral theorem,\n\n$\\int \\frac{z^2-1}{z+2}dz=0$\n\nTherefore, $\\frac{z^2-1}{z+2}$ is analytic in the region $|z|\\leq 1$.\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (EE) - Complex Variables",
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-58d04fbe66.webp\" />\n\nBy Cauchy integral theorem,\n\n$\\int \\frac{z^2-1}{z+2}dz=0$\n\nTherefore, $\\frac{z^2-1}{z+2}$ is analytic in the region $|z|\\leq 1$.",
+        "images": [
+          "/question-images/ee/2019/ee-2019-58d04fbe66.webp"
+        ]
       }
     },
     "pp:ee:2019:q5": {
@@ -210,8 +212,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Given that,\n\n$$\\begin{aligned} E(x^2)&=\\frac{kT}{C}\\\\ E(x)&=0\\\\ &=E(x^2)-(E(x))^2\\\\ Var(x)&=\\frac{kT}{C}-0=\\frac{kT}{C} \\end{aligned}$$\n\nStandard deviation $=\\sqrt{\\frac{kT}{C}}$\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "markdown": "Given that,\n\n$$\\begin{aligned} E(x^2)&=\\frac{kT}{C}\\\\ E(x)&=0\\\\ &=E(x^2)-(E(x))^2\\\\ Var(x)&=\\frac{kT}{C}-0=\\frac{kT}{C} \\end{aligned}$$\n\nStandard deviation $=\\sqrt{\\frac{kT}{C}}$",
+        "images": []
       }
     },
     "pp:ee:2019:q6": {
@@ -252,7 +255,10 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "$$\\begin{aligned} H(s)&=\\frac{c_1}{a_2s^2+b_2s+c_2}\\\\ & as \\;\\; a_1=b_1=0\\\\ &=\\frac{c_1}{(1+s\\tau _1)(1+s\\tau _2)}\\\\ \\text{Put }s&=0,\\; H(0)=\\frac{c_1}{c_2}\\\\ \\text{Put }s&=\\infty ,\\; H(\\infty )=0 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2019/ee-2019-90f949a574.webp\" />\n\nwhich represents second order low pass filter.\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} H(s)&=\\frac{c_1}{a_2s^2+b_2s+c_2}\\\\ & as \\;\\; a_1=b_1=0\\\\ &=\\frac{c_1}{(1+s\\tau _1)(1+s\\tau _2)}\\\\ \\text{Put }s&=0,\\; H(0)=\\frac{c_1}{c_2}\\\\ \\text{Put }s&=\\infty ,\\; H(\\infty )=0 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2019/ee-2019-90f949a574.webp\" />\n\nwhich represents second order low pass filter.",
+        "images": [
+          "/question-images/ee/2019/ee-2019-90f949a574.webp"
+        ]
       }
     },
     "pp:ee:2019:q7": {
@@ -293,7 +299,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. signals",
-        "markdown": "a and T represents positive quantities.\n\nu(t) is unit step function.\n\n$h(t)=1+e^{-at}u(t)$, is non-causal\n\nHere '1' is a constant and two sided so the system will be non-causal, because for causal system,\n\n$h(t)=0,\\;\\;\\; t \\lt 0$\n\n$h(t) \\neq 0,\\;\\;\\; t \\gt 0$\n\nTherefore, the correct answer is **C**."
+        "markdown": "a and T represents positive quantities.\n\nu(t) is unit step function.\n\n$h(t)=1+e^{-at}u(t)$, is non-causal\n\nHere '1' is a constant and two sided so the system will be non-causal, because for causal system,\n\n$h(t)=0,\\;\\;\\; t \\lt 0$\n\n$h(t) \\neq 0,\\;\\;\\; t \\gt 0$",
+        "images": []
       }
     },
     "pp:ee:2019:q8": {
@@ -334,7 +341,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "$$\\begin{aligned} \\text{Voltage regulation } &=\\frac{V_{NL}-V_{FL}}{V_{NL}} \\times 100 \\\\ &= \\frac{100-95}{100} \\times 100=5\\% \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\text{Voltage regulation } &=\\frac{V_{NL}-V_{FL}}{V_{NL}} \\times 100 \\\\ &= \\frac{100-95}{100} \\times 100=5\\% \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q9": {
@@ -375,7 +383,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "For 6 pulse converter harmonics present in AC current are $6k\\pm 1$\n\nLowest order harmonic =5\n\nLowest harmonic frequency = 5 x 50 =250Hz\n\nTherefore, the correct answer is **C**."
+        "markdown": "For 6 pulse converter harmonics present in AC current are $6k\\pm 1$\n\nLowest order harmonic =5\n\nLowest harmonic frequency = 5 x 50 =250Hz",
+        "images": []
       }
     },
     "pp:ee:2019:q10": {
@@ -414,10 +423,7 @@
           "three-phase-induction-machines"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Three Phase Induction Machines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Three Phase Induction Machines**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *magnetizing reactance*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (magnetizing reactance)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2019:q11": {
       "question_uid": "pp:ee:2019:q11",
@@ -457,7 +463,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "$P=VI \\cos \\phi$\n\nFor the same voltage and load,\n\n$I \\cos \\phi =constant$\n\n$I_1 \\cos \\phi _1=I_2 \\cos \\phi _2$\n\nat unity power factor,\n\n$$\\begin{aligned} I_1&=200A \\\\ 200 \\times 1 &=I_2 \\times 0.5 \\\\ I_2&=400A \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$P=VI \\cos \\phi$\n\nFor the same voltage and load,\n\n$I \\cos \\phi =constant$\n\n$I_1 \\cos \\phi _1=I_2 \\cos \\phi _2$\n\nat unity power factor,\n\n$$\\begin{aligned} I_1&=200A \\\\ 200 \\times 1 &=I_2 \\times 0.5 \\\\ I_2&=400A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q12": {
@@ -498,7 +505,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "If the switch is closed at t=0 in series R-L circuit. Then the circuit current i(t) expression is\n\n$$\\begin{aligned} i(t)&=\\left \\{ \\frac{-V_m}{\\sqrt{R^2+X_L^2}}\\sin (\\theta -\\phi ) \\right \\}e^{-t/\\tau }\\\\ &+\\frac{V_m}{\\sqrt{R^2+X_L^2}}\\sin (\\omega t -\\phi ) \\end{aligned}$$\n\nThe first term of expression indicates DC offset current.\n\nFor maximum value of DC offset current, the angle should be $90^{\\circ}$\n\n$$\\begin{aligned} -\\left ( \\theta -\\tan ^{-1}\\left ( \\frac{\\omega L}{R} \\right ) \\right )&=90^{\\circ}\\\\ -\\left ( \\theta -\\tan ^{-1}\\left ( \\frac{377 \\times 10 \\times 10^{-3}}{3.77} \\right ) \\right )&=90^{\\circ}\\\\ (\\theta -45^{\\circ})&=-90^{\\circ}\\\\ \\theta &=-45^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "If the switch is closed at t=0 in series R-L circuit. Then the circuit current i(t) expression is\n\n$$\\begin{aligned} i(t)&=\\left \\{ \\frac{-V_m}{\\sqrt{R^2+X_L^2}}\\sin (\\theta -\\phi ) \\right \\}e^{-t/\\tau }\\\\ &+\\frac{V_m}{\\sqrt{R^2+X_L^2}}\\sin (\\omega t -\\phi ) \\end{aligned}$$\n\nThe first term of expression indicates DC offset current.\n\nFor maximum value of DC offset current, the angle should be $90^{\\circ}$\n\n$$\\begin{aligned} -\\left ( \\theta -\\tan ^{-1}\\left ( \\frac{\\omega L}{R} \\right ) \\right )&=90^{\\circ}\\\\ -\\left ( \\theta -\\tan ^{-1}\\left ( \\frac{377 \\times 10 \\times 10^{-3}}{3.77} \\right ) \\right )&=90^{\\circ}\\\\ (\\theta -45^{\\circ})&=-90^{\\circ}\\\\ \\theta &=-45^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q13": {
@@ -539,7 +547,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "Steady state value of y(t)\n\n$$\\begin{aligned} &=\\lim_{s \\to 0}sY(s)\\\\ &=\\lim_{s \\to 0}\\frac{10s}{s(s^2+s+100\\sqrt{2})}\\\\ &=\\frac{10}{100\\sqrt{2}}=\\frac{1}{10\\sqrt{2}} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Steady state value of y(t)\n\n$$\\begin{aligned} &=\\lim_{s \\to 0}sY(s)\\\\ &=\\lim_{s \\to 0}\\frac{10s}{s(s^2+s+100\\sqrt{2})}\\\\ &=\\frac{10}{100\\sqrt{2}}=\\frac{1}{10\\sqrt{2}} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q14": {
@@ -580,7 +589,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$\\angle G(j\\omega )=-0.25 \\times \\frac{180\\omega _{pc}}{\\pi}-90^{\\circ}=-180^{\\circ}$\n\n$-0.25 \\times \\frac{180\\omega _{pc}}{\\pi}=-90^{\\circ}$\n\n$\\omega _{pc}=\\frac{4\\pi}{2}=2\\pi$\n\n$|G(j\\omega )|_{\\omega =\\omega _{pc}}=\\left | \\frac{\\pi e^{-0.25s}}{s} \\right |_{\\omega =\\omega _{pc}}$\n\n$=\\frac{\\pi}{2\\pi}=0.5$\n\n$\\therefore$  Point is $(-0.5,j0)$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\angle G(j\\omega )=-0.25 \\times \\frac{180\\omega _{pc}}{\\pi}-90^{\\circ}=-180^{\\circ}$\n\n$-0.25 \\times \\frac{180\\omega _{pc}}{\\pi}=-90^{\\circ}$\n\n$\\omega _{pc}=\\frac{4\\pi}{2}=2\\pi$\n\n$|G(j\\omega )|_{\\omega =\\omega _{pc}}=\\left | \\frac{\\pi e^{-0.25s}}{s} \\right |_{\\omega =\\omega _{pc}}$\n\n$=\\frac{\\pi}{2\\pi}=0.5$\n\n$\\therefore$  Point is $(-0.5,j0)$",
+        "images": []
       }
     },
     "pp:ee:2019:q15": {
@@ -621,7 +631,10 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
-        "markdown": "Routh array is\n\n<img src=\"/question-images/ee/2019/ee-2019-de8c4a5103.webp\" />\n\nFor BIBO stability,\n\n$\\frac{\\left ( \\frac{8}{3}-3k \\right )}{\\left ( \\frac{8}{3} \\right )} \\gt 0$\n\n$\\Rightarrow k \\lt \\frac{8}{9}$\n\nand $k \\gt 0$\n\n$\\therefore \\;\\; 0 \\lt k \\lt \\frac{8}{9}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Routh array is\n\n<img src=\"/question-images/ee/2019/ee-2019-de8c4a5103.webp\" />\n\nFor BIBO stability,\n\n$\\frac{\\left ( \\frac{8}{3}-3k \\right )}{\\left ( \\frac{8}{3} \\right )} \\gt 0$\n\n$\\Rightarrow k \\lt \\frac{8}{9}$\n\nand $k \\gt 0$\n\n$\\therefore \\;\\; 0 \\lt k \\lt \\frac{8}{9}$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-de8c4a5103.webp"
+        ]
       }
     },
     "pp:ee:2019:q16": {
@@ -662,7 +675,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "For NMOS transistor to be in saturation the condition will be\n\n$V_{gs}  \\gt V_{th}$\n\nand $V_{ds}  \\geq V_{gs}-V_{th}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "For NMOS transistor to be in saturation the condition will be\n\n$V_{gs}  \\gt V_{th}$\n\nand $V_{ds}  \\geq V_{gs}-V_{th}$",
+        "images": []
       }
     },
     "pp:ee:2019:q17": {
@@ -703,7 +717,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Oscillators and Feedback Amplifiers",
-        "markdown": "\"CCCS\" (Current controlled current source amplifier)\n\nGiven,   $Z_0=100k\\Omega$\n\nLoop gain,  $A\\beta =9$\n\n$Z_{0F}=Z_0[1+A\\beta ] \\;\\;\\;(\\text{High impedance CS})$\n\n$=100k\\Omega [1+9]$\n\n$=100k\\Omega \\times 10$\n\n$=1000k\\Omega$\n\nTherefore, the correct answer is **D**."
+        "markdown": "\"CCCS\" (Current controlled current source amplifier)\n\nGiven,   $Z_0=100k\\Omega$\n\nLoop gain,  $A\\beta =9$\n\n$Z_{0F}=Z_0[1+A\\beta ] \\;\\;\\;(\\text{High impedance CS})$\n\n$=100k\\Omega [1+9]$\n\n$=100k\\Omega \\times 10$\n\n$=1000k\\Omega$",
+        "images": []
       }
     },
     "pp:ee:2019:q18": {
@@ -741,8 +756,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} f&=2x^3+3y^2+4z\\\\ \\Delta f&=6x^2\\hat{i}+6y\\hat{j}+4\\hat{k}\\\\ \\text{curl} (\\Delta f)&=\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k}\\\\ \\frac{\\partial }{\\partial x}&\\frac{\\partial }{\\partial y} &\\frac{\\partial }{\\partial z} \\\\ 6x^2& 6y & 4\\end{vmatrix}\\\\ \\therefore \\;\\;\\int _c\\Delta f\\cdot dr&=\\int _c d(2x^3+3y^2+4z)=0\\\\ &=\\int_{(-3,-3,2)}^{2,-3,2}d(2x^3+3y^2+4z)\\\\ &+\\int_{(2,-3,2)}^{(2,6,2)}d(2x^3+3y^2+4z)\\\\ &+\\int_{(2,6,2)}^{(2,6,-1)}d(2x^3+3y^2+4z)\\\\ &=70+81+(-12)=139 \\end{aligned}$$\n\nTherefore, the correct answer is **139**."
+        "concept": "Engineering Mathematics (EE) - Calculus",
+        "markdown": "$$\\begin{aligned} f&=2x^3+3y^2+4z\\\\ \\Delta f&=6x^2\\hat{i}+6y\\hat{j}+4\\hat{k}\\\\ \\text{curl} (\\Delta f)&=\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k}\\\\ \\frac{\\partial }{\\partial x}&\\frac{\\partial }{\\partial y} &\\frac{\\partial }{\\partial z} \\\\ 6x^2& 6y & 4\\end{vmatrix}\\\\ \\therefore \\;\\;\\int _c\\Delta f\\cdot dr&=\\int _c d(2x^3+3y^2+4z)=0\\\\ &=\\int_{(-3,-3,2)}^{2,-3,2}d(2x^3+3y^2+4z)\\\\ &+\\int_{(2,-3,2)}^{(2,6,2)}d(2x^3+3y^2+4z)\\\\ &+\\int_{(2,6,2)}^{(2,6,-1)}d(2x^3+3y^2+4z)\\\\ &=70+81+(-12)=139 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q19": {
@@ -781,7 +797,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-8cf49c88cc.webp\" />\n\nApplying nodal at node x,\n\n$-I-2+\\frac{V_x-5I}{3}=0$\n\n$-3I-6+V_x-5I=0$\n\n$\\Rightarrow \\; 8I=V_x-6\\;\\;...(i)$\n\nAs,  $I=\\frac{20-V_x}{2}$\n\n$\\Rightarrow \\; V_x=20-2I\\;\\;...(ii)$\n\nSubstituting (ii) in (i),\n\n$8I=20-2I-6$\n\n$10I=14$\n\n$I=1.4A$\n\nTherefore, the correct answer is **1.4** (acceptable range: [1.3, 1.5])."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-8cf49c88cc.webp\" />\n\nApplying nodal at node x,\n\n$-I-2+\\frac{V_x-5I}{3}=0$\n\n$-3I-6+V_x-5I=0$\n\n$\\Rightarrow \\; 8I=V_x-6\\;\\;...(i)$\n\nAs,  $I=\\frac{20-V_x}{2}$\n\n$\\Rightarrow \\; V_x=20-2I\\;\\;...(ii)$\n\nSubstituting (ii) in (i),\n\n$8I=20-2I-6$\n\n$10I=14$\n\n$I=1.4A$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-8cf49c88cc.webp"
+        ]
       }
     },
     "pp:ee:2019:q20": {
@@ -820,7 +839,11 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "Co-axial cylindrical capacitor-1\n\n<img src=\"/question-images/ee/2019/ee-2019-357bf825aa.webp\" />\n\n$$\\begin{aligned} C_1 &=\\frac{2 \\pi \\in _h}{\\ln\\left ( \\frac{b}{a} \\right )}=\\frac{2 \\pi \\in _0 (2)h}{\\ln \\left ( \\frac{R}{r} \\right )}\\\\ C_1&=\\frac{2 \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )}\\;\\;...(i) \\end{aligned}$$\n\nCo-axial cylindrical capacitor-2\n\n<img src=\"/question-images/ee/2019/ee-2019-ff4273e2c8.webp\" />\n\n$$\\begin{aligned} C_2 &=\\frac{\\left (\\frac{3 \\pi}{2} \\right ) \\in _0 (2)h}{\\ln \\left ( \\frac{R}{r} \\right )}+\\frac{\\frac{\\pi}{2} \\in _0 \\in _{r_2}h}{\\ln \\left ( \\frac{R}{r} \\right )}\\\\ C_2&=\\frac{ \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )}\\left [ 3+\\frac{\\in _{r_2}}{2} \\right ]\\;\\;...(ii) \\end{aligned}$$\n\nGiven, $C_2=2C_1$     ....(iii)\n\nPut equation (i), (ii)  in equation (iii),\n\n$$\\begin{aligned} &\\frac{ \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )}\\left [ 3+\\frac{\\in _{r_2}}{2} \\right ]=2\\left [ \\frac{4 \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )} \\right ]\\\\ &3+\\frac{\\in {r_2}}{2}=8\\\\ &\\Rightarrow \\; \\frac{\\in {r_2}}{2}=5\\; \\Rightarrow \\; \\in {r_2}=10 \\end{aligned}$$\n\nTherefore, the correct answer is **10** (acceptable range: [9, 11])."
+        "markdown": "Co-axial cylindrical capacitor-1\n\n<img src=\"/question-images/ee/2019/ee-2019-357bf825aa.webp\" />\n\n$$\\begin{aligned} C_1 &=\\frac{2 \\pi \\in _h}{\\ln\\left ( \\frac{b}{a} \\right )}=\\frac{2 \\pi \\in _0 (2)h}{\\ln \\left ( \\frac{R}{r} \\right )}\\\\ C_1&=\\frac{2 \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )}\\;\\;...(i) \\end{aligned}$$\n\nCo-axial cylindrical capacitor-2\n\n<img src=\"/question-images/ee/2019/ee-2019-ff4273e2c8.webp\" />\n\n$$\\begin{aligned} C_2 &=\\frac{\\left (\\frac{3 \\pi}{2} \\right ) \\in _0 (2)h}{\\ln \\left ( \\frac{R}{r} \\right )}+\\frac{\\frac{\\pi}{2} \\in _0 \\in _{r_2}h}{\\ln \\left ( \\frac{R}{r} \\right )}\\\\ C_2&=\\frac{ \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )}\\left [ 3+\\frac{\\in _{r_2}}{2} \\right ]\\;\\;...(ii) \\end{aligned}$$\n\nGiven, $C_2=2C_1$     ....(iii)\n\nPut equation (i), (ii)  in equation (iii),\n\n$$\\begin{aligned} &\\frac{ \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )}\\left [ 3+\\frac{\\in _{r_2}}{2} \\right ]=2\\left [ \\frac{4 \\pi \\in _0 h}{\\ln \\left ( \\frac{R}{r} \\right )} \\right ]\\\\ &3+\\frac{\\in {r_2}}{2}=8\\\\ &\\Rightarrow \\; \\frac{\\in {r_2}}{2}=5\\; \\Rightarrow \\; \\in {r_2}=10 \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-357bf825aa.webp",
+          "/question-images/ee/2019/ee-2019-ff4273e2c8.webp"
+        ]
       }
     },
     "pp:ee:2019:q21": {
@@ -859,7 +882,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "$Y_{12}=-(y_{12})=-j20$\n\nSeries admittance of each line\n\n$=\\frac{Y_{12}}{2}=\\frac{-j20}{2}=-j10$\n\nSeries reaactance of each line $=\\frac{1}{-j10}=j0.1 \\; p.u.$\n\nTherefore, the correct answer is **0.1** (acceptable range: [0.095, 0.105])."
+        "markdown": "$Y_{12}=-(y_{12})=-j20$\n\nSeries admittance of each line\n\n$=\\frac{Y_{12}}{2}=\\frac{-j20}{2}=-j10$\n\nSeries reaactance of each line $=\\frac{1}{-j10}=j0.1 \\; p.u.$",
+        "images": []
       }
     },
     "pp:ee:2019:q22": {
@@ -898,7 +922,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "Net reactance of parallel connection,\n\n$$\\begin{aligned} X&=\\frac{0.25}{5}=0.05\\;p.u.\\\\ I_{SC}&=\\frac{1}{X}=\\frac{1}{0.05}=20\\; p.u.\\\\ \\text{SC MVA}&=20 \\times 5\\\\ &=100 \\text{ MVA} \\end{aligned}$$\n\nTherefore, the correct answer is **100**."
+        "markdown": "Net reactance of parallel connection,\n\n$$\\begin{aligned} X&=\\frac{0.25}{5}=0.05\\;p.u.\\\\ I_{SC}&=\\frac{1}{X}=\\frac{1}{0.05}=20\\; p.u.\\\\ \\text{SC MVA}&=20 \\times 5\\\\ &=100 \\text{ MVA} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q23": {
@@ -937,7 +962,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "$$\\begin{aligned} I_{sec}&=5 \\times 20=100A \\\\ V &=I_{sec}R =100 \\times 0.01\\\\ &=1V \\\\ \\text{VA } &\\text{output of the CT} \\\\ &= VI_{sec}=100 \\times 1\\\\ &= 100VA \\end{aligned}$$\n\nTherefore, the correct answer is **100**."
+        "markdown": "$$\\begin{aligned} I_{sec}&=5 \\times 20=100A \\\\ V &=I_{sec}R =100 \\times 0.01\\\\ &=1V \\\\ \\text{VA } &\\text{output of the CT} \\\\ &= VI_{sec}=100 \\times 1\\\\ &= 100VA \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q24": {
@@ -975,8 +1001,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} M &=\\begin{bmatrix} 0 & 1 & 1\\\\ 1& 0 & 1\\\\ 1& 1 & 0 \\end{bmatrix} \\\\ &R_1\\leftrightarrow R_2 \\\\ &=\\begin{bmatrix} 1 & 0 & 1\\\\ 0& 1 & 1\\\\ 1& 1 & 0 \\end{bmatrix} \\\\ &R_3\\rightarrow R_3 -R_1 \\\\ &= \\begin{bmatrix} 1 & 0 & 1\\\\ 0& 1 & 1\\\\ 0& 1 & -1 \\end{bmatrix}\\\\ &R_3\\rightarrow R_3-R_2 \\\\ &= \\begin{bmatrix} 1 & 0 & 1\\\\ 0& 1 & 1\\\\ 0& 0 & -2 \\end{bmatrix} \\end{aligned}$$\n\nWhich is in echelon form\n\n$\\therefore \\;\\; \\rho (A)=3$\n\nTherefore, the correct answer is **3**."
+        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "markdown": "$$\\begin{aligned} M &=\\begin{bmatrix} 0 & 1 & 1\\\\ 1& 0 & 1\\\\ 1& 1 & 0 \\end{bmatrix} \\\\ &R_1\\leftrightarrow R_2 \\\\ &=\\begin{bmatrix} 1 & 0 & 1\\\\ 0& 1 & 1\\\\ 1& 1 & 0 \\end{bmatrix} \\\\ &R_3\\rightarrow R_3 -R_1 \\\\ &= \\begin{bmatrix} 1 & 0 & 1\\\\ 0& 1 & 1\\\\ 0& 1 & -1 \\end{bmatrix}\\\\ &R_3\\rightarrow R_3-R_2 \\\\ &= \\begin{bmatrix} 1 & 0 & 1\\\\ 0& 1 & 1\\\\ 0& 0 & -2 \\end{bmatrix} \\end{aligned}$$\n\nWhich is in echelon form\n\n$\\therefore \\;\\; \\rho (A)=3$",
+        "images": []
       }
     },
     "pp:ee:2019:q25": {
@@ -1015,7 +1042,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "$$\\begin{aligned} V_{01,rms}&=\\frac{2\\sqrt{2}}{\\pi}\\\\ 0.9 \\sin d \\; V_s&=0.75V_s\\\\ d&=56.44^{\\circ}\\\\ 2d&=112.88^{\\circ}\\\\ \\text{Pulse width }&=112.88^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **113** (acceptable range: [111, 115])."
+        "markdown": "$$\\begin{aligned} V_{01,rms}&=\\frac{2\\sqrt{2}}{\\pi}\\\\ 0.9 \\sin d \\; V_s&=0.75V_s\\\\ d&=56.44^{\\circ}\\\\ 2d&=112.88^{\\circ}\\\\ \\text{Pulse width }&=112.88^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q26": {
@@ -1055,8 +1083,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} M^{-1}M &=I \\\\ \\Rightarrow \\; \\begin{bmatrix} u_1^T\\\\ u_2^T \\end{bmatrix}\\begin{bmatrix} v_1 & v_2 \\end{bmatrix} &= \\begin{bmatrix} 1 & 0\\\\ 0 & 1 \\end{bmatrix}\\\\ \\begin{bmatrix} u_1^T v_1 & u_1^T v_2\\\\ u_2^T v_1 & u_2^T v_2 \\end{bmatrix}&=\\begin{bmatrix} 1 &0 \\\\ 0 & 1 \\end{bmatrix} \\\\ u_1^T v_1=1; &u_1^T v_2 =0\\\\ u_2^T v_1=1; &u_2^T v_2 =1\\\\ \\end{aligned}$$\n\nStatement (1) and (2) are both correct. Option (C) is correct.\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "markdown": "$$\\begin{aligned} M^{-1}M &=I \\\\ \\Rightarrow \\; \\begin{bmatrix} u_1^T\\\\ u_2^T \\end{bmatrix}\\begin{bmatrix} v_1 & v_2 \\end{bmatrix} &= \\begin{bmatrix} 1 & 0\\\\ 0 & 1 \\end{bmatrix}\\\\ \\begin{bmatrix} u_1^T v_1 & u_1^T v_2\\\\ u_2^T v_1 & u_2^T v_2 \\end{bmatrix}&=\\begin{bmatrix} 1 &0 \\\\ 0 & 1 \\end{bmatrix} \\\\ u_1^T v_1=1; &u_1^T v_2 =0\\\\ u_2^T v_1=1; &u_2^T v_2 =1\\\\ \\end{aligned}$$\n\nStatement (1) and (2) are both correct. Option (C) is correct.",
+        "images": []
       }
     },
     "pp:ee:2019:q27": {
@@ -1096,8 +1125,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "$$\\begin{aligned} \\oint _{|z|=5}\\frac{z^3+z^2+8}{2+2}dz&=2 \\pi j \\text{ (sum of residues)} \\\\ &=2 \\pi j \\times \\left [ \\lim_{z \\to -2} \\frac{(z+2)(z^3+z^2+8)}{(z+2)}\\right ] \\\\ &= 2 \\pi j \\times \\left [ \\frac{-8+4+8}{1} \\right ]=8 \\pi j \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EE) - Complex Variables",
+        "markdown": "$$\\begin{aligned} \\oint _{|z|=5}\\frac{z^3+z^2+8}{2+2}dz&=2 \\pi j \\text{ (sum of residues)} \\\\ &=2 \\pi j \\times \\left [ \\lim_{z \\to -2} \\frac{(z+2)(z^3+z^2+8)}{(z+2)}\\right ] \\\\ &= 2 \\pi j \\times \\left [ \\frac{-8+4+8}{1} \\right ]=8 \\pi j \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q28": {
@@ -1138,7 +1168,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "$$\\begin{aligned}\n\nT_0 &=2\\pi \\Rightarrow \\;\\omega _0=\\frac{2\\pi}{T_0}=1 \\\\\n\n\\text{Now, }b_1 &=\\frac{2}{T_0}\\int_{0}^{T_0}f(t) \\sin \\omega _0 t \\; dt \\\\\n\n&= \\frac{2}{2 \\pi}\\int_{0}^{2\\pi}f(t) \\sin t \\; dt\\;\\;[\\because \\omega _0=1]\\\\\n\n&= \\frac{1}{\\pi}\\int_{0}^{\\pi} A \\sin t \\cdot \\sin t\\; dt \\\\\n\n&= \\frac{A}{2 \\pi}\\int_{0}^{\\pi}2 \\sin ^2 t \\; dt \\\\\n\n&= \\frac{A}{2 \\pi}\\int_{0}^{\\pi}[1-\\cos 2t] \\; dt \\\\\n\n&=\\frac{A}{2 \\pi} \\left [ t-\\frac{\\sin 2t}{2} \\right ]_0^{\\pi} \\\\\n\n&= \\frac{A}{2 \\pi} [(\\pi-0)-(0-0)]=\\frac{A}{2}\\\\\n\na_1&=\\frac{2}{T_0}\\int_{0}^{T_0}f(t) \\cos \\omega _0 t \\; dt \\\\\n\n&= \\frac{2}{2 \\pi}\\int_{0}^{2\\pi}f(t) \\cos t \\; dt \\\\\n\n&= \\frac{1}{\\pi}\\int_{0}^{\\pi} A \\sin t \\cdot \\cos t\\; dt \\\\\n\n&= \\frac{A}{2 \\pi}\\int_{0}^{\\pi} \\sin 2t \\; dt=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned}\n\nT_0 &=2\\pi \\Rightarrow \\;\\omega _0=\\frac{2\\pi}{T_0}=1 \\\\\n\n\\text{Now, }b_1 &=\\frac{2}{T_0}\\int_{0}^{T_0}f(t) \\sin \\omega _0 t \\; dt \\\\\n\n&= \\frac{2}{2 \\pi}\\int_{0}^{2\\pi}f(t) \\sin t \\; dt\\;\\;[\\because \\omega _0=1]\\\\\n\n&= \\frac{1}{\\pi}\\int_{0}^{\\pi} A \\sin t \\cdot \\sin t\\; dt \\\\\n\n&= \\frac{A}{2 \\pi}\\int_{0}^{\\pi}2 \\sin ^2 t \\; dt \\\\\n\n&= \\frac{A}{2 \\pi}\\int_{0}^{\\pi}[1-\\cos 2t] \\; dt \\\\\n\n&=\\frac{A}{2 \\pi} \\left [ t-\\frac{\\sin 2t}{2} \\right ]_0^{\\pi} \\\\\n\n&= \\frac{A}{2 \\pi} [(\\pi-0)-(0-0)]=\\frac{A}{2}\\\\\n\na_1&=\\frac{2}{T_0}\\int_{0}^{T_0}f(t) \\cos \\omega _0 t \\; dt \\\\\n\n&= \\frac{2}{2 \\pi}\\int_{0}^{2\\pi}f(t) \\cos t \\; dt \\\\\n\n&= \\frac{1}{\\pi}\\int_{0}^{\\pi} A \\sin t \\cdot \\cos t\\; dt \\\\\n\n&= \\frac{A}{2 \\pi}\\int_{0}^{\\pi} \\sin 2t \\; dt=0\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q29": {
@@ -1179,7 +1210,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$G(s)=\\frac{k}{s\\left ( 1+\\frac{s}{1} \\right )\\left ( 1+\\frac{s}{20} \\right )}$\n\nTransfer function shows 2 poles and no zeros. So statement I is false.\n\n$\\angle G(j\\omega )=-90-tan^{-1}\\omega -tan^{-1}\\frac{\\omega }{20}$\n\n$\\angle G(j\\omega )|_{\\omega \\rightarrow \\infty }=-270^{\\circ}=-\\frac{3\\pi}{2} \\;rad$\n\nSo statement II is true.\n\nTherefore, the correct answer is **B**."
+        "markdown": "$G(s)=\\frac{k}{s\\left ( 1+\\frac{s}{1} \\right )\\left ( 1+\\frac{s}{20} \\right )}$\n\nTransfer function shows 2 poles and no zeros. So statement I is false.\n\n$\\angle G(j\\omega )=-90-tan^{-1}\\omega -tan^{-1}\\frac{\\omega }{20}$\n\n$\\angle G(j\\omega )|_{\\omega \\rightarrow \\infty }=-270^{\\circ}=-\\frac{3\\pi}{2} \\;rad$\n\nSo statement II is true.",
+        "images": []
       }
     },
     "pp:ee:2019:q30": {
@@ -1220,7 +1252,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Design of Control Systems",
-        "markdown": "$T(s)=\\frac{1+3Ts}{1+Ts}$\n\nFrequency at which  $\\angle T(j\\omega )$ is maximum,\n\n$(\\omega _m)=\\frac{1}{T\\sqrt{\\alpha }}$\n\n$\\alpha =\\frac{1}{1/3}=3$\n\n$\\omega _m=\\frac{1}{T\\sqrt{3}}=\\sqrt{\\frac{1}{3T^2}}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$T(s)=\\frac{1+3Ts}{1+Ts}$\n\nFrequency at which  $\\angle T(j\\omega )$ is maximum,\n\n$(\\omega _m)=\\frac{1}{T\\sqrt{\\alpha }}$\n\n$\\alpha =\\frac{1}{1/3}=3$\n\n$\\omega _m=\\frac{1}{T\\sqrt{3}}=\\sqrt{\\frac{1}{3T^2}}$",
+        "images": []
       }
     },
     "pp:ee:2019:q31": {
@@ -1261,7 +1294,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "Characteristic equation is,\n\n$|sI-A|=0$\n\n$$|sI-A|=\\begin{vmatrix} s &-1 \\\\ \\alpha &s+2\\beta \\end{vmatrix}$$\n\n$\\;\\;=s^2+2s\\beta +\\alpha =0$\n\n$\\therefore \\;\\; \\omega _n^2=\\alpha$\n\n$\\;\\;\\; \\omega _n=\\sqrt{\\alpha }$\n\n$\\;\\;\\;2\\xi \\omega _n=2\\beta$\n\n$\\;\\;\\;\\xi =\\frac{\\beta }{\\sqrt{\\alpha }}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Characteristic equation is,\n\n$|sI-A|=0$\n\n$$|sI-A|=\\begin{vmatrix} s &-1 \\\\ \\alpha &s+2\\beta \\end{vmatrix}$$\n\n$\\;\\;=s^2+2s\\beta +\\alpha =0$\n\n$\\therefore \\;\\; \\omega _n^2=\\alpha$\n\n$\\;\\;\\; \\omega _n=\\sqrt{\\alpha }$\n\n$\\;\\;\\;2\\xi \\omega _n=2\\beta$\n\n$\\;\\;\\;\\xi =\\frac{\\beta }{\\sqrt{\\alpha }}$",
+        "images": []
       }
     },
     "pp:ee:2019:q32": {
@@ -1302,7 +1336,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-40c70417dd.webp\" />\n\n$$\\begin{aligned} V_m&=I_mR_m \\\\ &= 10 mA \\times 10\\Omega \\\\ &= 100mV\\\\ (0-100mV)\\Rightarrow & (0-100V)\\\\ m &= \\frac{V_{ext}}{V_m}=\\frac{100V}{100mV}=1000\\\\ R_{se}&=R_m[m-1] \\\\ R_{se} &= 10(1000-1)\\\\ &= 9990\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-40c70417dd.webp\" />\n\n$$\\begin{aligned} V_m&=I_mR_m \\\\ &= 10 mA \\times 10\\Omega \\\\ &= 100mV\\\\ (0-100mV)\\Rightarrow & (0-100V)\\\\ m &= \\frac{V_{ext}}{V_m}=\\frac{100V}{100mV}=1000\\\\ R_{se}&=R_m[m-1] \\\\ R_{se} &= 10(1000-1)\\\\ &= 9990\\Omega \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-40c70417dd.webp"
+        ]
       }
     },
     "pp:ee:2019:q33": {
@@ -1343,7 +1380,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-87647b751e.webp\" />\n\nAs, $V_{DS}=V_{GS}$\n\nMOSFET is in saturation,\n\n$$\\begin{aligned}\n\nI_D&=\\frac{1}{2}\\mu _nC_{Ox}\\left ( \\frac{W}{L} \\right )(V_{GS}-V_T)^2 \\\\\n\n5 \\times 10^{-6}&=\\frac{1}{2} \\times 100 \\times 10^{-6} \\times 10 (V_{GS}-0.5)^2\\\\\n\nV_{GS}&=0.6 \\\\\n\nV_0&=600mV\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-87647b751e.webp\" />\n\nAs, $V_{DS}=V_{GS}$\n\nMOSFET is in saturation,\n\n$$\\begin{aligned}\n\nI_D&=\\frac{1}{2}\\mu _nC_{Ox}\\left ( \\frac{W}{L} \\right )(V_{GS}-V_T)^2 \\\\\n\n5 \\times 10^{-6}&=\\frac{1}{2} \\times 100 \\times 10^{-6} \\times 10 (V_{GS}-0.5)^2\\\\\n\nV_{GS}&=0.6 \\\\\n\nV_0&=600mV\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-87647b751e.webp"
+        ]
       }
     },
     "pp:ee:2019:q34": {
@@ -1384,7 +1424,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-785a6d17a0.webp\" />\n\n$V_o=\\frac{R_2}{R_1}(V_2-V_1)$\n\n$\\;\\;=\\frac{100k}{10k}(50\\; mV-10\\; mV)$\n\n$\\;\\;=10(40\\; mV)=400\\;mV$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-785a6d17a0.webp\" />\n\n$V_o=\\frac{R_2}{R_1}(V_2-V_1)$\n\n$\\;\\;=\\frac{100k}{10k}(50\\; mV-10\\; mV)$\n\n$\\;\\;=10(40\\; mV)=400\\;mV$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-785a6d17a0.webp"
+        ]
       }
     },
     "pp:ee:2019:q35": {
@@ -1425,7 +1468,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-c26ef24349.webp\" />\n\n$Output=Q\\bar{R}+S$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-c26ef24349.webp\" />\n\n$Output=Q\\bar{R}+S$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-c26ef24349.webp"
+        ]
       }
     },
     "pp:ee:2019:q36": {
@@ -1466,7 +1512,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Logic Gates",
-        "markdown": "The Boolean expression for the output of the digital circuit is shown below\n\n<img src=\"/question-images/ee/2019/ee-2019-40af3bdcec.webp\" />\n\nThe above expression is of XOR gate.\n\nTherefore, the correct answer is **C**."
+        "markdown": "The Boolean expression for the output of the digital circuit is shown below\n\n<img src=\"/question-images/ee/2019/ee-2019-40af3bdcec.webp\" />\n\nThe above expression is of XOR gate.",
+        "images": [
+          "/question-images/ee/2019/ee-2019-40af3bdcec.webp"
+        ]
       }
     },
     "pp:ee:2019:q37": {
@@ -1507,7 +1556,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "Geven that,\n\n$$\\begin{aligned} & \\text{Supply voltage, } V_s=48V\\\\ & \\text{Load resistance, }R_L=24\\Omega \\\\ & \\text{Switch frequency, }f_s=250Hz\\\\ &\\text{on time of switch } (T_{ON})=1ms\\\\ & \\text{Time period, } T=\\frac{1}{f_s}=\\frac{1}{250}=4ms\\\\ & \\text{Duty cycle, } \\alpha =\\frac{T_{ON}}{T}=\\frac{1ms}{4ms}=0.25\\\\ & \\text{Load power }=\\frac{(V_0)^2}{R}=\\frac{(\\alpha V_s)^2}{24}\\\\ &=\\frac{(0.25 \\times 48)^2}{24}=6 \\text{ Watt} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Geven that,\n\n$$\\begin{aligned} & \\text{Supply voltage, } V_s=48V\\\\ & \\text{Load resistance, }R_L=24\\Omega \\\\ & \\text{Switch frequency, }f_s=250Hz\\\\ &\\text{on time of switch } (T_{ON})=1ms\\\\ & \\text{Time period, } T=\\frac{1}{f_s}=\\frac{1}{250}=4ms\\\\ & \\text{Duty cycle, } \\alpha =\\frac{T_{ON}}{T}=\\frac{1ms}{4ms}=0.25\\\\ & \\text{Load power }=\\frac{(V_0)^2}{R}=\\frac{(\\alpha V_s)^2}{24}\\\\ &=\\frac{(0.25 \\times 48)^2}{24}=6 \\text{ Watt} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q38": {
@@ -1548,7 +1598,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-fc231ba248.webp\" />\n\n$I_N=I_a+I_b+I_c$\n\n$(I_N)_{rms}=100A$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-fc231ba248.webp\" />\n\n$I_N=I_a+I_b+I_c$\n\n$(I_N)_{rms}=100A$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-fc231ba248.webp"
+        ]
       }
     },
     "pp:ee:2019:q39": {
@@ -1586,8 +1639,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\bigtriangledown \\cdot (uA)&=u(\\bigtriangledown \\cdot A)+(\\bigtriangledown A)F\\\\ &=(x^2+y^2+z^2)[2+3+4]\\\\ &+(2x\\hat{i}+2y\\hat{j}+2z\\hat{k})(2x\\hat{i}+3y\\hat{j}+4z\\hat{k})\\\\ &=9(x^2+y^2+z^2)+(4x^2+6y^2+8z^2)\\\\ At\\; (1,1,1)&=9(3)+[4+6+8]\\\\ &=27+18=45 \\end{aligned}$$\n\nTherefore, the correct answer is **45**."
+        "concept": "Engineering Mathematics (EE) - Calculus",
+        "markdown": "$$\\begin{aligned} \\bigtriangledown \\cdot (uA)&=u(\\bigtriangledown \\cdot A)+(\\bigtriangledown A)F\\\\ &=(x^2+y^2+z^2)[2+3+4]\\\\ &+(2x\\hat{i}+2y\\hat{j}+2z\\hat{k})(2x\\hat{i}+3y\\hat{j}+4z\\hat{k})\\\\ &=9(x^2+y^2+z^2)+(4x^2+6y^2+8z^2)\\\\ At\\; (1,1,1)&=9(3)+[4+6+8]\\\\ &=27+18=45 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q40": {
@@ -1625,8 +1679,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} p&=0.02\\\\ n&=50\\\\ \\lambda &=np=50(0.02)=1\\\\ p(x\\geq 2)&=1-p(x \\lt 2)\\\\ &=1-(p(x=0)+p(x=1))\\\\ &=1-\\left ( \\frac{e^{-\\lambda }\\lambda ^0}{0!}+\\frac{e^{-\\lambda }\\lambda ^1}{1!} \\right )\\\\ &=1-e^{-\\lambda }(1+\\lambda )\\\\ &=1-e^{-1}(1+1)=0.26 \\end{aligned}$$\n\nTherefore, the correct answer is **0.26** (acceptable range: [0.25, 0.27])."
+        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "markdown": "$$\\begin{aligned} p&=0.02\\\\ n&=50\\\\ \\lambda &=np=50(0.02)=1\\\\ p(x\\geq 2)&=1-p(x \\lt 2)\\\\ &=1-(p(x=0)+p(x=1))\\\\ &=1-\\left ( \\frac{e^{-\\lambda }\\lambda ^0}{0!}+\\frac{e^{-\\lambda }\\lambda ^1}{1!} \\right )\\\\ &=1-e^{-\\lambda }(1+\\lambda )\\\\ &=1-e^{-1}(1+1)=0.26 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q41": {
@@ -1665,7 +1720,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Steady state AC Analysis",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-676b0945c9.webp\" />\n\n$$\\begin{aligned} v_c(t)&=V_0e^{-t/\\tau } \\\\ V_0&=100V \\\\ \\tau &=RC=(10^3)(10^{-7}) \\\\ &=10^{-4}sec \\\\ \\therefore \\;v_c(t)&=100e^{-10^4 t }V \\end{aligned}$$\n\nLet the time required by the voltage across the capacitor to drop to 1 V is $t_1,$\n\n$$\\begin{aligned} \\therefore \\; v_c(t_1)&=100e^{-10^4t_1} \\\\ \\text{But, }  v_c(t_1)&=0  \\\\ \\text{So, }0&=100e^{-10^4t_1} \\\\ t_1&=0.46msec \\end{aligned}$$\n\nTherefore, the correct answer is **0.46** (acceptable range: [0.45, 0.47])."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-676b0945c9.webp\" />\n\n$$\\begin{aligned} v_c(t)&=V_0e^{-t/\\tau } \\\\ V_0&=100V \\\\ \\tau &=RC=(10^3)(10^{-7}) \\\\ &=10^{-4}sec \\\\ \\therefore \\;v_c(t)&=100e^{-10^4 t }V \\end{aligned}$$\n\nLet the time required by the voltage across the capacitor to drop to 1 V is $t_1,$\n\n$$\\begin{aligned} \\therefore \\; v_c(t_1)&=100e^{-10^4t_1} \\\\ \\text{But, }  v_c(t_1)&=0  \\\\ \\text{So, }0&=100e^{-10^4t_1} \\\\ t_1&=0.46msec \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-676b0945c9.webp"
+        ]
       }
     },
     "pp:ee:2019:q42": {
@@ -1704,7 +1762,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-25bc6d06ce.webp\" />\n\nBy Millman'e theorem,\n\n$E=\\frac{\\frac{200}{50}+\\frac{160}{40}-\\frac{100}{25}-\\frac{80}{20}}{\\frac{1}{50}+\\frac{1}{40}+\\frac{1}{25}+\\frac{1}{20}}=0V$\n\n$\\frac{1}{R}=\\frac{1}{50}+\\frac{1}{40}+\\frac{1}{25}+\\frac{1}{20}$\n\nSimplified circuit,\n\n$\\therefore \\;\\;I=0A$\n\nTherefore, the correct answer is **0**."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-25bc6d06ce.webp\" />\n\nBy Millman'e theorem,\n\n$E=\\frac{\\frac{200}{50}+\\frac{160}{40}-\\frac{100}{25}-\\frac{80}{20}}{\\frac{1}{50}+\\frac{1}{40}+\\frac{1}{25}+\\frac{1}{20}}=0V$\n\n$\\frac{1}{R}=\\frac{1}{50}+\\frac{1}{40}+\\frac{1}{25}+\\frac{1}{20}$\n\nSimplified circuit,\n\n$\\therefore \\;\\;I=0A$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-25bc6d06ce.webp"
+        ]
       }
     },
     "pp:ee:2019:q43": {
@@ -1743,7 +1804,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "$$\\begin{aligned} v(t) &=-170 \\sin \\left ( 377t-\\frac{\\pi}{6} \\right )V=V_{pc}\\\\ i(t) &= 8 \\cos \\left ( 377t+\\frac{\\pi}{6} \\right )A=I_{cc}\\\\ i(t) &= 8 \\sin \\left ( 377t+\\frac{2\\pi}{3} \\right )A=I_{cc} \\\\ P_{avg}&=\\frac{1}{2} \\times (-170)(8) \\times \\cos\\left ( -\\frac{\\pi}{6}-\\frac{2 \\pi}{3} \\right ) \\\\ &= \\frac{1}{2} \\times (-170)(8) \\times \\cos(150^{\\circ}) \\\\ &=588.9W \\end{aligned}$$\n\nTherefore, the correct answer is **587.5** (acceptable range: [585, 590])."
+        "markdown": "$$\\begin{aligned} v(t) &=-170 \\sin \\left ( 377t-\\frac{\\pi}{6} \\right )V=V_{pc}\\\\ i(t) &= 8 \\cos \\left ( 377t+\\frac{\\pi}{6} \\right )A=I_{cc}\\\\ i(t) &= 8 \\sin \\left ( 377t+\\frac{2\\pi}{3} \\right )A=I_{cc} \\\\ P_{avg}&=\\frac{1}{2} \\times (-170)(8) \\times \\cos\\left ( -\\frac{\\pi}{6}-\\frac{2 \\pi}{3} \\right ) \\\\ &= \\frac{1}{2} \\times (-170)(8) \\times \\cos(150^{\\circ}) \\\\ &=588.9W \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q44": {
@@ -1782,7 +1844,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
-        "markdown": "$$\\begin{aligned} l_{ag} &=0.2 cm \\\\ l_m&= 40cm\\\\ B_0 &= 1 \\text{Tesla}\\\\ \\phi &= \\frac{mmf}{\\Re }\\\\ &\\text{For the same mmf,} \\\\ \\phi &\\propto \\frac{1}{\\Re } \\\\ \\text{In case-1:} &\\\\ \\Re _1&=\\frac{l_m}{\\mu _0A} \\\\ &= \\frac{l_{ag}}{\\mu _0 A}+\\frac{l_m}{\\mu _0 \\mu _r A}\\\\ \\text{as} \\;\\;\\mu _0=0& \\\\ \\therefore \\;\\;\\Re _1&= \\frac{0.2 \\times 10^{-2}}{\\mu _0 A}\\\\ \\text{In case-2:} &\\\\ \\Re _2&= \\frac{l_{ag}}{\\mu _0 A}+\\frac{l_m}{\\mu _0 \\mu _r A}\\\\ &=\\frac{0.2 \\times 10^{-2}}{\\mu _0 A}+\\frac{40 \\times 10^{-2}}{1000\\mu _0 A}\\\\ &=\\frac{0.24\\times 10^{-2}}{\\mu _0 A} \\end{aligned}$$\n\nAs flux $\\phi \\propto B$ for uniform cross section area.\n\n$$\\begin{aligned} \\therefore \\; B_2&=\\frac{B_1 \\times \\Re _1}{\\Re _2} \\\\ B_2&= \\frac{1 \\times 0.2 \\times 10^{-2}/\\mu _0 A}{0.24 \\times 10^{-2}/\\mu _0A}\\\\ &= 0.833T \\end{aligned}$$\n\nTherefore, the correct answer is **0.835** (acceptable range: [0.82, 0.85])."
+        "markdown": "$$\\begin{aligned} l_{ag} &=0.2 cm \\\\ l_m&= 40cm\\\\ B_0 &= 1 \\text{Tesla}\\\\ \\phi &= \\frac{mmf}{\\Re }\\\\ &\\text{For the same mmf,} \\\\ \\phi &\\propto \\frac{1}{\\Re } \\\\ \\text{In case-1:} &\\\\ \\Re _1&=\\frac{l_m}{\\mu _0A} \\\\ &= \\frac{l_{ag}}{\\mu _0 A}+\\frac{l_m}{\\mu _0 \\mu _r A}\\\\ \\text{as} \\;\\;\\mu _0=0& \\\\ \\therefore \\;\\;\\Re _1&= \\frac{0.2 \\times 10^{-2}}{\\mu _0 A}\\\\ \\text{In case-2:} &\\\\ \\Re _2&= \\frac{l_{ag}}{\\mu _0 A}+\\frac{l_m}{\\mu _0 \\mu _r A}\\\\ &=\\frac{0.2 \\times 10^{-2}}{\\mu _0 A}+\\frac{40 \\times 10^{-2}}{1000\\mu _0 A}\\\\ &=\\frac{0.24\\times 10^{-2}}{\\mu _0 A} \\end{aligned}$$\n\nAs flux $\\phi \\propto B$ for uniform cross section area.\n\n$$\\begin{aligned} \\therefore \\; B_2&=\\frac{B_1 \\times \\Re _1}{\\Re _2} \\\\ B_2&= \\frac{1 \\times 0.2 \\times 10^{-2}/\\mu _0 A}{0.24 \\times 10^{-2}/\\mu _0A}\\\\ &= 0.833T \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q45": {
@@ -1821,7 +1884,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "For a 12 kW, 0.6 pf lagging load,\n\n$$\\begin{aligned} P_L &= 12kW\\\\ Q_L&= \\frac{12}{0.6} \\times \\sin (cos^{-1} 0.6)\\\\ &= 16kVAR \\end{aligned}$$\n\nTrasformer rating , S=25kVA\n\nLet us assume load thet can be added is P kW then,\n\n$$\\begin{aligned} S^2 &=(P+P_L)^2+Q_L^2 \\\\ 25^2&= (P+12)^2+16^2\\\\ P &= 7.21kW \\end{aligned}$$\n\nTherefore, the correct answer is **7.2** (acceptable range: [7.1, 7.3])."
+        "markdown": "For a 12 kW, 0.6 pf lagging load,\n\n$$\\begin{aligned} P_L &= 12kW\\\\ Q_L&= \\frac{12}{0.6} \\times \\sin (cos^{-1} 0.6)\\\\ &= 16kVAR \\end{aligned}$$\n\nTrasformer rating , S=25kVA\n\nLet us assume load thet can be added is P kW then,\n\n$$\\begin{aligned} S^2 &=(P+P_L)^2+Q_L^2 \\\\ 25^2&= (P+12)^2+16^2\\\\ P &= 7.21kW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q46": {
@@ -1860,7 +1924,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-deda733210.webp\" />\n\n$$\\begin{aligned}\n\n&\\text{At full load condition,}\\\\\n\nN_1&=1500 \\; \\text{rpm} \\\\\n\nI_1 &=25A \\\\\n\nI_f&= \\frac{220V}{200\\Omega }=1A\\\\\n\nI_{a1}&=I_1-I_f=24A \\\\\n\nE_{g1}&=V-I_{a1}R_a \\\\\n\n&=220-24 \\times 0.5=208V \\\\\n\n&\\text{At no-load condition,}\\\\\n\nI_2&= 3A\\\\\n\nI_f&= 1A\\\\\n\nI_{a2}&=I_2-I_f=2A \\\\\n\nE_{g2}&=220-2 \\times 0.5=219V \\\\\n\nE_g&\\propto \\phi N \\\\\n\n& \\text{Flux id constant,}\\\\\n\nE_g&\\propto N \\\\\n\n\\frac{E_{g2}}{E_{g1}}&=\\frac{N_2}{N_1} \\\\\n\n\\frac{219}{208}&=\\frac{N_2}{1500} \\\\\n\nN_2&= 1579.33 \\;\\text{rpm}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1580** (acceptable range: [1564, 1596])."
+        "markdown": "<img src=\"/question-images/ee/2019/ee-2019-deda733210.webp\" />\n\n$$\\begin{aligned}\n\n&\\text{At full load condition,}\\\\\n\nN_1&=1500 \\; \\text{rpm} \\\\\n\nI_1 &=25A \\\\\n\nI_f&= \\frac{220V}{200\\Omega }=1A\\\\\n\nI_{a1}&=I_1-I_f=24A \\\\\n\nE_{g1}&=V-I_{a1}R_a \\\\\n\n&=220-24 \\times 0.5=208V \\\\\n\n&\\text{At no-load condition,}\\\\\n\nI_2&= 3A\\\\\n\nI_f&= 1A\\\\\n\nI_{a2}&=I_2-I_f=2A \\\\\n\nE_{g2}&=220-2 \\times 0.5=219V \\\\\n\nE_g&\\propto \\phi N \\\\\n\n& \\text{Flux id constant,}\\\\\n\nE_g&\\propto N \\\\\n\n\\frac{E_{g2}}{E_{g1}}&=\\frac{N_2}{N_1} \\\\\n\n\\frac{219}{208}&=\\frac{N_2}{1500} \\\\\n\nN_2&= 1579.33 \\;\\text{rpm}\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2019/ee-2019-deda733210.webp"
+        ]
       }
     },
     "pp:ee:2019:q47": {
@@ -1899,7 +1966,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "$$\\begin{aligned} I_L &=\\sqrt{3}I_{ph} \\\\ \\text{At} \\;\\; f &= 10Hz, \\\\ X_1=X_2 &=8.22 \\times \\frac{10}{50}=1.644\\Omega \\\\ I_{ph} &= \\frac{V_{ph}}{\\sqrt{(R_1+R_2)^2+(X_1+X_2)^2}} \\\\ &=\\frac{100}{\\sqrt{(5.39+5.72)^2+(1.644+1.644)^2}} \\\\ &= \\frac{100}{11.586}=8.63\\\\ I_L&= 14.95A \\end{aligned}$$\n\nTherefore, the correct answer is **14.5** (acceptable range: [13, 16])."
+        "markdown": "$$\\begin{aligned} I_L &=\\sqrt{3}I_{ph} \\\\ \\text{At} \\;\\; f &= 10Hz, \\\\ X_1=X_2 &=8.22 \\times \\frac{10}{50}=1.644\\Omega \\\\ I_{ph} &= \\frac{V_{ph}}{\\sqrt{(R_1+R_2)^2+(X_1+X_2)^2}} \\\\ &=\\frac{100}{\\sqrt{(5.39+5.72)^2+(1.644+1.644)^2}} \\\\ &= \\frac{100}{11.586}=8.63\\\\ I_L&= 14.95A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q48": {
@@ -1938,7 +2006,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "For synchronous motor,\n\n$$\\begin{aligned} E_g &=V_t-IZ \\\\ V_t &=\\frac{220}{\\sqrt{3}} \\; \\text{V (phase)} \\\\ Z &=(0.25+j2.5) \\Omega \\\\ I &= 10\\angle \\cos ^{-1} 0.8A\\\\ E_g&= \\frac{220}{\\sqrt{3}}-(0.25+j2.5) \\times 10\\angle \\cos ^{-1} 0.8\\\\ E_g&= 141.658 \\angle -8.728^{\\circ} \\; \\text{V (phase)}\\\\ E_g &= 245.36 \\; \\text{V(line)} \\end{aligned}$$\n\nTherefore, the correct answer is **245** (acceptable range: [240, 250])."
+        "markdown": "For synchronous motor,\n\n$$\\begin{aligned} E_g &=V_t-IZ \\\\ V_t &=\\frac{220}{\\sqrt{3}} \\; \\text{V (phase)} \\\\ Z &=(0.25+j2.5) \\Omega \\\\ I &= 10\\angle \\cos ^{-1} 0.8A\\\\ E_g&= \\frac{220}{\\sqrt{3}}-(0.25+j2.5) \\times 10\\angle \\cos ^{-1} 0.8\\\\ E_g&= 141.658 \\angle -8.728^{\\circ} \\; \\text{V (phase)}\\\\ E_g &= 245.36 \\; \\text{V(line)} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q49": {
@@ -1977,7 +2046,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "$$\\begin{aligned} V_s&= 400kV\\\\ l&=300km\\\\ L_1&=1mH/km/phase\\\\ C_1&=0.01 \\mu F/km/phase\\\\ v&=\\frac{1}{\\sqrt{L_1C_1}}\\\\ &=\\frac{1}{\\sqrt{1 \\times 10^{-3} \\times 0.01 \\times 10^{-6}}}\\\\ &=3.16 \\times 10^5 km/sec\\\\ \\beta '&=\\frac{2 \\pi f l}{v}\\\\ &=\\frac{2 \\pi \\times 50 \\times 300}{3.16 \\times 10^5}=0.29\\\\ A&=1-\\frac{\\beta ^2}{2}\\\\ &=1-\\frac{(0.29)^2}{2}=0.955\\\\ V_R&=\\frac{V_S}{A}=\\frac{400}{0.955}=418.85kV \\end{aligned}$$\n\nTherefore, the correct answer is **418.5** (acceptable range: [414, 423])."
+        "markdown": "$$\\begin{aligned} V_s&= 400kV\\\\ l&=300km\\\\ L_1&=1mH/km/phase\\\\ C_1&=0.01 \\mu F/km/phase\\\\ v&=\\frac{1}{\\sqrt{L_1C_1}}\\\\ &=\\frac{1}{\\sqrt{1 \\times 10^{-3} \\times 0.01 \\times 10^{-6}}}\\\\ &=3.16 \\times 10^5 km/sec\\\\ \\beta '&=\\frac{2 \\pi f l}{v}\\\\ &=\\frac{2 \\pi \\times 50 \\times 300}{3.16 \\times 10^5}=0.29\\\\ A&=1-\\frac{\\beta ^2}{2}\\\\ &=1-\\frac{(0.29)^2}{2}=0.955\\\\ V_R&=\\frac{V_S}{A}=\\frac{400}{0.955}=418.85kV \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q50": {
@@ -2016,7 +2086,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "$$\\begin{aligned} X_1&=0.25 \\; p.u.\\\\ X_2&=0.15 \\; p.u.\\\\ X_0&=0.05 \\; p.u.\\\\ I_{f(LG)}&=I_{f(3-\\phi )}\\\\ \\frac{3V_{pu}}{(X_1+X_2+X_0+3X_n)}&=\\frac{V_{pu}}{X_1}\\\\ \\frac{3 \\times 1}{(0.25+0.15+0.05+3X_n)}&=\\frac{1}{0.25}\\\\ \\frac{3}{0.46+3X_n}&=\\frac{1}{0.25}\\\\ \\Rightarrow \\;\\; X_n&=0.1\\; p.u.\\\\ X_n&=0.1 \\times Z_B\\\\ &=0.1 \\times \\frac{30^2}{50}\\\\ &=1.8\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **1.8** (acceptable range: [1.7, 1.9])."
+        "markdown": "$$\\begin{aligned} X_1&=0.25 \\; p.u.\\\\ X_2&=0.15 \\; p.u.\\\\ X_0&=0.05 \\; p.u.\\\\ I_{f(LG)}&=I_{f(3-\\phi )}\\\\ \\frac{3V_{pu}}{(X_1+X_2+X_0+3X_n)}&=\\frac{V_{pu}}{X_1}\\\\ \\frac{3 \\times 1}{(0.25+0.15+0.05+3X_n)}&=\\frac{1}{0.25}\\\\ \\frac{3}{0.46+3X_n}&=\\frac{1}{0.25}\\\\ \\Rightarrow \\;\\; X_n&=0.1\\; p.u.\\\\ X_n&=0.1 \\times Z_B\\\\ &=0.1 \\times \\frac{30^2}{50}\\\\ &=1.8\\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q51": {
@@ -2055,7 +2126,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
-        "markdown": "$$\\begin{aligned} X &=0.25+0.2+0.4||0.4 \\\\ &=0.45+0.2=0.65pu \\\\ P&=V_{pu} \\times I_{pu} \\cos \\phi \\\\ 0.8 &=1 \\times I_{pu} \\times 0.8 \\\\ I_{pu} &= 1pu\\\\ E &= V+jI_aX_s\\\\ &=1+1\\angle -36.86^{\\circ} \\times j0.65 \\\\ &= 1.484 \\angle 20.51^{\\circ}pu\\\\ \\delta &= 20.51^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **20.5** (acceptable range: [19, 22])."
+        "markdown": "$$\\begin{aligned} X &=0.25+0.2+0.4||0.4 \\\\ &=0.45+0.2=0.65pu \\\\ P&=V_{pu} \\times I_{pu} \\cos \\phi \\\\ 0.8 &=1 \\times I_{pu} \\times 0.8 \\\\ I_{pu} &= 1pu\\\\ E &= V+jI_aX_s\\\\ &=1+1\\angle -36.86^{\\circ} \\times j0.65 \\\\ &= 1.484 \\angle 20.51^{\\circ}pu\\\\ \\delta &= 20.51^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q52": {
@@ -2094,7 +2166,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "$$\\begin{aligned} L&=50mH\\\\ C&=0.05\\mu F\\\\ R_{cr}&=\\frac{1}{2}\\sqrt{\\frac{L}{C}}\\\\ &=\\frac{1}{2}\\sqrt{\\frac{50 \\times 10^{-3}}{0.05 \\times 10^{-6}}}\\\\ &=500\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **500**."
+        "markdown": "$$\\begin{aligned} L&=50mH\\\\ C&=0.05\\mu F\\\\ R_{cr}&=\\frac{1}{2}\\sqrt{\\frac{L}{C}}\\\\ &=\\frac{1}{2}\\sqrt{\\frac{50 \\times 10^{-3}}{0.05 \\times 10^{-6}}}\\\\ &=500\\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q53": {
@@ -2133,7 +2206,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "$$\\begin{aligned} P_0&=120W,\\\\ V_s&=24V\\\\ V_0&=48V\\\\ V_0&=\\frac{V_s}{(1-D)}\\\\ 1-D&=\\frac{24}{48}\\\\ D&=0.5\\\\ P_0&=V_0I_0=120\\\\ I_0&=\\frac{120}{48}=2.54A\\\\ V_sI_s&=V_0I_0\\\\ I_s&=\\frac{120}{24}=5A \\end{aligned}$$\n\nAt boundary of continuous and discontinuous,\n\n$$\\begin{aligned} I_L&=I_s=\\frac{\\Delta I_{L}}{2}\\\\ \\Delta I_L&=\\frac{DV_s}{fL_c}=2 \\times 5\\\\ L_c&=\\frac{0.5 \\times 24}{50 \\times 10^3 \\times 10}=24\\mu H \\end{aligned}$$\n\nTherefore, the correct answer is **24**."
+        "markdown": "$$\\begin{aligned} P_0&=120W,\\\\ V_s&=24V\\\\ V_0&=48V\\\\ V_0&=\\frac{V_s}{(1-D)}\\\\ 1-D&=\\frac{24}{48}\\\\ D&=0.5\\\\ P_0&=V_0I_0=120\\\\ I_0&=\\frac{120}{48}=2.54A\\\\ V_sI_s&=V_0I_0\\\\ I_s&=\\frac{120}{24}=5A \\end{aligned}$$\n\nAt boundary of continuous and discontinuous,\n\n$$\\begin{aligned} I_L&=I_s=\\frac{\\Delta I_{L}}{2}\\\\ \\Delta I_L&=\\frac{DV_s}{fL_c}=2 \\times 5\\\\ L_c&=\\frac{0.5 \\times 24}{50 \\times 10^3 \\times 10}=24\\mu H \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2019:q54": {
@@ -2172,7 +2246,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "AC line current rms  $=(I_s)_{rms}=I_0\\sqrt{\\frac{2}{3}}=100 \\times \\sqrt{\\frac{2}{3}}=81.65A$\n\nTherefore, the correct answer is **81.5** (acceptable range: [81, 82])."
+        "markdown": "AC line current rms  $=(I_s)_{rms}=I_0\\sqrt{\\frac{2}{3}}=100 \\times \\sqrt{\\frac{2}{3}}=81.65A$",
+        "images": []
       }
     },
     "pp:ee:2019:q55": {
@@ -2211,7 +2286,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "$V_{sr}I_{sr} \\cos \\phi =V_0I_0$\n\nFor single-phase fully controlled converter,\n\n$I_0=I_{sr}=10A$\n\n$\\cos \\phi =\\frac{V_0}{V_{sr}}=\\frac{180}{230}=0.78$\n\nTherefore, the correct answer is **0.775** (acceptable range: [0.75, 0.8])."
+        "markdown": "$V_{sr}I_{sr} \\cos \\phi =V_0I_0$\n\nFor single-phase fully controlled converter,\n\n$I_0=I_{sr}=10A$\n\n$\\cos \\phi =\\frac{V_0}{V_{sr}}=\\frac{180}{230}=0.78$",
+        "images": []
       }
     }
   }

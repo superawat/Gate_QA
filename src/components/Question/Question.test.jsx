@@ -178,8 +178,7 @@ describe("Question Component - Mobile & Responsive Layout", () => {
     expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
   });
 
-  // Skipped while Detailed Solution button is temporarily removed per user request
-  test.skip("detailed solution is hidden until opened, and toggles when onToggleDetailedSolution is called", () => {
+  test("detailed solution is hidden until opened, and toggles when onToggleDetailedSolution is called", () => {
     const questionWithSol = {
       question_uid: "test:detailed-q",
       title: "Test Question with Solution",

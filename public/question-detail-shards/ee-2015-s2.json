@@ -45,10 +45,7 @@
           "complex-variables"
         ]
       },
-      "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Complex Variables*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Complex Variables**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *If g(z) and h(z) are differentiable at $z_0$, then f(z) is also differentiable at $z_0$.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (If g(z) and h(z) are differentiable at $z_0$, then f(z) is also differentiable at $z_0$.)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q2-s2": {
       "question_uid": "pp:ee:2015:q2-s2",
@@ -87,8 +84,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} a_{11}x_1+a_{12}x_2+a_{13}x_3 &=b_1 \\\\ a_{21}x_1+a_{22}x_2+a_{23}x_3 &=b_2 \\\\ a_{31}x_1+a_{32}x_2+a_{33}x_3 &=b_3 \\\\ \\begin{bmatrix} a_{11} & a_{12} & a_{13}\\\\ a_{21} & a_{22}& a_{21}\\\\ a_{31}& a_{32} &a_{33} \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}&= \\begin{bmatrix} b_1\\\\ b_2\\\\ b_3 \\end{bmatrix} \\end{aligned}$$\n\nif $|A|\\neq 0$ then AX=B can be written as $X=A^{-1}B$\n\nIt leads unique solutions.\n\nIf $|A|\\neq 0$ then $\\lambda _1 \\cdot \\lambda _2\\cdot \\lambda _3\\neq 0$ each $\\lambda _i$ is non-zero.\n\nIf $|A|\\neq 0$ then all the row (column) vectors of A are linearly independent.\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "markdown": "$$\\begin{aligned} a_{11}x_1+a_{12}x_2+a_{13}x_3 &=b_1 \\\\ a_{21}x_1+a_{22}x_2+a_{23}x_3 &=b_2 \\\\ a_{31}x_1+a_{32}x_2+a_{33}x_3 &=b_3 \\\\ \\begin{bmatrix} a_{11} & a_{12} & a_{13}\\\\ a_{21} & a_{22}& a_{21}\\\\ a_{31}& a_{32} &a_{33} \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}&= \\begin{bmatrix} b_1\\\\ b_2\\\\ b_3 \\end{bmatrix} \\end{aligned}$$\n\nif $|A|\\neq 0$ then AX=B can be written as $X=A^{-1}B$\n\nIt leads unique solutions.\n\nIf $|A|\\neq 0$ then $\\lambda _1 \\cdot \\lambda _2\\cdot \\lambda _3\\neq 0$ each $\\lambda _i$ is non-zero.\n\nIf $|A|\\neq 0$ then all the row (column) vectors of A are linearly independent.",
+        "images": []
       }
     },
     "pp:ee:2015:q3-s2": {
@@ -129,7 +127,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Coordinate Systems and Vector Calculus",
-        "markdown": "Stokes theorem $\\oint \\vec{A}\\cdot dl=\\int \\int (\\triangledown \\times A)\\cdot \\hat{n}ds$\n\nGauss theorem $\\int \\int D\\cdot ds=Q$\n\nDivergence theorem $\\oint \\oint A\\cdot \\hat{n}ds=\\int \\int \\int \\triangledown \\cdot \\bar{A}dV$\n\nCauchy integral theorem $\\oint _cf(z)dz=0$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Stokes theorem $\\oint \\vec{A}\\cdot dl=\\int \\int (\\triangledown \\times A)\\cdot \\hat{n}ds$\n\nGauss theorem $\\int \\int D\\cdot ds=Q$\n\nDivergence theorem $\\oint \\oint A\\cdot \\hat{n}ds=\\int \\int \\int \\triangledown \\cdot \\bar{A}dV$\n\nCauchy integral theorem $\\oint _cf(z)dz=0$",
+        "images": []
       }
     },
     "pp:ee:2015:q4-s2": {
@@ -170,7 +169,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "Given that,\n\n$f(t)=2\\sqrt{\\frac{t}{\\pi}}\\rightleftharpoons F(s)=s^{-3/2}$\n\nBy using property of differentiation In time,\n\n$$\\begin{aligned} \\frac{df(t)}{dt}&\\rightleftharpoons sF(s) \\\\ \\Rightarrow \\; \\frac{2}{\\sqrt{\\pi}}\\cdot \\frac{1}{2}t^{-1/2}&\\rightleftharpoons sF(s) \\\\ \\Rightarrow \\; \\frac{1}{\\sqrt{\\pi t}}&\\rightleftharpoons s\\cdot s^{-3/2} \\\\ \\Rightarrow \\; \\frac{1}{\\sqrt{\\pi t}}&\\rightleftharpoons s^{-1/2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given that,\n\n$f(t)=2\\sqrt{\\frac{t}{\\pi}}\\rightleftharpoons F(s)=s^{-3/2}$\n\nBy using property of differentiation In time,\n\n$$\\begin{aligned} \\frac{df(t)}{dt}&\\rightleftharpoons sF(s) \\\\ \\Rightarrow \\; \\frac{2}{\\sqrt{\\pi}}\\cdot \\frac{1}{2}t^{-1/2}&\\rightleftharpoons sF(s) \\\\ \\Rightarrow \\; \\frac{1}{\\sqrt{\\pi t}}&\\rightleftharpoons s\\cdot s^{-3/2} \\\\ \\Rightarrow \\; \\frac{1}{\\sqrt{\\pi t}}&\\rightleftharpoons s^{-1/2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q5-s2": {
@@ -209,10 +209,7 @@
           "galvanometers-voltmeters-and-ammeters"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical and Electronic Measurements** (specifically *Galvanometers, Voltmeters and Ammeters*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Galvanometers, Voltmeters and Ammeters**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *P-1 Q-2 R-3 S-3*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (P-1 Q-2 R-3 S-3)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q6-s2": {
       "question_uid": "pp:ee:2015:q6-s2",
@@ -252,7 +249,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "$$\\begin{aligned} p.f. &= 0.707\\\\ \\phi &= cos^{-1}(0.707)=45^{\\circ}\\\\ P&= 5kW\\\\ W_1 +W_2&= 5\\;\\;...(i)\\\\ \\tan \\phi &=\\frac{\\sqrt{3(W_1-W_2)}}{(W-1+W_2)} \\\\ (W-1+W_2) \\times 1 &= \\sqrt{3}(W_1-W_2) \\\\ W_1-W_2 &= \\frac{5}{\\sqrt{3}} \\;\\;...(ii)\\\\ \\text{From equation} & \\text{ (i) and (ii),} \\\\ W-1&= 3.94kW\\\\ W_2&= 1.06kW \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} p.f. &= 0.707\\\\ \\phi &= cos^{-1}(0.707)=45^{\\circ}\\\\ P&= 5kW\\\\ W_1 +W_2&= 5\\;\\;...(i)\\\\ \\tan \\phi &=\\frac{\\sqrt{3(W_1-W_2)}}{(W-1+W_2)} \\\\ (W-1+W_2) \\times 1 &= \\sqrt{3}(W_1-W_2) \\\\ W_1-W_2 &= \\frac{5}{\\sqrt{3}} \\;\\;...(ii)\\\\ \\text{From equation} & \\text{ (i) and (ii),} \\\\ W-1&= 3.94kW\\\\ W_2&= 1.06kW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q7-s2": {
@@ -291,7 +289,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-fd4775e4ee.webp\" />\n\n$V_{BUS} \\text{is} 100 kV_{rms}$\n\n$C_1=1\\mu F \\pm 10\\%$\n\n$C_2=9\\mu F \\pm 10\\%$\n\nTo get maximum output voltage we need minimum $C_2$ and maximum $C_1$,\n\nSo, $C_2=8.1\\mu F$ and  $C_1=1.1\\mu F$\n\nSo, $V_{out\\;rms}=\\left ( \\frac{C_1}{C_1+C_2} \\right )V_{BUS_{rms}}$\n\n$\\;\\;\\;=11.95kV$\n\nTherefore, the correct answer is **12** (acceptable range: [11.75, 12.25])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-fd4775e4ee.webp\" />\n\n$V_{BUS} \\text{is} 100 kV_{rms}$\n\n$C_1=1\\mu F \\pm 10\\%$\n\n$C_2=9\\mu F \\pm 10\\%$\n\nTo get maximum output voltage we need minimum $C_2$ and maximum $C_1$,\n\nSo, $C_2=8.1\\mu F$ and  $C_1=1.1\\mu F$\n\nSo, $V_{out\\;rms}=\\left ( \\frac{C_1}{C_1+C_2} \\right )V_{BUS_{rms}}$\n\n$\\;\\;\\;=11.95kV$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-fd4775e4ee.webp"
+        ]
       }
     },
     "pp:ee:2015:q8-s2": {
@@ -332,7 +333,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "Given,\n\n$$\\begin{aligned} 100 \\pi RC&=50\\\\ 100 \\pi\\cdot \\frac{RC}{2}&=25\\\\ \\omega \\tau &=25 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-9f62e32dac.webp\" />\n\nFor one cycle $\\omega \\tau =2 \\pi \\; rad=6.28$\n\n$[\\omega \\tau =25] \\gt \\gt [\\omega \\tau =2 \\pi \\; rad=6.28]$\n\nEach capacitor voltage is approximately equal to\n\n$$\\begin{aligned} V_m&=100V \\\\ V_0&=2V_m\\simeq 200V \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given,\n\n$$\\begin{aligned} 100 \\pi RC&=50\\\\ 100 \\pi\\cdot \\frac{RC}{2}&=25\\\\ \\omega \\tau &=25 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-9f62e32dac.webp\" />\n\nFor one cycle $\\omega \\tau =2 \\pi \\; rad=6.28$\n\n$[\\omega \\tau =25] \\gt \\gt [\\omega \\tau =2 \\pi \\; rad=6.28]$\n\nEach capacitor voltage is approximately equal to\n\n$$\\begin{aligned} V_m&=100V \\\\ V_0&=2V_m\\simeq 200V \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-9f62e32dac.webp"
+        ]
       }
     },
     "pp:ee:2015:q9-s2": {
@@ -373,7 +377,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "Given that,\n\nat the interface (y=0) there is no surface charge.\n\nRegion 1 ($y \\lt 0$) has $\\varepsilon _r=2$\n\nRegion 2 ($y \\gt 0$) has $\\varepsilon _r=5$\n\nElectric field in region 1 is $3a_x+4a_y+2a_z$\n\nNormal component of electric field is $4a_y$ tangential component of electric field is $3a_x+2a_y$\n\nNow, $E_1=E_{1t}+E_{1n}$\n\nThe tangentail component of $E_1=$ tangentail component of  $E_2$\n\n$E_{1t}=E_{2t}=3a_x+2a_z$\n\n$$\\begin{aligned} \\varepsilon _1 E_{1n}&=\\varepsilon _2 E_{2n}\\\\ E_{2n}&=\\frac{\\varepsilon _1 \\times 4a_y}{\\varepsilon _2} \\\\ &= \\frac{2 \\times 4a_y}{5}=1.6a_y\\\\ E_2&=E_{2t}+E_{2n}\\\\ &=3a_x+1.6a_y+2a_z \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given that,\n\nat the interface (y=0) there is no surface charge.\n\nRegion 1 ($y \\lt 0$) has $\\varepsilon _r=2$\n\nRegion 2 ($y \\gt 0$) has $\\varepsilon _r=5$\n\nElectric field in region 1 is $3a_x+4a_y+2a_z$\n\nNormal component of electric field is $4a_y$ tangential component of electric field is $3a_x+2a_y$\n\nNow, $E_1=E_{1t}+E_{1n}$\n\nThe tangentail component of $E_1=$ tangentail component of  $E_2$\n\n$E_{1t}=E_{2t}=3a_x+2a_z$\n\n$$\\begin{aligned} \\varepsilon _1 E_{1n}&=\\varepsilon _2 E_{2n}\\\\ E_{2n}&=\\frac{\\varepsilon _1 \\times 4a_y}{\\varepsilon _2} \\\\ &= \\frac{2 \\times 4a_y}{5}=1.6a_y\\\\ E_2&=E_{2t}+E_{2n}\\\\ &=3a_x+1.6a_y+2a_z \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q10-s2": {
@@ -412,7 +417,10 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Time Varying Fields",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-67749a866f.webp\" />\n\nThe circular turn rotate with 60 rpm, let the angle made by ring w.r.t. x-axis $\\theta$\n\nand    $\\;\\;\\; \\theta =\\omega _0 t$\n\nthe turn rotate at 60 rpm,\n\nso, $\\;\\;\\; \\omega _0=2 \\pi$\n\nSo, the flux flowing through the circular turn wil be\n\n$$\\begin{aligned} \\Psi &=(\\mu _0 H_z \\times \\text{Area of turn} \\times \\cos \\omega _0 t) \\\\ \\Psi &= 4 \\pi \\times 10^{-7} \\times 10^7\\; A/m \\times \\pi \\times 1^2 \\times \\cos \\omega _0 t\\\\ &\\text{Maximum voltage induced is }  \\\\  \\\\ \\left. \\begin{matrix} \\frac{d\\Psi}{dt} \\end{matrix}\\right|_{max}&=(\\omega _0 \\times 4 \\pi \\times \\pi \\sin \\omega _0 t)_{max}\\\\ V_{max}&=(4 \\pi^2 \\times 2 \\pi)=248.05 volts \\end{aligned}$$\n\nTherefore, the correct answer is **248** (acceptable range: [246, 250])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-67749a866f.webp\" />\n\nThe circular turn rotate with 60 rpm, let the angle made by ring w.r.t. x-axis $\\theta$\n\nand    $\\;\\;\\; \\theta =\\omega _0 t$\n\nthe turn rotate at 60 rpm,\n\nso, $\\;\\;\\; \\omega _0=2 \\pi$\n\nSo, the flux flowing through the circular turn wil be\n\n$$\\begin{aligned} \\Psi &=(\\mu _0 H_z \\times \\text{Area of turn} \\times \\cos \\omega _0 t) \\\\ \\Psi &= 4 \\pi \\times 10^{-7} \\times 10^7\\; A/m \\times \\pi \\times 1^2 \\times \\cos \\omega _0 t\\\\ &\\text{Maximum voltage induced is }  \\\\  \\\\ \\left. \\begin{matrix} \\frac{d\\Psi}{dt} \\end{matrix}\\right|_{max}&=(\\omega _0 \\times 4 \\pi \\times \\pi \\sin \\omega _0 t)_{max}\\\\ V_{max}&=(4 \\pi^2 \\times 2 \\pi)=248.05 volts \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-67749a866f.webp"
+        ]
       }
     },
     "pp:ee:2015:q11-s2": {
@@ -451,7 +459,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "$V_i=2 \\sin (2\\pi \\times 2000t)$\n\nThe transfer function of the system is\n\n$H(s)=\\frac{1000}{(1000 \\times 0.1 \\times 10^{-6}s+1 )1000}$\n\n$H(s)=\\frac{-1}{(10^{-4}s+1)}$\n\nThe input is $2\\sin (2\\pi \\times 2000t)$\n\n$\\omega =4000 \\pi$\n\n$V_0=2|H(j\\omega )|_{\\omega =4000\\pi} \\times \\sin(4000\\pi t-\\phi )$\n\n$Output=1.245 \\sin (4000\\pi t-51.46^{\\circ})$\n\nSo, amplitude of output is 1.245.\n\nTherefore, the correct answer is **1.25** (acceptable range: [1.1, 1.4])."
+        "markdown": "$V_i=2 \\sin (2\\pi \\times 2000t)$\n\nThe transfer function of the system is\n\n$H(s)=\\frac{1000}{(1000 \\times 0.1 \\times 10^{-6}s+1 )1000}$\n\n$H(s)=\\frac{-1}{(10^{-4}s+1)}$\n\nThe input is $2\\sin (2\\pi \\times 2000t)$\n\n$\\omega =4000 \\pi$\n\n$V_0=2|H(j\\omega )|_{\\omega =4000\\pi} \\times \\sin(4000\\pi t-\\phi )$\n\n$Output=1.245 \\sin (4000\\pi t-51.46^{\\circ})$\n\nSo, amplitude of output is 1.245.",
+        "images": []
       }
     },
     "pp:ee:2015:q12-s2": {
@@ -490,7 +499,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "CASE-I:\n\n$V_C=2V$\n\n$i_C=\\frac{10-2}{R_C} ......(i)$\n\n$10-i_BR_B-0.7=0$\n\n$i_B=\\frac{10-0.7}{R_B} .......(ii)$\n\n<img src=\"/question-images/ee/2015/ee-2015-97624f30f1.webp\" />\n\nCASE-II\n\nwhen\n\n$V_C=4V$\n\n$R_C\\rightarrow R'_C$\n\n$i_C=\\frac{10-4}{R'_C} .....(iii)$\n\nFrom above equation (iii) and (i),\n\n$\\frac{10-4}{R'_C}= \\frac{10-2}{R_C}$\n\n$\\Rightarrow \\frac{R'_C}{R_C}=\\frac{6}{8}=\\frac{3}{4}=0.75$\n\nTherefore, the correct answer is **0.75** (acceptable range: [0.74, 0.76])."
+        "markdown": "CASE-I:\n\n$V_C=2V$\n\n$i_C=\\frac{10-2}{R_C} ......(i)$\n\n$10-i_BR_B-0.7=0$\n\n$i_B=\\frac{10-0.7}{R_B} .......(ii)$\n\n<img src=\"/question-images/ee/2015/ee-2015-97624f30f1.webp\" />\n\nCASE-II\n\nwhen\n\n$V_C=4V$\n\n$R_C\\rightarrow R'_C$\n\n$i_C=\\frac{10-4}{R'_C} .....(iii)$\n\nFrom above equation (iii) and (i),\n\n$\\frac{10-4}{R'_C}= \\frac{10-2}{R_C}$\n\n$\\Rightarrow \\frac{R'_C}{R_C}=\\frac{6}{8}=\\frac{3}{4}=0.75$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-97624f30f1.webp"
+        ]
       }
     },
     "pp:ee:2015:q13-s2": {
@@ -531,7 +543,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "The SOP form of F is ( shown in K-map)\n\n<img src=\"/question-images/ee/2015/ee-2015-c42bb523d2.webp\" />\n\nSo,POS form can be formed using '0' from the K-map.\n\n$POS=(A+\\bar{B}+C)(\\bar{A}+B+C)(\\bar{A}+\\bar{B}+C)$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The SOP form of F is ( shown in K-map)\n\n<img src=\"/question-images/ee/2015/ee-2015-c42bb523d2.webp\" />\n\nSo,POS form can be formed using '0' from the K-map.\n\n$POS=(A+\\bar{B}+C)(\\bar{A}+B+C)(\\bar{A}+\\bar{B}+C)$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-c42bb523d2.webp"
+        ]
       }
     },
     "pp:ee:2015:q14-s2": {
@@ -572,7 +587,11 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "To check the type of system:\n\nwe apply a delta function at input $V_i=\\delta (t)$\n\n$V(f)=1\\forall f$\n\n<img src=\"/question-images/ee/2015/ee-2015-0c8728877e.webp\" />\n\nSo, voltage at A will be same as voltage at output $V_o$. $V_A$ will be equal to voltage due to $F_1 +$ voltage due to $F_2$. Since, $f_1 \\lt f_2$, so $V_A/V_i$ will be\n\n<img src=\"/question-images/ee/2015/ee-2015-a89cb88bfe.webp\" />\n\nso, the system works as a band stop filter.\n\nTherefore, the correct answer is **B**."
+        "markdown": "To check the type of system:\n\nwe apply a delta function at input $V_i=\\delta (t)$\n\n$V(f)=1\\forall f$\n\n<img src=\"/question-images/ee/2015/ee-2015-0c8728877e.webp\" />\n\nSo, voltage at A will be same as voltage at output $V_o$. $V_A$ will be equal to voltage due to $F_1 +$ voltage due to $F_2$. Since, $f_1 \\lt f_2$, so $V_A/V_i$ will be\n\n<img src=\"/question-images/ee/2015/ee-2015-a89cb88bfe.webp\" />\n\nso, the system works as a band stop filter.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-0c8728877e.webp",
+          "/question-images/ee/2015/ee-2015-a89cb88bfe.webp"
+        ]
       }
     },
     "pp:ee:2015:q15-s2": {
@@ -611,10 +630,7 @@
           "bjt-fet-and-their-biasing-circuits"
         ]
       },
-      "detailed_solution": {
-        "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Electronics** (specifically *BJT, FET and their Biasing Circuits*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **BJT, FET and their Biasing Circuits**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *Both the CB and BE junctions are forward biased.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (Both the CB and BE junctions are forward biased.)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q16-s2": {
       "question_uid": "pp:ee:2015:q16-s2",
@@ -654,7 +670,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
-        "markdown": "Initial value of $\\delta =\\delta _0$ at $t =t_1$ with both lines are in service of one of the line circuit breakes opened the $\\delta$ is increased for same time and stabilizes to new value of $\\delta$.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Initial value of $\\delta =\\delta _0$ at $t =t_1$ with both lines are in service of one of the line circuit breakes opened the $\\delta$ is increased for same time and stabilizes to new value of $\\delta$.",
+        "images": []
       }
     },
     "pp:ee:2015:q17-s2": {
@@ -695,7 +712,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "$$\\begin{aligned} Y_{BUS}&=\\begin{bmatrix} y_{11}+y_{12}+y_{13} &-y_{12} &-y_{13} \\\\ -y_{21} & y_{21}+y_{22}+y_{23} & -y_{23}\\\\ -y_{31}& -y_{32} & y_{31}+y_{32}+y_{33} \\end{bmatrix} \\\\ &= \\begin{bmatrix} -j6 & j3 & j4\\\\ j3& -j7 & j5\\\\ j4 & j5 & -j8 \\end{bmatrix} \\end{aligned}$$\n\nBy comparing for $Y_{33}$element\n\n$$\\begin{aligned} y_{31}+y_{32}+y_{30}&=-j8\\\\ (-j4)+(-j5)+y_{30}&=-j8\\\\ y_{30}&=j1 \\end{aligned}$$\n\nAfter compensating with 50% of shunt capacitance $=j1 \\times 0.5=j0.5$\n\nHence, new value $=-j8-j0.5=-j8.5$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} Y_{BUS}&=\\begin{bmatrix} y_{11}+y_{12}+y_{13} &-y_{12} &-y_{13} \\\\ -y_{21} & y_{21}+y_{22}+y_{23} & -y_{23}\\\\ -y_{31}& -y_{32} & y_{31}+y_{32}+y_{33} \\end{bmatrix} \\\\ &= \\begin{bmatrix} -j6 & j3 & j4\\\\ j3& -j7 & j5\\\\ j4 & j5 & -j8 \\end{bmatrix} \\end{aligned}$$\n\nBy comparing for $Y_{33}$element\n\n$$\\begin{aligned} y_{31}+y_{32}+y_{30}&=-j8\\\\ (-j4)+(-j5)+y_{30}&=-j8\\\\ y_{30}&=j1 \\end{aligned}$$\n\nAfter compensating with 50% of shunt capacitance $=j1 \\times 0.5=j0.5$\n\nHence, new value $=-j8-j0.5=-j8.5$",
+        "images": []
       }
     },
     "pp:ee:2015:q18-s2": {
@@ -736,7 +754,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-37e1e6c2a2.webp\" />\n\nInitially $(t=0^-)$ the inductor would be uncharged.\n\nSo, $I(0^+)=0$\n\nThe KVL in th loop will be\n\n$V=RI+L\\frac{dI}{dt}$\n\nAt $t=0^+$\n\n$V=RI(0^+)+L\\frac{dI}{dt}(0^+)$\n\nSince, $I(0^+)=0$\n\nSo, $\\frac{dI}{dt}(0^+)=\\frac{V}{L}$\n\nNow, lets differentiate the above equation\n\nSo,$$\\frac{dV}{dt}=R\\frac{dI}{dt}+L\\frac{d^2I}{dt^2}$$\n\n$$\\;\\;0=R\\frac{dI}{dt}+L\\frac{d^2I}{dt^2}$$\n\nAt $t=0^+$\n\n$$0=R\\frac{dI}{dt}(0^+)+L\\frac{d^2I}{dt^2}(0^+)$$\n\nSo, $$\\frac{d^2I}{dt^2}(0^+)=-\\frac{R}{L^2}\\cdot V$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-37e1e6c2a2.webp\" />\n\nInitially $(t=0^-)$ the inductor would be uncharged.\n\nSo, $I(0^+)=0$\n\nThe KVL in th loop will be\n\n$V=RI+L\\frac{dI}{dt}$\n\nAt $t=0^+$\n\n$V=RI(0^+)+L\\frac{dI}{dt}(0^+)$\n\nSince, $I(0^+)=0$\n\nSo, $\\frac{dI}{dt}(0^+)=\\frac{V}{L}$\n\nNow, lets differentiate the above equation\n\nSo,$$\\frac{dV}{dt}=R\\frac{dI}{dt}+L\\frac{d^2I}{dt^2}$$\n\n$$\\;\\;0=R\\frac{dI}{dt}+L\\frac{d^2I}{dt^2}$$\n\nAt $t=0^+$\n\n$$0=R\\frac{dI}{dt}(0^+)+L\\frac{d^2I}{dt^2}(0^+)$$\n\nSo, $$\\frac{d^2I}{dt^2}(0^+)=-\\frac{R}{L^2}\\cdot V$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-37e1e6c2a2.webp"
+        ]
       }
     },
     "pp:ee:2015:q19-s2": {
@@ -775,7 +796,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "Redrawing the circuit,\n\n<img src=\"/question-images/ee/2015/ee-2015-e71d47ee7e.webp\" />\n\nBridge is balance, so current flowing through $2\\Omega$ resistor is 0A.\n\nTherefore, the correct answer is **0**."
+        "markdown": "Redrawing the circuit,\n\n<img src=\"/question-images/ee/2015/ee-2015-e71d47ee7e.webp\" />\n\nBridge is balance, so current flowing through $2\\Omega$ resistor is 0A.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-e71d47ee7e.webp"
+        ]
       }
     },
     "pp:ee:2015:q20-s2": {
@@ -816,7 +840,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-0e8969c59c.webp\" />\n\n$(R_{eq})_B=\\frac{2.5}{a^2}$\n\n$(2eq)_B=\\left [ \\frac{2.5}{a^2}+j\\omega (1 \\times 10^{-3})\\right ]$\n\n$(2eq)_A={\\left [ \\frac{2.5}{a^2}+j\\omega (1 \\times 10^{-3})\\right ]}/b^2$\n\n$Z_{in}=\\frac{2.5}{a^2b^2}+\\frac{ j\\omega 10^{-3}}{b^2}+\\frac{1}{j\\omega (10 \\times 10^{-5})}$\n\n$Z_{in}=\\frac{2.5}{a^2b^2}+j\\left [ \\frac{5 \\times 10^3 \\times 10^{-3}}{b^2} -\\frac{1}{5 \\times 10^3 \\times 10 \\times10^{-6}}\\right ] \\;...(i)$\n\nFrom problem,\n\n$Z_{in}=2.5 \\;\\;...(ii)$\n\nFrom equation (i) and (ii),\n\n$a^2b^2=1$\n\n$\\frac{5}{b^2}-\\frac{1}{5 \\times 10^{-2}}=0$\n\n$\\Rightarrow \\; b=0.5 \\text{ and } a=2$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-0e8969c59c.webp\" />\n\n$(R_{eq})_B=\\frac{2.5}{a^2}$\n\n$(2eq)_B=\\left [ \\frac{2.5}{a^2}+j\\omega (1 \\times 10^{-3})\\right ]$\n\n$(2eq)_A={\\left [ \\frac{2.5}{a^2}+j\\omega (1 \\times 10^{-3})\\right ]}/b^2$\n\n$Z_{in}=\\frac{2.5}{a^2b^2}+\\frac{ j\\omega 10^{-3}}{b^2}+\\frac{1}{j\\omega (10 \\times 10^{-5})}$\n\n$Z_{in}=\\frac{2.5}{a^2b^2}+j\\left [ \\frac{5 \\times 10^3 \\times 10^{-3}}{b^2} -\\frac{1}{5 \\times 10^3 \\times 10 \\times10^{-6}}\\right ] \\;...(i)$\n\nFrom problem,\n\n$Z_{in}=2.5 \\;\\;...(ii)$\n\nFrom equation (i) and (ii),\n\n$a^2b^2=1$\n\n$\\frac{5}{b^2}-\\frac{1}{5 \\times 10^{-2}}=0$\n\n$\\Rightarrow \\; b=0.5 \\text{ and } a=2$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-0e8969c59c.webp"
+        ]
       }
     },
     "pp:ee:2015:q21-s2": {
@@ -855,7 +882,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Electrical Drives",
-        "markdown": "$T_L=2.78 \\times \\omega$\n\nAfter neglecting rotational losses,\n\n$(T_{sh}=T_a)=T_L$\n\nAt rated load,\n\n$$\\begin{aligned} T_a&=500Nm=2.78 \\times \\omega \\\\ \\omega _r&=179.85 \\\\ \\omega _r&\\simeq 180 \\text{ rad/sec} \\end{aligned}$$\n\nTherefore, the correct answer is **180** (acceptable range: [177, 183])."
+        "markdown": "$T_L=2.78 \\times \\omega$\n\nAfter neglecting rotational losses,\n\n$(T_{sh}=T_a)=T_L$\n\nAt rated load,\n\n$$\\begin{aligned} T_a&=500Nm=2.78 \\times \\omega \\\\ \\omega _r&=179.85 \\\\ \\omega _r&\\simeq 180 \\text{ rad/sec} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q22-s2": {
@@ -894,7 +922,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b9d99442b9.webp\" />\n\n$$\\begin{aligned} i &=\\frac{210}{1+j0.22} \\\\ &=205.09\\angle -12.40^{\\circ} \\\\ \\text{Active power} &= (205.09)^2 \\times 1=P_g\\\\ P_m &= (1-0.05) \\times P_g \\\\ P_m &= 39958.81 \\; \\text{Watt}\\\\ \\text{Torque} &= \\frac{39958.81 \\times 60}{2 \\pi \\times 2850} \\times 3\\\\ &= 133.88 \\times 3=401.64 N-m \\end{aligned}$$\n\nTherefore, the correct answer is **401.5** (acceptable range: [400, 403])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b9d99442b9.webp\" />\n\n$$\\begin{aligned} i &=\\frac{210}{1+j0.22} \\\\ &=205.09\\angle -12.40^{\\circ} \\\\ \\text{Active power} &= (205.09)^2 \\times 1=P_g\\\\ P_m &= (1-0.05) \\times P_g \\\\ P_m &= 39958.81 \\; \\text{Watt}\\\\ \\text{Torque} &= \\frac{39958.81 \\times 60}{2 \\pi \\times 2850} \\times 3\\\\ &= 133.88 \\times 3=401.64 N-m \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-b9d99442b9.webp"
+        ]
       }
     },
     "pp:ee:2015:q23-s2": {
@@ -935,7 +966,11 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "A=2, separately excited dc machine\n\n$R_a\\approx 0, 230V, 5kW,$  $N=1200 \\text{rpm}$\n\nFor wave winding,\n\n$230=\\frac{\\phi \\times 4 \\times 1200 \\times Z_1}{60 \\times 2}\\;...(i)$\n\nFor lap winding,\n\n$V=\\frac{\\phi \\times 4 \\times 1200 \\times Z_1}{60 \\times 4}\\;...(ii)$\n\nDividing equation (i) by equation (ii),\n\n$\\frac{230}{V}=\\frac{4}{2} \\Rightarrow \\; V=115V$\n\nFor Power:\n\nWave:\n\n<img src=\"/question-images/ee/2015/ee-2015-52107c1152.webp\" />\n\nTotal conductor in single path $=\\frac{Z}{2}$\n\nLet, resistance of $=\\frac{Z}{2}$ conductor =R\n\nTotal resistance,\n\n$P_1=\\frac{V_1^2}{R_1}=\\frac{V_1^2}{R/2}\\;...(i)$\n\n<img src=\"/question-images/ee/2015/ee-2015-966be2f5b1.webp\" />\n\nTotal conductor in single path $=\\frac{Z}{4}$\n\nLet, resistance of single path $=\\frac{R}{2}$\n\nTotal resistance $=\\frac{R/2}{4}=\\frac{R}{8}$\n\n$P_2=\\frac{V_2^2}{R_2}=\\frac{V_2^2}{R/8}\\;...(ii)$\n\nBy equation (i) and (ii),\n\n$\\frac{P_1}{P_2}=\\frac{V_1^2/(R/2)}{V_2^2(R/8)}$\n\n$\\;\\;\\;=\\frac{(230)^2}{R/2}\\times \\frac{R/8}{(715)^2}=1$\n\nTherefore, the correct answer is **B**."
+        "markdown": "A=2, separately excited dc machine\n\n$R_a\\approx 0, 230V, 5kW,$  $N=1200 \\text{rpm}$\n\nFor wave winding,\n\n$230=\\frac{\\phi \\times 4 \\times 1200 \\times Z_1}{60 \\times 2}\\;...(i)$\n\nFor lap winding,\n\n$V=\\frac{\\phi \\times 4 \\times 1200 \\times Z_1}{60 \\times 4}\\;...(ii)$\n\nDividing equation (i) by equation (ii),\n\n$\\frac{230}{V}=\\frac{4}{2} \\Rightarrow \\; V=115V$\n\nFor Power:\n\nWave:\n\n<img src=\"/question-images/ee/2015/ee-2015-52107c1152.webp\" />\n\nTotal conductor in single path $=\\frac{Z}{2}$\n\nLet, resistance of $=\\frac{Z}{2}$ conductor =R\n\nTotal resistance,\n\n$P_1=\\frac{V_1^2}{R_1}=\\frac{V_1^2}{R/2}\\;...(i)$\n\n<img src=\"/question-images/ee/2015/ee-2015-966be2f5b1.webp\" />\n\nTotal conductor in single path $=\\frac{Z}{4}$\n\nLet, resistance of single path $=\\frac{R}{2}$\n\nTotal resistance $=\\frac{R/2}{4}=\\frac{R}{8}$\n\n$P_2=\\frac{V_2^2}{R_2}=\\frac{V_2^2}{R/8}\\;...(ii)$\n\nBy equation (i) and (ii),\n\n$\\frac{P_1}{P_2}=\\frac{V_1^2/(R/2)}{V_2^2(R/8)}$\n\n$\\;\\;\\;=\\frac{(230)^2}{R/2}\\times \\frac{R/8}{(715)^2}=1$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-52107c1152.webp",
+          "/question-images/ee/2015/ee-2015-966be2f5b1.webp"
+        ]
       }
     },
     "pp:ee:2015:q24-s2": {
@@ -974,7 +1009,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$\\frac{5}{(s+2)^2+5^2}+\\frac{(s+2)}{(s+2)^2+5^2}$\n\nPutting $s=0,$\n\n$\\;\\;=\\frac{5}{2^2+5^2}+\\frac{2}{2^2+5^2}$\n\n$\\;\\;=\\frac{5}{29}+\\frac{2}{29}=\\frac{7}{29}=0.241$\n\nTherefore, the correct answer is **0.24** (acceptable range: [0.23, 0.25])."
+        "markdown": "$\\frac{5}{(s+2)^2+5^2}+\\frac{(s+2)}{(s+2)^2+5^2}$\n\nPutting $s=0,$\n\n$\\;\\;=\\frac{5}{2^2+5^2}+\\frac{2}{2^2+5^2}$\n\n$\\;\\;=\\frac{5}{29}+\\frac{2}{29}=\\frac{7}{29}=0.241$",
+        "images": []
       }
     },
     "pp:ee:2015:q25-s2": {
@@ -1015,7 +1051,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$G_1(s)=\\frac{1}{s}$\n\n$G_2(s)=s$\n\n$G_1(s) \\times G_2(s)=\\frac{1}{s}\\cdot s=1$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$G_1(s)=\\frac{1}{s}$\n\n$G_2(s)=s$\n\n$G_1(s) \\times G_2(s)=\\frac{1}{s}\\cdot s=1$",
+        "images": []
       }
     },
     "pp:ee:2015:q26-s2": {
@@ -1053,8 +1090,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\text{Volume} &=\\int \\int f(x,y)\\;dx\\;dy \\\\ &= \\int_{0}^{1}\\int_{0}^{y}e^x \\;dx\\;dy\\\\ &= \\int_{0}^{1}[e^x]_0^y \\;dy\\\\ &=\\int_{0}^{1} (e^y-1)\\; dy\\\\ &=(e^y-y)|_0^1 \\\\ &=(e-1)-(1-0) \\\\ &=e-2=0.71828 \\end{aligned}$$\n\nTherefore, the correct answer is **0.73** (acceptable range: [0.7, 0.76])."
+        "concept": "Engineering Mathematics (EE) - Calculus",
+        "markdown": "$$\\begin{aligned} \\text{Volume} &=\\int \\int f(x,y)\\;dx\\;dy \\\\ &= \\int_{0}^{1}\\int_{0}^{y}e^x \\;dx\\;dy\\\\ &= \\int_{0}^{1}[e^x]_0^y \\;dy\\\\ &=\\int_{0}^{1} (e^y-1)\\; dy\\\\ &=(e^y-y)|_0^1 \\\\ &=(e-1)-(1-0) \\\\ &=e-2=0.71828 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q27-s2": {
@@ -1094,8 +1132,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "From the given information, we can create a joint probability table as follows:\n\n<img src=\"/question-images/ee/2015/ee-2015-f6b9ad9309.webp\" />\n\nFrom the table, we can get\n\n$P(H_R)=0.58, P(T_R)=0.42, P(H_S)=0.52, P(T_S)=0.48$\n\nSo, Coins R and S are biased (not fair). So choises (B) and (C) are both false.\n\nThe coin tosses are not independent since their probability of heads and tails is not 0.5.\n\nR and S are dependent.\n\nIf R and S were independent then all the joint probabilities will be equal to the product of the marginal probabilities.\n\nFor example\n\n$P(H_R\\cap H_S)=0.28$\n\n$P(H_R)\\cdot P(H_S)=0.58 \\times 0.52=0.3016$\n\nClearly $P(H_R\\cap H_S) \\neq P(H_R)\\cdot P(H_S)$\n\nSo R and S are not independent.\n\ni.e. R and S are dependent. So, Choise (A) is also false and choise (D) is true.\n\nTherefore, the correct answer is **D**."
+        "concept": "Engineering Mathematics (EE) - Numerical Methods",
+        "markdown": "From the given information, we can create a joint probability table as follows:\n\n<img src=\"/question-images/ee/2015/ee-2015-f6b9ad9309.webp\" />\n\nFrom the table, we can get\n\n$P(H_R)=0.58, P(T_R)=0.42, P(H_S)=0.52, P(T_S)=0.48$\n\nSo, Coins R and S are biased (not fair). So choises (B) and (C) are both false.\n\nThe coin tosses are not independent since their probability of heads and tails is not 0.5.\n\nR and S are dependent.\n\nIf R and S were independent then all the joint probabilities will be equal to the product of the marginal probabilities.\n\nFor example\n\n$P(H_R\\cap H_S)=0.28$\n\n$P(H_R)\\cdot P(H_S)=0.58 \\times 0.52=0.3016$\n\nClearly $P(H_R\\cap H_S) \\neq P(H_R)\\cdot P(H_S)$\n\nSo R and S are not independent.\n\ni.e. R and S are dependent. So, Choise (A) is also false and choise (D) is true.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-f6b9ad9309.webp"
+        ]
       }
     },
     "pp:ee:2015:q28-s2": {
@@ -1133,8 +1174,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$$\\begin{aligned} \\frac{di}{dt} &=0.2i \\\\ \\frac{di}{i}&=0.2 \\; dt \\\\ \\int \\frac{di}{i} &=\\int 0.2 \\; dt \\\\ \\log i &=0.2t+ \\log C \\\\ \\log i-\\log C &=0.2t \\\\ \\log \\left ( \\frac{i}{C} \\right ) &= 0.2t\\\\ \\frac{i}{C} &= e^{0.2t}\\\\ i &=C e^{0.2t} \\\\ i(4)=10\\;\\;i.e.\\;\\;i &=10 \\text{ when } t=4 \\\\ 10&=Ce^{(0.2)4} \\\\ 10&= C(2.225)\\\\ C&=4.493 \\\\ i&=(4.493)e^{0.2t} \\\\ \\text{ when, } i&=-5 \\\\ i&=(4.493)e^{(0.2)(-5)}\\\\ &=1.652 \\end{aligned}$$\n\nTherefore, the correct answer is **1.65** (acceptable range: [1.6, 1.7])."
+        "concept": "Engineering Mathematics (EE) - Numerical Methods",
+        "markdown": "$$\\begin{aligned} \\frac{di}{dt} &=0.2i \\\\ \\frac{di}{i}&=0.2 \\; dt \\\\ \\int \\frac{di}{i} &=\\int 0.2 \\; dt \\\\ \\log i &=0.2t+ \\log C \\\\ \\log i-\\log C &=0.2t \\\\ \\log \\left ( \\frac{i}{C} \\right ) &= 0.2t\\\\ \\frac{i}{C} &= e^{0.2t}\\\\ i &=C e^{0.2t} \\\\ i(4)=10\\;\\;i.e.\\;\\;i &=10 \\text{ when } t=4 \\\\ 10&=Ce^{(0.2)4} \\\\ 10&= C(2.225)\\\\ C&=4.493 \\\\ i&=(4.493)e^{0.2t} \\\\ \\text{ when, } i&=-5 \\\\ i&=(4.493)e^{(0.2)(-5)}\\\\ &=1.652 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q29-s2": {
@@ -1175,7 +1217,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
-        "markdown": "$$\\begin{aligned} \\text{Since, }x(t) &=\\left\\{\\begin{matrix} e^{j10t} &\\text{for }|t|\\leq 1 \\\\ 0& \\text{for }|t|\\gt 1 \\end{matrix}\\right. \\\\ \\text{as, } X(\\omega )&=\\int_{-\\infty }^{\\infty } x(t)e^{-j\\omega t}dt\\\\ \\text{so, } X(\\omega )&=\\int_{-1}^{1 } e^{j10t}e^{-j\\omega t}dt\\\\ &=\\int_{-1}^{1 } e^{jt(10-\\omega )}dt\\\\ &= \\frac{1}{j(10-\\omega )}[e^{j(10-\\omega )}- e^{-j(10-\\omega )}]\\\\ X(\\omega ) &=\\frac{2 \\sin (\\omega -10)}{(\\omega -10)} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\text{Since, }x(t) &=\\left\\{\\begin{matrix} e^{j10t} &\\text{for }|t|\\leq 1 \\\\ 0& \\text{for }|t|\\gt 1 \\end{matrix}\\right. \\\\ \\text{as, } X(\\omega )&=\\int_{-\\infty }^{\\infty } x(t)e^{-j\\omega t}dt\\\\ \\text{so, } X(\\omega )&=\\int_{-1}^{1 } e^{j10t}e^{-j\\omega t}dt\\\\ &=\\int_{-1}^{1 } e^{jt(10-\\omega )}dt\\\\ &= \\frac{1}{j(10-\\omega )}[e^{j(10-\\omega )}- e^{-j(10-\\omega )}]\\\\ X(\\omega ) &=\\frac{2 \\sin (\\omega -10)}{(\\omega -10)} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q30-s2": {
@@ -1214,7 +1257,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "True value of power\n\n$=VI \\cos \\phi$\n\n$=30 \\times 25 \\times 0.8 =600W$\n\nIn the give diagram,\n\nMeasured power=Power loss in pressure coil +Power in loead\n\n$=\\frac{V^2}{R_P} +VI \\cos \\phi$\n\n$=\\frac{30^2}{1000}+600W=600.9W$\n\nTherefore, percentage error in wattmeter reading [/latex]\n\n$=\\frac{\\text{Measured value}-\\text{True value}}{\\text{True value}}$\n\n$=\\frac{600.9-600}{600}\\times 100=0.15\\%$\n\nTherefore, the correct answer is **0.15** (acceptable range: [0.14, 0.16])."
+        "markdown": "True value of power\n\n$=VI \\cos \\phi$\n\n$=30 \\times 25 \\times 0.8 =600W$\n\nIn the give diagram,\n\nMeasured power=Power loss in pressure coil +Power in loead\n\n$=\\frac{V^2}{R_P} +VI \\cos \\phi$\n\n$=\\frac{30^2}{1000}+600W=600.9W$\n\nTherefore, percentage error in wattmeter reading [/latex]\n\n$=\\frac{\\text{Measured value}-\\text{True value}}{\\text{True value}}$\n\n$=\\frac{600.9-600}{600}\\times 100=0.15\\%$",
+        "images": []
       }
     },
     "pp:ee:2015:q31-s2": {
@@ -1252,7 +1296,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "Condition for boundary of inductor current $(i_L)$\n\n$$\\begin{aligned} L_C&=L=\\left ( \\frac{1-\\alpha }{2f} \\right )R\\\\ 5 \\times 10^{-3}&=\\left ( \\frac{1-0.6}{2 \\times 100 \\times 10^3} \\right )R\\\\ R&=2.5kW \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Condition for boundary of inductor current $(i_L)$\n\n$$\\begin{aligned} L_C&=L=\\left ( \\frac{1-\\alpha }{2f} \\right )R\\\\ 5 \\times 10^{-3}&=\\left ( \\frac{1-0.6}{2 \\times 100 \\times 10^3} \\right )R\\\\ R&=2.5kW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q32-s2": {
@@ -1290,7 +1335,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b37446ea76.webp\" />\n\nDuring the interval $0 \\leq t\\leq T_{on}$\n\n$V_S=V_L$\n\nDuring the interval $T_{on} \\leq t\\leq T$\n\n$V_L=-(V_0-V_S)$\n\n$V_S=15V$\n\n$-(V_0-V_S)=-45V$\n\n$V_0=60V$\n\nHence, it is boost regular,\n\n$$\\begin{aligned} V_0 &= \\left ( \\frac{1}{1-\\alpha } \\right )V_s\\\\ 60&= \\left ( \\frac{1}{1-\\alpha } \\right )15\\\\ \\alpha &= 0.75 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b37446ea76.webp\" />\n\nDuring the interval $0 \\leq t\\leq T_{on}$\n\n$V_S=V_L$\n\nDuring the interval $T_{on} \\leq t\\leq T$\n\n$V_L=-(V_0-V_S)$\n\n$V_S=15V$\n\n$-(V_0-V_S)=-45V$\n\n$V_0=60V$\n\nHence, it is boost regular,\n\n$$\\begin{aligned} V_0 &= \\left ( \\frac{1}{1-\\alpha } \\right )V_s\\\\ 60&= \\left ( \\frac{1}{1-\\alpha } \\right )15\\\\ \\alpha &= 0.75 \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-b37446ea76.webp"
+        ]
       }
     },
     "pp:ee:2015:q33-s2": {
@@ -1328,7 +1376,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-68ec723288.webp\" />\n\n$$\\begin{aligned} V_0&=\\frac{1}{2 \\pi}\\left [ \\int_{\\alpha }^{\\pi}V_m \\sin \\omega t\\cdot d(\\omega t)-\\int_{\\pi }^{2\\pi}V_m \\sin \\omega t\\cdot d(\\omega t) \\right ] \\\\ &=\\frac{V_m}{2 \\pi}[3+\\cos \\alpha ]\\\\ &=\\frac{100}{2 \\pi}[3+ \\cos30^{\\circ}]=61.53V \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-68ec723288.webp\" />\n\n$$\\begin{aligned} V_0&=\\frac{1}{2 \\pi}\\left [ \\int_{\\alpha }^{\\pi}V_m \\sin \\omega t\\cdot d(\\omega t)-\\int_{\\pi }^{2\\pi}V_m \\sin \\omega t\\cdot d(\\omega t) \\right ] \\\\ &=\\frac{V_m}{2 \\pi}[3+\\cos \\alpha ]\\\\ &=\\frac{100}{2 \\pi}[3+ \\cos30^{\\circ}]=61.53V \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-68ec723288.webp"
+        ]
       }
     },
     "pp:ee:2015:q34-s2": {
@@ -1367,10 +1418,7 @@
           "linear-time-invariant-systems"
         ]
       },
-      "detailed_solution": {
-        "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Signals and Systems** (specifically *Linear Time Invariant Systems*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Linear Time Invariant Systems**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *The unit step response will be bounded.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (The unit step response will be bounded.)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q35-s2": {
       "question_uid": "pp:ee:2015:q35-s2",
@@ -1410,7 +1458,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$y(n)$ is first difference of $x(n)$\n\n$$\\begin{aligned} \\text{so, } y(n)&=x(n)-x(n-1) \\\\ \\text{so, } Y(z)&=X(z)-z^{-1}X(z) \\\\ Y(z)&=(2z+4-4z^{-1}+3z^{-2})\\\\ &-(2+4z^{-1}-4z^{-2}+3z^{-3}) \\\\ Y(z) &=2z+2-8z^{-1}+7z^{-2}-3z^{-3} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$y(n)$ is first difference of $x(n)$\n\n$$\\begin{aligned} \\text{so, } y(n)&=x(n)-x(n-1) \\\\ \\text{so, } Y(z)&=X(z)-z^{-1}X(z) \\\\ Y(z)&=(2z+4-4z^{-1}+3z^{-2})\\\\ &-(2+4z^{-1}-4z^{-2}+3z^{-3}) \\\\ Y(z) &=2z+2-8z^{-1}+7z^{-2}-3z^{-3} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q36-s2": {
@@ -1451,7 +1500,10 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "Due to image of the charge, three new charges will be created as shown in figure\n\n<img src=\"/question-images/ee/2015/ee-2015-98b6cfd90c.webp\" />\n\nTotal force (4) due to (1), (2), (3) will be\n\n$$\\begin{aligned} F_{total}&=F_{41}+F_{42}+F_{43}\\\\ F_{41}&=\\text{Force as (4) due to (1)}\\\\ &=-\\frac{Q^2}{4 \\pi \\varepsilon _0}\\frac{1}{(4d^2)}\\hat{j}\\\\ F_{42}&=\\text{Force as (4) due to (2)}\\\\ &=+\\frac{Q^2}{4 \\pi \\varepsilon _0}\\frac{1}{(8d^2)}\\left ( \\frac{\\hat{j}}{\\sqrt{2}} + \\frac{\\hat{i}}{\\sqrt{2}} \\right )\\\\ F_{43}&=\\text{Force as (4) due to (3)}\\\\ &=-\\frac{Q^2}{4 \\pi \\varepsilon _0}\\frac{1}{(4d^2)}\\hat{i}\\\\ F_{total}&=\\frac{Q^2}{4 \\pi \\varepsilon _0}\\left ( \\frac{1-2\\sqrt{2}}{8\\sqrt{2}}\\hat{i}+ \\frac{1-2\\sqrt{2}}{8\\sqrt{2}}\\hat{j} \\right ) \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Due to image of the charge, three new charges will be created as shown in figure\n\n<img src=\"/question-images/ee/2015/ee-2015-98b6cfd90c.webp\" />\n\nTotal force (4) due to (1), (2), (3) will be\n\n$$\\begin{aligned} F_{total}&=F_{41}+F_{42}+F_{43}\\\\ F_{41}&=\\text{Force as (4) due to (1)}\\\\ &=-\\frac{Q^2}{4 \\pi \\varepsilon _0}\\frac{1}{(4d^2)}\\hat{j}\\\\ F_{42}&=\\text{Force as (4) due to (2)}\\\\ &=+\\frac{Q^2}{4 \\pi \\varepsilon _0}\\frac{1}{(8d^2)}\\left ( \\frac{\\hat{j}}{\\sqrt{2}} + \\frac{\\hat{i}}{\\sqrt{2}} \\right )\\\\ F_{43}&=\\text{Force as (4) due to (3)}\\\\ &=-\\frac{Q^2}{4 \\pi \\varepsilon _0}\\frac{1}{(4d^2)}\\hat{i}\\\\ F_{total}&=\\frac{Q^2}{4 \\pi \\varepsilon _0}\\left ( \\frac{1-2\\sqrt{2}}{8\\sqrt{2}}\\hat{i}+ \\frac{1-2\\sqrt{2}}{8\\sqrt{2}}\\hat{j} \\right ) \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-98b6cfd90c.webp"
+        ]
       }
     },
     "pp:ee:2015:q37-s2": {
@@ -1492,7 +1544,11 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
-        "markdown": "From the circuit, we can find out that\n\n$J_0=Q'_1,\\;K_0=Q_1$\n\n$J_1=Q_0,\\;K_1=Q'_0$\n\n<img src=\"/question-images/ee/2015/ee-2015-2e7fb3a83b.webp\" />\n\nSo state diagram is\n\n<img src=\"/question-images/ee/2015/ee-2015-8954853d21.webp\" />\n\nat every 4th clock, the system is at 00\n\nSo, at 332 it will be at 00\n\nSo, at 333 clock it will be at 01.\n\nTherefore, the correct answer is **B**."
+        "markdown": "From the circuit, we can find out that\n\n$J_0=Q'_1,\\;K_0=Q_1$\n\n$J_1=Q_0,\\;K_1=Q'_0$\n\n<img src=\"/question-images/ee/2015/ee-2015-2e7fb3a83b.webp\" />\n\nSo state diagram is\n\n<img src=\"/question-images/ee/2015/ee-2015-8954853d21.webp\" />\n\nat every 4th clock, the system is at 00\n\nSo, at 332 it will be at 00\n\nSo, at 333 clock it will be at 01.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-2e7fb3a83b.webp",
+          "/question-images/ee/2015/ee-2015-8954853d21.webp"
+        ]
       }
     },
     "pp:ee:2015:q38-s2": {
@@ -1533,7 +1589,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
-        "markdown": "Boolean function  $f(A,B,C,D)=\\Pi (1,5,12,15)$ is implemented with 8x1 MUX\n\n<img src=\"/question-images/ee/2015/ee-2015-56f31b5d74.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "Boolean function  $f(A,B,C,D)=\\Pi (1,5,12,15)$ is implemented with 8x1 MUX\n\n<img src=\"/question-images/ee/2015/ee-2015-56f31b5d74.webp\" />",
+        "images": [
+          "/question-images/ee/2015/ee-2015-56f31b5d74.webp"
+        ]
       }
     },
     "pp:ee:2015:q39-s2": {
@@ -1574,7 +1633,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "The given circuit in a astable multivibrator, so output will be a periodic square wave and from the circuit $\\beta =0.5$.\n\nSo, time period will be $2\\tau \\ln\\left ( \\frac{1+\\beta }{1-\\beta } \\right )$\n\n$T=2 \\times RC \\ln \\left ( \\frac{1+0.5}{1-0.5} \\right )=0.55ms$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The given circuit in a astable multivibrator, so output will be a periodic square wave and from the circuit $\\beta =0.5$.\n\nSo, time period will be $2\\tau \\ln\\left ( \\frac{1+\\beta }{1-\\beta } \\right )$\n\n$T=2 \\times RC \\ln \\left ( \\frac{1+0.5}{1-0.5} \\right )=0.55ms$",
+        "images": []
       }
     },
     "pp:ee:2015:q40-s2": {
@@ -1613,7 +1673,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
-        "markdown": "$$\\begin{aligned} 0.2P_1+50&=76\\\\ P_1&=130mW\\\\ 0.24P-2+40&=68.8\\\\ P_2&=120mW\\\\ P_1+P_2&=250\\;\\;...(i)\\\\ \\text{For minimized}& \\text{ schedule,}\\\\ 0.2P_1+50&=0.24P_2+40\\\\ 0.2P_1-0.24P_2&=-10\\;\\;\\;..(ii)\\\\ &\\text{From eq. (i) and (ii).}\\\\ P_1&=113.63MW\\\\ P_2&=136.36MW \\end{aligned}$$\n\nTherefore, the correct answer is **136** (acceptable range: [135, 137])."
+        "markdown": "$$\\begin{aligned} 0.2P_1+50&=76\\\\ P_1&=130mW\\\\ 0.24P-2+40&=68.8\\\\ P_2&=120mW\\\\ P_1+P_2&=250\\;\\;...(i)\\\\ \\text{For minimized}& \\text{ schedule,}\\\\ 0.2P_1+50&=0.24P_2+40\\\\ 0.2P_1-0.24P_2&=-10\\;\\;\\;..(ii)\\\\ &\\text{From eq. (i) and (ii).}\\\\ P_1&=113.63MW\\\\ P_2&=136.36MW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q41-s2": {
@@ -1652,7 +1713,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "$$\\begin{aligned} \\text{GMR}&=[(0.7788R \\times 3R \\times 3R)^3]^{1/3^2}\\\\ &=1.913 R=KR\\\\ K&=1.913 \\end{aligned}$$\n\nTherefore, the correct answer is **1.9** (acceptable range: [1.85, 1.95])."
+        "markdown": "$$\\begin{aligned} \\text{GMR}&=[(0.7788R \\times 3R \\times 3R)^3]^{1/3^2}\\\\ &=1.913 R=KR\\\\ K&=1.913 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q42-s2": {
@@ -1691,7 +1753,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "$i_2=0$,  since entire current flows through fault\n\n$i_1=\\frac{1}{\\sqrt{3}}A$\n\nTherefore, the correct answer is **0**."
+        "markdown": "$i_2=0$,  since entire current flows through fault\n\n$i_1=\\frac{1}{\\sqrt{3}}A$",
+        "images": []
       }
     },
     "pp:ee:2015:q43-s2": {
@@ -1730,10 +1793,7 @@
           "transformers"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - Transformers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Transformers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Transformers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$50\\angle 30^{\\circ}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($50\\angle 30^{\\circ}$)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q44-s2": {
       "question_uid": "pp:ee:2015:q44-s2",
@@ -1773,7 +1833,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Three-Phase Circuits",
-        "markdown": "$'i'$ is taken as input,\n\n<img src=\"/question-images/ee/2015/ee-2015-9c154d4e41.webp\" />\n\nApply KCL at node\n\nNode voltage is $100\\angle 120^{\\circ}$\n\n$i=\\frac{100\\angle 120^{\\circ}-100\\angle 0^{\\circ}}{-j1}$  $+\\frac{100\\angle 120^{\\circ}-100\\angle -120^{\\circ}}{j1}$\n\n$i=173.2\\angle -60^{\\circ}A$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$'i'$ is taken as input,\n\n<img src=\"/question-images/ee/2015/ee-2015-9c154d4e41.webp\" />\n\nApply KCL at node\n\nNode voltage is $100\\angle 120^{\\circ}$\n\n$i=\\frac{100\\angle 120^{\\circ}-100\\angle 0^{\\circ}}{-j1}$  $+\\frac{100\\angle 120^{\\circ}-100\\angle -120^{\\circ}}{j1}$\n\n$i=173.2\\angle -60^{\\circ}A$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-9c154d4e41.webp"
+        ]
       }
     },
     "pp:ee:2015:q45-s2": {
@@ -1810,10 +1873,7 @@
           "steady-state-ac-analysis"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electric Circuits - Steady State AC Analysis",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electric Circuits** (specifically *Steady State AC Analysis*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **191** within the official acceptable numerical range of $[190, 192]$.\n\n### Conclusion\n\nTherefore, the correct answer is **191** (acceptable range: [190, 192])."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q46-s2": {
       "question_uid": "pp:ee:2015:q46-s2",
@@ -1851,7 +1911,8 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
-        "markdown": "CASE-I:\n\n$L_{eff}=L_+L_2=2L,$,  a=2\n\nCASE-II:\n\n$l_{eff}=\\frac{L_1L_2}{L_1+L_2}=\\frac{L^2}{2L}=\\frac{L}{2}$, a=0.5\n\nCASE-III\n\nIf both are diffferentially coupled then\n\n$L_{eff}=0$\n\nMinimum value =0\n\nTherefore, the correct answer is **0**."
+        "markdown": "CASE-I:\n\n$L_{eff}=L_+L_2=2L,$,  a=2\n\nCASE-II:\n\n$l_{eff}=\\frac{L_1L_2}{L_1+L_2}=\\frac{L^2}{2L}=\\frac{L}{2}$, a=0.5\n\nCASE-III\n\nIf both are diffferentially coupled then\n\n$L_{eff}=0$\n\nMinimum value =0",
+        "images": []
       }
     },
     "pp:ee:2015:q47-s2": {
@@ -1890,10 +1951,7 @@
           "transformers"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - Transformers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Transformers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Transformers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$1\\angle 90^{\\circ}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($1\\angle 90^{\\circ}$)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q48-s2": {
       "question_uid": "pp:ee:2015:q48-s2",
@@ -1929,10 +1987,7 @@
           "dc-machines"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - DC Machines",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *DC Machines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **47.5**.\n\n### Conclusion\n\nTherefore, the correct answer is **47.5**."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q49-s2": {
       "question_uid": "pp:ee:2015:q49-s2",
@@ -1968,10 +2023,7 @@
           "synchronous-machines"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Synchronous Machines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **-47** within the official acceptable numerical range of $[-48, -46]$.\n\n### Conclusion\n\nTherefore, the correct answer is **-47** (acceptable range: [-48, -46])."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q50-s2": {
       "question_uid": "pp:ee:2015:q50-s2",
@@ -2007,10 +2059,7 @@
           "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **0.17** within the official acceptable numerical range of $[0.16, 0.18]$.\n\n### Conclusion\n\nTherefore, the correct answer is **0.17** (acceptable range: [0.16, 0.18])."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q51-s2": {
       "question_uid": "pp:ee:2015:q51-s2",
@@ -2046,10 +2095,7 @@
           "transformers"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electrical Machines - Transformers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Transformers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **30**.\n\n### Conclusion\n\nTherefore, the correct answer is **30**."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q52-s2": {
       "question_uid": "pp:ee:2015:q52-s2",
@@ -2087,10 +2133,7 @@
           "linear-time-invariant-systems"
         ]
       },
-      "detailed_solution": {
-        "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Signals and Systems** (specifically *Linear Time Invariant Systems*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Linear Time Invariant Systems**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *The system is not stable for $h\\gt 0$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (The system is not stable for $h\\gt 0$)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2015:q53-s2": {
       "question_uid": "pp:ee:2015:q53-s2",
@@ -2130,7 +2173,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$T.F.=\\frac{1-2s}{1+s}$\n\n$C(s)=\\frac{1-2s}{1+s}\\cdot \\frac{1}{s}$\n\n$\\;\\;=\\frac{A}{1+s}+\\frac{B}{s}$\n\nFor A,\n\n$A=\\lim_{s \\to -1}(s+1)\\cdot \\frac{1-2s}{s(1+s)}$\n\n$\\;\\;=\\frac{(1-2(-1))}{(-1)}=-3$\n\nFor B,\n\n$B=\\lim_{s \\to 0}s\\cdot \\frac{1-2s}{s(1+s)}=1$\n\n$C(s)=\\frac{1}{s}-\\frac{3}{1+s}$\n\n$C(t)=(1-3e^{-t})u(t)$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$T.F.=\\frac{1-2s}{1+s}$\n\n$C(s)=\\frac{1-2s}{1+s}\\cdot \\frac{1}{s}$\n\n$\\;\\;=\\frac{A}{1+s}+\\frac{B}{s}$\n\nFor A,\n\n$A=\\lim_{s \\to -1}(s+1)\\cdot \\frac{1-2s}{s(1+s)}$\n\n$\\;\\;=\\frac{(1-2(-1))}{(-1)}=-3$\n\nFor B,\n\n$B=\\lim_{s \\to 0}s\\cdot \\frac{1-2s}{s(1+s)}=1$\n\n$C(s)=\\frac{1}{s}-\\frac{3}{1+s}$\n\n$C(t)=(1-3e^{-t})u(t)$",
+        "images": []
       }
     },
     "pp:ee:2015:q54-s2": {
@@ -2171,7 +2215,10 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus Techniques",
-        "markdown": "$G_1(s)=\\frac{k}{s(s+1)(s+2)}$\n\n$\\Rightarrow \\;\\; 1+\\frac{k}{s(s+1)(s+2)}=0$\n\n$\\Rightarrow \\;\\; s(s^2+3s+2)+k=0$\n\n$\\Rightarrow \\;\\; s^3+3s^2+2s+k=0$\n\n$\\Rightarrow \\;\\; k=-s^3-3s^2-2s\\;\\;\\;...(i)$\n\n$\\Rightarrow \\;\\;\\frac{dk}{ds}=0$\n\n$\\;\\;\\;\\;\\frac{dk}{ds}=-3s^2-6s-2=0$\n\n$\\;\\;\\;\\;s=-0.422,-1.577$\n\n<img src=\"/question-images/ee/2015/ee-2015-013e89695f.webp\" />\n\nOnly s=-0.422 lie on root locus. Therefore brakaway point is s=-0.42.\n\nTherefore, the correct answer is **A**."
+        "markdown": "$G_1(s)=\\frac{k}{s(s+1)(s+2)}$\n\n$\\Rightarrow \\;\\; 1+\\frac{k}{s(s+1)(s+2)}=0$\n\n$\\Rightarrow \\;\\; s(s^2+3s+2)+k=0$\n\n$\\Rightarrow \\;\\; s^3+3s^2+2s+k=0$\n\n$\\Rightarrow \\;\\; k=-s^3-3s^2-2s\\;\\;\\;...(i)$\n\n$\\Rightarrow \\;\\;\\frac{dk}{ds}=0$\n\n$\\;\\;\\;\\;\\frac{dk}{ds}=-3s^2-6s-2=0$\n\n$\\;\\;\\;\\;s=-0.422,-1.577$\n\n<img src=\"/question-images/ee/2015/ee-2015-013e89695f.webp\" />\n\nOnly s=-0.422 lie on root locus. Therefore brakaway point is s=-0.42.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-013e89695f.webp"
+        ]
       }
     },
     "pp:ee:2015:q55-s2": {
@@ -2212,7 +2259,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "$\\frac{dx_1}{dt}=2x_1+x_2+u\\;\\;\\;...(i)$\n\n$\\frac{dx_2}{dt}=-2x_1+4\\;\\;\\;\\;...(ii)$\n\nFrom equation (i),\n\n$sx_1=2x_1+x_2+u$\n\n$sx_2=-2x_1+u$\n\n$x_2=\\left ( -\\frac{2x_1+u}{s} \\right )$\n\n$sx_1=2x_1+\\left ( -\\frac{2x_1+u}{s} \\right )+4$\n\n$sx_1-2x_1+\\frac{2x_1}{s}=\\frac{4}{5}+4$\n\n$x_1\\left ( s-2+\\frac{2}{s} \\right )=u\\left (1+\\frac{1}{s} \\right )$\n\n$\\frac{x_1}{4}=\\frac{\\left ( 1+\\frac{1}{s} \\right )}{\\left ( s-2+\\frac{2}{s} \\right )}$\n\n$\\Rightarrow \\;\\;\\frac{y}{u}=\\frac{3x-1}{u}=\\frac{3\\left ( 1+\\frac{1}{s} \\right )}{\\left ( s-2+\\frac{2}{s} \\right )}$\n\n$\\Rightarrow \\;\\;\\frac{y}{u}=\\frac{3(s+1)}{(s^2-2s+2)}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\frac{dx_1}{dt}=2x_1+x_2+u\\;\\;\\;...(i)$\n\n$\\frac{dx_2}{dt}=-2x_1+4\\;\\;\\;\\;...(ii)$\n\nFrom equation (i),\n\n$sx_1=2x_1+x_2+u$\n\n$sx_2=-2x_1+u$\n\n$x_2=\\left ( -\\frac{2x_1+u}{s} \\right )$\n\n$sx_1=2x_1+\\left ( -\\frac{2x_1+u}{s} \\right )+4$\n\n$sx_1-2x_1+\\frac{2x_1}{s}=\\frac{4}{5}+4$\n\n$x_1\\left ( s-2+\\frac{2}{s} \\right )=u\\left (1+\\frac{1}{s} \\right )$\n\n$\\frac{x_1}{4}=\\frac{\\left ( 1+\\frac{1}{s} \\right )}{\\left ( s-2+\\frac{2}{s} \\right )}$\n\n$\\Rightarrow \\;\\;\\frac{y}{u}=\\frac{3x-1}{u}=\\frac{3\\left ( 1+\\frac{1}{s} \\right )}{\\left ( s-2+\\frac{2}{s} \\right )}$\n\n$\\Rightarrow \\;\\;\\frac{y}{u}=\\frac{3(s+1)}{(s^2-2s+2)}$",
+        "images": []
       }
     }
   }

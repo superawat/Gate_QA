@@ -46,8 +46,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} A &=\\begin{bmatrix} p & q\\\\ r & s \\end{bmatrix} \\\\ A \\times A=A^2&=\\begin{bmatrix} p^2+q^2 & pr+qs\\\\ pr+qs & r^2+s^2 \\end{bmatrix} =B \\\\ A^2 &=B \\end{aligned}$$\n\nRank of amtrix does not change when we squaring the matrix, hence rank of B = rank of A=N.\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "markdown": "$$\\begin{aligned} A &=\\begin{bmatrix} p & q\\\\ r & s \\end{bmatrix} \\\\ A \\times A=A^2&=\\begin{bmatrix} p^2+q^2 & pr+qs\\\\ pr+qs & r^2+s^2 \\end{bmatrix} =B \\\\ A^2 &=B \\end{aligned}$$\n\nRank of amtrix does not change when we squaring the matrix, hence rank of B = rank of A=N.",
+        "images": []
       }
     },
     "pp:ee:2014:q2-s3": {
@@ -84,10 +85,7 @@
           "calculus"
         ]
       },
-      "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Calculus*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **2**.\n\n### Conclusion\n\nTherefore, the correct answer is **2**."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2014:q3-s3": {
       "question_uid": "pp:ee:2014:q3-s3",
@@ -126,8 +124,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\vec{V}&=y\\hat{i}+z\\hat{j}+x\\hat{k}\\\\ \\hat{i}\\frac{\\partial (fV)}{\\partial x}+\\hat{j}\\frac{\\partial (fV)}{\\partial y}+\\hat{k}\\frac{\\partial (fV)}{\\partial z}&=x^2y+y^2z+z^2x\\\\ y\\frac{\\partial f}{\\partial x}+z\\frac{\\partial f}{\\partial y}+x\\frac{\\partial f}{\\partial z}&=x^2y+y^2z+z^2x\\;\\;...(i)\\\\ \\vec{V}\\cdot \\Delta f&=y\\frac{\\partial f}{\\partial x}+z\\frac{\\partial f}{\\partial y}+x\\frac{\\partial f}{\\partial z}\\;\\;...(ii)\\\\ \\text{From equations (i) and (ii)}\\\\ \\vec{V}\\cdot \\Delta f&=x^2y+y^2z+z^2x \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "concept": "Engineering Mathematics (EE) - Calculus",
+        "markdown": "$$\\begin{aligned} \\vec{V}&=y\\hat{i}+z\\hat{j}+x\\hat{k}\\\\ \\hat{i}\\frac{\\partial (fV)}{\\partial x}+\\hat{j}\\frac{\\partial (fV)}{\\partial y}+\\hat{k}\\frac{\\partial (fV)}{\\partial z}&=x^2y+y^2z+z^2x\\\\ y\\frac{\\partial f}{\\partial x}+z\\frac{\\partial f}{\\partial y}+x\\frac{\\partial f}{\\partial z}&=x^2y+y^2z+z^2x\\;\\;...(i)\\\\ \\vec{V}\\cdot \\Delta f&=y\\frac{\\partial f}{\\partial x}+z\\frac{\\partial f}{\\partial y}+x\\frac{\\partial f}{\\partial z}\\;\\;...(ii)\\\\ \\text{From equations (i) and (ii)}\\\\ \\vec{V}\\cdot \\Delta f&=x^2y+y^2z+z^2x \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2014:q4-s3": {
@@ -165,8 +164,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Life time of an electric bulb with density\n\n$f(x)=Kx^2$\n\nIf minimum and maximum lifetimes of bulb are 1 and 2 years respectively then\n\n$$\\begin{aligned} \\int_{1}^{2}Kx^2dx &=1\\\\ \\left.\\begin{matrix} K\\frac{x^3}{3} \\end{matrix}\\right|_1^2&=1\\\\ K\\left ( \\frac{8}{3}-\\frac{1}{3} \\right )&=1\\\\ \\frac{7K}{3}&=1\\\\ K&=\\frac{3}{7}=0.42 \\end{aligned}$$\n\nTherefore, the correct answer is **0.45** (acceptable range: [0.4, 0.5])."
+        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "markdown": "Life time of an electric bulb with density\n\n$f(x)=Kx^2$\n\nIf minimum and maximum lifetimes of bulb are 1 and 2 years respectively then\n\n$$\\begin{aligned} \\int_{1}^{2}Kx^2dx &=1\\\\ \\left.\\begin{matrix} K\\frac{x^3}{3} \\end{matrix}\\right|_1^2&=1\\\\ K\\left ( \\frac{8}{3}-\\frac{1}{3} \\right )&=1\\\\ \\frac{7K}{3}&=1\\\\ K&=\\frac{3}{7}=0.42 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2014:q5-s3": {
@@ -207,7 +207,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
-        "markdown": "Fiven signal $f(t)$ is an odd signal. Hence, $F(\\omega )$ is imaginary and odd function of $\\omega$.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Fiven signal $f(t)$ is an odd signal. Hence, $F(\\omega )$ is imaginary and odd function of $\\omega$.",
+        "images": []
       }
     },
     "pp:ee:2014:q6-s3": {
@@ -248,7 +249,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Three-Phase Circuits",
-        "markdown": "Given,\n\n$V_{AN}=10\\angle 15^{\\circ}volt$\n\nAs the system is balanced and phase sequence is ABC, therefore,\n\n$V_{AN}=10\\angle 15^{\\circ}$\n\n$V_{BN}=10\\angle 135^{\\circ}V$ and  $V_{CN}=10\\angle 255^{\\circ}V$\n\n$\\therefore$  voltage of line w.r.t. line C is\n\n$V_{BC}=V_{BN}-V_{CN}$\n\n$V_{BC}=10\\angle 255^{\\circ}-10\\angle 135^{\\circ}$\n\n$V_{BC}=10\\sqrt{3}\\angle -75^{\\circ} Volt$\n\n<img src=\"/question-images/ee/2014/ee-2014-43f52e88ee.webp\" />\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given,\n\n$V_{AN}=10\\angle 15^{\\circ}volt$\n\nAs the system is balanced and phase sequence is ABC, therefore,\n\n$V_{AN}=10\\angle 15^{\\circ}$\n\n$V_{BN}=10\\angle 135^{\\circ}V$ and  $V_{CN}=10\\angle 255^{\\circ}V$\n\n$\\therefore$  voltage of line w.r.t. line C is\n\n$V_{BC}=V_{BN}-V_{CN}$\n\n$V_{BC}=10\\angle 255^{\\circ}-10\\angle 135^{\\circ}$\n\n$V_{BC}=10\\sqrt{3}\\angle -75^{\\circ} Volt$\n\n<img src=\"/question-images/ee/2014/ee-2014-43f52e88ee.webp\" />",
+        "images": [
+          "/question-images/ee/2014/ee-2014-43f52e88ee.webp"
+        ]
       }
     },
     "pp:ee:2014:q7-s3": {
@@ -287,10 +291,7 @@
           "electrostatic-fields"
         ]
       },
-      "detailed_solution": {
-        "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electromagnetic Fields** (specifically *Electrostatic Fields*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Electrostatic Fields**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$4\\pi \\varepsilon _{0}r$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($4\\pi \\varepsilon _{0}r$)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2014:q8-s3": {
       "question_uid": "pp:ee:2014:q8-s3",
@@ -330,7 +331,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-ac7a99a92f.webp\" />\n\nDriving point impedance, Z(s) is ,\n\n$Z(s)=s+\\left ( \\frac{\\left ( s+\\frac{1}{s} \\right )\\times \\frac{1}{s}}{s+\\frac{1}{s}+\\frac{1}{s}} \\right )$\n\n$\\;\\;=s+\\left ( \\frac{s^2+1}{s^2} \\right )\\times \\frac{s}{s^2+2}$\n\n$\\;\\;=s+\\frac{s^2+1}{s(s^2+2)}$\n\n$\\;\\;=\\frac{s^2(s^2+2)+^2+1}{s^3+2s}$\n\n$Z(s)=\\frac{s^4+3s^2+1}{s^3+2s}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-ac7a99a92f.webp\" />\n\nDriving point impedance, Z(s) is ,\n\n$Z(s)=s+\\left ( \\frac{\\left ( s+\\frac{1}{s} \\right )\\times \\frac{1}{s}}{s+\\frac{1}{s}+\\frac{1}{s}} \\right )$\n\n$\\;\\;=s+\\left ( \\frac{s^2+1}{s^2} \\right )\\times \\frac{s}{s^2+2}$\n\n$\\;\\;=s+\\frac{s^2+1}{s(s^2+2)}$\n\n$\\;\\;=\\frac{s^2(s^2+2)+^2+1}{s^3+2s}$\n\n$Z(s)=\\frac{s^4+3s^2+1}{s^3+2s}$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-ac7a99a92f.webp"
+        ]
       }
     },
     "pp:ee:2014:q9-s3": {
@@ -371,7 +375,10 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
-        "markdown": "Given signal can be drawn as\n\n<img src=\"/question-images/ee/2014/ee-2014-4879abe438.webp\" />\n\nTherefore,\n\n$$\\begin{aligned} &x(t)\\leftrightarrow X(\\omega )=2Sa(\\omega ) \\\\ &\\text{Now, } x(t)\\leftrightarrow X(\\omega )\\\\ &\\text{then by time scaling,} \\\\ &x(at)\\leftrightarrow \\frac{1}{|a|}X(\\omega /a) \\\\ &\\therefore \\; x(2t)\\leftrightarrow Sa \\left ( \\frac{\\omega }{2} \\right )\\;\\;...(i) \\\\ &x\\left ( \\frac{t}{2} \\right ) \\leftrightarrow 4Sa(2\\omega )\\;\\;...(ii)\\\\ &\\text{Now, }y(t)=x(2t) \\times x(t/2) \\end{aligned}$$\n\nConvolution in time domain multiplication in frequency domain\n\n$$\\begin{aligned} Y(\\omega )&=4Sa\\left ( \\frac{\\omega }{2}\\right ) Sa(2\\omega ) \\\\ Y(\\omega )&=\\frac{4\\sin \\left ( \\frac{\\omega }{2}\\right ) }{\\left ( \\frac{\\omega }{2}\\right ) } \\frac{\\sin (2\\omega )}{2\\omega }\\\\ Y(\\omega )&=\\frac{4}{\\omega ^2}\\sin \\left ( \\frac{\\omega }{2}\\right ) \\sin (2\\omega ) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given signal can be drawn as\n\n<img src=\"/question-images/ee/2014/ee-2014-4879abe438.webp\" />\n\nTherefore,\n\n$$\\begin{aligned} &x(t)\\leftrightarrow X(\\omega )=2Sa(\\omega ) \\\\ &\\text{Now, } x(t)\\leftrightarrow X(\\omega )\\\\ &\\text{then by time scaling,} \\\\ &x(at)\\leftrightarrow \\frac{1}{|a|}X(\\omega /a) \\\\ &\\therefore \\; x(2t)\\leftrightarrow Sa \\left ( \\frac{\\omega }{2} \\right )\\;\\;...(i) \\\\ &x\\left ( \\frac{t}{2} \\right ) \\leftrightarrow 4Sa(2\\omega )\\;\\;...(ii)\\\\ &\\text{Now, }y(t)=x(2t) \\times x(t/2) \\end{aligned}$$\n\nConvolution in time domain multiplication in frequency domain\n\n$$\\begin{aligned} Y(\\omega )&=4Sa\\left ( \\frac{\\omega }{2}\\right ) Sa(2\\omega ) \\\\ Y(\\omega )&=\\frac{4\\sin \\left ( \\frac{\\omega }{2}\\right ) }{\\left ( \\frac{\\omega }{2}\\right ) } \\frac{\\sin (2\\omega )}{2\\omega }\\\\ Y(\\omega )&=\\frac{4}{\\omega ^2}\\sin \\left ( \\frac{\\omega }{2}\\right ) \\sin (2\\omega ) \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-4879abe438.webp"
+        ]
       }
     },
     "pp:ee:2014:q10-s3": {
@@ -410,7 +417,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "$$\\begin{aligned} f_{m_1} &=4Hz \\\\ f_{m_2} &=6Hz \\\\ f_{m_3} &=7Hz \\end{aligned}$$\n\nThen minimum sampling frequency satisfying the nyquist criterion is 7*2=14Hz.\n\nTherefore, the correct answer is **14**."
+        "markdown": "$$\\begin{aligned} f_{m_1} &=4Hz \\\\ f_{m_2} &=6Hz \\\\ f_{m_3} &=7Hz \\end{aligned}$$\n\nThen minimum sampling frequency satisfying the nyquist criterion is 7*2=14Hz.",
+        "images": []
       }
     },
     "pp:ee:2014:q11-s3": {
@@ -451,7 +459,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "Hunting is a phenomenon occuring in case of synchronous generator and motor where the machine oscillates about the equilibrium point. To reduce this phenomenon, damper bars are used which are embedded in the rotor pole faces of the synchronous machines. Thus, these damper bars causes additional copper loss in the rotor for damping the undesirable phenomenon of hunting.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Hunting is a phenomenon occuring in case of synchronous generator and motor where the machine oscillates about the equilibrium point. To reduce this phenomenon, damper bars are used which are embedded in the rotor pole faces of the synchronous machines. Thus, these damper bars causes additional copper loss in the rotor for damping the undesirable phenomenon of hunting.",
+        "images": []
       }
     },
     "pp:ee:2014:q12-s3": {
@@ -492,7 +501,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "The centrifugal switch is used to snaps the load at 70% of synchronous speed. Therefore, the speed-torque characteristic will have kink in speed-torque characteristic at 70% of $N_s$ if the switch operates. When the switch fails to operate, $1- \\phi$ induction motor will have torque-speed characteristic similar to a threephase induction motor.\n\nTherefore, the correct answer is **C**."
+        "markdown": "The centrifugal switch is used to snaps the load at 70% of synchronous speed. Therefore, the speed-torque characteristic will have kink in speed-torque characteristic at 70% of $N_s$ if the switch operates. When the switch fails to operate, $1- \\phi$ induction motor will have torque-speed characteristic similar to a threephase induction motor.",
+        "images": []
       }
     },
     "pp:ee:2014:q13-s3": {
@@ -531,7 +541,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "Given, $I_a=8A$\n\nNo-load speed, $N_0=1400 \\; \\text{rpm},$  $V=230\\text{volt}$\n\n$\\therefore \\;\\;\\omega _0=\\frac{2 \\pi}{60}\\times N_0$\n\n$\\;\\;= \\frac{2 \\pi}{60}\\times 1400=146.6 \\;red/s$\n\nPower developed in the motor, $P=E_aI_a$\n\nAlso Power, $P=\\text{Torque} \\times \\omega _0$\n\nor,   $\\text{Torque} \\;\\; T=\\frac{P}{\\omega _0}=\\frac{E_aI_a}{\\omega _0}$\n\nSince, armature resistance drop and brush drop are neglected therefore.\n\n$$\\begin{aligned} E_a & \\simeq V=230 \\text{volt} \\\\ \\therefore \\; \\text{Torque} , \\; T&= \\frac{230 \\times 8}{146.6}=12.55N-m\\\\ \\therefore \\; \\text{Torque} , \\; T&= 12.55N-m \\end{aligned}$$\n\nTherefore, the correct answer is **12.55** (acceptable range: [12.45, 12.65])."
+        "markdown": "Given, $I_a=8A$\n\nNo-load speed, $N_0=1400 \\; \\text{rpm},$  $V=230\\text{volt}$\n\n$\\therefore \\;\\;\\omega _0=\\frac{2 \\pi}{60}\\times N_0$\n\n$\\;\\;= \\frac{2 \\pi}{60}\\times 1400=146.6 \\;red/s$\n\nPower developed in the motor, $P=E_aI_a$\n\nAlso Power, $P=\\text{Torque} \\times \\omega _0$\n\nor,   $\\text{Torque} \\;\\; T=\\frac{P}{\\omega _0}=\\frac{E_aI_a}{\\omega _0}$\n\nSince, armature resistance drop and brush drop are neglected therefore.\n\n$$\\begin{aligned} E_a & \\simeq V=230 \\text{volt} \\\\ \\therefore \\; \\text{Torque} , \\; T&= \\frac{230 \\times 8}{146.6}=12.55N-m\\\\ \\therefore \\; \\text{Torque} , \\; T&= 12.55N-m \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2014:q14-s3": {
@@ -572,7 +583,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "The condition for a transmission line to be distortionless is $\\frac{r}{g}=\\frac{l}{c}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The condition for a transmission line to be distortionless is $\\frac{r}{g}=\\frac{l}{c}$",
+        "images": []
       }
     },
     "pp:ee:2014:q15-s3": {
@@ -613,7 +625,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "For a transmission line (static device),\n\n$X_1=X_2 \\text{ and } X_0 \\gt\\gt X_1$\n\nTherefore, the correct answer is **B**."
+        "markdown": "For a transmission line (static device),\n\n$X_1=X_2 \\text{ and } X_0 \\gt\\gt X_1$",
+        "images": []
       }
     },
     "pp:ee:2014:q16-s3": {
@@ -652,7 +665,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "$$\\begin{aligned} n&=183\\\\ &\\text{No. of equations.}\\\\ &=2n-m-2\\\\ &=2 \\times 183 -32-2=332 \\end{aligned}$$\n\nwhere,\n\nn= Total number of buses\n\nm= PV bus or reactive power support bus excluding slack bus\n\nOne bus already has taken as slack bus.\n\nTherefore, the correct answer is **332**."
+        "markdown": "$$\\begin{aligned} n&=183\\\\ &\\text{No. of equations.}\\\\ &=2n-m-2\\\\ &=2 \\times 183 -32-2=332 \\end{aligned}$$\n\nwhere,\n\nn= Total number of buses\n\nm= PV bus or reactive power support bus excluding slack bus\n\nOne bus already has taken as slack bus.",
+        "images": []
       }
     },
     "pp:ee:2014:q17-s3": {
@@ -693,7 +707,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "Using Mason's gain fomlula,\n\nTransfer function,\n\n$G(s)=\\frac{C(s)}{U(s)}=\\frac{\\Sigma P_k\\Delta _k}{\\Delta }$\n\nForward paths are:\n\n$P_1=\\frac{h_0}{s^2} ,\\; P_2=\\frac{h_1}{s}$\n\nIndividual loops are:\n\n$L_1=\\frac{-a_1}{s} , \\; L_2=\\frac{-a_0}{s^2}$\n\nNon-touching loops=zero\n\n$\\therefore \\;\\;\\Delta _1=1,$\n\n$\\;\\;\\;\\; \\Delta _2=1-\\left ( \\frac{-a_1}{s} \\right ) =\\left ( 1+\\frac{a_1}{s} \\right ) =\\left ( \\frac{s+a_1}{s} \\right )$\n\n$\\;\\;\\;\\;\\Delta =1-\\left ( \\frac{-a_1}{s}-\\frac{a_0}{s^2} \\right )=\\frac{s^2+a_1s+a_0}{s^2}$\n\n$\\therefore \\;\\; G(s)=\\frac{C(s)}{U(s)}=\\frac{P_1\\Delta _1+P_2\\Delta _2}{\\Delta }$\n\n$\\;\\;\\;\\;=\\frac{\\left ( \\frac{h_0}{s^2} \\right )\\times 1+\\left ( \\frac{h_1}{s} \\right )\\times \\left ( \\frac{s+a_1}{s} \\right )}{\\frac{s^2+a_1s+a_0}{s^2}}$\n\n$\\;\\;\\;=\\left [ \\frac{h_0+h_1(s+a_1)}{s^2+a_1s+a_0} \\right ]$\n\nGiven:  $h_1=b_1$ and $h_0=b_0-b_1a_1$\n\nThus,  $G(s)=\\frac{(b_0-b_1a_1)+b_1(s+a_1)}{(s^2+a_1s+a_0)}$\n\n$G(s)=\\left ( \\frac{b_1s+b_0}{s^2+a_1s+a_0} \\right )$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Using Mason's gain fomlula,\n\nTransfer function,\n\n$G(s)=\\frac{C(s)}{U(s)}=\\frac{\\Sigma P_k\\Delta _k}{\\Delta }$\n\nForward paths are:\n\n$P_1=\\frac{h_0}{s^2} ,\\; P_2=\\frac{h_1}{s}$\n\nIndividual loops are:\n\n$L_1=\\frac{-a_1}{s} , \\; L_2=\\frac{-a_0}{s^2}$\n\nNon-touching loops=zero\n\n$\\therefore \\;\\;\\Delta _1=1,$\n\n$\\;\\;\\;\\; \\Delta _2=1-\\left ( \\frac{-a_1}{s} \\right ) =\\left ( 1+\\frac{a_1}{s} \\right ) =\\left ( \\frac{s+a_1}{s} \\right )$\n\n$\\;\\;\\;\\;\\Delta =1-\\left ( \\frac{-a_1}{s}-\\frac{a_0}{s^2} \\right )=\\frac{s^2+a_1s+a_0}{s^2}$\n\n$\\therefore \\;\\; G(s)=\\frac{C(s)}{U(s)}=\\frac{P_1\\Delta _1+P_2\\Delta _2}{\\Delta }$\n\n$\\;\\;\\;\\;=\\frac{\\left ( \\frac{h_0}{s^2} \\right )\\times 1+\\left ( \\frac{h_1}{s} \\right )\\times \\left ( \\frac{s+a_1}{s} \\right )}{\\frac{s^2+a_1s+a_0}{s^2}}$\n\n$\\;\\;\\;=\\left [ \\frac{h_0+h_1(s+a_1)}{s^2+a_1s+a_0} \\right ]$\n\nGiven:  $h_1=b_1$ and $h_0=b_0-b_1a_1$\n\nThus,  $G(s)=\\frac{(b_0-b_1a_1)+b_1(s+a_1)}{(s^2+a_1s+a_0)}$\n\n$G(s)=\\left ( \\frac{b_1s+b_0}{s^2+a_1s+a_0} \\right )$",
+        "images": []
       }
     },
     "pp:ee:2014:q18-s3": {
@@ -732,10 +747,7 @@
           "concepts-of-stability"
         ]
       },
-      "detailed_solution": {
-        "concept": "Control Systems - Concepts of Stability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Control Systems** (specifically *Concepts of Stability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Concepts of Stability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *The system is always stable*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (The system is always stable)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2014:q19-s3": {
       "question_uid": "pp:ee:2014:q19-s3",
@@ -773,7 +785,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "Given, $\\cos \\phi =0.2$ (LPF wattmeter)\n\nGiven ,, full scale reading of wattmeter,\n\n$W_m=150$ Watt\n\nAlso for $V=150 \\; \\text{volt}$, $I=10 A$ settings,\n\nwattmeter reading,\n\n$W=VI \\cos \\phi =150 \\times 10 \\times 0.2=300$\n\nTherefore, multiplying factor of wattmeter,\n\n$m=\\frac{W}{W_m}=\\frac{300}{150}=2$\n\nTherefore, the correct answer is **2**."
+        "markdown": "Given, $\\cos \\phi =0.2$ (LPF wattmeter)\n\nGiven ,, full scale reading of wattmeter,\n\n$W_m=150$ Watt\n\nAlso for $V=150 \\; \\text{volt}$, $I=10 A$ settings,\n\nwattmeter reading,\n\n$W=VI \\cos \\phi =150 \\times 10 \\times 0.2=300$\n\nTherefore, multiplying factor of wattmeter,\n\n$m=\\frac{W}{W_m}=\\frac{300}{150}=2$",
+        "images": []
       }
     },
     "pp:ee:2014:q20-s3": {
@@ -814,7 +827,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
-        "markdown": "The waveform pattern appearing on the screen of CRO is shown below. Here, $S_1$ is applied to vertical deflecting plate and $S_2$ to horizontal deflecting plate.\n\n<img src=\"/question-images/ee/2014/ee-2014-6915832fd4.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "The waveform pattern appearing on the screen of CRO is shown below. Here, $S_1$ is applied to vertical deflecting plate and $S_2$ to horizontal deflecting plate.\n\n<img src=\"/question-images/ee/2014/ee-2014-6915832fd4.webp\" />",
+        "images": [
+          "/question-images/ee/2014/ee-2014-6915832fd4.webp"
+        ]
       }
     },
     "pp:ee:2014:q21-s3": {
@@ -855,7 +871,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-d8a7e4852f.webp\" />\n\nIf any one of the input is zero, output is 1 and for both inputs as '1' , output is '0', which represents the NAND gate.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-d8a7e4852f.webp\" />\n\nIf any one of the input is zero, output is 1 and for both inputs as '1' , output is '0', which represents the NAND gate.",
+        "images": [
+          "/question-images/ee/2014/ee-2014-d8a7e4852f.webp"
+        ]
       }
     },
     "pp:ee:2014:q22-s3": {
@@ -896,7 +915,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "The circuit of op-amp '1' is a Schmitt trigger, therefore\n\n$V_{01}=\\pm V_{sat}$\n\nand the circuit of op-amp '2' is a non-inverting amplifier\n\n$\\therefore \\;\\;\\; \\left (\\frac{V_0}{V_{01}} \\right )=\\left ( 1+\\frac{R}{R} \\right )$\n\n$\\Rightarrow \\;\\;\\;V_0=2V_{01}$\n\nwhere,    $V_{01}=\\pm V_{sat}$\n\nTherefore, the answer is $V_0=\\pm V_{sat}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "The circuit of op-amp '1' is a Schmitt trigger, therefore\n\n$V_{01}=\\pm V_{sat}$\n\nand the circuit of op-amp '2' is a non-inverting amplifier\n\n$\\therefore \\;\\;\\; \\left (\\frac{V_0}{V_{01}} \\right )=\\left ( 1+\\frac{R}{R} \\right )$\n\n$\\Rightarrow \\;\\;\\;V_0=2V_{01}$\n\nwhere,    $V_{01}=\\pm V_{sat}$\n\nTherefore, the answer is $V_0=\\pm V_{sat}$",
+        "images": []
       }
     },
     "pp:ee:2014:q23-s3": {
@@ -935,10 +955,7 @@
           "microprocessors"
         ]
       },
-      "detailed_solution": {
-        "concept": "Digital Electronics - Microprocessors",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Electronics** (specifically *Microprocessors*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Microprocessors**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *$(H)\\leftarrow M(2101_{H}),(L) \\leftarrow M(2100_{H})$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** ($(H)\\leftarrow M(2101_{H}),(L) \\leftarrow M(2100_{H})$)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2014:q24-s3": {
       "question_uid": "pp:ee:2014:q24-s3",
@@ -978,7 +995,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "Thesituation of problem is shown in figure:\n\n<img src=\"/question-images/ee/2014/ee-2014-a39608d00d.webp\" />\n\nFor the transfer of maximum power from source to load,\n\n$R_L=\\sqrt{R_s^2+X^2}=|Z|$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Thesituation of problem is shown in figure:\n\n<img src=\"/question-images/ee/2014/ee-2014-a39608d00d.webp\" />\n\nFor the transfer of maximum power from source to load,\n\n$R_L=\\sqrt{R_s^2+X^2}=|Z|$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-a39608d00d.webp"
+        ]
       }
     },
     "pp:ee:2014:q25-s3": {
@@ -1019,7 +1039,11 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-d787caea4e.webp\" />\n\n$S=\\frac{N_s-N_r}{N_s}$\n\nFor given system,\n\nslip=(2-s)(speed =negative)\n\nBelow point P, $T_M-T_l \\lt 0$\n\n$\\Rightarrow$ speed decreases\n\n$\\therefore$ S increases\n\n$\\therefore$ slip=(2-s) decreases\n\nAbove point P, $T_m-T_l \\gt 0$\n\n$\\Rightarrow$ speed increases\n\n$\\therefore$ S decreases and (2-s) increasaes.\n\nThus, system is stable near point P.\n\n<img src=\"/question-images/ee/2014/ee-2014-d826e45746.webp\" />\n\nPOINT R:\n\nBelow point R: $T_M-T_l \\lt 0\\;\\Rightarrow \\;$ speed decreases\n\nAbove point R: $T_M-T_l \\gt 0\\;\\Rightarrow \\;$ speed increases\n\nThus, system can't regain stability at point R.\n\nTherefore, R is unstable point.\n\nPOINT S:\n\nBelow point S: $T_M-T_l \\gt 0\\;\\Rightarrow \\;$ speed increases\n\nAbove point S: $T_M-T_l \\lt 0\\;\\Rightarrow \\;$ speed decreases\n\nThus, system can regain stability near point S.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-d787caea4e.webp\" />\n\n$S=\\frac{N_s-N_r}{N_s}$\n\nFor given system,\n\nslip=(2-s)(speed =negative)\n\nBelow point P, $T_M-T_l \\lt 0$\n\n$\\Rightarrow$ speed decreases\n\n$\\therefore$ S increases\n\n$\\therefore$ slip=(2-s) decreases\n\nAbove point P, $T_m-T_l \\gt 0$\n\n$\\Rightarrow$ speed increases\n\n$\\therefore$ S decreases and (2-s) increasaes.\n\nThus, system is stable near point P.\n\n<img src=\"/question-images/ee/2014/ee-2014-d826e45746.webp\" />\n\nPOINT R:\n\nBelow point R: $T_M-T_l \\lt 0\\;\\Rightarrow \\;$ speed decreases\n\nAbove point R: $T_M-T_l \\gt 0\\;\\Rightarrow \\;$ speed increases\n\nThus, system can't regain stability at point R.\n\nTherefore, R is unstable point.\n\nPOINT S:\n\nBelow point S: $T_M-T_l \\gt 0\\;\\Rightarrow \\;$ speed increases\n\nAbove point S: $T_M-T_l \\lt 0\\;\\Rightarrow \\;$ speed decreases\n\nThus, system can regain stability near point S.",
+        "images": [
+          "/question-images/ee/2014/ee-2014-d787caea4e.webp",
+          "/question-images/ee/2014/ee-2014-d826e45746.webp"
+        ]
       }
     },
     "pp:ee:2014:q26-s3": {
@@ -1059,8 +1083,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} f(z)=\\int \\frac{z^2}{z^2-1}&=\\int f(z) \\\\ \\text{Given circle}& \\\\ |z-1|&=1 \\\\ \\Rightarrow \\; |(x+iy)-1| &=1 \\\\ (x-1)^2+y^2&=1 \\\\ x=1, y&= 0, r=1 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2014/ee-2014-3f1ab3a7cc.webp\" />\n\nPoles of f(z)\n\n$z^2-1=0$\n\n[z=+1, 1]\n\nSo,  $-1\\rightarrow$Outside circle\n\n$\\;\\; +1\\rightarrow$ Inside circle\n\n$$\\begin{aligned} \\int \\frac{z^2}{(z-1)(z+1)}&=2 \\pi i\\left [ \\frac{z^2}{z+1} \\right ]_{z=+1} \\\\ &= 2 \\pi i \\left ( \\frac{1}{2} \\right )=\\pi i \\\\ \\text{For pole }(z=-1) &=\\int \\frac{z^2}{(z-1)(z+1)}=0 \\end{aligned}$$\n\nas it lies outside from counter.\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (EE) - Calculus",
+        "markdown": "$$\\begin{aligned} f(z)=\\int \\frac{z^2}{z^2-1}&=\\int f(z) \\\\ \\text{Given circle}& \\\\ |z-1|&=1 \\\\ \\Rightarrow \\; |(x+iy)-1| &=1 \\\\ (x-1)^2+y^2&=1 \\\\ x=1, y&= 0, r=1 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2014/ee-2014-3f1ab3a7cc.webp\" />\n\nPoles of f(z)\n\n$z^2-1=0$\n\n[z=+1, 1]\n\nSo,  $-1\\rightarrow$Outside circle\n\n$\\;\\; +1\\rightarrow$ Inside circle\n\n$$\\begin{aligned} \\int \\frac{z^2}{(z-1)(z+1)}&=2 \\pi i\\left [ \\frac{z^2}{z+1} \\right ]_{z=+1} \\\\ &= 2 \\pi i \\left ( \\frac{1}{2} \\right )=\\pi i \\\\ \\text{For pole }(z=-1) &=\\int \\frac{z^2}{(z-1)(z+1)}=0 \\end{aligned}$$\n\nas it lies outside from counter.",
+        "images": [
+          "/question-images/ee/2014/ee-2014-3f1ab3a7cc.webp"
+        ]
       }
     },
     "pp:ee:2014:q27-s3": {
@@ -1099,10 +1126,7 @@
           "calculus"
         ]
       },
-      "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Calculus*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Calculus**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *40 mm and 0.24*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (40 mm and 0.24)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2014:q28-s3": {
       "question_uid": "pp:ee:2014:q28-s3",
@@ -1139,8 +1163,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "Given, $f(x)=e^x-1$\n\nor, $f(x_K)=e^{x_K}-1$ and $x_0=1$\n\nIn Newton-Raphson method, we have\n\n$$\\begin{aligned} x_{K+1}&=\\left [ x_K-\\frac{f(x_K)}{f'(x_K)} \\right ] \\\\ x_1&= \\left [ x_0- \\frac{f(x_0)}{f'(x_0)}\\right ]\\;\\;...(i)\\\\ \\text{Now, } f(x_0)&=e^{x_0}-1=e^1-1=(e-1) \\\\ \\text{and, } f'(x)&=e6x \\\\ \\therefore \\;\\; f'(x_0) &=e^1=e \\end{aligned}$$\n\nPutting the values, we get:\n\n$$\\begin{aligned} x_1&=\\left [ 1-\\frac{e-1}{e} \\right ]=\\left [ \\frac{e-e+1}{e} \\right ]=e^{-1}\\\\ \\text{Also, }x_2&=\\left [ x_1-\\frac{f(x_1)}{f'(x_1)} \\right ]\\;\\;...(ii)\\\\ \\text{Now, }x_1&=\\frac{1}{e}=e^{-1} \\text{ and } f(x_1)=(e^{e^{-1}}-1)\\\\ f'(x_1)&=e^{e^{-1}} \\end{aligned}$$\n\nPutting the value, we get:\n\n$$\\begin{aligned} x_2&=\\left [ e^{-1}-\\frac{(e^{e^{-1}}-1)}{e^{e^{-1}}} \\right ]\\\\ &=\\left [ e^{-1}-\\frac{(e^{0.37}-1)}{e^{0.37}} \\right ]=0.06 \\end{aligned}$$\n\nTherefore, the correct answer is **0.06** (acceptable range: [0.05, 0.07])."
+        "concept": "Engineering Mathematics (EE) - Numerical Methods",
+        "markdown": "Given, $f(x)=e^x-1$\n\nor, $f(x_K)=e^{x_K}-1$ and $x_0=1$\n\nIn Newton-Raphson method, we have\n\n$$\\begin{aligned} x_{K+1}&=\\left [ x_K-\\frac{f(x_K)}{f'(x_K)} \\right ] \\\\ x_1&= \\left [ x_0- \\frac{f(x_0)}{f'(x_0)}\\right ]\\;\\;...(i)\\\\ \\text{Now, } f(x_0)&=e^{x_0}-1=e^1-1=(e-1) \\\\ \\text{and, } f'(x)&=e6x \\\\ \\therefore \\;\\; f'(x_0) &=e^1=e \\end{aligned}$$\n\nPutting the values, we get:\n\n$$\\begin{aligned} x_1&=\\left [ 1-\\frac{e-1}{e} \\right ]=\\left [ \\frac{e-e+1}{e} \\right ]=e^{-1}\\\\ \\text{Also, }x_2&=\\left [ x_1-\\frac{f(x_1)}{f'(x_1)} \\right ]\\;\\;...(ii)\\\\ \\text{Now, }x_1&=\\frac{1}{e}=e^{-1} \\text{ and } f(x_1)=(e^{e^{-1}}-1)\\\\ f'(x_1)&=e^{e^{-1}} \\end{aligned}$$\n\nPutting the value, we get:\n\n$$\\begin{aligned} x_2&=\\left [ e^{-1}-\\frac{(e^{e^{-1}}-1)}{e^{e^{-1}}} \\right ]\\\\ &=\\left [ e^{-1}-\\frac{(e^{0.37}-1)}{e^{0.37}} \\right ]=0.06 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2014:q29-s3": {
@@ -1179,7 +1204,11 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "Using source transformation theoram,\n\n<img src=\"/question-images/ee/2014/ee-2014-50ce659493.webp\" />\n\nor we can simplify the network,\n\n<img src=\"/question-images/ee/2014/ee-2014-6b03100803.webp\" />\n\nNow, from the circuit, we get,\n\n$I_N=\\frac{5}{5}=1A$\n\nTherefore, the correct answer is **2**."
+        "markdown": "Using source transformation theoram,\n\n<img src=\"/question-images/ee/2014/ee-2014-50ce659493.webp\" />\n\nor we can simplify the network,\n\n<img src=\"/question-images/ee/2014/ee-2014-6b03100803.webp\" />\n\nNow, from the circuit, we get,\n\n$I_N=\\frac{5}{5}=1A$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-50ce659493.webp",
+          "/question-images/ee/2014/ee-2014-6b03100803.webp"
+        ]
       }
     },
     "pp:ee:2014:q30-s3": {
@@ -1218,7 +1247,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-25dd20a291.webp\" />\n\nApplying nodal analysis at node P, we have\n\n$\\frac{V_I-V_1}{1}+\\frac{V_I-V_2}{1}-2=0$\n\n$2V_I-(V_1+V_2)=2$\n\n$V_I=\\left [ \\frac{2+(V_1+V_2)}{2} \\right ]\\;\\;...(i)$\n\nAlso,  $V_1-V_2=1$ volt and $V_1=1$ volt\n\n$\\therefore \\;\\; V_2=V_1-1=1-1=0 volt$\n\nPutting values of  $V_1$ and $V_2$ in equation (i), we get:\n\n$V_I=\\left [ \\frac{2+(1+0)}{2} \\right ]=\\frac{3}{2}volt$\n\n$\\therefore$  Power delivered by the current source\n\n$=V_I\\cdot I=\\frac{3}{2} \\times 2 \\;\\;[\\because \\; I=2A (given)]$\n\n$=3 Watts$\n\nTherefore, the correct answer is **3**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-25dd20a291.webp\" />\n\nApplying nodal analysis at node P, we have\n\n$\\frac{V_I-V_1}{1}+\\frac{V_I-V_2}{1}-2=0$\n\n$2V_I-(V_1+V_2)=2$\n\n$V_I=\\left [ \\frac{2+(V_1+V_2)}{2} \\right ]\\;\\;...(i)$\n\nAlso,  $V_1-V_2=1$ volt and $V_1=1$ volt\n\n$\\therefore \\;\\; V_2=V_1-1=1-1=0 volt$\n\nPutting values of  $V_1$ and $V_2$ in equation (i), we get:\n\n$V_I=\\left [ \\frac{2+(1+0)}{2} \\right ]=\\frac{3}{2}volt$\n\n$\\therefore$  Power delivered by the current source\n\n$=V_I\\cdot I=\\frac{3}{2} \\times 2 \\;\\;[\\because \\; I=2A (given)]$\n\n$=3 Watts$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-25dd20a291.webp"
+        ]
       }
     },
     "pp:ee:2014:q31-s3": {
@@ -1259,7 +1291,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "Due to change at (0,0,2) and conductor plane there is an image at (0,0,-2).\n\nTotal filed is $\\vec{E_1}+\\vec{E_2}$\n\n$$\\begin{aligned} \\vec{E_1}&=\\frac{32 \\pi \\in _0 \\sqrt{2}}{4 \\pi \\in _0(2+2+4)^{3/2}} (\\sqrt{2}\\hat{a_x}+\\sqrt{2}\\hat{a_y}-2\\hat{a_z})\\\\ \\vec{E_2}&=\\frac{-32 \\pi \\in _0 \\sqrt{2}}{4 \\pi \\in _0(2+2+4)^{3/2}} (\\sqrt{2}\\hat{a_x}+\\sqrt{2}\\hat{a_y}+2\\hat{a_z})\\\\ \\vec{E} &=-2\\hat{a_z}=-2\\hat{k} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Due to change at (0,0,2) and conductor plane there is an image at (0,0,-2).\n\nTotal filed is $\\vec{E_1}+\\vec{E_2}$\n\n$$\\begin{aligned} \\vec{E_1}&=\\frac{32 \\pi \\in _0 \\sqrt{2}}{4 \\pi \\in _0(2+2+4)^{3/2}} (\\sqrt{2}\\hat{a_x}+\\sqrt{2}\\hat{a_y}-2\\hat{a_z})\\\\ \\vec{E_2}&=\\frac{-32 \\pi \\in _0 \\sqrt{2}}{4 \\pi \\in _0(2+2+4)^{3/2}} (\\sqrt{2}\\hat{a_x}+\\sqrt{2}\\hat{a_y}+2\\hat{a_z})\\\\ \\vec{E} &=-2\\hat{a_z}=-2\\hat{k} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2014:q32-s3": {
@@ -1300,7 +1333,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Resonance and Locus Diagrams",
-        "markdown": "Given\n\n$\\omega _1=1 k$ rad/s,\n\n$V_1=100\\angle 0^{\\circ}V,$\n\n$I_1=0.03\\angle 31^{\\circ}A$\n\nAt,   $\\omega _2=2 k$  rad/s,\n\n$V_2=100\\angle 0^{\\circ}V,$\n\n$I_2=2\\angle 0^{\\circ}A$\n\n<img src=\"/question-images/ee/2014/ee-2014-41c1715823.webp\" />\n\nAt $\\omega _2=2 k$ rad/s, voltage and current are in phase. Thus, it is a case of series resonance,\n\n$X_{L_{\\omega 2}}=X_{C_{\\omega 2}}$\n\n$\\therefore \\;\\;Z=R=\\frac{V_2}{I_2}$\n\n$\\;\\;=\\frac{100\\angle 0^{\\circ}}{2\\angle 0^{\\circ}}=50\\Omega$\n\n$\\therefore$  Resistance of circuit,\n\n$R=50\\Omega$\n\nNow at $\\omega _1=1 k$ rad/s,\n\n$Z=\\frac{V_1}{I_1}=\\frac{100\\angle 0^{\\circ}}{0.03\\angle 31^{\\circ}}$\n\n$\\;\\; =\\frac{100}{0.03}\\angle 31^{\\circ}\\Omega\\;\\;...(i)$\n\nAlso,  $Z=|Z|\\angle \\tan^{-1}\\left [ \\frac{X_L-X_C}{R} \\right ] \\;\\;...(ii)$\n\nComparing equation (i) and (ii), we have:\n\n$-31^{\\circ}=\\tan ^{-1}\\left [ \\frac{X_L-X_C}{R} \\right ]$\n\n$\\tan(-31^{\\circ})=\\frac{X_L-X_C}{R}$\n\n$X_L-X_C=R \\tan(-31^{\\circ})$\n\n$\\;\\;=50X-0.6=-30$\n\n$\\therefore \\;\\; X_{L_{\\omega 1}}-X_{C_{\\omega 2}}=-30\\;\\;...(iii)$\n\n$X_{L_{\\omega 2}}=X_{C_{\\omega 2}}$ or $\\omega _2 L=\\frac{1}{\\omega _2C}$\n\n$L=\\frac{1}{\\omega _2^2C}\\;\\;...(iv)$\n\nFrom equation (iii),\n\n$\\omega _1L-\\frac{1}{\\omega _1C}=-30$\n\n$\\omega _1\\left ( \\frac{1}{\\omega _2^2C}\\right )-\\frac{1}{\\omega _1C}=-30$\n\n$\\frac{\\omega _1}{\\omega _2^2C}-\\frac{1}{\\omega _1C}=-30$\n\n$\\frac{1 \\times 10^3}{4 \\times 10^6 C}-\\frac{1}{10^3C}=-30$\n\n$\\frac{10^{-3}}{4C}-\\frac{10^{-3}}{C}=-30$\n\n$\\frac{-3}{4C} \\times 10^{-3}=-30$\n\n$C=\\frac{3 \\times 10^{-3}}{4 \\times 30}$\n\nSubstituting the value of C in equation (iv), we get,\n\n$L=\\frac{1}{\\omega _2^2C}$\n\n$\\;\\;=\\frac{1}{(2 \\times 10^3)^2 \\times 25 \\times 10^{-6}}$\n\n$\\;\\; =\\frac{1}{100}=10mH$\n\nTherefore, values are:\n\n$R=50\\Omega ,$\n\n$L=10mH,$\n\n$C=25\\mu F$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given\n\n$\\omega _1=1 k$ rad/s,\n\n$V_1=100\\angle 0^{\\circ}V,$\n\n$I_1=0.03\\angle 31^{\\circ}A$\n\nAt,   $\\omega _2=2 k$  rad/s,\n\n$V_2=100\\angle 0^{\\circ}V,$\n\n$I_2=2\\angle 0^{\\circ}A$\n\n<img src=\"/question-images/ee/2014/ee-2014-41c1715823.webp\" />\n\nAt $\\omega _2=2 k$ rad/s, voltage and current are in phase. Thus, it is a case of series resonance,\n\n$X_{L_{\\omega 2}}=X_{C_{\\omega 2}}$\n\n$\\therefore \\;\\;Z=R=\\frac{V_2}{I_2}$\n\n$\\;\\;=\\frac{100\\angle 0^{\\circ}}{2\\angle 0^{\\circ}}=50\\Omega$\n\n$\\therefore$  Resistance of circuit,\n\n$R=50\\Omega$\n\nNow at $\\omega _1=1 k$ rad/s,\n\n$Z=\\frac{V_1}{I_1}=\\frac{100\\angle 0^{\\circ}}{0.03\\angle 31^{\\circ}}$\n\n$\\;\\; =\\frac{100}{0.03}\\angle 31^{\\circ}\\Omega\\;\\;...(i)$\n\nAlso,  $Z=|Z|\\angle \\tan^{-1}\\left [ \\frac{X_L-X_C}{R} \\right ] \\;\\;...(ii)$\n\nComparing equation (i) and (ii), we have:\n\n$-31^{\\circ}=\\tan ^{-1}\\left [ \\frac{X_L-X_C}{R} \\right ]$\n\n$\\tan(-31^{\\circ})=\\frac{X_L-X_C}{R}$\n\n$X_L-X_C=R \\tan(-31^{\\circ})$\n\n$\\;\\;=50X-0.6=-30$\n\n$\\therefore \\;\\; X_{L_{\\omega 1}}-X_{C_{\\omega 2}}=-30\\;\\;...(iii)$\n\n$X_{L_{\\omega 2}}=X_{C_{\\omega 2}}$ or $\\omega _2 L=\\frac{1}{\\omega _2C}$\n\n$L=\\frac{1}{\\omega _2^2C}\\;\\;...(iv)$\n\nFrom equation (iii),\n\n$\\omega _1L-\\frac{1}{\\omega _1C}=-30$\n\n$\\omega _1\\left ( \\frac{1}{\\omega _2^2C}\\right )-\\frac{1}{\\omega _1C}=-30$\n\n$\\frac{\\omega _1}{\\omega _2^2C}-\\frac{1}{\\omega _1C}=-30$\n\n$\\frac{1 \\times 10^3}{4 \\times 10^6 C}-\\frac{1}{10^3C}=-30$\n\n$\\frac{10^{-3}}{4C}-\\frac{10^{-3}}{C}=-30$\n\n$\\frac{-3}{4C} \\times 10^{-3}=-30$\n\n$C=\\frac{3 \\times 10^{-3}}{4 \\times 30}$\n\nSubstituting the value of C in equation (iv), we get,\n\n$L=\\frac{1}{\\omega _2^2C}$\n\n$\\;\\;=\\frac{1}{(2 \\times 10^3)^2 \\times 25 \\times 10^{-6}}$\n\n$\\;\\; =\\frac{1}{100}=10mH$\n\nTherefore, values are:\n\n$R=50\\Omega ,$\n\n$L=10mH,$\n\n$C=25\\mu F$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-41c1715823.webp"
+        ]
       }
     },
     "pp:ee:2014:q33-s3": {
@@ -1341,7 +1377,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
-        "markdown": "$\\Rightarrow \\;\\;$ Symmetrically located pole and zero.\n\n$\\Rightarrow \\;\\;$ All pass filter.\n\n$\\Rightarrow \\;\\;$ Constant magnitude\n\n$(-\\infty \\leq \\omega \\leq \\infty )$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\Rightarrow \\;\\;$ Symmetrically located pole and zero.\n\n$\\Rightarrow \\;\\;$ All pass filter.\n\n$\\Rightarrow \\;\\;$ Constant magnitude\n\n$(-\\infty \\leq \\omega \\leq \\infty )$",
+        "images": []
       }
     },
     "pp:ee:2014:q34-s3": {
@@ -1382,7 +1419,11 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "Given, impulse train of period 20 ms.\n\nThen, sampling frequency $=\\frac{1}{20 \\times 10^{-3}}=50Hz$\n\nIf the input signal $x(t)= \\cos \\omega _m (t)$ having spectrum\n\n<img src=\"/question-images/ee/2014/ee-2014-8dd1a06e70.webp\" />\n\nThe filtered out sinusoidal signal has 20 Hz frequency, the sampling must be under sampling. The output signal which is an under sampled signal with sampling frequency 50 Hz is\n\n<img src=\"/question-images/ee/2014/ee-2014-61aa55daa8.webp\" />\n\nand $50-f_m=20Hz\\;\\Rightarrow \\;f_m=30Hz$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given, impulse train of period 20 ms.\n\nThen, sampling frequency $=\\frac{1}{20 \\times 10^{-3}}=50Hz$\n\nIf the input signal $x(t)= \\cos \\omega _m (t)$ having spectrum\n\n<img src=\"/question-images/ee/2014/ee-2014-8dd1a06e70.webp\" />\n\nThe filtered out sinusoidal signal has 20 Hz frequency, the sampling must be under sampling. The output signal which is an under sampled signal with sampling frequency 50 Hz is\n\n<img src=\"/question-images/ee/2014/ee-2014-61aa55daa8.webp\" />\n\nand $50-f_m=20Hz\\;\\Rightarrow \\;f_m=30Hz$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-8dd1a06e70.webp",
+          "/question-images/ee/2014/ee-2014-61aa55daa8.webp"
+        ]
       }
     },
     "pp:ee:2014:q35-s3": {
@@ -1423,7 +1464,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
-        "markdown": "For real even function $x(t)$, the Fourier transform $X(\\omega )$ is always real even. $y(t)$ is a derivative of $x(t)$ which is a real odd function because derivative of even function is an odd function and hence, Fourier transform $Y(\\omega )$ is imaginary odd.\n\nTherefore, the correct answer is **B**."
+        "markdown": "For real even function $x(t)$, the Fourier transform $X(\\omega )$ is always real even. $y(t)$ is a derivative of $x(t)$ which is a real odd function because derivative of even function is an odd function and hence, Fourier transform $Y(\\omega )$ is imaginary odd.",
+        "images": []
       }
     },
     "pp:ee:2014:q36-s3": {
@@ -1464,7 +1506,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-a23d06146c.webp\" />\n\nLet core loss at 25 Hz be $P_0$ per Hz:\n\nThen equating the two slopoes of figure, we have: $$\\begin{aligned}\n\n\\frac{P_0-10}{25}&=\\frac{5}{50}  \\\\\n\nP_0&= 2.5+10=12.5W/Hz\n\n\\end{aligned}$$\n\n$\\therefore \\;\\; \\text{Core loss at} \\;\\;  25 Hz$  $= 12.5 \\times 25=312.5 watt$\n\nAlso, core loss at 50 Hz $= 15 \\times 50 =750 watt$\n\nLet at $(f_1)$ 25 Hz, eddy current loss $=P_{e1}$ and hysteresis loss $=P_{h1}$\n\nwe know that,$P_{e}\\propto  f^2$\n\n$$\\begin{aligned}\n\n\\therefore \\;\\; \\frac{P_{e2}}{P_{e1}} &=\\left ( \\frac{f_2}{f_1} \\right )^2=\\left ( \\frac{50}{25} \\right )^2=4 \\\\\n\n\\therefore \\;\\; P_{e2} &=4P_{e1} \\;\\;...(i)\\\\\n\n\\text{Also,}\\;\\; P_h\\propto f & \\\\\n\n\\therefore \\;\\; \\frac{P_{h2}}{P_{h1}}&=\\frac{f_2}{f_1}=\\frac{50}{25}=2 \\\\\n\nP_{h2}&=2P_{h1}\\;\\;...(ii) \\\\\n\n\\text{Now, at} \\;\\; f_1&=25Hz,  \\\\\n\nP_{e1}+P_{h1}&= 312.5\\\\ \\;\\;...(iii)\n\n\\text{and  at} \\;\\; f_2&=50Hz,  \\\\\n\nP_{e2}+P_{h2}&= 750\\\\\n\n4P_{e1}+2P_{h1}&=750W \\\\\n\n2P_{e1}+P_{h1}&=375 W\\;\\;...(iv)\n\n\\end{aligned}$$\n\nSolving equation (iii) and (iv), we get,\n\n$P_{e1}=62.5 W$ and $P_{h1}=250W$\n\nThus, at 25 Hz, hysteresis loss = 250W and eddy current loss =62.5W\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-a23d06146c.webp\" />\n\nLet core loss at 25 Hz be $P_0$ per Hz:\n\nThen equating the two slopoes of figure, we have: $$\\begin{aligned}\n\n\\frac{P_0-10}{25}&=\\frac{5}{50}  \\\\\n\nP_0&= 2.5+10=12.5W/Hz\n\n\\end{aligned}$$\n\n$\\therefore \\;\\; \\text{Core loss at} \\;\\;  25 Hz$  $= 12.5 \\times 25=312.5 watt$\n\nAlso, core loss at 50 Hz $= 15 \\times 50 =750 watt$\n\nLet at $(f_1)$ 25 Hz, eddy current loss $=P_{e1}$ and hysteresis loss $=P_{h1}$\n\nwe know that,$P_{e}\\propto  f^2$\n\n$$\\begin{aligned}\n\n\\therefore \\;\\; \\frac{P_{e2}}{P_{e1}} &=\\left ( \\frac{f_2}{f_1} \\right )^2=\\left ( \\frac{50}{25} \\right )^2=4 \\\\\n\n\\therefore \\;\\; P_{e2} &=4P_{e1} \\;\\;...(i)\\\\\n\n\\text{Also,}\\;\\; P_h\\propto f & \\\\\n\n\\therefore \\;\\; \\frac{P_{h2}}{P_{h1}}&=\\frac{f_2}{f_1}=\\frac{50}{25}=2 \\\\\n\nP_{h2}&=2P_{h1}\\;\\;...(ii) \\\\\n\n\\text{Now, at} \\;\\; f_1&=25Hz,  \\\\\n\nP_{e1}+P_{h1}&= 312.5\\\\ \\;\\;...(iii)\n\n\\text{and  at} \\;\\; f_2&=50Hz,  \\\\\n\nP_{e2}+P_{h2}&= 750\\\\\n\n4P_{e1}+2P_{h1}&=750W \\\\\n\n2P_{e1}+P_{h1}&=375 W\\;\\;...(iv)\n\n\\end{aligned}$$\n\nSolving equation (iii) and (iv), we get,\n\n$P_{e1}=62.5 W$ and $P_{h1}=250W$\n\nThus, at 25 Hz, hysteresis loss = 250W and eddy current loss =62.5W",
+        "images": [
+          "/question-images/ee/2014/ee-2014-a23d06146c.webp"
+        ]
       }
     },
     "pp:ee:2014:q37-s3": {
@@ -1503,7 +1548,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-f4ee8bf480.webp\" />\n\nGiven,\n\n$$\\begin{aligned} X_s &= 0.8 \\;\\text{pu} \\\\ \\cos \\phi &=1 \\\\ V&= 1.1\\angle 0^{\\circ}\\; \\text{pu(reference voltage)}\\\\ P&=1 \\;\\text{pu} \\end{aligned}$$\n\nLet,  $E_f\\angle \\delta$ be the excitation voltage\n\nNow, power supplied =1 pu\n\n$$\\begin{aligned} VI_a\\cos \\phi &= 1\\\\ I_a &= \\frac{1}{V \\cos \\phi }\\\\ &= \\frac{1}{1.1 \\times 1}=0.91 \\;\\text{pu}\\\\ \\text{Now,}\\;\\;\\vec{E_f} \\angle \\delta &=\\vec{V}+j\\vec{I_a}X_s \\\\ &=1.1\\angle 0^{\\circ}+j(0.91) \\times 0.8\\\\ &=1.1+j0.728\\\\ &=1.319\\angle 33.49^{\\circ}\\;\\text{pu}\\\\ \\therefore \\;\\; E_f\\angle \\delta &=1.319\\angle 33.49^{\\circ}\\;\\text{pu} \\end{aligned}$$\n\nHence, the angle of the voltage behind the synchronous reactance =Power angle $(\\delta )$\n\n$\\;\\;\\;\\; \\delta =33.49$\n\nTherefore, the correct answer is **33.2** (acceptable range: [32.4, 34])."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-f4ee8bf480.webp\" />\n\nGiven,\n\n$$\\begin{aligned} X_s &= 0.8 \\;\\text{pu} \\\\ \\cos \\phi &=1 \\\\ V&= 1.1\\angle 0^{\\circ}\\; \\text{pu(reference voltage)}\\\\ P&=1 \\;\\text{pu} \\end{aligned}$$\n\nLet,  $E_f\\angle \\delta$ be the excitation voltage\n\nNow, power supplied =1 pu\n\n$$\\begin{aligned} VI_a\\cos \\phi &= 1\\\\ I_a &= \\frac{1}{V \\cos \\phi }\\\\ &= \\frac{1}{1.1 \\times 1}=0.91 \\;\\text{pu}\\\\ \\text{Now,}\\;\\;\\vec{E_f} \\angle \\delta &=\\vec{V}+j\\vec{I_a}X_s \\\\ &=1.1\\angle 0^{\\circ}+j(0.91) \\times 0.8\\\\ &=1.1+j0.728\\\\ &=1.319\\angle 33.49^{\\circ}\\;\\text{pu}\\\\ \\therefore \\;\\; E_f\\angle \\delta &=1.319\\angle 33.49^{\\circ}\\;\\text{pu} \\end{aligned}$$\n\nHence, the angle of the voltage behind the synchronous reactance =Power angle $(\\delta )$\n\n$\\;\\;\\;\\; \\delta =33.49$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-f4ee8bf480.webp"
+        ]
       }
     },
     "pp:ee:2014:q38-s3": {
@@ -1542,7 +1590,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "$$\\begin{aligned} \\text{Given,}\\;\\; V &= 300 \\text{volt, no load speed} \\\\ &=900 \\text{rpm, no load current}\\\\ I_{a_0}&=2A \\\\ &\\therefore \\; \\text{No load induced emf}\\\\ E_{a_0}&=V-I_{a_0}R\\\\ &=300-2 \\times 0.5\\\\ &=299 \\text{volt}\\\\ \\end{aligned}$$\n\nAlso, full load armature current,\n\n$I_{a_f}=15A$\n\n$\\therefore$ induced emf in armature at load,\n\n$$\\begin{aligned} E_{a_f}&=V-I_{a_f}R_a \\\\ &= 300-15 \\times 0.5\\\\ &= 292.5 \\text{volt} \\end{aligned}$$\n\nLet the speed of motor during loaded condition be N.\n\nWe know that:\n\n$$\\begin{aligned} E_a &\\propto \\phi N \\\\ \\text{or} \\;\\; E_a&\\propto N\\;\\;(\\phi =\\text{constant}) \\\\ \\therefore \\; \\frac{N}{N_0} &=\\frac{E_{a_f}}{E_{a_0}} \\\\ N&= \\frac{E_{a_f}}{E_{a_0}} N_0\\\\ &= \\frac{292.5}{299} \\times 900\\\\ N&=880.43 \\text{rpm} \\end{aligned}$$\n\nTherefore, the correct answer is **880** (acceptable range: [879, 881])."
+        "markdown": "$$\\begin{aligned} \\text{Given,}\\;\\; V &= 300 \\text{volt, no load speed} \\\\ &=900 \\text{rpm, no load current}\\\\ I_{a_0}&=2A \\\\ &\\therefore \\; \\text{No load induced emf}\\\\ E_{a_0}&=V-I_{a_0}R\\\\ &=300-2 \\times 0.5\\\\ &=299 \\text{volt}\\\\ \\end{aligned}$$\n\nAlso, full load armature current,\n\n$I_{a_f}=15A$\n\n$\\therefore$ induced emf in armature at load,\n\n$$\\begin{aligned} E_{a_f}&=V-I_{a_f}R_a \\\\ &= 300-15 \\times 0.5\\\\ &= 292.5 \\text{volt} \\end{aligned}$$\n\nLet the speed of motor during loaded condition be N.\n\nWe know that:\n\n$$\\begin{aligned} E_a &\\propto \\phi N \\\\ \\text{or} \\;\\; E_a&\\propto N\\;\\;(\\phi =\\text{constant}) \\\\ \\therefore \\; \\frac{N}{N_0} &=\\frac{E_{a_f}}{E_{a_0}} \\\\ N&= \\frac{E_{a_f}}{E_{a_0}} N_0\\\\ &= \\frac{292.5}{299} \\times 900\\\\ N&=880.43 \\text{rpm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2014:q39-s3": {
@@ -1581,7 +1630,11 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-0c1fe4f302.webp\" />\n\n$$\\begin{aligned} I_2 &=\\frac{4 \\times 10^3}{110 \\times 0.89}=40.86\\angle -27.13^{\\circ} \\\\ I_1 &=\\frac{40.86}{2} \\angle -27.13^{\\circ} \\\\ &= 20.43\\angle -27.13^{\\circ} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2014/ee-2014-be7b873f96.webp\" />\n\nFor unity pf horizontal component of $(I_1)$ should be cancelled with $(I_x)$.\n\nSo,  $20.43 \\sin (27.13^{\\circ})=\\frac{220}{X}$\n\n$X=23.61\\Omega$\n\nTherefore, the correct answer is **23.5** (acceptable range: [23, 24])."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-0c1fe4f302.webp\" />\n\n$$\\begin{aligned} I_2 &=\\frac{4 \\times 10^3}{110 \\times 0.89}=40.86\\angle -27.13^{\\circ} \\\\ I_1 &=\\frac{40.86}{2} \\angle -27.13^{\\circ} \\\\ &= 20.43\\angle -27.13^{\\circ} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2014/ee-2014-be7b873f96.webp\" />\n\nFor unity pf horizontal component of $(I_1)$ should be cancelled with $(I_x)$.\n\nSo,  $20.43 \\sin (27.13^{\\circ})=\\frac{220}{X}$\n\n$X=23.61\\Omega$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-0c1fe4f302.webp",
+          "/question-images/ee/2014/ee-2014-be7b873f96.webp"
+        ]
       }
     },
     "pp:ee:2014:q40-s3": {
@@ -1622,7 +1675,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-486fc96595.webp\" />\n\n$$\\begin{aligned} L_1 &=45mH \\\\ L_2 &=30mH \\\\ M&= 20 mH\\\\ a &= 2(220/110V)\\\\ L_1 -aM&=45 -2 \\times 20=5mH \\\\ a^2L_2-aM&=2^2 \\times 30 -2 \\times 20=80mH \\\\ aM&= 2 \\times 20 =40 mH \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-486fc96595.webp\" />\n\n$$\\begin{aligned} L_1 &=45mH \\\\ L_2 &=30mH \\\\ M&= 20 mH\\\\ a &= 2(220/110V)\\\\ L_1 -aM&=45 -2 \\times 20=5mH \\\\ a^2L_2-aM&=2^2 \\times 30 -2 \\times 20=80mH \\\\ aM&= 2 \\times 20 =40 mH \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-486fc96595.webp"
+        ]
       }
     },
     "pp:ee:2014:q41-s3": {
@@ -1661,7 +1717,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "$$\\begin{aligned} z &=(0+j0.5)\\Omega /km \\\\ Z &=zl = (0+j200) \\Omega\\\\ y&= (0+j5)\\mu \\Omega/km\\\\ Y&=yl=(0+j5) \\times 10^{-6} \\times 400\\\\ &=(0+j2 \\times 10^{-3})\\Omega \\\\ \\gamma l &=\\sqrt{ZY}=\\sqrt{(200 \\times 2 \\times 10^{-3})} \\\\ \\gamma l &= j0.6324 \\\\ &= \\alpha l+j\\beta l=0+j\\beta l\\\\ Z_c&=\\sqrt{\\frac{Z}{Y}}=\\sqrt{\\frac{200}{2 \\times 10^{-3}}} \\\\ &= 316.22\\Omega \\end{aligned}$$\n\nEquivalent $\\pi$-network:\n\n<img src=\"/question-images/ee/2014/ee-2014-da673cb9d4.webp\" />\n\n$$\\begin{aligned} Z &=Z_C \\sin \\gamma l \\\\ &= Z_C \\sinh (\\alpha l+j\\beta l)\\\\ &=Z_C ( \\sinh \\alpha l\\cdot \\cos \\beta l+j \\cos \\alpha l \\sin \\beta l) \\\\ &=316.22[\\sin (0) \\times \\cos \\beta l+j \\cosh(0)] \\\\ & \\sin \\left ( 0.6324 \\times \\frac{180}{\\pi} \\right ) \\\\ &=187\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **187** (acceptable range: [186, 188])."
+        "markdown": "$$\\begin{aligned} z &=(0+j0.5)\\Omega /km \\\\ Z &=zl = (0+j200) \\Omega\\\\ y&= (0+j5)\\mu \\Omega/km\\\\ Y&=yl=(0+j5) \\times 10^{-6} \\times 400\\\\ &=(0+j2 \\times 10^{-3})\\Omega \\\\ \\gamma l &=\\sqrt{ZY}=\\sqrt{(200 \\times 2 \\times 10^{-3})} \\\\ \\gamma l &= j0.6324 \\\\ &= \\alpha l+j\\beta l=0+j\\beta l\\\\ Z_c&=\\sqrt{\\frac{Z}{Y}}=\\sqrt{\\frac{200}{2 \\times 10^{-3}}} \\\\ &= 316.22\\Omega \\end{aligned}$$\n\nEquivalent $\\pi$-network:\n\n<img src=\"/question-images/ee/2014/ee-2014-da673cb9d4.webp\" />\n\n$$\\begin{aligned} Z &=Z_C \\sin \\gamma l \\\\ &= Z_C \\sinh (\\alpha l+j\\beta l)\\\\ &=Z_C ( \\sinh \\alpha l\\cdot \\cos \\beta l+j \\cos \\alpha l \\sin \\beta l) \\\\ &=316.22[\\sin (0) \\times \\cos \\beta l+j \\cosh(0)] \\\\ & \\sin \\left ( 0.6324 \\times \\frac{180}{\\pi} \\right ) \\\\ &=187\\Omega \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-da673cb9d4.webp"
+        ]
       }
     },
     "pp:ee:2014:q42-s3": {
@@ -1700,7 +1759,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Compensation Techniques and Voltage Profile Control",
-        "markdown": "$$\\begin{aligned} \\text{Given, }S_{load}&=P_1+jQ_1 \\\\ 1kW \\leq P_1 &\\leq1.5 kW \\\\ 0.5 \\text{ kVAR} \\leq Q_1 &\\leq 1\\text{ kVAR} \\end{aligned}$$\n\nShunt capacitor will only supply reactive power and the total reactive power consumed by the load and the capacitor together will be less than 0.25 kVAR\n\ni.e.  $Q \\leq 0.25\\text{ kVAR}$\n\nTherefore, reactive power supplied by the capacitor will be\n\n$Q _C=(1-0.25)=0.75 \\text{ kVAR (lagging)}$\n\nTherefore, the correct answer is **0.75**."
+        "markdown": "$$\\begin{aligned} \\text{Given, }S_{load}&=P_1+jQ_1 \\\\ 1kW \\leq P_1 &\\leq1.5 kW \\\\ 0.5 \\text{ kVAR} \\leq Q_1 &\\leq 1\\text{ kVAR} \\end{aligned}$$\n\nShunt capacitor will only supply reactive power and the total reactive power consumed by the load and the capacitor together will be less than 0.25 kVAR\n\ni.e.  $Q \\leq 0.25\\text{ kVAR}$\n\nTherefore, reactive power supplied by the capacitor will be\n\n$Q _C=(1-0.25)=0.75 \\text{ kVAR (lagging)}$",
+        "images": []
       }
     },
     "pp:ee:2014:q43-s3": {
@@ -1739,7 +1799,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-def570cf3f.webp\" />\n\n$$\\begin{aligned} \\frac{2H}{\\omega _s}\\frac{d^2\\delta }{dt^2}&=(P_m-P_e) \\\\ \\text{Let, } \\omega _r&=\\frac{d\\delta }{dt} \\\\ \\frac{2H}{\\omega _s}\\frac{d\\omega _r }{dt} &=(P_m-P_e) \\\\ \\text{Multiplying with } &\\omega _r \\text{ in both side}\\\\ \\frac{H}{\\omega _s}\\left ( 2\\omega _r \\frac{d\\omega _r }{dt}\\right )&= (P_m-P_e)\\frac{d\\delta }{dt}\\\\ \\Rightarrow \\; \\frac{H}{\\omega _s} 2d(\\omega _r)^2&=(P_m-P_e)d\\delta \\\\ \\Rightarrow \\; \\frac{H}{\\omega _s}\\int_{\\omega _{r_1}}^{\\omega _{r_2}}d(\\omega _r^2) &= \\int_{\\delta _1}^{\\delta _2}(P_m-P_e)d\\delta \\\\ \\text{where, } & \\\\ \\omega _{r_1}&=\\left.\\begin{matrix} \\frac{d\\delta }{dt} \\end{matrix}\\right|_{\\delta =\\delta _1} =\\omega (\\delta =\\delta _1)-\\omega _s\\\\ \\omega _{r_2}&=\\left.\\begin{matrix} \\frac{d\\delta }{dt} \\end{matrix}\\right|_{\\delta =\\delta _2} =\\omega (\\delta =\\delta _2)-\\omega _s\\\\ \\frac{H}{\\omega _s}(\\omega _{r_2}^2 -\\omega _{r_1}^2)&=\\int_{\\delta _1}^{\\delta _2}(P_m-P_e)d\\delta \\\\ \\text{In problem, }&\\\\ \\frac{d\\delta }{dt}=0, &\\frac{d\\delta }{dt}=3.762\\\\ \\frac{5}{314}(3.762^2-0^2)&=\\int_{30^{\\circ}}^{45^{\\circ}}(1-P_{max} \\sin \\delta )d\\delta \\\\ \\Rightarrow \\;\\; P_{max}&=0.23p.u. \\end{aligned}$$\n\nTherefore, the correct answer is **0.23** (acceptable range: [0.22, 0.24])."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-def570cf3f.webp\" />\n\n$$\\begin{aligned} \\frac{2H}{\\omega _s}\\frac{d^2\\delta }{dt^2}&=(P_m-P_e) \\\\ \\text{Let, } \\omega _r&=\\frac{d\\delta }{dt} \\\\ \\frac{2H}{\\omega _s}\\frac{d\\omega _r }{dt} &=(P_m-P_e) \\\\ \\text{Multiplying with } &\\omega _r \\text{ in both side}\\\\ \\frac{H}{\\omega _s}\\left ( 2\\omega _r \\frac{d\\omega _r }{dt}\\right )&= (P_m-P_e)\\frac{d\\delta }{dt}\\\\ \\Rightarrow \\; \\frac{H}{\\omega _s} 2d(\\omega _r)^2&=(P_m-P_e)d\\delta \\\\ \\Rightarrow \\; \\frac{H}{\\omega _s}\\int_{\\omega _{r_1}}^{\\omega _{r_2}}d(\\omega _r^2) &= \\int_{\\delta _1}^{\\delta _2}(P_m-P_e)d\\delta \\\\ \\text{where, } & \\\\ \\omega _{r_1}&=\\left.\\begin{matrix} \\frac{d\\delta }{dt} \\end{matrix}\\right|_{\\delta =\\delta _1} =\\omega (\\delta =\\delta _1)-\\omega _s\\\\ \\omega _{r_2}&=\\left.\\begin{matrix} \\frac{d\\delta }{dt} \\end{matrix}\\right|_{\\delta =\\delta _2} =\\omega (\\delta =\\delta _2)-\\omega _s\\\\ \\frac{H}{\\omega _s}(\\omega _{r_2}^2 -\\omega _{r_1}^2)&=\\int_{\\delta _1}^{\\delta _2}(P_m-P_e)d\\delta \\\\ \\text{In problem, }&\\\\ \\frac{d\\delta }{dt}=0, &\\frac{d\\delta }{dt}=3.762\\\\ \\frac{5}{314}(3.762^2-0^2)&=\\int_{30^{\\circ}}^{45^{\\circ}}(1-P_{max} \\sin \\delta )d\\delta \\\\ \\Rightarrow \\;\\; P_{max}&=0.23p.u. \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-def570cf3f.webp"
+        ]
       }
     },
     "pp:ee:2014:q44-s3": {
@@ -1780,7 +1843,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Feedback Characteristics of Control Systems",
-        "markdown": "For all given values of G(s) in options, G(s) does not satisfy the desired condition. But option (B) is official answer given by IIT.\n\nTherefore, the correct answer is **B**."
+        "markdown": "For all given values of G(s) in options, G(s) does not satisfy the desired condition. But option (B) is official answer given by IIT.",
+        "images": []
       }
     },
     "pp:ee:2014:q45-s3": {
@@ -1821,7 +1885,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "Given $$A=\\begin{bmatrix} 0 & 1\\\\ -1&-1 \\end{bmatrix},$$ $$B=\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix},$$$$C=\\begin{bmatrix} 1 & 0 \\end{bmatrix}$$\n\nTransfer function of the given system is given by\n\n$\\frac{Y(s)}{U(s)}=C(sI-A)^{-1}B$\n\nNow, $$(sI-A)=\\begin{bmatrix} s & 0\\\\ 0 & s \\end{bmatrix}-\\begin{bmatrix} 0 & 1\\\\ -1&-1 \\end{bmatrix}$$\n\n$$\\;\\;\\;=\\begin{bmatrix} s & -1\\\\ 1&s+1 \\end{bmatrix}$$\n\n$(sI-A)^{-1}=\\frac{1}{|sI-A|}(Adj[A])$\n\n$|sI-A|=s(s+1)+1=(s^2+s+1)$\n\nand $$Adj[A]=\\begin{bmatrix} s+1 & 1\\\\ -1&s \\end{bmatrix}$$\n\n$$\\therefore \\;\\;(sI-A)^{-1}=\\frac{1}{(s^2+s+1)}\\begin{bmatrix} s+1 & 1\\\\ -1&s \\end{bmatrix}$$\n\n$\\therefore$ Transfer function,\n\n$$\\frac{Y(s)}{U(s)}=\\frac{1}{(s^2+s+1)}\\left \\{ \\begin{bmatrix} 1 &0 \\end{bmatrix}\\begin{bmatrix} s+1 & 1\\\\ -1&s \\end{bmatrix}\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix} \\right \\}$$\n\n$$\\;\\;=\\frac{1}{(s^2+s+1)}\\left \\{ \\begin{bmatrix} (s+1) & 1 \\end{bmatrix} \\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}\\right \\}$$\n\n$\\;\\;=\\frac{1}{(s^2+s+1)} \\times 1$\n\n$\\frac{Y(s)}{U(s)}=\\frac{1}{(s^2+s+1)}$\n\nGiven, input=unit step\n\n$\\therefore \\;\\;  U(s)=\\frac{1}{s}$\n\n$\\therefore \\;\\; Y(s)=\\frac{1}{s}\\frac{1}{(s^2+s+1)}=\\frac{1}{s(s^2+s+1)}$\n\n$\\therefore$ Final Value\n\n$\\lim_{s\\rightarrow 0}[sY(s)]$\n\n$=\\lim_{s\\rightarrow 0}\\left [ \\frac{1}{(s^2+s+1)} \\right ]=1$\n\n$\\therefore \\;\\;$ Error=Final value -Initial value\n\n$e_{ss}=0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given $$A=\\begin{bmatrix} 0 & 1\\\\ -1&-1 \\end{bmatrix},$$ $$B=\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix},$$$$C=\\begin{bmatrix} 1 & 0 \\end{bmatrix}$$\n\nTransfer function of the given system is given by\n\n$\\frac{Y(s)}{U(s)}=C(sI-A)^{-1}B$\n\nNow, $$(sI-A)=\\begin{bmatrix} s & 0\\\\ 0 & s \\end{bmatrix}-\\begin{bmatrix} 0 & 1\\\\ -1&-1 \\end{bmatrix}$$\n\n$$\\;\\;\\;=\\begin{bmatrix} s & -1\\\\ 1&s+1 \\end{bmatrix}$$\n\n$(sI-A)^{-1}=\\frac{1}{|sI-A|}(Adj[A])$\n\n$|sI-A|=s(s+1)+1=(s^2+s+1)$\n\nand $$Adj[A]=\\begin{bmatrix} s+1 & 1\\\\ -1&s \\end{bmatrix}$$\n\n$$\\therefore \\;\\;(sI-A)^{-1}=\\frac{1}{(s^2+s+1)}\\begin{bmatrix} s+1 & 1\\\\ -1&s \\end{bmatrix}$$\n\n$\\therefore$ Transfer function,\n\n$$\\frac{Y(s)}{U(s)}=\\frac{1}{(s^2+s+1)}\\left \\{ \\begin{bmatrix} 1 &0 \\end{bmatrix}\\begin{bmatrix} s+1 & 1\\\\ -1&s \\end{bmatrix}\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix} \\right \\}$$\n\n$$\\;\\;=\\frac{1}{(s^2+s+1)}\\left \\{ \\begin{bmatrix} (s+1) & 1 \\end{bmatrix} \\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}\\right \\}$$\n\n$\\;\\;=\\frac{1}{(s^2+s+1)} \\times 1$\n\n$\\frac{Y(s)}{U(s)}=\\frac{1}{(s^2+s+1)}$\n\nGiven, input=unit step\n\n$\\therefore \\;\\;  U(s)=\\frac{1}{s}$\n\n$\\therefore \\;\\; Y(s)=\\frac{1}{s}\\frac{1}{(s^2+s+1)}=\\frac{1}{s(s^2+s+1)}$\n\n$\\therefore$ Final Value\n\n$\\lim_{s\\rightarrow 0}[sY(s)]$\n\n$=\\lim_{s\\rightarrow 0}\\left [ \\frac{1}{(s^2+s+1)} \\right ]=1$\n\n$\\therefore \\;\\;$ Error=Final value -Initial value\n\n$e_{ss}=0$",
+        "images": []
       }
     },
     "pp:ee:2014:q46-s3": {
@@ -1862,7 +1927,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "From the given Bode plot, it is clear that corner frequencies,\n\n$\\omega _{c1}=\\frac{1}{3}$ and $\\omega _{c2}=1$\n\n$\\therefore$  Transfer function of given system is given by\n\n$T(s)=\\frac{C(s)}{R(s)}=\\left [ \\frac{1+3s}{1+s} \\right ]=\\left [ \\frac{1+Ts}{1+\\alpha Ts} \\right ]$\n\nHere, $T=3$ and  $\\alpha T=1,$\n\n$\\alpha =\\frac{1}{3}$\n\nAs  $\\alpha \\lt 1$, therefore the transfer function T(s) represents a lead compensator having $\\alpha =\\frac{1}{3}$\n\n$\\therefore$   Maximum phase shift,\n\n$\\phi _{m}=tan^{-1}\\left [ \\frac{1-\\alpha }{2\\sqrt{\\alpha }} \\right ]$\n\n$=tan^{-1}\\left [ \\frac{1-\\frac{1}{3}}{\\frac{2}{\\sqrt{3}}} \\right ]$\n\n$=tan^{-1}\\left [ \\frac{2}{3}\\times \\frac{\\sqrt{3}}{2} \\right ]$\n\n$=tan^{-1}\\left [ \\frac{1}{\\sqrt{3}} \\right ]=30^{\\circ}$\n\n$\\therefore \\;\\; \\phi _m=30^{\\circ}$\n\nAlso,\n\n$T(j\\omega )=\\frac{1+j3\\omega }{1+j\\omega }$\n\n$\\therefore \\;\\;  |T(j\\omega )|=\\frac{\\sqrt{1+9\\omega ^2}}{\\sqrt{1+\\omega ^2}}$\n\n$\\therefore \\;\\; Gain G_m$ in dB $=20log |T(j\\omega )|$\n\n$=20 log_{10}\\left [ \\frac{\\sqrt{1+9\\omega ^2_m}}{1+\\omega ^2_m} \\right ]$\n\nNow, $\\omega _m=\\frac{1}{T\\sqrt{\\alpha }}=\\frac{1}{\\sqrt{3}}$\n\n$\\therefore \\;\\; G_m=20 log_{10}\\left [ \\sqrt{\\frac{1+9\\times \\left ( \\frac{1}{\\sqrt{3}} \\right )^2}{1+\\left ( \\frac{1}{\\sqrt{3}} \\right )^2}} \\right ]$\n\n$=20 log_{10}\\left [ \\sqrt{\\frac{1+3}{1+\\frac{1}{3}}} \\right ]=20 log_{10}\\sqrt{3}$\n\n$G_m=4.77dB$\n\nTherefore, the correct answer is **C**."
+        "markdown": "From the given Bode plot, it is clear that corner frequencies,\n\n$\\omega _{c1}=\\frac{1}{3}$ and $\\omega _{c2}=1$\n\n$\\therefore$  Transfer function of given system is given by\n\n$T(s)=\\frac{C(s)}{R(s)}=\\left [ \\frac{1+3s}{1+s} \\right ]=\\left [ \\frac{1+Ts}{1+\\alpha Ts} \\right ]$\n\nHere, $T=3$ and  $\\alpha T=1,$\n\n$\\alpha =\\frac{1}{3}$\n\nAs  $\\alpha \\lt 1$, therefore the transfer function T(s) represents a lead compensator having $\\alpha =\\frac{1}{3}$\n\n$\\therefore$   Maximum phase shift,\n\n$\\phi _{m}=tan^{-1}\\left [ \\frac{1-\\alpha }{2\\sqrt{\\alpha }} \\right ]$\n\n$=tan^{-1}\\left [ \\frac{1-\\frac{1}{3}}{\\frac{2}{\\sqrt{3}}} \\right ]$\n\n$=tan^{-1}\\left [ \\frac{2}{3}\\times \\frac{\\sqrt{3}}{2} \\right ]$\n\n$=tan^{-1}\\left [ \\frac{1}{\\sqrt{3}} \\right ]=30^{\\circ}$\n\n$\\therefore \\;\\; \\phi _m=30^{\\circ}$\n\nAlso,\n\n$T(j\\omega )=\\frac{1+j3\\omega }{1+j\\omega }$\n\n$\\therefore \\;\\;  |T(j\\omega )|=\\frac{\\sqrt{1+9\\omega ^2}}{\\sqrt{1+\\omega ^2}}$\n\n$\\therefore \\;\\; Gain G_m$ in dB $=20log |T(j\\omega )|$\n\n$=20 log_{10}\\left [ \\frac{\\sqrt{1+9\\omega ^2_m}}{1+\\omega ^2_m} \\right ]$\n\nNow, $\\omega _m=\\frac{1}{T\\sqrt{\\alpha }}=\\frac{1}{\\sqrt{3}}$\n\n$\\therefore \\;\\; G_m=20 log_{10}\\left [ \\sqrt{\\frac{1+9\\times \\left ( \\frac{1}{\\sqrt{3}} \\right )^2}{1+\\left ( \\frac{1}{\\sqrt{3}} \\right )^2}} \\right ]$\n\n$=20 log_{10}\\left [ \\sqrt{\\frac{1+3}{1+\\frac{1}{3}}} \\right ]=20 log_{10}\\sqrt{3}$\n\n$G_m=4.77dB$",
+        "images": []
       }
     },
     "pp:ee:2014:q47-s3": {
@@ -1903,7 +1969,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-c3dfd64a25.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-c3dfd64a25.webp\" />",
+        "images": [
+          "/question-images/ee/2014/ee-2014-c3dfd64a25.webp"
+        ]
       }
     },
     "pp:ee:2014:q48-s3": {
@@ -1942,7 +2011,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - A.C. Bridges",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-309acc76c6.webp\" />\n\nRedrawing the given bridge circuit, we have:\n\n$$\\begin{aligned} Z_1&= \\frac{1}{j\\omega C_1}\\Omega \\\\ Z_2&=35 k\\Omega Z_3 &= \\frac{10^6}{j0.1\\omega } \\Omega \\\\ Z_4&=105 k\\Omega \\end{aligned}$$\n\nAt balance, current through galavanometer:\n\n$I_g=0$\n\nand $|Z_1||Z_4|=|Z_2||Z_3|$\n\n$\\therefore \\left ( \\frac{1}{\\omega C_1} \\right ) \\times (105K)=(35K)\\left ( \\frac{10^6}{0.1\\omega } \\right )$\n\n$C_1=\\frac{105 \\times 0.1}{35 }\\mu F$\n\n$\\;\\;=0.3\\mu F$\n\nTherefore, the correct answer is **0.3**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-309acc76c6.webp\" />\n\nRedrawing the given bridge circuit, we have:\n\n$$\\begin{aligned} Z_1&= \\frac{1}{j\\omega C_1}\\Omega \\\\ Z_2&=35 k\\Omega Z_3 &= \\frac{10^6}{j0.1\\omega } \\Omega \\\\ Z_4&=105 k\\Omega \\end{aligned}$$\n\nAt balance, current through galavanometer:\n\n$I_g=0$\n\nand $|Z_1||Z_4|=|Z_2||Z_3|$\n\n$\\therefore \\left ( \\frac{1}{\\omega C_1} \\right ) \\times (105K)=(35K)\\left ( \\frac{10^6}{0.1\\omega } \\right )$\n\n$C_1=\\frac{105 \\times 0.1}{35 }\\mu F$\n\n$\\;\\;=0.3\\mu F$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-309acc76c6.webp"
+        ]
       }
     },
     "pp:ee:2014:q49-s3": {
@@ -1983,7 +2055,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Miscellaneous",
-        "markdown": "Not in the GATE-2018 Syllabus.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Not in the GATE-2018 Syllabus.",
+        "images": []
       }
     },
     "pp:ee:2014:q50-s3": {
@@ -2024,7 +2097,11 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "CASE-I: $V_i \\gt 0$, the circuit will look like\n\n<img src=\"/question-images/ee/2014/ee-2014-c0f7d4c313.webp\" />\n\nHence  $V_o= 0$\n\nCASE-II: $V_i \\lt 0$, the circuit will look like\n\n<img src=\"/question-images/ee/2014/ee-2014-d741805497.webp\" />\n\n$\\frac{V_{01}}{V_i}=-\\frac{R}{R} \\;\\;\\;...(i)$\n\n$V_{01}=-V_i\\;\\;\\;...(ii)$\n\n$and \\;\\; \\frac{V_o}{V_{01}}=-\\frac{R}{R}$\n\n$V_o=-V_{01}\\;\\;\\;...(iii)$\n\nFrom equation (ii) and (iii),\n\n$V_o=V_i$\n\nTherefore, the correct answer is **C**."
+        "markdown": "CASE-I: $V_i \\gt 0$, the circuit will look like\n\n<img src=\"/question-images/ee/2014/ee-2014-c0f7d4c313.webp\" />\n\nHence  $V_o= 0$\n\nCASE-II: $V_i \\lt 0$, the circuit will look like\n\n<img src=\"/question-images/ee/2014/ee-2014-d741805497.webp\" />\n\n$\\frac{V_{01}}{V_i}=-\\frac{R}{R} \\;\\;\\;...(i)$\n\n$V_{01}=-V_i\\;\\;\\;...(ii)$\n\n$and \\;\\; \\frac{V_o}{V_{01}}=-\\frac{R}{R}$\n\n$V_o=-V_{01}\\;\\;\\;...(iii)$\n\nFrom equation (ii) and (iii),\n\n$V_o=V_i$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-c0f7d4c313.webp",
+          "/question-images/ee/2014/ee-2014-d741805497.webp"
+        ]
       }
     },
     "pp:ee:2014:q51-s3": {
@@ -2065,7 +2142,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
-        "markdown": "For $$\\begin{matrix} A_2 & A_1 & A_0 & S_0 & S_1\\\\ 0 & 0 & 0 & 0 & 0 \\end{matrix}$$\n\nMUX is enabled and output is $I_0$\n\nFor $$\\begin{matrix} A_2 & A_1 & A_0 & S_0 & S_1\\\\ 0 & 0 & 1 & 0 & 0 \\end{matrix}$$\n\nMUX is disable and output is '1'\n\nsimilarly, for\n\n<img src=\"/question-images/ee/2014/ee-2014-4dd9328cb0.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "For $$\\begin{matrix} A_2 & A_1 & A_0 & S_0 & S_1\\\\ 0 & 0 & 0 & 0 & 0 \\end{matrix}$$\n\nMUX is enabled and output is $I_0$\n\nFor $$\\begin{matrix} A_2 & A_1 & A_0 & S_0 & S_1\\\\ 0 & 0 & 1 & 0 & 0 \\end{matrix}$$\n\nMUX is disable and output is '1'\n\nsimilarly, for\n\n<img src=\"/question-images/ee/2014/ee-2014-4dd9328cb0.webp\" />",
+        "images": [
+          "/question-images/ee/2014/ee-2014-4dd9328cb0.webp"
+        ]
       }
     },
     "pp:ee:2014:q52-s3": {
@@ -2104,7 +2184,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Oscillators and Feedback Amplifiers",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-c7e2572eaf.webp\" />\n\nDischarging curve,\n\n$V_c(t)=0-(0-1.7)e^{-t/RC}$\n\nAt,   $t=T_2$\n\n$V_c(t)=0.9V$\n\n$0.9=1.7e^{-t/RC}$\n\n$0.63=T_2$\n\n$T_2=0.63\\;ms$\n\nTherefore, the correct answer is **0.64** (acceptable range: [0.62, 0.66])."
+        "markdown": "Discharging curve,\n\n$V_c(t)=0-(0-1.7)e^{-t/RC}$\n\nAt,   $t=T_2$\n\n$V_c(t)=0.9V$\n\n$0.9=1.7e^{-t/RC}$\n\n$0.63=T_2$\n\n$T_2=0.63\\;ms$",
+        "images": []
       }
     },
     "pp:ee:2014:q53-s3": {
@@ -2145,7 +2226,11 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-5073f7d4cd.webp\" />\n\nLet us assume all the impedance are Z and to flow $I_0$ only closed path is required. So, in three phases one phase is open circuited.\n\nAccording to correct division,\n\n$$\\begin{aligned} I_R&=\\frac{I_0 2Z}{3Z}=\\frac{2I_0}{3} \\\\ &= \\frac{2}{3}p.u. \\;\\;\\;[\\because \\; I_0=1\\;p.u.]\\\\  I_{YB}&=\\frac{I_0Z}{3Z}=\\frac{I_0}{3}=\\frac{1}{3}p.u. \\end{aligned}$$\n\nThe transformer ratio is given as 1:K\n\n$$\\begin{aligned} \\therefore \\;\\; I_{R(primary)}&=\\frac{2K}{3}p.u. \\\\ I_{YB}&=\\frac{K}{3}p.u. \\end{aligned}$$\n\nAccording to 3 phase source waveform,\n\n<img src=\"/question-images/ee/2014/ee-2014-eeab2562f7.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2014/ee-2014-5073f7d4cd.webp\" />\n\nLet us assume all the impedance are Z and to flow $I_0$ only closed path is required. So, in three phases one phase is open circuited.\n\nAccording to correct division,\n\n$$\\begin{aligned} I_R&=\\frac{I_0 2Z}{3Z}=\\frac{2I_0}{3} \\\\ &= \\frac{2}{3}p.u. \\;\\;\\;[\\because \\; I_0=1\\;p.u.]\\\\  I_{YB}&=\\frac{I_0Z}{3Z}=\\frac{I_0}{3}=\\frac{1}{3}p.u. \\end{aligned}$$\n\nThe transformer ratio is given as 1:K\n\n$$\\begin{aligned} \\therefore \\;\\; I_{R(primary)}&=\\frac{2K}{3}p.u. \\\\ I_{YB}&=\\frac{K}{3}p.u. \\end{aligned}$$\n\nAccording to 3 phase source waveform,\n\n<img src=\"/question-images/ee/2014/ee-2014-eeab2562f7.webp\" />",
+        "images": [
+          "/question-images/ee/2014/ee-2014-5073f7d4cd.webp",
+          "/question-images/ee/2014/ee-2014-eeab2562f7.webp"
+        ]
       }
     },
     "pp:ee:2014:q54-s3": {
@@ -2184,7 +2269,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "At t=2.5 ms the circuit is as shown below\n\n<img src=\"/question-images/ee/2014/ee-2014-44b6990ddd.webp\" />\n\n$$\\begin{aligned} -V_s+V_L&=0\\\\ V_S&=L\\frac{di}{dt}\\\\ \\frac{V_S}{L}dt&=di \\end{aligned}$$\n\nIntegrating on both sides\n\n$$\\begin{aligned} \\int \\frac{V_m \\sin \\omega t d(\\omega t)}{\\omega L}&=\\int di\\\\ i(t)&=\\frac{V_m}{\\omega L}[-\\cos (\\omega t)]+K \\end{aligned}$$\n\nwhen t=0.0025 sec, at this instant i(t)=0\n\n$$\\begin{aligned} 0&=\\frac{100}{100 \\pi \\times 31.83 \\times 10^{-3}}\\\\ &[-\\cos (100 \\pi \\times 0.0025)]+K\\\\ &=-7.07+K\\\\ K&=7.07 \\end{aligned}$$\n\nThe peak value of the inductor current will be at $(\\omega t=\\pi^c)$\n\n$$\\begin{aligned} i(t)_{max}&=\\frac{V_m}{\\omega L}[-\\cos (\\pi)]+K\\\\ I_{max}&=\\frac{100}{100 \\pi \\times 31.83 \\times 10^{-3}}+7.07\\\\ I_{max}&=17.07 \\end{aligned}$$\n\nTherefore, the correct answer is **17** (acceptable range: [16.6, 17.4])."
+        "markdown": "At t=2.5 ms the circuit is as shown below\n\n<img src=\"/question-images/ee/2014/ee-2014-44b6990ddd.webp\" />\n\n$$\\begin{aligned} -V_s+V_L&=0\\\\ V_S&=L\\frac{di}{dt}\\\\ \\frac{V_S}{L}dt&=di \\end{aligned}$$\n\nIntegrating on both sides\n\n$$\\begin{aligned} \\int \\frac{V_m \\sin \\omega t d(\\omega t)}{\\omega L}&=\\int di\\\\ i(t)&=\\frac{V_m}{\\omega L}[-\\cos (\\omega t)]+K \\end{aligned}$$\n\nwhen t=0.0025 sec, at this instant i(t)=0\n\n$$\\begin{aligned} 0&=\\frac{100}{100 \\pi \\times 31.83 \\times 10^{-3}}\\\\ &[-\\cos (100 \\pi \\times 0.0025)]+K\\\\ &=-7.07+K\\\\ K&=7.07 \\end{aligned}$$\n\nThe peak value of the inductor current will be at $(\\omega t=\\pi^c)$\n\n$$\\begin{aligned} i(t)_{max}&=\\frac{V_m}{\\omega L}[-\\cos (\\pi)]+K\\\\ I_{max}&=\\frac{100}{100 \\pi \\times 31.83 \\times 10^{-3}}+7.07\\\\ I_{max}&=17.07 \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-44b6990ddd.webp"
+        ]
       }
     },
     "pp:ee:2014:q55-s3": {
@@ -2225,7 +2313,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "$\\theta \\leq \\omega t \\leq \\pi-\\theta \\;\\;(S_{11}S_4\\rightarrow ON)$\n\n<img src=\"/question-images/ee/2014/ee-2014-04e2cadfa4.webp\" />\n\n$$\\begin{aligned} V_A &=V_{DC}, \\; V_0=\\frac{V_{DC}}{2} \\\\ V_{AO}&=\\frac{V_{DC}}{2}\\;\\; (\\pi-\\theta \\lt \\omega t \\lt z) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2014/ee-2014-b37df50c1d.webp\" />\n\n$$\\begin{aligned} V_A &=0\\\\ V_{AO}&=V\\cdot 0-\\frac{V_{DC}}{2}\\\\ &=-\\frac{V_{DC}}{2} \\end{aligned}$$\n\n$\\pi +\\theta \\leq \\omega t\\leq 2 \\pi$\n\n<img src=\"/question-images/ee/2014/ee-2014-2af5e8c36d.webp\" />\n\n$V_A=0,\\;\\; V_0=\\frac{V_d}{2}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\theta \\leq \\omega t \\leq \\pi-\\theta \\;\\;(S_{11}S_4\\rightarrow ON)$\n\n<img src=\"/question-images/ee/2014/ee-2014-04e2cadfa4.webp\" />\n\n$$\\begin{aligned} V_A &=V_{DC}, \\; V_0=\\frac{V_{DC}}{2} \\\\ V_{AO}&=\\frac{V_{DC}}{2}\\;\\; (\\pi-\\theta \\lt \\omega t \\lt z) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2014/ee-2014-b37df50c1d.webp\" />\n\n$$\\begin{aligned} V_A &=0\\\\ V_{AO}&=V\\cdot 0-\\frac{V_{DC}}{2}\\\\ &=-\\frac{V_{DC}}{2} \\end{aligned}$$\n\n$\\pi +\\theta \\leq \\omega t\\leq 2 \\pi$\n\n<img src=\"/question-images/ee/2014/ee-2014-2af5e8c36d.webp\" />\n\n$V_A=0,\\;\\; V_0=\\frac{V_d}{2}$",
+        "images": [
+          "/question-images/ee/2014/ee-2014-04e2cadfa4.webp",
+          "/question-images/ee/2014/ee-2014-b37df50c1d.webp",
+          "/question-images/ee/2014/ee-2014-2af5e8c36d.webp"
+        ]
       }
     }
   }

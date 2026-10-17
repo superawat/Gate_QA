@@ -47,7 +47,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "$$\\begin{aligned} f(t)&=\\left\\{\\begin{array}{ll} 1 & \\text { if } a \\leq t \\leq b \\\\ 0 & \\text { otherwise } \\end{array}\\right.\\\\ &=U(t-\\mathrm{a})-(t+b) \\\\ \\Rightarrow \\quad F(s) &=\\frac{e^{-a s}-e^{-b s}}{s} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} f(t)&=\\left\\{\\begin{array}{ll} 1 & \\text { if } a \\leq t \\leq b \\\\ 0 & \\text { otherwise } \\end{array}\\right.\\\\ &=U(t-\\mathrm{a})-(t+b) \\\\ \\Rightarrow \\quad F(s) &=\\frac{e^{-a s}-e^{-b s}}{s} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q2-s2": {
@@ -87,8 +88,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "For a matrix containing complex number, eigen values are real if and only if\n\n$$\\begin{array}{l} A=A^{0}=(\\bar{A})^{T} \\\\ A=\\left[\\begin{array}{ccc} 10 & 5+j & 4 \\\\ x & 20 & 2 \\\\ 4 & 2 & -10 \\end{array}\\right] \\\\ A^{\\theta}=(\\bar{A})^{T}=\\left[\\begin{array}{ccc} 10 & \\bar{x} & 4 \\\\ 5-j & 20 & 2 \\\\ 4 & 2 & -10 \\end{array}\\right] \\end{array}$$\n\nBy comparing these,\n\n$x=5-j$\n\nTherefore, the correct answer is **B**."
+        "concept": "Engineering Mathematics (EC) - Linear Algebra",
+        "markdown": "For a matrix containing complex number, eigen values are real if and only if\n\n$$\\begin{array}{l} A=A^{0}=(\\bar{A})^{T} \\\\ A=\\left[\\begin{array}{ccc} 10 & 5+j & 4 \\\\ x & 20 & 2 \\\\ 4 & 2 & -10 \\end{array}\\right] \\\\ A^{\\theta}=(\\bar{A})^{T}=\\left[\\begin{array}{ccc} 10 & \\bar{x} & 4 \\\\ 5-j & 20 & 2 \\\\ 4 & 2 & -10 \\end{array}\\right] \\end{array}$$\n\nBy comparing these,\n\n$x=5-j$",
+        "images": []
       }
     },
     "pp:ec:2015:q3-s2": {
@@ -126,8 +128,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Analysis",
-        "markdown": "$$\\begin{aligned} f\\left(z_{1}\\right)&=\\frac{a z_{1}+b}{c z_{1}+d} \\\\ f\\left(z_{2}\\right)&=\\frac{a z_{2}+b}{c z_{2}+d} \\\\ \\frac{a z_{1}+b}{c z_{1}+d}&=\\frac{a z_{2}+b}{c z_{2}+d} \\\\ acz_{1}z_{2}+bcz_{2}+adz_{1}&+bd=ac z_{1} z_{2}+bcz_{1}+adz_{2}+bd\\\\ b c\\left(z_{2}-z_{1}\\right)&=a d\\left(z_{2}-z_{1}\\right) \\\\ z_{2} &\\neq z_{1} \\\\ \\Rightarrow \\quad b c&=a d \\\\ d=\\frac{b c}{a}&=\\frac{4 \\times 5}{2}=10 \\end{aligned}$$\n\nTherefore, the correct answer is **10** (acceptable range: [9.9, 10.1])."
+        "concept": "Engineering Mathematics (EC) - Complex Analysis",
+        "markdown": "$$\\begin{aligned} f\\left(z_{1}\\right)&=\\frac{a z_{1}+b}{c z_{1}+d} \\\\ f\\left(z_{2}\\right)&=\\frac{a z_{2}+b}{c z_{2}+d} \\\\ \\frac{a z_{1}+b}{c z_{1}+d}&=\\frac{a z_{2}+b}{c z_{2}+d} \\\\ acz_{1}z_{2}+bcz_{2}+adz_{1}&+bd=ac z_{1} z_{2}+bcz_{1}+adz_{2}+bd\\\\ b c\\left(z_{2}-z_{1}\\right)&=a d\\left(z_{2}-z_{1}\\right) \\\\ z_{2} &\\neq z_{1} \\\\ \\Rightarrow \\quad b c&=a d \\\\ d=\\frac{b c}{a}&=\\frac{4 \\times 5}{2}=10 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q4-s2": {
@@ -167,8 +170,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned} \\frac{d y}{1+\\cos 2 y}&=\\frac{d x}{1-\\cos 2 x} \\\\ \\frac{d y}{2 \\cos ^{2} y}&=\\frac{d x}{2 \\sin ^{2} x} \\\\ \\sec ^{2} y d y&=\\text{cosec}^{2} x d x\\\\ \\end{aligned}$$\n\nIntegrating both sides, we get\n\n$$\\begin{aligned} \\tan y&=-\\cot x+c\\\\ \\tan y+\\text{cot} x&=c \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "concept": "Engineering Mathematics (EC) - Differential Equations",
+        "markdown": "$$\\begin{aligned} \\frac{d y}{1+\\cos 2 y}&=\\frac{d x}{1-\\cos 2 x} \\\\ \\frac{d y}{2 \\cos ^{2} y}&=\\frac{d x}{2 \\sin ^{2} x} \\\\ \\sec ^{2} y d y&=\\text{cosec}^{2} x d x\\\\ \\end{aligned}$$\n\nIntegrating both sides, we get\n\n$$\\begin{aligned} \\tan y&=-\\cot x+c\\\\ \\tan y+\\text{cot} x&=c \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q5-s2": {
@@ -209,7 +213,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "$$\\begin{aligned} \\left|a_{k}\\right|&-\\text{ even symmetry} \\\\ \\angle a_{k}&-\\text{ Odd symmetry} &(\\pi \\text{ can be } -\\pi) \\end{aligned}$$\n\n$\\Rightarrow x(t)$is real.\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\left|a_{k}\\right|&-\\text{ even symmetry} \\\\ \\angle a_{k}&-\\text{ Odd symmetry} &(\\pi \\text{ can be } -\\pi) \\end{aligned}$$\n\n$\\Rightarrow x(t)$is real.",
+        "images": []
       }
     },
     "pp:ec:2015:q6-s2": {
@@ -248,7 +253,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-7e57fc0ca7.webp\" />\n\n$$\\begin{aligned} (80)^{2}+\\left(40-V_{c}\\right)^{2} &=100^{2} \\\\ \\left(40-V_{C}\\right)^{2} &=100^{2}-80^{2}=3600 \\\\ \\left|40-V_{C}\\right| &=60 \\\\ V_{C} &=100 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **100**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-7e57fc0ca7.webp\" />\n\n$$\\begin{aligned} (80)^{2}+\\left(40-V_{c}\\right)^{2} &=100^{2} \\\\ \\left(40-V_{C}\\right)^{2} &=100^{2}-80^{2}=3600 \\\\ \\left|40-V_{C}\\right| &=60 \\\\ V_{C} &=100 \\mathrm{V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-7e57fc0ca7.webp"
+        ]
       }
     },
     "pp:ec:2015:q7-s2": {
@@ -287,7 +295,11 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-3fe2cb3f8b.webp\" />\n\nApplying superposition:\n\n$V_{ab}$ = 5 V [ open circuited in steady state]\n\n<img src=\"/question-images/ec/2015/ec-2015-8a186bb8e4.webp\" />\n\n$V_{ab}$ will be sinusoid with average value zero\n\n$\\Rightarrow$ Average $V_{ab} = 5V.$\n\nTherefore, the correct answer is **5** (acceptable range: [4.9, 5.1])."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-3fe2cb3f8b.webp\" />\n\nApplying superposition:\n\n$V_{ab}$ = 5 V [ open circuited in steady state]\n\n<img src=\"/question-images/ec/2015/ec-2015-8a186bb8e4.webp\" />\n\n$V_{ab}$ will be sinusoid with average value zero\n\n$\\Rightarrow$ Average $V_{ab} = 5V.$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-3fe2cb3f8b.webp",
+          "/question-images/ec/2015/ec-2015-8a186bb8e4.webp"
+        ]
       }
     },
     "pp:ec:2015:q8-s2": {
@@ -328,7 +340,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-c98d0eb83d.webp\" />\n\n$$\\begin{aligned} V_{1} &=6 I_{1}+4 I_{2} \\\\ V_{2} &=4 I_{1}+6 I_{2} \\\\ [Z] &=\\left[\\begin{array}{cc} 6 & 4 \\\\ 4 & 6 \\end{array}\\right] \\\\ Y&=\\frac{1}{20}\\left[\\begin{array}{rr} 6 & -4 \\\\ -4 & 6 \\end{array}\\right]=\\left[\\begin{array}{rr} 0.3 & -0.2 \\\\ -0.2 & 0.3 \\end{array}\\right] \\\\ &\\text { Ignoring negative sign: } \\\\ [Y]&=\\left[\\begin{array}{cc} 0.3 & 0.2 \\\\ 0.2 & 0.3 \\end{array}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-c98d0eb83d.webp\" />\n\n$$\\begin{aligned} V_{1} &=6 I_{1}+4 I_{2} \\\\ V_{2} &=4 I_{1}+6 I_{2} \\\\ [Z] &=\\left[\\begin{array}{cc} 6 & 4 \\\\ 4 & 6 \\end{array}\\right] \\\\ Y&=\\frac{1}{20}\\left[\\begin{array}{rr} 6 & -4 \\\\ -4 & 6 \\end{array}\\right]=\\left[\\begin{array}{rr} 0.3 & -0.2 \\\\ -0.2 & 0.3 \\end{array}\\right] \\\\ &\\text { Ignoring negative sign: } \\\\ [Y]&=\\left[\\begin{array}{cc} 0.3 & 0.2 \\\\ 0.2 & 0.3 \\end{array}\\right] \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-c98d0eb83d.webp"
+        ]
       }
     },
     "pp:ec:2015:q9-s2": {
@@ -367,7 +382,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "The concentration of hole-electron par in\n\n$1 \\mu \\mathrm{sec}=10^{20} \\times 10^{-6}=10^{14} / \\mathrm{cm}^{3}$\n\nSo, the power of 10 is 14\n\n$x=14$\n\nTherefore, the correct answer is **14**."
+        "markdown": "The concentration of hole-electron par in\n\n$1 \\mu \\mathrm{sec}=10^{20} \\times 10^{-6}=10^{14} / \\mathrm{cm}^{3}$\n\nSo, the power of 10 is 14\n\n$x=14$",
+        "images": []
       }
     },
     "pp:ec:2015:q10-s2": {
@@ -406,7 +422,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "As per the graph, mobility of electrons at the concentration $10^{16}/cm^{3} \\text{ is } 1200 cm^{2}/V-s.$\n\n$$\\begin{aligned} \\text { So, } \\mu_{n} &=1200 \\mathrm{cm}^{2} / \\mathrm{V}-\\mathrm{s} \\\\ \\sigma_{N} &=N_{D} \\mathrm{q} \\mu_{n} \\\\ &=10^{16} \\times 1.6 \\times 10^{-19} \\times 1200=1.92 \\mathrm{Scm}^{-1} \\end{aligned}$$\n\nTherefore, the correct answer is **1.9** (acceptable range: [1.8, 2])."
+        "markdown": "As per the graph, mobility of electrons at the concentration $10^{16}/cm^{3} \\text{ is } 1200 cm^{2}/V-s.$\n\n$$\\begin{aligned} \\text { So, } \\mu_{n} &=1200 \\mathrm{cm}^{2} / \\mathrm{V}-\\mathrm{s} \\\\ \\sigma_{N} &=N_{D} \\mathrm{q} \\mu_{n} \\\\ &=10^{16} \\times 1.6 \\times 10^{-19} \\times 1200=1.92 \\mathrm{Scm}^{-1} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q11-s2": {
@@ -445,10 +462,7 @@
           "diodes-applications"
         ]
       },
-      "detailed_solution": {
-        "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Circuits** (specifically *Diodes Applications*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Diodes Applications**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *$RC\\gt \\gt T$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** ($RC\\gt \\gt T$)."
-      }
+      "detailed_solution": null
     },
     "pp:ec:2015:q12-s2": {
       "question_uid": "pp:ec:2015:q12-s2",
@@ -486,7 +500,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "$$\\begin{aligned} V_{O B} &=-5\\left(\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)-1\\left(\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)=-6 \\mathrm{V} \\\\ V_{\\mathrm{OA}} &=-5\\left(\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)+\\frac{1}{2}\\left(1+\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right) \\\\ \\therefore \\qquad &=-4 \\mathrm{V} \\quad\\left(\\because V_{+}=\\frac{1}{2} v\\right)\\\\ \\therefore \\; \\; \\frac{V_{OB}}{V_{OA}}&=1.5 \\end{aligned}$$\n\nTherefore, the correct answer is **1.5**."
+        "markdown": "$$\\begin{aligned} V_{O B} &=-5\\left(\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)-1\\left(\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)=-6 \\mathrm{V} \\\\ V_{\\mathrm{OA}} &=-5\\left(\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)+\\frac{1}{2}\\left(1+\\frac{1 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right) \\\\ \\therefore \\qquad &=-4 \\mathrm{V} \\quad\\left(\\because V_{+}=\\frac{1}{2} v\\right)\\\\ \\therefore \\; \\; \\frac{V_{OB}}{V_{OA}}&=1.5 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q13-s2": {
@@ -525,7 +540,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-11f1404bf2.webp\" />\n\n$$\\begin{aligned} \\text { Hysteresis } &=V_{T H}-V_{T L} \\\\ &=-L_{-}\\left(\\frac{R_{1}}{R_{2}}\\right)+L_{+}\\left(\\frac{R_{1}}{R_{2}}\\right) \\\\ 500 \\mathrm{mV} &=-(-5)\\left(\\frac{R_{1}}{20 \\mathrm{k} \\Omega}\\right)+5\\left(\\frac{R_{1}}{20 \\mathrm{k} \\Omega}\\right) \\\\ &=\\frac{R_{1}}{2 \\mathrm{k} \\Omega} \\\\ \\therefore \\quad R_{1} &=500 \\times 2 \\times 10^{3} \\times 10^{-3} \\\\ &=1000 \\Omega=1 \\mathrm{k} \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-11f1404bf2.webp\" />\n\n$$\\begin{aligned} \\text { Hysteresis } &=V_{T H}-V_{T L} \\\\ &=-L_{-}\\left(\\frac{R_{1}}{R_{2}}\\right)+L_{+}\\left(\\frac{R_{1}}{R_{2}}\\right) \\\\ 500 \\mathrm{mV} &=-(-5)\\left(\\frac{R_{1}}{20 \\mathrm{k} \\Omega}\\right)+5\\left(\\frac{R_{1}}{20 \\mathrm{k} \\Omega}\\right) \\\\ &=\\frac{R_{1}}{2 \\mathrm{k} \\Omega} \\\\ \\therefore \\quad R_{1} &=500 \\times 2 \\times 10^{3} \\times 10^{-3} \\\\ &=1000 \\Omega=1 \\mathrm{k} \\Omega \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-11f1404bf2.webp"
+        ]
       }
     },
     "pp:ec:2015:q14-s2": {
@@ -566,7 +584,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-3657c051d8.webp\" />\n\n$$\\begin{aligned} Y &=A B+\\bar{C} \\bar{D} \\\\ G_1 &=\\text { NOR Gate } \\quad \\bar{A} \\text{ NOR } \\bar{B}=A B \\\\ G 2 &=\\text { OR GATE } \\quad A B+\\bar{C} \\bar{D} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-3657c051d8.webp\" />\n\n$$\\begin{aligned} Y &=A B+\\bar{C} \\bar{D} \\\\ G_1 &=\\text { NOR Gate } \\quad \\bar{A} \\text{ NOR } \\bar{B}=A B \\\\ G 2 &=\\text { OR GATE } \\quad A B+\\bar{C} \\bar{D} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-3657c051d8.webp"
+        ]
       }
     },
     "pp:ec:2015:q15-s2": {
@@ -607,7 +628,8 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Instructions of 8085 Microprocessor",
-        "markdown": "The only instruction that changes the contents of\n\naccumulator is SBI BEH.\n\nTherefore, the correct answer is **D**."
+        "markdown": "The only instruction that changes the contents of\n\naccumulator is SBI BEH.",
+        "images": []
       }
     },
     "pp:ec:2015:q16-s2": {
@@ -646,7 +668,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-9cacc922e6.webp\" />\n\nClear signal is  $\\overline{Q_{B} \\cdot Q_{C}}$\n\nCounter is cleared after 0110\n\n$\\Rightarrow$ MOD  of the counter is 7 as it counts states\n\nfrom 0 to 6\n\nTherefore, the correct answer is **7**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-9cacc922e6.webp\" />\n\nClear signal is  $\\overline{Q_{B} \\cdot Q_{C}}$\n\nCounter is cleared after 0110\n\n$\\Rightarrow$ MOD  of the counter is 7 as it counts states\n\nfrom 0 to 6",
+        "images": [
+          "/question-images/ec/2015/ec-2015-9cacc922e6.webp"
+        ]
       }
     },
     "pp:ec:2015:q17-s2": {
@@ -687,7 +712,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "ROC of a finite duration signal is entire s-plane.\n\nTherefore, the correct answer is **C**."
+        "markdown": "ROC of a finite duration signal is entire s-plane.",
+        "images": []
       }
     },
     "pp:ec:2015:q18-s2": {
@@ -726,7 +752,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$$\\begin{aligned} f(n)&=\\sum_{m=0}^{n} x[m]=x[n] * u[n] \\\\ y(z)&=X(z) \\cdot\\left(\\frac{z}{z-1}\\right)\\\\ \\text{Given} \\quad Y(z)&=\\frac{2}{z(z-1)^{2}}=X(z) \\cdot \\frac{z}{z-1} \\\\ \\Rightarrow \\quad A(z)&=\\frac{2 \\cdot z^{-2}}{z-1}=2 z^{-3}\\left(\\frac{z}{z-1}\\right) \\\\ \\Rightarrow \\quad x[n]&=2 u[n-3] \\\\ \\text{Therefore,  } x[2]&=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "$$\\begin{aligned} f(n)&=\\sum_{m=0}^{n} x[m]=x[n] * u[n] \\\\ y(z)&=X(z) \\cdot\\left(\\frac{z}{z-1}\\right)\\\\ \\text{Given} \\quad Y(z)&=\\frac{2}{z(z-1)^{2}}=X(z) \\cdot \\frac{z}{z-1} \\\\ \\Rightarrow \\quad A(z)&=\\frac{2 \\cdot z^{-2}}{z-1}=2 z^{-3}\\left(\\frac{z}{z-1}\\right) \\\\ \\Rightarrow \\quad x[n]&=2 u[n-3] \\\\ \\text{Therefore,  } x[2]&=0 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q19-s2": {
@@ -767,7 +794,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "Given blocks has transfer function $G_{1}(s)$ and $G_{2}(s)$\n\nIn cascade connection $G_{1}(s) \\cdot G_{2}(s)$\n\nIn parallel connection $G_{1}(s)+G_{2}(s)$\n\nFrom the given options:\n\n(For cascading/ summing/differncing)\n\n(A) $G_{1}(s) G_{2}(s) \\Rightarrow$Realization is possible.\n\n(B) $\\frac{G_{1}(s)}{G_{2}(s)} \\Rightarrow$ Realization is not possible because\n\nthe gain of blocks given as $G_{1}(s)$ and $G_{2}(s)$\n\n(C) $G_{1}(s)\\left(\\frac{1}{G_{1}(s)}+G_{2}(s)\\right)=1+G_{1}(s) G_{2}(s)$\n\nRealization is possible.\n\n(D) $G_{1}(s)\\left(\\frac{1}{G_{1}(s)}-G_{2}(s)\\right)=1-G_{1}(s) G_{2}(s)$\n\nRealization is possible.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given blocks has transfer function $G_{1}(s)$ and $G_{2}(s)$\n\nIn cascade connection $G_{1}(s) \\cdot G_{2}(s)$\n\nIn parallel connection $G_{1}(s)+G_{2}(s)$\n\nFrom the given options:\n\n(For cascading/ summing/differncing)\n\n(A) $G_{1}(s) G_{2}(s) \\Rightarrow$Realization is possible.\n\n(B) $\\frac{G_{1}(s)}{G_{2}(s)} \\Rightarrow$ Realization is not possible because\n\nthe gain of blocks given as $G_{1}(s)$ and $G_{2}(s)$\n\n(C) $G_{1}(s)\\left(\\frac{1}{G_{1}(s)}+G_{2}(s)\\right)=1+G_{1}(s) G_{2}(s)$\n\nRealization is possible.\n\n(D) $G_{1}(s)\\left(\\frac{1}{G_{1}(s)}-G_{2}(s)\\right)=1-G_{1}(s) G_{2}(s)$\n\nRealization is possible.",
+        "images": []
       }
     },
     "pp:ec:2015:q20-s2": {
@@ -808,7 +836,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "Transfer function\n\n$$\\begin{aligned} \\frac{C(s)}{R(s)}&=\\frac{\\Sigma P_{k} \\Delta_{k}}{\\Delta} \\\\ =& \\frac{G_{1} G_{2} G_{3} G_{4}}{1-\\left(-G_{1} G_{2} H_{1}-G_{2} G_{4} H_{2}-G_{2} G_{3} H_{3}\\right)+G_{1} G_{2} H_{1} \\cdot G_{3} G_{4} H_{2}} \\\\ \\frac{C(s)}{R(s)}&= \\frac{G_{1}G_{2}G_{3}G_{4}}{1+G_{1}G_{2}H_{1}+G_{3}G_{4}H_{2}+G_{2}G_{3}H_{3}+G_{1}G_{2}G_{3}G_{4}H_{1}H_{2}} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Transfer function\n\n$$\\begin{aligned} \\frac{C(s)}{R(s)}&=\\frac{\\Sigma P_{k} \\Delta_{k}}{\\Delta} \\\\ =& \\frac{G_{1} G_{2} G_{3} G_{4}}{1-\\left(-G_{1} G_{2} H_{1}-G_{2} G_{4} H_{2}-G_{2} G_{3} H_{3}\\right)+G_{1} G_{2} H_{1} \\cdot G_{3} G_{4} H_{2}} \\\\ \\frac{C(s)}{R(s)}&= \\frac{G_{1}G_{2}G_{3}G_{4}}{1+G_{1}G_{2}H_{1}+G_{3}G_{4}H_{2}+G_{2}G_{3}H_{3}+G_{1}G_{2}G_{3}G_{4}H_{1}H_{2}} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q21-s2": {
@@ -847,7 +876,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$T(s)=\\frac{G(s)}{1+G(s) H(s)}=\\frac{K}{s^{2}+10 s+K}$\n\nComparing with standard second order transfer  function\n\n$$\\begin{aligned} T(s)&=\\frac{\\omega_{n}^{2}}{s^{2}+2 \\xi \\omega_{n} s+\\omega_{n}^{2}}\\\\ \\text{We have, }\\omega_{n}^{2}&=K \\\\ \\text{and }\\quad 2 \\xi \\omega_{n}&=10 \\\\ \\because \\quad \\xi&=0.25 \\quad (given)\\\\ \\therefore \\quad \\omega_{n}&=\\frac{10}{2 \\times 0.25}=20 \\\\ \\text{and }\\quad k&=\\omega_{n}^{2}=(20)^{2}=400 \\end{aligned}$$\n\nTherefore, the correct answer is **400**."
+        "markdown": "$T(s)=\\frac{G(s)}{1+G(s) H(s)}=\\frac{K}{s^{2}+10 s+K}$\n\nComparing with standard second order transfer  function\n\n$$\\begin{aligned} T(s)&=\\frac{\\omega_{n}^{2}}{s^{2}+2 \\xi \\omega_{n} s+\\omega_{n}^{2}}\\\\ \\text{We have, }\\omega_{n}^{2}&=K \\\\ \\text{and }\\quad 2 \\xi \\omega_{n}&=10 \\\\ \\because \\quad \\xi&=0.25 \\quad (given)\\\\ \\therefore \\quad \\omega_{n}&=\\frac{10}{2 \\times 0.25}=20 \\\\ \\text{and }\\quad k&=\\omega_{n}^{2}=(20)^{2}=400 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q22-s2": {
@@ -886,7 +916,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "SNR of uniform quantized sinusoidal signal is given by\n\n$$\\begin{aligned} \\mathrm{SNR} &=1.8+6 n \\\\ 31.8 &=1.8+6 n \\\\ n &=5 \\end{aligned}$$\n\nThus total number of levels $=2^{5}=32$\n\nTherefore, the correct answer is **32**."
+        "markdown": "SNR of uniform quantized sinusoidal signal is given by\n\n$$\\begin{aligned} \\mathrm{SNR} &=1.8+6 n \\\\ 31.8 &=1.8+6 n \\\\ n &=5 \\end{aligned}$$\n\nThus total number of levels $=2^{5}=32$",
+        "images": []
       }
     },
     "pp:ec:2015:q23-s2": {
@@ -927,7 +958,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "$$\\begin{array}{l} x(t)=\\cos \\left(10 \\pi t+\\frac{\\pi}{4}\\right) \\\\ X(f)=\\frac{1}{2}[\\delta(f-5)+\\delta(f+5)] e^{j \\pi / 4} \\end{array}$$\n\nAfter sampling x(t) by 15 Hz, we get\n\n$X_{s}(f)=15 \\sum_{n=-\\infty}^{\\infty} X(f-15 n)$\n\nGiven, $\\quad h(t)=\\left[\\frac{\\sin (\\pi t)}{\\pi t}\\right] \\cos \\left(40 \\pi t-\\frac{\\pi}{2}\\right)$\n\n$H(f)=\\frac{1}{2}\\left[\\text{rect} \\frac{(f-20)}{2 \\pi}+\\text{rect} \\frac{(f+20)}{2 \\pi}\\right] e^{-j \\frac{\\pi}{2}}$\n\n$$\\begin{aligned} \\text{Output }\\quad Y(t)&=X_{s}(f) \\times H(f) \\\\ y(t)&=\\frac{15}{2} \\cos \\left(40 \\pi t-\\frac{\\pi}{4}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{array}{l} x(t)=\\cos \\left(10 \\pi t+\\frac{\\pi}{4}\\right) \\\\ X(f)=\\frac{1}{2}[\\delta(f-5)+\\delta(f+5)] e^{j \\pi / 4} \\end{array}$$\n\nAfter sampling x(t) by 15 Hz, we get\n\n$X_{s}(f)=15 \\sum_{n=-\\infty}^{\\infty} X(f-15 n)$\n\nGiven, $\\quad h(t)=\\left[\\frac{\\sin (\\pi t)}{\\pi t}\\right] \\cos \\left(40 \\pi t-\\frac{\\pi}{2}\\right)$\n\n$H(f)=\\frac{1}{2}\\left[\\text{rect} \\frac{(f-20)}{2 \\pi}+\\text{rect} \\frac{(f+20)}{2 \\pi}\\right] e^{-j \\frac{\\pi}{2}}$\n\n$$\\begin{aligned} \\text{Output }\\quad Y(t)&=X_{s}(f) \\times H(f) \\\\ y(t)&=\\frac{15}{2} \\cos \\left(40 \\pi t-\\frac{\\pi}{4}\\right) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q24-s2": {
@@ -966,7 +998,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$\\phi=2 x^{2}+y^{2}+c z^{2}$\n\nIn source-free region,\n\n$$\\begin{aligned} \\nabla \\cdot \\vec{D}&=0 \\\\ \\Rightarrow \\quad \\in(\\nabla \\cdot \\vec{E}) &=0 \\\\ \\Rightarrow \\quad \\nabla \\cdot \\vec{E} &=0\\\\ where,\\quad\\vec{E}&=-\\nabla V=-\\nabla \\phi \\\\ Now, \\quad \\nabla V&=\\frac{\\partial \\phi}{\\partial x} \\hat{a}_{x}+\\frac{\\partial \\phi}{\\partial y} \\hat{a}_{y}+\\frac{\\partial \\phi}{\\partial z} \\hat{a}_{z} \\\\ \\Rightarrow \\quad -\\vec{E}&=4 x \\hat{a}_{x}+2 y \\hat{a}_{y}+2 c z \\hat{a}_{z} \\\\ \\text{Again }\\nabla \\cdot \\vec{E}&=0 \\\\ \\Rightarrow \\frac{\\partial E_{x}}{\\partial x}+\\frac{\\partial E_{y}}{\\partial y}&+\\frac{\\partial E_{t}}{\\partial z}=4+2+2 c=0 \\\\ c&=-3 \\end{aligned}$$\n\nTherefore, the correct answer is **-3** (acceptable range: [-3.1, -2.9])."
+        "markdown": "$\\phi=2 x^{2}+y^{2}+c z^{2}$\n\nIn source-free region,\n\n$$\\begin{aligned} \\nabla \\cdot \\vec{D}&=0 \\\\ \\Rightarrow \\quad \\in(\\nabla \\cdot \\vec{E}) &=0 \\\\ \\Rightarrow \\quad \\nabla \\cdot \\vec{E} &=0\\\\ where,\\quad\\vec{E}&=-\\nabla V=-\\nabla \\phi \\\\ Now, \\quad \\nabla V&=\\frac{\\partial \\phi}{\\partial x} \\hat{a}_{x}+\\frac{\\partial \\phi}{\\partial y} \\hat{a}_{y}+\\frac{\\partial \\phi}{\\partial z} \\hat{a}_{z} \\\\ \\Rightarrow \\quad -\\vec{E}&=4 x \\hat{a}_{x}+2 y \\hat{a}_{y}+2 c z \\hat{a}_{z} \\\\ \\text{Again }\\nabla \\cdot \\vec{E}&=0 \\\\ \\Rightarrow \\frac{\\partial E_{x}}{\\partial x}+\\frac{\\partial E_{y}}{\\partial y}&+\\frac{\\partial E_{t}}{\\partial z}=4+2+2 c=0 \\\\ c&=-3 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q25-s2": {
@@ -1007,7 +1040,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
-        "markdown": "$$\\begin{aligned} \\vec{E}(z, t)=& \\hat{a}_{x} 5 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z\\right) \\\\ &+\\hat{a}_{y} 3 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z-\\frac{\\pi}{2}\\right) \\end{aligned}$$\n\n$\\Rightarrow$ Wave is travelling in $-\\hat{a}_{z}$ direction.\n\n$\\Rightarrow$ Wave has orthogonal components with unequal  amplitudes and checking the time trace.\n\n$\\therefore$ Wave is left hand elliptically polarized.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\vec{E}(z, t)=& \\hat{a}_{x} 5 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z\\right) \\\\ &+\\hat{a}_{y} 3 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z-\\frac{\\pi}{2}\\right) \\end{aligned}$$\n\n$\\Rightarrow$ Wave is travelling in $-\\hat{a}_{z}$ direction.\n\n$\\Rightarrow$ Wave has orthogonal components with unequal  amplitudes and checking the time trace.\n\n$\\therefore$ Wave is left hand elliptically polarized.",
+        "images": []
       }
     },
     "pp:ec:2015:q26-s2": {
@@ -1048,7 +1082,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "Applying Laplace transform\n\n$$\\begin{aligned} s X(s)-x(0) &=\\frac{10}{s}-0.2 X(s) \\\\ X(s) &=\\frac{10}{s(s+0.2)}+\\frac{1}{(s+0.2)} \\end{aligned}$$\n\nApplying inverse Laplace transform, we get\n\n$x=50-49 e^{(-0.2) t}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Applying Laplace transform\n\n$$\\begin{aligned} s X(s)-x(0) &=\\frac{10}{s}-0.2 X(s) \\\\ X(s) &=\\frac{10}{s(s+0.2)}+\\frac{1}{(s+0.2)} \\end{aligned}$$\n\nApplying inverse Laplace transform, we get\n\n$x=50-49 e^{(-0.2) t}$",
+        "images": []
       }
     },
     "pp:ec:2015:q27-s2": {
@@ -1086,8 +1121,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\int_{-\\infty}^{\\infty} 12 &\\cos (2 \\pi t) \\frac{\\sin (4 \\pi t)}{4 \\pi t}  d t \\\\ &= 12 F \\cdot T\\left[\\cos (2 \\pi t) \\frac{\\sin (4 \\pi t)}{4 \\pi t}\\right]_{\\omega=0} \\\\ &=12 \\times \\frac{1}{4}=3 \\end{aligned}$$\n\nTherefore, the correct answer is **3**."
+        "concept": "Engineering Mathematics (EC) - Calculus",
+        "markdown": "$$\\begin{aligned} \\int_{-\\infty}^{\\infty} 12 &\\cos (2 \\pi t) \\frac{\\sin (4 \\pi t)}{4 \\pi t}  d t \\\\ &= 12 F \\cdot T\\left[\\cos (2 \\pi t) \\frac{\\sin (4 \\pi t)}{4 \\pi t}\\right]_{\\omega=0} \\\\ &=12 \\times \\frac{1}{4}=3 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q28-s2": {
@@ -1125,8 +1161,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Complex Analysis",
-        "markdown": "$\\frac{1}{2 \\pi j}\\oint _CRe(z)dz$\n\n$z=e^{j\\theta }$\n\nLet\n\n$dz=je^{j\\theta }d\\theta$\n\nTaking limit from 0 to  $2 \\pi$\n\n$=\\frac{1}{2 \\pi j}\\int_{0}^{2 \\pi}Re(e^{j\\theta })je^{j\\theta } d\\theta$\n\n$=\\frac{1}{2 \\pi j}\\int_{0}^{2 \\pi}( \\cos ^2 \\theta +j \\sin \\theta \\cos \\theta )d\\theta$\n\n$=\\frac{1}{2 \\pi }\\left [\\int_{0}^{2 \\pi} \\cos ^2 \\theta + \\int_{0}^{2 \\pi} \\sin \\theta \\cos \\theta d\\theta \\right ]$\n\n$=\\frac{1}{2 \\pi }[\\pi-0]=\\frac{1}{2 }=0.5$\n\nTherefore, the correct answer is **0.5**."
+        "concept": "Engineering Mathematics (EC) - Complex Analysis",
+        "markdown": "$\\frac{1}{2 \\pi j}\\oint _CRe(z)dz$\n\n$z=e^{j\\theta }$\n\nLet\n\n$dz=je^{j\\theta }d\\theta$\n\nTaking limit from 0 to  $2 \\pi$\n\n$=\\frac{1}{2 \\pi j}\\int_{0}^{2 \\pi}Re(e^{j\\theta })je^{j\\theta } d\\theta$\n\n$=\\frac{1}{2 \\pi j}\\int_{0}^{2 \\pi}( \\cos ^2 \\theta +j \\sin \\theta \\cos \\theta )d\\theta$\n\n$=\\frac{1}{2 \\pi }\\left [\\int_{0}^{2 \\pi} \\cos ^2 \\theta + \\int_{0}^{2 \\pi} \\sin \\theta \\cos \\theta d\\theta \\right ]$\n\n$=\\frac{1}{2 \\pi }[\\pi-0]=\\frac{1}{2 }=0.5$",
+        "images": []
       }
     },
     "pp:ec:2015:q29-s2": {
@@ -1164,8 +1201,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} E[X] &=\\sum_{i=1}^{10} x_{i} \\rho_{i} \\\\ &=2 \\times\\left(\\frac{1}{4}\\right)+3\\left(\\frac{1}{8}\\right)+4\\left(\\frac{1}{16}\\right)+\\cdots \\\\ &=1.5 \\end{aligned}$$\n\nTherefore, the correct answer is **1.5**."
+        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "markdown": "$$\\begin{aligned} E[X] &=\\sum_{i=1}^{10} x_{i} \\rho_{i} \\\\ &=2 \\times\\left(\\frac{1}{4}\\right)+3\\left(\\frac{1}{8}\\right)+4\\left(\\frac{1}{16}\\right)+\\cdots \\\\ &=1.5 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q30-s2": {
@@ -1206,7 +1244,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "$$\\begin{aligned} Z_{e q}=& \\frac{\\frac{1}{j \\omega C} \\times(j \\omega L+R)}{\\frac{1}{j \\omega C}+j \\omega L+R} \\\\ Z_{e q}=& \\frac{\\left(\\frac{R}{j \\omega C}+\\frac{L}{C}\\right)}{R+j\\left(\\omega L-\\frac{1}{\\omega C}\\right)} \\times \\frac{R-j\\left(\\omega L-\\frac{1}{\\omega C}\\right)}{R-j\\left(\\omega L-\\frac{1}{\\omega C}\\right)} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-f954e29fe3.webp\" />\n\nEquating imaginary part to zero.\n\n$$\\begin{aligned} \\text{Img}&=-\\frac{R^{2}}{\\omega C}-\\frac{L}{C}\\left(\\omega L-\\frac{1}{\\omega C}\\right)=0 \\\\ &\\frac{R^{2}}{\\omega C}+\\frac{L}{C}\\left(\\omega L-\\frac{1}{\\omega C}\\right)=0 \\\\ &\\frac{C R^{2}+\\omega^{2} L^{2} C-L}{\\omega C^{2}}=0 \\\\ \\omega^{2}&=\\frac{L-R^{2} C}{L^{2} C} \\\\ \\omega&=\\frac{1}{\\sqrt{L C} \\sqrt{1-\\frac{R^{2} C}{L}}} \\\\ f&=\\frac{1}{2 \\pi \\sqrt{L C}} \\sqrt{1-\\frac{R^{2} C}{L}} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} Z_{e q}=& \\frac{\\frac{1}{j \\omega C} \\times(j \\omega L+R)}{\\frac{1}{j \\omega C}+j \\omega L+R} \\\\ Z_{e q}=& \\frac{\\left(\\frac{R}{j \\omega C}+\\frac{L}{C}\\right)}{R+j\\left(\\omega L-\\frac{1}{\\omega C}\\right)} \\times \\frac{R-j\\left(\\omega L-\\frac{1}{\\omega C}\\right)}{R-j\\left(\\omega L-\\frac{1}{\\omega C}\\right)} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-f954e29fe3.webp\" />\n\nEquating imaginary part to zero.\n\n$$\\begin{aligned} \\text{Img}&=-\\frac{R^{2}}{\\omega C}-\\frac{L}{C}\\left(\\omega L-\\frac{1}{\\omega C}\\right)=0 \\\\ &\\frac{R^{2}}{\\omega C}+\\frac{L}{C}\\left(\\omega L-\\frac{1}{\\omega C}\\right)=0 \\\\ &\\frac{C R^{2}+\\omega^{2} L^{2} C-L}{\\omega C^{2}}=0 \\\\ \\omega^{2}&=\\frac{L-R^{2} C}{L^{2} C} \\\\ \\omega&=\\frac{1}{\\sqrt{L C} \\sqrt{1-\\frac{R^{2} C}{L}}} \\\\ f&=\\frac{1}{2 \\pi \\sqrt{L C}} \\sqrt{1-\\frac{R^{2} C}{L}} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-f954e29fe3.webp"
+        ]
       }
     },
     "pp:ec:2015:q31-s2": {
@@ -1245,7 +1286,10 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Network Theorems",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-13d75515f4.webp\" />\n\n$$\\begin{aligned} I&=\\frac{V_{0}}{4} \\\\ I_{1}&=\\frac{V_{0}}{2}\\\\ \\text{Applying KCL}\\\\ \\frac{V_{0}-4 I}{2}+\\frac{V_{0}}{2}+\\frac{V_{0}}{4}&=I_{0}\\\\ \\text{From here}\\\\ V_{0} \\cdot \\frac{3}{4} &=I_{0} \\\\ R_{N} &=\\frac{V_{0}}{I_{0}}=\\frac{4}{3}=1.33 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **1.325** (acceptable range: [1.3, 1.35])."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-13d75515f4.webp\" />\n\n$$\\begin{aligned} I&=\\frac{V_{0}}{4} \\\\ I_{1}&=\\frac{V_{0}}{2}\\\\ \\text{Applying KCL}\\\\ \\frac{V_{0}-4 I}{2}+\\frac{V_{0}}{2}+\\frac{V_{0}}{4}&=I_{0}\\\\ \\text{From here}\\\\ V_{0} \\cdot \\frac{3}{4} &=I_{0} \\\\ R_{N} &=\\frac{V_{0}}{I_{0}}=\\frac{4}{3}=1.33 \\Omega \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-13d75515f4.webp"
+        ]
       }
     },
     "pp:ec:2015:q32-s2": {
@@ -1284,7 +1328,8 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "$$\\begin{aligned} \\text { Initial energy } &=\\frac{1}{2}\\left(C_{1} V_{1}^{2}+C_{2} V_{2}^{2}\\right) \\\\ &=\\frac{1}{2}\\left(3 \\times 1^{2}+1 \\times 3^{2}\\right)=6 \\mathrm{J} \\end{aligned}$$\n\nFinal energy stored in capacitor\n\n$$\\begin{aligned} &= \\frac{1}{2}\\left(C_{1}+C_{2}\\right) V^{2} \\\\ C_{1} V_{1}+C_{2} V_{2}&=\\left(C_{1}+C_{2}\\right) V \\\\ 1 \\times 3+3 \\times 1&=(1+3) V \\\\ V&= 1.5 \\mathrm{V} \\\\ \\text { Final energy }&=\\frac{1}{2}(1+3) \\times(1.5)^{2}=4.5 \\mathrm{J} \\\\ \\text { Energy dissipated }&=6-4.5=1.5 \\mathrm{J} \\end{aligned}$$\n\nTherefore, the correct answer is **1.5** (acceptable range: [1.4, 1.6])."
+        "markdown": "$$\\begin{aligned} \\text { Initial energy } &=\\frac{1}{2}\\left(C_{1} V_{1}^{2}+C_{2} V_{2}^{2}\\right) \\\\ &=\\frac{1}{2}\\left(3 \\times 1^{2}+1 \\times 3^{2}\\right)=6 \\mathrm{J} \\end{aligned}$$\n\nFinal energy stored in capacitor\n\n$$\\begin{aligned} &= \\frac{1}{2}\\left(C_{1}+C_{2}\\right) V^{2} \\\\ C_{1} V_{1}+C_{2} V_{2}&=\\left(C_{1}+C_{2}\\right) V \\\\ 1 \\times 3+3 \\times 1&=(1+3) V \\\\ V&= 1.5 \\mathrm{V} \\\\ \\text { Final energy }&=\\frac{1}{2}(1+3) \\times(1.5)^{2}=4.5 \\mathrm{J} \\\\ \\text { Energy dissipated }&=6-4.5=1.5 \\mathrm{J} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q33-s2": {
@@ -1323,7 +1368,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "Electric field inside semiconductor bar,\n\n$E=10 \\mathrm{V} / \\mathrm{cm}$\n\nVelocity of electron, $V=\\mu E=1 \\times 10^{4} \\mathrm{cm} / \\mathrm{sec}$\n\nThe average time (in $\\mu \\mathrm{s}$) taken by the electrons to move from one end of the bar to other end is\n\n$\\frac{L}{V}=100 \\mu \\mathrm{sec}$\n\nTherefore, the correct answer is **100** (acceptable range: [95, 105])."
+        "markdown": "Electric field inside semiconductor bar,\n\n$E=10 \\mathrm{V} / \\mathrm{cm}$\n\nVelocity of electron, $V=\\mu E=1 \\times 10^{4} \\mathrm{cm} / \\mathrm{sec}$\n\nThe average time (in $\\mu \\mathrm{s}$) taken by the electrons to move from one end of the bar to other end is\n\n$\\frac{L}{V}=100 \\mu \\mathrm{sec}$",
+        "images": []
       }
     },
     "pp:ec:2015:q34-s2": {
@@ -1362,7 +1408,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$$\\begin{aligned} \\frac{C_{\\max }}{C_{\\min }}=& \\frac{\\frac{\\epsilon_{O x}}{t_{O x}}}{\\frac{E_{O x}}{t_{O x}} \\times \\frac{\\epsilon_{S}}{X_{d m a x}}}=\\left[1+\\frac{X_{d \\max }}{t_{o x}} \\times \\frac{\\epsilon_{0 x}}{\\epsilon_{s}}\\right] \\\\ & \\frac{\\epsilon_{O x}}{t_{O x}}+\\frac{\\epsilon_{S}}{X_{d m a x}} \\\\ &=\\left[1+\\frac{100}{10} \\times \\frac{1}{3}\\right]=4.33 \\end{aligned}$$\n\nTherefore, the correct answer is **4.35** (acceptable range: [4.3, 4.4])."
+        "markdown": "$$\\begin{aligned} \\frac{C_{\\max }}{C_{\\min }}=& \\frac{\\frac{\\epsilon_{O x}}{t_{O x}}}{\\frac{E_{O x}}{t_{O x}} \\times \\frac{\\epsilon_{S}}{X_{d m a x}}}=\\left[1+\\frac{X_{d \\max }}{t_{o x}} \\times \\frac{\\epsilon_{0 x}}{\\epsilon_{s}}\\right] \\\\ & \\frac{\\epsilon_{O x}}{t_{O x}}+\\frac{\\epsilon_{S}}{X_{d m a x}} \\\\ &=\\left[1+\\frac{100}{10} \\times \\frac{1}{3}\\right]=4.33 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q35-s2": {
@@ -1403,7 +1450,8 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "The concentration of doping is not uniform\n\nthroughout the semiconductor, thus to maintain\n\nequilibrium internal electric field is generated due\n\nto which the band of the semiconductor is varying\n\nwith slope-0.1 eV/cm.\n\nThe generated electric field opposes the diffusion\n\nof carriers due to concentration gradient and thus\n\nthere will be no current flow inside the\n\nsemiconductor.\n\nTherefore, the correct answer is **C**."
+        "markdown": "The concentration of doping is not uniform\n\nthroughout the semiconductor, thus to maintain\n\nequilibrium internal electric field is generated due\n\nto which the band of the semiconductor is varying\n\nwith slope-0.1 eV/cm.\n\nThe generated electric field opposes the diffusion\n\nof carriers due to concentration gradient and thus\n\nthere will be no current flow inside the\n\nsemiconductor.",
+        "images": []
       }
     },
     "pp:ec:2015:q36-s2": {
@@ -1444,7 +1492,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
-        "markdown": "$$\\begin{aligned} F(X, Y, Z) &=\\Sigma(1,2,5,6,7) \\\\ &=\\pi[0,3,4] \\\\ =(X+Y+Z)&(X+\\bar{Y}+\\bar{Z})(\\bar{X}+Y+Z) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} F(X, Y, Z) &=\\Sigma(1,2,5,6,7) \\\\ &=\\pi[0,3,4] \\\\ =(X+Y+Z)&(X+\\bar{Y}+\\bar{Z})(\\bar{X}+Y+Z) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q37-s2": {
@@ -1485,7 +1534,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "Clear signal  $=Q_{3} \\odot Q_{2}$\n\nCounter is clear after 0100\n\nSo number of states counted are 0 to  4.\n\n$\\Rightarrow$  MOD of the counter is 5\n\nTherefore, the correct answer is **C**."
+        "markdown": "Clear signal  $=Q_{3} \\odot Q_{2}$\n\nCounter is clear after 0100\n\nSo number of states counted are 0 to  4.\n\n$\\Rightarrow$  MOD of the counter is 5",
+        "images": []
       }
     },
     "pp:ec:2015:q38-s2": {
@@ -1526,7 +1576,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "Consider a $1 \\times 8$ demultiplexer\n\n<img src=\"/question-images/ec/2015/ec-2015-0a2843807f.webp\" />\n\n$$\\begin{aligned} \\text{So,}\\quad \\bar{Y}_{0} &=\\left(\\overline{D_{\\text {in }} \\cdot \\bar{S}_{0} \\bar{S}_{1} \\bar{S}_{2}}\\right) \\\\ \\bar{Y}_{0} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+S_{1}+S_{2}\\right) \\\\ \\bar{Y}_{1} &=\\left(\\bar{D}_{\\text {in }}+\\bar{S}_{0}+S_{1}+S_{2}\\right) \\\\ \\bar{Y}_{2} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+\\bar{S}_{1}+S_{2}\\right) \\\\ \\bar{Y}_{3} &=\\left(\\bar{D}_{\\text {in }}+\\bar{S}_{0}+\\bar{S}_{1}+S_{2}\\right) \\\\ \\bar{Y}_{4} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+S_{1}+\\bar{S}_{2}\\right) \\\\ \\bar{Y}_{5} &=\\left(\\bar{D}_{\\text {in }}+\\bar{S}_{0}+S_{1}+\\bar{S}_{2}\\right) \\\\ \\bar{Y}_{6} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+\\bar{S}_{1}+\\bar{S}_{2}\\right) \\\\ \\bar{Y}_{7} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+S_{1}+S_{2}\\right) \\end{aligned}$$\n\nFrom the circuit given in question we can see that\n\n$$\\begin{array}{l} \\bar{Y}_{0}=\\left(1 A_{0}+1 A_{1}+\\bar{E}\\right) \\\\ \\bar{Y}_{0}=(R+S+P+Q) \\end{array}$$\n\nSimilarly,\n\n$\\bar{Y}_{1}=\\left(1 \\bar{A}_{0}+1 A_{1}+1 \\bar{E}\\right)=(P+Q+\\bar{R}+S)$\n\n$\\bar{Y}_{4}=\\left(2 \\bar{A}_{0}+2 A_{1}+2 \\bar{E}\\right)=(R+S+P+\\bar{Q})$\n\nSo comparing, we get\n\n$$\\begin{array}{l} P={D}_{\\text {in }} \\\\ Q=S_{2} \\\\ R=S_{1} \\\\ S=S_{0} \\end{array}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Consider a $1 \\times 8$ demultiplexer\n\n<img src=\"/question-images/ec/2015/ec-2015-0a2843807f.webp\" />\n\n$$\\begin{aligned} \\text{So,}\\quad \\bar{Y}_{0} &=\\left(\\overline{D_{\\text {in }} \\cdot \\bar{S}_{0} \\bar{S}_{1} \\bar{S}_{2}}\\right) \\\\ \\bar{Y}_{0} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+S_{1}+S_{2}\\right) \\\\ \\bar{Y}_{1} &=\\left(\\bar{D}_{\\text {in }}+\\bar{S}_{0}+S_{1}+S_{2}\\right) \\\\ \\bar{Y}_{2} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+\\bar{S}_{1}+S_{2}\\right) \\\\ \\bar{Y}_{3} &=\\left(\\bar{D}_{\\text {in }}+\\bar{S}_{0}+\\bar{S}_{1}+S_{2}\\right) \\\\ \\bar{Y}_{4} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+S_{1}+\\bar{S}_{2}\\right) \\\\ \\bar{Y}_{5} &=\\left(\\bar{D}_{\\text {in }}+\\bar{S}_{0}+S_{1}+\\bar{S}_{2}\\right) \\\\ \\bar{Y}_{6} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+\\bar{S}_{1}+\\bar{S}_{2}\\right) \\\\ \\bar{Y}_{7} &=\\left(\\bar{D}_{\\text {in }}+S_{0}+S_{1}+S_{2}\\right) \\end{aligned}$$\n\nFrom the circuit given in question we can see that\n\n$$\\begin{array}{l} \\bar{Y}_{0}=\\left(1 A_{0}+1 A_{1}+\\bar{E}\\right) \\\\ \\bar{Y}_{0}=(R+S+P+Q) \\end{array}$$\n\nSimilarly,\n\n$\\bar{Y}_{1}=\\left(1 \\bar{A}_{0}+1 A_{1}+1 \\bar{E}\\right)=(P+Q+\\bar{R}+S)$\n\n$\\bar{Y}_{4}=\\left(2 \\bar{A}_{0}+2 A_{1}+2 \\bar{E}\\right)=(R+S+P+\\bar{Q})$\n\nSo comparing, we get\n\n$$\\begin{array}{l} P={D}_{\\text {in }} \\\\ Q=S_{2} \\\\ R=S_{1} \\\\ S=S_{0} \\end{array}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-0a2843807f.webp"
+        ]
       }
     },
     "pp:ec:2015:q39-s2": {
@@ -1565,7 +1618,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "The bridge is balanced bridge, so the diode will be OFF.\n\nCurrent through $4 \\mathrm{k} \\Omega$resistor can be obtained by applying current division rule\n\n<img src=\"/question-images/ec/2015/ec-2015-e2ed450403.webp\" />\n\nCurrent through $4 \\mathrm{k} \\Omega$ resistor is $0.6\\mathrm{mA}$\n\nTherefore, the correct answer is **0.6** (acceptable range: [0.59, 0.61])."
+        "markdown": "The bridge is balanced bridge, so the diode will be OFF.\n\nCurrent through $4 \\mathrm{k} \\Omega$resistor can be obtained by applying current division rule\n\n<img src=\"/question-images/ec/2015/ec-2015-e2ed450403.webp\" />\n\nCurrent through $4 \\mathrm{k} \\Omega$ resistor is $0.6\\mathrm{mA}$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-e2ed450403.webp"
+        ]
       }
     },
     "pp:ec:2015:q40-s2": {
@@ -1604,7 +1660,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "$$\\begin{aligned} V_{+}&>V_{-}\\\\ \\text{So,} \\quad V_{o}&=V_{\\text {sat }}=12 \\text{Volts} \\end{aligned}$$\n\nTherefore, the correct answer is **11.5** (acceptable range: [11, 12])."
+        "markdown": "$$\\begin{aligned} V_{+}&>V_{-}\\\\ \\text{So,} \\quad V_{o}&=V_{\\text {sat }}=12 \\text{Volts} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q41-s2": {
@@ -1643,7 +1700,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "$$\\begin{aligned} P_{G(\\max )} &=V_{C E(\\max )} \\times I_{\\text{cmax}} &\\ldots(i)\\\\ V_{C E(\\max )} &=(24-10) \\mathrm{V}=14 \\mathrm{V} \\\\ I_{\\mathrm{cmax}} &=(200+0.4) \\mathrm{mA} \\\\ I_{E} &=I_{C}=200 \\mathrm{mA}+0.4 \\mathrm{mA} \\\\ I_{E} &=200.4 \\mathrm{mA} \\quad\\left(\\because I_{R_{2}}=\\frac{4-0}{10} \\mathrm{mA}\\right) \\end{aligned}$$\n\nPut values in equation (i), we get\n\n$$\\begin{aligned} P_{G(\\max )} &=14 \\times 200.4 \\times 10^{-3} \\mathrm{Watt} \\\\ &=2.8056 \\mathrm{Watt} \\end{aligned}$$\n\nTherefore, the correct answer is **2.8** (acceptable range: [2.7, 2.9])."
+        "markdown": "$$\\begin{aligned} P_{G(\\max )} &=V_{C E(\\max )} \\times I_{\\text{cmax}} &\\ldots(i)\\\\ V_{C E(\\max )} &=(24-10) \\mathrm{V}=14 \\mathrm{V} \\\\ I_{\\mathrm{cmax}} &=(200+0.4) \\mathrm{mA} \\\\ I_{E} &=I_{C}=200 \\mathrm{mA}+0.4 \\mathrm{mA} \\\\ I_{E} &=200.4 \\mathrm{mA} \\quad\\left(\\because I_{R_{2}}=\\frac{4-0}{10} \\mathrm{mA}\\right) \\end{aligned}$$\n\nPut values in equation (i), we get\n\n$$\\begin{aligned} P_{G(\\max )} &=14 \\times 200.4 \\times 10^{-3} \\mathrm{Watt} \\\\ &=2.8056 \\mathrm{Watt} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q42-s2": {
@@ -1682,7 +1740,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "Both the transistors are biased at the same\n\ncollector current thus their transconductance will\n\nbe same, the small signal equivalent circuit is\n\n<img src=\"/question-images/ec/2015/ec-2015-0d62a85b20.webp\" />\n\n$g_{m_{1}}=g_{m_{2}}, \\text{ thus } V_{0}=-v_{i}$\n\nSo, gain equal to -1\n\nTherefore, the correct answer is **-1** (acceptable range: [-1.1, -0.9])."
+        "markdown": "Both the transistors are biased at the same\n\ncollector current thus their transconductance will\n\nbe same, the small signal equivalent circuit is\n\n<img src=\"/question-images/ec/2015/ec-2015-0d62a85b20.webp\" />\n\n$g_{m_{1}}=g_{m_{2}}, \\text{ thus } V_{0}=-v_{i}$\n\nSo, gain equal to -1",
+        "images": [
+          "/question-images/ec/2015/ec-2015-0d62a85b20.webp"
+        ]
       }
     },
     "pp:ec:2015:q43-s2": {
@@ -1723,7 +1784,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "$y^{\\prime \\prime}(t)-y^{\\prime}(t)-6 y(t)=x(t)$\n\n$H(s)=\\frac{Y(s)}{X(s)}=\\frac{1}{s^{2}-s-6}=\\frac{1}{(s-3)(s+2)}$\n\n$H(s)=\\frac{\\left(\\frac{1}{5}\\right)}{s-3}+\\frac{\\left(-\\frac{1}{5}\\right)}{s+2}$\n\nIf the system is neither causal nor stable, then\n\n$h(t)=-\\frac{1}{5} e^{3 t} u(-t)+\\frac{1}{5} e^{-2 t} u(-t) \\quad \\mathrm{ROC}: \\sigma \\lt -2$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$y^{\\prime \\prime}(t)-y^{\\prime}(t)-6 y(t)=x(t)$\n\n$H(s)=\\frac{Y(s)}{X(s)}=\\frac{1}{s^{2}-s-6}=\\frac{1}{(s-3)(s+2)}$\n\n$H(s)=\\frac{\\left(\\frac{1}{5}\\right)}{s-3}+\\frac{\\left(-\\frac{1}{5}\\right)}{s+2}$\n\nIf the system is neither causal nor stable, then\n\n$h(t)=-\\frac{1}{5} e^{3 t} u(-t)+\\frac{1}{5} e^{-2 t} u(-t) \\quad \\mathrm{ROC}: \\sigma \\lt -2$",
+        "images": []
       }
     },
     "pp:ec:2015:q44-s2": {
@@ -1762,7 +1824,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "$x_{1}[n]=\\{1,2,3,0\\}, \\quad x_{2}[n]=\\{1,3,2,1\\rangle$\n\n$x(k)_{3}=x(k), \\lambda(k)_{2}$\n\n$\\Rightarrow x_{3}[n]=$ circular convolution of $x_{1}[n]$ and $x_{2}[n]$\n\n$$\\begin{aligned} &=x_{1}[n] \\otimes x_{2}[n] \\\\ \\left[\\begin{array}{l}x_{3}(0) \\\\ x_{3}(1) \\\\ x_{3}(2) \\\\ x_{3}(3)\\end{array}\\right]&=\\left[\\begin{array}{llll}1 & 0 & 3 & 2 \\\\ 2 & 1 & 0 & 3 \\\\ 3 & 2 & 1 & 0 \\\\ 0 & 3 & 2 & 1\\end{array}\\right]\\left[\\begin{array}{l}1 \\\\ 3 \\\\ 2 \\\\ 1\\end{array}\\right]=\\left[\\begin{array}{c}9 \\\\ 8 \\\\ 11 \\\\ 14\\end{array}\\right] \\\\ x_{3}[2]&=11 \\end{aligned}$$\n\nTherefore, the correct answer is **11** (acceptable range: [10.9, 11.1])."
+        "markdown": "$x_{1}[n]=\\{1,2,3,0\\}, \\quad x_{2}[n]=\\{1,3,2,1\\rangle$\n\n$x(k)_{3}=x(k), \\lambda(k)_{2}$\n\n$\\Rightarrow x_{3}[n]=$ circular convolution of $x_{1}[n]$ and $x_{2}[n]$\n\n$$\\begin{aligned} &=x_{1}[n] \\otimes x_{2}[n] \\\\ \\left[\\begin{array}{l}x_{3}(0) \\\\ x_{3}(1) \\\\ x_{3}(2) \\\\ x_{3}(3)\\end{array}\\right]&=\\left[\\begin{array}{llll}1 & 0 & 3 & 2 \\\\ 2 & 1 & 0 & 3 \\\\ 3 & 2 & 1 & 0 \\\\ 0 & 3 & 2 & 1\\end{array}\\right]\\left[\\begin{array}{l}1 \\\\ 3 \\\\ 2 \\\\ 1\\end{array}\\right]=\\left[\\begin{array}{c}9 \\\\ 8 \\\\ 11 \\\\ 14\\end{array}\\right] \\\\ x_{3}[2]&=11 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q45-s2": {
@@ -1801,7 +1864,8 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "$$\\begin{aligned} x(t) &=\\alpha \\beta e^{-4 t} u(t)+\\beta e^{4 t} u(-t) \\\\ \\text { Given, } x(s) &=\\frac{16}{s^{2}}-16 \\quad-4 \\lt \\operatorname{Re}[s] \\lt 4 \\\\ &=\\frac{16}{(s+4)(s-4)}=\\frac{-2}{s+4}+\\frac{2}{s-4} \\\\ x(t)=-2 e^{-4 t} &u(t)-2 e^{4 t} u(-t) \\end{aligned}$$\n\nOn comparison $\\beta=-2$\n\nTherefore, the correct answer is **-2**."
+        "markdown": "$$\\begin{aligned} x(t) &=\\alpha \\beta e^{-4 t} u(t)+\\beta e^{4 t} u(-t) \\\\ \\text { Given, } x(s) &=\\frac{16}{s^{2}}-16 \\quad-4 \\lt \\operatorname{Re}[s] \\lt 4 \\\\ &=\\frac{16}{(s+4)(s-4)}=\\frac{-2}{s+4}+\\frac{2}{s-4} \\\\ x(t)=-2 e^{-4 t} &u(t)-2 e^{4 t} u(-t) \\end{aligned}$$\n\nOn comparison $\\beta=-2$",
+        "images": []
       }
     },
     "pp:ec:2015:q46-s2": {
@@ -1842,7 +1906,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
-        "markdown": "The response of the system is given by\n\n$x(t)=L^{-1}\\left[(s l-A)^{-1} x(0)+(s /-A)^{-1} B \\cdot U(s)\\right]$\n\nand the complete response\n\n$y(t)=[C] x(t)$\n\nFrom the given state model,\n\n$$\\begin{array}{l} A=\\left[\\begin{array}{ll}0 & 1 \\\\ 0 & -1\\end{array}\\right] ; B=0: C=[0 \\quad 1] \\; and \\;  x(0)=\\left[\\begin{array}{c}1 \\\\ 0\\end{array}\\right] \\\\ \\therefore \\quad(s l-A)^{-1}=\\left[\\begin{array}{cc}s & -1 \\\\ 0 & s+1\\end{array}\\right]^{-1} \\\\ =\\frac{1}{s(s+1)}\\left[\\begin{array}{cc}s+1 & 1 \\\\ 0 & s\\end{array}\\right] \\\\ (s l-A)^{-1} x(0)=\\frac{1}{s(s+1)}\\left[\\begin{array}{cc} s+1 & 1 \\\\ 0 & s \\end{array}\\right]\\left[\\begin{array}{c} 1 \\\\ 0 \\end{array}\\right] \\\\ =\\frac{1}{s(s+1)}\\left[\\begin{array}{c} s+1 \\\\ 0 \\end{array}\\right]=\\left[\\begin{array}{c} 1 / s \\\\ 0 \\end{array}\\right] \\\\ \\Rightarrow x(t)=L^{-1}\\left[(s I-A)^{-1} x(0)\\right] \\\\ =\\left[\\begin{array}{c} 1 \\\\ 0 \\end{array}\\right] u(t) \\end{array}$$\n\nand the complete response\n\n$$y(t)=\\left[\\begin{array}{lll}0 & 1\\end{array}\\right] x(t)=\\left[\\begin{array}{ll}0 & 1\\end{array}\\right]\\left[\\begin{array}{l}1 \\\\ 0\\end{array}\\right]=0$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "The response of the system is given by\n\n$x(t)=L^{-1}\\left[(s l-A)^{-1} x(0)+(s /-A)^{-1} B \\cdot U(s)\\right]$\n\nand the complete response\n\n$y(t)=[C] x(t)$\n\nFrom the given state model,\n\n$$\\begin{array}{l} A=\\left[\\begin{array}{ll}0 & 1 \\\\ 0 & -1\\end{array}\\right] ; B=0: C=[0 \\quad 1] \\; and \\;  x(0)=\\left[\\begin{array}{c}1 \\\\ 0\\end{array}\\right] \\\\ \\therefore \\quad(s l-A)^{-1}=\\left[\\begin{array}{cc}s & -1 \\\\ 0 & s+1\\end{array}\\right]^{-1} \\\\ =\\frac{1}{s(s+1)}\\left[\\begin{array}{cc}s+1 & 1 \\\\ 0 & s\\end{array}\\right] \\\\ (s l-A)^{-1} x(0)=\\frac{1}{s(s+1)}\\left[\\begin{array}{cc} s+1 & 1 \\\\ 0 & s \\end{array}\\right]\\left[\\begin{array}{c} 1 \\\\ 0 \\end{array}\\right] \\\\ =\\frac{1}{s(s+1)}\\left[\\begin{array}{c} s+1 \\\\ 0 \\end{array}\\right]=\\left[\\begin{array}{c} 1 / s \\\\ 0 \\end{array}\\right] \\\\ \\Rightarrow x(t)=L^{-1}\\left[(s I-A)^{-1} x(0)\\right] \\\\ =\\left[\\begin{array}{c} 1 \\\\ 0 \\end{array}\\right] u(t) \\end{array}$$\n\nand the complete response\n\n$$y(t)=\\left[\\begin{array}{lll}0 & 1\\end{array}\\right] x(t)=\\left[\\begin{array}{ll}0 & 1\\end{array}\\right]\\left[\\begin{array}{l}1 \\\\ 0\\end{array}\\right]=0$$",
+        "images": []
       }
     },
     "pp:ec:2015:q47-s2": {
@@ -1883,7 +1948,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "The output of a second order system for unit step\n\ninput\n\n$y(t)=1-\\frac{e^{-\\xi \\omega_{n} t}}{\\sqrt{1-\\xi^{2}}} \\sin \\left(\\omega_{d} t-\\theta\\right) \\qquad\\ldots(i)$\n\nFrom given data\n\n$$\\begin{aligned} y(t)&=1-\\frac{2}{\\sqrt{3}} e^{-t} \\cos \\left(\\sqrt{3} t-\\frac{\\pi}{6}\\right)\\\\ \\therefore \\quad \\alpha&=\\xi \\omega_{n}=1 \\\\ \\text{and }\\quad \\omega_{d}&=\\sqrt{3} \\\\ \\omega_{n}&=\\sqrt{\\alpha^{2}+\\omega_{d}^{2}}=2 \\\\ \\xi&=\\frac{1}{2} \\end{aligned}$$\n\nTherefore, the transfer function\n\n$T(s)=\\frac{\\omega_{n}^{2}}{s^{2}+2 \\xi \\omega_{n} s+\\omega_{n}^{2}}=\\frac{4}{s^{2}+2 s+4}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "The output of a second order system for unit step\n\ninput\n\n$y(t)=1-\\frac{e^{-\\xi \\omega_{n} t}}{\\sqrt{1-\\xi^{2}}} \\sin \\left(\\omega_{d} t-\\theta\\right) \\qquad\\ldots(i)$\n\nFrom given data\n\n$$\\begin{aligned} y(t)&=1-\\frac{2}{\\sqrt{3}} e^{-t} \\cos \\left(\\sqrt{3} t-\\frac{\\pi}{6}\\right)\\\\ \\therefore \\quad \\alpha&=\\xi \\omega_{n}=1 \\\\ \\text{and }\\quad \\omega_{d}&=\\sqrt{3} \\\\ \\omega_{n}&=\\sqrt{\\alpha^{2}+\\omega_{d}^{2}}=2 \\\\ \\xi&=\\frac{1}{2} \\end{aligned}$$\n\nTherefore, the transfer function\n\n$T(s)=\\frac{\\omega_{n}^{2}}{s^{2}+2 \\xi \\omega_{n} s+\\omega_{n}^{2}}=\\frac{4}{s^{2}+2 s+4}$",
+        "images": []
       }
     },
     "pp:ec:2015:q48-s2": {
@@ -1922,7 +1988,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$\\frac{\\alpha(s)}{R(s)}=G(s)=\\frac{1}{M s^{2}+B s+K}$\n\nSteady state value of response for unit step input\n\n$$\\begin{aligned} C(s)&=\\lim _{s \\rightarrow 0} s \\times \\frac{1}{M s^{2}+B s+K} \\times \\frac{1}{s}=\\frac{1}{K} \\\\ \\text{Also}&\\\\ G(\\approx 0)&=\\frac{1}{K}=-18.5 \\mathrm{dB} \\\\ &\\qquad\\text{(as per the given table)}\\\\ \\therefore \\frac{1}{K}&=10^{\\left(-\\frac{18.5}{20}\\right)}=0.12 \\end{aligned}$$\n\nTherefore, the correct answer is **0.115** (acceptable range: [0.1, 0.13])."
+        "markdown": "$\\frac{\\alpha(s)}{R(s)}=G(s)=\\frac{1}{M s^{2}+B s+K}$\n\nSteady state value of response for unit step input\n\n$$\\begin{aligned} C(s)&=\\lim _{s \\rightarrow 0} s \\times \\frac{1}{M s^{2}+B s+K} \\times \\frac{1}{s}=\\frac{1}{K} \\\\ \\text{Also}&\\\\ G(\\approx 0)&=\\frac{1}{K}=-18.5 \\mathrm{dB} \\\\ &\\qquad\\text{(as per the given table)}\\\\ \\therefore \\frac{1}{K}&=10^{\\left(-\\frac{18.5}{20}\\right)}=0.12 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q49-s2": {
@@ -1963,7 +2030,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "Variance of a process $=R_{x}(0)$\n\nLet variance (output) $=R_{Y}(0)$\n\n$\\because$ It is zero mean\n\n$\\therefore \\quad R_{n}(\\tau)=h(\\tau) * h(-\\tau) * R_{N}(\\tau)$\n\nwhere, $h(\\tau)=$ filter response and $R_{N}(\\tau)$ is the input\n\nnoise.\n\n$$\\begin{aligned} R_{N}(\\tau) &=\\frac{N_{o}}{2} \\delta(\\tau) \\\\ \\therefore \\quad R_{r}(\\tau) &=[h(\\tau) \\times h(-\\tau)] \\frac{N_{o}}{2} \\\\ R_{Y}(\\tau) &=\\frac{N_{o}}{2} \\int_{-\\infty}^{\\infty} h(\\tau) h(\\tau+z) d \\tau \\\\ \\therefore \\quad R_{Y}(0) &=\\frac{N_{0}}{2} \\int_{-\\infty}^{\\infty} h^{2}(\\tau) d \\tau \\\\ &=\\frac{N_{0}}{2}(\\text { energy })=\\frac{N_{0}}{2}\\left(3 A^{2}\\right)=\\frac{3}{2}  A^{2} N_{0} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Variance of a process $=R_{x}(0)$\n\nLet variance (output) $=R_{Y}(0)$\n\n$\\because$ It is zero mean\n\n$\\therefore \\quad R_{n}(\\tau)=h(\\tau) * h(-\\tau) * R_{N}(\\tau)$\n\nwhere, $h(\\tau)=$ filter response and $R_{N}(\\tau)$ is the input\n\nnoise.\n\n$$\\begin{aligned} R_{N}(\\tau) &=\\frac{N_{o}}{2} \\delta(\\tau) \\\\ \\therefore \\quad R_{r}(\\tau) &=[h(\\tau) \\times h(-\\tau)] \\frac{N_{o}}{2} \\\\ R_{Y}(\\tau) &=\\frac{N_{o}}{2} \\int_{-\\infty}^{\\infty} h(\\tau) h(\\tau+z) d \\tau \\\\ \\therefore \\quad R_{Y}(0) &=\\frac{N_{0}}{2} \\int_{-\\infty}^{\\infty} h^{2}(\\tau) d \\tau \\\\ &=\\frac{N_{0}}{2}(\\text { energy })=\\frac{N_{0}}{2}\\left(3 A^{2}\\right)=\\frac{3}{2}  A^{2} N_{0} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q50-s2": {
@@ -2004,7 +2072,10 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "$$\\begin{aligned} R_{N}(K) &=R_{\\gamma}(n, n+K) \\\\ &=E[Y[n] Y[n+K]]\\\\ \\text { Given } \\\\ P[x(n) & =-1]=\\frac{1}{2} \\\\ P[x(n) & =-1]=\\frac{1}{2} \\\\ P(x(n) & =-X[n]+0.5 X[n] \\end{aligned}$$\n\n$$\\begin{aligned} \\therefore R_{r}(K) &=E[x[n]+0.5 x[n-1]][x[n+K]+0.5 x[n+K-1]] \\\\ =& E[x[n] \\cdot x[n+k]]+0.5 E[x[n] x[n+K-1]] \\\\ &\\quad +0.5 E[x[n-1] x[n+K]] \\\\ &\\quad +0.25 E[x[n-1] x[n+K-1]] \\\\ &=R_{x}(K)+0.5 R_{x}(K-1)+0.5 R_{x}(K+1)+0.25 R_{x}(K) \\\\ &=1.25 R_{x}(K)+0.5 R_{x}(K-1)+0.5 R_{x}(R+1) \\\\ &=1.25 R_{x}(K)+0.5 R_{x}(K-1)+0.5 R_{x}(K+1) \\end{aligned}$$\n\nNow, if K=0\n\n$$\\begin{aligned} R_{x}(0) &=E\\left[X^{2}[n]\\right]=1 \\times \\frac{1}{2}+1 \\times \\frac{1}{2}=1 \\\\ K & \\neq 0 \\\\ R_{x}(K) &=E[X(n) X(n-k)] \\\\ &=E[X(n)] E[X(n-k)]=0 \\\\ \\text { Becuase } &\\left(E[X(n)]=1 \\times \\frac{1}{2}-1 \\times \\frac{1}{2}=0\\right) \\\\ \\therefore \\quad R_{y}(0) &=1.25 A_{X}(0)+0.5 R_{x}(-1)+0.5 R_{x}(1) \\\\ &=1.25 \\end{aligned}$$\n\nSimilarly,\n\n$$\\begin{aligned} R_{Y}(1) &=0.5 \\\\ R_{Y}(-1) &=0.5 \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-c407146257.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} R_{N}(K) &=R_{\\gamma}(n, n+K) \\\\ &=E[Y[n] Y[n+K]]\\\\ \\text { Given } \\\\ P[x(n) & =-1]=\\frac{1}{2} \\\\ P[x(n) & =-1]=\\frac{1}{2} \\\\ P(x(n) & =-X[n]+0.5 X[n] \\end{aligned}$$\n\n$$\\begin{aligned} \\therefore R_{r}(K) &=E[x[n]+0.5 x[n-1]][x[n+K]+0.5 x[n+K-1]] \\\\ =& E[x[n] \\cdot x[n+k]]+0.5 E[x[n] x[n+K-1]] \\\\ &\\quad +0.5 E[x[n-1] x[n+K]] \\\\ &\\quad +0.25 E[x[n-1] x[n+K-1]] \\\\ &=R_{x}(K)+0.5 R_{x}(K-1)+0.5 R_{x}(K+1)+0.25 R_{x}(K) \\\\ &=1.25 R_{x}(K)+0.5 R_{x}(K-1)+0.5 R_{x}(R+1) \\\\ &=1.25 R_{x}(K)+0.5 R_{x}(K-1)+0.5 R_{x}(K+1) \\end{aligned}$$\n\nNow, if K=0\n\n$$\\begin{aligned} R_{x}(0) &=E\\left[X^{2}[n]\\right]=1 \\times \\frac{1}{2}+1 \\times \\frac{1}{2}=1 \\\\ K & \\neq 0 \\\\ R_{x}(K) &=E[X(n) X(n-k)] \\\\ &=E[X(n)] E[X(n-k)]=0 \\\\ \\text { Becuase } &\\left(E[X(n)]=1 \\times \\frac{1}{2}-1 \\times \\frac{1}{2}=0\\right) \\\\ \\therefore \\quad R_{y}(0) &=1.25 A_{X}(0)+0.5 R_{x}(-1)+0.5 R_{x}(1) \\\\ &=1.25 \\end{aligned}$$\n\nSimilarly,\n\n$$\\begin{aligned} R_{Y}(1) &=0.5 \\\\ R_{Y}(-1) &=0.5 \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-c407146257.webp\" />",
+        "images": [
+          "/question-images/ec/2015/ec-2015-c407146257.webp"
+        ]
       }
     },
     "pp:ec:2015:q51-s2": {
@@ -2045,7 +2116,8 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "since $\\quad \\mathrm{SNR}=\\frac{E}{2 \\eta}$\n\nThus for having minimum error we have to select signal with maximum energy.\n\nEnergy of signal 1=1\n\n$\\therefore$ Energy of signal $2=\\frac{1}{3}$\n\nEnergy of signal $3=\\frac{1}{3}$\n\nEnergy of signal $4=\\frac{1}{3}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "since $\\quad \\mathrm{SNR}=\\frac{E}{2 \\eta}$\n\nThus for having minimum error we have to select signal with maximum energy.\n\nEnergy of signal 1=1\n\n$\\therefore$ Energy of signal $2=\\frac{1}{3}$\n\nEnergy of signal $3=\\frac{1}{3}$\n\nEnergy of signal $4=\\frac{1}{3}$",
+        "images": []
       }
     },
     "pp:ec:2015:q52-s2": {
@@ -2085,8 +2157,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} Z&=X+Y \\\\ \\rho(X=0)&=p, \\quad p(Y=0)=q \\\\ \\rho(X=1)&=1-p, \\quad \\rho(Y=1)=1-q\\\\ \\text{Now,}\\\\ &\\begin{array}{ll|l} X & Y & Z=X+Y \\\\ 0 & 0 & 0 \\\\ \\end{array}\\\\ &\\left.\\begin{array}{ll|l} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 1 \\end{array}\\right\\} z \\geq 1\\\\ \\therefore p(Z \\geq 1)&=1-p(Z \\lt 1)=1-p q \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "markdown": "$$\\begin{aligned} Z&=X+Y \\\\ \\rho(X=0)&=p, \\quad p(Y=0)=q \\\\ \\rho(X=1)&=1-p, \\quad \\rho(Y=1)=1-q\\\\ \\text{Now,}\\\\ &\\begin{array}{ll|l} X & Y & Z=X+Y \\\\ 0 & 0 & 0 \\\\ \\end{array}\\\\ &\\left.\\begin{array}{ll|l} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 1 \\end{array}\\right\\} z \\geq 1\\\\ \\therefore p(Z \\geq 1)&=1-p(Z \\lt 1)=1-p q \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q53-s2": {
@@ -2125,7 +2198,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
-        "markdown": "Given, $f_{c} T E_{10}$ mode is $6 \\mathrm{GHz}$\n\n$\\Rightarrow \\quad \\frac{c}{2 a}=\\frac{3 \\times 10^{10}}{2 \\times a}=6 \\times 10^{9}$\n\n$\\Rightarrow a=2.5 \\mathrm{cm}$\n\nGiven $f_{c}$ for $T M_{11}$ mode is $15 \\mathrm{GHz}$\n\n$$\\begin{array}{l} \\Rightarrow \\frac{c}{2} \\sqrt{\\frac{1}{a^{2}}+\\frac{1}{b^{2}}}=15 \\times 10^{9} \\\\ \\begin{array}{l} \\frac{3 \\times 10^{10}}{2} \\sqrt{\\frac{1}{6.25}+\\frac{1}{b^{2}}}=15 \\times 10^{9} \\\\ \\Rightarrow \\quad b=\\frac{2.5}{\\sqrt{5.25}} \\end{array} \\\\ \\begin{aligned} \\Rightarrow \\quad & \\quad 2 \\end{aligned} \\end{array}$$\n\nNow $f_{c}$ for $T E_{01}$ mode is,\n\n$$\\begin{aligned} f_{c} &=\\frac{c}{2 b}=\\frac{3 \\times 10^{10}}{2.5} \\sqrt{5.25} \\\\ &=13.75 \\mathrm{GHz} \\end{aligned}$$\n\nTherefore, the correct answer is **13.65** (acceptable range: [13.5, 13.8])."
+        "markdown": "Given, $f_{c} T E_{10}$ mode is $6 \\mathrm{GHz}$\n\n$\\Rightarrow \\quad \\frac{c}{2 a}=\\frac{3 \\times 10^{10}}{2 \\times a}=6 \\times 10^{9}$\n\n$\\Rightarrow a=2.5 \\mathrm{cm}$\n\nGiven $f_{c}$ for $T M_{11}$ mode is $15 \\mathrm{GHz}$\n\n$$\\begin{array}{l} \\Rightarrow \\frac{c}{2} \\sqrt{\\frac{1}{a^{2}}+\\frac{1}{b^{2}}}=15 \\times 10^{9} \\\\ \\begin{array}{l} \\frac{3 \\times 10^{10}}{2} \\sqrt{\\frac{1}{6.25}+\\frac{1}{b^{2}}}=15 \\times 10^{9} \\\\ \\Rightarrow \\quad b=\\frac{2.5}{\\sqrt{5.25}} \\end{array} \\\\ \\begin{aligned} \\Rightarrow \\quad & \\quad 2 \\end{aligned} \\end{array}$$\n\nNow $f_{c}$ for $T E_{01}$ mode is,\n\n$$\\begin{aligned} f_{c} &=\\frac{c}{2 b}=\\frac{3 \\times 10^{10}}{2.5} \\sqrt{5.25} \\\\ &=13.75 \\mathrm{GHz} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q54-s2": {
@@ -2164,7 +2238,10 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
-        "markdown": "Both dipole antennas have isotropic pattern in $\\phi$ view or H plane view.\n\n<img src=\"/question-images/ec/2015/ec-2015-93c2f10f5c.webp\" />\n\n$\\psi=\\beta d \\cos \\theta+\\alpha$\n\nwhere, $\\alpha=-90^{\\circ}, \\beta=\\frac{2 \\pi}{\\lambda}=\\frac{2 \\pi}{\\frac{3 \\times 10^{8}}{3 \\times 10^{6}}}=\\frac{2 \\pi}{100}$\n\nSince maximum radiation $(\\psi=0)$ is at $\\theta=60^{\\circ}$\n\n$$\\begin{array}{l} \\Rightarrow \\quad 0=\\frac{2 \\pi}{100} d \\cos 60^{\\circ}-90^{\\circ} \\\\ \\Rightarrow \\quad 90=\\frac{360}{100} d \\frac{1}{2} \\\\ \\Rightarrow \\quad d=50 \\mathrm{m} \\end{array}$$\n\nTherefore, the correct answer is **50** (acceptable range: [49, 51])."
+        "markdown": "Both dipole antennas have isotropic pattern in $\\phi$ view or H plane view.\n\n<img src=\"/question-images/ec/2015/ec-2015-93c2f10f5c.webp\" />\n\n$\\psi=\\beta d \\cos \\theta+\\alpha$\n\nwhere, $\\alpha=-90^{\\circ}, \\beta=\\frac{2 \\pi}{\\lambda}=\\frac{2 \\pi}{\\frac{3 \\times 10^{8}}{3 \\times 10^{6}}}=\\frac{2 \\pi}{100}$\n\nSince maximum radiation $(\\psi=0)$ is at $\\theta=60^{\\circ}$\n\n$$\\begin{array}{l} \\Rightarrow \\quad 0=\\frac{2 \\pi}{100} d \\cos 60^{\\circ}-90^{\\circ} \\\\ \\Rightarrow \\quad 90=\\frac{360}{100} d \\frac{1}{2} \\\\ \\Rightarrow \\quad d=50 \\mathrm{m} \\end{array}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-93c2f10f5c.webp"
+        ]
       }
     },
     "pp:ec:2015:q55-s2": {
@@ -2205,7 +2282,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
-        "markdown": "$\\vec{E}(z, t)=\\hat{a}_{x} 5 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z\\right)$\n\n$+\\hat{a}_{y} 3 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z-\\frac{\\pi}{2}\\right)$\n\n$\\Rightarrow$ Wave is travelling in $-\\hat{a}_{z}$ direction.\n\n$\\Rightarrow$ Wave has orthogonal components with unequal amplitudes and checking the time trace.\n\n$\\therefore$ Wave is left hand elliptically polarized.\n\nTherefore, the correct answer is **B**."
+        "markdown": "$\\vec{E}(z, t)=\\hat{a}_{x} 5 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z\\right)$\n\n$+\\hat{a}_{y} 3 \\cos \\left(2 \\pi \\times 10^{9} t+\\beta z-\\frac{\\pi}{2}\\right)$\n\n$\\Rightarrow$ Wave is travelling in $-\\hat{a}_{z}$ direction.\n\n$\\Rightarrow$ Wave has orthogonal components with unequal amplitudes and checking the time trace.\n\n$\\therefore$ Wave is left hand elliptically polarized.",
+        "images": []
       }
     }
   }

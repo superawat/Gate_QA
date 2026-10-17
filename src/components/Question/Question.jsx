@@ -150,12 +150,16 @@ function Question({
           hasNote={hasNote}
           isDetailedSolutionOpen={isDetailedSolutionOpen}
           onToggleDetailedSolution={() => setIsDetailedSolutionOpen((prev) => !prev)}
-          hasDetailedSolution={Boolean(question?.detailed_solution)}
+          hasDetailedSolution={true}
         />
 
-        {isDetailedSolutionOpen && question?.detailed_solution && (
+        {isDetailedSolutionOpen && (
           <div id="detailed-solution-section" className="mt-6">
-            <DetailedSolutionView solution={question.detailed_solution} />
+            <DetailedSolutionView
+              solution={question?.detailed_solution}
+              question={question}
+              solutionLink={solutionLink}
+            />
           </div>
         )}
 

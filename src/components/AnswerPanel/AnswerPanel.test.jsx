@@ -303,101 +303,6 @@ describe("AnswerPanel", () => {
     expect(screen.getAllByRole("button", { name: /Ask AI/i }).length).toBeGreaterThan(0);
   });
 
-  describe("Solution button behavior", () => {
-    test("Special Aptitude question without solution renders disabled button without GateOverflow link", () => {
-      const specialAptQuestion = {
-        question_uid: "APT-ENG-5840",
-        title: "English Practice",
-        subject: "English",
-        subtopic: "Cloze Test",
-        exam: { paper: "Aptitude" },
-        _source: {
-          sourceKind: "aptitude-web",
-          sourceProvider: "AptitudeBank",
-          pageUrl: "https://aptitude-bank.internal/play#paper-f2d72e1ee0a6815c",
-        },
-        answer_meta: { type: "MCQ", answer: "B", source: "aptitude_embedded" },
-      };
-
-      render(<AnswerPanel question={specialAptQuestion} />);
-
-      // Must NOT render any active link to GateOverflow
-      expect(screen.queryAllByRole("link", { name: /Solution/i })).toHaveLength(0);
-
-      // Must render disabled Solution buttons (desktop + mobile) with 'Solution unavailable' label
-      const disabledButtons = screen.getAllByRole("button", { name: /Solution unavailable/i });
-      expect(disabledButtons.length).toBeGreaterThan(0);
-      disabledButtons.forEach((btn) => {
-        expect(btn.getAttribute("disabled")).toBeDefined();
-      });
-    });
-
-    test("Special Aptitude question with valid external solution link renders active link", () => {
-      const specialAptWithSolution = {
-        question_uid: "APT-QNT-3498",
-        title: "Quant Practice",
-        subject: "Quant",
-        solution_link: "https://example.com/solutions/qnt-3498",
-        exam: { paper: "Aptitude" },
-        _source: {
-          sourceKind: "aptitude-web",
-          sourceProvider: "AptitudeBank",
-        },
-        answer_meta: { type: "MCQ", answer: "A", source: "aptitude_embedded" },
-      };
-
-      render(<AnswerPanel question={specialAptWithSolution} />);
-
-      const solutionLinks = screen.getAllByRole("link", { name: /Solution/i });
-      expect(solutionLinks.length).toBeGreaterThan(0);
-      solutionLinks.forEach((link) => {
-        expect(link.getAttribute("href")).toBe("https://example.com/solutions/qnt-3498");
-        expect(link.getAttribute("target")).toBe("_blank");
-      });
-    });
-
-    test("regular GATE General Aptitude question with GateOverflow link renders active GateOverflow link", () => {
-      const regularGateGaQuestion = {
-        question_uid: "go:523089",
-        title: "GATE CSE 2026 | Set 1 | GA | Question: 1",
-        subjectLabel: "General Aptitude",
-        subjectSlug: "ga",
-        track: "cse",
-        exam: { paper: "CSE", year: 2026 },
-        link: "https://gateoverflow.in/523089/gate-cse-2026-set-1-ga-question-1",
-        answer_meta: { type: "MCQ", answer: "C" },
-      };
-
-      render(<AnswerPanel question={regularGateGaQuestion} />);
-
-      const solutionLinks = screen.getAllByRole("link", { name: /Solution/i });
-      expect(solutionLinks.length).toBeGreaterThan(0);
-      solutionLinks.forEach((link) => {
-        expect(link.getAttribute("href")).toBe(
-          "https://gateoverflow.in/523089/gate-cse-2026-set-1-ga-question-1"
-        );
-      });
-    });
-
-    test("regular GATE question without direct link falls back to GateOverflow search", () => {
-      const regularGateNoLink = {
-        question_uid: "go:99999",
-        title: "GATE CSE 2023 | Question: 45",
-        exam: { paper: "CSE", year: 2023 },
-        answer_meta: { type: "MCQ", answer: "D" },
-      };
-
-      render(<AnswerPanel question={regularGateNoLink} />);
-
-      const solutionLinks = screen.getAllByRole("link", { name: /Solution/i });
-      expect(solutionLinks.length).toBeGreaterThan(0);
-      solutionLinks.forEach((link) => {
-        expect(link.getAttribute("href")).toBe(
-          "https://gateoverflow.in/?qa=search&q=" + encodeURIComponent("GATE CSE 2023 | Question: 45")
-        );
-      });
-    });
-
     test("renders MTA explanation notice and badge for MTA question go:43485", () => {
       const mtaQuestion = {
         question_uid: "go:43485",
@@ -756,29 +661,33 @@ describe("AnswerPanel", () => {
       window.localStorage.clear();
     });
 
-    test("does not render Detailed Solution button while feature is paused per user request", () => {
-      render(<AnswerPanel question={questionWithDetailedSol} />);
-      expect(screen.queryByRole("button", { name: /Detailed Solution/i })).toBeNull();
-    });
-
-    test("does not render Detailed Solution button if question has no detailed solution", () => {
+    test("renders Detailed Solution button even if question has no pre-computed solution", () => {
       const qWithoutSol = {
         question_uid: "test:no-sol",
         title: "No solution question",
       };
       render(<AnswerPanel question={qWithoutSol} />);
+      const buttons = screen.getAllByRole("button", { name: /Detailed Solution/i });
+      expect(buttons.length).toBeGreaterThan(0);
+    });
+
+    test("does not render Detailed Solution button when hasDetailedSolution is explicitly false", () => {
+      const qWithoutSol = {
+        question_uid: "test:no-sol",
+        title: "No solution question",
+      };
+      render(<AnswerPanel question={qWithoutSol} hasDetailedSolution={false} />);
       expect(screen.queryByRole("button", { name: /Detailed Solution/i })).toBeNull();
     });
 
-    // Skipped while Detailed Solution button is temporarily removed per user request
-    test.skip("renders locked Detailed Solution button when user has not attempted the question", () => {
+    test("renders locked Detailed Solution button when user has not attempted the question", () => {
       render(<AnswerPanel question={questionWithDetailedSol} />);
       const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
       expect(btn).toBeTruthy();
       expect(btn.getAttribute("title")).toContain("Attempt the question at least once");
     });
 
-    test.skip("shows toast warning when clicking Detailed Solution before attempting", () => {
+    test("shows toast warning when clicking Detailed Solution before attempting", () => {
       const onToggle = vi.fn();
       render(
         <AnswerPanel
@@ -792,7 +701,7 @@ describe("AnswerPanel", () => {
       expect(screen.getByText(/Please attempt the question at least once/i)).toBeTruthy();
     });
 
-    test.skip("unlocks Detailed Solution and triggers onToggleDetailedSolution after user attempts the question", () => {
+    test("unlocks Detailed Solution and triggers onToggleDetailedSolution after user attempts the question", () => {
       const onToggle = vi.fn();
       render(
         <AnswerPanel
@@ -817,7 +726,7 @@ describe("AnswerPanel", () => {
       expect(onToggle).toHaveBeenCalledTimes(1);
     });
 
-    test.skip("is unlocked if question was already solved or attempted in storage", () => {
+    test("is unlocked if question was already solved or attempted in storage", () => {
       const onToggle = vi.fn();
       // Record prior attempt in localStorage
       window.localStorage.setItem(
@@ -841,6 +750,5 @@ describe("AnswerPanel", () => {
       expect(onToggle).toHaveBeenCalledTimes(1);
     });
   });
-});
 
 

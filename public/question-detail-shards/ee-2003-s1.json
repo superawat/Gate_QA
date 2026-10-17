@@ -50,7 +50,8 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "For $0 \\lt t \\lt 2s$ current varies linearly with time and given as $i(t)=3t$ and for $2s \\lt t \\lt 4s$ current is constant, $i(t)=6A$.\n\nThe energy absorbed by the inductor (Resistance neglected) in the first 2 sec,\n\n$E_L=\\int_{0}^{T}Li\\frac{di}{dt}=E_{L_1}+E_{L_2}$\n\n$E_{L_1}=\\int_{0}^{2}Li \\left (\\frac{di}{dt} \\right )dt$\n\n$\\;\\;=\\int_{0}^{2} 2 \\times 3t \\times 3\\; dt$\n\n$\\;\\;=18\\int_{0}^{2}t\\; dt$\n\n$$\\;\\;=18 \\times \\left.\\begin{matrix} \\frac{t^2}{2} \\end{matrix}\\right|^2_0$$\n\n$\\;\\;= 18 \\times \\left [ \\frac{4}{2}-0 \\right ]=36J$\n\nThe energy absorbed by the inductor in ($2\\rightarrow 4$) second\n\n$E_{L_2}=\\int_{2}^{4}Li\\left ( \\frac{di}{dt}dt \\right )$\n\n$\\;\\;=\\frac{2}{4}2 \\times 6 \\times 0 \\;dt=0 J$\n\nA pure indictor does not dissipate enegy but only stores it. Due to resistance, some energy is dissipated in the resistor. Therefore, total energy stored in the inductor and the energy dissipated in the resistor.\n\nThe energy dissipated by the resistance in 4 sec.\n\n$E_R=\\int_{0}^{T}i^2 R\\;dt$\n\n$\\;\\;=\\int_{0}^{2}(3t)^2 \\times 1 \\;dt+\\int_{2}^{4}6^2 \\times 1 \\; dt$\n\n$\\;\\;=9\\int_{0}^{2}t^2\\;dt +36\\int_{2}^{4}1 \\; dt$\n\n$$\\;\\;=9 \\times \\left.\\begin{matrix} \\frac{t^3}{3} \\end{matrix}\\right|_0^2+36t|_2^4$$\n\n$\\;\\;=9 \\times \\left ( \\frac{8}{3} \\right )+36 \\times 2$\n\n$\\;\\;=24+72=96J$\n\nThe total energy absorbed by the inductor in 4 sec\n\n$=96 J +36 J =132 J$\n\nTherefore, the correct answer is **C**."
+        "markdown": "For $0 \\lt t \\lt 2s$ current varies linearly with time and given as $i(t)=3t$ and for $2s \\lt t \\lt 4s$ current is constant, $i(t)=6A$.\n\nThe energy absorbed by the inductor (Resistance neglected) in the first 2 sec,\n\n$E_L=\\int_{0}^{T}Li\\frac{di}{dt}=E_{L_1}+E_{L_2}$\n\n$E_{L_1}=\\int_{0}^{2}Li \\left (\\frac{di}{dt} \\right )dt$\n\n$\\;\\;=\\int_{0}^{2} 2 \\times 3t \\times 3\\; dt$\n\n$\\;\\;=18\\int_{0}^{2}t\\; dt$\n\n$$\\;\\;=18 \\times \\left.\\begin{matrix} \\frac{t^2}{2} \\end{matrix}\\right|^2_0$$\n\n$\\;\\;= 18 \\times \\left [ \\frac{4}{2}-0 \\right ]=36J$\n\nThe energy absorbed by the inductor in ($2\\rightarrow 4$) second\n\n$E_{L_2}=\\int_{2}^{4}Li\\left ( \\frac{di}{dt}dt \\right )$\n\n$\\;\\;=\\frac{2}{4}2 \\times 6 \\times 0 \\;dt=0 J$\n\nA pure indictor does not dissipate enegy but only stores it. Due to resistance, some energy is dissipated in the resistor. Therefore, total energy stored in the inductor and the energy dissipated in the resistor.\n\nThe energy dissipated by the resistance in 4 sec.\n\n$E_R=\\int_{0}^{T}i^2 R\\;dt$\n\n$\\;\\;=\\int_{0}^{2}(3t)^2 \\times 1 \\;dt+\\int_{2}^{4}6^2 \\times 1 \\; dt$\n\n$\\;\\;=9\\int_{0}^{2}t^2\\;dt +36\\int_{2}^{4}1 \\; dt$\n\n$$\\;\\;=9 \\times \\left.\\begin{matrix} \\frac{t^3}{3} \\end{matrix}\\right|_0^2+36t|_2^4$$\n\n$\\;\\;=9 \\times \\left ( \\frac{8}{3} \\right )+36 \\times 2$\n\n$\\;\\;=24+72=96J$\n\nThe total energy absorbed by the inductor in 4 sec\n\n$=96 J +36 J =132 J$",
+        "images": []
       }
     },
     "pp:ee:2003:q2": {
@@ -94,7 +95,8 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "By KCL,\n\n$I_P+I_Q+I_C+I_L=0$\n\n$2+2+I_C+I_L=0$\n\nBut,  $I_C=C \\times \\frac{dv}{dt}$\n\n$\\;\\; =1 \\times \\frac{d}{dt}(4 \\sin 2t)$\n\n$\\;\\;=(8 \\cos 2t)$\n\n$\\therefore \\;\\; I_L=-(2+1+8 \\cos 2t)$\n\n$\\;\\; \\;\\;=-3-8 \\cos 2t$\n\n$\\therefore \\;\\; V_L=L\\left ( \\frac{di}{dt} \\right )$\n\n$\\;\\;\\;=2 \\times 2 \\times 8 \\sin 2t$\n\n$\\;\\;\\;=32 \\sin 2t$\n\nNOTE: KCL is based on the law of conservation of charges.\n\nTherefore, the correct answer is **B**."
+        "markdown": "By KCL,\n\n$I_P+I_Q+I_C+I_L=0$\n\n$2+2+I_C+I_L=0$\n\nBut,  $I_C=C \\times \\frac{dv}{dt}$\n\n$\\;\\; =1 \\times \\frac{d}{dt}(4 \\sin 2t)$\n\n$\\;\\;=(8 \\cos 2t)$\n\n$\\therefore \\;\\; I_L=-(2+1+8 \\cos 2t)$\n\n$\\;\\; \\;\\;=-3-8 \\cos 2t$\n\n$\\therefore \\;\\; V_L=L\\left ( \\frac{di}{dt} \\right )$\n\n$\\;\\;\\;=2 \\times 2 \\times 8 \\sin 2t$\n\n$\\;\\;\\;=32 \\sin 2t$\n\nNOTE: KCL is based on the law of conservation of charges.",
+        "images": []
       }
     },
     "pp:ee:2003:q3": {
@@ -138,7 +140,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "By Thevenin's theorem\n\n<img src=\"/question-images/ee/2003/ee-2003-68e2c32357.webp\" />\n\n$Z_{Th}=Z_{X-Y}=Z_1||Z_2+Z_3$\n\n$\\;\\;=\\frac{Z_1 \\times Z_2}{Z_1+Z_2}+Z_3$\n\n$\\;\\;=\\frac{10\\angle -60 \\times 10\\angle 60}{10\\angle -60 + 10\\angle 60}+50\\angle 53.13$\n\n$\\;\\;=56.66\\angle 45^{\\circ}\\Omega$\n\nTherefore, the correct answer is **A**."
+        "markdown": "By Thevenin's theorem\n\n<img src=\"/question-images/ee/2003/ee-2003-68e2c32357.webp\" />\n\n$Z_{Th}=Z_{X-Y}=Z_1||Z_2+Z_3$\n\n$\\;\\;=\\frac{Z_1 \\times Z_2}{Z_1+Z_2}+Z_3$\n\n$\\;\\;=\\frac{10\\angle -60 \\times 10\\angle 60}{10\\angle -60 + 10\\angle 60}+50\\angle 53.13$\n\n$\\;\\;=56.66\\angle 45^{\\circ}\\Omega$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-68e2c32357.webp"
+        ]
       }
     },
     "pp:ee:2003:q4": {
@@ -182,7 +187,10 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
-        "markdown": "$\\bar{H}=\\bar{H_1}+\\bar{H_2}=\\frac{I}{2 \\pi d}\\vec{y}+\\frac{I}{2 \\pi d}\\vec{y}=\\frac{I}{ \\pi d}\\vec{y}$\n\n<img src=\"/question-images/ee/2003/ee-2003-cf499f27fc.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\bar{H}=\\bar{H_1}+\\bar{H_2}=\\frac{I}{2 \\pi d}\\vec{y}+\\frac{I}{2 \\pi d}\\vec{y}=\\frac{I}{ \\pi d}\\vec{y}$\n\n<img src=\"/question-images/ee/2003/ee-2003-cf499f27fc.webp\" />",
+        "images": [
+          "/question-images/ee/2003/ee-2003-cf499f27fc.webp"
+        ]
       }
     },
     "pp:ee:2003:q5": {
@@ -226,7 +234,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
-        "markdown": "Inductance is proportional to separation between the strips so when separation is reduced to x/2 then inductance will become L/2 H/m.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Inductance is proportional to separation between the strips so when separation is reduced to x/2 then inductance will become L/2 H/m.",
+        "images": []
       }
     },
     "pp:ee:2003:q6": {
@@ -270,7 +279,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "$$\\begin{aligned}\n\n\\text{Efficiency} &=\\frac{\\text{Output}}{\\text{Input}} \\\\\n\n&= \\frac{\\text{Output}}{\\text{Output}+\\text{Losses}}\\\\\n\n\\text{Output}&= x S \\cos \\phi  \\\\\n\n\\text{Where,}\\;\\;S &=\\text{Rating of the machine} \\\\\n\nx&= \\% \\text{of the full load}\\\\\n\n\\cos \\phi &= \\text{Power factor} \\\\\n\nP_i &= \\text{Iron or core loss}\\\\\n\nP_{cu} &=\\text{Full load copper loss} \\\\\n\n&\\text{For maximum frequency}\\\\\n\nP_i &=x^2P_{cu} \\\\\n\n\\text{Efficiency} =\\eta &= \\frac{xS \\cos \\phi }{xS \\cos \\phi +P_i+x^2 P_{cu}} \\\\\n\n\\text{Max efficiency}=\\eta _{max}&=\\frac{xS \\cos \\phi }{xS \\cos \\phi +2P_i}\\\\\n\n\\Rightarrow \\;\\;0.9&=\\frac{1 \\times S \\times 1}{1 \\times S \\times 1+2P_i}\\\\\n\nP_i&=0.055S\n\n\\end{aligned}$$\n\nFull load copper loss $= 1^2 P_{cu}=P_i$\n\n$P_{cu}=0.055S$\n\nEfficiency of halh load, upf\n\n$x=\\frac{1}{2}$\n\n$\\eta =\\frac{\\frac{1}{2} \\times S \\times 1 }{\\frac{1}{2} \\times S \\times 1 +0.055S+\\left ( \\frac{1}{2} \\right )^2 \\times 0.055S} \\times 100$\n\n$\\;\\;\\;\\approx 87.8\\%$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned}\n\n\\text{Efficiency} &=\\frac{\\text{Output}}{\\text{Input}} \\\\\n\n&= \\frac{\\text{Output}}{\\text{Output}+\\text{Losses}}\\\\\n\n\\text{Output}&= x S \\cos \\phi  \\\\\n\n\\text{Where,}\\;\\;S &=\\text{Rating of the machine} \\\\\n\nx&= \\% \\text{of the full load}\\\\\n\n\\cos \\phi &= \\text{Power factor} \\\\\n\nP_i &= \\text{Iron or core loss}\\\\\n\nP_{cu} &=\\text{Full load copper loss} \\\\\n\n&\\text{For maximum frequency}\\\\\n\nP_i &=x^2P_{cu} \\\\\n\n\\text{Efficiency} =\\eta &= \\frac{xS \\cos \\phi }{xS \\cos \\phi +P_i+x^2 P_{cu}} \\\\\n\n\\text{Max efficiency}=\\eta _{max}&=\\frac{xS \\cos \\phi }{xS \\cos \\phi +2P_i}\\\\\n\n\\Rightarrow \\;\\;0.9&=\\frac{1 \\times S \\times 1}{1 \\times S \\times 1+2P_i}\\\\\n\nP_i&=0.055S\n\n\\end{aligned}$$\n\nFull load copper loss $= 1^2 P_{cu}=P_i$\n\n$P_{cu}=0.055S$\n\nEfficiency of halh load, upf\n\n$x=\\frac{1}{2}$\n\n$\\eta =\\frac{\\frac{1}{2} \\times S \\times 1 }{\\frac{1}{2} \\times S \\times 1 +0.055S+\\left ( \\frac{1}{2} \\right )^2 \\times 0.055S} \\times 100$\n\n$\\;\\;\\;\\approx 87.8\\%$",
+        "images": []
       }
     },
     "pp:ee:2003:q7": {
@@ -314,7 +324,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
-        "markdown": "Universal motors are used where light weight is important., as in vacuum cleaners and portable tools e.g. food mixer which usually operate at high speed (1500-15000 rpm). Domestic water pump are usually of low rating. So single phase induction motor can be used for such application. Three phase induction motor is suitable for escalator as it has high starting torque.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Universal motors are used where light weight is important., as in vacuum cleaners and portable tools e.g. food mixer which usually operate at high speed (1500-15000 rpm). Domestic water pump are usually of low rating. So single phase induction motor can be used for such application. Three phase induction motor is suitable for escalator as it has high starting torque.",
+        "images": []
       }
     },
     "pp:ee:2003:q8": {
@@ -358,7 +369,11 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-689284eba6.webp\" />\n\nAssuming resistance of the armature to be zero. In first case, the generator is feeding a partly inductive load. It means that generator is supplying lagging power. The generator supplies a lagging power factor current when it is overexcited which is represented by $E_{f_1}$.\n\nIn second case, a capacitor is connected across the load to completely nullifythe inductive current. It means the generator supplies no reactive power and unity power factor current is drawn from the generator. The excitation ($E_{f_2}$) corresponding to unity power factor is known as normal excitation.\n\n<img src=\"/question-images/ee/2003/ee-2003-e1af789cf8.webp\" />\n\nFrom the phasor diagram $E_{f_1} \\gt E_{f_2}$ and as the field current approximately directly proportional to excitation, the field current has to be reduced. From phasor diagram $E_{f_1} \\sin \\delta _1=E_{f_2} \\sin \\delta _2=\\text{constant}$\n\n$P_e(\\text{ power delivered})=\\frac{E_fV_t}{X_s}\\sin \\delta$\n\nFuel input remains unaltered.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-689284eba6.webp\" />\n\nAssuming resistance of the armature to be zero. In first case, the generator is feeding a partly inductive load. It means that generator is supplying lagging power. The generator supplies a lagging power factor current when it is overexcited which is represented by $E_{f_1}$.\n\nIn second case, a capacitor is connected across the load to completely nullifythe inductive current. It means the generator supplies no reactive power and unity power factor current is drawn from the generator. The excitation ($E_{f_2}$) corresponding to unity power factor is known as normal excitation.\n\n<img src=\"/question-images/ee/2003/ee-2003-e1af789cf8.webp\" />\n\nFrom the phasor diagram $E_{f_1} \\gt E_{f_2}$ and as the field current approximately directly proportional to excitation, the field current has to be reduced. From phasor diagram $E_{f_1} \\sin \\delta _1=E_{f_2} \\sin \\delta _2=\\text{constant}$\n\n$P_e(\\text{ power delivered})=\\frac{E_fV_t}{X_s}\\sin \\delta$\n\nFuel input remains unaltered.",
+        "images": [
+          "/question-images/ee/2003/ee-2003-689284eba6.webp",
+          "/question-images/ee/2003/ee-2003-e1af789cf8.webp"
+        ]
       }
     },
     "pp:ee:2003:q9": {
@@ -402,7 +417,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-9e855b72b4.webp\" />\n\nThe vertical distance PQ between O.C. (curve X) and ZPF characteristic (curve Y) in above characteristic is leakage reactance.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-9e855b72b4.webp\" />\n\nThe vertical distance PQ between O.C. (curve X) and ZPF characteristic (curve Y) in above characteristic is leakage reactance.",
+        "images": [
+          "/question-images/ee/2003/ee-2003-9e855b72b4.webp"
+        ]
       }
     },
     "pp:ee:2003:q10": {
@@ -446,7 +464,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "Power input at no-load $(P_0)$ provided losses only as the shaft output is zero. These losses comprise $P_i$(Iron/core loss) and $P_{wf}$(windage and friction loss).\n\n<img src=\"/question-images/ee/2003/ee-2003-ee272c05d2.webp\" />\n\nAs the voltage is reduced below the rated value, the core-loss decreases as the square of voltage. Since the slip does not increase significantly, the windage and friction loss remains almost constant. The plot of $P_0$ versus V is extrapolated at V=0 which gives, $P_{wf}$ as $P_{i}=0$ art zero voltage.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Power input at no-load $(P_0)$ provided losses only as the shaft output is zero. These losses comprise $P_i$(Iron/core loss) and $P_{wf}$(windage and friction loss).\n\n<img src=\"/question-images/ee/2003/ee-2003-ee272c05d2.webp\" />\n\nAs the voltage is reduced below the rated value, the core-loss decreases as the square of voltage. Since the slip does not increase significantly, the windage and friction loss remains almost constant. The plot of $P_0$ versus V is extrapolated at V=0 which gives, $P_{wf}$ as $P_{i}=0$ art zero voltage.",
+        "images": [
+          "/question-images/ee/2003/ee-2003-ee272c05d2.webp"
+        ]
       }
     },
     "pp:ee:2003:q11": {
@@ -490,7 +511,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "By bonding of conductor, the self GMD of the conductors is increased.\n\nCorona loss $\\propto (V-V_0)^2$\n\n$V_0$\n\nis approximately directly proportional to the size of conductor, hence larger the size of the conductor lrger  will be the critical disuptive voltage and smaller will be the factor $(V-V_0)^2$ and hence, smaller will be the corona loss.\n\nTherefore, the correct answer is **C**."
+        "markdown": "By bonding of conductor, the self GMD of the conductors is increased.\n\nCorona loss $\\propto (V-V_0)^2$\n\n$V_0$\n\nis approximately directly proportional to the size of conductor, hence larger the size of the conductor lrger  will be the critical disuptive voltage and smaller will be the factor $(V-V_0)^2$ and hence, smaller will be the corona loss.",
+        "images": []
       }
     },
     "pp:ee:2003:q12": {
@@ -534,7 +556,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "Total buses=300\n\n<img src=\"/question-images/ee/2003/ee-2003-9a53160987.webp\" />\n\nSize of jacobian matrix = No. of unknown bus voltage $=2 \\times 300-2-19-25=554$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Total buses=300\n\n<img src=\"/question-images/ee/2003/ee-2003-9a53160987.webp\" />\n\nSize of jacobian matrix = No. of unknown bus voltage $=2 \\times 300-2-19-25=554$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-9a53160987.webp"
+        ]
       }
     },
     "pp:ee:2003:q13": {
@@ -578,7 +603,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - High Voltage DC Transmission",
-        "markdown": "D.C. line inductor, reduce the harmonic current in the DC line and possible transient over currents.\n\nConverters and converter transformers consume reactive power.\n\nThe reactive power may be supplied  from\n\n(i) AC filter\n\n(ii) Shunt Capacitor\n\n(iii) AC Network\n\n(iv) Static compensators\n\n(v) Synchronous condensers.\n\nTherefore, the correct answer is **B**."
+        "markdown": "D.C. line inductor, reduce the harmonic current in the DC line and possible transient over currents.\n\nConverters and converter transformers consume reactive power.\n\nThe reactive power may be supplied  from\n\n(i) AC filter\n\n(ii) Shunt Capacitor\n\n(iii) AC Network\n\n(iv) Static compensators\n\n(v) Synchronous condensers.",
+        "images": []
       }
     },
     "pp:ee:2003:q14": {
@@ -622,7 +648,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-4ffb24142f.webp\" />\n\n$$\\begin{aligned} x_{eq} &=x_1+x_{line} +x_2\\\\ &= 1.1+0.5+1.2\\\\ &= 2.8\\;p.u.\\\\ E_1&=2.0 \\;p.u. \\\\ E_2&= 1.3 \\; p.u. \\end{aligned}$$\n\nRotor angle difference $=\\delta _1-\\delta _2$\n\nPower transferred from generator to motor\n\n$$\\begin{aligned} P &=\\frac{E_1E_2}{x_{eq}}\\sin (\\delta _1-\\delta _2) \\\\ 0.5 &= \\frac{2 \\times 1.3}{2.8} \\sin (\\delta _1-\\delta _2)\\\\ \\delta _1-\\delta _2 &= 32.58^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-4ffb24142f.webp\" />\n\n$$\\begin{aligned} x_{eq} &=x_1+x_{line} +x_2\\\\ &= 1.1+0.5+1.2\\\\ &= 2.8\\;p.u.\\\\ E_1&=2.0 \\;p.u. \\\\ E_2&= 1.3 \\; p.u. \\end{aligned}$$\n\nRotor angle difference $=\\delta _1-\\delta _2$\n\nPower transferred from generator to motor\n\n$$\\begin{aligned} P &=\\frac{E_1E_2}{x_{eq}}\\sin (\\delta _1-\\delta _2) \\\\ 0.5 &= \\frac{2 \\times 1.3}{2.8} \\sin (\\delta _1-\\delta _2)\\\\ \\delta _1-\\delta _2 &= 32.58^{\\circ} \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-4ffb24142f.webp"
+        ]
       }
     },
     "pp:ee:2003:q15": {
@@ -666,7 +695,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "NOTE: When a fault occurs in the protected circuit, the relay connected to the CT actuates and closes its contact. Current flows from the battery in the trip circuit. As the trip coil of the breaker is energized the circuit breaker operating mechanism is actuated.\n\nTherefore, the correct answer is **B**."
+        "markdown": "NOTE: When a fault occurs in the protected circuit, the relay connected to the CT actuates and closes its contact. Current flows from the battery in the trip circuit. As the trip coil of the breaker is energized the circuit breaker operating mechanism is actuated.",
+        "images": []
       }
     },
     "pp:ee:2003:q16": {
@@ -710,7 +740,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "This is the characteristics of a p-channel depletion mode device.\n\nTherefore, the correct answer is **C**."
+        "markdown": "This is the characteristics of a p-channel depletion mode device.",
+        "images": []
       }
     },
     "pp:ee:2003:q17": {
@@ -754,7 +785,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "Using KVL in Base-emitter Loop\n\n<img src=\"/question-images/ee/2003/ee-2003-ffba17b0de.webp\" />\n\n$4-33\\times I_b-0.7-3.3\\times100I_b=0(I_c=\\beta I_b)$\n\n$\\therefore \\; I_b=\\frac{4-0.7}{(33+330)}$\n\n$\\therefore \\; I_c=\\frac{3.3\\times 100}{33+330} =\\frac{3.3}{(0.33+3.3)}mA$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Using KVL in Base-emitter Loop\n\n<img src=\"/question-images/ee/2003/ee-2003-ffba17b0de.webp\" />\n\n$4-33\\times I_b-0.7-3.3\\times100I_b=0(I_c=\\beta I_b)$\n\n$\\therefore \\; I_b=\\frac{4-0.7}{(33+330)}$\n\n$\\therefore \\; I_c=\\frac{3.3\\times 100}{33+330} =\\frac{3.3}{(0.33+3.3)}mA$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-ffba17b0de.webp"
+        ]
       }
     },
     "pp:ee:2003:q18": {
@@ -798,7 +832,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "$V_{(+)}=\\frac{V_{in} \\times \\frac{1}{jC\\omega }}{R+\\frac{1}{jC\\omega }}=\\frac{V_{in}}{1+jRC\\omega}$\n\nwhere,    $V_{(-)}=V_{(+)}$    [For ideal Op-amp]\n\n$\\frac{V_{in}-V_{(-)}}{R_1}=\\frac{V_{(-)}-V_{o}}{R_1}$\n\n$V_o=2V_{(-)}-V_{in}=2V_{(+)}-V_{in} \\;\\;\\;\\;(V_{(-)}=V_{(+)})$\n\n$=\\left ( \\frac{2}{1+j\\omega RC}-1 \\right )V_{in}$\n\n$=\\left ( \\frac{1-j\\omega RC}{1-j\\omega RC} \\right )V_{in}$\n\n$\\angle \\left ( \\frac{V_o}{V_{in}} \\right )=-2 tan^{-1}\\omega RC$\n\nFor  $-90^{\\circ} \\leq\\theta \\leq 90^{\\circ}$ , maximum phase shift occurs $(+180^{\\circ}).$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$V_{(+)}=\\frac{V_{in} \\times \\frac{1}{jC\\omega }}{R+\\frac{1}{jC\\omega }}=\\frac{V_{in}}{1+jRC\\omega}$\n\nwhere,    $V_{(-)}=V_{(+)}$    [For ideal Op-amp]\n\n$\\frac{V_{in}-V_{(-)}}{R_1}=\\frac{V_{(-)}-V_{o}}{R_1}$\n\n$V_o=2V_{(-)}-V_{in}=2V_{(+)}-V_{in} \\;\\;\\;\\;(V_{(-)}=V_{(+)})$\n\n$=\\left ( \\frac{2}{1+j\\omega RC}-1 \\right )V_{in}$\n\n$=\\left ( \\frac{1-j\\omega RC}{1-j\\omega RC} \\right )V_{in}$\n\n$\\angle \\left ( \\frac{V_o}{V_{in}} \\right )=-2 tan^{-1}\\omega RC$\n\nFor  $-90^{\\circ} \\leq\\theta \\leq 90^{\\circ}$ , maximum phase shift occurs $(+180^{\\circ}).$",
+        "images": []
       }
     },
     "pp:ee:2003:q19": {
@@ -842,7 +877,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
-        "markdown": "For a 4:1 mux\n\n<img src=\"/question-images/ee/2003/ee-2003-05d37bdfda.webp\" />\n\n$F=I_0\\bar{A}\\bar{B}+I_1\\bar{A}B+I_2A\\bar{B}+I_3AB$\n\n<img src=\"/question-images/ee/2003/ee-2003-2126b26d43.webp\" />\n\nwhere sum of full adder is $=A\\oplus B\\oplus C$\n\nTruth table of Full adder\n\n<img src=\"/question-images/ee/2003/ee-2003-f14db4d2e3.webp\" />\n\nTherefore, the correct answer is **C**."
+        "markdown": "For a 4:1 mux\n\n<img src=\"/question-images/ee/2003/ee-2003-05d37bdfda.webp\" />\n\n$F=I_0\\bar{A}\\bar{B}+I_1\\bar{A}B+I_2A\\bar{B}+I_3AB$\n\n<img src=\"/question-images/ee/2003/ee-2003-2126b26d43.webp\" />\n\nwhere sum of full adder is $=A\\oplus B\\oplus C$\n\nTruth table of Full adder\n\n<img src=\"/question-images/ee/2003/ee-2003-f14db4d2e3.webp\" />",
+        "images": [
+          "/question-images/ee/2003/ee-2003-05d37bdfda.webp",
+          "/question-images/ee/2003/ee-2003-2126b26d43.webp",
+          "/question-images/ee/2003/ee-2003-f14db4d2e3.webp"
+        ]
       }
     },
     "pp:ee:2003:q20": {
@@ -886,7 +926,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Microprocessors",
-        "markdown": "Program counter contains the memory address of the instruction that is to be executed next.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Program counter contains the memory address of the instruction that is to be executed next.",
+        "images": []
       }
     },
     "pp:ee:2003:q21": {
@@ -930,7 +971,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "Taking (LT) on both sides\n\n$(s^2+6s+5)X(s)=12\\left ( \\frac{1}{s}-\\frac{1}{s+2} \\right ) =\\frac{24}{s(s+2)}$\n\n$X(s)=\\frac{24}{s(s+2)(s+1)(s+5)}$\n\nResponce at $t\\rightarrow \\infty$\n\nUsing final value theorem\n\n$\\lim_{t\\rightarrow \\infty }x(t)=\\lim_{s \\rightarrow 0}sX(s)$\n\n$=\\lim_{s \\rightarrow 0}\\frac{s \\times 24}{s(s+2)(s+1)(s+5)}=2.4$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Taking (LT) on both sides\n\n$(s^2+6s+5)X(s)=12\\left ( \\frac{1}{s}-\\frac{1}{s+2} \\right ) =\\frac{24}{s(s+2)}$\n\n$X(s)=\\frac{24}{s(s+2)(s+1)(s+5)}$\n\nResponce at $t\\rightarrow \\infty$\n\nUsing final value theorem\n\n$\\lim_{t\\rightarrow \\infty }x(t)=\\lim_{s \\rightarrow 0}sX(s)$\n\n$=\\lim_{s \\rightarrow 0}\\frac{s \\times 24}{s(s+2)(s+1)(s+5)}=2.4$",
+        "images": []
       }
     },
     "pp:ee:2003:q22": {
@@ -974,7 +1016,10 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Design of Control Systems",
-        "markdown": "Transfer function$=\\frac{k\\left ( 1+\\frac{s}{a} \\right )}{\\left ( 1+\\frac{s}{b} \\right )}$\n\nZero of TF=-a\n\nPole of TF=-b\n\nFor a lead-compensator, the zero is nearer to origin as compared to pole, hence the effect of zero is dominant, therefore, the lead-compensator when introduced in series with forward path of the trnasfer function the phase shift is increased.\n\n<img src=\"/question-images/ee/2003/ee-2003-d3ba9a0a55.webp\" />\n\nSo, from pole-zero configuration of the compensator $a \\lt b$.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Transfer function$=\\frac{k\\left ( 1+\\frac{s}{a} \\right )}{\\left ( 1+\\frac{s}{b} \\right )}$\n\nZero of TF=-a\n\nPole of TF=-b\n\nFor a lead-compensator, the zero is nearer to origin as compared to pole, hence the effect of zero is dominant, therefore, the lead-compensator when introduced in series with forward path of the trnasfer function the phase shift is increased.\n\n<img src=\"/question-images/ee/2003/ee-2003-d3ba9a0a55.webp\" />\n\nSo, from pole-zero configuration of the compensator $a \\lt b$.",
+        "images": [
+          "/question-images/ee/2003/ee-2003-d3ba9a0a55.webp"
+        ]
       }
     },
     "pp:ee:2003:q23": {
@@ -1018,7 +1063,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "State transition matrix,\n\n$$\\phi (t)=\\begin{bmatrix} e^{-2t} & 0\\\\ 0& e^{-t} \\end{bmatrix}$$\n\nInitial conditions,\n\n$$x(0)=\\begin{bmatrix} 2\\\\ 3 \\end{bmatrix}$$\n\nZero input response is given by\n\n$x(t)=\\phi (t)x(0)$\n\n$$\\;\\;=\\begin{bmatrix} e^{-2t} & 0\\\\ 0& e^{-t} \\end{bmatrix}\\begin{bmatrix} 2\\\\ 3 \\end{bmatrix} \\;\\;=\\begin{bmatrix} 2e^{-2t}\\\\ 3e^{-t} \\end{bmatrix}$$\n\nState of the system at t=1s\n\n$$X(t)|_{t=1}=\\begin{bmatrix} 2e^{-2}\\\\ 3e^{-1} \\end{bmatrix}=\\begin{bmatrix} 0.271\\\\ 1.100 \\end{bmatrix}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "State transition matrix,\n\n$$\\phi (t)=\\begin{bmatrix} e^{-2t} & 0\\\\ 0& e^{-t} \\end{bmatrix}$$\n\nInitial conditions,\n\n$$x(0)=\\begin{bmatrix} 2\\\\ 3 \\end{bmatrix}$$\n\nZero input response is given by\n\n$x(t)=\\phi (t)x(0)$\n\n$$\\;\\;=\\begin{bmatrix} e^{-2t} & 0\\\\ 0& e^{-t} \\end{bmatrix}\\begin{bmatrix} 2\\\\ 3 \\end{bmatrix} \\;\\;=\\begin{bmatrix} 2e^{-2t}\\\\ 3e^{-t} \\end{bmatrix}$$\n\nState of the system at t=1s\n\n$$X(t)|_{t=1}=\\begin{bmatrix} 2e^{-2}\\\\ 3e^{-1} \\end{bmatrix}=\\begin{bmatrix} 0.271\\\\ 1.100 \\end{bmatrix}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q24": {
@@ -1062,7 +1108,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-ddf6e35dbe.webp\" />\n\nCoil is made of copper\n\nA swamping resistance ($R_{sw}$) of manganin (which has a negligible temperature coefficient) having a resistance of 20 to 30 times the coil resistance is connected in series with the coil and a shunt of manganin is connected across this combination. Since copper forms a samll fraction of the series combination, the proportion in which the currents would divide between the meter and the shunt would not change appreciably with the change in temperature.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-ddf6e35dbe.webp\" />\n\nCoil is made of copper\n\nA swamping resistance ($R_{sw}$) of manganin (which has a negligible temperature coefficient) having a resistance of 20 to 30 times the coil resistance is connected in series with the coil and a shunt of manganin is connected across this combination. Since copper forms a samll fraction of the series combination, the proportion in which the currents would divide between the meter and the shunt would not change appreciably with the change in temperature.",
+        "images": [
+          "/question-images/ee/2003/ee-2003-ddf6e35dbe.webp"
+        ]
       }
     },
     "pp:ee:2003:q25": {
@@ -1106,7 +1155,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "Due to stray magnetic field, torque is also produced which can affect the torque produced due to operating field. If bothstray magnetic and operating field are parallel, torque due to both field become additive.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Due to stray magnetic field, torque is also produced which can affect the torque produced due to operating field. If bothstray magnetic and operating field are parallel, torque due to both field become additive.",
+        "images": []
       }
     },
     "pp:ee:2003:q26": {
@@ -1150,7 +1200,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
-        "markdown": "$$\\begin{aligned} \\text{Q of the coil}&= 120\\\\ Q&= \\frac{\\omega L}{R}=\\frac{1}{\\omega RC} \\end{aligned}$$\n\nCASE-I:\n\nQ=120 is obtained for C=300pF\n\nCASE-II:\n\nFor the same reading i.e. Q=120\n\nEffective capacitance of the circuit shuold be 300 pF.\n\nEffective capacitance of parallel capacitor\n\n$$\\begin{aligned} C_{eff}&= C+C_x\\\\ C_x&= C_{eff}-C\\\\ &= 300-200\\\\ &= 100pF \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\text{Q of the coil}&= 120\\\\ Q&= \\frac{\\omega L}{R}=\\frac{1}{\\omega RC} \\end{aligned}$$\n\nCASE-I:\n\nQ=120 is obtained for C=300pF\n\nCASE-II:\n\nFor the same reading i.e. Q=120\n\nEffective capacitance of the circuit shuold be 300 pF.\n\nEffective capacitance of parallel capacitor\n\n$$\\begin{aligned} C_{eff}&= C+C_x\\\\ C_x&= C_{eff}-C\\\\ &= 300-200\\\\ &= 100pF \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q27": {
@@ -1192,10 +1243,7 @@
           "power-semiconductor-devices-and-commutation-techniques"
         ]
       },
-      "detailed_solution": {
-        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Power Electronics** (specifically *Power Semiconductor Devices and Commutation Techniques*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Power Semiconductor Devices and Commutation Techniques**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *$J_{1}$, $J_{2}$ and $J_{3}$ are all forward biased*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** ($J_{1}$, $J_{2}$ and $J_{3}$ are all forward biased)."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2003:q28": {
       "question_uid": "pp:ee:2003:q28",
@@ -1238,7 +1286,11 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-0c2f2ee94a.webp\" />\n\nwhen reverse current flow through diode D.\n\nSo  $I_S \\lt 0$ and $V_{DS} = 0$\n\nWhen MOSFET is in ON state\n\n$I_S \\gt 0$ and $V_{DS} = 0$\n\nWhen MOSFET is in OFF state\n\n$I_S = 0$ and $V_{DS} \\gt 0$\n\n<img src=\"/question-images/ee/2003/ee-2003-d360b7f275.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-0c2f2ee94a.webp\" />\n\nwhen reverse current flow through diode D.\n\nSo  $I_S \\lt 0$ and $V_{DS} = 0$\n\nWhen MOSFET is in ON state\n\n$I_S \\gt 0$ and $V_{DS} = 0$\n\nWhen MOSFET is in OFF state\n\n$I_S = 0$ and $V_{DS} \\gt 0$\n\n<img src=\"/question-images/ee/2003/ee-2003-d360b7f275.webp\" />",
+        "images": [
+          "/question-images/ee/2003/ee-2003-0c2f2ee94a.webp",
+          "/question-images/ee/2003/ee-2003-d360b7f275.webp"
+        ]
       }
     },
     "pp:ee:2003:q29": {
@@ -1282,7 +1334,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "Field Control: Fieldcontrol provides constant power drive. Since the speed is inversely proportional to flux/pole $\\left ( \\omega \\propto \\frac{1}{\\phi } \\right )$ field can not be increased; It can only be weakended. So this control is suitable for speed control above base speed as torque is directly proportional to flux/pole $(T \\propto \\alpha )$ for a given armature current. So, this control provides torque below base torque.\n\nArmature Control: It provides constant-torque drive. By keeping th field current at maximumvalue full load torque can be obtained at full load armature current at all speeds. This control provides speed below base speed.\n\n<img src=\"/question-images/ee/2003/ee-2003-c662cee04b.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "Field Control: Fieldcontrol provides constant power drive. Since the speed is inversely proportional to flux/pole $\\left ( \\omega \\propto \\frac{1}{\\phi } \\right )$ field can not be increased; It can only be weakended. So this control is suitable for speed control above base speed as torque is directly proportional to flux/pole $(T \\propto \\alpha )$ for a given armature current. So, this control provides torque below base torque.\n\nArmature Control: It provides constant-torque drive. By keeping th field current at maximumvalue full load torque can be obtained at full load armature current at all speeds. This control provides speed below base speed.\n\n<img src=\"/question-images/ee/2003/ee-2003-c662cee04b.webp\" />",
+        "images": [
+          "/question-images/ee/2003/ee-2003-c662cee04b.webp"
+        ]
       }
     },
     "pp:ee:2003:q30": {
@@ -1326,7 +1381,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "$\\frac{\\text{Peak to peak ripple voltage}}{Peak output dc voltage}=\\frac{V_{ML}-V_{ML} \\sin 150^{\\circ}}{V_{ML}}=0.5$\n\n<img src=\"/question-images/ee/2003/ee-2003-8b8b8c6102.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\frac{\\text{Peak to peak ripple voltage}}{Peak output dc voltage}=\\frac{V_{ML}-V_{ML} \\sin 150^{\\circ}}{V_{ML}}=0.5$\n\n<img src=\"/question-images/ee/2003/ee-2003-8b8b8c6102.webp\" />",
+        "images": [
+          "/question-images/ee/2003/ee-2003-8b8b8c6102.webp"
+        ]
       }
     },
     "pp:ee:2003:q31": {
@@ -1370,7 +1428,8 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Resonance and Locus Diagrams",
-        "markdown": "$V=V_R+i(V_L-V_C)$\n\nSince, $|V_L|=|V_C|$ and $|V_L|=2|V_R|$\n\nTherefore, the circuit is at resonance and\n\n$V_R=V$\n\nQuality factor $=\\frac{V_L}{V}=\\frac{V_L}{V_R}=\\frac{2V_R}{V_R}=2$\n\nAs we know,\n\n$Q=\\frac{\\omega _0L}{R}$\n\n$\\Rightarrow \\;\\; 2=\\frac{2 \\pi f \\times L}{5}$\n\n$\\Rightarrow \\;\\;L=31.8mH$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$V=V_R+i(V_L-V_C)$\n\nSince, $|V_L|=|V_C|$ and $|V_L|=2|V_R|$\n\nTherefore, the circuit is at resonance and\n\n$V_R=V$\n\nQuality factor $=\\frac{V_L}{V}=\\frac{V_L}{V_R}=\\frac{2V_R}{V_R}=2$\n\nAs we know,\n\n$Q=\\frac{\\omega _0L}{R}$\n\n$\\Rightarrow \\;\\; 2=\\frac{2 \\pi f \\times L}{5}$\n\n$\\Rightarrow \\;\\;L=31.8mH$",
+        "images": []
       }
     },
     "pp:ee:2003:q32": {
@@ -1414,7 +1473,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "Given: $V_R=10 V$\n\nBy KCL,\n\n$\\frac{V_P-10}{2}+2+\\frac{V_P}{8}=0 \\;\\;...(i)$\n\n$\\frac{V_Q-10}{4}-2+\\frac{V_Q}{6}=0 \\;\\;...(ii)$\n\n<img src=\"/question-images/ee/2003/ee-2003-f641d51e28.webp\" />\n\nFrom equation (i),\n\n$4(V_P-10)+2 \\times 8 +V_P=0$\n\n$4V_P-40+16+V_P=0$\n\n$5V_P-24=0$\n\n$V_P=4.8$\n\nFrom equation (ii),\n\n$6(V_Q-10)-2 \\times 4 \\times 6 +4V_Q=0$\n\n$10V_Q-108=0$\n\n$V_Q=10.8$\n\n$\\therefore \\;\\;\\; V_P-V_Q=-6V$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given: $V_R=10 V$\n\nBy KCL,\n\n$\\frac{V_P-10}{2}+2+\\frac{V_P}{8}=0 \\;\\;...(i)$\n\n$\\frac{V_Q-10}{4}-2+\\frac{V_Q}{6}=0 \\;\\;...(ii)$\n\n<img src=\"/question-images/ee/2003/ee-2003-f641d51e28.webp\" />\n\nFrom equation (i),\n\n$4(V_P-10)+2 \\times 8 +V_P=0$\n\n$4V_P-40+16+V_P=0$\n\n$5V_P-24=0$\n\n$V_P=4.8$\n\nFrom equation (ii),\n\n$6(V_Q-10)-2 \\times 4 \\times 6 +4V_Q=0$\n\n$10V_Q-108=0$\n\n$V_Q=10.8$\n\n$\\therefore \\;\\;\\; V_P-V_Q=-6V$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-f641d51e28.webp"
+        ]
       }
     },
     "pp:ee:2003:q33": {
@@ -1458,7 +1520,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "For obtaining power absorbed by $R_L$ under maximum power transfer condition. We find thevenin's equivalent circuit across $R_L$.\n\n<img src=\"/question-images/ee/2003/ee-2003-dfe8efe154.webp\" />\n\n$Z_{th}$ is calculated by short-circuting the voltage source.\n\n$Z_{th}=(6+j8)||(6+j8)=3+j4\\Omega$\n\n<img src=\"/question-images/ee/2003/ee-2003-d656a2bfab.webp\" />\n\n$\\frac{V_{th}-110\\angle 0^{\\circ}}{6+j8}+\\frac{V_{th}-90\\angle 0^{\\circ}}{6+j8}=0$\n\n$V_{th}=100\\angle 0^{\\circ}V$\n\n<img src=\"/question-images/ee/2003/ee-2003-2ac6f9a586.webp\" />\n\nFor maximum power transfer ,\n\n$R_L=\\sqrt{R_{th}^2+X_{th}^2}$\n\n$\\;\\;=\\sqrt{3^2+4^2}=5\\Omega$\n\n$I=\\frac{V_{th}}{(3+j4)+R_L}=\\frac{100}{8+j4}$\n\n$\\;\\;=11.18\\angle -26.56^{\\circ}A$\n\nPower absorbed by $R_L (max)$\n\n$\\; =I^2R_L=11.18^2 \\times 5$\n\n$\\;\\;=625W$\n\nTherefore, the correct answer is **D**."
+        "markdown": "For obtaining power absorbed by $R_L$ under maximum power transfer condition. We find thevenin's equivalent circuit across $R_L$.\n\n<img src=\"/question-images/ee/2003/ee-2003-dfe8efe154.webp\" />\n\n$Z_{th}$ is calculated by short-circuting the voltage source.\n\n$Z_{th}=(6+j8)||(6+j8)=3+j4\\Omega$\n\n<img src=\"/question-images/ee/2003/ee-2003-d656a2bfab.webp\" />\n\n$\\frac{V_{th}-110\\angle 0^{\\circ}}{6+j8}+\\frac{V_{th}-90\\angle 0^{\\circ}}{6+j8}=0$\n\n$V_{th}=100\\angle 0^{\\circ}V$\n\n<img src=\"/question-images/ee/2003/ee-2003-2ac6f9a586.webp\" />\n\nFor maximum power transfer ,\n\n$R_L=\\sqrt{R_{th}^2+X_{th}^2}$\n\n$\\;\\;=\\sqrt{3^2+4^2}=5\\Omega$\n\n$I=\\frac{V_{th}}{(3+j4)+R_L}=\\frac{100}{8+j4}$\n\n$\\;\\;=11.18\\angle -26.56^{\\circ}A$\n\nPower absorbed by $R_L (max)$\n\n$\\; =I^2R_L=11.18^2 \\times 5$\n\n$\\;\\;=625W$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-dfe8efe154.webp",
+          "/question-images/ee/2003/ee-2003-d656a2bfab.webp",
+          "/question-images/ee/2003/ee-2003-2ac6f9a586.webp"
+        ]
       }
     },
     "pp:ee:2003:q34": {
@@ -1502,7 +1569,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "By KCL,\n\n$\\frac{V_P-40}{1}+\\frac{V_P-100}{14}+\\frac{V_P}{2}=0$\n\n$22V_P=660$\n\n$V_P=30V$\n\n<img src=\"/question-images/ee/2003/ee-2003-a302c618c4.webp\" />\n\nPotential difference between node x and y =60V\n\nBy taking KCL at node y\n\n$-I-5+\\frac{40-30}{1}=0$\n\n$\\therefore \\;\\; I= 5A$\n\n$\\therefore \\;\\;  I=\\frac{60}{5}=12\\Omega$\n\nTherefore, the correct answer is **D**."
+        "markdown": "By KCL,\n\n$\\frac{V_P-40}{1}+\\frac{V_P-100}{14}+\\frac{V_P}{2}=0$\n\n$22V_P=660$\n\n$V_P=30V$\n\n<img src=\"/question-images/ee/2003/ee-2003-a302c618c4.webp\" />\n\nPotential difference between node x and y =60V\n\nBy taking KCL at node y\n\n$-I-5+\\frac{40-30}{1}=0$\n\n$\\therefore \\;\\; I= 5A$\n\n$\\therefore \\;\\;  I=\\frac{60}{5}=12\\Omega$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-a302c618c4.webp"
+        ]
       }
     },
     "pp:ee:2003:q35": {
@@ -1546,7 +1616,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Compensation Techniques and Voltage Profile Control",
-        "markdown": "$$\\begin{aligned} Q_C &=\\frac{P_1(\\tan \\phi _1 - \\tan \\phi _2)}{3(2 \\pi f V_{ph}^2)}\\;\\;...(i) \\\\ P_1&=\\frac{3V_L^2}{Z} \\cos \\phi _1 \\text{ for } \\Delta \\text{ load}\\\\ &\\text{Star capacitor bank,} \\\\ V_{ph}&=\\frac{V_L}{\\sqrt{3}} \\\\ \\text{where, } V_L&=400V \\\\ Z&=8+j6,\\; |Z|=10 \\\\ \\phi _1&=\\tan ^{-1}(6/8) \\\\ \\cos \\phi _2 &=0.9 \\\\ &\\text{Substitute in equation (i)} \\\\ Q_C&=10.2 \\text{ kVAR} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} Q_C &=\\frac{P_1(\\tan \\phi _1 - \\tan \\phi _2)}{3(2 \\pi f V_{ph}^2)}\\;\\;...(i) \\\\ P_1&=\\frac{3V_L^2}{Z} \\cos \\phi _1 \\text{ for } \\Delta \\text{ load}\\\\ &\\text{Star capacitor bank,} \\\\ V_{ph}&=\\frac{V_L}{\\sqrt{3}} \\\\ \\text{where, } V_L&=400V \\\\ Z&=8+j6,\\; |Z|=10 \\\\ \\phi _1&=\\tan ^{-1}(6/8) \\\\ \\cos \\phi _2 &=0.9 \\\\ &\\text{Substitute in equation (i)} \\\\ Q_C&=10.2 \\text{ kVAR} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q36": {
@@ -1590,7 +1661,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
-        "markdown": "Before closing the switch, the circuit was not energized, therefore, current through inductor and voltage across capacitor are zero.\n\nAfter closing the switch, at $t=0^+$ inductor acts as open-circuit and capacitor acts as shortc ircuit. Equivalent circuit at $t=0^+$\n\n<img src=\"/question-images/ee/2003/ee-2003-c9bdd2e510.webp\" />\n\n$I=\\frac{10}{3+4||4}=2A$\n\n$V_L(0^+)I \\times (4||4)$\n\n$\\;\\;=2 \\times 2=4V$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Before closing the switch, the circuit was not energized, therefore, current through inductor and voltage across capacitor are zero.\n\nAfter closing the switch, at $t=0^+$ inductor acts as open-circuit and capacitor acts as shortc ircuit. Equivalent circuit at $t=0^+$\n\n<img src=\"/question-images/ee/2003/ee-2003-c9bdd2e510.webp\" />\n\n$I=\\frac{10}{3+4||4}=2A$\n\n$V_L(0^+)I \\times (4||4)$\n\n$\\;\\;=2 \\times 2=4V$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-c9bdd2e510.webp"
+        ]
       }
     },
     "pp:ee:2003:q37": {
@@ -1634,7 +1708,10 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
-        "markdown": "$h_{12}=\\frac{E_1}{E_2}|_{I_1=0}$\n\n$h_{12}$  is ratio of $E_1 \\; to \\; E_2$ for the input open-circuited condition.\n\nAssuming $I_1=0$\n\n<img src=\"/question-images/ee/2003/ee-2003-cd408354b7.webp\" />\n\n$I_2=\\frac{E_2}{2+(2+4)||4}=\\frac{E_2}{4}$\n\n$I_x=\\frac{I_2}{(2+2)+4 }\\times 4 =\\frac{I_2}{2}=\\frac{1}{2}\\left ( \\frac{E_2}{4} \\right )=\\frac{E_2}{8}$\n\n$E_1=2I_x=2\\frac{E_2}{8}=\\frac{E_2}{4}$\n\n$\\Rightarrow \\;\\; \\frac{E_1}{E_2}=0.25$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$h_{12}=\\frac{E_1}{E_2}|_{I_1=0}$\n\n$h_{12}$  is ratio of $E_1 \\; to \\; E_2$ for the input open-circuited condition.\n\nAssuming $I_1=0$\n\n<img src=\"/question-images/ee/2003/ee-2003-cd408354b7.webp\" />\n\n$I_2=\\frac{E_2}{2+(2+4)||4}=\\frac{E_2}{4}$\n\n$I_x=\\frac{I_2}{(2+2)+4 }\\times 4 =\\frac{I_2}{2}=\\frac{1}{2}\\left ( \\frac{E_2}{4} \\right )=\\frac{E_2}{8}$\n\n$E_1=2I_x=2\\frac{E_2}{8}=\\frac{E_2}{4}$\n\n$\\Rightarrow \\;\\; \\frac{E_1}{E_2}=0.25$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-cd408354b7.webp"
+        ]
       }
     },
     "pp:ee:2003:q38": {
@@ -1678,7 +1755,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "$$\\begin{aligned} V_P-V_Q &=\\frac{q}{4 \\pi \\varepsilon _0 (OP)} -\\frac{q}{4 \\pi \\varepsilon _0 (OQ)} \\\\ &= 9 \\times 10^9\\left [ \\frac{10^{-9}}{40 \\times 10^{-3}} -\\frac{10^{-9}}{20 \\times 10^{-3}}\\right ]\\\\ &=-225 \\; \\text{volts} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} V_P-V_Q &=\\frac{q}{4 \\pi \\varepsilon _0 (OP)} -\\frac{q}{4 \\pi \\varepsilon _0 (OQ)} \\\\ &= 9 \\times 10^9\\left [ \\frac{10^{-9}}{40 \\times 10^{-3}} -\\frac{10^{-9}}{20 \\times 10^{-3}}\\right ]\\\\ &=-225 \\; \\text{volts} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q39": {
@@ -1722,7 +1800,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "$$\\begin{aligned} E &=\\frac{1}{2} QV= \\frac{1}{2}CV^2\\\\ &=\\frac{1}{2} \\times \\frac{\\varepsilon _0 A}{d} \\times V^2\\\\ &=\\frac{1}{2} \\times \\frac{8.85 \\times 10^{-12} \\times 100 \\times 10^{-6} \\times 10^4}{10^{-4}} \\\\ &= 44.3 \\; \\text{nJ} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} E &=\\frac{1}{2} QV= \\frac{1}{2}CV^2\\\\ &=\\frac{1}{2} \\times \\frac{\\varepsilon _0 A}{d} \\times V^2\\\\ &=\\frac{1}{2} \\times \\frac{8.85 \\times 10^{-12} \\times 100 \\times 10^{-6} \\times 10^4}{10^{-4}} \\\\ &= 44.3 \\; \\text{nJ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q40": {
@@ -1766,7 +1845,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "$$\\begin{aligned} C_1 &=\\frac{\\varepsilon _{r1} \\varepsilon _0 A}{t_1} \\\\ C_2 &=\\frac{\\varepsilon _{r2} \\varepsilon _0 A}{t_2} \\end{aligned}$$\n\nLet voltage on the conductor coil is V, then\n\n$C_1(100-V)=C_2V$\n\n[Charges on both capacitor are equal]\n\n$\\frac{\\varepsilon _{r1}}{t_1}(100-V)=\\frac{\\varepsilon _{r2}}{t_2}V$\n\n$6(100-V)=4V$\n\n$\\therefore \\;\\; V=\\frac{600}{10}=60 \\; \\text{Volts}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} C_1 &=\\frac{\\varepsilon _{r1} \\varepsilon _0 A}{t_1} \\\\ C_2 &=\\frac{\\varepsilon _{r2} \\varepsilon _0 A}{t_2} \\end{aligned}$$\n\nLet voltage on the conductor coil is V, then\n\n$C_1(100-V)=C_2V$\n\n[Charges on both capacitor are equal]\n\n$\\frac{\\varepsilon _{r1}}{t_1}(100-V)=\\frac{\\varepsilon _{r2}}{t_2}V$\n\n$6(100-V)=4V$\n\n$\\therefore \\;\\; V=\\frac{600}{10}=60 \\; \\text{Volts}$",
+        "images": []
       }
     },
     "pp:ee:2003:q41": {
@@ -1810,7 +1890,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "As per lenz's law, $E_1=N_1\\frac{d\\phi }{dt}$\n\nThe positive direction of this emf opposes the positive current direction.]\n\n$$\\begin{aligned} \\text{If,}\\;\\; \\phi &=\\phi _m\\sin \\omega t \\\\ E_1&= N_1 \\frac{d}{dt}(\\phi _m\\sin \\omega t )\\\\ &= N_1\\phi _m \\omega \\cos \\omega t \\end{aligned}$$\n\n$E_1$ leads the flux by $90^{\\circ}$\n\nSimilarly,  $E_2= N_2 \\frac{d\\phi }{dt}(\\phi _m\\sin \\omega t )$ and  $E_2$  leads the flux by $90^{\\circ}$\n\nSo $E_1[/latex and [latex]E_2$ are in phase.\n\n$$\\begin{aligned} \\text{But,}\\;\\;\\frac{E_1}{E_2} &=\\frac{N_1}{N_2}=2 \\\\ E_1&=2E_2 \\;\\text{or}\\; E_1 \\gt E_2 \\\\ I_2&=\\frac{E_2}{R} \\end{aligned}$$\n\nBecause of resistive load, $I_2$ is in phase with $E_2.$\n\n$$\\begin{aligned} \\frac{I_1}{I_2} &=\\frac{N_2}{N_1} =\\frac{1}{2}\\\\ \\rightarrow \\;\\;I_1 &=\\frac{I_2}{2} \\;\\Rightarrow \\; I_1 \\lt I_2 \\end{aligned}$$\n\n$I_1$ and $I_2$ are in phase, because\n\n$I_1=I_2+ \\text{Exciting current } (I_M)$\n\nBut, $I_m$ is very small. On the basis of above analysis, phasor diagrma is\n\n<img src=\"/question-images/ee/2003/ee-2003-1de4971660.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "As per lenz's law, $E_1=N_1\\frac{d\\phi }{dt}$\n\nThe positive direction of this emf opposes the positive current direction.]\n\n$$\\begin{aligned} \\text{If,}\\;\\; \\phi &=\\phi _m\\sin \\omega t \\\\ E_1&= N_1 \\frac{d}{dt}(\\phi _m\\sin \\omega t )\\\\ &= N_1\\phi _m \\omega \\cos \\omega t \\end{aligned}$$\n\n$E_1$ leads the flux by $90^{\\circ}$\n\nSimilarly,  $E_2= N_2 \\frac{d\\phi }{dt}(\\phi _m\\sin \\omega t )$ and  $E_2$  leads the flux by $90^{\\circ}$\n\nSo $E_1[/latex and [latex]E_2$ are in phase.\n\n$$\\begin{aligned} \\text{But,}\\;\\;\\frac{E_1}{E_2} &=\\frac{N_1}{N_2}=2 \\\\ E_1&=2E_2 \\;\\text{or}\\; E_1 \\gt E_2 \\\\ I_2&=\\frac{E_2}{R} \\end{aligned}$$\n\nBecause of resistive load, $I_2$ is in phase with $E_2.$\n\n$$\\begin{aligned} \\frac{I_1}{I_2} &=\\frac{N_2}{N_1} =\\frac{1}{2}\\\\ \\rightarrow \\;\\;I_1 &=\\frac{I_2}{2} \\;\\Rightarrow \\; I_1 \\lt I_2 \\end{aligned}$$\n\n$I_1$ and $I_2$ are in phase, because\n\n$I_1=I_2+ \\text{Exciting current } (I_M)$\n\nBut, $I_m$ is very small. On the basis of above analysis, phasor diagrma is\n\n<img src=\"/question-images/ee/2003/ee-2003-1de4971660.webp\" />",
+        "images": [
+          "/question-images/ee/2003/ee-2003-1de4971660.webp"
+        ]
       }
     },
     "pp:ee:2003:q42": {
@@ -1854,7 +1937,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-203f8cb0fd.webp\" />\n\nAll calculation are done in p.u. system.\n\nMotor is connected across rated voltage V= 1 pu.\n\nRated armature current flows in both motor and generator\n\n$I_g=I_m=1 pu$\n\nArmature resistance of both motor and generator $R_m=R_g=0.02 pu$\n\nBack iemf in motor\n\n$=E_b=V-I_mR_m$\n\n$=1-1 \\times 0.02 =0.98 pu$\n\nMechanical power output of the motor\n\n$=E_bI_m=0.98 \\times 1=0.98 pu$\n\nThis power is given to the generator and armation reaction and mechanical losses are negligible.\n\nInput power of generator = Output power of motor\n\n$E_bI_g=E_bI_m E_g=E_b=0.98pu$\n\nTerminal voltage of the generator\n\n$V_g=E_g-I_gR_g  =0.98-1 \\times 0.02=0.96pu$\n\n$R_L=\\frac{V_g}{I_g}=\\frac{0.96}{1}=0.96\\Omega$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-203f8cb0fd.webp\" />\n\nAll calculation are done in p.u. system.\n\nMotor is connected across rated voltage V= 1 pu.\n\nRated armature current flows in both motor and generator\n\n$I_g=I_m=1 pu$\n\nArmature resistance of both motor and generator $R_m=R_g=0.02 pu$\n\nBack iemf in motor\n\n$=E_b=V-I_mR_m$\n\n$=1-1 \\times 0.02 =0.98 pu$\n\nMechanical power output of the motor\n\n$=E_bI_m=0.98 \\times 1=0.98 pu$\n\nThis power is given to the generator and armation reaction and mechanical losses are negligible.\n\nInput power of generator = Output power of motor\n\n$E_bI_g=E_bI_m E_g=E_b=0.98pu$\n\nTerminal voltage of the generator\n\n$V_g=E_g-I_gR_g  =0.98-1 \\times 0.02=0.96pu$\n\n$R_L=\\frac{V_g}{I_g}=\\frac{0.96}{1}=0.96\\Omega$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-203f8cb0fd.webp"
+        ]
       }
     },
     "pp:ee:2003:q43": {
@@ -1898,7 +1984,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "As the transformer is $\\Delta -Y$ connected, it means line-to-line voltage on primary side induces line to neutral for phase voltage on secondary side due to transformer.\n\n$$\\begin{aligned} \\text{Turn ratio} &=\\frac{N_1}{N_2}=a \\\\ &= \\frac{11kV}{415\\sqrt{3}}=\\frac{11\\sqrt{3}}{415} \\times 10^3\\\\ V_{AB}&=aV_a \\\\ V_{BC}&=aV_b\\\\ V_{AC}&=aV_c \\end{aligned}$$\n\nWhen $S_2$ is closed, B and C are at same potential.\n\nSo,  $V_{BC}=V_B-V_C=0$\n\nApplying KVL in, $\\Delta$ connection\n\n$$\\begin{aligned} V_{AB}+V_{BC}+V_{AC} &=0 \\\\ \\Rightarrow \\;\\; V_{AC} &=-V_{AB} \\\\ V_{AB}&= 11 \\times 10^3 \\angle 0^{\\circ}\\\\ V_{AC}&= - 11 \\times 10^3 \\angle 0^{\\circ}\\\\ &= 11 \\times 10^3 \\angle 180^{\\circ} \\end{aligned}$$\n\nVoltage across terminals a and c,\n\n$$\\begin{aligned} V_{ac} &=V_a-V_c \\\\ &=\\frac{V_{AB}}{a}-\\frac{V_{AC}}{a} \\\\ &= \\frac{1}{a}[V_{AB}-V_{AC}]\\\\ &=\\frac{415}{11\\sqrt{3} \\times 10^3} \\\\ &[11 \\times 10^3 \\angle 0^{\\circ} - 11 \\times 10^3 \\angle 180^{\\circ} ]\\\\ &=\\frac{415}{11\\sqrt{3} \\times 10^3} [11 \\times 10^3 \\times 2]\\\\ &\\approx 480 V \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "As the transformer is $\\Delta -Y$ connected, it means line-to-line voltage on primary side induces line to neutral for phase voltage on secondary side due to transformer.\n\n$$\\begin{aligned} \\text{Turn ratio} &=\\frac{N_1}{N_2}=a \\\\ &= \\frac{11kV}{415\\sqrt{3}}=\\frac{11\\sqrt{3}}{415} \\times 10^3\\\\ V_{AB}&=aV_a \\\\ V_{BC}&=aV_b\\\\ V_{AC}&=aV_c \\end{aligned}$$\n\nWhen $S_2$ is closed, B and C are at same potential.\n\nSo,  $V_{BC}=V_B-V_C=0$\n\nApplying KVL in, $\\Delta$ connection\n\n$$\\begin{aligned} V_{AB}+V_{BC}+V_{AC} &=0 \\\\ \\Rightarrow \\;\\; V_{AC} &=-V_{AB} \\\\ V_{AB}&= 11 \\times 10^3 \\angle 0^{\\circ}\\\\ V_{AC}&= - 11 \\times 10^3 \\angle 0^{\\circ}\\\\ &= 11 \\times 10^3 \\angle 180^{\\circ} \\end{aligned}$$\n\nVoltage across terminals a and c,\n\n$$\\begin{aligned} V_{ac} &=V_a-V_c \\\\ &=\\frac{V_{AB}}{a}-\\frac{V_{AC}}{a} \\\\ &= \\frac{1}{a}[V_{AB}-V_{AC}]\\\\ &=\\frac{415}{11\\sqrt{3} \\times 10^3} \\\\ &[11 \\times 10^3 \\angle 0^{\\circ} - 11 \\times 10^3 \\angle 180^{\\circ} ]\\\\ &=\\frac{415}{11\\sqrt{3} \\times 10^3} [11 \\times 10^3 \\times 2]\\\\ &\\approx 480 V \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q44": {
@@ -1942,7 +2029,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "Turn ratio, $N_1:N_2: N_3 is 4:2:1$\n\nInduced emf in winding 1 $=E_1\\approx V_1=400\\angle 0^{\\circ}V$\n\nAs we know,\n\n$$\\begin{aligned} \\frac{E_1}{E_2} &=\\frac{N_1}{N_2} \\\\ E_2&=\\frac{N_2}{N_1}E_1=\\left ( \\frac{2}{4} \\right ) 400\\angle 0^{\\circ}\\\\ &=200\\angle 0^{\\circ} \\\\ \\text{and}\\;\\;\\frac{E_1}{E_3} &=\\frac{N_1}{N_3} \\\\ \\Rightarrow \\; E_3 &=\\frac{N_3}{N_1}E_1 \\\\ &=\\left ( \\frac{1}{4} \\right ) 400\\angle 0^{\\circ}= 100\\angle 0^{\\circ}V \\end{aligned}$$\n\nCurrent in secondary winding\n\n$I_2=\\frac{E_2}{R}=\\frac{200\\angle 0^{\\circ}}{10}=20\\angle 0^{\\circ}A$\n\nCurrent in tertiary winding\n\n$I_3=\\frac{E_3}{-j \\times C}=\\frac{100\\angle 0^{\\circ}}{-j2.5}=40\\angle 90^{\\circ}A$\n\n$I_2$ referred to primary side\n\n$$\\begin{aligned} I'_2 &=\\left ( \\frac{N_2}{N_1} \\right )I_2 \\\\ &= \\left ( \\frac{2}{4} \\right ) \\times (20\\angle 0^{\\circ})=0\\angle 10^{\\circ}A \\end{aligned}$$\n\n$I_3$ reffered to primary side\n\n$$\\begin{aligned} I'_3 &=\\left ( \\frac{N_3}{N_1} \\right )I_3 \\\\ &= \\left ( \\frac{1}{4} \\right ) \\times (40\\angle 90^{\\circ})=10\\angle 90^{\\circ}A \\end{aligned}$$\n\nThe suuply currrent\n\n$$\\begin{aligned} I_1 &=I'_2+I'_3 \\\\ &= 10\\angle 0^{\\circ}+10\\angle 90^{\\circ}=(10+j10)A \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Turn ratio, $N_1:N_2: N_3 is 4:2:1$\n\nInduced emf in winding 1 $=E_1\\approx V_1=400\\angle 0^{\\circ}V$\n\nAs we know,\n\n$$\\begin{aligned} \\frac{E_1}{E_2} &=\\frac{N_1}{N_2} \\\\ E_2&=\\frac{N_2}{N_1}E_1=\\left ( \\frac{2}{4} \\right ) 400\\angle 0^{\\circ}\\\\ &=200\\angle 0^{\\circ} \\\\ \\text{and}\\;\\;\\frac{E_1}{E_3} &=\\frac{N_1}{N_3} \\\\ \\Rightarrow \\; E_3 &=\\frac{N_3}{N_1}E_1 \\\\ &=\\left ( \\frac{1}{4} \\right ) 400\\angle 0^{\\circ}= 100\\angle 0^{\\circ}V \\end{aligned}$$\n\nCurrent in secondary winding\n\n$I_2=\\frac{E_2}{R}=\\frac{200\\angle 0^{\\circ}}{10}=20\\angle 0^{\\circ}A$\n\nCurrent in tertiary winding\n\n$I_3=\\frac{E_3}{-j \\times C}=\\frac{100\\angle 0^{\\circ}}{-j2.5}=40\\angle 90^{\\circ}A$\n\n$I_2$ referred to primary side\n\n$$\\begin{aligned} I'_2 &=\\left ( \\frac{N_2}{N_1} \\right )I_2 \\\\ &= \\left ( \\frac{2}{4} \\right ) \\times (20\\angle 0^{\\circ})=0\\angle 10^{\\circ}A \\end{aligned}$$\n\n$I_3$ reffered to primary side\n\n$$\\begin{aligned} I'_3 &=\\left ( \\frac{N_3}{N_1} \\right )I_3 \\\\ &= \\left ( \\frac{1}{4} \\right ) \\times (40\\angle 90^{\\circ})=10\\angle 90^{\\circ}A \\end{aligned}$$\n\nThe suuply currrent\n\n$$\\begin{aligned} I_1 &=I'_2+I'_3 \\\\ &= 10\\angle 0^{\\circ}+10\\angle 90^{\\circ}=(10+j10)A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q45": {
@@ -1986,7 +2074,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "In DC machine, field is provided at stator and armature is provided at rotor. Because of commutator and slip-rings, AC rotor winding current is converted inot dc.\n\nIN synchronous machine, it is difficult to provide armature in rotor because of many factor like insulation no of slip rings, rating of slip rings, high rating of armature. Therefore, armature is provided in stator and field in rotor\n\nInduction machines are singlyfed machine i.e. they draw excitation from the same supply. So no external field supply is required.\n\nTherefore, the correct answer is **A**."
+        "markdown": "In DC machine, field is provided at stator and armature is provided at rotor. Because of commutator and slip-rings, AC rotor winding current is converted inot dc.\n\nIN synchronous machine, it is difficult to provide armature in rotor because of many factor like insulation no of slip rings, rating of slip rings, high rating of armature. Therefore, armature is provided in stator and field in rotor\n\nInduction machines are singlyfed machine i.e. they draw excitation from the same supply. So no external field supply is required.",
+        "images": []
       }
     },
     "pp:ee:2003:q46": {
@@ -2030,7 +2119,11 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-b7be660836.webp\" />\n\nInside a magnetic material, flux flows from S-pole to N-pole.\n\nOutside a magnetic material flux flow from N-pole to S-pole\n\nWhen stator winding is excited, it produces flux. If ABC is assumed to N-pole flux will link rotor. As we know, flux flows from N-pole to S-pole externally, abc from S-pole.\n\nInside rotor, flux flows from surface abc to cda\n\nSo, surface cda forms N-poles.\n\nTo identify direction of torque\n\n<img src=\"/question-images/ee/2003/ee-2003-c59aff96d8.webp\" />\n\nThe torque acts in a direction to reduce $\\delta$ i.e. to align the two fields. So, torque on the rotor acrs in counter-clockwise direction to reduce $\\delta$.\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-b7be660836.webp\" />\n\nInside a magnetic material, flux flows from S-pole to N-pole.\n\nOutside a magnetic material flux flow from N-pole to S-pole\n\nWhen stator winding is excited, it produces flux. If ABC is assumed to N-pole flux will link rotor. As we know, flux flows from N-pole to S-pole externally, abc from S-pole.\n\nInside rotor, flux flows from surface abc to cda\n\nSo, surface cda forms N-poles.\n\nTo identify direction of torque\n\n<img src=\"/question-images/ee/2003/ee-2003-c59aff96d8.webp\" />\n\nThe torque acts in a direction to reduce $\\delta$ i.e. to align the two fields. So, torque on the rotor acrs in counter-clockwise direction to reduce $\\delta$.",
+        "images": [
+          "/question-images/ee/2003/ee-2003-b7be660836.webp",
+          "/question-images/ee/2003/ee-2003-c59aff96d8.webp"
+        ]
       }
     },
     "pp:ee:2003:q47": {
@@ -2074,7 +2167,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "Pole pitch $=\\frac{36}{4}=9$ slots\n\nCoil span = 7 slots, Slot/pole/ph = 3\n\nSo that 3 slots in one phase, if it is chorded by 2 slot, then\n\nOut of 3$\\rightarrow$2 have different phase\n\nTherefore out of 36$\\rightarrow$24 have diffferent phase.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Pole pitch $=\\frac{36}{4}=9$ slots\n\nCoil span = 7 slots, Slot/pole/ph = 3\n\nSo that 3 slots in one phase, if it is chorded by 2 slot, then\n\nOut of 3$\\rightarrow$2 have different phase\n\nTherefore out of 36$\\rightarrow$24 have diffferent phase.",
+        "images": []
       }
     },
     "pp:ee:2003:q48": {
@@ -2118,7 +2212,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "$$\\begin{aligned} V &\\propto f\\phi \\\\ &\\text{in induction machine}\\\\ V_2&= \\frac{V_1}{2}\\\\ \\text{and}\\;\\; f_2 &=\\frac{f_1}{2} \\\\ \\frac{V_1}{V_2} &=\\frac{f_1\\phi _1}{f_2\\phi _2} \\\\ \\phi _2&= \\left ( \\frac{V_2}{V_1} \\right )\\left ( \\frac{f_1}{f_2} \\right )\\phi _1\\\\ &= \\left ( \\frac{V_1/2}{V_1} \\right )\\left ( \\frac{f_1}{f_1/2} \\right )\\phi _1\\\\ &= \\phi _1 \\end{aligned}$$\n\nSo, air-gap flux remains same.\n\n$(X_2')_1=$ nominal rotor stanstill reactance referred to stator (at frequency $f_1$)\n\n$$\\begin{aligned} (X_2')_2 &= \\left ( \\frac{f_2}{f_1} \\right )(X_2')_1\\\\ &= \\left ( \\frac{f_1/2}{f_1} \\right )(X_2')_1\\\\ &= \\frac{(X_2')_1}{2}\\\\ (\\omega _s)_2 &= \\left ( \\frac{f_2}{f_1} \\right ) (\\omega _s)_1\\\\ &= \\left ( \\frac{f_1/2}{f_1} \\right ) (\\omega _s)_1\\\\ &=\\frac{(\\omega _s)_1}{2} \\end{aligned}$$\n\nTorque developed in induction motor\n\n$T=\\frac{3}{\\omega _s} \\frac{V^2R'_2/s}{(R'_2/s)^2 +{X'_2}^2}$\n\nFor normal steady state oprating region, slip is very low\n\n$\\frac{R'_2}{s} \\gt \\gt X'_2$\n\n$T=\\frac{3}{\\omega _s} \\frac{V^2R'_2/s}{(R'_2/s)^2}=\\frac{3}{\\omega _s} \\frac{sV^2}{R'_2}$\n\nAs the load torque is constant\n\n$$\\begin{aligned} T_1 &=T_2 \\\\ \\frac{s_1V_1^2}{(\\omega _s)_1R'_2}&= \\frac{s_2V_2^2}{(\\omega _s)_2R'_2}\\\\ \\Rightarrow \\;\\; s_2 &=\\frac{(\\omega _s)_2}{(\\omega _s)_1} \\times \\left ( \\frac{V_1}{V_2} \\right )^2 s_1\\\\ &=\\frac{(\\omega _s)_1/2}{(\\omega _s)_1} \\times \\left ( \\frac{V_1}{V_1/2} \\right )^2 s_1 \\\\ s_2 &= \\frac{1}{2} \\times 4 \\times s_1=2s_1 \\end{aligned}$$\n\nDifference between synchronous speed and actual speed\n\n$$\\begin{aligned} \\omega _s -\\omega _r &= s\\omega _s\\\\ (\\omega _s)_1 -(\\omega _r)_2 &= s_2(\\omega _s)_2\\\\ &=(2s_1) \\times \\frac{(\\omega _s)_1}{2} =s_1(\\omega _s)_1 \\end{aligned}$$\n\nTherefore, the difference between synchronous speed and actual speed remain same.\n\nStator current\n\n$$\\begin{aligned} |I_s| &= \\frac{V}{\\sqrt{(R'_2/s)^2+{X'}_2^2}} \\\\ \\text{as}\\;\\; R'_2/s & \\gt \\gt X'_2 \\\\ |I_s|&=\\frac{sV}{R'_2} \\\\ |I_{s1}|&= s_1\\frac{V_1}{R'_2}\\\\ |I_{s2}|&=s_2\\frac{V_2}{R'_2} \\\\ ||I_{s2}&=(2s_1)\\times \\frac{V_1/2}{R'_2}=\\frac{s_1V_1}{R'_2} \\\\ ||I_{s1}&=|I_{s2}| \\end{aligned}$$\n\nTherefore, stator current remains same.\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} V &\\propto f\\phi \\\\ &\\text{in induction machine}\\\\ V_2&= \\frac{V_1}{2}\\\\ \\text{and}\\;\\; f_2 &=\\frac{f_1}{2} \\\\ \\frac{V_1}{V_2} &=\\frac{f_1\\phi _1}{f_2\\phi _2} \\\\ \\phi _2&= \\left ( \\frac{V_2}{V_1} \\right )\\left ( \\frac{f_1}{f_2} \\right )\\phi _1\\\\ &= \\left ( \\frac{V_1/2}{V_1} \\right )\\left ( \\frac{f_1}{f_1/2} \\right )\\phi _1\\\\ &= \\phi _1 \\end{aligned}$$\n\nSo, air-gap flux remains same.\n\n$(X_2')_1=$ nominal rotor stanstill reactance referred to stator (at frequency $f_1$)\n\n$$\\begin{aligned} (X_2')_2 &= \\left ( \\frac{f_2}{f_1} \\right )(X_2')_1\\\\ &= \\left ( \\frac{f_1/2}{f_1} \\right )(X_2')_1\\\\ &= \\frac{(X_2')_1}{2}\\\\ (\\omega _s)_2 &= \\left ( \\frac{f_2}{f_1} \\right ) (\\omega _s)_1\\\\ &= \\left ( \\frac{f_1/2}{f_1} \\right ) (\\omega _s)_1\\\\ &=\\frac{(\\omega _s)_1}{2} \\end{aligned}$$\n\nTorque developed in induction motor\n\n$T=\\frac{3}{\\omega _s} \\frac{V^2R'_2/s}{(R'_2/s)^2 +{X'_2}^2}$\n\nFor normal steady state oprating region, slip is very low\n\n$\\frac{R'_2}{s} \\gt \\gt X'_2$\n\n$T=\\frac{3}{\\omega _s} \\frac{V^2R'_2/s}{(R'_2/s)^2}=\\frac{3}{\\omega _s} \\frac{sV^2}{R'_2}$\n\nAs the load torque is constant\n\n$$\\begin{aligned} T_1 &=T_2 \\\\ \\frac{s_1V_1^2}{(\\omega _s)_1R'_2}&= \\frac{s_2V_2^2}{(\\omega _s)_2R'_2}\\\\ \\Rightarrow \\;\\; s_2 &=\\frac{(\\omega _s)_2}{(\\omega _s)_1} \\times \\left ( \\frac{V_1}{V_2} \\right )^2 s_1\\\\ &=\\frac{(\\omega _s)_1/2}{(\\omega _s)_1} \\times \\left ( \\frac{V_1}{V_1/2} \\right )^2 s_1 \\\\ s_2 &= \\frac{1}{2} \\times 4 \\times s_1=2s_1 \\end{aligned}$$\n\nDifference between synchronous speed and actual speed\n\n$$\\begin{aligned} \\omega _s -\\omega _r &= s\\omega _s\\\\ (\\omega _s)_1 -(\\omega _r)_2 &= s_2(\\omega _s)_2\\\\ &=(2s_1) \\times \\frac{(\\omega _s)_1}{2} =s_1(\\omega _s)_1 \\end{aligned}$$\n\nTherefore, the difference between synchronous speed and actual speed remain same.\n\nStator current\n\n$$\\begin{aligned} |I_s| &= \\frac{V}{\\sqrt{(R'_2/s)^2+{X'}_2^2}} \\\\ \\text{as}\\;\\; R'_2/s & \\gt \\gt X'_2 \\\\ |I_s|&=\\frac{sV}{R'_2} \\\\ |I_{s1}|&= s_1\\frac{V_1}{R'_2}\\\\ |I_{s2}|&=s_2\\frac{V_2}{R'_2} \\\\ ||I_{s2}&=(2s_1)\\times \\frac{V_1/2}{R'_2}=\\frac{s_1V_1}{R'_2} \\\\ ||I_{s1}&=|I_{s2}| \\end{aligned}$$\n\nTherefore, stator current remains same.",
+        "images": []
       }
     },
     "pp:ee:2003:q49": {
@@ -2162,7 +2257,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
-        "markdown": "A $1-\\phi$ induction motor with only the main winding excited would have forward rotating field is more than the backward rotating field at synchronous speed.\n\nTherefore, the correct answer is **D**."
+        "markdown": "A $1-\\phi$ induction motor with only the main winding excited would have forward rotating field is more than the backward rotating field at synchronous speed.",
+        "images": []
       }
     },
     "pp:ee:2003:q50": {
@@ -2206,7 +2302,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "In series motor,\n\nBack emf, $E=v-I(R_a+R_{se})$\n\n$\\text{If},\\;\\;(R_a+R_{se})=R$\n\n$\\text{them,}\\;\\; E=V-IR$\n\n$\\text{where,}\\;\\; E=K_n \\phi N$\n\n$\\;\\;\\;\\;\\;N=\\frac{V-IR}{K_n \\phi }$\n\nIn series motor, $\\phi \\propto I$\n\n$\\therefore$  At constant power load\n\n$E \\times I=T \\times w=const$\n\n$\\text{where,} \\;\\; T=K_a\\phi I=K_a I^2$\n\nIf '$w_n$' decrease by (1/4) of its rated value, then torque will increase 4 times to maintain power contant.\n\n$\\therefore \\;\\; T\\propto I^2$\n\n$\\therefore$  current increase 2 times so that supply voltage approximately brought down to 0.5pu.\n\nTherefore, the correct answer is **B**."
+        "markdown": "In series motor,\n\nBack emf, $E=v-I(R_a+R_{se})$\n\n$\\text{If},\\;\\;(R_a+R_{se})=R$\n\n$\\text{them,}\\;\\; E=V-IR$\n\n$\\text{where,}\\;\\; E=K_n \\phi N$\n\n$\\;\\;\\;\\;\\;N=\\frac{V-IR}{K_n \\phi }$\n\nIn series motor, $\\phi \\propto I$\n\n$\\therefore$  At constant power load\n\n$E \\times I=T \\times w=const$\n\n$\\text{where,} \\;\\; T=K_a\\phi I=K_a I^2$\n\nIf '$w_n$' decrease by (1/4) of its rated value, then torque will increase 4 times to maintain power contant.\n\n$\\therefore \\;\\; T\\propto I^2$\n\n$\\therefore$  current increase 2 times so that supply voltage approximately brought down to 0.5pu.",
+        "images": []
       }
     },
     "pp:ee:2003:q51": {
@@ -2250,7 +2347,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "$X_{L,SH}=\\frac{B}{1-A}=\\frac{200\\angle 90^{\\circ}}{1-0.9}=2000\\angle 90^{\\circ}\\Omega$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$X_{L,SH}=\\frac{B}{1-A}=\\frac{200\\angle 90^{\\circ}}{1-0.9}=2000\\angle 90^{\\circ}\\Omega$",
+        "images": []
       }
     },
     "pp:ee:2003:q52": {
@@ -2294,7 +2392,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Transients",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-b156e9c7f5.webp\" />\n\nwhere, $z_1=z_2$\n\nParameter of cable:\n\nInducatance$=L_C=0.4$ mH/km and\n\nCapacitance $=C_C=0.5\\mu F/km$\n\nSurge impedance of the cable\n\n$=Z_C=\\sqrt{\\frac{L_C}{C_C}}=\\sqrt{\\frac{0.4 \\times 10^{-3}}{0.5 \\times 10^{-6}}}=28.28\\Omega$\n\nParameters of OH\n\nTransmission lines\n\nInductance$L_1=1.5$ mH/km and\n\nCapacitance $=C_1==0.015\\mu F/km$\n\nSurge impedance of the line $=Z_1=Z_2=\\sqrt{\\frac{L_1}{C_1}}=\\sqrt{\\frac{1.5 \\times 10^{-3}}{0.015 \\times 10^{-6}}}=316.22\\Omega$\n\nE= 20 kV\n\nJunction voltage\n\n$$\\begin{aligned} E_j&=\\frac{2E \\times \\frac{1}{Z_C}}{\\frac{1}{Z_C}+\\frac{1}{Z_1}+\\frac{1}{Z_2}} \\\\ &= \\frac{2 \\times 20 \\times \\frac{1}{28.28}}{\\frac{1}{28.28}+\\frac{2}{316.22}}\\\\ &=33.93kV \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-b156e9c7f5.webp\" />\n\nwhere, $z_1=z_2$\n\nParameter of cable:\n\nInducatance$=L_C=0.4$ mH/km and\n\nCapacitance $=C_C=0.5\\mu F/km$\n\nSurge impedance of the cable\n\n$=Z_C=\\sqrt{\\frac{L_C}{C_C}}=\\sqrt{\\frac{0.4 \\times 10^{-3}}{0.5 \\times 10^{-6}}}=28.28\\Omega$\n\nParameters of OH\n\nTransmission lines\n\nInductance$L_1=1.5$ mH/km and\n\nCapacitance $=C_1==0.015\\mu F/km$\n\nSurge impedance of the line $=Z_1=Z_2=\\sqrt{\\frac{L_1}{C_1}}=\\sqrt{\\frac{1.5 \\times 10^{-3}}{0.015 \\times 10^{-6}}}=316.22\\Omega$\n\nE= 20 kV\n\nJunction voltage\n\n$$\\begin{aligned} E_j&=\\frac{2E \\times \\frac{1}{Z_C}}{\\frac{1}{Z_C}+\\frac{1}{Z_1}+\\frac{1}{Z_2}} \\\\ &= \\frac{2 \\times 20 \\times \\frac{1}{28.28}}{\\frac{1}{28.28}+\\frac{2}{316.22}}\\\\ &=33.93kV \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-b156e9c7f5.webp"
+        ]
       }
     },
     "pp:ee:2003:q53": {
@@ -2338,7 +2439,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Distribution Systems, Cables and Insulators",
-        "markdown": "Let current injected at point $P=I_P$\n\n<img src=\"/question-images/ee/2003/ee-2003-a0787af78b.webp\" />\n\n$$\\begin{aligned} V_P-V_Q &=0.1(I_P-10)+0.15(I_P-30) \\\\ & +0.2(I_P-60) \\\\ 3&=0.45I_P-17.5 \\\\ I_P&=45.55A \\end{aligned}$$\n\ndirection of current will be in opposite in section SQ, so, points will have minimum voltage,\n\n$$\\begin{aligned} V_s&=220V\\\\ V_p&=V_s+0.1(I_p-10)+0.15(I_P-30)\\\\ &=220+0.1 \\times (45.55-10)\\\\ &+0.15(45.55-30)\\\\ &\\approx 225.89V \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Let current injected at point $P=I_P$\n\n<img src=\"/question-images/ee/2003/ee-2003-a0787af78b.webp\" />\n\n$$\\begin{aligned} V_P-V_Q &=0.1(I_P-10)+0.15(I_P-30) \\\\ & +0.2(I_P-60) \\\\ 3&=0.45I_P-17.5 \\\\ I_P&=45.55A \\end{aligned}$$\n\ndirection of current will be in opposite in section SQ, so, points will have minimum voltage,\n\n$$\\begin{aligned} V_s&=220V\\\\ V_p&=V_s+0.1(I_p-10)+0.15(I_P-30)\\\\ &=220+0.1 \\times (45.55-10)\\\\ &+0.15(45.55-30)\\\\ &\\approx 225.89V \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-a0787af78b.webp"
+        ]
       }
     },
     "pp:ee:2003:q54": {
@@ -2382,7 +2486,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Compensation Techniques and Voltage Profile Control",
-        "markdown": "$|V_s|=|V_R|=11kV$\n\np.u. impedance of the line = j0.2 p.u.\n\nImpedance of the line = p.u. impedance  x Base impedance\n\n$x= j0.2 \\times \\frac{11^2}{100}=j0.242\\Omega$\n\nActive power at receiving end $=P_R=100 MW$\n\n$$\\begin{aligned} P_R&=\\frac{|V_s||V_R|}{x}\\sin \\delta \\\\ 100 &= \\frac{11 \\times 11}{0.242} \\sin \\delta \\\\ \\delta &=11.54^{\\circ} \\end{aligned}$$\n\nReactive power at receiving end\n\n$$\\begin{aligned} Q_R&=\\frac{|V_s||V_R|}{x}\\cos \\delta -\\frac{|V_R|^2}{x} \\\\ &= \\frac{11 \\times 11}{0.242} \\cos 11.54 -\\frac{11^2}{0.242} \\\\ &=-10.1 \\text{ MVAR} \\end{aligned}$$\n\nSince poer factor =1\n\nLoad reactive power should be zero\n\nTherefore, reactive power to be injected at terminals $=-Q_R=-(-10.1)=10.1 \\text{ MVAR}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$|V_s|=|V_R|=11kV$\n\np.u. impedance of the line = j0.2 p.u.\n\nImpedance of the line = p.u. impedance  x Base impedance\n\n$x= j0.2 \\times \\frac{11^2}{100}=j0.242\\Omega$\n\nActive power at receiving end $=P_R=100 MW$\n\n$$\\begin{aligned} P_R&=\\frac{|V_s||V_R|}{x}\\sin \\delta \\\\ 100 &= \\frac{11 \\times 11}{0.242} \\sin \\delta \\\\ \\delta &=11.54^{\\circ} \\end{aligned}$$\n\nReactive power at receiving end\n\n$$\\begin{aligned} Q_R&=\\frac{|V_s||V_R|}{x}\\cos \\delta -\\frac{|V_R|^2}{x} \\\\ &= \\frac{11 \\times 11}{0.242} \\cos 11.54 -\\frac{11^2}{0.242} \\\\ &=-10.1 \\text{ MVAR} \\end{aligned}$$\n\nSince poer factor =1\n\nLoad reactive power should be zero\n\nTherefore, reactive power to be injected at terminals $=-Q_R=-(-10.1)=10.1 \\text{ MVAR}$",
+        "images": []
       }
     },
     "pp:ee:2003:q55": {
@@ -2426,7 +2531,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "$$Z_{B}(new)=Z_{B}(old)-\\frac{1}{Z_{jj}+Z_{b}}\\begin{bmatrix} Z_{1j}\\\\ \\vdots \\\\ Z_{nj} \\end{bmatrix}\\begin{bmatrix} Z_{j1} & \\cdots & Z_{jn} \\end{bmatrix}$$\n\nNew elements ($Z_B$) is connected between $j^{th}$ and reference bus.\n\nHere, j=2, b=4\n\n$$\\therefore \\;\\;\\frac{1}{Z_{jj}+Z_{b}}\\begin{bmatrix} Z_{12}\\\\ Z_{22} \\\\ Z_{32}\\\\Z_{42} \\end{bmatrix}\\begin{bmatrix} Z_{21} & Z_{22} & Z_{23}& Z_{24} \\end{bmatrix}$$\n\n$$\\therefore \\;\\;\\frac{1}{j0.3408+j0.2}\\begin{bmatrix} j0.2860\\\\ j0.3408\\\\ j0.2586\\\\j0.2414 \\end{bmatrix}\\begin{bmatrix} j0.2860 & j0.3408 & j0.2586& j0.2414 \\end{bmatrix}$$\n\nWe are required only changes in $Z_{22}Z_{23}$\n\n$$\\begin{bmatrix} - & - & - & -\\\\ -& j0.2147 &j0.16296 & -\\\\ - & - &- &- \\\\ - &- & - & - \\end{bmatrix}$$\n\n$$\\begin{aligned} Z_{22}(new)&=Z_{22}(old)-j0.2147=j0.1260 \\\\ Z_{23}(new)&=Z_{23}(old)-j0.16296 \\\\ &= j0.2586-j0.16296=j0.0956\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$Z_{B}(new)=Z_{B}(old)-\\frac{1}{Z_{jj}+Z_{b}}\\begin{bmatrix} Z_{1j}\\\\ \\vdots \\\\ Z_{nj} \\end{bmatrix}\\begin{bmatrix} Z_{j1} & \\cdots & Z_{jn} \\end{bmatrix}$$\n\nNew elements ($Z_B$) is connected between $j^{th}$ and reference bus.\n\nHere, j=2, b=4\n\n$$\\therefore \\;\\;\\frac{1}{Z_{jj}+Z_{b}}\\begin{bmatrix} Z_{12}\\\\ Z_{22} \\\\ Z_{32}\\\\Z_{42} \\end{bmatrix}\\begin{bmatrix} Z_{21} & Z_{22} & Z_{23}& Z_{24} \\end{bmatrix}$$\n\n$$\\therefore \\;\\;\\frac{1}{j0.3408+j0.2}\\begin{bmatrix} j0.2860\\\\ j0.3408\\\\ j0.2586\\\\j0.2414 \\end{bmatrix}\\begin{bmatrix} j0.2860 & j0.3408 & j0.2586& j0.2414 \\end{bmatrix}$$\n\nWe are required only changes in $Z_{22}Z_{23}$\n\n$$\\begin{bmatrix} - & - & - & -\\\\ -& j0.2147 &j0.16296 & -\\\\ - & - &- &- \\\\ - &- & - & - \\end{bmatrix}$$\n\n$$\\begin{aligned} Z_{22}(new)&=Z_{22}(old)-j0.2147=j0.1260 \\\\ Z_{23}(new)&=Z_{23}(old)-j0.16296 \\\\ &= j0.2586-j0.16296=j0.0956\\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q56": {
@@ -2470,7 +2576,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "$$\\begin{aligned}\n\n&\\text{For alternator}  \\\\\n\nZ_{1g}&=j0.1p.u. \\\\\n\nZ_{2g}&=j0.1p.u.\\\\\n\nZ_{3g}&=j0.04p.u. \\\\\n\n&\\text{For line} \\\\\n\nZ_{1l}&=j0.1p.u. \\\\\n\nZ_{2l}&=j0.1p.u. \\\\\n\nZ_{0l}&=j0.3p.u. \\\\\n\nZ_{n}&=j0.05p.u. \\\\\n\n\\text{Equivalent}& \\text{sequence impedance:} \\\\\n\nZ_{1eq}&=Z_{1g}+Z_{1l} \\\\\n\n&= j0.1+j0.1=j0.2p.u.\\\\\n\nZ_{2eq}&=Z_{2g}+Z_{2l} \\\\\n\n&= j0.1+j0.1=j0.2p.u.\\\\\n\nZ_{0eq}&=Z_{0g}+Z_{0l}+3Z_n \\\\\n\n&= j0.04+j0.3+3 \\times j0.05\\\\\n\n&=j0.49p.u.\n\n\\end{aligned}$$\n\nFor single line to ground fault\n\n<img src=\"/question-images/ee/2003/ee-2003-27172ddb22.webp\" />\n\n$$\\begin{aligned} I_{a1}&=I_{a2}=I_{a0}\\\\ &=\\frac{1\\angle 0}{Z_{1eq}+Z_{2eq}+Z_{0eq}}\\\\ &=\\frac{1\\angle 0}{j(0.2+0.2+0.49)}\\\\ &=-j1.1236 p.u. \\end{aligned}$$\n\nFault current $=I_f=3I_{a1}=-j3.3708p.u.$\n\nVoltage of neutral w.r.t. ground\n\n$$\\begin{aligned} V_n&=I_f \\times Z_n \\\\ &= -j3.3708 \\times j0.05\\\\ &= 0.16854p.u. \\end{aligned}$$\n\nPer phase base voltage\n\n$$\\begin{aligned} V_p&=\\frac{6.6}{\\sqrt{3}}kV=\\frac{6.6}{\\sqrt{3}}\\times 10^3V \\\\ V_n&=\\frac{6.6}{\\sqrt{3}} \\times 0.16854 \\times 10^3 \\\\ &= 642.2V \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned}\n\n&\\text{For alternator}  \\\\\n\nZ_{1g}&=j0.1p.u. \\\\\n\nZ_{2g}&=j0.1p.u.\\\\\n\nZ_{3g}&=j0.04p.u. \\\\\n\n&\\text{For line} \\\\\n\nZ_{1l}&=j0.1p.u. \\\\\n\nZ_{2l}&=j0.1p.u. \\\\\n\nZ_{0l}&=j0.3p.u. \\\\\n\nZ_{n}&=j0.05p.u. \\\\\n\n\\text{Equivalent}& \\text{sequence impedance:} \\\\\n\nZ_{1eq}&=Z_{1g}+Z_{1l} \\\\\n\n&= j0.1+j0.1=j0.2p.u.\\\\\n\nZ_{2eq}&=Z_{2g}+Z_{2l} \\\\\n\n&= j0.1+j0.1=j0.2p.u.\\\\\n\nZ_{0eq}&=Z_{0g}+Z_{0l}+3Z_n \\\\\n\n&= j0.04+j0.3+3 \\times j0.05\\\\\n\n&=j0.49p.u.\n\n\\end{aligned}$$\n\nFor single line to ground fault\n\n<img src=\"/question-images/ee/2003/ee-2003-27172ddb22.webp\" />\n\n$$\\begin{aligned} I_{a1}&=I_{a2}=I_{a0}\\\\ &=\\frac{1\\angle 0}{Z_{1eq}+Z_{2eq}+Z_{0eq}}\\\\ &=\\frac{1\\angle 0}{j(0.2+0.2+0.49)}\\\\ &=-j1.1236 p.u. \\end{aligned}$$\n\nFault current $=I_f=3I_{a1}=-j3.3708p.u.$\n\nVoltage of neutral w.r.t. ground\n\n$$\\begin{aligned} V_n&=I_f \\times Z_n \\\\ &= -j3.3708 \\times j0.05\\\\ &= 0.16854p.u. \\end{aligned}$$\n\nPer phase base voltage\n\n$$\\begin{aligned} V_p&=\\frac{6.6}{\\sqrt{3}}kV=\\frac{6.6}{\\sqrt{3}}\\times 10^3V \\\\ V_n&=\\frac{6.6}{\\sqrt{3}} \\times 0.16854 \\times 10^3 \\\\ &= 642.2V \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-27172ddb22.webp"
+        ]
       }
     },
     "pp:ee:2003:q57": {
@@ -2514,7 +2623,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
-        "markdown": "When $P_1$ is minimum i.e. $P_1=50MW$\n\n$IC_1=20+0.3 \\times 50=35$\n\nWhen $P_2$ is minimum i.e. $P_2=50MW$\n\n$IC_2=30+0.4 \\times 50=50$\n\nFor minimum value of $P_1$ and $P_2$\n\n$IC_1$ and $IC_2 \\gt IC_3$\n\nTherefore,\n\n$P_3=300MW$\n\n[maximum load is assigned to unit 3]\n\nRemaining power is to shared by unit 1 and 2\n\nSo, $P_1+P_2 = 700-300=400MW \\;\\;\\;...(i)$\n\nFor optimal operation,\n\n$$\\begin{aligned} IC_1&=IC_2 \\\\ 20+0.3P_1&=30+0.4P_2 \\\\ 0.3P_1-0.4P_2&=10 \\;\\;...(ii)\\end{aligned}$$\n\nSolving equation (i) and (ii), we get\n\n$$\\begin{aligned} P_1&=242.86\\; MW\\\\ P_2&=157.14 \\; MW \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "When $P_1$ is minimum i.e. $P_1=50MW$\n\n$IC_1=20+0.3 \\times 50=35$\n\nWhen $P_2$ is minimum i.e. $P_2=50MW$\n\n$IC_2=30+0.4 \\times 50=50$\n\nFor minimum value of $P_1$ and $P_2$\n\n$IC_1$ and $IC_2 \\gt IC_3$\n\nTherefore,\n\n$P_3=300MW$\n\n[maximum load is assigned to unit 3]\n\nRemaining power is to shared by unit 1 and 2\n\nSo, $P_1+P_2 = 700-300=400MW \\;\\;\\;...(i)$\n\nFor optimal operation,\n\n$$\\begin{aligned} IC_1&=IC_2 \\\\ 20+0.3P_1&=30+0.4P_2 \\\\ 0.3P_1-0.4P_2&=10 \\;\\;...(ii)\\end{aligned}$$\n\nSolving equation (i) and (ii), we get\n\n$$\\begin{aligned} P_1&=242.86\\; MW\\\\ P_2&=157.14 \\; MW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q58": {
@@ -2558,7 +2668,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "Buccholz Relay is used to protect transformers which operates when the oil level in the conservator pipe of a transformer is lowered by the accumulation of gas caued by a poor connection or by an incipient breakdown of insulation (slowly developing fault).\n\nA differential relay is a suitably connected over current relay operating on the difference of currents at the two ends of protected element.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Buccholz Relay is used to protect transformers which operates when the oil level in the conservator pipe of a transformer is lowered by the accumulation of gas caued by a poor connection or by an incipient breakdown of insulation (slowly developing fault).\n\nA differential relay is a suitably connected over current relay operating on the difference of currents at the two ends of protected element.",
+        "images": []
       }
     },
     "pp:ee:2003:q59": {
@@ -2602,7 +2713,10 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-b25e99057a.webp\" />\n\nPower generated by the generator\n\n$$\\begin{aligned} P_e &=P_{max} \\sin \\delta \\\\ \\text{At }\\delta _0& \\\\ P_e&=1 pu \\\\ P_{max}&=2pu \\\\ \\delta _{cr}&=\\text{roto angle at }t =t_c\\\\ P_e&= P_{max} \\sin \\delta \\\\ 1&=2 \\sin \\delta _0 \\\\ \\delta _0 &=30^{\\circ} \\end{aligned}$$\n\nDuring fault, $P_e$ become zero and the fault is cleared at $\\delta _{cr}$, Mechanical input to the generator remains constant, $P_m=1pu$\n\nApplying equal areal criterion,\n\n$$\\begin{aligned} A_1&= A_2\\\\ A_1&= \\int_{\\delta _0}^{\\delta _{cr}} (P_m-0)d\\delta \\\\ &= P_m(\\delta _{cr} -\\delta _0)\\;\\;...(i)\\\\ A_2&=\\int_{\\delta _{cr}}^{\\delta _{max}}(P_{max} \\sin \\delta -P_m)d\\delta \\\\ &= P_{max}(\\cos \\delta _{cr} - \\cos \\delta _{max})\\\\ &-P_m(\\delta _{max}-\\delta _{cr})\\;\\;...(ii)\\\\ &\\text{Equating eq. (i) and (ii),} \\\\ P_m(\\delta _{cr}-\\delta _0)&=P_{max}( \\cos \\delta _{cr} - \\cos \\delta _{max}) \\\\ &-P_m(\\delta _{max} -\\delta _{cr}) \\\\ \\cos \\delta _{cr} &= \\frac{P_m}{P_{max}} (\\delta _{max} - \\delta _{0}) +\\cos \\delta _{max}\\\\ \\cos \\delta _{cr}&= \\frac{1}{2} \\times (110-30) \\times \\frac{\\pi}{180}+\\cos 110\\\\ \\delta _{cr}&=69.14^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-b25e99057a.webp\" />\n\nPower generated by the generator\n\n$$\\begin{aligned} P_e &=P_{max} \\sin \\delta \\\\ \\text{At }\\delta _0& \\\\ P_e&=1 pu \\\\ P_{max}&=2pu \\\\ \\delta _{cr}&=\\text{roto angle at }t =t_c\\\\ P_e&= P_{max} \\sin \\delta \\\\ 1&=2 \\sin \\delta _0 \\\\ \\delta _0 &=30^{\\circ} \\end{aligned}$$\n\nDuring fault, $P_e$ become zero and the fault is cleared at $\\delta _{cr}$, Mechanical input to the generator remains constant, $P_m=1pu$\n\nApplying equal areal criterion,\n\n$$\\begin{aligned} A_1&= A_2\\\\ A_1&= \\int_{\\delta _0}^{\\delta _{cr}} (P_m-0)d\\delta \\\\ &= P_m(\\delta _{cr} -\\delta _0)\\;\\;...(i)\\\\ A_2&=\\int_{\\delta _{cr}}^{\\delta _{max}}(P_{max} \\sin \\delta -P_m)d\\delta \\\\ &= P_{max}(\\cos \\delta _{cr} - \\cos \\delta _{max})\\\\ &-P_m(\\delta _{max}-\\delta _{cr})\\;\\;...(ii)\\\\ &\\text{Equating eq. (i) and (ii),} \\\\ P_m(\\delta _{cr}-\\delta _0)&=P_{max}( \\cos \\delta _{cr} - \\cos \\delta _{max}) \\\\ &-P_m(\\delta _{max} -\\delta _{cr}) \\\\ \\cos \\delta _{cr} &= \\frac{P_m}{P_{max}} (\\delta _{max} - \\delta _{0}) +\\cos \\delta _{max}\\\\ \\cos \\delta _{cr}&= \\frac{1}{2} \\times (110-30) \\times \\frac{\\pi}{180}+\\cos 110\\\\ \\delta _{cr}&=69.14^{\\circ} \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-b25e99057a.webp"
+        ]
       }
     },
     "pp:ee:2003:q60": {
@@ -2646,7 +2760,8 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "Since both sides are grounded, we can take it as 3 independent circuit.\n\nHence,\n\n$$\\begin{aligned} I_a&=\\frac{E_a}{Z_a}=\\frac{10\\angle 0^{\\circ}}{2j}=-5jA\\\\ I_b&=\\frac{E_b}{Z_b}=\\frac{10\\angle -90^{\\circ}}{3j}=3.33\\angle -180\\\\ I_c&=\\frac{E_c}{Z_c}=\\frac{10\\angle 120^{\\circ}}{4j}=2.5\\angle 30\\\\ I_{a1}&=1/3(I_a+\\alpha I_b+\\alpha ^2I_c)\\\\ &=1/3[5\\angle -90+3.33\\angle (-180+120) +2.5\\angle (240+30)]\\\\ &=1/3(5\\angle 90+3.33\\angle -60+2.5\\angle 270)\\\\ &=3.510 \\angle -81^{\\circ}A \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Since both sides are grounded, we can take it as 3 independent circuit.\n\nHence,\n\n$$\\begin{aligned} I_a&=\\frac{E_a}{Z_a}=\\frac{10\\angle 0^{\\circ}}{2j}=-5jA\\\\ I_b&=\\frac{E_b}{Z_b}=\\frac{10\\angle -90^{\\circ}}{3j}=3.33\\angle -180\\\\ I_c&=\\frac{E_c}{Z_c}=\\frac{10\\angle 120^{\\circ}}{4j}=2.5\\angle 30\\\\ I_{a1}&=1/3(I_a+\\alpha I_b+\\alpha ^2I_c)\\\\ &=1/3[5\\angle -90+3.33\\angle (-180+120) +2.5\\angle (240+30)]\\\\ &=1/3(5\\angle 90+3.33\\angle -60+2.5\\angle 270)\\\\ &=3.510 \\angle -81^{\\circ}A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q61": {
@@ -2690,7 +2805,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "$I_D=K(V_{GS}-V_{th})^2$\n\n$4=K(6-2)^2$\n\n$\\therefore \\; K=\\frac{1}{4}mA/V^2$\n\n$V_{GS}=10-4\\times 1=6V$\n\nwhen $R_D$ is increased to $4k\\Omega$\n\n$V_{GS}=10-4I_D$\n\n$I_D=\\frac{1}{4}(10-4I_D-2)^2$\n\n$4I_D=16I^2_D+64-64I_D$\n\n$16I^2_D-68I_D+64=0$\n\n$I_D=2.84 \\; mA,1.4 \\; mA$\n\nFor MOSFET to be on, $V_{GS}$ must be greater than $V_{th}$ and this is possible only if\n\n$\\;\\;\\; I_D=1.4\\; mA$\n\n$If \\; I_D=2.84\\; mA$\n\nthen $V_{GS}$ become -ve and less than $V_{th}$ so transistor will be off for this value which is not possible since $V_{DG}=0\\geq -V_{th}$.\n\nTherefore, the correct answer is **C**."
+        "markdown": "$I_D=K(V_{GS}-V_{th})^2$\n\n$4=K(6-2)^2$\n\n$\\therefore \\; K=\\frac{1}{4}mA/V^2$\n\n$V_{GS}=10-4\\times 1=6V$\n\nwhen $R_D$ is increased to $4k\\Omega$\n\n$V_{GS}=10-4I_D$\n\n$I_D=\\frac{1}{4}(10-4I_D-2)^2$\n\n$4I_D=16I^2_D+64-64I_D$\n\n$16I^2_D-68I_D+64=0$\n\n$I_D=2.84 \\; mA,1.4 \\; mA$\n\nFor MOSFET to be on, $V_{GS}$ must be greater than $V_{th}$ and this is possible only if\n\n$\\;\\;\\; I_D=1.4\\; mA$\n\n$If \\; I_D=2.84\\; mA$\n\nthen $V_{GS}$ become -ve and less than $V_{th}$ so transistor will be off for this value which is not possible since $V_{DG}=0\\geq -V_{th}$.",
+        "images": []
       }
     },
     "pp:ee:2003:q62": {
@@ -2734,7 +2850,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "using KCL at node 1, we have,\n\n<img src=\"/question-images/ee/2003/ee-2003-98f53a2a03.webp\" />\n\n$\\frac{V_1-0}{10}+\\frac{V_1}{1}+\\frac{V_1-V_{out}}{10}=0$\n\n$12V_1=V_{out}\\;\\;\\;....(i)$\n\nAlso, using KCL at inverting node, we get\n\n$\\frac{V_{in}-0}{1}=\\frac{0-V_1}{10}$\n\n$V_1=-V_{in} \\times 10   \\;\\;\\;....(ii)$\n\nFrom equation (i) and (ii), we get\n\n$\\frac{V_{out}}{V_{in}}=-120$\n\nTherefore, the correct answer is **D**."
+        "markdown": "using KCL at node 1, we have,\n\n<img src=\"/question-images/ee/2003/ee-2003-98f53a2a03.webp\" />\n\n$\\frac{V_1-0}{10}+\\frac{V_1}{1}+\\frac{V_1-V_{out}}{10}=0$\n\n$12V_1=V_{out}\\;\\;\\;....(i)$\n\nAlso, using KCL at inverting node, we get\n\n$\\frac{V_{in}-0}{1}=\\frac{0-V_1}{10}$\n\n$V_1=-V_{in} \\times 10   \\;\\;\\;....(ii)$\n\nFrom equation (i) and (ii), we get\n\n$\\frac{V_{out}}{V_{in}}=-120$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-98f53a2a03.webp"
+        ]
       }
     },
     "pp:ee:2003:q63": {
@@ -2778,7 +2897,10 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-2fa9b02bce.webp\" />\n\nFpr positive cycle , when $V_{in} \\gt 4V$\n\n$(V_{in} \\gt 4V) D_2 ON, D_1 OFF, V_{out}=4V$\n\nwhere  $V_{in} \\lt 4V$,  then $V_{out}=V_{in}$ because  $D_2$\n\nalso become (OFF).\n\nFor negative cycle, when  $V_{in} \\lt -4V$\n\n$D_1 \\; ON, D_2 \\; OFF$\n\n$I=\\frac{V_{in}+4}{20k}$\n\n$but, V_{in}=-ve$\n\n$\\therefore \\; I=\\frac{-V_{in}+4}{20}=\\frac{-3}{10}mA$\n\n$(\\because \\text{ for minimum output }V_{in}=-10V)$\n\n$V_{out}=\\frac{-3}{10}\\times 10k-4=-7V$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-2fa9b02bce.webp\" />\n\nFpr positive cycle , when $V_{in} \\gt 4V$\n\n$(V_{in} \\gt 4V) D_2 ON, D_1 OFF, V_{out}=4V$\n\nwhere  $V_{in} \\lt 4V$,  then $V_{out}=V_{in}$ because  $D_2$\n\nalso become (OFF).\n\nFor negative cycle, when  $V_{in} \\lt -4V$\n\n$D_1 \\; ON, D_2 \\; OFF$\n\n$I=\\frac{V_{in}+4}{20k}$\n\n$but, V_{in}=-ve$\n\n$\\therefore \\; I=\\frac{-V_{in}+4}{20}=\\frac{-3}{10}mA$\n\n$(\\because \\text{ for minimum output }V_{in}=-10V)$\n\n$V_{out}=\\frac{-3}{10}\\times 10k-4=-7V$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-2fa9b02bce.webp"
+        ]
       }
     },
     "pp:ee:2003:q64": {
@@ -2822,7 +2944,8 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Miscellaneous",
-        "markdown": "Duty cycle $=\\alpha =\\frac{T_{ON}}{T}$\n\n$\\therefore T_{ON}=\\alpha T=0.75 \\times 10^{-4}=75 \\mu sec$\n\n$\\frac{75 \\times 10^{-6}}{0.7 \\times 10^{-8}}=R_A+R_B$\n\n$\\therefore R_A+R_B=10.714 \\; k\\Omega$\n\n$\\therefore T_{OFF}=0.7 \\; CR_B$\n\n$\\therefore R_B=\\frac{25 \\times 10^{-6}}{0.7 \\times 10^{-8}}$\n\n$\\;\\; R_B=3.57 \\; k\\Omega , R_A=7.14 \\; k\\Omega$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Duty cycle $=\\alpha =\\frac{T_{ON}}{T}$\n\n$\\therefore T_{ON}=\\alpha T=0.75 \\times 10^{-4}=75 \\mu sec$\n\n$\\frac{75 \\times 10^{-6}}{0.7 \\times 10^{-8}}=R_A+R_B$\n\n$\\therefore R_A+R_B=10.714 \\; k\\Omega$\n\n$\\therefore T_{OFF}=0.7 \\; CR_B$\n\n$\\therefore R_B=\\frac{25 \\times 10^{-6}}{0.7 \\times 10^{-8}}$\n\n$\\;\\; R_B=3.57 \\; k\\Omega , R_A=7.14 \\; k\\Omega$",
+        "images": []
       }
     },
     "pp:ee:2003:q65": {
@@ -2866,7 +2989,10 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
-        "markdown": "The wave form of dual slope integrater is shown. The maximum frequency can be attained when $T_2-T_1=0$ and as\n\n<img src=\"/question-images/ee/2003/ee-2003-ba28e887d6.webp\" />\n\n$T_1=2^NT_C\\;\\;\\;(T_C=\\text{clock period})$\n\n$\\therefore \\;\\;f_{max}=\\frac{1}{2^N\\cdot T_C}$\n\n$\\;\\;\\;=\\frac{f_C}{2^N}=\\frac{10^6}{1024}=1kHz$\n\nTherefore, the correct answer is **B**."
+        "markdown": "The wave form of dual slope integrater is shown. The maximum frequency can be attained when $T_2-T_1=0$ and as\n\n<img src=\"/question-images/ee/2003/ee-2003-ba28e887d6.webp\" />\n\n$T_1=2^NT_C\\;\\;\\;(T_C=\\text{clock period})$\n\n$\\therefore \\;\\;f_{max}=\\frac{1}{2^N\\cdot T_C}$\n\n$\\;\\;\\;=\\frac{f_C}{2^N}=\\frac{10^6}{1024}=1kHz$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-ba28e887d6.webp"
+        ]
       }
     },
     "pp:ee:2003:q66": {
@@ -2910,7 +3036,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "By K-map\n\n<img src=\"/question-images/ee/2003/ee-2003-ff9799d8cd.webp\" />\n\nThe simplified for is $XY+Y\\bar{Z}+\\bar{Y}Z$\n\nTherefore, the correct answer is **B**."
+        "markdown": "By K-map\n\n<img src=\"/question-images/ee/2003/ee-2003-ff9799d8cd.webp\" />\n\nThe simplified for is $XY+Y\\bar{Z}+\\bar{Y}Z$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-ff9799d8cd.webp"
+        ]
       }
     },
     "pp:ee:2003:q67": {
@@ -2998,7 +3127,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
-        "markdown": "<img src=\"/wp-content/uploads/GATE/EE/20031/a68.jpg\" />\n\nTo make (X-Y) FF using (J-K) FF, (J) should be $(\\bar{Y})$ and (K) should be (X).\n\nTherefore, the correct answer is **D**."
+        "markdown": "To make (X-Y) FF using (J-K) FF, (J) should be $(\\bar{Y})$ and (K) should be (X).",
+        "images": []
       }
     },
     "pp:ee:2003:q69": {
@@ -3042,7 +3172,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Microprocessors",
-        "markdown": "Total size of memory = No. of chip x data lines\n\n$= 4 \\times 8 \\times 2^{12}$\n\n=128 kbits\n\n=16 kbyte\n\nTherefore, the correct answer is **A**."
+        "markdown": "Total size of memory = No. of chip x data lines\n\n$= 4 \\times 8 \\times 2^{12}$\n\n=128 kbits\n\n=16 kbyte",
+        "images": []
       }
     },
     "pp:ee:2003:q70": {
@@ -3086,7 +3217,8 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Microprocessors",
-        "markdown": "LXI  H, 1FFE $\\rightarrow$ Load 1FFE in H-L memory\n\nMOV  B, M $\\rightarrow$ move the content of 1FFE memory location to register B\n\nINR  L $\\rightarrow$ Increment the content of 'HL' by 1  (1FFE$\\rightarrow$1FFF)\n\nMOV  A, M $\\rightarrow$ move content of 1FFF memory location to accumulator\n\nADD B $\\rightarrow$ (A$\\rightarrow$A+B)\n\nINR  L $\\rightarrow$FF+1 $\\rightarrow$00\n\nAs result HL$\\rightarrow$1F00\n\nMOV  M, A$\\rightarrow$ move content of accumulator to memory location 1F00\n\nXRA A $\\rightarrow$content of accumulator becomes zero\n\nTherefore, the correct answer is **C**."
+        "markdown": "LXI  H, 1FFE $\\rightarrow$ Load 1FFE in H-L memory\n\nMOV  B, M $\\rightarrow$ move the content of 1FFE memory location to register B\n\nINR  L $\\rightarrow$ Increment the content of 'HL' by 1  (1FFE$\\rightarrow$1FFF)\n\nMOV  A, M $\\rightarrow$ move content of 1FFF memory location to accumulator\n\nADD B $\\rightarrow$ (A$\\rightarrow$A+B)\n\nINR  L $\\rightarrow$FF+1 $\\rightarrow$00\n\nAs result HL$\\rightarrow$1F00\n\nMOV  M, A$\\rightarrow$ move content of accumulator to memory location 1F00\n\nXRA A $\\rightarrow$content of accumulator becomes zero",
+        "images": []
       }
     },
     "pp:ee:2003:q71": {
@@ -3130,7 +3262,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "Natural time constant of the response depends only on poles of the system.\n\n$T(s)=\\frac{C(s)}{R(s)}=\\frac{1}{s^2+s/2+1/18}$\n\n$\\;\\;=\\frac{18}{18s^2+9s+1}$\n\n$\\;\\;=\\frac{1}{(6s+1)(3s+1)}$\n\nThis is in the form $\\frac{1}{(1+sT_1)(1+sT_2)}$\n\n$\\therefore \\;\\; T_1,T_2=6sec, 3 sec$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Natural time constant of the response depends only on poles of the system.\n\n$T(s)=\\frac{C(s)}{R(s)}=\\frac{1}{s^2+s/2+1/18}$\n\n$\\;\\;=\\frac{18}{18s^2+9s+1}$\n\n$\\;\\;=\\frac{1}{(6s+1)(3s+1)}$\n\nThis is in the form $\\frac{1}{(1+sT_1)(1+sT_2)}$\n\n$\\therefore \\;\\; T_1,T_2=6sec, 3 sec$",
+        "images": []
       }
     },
     "pp:ee:2003:q72": {
@@ -3174,7 +3307,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$G(s)=\\left ( \\frac{3}{s+15} \\right )\\times \\left ( \\frac{15}{s+1} \\right )$\n\n$\\;\\;=\\frac{45}{(s+1)(s+15)}$ and  $H(s)=1$\n\nOpen loop transfer function\n\n$\\;\\;=G(s)H(s)=\\frac{45}{(s+1)(s+15)}$\n\nThe system is type-0.\n\nSteady state error to unit-step input\n\n$e_{ss}=\\frac{1}{1+k_p}$\n\nwhere,\n\n$k_p=$Position error constant  $=\\lim_{s \\to 0}G(s)H(s)$\n\n$\\Rightarrow \\; k_p=\\lim_{s \\to 0}\\frac{45}{(s+1)(s+15)}=3$\n\n$\\;\\; e_{ss}=\\frac{1}{1+k_p}=\\frac{1}{1+3}=0.25$ or $25$%\n\nTherefore, the correct answer is **A**."
+        "markdown": "$G(s)=\\left ( \\frac{3}{s+15} \\right )\\times \\left ( \\frac{15}{s+1} \\right )$\n\n$\\;\\;=\\frac{45}{(s+1)(s+15)}$ and  $H(s)=1$\n\nOpen loop transfer function\n\n$\\;\\;=G(s)H(s)=\\frac{45}{(s+1)(s+15)}$\n\nThe system is type-0.\n\nSteady state error to unit-step input\n\n$e_{ss}=\\frac{1}{1+k_p}$\n\nwhere,\n\n$k_p=$Position error constant  $=\\lim_{s \\to 0}G(s)H(s)$\n\n$\\Rightarrow \\; k_p=\\lim_{s \\to 0}\\frac{45}{(s+1)(s+15)}=3$\n\n$\\;\\; e_{ss}=\\frac{1}{1+k_p}=\\frac{1}{1+3}=0.25$ or $25$%",
+        "images": []
       }
     },
     "pp:ee:2003:q73": {
@@ -3218,7 +3352,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
-        "markdown": "1+ GH= 0 (characteristic equation),\n\n$\\; \\; \\; 1\\, +\\, \\frac{45}{\\left ( s+15 \\right )\\left ( s+1 \\right )}\\, =\\, 0$\n\n$\\; \\; \\; \\; \\; s^{2}+16s+60\\, =\\, 0$\n\n$\\therefore \\; \\; \\; \\left ( s+10 \\right )\\left ( s+6 \\right )\\, =\\, 0$\n\n$\\therefore$ Roots are $\\left ( -6,\\, -10 \\right ).$\n\nTherefore, the correct answer is **D**."
+        "markdown": "1+ GH= 0 (characteristic equation),\n\n$\\; \\; \\; 1\\, +\\, \\frac{45}{\\left ( s+15 \\right )\\left ( s+1 \\right )}\\, =\\, 0$\n\n$\\; \\; \\; \\; \\; s^{2}+16s+60\\, =\\, 0$\n\n$\\therefore \\; \\; \\; \\left ( s+10 \\right )\\left ( s+6 \\right )\\, =\\, 0$\n\n$\\therefore$ Roots are $\\left ( -6,\\, -10 \\right ).$",
+        "images": []
       }
     },
     "pp:ee:2003:q74": {
@@ -3262,7 +3397,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "Let, $x_1=\\frac{d\\omega }{dt}$ and $x_2=\\omega$\n\n$\\;\\;\\; \\dot{x_2}=x_1$\n\n$$\\frac{d^2\\omega }{dt^2}+\\frac{B}{J}\\frac{d\\omega }{dt}+\\frac{k^2}{LJ}\\omega =\\frac{k}{LJ}V_a$$\n\n$$\\frac{d^2\\omega }{dt^2}=-\\frac{B}{J}\\frac{d\\omega }{dt}-\\frac{k^2}{LJ}\\omega + \\frac{k}{LJ}V_a$$\n\n$\\Rightarrow \\;\\; \\dot{x_1}=-\\frac{B}{J}x_1-\\frac{k^2}{LJ}x_2+\\frac{k}{LJ}V_a$\n\n$\\;\\;\\dot{x_2}=x_1$\n\n$$\\begin{bmatrix} \\dot{x_1}\\\\ \\dot{x_2} \\end{bmatrix}=P\\begin{bmatrix} x_1\\\\ x_2 \\end{bmatrix}+QV_a$$\n\nwhere,\n\n$$P=\\begin{bmatrix} -\\frac{B}{J} & -\\frac{k^2}{LJ}\\\\ 1 & 0 \\end{bmatrix}$$ and $$Q=\\begin{bmatrix} \\frac{k}{LJ}\\\\ 0 \\end{bmatrix}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Let, $x_1=\\frac{d\\omega }{dt}$ and $x_2=\\omega$\n\n$\\;\\;\\; \\dot{x_2}=x_1$\n\n$$\\frac{d^2\\omega }{dt^2}+\\frac{B}{J}\\frac{d\\omega }{dt}+\\frac{k^2}{LJ}\\omega =\\frac{k}{LJ}V_a$$\n\n$$\\frac{d^2\\omega }{dt^2}=-\\frac{B}{J}\\frac{d\\omega }{dt}-\\frac{k^2}{LJ}\\omega + \\frac{k}{LJ}V_a$$\n\n$\\Rightarrow \\;\\; \\dot{x_1}=-\\frac{B}{J}x_1-\\frac{k^2}{LJ}x_2+\\frac{k}{LJ}V_a$\n\n$\\;\\;\\dot{x_2}=x_1$\n\n$$\\begin{bmatrix} \\dot{x_1}\\\\ \\dot{x_2} \\end{bmatrix}=P\\begin{bmatrix} x_1\\\\ x_2 \\end{bmatrix}+QV_a$$\n\nwhere,\n\n$$P=\\begin{bmatrix} -\\frac{B}{J} & -\\frac{k^2}{LJ}\\\\ 1 & 0 \\end{bmatrix}$$ and $$Q=\\begin{bmatrix} \\frac{k}{LJ}\\\\ 0 \\end{bmatrix}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q75": {
@@ -3306,7 +3442,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
-        "markdown": "Characteristic equation = 1 + GH = 0\n\n$\\Rightarrow \\; \\; \\; 1+\\frac{K}{s\\left ( s+2 \\right )\\left ( s+4 \\right )}\\, =\\, 0$\n\nCharacteristic equation,\n\n$\\Rightarrow \\; \\; \\; s^{2}\\, +\\, 6s^{2}\\, +\\, 8s\\, +\\, K\\, =\\, 0$\n\nThe Routh-array is formed as follows:\n\n<img src=\"/wp-content/uploads/GATE/EE/20031/a75.jpg\" />\n\nAccording to Routh-Hurwitz criterion, for a stable system there should be no charge of sign in the first column of routh array.\n\nSo, $\\; \\; \\; \\frac{48-K}{6} \\gt  0$ and $K\\gt 0$\n\n$\\; \\; \\; \\; \\; 0 \\lt K \\lt 48$\n\nHence for K=48, the system just becomes unstable.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Characteristic equation = 1 + GH = 0\n\n$\\Rightarrow \\; \\; \\; 1+\\frac{K}{s\\left ( s+2 \\right )\\left ( s+4 \\right )}\\, =\\, 0$\n\nCharacteristic equation,\n\n$\\Rightarrow \\; \\; \\; s^{2}\\, +\\, 6s^{2}\\, +\\, 8s\\, +\\, K\\, =\\, 0$\n\nThe Routh-array is formed as follows:\n\nAccording to Routh-Hurwitz criterion, for a stable system there should be no charge of sign in the first column of routh array.\n\nSo, $\\; \\; \\; \\frac{48-K}{6} \\gt  0$ and $K\\gt 0$\n\n$\\; \\; \\; \\; \\; 0 \\lt K \\lt 48$\n\nHence for K=48, the system just becomes unstable.",
+        "images": []
       }
     },
     "pp:ee:2003:q76": {
@@ -3350,7 +3487,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "Transfer function$=G(s)=\\frac{k}{1+\\frac{s}{a}}$\n\nPut  $s=j\\omega$\n\n$G(j\\omega )=\\frac{k}{1+j\\frac{\\omega }{a}}$\n\nMagnitude of $G(j\\omega )=|G(j\\omega )|=\\frac{k}{\\sqrt{1+\\frac{\\omega ^2}{a^2}}}$\n\nPhase of $G(j\\omega )\\angle G(j\\omega )=-tan^{-1\\left ( \\frac{\\omega }{a}\\right )} \\; at\\;  \\omega =0.5a$\n\n$|G(j\\omega )|_{\\omega =0.5a}=\\frac{k}{\\sqrt{1+\\frac{(0.5a)^2}{a^2}}}=\\frac{k}{\\sqrt{1.25}}$ in dB\n\n$=20\\log k-20 \\log (1.25)^{1/2}$\n\n$=20 \\log k-0.97 dB$\n\nFrom the plot\n\nmagnitude$=20 \\log k$\n\n$\\therefore$  error in dB gain = 0.97 dB\n\n$\\angle G(j\\omega )|_{\\omega =0.5a}$\n\n$=-tan^{-1}\\left ( \\frac{0.5a}{a} \\right )$\n\n$=26.56^{\\circ}$\n\nSince it is $-45^{\\circ}/dec$ (-ve slope) at $\\omega =0.5a$ phase $=-22.5^{\\circ}$\n\nError in phase of $\\angle G(j\\omega )|_{\\omega =0.5a}$\n\n$=-22.5-(-26.56)$\n\n$=+4.06^{\\circ}\\approx +4.9^{\\circ}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Transfer function$=G(s)=\\frac{k}{1+\\frac{s}{a}}$\n\nPut  $s=j\\omega$\n\n$G(j\\omega )=\\frac{k}{1+j\\frac{\\omega }{a}}$\n\nMagnitude of $G(j\\omega )=|G(j\\omega )|=\\frac{k}{\\sqrt{1+\\frac{\\omega ^2}{a^2}}}$\n\nPhase of $G(j\\omega )\\angle G(j\\omega )=-tan^{-1\\left ( \\frac{\\omega }{a}\\right )} \\; at\\;  \\omega =0.5a$\n\n$|G(j\\omega )|_{\\omega =0.5a}=\\frac{k}{\\sqrt{1+\\frac{(0.5a)^2}{a^2}}}=\\frac{k}{\\sqrt{1.25}}$ in dB\n\n$=20\\log k-20 \\log (1.25)^{1/2}$\n\n$=20 \\log k-0.97 dB$\n\nFrom the plot\n\nmagnitude$=20 \\log k$\n\n$\\therefore$  error in dB gain = 0.97 dB\n\n$\\angle G(j\\omega )|_{\\omega =0.5a}$\n\n$=-tan^{-1}\\left ( \\frac{0.5a}{a} \\right )$\n\n$=26.56^{\\circ}$\n\nSince it is $-45^{\\circ}/dec$ (-ve slope) at $\\omega =0.5a$ phase $=-22.5^{\\circ}$\n\nError in phase of $\\angle G(j\\omega )|_{\\omega =0.5a}$\n\n$=-22.5-(-26.56)$\n\n$=+4.06^{\\circ}\\approx +4.9^{\\circ}$",
+        "images": []
       }
     },
     "pp:ee:2003:q77": {
@@ -3394,7 +3532,11 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "Integrator are represented as 1/s in s-domain\n\n<img src=\"/question-images/ee/2003/ee-2003-c1f68cfb20.webp\" />\n\nAs per the block diagram, the corresponding signal flow graph is drawn\n\n<img src=\"/question-images/ee/2003/ee-2003-407c76f821.webp\" />\n\nOne forward path $P_{1}\\, =\\, 2/s^{2}$\n\nThe individual loops are,\n\n$\\; \\; \\; L_{1}\\, =\\, -\\frac{3}{s},\\: L_{2}\\, =\\, -\\frac{12}{s} and L_{3}\\, =\\, -\\frac{18}{s^{2}}$\n\n$L_{1}$ and $L_{2}$ are non-touching loops\n\n$\\; \\; \\; L_{1}L_{2}\\, =\\, \\frac{36}{s^{2}}$\n\nThe loops touches the forward path $\\Delta _{1}=1$\n\nThe graph determinant is\n\n$\\; \\; \\; \\Delta \\, =\\, 1-\\left ( L_{1}+L_{2}+L_{3} \\right )+L_{1}L_{2}$\n\n$\\; \\; \\; \\; =1+\\frac{3}{s}+\\frac{12}{s}+\\frac{18}{s^{2}}+\\frac{36}{s^{2}}$\n\nApplying mason's gain formula,\n\n$\\; \\; \\; G\\left ( s \\right )=\\frac{Y\\left ( s \\right )}{U\\left ( s \\right )}=\\frac{P_{1}\\Delta _{1}}{\\Delta }$\n\n$\\; \\; \\; \\; =\\frac{2/s^{2}}{1+\\frac{3}{s}+\\frac{12}{s}+\\frac{18}{s^{2}}+\\frac{36}{s^{2}}}$\n\n$\\; \\; \\; \\; =\\frac{2}{s^{2}+15s+54}=\\frac{2}{\\left ( s+9 \\right )\\left ( s+6 \\right )}$\n\n$\\; \\; \\; \\; =\\frac{1}{27\\left ( 1+\\frac{s}{9} \\right )\\left ( 1+\\frac{s}{6} \\right )}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Integrator are represented as 1/s in s-domain\n\n<img src=\"/question-images/ee/2003/ee-2003-c1f68cfb20.webp\" />\n\nAs per the block diagram, the corresponding signal flow graph is drawn\n\n<img src=\"/question-images/ee/2003/ee-2003-407c76f821.webp\" />\n\nOne forward path $P_{1}\\, =\\, 2/s^{2}$\n\nThe individual loops are,\n\n$\\; \\; \\; L_{1}\\, =\\, -\\frac{3}{s},\\: L_{2}\\, =\\, -\\frac{12}{s} and L_{3}\\, =\\, -\\frac{18}{s^{2}}$\n\n$L_{1}$ and $L_{2}$ are non-touching loops\n\n$\\; \\; \\; L_{1}L_{2}\\, =\\, \\frac{36}{s^{2}}$\n\nThe loops touches the forward path $\\Delta _{1}=1$\n\nThe graph determinant is\n\n$\\; \\; \\; \\Delta \\, =\\, 1-\\left ( L_{1}+L_{2}+L_{3} \\right )+L_{1}L_{2}$\n\n$\\; \\; \\; \\; =1+\\frac{3}{s}+\\frac{12}{s}+\\frac{18}{s^{2}}+\\frac{36}{s^{2}}$\n\nApplying mason's gain formula,\n\n$\\; \\; \\; G\\left ( s \\right )=\\frac{Y\\left ( s \\right )}{U\\left ( s \\right )}=\\frac{P_{1}\\Delta _{1}}{\\Delta }$\n\n$\\; \\; \\; \\; =\\frac{2/s^{2}}{1+\\frac{3}{s}+\\frac{12}{s}+\\frac{18}{s^{2}}+\\frac{36}{s^{2}}}$\n\n$\\; \\; \\; \\; =\\frac{2}{s^{2}+15s+54}=\\frac{2}{\\left ( s+9 \\right )\\left ( s+6 \\right )}$\n\n$\\; \\; \\; \\; =\\frac{1}{27\\left ( 1+\\frac{s}{9} \\right )\\left ( 1+\\frac{s}{6} \\right )}$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-c1f68cfb20.webp",
+          "/question-images/ee/2003/ee-2003-407c76f821.webp"
+        ]
       }
     },
     "pp:ee:2003:q78": {
@@ -3438,7 +3580,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - A.C. Bridges",
-        "markdown": "Wheat stone bridge  is used for measurement of medium resistance.\n\nKelvin double bridge is used for meserement of low resistance.\n\nSchering  bridge is used for meserement of low value of capacitances.\n\nWein's bridge is used for meserement of the frequency\n\nHay's bridge is used for meserement of inductance of a coil with a large time-constant.\n\nCarey-foster bridge is used for comparision of resistances which are nearly equal.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Wheat stone bridge  is used for measurement of medium resistance.\n\nKelvin double bridge is used for meserement of low resistance.\n\nSchering  bridge is used for meserement of low value of capacitances.\n\nWein's bridge is used for meserement of the frequency\n\nHay's bridge is used for meserement of inductance of a coil with a large time-constant.\n\nCarey-foster bridge is used for comparision of resistances which are nearly equal.",
+        "images": []
       }
     },
     "pp:ee:2003:q79": {
@@ -3482,7 +3625,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "$I_{FS}=$ Current required to produce full scale deflection\n\nd.c. sensitivity is,\n\n$S_{dc}=\\frac{1}{I_{(FS)}} =\\frac{1}{1 mA}=10^3\\Omega /V$\n\nFor full wave rectifier a.c. sensitivity\n\n$S_{ac}=0.9S_{dc}=900\\Omega /V$\n\nResistance of multiplier,\n\n$R_S=s_{ac}V-R_m-2R_d$\n\nSince, diodes are ideal,\n\n$R_d=0$\n\nthen,  $R_S=900 \\times 100-100 =89.9k\\Omega$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$I_{FS}=$ Current required to produce full scale deflection\n\nd.c. sensitivity is,\n\n$S_{dc}=\\frac{1}{I_{(FS)}} =\\frac{1}{1 mA}=10^3\\Omega /V$\n\nFor full wave rectifier a.c. sensitivity\n\n$S_{ac}=0.9S_{dc}=900\\Omega /V$\n\nResistance of multiplier,\n\n$R_S=s_{ac}V-R_m-2R_d$\n\nSince, diodes are ideal,\n\n$R_d=0$\n\nthen,  $R_S=900 \\times 100-100 =89.9k\\Omega$",
+        "images": []
       }
     },
     "pp:ee:2003:q80": {
@@ -3526,7 +3670,11 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "Taking $V_R$ as the reference and assuming phase to neutral voltage $=V$\n\n$$\\begin{aligned} V_R &=V\\angle 0^{\\circ} \\\\ V_Y &= V\\angle -120^{\\circ}\\\\ and \\;\\; V_B &=V\\angle -240^{\\circ} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2003/ee-2003-6d09ce77ca.webp\" />\n\n$$\\begin{aligned} V_RI_R \\cos \\phi &=400 W \\\\ VI_R \\times 0.8&= 400W\\\\ VI_R&=400\\;\\;...(i) \\\\ I_R&=I_R\\angle -36.87^{\\circ} \\end{aligned}$$\n\n[p.f. =0.8 lag, inductive load]\n\n<img src=\"/question-images/ee/2003/ee-2003-b806aafc0e.webp\" />\n\n$$\\begin{aligned} V_{YB} &=V_{YB}-V_B \\\\ &= V\\angle -120^{\\circ}- V \\angle -240^{\\circ}\\\\ &=\\sqrt{3}V\\angle -90^{\\circ} V\\\\ I_R&=I_R\\angle -36.87^{\\circ}A \\end{aligned}$$\n\nAngle between $V_{YB}$ and $I_{R}$\n\n$\\theta =-90^{\\circ}-(-36.87^{\\circ})=53.13^{\\circ}$\n\nAs pressure coil connected between Y and B phase.\n\nReading of wattmeter$=V_{YB}I_R\\cos \\theta$\n\nFrom equation (i)\n\n$=\\sqrt{3}V \\times I_R \\times \\cos (-53.13) =\\sqrt{3}\\times 500 \\times 0.6=519.6W$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Taking $V_R$ as the reference and assuming phase to neutral voltage $=V$\n\n$$\\begin{aligned} V_R &=V\\angle 0^{\\circ} \\\\ V_Y &= V\\angle -120^{\\circ}\\\\ and \\;\\; V_B &=V\\angle -240^{\\circ} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2003/ee-2003-6d09ce77ca.webp\" />\n\n$$\\begin{aligned} V_RI_R \\cos \\phi &=400 W \\\\ VI_R \\times 0.8&= 400W\\\\ VI_R&=400\\;\\;...(i) \\\\ I_R&=I_R\\angle -36.87^{\\circ} \\end{aligned}$$\n\n[p.f. =0.8 lag, inductive load]\n\n<img src=\"/question-images/ee/2003/ee-2003-b806aafc0e.webp\" />\n\n$$\\begin{aligned} V_{YB} &=V_{YB}-V_B \\\\ &= V\\angle -120^{\\circ}- V \\angle -240^{\\circ}\\\\ &=\\sqrt{3}V\\angle -90^{\\circ} V\\\\ I_R&=I_R\\angle -36.87^{\\circ}A \\end{aligned}$$\n\nAngle between $V_{YB}$ and $I_{R}$\n\n$\\theta =-90^{\\circ}-(-36.87^{\\circ})=53.13^{\\circ}$\n\nAs pressure coil connected between Y and B phase.\n\nReading of wattmeter$=V_{YB}I_R\\cos \\theta$\n\nFrom equation (i)\n\n$=\\sqrt{3}V \\times I_R \\times \\cos (-53.13) =\\sqrt{3}\\times 500 \\times 0.6=519.6W$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-6d09ce77ca.webp",
+          "/question-images/ee/2003/ee-2003-b806aafc0e.webp"
+        ]
       }
     },
     "pp:ee:2003:q81": {
@@ -3570,7 +3718,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "Deflection torque in moving-iron ammeter,\n\n$T_d=\\frac{1}{2}I^2\\frac{dL}{d\\theta }$\n\nInductance,   $L=\\left ( 10+3\\theta -\\frac{\\theta ^2}{4} \\right )\\mu H$\n\nRate of change of inductance with deflection\n\n$\\frac{dL}{d\\theta }=\\frac{d}{d\\theta }\\left ( 10+3\\theta -\\frac{\\theta ^2}{4} \\right )$\n\n$\\;\\;\\;=\\left ( 3- \\frac{\\theta }{2}\\right )\\mu H/rad$\n\nCurrent , $I=5A$\n\nDeflecting torque,\n\n$$\\begin{aligned} T_d &=\\frac{1}{2}I^2\\frac{dL}{d\\theta } \\\\ T_d &= \\frac{1}{2} \\times 5^2 \\times \\left ( 3-\\frac{\\theta }{2} \\right ) \\times 10^{-6}\\\\ &= \\frac{25}{2}\\left ( 3-\\frac{\\theta }{2} \\right )\\times 10^{-6} Nm \\end{aligned}$$\n\nControlling torque\n\n$T_c=k\\theta =25 \\times 10^{-6}\\theta$\n\nAt equilibrium,\n\n$$\\begin{aligned} T_c &= T_d\\\\ 25 \\times 10^{-6}\\theta &= \\frac{25}{2}\\left ( 3-\\frac{\\theta }{2} \\right )\\times 10^{-6} \\\\ \\frac{5\\theta }{2} &= 3\\\\ \\theta &= 1.2 \\text{rad} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Deflection torque in moving-iron ammeter,\n\n$T_d=\\frac{1}{2}I^2\\frac{dL}{d\\theta }$\n\nInductance,   $L=\\left ( 10+3\\theta -\\frac{\\theta ^2}{4} \\right )\\mu H$\n\nRate of change of inductance with deflection\n\n$\\frac{dL}{d\\theta }=\\frac{d}{d\\theta }\\left ( 10+3\\theta -\\frac{\\theta ^2}{4} \\right )$\n\n$\\;\\;\\;=\\left ( 3- \\frac{\\theta }{2}\\right )\\mu H/rad$\n\nCurrent , $I=5A$\n\nDeflecting torque,\n\n$$\\begin{aligned} T_d &=\\frac{1}{2}I^2\\frac{dL}{d\\theta } \\\\ T_d &= \\frac{1}{2} \\times 5^2 \\times \\left ( 3-\\frac{\\theta }{2} \\right ) \\times 10^{-6}\\\\ &= \\frac{25}{2}\\left ( 3-\\frac{\\theta }{2} \\right )\\times 10^{-6} Nm \\end{aligned}$$\n\nControlling torque\n\n$T_c=k\\theta =25 \\times 10^{-6}\\theta$\n\nAt equilibrium,\n\n$$\\begin{aligned} T_c &= T_d\\\\ 25 \\times 10^{-6}\\theta &= \\frac{25}{2}\\left ( 3-\\frac{\\theta }{2} \\right )\\times 10^{-6} \\\\ \\frac{5\\theta }{2} &= 3\\\\ \\theta &= 1.2 \\text{rad} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q82": {
@@ -3614,7 +3763,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Instrument Transformers",
-        "markdown": "Nominal ratio $=\\frac{500}{5}=100$\n\nNumber of turn in primary N=1 (primary bar)\n\nMagnetizing current,\n\n$I_m=\\frac{\\text{mmf}}{\\text{No. of turns}}$\n\n$\\;\\;=\\frac{250}{1}=250A$\n\nSecondary current,\n\n$I_s=5A n=\\frac{500}{5}=100$\n\nPrimary current,\n\n$I_P=\\sqrt{(nI_s)^2+I_m^2}$\n\n$\\;\\;=\\sqrt{(100\\times 5)^2 +(250)^2}$\n\n$\\Rightarrow \\; I_P=559.017A$\n\nActual ratio\n\n$\\;\\;=\\frac{I_P}{5}=\\frac{559.017}{5}=111.803$\n\nRatio error\n\n$\\;\\;=\\frac{\\text{Nominal Ratio} - \\text{Actual Ratio}}{\\text{Actual Ratio}} \\times 100$\n\n$\\;\\;=\\frac{100-111.803}{111.803}\\times 100=-10.56\\%$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Nominal ratio $=\\frac{500}{5}=100$\n\nNumber of turn in primary N=1 (primary bar)\n\nMagnetizing current,\n\n$I_m=\\frac{\\text{mmf}}{\\text{No. of turns}}$\n\n$\\;\\;=\\frac{250}{1}=250A$\n\nSecondary current,\n\n$I_s=5A n=\\frac{500}{5}=100$\n\nPrimary current,\n\n$I_P=\\sqrt{(nI_s)^2+I_m^2}$\n\n$\\;\\;=\\sqrt{(100\\times 5)^2 +(250)^2}$\n\n$\\Rightarrow \\; I_P=559.017A$\n\nActual ratio\n\n$\\;\\;=\\frac{I_P}{5}=\\frac{559.017}{5}=111.803$\n\nRatio error\n\n$\\;\\;=\\frac{\\text{Nominal Ratio} - \\text{Actual Ratio}}{\\text{Actual Ratio}} \\times 100$\n\n$\\;\\;=\\frac{100-111.803}{111.803}\\times 100=-10.56\\%$",
+        "images": []
       }
     },
     "pp:ee:2003:q83": {
@@ -3658,7 +3808,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "Measured value $=VI \\sin (\\Delta -\\phi )$\n\nwhere,\n\n$\\Delta =$ Phase angle between voltage and flux\n\n$\\cos \\phi$ = Poer factor\n\nTrue value=$VI \\cos \\phi$\n\nError=Measured value - True value\n\nCASE-I:\n\n$$\\begin{aligned} \\Delta &= 80^{\\circ}\\\\ pf&= \\cos \\phi =1\\\\ \\phi &= 0^{\\circ}\\\\ V&= 220V\\\\ I&= 5A \\\\ \\text{Error}&=VI \\sin (\\Delta -\\phi )-VI \\cos \\phi \\\\ &=220 \\times 5 \\sin(85-0^{\\circ})-220 \\times 1 \\times 1\\\\ &\\approx -4.2W \\end{aligned}$$\n\nCASE-II:\n\n$$\\begin{aligned} \\Delta &= 85^{\\circ}\\\\ pf&= \\cos \\phi =0.5\\\\ \\phi &= 60^{\\circ}\\\\ V&= 220V\\\\ I&= 5A \\\\ \\text{Error}&=VI \\sin (\\Delta -\\phi )-VI \\cos \\phi \\\\ &=220 \\times 5 \\sin(85-60^{\\circ})-220 \\times 5 \\times 0.5\\\\ &= -85.1W \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Measured value $=VI \\sin (\\Delta -\\phi )$\n\nwhere,\n\n$\\Delta =$ Phase angle between voltage and flux\n\n$\\cos \\phi$ = Poer factor\n\nTrue value=$VI \\cos \\phi$\n\nError=Measured value - True value\n\nCASE-I:\n\n$$\\begin{aligned} \\Delta &= 80^{\\circ}\\\\ pf&= \\cos \\phi =1\\\\ \\phi &= 0^{\\circ}\\\\ V&= 220V\\\\ I&= 5A \\\\ \\text{Error}&=VI \\sin (\\Delta -\\phi )-VI \\cos \\phi \\\\ &=220 \\times 5 \\sin(85-0^{\\circ})-220 \\times 1 \\times 1\\\\ &\\approx -4.2W \\end{aligned}$$\n\nCASE-II:\n\n$$\\begin{aligned} \\Delta &= 85^{\\circ}\\\\ pf&= \\cos \\phi =0.5\\\\ \\phi &= 60^{\\circ}\\\\ V&= 220V\\\\ I&= 5A \\\\ \\text{Error}&=VI \\sin (\\Delta -\\phi )-VI \\cos \\phi \\\\ &=220 \\times 5 \\sin(85-60^{\\circ})-220 \\times 5 \\times 0.5\\\\ &= -85.1W \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q84": {
@@ -3702,7 +3853,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
-        "markdown": "when two voltages are in phase i.e. $[\\phi =0^{\\circ}\\; \\text{or} \\;180^{\\circ}]$, the trace is straight line. But for $\\phi =0^{\\circ}$, the trace has positive slope and $\\phi =180^{\\circ}$, the trace has negative slope.\n\nWhen the two voltage has phase displacement of $\\phi =90^{\\circ}$, the trace is a circle. If the direction of the trace is in the clockwise direction then the phase difference is $\\phi =90^{\\circ}$.\n\nIf the direction of the trace is anti-clockwise direction the phase difference is\n\n$(2 \\pi-\\phi )=\\left ( 2\\pi-\\frac{\\pi}{2} \\right )=3\\frac{\\pi}{2}$\n\nWhen the difference is not equal to $0^{\\circ}$ or $90^{\\circ}$, the trace is an ellipse. For $\\pi \\leq \\phi \\leq \\frac{3\\pi}{2}$, the trace is an ellipse in anti-clockwise direction.\n\nTherefore, the correct answer is **D**."
+        "markdown": "when two voltages are in phase i.e. $[\\phi =0^{\\circ}\\; \\text{or} \\;180^{\\circ}]$, the trace is straight line. But for $\\phi =0^{\\circ}$, the trace has positive slope and $\\phi =180^{\\circ}$, the trace has negative slope.\n\nWhen the two voltage has phase displacement of $\\phi =90^{\\circ}$, the trace is a circle. If the direction of the trace is in the clockwise direction then the phase difference is $\\phi =90^{\\circ}$.\n\nIf the direction of the trace is anti-clockwise direction the phase difference is\n\n$(2 \\pi-\\phi )=\\left ( 2\\pi-\\frac{\\pi}{2} \\right )=3\\frac{\\pi}{2}$\n\nWhen the difference is not equal to $0^{\\circ}$ or $90^{\\circ}$, the trace is an ellipse. For $\\pi \\leq \\phi \\leq \\frac{3\\pi}{2}$, the trace is an ellipse in anti-clockwise direction.",
+        "images": []
       }
     },
     "pp:ee:2003:q85": {
@@ -3744,10 +3896,7 @@
           "bjt-fet-and-their-biasing-circuits"
         ]
       },
-      "detailed_solution": {
-        "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Electronics** (specifically *BJT, FET and their Biasing Circuits*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **BJT, FET and their Biasing Circuits**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *(40 V, 4 A)*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ((40 V, 4 A))."
-      }
+      "detailed_solution": null
     },
     "pp:ee:2003:q86": {
       "question_uid": "pp:ee:2003:q86",
@@ -3790,7 +3939,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "Due to free wheeling action, negative voltage is eliminated and power factor is improved in single-phase half controlled rectifier.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Due to free wheeling action, negative voltage is eliminated and power factor is improved in single-phase half controlled rectifier.",
+        "images": []
       }
     },
     "pp:ee:2003:q87": {
@@ -3834,7 +3984,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-5b022d6e83.webp\" />\n\nDuring $T_{on}$,\n\nVoltage across inductor\n\n$V_L=60-12=48V$\n\nArea under $V_L-t$ curve during,  $T_{on}$\n\n$A_1=V_LT_{on}=48 \\times 200 \\times 10^{-6} \\;\\;...(i)$\n\nCurrent through inductor,\n\nat $t=0$ is $I_0=I_{mn}$ and $t=T_{on}$ is  $I_0=I_{mx}$\n\nSo, area under  $V_L-t$ curve\n\n$$\\begin{aligned} A_2&=\\int_{0}^{T_{on}}LV_L dt =\\int_{0}^{T_{on}} \\frac{di}{dt}dt\\\\ &= \\int_{0}^{I_{mx}}Ldi=L[I_{mx}-I_{mn}]\\\\ &=L\\Delta I\\;\\;\\;...(ii) \\end{aligned}$$\n\nwhere $\\Delta I=$ peak to peak ripple current equating $A_1$ and $A$\n\n$$\\begin{aligned} A_1&=A_2 \\\\ 48 \\times 200 \\times 10^{-6}&=L\\Delta I \\\\ &= 20 \\times 10^{-3} \\times \\Delta I\\\\ \\Delta I&=0.48A \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-5b022d6e83.webp\" />\n\nDuring $T_{on}$,\n\nVoltage across inductor\n\n$V_L=60-12=48V$\n\nArea under $V_L-t$ curve during,  $T_{on}$\n\n$A_1=V_LT_{on}=48 \\times 200 \\times 10^{-6} \\;\\;...(i)$\n\nCurrent through inductor,\n\nat $t=0$ is $I_0=I_{mn}$ and $t=T_{on}$ is  $I_0=I_{mx}$\n\nSo, area under  $V_L-t$ curve\n\n$$\\begin{aligned} A_2&=\\int_{0}^{T_{on}}LV_L dt =\\int_{0}^{T_{on}} \\frac{di}{dt}dt\\\\ &= \\int_{0}^{I_{mx}}Ldi=L[I_{mx}-I_{mn}]\\\\ &=L\\Delta I\\;\\;\\;...(ii) \\end{aligned}$$\n\nwhere $\\Delta I=$ peak to peak ripple current equating $A_1$ and $A$\n\n$$\\begin{aligned} A_1&=A_2 \\\\ 48 \\times 200 \\times 10^{-6}&=L\\Delta I \\\\ &= 20 \\times 10^{-3} \\times \\Delta I\\\\ \\Delta I&=0.48A \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-5b022d6e83.webp"
+        ]
       }
     },
     "pp:ee:2003:q88": {
@@ -3878,7 +4031,10 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-d8e4ea9ce9.webp\" />\n\nOutput voltage,\n\n$V_0=\\sum_{n=1,3,5...}^{\\infty }\\frac{4V_s}{n \\pi} \\sin nd \\;\\sin \\frac{n \\pi}{2} \\;\\sin n\\omega t$\n\nR.M.S. value of fundamental component, n=1\n\n$=\\frac{4V_s}{\\sqrt{2}\\pi} \\sin d \\times 1$\n\n$\\alpha =120, \\;\\therefore \\;\\; 2d=120^{\\circ}, \\;\\therefore \\;\\; d=60^{\\circ}$\n\n$=\\frac{4V_s}{\\sqrt{2}\\pi} \\sin 60^{\\circ}=0.78 V_s=0.78V$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2003/ee-2003-d8e4ea9ce9.webp\" />\n\nOutput voltage,\n\n$V_0=\\sum_{n=1,3,5...}^{\\infty }\\frac{4V_s}{n \\pi} \\sin nd \\;\\sin \\frac{n \\pi}{2} \\;\\sin n\\omega t$\n\nR.M.S. value of fundamental component, n=1\n\n$=\\frac{4V_s}{\\sqrt{2}\\pi} \\sin d \\times 1$\n\n$\\alpha =120, \\;\\therefore \\;\\; 2d=120^{\\circ}, \\;\\therefore \\;\\; d=60^{\\circ}$\n\n$=\\frac{4V_s}{\\sqrt{2}\\pi} \\sin 60^{\\circ}=0.78 V_s=0.78V$",
+        "images": [
+          "/question-images/ee/2003/ee-2003-d8e4ea9ce9.webp"
+        ]
       }
     },
     "pp:ee:2003:q89": {
@@ -3922,7 +4078,8 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "To eliminate fifth harmonic,\n\n$$\\begin{aligned} &5d=0, \\pi, 2 \\pi\\Rightarrow d\\Rightarrow 0, \\frac{\\pi}{5},\\frac{2 \\pi}{5} \\\\ \\therefore & \\text{ Pulse width }=2d=\\alpha =0,\\frac{2\\pi}{5},\\frac{4 \\pi}{5}\\\\ &= (0^{\\circ},72^{\\circ},144^{\\circ}) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "To eliminate fifth harmonic,\n\n$$\\begin{aligned} &5d=0, \\pi, 2 \\pi\\Rightarrow d\\Rightarrow 0, \\frac{\\pi}{5},\\frac{2 \\pi}{5} \\\\ \\therefore & \\text{ Pulse width }=2d=\\alpha =0,\\frac{2\\pi}{5},\\frac{4 \\pi}{5}\\\\ &= (0^{\\circ},72^{\\circ},144^{\\circ}) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2003:q90": {
@@ -3966,7 +4123,8 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "$N_{S1}=3000 \\; \\text{rpm}$\n\n$N_1=2850 \\; \\text{rpm}$\n\n$S_{FL}=\\frac{3000-2850}{3000}=0.05$\n\nwhere, by (V/f) control,\n\n$N_{S2}=3000\\left ( \\frac{40}{50} \\right )=2400 \\; \\text{rpm}$\n\n(synchronous speed at 40 Hz)\n\n$N_2=$ New running speed of motor\n\n$N_{S2}\\left ( 1-\\frac{S_{FL}}{2} \\right )=2400\\left ( 1-\\frac{0.05}{2} \\right )$  $=2340 \\; \\text{rpm}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$N_{S1}=3000 \\; \\text{rpm}$\n\n$N_1=2850 \\; \\text{rpm}$\n\n$S_{FL}=\\frac{3000-2850}{3000}=0.05$\n\nwhere, by (V/f) control,\n\n$N_{S2}=3000\\left ( \\frac{40}{50} \\right )=2400 \\; \\text{rpm}$\n\n(synchronous speed at 40 Hz)\n\n$N_2=$ New running speed of motor\n\n$N_{S2}\\left ( 1-\\frac{S_{FL}}{2} \\right )=2400\\left ( 1-\\frac{0.05}{2} \\right )$  $=2340 \\; \\text{rpm}$",
+        "images": []
       }
     }
   }

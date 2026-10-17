@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:12:14.234Z",
+  "generatedAt": "2026-10-17T18:29:25.621Z",
   "shardKey": "2026-s1",
   "yearSetKey": "2026-s1",
   "yearSetIdentity": "cse:2026:set-1",
@@ -53,6 +53,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "A <b>protagonist</b> is the central, leading character of a story (the \"hero\"). Its direct opposite is the <b>antagonist</b> &mdash; the character who opposes or works against the protagonist.\n\nThe other options (agnostic, arsonist, anarchist) are unrelated words that merely share a similar sound/suffix but have no antonym relationship with \"protagonist.\"",
+        "images": []
       }
     },
     "go:523088": {
@@ -98,6 +103,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Spatial Aptitude",
+        "markdown": "This is a visual tiling/pattern-matching question based on an accompanying figure: two given $4$-tile shapes (usable any number of times, in any rotation/reflection, without overlapping) must be combined to try to reconstruct each of the candidate patterns (A, B, C, D).\n\nChecking each candidate pattern by attempting to tile it using only copies of the two given $4$-tile shapes (in any orientation): patterns A, B, and D can each be fully covered by some combination of the two tile shapes with no gaps or overlaps, but pattern C's shape cannot be decomposed into a combination of the two given tiles no matter how they are rotated or arranged &mdash; some region of C is always left over or mismatched.",
+        "images": []
       }
     },
     "go:523087": {
@@ -142,6 +152,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "This is a single-elimination (knock-out) tournament: every game has exactly one loser, and every loser is eliminated permanently. To determine a single overall winner among $64$ players, all $63$ of the other players must each lose exactly one game (and no player needs to lose more than once, since losing eliminates them).\n\nSo the number of games played $=$ number of players eliminated $=64-1=63$ (each game produces exactly one elimination).",
+        "images": []
       }
     },
     "go:523086": {
@@ -186,6 +201,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Fixed compulsory credits: core $=15$, project $=20$; together $=35$ credits, regardless of anything else.\n\nRemaining credits (specialization + elective) must fit so that the <b>total</b> is between $60$ and $70$. To <b>maximize</b> elective credits, we want the overall total to be as large as possible (i.e. $70$) while specialization is kept at its <b>minimum</b> allowed value ($10$ credits), leaving as much of the credit budget as possible for electives.\n\nMaximum elective $=70-15-20-10=25$.",
+        "images": []
       }
     },
     "go:523085": {
@@ -229,6 +249,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Analytical Aptitude",
+        "markdown": "The given statement is: $\\text{Teacher in room}\\Rightarrow(\\text{Standing}\\wedge\\text{Silent})$ &mdash; i.e., being in the room implies students are <i>both</i> standing <i>and</i> silent.\n\n- <b>\"If any student is not standing silently, then the teacher is not in the room\"</b> is exactly the logical <b>contrapositive</b> of the original statement, so it is guaranteed true.\n\n- <b>\"When the teacher is in the room, all students are silent\"</b> follows directly, since \"standing $\\wedge$ silent\" implies \"silent\" alone. Guaranteed true.\n\n- <b>\"When the teacher is in the room, all students are standing\"</b> similarly follows, since the conjunction implies \"standing\" alone. Guaranteed true.\n\n- <b>\"If all students are standing, then the teacher is in the room\"</b> is the <b>converse</b> of part of the original implication &mdash; the original statement never claims anything about what causes students to stand; they could be standing for a completely different reason (a fire alarm, another activity, etc.) while the teacher is absent. This is <b>not necessarily true</b>.",
+        "images": []
       }
     },
     "go:523084": {
@@ -273,6 +298,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Analytical Aptitude",
+        "markdown": "The passage explains that combinatorics is <i>sometimes</i> (\"often,\" \"in such models\") used when modeling physical phenomena by assigning probabilities to combinatorial possibilities &mdash; it never claims combinatorics is <i>always</i> invoked in every physical model.\n\n- <b>P</b> (\"Combinatorics is always invoked...\") over-generalizes what the passage actually says (which uses qualifiers like \"often\" and \"sometimes,\" not \"always\"). So <b>P is False</b>.\n\n- <b>Q</b> (\"Modeling some physical phenomena involves assigning probabilities to combinatorial possibilities to compute average values\") is a direct restatement of what the passage explicitly says. So <b>Q is True</b>.",
+        "images": []
       }
     },
     "go:523083": {
@@ -318,6 +348,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Spatial Aptitude",
+        "markdown": "This is a spatial-reasoning question based on an accompanying figure showing a front view and top view (Panel I) that must be matched against four candidate 3D solids (Panel II).\n\nChecking each candidate solid (i)-(iv) against both given views: a solid must simultaneously produce the exact given <b>front view</b> silhouette when viewed from the front, and the exact given <b>top view</b> silhouette when viewed from above. Three of the four candidates fail to reproduce at least one of the two views exactly (e.g. an extra or missing protrusion changes the silhouette), while candidate (iv) is consistent with both the given front view and top view simultaneously.",
+        "images": []
       }
     },
     "go:523082": {
@@ -360,6 +395,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "$H_K(S)=\\max(S-K,0)$ is the standard \"ramp\"/hinge function: it is $0$ for $S\\le K$, and rises linearly with slope $1$ for $S>K$.\n\nThe plotted function $N(S)$ (from the figure) is $0$ up to $S=10$, then rises with slope $1$ from $S=10$ to $S=20$, and then becomes flat (constant) again for $S>20$ &mdash; a shape that increases and then saturates.\n\nThis exact shape is produced by taking one upward ramp starting at $10$ and <i>cancelling its slope</i> beyond $20$ using a second ramp of opposite sign starting at $20$:\n\n$N(S)=H_{10}(S)-H_{20}(S)$\n\nFor $S\\le10$: both terms are $0$ &rarr; $N=0$. For $10<S\\le20$: $H_{10}(S)=S-10$, $H_{20}(S)=0$ &rarr; $N=S-10$ (rising). For $S>20$: $H_{10}(S)=S-10$, $H_{20}(S)=S-20$ &rarr; $N=(S-10)-(S-20)=10$ (flat/saturated), matching the graph.",
+        "images": []
       }
     },
     "go:523081": {
@@ -403,6 +443,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Analytical Aptitude",
+        "markdown": "Work through the clues step by step:\n\n(i) Rounds $1$ and $2$ belong entirely to Neeraj Chopra (his 2nd throw was gold-medal-worthy); Jakub and Vesely achieved <i>none</i> of their medal-relevant (best) throws in these two rounds. So <b>neither Jakub's nor Vesely's personal-best throw happened in round 1 or 2</b> &mdash; both of their best throws must fall somewhere in rounds $3$-$6$.\n\n(ii) Both Jakub's and Vesely's round-$6$ throws were fouls (not counted at all), so neither of their best throws can be in round $6$ either. This narrows their best throws down to rounds $3,4,5$.\n\n(iii) After $4$ rounds, Vesely already held $2$nd position, and he never improved on this best throw afterward (rounds $5$ and $6$ didn't help him). So <b>Vesely's personal-best throw must have occurred within rounds $1$-$4$</b> &mdash; combined with the earlier elimination of rounds $1,2$, this leaves only round $3$ or round $4$ as candidates.\n\n(iv) In round $4$, it was <i>Jakub's</i> throw that was the best of that round (not Vesely's) &mdash; this is consistent with Vesely's personal best having already been set earlier, in round $3$, and round $4$ simply being a round where Jakub (not Vesely) peaked.\n\nPutting it together, Vesely's best throw was in <b>round 3</b>.",
+        "images": []
       }
     },
     "go:523080": {
@@ -446,6 +491,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "For the first roll $=a$ and second roll $=b$ (each uniformly from $\\{1,\\ldots,6\\}$), we need $b$ to be a multiple of $a$. Count, for each value of $a$, how many values of $b\\in\\{1,\\ldots,6\\}$ are multiples of $a$:\n\n$$\\begin{array}{c|c}a&\\text{multiples of }a\\text{ in }\\{1,...,6\\}\\\\\\hline1&1,2,3,4,5,6\\ (6)\\\\2&2,4,6\\ (3)\\\\3&3,6\\ (2)\\\\4&4\\ (1)\\\\5&5\\ (1)\\\\6&6\\ (1)\\end{array}$$\n\nTotal favorable outcomes $=6+3+2+1+1+1=14$ out of $6\\times6=36$ equally likely outcomes.\n\nProbability $=\\dfrac{14}{36}=\\dfrac{7}{18}$.",
+        "images": []
       }
     },
     "go:523079": {
@@ -486,6 +536,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Let the urn start with $1$ red and $1$ blue ball.\n\n<b>Step 1:</b> A ball is picked uniformly (prob $1/2$ each). If red is picked, the urn becomes $(2R,1B)$; if blue is picked, the urn becomes $(1R,2B)$. Each case has probability $1/2$.\n\n<b>Step 2:</b> We want the urn to end up with equal red and blue balls, i.e. $(2R,2B)$ (since after 2 steps there are always $4$ balls total).\n\n- From $(2R,1B)$: we need to pick the blue ball, probability $=1/3$.\n\n- From $(1R,2B)$: we need to pick the red ball, probability $=1/3$.\n\nSo required probability $=\\dfrac{1}{2}\\times\\dfrac{1}{3}+\\dfrac{1}{2}\\times\\dfrac{1}{3}=\\dfrac{1}{3}$.",
+        "images": []
       }
     },
     "go:523078": {
@@ -525,6 +580,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Combinatory",
+        "markdown": "We need $4\\times4$ binary matrices where every row and every column has an even number of $1$s.\n\nFreely choose the top-left $3\\times3$ sub-block: this can be filled in any of $2^{9}=512$ ways.\n\nOnce this $3\\times3$ block is fixed, the entries in the $4$th column (for the first $3$ rows) are forced so that each of those rows has an even number of $1$s, and similarly the entries in the $4$th row (for the first $3$ columns) are forced by the column parity condition. The single remaining corner entry (row $4$, column $4$) is then also forced, and it is easy to check the row-$4$ parity and column-$4$ parity conditions become consistent automatically.\n\nSo the count of valid matrices $=2^{(4-1)^2}=2^9=512$.",
+        "images": []
       }
     },
     "go:523077": {
@@ -571,6 +631,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Eigen Value",
+        "markdown": "For an $n\\times n$ real matrix, the multiplicity of any eigenvalue (as a root of the characteristic polynomial, which has degree $n$) can be at most $n$.\n\nThis bound is achieved: for example, the identity matrix $I_n$ (or any scalar matrix $cI_n$) has the single eigenvalue $c$ repeated exactly $n$ times.\n\nSo the maximum possible multiplicity of any eigenvalue is $n$.",
+        "images": []
       }
     },
     "go:523076": {
@@ -615,6 +680,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Addressing Modes",
+        "markdown": "Matching addressing modes to the high-level data element they naturally implement:\n\n- <b>P. Immediate</b>: the operand value is embedded directly in the instruction &rarr; used for a <b>Constant (4)</b>.\n\n- <b>Q. Indirect</b>: the instruction holds the address of the address of data &rarr; used to implement a <b>Pointer (2)</b>.\n\n- <b>R. Base with index</b>: effective address = base + index, naturally used to access an <b>Element of an array (1)</b> (base = array start, index = subscript).\n\n- <b>S. Base with offset/displacement</b>: effective address = base + fixed offset, naturally used to access an <b>Element of a record/struct (3)</b> (base = record start, offset = field position).",
+        "images": []
       }
     },
     "go:523075": {
@@ -659,6 +729,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Instruction Format",
+        "markdown": "In a load-store (register-register) architecture, arithmetic instructions can only operate on registers, never directly on memory. So to compute $Z=X+Y$ where $X,Y,Z$ are memory locations, we must:\n\n1. LOAD both memory operands into registers: $\\text{LOAD } R0, X$ and $\\text{LOAD } R1, Y$.\n\n2. Perform the addition on registers: $\\text{ADD } R2, R0, R1$ (destination is first operand, per the given convention).\n\n3. STORE the result back to memory: $\\text{STORE } Z, R2$.\n\nAny option that uses a memory operand directly inside an ADD instruction (e.g. $\\text{ADD } Z, X, Y$ or $\\text{ADD } Z, R0, Y$) is invalid for a load-store machine, since ADD can only take register operands.",
+        "images": []
       }
     },
     "go:523074": {
@@ -706,6 +781,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Addressing Modes",
+        "markdown": "A data hazard occurs when an instruction depends on the result of a nearby instruction that has not yet completed in the pipeline.\n\n- <b>Read-after-Write (RAW)</b>: a later instruction tries to read a register before an earlier instruction has written its new value &mdash; this is a true/flow dependency, and causes a genuine data hazard in a pipeline.\n\n- <b>Write-after-Read (WAR)</b> and <b>Write-after-Write (WAW)</b> are anti-/output-dependencies; they cause hazards only in pipelines that allow out-of-order completion, not in a simple in-order pipeline.\n\n- <b>Read-after-Read</b> is not a dependency at all &mdash; reads never conflict with each other.",
+        "images": []
       }
     },
     "go:523073": {
@@ -752,6 +832,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Time Complexity",
+        "markdown": "First solve $T_2(n)=5T_2(n/4)+\\Theta(\\log_2 n)$.\n\nHere $a=5,\\,b=4$, so $n^{\\log_b a}=n^{\\log_4 5}$. Since $\\log_2 n$ is polynomially smaller than $n^{\\log_4 5}$ (as $\\log_4 5\\approx1.16>0$), by the Master theorem (Case 1):\n\n$T_2(n)=\\Theta\\left(n^{\\log_4 5}\\right)$.\n\nNow solve $T_1(n)=4T_1(n/2)+T_2(n)$.\n\nHere $a=4,\\,b=2$, so $n^{\\log_b a}=n^{\\log_2 4}=n^2$. The extra term $f(n)=T_2(n)=\\Theta(n^{\\log_4 5})=\\Theta(n^{1.16\\ldots})$, which is polynomially smaller than $n^2$ (since $n^2/n^{1.16}=n^{0.84}\\to\\infty$).\n\nBy Master theorem Case 1: $T_1(n)=\\Theta(n^2)$.",
+        "images": []
       }
     },
     "go:523072": {
@@ -796,6 +881,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - TCP",
+        "markdown": "Checking each statement about a TCP connection:\n\n- TCP uses a <b>three-way</b> handshake (SYN, SYN-ACK, ACK), not a two-way handshake &mdash; false.\n\n- Either side (client or server) is free to initiate connection termination first; the server is not required to wait for the client &mdash; false.\n\n- TCP is a <b>full-duplex</b> protocol &mdash; data can flow in both directions simultaneously &mdash; so \"half-duplex\" is false.\n\n- TCP supports <b>simultaneous close</b>: both client and server can send a FIN at (roughly) the same time, and each independently acknowledges the other's FIN. This is a valid connection-termination scenario in TCP's state machine.",
+        "images": []
       }
     },
     "go:523071": {
@@ -853,6 +943,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Application Layer Protocols",
+        "markdown": "HTTP/1.1 introduced <b>persistent connections</b> and <b>pipelining</b> over a single TCP connection:\n\n- <b>True:</b> Multiple objects of the same webpage, if hosted on the same server, can be fetched over one persistent TCP connection &mdash; this is exactly the point of persistent connections.\n\n- <b>False:</b> A single TCP connection is between one client and one specific server; objects stored on a <i>different</i> server require a separate TCP connection to that server. So this statement is false.\n\n- <b>True:</b> HTTP/1.1 supports <b>pipelining</b> &mdash; a client can send a new request before the response to a previous request has been fully received, over the same connection.\n\n- <b>True:</b> Since the TCP connection persists (is not closed after one request/response), multiple different webpages/resources from the same server can be downloaded over that same single connection, one after another.",
+        "images": []
       }
     },
     "go:523070": {
@@ -906,6 +1001,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Since $(0,1,0,\\ldots,0)$ is in the null space of $M$, we have $M\\cdot(0,1,0,\\ldots,0)^T=\\mathbf{0}$. But $M$ times this unit vector simply extracts the <b>2nd column of $M$</b>. So the 2nd column of $M$ is entirely zero.\n\n- <b>Determinant:</b> A matrix with an all-zero column always has determinant $0$. So \"$\\det(M)=0$\" is always true. (\"$\\det(M)=1$\" is always false.)\n\n- <b>Rank:</b> The rank could be anywhere from $0$ to $n-1$ depending on the other columns, so \"rank $=1$\" is not always true.\n\n- <b>Null space size:</b> Since the null space contains the nonzero vector $(0,1,0,\\ldots,0)$, it also contains every scalar multiple of it (e.g. $(0,2,0,\\ldots,0)$, $(0,-1,0,\\ldots,0)$, etc.), giving infinitely many, hence at least two, distinct non-zero vectors in the null space. This is always true.",
+        "images": []
       }
     },
     "go:523069": {
@@ -961,6 +1061,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Boolean Algebra",
+        "markdown": "Let's build the truth table for $F(P,Q)=(\\bar{P}+Q)\\oplus(\\bar{P}Q)$:\n\n$$\\begin{array}{cc|ccc}P & Q & \\bar P+Q & \\bar P Q & F\\\\\\hline 0&0&1&0&1\\\\0&1&1&1&0\\\\1&0&0&0&0\\\\1&1&1&0&1\\end{array}$$\n\nSo $F=1$ exactly when $P=Q$, i.e. $F$ is the XNOR of $P$ and $Q$.\n\n- $\\overline{P\\oplus Q}$ (XNOR written as complement of XOR) matches this truth table exactly.\n\n- $\\bar P\\oplus Q$: complementing one input of XOR flips its output, which converts XOR into XNOR &mdash; so this is also equal to $F$.\n\n- $P\\oplus Q$ and $\\bar P\\oplus\\bar Q$ both equal ordinary XOR (complementing <i>both</i> inputs leaves XOR unchanged), which is the complement of $F$, not $F$ itself.",
+        "images": []
       }
     },
     "go:523068": {
@@ -1016,6 +1121,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "In 8-bit sign-magnitude form, bit 7 is the sign and bits 6-0 give the magnitude (max magnitude $=127$).\n\n$X=10110100$: sign $=1$ (negative), magnitude $=0110100_2=52$, so $X=-52$.\n\n$Y=01001100$: sign $=0$ (positive), magnitude $=1001100_2=76$, so $Y=+76$.\n\nOverflow happens whenever the true arithmetic result's magnitude exceeds $127$ (i.e. falls outside $[-127,127]$):\n\n- $X+Y=-52+76=24$ &rarr; within range, <b>no overflow</b>.\n\n- $X-Y=-52-76=-128$ &rarr; magnitude $128>127$, <b>overflow</b>.\n\n- $-X+Y=52+76=128$ &rarr; magnitude $128>127$, <b>overflow</b>.\n\n- $-X-Y=52-76=-24$ &rarr; within range, <b>no overflow</b>.",
+        "images": []
       }
     },
     "go:523067": {
@@ -1068,6 +1178,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Hashing",
+        "markdown": "In a 1-indexed array representation of a binary heap with $n$ elements, the leaf nodes are exactly the indices $\\left\\lfloor \\dfrac{n}{2}\\right\\rfloor+1$ through $n$ (nodes with no children).\n\nFor odd $n$, $\\left\\lfloor n/2\\right\\rfloor=\\dfrac{n-1}{2}$, so:\n\n- Leaf indices: $\\dfrac{n-1}{2}+1=\\dfrac{n+1}{2}$ up to $n$.\n\n- Internal (non-leaf) indices: $1$ up to $\\dfrac{n-1}{2}$.\n\nChecking the given indices:\n\n- $\\dfrac{n+1}{2}$: this <i>is</i> the first leaf index &mdash; corresponds to a leaf.\n\n- $n$: this is the last leaf &mdash; corresponds to a leaf.\n\n- $\\dfrac{n-1}{2}$: this is the <i>last internal</i> node index &mdash; it does NOT correspond to a leaf.\n\n- $\\dfrac{n-3}{2}$: this is less than $\\dfrac{n-1}{2}$, so also an internal node &mdash; does NOT correspond to a leaf.",
+        "images": []
       }
     },
     "go:523066": {
@@ -1115,6 +1230,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Hashing",
+        "markdown": "Hash function: $h(x)=(x+7)\\bmod 11$, table size $11$ (indices $0$ to $10$), linear probing.\n\nCompute initial hash and, on collision, probe the next slot(s) circularly:\n\n$$\\begin{array}{c|c|c}\\text{Key}&h(x)&\\text{Placed at}\\\\\\hline 1&8&8\\ (\\text{empty})\\\\13&9&9\\ (\\text{empty})\\\\22&7&7\\ (\\text{empty})\\\\15&0&0\\ (\\text{empty})\\\\11&7&7\\text{ taken}\\to8\\text{ taken}\\to9\\text{ taken}\\to10\\ (\\text{empty})\\\\24&9&9\\text{ taken}\\to10\\text{ taken}\\to0\\text{ taken}\\to1\\ (\\text{empty})\\end{array}$$\n\nFinal table: $0{:}15,\\ 1{:}24,\\ 7{:}22,\\ 8{:}1,\\ 9{:}13,\\ 10{:}11$. Positions $2,3,4,5,6$ remain empty.\n\nOf the choices given (0, 10, 2, 1), only position <b>2</b> is empty &mdash; the others (0, 1, 10) are all occupied.",
+        "images": []
       }
     },
     "go:523065": {
@@ -1169,6 +1289,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Context Free Grammar",
+        "markdown": "Grammar: $S\\rightarrow aSbS\\mid bS\\mid \\epsilon$.\n\n<b>Ambiguity:</b> The string $abb$ can be generated by two different parse trees (e.g. treating the leading $a$ as part of an $aSbS$ expansion in two structurally different ways using the $bS$ and $\\epsilon$ rules for the inner S's). Since one string has two distinct derivations/parse trees, the grammar is <b>ambiguous</b>, and specifically <b>$abb$ has two distinct derivations</b>.\n\n<b>Rightmost derivation of $abab$:</b> although the grammar is ambiguous in general, tracing through this specific string shows that its rightmost derivation sequence is forced to be unique.\n\n<b>On decidability:</b> The language generated is context-free, and membership in any context-free language is always decidable &mdash; so \"the language is undecidable\" is false.",
+        "images": []
       }
     },
     "go:523064": {
@@ -1222,6 +1347,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "By the subset construction, any $n$-state NFA has an equivalent DFA with at most $2^n$ states (one state for every subset of NFA states), and the <b>minimal</b> DFA has at most that many states as well (minimization can only reduce, never increase, the state count).\n\nFor $n=6$, the maximum possible number of states in the equivalent minimal DFA is $2^6=64$.\n\n- $32\\le64$: achievable.\n\n- $1\\le64$: achievable (e.g. an NFA accepting all strings can minimize to a single-state DFA).\n\n- $65$ and $128$: both exceed the hard upper bound of $64$, so neither can ever be the size of the minimal DFA.",
+        "images": []
       }
     },
     "go:523063": {
@@ -1273,6 +1403,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "$\\text{S1: char *str1 = \"Hello;}$ &mdash; the string literal is missing its closing double-quote. An unterminated string literal is a <b>lexical error</b> (the lexer/scanner cannot even form a valid string token).\n\n$\\text{S2: char *str2 = \"Hello;\";}$ &mdash; this is a perfectly valid string literal (containing a semicolon character) assigned to a $\\text{char *}$; no error at all.\n\n$\\text{S3: int *str3 = \"Hello\";}$ &mdash; this is lexically and syntactically fine (a valid string literal, valid statement syntax), but it assigns a $\\text{char *}$ value to an incompatible $\\text{int *}$ pointer type. This is a type-mismatch, which is a <b>semantic error</b> (caught during semantic/type analysis, not parsing).",
+        "images": []
       }
     },
     "go:523062": {
@@ -1320,6 +1455,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "Checking each claim about LL(1) parsing:\n\n- \"LL(1) parser uses backtracking\" &mdash; <b>false</b>. LL(1) is a predictive, backtrack-free top-down parser: it decides the production to use by looking at only one lookahead symbol.\n\n- \"For LL(1), the grammar must be left-recursive\" &mdash; <b>false</b>, in fact the opposite: a left-recursive grammar can never be LL(1) (it would cause infinite recursion in the predictive parser), so left recursion must first be eliminated.\n\n- \"For LL(1), the grammar must be left-factored\" &mdash; <b>true</b>. If two productions of a non-terminal share a common prefix, the parser cannot decide which one to use from one lookahead symbol; left-factoring removes this ambiguity, which is a necessary step towards making a grammar LL(1).\n\n- \"LL(1) parsers are more powerful than SLR parsers\" &mdash; <b>false</b>. LL(1) and SLR(1) are different (incomparable) classes of grammars; SLR(1), being bottom-up, actually accepts a strictly larger class of grammars than LL(1) in general, so LL(1) is not \"more powerful.\"",
+        "images": []
       }
     },
     "go:523061": {
@@ -1368,6 +1508,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Deadlock Prevention Avoidance Detection",
+        "markdown": "Evaluating each deadlock-related statement:\n\n- <b>\"Banker's algorithm is used to prevent deadlocks\"</b> &mdash; <b>FALSE</b>. Banker's algorithm is a <i>deadlock-avoidance</i> algorithm (it checks resource requests dynamically to keep the system in a safe state); deadlock <i>prevention</i> refers to a different set of techniques that structurally rule out one of the four necessary conditions (mutual exclusion, hold-and-wait, no pre-emption, circular wait).\n\n- \"Deadlock formation can be prevented by disallowing hold-and-wait\" &mdash; <b>true</b>: this is a standard, valid deadlock-prevention technique (one of the four necessary conditions is removed).\n\n- <b>\"An assignment edge in a resource-allocation graph is marked from a process to a resource\"</b> &mdash; <b>FALSE</b>. It's the reverse: an <i>assignment</i> edge goes from a resource to a process (resource is allocated to the process); a <i>request</i> edge goes from a process to a resource.\n\n- \"A safe state guarantees all processes can finish without deadlock\" &mdash; <b>true</b>: this is precisely the definition of a safe state.\n\n<b>Answer (the FALSE statements): \"Banker's algorithm prevents deadlocks\", and \"an assignment edge goes from process to resource.\"</b>",
+        "images": []
       }
     },
     "go:523060": {
@@ -1419,6 +1564,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Functional Dependency",
+        "markdown": "Using Armstrong's axioms (reflexivity, augmentation, transitivity) to test each claim:\n\n- <b>{P,Q}&rarr;{R} and {P}&rarr;{R}, does {Q}&rarr;{R} follow?</b> No &mdash; {P}&rarr;{R} already implies {P,Q}&rarr;{R} by augmentation, so the premises give no information forcing {Q}&rarr;{R} to hold. <b>Not always true.</b>\n\n- <b>{P,Q}&rarr;{R}, does {P}&rarr;{R} or {Q}&rarr;{R} follow?</b> No &mdash; {R} may genuinely require both P and Q together (e.g. R functionally depends on the pair but on neither attribute alone). <b>Not always true.</b>\n\n- <b>{P}&rarr;{R} and {Q}&rarr;{S}, does {P,Q}&rarr;{R,S} follow?</b> Yes: augment {P}&rarr;{R} with Q to get {P,Q}&rarr;{R,Q}; augment {Q}&rarr;{S} with P to get {P,Q}&rarr;{P,S}; using reflexivity ({R,Q}&rarr;{R} and {P,S}&rarr;{S}) and transitivity gives {P,Q}&rarr;{R} and {P,Q}&rarr;{S}; the union rule then gives {P,Q}&rarr;{R,S}. <b>Always true.</b>\n\n- <b>{P}&rarr;{R}, does {P,Q}&rarr;{R} follow?</b> Yes, directly by the augmentation axiom (adding Q to the left-hand side of a valid FD keeps it valid). <b>Always true.</b>",
+        "images": []
       }
     },
     "go:523059": {
@@ -1473,6 +1623,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "Standard relational-normalization theory results:\n\n- <b>3NF:</b> It is a classical theorem that <i>every</i> relation schema has a dependency-preserving (and lossless-join) decomposition into 3NF, via the synthesis algorithm on a minimal cover of the FDs. <b>True.</b>\n\n- <b>1NF:</b> 1NF only requires atomic domains; a relation can always trivially satisfy/preserve 1NF without needing to give up any functional dependency (no decomposition is even forced). <b>True.</b>\n\n- <b>BCNF:</b> It is a well-known counterexample-backed result that a dependency-preserving BCNF decomposition is <i>not always</i> possible &mdash; achieving BCNF can force us to lose some functional dependency (they can only be checked by joining relations back together, which is expensive/impossible to enforce locally). <b>True</b> (i.e., \"not always possible\" is a true statement).\n\n- <b>2NF:</b> Since a dependency-preserving 3NF decomposition always exists, and 3NF automatically implies 2NF, a dependency-preserving 2NF decomposition is <i>always</i> achievable too. So \"it is not always possible to get a dependency-preserving 2NF decomposition\" is <b>false</b>.",
+        "images": []
       }
     },
     "go:523058": {
@@ -1521,6 +1676,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "For $f$ to be continuous at $x=0$, we need $\\lim_{x\\to0^{+}}f(x)=f(0)=3$.\n\n$\\lim_{x\\to0^{+}}\\left[c_1e^{x}-c_2\\log_e\\left(\\dfrac1x\\right)\\right]$\n\nAs $x\\to0^{+}$: $e^{x}\\to1$, while $\\log_e(1/x)=-\\log_e x\\to+\\infty$. For the overall limit to be a finite number, the coefficient of this diverging term must be zero:\n\n$c_2=0$.\n\nWith $c_2=0$, the limit becomes $c_1\\cdot1=c_1$. Setting this equal to $f(0)=3$ gives $c_1=3$.\n\nSo $c_1+c_2=3+0=3$.",
+        "images": []
       }
     },
     "go:523057": {
@@ -1568,6 +1728,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "In a <b>full</b> binary tree, every node has either $0$ or $2$ children. If there are $I$ internal (2-children) nodes and $L$ leaves, then $L=I+1$, and total nodes $N=I+L=2I+1$.\n\nFor $N=23$: $23=2I+1\\Rightarrow I=11$ internal nodes and $L=12$ leaves.\n\nTo <b>maximize height</b>, make the tree as \"skewed\"/chain-like as possible while still keeping every internal node's 2-children rule: each internal node (except the last one in the chain) has one leaf child and one internal child continuing the chain; the very last internal node has two leaf children.\n\nThis chain uses exactly $I=11$ internal nodes along the main path, with the deepest leaves appearing right after the $11$th internal node. So the longest root-to-leaf path has $11$ edges.",
+        "images": []
       }
     },
     "go:523056": {
@@ -1617,6 +1782,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "Trace the call $\\text{func(9, 10)}$ (parameters $i=9,\\,j=10$ inside func, independent copies of main's variables):\n\n1. Condition $i<j$ i.e. $9<10$ is true, so we enter the block.\n\n2. Inside the block, a <b>new, block-scoped</b> variable $\\text{int } i=0$ is declared &mdash; this shadows/hides the outer parameter $i$ only within this inner block.\n\n3. The while loop runs while this inner $i<10$: it executes $10$ times, each time doing $j{+}{=}2$ (affecting the outer/parameter $j$) and incrementing the inner $i$ (from $0$ up to $10$, at which point the loop stops).\n\n4. Once the block ends, the inner $i$ goes out of scope entirely; the outer parameter $i$ (value $9$) was never touched by anything in the block.\n\n5. $\\text{printf(\"\\%d\", i)}$ refers to the (unshadowed, outer) parameter $i$, which is still $9$.",
+        "images": []
       }
     },
     "go:523055": {
@@ -1664,6 +1834,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Deadlock Prevention Avoidance Detection",
+        "markdown": "This is the classic deadlock-avoidance-by-resource-count formula. Each of the $5$ processes needs at most $2$ instances of $R$.\n\nA guaranteed deadlock-free allocation is possible if, even in the worst case where every process is holding one instance and waiting for its second, at least one process can still obtain its second instance and finish (then release both, allowing the rest to proceed in turn).\n\nWorst case: each of the $5$ processes holds $(max-1)=1$ instance already, using up $5\\times1=5$ instances, and one more instance must be available so that at least one waiting process can get its 2nd instance and complete.\n\nSo minimum $k=5\\times(2-1)+1=6$.",
+        "images": []
       }
     },
     "go:523054": {
@@ -1710,6 +1885,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - IEEE Representation",
+        "markdown": "Decode both IEEE-754 single-precision numbers (format: 1 sign bit, 8 exponent bits [bias 127], 23 mantissa bits):\n\n$X=35\\text{C}00000_{16}$ &rarr; sign $=0$, exponent bits $=01101011_2=107$ (unbiased $=107-127=-20$), mantissa $=1.1_2$. So $X=1.1_2\\times2^{-20}$.\n\n$Y=34\\text{A}00000_{16}$ &rarr; sign $=0$, exponent bits $=01101001_2=105$ (unbiased $=-22$), mantissa $=1.01_2$. So $Y=1.01_2\\times2^{-22}$.\n\nTo add, align $Y$'s exponent to $-20$ by shifting its mantissa right by $2$ bits: $Y=0.0101_2\\times2^{-20}$.\n\n$X+Y=(1.1000_2+0.0101_2)\\times2^{-20}=1.1101_2\\times2^{-20}$.\n\nThis is already normalized (leading digit $1$, no need to shift the exponent). So $Z$ has the same exponent as $X$ (exponent bits $01101011$) and mantissa $1101\\underbrace{0\\ldots0}_{19\\text{ zeros}}$, giving hex $35\\text{E}80000$.",
+        "images": []
       }
     },
     "go:523053": {
@@ -1753,6 +1933,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Digital Counter",
+        "markdown": "From the given next-state table, list the input combinations $(P,Q_1,Q_0)$ for which $D_1(=Q_1^+)=1$: $(0,0,1),\\,(0,1,0),\\,(0,1,1),\\,(1,1,1)$.\n\nGrouping these minterms: $(0,1,0)$ and $(0,1,1)$ combine to $\\bar P Q_1$; $(0,0,1)$ and $(0,1,1)$ combine to $\\bar P Q_0$; $(0,1,1)$ and $(1,1,1)$ combine to $Q_1Q_0$. Together these three product terms cover exactly the $4$ required minterms (and nothing extra), giving:\n\n$D_1=\\bar P Q_1+\\bar P Q_0+Q_1Q_0$\n\nSimilarly, $D_0(=Q_0^+)=1$ for $(0,0,0),\\,(0,1,0),\\,(0,1,1),\\,(1,1,0)$. Grouping: $(0,0,0)$ & $(0,1,0)$ &rarr; $\\bar P\\overline{Q_0}$; $(0,1,0)$ & $(0,1,1)$ &rarr; $\\bar P Q_1$; $(0,1,0)$ & $(1,1,0)$ &rarr; $Q_1\\overline{Q_0}$. This covers exactly the required minterms:\n\n$D_0=\\bar P\\overline{Q_0}+\\bar P Q_1+Q_1\\overline{Q_0}$",
+        "images": []
       }
     },
     "go:523052": {
@@ -1798,6 +1983,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "Given: address space $=2^{32}$ bytes, cache size $=2^{23}$ bytes, block size $=128=2^7$ bytes.\n\n<b>Direct-mapped cache:</b> number of cache lines $=\\dfrac{2^{23}}{2^7}=2^{16}$, so index field $=16$ bits, offset field $=7$ bits. Tag field $M=32-16-7=9$ bits.\n\n<b>$K$-way set-associative cache ($K=2^L$):</b> number of sets $=\\dfrac{2^{16}}{2^L}=2^{16-L}$, so index field $=16-L$ bits, offset field still $=7$ bits. Tag field $N=32-(16-L)-7=9+L$ bits.\n\nComparing: $N=9+L=M+L$ (since $M=9$).",
+        "images": []
       }
     },
     "go:523051": {
@@ -1840,6 +2030,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "We want a recursive count of nodes in a non-empty singly linked list.\n\nThe natural recursive base case is: <b>if the current node is the last node</b> (i.e. $\\text{head->next==NULL}$), then this contributes exactly $1$ to the count, so $\\text{E1: head->next==NULL}$, returning $1$.\n\nOtherwise, the count is $1$ (for the current node) plus however many nodes remain in the rest of the list starting from $\\text{head->next}$: $\\text{E2: 1+getListSize(head->next)}$.\n\n(Using $\\text{head==NULL}$ as the base case instead would also work logically for a possibly-empty list, but here the function is documented to be called only on a non-empty list, and combined with the given E2 form, the option that consistently checks $\\text{head->next}$ in the base case and recurses on $\\text{head->next}$ is the matching, correct pair.)",
+        "images": []
       }
     },
     "go:523050": {
@@ -1883,6 +2078,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "Since the $15$ elements form a <b>complete</b> binary tree that is also a valid <b>BST</b>, the shape and contents of every position are fully determined: the tree must be a perfectly balanced BST on $\\{1,\\ldots,15\\}$:\n\nLevel 0 (root): $8$\n\nLevel 1: $4,\\ 12$\n\nLevel 2: $2,\\ 6,\\ 10,\\ 14$\n\nLevel 3 (leaves): $1,3,5,7,9,11,13,15$\n\nFor an insertion sequence to build up exactly this shape via ordinary BST insertion, a node can only be inserted after its parent has already been inserted (a node's tree position is only \"unlocked\" once its parent exists). So valid insertion orders are precisely the orders in which every node appears after its parent (a topological/level-respecting order).\n\nThe root $8$ must always be inserted first. The <b>second</b> insertion must be one of the root's children, $4$ or $12$. The <b>third</b> insertion can then be: the other level-1 node ($12$ or $4$), or a level-2 child of whichever level-1 node was inserted second (e.g. $2$ or $6$ if $4$ went second). This gives possible third elements $\\{2,4,6,10,12,14\\}$ &mdash; only levels 0-2 nodes can ever appear as early as the third insertion.\n\n$5$ is a <b>level-3 leaf</b> (child of $6$, which is itself a level-2 child of $4$). Before $5$ can be inserted, both its ancestors $8$ and $4$ and $6$ would already need to exist &mdash; requiring at least $4$ prior insertions. So $5$ can never be inserted as early as third.",
+        "images": []
       }
     },
     "go:523049": {
@@ -1926,6 +2126,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "$d_k(u)$ is the shortest-path weight from $s$ to $u$ using <b>at most $k$ edges</b> &mdash; this is exactly the quantity computed by the Bellman-Ford relaxation process after $k$ rounds.\n\n<b>S1:</b> $d_{k+1}(u)\\le d_k(u)$ &mdash; allowing one extra edge of \"budget\" can only give access to more paths (a path of length $\\le k$ is also a path of length $\\le k+1$), so the shortest weight can only stay the same or decrease. <b>True</b>, always.\n\n<b>S2:</b> Suppose $(u,v)$ lies on a shortest path from $s$ to $v$; then $d(v)=d(u)+w(u,v)\\ge d(u)$ in the limit, so eventually $d_k(u)\\le d_k(v)$ once $k$ is large enough. But for small $k$ this need not hold: it's possible that $u$ has not yet been reached with a short enough path (so $d_k(u)=\\infty$ is even bigger) or, more subtly, that a different, cheaper path of length $\\le k$ to $v$ exists that doesn't go through $u$ at all &mdash; the inequality can fail for some particular $k$ even though it eventually holds in the limit. So S2 is <b>not always true for every $k$</b>.",
+        "images": []
       }
     },
     "go:523048": {
@@ -1972,6 +2177,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Syntax Directed Translation",
+        "markdown": "This question is based on an accompanying control-flow-graph figure showing the statements inside basic blocks B4 and B5. A <b>redundant expression / common subexpression</b> is one that is computed more than once with the same operand values still holding (no intervening redefinition of any operand) at the second computation point, so the second computation could be eliminated and the previously-computed value reused.\n\nWorking through the statements of B4, only the expression $g*k$ is recomputed later in the block with $g$ and $k$ unchanged in between &mdash; so it is the sole common subexpression there. The other candidate ($b+i$) is not actually redundant once you check that one of its operands gets reassigned before the repeated use, breaking the CSE opportunity.\n\nIn B5, tracing through similarly shows that the candidate $c+m$ is <i>not</i> a valid common subexpression, because one of its operands ($c$ or $m$) is redefined between the two apparent uses &mdash; so B5 has no redundant expressions at all.",
+        "images": []
       }
     },
     "go:523047": {
@@ -2015,6 +2225,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Tuple Relational Calculus",
+        "markdown": "The calculus expression $E=\\{\\langle u\\rangle \\mid \\exists v\\,\\exists w\\,\\langle u,v\\rangle\\in R \\wedge \\langle v,w\\rangle\\in S\\}$ asks for all $u$ such that some tuple $\\langle u,v\\rangle$ is in $R$ <i>and</i> that same $v$ appears as the first component of some tuple $\\langle v,w\\rangle$ in $S$.\n\nThis is a natural join of $R$ and $S$ where $R$'s second attribute ($Q$, which plays the role of $v$) matches $S$'s first attribute ($X$, which also plays the role of $v$): join condition $R.Q=S.X$. After joining, we only want the value of $u$, i.e. project onto $P$.\n\nSo $E\\equiv\\Pi_P\\big(S\\bowtie_{S.X=R.Q}R\\big)$ (the join is symmetric, so writing $S$ first or $R$ first with the same condition gives the same relation).",
+        "images": []
       }
     },
     "go:523046": {
@@ -2060,6 +2275,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Congestion Control",
+        "markdown": "In slow start, the congestion window (in segments) doubles every RTT, starting from $1$ segment, as long as it stays below the threshold ($10000$, which is far above anything we'll reach here).\n\n$$\\begin{array}{c|c|c}\\text{RTT (start time, ms)}&\\text{cwnd (segments sent)}&\\text{Segment numbers sent}\\\\\\hline0&1&1\\\\1&2&2\\text{-}3\\\\2&4&4\\text{-}7\\\\3&8&8\\text{-}15\\\\4&16&16\\text{-}31\\\\5&32&32\\text{-}63\\\\6&64&64\\text{-}127\\\\7&128&128\\text{-}255\\\\8&256&256\\text{-}511\\\\9&512&512\\text{-}1023\\\\10&1024&1024\\text{-}2047\\end{array}$$\n\nSegment number $2000$ falls in the batch sent starting at time $t=10$ms (the $1024$-$2047$ range).",
+        "images": []
       }
     },
     "go:523045": {
@@ -2104,6 +2324,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Sliding Window",
+        "markdown": "Transmission time $T_t=\\dfrac{\\text{frame size}}{\\text{bandwidth}}=\\dfrac{1000\\text{ bits}}{100\\times10^3\\text{ bps}}=10$ ms.\n\nFor $100\\%$ link utilization with a sliding window, the sender must be able to keep transmitting continuously until the acknowledgement of the very first frame returns, which takes $T_t+2T_p$ (one-way propagation to receiver, plus one-way for the ack to come back, plus zero processing/ack-transmission time).\n\nSo we need: $W\\cdot T_t\\ge T_t+2T_p\\;\\Rightarrow\\;W\\ge1+\\dfrac{2T_p}{T_t}=1+\\dfrac{2\\times100}{10}=1+20=21$.",
+        "images": []
       }
     },
     "go:523044": {
@@ -2154,6 +2379,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differentiation",
+        "markdown": "Simplify $f(x)=\\left(\\dfrac{|x|}{2}-x\\right)\\left(x-\\dfrac{|x|}{2}\\right)=-\\left(x-\\dfrac{|x|}{2}\\right)^2$, which is always $\\le0$.\n\n- For $x\\ge0$: $|x|=x$, so $f(x)=-\\left(\\dfrac{x}{2}\\right)^2=-\\dfrac{x^2}{4}$.\n\n- For $x<0$: $|x|=-x$, so $f(x)=-\\left(\\dfrac{3x}{2}\\right)^2=-\\dfrac{9x^2}{4}$.\n\nBoth pieces equal $0$ at $x=0$ and are negative (and decreasing towards $-\\infty$) moving away from $0$ in either direction. So $f$ has a clear <b>local (in fact global) maximum</b> at $x=0$, and since $f\\to-\\infty$ on both sides with no interior dip, $f$ has <b>no local minimum</b>.\n\n$f'(x)=-x/2$ for $x\\ge0$ and $f'(x)=-9x/2$ for $x<0$. Both pieces approach $0$ as $x\\to0$, so $f'$ is <b>continuous</b> everywhere including at $0$. But the slope of $f'$ jumps from $-1/2$ (just right of $0$) to $-9/2$ (just left of $0$), so $f'$ has a corner at $x=0$ and is <b>not differentiable</b> there (hence not differentiable \"over $\\mathbb R$\").",
+        "images": []
       }
     },
     "go:523043": {
@@ -2198,6 +2428,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Degree of Graph",
+        "markdown": "Suppose, for contradiction, $v$ has degree $\\ge k+1$ but $v\\notin S$ for some minimum vertex cover $S$ of size $k$. Since $v\\notin S$, every edge incident on $v$ must be covered by its <i>other</i> endpoint (because $S$ is a vertex cover), so all $\\ge k+1$ distinct neighbors of $v$ must belong to $S$. But then $|S|\\ge k+1>k$, contradicting that $S$ has size exactly $k$. So $v$ must be in every minimum vertex cover.\n\nThe other conditions don't force inclusion: a vertex on a long path or cycle can often be excluded by choosing the cover among its neighbors instead; and being part of a size-$k$ clique only forces $k-1$ of the clique's vertices into the cover (any one clique vertex, including $v$, can be the one left out).",
+        "images": []
       }
     },
     "go:523042": {
@@ -2238,7 +2473,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Min Sum of Products Form",
+        "markdown": "Plotting $F(P,Q,R,S)=\\sum m(1,2,3,4,5,7,10,12,13,14)$ on a $4$-variable K-map, the essential prime implicants are $\\bar P S$ (covering minterms $1,3,5,7$) and $Q\\bar R$ (covering $4,5,12,13$).\n\nAfter these two terms, the still-uncovered minterms are $2,10,14$ (minterm $3,4,5,12,13$ already covered). These three remaining minterms can be covered in <b>two equally minimal ways</b>, giving two different valid minimal SOP expressions:\n\n- Using $\\bar P\\bar Q R$ (covers $2,3$) and $P R\\bar S$ (covers $10,14$): $F=\\bar P S+Q\\bar R+\\bar P\\bar Q R+PR\\bar S$.\n\n- Using $PQ\\bar S$ (covers $12,14$) and $\\bar Q R\\bar S$ (covers $2,10$): $F=\\bar P S+Q\\bar R+PQ\\bar S+\\bar Q R\\bar S$.\n\nBoth use exactly $4$ terms and correctly cover all $10$ minterms with none extra, so both are valid minimal-cost solutions (this function has two equally-good minimal SOP forms because the remaining minterms admit two different but equally cheap coverings).",
+        "images": []
+      }
     },
     "go:523041": {
       "title": "GATE CSE 2026 | Set 1 | Question: 39",
@@ -2289,6 +2529,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Minimum Spanning Tree",
+        "markdown": "When all edge weights are distinct, the MST is <b>unique</b>, and two classical facts (cycle property and cut property) apply:\n\n- <b>Cycle property:</b> In any cycle $C$, the edge with the strictly largest weight can never appear in any MST (if it did, removing it and adding any other edge of the cycle would still keep the graph connected but reduce total weight). <b>True.</b>\n\n- The claim about the <i>smallest</i>-weight edge of every cycle being in every MST is <b>false</b> in general &mdash; a small edge can still be excluded if a smaller alternative path already connects its endpoints via other, even-cheaper edges from elsewhere in the graph (cycle property only rules out the *maximum*, it doesn't force in the minimum in the multi-cycle case with unrelated cycles overlapping).\n\n- The claim that the <i>largest</i>-weight edge touching any given vertex $v$ is never in any MST is <b>false</b> &mdash; that edge might still be the cheapest way to connect an isolated/far-off part of the graph.\n\n- <b>Cut property:</b> For any vertex $v$, consider the cut separating $\\{v\\}$ from the rest of the graph; the minimum-weight edge crossing this cut (i.e. the cheapest edge incident to $v$) must belong to every MST, since choosing any costlier edge to connect $v$ instead would strictly increase total weight. <b>True.</b>",
+        "images": []
       }
     },
     "go:523040": {
@@ -2342,6 +2587,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Depth First Search",
+        "markdown": "For a DAG, discovery/finish-time intervals $[d[v],f[v]]$ obtained from DFS obey the standard <b>parenthesis theorem</b>: for any two vertices, their intervals are either completely nested (one inside the other) or completely disjoint &mdash; they can never partially overlap.\n\nFor an edge $(u,v)$ in a DAG, DFS classifies it as either a <b>tree/forward edge</b> (if $v$ is discovered while exploring from $u$, nesting $[d[v],f[v]]$ inside $[d[u],f[u]]$, giving $d[u]<d[v]<f[v]<f[u]$) or a <b>cross edge</b> (if $v$ was already fully explored before $u$ started, giving disjoint, non-overlapping intervals $d[v]<f[v]<d[u]<f[u]$). Since the input is a DAG, there are no back edges, so a scenario where the intervals partially overlap (interleave) is impossible.\n\n- $d[u]<d[v]<f[v]<f[u]$: valid nesting &mdash; can happen (tree/forward edge).\n\n- $d[v]<f[v]<d[u]<f[u]$: valid disjoint intervals &mdash; can happen (cross edge).\n\n- $d[v]<d[u]<f[u]<f[v]$: this would mean $v$ started before $u$ but $u$'s whole subtree nests inside $v$'s &mdash; but then the edge $(u,v)$ would point from a \"later/nested\" vertex $u$ back into an \"earlier/ancestor\" vertex $v$ that is still open, which is exactly the signature of a <b>back edge</b> &mdash; impossible in a DAG.\n\n- $d[u]<d[v]<f[u]<f[v]$: this is a partially-overlapping (interleaved) interval, which the parenthesis theorem says can <i>never</i> happen for any DFS on any graph, regardless of edge type.",
+        "images": []
       }
     },
     "go:523039": {
@@ -2392,6 +2642,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Closure Property",
+        "markdown": "Given: $L_1\\cap L_2$ is regular, and $L_2$ is regular.\n\n- <b>$L_1$ regular?</b> Not necessarily &mdash; $L_1$ could be an arbitrary (even non-context-free) language whose intersection with a specific regular $L_2$ happens to simplify to something regular; this doesn't pin down $L_1$ itself. <b>Not always true.</b>\n\n- <b>$L_1\\cup L_2$ regular?</b> Same issue &mdash; the union still depends on the unconstrained, potentially irregular parts of $L_1$ outside of $L_2$. <b>Not always true.</b>\n\n- <b>$\\overline{L_2}$ context-free?</b> Since $L_2$ is regular, its complement $\\overline{L_2}$ is also regular (regular languages are closed under complement), and every regular language is also context-free (regular $\\subset$ context-free). <b>Always true.</b>\n\n- <b>$L_1$ context-free?</b> No general closure property forces this; $L_1$ could even be undecidable/non-context-free as long as it agrees with $L_2$ on the intersection. <b>Not always true.</b>",
+        "images": []
       }
     },
     "go:523038": {
@@ -2444,6 +2699,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Context Free Language",
+        "markdown": "$B\\rightarrow aBb\\mid ab$ always generates strings of the form $a^kb^k$ ($k\\ge1$) &mdash; equal numbers of $a$'s and $b$'s, i.e. $n_1=n_2$ within any string derived from $B$.\n\n$A\\rightarrow aaBBAb\\mid bBabaa$: substituting the fact that each $B$-string contributes equal $a$'s and $b$'s, and tracking the extra fixed terminals in each production, one can verify by induction that every string derivable from $A$ satisfies $n_1(s)\\ge n_2(s)$ (the fixed terminal parts always contribute at least as many, often more, $a$'s as $b$'s on top of the balanced $B$-parts), and also that $n_1(s)\\le 2\\,n_2(s)$ always (the excess of $a$'s over $b$'s is bounded relative to the total $b$ count, because of the specific fixed ratio of terminals baked into each production).\n\n$S\\rightarrow abaABAbba$ adds a further fixed collection of terminals ($4$ $a$'s and $4$ $b$'s from the frame, plus two copies of an $A$-string), and this fixed frame preserves the same two invariants that hold for $A$: every generated string has $n_1(s)\\ge n_2(s)$ and $n_1(s)\\le2\\,n_2(s)$, with no derivable string ever violating either bound.",
+        "images": []
       }
     },
     "go:523037": {
@@ -2497,6 +2757,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Syntax Directed Translation",
+        "markdown": "<b>Language equivalence:</b> $G_1$ generates a type keyword followed by one-or-more identifiers (via the recursive $V$); $G_2$ generates the same thing via a left-recursive $D$. Both accept exactly \"type-keyword followed by $\\ge1$ identifiers,\" so $P=Q$. <b>True.</b>\n\n<b>SDD2's attribute style:</b> In SDD2, $D.type$ and the $\\text{put}$ actions are all computed purely from the values of the symbols on the right-hand side of each production (children of the node in the parse tree) &mdash; every attribute is <b>synthesized</b>, making SDD2 S-attributed. <b>True.</b>\n\n<b>SDD1's attribute style:</b> In SDD1, $V.type$ is set from $T.type$ (an inherited value flowing top-down from the parent $D$ into $V$, then further down into $V_1$), so SDD1 does use inherited attributes &mdash; but $D.type$ itself is synthesized from $T.type$ as well, so SDD1 is L-attributed but it is <b>not true that it contains \"only\" inherited attributes</b> (it has both kinds). <b>False as stated.</b>\n\n<b>Symbol table contents:</b> In SDD1, $\\text{put(id.entry, V.type)}$ is called for every identifier with the type inherited down from $T$. In SDD2, $\\text{put(id.entry, ...type)}$ is similarly called for every identifier with the same type value (synthesized bottom-up instead, but numerically identical since there's only one $T$/type per declaration). Since both add exactly one entry per identifier with the same type value, the symbol tables end up identical. <b>True.</b>",
+        "images": []
       }
     },
     "go:523036": {
@@ -2549,6 +2814,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "A memory reference passes through, in order: TLB &rarr; (page table, only if TLB misses) &rarr; cache.\n\n- <b>TLB miss, Page table hit, Cache hit:</b> possible &mdash; TLB doesn't have the mapping, page table does (page is in memory), and the corresponding cache block (whose validity depends on the page being resident) can indeed be valid and hit. <b>Can happen.</b>\n\n- <b>TLB hit, Page table miss, Cache hit:</b> <b>impossible</b>. A TLB hit means the page is currently mapped/resident in memory (TLB entries are only valid for pages currently in memory); it is therefore contradictory for the page table to then report a miss (page not in memory) for that very same page.\n\n- <b>TLB miss, Page table miss, Cache hit:</b> <b>impossible</b>. A page-table miss means the page is not in main memory at all &mdash; and the problem states that when a page is evicted, its cache blocks are marked invalid. So if the page isn't in memory, its cache blocks cannot be valid, and a cache hit is impossible.\n\n- <b>TLB miss, Page table miss, Cache miss:</b> possible and in fact the expected/consistent sequence when a page is genuinely not resident.",
+        "images": []
       }
     },
     "go:523035": {
@@ -2600,6 +2870,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Degree of Graph",
+        "markdown": "A graph is $2$-colorable if and only if it is <b>bipartite</b>, which is exactly equivalent to having <b>no odd-length cycle</b>.\n\n- \"May contain cycles of odd length\" &mdash; <b>false</b>, a 2-colorable graph can never contain an odd cycle (that's precisely the bipartiteness characterization).\n\n- \"May contain cycles of even length\" &mdash; <b>true</b>, even cycles are perfectly fine in a bipartite graph (e.g. alternating the two colors around the cycle works exactly when the cycle length is even).\n\n- <b>Algorithm complexity:</b> Testing bipartiteness/$2$-colorability is done via a single BFS or DFS traversal, alternately coloring each vertex as it's visited and checking for conflicts &mdash; this runs in $\\Theta(|V|+|E|)$ time on an adjacency-list representation, and this is optimal since you must at least look at every vertex and edge once. <b>True.</b>\n\n- $\\Theta(|E|\\log|V|)$ is not the optimal/typical complexity for this simple traversal-based check (that bound is more associated with, e.g., priority-queue-based MST/shortest-path algorithms), so this is <b>false</b> as a claim about the optimal algorithm for 2-colorability testing.",
+        "images": []
       }
     },
     "go:523034": {
@@ -2656,6 +2931,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Application Layer Protocols",
+        "markdown": "The ISP's block $202.16.0.0/15$ spans two full class-B-sized blocks: all addresses from $202.16.0.0$ to $202.17.255.255$.\n\nFor $6000$ addresses via CIDR super-netting, we need a block with at least $6000$ addresses; a $/19$ prefix gives $2^{32-19}=2^{13}=8192$ addresses, which suffices (a $/20$ would only give $4096<6000$).\n\nA valid $/19$ sub-block must (a) lie entirely within $202.16.0.0$-$202.17.255.255$, and (b) have its network address aligned to a multiple of $32$ in the relevant octet (since $/19$ leaves $13$ host bits, and $2^{13}=8192=32\\times256$ addresses per block, so the 3rd octet must be a multiple of $32$: $0,32,64,\\ldots$).\n\n- $202.16.0.0/19$: $0$ is a valid multiple of $32$, and within range. <b>Valid.</b>\n\n- $202.17.64.0/19$: $64$ is a valid multiple of $32$, $202.17.x$ is within the /15 range. <b>Valid.</b>\n\n- $202.16.32.0/19$: $32$ is a valid multiple of $32$. <b>Valid.</b>\n\n- $202.17.24.0/19$: $24$ is <b>not</b> a multiple of $32$ (valid boundaries are $0,32,64,\\ldots$), so this is not a properly aligned $/19$ block. <b>Invalid.</b>",
+        "images": []
       }
     },
     "go:523033": {
@@ -2702,6 +2982,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Matching",
+        "markdown": "Let $f(k)$ denote the number of matchings (including the empty matching) in a path graph with $k$ edges. Considering the last edge of the path: either it is <b>not</b> used in the matching (leaving $f(k-1)$ choices for the rest), or it <b>is</b> used (which forbids the adjacent edge, leaving $f(k-2)$ choices for the rest). This gives the Fibonacci-like recurrence:\n\n$f(k)=f(k-1)+f(k-2)$, with $f(0)=1$ (no edges: only the empty matching) and $f(1)=2$ (one edge: either included or not).\n\n$f(2)=3,\\ f(3)=5,\\ f(4)=8,\\ f(5)=13,\\ f(6)=21,\\ f(7)=34$.\n\nA path on $8$ vertices has $7$ edges, so the number of matchings is $f(7)=34$.",
+        "images": []
       }
     },
     "go:523032": {
@@ -2751,6 +3036,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "$E[X]=\\sum x\\cdot\\Pr(X=x)$\n\n$=\\left(1+2+5+7\\right)\\times\\dfrac{1}{6}+\\left(3+4+6+8\\right)\\times\\dfrac{1}{12}$\n\n$=15\\times\\dfrac{1}{6}+21\\times\\dfrac{1}{12}$\n\n$=2.5+1.75=4.25$",
+        "images": []
       }
     },
     "go:523031": {
@@ -2799,6 +3089,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Disk",
+        "markdown": "<b>Rotation time</b> per revolution $=\\dfrac{60000\\text{ ms}}{15000}=4$ ms, so average rotational latency (half a revolution) $=2$ ms, and time per sector $=\\dfrac{4\\text{ ms}}{400\\text{ sectors}}=0.01$ ms.\n\n<b>Seek time</b> (head moves $1$ ms per adjacent track, following the path $0\\to5\\to12\\to7$):\n\n$0\\to5$: $5$ tracks $=5$ ms; $5\\to12$: $7$ tracks $=7$ ms; $12\\to7$: $5$ tracks $=5$ ms. Total seek $=5+7+5=17$ ms.\n\n<b>Data transfer per track:</b> since the $10$ sectors needed are randomly located, each individual sector access requires (on average) a fresh rotational latency of $2$ ms before the required sector arrives under the head, plus the $0.01$ ms to actually read it:\n\nPer track $=10\\times(2+0.01)=20.1$ ms. Over $3$ tracks: $3\\times20.1=60.3$ ms.\n\n<b>Total time $=$ seek $+$ transfer $=17+60.3=77.3$ ms.</b>",
+        "images": []
       }
     },
     "go:523030": {
@@ -2845,6 +3140,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "There is a single, shared EX-stage functional unit; only one instruction can occupy the EX stage per clock cycle (of duration $1$ ns). If an instruction's actual execution time $t_{EX}$ exceeds $1$ ns, it must occupy the EX stage for $\\lceil t_{EX}\\rceil$ clock cycles, causing $\\left(\\lceil t_{EX}\\rceil-1\\right)$ structural-hazard stall cycles for every instance of that instruction type.\n\n$$\\begin{array}{l|c|c|c}\\text{Type}&t_{EX}&\\text{cycles needed}&\\text{stalls}\\times M\\\\\\hline\\text{LOAD}&1.8&2&1\\times15=15\\\\\\text{IMUL}&1.5&2&1\\times10=10\\\\\\text{IDIV}&2.5&3&2\\times5=10\\\\\\text{FADD}&1.7&2&1\\times10=10\\\\\\text{FSUB}&1.7&2&1\\times5=5\\\\\\text{FMUL}&2.8&3&2\\times15=30\\\\\\text{FDIV}&3.2&4&3\\times5=15\\\\\\text{Others}&{<}1.0&1&0\\times35=0\\end{array}$$\n\nTotal stall cycles $=15+10+10+10+5+30+15+0=95$.",
+        "images": []
       }
     },
     "go:523029": {
@@ -2890,6 +3190,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "First, note $\\text{bar}(n)$ repeatedly integer-halves $n$ until reaching $1$, counting the number of halvings &mdash; this is exactly $\\lfloor\\log_2 n\\rfloor$.\n\n$\\text{foo}(n)=1+\\text{foo}(\\text{bar}(n))$ for $n>1$, and $\\text{foo}(1)=1$. So $\\text{foo}(n)$ counts $1$ plus the number of times we must apply $\\text{bar}$ (i.e. take $\\lfloor\\log_2\\cdot\\rfloor$) starting from $n$ to eventually reach $1$.\n\nBuild up the <i>smallest</i> $n$ achieving each target value of $\\text{foo}$:\n\n- $\\text{foo}(n)=1$: smallest $n=1$.\n\n- $\\text{foo}(n)=2$: need $\\text{bar}(n)=1$, i.e. $\\lfloor\\log_2 n\\rfloor=1$: smallest $n=2$.\n\n- $\\text{foo}(n)=3$: need $\\text{bar}(n)=2$: smallest $n=2^2=4$.\n\n- $\\text{foo}(n)=4$: need $\\text{bar}(n)=4$: smallest $n=2^4=16$.\n\n- $\\text{foo}(n)=5$: need $\\text{bar}(n)=16$: smallest $n=2^{16}=65536$.",
+        "images": []
       }
     },
     "go:523028": {
@@ -2935,6 +3240,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "Reconstruct the BST from the preorder $50,25,13,40,30,47,75,60,70,80,77$ (each root's left subtree holds smaller values, right subtree holds larger values, read off in preorder root-first fashion):\n\n$50$ is the root. Left subtree (values $<50$): $25,13,40,30,47$; right subtree (values $>50$): $75,60,70,80,77$.\n\nLeft subtree: root $25$, left child $13$ (leaf), right subtree $40,30,47$ &rarr; root $40$, left $30$, right $47$.\n\nRight subtree: root $75$, left subtree $60,70$ &rarr; root $60$ with right child $70$ (no left); right subtree $80,77$ &rarr; root $80$ with left child $77$ (no right).\n\nPostorder (left, right, root) of the whole tree:\n\nFrom the $25$-subtree: $13,\\ 30,47,40,\\ 25$\n\nFrom the $75$-subtree: $70,60,\\ 77,80,\\ 75$\n\nThen the root $50$.\n\nFull postorder: $13,\\,30,\\,47,\\,40,\\,25,\\,70,\\,60,\\,77,\\,80,\\,75,\\,50$\n\nCounting positions (starting at $1$): $60$ is the $7$th element.",
+        "images": []
       }
     },
     "go:523027": {
@@ -2981,6 +3291,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Fork System Call",
+        "markdown": "Trace the loop, remembering that after $\\text{fork()}$, the <b>child</b> gets return value $0$ (executes $\\text{continue}$, moving to the next loop iteration), while the <b>parent</b> gets a nonzero value (executes $\\text{break}$, immediately leaving the loop).\n\n- $i=0$: original process forks &rarr; <b>parent breaks</b> immediately (1 process reaches printf with $i=0$); the <b>child continues</b> the loop.\n\n- $i=1$ (in that child): it forks again &rarr; this process (now acting as parent of its own fork) <b>breaks</b> (2nd process reaches printf); its own child continues.\n\n- $i=2$ (in that grandchild): forks again &rarr; this one <b>breaks</b> (3rd process reaches printf); its child continues.\n\n- $i=3$ (in the great-grandchild): loop condition $i<3$ fails, so the loop ends naturally without another fork (4th process reaches printf).\n\nSo exactly $4$ distinct processes each execute the $\\text{printf}$ statement exactly once.",
+        "images": []
       }
     },
     "go:523026": {
@@ -3028,6 +3343,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "List all $10$ arrivals in chronological order and simulate FCFS execution (CPU serves strictly in arrival order, non-preemptive):\n\n$$\\begin{array}{c|c|c|c|c|c}\\text{Proc}&\\text{Arrival}&\\text{Burst}&\\text{Start}&\\text{Finish}&\\text{Waiting}\\\\\\hline A&10&6&10&16&0\\\\C&11&8&16&24&5\\\\A&20&6&24&30&4\\\\C&22&8&30&38&8\\\\A&30&6&38&44&8\\\\C&33&8&44&52&11\\\\A&40&6&52&58&12\\\\C&44&8&58&66&14\\\\A&50&6&66&72&16\\\\C&55&8&72&80&17\\end{array}$$\n\nSum of waiting times $=0+5+4+8+8+11+12+14+16+17=95$.\n\nAverage waiting time $=\\dfrac{95}{10}=9.5$ seconds.",
+        "images": []
       }
     },
     "go:523025": {
@@ -3075,6 +3395,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Tuple Relational Calculus",
+        "markdown": "A <b>superkey</b> is any subset of attributes that contains at least one candidate key as a subset. Here the $4$ attributes are $\\{A,B,C,D\\}$ and the candidate keys are $\\{A,B\\}$ and $\\{A,C\\}$.\n\nCount subsets of $\\{A,B,C,D\\}$ containing $\\{A,B\\}$: freely choose the remaining $\\{C,D\\}$ &rarr; $2^2=4$ subsets.\n\nCount subsets containing $\\{A,C\\}$: freely choose the remaining $\\{B,D\\}$ &rarr; $2^2=4$ subsets.\n\nSubsets counted twice are those containing <i>both</i> $\\{A,B\\}$ and $\\{A,C\\}$, i.e. containing $\\{A,B,C\\}$: freely choose remaining $\\{D\\}$ &rarr; $2^1=2$ subsets.\n\nBy inclusion-exclusion, total superkeys $=4+4-2=6$.",
+        "images": []
       }
     }
   }

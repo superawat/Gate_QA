@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:12:14.234Z",
+  "generatedAt": "2026-10-17T18:29:25.621Z",
   "shardKey": "2023-additional",
   "yearSetKey": "2023-additional",
   "yearSetIdentity": "cse:2023:additional",
@@ -54,6 +54,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411891": {
@@ -100,6 +105,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411890": {
@@ -147,6 +157,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411888": {
@@ -193,6 +208,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411887": {
@@ -237,6 +257,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411885": {
@@ -285,6 +310,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411884": {
@@ -332,6 +362,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411883": {
@@ -378,6 +413,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411881": {
@@ -426,6 +466,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411880": {
@@ -471,6 +516,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatech-2023",
+        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411907": {
@@ -519,6 +569,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411905": {
@@ -565,6 +620,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411904": {
@@ -612,6 +672,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411902": {
@@ -657,6 +722,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411899": {
@@ -702,6 +772,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411898": {
@@ -749,6 +824,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411897": {
@@ -794,6 +874,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411896": {
@@ -840,6 +925,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411895": {
@@ -887,6 +977,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set1",
+        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411924": {
@@ -933,6 +1028,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411922": {
@@ -978,6 +1078,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411920": {
@@ -1024,6 +1129,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411918": {
@@ -1070,6 +1180,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411915": {
@@ -1116,6 +1231,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411913": {
@@ -1162,6 +1282,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411912": {
@@ -1207,6 +1332,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411910": {
@@ -1253,6 +1383,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411909": {
@@ -1299,6 +1434,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatecivil-2023-set2",
+        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411863": {
@@ -1345,6 +1485,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411859": {
@@ -1392,6 +1537,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411857": {
@@ -1439,6 +1589,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411855": {
@@ -1484,6 +1639,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411852": {
@@ -1530,6 +1690,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411851": {
@@ -1577,6 +1742,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411849": {
@@ -1624,6 +1794,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411847": {
@@ -1672,6 +1847,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411846": {
@@ -1720,6 +1900,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateece-2023",
+        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411843": {
@@ -1766,6 +1951,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411841": {
@@ -1812,6 +2002,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411839": {
@@ -1860,6 +2055,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411837": {
@@ -1907,6 +2107,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411835": {
@@ -1952,6 +2157,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411833": {
@@ -1999,6 +2209,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411832": {
@@ -2047,6 +2262,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411830": {
@@ -2095,6 +2315,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411828": {
@@ -2143,6 +2368,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gate2023-ee",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411878": {
@@ -2189,6 +2419,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411876": {
@@ -2234,6 +2469,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411874": {
@@ -2279,6 +2519,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411872": {
@@ -2324,6 +2569,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411871": {
@@ -2369,6 +2619,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411868": {
@@ -2414,6 +2669,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411867": {
@@ -2460,6 +2720,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411866": {
@@ -2505,6 +2770,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411865": {
@@ -2551,6 +2821,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gatein-2023",
+        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411825": {
@@ -2597,6 +2872,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "Checking each statement:\n\n- Front end (lexical, syntax, semantic analysis, intermediate code) depends on the source language, <b>not</b> on the target machine $\\text{---}$ S1 TRUE.\n\n- Back end (code optimization for the machine, code generation) is specific to the target hardware $\\text{---}$ S2 TRUE.\n\n- The back end works on intermediate code, so it is independent of the source language $\\text{---}$ S3 FALSE.\n\n<b>Answer: Only S1 and S2 are TRUE</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411823": {
@@ -2643,6 +2923,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411821": {
@@ -2690,6 +2975,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411819": {
@@ -2735,6 +3025,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411816": {
@@ -2784,6 +3079,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "go:411814": {
@@ -2831,6 +3131,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "go:411813": {
@@ -2876,6 +3181,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411809": {
@@ -2923,6 +3233,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:411807": {
@@ -2969,6 +3284,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "general-aptitude: gateme-2023",
+        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     }
   }
