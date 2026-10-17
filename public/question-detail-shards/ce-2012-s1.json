@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.852Z",
+  "generatedAt": "2026-10-17T21:30:25.578Z",
   "shardKey": "ce-2012-s1",
   "yearSetKey": "ce-2012-s1",
   "yearSetIdentity": "ce:2012:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ce:2012:q1": {
       "question_uid": "pp:ce:2012:q1",
-      "exam_uid": "ce:2012:set1:q1",
+      "exam_uid": "ce:2012:set1:main:q1",
       "title": "GATE CE 2012 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,7 +49,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Exact value of $\\int_{0.5}^{1.5}\\frac{dx}{x}=\\left [ \\log x \\right ]_{0.5}^{1.5} = \\log (1.5)- \\log(0.5) =1.0986$\n\nApproximate value by Simpson's rule with 3 point is,\n\n$$\\begin{aligned}  I&=\\frac{h}{3}\\left ( f\\left ( 0 \\right )+4f\\left ( 1 \\right )+f\\left ( 2 \\right ) \\right ) \\\\    n_{i}&=n_{pt}-1=3-1=2 \\end{aligned}$$\n\n($n_{pt}$ is the number of pts and $n_{i}$ is the number of intervals)\n\nHere $h=\\frac{b-a}{n_{i}}=\\frac{1.5-0.5}{2}=0.5$\n\nThe table is\n\n<img src=\"/question-images/ce/2012/ce-2012-28f26afeac.webp\" />\n\n$I=\\frac{0.5}{3}\\left ( \\frac{1}{0.5}+4 \\times 1+\\frac{1}{1.5}\\right ) = 1.1111$\n\nSo the estimate exceeds the exact value by,\n\nApproximate value-Exact value\n\n$=0.012499  \\approx 0.012499$",
         "images": [
           "/question-images/ce/2012/ce-2012-28f26afeac.webp"
@@ -55,8 +58,11 @@
     },
     "pp:ce:2012:q2": {
       "question_uid": "pp:ce:2012:q2",
-      "exam_uid": "ce:2012:set1:q2",
+      "exam_uid": "ce:2012:set1:main:q2",
       "title": "GATE CE 2012 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -90,15 +96,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "The annual precipitation is normally distributed with $\\mu =1000\\: mm$ and $\\sigma =200\\: mm$\n\n$$\\begin{aligned} p\\left ( x\\gt 1200 \\right ) &=p\\left ( z\\gt \\frac{1200-1000}{200} \\right ) \\\\ &=p\\left ( z\\gt 1 \\right ) \\end{aligned}$$\n\nWhere z is the standard normal variate.\n\nIn normal distribution\n\nNow, since\n\n$p\\left ( -1\\lt z\\lt 1 \\right )\\approx 0.68$\n\n($\\simeq 68%$ of data is within one standard deviation of mean)\n\n$$\\begin{aligned} p\\left ( 0\\lt z\\lt 1 \\right ) &=\\frac{0.68}{2}&=0.34 \\\\ \\text{So} p\\left ( z\\gt 1 \\right ) &=0.5-0.34 \\\\ &=0.16\\simeq 16\\% \\end{aligned}$$\n\nwhich is $\\lt 50\\%$",
         "images": []
       }
     },
     "pp:ce:2012:q3": {
       "question_uid": "pp:ce:2012:q3",
-      "exam_uid": "ce:2012:set1:q3",
+      "exam_uid": "ce:2012:set1:main:q3",
       "title": "GATE CE 2012 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -132,15 +141,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Partial Differential Equation",
+        "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "$e^{x}=1+x+\\frac{x^{2}}{2!}+\\frac{x^{3}}{3!}...$\n\n(By McLaurin's series expansion)",
         "images": []
       }
     },
     "pp:ce:2012:q4": {
       "question_uid": "pp:ce:2012:q4",
-      "exam_uid": "ce:2012:set1:q4",
+      "exam_uid": "ce:2012:set1:main:q4",
       "title": "GATE CE 2012 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -181,8 +193,11 @@
     },
     "pp:ce:2012:q5": {
       "question_uid": "pp:ce:2012:q5",
-      "exam_uid": "ce:2012:set1:q5",
+      "exam_uid": "ce:2012:set1:main:q5",
       "title": "GATE CE 2012 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -223,8 +238,11 @@
     },
     "pp:ce:2012:q6": {
       "question_uid": "pp:ce:2012:q6",
-      "exam_uid": "ce:2012:set1:q6",
+      "exam_uid": "ce:2012:set1:main:q6",
       "title": "GATE CE 2012 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -267,8 +285,11 @@
     },
     "pp:ce:2012:q7": {
       "question_uid": "pp:ce:2012:q7",
-      "exam_uid": "ce:2012:set1:q7",
+      "exam_uid": "ce:2012:set1:main:q7",
       "title": "GATE CE 2012 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -311,8 +332,11 @@
     },
     "pp:ce:2012:q8": {
       "question_uid": "pp:ce:2012:q8",
-      "exam_uid": "ce:2012:set1:q8",
+      "exam_uid": "ce:2012:set1:main:q8",
       "title": "GATE CE 2012 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -345,12 +369,18 @@
           "prestressed-concrete-beams"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q9": {
       "question_uid": "pp:ce:2012:q9",
-      "exam_uid": "ce:2012:set1:q9",
+      "exam_uid": "ce:2012:set1:main:q9",
       "title": "GATE CE 2012 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -383,12 +413,18 @@
           "structural-fasteners"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q10": {
       "question_uid": "pp:ce:2012:q10",
-      "exam_uid": "ce:2012:set1:q10",
+      "exam_uid": "ce:2012:set1:main:q10",
       "title": "GATE CE 2012 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +467,11 @@
     },
     "pp:ce:2012:q11": {
       "question_uid": "pp:ce:2012:q11",
-      "exam_uid": "ce:2012:set1:q11",
+      "exam_uid": "ce:2012:set1:main:q11",
       "title": "GATE CE 2012 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -473,8 +512,11 @@
     },
     "pp:ce:2012:q12": {
       "question_uid": "pp:ce:2012:q12",
-      "exam_uid": "ce:2012:set1:q12",
+      "exam_uid": "ce:2012:set1:main:q12",
       "title": "GATE CE 2012 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -517,8 +559,11 @@
     },
     "pp:ce:2012:q13": {
       "question_uid": "pp:ce:2012:q13",
-      "exam_uid": "ce:2012:set1:q13",
+      "exam_uid": "ce:2012:set1:main:q13",
       "title": "GATE CE 2012 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -561,8 +606,11 @@
     },
     "pp:ce:2012:q14": {
       "question_uid": "pp:ce:2012:q14",
-      "exam_uid": "ce:2012:set1:q14",
+      "exam_uid": "ce:2012:set1:main:q14",
       "title": "GATE CE 2012 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -595,12 +643,18 @@
           "retaining-wall-earth-pressure-theories"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q15": {
       "question_uid": "pp:ce:2012:q15",
-      "exam_uid": "ce:2012:set1:q15",
+      "exam_uid": "ce:2012:set1:main:q15",
       "title": "GATE CE 2012 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -641,8 +695,11 @@
     },
     "pp:ce:2012:q16": {
       "question_uid": "pp:ce:2012:q16",
-      "exam_uid": "ce:2012:set1:q16",
+      "exam_uid": "ce:2012:set1:main:q16",
       "title": "GATE CE 2012 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -685,8 +742,11 @@
     },
     "pp:ce:2012:q17": {
       "question_uid": "pp:ce:2012:q17",
-      "exam_uid": "ce:2012:set1:q17",
+      "exam_uid": "ce:2012:set1:main:q17",
       "title": "GATE CE 2012 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -727,8 +787,11 @@
     },
     "pp:ce:2012:q18": {
       "question_uid": "pp:ce:2012:q18",
-      "exam_uid": "ce:2012:set1:q18",
+      "exam_uid": "ce:2012:set1:main:q18",
       "title": "GATE CE 2012 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -771,8 +834,11 @@
     },
     "pp:ce:2012:q19": {
       "question_uid": "pp:ce:2012:q19",
-      "exam_uid": "ce:2012:set1:q19",
+      "exam_uid": "ce:2012:set1:main:q19",
       "title": "GATE CE 2012 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -805,12 +871,18 @@
           "evaporation-transpiration-and-stream-flow-measurement"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q20": {
       "question_uid": "pp:ce:2012:q20",
-      "exam_uid": "ce:2012:set1:q20",
+      "exam_uid": "ce:2012:set1:main:q20",
       "title": "GATE CE 2012 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -843,12 +915,18 @@
           "treatment-of-waste-water"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q21": {
       "question_uid": "pp:ce:2012:q21",
-      "exam_uid": "ce:2012:set1:q21",
+      "exam_uid": "ce:2012:set1:main:q21",
       "title": "GATE CE 2012 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -889,8 +967,11 @@
     },
     "pp:ce:2012:q22": {
       "question_uid": "pp:ce:2012:q22",
-      "exam_uid": "ce:2012:set1:q22",
+      "exam_uid": "ce:2012:set1:main:q22",
       "title": "GATE CE 2012 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -933,8 +1014,11 @@
     },
     "pp:ce:2012:q23": {
       "question_uid": "pp:ce:2012:q23",
-      "exam_uid": "ce:2012:set1:q23",
+      "exam_uid": "ce:2012:set1:main:q23",
       "title": "GATE CE 2012 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -975,8 +1059,11 @@
     },
     "pp:ce:2012:q24": {
       "question_uid": "pp:ce:2012:q24",
-      "exam_uid": "ce:2012:set1:q24",
+      "exam_uid": "ce:2012:set1:main:q24",
       "title": "GATE CE 2012 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1009,12 +1096,18 @@
           "highway-maintenance"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q25": {
       "question_uid": "pp:ce:2012:q25",
-      "exam_uid": "ce:2012:set1:q25",
+      "exam_uid": "ce:2012:set1:main:q25",
       "title": "GATE CE 2012 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1055,8 +1148,11 @@
     },
     "pp:ce:2012:q26": {
       "question_uid": "pp:ce:2012:q26",
-      "exam_uid": "ce:2012:set1:q26",
+      "exam_uid": "ce:2012:set1:main:q26",
       "title": "GATE CE 2012 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1090,15 +1186,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Error in central difference formula is $0\\left ( h^{2} \\right )$\n\nThis means,\n\n$\\text{error } \\propto  h^{2}$\n\nIf error for $h=0.03$ is $2\\times 10^{-3}$\n\nthen,\n\nError for $h=0.002$ is approximately\n\n$2\\times 10^{-3}\\times \\frac{\\left ( 0.02 \\right )^{2}}{\\left ( 0.03 \\right )^{2}}\\simeq 9\\times 10^{-4}$",
         "images": []
       }
     },
     "pp:ce:2012:q27": {
       "question_uid": "pp:ce:2012:q27",
-      "exam_uid": "ce:2012:set1:q27",
+      "exam_uid": "ce:2012:set1:main:q27",
       "title": "GATE CE 2012 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1132,15 +1231,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Since negative and positive are equally likely, the distribution of number of negative values is binomial with n=5 and p=1/2\n\nLet X represent number of negative values in 5 trials.\n\np(at most 1 negative value)\n\n$$\\begin{aligned} &=p\\left ( x\\leq 1 \\right ) \\\\ &=p\\left ( x=0 \\right )+p\\left ( x=1 \\right ) \\\\ &=5C_{0}\\left ( \\frac{1}{2} \\right )^{0}\\left ( \\frac{1}{2} \\right )^{5}+5C_{1}\\left ( \\frac{1}{2} \\right )^{1}\\left ( \\frac{1}{2} \\right )^{4}\\\\&=\\frac{6}{32} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ce:2012:q28": {
       "question_uid": "pp:ce:2012:q28",
-      "exam_uid": "ce:2012:set1:q28",
+      "exam_uid": "ce:2012:set1:main:q28",
       "title": "GATE CE 2012 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1174,15 +1276,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "We need eigen values of $$A=\\begin{bmatrix} 9 & 5\\\\ 5 & 8 \\end{bmatrix}$$\n\nThe characteristic equation is,\n\n$$\\begin{aligned} \\begin{bmatrix} 9-\\lambda & 5\\\\ 5 & 8-\\lambda \\end{bmatrix}&=0 \\\\ \\left ( 9-\\lambda \\right )\\left ( 8-\\lambda \\right )-25&=0 \\\\ \\Rightarrow \\;\\; \\lambda ^{2}-17\\lambda +47&=0 \\end{aligned}$$\n\nSo eigen values are,\n\n$\\lambda =3.48,\\: 13.53$",
         "images": []
       }
     },
     "pp:ce:2012:q29": {
       "question_uid": "pp:ce:2012:q29",
-      "exam_uid": "ce:2012:set1:q29",
+      "exam_uid": "ce:2012:set1:main:q29",
       "title": "GATE CE 2012 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1216,7 +1321,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-06290540ba.webp\" />\n\nThe area of parallelogram OPQR in figure shown above, is the magnitude of the vector product\n\n$$\\begin{aligned}  &=\\left | \\overrightarrow{OP}\\times \\overrightarrow{OR} \\right | \\\\  \\overrightarrow{OP}&=a\\hat{i}+b\\hat{j} \\\\  \\overrightarrow{OR}&=c\\hat{i}+d\\hat{j} \\\\  \\overrightarrow{OP}\\times \\overrightarrow{OR}&=\\begin{vmatrix} i & j & k\\\\ a & b & 0\\\\ c & d & 0 \\end{vmatrix} \\\\    &=0\\hat{i}+0\\hat{j}+\\left ( ad-bc \\right )\\hat{k} \\\\ \\left | \\overrightarrow{OP}\\times \\overrightarrow{OR} \\right |&=\\sqrt{0^{2}+0^{2}+\\left ( ad-bc \\right )^{2}} \\\\    &=ad-bc \\end{aligned}$$",
         "images": [
           "/question-images/ce/2012/ce-2012-06290540ba.webp"
@@ -1225,8 +1330,11 @@
     },
     "pp:ce:2012:q30": {
       "question_uid": "pp:ce:2012:q30",
-      "exam_uid": "ce:2012:set1:q30",
+      "exam_uid": "ce:2012:set1:main:q30",
       "title": "GATE CE 2012 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1260,15 +1368,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Ordinary Differential Equation ",
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
         "markdown": "$$\\begin{aligned} \\text{Given, }\\frac{\\mathrm{d} y}{\\mathrm{d} x}+2y&=0 \\text{ and } y(1)=5 \\\\    \\frac{\\mathrm{d} y}{\\mathrm{d} x}&=-2y \\\\    \\int \\frac{dy}{y}&=\\int -2dx \\\\ \\Rightarrow \\;\\;  \\ln y&=-2x+c \\\\ \\Rightarrow   \\;\\; y&=e^{-2x}.e^{c}=c_{1}e^{-2x} \\\\    y\\left ( 1 \\right )&=c_{1}e^{-2}=5 \\\\ \\Rightarrow \\; c_{1}&=\\frac{5}{e^{-2}} \\\\ \\text{So, }   y&=\\frac{5}{e^{-2}}e^{-2x}=5e^{2}e^{-2x} \\\\     &=36.95\\, e^{-2x} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ce:2012:q31": {
       "question_uid": "pp:ce:2012:q31",
-      "exam_uid": "ce:2012:set1:q31",
+      "exam_uid": "ce:2012:set1:main:q31",
       "title": "GATE CE 2012 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1311,8 +1422,11 @@
     },
     "pp:ce:2012:q32": {
       "question_uid": "pp:ce:2012:q32",
-      "exam_uid": "ce:2012:set1:q32",
+      "exam_uid": "ce:2012:set1:main:q32",
       "title": "GATE CE 2012 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1355,8 +1469,11 @@
     },
     "pp:ce:2012:q33": {
       "question_uid": "pp:ce:2012:q33",
-      "exam_uid": "ce:2012:set1:q33",
+      "exam_uid": "ce:2012:set1:main:q33",
       "title": "GATE CE 2012 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1399,8 +1516,11 @@
     },
     "pp:ce:2012:q34": {
       "question_uid": "pp:ce:2012:q34",
-      "exam_uid": "ce:2012:set1:q34",
+      "exam_uid": "ce:2012:set1:main:q34",
       "title": "GATE CE 2012 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1433,12 +1553,18 @@
           "general"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q35": {
       "question_uid": "pp:ce:2012:q35",
-      "exam_uid": "ce:2012:set1:q35",
+      "exam_uid": "ce:2012:set1:main:q35",
       "title": "GATE CE 2012 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1481,8 +1607,11 @@
     },
     "pp:ce:2012:q36": {
       "question_uid": "pp:ce:2012:q36",
-      "exam_uid": "ce:2012:set1:q36",
+      "exam_uid": "ce:2012:set1:main:q36",
       "title": "GATE CE 2012 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1523,8 +1652,11 @@
     },
     "pp:ce:2012:q37": {
       "question_uid": "pp:ce:2012:q37",
-      "exam_uid": "ce:2012:set1:q37",
+      "exam_uid": "ce:2012:set1:main:q37",
       "title": "GATE CE 2012 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1565,8 +1697,11 @@
     },
     "pp:ce:2012:q38": {
       "question_uid": "pp:ce:2012:q38",
-      "exam_uid": "ce:2012:set1:q38",
+      "exam_uid": "ce:2012:set1:main:q38",
       "title": "GATE CE 2012 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1609,8 +1744,11 @@
     },
     "pp:ce:2012:q39": {
       "question_uid": "pp:ce:2012:q39",
-      "exam_uid": "ce:2012:set1:q39",
+      "exam_uid": "ce:2012:set1:main:q39",
       "title": "GATE CE 2012 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1653,8 +1791,11 @@
     },
     "pp:ce:2012:q40": {
       "question_uid": "pp:ce:2012:q40",
-      "exam_uid": "ce:2012:set1:q40",
+      "exam_uid": "ce:2012:set1:main:q40",
       "title": "GATE CE 2012 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1687,12 +1828,18 @@
           "infiltration-runoff-and-hydrographs"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q41": {
       "question_uid": "pp:ce:2012:q41",
-      "exam_uid": "ce:2012:set1:q41",
+      "exam_uid": "ce:2012:set1:main:q41",
       "title": "GATE CE 2012 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1733,8 +1880,11 @@
     },
     "pp:ce:2012:q42": {
       "question_uid": "pp:ce:2012:q42",
-      "exam_uid": "ce:2012:set1:q42",
+      "exam_uid": "ce:2012:set1:main:q42",
       "title": "GATE CE 2012 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1775,8 +1925,11 @@
     },
     "pp:ce:2012:q43": {
       "question_uid": "pp:ce:2012:q43",
-      "exam_uid": "ce:2012:set1:q43",
+      "exam_uid": "ce:2012:set1:main:q43",
       "title": "GATE CE 2012 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1817,8 +1970,11 @@
     },
     "pp:ce:2012:q44": {
       "question_uid": "pp:ce:2012:q44",
-      "exam_uid": "ce:2012:set1:q44",
+      "exam_uid": "ce:2012:set1:main:q44",
       "title": "GATE CE 2012 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1859,8 +2015,11 @@
     },
     "pp:ce:2012:q45": {
       "question_uid": "pp:ce:2012:q45",
-      "exam_uid": "ce:2012:set1:q45",
+      "exam_uid": "ce:2012:set1:main:q45",
       "title": "GATE CE 2012 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1901,8 +2060,11 @@
     },
     "pp:ce:2012:q46": {
       "question_uid": "pp:ce:2012:q46",
-      "exam_uid": "ce:2012:set1:q46",
+      "exam_uid": "ce:2012:set1:main:q46",
       "title": "GATE CE 2012 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1943,8 +2105,11 @@
     },
     "pp:ce:2012:q47": {
       "question_uid": "pp:ce:2012:q47",
-      "exam_uid": "ce:2012:set1:q47",
+      "exam_uid": "ce:2012:set1:main:q47",
       "title": "GATE CE 2012 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1987,8 +2152,11 @@
     },
     "pp:ce:2012:q48": {
       "question_uid": "pp:ce:2012:q48",
-      "exam_uid": "ce:2012:set1:q48",
+      "exam_uid": "ce:2012:set1:main:q48",
       "title": "GATE CE 2012 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2029,8 +2197,11 @@
     },
     "pp:ce:2012:q49": {
       "question_uid": "pp:ce:2012:q49",
-      "exam_uid": "ce:2012:set1:q49",
+      "exam_uid": "ce:2012:set1:main:q49",
       "title": "GATE CE 2012 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2071,8 +2242,11 @@
     },
     "pp:ce:2012:q50": {
       "question_uid": "pp:ce:2012:q50",
-      "exam_uid": "ce:2012:set1:q50",
+      "exam_uid": "ce:2012:set1:main:q50",
       "title": "GATE CE 2012 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2115,8 +2289,11 @@
     },
     "pp:ce:2012:q51": {
       "question_uid": "pp:ce:2012:q51",
-      "exam_uid": "ce:2012:set1:q51",
+      "exam_uid": "ce:2012:set1:main:q51",
       "title": "GATE CE 2012 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2157,8 +2334,11 @@
     },
     "pp:ce:2012:q52": {
       "question_uid": "pp:ce:2012:q52",
-      "exam_uid": "ce:2012:set1:q52",
+      "exam_uid": "ce:2012:set1:main:q52",
       "title": "GATE CE 2012 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2202,8 +2382,11 @@
     },
     "pp:ce:2012:q53": {
       "question_uid": "pp:ce:2012:q53",
-      "exam_uid": "ce:2012:set1:q53",
+      "exam_uid": "ce:2012:set1:main:q53",
       "title": "GATE CE 2012 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2244,8 +2427,11 @@
     },
     "pp:ce:2012:q54": {
       "question_uid": "pp:ce:2012:q54",
-      "exam_uid": "ce:2012:set1:q54",
+      "exam_uid": "ce:2012:set1:main:q54",
       "title": "GATE CE 2012 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2288,8 +2474,11 @@
     },
     "pp:ce:2012:q55": {
       "question_uid": "pp:ce:2012:q55",
-      "exam_uid": "ce:2012:set1:q55",
+      "exam_uid": "ce:2012:set1:main:q55",
       "title": "GATE CE 2012 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2330,8 +2519,11 @@
     },
     "pp:ce:2012:q56": {
       "question_uid": "pp:ce:2012:q56",
-      "exam_uid": "ce:2012:set1:q56",
-      "title": "GATE CE 2012 | Set 1 | Question: 56",
+      "exam_uid": "ce:2012:set1:ga:q1",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2363,12 +2555,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q57": {
       "question_uid": "pp:ce:2012:q57",
-      "exam_uid": "ce:2012:set1:q57",
-      "title": "GATE CE 2012 | Set 1 | Question: 57",
+      "exam_uid": "ce:2012:set1:ga:q2",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2400,12 +2598,18 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q58": {
       "question_uid": "pp:ce:2012:q58",
-      "exam_uid": "ce:2012:set1:q58",
-      "title": "GATE CE 2012 | Set 1 | Question: 58",
+      "exam_uid": "ce:2012:set1:ga:q3",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2437,12 +2641,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q59": {
       "question_uid": "pp:ce:2012:q59",
-      "exam_uid": "ce:2012:set1:q59",
-      "title": "GATE CE 2012 | Set 1 | Question: 59",
+      "exam_uid": "ce:2012:set1:ga:q4",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2474,12 +2684,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q60": {
       "question_uid": "pp:ce:2012:q60",
-      "exam_uid": "ce:2012:set1:q60",
-      "title": "GATE CE 2012 | Set 1 | Question: 60",
+      "exam_uid": "ce:2012:set1:ga:q5",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2511,12 +2727,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q61": {
       "question_uid": "pp:ce:2012:q61",
-      "exam_uid": "ce:2012:set1:q61",
-      "title": "GATE CE 2012 | Set 1 | Question: 61",
+      "exam_uid": "ce:2012:set1:ga:q6",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2548,12 +2770,18 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q62": {
       "question_uid": "pp:ce:2012:q62",
-      "exam_uid": "ce:2012:set1:q62",
-      "title": "GATE CE 2012 | Set 1 | Question: 62",
+      "exam_uid": "ce:2012:set1:ga:q7",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2585,12 +2813,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q63": {
       "question_uid": "pp:ce:2012:q63",
-      "exam_uid": "ce:2012:set1:q63",
-      "title": "GATE CE 2012 | Set 1 | Question: 63",
+      "exam_uid": "ce:2012:set1:ga:q8",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2622,12 +2856,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q64": {
       "question_uid": "pp:ce:2012:q64",
-      "exam_uid": "ce:2012:set1:q64",
-      "title": "GATE CE 2012 | Set 1 | Question: 64",
+      "exam_uid": "ce:2012:set1:ga:q9",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2659,12 +2899,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2012:q65": {
       "question_uid": "pp:ce:2012:q65",
-      "exam_uid": "ce:2012:set1:q65",
-      "title": "GATE CE 2012 | Set 1 | Question: 65",
+      "exam_uid": "ce:2012:set1:ga:q10",
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2012-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2696,7 +2942,10 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     }
   }
 }

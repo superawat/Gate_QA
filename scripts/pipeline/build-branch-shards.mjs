@@ -28,6 +28,7 @@ const SOLUTIONS_DIR = path.join(ROOT, "data", "solutions");
 
 const ANSWERS_DATA_PATH = path.join(ROOT, "data", "answers", "answers_by_question_uid_v1.json");
 const ANSWERS_PUBLIC_PATH = path.join(PUBLIC_DIR, "data", "answers", "answers_by_question_uid_v1.json");
+const MAPPINGS_PATH = path.join(ROOT, "data", "mappings", "branch-go-links.json");
 
 const BRANCHES = ["ec", "ee", "me", "ce"];
 
@@ -39,6 +40,10 @@ const BRANCH_LABELS = {
   cse: "Computer Science (CSE)",
   da: "Data Science & AI (DA)",
 };
+
+import { resolveQuestionIdentity } from "../../src/utils/branchQuestionIdentity.js";
+
+export { resolveQuestionIdentity };
 
 function slugify(text = "") {
   return text
@@ -201,6 +206,16 @@ async function buildNewBranchShards() {
   let totalShardsBuilt = 0;
   let totalQuestionsBuilt = 0;
 
+  let branchGoLinks = {};
+  if (fs.existsSync(MAPPINGS_PATH)) {
+    try {
+      branchGoLinks = JSON.parse(fs.readFileSync(MAPPINGS_PATH, "utf-8"));
+      console.log(`🔗 Loaded ${Object.keys(branchGoLinks).length} verified GateOverflow direct links from ${MAPPINGS_PATH}`);
+    } catch (err) {
+      console.warn(`[WARN] Failed to load ${MAPPINGS_PATH}:`, err.message);
+    }
+  }
+
   for (const branch of BRANCHES) {
     const auditDir = path.join(AUDIT_DIR, branch);
     if (!fs.existsSync(auditDir)) continue;
@@ -225,12 +240,15 @@ async function buildNewBranchShards() {
       const shardKey = `${branch}-${year}-s${set}`;
       const yearSetKey = `${branch}-${year}-s${set}`;
       const yearSetIdentity = `${branch}:${year}:set-${set}`;
+      const totalQuestionsInPaper = rawData.questions?.length || 0;
 
       const recordsByQuestionUid = {};
 
       for (const q of (rawData.questions || [])) {
         const uid = `pp:${branch}:${year}:q${q.qNum}${set > 1 ? `-s${set}` : ""}`;
-        const examUid = `${branch}:${year}:set${set}:q${q.qNum}`;
+        const identity = resolveQuestionIdentity(branch, year, set, q.qNum, totalQuestionsInPaper, q);
+        const goLinkEntry = branchGoLinks[uid];
+        const solution_link = goLinkEntry?.goUrl || null;
         const sol = solutionsMap[uid];
 
         let officialAnswer = "A";
@@ -254,8 +272,11 @@ async function buildNewBranchShards() {
 
         recordsByQuestionUid[uid] = {
           question_uid: uid,
-          exam_uid: examUid,
-          title: `GATE ${branch.toUpperCase()} ${year} | Set ${set} | Question: ${q.qNum}`,
+          exam_uid: identity.exam_uid,
+          title: identity.title,
+          section: identity.section,
+          question_number: identity.question_number,
+          solution_link,
           year: `gate${branch}-${year}-set${set}`,
           type: qType,
           marks: q.marks || 1,

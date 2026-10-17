@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.740Z",
+  "generatedAt": "2026-10-17T21:30:25.465Z",
   "shardKey": "me-2025-s1",
   "yearSetKey": "me-2025-s1",
   "yearSetIdentity": "me:2025:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2025:q1": {
       "question_uid": "pp:me:2025:q1",
-      "exam_uid": "me:2025:set1:q1",
+      "exam_uid": "me:2025:set1:main:q1",
       "title": "GATE ME 2025 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Given:</b> $A$ and $B$ are real symmetric matrices of the same size.\n\n<b>Step 1: Understanding Symmetric Matrices</b>\n\nA matrix $A$ is symmetric if:\n\n$A^T = A$\n\nSimilarly, $B$ is symmetric if:\n\n$B^T = B$\n\nThis property will help us evaluate the given options.\n\n<b>Step 2: Evaluating the Given Options</b>\n\n<b>Option (A):</b> $A^T = A^{-1}$\n\n- This statement says that the transpose of $A$ is its inverse.\n\n- In general, a symmetric matrix $A$ satisfies $A^T = A$, but there is no guarantee that $A^T = A^{-1}$.\n\n- This is true only if $A$ is an **orthogonal matrix**, which is not given in the problem.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Option (B):</b> $AB = BA$\n\n- In general, two symmetric matrices **do not necessarily commute**.\n\n- That is, $AB \\ne  BA$ in most cases.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Option (C):</b> $(AB)^T = B^T A^T$\n\n- Using the property of transposition:\n\n$(AB)^T = B^T A^T$\n\n- Since $A$ and $B$ are symmetric, we substitute $A^T = A$ and $B^T = B$:\n\n$(AB)^T = B A$\n\n- This matches the given statement.\n\n- <b>Thus, this statement is correct.</b> ✅\n\n<b>Option (D):</b> $A = A^{-1}$\n\n- A matrix satisfying $A = A^{-1}$ is called an **involutory matrix**.\n\n- However, not all symmetric matrices satisfy this property.\n\n- The problem does not state that $A$ is involutory.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Final Answer:</b>\n\nThe correct option is:\n\n$\\boxed{(AB)^T = B^T A^T}$",
         "images": []
       }
     },
     "pp:me:2025:q2": {
       "question_uid": "pp:me:2025:q2",
-      "exam_uid": "me:2025:set1:q2",
+      "exam_uid": "me:2025:set1:main:q2",
       "title": "GATE ME 2025 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<b>Given:</b> The differential equation:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$ for $0 \\leq x \\leq 1, 0 \\leq y \\leq 1$.\n\n<b>Step 1: Understanding the Given Equation</b>\n\nThe given equation is the Laplace equation in two variables.\n\nA function $u(x, y)$ is a solution if its second partial derivatives sum to zero:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$.\n\n<b>Step 2: Checking Each Option</b>\n\n<b>Option (A):</b> $u = e^{x+y}$\n\nFirst derivative:\n\n$\\frac{\\partial u}{\\partial x} = e^{x+y}, \\quad \\frac{\\partial u}{\\partial y} = e^{x+y}$\n\nSecond derivative:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = e^{x+y}, \\quad \\frac{\\partial^2 u}{\\partial y^2} = e^{x+y}$\n\nSumming them:\n\n$e^{x+y} + e^{x+y} = 2e^{x+y} \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Option (B):</b> $u = e^x \\sin y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = e^x \\sin y, \\quad \\frac{\\partial u}{\\partial y} = e^x \\cos y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = e^x \\sin y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -e^x \\sin y$\n\nSumming them:\n\n$e^x \\sin y - e^x \\sin y = 0$\n\n<b>This is a valid solution. ✅</b>\n\n<b>Option (C):</b> $u = \\sin x \\sin y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = \\cos x \\sin y, \\quad \\frac{\\partial u}{\\partial y} = \\sin x \\cos y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = -\\sin x \\sin y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\sin x \\sin y$\n\nSumming them:\n\n$-\\sin x \\sin y - \\sin x \\sin y = -2\\sin x \\sin y \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Option (D):</b> $u = \\cos x \\cos y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = -\\sin x \\cos y, \\quad \\frac{\\partial u}{\\partial y} = -\\cos x \\sin y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = -\\cos x \\cos y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\cos x \\cos y$\n\nSumming them:\n\n$-\\cos x \\cos y - \\cos x \\cos y = -2\\cos x \\cos y \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Final Answer:</b>\n\nThe correct option is:\n\n$\\boxed{u = e^x \\sin y}$ ✅",
         "images": []
       }
     },
     "pp:me:2025:q3": {
       "question_uid": "pp:me:2025:q3",
-      "exam_uid": "me:2025:set1:q3",
+      "exam_uid": "me:2025:set1:main:q3",
       "title": "GATE ME 2025 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "<b>Given:</b> The divergence of the curl of a vector field.\n\n<b>Step 1: Understanding Curl and Divergence</b>\n\nThe curl of a vector field F, denoted as $\\nabla \\times \\mathbf{F}$, results in another vector field.\n\nThe divergence of a vector field G, denoted as $\\nabla \\cdot \\mathbf{G}$, gives a scalar quantity.\n\n<b>Step 2: Evaluating the Given Statement</b>\n\nBy a fundamental vector calculus identity:\n\n$\\nabla \\cdot (\\nabla \\times \\mathbf{F}) = 0$\n\nThis states that the divergence of the curl of any vector field is always zero.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) The magnitude of this vector field → Incorrect, as the divergence of the curl is a scalar and always zero.\n\n(B) The argument of this vector field → Incorrect, as the divergence of the curl does not relate to an argument.\n\n(C) The magnitude of the curl of this vector field → Incorrect, as magnitude is not relevant to divergence.\n\n(D) Zero → Correct, as $\\nabla \\cdot (\\nabla \\times \\mathbf{F}) = 0$. ✅\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{Zero}}$",
         "images": []
       }
     },
     "pp:me:2025:q4": {
       "question_uid": "pp:me:2025:q4",
-      "exam_uid": "me:2025:set1:q4",
+      "exam_uid": "me:2025:set1:main:q4",
       "title": "GATE ME 2025 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Probability and Statistics\n",
+        "concept": "Engineering Mathematics - Probability and Statistics\n",
         "markdown": "<b>Given:</b> Two unbiased coins are tossed.\n\n<b>Step 1: Identifying the Sample Space</b>\n\nWhen two unbiased coins are tossed, the possible outcomes are:\n\n${HH, HT, TH, TT}$\n\nThus, the total number of possible outcomes is 4.\n\n<b>Step 2: Counting Favorable Outcomes</b>\n\nThe event \"at least one head\" includes the outcomes:\n\n${HH, HT, TH}$\n\nThe number of favorable outcomes = 3.\n\n<b>Step 3: Computing the Probability</b>\n\nProbability formula:\n\n$P(\\text{at least one head}) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total outcomes}}$\n\n$P = \\frac{3}{4} = 0.75$",
         "images": []
       }
     },
     "pp:me:2025:q5": {
       "question_uid": "pp:me:2025:q5",
-      "exam_uid": "me:2025:set1:q5",
+      "exam_uid": "me:2025:set1:main:q5",
       "title": "GATE ME 2025 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -221,8 +236,11 @@
     },
     "pp:me:2025:q6": {
       "question_uid": "pp:me:2025:q6",
-      "exam_uid": "me:2025:set1:q6",
+      "exam_uid": "me:2025:set1:main:q6",
       "title": "GATE ME 2025 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:me:2025:q7": {
       "question_uid": "pp:me:2025:q7",
-      "exam_uid": "me:2025:set1:q7",
+      "exam_uid": "me:2025:set1:main:q7",
       "title": "GATE ME 2025 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -305,8 +326,11 @@
     },
     "pp:me:2025:q8": {
       "question_uid": "pp:me:2025:q8",
-      "exam_uid": "me:2025:set1:q8",
+      "exam_uid": "me:2025:set1:main:q8",
       "title": "GATE ME 2025 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -347,8 +371,11 @@
     },
     "pp:me:2025:q9": {
       "question_uid": "pp:me:2025:q9",
-      "exam_uid": "me:2025:set1:q9",
+      "exam_uid": "me:2025:set1:main:q9",
       "title": "GATE ME 2025 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -389,8 +416,11 @@
     },
     "pp:me:2025:q10": {
       "question_uid": "pp:me:2025:q10",
-      "exam_uid": "me:2025:set1:q10",
+      "exam_uid": "me:2025:set1:main:q10",
       "title": "GATE ME 2025 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +461,11 @@
     },
     "pp:me:2025:q11": {
       "question_uid": "pp:me:2025:q11",
-      "exam_uid": "me:2025:set1:q11",
+      "exam_uid": "me:2025:set1:main:q11",
       "title": "GATE ME 2025 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -473,8 +506,11 @@
     },
     "pp:me:2025:q12": {
       "question_uid": "pp:me:2025:q12",
-      "exam_uid": "me:2025:set1:q12",
+      "exam_uid": "me:2025:set1:main:q12",
       "title": "GATE ME 2025 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -515,8 +551,11 @@
     },
     "pp:me:2025:q13": {
       "question_uid": "pp:me:2025:q13",
-      "exam_uid": "me:2025:set1:q13",
+      "exam_uid": "me:2025:set1:main:q13",
       "title": "GATE ME 2025 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -557,8 +596,11 @@
     },
     "pp:me:2025:q14": {
       "question_uid": "pp:me:2025:q14",
-      "exam_uid": "me:2025:set1:q14",
+      "exam_uid": "me:2025:set1:main:q14",
       "title": "GATE ME 2025 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -599,8 +641,11 @@
     },
     "pp:me:2025:q15": {
       "question_uid": "pp:me:2025:q15",
-      "exam_uid": "me:2025:set1:q15",
+      "exam_uid": "me:2025:set1:main:q15",
       "title": "GATE ME 2025 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -641,8 +686,11 @@
     },
     "pp:me:2025:q16": {
       "question_uid": "pp:me:2025:q16",
-      "exam_uid": "me:2025:set1:q16",
+      "exam_uid": "me:2025:set1:main:q16",
       "title": "GATE ME 2025 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -683,8 +731,11 @@
     },
     "pp:me:2025:q17": {
       "question_uid": "pp:me:2025:q17",
-      "exam_uid": "me:2025:set1:q17",
+      "exam_uid": "me:2025:set1:main:q17",
       "title": "GATE ME 2025 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -725,8 +776,11 @@
     },
     "pp:me:2025:q18": {
       "question_uid": "pp:me:2025:q18",
-      "exam_uid": "me:2025:set1:q18",
+      "exam_uid": "me:2025:set1:main:q18",
       "title": "GATE ME 2025 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -767,8 +821,11 @@
     },
     "pp:me:2025:q19": {
       "question_uid": "pp:me:2025:q19",
-      "exam_uid": "me:2025:set1:q19",
+      "exam_uid": "me:2025:set1:main:q19",
       "title": "GATE ME 2025 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -809,8 +866,11 @@
     },
     "pp:me:2025:q20": {
       "question_uid": "pp:me:2025:q20",
-      "exam_uid": "me:2025:set1:q20",
+      "exam_uid": "me:2025:set1:main:q20",
       "title": "GATE ME 2025 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -851,8 +911,11 @@
     },
     "pp:me:2025:q21": {
       "question_uid": "pp:me:2025:q21",
-      "exam_uid": "me:2025:set1:q21",
+      "exam_uid": "me:2025:set1:main:q21",
       "title": "GATE ME 2025 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -884,15 +947,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "<b>Given:</b>\n\nThe values of the function $f(x)$ at different $x$ are:\n\n$$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 0.25 & 0.5 & 0.75 & 1.0 \\\\ \\hline f(x) & 0.9 & 2.0 & 1.5 & 1.8 & 0.4 \\\\ \\hline \\end{array}$$\n\nWe will apply Simpson’s 1/3 Rule:\n\n$\\int_{a}^{b} f(x), dx \\approx \\frac{h}{3} \\left[ f(x_0) + 4(f(x_1) + f(x_3)) + 2(f(x_2)) + f(x_4) \\right]$\n\nHere, $h = \\frac{1 - 0}{4} = 0.25$\n\nSubstituting values:\n\n$\\int_0^1 f(x),dx \\approx \\frac{0.25}{3} \\left[ 0.9 + 4(2.0 + 1.8) + 2(1.5) + 0.4 \\right]$\n\n$= \\frac{0.25}{3} \\left[ 0.9 + 4(3.8) + 3.0 + 0.4 \\right]$\n\n$= \\frac{0.25}{3} \\times (0.9 + 15.2 + 3.0 + 0.4) = \\frac{0.25}{3} \\times 19.5$\n\n$= \\frac{4.875}{3} = 1.625$\n\n<b>Final Answer:</b> $\\boxed{1.63}$ (rounded to 2 decimal places)",
         "images": []
       }
     },
     "pp:me:2025:q22": {
       "question_uid": "pp:me:2025:q22",
-      "exam_uid": "me:2025:set1:q22",
+      "exam_uid": "me:2025:set1:main:q22",
       "title": "GATE ME 2025 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -931,8 +997,11 @@
     },
     "pp:me:2025:q23": {
       "question_uid": "pp:me:2025:q23",
-      "exam_uid": "me:2025:set1:q23",
+      "exam_uid": "me:2025:set1:main:q23",
       "title": "GATE ME 2025 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -971,8 +1040,11 @@
     },
     "pp:me:2025:q24": {
       "question_uid": "pp:me:2025:q24",
-      "exam_uid": "me:2025:set1:q24",
+      "exam_uid": "me:2025:set1:main:q24",
       "title": "GATE ME 2025 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1011,8 +1083,11 @@
     },
     "pp:me:2025:q25": {
       "question_uid": "pp:me:2025:q25",
-      "exam_uid": "me:2025:set1:q25",
+      "exam_uid": "me:2025:set1:main:q25",
       "title": "GATE ME 2025 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1051,8 +1126,11 @@
     },
     "pp:me:2025:q26": {
       "question_uid": "pp:me:2025:q26",
-      "exam_uid": "me:2025:set1:q26",
+      "exam_uid": "me:2025:set1:main:q26",
       "title": "GATE ME 2025 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1086,15 +1164,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<b>Given:</b>\n\n$f(x) = 2x^3 - 9x^2 + 12x$ over the closed interval [0, 3]\n\n<b>Step 1:</b> Find the derivative $f'(x)$ to get critical points\n\n$f'(x) = \\dfrac{d}{dx}(2x^3 - 9x^2 + 12x) = 6x^2 - 18x + 12$\n\n<b>Step 2:</b> Set $f'(x) = 0$ and solve for $x$\n\n$6x^2 - 18x + 12 = 0$\n\nDivide entire equation by 6:\n\n$x^2 - 3x + 2 = 0$\n\n$(x - 1)(x - 2) = 0$\n\nSo, critical points are $x = 1$ and $x = 2$\n\n<b>Step 3:</b> Evaluate $f(x)$ at endpoints and critical points\n\n$f(0) = 2(0)^3 - 9(0)^2 + 12(0) = 0$\n\n$f(1) = 2(1)^3 - 9(1)^2 + 12(1) = 2 - 9 + 12 = 5$\n\n$f(2) = 2(8) - 9(4) + 12(2) = 16 - 36 + 24 = 4$\n\n$f(3) = 2(27) - 9(9) + 12(3) = 54 - 81 + 36 = 9$\n\n<b>Step 4:</b> Find the minimum value among these\n\n$\\min{0,\\ 4,\\ 5,\\ 9} = 0$",
         "images": []
       }
     },
     "pp:me:2025:q27": {
       "question_uid": "pp:me:2025:q27",
-      "exam_uid": "me:2025:set1:q27",
+      "exam_uid": "me:2025:set1:main:q27",
       "title": "GATE ME 2025 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1135,8 +1216,11 @@
     },
     "pp:me:2025:q28": {
       "question_uid": "pp:me:2025:q28",
-      "exam_uid": "me:2025:set1:q28",
+      "exam_uid": "me:2025:set1:main:q28",
       "title": "GATE ME 2025 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1177,8 +1261,11 @@
     },
     "pp:me:2025:q29": {
       "question_uid": "pp:me:2025:q29",
-      "exam_uid": "me:2025:set1:q29",
+      "exam_uid": "me:2025:set1:main:q29",
       "title": "GATE ME 2025 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1219,8 +1306,11 @@
     },
     "pp:me:2025:q30": {
       "question_uid": "pp:me:2025:q30",
-      "exam_uid": "me:2025:set1:q30",
+      "exam_uid": "me:2025:set1:main:q30",
       "title": "GATE ME 2025 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1261,8 +1351,11 @@
     },
     "pp:me:2025:q31": {
       "question_uid": "pp:me:2025:q31",
-      "exam_uid": "me:2025:set1:q31",
+      "exam_uid": "me:2025:set1:main:q31",
       "title": "GATE ME 2025 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1303,8 +1396,11 @@
     },
     "pp:me:2025:q32": {
       "question_uid": "pp:me:2025:q32",
-      "exam_uid": "me:2025:set1:q32",
+      "exam_uid": "me:2025:set1:main:q32",
       "title": "GATE ME 2025 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1345,8 +1441,11 @@
     },
     "pp:me:2025:q33": {
       "question_uid": "pp:me:2025:q33",
-      "exam_uid": "me:2025:set1:q33",
+      "exam_uid": "me:2025:set1:main:q33",
       "title": "GATE ME 2025 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1387,8 +1486,11 @@
     },
     "pp:me:2025:q34": {
       "question_uid": "pp:me:2025:q34",
-      "exam_uid": "me:2025:set1:q34",
+      "exam_uid": "me:2025:set1:main:q34",
       "title": "GATE ME 2025 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1429,8 +1531,11 @@
     },
     "pp:me:2025:q35": {
       "question_uid": "pp:me:2025:q35",
-      "exam_uid": "me:2025:set1:q35",
+      "exam_uid": "me:2025:set1:main:q35",
       "title": "GATE ME 2025 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1462,15 +1567,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "<b>Given:</b>\n\n$C$ is the unit circle centered at the origin in the complex plane.\n\nWe are given the integral:\n\n$\\oint_C \\frac{z^3}{(z^2 + 4)(z^2 - 4)} , dz = 2\\pi i n$\n\nWe are to find the value of $n$.\n\n<b>Step 1: Simplify the denominator</b>\n\n$(z^2 + 4)(z^2 - 4) = (z^2 + 4)(z - 2)(z + 2)$\n\nSo the integrand becomes:\n\n$\\frac{z^3}{(z - 2)(z + 2)(z^2 + 4)}$\n\n<b>Step 2: Identify singularities (poles)</b>\n\nPoles of the function are at:\n\n$z = 2, \\quad z = -2, \\quad z = 2i, \\quad z = -2i$\n\n<b>Step 3: Determine which poles lie inside the unit circle</b>\n\nThe unit circle is $|z| = 1$.\n\nAll poles lie outside the unit circle because:\n\n$|2| = 2 > 1,\\quad |-2| = 2 > 1,\\quad |2i| = 2 > 1,\\quad |-2i| = 2 > 1$\n\nSo, there are no poles inside the contour.\n\n<b>Step 4: Apply Cauchy's Theorem</b>\n\nSince the integrand is analytic inside and on the contour, the integral is zero:\n\n$\\oint_C \\frac{z^3}{(z^2 + 4)(z^2 - 4)} , dz = 0$\n\n<b>Compare with the given expression:</b>\n\n$2\\pi i n = 0 \\quad \\Rightarrow \\quad n = 0$\n\n<b>Final Answer:</b>\n\n$\\boxed{n = 0.0}$",
         "images": []
       }
     },
     "pp:me:2025:q36": {
       "question_uid": "pp:me:2025:q36",
-      "exam_uid": "me:2025:set1:q36",
+      "exam_uid": "me:2025:set1:main:q36",
       "title": "GATE ME 2025 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1502,15 +1610,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "<b>Given:</b>\n\nFunction: $f(x, y) = x^2 + x y^2$\n\nPoint: $(1, 0)$\n\nDirection: $\\frac{1}{2}(\\hat{i} + \\sqrt{3} \\hat{j})$\n\n<b>Step 1: Find the gradient of $f$</b>\n\n$\\nabla f = \\left( \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y} \\right)$\n\n$\\frac{\\partial f}{\\partial x} = 2x + y^2$\n\n$\\frac{\\partial f}{\\partial y} = 2xy$\n\nAt point $(1, 0)$:\n\n$\\frac{\\partial f}{\\partial x} = 2(1) + 0^2 = 2$\n\n$\\frac{\\partial f}{\\partial y} = 2(1)(0) = 0$\n\nSo, $\\nabla f(1, 0) = (2, 0)$\n\n<b>Step 2: Unit direction vector</b>\n\nGiven vector: $\\vec{v} = \\frac{1}{2}(\\hat{i} + \\sqrt{3} \\hat{j})$\n\nMagnitude of $\\vec{v}$:\n\n$\\left| \\vec{v} \\right| = \\frac{1}{2} \\sqrt{1^2 + (\\sqrt{3})^2} = \\frac{1}{2} \\sqrt{1 + 3} = \\frac{1}{2} \\cdot 2 = 1$\n\nSo the given vector is already a unit vector: $\\hat{u} = \\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)$\n\n<b>Step 3: Directional derivative</b>\n\n$D_{\\hat{u}} f = \\nabla f \\cdot \\hat{u} = (2, 0) \\cdot \\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right) = 2 \\cdot \\frac{1}{2} + 0 \\cdot \\frac{\\sqrt{3}}{2} = 1$\n\n<b>Final Answer:</b>\n\n$\\boxed{1.0}$ (rounded off to 1 decimal place)",
         "images": []
       }
     },
     "pp:me:2025:q37": {
       "question_uid": "pp:me:2025:q37",
-      "exam_uid": "me:2025:set1:q37",
+      "exam_uid": "me:2025:set1:main:q37",
       "title": "GATE ME 2025 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1542,15 +1653,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<b>Given:</b>\n\n$$x^2 \\frac{d^2y}{dx^2} + 3x \\frac{dy}{dx} + y = 0$$\n\nInitial conditions: $y(1) = 0, \\quad \\frac{dy}{dx}(1) = 1$\n\nIt is also given that $y(2) = A \\ln 2$, find $A$.\n\n<b>Step 1: Identify the type of differential equation</b>\n\nThis is a Cauchy-Euler equation of the form:\n\n$x^2 y'' + ax y' + b y = 0$\n\nHere, $a = 3, \\quad b = 1$\n\n<b>Step 2: Use the substitution</b>\n\nLet $x = e^t \\Rightarrow t = \\ln x$, and define $y(x) = u(t)$\n\nThen:\n\n$\\frac{dy}{dx} = \\frac{1}{x} \\cdot \\frac{du}{dt}$\n\n$$\\frac{d^2y}{dx^2} = \\frac{1}{x^2} \\cdot \\left( \\frac{d^2u}{dt^2} - \\frac{du}{dt} \\right)$$\n\nSubstituting into the original equation:\n\n$$x^2 \\cdot \\left( \\frac{1}{x^2} \\left( \\frac{d^2u}{dt^2} - \\frac{du}{dt} \\right) \\right) + 3x \\cdot \\left( \\frac{1}{x} \\cdot \\frac{du}{dt} \\right) + u = 0$$\n\nSimplifying:\n\n$$\\frac{d^2u}{dt^2} - \\frac{du}{dt} + 3 \\frac{du}{dt} + u = 0$$\n\n$$\\frac{d^2u}{dt^2} + 2 \\frac{du}{dt} + u = 0$$\n\n<b>Step 3: Solve the transformed equation</b>\n\n$u'' + 2u' + u = 0$\n\nAuxiliary equation: $r^2 + 2r + 1 = 0 \\Rightarrow (r + 1)^2 = 0 \\Rightarrow r = -1$ (repeated root)\n\nSo, general solution:\n\n$u(t) = (A + Bt)e^{-t}$\n\n<b>Step 4: Convert back to $y(x)$</b>\n\nSince $t = \\ln x$,\n\n$y(x) = u(\\ln x) = (A + B \\ln x) \\cdot x^{-1} = \\frac{A + B \\ln x}{x}$\n\n<b>Step 5: Apply initial conditions</b>\n\n$y(1) = \\frac{A + B \\ln 1}{1} = A = 0$\n\n$\\Rightarrow A = 0$\n\nNow differentiate:\n\n$y(x) = \\frac{B \\ln x}{x}$\n\n$y'(x) = B \\cdot \\left( \\frac{1 - \\ln x}{x^2} \\right)$\n\nAt $x = 1$:\n\n$y'(1) = B(1 - \\ln 1) = B(1) = B$\n\n$\\Rightarrow B = 1$\n\n<b>Step 6: Evaluate $y(2)$</b>\n\n$y(x) = \\frac{\\ln x}{x}$\n\n$y(2) = \\frac{\\ln 2}{2}$\n\nGiven $y(2) = A \\ln 2$,\n\nSo, $A \\ln 2 = \\frac{\\ln 2}{2} \\Rightarrow A = \\frac{1}{2} = 0.50$\n\n<b>Final Answer:</b>\n\n$\\boxed{0.50}$ (rounded off to 2 decimal places)",
         "images": []
       }
     },
     "pp:me:2025:q38": {
       "question_uid": "pp:me:2025:q38",
-      "exam_uid": "me:2025:set1:q38",
+      "exam_uid": "me:2025:set1:main:q38",
       "title": "GATE ME 2025 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1589,8 +1703,11 @@
     },
     "pp:me:2025:q39": {
       "question_uid": "pp:me:2025:q39",
-      "exam_uid": "me:2025:set1:q39",
+      "exam_uid": "me:2025:set1:main:q39",
       "title": "GATE ME 2025 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1629,8 +1746,11 @@
     },
     "pp:me:2025:q40": {
       "question_uid": "pp:me:2025:q40",
-      "exam_uid": "me:2025:set1:q40",
+      "exam_uid": "me:2025:set1:main:q40",
       "title": "GATE ME 2025 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1669,8 +1789,11 @@
     },
     "pp:me:2025:q41": {
       "question_uid": "pp:me:2025:q41",
-      "exam_uid": "me:2025:set1:q41",
+      "exam_uid": "me:2025:set1:main:q41",
       "title": "GATE ME 2025 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1709,8 +1832,11 @@
     },
     "pp:me:2025:q42": {
       "question_uid": "pp:me:2025:q42",
-      "exam_uid": "me:2025:set1:q42",
+      "exam_uid": "me:2025:set1:main:q42",
       "title": "GATE ME 2025 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1749,8 +1875,11 @@
     },
     "pp:me:2025:q43": {
       "question_uid": "pp:me:2025:q43",
-      "exam_uid": "me:2025:set1:q43",
+      "exam_uid": "me:2025:set1:main:q43",
       "title": "GATE ME 2025 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1789,8 +1918,11 @@
     },
     "pp:me:2025:q44": {
       "question_uid": "pp:me:2025:q44",
-      "exam_uid": "me:2025:set1:q44",
+      "exam_uid": "me:2025:set1:main:q44",
       "title": "GATE ME 2025 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1829,8 +1961,11 @@
     },
     "pp:me:2025:q45": {
       "question_uid": "pp:me:2025:q45",
-      "exam_uid": "me:2025:set1:q45",
+      "exam_uid": "me:2025:set1:main:q45",
       "title": "GATE ME 2025 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1869,8 +2004,11 @@
     },
     "pp:me:2025:q46": {
       "question_uid": "pp:me:2025:q46",
-      "exam_uid": "me:2025:set1:q46",
+      "exam_uid": "me:2025:set1:main:q46",
       "title": "GATE ME 2025 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1909,8 +2047,11 @@
     },
     "pp:me:2025:q47": {
       "question_uid": "pp:me:2025:q47",
-      "exam_uid": "me:2025:set1:q47",
+      "exam_uid": "me:2025:set1:main:q47",
       "title": "GATE ME 2025 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1949,8 +2090,11 @@
     },
     "pp:me:2025:q48": {
       "question_uid": "pp:me:2025:q48",
-      "exam_uid": "me:2025:set1:q48",
+      "exam_uid": "me:2025:set1:main:q48",
       "title": "GATE ME 2025 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1989,8 +2133,11 @@
     },
     "pp:me:2025:q49": {
       "question_uid": "pp:me:2025:q49",
-      "exam_uid": "me:2025:set1:q49",
+      "exam_uid": "me:2025:set1:main:q49",
       "title": "GATE ME 2025 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2029,8 +2176,11 @@
     },
     "pp:me:2025:q50": {
       "question_uid": "pp:me:2025:q50",
-      "exam_uid": "me:2025:set1:q50",
+      "exam_uid": "me:2025:set1:main:q50",
       "title": "GATE ME 2025 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2069,8 +2219,11 @@
     },
     "pp:me:2025:q51": {
       "question_uid": "pp:me:2025:q51",
-      "exam_uid": "me:2025:set1:q51",
+      "exam_uid": "me:2025:set1:main:q51",
       "title": "GATE ME 2025 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2109,8 +2262,11 @@
     },
     "pp:me:2025:q52": {
       "question_uid": "pp:me:2025:q52",
-      "exam_uid": "me:2025:set1:q52",
+      "exam_uid": "me:2025:set1:main:q52",
       "title": "GATE ME 2025 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2149,8 +2305,11 @@
     },
     "pp:me:2025:q53": {
       "question_uid": "pp:me:2025:q53",
-      "exam_uid": "me:2025:set1:q53",
+      "exam_uid": "me:2025:set1:main:q53",
       "title": "GATE ME 2025 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2189,8 +2348,11 @@
     },
     "pp:me:2025:q54": {
       "question_uid": "pp:me:2025:q54",
-      "exam_uid": "me:2025:set1:q54",
+      "exam_uid": "me:2025:set1:main:q54",
       "title": "GATE ME 2025 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2229,8 +2391,11 @@
     },
     "pp:me:2025:q55": {
       "question_uid": "pp:me:2025:q55",
-      "exam_uid": "me:2025:set1:q55",
+      "exam_uid": "me:2025:set1:main:q55",
       "title": "GATE ME 2025 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2269,8 +2434,11 @@
     },
     "pp:me:2025:q56": {
       "question_uid": "pp:me:2025:q56",
-      "exam_uid": "me:2025:set1:q56",
-      "title": "GATE ME 2025 | Set 1 | Question: 56",
+      "exam_uid": "me:2025:set1:ga:q1",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2303,15 +2471,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "A <b>shoal</b> is a collective noun used for a group of <b>fish</b>.\n\nSimilarly, the collective noun used for a group of <b>lions</b> is a <b>pride</b>.\n\nTherefore,\n\n$\\text{Fish} : \\text{Shoal} :: \\text{Lion} : \\text{Pride}$",
         "images": []
       }
     },
     "pp:me:2025:q57": {
       "question_uid": "pp:me:2025:q57",
-      "exam_uid": "me:2025:set1:q57",
-      "title": "GATE ME 2025 | Set 1 | Question: 57",
+      "exam_uid": "me:2025:set1:ga:q2",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2344,15 +2515,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Correct Sentence:</b>\n\n(A) It is I who am responsible for this fiasco.\n\n<b>Explanation:</b>\n\nIn formal English grammar, when using the structure “It is I who…”, the verb after “who” must agree with the subject “I.”\n\nSo, “It is I who <b>am</b> responsible…” is grammatically correct.",
         "images": []
       }
     },
     "pp:me:2025:q58": {
       "question_uid": "pp:me:2025:q58",
-      "exam_uid": "me:2025:set1:q58",
-      "title": "GATE ME 2025 | Set 1 | Question: 58",
+      "exam_uid": "me:2025:set1:ga:q3",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2385,15 +2559,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Given:</b>\n\nCar P travels North at 25 km/h.\n\nCar Q travels East at 30 km/h.\n\nBoth start at 10:00 AM from point X.\n\nAt 11:30 AM (1.5 hours later), both are at the same distance from point X.\n\nCar P travels continuously, but Car Q stops after traveling for 1 hour.\n\nLet’s find how far Car P travels:\n\n$\\text{Distance by P} = 25 \\times 1.5 = 37.5 \\text{ km}$\n\nLet Car Q travel for $t$ hours. Since Car Q stops after 1 hour, it travels for $t$ hours where $t \\leq 1.5$.\n\n$\\text{Distance by Q} = 30 \\times t$\n\nSince both are at the same distance from point X, apply Pythagoras theorem:\n\n$(37.5)^2 = (30t)^2$\n\n$1406.25 = 900t^2$\n\n$t^2 = \\frac{1406.25}{900} = 1.5625$\n\n$t = \\sqrt{1.5625} = 1.25 \\text{ hours}$\n\nTotal time available = 1.5 hours, but Car Q travels for 1.25 hours.\n\nSo, the time Car Q stopped = $1.5 - 1.25 = 0.25 \\text{ hours} = 15 \\text{ minutes}$\n\n<b>Final Answer:</b>\n\n$\\boxed{15 \\text{ minutes}}$",
         "images": []
       }
     },
     "pp:me:2025:q59": {
       "question_uid": "pp:me:2025:q59",
-      "exam_uid": "me:2025:set1:q59",
-      "title": "GATE ME 2025 | Set 1 | Question: 59",
+      "exam_uid": "me:2025:set1:ga:q4",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2426,15 +2603,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Given:</b> The ceiling function $\\lceil x \\rceil$ is the smallest integer greater than or equal to $x$, and the floor function $\\lfloor x \\rfloor$ is the largest integer smaller than or equal to $x$.\n\n<b>Step 1:</b> Let's analyze each statement one by one.\n\n<b>(A)</b> $\\lceil x \\rceil \\geq x$\n\nThis is <b>true</b>. By definition, the ceiling function gives the smallest integer greater than or equal to $x$, so $\\lceil x \\rceil \\geq x$.\n\n<b>(B)</b> $\\lfloor x \\rfloor \\leq x$\n\nThis is <b>true</b>. By definition, the floor function gives the largest integer smaller than or equal to $x$, so $\\lfloor x \\rfloor \\leq x$.\n\n<b>(C)</b> $\\lceil x \\rceil \\geq \\lfloor x \\rfloor$\n\nThis is <b>true</b>. The ceiling of $x$ is always greater than or equal to the floor of $x$, because the ceiling rounds up, while the floor rounds down.\n\n<b>(D)</b> $\\lfloor x \\rfloor < \\lceil x \\rceil$\n\nThis is <b>not necessarily true</b> for all values of $x$. If $x$ is an integer, then $\\lfloor x \\rfloor = \\lceil x \\rceil$. Therefore, this statement fails when $x$ is an integer.\n\n<b>Final Answer:</b> The statement that is <b>NOT correct</b> for all possible values of $x$ is <b>(D)</b>, because when $x$ is an integer, $\\lfloor x \\rfloor = \\lceil x \\rceil$.",
         "images": []
       }
     },
     "pp:me:2025:q60": {
       "question_uid": "pp:me:2025:q60",
-      "exam_uid": "me:2025:set1:q60",
-      "title": "GATE ME 2025 | Set 1 | Question: 60",
+      "exam_uid": "me:2025:set1:ga:q5",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2467,15 +2647,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Given:</b> P has won 80% of the matches, drawn 15% of the matches, and lost 5% of the matches. If they play 3 more matches, we need to find the probability of P winning exactly 2 out of these 3 matches.\n\n<b>Step 1:</b> The probability of P winning a match is $P(\\text{win}) = 0.80$. The probability of P losing or drawing a match doesn't affect the outcome for P winning, so we focus only on the probability of winning.\n\n<b>Step 2:</b> We can model the number of wins as a binomial distribution, where the number of trials is 3 (the number of matches) and the probability of success (P winning) is 0.80.\n\n<b>Step 3:</b> The probability of P winning exactly 2 matches out of 3 is given by the binomial probability formula:\n\n$P(X = 2) = \\binom{3}{2} (0.80)^2 (0.20)^1$\n\nWhere $\\binom{3}{2}$ is the number of ways to choose 2 wins from 3 matches.\n\n<b>Step 4:</b> Calculating the terms:\n\n$\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = 3$\n\n$(0.80)^2 = 0.64$ and $(0.20)^1 = 0.20$.\n\n<b>Step 5:</b> Now, calculating the probability:\n\n$P(X = 2) = 3 \\times 0.64 \\times 0.20 = 3 \\times 0.128 = 0.384$.\n\n<b>Final Answer:</b> The probability of P winning exactly 2 of the 3 matches is $48/125$, so the correct answer is <b>(A) 48/125</b>.",
         "images": []
       }
     },
     "pp:me:2025:q61": {
       "question_uid": "pp:me:2025:q61",
-      "exam_uid": "me:2025:set1:q61",
-      "title": "GATE ME 2025 | Set 1 | Question: 61",
+      "exam_uid": "me:2025:set1:ga:q6",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2508,15 +2691,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "The correct sequence should start with the introduction of the gold discovery (S), followed by the people's rush towards the city (P), their unrealistic beliefs (R), and finally, the realization of hardships (Q). This sequence logically builds up the narrative.\n\n<b>Final Answer:</b> The most appropriate sequence is <b>(D) S → P → R → Q</b>.",
         "images": []
       }
     },
     "pp:me:2025:q62": {
       "question_uid": "pp:me:2025:q62",
-      "exam_uid": "me:2025:set1:q62",
-      "title": "GATE ME 2025 | Set 1 | Question: 62",
+      "exam_uid": "me:2025:set1:ga:q7",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2549,15 +2735,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "It appears the pattern involves adding a constant to the position of the letter in the alphabet to get the coded value. Let's calculate this constant using the difference between the positions of the letters and their corresponding code values.\n\n<b>HIDE:</b>\n\n- H = 8 $\\rightarrow$ 19, the difference is $19 - 8 = 11$\n\n- I = 9 $\\rightarrow$ 23, the difference is $23 - 9 = 14$\n\n- D = 4 $\\rightarrow$ 7, the difference is $7 - 4 = 3$\n\n- E = 5 $\\rightarrow$ 11, the difference is $11 - 5 = 6$\n\n<b>Final Answer:</b> Based on this calculation, we would need to apply the same pattern to the word \"HIGH\".\n\nFor H = 8 $\\rightarrow$ 19\n\nFor I = 9 $\\rightarrow$ 23\n\nFor G = 7 $\\rightarrow$ 17\n\nFor H = 8 $\\rightarrow$ 19",
         "images": []
       }
     },
     "pp:me:2025:q63": {
       "question_uid": "pp:me:2025:q63",
-      "exam_uid": "me:2025:set1:q63",
-      "title": "GATE ME 2025 | Set 1 | Question: 63",
+      "exam_uid": "me:2025:set1:ga:q8",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2589,12 +2778,18 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "ME Core Engineering",
+        "markdown": null
+      }
     },
     "pp:me:2025:q64": {
       "question_uid": "pp:me:2025:q64",
-      "exam_uid": "me:2025:set1:q64",
-      "title": "GATE ME 2025 | Set 1 | Question: 64",
+      "exam_uid": "me:2025:set1:ga:q9",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2627,15 +2822,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Given:</b> We need to identify the correct sequence of objects arranged in the increasing number of mirror lines (lines of symmetry).\n\n<b>Step 1:</b> Let's analyze the number of mirror lines for each shape:\n\nCircle: A circle has infinite lines of symmetry because it can be reflected along any line passing through its center.\n\nSquare: A square has 4 lines of symmetry: 2 diagonals and 2 midlines (vertical and horizontal).\n\nEquilateral Triangle: An equilateral triangle has 3 lines of symmetry: one along each of its altitudes.\n\nIsosceles Triangle: An isosceles triangle has 1 line of symmetry, which divides the triangle into two congruent parts.",
         "images": []
       }
     },
     "pp:me:2025:q65": {
       "question_uid": "pp:me:2025:q65",
-      "exam_uid": "me:2025:set1:q65",
-      "title": "GATE ME 2025 | Set 1 | Question: 65",
+      "exam_uid": "me:2025:set1:ga:q10",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2668,7 +2866,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The probability of receiving job offers from both companies, $p$, is the intersection of the two events. Using the formula for the intersection of two events, we know:\n\n$P(S \\cap T) = P(S) + P(T) - P(S \\cup T)$\n\nThe maximum value of $P(S \\cup T)$ is 1, as the probability of the union cannot exceed 1. Thus, the maximum possible value for $p$ is:\n\n$p_{\\text{max}} = P(S) + P(T) - 1 = 0.8 + 0.6 - 1 = 0.4$\n\nThe minimum value of $p$ occurs when the two events are mutually exclusive, i.e., there is no overlap between the two events. In this case, the minimum value of $p$ is 0.\n\nThus, the probability $p$ lies in the range:\n\n$0 \\leq p \\leq 0.4$",
         "images": []
       }

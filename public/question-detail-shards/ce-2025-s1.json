@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:31.073Z",
+  "generatedAt": "2026-10-17T21:30:25.708Z",
   "shardKey": "ce-2025-s1",
   "yearSetKey": "ce-2025-s1",
   "yearSetIdentity": "ce:2025:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ce:2025:q1": {
       "question_uid": "pp:ce:2025:q1",
-      "exam_uid": "ce:2025:set1:q1",
+      "exam_uid": "ce:2025:set1:main:q1",
       "title": "GATE CE 2025 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Solution:</b>\n\nWe are given:\n\n$A x = \\lambda x$\n\nSo, $\\lambda$ is an eigenvalue of matrix $A$ and $x$ is its corresponding eigenvector\n\nWe are also told that:\n\n$B = A - 2I$, where $I$ is the identity matrix\n\nNow we need to find the eigenvalue of $B$ corresponding to the same eigenvector $x$\n\n<b>Step 1:</b> Apply $B$ on $x$:\n\n$Bx = (A - 2I)x = Ax - 2Ix$\n\n$Bx = \\lambda x - 2x = (\\lambda - 2)x$\n\n<b>Step 2:</b> Since $Bx = (\\lambda - 2)x$, this shows that $x$ is also an eigenvector of $B$, with eigenvalue:\n\n$\\lambda_B = \\lambda - 2$\n\n<b>Final Answer:</b> <b>$\\lambda - 2$</b>",
         "images": []
       }
     },
     "pp:ce:2025:q2": {
       "question_uid": "pp:ce:2025:q2",
-      "exam_uid": "ce:2025:set1:q2",
+      "exam_uid": "ce:2025:set1:main:q2",
       "title": "GATE CE 2025 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Step 1:</b> Let $$x = \\begin{bmatrix} x_1 \\ x_2 \\end{bmatrix}$$\n\nThen $Ax = b$ means:\n\n$$\\begin{bmatrix} 1 & 1 \\ 1 & 3 \\ -2 & -3 \\end{bmatrix} \\begin{bmatrix} x_1 \\ x_2 \\end{bmatrix} = \\begin{bmatrix} b_1 \\ b_2 \\ b_3 \\end{bmatrix}$$\n\nThis leads to the system:\n\n$x_1 + x_2 = b_1 \\quad \\text{(1)}$\n\n$x_1 + 3x_2 = b_2 \\quad \\text{(2)}$\n\n$-2x_1 - 3x_2 = b_3 \\quad \\text{(3)}$\n\n<b>Step 2:</b> From equation (1), solve for $x_1 = b_1 - x_2$\n\nSubstitute into equation (2):\n\n$(b_1 - x_2) + 3x_2 = b_2 \\Rightarrow b_1 + 2x_2 = b_2$\n\nSo,\n\n$x_2 = \\frac{b_2 - b_1}{2}$ and then $x_1 = \\frac{3b_1 - b_2}{2}$\n\n<b>Step 3:</b> Plug into equation (3) to ensure consistency:\n\n$-2x_1 - 3x_2 = b_3$\n\nSubstitute values:\n\n$-2\\left( \\frac{3b_1 - b_2}{2} \\right) - 3\\left( \\frac{b_2 - b_1}{2} \\right) = b_3$\n\nSimplify:\n\n$- (3b_1 - b_2) - \\frac{3(b_2 - b_1)}{2} = b_3$\n\n$-3b_1 + b_2 - \\frac{3b_2 - 3b_1}{2} = b_3$\n\n$-3b_1 + b_2 - \\frac{3b_2}{2} + \\frac{3b_1}{2} = b_3$\n\n$(-3b_1 + \\frac{3b_1}{2}) + (b_2 - \\frac{3b_2}{2}) = b_3$\n\n$-\\frac{3b_1}{2} - \\frac{b_2}{2} = b_3$\n\nMultiply both sides by 2:\n\n$-3b_1 - b_2 = 2b_3$\n\nRearranged:\n\n$3b_1 + b_2 + 2b_3 = 0$\n\n<b>Final Answer:</b> <b>(B) $3b_1 + b_2 + 2b_3 = 0$</b>",
         "images": []
       }
     },
     "pp:ce:2025:q3": {
       "question_uid": "pp:ce:2025:q3",
-      "exam_uid": "ce:2025:set1:q3",
+      "exam_uid": "ce:2025:set1:main:q3",
       "title": "GATE CE 2025 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Partial Differential Equation",
+        "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "$$\\begin{aligned}\n\na_0 &= \\frac{1}{L} \\int_{-L}^{L} f(x) \\, dx \\\\\n\n&= \\frac{1}{2} \\int_{-2}^{2} f(x) \\, dx \\\\\n\n&= \\frac{1}{2} \\times 2 \\int_{0}^{2} f(x) \\, dx \\\\\n\n&= \\int_{0}^{1} 2k \\, dx = 2k\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& f(x)=\\text { even function } \\\\\n\n& b_{n}=0 \\\\\n\n& \\text { Period }=4 \\text { i.e. i.n (-2, 2) } \\\\\n\n& L=2 \\\\\n\n& a_{n}=\\frac{1}{L} \\int_{-L}^{L} \\cos \\left(\\frac{n \\pi x}{2}\\right) f(x) d x \\\\\n\n& =\\frac{1}{2} \\int_{-2}^{2} \\cos \\left(\\frac{n \\pi x}{2}\\right) f(x) d x \\\\\n\n& =2 \\times \\frac{1}{2} \\int_{0}^{1} \\cos \\left(\\frac{n \\pi x}{2}\\right) 2 k \\cdot d x \\\\\n\n& =2 k \\int_{0}^{1} \\cos \\left(\\frac{n \\pi x}{2}\\right) d x \\\\\n\n& =2 k\\left[\\frac{\\sin \\left(\\frac{n \\pi x}{2}\\right)}{\\left(\\frac{n \\pi}{2}\\right)}\\right]_{0}^{1}=\\frac{4 k}{n \\pi}\\left[\\sin \\left(\\frac{n \\pi x}{2}\\right)\\right]_{0}^{1} \\\\\n\n& a_{n}=\\frac{4 k}{n \\pi} \\sin \\frac{n \\pi}{2} \\\\\n\n& f(x)=\\frac{a_{0}}{2}+\\sum_{n=1}^{\\infty} a_{n} \\cos \\left(\\frac{n \\pi x}{L}\\right) \\\\\n\n& =\\frac{2 k}{2}+\\sum_{n=1}^{\\infty} a_{n} \\cos \\left(\\frac{n \\pi x}{L}\\right) \\\\\n\n& =k+\\frac{4 k}{\\pi} \\cos \\frac{\\pi x}{2}+\\frac{4 k}{2 \\pi} \\times 0+\\frac{4 k}{3 \\pi}(-1) \\cos \\left(\\frac{3 \\pi x}{2}\\right)+0+\\frac{4 k}{5 \\pi} \\times \\cos \\frac{5 \\pi x}{2}+\\ldots \\\\\n\n& =k+\\frac{4 k}{\\pi}\\left[\\cos \\left(\\frac{\\pi x}{2}\\right)-\\frac{1}{3} \\cos \\frac{3 \\pi x}{2}+\\frac{1}{5} \\cos \\frac{5 \\pi x}{2}-. .\\right]\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:ce:2025:q4": {
       "question_uid": "pp:ce:2025:q4",
-      "exam_uid": "ce:2025:set1:q4",
+      "exam_uid": "ce:2025:set1:main:q4",
       "title": "GATE CE 2025 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<b>Step 1: Compute the expected value $E(X)$</b>\n\n$E(X) = \\sum X_i \\cdot P(X_i)$\n\n$= 0 \\cdot 0.4 + 1 \\cdot 0.3 + 7 \\cdot 0.1 + 11 \\cdot 0.1 + 12 \\cdot 0.1$\n\n$= 0 + 0.3 + 0.7 + 1.1 + 1.2 = 3.3$\n\n<b>Step 2: Compute $E(X^2)$</b>\n\n$E(X^2) = \\sum X_i^2 \\cdot P(X_i)$\n\n$= 0^2 \\cdot 0.4 + 1^2 \\cdot 0.3 + 7^2 \\cdot 0.1 + 11^2 \\cdot 0.1 + 12^2 \\cdot 0.1$\n\n$= 0 + 1 \\cdot 0.3 + 49 \\cdot 0.1 + 121 \\cdot 0.1 + 144 \\cdot 0.1$\n\n$= 0.3 + 4.9 + 12.1 + 14.4 = 31.7$\n\n<b>Step 3: Compute Variance</b>\n\n$\\text{Var}(X) = E(X^2) - (E(X))^2$\n\n$= 31.7 - (3.3)^2 = 31.7 - 10.89 = 20.81$\n\n<b>Final Answer:</b> <b>$\\text{Var}(X) = 20.81$</b>",
         "images": []
       }
     },
     "pp:ce:2025:q5": {
       "question_uid": "pp:ce:2025:q5",
-      "exam_uid": "ce:2025:set1:q5",
+      "exam_uid": "ce:2025:set1:main:q5",
       "title": "GATE CE 2025 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -221,8 +236,11 @@
     },
     "pp:ce:2025:q6": {
       "question_uid": "pp:ce:2025:q6",
-      "exam_uid": "ce:2025:set1:q6",
+      "exam_uid": "ce:2025:set1:main:q6",
       "title": "GATE CE 2025 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:ce:2025:q7": {
       "question_uid": "pp:ce:2025:q7",
-      "exam_uid": "ce:2025:set1:q7",
+      "exam_uid": "ce:2025:set1:main:q7",
       "title": "GATE CE 2025 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -305,8 +326,11 @@
     },
     "pp:ce:2025:q8": {
       "question_uid": "pp:ce:2025:q8",
-      "exam_uid": "ce:2025:set1:q8",
+      "exam_uid": "ce:2025:set1:main:q8",
       "title": "GATE CE 2025 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -347,8 +371,11 @@
     },
     "pp:ce:2025:q9": {
       "question_uid": "pp:ce:2025:q9",
-      "exam_uid": "ce:2025:set1:q9",
+      "exam_uid": "ce:2025:set1:main:q9",
       "title": "GATE CE 2025 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -389,8 +416,11 @@
     },
     "pp:ce:2025:q10": {
       "question_uid": "pp:ce:2025:q10",
-      "exam_uid": "ce:2025:set1:q10",
+      "exam_uid": "ce:2025:set1:main:q10",
       "title": "GATE CE 2025 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +461,11 @@
     },
     "pp:ce:2025:q11": {
       "question_uid": "pp:ce:2025:q11",
-      "exam_uid": "ce:2025:set1:q11",
+      "exam_uid": "ce:2025:set1:main:q11",
       "title": "GATE CE 2025 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -473,8 +506,11 @@
     },
     "pp:ce:2025:q12": {
       "question_uid": "pp:ce:2025:q12",
-      "exam_uid": "ce:2025:set1:q12",
+      "exam_uid": "ce:2025:set1:main:q12",
       "title": "GATE CE 2025 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -515,8 +551,11 @@
     },
     "pp:ce:2025:q13": {
       "question_uid": "pp:ce:2025:q13",
-      "exam_uid": "ce:2025:set1:q13",
+      "exam_uid": "ce:2025:set1:main:q13",
       "title": "GATE CE 2025 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -557,8 +596,11 @@
     },
     "pp:ce:2025:q14": {
       "question_uid": "pp:ce:2025:q14",
-      "exam_uid": "ce:2025:set1:q14",
+      "exam_uid": "ce:2025:set1:main:q14",
       "title": "GATE CE 2025 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -599,8 +641,11 @@
     },
     "pp:ce:2025:q15": {
       "question_uid": "pp:ce:2025:q15",
-      "exam_uid": "ce:2025:set1:q15",
+      "exam_uid": "ce:2025:set1:main:q15",
       "title": "GATE CE 2025 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -641,8 +686,11 @@
     },
     "pp:ce:2025:q16": {
       "question_uid": "pp:ce:2025:q16",
-      "exam_uid": "ce:2025:set1:q16",
+      "exam_uid": "ce:2025:set1:main:q16",
       "title": "GATE CE 2025 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -683,8 +731,11 @@
     },
     "pp:ce:2025:q17": {
       "question_uid": "pp:ce:2025:q17",
-      "exam_uid": "ce:2025:set1:q17",
+      "exam_uid": "ce:2025:set1:main:q17",
       "title": "GATE CE 2025 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -725,8 +776,11 @@
     },
     "pp:ce:2025:q18": {
       "question_uid": "pp:ce:2025:q18",
-      "exam_uid": "ce:2025:set1:q18",
+      "exam_uid": "ce:2025:set1:main:q18",
       "title": "GATE CE 2025 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -760,15 +814,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Partial Differential Equation",
+        "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "Equation 1:\n\n$\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\left( \\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} \\right) + xy$\n\n- Second-order: Yes\n\n- Linear: Yes\n\n- Homogeneous: No (due to the term $+xy$)\n\nEquation 2:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} + \\frac{\\partial^2 u}{\\partial z^2} = 0$\n\n- Second-order: Yes\n\n- Linear: Yes\n\n- Homogeneous: Yes\n\nEquation 3:\n\n$\\frac{\\partial u}{\\partial t} = c \\frac{\\partial u}{\\partial x}$\n\n- Second-order: No\n\nEquation 4:\n\n$\\left( \\frac{\\partial^2 u}{\\partial t^2} \\right)^2 = c^2 \\frac{\\partial^2 u}{\\partial x^2}$\n\n- Second-order: Yes\n\n- Linear: No (square of a second derivative makes it nonlinear)\n\n<b>Final Answer:</b> Only <b>Equation 2</b> belongs to the class of second-order, linear, homogeneous partial differential equations.",
         "images": []
       }
     },
     "pp:ce:2025:q19": {
       "question_uid": "pp:ce:2025:q19",
-      "exam_uid": "ce:2025:set1:q19",
+      "exam_uid": "ce:2025:set1:main:q19",
       "title": "GATE CE 2025 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -809,8 +866,11 @@
     },
     "pp:ce:2025:q20": {
       "question_uid": "pp:ce:2025:q20",
-      "exam_uid": "ce:2025:set1:q20",
+      "exam_uid": "ce:2025:set1:main:q20",
       "title": "GATE CE 2025 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -851,8 +911,11 @@
     },
     "pp:ce:2025:q21": {
       "question_uid": "pp:ce:2025:q21",
-      "exam_uid": "ce:2025:set1:q21",
+      "exam_uid": "ce:2025:set1:main:q21",
       "title": "GATE CE 2025 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -893,8 +956,11 @@
     },
     "pp:ce:2025:q22": {
       "question_uid": "pp:ce:2025:q22",
-      "exam_uid": "ce:2025:set1:q22",
+      "exam_uid": "ce:2025:set1:main:q22",
       "title": "GATE CE 2025 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -935,8 +1001,11 @@
     },
     "pp:ce:2025:q23": {
       "question_uid": "pp:ce:2025:q23",
-      "exam_uid": "ce:2025:set1:q23",
+      "exam_uid": "ce:2025:set1:main:q23",
       "title": "GATE CE 2025 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -975,8 +1044,11 @@
     },
     "pp:ce:2025:q24": {
       "question_uid": "pp:ce:2025:q24",
-      "exam_uid": "ce:2025:set1:q24",
+      "exam_uid": "ce:2025:set1:main:q24",
       "title": "GATE CE 2025 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1015,8 +1087,11 @@
     },
     "pp:ce:2025:q25": {
       "question_uid": "pp:ce:2025:q25",
-      "exam_uid": "ce:2025:set1:q25",
+      "exam_uid": "ce:2025:set1:main:q25",
       "title": "GATE CE 2025 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1055,8 +1130,11 @@
     },
     "pp:ce:2025:q26": {
       "question_uid": "pp:ce:2025:q26",
-      "exam_uid": "ce:2025:set1:q26",
+      "exam_uid": "ce:2025:set1:main:q26",
       "title": "GATE CE 2025 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1090,15 +1168,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "To evaluate the limit:\n\n$\\lim_{x \\to \\infty} \\left(x - \\sqrt{x^2 + x} \\right)$\n\nWe rationalize the expression by multiplying numerator and denominator by the conjugate:\n\n$$\\begin{aligned} x - \\sqrt{x^2 + x} &= \\frac{(x - \\sqrt{x^2 + x}) \\cdot (x + \\sqrt{x^2 + x})}{x + \\sqrt{x^2 + x}} \\ &= \\frac{x^2 - (x^2 + x)}{x + \\sqrt{x^2 + x}} \\ &= \\frac{-x}{x + \\sqrt{x^2 + x}} \\end{aligned}$$\n\nNow evaluate the limit:\n\n$\\lim_{x \\to \\infty} \\frac{-x}{x + \\sqrt{x^2 + x}} = \\frac{-1}{1 + \\sqrt{1 + \\frac{1}{x}}}$\n\nAs $x \\to \\infty$, $\\frac{1}{x} \\to 0$, so we get:\n\n$\\frac{-1}{1 + \\sqrt{1}} = \\frac{-1}{1 + 1} = \\boxed{-\\frac{1}{2}}$\n\n<b>Final Answer:</b> $-\\frac{1}{2}$",
         "images": []
       }
     },
     "pp:ce:2025:q27": {
       "question_uid": "pp:ce:2025:q27",
-      "exam_uid": "ce:2025:set1:q27",
+      "exam_uid": "ce:2025:set1:main:q27",
       "title": "GATE CE 2025 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1139,8 +1220,11 @@
     },
     "pp:ce:2025:q28": {
       "question_uid": "pp:ce:2025:q28",
-      "exam_uid": "ce:2025:set1:q28",
+      "exam_uid": "ce:2025:set1:main:q28",
       "title": "GATE CE 2025 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1181,8 +1265,11 @@
     },
     "pp:ce:2025:q29": {
       "question_uid": "pp:ce:2025:q29",
-      "exam_uid": "ce:2025:set1:q29",
+      "exam_uid": "ce:2025:set1:main:q29",
       "title": "GATE CE 2025 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1223,8 +1310,11 @@
     },
     "pp:ce:2025:q30": {
       "question_uid": "pp:ce:2025:q30",
-      "exam_uid": "ce:2025:set1:q30",
+      "exam_uid": "ce:2025:set1:main:q30",
       "title": "GATE CE 2025 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1265,8 +1355,11 @@
     },
     "pp:ce:2025:q31": {
       "question_uid": "pp:ce:2025:q31",
-      "exam_uid": "ce:2025:set1:q31",
+      "exam_uid": "ce:2025:set1:main:q31",
       "title": "GATE CE 2025 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1307,8 +1400,11 @@
     },
     "pp:ce:2025:q32": {
       "question_uid": "pp:ce:2025:q32",
-      "exam_uid": "ce:2025:set1:q32",
+      "exam_uid": "ce:2025:set1:main:q32",
       "title": "GATE CE 2025 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1349,8 +1445,11 @@
     },
     "pp:ce:2025:q33": {
       "question_uid": "pp:ce:2025:q33",
-      "exam_uid": "ce:2025:set1:q33",
+      "exam_uid": "ce:2025:set1:main:q33",
       "title": "GATE CE 2025 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1391,8 +1490,11 @@
     },
     "pp:ce:2025:q34": {
       "question_uid": "pp:ce:2025:q34",
-      "exam_uid": "ce:2025:set1:q34",
+      "exam_uid": "ce:2025:set1:main:q34",
       "title": "GATE CE 2025 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1433,8 +1535,11 @@
     },
     "pp:ce:2025:q35": {
       "question_uid": "pp:ce:2025:q35",
-      "exam_uid": "ce:2025:set1:q35",
+      "exam_uid": "ce:2025:set1:main:q35",
       "title": "GATE CE 2025 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1475,8 +1580,11 @@
     },
     "pp:ce:2025:q36": {
       "question_uid": "pp:ce:2025:q36",
-      "exam_uid": "ce:2025:set1:q36",
+      "exam_uid": "ce:2025:set1:main:q36",
       "title": "GATE CE 2025 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1517,8 +1625,11 @@
     },
     "pp:ce:2025:q37": {
       "question_uid": "pp:ce:2025:q37",
-      "exam_uid": "ce:2025:set1:q37",
+      "exam_uid": "ce:2025:set1:main:q37",
       "title": "GATE CE 2025 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1550,15 +1661,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Ordinary Differential Equation",
+        "concept": "Engineering Mathematics - Ordinary Differential Equation",
         "markdown": "We are given the second-order linear differential equation (after combining terms):\n\n$y'' + 0.8y' + 0.16y = 0$\n\nwith initial conditions:\n\n$y(0) = 3$, $y'(0) = 4.5$\n\nStep 1: Solve the characteristic equation\n\nThe auxiliary equation is:\n\n$r^2 + 0.8r + 0.16 = 0$\n\nSolve using the quadratic formula:\n\n$r = \\frac{-0.8 \\pm \\sqrt{(0.8)^2 - 4(1)(0.16)}}{2(1)}$\n\n$r = \\frac{-0.8 \\pm \\sqrt{0.64 - 0.64}}{2} = \\frac{-0.8}{2} = -0.4$\n\nThis is a repeated root: $r = -0.4$\n\nStep 2: General solution\n\n$y(t) = (A + Bt)e^{-0.4t}$\n\nStep 3: Apply initial conditions\n\n$y(0) = (A + B \\cdot 0)e^{0} = A = 3$\n\nSo, $A = 3$\n\nNow find $y'(t)$:\n\n$y'(t) = \\frac{d}{dt}[(A + Bt)e^{-0.4t}] = B e^{-0.4t} + (A + Bt)(-0.4)e^{-0.4t}$\n\n$y'(t) = \\left[B - 0.4(A + Bt)\\right]e^{-0.4t}$\n\nAt $t = 0$:\n\n$y'(0) = [B - 0.4(3)] \\cdot 1 = B - 1.2 = 4.5$\n\nSo, $B = 4.5 + 1.2 = 5.7$\n\nStep 4: Final solution\n\n$y(t) = (3 + 5.7t)e^{-0.4t}$\n\nStep 5: Find $y(1)$\n\n$y(1) = (3 + 5.7 \\cdot 1)e^{-0.4 \\cdot 1} = (8.7)e^{-0.4}$\n\n$e^{-0.4} \\approx 0.6703$\n\n$y(1) \\approx 8.7 \\cdot 0.6703 \\approx 5.83$\n\nFinal Answer:\n\n$y(1) = \\boxed{5.8}$ (rounded off to 1 decimal place)",
         "images": []
       }
     },
     "pp:ce:2025:q38": {
       "question_uid": "pp:ce:2025:q38",
-      "exam_uid": "ce:2025:set1:q38",
+      "exam_uid": "ce:2025:set1:main:q38",
       "title": "GATE CE 2025 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1590,15 +1704,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "We are given the function:\n\n$h(x) = -x^3 + 2x^2$\n\nand the interval: $[-1,\\ 1.5]$\n\nStep 1: Find the derivative\n\n$h'(x) = \\frac{d}{dx}(-x^3 + 2x^2) = -3x^2 + 4x$\n\nStep 2: Find critical points by solving $h'(x) = 0$\n\n$-3x^2 + 4x = 0$\n\n$x(-3x + 4) = 0$\n\nSo, $x = 0$ or $x = \\frac{4}{3}$\n\nStep 3: Evaluate $h(x)$ at endpoints and critical points\n\nAt $x = -1$:\n\n$h(-1) = -(-1)^3 + 2(-1)^2 = 1 + 2 = 3$\n\nAt $x = 0$:\n\n$h(0) = 0$\n\nAt $x = \\frac{4}{3}$:\n\n$h\\left(\\frac{4}{3}\\right) = -\\left(\\frac{4}{3}\\right)^3 + 2\\left(\\frac{4}{3}\\right)^2$\n\n$= -\\frac{64}{27} + \\frac{32}{9} = -\\frac{64}{27} + \\frac{96}{27} = \\frac{32}{27} \\approx 1.19$\n\nAt $x = 1.5$:\n\n$h(1.5) = -(1.5)^3 + 2(1.5)^2 = -3.375 + 4.5 = 1.125$\n\nStep 4: Maximum value\n\nMaximum of ${3,\\ 0,\\ 1.19,\\ 1.125} = \\boxed{3.0}$",
         "images": []
       }
     },
     "pp:ce:2025:q39": {
       "question_uid": "pp:ce:2025:q39",
-      "exam_uid": "ce:2025:set1:q39",
+      "exam_uid": "ce:2025:set1:main:q39",
       "title": "GATE CE 2025 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1630,15 +1747,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "We are given the differential equation:\n\n$\\frac{dy}{dx} = y + 2x - x^2$\n\nInitial condition: $y(0) = 1$\n\nStep size: $h = 0.5$\n\nWe are to find $y(1.0)$ using Euler's Method.\n\nStep 1: At $x_0 = 0$, $y_0 = 1$\n\nCompute slope:\n\n$f(x_0, y_0) = y_0 + 2x_0 - x_0^2 = 1 + 0 - 0 = 1$\n\nApply Euler's formula:\n\n$y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0.5 \\cdot 1 = 1.5$\n\n$x_1 = x_0 + h = 0 + 0.5 = 0.5$\n\nStep 2: At $x_1 = 0.5$, $y_1 = 1.5$\n\nCompute slope:\n\n$f(x_1, y_1) = y_1 + 2x_1 - x_1^2 = 1.5 + 1.0 - 0.25 = 2.25$\n\nApply Euler's formula:\n\n$y_2 = y_1 + h \\cdot f(x_1, y_1) = 1.5 + 0.5 \\cdot 2.25 = 1.5 + 1.125 = 2.625$\n\n$x_2 = x_1 + h = 0.5 + 0.5 = 1.0$\n\nFinal Answer:\n\n$\\boxed{y(1.0) = 2.6}$ (rounded off to 1 decimal place)",
         "images": []
       }
     },
     "pp:ce:2025:q40": {
       "question_uid": "pp:ce:2025:q40",
-      "exam_uid": "ce:2025:set1:q40",
+      "exam_uid": "ce:2025:set1:main:q40",
       "title": "GATE CE 2025 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1677,8 +1797,11 @@
     },
     "pp:ce:2025:q41": {
       "question_uid": "pp:ce:2025:q41",
-      "exam_uid": "ce:2025:set1:q41",
+      "exam_uid": "ce:2025:set1:main:q41",
       "title": "GATE CE 2025 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1717,8 +1840,11 @@
     },
     "pp:ce:2025:q42": {
       "question_uid": "pp:ce:2025:q42",
-      "exam_uid": "ce:2025:set1:q42",
+      "exam_uid": "ce:2025:set1:main:q42",
       "title": "GATE CE 2025 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1757,8 +1883,11 @@
     },
     "pp:ce:2025:q43": {
       "question_uid": "pp:ce:2025:q43",
-      "exam_uid": "ce:2025:set1:q43",
+      "exam_uid": "ce:2025:set1:main:q43",
       "title": "GATE CE 2025 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1800,8 +1929,11 @@
     },
     "pp:ce:2025:q44": {
       "question_uid": "pp:ce:2025:q44",
-      "exam_uid": "ce:2025:set1:q44",
+      "exam_uid": "ce:2025:set1:main:q44",
       "title": "GATE CE 2025 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1842,8 +1974,11 @@
     },
     "pp:ce:2025:q45": {
       "question_uid": "pp:ce:2025:q45",
-      "exam_uid": "ce:2025:set1:q45",
+      "exam_uid": "ce:2025:set1:main:q45",
       "title": "GATE CE 2025 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1882,8 +2017,11 @@
     },
     "pp:ce:2025:q46": {
       "question_uid": "pp:ce:2025:q46",
-      "exam_uid": "ce:2025:set1:q46",
+      "exam_uid": "ce:2025:set1:main:q46",
       "title": "GATE CE 2025 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1922,8 +2060,11 @@
     },
     "pp:ce:2025:q47": {
       "question_uid": "pp:ce:2025:q47",
-      "exam_uid": "ce:2025:set1:q47",
+      "exam_uid": "ce:2025:set1:main:q47",
       "title": "GATE CE 2025 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1962,8 +2103,11 @@
     },
     "pp:ce:2025:q48": {
       "question_uid": "pp:ce:2025:q48",
-      "exam_uid": "ce:2025:set1:q48",
+      "exam_uid": "ce:2025:set1:main:q48",
       "title": "GATE CE 2025 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2002,8 +2146,11 @@
     },
     "pp:ce:2025:q49": {
       "question_uid": "pp:ce:2025:q49",
-      "exam_uid": "ce:2025:set1:q49",
+      "exam_uid": "ce:2025:set1:main:q49",
       "title": "GATE CE 2025 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2042,8 +2189,11 @@
     },
     "pp:ce:2025:q50": {
       "question_uid": "pp:ce:2025:q50",
-      "exam_uid": "ce:2025:set1:q50",
+      "exam_uid": "ce:2025:set1:main:q50",
       "title": "GATE CE 2025 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2082,8 +2232,11 @@
     },
     "pp:ce:2025:q51": {
       "question_uid": "pp:ce:2025:q51",
-      "exam_uid": "ce:2025:set1:q51",
+      "exam_uid": "ce:2025:set1:main:q51",
       "title": "GATE CE 2025 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2122,8 +2275,11 @@
     },
     "pp:ce:2025:q52": {
       "question_uid": "pp:ce:2025:q52",
-      "exam_uid": "ce:2025:set1:q52",
+      "exam_uid": "ce:2025:set1:main:q52",
       "title": "GATE CE 2025 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2162,8 +2318,11 @@
     },
     "pp:ce:2025:q53": {
       "question_uid": "pp:ce:2025:q53",
-      "exam_uid": "ce:2025:set1:q53",
+      "exam_uid": "ce:2025:set1:main:q53",
       "title": "GATE CE 2025 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2202,8 +2361,11 @@
     },
     "pp:ce:2025:q54": {
       "question_uid": "pp:ce:2025:q54",
-      "exam_uid": "ce:2025:set1:q54",
+      "exam_uid": "ce:2025:set1:main:q54",
       "title": "GATE CE 2025 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2242,8 +2404,11 @@
     },
     "pp:ce:2025:q55": {
       "question_uid": "pp:ce:2025:q55",
-      "exam_uid": "ce:2025:set1:q55",
+      "exam_uid": "ce:2025:set1:main:q55",
       "title": "GATE CE 2025 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2282,8 +2447,11 @@
     },
     "pp:ce:2025:q56": {
       "question_uid": "pp:ce:2025:q56",
-      "exam_uid": "ce:2025:set1:q56",
-      "title": "GATE CE 2025 | Set 1 | Question: 56",
+      "exam_uid": "ce:2025:set1:ga:q1",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2316,15 +2484,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "In English, we commonly use the preposition \"on\" with television and radio when referring to something being broadcast.",
         "images": []
       }
     },
     "pp:ce:2025:q57": {
       "question_uid": "pp:ce:2025:q57",
-      "exam_uid": "ce:2025:set1:q57",
-      "title": "GATE CE 2025 | Set 1 | Question: 57",
+      "exam_uid": "ce:2025:set1:ga:q2",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2357,15 +2528,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Summarily means: immediately and without the usual formalities or procedures.\n\nThis fits perfectly in the context of disciplinary action taken according to service rules.\n\nSumptuously means: luxuriously or richly -  does not fit the context.\n\nBrazenly means: in a bold and shameless manner -  describes behavior, not the way someone is dismissed.\n\nUnintentionally means: not done on purpose -  contradicts the deliberate action of dismissal.",
         "images": []
       }
     },
     "pp:ce:2025:q58": {
       "question_uid": "pp:ce:2025:q58",
-      "exam_uid": "ce:2025:set1:q58",
-      "title": "GATE CE 2025 | Set 1 | Question: 58",
+      "exam_uid": "ce:2025:set1:ga:q3",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2398,15 +2572,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The infinite series given is:\n\n$\\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nWe know that the exponential function $e^x$ has the Taylor series expansion:\n\n$e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$\n\nSo, for $x = 1$:\n\n$e^1 = \\sum_{n=0}^{\\infty} \\frac{1}{n!} = 1 + \\frac{1}{1!} + \\frac{1}{2!} + \\frac{1}{3!} + \\cdots$\n\nNow, subtract 1 from both sides:\n\n$e - 1 = \\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nSo the sum of the given series is: $e - 1$",
         "images": []
       }
     },
     "pp:ce:2025:q59": {
       "question_uid": "pp:ce:2025:q59",
-      "exam_uid": "ce:2025:set1:q59",
-      "title": "GATE CE 2025 | Set 1 | Question: 59",
+      "exam_uid": "ce:2025:set1:ga:q4",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2439,15 +2616,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "We can construct the cube using 4 bent pieces of wire, each forming a connected path of 3 edges (like a \"U\" shape or three edges of a face). This covers all 12 edges:\n\n$12 \\text{ m} \\div 4 = 3 \\text{ m}$ per piece\n\nSo, we can cut the wire into 4 pieces of 3 m each.\n\nThat requires 3 cuts (1 cut gives 2 pieces, so 3 cuts give 4 pieces)\n\nThus, the minimum number of cuts required is:\n\n$\\boxed{3}$",
         "images": []
       }
     },
     "pp:ce:2025:q60": {
       "question_uid": "pp:ce:2025:q60",
-      "exam_uid": "ce:2025:set1:q60",
-      "title": "GATE CE 2025 | Set 1 | Question: 60",
+      "exam_uid": "ce:2025:set1:ga:q5",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2479,12 +2659,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2025:q61": {
       "question_uid": "pp:ce:2025:q61",
-      "exam_uid": "ce:2025:set1:q61",
-      "title": "GATE CE 2025 | Set 1 | Question: 61",
+      "exam_uid": "ce:2025:set1:ga:q6",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2517,15 +2703,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "(A) The author of the passage takes delight in wondering.\n\nThe passage does not suggest that the author takes delight in wondering. Instead, the author is questioning and expressing dissatisfaction with the actions of wealthier nations. Hence, this option is incorrect.\n\n(B) The wealthier nations are pulling down the crooked streets in their capitals.\n\nThe passage clearly states: \"Every day the wealthier nations are pulling down one or another in their capitals and their great towns.\" This directly confirms that wealthier nations are indeed pulling down crooked streets in their capitals, making this option correct.\n\n(C) In the past, crooked streets were only built on islands.\n\nThe passage mentions \"the islands of the past,\" but this is a metaphorical reference to the historical and human elements that are being destroyed, not literal islands. Therefore, this option is not supported by the passage.\n\n(D) Great broad ways are needed to protect commerce and history.\n\nWhile the passage acknowledges that broad ways are needed for commerce, it also criticizes the destruction of history and humanity in the process. The author believes that broad ways should not come at the cost of losing historical value, so this option is incorrect.",
         "images": []
       }
     },
     "pp:ce:2025:q62": {
       "question_uid": "pp:ce:2025:q62",
-      "exam_uid": "ce:2025:set1:q62",
-      "title": "GATE CE 2025 | Set 1 | Question: 62",
+      "exam_uid": "ce:2025:set1:ga:q7",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2558,15 +2747,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "For R.G of 1 minute hand goes $\\frac{12}{11}$\n\n$\\text { For R.G of } 60=60 \\times \\frac{12}{11}=\\frac{720}{11}=65 \\frac{5}{11}$",
         "images": []
       }
     },
     "pp:ce:2025:q63": {
       "question_uid": "pp:ce:2025:q63",
-      "exam_uid": "ce:2025:set1:q63",
-      "title": "GATE CE 2025 | Set 1 | Question: 63",
+      "exam_uid": "ce:2025:set1:ga:q8",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2598,12 +2790,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2025:q64": {
       "question_uid": "pp:ce:2025:q64",
-      "exam_uid": "ce:2025:set1:q64",
-      "title": "GATE CE 2025 | Set 1 | Question: 64",
+      "exam_uid": "ce:2025:set1:ga:q9",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2636,15 +2834,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Equation of the circles,\n\n$$\\begin{aligned}\n\n(x-0.5)^{2}+y^{2} & =0.5 \\\\\n\n(x-1)^{2}+(y-1)^{2} & =1\n\n\\end{aligned}$$\n\nFrom above equations ,\n\nPoints of intersection are $(0.2,0.4)$ and $(1,0)$.",
         "images": []
       }
     },
     "pp:ce:2025:q65": {
       "question_uid": "pp:ce:2025:q65",
-      "exam_uid": "ce:2025:set1:q65",
-      "title": "GATE CE 2025 | Set 1 | Question: 65",
+      "exam_uid": "ce:2025:set1:ga:q10",
+      "title": "GATE CE 2025 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2676,7 +2877,10 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ This document outlines core principles, architecture standards, and the LLM memo
 ## 1. Fast Context Loading & Memory Protocol
 
 Before doing research or writing code:
-1. **Read `.llm-memory/INDEX.md`**: Contains quick snapshots of project topology, recent decisions, progress, and UI/pipeline patterns.
+1. **Read `.llm-memory/INDEX.md`**: Snapshots of project topology, recent decisions, progress, and UI/pipeline patterns.
 2. **Check `.agents/skills/`**:
    - `supabase/`: Guidelines and rules for Supabase SDK, Auth, and Cloud Sync.
    - `supabase-postgres-best-practices/`: SQL performance, indexing, and Row Level Security (RLS) standards.
@@ -26,6 +26,12 @@ Before doing research or writing code:
   - When syncing with the cloud, the sync engine uses an **additive-only union-merge algorithm** (`src/utils/cloudSyncManager.js`).
   - Pre-merge snapshots (`gate_qa_backup_<timestamp>`) are taken locally before any merge.
   - Signing out NEVER deletes local user data.
+* **Immutable Question Identity (`question_uid`):**
+  - Internal primary keys (e.g. `pp:me:2018:q57` or `go:333214`) must **NEVER** change. User progress, notes, bookmarks, answer keys, and Supabase cloud records are keyed by `question_uid`.
+  - Canonical question display identity and official paper renumbering (e.g., GA Q1–10 vs Technical Q1–55) are strictly handled in the view layer via `src/utils/branchQuestionIdentity.js`.
+* **Selected-Branch Data Isolation & Standalone Resolution:**
+  - Users select $\le 2$ examination branches (DEC-177). Memory and storage strictly isolate loaded banks to enrolled branches.
+  - Standalone direct question navigation (`/practice/question/:questionUid`) dynamically resolves detail shards on-demand via `BranchQuestionService.loadDetailShard` or `DaQuestionService.ensureQuestionDetail` without polluting or modifying enrolled branch preferences.
 * **Static Fast-Delivery Model:**
   - Question detail shards, search indices, and SEO pages are pre-rendered at build time (`scripts/build-public-artifacts.mjs` and `scripts/prerender-seo-pages.mjs`).
   - The frontend is served as a static SPA on GitHub Pages / root domain `gateqa.in`.
@@ -37,22 +43,41 @@ Before doing research or writing code:
 * **Frontend:** React 18 (Vite SPA), React Router v6, Tailwind CSS & Vanilla CSS design tokens.
 * **Backend / Cloud Backup:** Supabase PostgreSQL ($0/mo Free Tier via `@supabase/supabase-js`).
 * **Icons:** `react-icons` (Fi, Fa). Never use raw emojis for core UI actions.
+* **Typography:** `DM Serif Display` (`--font-display`) for editorial titles and brand headers; sans-serif for stems and math.
 * **Testing:** Vitest for unit tests (`npm run test:unit`), Playwright for E2E (`npm run test:e2e`), TypeScript for type checking (`npm run typecheck`).
 * **No Commits / No Merges:** Only commit or merge git branches when explicitly requested by the user.
 
 ---
 
-## 4. Key Directory Map
+## 4. Discussion Linking & Detailed Solution Standards
+
+* **Authentic GateOverflow Subdomain Routing:**
+  - Discussion links must route strictly to verified branch subdomains (`src/utils/solutionLink.js`):
+    - Mechanical Engineering (`me`) $\to$ `https://me.gateoverflow.in`
+    - Electrical Engineering (`ee`) $\to$ `https://ee.gateoverflow.in`
+    - Electronics & Communication (`ec`) $\to$ `https://ec.gateoverflow.in`
+    - Civil Engineering (`ce`) $\to$ `https://civil.gateoverflow.in`
+    - Computer Science (`cse`) & Data Science (`da`) $\to$ `https://gateoverflow.in`
+* **In-Card Discussion Button:**
+  - The discussion link lives strictly inside the `DetailedSolutionView.jsx` card header on the right side.
+  - The main bottom action bar remains clean: `[Submit Answer] [Tray] | [Detailed Solution] [Ask AI] [Previous] [Next]`, with zero external solution button clutter.
+* **Universal Detailed Solution Access:**
+  - The `Detailed Solution` button is active for all questions (unlocked upon attempt). If a question does not yet have a parsed step-by-step mathematical derivation, it renders a polite placeholder with a direct discussion link and report issue flag.
+
+---
+
+## 5. Key Directory Map
 
 * `src/contexts/`: Global state (`AuthContext`, `FilterContext`, `MockTestContext`, `SessionContext`).
-* `src/utils/`: Core utilities (`cloudSyncManager.js`, `syncQueue.js`, `practiceProgress.js`, `mockTest.js`).
-* `src/components/Auth/`: Authentication UI (`AuthModal.jsx`, `UserProfileMenu.jsx`).
+* `src/utils/`: Core utilities (`cloudSyncManager.js`, `syncQueue.js`, `practiceProgress.js`, `mockTest.js`, `branchQuestionIdentity.js`, `solutionLink.js`).
+* `src/components/QuestionDetail/`: Question presentation & derivation (`DetailedSolutionView.jsx`, `Question.jsx`).
+* `src/components/AnswerPanel/`: Solution action bar & keypad (`AnswerPanel.jsx`).
 * `docs/`: Master architectural documents (`ARCHITECTURE.md`, `DATABASE.md`, `TRACKER.md`, `QUESTION_DATA_CORRECTION_RUNBOOK.md`, `CHANGELOG.md`).
 * `.llm-memory/`: Distilled summaries for fast LLM retrieval.
 
 ---
 
-## 5. Question & Answer Maintenance Protocol
+## 6. Question & Answer Maintenance Protocol
 
 Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), or repairing formulas/options:
 1. **Follow the Runbook**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) for the 6-phase protocol.
@@ -60,4 +85,3 @@ Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), o
 3. **Rebuild Static Shards**: Run `node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs`.
 4. **Add Regression Tests**: Add test cases in `src/utils/evaluateAnswer.test.js` and verify with `npm run test:unit`.
 5. **Sync Memory & Changelog**: Log changes in `docs/CHANGELOG.md`, `.llm-memory/decisions.md` (DEC-XXX), `.llm-memory/progress.md`, and `.llm-memory/bugs.md`.
-

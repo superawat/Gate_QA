@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.697Z",
+  "generatedAt": "2026-10-17T21:30:25.426Z",
   "shardKey": "me-2021-s1",
   "yearSetKey": "me-2021-s1",
   "yearSetIdentity": "me:2021:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2021:q1": {
       "question_uid": "pp:me:2021:q1",
-      "exam_uid": "me:2021:set1:q1",
+      "exam_uid": "me:2021:set1:main:q1",
       "title": "GATE ME 2021 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} \\frac{d y}{d x}+y \\cot x&=\\text{cosec} x\\\\ 1.F. \\qquad&=e^{\\int \\cot x d x}=e^{\\log \\sin x}=\\sin x\\\\ \\Rightarrow \\quad y(\\sin x)&=\\int \\text{cosec} x \\sin x d x+c\\\\ \\Rightarrow \\qquad y \\sin x&=x+c\\\\ \\Rightarrow \\qquad \\frac{\\pi}{2} \\sin \\frac{\\pi}{2} & =\\frac{\\pi}{2}+c \\\\ \\Rightarrow \\qquad \\frac{\\pi}{2} & =\\frac{\\pi}{2}+c \\quad \\Rightarrow c=0 \\\\ \\Rightarrow \\qquad y \\sin x & =x\\\\ \\Rightarrow \\qquad y \\sin \\frac{\\pi}{6}&=\\frac{\\pi}{6}\\\\ \\Rightarrow \\qquad y\\left(\\frac{1}{2}\\right) &=\\frac{\\pi}{6} \\\\ \\Rightarrow y &=\\frac{\\pi}{3} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q2": {
       "question_uid": "pp:me:2021:q2",
-      "exam_uid": "me:2021:set1:q2",
+      "exam_uid": "me:2021:set1:main:q2",
       "title": "GATE ME 2021 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} \\lim _{x \\rightarrow 0}\\left(\\frac{1-\\cos x}{x^{2}}\\right)&=?  \\;\\;\\;\\;\\;\\;\\left(\\frac{0}{0} \\text { form }\\right) \\\\ \\text { Applying } L \\cdot H \\text { rule } & =\\lim _{x \\rightarrow 0} \\frac{\\sin x}{2 x}\\left(\\frac{0}{0}\\right)=\\lim _{x \\rightarrow 0} \\frac{\\cos x}{2}=\\frac{1}{2} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q3": {
       "question_uid": "pp:me:2021:q3",
-      "exam_uid": "me:2021:set1:q3",
+      "exam_uid": "me:2021:set1:main:q3",
       "title": "GATE ME 2021 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} \\because \\qquad \\int_{0}^{-} f(t) \\delta(t-a) d t&=f(a) \\\\ \\therefore \\qquad L\\{\\delta(t-a)\\}&=\\int_{0}^{-} e^{-s t} \\delta(t-a) d t=e^{-a s} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q4": {
       "question_uid": "pp:me:2021:q4",
-      "exam_uid": "me:2021:set1:q4",
+      "exam_uid": "me:2021:set1:main:q4",
       "title": "GATE ME 2021 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} \\frac{y\\left(t_{n+1}\\right)-y\\left(t_{n}\\right)}{h} &=-\\pi y\\left(t_{n}\\right) \\\\ y_{n+1} &=-\\pi / y_{n}+y_{n}=(-\\pi h+1) y_{n} \\end{aligned}$$\n\nIt is recursion relation between $y_{n+1}$ and $y_{n}$\n\nSo solution will be stable if\n\n$$\\begin{aligned} |-\\pi h+1| & \\lt 1 \\\\ -1  \\lt  -\\pi h+1 &  \\lt  1 \\\\ -2 \\lt  -\\pi h &  \\lt  0 \\\\ 0 &  \\lt  \\pi h  \\lt 2 \\\\ 0 &  \\lt  h  \\lt  \\frac{2}{\\pi} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q5": {
       "question_uid": "pp:me:2021:q5",
-      "exam_uid": "me:2021:set1:q5",
+      "exam_uid": "me:2021:set1:main:q5",
       "title": "GATE ME 2021 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -213,12 +228,18 @@
           "probability-and-statistics"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "ME Core Engineering",
+        "markdown": null
+      }
     },
     "pp:me:2021:q6": {
       "question_uid": "pp:me:2021:q6",
-      "exam_uid": "me:2021:set1:q6",
+      "exam_uid": "me:2021:set1:main:q6",
       "title": "GATE ME 2021 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -259,8 +280,11 @@
     },
     "pp:me:2021:q7": {
       "question_uid": "pp:me:2021:q7",
-      "exam_uid": "me:2021:set1:q7",
+      "exam_uid": "me:2021:set1:main:q7",
       "title": "GATE ME 2021 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -303,8 +327,11 @@
     },
     "pp:me:2021:q8": {
       "question_uid": "pp:me:2021:q8",
-      "exam_uid": "me:2021:set1:q8",
+      "exam_uid": "me:2021:set1:main:q8",
       "title": "GATE ME 2021 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -345,8 +372,11 @@
     },
     "pp:me:2021:q9": {
       "question_uid": "pp:me:2021:q9",
-      "exam_uid": "me:2021:set1:q9",
+      "exam_uid": "me:2021:set1:main:q9",
       "title": "GATE ME 2021 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -389,8 +419,11 @@
     },
     "pp:me:2021:q10": {
       "question_uid": "pp:me:2021:q10",
-      "exam_uid": "me:2021:set1:q10",
+      "exam_uid": "me:2021:set1:main:q10",
       "title": "GATE ME 2021 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +464,11 @@
     },
     "pp:me:2021:q11": {
       "question_uid": "pp:me:2021:q11",
-      "exam_uid": "me:2021:set1:q11",
+      "exam_uid": "me:2021:set1:main:q11",
       "title": "GATE ME 2021 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -481,8 +517,11 @@
     },
     "pp:me:2021:q12": {
       "question_uid": "pp:me:2021:q12",
-      "exam_uid": "me:2021:set1:q12",
+      "exam_uid": "me:2021:set1:main:q12",
       "title": "GATE ME 2021 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -523,8 +562,11 @@
     },
     "pp:me:2021:q13": {
       "question_uid": "pp:me:2021:q13",
-      "exam_uid": "me:2021:set1:q13",
+      "exam_uid": "me:2021:set1:main:q13",
       "title": "GATE ME 2021 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -567,8 +609,11 @@
     },
     "pp:me:2021:q14": {
       "question_uid": "pp:me:2021:q14",
-      "exam_uid": "me:2021:set1:q14",
+      "exam_uid": "me:2021:set1:main:q14",
       "title": "GATE ME 2021 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -611,8 +656,11 @@
     },
     "pp:me:2021:q15": {
       "question_uid": "pp:me:2021:q15",
-      "exam_uid": "me:2021:set1:q15",
+      "exam_uid": "me:2021:set1:main:q15",
       "title": "GATE ME 2021 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -653,8 +701,11 @@
     },
     "pp:me:2021:q16": {
       "question_uid": "pp:me:2021:q16",
-      "exam_uid": "me:2021:set1:q16",
+      "exam_uid": "me:2021:set1:main:q16",
       "title": "GATE ME 2021 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -695,8 +746,11 @@
     },
     "pp:me:2021:q17": {
       "question_uid": "pp:me:2021:q17",
-      "exam_uid": "me:2021:set1:q17",
+      "exam_uid": "me:2021:set1:main:q17",
       "title": "GATE ME 2021 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -739,8 +793,11 @@
     },
     "pp:me:2021:q18": {
       "question_uid": "pp:me:2021:q18",
-      "exam_uid": "me:2021:set1:q18",
+      "exam_uid": "me:2021:set1:main:q18",
       "title": "GATE ME 2021 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -783,8 +840,11 @@
     },
     "pp:me:2021:q19": {
       "question_uid": "pp:me:2021:q19",
-      "exam_uid": "me:2021:set1:q19",
+      "exam_uid": "me:2021:set1:main:q19",
       "title": "GATE ME 2021 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -830,8 +890,11 @@
     },
     "pp:me:2021:q20": {
       "question_uid": "pp:me:2021:q20",
-      "exam_uid": "me:2021:set1:q20",
+      "exam_uid": "me:2021:set1:main:q20",
       "title": "GATE ME 2021 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 1,
@@ -870,8 +933,11 @@
     },
     "pp:me:2021:q21": {
       "question_uid": "pp:me:2021:q21",
-      "exam_uid": "me:2021:set1:q21",
+      "exam_uid": "me:2021:set1:main:q21",
       "title": "GATE ME 2021 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 1,
@@ -912,8 +978,11 @@
     },
     "pp:me:2021:q22": {
       "question_uid": "pp:me:2021:q22",
-      "exam_uid": "me:2021:set1:q22",
+      "exam_uid": "me:2021:set1:main:q22",
       "title": "GATE ME 2021 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 1,
@@ -954,8 +1023,11 @@
     },
     "pp:me:2021:q23": {
       "question_uid": "pp:me:2021:q23",
-      "exam_uid": "me:2021:set1:q23",
+      "exam_uid": "me:2021:set1:main:q23",
       "title": "GATE ME 2021 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 1,
@@ -996,8 +1068,11 @@
     },
     "pp:me:2021:q24": {
       "question_uid": "pp:me:2021:q24",
-      "exam_uid": "me:2021:set1:q24",
+      "exam_uid": "me:2021:set1:main:q24",
       "title": "GATE ME 2021 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 1,
@@ -1036,8 +1111,11 @@
     },
     "pp:me:2021:q25": {
       "question_uid": "pp:me:2021:q25",
-      "exam_uid": "me:2021:set1:q25",
+      "exam_uid": "me:2021:set1:main:q25",
       "title": "GATE ME 2021 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 1,
@@ -1078,8 +1156,11 @@
     },
     "pp:me:2021:q26": {
       "question_uid": "pp:me:2021:q26",
-      "exam_uid": "me:2021:set1:q26",
+      "exam_uid": "me:2021:set1:main:q26",
       "title": "GATE ME 2021 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1113,15 +1194,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$\\because$ A is a $2 \\times 2$ matrix and P is the eigen vector of matrix A with corresponding eigen value $\\lambda$\n\n$$\\begin{aligned} \\text{Given}:\\quad P^{\\prime} &=P \\\\ A P &=\\lambda P \\\\ P^{\\prime} &=\\lambda P\\\\ \\text{Hence},\\quad \\left\\|P^{\\prime}\\right\\|&=\\|\\lambda P\\|=\\lambda|P|\\\\ \\end{aligned}$$\n\nBut direction of vector $P^{\\prime}$ will be same as vector P.",
         "images": []
       }
     },
     "pp:me:2021:q27": {
       "question_uid": "pp:me:2021:q27",
-      "exam_uid": "me:2021:set1:q27",
+      "exam_uid": "me:2021:set1:main:q27",
       "title": "GATE ME 2021 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1155,15 +1239,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "Pole of $f(c)$ is $z=0$ simple pole.\n\nReduce at z=0\n\n$R_{b} f(z)=\\lim _{z \\rightarrow 0}(z-0) f(z)=\\lim _{z \\rightarrow 0} \\frac{\\cosh (3 z)}{2}=\\lim _{z \\rightarrow 0} \\frac{e^{3 z}+e^{-3 z}}{2 \\times 2}=\\frac{1}{2}$\n\nBy Cauchy Riemann theorem,\n\n$I=2 \\pi\\left(\\frac{1}{2}\\right)=\\pi i$",
         "images": []
       }
     },
     "pp:me:2021:q28": {
       "question_uid": "pp:me:2021:q28",
-      "exam_uid": "me:2021:set1:q28",
+      "exam_uid": "me:2021:set1:main:q28",
       "title": "GATE ME 2021 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1204,8 +1291,11 @@
     },
     "pp:me:2021:q29": {
       "question_uid": "pp:me:2021:q29",
-      "exam_uid": "me:2021:set1:q29",
+      "exam_uid": "me:2021:set1:main:q29",
       "title": "GATE ME 2021 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1246,8 +1336,11 @@
     },
     "pp:me:2021:q30": {
       "question_uid": "pp:me:2021:q30",
-      "exam_uid": "me:2021:set1:q30",
+      "exam_uid": "me:2021:set1:main:q30",
       "title": "GATE ME 2021 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1291,8 +1384,11 @@
     },
     "pp:me:2021:q31": {
       "question_uid": "pp:me:2021:q31",
-      "exam_uid": "me:2021:set1:q31",
+      "exam_uid": "me:2021:set1:main:q31",
       "title": "GATE ME 2021 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1335,8 +1431,11 @@
     },
     "pp:me:2021:q32": {
       "question_uid": "pp:me:2021:q32",
-      "exam_uid": "me:2021:set1:q32",
+      "exam_uid": "me:2021:set1:main:q32",
       "title": "GATE ME 2021 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1381,8 +1480,11 @@
     },
     "pp:me:2021:q33": {
       "question_uid": "pp:me:2021:q33",
-      "exam_uid": "me:2021:set1:q33",
+      "exam_uid": "me:2021:set1:main:q33",
       "title": "GATE ME 2021 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1416,15 +1518,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "10 Customers arrived in 1 hour, $\\lambda =10/hr$\n\nFor 3 minutes, $\\lambda =\\frac{1}{2}/hr$\n\n$P(X=0)=\\frac{e^{-\\lambda }\\lambda ^x}{x!}=\\frac{e^{-\\frac{1}{2}}\\left ( \\frac{1}{2} \\right )^0}{0!}=0.606$\n\nThe probability that a customer arrives within\n\nthe next 3 minutes,\n\n$P = 1 – 0.606 = 0.39$",
         "images": []
       }
     },
     "pp:me:2021:q34": {
       "question_uid": "pp:me:2021:q34",
-      "exam_uid": "me:2021:set1:q34",
+      "exam_uid": "me:2021:set1:main:q34",
       "title": "GATE ME 2021 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1458,15 +1563,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "By Lagrangian mean value theorem,\n\n$$\\begin{aligned} \\frac{f(3)-f(1)}{3-1} &=f^{\\prime}(c) \\\\ \\Rightarrow\\quad \\frac{5-1}{3-1} &=2 x-2\\\\ \\Rightarrow\\quad 2 x-2&=4\\\\ \\Rightarrow\\quad x&=2 \\in(1,3) \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q35": {
       "question_uid": "pp:me:2021:q35",
-      "exam_uid": "me:2021:set1:q35",
+      "exam_uid": "me:2021:set1:main:q35",
       "title": "GATE ME 2021 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1507,8 +1615,11 @@
     },
     "pp:me:2021:q36": {
       "question_uid": "pp:me:2021:q36",
-      "exam_uid": "me:2021:set1:q36",
+      "exam_uid": "me:2021:set1:main:q36",
       "title": "GATE ME 2021 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1547,8 +1658,11 @@
     },
     "pp:me:2021:q37": {
       "question_uid": "pp:me:2021:q37",
-      "exam_uid": "me:2021:set1:q37",
+      "exam_uid": "me:2021:set1:main:q37",
       "title": "GATE ME 2021 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1587,8 +1701,11 @@
     },
     "pp:me:2021:q38": {
       "question_uid": "pp:me:2021:q38",
-      "exam_uid": "me:2021:set1:q38",
+      "exam_uid": "me:2021:set1:main:q38",
       "title": "GATE ME 2021 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1629,8 +1746,11 @@
     },
     "pp:me:2021:q39": {
       "question_uid": "pp:me:2021:q39",
-      "exam_uid": "me:2021:set1:q39",
+      "exam_uid": "me:2021:set1:main:q39",
       "title": "GATE ME 2021 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1669,8 +1789,11 @@
     },
     "pp:me:2021:q40": {
       "question_uid": "pp:me:2021:q40",
-      "exam_uid": "me:2021:set1:q40",
+      "exam_uid": "me:2021:set1:main:q40",
       "title": "GATE ME 2021 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1709,8 +1832,11 @@
     },
     "pp:me:2021:q41": {
       "question_uid": "pp:me:2021:q41",
-      "exam_uid": "me:2021:set1:q41",
+      "exam_uid": "me:2021:set1:main:q41",
       "title": "GATE ME 2021 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1751,8 +1877,11 @@
     },
     "pp:me:2021:q42": {
       "question_uid": "pp:me:2021:q42",
-      "exam_uid": "me:2021:set1:q42",
+      "exam_uid": "me:2021:set1:main:q42",
       "title": "GATE ME 2021 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1784,15 +1913,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$\\lambda=12$ per hour, $\\frac{1}{\\mu}=4 \\min / \\mathrm{Jobs}, \\mu=15 \\mathrm{~Jobs} / \\mathrm{hr}$\n\n$$\\begin{aligned} \\rho &=\\frac{12}{15}=\\frac{4}{5} \\\\ L_{s} &=\\frac{\\rho}{1-\\rho}=\\frac{\\frac{4}{5}}{1-\\frac{4}{5}}=\\frac{\\frac{4}{5}}{\\frac{1}{5}} \\\\ \\frac{4}{5} \\times \\frac{5}{1} &=4 \\text { Jobs } \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q43": {
       "question_uid": "pp:me:2021:q43",
-      "exam_uid": "me:2021:set1:q43",
+      "exam_uid": "me:2021:set1:main:q43",
       "title": "GATE ME 2021 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1835,8 +1967,11 @@
     },
     "pp:me:2021:q44": {
       "question_uid": "pp:me:2021:q44",
-      "exam_uid": "me:2021:set1:q44",
+      "exam_uid": "me:2021:set1:main:q44",
       "title": "GATE ME 2021 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1877,8 +2012,11 @@
     },
     "pp:me:2021:q45": {
       "question_uid": "pp:me:2021:q45",
-      "exam_uid": "me:2021:set1:q45",
+      "exam_uid": "me:2021:set1:main:q45",
       "title": "GATE ME 2021 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1919,8 +2057,11 @@
     },
     "pp:me:2021:q46": {
       "question_uid": "pp:me:2021:q46",
-      "exam_uid": "me:2021:set1:q46",
+      "exam_uid": "me:2021:set1:main:q46",
       "title": "GATE ME 2021 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -1961,8 +2102,11 @@
     },
     "pp:me:2021:q47": {
       "question_uid": "pp:me:2021:q47",
-      "exam_uid": "me:2021:set1:q47",
+      "exam_uid": "me:2021:set1:main:q47",
       "title": "GATE ME 2021 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2003,8 +2147,11 @@
     },
     "pp:me:2021:q48": {
       "question_uid": "pp:me:2021:q48",
-      "exam_uid": "me:2021:set1:q48",
+      "exam_uid": "me:2021:set1:main:q48",
       "title": "GATE ME 2021 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2047,8 +2194,11 @@
     },
     "pp:me:2021:q49": {
       "question_uid": "pp:me:2021:q49",
-      "exam_uid": "me:2021:set1:q49",
+      "exam_uid": "me:2021:set1:main:q49",
       "title": "GATE ME 2021 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2087,8 +2237,11 @@
     },
     "pp:me:2021:q50": {
       "question_uid": "pp:me:2021:q50",
-      "exam_uid": "me:2021:set1:q50",
+      "exam_uid": "me:2021:set1:main:q50",
       "title": "GATE ME 2021 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2130,8 +2283,11 @@
     },
     "pp:me:2021:q51": {
       "question_uid": "pp:me:2021:q51",
-      "exam_uid": "me:2021:set1:q51",
+      "exam_uid": "me:2021:set1:main:q51",
       "title": "GATE ME 2021 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2173,8 +2329,11 @@
     },
     "pp:me:2021:q52": {
       "question_uid": "pp:me:2021:q52",
-      "exam_uid": "me:2021:set1:q52",
+      "exam_uid": "me:2021:set1:main:q52",
       "title": "GATE ME 2021 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2216,8 +2375,11 @@
     },
     "pp:me:2021:q53": {
       "question_uid": "pp:me:2021:q53",
-      "exam_uid": "me:2021:set1:q53",
+      "exam_uid": "me:2021:set1:main:q53",
       "title": "GATE ME 2021 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2258,8 +2420,11 @@
     },
     "pp:me:2021:q54": {
       "question_uid": "pp:me:2021:q54",
-      "exam_uid": "me:2021:set1:q54",
+      "exam_uid": "me:2021:set1:main:q54",
       "title": "GATE ME 2021 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2300,8 +2465,11 @@
     },
     "pp:me:2021:q55": {
       "question_uid": "pp:me:2021:q55",
-      "exam_uid": "me:2021:set1:q55",
+      "exam_uid": "me:2021:set1:main:q55",
       "title": "GATE ME 2021 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "NAT",
       "marks": 2,
@@ -2340,8 +2508,11 @@
     },
     "pp:me:2021:q56": {
       "question_uid": "pp:me:2021:q56",
-      "exam_uid": "me:2021:set1:q56",
-      "title": "GATE ME 2021 | Set 1 | Question: 56",
+      "exam_uid": "me:2021:set1:ga:q1",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2374,15 +2545,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Hardly/Scarcely/Barely have same sense that is negative and they are used after the verb (could barely and could hardly).",
         "images": []
       }
     },
     "pp:me:2021:q57": {
       "question_uid": "pp:me:2021:q57",
-      "exam_uid": "me:2021:set1:q57",
-      "title": "GATE ME 2021 | Set 1 | Question: 57",
+      "exam_uid": "me:2021:set1:ga:q2",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2415,15 +2589,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Morning sun is falling from east then the shadow will fall to the west. So west should be on the right side of Ms. X. So Ms. X came out towards south. Hence, her building is facing south.",
         "images": []
       }
     },
     "pp:me:2021:q58": {
       "question_uid": "pp:me:2021:q58",
-      "exam_uid": "me:2021:set1:q58",
-      "title": "GATE ME 2021 | Set 1 | Question: 58",
+      "exam_uid": "me:2021:set1:ga:q3",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2456,15 +2633,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned} \\therefore \\quad \\text { Area of } \\Delta \\mathrm{MON}&=50 \\mathrm{~cm}^{2} \\\\ \\qquad \\frac{1}{2} \\times r \\times r&=50\\\\ r^{2} &=100 \\\\ \\text { Area of circle } &=\\pi r^{2} \\\\ &=\\pi \\times 100 \\\\ &=100 \\pi \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q59": {
       "question_uid": "pp:me:2021:q59",
-      "exam_uid": "me:2021:set1:q59",
-      "title": "GATE ME 2021 | Set 1 | Question: 59",
+      "exam_uid": "me:2021:set1:ga:q4",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2497,15 +2677,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned} \\triangle 2 \\oplus 3 \\triangle((4 \\otimes 2) \\nabla 4) &=+2-3+((4 \\div 2) \\times 4) \\\\ &=+2-3+(2 \\times 4) \\\\ &=+2-3+8 \\\\ &=7 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q60": {
       "question_uid": "pp:me:2021:q60",
-      "exam_uid": "me:2021:set1:q60",
-      "title": "GATE ME 2021 | Set 1 | Question: 60",
+      "exam_uid": "me:2021:set1:ga:q5",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2538,15 +2721,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "The last sentence of the passage is reflecting in option (c) only.",
         "images": []
       }
     },
     "pp:me:2021:q61": {
       "question_uid": "pp:me:2021:q61",
-      "exam_uid": "me:2021:set1:q61",
-      "title": "GATE ME 2021 | Set 1 | Question: 61",
+      "exam_uid": "me:2021:set1:ga:q6",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2579,15 +2765,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Option (A) and (B) are weekend by expression 'rhinos have no benefit'. Oxpeckers do not save life of poachers, so option (D) is incorrect.\n\nHence, option (C) is correct.",
         "images": []
       }
     },
     "pp:me:2021:q62": {
       "question_uid": "pp:me:2021:q62",
-      "exam_uid": "me:2021:set1:q62",
-      "title": "GATE ME 2021 | Set 1 | Question: 62",
+      "exam_uid": "me:2021:set1:ga:q7",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2619,12 +2808,18 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "ME Core Engineering",
+        "markdown": null
+      }
     },
     "pp:me:2021:q63": {
       "question_uid": "pp:me:2021:q63",
-      "exam_uid": "me:2021:set1:q63",
-      "title": "GATE ME 2021 | Set 1 | Question: 63",
+      "exam_uid": "me:2021:set1:ga:q8",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2657,15 +2852,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "In farm P,\n\nHens =65, Ducks =91, Goats =169\n\nIn farm Q,\n\nHens : Ducks : Goats\n\n5: 14: 13\n\n$$\\begin{aligned} \\text { Hens } &=\\frac{5}{32} \\times 416=65 \\\\ \\text { Ducks }&=\\frac{14}{32} \\times 416=182\\\\ \\text { Goats }&=\\frac{13}{32} \\times 416=169 \\end{aligned}$$\n\n$\\because$From farm d, hens, ducks and goats are sent to farm P.\n\n$$\\begin{aligned} \\therefore \\text{ Total hens }&=65+65=130\\\\ \\text { Total ducks } &=91+182=273 \\\\ \\text { Total goats } &=169+169=338 \\\\ \\text { New ratio } &=130: 273: 338 \\\\ &=10: 21: 26 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2021:q64": {
       "question_uid": "pp:me:2021:q64",
-      "exam_uid": "me:2021:set1:q64",
-      "title": "GATE ME 2021 | Set 1 | Question: 64",
+      "exam_uid": "me:2021:set1:ga:q9",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2698,15 +2896,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Number of employee in $C2$ company $=\\frac{5}{100} \\times 10000=500$\n\nNumber of management degree holder employee in $\\mathrm{C} 2=\\frac{1}{5} \\times 500=100$\n\nNumber of employee in $\\mathrm{C} 5$ company $=\\frac{20}{100} \\times 10000=2000$\n\nNumber of management degree holder employee in $\\mathrm{C} 5=\\frac{9}{10} \\times 2000=1800$\n\nTotal management degree holder employee $=100+1800=1900$",
         "images": []
       }
     },
     "pp:me:2021:q65": {
       "question_uid": "pp:me:2021:q65",
-      "exam_uid": "me:2021:set1:q65",
-      "title": "GATE ME 2021 | Set 1 | Question: 65",
+      "exam_uid": "me:2021:set1:ga:q10",
+      "title": "GATE ME 2021 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2021-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2739,7 +2940,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The possible seating arrangements are\n\nQPRST, QTRSP\n\nQPRTS, QTRPS\n\nPQTRS, TQPRS\n\nSPQTR, STQPR\n\nRPQTS, RTQPS\n\nSRPQT, SRTQP\n\nSPRTQ, STRPQ\n\nPSRTQ, TSRPQ\n\nHence, total seating arrangements are 16",
         "images": []
       }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.457Z",
+  "generatedAt": "2026-10-17T21:30:25.241Z",
   "shardKey": "ee-2025-s1",
   "yearSetKey": "ee-2025-s1",
   "yearSetIdentity": "ee:2025:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ee:2025:q1": {
       "question_uid": "pp:ee:2025:q1",
-      "exam_uid": "ee:2025:set1:q1",
+      "exam_uid": "ee:2025:set1:main:q1",
       "title": "GATE EE 2025 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "We are given:\n\n$f(x, y) = (x + y - 1)^2 + (x + y)^2$\n\n<b>Step 1: Substitute a single variable</b>\n\nLet $u = x + y$\n\nThen, the function becomes:\n\n$f(x, y) = (u - 1)^2 + u^2 = u^2 - 2u + 1 + u^2 = 2u^2 - 2u + 1$\n\n<b>Step 2: Minimize $f(u) = 2u^2 - 2u + 1$</b>\n\nThis is a quadratic function in $u$ with a positive coefficient, so it has a unique minimum.\n\nThe minimum occurs at:\n\n$u = \\frac{-(-2)}{2 \\cdot 2} = \\frac{2}{4} = \\frac{1}{2}$\n\nSo, the function is minimized when $x + y = \\frac{1}{2}$\n\n<b>Step 3: Analyze the set $S$</b>\n\nAll points $(x, y)$ satisfying $x + y = \\frac{1}{2}$ will minimize $f(x, y)$.\n\nThere are infinitely many such points in $\\mathbb{R}^2$.\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{The number of elements in the set } S \\text{ is infinite}}$",
         "images": []
       }
     },
     "pp:ee:2025:q2": {
       "question_uid": "pp:ee:2025:q2",
-      "exam_uid": "ee:2025:set1:q2",
+      "exam_uid": "ee:2025:set1:main:q2",
       "title": "GATE EE 2025 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Step 1:</b> Given that the matrix is a real symmetric matrix.\n\n<b>Step 2:</b> A well-known property of real symmetric matrices is that eigenvectors corresponding to distinct eigenvalues are orthogonal.\n\n<b>Step 3:</b> If $\\mathbf{v}_1$ and $\\mathbf{v}_2$ are eigenvectors corresponding to distinct eigenvalues of a real symmetric matrix, then:\n\n$\\mathbf{v}_1^T \\mathbf{v}_2 = 0$\n\nThis means they are orthogonal.\n\n<b>Step 4:</b> Among the given options, option (B) matches this condition.\n\n<b>Final Answer:</b> <b>(B) $\\mathbf{v}_1^T \\mathbf{v}_2 = 0$</b>",
         "images": []
       }
     },
     "pp:ee:2025:q3": {
       "question_uid": "pp:ee:2025:q3",
-      "exam_uid": "ee:2025:set1:q3",
+      "exam_uid": "ee:2025:set1:main:q3",
       "title": "GATE EE 2025 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$(A \\mid B)=\\left[\\begin{array}{lll|c}1 & 1 & 1 & 1 / 3 \\\\ -1 & -1 & -1 & -1 / 3\\\\ 0 & 1 & -1 & 0\\end{array}\\right]$$\n\n$\\mathrm{R}_{2} \\rightarrow \\mathrm{R}_{2}+\\mathrm{R}_{1}$\n\n$$\\Rightarrow(\\mathrm{A} \\mid \\mathrm{B}) \\sim\\left[\\begin{array}{ccc|c}1 & 1 & 1 & 1 / 3 \\\\ 0 & 0 & 0 & 0 \\\\ 0 & 1 & -1 & 0\\end{array}\\right]$$ $\\mathrm{R}_{2} \\leftrightarrows \\mathrm{R}_{3}$\n\n$$\\Rightarrow(\\mathrm{A} \\mid \\mathrm{B}) \\sim\\left[\\begin{array}{lll|c}1 & 1 & 1 & 1 / 3 \\\\ 0 & 1 & -1 & 0 \\\\ 0 & 0 & 0 & 0\\end{array}\\right]$$\n\n$\\Rightarrow \\rho(\\mathrm{A})=2=\\rho(\\mathrm{A} \\mid \\mathrm{B}) < \\mathrm{n}=3$ (no. of variables)\n\n$\\Rightarrow \\mathrm{Ax}=\\mathrm{b}$ will have an infinite no. of solutions",
         "images": []
       }
     },
     "pp:ee:2025:q4": {
       "question_uid": "pp:ee:2025:q4",
-      "exam_uid": "ee:2025:set1:q4",
+      "exam_uid": "ee:2025:set1:main:q4",
       "title": "GATE EE 2025 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Given that $$\\mathrm{P}=\\left[\\begin{array}{ccc}2 & 1 & 0 \\\\ -1 & 0 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]$$\n\n$$\\Rightarrow \\mathrm{P}^{2}=\\mathrm{P} . \\mathrm{P}=\\left[\\begin{array}{ccc}2 & 1 & 0 \\\\ -1 & 0 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]\\left[\\begin{array}{ccc}2 & 1 & 0 \\\\ -1 & 0 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]$$\n\n$$\\Rightarrow P^{2}=\\left[\\begin{array}{ccc}3 & 2 & 0 \\\\ -2 & -1 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]$$\n\n$\\Rightarrow P^{2} \\neq P, P^{2} \\neq I$ and $$P^{2} \\neq P+I=\\left[\\begin{array}{ccc}3 & 1 & 0 \\\\ -1 & 1 & 0 \\\\ 0 & 0 & 2\\end{array}\\right]$$\n\n$\\Rightarrow \\mathrm{P}^{2}=2 \\mathrm{P}-\\mathrm{I}$",
         "images": []
       }
     },
     "pp:ee:2025:q5": {
       "question_uid": "pp:ee:2025:q5",
-      "exam_uid": "ee:2025:set1:q5",
+      "exam_uid": "ee:2025:set1:main:q5",
       "title": "GATE EE 2025 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -214,15 +229,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<b>Step 1:</b> Identify the conditional probabilities of $Y$ given $X = 1$.\n\nFrom the given:\n\n$P(X=1, Y=0) = \\frac{1}{8}, \\quad P(X=1, Y=1) = \\frac{1}{8}$\n\nSo, total probability $P(X=1) = \\frac{1}{8} + \\frac{1}{8} = \\frac{1}{4}$\n\n<b>Step 2:</b> Compute the conditional probabilities:\n\n$P(Y=0 \\mid X=1) = \\frac{P(X=1, Y=0)}{P(X=1)} = \\frac{\\frac{1}{8}}{\\frac{1}{4}} = \\frac{1}{2}$\n\n$P(Y=1 \\mid X=1) = \\frac{P(X=1, Y=1)}{P(X=1)} = \\frac{\\frac{1}{8}}{\\frac{1}{4}} = \\frac{1}{2}$\n\n<b>Step 3:</b> Compute the expected value:\n\n$\\mathbb{E}[Y \\mid X=1] = 0 \\cdot P(Y=0 \\mid X=1) + 1 \\cdot P(Y=1 \\mid X=1) = 0 \\cdot \\frac{1}{2} + 1 \\cdot \\frac{1}{2} = \\frac{1}{2}$\n\n<b>Final Answer:</b> <b>(B) $\\frac{1}{2}$</b>",
         "images": []
       }
     },
     "pp:ee:2025:q6": {
       "question_uid": "pp:ee:2025:q6",
-      "exam_uid": "ee:2025:set1:q6",
+      "exam_uid": "ee:2025:set1:main:q6",
       "title": "GATE EE 2025 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:ee:2025:q7": {
       "question_uid": "pp:ee:2025:q7",
-      "exam_uid": "ee:2025:set1:q7",
+      "exam_uid": "ee:2025:set1:main:q7",
       "title": "GATE EE 2025 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -307,8 +328,11 @@
     },
     "pp:ee:2025:q8": {
       "question_uid": "pp:ee:2025:q8",
-      "exam_uid": "ee:2025:set1:q8",
+      "exam_uid": "ee:2025:set1:main:q8",
       "title": "GATE EE 2025 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -352,8 +376,11 @@
     },
     "pp:ee:2025:q9": {
       "question_uid": "pp:ee:2025:q9",
-      "exam_uid": "ee:2025:set1:q9",
+      "exam_uid": "ee:2025:set1:main:q9",
       "title": "GATE EE 2025 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -397,8 +424,11 @@
     },
     "pp:ee:2025:q10": {
       "question_uid": "pp:ee:2025:q10",
-      "exam_uid": "ee:2025:set1:q10",
+      "exam_uid": "ee:2025:set1:main:q10",
       "title": "GATE EE 2025 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -439,8 +469,11 @@
     },
     "pp:ee:2025:q11": {
       "question_uid": "pp:ee:2025:q11",
-      "exam_uid": "ee:2025:set1:q11",
+      "exam_uid": "ee:2025:set1:main:q11",
       "title": "GATE EE 2025 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -481,8 +514,11 @@
     },
     "pp:ee:2025:q12": {
       "question_uid": "pp:ee:2025:q12",
-      "exam_uid": "ee:2025:set1:q12",
+      "exam_uid": "ee:2025:set1:main:q12",
       "title": "GATE EE 2025 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -523,8 +559,11 @@
     },
     "pp:ee:2025:q13": {
       "question_uid": "pp:ee:2025:q13",
-      "exam_uid": "ee:2025:set1:q13",
+      "exam_uid": "ee:2025:set1:main:q13",
       "title": "GATE EE 2025 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -565,8 +604,11 @@
     },
     "pp:ee:2025:q14": {
       "question_uid": "pp:ee:2025:q14",
-      "exam_uid": "ee:2025:set1:q14",
+      "exam_uid": "ee:2025:set1:main:q14",
       "title": "GATE EE 2025 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -607,8 +649,11 @@
     },
     "pp:ee:2025:q15": {
       "question_uid": "pp:ee:2025:q15",
-      "exam_uid": "ee:2025:set1:q15",
+      "exam_uid": "ee:2025:set1:main:q15",
       "title": "GATE EE 2025 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -651,8 +696,11 @@
     },
     "pp:ee:2025:q16": {
       "question_uid": "pp:ee:2025:q16",
-      "exam_uid": "ee:2025:set1:q16",
+      "exam_uid": "ee:2025:set1:main:q16",
       "title": "GATE EE 2025 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -693,8 +741,11 @@
     },
     "pp:ee:2025:q17": {
       "question_uid": "pp:ee:2025:q17",
-      "exam_uid": "ee:2025:set1:q17",
+      "exam_uid": "ee:2025:set1:main:q17",
       "title": "GATE EE 2025 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -735,8 +786,11 @@
     },
     "pp:ee:2025:q18": {
       "question_uid": "pp:ee:2025:q18",
-      "exam_uid": "ee:2025:set1:q18",
+      "exam_uid": "ee:2025:set1:main:q18",
       "title": "GATE EE 2025 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -777,8 +831,11 @@
     },
     "pp:ee:2025:q19": {
       "question_uid": "pp:ee:2025:q19",
-      "exam_uid": "ee:2025:set1:q19",
+      "exam_uid": "ee:2025:set1:main:q19",
       "title": "GATE EE 2025 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -821,8 +878,11 @@
     },
     "pp:ee:2025:q20": {
       "question_uid": "pp:ee:2025:q20",
-      "exam_uid": "ee:2025:set1:q20",
+      "exam_uid": "ee:2025:set1:main:q20",
       "title": "GATE EE 2025 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -861,8 +921,11 @@
     },
     "pp:ee:2025:q21": {
       "question_uid": "pp:ee:2025:q21",
-      "exam_uid": "ee:2025:set1:q21",
+      "exam_uid": "ee:2025:set1:main:q21",
       "title": "GATE EE 2025 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -901,8 +964,11 @@
     },
     "pp:ee:2025:q22": {
       "question_uid": "pp:ee:2025:q22",
-      "exam_uid": "ee:2025:set1:q22",
+      "exam_uid": "ee:2025:set1:main:q22",
       "title": "GATE EE 2025 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -941,8 +1007,11 @@
     },
     "pp:ee:2025:q23": {
       "question_uid": "pp:ee:2025:q23",
-      "exam_uid": "ee:2025:set1:q23",
+      "exam_uid": "ee:2025:set1:main:q23",
       "title": "GATE EE 2025 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -981,8 +1050,11 @@
     },
     "pp:ee:2025:q24": {
       "question_uid": "pp:ee:2025:q24",
-      "exam_uid": "ee:2025:set1:q24",
+      "exam_uid": "ee:2025:set1:main:q24",
       "title": "GATE EE 2025 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1025,8 +1097,11 @@
     },
     "pp:ee:2025:q25": {
       "question_uid": "pp:ee:2025:q25",
-      "exam_uid": "ee:2025:set1:q25",
+      "exam_uid": "ee:2025:set1:main:q25",
       "title": "GATE EE 2025 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1067,8 +1142,11 @@
     },
     "pp:ee:2025:q26": {
       "question_uid": "pp:ee:2025:q26",
-      "exam_uid": "ee:2025:set1:q26",
+      "exam_uid": "ee:2025:set1:main:q26",
       "title": "GATE EE 2025 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1102,15 +1180,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<b>Step 1:</b> Given: $Y = X^2$, and $X \\in (0, 1]$ with uniform distribution:\n\n$P_X(x) = 1$ for $x \\in (0, 1]$\n\n<b>Step 2:</b> Use the change of variable technique for continuous random variables.\n\nIf $Y = g(X) = X^2$, then $X = \\sqrt{Y}$ (since $X > 0$), and the PDF of $Y$ is:\n\n$P_Y(y) = P_X(x) \\cdot \\left| \\frac{dx}{dy} \\right|$\n\nWe know $x = \\sqrt{y}$, so:\n\n$\\frac{dx}{dy} = \\frac{1}{2\\sqrt{y}}$\n\nTherefore:\n\n$P_Y(y) = P_X(\\sqrt{y}) \\cdot \\left| \\frac{1}{2\\sqrt{y}} \\right| = 1 \\cdot \\frac{1}{2\\sqrt{y}} = \\frac{1}{2\\sqrt{y}}$, for $y \\in (0, 1]$\n\n<b>Step 3:</b> So the correct PDF of $Y$ is:\n\n$$P_Y(y) = \\begin{cases} \\dfrac{1}{2\\sqrt{y}}, & y \\in (0, 1] \\ 0, & \\text{otherwise} \\end{cases}$$\n\n<b>Final Answer:</b> <b>(A) $\\dfrac{1}{2\\sqrt{y}}$, for $y \\in (0, 1]$</b>",
         "images": []
       }
     },
     "pp:ee:2025:q27": {
       "question_uid": "pp:ee:2025:q27",
-      "exam_uid": "ee:2025:set1:q27",
+      "exam_uid": "ee:2025:set1:main:q27",
       "title": "GATE EE 2025 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1153,8 +1234,11 @@
     },
     "pp:ee:2025:q28": {
       "question_uid": "pp:ee:2025:q28",
-      "exam_uid": "ee:2025:set1:q28",
+      "exam_uid": "ee:2025:set1:main:q28",
       "title": "GATE EE 2025 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1197,8 +1281,11 @@
     },
     "pp:ee:2025:q29": {
       "question_uid": "pp:ee:2025:q29",
-      "exam_uid": "ee:2025:set1:q29",
+      "exam_uid": "ee:2025:set1:main:q29",
       "title": "GATE EE 2025 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1241,8 +1328,11 @@
     },
     "pp:ee:2025:q30": {
       "question_uid": "pp:ee:2025:q30",
-      "exam_uid": "ee:2025:set1:q30",
+      "exam_uid": "ee:2025:set1:main:q30",
       "title": "GATE EE 2025 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1285,8 +1375,11 @@
     },
     "pp:ee:2025:q31": {
       "question_uid": "pp:ee:2025:q31",
-      "exam_uid": "ee:2025:set1:q31",
+      "exam_uid": "ee:2025:set1:main:q31",
       "title": "GATE EE 2025 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1327,8 +1420,11 @@
     },
     "pp:ee:2025:q32": {
       "question_uid": "pp:ee:2025:q32",
-      "exam_uid": "ee:2025:set1:q32",
+      "exam_uid": "ee:2025:set1:main:q32",
       "title": "GATE EE 2025 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1369,8 +1465,11 @@
     },
     "pp:ee:2025:q33": {
       "question_uid": "pp:ee:2025:q33",
-      "exam_uid": "ee:2025:set1:q33",
+      "exam_uid": "ee:2025:set1:main:q33",
       "title": "GATE EE 2025 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1413,8 +1512,11 @@
     },
     "pp:ee:2025:q34": {
       "question_uid": "pp:ee:2025:q34",
-      "exam_uid": "ee:2025:set1:q34",
+      "exam_uid": "ee:2025:set1:main:q34",
       "title": "GATE EE 2025 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1457,8 +1559,11 @@
     },
     "pp:ee:2025:q35": {
       "question_uid": "pp:ee:2025:q35",
-      "exam_uid": "ee:2025:set1:q35",
+      "exam_uid": "ee:2025:set1:main:q35",
       "title": "GATE EE 2025 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1499,8 +1604,11 @@
     },
     "pp:ee:2025:q36": {
       "question_uid": "pp:ee:2025:q36",
-      "exam_uid": "ee:2025:set1:q36",
+      "exam_uid": "ee:2025:set1:main:q36",
       "title": "GATE EE 2025 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1541,8 +1649,11 @@
     },
     "pp:ee:2025:q37": {
       "question_uid": "pp:ee:2025:q37",
-      "exam_uid": "ee:2025:set1:q37",
+      "exam_uid": "ee:2025:set1:main:q37",
       "title": "GATE EE 2025 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1583,8 +1694,11 @@
     },
     "pp:ee:2025:q38": {
       "question_uid": "pp:ee:2025:q38",
-      "exam_uid": "ee:2025:set1:q38",
+      "exam_uid": "ee:2025:set1:main:q38",
       "title": "GATE EE 2025 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1625,8 +1739,11 @@
     },
     "pp:ee:2025:q39": {
       "question_uid": "pp:ee:2025:q39",
-      "exam_uid": "ee:2025:set1:q39",
+      "exam_uid": "ee:2025:set1:main:q39",
       "title": "GATE EE 2025 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1669,8 +1786,11 @@
     },
     "pp:ee:2025:q40": {
       "question_uid": "pp:ee:2025:q40",
-      "exam_uid": "ee:2025:set1:q40",
+      "exam_uid": "ee:2025:set1:main:q40",
       "title": "GATE EE 2025 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1711,8 +1831,11 @@
     },
     "pp:ee:2025:q41": {
       "question_uid": "pp:ee:2025:q41",
-      "exam_uid": "ee:2025:set1:q41",
+      "exam_uid": "ee:2025:set1:main:q41",
       "title": "GATE EE 2025 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1753,8 +1876,11 @@
     },
     "pp:ee:2025:q42": {
       "question_uid": "pp:ee:2025:q42",
-      "exam_uid": "ee:2025:set1:q42",
+      "exam_uid": "ee:2025:set1:main:q42",
       "title": "GATE EE 2025 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1797,8 +1923,11 @@
     },
     "pp:ee:2025:q43": {
       "question_uid": "pp:ee:2025:q43",
-      "exam_uid": "ee:2025:set1:q43",
+      "exam_uid": "ee:2025:set1:main:q43",
       "title": "GATE EE 2025 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1830,15 +1959,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Calculus\n",
+        "concept": "Engineering Mathematics - Calculus\n",
         "markdown": "<b>Step 1: Direction vector and its unit vector</b>\n\nThe direction vector from origin to point (1, 2) is:\n\n$\\vec{u} = \\langle 1, 2 \\rangle$\n\nMagnitude of this vector is:\n\n$|\\vec{u}| = \\sqrt{1^2 + 2^2} = \\sqrt{5}$\n\nUnit vector in the given direction is:\n\n$\\hat{u} = \\left\\langle \\frac{1}{\\sqrt{5}}, \\frac{2}{\\sqrt{5}} \\right\\rangle$\n\n<b>Step 2: Compute the gradient of V(x, y)</b>\n\n$\\nabla V = \\left\\langle \\frac{\\partial V}{\\partial x}, \\frac{\\partial V}{\\partial y} \\right\\rangle = \\left\\langle 2x + 1, 2y \\right\\rangle$\n\nAt the origin (0, 0), the gradient becomes:\n\n$\\nabla V(0, 0) = \\langle 1, 0 \\rangle$\n\n<b>Step 3: Compute the directional derivative</b>\n\nDirectional derivative of V in the direction of unit vector $\\hat{u}$ is:\n\n$D_{\\hat{u}} V = \\nabla V \\cdot \\hat{u} = \\langle 1, 0 \\rangle \\cdot \\left\\langle \\frac{1}{\\sqrt{5}}, \\frac{2}{\\sqrt{5}} \\right\\rangle = \\frac{1}{\\sqrt{5}}$\n\nNumerical value:\n\n$\\frac{1}{\\sqrt{5}} \\approx \\frac{1}{2.236} \\approx 0.447$",
         "images": []
       }
     },
     "pp:ee:2025:q44": {
       "question_uid": "pp:ee:2025:q44",
-      "exam_uid": "ee:2025:set1:q44",
+      "exam_uid": "ee:2025:set1:main:q44",
       "title": "GATE EE 2025 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1870,15 +2002,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Given $\\frac{{dx}_{1}}{{dt}}=2 {x}_{2} \\quad ...(1)$\n\n$$\\frac{{dx}_{2}}{{dt}}={r}({t}), \\quad {r}({t})=\\left\\{\\begin{array}{l}1: {t} \\geq 0 \\\\ 0: {t} < 0 \\end{array}\\right.$$\n\n$\\Rightarrow \\frac{{dx}_{2}}{{dt}}=1$ for ${t} \\geq 0 \\quad ...(2)$\n\n$\\Rightarrow {x}_{2}={t}+{c}  \\quad ...(3)$\n\nGiven $x_{2}(0)=0$\n\n(3) $\\Rightarrow 0=0+c \\Rightarrow c=0$\n\n$\\therefore {x}_{2}={t}$\n\nFrom (1) $\\frac{d x_{1}}{d t}=2 t$\n\n$\\Rightarrow {x}_{1}=\\frac{2 {t}^{2}}{2}+{K} \\quad ...(4)$\n\nGiven ${x}_{1}(0)=1:(4) \\Rightarrow 1=0+{K}$\n\n$\\Rightarrow {K}=1$\n\n$\\therefore$ From (4) ${x}_{1}={t}^{2}+1$\n\nNow ${X}_{1}(1)=1+1=2$",
         "images": []
       }
     },
     "pp:ee:2025:q45": {
       "question_uid": "pp:ee:2025:q45",
-      "exam_uid": "ee:2025:set1:q45",
+      "exam_uid": "ee:2025:set1:main:q45",
       "title": "GATE EE 2025 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1910,15 +2045,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "<b>Step 1: Express the function</b>\n\nWe are given $f(z) = jz$, and we want to compute:\n\n$\\oint_C jz , dz$\n\n<b>Step 2: Use properties of contour integrals</b>\n\n$j = \\sqrt{-1}$ is a constant, so it can be pulled out of the integral:\n\n$\\oint_C jz , dz = j \\oint_C z , dz$\n\n<b>Step 3: Recall the standard result</b>\n\nFor a closed contour $C$ enclosing the origin (like $|z| = 1$),\n\n$\\oint_C z , dz = 0$ because $z$ is an analytic function inside and on $C$.\n\n<b>Step 4: Apply the result</b>\n\n$\\oint_C f(z) , dz = j \\cdot 0 = 0$",
         "images": []
       }
     },
     "pp:ee:2025:q46": {
       "question_uid": "pp:ee:2025:q46",
-      "exam_uid": "ee:2025:set1:q46",
+      "exam_uid": "ee:2025:set1:main:q46",
       "title": "GATE EE 2025 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1957,8 +2095,11 @@
     },
     "pp:ee:2025:q47": {
       "question_uid": "pp:ee:2025:q47",
-      "exam_uid": "ee:2025:set1:q47",
+      "exam_uid": "ee:2025:set1:main:q47",
       "title": "GATE EE 2025 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2001,8 +2142,11 @@
     },
     "pp:ee:2025:q48": {
       "question_uid": "pp:ee:2025:q48",
-      "exam_uid": "ee:2025:set1:q48",
+      "exam_uid": "ee:2025:set1:main:q48",
       "title": "GATE EE 2025 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2043,8 +2187,11 @@
     },
     "pp:ee:2025:q49": {
       "question_uid": "pp:ee:2025:q49",
-      "exam_uid": "ee:2025:set1:q49",
+      "exam_uid": "ee:2025:set1:main:q49",
       "title": "GATE EE 2025 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2085,8 +2232,11 @@
     },
     "pp:ee:2025:q50": {
       "question_uid": "pp:ee:2025:q50",
-      "exam_uid": "ee:2025:set1:q50",
+      "exam_uid": "ee:2025:set1:main:q50",
       "title": "GATE EE 2025 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2127,8 +2277,11 @@
     },
     "pp:ee:2025:q51": {
       "question_uid": "pp:ee:2025:q51",
-      "exam_uid": "ee:2025:set1:q51",
+      "exam_uid": "ee:2025:set1:main:q51",
       "title": "GATE EE 2025 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2167,8 +2320,11 @@
     },
     "pp:ee:2025:q52": {
       "question_uid": "pp:ee:2025:q52",
-      "exam_uid": "ee:2025:set1:q52",
+      "exam_uid": "ee:2025:set1:main:q52",
       "title": "GATE EE 2025 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2207,8 +2363,11 @@
     },
     "pp:ee:2025:q53": {
       "question_uid": "pp:ee:2025:q53",
-      "exam_uid": "ee:2025:set1:q53",
+      "exam_uid": "ee:2025:set1:main:q53",
       "title": "GATE EE 2025 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2247,8 +2406,11 @@
     },
     "pp:ee:2025:q54": {
       "question_uid": "pp:ee:2025:q54",
-      "exam_uid": "ee:2025:set1:q54",
+      "exam_uid": "ee:2025:set1:main:q54",
       "title": "GATE EE 2025 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2287,8 +2449,11 @@
     },
     "pp:ee:2025:q55": {
       "question_uid": "pp:ee:2025:q55",
-      "exam_uid": "ee:2025:set1:q55",
+      "exam_uid": "ee:2025:set1:main:q55",
       "title": "GATE EE 2025 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2327,8 +2492,11 @@
     },
     "pp:ee:2025:q56": {
       "question_uid": "pp:ee:2025:q56",
-      "exam_uid": "ee:2025:set1:q56",
-      "title": "GATE EE 2025 | Set 1 | Question: 56",
+      "exam_uid": "ee:2025:set1:ga:q1",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2360,12 +2528,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2025:q57": {
       "question_uid": "pp:ee:2025:q57",
-      "exam_uid": "ee:2025:set1:q57",
-      "title": "GATE EE 2025 | Set 1 | Question: 57",
+      "exam_uid": "ee:2025:set1:ga:q2",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2397,12 +2571,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2025:q58": {
       "question_uid": "pp:ee:2025:q58",
-      "exam_uid": "ee:2025:set1:q58",
-      "title": "GATE EE 2025 | Set 1 | Question: 58",
+      "exam_uid": "ee:2025:set1:ga:q3",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2435,15 +2615,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The equation is of the form: $x + py + q = 0$\n\nRewriting it in slope-intercept form:\n\n$py = -x - q$\n\n$y = -\\frac{1}{p}x - \\frac{q}{p}$\n\nThis is of the form $y = mx + c$ where slope $m = -\\frac{1}{p}$ and intercept $c = -\\frac{q}{p}$\n\nFrom the figure:\n\nThe y-intercept is $c = 4$ (line passes through point (0, 4))\n\nThe line passes through another point (2, 8), so slope is:\n\n$m = \\frac{8 - 4}{2 - 0} = \\frac{4}{2} = 2$\n\nEquating this with $-\\frac{1}{p}$,\n\n$-\\frac{1}{p} = 2 \\Rightarrow p = -\\frac{1}{2}$\n\nNow use y-intercept formula: $-\\frac{q}{p} = 4$\n\nSubstitute $p = -\\frac{1}{2}$:\n\n$-\\frac{q}{-\\frac{1}{2}} = 4 \\Rightarrow \\frac{q}{\\frac{1}{2}} = 4 \\Rightarrow q = 2$\n\n<b>Final Answer:</b>\n\n$p = -\\frac{1}{2}, \\quad q = 2$",
         "images": []
       }
     },
     "pp:ee:2025:q59": {
       "question_uid": "pp:ee:2025:q59",
-      "exam_uid": "ee:2025:set1:q59",
-      "title": "GATE EE 2025 | Set 1 | Question: 59",
+      "exam_uid": "ee:2025:set1:ga:q4",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2475,12 +2658,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2025:q60": {
       "question_uid": "pp:ee:2025:q60",
-      "exam_uid": "ee:2025:set1:q60",
-      "title": "GATE EE 2025 | Set 1 | Question: 60",
+      "exam_uid": "ee:2025:set1:ga:q5",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2513,15 +2702,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "$\\left[\\frac{3^{81}}{\\left(3^{3}\\right)^{4}}\\right]^{1 / 3}$\n\n$=\\left(3^{81-12}\\right)^{1 / 3}$\n\n$=\\left(3^{69}\\right)^{1 / 3}=3^{23}$",
         "images": []
       }
     },
     "pp:ee:2025:q61": {
       "question_uid": "pp:ee:2025:q61",
-      "exam_uid": "ee:2025:set1:q61",
-      "title": "GATE EE 2025 | Set 1 | Question: 61",
+      "exam_uid": "ee:2025:set1:ga:q6",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2554,15 +2746,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Let's analyze the logical flow of ideas:\n\nQ: Introduces the main idea that tigers spend most of their life searching for food. This is the best opening.\n\nS: Explains how tigers prowl through forests for several nights hunting. Follows logically from Q.\n\nR: Describes how tigers follow the scent and chase deer but may not catch them. This naturally follows S.\n\nP: Explains why tigers often fail-deer run much faster. This conclusion makes sense after R. Thus, the correct sequence is:\n\n$\\mathrm{Q} \\rightarrow \\mathrm{S} \\rightarrow \\mathrm{R} \\rightarrow \\mathrm{P}$",
         "images": []
       }
     },
     "pp:ee:2025:q62": {
       "question_uid": "pp:ee:2025:q62",
-      "exam_uid": "ee:2025:set1:q62",
-      "title": "GATE EE 2025 | Set 1 | Question: 62",
+      "exam_uid": "ee:2025:set1:ga:q7",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2594,12 +2789,18 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2025:q63": {
       "question_uid": "pp:ee:2025:q63",
-      "exam_uid": "ee:2025:set1:q63",
-      "title": "GATE EE 2025 | Set 1 | Question: 63",
+      "exam_uid": "ee:2025:set1:ga:q8",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2632,15 +2833,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Step 1: Calculate average score of P and Q</b>\n\nP total = $22 + 89 + 50 + 45 + 78 + 60 + 39 = 383$\n\nAverage of P = $\\frac{383}{7} \\approx 54.71$\n\nQ total = $35 + 65 + 60 + 56 + 81 + 45 + 50 = 392$\n\nAverage of Q = $\\frac{392}{7} = 56$\n\nSo, average of P is less than average of Q ->(A) is correct.\n\n<b>Step 2: Calculate median score</b>\n\nSorted scores:\n\nP: 22, 39, 45, 50, 60, 78, 89 → Median = 50\n\nQ: 35, 45, 50, 56, 60, 65, 81 → Median = 56\n\nSo, (B) is incorrect (they are not the same).\n\n<b>Step 3: Difference between max and min</b>\n\nP: Max = 89, Min = 22 → Difference = $89 - 22 = 67$\n\nQ: Max = 81, Min = 35 → Difference = $81 - 35 = 46$\n\n67 > 46 → (C) is correct.\n\n<b>Step 4: Check if average and median of Q are same</b>\n\nAverage of Q = 56, Median of Q = 56 → (D) is correct.\n\n<b>Final Answer:</b>\n\n<b>The INCORRECT statement is:</b> (B)",
         "images": []
       }
     },
     "pp:ee:2025:q64": {
       "question_uid": "pp:ee:2025:q64",
-      "exam_uid": "ee:2025:set1:q64",
-      "title": "GATE EE 2025 | Set 1 | Question: 64",
+      "exam_uid": "ee:2025:set1:ga:q9",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2673,15 +2877,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Spheres are centered at all points $(l, m, n)$ where $l, m, n \\in \\mathbb{Z}$ (i.e., all integer coordinates).\n\nThat means the spheres are placed in a cubic lattice with unit spacing between centers.\n\n<b>Step 1: Nearest sphere distance $x$</b>\n\nEach sphere has 6 immediate neighbors at a distance of 1 unit along the directions $\\pm x$, $\\pm y$, and $\\pm z$.\n\nSo, $x = 1$\n\n<b>Step 2: Next nearest sphere distance $y$</b>\n\nThe next nearest neighbors are along the diagonals of the faces (e.g., from (0,0,0) to (1,1,0)).\n\nTheir distance is:\n\n$y = \\sqrt{(1)^2 + (1)^2} = \\sqrt{2}$\n\n<b>Step 3: Compute $\\frac{y}{x}$</b>\n\n$\\frac{y}{x} = \\frac{\\sqrt{2}}{1} = \\sqrt{2}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\sqrt{2}}$",
         "images": []
       }
     },
     "pp:ee:2025:q65": {
       "question_uid": "pp:ee:2025:q65",
-      "exam_uid": "ee:2025:set1:q65",
-      "title": "GATE EE 2025 | Set 1 | Question: 65",
+      "exam_uid": "ee:2025:set1:ga:q10",
+      "title": "GATE EE 2025 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateee-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2714,7 +2921,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Step 1: Let us assume PQ = 5 units</b>\n\nGiven the ratio $PT : TR = 3 : 2$, then $PT = 3$ units and $TR = 2$ units, so total $PR = PT + TR = 5$ units.\n\nSince $ST \\parallel QR$ and $T$ lies on $PR$, by Basic Proportionality Theorem:\n\n$\\frac{PS}{PQ} = \\frac{PT}{PR} = \\frac{3}{5}$\n\nSo, $PS = \\frac{3}{5} \\cdot PQ$\n\n<b>Step 2: Area of semicircle is proportional to square of diameter</b>\n\nLet the diameter $PQ = d$.\n\nThen the area of the semicircle with diameter $PQ$ is:\n\n$A_{PQ} = \\frac{1}{2} \\cdot \\frac{\\pi d^2}{4} = \\frac{\\pi d^2}{8}$\n\nNow, $PS = \\frac{3}{5} d$, so area of semicircle on PS:\n\n$A_{PS} = \\frac{1}{2} \\cdot \\frac{\\pi (3d/5)^2}{4} = \\frac{\\pi d^2}{8} \\cdot \\frac{9}{25} = A_{PQ} \\cdot \\frac{9}{25}$\n\n<b>Step 3: Shaded Area = Area of semicircle on PQ − Area of semicircle on PS</b>\n\n$A_{\\text{shaded}} = A_{PQ} - A_{PS} = A_{PQ} \\left(1 - \\frac{9}{25}\\right) = A_{PQ} \\cdot \\frac{16}{25}$\n\nNow convert the shaded area as a multiple of the semicircle on PS:\n\n$\\frac{A_{\\text{shaded}}}{A_{PS}} = \\frac{A_{PQ} \\cdot \\frac{16}{25}}{A_{PQ} \\cdot \\frac{9}{25}} = \\frac{16}{9}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\frac{16}{9}}$ times the area of the semicircle with diameter $PS$",
         "images": []
       }

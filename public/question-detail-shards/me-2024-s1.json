@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.733Z",
+  "generatedAt": "2026-10-17T21:30:25.458Z",
   "shardKey": "me-2024-s1",
   "yearSetKey": "me-2024-s1",
   "yearSetIdentity": "me:2024:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2024:q1": {
       "question_uid": "pp:me:2024:q1",
-      "exam_uid": "me:2024:set1:q1",
+      "exam_uid": "me:2024:set1:main:q1",
       "title": "GATE ME 2024 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Given,\n\n$$\\begin{aligned}\n\n\\frac{y_{n+1}-y_n}{\\Delta t} & =\\frac{1}{2}\\left(y_{n+1}+y_n\\right) \\\\\n\ny_{n+1}-y_n & =\\frac{\\Delta t}{2}\\left(y_{n+1}+y_n\\right) \\\\\n\ny_{n+1}-\\frac{\\Delta t}{2} y_{n+1} & =y_n+\\frac{\\Delta t}{2} y_n \\\\\n\ny_{n+1} & =\\frac{2+\\Delta t}{2-\\Delta t} y_n\n\n\\end{aligned}$$\n\nFor stability or non physical oscillations,\n\n$$\\begin{aligned}\n\n\\left|\\frac{2+\\Delta t}{2-\\Delta t}\\right| & \\leq 1 \\\\\n\n-1 & \\leq \\frac{2+\\Delta t}{2-\\Delta t} \\leq 1 \\\\\n\n-1 & \\leq-1+\\frac{4}{2-\\Delta t} \\leq 1 \\\\\n\n0 & \\leq \\frac{4}{2-\\Delta t} \\leq 2 \\\\\n\n\\frac{1}{2} & \\leq \\frac{2-\\Delta t}{4} \\leq 0 \\\\\n\n2 & \\leq 2-\\Delta t \\leq 0 \\\\\n\n0 & \\leq-\\Delta t \\leq-2 \\\\\n\n\\Delta t & \\geq 2\n\n\\end{aligned}$$\n\n$\\therefore \\quad \\Delta t \\geq 2$",
         "images": []
       }
     },
     "pp:me:2024:q2": {
       "question_uid": "pp:me:2024:q2",
-      "exam_uid": "me:2024:set1:q2",
+      "exam_uid": "me:2024:set1:main:q2",
       "title": "GATE ME 2024 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Surface Integration is defined as\n\n$\\int_{\\mathrm{S}} \\overrightarrow{\\mathrm{F}} \\cdot \\hat{\\mathrm{n} d s}=\\oiint_{\\mathrm{R}} \\mathrm{F}_{1} \\mathrm{dydz}+\\mathrm{F}_{2} \\mathrm{~d} x \\mathrm{dz}+\\mathrm{F}_{3} \\mathrm{dx} \\mathrm{dy}$\n\n$=\\oiint_{\\mathrm{R}} z \\mathrm{dxdy}$\n\nThis means $F_{1}=0, F_{2}=0, F_{3}=Z$\n\n$\\overrightarrow{\\mathrm{F}}=Z \\hat{\\mathrm{K}}$\n\n$\\nabla \\cdot \\overrightarrow{\\mathrm{F}}=1$\n\nUsing Gauss Divergence Theorem\n\n$\\int_{S} \\vec{F} \\cdot \\hat{n} d s=\\int_{V} \\nabla \\cdot \\vec{F} d V=\\int_{V} d V$\n\n$=$ Volume of surface $=\\frac{4}{3} \\pi \\mathrm{R}^{3}$",
         "images": []
       }
     },
     "pp:me:2024:q3": {
       "question_uid": "pp:me:2024:q3",
-      "exam_uid": "me:2024:set1:q3",
+      "exam_uid": "me:2024:set1:main:q3",
       "title": "GATE ME 2024 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "The necessary and sufficient condition for a function $f(z)=u(x, y)+i v(x, y)$ to be analytic is it should satisfy the cauchy Riemann equation.\n\nC.R. equation:\n\n$\\frac{\\partial u}{\\partial x}=\\frac{\\partial v}{\\partial y} \\quad \\text { or, } \\quad u_{x}=v_{y}$\n\n$\\&, \\quad \\frac{\\partial u}{\\partial y}=-\\frac{\\partial v}{\\partial x}$ or, $u_{y}=-v_{x}$\n\nGiven: $\\quad \\mathrm{u}=\\cosh \\mathrm{x} \\cos y$\n\nNow, $\\quad u_{x}=\\sinh x \\cos y$\n\nand, $\\quad u_{y}=-\\cosh x \\sin y$\n\nTo find $f(z)$, put $x=z \\& y=0$;\n\n$$\\begin{aligned}\n\nf(z)&=\\int\\left(u_{x}-i u_{y}\\right) d z \\\\\n\n&=\\int[\\sinh z \\cdot \\cos 0-(-\\cosh z \\cdot \\sin 0)] d z \\\\\n\n&=\\int \\sinh z d z=\\cosh z+C\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2024:q4": {
       "question_uid": "pp:me:2024:q4",
-      "exam_uid": "me:2024:set1:q4",
+      "exam_uid": "me:2024:set1:main:q4",
       "title": "GATE ME 2024 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "If $\\rho(A B)=\\rho(A) \\lt$ No. of unknowns, then the system having infinite number of solutions.\n\nGiven:\n\n$$\\begin{aligned}\n\nx+2 y+z & =5 \\\\\n\n2 x+a y+4 z & =12 \\\\\n\n2 x+4 y+6 z & =b\n\n\\end{aligned}$$\n\nAugmented matrix, $$\\rho(A B)=\\left[\\begin{array}{ccc:c}1 & 2 & 1 & 5 \\\\ 2 & a & 4 & 12 \\\\ 2 & 4 & 6 & b\\end{array}\\right]$$\n\n$R_{2} \\rightarrow R_{2}-2 R_{1} \\quad \\& \\quad R_{3} \\rightarrow R_{3}-2 R_{1}$\n\n$$\\therefore \\quad \\rho(A B)=\\left[\\begin{array}{ccc:c}\n\n1 & 2 & 1 & 5 \\\\\n\n0 & a-4 & 2 & 2 \\\\\n\n0 & 0 & 4 & b-10\n\n\\end{array}\\right]$$\n\nNow, for infinite solution\n\n$$\\begin{array}{ll}\n\n& \\rho(A)=\\rho(A B) \\lt 3 \\\\\n\n\\text { i.e. } & \\rho(A)=\\rho(A B)=2\n\n\\end{array}$$\n\nSince, for $\\rho(A)=2$\n\n$$\\begin{aligned}\n\n& a-4=0 \\\\\n\n\\Rightarrow & a=4\n\n\\end{aligned}$$\n\n$\\&$, for $\\rho(A B)=2$,\n\n$b-10=4$\n\n$\\Rightarrow \\quad b=14$",
         "images": []
       }
     },
     "pp:me:2024:q5": {
       "question_uid": "pp:me:2024:q5",
-      "exam_uid": "me:2024:set1:q5",
+      "exam_uid": "me:2024:set1:main:q5",
       "title": "GATE ME 2024 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -214,15 +229,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Let the function is parabolic nature, i.e. form of : $A x^{2}+B x+C$\n\nNow, the conditions for strictly local minimum to exist are:\n\nThe coefficient of $x^{2}$ (i.e. A) should be positive.\n\nFirst derivative of the function should be zero.\n\nSecond derivative of the function should be positive.\n\nNow, After the observation of all four options, above these conditions will be satisfy by option (B). Hence, option B will be correct.",
         "images": []
       }
     },
     "pp:me:2024:q6": {
       "question_uid": "pp:me:2024:q6",
-      "exam_uid": "me:2024:set1:q6",
+      "exam_uid": "me:2024:set1:main:q6",
       "title": "GATE ME 2024 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:me:2024:q7": {
       "question_uid": "pp:me:2024:q7",
-      "exam_uid": "me:2024:set1:q7",
+      "exam_uid": "me:2024:set1:main:q7",
       "title": "GATE ME 2024 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -305,8 +326,11 @@
     },
     "pp:me:2024:q8": {
       "question_uid": "pp:me:2024:q8",
-      "exam_uid": "me:2024:set1:q8",
+      "exam_uid": "me:2024:set1:main:q8",
       "title": "GATE ME 2024 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -347,8 +371,11 @@
     },
     "pp:me:2024:q9": {
       "question_uid": "pp:me:2024:q9",
-      "exam_uid": "me:2024:set1:q9",
+      "exam_uid": "me:2024:set1:main:q9",
       "title": "GATE ME 2024 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -391,8 +418,11 @@
     },
     "pp:me:2024:q10": {
       "question_uid": "pp:me:2024:q10",
-      "exam_uid": "me:2024:set1:q10",
+      "exam_uid": "me:2024:set1:main:q10",
       "title": "GATE ME 2024 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -435,8 +465,11 @@
     },
     "pp:me:2024:q11": {
       "question_uid": "pp:me:2024:q11",
-      "exam_uid": "me:2024:set1:q11",
+      "exam_uid": "me:2024:set1:main:q11",
       "title": "GATE ME 2024 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -477,8 +510,11 @@
     },
     "pp:me:2024:q12": {
       "question_uid": "pp:me:2024:q12",
-      "exam_uid": "me:2024:set1:q12",
+      "exam_uid": "me:2024:set1:main:q12",
       "title": "GATE ME 2024 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -521,8 +557,11 @@
     },
     "pp:me:2024:q13": {
       "question_uid": "pp:me:2024:q13",
-      "exam_uid": "me:2024:set1:q13",
+      "exam_uid": "me:2024:set1:main:q13",
       "title": "GATE ME 2024 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -563,8 +602,11 @@
     },
     "pp:me:2024:q14": {
       "question_uid": "pp:me:2024:q14",
-      "exam_uid": "me:2024:set1:q14",
+      "exam_uid": "me:2024:set1:main:q14",
       "title": "GATE ME 2024 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -607,8 +649,11 @@
     },
     "pp:me:2024:q15": {
       "question_uid": "pp:me:2024:q15",
-      "exam_uid": "me:2024:set1:q15",
+      "exam_uid": "me:2024:set1:main:q15",
       "title": "GATE ME 2024 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -651,8 +696,11 @@
     },
     "pp:me:2024:q16": {
       "question_uid": "pp:me:2024:q16",
-      "exam_uid": "me:2024:set1:q16",
+      "exam_uid": "me:2024:set1:main:q16",
       "title": "GATE ME 2024 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -695,8 +743,11 @@
     },
     "pp:me:2024:q17": {
       "question_uid": "pp:me:2024:q17",
-      "exam_uid": "me:2024:set1:q17",
+      "exam_uid": "me:2024:set1:main:q17",
       "title": "GATE ME 2024 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -740,8 +791,11 @@
     },
     "pp:me:2024:q18": {
       "question_uid": "pp:me:2024:q18",
-      "exam_uid": "me:2024:set1:q18",
+      "exam_uid": "me:2024:set1:main:q18",
       "title": "GATE ME 2024 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -782,8 +836,11 @@
     },
     "pp:me:2024:q19": {
       "question_uid": "pp:me:2024:q19",
-      "exam_uid": "me:2024:set1:q19",
+      "exam_uid": "me:2024:set1:main:q19",
       "title": "GATE ME 2024 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -826,8 +883,11 @@
     },
     "pp:me:2024:q20": {
       "question_uid": "pp:me:2024:q20",
-      "exam_uid": "me:2024:set1:q20",
+      "exam_uid": "me:2024:set1:main:q20",
       "title": "GATE ME 2024 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -870,8 +930,11 @@
     },
     "pp:me:2024:q21": {
       "question_uid": "pp:me:2024:q21",
-      "exam_uid": "me:2024:set1:q21",
+      "exam_uid": "me:2024:set1:main:q21",
       "title": "GATE ME 2024 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -912,8 +975,11 @@
     },
     "pp:me:2024:q22": {
       "question_uid": "pp:me:2024:q22",
-      "exam_uid": "me:2024:set1:q22",
+      "exam_uid": "me:2024:set1:main:q22",
       "title": "GATE ME 2024 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -954,8 +1020,11 @@
     },
     "pp:me:2024:q23": {
       "question_uid": "pp:me:2024:q23",
-      "exam_uid": "me:2024:set1:q23",
+      "exam_uid": "me:2024:set1:main:q23",
       "title": "GATE ME 2024 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -996,8 +1065,11 @@
     },
     "pp:me:2024:q24": {
       "question_uid": "pp:me:2024:q24",
-      "exam_uid": "me:2024:set1:q24",
+      "exam_uid": "me:2024:set1:main:q24",
       "title": "GATE ME 2024 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1038,8 +1110,11 @@
     },
     "pp:me:2024:q25": {
       "question_uid": "pp:me:2024:q25",
-      "exam_uid": "me:2024:set1:q25",
+      "exam_uid": "me:2024:set1:main:q25",
       "title": "GATE ME 2024 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1080,8 +1155,11 @@
     },
     "pp:me:2024:q26": {
       "question_uid": "pp:me:2024:q26",
-      "exam_uid": "me:2024:set1:q26",
+      "exam_uid": "me:2024:set1:main:q26",
       "title": "GATE ME 2024 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1115,15 +1193,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned}\n\n|A-\\lambda I| & =0 \\\\\n\n\\left|\\begin{array}{cc}\n\n1-\\lambda & \\mathrm{a} \\\\\n\n8 & 3-\\lambda\n\n\\end{array}\\right| & =0 \\\\\n\n(1-\\lambda)(3-\\lambda)-8 & =0 \\\\\n\n\\lambda^{2}-4 \\lambda+3-8 \\mathrm{a} & =0 \\\\\n\n\\lambda_{1} \\times \\lambda_{2} & =\\frac{3-8 \\mathrm{a}}{1} \\text { (product of roots) } \\\\\n\n& =3-8 a\n\n\\end{aligned}$$\n\nIf one eigen value is negative then product of eigen values must be negative.\n\n$$\\begin{aligned}\n\n3-8 a & <0 \\\\\n\na & >3 / 8\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2024:q27": {
       "question_uid": "pp:me:2024:q27",
-      "exam_uid": "me:2024:set1:q27",
+      "exam_uid": "me:2024:set1:main:q27",
       "title": "GATE ME 2024 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1166,8 +1247,11 @@
     },
     "pp:me:2024:q28": {
       "question_uid": "pp:me:2024:q28",
-      "exam_uid": "me:2024:set1:q28",
+      "exam_uid": "me:2024:set1:main:q28",
       "title": "GATE ME 2024 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1208,8 +1292,11 @@
     },
     "pp:me:2024:q29": {
       "question_uid": "pp:me:2024:q29",
-      "exam_uid": "me:2024:set1:q29",
+      "exam_uid": "me:2024:set1:main:q29",
       "title": "GATE ME 2024 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1250,8 +1337,11 @@
     },
     "pp:me:2024:q30": {
       "question_uid": "pp:me:2024:q30",
-      "exam_uid": "me:2024:set1:q30",
+      "exam_uid": "me:2024:set1:main:q30",
       "title": "GATE ME 2024 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1294,8 +1384,11 @@
     },
     "pp:me:2024:q31": {
       "question_uid": "pp:me:2024:q31",
-      "exam_uid": "me:2024:set1:q31",
+      "exam_uid": "me:2024:set1:main:q31",
       "title": "GATE ME 2024 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1336,8 +1429,11 @@
     },
     "pp:me:2024:q32": {
       "question_uid": "pp:me:2024:q32",
-      "exam_uid": "me:2024:set1:q32",
+      "exam_uid": "me:2024:set1:main:q32",
       "title": "GATE ME 2024 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1369,7 +1465,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/me/2024/me-2024-78b9bdcbff.webp\" />\n\n$=\\int_{x=3}^{4}\\left(\\int_{y=3}^{2} \\frac{d y}{(x+y)^{2}}\\right) d x$\n\n$=\\int_{x=3}^{4}\\left(\\int_{x+1}^{x+2} \\frac{d t}{t^{2}}\\right) d x$\n\n(assume $x+y=t, d y=d t$ )\n\n$$\\begin{aligned}\n\n& =\\int_{x=3}^{4}\\left(\\frac{t^{-2+1}}{-2+1}\\right)_{x+1}^{x+2} d x \\\\\n\n& =\\int_{3}^{4}\\left(\\frac{1}{x+1}-\\frac{1}{x+2}\\right) d x \\\\\n\n& =(\\ln (x+1)-\\ln (x+2))_{3}^{4} \\\\\n\n& =(\\ln 5-\\ln 6)-(\\ln 4-\\ln 5) \\\\\n\n& =\\ln \\left(\\frac{25}{24}\\right) \\\\ \\log _e        \\left(\\frac{a}{24}\\right)& =\\log _e \\left(\\frac{25}{24}\\right)\\\\\n\na&=25\n\n\\end{aligned}$$",
         "images": [
           "/question-images/me/2024/me-2024-78b9bdcbff.webp"
@@ -1378,8 +1474,11 @@
     },
     "pp:me:2024:q33": {
       "question_uid": "pp:me:2024:q33",
-      "exam_uid": "me:2024:set1:q33",
+      "exam_uid": "me:2024:set1:main:q33",
       "title": "GATE ME 2024 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1411,15 +1510,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned}\n\nt \\frac{d x}{d t}+t-x & =0 \\\\\n\n\\frac{d x}{d t}+1-\\frac{x}{t} & =0 \\\\\n\n\\frac{d x}{d t}-\\frac{x}{t} & =-1 \\;\\;\\;...(i)\n\n\\end{aligned}$$\n\nComparing given O.D.E with\n\n$$\\begin{aligned}\n\n\\frac{d x}{d t}+p x & =Q \\\\\n\nP & =-\\frac{1}{t}, Q=-1 \\\\\n\n\\text { I.F. } & =e^{\\int-\\frac{1}{t} d t} \\\\\n\n& =e^{-\\ln t} \\\\\n\n& =e^{\\ln 1 / t} \\\\\n\n& =\\frac{1}{t}\n\n\\end{aligned}$$\n\nSolution of (i) is given by\n\n$$\\begin{aligned}\n\nx \\times I . F . & =\\int I . F . Q d t+C \\\\\n\nx \\times \\frac{1}{t} & =\\int-\\frac{1}{t} d t+C \\\\\n\n\\frac{x}{t} & =-\\operatorname{lnt}+C \\\\\n\n\\frac{0}{1} & =-\\ln 1+C \\text { (using initial condition) } \\\\\n\nC & =0 \\\\\n\n\\frac{x}{t} & =-\\operatorname{lnt} \\Rightarrow x-t \\operatorname{lnt} \\\\\n\nx(2) & =-2 \\ln 2=-1.38629=-1.3863 \\\\\n\n& =-1.3863\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2024:q34": {
       "question_uid": "pp:me:2024:q34",
-      "exam_uid": "me:2024:set1:q34",
+      "exam_uid": "me:2024:set1:main:q34",
       "title": "GATE ME 2024 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1451,15 +1553,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned}\n\nf(x) & = \\begin{cases}1 & 0 \\lt x \\lt 1 \\\\\n\n0 & \\text { otherwise }\\end{cases} \\\\\n\ny & =\\ln (x+1) \\\\\n\nE(x) & =\\int x f(x) d x \\\\\n\nE(g(x)) & =\\int g(x) f(x) d x \\\\\n\nE(y) & =\\int \\ln (x+1) f(x) d x \\\\\n\nE(y) & =\\int_{0}^{1} \\ln (x+1) d x \\; \\;  \\;  \\{f(x)=1,0 \\lt x \\lt 1\\} \\\\\n\nE(y) & =\\left(x \\ln (x+1)-\\int_{0}^{1} \\frac{x}{x+1} d x\\right)_{0}^{1} \\\\\n\n& =(x \\ln (x+1)-[x-\\ln (x+1)))_{0}^{1} \\\\\n\n& =(\\ln (x+1)(x+1)-x)_{0}^{1} \\\\\n\n=2 & \\ln 2-1=0.38629=0.3863 \\simeq 0.39\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2024:q35": {
       "question_uid": "pp:me:2024:q35",
-      "exam_uid": "me:2024:set1:q35",
+      "exam_uid": "me:2024:set1:main:q35",
       "title": "GATE ME 2024 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1500,8 +1605,11 @@
     },
     "pp:me:2024:q36": {
       "question_uid": "pp:me:2024:q36",
-      "exam_uid": "me:2024:set1:q36",
+      "exam_uid": "me:2024:set1:main:q36",
       "title": "GATE ME 2024 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1542,8 +1650,11 @@
     },
     "pp:me:2024:q37": {
       "question_uid": "pp:me:2024:q37",
-      "exam_uid": "me:2024:set1:q37",
+      "exam_uid": "me:2024:set1:main:q37",
       "title": "GATE ME 2024 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1584,8 +1695,11 @@
     },
     "pp:me:2024:q38": {
       "question_uid": "pp:me:2024:q38",
-      "exam_uid": "me:2024:set1:q38",
+      "exam_uid": "me:2024:set1:main:q38",
       "title": "GATE ME 2024 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1627,8 +1741,11 @@
     },
     "pp:me:2024:q39": {
       "question_uid": "pp:me:2024:q39",
-      "exam_uid": "me:2024:set1:q39",
+      "exam_uid": "me:2024:set1:main:q39",
       "title": "GATE ME 2024 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1669,8 +1786,11 @@
     },
     "pp:me:2024:q40": {
       "question_uid": "pp:me:2024:q40",
-      "exam_uid": "me:2024:set1:q40",
+      "exam_uid": "me:2024:set1:main:q40",
       "title": "GATE ME 2024 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1711,8 +1831,11 @@
     },
     "pp:me:2024:q41": {
       "question_uid": "pp:me:2024:q41",
-      "exam_uid": "me:2024:set1:q41",
+      "exam_uid": "me:2024:set1:main:q41",
       "title": "GATE ME 2024 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1751,8 +1874,11 @@
     },
     "pp:me:2024:q42": {
       "question_uid": "pp:me:2024:q42",
-      "exam_uid": "me:2024:set1:q42",
+      "exam_uid": "me:2024:set1:main:q42",
       "title": "GATE ME 2024 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1793,8 +1919,11 @@
     },
     "pp:me:2024:q43": {
       "question_uid": "pp:me:2024:q43",
-      "exam_uid": "me:2024:set1:q43",
+      "exam_uid": "me:2024:set1:main:q43",
       "title": "GATE ME 2024 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1835,8 +1964,11 @@
     },
     "pp:me:2024:q44": {
       "question_uid": "pp:me:2024:q44",
-      "exam_uid": "me:2024:set1:q44",
+      "exam_uid": "me:2024:set1:main:q44",
       "title": "GATE ME 2024 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1877,8 +2009,11 @@
     },
     "pp:me:2024:q45": {
       "question_uid": "pp:me:2024:q45",
-      "exam_uid": "me:2024:set1:q45",
+      "exam_uid": "me:2024:set1:main:q45",
       "title": "GATE ME 2024 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1919,8 +2054,11 @@
     },
     "pp:me:2024:q46": {
       "question_uid": "pp:me:2024:q46",
-      "exam_uid": "me:2024:set1:q46",
+      "exam_uid": "me:2024:set1:main:q46",
       "title": "GATE ME 2024 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -1961,8 +2099,11 @@
     },
     "pp:me:2024:q47": {
       "question_uid": "pp:me:2024:q47",
-      "exam_uid": "me:2024:set1:q47",
+      "exam_uid": "me:2024:set1:main:q47",
       "title": "GATE ME 2024 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2004,8 +2145,11 @@
     },
     "pp:me:2024:q48": {
       "question_uid": "pp:me:2024:q48",
-      "exam_uid": "me:2024:set1:q48",
+      "exam_uid": "me:2024:set1:main:q48",
       "title": "GATE ME 2024 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2047,8 +2191,11 @@
     },
     "pp:me:2024:q49": {
       "question_uid": "pp:me:2024:q49",
-      "exam_uid": "me:2024:set1:q49",
+      "exam_uid": "me:2024:set1:main:q49",
       "title": "GATE ME 2024 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2089,8 +2236,11 @@
     },
     "pp:me:2024:q50": {
       "question_uid": "pp:me:2024:q50",
-      "exam_uid": "me:2024:set1:q50",
+      "exam_uid": "me:2024:set1:main:q50",
       "title": "GATE ME 2024 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2129,8 +2279,11 @@
     },
     "pp:me:2024:q51": {
       "question_uid": "pp:me:2024:q51",
-      "exam_uid": "me:2024:set1:q51",
+      "exam_uid": "me:2024:set1:main:q51",
       "title": "GATE ME 2024 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2169,8 +2322,11 @@
     },
     "pp:me:2024:q52": {
       "question_uid": "pp:me:2024:q52",
-      "exam_uid": "me:2024:set1:q52",
+      "exam_uid": "me:2024:set1:main:q52",
       "title": "GATE ME 2024 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2209,8 +2365,11 @@
     },
     "pp:me:2024:q53": {
       "question_uid": "pp:me:2024:q53",
-      "exam_uid": "me:2024:set1:q53",
+      "exam_uid": "me:2024:set1:main:q53",
       "title": "GATE ME 2024 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2249,8 +2408,11 @@
     },
     "pp:me:2024:q54": {
       "question_uid": "pp:me:2024:q54",
-      "exam_uid": "me:2024:set1:q54",
+      "exam_uid": "me:2024:set1:main:q54",
       "title": "GATE ME 2024 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2291,8 +2453,11 @@
     },
     "pp:me:2024:q55": {
       "question_uid": "pp:me:2024:q55",
-      "exam_uid": "me:2024:set1:q55",
+      "exam_uid": "me:2024:set1:main:q55",
       "title": "GATE ME 2024 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "NAT",
       "marks": 2,
@@ -2335,8 +2500,11 @@
     },
     "pp:me:2024:q56": {
       "question_uid": "pp:me:2024:q56",
-      "exam_uid": "me:2024:set1:q56",
-      "title": "GATE ME 2024 | Set 1 | Question: 56",
+      "exam_uid": "me:2024:set1:ga:q1",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2369,15 +2537,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Smile $\\rightarrow$ gigle $\\rightarrow$ laugh\n\nSimilarly\n\ndisapprove $\\rightarrow$ reprove $\\rightarrow$ chide\n\nReprove : To criticize somebody or not approve of something that some body has done.\n\nDisapprove : To refuse approval\n\nChide : criticize somebody.\n\n\\end{itemize}",
         "images": []
       }
     },
     "pp:me:2024:q57": {
       "question_uid": "pp:me:2024:q57",
-      "exam_uid": "me:2024:set1:q57",
-      "title": "GATE ME 2024 | Set 1 | Question: 57",
+      "exam_uid": "me:2024:set1:ga:q2",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2410,15 +2581,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "This is the set of prime number.\n\nHere '21' is odd one. 21 is non prime number.",
         "images": []
       }
     },
     "pp:me:2024:q58": {
       "question_uid": "pp:me:2024:q58",
-      "exam_uid": "me:2024:set1:q58",
-      "title": "GATE ME 2024 | Set 1 | Question: 58",
+      "exam_uid": "me:2024:set1:ga:q3",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2451,15 +2625,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The Fibonacci series is the series of numbers\n\n$1,1,2,3,5,8,13,21, \\ldots$.\n\nThe next number is determined by adding the two numbers before it.\n\n$1+1=2$\n\n$2+1=3$\n\n$2+3=5$\n\n$3+5=8$\n\n$5+8=13$\n\n$8+13=21$\n\nSo, number '6' needs to be changed to form the Fibonacci series.",
         "images": []
       }
     },
     "pp:me:2024:q59": {
       "question_uid": "pp:me:2024:q59",
-      "exam_uid": "me:2024:set1:q59",
-      "title": "GATE ME 2024 | Set 1 | Question: 59",
+      "exam_uid": "me:2024:set1:ga:q4",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2492,15 +2669,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\n& \\text { Let } \\frac{x}{p q-r^{2}}=\\frac{y}{q r-p^{2}}=\\frac{2}{r p-q^{2}}=K \\\\\n\n& \\Rightarrow \\quad x=K\\left(p q-r^{2}\\right) \\\\\n\n& \\qquad \\begin{array}{l}\n\ny=K\\left(q r-p^{2}\\right) \\\\\n\nz=K\\left(r p-q^{2}\\right)\n\n\\end{array}\n\n\\end{aligned}$$\n\nSo, $p x+q y+r z=$\n\n$K \\times p\\left(p q-r^{2}\\right)+K \\times q\\left(q r-p^{2}\\right)+K \\times r\\left(r p-q^{2}\\right)$\n\n$=K\\left(p^{2} q-p r^{2}+q^{2} r-q p^{2}+r^{2} p-r q^{2}\\right)$\n\n$=\\mathrm{K} \\times 0=0$",
         "images": []
       }
     },
     "pp:me:2024:q60": {
       "question_uid": "pp:me:2024:q60",
-      "exam_uid": "me:2024:set1:q60",
-      "title": "GATE ME 2024 | Set 1 | Question: 60",
+      "exam_uid": "me:2024:set1:ga:q5",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2533,15 +2713,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The combination of numbers on two long dice to get sum greater than 11.\n\n$(5,7),(7,5)$ and $(7,7)$\n\nSo, the probability\n\n$=\\frac{1}{4} \\times \\frac{1}{4}+\\frac{1}{4} \\times \\frac{1}{4}+\\frac{1}{4} \\times \\frac{1}{4}$\n\n$=\\frac{1}{16}+\\frac{1}{16}+\\frac{1}{16}=\\frac{3}{16}$",
         "images": []
       }
     },
     "pp:me:2024:q61": {
       "question_uid": "pp:me:2024:q61",
-      "exam_uid": "me:2024:set1:q61",
-      "title": "GATE ME 2024 | Set 1 | Question: 61",
+      "exam_uid": "me:2024:set1:ga:q6",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2573,12 +2756,18 @@
           "verbal-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "ME Core Engineering",
+        "markdown": null
+      }
     },
     "pp:me:2024:q62": {
       "question_uid": "pp:me:2024:q62",
-      "exam_uid": "me:2024:set1:q62",
-      "title": "GATE ME 2024 | Set 1 | Question: 62",
+      "exam_uid": "me:2024:set1:ga:q7",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2611,15 +2800,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
-        "markdown": "MTA-Marks to All",
-        "images": []
+        "concept": "ME Core Engineering",
+        "markdown": "MTA-Marks to All"
       }
     },
     "pp:me:2024:q63": {
       "question_uid": "pp:me:2024:q63",
-      "exam_uid": "me:2024:set1:q63",
-      "title": "GATE ME 2024 | Set 1 | Question: 63",
+      "exam_uid": "me:2024:set1:ga:q8",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2652,15 +2843,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "From graph\n\nIn between 2015 to 2019, VK batting average\n\n$=35+90+75+130+60=\\frac{390}{5}=78$\n\nIn between 2015 to 2019, RS batting average $=50+65+70+70+55=\\frac{320}{5}=64$\n\nSo, VK yearly batting average consistantly higher then RS between two world cup years (2015 and 2019).",
         "images": []
       }
     },
     "pp:me:2024:q64": {
       "question_uid": "pp:me:2024:q64",
-      "exam_uid": "me:2024:set1:q64",
-      "title": "GATE ME 2024 | Set 1 | Question: 64",
+      "exam_uid": "me:2024:set1:ga:q9",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2692,12 +2886,18 @@
           "quantitative-aptitude"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "ME Core Engineering",
+        "markdown": null
+      }
     },
     "pp:me:2024:q65": {
       "question_uid": "pp:me:2024:q65",
-      "exam_uid": "me:2024:set1:q65",
-      "title": "GATE ME 2024 | Set 1 | Question: 65",
+      "exam_uid": "me:2024:set1:ga:q10",
+      "title": "GATE ME 2024 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2024-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2730,9 +2930,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
-        "markdown": "MTA-Marks to All",
-        "images": []
+        "concept": "ME Core Engineering",
+        "markdown": "MTA-Marks to All"
       }
     }
   }

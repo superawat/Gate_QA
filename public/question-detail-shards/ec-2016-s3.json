@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.114Z",
+  "generatedAt": "2026-10-17T21:30:25.037Z",
   "shardKey": "ec-2016-s3",
   "yearSetKey": "ec-2016-s3",
   "yearSetIdentity": "ec:2016:set-3",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ec:2016:q1-s3": {
       "question_uid": "pp:ec:2016:q1-s3",
-      "exam_uid": "ec:2016:set3:q1",
+      "exam_uid": "ec:2016:set3:main:q1",
       "title": "GATE EC 2016 | Set 3 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} A &=\\left[\\begin{array}{ll} \\sigma & x \\\\ \\omega & \\sigma \\end{array}\\right] \\\\ \\text { Trace } &=\\text { sum of eigen values } \\\\ 2 \\sigma &=\\sigma+j \\omega+\\sigma-j \\omega \\\\ |A| &=\\text { product of eigens } \\\\ \\sigma^{2}-x \\omega &=(\\sigma+j \\omega)(\\sigma-j \\omega)=\\sigma^{2}+\\omega^{2} \\end{aligned}$$\n\nwhich is possible only when, $x=-\\omega$",
         "images": []
       }
     },
     "pp:ec:2016:q2-s3": {
       "question_uid": "pp:ec:2016:q2-s3",
-      "exam_uid": "ec:2016:set3:q2",
+      "exam_uid": "ec:2016:set3:main:q2",
       "title": "GATE EC 2016 | Set 3 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -86,15 +92,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Complex Analysis",
+        "concept": "Engineering Mathematics - Complex Analysis",
         "markdown": "Residue of $\\frac{\\sin z}{z^{2}}$\n\n= coefficient of $\\frac{1}{2}$ in $\\left\\{\\frac{z-\\frac{z^{3}}{3 !}+\\frac{z^{5}}{5 !}---}{z^{2}}\\right\\}$\n\n= coefficient of $\\frac{1}{z}$ in $\\left\\{\\frac{1}{z}-\\frac{z}{3 !}+\\frac{z^{3}}{5 !}---\\right\\}$\n\n$=1$",
         "images": []
       }
     },
     "pp:ec:2016:q3-s3": {
       "question_uid": "pp:ec:2016:q3-s3",
-      "exam_uid": "ec:2016:set3:q3",
+      "exam_uid": "ec:2016:set3:main:q3",
       "title": "GATE EC 2016 | Set 3 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -126,15 +135,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned} P(H)&=0.3 \\\\ P(T)&=0.7 \\end{aligned}$$\n\nsince all tosses are independent\n\nso, probability of getting head for the first time in $5^{\\text {th }}$ toss is\n\n$$\\begin{aligned} &=P(T) P(T) P(T) P(T) P(H) \\\\ &=0.7 \\times 0.7 \\times 0.7 \\times 0.7 \\times 0.3=0.072 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2016:q4-s3": {
       "question_uid": "pp:ec:2016:q4-s3",
-      "exam_uid": "ec:2016:set3:q4",
+      "exam_uid": "ec:2016:set3:main:q4",
       "title": "GATE EC 2016 | Set 3 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -166,15 +178,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} \\int_{0}^{1} \\frac{1}{\\sqrt{1-x}} d x &=-2 \\int_{0}^{1} \\frac{1}{2 \\sqrt{1-x}} d x \\\\ &=-\\left.2(\\sqrt{1-x})\\right|_{0} ^{1} \\\\ &=-2(0-1)=2 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2016:q5-s3": {
       "question_uid": "pp:ec:2016:q5-s3",
-      "exam_uid": "ec:2016:set3:q5",
+      "exam_uid": "ec:2016:set3:main:q5",
       "title": "GATE EC 2016 | Set 3 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -206,15 +221,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "$$\\begin{aligned} \\frac{d y}{d x} &=y+2 x-x^{2} \\\\ y(0) &=1 \\quad \\quad 0 \\leq x \\leq \\infty \\\\ f(x, y) &=y+2 x-x^{2} \\\\ x_{0}=0 ; y_{0}=1 ; h &=0.1 \\\\ k_{1} &=h f\\left(x_{0}, y_{0}\\right) \\\\ &=0.1\\left(1+2 \\times 0-0^{2}\\right)=0.1 \\\\ k_{3} &=h /\\left(x_{0}+h_{1} y_{0}+k_{1}\\right) \\\\ &=0.1\\left(\\left(y_{0}+k_{1}\\right)+2\\left(x_{0}+h\\right)-\\left(x_{0}+h\\right)^{2}\\right) \\\\ &\\left.=0.1(11+0.1)+2(0.1)-(0.1)^{2}\\right) \\\\ &=0.129\\\\ y_{1} &=y_{0}+\\frac{1}{2}\\left(k_{1}+k_{2}\\right) \\\\ &=1+\\frac{1}{2}(0.1+0.129) \\\\ &=1.1145 \\\\ \\text { Exact solution } y(x) &=x^{2}+e^{x} \\\\ &=(0.1)^{2}+e^{0.1} \\\\ &=1.1152 \\\\ \\text { Error } &=1.1152-1.1145=0.00069 \\\\ \\% \\text { error } &=0.06 \\% \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2016:q6-s3": {
       "question_uid": "pp:ec:2016:q6-s3",
-      "exam_uid": "ec:2016:set3:q6",
+      "exam_uid": "ec:2016:set3:main:q6",
       "title": "GATE EC 2016 | Set 3 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -255,8 +273,11 @@
     },
     "pp:ec:2016:q7-s3": {
       "question_uid": "pp:ec:2016:q7-s3",
-      "exam_uid": "ec:2016:set3:q7",
+      "exam_uid": "ec:2016:set3:main:q7",
       "title": "GATE EC 2016 | Set 3 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -301,8 +322,11 @@
     },
     "pp:ec:2016:q8-s3": {
       "question_uid": "pp:ec:2016:q8-s3",
-      "exam_uid": "ec:2016:set3:q8",
+      "exam_uid": "ec:2016:set3:main:q8",
       "title": "GATE EC 2016 | Set 3 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -343,8 +367,11 @@
     },
     "pp:ec:2016:q9-s3": {
       "question_uid": "pp:ec:2016:q9-s3",
-      "exam_uid": "ec:2016:set3:q9",
+      "exam_uid": "ec:2016:set3:main:q9",
       "title": "GATE EC 2016 | Set 3 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -389,8 +416,11 @@
     },
     "pp:ec:2016:q10-s3": {
       "question_uid": "pp:ec:2016:q10-s3",
-      "exam_uid": "ec:2016:set3:q10",
+      "exam_uid": "ec:2016:set3:main:q10",
       "title": "GATE EC 2016 | Set 3 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +461,11 @@
     },
     "pp:ec:2016:q11-s3": {
       "question_uid": "pp:ec:2016:q11-s3",
-      "exam_uid": "ec:2016:set3:q11",
+      "exam_uid": "ec:2016:set3:main:q11",
       "title": "GATE EC 2016 | Set 3 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -473,8 +506,11 @@
     },
     "pp:ec:2016:q12-s3": {
       "question_uid": "pp:ec:2016:q12-s3",
-      "exam_uid": "ec:2016:set3:q12",
+      "exam_uid": "ec:2016:set3:main:q12",
       "title": "GATE EC 2016 | Set 3 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -513,8 +549,11 @@
     },
     "pp:ec:2016:q13-s3": {
       "question_uid": "pp:ec:2016:q13-s3",
-      "exam_uid": "ec:2016:set3:q13",
+      "exam_uid": "ec:2016:set3:main:q13",
       "title": "GATE EC 2016 | Set 3 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -555,8 +594,11 @@
     },
     "pp:ec:2016:q14-s3": {
       "question_uid": "pp:ec:2016:q14-s3",
-      "exam_uid": "ec:2016:set3:q14",
+      "exam_uid": "ec:2016:set3:main:q14",
       "title": "GATE EC 2016 | Set 3 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -597,8 +639,11 @@
     },
     "pp:ec:2016:q15-s3": {
       "question_uid": "pp:ec:2016:q15-s3",
-      "exam_uid": "ec:2016:set3:q15",
+      "exam_uid": "ec:2016:set3:main:q15",
       "title": "GATE EC 2016 | Set 3 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -637,8 +682,11 @@
     },
     "pp:ec:2016:q16-s3": {
       "question_uid": "pp:ec:2016:q16-s3",
-      "exam_uid": "ec:2016:set3:q16",
+      "exam_uid": "ec:2016:set3:main:q16",
       "title": "GATE EC 2016 | Set 3 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -681,8 +729,11 @@
     },
     "pp:ec:2016:q17-s3": {
       "question_uid": "pp:ec:2016:q17-s3",
-      "exam_uid": "ec:2016:set3:q17",
+      "exam_uid": "ec:2016:set3:main:q17",
       "title": "GATE EC 2016 | Set 3 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -723,8 +774,11 @@
     },
     "pp:ec:2016:q18-s3": {
       "question_uid": "pp:ec:2016:q18-s3",
-      "exam_uid": "ec:2016:set3:q18",
+      "exam_uid": "ec:2016:set3:main:q18",
       "title": "GATE EC 2016 | Set 3 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -767,8 +821,11 @@
     },
     "pp:ec:2016:q19-s3": {
       "question_uid": "pp:ec:2016:q19-s3",
-      "exam_uid": "ec:2016:set3:q19",
+      "exam_uid": "ec:2016:set3:main:q19",
       "title": "GATE EC 2016 | Set 3 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -811,8 +868,11 @@
     },
     "pp:ec:2016:q20-s3": {
       "question_uid": "pp:ec:2016:q20-s3",
-      "exam_uid": "ec:2016:set3:q20",
+      "exam_uid": "ec:2016:set3:main:q20",
       "title": "GATE EC 2016 | Set 3 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -853,8 +913,11 @@
     },
     "pp:ec:2016:q21-s3": {
       "question_uid": "pp:ec:2016:q21-s3",
-      "exam_uid": "ec:2016:set3:q21",
+      "exam_uid": "ec:2016:set3:main:q21",
       "title": "GATE EC 2016 | Set 3 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -893,8 +956,11 @@
     },
     "pp:ec:2016:q22-s3": {
       "question_uid": "pp:ec:2016:q22-s3",
-      "exam_uid": "ec:2016:set3:q22",
+      "exam_uid": "ec:2016:set3:main:q22",
       "title": "GATE EC 2016 | Set 3 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 1,
@@ -933,8 +999,11 @@
     },
     "pp:ec:2016:q23-s3": {
       "question_uid": "pp:ec:2016:q23-s3",
-      "exam_uid": "ec:2016:set3:q23",
+      "exam_uid": "ec:2016:set3:main:q23",
       "title": "GATE EC 2016 | Set 3 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -979,8 +1048,11 @@
     },
     "pp:ec:2016:q24-s3": {
       "question_uid": "pp:ec:2016:q24-s3",
-      "exam_uid": "ec:2016:set3:q24",
+      "exam_uid": "ec:2016:set3:main:q24",
       "title": "GATE EC 2016 | Set 3 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -1021,8 +1093,11 @@
     },
     "pp:ec:2016:q25-s3": {
       "question_uid": "pp:ec:2016:q25-s3",
-      "exam_uid": "ec:2016:set3:q25",
+      "exam_uid": "ec:2016:set3:main:q25",
       "title": "GATE EC 2016 | Set 3 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 1,
@@ -1063,8 +1138,11 @@
     },
     "pp:ec:2016:q26-s3": {
       "question_uid": "pp:ec:2016:q26-s3",
-      "exam_uid": "ec:2016:set3:q26",
+      "exam_uid": "ec:2016:set3:main:q26",
       "title": "GATE EC 2016 | Set 3 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1098,15 +1176,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} \\left(D^{2}+12 D+36\\right) &=0 \\\\ (D+6)^{2} y &=0 \\\\ D &=-6,-6\\\\ y &=\\left(C_{1}+x C_{2}\\right) e^{6 x} \\\\ y &=C_{1} e^{-6 x}+C_{2} x e^{-6 x} \\\\ y(0) &=3 \\\\ &=C_{1}+0 \\\\ \\Rightarrow \\quad C_{1} &=3 \\\\ y^{\\prime} &=-6 C_{1} e^{6 x}+C_{2} \\sigma^{6 x}-6 C_{2} x \\theta^{6} x \\\\ y(0) &=-36 \\\\ -36 &=-6 C_{1}+C_{2} \\\\ -36 &=-18+C_{2} \\\\ C_{2} &=-18 \\\\ \\therefore \\quad \\quad y &=3 e^{-6 x}-18 x \\mathrm{e}^{-6 x} \\\\ y &=(3-18 x) e^{-6 x} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2016:q27-s3": {
       "question_uid": "pp:ec:2016:q27-s3",
-      "exam_uid": "ec:2016:set3:q27",
+      "exam_uid": "ec:2016:set3:main:q27",
       "title": "GATE EC 2016 | Set 3 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1140,15 +1221,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\\left[\\begin{array}{c}4 \\\\ 3 \\\\ -3\\end{array}\\right] &=a\\left[\\begin{array}{l}1 \\\\ 0 \\\\ 2\\end{array}\\right]+b\\left[\\begin{array}{l}0 \\\\ 1 \\\\ 0\\end{array}\\right]+c\\left[\\begin{array}{c}-2 \\\\ 0 \\\\ 1\\end{array}\\right] \\\\ a-2 c &=4 \\\\ b &=3 \\\\ 2 a+c &=-3 \\\\ \\text{from here } a &=-\\frac{2}{5} \\\\ b&=3 \\\\ c&=-\\frac{11}{5} \\\\ u&=-\\frac{2}{5} e_{1}+3 e_{2}-\\frac{11}{5} e_{3} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2016:q28-s3": {
       "question_uid": "pp:ec:2016:q28-s3",
-      "exam_uid": "ec:2016:set3:q28",
+      "exam_uid": "ec:2016:set3:main:q28",
       "title": "GATE EC 2016 | Set 3 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1180,7 +1264,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/ec/2016/ec-2016-863afe1d08.webp\" />\n\n$$\\begin{aligned} \\text { Volume } &=\\iiint d z d x d y=\\iint z d y d \\\\ &=\\int_{0}^{32 } \\int_{0}^{/ 3 x}(6-x-y) d y d x\\\\ &=\\left.\\int_{0}^{3}\\left(6 y-x y-\\frac{y^{2}}{2}\\right)\\right|_{0} ^{2 / 3 x} d x \\\\ &=\\int_{0}^{3}\\left(4 x-\\frac{8}{9} x^{2}\\right) d x \\\\ &=\\left.\\left[4 \\frac{x^{2}}{2}-\\frac{8}{9} \\cdot \\frac{x^{3}}{3}\\right)\\right|_{0} ^{3} \\\\ &=\\left.\\left[2 x^{2}-\\frac{8}{9}\\left(\\frac{x^{3}}{3}\\right)\\right]\\right|_{0}^{3} \\\\ &=18-8=10 \\end{aligned}$$",
         "images": [
           "/question-images/ec/2016/ec-2016-863afe1d08.webp"
@@ -1189,8 +1273,11 @@
     },
     "pp:ec:2016:q29-s3": {
       "question_uid": "pp:ec:2016:q29-s3",
-      "exam_uid": "ec:2016:set3:q29",
+      "exam_uid": "ec:2016:set3:main:q29",
       "title": "GATE EC 2016 | Set 3 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1224,15 +1311,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Complex Analysis",
+        "concept": "Engineering Mathematics - Complex Analysis",
         "markdown": "$$\\begin{aligned} (i) \\quad\\quad Z_{0}&=2 -lies inside C \\\\ \\text { So, } \\text{Res}(z)&=\\lim _{z \\rightarrow 2}(z-2) \\cdot \\frac{e^{z}}{z-2} \\\\ &=e^{2}=7.39 \\\\ \\frac{1}{2 \\pi i} \\int \\frac{e^{z}}{z-2} d z &=2 \\pi i \\cdot \\frac{1}{2 \\pi i}(7.39)=7.39 \\\\ (ii)\\quad \\quad Z_{0}&=-2\\text{ lies out side C then} \\\\ \\text{Res}(z)&=0 \\\\ \\text{So, }\\int_{c} \\frac{e^{z}}{z-2} d z&=2 \\pi i \\frac{1}{2 \\pi i}(0)=0 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2016:q30-s3": {
       "question_uid": "pp:ec:2016:q30-s3",
-      "exam_uid": "ec:2016:set3:q30",
+      "exam_uid": "ec:2016:set3:main:q30",
       "title": "GATE EC 2016 | Set 3 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1275,8 +1365,11 @@
     },
     "pp:ec:2016:q31-s3": {
       "question_uid": "pp:ec:2016:q31-s3",
-      "exam_uid": "ec:2016:set3:q31",
+      "exam_uid": "ec:2016:set3:main:q31",
       "title": "GATE EC 2016 | Set 3 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1317,8 +1410,11 @@
     },
     "pp:ec:2016:q32-s3": {
       "question_uid": "pp:ec:2016:q32-s3",
-      "exam_uid": "ec:2016:set3:q32",
+      "exam_uid": "ec:2016:set3:main:q32",
       "title": "GATE EC 2016 | Set 3 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1360,8 +1456,11 @@
     },
     "pp:ec:2016:q33-s3": {
       "question_uid": "pp:ec:2016:q33-s3",
-      "exam_uid": "ec:2016:set3:q33",
+      "exam_uid": "ec:2016:set3:main:q33",
       "title": "GATE EC 2016 | Set 3 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1403,8 +1502,11 @@
     },
     "pp:ec:2016:q34-s3": {
       "question_uid": "pp:ec:2016:q34-s3",
-      "exam_uid": "ec:2016:set3:q34",
+      "exam_uid": "ec:2016:set3:main:q34",
       "title": "GATE EC 2016 | Set 3 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1448,8 +1550,11 @@
     },
     "pp:ec:2016:q35-s3": {
       "question_uid": "pp:ec:2016:q35-s3",
-      "exam_uid": "ec:2016:set3:q35",
+      "exam_uid": "ec:2016:set3:main:q35",
       "title": "GATE EC 2016 | Set 3 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1488,8 +1593,11 @@
     },
     "pp:ec:2016:q36-s3": {
       "question_uid": "pp:ec:2016:q36-s3",
-      "exam_uid": "ec:2016:set3:q36",
+      "exam_uid": "ec:2016:set3:main:q36",
       "title": "GATE EC 2016 | Set 3 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1532,8 +1640,11 @@
     },
     "pp:ec:2016:q37-s3": {
       "question_uid": "pp:ec:2016:q37-s3",
-      "exam_uid": "ec:2016:set3:q37",
+      "exam_uid": "ec:2016:set3:main:q37",
       "title": "GATE EC 2016 | Set 3 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1572,8 +1683,11 @@
     },
     "pp:ec:2016:q38-s3": {
       "question_uid": "pp:ec:2016:q38-s3",
-      "exam_uid": "ec:2016:set3:q38",
+      "exam_uid": "ec:2016:set3:main:q38",
       "title": "GATE EC 2016 | Set 3 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1612,8 +1726,11 @@
     },
     "pp:ec:2016:q39-s3": {
       "question_uid": "pp:ec:2016:q39-s3",
-      "exam_uid": "ec:2016:set3:q39",
+      "exam_uid": "ec:2016:set3:main:q39",
       "title": "GATE EC 2016 | Set 3 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1646,12 +1763,18 @@
           "diodes-applications"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EC Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ec:2016:q40-s3": {
       "question_uid": "pp:ec:2016:q40-s3",
-      "exam_uid": "ec:2016:set3:q40",
+      "exam_uid": "ec:2016:set3:main:q40",
       "title": "GATE EC 2016 | Set 3 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1690,8 +1813,11 @@
     },
     "pp:ec:2016:q41-s3": {
       "question_uid": "pp:ec:2016:q41-s3",
-      "exam_uid": "ec:2016:set3:q41",
+      "exam_uid": "ec:2016:set3:main:q41",
       "title": "GATE EC 2016 | Set 3 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1734,8 +1860,11 @@
     },
     "pp:ec:2016:q42-s3": {
       "question_uid": "pp:ec:2016:q42-s3",
-      "exam_uid": "ec:2016:set3:q42",
+      "exam_uid": "ec:2016:set3:main:q42",
       "title": "GATE EC 2016 | Set 3 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1777,8 +1906,11 @@
     },
     "pp:ec:2016:q43-s3": {
       "question_uid": "pp:ec:2016:q43-s3",
-      "exam_uid": "ec:2016:set3:q43",
+      "exam_uid": "ec:2016:set3:main:q43",
       "title": "GATE EC 2016 | Set 3 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1821,8 +1953,11 @@
     },
     "pp:ec:2016:q44-s3": {
       "question_uid": "pp:ec:2016:q44-s3",
-      "exam_uid": "ec:2016:set3:q44",
+      "exam_uid": "ec:2016:set3:main:q44",
       "title": "GATE EC 2016 | Set 3 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -1861,8 +1996,11 @@
     },
     "pp:ec:2016:q45-s3": {
       "question_uid": "pp:ec:2016:q45-s3",
-      "exam_uid": "ec:2016:set3:q45",
+      "exam_uid": "ec:2016:set3:main:q45",
       "title": "GATE EC 2016 | Set 3 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1903,8 +2041,11 @@
     },
     "pp:ec:2016:q46-s3": {
       "question_uid": "pp:ec:2016:q46-s3",
-      "exam_uid": "ec:2016:set3:q46",
+      "exam_uid": "ec:2016:set3:main:q46",
       "title": "GATE EC 2016 | Set 3 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1945,8 +2086,11 @@
     },
     "pp:ec:2016:q47-s3": {
       "question_uid": "pp:ec:2016:q47-s3",
-      "exam_uid": "ec:2016:set3:q47",
+      "exam_uid": "ec:2016:set3:main:q47",
       "title": "GATE EC 2016 | Set 3 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1979,12 +2123,18 @@
           "state-space-analysis"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EC Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ec:2016:q48-s3": {
       "question_uid": "pp:ec:2016:q48-s3",
-      "exam_uid": "ec:2016:set3:q48",
+      "exam_uid": "ec:2016:set3:main:q48",
       "title": "GATE EC 2016 | Set 3 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -2025,8 +2175,11 @@
     },
     "pp:ec:2016:q49-s3": {
       "question_uid": "pp:ec:2016:q49-s3",
-      "exam_uid": "ec:2016:set3:q49",
+      "exam_uid": "ec:2016:set3:main:q49",
       "title": "GATE EC 2016 | Set 3 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -2067,8 +2220,11 @@
     },
     "pp:ec:2016:q50-s3": {
       "question_uid": "pp:ec:2016:q50-s3",
-      "exam_uid": "ec:2016:set3:q50",
+      "exam_uid": "ec:2016:set3:main:q50",
       "title": "GATE EC 2016 | Set 3 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -2107,8 +2263,11 @@
     },
     "pp:ec:2016:q51-s3": {
       "question_uid": "pp:ec:2016:q51-s3",
-      "exam_uid": "ec:2016:set3:q51",
+      "exam_uid": "ec:2016:set3:main:q51",
       "title": "GATE EC 2016 | Set 3 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -2147,8 +2306,11 @@
     },
     "pp:ec:2016:q52-s3": {
       "question_uid": "pp:ec:2016:q52-s3",
-      "exam_uid": "ec:2016:set3:q52",
+      "exam_uid": "ec:2016:set3:main:q52",
       "title": "GATE EC 2016 | Set 3 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -2187,8 +2349,11 @@
     },
     "pp:ec:2016:q53-s3": {
       "question_uid": "pp:ec:2016:q53-s3",
-      "exam_uid": "ec:2016:set3:q53",
+      "exam_uid": "ec:2016:set3:main:q53",
       "title": "GATE EC 2016 | Set 3 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,
@@ -2229,8 +2394,11 @@
     },
     "pp:ec:2016:q54-s3": {
       "question_uid": "pp:ec:2016:q54-s3",
-      "exam_uid": "ec:2016:set3:q54",
+      "exam_uid": "ec:2016:set3:main:q54",
       "title": "GATE EC 2016 | Set 3 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "NAT",
       "marks": 2,
@@ -2269,8 +2437,11 @@
     },
     "pp:ec:2016:q55-s3": {
       "question_uid": "pp:ec:2016:q55-s3",
-      "exam_uid": "ec:2016:set3:q55",
+      "exam_uid": "ec:2016:set3:main:q55",
       "title": "GATE EC 2016 | Set 3 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateec-2016-set3",
       "type": "MCQ",
       "marks": 2,

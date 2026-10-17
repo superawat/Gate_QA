@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.800Z",
+  "generatedAt": "2026-10-17T21:30:25.527Z",
   "shardKey": "ce-2003-s1",
   "yearSetKey": "ce-2003-s1",
   "yearSetIdentity": "ce:2003:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ce:2003:q1": {
       "question_uid": "pp:ce:2003:q1",
-      "exam_uid": "ce:2003:set1:q1",
+      "exam_uid": "ce:2003:set1:main:q1",
       "title": "GATE CE 2003 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -49,15 +52,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Consider first $3\\times 3$ minors, since maximum possible rank is 3\n\n$$\\begin{aligned} \\begin{vmatrix} 4 & 2 &1 \\\\ 6 & 3 & 4\\\\ 2 & 1 & 0 \\end{vmatrix}&=0 \\\\  \\begin{vmatrix} 2 & 1 &3 \\\\ 3 & 4& 7\\\\ 1 & 0& 1 \\end{vmatrix}&=0 \\\\  \\begin{vmatrix} 4 & 1 & 3\\\\ 6 & 4 & 7\\\\ 2 & 0 & 1 \\end{vmatrix}&=0\\\\ \\begin{vmatrix} 4 & 2 &3 \\\\ 6 & 3 & 7\\\\ 2 & 1 & 1 \\end{vmatrix}&=0 \\end{aligned}$$\n\nSince all $3\\times 3$\n\nminors are zero, now try $2\\times 2$ minors.\n\n$$\\begin{aligned} \\begin{vmatrix} 4 &2 \\\\ 6 & 3 \\end{vmatrix}&=0 \\\\  \\begin{vmatrix} 2 &1 \\\\ 3 & 4 \\end{vmatrix}&=8-3=5\\neq 0 \\\\ \\therefore\\;\\; \\text{rank }&=2 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ce:2003:q2": {
       "question_uid": "pp:ce:2003:q2",
-      "exam_uid": "ce:2003:set1:q2",
+      "exam_uid": "ce:2003:set1:main:q2",
       "title": "GATE CE 2003 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -94,15 +100,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Total number of screws = 10\n\nNumber of defective screws = 3\n\nNumber of non-defective screws = $10 - 3 = 7$\n\nProbability of selecting a non-defective screw in one draw:\n\n$P(\\text{non-defective}) = \\frac{7}{10}$\n\nSince the screws are drawn with replacement, the two events are independent. So, the probability that both screws drawn are non-defective is:\n\n$P(\\text{both non-defective}) = \\left(\\frac{7}{10}\\right)^2 = \\frac{49}{100} = 0.49$\n\nHence, the required probability is 49%.",
         "images": []
       }
     },
     "pp:ce:2003:q3": {
       "question_uid": "pp:ce:2003:q3",
-      "exam_uid": "ce:2003:set1:q3",
+      "exam_uid": "ce:2003:set1:main:q3",
       "title": "GATE CE 2003 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -139,15 +148,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Given, $$\\begin{aligned} P\\left ( 3,-2,-1 \\right ) &\\\\   Q\\left ( 1,3,4 \\right ) &\\\\   R\\left ( 2,1,-2 \\right ) &\\\\   O\\left ( 0,0,0 \\right )&\\\\ \\text{Equation of plane OQR is,}&\\\\ \\begin{vmatrix} x-x_{1} & y-y_{1} & z-z_{1}\\\\ x_{2}-x_{1} & y_{2}-y_{1} & z_{2}-z_{1}\\\\ x_{3}-x_{1} & y_{3}-y_{1} & z_{3}-z_{1} \\end{vmatrix}&=0 \\\\ \\begin{vmatrix} x-0 & y-0 & z-0\\\\ 1 & 3 & 4\\\\ 2 & 1 & -2 \\end{vmatrix}&=0\\\\ \\text{i.e., }2x-2y+z&=0 \\end{aligned}$$\n\nNow $\\perp$\n\ndistance of $\\left ( x_{1},\\: y_{1},\\: z_{1} \\right )$ from $ax + by + cz + d=0$ is given by,\n\n$\\left | \\frac{ax_{1}+by_{1}+cz_{1}+d}{\\sqrt{a^{2}+b^{2}+c^{2}}} \\right |$\n\nTherefore, $\\perp$\n\ndistance of (3, -2, 1) from plane $2x-2y+z=0$ is given by,\n\n$\\left | \\frac{2\\times 3-2\\times \\left ( -2 \\right )+\\left ( -1 \\right )}{\\sqrt{2^{2}+\\left ( -2 \\right )^{2}+1^{2}}} \\right |=3$",
         "images": []
       }
     },
     "pp:ce:2003:q4": {
       "question_uid": "pp:ce:2003:q4",
-      "exam_uid": "ce:2003:set1:q4",
+      "exam_uid": "ce:2003:set1:main:q4",
       "title": "GATE CE 2003 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -191,8 +203,11 @@
     },
     "pp:ce:2003:q5": {
       "question_uid": "pp:ce:2003:q5",
-      "exam_uid": "ce:2003:set1:q5",
+      "exam_uid": "ce:2003:set1:main:q5",
       "title": "GATE CE 2003 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -236,8 +251,11 @@
     },
     "pp:ce:2003:q6": {
       "question_uid": "pp:ce:2003:q6",
-      "exam_uid": "ce:2003:set1:q6",
+      "exam_uid": "ce:2003:set1:main:q6",
       "title": "GATE CE 2003 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -281,8 +299,11 @@
     },
     "pp:ce:2003:q7": {
       "question_uid": "pp:ce:2003:q7",
-      "exam_uid": "ce:2003:set1:q7",
+      "exam_uid": "ce:2003:set1:main:q7",
       "title": "GATE CE 2003 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -326,8 +347,11 @@
     },
     "pp:ce:2003:q8": {
       "question_uid": "pp:ce:2003:q8",
-      "exam_uid": "ce:2003:set1:q8",
+      "exam_uid": "ce:2003:set1:main:q8",
       "title": "GATE CE 2003 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -341,10 +365,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "C",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -363,12 +384,18 @@
           "working-stress-and-limit-state-method"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q9": {
       "question_uid": "pp:ce:2003:q9",
-      "exam_uid": "ce:2003:set1:q9",
+      "exam_uid": "ce:2003:set1:main:q9",
       "title": "GATE CE 2003 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -382,10 +409,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "B",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -404,12 +428,18 @@
           "compression-member"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q10": {
       "question_uid": "pp:ce:2003:q10",
-      "exam_uid": "ce:2003:set1:q10",
+      "exam_uid": "ce:2003:set1:main:q10",
       "title": "GATE CE 2003 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -423,10 +453,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -445,12 +472,18 @@
           "plate-griders-and-industrial-roofs"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q11": {
       "question_uid": "pp:ce:2003:q11",
-      "exam_uid": "ce:2003:set1:q11",
+      "exam_uid": "ce:2003:set1:main:q11",
       "title": "GATE CE 2003 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -494,8 +527,11 @@
     },
     "pp:ce:2003:q12": {
       "question_uid": "pp:ce:2003:q12",
-      "exam_uid": "ce:2003:set1:q12",
+      "exam_uid": "ce:2003:set1:main:q12",
       "title": "GATE CE 2003 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -539,8 +575,11 @@
     },
     "pp:ce:2003:q13": {
       "question_uid": "pp:ce:2003:q13",
-      "exam_uid": "ce:2003:set1:q13",
+      "exam_uid": "ce:2003:set1:main:q13",
       "title": "GATE CE 2003 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -584,8 +623,11 @@
     },
     "pp:ce:2003:q14": {
       "question_uid": "pp:ce:2003:q14",
-      "exam_uid": "ce:2003:set1:q14",
+      "exam_uid": "ce:2003:set1:main:q14",
       "title": "GATE CE 2003 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -629,8 +671,11 @@
     },
     "pp:ce:2003:q15": {
       "question_uid": "pp:ce:2003:q15",
-      "exam_uid": "ce:2003:set1:q15",
+      "exam_uid": "ce:2003:set1:main:q15",
       "title": "GATE CE 2003 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -674,8 +719,11 @@
     },
     "pp:ce:2003:q16": {
       "question_uid": "pp:ce:2003:q16",
-      "exam_uid": "ce:2003:set1:q16",
+      "exam_uid": "ce:2003:set1:main:q16",
       "title": "GATE CE 2003 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -719,8 +767,11 @@
     },
     "pp:ce:2003:q17": {
       "question_uid": "pp:ce:2003:q17",
-      "exam_uid": "ce:2003:set1:q17",
+      "exam_uid": "ce:2003:set1:main:q17",
       "title": "GATE CE 2003 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -764,8 +815,11 @@
     },
     "pp:ce:2003:q18": {
       "question_uid": "pp:ce:2003:q18",
-      "exam_uid": "ce:2003:set1:q18",
+      "exam_uid": "ce:2003:set1:main:q18",
       "title": "GATE CE 2003 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -809,8 +863,11 @@
     },
     "pp:ce:2003:q19": {
       "question_uid": "pp:ce:2003:q19",
-      "exam_uid": "ce:2003:set1:q19",
+      "exam_uid": "ce:2003:set1:main:q19",
       "title": "GATE CE 2003 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -824,10 +881,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "D",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -846,12 +900,18 @@
           "boundary-layer-theory-drag-and-lift"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q20": {
       "question_uid": "pp:ce:2003:q20",
-      "exam_uid": "ce:2003:set1:q20",
+      "exam_uid": "ce:2003:set1:main:q20",
       "title": "GATE CE 2003 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -895,8 +955,11 @@
     },
     "pp:ce:2003:q21": {
       "question_uid": "pp:ce:2003:q21",
-      "exam_uid": "ce:2003:set1:q21",
+      "exam_uid": "ce:2003:set1:main:q21",
       "title": "GATE CE 2003 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -940,8 +1003,11 @@
     },
     "pp:ce:2003:q22": {
       "question_uid": "pp:ce:2003:q22",
-      "exam_uid": "ce:2003:set1:q22",
+      "exam_uid": "ce:2003:set1:main:q22",
       "title": "GATE CE 2003 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -985,8 +1051,11 @@
     },
     "pp:ce:2003:q23": {
       "question_uid": "pp:ce:2003:q23",
-      "exam_uid": "ce:2003:set1:q23",
+      "exam_uid": "ce:2003:set1:main:q23",
       "title": "GATE CE 2003 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1030,8 +1099,11 @@
     },
     "pp:ce:2003:q24": {
       "question_uid": "pp:ce:2003:q24",
-      "exam_uid": "ce:2003:set1:q24",
+      "exam_uid": "ce:2003:set1:main:q24",
       "title": "GATE CE 2003 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1075,8 +1147,11 @@
     },
     "pp:ce:2003:q25": {
       "question_uid": "pp:ce:2003:q25",
-      "exam_uid": "ce:2003:set1:q25",
+      "exam_uid": "ce:2003:set1:main:q25",
       "title": "GATE CE 2003 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1122,8 +1197,11 @@
     },
     "pp:ce:2003:q26": {
       "question_uid": "pp:ce:2003:q26",
-      "exam_uid": "ce:2003:set1:q26",
+      "exam_uid": "ce:2003:set1:main:q26",
       "title": "GATE CE 2003 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1167,8 +1245,11 @@
     },
     "pp:ce:2003:q27": {
       "question_uid": "pp:ce:2003:q27",
-      "exam_uid": "ce:2003:set1:q27",
+      "exam_uid": "ce:2003:set1:main:q27",
       "title": "GATE CE 2003 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1212,8 +1293,11 @@
     },
     "pp:ce:2003:q28": {
       "question_uid": "pp:ce:2003:q28",
-      "exam_uid": "ce:2003:set1:q28",
+      "exam_uid": "ce:2003:set1:main:q28",
       "title": "GATE CE 2003 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1257,8 +1341,11 @@
     },
     "pp:ce:2003:q29": {
       "question_uid": "pp:ce:2003:q29",
-      "exam_uid": "ce:2003:set1:q29",
+      "exam_uid": "ce:2003:set1:main:q29",
       "title": "GATE CE 2003 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1302,8 +1389,11 @@
     },
     "pp:ce:2003:q30": {
       "question_uid": "pp:ce:2003:q30",
-      "exam_uid": "ce:2003:set1:q30",
+      "exam_uid": "ce:2003:set1:main:q30",
       "title": "GATE CE 2003 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1347,8 +1437,11 @@
     },
     "pp:ce:2003:q31": {
       "question_uid": "pp:ce:2003:q31",
-      "exam_uid": "ce:2003:set1:q31",
+      "exam_uid": "ce:2003:set1:main:q31",
       "title": "GATE CE 2003 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1385,15 +1478,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Partial Differential Equation",
+        "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "$$\\begin{aligned}  L\\left [ f\\left ( t \\right ) \\right ]&=\\int_{0}^{\\infty }e^{-st}f\\left ( t \\right )dt \\\\ \\therefore \\;\\; L\\left [ \\sin \\left ( at \\right ) \\right ]&=\\int_{0}^{\\infty }e^{-st}\\sin \\left ( at \\right )dt \\\\ &=    \\frac{a}{s^{2}+a^{2}} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ce:2003:q32": {
       "question_uid": "pp:ce:2003:q32",
-      "exam_uid": "ce:2003:set1:q32",
+      "exam_uid": "ce:2003:set1:main:q32",
       "title": "GATE CE 2003 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1430,15 +1526,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Partial Differential Equation",
+        "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "Since given function is symmetric and even, its Fourier series contain only cosine terms.\n\n$$\\begin{aligned} a_{0}&=\\frac{2}{c}\\int_{0}^{c}f\\left ( x \\right )dx\\\\ \\text{and }  a_{n}&=\\frac{2}{c}\\int_{0}^{c}f\\left ( x \\right )\\cos \\frac{n\\pi x}{c}dx\\\\ &\\text{Using above result and using,}\\\\  f\\left ( x \\right )&=1-\\frac{2x}{\\pi } \\text{ we get}\\\\  a_{0}&=\\frac{2}{\\pi }\\int_{0}^{\\pi }\\left ( 1-\\frac{2x}{\\pi } \\right )dx \\\\ &=\\frac{2}{\\pi }\\left ( x-\\frac{x^{2}}{\\pi } \\right )_{0}^{\\pi }=0 \\\\ \\text{and  } a_{n}&=\\frac{2}{\\pi }\\int_{0}^{\\pi }\\left ( 1-\\frac{2x}{\\pi } \\right )\\cos nx\\: dx \\\\   &=\\frac{2}{\\pi }\\left [ \\left ( 1-\\frac{2x}{\\pi } \\right )\\frac{\\sin nx}{n}-\\left ( -\\frac{2}{\\pi } \\right )\\left ( -\\frac{\\cos nx}{n^{2}} \\right ) \\right ]_{0}^{\\pi } \\\\   &=\\frac{2}{\\pi }\\left [ -\\frac{2\\cos n\\pi }{\\pi n^{2}}+\\frac{2}{\\pi n^{2}} \\right ] \\\\   &=\\frac{4}{n^{2}\\pi ^{2}}\\left [ 1-\\cos n\\pi \\right ]\\end{aligned}$$",
         "images": []
       }
     },
     "pp:ce:2003:q33": {
       "question_uid": "pp:ce:2003:q33",
-      "exam_uid": "ce:2003:set1:q33",
+      "exam_uid": "ce:2003:set1:main:q33",
       "title": "GATE CE 2003 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1482,8 +1581,11 @@
     },
     "pp:ce:2003:q34": {
       "question_uid": "pp:ce:2003:q34",
-      "exam_uid": "ce:2003:set1:q34",
+      "exam_uid": "ce:2003:set1:main:q34",
       "title": "GATE CE 2003 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1529,8 +1631,11 @@
     },
     "pp:ce:2003:q35": {
       "question_uid": "pp:ce:2003:q35",
-      "exam_uid": "ce:2003:set1:q35",
+      "exam_uid": "ce:2003:set1:main:q35",
       "title": "GATE CE 2003 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1574,8 +1679,11 @@
     },
     "pp:ce:2003:q36": {
       "question_uid": "pp:ce:2003:q36",
-      "exam_uid": "ce:2003:set1:q36",
+      "exam_uid": "ce:2003:set1:main:q36",
       "title": "GATE CE 2003 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1619,8 +1727,11 @@
     },
     "pp:ce:2003:q37": {
       "question_uid": "pp:ce:2003:q37",
-      "exam_uid": "ce:2003:set1:q37",
+      "exam_uid": "ce:2003:set1:main:q37",
       "title": "GATE CE 2003 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1664,8 +1775,11 @@
     },
     "pp:ce:2003:q38": {
       "question_uid": "pp:ce:2003:q38",
-      "exam_uid": "ce:2003:set1:q38",
+      "exam_uid": "ce:2003:set1:main:q38",
       "title": "GATE CE 2003 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1712,8 +1826,11 @@
     },
     "pp:ce:2003:q39": {
       "question_uid": "pp:ce:2003:q39",
-      "exam_uid": "ce:2003:set1:q39",
+      "exam_uid": "ce:2003:set1:main:q39",
       "title": "GATE CE 2003 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1760,8 +1877,11 @@
     },
     "pp:ce:2003:q40": {
       "question_uid": "pp:ce:2003:q40",
-      "exam_uid": "ce:2003:set1:q40",
+      "exam_uid": "ce:2003:set1:main:q40",
       "title": "GATE CE 2003 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1805,8 +1925,11 @@
     },
     "pp:ce:2003:q41": {
       "question_uid": "pp:ce:2003:q41",
-      "exam_uid": "ce:2003:set1:q41",
+      "exam_uid": "ce:2003:set1:main:q41",
       "title": "GATE CE 2003 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1820,10 +1943,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -1842,12 +1962,18 @@
           "working-stress-and-limit-state-method"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q42": {
       "question_uid": "pp:ce:2003:q42",
-      "exam_uid": "ce:2003:set1:q42",
+      "exam_uid": "ce:2003:set1:main:q42",
       "title": "GATE CE 2003 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1861,10 +1987,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -1883,12 +2006,18 @@
           "beams"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q43": {
       "question_uid": "pp:ce:2003:q43",
-      "exam_uid": "ce:2003:set1:q43",
+      "exam_uid": "ce:2003:set1:main:q43",
       "title": "GATE CE 2003 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1932,8 +2061,11 @@
     },
     "pp:ce:2003:q44": {
       "question_uid": "pp:ce:2003:q44",
-      "exam_uid": "ce:2003:set1:q44",
+      "exam_uid": "ce:2003:set1:main:q44",
       "title": "GATE CE 2003 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1947,10 +2079,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "D",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -1969,12 +2098,18 @@
           "shear-force-and-bending-moment"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q45": {
       "question_uid": "pp:ce:2003:q45",
-      "exam_uid": "ce:2003:set1:q45",
+      "exam_uid": "ce:2003:set1:main:q45",
       "title": "GATE CE 2003 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2018,8 +2153,11 @@
     },
     "pp:ce:2003:q46": {
       "question_uid": "pp:ce:2003:q46",
-      "exam_uid": "ce:2003:set1:q46",
+      "exam_uid": "ce:2003:set1:main:q46",
       "title": "GATE CE 2003 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2065,8 +2203,11 @@
     },
     "pp:ce:2003:q47": {
       "question_uid": "pp:ce:2003:q47",
-      "exam_uid": "ce:2003:set1:q47",
+      "exam_uid": "ce:2003:set1:main:q47",
       "title": "GATE CE 2003 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2110,8 +2251,11 @@
     },
     "pp:ce:2003:q48": {
       "question_uid": "pp:ce:2003:q48",
-      "exam_uid": "ce:2003:set1:q48",
+      "exam_uid": "ce:2003:set1:main:q48",
       "title": "GATE CE 2003 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2155,8 +2299,11 @@
     },
     "pp:ce:2003:q49": {
       "question_uid": "pp:ce:2003:q49",
-      "exam_uid": "ce:2003:set1:q49",
+      "exam_uid": "ce:2003:set1:main:q49",
       "title": "GATE CE 2003 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2202,8 +2349,11 @@
     },
     "pp:ce:2003:q50": {
       "question_uid": "pp:ce:2003:q50",
-      "exam_uid": "ce:2003:set1:q50",
+      "exam_uid": "ce:2003:set1:main:q50",
       "title": "GATE CE 2003 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2217,10 +2367,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -2239,12 +2386,18 @@
           "soil-stabilization-and-soil-exploration"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q51": {
       "question_uid": "pp:ce:2003:q51",
-      "exam_uid": "ce:2003:set1:q51",
+      "exam_uid": "ce:2003:set1:main:q51",
       "title": "GATE CE 2003 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2258,10 +2411,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "D",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -2280,12 +2430,18 @@
           "deep-foundation"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q52": {
       "question_uid": "pp:ce:2003:q52",
-      "exam_uid": "ce:2003:set1:q52",
+      "exam_uid": "ce:2003:set1:main:q52",
       "title": "GATE CE 2003 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2329,8 +2485,11 @@
     },
     "pp:ce:2003:q53": {
       "question_uid": "pp:ce:2003:q53",
-      "exam_uid": "ce:2003:set1:q53",
+      "exam_uid": "ce:2003:set1:main:q53",
       "title": "GATE CE 2003 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2374,8 +2533,11 @@
     },
     "pp:ce:2003:q54": {
       "question_uid": "pp:ce:2003:q54",
-      "exam_uid": "ce:2003:set1:q54",
+      "exam_uid": "ce:2003:set1:main:q54",
       "title": "GATE CE 2003 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2421,8 +2583,11 @@
     },
     "pp:ce:2003:q55": {
       "question_uid": "pp:ce:2003:q55",
-      "exam_uid": "ce:2003:set1:q55",
+      "exam_uid": "ce:2003:set1:main:q55",
       "title": "GATE CE 2003 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2468,8 +2633,11 @@
     },
     "pp:ce:2003:q56": {
       "question_uid": "pp:ce:2003:q56",
-      "exam_uid": "ce:2003:set1:q56",
+      "exam_uid": "ce:2003:set1:main:q56",
       "title": "GATE CE 2003 | Set 1 | Question: 56",
+      "section": "main",
+      "question_number": 56,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2513,8 +2681,11 @@
     },
     "pp:ce:2003:q57": {
       "question_uid": "pp:ce:2003:q57",
-      "exam_uid": "ce:2003:set1:q57",
+      "exam_uid": "ce:2003:set1:main:q57",
       "title": "GATE CE 2003 | Set 1 | Question: 57",
+      "section": "main",
+      "question_number": 57,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2560,8 +2731,11 @@
     },
     "pp:ce:2003:q58": {
       "question_uid": "pp:ce:2003:q58",
-      "exam_uid": "ce:2003:set1:q58",
+      "exam_uid": "ce:2003:set1:main:q58",
       "title": "GATE CE 2003 | Set 1 | Question: 58",
+      "section": "main",
+      "question_number": 58,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2605,8 +2779,11 @@
     },
     "pp:ce:2003:q59": {
       "question_uid": "pp:ce:2003:q59",
-      "exam_uid": "ce:2003:set1:q59",
+      "exam_uid": "ce:2003:set1:main:q59",
       "title": "GATE CE 2003 | Set 1 | Question: 59",
+      "section": "main",
+      "question_number": 59,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2620,10 +2797,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "B",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -2642,12 +2816,18 @@
           "precipitation-and-general-aspects-of-hydrology"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q60": {
       "question_uid": "pp:ce:2003:q60",
-      "exam_uid": "ce:2003:set1:q60",
+      "exam_uid": "ce:2003:set1:main:q60",
       "title": "GATE CE 2003 | Set 1 | Question: 60",
+      "section": "main",
+      "question_number": 60,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2691,8 +2871,11 @@
     },
     "pp:ce:2003:q61": {
       "question_uid": "pp:ce:2003:q61",
-      "exam_uid": "ce:2003:set1:q61",
+      "exam_uid": "ce:2003:set1:main:q61",
       "title": "GATE CE 2003 | Set 1 | Question: 61",
+      "section": "main",
+      "question_number": 61,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2736,8 +2919,11 @@
     },
     "pp:ce:2003:q62": {
       "question_uid": "pp:ce:2003:q62",
-      "exam_uid": "ce:2003:set1:q62",
+      "exam_uid": "ce:2003:set1:main:q62",
       "title": "GATE CE 2003 | Set 1 | Question: 62",
+      "section": "main",
+      "question_number": 62,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2781,8 +2967,11 @@
     },
     "pp:ce:2003:q63": {
       "question_uid": "pp:ce:2003:q63",
-      "exam_uid": "ce:2003:set1:q63",
+      "exam_uid": "ce:2003:set1:main:q63",
       "title": "GATE CE 2003 | Set 1 | Question: 63",
+      "section": "main",
+      "question_number": 63,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2828,8 +3017,11 @@
     },
     "pp:ce:2003:q64": {
       "question_uid": "pp:ce:2003:q64",
-      "exam_uid": "ce:2003:set1:q64",
+      "exam_uid": "ce:2003:set1:main:q64",
       "title": "GATE CE 2003 | Set 1 | Question: 64",
+      "section": "main",
+      "question_number": 64,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2843,10 +3035,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "D",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -2865,12 +3054,18 @@
           "water-treatment"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q65": {
       "question_uid": "pp:ce:2003:q65",
-      "exam_uid": "ce:2003:set1:q65",
+      "exam_uid": "ce:2003:set1:main:q65",
       "title": "GATE CE 2003 | Set 1 | Question: 65",
+      "section": "main",
+      "question_number": 65,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2914,8 +3109,11 @@
     },
     "pp:ce:2003:q66": {
       "question_uid": "pp:ce:2003:q66",
-      "exam_uid": "ce:2003:set1:q66",
+      "exam_uid": "ce:2003:set1:main:q66",
       "title": "GATE CE 2003 | Set 1 | Question: 66",
+      "section": "main",
+      "question_number": 66,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2959,8 +3157,11 @@
     },
     "pp:ce:2003:q67": {
       "question_uid": "pp:ce:2003:q67",
-      "exam_uid": "ce:2003:set1:q67",
+      "exam_uid": "ce:2003:set1:main:q67",
       "title": "GATE CE 2003 | Set 1 | Question: 67",
+      "section": "main",
+      "question_number": 67,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3004,8 +3205,11 @@
     },
     "pp:ce:2003:q68": {
       "question_uid": "pp:ce:2003:q68",
-      "exam_uid": "ce:2003:set1:q68",
+      "exam_uid": "ce:2003:set1:main:q68",
       "title": "GATE CE 2003 | Set 1 | Question: 68",
+      "section": "main",
+      "question_number": 68,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3049,8 +3253,11 @@
     },
     "pp:ce:2003:q69": {
       "question_uid": "pp:ce:2003:q69",
-      "exam_uid": "ce:2003:set1:q69",
+      "exam_uid": "ce:2003:set1:main:q69",
       "title": "GATE CE 2003 | Set 1 | Question: 69",
+      "section": "main",
+      "question_number": 69,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3064,10 +3271,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "B",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -3086,12 +3290,18 @@
           "highway-materials"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q70": {
       "question_uid": "pp:ce:2003:q70",
-      "exam_uid": "ce:2003:set1:q70",
+      "exam_uid": "ce:2003:set1:main:q70",
       "title": "GATE CE 2003 | Set 1 | Question: 70",
+      "section": "main",
+      "question_number": 70,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3138,8 +3348,11 @@
     },
     "pp:ce:2003:q71": {
       "question_uid": "pp:ce:2003:q71",
-      "exam_uid": "ce:2003:set1:q71",
+      "exam_uid": "ce:2003:set1:main:q71",
       "title": "GATE CE 2003 | Set 1 | Question: 71",
+      "section": "main",
+      "question_number": 71,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3185,8 +3398,11 @@
     },
     "pp:ce:2003:q72": {
       "question_uid": "pp:ce:2003:q72",
-      "exam_uid": "ce:2003:set1:q72",
+      "exam_uid": "ce:2003:set1:main:q72",
       "title": "GATE CE 2003 | Set 1 | Question: 72",
+      "section": "main",
+      "question_number": 72,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3232,8 +3448,11 @@
     },
     "pp:ce:2003:q73": {
       "question_uid": "pp:ce:2003:q73",
-      "exam_uid": "ce:2003:set1:q73",
+      "exam_uid": "ce:2003:set1:main:q73",
       "title": "GATE CE 2003 | Set 1 | Question: 73",
+      "section": "main",
+      "question_number": 73,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3279,8 +3498,11 @@
     },
     "pp:ce:2003:q74": {
       "question_uid": "pp:ce:2003:q74",
-      "exam_uid": "ce:2003:set1:q74",
+      "exam_uid": "ce:2003:set1:main:q74",
       "title": "GATE CE 2003 | Set 1 | Question: 74",
+      "section": "main",
+      "question_number": 74,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3324,8 +3546,11 @@
     },
     "pp:ce:2003:q75": {
       "question_uid": "pp:ce:2003:q75",
-      "exam_uid": "ce:2003:set1:q75",
+      "exam_uid": "ce:2003:set1:main:q75",
       "title": "GATE CE 2003 | Set 1 | Question: 75",
+      "section": "main",
+      "question_number": 75,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3371,8 +3596,11 @@
     },
     "pp:ce:2003:q76": {
       "question_uid": "pp:ce:2003:q76",
-      "exam_uid": "ce:2003:set1:q76",
+      "exam_uid": "ce:2003:set1:main:q76",
       "title": "GATE CE 2003 | Set 1 | Question: 76",
+      "section": "main",
+      "question_number": 76,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3416,8 +3644,11 @@
     },
     "pp:ce:2003:q77": {
       "question_uid": "pp:ce:2003:q77",
-      "exam_uid": "ce:2003:set1:q77",
+      "exam_uid": "ce:2003:set1:main:q77",
       "title": "GATE CE 2003 | Set 1 | Question: 77",
+      "section": "main",
+      "question_number": 77,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3461,8 +3692,11 @@
     },
     "pp:ce:2003:q78": {
       "question_uid": "pp:ce:2003:q78",
-      "exam_uid": "ce:2003:set1:q78",
+      "exam_uid": "ce:2003:set1:main:q78",
       "title": "GATE CE 2003 | Set 1 | Question: 78",
+      "section": "main",
+      "question_number": 78,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3506,8 +3740,11 @@
     },
     "pp:ce:2003:q79": {
       "question_uid": "pp:ce:2003:q79",
-      "exam_uid": "ce:2003:set1:q79",
+      "exam_uid": "ce:2003:set1:main:q79",
       "title": "GATE CE 2003 | Set 1 | Question: 79",
+      "section": "main",
+      "question_number": 79,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3551,8 +3788,11 @@
     },
     "pp:ce:2003:q80": {
       "question_uid": "pp:ce:2003:q80",
-      "exam_uid": "ce:2003:set1:q80",
+      "exam_uid": "ce:2003:set1:main:q80",
       "title": "GATE CE 2003 | Set 1 | Question: 80",
+      "section": "main",
+      "question_number": 80,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3596,8 +3836,11 @@
     },
     "pp:ce:2003:q81": {
       "question_uid": "pp:ce:2003:q81",
-      "exam_uid": "ce:2003:set1:q81",
+      "exam_uid": "ce:2003:set1:main:q81",
       "title": "GATE CE 2003 | Set 1 | Question: 81",
+      "section": "main",
+      "question_number": 81,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3641,8 +3884,11 @@
     },
     "pp:ce:2003:q82": {
       "question_uid": "pp:ce:2003:q82",
-      "exam_uid": "ce:2003:set1:q82",
+      "exam_uid": "ce:2003:set1:main:q82",
       "title": "GATE CE 2003 | Set 1 | Question: 82",
+      "section": "main",
+      "question_number": 82,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3686,8 +3932,11 @@
     },
     "pp:ce:2003:q83": {
       "question_uid": "pp:ce:2003:q83",
-      "exam_uid": "ce:2003:set1:q83",
+      "exam_uid": "ce:2003:set1:main:q83",
       "title": "GATE CE 2003 | Set 1 | Question: 83",
+      "section": "main",
+      "question_number": 83,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3733,8 +3982,11 @@
     },
     "pp:ce:2003:q84": {
       "question_uid": "pp:ce:2003:q84",
-      "exam_uid": "ce:2003:set1:q84",
+      "exam_uid": "ce:2003:set1:main:q84",
       "title": "GATE CE 2003 | Set 1 | Question: 84",
+      "section": "main",
+      "question_number": 84,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3780,8 +4032,11 @@
     },
     "pp:ce:2003:q85": {
       "question_uid": "pp:ce:2003:q85",
-      "exam_uid": "ce:2003:set1:q85",
+      "exam_uid": "ce:2003:set1:main:q85",
       "title": "GATE CE 2003 | Set 1 | Question: 85",
+      "section": "main",
+      "question_number": 85,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3828,8 +4083,11 @@
     },
     "pp:ce:2003:q86": {
       "question_uid": "pp:ce:2003:q86",
-      "exam_uid": "ce:2003:set1:q86",
+      "exam_uid": "ce:2003:set1:main:q86",
       "title": "GATE CE 2003 | Set 1 | Question: 86",
+      "section": "main",
+      "question_number": 86,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3873,8 +4131,11 @@
     },
     "pp:ce:2003:q87": {
       "question_uid": "pp:ce:2003:q87",
-      "exam_uid": "ce:2003:set1:q87",
+      "exam_uid": "ce:2003:set1:main:q87",
       "title": "GATE CE 2003 | Set 1 | Question: 87",
+      "section": "main",
+      "question_number": 87,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3888,10 +4149,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -3910,12 +4168,18 @@
           "general"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q88": {
       "question_uid": "pp:ce:2003:q88",
-      "exam_uid": "ce:2003:set1:q88",
+      "exam_uid": "ce:2003:set1:main:q88",
       "title": "GATE CE 2003 | Set 1 | Question: 88",
+      "section": "main",
+      "question_number": 88,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3929,10 +4193,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "D",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "ce",
@@ -3951,12 +4212,18 @@
           "general"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "CE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ce:2003:q89": {
       "question_uid": "pp:ce:2003:q89",
-      "exam_uid": "ce:2003:set1:q89",
+      "exam_uid": "ce:2003:set1:main:q89",
       "title": "GATE CE 2003 | Set 1 | Question: 89",
+      "section": "main",
+      "question_number": 89,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -4000,8 +4267,11 @@
     },
     "pp:ce:2003:q90": {
       "question_uid": "pp:ce:2003:q90",
-      "exam_uid": "ce:2003:set1:q90",
+      "exam_uid": "ce:2003:set1:main:q90",
       "title": "GATE CE 2003 | Set 1 | Question: 90",
+      "section": "main",
+      "question_number": 90,
+      "solution_link": null,
       "year": "gatece-2003-set1",
       "type": "MCQ",
       "marks": 1,

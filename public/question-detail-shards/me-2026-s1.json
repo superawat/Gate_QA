@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.749Z",
+  "generatedAt": "2026-10-17T21:30:25.476Z",
   "shardKey": "me-2026-s1",
   "yearSetKey": "me-2026-s1",
   "yearSetIdentity": "me:2026:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2026:q1": {
       "question_uid": "pp:me:2026:q1",
-      "exam_uid": "me:2026:set1:q1",
+      "exam_uid": "me:2026:set1:main:q1",
       "title": "GATE ME 2026 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Domain A is bounded by $x^2 = 4y$ ordinate $x = 2$ and $x$ axis.\n\n<b>Step 1: Find limits of integration</b>\n\nFrom $x^2 = 4y \\Rightarrow y = \\dfrac{x^2}{4}$\n\nFor x: 0 to 2\n\nFor y: 0 to $\\dfrac{x^2}{4}$\n\n<b>Step 2: Set up integral</b>\n\n$\\iint_A y \\, dx \\, dy = \\int_0^2 \\int_0^{x^2/4} y \\, dy \\, dx$\n\n<b>Step 3: Inner integral</b>\n\n$\\int_0^{x^2/4} y \\, dy = \\left[\\dfrac{y^2}{2}\\right]_0^{x^2/4} = \\dfrac{1}{2} \\cdot \\dfrac{x^4}{16} = \\dfrac{x^4}{32}$\n\n<b>Step 4: Outer integral</b>\n\n$\\int_0^2 \\dfrac{x^4}{32} \\, dx = \\dfrac{1}{32} \\left[\\dfrac{x^5}{5}\\right]_0^2 = \\dfrac{1}{32} \\cdot \\dfrac{32}{5} = \\dfrac{1}{5}$",
         "images": []
       }
     },
     "pp:me:2026:q2": {
       "question_uid": "pp:me:2026:q2",
-      "exam_uid": "me:2026:set1:q2",
+      "exam_uid": "me:2026:set1:main:q2",
       "title": "GATE ME 2026 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "<b>Concept: Gradient of a Scalar Function</b>\n\nFor a scalar function $\\varphi$ the gradient $\\nabla\\varphi$ is defined as:\n\n$\\nabla\\varphi = \\dfrac{\\partial\\varphi}{\\partial x}\\hat{i} + \\dfrac{\\partial\\varphi}{\\partial y}\\hat{j} + \\dfrac{\\partial\\varphi}{\\partial z}\\hat{k}$\n\n<b>Key Properties:</b>\n\n(1) $\\nabla\\varphi$ always points in the direction of <b>maximum rate of increase</b> of $\\varphi$.\n\n(2) $\\nabla\\varphi$ is always <b>perpendicular (normal)</b> to the surface of constant $\\varphi$ (i.e. the level surface where $\\varphi = c$).\n\n(3) Its magnitude gives the <b>maximum</b> rate of change (not minimum).\n\n(4) It is not always zero.\n\n<b>Checking Options:</b>\n\n(A) Always perpendicular to surface of constant $\\varphi$ ->  Correct\n\n(B) Always parallel ->  Wrong\n\n(C) Minimum rate of change ->  Wrong (it is maximum)\n\n(D) Always zero ->  Wrong",
         "images": []
       }
     },
     "pp:me:2026:q3": {
       "question_uid": "pp:me:2026:q3",
-      "exam_uid": "me:2026:set1:q3",
+      "exam_uid": "me:2026:set1:main:q3",
       "title": "GATE ME 2026 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<b>Given PDE:</b>\n\n$\\dfrac{\\partial^3\\varphi}{\\partial x^3} + \\dfrac{\\partial^2\\varphi}{\\partial y^2}\\dfrac{\\partial\\varphi}{\\partial x} + \\left(\\dfrac{\\partial^2\\varphi}{\\partial x^2}\\right)^2 + \\dfrac{\\partial\\varphi}{\\partial y} = 0$\n\n<b>Step 1: Find Order (m)</b>\n\nOrder = highest order derivative present in the equation.\n\nHighest derivative = $\\dfrac{\\partial^3\\varphi}{\\partial x^3}$ -> Order = <b>3</b>\n\nSo $m = 3$\n\n<b>Step 2: Find Degree (n)</b>\n\nDegree = power of the highest order derivative after clearing any fractional powers.\n\nThe highest order derivative $\\dfrac{\\partial^3\\varphi}{\\partial x^3}$ appears with power <b>1</b>.\n\nSo $n = 1$\n\n<b>Step 3: Calculate (m - n)</b>\n\n$m - n = 3 - 1 = 2$\n\n<b>Note:</b> The term $\\left(\\dfrac{\\partial^2\\varphi}{\\partial x^2}\\right)^2$ is of order 2 not order 3 so it does not affect the degree of the equation.",
         "images": []
       }
     },
     "pp:me:2026:q4": {
       "question_uid": "pp:me:2026:q4",
-      "exam_uid": "me:2026:set1:q4",
+      "exam_uid": "me:2026:set1:main:q4",
       "title": "GATE ME 2026 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "The Newton-Raphson method is derived from the <b>Taylor series expansion</b> of $f(x)$ about a point $x_n$.\n\n<b>Derivation:</b>\n\nExpand $f(x)$ using Taylor series around $x_n$:\n\n$f(x) = f(x_n) + (x - x_n)f'(x_n) + \\dfrac{(x-x_n)^2}{2!}f''(x_n) + \\cdots$\n\nTruncating after the first derivative term and setting $f(x) = 0$:\n\n$0 = f(x_n) + (x_{n+1} - x_n)f'(x_n)$\n\nSolving for $x_{n+1}$:\n\n$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$\n\nThis is the standard Newton-Raphson iteration formula derived from Taylor series.",
         "images": []
       }
     },
     "pp:me:2026:q5": {
       "question_uid": "pp:me:2026:q5",
-      "exam_uid": "me:2026:set1:q5",
+      "exam_uid": "me:2026:set1:main:q5",
       "title": "GATE ME 2026 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -214,15 +229,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "<b>Given:</b>\n\n$n = \\int_0^4 \\dfrac{dx}{1+x}$\n\n<b>Step 1: Exact solution (n)</b>\n\n$n = \\left[\\ln(1+x)\\right]_0^4 = \\ln 5 - \\ln 1 = \\ln 5 = 1.6094$\n\n<b>Step 2: Trapezoidal Rule with 4 equal subintervals</b>\n\n$h = \\dfrac{4-0}{4} = 1$\n\nPoints: $x_0=0, x_1=1, x_2=2, x_3=3, x_4=4$\n\n$f(x) = \\dfrac{1}{1+x}$\n\n$f(0)=1, \\; f(1)=0.5, \\; f(2)=0.333, \\; f(3)=0.25, \\; f(4)=0.2$\n\n<b>Trapezoidal formula:</b>\n\n$m = \\dfrac{h}{2}\\left[f(x_0) + 2f(x_1) + 2f(x_2) + 2f(x_3) + f(x_4)\\right]$\n\n$m = \\dfrac{1}{2}\\left[1 + 2(0.5) + 2(0.333) + 2(0.25) + 0.2\\right]$\n\n$m = \\dfrac{1}{2}\\left[1 + 1 + 0.667 + 0.5 + 0.2\\right]$\n\n$m = \\dfrac{1}{2} \\times 3.367 = 1.6833$\n\n<b>Step 3:</b>\n\n$m - n = 1.6833 - 1.6094 = 0.0739 \\approx 0.074$",
         "images": []
       }
     },
     "pp:me:2026:q6": {
       "question_uid": "pp:me:2026:q6",
-      "exam_uid": "me:2026:set1:q6",
+      "exam_uid": "me:2026:set1:main:q6",
       "title": "GATE ME 2026 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:me:2026:q7": {
       "question_uid": "pp:me:2026:q7",
-      "exam_uid": "me:2026:set1:q7",
+      "exam_uid": "me:2026:set1:main:q7",
       "title": "GATE ME 2026 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -305,8 +326,11 @@
     },
     "pp:me:2026:q8": {
       "question_uid": "pp:me:2026:q8",
-      "exam_uid": "me:2026:set1:q8",
+      "exam_uid": "me:2026:set1:main:q8",
       "title": "GATE ME 2026 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -347,8 +371,11 @@
     },
     "pp:me:2026:q9": {
       "question_uid": "pp:me:2026:q9",
-      "exam_uid": "me:2026:set1:q9",
+      "exam_uid": "me:2026:set1:main:q9",
       "title": "GATE ME 2026 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -389,8 +416,11 @@
     },
     "pp:me:2026:q10": {
       "question_uid": "pp:me:2026:q10",
-      "exam_uid": "me:2026:set1:q10",
+      "exam_uid": "me:2026:set1:main:q10",
       "title": "GATE ME 2026 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +461,11 @@
     },
     "pp:me:2026:q11": {
       "question_uid": "pp:me:2026:q11",
-      "exam_uid": "me:2026:set1:q11",
+      "exam_uid": "me:2026:set1:main:q11",
       "title": "GATE ME 2026 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -473,8 +506,11 @@
     },
     "pp:me:2026:q12": {
       "question_uid": "pp:me:2026:q12",
-      "exam_uid": "me:2026:set1:q12",
+      "exam_uid": "me:2026:set1:main:q12",
       "title": "GATE ME 2026 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -515,8 +551,11 @@
     },
     "pp:me:2026:q13": {
       "question_uid": "pp:me:2026:q13",
-      "exam_uid": "me:2026:set1:q13",
+      "exam_uid": "me:2026:set1:main:q13",
       "title": "GATE ME 2026 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -557,8 +596,11 @@
     },
     "pp:me:2026:q14": {
       "question_uid": "pp:me:2026:q14",
-      "exam_uid": "me:2026:set1:q14",
+      "exam_uid": "me:2026:set1:main:q14",
       "title": "GATE ME 2026 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -599,8 +641,11 @@
     },
     "pp:me:2026:q15": {
       "question_uid": "pp:me:2026:q15",
-      "exam_uid": "me:2026:set1:q15",
+      "exam_uid": "me:2026:set1:main:q15",
       "title": "GATE ME 2026 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -641,8 +686,11 @@
     },
     "pp:me:2026:q16": {
       "question_uid": "pp:me:2026:q16",
-      "exam_uid": "me:2026:set1:q16",
+      "exam_uid": "me:2026:set1:main:q16",
       "title": "GATE ME 2026 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -683,8 +731,11 @@
     },
     "pp:me:2026:q17": {
       "question_uid": "pp:me:2026:q17",
-      "exam_uid": "me:2026:set1:q17",
+      "exam_uid": "me:2026:set1:main:q17",
       "title": "GATE ME 2026 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -725,8 +776,11 @@
     },
     "pp:me:2026:q18": {
       "question_uid": "pp:me:2026:q18",
-      "exam_uid": "me:2026:set1:q18",
+      "exam_uid": "me:2026:set1:main:q18",
       "title": "GATE ME 2026 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -767,8 +821,11 @@
     },
     "pp:me:2026:q19": {
       "question_uid": "pp:me:2026:q19",
-      "exam_uid": "me:2026:set1:q19",
+      "exam_uid": "me:2026:set1:main:q19",
       "title": "GATE ME 2026 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -809,8 +866,11 @@
     },
     "pp:me:2026:q20": {
       "question_uid": "pp:me:2026:q20",
-      "exam_uid": "me:2026:set1:q20",
+      "exam_uid": "me:2026:set1:main:q20",
       "title": "GATE ME 2026 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -851,8 +911,11 @@
     },
     "pp:me:2026:q21": {
       "question_uid": "pp:me:2026:q21",
-      "exam_uid": "me:2026:set1:q21",
+      "exam_uid": "me:2026:set1:main:q21",
       "title": "GATE ME 2026 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -893,8 +956,11 @@
     },
     "pp:me:2026:q22": {
       "question_uid": "pp:me:2026:q22",
-      "exam_uid": "me:2026:set1:q22",
+      "exam_uid": "me:2026:set1:main:q22",
       "title": "GATE ME 2026 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -935,8 +1001,11 @@
     },
     "pp:me:2026:q23": {
       "question_uid": "pp:me:2026:q23",
-      "exam_uid": "me:2026:set1:q23",
+      "exam_uid": "me:2026:set1:main:q23",
       "title": "GATE ME 2026 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -977,8 +1046,11 @@
     },
     "pp:me:2026:q24": {
       "question_uid": "pp:me:2026:q24",
-      "exam_uid": "me:2026:set1:q24",
+      "exam_uid": "me:2026:set1:main:q24",
       "title": "GATE ME 2026 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -1017,8 +1089,11 @@
     },
     "pp:me:2026:q25": {
       "question_uid": "pp:me:2026:q25",
-      "exam_uid": "me:2026:set1:q25",
+      "exam_uid": "me:2026:set1:main:q25",
       "title": "GATE ME 2026 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -1057,8 +1132,11 @@
     },
     "pp:me:2026:q26": {
       "question_uid": "pp:me:2026:q26",
-      "exam_uid": "me:2026:set1:q26",
+      "exam_uid": "me:2026:set1:main:q26",
       "title": "GATE ME 2026 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1092,15 +1170,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "<b>Given:</b>\n\n$w = \\log_e z = \\log_e(x + iy)$\n\n<b>Step 1: Express w in terms of real and imaginary parts</b>\n\n$z = x + iy = re^{i\\theta}$\n\nwhere $r = \\sqrt{x^2+y^2}$ and $\\theta = \\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\n$w = \\log_e z = \\log_e r + i\\theta$\n\n$w = \\dfrac{1}{2}\\log_e(x^2+y^2) + i\\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\nSo: $u = \\dfrac{1}{2}\\log_e(x^2+y^2)$ and $v = \\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\n<b>Step 2: Check analyticity</b>\n\n$w = \\log_e z$ is analytic everywhere except where $z = 0$ (i.e. at origin where logarithm is undefined) and along the branch cut.\n\n<b>Step 3: Check options</b>\n\n(A) w is analytic everywhere except at z = 0 ->\n\nCorrect\n\n(B) w is non-analytic everywhere -> Wrong\n\n(C) Conjugate functions are $\\log_e(x^2+y^2)$ and $\\log_e(x^2-y^2)$ ->\n\nWrong (second part incorrect)\n\n(D) Conjugate functions are $\\tan^{-1}(x/y)$ and $\\tan^{-1}(y/x)$ ->\n\nWrong (first part incorrect)",
         "images": []
       }
     },
     "pp:me:2026:q27": {
       "question_uid": "pp:me:2026:q27",
-      "exam_uid": "me:2026:set1:q27",
+      "exam_uid": "me:2026:set1:main:q27",
       "title": "GATE ME 2026 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1134,15 +1215,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<b>Step 1: Assume solution of the form</b>\n\n$y(x,t) = X(x) \\cdot T(t)$\n\nFrom initial condition: $y(x,0) = 10e^{-2x}$\n\nThis suggests $X(x) = 10e^{-2x}$\n\n<b>Step 2: Assume</b> $y(x,t) = 10e^{-2x + \\lambda t}$\n\n<b>Step 3: Substitute into PDE</b>\n\n$\\dfrac{\\partial y}{\\partial x} = -2 \\cdot 10e^{-2x+\\lambda t}$\n\n$\\dfrac{\\partial y}{\\partial t} = \\lambda \\cdot 10e^{-2x+\\lambda t}$\n\nSubstituting:\n\n$-2 \\cdot 10e^{-2x+\\lambda t} = 3\\lambda \\cdot 10e^{-2x+\\lambda t} + 10e^{-2x+\\lambda t}$\n\nDividing by $10e^{-2x+\\lambda t}$:\n\n$-2 = 3\\lambda + 1$\n\n$3\\lambda = -3$\n\n$\\lambda = -1$\n\n<b>Step 4: Solution</b>\n\n$y(x,t) = 10e^{-2x-t}$\n\n<b>Verification:</b> At t=0: $y(x,0) = 10e^{-2x}$",
         "images": []
       }
     },
     "pp:me:2026:q28": {
       "question_uid": "pp:me:2026:q28",
-      "exam_uid": "me:2026:set1:q28",
+      "exam_uid": "me:2026:set1:main:q28",
       "title": "GATE ME 2026 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1176,15 +1260,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<b>Given:</b>\n\n$f(t) = \\sin 2t \\sin 4t$\n\n<b>Step 1: Use product to sum formula</b>\n\n$\\sin A \\sin B = \\dfrac{1}{2}[\\cos(A-B) - \\cos(A+B)]$\n\n$\\sin 2t \\sin 4t = \\dfrac{1}{2}[\\cos(2t-4t) - \\cos(2t+4t)]$\n\n$= \\dfrac{1}{2}[\\cos(-2t) - \\cos(6t)]$\n\n$= \\dfrac{1}{2}[\\cos 2t - \\cos 6t]$\n\n<b>Step 2: Apply Laplace transform</b>\n\n$L\\{\\cos at\\} = \\dfrac{s}{s^2+a^2}$\n\n$L\\{f(t)\\} = \\dfrac{1}{2}\\left[\\dfrac{s}{s^2+4} - \\dfrac{s}{s^2+36}\\right]$\n\n<b>Step 3: Simplify</b>\n\n$= \\dfrac{s}{2}\\left[\\dfrac{(s^2+36)-(s^2+4)}{(s^2+4)(s^2+36)}\\right]$\n\n$= \\dfrac{s}{2} \\times \\dfrac{32}{(s^2+4)(s^2+36)}$\n\n$= \\dfrac{16s}{(s^2+4)(s^2+36)}$",
         "images": []
       }
     },
     "pp:me:2026:q29": {
       "question_uid": "pp:me:2026:q29",
-      "exam_uid": "me:2026:set1:q29",
+      "exam_uid": "me:2026:set1:main:q29",
       "title": "GATE ME 2026 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1218,15 +1305,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<b>Given:</b>\n\nTotal council members = 10\n\nEngineering school = 2 students\n\nScience school = 3 students\n\nArts school = 5 students\n\nSelect 3 students at random.\n\n<b>Total ways to select 3 from 10:</b>\n\n$\\binom{10}{3} = \\dfrac{10!}{3! \\times 7!} = 120$\n\n<b>Favorable cases: 2 from same school + 1 from different school</b>\n\n<b>Case 1: 2 from Engineering (2) + 1 from others (8)</b>\n\n$\\binom{2}{2} \\times \\binom{8}{1} = 1 \\times 8 = 8$\n\n<b>Case 2: 2 from Science (3) + 1 from others (7)</b>\n\n$\\binom{3}{2} \\times \\binom{7}{1} = 3 \\times 7 = 21$\n\n<b>Case 3: 2 from Arts (5) + 1 from others (5)</b>\n\n$\\binom{5}{2} \\times \\binom{5}{1} = 10 \\times 5 = 50$\n\n<b>Total favorable cases:</b>\n\n$8 + 21 + 50 = 79$\n\n<b>Probability: </b>\n\n$P = \\dfrac{79}{120}$",
         "images": []
       }
     },
     "pp:me:2026:q30": {
       "question_uid": "pp:me:2026:q30",
-      "exam_uid": "me:2026:set1:q30",
+      "exam_uid": "me:2026:set1:main:q30",
       "title": "GATE ME 2026 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1267,8 +1357,11 @@
     },
     "pp:me:2026:q31": {
       "question_uid": "pp:me:2026:q31",
-      "exam_uid": "me:2026:set1:q31",
+      "exam_uid": "me:2026:set1:main:q31",
       "title": "GATE ME 2026 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1309,8 +1402,11 @@
     },
     "pp:me:2026:q32": {
       "question_uid": "pp:me:2026:q32",
-      "exam_uid": "me:2026:set1:q32",
+      "exam_uid": "me:2026:set1:main:q32",
       "title": "GATE ME 2026 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1351,8 +1447,11 @@
     },
     "pp:me:2026:q33": {
       "question_uid": "pp:me:2026:q33",
-      "exam_uid": "me:2026:set1:q33",
+      "exam_uid": "me:2026:set1:main:q33",
       "title": "GATE ME 2026 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1393,8 +1492,11 @@
     },
     "pp:me:2026:q34": {
       "question_uid": "pp:me:2026:q34",
-      "exam_uid": "me:2026:set1:q34",
+      "exam_uid": "me:2026:set1:main:q34",
       "title": "GATE ME 2026 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1435,8 +1537,11 @@
     },
     "pp:me:2026:q35": {
       "question_uid": "pp:me:2026:q35",
-      "exam_uid": "me:2026:set1:q35",
+      "exam_uid": "me:2026:set1:main:q35",
       "title": "GATE ME 2026 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1477,8 +1582,11 @@
     },
     "pp:me:2026:q36": {
       "question_uid": "pp:me:2026:q36",
-      "exam_uid": "me:2026:set1:q36",
+      "exam_uid": "me:2026:set1:main:q36",
       "title": "GATE ME 2026 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1519,8 +1627,11 @@
     },
     "pp:me:2026:q37": {
       "question_uid": "pp:me:2026:q37",
-      "exam_uid": "me:2026:set1:q37",
+      "exam_uid": "me:2026:set1:main:q37",
       "title": "GATE ME 2026 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1561,8 +1672,11 @@
     },
     "pp:me:2026:q38": {
       "question_uid": "pp:me:2026:q38",
-      "exam_uid": "me:2026:set1:q38",
+      "exam_uid": "me:2026:set1:main:q38",
       "title": "GATE ME 2026 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1601,8 +1715,11 @@
     },
     "pp:me:2026:q39": {
       "question_uid": "pp:me:2026:q39",
-      "exam_uid": "me:2026:set1:q39",
+      "exam_uid": "me:2026:set1:main:q39",
       "title": "GATE ME 2026 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1641,8 +1758,11 @@
     },
     "pp:me:2026:q40": {
       "question_uid": "pp:me:2026:q40",
-      "exam_uid": "me:2026:set1:q40",
+      "exam_uid": "me:2026:set1:main:q40",
       "title": "GATE ME 2026 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1681,8 +1801,11 @@
     },
     "pp:me:2026:q41": {
       "question_uid": "pp:me:2026:q41",
-      "exam_uid": "me:2026:set1:q41",
+      "exam_uid": "me:2026:set1:main:q41",
       "title": "GATE ME 2026 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1721,8 +1844,11 @@
     },
     "pp:me:2026:q42": {
       "question_uid": "pp:me:2026:q42",
-      "exam_uid": "me:2026:set1:q42",
+      "exam_uid": "me:2026:set1:main:q42",
       "title": "GATE ME 2026 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1761,8 +1887,11 @@
     },
     "pp:me:2026:q43": {
       "question_uid": "pp:me:2026:q43",
-      "exam_uid": "me:2026:set1:q43",
+      "exam_uid": "me:2026:set1:main:q43",
       "title": "GATE ME 2026 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1801,8 +1930,11 @@
     },
     "pp:me:2026:q44": {
       "question_uid": "pp:me:2026:q44",
-      "exam_uid": "me:2026:set1:q44",
+      "exam_uid": "me:2026:set1:main:q44",
       "title": "GATE ME 2026 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1841,8 +1973,11 @@
     },
     "pp:me:2026:q45": {
       "question_uid": "pp:me:2026:q45",
-      "exam_uid": "me:2026:set1:q45",
+      "exam_uid": "me:2026:set1:main:q45",
       "title": "GATE ME 2026 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1881,8 +2016,11 @@
     },
     "pp:me:2026:q46": {
       "question_uid": "pp:me:2026:q46",
-      "exam_uid": "me:2026:set1:q46",
+      "exam_uid": "me:2026:set1:main:q46",
       "title": "GATE ME 2026 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1921,8 +2059,11 @@
     },
     "pp:me:2026:q47": {
       "question_uid": "pp:me:2026:q47",
-      "exam_uid": "me:2026:set1:q47",
+      "exam_uid": "me:2026:set1:main:q47",
       "title": "GATE ME 2026 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1961,8 +2102,11 @@
     },
     "pp:me:2026:q48": {
       "question_uid": "pp:me:2026:q48",
-      "exam_uid": "me:2026:set1:q48",
+      "exam_uid": "me:2026:set1:main:q48",
       "title": "GATE ME 2026 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2001,8 +2145,11 @@
     },
     "pp:me:2026:q49": {
       "question_uid": "pp:me:2026:q49",
-      "exam_uid": "me:2026:set1:q49",
+      "exam_uid": "me:2026:set1:main:q49",
       "title": "GATE ME 2026 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2041,8 +2188,11 @@
     },
     "pp:me:2026:q50": {
       "question_uid": "pp:me:2026:q50",
-      "exam_uid": "me:2026:set1:q50",
+      "exam_uid": "me:2026:set1:main:q50",
       "title": "GATE ME 2026 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2081,8 +2231,11 @@
     },
     "pp:me:2026:q51": {
       "question_uid": "pp:me:2026:q51",
-      "exam_uid": "me:2026:set1:q51",
+      "exam_uid": "me:2026:set1:main:q51",
       "title": "GATE ME 2026 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2121,8 +2274,11 @@
     },
     "pp:me:2026:q52": {
       "question_uid": "pp:me:2026:q52",
-      "exam_uid": "me:2026:set1:q52",
+      "exam_uid": "me:2026:set1:main:q52",
       "title": "GATE ME 2026 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2161,8 +2317,11 @@
     },
     "pp:me:2026:q53": {
       "question_uid": "pp:me:2026:q53",
-      "exam_uid": "me:2026:set1:q53",
+      "exam_uid": "me:2026:set1:main:q53",
       "title": "GATE ME 2026 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2204,8 +2363,11 @@
     },
     "pp:me:2026:q54": {
       "question_uid": "pp:me:2026:q54",
-      "exam_uid": "me:2026:set1:q54",
+      "exam_uid": "me:2026:set1:main:q54",
       "title": "GATE ME 2026 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2244,8 +2406,11 @@
     },
     "pp:me:2026:q55": {
       "question_uid": "pp:me:2026:q55",
-      "exam_uid": "me:2026:set1:q55",
+      "exam_uid": "me:2026:set1:main:q55",
       "title": "GATE ME 2026 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2284,8 +2449,11 @@
     },
     "pp:me:2026:q56": {
       "question_uid": "pp:me:2026:q56",
-      "exam_uid": "me:2026:set1:q56",
-      "title": "GATE ME 2026 | Set 1 | Question: 56",
+      "exam_uid": "me:2026:set1:ga:q1",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2318,15 +2486,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Analysis of each blank:</b>\n\n<b>Blank 1:</b> The sentence is in past tense as indicated by 'needed' in the next sentence.\n\nSo we need past tense verb -> <b>scored</b>\n\n<b>Blank 2:</b> The team scored runs even though it was raining.\n\nThis shows contrast/concession -> <b>despite</b> (followed by noun)\n\n<b>Note:</b> 'in spite of' is also grammatically correct but 'scoring' in option D makes it wrong as Blank 1 needs past tense.",
         "images": []
       }
     },
     "pp:me:2026:q57": {
       "question_uid": "pp:me:2026:q57",
-      "exam_uid": "me:2026:set1:q57",
-      "title": "GATE ME 2026 | Set 1 | Question: 57",
+      "exam_uid": "me:2026:set1:ga:q2",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2359,15 +2530,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Given equation:\n\n$\\log_2 x + \\log_{\\sqrt{2}} x = 48$\n\n<b>Step 1:</b> Convert $\\log_{\\sqrt{2}} x$ to base 2.\n\n$\\log_{\\sqrt{2}} x = \\dfrac{\\log_2 x}{\\log_2 \\sqrt{2}} = \\dfrac{\\log_2 x}{1/2} = 2\\log_2 x$\n\n<b>Step 2:</b> Substitute back.\n\n$\\log_2 x + 2\\log_2 x = 48$\n\n$3\\log_2 x = 48$\n\n$\\log_2 x = 16$\n\n$x = 2^{16}$",
         "images": []
       }
     },
     "pp:me:2026:q58": {
       "question_uid": "pp:me:2026:q58",
-      "exam_uid": "me:2026:set1:q58",
-      "title": "GATE ME 2026 | Set 1 | Question: 58",
+      "exam_uid": "me:2026:set1:ga:q3",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2400,15 +2574,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Pattern Analysis:</b>\n\nObserve the sequence of grids carefully.\n\n<b>Grid 1:</b> Triangle at top-center Row 1 and Circle at bottom-left Row 3\n\n<b>Grid 2:</b> Triangle moves to middle Row 2 and Circle moves to bottom Row 3\n\n<b>Grid 3:</b> Circle moves to top Row 1 and Triangle moves to bottom Row 3\n\n<b>Pattern:</b> The shapes shift one position downward in each step and swap positions.\n\nIn the next figure the Circle should be at top-left and Triangle at bottom-right.",
         "images": []
       }
     },
     "pp:me:2026:q59": {
       "question_uid": "pp:me:2026:q59",
-      "exam_uid": "me:2026:set1:q59",
-      "title": "GATE ME 2026 | Set 1 | Question: 59",
+      "exam_uid": "me:2026:set1:ga:q4",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2441,15 +2618,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Logic:</b>\n\nThe original statement is a <b>Universal Affirmative</b>:\n\n\"All mangoes are good\" -> $\\forall x: G(x)$\n\n<b>Negation of Universal Affirmative</b> is <b>Particular Negative</b>:\n\n\"There exists at least one x such that x is NOT good\"\n\n$\\neg(\\forall x: G(x)) \\equiv \\exists x: \\neg G(x)$\n\n<b>Checking each option:</b>\n\n(A) All mangoes are not good -> Too strong. Not necessarily true.\n\n(B) No mango is good -> Too strong. Not necessarily true.\n\n(C) Some good some not -> Not necessarily true.\n\n(D) At least one mango is not good -> This is exactly the logical negation.",
         "images": []
       }
     },
     "pp:me:2026:q60": {
       "question_uid": "pp:me:2026:q60",
-      "exam_uid": "me:2026:set1:q60",
-      "title": "GATE ME 2026 | Set 1 | Question: 60",
+      "exam_uid": "me:2026:set1:ga:q5",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2482,15 +2662,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Given Statements:</b>\n\n(S1) Average of four numbers = 25 -> Sum = 100\n\n(S2) Each number $\\leq$ 40\n\n(S3) Each number $\\leq$ 20\n\n<b>Check Option (C): (S1) and (S3) together imply (S2)</b>\n\nIf average = 25 and each number ≥ 20:\n\nLet three numbers = 20 each -> Fourth = 100 - 60 = 40\n\nBut what if three numbers = 20 -> Fourth = 40\n\nWhat if three numbers = 20 -> can fourth exceed 40?\n\nIf three numbers = 20 -> Fourth = 40 (exactly)\n\nIf one number = 19 (less than 20) -> violates S3\n\nSo with S1 and S3: maximum any number can be = 100 - (3×20) = 40\n\nTherefore each number $\\leq$ 40 which is S2",
         "images": []
       }
     },
     "pp:me:2026:q61": {
       "question_uid": "pp:me:2026:q61",
-      "exam_uid": "me:2026:set1:q61",
-      "title": "GATE ME 2026 | Set 1 | Question: 61",
+      "exam_uid": "me:2026:set1:ga:q6",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2523,15 +2706,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Analysis of each blank:</b>\n\nSentence: 'People are crowding around ___ pit into which ___ elephant has fallen...'\n\n<b>Blank 1:</b> 'pit' starts with consonant sound -> use <b>a</b>\n\n<b>Blank 2:</b> 'elephant' starts with vowel sound -> use <b>an</b>\n\n<b>Blank 3:</b> 'bewildered ___ miserable' -> joining two adjectives -> use <b>and</b>\n\n<b>Blank 4:</b> 'look up ___ a vast crowd' -> use <b>at</b> (look up at)\n\nSequence: a; an; and; at",
         "images": []
       }
     },
     "pp:me:2026:q62": {
       "question_uid": "pp:me:2026:q62",
-      "exam_uid": "me:2026:set1:q62",
-      "title": "GATE ME 2026 | Set 1 | Question: 62",
+      "exam_uid": "me:2026:set1:ga:q7",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2564,15 +2750,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Given:</b>\n\nTotal items sold = 250\n\nAverage selling price = Rs. 60\n\nTotal revenue = $250 \\times 60 = Rs. \\, 15000$\n\n<b>Let quantity of T = t</b>\n\nQuantity of S = 2t\n\nQuantity of R = 3t\n\nQuantity of Q = 4t\n\nQuantity of P = p\n\n<b>Step 1: Total quantity equation</b>\n\n$p + 4t + 3t + 2t + t = 250$\n\n$p + 10t = 250 \\quad \\cdots (1)$\n\n<b>Step 2: Total revenue equation</b>\n\n$100p + 50(4t) + 40(3t) + 60(2t) + 60t = 15000$\n\n$100p + 200t + 120t + 120t + 60t = 15000$\n\n$100p + 500t = 15000$\n\n$p + 5t = 150 \\quad \\cdots (2)$\n\n<b>Step 3: Solve (1) and (2)</b>\n\n$(1) - (2): \\, 5t = 100 \\Rightarrow t = 20$\n\n$p = 150 - 5(20) = 150 - 100 = 50$",
         "images": []
       }
     },
     "pp:me:2026:q63": {
       "question_uid": "pp:me:2026:q63",
-      "exam_uid": "me:2026:set1:q63",
-      "title": "GATE ME 2026 | Set 1 | Question: 63",
+      "exam_uid": "me:2026:set1:ga:q8",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2605,15 +2794,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "b>Given:</b>\n\nString P (diameter) = $l$\n\nString K (semicircle) = $\\dfrac{\\pi l}{2}$\n\n<b>After shortening by x:</b>\n\nNew length of P = $l - x$ (new diameter)\n\nNew length of K = $\\dfrac{\\pi l}{2} - x$ (now forms full circle)\n\n<b>Condition:</b> Shortened K forms full circle with shortened P as diameter.\n\nCircumference of full circle = $\\pi \\times \\text{diameter} = \\pi(l-x)$\n\n<b>Setting up equation:</b>\n\n$\\dfrac{\\pi l}{2} - x = \\pi(l - x)$\n\n$\\dfrac{\\pi l}{2} - x = \\pi l - \\pi x$\n\n$\\pi x - x = \\pi l - \\dfrac{\\pi l}{2}$\n\n$x(\\pi - 1) = \\dfrac{\\pi l}{2}$\n\n$\\dfrac{x}{l} = \\dfrac{\\pi}{2(\\pi - 1)}$",
         "images": []
       }
     },
     "pp:me:2026:q64": {
       "question_uid": "pp:me:2026:q64",
-      "exam_uid": "me:2026:set1:q64",
-      "title": "GATE ME 2026 | Set 1 | Question: 64",
+      "exam_uid": "me:2026:set1:ga:q9",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2646,15 +2838,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Given conditions:</b>\n\n(i) Daughter and Brother are in same column.\n\n(ii) Son is seated diagonally across the sibling of the worst orator.\n\n(iii) Best and worst orators are in same row.\n\n<b>Seating Grid:</b>\n\n$$\\begin{array}{|c|c|c|} \\hline & \\text{Col 1} & \\text{Col 2} \\\\ \\hline \\text{Row 1} & & \\\\ \\hline \\text{Row 2} & & \\\\ \\hline \\end{array}$$\n\n<b>From condition (i):</b> Daughter and Brother -> same column (say Col 2)\n\nSo Meritorius and Son -> Col 1\n\n<b>From condition (ii):</b> Son is diagonal to sibling of worst orator.\n\nSiblings of Meritorius = Brother\n\nSo Son is diagonal to Brother.\n\n<b>Arrangement:</b>\n\nRow 1 Col 1 = Son | Row 1 Col 2 = Daughter\n\nRow 2 Col 1 = Meritorius | Row 2 Col 2 = Brother\n\nSon (R1,C1) is diagonal to Brother (R2,C2)\n\n<b>From condition (iii):</b> Best and worst in same row.\n\nWorst orator = Brother -> sibling of worst = Meritorius\n\nBest and Brother are in Row 2 -> Best = Meritorius",
         "images": []
       }
     },
     "pp:me:2026:q65": {
       "question_uid": "pp:me:2026:q65",
-      "exam_uid": "me:2026:set1:q65",
-      "title": "GATE ME 2026 | Set 1 | Question: 65",
+      "exam_uid": "me:2026:set1:ga:q10",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2687,7 +2882,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Pattern Analysis:</b>\n\nThe large figure is formed by tiling a small pattern repeatedly.\n\n<b>Method:</b> Compare the top-left corner of the large figure with each of the given patterns P Q R S.\n\nThe large figure when divided into identical small blocks matches pattern <b>Q</b> when tiled in a 3×3 arrangement.\n\nPattern Q matches the repeating unit that generates the given figure when arranged side by side both horizontally and vertically.",
         "images": []
       }

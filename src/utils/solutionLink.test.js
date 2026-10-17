@@ -231,6 +231,51 @@ describe("Branch detection and GateOverflow search URLs", () => {
         track: "me",
       })
     ).toBe("https://me.gateoverflow.in/?qa=search&q=GATE%20ME%202020%20Question%201");
+
+    expect(
+      getGateOverflowSearchUrl({
+        title: "GATE ME 2018 | Set 1 | GA | Question: 2",
+        track: "me",
+      })
+    ).toBe("https://me.gateoverflow.in/?qa=search&q=GATE%20ME%202018%20Set%201%20GA%20Question%202");
+  });
+
+  it("resolves direct GateOverflow links across branch subdomains (ME, EE, EC, Civil)", () => {
+    // Mechanical Engineering direct link
+    expect(
+      getQuestionSolutionLink({
+        question_uid: "pp:me:2018:q57",
+        track: "me",
+        solution_link: "https://me.gateoverflow.in/914/gate-mechanical-2018-set-1-ga-question-2",
+      })
+    ).toBe("https://me.gateoverflow.in/914/gate-mechanical-2018-set-1-ga-question-2");
+
+    // Civil Engineering direct link
+    expect(
+      getQuestionSolutionLink({
+        question_uid: "pp:ce:2019:q14",
+        track: "ce",
+        solution_link: "https://civil.gateoverflow.in/1523/gate-ce-2019-set-1-question-14",
+      })
+    ).toBe("https://civil.gateoverflow.in/1523/gate-ce-2019-set-1-question-14");
+
+    // Electrical Engineering direct link
+    expect(
+      getQuestionSolutionLink({
+        question_uid: "pp:ee:2020:q5",
+        track: "ee",
+        solution_link: "https://ee.gateoverflow.in/123/gate-ee-question",
+      })
+    ).toBe("https://ee.gateoverflow.in/123/gate-ee-question");
+
+    // Electronics & Communication direct link
+    expect(
+      getQuestionSolutionLink({
+        question_uid: "pp:ec:2021:q10",
+        track: "ec",
+        solution_link: "https://ec.gateoverflow.in/456/gate-ec-question",
+      })
+    ).toBe("https://ec.gateoverflow.in/456/gate-ec-question");
   });
 });
 

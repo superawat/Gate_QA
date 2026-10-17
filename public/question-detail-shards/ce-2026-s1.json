@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:31.117Z",
+  "generatedAt": "2026-10-17T21:30:25.719Z",
   "shardKey": "ce-2026-s1",
   "yearSetKey": "ce-2026-s1",
   "yearSetIdentity": "ce:2026:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ce:2026:q1": {
       "question_uid": "pp:ce:2026:q1",
-      "exam_uid": "ce:2026:set1:q1",
+      "exam_uid": "ce:2026:set1:main:q1",
       "title": "GATE CE 2026 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Given: $$P = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{bmatrix}$$\n\n<b>Trace of P:</b> $\\text{tr}(P) = 1 + 1 + 1 = 3$\n\n<b>Eigenvalues:</b> Solve $\\det(P - \\lambda I) = 0$\n\n$(1-\\lambda)[(1-\\lambda)^2 - 0] - 0 + 1[0 - (1-\\lambda)] = 0$\n\n$(1-\\lambda)^3 - (1-\\lambda) = 0$\n\n$(1-\\lambda)[(1-\\lambda)^2 - 1] = 0$\n\n$(1-\\lambda)[\\lambda^2 - 2\\lambda] = 0$\n\n$(1-\\lambda)\\cdot\\lambda(\\lambda - 2) = 0$\n\nEigenvalues: $\\lambda = 0, 1, 2$\n\n<b>Sum of eigenvalues</b> = $0 + 1 + 2 = 3$ = Trace\n\n<b>Checking other options:</b>\n\n(B) $P^T P \\neq I$ (P is not orthogonal)\n\n(C) P is symmetric ($P^T = P$), not skew-symmetric\n\n(D) Eigenvalues are 0, 1, 2  -  not all magnitude 1\n\nTherefore, Option (A) is TRUE.",
         "images": []
       }
     },
     "pp:ce:2026:q2": {
       "question_uid": "pp:ce:2026:q2",
-      "exam_uid": "ce:2026:set1:q2",
+      "exam_uid": "ce:2026:set1:main:q2",
       "title": "GATE CE 2026 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Given system:</b>\n\n$x_1 + x_2 + x_3 = 0 \\quad \\cdots (1)$\n\n$x_1 + 0 \\cdot x_2 + 2x_3 = 0 \\quad \\cdots (2)$\n\n<b>Step 1:</b> Count equations vs unknowns: 2 equations, 3 unknowns $\\rightarrow$ underdetermined system.\n\n<b>Step 2:</b> Find rank of coefficient matrix:\n\n$$\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 2 \\end{bmatrix}$$\n\nR2 $\\rightarrow$ R2 - R1: $$\\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & -1 & 1 \\end{bmatrix}$$\n\nRank = 2\n\n<b>Step 3:</b> Degrees of freedom = 3 - 2 = 1 $\\rightarrow$ solution is a <b>line</b> in 3D space (passing through the origin).\n\nEach equation represents a plane through origin. Intersection of two planes through origin = a line through origin.",
         "images": []
       }
     },
     "pp:ce:2026:q3": {
       "question_uid": "pp:ce:2026:q3",
-      "exam_uid": "ce:2026:set1:q3",
+      "exam_uid": "ce:2026:set1:main:q3",
       "title": "GATE CE 2026 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -137,8 +146,11 @@
     },
     "pp:ce:2026:q4": {
       "question_uid": "pp:ce:2026:q4",
-      "exam_uid": "ce:2026:set1:q4",
+      "exam_uid": "ce:2026:set1:main:q4",
       "title": "GATE CE 2026 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -179,8 +191,11 @@
     },
     "pp:ce:2026:q5": {
       "question_uid": "pp:ce:2026:q5",
-      "exam_uid": "ce:2026:set1:q5",
+      "exam_uid": "ce:2026:set1:main:q5",
       "title": "GATE CE 2026 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -221,8 +236,11 @@
     },
     "pp:ce:2026:q6": {
       "question_uid": "pp:ce:2026:q6",
-      "exam_uid": "ce:2026:set1:q6",
+      "exam_uid": "ce:2026:set1:main:q6",
       "title": "GATE CE 2026 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:ce:2026:q7": {
       "question_uid": "pp:ce:2026:q7",
-      "exam_uid": "ce:2026:set1:q7",
+      "exam_uid": "ce:2026:set1:main:q7",
       "title": "GATE CE 2026 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -305,8 +326,11 @@
     },
     "pp:ce:2026:q8": {
       "question_uid": "pp:ce:2026:q8",
-      "exam_uid": "ce:2026:set1:q8",
+      "exam_uid": "ce:2026:set1:main:q8",
       "title": "GATE CE 2026 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -347,8 +371,11 @@
     },
     "pp:ce:2026:q9": {
       "question_uid": "pp:ce:2026:q9",
-      "exam_uid": "ce:2026:set1:q9",
+      "exam_uid": "ce:2026:set1:main:q9",
       "title": "GATE CE 2026 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -389,8 +416,11 @@
     },
     "pp:ce:2026:q10": {
       "question_uid": "pp:ce:2026:q10",
-      "exam_uid": "ce:2026:set1:q10",
+      "exam_uid": "ce:2026:set1:main:q10",
       "title": "GATE CE 2026 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -431,8 +461,11 @@
     },
     "pp:ce:2026:q11": {
       "question_uid": "pp:ce:2026:q11",
-      "exam_uid": "ce:2026:set1:q11",
+      "exam_uid": "ce:2026:set1:main:q11",
       "title": "GATE CE 2026 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -473,8 +506,11 @@
     },
     "pp:ce:2026:q12": {
       "question_uid": "pp:ce:2026:q12",
-      "exam_uid": "ce:2026:set1:q12",
+      "exam_uid": "ce:2026:set1:main:q12",
       "title": "GATE CE 2026 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -515,8 +551,11 @@
     },
     "pp:ce:2026:q13": {
       "question_uid": "pp:ce:2026:q13",
-      "exam_uid": "ce:2026:set1:q13",
+      "exam_uid": "ce:2026:set1:main:q13",
       "title": "GATE CE 2026 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MSQ",
       "marks": 1,
@@ -557,8 +596,11 @@
     },
     "pp:ce:2026:q14": {
       "question_uid": "pp:ce:2026:q14",
-      "exam_uid": "ce:2026:set1:q14",
+      "exam_uid": "ce:2026:set1:main:q14",
       "title": "GATE CE 2026 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MSQ",
       "marks": 1,
@@ -599,8 +641,11 @@
     },
     "pp:ce:2026:q15": {
       "question_uid": "pp:ce:2026:q15",
-      "exam_uid": "ce:2026:set1:q15",
+      "exam_uid": "ce:2026:set1:main:q15",
       "title": "GATE CE 2026 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MSQ",
       "marks": 1,
@@ -641,8 +686,11 @@
     },
     "pp:ce:2026:q16": {
       "question_uid": "pp:ce:2026:q16",
-      "exam_uid": "ce:2026:set1:q16",
+      "exam_uid": "ce:2026:set1:main:q16",
       "title": "GATE CE 2026 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -674,15 +722,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Given:\n\nBag I: 4 white + 6 black = 10 balls\n\nBag II: 4 white + 3 black = 7 balls\n\n<b>Using Bayes' Theorem:</b>\n\nLet B = event of drawing a black ball\n\nLet $B_1$ = Bag I chosen, $B_2$ = Bag II chosen\n\n$P(B_1) = P(B_2) = \\dfrac{1}{2}$ (equal probability of choosing either bag)\n\n$P(B | B_1) = \\dfrac{6}{10} = 0.6$\n\n$P(B | B_2) = \\dfrac{3}{7} \\approx 0.4286$\n\n<b>Total probability of black ball:</b>\n\n$P(B) = P(B_1) \\cdot P(B|B_1) + P(B_2) \\cdot P(B|B_2)$\n\n$P(B) = \\dfrac{1}{2} \\times \\dfrac{6}{10} + \\dfrac{1}{2} \\times \\dfrac{3}{7} = \\dfrac{3}{10} + \\dfrac{3}{14} = \\dfrac{21}{70} + \\dfrac{15}{70} = \\dfrac{36}{70}$\n\n<b>Probability black ball came from Bag I:</b>\n\n$P(B_1|B) = \\dfrac{P(B_1) \\cdot P(B|B_1)}{P(B)} = \\dfrac{\\dfrac{1}{2} \\times \\dfrac{6}{10}}{\\dfrac{36}{70}} = \\dfrac{\\dfrac{3}{10}}{\\dfrac{36}{70}} = \\dfrac{3}{10} \\times \\dfrac{70}{36} = \\dfrac{210}{360} = \\dfrac{7}{12} \\approx \\mathbf{0.58}$",
         "images": []
       }
     },
     "pp:ce:2026:q17": {
       "question_uid": "pp:ce:2026:q17",
-      "exam_uid": "ce:2026:set1:q17",
+      "exam_uid": "ce:2026:set1:main:q17",
       "title": "GATE CE 2026 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -714,15 +765,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "<b>Given matrix:</b> $$A = \\begin{bmatrix} 9 & 15 \\\\ 15 & 50 \\end{bmatrix}$$\n\n<b>Cholesky decomposition:</b> $A = LL^T$, where $$L = \\begin{bmatrix} l_{11} & 0 \\\\ l_{21} & l_{22} \\end{bmatrix}$$\n\n<b>Step 1  -  Find $l_{11}$:</b>\n\n$l_{11} = \\sqrt{a_{11}} = \\sqrt{9} = 3$\n\n<b>Step 2  -  Find $l_{21}$:</b>\n\n$l_{21} = \\dfrac{a_{21}}{l_{11}} = \\dfrac{15}{3} = 5$\n\n<b>Step 3  -  Find $l_{22}$:</b>\n\n$l_{22} = \\sqrt{a_{22} - l_{21}^2} = \\sqrt{50 - 25} = \\sqrt{25} = 5$\n\n$|l_{22}| = \\mathbf{5}$",
         "images": []
       }
     },
     "pp:ce:2026:q18": {
       "question_uid": "pp:ce:2026:q18",
-      "exam_uid": "ce:2026:set1:q18",
+      "exam_uid": "ce:2026:set1:main:q18",
       "title": "GATE CE 2026 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -754,15 +808,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Given: $(x + y - 7)^2 + (y + 3x - 13)^2 = 0$\n\n<b>Key insight:</b> Sum of two squares equals zero only when <b>each square is zero</b>.\n\n$(x + y - 7)^2 = 0 \\Rightarrow x + y = 7 \\quad \\cdots (1)$\n\n$(y + 3x - 13)^2 = 0 \\Rightarrow y + 3x = 13 \\quad \\cdots (2)$\n\n<b>Solving the system:</b>\n\nSubtract (1) from (2):\n\n$(y + 3x) - (x + y) = 13 - 7$\n\n$2x = 6 \\Rightarrow x = 3$\n\nSubstitute into (1): $3 + y = 7 \\Rightarrow y = 4$\n\n<b>Calculate </b> $x^3 + y^3 = 3^3 + 4^3 = 27 + 64 = \\mathbf{91}$",
         "images": []
       }
     },
     "pp:ce:2026:q19": {
       "question_uid": "pp:ce:2026:q19",
-      "exam_uid": "ce:2026:set1:q19",
+      "exam_uid": "ce:2026:set1:main:q19",
       "title": "GATE CE 2026 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -801,8 +858,11 @@
     },
     "pp:ce:2026:q20": {
       "question_uid": "pp:ce:2026:q20",
-      "exam_uid": "ce:2026:set1:q20",
+      "exam_uid": "ce:2026:set1:main:q20",
       "title": "GATE CE 2026 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -841,8 +901,11 @@
     },
     "pp:ce:2026:q21": {
       "question_uid": "pp:ce:2026:q21",
-      "exam_uid": "ce:2026:set1:q21",
+      "exam_uid": "ce:2026:set1:main:q21",
       "title": "GATE CE 2026 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -881,8 +944,11 @@
     },
     "pp:ce:2026:q22": {
       "question_uid": "pp:ce:2026:q22",
-      "exam_uid": "ce:2026:set1:q22",
+      "exam_uid": "ce:2026:set1:main:q22",
       "title": "GATE CE 2026 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -921,8 +987,11 @@
     },
     "pp:ce:2026:q23": {
       "question_uid": "pp:ce:2026:q23",
-      "exam_uid": "ce:2026:set1:q23",
+      "exam_uid": "ce:2026:set1:main:q23",
       "title": "GATE CE 2026 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -961,8 +1030,11 @@
     },
     "pp:ce:2026:q24": {
       "question_uid": "pp:ce:2026:q24",
-      "exam_uid": "ce:2026:set1:q24",
+      "exam_uid": "ce:2026:set1:main:q24",
       "title": "GATE CE 2026 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -1001,8 +1073,11 @@
     },
     "pp:ce:2026:q25": {
       "question_uid": "pp:ce:2026:q25",
-      "exam_uid": "ce:2026:set1:q25",
+      "exam_uid": "ce:2026:set1:main:q25",
       "title": "GATE CE 2026 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -1041,8 +1116,11 @@
     },
     "pp:ce:2026:q26": {
       "question_uid": "pp:ce:2026:q26",
-      "exam_uid": "ce:2026:set1:q26",
+      "exam_uid": "ce:2026:set1:main:q26",
       "title": "GATE CE 2026 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1076,15 +1154,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Given: $\\int_0^2 f(x)[x - f(x)]\\,dx = \\dfrac{2}{3}$\n\n<b>Expand the integrand:</b>\n\n$\\int_0^2 x \\cdot f(x)\\,dx - \\int_0^2 [f(x)]^2\\,dx = \\dfrac{2}{3}$\n\n<b>Rearrange using completing the square:</b>\n\n$-\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx + \\int_0^2 \\dfrac{x^2}{4}\\,dx = \\dfrac{2}{3}$\n\n<b>Evaluate $\\int_0^2 \\dfrac{x^2}{4}\\,dx$:</b>\n\n$= \\dfrac{1}{4} \\cdot \\dfrac{x^3}{3}\\Big|_0^2 = \\dfrac{1}{4} \\cdot \\dfrac{8}{3} = \\dfrac{2}{3}$\n\n<b>Substituting:</b>\n\n$-\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx + \\dfrac{2}{3} = \\dfrac{2}{3}$\n\n$\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx = 0$\n\n<b>Since the integrand is non-negative and continuous:</b>\n\n$f(x) = \\dfrac{x}{2} \\text{ for all } x \\in [0, 2]$\n\n$f(1) = \\dfrac{1}{2}$",
         "images": []
       }
     },
     "pp:ce:2026:q27": {
       "question_uid": "pp:ce:2026:q27",
-      "exam_uid": "ce:2026:set1:q27",
+      "exam_uid": "ce:2026:set1:main:q27",
       "title": "GATE CE 2026 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1118,15 +1199,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Ordinary Differential Equation",
+        "concept": "Engineering Mathematics - Ordinary Differential Equation",
         "markdown": "<b>Given ODE:</b> $x^2 \\dfrac{d^2y}{dx^2} = 6y$ $\\rightarrow$ $x^2 y'' - 6y = 0$\n\nThis is an <b>Euler-Cauchy equation</b>. Assume $y = x^m$:\n\n$y' = mx^{m-1},\\quad y'' = m(m-1)x^{m-2}$\n\nSubstituting:\n\n$x^2 \\cdot m(m-1)x^{m-2} - 6x^m = 0$\n\n$m(m-1)x^m - 6x^m = 0$\n\n$[m(m-1) - 6]x^m = 0$\n\n$m^2 - m - 6 = 0$\n\n$(m-3)(m+2) = 0$\n\n$m = 3 \\text{ or } m = -2$\n\n<b>General solution:</b>\n\n$y(x) = ax^3 + bx^{-2} = ax^3 + \\dfrac{b}{x^2}$",
         "images": []
       }
     },
     "pp:ce:2026:q28": {
       "question_uid": "pp:ce:2026:q28",
-      "exam_uid": "ce:2026:set1:q28",
+      "exam_uid": "ce:2026:set1:main:q28",
       "title": "GATE CE 2026 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1167,8 +1251,11 @@
     },
     "pp:ce:2026:q29": {
       "question_uid": "pp:ce:2026:q29",
-      "exam_uid": "ce:2026:set1:q29",
+      "exam_uid": "ce:2026:set1:main:q29",
       "title": "GATE CE 2026 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1209,8 +1296,11 @@
     },
     "pp:ce:2026:q30": {
       "question_uid": "pp:ce:2026:q30",
-      "exam_uid": "ce:2026:set1:q30",
+      "exam_uid": "ce:2026:set1:main:q30",
       "title": "GATE CE 2026 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1251,8 +1341,11 @@
     },
     "pp:ce:2026:q31": {
       "question_uid": "pp:ce:2026:q31",
-      "exam_uid": "ce:2026:set1:q31",
+      "exam_uid": "ce:2026:set1:main:q31",
       "title": "GATE CE 2026 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1293,8 +1386,11 @@
     },
     "pp:ce:2026:q32": {
       "question_uid": "pp:ce:2026:q32",
-      "exam_uid": "ce:2026:set1:q32",
+      "exam_uid": "ce:2026:set1:main:q32",
       "title": "GATE CE 2026 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1335,8 +1431,11 @@
     },
     "pp:ce:2026:q33": {
       "question_uid": "pp:ce:2026:q33",
-      "exam_uid": "ce:2026:set1:q33",
+      "exam_uid": "ce:2026:set1:main:q33",
       "title": "GATE CE 2026 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1377,8 +1476,11 @@
     },
     "pp:ce:2026:q34": {
       "question_uid": "pp:ce:2026:q34",
-      "exam_uid": "ce:2026:set1:q34",
+      "exam_uid": "ce:2026:set1:main:q34",
       "title": "GATE CE 2026 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1419,8 +1521,11 @@
     },
     "pp:ce:2026:q35": {
       "question_uid": "pp:ce:2026:q35",
-      "exam_uid": "ce:2026:set1:q35",
+      "exam_uid": "ce:2026:set1:main:q35",
       "title": "GATE CE 2026 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1461,8 +1566,11 @@
     },
     "pp:ce:2026:q36": {
       "question_uid": "pp:ce:2026:q36",
-      "exam_uid": "ce:2026:set1:q36",
+      "exam_uid": "ce:2026:set1:main:q36",
       "title": "GATE CE 2026 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1503,8 +1611,11 @@
     },
     "pp:ce:2026:q37": {
       "question_uid": "pp:ce:2026:q37",
-      "exam_uid": "ce:2026:set1:q37",
+      "exam_uid": "ce:2026:set1:main:q37",
       "title": "GATE CE 2026 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1545,8 +1656,11 @@
     },
     "pp:ce:2026:q38": {
       "question_uid": "pp:ce:2026:q38",
-      "exam_uid": "ce:2026:set1:q38",
+      "exam_uid": "ce:2026:set1:main:q38",
       "title": "GATE CE 2026 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1578,15 +1692,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Given: $f(x) = e^{-x} - x$, first approximation $x_0 = 0.5$\n\n<b>Newton-Raphson formula:</b>\n\n$x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}$\n\n<b>Step 1  -  Compute $f'(x)$:</b>\n\n$f'(x) = -e^{-x} - 1$\n\n<b>Step 2  -  Evaluate at $x_0 = 0.5$:</b>\n\n$f(0.5) = e^{-0.5} - 0.5 = 0.6065 - 0.5 = 0.1065$\n\n$f'(0.5) = -e^{-0.5} - 1 = -0.6065 - 1 = -1.6065$\n\n<b>Step 3  -  Second approximation:</b>\n\n$x_1 = 0.5 - \\dfrac{0.1065}{-1.6065} = 0.5 + 0.0663 = \\mathbf{0.57}$",
         "images": []
       }
     },
     "pp:ce:2026:q39": {
       "question_uid": "pp:ce:2026:q39",
-      "exam_uid": "ce:2026:set1:q39",
+      "exam_uid": "ce:2026:set1:main:q39",
       "title": "GATE CE 2026 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1618,15 +1735,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (CE) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "<b>Given data points:</b> (-2, 28), (1, 4), (2, 16)\n\n<b>Using Lagrange's interpolation formula:</b>\n\n$P_2(x) = y_0 \\cdot L_0(x) + y_1 \\cdot L_1(x) + y_2 \\cdot L_2(x)$\n\n$L_0(x) = \\dfrac{(x-1)(x-2)}{(-2-1)(-2-2)} = \\dfrac{(x-1)(x-2)}{(-3)(-4)} = \\dfrac{(x-1)(x-2)}{12}$\n\n$L_1(x) = \\dfrac{(x+2)(x-2)}{(1+2)(1-2)} = \\dfrac{(x+2)(x-2)}{(3)(-1)} = \\dfrac{(x^2-4)}{-3}$\n\n$L_2(x) = \\dfrac{(x+2)(x-1)}{(2+2)(2-1)} = \\dfrac{(x+2)(x-1)}{4}$\n\n<b>At x = 0:</b>\n\n$L_0(0) = \\dfrac{(-1)(-2)}{12} = \\dfrac{2}{12} = \\dfrac{1}{6}$\n\n$L_1(0) = \\dfrac{(0-4)}{-3} = \\dfrac{4}{3}$\n\n$L_2(0) = \\dfrac{(2)(-1)}{4} = \\dfrac{-2}{4} = -\\dfrac{1}{2}$\n\n$P_2(0) = 28 \\times \\dfrac{1}{6} + 4 \\times \\dfrac{4}{3} + 16 \\times \\left(-\\dfrac{1}{2}\\right)$\n\n$= \\dfrac{28}{6} + \\dfrac{16}{3} - 8 = \\dfrac{14}{3} + \\dfrac{16}{3} - 8 = \\dfrac{30}{3} - 8 = 10 - 8 = \\mathbf{2}$",
         "images": []
       }
     },
     "pp:ce:2026:q40": {
       "question_uid": "pp:ce:2026:q40",
-      "exam_uid": "ce:2026:set1:q40",
+      "exam_uid": "ce:2026:set1:main:q40",
       "title": "GATE CE 2026 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1665,8 +1785,11 @@
     },
     "pp:ce:2026:q41": {
       "question_uid": "pp:ce:2026:q41",
-      "exam_uid": "ce:2026:set1:q41",
+      "exam_uid": "ce:2026:set1:main:q41",
       "title": "GATE CE 2026 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1705,8 +1828,11 @@
     },
     "pp:ce:2026:q42": {
       "question_uid": "pp:ce:2026:q42",
-      "exam_uid": "ce:2026:set1:q42",
+      "exam_uid": "ce:2026:set1:main:q42",
       "title": "GATE CE 2026 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1745,8 +1871,11 @@
     },
     "pp:ce:2026:q43": {
       "question_uid": "pp:ce:2026:q43",
-      "exam_uid": "ce:2026:set1:q43",
+      "exam_uid": "ce:2026:set1:main:q43",
       "title": "GATE CE 2026 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1785,8 +1914,11 @@
     },
     "pp:ce:2026:q44": {
       "question_uid": "pp:ce:2026:q44",
-      "exam_uid": "ce:2026:set1:q44",
+      "exam_uid": "ce:2026:set1:main:q44",
       "title": "GATE CE 2026 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1825,8 +1957,11 @@
     },
     "pp:ce:2026:q45": {
       "question_uid": "pp:ce:2026:q45",
-      "exam_uid": "ce:2026:set1:q45",
+      "exam_uid": "ce:2026:set1:main:q45",
       "title": "GATE CE 2026 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1865,8 +2000,11 @@
     },
     "pp:ce:2026:q46": {
       "question_uid": "pp:ce:2026:q46",
-      "exam_uid": "ce:2026:set1:q46",
+      "exam_uid": "ce:2026:set1:main:q46",
       "title": "GATE CE 2026 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1905,8 +2043,11 @@
     },
     "pp:ce:2026:q47": {
       "question_uid": "pp:ce:2026:q47",
-      "exam_uid": "ce:2026:set1:q47",
+      "exam_uid": "ce:2026:set1:main:q47",
       "title": "GATE CE 2026 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1945,8 +2086,11 @@
     },
     "pp:ce:2026:q48": {
       "question_uid": "pp:ce:2026:q48",
-      "exam_uid": "ce:2026:set1:q48",
+      "exam_uid": "ce:2026:set1:main:q48",
       "title": "GATE CE 2026 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1985,8 +2129,11 @@
     },
     "pp:ce:2026:q49": {
       "question_uid": "pp:ce:2026:q49",
-      "exam_uid": "ce:2026:set1:q49",
+      "exam_uid": "ce:2026:set1:main:q49",
       "title": "GATE CE 2026 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2025,8 +2172,11 @@
     },
     "pp:ce:2026:q50": {
       "question_uid": "pp:ce:2026:q50",
-      "exam_uid": "ce:2026:set1:q50",
+      "exam_uid": "ce:2026:set1:main:q50",
       "title": "GATE CE 2026 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2065,8 +2215,11 @@
     },
     "pp:ce:2026:q51": {
       "question_uid": "pp:ce:2026:q51",
-      "exam_uid": "ce:2026:set1:q51",
+      "exam_uid": "ce:2026:set1:main:q51",
       "title": "GATE CE 2026 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2105,8 +2258,11 @@
     },
     "pp:ce:2026:q52": {
       "question_uid": "pp:ce:2026:q52",
-      "exam_uid": "ce:2026:set1:q52",
+      "exam_uid": "ce:2026:set1:main:q52",
       "title": "GATE CE 2026 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2145,8 +2301,11 @@
     },
     "pp:ce:2026:q53": {
       "question_uid": "pp:ce:2026:q53",
-      "exam_uid": "ce:2026:set1:q53",
+      "exam_uid": "ce:2026:set1:main:q53",
       "title": "GATE CE 2026 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2185,8 +2344,11 @@
     },
     "pp:ce:2026:q54": {
       "question_uid": "pp:ce:2026:q54",
-      "exam_uid": "ce:2026:set1:q54",
+      "exam_uid": "ce:2026:set1:main:q54",
       "title": "GATE CE 2026 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2225,8 +2387,11 @@
     },
     "pp:ce:2026:q55": {
       "question_uid": "pp:ce:2026:q55",
-      "exam_uid": "ce:2026:set1:q55",
+      "exam_uid": "ce:2026:set1:main:q55",
       "title": "GATE CE 2026 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2265,8 +2430,11 @@
     },
     "pp:ce:2026:q56": {
       "question_uid": "pp:ce:2026:q56",
-      "exam_uid": "ce:2026:set1:q56",
-      "title": "GATE CE 2026 | Set 1 | Question: 56",
+      "exam_uid": "ce:2026:set1:ga:q1",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2299,15 +2467,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "In the sentence 'The shopkeeper sells lemons.':\n\n<b>Subject</b> = 'The shopkeeper' (who performs the action)\n\n<b>Verb</b> = 'sells' (the action)\n\n<b>Object</b> = 'lemons' (what receives the action)\n\n<b>Predicate</b> = 'sells lemons' (verb + object together)\n\n'Lemons' is the word that receives the action of selling, so it is the <b>direct object</b>.",
         "images": []
       }
     },
     "pp:ce:2026:q57": {
       "question_uid": "pp:ce:2026:q57",
-      "exam_uid": "ce:2026:set1:q57",
-      "title": "GATE CE 2026 | Set 1 | Question: 57",
+      "exam_uid": "ce:2026:set1:ga:q2",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2340,15 +2511,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "The main figure shows an oval and two triangles with a missing bottom-right portion.\n\nTo complete the three non-overlapping shapes:\n\nThe missing piece must complete the right side of the oval\n\nIt must also complete the second triangle pointing downward-right\n\nThe pieces must not overlap each other\n\nOption Q provides the correct curved (oval) edge on the left and the correct triangular edge on the right, fitting perfectly without overlap.",
         "images": []
       }
     },
     "pp:ce:2026:q58": {
       "question_uid": "pp:ce:2026:q58",
-      "exam_uid": "ce:2026:set1:q58",
-      "title": "GATE CE 2026 | Set 1 | Question: 58",
+      "exam_uid": "ce:2026:set1:ga:q3",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2381,15 +2555,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Step 1: Equate the two equations</b>\n\nAt the point of intersection,\n\n$x^2=-x^2-2x-1$\n\nRearranging,\n\n$2x^2+2x+1=0$\n\n<b>Step 2: Check the nature of roots</b>\n\nFor the quadratic equation\n\n$ax^2+bx+c=0$\n\nthe discriminant is\n\n$D=b^2-4ac$\n\nHere,\n\n$a=2,\\quad b=2,\\quad c=1$\n\nTherefore,\n\n$D=2^2-4(2)(1)=4-8 =-4$\n\nSince\n\n$D<0$\n\nthe equation has no real roots.\n\nHence, the two curves do not intersect in the real $(x,y)$ plane.\n\nTherefore,",
         "images": []
       }
     },
     "pp:ce:2026:q59": {
       "question_uid": "pp:ce:2026:q59",
-      "exam_uid": "ce:2026:set1:q59",
-      "title": "GATE CE 2026 | Set 1 | Question: 59",
+      "exam_uid": "ce:2026:set1:ga:q4",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2422,15 +2599,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Analysis of the paragraph:</b>\n\nAnish did NOT score hundred runs (he got out without scoring) $\\rightarrow$ (A) is false.\n\nThere is no mention of Anish being captain before the game $\\rightarrow$ (B) is false.\n\nIf Anish had scored 100 runs, he would have become the <i>youngest captain in his team's history</i>  -  this means the current captain holds that record, i.e., is younger than all past captains but still older than Anish would have been $\\rightarrow$ (C) is <b>TRUE</b>.\n\nThere is no information stating Anish is the youngest player in the team $\\rightarrow$ (D) is not supported.\n\nThe paragraph implies Anish would have been the youngest captain, meaning the current captain is older than Anish (at least in terms of when they were made captain).",
         "images": []
       }
     },
     "pp:ce:2026:q60": {
       "question_uid": "pp:ce:2026:q60",
-      "exam_uid": "ce:2026:set1:q60",
-      "title": "GATE CE 2026 | Set 1 | Question: 60",
+      "exam_uid": "ce:2026:set1:ga:q5",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2469,8 +2649,11 @@
     },
     "pp:ce:2026:q61": {
       "question_uid": "pp:ce:2026:q61",
-      "exam_uid": "ce:2026:set1:q61",
-      "title": "GATE CE 2026 | Set 1 | Question: 61",
+      "exam_uid": "ce:2026:set1:ga:q6",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2503,15 +2686,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Matching synonyms:</b>\n\n<b>Lonely</b> $\\rightarrow$ <b>Solitary (q)</b>  -  both mean alone or isolated\n\n<b>Literal</b> $\\rightarrow$ <b>Verbatim (p)</b>  -  both mean word-for-word or exact\n\n<b>Lousy</b> $\\rightarrow$ <b>Terrible (s)</b>  -  both mean very bad or poor quality\n\n<b>Lethal</b> $\\rightarrow$ <b>Deadly (r)</b>  -  both mean causing death\n\nTherefore the correct match is: (i)-(q) ; (ii)-(p) ; (iii)-(s) ; (iv)-(r)",
         "images": []
       }
     },
     "pp:ce:2026:q62": {
       "question_uid": "pp:ce:2026:q62",
-      "exam_uid": "ce:2026:set1:q62",
-      "title": "GATE CE 2026 | Set 1 | Question: 62",
+      "exam_uid": "ce:2026:set1:ga:q7",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2544,15 +2730,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Step 1: Determine the measure of arc RS</b>\n\nThe central angle subtending arc\n\n$RS$\n\nis\n\n$\\angle ROS=80^\\circ.$\n\nHence,\n\n$m(\\widehat{RS})=80^\\circ.$\n\nSince\n\n$PQ$\n\nis a diameter, the upper semicircle\n\n$\\widehat{PQ}$\n\nmeasures\n\n$180^\\circ.$\n\nTherefore,\n\n$m(\\widehat{PR})+m(\\widehat{RS})+m(\\widehat{SQ})\n\n=\n\n180^\\circ$\n\n$m(\\widehat{PR})+m(\\widehat{SQ})\n\n=\n\n180^\\circ-80^\\circ\n\n=\n\n100^\\circ.$\n\n<b>Step 2: Use the theorem for two secants intersecting outside a circle</b>\n\nFor two secants intersecting outside a circle,\n\n$\\angle RTS\n\n=\n\n\\frac{1}{2}\n\n\\left(\n\nm(\\widehat{PQ})\n\n-\n\nm(\\widehat{RS})\n\n\\right).$\n\nSubstituting,\n\n$\\angle RTS\n\n=\n\n\\frac{1}{2}\n\n\\left(\n\n180^\\circ-80^\\circ\n\n\\right)$\n\n$=\n\n\\frac{100^\\circ}{2}\n\n=\n\n50^\\circ.$",
         "images": []
       }
     },
     "pp:ce:2026:q63": {
       "question_uid": "pp:ce:2026:q63",
-      "exam_uid": "ce:2026:set1:q63",
-      "title": "GATE CE 2026 | Set 1 | Question: 63",
+      "exam_uid": "ce:2026:set1:ga:q8",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2585,15 +2774,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Observation  -  relationship between polygon sides and number:</b>\n\nTriangle (3 sides) $\\rightarrow$ 6 = $3!$ = $1 \\times 2 \\times 3$\n\nSquare (4 sides) $\\rightarrow$ 24 = $4!$ = $1 \\times 2 \\times 3 \\times 4$\n\nPentagon (5 sides) $\\rightarrow$ 120 = $5!$ = $1 \\times 2 \\times 3 \\times 4 \\times 5$\n\nHexagon (6 sides) $\\rightarrow$ $X = 6!$ = $1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6$\n\n<b>Pattern:</b> The number inside each polygon = factorial of the number of sides.\n\n$X = 6! = 720$",
         "images": []
       }
     },
     "pp:ce:2026:q64": {
       "question_uid": "pp:ce:2026:q64",
-      "exam_uid": "ce:2026:set1:q64",
-      "title": "GATE CE 2026 | Set 1 | Question: 64",
+      "exam_uid": "ce:2026:set1:ga:q9",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2626,15 +2818,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Represent ON by 1 and OFF by 0.</b>\n\nFrom the figure, the initial configuration is:\n\n$0001000$\n\nThe updating rules are applied simultaneously at every step.\n\n<b>Step 1:</b>\n\n$0001000\n\n\\rightarrow\n\n0011100$\n\n(This matches the figure.)\n\n<b>Step 2:</b>\n\n$0011100\n\n\\rightarrow\n\n0110110$\n\n(This also matches the figure.)\n\nContinuing similarly,\n\n<b>Step 3:</b>\n\n$0110110\n\n\\rightarrow\n\n1110111$\n\n<b>Step 4:</b>\n\n$1110111\n\n\\rightarrow\n\n1010101$\n\n<b>Step 5:</b>\n\n$1010101\n\n\\rightarrow\n\n1010101$\n\nThe configuration becomes stable and remains unchanged thereafter.\n\nHence,\n\n$\\text{State at Step 8}\n\n=\n\n1010101$\n\nNumber of bulbs that are ON:\n\n$1+1+1+1=4$",
         "images": []
       }
     },
     "pp:ce:2026:q65": {
       "question_uid": "pp:ce:2026:q65",
-      "exam_uid": "ce:2026:set1:q65",
-      "title": "GATE CE 2026 | Set 1 | Question: 65",
+      "exam_uid": "ce:2026:set1:ga:q10",
+      "title": "GATE CE 2026 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2667,7 +2862,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Given: $P^2 = Q^2 + 13$, where P and Q are positive integers.\n\n<b>Step 1:</b> Rearrange:\n\n$P^2 - Q^2 = 13$\n\n$(P - Q)(P + Q) = 13$\n\n<b>Step 2:</b> Since 13 is prime, the only factor pairs of 13 are:\n\n$13 = 1 \\times 13$\n\n<b>Step 3:</b> Set up equations:\n\n$P - Q = 1$\n\n$P + Q = 13$\n\n<b>Step 4:</b> Solve:\n\nAdding: $2P = 14 \\Rightarrow P = 7$\n\nSubtracting: $2Q = 12 \\Rightarrow Q = 6$\n\n<b>Step 5:</b> Verify: $7^2 = 49$, $6^2 + 13 = 36 + 13 = 49$\n\n<b>Product:</b> $P \\times Q = 7 \\times 6 = \\mathbf{42}$",
         "images": []
       }

@@ -173,11 +173,89 @@ const SolvePage = ({
   ]);
 
   useEffect(() => {
-    if (!indexedQuestion || !questionUid) {
+    if (!indexedQuestion && resolvedQuestion && !sessionContainsQuestion && typeof startOrderedSession === "function") {
+      startOrderedSession([resolvedQuestion], questionUid);
+    }
+  }, [indexedQuestion, resolvedQuestion, sessionContainsQuestion, startOrderedSession, questionUid]);
+
+  useEffect(() => {
+    if (!questionUid) {
       setResolvedQuestion(null);
       setQuestionDetailError("");
       setIsQuestionDetailLoading(false);
       return;
+    }
+
+    if (!indexedQuestion) {
+      let active = true;
+      setResolvedQuestion(null);
+      setQuestionDetailError("");
+      setIsQuestionDetailLoading(true);
+
+      const loadStandaloneQuestion = async () => {
+        try {
+          const branchMatch = questionUid.match(/^pp:([a-z]+):(\d+):q(\d+)(?:-s(\d+))?/i);
+          if (branchMatch) {
+            const [, branch, year, , set = "1"] = branchMatch;
+            const track = branch.toLowerCase();
+            const shardKey = `${track}-${year}-s${set}`;
+            const records = await BranchQuestionService.loadDetailShard(shardKey);
+            const raw = records?.[questionUid];
+            if (raw && active) {
+              const questionItem = {
+                ...raw,
+                uid: raw.question_uid,
+                id: raw.question_uid,
+                track,
+                subject: raw.taxonomy?.primary?.subjectLabel || raw.subject || "Core Engineering",
+                subjectSlug: raw.taxonomy?.primary?.subjectSlug || raw.subjectSlug,
+                subjectLabel: raw.taxonomy?.primary?.subjectLabel || raw.subjectLabel,
+                yearSetKey: shardKey,
+                yearSetIdentity: `${track}:${year}:set-${set}`,
+                yearSetLabel: `GATE ${track.toUpperCase()} ${year} Set ${set}`,
+                exam: {
+                  paper: track.toUpperCase(),
+                  track,
+                  year: Number(year),
+                  set: Number(set),
+                  label: `GATE ${track.toUpperCase()} ${year}`,
+                  exam_uid: raw.exam_uid || raw.question_uid,
+                },
+              };
+              setResolvedQuestion(questionItem);
+              setQuestionDetailError("");
+              setIsQuestionDetailLoading(false);
+              return;
+            }
+          }
+
+          if (isDaQuestion({ question_uid: questionUid })) {
+            const daDetail = await DaQuestionService.ensureQuestionDetail({ question_uid: questionUid });
+            if (daDetail && active) {
+              setResolvedQuestion(daDetail);
+              setQuestionDetailError("");
+              setIsQuestionDetailLoading(false);
+              return;
+            }
+          }
+
+          if (active) {
+            setResolvedQuestion(null);
+            setIsQuestionDetailLoading(false);
+          }
+        } catch (err) {
+          if (active) {
+            setResolvedQuestion(null);
+            setQuestionDetailError(err?.message || "Failed to load question detail");
+            setIsQuestionDetailLoading(false);
+          }
+        }
+      };
+
+      void loadStandaloneQuestion();
+      return () => {
+        active = false;
+      };
     }
 
     if (indexedQuestion.question && String(indexedQuestion.question).trim()) {
@@ -818,7 +896,7 @@ const SolvePage = ({
                 textClassName="text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]"
               />
             </div>
-          ) : !indexedQuestion ? (
+          ) : !indexedQuestion && !resolvedQuestion && !isQuestionDetailLoading ? (
             <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 text-center shadow-[var(--shadow-soft)]">
               <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Question not found.</h2>
               <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">

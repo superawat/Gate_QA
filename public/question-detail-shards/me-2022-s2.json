@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.722Z",
+  "generatedAt": "2026-10-17T21:30:25.443Z",
   "shardKey": "me-2022-s2",
   "yearSetKey": "me-2022-s2",
   "yearSetIdentity": "me:2022:set-2",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2022:q1-s2": {
       "question_uid": "pp:me:2022:q1-s2",
-      "exam_uid": "me:2022:set2:q1",
+      "exam_uid": "me:2022:set2:main:q1",
       "title": "GATE ME 2022 | Set 2 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "The constant term in the Fourier series expansion of\n\n$F(t)$ is the average value of $F(t)$ in one fundamental\n\nperiod i.e.,\n\n$\\frac{\\int_{0}^{1}4dt+\\int_{1}^{2}0dt}{2}=\\frac{4}{2}=2$",
         "images": []
       }
     },
     "pp:me:2022:q2-s2": {
       "question_uid": "pp:me:2022:q2-s2",
-      "exam_uid": "me:2022:set2:q2",
+      "exam_uid": "me:2022:set2:main:q2",
       "title": "GATE ME 2022 | Set 2 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Given,\n\n$$\\begin{aligned}\n\n\\bar{F} &=3x\\bar{i}+5y\\bar{j}+6z\\bar{k} \\\\\n\n\\triangledown \\cdot \\bar{F}&= \\frac{\\partial }{\\partial x}(3x)+\\frac{\\partial }{\\partial x}(5y)+\\frac{\\partial }{\\partial x}(6z)\\\\\n\n&= 3+5+6=14\n\n\\end{aligned}$$\n\nBy gauss divers once Theorem\n\n$$\\begin{aligned}\n\n\\int_{A}^{}\\bar{F}\\cdot dA &=\\int \\int \\int (\\triangledown \\cdot F)dV\n\n=\\int \\int \\int 14\\; dv\\\\\n\n&=14 \\times \\text{volume of a cube of side 1 unit\n\n} \\\\\n\n&=14 \\times (1)^3=14\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2022:q3-s2": {
       "question_uid": "pp:me:2022:q3-s2",
-      "exam_uid": "me:2022:set2:q3",
+      "exam_uid": "me:2022:set2:main:q3",
       "title": "GATE ME 2022 | Set 2 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Numerical Methods",
+        "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Exact value\n\n$$\\begin{aligned}\n\n&=\\int_{1}^{2} (4x^2+2x+6)dx\\\\\n\n&=\\frac{4x^3}{3}+\\frac{2x^2}{2}+6x\\\\\n\n&=\\frac{4}{3}(\\pi) \\times (3)+6\\\\\n\n&=\\frac{28}{3}+9=\\frac{55}{3}\n\n\\end{aligned}$$\n\nApproximate value\n\nHere f(x) is a polynomial of degree 2, so Simpsons\n\nrule gives exact value with zero error\n\n$$\\begin{aligned}\n\n\\therefore  \\;\\; \\text{Approx value}&=\\frac{55}{3}\\\\\n\n\\frac{I_e-I_s}{I_e}&=0\\\\\n\n\\therefore \\;\\;e=\\left (\\frac{I_e-I_s}{I_e}  \\right )\\times 100&=0\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2022:q4-s2": {
       "question_uid": "pp:me:2022:q4-s2",
-      "exam_uid": "me:2022:set2:q4",
+      "exam_uid": "me:2022:set2:main:q4",
       "title": "GATE ME 2022 | Set 2 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -172,15 +184,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\n&\\text{ Let }(x+b)=t\\\\\n\n&\\Rightarrow \\; dx=dt\\\\\n\n&\\text{When ,} x=-\\infty ;t=-\\infty \\\\\n\n&\\int_{-\\infty }^{-\\infty }e^{-n(x+b)^2}dx=\\int_{-\\infty }^{-\\infty }e^{-at^2}dt\\\\\n\n&\\text{Let, }at^2=y^2\\Rightarrow t=\\frac{y}{\\sqrt{a}}\\\\\n\n&2at\\;dt=3y\\;dy\\\\\n\n&dt=\\frac{ydy}{at}=\\frac{ydy}{a\\frac{y}{\\sqrt{a}}}=\\frac{y}{\\sqrt{a}}\\\\\n\n&\\int_{-\\infty }^{-\\infty }e^{-at^2}dt=\\int_{-\\infty }^{-\\infty }e^{-y^2}\\cdot \\frac{dy}{\\sqrt{a}}=\\sqrt{\\frac{\\pi}{a}}\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2022:q5-s2": {
       "question_uid": "pp:me:2022:q5-s2",
-      "exam_uid": "me:2022:set2:q5",
+      "exam_uid": "me:2022:set2:main:q5",
       "title": "GATE ME 2022 | Set 2 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -214,15 +229,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Since $\\varphi (s)$ has a triple roots at $s=-\\sigma$\n\nTherefore, $\\varphi (s)=(s+\\sigma )^3\\psi (s)$\n\nIt satisfies all the conditions in option (B) is correct.",
         "images": []
       }
     },
     "pp:me:2022:q6-s2": {
       "question_uid": "pp:me:2022:q6-s2",
-      "exam_uid": "me:2022:set2:q6",
+      "exam_uid": "me:2022:set2:main:q6",
       "title": "GATE ME 2022 | Set 2 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:me:2022:q7-s2": {
       "question_uid": "pp:me:2022:q7-s2",
-      "exam_uid": "me:2022:set2:q7",
+      "exam_uid": "me:2022:set2:main:q7",
       "title": "GATE ME 2022 | Set 2 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -307,8 +328,11 @@
     },
     "pp:me:2022:q8-s2": {
       "question_uid": "pp:me:2022:q8-s2",
-      "exam_uid": "me:2022:set2:q8",
+      "exam_uid": "me:2022:set2:main:q8",
       "title": "GATE ME 2022 | Set 2 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -349,8 +373,11 @@
     },
     "pp:me:2022:q9-s2": {
       "question_uid": "pp:me:2022:q9-s2",
-      "exam_uid": "me:2022:set2:q9",
+      "exam_uid": "me:2022:set2:main:q9",
       "title": "GATE ME 2022 | Set 2 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -393,8 +420,11 @@
     },
     "pp:me:2022:q10-s2": {
       "question_uid": "pp:me:2022:q10-s2",
-      "exam_uid": "me:2022:set2:q10",
+      "exam_uid": "me:2022:set2:main:q10",
       "title": "GATE ME 2022 | Set 2 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -437,8 +467,11 @@
     },
     "pp:me:2022:q11-s2": {
       "question_uid": "pp:me:2022:q11-s2",
-      "exam_uid": "me:2022:set2:q11",
+      "exam_uid": "me:2022:set2:main:q11",
       "title": "GATE ME 2022 | Set 2 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -479,8 +512,11 @@
     },
     "pp:me:2022:q12-s2": {
       "question_uid": "pp:me:2022:q12-s2",
-      "exam_uid": "me:2022:set2:q12",
+      "exam_uid": "me:2022:set2:main:q12",
       "title": "GATE ME 2022 | Set 2 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -521,8 +557,11 @@
     },
     "pp:me:2022:q13-s2": {
       "question_uid": "pp:me:2022:q13-s2",
-      "exam_uid": "me:2022:set2:q13",
+      "exam_uid": "me:2022:set2:main:q13",
       "title": "GATE ME 2022 | Set 2 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -563,8 +602,11 @@
     },
     "pp:me:2022:q14-s2": {
       "question_uid": "pp:me:2022:q14-s2",
-      "exam_uid": "me:2022:set2:q14",
+      "exam_uid": "me:2022:set2:main:q14",
       "title": "GATE ME 2022 | Set 2 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -607,8 +649,11 @@
     },
     "pp:me:2022:q15-s2": {
       "question_uid": "pp:me:2022:q15-s2",
-      "exam_uid": "me:2022:set2:q15",
+      "exam_uid": "me:2022:set2:main:q15",
       "title": "GATE ME 2022 | Set 2 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -651,8 +696,11 @@
     },
     "pp:me:2022:q16-s2": {
       "question_uid": "pp:me:2022:q16-s2",
-      "exam_uid": "me:2022:set2:q16",
+      "exam_uid": "me:2022:set2:main:q16",
       "title": "GATE ME 2022 | Set 2 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MSQ",
       "marks": 1,
@@ -693,8 +741,11 @@
     },
     "pp:me:2022:q17-s2": {
       "question_uid": "pp:me:2022:q17-s2",
-      "exam_uid": "me:2022:set2:q17",
+      "exam_uid": "me:2022:set2:main:q17",
       "title": "GATE ME 2022 | Set 2 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MSQ",
       "marks": 1,
@@ -735,8 +786,11 @@
     },
     "pp:me:2022:q18-s2": {
       "question_uid": "pp:me:2022:q18-s2",
-      "exam_uid": "me:2022:set2:q18",
+      "exam_uid": "me:2022:set2:main:q18",
       "title": "GATE ME 2022 | Set 2 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MSQ",
       "marks": 1,
@@ -779,8 +833,11 @@
     },
     "pp:me:2022:q19-s2": {
       "question_uid": "pp:me:2022:q19-s2",
-      "exam_uid": "me:2022:set2:q19",
+      "exam_uid": "me:2022:set2:main:q19",
       "title": "GATE ME 2022 | Set 2 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MSQ",
       "marks": 1,
@@ -821,8 +878,11 @@
     },
     "pp:me:2022:q20-s2": {
       "question_uid": "pp:me:2022:q20-s2",
-      "exam_uid": "me:2022:set2:q20",
+      "exam_uid": "me:2022:set2:main:q20",
       "title": "GATE ME 2022 | Set 2 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 1,
@@ -864,8 +924,11 @@
     },
     "pp:me:2022:q21-s2": {
       "question_uid": "pp:me:2022:q21-s2",
-      "exam_uid": "me:2022:set2:q21",
+      "exam_uid": "me:2022:set2:main:q21",
       "title": "GATE ME 2022 | Set 2 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 1,
@@ -904,8 +967,11 @@
     },
     "pp:me:2022:q22-s2": {
       "question_uid": "pp:me:2022:q22-s2",
-      "exam_uid": "me:2022:set2:q22",
+      "exam_uid": "me:2022:set2:main:q22",
       "title": "GATE ME 2022 | Set 2 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 1,
@@ -944,8 +1010,11 @@
     },
     "pp:me:2022:q23-s2": {
       "question_uid": "pp:me:2022:q23-s2",
-      "exam_uid": "me:2022:set2:q23",
+      "exam_uid": "me:2022:set2:main:q23",
       "title": "GATE ME 2022 | Set 2 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 1,
@@ -986,8 +1055,11 @@
     },
     "pp:me:2022:q24-s2": {
       "question_uid": "pp:me:2022:q24-s2",
-      "exam_uid": "me:2022:set2:q24",
+      "exam_uid": "me:2022:set2:main:q24",
       "title": "GATE ME 2022 | Set 2 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 1,
@@ -1028,8 +1100,11 @@
     },
     "pp:me:2022:q25-s2": {
       "question_uid": "pp:me:2022:q25-s2",
-      "exam_uid": "me:2022:set2:q25",
+      "exam_uid": "me:2022:set2:main:q25",
       "title": "GATE ME 2022 | Set 2 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 1,
@@ -1068,8 +1143,11 @@
     },
     "pp:me:2022:q26-s2": {
       "question_uid": "pp:me:2022:q26-s2",
-      "exam_uid": "me:2022:set2:q26",
+      "exam_uid": "me:2022:set2:main:q26",
       "title": "GATE ME 2022 | Set 2 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1103,15 +1181,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Given D.E. is $\\frac{du}{dx}=\\frac{-xu^2}{2+x^2u}$\n\n$\\Rightarrow (2+x^2u)du+xu^2dx=0$\n\nHere $M=xu^2 \\;\\;\\;\\;N=2+x^2u$\n\n$\\frac{\\partial N}{\\partial x}=2xu \\;\\;\\;\\;\\;\\frac{\\partial M}{\\partial x}=2xu$\n\nThis is exact D.E\n\nGeneral solution is\n\n$\\int_{\\text{u constant}}Mdx+\\int_{\\text{term without 'x'}}Ndx=c$\n\n$\\Rightarrow \\int (xu^2)dx+\\int 2du=c$\n\n$\\therefore \\; \\frac{x^2u^2}{2}+2u=constant$",
         "images": []
       }
     },
     "pp:me:2022:q27-s2": {
       "question_uid": "pp:me:2022:q27-s2",
-      "exam_uid": "me:2022:set2:q27",
+      "exam_uid": "me:2022:set2:main:q27",
       "title": "GATE ME 2022 | Set 2 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1156,8 +1237,11 @@
     },
     "pp:me:2022:q28-s2": {
       "question_uid": "pp:me:2022:q28-s2",
-      "exam_uid": "me:2022:set2:q28",
+      "exam_uid": "me:2022:set2:main:q28",
       "title": "GATE ME 2022 | Set 2 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1201,8 +1285,11 @@
     },
     "pp:me:2022:q29-s2": {
       "question_uid": "pp:me:2022:q29-s2",
-      "exam_uid": "me:2022:set2:q29",
+      "exam_uid": "me:2022:set2:main:q29",
       "title": "GATE ME 2022 | Set 2 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1246,8 +1333,11 @@
     },
     "pp:me:2022:q30-s2": {
       "question_uid": "pp:me:2022:q30-s2",
-      "exam_uid": "me:2022:set2:q30",
+      "exam_uid": "me:2022:set2:main:q30",
       "title": "GATE ME 2022 | Set 2 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1294,8 +1384,11 @@
     },
     "pp:me:2022:q31-s2": {
       "question_uid": "pp:me:2022:q31-s2",
-      "exam_uid": "me:2022:set2:q31",
+      "exam_uid": "me:2022:set2:main:q31",
       "title": "GATE ME 2022 | Set 2 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1336,8 +1429,11 @@
     },
     "pp:me:2022:q32-s2": {
       "question_uid": "pp:me:2022:q32-s2",
-      "exam_uid": "me:2022:set2:q32",
+      "exam_uid": "me:2022:set2:main:q32",
       "title": "GATE ME 2022 | Set 2 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1380,8 +1476,11 @@
     },
     "pp:me:2022:q33-s2": {
       "question_uid": "pp:me:2022:q33-s2",
-      "exam_uid": "me:2022:set2:q33",
+      "exam_uid": "me:2022:set2:main:q33",
       "title": "GATE ME 2022 | Set 2 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1424,8 +1523,11 @@
     },
     "pp:me:2022:q34-s2": {
       "question_uid": "pp:me:2022:q34-s2",
-      "exam_uid": "me:2022:set2:q34",
+      "exam_uid": "me:2022:set2:main:q34",
       "title": "GATE ME 2022 | Set 2 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1466,8 +1568,11 @@
     },
     "pp:me:2022:q35-s2": {
       "question_uid": "pp:me:2022:q35-s2",
-      "exam_uid": "me:2022:set2:q35",
+      "exam_uid": "me:2022:set2:main:q35",
       "title": "GATE ME 2022 | Set 2 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -1510,8 +1615,11 @@
     },
     "pp:me:2022:q36-s2": {
       "question_uid": "pp:me:2022:q36-s2",
-      "exam_uid": "me:2022:set2:q36",
+      "exam_uid": "me:2022:set2:main:q36",
       "title": "GATE ME 2022 | Set 2 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MSQ",
       "marks": 2,
@@ -1545,15 +1653,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Zero solution is always a solution of $Ax = 0$.\n\nOption (b) is correct.\n\nGiven A is 3x5 real matrix and $r(A) = 2$ and $Ax = 0$\n\nis a system of homogeneous linear equations since\n\n$r(A) \\lt$ number of unknown the system has infinite\n\nsolution option (c) is also correct.",
         "images": []
       }
     },
     "pp:me:2022:q37-s2": {
       "question_uid": "pp:me:2022:q37-s2",
-      "exam_uid": "me:2022:set2:q37",
+      "exam_uid": "me:2022:set2:main:q37",
       "title": "GATE ME 2022 | Set 2 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MSQ",
       "marks": 2,
@@ -1596,8 +1707,11 @@
     },
     "pp:me:2022:q38-s2": {
       "question_uid": "pp:me:2022:q38-s2",
-      "exam_uid": "me:2022:set2:q38",
+      "exam_uid": "me:2022:set2:main:q38",
       "title": "GATE ME 2022 | Set 2 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1629,15 +1743,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "From the property of eigen values,\n\nSum of eigen values = Trace of matrix\n\n4=3+q\n\nq=1\n\nProduct of eigen values = Determinant\n\n$$\\begin{aligned}\n\n-1&=\\begin{vmatrix}\n\n3 &p \\\\\n\np& q\n\n\\end{vmatrix}\\\\\n\n3q-p^2&=-1\\\\\n\n3-p^2&=-1\\\\\n\np^2&=4\\\\\n\np&=\\pm 2\\\\\n\n\\Rightarrow |p|&=2\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2022:q39-s2": {
       "question_uid": "pp:me:2022:q39-s2",
-      "exam_uid": "me:2022:set2:q39",
+      "exam_uid": "me:2022:set2:main:q39",
       "title": "GATE ME 2022 | Set 2 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1669,7 +1786,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (ME) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "Given contour is a circle at centre (0,0) and radius\n\n2 given function is  $\\frac{1}{(z-i)(z+4i)}$  here $z = i$ is a\n\nsingular point lies now by caucus integral formula\n\n<img src=\"/question-images/me/2022/me-2022-360e08a35b.webp\" />\n\n$$\\begin{aligned}\n\n&\\int \\frac{1}{(z-i)(z+4i)}dz=\\int \\frac{\\left ( \\frac{1}{z+4} \\right )}{z-i}dz=2 \\pi i \\times f(i)\\\\\n\n&f(z)=\\frac{1}{z+4i}\\\\\n\n&f(i)=\\frac{1}{5i}\\\\\n\n&2 \\pi i \\times f(i)=2 \\pi i \\times \\frac{1}{5i}=\\frac{2\\pi}{5}\\\\\n\n&\\text{Now }\\frac{1}{2 \\pi}\\int_{c}\\frac{1}{(z-1)(z+4i)}dz=\\frac{1}{2 \\pi}+\\frac{2 \\pi}{5}=\\frac{1}{5}\n\n\\end{aligned}$$",
         "images": [
           "/question-images/me/2022/me-2022-360e08a35b.webp"
@@ -1678,8 +1795,11 @@
     },
     "pp:me:2022:q40-s2": {
       "question_uid": "pp:me:2022:q40-s2",
-      "exam_uid": "me:2022:set2:q40",
+      "exam_uid": "me:2022:set2:main:q40",
       "title": "GATE ME 2022 | Set 2 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1718,8 +1838,11 @@
     },
     "pp:me:2022:q41-s2": {
       "question_uid": "pp:me:2022:q41-s2",
-      "exam_uid": "me:2022:set2:q41",
+      "exam_uid": "me:2022:set2:main:q41",
       "title": "GATE ME 2022 | Set 2 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1760,8 +1883,11 @@
     },
     "pp:me:2022:q42-s2": {
       "question_uid": "pp:me:2022:q42-s2",
-      "exam_uid": "me:2022:set2:q42",
+      "exam_uid": "me:2022:set2:main:q42",
       "title": "GATE ME 2022 | Set 2 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1802,8 +1928,11 @@
     },
     "pp:me:2022:q43-s2": {
       "question_uid": "pp:me:2022:q43-s2",
-      "exam_uid": "me:2022:set2:q43",
+      "exam_uid": "me:2022:set2:main:q43",
       "title": "GATE ME 2022 | Set 2 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1844,8 +1973,11 @@
     },
     "pp:me:2022:q44-s2": {
       "question_uid": "pp:me:2022:q44-s2",
-      "exam_uid": "me:2022:set2:q44",
+      "exam_uid": "me:2022:set2:main:q44",
       "title": "GATE ME 2022 | Set 2 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1884,8 +2016,11 @@
     },
     "pp:me:2022:q45-s2": {
       "question_uid": "pp:me:2022:q45-s2",
-      "exam_uid": "me:2022:set2:q45",
+      "exam_uid": "me:2022:set2:main:q45",
       "title": "GATE ME 2022 | Set 2 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1924,8 +2059,11 @@
     },
     "pp:me:2022:q46-s2": {
       "question_uid": "pp:me:2022:q46-s2",
-      "exam_uid": "me:2022:set2:q46",
+      "exam_uid": "me:2022:set2:main:q46",
       "title": "GATE ME 2022 | Set 2 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -1964,8 +2102,11 @@
     },
     "pp:me:2022:q47-s2": {
       "question_uid": "pp:me:2022:q47-s2",
-      "exam_uid": "me:2022:set2:q47",
+      "exam_uid": "me:2022:set2:main:q47",
       "title": "GATE ME 2022 | Set 2 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2004,8 +2145,11 @@
     },
     "pp:me:2022:q48-s2": {
       "question_uid": "pp:me:2022:q48-s2",
-      "exam_uid": "me:2022:set2:q48",
+      "exam_uid": "me:2022:set2:main:q48",
       "title": "GATE ME 2022 | Set 2 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2044,8 +2188,11 @@
     },
     "pp:me:2022:q49-s2": {
       "question_uid": "pp:me:2022:q49-s2",
-      "exam_uid": "me:2022:set2:q49",
+      "exam_uid": "me:2022:set2:main:q49",
       "title": "GATE ME 2022 | Set 2 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2086,8 +2233,11 @@
     },
     "pp:me:2022:q50-s2": {
       "question_uid": "pp:me:2022:q50-s2",
-      "exam_uid": "me:2022:set2:q50",
+      "exam_uid": "me:2022:set2:main:q50",
       "title": "GATE ME 2022 | Set 2 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2128,8 +2278,11 @@
     },
     "pp:me:2022:q51-s2": {
       "question_uid": "pp:me:2022:q51-s2",
-      "exam_uid": "me:2022:set2:q51",
+      "exam_uid": "me:2022:set2:main:q51",
       "title": "GATE ME 2022 | Set 2 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2170,8 +2323,11 @@
     },
     "pp:me:2022:q52-s2": {
       "question_uid": "pp:me:2022:q52-s2",
-      "exam_uid": "me:2022:set2:q52",
+      "exam_uid": "me:2022:set2:main:q52",
       "title": "GATE ME 2022 | Set 2 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2212,8 +2368,11 @@
     },
     "pp:me:2022:q53-s2": {
       "question_uid": "pp:me:2022:q53-s2",
-      "exam_uid": "me:2022:set2:q53",
+      "exam_uid": "me:2022:set2:main:q53",
       "title": "GATE ME 2022 | Set 2 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2252,8 +2411,11 @@
     },
     "pp:me:2022:q54-s2": {
       "question_uid": "pp:me:2022:q54-s2",
-      "exam_uid": "me:2022:set2:q54",
+      "exam_uid": "me:2022:set2:main:q54",
       "title": "GATE ME 2022 | Set 2 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2294,8 +2456,11 @@
     },
     "pp:me:2022:q55-s2": {
       "question_uid": "pp:me:2022:q55-s2",
-      "exam_uid": "me:2022:set2:q55",
+      "exam_uid": "me:2022:set2:main:q55",
       "title": "GATE ME 2022 | Set 2 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "NAT",
       "marks": 2,
@@ -2337,8 +2502,11 @@
     },
     "pp:me:2022:q56-s2": {
       "question_uid": "pp:me:2022:q56-s2",
-      "exam_uid": "me:2022:set2:q56",
-      "title": "GATE ME 2022 | Set 2 | Question: 56",
+      "exam_uid": "me:2022:set2:ga:q1",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -2371,15 +2539,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Board means a surface, frame, or device for posing\n\nnotices or writing on the blackboard. Bored means\n\nfilled with or characterized by boredom.",
         "images": []
       }
     },
     "pp:me:2022:q57-s2": {
       "question_uid": "pp:me:2022:q57-s2",
-      "exam_uid": "me:2022:set2:q57",
-      "title": "GATE ME 2022 | Set 2 | Question: 57",
+      "exam_uid": "me:2022:set2:ga:q2",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -2412,15 +2583,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\n2-5x \\leq -\\frac{6x-5}{3}\\\\\n\n1-9x\\leq 0\\\\\n\n\\Rightarrow 1\\leq 9x\\Rightarrow x\\geq \\frac{1}{9}\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:me:2022:q58-s2": {
       "question_uid": "pp:me:2022:q58-s2",
-      "exam_uid": "me:2022:set2:q58",
-      "title": "GATE ME 2022 | Set 2 | Question: 58",
+      "exam_uid": "me:2022:set2:ga:q3",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -2453,7 +2627,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\nf(x)&=2 \\ln ( \\sqrt{e^x})\\\\\n\n&=2 \\ln (e^{x/2})=2 \\log _e e^{x/2}\\\\\n\nf(x)&=2\\left ( \\frac{x}{2} \\right )=x\n\n\\end{aligned}$$\n\n<img src=\"/question-images/me/2022/me-2022-6be9025c6a.webp\" />\n\nArea =(1/2) x 2 x 2=2",
         "images": [
           "/question-images/me/2022/me-2022-6be9025c6a.webp"
@@ -2462,8 +2636,11 @@
     },
     "pp:me:2022:q59-s2": {
       "question_uid": "pp:me:2022:q59-s2",
-      "exam_uid": "me:2022:set2:q59",
-      "title": "GATE ME 2022 | Set 2 | Question: 59",
+      "exam_uid": "me:2022:set2:ga:q4",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -2496,15 +2673,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "February month have 5 Mondays.\n\nFebruary - 29 days = 4 weeks 1 day -> Monday\n\n29th Feb is Monday\n\n1st | 8th | 15th | 22nd | 29th Feb is Mondays.\n\nSo, 2nd Feb is Tuesday.",
         "images": []
       }
     },
     "pp:me:2022:q60-s2": {
       "question_uid": "pp:me:2022:q60-s2",
-      "exam_uid": "me:2022:set2:q60",
-      "title": "GATE ME 2022 | Set 2 | Question: 60",
+      "exam_uid": "me:2022:set2:ga:q5",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 1,
@@ -2537,15 +2717,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Priority: Shape, position and size.\n\nAs per size point of view parallelogram is not suitable.",
         "images": []
       }
     },
     "pp:me:2022:q61-s2": {
       "question_uid": "pp:me:2022:q61-s2",
-      "exam_uid": "me:2022:set2:q61",
-      "title": "GATE ME 2022 | Set 2 | Question: 61",
+      "exam_uid": "me:2022:set2:ga:q6",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -2578,15 +2761,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Ultra-black skin advantages that avoids predators\n\nand attacks their prey.\n\nUltra-black skin disadvantage is that the skin is\n\nmore fragile means easily broken or destroyed.",
         "images": []
       }
     },
     "pp:me:2022:q62-s2": {
       "question_uid": "pp:me:2022:q62-s2",
-      "exam_uid": "me:2022:set2:q62",
-      "title": "GATE ME 2022 | Set 2 | Question: 62",
+      "exam_uid": "me:2022:set2:ga:q7",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -2619,15 +2805,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Total production = Average x No. of days\n\nP= 100 m\n\nand\n\nP + 180 = 110 (m+1)\n\nSolving, m = 7",
         "images": []
       }
     },
     "pp:me:2022:q63-s2": {
       "question_uid": "pp:me:2022:q63-s2",
-      "exam_uid": "me:2022:set2:q63",
-      "title": "GATE ME 2022 | Set 2 | Question: 63",
+      "exam_uid": "me:2022:set2:ga:q8",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -2660,15 +2849,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "f(2,2) = 2 x 2 = 4\n\ng(2,2) = 4\n\nf(2,2) = g(2,2)",
         "images": []
       }
     },
     "pp:me:2022:q64-s2": {
       "question_uid": "pp:me:2022:q64-s2",
-      "exam_uid": "me:2022:set2:q64",
-      "title": "GATE ME 2022 | Set 2 | Question: 64",
+      "exam_uid": "me:2022:set2:ga:q9",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -2701,15 +2893,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "R at 7 am\n\n1 hour journey\n\nReached Q at 8 am\n\nAt Q buses available timings are 5 am, 7am, 9 am ..\n\nPerson started at Q at 9 am\n\n1 hour journey reached P at 10 am.\n\nBuses timings at P are 8 am, 9:30am, 11 am, 12:30\n\npm...\n\nPerson started at P at 11 am\n\n1 hour journey\n\nReached S at 12 noon.\n\nBuses timings at S are\n\n8am, 8:45 am, 9:30 am, 10:15 am, 11am, 11:45 am,\n\n12:30pm ....\n\nPerson started at S at 12:30 pm\n\n1 hour journey\n\nReached R at 1:30 pm\n\nMinimum Total time = 1:30 pm - 7 am\n\n= 6 hrs 30 min",
         "images": []
       }
     },
     "pp:me:2022:q65-s2": {
       "question_uid": "pp:me:2022:q65-s2",
-      "exam_uid": "me:2022:set2:q65",
-      "title": "GATE ME 2022 | Set 2 | Question: 65",
+      "exam_uid": "me:2022:set2:ga:q10",
+      "title": "GATE ME 2022 | Set 2 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2022-set2",
       "type": "MCQ",
       "marks": 2,
@@ -2742,7 +2937,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-c97394a387.webp\" />\n\n$2d=1\\Rightarrow d=\\frac{1}{2}$\n\nArea of circle $=\\frac{\\pi d^2}{4}=\\frac{\\pi}{16}$\n\nTotal circle area $= 4 \\times \\frac{\\pi}{16}=\\frac{\\pi}{4}$\n\n<img src=\"/question-images/me/2022/me-2022-a119dffb8d.webp\" />\n\n$3d=1\\Rightarrow d=\\frac{1}{3}$\n\nArea of circle $=\\frac{\\pi d^2}{4}=\\frac{\\pi}{36}$\n\nTotal circle area $= 9 \\times \\frac{\\pi}{36}=\\frac{\\pi}{4}$\n\n$\\frac{\\text{Unshaded area M}}{\\text{Unshaded area N}}=\\frac{1^2-\\frac{\\pi}{4}}{1-\\frac{\\pi}{4}}=\\frac{1}{1}=1:1$",
         "images": [
           "/question-images/me/2022/me-2022-c97394a387.webp",

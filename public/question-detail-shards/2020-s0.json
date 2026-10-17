@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T18:29:25.621Z",
+  "generatedAt": "2026-10-17T21:39:52.230Z",
   "shardKey": "2020-s0",
   "yearSetKey": "2020-s0",
   "yearSetIdentity": "cse:2020:set-0",
@@ -766,7 +766,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Regular Expression",
+        "concept": "gatecse-2020: regular-expression",
         "markdown": "Check each option against strings with an odd number of 1s:\n\n- Option 1: $(0+1)^*$ inside can add extra 1s, e.g. 1111 (even) is generated False\n\n- Option 2: always ends with 1, so \"10\" is missing False\n\n- Option 3: always starts with 1, so \"01\" is missing False\n\n- Option 4: $(0^*10^*10^*)^*10^*$ gives pairs of 1s and then one more 1, but a leading 0 before a single 1 (e.g. \"01\") cannot be produced False\n\nNone of the options is exactly right, so the official key gave <b>marks to all</b>. A correct expression is $0^*1(0^*10^*1)^*0^*$.\n\n<b>Answer: Option 4 is the closest (MTA in the official key)</b>\n\nAs per Official GATE CSE 2020 Answer key _MTA (Marks to All)",
         "images": []
       }
@@ -1411,7 +1411,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Cache Memory",
+        "concept": "gatecse-2020: numerical-answers",
         "markdown": "Block = 256 bytes = 32 words of 8 bytes.\n\nMiss penalty = first word 20 ns + 31 more words $\\times$ 5 ns = 175 ns.\n\nAverage access time = hit time + miss rate $\\times$ miss penalty = $3+0.06\\times175=3+10.5=13.5$ ns.\n\n(If cache access is counted only on hits: $0.94\\times3+0.06\\times175\\approx13.3$, which the official key also accepts.)\n\n<b>Answer: 13.5</b>\n\nOther Answer as per GATE 2020 Answer Key : 13.3 to 13.3 or 13.5 to 13.5",
         "images": []
       }

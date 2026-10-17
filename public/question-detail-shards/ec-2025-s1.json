@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.169Z",
+  "generatedAt": "2026-10-17T21:30:25.078Z",
   "shardKey": "ec-2025-s1",
   "yearSetKey": "ec-2025-s1",
   "yearSetIdentity": "ec:2025:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ec:2025:q1": {
       "question_uid": "pp:ec:2025:q1",
-      "exam_uid": "ec:2025:set1:q1",
+      "exam_uid": "ec:2025:set1:main:q1",
       "title": "GATE EC 2025 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -46,15 +49,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "We are given an upper triangular matrix:\n\n$$A = \\begin{bmatrix}\n\n2 & 3 & 4 & 5 \\\\\n\n0 & 6 & 7 & 8 \\\\\n\n0 & 0 & \\alpha & \\beta \\\\\n\n0 & 0 & 0 & \\gamma\n\n\\end{bmatrix}$$\n\nThe rank of a matrix is the number of non-zero rows in its row echelon form. For an upper triangular matrix, each non-zero pivot (i.e., leading diagonal entry) contributes to the rank.\n\nLet's analyze each case:\n\n(i) $\\alpha = 0$, $\\beta = \\gamma \\ne 0$\n\nRow 3 becomes $[0\\ 0\\ 0\\ \\beta]$ and row 4 is $[0\\ 0\\ 0\\ \\gamma]$, but $\\beta = \\gamma \\ne 0$. Since row 3 still has a non-zero entry (in column 4), and so does row 4, we still have all 4 non-zero rows. Hence, rank = 4 $\\geq 3$. Valid\n\n(ii) $\\alpha = \\beta = \\gamma = 0$\n\nThen rows 3 and 4 become all zero. Only rows 1 and 2 remain non-zero. So, rank = 2 $< 3$. Not valid\n\n(iii) $\\beta = \\gamma = 0$, $\\alpha \\ne 0$\n\nRow 3 is $[0\\ 0\\ \\alpha\\ 0]$, which is non-zero, and row 4 is zero. So we have 3 non-zero rows. Rank = 3  Valid\n\n(iv) $\\alpha = \\beta = \\gamma \\ne 0$\n\nThen all rows are non-zero. Rank = 4 $\\geq 3$ Valid",
         "images": []
       }
     },
     "pp:ec:2025:q2": {
       "question_uid": "pp:ec:2025:q2",
-      "exam_uid": "ec:2025:set1:q2",
+      "exam_uid": "ec:2025:set1:main:q2",
       "title": "GATE EC 2025 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -88,15 +94,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "(i) $\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$\n\nThis is a p-series with $p = \\frac{1}{2} < 1$.\n\nA p-series $\\sum \\frac{1}{n^p}$ converges only if $p > 1$.\n\nSo this series diverges.\n\n(ii) $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$\n\nWe use partial fractions:\n\n$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$\n\nSo it becomes a telescoping series:\n\n$\\sum_{n=1}^{\\infty} \\left( \\frac{1}{n} - \\frac{1}{n+1} \\right) = 1 + \\left( \\frac{1}{2} - \\frac{1}{2} \\right) + \\left( \\frac{1}{3} - \\frac{1}{3} \\right) + \\cdots$\n\nAll terms cancel except the first one, so the sum is finite.\n\nThis series converges.\n\n(iii) $\\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nThis is a standard exponential series (part of $e^x$ expansion).\n\nSince $n!$ grows faster than any exponential or polynomial, this series converges absolutely.",
         "images": []
       }
     },
     "pp:ec:2025:q3": {
       "question_uid": "pp:ec:2025:q3",
-      "exam_uid": "ec:2025:set1:q3",
+      "exam_uid": "ec:2025:set1:main:q3",
       "title": "GATE EC 2025 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -130,15 +139,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Total balls = 2 red + 2 blue = 4 balls\n\nWe draw 2 balls without replacement. Total number of ways to choose 2 balls from 4:\n\n$\\binom{4}{2} = 6$\n\nNow, we count the favorable outcomes where the two balls have different colours:\n\nChoose 1 red and 1 blue:\n\n$\\binom{2}{1} \\times \\binom{2}{1} = 2 \\times 2 = 4$ ways\n\nSo the probability is:\n\n$\\frac{\\text{Favorable outcomes}}{\\text{Total outcomes}} = \\frac{4}{6} = \\frac{2}{3}$",
         "images": []
       }
     },
     "pp:ec:2025:q4": {
       "question_uid": "pp:ec:2025:q4",
-      "exam_uid": "ec:2025:set1:q4",
+      "exam_uid": "ec:2025:set1:main:q4",
       "title": "GATE EC 2025 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -179,8 +191,11 @@
     },
     "pp:ec:2025:q5": {
       "question_uid": "pp:ec:2025:q5",
-      "exam_uid": "ec:2025:set1:q5",
+      "exam_uid": "ec:2025:set1:main:q5",
       "title": "GATE EC 2025 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -221,8 +236,11 @@
     },
     "pp:ec:2025:q6": {
       "question_uid": "pp:ec:2025:q6",
-      "exam_uid": "ec:2025:set1:q6",
+      "exam_uid": "ec:2025:set1:main:q6",
       "title": "GATE EC 2025 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -263,8 +281,11 @@
     },
     "pp:ec:2025:q7": {
       "question_uid": "pp:ec:2025:q7",
-      "exam_uid": "ec:2025:set1:q7",
+      "exam_uid": "ec:2025:set1:main:q7",
       "title": "GATE EC 2025 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -305,8 +326,11 @@
     },
     "pp:ec:2025:q8": {
       "question_uid": "pp:ec:2025:q8",
-      "exam_uid": "ec:2025:set1:q8",
+      "exam_uid": "ec:2025:set1:main:q8",
       "title": "GATE EC 2025 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -347,8 +371,11 @@
     },
     "pp:ec:2025:q9": {
       "question_uid": "pp:ec:2025:q9",
-      "exam_uid": "ec:2025:set1:q9",
+      "exam_uid": "ec:2025:set1:main:q9",
       "title": "GATE EC 2025 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -391,8 +418,11 @@
     },
     "pp:ec:2025:q10": {
       "question_uid": "pp:ec:2025:q10",
-      "exam_uid": "ec:2025:set1:q10",
+      "exam_uid": "ec:2025:set1:main:q10",
       "title": "GATE EC 2025 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -433,8 +463,11 @@
     },
     "pp:ec:2025:q11": {
       "question_uid": "pp:ec:2025:q11",
-      "exam_uid": "ec:2025:set1:q11",
+      "exam_uid": "ec:2025:set1:main:q11",
       "title": "GATE EC 2025 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -477,8 +510,11 @@
     },
     "pp:ec:2025:q12": {
       "question_uid": "pp:ec:2025:q12",
-      "exam_uid": "ec:2025:set1:q12",
+      "exam_uid": "ec:2025:set1:main:q12",
       "title": "GATE EC 2025 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -519,8 +555,11 @@
     },
     "pp:ec:2025:q13": {
       "question_uid": "pp:ec:2025:q13",
-      "exam_uid": "ec:2025:set1:q13",
+      "exam_uid": "ec:2025:set1:main:q13",
       "title": "GATE EC 2025 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -563,8 +602,11 @@
     },
     "pp:ec:2025:q14": {
       "question_uid": "pp:ec:2025:q14",
-      "exam_uid": "ec:2025:set1:q14",
+      "exam_uid": "ec:2025:set1:main:q14",
       "title": "GATE EC 2025 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -605,8 +647,11 @@
     },
     "pp:ec:2025:q15": {
       "question_uid": "pp:ec:2025:q15",
-      "exam_uid": "ec:2025:set1:q15",
+      "exam_uid": "ec:2025:set1:main:q15",
       "title": "GATE EC 2025 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -640,15 +685,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f(x)=2 x^{3}-3 x^{2}+12 x+1$\n\n$f^{\\prime}(x)=6 x^{2}-6 x-12$\n\n$f^{\\prime \\prime}(x)=12 x-6$\n\nPut\n\n$$\\begin{aligned}\n\nf^{\\prime}(x)=0 &\\Rightarrow x^{2}-x-2=0 \\\\\n\n& \\Rightarrow(\\mathrm{x}-2)(\\mathrm{x}+1)=0 \\\\\n\n& \\Rightarrow \\mathrm{x}=2,-1\n\n\\end{aligned}$$\n\n$\\mathrm{f}^{\\prime \\prime}(2)=18>0 \\Rightarrow \\mathrm{x}=2$ is a local point of minima\n\n$\\mathrm{f}^{\\prime \\prime}(-1)=-18<0 \\Rightarrow \\mathrm{x}=-1$ is a local point of maxima\n\nf has no global maxima.\n\nf has no global minima.",
         "images": []
       }
     },
     "pp:ec:2025:q16": {
       "question_uid": "pp:ec:2025:q16",
-      "exam_uid": "ec:2025:set1:q16",
+      "exam_uid": "ec:2025:set1:main:q16",
       "title": "GATE EC 2025 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -689,8 +737,11 @@
     },
     "pp:ec:2025:q17": {
       "question_uid": "pp:ec:2025:q17",
-      "exam_uid": "ec:2025:set1:q17",
+      "exam_uid": "ec:2025:set1:main:q17",
       "title": "GATE EC 2025 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -731,8 +782,11 @@
     },
     "pp:ec:2025:q18": {
       "question_uid": "pp:ec:2025:q18",
-      "exam_uid": "ec:2025:set1:q18",
+      "exam_uid": "ec:2025:set1:main:q18",
       "title": "GATE EC 2025 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -773,8 +827,11 @@
     },
     "pp:ec:2025:q19": {
       "question_uid": "pp:ec:2025:q19",
-      "exam_uid": "ec:2025:set1:q19",
+      "exam_uid": "ec:2025:set1:main:q19",
       "title": "GATE EC 2025 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -815,8 +872,11 @@
     },
     "pp:ec:2025:q20": {
       "question_uid": "pp:ec:2025:q20",
-      "exam_uid": "ec:2025:set1:q20",
+      "exam_uid": "ec:2025:set1:main:q20",
       "title": "GATE EC 2025 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -857,8 +917,11 @@
     },
     "pp:ec:2025:q21": {
       "question_uid": "pp:ec:2025:q21",
-      "exam_uid": "ec:2025:set1:q21",
+      "exam_uid": "ec:2025:set1:main:q21",
       "title": "GATE EC 2025 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 1,
@@ -899,8 +962,11 @@
     },
     "pp:ec:2025:q22": {
       "question_uid": "pp:ec:2025:q22",
-      "exam_uid": "ec:2025:set1:q22",
+      "exam_uid": "ec:2025:set1:main:q22",
       "title": "GATE EC 2025 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -932,15 +998,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "We are given a second-order linear homogeneous differential equation:\n\n$t^2 y''(t) - 2t y'(t) + 2y(t) = 0$\n\nThis is a Cauchy-Euler equation. Let us try a solution of the form:\n\n$y(t) = t^r$\n\nThen,\n\n$y'(t) = r t^{r-1},\\quad y''(t) = r(r - 1) t^{r-2}$\n\nSubstitute into the equation:\n\n$t^2 \\cdot r(r - 1)t^{r - 2} - 2t \\cdot r t^{r - 1} + 2t^r = 0$\n\n$r(r - 1)t^r - 2r t^r + 2 t^r = 0$\n\n$\\left[r(r - 1) - 2r + 2\\right] t^r = 0$\n\nSimplify the coefficient:\n\n$r^2 - r - 2r + 2 = r^2 - 3r + 2$\n\nSo the auxiliary equation is:\n\n$r^2 - 3r + 2 = 0$\n\n$(r - 1)(r - 2) = 0$\n\n$\\Rightarrow r = 1, 2$\n\nSo the general solution is:\n\n$y(t) = A t^1 + B t^2 = At + Bt^2$\n\nNow compute $y'(t) = A + 2Bt$\n\nWe are given:\n\n$y'(0) = A = 1$\n\n$y'(1) = A + 2B = -1$\n\nFrom these:\n\nFrom $y'(0) = 1 \\Rightarrow A = 1$\n\nThen $y'(1) = 1 + 2B = -1 \\Rightarrow 2B = -2 \\Rightarrow B = -1$\n\nThus, the function is:\n\n$y(t) = t - t^2$\n\nNow find the maximum of $y(t) = t - t^2$ in $[0, 1]$\n\nThis is a downward-opening parabola. Maximum occurs at vertex:\n\n$t = \\frac{1}{2}$\n\n$y\\left(\\frac{1}{2}\\right) = \\frac{1}{2} - \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{2} - \\frac{1}{4} = \\frac{1}{4}$",
         "images": []
       }
     },
     "pp:ec:2025:q23": {
       "question_uid": "pp:ec:2025:q23",
-      "exam_uid": "ec:2025:set1:q23",
+      "exam_uid": "ec:2025:set1:main:q23",
       "title": "GATE EC 2025 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -979,8 +1048,11 @@
     },
     "pp:ec:2025:q24": {
       "question_uid": "pp:ec:2025:q24",
-      "exam_uid": "ec:2025:set1:q24",
+      "exam_uid": "ec:2025:set1:main:q24",
       "title": "GATE EC 2025 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1019,8 +1091,11 @@
     },
     "pp:ec:2025:q25": {
       "question_uid": "pp:ec:2025:q25",
-      "exam_uid": "ec:2025:set1:q25",
+      "exam_uid": "ec:2025:set1:main:q25",
       "title": "GATE EC 2025 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1059,8 +1134,11 @@
     },
     "pp:ec:2025:q26": {
       "question_uid": "pp:ec:2025:q26",
-      "exam_uid": "ec:2025:set1:q26",
+      "exam_uid": "ec:2025:set1:main:q26",
       "title": "GATE EC 2025 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1101,8 +1179,11 @@
     },
     "pp:ec:2025:q27": {
       "question_uid": "pp:ec:2025:q27",
-      "exam_uid": "ec:2025:set1:q27",
+      "exam_uid": "ec:2025:set1:main:q27",
       "title": "GATE EC 2025 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1143,8 +1224,11 @@
     },
     "pp:ec:2025:q28": {
       "question_uid": "pp:ec:2025:q28",
-      "exam_uid": "ec:2025:set1:q28",
+      "exam_uid": "ec:2025:set1:main:q28",
       "title": "GATE EC 2025 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1185,8 +1269,11 @@
     },
     "pp:ec:2025:q29": {
       "question_uid": "pp:ec:2025:q29",
-      "exam_uid": "ec:2025:set1:q29",
+      "exam_uid": "ec:2025:set1:main:q29",
       "title": "GATE EC 2025 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1227,8 +1314,11 @@
     },
     "pp:ec:2025:q30": {
       "question_uid": "pp:ec:2025:q30",
-      "exam_uid": "ec:2025:set1:q30",
+      "exam_uid": "ec:2025:set1:main:q30",
       "title": "GATE EC 2025 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1271,8 +1361,11 @@
     },
     "pp:ec:2025:q31": {
       "question_uid": "pp:ec:2025:q31",
-      "exam_uid": "ec:2025:set1:q31",
+      "exam_uid": "ec:2025:set1:main:q31",
       "title": "GATE EC 2025 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1313,8 +1406,11 @@
     },
     "pp:ec:2025:q32": {
       "question_uid": "pp:ec:2025:q32",
-      "exam_uid": "ec:2025:set1:q32",
+      "exam_uid": "ec:2025:set1:main:q32",
       "title": "GATE EC 2025 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1355,8 +1451,11 @@
     },
     "pp:ec:2025:q33": {
       "question_uid": "pp:ec:2025:q33",
-      "exam_uid": "ec:2025:set1:q33",
+      "exam_uid": "ec:2025:set1:main:q33",
       "title": "GATE EC 2025 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1400,8 +1499,11 @@
     },
     "pp:ec:2025:q34": {
       "question_uid": "pp:ec:2025:q34",
-      "exam_uid": "ec:2025:set1:q34",
+      "exam_uid": "ec:2025:set1:main:q34",
       "title": "GATE EC 2025 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1442,8 +1544,11 @@
     },
     "pp:ec:2025:q35": {
       "question_uid": "pp:ec:2025:q35",
-      "exam_uid": "ec:2025:set1:q35",
+      "exam_uid": "ec:2025:set1:main:q35",
       "title": "GATE EC 2025 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1486,8 +1591,11 @@
     },
     "pp:ec:2025:q36": {
       "question_uid": "pp:ec:2025:q36",
-      "exam_uid": "ec:2025:set1:q36",
+      "exam_uid": "ec:2025:set1:main:q36",
       "title": "GATE EC 2025 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1528,8 +1636,11 @@
     },
     "pp:ec:2025:q37": {
       "question_uid": "pp:ec:2025:q37",
-      "exam_uid": "ec:2025:set1:q37",
+      "exam_uid": "ec:2025:set1:main:q37",
       "title": "GATE EC 2025 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1572,8 +1683,11 @@
     },
     "pp:ec:2025:q38": {
       "question_uid": "pp:ec:2025:q38",
-      "exam_uid": "ec:2025:set1:q38",
+      "exam_uid": "ec:2025:set1:main:q38",
       "title": "GATE EC 2025 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1614,8 +1728,11 @@
     },
     "pp:ec:2025:q39": {
       "question_uid": "pp:ec:2025:q39",
-      "exam_uid": "ec:2025:set1:q39",
+      "exam_uid": "ec:2025:set1:main:q39",
       "title": "GATE EC 2025 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1656,8 +1773,11 @@
     },
     "pp:ec:2025:q40": {
       "question_uid": "pp:ec:2025:q40",
-      "exam_uid": "ec:2025:set1:q40",
+      "exam_uid": "ec:2025:set1:main:q40",
       "title": "GATE EC 2025 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1698,8 +1818,11 @@
     },
     "pp:ec:2025:q41": {
       "question_uid": "pp:ec:2025:q41",
-      "exam_uid": "ec:2025:set1:q41",
+      "exam_uid": "ec:2025:set1:main:q41",
       "title": "GATE EC 2025 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1733,15 +1856,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Given $\\mathrm{m}, \\mathrm{M}$ are min and max values of $\\mathrm{f}(\\mathrm{x})$\n\n$\\Rightarrow \\mathrm{m} \\leq \\mathrm{f}(\\mathrm{x}) \\leq \\mathrm{M}$\n\n$\\Rightarrow \\int_{a}^{b} m d x \\leq \\int_{a}^{b} f(x) d x \\leq \\int_{a}^{b} M d x$\n\n$\\Rightarrow \\int_{2}^{8} \\mathrm{mdx} \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\int_{2}^{8} \\mathrm{Mdx}$\n\n$\\Rightarrow 6 \\mathrm{~m} \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\int 6 \\mathrm{M}$ _____(1)\n\nGiven $\\beta \\leq \\int_{2}^{8} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx} \\leq \\alpha$ _____(2)\n\nFrom (1) and (2) possible values of $\\alpha, \\beta$ are\n\n$\\beta=6 \\mathrm{~m}, \\alpha=5 \\mathrm{M}$\n\n$\\beta=7 \\mathrm{~m}, \\alpha=6 \\mathrm{M}$\n\n$\\beta=7 \\mathrm{~m}, \\alpha=5 \\mathrm{M}$",
         "images": []
       }
     },
     "pp:ec:2025:q42": {
       "question_uid": "pp:ec:2025:q42",
-      "exam_uid": "ec:2025:set1:q42",
+      "exam_uid": "ec:2025:set1:main:q42",
       "title": "GATE EC 2025 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1775,15 +1901,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Complex Variables",
+        "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "Let $f(z)=e^{z}$\n\nThen the function $f(z)$ is every where analytic $\\Rightarrow f(z)$ is analytic at every inside and on the given region $|z|=1$ (or) unit circle.\n\n$\\therefore$ By a Cauchy's theorem, we have $\\oint_{C} f(z)=0$\n\nLet $\\mathrm{f}(\\mathrm{z})=\\mathrm{z}^{\\mathrm{n}}$, where ' n ' is an even integers\n\nThen $$f(z)= \\begin{cases}z^{n}, & n > 0 \\\\ \\frac{1}{z^{n}}, & n < 0\\end{cases}$$\n\nfor $\\mathrm{n}>0, \\mathrm{I}_{1}=\\oint_{\\mathrm{C}} \\mathrm{z}^{\\mathrm{n}} \\mathrm{dz}=0$\n\n$\\therefore\\left(f(z)=z^{n}\\right.$ is analytic every point inside and on a given region $|z|=1$ ).\n\nfor $\\mathrm{n}<0, \\mathrm{I}_{2}=\\oint_{\\mathrm{C}} \\frac{1}{\\mathrm{z}^{\\mathrm{n}}} \\mathrm{dz}$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\oint_{\\mathrm{C}} \\frac{1}{(\\mathrm{z}-0)^{\\mathrm{n}}} \\mathrm{dz} \\quad\\left(\\because \\int_{\\mathrm{C}} \\frac{\\phi(\\mathrm{z})}{\\left[\\overline{\\mathrm{z}}-\\mathrm{z}_{0}\\right]^{\\mathrm{n}}} \\mathrm{dz}=\\oint_{\\mathrm{C}} \\mathrm{f}(\\mathrm{z}) \\mathrm{dz}\\right)$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\frac{2 \\pi \\mathrm{i}}{(\\mathrm{n}-1)!} \\frac{\\mathrm{d}^{\\mathrm{n}-1}}{\\mathrm{dz}^{\\mathrm{n}-1}}(1)$\n\n$\\Rightarrow \\mathrm{I}_{2}=\\frac{2 \\pi \\mathrm{i}}{(\\mathrm{n}-1)!}(0)=0$\n\nLet $\\mathrm{f}(\\mathrm{z})=\\cos (\\mathrm{z})$\n\nThen $f(z)$ is every where analytic\n\n$\\Rightarrow f(z)$ is analytic at every point inside and on the given region $|z|=1$.\n\n$\\therefore$ By a Cauchy's theorem, we have $\\oint_{C} f(z) d z=0$\n\nLet $f(z)=\\sec (z)$\n\nThen $f(z)=\\frac{1}{\\cos (z)}$\n\n$\\Rightarrow$ The singular points of $f(z)$ are given by $\\cos (\\mathrm{z})=0$\n\n$\\Rightarrow \\mathrm{z}=(2 \\mathrm{n}+1) \\frac{\\pi}{2}, \\mathrm{n} \\in \\mathrm{I}$\n\n$\\Rightarrow z= \\pm \\frac{\\pi}{2}, \\pm \\frac{3 \\pi}{2},--$ are singular points\n\nBut all the singular points lie outside the given region $|z|=1$\n\nBy a Cauchy's Theorem we have\n\n$\\oint_{C} f(z) d z=0$\n\nHence, options A and B are TRUE.",
         "images": []
       }
     },
     "pp:ec:2025:q43": {
       "question_uid": "pp:ec:2025:q43",
-      "exam_uid": "ec:2025:set1:q43",
+      "exam_uid": "ec:2025:set1:main:q43",
       "title": "GATE EC 2025 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1826,8 +1955,11 @@
     },
     "pp:ec:2025:q44": {
       "question_uid": "pp:ec:2025:q44",
-      "exam_uid": "ec:2025:set1:q44",
+      "exam_uid": "ec:2025:set1:main:q44",
       "title": "GATE EC 2025 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1870,8 +2002,11 @@
     },
     "pp:ec:2025:q45": {
       "question_uid": "pp:ec:2025:q45",
-      "exam_uid": "ec:2025:set1:q45",
+      "exam_uid": "ec:2025:set1:main:q45",
       "title": "GATE EC 2025 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1912,8 +2047,11 @@
     },
     "pp:ec:2025:q46": {
       "question_uid": "pp:ec:2025:q46",
-      "exam_uid": "ec:2025:set1:q46",
+      "exam_uid": "ec:2025:set1:main:q46",
       "title": "GATE EC 2025 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1954,8 +2092,11 @@
     },
     "pp:ec:2025:q47": {
       "question_uid": "pp:ec:2025:q47",
-      "exam_uid": "ec:2025:set1:q47",
+      "exam_uid": "ec:2025:set1:main:q47",
       "title": "GATE EC 2025 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1999,8 +2140,11 @@
     },
     "pp:ec:2025:q48": {
       "question_uid": "pp:ec:2025:q48",
-      "exam_uid": "ec:2025:set1:q48",
+      "exam_uid": "ec:2025:set1:main:q48",
       "title": "GATE EC 2025 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2032,15 +2176,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$\\mathrm{X}=\\{2,3,4,----12\\}$\n\n$$\\begin{array}{c|ccccccccccc}\n\nx & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\\\\n\n\\hline\n\n\\mathrm{P}(\\mathrm{x}) & \\frac{1}{36} & \\frac{2}{36} & \\frac{3}{36} & \\frac{4}{36}& \\frac{5}{36} & \\frac{6}{36} & \\frac{5}{36} & \\frac{4}{36} & \\frac{3}{36}& \\frac{2}{36} & \\frac{1}{36} \\\\\n\n\\end{array}$$\n\n$$\\begin{aligned}\n\n\\mathrm{E}(\\mathrm{X})&=\\sum \\mathrm{xP}(\\mathrm{x}) \\\\\n\n& =\\frac{1}{36}[2+6+12+20+30+42+40+36+30+22+12] \\\\\n\n& =\\frac{252}{36}=7\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:ec:2025:q49": {
       "question_uid": "pp:ec:2025:q49",
-      "exam_uid": "ec:2025:set1:q49",
+      "exam_uid": "ec:2025:set1:main:q49",
       "title": "GATE EC 2025 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2072,15 +2219,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Vector Analysis",
+        "concept": "Engineering Mathematics - Vector Analysis",
         "markdown": "We are given:\n\n$$\\mathbf{a} = \\begin{bmatrix} 1 \\ 1 \\end{bmatrix}, \\quad \\mathbf{b} = \\begin{bmatrix} 0 \\ 3\\sqrt{2} \\end{bmatrix}$$\n\nWe need to minimize:\n\n$$| ax - b |_2 = \\left| \\begin{bmatrix} x \\ x \\end{bmatrix} - \\begin{bmatrix} 0 \\ 3\\sqrt{2} \\end{bmatrix} \\right|_2 = \\left| \\begin{bmatrix} x \\ x - 3\\sqrt{2} \\end{bmatrix} \\right|_2$$\n\nNow compute the square of the norm:\n\n$| ax - b |_2^2 = x^2 + (x - 3\\sqrt{2})^2$\n\nExpand:\n\n$| ax - b |_2^2 = x^2 + (x^2 - 6\\sqrt{2}x + 18) = 2x^2 - 6\\sqrt{2}x + 18$\n\nMinimize this quadratic in $x$. The minimum occurs at:\n\n$x = \\frac{6\\sqrt{2}}{2 \\cdot 2} = \\frac{3\\sqrt{2}}{2}$\n\nNow compute the minimum value:\n\n$$| ax - b |_2 = \\left| \\begin{bmatrix} x \\ x - 3\\sqrt{2} \\end{bmatrix} \\right|_2 = \\sqrt{x^2 + (x - 3\\sqrt{2})^2}$$\n\nSubstitute $x = \\dfrac{3\\sqrt{2}}{2}$ into the expression:\n\nFirst term:\n\n$x^2 = \\left( \\dfrac{3\\sqrt{2}}{2} \\right)^2 = \\dfrac{9 \\cdot 2}{4} = \\dfrac{18}{4} = 4.5$\n\nSecond term:\n\n$x - 3\\sqrt{2} = \\dfrac{3\\sqrt{2}}{2} - 3\\sqrt{2} = -\\dfrac{3\\sqrt{2}}{2}$\n\nSo, $(x - 3\\sqrt{2})^2 = \\left( -\\dfrac{3\\sqrt{2}}{2} \\right)^2 = 4.5$\n\nTherefore, the minimum norm is:\n\n$\\sqrt{4.5 + 4.5} = \\sqrt{9} = 3$",
         "images": []
       }
     },
     "pp:ec:2025:q50": {
       "question_uid": "pp:ec:2025:q50",
-      "exam_uid": "ec:2025:set1:q50",
+      "exam_uid": "ec:2025:set1:main:q50",
       "title": "GATE EC 2025 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2119,8 +2269,11 @@
     },
     "pp:ec:2025:q51": {
       "question_uid": "pp:ec:2025:q51",
-      "exam_uid": "ec:2025:set1:q51",
+      "exam_uid": "ec:2025:set1:main:q51",
       "title": "GATE EC 2025 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2164,8 +2317,11 @@
     },
     "pp:ec:2025:q52": {
       "question_uid": "pp:ec:2025:q52",
-      "exam_uid": "ec:2025:set1:q52",
+      "exam_uid": "ec:2025:set1:main:q52",
       "title": "GATE EC 2025 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2204,8 +2360,11 @@
     },
     "pp:ec:2025:q53": {
       "question_uid": "pp:ec:2025:q53",
-      "exam_uid": "ec:2025:set1:q53",
+      "exam_uid": "ec:2025:set1:main:q53",
       "title": "GATE EC 2025 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2244,8 +2403,11 @@
     },
     "pp:ec:2025:q54": {
       "question_uid": "pp:ec:2025:q54",
-      "exam_uid": "ec:2025:set1:q54",
+      "exam_uid": "ec:2025:set1:main:q54",
       "title": "GATE EC 2025 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2284,8 +2446,11 @@
     },
     "pp:ec:2025:q55": {
       "question_uid": "pp:ec:2025:q55",
-      "exam_uid": "ec:2025:set1:q55",
+      "exam_uid": "ec:2025:set1:main:q55",
       "title": "GATE EC 2025 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2324,8 +2489,11 @@
     },
     "pp:ec:2025:q56": {
       "question_uid": "pp:ec:2025:q56",
-      "exam_uid": "ec:2025:set1:q56",
-      "title": "GATE EC 2025 | Set 1 | Question: 56",
+      "exam_uid": "ec:2025:set1:ga:q1",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2358,15 +2526,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Group-I represents a descending order of negative intensity:\n\n$\\text{Abuse} \\rightarrow \\text{Insult} \\rightarrow \\text{Ridicule}$\n\nSo Group-II must represent a descending order of positive intensity.\n\n$\\text{Extol} \\rightarrow \\text{Praise} \\rightarrow \\text{Appreciate}$\n\nHere, Extol is a strong word meaning to praise enthusiastically or glorify.\n\nPraise is moderate, and Appreciate is a mild form of positive feedback.\n\nOther options:\n\nPrize: Means to value, not specifically praise strongly.\n\nAppropriate: Irrelevant here.\n\nEspouse: Means to adopt or support, not to praise.",
         "images": []
       }
     },
     "pp:ec:2025:q57": {
       "question_uid": "pp:ec:2025:q57",
-      "exam_uid": "ec:2025:set1:q57",
-      "title": "GATE EC 2025 | Set 1 | Question: 57",
+      "exam_uid": "ec:2025:set1:ga:q2",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2399,15 +2570,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "The sentence begins with \"Had I learnt acting as a child,\" which is a third conditional sentence structure.\n\nThis refers to a hypothetical situation in the past and its imagined result in the past.\n\nThe structure is:\n\nIf + past perfect, would/could/might have + past participle\n\nSo, the correct completion is:\n\nHad I learnt acting as a child, I could have been a famous film star.\n\nOther options like \"will be\", \"can be\", and \"am going to be\" are used for present or future tenses, so they are incorrect here.",
         "images": []
       }
     },
     "pp:ec:2025:q58": {
       "question_uid": "pp:ec:2025:q58",
-      "exam_uid": "ec:2025:set1:q58",
-      "title": "GATE EC 2025 | Set 1 | Question: 58",
+      "exam_uid": "ec:2025:set1:ga:q3",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2440,15 +2614,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "We are given that each note's frequency is $\\sqrt[12]{2}$ times the previous note.\n\n$C$ is the first note. $F^\\#$ is the 7th note in the sequence (including $C$ as the 1st).\n\nThe number of steps from $C$ to $F^\\#$ is 6.\n\nSo the ratio of frequencies is:\n\n$\\frac{f_{F\\#}}{f_{C}} = \\left( \\sqrt[12]{2} \\right)^6 = 2^{6/12} = 2^{1/2} = \\sqrt{2}$",
         "images": []
       }
     },
     "pp:ec:2025:q59": {
       "question_uid": "pp:ec:2025:q59",
-      "exam_uid": "ec:2025:set1:q59",
-      "title": "GATE EC 2025 | Set 1 | Question: 59",
+      "exam_uid": "ec:2025:set1:ga:q4",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2481,15 +2658,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Let's analyze the pattern:\n\nIteration 0: 1 segment of length 1 ? total length = 1\n\nIteration 1: Replaces with 5 segments, each of length $\\frac{1}{3}$\n\nTotal length = $5 \\times \\frac{1}{3} = \\frac{5}{3}$\n\nIteration 2: Each of the 5 segments is again replaced with 5 smaller segments\n\nTotal segments = $5^2 = 25$\n\nLength of each = $\\frac{1}{3^2} = \\frac{1}{9}$\n\nTotal length = $25 \\times \\frac{1}{9} = \\frac{25}{9} = \\left( \\frac{5}{3} \\right)^2$\n\nSo at each iteration, the total length is multiplied by $\\frac{5}{3}$\n\nGeneral formula:\n\n$\\text{Length after Iteration } n = \\left( \\frac{5}{3} \\right)^n$",
         "images": []
       }
     },
     "pp:ec:2025:q60": {
       "question_uid": "pp:ec:2025:q60",
-      "exam_uid": "ec:2025:set1:q60",
-      "title": "GATE EC 2025 | Set 1 | Question: 60",
+      "exam_uid": "ec:2025:set1:ga:q5",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2522,15 +2702,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "We are given:\n\n$f(x) = -\\dfrac{|x|}{x}$ for $x \\ne 0$\n\nLet's analyze the function:\n\nFor $x > 0$:\n\n$|x| = x$\n\nSo, $f(x) = -\\dfrac{x}{x} = -1$\n\nFor $x < 0$:\n\n$|x| = -x$\n\nSo, $f(x) = -\\dfrac{-x}{x} = 1$\n\nTherefore,\n\n$$f(x) = \\begin{cases}\n\n1 & \\text{if } x < 0 \\\\\n\n-1 & \\text{if } x > 0\n\n\\end{cases}$$\n\nThis function has:\n\nValue $1$ for all negative $x$\n\nValue $-1$ for all positive $x$\n\nNot defined at $x = 0$\n\nFrom the options:\n\nOption (A) shows $f(x) = -1$ for $x > 0$ and $f(x) = 1$ for $x < 0$, which matches our analysis.\n\nHence, the correct plot is Option (A).",
         "images": []
       }
     },
     "pp:ec:2025:q61": {
       "question_uid": "pp:ec:2025:q61",
-      "exam_uid": "ec:2025:set1:q61",
-      "title": "GATE EC 2025 | Set 1 | Question: 61",
+      "exam_uid": "ec:2025:set1:ga:q6",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2563,15 +2746,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
+        "concept": "General Aptitude - Verbal Ability",
         "markdown": "Let's evaluate the logical flow:\n\nQ introduces the topic: organisms adapt to their environment.\n\nS builds on Q by discussing how adaptation helps organisms survive in changing environments.\n\nR explains the driving force behind adaptation: natural selection.\n\nP concludes with the long-term impact-evolution and formation of new species.\n\nThus, the most coherent sequence is:\n\nQ $\\rightarrow$ S $\\rightarrow$ R $\\rightarrow$ P",
         "images": []
       }
     },
     "pp:ec:2025:q62": {
       "question_uid": "pp:ec:2025:q62",
-      "exam_uid": "ec:2025:set1:q62",
-      "title": "GATE EC 2025 | Set 1 | Question: 62",
+      "exam_uid": "ec:2025:set1:ga:q7",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2604,15 +2790,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "The stick is broken at positions $b_1$ and $b_2$, where $0 < b_1 < b_2 < 1$.\n\nThis creates three segments:\n\n$L_1 = b_1$ (from 0 to $b_1$)\n\n$L_2 = b_2 - b_1$ (from $b_1$ to $b_2$)\n\n$L_3 = 1 - b_2$ (from $b_2$ to 1)\n\nTo form a triangle with these three segments, the triangle inequality must be satisfied:\n\nSum of any two sides must be greater than the third.\n\n1. $L_1 + L_2 > L_3$\n\n$b_1 + (b_2 - b_1) > 1 - b_2$\n\n$b_2 > 1 - b_2$\n\n$\\Rightarrow b_2 > 0.5$\n\n2. $L_2 + L_3 > L_1$\n\n$(b_2 - b_1) + (1 - b_2) > b_1$\n\n$1 - b_1 > b_1$\n\n$\\Rightarrow b_1 < 0.5$\n\n3. $L_1 + L_3 > L_2$\n\n$b_1 + (1 - b_2) > b_2 - b_1$\n\n$b_1 + 1 - b_2 > b_2 - b_1$\n\n$2b_1 + 1 - b_2 > b_2$\n\n$2b_1 + 1 > 2b_2$\n\n$\\Rightarrow b_2 < b_1 + 0.5$\n\nNow check each option:\n\n(A) $b_1 < 0.5$ - this is a necessary condition\n\n(B) $b_2 > 0.5$ - this is a necessary condition\n\n(C) $b_2 < b_1 + 0.5$ - this is a necessary condition\n\n(D) $b_1 + b_2 < 1$ - this is not required by any triangle inequality",
         "images": []
       }
     },
     "pp:ec:2025:q63": {
       "question_uid": "pp:ec:2025:q63",
-      "exam_uid": "ec:2025:set1:q63",
-      "title": "GATE EC 2025 | Set 1 | Question: 63",
+      "exam_uid": "ec:2025:set1:ga:q8",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2645,15 +2834,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>AS PER OFFICIAL IIT KEY -MTA (MARKS TO ALL)</b>\n\nInitial clockwise arrangement:\n\nP, Q, R, S, T, U, V, W\n\n(Index positions: 0 $\\rightarrow$ P, 1 $\\rightarrow$ Q, ..., 7 $\\rightarrow$ W)\n\nRound 1: 4th student behind P\n\nFrom P (index 0), counting clockwise:\n\n1 $\\rightarrow$ Q\n\n2 $\\rightarrow$ R\n\n3 $\\rightarrow$ S\n\n4 $\\rightarrow$ T\n\nT is removed\n\nRemaining: P, Q, R, S, U, V, W\n\nNew order: P (0), Q (1), R (2), S (3), U (4), V (5), W (6)\n\nRound 2: 5th behind Q (index 1):\n\n1 $\\rightarrow$ R\n\n2 $\\rightarrow$ S\n\n3 $\\rightarrow$ U\n\n4 $\\rightarrow$ V\n\n5 $\\rightarrow$ W\n\nW is removed\n\nRemaining: P, Q, R, S, U, V\n\nNew order: P (0), Q (1), R (2), S (3), U (4), V (5)\n\nRound 3: 3rd behind V (index 5):\n\n1 $\\rightarrow$ P\n\n2 $\\rightarrow$ Q\n\n3 $\\rightarrow$ R\n\nR is removed\n\nRemaining: P, Q, S, U, V\n\nNew order: P (0), Q (1), S (2), U (3), V (4)\n\nRound 4: 4th behind U (index 3):\n\n1 $\\rightarrow$ V\n\n2 $\\rightarrow$ P\n\n3 $\\rightarrow$ Q\n\n4 $\\rightarrow$ S\n\nS is removed\n\nFinal remaining players: P, Q, U, V\n\nNow checking options:\n\n(A) P; T; Q; S ? T and S are eliminated\n\n(B) V; P; T; Q ? T is eliminated\n\n(C) W; R; Q; V ? W and R are eliminated\n\n(D) Q; T; V; W ? T and W are eliminated\n\nNone of the options are correct.\n\nCorrect remaining players: $\\boxed{\\text{P, Q, U, V}}$",
         "images": []
       }
     },
     "pp:ec:2025:q64": {
       "question_uid": "pp:ec:2025:q64",
-      "exam_uid": "ec:2025:set1:q64",
-      "title": "GATE EC 2025 | Set 1 | Question: 64",
+      "exam_uid": "ec:2025:set1:ga:q9",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2686,15 +2878,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Let's first calculate the total medals for each country:\n\nUSA: $40 + 44 + 41 = 125$\n\nCanada: $39 + 27 + 24 = 90$\n\nJapan: $20 + 12 + 13 = 45$\n\nAustralia: $17 + 19 + 16 = 52$\n\nFrance: $16 + 26 + 22 = 64$\n\nTotal medals across all five nations:\n\n$125 + 90 + 45 + 52 + 64 = 376$\n\nNow check each option:\n\n(A) France: 64, Japan: 45, Australia: 52\n\nSo top three by total medals: USA (125), Canada (90), France (64) (A is correct)\n\n(B) USA: 125, Canada: 90. No other nation has more than 90. So, order remains same\n\n(B is correct)\n\n(C) USA + Canada: $125 + 90 = 215$\n\nCheck 50% of 376: $\\frac{376}{2} = 188$\n\n215 is more than 188 (C is incorrect)\n\n(D) Canada: 90, Japan: 45\n\n$90 = 2 \\times 45$\n\n(D is correct)",
         "images": []
       }
     },
     "pp:ec:2025:q65": {
       "question_uid": "pp:ec:2025:q65",
-      "exam_uid": "ec:2025:set1:q65",
-      "title": "GATE EC 2025 | Set 1 | Question: 65",
+      "exam_uid": "ec:2025:set1:ga:q10",
+      "title": "GATE EC 2025 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateec-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2727,7 +2922,7 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
+        "concept": "General Aptitude - Numerical Ability",
         "markdown": "Let the consulting fee be $x$.\n\nCase 1: $x \\leq 5{,}00{,}000$\n\nOverhead = $0.2x$\n\nTotal before tax = $x + 0.2x = 1.2x$\n\nTotal with GST (18%) = $1.18 \\times 1.2x = 1.416x$\n\nWe want: $1.416x \\leq 10{,}00{,}000$\n\n$x \\leq \\frac{10{,}00{,}000}{1.416} \\approx 7{,}06{,}199$\n\nBut this value of $x$ is greater than Rs. 5,00,000, so this case is invalid.\n\nCase 2: $x > 5{,}00{,}000$\n\nOverhead = $1{,}00{,}000 + 0.1(x - 5{,}00{,}000)$\n\n$= 1{,}00{,}000 + 0.1x - 50{,}000 = 0.1x + 50{,}000$\n\nTotal before tax = $x + 0.1x + 50{,}000 = 1.1x + 50{,}000$\n\nTotal with GST = $1.18(1.1x + 50{,}000) = 1.298x + 59{,}000$\n\nWe want: $1.298x + 59{,}000 \\leq 10{,}00{,}000$\n\n$1.298x \\leq 9{,}41{,}000$\n\n$x \\leq \\frac{9{,}41{,}000}{1.298} \\approx 7{,}24{,}961$",
         "images": []
       }

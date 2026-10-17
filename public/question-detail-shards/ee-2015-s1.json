@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T11:07:30.374Z",
+  "generatedAt": "2026-10-17T21:30:25.176Z",
   "shardKey": "ee-2015-s1",
   "yearSetKey": "ee-2015-s1",
   "yearSetIdentity": "ee:2015:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ee:2015:q1": {
       "question_uid": "pp:ee:2015:q1",
-      "exam_uid": "ee:2015:set1:q1",
+      "exam_uid": "ee:2015:set1:main:q1",
       "title": "GATE EE 2015 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -44,15 +47,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned} f(x)&=\\left\\{\\begin{matrix} a+bx & \\text{for }0 \\lt x \\lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now given }E(X)&=2/3\\\\ \\int_{0}^{1}xf(x)dx&=\\frac{2}{3}\\\\ \\int_{0}^{1}x(a+bx)dx&=\\frac{2}{3}\\\\ a\\left ( \\frac{x^2}{2} \\right )_0^1+b\\left ( \\frac{x^3}{3} \\right )_0^1&=\\frac{2}{3}\\\\ a\\left ( \\frac{1}{2} \\right )+b\\left ( \\frac{1}{3} \\right )&=\\frac{2}{3}\\\\ 3a+2b&=4\\;\\;...(i)\\\\ \\text{Now, }\\int_{0}^{1}f(x)dx &=1\\\\ (\\text{total probability} & \\text{ is always equal to 1})\\\\ \\int_{0}^{1}(a+bx)dx&=\\left ( ax+\\frac{bx^2}{2} \\right )_0^1=1\\\\ a+\\frac{b}{2}&=1\\\\ 2a+b&=2\\;\\;...(ii)\\\\ \\text{Now solving } & \\text{ (i) and (ii), we get}\\\\ a&=0,b=2\\\\ So,\\; \\;f(x)&=\\left\\{\\begin{matrix} 2x & \\text{for }0 \\lt x lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now we need}&\\\\ P(x \\lt 0.5)&=\\int_{0}^{0.5}2xdx=2\\left ( \\frac{x^2}{2} \\right )_0^{0.5}\\\\ &=0.5^2-0^2=0.25 \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ee:2015:q2": {
       "question_uid": "pp:ee:2015:q2",
-      "exam_uid": "ee:2015:set1:q2",
+      "exam_uid": "ee:2015:set1:main:q2",
       "title": "GATE EE 2015 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -86,15 +92,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Calculus",
+        "concept": "Engineering Mathematics - Calculus",
         "markdown": "Intermediate value theorem states that if a function is continious and $f(a) \\cdot f(b) \\lt 0$, then surely there is a root in (a,b). The contrapositive of this theorem is that if a function is continious and has no root in (a,b) then surely $f(a) \\cdot f(b) \\geq 0$. But since it is given that there is no root in the closed interval [a,b] it means $f(a) \\cdot f(b) \\neq 0$.\n\nSo surely $f(a) \\cdot f(b) \\gt 0$ which is choise(C).",
         "images": []
       }
     },
     "pp:ee:2015:q3": {
       "question_uid": "pp:ee:2015:q3",
-      "exam_uid": "ee:2015:set1:q3",
+      "exam_uid": "ee:2015:set1:main:q3",
       "title": "GATE EE 2015 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -126,15 +135,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Linear Algebra",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Consider a symmetric matrix $$A =\\begin{bmatrix} a & b\\\\ b & d \\end{bmatrix}$$\n\nGiven $a+d=-6$\n\n$|A|=ad-b^2$\n\nNow since $b^2$ is always non-negative, maximum determinant will come when $b^2=0$.\n\nSo we need to maximize\n\n$$\\begin{aligned} |A|&=ad-0=ad=a \\times -(6+a) \\\\ &= -a^2-6a\\\\ \\frac{d|A|}{da} &=-2a-6=0 \\\\ \\Rightarrow \\;\\; a &=-3 \\text{ is the only stationary point} \\end{aligned}$$\n\nSince, $$\\left [\\frac{d^2|A|}{da} \\right ]_{a=-3}=-2 \\lt 0$$, we have a maximum at $a=-3$.\n\nSince $a+d=-6$, corresponding value of $d=-3$.\n\n$|A|=ad=-3 \\times -3=9$",
         "images": []
       }
     },
     "pp:ee:2015:q4": {
       "question_uid": "pp:ee:2015:q4",
-      "exam_uid": "ee:2015:set1:q4",
+      "exam_uid": "ee:2015:set1:main:q4",
       "title": "GATE EE 2015 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -175,8 +187,11 @@
     },
     "pp:ee:2015:q5": {
       "question_uid": "pp:ee:2015:q5",
-      "exam_uid": "ee:2015:set1:q5",
+      "exam_uid": "ee:2015:set1:main:q5",
       "title": "GATE EE 2015 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -217,8 +232,11 @@
     },
     "pp:ee:2015:q6": {
       "question_uid": "pp:ee:2015:q6",
-      "exam_uid": "ee:2015:set1:q6",
+      "exam_uid": "ee:2015:set1:main:q6",
       "title": "GATE EE 2015 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -259,8 +277,11 @@
     },
     "pp:ee:2015:q7": {
       "question_uid": "pp:ee:2015:q7",
-      "exam_uid": "ee:2015:set1:q7",
+      "exam_uid": "ee:2015:set1:main:q7",
       "title": "GATE EE 2015 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -293,12 +314,18 @@
           "operational-amplifiers"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2015:q8": {
       "question_uid": "pp:ee:2015:q8",
-      "exam_uid": "ee:2015:set1:q8",
+      "exam_uid": "ee:2015:set1:main:q8",
       "title": "GATE EE 2015 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -339,8 +366,11 @@
     },
     "pp:ee:2015:q9": {
       "question_uid": "pp:ee:2015:q9",
-      "exam_uid": "ee:2015:set1:q9",
+      "exam_uid": "ee:2015:set1:main:q9",
       "title": "GATE EE 2015 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -379,8 +409,11 @@
     },
     "pp:ee:2015:q10": {
       "question_uid": "pp:ee:2015:q10",
-      "exam_uid": "ee:2015:set1:q10",
+      "exam_uid": "ee:2015:set1:main:q10",
       "title": "GATE EE 2015 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -422,8 +455,11 @@
     },
     "pp:ee:2015:q11": {
       "question_uid": "pp:ee:2015:q11",
-      "exam_uid": "ee:2015:set1:q11",
+      "exam_uid": "ee:2015:set1:main:q11",
       "title": "GATE EE 2015 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -462,8 +498,11 @@
     },
     "pp:ee:2015:q12": {
       "question_uid": "pp:ee:2015:q12",
-      "exam_uid": "ee:2015:set1:q12",
+      "exam_uid": "ee:2015:set1:main:q12",
       "title": "GATE EE 2015 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -504,8 +543,11 @@
     },
     "pp:ee:2015:q13": {
       "question_uid": "pp:ee:2015:q13",
-      "exam_uid": "ee:2015:set1:q13",
+      "exam_uid": "ee:2015:set1:main:q13",
       "title": "GATE EE 2015 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -548,8 +590,11 @@
     },
     "pp:ee:2015:q14": {
       "question_uid": "pp:ee:2015:q14",
-      "exam_uid": "ee:2015:set1:q14",
+      "exam_uid": "ee:2015:set1:main:q14",
       "title": "GATE EE 2015 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -590,8 +635,11 @@
     },
     "pp:ee:2015:q15": {
       "question_uid": "pp:ee:2015:q15",
-      "exam_uid": "ee:2015:set1:q15",
+      "exam_uid": "ee:2015:set1:main:q15",
       "title": "GATE EE 2015 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -632,8 +680,11 @@
     },
     "pp:ee:2015:q16": {
       "question_uid": "pp:ee:2015:q16",
-      "exam_uid": "ee:2015:set1:q16",
+      "exam_uid": "ee:2015:set1:main:q16",
       "title": "GATE EE 2015 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -674,8 +725,11 @@
     },
     "pp:ee:2015:q17": {
       "question_uid": "pp:ee:2015:q17",
-      "exam_uid": "ee:2015:set1:q17",
+      "exam_uid": "ee:2015:set1:main:q17",
       "title": "GATE EE 2015 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -708,12 +762,18 @@
           "generating-power-stations"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2015:q18": {
       "question_uid": "pp:ee:2015:q18",
-      "exam_uid": "ee:2015:set1:q18",
+      "exam_uid": "ee:2015:set1:main:q18",
       "title": "GATE EE 2015 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -756,8 +816,11 @@
     },
     "pp:ee:2015:q19": {
       "question_uid": "pp:ee:2015:q19",
-      "exam_uid": "ee:2015:set1:q19",
+      "exam_uid": "ee:2015:set1:main:q19",
       "title": "GATE EE 2015 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -798,8 +861,11 @@
     },
     "pp:ee:2015:q20": {
       "question_uid": "pp:ee:2015:q20",
-      "exam_uid": "ee:2015:set1:q20",
+      "exam_uid": "ee:2015:set1:main:q20",
       "title": "GATE EE 2015 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -843,8 +909,11 @@
     },
     "pp:ee:2015:q21": {
       "question_uid": "pp:ee:2015:q21",
-      "exam_uid": "ee:2015:set1:q21",
+      "exam_uid": "ee:2015:set1:main:q21",
       "title": "GATE EE 2015 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -887,8 +956,11 @@
     },
     "pp:ee:2015:q22": {
       "question_uid": "pp:ee:2015:q22",
-      "exam_uid": "ee:2015:set1:q22",
+      "exam_uid": "ee:2015:set1:main:q22",
       "title": "GATE EE 2015 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -931,8 +1003,11 @@
     },
     "pp:ee:2015:q23": {
       "question_uid": "pp:ee:2015:q23",
-      "exam_uid": "ee:2015:set1:q23",
+      "exam_uid": "ee:2015:set1:main:q23",
       "title": "GATE EE 2015 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -965,12 +1040,18 @@
           "transformers"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2015:q24": {
       "question_uid": "pp:ee:2015:q24",
-      "exam_uid": "ee:2015:set1:q24",
+      "exam_uid": "ee:2015:set1:main:q24",
       "title": "GATE EE 2015 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1011,8 +1092,11 @@
     },
     "pp:ee:2015:q25": {
       "question_uid": "pp:ee:2015:q25",
-      "exam_uid": "ee:2015:set1:q25",
+      "exam_uid": "ee:2015:set1:main:q25",
       "title": "GATE EE 2015 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1055,8 +1139,11 @@
     },
     "pp:ee:2015:q26": {
       "question_uid": "pp:ee:2015:q26",
-      "exam_uid": "ee:2015:set1:q26",
+      "exam_uid": "ee:2015:set1:main:q26",
       "title": "GATE EE 2015 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1089,12 +1176,18 @@
           "linear-algebra"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2015:q27": {
       "question_uid": "pp:ee:2015:q27",
-      "exam_uid": "ee:2015:set1:q27",
+      "exam_uid": "ee:2015:set1:main:q27",
       "title": "GATE EE 2015 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1126,15 +1219,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Differential Equations",
+        "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned}\n\nD^2+5D+6&=0 \\\\\n\nD &=-1,-3 \\\\\n\ny(t)&=c_1e^{-2t}+c_2e^{-3t} \\\\\n\n\\text{Given,  } y(0)&=2 \\\\\n\n\\Rightarrow \\; c_1+c_2 &=2\\;\\;...(i) \\\\\n\ny(1)&=-\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\; \\frac{c_1}{e^2}+\\frac{c_2}{e^3} &= -\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\;ec_1+c_2 &=3e-1\\;\\;\\;...(ii) \\\\\n\n\\text{Now solving equation} &\\text{ (i) and (ii), we get} \\\\\n\nc_1=3, &c_2=-1\\\\\n\n\\text{Substituting in  }y(t),& we get \\\\\n\ny(t)&=3e^{-2t}-e^{-3t}\\\\\n\n\\text{Now,   }\\frac{dy}{dt}&=-6e^{-2t}+3e^{-3t}\\\\\n\n\\left ( \\frac{dy}{dt} \\right )_{t=0}&=-6+3=-3\n\n\\end{aligned}$$",
         "images": []
       }
     },
     "pp:ee:2015:q28": {
       "question_uid": "pp:ee:2015:q28",
-      "exam_uid": "ee:2015:set1:q28",
+      "exam_uid": "ee:2015:set1:main:q28",
       "title": "GATE EE 2015 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1178,8 +1274,11 @@
     },
     "pp:ee:2015:q29": {
       "question_uid": "pp:ee:2015:q29",
-      "exam_uid": "ee:2015:set1:q29",
+      "exam_uid": "ee:2015:set1:main:q29",
       "title": "GATE EE 2015 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1213,15 +1312,18 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
+        "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "P(A wins) = P( 6 in first throw by A) + P(A not 6, B not 6,)+...\n\n$$\\begin{aligned} &=\\frac{1}{6}+\\frac{5}{6}\\frac{5}{6}\\frac{1}{6}+....\\\\ &=\\frac{1}{6}\\left ( 1+\\left ( \\frac{5}{6} \\right )^2+\\left ( \\frac{5}{6} \\right )^4+... \\right )\\\\ &=\\frac{1}{6}\\left ( \\frac{1}{1-\\left (\\frac{5}{6} \\right )^2} \\right )=\\frac{6}{11} \\end{aligned}$$",
         "images": []
       }
     },
     "pp:ee:2015:q30": {
       "question_uid": "pp:ee:2015:q30",
-      "exam_uid": "ee:2015:set1:q30",
+      "exam_uid": "ee:2015:set1:main:q30",
       "title": "GATE EE 2015 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1264,8 +1366,11 @@
     },
     "pp:ee:2015:q31": {
       "question_uid": "pp:ee:2015:q31",
-      "exam_uid": "ee:2015:set1:q31",
+      "exam_uid": "ee:2015:set1:main:q31",
       "title": "GATE EE 2015 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1308,8 +1413,11 @@
     },
     "pp:ee:2015:q32": {
       "question_uid": "pp:ee:2015:q32",
-      "exam_uid": "ee:2015:set1:q32",
+      "exam_uid": "ee:2015:set1:main:q32",
       "title": "GATE EE 2015 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1350,8 +1458,11 @@
     },
     "pp:ee:2015:q33": {
       "question_uid": "pp:ee:2015:q33",
-      "exam_uid": "ee:2015:set1:q33",
+      "exam_uid": "ee:2015:set1:main:q33",
       "title": "GATE EE 2015 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1392,8 +1503,11 @@
     },
     "pp:ee:2015:q34": {
       "question_uid": "pp:ee:2015:q34",
-      "exam_uid": "ee:2015:set1:q34",
+      "exam_uid": "ee:2015:set1:main:q34",
       "title": "GATE EE 2015 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1432,8 +1546,11 @@
     },
     "pp:ee:2015:q35": {
       "question_uid": "pp:ee:2015:q35",
-      "exam_uid": "ee:2015:set1:q35",
+      "exam_uid": "ee:2015:set1:main:q35",
       "title": "GATE EE 2015 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1474,8 +1591,11 @@
     },
     "pp:ee:2015:q36": {
       "question_uid": "pp:ee:2015:q36",
-      "exam_uid": "ee:2015:set1:q36",
+      "exam_uid": "ee:2015:set1:main:q36",
       "title": "GATE EE 2015 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1516,8 +1636,11 @@
     },
     "pp:ee:2015:q37": {
       "question_uid": "pp:ee:2015:q37",
-      "exam_uid": "ee:2015:set1:q37",
+      "exam_uid": "ee:2015:set1:main:q37",
       "title": "GATE EE 2015 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1558,8 +1681,11 @@
     },
     "pp:ee:2015:q38": {
       "question_uid": "pp:ee:2015:q38",
-      "exam_uid": "ee:2015:set1:q38",
+      "exam_uid": "ee:2015:set1:main:q38",
       "title": "GATE EE 2015 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1592,12 +1718,18 @@
           "boolean-algebra-and-minimization"
         ]
       },
-      "detailed_solution": null
+      "detailed_solution": {
+        "concept": "EE Core Engineering",
+        "markdown": null
+      }
     },
     "pp:ee:2015:q39": {
       "question_uid": "pp:ee:2015:q39",
-      "exam_uid": "ee:2015:set1:q39",
+      "exam_uid": "ee:2015:set1:main:q39",
       "title": "GATE EE 2015 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1641,8 +1773,11 @@
     },
     "pp:ee:2015:q40": {
       "question_uid": "pp:ee:2015:q40",
-      "exam_uid": "ee:2015:set1:q40",
+      "exam_uid": "ee:2015:set1:main:q40",
       "title": "GATE EE 2015 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1683,8 +1818,11 @@
     },
     "pp:ee:2015:q41": {
       "question_uid": "pp:ee:2015:q41",
-      "exam_uid": "ee:2015:set1:q41",
+      "exam_uid": "ee:2015:set1:main:q41",
       "title": "GATE EE 2015 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1723,8 +1861,11 @@
     },
     "pp:ee:2015:q42": {
       "question_uid": "pp:ee:2015:q42",
-      "exam_uid": "ee:2015:set1:q42",
+      "exam_uid": "ee:2015:set1:main:q42",
       "title": "GATE EE 2015 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1765,8 +1906,11 @@
     },
     "pp:ee:2015:q43": {
       "question_uid": "pp:ee:2015:q43",
-      "exam_uid": "ee:2015:set1:q43",
+      "exam_uid": "ee:2015:set1:main:q43",
       "title": "GATE EE 2015 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1805,8 +1949,11 @@
     },
     "pp:ee:2015:q44": {
       "question_uid": "pp:ee:2015:q44",
-      "exam_uid": "ee:2015:set1:q44",
+      "exam_uid": "ee:2015:set1:main:q44",
       "title": "GATE EE 2015 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1847,8 +1994,11 @@
     },
     "pp:ee:2015:q45": {
       "question_uid": "pp:ee:2015:q45",
-      "exam_uid": "ee:2015:set1:q45",
+      "exam_uid": "ee:2015:set1:main:q45",
       "title": "GATE EE 2015 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1887,8 +2037,11 @@
     },
     "pp:ee:2015:q46": {
       "question_uid": "pp:ee:2015:q46",
-      "exam_uid": "ee:2015:set1:q46",
+      "exam_uid": "ee:2015:set1:main:q46",
       "title": "GATE EE 2015 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1929,8 +2082,11 @@
     },
     "pp:ee:2015:q47": {
       "question_uid": "pp:ee:2015:q47",
-      "exam_uid": "ee:2015:set1:q47",
+      "exam_uid": "ee:2015:set1:main:q47",
       "title": "GATE EE 2015 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1971,8 +2127,11 @@
     },
     "pp:ee:2015:q48": {
       "question_uid": "pp:ee:2015:q48",
-      "exam_uid": "ee:2015:set1:q48",
+      "exam_uid": "ee:2015:set1:main:q48",
       "title": "GATE EE 2015 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -2011,8 +2170,11 @@
     },
     "pp:ee:2015:q49": {
       "question_uid": "pp:ee:2015:q49",
-      "exam_uid": "ee:2015:set1:q49",
+      "exam_uid": "ee:2015:set1:main:q49",
       "title": "GATE EE 2015 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -2051,8 +2213,11 @@
     },
     "pp:ee:2015:q50": {
       "question_uid": "pp:ee:2015:q50",
-      "exam_uid": "ee:2015:set1:q50",
+      "exam_uid": "ee:2015:set1:main:q50",
       "title": "GATE EE 2015 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -2093,8 +2258,11 @@
     },
     "pp:ee:2015:q51": {
       "question_uid": "pp:ee:2015:q51",
-      "exam_uid": "ee:2015:set1:q51",
+      "exam_uid": "ee:2015:set1:main:q51",
       "title": "GATE EE 2015 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -2133,8 +2301,11 @@
     },
     "pp:ee:2015:q52": {
       "question_uid": "pp:ee:2015:q52",
-      "exam_uid": "ee:2015:set1:q52",
+      "exam_uid": "ee:2015:set1:main:q52",
       "title": "GATE EE 2015 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2175,8 +2346,11 @@
     },
     "pp:ee:2015:q53": {
       "question_uid": "pp:ee:2015:q53",
-      "exam_uid": "ee:2015:set1:q53",
+      "exam_uid": "ee:2015:set1:main:q53",
       "title": "GATE EE 2015 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2217,8 +2391,11 @@
     },
     "pp:ee:2015:q54": {
       "question_uid": "pp:ee:2015:q54",
-      "exam_uid": "ee:2015:set1:q54",
+      "exam_uid": "ee:2015:set1:main:q54",
       "title": "GATE EE 2015 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2261,8 +2438,11 @@
     },
     "pp:ee:2015:q55": {
       "question_uid": "pp:ee:2015:q55",
-      "exam_uid": "ee:2015:set1:q55",
+      "exam_uid": "ee:2015:set1:main:q55",
       "title": "GATE EE 2015 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,

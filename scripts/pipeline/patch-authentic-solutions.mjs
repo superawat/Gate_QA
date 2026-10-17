@@ -491,10 +491,8 @@ export function applyAuthenticPatches() {
   const ppAllPath = path.resolve("data/solutions/practicepaper/all-solutions.json");
   const ppAll = fs.existsSync(ppAllPath) ? JSON.parse(fs.readFileSync(ppAllPath, "utf8")) : {};
 
-  let patchedCount = 0;
-
+  // 1. Update all-solutions.json in memory
   for (const [uid, patch] of Object.entries(AUTHENTIC_PATCHES)) {
-    // 1. Update all-solutions.json
     if (ppAll[uid]) {
       ppAll[uid].has_detailed_solution = true;
       ppAll[uid].detailed_solution = patch.markdown;
@@ -507,38 +505,54 @@ export function applyAuthenticPatches() {
         images: patch.images,
       };
     }
+  }
+  fs.writeFileSync(ppAllPath, JSON.stringify(ppAll, null, 2), "utf8");
 
-    // 2. Update Shards
-    const files = fs.readdirSync(shardsDir).filter((f) => f.endsWith(".json"));
-    for (const file of files) {
-      const filePath = path.join(shardsDir, file);
-      const shard = JSON.parse(fs.readFileSync(filePath, "utf8"));
-      if (shard.recordsByQuestionUid && shard.recordsByQuestionUid[uid]) {
+  // 2. Update Shards in single pass
+  let patchedCount = 0;
+  const files = fs.readdirSync(shardsDir).filter((f) => f.endsWith(".json"));
+  for (const file of files) {
+    const filePath = path.join(shardsDir, file);
+    const shard = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    if (!shard.recordsByQuestionUid) continue;
+
+    let modified = false;
+    for (const [uid, patch] of Object.entries(AUTHENTIC_PATCHES)) {
+      if (shard.recordsByQuestionUid[uid]) {
         shard.recordsByQuestionUid[uid].detailed_solution = {
           concept: patch.concept,
           markdown: patch.markdown,
           images: patch.images,
         };
-        fs.writeFileSync(filePath, JSON.stringify(shard, null, 2), "utf8");
+        modified = true;
         patchedCount++;
       }
     }
-
-    // 3. Update data/solutions/*-v1.json
-    const v1Files = ["ce-v1.json", "ec-v1.json", "ee-v1.json", "me-v1.json", "cse-v1.json", "da-v1.json"];
-    for (const v1File of v1Files) {
-      const v1Path = path.resolve("data/solutions", v1File);
-      if (!fs.existsSync(v1Path)) continue;
-      const v1Data = JSON.parse(fs.readFileSync(v1Path, "utf8"));
-      if (v1Data[uid]) {
-        v1Data[uid].solution_markdown = patch.markdown;
-        v1Data[uid].concept_summary = patch.concept;
-        fs.writeFileSync(v1Path, JSON.stringify(v1Data, null, 2), "utf8");
-      }
+    if (modified) {
+      fs.writeFileSync(filePath, JSON.stringify(shard, null, 2), "utf8");
     }
   }
 
-  fs.writeFileSync(ppAllPath, JSON.stringify(ppAll, null, 2), "utf8");
+  // 3. Update data/solutions/*-v1.json in single pass
+  const v1Files = ["ce-v1.json", "ec-v1.json", "ee-v1.json", "me-v1.json", "cse-v1.json", "da-v1.json"];
+  for (const v1File of v1Files) {
+    const v1Path = path.resolve("data/solutions", v1File);
+    if (!fs.existsSync(v1Path)) continue;
+    const v1Data = JSON.parse(fs.readFileSync(v1Path, "utf8"));
+    let modified = false;
+
+    for (const [uid, patch] of Object.entries(AUTHENTIC_PATCHES)) {
+      if (v1Data[uid]) {
+        v1Data[uid].solution_markdown = patch.markdown;
+        v1Data[uid].concept_summary = patch.concept;
+        modified = true;
+      }
+    }
+    if (modified) {
+      fs.writeFileSync(v1Path, JSON.stringify(v1Data, null, 2), "utf8");
+    }
+  }
+
   console.log(`Applied ${Object.keys(AUTHENTIC_PATCHES).length} authentic patches across ${patchedCount} shards and v1 registries.`);
 }
 

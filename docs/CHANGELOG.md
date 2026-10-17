@@ -1,5 +1,34 @@
 # Changelog
 
+- **Historical Question Identity, Official Renumbering, and Direct GateOverflow Discussion Linking (DEC-189)**:
+  - *Context*: Engineering branch papers (`ec`, `ee`, `me`, `ce`) imported from PracticePaper stored questions in a flat sequential index. Modern 65-question papers placed Technical questions at Q1–55 and General Aptitude (GA) questions at Q56–65, displaying misleading labels like "Question: 56" instead of "GA | Question: 1". Furthermore, GateOverflow discussion links were missing or falling back to general search queries rather than pointing to exact question URLs on branch subdomains (`me.gateoverflow.in`, `ee.gateoverflow.in`, etc.).
+  - *Accomplishments*:
+    - **Canonical Question Identity (`src/utils/branchQuestionIdentity.js`)**:
+      - Extracted pure, deterministic question identity resolver `resolveQuestionIdentity(branch, year, setNumber, qNum, tag1, tag2, totalQuestions)`.
+      - Modern 65Q papers: Q1–55 retain `section: 'main'`, `question_number: 1..55`, title `"GATE <BRANCH> <YEAR> | Set <S> | Question: <N>"`; Q56–65 resolve to `section: 'ga'`, `question_number: 1..10` (qNum - 55), title `"GATE <BRANCH> <YEAR> | Set <S> | GA | Question: <N>"`.
+      - 55Q papers (EC/EE 2011–2020 core technical without GA): retain `section: 'main'`, `question_number: 1..55`.
+      - Pre-2011 papers: retain sequential 1..N numbering.
+      - **Strictly Immutable `question_uid` Invariant**: Keys such as `pp:me:2018:q57` remain permanently untouched, guaranteeing 100% zero data loss across `localStorage`, Supabase cloud sync, and answer evaluation.
+    - **Direct GateOverflow Link Mapping Engine (`scripts/pipeline/map-branch-gateoverflow-links.mjs`)**:
+      - Audited and mapped authentic GateOverflow branch question URLs across `me.gateoverflow.in`, `ee.gateoverflow.in`, `ec.gateoverflow.in`, `civil.gateoverflow.in`.
+      - Generated `data/mappings/branch-go-links.json` mapping `question_uid` to verified direct URLs (e.g. `pp:me:2018:q57` -> `https://me.gateoverflow.in/914/gate-mechanical-2018-set-1-ga-question-2`).
+      - Enforced strict regex validation (`GATEOVERFLOW_HOST_RE` and `GATEOVERFLOW_QUESTION_PATH_RE`). Speculative/unverified URLs strictly rejected; unmatched questions retain `solution_link: null` with verified search fallback.
+    - **Static Shard & Search Index Pipeline Integration**:
+      - Updated `scripts/pipeline/build-branch-shards.mjs` and `scripts/pipeline/build-branch-search-indices.mjs` to incorporate canonical title, exam_uid, section, question_number, and direct GateOverflow solution links.
+      - Batch-optimized `scripts/pipeline/patch-authentic-solutions.mjs` to eliminate Windows file locking and rapid disk rewrite issues.
+      - Regenerated all 143 static detail shards, enriched 10,361 solutions (79.7% coverage), and rebuilt search indices, DA artifacts, homepage search catalog, and 3,605 SEO pages.
+    - **Standalone Question Direct URL Resolution (`src/pages/SolvePage.jsx`)**:
+      - Hardened `SolvePage` against direct URL navigation (`/practice/question/:questionUid`) for questions belonging to non-enrolled branches (e.g., DA, ME, CE, EE, EC).
+      - Dynamically loads detail shards on-demand via `BranchQuestionService.loadDetailShard` or `DaQuestionService.ensureQuestionDetail` and seeds a single-question practice session without mutating the user's primary enrolled branches or causing false "Question not found" states.
+    - **Cross-Branch End-to-End Verification Audit**:
+      - Conducted a comprehensive live browser verification across all 6 supported GATE disciplines (`ME`, `CE`, `EE`, `EC`, `CSE`, `DA`).
+      - Validated KaTeX math matrices/arrays, official title and question numbering, option selection, instant correct evaluation, step-by-step mathematical derivation expansion, and authentic GateOverflow branch subdomain discussion linking (`me.gateoverflow.in`, `civil.gateoverflow.in`, `ee.gateoverflow.in`, `ec.gateoverflow.in`, `gateoverflow.in`).
+    - **Automated Regression Testing**:
+      - Added 7 dedicated unit tests in `src/utils/branchQuestionIdentity.test.js`.
+      - Added 17 dedicated unit tests in `src/utils/solutionLink.test.js`.
+      - Full Vitest test suite 100% green (107 test files, 1,369 tests passed).
+      - TypeScript typecheck passed with 0 errors.
+
 - **Detailed Solution In-Card Discussion Button Relocation, Action Bar Streamlining & Universal Solution Access (DEC-188)**:
   - *Context*: Streamlined the action bar by moving the external "Solution" button directly into the `DetailedSolutionView` box header as a "Discussion" button on the right (opposite the concept title, right below Next), making it visible only when Detailed Solution is opened.
   - *Accomplishments*:
