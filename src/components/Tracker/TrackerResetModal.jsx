@@ -14,7 +14,7 @@ export default function TrackerResetModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="reset-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70"
     >
       <div className="w-full max-w-md bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-2xl p-6 shadow-2xl space-y-4">
         <div className="flex items-start justify-between gap-3">
@@ -43,8 +43,8 @@ export default function TrackerResetModal({
             <li>Theory completion status will be unchecked.</li>
             <li>Custom topic notes &amp; manual revision logs will be cleared.</li>
           </ul>
-          <div className="p-3 rounded-xl bg-[color:var(--color-bg)] border border-[color:var(--color-border)] text-[11px] text-emerald-400 font-medium">
-            Practice Data Protected: Your solved questions, attempt history, and scores in GateQA practice will <strong>never</strong> be deleted.
+          <div className="p-3 rounded-xl bg-[color:var(--color-surface-muted)] border border-[color:var(--color-border)] text-xs text-[color:var(--color-text)]">
+            <span className="font-semibold text-emerald-500 dark:text-emerald-400">Zero data loss:</span> Your solved questions, attempt history, and scores in GateQA practice are permanent and will <strong>never</strong> be deleted.
           </div>
         </div>
 
@@ -52,7 +52,7 @@ export default function TrackerResetModal({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-xs font-semibold text-[color:var(--color-text-muted)] hover:bg-[color:var(--color-surface-muted)] transition-colors"
+            className="px-4 py-2.5 min-h-[38px] rounded-xl text-xs font-medium text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] transition-colors"
           >
             Cancel
           </button>
@@ -62,7 +62,7 @@ export default function TrackerResetModal({
               onConfirmReset(topic.id);
               onClose();
             }}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-500 text-white shadow-sm transition-colors"
+            className="px-4 py-2.5 min-h-[38px] rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white shadow-sm transition-colors"
           >
             Confirm Reset
           </button>

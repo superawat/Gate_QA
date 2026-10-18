@@ -1,5 +1,52 @@
 # Changelog
 
+- **Preparation Tracker Vertical Gap Elimination & Mobile Density Optimization (DEC-197)**:
+  - *Context*: Substantial dead margins existed between the header, the Preparation Summary dropdown, the Search/Filter bar, and the Subject Breakdown heading (`mb-4 sm:mb-8` and `mb-4 sm:mb-6`), causing excessive vertical stretching and pushing syllabus rows below the fold.
+  - *Accomplishments*:
+    - **Harmonized Micro-Spacing System**: Standardized inter-card vertical margins to `mb-2 sm:mb-2.5` across Header, Countdown Hero, Preparation Summary, and Filters, eliminating over 60px of dead space.
+    - **Ultra-Compact Preparation Summary Bar**: Reduced button padding to `px-2.5 py-1.5 sm:px-3.5 sm:py-2` and height to ~36px, with condensed glanceable metrics that avoid wrapping awkwardly on narrow screens.
+    - **Streamlined Search & Filter Controls**: Reduced filter bar padding to `p-1.5 sm:p-2`, standardized height and padding across search input, subject selector, and high-yield checkbox (`py-1.5 px-2.5`).
+    - **Unified Section Heading**: Cleaned up the `Subject Breakdown` section header (`space-y-1.5`, removed redundant border divider), allowing all 8 subjects in the curriculum to display above the fold on desktop displays.
+    - **Mobile-Responsive Ergonomics**: Tuned touch targets (`min-h-[32px]`), typography scales, sticky first-column bounds (`min-w-[145px] max-w-[165px]`), and mobile swipe banner padding (`py-1.5`).
+    - **Verification**: All 15 unit tests passed (`npx vitest run src/pages/TrackerPage.test.jsx`). TypeScript typecheck clean (`npm run typecheck`, 0 errors). Visual screenshots confirm all 8 subjects visible above the fold.
+
+- **Preparation Tracker Exam Countdown Space Optimization & Header Toolbar Integration (DEC-196)**:
+  - *Context*: When the exam countdown hero was hidden, `TrackerCountdownHero.jsx` left an entire standalone row with a lone `Show Exam Countdown` button taking up ~80px of dead vertical space between the page header and the `Preparation Summary` dropdown. Furthermore, when revealed, the countdown hero card was excessively tall (320px+), pushing syllabus tables far down below the fold.
+  - *Accomplishments*:
+    - **Header Toolbar Countdown Integration (`src/pages/TrackerPage.jsx`)**: Moved the Countdown visibility toggle into the page header toolbar alongside the branch track switcher and theme toggle (`[ GATE ME ] [ GATE DA ] [ 🕒 Countdown ] [ 🌙 ]`).
+    - **Zero Dead Space When Hidden (`src/components/Tracker/TrackerCountdownHero.jsx`)**: Updated `TrackerCountdownHero` to return `null` immediately when hidden (`!preferences.showCountdownWidget || preferences.countdownDisplayMode === "hidden"`), eliminating all margins and dead space so that the Preparation Summary sits right under the header.
+    - **High-Density Compact Countdown Hero**: Reduced outer card padding and vertical footprint from 320px down to ~120px. Replaced oversized 5xl numbers with crisp `text-xl sm:text-3xl font-extrabold font-mono tabular-nums`. Replaced standalone hero rows with inline badges for "Total Days Left" and "Syllabus Covered". Added an accessible dismiss ('X') button that returns the page to zero dead space.
+    - **Verification**: Updated `src/pages/TrackerPage.test.jsx`. All 15 unit tests passed. TypeScript typecheck passed (`npm run typecheck`, 0 errors). Visual verification completed via browser recording showing zero dead space when hidden and sleek banner when toggled active.
+
+- **Preparation Tracker Modernization, Safe Space Ergonomics & AI-Slop Eradication (DEC-195)**:
+  - *Context*: The `/tracker` preparation workbench was artificially constrained by a 1280px width cap on wide monitors, suffered from peripheral anxiety-inducing pulsating beacons, contained rainbow `linear-gradient` badge fills violating the `baseline-ui` anti-slop rules, lacked `tabular-nums` on changing numerical values causing layout jitter, and had mobile text bleed-through under the sticky first column during horizontal scrolling.
+  - *Accomplishments*:
+    - **Shell Fluidity & Full Monitor Utilization (`src/pages/TrackerPage.jsx`)**:
+      - Enabled `fluid={true}` on `PageShell`, expanding the workbench container up to 1920px (`w-full max-w-[1920px] px-3 sm:px-6 md:px-8`) and eliminating dead side gutters.
+      - Upgraded brand tracker title to editorial `font-display` (`DM Serif Display`) with `text-balance` and `text-pretty` copy.
+      - Polished breadcrumb navigation with explicit `[Home]` affordance and `FiArrowLeft`.
+      - **Collapsible Preparation Summary Dropdown**: Wrapped the 3-pillar progress cards (Theory, Practice, Accuracy) and Action Status pills in an accessible disclosure container (`<section aria-label="Preparation Summary">`). When collapsed, saves over 200px of vertical space into a 48px glanceable summary bar (`Theory: {pct}% · PYQs: {pct}% · Accuracy: {pct}%`), pulling the syllabus table and search toolbar immediately into view above the fold; remembers collapse/expansion choice in `preferences.showOverview`.
+      - Applied `tabular-nums` to all 3-Pillar summary cards and Action Status pills.
+    - **Zero-Anxiety Countdown Hero (`src/components/Tracker/TrackerCountdownHero.jsx`)**:
+      - Removed peripheral anxiety-inducing `animate-ping` radar beacon; replaced with a calm, steady status dot.
+      - Removed `backdrop-blur-md animate-fadeIn` on date picker form.
+      - Applied `tabular-nums` and typographic en-dashes (`–`) to time horizon and syllabus progress.
+    - **Disciplined Syllabus Table & Safe Space Isolation (`src/components/Tracker/TrackerHierarchicalTable.jsx`)**:
+      - Purged multi-color `linear-gradient` rainbow fills from `getRatioBadgeProps`; replaced with clean, disciplined neutral backgrounds, single-tone sky pills, and solid emerald completed badges.
+      - Replaced multi-color gradient ribbon with muted `bg-[color:var(--color-surface-muted)]` and removed `animate-pulse` from the horizontal swipe indicator.
+      - Hardened sticky first column isolation: Added explicit `border-r border-[color:var(--color-border)]` and opaque backgrounds across Level 1 (Subject), Level 2 (Topic), and Level 3 (Subtopic) cells to guarantee zero text bleed-through during horizontal scroll.
+      - Enforced `tabular-nums` across all numeric table columns (topic counts, revision count steppers, PYQ stats, and accuracy percentages).
+      - Enforced typographic en-dashes (`–`) in marks ranges (`formatMarksRange`).
+    - **Secondary Widgets & Modals Polish**:
+      - `TrackerContinueCard.jsx`: Standardized action button geometry (`rounded-xl h-10 min-h-[40px]`), applied `tabular-nums` to counts and percentages, and formatted marks ranges with typographic en-dashes.
+      - `TrackerFocusBanner.jsx`: Added `tabular-nums` to metrics, days inactive, and PYQ counts; formatted marks ranges with typographic en-dashes; standardized action button geometry.
+      - `TrackerResetModal.jsx`: Removed gratuitous backdrop-blur and animation lag; reinforced the zero-data-loss reassurance callout.
+    - **Automated Verification**:
+      - Updated `src/pages/TrackerPage.test.jsx` with assertions for `fluid={true}`, `font-display`, and zero pulsating animations (`.animate-ping`, `.animate-pulse`). All 14 tests in `TrackerPage.test.jsx` passed.
+      - Full unit test suite 100% green (107 test files, 1,374 tests passed).
+      - TypeScript typecheck passed (`npm run typecheck`, 0 errors).
+      - Browser visual verification completed with screenshots confirming fluid desktop layout, dark theme contrast, and sticky column isolation.
+
 - **Preferred Branches Default Filter Toggle Synchronization & Dynamic Preference Reactive Switching (DEC-194)**:
   - *Context*: When users enrolled in up to 2 preferred branches (e.g. `ME` and `CE`), the filter drawer toggles (`includeMe`, `includeCe`) remained unchecked or in false state unless manually clicked, and changing preferred disciplines in Profile/Settings failed to activate the newly selected branches because `handleBranchChange` was gated by an obsolete `localStorage.getItem(...) === null` guard.
   - *Accomplishments*:

@@ -33,7 +33,7 @@ export default function TrackerContinueCard({
   return (
     <section
       aria-label={isStarter ? "Recommended Starting Topic" : "Continue Practice"}
-      className="mb-4 sm:mb-8 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4"
+      className="mb-3 sm:mb-5 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-xs transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4"
     >
       <div className="flex items-start gap-3">
         <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 mt-0.5">
@@ -52,19 +52,21 @@ export default function TrackerContinueCard({
             {isStarter ? (
               <>
                 <span>
-                  High-yield core topic · <strong className="text-[color:var(--color-text)]">{total} canonical PYQs</strong> available
+                  High-yield core topic · <strong className="text-[color:var(--color-text)] tabular-nums">{total} canonical PYQs</strong> available
                 </span>
                 <span>·</span>
-                <span className="font-semibold text-blue-400">{topic.marksRange}</span>
+                <span className="font-semibold text-blue-400 tabular-nums">
+                  {topic.marksRange ? topic.marksRange.replace(/-/g, "–") : ""}
+                </span>
               </>
             ) : (
               <>
                 <span>
-                  <strong className="text-[color:var(--color-text)]">{attempted}/{total}</strong> PYQs Attempted ({coveragePct}%)
+                  <strong className="text-[color:var(--color-text)] tabular-nums">{attempted}/{total}</strong> PYQs Attempted (<span className="tabular-nums">{coveragePct}%</span>)
                 </span>
                 <span>·</span>
                 <span>
-                  <strong className="text-[color:var(--color-text)]">{accuracyPct}%</strong> Accuracy
+                  <strong className="text-[color:var(--color-text)] tabular-nums">{accuracyPct}%</strong> Accuracy
                 </span>
                 {metrics.daysSinceLastPractice !== null && (
                   <>
@@ -72,7 +74,7 @@ export default function TrackerContinueCard({
                     <span>
                       {metrics.daysSinceLastPractice === 0
                         ? "Practiced today"
-                        : `${metrics.daysSinceLastPractice}d ago`}
+                        : <><span className="tabular-nums">{metrics.daysSinceLastPractice}d</span> ago</>}
                     </span>
                   </>
                 )}
@@ -86,7 +88,7 @@ export default function TrackerContinueCard({
         <button
           type="button"
           onClick={handleAction}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-colors whitespace-nowrap"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 h-10 min-h-[40px] rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-colors whitespace-nowrap"
         >
           <FiPlay className="w-4 h-4" />
           <span>{isStarter ? "Start Practice" : "Continue Practice"}</span>

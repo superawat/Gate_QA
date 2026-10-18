@@ -29,7 +29,7 @@ export default function TrackerFocusBanner({
   return (
     <section
       aria-label="Today's Recommended Focus"
-      className="mb-4 sm:mb-8 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)] transition-all"
+      className="mb-3 sm:mb-5 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-xs transition-all"
     >
       <div className="flex items-center justify-between gap-2 border-b border-[color:var(--color-border)] pb-3 mb-4">
         <div className="flex items-center gap-2">
@@ -64,21 +64,21 @@ export default function TrackerFocusBanner({
             reasonBadge = (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <FiBell className="w-3 h-3" />
-                <span>Revision Due · {metrics.daysSinceLastPractice ? `${metrics.daysSinceLastPractice}d inactive` : "Overdue"}</span>
+                <span>Revision Due · {metrics.daysSinceLastPractice ? <><span className="tabular-nums">{metrics.daysSinceLastPractice}d</span> inactive</> : "Overdue"}</span>
               </span>
             );
           } else if (isWeak) {
             reasonBadge = (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">
                 <FiAlertCircle className="w-3 h-3" />
-                <span>Low Accuracy ({Math.round(metrics.accuracyRate * 100)}%) · Drill Errors</span>
+                <span>Low Accuracy (<span className="tabular-nums">{Math.round(metrics.accuracyRate * 100)}%</span>) · Drill Errors</span>
               </span>
             );
           } else if (isUnpracticed) {
             reasonBadge = (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 <FiBookOpen className="w-3 h-3" />
-                <span>Theory Done · 0/{metrics.totalAvailablePyqs} PYQs Attempted</span>
+                <span>Theory Done · <span className="tabular-nums">0/{metrics.totalAvailablePyqs}</span> PYQs Attempted</span>
               </span>
             );
           }
@@ -91,15 +91,15 @@ export default function TrackerFocusBanner({
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
                   {reasonBadge}
-                  <span className="text-[11px] font-mono text-[color:var(--color-text-muted)] uppercase">
-                    {topic.marksRange}
+                  <span className="text-[11px] font-mono tabular-nums text-[color:var(--color-text-muted)] uppercase">
+                    {topic.marksRange ? topic.marksRange.replace(/-/g, "–") : ""}
                   </span>
                 </div>
                 <h3 className="font-bold text-sm sm:text-base text-[color:var(--color-text)]">
                   {idx + 1}. {topic.label}
                 </h3>
                 <p className="text-xs text-[color:var(--color-text-muted)] mt-1">
-                  Subject: <span className="capitalize font-semibold text-[color:var(--color-text)]">{topic.subjectSlug}</span> · {metrics.attemptedPyqs}/{metrics.totalAvailablePyqs} PYQs done
+                  Subject: <span className="capitalize font-semibold text-[color:var(--color-text)]">{topic.subjectSlug}</span> · <span className="tabular-nums">{metrics.attemptedPyqs}/{metrics.totalAvailablePyqs}</span> PYQs done
                 </p>
               </div>
 
@@ -116,7 +116,7 @@ export default function TrackerFocusBanner({
                       navigate(`${PRACTICE_ROUTE}?subjects=${subjectPrefix}${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true${trackParam}`);
                     }
                   }}
-                  className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm"
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 h-10 min-h-[40px] rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm"
                 >
                   <FiPlay className="w-3.5 h-3.5" />
                   <span>{isWeak ? "Drill Incorrect PYQs" : isRevision ? "Practice 10 Review PYQs" : "Start PYQ Practice"}</span>

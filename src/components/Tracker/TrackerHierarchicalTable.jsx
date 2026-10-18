@@ -29,16 +29,16 @@ const AVAILABLE_CUSTOM_COLUMNS = [
 
 const formatMarksRange = (val) => {
   if (!val) return "";
-  return String(val).replace(/\s*marks?/gi, "").trim();
+  return String(val)
+    .replace(/\s*marks?/gi, "")
+    .replace("-", "–")
+    .trim();
 };
 
 const getRatioBadgeProps = (completedCount, totalCount) => {
-  const total = Math.max(1, totalCount || 1);
-  const completed = Math.max(0, completedCount || 0);
-  const pct = Math.round((completed / total) * 100);
   const isComplete = completedCount >= totalCount && totalCount > 0;
 
-  // 0% -> Default neutral dark gray (unchanged)
+  // 0% -> Default neutral surface with muted border
   if (completedCount === 0) {
     return {
       className:
@@ -49,58 +49,23 @@ const getRatioBadgeProps = (completedCount, totalCount) => {
     };
   }
 
-  // 100% -> Fully completed solid green badge
+  // 100% -> Fully completed solid emerald badge
   if (isComplete) {
     return {
-      className: "bg-emerald-500/20 border-emerald-500/50 text-emerald-300 font-extrabold shadow-xs",
+      className: "bg-emerald-500/15 border-emerald-500/40 text-emerald-400 font-bold shadow-xs",
       style: undefined,
       iconType: "check",
       iconColor: "text-emerald-400",
     };
   }
 
-  // 4-Stage Progressive Palette: Yellow (<=25%) -> Orange (26-50%) -> Pink (51-75%) -> Green (76-99%)
-  if (pct <= 25) {
-    // 25% Stage (e.g. 1/5 = 20%, 1/4 = 25%) -> Yellow
-    return {
-      className: "border-yellow-500/40 text-yellow-400 hover:border-yellow-500/60 font-bold",
-      style: {
-        background: `linear-gradient(to right, rgba(234, 179, 8, 0.18) ${pct}%, var(--color-bg) ${pct}%)`,
-      },
-      iconType: "minus",
-      iconColor: "text-yellow-400",
-    };
-  } else if (pct <= 50) {
-    // 50% Stage (e.g. 2/5 = 40%, 2/4 = 50%, 1/3 = 33.3%) -> Orange
-    return {
-      className: "border-orange-500/40 text-orange-400 hover:border-orange-500/60 font-bold",
-      style: {
-        background: `linear-gradient(to right, rgba(249, 115, 22, 0.18) ${pct}%, var(--color-bg) ${pct}%)`,
-      },
-      iconType: "minus",
-      iconColor: "text-orange-400",
-    };
-  } else if (pct <= 75) {
-    // 75% Stage (e.g. 3/5 = 60%, 2/3 = 66.7%, 3/4 = 75%) -> Pink
-    return {
-      className: "border-pink-500/40 text-pink-400 hover:border-pink-500/60 font-bold",
-      style: {
-        background: `linear-gradient(to right, rgba(244, 114, 182, 0.18) ${pct}%, var(--color-bg) ${pct}%)`,
-      },
-      iconType: "minus",
-      iconColor: "text-pink-400",
-    };
-  } else {
-    // 76-99% Stage (e.g. 4/5 = 80%, 5/6 = 83.3%) -> Green
-    return {
-      className: "border-emerald-500/40 text-emerald-400 hover:border-emerald-500/60 font-bold",
-      style: {
-        background: `linear-gradient(to right, rgba(16, 185, 129, 0.18) ${pct}%, var(--color-bg) ${pct}%)`,
-      },
-      iconType: "minus",
-      iconColor: "text-emerald-400",
-    };
-  }
+  // In-Progress (1-99%): Disciplined single accent (sky) with clean border and subtle fill
+  return {
+    className: "bg-sky-500/10 border-sky-500/30 text-sky-400 hover:border-sky-500/50 hover:bg-sky-500/15 font-semibold",
+    style: undefined,
+    iconType: "minus",
+    iconColor: "text-sky-400",
+  };
 };
 
 export default function TrackerHierarchicalTable({
@@ -396,9 +361,9 @@ export default function TrackerHierarchicalTable({
   }
 
   return (
-    <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-2xl shadow-[var(--shadow-card)] overflow-hidden">
+    <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-xl sm:rounded-2xl shadow-[var(--shadow-card)] overflow-hidden">
       {/* Table Toolbar */}
-      <div className="p-3.5 sm:p-4 border-b border-[color:var(--color-border)] flex flex-wrap items-center justify-between gap-3 bg-[color:var(--color-surface-muted)]">
+      <div className="px-3 py-2 sm:px-4 sm:py-2.5 border-b border-[color:var(--color-border)] flex flex-wrap items-center justify-between gap-2 sm:gap-3 bg-[color:var(--color-surface-muted)]">
         <div className="flex items-center gap-2">
           <FiLayers className="w-4 h-4 text-[color:var(--color-primary)]" />
           <span className="text-xs sm:text-sm font-bold text-[color:var(--color-text)]">
@@ -409,12 +374,12 @@ export default function TrackerHierarchicalTable({
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {/* Expand/Collapse All Button */}
           <button
             type="button"
             onClick={handleToggleExpandAll}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)] transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl text-xs font-semibold border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)] transition-colors"
           >
             {areAllExpanded ? (
               <>
@@ -434,7 +399,7 @@ export default function TrackerHierarchicalTable({
             <button
               type="button"
               onClick={() => setShowColumnMenu((prev) => !prev)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)] transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl text-xs font-semibold border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)] transition-colors"
               title="Add or remove optional tracking columns"
               aria-expanded={showColumnMenu}
               aria-label="Customize table columns"
@@ -572,12 +537,12 @@ export default function TrackerHierarchicalTable({
       </div>
 
       {/* Mobile Swipe Guidance Banner */}
-      <div className="sm:hidden px-3.5 py-2 bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-transparent border-b border-[color:var(--color-border)] flex items-center justify-between text-[11px] text-[color:var(--color-text)]">
-        <span className="inline-flex items-center gap-1.5 font-medium text-blue-500 dark:text-blue-400">
-          <span className="animate-pulse">↔</span>
+      <div className="sm:hidden px-3 py-1.5 bg-[color:var(--color-surface-muted)] border-b border-[color:var(--color-border)] flex items-center justify-between text-[11px] text-[color:var(--color-text-muted)]">
+        <span className="inline-flex items-center gap-1.5 font-medium text-[color:var(--color-text)]">
+          <span className="text-sky-500 dark:text-sky-400 font-bold">↔</span>
           <span>Swipe horizontally for Theory, PYQs &amp; Actions</span>
         </span>
-        <span className="text-[10px] text-[color:var(--color-text-muted)] font-mono">
+        <span className="text-[10px] text-[color:var(--color-text-muted)] font-mono tabular-nums">
           {subjects.length} subjects
         </span>
       </div>
@@ -587,7 +552,7 @@ export default function TrackerHierarchicalTable({
         <table className="w-full text-left border-collapse min-w-[660px] sm:min-w-[760px]">
           <thead>
             <tr className="border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[11px] font-bold text-[color:var(--color-text-muted)] uppercase tracking-wider">
-              <th scope="col" className="py-2.5 sm:py-3 px-2.5 sm:px-4 sticky left-0 z-20 bg-[color:var(--color-surface-muted)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+              <th scope="col" className="py-2 sm:py-2.5 px-2.5 sm:px-4 sticky left-0 z-20 bg-[color:var(--color-surface-muted)] border-r border-[color:var(--color-border)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[145px] sm:min-w-[240px] md:min-w-[300px] max-w-[165px] sm:max-w-none">
                 Syllabus
               </th>
               <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-20 sm:w-24">
@@ -681,7 +646,7 @@ export default function TrackerHierarchicalTable({
                   {/* LEVEL 1: Subject Header Row */}
                   <tr className="bg-[color:var(--color-surface)] border-b border-[color:var(--color-border)] hover:bg-[color:var(--color-bg)] transition-colors group/subject">
                     {/* Sticky Subject Title */}
-                    <td className="py-2.5 sm:py-3 px-2 sm:px-4 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/subject:bg-[color:var(--color-bg)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                    <td className="py-2.5 sm:py-3 px-2 sm:px-4 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/subject:bg-[color:var(--color-bg)] border-r border-[color:var(--color-border)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
                       <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
                         <button
                           type="button"
@@ -745,7 +710,7 @@ export default function TrackerHierarchicalTable({
                             ) : (
                               <FiSquare className="w-3.5 h-3.5" />
                             )}
-                            <span>
+                            <span className="tabular-nums font-semibold">
                               {completedTopicsCount}/{totalTopicsCount}
                             </span>
                           </button>
@@ -793,7 +758,7 @@ export default function TrackerHierarchicalTable({
                             ) : (
                               <FiSquare className="w-3.5 h-3.5" />
                             )}
-                            <span>
+                            <span className="tabular-nums font-semibold">
                               {revisedTopicsCount}/{totalTopicsCount}
                             </span>
                           </button>
@@ -813,7 +778,7 @@ export default function TrackerHierarchicalTable({
                         >
                           <FiMinus className="w-3 h-3" />
                         </button>
-                        <span className="font-bold text-xs w-4 text-center">
+                        <span className="font-bold text-xs w-4 text-center tabular-nums">
                           {subjectRevisionCount}
                         </span>
                         <button
@@ -830,7 +795,7 @@ export default function TrackerHierarchicalTable({
                     {/* Subject Canonical PYQ Progress (Authoritative) */}
                     <td className="py-3 px-4 text-center">
                       <div className="flex flex-col items-center gap-1">
-                        <span className="font-bold text-xs text-[color:var(--color-text)]">
+                        <span className="font-bold text-xs text-[color:var(--color-text)] tabular-nums">
                           {totalSubAttemptedPyqs} / {totalSubAvailablePyqs} PYQs
                         </span>
                         <div className="w-24 bg-[color:var(--color-border)] h-1.5 rounded-full overflow-hidden">
@@ -845,7 +810,7 @@ export default function TrackerHierarchicalTable({
                     {/* Subject Accuracy */}
                     <td className="py-3 px-3 text-center">
                       {totalSubAttemptedPyqs > 0 ? (
-                        <span className={`font-bold text-xs ${
+                        <span className={`font-bold text-xs tabular-nums ${
                           subjectAccuracyPct >= 70
                             ? "text-emerald-500"
                             : subjectAccuracyPct >= 50
@@ -860,7 +825,7 @@ export default function TrackerHierarchicalTable({
                     {/* Optional Custom Columns for Subject */}
                     {isColVisible("marks") && (
                       <td className="py-3 px-3 text-center">
-                        <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[color:var(--color-bg)] border border-[color:var(--color-border)] text-[color:var(--color-text-muted)]">
+                        <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[color:var(--color-bg)] border border-[color:var(--color-border)] text-[color:var(--color-text-muted)] tabular-nums">
                           {formatMarksRange(subject.marksRange)}
                         </span>
                       </td>
@@ -910,7 +875,7 @@ export default function TrackerHierarchicalTable({
                           >
                             <FiMinus className="w-3 h-3" />
                           </button>
-                          <span className="font-bold text-xs w-4 text-center">
+                          <span className="font-bold text-xs w-4 text-center tabular-nums">
                             {subjectMockCount}
                           </span>
                           <button
@@ -960,7 +925,7 @@ export default function TrackerHierarchicalTable({
                         <React.Fragment key={topic.id}>
                           <tr className="hover:bg-[color:var(--color-bg)] transition-colors group/topic">
                             {/* Sticky Topic Title with Indent */}
-                            <td className="py-2 sm:py-2.5 px-2 sm:px-4 pl-3.5 sm:pl-8 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-bg)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                            <td className="py-2 sm:py-2.5 px-2 sm:px-4 pl-3.5 sm:pl-8 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-bg)] border-r border-[color:var(--color-border)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
                               <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                                 {hasSubtopics ? (
                                   <button
@@ -1051,7 +1016,7 @@ export default function TrackerHierarchicalTable({
                                 >
                                   <FiMinus className="w-3 h-3" />
                                 </button>
-                                <span className="font-bold text-xs w-4 text-center">
+                                <span className="font-bold text-xs w-4 text-center tabular-nums">
                                   {metrics.revisionCount}
                                 </span>
                                 <button
@@ -1068,7 +1033,7 @@ export default function TrackerHierarchicalTable({
                             {/* Topic PYQ Progress */}
                             <td className="py-2.5 px-4 text-center">
                               <div className="flex flex-col items-center gap-1">
-                                <span className="text-[11px] font-semibold text-[color:var(--color-text)]">
+                                <span className="text-[11px] font-semibold text-[color:var(--color-text)] tabular-nums">
                                   {metrics.attemptedPyqs} / {metrics.totalAvailablePyqs}
                                 </span>
                                 <div className="w-20 bg-[color:var(--color-border)] h-1 rounded-full overflow-hidden">
@@ -1083,7 +1048,7 @@ export default function TrackerHierarchicalTable({
                             {/* Topic Accuracy */}
                             <td className="py-2.5 px-3 text-center">
                               {metrics.attemptedPyqs > 0 ? (
-                                <span className={`text-[11px] font-bold ${
+                                <span className={`text-[11px] font-bold tabular-nums ${
                                   topicAccuracyPct >= 70
                                     ? "text-emerald-500"
                                     : topicAccuracyPct >= 50
@@ -1097,7 +1062,7 @@ export default function TrackerHierarchicalTable({
 
                             {/* Optional Custom Columns */}
                             {isColVisible("marks") && (
-                              <td className="py-2.5 px-3 text-center text-[11px] text-[color:var(--color-text-muted)] font-medium">
+                              <td className="py-2.5 px-3 text-center text-[11px] text-[color:var(--color-text-muted)] font-medium tabular-nums">
                                 {formatMarksRange(topic.marksRange)}
                               </td>
                             )}
@@ -1148,7 +1113,7 @@ export default function TrackerHierarchicalTable({
                                   >
                                     <FiMinus className="w-3 h-3" />
                                   </button>
-                                  <span className="font-bold text-xs w-4 text-center">
+                                  <span className="font-bold text-xs w-4 text-center tabular-nums">
                                     {topicMockCount}
                                   </span>
                                   <button
@@ -1208,9 +1173,9 @@ export default function TrackerHierarchicalTable({
                                   className="bg-[color:var(--color-surface-muted)]/30 hover:bg-[color:var(--color-surface-muted)] transition-colors text-[11px]"
                                 >
                                   {/* Deeply Indented Subtopic Title with Enumeration */}
-                                  <td className="py-1.5 sm:py-2 px-2 sm:px-4 pl-6 sm:pl-14 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-surface-muted)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                                  <td className="py-1.5 sm:py-2 px-2 sm:px-4 pl-6 sm:pl-14 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-surface-muted)] border-r border-[color:var(--color-border)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
                                     <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-                                      <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[color:var(--color-text-muted)] w-3.5 sm:w-4 text-right shrink-0">
+                                      <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[color:var(--color-text-muted)] w-3.5 sm:w-4 text-right shrink-0 tabular-nums">
                                         {sIdx + 1}.
                                       </span>
                                       <span className="text-[color:var(--color-text)] font-medium text-xs leading-snug break-words">
@@ -1275,7 +1240,7 @@ export default function TrackerHierarchicalTable({
                                       >
                                         <FiMinus className="w-2.5 h-2.5" />
                                       </button>
-                                      <span className="font-bold text-xs w-4 text-center">
+                                      <span className="font-bold text-xs w-4 text-center tabular-nums">
                                         {subtopicRevisionCount}
                                       </span>
                                       <button
@@ -1336,7 +1301,7 @@ export default function TrackerHierarchicalTable({
                                         >
                                           <FiMinus className="w-2.5 h-2.5" />
                                         </button>
-                                        <span className="font-bold text-xs w-4 text-center">
+                                        <span className="font-bold text-xs w-4 text-center tabular-nums">
                                           {Number(store?.customFields?.[subtopic.id]?.mockCount || 0)}
                                         </span>
                                         <button

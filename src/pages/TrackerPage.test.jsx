@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import TrackerPage from "./TrackerPage";
@@ -15,11 +15,12 @@ vi.mock("../components/Math/MathRuntime", () => ({
 
 // Mock PageShell
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children, showHeader, showFooter }) => (
+  default: ({ children, showHeader, showFooter, fluid }) => (
     <div
       data-testid="page-shell"
       data-show-header={String(showHeader)}
       data-show-footer={String(showFooter)}
+      data-fluid={String(fluid)}
     >
       {children}
     </div>
@@ -226,14 +227,7 @@ vi.mock("../components/Tracker/TrackerCountdownHero", () => ({
           Hide
         </button>
       </section>
-    ) : (
-      <button
-        type="button"
-        onClick={() => onUpdatePreferences({ showCountdownWidget: true, countdownDisplayMode: "hero" })}
-      >
-        Show Countdown
-      </button>
-    )
+    ) : null
   ),
 }));
 
@@ -264,6 +258,28 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     expect(screen.getByText(/practice accuracy/i)).toBeTruthy();
     expect(screen.getByText(/subject breakdown/i)).toBeTruthy();
     expect(screen.getAllByText(/engineering mathematics/i).length).toBeGreaterThan(0);
+  });
+
+  it("toggles preparation summary dropdown to collapse and expand metrics to save space", () => {
+    renderTrackerPage();
+    // Initially open
+    expect(screen.getByText(/theory progress/i)).toBeTruthy();
+    const toggleBtn = screen.getByRole("button", { name: /preparation summary/i });
+    expect(toggleBtn.getAttribute("aria-expanded")).toBe("true");
+    expect(within(toggleBtn).getByText(/^collapse$/i)).toBeTruthy();
+
+    // Click collapse button
+    fireEvent.click(toggleBtn);
+
+    // Detailed cards should now be collapsed to save space
+    expect(screen.queryByText(/theory progress/i)).toBeNull();
+    expect(toggleBtn.getAttribute("aria-expanded")).toBe("false");
+    expect(within(toggleBtn).getByText(/^expand$/i)).toBeTruthy();
+
+    // Click expand button to restore
+    fireEvent.click(toggleBtn);
+    expect(screen.getByText(/theory progress/i)).toBeTruthy();
+    expect(toggleBtn.getAttribute("aria-expanded")).toBe("true");
   });
 
   it("switches to GATE DA track when DA button is clicked", () => {
@@ -313,6 +329,24 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     expect(screen.getByRole("button", { name: /show countdown/i })).toBeTruthy();
   });
 
+  it("toggles the countdown widget on and off using the header toolbar countdown button", () => {
+    renderTrackerPage();
+    // Initially countdown is visible
+    expect(screen.getByRole("region", { name: /exam countdown/i })).toBeTruthy();
+    const countdownHeaderBtn = screen.getByRole("button", { name: /hide countdown/i });
+    expect(countdownHeaderBtn).toBeTruthy();
+
+    // Click header button to hide countdown
+    fireEvent.click(countdownHeaderBtn);
+    expect(screen.queryByRole("region", { name: /exam countdown/i })).toBeNull();
+    expect(screen.getByRole("button", { name: /show countdown/i })).toBeTruthy();
+
+    // Click header button again to reveal countdown
+    const showHeaderBtn = screen.getByRole("button", { name: /show countdown/i });
+    fireEvent.click(showHeaderBtn);
+    expect(screen.getByRole("region", { name: /exam countdown/i })).toBeTruthy();
+  });
+
   it("opens topic reset modal and confirms reset", () => {
     renderTrackerPage();
     const expandSubjectBtn = screen.getByRole("button", { name: /expand engineering mathematics/i });
@@ -354,10 +388,20 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     expect(backBtn.getAttribute("href")).toBe("/");
   });
 
-  it("renders PageShell with showHeader=false for distraction-free tracker experience", () => {
+  it("renders PageShell with showHeader=false and fluid=true for distraction-free, full-width tracker experience", () => {
     renderTrackerPage();
     const pageShell = screen.getByTestId("page-shell");
     expect(pageShell.getAttribute("data-show-header")).toBe("false");
+    expect(pageShell.getAttribute("data-fluid")).toBe("true");
+  });
+
+  it("uses font-display for the brand title and ensures no pulsating animations exist", () => {
+    const { container } = renderTrackerPage();
+    const heading = screen.getByRole("heading", { name: /gate cse preparation tracker/i });
+    expect(heading.className).toContain("font-display");
+    // Verify zero anxiety-inducing animate-ping or animate-pulse elements in the page
+    expect(container.querySelectorAll(".animate-ping").length).toBe(0);
+    expect(container.querySelectorAll(".animate-pulse").length).toBe(0);
   });
 
   it("renders a theme toggle switch button in track switcher toolbar", () => {

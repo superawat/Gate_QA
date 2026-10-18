@@ -1,7 +1,7 @@
 # GATE Preparation & Syllabus Tracker — Multi-Branch Architecture
-## Master Architecture & Specification (v4.5 — Editorial Typography, Main Action Navigation & Elimination of Modal Overlays)
+## Master Architecture & Specification (v5.0 — Fluid Shell, Compact Spacing Rhythm, Countdown Header Integration & Mobile Density)
 
-> **Document Version**: 4.5.0 (Editorial Typography, Main Feature Navigation, Mobile UI Optimization, Zero Modal Popups, Official Syllabi for EC/EE/ME/CE/CSE/DA)  
+> **Document Version**: 5.0.0 (Fluid Shell, Safe Space Ergonomics, Compact Spacing Rhythm, Countdown Header Integration, Collapsible Preparation Summary, Mobile Density, Official Syllabi for EC/EE/ME/CE/CSE/DA)  
 > **Execution Status**: 🟢 **100% Completed**  
 > **Route**: `/tracker` (Completely standalone page, accessible via Main Feature Navigation on Home)  
 > **Target Exams**: User-selected examination papers (Max 2: CSE, DA, EC, EE, ME, CE)  
@@ -15,6 +15,24 @@
 ---
 
 ### Changelog
+
+#### v5.0 (Fluid Shell, Compact Spacing Rhythm, Countdown Header Integration & Mobile Density — DEC-195, DEC-196, DEC-197)
+- **Fluid Shell & Editorial Typography (DEC-195)**:
+  - Enabled `fluid={true}` on `PageShell`, expanding tracker workbench to utilize modern desktop monitors up to 1920px (`w-full max-w-[1920px]`).
+  - Upgraded brand heading to editorial `font-display` (`DM Serif Display`) with `text-balance` and `text-pretty` typography.
+  - Eliminated anxiety-inducing `animate-ping` radar beacons, gratuitous pulse animations, and synthetic rainbow linear gradients.
+  - Reinforced sticky first column isolation in `TrackerHierarchicalTable.jsx` with opaque background and `border-r border-[color:var(--color-border)]` preventing cell bleed-through during horizontal scroll.
+  - Enforced universal `tabular-nums` and typographic en-dashes (`–`) across all numbers and ranges.
+- **Exam Countdown Space Optimization & Header Toolbar Integration (DEC-196)**:
+  - Moved the Countdown toggle directly into the header toolbar alongside branch switchers (`[ GATE ME ] [ GATE DA ] [ 🕒 Countdown ] [ 🌙 ]`).
+  - When hidden, `TrackerCountdownHero` returns `null` with 0 dead vertical space, eliminating the legacy isolated button row.
+  - When revealed, renders a compact ~120px high-density banner with `tabular-nums` and close (`X`) button.
+- **Harmonized Micro-Spacing System & Mobile Density (DEC-197)**:
+  - Standardized inter-card vertical margins to `mb-2 sm:mb-2.5`, eliminating over 60px of dead space.
+  - Compacted `Preparation Summary` dropdown button to `px-2.5 py-1.5 sm:px-3.5 sm:py-2` (~36px height) with condensed glanceable metrics (`Theory: 0% · PYQs: 1% · Acc: 100%`).
+  - Unified Search & Filter bar controls to matching `py-1.5 px-2.5` heights (~34px).
+  - Streamlined `Subject Breakdown` section header (`space-y-1.5`, removed duplicate divider), allowing all 8 syllabus subjects to display completely above the fold on desktop.
+  - Optimized mobile touch geometry (`min-h-[32px] sm:min-h-[34px]`) and sticky column bounds (`min-w-[145px] max-w-[165px]`).
 
 #### v4.5 (Editorial Typography & Elimination of Announcement Modal Popups — DEC-181)
 - **Elimination of Announcement Modal Popups**:
