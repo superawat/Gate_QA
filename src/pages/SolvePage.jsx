@@ -810,8 +810,8 @@ const SolvePage = ({
                 <button
                   type="button"
                   onClick={handleBackToResults}
-                  aria-label="Filter"
-                  title="Filter"
+                  aria-label="Back to Results"
+                  title="Back to Results"
                   className="inline-flex h-8 sm:h-9 items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                 >
                   <span>Filter</span>

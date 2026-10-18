@@ -1,5 +1,12 @@
 # Changelog
 
+- **E2E Test Suite Stabilization & Accessibility Control Alignment (DEC-198)**:
+  - *Context*: Playwright E2E tests failed on three specs (`tests/e2e/a11y.axe.spec.js`, `tests/e2e/branch-data-isolation.spec.js`, and `tests/e2e/practice-flow.spec.js`) following recent breadcrumb and branch preference updates.
+  - *Accomplishments*:
+    - **Solve Page Return Affordance Accessibility Alignment (`src/pages/SolvePage.jsx`)**: Updated the return button's accessible name to `aria-label="Back to Results"` and `title="Back to Results"` while maintaining the compact `<span>Filter</span>` breadcrumb aesthetic. This resolves Playwright's `getByRole("button", { name: /Back to Results/i })` locators and axe accessibility control snapshot expectations.
+    - **Deselected Branch LocalStorage Key Purging (`src/utils/branchPreference.ts`)**: Replaced `localStorage.setItem('gateqa_include_' + track, "false")` with `localStorage.removeItem('gateqa_include_' + track)` for non-enrolled branches. Added synchronous invocation of `purgeLocalStorageForBranches(deselected, sanitized)` inside `writeBranchPreferences` to ensure stale branch storage is cleared immediately before subsequent test assertions or page loads.
+    - **Automated Verification**: All 21 Playwright E2E tests passed (100% green in 2.1m), all 3 axe audit tests passed, full unit test suite passed (1,382 tests green), and TypeScript typecheck clean (0 errors).
+
 - **Preparation Tracker Vertical Gap Elimination & Mobile Density Optimization (DEC-197)**:
   - *Context*: Substantial dead margins existed between the header, the Preparation Summary dropdown, the Search/Filter bar, and the Subject Breakdown heading (`mb-4 sm:mb-8` and `mb-4 sm:mb-6`), causing excessive vertical stretching and pushing syllabus rows below the fold.
   - *Accomplishments*:

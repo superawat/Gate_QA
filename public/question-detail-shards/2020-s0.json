@@ -1412,7 +1412,8 @@
       },
       "detailed_solution": {
         "concept": "gatecse-2020: numerical-answers",
-        "markdown": "Other Answer as per GATE 2020 Answer Key : 13.3 to 13.3 or 13.5 to 13.5\n\nTherefore, the correct answer is **13.5**."
+        "markdown": "Block = 256 bytes = 32 words of 8 bytes.\n\nMiss penalty = first word 20 ns + 31 more words $\\times$ 5 ns = 175 ns.\n\nAverage access time = hit time + miss rate $\\times$ miss penalty = $3+0.06\\times175=3+10.5=13.5$ ns.\n\n(If cache access is counted only on hits: $0.94\\times3+0.06\\times175\\approx13.3$, which the official key also accepts.)\n\n<b>Answer: 13.5</b>\n\nOther Answer as per GATE 2020 Answer Key : 13.3 to 13.3 or 13.5 to 13.5",
+        "images": []
       }
     },
     "go:333209": {
