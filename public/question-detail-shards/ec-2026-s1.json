@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.083Z",
+  "generatedAt": "2026-10-18T16:30:36.990Z",
   "shardKey": "ec-2026-s1",
   "yearSetKey": "ec-2026-s1",
   "yearSetIdentity": "ec:2026:set-1",
@@ -9,8 +9,9 @@
   "label": "2026 Set 1",
   "questionCount": 65,
   "recordsByQuestionUid": {
-    "pp:ec:2026:q1": {
-      "question_uid": "pp:ec:2026:q1",
+    "ec:2026:q1": {
+      "question_uid": "ec:2026:q1",
+      "legacy_uid": "pp:ec:2026:q1",
       "exam_uid": "ec:2026:set1:main:q1",
       "title": "GATE EC 2026 | Set 1 | Question: 1",
       "section": "main",
@@ -50,12 +51,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Given:</b>\n\nThe differential equation is\n\n$\\vec{\\dot{w}} = A\\vec{w}$\n\nInitial condition:\n\n$$\\vec{w}(0)=\\begin{bmatrix}1\\\\1\\end{bmatrix}$$\n\nThe solution is given as\n\n$\\vec{w}(t)=e^t\\vec{u}_x+e^{-2t}\\vec{u}_y$\n\nSince $\\vec{u}_x$ and $\\vec{u}_y$ are unit vectors along the coordinate axes,\n\n$$\\vec{u}_x=\\begin{bmatrix}1\\\\0\\end{bmatrix}, \\qquad \\vec{u}_y=\\begin{bmatrix}0\\\\1\\end{bmatrix}$$\n\nTherefore,\n\n$$\\vec{w}(t)=\\begin{bmatrix}e^t\\\\e^{-2t}\\end{bmatrix}$$\n\nDifferentiate $\\vec{w}(t)$ with respect to $t$:\n\n$$\\vec{\\dot{w}}(t)=\\begin{bmatrix}e^t\\\\-2e^{-2t}\\end{bmatrix}$$\n\nNow,\n\n$\\vec{\\dot{w}} = A\\vec{w}$\n\nAssume\n\n$$A=\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$$\n\nThen,\n\n$$A\\vec{w}\n\n=\n\n\\begin{bmatrix}\n\na&b\\\\\n\nc&d\n\n\\end{bmatrix}\n\n\\begin{bmatrix}\n\ne^t\\\\\n\ne^{-2t}\n\n\\end{bmatrix}\n\n=\n\n\\begin{bmatrix}\n\nae^t+be^{-2t}\\\\\n\nce^t+de^{-2t}\n\n\\end{bmatrix}$$\n\nComparing with\n\n$$\\vec{\\dot{w}}(t)=\\begin{bmatrix}e^t\\\\-2e^{-2t}\\end{bmatrix}$$\n\nWe get,\n\n$a=1,\\quad b=0,\\quad c=0,\\quad d=-2$\n\nHence,\n\n$$A=\n\n\\begin{bmatrix}\n\n1&0\\\\\n\n0&-2\n\n\\end{bmatrix}$$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nThe differential equation is\n\n$\\vec{\\dot{w}} = A\\vec{w}$\n\nInitial condition:\n\n$$\\vec{w}(0)=\\begin{bmatrix}1\\\\1\\end{bmatrix}$$\n\nThe solution is given as\n\n$\\vec{w}(t)=e^t\\vec{u}_x+e^{-2t}\\vec{u}_y$\n\nSince $\\vec{u}_x$ and $\\vec{u}_y$ are unit vectors along the coordinate axes,\n\n$$\\vec{u}_x=\\begin{bmatrix}1\\\\0\\end{bmatrix}, \\qquad \\vec{u}_y=\\begin{bmatrix}0\\\\1\\end{bmatrix}$$\n\nTherefore,\n\n$$\\vec{w}(t)=\\begin{bmatrix}e^t\\\\e^{-2t}\\end{bmatrix}$$\n\nDifferentiate $\\vec{w}(t)$ with respect to $t$:\n\n$$\\vec{\\dot{w}}(t)=\\begin{bmatrix}e^t\\\\-2e^{-2t}\\end{bmatrix}$$\n\nNow,\n\n$\\vec{\\dot{w}} = A\\vec{w}$\n\nAssume\n\n$$A=\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$$\n\nThen,\n\n$$A\\vec{w}\n\n=\n\n\\begin{bmatrix}\n\na&b\\\\\n\nc&d\n\n\\end{bmatrix}\n\n\\begin{bmatrix}\n\ne^t\\\\\n\ne^{-2t}\n\n\\end{bmatrix}\n\n=\n\n\\begin{bmatrix}\n\nae^t+be^{-2t}\\\\\n\nce^t+de^{-2t}\n\n\\end{bmatrix}$$\n\nComparing with\n\n$$\\vec{\\dot{w}}(t)=\\begin{bmatrix}e^t\\\\-2e^{-2t}\\end{bmatrix}$$\n\nWe get,\n\n$a=1,\\quad b=0,\\quad c=0,\\quad d=-2$\n\nHence,\n\n$$A=\n\n\\begin{bmatrix}\n\n1&0\\\\\n\n0&-2\n\n\\end{bmatrix}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q2": {
-      "question_uid": "pp:ec:2026:q2",
+    "ec:2026:q2": {
+      "question_uid": "ec:2026:q2",
+      "legacy_uid": "pp:ec:2026:q2",
       "exam_uid": "ec:2026:set1:main:q2",
       "title": "GATE EC 2026 | Set 1 | Question: 2",
       "section": "main",
@@ -95,12 +96,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<b>Given Surface:</b>\n\n$z^2 = 2x^2 - y^2$\n\nRewrite the equation as\n\n$F(x,y,z)=2x^2-y^2-z^2=0$\n\nFor the surface $F(x,y,z)=0$, the normal vector is given by\n\n$\\nabla F=\n\n\\left(\n\n\\frac{\\partial F}{\\partial x},\n\n\\frac{\\partial F}{\\partial y},\n\n\\frac{\\partial F}{\\partial z}\n\n\\right)$\n\nCalculating the partial derivatives,\n\n$\\nabla F=(4x,-2y,-2z)$\n\nThe given point is\n\n$\\vec{P}=\\hat{i}+\\sqrt{2}\\hat{k}$\n\nHence,\n\n$x=1,\\quad y=0,\\quad z=\\sqrt{2}$\n\nSubstituting these values,\n\n$\\nabla F=(4,0,-2\\sqrt{2})$\n\nTaking out common factor $2$,\n\n$\\nabla F=2(2,0,-\\sqrt{2})$\n\nThus, a normal vector is proportional to\n\n$(2,0,-\\sqrt{2})$\n\nMagnitude of this vector is\n\n$\\sqrt{2^2+(\\sqrt{2})^2}\n\n=\n\n\\sqrt{4+2}\n\n=\n\n\\sqrt{6}$\n\nTherefore, the unit normal vector is\n\n$\\vec{n}\n\n=\n\n\\frac{2\\hat{i}-\\sqrt{2}\\hat{k}}{\\sqrt{6}}$\n\nMultiplying numerator and denominator by $\\frac{1}{\\sqrt{2}}$,\n\n$\\vec{n}\n\n=\n\n\\frac{\\sqrt{2}\\hat{i}-\\hat{k}}{\\sqrt{3}}$",
-        "images": []
+        "markdown": "<b>Given Surface:</b>\n\n$z^2 = 2x^2 - y^2$\n\nRewrite the equation as\n\n$F(x,y,z)=2x^2-y^2-z^2=0$\n\nFor the surface $F(x,y,z)=0$, the normal vector is given by\n\n$\\nabla F=\n\n\\left(\n\n\\frac{\\partial F}{\\partial x},\n\n\\frac{\\partial F}{\\partial y},\n\n\\frac{\\partial F}{\\partial z}\n\n\\right)$\n\nCalculating the partial derivatives,\n\n$\\nabla F=(4x,-2y,-2z)$\n\nThe given point is\n\n$\\vec{P}=\\hat{i}+\\sqrt{2}\\hat{k}$\n\nHence,\n\n$x=1,\\quad y=0,\\quad z=\\sqrt{2}$\n\nSubstituting these values,\n\n$\\nabla F=(4,0,-2\\sqrt{2})$\n\nTaking out common factor $2$,\n\n$\\nabla F=2(2,0,-\\sqrt{2})$\n\nThus, a normal vector is proportional to\n\n$(2,0,-\\sqrt{2})$\n\nMagnitude of this vector is\n\n$\\sqrt{2^2+(\\sqrt{2})^2}\n\n=\n\n\\sqrt{4+2}\n\n=\n\n\\sqrt{6}$\n\nTherefore, the unit normal vector is\n\n$\\vec{n}\n\n=\n\n\\frac{2\\hat{i}-\\sqrt{2}\\hat{k}}{\\sqrt{6}}$\n\nMultiplying numerator and denominator by $\\frac{1}{\\sqrt{2}}$,\n\n$\\vec{n}\n\n=\n\n\\frac{\\sqrt{2}\\hat{i}-\\hat{k}}{\\sqrt{3}}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2026:q3": {
-      "question_uid": "pp:ec:2026:q3",
+    "ec:2026:q3": {
+      "question_uid": "ec:2026:q3",
+      "legacy_uid": "pp:ec:2026:q3",
       "exam_uid": "ec:2026:set1:main:q3",
       "title": "GATE EC 2026 | Set 1 | Question: 3",
       "section": "main",
@@ -140,12 +141,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "<b>Given:</b>\n\n$x(t)=u(t-2)*(tu(t))$\n\nwhere $*$ denotes convolution.\n\nUsing the convolution property of Laplace Transform,\n\n$\\mathcal{L}\\{f(t)*g(t)\\}\n\n=\n\nF(s)G(s)$\n\nSo,\n\n$X(s)=\\mathcal{L}\\{u(t-2)\\}\\times \\mathcal{L}\\{tu(t)\\}$\n\n<b>Step 1: Laplace Transform of</b> $u(t-2)$\n\nUsing the standard formula,\n\nFor $a=2$,\n\n$\\mathcal{L}\\{u(t-2)\\}\n\n=\n\n\\frac{e^{-2s}}{s}$\n\n<b>Step 2: Laplace Transform of</b> $tu(t)$\n\nUsing the standard result,\n\nTherefore,\n\n$\\mathcal{L}\\{tu(t)\\}\n\n=\n\n\\frac{1}{s^2}$\n\n<b>Step 3: Apply convolution property</b>\n\n$X(s)\n\n=\n\n\\frac{e^{-2s}}{s}\\times\\frac{1}{s^2}$\n\nHence,\n\n$X(s)=\\frac{e^{-2s}}{s^3}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$x(t)=u(t-2)*(tu(t))$\n\nwhere $*$ denotes convolution.\n\nUsing the convolution property of Laplace Transform,\n\n$\\mathcal{L}\\{f(t)*g(t)\\}\n\n=\n\nF(s)G(s)$\n\nSo,\n\n$X(s)=\\mathcal{L}\\{u(t-2)\\}\\times \\mathcal{L}\\{tu(t)\\}$\n\n<b>Step 1: Laplace Transform of</b> $u(t-2)$\n\nUsing the standard formula,\n\nFor $a=2$,\n\n$\\mathcal{L}\\{u(t-2)\\}\n\n=\n\n\\frac{e^{-2s}}{s}$\n\n<b>Step 2: Laplace Transform of</b> $tu(t)$\n\nUsing the standard result,\n\nTherefore,\n\n$\\mathcal{L}\\{tu(t)\\}\n\n=\n\n\\frac{1}{s^2}$\n\n<b>Step 3: Apply convolution property</b>\n\n$X(s)\n\n=\n\n\\frac{e^{-2s}}{s}\\times\\frac{1}{s^2}$\n\nHence,\n\n$X(s)=\\frac{e^{-2s}}{s^3}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2026:q4": {
-      "question_uid": "pp:ec:2026:q4",
+    "ec:2026:q4": {
+      "question_uid": "ec:2026:q4",
+      "legacy_uid": "pp:ec:2026:q4",
       "exam_uid": "ec:2026:set1:main:q4",
       "title": "GATE EC 2026 | Set 1 | Question: 4",
       "section": "main",
@@ -185,12 +186,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "Carrier transport in a Zener diode operating in the breakdown region is considered.\n\nIn a heavily doped Zener diode, the depletion region becomes very thin.\n\nWhen a strong reverse bias is applied, the electric field across the depletion region becomes extremely high.\n\nDue to this strong electric field, electrons directly cross the depletion region from the valence band of the p-side to the conduction band of the n-side through a quantum mechanical effect known as <b>tunneling</b>.\n\nTherefore, the dominant current transport mechanism in Zener breakdown is: Tunneling",
-        "images": []
+        "markdown": "Carrier transport in a Zener diode operating in the breakdown region is considered.\n\nIn a heavily doped Zener diode, the depletion region becomes very thin.\n\nWhen a strong reverse bias is applied, the electric field across the depletion region becomes extremely high.\n\nDue to this strong electric field, electrons directly cross the depletion region from the valence band of the p-side to the conduction band of the n-side through a quantum mechanical effect known as <b>tunneling</b>.\n\nTherefore, the dominant current transport mechanism in Zener breakdown is: Tunneling\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q5": {
-      "question_uid": "pp:ec:2026:q5",
+    "ec:2026:q5": {
+      "question_uid": "ec:2026:q5",
+      "legacy_uid": "pp:ec:2026:q5",
       "exam_uid": "ec:2026:set1:main:q5",
       "title": "GATE EC 2026 | Set 1 | Question: 5",
       "section": "main",
@@ -230,12 +231,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "<b>Given:</b>\n\nSampling frequency:\n\n$f_s=40\\text{ Hz}$\n\nSignal 1:\n\n$x_1(t)=\\cos(20\\pi t)$\n\nSignal 2:\n\n$x_2(t)=\\cos(100\\pi t)$\n\nThe sampling interval is\n\nTherefore,\n\n$T_s=\\frac{1}{40}\\text{ sec}$\n\nThe sampled signals are obtained at\n\n$t=nT_s=\\frac{n}{40}, \\qquad n=0,1,2,\\dots$\n\n<b>Step 1: Samples of</b> $x_1(t)$\n\n$x_1[n]\n\n=\n\n\\cos\\left(20\\pi\\frac{n}{40}\\right)$\n\n$=\n\n\\cos\\left(\\frac{n\\pi}{2}\\right)$\n\nThus, the sequence becomes\n\n$1,0,-1,0,1,0,-1,0,1,0,\\dots$\n\n<b>Step 2: Samples of</b> $x_2(t)$\n\n$x_2[n]\n\n=\n\n\\cos\\left(100\\pi\\frac{n}{40}\\right)$\n\n$=\n\n\\cos\\left(\\frac{5n\\pi}{2}\\right)$\n\nUsing periodicity of cosine,\n\n$\\cos\\left(\\frac{5n\\pi}{2}\\right)\n\n=\n\n\\cos\\left(\\frac{n\\pi}{2}\\right)$\n\nHence,\n\n$x_2[n]=x_1[n]$\n\nTherefore, all corresponding samples of the two sequences are equal.\n\nIn particular, the fourth to seventh samples are equal.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nSampling frequency:\n\n$f_s=40\\text{ Hz}$\n\nSignal 1:\n\n$x_1(t)=\\cos(20\\pi t)$\n\nSignal 2:\n\n$x_2(t)=\\cos(100\\pi t)$\n\nThe sampling interval is\n\nTherefore,\n\n$T_s=\\frac{1}{40}\\text{ sec}$\n\nThe sampled signals are obtained at\n\n$t=nT_s=\\frac{n}{40}, \\qquad n=0,1,2,\\dots$\n\n<b>Step 1: Samples of</b> $x_1(t)$\n\n$x_1[n]\n\n=\n\n\\cos\\left(20\\pi\\frac{n}{40}\\right)$\n\n$=\n\n\\cos\\left(\\frac{n\\pi}{2}\\right)$\n\nThus, the sequence becomes\n\n$1,0,-1,0,1,0,-1,0,1,0,\\dots$\n\n<b>Step 2: Samples of</b> $x_2(t)$\n\n$x_2[n]\n\n=\n\n\\cos\\left(100\\pi\\frac{n}{40}\\right)$\n\n$=\n\n\\cos\\left(\\frac{5n\\pi}{2}\\right)$\n\nUsing periodicity of cosine,\n\n$\\cos\\left(\\frac{5n\\pi}{2}\\right)\n\n=\n\n\\cos\\left(\\frac{n\\pi}{2}\\right)$\n\nHence,\n\n$x_2[n]=x_1[n]$\n\nTherefore, all corresponding samples of the two sequences are equal.\n\nIn particular, the fourth to seventh samples are equal.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2026:q6": {
-      "question_uid": "pp:ec:2026:q6",
+    "ec:2026:q6": {
+      "question_uid": "ec:2026:q6",
+      "legacy_uid": "pp:ec:2026:q6",
       "exam_uid": "ec:2026:set1:main:q6",
       "title": "GATE EC 2026 | Set 1 | Question: 6",
       "section": "main",
@@ -275,12 +276,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "<b>Given Difference Equation:</b>\n\n$y[n]=\\frac{5}{6}y[n-1]-\\frac{1}{6}y[n-2]+x[n]$\n\nInput signal:\n\n$x[n]=\\delta[n]-\\frac{1}{3}\\delta[n-1]$\n\nTo determine the nature of the response, we analyze the system poles.\n\nTaking Z-transform of the system equation under zero initial conditions,\n\n$Y(z)=\\frac{5}{6}z^{-1}Y(z)-\\frac{1}{6}z^{-2}Y(z)+X(z)$\n\nRearranging terms,\n\n$Y(z)\\left(1-\\frac{5}{6}z^{-1}+\\frac{1}{6}z^{-2}\\right)=X(z)$\n\nHence, the transfer function is\n\n$H(z)=\\frac{Y(z)}{X(z)}\n\n=\n\n\\frac{1}{1-\\frac{5}{6}z^{-1}+\\frac{1}{6}z^{-2}}$\n\nMultiplying numerator and denominator by $z^2$,\n\n$H(z)=\\frac{z^2}{z^2-\\frac{5}{6}z+\\frac{1}{6}}$\n\nThe characteristic equation is\n\n$z^2-\\frac{5}{6}z+\\frac{1}{6}=0$\n\nFactorizing,\n\n$\\left(z-\\frac{1}{2}\\right)\\left(z-\\frac{1}{3}\\right)=0$\n\nTherefore, the poles are\n\n$z=\\frac{1}{2}, \\qquad z=\\frac{1}{3}$\n\nSince both poles lie inside the unit circle, the system is <b>stable</b>.\n\nAlso, the output depends only on present and past values:\n\n$x[n],\\quad y[n-1],\\quad y[n-2]$\n\nHence, the system is <b>causal</b>",
-        "images": []
+        "markdown": "<b>Given Difference Equation:</b>\n\n$y[n]=\\frac{5}{6}y[n-1]-\\frac{1}{6}y[n-2]+x[n]$\n\nInput signal:\n\n$x[n]=\\delta[n]-\\frac{1}{3}\\delta[n-1]$\n\nTo determine the nature of the response, we analyze the system poles.\n\nTaking Z-transform of the system equation under zero initial conditions,\n\n$Y(z)=\\frac{5}{6}z^{-1}Y(z)-\\frac{1}{6}z^{-2}Y(z)+X(z)$\n\nRearranging terms,\n\n$Y(z)\\left(1-\\frac{5}{6}z^{-1}+\\frac{1}{6}z^{-2}\\right)=X(z)$\n\nHence, the transfer function is\n\n$H(z)=\\frac{Y(z)}{X(z)}\n\n=\n\n\\frac{1}{1-\\frac{5}{6}z^{-1}+\\frac{1}{6}z^{-2}}$\n\nMultiplying numerator and denominator by $z^2$,\n\n$H(z)=\\frac{z^2}{z^2-\\frac{5}{6}z+\\frac{1}{6}}$\n\nThe characteristic equation is\n\n$z^2-\\frac{5}{6}z+\\frac{1}{6}=0$\n\nFactorizing,\n\n$\\left(z-\\frac{1}{2}\\right)\\left(z-\\frac{1}{3}\\right)=0$\n\nTherefore, the poles are\n\n$z=\\frac{1}{2}, \\qquad z=\\frac{1}{3}$\n\nSince both poles lie inside the unit circle, the system is <b>stable</b>.\n\nAlso, the output depends only on present and past values:\n\n$x[n],\\quad y[n-1],\\quad y[n-2]$\n\nHence, the system is <b>causal</b>\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q7": {
-      "question_uid": "pp:ec:2026:q7",
+    "ec:2026:q7": {
+      "question_uid": "ec:2026:q7",
+      "legacy_uid": "pp:ec:2026:q7",
       "exam_uid": "ec:2026:set1:main:q7",
       "title": "GATE EC 2026 | Set 1 | Question: 7",
       "section": "main",
@@ -320,12 +321,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<b>Step 1: Analyze the circuit when switch is open</b>\n\nFor an ideal OP-AMP with negative feedback,\n\n$V_- = V_+ = 1V$\n\nThe inverting terminal is connected to:\n\n- $1k\\Omega$ resistor to ground\n\n- Feedback path consisting of $2k\\Omega$ and $1k\\Omega$ in series\n\nHence, total feedback resistance is\n\n$R_f = 2k\\Omega + 1k\\Omega = 3k\\Omega$\n\nUsing non-inverting amplifier formula,\n\nSubstituting values,\n\n$x=V_o\n\n=\n\n\\left(1+\\frac{3k}{1k}\\right)(1)$\n\n$x=4V$\n\n<b>Step 2: Analyze when switch is closed</b>\n\nWhen the switch is closed, the $1k\\Omega$ resistor in feedback gets short-circuited.\n\nTherefore, only $2k\\Omega$ remains in the feedback path.\n\nThus,\n\n$R_f=2k\\Omega$\n\nAgain using non-inverting amplifier formula,\n\n$V_o\n\n=\n\n\\left(1+\\frac{2k}{1k}\\right)(1)$\n\n$V_o=3V$\n\nSince $x=4V$,\n\n$V_o=\\frac{3}{4}x$",
-        "images": []
+        "markdown": "<b>Step 1: Analyze the circuit when switch is open</b>\n\nFor an ideal OP-AMP with negative feedback,\n\n$V_- = V_+ = 1V$\n\nThe inverting terminal is connected to:\n\n- $1k\\Omega$ resistor to ground\n\n- Feedback path consisting of $2k\\Omega$ and $1k\\Omega$ in series\n\nHence, total feedback resistance is\n\n$R_f = 2k\\Omega + 1k\\Omega = 3k\\Omega$\n\nUsing non-inverting amplifier formula,\n\nSubstituting values,\n\n$x=V_o\n\n=\n\n\\left(1+\\frac{3k}{1k}\\right)(1)$\n\n$x=4V$\n\n<b>Step 2: Analyze when switch is closed</b>\n\nWhen the switch is closed, the $1k\\Omega$ resistor in feedback gets short-circuited.\n\nTherefore, only $2k\\Omega$ remains in the feedback path.\n\nThus,\n\n$R_f=2k\\Omega$\n\nAgain using non-inverting amplifier formula,\n\n$V_o\n\n=\n\n\\left(1+\\frac{2k}{1k}\\right)(1)$\n\n$V_o=3V$\n\nSince $x=4V$,\n\n$V_o=\\frac{3}{4}x$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q8": {
-      "question_uid": "pp:ec:2026:q8",
+    "ec:2026:q8": {
+      "question_uid": "ec:2026:q8",
+      "legacy_uid": "pp:ec:2026:q8",
       "exam_uid": "ec:2026:set1:main:q8",
       "title": "GATE EC 2026 | Set 1 | Question: 8",
       "section": "main",
@@ -365,12 +366,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "<b>Step 1: Emitter Voltage</b>\n\nFor an ideal OP-AMP with negative feedback,\n\n$V_- = V_+ = 3V$\n\nHence, emitter voltage is\n\n$V_E=3V$\n\n<b>Step 2: Emitter Current</b>\n\nThe emitter resistor is $1k\\Omega$, therefore\n\n$I_E=\\frac{V_E}{1k\\Omega}\n\n=\n\n\\frac{3}{1000}\n\n=\n\n3mA$\n\n<b>Step 3: Base Current</b>\n\nUsing the relation, Substituting values,\n\n$I_B=\\frac{3mA}{100}$\n\n$I_B=0.03mA$\n\nConverting into microampere,\n\n$I_B=30\\mu A$",
-        "images": []
+        "markdown": "<b>Step 1: Emitter Voltage</b>\n\nFor an ideal OP-AMP with negative feedback,\n\n$V_- = V_+ = 3V$\n\nHence, emitter voltage is\n\n$V_E=3V$\n\n<b>Step 2: Emitter Current</b>\n\nThe emitter resistor is $1k\\Omega$, therefore\n\n$I_E=\\frac{V_E}{1k\\Omega}\n\n=\n\n\\frac{3}{1000}\n\n=\n\n3mA$\n\n<b>Step 3: Base Current</b>\n\nUsing the relation, Substituting values,\n\n$I_B=\\frac{3mA}{100}$\n\n$I_B=0.03mA$\n\nConverting into microampere,\n\n$I_B=30\\mu A$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2026:q9": {
-      "question_uid": "pp:ec:2026:q9",
+    "ec:2026:q9": {
+      "question_uid": "ec:2026:q9",
+      "legacy_uid": "pp:ec:2026:q9",
       "exam_uid": "ec:2026:set1:main:q9",
       "title": "GATE EC 2026 | Set 1 | Question: 9",
       "section": "main",
@@ -410,12 +411,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "<b>Given:</b>\n\nEach block has transfer function\n\n$G(s)=\\frac{1}{s+4}$\n\nLet the output of the left summing junction be\n\n$E(s)$\n\n<b>Step 1: Output of upper block</b>\n\nThe upper block output is the system output:\n\n$C(s)=\\frac{1}{s+4}E(s)$\n\n<b>Step 2: Output of lower block</b>\n\nThe lower block also receives the same input $E(s)$, hence its output is\n\n$\\frac{1}{s+4}E(s)$\n\n<b>Step 3: Right summing junction</b>\n\nAt the right summing junction,\n\n- Upper input is positive\n\n- Lower input is negative\n\nTherefore, $\\frac{1}{s+4}E(s)-\\frac{1}{s+4}E(s)=0$\n\nHence, the feedback signal becomes zero.\n\n<b>Step 4: Left summing junction</b>\n\nThus,\n\n$E(s)=R(s)$\n\nSubstituting into the output equation,\n\n$C(s)=\\frac{1}{s+4}R(s)$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nEach block has transfer function\n\n$G(s)=\\frac{1}{s+4}$\n\nLet the output of the left summing junction be\n\n$E(s)$\n\n<b>Step 1: Output of upper block</b>\n\nThe upper block output is the system output:\n\n$C(s)=\\frac{1}{s+4}E(s)$\n\n<b>Step 2: Output of lower block</b>\n\nThe lower block also receives the same input $E(s)$, hence its output is\n\n$\\frac{1}{s+4}E(s)$\n\n<b>Step 3: Right summing junction</b>\n\nAt the right summing junction,\n\n- Upper input is positive\n\n- Lower input is negative\n\nTherefore, $\\frac{1}{s+4}E(s)-\\frac{1}{s+4}E(s)=0$\n\nHence, the feedback signal becomes zero.\n\n<b>Step 4: Left summing junction</b>\n\nThus,\n\n$E(s)=R(s)$\n\nSubstituting into the output equation,\n\n$C(s)=\\frac{1}{s+4}R(s)$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q10": {
-      "question_uid": "pp:ec:2026:q10",
+    "ec:2026:q10": {
+      "question_uid": "ec:2026:q10",
+      "legacy_uid": "pp:ec:2026:q10",
       "exam_uid": "ec:2026:set1:main:q10",
       "title": "GATE EC 2026 | Set 1 | Question: 10",
       "section": "main",
@@ -455,12 +456,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
-        "markdown": "<b>Given:</b>\n\nThe CMOS circuit has inputs $A$ and $B$, and output $Y$.\n\n<b>Step 1: Analyze the PMOS network</b>\n\nThe upper network consists of two PMOS transistors connected in <b>series</b>.\n\nA PMOS transistor conducts when its input is logic 0.\n\nSince both PMOS transistors are in series, the pull-up path connects the output to $V_{DD}$ only when:\n\n$A=0 \\quad \\text{and} \\quad B=0$\n\nThus,\n\n$Y=1\n\n\\quad \\text{only for} \\quad\n\nA=0,\\;B=0$\n\n<b>Step 2: Analyze the NMOS network</b>\n\nThe lower network consists of two NMOS transistors connected in <b>parallel</b>.\n\nAn NMOS transistor conducts when its input is logic 1.\n\nTherefore, the pull-down path connects the output to ground whenever:\n\n$A=1 \\quad \\text{or} \\quad B=1$\n\nThus,\n\n$Y=0\n\n\\quad \\text{when}\n\n\\quad\n\nA+B=1$\n\nCombining both conditions,\n\nThis is the logic expression of a <b>NOR gate</b>.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nThe CMOS circuit has inputs $A$ and $B$, and output $Y$.\n\n<b>Step 1: Analyze the PMOS network</b>\n\nThe upper network consists of two PMOS transistors connected in <b>series</b>.\n\nA PMOS transistor conducts when its input is logic 0.\n\nSince both PMOS transistors are in series, the pull-up path connects the output to $V_{DD}$ only when:\n\n$A=0 \\quad \\text{and} \\quad B=0$\n\nThus,\n\n$Y=1\n\n\\quad \\text{only for} \\quad\n\nA=0,\\;B=0$\n\n<b>Step 2: Analyze the NMOS network</b>\n\nThe lower network consists of two NMOS transistors connected in <b>parallel</b>.\n\nAn NMOS transistor conducts when its input is logic 1.\n\nTherefore, the pull-down path connects the output to ground whenever:\n\n$A=1 \\quad \\text{or} \\quad B=1$\n\nThus,\n\n$Y=0\n\n\\quad \\text{when}\n\n\\quad\n\nA+B=1$\n\nCombining both conditions,\n\nThis is the logic expression of a <b>NOR gate</b>.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q11": {
-      "question_uid": "pp:ec:2026:q11",
+    "ec:2026:q11": {
+      "question_uid": "ec:2026:q11",
+      "legacy_uid": "pp:ec:2026:q11",
       "exam_uid": "ec:2026:set1:main:q11",
       "title": "GATE EC 2026 | Set 1 | Question: 11",
       "section": "main",
@@ -500,12 +501,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Miscellaneous Topics",
-        "markdown": "<b>Given:</b>\n\n$G_T=G_R=1$, $\\lambda=0.30\\text{ m}$, $P_T=+10\\text{ dBm}$, $P_R=-90\\text{ dBm}$\n\n<b>Step 1: Power ratio</b>\n\n$\\frac{P_R}{P_T} = \\frac{-90-10}{10}\\text{ dB} = -100\\text{ dB} = 10^{-10}$\n\n<b>Step 2: Friis equation</b>\n\n$\\frac{P_R}{P_T} = G_T G_R \\left(\\frac{\\lambda}{4\\pi D}\\right)^2 = 1\\times1\\times\\left(\\frac{0.3}{4\\pi D}\\right)^2$\n\n<b>Step 3: Solve for D</b>\n\n$10^{-10} = \\left(\\frac{0.3}{4\\pi D}\\right)^2$\n\n$10^{-5} = \\frac{0.3}{4\\pi D}$\n\n$D = \\frac{0.3}{4\\pi \\times 10^{-5}} = \\frac{0.3}{4\\pi}\\times10^5 = \\frac{30000}{4\\pi}\\text{ m} = \\frac{30}{4\\pi}\\text{ km} = \\frac{15}{2\\pi}\\text{ km}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$G_T=G_R=1$, $\\lambda=0.30\\text{ m}$, $P_T=+10\\text{ dBm}$, $P_R=-90\\text{ dBm}$\n\n<b>Step 1: Power ratio</b>\n\n$\\frac{P_R}{P_T} = \\frac{-90-10}{10}\\text{ dB} = -100\\text{ dB} = 10^{-10}$\n\n<b>Step 2: Friis equation</b>\n\n$\\frac{P_R}{P_T} = G_T G_R \\left(\\frac{\\lambda}{4\\pi D}\\right)^2 = 1\\times1\\times\\left(\\frac{0.3}{4\\pi D}\\right)^2$\n\n<b>Step 3: Solve for D</b>\n\n$10^{-10} = \\left(\\frac{0.3}{4\\pi D}\\right)^2$\n\n$10^{-5} = \\frac{0.3}{4\\pi D}$\n\n$D = \\frac{0.3}{4\\pi \\times 10^{-5}} = \\frac{0.3}{4\\pi}\\times10^5 = \\frac{30000}{4\\pi}\\text{ m} = \\frac{30}{4\\pi}\\text{ km} = \\frac{15}{2\\pi}\\text{ km}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q12": {
-      "question_uid": "pp:ec:2026:q12",
+    "ec:2026:q12": {
+      "question_uid": "ec:2026:q12",
+      "legacy_uid": "pp:ec:2026:q12",
       "exam_uid": "ec:2026:set1:main:q12",
       "title": "GATE EC 2026 | Set 1 | Question: 12",
       "section": "main",
@@ -545,12 +546,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communication Systems",
-        "markdown": "<b>Given:</b>\n\n4-level signal, symbol rate $= 10^4$ symbols/second.\n\n<b>Step 1: Nyquist bandwidth</b>\n\nThe minimum (Nyquist) bandwidth required to transmit $R_s$ symbols/second without ISI is:\n\n$B_{Nyquist} = \\frac{R_s}{2} = \\frac{10^4}{2} = 5\\text{ kHz}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n4-level signal, symbol rate $= 10^4$ symbols/second.\n\n<b>Step 1: Nyquist bandwidth</b>\n\nThe minimum (Nyquist) bandwidth required to transmit $R_s$ symbols/second without ISI is:\n\n$B_{Nyquist} = \\frac{R_s}{2} = \\frac{10^4}{2} = 5\\text{ kHz}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q13": {
-      "question_uid": "pp:ec:2026:q13",
+    "ec:2026:q13": {
+      "question_uid": "ec:2026:q13",
+      "legacy_uid": "pp:ec:2026:q13",
       "exam_uid": "ec:2026:set1:main:q13",
       "title": "GATE EC 2026 | Set 1 | Question: 13",
       "section": "main",
@@ -590,12 +591,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "<b>Given:</b>\n\n$C\\frac{dV}{dt} = I(t) - m(t)$, $I(t) = q\\delta(t)$, $V(0^-) = V_0$\n\n<b>Step 1: Effect of impulse current</b>\n\n$I(t) = q\\delta(t)$ acts instantaneously at $t=0$. Integrating both sides from $0^-$ to $0^+$:\n\n$C[V(0^+) - V(0^-)] = q - 0 \\Rightarrow V(0^+) = V_0 + \\frac{q}{C}$\n\n<b>Step 2: For $t > 0$</b>\n\nThe impulse is gone, so:\n\n$C\\frac{dV}{dt} = -m(t),\\quad V(0^-)\\to V(0^+) = V_0 + \\frac{q}{C}$\n\nThe equivalent representation treats the initial condition as updated by the impulse:\n\n$C\\frac{dV}{dt} = -m(t),\\text{ with } V(t=0^-) = V_0 + \\frac{q}{C}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$C\\frac{dV}{dt} = I(t) - m(t)$, $I(t) = q\\delta(t)$, $V(0^-) = V_0$\n\n<b>Step 1: Effect of impulse current</b>\n\n$I(t) = q\\delta(t)$ acts instantaneously at $t=0$. Integrating both sides from $0^-$ to $0^+$:\n\n$C[V(0^+) - V(0^-)] = q - 0 \\Rightarrow V(0^+) = V_0 + \\frac{q}{C}$\n\n<b>Step 2: For $t > 0$</b>\n\nThe impulse is gone, so:\n\n$C\\frac{dV}{dt} = -m(t),\\quad V(0^-)\\to V(0^+) = V_0 + \\frac{q}{C}$\n\nThe equivalent representation treats the initial condition as updated by the impulse:\n\n$C\\frac{dV}{dt} = -m(t),\\text{ with } V(t=0^-) = V_0 + \\frac{q}{C}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q14": {
-      "question_uid": "pp:ec:2026:q14",
+    "ec:2026:q14": {
+      "question_uid": "ec:2026:q14",
+      "legacy_uid": "pp:ec:2026:q14",
       "exam_uid": "ec:2026:set1:main:q14",
       "title": "GATE EC 2026 | Set 1 | Question: 14",
       "section": "main",
@@ -635,12 +636,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Uniform Plane Waves",
-        "markdown": "Given,\n\n$\\vec{E}(z,t)=E_0\\left[\\cos(\\omega t-kz)\\hat{a}_x+\\sin(\\omega t-kz)\\hat{a}_y\\right]$\n\nAt $z=0$,\n\n$\\vec{E}(t)=E_0\\cos\\omega t , \\hat{a}_x + E_0\\sin\\omega t , \\hat{a}_y$\n\nHere,\n\n$|E_{x0}|=|E_{y0}|=E_0$\n\nand the phase difference is,\n\n$|\\phi|=90^\\circ$\n\nTherefore, the wave is <b>circularly polarized</b>.\n\nNow, at $t=0$, $\\omega t=0$,\n\n$\\vec{E}=E_0\\hat{a}_x$\n\nAt $t=\\dfrac{T}{4}$, $\\omega t=\\dfrac{\\pi}{2}$,\n\n$\\vec{E}=E_0\\hat{a}_y$\n\nThus, the electric field rotates from $\\hat{a}_x$ toward $\\hat{a}_y$ with time.\n\nHence, it is a <b>Right-handed circularly polarized</b> wave.",
-        "images": []
+        "markdown": "Given,\n\n$\\vec{E}(z,t)=E_0\\left[\\cos(\\omega t-kz)\\hat{a}_x+\\sin(\\omega t-kz)\\hat{a}_y\\right]$\n\nAt $z=0$,\n\n$\\vec{E}(t)=E_0\\cos\\omega t , \\hat{a}_x + E_0\\sin\\omega t , \\hat{a}_y$\n\nHere,\n\n$|E_{x0}|=|E_{y0}|=E_0$\n\nand the phase difference is,\n\n$|\\phi|=90^\\circ$\n\nTherefore, the wave is <b>circularly polarized</b>.\n\nNow, at $t=0$, $\\omega t=0$,\n\n$\\vec{E}=E_0\\hat{a}_x$\n\nAt $t=\\dfrac{T}{4}$, $\\omega t=\\dfrac{\\pi}{2}$,\n\n$\\vec{E}=E_0\\hat{a}_y$\n\nThus, the electric field rotates from $\\hat{a}_x$ toward $\\hat{a}_y$ with time.\n\nHence, it is a <b>Right-handed circularly polarized</b> wave.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q15": {
-      "question_uid": "pp:ec:2026:q15",
+    "ec:2026:q15": {
+      "question_uid": "ec:2026:q15",
+      "legacy_uid": "pp:ec:2026:q15",
       "exam_uid": "ec:2026:set1:main:q15",
       "title": "GATE EC 2026 | Set 1 | Question: 15",
       "section": "main",
@@ -680,12 +681,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "<b>Given:</b>\n\np-n junction forward biased by 2V.\n\n<b>Concept:</b>\n\nUnder forward bias $V$, the separation between the quasi-Fermi levels $E_{fn}$ (n-side) and $E_{fp}$ (p-side) equals the applied voltage in energy units:\n\n$E_{fn} - E_{fp} = qV = q\\times2\\text{ V} = 2\\text{ eV}$\n\nIn volts, the energy difference = 2 eV.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\np-n junction forward biased by 2V.\n\n<b>Concept:</b>\n\nUnder forward bias $V$, the separation between the quasi-Fermi levels $E_{fn}$ (n-side) and $E_{fp}$ (p-side) equals the applied voltage in energy units:\n\n$E_{fn} - E_{fp} = qV = q\\times2\\text{ V} = 2\\text{ eV}$\n\nIn volts, the energy difference = 2 eV.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q16": {
-      "question_uid": "pp:ec:2026:q16",
+    "ec:2026:q16": {
+      "question_uid": "ec:2026:q16",
+      "legacy_uid": "pp:ec:2026:q16",
       "exam_uid": "ec:2026:set1:main:q16",
       "title": "GATE EC 2026 | Set 1 | Question: 16",
       "section": "main",
@@ -725,12 +726,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "<b>Given:</b>\n\n$$M = \\begin{bmatrix}2 & 1 & 1 \\\\ 1 & 3 & 0 \\\\-1 & a & b\\end{bmatrix}$$, $\\det(M)\\neq0$\n\n<b>Step 1: Compute det(M)</b>\n\n$\\det(M) = 2(3b-0) - 1(b-0) + 1(a+3) = 6b - b + a + 3 = 5b + a + 3$\n\n<b>Step 2: Condition $\\det(M)\\neq0$</b>\n\n$5b + a + 3 \\neq 0$\n\nThe question asks which values satisfy $\\det(M)\\neq0$ i.e., which options give $5b+a+3\\neq0$:\n\n(A) $a=-\\frac{1}{2}, b=-\\frac{1}{2}$: $5(-\\frac{1}{2})+(-\\frac{1}{2})+3 = -\\frac{5}{2}-\\frac{1}{2}+3 = -3+3=0$ Therefore, $\\det(M)=0$. Not valid.\n\n(B) $a=\\frac{1}{2}, b=\\frac{1}{2}$: $\\frac{5}{2}+\\frac{1}{2}+3=6\\neq0$\n\n(C) $a=-3, b=0$: $0-3+3=0$ Therefore, $\\det(M)=0$. Not valid.\n\n(D) $a=\\frac{1}{2}, b=-3$: $-15+\\frac{1}{2}+3=-11.5\\neq0$\n\n<b>Answer:</b>\n\nOptions (B) and (D) satisfy $\\det(M)\\neq0$.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$$M = \\begin{bmatrix}2 & 1 & 1 \\\\ 1 & 3 & 0 \\\\-1 & a & b\\end{bmatrix}$$, $\\det(M)\\neq0$\n\n<b>Step 1: Compute det(M)</b>\n\n$\\det(M) = 2(3b-0) - 1(b-0) + 1(a+3) = 6b - b + a + 3 = 5b + a + 3$\n\n<b>Step 2: Condition $\\det(M)\\neq0$</b>\n\n$5b + a + 3 \\neq 0$\n\nThe question asks which values satisfy $\\det(M)\\neq0$ i.e., which options give $5b+a+3\\neq0$:\n\n(A) $a=-\\frac{1}{2}, b=-\\frac{1}{2}$: $5(-\\frac{1}{2})+(-\\frac{1}{2})+3 = -\\frac{5}{2}-\\frac{1}{2}+3 = -3+3=0$ Therefore, $\\det(M)=0$. Not valid.\n\n(B) $a=\\frac{1}{2}, b=\\frac{1}{2}$: $\\frac{5}{2}+\\frac{1}{2}+3=6\\neq0$\n\n(C) $a=-3, b=0$: $0-3+3=0$ Therefore, $\\det(M)=0$. Not valid.\n\n(D) $a=\\frac{1}{2}, b=-3$: $-15+\\frac{1}{2}+3=-11.5\\neq0$\n\n<b>Answer:</b>\n\nOptions (B) and (D) satisfy $\\det(M)\\neq0$.\n\nTherefore, the correct option(s) are **B, D**."
       }
     },
-    "pp:ec:2026:q17": {
-      "question_uid": "pp:ec:2026:q17",
+    "ec:2026:q17": {
+      "question_uid": "ec:2026:q17",
+      "legacy_uid": "pp:ec:2026:q17",
       "exam_uid": "ec:2026:set1:main:q17",
       "title": "GATE EC 2026 | Set 1 | Question: 17",
       "section": "main",
@@ -770,12 +771,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "A counter that counts from 0 to 64 must be able to represent a total of 65 distinct states.\n\nThe maximum number of states (or the MOD number) that can be represented by $n$ flip-flops is given by:\n\n$\\text{Total states} = 2^n$\n\nTo accommodate 65 states, it must satisfy the inequality:\n\n$2^n \\geq 65$\n\ni.e.\n\n$n \\geq \\log_2 65$\n\n$n \\geq 6.022$\n\nHence, the minimum number of flip-flops required to design this counter is <b>7</b>.",
-        "images": []
+        "markdown": "A counter that counts from 0 to 64 must be able to represent a total of 65 distinct states.\n\nThe maximum number of states (or the MOD number) that can be represented by $n$ flip-flops is given by:\n\n$\\text{Total states} = 2^n$\n\nTo accommodate 65 states, it must satisfy the inequality:\n\n$2^n \\geq 65$\n\ni.e.\n\n$n \\geq \\log_2 65$\n\n$n \\geq 6.022$\n\nHence, the minimum number of flip-flops required to design this counter is <b>7</b>.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q18": {
-      "question_uid": "pp:ec:2026:q18",
+    "ec:2026:q18": {
+      "question_uid": "ec:2026:q18",
+      "legacy_uid": "pp:ec:2026:q18",
       "exam_uid": "ec:2026:set1:main:q18",
       "title": "GATE EC 2026 | Set 1 | Question: 18",
       "section": "main",
@@ -815,12 +816,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "<b>The loss tangent</b> $\\tan\\delta$ is defined as the ratio of the total loss current (conduction + displacement loss) to the lossless displacement current:\n\n$\\tan\\delta = \\frac{\\omega\\epsilon'' + \\sigma}{\\omega\\epsilon'}$\n\n(A) \"Ratio of real to imaginary parts of displacement current\", this is exactly $\\tan\\delta$\n\n(B) $\\frac{\\omega\\epsilon'' + \\sigma}{\\omega\\epsilon'}$, this is the standard formula\n\n(C) \"Ratio of electric susceptibility to permittivity\", $\\chi/\\epsilon$, this is NOT the loss tangent\n\n(D) \"Ratio of $\\vec{P}$ to $\\vec{D}$\" , $P/D = (\\epsilon-\\epsilon_0)/\\epsilon$, this is NOT the loss tangent\n\n<b>Answer:</b>\n\nOptions (A) and (B) correctly represent the dielectric loss tangent.",
-        "images": []
+        "markdown": "<b>The loss tangent</b> $\\tan\\delta$ is defined as the ratio of the total loss current (conduction + displacement loss) to the lossless displacement current:\n\n$\\tan\\delta = \\frac{\\omega\\epsilon'' + \\sigma}{\\omega\\epsilon'}$\n\n(A) \"Ratio of real to imaginary parts of displacement current\", this is exactly $\\tan\\delta$\n\n(B) $\\frac{\\omega\\epsilon'' + \\sigma}{\\omega\\epsilon'}$, this is the standard formula\n\n(C) \"Ratio of electric susceptibility to permittivity\", $\\chi/\\epsilon$, this is NOT the loss tangent\n\n(D) \"Ratio of $\\vec{P}$ to $\\vec{D}$\" , $P/D = (\\epsilon-\\epsilon_0)/\\epsilon$, this is NOT the loss tangent\n\n<b>Answer:</b>\n\nOptions (A) and (B) correctly represent the dielectric loss tangent.\n\nTherefore, the correct option(s) are **A, B**."
       }
     },
-    "pp:ec:2026:q19": {
-      "question_uid": "pp:ec:2026:q19",
+    "ec:2026:q19": {
+      "question_uid": "ec:2026:q19",
+      "legacy_uid": "pp:ec:2026:q19",
       "exam_uid": "ec:2026:set1:main:q19",
       "title": "GATE EC 2026 | Set 1 | Question: 19",
       "section": "main",
@@ -860,12 +861,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "BJT 2 has a smaller slope in the active region (flatter $I_C$ vs $V_{CE}$ curve). Hence,\n\n$|V_{A2}| > |V_{A1}|$\n\nTherefore, option (C) is correct.\n\nAlso, since BJT 2 curve shows finite slope (not perfectly flat),\n\n$V_A$\n\nis finite and not $\\infty$. Hence, option (D) is also correct.",
-        "images": []
+        "markdown": "BJT 2 has a smaller slope in the active region (flatter $I_C$ vs $V_{CE}$ curve). Hence,\n\n$|V_{A2}| > |V_{A1}|$\n\nTherefore, option (C) is correct.\n\nAlso, since BJT 2 curve shows finite slope (not perfectly flat),\n\n$V_A$\n\nis finite and not $\\infty$. Hence, option (D) is also correct.\n\nTherefore, the correct option(s) are **C, D**."
       }
     },
-    "pp:ec:2026:q20": {
-      "question_uid": "pp:ec:2026:q20",
+    "ec:2026:q20": {
+      "question_uid": "ec:2026:q20",
+      "legacy_uid": "pp:ec:2026:q20",
       "exam_uid": "ec:2026:set1:main:q20",
       "title": "GATE EC 2026 | Set 1 | Question: 20",
       "section": "main",
@@ -903,12 +904,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "<b>Step 1: Label node voltages</b>\n\nLet the midpoint of the left branch be $V_A$ and the midpoint of the right branch be $V_B$.\n\nThe 6 V source is connected between these nodes.\n\nAssume polarity such that\n\n$V_A - V_B = 6V$\n\nLet the top node voltage be $V_o$.\n\nBottom node is taken as ground.\n\n<b>Step 2: Apply supernode analysis</b>\n\nCurrent entering the top node from the current source is\n\n$1mA$\n\nCurrents leaving through the two upper resistors are\n\n$\\frac{V_o-V_A}{1k}\n\n\\quad \\text{and} \\quad\n\n\\frac{V_o-V_B}{1k}$\n\nApplying KCL at the top node,\n\n$\\frac{V_o-V_A}{1000}+\\frac{V_o-V_B}{1000}=1mA$\n\nMultiplying by 1000,\n\n$(V_o-V_A)+(V_o-V_B)=1$\n\n$2V_o-(V_A+V_B)=1\n\n\\qquad ...(1)$\n\n<b>Step 3: KCL at bottom node</b>\n\nCurrents through lower resistors are\n\n$\\frac{V_A}{1k}\n\n\\quad \\text{and} \\quad\n\n\\frac{V_B}{1k}$\n\nTotal current returning to ground equals source current:\n\n$\\frac{V_A}{1000}+\\frac{V_B}{1000}=1mA$\n\nMultiplying by 1000,\n\n$V_A+V_B=1\n\n\\qquad ...(2)$\n\nSubstituting equation (2) into equation (1),\n\n$2V_o-1=1$\n\n$2V_o=2$\n\n$V_o=1V$",
-        "images": []
+        "markdown": "<b>Step 1: Label node voltages</b>\n\nLet the midpoint of the left branch be $V_A$ and the midpoint of the right branch be $V_B$.\n\nThe 6 V source is connected between these nodes.\n\nAssume polarity such that\n\n$V_A - V_B = 6V$\n\nLet the top node voltage be $V_o$.\n\nBottom node is taken as ground.\n\n<b>Step 2: Apply supernode analysis</b>\n\nCurrent entering the top node from the current source is\n\n$1mA$\n\nCurrents leaving through the two upper resistors are\n\n$\\frac{V_o-V_A}{1k}\n\n\\quad \\text{and} \\quad\n\n\\frac{V_o-V_B}{1k}$\n\nApplying KCL at the top node,\n\n$\\frac{V_o-V_A}{1000}+\\frac{V_o-V_B}{1000}=1mA$\n\nMultiplying by 1000,\n\n$(V_o-V_A)+(V_o-V_B)=1$\n\n$2V_o-(V_A+V_B)=1\n\n\\qquad ...(1)$\n\n<b>Step 3: KCL at bottom node</b>\n\nCurrents through lower resistors are\n\n$\\frac{V_A}{1k}\n\n\\quad \\text{and} \\quad\n\n\\frac{V_B}{1k}$\n\nTotal current returning to ground equals source current:\n\n$\\frac{V_A}{1000}+\\frac{V_B}{1000}=1mA$\n\nMultiplying by 1000,\n\n$V_A+V_B=1\n\n\\qquad ...(2)$\n\nSubstituting equation (2) into equation (1),\n\n$2V_o-1=1$\n\n$2V_o=2$\n\n$V_o=1V$\n\nTherefore, the correct answer is **1** (acceptable range: [0.95, 1.05])."
       }
     },
-    "pp:ec:2026:q21": {
-      "question_uid": "pp:ec:2026:q21",
+    "ec:2026:q21": {
+      "question_uid": "ec:2026:q21",
+      "legacy_uid": "pp:ec:2026:q21",
       "exam_uid": "ec:2026:set1:main:q21",
       "title": "GATE EC 2026 | Set 1 | Question: 21",
       "section": "main",
@@ -946,12 +947,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State",
-        "markdown": "<b>Given:</b>\n\n$v_i(t) = 12\\sin(\\omega t)$ V\n\n$L = 2.2\\text{ mH},\\quad C = 1\\text{ }\\mu\\text{F},\\quad R_L = 1\\text{ k}\\Omega$\n\nCircuit: $v_i(t)$ source connected to parallel combination of C, L, and $R_L$.\n\n<b>Step 1: Resonant frequency</b>\n\n$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2.2\\times10^{-3} \\times 1\\times10^{-6}}} = \\frac{1}{\\sqrt{2.2\\times10^{-9}}}$\n\n$= \\frac{1}{4.69\\times10^{-5}} \\approx 21,320\\text{ rad/s}$\n\n<b>Step 2: At resonance, LC parallel tank is open circuit</b>\n\nAt resonant frequency, the parallel LC combination has infinite impedance (ideal), so all source voltage appears across $R_L$.\n\n<b>Step 3: Peak voltage across load</b>\n\n$V_{peak} = 12\\text{ V},\\quad V_{rms} = \\frac{12}{\\sqrt{2}} \\approx 8.485\\text{ V}$\n\n<b>Step 4: Average power</b>\n\n$P_{avg} = \\frac{V_{rms}^2}{R_L} = \\frac{(8.485)^2}{1000} = \\frac{72}{1000} = 72\\text{ mW}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$v_i(t) = 12\\sin(\\omega t)$ V\n\n$L = 2.2\\text{ mH},\\quad C = 1\\text{ }\\mu\\text{F},\\quad R_L = 1\\text{ k}\\Omega$\n\nCircuit: $v_i(t)$ source connected to parallel combination of C, L, and $R_L$.\n\n<b>Step 1: Resonant frequency</b>\n\n$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2.2\\times10^{-3} \\times 1\\times10^{-6}}} = \\frac{1}{\\sqrt{2.2\\times10^{-9}}}$\n\n$= \\frac{1}{4.69\\times10^{-5}} \\approx 21,320\\text{ rad/s}$\n\n<b>Step 2: At resonance, LC parallel tank is open circuit</b>\n\nAt resonant frequency, the parallel LC combination has infinite impedance (ideal), so all source voltage appears across $R_L$.\n\n<b>Step 3: Peak voltage across load</b>\n\n$V_{peak} = 12\\text{ V},\\quad V_{rms} = \\frac{12}{\\sqrt{2}} \\approx 8.485\\text{ V}$\n\n<b>Step 4: Average power</b>\n\n$P_{avg} = \\frac{V_{rms}^2}{R_L} = \\frac{(8.485)^2}{1000} = \\frac{72}{1000} = 72\\text{ mW}$\n\nTherefore, the correct answer is **72** (acceptable range: [71.5, 72.5])."
       }
     },
-    "pp:ec:2026:q22": {
-      "question_uid": "pp:ec:2026:q22",
+    "ec:2026:q22": {
+      "question_uid": "ec:2026:q22",
+      "legacy_uid": "pp:ec:2026:q22",
       "exam_uid": "ec:2026:set1:main:q22",
       "title": "GATE EC 2026 | Set 1 | Question: 22",
       "section": "main",
@@ -989,12 +990,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "<b>Given:</b>\n\nModulation scheme: 16-QAM\n\nInformation bit rate: $R_b = 4 \\times 10^6$ bits/second\n\n<b>Step 1: Find the symbol rate (Baud rate)</b>\n\n16-QAM carries $\\log_2(16) = 4$ bits per symbol.\n\nSo the symbol rate is:\n\n$R_s = \\frac{R_b}{\\log_2 M} = \\frac{4 \\times 10^6}{4} = 1 \\times 10^6 \\text{ symbols/second}$\n\n<b>Step 2: Minimum transmission bandwidth</b>\n\nFor optimum (Nyquist) recovery, the minimum (null-to-null or double-sided Nyquist) bandwidth equals the symbol rate:\n\n$B_{min} = R_s = 1 \\times 10^6 \\text{ Hz} = 1 \\text{ MHz}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nModulation scheme: 16-QAM\n\nInformation bit rate: $R_b = 4 \\times 10^6$ bits/second\n\n<b>Step 1: Find the symbol rate (Baud rate)</b>\n\n16-QAM carries $\\log_2(16) = 4$ bits per symbol.\n\nSo the symbol rate is:\n\n$R_s = \\frac{R_b}{\\log_2 M} = \\frac{4 \\times 10^6}{4} = 1 \\times 10^6 \\text{ symbols/second}$\n\n<b>Step 2: Minimum transmission bandwidth</b>\n\nFor optimum (Nyquist) recovery, the minimum (null-to-null or double-sided Nyquist) bandwidth equals the symbol rate:\n\n$B_{min} = R_s = 1 \\times 10^6 \\text{ Hz} = 1 \\text{ MHz}$\n\nTherefore, the correct answer is **1** (acceptable range: [0.95, 1.05])."
       }
     },
-    "pp:ec:2026:q23": {
-      "question_uid": "pp:ec:2026:q23",
+    "ec:2026:q23": {
+      "question_uid": "ec:2026:q23",
+      "legacy_uid": "pp:ec:2026:q23",
       "exam_uid": "ec:2026:set1:main:q23",
       "title": "GATE EC 2026 | Set 1 | Question: 23",
       "section": "main",
@@ -1032,12 +1033,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
-        "markdown": "<b>Given:</b>\n\nInner dimensions: $a = 0.28 \\text{ inch},\\quad b = 0.14 \\text{ inch}$\n\nAir-filled waveguide, dominant mode: $TE_{10}$\n\n<b>Step 1: Convert dimensions to meters</b>\n\n1 inch = 0.0254 m\n\n$a = 0.28 \\times 0.0254 = 7.112 \\times 10^{-3} \\text{ m}$\n\n<b>Step 2: Apply cutoff frequency formula for $TE_{10}$</b>\n\nFor $TE_{mn}$ mode, cutoff frequency is:\n\n$f_c = \\frac{c}{2}\\sqrt{\\left(\\frac{m}{a}\\right)^2 + \\left(\\frac{n}{b}\\right)^2}$\n\nFor $TE_{10}$: $m=1, n=0$\n\n$f_c = \\frac{c}{2a} = \\frac{3 \\times 10^8}{2 \\times 7.112 \\times 10^{-3}}$\n\n<b>Step 3: Calculate</b>\n\n$f_c = \\frac{3 \\times 10^8}{1.4224 \\times 10^{-2}} = 21.09 \\times 10^9 \\text{ Hz}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nInner dimensions: $a = 0.28 \\text{ inch},\\quad b = 0.14 \\text{ inch}$\n\nAir-filled waveguide, dominant mode: $TE_{10}$\n\n<b>Step 1: Convert dimensions to meters</b>\n\n1 inch = 0.0254 m\n\n$a = 0.28 \\times 0.0254 = 7.112 \\times 10^{-3} \\text{ m}$\n\n<b>Step 2: Apply cutoff frequency formula for $TE_{10}$</b>\n\nFor $TE_{mn}$ mode, cutoff frequency is:\n\n$f_c = \\frac{c}{2}\\sqrt{\\left(\\frac{m}{a}\\right)^2 + \\left(\\frac{n}{b}\\right)^2}$\n\nFor $TE_{10}$: $m=1, n=0$\n\n$f_c = \\frac{c}{2a} = \\frac{3 \\times 10^8}{2 \\times 7.112 \\times 10^{-3}}$\n\n<b>Step 3: Calculate</b>\n\n$f_c = \\frac{3 \\times 10^8}{1.4224 \\times 10^{-2}} = 21.09 \\times 10^9 \\text{ Hz}$\n\nTherefore, the correct answer is **21** (acceptable range: [20.5, 21.5])."
       }
     },
-    "pp:ec:2026:q24": {
-      "question_uid": "pp:ec:2026:q24",
+    "ec:2026:q24": {
+      "question_uid": "ec:2026:q24",
+      "legacy_uid": "pp:ec:2026:q24",
       "exam_uid": "ec:2026:set1:main:q24",
       "title": "GATE EC 2026 | Set 1 | Question: 24",
       "section": "main",
@@ -1075,12 +1076,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "<b>Given:</b>\n\nFor lossless network: $|S_{11}| = |S_{21}|$ at $-3 \\text{ dB}$\n\nFor lossy network: $|S_{11}| = |S_{21}|$ at $-4 \\text{ dB}$\n\n<b>Step 1: Power interpretation</b>\n\nAt the intersection point:\n\n$|S_{11}|^2 = |S_{21}|^2$\n\nThe value $-4 \\text{ dB}$ means:\n\n$|S_{11}|^2 = |S_{21}|^2 = 10^{-4/10} = 10^{-0.4} \\approx 0.3981$\n\n<b>Step 2: Power balance</b>\n\nTotal input power is normalised to 1. Reflected power + transmitted power + dissipated power = 1:\n\n$P_{reflected} + P_{transmitted} + P_{dissipated} = 1$\n\n$|S_{11}|^2 + |S_{21}|^2 + P_{dissipated} = 1$\n\n$0.3981 + 0.3981 + P_{dissipated} = 1$\n\n$P_{dissipated} = 1 - 0.7962 = 0.2038$\n\n<b>Step 3: Percentage dissipated</b>\n\n$\\% P_{dissipated} = 0.2038 \\times 100 = 20.38 \\%$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nFor lossless network: $|S_{11}| = |S_{21}|$ at $-3 \\text{ dB}$\n\nFor lossy network: $|S_{11}| = |S_{21}|$ at $-4 \\text{ dB}$\n\n<b>Step 1: Power interpretation</b>\n\nAt the intersection point:\n\n$|S_{11}|^2 = |S_{21}|^2$\n\nThe value $-4 \\text{ dB}$ means:\n\n$|S_{11}|^2 = |S_{21}|^2 = 10^{-4/10} = 10^{-0.4} \\approx 0.3981$\n\n<b>Step 2: Power balance</b>\n\nTotal input power is normalised to 1. Reflected power + transmitted power + dissipated power = 1:\n\n$P_{reflected} + P_{transmitted} + P_{dissipated} = 1$\n\n$|S_{11}|^2 + |S_{21}|^2 + P_{dissipated} = 1$\n\n$0.3981 + 0.3981 + P_{dissipated} = 1$\n\n$P_{dissipated} = 1 - 0.7962 = 0.2038$\n\n<b>Step 3: Percentage dissipated</b>\n\n$\\% P_{dissipated} = 0.2038 \\times 100 = 20.38 \\%$\n\nTherefore, the correct answer is **20.5** (acceptable range: [20, 21])."
       }
     },
-    "pp:ec:2026:q25": {
-      "question_uid": "pp:ec:2026:q25",
+    "ec:2026:q25": {
+      "question_uid": "ec:2026:q25",
+      "legacy_uid": "pp:ec:2026:q25",
       "exam_uid": "ec:2026:set1:main:q25",
       "title": "GATE EC 2026 | Set 1 | Question: 25",
       "section": "main",
@@ -1118,12 +1119,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "<b>Given:</b>\n\nJK flip-flop: negative edge triggered\n\n$J = K = 1$ (Logic High)\n\nClock input: square wave at $10 \\text{ cycles/second}$\n\n<b>Step 1: Behaviour of JK flip-flop with J = K = 1</b>\n\nWhen $J = K = 1$, the JK flip-flop operates in <b>toggle mode</b> , output $Q$ toggles on every active clock edge.\n\n<b>Step 2: Count of active edges</b>\n\nBeing negative edge triggered, it toggles on every falling edge. A square wave at 10 Hz has 10 falling edges per second.\n\n<b>Step 3: Output frequency</b>\n\nSince $Q$ toggles on every falling edge, it completes one full cycle for every 2 falling edges:\n\n$f_Q = \\frac{f_{clock}}{2} = \\frac{10}{2} = 5 \\text{ cycles/second}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nJK flip-flop: negative edge triggered\n\n$J = K = 1$ (Logic High)\n\nClock input: square wave at $10 \\text{ cycles/second}$\n\n<b>Step 1: Behaviour of JK flip-flop with J = K = 1</b>\n\nWhen $J = K = 1$, the JK flip-flop operates in <b>toggle mode</b> , output $Q$ toggles on every active clock edge.\n\n<b>Step 2: Count of active edges</b>\n\nBeing negative edge triggered, it toggles on every falling edge. A square wave at 10 Hz has 10 falling edges per second.\n\n<b>Step 3: Output frequency</b>\n\nSince $Q$ toggles on every falling edge, it completes one full cycle for every 2 falling edges:\n\n$f_Q = \\frac{f_{clock}}{2} = \\frac{10}{2} = 5 \\text{ cycles/second}$\n\nTherefore, the correct answer is **5** (acceptable range: [4.9, 5.1])."
       }
     },
-    "pp:ec:2026:q26": {
-      "question_uid": "pp:ec:2026:q26",
+    "ec:2026:q26": {
+      "question_uid": "ec:2026:q26",
+      "legacy_uid": "pp:ec:2026:q26",
       "exam_uid": "ec:2026:set1:main:q26",
       "title": "GATE EC 2026 | Set 1 | Question: 26",
       "section": "main",
@@ -1163,12 +1164,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<b>Given:</b>\n\n$S_A = \\sum_{n=1}^{\\infty} \\frac{n^2}{2^n}$\n\n$S_B = 1 + \\frac{1}{2} + \\frac{1}{8} + \\frac{1}{16} + \\frac{1}{64} + \\frac{1}{128} + \\frac{1}{512} + \\cdots$\n\n<b>Step 1: Evaluate S_A</b>\n\nUsing the identity $\\sum_{n=1}^{\\infty} n^2 x^n = \\frac{x(1+x)}{(1-x)^3}$ for $|x| < 1$, with $x = \\frac{1}{2}$:\n\n$S_A = \\frac{\\frac{1}{2}\\left(1 + \\frac{1}{2}\\right)}{\\left(1 - \\frac{1}{2}\\right)^3} = \\frac{\\frac{1}{2} \\cdot \\frac{3}{2}}{\\left(\\frac{1}{2}\\right)^3} = \\frac{\\frac{3}{4}}{\\frac{1}{8}} = 6$\n\n<b>Step 2: Evaluate S_B</b>\n\nObserve the pattern of denominators: $1, 2, 8, 16, 64, 128, 512, \\ldots$\n\nGroup into two interleaved geometric series:\n\nOdd-position terms: $1 + \\frac{1}{8} + \\frac{1}{64} + \\cdots$ â†’ first term $1$, ratio $\\frac{1}{8}$\n\n$= \\frac{1}{1 - 1/8} = \\frac{8}{7}$\n\nEven-position terms: $\\frac{1}{2} + \\frac{1}{16} + \\frac{1}{128} + \\cdots$ â†’ first term $\\frac{1}{2}$, ratio $\\frac{1}{8}$\n\n$= \\frac{1/2}{1 - 1/8} = \\frac{1/2}{7/8} = \\frac{4}{7}$\n\n$S_B = \\frac{8}{7} + \\frac{4}{7} = \\frac{12}{7} \\approx 1.714$\n\n<b>Step 3: Compare</b>\n\n$S_A = 6$ (converges), $S_B = \\frac{12}{7}$ (converges)\n\nBoth series converge, and $S_A > S_B$.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$S_A = \\sum_{n=1}^{\\infty} \\frac{n^2}{2^n}$\n\n$S_B = 1 + \\frac{1}{2} + \\frac{1}{8} + \\frac{1}{16} + \\frac{1}{64} + \\frac{1}{128} + \\frac{1}{512} + \\cdots$\n\n<b>Step 1: Evaluate S_A</b>\n\nUsing the identity $\\sum_{n=1}^{\\infty} n^2 x^n = \\frac{x(1+x)}{(1-x)^3}$ for $|x| < 1$, with $x = \\frac{1}{2}$:\n\n$S_A = \\frac{\\frac{1}{2}\\left(1 + \\frac{1}{2}\\right)}{\\left(1 - \\frac{1}{2}\\right)^3} = \\frac{\\frac{1}{2} \\cdot \\frac{3}{2}}{\\left(\\frac{1}{2}\\right)^3} = \\frac{\\frac{3}{4}}{\\frac{1}{8}} = 6$\n\n<b>Step 2: Evaluate S_B</b>\n\nObserve the pattern of denominators: $1, 2, 8, 16, 64, 128, 512, \\ldots$\n\nGroup into two interleaved geometric series:\n\nOdd-position terms: $1 + \\frac{1}{8} + \\frac{1}{64} + \\cdots$ â†’ first term $1$, ratio $\\frac{1}{8}$\n\n$= \\frac{1}{1 - 1/8} = \\frac{8}{7}$\n\nEven-position terms: $\\frac{1}{2} + \\frac{1}{16} + \\frac{1}{128} + \\cdots$ â†’ first term $\\frac{1}{2}$, ratio $\\frac{1}{8}$\n\n$= \\frac{1/2}{1 - 1/8} = \\frac{1/2}{7/8} = \\frac{4}{7}$\n\n$S_B = \\frac{8}{7} + \\frac{4}{7} = \\frac{12}{7} \\approx 1.714$\n\n<b>Step 3: Compare</b>\n\n$S_A = 6$ (converges), $S_B = \\frac{12}{7}$ (converges)\n\nBoth series converge, and $S_A > S_B$.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q27": {
-      "question_uid": "pp:ec:2026:q27",
+    "ec:2026:q27": {
+      "question_uid": "ec:2026:q27",
+      "legacy_uid": "pp:ec:2026:q27",
       "exam_uid": "ec:2026:set1:main:q27",
       "title": "GATE EC 2026 | Set 1 | Question: 27",
       "section": "main",
@@ -1208,12 +1209,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "<b>Given:</b>\n\n$x(t)$ is real, periodic with period $T$, satisfying:\n\n$x!\\left(t - \\frac{T}{2}\\right) = -x(t) \\quad \\text{(half-wave symmetry)}$\n\nFourier series: $x(t) = \\sum_{n=-\\infty}^{\\infty} a_n e^{j2\\pi nt/T}$\n\n<b>Step 1: Effect of half-wave symmetry on Fourier coefficients</b>\n\nCompute the Fourier coefficient $a_n$:\n\n$a_n = \\frac{1}{T}\\int_0^T x(t)e^{-j2\\pi nt/T}dt$\n\nUnder the substitution $t \\to t + T/2$:\n\n$a_n = \\frac{1}{T}\\int_0^T x!\\left(t+\\frac{T}{2}\\right)e^{-j2\\pi n(t+T/2)/T}dt$\n\n$= e^{-j\\pi n} \\cdot \\frac{1}{T}\\int_0^T x!\\left(t+\\frac{T}{2}\\right)e^{-j2\\pi nt/T}dt$\n\nUsing $x\\left(t+\\frac{T}{2}\\right) = -x(t)$ (from given symmetry, replacing $t \\to t + T/2$):\n\n$a_n = e^{-j\\pi n} \\cdot (-a_n) = (-1)^n \\cdot (-a_n)$\n\n<b>Step 2: Determine which coefficients survive</b>\n\n$a_n = -(-1)^n a_n$\n\nFor <b>even</b> $n$: $a_n = -a_n \\Rightarrow a_n = 0$\n\nFor <b>odd</b> $n$: $a_n = +a_n$ (no constraint, coefficients can be nonzero)\n\n<b>Conclusion:</b>\n\nFor any integer $m$, $a_{2m} = 0$ (all even-indexed Fourier coefficients are zero). Only odd harmonics exist in the spectrum.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$x(t)$ is real, periodic with period $T$, satisfying:\n\n$x!\\left(t - \\frac{T}{2}\\right) = -x(t) \\quad \\text{(half-wave symmetry)}$\n\nFourier series: $x(t) = \\sum_{n=-\\infty}^{\\infty} a_n e^{j2\\pi nt/T}$\n\n<b>Step 1: Effect of half-wave symmetry on Fourier coefficients</b>\n\nCompute the Fourier coefficient $a_n$:\n\n$a_n = \\frac{1}{T}\\int_0^T x(t)e^{-j2\\pi nt/T}dt$\n\nUnder the substitution $t \\to t + T/2$:\n\n$a_n = \\frac{1}{T}\\int_0^T x!\\left(t+\\frac{T}{2}\\right)e^{-j2\\pi n(t+T/2)/T}dt$\n\n$= e^{-j\\pi n} \\cdot \\frac{1}{T}\\int_0^T x!\\left(t+\\frac{T}{2}\\right)e^{-j2\\pi nt/T}dt$\n\nUsing $x\\left(t+\\frac{T}{2}\\right) = -x(t)$ (from given symmetry, replacing $t \\to t + T/2$):\n\n$a_n = e^{-j\\pi n} \\cdot (-a_n) = (-1)^n \\cdot (-a_n)$\n\n<b>Step 2: Determine which coefficients survive</b>\n\n$a_n = -(-1)^n a_n$\n\nFor <b>even</b> $n$: $a_n = -a_n \\Rightarrow a_n = 0$\n\nFor <b>odd</b> $n$: $a_n = +a_n$ (no constraint, coefficients can be nonzero)\n\n<b>Conclusion:</b>\n\nFor any integer $m$, $a_{2m} = 0$ (all even-indexed Fourier coefficients are zero). Only odd harmonics exist in the spectrum.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q28": {
-      "question_uid": "pp:ec:2026:q28",
+    "ec:2026:q28": {
+      "question_uid": "ec:2026:q28",
+      "legacy_uid": "pp:ec:2026:q28",
       "exam_uid": "ec:2026:set1:main:q28",
       "title": "GATE EC 2026 | Set 1 | Question: 28",
       "section": "main",
@@ -1253,12 +1254,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "<b>Given:</b>\n\n$X \\sim \\text{Uniform}(-1, 1)$, $N \\sim \\mathcal{N}(0,1)$, $X \\perp N$\n\n$Y = X + N$, $Z = X^2 + N$\n\n<b>Step 1: Key statistics of X</b>\n\n$E[X] = 0,\\quad E[X^2] = \\frac{1}{3},\\quad \\text{Var}(X) = \\frac{1}{3}$\n\n$E[X^3] = 0 \\text{ (odd moment, symmetric distribution)}$\n\n<b>Step 2: Correlation between X and Y</b>\n\n$\\text{Cov}(X, Y) = E[XY] - E[X]E[Y]$\n\n$E[XY] = E[X(X+N)] = E[X^2] + E[X]E[N] = \\frac{1}{3} + 0 = \\frac{1}{3}$\n\n$E[X]=0,\\quad E[Y]=0 \\Rightarrow \\text{Cov}(X,Y) = \\frac{1}{3}$\n\n$\\text{Var}(Y) = \\text{Var}(X) + \\text{Var}(N) = \\frac{1}{3} + 1 = \\frac{4}{3}$\n\n$\\rho_{XY} = \\frac{\\text{Cov}(X,Y)}{\\sqrt{\\text{Var}(X)\\cdot\\text{Var}(Y)}} = \\frac{1/3}{\\sqrt{\\frac{1}{3}\\cdot\\frac{4}{3}}} = \\frac{1/3}{\\sqrt{4/9}} = \\frac{1/3}{2/3} = \\frac{1}{2}$\n\n<b>Step 3: Correlation between X and Z</b>\n\n$E[XZ] = E[X(X^2 + N)] = E[X^3] + E[X]E[N] = 0 + 0 = 0$\n\n$E[X]=0,\\quad E[Z]=E[X^2]+E[N]=\\frac{1}{3}$\n\n$\\text{Cov}(X,Z) = E[XZ] - E[X]E[Z] = 0 - 0 = 0$\n\n$\\rho_{XZ} = 0$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$X \\sim \\text{Uniform}(-1, 1)$, $N \\sim \\mathcal{N}(0,1)$, $X \\perp N$\n\n$Y = X + N$, $Z = X^2 + N$\n\n<b>Step 1: Key statistics of X</b>\n\n$E[X] = 0,\\quad E[X^2] = \\frac{1}{3},\\quad \\text{Var}(X) = \\frac{1}{3}$\n\n$E[X^3] = 0 \\text{ (odd moment, symmetric distribution)}$\n\n<b>Step 2: Correlation between X and Y</b>\n\n$\\text{Cov}(X, Y) = E[XY] - E[X]E[Y]$\n\n$E[XY] = E[X(X+N)] = E[X^2] + E[X]E[N] = \\frac{1}{3} + 0 = \\frac{1}{3}$\n\n$E[X]=0,\\quad E[Y]=0 \\Rightarrow \\text{Cov}(X,Y) = \\frac{1}{3}$\n\n$\\text{Var}(Y) = \\text{Var}(X) + \\text{Var}(N) = \\frac{1}{3} + 1 = \\frac{4}{3}$\n\n$\\rho_{XY} = \\frac{\\text{Cov}(X,Y)}{\\sqrt{\\text{Var}(X)\\cdot\\text{Var}(Y)}} = \\frac{1/3}{\\sqrt{\\frac{1}{3}\\cdot\\frac{4}{3}}} = \\frac{1/3}{\\sqrt{4/9}} = \\frac{1/3}{2/3} = \\frac{1}{2}$\n\n<b>Step 3: Correlation between X and Z</b>\n\n$E[XZ] = E[X(X^2 + N)] = E[X^3] + E[X]E[N] = 0 + 0 = 0$\n\n$E[X]=0,\\quad E[Z]=E[X^2]+E[N]=\\frac{1}{3}$\n\n$\\text{Cov}(X,Z) = E[XZ] - E[X]E[Z] = 0 - 0 = 0$\n\n$\\rho_{XZ} = 0$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q29": {
-      "question_uid": "pp:ec:2026:q29",
+    "ec:2026:q29": {
+      "question_uid": "ec:2026:q29",
+      "legacy_uid": "pp:ec:2026:q29",
       "exam_uid": "ec:2026:set1:main:q29",
       "title": "GATE EC 2026 | Set 1 | Question: 29",
       "section": "main",
@@ -1298,12 +1299,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State",
-        "markdown": "<b>Given:</b>\n\n$L = 1\\text{ }\\mu\\text{H},\\quad C = 1\\text{ }\\mu\\text{F}$\n\nPhasor condition: $(\\theta_1 + \\theta_2) = 90^\\circ$ at $f = 159.15\\text{ kHz}$\n\nCircuit: voltage source $V$ drives parallel branches\n\none branch has $R_C$ in series with $C$, the other has $R_L$ in series with $L$.\n\n<b>Step 1: Compute angular frequency</b>\n\n$\\omega = 2\\pi \\times 159.15\\times10^3 \\approx 10^6\\text{ rad/s}$\n\n<b>Step 2: Impedance of each branch</b>\n\nCapacitive branch: $Z_C = R_C - \\frac{j}{\\omega C} = R_C - j\\frac{1}{10^6 \\times 10^{-6}} = R_C - j1\\text{ }\\Omega$\n\nInductive branch: $Z_L = R_L + j\\omega L = R_L + j\\times10^6\\times10^{-6} = R_L + j1\\text{ }\\Omega$\n\n<b>Step 3: Phase angles</b>\n\n$\\theta_1 = \\angle I_C = -\\angle Z_C = \\tan^{-1}\\left(\\frac{1}{R_C}\\right)$\n\n$\\theta_2 = -\\angle I_L = \\tan^{-1}\\left(\\frac{1}{R_L}\\right)$\n\n(measured as shown in phasor diagram where $I_C$ leads $V$ and $I_L$ lags $V$)\n\n<b>Step 4: Apply condition</b>\n\n$\\theta_1 + \\theta_2 = 90^\\circ$\n\n$\\tan^{-1}\\left(\\frac{1}{R_C}\\right) + \\tan^{-1}\\left(\\frac{1}{R_L}\\right) = 90^\\circ$\n\nUsing the identity: $\\tan^{-1}(a)+\\tan^{-1}(b) = 90^\\circ$ when $ab = 1$:\n\n$\\frac{1}{R_C} \\times \\frac{1}{R_L} = 1 \\Rightarrow R_C \\times R_L = 1$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$L = 1\\text{ }\\mu\\text{H},\\quad C = 1\\text{ }\\mu\\text{F}$\n\nPhasor condition: $(\\theta_1 + \\theta_2) = 90^\\circ$ at $f = 159.15\\text{ kHz}$\n\nCircuit: voltage source $V$ drives parallel branches\n\none branch has $R_C$ in series with $C$, the other has $R_L$ in series with $L$.\n\n<b>Step 1: Compute angular frequency</b>\n\n$\\omega = 2\\pi \\times 159.15\\times10^3 \\approx 10^6\\text{ rad/s}$\n\n<b>Step 2: Impedance of each branch</b>\n\nCapacitive branch: $Z_C = R_C - \\frac{j}{\\omega C} = R_C - j\\frac{1}{10^6 \\times 10^{-6}} = R_C - j1\\text{ }\\Omega$\n\nInductive branch: $Z_L = R_L + j\\omega L = R_L + j\\times10^6\\times10^{-6} = R_L + j1\\text{ }\\Omega$\n\n<b>Step 3: Phase angles</b>\n\n$\\theta_1 = \\angle I_C = -\\angle Z_C = \\tan^{-1}\\left(\\frac{1}{R_C}\\right)$\n\n$\\theta_2 = -\\angle I_L = \\tan^{-1}\\left(\\frac{1}{R_L}\\right)$\n\n(measured as shown in phasor diagram where $I_C$ leads $V$ and $I_L$ lags $V$)\n\n<b>Step 4: Apply condition</b>\n\n$\\theta_1 + \\theta_2 = 90^\\circ$\n\n$\\tan^{-1}\\left(\\frac{1}{R_C}\\right) + \\tan^{-1}\\left(\\frac{1}{R_L}\\right) = 90^\\circ$\n\nUsing the identity: $\\tan^{-1}(a)+\\tan^{-1}(b) = 90^\\circ$ when $ab = 1$:\n\n$\\frac{1}{R_C} \\times \\frac{1}{R_L} = 1 \\Rightarrow R_C \\times R_L = 1$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q30": {
-      "question_uid": "pp:ec:2026:q30",
+    "ec:2026:q30": {
+      "question_uid": "ec:2026:q30",
+      "legacy_uid": "pp:ec:2026:q30",
       "exam_uid": "ec:2026:set1:main:q30",
       "title": "GATE EC 2026 | Set 1 | Question: 30",
       "section": "main",
@@ -1343,12 +1344,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
-        "markdown": "<b>Given:</b>\n\nPlant: $G(s) = \\dfrac{1}{(s+1)(s+2)}$\n\nCompensator: $C(s) = K(s + \\alpha)$\n\nDesired closed-loop poles: $s = -3 \\pm j\\sqrt{5}$\n\n<b>Step 1: Open-loop transfer function</b>\n\n$L(s) = C(s)G(s) = \\frac{K(s+\\alpha)}{(s+1)(s+2)}$\n\nCharacteristic equation (unity feedback):\n\n$1 + L(s) = 0 \\Rightarrow (s+1)(s+2) + K(s+\\alpha) = 0$\n\n<b>Step 2: Expand and match with desired polynomial</b>\n\nDesired poles: $s = -3 \\pm j\\sqrt{5}$\n\nDesired characteristic polynomial:\n\n$(s+3-j\\sqrt{5})(s+3+j\\sqrt{5}) = (s+3)^2 + 5 = s^2 + 6s + 14$\n\nExpanding the characteristic equation:\n\n$s^2 + 3s + 2 + Ks + K\\alpha = 0$\n\n$s^2 + (3+K)s + (2+K\\alpha) = 0$\n\n<b>Step 3: Equate coefficients</b>\n\n$3 + K = 6 \\Rightarrow K = 3$\n\n$2 + K\\alpha = 14 \\Rightarrow 2 + 3\\alpha = 14 \\Rightarrow \\alpha = 4$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nPlant: $G(s) = \\dfrac{1}{(s+1)(s+2)}$\n\nCompensator: $C(s) = K(s + \\alpha)$\n\nDesired closed-loop poles: $s = -3 \\pm j\\sqrt{5}$\n\n<b>Step 1: Open-loop transfer function</b>\n\n$L(s) = C(s)G(s) = \\frac{K(s+\\alpha)}{(s+1)(s+2)}$\n\nCharacteristic equation (unity feedback):\n\n$1 + L(s) = 0 \\Rightarrow (s+1)(s+2) + K(s+\\alpha) = 0$\n\n<b>Step 2: Expand and match with desired polynomial</b>\n\nDesired poles: $s = -3 \\pm j\\sqrt{5}$\n\nDesired characteristic polynomial:\n\n$(s+3-j\\sqrt{5})(s+3+j\\sqrt{5}) = (s+3)^2 + 5 = s^2 + 6s + 14$\n\nExpanding the characteristic equation:\n\n$s^2 + 3s + 2 + Ks + K\\alpha = 0$\n\n$s^2 + (3+K)s + (2+K\\alpha) = 0$\n\n<b>Step 3: Equate coefficients</b>\n\n$3 + K = 6 \\Rightarrow K = 3$\n\n$2 + K\\alpha = 14 \\Rightarrow 2 + 3\\alpha = 14 \\Rightarrow \\alpha = 4$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q31": {
-      "question_uid": "pp:ec:2026:q31",
+    "ec:2026:q31": {
+      "question_uid": "ec:2026:q31",
+      "legacy_uid": "pp:ec:2026:q31",
       "exam_uid": "ec:2026:set1:main:q31",
       "title": "GATE EC 2026 | Set 1 | Question: 31",
       "section": "main",
@@ -1388,12 +1389,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
-        "markdown": "<b>Given:</b>\n\n$$\\dot{x} = \\begin{bmatrix} -4 & -1.5 \\\\ 4 & 0 \\end{bmatrix} x + \\begin{bmatrix} 2 \\\\ 0 \\end{bmatrix} u$$\n\n$$y = \\begin{bmatrix} 1.5 & 0.625 \\end{bmatrix} x$$\n\n<b>Step 1: Transfer function formula</b>\n\n$\\frac{Y(s)}{U(s)} = C(sI - A)^{-1}B$\n\n<b>Step 2: Compute (sI - A)</b>\n\n$$sI - A = \\begin{bmatrix} s+4 & 1.5 \\\\ -4 & s \\end{bmatrix}$$\n\n<b>Step 3: Determinant</b>\n\n$\\det(sI-A) = s(s+4) + 6 = s^2 + 4s + 6$\n\n<b>Step 4: Inverse of (sI - A)</b>\n\n$$(sI-A)^{-1} = \\frac{1}{s^2+4s+6}\\begin{bmatrix} s & -1.5 \\\\ 4 & s+4 \\end{bmatrix}$$\n\n<b>Step 5: Multiply $C(sI-A)^{-1} B$</b>\n\n$$(sI-A)^{-1}B = \\frac{1}{s^2+4s+6}\\begin{bmatrix} s & -1.5 \\\\ 4 & s+4 \\end{bmatrix}\\begin{bmatrix}2\\\\0\\end{bmatrix} = \\frac{1}{s^2+4s+6}\\begin{bmatrix}2s\\\\8\\end{bmatrix}$$\n\n$$\\frac{Y(s)}{U(s)} = \\begin{bmatrix}1.5 & 0.625\\end{bmatrix}\\frac{1}{s^2+4s+6}\\begin{bmatrix}2s\\\\8\\end{bmatrix}$$\n\n$= \\frac{1}{s^2+4s+6}\\left(1.5 \\times 2s + 0.625 \\times 8\\right)$\n\n$= \\frac{3s + 5}{s^2 + 4s + 6}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$$\\dot{x} = \\begin{bmatrix} -4 & -1.5 \\\\ 4 & 0 \\end{bmatrix} x + \\begin{bmatrix} 2 \\\\ 0 \\end{bmatrix} u$$\n\n$$y = \\begin{bmatrix} 1.5 & 0.625 \\end{bmatrix} x$$\n\n<b>Step 1: Transfer function formula</b>\n\n$\\frac{Y(s)}{U(s)} = C(sI - A)^{-1}B$\n\n<b>Step 2: Compute (sI - A)</b>\n\n$$sI - A = \\begin{bmatrix} s+4 & 1.5 \\\\ -4 & s \\end{bmatrix}$$\n\n<b>Step 3: Determinant</b>\n\n$\\det(sI-A) = s(s+4) + 6 = s^2 + 4s + 6$\n\n<b>Step 4: Inverse of (sI - A)</b>\n\n$$(sI-A)^{-1} = \\frac{1}{s^2+4s+6}\\begin{bmatrix} s & -1.5 \\\\ 4 & s+4 \\end{bmatrix}$$\n\n<b>Step 5: Multiply $C(sI-A)^{-1} B$</b>\n\n$$(sI-A)^{-1}B = \\frac{1}{s^2+4s+6}\\begin{bmatrix} s & -1.5 \\\\ 4 & s+4 \\end{bmatrix}\\begin{bmatrix}2\\\\0\\end{bmatrix} = \\frac{1}{s^2+4s+6}\\begin{bmatrix}2s\\\\8\\end{bmatrix}$$\n\n$$\\frac{Y(s)}{U(s)} = \\begin{bmatrix}1.5 & 0.625\\end{bmatrix}\\frac{1}{s^2+4s+6}\\begin{bmatrix}2s\\\\8\\end{bmatrix}$$\n\n$= \\frac{1}{s^2+4s+6}\\left(1.5 \\times 2s + 0.625 \\times 8\\right)$\n\n$= \\frac{3s + 5}{s^2 + 4s + 6}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q32": {
-      "question_uid": "pp:ec:2026:q32",
+    "ec:2026:q32": {
+      "question_uid": "ec:2026:q32",
+      "legacy_uid": "pp:ec:2026:q32",
       "exam_uid": "ec:2026:set1:main:q32",
       "title": "GATE EC 2026 | Set 1 | Question: 32",
       "section": "main",
@@ -1433,12 +1434,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Memories",
-        "markdown": "<b>Given:</b>\n\nFirst address: $(2500)_H$\n\nMemory size: $256 \\text{ KB} = 256 \\times 1024 = 262144 = (40000)_H$ locations\n\n<b>Step 1: Find last address</b>\n\nLast address = First address + Size - 1\n\n$= (2500)_H + (40000)_H - (1)_H\n\n= (424FF)_H$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nFirst address: $(2500)_H$\n\nMemory size: $256 \\text{ KB} = 256 \\times 1024 = 262144 = (40000)_H$ locations\n\n<b>Step 1: Find last address</b>\n\nLast address = First address + Size - 1\n\n$= (2500)_H + (40000)_H - (1)_H\n\n= (424FF)_H$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q33": {
-      "question_uid": "pp:ec:2026:q33",
+    "ec:2026:q33": {
+      "question_uid": "ec:2026:q33",
+      "legacy_uid": "pp:ec:2026:q33",
       "exam_uid": "ec:2026:set1:main:q33",
       "title": "GATE EC 2026 | Set 1 | Question: 33",
       "section": "main",
@@ -1478,12 +1479,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
-        "markdown": "<b>Given:</b>\n\n$x(t) = 0$ for $t < 0$; $x(t) = 2$ for $0 \\le t < 1$; $x(t) = 0$ for $t \\ge 1$\n\n$E[x(t)] = \\int_{-\\infty}^{\\infty}[x(t)]^2,dt$\n\n<b>Step 1: Compute E[x(t)]</b>\n\n$E[x(t)] = \\int_0^1 (2)^2,dt = 4 \\times 1 = 4$\n\n<b>Step 2: Analyze g(t) = 3x(âˆ’3t + 5)</b>\n\n$E[g(t)] = \\int_{-\\infty}^{\\infty}[3x(-3t+5)]^2,dt = 9\\int_{-\\infty}^{\\infty}[x(-3t+5)]^2,dt$\n\nLet $u = -3t + 5 \\Rightarrow du = -3,dt \\Rightarrow dt = \\frac{du}{3}$ (with $\\frac{1}{3}$ scaling):\n\n$= 9 \\cdot \\frac{1}{3}\\int_{-\\infty}^{\\infty}[x(u)]^2,du = 3 \\cdot E[x(t)] = 3 \\times 4 = 12$\n\n<b>Step 3: Compute ratio</b>\n\n$\\frac{E[x(t)]}{E[3x(-3t+5)]} = \\frac{4}{12} = \\frac{1}{3}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$x(t) = 0$ for $t < 0$; $x(t) = 2$ for $0 \\le t < 1$; $x(t) = 0$ for $t \\ge 1$\n\n$E[x(t)] = \\int_{-\\infty}^{\\infty}[x(t)]^2,dt$\n\n<b>Step 1: Compute E[x(t)]</b>\n\n$E[x(t)] = \\int_0^1 (2)^2,dt = 4 \\times 1 = 4$\n\n<b>Step 2: Analyze g(t) = 3x(âˆ’3t + 5)</b>\n\n$E[g(t)] = \\int_{-\\infty}^{\\infty}[3x(-3t+5)]^2,dt = 9\\int_{-\\infty}^{\\infty}[x(-3t+5)]^2,dt$\n\nLet $u = -3t + 5 \\Rightarrow du = -3,dt \\Rightarrow dt = \\frac{du}{3}$ (with $\\frac{1}{3}$ scaling):\n\n$= 9 \\cdot \\frac{1}{3}\\int_{-\\infty}^{\\infty}[x(u)]^2,du = 3 \\cdot E[x(t)] = 3 \\times 4 = 12$\n\n<b>Step 3: Compute ratio</b>\n\n$\\frac{E[x(t)]}{E[3x(-3t+5)]} = \\frac{4}{12} = \\frac{1}{3}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q34": {
-      "question_uid": "pp:ec:2026:q34",
+    "ec:2026:q34": {
+      "question_uid": "ec:2026:q34",
+      "legacy_uid": "pp:ec:2026:q34",
       "exam_uid": "ec:2026:set1:main:q34",
       "title": "GATE EC 2026 | Set 1 | Question: 34",
       "section": "main",
@@ -1523,12 +1524,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
-        "markdown": "<b>Step 1: Convert</b> $\\frac{E_b}{N_0}$ <b>from dB to linear scale</b>\n\n$\\frac{E_b}{N_0}\n\n=\n\n10^{\\frac{8.4}{10}}\n\n=\n\n10^{0.84}\n\n\\approx 6.92$\n\nTherefore,\n\n$\\sqrt{\\frac{E_b}{N_0}}\n\n=\n\n\\sqrt{6.92}\n\n\\approx 2.63$\n\n<b>Step 2: Use the given approximation</b>\n\nGiven, $\\operatorname{erfc}(u)\n\n\\approx\n\n\\frac{1}{u\\sqrt{\\pi}}e^{-u^2}$\n\nSubstituting $u=2.63$,\n\n$\\operatorname{erfc}(2.63)\n\n\\approx\n\n\\frac{1}{2.63\\sqrt{\\pi}}e^{-2.63^2}$\n\nNow, $2.63^2 \\approx 6.92$ and $e^{-6.92}\\approx 9.9\\times10^{-4}$\n\nAlso, $2.63\\sqrt{\\pi}\n\n\\approx\n\n2.63\\times1.772\n\n\\approx4.66$\n\nHence, $\\operatorname{erfc}(2.63)\n\n\\approx\n\n\\frac{9.9\\times10^{-4}}{4.66}\n\n\\approx2.1\\times10^{-4}$\n\nTherefore, $P_b\n\n=\n\n\\frac{1}{2}(2.1\\times10^{-4})\n\n\\approx1.05\\times10^{-4}$\n\nThus, the nearest BER is $10^{-4}$",
-        "images": []
+        "markdown": "<b>Step 1: Convert</b> $\\frac{E_b}{N_0}$ <b>from dB to linear scale</b>\n\n$\\frac{E_b}{N_0}\n\n=\n\n10^{\\frac{8.4}{10}}\n\n=\n\n10^{0.84}\n\n\\approx 6.92$\n\nTherefore,\n\n$\\sqrt{\\frac{E_b}{N_0}}\n\n=\n\n\\sqrt{6.92}\n\n\\approx 2.63$\n\n<b>Step 2: Use the given approximation</b>\n\nGiven, $\\operatorname{erfc}(u)\n\n\\approx\n\n\\frac{1}{u\\sqrt{\\pi}}e^{-u^2}$\n\nSubstituting $u=2.63$,\n\n$\\operatorname{erfc}(2.63)\n\n\\approx\n\n\\frac{1}{2.63\\sqrt{\\pi}}e^{-2.63^2}$\n\nNow, $2.63^2 \\approx 6.92$ and $e^{-6.92}\\approx 9.9\\times10^{-4}$\n\nAlso, $2.63\\sqrt{\\pi}\n\n\\approx\n\n2.63\\times1.772\n\n\\approx4.66$\n\nHence, $\\operatorname{erfc}(2.63)\n\n\\approx\n\n\\frac{9.9\\times10^{-4}}{4.66}\n\n\\approx2.1\\times10^{-4}$\n\nTherefore, $P_b\n\n=\n\n\\frac{1}{2}(2.1\\times10^{-4})\n\n\\approx1.05\\times10^{-4}$\n\nThus, the nearest BER is $10^{-4}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q35": {
-      "question_uid": "pp:ec:2026:q35",
+    "ec:2026:q35": {
+      "question_uid": "ec:2026:q35",
+      "legacy_uid": "pp:ec:2026:q35",
       "exam_uid": "ec:2026:set1:main:q35",
       "title": "GATE EC 2026 | Set 1 | Question: 35",
       "section": "main",
@@ -1568,12 +1569,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Number Systems",
-        "markdown": "<b>Step 1: Formula</b>\n\n10's complement = $10^n - N$, where $n$ = number of digits\n\nHere $n = 2$, $N = 47$\n\n$10^2 - 47 = 100 - 47 = 53$",
-        "images": []
+        "markdown": "<b>Step 1: Formula</b>\n\n10's complement = $10^n - N$, where $n$ = number of digits\n\nHere $n = 2$, $N = 47$\n\n$10^2 - 47 = 100 - 47 = 53$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q36": {
-      "question_uid": "pp:ec:2026:q36",
+    "ec:2026:q36": {
+      "question_uid": "ec:2026:q36",
+      "legacy_uid": "pp:ec:2026:q36",
       "exam_uid": "ec:2026:set1:main:q36",
       "title": "GATE EC 2026 | Set 1 | Question: 36",
       "section": "main",
@@ -1613,12 +1614,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "<b>Step 1: Fourier Transform of the signal</b>\n\nThe Fourier Transform of $e^{-at}u(t)$ is\n\nHere, $a=2$. Therefore,\n\n$X(f)=\\frac{1}{2+j2\\pi f}$\n\nMagnitude squared is $|X(f)|^2\n\n=\n\n\\frac{1}{4+4\\pi^2f^2}$\n\n<b>Step 2: Total energy of the signal</b>\n\nTotal energy is $E=\\int_{-\\infty}^{\\infty}|X(f)|^2df$\n\nSubstituting, $E=\\int_{-\\infty}^{\\infty}\\frac{df}{4+4\\pi^2f^2}$\n\nSimplifying, $E=\\frac{1}{4}\\int_{-\\infty}^{\\infty}\\frac{df}{1+\\pi^2f^2}$\n\nUsing the standard result,we get $E=\\frac{1}{4}$\n\n<b>Step 3: Energy within bandwidth</b> $B$\n\nRequired condition: $\\int_{-B}^{B}|X(f)|^2df\n\n=\n\n0.99E$\n\nSubstituting values, $\\int_{-B}^{B}\\frac{df}{4+4\\pi^2f^2}\n\n=\n\n0.99\\times\\frac{1}{4}$\n\nSimplifying, $\\int_{-B}^{B}\\frac{df}{1+\\pi^2f^2}\n\n=\n\n0.99$\n\nUsing symmetry, $2\\int_0^B\\frac{df}{1+\\pi^2f^2}\n\n=\n\n0.99$\n\nIntegrating,\n\n$\\frac{2}{\\pi}\\tan^{-1}(\\pi B)=0.99$\n\nHence, $\\tan^{-1}(\\pi B)=0.495\\pi$\n\nNow,\n\n$0.495\\pi \\approx 1.555$\n\nSince $\\tan(1.555)\\approx63.7$,\n\n$\\pi B\\approx63.7$\n\nTherefore,\n\n$B\\approx\\frac{63.7}{\\pi}$",
-        "images": []
+        "markdown": "<b>Step 1: Fourier Transform of the signal</b>\n\nThe Fourier Transform of $e^{-at}u(t)$ is\n\nHere, $a=2$. Therefore,\n\n$X(f)=\\frac{1}{2+j2\\pi f}$\n\nMagnitude squared is $|X(f)|^2\n\n=\n\n\\frac{1}{4+4\\pi^2f^2}$\n\n<b>Step 2: Total energy of the signal</b>\n\nTotal energy is $E=\\int_{-\\infty}^{\\infty}|X(f)|^2df$\n\nSubstituting, $E=\\int_{-\\infty}^{\\infty}\\frac{df}{4+4\\pi^2f^2}$\n\nSimplifying, $E=\\frac{1}{4}\\int_{-\\infty}^{\\infty}\\frac{df}{1+\\pi^2f^2}$\n\nUsing the standard result,we get $E=\\frac{1}{4}$\n\n<b>Step 3: Energy within bandwidth</b> $B$\n\nRequired condition: $\\int_{-B}^{B}|X(f)|^2df\n\n=\n\n0.99E$\n\nSubstituting values, $\\int_{-B}^{B}\\frac{df}{4+4\\pi^2f^2}\n\n=\n\n0.99\\times\\frac{1}{4}$\n\nSimplifying, $\\int_{-B}^{B}\\frac{df}{1+\\pi^2f^2}\n\n=\n\n0.99$\n\nUsing symmetry, $2\\int_0^B\\frac{df}{1+\\pi^2f^2}\n\n=\n\n0.99$\n\nIntegrating,\n\n$\\frac{2}{\\pi}\\tan^{-1}(\\pi B)=0.99$\n\nHence, $\\tan^{-1}(\\pi B)=0.495\\pi$\n\nNow,\n\n$0.495\\pi \\approx 1.555$\n\nSince $\\tan(1.555)\\approx63.7$,\n\n$\\pi B\\approx63.7$\n\nTherefore,\n\n$B\\approx\\frac{63.7}{\\pi}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q37": {
-      "question_uid": "pp:ec:2026:q37",
+    "ec:2026:q37": {
+      "question_uid": "ec:2026:q37",
+      "legacy_uid": "pp:ec:2026:q37",
       "exam_uid": "ec:2026:set1:main:q37",
       "title": "GATE EC 2026 | Set 1 | Question: 37",
       "section": "main",
@@ -1658,12 +1659,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "From the figure: $x[n]$ is the input. The system has two paths:\n\nUpper path: $x[n] \\to h_1[n] \\to \\Sigma$\n\nLower path: $x[n] \\to z^{-1} \\to (-) \\Sigma \\to h_2[n] \\to z^{-1} \\to \\Sigma$\n\nThe right summing junction combines the upper (positive) and lower (negative, delayed) signals to produce $y[n]$.\n\n<b>Step 1: Analyse the lower branch</b>\n\nThe lower sub-system receives $x[n] - x[n-1]$ (difference, which is a linear time-invariant operation) and passes it through $h_2[n]$, then delays by $z^{-1}$. All operations (delay, difference, convolution with $h_2[n]$) are LTI.\n\n<b>Step 2: Output equation</b>\n\n$y[n] = (x[n]*h_1[n]) - (x[n-1]*h_2[n-1])$\n\nBoth terms are linear functions of $x[n]$, and all shifts are fixed. The overall system $S$ is a linear combination of LTI subsystems, $S$ is also <b>Linear and Time Invariant</b>.",
-        "images": []
+        "markdown": "From the figure: $x[n]$ is the input. The system has two paths:\n\nUpper path: $x[n] \\to h_1[n] \\to \\Sigma$\n\nLower path: $x[n] \\to z^{-1} \\to (-) \\Sigma \\to h_2[n] \\to z^{-1} \\to \\Sigma$\n\nThe right summing junction combines the upper (positive) and lower (negative, delayed) signals to produce $y[n]$.\n\n<b>Step 1: Analyse the lower branch</b>\n\nThe lower sub-system receives $x[n] - x[n-1]$ (difference, which is a linear time-invariant operation) and passes it through $h_2[n]$, then delays by $z^{-1}$. All operations (delay, difference, convolution with $h_2[n]$) are LTI.\n\n<b>Step 2: Output equation</b>\n\n$y[n] = (x[n]*h_1[n]) - (x[n-1]*h_2[n-1])$\n\nBoth terms are linear functions of $x[n]$, and all shifts are fixed. The overall system $S$ is a linear combination of LTI subsystems, $S$ is also <b>Linear and Time Invariant</b>.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q38": {
-      "question_uid": "pp:ec:2026:q38",
+    "ec:2026:q38": {
+      "question_uid": "ec:2026:q38",
+      "legacy_uid": "pp:ec:2026:q38",
       "exam_uid": "ec:2026:set1:main:q38",
       "title": "GATE EC 2026 | Set 1 | Question: 38",
       "section": "main",
@@ -1703,12 +1704,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "<b>Step 1: Write MUX output equation</b>\n\nFor a 4:1 MUX,\n\nSubstituting $S_1=x$ and $S_0=z$,\n\n$f=\\bar{x}\\bar{z}I_0+\\bar{x}zI_1+x\\bar{z}I_2+xzI_3$\n\nNow substitute the input values:\n\n$I_0=1,\\quad I_1=0,\\quad I_2=0,\\quad I_3=y$\n\nHence,\n\n$f=\\bar{x}\\bar{z}(1)+\\bar{x}z(0)+x\\bar{z}(0)+xz(y)$\n\nSimplifying,\n\n$f=\\bar{x}\\bar{z}+xyz$\n\nFactorizing,\n\n$f=\\bar{x}\\bar{z}+xy$\n\nUsing Boolean identity,\n\n$\\bar{x}\\bar{z}+xy\n\n=\n\nxy+\\bar{z}$\n\nTherefore,\n\n$f(x,y,z)=xy+\\bar{z}$",
-        "images": []
+        "markdown": "<b>Step 1: Write MUX output equation</b>\n\nFor a 4:1 MUX,\n\nSubstituting $S_1=x$ and $S_0=z$,\n\n$f=\\bar{x}\\bar{z}I_0+\\bar{x}zI_1+x\\bar{z}I_2+xzI_3$\n\nNow substitute the input values:\n\n$I_0=1,\\quad I_1=0,\\quad I_2=0,\\quad I_3=y$\n\nHence,\n\n$f=\\bar{x}\\bar{z}(1)+\\bar{x}z(0)+x\\bar{z}(0)+xz(y)$\n\nSimplifying,\n\n$f=\\bar{x}\\bar{z}+xyz$\n\nFactorizing,\n\n$f=\\bar{x}\\bar{z}+xy$\n\nUsing Boolean identity,\n\n$\\bar{x}\\bar{z}+xy\n\n=\n\nxy+\\bar{z}$\n\nTherefore,\n\n$f(x,y,z)=xy+\\bar{z}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q39": {
-      "question_uid": "pp:ec:2026:q39",
+    "ec:2026:q39": {
+      "question_uid": "ec:2026:q39",
+      "legacy_uid": "pp:ec:2026:q39",
       "exam_uid": "ec:2026:set1:main:q39",
       "title": "GATE EC 2026 | Set 1 | Question: 39",
       "section": "main",
@@ -1748,12 +1749,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "<b>Step 1: Determine D-input</b>\n\nSince the XOR gate inputs are $\\overline{Q}$ and $1$,\n\n$D=\\overline{Q}\\oplus1$\n\nUsing XOR property,\n\n$A\\oplus1=\\overline{A}$\n\nHence,\n\n$D=\\overline{\\overline{Q}}=Q$\n\nInitially the D flip-flop output is 0, but after the first clock it becomes 1 and remains 1 thereafter.\n\nThus, logic 1 keeps entering the shift register at every clock pulse.\n\n<b>State progression:</b>\n\nInitial state:\n\n$00000000$\n\nAfter 1st clock:\n\n$00000001$\n\nAfter 2nd clock:\n\n$00000011$\n\nAfter 3rd clock:\n\n$00000111$\n\nAfter 4th clock:\n\n$00001111$\n\nAfter 5th clock:\n\n$00011111$",
-        "images": []
+        "markdown": "<b>Step 1: Determine D-input</b>\n\nSince the XOR gate inputs are $\\overline{Q}$ and $1$,\n\n$D=\\overline{Q}\\oplus1$\n\nUsing XOR property,\n\n$A\\oplus1=\\overline{A}$\n\nHence,\n\n$D=\\overline{\\overline{Q}}=Q$\n\nInitially the D flip-flop output is 0, but after the first clock it becomes 1 and remains 1 thereafter.\n\nThus, logic 1 keeps entering the shift register at every clock pulse.\n\n<b>State progression:</b>\n\nInitial state:\n\n$00000000$\n\nAfter 1st clock:\n\n$00000001$\n\nAfter 2nd clock:\n\n$00000011$\n\nAfter 3rd clock:\n\n$00000111$\n\nAfter 4th clock:\n\n$00001111$\n\nAfter 5th clock:\n\n$00011111$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q40": {
-      "question_uid": "pp:ec:2026:q40",
+    "ec:2026:q40": {
+      "question_uid": "ec:2026:q40",
+      "legacy_uid": "pp:ec:2026:q40",
       "exam_uid": "ec:2026:set1:main:q40",
       "title": "GATE EC 2026 | Set 1 | Question: 40",
       "section": "main",
@@ -1793,12 +1794,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "$V_i(t)=A\\cos(10^5t)+B\\sin(10^7t)$\n\nCircuit parameters:\n\n$V_{BE}=0.7V,\\qquad \\beta_{dc}=99$\n\n$V_A=100V,\\qquad V_T=25mV$\n\n<b>Step 1: DC operating point</b>\n\nVoltage divider bias gives base voltage:\n\n$V_B\n\n=\n\n12\\left(\\frac{25k}{100k+25k}\\right)\n\n=\n\n2.4V$\n\nHence emitter voltage is\n\n$V_E=2.4-0.7=1.7V$\n\nEmitter current:\n\n$I_E=\\frac{1.7}{1k}\n\n=\n\n1.7mA$\n\nApproximately,\n\n$I_C\\approx1.7mA$\n\n<b>Step 2: Small signal gain</b>\n\nTransconductance is\n\n$g_m=\\frac{1.7mA}{25mV}\n\n\\approx0.068\\text{ S}$\n\nCollector resistor:\n\n$R_C=5k\\Omega$\n\nThe emitter bypass capacitor $10\\mu F$ acts approximately as a short circuit for both frequencies:\n\n$10^5 \\text{ rad/s} \\quad \\text{and} \\quad 10^7 \\text{ rad/s}$\n\nHence emitter resistance is bypassed and the gain becomes approximately\n\n$A_v\\approx-g_mR_C$\n\n$A_v\\approx-(0.068)(5000)\n\n\\approx-340$\n\nConsidering practical transistor effects and loading, the effective gain is approximately\n\n$A_v\\approx-9.1$\n\nSince both frequency components experience nearly identical gain and phase inversion,\n\n$V_o(t)\n\n=\n\n-9.1[A\\cos(10^5t)+B\\sin(10^7t)]$",
-        "images": []
+        "markdown": "$V_i(t)=A\\cos(10^5t)+B\\sin(10^7t)$\n\nCircuit parameters:\n\n$V_{BE}=0.7V,\\qquad \\beta_{dc}=99$\n\n$V_A=100V,\\qquad V_T=25mV$\n\n<b>Step 1: DC operating point</b>\n\nVoltage divider bias gives base voltage:\n\n$V_B\n\n=\n\n12\\left(\\frac{25k}{100k+25k}\\right)\n\n=\n\n2.4V$\n\nHence emitter voltage is\n\n$V_E=2.4-0.7=1.7V$\n\nEmitter current:\n\n$I_E=\\frac{1.7}{1k}\n\n=\n\n1.7mA$\n\nApproximately,\n\n$I_C\\approx1.7mA$\n\n<b>Step 2: Small signal gain</b>\n\nTransconductance is\n\n$g_m=\\frac{1.7mA}{25mV}\n\n\\approx0.068\\text{ S}$\n\nCollector resistor:\n\n$R_C=5k\\Omega$\n\nThe emitter bypass capacitor $10\\mu F$ acts approximately as a short circuit for both frequencies:\n\n$10^5 \\text{ rad/s} \\quad \\text{and} \\quad 10^7 \\text{ rad/s}$\n\nHence emitter resistance is bypassed and the gain becomes approximately\n\n$A_v\\approx-g_mR_C$\n\n$A_v\\approx-(0.068)(5000)\n\n\\approx-340$\n\nConsidering practical transistor effects and loading, the effective gain is approximately\n\n$A_v\\approx-9.1$\n\nSince both frequency components experience nearly identical gain and phase inversion,\n\n$V_o(t)\n\n=\n\n-9.1[A\\cos(10^5t)+B\\sin(10^7t)]$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q41": {
-      "question_uid": "pp:ec:2026:q41",
+    "ec:2026:q41": {
+      "question_uid": "ec:2026:q41",
+      "legacy_uid": "pp:ec:2026:q41",
       "exam_uid": "ec:2026:set1:main:q41",
       "title": "GATE EC 2026 | Set 1 | Question: 41",
       "section": "main",
@@ -1838,12 +1839,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "<b>Given:</b>\n\nT-network: Two series $1\\text{ k}\\Omega$ resistors with a shunt $1\\text{ k}\\Omega$ to ground in the middle.\n\n<b>Step 1: ABCD parameter definitions</b>\n\n$$\\begin{bmatrix}V_1\\\\I_1\\end{bmatrix} = \\begin{bmatrix}A & B\\\\C & D\\end{bmatrix}\\begin{bmatrix}V_2\\\\-I_2\\end{bmatrix}$$\n\n<b>Step 2: Find A - set $I_2=0$ (open circuit output)</b>\n\n$A = \\frac{V_1}{V_2}\\bigg|{I_2=0}$\n\nWith output open, shunt and second series resistor form a voltage divider from $V_1$:\n\n$V_2 = V_1 \\times \\frac{R{shunt}}{R_{series1}+R_{shunt}} = V_1\\times\\frac{1}{1+1} = \\frac{V_1}{2}$\n\n$A = \\frac{V_1}{V_2} = 2$\n\n<b>Step 3: Find B - set $V_2=0$ (short circuit output)</b>\n\n$B = \\frac{V_1}{-I_2}\\bigg|{V_2=0}$\n\nShort at output: $R{shunt}|R_{series2} = 1\\text{k}|1\\text{k} = 500\\Omega$\n\n$V_1 = I_1(R_{s1} + 500) = I_1 \\times 1500$\n\n$I_2 = -\\frac{V_{shunt}}{R_{s2}} = -\\frac{I_1\\times500}{1000}= -0.5 I_1$\n\n$B = \\frac{V_1}{-I_2} = \\frac{I_1\\times1500}{0.5 I_1} = 3000 = 3\\times10^3\\text{ }\\Omega$\n\n<b>Step 4: Find D by symmetry</b>\n\nFor a symmetric T-network: $D = A = 2$\n\n<b>Step 5: Find C</b>\n\n$C = \\frac{I_1}{V_2}\\bigg|{I_2=0} = \\frac{1}{R{s1}+R_{shunt}} = \\frac{1}{2\\text{k}} = 0.5\\times10^{-3} = 10^{-3}\\text{ }\\Omega^{-1}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nT-network: Two series $1\\text{ k}\\Omega$ resistors with a shunt $1\\text{ k}\\Omega$ to ground in the middle.\n\n<b>Step 1: ABCD parameter definitions</b>\n\n$$\\begin{bmatrix}V_1\\\\I_1\\end{bmatrix} = \\begin{bmatrix}A & B\\\\C & D\\end{bmatrix}\\begin{bmatrix}V_2\\\\-I_2\\end{bmatrix}$$\n\n<b>Step 2: Find A - set $I_2=0$ (open circuit output)</b>\n\n$A = \\frac{V_1}{V_2}\\bigg|{I_2=0}$\n\nWith output open, shunt and second series resistor form a voltage divider from $V_1$:\n\n$V_2 = V_1 \\times \\frac{R{shunt}}{R_{series1}+R_{shunt}} = V_1\\times\\frac{1}{1+1} = \\frac{V_1}{2}$\n\n$A = \\frac{V_1}{V_2} = 2$\n\n<b>Step 3: Find B - set $V_2=0$ (short circuit output)</b>\n\n$B = \\frac{V_1}{-I_2}\\bigg|{V_2=0}$\n\nShort at output: $R{shunt}|R_{series2} = 1\\text{k}|1\\text{k} = 500\\Omega$\n\n$V_1 = I_1(R_{s1} + 500) = I_1 \\times 1500$\n\n$I_2 = -\\frac{V_{shunt}}{R_{s2}} = -\\frac{I_1\\times500}{1000}= -0.5 I_1$\n\n$B = \\frac{V_1}{-I_2} = \\frac{I_1\\times1500}{0.5 I_1} = 3000 = 3\\times10^3\\text{ }\\Omega$\n\n<b>Step 4: Find D by symmetry</b>\n\nFor a symmetric T-network: $D = A = 2$\n\n<b>Step 5: Find C</b>\n\n$C = \\frac{I_1}{V_2}\\bigg|{I_2=0} = \\frac{1}{R{s1}+R_{shunt}} = \\frac{1}{2\\text{k}} = 0.5\\times10^{-3} = 10^{-3}\\text{ }\\Omega^{-1}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2026:q42": {
-      "question_uid": "pp:ec:2026:q42",
+    "ec:2026:q42": {
+      "question_uid": "ec:2026:q42",
+      "legacy_uid": "pp:ec:2026:q42",
       "exam_uid": "ec:2026:set1:main:q42",
       "title": "GATE EC 2026 | Set 1 | Question: 42",
       "section": "main",
@@ -1883,12 +1884,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "<b>Given:</b>\n\nReflection coefficient of load: $\\Gamma_L=0.5\\angle30^\\circ$\n\nCharacteristic impedance: $Z_0=50\\Omega$\n\nThe input impedance moves to the <b>diametrically opposite point</b> on the same Smith chart circle.\n\nOn a Smith chart, diametrically opposite point means:\n\n$\\Gamma_{in}=0.5\\angle(30^\\circ+180^\\circ)\n\n=\n\n0.5\\angle210^\\circ$\n\n<b>Step 1: Convert reflection coefficient into rectangular form</b>\n\n$\\Gamma_{in}\n\n=\n\n0.5(\\cos210^\\circ+j\\sin210^\\circ)$\n\n$=\n\n0.5(-0.866-j0.5)$\n\n$\\Gamma_{in}\n\n=\n\n-0.433-j0.25$\n\n<b>Step 2: Use impedance-reflection coefficient relation</b>\n\nSubstituting values,\n\n$Z_{in}\n\n=\n\n50\\cdot\n\n\\frac{1+(-0.433-j0.25)}\n\n{1-(-0.433-j0.25)}$\n\n$=\n\n50\\cdot\n\n\\frac{0.567-j0.25}\n\n{1.433+j0.25}$\n\nMultiplying numerator and denominator by conjugate:\n\n$Z_{in}\n\n=\n\n50\\cdot\n\n\\frac{(0.567-j0.25)(1.433-j0.25)}\n\n{(1.433)^2+(0.25)^2}$\n\nAfter simplification, $Z_{in}\n\n\\approx\n\n17.7-j11.8\\Omega$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nReflection coefficient of load: $\\Gamma_L=0.5\\angle30^\\circ$\n\nCharacteristic impedance: $Z_0=50\\Omega$\n\nThe input impedance moves to the <b>diametrically opposite point</b> on the same Smith chart circle.\n\nOn a Smith chart, diametrically opposite point means:\n\n$\\Gamma_{in}=0.5\\angle(30^\\circ+180^\\circ)\n\n=\n\n0.5\\angle210^\\circ$\n\n<b>Step 1: Convert reflection coefficient into rectangular form</b>\n\n$\\Gamma_{in}\n\n=\n\n0.5(\\cos210^\\circ+j\\sin210^\\circ)$\n\n$=\n\n0.5(-0.866-j0.5)$\n\n$\\Gamma_{in}\n\n=\n\n-0.433-j0.25$\n\n<b>Step 2: Use impedance-reflection coefficient relation</b>\n\nSubstituting values,\n\n$Z_{in}\n\n=\n\n50\\cdot\n\n\\frac{1+(-0.433-j0.25)}\n\n{1-(-0.433-j0.25)}$\n\n$=\n\n50\\cdot\n\n\\frac{0.567-j0.25}\n\n{1.433+j0.25}$\n\nMultiplying numerator and denominator by conjugate:\n\n$Z_{in}\n\n=\n\n50\\cdot\n\n\\frac{(0.567-j0.25)(1.433-j0.25)}\n\n{(1.433)^2+(0.25)^2}$\n\nAfter simplification, $Z_{in}\n\n\\approx\n\n17.7-j11.8\\Omega$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q43": {
-      "question_uid": "pp:ec:2026:q43",
+    "ec:2026:q43": {
+      "question_uid": "ec:2026:q43",
+      "legacy_uid": "pp:ec:2026:q43",
       "exam_uid": "ec:2026:set1:main:q43",
       "title": "GATE EC 2026 | Set 1 | Question: 43",
       "section": "main",
@@ -1928,12 +1929,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<b>Step 1: Virtual Ground</b>\n\nSince the OP-AMP is ideal and the non-inverting terminal is grounded,\n\nHence the inverting terminal is at virtual ground.\n\n<b>Step 2: Current through input resistor</b>\n\nInput current through the left $1k\\Omega$ resistor is\n\n$I=\\frac{2V-0}{1k\\Omega}=2mA$\n\nSince OP-AMP input current is zero, the same $2mA$ flows through the feedback $1k\\Omega$ resistor.\n\nTherefore, voltage at the right node becomes\n\n$V_A=-2V$\n\n<b>Step 3: Current through vertical</b> $2k\\Omega$ <b>resistor</b>\n\nCurrent through the vertical resistor is\n\n$I=\\frac{0-(-2)}{2k}\n\n=1mA$\n\nThis current also enters the node from ground side.\n\n<b>Step 4: Apply KCL at the node</b>\n\nAt node $V_A$, currents entering are:\n\n- $2mA$ from feedback resistor\n\n- $1mA$ from ground through $2k\\Omega$\n\nHence total current entering the node is\n\n$I_x=2mA+1mA=3mA$",
-        "images": []
+        "markdown": "<b>Step 1: Virtual Ground</b>\n\nSince the OP-AMP is ideal and the non-inverting terminal is grounded,\n\nHence the inverting terminal is at virtual ground.\n\n<b>Step 2: Current through input resistor</b>\n\nInput current through the left $1k\\Omega$ resistor is\n\n$I=\\frac{2V-0}{1k\\Omega}=2mA$\n\nSince OP-AMP input current is zero, the same $2mA$ flows through the feedback $1k\\Omega$ resistor.\n\nTherefore, voltage at the right node becomes\n\n$V_A=-2V$\n\n<b>Step 3: Current through vertical</b> $2k\\Omega$ <b>resistor</b>\n\nCurrent through the vertical resistor is\n\n$I=\\frac{0-(-2)}{2k}\n\n=1mA$\n\nThis current also enters the node from ground side.\n\n<b>Step 4: Apply KCL at the node</b>\n\nAt node $V_A$, currents entering are:\n\n- $2mA$ from feedback resistor\n\n- $1mA$ from ground through $2k\\Omega$\n\nHence total current entering the node is\n\n$I_x=2mA+1mA=3mA$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q44": {
-      "question_uid": "pp:ec:2026:q44",
+    "ec:2026:q44": {
+      "question_uid": "ec:2026:q44",
+      "legacy_uid": "pp:ec:2026:q44",
       "exam_uid": "ec:2026:set1:main:q44",
       "title": "GATE EC 2026 | Set 1 | Question: 44",
       "section": "main",
@@ -1973,12 +1974,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "Wave length is absorbed if\n\n$\\lambda \\leq \\frac{1.24}{E_g}\\,\\mu\\text{m}$\n\n$\\lambda \\leq \\frac{1.24}{1.3}\\,\\mu\\text{m}$\n\n$\\lambda \\leq 0.953\\,\\mu\\text{m}$\n\n$\\lambda \\leq 953\\,\\text{nm}$\n\nAs the device is LED and we know that LED can observe light (for light emitting) in bandwidth of $\\pm 20\\,\\text{nm}$. Hence, LED can absorb light for useful work in:\n\n$933\\,\\text{nm} < \\lambda < 973\\,\\text{nm}$",
-        "images": []
+        "markdown": "Wave length is absorbed if\n\n$\\lambda \\leq \\frac{1.24}{E_g}\\,\\mu\\text{m}$\n\n$\\lambda \\leq \\frac{1.24}{1.3}\\,\\mu\\text{m}$\n\n$\\lambda \\leq 0.953\\,\\mu\\text{m}$\n\n$\\lambda \\leq 953\\,\\text{nm}$\n\nAs the device is LED and we know that LED can observe light (for light emitting) in bandwidth of $\\pm 20\\,\\text{nm}$. Hence, LED can absorb light for useful work in:\n\n$933\\,\\text{nm} < \\lambda < 973\\,\\text{nm}$\n\nTherefore, the correct option(s) are **A, B, D**."
       }
     },
-    "pp:ec:2026:q45": {
-      "question_uid": "pp:ec:2026:q45",
+    "ec:2026:q45": {
+      "question_uid": "ec:2026:q45",
+      "legacy_uid": "pp:ec:2026:q45",
       "exam_uid": "ec:2026:set1:main:q45",
       "title": "GATE EC 2026 | Set 1 | Question: 45",
       "section": "main",
@@ -2018,12 +2019,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "<b>Given:</b>\n\n$B = 1\\text{ MHz}$, $kT = -174\\text{ dBm/Hz}$, $S = -80\\text{ dBm}$\n\n<b>Step 1: Noise power</b>\n\n$N = kT \\cdot B = -174\\text{ dBm/Hz} + 10\\log_{10}(10^6)\\text{ dB} = -174 + 60 = -114\\text{ dBm}$\n\n<b>Step 2: SNR</b>\n\n$\\text{SNR} = S - N = -80 - (-114) = 34\\text{ dB} = 10^{3.4} \\approx 2512$\n\n<b>Step 3: Shannon capacity</b>\n\n$C = B\\log_2(1+\\text{SNR}) = 10^6 \\times \\log_2(2513)$\n\n$\\log_2(2513) = \\frac{\\ln(2513)}{\\ln 2} = \\frac{7.829}{0.693} \\approx 11.3$\n\n$C \\approx 11.3\\text{ Mbps} \\approx 11.3B$\n\nSince $C \\approx 11.3B > 3B$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\n$B = 1\\text{ MHz}$, $kT = -174\\text{ dBm/Hz}$, $S = -80\\text{ dBm}$\n\n<b>Step 1: Noise power</b>\n\n$N = kT \\cdot B = -174\\text{ dBm/Hz} + 10\\log_{10}(10^6)\\text{ dB} = -174 + 60 = -114\\text{ dBm}$\n\n<b>Step 2: SNR</b>\n\n$\\text{SNR} = S - N = -80 - (-114) = 34\\text{ dB} = 10^{3.4} \\approx 2512$\n\n<b>Step 3: Shannon capacity</b>\n\n$C = B\\log_2(1+\\text{SNR}) = 10^6 \\times \\log_2(2513)$\n\n$\\log_2(2513) = \\frac{\\ln(2513)}{\\ln 2} = \\frac{7.829}{0.693} \\approx 11.3$\n\n$C \\approx 11.3\\text{ Mbps} \\approx 11.3B$\n\nSince $C \\approx 11.3B > 3B$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q46": {
-      "question_uid": "pp:ec:2026:q46",
+    "ec:2026:q46": {
+      "question_uid": "ec:2026:q46",
+      "legacy_uid": "pp:ec:2026:q46",
       "exam_uid": "ec:2026:set1:main:q46",
       "title": "GATE EC 2026 | Set 1 | Question: 46",
       "section": "main",
@@ -2063,12 +2064,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
-        "markdown": "Group 1: Corner group $(m_0,m_2,m_8,m_{10})$\n\nHere, $x=0$ and $z=0$ remain constant.\n\nHence, the implicant is $\\bar{x}\\bar{z}$\n\nGroup 2: Block $(m_5,m_7,m_{13},m_{15})$\n\nHere, $x=1$ and $z=1$ remain constant.\n\nHence, the implicant is $xz$\n\nGroup 3: Pair $(m_{14},m_{15})$\n\nHere, $w=1,\\;x=1,\\;y=1$ remain constant.\n\nHence, the implicant is $wxy$\n\n<b>Step 3: Obtain the minimized expression</b>\n\nCombining all the implicants,\n\n$f(w,x,y,z)=\\bar{x}\\bar{z}+xz+wxy$",
-        "images": []
+        "markdown": "Group 1: Corner group $(m_0,m_2,m_8,m_{10})$\n\nHere, $x=0$ and $z=0$ remain constant.\n\nHence, the implicant is $\\bar{x}\\bar{z}$\n\nGroup 2: Block $(m_5,m_7,m_{13},m_{15})$\n\nHere, $x=1$ and $z=1$ remain constant.\n\nHence, the implicant is $xz$\n\nGroup 3: Pair $(m_{14},m_{15})$\n\nHere, $w=1,\\;x=1,\\;y=1$ remain constant.\n\nHence, the implicant is $wxy$\n\n<b>Step 3: Obtain the minimized expression</b>\n\nCombining all the implicants,\n\n$f(w,x,y,z)=\\bar{x}\\bar{z}+xz+wxy$\n\nTherefore, the correct option(s) are **A, D**."
       }
     },
-    "pp:ec:2026:q47": {
-      "question_uid": "pp:ec:2026:q47",
+    "ec:2026:q47": {
+      "question_uid": "ec:2026:q47",
+      "legacy_uid": "pp:ec:2026:q47",
       "exam_uid": "ec:2026:set1:main:q47",
       "title": "GATE EC 2026 | Set 1 | Question: 47",
       "section": "main",
@@ -2108,12 +2109,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
-        "markdown": "Given narrow band signal,  $x(t)=A(t)\\cos[2\\pi f_c t+\\theta(t)]$\n\n<ul>\n\n<li>\n\nFor suitable choices of $A(t)$ and $\\theta(t)$, $x(t)$ represents an AM signal.\n\nExample: Let\n\n$A(t)=1+m(t)$\n\n$\\theta(t)=0$\n\nThen,\n\n$x(t)=[1+m(t)]\\cos 2\\pi f_c t$\n\nThus, it represents an AM signal.\n\n</li>\n\n<li>\n\nFor suitable choices of $A(t)$ and $\\theta(t)$, $x(t)$ represents a PSK signal.\n\nExample: Let $A(t)$ be constant and\n\n$\\theta(t)=45^\\circ,\\ 135^\\circ,\\ 225^\\circ,\\ 315^\\circ$\n\nHence, $x(t)$ represents a PSK signal.\n\n</li>\n\n<li>\n\n$x(t)$ represents a bandlimited Gaussian noise process.\n\nWriting,\n\n$x(t)=x_I(t)\\cos 2\\pi f_c t - x_Q(t)\\sin 2\\pi f_c t$\n\nwhere,\n\n$x_I(t)=A(t)\\cos\\theta(t)$\n\n$x_Q(t)=A(t)\\sin\\theta(t)$\n\nIf $x_I(t)$ and $x_Q(t)$ are Gaussian processes, then $x(t)$ also represents a Gaussian process.\n\nHence, options (A), (B), and (C) are correct.\n\n</li>\n\n</ul>\n\nNow consider option (D).\n\nExample:\n\n$x(t)=A(t)\\cos[2\\pi f_c t+\\theta(t)]$\n\nHere, the term $\\theta(t)$ represents angle modulation. Therefore, $x(t)$ can also represent an NBFM signal.\n\nHence, option (D) is incorrect.",
-        "images": []
+        "markdown": "Given narrow band signal,  $x(t)=A(t)\\cos[2\\pi f_c t+\\theta(t)]$\n\n<ul>\n\n<li>\n\nFor suitable choices of $A(t)$ and $\\theta(t)$, $x(t)$ represents an AM signal.\n\nExample: Let\n\n$A(t)=1+m(t)$\n\n$\\theta(t)=0$\n\nThen,\n\n$x(t)=[1+m(t)]\\cos 2\\pi f_c t$\n\nThus, it represents an AM signal.\n\n</li>\n\n<li>\n\nFor suitable choices of $A(t)$ and $\\theta(t)$, $x(t)$ represents a PSK signal.\n\nExample: Let $A(t)$ be constant and\n\n$\\theta(t)=45^\\circ,\\ 135^\\circ,\\ 225^\\circ,\\ 315^\\circ$\n\nHence, $x(t)$ represents a PSK signal.\n\n</li>\n\n<li>\n\n$x(t)$ represents a bandlimited Gaussian noise process.\n\nWriting,\n\n$x(t)=x_I(t)\\cos 2\\pi f_c t - x_Q(t)\\sin 2\\pi f_c t$\n\nwhere,\n\n$x_I(t)=A(t)\\cos\\theta(t)$\n\n$x_Q(t)=A(t)\\sin\\theta(t)$\n\nIf $x_I(t)$ and $x_Q(t)$ are Gaussian processes, then $x(t)$ also represents a Gaussian process.\n\nHence, options (A), (B), and (C) are correct.\n\n</li>\n\n</ul>\n\nNow consider option (D).\n\nExample:\n\n$x(t)=A(t)\\cos[2\\pi f_c t+\\theta(t)]$\n\nHere, the term $\\theta(t)$ represents angle modulation. Therefore, $x(t)$ can also represent an NBFM signal.\n\nHence, option (D) is incorrect.\n\nTherefore, the correct option(s) are **A, B, C**."
       }
     },
-    "pp:ec:2026:q48": {
-      "question_uid": "pp:ec:2026:q48",
+    "ec:2026:q48": {
+      "question_uid": "ec:2026:q48",
+      "legacy_uid": "pp:ec:2026:q48",
       "exam_uid": "ec:2026:set1:main:q48",
       "title": "GATE EC 2026 | Set 1 | Question: 48",
       "section": "main",
@@ -2153,12 +2154,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
-        "markdown": "Given, $x_1(t)=\\cos(2\\pi nt)$ and\n\n$x_2(t)=2\\sin(4\\pi nt)$\n\nwhere $n$ is a positive integer.\n\nFor $x_1(t)$, the frequency is: $f_1=n$\n\nFor $x_2(t)$, the frequency is: $f_2=2n$\n\nThus, $f_2=2f_1$\n\nHence, $x_2(t)$ is the second harmonic of $x_1(t)$.\n\nTherefore, <b>option (C) is correct</b>.\n\nNow check orthogonality over $0 \\le t < \\frac{1}{n}$.\n\nTwo signals are orthogonal if:\n\n$\\int_0^{1/n} x_1(t)x_2(t),dt =0$\n\nSubstituting,\n\n$\\int_0^{1/n}\\cos(2\\pi nt)\\cdot 2\\sin(4\\pi nt),dt$\n\nUsing identity,\n\n$2\\sin A \\cos B=\\sin(A+B)+\\sin(A-B)$\n\nwe get, $2\\cos(2\\pi nt)\\sin(4\\pi nt)\n\n\\sin(6\\pi nt)+\\sin(2\\pi nt)$\n\nHence, $\\int_0^{1/n}\\left[\\sin(6\\pi nt)+\\sin(2\\pi nt)\\right]dt$\n\nBoth sine terms integrate to zero over the interval $0 \\le t < \\frac{1}{n}$. Therefore,\n\n$\\int_0^{1/n} x_1(t)x_2(t),dt =0$\n\nHence, the signals are orthogonal over $0 \\le t < \\frac{1}{n}$.\n\nTherefore, <b>option (A) is correct</b>.\n\nNow check orthonormality.\n\nFor orthonormal signals, each signal must have unit energy over the interval.\n\nEnergy of $x_1(t)$:\n\n$\\int_0^{1/n}\\cos^2(2\\pi nt),dt\n\n\\frac{1}{2n}\n\n\\neq 1$\n\nHence, the signals are not normalized. Therefore, <b>option (B) is incorrect</b>.\n\nNow check option (D).\n\nOver $0 \\le t < \\frac{1}{2n}$,\n\n$\\int_0^{1/(2n)} x_1(t)x_2(t),dt\n\n\\neq 0$\n\nThus, the signals are non-orthogonal over this interval.\n\nTherefore, <b>option (D) is correct</b>.\n\n<b>Correct Options:</b> (A), (C), and (D).",
-        "images": []
+        "markdown": "Given, $x_1(t)=\\cos(2\\pi nt)$ and\n\n$x_2(t)=2\\sin(4\\pi nt)$\n\nwhere $n$ is a positive integer.\n\nFor $x_1(t)$, the frequency is: $f_1=n$\n\nFor $x_2(t)$, the frequency is: $f_2=2n$\n\nThus, $f_2=2f_1$\n\nHence, $x_2(t)$ is the second harmonic of $x_1(t)$.\n\nTherefore, <b>option (C) is correct</b>.\n\nNow check orthogonality over $0 \\le t < \\frac{1}{n}$.\n\nTwo signals are orthogonal if:\n\n$\\int_0^{1/n} x_1(t)x_2(t),dt =0$\n\nSubstituting,\n\n$\\int_0^{1/n}\\cos(2\\pi nt)\\cdot 2\\sin(4\\pi nt),dt$\n\nUsing identity,\n\n$2\\sin A \\cos B=\\sin(A+B)+\\sin(A-B)$\n\nwe get, $2\\cos(2\\pi nt)\\sin(4\\pi nt)\n\n\\sin(6\\pi nt)+\\sin(2\\pi nt)$\n\nHence, $\\int_0^{1/n}\\left[\\sin(6\\pi nt)+\\sin(2\\pi nt)\\right]dt$\n\nBoth sine terms integrate to zero over the interval $0 \\le t < \\frac{1}{n}$. Therefore,\n\n$\\int_0^{1/n} x_1(t)x_2(t),dt =0$\n\nHence, the signals are orthogonal over $0 \\le t < \\frac{1}{n}$.\n\nTherefore, <b>option (A) is correct</b>.\n\nNow check orthonormality.\n\nFor orthonormal signals, each signal must have unit energy over the interval.\n\nEnergy of $x_1(t)$:\n\n$\\int_0^{1/n}\\cos^2(2\\pi nt),dt\n\n\\frac{1}{2n}\n\n\\neq 1$\n\nHence, the signals are not normalized. Therefore, <b>option (B) is incorrect</b>.\n\nNow check option (D).\n\nOver $0 \\le t < \\frac{1}{2n}$,\n\n$\\int_0^{1/(2n)} x_1(t)x_2(t),dt\n\n\\neq 0$\n\nThus, the signals are non-orthogonal over this interval.\n\nTherefore, <b>option (D) is correct</b>.\n\n<b>Correct Options:</b> (A), (C), and (D).\n\nTherefore, the correct option(s) are **A, C, D**."
       }
     },
-    "pp:ec:2026:q49": {
-      "question_uid": "pp:ec:2026:q49",
+    "ec:2026:q49": {
+      "question_uid": "ec:2026:q49",
+      "legacy_uid": "pp:ec:2026:q49",
       "exam_uid": "ec:2026:set1:main:q49",
       "title": "GATE EC 2026 | Set 1 | Question: 49",
       "section": "main",
@@ -2196,12 +2197,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
-        "markdown": "<b>Given:</b>\n\nOpen-loop: $\\frac{K}{s(s+7)(s+11)}$, unity negative feedback.\n\n<b>Step 1: Characteristic equation</b>\n\n$s(s+7)(s+11) + K = 0$\n\n$s^3 + 18s^2 + 77s + K = 0$\n\n<b>Step 2: Routh-Hurwitz array</b>\n\n$$\\begin{array}{c|cc}\n\ns^3 & 1 & 77 \\\n\ns^2 & 18 & K \\\n\ns^1 & \\frac{18\\times77 - K}{18} & 0 \\\n\ns^0 & K &\n\n\\end{array}$$\n\n<b>Step 3: Marginal stability - $s^1$ row = 0</b>\n\n$\\frac{18\\times77 - K}{18} = 0$\n\n$K = 18\\times77 = 1386$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nOpen-loop: $\\frac{K}{s(s+7)(s+11)}$, unity negative feedback.\n\n<b>Step 1: Characteristic equation</b>\n\n$s(s+7)(s+11) + K = 0$\n\n$s^3 + 18s^2 + 77s + K = 0$\n\n<b>Step 2: Routh-Hurwitz array</b>\n\n$$\\begin{array}{c|cc}\n\ns^3 & 1 & 77 \\\n\ns^2 & 18 & K \\\n\ns^1 & \\frac{18\\times77 - K}{18} & 0 \\\n\ns^0 & K &\n\n\\end{array}$$\n\n<b>Step 3: Marginal stability - $s^1$ row = 0</b>\n\n$\\frac{18\\times77 - K}{18} = 0$\n\n$K = 18\\times77 = 1386$\n\nTherefore, the correct answer is **1386**."
       }
     },
-    "pp:ec:2026:q50": {
-      "question_uid": "pp:ec:2026:q50",
+    "ec:2026:q50": {
+      "question_uid": "ec:2026:q50",
+      "legacy_uid": "pp:ec:2026:q50",
       "exam_uid": "ec:2026:set1:main:q50",
       "title": "GATE EC 2026 | Set 1 | Question: 50",
       "section": "main",
@@ -2239,12 +2240,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "<b>Given:</b>\n\nDiode-connected n-channel MOSFET (gate tied to drain), $V_{DD}=5\\text{ V}$, $R_D=1\\text{ k}\\Omega$ from $V_{DD}$ to drain, $V_{TH}=1\\text{ V}$, $\\mu C_{ox}(W/L)=2\\text{ mA/V}^2$.\n\n<b>Step 1: Since gate = drain, $V_{GS}=V_{DS}=V_G$ (source at ground)</b>\n\nMOSFET is in saturation ($V_{DS}\\geq V_{GS}-V_{TH}$ always satisfied for diode-connected).\n\n<b>Step 2: KVL</b>\n\n$V_{DD} = I_D \\cdot R_D + V_G$\n\n$I_D = \\frac{1}{2}\\mu C_{ox}\\frac{W}{L}(V_{GS}-V_{TH})^2 = \\frac{1}{2}\\times2\\times(V_G-1)^2 = (V_G-1)^2\\text{ mA}$\n\n<b>Step 3: Substitute</b>\n\n$5 = (V_G-1)^2 \\times 1\\text{k} \\times 10^{-3} + V_G$\n\n$5 = (V_G-1)^2 + V_G$\n\nLet $u = V_G - 1$:\n\n$5 = u^2 + u + 1 \\Rightarrow u^2 + u - 4 = 0$\n\n$u = \\frac{-1+\\sqrt{1+16}}{2} = \\frac{-1+\\sqrt{17}}{2} = \\frac{-1+4.123}{2} = \\frac{3.123}{2} = 1.561$\n\n$V_G = u + 1 = 2.561 \\approx 2.56\\text{ V}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nDiode-connected n-channel MOSFET (gate tied to drain), $V_{DD}=5\\text{ V}$, $R_D=1\\text{ k}\\Omega$ from $V_{DD}$ to drain, $V_{TH}=1\\text{ V}$, $\\mu C_{ox}(W/L)=2\\text{ mA/V}^2$.\n\n<b>Step 1: Since gate = drain, $V_{GS}=V_{DS}=V_G$ (source at ground)</b>\n\nMOSFET is in saturation ($V_{DS}\\geq V_{GS}-V_{TH}$ always satisfied for diode-connected).\n\n<b>Step 2: KVL</b>\n\n$V_{DD} = I_D \\cdot R_D + V_G$\n\n$I_D = \\frac{1}{2}\\mu C_{ox}\\frac{W}{L}(V_{GS}-V_{TH})^2 = \\frac{1}{2}\\times2\\times(V_G-1)^2 = (V_G-1)^2\\text{ mA}$\n\n<b>Step 3: Substitute</b>\n\n$5 = (V_G-1)^2 \\times 1\\text{k} \\times 10^{-3} + V_G$\n\n$5 = (V_G-1)^2 + V_G$\n\nLet $u = V_G - 1$:\n\n$5 = u^2 + u + 1 \\Rightarrow u^2 + u - 4 = 0$\n\n$u = \\frac{-1+\\sqrt{1+16}}{2} = \\frac{-1+\\sqrt{17}}{2} = \\frac{-1+4.123}{2} = \\frac{3.123}{2} = 1.561$\n\n$V_G = u + 1 = 2.561 \\approx 2.56\\text{ V}$\n\nTherefore, the correct answer is **2.55** (acceptable range: [2.5, 2.6])."
       }
     },
-    "pp:ec:2026:q51": {
-      "question_uid": "pp:ec:2026:q51",
+    "ec:2026:q51": {
+      "question_uid": "ec:2026:q51",
+      "legacy_uid": "pp:ec:2026:q51",
       "exam_uid": "ec:2026:set1:main:q51",
       "title": "GATE EC 2026 | Set 1 | Question: 51",
       "section": "main",
@@ -2282,12 +2283,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$I = \\iint_R (x^2 + y^2) , dx , dy - \\iint_R y , dx , dy$\n\n$I = I_1 - I_2$\n\n$I_1 = \\int_0^1 \\int_0^x (x^2 + y^2) , dy , dx + \\int_1^2 \\int_0^{2-x} (x^2 + y^2) , dy , dx$\n\n$= 2 \\left[ \\int_0^1 \\left( x^2 y + \\frac{y^3}{3} \\right)_0^x dx + \\int_1^2 \\left( x^2 y + \\frac{y^3}{3} \\right)_0^{2-x} dx \\right]$\n\n$= 2 \\left[ \\int_0^1 \\left( x^3 + \\frac{x^3}{3} \\right) dx + \\int_1^2 \\left( x^2 (2-x) + \\frac{(2-x)^3}{3} \\right) dx \\right]$\n\n$= 2 \\left[ \\int_0^1 \\frac{4}{3} x^3 dx + \\int_1^2 \\left( x^2 (2-x) + \\frac{(2-x)^3}{3} \\right) dx \\right]$\n\n$= 2 \\left[ \\frac{4}{3} \\cdot \\frac{1}{4} + \\left( \\frac{2x^3}{3} - \\frac{x^4}{4} + \\frac{(2-x)^4}{12} \\right)_1^2 \\right]$\n\n$= \\frac{8}{12} + 2 \\left[ \\left( \\frac{16}{3} - 4 - 0 \\right) - \\left( \\frac{2}{3} - \\frac{1}{4} + \\frac{1}{12} \\right) \\right]$\n\n$= \\frac{2}{3} + 2 \\left[ \\frac{4}{3} - \\frac{1}{3} \\right] = \\frac{2}{3} + 2$\n\n$I_1 = \\frac{8}{3}$\n\n$I_2 = \\text{Area of square}$\n\n$I = I_1 - I_2$\n\n$I = \\frac{8}{3} - \\sqrt{2} \\times \\sqrt{2}\n\n= \\frac{8}{3} - 2\n\n= \\frac{2}{3}$",
-        "images": []
+        "markdown": "$I = \\iint_R (x^2 + y^2) , dx , dy - \\iint_R y , dx , dy$\n\n$I = I_1 - I_2$\n\n$I_1 = \\int_0^1 \\int_0^x (x^2 + y^2) , dy , dx + \\int_1^2 \\int_0^{2-x} (x^2 + y^2) , dy , dx$\n\n$= 2 \\left[ \\int_0^1 \\left( x^2 y + \\frac{y^3}{3} \\right)_0^x dx + \\int_1^2 \\left( x^2 y + \\frac{y^3}{3} \\right)_0^{2-x} dx \\right]$\n\n$= 2 \\left[ \\int_0^1 \\left( x^3 + \\frac{x^3}{3} \\right) dx + \\int_1^2 \\left( x^2 (2-x) + \\frac{(2-x)^3}{3} \\right) dx \\right]$\n\n$= 2 \\left[ \\int_0^1 \\frac{4}{3} x^3 dx + \\int_1^2 \\left( x^2 (2-x) + \\frac{(2-x)^3}{3} \\right) dx \\right]$\n\n$= 2 \\left[ \\frac{4}{3} \\cdot \\frac{1}{4} + \\left( \\frac{2x^3}{3} - \\frac{x^4}{4} + \\frac{(2-x)^4}{12} \\right)_1^2 \\right]$\n\n$= \\frac{8}{12} + 2 \\left[ \\left( \\frac{16}{3} - 4 - 0 \\right) - \\left( \\frac{2}{3} - \\frac{1}{4} + \\frac{1}{12} \\right) \\right]$\n\n$= \\frac{2}{3} + 2 \\left[ \\frac{4}{3} - \\frac{1}{3} \\right] = \\frac{2}{3} + 2$\n\n$I_1 = \\frac{8}{3}$\n\n$I_2 = \\text{Area of square}$\n\n$I = I_1 - I_2$\n\n$I = \\frac{8}{3} - \\sqrt{2} \\times \\sqrt{2}\n\n= \\frac{8}{3} - 2\n\n= \\frac{2}{3}$\n\nTherefore, the correct answer is **0.65** (acceptable range: [0.6, 0.7])."
       }
     },
-    "pp:ec:2026:q52": {
-      "question_uid": "pp:ec:2026:q52",
+    "ec:2026:q52": {
+      "question_uid": "ec:2026:q52",
+      "legacy_uid": "pp:ec:2026:q52",
       "exam_uid": "ec:2026:set1:main:q52",
       "title": "GATE EC 2026 | Set 1 | Question: 52",
       "section": "main",
@@ -2325,12 +2326,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<b>Step 1: Virtual ground at (-)</b>\n\n$V^- = 0$ (virtual short)\n\n<b>Step 2: KCL at the midpoint node $V_m$ between R2 and R3</b>\n\nActually from figure topology: $R_2$ and $R_3$ are in series from (-) terminal to output, with $R_4$ from midpoint to ground:\n\n$\\frac{0 - V_m}{R_2} = \\frac{V_m - 0}{R_4} + \\frac{V_m - V_o}{R_3}$... this needs careful topology reading.\n\nFrom the figure: $v_i \\to R_1 \\to$ (-), feedback network has $R_2$ in series with $R_3$ from (-) to output, $R_4$ from the junction of $R_2$-$R_3$ to ground. This is a T-feedback network.\n\n<b>Step 3: Equivalent feedback resistance</b>\n\nThe T-network $R_2, R_3, R_4$ can be replaced by equivalent $R_f$:\n\n$R_f^{eq} = R_2 + R_3 + \\frac{R_2 R_3}{R_4} = 50 + 50 + \\frac{50\\times50}{50} = 100 + 50 = 150\\text{ k}\\Omega$\n\n<b>Step 4: Gain</b>\n\n$|A_v| = \\frac{R_f^{eq}}{R_1} = \\frac{150\\text{k}}{50\\text{k}} = 3.00$",
-        "images": []
+        "markdown": "<b>Step 1: Virtual ground at (-)</b>\n\n$V^- = 0$ (virtual short)\n\n<b>Step 2: KCL at the midpoint node $V_m$ between R2 and R3</b>\n\nActually from figure topology: $R_2$ and $R_3$ are in series from (-) terminal to output, with $R_4$ from midpoint to ground:\n\n$\\frac{0 - V_m}{R_2} = \\frac{V_m - 0}{R_4} + \\frac{V_m - V_o}{R_3}$... this needs careful topology reading.\n\nFrom the figure: $v_i \\to R_1 \\to$ (-), feedback network has $R_2$ in series with $R_3$ from (-) to output, $R_4$ from the junction of $R_2$-$R_3$ to ground. This is a T-feedback network.\n\n<b>Step 3: Equivalent feedback resistance</b>\n\nThe T-network $R_2, R_3, R_4$ can be replaced by equivalent $R_f$:\n\n$R_f^{eq} = R_2 + R_3 + \\frac{R_2 R_3}{R_4} = 50 + 50 + \\frac{50\\times50}{50} = 100 + 50 = 150\\text{ k}\\Omega$\n\n<b>Step 4: Gain</b>\n\n$|A_v| = \\frac{R_f^{eq}}{R_1} = \\frac{150\\text{k}}{50\\text{k}} = 3.00$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
       }
     },
-    "pp:ec:2026:q53": {
-      "question_uid": "pp:ec:2026:q53",
+    "ec:2026:q53": {
+      "question_uid": "ec:2026:q53",
+      "legacy_uid": "pp:ec:2026:q53",
       "exam_uid": "ec:2026:set1:main:q53",
       "title": "GATE EC 2026 | Set 1 | Question: 53",
       "section": "main",
@@ -2368,12 +2369,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "<b>Given:</b>\n\nAverage bit error rate (BER) at input: $p = 0.10$\n\n<b>Step 1: Understand the code</b>\n\nA Hamming code has minimum distance $d_{min} = 3$, so it can correct $t = 1$ error per codeword.\n\n<b>Step 2: Decoder fails when 2 or more errors occur in a 7-bit codeword</b>\n\n$P(\\text{failure}) = 1 - P(\\text{0 errors}) - P(\\text{1 error})$\n\n$P(\\text{0 errors}) = (1-p)^7 = (0.9)^7 = 0.4783$\n\n$P(\\text{1 error}) = \\binom{7}{1}p(1-p)^6 = 7 \\times 0.1 \\times (0.9)^6 = 7 \\times 0.1 \\times 0.5314 = 0.3720$\n\n<b>Step 3: Failure probability</b>\n\n$P(\\text{failure}) = 1 - 0.4783 - 0.3720 = 0.1497 \\approx 0.15$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nAverage bit error rate (BER) at input: $p = 0.10$\n\n<b>Step 1: Understand the code</b>\n\nA Hamming code has minimum distance $d_{min} = 3$, so it can correct $t = 1$ error per codeword.\n\n<b>Step 2: Decoder fails when 2 or more errors occur in a 7-bit codeword</b>\n\n$P(\\text{failure}) = 1 - P(\\text{0 errors}) - P(\\text{1 error})$\n\n$P(\\text{0 errors}) = (1-p)^7 = (0.9)^7 = 0.4783$\n\n$P(\\text{1 error}) = \\binom{7}{1}p(1-p)^6 = 7 \\times 0.1 \\times (0.9)^6 = 7 \\times 0.1 \\times 0.5314 = 0.3720$\n\n<b>Step 3: Failure probability</b>\n\n$P(\\text{failure}) = 1 - 0.4783 - 0.3720 = 0.1497 \\approx 0.15$\n\nTherefore, the correct answer is **0.15** (acceptable range: [0.1, 0.2])."
       }
     },
-    "pp:ec:2026:q54": {
-      "question_uid": "pp:ec:2026:q54",
+    "ec:2026:q54": {
+      "question_uid": "ec:2026:q54",
+      "legacy_uid": "pp:ec:2026:q54",
       "exam_uid": "ec:2026:set1:main:q54",
       "title": "GATE EC 2026 | Set 1 | Question: 54",
       "section": "main",
@@ -2411,12 +2412,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "<b>Given:</b>\n\nElectron concentration varies linearly:\n\n$n(x=1,\\mu\\text{m}) = 2\\times10^{17}\\text{ cm}^{-3}$\n\n$n(x=4,\\mu\\text{m}) = 1\\times10^{16}\\text{ cm}^{-3}$\n\n$\\mu_n = 1400\\text{ cm}^2\\text{V}^{-1}\\text{s}^{-1}$, $V_T = 25\\text{ mV}$, $q = 1.6\\times10^{-19}\\text{ C}$\n\n<b>Step 1: Diffusion coefficient</b>\n\nEinstein relation:\n\n$D_n = \\mu_n V_T = 1400 \\times 0.025 = 35\\text{ cm}^2/\\text{s}$\n\n<b>Step 2: Concentration gradient</b>\n\n$\\frac{dn}{dx} = \\frac{1\\times10^{16} - 2\\times10^{17}}{(4-1)\\times10^{-4}\\text{ cm}} = \\frac{-1.9\\times10^{17}}{3\\times10^{-4}} = -6.333\\times10^{20}\\text{ cm}^{-4}$\n\n<b>Step 3: Diffusion current density</b>\n\n$J_n = qD_n\\frac{dn}{dx} = 1.6\\times10^{-19} \\times 35 \\times (-6.333\\times10^{20})\n\n= 1.6\\times10^{-19} \\times 2.2167\\times10^{22} = -3546.67\\text{ A/cm}^2$\n\n<b>Step 4: Convert to A/mmÂ²</b>\n\n1 cmÂ² = 100 mmÂ²\n\n$J_n = \\frac{-3546.67}{100} = -35.47\\text{ A/mm}^2$\n\nMagnitude of diffusion current density:\n\n$\\boxed{|J_n| \\approx 35.47\\text{ A/mm}^2}$\n\nThe negative sign indicates current flows in the $-x$ direction (electrons diffuse from high to low concentration in the $+x$ direction, conventional current is opposite).",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nElectron concentration varies linearly:\n\n$n(x=1,\\mu\\text{m}) = 2\\times10^{17}\\text{ cm}^{-3}$\n\n$n(x=4,\\mu\\text{m}) = 1\\times10^{16}\\text{ cm}^{-3}$\n\n$\\mu_n = 1400\\text{ cm}^2\\text{V}^{-1}\\text{s}^{-1}$, $V_T = 25\\text{ mV}$, $q = 1.6\\times10^{-19}\\text{ C}$\n\n<b>Step 1: Diffusion coefficient</b>\n\nEinstein relation:\n\n$D_n = \\mu_n V_T = 1400 \\times 0.025 = 35\\text{ cm}^2/\\text{s}$\n\n<b>Step 2: Concentration gradient</b>\n\n$\\frac{dn}{dx} = \\frac{1\\times10^{16} - 2\\times10^{17}}{(4-1)\\times10^{-4}\\text{ cm}} = \\frac{-1.9\\times10^{17}}{3\\times10^{-4}} = -6.333\\times10^{20}\\text{ cm}^{-4}$\n\n<b>Step 3: Diffusion current density</b>\n\n$J_n = qD_n\\frac{dn}{dx} = 1.6\\times10^{-19} \\times 35 \\times (-6.333\\times10^{20})\n\n= 1.6\\times10^{-19} \\times 2.2167\\times10^{22} = -3546.67\\text{ A/cm}^2$\n\n<b>Step 4: Convert to A/mmÂ²</b>\n\n1 cmÂ² = 100 mmÂ²\n\n$J_n = \\frac{-3546.67}{100} = -35.47\\text{ A/mm}^2$\n\nMagnitude of diffusion current density:\n\n$\\boxed{|J_n| \\approx 35.47\\text{ A/mm}^2}$\n\nThe negative sign indicates current flows in the $-x$ direction (electrons diffuse from high to low concentration in the $+x$ direction, conventional current is opposite).\n\nTherefore, the correct answer is **-35.5** (acceptable range: [-36.5, -34.5])."
       }
     },
-    "pp:ec:2026:q55": {
-      "question_uid": "pp:ec:2026:q55",
+    "ec:2026:q55": {
+      "question_uid": "ec:2026:q55",
+      "legacy_uid": "pp:ec:2026:q55",
       "exam_uid": "ec:2026:set1:main:q55",
       "title": "GATE EC 2026 | Set 1 | Question: 55",
       "section": "main",
@@ -2454,12 +2455,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "Given:\n\n$v_i(t)=6\\sin(\\omega t)$\n\nSince the input is a sinusoid of amplitude 6 V, the maximum input voltage is\n\n$v_{i,\\max}=6~\\text{V}$\n\nStep 1: Identify the clipping levels\n\nThe circuit contains two ideal diodes with bias voltages of 2 V and 4 V. These diodes act as voltage limiters (clippers). Since the cut-in voltage of each diode is zero, conduction starts as soon as the corresponding threshold voltage is reached.\n\nStep 2: Analyze the positive half-cycle\n\nAs $v_i(t)$ increases from zero, the output voltage follows the input voltage. When the output voltage attempts to exceed 4 V, diode D2 becomes forward biased and starts conducting.\n\nOnce D2 turns ON, the output node is effectively clamped at 4 V. Therefore, any further increase in the input voltage does not increase the output voltage beyond this level.\n\nStep 3: Check the role of D1\n\nDiode D1 is responsible for limiting the negative portion of the waveform and does not affect the maximum positive value of the output voltage.\n\nStep 4: Determine the maximum output voltage\n\nAlthough the input reaches a peak value of 6 V, the output is clipped by D2 at 4 V.\n\nHence, the maximum value of the output voltage is $v_{o,\\max}=4~\\text{V}$",
-        "images": []
+        "markdown": "Given:\n\n$v_i(t)=6\\sin(\\omega t)$\n\nSince the input is a sinusoid of amplitude 6 V, the maximum input voltage is\n\n$v_{i,\\max}=6~\\text{V}$\n\nStep 1: Identify the clipping levels\n\nThe circuit contains two ideal diodes with bias voltages of 2 V and 4 V. These diodes act as voltage limiters (clippers). Since the cut-in voltage of each diode is zero, conduction starts as soon as the corresponding threshold voltage is reached.\n\nStep 2: Analyze the positive half-cycle\n\nAs $v_i(t)$ increases from zero, the output voltage follows the input voltage. When the output voltage attempts to exceed 4 V, diode D2 becomes forward biased and starts conducting.\n\nOnce D2 turns ON, the output node is effectively clamped at 4 V. Therefore, any further increase in the input voltage does not increase the output voltage beyond this level.\n\nStep 3: Check the role of D1\n\nDiode D1 is responsible for limiting the negative portion of the waveform and does not affect the maximum positive value of the output voltage.\n\nStep 4: Determine the maximum output voltage\n\nAlthough the input reaches a peak value of 6 V, the output is clipped by D2 at 4 V.\n\nHence, the maximum value of the output voltage is $v_{o,\\max}=4~\\text{V}$\n\nTherefore, the correct answer is **4** (acceptable range: [3.7, 4.3])."
       }
     },
-    "pp:ec:2026:q56": {
-      "question_uid": "pp:ec:2026:q56",
+    "ec:2026:ga:q1": {
+      "question_uid": "ec:2026:ga:q1",
+      "legacy_uid": "pp:ec:2026:q56",
       "exam_uid": "ec:2026:set1:ga:q1",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 1",
       "section": "ga",
@@ -2498,12 +2499,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "The word nocturnal describes organisms or activities that occur during the night. Its direct opposite is diurnal, which refers to being active during the day.",
-        "images": []
+        "markdown": "The word nocturnal describes organisms or activities that occur during the night. Its direct opposite is diurnal, which refers to being active during the day.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q57": {
-      "question_uid": "pp:ec:2026:q57",
+    "ec:2026:ga:q2": {
+      "question_uid": "ec:2026:ga:q2",
+      "legacy_uid": "pp:ec:2026:q57",
       "exam_uid": "ec:2026:set1:ga:q2",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 2",
       "section": "ga",
@@ -2542,12 +2543,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Step 1:</b>\n\nFrom (S1): Highest score = 100\n\nFrom (S2): Fourth highest = 76\n\n<b>Step 2:</b>\n\nTop four scores lie between 100 and 76.\n\nRange = 100-76 = 24\n\n<b>Step 3:</b>\n\nSince 24 <= 25, at least four students have scores within 25 marks.\n\n(S3) is true if (S1) and (S2) are true.",
-        "images": []
+        "markdown": "<b>Step 1:</b>\n\nFrom (S1): Highest score = 100\n\nFrom (S2): Fourth highest = 76\n\n<b>Step 2:</b>\n\nTop four scores lie between 100 and 76.\n\nRange = 100-76 = 24\n\n<b>Step 3:</b>\n\nSince 24 <= 25, at least four students have scores within 25 marks.\n\n(S3) is true if (S1) and (S2) are true.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q58": {
-      "question_uid": "pp:ec:2026:q58",
+    "ec:2026:ga:q3": {
+      "question_uid": "ec:2026:ga:q3",
+      "legacy_uid": "pp:ec:2026:q58",
       "exam_uid": "ec:2026:set1:ga:q3",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 3",
       "section": "ga",
@@ -2586,12 +2587,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "By analyzing the geometry of the lines intersecting at the boundaries of the missing box $WXYZ$, the lines must continue through the box to maintain continuity. Based on the visual alignment of the diagonal and vertical segments in the provided figure options (P, Q, R, S), option Q correctly completes the pattern.",
-        "images": []
+        "markdown": "By analyzing the geometry of the lines intersecting at the boundaries of the missing box $WXYZ$, the lines must continue through the box to maintain continuity. Based on the visual alignment of the diagonal and vertical segments in the provided figure options (P, Q, R, S), option Q correctly completes the pattern.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2026:q59": {
-      "question_uid": "pp:ec:2026:q59",
+    "ec:2026:ga:q4": {
+      "question_uid": "ec:2026:ga:q4",
+      "legacy_uid": "pp:ec:2026:q59",
       "exam_uid": "ec:2026:set1:ga:q4",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 4",
       "section": "ga",
@@ -2630,12 +2631,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Step 1:</b>\n\n$\\log_{p^{1/n}} y = \\frac{\\log y}{\\log p^{1/n}} = \\frac{\\log y}{(1/n)\\log p} = n \\frac{\\log y}{\\log p}$\n\n$\\log_{y^{1/n}} p = n \\frac{\\log p}{\\log y}$\n\n<b>Step 2:</b>\n\nMultiply:\n\n$n \\frac{\\log y}{\\log p} \\cdot n \\frac{\\log p}{\\log y} = n^2$\n\n<b>Step 3:</b>\n\n$n^2 = 16 \\Rightarrow n = 4$",
-        "images": []
+        "markdown": "<b>Step 1:</b>\n\n$\\log_{p^{1/n}} y = \\frac{\\log y}{\\log p^{1/n}} = \\frac{\\log y}{(1/n)\\log p} = n \\frac{\\log y}{\\log p}$\n\n$\\log_{y^{1/n}} p = n \\frac{\\log p}{\\log y}$\n\n<b>Step 2:</b>\n\nMultiply:\n\n$n \\frac{\\log y}{\\log p} \\cdot n \\frac{\\log p}{\\log y} = n^2$\n\n<b>Step 3:</b>\n\n$n^2 = 16 \\Rightarrow n = 4$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q60": {
-      "question_uid": "pp:ec:2026:q60",
+    "ec:2026:ga:q5": {
+      "question_uid": "ec:2026:ga:q5",
+      "legacy_uid": "pp:ec:2026:q60",
       "exam_uid": "ec:2026:set1:ga:q5",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 5",
       "section": "ga",
@@ -2674,12 +2675,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "The original statement is in the form: $\\forall s \\in \\text{Students}, \\exists o \\in \\text{Students} : |score(s) - score(o)| \\le 10$.\n\nThe negation ($\\neg$) of \"For all $x$, there exists $y$ such that $P(x,y)$\" is \"There exists $x$ such that for all $y$, $\\neg P(x,y)$\".\n\nSo, the negation is: There exists at least one student for whom all other students have scores more than 10 marks away.",
-        "images": []
+        "markdown": "The original statement is in the form: $\\forall s \\in \\text{Students}, \\exists o \\in \\text{Students} : |score(s) - score(o)| \\le 10$.\n\nThe negation ($\\neg$) of \"For all $x$, there exists $y$ such that $P(x,y)$\" is \"There exists $x$ such that for all $y$, $\\neg P(x,y)$\".\n\nSo, the negation is: There exists at least one student for whom all other students have scores more than 10 marks away.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2026:q61": {
-      "question_uid": "pp:ec:2026:q61",
+    "ec:2026:ga:q6": {
+      "question_uid": "ec:2026:ga:q6",
+      "legacy_uid": "pp:ec:2026:q61",
       "exam_uid": "ec:2026:set1:ga:q6",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 6",
       "section": "ga",
@@ -2718,12 +2719,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "1. Clue 1: IDENTIFY (Keyword: Identify, first letter I)\n\n2. Clue 2: NOVEL (Keyword: Novel, first letter N)\n\n3. Clue 3: COUPLE (Keyword: Couple, first letter C)\n\n4. Clue 4: HALF (Keyword: Half, first letter H).\n\nRearranging the first letters I, N, C, H forms the word CHIN.",
-        "images": []
+        "markdown": "1. Clue 1: IDENTIFY (Keyword: Identify, first letter I)\n\n2. Clue 2: NOVEL (Keyword: Novel, first letter N)\n\n3. Clue 3: COUPLE (Keyword: Couple, first letter C)\n\n4. Clue 4: HALF (Keyword: Half, first letter H).\n\nRearranging the first letters I, N, C, H forms the word CHIN.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2026:q62": {
-      "question_uid": "pp:ec:2026:q62",
+    "ec:2026:ga:q7": {
+      "question_uid": "ec:2026:ga:q7",
+      "legacy_uid": "pp:ec:2026:q62",
       "exam_uid": "ec:2026:set1:ga:q7",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 7",
       "section": "ga",
@@ -2762,12 +2763,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Analysis:\n\nFrom Match 1, P cannot be the child of X.\n\nFrom Match 2, P cannot be the child of X or Y.\n\nSince exactly one child does not have a parent playing, and X and Y have different children, those children must be Q and R.\n\nTherefore, P does not have any parent playing.",
-        "images": []
+        "markdown": "Analysis:\n\nFrom Match 1, P cannot be the child of X.\n\nFrom Match 2, P cannot be the child of X or Y.\n\nSince exactly one child does not have a parent playing, and X and Y have different children, those children must be Q and R.\n\nTherefore, P does not have any parent playing.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q63": {
-      "question_uid": "pp:ec:2026:q63",
+    "ec:2026:ga:q8": {
+      "question_uid": "ec:2026:ga:q8",
+      "legacy_uid": "pp:ec:2026:q63",
       "exam_uid": "ec:2026:set1:ga:q8",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 8",
       "section": "ga",
@@ -2806,12 +2807,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Perimeter $P_k = 4k$.\n\nSum $= \\sum_{k=1}^{10} 4k = 4(1 + 2 + 3 + \\dots + 10)$.\n\nUsing the sum formula $\\frac{n(n+1)}{2}$ for $n=10$:\n\nSum $= 4 \\cdot \\left(\\frac{10 \\times 11}{2}\\right) = 4 \\times 55 = 220$.",
-        "images": []
+        "markdown": "Perimeter $P_k = 4k$.\n\nSum $= \\sum_{k=1}^{10} 4k = 4(1 + 2 + 3 + \\dots + 10)$.\n\nUsing the sum formula $\\frac{n(n+1)}{2}$ for $n=10$:\n\nSum $= 4 \\cdot \\left(\\frac{10 \\times 11}{2}\\right) = 4 \\times 55 = 220$.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q64": {
-      "question_uid": "pp:ec:2026:q64",
+    "ec:2026:ga:q9": {
+      "question_uid": "ec:2026:ga:q9",
+      "legacy_uid": "pp:ec:2026:q64",
       "exam_uid": "ec:2026:set1:ga:q9",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 9",
       "section": "ga",
@@ -2850,12 +2851,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Based on the concentric ring dimensions given:- Land (Shaded): Inner Island (radius 2.5), Ring BC (radius 3.5 to 5.5), Ring DE (radius 7.5 to 10.5).\n\nWater (Unshaded): Ring AB (radius 2.5 to 3.5), Ring CD (radius 5.5 to 7.5), Ring EF (radius 10.5 to 13.5).\n\nArea formula: $A = \\pi(r_{outer}^2 - r_{inner}^2)$.\n\nArea Land $= \\pi(2.5^2 + (5.5^2 - 3.5^2) + (10.5^2 - 7.5^2)) = \\pi(6.25 + 18 + 54) = 78.25\\pi$.\n\nArea Water $= \\pi((3.5^2 - 2.5^2) + (7.5^2 - 5.5^2) + (13.5^2 - 10.5^2)) = \\pi(6 + 26 + 72) = 104\\pi$.\n\nRatio $= 78.25 / 104 \\approx 0.75$.",
-        "images": []
+        "markdown": "Based on the concentric ring dimensions given:- Land (Shaded): Inner Island (radius 2.5), Ring BC (radius 3.5 to 5.5), Ring DE (radius 7.5 to 10.5).\n\nWater (Unshaded): Ring AB (radius 2.5 to 3.5), Ring CD (radius 5.5 to 7.5), Ring EF (radius 10.5 to 13.5).\n\nArea formula: $A = \\pi(r_{outer}^2 - r_{inner}^2)$.\n\nArea Land $= \\pi(2.5^2 + (5.5^2 - 3.5^2) + (10.5^2 - 7.5^2)) = \\pi(6.25 + 18 + 54) = 78.25\\pi$.\n\nArea Water $= \\pi((3.5^2 - 2.5^2) + (7.5^2 - 5.5^2) + (13.5^2 - 10.5^2)) = \\pi(6 + 26 + 72) = 104\\pi$.\n\nRatio $= 78.25 / 104 \\approx 0.75$.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2026:q65": {
-      "question_uid": "pp:ec:2026:q65",
+    "ec:2026:ga:q10": {
+      "question_uid": "ec:2026:ga:q10",
+      "legacy_uid": "pp:ec:2026:q65",
       "exam_uid": "ec:2026:set1:ga:q10",
       "title": "GATE EC 2026 | Set 1 | GA | Question: 10",
       "section": "ga",

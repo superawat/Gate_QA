@@ -13,6 +13,7 @@ const PageShell = ({
   onResume = null,
   resumeLabel = "",
   subHeader = null,
+  fluid = false,
 }) => (
   <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-hidden bg-[color:var(--color-bg)] text-[color:var(--color-text)]">
     <a
@@ -25,8 +26,14 @@ const PageShell = ({
     {subHeader ?? null}
     <main
       id="main-content"
-      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 sm:px-6 md:pb-6 lg:px-8 ${
-        showHeader ? "pt-4 sm:pt-6" : "pt-[calc(0.75rem+env(safe-area-inset-top,0px))] sm:pt-5"
+      className={`flex-1 mx-auto w-full min-w-0 ${
+        fluid
+          ? "max-w-[1920px] px-3 sm:px-6 md:px-8"
+          : "max-w-7xl px-4 sm:px-6 lg:px-8"
+      } md:pb-6 ${
+        showHeader
+          ? "pt-4 sm:pt-6"
+          : "pt-[calc(0.5rem+env(safe-area-inset-top,0px))] sm:pt-4"
       } ${contentClassName}`}
     >
       {children}

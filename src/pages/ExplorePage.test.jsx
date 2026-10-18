@@ -18,11 +18,12 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children, showHeader, showFooter }) => (
+  default: ({ children, showHeader, showFooter, fluid }) => (
     <div
       data-testid="page-shell"
       data-show-header={String(showHeader)}
       data-show-footer={String(showFooter)}
+      data-fluid={String(fluid)}
     >
       {children}
     </div>
@@ -258,6 +259,7 @@ describe("ExplorePage", () => {
     renderExplorePage();
 
     expect(await screen.findByRole("heading", { name: /explore questions/i })).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Breadcrumb" }).textContent).toContain("Filter");
     expect(screen.getByText(/showing 1-3 of 3 · 3 total questions/i)).toBeTruthy();
     expect(screen.getByText("Dijkstra shortest path")).toBeTruthy();
     expect(screen.getByText("Paging and segmentation")).toBeTruthy();
@@ -468,12 +470,13 @@ describe("ExplorePage", () => {
     expect(loadQuestions).toHaveBeenCalledTimes(1);
   });
 
-  test("renders PageShell with showHeader=false and showFooter=false for distraction-free filtering", async () => {
+  test("renders PageShell with showHeader=false, showFooter=false, and fluid=true for distraction-free filtering", async () => {
     renderExplorePage();
     await screen.findByRole("button", { name: /start practice/i });
     const pageShell = screen.getByTestId("page-shell");
     expect(pageShell.getAttribute("data-show-header")).toBe("false");
     expect(pageShell.getAttribute("data-show-footer")).toBe("false");
+    expect(pageShell.getAttribute("data-fluid")).toBe("true");
   });
 
   test("renders Back to Home button and navigates to home", async () => {

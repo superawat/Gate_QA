@@ -426,6 +426,7 @@ const ExplorePage = ({
     <PageShell
       showHeader={false}
       showFooter={false}
+      fluid={true}
       contentClassName="practice-explore-shell"
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
@@ -459,18 +460,25 @@ const ExplorePage = ({
           <header className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 sm:px-5 sm:py-3.5 shadow-[var(--shadow-card)]">
             <div className="practice-explore-heading flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                <button
-                  type="button"
-                  onClick={handleBackHome}
-                  className="inline-flex min-h-[36px] sm:min-h-[40px] min-w-[36px] sm:min-w-[40px] w-[36px] sm:w-[40px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
-                  aria-label="Back to Home"
-                  title="Home"
-                >
-                  <FiHome className="text-base sm:text-lg" />
-                </button>
-                <div className="min-w-0">
-                  <h1 className="practice-explore-title text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>
-                  <p className="practice-result-summary mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
+                <nav aria-label="Breadcrumb" className="inline-flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={handleBackHome}
+                    className="inline-flex min-h-[36px] sm:min-h-[40px] items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 sm:px-3 text-xs sm:text-sm font-semibold text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0 shadow-[var(--shadow-soft)]"
+                    aria-label="Back to Home"
+                    title="Home"
+                  >
+                    <FiHome className="text-sm sm:text-base shrink-0" />
+                    <span>Home</span>
+                  </button>
+                  <span className="text-[color:var(--color-text-muted)]/60 text-xs sm:text-sm select-none" aria-hidden="true">/</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[color:var(--color-text)] select-none">
+                    Filter
+                  </span>
+                </nav>
+                <div className="min-w-0 pl-2 sm:pl-3 border-l border-[color:var(--color-border)]/60">
+                  <h1 className="practice-explore-title text-xl sm:text-2xl font-semibold text-[color:var(--color-text)]">Explore questions</h1>
+                  <p className="practice-result-summary mt-0.5 text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
                 </div>
               </div>
 

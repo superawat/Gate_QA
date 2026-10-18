@@ -1,5 +1,46 @@
 # Changelog
 
+- **Preferred Branches Default Filter Toggle Synchronization & Dynamic Preference Reactive Switching (DEC-194)**:
+  - *Context*: When users enrolled in up to 2 preferred branches (e.g. `ME` and `CE`), the filter drawer toggles (`includeMe`, `includeCe`) remained unchecked or in false state unless manually clicked, and changing preferred disciplines in Profile/Settings failed to activate the newly selected branches because `handleBranchChange` was gated by an obsolete `localStorage.getItem(...) === null` guard.
+  - *Accomplishments*:
+    - **Synchronized Preference Storage (`src/utils/branchPreference.ts`)**:
+      - `writeBranchPreferences` iterates all tracks (`cse`, `da`, `ec`, `ee`, `me`, `ce`) and explicitly sets `gateqa_include_<track>` to `'true'` for all enrolled branches and `'false'` for all unselected branches.
+      - Sets `gateqa_include_isro` to `'false'` whenever CSE is not enrolled.
+    - **Filter Context Reactive Synchronization (`src/contexts/FilterContext.tsx`)**:
+      - Updated `useState` initializers for `includeCse`, `includeDa`, `includeEc`, `includeEe`, `includeMe`, `includeCe` so that when `hasSelection` is true, branches in `selectedBranches` default to `true` (reading synchronized localStorage `'true'`), and non-enrolled branches strictly default to `false`.
+      - Rewrote `handleBranchChange` on `BRANCH_PREFERENCE_EVENT`: Immediately sets all 6 branch state toggles (`setIncludeCseState`, `setIncludeDaState`, `setIncludeEcState`, `setIncludeEeState`, `setIncludeMeState`, `setIncludeCeState`, `setIncludeIsroState`), eliminating the blocking `=== null` guard.
+      - Updates `structuredTags` to the new active branch if CSE is not enrolled.
+    - **Regression Tests & Verification**:
+      - Added tests in `src/contexts/FilterContext.test.jsx` verifying both: (1) selecting 2 preferred branches sets their filter toggles to ON by default and non-enrolled branches to OFF by default; (2) changing preferred branches to new disciplines automatically activates the new branches and disables the old ones.
+      - Full test suite 100% green (107 test files, 1,374 tests passed), TypeScript clean (`npm run typecheck` 0 errors).
+
+- **Universal Clean Canonical URL Routing & Navigation Breadcrumb Polish (DEC-193)**:
+  - *Context*: Public-facing URLs displayed internal machine identifiers like `/practice/question/pp%3Ame%3A2024%3Aq20`, and question numbers in URLs mismatched canonical display numbering on multi-section papers. Navigation headers also contained legacy "Results" text and arrow clutter.
+  - *Accomplishments*:
+    - **Clean Canonical Question URLs (`src/utils/routes.ts` & `src/utils/branchQuestionIdentity.js`)**:
+      - Generated human-readable question URLs: `/practice/question/{branch}-{year}-s{set}-q{number}` (e.g. `/practice/question/me-2024-s1-q20`), completely removing internal ingestion prefixes like `pp:` from public-facing URLs.
+      - Preserved 100% backwards-compatible routing and resolution for raw `pp:` and `go:` internal UIDs in `SolvePage.jsx`.
+    - **Solve Page Navigation Breadcrumb Polish (`src/pages/SolvePage.jsx`)**:
+      - Replaced legacy "Results" label with "Filter" and removed the arrow symbol.
+      - Placed a clean forward slash between Filter and question details: `[Home] / [Filter] / [GATE ME 2024 | Set 1 | Question: 20]`.
+    - **MTA Solution Fidelity Guarantee (`src/components/QuestionDetail/DetailedSolutionView.jsx`)**:
+      - Preserved full authentic mathematical derivations for Marks to All (MTA) questions, establishing architectural rule that MTA questions explain why ambiguity occurred rather than showing generic one-line stubs.
+    - **Regression Testing**:
+      - Added comprehensive test coverage in `src/utils/routes.test.js`.
+
+- **Single-Column Solve View Anti-Slop Ergonomics & Visual Harmonization (DEC-192)**:
+  - *Context*: Preserved 100% of existing single-column component positions (Header -> Meta Chips -> Question Stem & Options -> Keypad -> Action Bar -> Notes -> Detailed Solution), while resolving visual clutter and AI-slop anti-patterns.
+  - *Accomplishments*:
+    - Fluid full-width layout (`PageShell fluid={true}` and `max-w-[1920px] px-3 sm:px-6 md:px-8`), eliminating dead side margins on desktop displays.
+    - Aligned keypad tile grid (`grid grid-cols-4 gap-2.5 sm:gap-3 max-w-xl sm:max-w-2xl`) with keyboard hints.
+    - Standardized `h-10` button heights and `rounded-xl` corners across Submit, Detailed Solution, Ask AI, and tray.
+    - Quieted pink report flag into a neutral icon button.
+    - Math typography line-height (`leading-relaxed`) with measure protection (`max-w-prose sm:max-w-4xl`).
+    - Standardized queue navigation with tabular numerals.
+
+- **Shell Fluidity, Expanded Monitor Real Estate & Explicit Breadcrumb Navigation (DEC-191)**:
+  - *Context*: Removed rigid `max-w-7xl` container cap on desktop displays, added `fluid` prop to `PageShell.jsx`, and upgraded practice navigation with explicit breadcrumbs (`[Home] / [Filter]` and `[Home] / Filter`).
+
 - **Circular Dependency Resolution in Branch Preferences & Playwright E2E Suite Stabilization (DEC-190)**:
   - *Context*: Running `npm run test:e2e` failed 20 out of 21 tests with `Locator: getByRole('link', { name: /GATE QA home/i }) Expected: visible Timeout: 5000ms`, caused by the React app failing to mount and hanging indefinitely on the initial static splash screen (`#app-splash`). Browser console diagnostic revealed `[PAGE ERROR]: Error [ReferenceError]: Cannot access 'mr' before initialization at assets/index-*.js`.
   - *Root Cause*:

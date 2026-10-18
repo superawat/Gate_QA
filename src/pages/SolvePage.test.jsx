@@ -24,12 +24,13 @@ let filterActions;
 let sessionState;
 
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children, showHeader, showFooter, showMobileBottomNav }) => (
+  default: ({ children, showHeader, showFooter, showMobileBottomNav, fluid }) => (
     <div
       data-testid="page-shell"
       data-show-header={String(showHeader)}
       data-show-footer={String(showFooter)}
       data-show-mobile-bottom-nav={String(showMobileBottomNav)}
+      data-fluid={String(fluid)}
     >
       {children}
     </div>
@@ -396,7 +397,7 @@ describe("SolvePage", () => {
   test("back to results preserves the current practice query string", async () => {
     renderSolvePage();
 
-    fireEvent.click(await screen.findByRole("button", { name: /back to results/i }));
+    fireEvent.click(await screen.findByRole("button", { name: /filter|back to results/i }));
 
     await waitFor(() => {
       expect(screen.getByTestId("location-probe").textContent).toBe("/practice?subjects=algorithms&page=2");
@@ -585,12 +586,13 @@ describe("SolvePage", () => {
     expect(mocks.startRandomSession).not.toHaveBeenCalled();
   });
 
-  test("renders PageShell with showHeader=false and showFooter=false for distraction-free practice", () => {
+  test("renders PageShell with showHeader=false, showFooter=false, and fluid=true for distraction-free practice", () => {
     renderSolvePage();
     const pageShell = screen.getByTestId("page-shell");
     expect(pageShell.getAttribute("data-show-header")).toBe("false");
     expect(pageShell.getAttribute("data-show-footer")).toBe("false");
     expect(pageShell.getAttribute("data-show-mobile-bottom-nav")).toBe("false");
+    expect(pageShell.getAttribute("data-fluid")).toBe("true");
   });
 
   test("renders Back to Home button and navigates to home", () => {
@@ -637,7 +639,7 @@ describe("SolvePage", () => {
       locationState: { returnTo: "/insights?tab=review" },
     });
 
-    fireEvent.click(await screen.findByRole("button", { name: /back to results/i }));
+    fireEvent.click(await screen.findByRole("button", { name: /filter|back to results/i }));
 
     await waitFor(() => {
       expect(screen.getByTestId("location-probe").textContent).toBe("/insights?tab=review");

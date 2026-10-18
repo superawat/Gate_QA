@@ -1720,7 +1720,14 @@ describe('FilterContext', () => {
                 isCseEnrolled,
                 isEcEnrolled,
                 isEeEnrolled,
+                isMeEnrolled,
+                isCeEnrolled,
+                includeCse,
+                includeDa,
                 includeEc,
+                includeEe,
+                includeMe,
+                includeCe,
                 selectedBranches,
                 activeBranch,
                 filters,
@@ -1732,7 +1739,14 @@ describe('FilterContext', () => {
                     <div data-testid="is-cse-enrolled">{isCseEnrolled ? 'yes' : 'no'}</div>
                     <div data-testid="is-ec-enrolled">{isEcEnrolled ? 'yes' : 'no'}</div>
                     <div data-testid="is-ee-enrolled">{isEeEnrolled ? 'yes' : 'no'}</div>
+                    <div data-testid="is-me-enrolled">{isMeEnrolled ? 'yes' : 'no'}</div>
+                    <div data-testid="is-ce-enrolled">{isCeEnrolled ? 'yes' : 'no'}</div>
+                    <div data-testid="include-cse">{includeCse ? 'yes' : 'no'}</div>
+                    <div data-testid="include-da">{includeDa ? 'yes' : 'no'}</div>
                     <div data-testid="include-ec">{includeEc ? 'yes' : 'no'}</div>
+                    <div data-testid="include-ee">{includeEe ? 'yes' : 'no'}</div>
+                    <div data-testid="include-me">{includeMe ? 'yes' : 'no'}</div>
+                    <div data-testid="include-ce">{includeCe ? 'yes' : 'no'}</div>
                     <div data-testid="selected-branches">{selectedBranches.join(',')}</div>
                     <div data-testid="active-branch">{activeBranch}</div>
                     <div data-testid="selected-subjects">{filters.selectedSubjects.join(',')}</div>
@@ -1757,6 +1771,50 @@ describe('FilterContext', () => {
             expect(getByTestId('selected-branches').textContent).toBe('ec,cse');
             expect(getByTestId('active-branch').textContent).toBe('ec');
             expect(getByTestId('include-ec').textContent).toBe('yes');
+            expect(getByTestId('include-cse').textContent).toBe('yes');
+        });
+
+        test('when 2 preferred branches are selected, their filter toggles are ON by default and non-enrolled are OFF', async () => {
+            writeBranchPreferences(['me', 'ce'], 'me');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <MultiBranchTestComponent />
+                </FilterProvider>
+            );
+
+            expect(getByTestId('include-me').textContent).toBe('yes');
+            expect(getByTestId('include-ce').textContent).toBe('yes');
+            expect(getByTestId('include-cse').textContent).toBe('no');
+            expect(getByTestId('include-da').textContent).toBe('no');
+            expect(getByTestId('include-ec').textContent).toBe('no');
+            expect(getByTestId('include-ee').textContent).toBe('no');
+        });
+
+        test('changing preferred branch selection automatically turns newly selected branches ON and deselected branches OFF in filters', async () => {
+            writeBranchPreferences(['me', 'ce'], 'me');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <MultiBranchTestComponent />
+                </FilterProvider>
+            );
+
+            expect(getByTestId('include-me').textContent).toBe('yes');
+            expect(getByTestId('include-ce').textContent).toBe('yes');
+
+            // User changes preferred disciplines to EC and EE
+            act(() => {
+                writeBranchPreferences(['ec', 'ee'], 'ec');
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('include-ec').textContent).toBe('yes');
+                expect(getByTestId('include-ee').textContent).toBe('yes');
+                expect(getByTestId('include-me').textContent).toBe('no');
+                expect(getByTestId('include-ce').textContent).toBe('no');
+                expect(getByTestId('include-cse').textContent).toBe('no');
+            });
         });
 
         test('toggling setIncludeEc(false) sets includeEc to false and prunes ec subjects', async () => {

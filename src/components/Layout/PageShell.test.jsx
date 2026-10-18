@@ -81,4 +81,28 @@ describe("PageShell", () => {
     expect(screen.getByTestId("test-sub-header")).toBeTruthy();
     expect(screen.getByTestId("test-content")).toBeTruthy();
   });
+
+  test("applies fluid max-width class when fluid is true", () => {
+    const { container } = render(
+      <PageShell fluid={true}>
+        <div data-testid="test-content">Fluid Content</div>
+      </PageShell>
+    );
+
+    const main = container.querySelector("main#main-content");
+    expect(main.className).toContain("max-w-[1920px]");
+    expect(main.className).not.toContain("max-w-7xl");
+  });
+
+  test("applies default max-w-7xl container when fluid is false", () => {
+    const { container } = render(
+      <PageShell fluid={false}>
+        <div data-testid="test-content">Standard Content</div>
+      </PageShell>
+    );
+
+    const main = container.querySelector("main#main-content");
+    expect(main.className).toContain("max-w-7xl");
+    expect(main.className).not.toContain("max-w-[1920px]");
+  });
 });

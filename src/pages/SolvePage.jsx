@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaArrowLeft, FaCheckCircle, FaStar } from "react-icons/fa";
+import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { FiHome, FiMoon, FiSun } from "react-icons/fi";
 import { SITE_URL } from "../constants/siteConfig";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
@@ -26,6 +26,7 @@ import { writeLastSession } from "../utils/lastSession";
 import { readPracticeShuffleEnabled } from "../utils/practicePreference";
 import { getDisplayQuestionTypeLabel, MTA_EXPLANATION_TEXT } from "../utils/questionType";
 import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion, getQuestionTrack } from "../utils/examTrack";
+import { normalizeBranchQuestionUid } from "../utils/branchQuestionIdentity";
 import { useTheme } from "../utils/theme";
 
 const isUnavailableQuestionDetailError = (error) => (
@@ -91,6 +92,15 @@ const SolvePage = ({
       navigate(PRACTICE_ROUTE, { replace: true });
     }
   }, [aptitudeEnabled, isAptitudeQuestion, isInitialized, navigate]);
+
+  useEffect(() => {
+    if (questionUid && questionUid.toLowerCase().startsWith("pp:")) {
+      const canonicalUid = normalizeBranchQuestionUid(questionUid);
+      if (canonicalUid && canonicalUid !== questionUid) {
+        navigate(`${buildSolvePath(canonicalUid)}${location.search}`, { replace: true });
+      }
+    }
+  }, [location.search, navigate, questionUid]);
 
   useEffect(() => {
     if (!isInitialized || !indexedQuestion) {
@@ -194,38 +204,44 @@ const SolvePage = ({
 
       const loadStandaloneQuestion = async () => {
         try {
-          const branchMatch = questionUid.match(/^pp:([a-z]+):(\d+):q(\d+)(?:-s(\d+))?/i);
+          const branchMatch = questionUid.match(/^(?:pp:)?([a-z]+):(\d+):(?:(ga):)?q(\d+)(?:-s(\d+))?/i);
           if (branchMatch) {
-            const [, branch, year, , set = "1"] = branchMatch;
+            const [, branch, year, isGa, qNum, set = "1"] = branchMatch;
             const track = branch.toLowerCase();
-            const shardKey = `${track}-${year}-s${set}`;
-            const records = await BranchQuestionService.loadDetailShard(shardKey);
-            const raw = records?.[questionUid];
-            if (raw && active) {
-              const questionItem = {
-                ...raw,
-                uid: raw.question_uid,
-                id: raw.question_uid,
-                track,
-                subject: raw.taxonomy?.primary?.subjectLabel || raw.subject || "Core Engineering",
-                subjectSlug: raw.taxonomy?.primary?.subjectSlug || raw.subjectSlug,
-                subjectLabel: raw.taxonomy?.primary?.subjectLabel || raw.subjectLabel,
-                yearSetKey: shardKey,
-                yearSetIdentity: `${track}:${year}:set-${set}`,
-                yearSetLabel: `GATE ${track.toUpperCase()} ${year} Set ${set}`,
-                exam: {
-                  paper: track.toUpperCase(),
+            if (["ec", "ee", "me", "ce"].includes(track)) {
+              const shardKey = `${track}-${year}-s${set}`;
+              const records = await BranchQuestionService.loadDetailShard(shardKey);
+              const canonicalUid = normalizeBranchQuestionUid(questionUid);
+              const raw = records?.[canonicalUid] || records?.[questionUid] || Object.values(records || {}).find(
+                (r) => r.question_uid === canonicalUid || r.question_uid === questionUid || r.legacy_uid === questionUid
+              );
+              if (raw && active) {
+                const questionItem = {
+                  ...raw,
+                  uid: raw.question_uid || canonicalUid,
+                  id: raw.question_uid || canonicalUid,
+                  question_uid: raw.question_uid || canonicalUid,
                   track,
-                  year: Number(year),
-                  set: Number(set),
-                  label: `GATE ${track.toUpperCase()} ${year}`,
-                  exam_uid: raw.exam_uid || raw.question_uid,
-                },
-              };
-              setResolvedQuestion(questionItem);
-              setQuestionDetailError("");
-              setIsQuestionDetailLoading(false);
-              return;
+                  subject: raw.taxonomy?.primary?.subjectLabel || raw.subject || "Core Engineering",
+                  subjectSlug: raw.taxonomy?.primary?.subjectSlug || raw.subjectSlug,
+                  subjectLabel: raw.taxonomy?.primary?.subjectLabel || raw.subjectLabel,
+                  yearSetKey: shardKey,
+                  yearSetIdentity: `${track}:${year}:set-${set}`,
+                  yearSetLabel: `GATE ${track.toUpperCase()} ${year} Set ${set}`,
+                  exam: {
+                    paper: track.toUpperCase(),
+                    track,
+                    year: Number(year),
+                    set: Number(set),
+                    label: `GATE ${track.toUpperCase()} ${year}`,
+                    exam_uid: raw.exam_uid || raw.question_uid || canonicalUid,
+                  },
+                };
+                setResolvedQuestion(questionItem);
+                setQuestionDetailError("");
+                setIsQuestionDetailLoading(false);
+                return;
+              }
             }
           }
 
@@ -749,12 +765,12 @@ const SolvePage = ({
           : isIsroTargetQuestion
           ? "Practice ISRO CS previous year questions with detailed solutions on GateQA."
           : "Practice GATE CS previous year questions with detailed solutions on GateQA."}
-        path={`/practice/question/${encodeURIComponent(questionUid)}`}
+        path={buildSolvePath(questionUid)}
         schemaOrg={resolvedQuestion ? [
           buildBreadcrumbSchema([
             { name: "Home", url: "https://gateqa.in/" },
             { name: questionSubjectLabel, url: `https://gateqa.in/practice?subjects=${encodeURIComponent(resolvedQuestion.subjectSlug)}` },
-            { name: resolvedQuestion.title || questionUid, url: `https://gateqa.in/practice/question/${encodeURIComponent(questionUid)}` },
+            { name: resolvedQuestion.title || questionUid, url: `https://gateqa.in${buildSolvePath(questionUid)}` },
           ]),
           buildQAPageSchema({
             questionName: `${questionYearLabel} ${questionSubjectLabel} — ${resolvedQuestion.title || questionUid}`,
@@ -762,7 +778,7 @@ const SolvePage = ({
             answerText: resolvedQuestion.answer_meta?.answer
               ? `Correct answer: Option ${resolvedQuestion.answer_meta.answer}`
               : "",
-            url: `https://gateqa.in/practice/question/${encodeURIComponent(questionUid)}`,
+            url: `https://gateqa.in${buildSolvePath(questionUid)}`,
           })
         ] : []}
       />
@@ -770,6 +786,7 @@ const SolvePage = ({
         showHeader={false}
         showFooter={false}
         showMobileBottomNav={false}
+        fluid={true}
         contentClassName="pb-24 sm:pb-28 md:pb-6"
         onResume={hasResumeRoute ? onResumePractice : null}
         resumeLabel="Continue"
@@ -777,29 +794,30 @@ const SolvePage = ({
         <section className="space-y-3 sm:space-y-4">
           <header className="rounded-xl sm:rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 sm:px-4 sm:py-2.5 shadow-[var(--shadow-card)]">
             <div className="flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5 sm:gap-y-2">
-              {/* Navigation group */}
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={handleBackToResults}
-                  aria-label="Back to Results"
-                  title="Back to Results"
-                  className="inline-flex h-8 sm:h-9 items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2.5 py-1 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
-                >
-                  <FaArrowLeft className="mr-1 sm:mr-1.5 text-xs sm:text-sm" />
-                  <span className="hidden min-[360px]:inline">Back</span>
-                  <span className="hidden sm:inline"> to Results</span>
-                </button>
+              {/* Navigation breadcrumb */}
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={handleBackHome}
-                  className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                  className="inline-flex h-8 sm:h-9 items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                   aria-label="Back to Home"
                   title="Home"
                 >
-                  <FiHome className="text-xs sm:text-sm" />
+                  <FiHome className="text-xs sm:text-sm shrink-0" />
+                  <span>Home</span>
                 </button>
-              </div>
+                <span className="text-[color:var(--color-text-muted)]/60 text-xs sm:text-sm select-none" aria-hidden="true">/</span>
+                <button
+                  type="button"
+                  onClick={handleBackToResults}
+                  aria-label="Filter"
+                  title="Filter"
+                  className="inline-flex h-8 sm:h-9 items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                >
+                  <span>Filter</span>
+                </button>
+                <span className="hidden sm:inline text-[color:var(--color-text-muted)]/60 text-xs sm:text-sm select-none" aria-hidden="true">/</span>
+              </nav>
 
               {/* Utility controls on the right (floats right on Row 1) */}
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 order-2 sm:order-3 ml-auto">
@@ -836,7 +854,7 @@ const SolvePage = ({
               </div>
 
               {/* Title: On desktop, sits in the center (order-2); on mobile, wraps full-width (order-3) */}
-              <div className="w-full sm:w-auto sm:flex-1 sm:order-2 min-w-0 order-3 sm:px-2">
+              <div className="w-full sm:w-auto sm:flex-1 sm:order-2 min-w-0 order-3 sm:pl-1 sm:pr-2">
                 <h1 className="text-sm sm:text-base lg:text-lg font-bold text-[color:var(--color-text)] truncate leading-tight">
                   {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
                 </h1>

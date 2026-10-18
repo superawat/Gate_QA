@@ -122,6 +122,9 @@ export class BranchQuestionService {
           if (q.question_uid) {
             this.questionsByUid.set(q.question_uid, q);
           }
+          if ((q as any).legacy_uid) {
+            this.questionsByUid.set((q as any).legacy_uid, q);
+          }
         }
 
         return normalized;
@@ -235,11 +238,11 @@ export class BranchQuestionService {
       return baseQuestion;
     }
 
-    const track = baseQuestion.track || (uid.startsWith("pp:") ? uid.split(":")[1] : "");
+    const track = baseQuestion.track || (uid.startsWith("pp:") ? uid.split(":")[1] : (["ec", "ee", "me", "ce"].includes(uid.split(":")[0]) ? uid.split(":")[0] : ""));
     const shardKey = baseQuestion.detailShardKey || `${track}-${baseQuestion.year}-s${baseQuestion.set || 1}`;
     try {
       const records = await this.loadDetailShard(shardKey);
-      const detail = records[uid];
+      const detail = records[uid] || ((baseQuestion as any).legacy_uid && records[(baseQuestion as any).legacy_uid]);
       if (detail) {
         const merged: QuestionRow = {
           ...baseQuestion,

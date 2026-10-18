@@ -650,9 +650,24 @@ export const FilterProvider = ({
         }
     }, [location.pathname, location.search, aptitudeEnabled, setAptitudeEnabled]);
 
-    const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest, questionService));
+    const [structuredTags, setStructuredTags] = useState(() => {
+        const prefs = readBranchPreferences();
+        const hasSelection = prefs?.hasCompletedOnboarding && Array.isArray(prefs?.selectedBranches) && prefs.selectedBranches.length > 0;
+        if (hasSelection && !prefs.selectedBranches.includes(EXAM_TRACKS.CSE)) {
+            for (const b of prefs.selectedBranches) {
+                if (b === EXAM_TRACKS.DA && DaQuestionService.loaded) {
+                    return DaQuestionService.getStructuredTags();
+                }
+                if (BranchQuestionService.isLoaded(b)) {
+                    return BranchQuestionService.getStructuredTags(b);
+                }
+            }
+        }
+        return buildStructuredTagsFromManifest(initialManifest, questionService);
+    });
     const previousStructuredTagsRef = useRef(structuredTags);
     const lastHydratedSearchRef = useRef(null);
+    const hasAppliedInitialManifestRef = useRef(false);
 
     const [filters, setFilters] = useState(() => {
         const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest, questionService);
@@ -708,12 +723,19 @@ export const FilterProvider = ({
         if (initialTrack === 'cs') return true;
         const initialPrefs = readBranchPreferences();
         const hasSelection = initialPrefs.hasCompletedOnboarding && initialPrefs.selectedBranches.length > 0;
+        if (hasSelection) {
+            if (!initialPrefs.selectedBranches.includes(EXAM_TRACKS.CSE)) return false;
+            if (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_cse') !== null) {
+                return window.localStorage.getItem('gateqa_include_cse') === 'true';
+            }
+            return true;
+        }
         return (
             initialIncludeCse !== null
                 ? Boolean(initialIncludeCse)
                 : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_cse') !== null
                     ? window.localStorage.getItem('gateqa_include_cse') === 'true'
-                    : (hasSelection ? initialPrefs.selectedBranches.includes(EXAM_TRACKS.CSE) : true))
+                    : true)
         );
     });
     const [includeDa, setIncludeDaState] = useState(() => {
@@ -721,12 +743,19 @@ export const FilterProvider = ({
         if (initialTrack === 'da') return true;
         const initialPrefs = readBranchPreferences();
         const hasSelection = initialPrefs.hasCompletedOnboarding && initialPrefs.selectedBranches.length > 0;
+        if (hasSelection) {
+            if (!initialPrefs.selectedBranches.includes(EXAM_TRACKS.DA)) return false;
+            if (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') !== null) {
+                return window.localStorage.getItem('gateqa_include_da') === 'true';
+            }
+            return true;
+        }
         return (
             initialIncludeDa !== null
                 ? Boolean(initialIncludeDa)
                 : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') !== null
                     ? window.localStorage.getItem('gateqa_include_da') === 'true'
-                    : (hasSelection ? initialPrefs.selectedBranches.includes(EXAM_TRACKS.DA) : urlHasTrackYearSets('da')))
+                    : urlHasTrackYearSets('da'))
         );
     });
     const [includeIsro, setIncludeIsroState] = useState(() => {
@@ -744,10 +773,17 @@ export const FilterProvider = ({
         if (initialTrack === 'ec') return true;
         const initialPrefs = readBranchPreferences();
         const hasSelection = initialPrefs.hasCompletedOnboarding && initialPrefs.selectedBranches.length > 0;
+        if (hasSelection) {
+            if (!initialPrefs.selectedBranches.includes(EXAM_TRACKS.EC)) return false;
+            if (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_ec') !== null) {
+                return window.localStorage.getItem('gateqa_include_ec') === 'true';
+            }
+            return true;
+        }
         return (
             typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_ec') !== null
                 ? window.localStorage.getItem('gateqa_include_ec') === 'true'
-                : (hasSelection ? initialPrefs.selectedBranches.includes(EXAM_TRACKS.EC) : false)
+                : false
         );
     });
     const [includeEe, setIncludeEeState] = useState(() => {
@@ -755,10 +791,17 @@ export const FilterProvider = ({
         if (initialTrack === 'ee') return true;
         const initialPrefs = readBranchPreferences();
         const hasSelection = initialPrefs.hasCompletedOnboarding && initialPrefs.selectedBranches.length > 0;
+        if (hasSelection) {
+            if (!initialPrefs.selectedBranches.includes(EXAM_TRACKS.EE)) return false;
+            if (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_ee') !== null) {
+                return window.localStorage.getItem('gateqa_include_ee') === 'true';
+            }
+            return true;
+        }
         return (
             typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_ee') !== null
                 ? window.localStorage.getItem('gateqa_include_ee') === 'true'
-                : (hasSelection ? initialPrefs.selectedBranches.includes(EXAM_TRACKS.EE) : false)
+                : false
         );
     });
     const [includeMe, setIncludeMeState] = useState(() => {
@@ -766,10 +809,17 @@ export const FilterProvider = ({
         if (initialTrack === 'me') return true;
         const initialPrefs = readBranchPreferences();
         const hasSelection = initialPrefs.hasCompletedOnboarding && initialPrefs.selectedBranches.length > 0;
+        if (hasSelection) {
+            if (!initialPrefs.selectedBranches.includes(EXAM_TRACKS.ME)) return false;
+            if (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_me') !== null) {
+                return window.localStorage.getItem('gateqa_include_me') === 'true';
+            }
+            return true;
+        }
         return (
             typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_me') !== null
                 ? window.localStorage.getItem('gateqa_include_me') === 'true'
-                : (hasSelection ? initialPrefs.selectedBranches.includes(EXAM_TRACKS.ME) : false)
+                : false
         );
     });
     const [includeCe, setIncludeCeState] = useState(() => {
@@ -777,10 +827,17 @@ export const FilterProvider = ({
         if (initialTrack === 'ce') return true;
         const initialPrefs = readBranchPreferences();
         const hasSelection = initialPrefs.hasCompletedOnboarding && initialPrefs.selectedBranches.length > 0;
+        if (hasSelection) {
+            if (!initialPrefs.selectedBranches.includes(EXAM_TRACKS.CE)) return false;
+            if (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_ce') !== null) {
+                return window.localStorage.getItem('gateqa_include_ce') === 'true';
+            }
+            return true;
+        }
         return (
             typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_ce') !== null
                 ? window.localStorage.getItem('gateqa_include_ce') === 'true'
-                : (hasSelection ? initialPrefs.selectedBranches.includes(EXAM_TRACKS.CE) : false)
+                : false
         );
     });
 
@@ -899,18 +956,34 @@ export const FilterProvider = ({
             const nextPrefs = readBranchPreferences();
             setBranchPreferences(nextPrefs);
             const selected = nextPrefs?.selectedBranches || [];
-            if (!selected.includes(EXAM_TRACKS.EC)) setIncludeEcState(false);
-            if (!selected.includes(EXAM_TRACKS.EE)) setIncludeEeState(false);
-            if (!selected.includes(EXAM_TRACKS.ME)) setIncludeMeState(false);
-            if (!selected.includes(EXAM_TRACKS.CE)) setIncludeCeState(false);
-            if (!selected.includes(EXAM_TRACKS.DA)) setIncludeDaState(false);
+            if (selected.length > 0) {
+                setIncludeCseState(selected.includes(EXAM_TRACKS.CSE));
+                setIncludeDaState(selected.includes(EXAM_TRACKS.DA));
+                setIncludeEcState(selected.includes(EXAM_TRACKS.EC));
+                setIncludeEeState(selected.includes(EXAM_TRACKS.EE));
+                setIncludeMeState(selected.includes(EXAM_TRACKS.ME));
+                setIncludeCeState(selected.includes(EXAM_TRACKS.CE));
+                if (!selected.includes(EXAM_TRACKS.CSE)) {
+                    setIncludeIsroState(false);
+                }
+            } else {
+                setIncludeCseState(true);
+                setIncludeDaState(false);
+                setIncludeEcState(false);
+                setIncludeEeState(false);
+                setIncludeMeState(false);
+                setIncludeCeState(false);
+                setIncludeIsroState(false);
+            }
 
-            if (selected.includes(EXAM_TRACKS.EC) && window?.localStorage?.getItem('gateqa_include_ec') === null) setIncludeEcState(true);
-            if (selected.includes(EXAM_TRACKS.EE) && window?.localStorage?.getItem('gateqa_include_ee') === null) setIncludeEeState(true);
-            if (selected.includes(EXAM_TRACKS.ME) && window?.localStorage?.getItem('gateqa_include_me') === null) setIncludeMeState(true);
-            if (selected.includes(EXAM_TRACKS.CE) && window?.localStorage?.getItem('gateqa_include_ce') === null) setIncludeCeState(true);
-            if (selected.includes(EXAM_TRACKS.DA) && window?.localStorage?.getItem('gateqa_include_da') === null) setIncludeDaState(true);
-            if (selected.includes(EXAM_TRACKS.CSE) && window?.localStorage?.getItem('gateqa_include_cse') === null) setIncludeCseState(true);
+            if (selected.length > 0 && !selected.includes(EXAM_TRACKS.CSE)) {
+                const active = nextPrefs.activeBranch || selected[0];
+                if (BranchQuestionService.isLoaded(active)) {
+                    setStructuredTags(BranchQuestionService.getStructuredTags(active));
+                }
+            } else if (selected.includes(EXAM_TRACKS.CSE)) {
+                setStructuredTags(buildStructuredTagsFromManifest(initialManifest, questionService));
+            }
         };
         window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
         return () => {
@@ -1451,10 +1524,17 @@ export const FilterProvider = ({
     }, [allQuestions, answerService, questionService]);
 
     useEffect(() => {
-        if (!initialManifest || questionService.questions.length > 0) {
+        if (
+            hasAppliedInitialManifestRef.current ||
+            !initialManifest ||
+            questionService.questions.length > 0 ||
+            isInitialized ||
+            (hasBranchSelection && !isCseEnrolled)
+        ) {
             return;
         }
 
+        hasAppliedInitialManifestRef.current = true;
         const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest, questionService);
         setStructuredTags(manifestStructuredTags);
         setTotalQuestions(Number(initialManifest.questionCount || 0));
@@ -1462,14 +1542,14 @@ export const FilterProvider = ({
         const { minYear, maxYear } = manifestStructuredTags;
         setFilters(prev => ({
             ...prev,
-            yearRange: hasCustomYearRange(prev.yearRange, structuredTags.minYear, structuredTags.maxYear)
+            yearRange: hasCustomYearRange(prev.yearRange, minYear, maxYear)
                 ? prev.yearRange
                 : [minYear, maxYear]
         }));
-    }, [initialManifest, questionService, structuredTags.minYear, structuredTags.maxYear]);
+    }, [initialManifest, questionService, isInitialized, hasBranchSelection, isCseEnrolled]);
 
     useEffect(() => {
-        if (
+        const hasActiveQuestions = (
             activeCseQuestions.length > 0 ||
             activeDaQuestions.length > 0 ||
             activeIsroQuestions.length > 0 ||
@@ -1478,31 +1558,48 @@ export const FilterProvider = ({
             activeEeQuestions.length > 0 ||
             activeMeQuestions.length > 0 ||
             activeCeQuestions.length > 0
-        ) {
+        );
+
+        const hasIncludedBranch = (
+            (isCseEnrolled && includeCse) ||
+            (isDaEnrolled && includeDa) ||
+            (isEcEnrolled && includeEc) ||
+            (isEeEnrolled && includeEe) ||
+            (isMeEnrolled && includeMe) ||
+            (isCeEnrolled && includeCe) ||
+            shouldMergeAptitude ||
+            shouldIncludeIsro
+        );
+
+        if (hasActiveQuestions || hasIncludedBranch) {
             let tags = null;
-            if (activeCseQuestions.length > 0) {
+            if (activeCseQuestions.length > 0 || (isCseEnrolled && includeCse && questionService.questions.length > 0)) {
                 tags = questionService.getStructuredTags();
             }
-            if (activeDaQuestions.length > 0) {
+            if (activeDaQuestions.length > 0 || (isDaEnrolled && includeDa && DaQuestionService.loaded)) {
                 tags = tags ? mergeStructuredTags(tags, DaQuestionService.getStructuredTags()) : DaQuestionService.getStructuredTags();
             }
-            if (activeIsroQuestions.length > 0) {
+            if (activeIsroQuestions.length > 0 || (shouldIncludeIsro && IsroQuestionService.loaded)) {
                 tags = tags ? mergeStructuredTags(tags, IsroQuestionService.getStructuredTags()) : IsroQuestionService.getStructuredTags();
             }
-            if (activeAptitudeQuestions.length > 0) {
+            if (activeAptitudeQuestions.length > 0 || (shouldMergeAptitude && AptitudeQuestionService.loaded)) {
                 tags = tags ? mergeStructuredTags(tags, AptitudeQuestionService.getStructuredTags()) : AptitudeQuestionService.getStructuredTags();
             }
-            if (activeEcQuestions.length > 0) {
+            if (activeEcQuestions.length > 0 || (isEcEnrolled && includeEc && BranchQuestionService.isLoaded('ec'))) {
                 tags = tags ? mergeStructuredTags(tags, BranchQuestionService.getStructuredTags('ec')) : BranchQuestionService.getStructuredTags('ec');
             }
-            if (activeEeQuestions.length > 0) {
+            if (activeEeQuestions.length > 0 || (isEeEnrolled && includeEe && BranchQuestionService.isLoaded('ee'))) {
                 tags = tags ? mergeStructuredTags(tags, BranchQuestionService.getStructuredTags('ee')) : BranchQuestionService.getStructuredTags('ee');
             }
-            if (activeMeQuestions.length > 0) {
+            if (activeMeQuestions.length > 0 || (isMeEnrolled && includeMe && BranchQuestionService.isLoaded('me'))) {
                 tags = tags ? mergeStructuredTags(tags, BranchQuestionService.getStructuredTags('me')) : BranchQuestionService.getStructuredTags('me');
             }
-            if (activeCeQuestions.length > 0) {
+            if (activeCeQuestions.length > 0 || (isCeEnrolled && includeCe && BranchQuestionService.isLoaded('ce'))) {
                 tags = tags ? mergeStructuredTags(tags, BranchQuestionService.getStructuredTags('ce')) : BranchQuestionService.getStructuredTags('ce');
+            }
+            if (!tags && !hasActiveQuestions) {
+                // Included branch is still loading questions/tags; do not reset tags to empty
+                return;
             }
             if (!tags) tags = {};
             setStructuredTags(tags);
@@ -1563,6 +1660,13 @@ export const FilterProvider = ({
         includeEe,
         includeMe,
         includeCe,
+        isCseEnrolled,
+        isDaEnrolled,
+        isEcEnrolled,
+        isEeEnrolled,
+        isMeEnrolled,
+        isCeEnrolled,
+        shouldIncludeIsro,
         shouldMergeAptitude,
         activeAptitudeQuestions.length,
         activeCseQuestions.length,

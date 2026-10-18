@@ -60,6 +60,19 @@ export function writeBranchPreferences(branches: string[], activeBranch?: string
   window.localStorage.setItem(ACTIVE_BRANCH_STORAGE_KEY, nextActive);
   window.localStorage.setItem(BRANCH_ONBOARDING_KEY, "true");
 
+  // Keep filter toggles for enrolled branches ON by default, and deselected branches OFF
+  const ALL_BRANCH_TRACKS = ["cse", "da", "ec", "ee", "me", "ce"];
+  for (const track of ALL_BRANCH_TRACKS) {
+    if (sanitized.includes(track)) {
+      window.localStorage.setItem(`gateqa_include_${track}`, "true");
+    } else if (sanitized.length > 0 && !sanitized.includes(track)) {
+      window.localStorage.setItem(`gateqa_include_${track}`, "false");
+    }
+  }
+  if (sanitized.length > 0 && !sanitized.includes("cse")) {
+    window.localStorage.setItem("gateqa_include_isro", "false");
+  }
+
   if (!previous.hasCompletedOnboarding) {
     void sanitizeStorageForSelectedBranches(sanitized);
   } else if (deselected.length > 0) {

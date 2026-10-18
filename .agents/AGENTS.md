@@ -12,6 +12,8 @@ Before doing research or writing code:
 2. **Check `.agents/skills/`**:
    - `supabase/`: Guidelines and rules for Supabase SDK, Auth, and Cloud Sync.
    - `supabase-postgres-best-practices/`: SQL performance, indexing, and Row Level Security (RLS) standards.
+   - `baseline-ui/`: Anti-slop UI standards, high information density, tabular numbers, and fast interactions.
+   - `better-typography/`: Line-length measure caps, tabular numerals, semantic scale, and typography hierarchy.
    - `find-skills/`: Community skill discovery helper.
 3. **Keep Docs & Memory in Sync**: Whenever modifying core data contracts, UI shells, or auth flows, update the corresponding `docs/` file and `.llm-memory/` note.
 
@@ -61,8 +63,9 @@ Before doing research or writing code:
 * **In-Card Discussion Button:**
   - The discussion link lives strictly inside the `DetailedSolutionView.jsx` card header on the right side.
   - The main bottom action bar remains clean: `[Submit Answer] [Tray] | [Detailed Solution] [Ask AI] [Previous] [Next]`, with zero external solution button clutter.
-* **Universal Detailed Solution Access:**
+* **Universal Detailed Solution Access & MTA Clarity:**
   - The `Detailed Solution` button is active for all questions (unlocked upon attempt). If a question does not yet have a parsed step-by-step mathematical derivation, it renders a polite placeholder with a direct discussion link and report issue flag.
+  - **MTA (Marks to All) Questions Must Retain Full Derivations:** The primary purpose of detailed solutions is pedagogical clarity—explaining how the problem operates, breaking down each option/step, and demonstrating why an ambiguity or error led to the MTA status. NEVER replace authentic derivations with lazy generic stubs like *"marks were given to all for this question / Option MTA"* without showing the mathematical or conceptual reasoning.
 
 ---
 

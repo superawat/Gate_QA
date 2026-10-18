@@ -484,6 +484,53 @@ Therefore, the correct answer is **Option B (ivory towers)**.`,
 Therefore, the correct answer is **Option C (voracious)**.`,
     images: [],
   },
+  "go:80": {
+    concept: "Discrete Mathematics - First Order Logic",
+    markdown: `$$\\neg\\exists x(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta) \\equiv \\forall x(\\neg\\forall y\\,\\alpha\\vee\\neg\\forall z\\,\\beta) \\equiv \\forall x(\\forall y\\,\\alpha\\rightarrow\\exists z\\,\\neg\\beta)$$
+
+- **Given Expression Simplification:**
+  $$\\begin{aligned}
+  \\neg\\exists x(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta) &\\equiv \\forall x\\,\\neg(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta) \\\\
+  &\\equiv \\forall x(\\neg\\forall y\\,\\alpha \\vee \\neg\\forall z\\,\\beta) \\\\
+  &\\equiv \\forall x(\\forall y\\,\\alpha \\rightarrow \\exists z\\,\\neg\\beta) \\quad \\text{(Matches Option C)}
+  \\end{aligned}$$
+- **Evaluating Each Option:**
+  - **Option B:** $\\forall x(\\forall z\\,\\beta \\rightarrow \\exists y\\,\\neg\\alpha) \\equiv \\forall x(\\neg\\forall z\\,\\beta \\vee \\neg\\forall y\\,\\alpha)$, which is logically equivalent to the given expression by commutativity of disjunction.
+  - **Option C:** $\\forall x(\\forall y\\,\\alpha \\rightarrow \\exists z\\,\\neg\\beta)$, which is identically equivalent to the given expression.
+  - **Option A:** $\\forall x(\\exists z\\,\\neg\\beta \\rightarrow \\forall y\\,\\alpha) \\equiv \\forall x(\\neg\\exists z\\,\\neg\\beta \\vee \\forall y\\,\\alpha) \\equiv \\forall x(\\forall z\\,\\beta \\vee \\forall y\\,\\alpha)$ $\\rightarrow$ **NOT equivalent**.
+  - **Option D:** $\\forall x(\\exists y\\,\\neg\\alpha \\rightarrow \\exists z\\,\\neg\\beta) \\equiv \\forall x(\\neg\\exists y\\,\\neg\\alpha \\vee \\exists z\\,\\neg\\beta) \\equiv \\forall x(\\forall y\\,\\alpha \\vee \\exists z\\,\\neg\\beta)$ $\\rightarrow$ **NOT equivalent**.
+
+Since both **Option A** and **Option D** are NOT logically equivalent to the given formula, the question had two correct answers under the multiple-choice format, leading to **Marks to All (MTA)** in the official GATE CSE 2013 evaluation.
+
+Therefore, both **Option A** and **Option D** are not equivalent (Official Key: **Marks to All / MTA**).`,
+    images: [],
+  },
+  "go:333224": {
+    concept: "Theory of Computation - Regular Expressions",
+    markdown: `- **Objective:** Find the regular expression representing all binary strings with an **odd number of 1s**.
+- **Evaluating the Options:**
+  - **Option A:** $((0+1)^*1(0+1)^*1)^*10^*$ — Contains $(0+1)^*$ inside the outer Kleene star, which can generate arbitrary substrings including an even number of 1s (e.g., $1111$ can be generated) $\\rightarrow$ **Incorrect**.
+  - **Option B:** $(0^*10^*10^*)^*0^*1$ — Every string generated must end with a $1$, which fails to generate valid strings ending in $0$ such as $"10"$ $\\rightarrow$ **Incorrect**.
+  - **Option C:** $10^*(0^*10^*10^*)^*$ — Every string generated must start with a $1$, which fails to generate valid strings starting with $0$ such as $"01"$ $\\rightarrow$ **Incorrect**.
+  - **Option D:** $(0^*10^*10^*)^*10^*$ — Generates pairs of $1$s followed by a single $1$ and trailing $0$s, but cannot generate strings with leading $0$s before the solitary $1$ such as $"01"$ $\\rightarrow$ **Incorrect**.
+
+- **Conclusion:**
+  None of the four options correctly represents the language (a correct expression is $0^*1(0^*10^*1)^*0^*$). Because of this flaw, the official IIT Delhi committee awarded **Marks to All (MTA)**.
+
+Therefore, none of the options is strictly correct (Official Key: **Marks to All / MTA**).`,
+    images: [],
+  },
+  "go:399254": {
+    concept: "General Aptitude - Verbal Aptitude",
+    markdown: `- **Synonym Pair Analysis:**
+  - *"Often"* and *"frequently"* are direct synonyms expressing high recurrence.
+  - In the analogy pair *kind : _____*, **kind** used as a noun signifies category, class, sort, or **type**.
+  - Therefore, *kind : type* represents the exact synonym relationship.
+- In the official GATE 2023 evaluation, this question was marked as **Marks to All (MTA)** due to ambiguous interpretation of other senses of the word *kind*.
+
+Therefore, the intended synonym pair is **type** (Official Key: **Marks to All / MTA**).`,
+    images: [],
+  },
 };
 
 export function applyAuthenticPatches() {

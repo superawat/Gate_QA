@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.245Z",
+  "generatedAt": "2026-10-18T16:30:37.462Z",
   "shardKey": "ee-2026-s1",
   "yearSetKey": "ee-2026-s1",
   "yearSetIdentity": "ee:2026:set-1",
@@ -9,8 +9,9 @@
   "label": "2026 Set 1",
   "questionCount": 65,
   "recordsByQuestionUid": {
-    "pp:ee:2026:q1": {
-      "question_uid": "pp:ee:2026:q1",
+    "ee:2026:q1": {
+      "question_uid": "ee:2026:q1",
+      "legacy_uid": "pp:ee:2026:q1",
       "exam_uid": "ee:2026:set1:main:q1",
       "title": "GATE EE 2026 | Set 1 | Question: 1",
       "section": "main",
@@ -50,12 +51,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "Split $x[n] = 0.9^{|n|}$ into two parts:\n\nCausal part: $0.9^{n}u[n]$\n\nROC: $|z| > 0.9$\n\nAnti-causal part: $0.9^{-n}u[-n-1]$\n\nROC: $|z| < \\frac{1}{0.9}$\n\nROC of bilateral Z-transform = intersection:\n\n$0.9 < |z| < \\dfrac{1}{0.9}$",
-        "images": []
+        "markdown": "Split $x[n] = 0.9^{|n|}$ into two parts:\n\nCausal part: $0.9^{n}u[n]$\n\nROC: $|z| > 0.9$\n\nAnti-causal part: $0.9^{-n}u[-n-1]$\n\nROC: $|z| < \\frac{1}{0.9}$\n\nROC of bilateral Z-transform = intersection:\n\n$0.9 < |z| < \\dfrac{1}{0.9}$\n\nAnswer: <b>(C)</b>\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q2": {
-      "question_uid": "pp:ee:2026:q2",
+    "ee:2026:q2": {
+      "question_uid": "ee:2026:q2",
+      "legacy_uid": "pp:ee:2026:q2",
       "exam_uid": "ee:2026:set1:main:q2",
       "title": "GATE EE 2026 | Set 1 | Question: 2",
       "section": "main",
@@ -95,12 +96,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "For $x[n] = x_c(nT_s)$ to be periodic with integer period $N$:\n\n$x_c(nT_s) = x_c((n+N)T_s)$\n\nThis requires $NT_s = kT$ for some integer $k$.\n\n$\\Rightarrow \\dfrac{T}{T_s} = \\dfrac{N}{k} \\in \\mathbb{Q}$ (rational)\n\n$x[n]$ is periodic <b>if and only if</b> $T/T_s$ is rational.",
-        "images": []
+        "markdown": "For $x[n] = x_c(nT_s)$ to be periodic with integer period $N$:\n\n$x_c(nT_s) = x_c((n+N)T_s)$\n\nThis requires $NT_s = kT$ for some integer $k$.\n\n$\\Rightarrow \\dfrac{T}{T_s} = \\dfrac{N}{k} \\in \\mathbb{Q}$ (rational)\n\n$x[n]$ is periodic <b>if and only if</b> $T/T_s$ is rational.\n\nAnswer: <b>(D)</b>\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q3": {
-      "question_uid": "pp:ee:2026:q3",
+    "ee:2026:q3": {
+      "question_uid": "ee:2026:q3",
+      "legacy_uid": "pp:ee:2026:q3",
       "exam_uid": "ee:2026:set1:main:q3",
       "title": "GATE EE 2026 | Set 1 | Question: 3",
       "section": "main",
@@ -140,12 +141,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "Step response: $y(t) = 1 - e^{-100t}$\n\n<b>Time constant:</b> $T_c = 1/100 = 0.01$ s\n\n<b>Rise time</b> (0.1 to 0.9):\n\n$t_1 = -\\ln(0.9)/100 \\approx 0.00105$ s\n\n$t_2 = -\\ln(0.1)/100 \\approx 0.02303$ s\n\n$T_r = t_2 - t_1 \\approx 0.022$ s\n\n<b>Settling time</b> (to 0.98):\n\n$0.98 = 1 - e^{-100T_s} \\Rightarrow T_s = -\\ln(0.02)/100 \\approx 0.04s$",
-        "images": []
+        "markdown": "Step response: $y(t) = 1 - e^{-100t}$\n\n<b>Time constant:</b> $T_c = 1/100 = 0.01$ s\n\n<b>Rise time</b> (0.1 to 0.9):\n\n$t_1 = -\\ln(0.9)/100 \\approx 0.00105$ s\n\n$t_2 = -\\ln(0.1)/100 \\approx 0.02303$ s\n\n$T_r = t_2 - t_1 \\approx 0.022$ s\n\n<b>Settling time</b> (to 0.98):\n\n$0.98 = 1 - e^{-100T_s} \\Rightarrow T_s = -\\ln(0.02)/100 \\approx 0.04s$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q4": {
-      "question_uid": "pp:ee:2026:q4",
+    "ee:2026:q4": {
+      "question_uid": "ee:2026:q4",
+      "legacy_uid": "pp:ee:2026:q4",
       "exam_uid": "ee:2026:set1:main:q4",
       "title": "GATE EE 2026 | Set 1 | Question: 4",
       "section": "main",
@@ -185,12 +186,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "Check linearity: The equation is linear in $y$ and its derivatives $\\dfrac{dy}{dt}$, $\\dfrac{d^2y}{dt^2}$.\n\nThe coefficients $t^2$, $7t$, $8t$ are functions of $t$ (independent variable) - this is allowed for a linear ODE.\n\nNOT time-invariant (coefficients depend on $t$)\n\nNOT partial (only one independent variable $t$)\n\nNOT nonlinear (no products of $y$ with itself or its derivatives)",
-        "images": []
+        "markdown": "Check linearity: The equation is linear in $y$ and its derivatives $\\dfrac{dy}{dt}$, $\\dfrac{d^2y}{dt^2}$.\n\nThe coefficients $t^2$, $7t$, $8t$ are functions of $t$ (independent variable) - this is allowed for a linear ODE.\n\nNOT time-invariant (coefficients depend on $t$)\n\nNOT partial (only one independent variable $t$)\n\nNOT nonlinear (no products of $y$ with itself or its derivatives)\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q5": {
-      "question_uid": "pp:ee:2026:q5",
+    "ee:2026:q5": {
+      "question_uid": "ee:2026:q5",
+      "legacy_uid": "pp:ee:2026:q5",
       "exam_uid": "ee:2026:set1:main:q5",
       "title": "GATE EE 2026 | Set 1 | Question: 5",
       "section": "main",
@@ -230,12 +231,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Electrostatic Fields",
-        "markdown": "By symmetry, the ring charge is uniformly distributed around the center.\n\nThe electric field contribution from each infinitesimal element $dQ$ at the center has equal and opposite contributions from diametrically opposite elements.\n\nNet electric field at center = 0\n\nTherefore, force on charge $q$ at center = $qE = q \\times 0 = 0$",
-        "images": []
+        "markdown": "By symmetry, the ring charge is uniformly distributed around the center.\n\nThe electric field contribution from each infinitesimal element $dQ$ at the center has equal and opposite contributions from diametrically opposite elements.\n\nNet electric field at center = 0\n\nTherefore, force on charge $q$ at center = $qE = q \\times 0 = 0$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q6": {
-      "question_uid": "pp:ee:2026:q6",
+    "ee:2026:q6": {
+      "question_uid": "ee:2026:q6",
+      "legacy_uid": "pp:ee:2026:q6",
       "exam_uid": "ee:2026:set1:main:q6",
       "title": "GATE EE 2026 | Set 1 | Question: 6",
       "section": "main",
@@ -275,12 +276,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Time Varying Fields",
-        "markdown": "Lorentz force: $\\vec{F} = q(\\vec{E} + \\vec{v} \\times \\vec{B})$\n\n<b>Electric force:</b> $q \\cdot 4\\hat{y}$ -> along $\\hat{y}$\n\n<b>Magnetic force:</b>\n\n$\\vec{v} \\times \\vec{B} = 5\\hat{x} \\times (-6\\hat{z}) = -30(\\hat{x} \\times \\hat{z}) = -30(-\\hat{y}) = 30\\hat{y}$\n\n<b>Total force:</b> $\\vec{F} = q(4 + 30)\\hat{y} = 34q\\hat{y}$\n\nForce is along $\\hat{y}$ = along $\\vec{E}$, and $\\hat{y} \\perp \\hat{z}$ (perpendicular to $\\vec{B}$).",
-        "images": []
+        "markdown": "Lorentz force: $\\vec{F} = q(\\vec{E} + \\vec{v} \\times \\vec{B})$\n\n<b>Electric force:</b> $q \\cdot 4\\hat{y}$ -> along $\\hat{y}$\n\n<b>Magnetic force:</b>\n\n$\\vec{v} \\times \\vec{B} = 5\\hat{x} \\times (-6\\hat{z}) = -30(\\hat{x} \\times \\hat{z}) = -30(-\\hat{y}) = 30\\hat{y}$\n\n<b>Total force:</b> $\\vec{F} = q(4 + 30)\\hat{y} = 34q\\hat{y}$\n\nForce is along $\\hat{y}$ = along $\\vec{E}$, and $\\hat{y} \\perp \\hat{z}$ (perpendicular to $\\vec{B}$).\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q7": {
-      "question_uid": "pp:ee:2026:q7",
+    "ee:2026:q7": {
+      "question_uid": "ee:2026:q7",
+      "legacy_uid": "pp:ee:2026:q7",
       "exam_uid": "ee:2026:set1:main:q7",
       "title": "GATE EE 2026 | Set 1 | Question: 7",
       "section": "main",
@@ -320,12 +321,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "For an autotransformer formed from a two-winding transformer:\n\n$S_{auto} = S_{tw} \\times \\dfrac{V_H}{V_H - V_L}$\n\nHere $V_H = 1320$ V, $V_L = 1100$ V (series winding = 220 V):\n\n$S_{auto} = 15 \\times \\dfrac{1320}{1320 - 1100} = 15 \\times \\dfrac{1320}{220} = 15 \\times 6 = 90$ kVA",
-        "images": []
+        "markdown": "For an autotransformer formed from a two-winding transformer:\n\n$S_{auto} = S_{tw} \\times \\dfrac{V_H}{V_H - V_L}$\n\nHere $V_H = 1320$ V, $V_L = 1100$ V (series winding = 220 V):\n\n$S_{auto} = 15 \\times \\dfrac{1320}{1320 - 1100} = 15 \\times \\dfrac{1320}{220} = 15 \\times 6 = 90$ kVA\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q8": {
-      "question_uid": "pp:ee:2026:q8",
+    "ee:2026:q8": {
+      "question_uid": "ee:2026:q8",
+      "legacy_uid": "pp:ee:2026:q8",
       "exam_uid": "ee:2026:set1:main:q8",
       "title": "GATE EE 2026 | Set 1 | Question: 8",
       "section": "main",
@@ -365,12 +366,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "<b>Given:</b>\n\nA power system has $N$ buses, of which:\n\n$P$ are generator buses (including the slack bus)\n\n$Q$ are load (PQ) buses\n\nHence,\n\n$N=P+Q$\n\n<b>Step 1: Count the unknown voltage angles</b>\n\nIn the Newton-Raphson load flow method, the voltage angle of the slack bus is known.\n\nTherefore, voltage angles of all remaining buses are unknown.\n\n$\\text{Number of angle unknowns}=N-1$\n\n<b>Step 2: Count the unknown voltage magnitudes</b>\n\nVoltage magnitudes are known at generator (PV) buses and at the slack bus.\n\nThey are unknown only at PQ buses.\n\nTherefore,\n\n$\\text{Number of magnitude unknowns}=Q$\n\n<b>Step 3: Total number of unknowns</b>\n\n$(N-1)+Q$\n\nUsing $Q=N-P$,\n\n$(N-1)+(N-P)\n\n=\n\n2N-1-P$\n\n<b>Step 4: Size of the Jacobian matrix</b>\n\nThe Jacobian matrix is a square matrix whose order equals the total number of unknown variables.\n\nHence,\n\n$\\text{Jacobian Size}\n\n=\n\n(2N-1-P)\\times(2N-1-P)$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nA power system has $N$ buses, of which:\n\n$P$ are generator buses (including the slack bus)\n\n$Q$ are load (PQ) buses\n\nHence,\n\n$N=P+Q$\n\n<b>Step 1: Count the unknown voltage angles</b>\n\nIn the Newton-Raphson load flow method, the voltage angle of the slack bus is known.\n\nTherefore, voltage angles of all remaining buses are unknown.\n\n$\\text{Number of angle unknowns}=N-1$\n\n<b>Step 2: Count the unknown voltage magnitudes</b>\n\nVoltage magnitudes are known at generator (PV) buses and at the slack bus.\n\nThey are unknown only at PQ buses.\n\nTherefore,\n\n$\\text{Number of magnitude unknowns}=Q$\n\n<b>Step 3: Total number of unknowns</b>\n\n$(N-1)+Q$\n\nUsing $Q=N-P$,\n\n$(N-1)+(N-P)\n\n=\n\n2N-1-P$\n\n<b>Step 4: Size of the Jacobian matrix</b>\n\nThe Jacobian matrix is a square matrix whose order equals the total number of unknown variables.\n\nHence,\n\n$\\text{Jacobian Size}\n\n=\n\n(2N-1-P)\\times(2N-1-P)$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q9": {
-      "question_uid": "pp:ee:2026:q9",
+    "ee:2026:q9": {
+      "question_uid": "ee:2026:q9",
+      "legacy_uid": "pp:ee:2026:q9",
       "exam_uid": "ee:2026:set1:main:q9",
       "title": "GATE EE 2026 | Set 1 | Question: 9",
       "section": "main",
@@ -410,12 +411,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "<b>Concept:</b>\n\nThe zero-sequence component of a three-phase set is\n\n$V_0=\\frac{V_A+V_B+V_C}{3}$\n\n<b>Case-1:</b>\n\nThe phase voltages are\n\n$V_A=V_A\\angle\\theta_A,\\qquad\n\nV_B=V_B\\angle\\theta_B,\\qquad\n\nV_C=V_C\\angle\\theta_C$\n\nTherefore,\n\n$V_{0,1}\n\n=\n\n\\frac{V_A\\angle\\theta_A+V_B\\angle\\theta_B+V_C\\angle\\theta_C}{3}$\n\n<b>Case-2:</b>\n\nEach phasor is rotated by the same angle $\\Delta\\theta$, while its magnitude remains unchanged.\n\nHence,\n\n$V_A'=V_A\\angle(\\theta_A+\\Delta\\theta)$\n\n$V_B'=V_B\\angle(\\theta_B+\\Delta\\theta)$\n\n$V_C'=V_C\\angle(\\theta_C+\\Delta\\theta)$\n\nThe new zero-sequence component is\n\n$V_{0,2}\n\n=\n\n\\frac{V_A'+V_B'+V_C'}{3}$\n\nSubstituting,\n\n$V_{0,2}\n\n=\n\n\\frac{\n\nV_A\\angle(\\theta_A+\\Delta\\theta)\n\n+\n\nV_B\\angle(\\theta_B+\\Delta\\theta)\n\n+\n\nV_C\\angle(\\theta_C+\\Delta\\theta)\n\n}{3}$\n\nFactoring out $e^{j\\Delta\\theta}$,\n\n$V_{0,2}\n\n=\n\ne^{j\\Delta\\theta}\n\n\\frac{\n\nV_A\\angle\\theta_A\n\n+\n\nV_B\\angle\\theta_B\n\n+\n\nV_C\\angle\\theta_C\n\n}{3}$\n\n$V_{0,2}\n\n=\n\ne^{j\\Delta\\theta}V_{0,1}$\n\n<b>Observation:</b>\n\nMultiplication by $e^{j\\Delta\\theta}$ rotates a phasor by $\\Delta\\theta$ but does not change its magnitude.\n\nTherefore,\n\n$|V_{0,2}|=|V_{0,1}|$\n\nand\n\n$\\angle V_{0,2}\n\n=\n\n\\angle V_{0,1}\n\n+\n\n\\Delta\\theta$\n\n<b>Hence, the zero-sequence components in the two cases have the same magnitude but different phase angles.</b>",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nThe zero-sequence component of a three-phase set is\n\n$V_0=\\frac{V_A+V_B+V_C}{3}$\n\n<b>Case-1:</b>\n\nThe phase voltages are\n\n$V_A=V_A\\angle\\theta_A,\\qquad\n\nV_B=V_B\\angle\\theta_B,\\qquad\n\nV_C=V_C\\angle\\theta_C$\n\nTherefore,\n\n$V_{0,1}\n\n=\n\n\\frac{V_A\\angle\\theta_A+V_B\\angle\\theta_B+V_C\\angle\\theta_C}{3}$\n\n<b>Case-2:</b>\n\nEach phasor is rotated by the same angle $\\Delta\\theta$, while its magnitude remains unchanged.\n\nHence,\n\n$V_A'=V_A\\angle(\\theta_A+\\Delta\\theta)$\n\n$V_B'=V_B\\angle(\\theta_B+\\Delta\\theta)$\n\n$V_C'=V_C\\angle(\\theta_C+\\Delta\\theta)$\n\nThe new zero-sequence component is\n\n$V_{0,2}\n\n=\n\n\\frac{V_A'+V_B'+V_C'}{3}$\n\nSubstituting,\n\n$V_{0,2}\n\n=\n\n\\frac{\n\nV_A\\angle(\\theta_A+\\Delta\\theta)\n\n+\n\nV_B\\angle(\\theta_B+\\Delta\\theta)\n\n+\n\nV_C\\angle(\\theta_C+\\Delta\\theta)\n\n}{3}$\n\nFactoring out $e^{j\\Delta\\theta}$,\n\n$V_{0,2}\n\n=\n\ne^{j\\Delta\\theta}\n\n\\frac{\n\nV_A\\angle\\theta_A\n\n+\n\nV_B\\angle\\theta_B\n\n+\n\nV_C\\angle\\theta_C\n\n}{3}$\n\n$V_{0,2}\n\n=\n\ne^{j\\Delta\\theta}V_{0,1}$\n\n<b>Observation:</b>\n\nMultiplication by $e^{j\\Delta\\theta}$ rotates a phasor by $\\Delta\\theta$ but does not change its magnitude.\n\nTherefore,\n\n$|V_{0,2}|=|V_{0,1}|$\n\nand\n\n$\\angle V_{0,2}\n\n=\n\n\\angle V_{0,1}\n\n+\n\n\\Delta\\theta$\n\n<b>Hence, the zero-sequence components in the two cases have the same magnitude but different phase angles.</b>\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q10": {
-      "question_uid": "pp:ee:2026:q10",
+    "ee:2026:q10": {
+      "question_uid": "ee:2026:q10",
+      "legacy_uid": "pp:ee:2026:q10",
       "exam_uid": "ee:2026:set1:main:q10",
       "title": "GATE EE 2026 | Set 1 | Question: 10",
       "section": "main",
@@ -455,12 +456,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "Synchronous speed formula: $N_s = \\dfrac{120f}{P}$\n\n<b>Motor</b> on 50 Hz grid with $P_m = 6$ poles:\n\n$N_s = \\dfrac{120 \\times 50}{6} = 1000$ rpm\n\n<b>Generator</b> must produce 16.67 Hz at 1000 rpm:\n\n$f_g = \\dfrac{P_g \\times N_s}{120} = 16.67$\n\n$P_g = \\dfrac{16.67 \\times 120}{1000} = 2$ poles\n\nShortcut: Since\n\n$\\dfrac{f_m}{f_g}\n\n=\n\n\\dfrac{50}{16.67}\n\n\\approx 3$\n\nand both machines run at the same speed,\n\n$\\dfrac{P_m}{P_g}=3$\n\nSo simply choose the option where the motor poles : generator poles = 3 : 1.",
-        "images": []
+        "markdown": "Synchronous speed formula: $N_s = \\dfrac{120f}{P}$\n\n<b>Motor</b> on 50 Hz grid with $P_m = 6$ poles:\n\n$N_s = \\dfrac{120 \\times 50}{6} = 1000$ rpm\n\n<b>Generator</b> must produce 16.67 Hz at 1000 rpm:\n\n$f_g = \\dfrac{P_g \\times N_s}{120} = 16.67$\n\n$P_g = \\dfrac{16.67 \\times 120}{1000} = 2$ poles\n\nShortcut: Since\n\n$\\dfrac{f_m}{f_g}\n\n=\n\n\\dfrac{50}{16.67}\n\n\\approx 3$\n\nand both machines run at the same speed,\n\n$\\dfrac{P_m}{P_g}=3$\n\nSo simply choose the option where the motor poles : generator poles = 3 : 1.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q11": {
-      "question_uid": "pp:ee:2026:q11",
+    "ee:2026:q11": {
+      "question_uid": "ee:2026:q11",
+      "legacy_uid": "pp:ee:2026:q11",
       "exam_uid": "ee:2026:set1:main:q11",
       "title": "GATE EE 2026 | Set 1 | Question: 11",
       "section": "main",
@@ -500,12 +501,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "<b>Concept of Double-Squirrel-Cage Induction Motor</b>\n\nA double-squirrel-cage rotor consists of two cages:\n\n1. <b>Outer cage</b>\n\n- High resistance\n\n- Low reactance\n\n2. <b>Inner cage</b>\n\n- Low resistance\n\n- High reactance\n\n<b>At starting:</b>\n\nThe slip is\n\n$s=1$.\n\nTherefore, rotor frequency is maximum, and rotor reactance becomes significant.\n\nSince the inner cage has high reactance, its impedance is large:\n\n$Z_{\\text{inner}}\n\n=\n\nR_{\\text{inner}}\n\n+\n\njX_{\\text{inner}}$\n\nwith\n\n$X_{\\text{inner}} \\gg X_{\\text{outer}}$\n\nHence, most of the rotor current flows through the outer cage, which has lower impedance.\n\nThe high resistance of the outer cage provides a high starting torque.\n\n<b>At rated speed:</b>\n\nThe slip is very small.\n\nHence rotor frequency is low and rotor reactance becomes negligible.\n\nCurrent distribution is then determined mainly by resistance.\n\nSince\n\n$R_{\\text{inner}} < R_{\\text{outer}}$\n\nmost of the rotor current flows through the inner cage.\n\nThus the motor behaves like a low-resistance rotor during normal operation, giving good efficiency.\n\nThe purpose is actually to obtain <b>high effective rotor resistance at starting</b> and <b>low effective rotor resistance during normal running</b>.",
-        "images": []
+        "markdown": "<b>Concept of Double-Squirrel-Cage Induction Motor</b>\n\nA double-squirrel-cage rotor consists of two cages:\n\n1. <b>Outer cage</b>\n\n- High resistance\n\n- Low reactance\n\n2. <b>Inner cage</b>\n\n- Low resistance\n\n- High reactance\n\n<b>At starting:</b>\n\nThe slip is\n\n$s=1$.\n\nTherefore, rotor frequency is maximum, and rotor reactance becomes significant.\n\nSince the inner cage has high reactance, its impedance is large:\n\n$Z_{\\text{inner}}\n\n=\n\nR_{\\text{inner}}\n\n+\n\njX_{\\text{inner}}$\n\nwith\n\n$X_{\\text{inner}} \\gg X_{\\text{outer}}$\n\nHence, most of the rotor current flows through the outer cage, which has lower impedance.\n\nThe high resistance of the outer cage provides a high starting torque.\n\n<b>At rated speed:</b>\n\nThe slip is very small.\n\nHence rotor frequency is low and rotor reactance becomes negligible.\n\nCurrent distribution is then determined mainly by resistance.\n\nSince\n\n$R_{\\text{inner}} < R_{\\text{outer}}$\n\nmost of the rotor current flows through the inner cage.\n\nThus the motor behaves like a low-resistance rotor during normal operation, giving good efficiency.\n\nThe purpose is actually to obtain <b>high effective rotor resistance at starting</b> and <b>low effective rotor resistance during normal running</b>.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q12": {
-      "question_uid": "pp:ee:2026:q12",
+    "ee:2026:q12": {
+      "question_uid": "ee:2026:q12",
+      "legacy_uid": "pp:ee:2026:q12",
       "exam_uid": "ee:2026:set1:main:q12",
       "title": "GATE EE 2026 | Set 1 | Question: 12",
       "section": "main",
@@ -545,12 +546,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "<b>Concept:</b>\n\nA synchronous generator connected to an infinite bus operates with:\n\n$P=\\frac{EV}{X_s}\\sin\\delta$\n\nwhere\n\n$E$\n\n= internal generated emf,\n\n$V$\n\n= infinite-bus voltage,\n\n$X_s$\n\n= synchronous reactance,\n\n$\\delta$\n\n= load angle.\n\n<b>Step 1: What happens when field excitation is increased?</b>\n\nIncreasing field current increases the internal emf\n\n$E$\n\nof the generator.\n\n<b>Step 2: Real power remains unchanged</b>\n\nThe mechanical input power is unchanged, and the generator is delivering\n\n$P=50\\ \\text{MW}$\n\nto an infinite bus.\n\nHence,\n\n$P=\\dfrac{EV}{X_s}\\sin\\delta$\n\nmust remain constant.\n\nSince\n\n$E$\n\nincreases, the quantity\n\n$\\sin\\delta$\n\nmust decrease.\n\nTherefore,\n\n$\\delta$\n\ndecreases.\n\n<b>Step 3: Effect on reactive power and power factor</b>\n\nInitially, the generator operates at unity power factor.\n\nWhen excitation is increased, the generator becomes over-excited and supplies reactive power to the system.\n\nThus the stator current leads the terminal voltage.\n\nHence the power factor becomes leading.\n\n<b>Step 4: Effect on stator current magnitude</b>\n\nInitially,\n\n$I_s$\n\nis in phase with\n\n$V$\n\n(unity power factor).\n\nAfter over-excitation:\n\nReal power component of current remains essentially unchanged.\n\nA leading reactive current component appears.\n\nTherefore,\n\n$|I_s|\n\n=\n\n\\sqrt{I_P^2+I_Q^2}$\n\nincreases.\n\nSo the stator current magnitude increases.",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nA synchronous generator connected to an infinite bus operates with:\n\n$P=\\frac{EV}{X_s}\\sin\\delta$\n\nwhere\n\n$E$\n\n= internal generated emf,\n\n$V$\n\n= infinite-bus voltage,\n\n$X_s$\n\n= synchronous reactance,\n\n$\\delta$\n\n= load angle.\n\n<b>Step 1: What happens when field excitation is increased?</b>\n\nIncreasing field current increases the internal emf\n\n$E$\n\nof the generator.\n\n<b>Step 2: Real power remains unchanged</b>\n\nThe mechanical input power is unchanged, and the generator is delivering\n\n$P=50\\ \\text{MW}$\n\nto an infinite bus.\n\nHence,\n\n$P=\\dfrac{EV}{X_s}\\sin\\delta$\n\nmust remain constant.\n\nSince\n\n$E$\n\nincreases, the quantity\n\n$\\sin\\delta$\n\nmust decrease.\n\nTherefore,\n\n$\\delta$\n\ndecreases.\n\n<b>Step 3: Effect on reactive power and power factor</b>\n\nInitially, the generator operates at unity power factor.\n\nWhen excitation is increased, the generator becomes over-excited and supplies reactive power to the system.\n\nThus the stator current leads the terminal voltage.\n\nHence the power factor becomes leading.\n\n<b>Step 4: Effect on stator current magnitude</b>\n\nInitially,\n\n$I_s$\n\nis in phase with\n\n$V$\n\n(unity power factor).\n\nAfter over-excitation:\n\nReal power component of current remains essentially unchanged.\n\nA leading reactive current component appears.\n\nTherefore,\n\n$|I_s|\n\n=\n\n\\sqrt{I_P^2+I_Q^2}$\n\nincreases.\n\nSo the stator current magnitude increases.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q13": {
-      "question_uid": "pp:ee:2026:q13",
+    "ee:2026:q13": {
+      "question_uid": "ee:2026:q13",
+      "legacy_uid": "pp:ee:2026:q13",
       "exam_uid": "ee:2026:set1:main:q13",
       "title": "GATE EE 2026 | Set 1 | Question: 13",
       "section": "main",
@@ -590,12 +591,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "Linear elements obey superposition and have linear V-I relationships:\n\n<b>R</b>: $V = IR \\rightarrow$  Linear\n\n<b>L</b>: $V = L\\dfrac{di}{dt} \\rightarrow$ Linear\n\n<b>C</b>: $I = C\\dfrac{dV}{dt} \\rightarrow$  Linear\n\n<b>D (Diode)</b>: Nonlinear V-I characteristic (exponential/piecewise) $\\rightarrow$ Nonlinear",
-        "images": []
+        "markdown": "Linear elements obey superposition and have linear V-I relationships:\n\n<b>R</b>: $V = IR \\rightarrow$  Linear\n\n<b>L</b>: $V = L\\dfrac{di}{dt} \\rightarrow$ Linear\n\n<b>C</b>: $I = C\\dfrac{dV}{dt} \\rightarrow$  Linear\n\n<b>D (Diode)</b>: Nonlinear V-I characteristic (exponential/piecewise) $\\rightarrow$ Nonlinear\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q14": {
-      "question_uid": "pp:ee:2026:q14",
+    "ee:2026:q14": {
+      "question_uid": "ee:2026:q14",
+      "legacy_uid": "pp:ee:2026:q14",
       "exam_uid": "ee:2026:set1:main:q14",
       "title": "GATE EE 2026 | Set 1 | Question: 14",
       "section": "main",
@@ -635,12 +636,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "The circuit between Y and Z contains dependent voltage sources.\n\n<b>Open-circuit voltage:</b>\n\nThe dependent sources (100 V and 20 V controlled sources, with 20 V independent source) combine to give:\n\n$V_{TH} = 100 + 20 + 20 = 140$ V (superposition of all voltage sources in the branch)\n\n<b>Thevenin resistance:</b>\n\nIdeal dependent voltage sources have zero internal impedance $\\rightarrow R_{TH} = 0\\ \\Omega$",
-        "images": []
+        "markdown": "The circuit between Y and Z contains dependent voltage sources.\n\n<b>Open-circuit voltage:</b>\n\nThe dependent sources (100 V and 20 V controlled sources, with 20 V independent source) combine to give:\n\n$V_{TH} = 100 + 20 + 20 = 140$ V (superposition of all voltage sources in the branch)\n\n<b>Thevenin resistance:</b>\n\nIdeal dependent voltage sources have zero internal impedance $\\rightarrow R_{TH} = 0\\ \\Omega$\n\nAnswer: <b>(B) $V_{TH} = 140$ V, $R_{TH} = 0\\ \\Omega$</b>\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q15": {
-      "question_uid": "pp:ee:2026:q15",
+    "ee:2026:q15": {
+      "question_uid": "ee:2026:q15",
+      "legacy_uid": "pp:ee:2026:q15",
       "exam_uid": "ee:2026:set1:main:q15",
       "title": "GATE EE 2026 | Set 1 | Question: 15",
       "section": "main",
@@ -680,12 +681,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
-        "markdown": "<b>Concept:</b>\n\nA dependent source is <b>realizable</b> only if it does not violate <b>KVL</b> or <b>KCL</b>.\n\nFor an ideal loop of voltage sources, KVL must be satisfied.\n\nFor an ideal cut-set of current sources, KCL must be satisfied.\n\nWe examine each circuit separately.\n\n<b>Circuit-1: Voltage source controlling a voltage source</b>\n\nThe two voltage sources are connected in parallel.\n\nHence,\n\n$V_X=V_D$\n\nBut,\n\n$V_X=k_1V_D$\n\nTherefore,\n\n$k_1V_D=V_D$\n\nFor any value of $V_D$,\n\n$\\boxed{k_1=1}$\n\n<b>Circuit-2: Voltage source controlling a current source</b>\n\nAn ideal voltage source is connected in parallel with an ideal current source.\n\nThere is no contradiction.\n\nThe voltage source fixes the voltage, while the current source fixes the current.\n\nHence,\n\n$\\boxed{k_2\\text{ can have any value}}$\n\n<b>Circuit-3: Current source controlling a voltage source</b>\n\nAn ideal current source is connected in parallel with an ideal voltage source.\n\nAgain, there is no contradiction.\n\nThe current source fixes the current, while the voltage source fixes the voltage.\n\nHence,\n\n$\\boxed{k_3\\text{ can have any value}}$\n\n<b>Circuit-4: Current source controlling a current source</b>\n\nThe two current sources are connected in parallel.\n\nApplying KCL,\n\n$I_D+I_X=0$\n\nGiven,\n\n$I_X=3k_4I_D$\n\nSubstituting,\n\n$I_D+3k_4I_DI=0$\n\n$(1+3k_4)I_D=0$\n\nFor all values of $I_D$,\n\n$1+3k_4=0$\n\n$\\boxed{k_4=-\\frac13}$\n\n<b>Comparing with the options:</b>\n\nOnly Option (A) satisfies\n\n$k_1=1, k_4=-\\frac13$\n\nwhile $k_2$ and $k_3$ can be arbitrary.",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nA dependent source is <b>realizable</b> only if it does not violate <b>KVL</b> or <b>KCL</b>.\n\nFor an ideal loop of voltage sources, KVL must be satisfied.\n\nFor an ideal cut-set of current sources, KCL must be satisfied.\n\nWe examine each circuit separately.\n\n<b>Circuit-1: Voltage source controlling a voltage source</b>\n\nThe two voltage sources are connected in parallel.\n\nHence,\n\n$V_X=V_D$\n\nBut,\n\n$V_X=k_1V_D$\n\nTherefore,\n\n$k_1V_D=V_D$\n\nFor any value of $V_D$,\n\n$\\boxed{k_1=1}$\n\n<b>Circuit-2: Voltage source controlling a current source</b>\n\nAn ideal voltage source is connected in parallel with an ideal current source.\n\nThere is no contradiction.\n\nThe voltage source fixes the voltage, while the current source fixes the current.\n\nHence,\n\n$\\boxed{k_2\\text{ can have any value}}$\n\n<b>Circuit-3: Current source controlling a voltage source</b>\n\nAn ideal current source is connected in parallel with an ideal voltage source.\n\nAgain, there is no contradiction.\n\nThe current source fixes the current, while the voltage source fixes the voltage.\n\nHence,\n\n$\\boxed{k_3\\text{ can have any value}}$\n\n<b>Circuit-4: Current source controlling a current source</b>\n\nThe two current sources are connected in parallel.\n\nApplying KCL,\n\n$I_D+I_X=0$\n\nGiven,\n\n$I_X=3k_4I_D$\n\nSubstituting,\n\n$I_D+3k_4I_DI=0$\n\n$(1+3k_4)I_D=0$\n\nFor all values of $I_D$,\n\n$1+3k_4=0$\n\n$\\boxed{k_4=-\\frac13}$\n\n<b>Comparing with the options:</b>\n\nOnly Option (A) satisfies\n\n$k_1=1, k_4=-\\frac13$\n\nwhile $k_2$ and $k_3$ can be arbitrary.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q16": {
-      "question_uid": "pp:ee:2026:q16",
+    "ee:2026:q16": {
+      "question_uid": "ee:2026:q16",
+      "legacy_uid": "pp:ee:2026:q16",
       "exam_uid": "ee:2026:set1:main:q16",
       "title": "GATE EE 2026 | Set 1 | Question: 16",
       "section": "main",
@@ -725,12 +726,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Steady state AC Analysis",
-        "markdown": "Voltage is purely at 50 Hz -> only the 50 Hz current component contributes to real power.\n\n<b>Real power:</b>\n\n$P = \\dfrac{1}{2} V_m I_{m1} \\cos\\phi = \\dfrac{1}{2}(325)(12)(1) = 1950$ W\n\n<b>RMS values:</b>\n\n$V_{rms} = \\dfrac{325}{\\sqrt{2}}$\n\n$I_{rms} = \\sqrt{\\left(\\dfrac{12}{\\sqrt{2}}\\right)^2 + \\left(\\dfrac{9}{\\sqrt{2}}\\right)^2} = \\sqrt{\\dfrac{144+81}{2}} = \\sqrt{112.5} \\approx 10.607$ A\n\n<b>Apparent power:</b>\n\n$S = V_{rms} \\times I_{rms} = \\dfrac{325}{\\sqrt{2}} \\times 10.607 = 2437.5$ VA\n\n<b>Power factor:</b>\n\n$PF = \\dfrac{P}{S} = \\dfrac{1950}{2437.5} = 0.80$",
-        "images": []
+        "markdown": "Voltage is purely at 50 Hz -> only the 50 Hz current component contributes to real power.\n\n<b>Real power:</b>\n\n$P = \\dfrac{1}{2} V_m I_{m1} \\cos\\phi = \\dfrac{1}{2}(325)(12)(1) = 1950$ W\n\n<b>RMS values:</b>\n\n$V_{rms} = \\dfrac{325}{\\sqrt{2}}$\n\n$I_{rms} = \\sqrt{\\left(\\dfrac{12}{\\sqrt{2}}\\right)^2 + \\left(\\dfrac{9}{\\sqrt{2}}\\right)^2} = \\sqrt{\\dfrac{144+81}{2}} = \\sqrt{112.5} \\approx 10.607$ A\n\n<b>Apparent power:</b>\n\n$S = V_{rms} \\times I_{rms} = \\dfrac{325}{\\sqrt{2}} \\times 10.607 = 2437.5$ VA\n\n<b>Power factor:</b>\n\n$PF = \\dfrac{P}{S} = \\dfrac{1950}{2437.5} = 0.80$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q17": {
-      "question_uid": "pp:ee:2026:q17",
+    "ee:2026:q17": {
+      "question_uid": "ee:2026:q17",
+      "legacy_uid": "pp:ee:2026:q17",
       "exam_uid": "ee:2026:set1:main:q17",
       "title": "GATE EE 2026 | Set 1 | Question: 17",
       "section": "main",
@@ -770,12 +771,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "From the straight-line approximation:\n\n<b>Threshold voltage:</b> $V_T = 1.0$ V\n\n<b>Dynamic resistance:</b>\n\n$r_d = \\dfrac{1.8 - 1.0}{50} = \\dfrac{0.8}{50} = 0.016\\ \\Omega$\n\n<b>On-state voltage at 15 A:</b>\n\n$V_{on} = V_T + r_d \\times I = 1.0 + 0.016 \\times 15 = 1.0 + 0.24 = 1.24$ V\n\n<b>Power loss:</b>\n\n$P = V_{on} \\times I = 1.24 \\times 15 = 18.6$ W",
-        "images": []
+        "markdown": "From the straight-line approximation:\n\n<b>Threshold voltage:</b> $V_T = 1.0$ V\n\n<b>Dynamic resistance:</b>\n\n$r_d = \\dfrac{1.8 - 1.0}{50} = \\dfrac{0.8}{50} = 0.016\\ \\Omega$\n\n<b>On-state voltage at 15 A:</b>\n\n$V_{on} = V_T + r_d \\times I = 1.0 + 0.016 \\times 15 = 1.0 + 0.24 = 1.24$ V\n\n<b>Power loss:</b>\n\n$P = V_{on} \\times I = 1.24 \\times 15 = 18.6$ W\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q18": {
-      "question_uid": "pp:ee:2026:q18",
+    "ee:2026:q18": {
+      "question_uid": "ee:2026:q18",
+      "legacy_uid": "pp:ee:2026:q18",
       "exam_uid": "ee:2026:set1:main:q18",
       "title": "GATE EE 2026 | Set 1 | Question: 18",
       "section": "main",
@@ -815,12 +816,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "<b>Concept:</b>\n\nWhen the MOSFET is turned OFF at time $t_1$, the inductor current cannot change instantaneously. As a result, the drain-source voltage $v_{ds}$ exhibits an overshoot followed by oscillations due to the interaction of the circuit's parasitic inductance and capacitance.\n\n<b>Effect of gate resistance:</b>\n\nThe gate resistance $R_g$ controls the switching speed of the MOSFET.\n\n<ul>\n\n<li>A smaller $R_g$ results in faster switching, higher $dv/dt$, and larger voltage overshoot.</li>\n\n<li>A larger $R_g$ slows down the switching transition, reducing the overshoot.</li>\n\n</ul>\n\nFrom the waveforms in Figure (b):\n\n<ul>\n\n<li>The waveform with the <b>largest overshoot</b> corresponds to $R_g=R_1$.</li>\n\n<li>The waveform with the <b>intermediate overshoot</b> corresponds to $R_g=R_3$.</li>\n\n<li>The waveform with the <b>smallest overshoot</b> corresponds to $R_g=R_2$.</li>\n\n</ul>\n\nHence,\n\n$R_1>R_3>R_2$",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nWhen the MOSFET is turned OFF at time $t_1$, the inductor current cannot change instantaneously. As a result, the drain-source voltage $v_{ds}$ exhibits an overshoot followed by oscillations due to the interaction of the circuit's parasitic inductance and capacitance.\n\n<b>Effect of gate resistance:</b>\n\nThe gate resistance $R_g$ controls the switching speed of the MOSFET.\n\n<ul>\n\n<li>A smaller $R_g$ results in faster switching, higher $dv/dt$, and larger voltage overshoot.</li>\n\n<li>A larger $R_g$ slows down the switching transition, reducing the overshoot.</li>\n\n</ul>\n\nFrom the waveforms in Figure (b):\n\n<ul>\n\n<li>The waveform with the <b>largest overshoot</b> corresponds to $R_g=R_1$.</li>\n\n<li>The waveform with the <b>intermediate overshoot</b> corresponds to $R_g=R_3$.</li>\n\n<li>The waveform with the <b>smallest overshoot</b> corresponds to $R_g=R_2$.</li>\n\n</ul>\n\nHence,\n\n$R_1>R_3>R_2$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q19": {
-      "question_uid": "pp:ee:2026:q19",
+    "ee:2026:q19": {
+      "question_uid": "ee:2026:q19",
+      "legacy_uid": "pp:ee:2026:q19",
       "exam_uid": "ee:2026:set1:main:q19",
       "title": "GATE EE 2026 | Set 1 | Question: 19",
       "section": "main",
@@ -860,12 +861,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "<b>Concept:</b>\n\nThe slope of the asymptotic Bode magnitude plot helps identify the poles and zeros of the transfer function.\n\n<b>Step 1: Observe the low-frequency behavior</b>\n\nThe magnitude plot has a slope of\n\n$-20\\ \\text{dB/decade}$\n\nfor frequencies below\n\n$\\omega_0.$\n\nA slope of $-20\\ \\text{dB/decade}$ indicates the presence of a <b>pole at the origin</b>.\n\nThus, the transfer function contains the factor\n\n$\\frac{1}{s/\\omega_0}.$\n\n<b>Step 2: Observe the break frequency</b>\n\nAt\n\n$\\omega=\\omega_0,$\n\nthe slope changes from\n\n$-20\\ \\text{dB/decade}\n\n\\]\n\nto\n\n[latex]\n\n0\\ \\text{dB/decade}.$\n\nA change in slope of\n\n$+20\\ \\text{dB/decade}$\n\nindicates the presence of a <b>zero</b> at\n\n$\\omega=\\omega_0.$\n\nHence, the transfer function also contains the factor\n\n$1+\\frac{s}{\\omega_0}.$\n\n<b>Step 3: Form the transfer function</b>\n\nCombining the pole at the origin and the zero at\n\n$\\omega_0,$\n\nwe obtain\n\n$G(s)\n\n=\n\n\\frac{1+\\dfrac{s}{\\omega_0}}\n\n{\\dfrac{s}{\\omega_0}}.$\n\n<b>Verification:</b>\n\nFor\n\n$\\omega \\ll \\omega_0,$\n\n$G(j\\omega)\\approx\\frac{1}{j\\omega/\\omega_0},$\n\nwhich gives a slope of\n\n$-20\\ \\text{dB/decade}.$\n\nFor\n\n$\\omega \\gg \\omega_0,$\n\n$G(j\\omega)\\approx\n\n\\frac{j\\omega/\\omega_0}{j\\omega/\\omega_0}=1,$\n\nso the magnitude becomes\n\n$0\\ \\text{dB},$\n\nwhich matches the given Bode plot.\n\n<b>Therefore, the correct transfer function is</b>\n\n$\\boxed{G(s)=\\frac{1+\\dfrac{s}{\\omega_0}}{\\dfrac{s}{\\omega_0}}}$",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nThe slope of the asymptotic Bode magnitude plot helps identify the poles and zeros of the transfer function.\n\n<b>Step 1: Observe the low-frequency behavior</b>\n\nThe magnitude plot has a slope of\n\n$-20\\ \\text{dB/decade}$\n\nfor frequencies below\n\n$\\omega_0.$\n\nA slope of $-20\\ \\text{dB/decade}$ indicates the presence of a <b>pole at the origin</b>.\n\nThus, the transfer function contains the factor\n\n$\\frac{1}{s/\\omega_0}.$\n\n<b>Step 2: Observe the break frequency</b>\n\nAt\n\n$\\omega=\\omega_0,$\n\nthe slope changes from\n\n$-20\\ \\text{dB/decade}\n\n\\]\n\nto\n\n[latex]\n\n0\\ \\text{dB/decade}.$\n\nA change in slope of\n\n$+20\\ \\text{dB/decade}$\n\nindicates the presence of a <b>zero</b> at\n\n$\\omega=\\omega_0.$\n\nHence, the transfer function also contains the factor\n\n$1+\\frac{s}{\\omega_0}.$\n\n<b>Step 3: Form the transfer function</b>\n\nCombining the pole at the origin and the zero at\n\n$\\omega_0,$\n\nwe obtain\n\n$G(s)\n\n=\n\n\\frac{1+\\dfrac{s}{\\omega_0}}\n\n{\\dfrac{s}{\\omega_0}}.$\n\n<b>Verification:</b>\n\nFor\n\n$\\omega \\ll \\omega_0,$\n\n$G(j\\omega)\\approx\\frac{1}{j\\omega/\\omega_0},$\n\nwhich gives a slope of\n\n$-20\\ \\text{dB/decade}.$\n\nFor\n\n$\\omega \\gg \\omega_0,$\n\n$G(j\\omega)\\approx\n\n\\frac{j\\omega/\\omega_0}{j\\omega/\\omega_0}=1,$\n\nso the magnitude becomes\n\n$0\\ \\text{dB},$\n\nwhich matches the given Bode plot.\n\n<b>Therefore, the correct transfer function is</b>\n\n$\\boxed{G(s)=\\frac{1+\\dfrac{s}{\\omega_0}}{\\dfrac{s}{\\omega_0}}}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q20": {
-      "question_uid": "pp:ee:2026:q20",
+    "ee:2026:q20": {
+      "question_uid": "ee:2026:q20",
+      "legacy_uid": "pp:ee:2026:q20",
       "exam_uid": "ee:2026:set1:main:q20",
       "title": "GATE EE 2026 | Set 1 | Question: 20",
       "section": "main",
@@ -905,12 +906,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Let $\\vec{v}$ be the common eigenvector with $A\\vec{v} = 2\\vec{v}$ and $B\\vec{v} = 2\\vec{v}$.\n\n<b>(A)</b> 2 is eigenvalue of $A \\rightarrow$  $\\det(A-2I) = 0$\n\n<b>(B)</b> 2 is eigenvalue of $B \\rightarrow$ $\\det(B-2I) = 0$\n\n<b>(C)</b> $(A+B)\\vec{v} = 4\\vec{v} \\neq 2\\vec{v}$ $\\rightarrow \\vec{v}$ is not null vector of $(A+B-2I)\\rightarrow$  not necessarily 0\n\n<b>(D)</b> $(A+B)\\vec{v} = 4\\vec{v}\\rightarrow$  4 is eigenvalue of $(A+B)$ $\\rightarrow \\det(A+B-4I) = 0$",
-        "images": []
+        "markdown": "Let $\\vec{v}$ be the common eigenvector with $A\\vec{v} = 2\\vec{v}$ and $B\\vec{v} = 2\\vec{v}$.\n\n<b>(A)</b> 2 is eigenvalue of $A \\rightarrow$  $\\det(A-2I) = 0$\n\n<b>(B)</b> 2 is eigenvalue of $B \\rightarrow$ $\\det(B-2I) = 0$\n\n<b>(C)</b> $(A+B)\\vec{v} = 4\\vec{v} \\neq 2\\vec{v}$ $\\rightarrow \\vec{v}$ is not null vector of $(A+B-2I)\\rightarrow$  not necessarily 0\n\n<b>(D)</b> $(A+B)\\vec{v} = 4\\vec{v}\\rightarrow$  4 is eigenvalue of $(A+B)$ $\\rightarrow \\det(A+B-4I) = 0$\n\nAnswer: <b>(A), (B), (D)</b>\n\nTherefore, the correct option(s) are **A, B, D**."
       }
     },
-    "pp:ee:2026:q21": {
-      "question_uid": "pp:ee:2026:q21",
+    "ee:2026:q21": {
+      "question_uid": "ee:2026:q21",
+      "legacy_uid": "pp:ee:2026:q21",
       "exam_uid": "ee:2026:set1:main:q21",
       "title": "GATE EE 2026 | Set 1 | Question: 21",
       "section": "main",
@@ -950,12 +951,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<b>Given:</b>\n\nTransformer rating:\n\n<ul>\n\n<li>India: $220/12\\text{ V},\\ 50\\text{ Hz},\\ 100\\text{ VA}$</li>\n\n<li>USA: $110/6\\text{ V},\\ 60\\text{ Hz}$</li>\n\n</ul>\n\nSince both the primary and secondary voltages are reduced by half, the turns ratio remains unchanged.\n\n<b>Step 1: Compare the peak flux density</b>\n\nThe maximum flux in a transformer is given by\n\n$E=4.44fN\\phi_{\\max}$\n\nHence,\n\n$\\phi_{\\max}\\propto\\frac{V}{f}$\n\nFor India,\n\n$\\frac{V}{f}\n\n=\n\n\\frac{220}{50}\n\n=\n\n4.4$\n\nFor the USA,\n\n$\\frac{V}{f}\n\n=\n\n\\frac{110}{60}\n\n=\n\n1.833$\n\nThus,\n\n$\\phi_{\\max,\\text{USA}}\n\n<\n\n\\phi_{\\max,\\text{India}}$\n\nTherefore, the peak magnetic flux density is <b>lower</b> in the USA.\n\nHence,\n\n(C) is <b>incorrect</b>.\n\n<b>Step 2: No-load current</b>\n\nThe no-load current mainly consists of the magnetizing current, which is proportional to the core flux.\n\nSince the flux is lower in the USA,\n\n$I_{0,\\text{USA}}\n\n<\n\nI_{0,\\text{India}}$\n\nTherefore,\n\n(A) is <b>correct</b>.\n\n<b>Step 3: Copper losses</b>\n\nCopper loss is\n\n$P_{cu}=I^2R.$\n\nThe statement specifies <b>the same load current</b>.\n\nSince the winding resistance remains unchanged,\n\n$P_{cu,\\text{USA}}\n\n=\n\nP_{cu,\\text{India}}.$\n\nThus, the losses are <b>not higher</b> in the USA.\n\nHence,\n\n(B) is <b>incorrect</b>.\n\n<b>Step 4: Eddy current loss</b>\n\nEddy current loss is proportional to\n\n$P_e\\propto B_{\\max}^2f^2.$\n\nSince\n\n$B_{\\max}\\propto\\frac{V}{f},$\n\n$P_e\n\n\\propto\n\n\\left(\\frac{V}{f}\\right)^2f^2\n\n=\n\nV^2.$\n\nTherefore,\n\n$\\frac{P_{e,\\text{USA}}}{P_{e,\\text{India}}}\n\n=\n\n\\left(\\frac{110}{220}\\right)^2\n\n=\n\n\\frac14.$\n\nThus,\n\n$P_{e,\\text{USA}}\n\n=\n\n25\\%\n\n\\text{ of }\n\nP_{e,\\text{India}}.$\n\nThe eddy current loss is approximately <b>75% lower</b>, not 44% higher.\n\nHence,\n\n(D) is <b>incorrect</b>.",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nTransformer rating:\n\n<ul>\n\n<li>India: $220/12\\text{ V},\\ 50\\text{ Hz},\\ 100\\text{ VA}$</li>\n\n<li>USA: $110/6\\text{ V},\\ 60\\text{ Hz}$</li>\n\n</ul>\n\nSince both the primary and secondary voltages are reduced by half, the turns ratio remains unchanged.\n\n<b>Step 1: Compare the peak flux density</b>\n\nThe maximum flux in a transformer is given by\n\n$E=4.44fN\\phi_{\\max}$\n\nHence,\n\n$\\phi_{\\max}\\propto\\frac{V}{f}$\n\nFor India,\n\n$\\frac{V}{f}\n\n=\n\n\\frac{220}{50}\n\n=\n\n4.4$\n\nFor the USA,\n\n$\\frac{V}{f}\n\n=\n\n\\frac{110}{60}\n\n=\n\n1.833$\n\nThus,\n\n$\\phi_{\\max,\\text{USA}}\n\n<\n\n\\phi_{\\max,\\text{India}}$\n\nTherefore, the peak magnetic flux density is <b>lower</b> in the USA.\n\nHence,\n\n(C) is <b>incorrect</b>.\n\n<b>Step 2: No-load current</b>\n\nThe no-load current mainly consists of the magnetizing current, which is proportional to the core flux.\n\nSince the flux is lower in the USA,\n\n$I_{0,\\text{USA}}\n\n<\n\nI_{0,\\text{India}}$\n\nTherefore,\n\n(A) is <b>correct</b>.\n\n<b>Step 3: Copper losses</b>\n\nCopper loss is\n\n$P_{cu}=I^2R.$\n\nThe statement specifies <b>the same load current</b>.\n\nSince the winding resistance remains unchanged,\n\n$P_{cu,\\text{USA}}\n\n=\n\nP_{cu,\\text{India}}.$\n\nThus, the losses are <b>not higher</b> in the USA.\n\nHence,\n\n(B) is <b>incorrect</b>.\n\n<b>Step 4: Eddy current loss</b>\n\nEddy current loss is proportional to\n\n$P_e\\propto B_{\\max}^2f^2.$\n\nSince\n\n$B_{\\max}\\propto\\frac{V}{f},$\n\n$P_e\n\n\\propto\n\n\\left(\\frac{V}{f}\\right)^2f^2\n\n=\n\nV^2.$\n\nTherefore,\n\n$\\frac{P_{e,\\text{USA}}}{P_{e,\\text{India}}}\n\n=\n\n\\left(\\frac{110}{220}\\right)^2\n\n=\n\n\\frac14.$\n\nThus,\n\n$P_{e,\\text{USA}}\n\n=\n\n25\\%\n\n\\text{ of }\n\nP_{e,\\text{India}}.$\n\nThe eddy current loss is approximately <b>75% lower</b>, not 44% higher.\n\nHence,\n\n(D) is <b>incorrect</b>.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q22": {
-      "question_uid": "pp:ee:2026:q22",
+    "ee:2026:q22": {
+      "question_uid": "ee:2026:q22",
+      "legacy_uid": "pp:ee:2026:q22",
       "exam_uid": "ee:2026:set1:main:q22",
       "title": "GATE EE 2026 | Set 1 | Question: 22",
       "section": "main",
@@ -993,12 +994,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Coordinate Systems and Vector Calculus",
-        "markdown": "Apply the <b>Divergence Theorem</b>:\n\n$\\oiint_S \\vec{F} \\cdot d\\vec{s} = \\iiint_V (\\nabla \\cdot \\vec{F})\\, dV$\n\nCompute divergence:\n\n$\\nabla \\cdot \\vec{F} = \\dfrac{\\partial}{\\partial x}\\sin y + \\dfrac{\\partial}{\\partial y}\\cos x + \\dfrac{\\partial}{\\partial z}(5) = 0 + 0 + 0 = 0$\n\nTherefore: $\\oiint_S \\vec{F} \\cdot d\\vec{s} = \\iiint_V 0\\, dV = 0$",
-        "images": []
+        "markdown": "Apply the <b>Divergence Theorem</b>:\n\n$\\oiint_S \\vec{F} \\cdot d\\vec{s} = \\iiint_V (\\nabla \\cdot \\vec{F})\\, dV$\n\nCompute divergence:\n\n$\\nabla \\cdot \\vec{F} = \\dfrac{\\partial}{\\partial x}\\sin y + \\dfrac{\\partial}{\\partial y}\\cos x + \\dfrac{\\partial}{\\partial z}(5) = 0 + 0 + 0 = 0$\n\nTherefore: $\\oiint_S \\vec{F} \\cdot d\\vec{s} = \\iiint_V 0\\, dV = 0$\n\nTherefore, the correct answer is **0**."
       }
     },
-    "pp:ee:2026:q23": {
-      "question_uid": "pp:ee:2026:q23",
+    "ee:2026:q23": {
+      "question_uid": "ee:2026:q23",
+      "legacy_uid": "pp:ee:2026:q23",
       "exam_uid": "ee:2026:set1:main:q23",
       "title": "GATE EE 2026 | Set 1 | Question: 23",
       "section": "main",
@@ -1036,12 +1037,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
-        "markdown": "<b>Output voltage:</b>\n\n$V_{out} = V_{Zener} - V_{BE} = 5.4 - 0.6 = 4.8$ V\n\n<b>Maximum efficiency</b> (when Zener biasing current is neglected):\n\n$\\eta = \\dfrac{P_{out}}{P_{in}} = \\dfrac{V_{out} \\times I_L}{V_{in} \\times I_L} = \\dfrac{V_{out}}{V_{in}} = \\dfrac{4.8}{10} = 0.48$\n\n$\\eta = 48.0\\%$",
-        "images": []
+        "markdown": "<b>Output voltage:</b>\n\n$V_{out} = V_{Zener} - V_{BE} = 5.4 - 0.6 = 4.8$ V\n\n<b>Maximum efficiency</b> (when Zener biasing current is neglected):\n\n$\\eta = \\dfrac{P_{out}}{P_{in}} = \\dfrac{V_{out} \\times I_L}{V_{in} \\times I_L} = \\dfrac{V_{out}}{V_{in}} = \\dfrac{4.8}{10} = 0.48$\n\n$\\eta = 48.0\\%$\n\nAnswer: <b>48.0%</b>\n\nTherefore, the correct answer is **47.75** (acceptable range: [47.5, 48])."
       }
     },
-    "pp:ee:2026:q24": {
-      "question_uid": "pp:ee:2026:q24",
+    "ee:2026:q24": {
+      "question_uid": "ee:2026:q24",
+      "legacy_uid": "pp:ee:2026:q24",
       "exam_uid": "ee:2026:set1:main:q24",
       "title": "GATE EE 2026 | Set 1 | Question: 24",
       "section": "main",
@@ -1079,12 +1080,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "At $f = 50$ Hz, $\\omega = 2\\pi \\times 50 = 314.16$ rad/s\n\n<b>Impedance magnitude:</b>\n\n$|Z| = \\sqrt{R^2 + (\\omega L)^2} = \\sqrt{10^2 + (314.16 \\times 500 \\times 10^{-6})^2}$\n\n$= \\sqrt{100 + (0.157)^2} = \\sqrt{100.025} \\approx 10.001\\ \\Omega$\n\n<b>Peak current:</b>\n\n$I_{peak} = \\dfrac{V_{peak}}{|Z|} = \\dfrac{325}{10.001} \\approx 32.5$ A",
-        "images": []
+        "markdown": "At $f = 50$ Hz, $\\omega = 2\\pi \\times 50 = 314.16$ rad/s\n\n<b>Impedance magnitude:</b>\n\n$|Z| = \\sqrt{R^2 + (\\omega L)^2} = \\sqrt{10^2 + (314.16 \\times 500 \\times 10^{-6})^2}$\n\n$= \\sqrt{100 + (0.157)^2} = \\sqrt{100.025} \\approx 10.001\\ \\Omega$\n\n<b>Peak current:</b>\n\n$I_{peak} = \\dfrac{V_{peak}}{|Z|} = \\dfrac{325}{10.001} \\approx 32.5$ A\n\nAnswer: <b>32.5 A</b>\n\nTherefore, the correct answer is **32.4** (acceptable range: [32.3, 32.5])."
       }
     },
-    "pp:ee:2026:q25": {
-      "question_uid": "pp:ee:2026:q25",
+    "ee:2026:q25": {
+      "question_uid": "ee:2026:q25",
+      "legacy_uid": "pp:ee:2026:q25",
       "exam_uid": "ee:2026:set1:main:q25",
       "title": "GATE EE 2026 | Set 1 | Question: 25",
       "section": "main",
@@ -1122,12 +1123,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "For a skew-symmetric matrix $A$: $A^T = -A$\n\nLet $s = x^T A x$ (scalar)\n\nTaking transpose of both sides:\n\n$s^T = s = (x^T A x)^T = x^T A^T x = x^T(-A)x = -s$\n\n$s = -s \\Rightarrow 2s = 0 \\Rightarrow s = 0$\n\n(Independent of $x^Tx = 1$)",
-        "images": []
+        "markdown": "For a skew-symmetric matrix $A$: $A^T = -A$\n\nLet $s = x^T A x$ (scalar)\n\nTaking transpose of both sides:\n\n$s^T = s = (x^T A x)^T = x^T A^T x = x^T(-A)x = -s$\n\n$s = -s \\Rightarrow 2s = 0 \\Rightarrow s = 0$\n\n(Independent of $x^Tx = 1$)\n\nAnswer: <b>0</b>\n\nTherefore, the correct answer is **0**."
       }
     },
-    "pp:ee:2026:q26": {
-      "question_uid": "pp:ee:2026:q26",
+    "ee:2026:q26": {
+      "question_uid": "ee:2026:q26",
+      "legacy_uid": "pp:ee:2026:q26",
       "exam_uid": "ee:2026:set1:main:q26",
       "title": "GATE EE 2026 | Set 1 | Question: 26",
       "section": "main",
@@ -1167,12 +1168,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "A periodic function is formed as\n\n$f(x)=\\sum_{m=-\\infty}^{\\infty}g(x+2\\pi m),$\n\nwhich is a periodic function with period\n\n$2\\pi.$\n\n<b>Step 1: Identify the symmetry</b>\n\nSince\n\n$f(-x)=-f(x),$\n\nthe function is <b>odd</b>.\n\nHence,\n\n<ul>\n\n<li>All cosine coefficients are zero.</li>\n\n<li>Only sine coefficients are present.</li>\n\n</ul>\n\nTherefore,\n\n$a_n=0.$\n\n<b>Step 2: Calculate the sine coefficients</b>\n\nThe sine coefficient is\n\n$b_n=\\dfrac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\sin(nx)\\,dx.$\n\nSubstituting the given waveform,\n\n$b_n\n\n=\n\n\\dfrac{1}{\\pi}\n\n\\left[\n\n\\int_{-\\pi}^{0}(-k)\\sin(nx)\\,dx\n\n+\n\n\\int_{0}^{\\pi}k\\sin(nx)\\,dx\n\n\\right].$\n\nSince the two integrals are equal,\n\n$b_n\n\n=\n\n\\dfrac{2k}{\\pi}\n\n\\int_{0}^{\\pi}\\sin(nx)\\,dx.$\n\nNow,\n\n$\\int_{0}^{\\pi}\\sin(nx)\\,dx\n\n=\n\n\\dfrac{1-(-1)^n}{n}.$\n\nHence,\n\n$b_n\n\n=\n\n\\dfrac{2k}{n\\pi}\n\n\\left(1-(-1)^n\\right).$\n\nFor odd harmonics,\n\n$(-1)^n=-1,$\n\ntherefore,\n\n$b_n=\\dfrac{4k}{n\\pi}.$\n\n<b>Step 3: Third harmonic</b>\n\nFor\n\n$n=3,$\n\n$a_3=0,$\n\nand\n\n$b_3=\\dfrac{4k}{3\\pi}.$\n\nThe question states that the sum of the third-harmonic cosine and sine coefficients is\n\n$a_3+b_3=\\dfrac{2}{3\\pi}.$\n\nSince\n\n$a_3=0,$\n\n$\\dfrac{4k}{3\\pi}\n\n=\n\n\\dfrac{2}{3\\pi}.$\n\nTherefore,\n\n$4k=2$\n\n$k=\\dfrac{1}{2}.$",
-        "images": []
+        "markdown": "A periodic function is formed as\n\n$f(x)=\\sum_{m=-\\infty}^{\\infty}g(x+2\\pi m),$\n\nwhich is a periodic function with period\n\n$2\\pi.$\n\n<b>Step 1: Identify the symmetry</b>\n\nSince\n\n$f(-x)=-f(x),$\n\nthe function is <b>odd</b>.\n\nHence,\n\n<ul>\n\n<li>All cosine coefficients are zero.</li>\n\n<li>Only sine coefficients are present.</li>\n\n</ul>\n\nTherefore,\n\n$a_n=0.$\n\n<b>Step 2: Calculate the sine coefficients</b>\n\nThe sine coefficient is\n\n$b_n=\\dfrac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\sin(nx)\\,dx.$\n\nSubstituting the given waveform,\n\n$b_n\n\n=\n\n\\dfrac{1}{\\pi}\n\n\\left[\n\n\\int_{-\\pi}^{0}(-k)\\sin(nx)\\,dx\n\n+\n\n\\int_{0}^{\\pi}k\\sin(nx)\\,dx\n\n\\right].$\n\nSince the two integrals are equal,\n\n$b_n\n\n=\n\n\\dfrac{2k}{\\pi}\n\n\\int_{0}^{\\pi}\\sin(nx)\\,dx.$\n\nNow,\n\n$\\int_{0}^{\\pi}\\sin(nx)\\,dx\n\n=\n\n\\dfrac{1-(-1)^n}{n}.$\n\nHence,\n\n$b_n\n\n=\n\n\\dfrac{2k}{n\\pi}\n\n\\left(1-(-1)^n\\right).$\n\nFor odd harmonics,\n\n$(-1)^n=-1,$\n\ntherefore,\n\n$b_n=\\dfrac{4k}{n\\pi}.$\n\n<b>Step 3: Third harmonic</b>\n\nFor\n\n$n=3,$\n\n$a_3=0,$\n\nand\n\n$b_3=\\dfrac{4k}{3\\pi}.$\n\nThe question states that the sum of the third-harmonic cosine and sine coefficients is\n\n$a_3+b_3=\\dfrac{2}{3\\pi}.$\n\nSince\n\n$a_3=0,$\n\n$\\dfrac{4k}{3\\pi}\n\n=\n\n\\dfrac{2}{3\\pi}.$\n\nTherefore,\n\n$4k=2$\n\n$k=\\dfrac{1}{2}.$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q27": {
-      "question_uid": "pp:ee:2026:q27",
+    "ee:2026:q27": {
+      "question_uid": "ee:2026:q27",
+      "legacy_uid": "pp:ee:2026:q27",
       "exam_uid": "ee:2026:set1:main:q27",
       "title": "GATE EE 2026 | Set 1 | Question: 27",
       "section": "main",
@@ -1212,12 +1213,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "With finite open-loop gain $A_0 = 10^5$, $R_1 = 5$ k$\\Omega$, $R_f = 100$ k$\\Omega$:\n\nIdeal closed-loop gain $= -R_f/R_1 = -20$\n\nThe 15 V supply limits the output. With the 100 mV input bias at the (+) terminal, analysing the inverting amplifier with output saturation effects and considering the voltage divider effect of the given resistor network:\n\n$A_v = -\\dfrac{100}{5+100/A_0} \\approx -\\dfrac{100}{6} = -16.67$",
-        "images": []
+        "markdown": "With finite open-loop gain $A_0 = 10^5$, $R_1 = 5$ k$\\Omega$, $R_f = 100$ k$\\Omega$:\n\nIdeal closed-loop gain $= -R_f/R_1 = -20$\n\nThe 15 V supply limits the output. With the 100 mV input bias at the (+) terminal, analysing the inverting amplifier with output saturation effects and considering the voltage divider effect of the given resistor network:\n\n$A_v = -\\dfrac{100}{5+100/A_0} \\approx -\\dfrac{100}{6} = -16.67$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q28": {
-      "question_uid": "pp:ee:2026:q28",
+    "ee:2026:q28": {
+      "question_uid": "ee:2026:q28",
+      "legacy_uid": "pp:ee:2026:q28",
       "exam_uid": "ee:2026:set1:main:q28",
       "title": "GATE EE 2026 | Set 1 | Question: 28",
       "section": "main",
@@ -1257,12 +1258,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<b>Step 1: Identify the winding connections</b>\n\nFrom the figure,\n\n<ul>\n\n<li>The HV windings are connected in <b>delta (D)</b>.</li>\n\n<li>The LV windings are also connected in <b>delta (d)</b>.</li>\n\n</ul>\n\nHence, the vector group is of the form\n\n$Dd?$\n\n<b>Step 2: Determine the polarity and winding orientation</b>\n\nThe dotted terminals indicate the corresponding ends of the primary and secondary windings.\n\nAlthough the HV and LV windings have the same polarity, the LV delta is connected in a different sequence compared to the HV delta.\n\nConsequently, the secondary line voltage does not remain in phase with the corresponding primary line voltage.\n\n<b>Step 3: Determine the phase displacement</b>\n\nTaking the HV line voltage\n\n$V_{AB}$\n\nas the reference (12 o'clock position), the corresponding LV line voltage\n\n$V_{ab}$\n\nis found to lag by\n\n$60^\\circ.$\n\nIn clock notation,\n\n$60^\\circ\n\n=\n\n2\\times30^\\circ.$\n\nA lag of\n\n$60^\\circ$\n\nis represented by clock number\n\n$12-2=10.$\n\nHence,\n\n$V_{ab}\n\n\\text{ is at }\n\n10\\text{ o'clock with respect to }\n\nV_{AB}.$\n\n<b>Therefore, the vector group of the transformer is</b>\n\n$\\boxed{\\text{Dd10}}$",
-        "images": []
+        "markdown": "<b>Step 1: Identify the winding connections</b>\n\nFrom the figure,\n\n<ul>\n\n<li>The HV windings are connected in <b>delta (D)</b>.</li>\n\n<li>The LV windings are also connected in <b>delta (d)</b>.</li>\n\n</ul>\n\nHence, the vector group is of the form\n\n$Dd?$\n\n<b>Step 2: Determine the polarity and winding orientation</b>\n\nThe dotted terminals indicate the corresponding ends of the primary and secondary windings.\n\nAlthough the HV and LV windings have the same polarity, the LV delta is connected in a different sequence compared to the HV delta.\n\nConsequently, the secondary line voltage does not remain in phase with the corresponding primary line voltage.\n\n<b>Step 3: Determine the phase displacement</b>\n\nTaking the HV line voltage\n\n$V_{AB}$\n\nas the reference (12 o'clock position), the corresponding LV line voltage\n\n$V_{ab}$\n\nis found to lag by\n\n$60^\\circ.$\n\nIn clock notation,\n\n$60^\\circ\n\n=\n\n2\\times30^\\circ.$\n\nA lag of\n\n$60^\\circ$\n\nis represented by clock number\n\n$12-2=10.$\n\nHence,\n\n$V_{ab}\n\n\\text{ is at }\n\n10\\text{ o'clock with respect to }\n\nV_{AB}.$\n\n<b>Therefore, the vector group of the transformer is</b>\n\n$\\boxed{\\text{Dd10}}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q29": {
-      "question_uid": "pp:ee:2026:q29",
+    "ee:2026:q29": {
+      "question_uid": "ee:2026:q29",
+      "legacy_uid": "pp:ee:2026:q29",
       "exam_uid": "ee:2026:set1:main:q29",
       "title": "GATE EE 2026 | Set 1 | Question: 29",
       "section": "main",
@@ -1302,12 +1303,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "The CT secondary currents are\n\n$I_A'=\\dfrac{I_A}{60},\\qquad\n\nI_B'=\\dfrac{I_B}{60},\\qquad\n\nI_C'=\\dfrac{I_C}{60}$\n\nThe auxiliary transformer has a turns ratio of\n\n$2:1$\n\nSince current is inversely proportional to turns,\n\n$\\dfrac{I_s}{I_p}=2$\n\nThus, the delta-side current is twice the CT secondary current.\n\nFor the $Yn\\Delta$ auxiliary transformer, the current supplied to the R-phase burden is\n\n$I_{AR}=\\dfrac{2}{60}(I_A-I_B)$\n\nNow,\n\n$I_A-I_B=(572.812+j50.115)-(-254.525-j459.175)$\n\n$=827.337+j509.290$\n\nTherefore,\n\n$I_{AR}=\\dfrac{2}{60}(827.337+j509.290)\n\n=27.578+j16.976~\\text{A}$\n\nBecause of the delta connection, the burden branch current is\n\n$I_{AR}=8.932+j0.641~\\text{A}$\n\nMagnitude:\n\n$|I_{AR}|=\\sqrt{8.932^2+0.641^2}=8.954~\\text{A}$\n\nPhase angle:\n\n$\\angle I_{AR}\n\n=\\tan^{-1}\\left(\\dfrac{0.641}{8.932}\\right)\n\n=4.105^\\circ$\n\nHence,\n\n$\\boxed{I_{AR}=8.954\\angle4.105^\\circ~\\text{A}}$",
-        "images": []
+        "markdown": "The CT secondary currents are\n\n$I_A'=\\dfrac{I_A}{60},\\qquad\n\nI_B'=\\dfrac{I_B}{60},\\qquad\n\nI_C'=\\dfrac{I_C}{60}$\n\nThe auxiliary transformer has a turns ratio of\n\n$2:1$\n\nSince current is inversely proportional to turns,\n\n$\\dfrac{I_s}{I_p}=2$\n\nThus, the delta-side current is twice the CT secondary current.\n\nFor the $Yn\\Delta$ auxiliary transformer, the current supplied to the R-phase burden is\n\n$I_{AR}=\\dfrac{2}{60}(I_A-I_B)$\n\nNow,\n\n$I_A-I_B=(572.812+j50.115)-(-254.525-j459.175)$\n\n$=827.337+j509.290$\n\nTherefore,\n\n$I_{AR}=\\dfrac{2}{60}(827.337+j509.290)\n\n=27.578+j16.976~\\text{A}$\n\nBecause of the delta connection, the burden branch current is\n\n$I_{AR}=8.932+j0.641~\\text{A}$\n\nMagnitude:\n\n$|I_{AR}|=\\sqrt{8.932^2+0.641^2}=8.954~\\text{A}$\n\nPhase angle:\n\n$\\angle I_{AR}\n\n=\\tan^{-1}\\left(\\dfrac{0.641}{8.932}\\right)\n\n=4.105^\\circ$\n\nHence,\n\n$\\boxed{I_{AR}=8.954\\angle4.105^\\circ~\\text{A}}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q30": {
-      "question_uid": "pp:ee:2026:q30",
+    "ee:2026:q30": {
+      "question_uid": "ee:2026:q30",
+      "legacy_uid": "pp:ee:2026:q30",
       "exam_uid": "ee:2026:set1:main:q30",
       "title": "GATE EE 2026 | Set 1 | Question: 30",
       "section": "main",
@@ -1347,12 +1348,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "The operating characteristic of the reactance relay is\n\n$X \\leq 1~\\Omega$\n\nwhere $X$ is the reactance seen by the relay.\n\nThe impedance seen by the relay is\n\n$Z=R+jX$\n\nThe corresponding admittance is\n\n$Y=\\dfrac{1}{Z}=G+jB$\n\nwhere\n\n$G=\\dfrac{R}{R^2+X^2},\n\n\\qquad\n\nB=-\\dfrac{X}{R^2+X^2}$\n\nSince\n\n$R=\\dfrac{G}{G^2+B^2},\n\n\\qquad\n\nX=-\\dfrac{B}{G^2+B^2}$\n\nsubstitute into the relay characteristic\n\n$X\\le 1$\n\nto obtain\n\n$-\\dfrac{B}{G^2+B^2}\\le 1$\n\nRearranging,\n\n$G^2+B^2+B\\ge 0$\n\nCompleting the square,\n\n$G^2+\\left(B+\\dfrac{1}{2}\\right)^2\\ge\\dfrac14$\n\nMultiplying both sides by 4,\n\n$4G^2+4\\left(B+\\dfrac{1}{2}\\right)^2\\ge 1$\n\nor\n\n$4G^2+(2B+1)^2\\ge 1$\n\nHence,\n\n$G^2+\\left(B+\\dfrac{1}{2}\\right)^2\\ge\\dfrac{1}{4}$",
-        "images": []
+        "markdown": "The operating characteristic of the reactance relay is\n\n$X \\leq 1~\\Omega$\n\nwhere $X$ is the reactance seen by the relay.\n\nThe impedance seen by the relay is\n\n$Z=R+jX$\n\nThe corresponding admittance is\n\n$Y=\\dfrac{1}{Z}=G+jB$\n\nwhere\n\n$G=\\dfrac{R}{R^2+X^2},\n\n\\qquad\n\nB=-\\dfrac{X}{R^2+X^2}$\n\nSince\n\n$R=\\dfrac{G}{G^2+B^2},\n\n\\qquad\n\nX=-\\dfrac{B}{G^2+B^2}$\n\nsubstitute into the relay characteristic\n\n$X\\le 1$\n\nto obtain\n\n$-\\dfrac{B}{G^2+B^2}\\le 1$\n\nRearranging,\n\n$G^2+B^2+B\\ge 0$\n\nCompleting the square,\n\n$G^2+\\left(B+\\dfrac{1}{2}\\right)^2\\ge\\dfrac14$\n\nMultiplying both sides by 4,\n\n$4G^2+4\\left(B+\\dfrac{1}{2}\\right)^2\\ge 1$\n\nor\n\n$4G^2+(2B+1)^2\\ge 1$\n\nHence,\n\n$G^2+\\left(B+\\dfrac{1}{2}\\right)^2\\ge\\dfrac{1}{4}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q31": {
-      "question_uid": "pp:ee:2026:q31",
+    "ee:2026:q31": {
+      "question_uid": "ee:2026:q31",
+      "legacy_uid": "pp:ee:2026:q31",
       "exam_uid": "ee:2026:set1:main:q31",
       "title": "GATE EE 2026 | Set 1 | Question: 31",
       "section": "main",
@@ -1392,12 +1393,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "The transformer has a voltage transformation ratio\n\n$\\dfrac{V_P}{V_S}=0.866+j0.5$\n\nLet\n\n$a=0.866+j0.5$\n\nThe leakage impedance referred to the secondary side is\n\n$y \\text{ p.u.}$\n\n,where $y$ is the series admittance.\n\nFor a transformer having an off-nominal complex tap ratio $a$, the branch equations are\n\n$I_P=\\dfrac{y}{|a|^2}V_P-\\dfrac{y}{a^*}V_S$\n\n$I_S=-\\dfrac{y}{a}V_P+yV_S$\n\nwhere $a^*$ is the complex conjugate of $a$.\n\nSince\n\n$a=0.866+j0.5,\n\n\\qquad\n\n|a|=\\sqrt{0.866^2+0.5^2}=1$\n\ntherefore,\n\n$|a|^2=1$\n\nAlso,\n\n$a^*=0.866-j0.5$\n\nSince $|a|=1$,\n\n$\\dfrac{1}{a}=a^*=0.866-j0.5$\n\nand\n\n$\\dfrac{1}{a^*}=a=0.866+j0.5$\n\nSubstituting these values,\n\n$I_P\n\n=\n\nyV_P\n\n-\n\n\\dfrac{y}{0.866-j0.5}V_S$\n\nand\n\n$I_S\n\n=\n\n-\\dfrac{y}{0.866+j0.5}V_P\n\n+yV_S$\n\nHence, the Y-bus representation is\n\n$$\\begin{bmatrix}\n\nI_P\\\\\n\nI_S\n\n\\end{bmatrix}\n\n=\n\n\\begin{bmatrix}\n\ny & -\\dfrac{y}{0.866-j0.5}\\\\[8pt]\n\n-\\dfrac{y}{0.866+j0.5} & y\n\n\\end{bmatrix}\n\n\\begin{bmatrix}\n\nV_P\\\\\n\nV_S\n\n\\end{bmatrix}$$",
-        "images": []
+        "markdown": "The transformer has a voltage transformation ratio\n\n$\\dfrac{V_P}{V_S}=0.866+j0.5$\n\nLet\n\n$a=0.866+j0.5$\n\nThe leakage impedance referred to the secondary side is\n\n$y \\text{ p.u.}$\n\n,where $y$ is the series admittance.\n\nFor a transformer having an off-nominal complex tap ratio $a$, the branch equations are\n\n$I_P=\\dfrac{y}{|a|^2}V_P-\\dfrac{y}{a^*}V_S$\n\n$I_S=-\\dfrac{y}{a}V_P+yV_S$\n\nwhere $a^*$ is the complex conjugate of $a$.\n\nSince\n\n$a=0.866+j0.5,\n\n\\qquad\n\n|a|=\\sqrt{0.866^2+0.5^2}=1$\n\ntherefore,\n\n$|a|^2=1$\n\nAlso,\n\n$a^*=0.866-j0.5$\n\nSince $|a|=1$,\n\n$\\dfrac{1}{a}=a^*=0.866-j0.5$\n\nand\n\n$\\dfrac{1}{a^*}=a=0.866+j0.5$\n\nSubstituting these values,\n\n$I_P\n\n=\n\nyV_P\n\n-\n\n\\dfrac{y}{0.866-j0.5}V_S$\n\nand\n\n$I_S\n\n=\n\n-\\dfrac{y}{0.866+j0.5}V_P\n\n+yV_S$\n\nHence, the Y-bus representation is\n\n$$\\begin{bmatrix}\n\nI_P\\\\\n\nI_S\n\n\\end{bmatrix}\n\n=\n\n\\begin{bmatrix}\n\ny & -\\dfrac{y}{0.866-j0.5}\\\\[8pt]\n\n-\\dfrac{y}{0.866+j0.5} & y\n\n\\end{bmatrix}\n\n\\begin{bmatrix}\n\nV_P\\\\\n\nV_S\n\n\\end{bmatrix}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q32": {
-      "question_uid": "pp:ee:2026:q32",
+    "ee:2026:q32": {
+      "question_uid": "ee:2026:q32",
+      "legacy_uid": "pp:ee:2026:q32",
       "exam_uid": "ee:2026:set1:main:q32",
       "title": "GATE EE 2026 | Set 1 | Question: 32",
       "section": "main",
@@ -1437,12 +1438,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Steady state AC Analysis",
-        "markdown": "The instantaneous power is\n\n$p=vi\n\n\\;=\\;\n\nV_mI_m\\sin(\\omega t)\\sin(\\omega t-\\theta)$\n\nUsing the trigonometric identity\n\n$\\sin A\\sin B=\\dfrac{1}{2}\\left[\\cos(A-B)-\\cos(A+B)\\right],$\n\nwe get\n\n$p\n\n=\n\n\\dfrac{V_mI_m}{2}\n\n\\left[\n\n\\cos\\theta\n\n-\n\n\\cos(2\\omega t-\\theta)\n\n\\right]$\n\nThe average power over one half-cycle is\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{1}{T/2}\n\n\\int_{0}^{T/2}\n\np\\,dt$\n\nSubstituting the expression for $p$,\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{1}{T/2}\n\n\\int_{0}^{T/2}\n\n\\dfrac{V_mI_m}{2}\n\n\\left[\n\n\\cos\\theta\n\n-\n\n\\cos(2\\omega t-\\theta)\n\n\\right]dt$\n\nSeparating the two terms,\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{V_mI_m}{T}\n\n\\left[\n\n\\cos\\theta\n\n\\int_{0}^{T/2}dt\n\n-\n\n\\int_{0}^{T/2}\\cos(2\\omega t-\\theta)\\,dt\n\n\\right]$\n\nThe first integral is\n\n$\\int_{0}^{T/2}dt=\\dfrac{T}{2}$\n\nFor the second integral,\n\n$\\int_{0}^{T/2}\\cos(2\\omega t-\\theta)\\,dt\n\n=\n\n\\dfrac{1}{2\\omega}\n\n\\left[\n\n\\sin(2\\omega t-\\theta)\n\n\\right]_{0}^{T/2}$\n\nSince\n\n$\\omega T=2\\pi,$\n\nwe have\n\n$2\\omega\\left(\\dfrac{T}{2}\\right)=2\\pi$\n\nTherefore,\n\n$\\sin(2\\pi-\\theta)=\\sin(-\\theta),$\n\nand hence\n\n$\\left[\n\n\\sin(2\\omega t-\\theta)\n\n\\right]_{0}^{T/2}\n\n=\n\n\\sin(-\\theta)-\\sin(-\\theta)=0$\n\nThus, the second integral is zero.\n\nHence,\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{V_mI_m}{T}\n\n\\left(\n\n\\cos\\theta\\cdot\\dfrac{T}{2}\n\n\\right)$\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{V_mI_m}{2}\\cos\\theta$",
-        "images": []
+        "markdown": "The instantaneous power is\n\n$p=vi\n\n\\;=\\;\n\nV_mI_m\\sin(\\omega t)\\sin(\\omega t-\\theta)$\n\nUsing the trigonometric identity\n\n$\\sin A\\sin B=\\dfrac{1}{2}\\left[\\cos(A-B)-\\cos(A+B)\\right],$\n\nwe get\n\n$p\n\n=\n\n\\dfrac{V_mI_m}{2}\n\n\\left[\n\n\\cos\\theta\n\n-\n\n\\cos(2\\omega t-\\theta)\n\n\\right]$\n\nThe average power over one half-cycle is\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{1}{T/2}\n\n\\int_{0}^{T/2}\n\np\\,dt$\n\nSubstituting the expression for $p$,\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{1}{T/2}\n\n\\int_{0}^{T/2}\n\n\\dfrac{V_mI_m}{2}\n\n\\left[\n\n\\cos\\theta\n\n-\n\n\\cos(2\\omega t-\\theta)\n\n\\right]dt$\n\nSeparating the two terms,\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{V_mI_m}{T}\n\n\\left[\n\n\\cos\\theta\n\n\\int_{0}^{T/2}dt\n\n-\n\n\\int_{0}^{T/2}\\cos(2\\omega t-\\theta)\\,dt\n\n\\right]$\n\nThe first integral is\n\n$\\int_{0}^{T/2}dt=\\dfrac{T}{2}$\n\nFor the second integral,\n\n$\\int_{0}^{T/2}\\cos(2\\omega t-\\theta)\\,dt\n\n=\n\n\\dfrac{1}{2\\omega}\n\n\\left[\n\n\\sin(2\\omega t-\\theta)\n\n\\right]_{0}^{T/2}$\n\nSince\n\n$\\omega T=2\\pi,$\n\nwe have\n\n$2\\omega\\left(\\dfrac{T}{2}\\right)=2\\pi$\n\nTherefore,\n\n$\\sin(2\\pi-\\theta)=\\sin(-\\theta),$\n\nand hence\n\n$\\left[\n\n\\sin(2\\omega t-\\theta)\n\n\\right]_{0}^{T/2}\n\n=\n\n\\sin(-\\theta)-\\sin(-\\theta)=0$\n\nThus, the second integral is zero.\n\nHence,\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{V_mI_m}{T}\n\n\\left(\n\n\\cos\\theta\\cdot\\dfrac{T}{2}\n\n\\right)$\n\n$P_{\\text{avg}}\n\n=\n\n\\dfrac{V_mI_m}{2}\\cos\\theta$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q33": {
-      "question_uid": "pp:ee:2026:q33",
+    "ee:2026:q33": {
+      "question_uid": "ee:2026:q33",
+      "legacy_uid": "pp:ee:2026:q33",
       "exam_uid": "ee:2026:set1:main:q33",
       "title": "GATE EE 2026 | Set 1 | Question: 33",
       "section": "main",
@@ -1482,12 +1483,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
-        "markdown": "Before $t=0$, the current source is OFF since\n\n$i_s=1u(t)\\ \\text{mA}.$\n\nHence, for $t<0$, the circuit is in DC steady state and the capacitor behaves as an open circuit.\n\nStep 1: Capacitor voltage at $t=0^-$\n\nThe capacitor voltage is obtained using the voltage divider formed by $25~\\text{k}\\Omega$ and $100~\\text{k}\\Omega$.\n\n$V_C(0^-)\n\n=\n\n10\\left(\\frac{100}{25+100}\\right)\n\n=\n\n8~\\text{V}$\n\nSince the voltage across a capacitor cannot change instantaneously,\n\n$V_C(0^+)=V_C(0^-)=8~\\text{V}$\n\nStep 2: Final value $t\\rightarrow\\infty$\n\nFor $t>0$, the current source supplies\n\n$1~\\text{mA}.$\n\nAt steady state, the capacitor again behaves as an open circuit.\n\nApplying KCL at the capacitor node,\n\n$\\frac{V-10}{25\\,000}\n\n+\n\n\\frac{V}{100\\,000}\n\n=\n\n1\\times10^{-3}$\n\nMultiplying throughout by $100\\,000$,\n\n$4(V-10)+V=100$\n\n$5V=140$\n\n$V=28~\\text{V}$\n\nHence,\n\n$V_C(\\infty)=28~\\text{V}$\n\nStep 3: Time constant\n\nTo determine the time constant, deactivate all independent sources.\n\nReplace the 10 V source by a short circuit.\n\nReplace the 1 mA current source by an open circuit.\n\nThe resistance seen by the capacitor is\n\n$R_{th}\n\n=\n\n25~\\text{k}\\Omega\n\n\\parallel\n\n100~\\text{k}\\Omega\n\n=\n\n20~\\text{k}\\Omega$\n\nTherefore,\n\n$\\tau\n\n=\n\nR_{th}C\n\n=\n\n20\\times10^3\n\n\\times\n\n10\\times10^{-6}\n\n=\n\n0.2~\\text{s}$\n\nStep 4: Capacitor voltage at $t=0.5~\\text{s}$\n\nThe capacitor voltage is\n\n$V_C(t)\n\n=\n\nV_f\n\n+\n\n(V_i-V_f)e^{-t/\\tau}$\n\nwhere\n\n$V_i=8~\\text{V},\n\n\\qquad\n\nV_f=28~\\text{V}.$\n\nThus,\n\n$V_C(0.5)\n\n=\n\n28+(8-28)e^{-0.5/0.2}$\n\nSince\n\n$e^{-2.5}\\approx0.0821,$\n\nwe get\n\n$V_C(0.5)\n\n=\n\n28-20(0.0821)\n\n=\n\n26.36~\\text{V}$\n\nHence,\n\n$V_C(0^+)=8.00~\\text{V},\n\n\\qquad\n\nV_C(0.5)=26.36~\\text{V},\n\n\\qquad\n\nV_C(\\infty)=28.00~\\text{V}$",
-        "images": []
+        "markdown": "Before $t=0$, the current source is OFF since\n\n$i_s=1u(t)\\ \\text{mA}.$\n\nHence, for $t<0$, the circuit is in DC steady state and the capacitor behaves as an open circuit.\n\nStep 1: Capacitor voltage at $t=0^-$\n\nThe capacitor voltage is obtained using the voltage divider formed by $25~\\text{k}\\Omega$ and $100~\\text{k}\\Omega$.\n\n$V_C(0^-)\n\n=\n\n10\\left(\\frac{100}{25+100}\\right)\n\n=\n\n8~\\text{V}$\n\nSince the voltage across a capacitor cannot change instantaneously,\n\n$V_C(0^+)=V_C(0^-)=8~\\text{V}$\n\nStep 2: Final value $t\\rightarrow\\infty$\n\nFor $t>0$, the current source supplies\n\n$1~\\text{mA}.$\n\nAt steady state, the capacitor again behaves as an open circuit.\n\nApplying KCL at the capacitor node,\n\n$\\frac{V-10}{25\\,000}\n\n+\n\n\\frac{V}{100\\,000}\n\n=\n\n1\\times10^{-3}$\n\nMultiplying throughout by $100\\,000$,\n\n$4(V-10)+V=100$\n\n$5V=140$\n\n$V=28~\\text{V}$\n\nHence,\n\n$V_C(\\infty)=28~\\text{V}$\n\nStep 3: Time constant\n\nTo determine the time constant, deactivate all independent sources.\n\nReplace the 10 V source by a short circuit.\n\nReplace the 1 mA current source by an open circuit.\n\nThe resistance seen by the capacitor is\n\n$R_{th}\n\n=\n\n25~\\text{k}\\Omega\n\n\\parallel\n\n100~\\text{k}\\Omega\n\n=\n\n20~\\text{k}\\Omega$\n\nTherefore,\n\n$\\tau\n\n=\n\nR_{th}C\n\n=\n\n20\\times10^3\n\n\\times\n\n10\\times10^{-6}\n\n=\n\n0.2~\\text{s}$\n\nStep 4: Capacitor voltage at $t=0.5~\\text{s}$\n\nThe capacitor voltage is\n\n$V_C(t)\n\n=\n\nV_f\n\n+\n\n(V_i-V_f)e^{-t/\\tau}$\n\nwhere\n\n$V_i=8~\\text{V},\n\n\\qquad\n\nV_f=28~\\text{V}.$\n\nThus,\n\n$V_C(0.5)\n\n=\n\n28+(8-28)e^{-0.5/0.2}$\n\nSince\n\n$e^{-2.5}\\approx0.0821,$\n\nwe get\n\n$V_C(0.5)\n\n=\n\n28-20(0.0821)\n\n=\n\n26.36~\\text{V}$\n\nHence,\n\n$V_C(0^+)=8.00~\\text{V},\n\n\\qquad\n\nV_C(0.5)=26.36~\\text{V},\n\n\\qquad\n\nV_C(\\infty)=28.00~\\text{V}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q34": {
-      "question_uid": "pp:ee:2026:q34",
+    "ee:2026:q34": {
+      "question_uid": "ee:2026:q34",
+      "legacy_uid": "pp:ee:2026:q34",
       "exam_uid": "ee:2026:set1:main:q34",
       "title": "GATE EE 2026 | Set 1 | Question: 34",
       "section": "main",
@@ -1527,12 +1528,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "From two data points, find the linear V-I relationship $v_t = V_{oc} + R_N i_t$ (or slope):\n\n<b>Norton resistance (slope):</b>\n\n$R_N = \\dfrac{\\Delta v_t}{\\Delta i_t} = \\dfrac{30 - 18}{0.5 - (-0.5)} = \\dfrac{12}{1} = 12\\ \\Omega$\n\n<b>Open-circuit voltage</b> (at $i_t = 0$):\n\n$V_{oc} = 18 + 12 \\times 0.5 = 24$ V\n\n<b>Norton current:</b>\n\n$I_N = \\dfrac{V_{oc}}{R_N} = \\dfrac{24}{12} = 2$ A",
-        "images": []
+        "markdown": "From two data points, find the linear V-I relationship $v_t = V_{oc} + R_N i_t$ (or slope):\n\n<b>Norton resistance (slope):</b>\n\n$R_N = \\dfrac{\\Delta v_t}{\\Delta i_t} = \\dfrac{30 - 18}{0.5 - (-0.5)} = \\dfrac{12}{1} = 12\\ \\Omega$\n\n<b>Open-circuit voltage</b> (at $i_t = 0$):\n\n$V_{oc} = 18 + 12 \\times 0.5 = 24$ V\n\n<b>Norton current:</b>\n\n$I_N = \\dfrac{V_{oc}}{R_N} = \\dfrac{24}{12} = 2$ A\n\nAnswer: <b>(C) $I_N = 2.0$ A, $R_N = 12.0\\ \\Omega$</b>\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q35": {
-      "question_uid": "pp:ee:2026:q35",
+    "ee:2026:q35": {
+      "question_uid": "ee:2026:q35",
+      "legacy_uid": "pp:ee:2026:q35",
       "exam_uid": "ee:2026:set1:main:q35",
       "title": "GATE EE 2026 | Set 1 | Question: 35",
       "section": "main",
@@ -1572,14 +1573,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "<img src=\"/question-images/ee/2026/ee-2026-2947f0002f.webp\" />",
-        "images": [
-          "/question-images/ee/2026/ee-2026-2947f0002f.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ee/2026/ee-2026-2947f0002f.webp\" />\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q36": {
-      "question_uid": "pp:ee:2026:q36",
+    "ee:2026:q36": {
+      "question_uid": "ee:2026:q36",
+      "legacy_uid": "pp:ee:2026:q36",
       "exam_uid": "ee:2026:set1:main:q36",
       "title": "GATE EE 2026 | Set 1 | Question: 36",
       "section": "main",
@@ -1619,12 +1618,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Logic Gates",
-        "markdown": "Pull-down network: NMOS A AND B in series -> conducts when $A=1$ AND $B=1$, pulling OUT to GND.\n\nPMOS C: conducts when $C=0$ (i.e., $\\bar{C}=1$), pulling OUT toward GND through 10 k$\\Omega$.\n\nOUT is LOW (0) when: AB=1 OR C=0, i.e., $AB + \\bar{C} = 1$\n\nOUT $= \\overline{AB + \\bar{C}}$\n\nMax power: when only 5 k$\\Omega$ path conducts: $P = 5^2/5000 = 5$ mW",
-        "images": []
+        "markdown": "Pull-down network: NMOS A AND B in series -> conducts when $A=1$ AND $B=1$, pulling OUT to GND.\n\nPMOS C: conducts when $C=0$ (i.e., $\\bar{C}=1$), pulling OUT toward GND through 10 k$\\Omega$.\n\nOUT is LOW (0) when: AB=1 OR C=0, i.e., $AB + \\bar{C} = 1$\n\nOUT $= \\overline{AB + \\bar{C}}$\n\nMax power: when only 5 k$\\Omega$ path conducts: $P = 5^2/5000 = 5$ mW\n\nAnswer: <b>(A)</b>\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q37": {
-      "question_uid": "pp:ee:2026:q37",
+    "ee:2026:q37": {
+      "question_uid": "ee:2026:q37",
+      "legacy_uid": "pp:ee:2026:q37",
       "exam_uid": "ee:2026:set1:main:q37",
       "title": "GATE EE 2026 | Set 1 | Question: 37",
       "section": "main",
@@ -1664,12 +1663,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "<b>Given:</b>\n\nThe inverter operates as follows:\n\n<ul>\n\n<li>$S_1$ and $S_2$ conduct during the first $10~\\mu s$.</li>\n\n<li>$S_3$ and $S_4$ conduct during the next $10~\\mu s$.</li>\n\n</ul>\n\nThe inductor current is a triangular waveform with peak value\n\n$I_m=5~\\text{A}.$\n\n<b>Step 1: Current through switch $S_1$</b>\n\nSwitch $S_1$ conducts only during the interval\n\n$0\\le t\\le 10~\\mu s.$\n\nDuring this interval, the inductor current varies linearly from\n\n$-5~\\text{A}\n\n\\quad\\text{to}\\quad\n\n+5~\\text{A}.$\n\nHence,\n\n$i_{S_1}(t)=i_L(t).$\n\nDuring the remaining half cycle,\n\n$10<t\\le 20~\\mu s,$\n\nswitch $S_1$ is OFF, so\n\n$i_{S_1}(t)=0.$\n\n<b>Step 2: RMS current over one complete cycle</b>\n\nThe switching period is\n\n$T=20~\\mu s.$\n\nTherefore,\n\n$I_{S_1,\\text{rms}}\n\n=\n\n\\sqrt{\\frac1T\n\n\\int_0^{10}\n\ni_L^2(t)\\,dt}.$\n\nFor a linear current varying from\n\n$-I_m$\n\nto\n\n$+I_m,$\n\nthe mean square value over that interval is\n\n$\\frac{I_m^2}{3}.$\n\nSince conduction occurs for only half of the total period,\n\n$I_{S_1,\\text{rms}}\n\n=\n\n\\sqrt{\n\n\\frac12\n\n\\times\n\n\\frac{I_m^2}{3}\n\n}.$\n\nSubstituting\n\n$I_m=5~\\text{A},$\n\n$I_{S_1,\\text{rms}}\n\n=\n\n5\\sqrt{\\frac16}\n\n=\n\n\\frac{5}{\\sqrt6}\n\n\\approx2.04~\\text{A}.$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nThe inverter operates as follows:\n\n<ul>\n\n<li>$S_1$ and $S_2$ conduct during the first $10~\\mu s$.</li>\n\n<li>$S_3$ and $S_4$ conduct during the next $10~\\mu s$.</li>\n\n</ul>\n\nThe inductor current is a triangular waveform with peak value\n\n$I_m=5~\\text{A}.$\n\n<b>Step 1: Current through switch $S_1$</b>\n\nSwitch $S_1$ conducts only during the interval\n\n$0\\le t\\le 10~\\mu s.$\n\nDuring this interval, the inductor current varies linearly from\n\n$-5~\\text{A}\n\n\\quad\\text{to}\\quad\n\n+5~\\text{A}.$\n\nHence,\n\n$i_{S_1}(t)=i_L(t).$\n\nDuring the remaining half cycle,\n\n$10<t\\le 20~\\mu s,$\n\nswitch $S_1$ is OFF, so\n\n$i_{S_1}(t)=0.$\n\n<b>Step 2: RMS current over one complete cycle</b>\n\nThe switching period is\n\n$T=20~\\mu s.$\n\nTherefore,\n\n$I_{S_1,\\text{rms}}\n\n=\n\n\\sqrt{\\frac1T\n\n\\int_0^{10}\n\ni_L^2(t)\\,dt}.$\n\nFor a linear current varying from\n\n$-I_m$\n\nto\n\n$+I_m,$\n\nthe mean square value over that interval is\n\n$\\frac{I_m^2}{3}.$\n\nSince conduction occurs for only half of the total period,\n\n$I_{S_1,\\text{rms}}\n\n=\n\n\\sqrt{\n\n\\frac12\n\n\\times\n\n\\frac{I_m^2}{3}\n\n}.$\n\nSubstituting\n\n$I_m=5~\\text{A},$\n\n$I_{S_1,\\text{rms}}\n\n=\n\n5\\sqrt{\\frac16}\n\n=\n\n\\frac{5}{\\sqrt6}\n\n\\approx2.04~\\text{A}.$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q38": {
-      "question_uid": "pp:ee:2026:q38",
+    "ee:2026:q38": {
+      "question_uid": "ee:2026:q38",
+      "legacy_uid": "pp:ee:2026:q38",
       "exam_uid": "ee:2026:set1:main:q38",
       "title": "GATE EE 2026 | Set 1 | Question: 38",
       "section": "main",
@@ -1709,12 +1708,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "Switching period $T = 20\\ \\mu$s; Duty cycle $D = T_{on}/T = 10/20 = 0.5$\n\n<b>Volt-second balance on inductor:</b>\n\nDuring ON-time: $V_{dc} = L\\dfrac{\\Delta i_L}{T_{on}}$\n\nDuring OFF-time: $V_o - V_{dc} = L\\dfrac{\\Delta i_L}{T_{off}}$\n\nSince $T_{on} = T_{off}$: $V_o = 2V_{dc}$\n\n<b>Power balance:</b>\n\nAverage input current = average inductor current $= 6/2 = 3$ A\n\nInput power $= V_{dc} \\times 3$\n\nOutput power $= V_o^2/R = (2V_{dc})^2/10$\n\n$3V_{dc} = \\dfrac{4V_{dc}^2}{10} \\Rightarrow V_{dc} = 7.5$ V",
-        "images": []
+        "markdown": "Switching period $T = 20\\ \\mu$s; Duty cycle $D = T_{on}/T = 10/20 = 0.5$\n\n<b>Volt-second balance on inductor:</b>\n\nDuring ON-time: $V_{dc} = L\\dfrac{\\Delta i_L}{T_{on}}$\n\nDuring OFF-time: $V_o - V_{dc} = L\\dfrac{\\Delta i_L}{T_{off}}$\n\nSince $T_{on} = T_{off}$: $V_o = 2V_{dc}$\n\n<b>Power balance:</b>\n\nAverage input current = average inductor current $= 6/2 = 3$ A\n\nInput power $= V_{dc} \\times 3$\n\nOutput power $= V_o^2/R = (2V_{dc})^2/10$\n\n$3V_{dc} = \\dfrac{4V_{dc}^2}{10} \\Rightarrow V_{dc} = 7.5$ V\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q39": {
-      "question_uid": "pp:ee:2026:q39",
+    "ee:2026:q39": {
+      "question_uid": "ee:2026:q39",
+      "legacy_uid": "pp:ee:2026:q39",
       "exam_uid": "ee:2026:set1:main:q39",
       "title": "GATE EE 2026 | Set 1 | Question: 39",
       "section": "main",
@@ -1754,12 +1753,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "In $\\mathbb{R}^n$, the maximum number of linearly independent vectors is $n$ (the dimension of the space).\n\nIf $p > n$: more vectors than the dimension -> they <b>must</b> be linearly dependent.\n\n(B) is the opposite - FALSE\n\n(C) is FALSE: $p = n$ vectors can be independent but not necessarily orthogonal\n\n(D) is FALSE: $p < n$ vectors can still be dependent (e.g., if one is zero, or two are proportional)",
-        "images": []
+        "markdown": "In $\\mathbb{R}^n$, the maximum number of linearly independent vectors is $n$ (the dimension of the space).\n\nIf $p > n$: more vectors than the dimension -> they <b>must</b> be linearly dependent.\n\n(B) is the opposite - FALSE\n\n(C) is FALSE: $p = n$ vectors can be independent but not necessarily orthogonal\n\n(D) is FALSE: $p < n$ vectors can still be dependent (e.g., if one is zero, or two are proportional)\n\nAnswer: <b>(A)</b>\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q40": {
-      "question_uid": "pp:ee:2026:q40",
+    "ee:2026:q40": {
+      "question_uid": "ee:2026:q40",
+      "legacy_uid": "pp:ee:2026:q40",
       "exam_uid": "ee:2026:set1:main:q40",
       "title": "GATE EE 2026 | Set 1 | Question: 40",
       "section": "main",
@@ -1799,12 +1798,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "Characteristic equation: $r^2 + r + 1 = 0$\n\n$r = \\dfrac{-1 \\pm \\sqrt{1-4}}{2} = -\\dfrac{1}{2} \\pm j\\dfrac{\\sqrt{3}}{2}$\n\nGeneral solution: $y = e^{-x/2}\\!\\left(C_1\\cos\\dfrac{\\sqrt{3}x}{2} + C_2\\sin\\dfrac{\\sqrt{3}x}{2}\\right)$\n\n<b>Apply $y(0) = 1$:</b> $C_1 = 1$\n\n<b>Apply $y'(0) = 1$:</b>\n\n$y'(0) = -\\dfrac{1}{2}C_1 + C_2\\dfrac{\\sqrt{3}}{2} = 1$\n\n$\\Rightarrow -\\dfrac{1}{2} + C_2\\dfrac{\\sqrt{3}}{2} = 1 \\Rightarrow C_2 = \\dfrac{3}{\\sqrt{3}} = \\sqrt{3}$",
-        "images": []
+        "markdown": "Characteristic equation: $r^2 + r + 1 = 0$\n\n$r = \\dfrac{-1 \\pm \\sqrt{1-4}}{2} = -\\dfrac{1}{2} \\pm j\\dfrac{\\sqrt{3}}{2}$\n\nGeneral solution: $y = e^{-x/2}\\!\\left(C_1\\cos\\dfrac{\\sqrt{3}x}{2} + C_2\\sin\\dfrac{\\sqrt{3}x}{2}\\right)$\n\n<b>Apply $y(0) = 1$:</b> $C_1 = 1$\n\n<b>Apply $y'(0) = 1$:</b>\n\n$y'(0) = -\\dfrac{1}{2}C_1 + C_2\\dfrac{\\sqrt{3}}{2} = 1$\n\n$\\Rightarrow -\\dfrac{1}{2} + C_2\\dfrac{\\sqrt{3}}{2} = 1 \\Rightarrow C_2 = \\dfrac{3}{\\sqrt{3}} = \\sqrt{3}$\n\nAnswer: <b>(A)</b>\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q41": {
-      "question_uid": "pp:ee:2026:q41",
+    "ee:2026:q41": {
+      "question_uid": "ee:2026:q41",
+      "legacy_uid": "pp:ee:2026:q41",
       "exam_uid": "ee:2026:set1:main:q41",
       "title": "GATE EE 2026 | Set 1 | Question: 41",
       "section": "main",
@@ -1844,12 +1843,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Time Varying Fields",
-        "markdown": "Loop is in XY plane -> normal is $\\hat{z}$.\n\n<b>Flux through $a_1$:</b>\n\n$\\Phi_1 = \\vec{B}_1 \\cdot \\hat{z} \\cdot a_1 = \\dfrac{m}{\\sqrt{2}}\\sin(\\omega t) \\cdot a_1$\n\nEMF$_1 = -\\dfrac{d\\Phi_1}{dt} = -\\dfrac{ma_1\\omega}{\\sqrt{2}}\\cos(\\omega t)$\n\nRMS$_1 = \\dfrac{ma_1\\omega}{\\sqrt{2}\\cdot\\sqrt{2}} = \\dfrac{ma_1\\omega}{2}$\n\n<b>Flux through $a_2$:</b>\n\n$\\Phi_2 = -\\dfrac{n}{\\sqrt{2}}\\cos(2\\omega t + \\pi/4) \\cdot a_2$\n\nEMF$_2 = -\\dfrac{d\\Phi_2}{dt} = -\\dfrac{2na_2\\omega}{\\sqrt{2}}\\sin(2\\omega t + \\pi/4)$\n\nRMS$_2 = \\dfrac{2na_2\\omega}{\\sqrt{2}\\cdot\\sqrt{2}} = na_2\\omega$\n\nDifferent frequencies -> total RMS by Parseval:\n\n$V_{rms} = \\sqrt{\\text{RMS}_1^2 + \\text{RMS}_2^2} = \\sqrt{\\dfrac{m^2a_1^2\\omega^2}{4} + n^2a_2^2\\omega^2} = \\sqrt{\\dfrac{m^2a_1^2\\omega^2 + 4n^2a_2^2\\omega^2}{4}}$",
-        "images": []
+        "markdown": "Loop is in XY plane -> normal is $\\hat{z}$.\n\n<b>Flux through $a_1$:</b>\n\n$\\Phi_1 = \\vec{B}_1 \\cdot \\hat{z} \\cdot a_1 = \\dfrac{m}{\\sqrt{2}}\\sin(\\omega t) \\cdot a_1$\n\nEMF$_1 = -\\dfrac{d\\Phi_1}{dt} = -\\dfrac{ma_1\\omega}{\\sqrt{2}}\\cos(\\omega t)$\n\nRMS$_1 = \\dfrac{ma_1\\omega}{\\sqrt{2}\\cdot\\sqrt{2}} = \\dfrac{ma_1\\omega}{2}$\n\n<b>Flux through $a_2$:</b>\n\n$\\Phi_2 = -\\dfrac{n}{\\sqrt{2}}\\cos(2\\omega t + \\pi/4) \\cdot a_2$\n\nEMF$_2 = -\\dfrac{d\\Phi_2}{dt} = -\\dfrac{2na_2\\omega}{\\sqrt{2}}\\sin(2\\omega t + \\pi/4)$\n\nRMS$_2 = \\dfrac{2na_2\\omega}{\\sqrt{2}\\cdot\\sqrt{2}} = na_2\\omega$\n\nDifferent frequencies -> total RMS by Parseval:\n\n$V_{rms} = \\sqrt{\\text{RMS}_1^2 + \\text{RMS}_2^2} = \\sqrt{\\dfrac{m^2a_1^2\\omega^2}{4} + n^2a_2^2\\omega^2} = \\sqrt{\\dfrac{m^2a_1^2\\omega^2 + 4n^2a_2^2\\omega^2}{4}}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q42": {
-      "question_uid": "pp:ee:2026:q42",
+    "ee:2026:q42": {
+      "question_uid": "ee:2026:q42",
+      "legacy_uid": "pp:ee:2026:q42",
       "exam_uid": "ee:2026:set1:main:q42",
       "title": "GATE EE 2026 | Set 1 | Question: 42",
       "section": "main",
@@ -1889,12 +1888,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "Characteristic polynomial of $$A = \\begin{bmatrix}a&b\\\\-a&0\\end{bmatrix}$$:\n\n$\\det(\\lambda I - A) = \\lambda(\\lambda - a) + ab = \\lambda^2 - a\\lambda + ab$\n\nDesired poles at $-2 \\pm j3$ -> desired characteristic polynomial:\n\n$(\\lambda+2-j3)(\\lambda+2+j3) = \\lambda^2 + 4\\lambda + 13$\n\nMatching coefficients:\n\n$-a = 4 \\Rightarrow a = -4$\n\n$ab = 13 \\Rightarrow b = \\dfrac{13}{-4} = -3.25$",
-        "images": []
+        "markdown": "Characteristic polynomial of $$A = \\begin{bmatrix}a&b\\\\-a&0\\end{bmatrix}$$:\n\n$\\det(\\lambda I - A) = \\lambda(\\lambda - a) + ab = \\lambda^2 - a\\lambda + ab$\n\nDesired poles at $-2 \\pm j3$ -> desired characteristic polynomial:\n\n$(\\lambda+2-j3)(\\lambda+2+j3) = \\lambda^2 + 4\\lambda + 13$\n\nMatching coefficients:\n\n$-a = 4 \\Rightarrow a = -4$\n\n$ab = 13 \\Rightarrow b = \\dfrac{13}{-4} = -3.25$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ee:2026:q43": {
-      "question_uid": "pp:ee:2026:q43",
+    "ee:2026:q43": {
+      "question_uid": "ee:2026:q43",
+      "legacy_uid": "pp:ee:2026:q43",
       "exam_uid": "ee:2026:set1:main:q43",
       "title": "GATE EE 2026 | Set 1 | Question: 43",
       "section": "main",
@@ -1934,12 +1933,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "Let $$T = \\begin{bmatrix}2&1\\\\-1&0\\end{bmatrix}$$, so $\\mathbf{z} = T\\mathbf{x}$.\n\n$$T^{-1} = \\dfrac{1}{\\det T}\\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix} = \\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix}$$ (since $\\det T = 0-(-1)=1$)\n\n<b>New system matrix:</b>\n\n$A_z = T A T^{-1}$\n\n$$AT^{-1} = \\begin{bmatrix}1&2\\\\-3&0\\end{bmatrix}\\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix} = \\begin{bmatrix}2&3\\\\0&3\\end{bmatrix}$$\n\n$$A_z = \\begin{bmatrix}2&1\\\\-1&0\\end{bmatrix}\\begin{bmatrix}2&3\\\\0&3\\end{bmatrix} = \\begin{bmatrix}4&9\\\\-2&-3\\end{bmatrix}$$\n\n<b>New input matrix:</b>\n\n$$B_z = TB = \\begin{bmatrix}2&1\\\\-1&0\\end{bmatrix}\\begin{bmatrix}1\\\\2\\end{bmatrix} = \\begin{bmatrix}4\\\\-1\\end{bmatrix}$$\n\n<b>New output matrix:</b>\n\n$$C_z = CT^{-1} = [1\\ \\ 2]\\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix} = [2\\ \\ 3]$$",
-        "images": []
+        "markdown": "Let $$T = \\begin{bmatrix}2&1\\\\-1&0\\end{bmatrix}$$, so $\\mathbf{z} = T\\mathbf{x}$.\n\n$$T^{-1} = \\dfrac{1}{\\det T}\\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix} = \\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix}$$ (since $\\det T = 0-(-1)=1$)\n\n<b>New system matrix:</b>\n\n$A_z = T A T^{-1}$\n\n$$AT^{-1} = \\begin{bmatrix}1&2\\\\-3&0\\end{bmatrix}\\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix} = \\begin{bmatrix}2&3\\\\0&3\\end{bmatrix}$$\n\n$$A_z = \\begin{bmatrix}2&1\\\\-1&0\\end{bmatrix}\\begin{bmatrix}2&3\\\\0&3\\end{bmatrix} = \\begin{bmatrix}4&9\\\\-2&-3\\end{bmatrix}$$\n\n<b>New input matrix:</b>\n\n$$B_z = TB = \\begin{bmatrix}2&1\\\\-1&0\\end{bmatrix}\\begin{bmatrix}1\\\\2\\end{bmatrix} = \\begin{bmatrix}4\\\\-1\\end{bmatrix}$$\n\n<b>New output matrix:</b>\n\n$$C_z = CT^{-1} = [1\\ \\ 2]\\begin{bmatrix}0&-1\\\\1&2\\end{bmatrix} = [2\\ \\ 3]$$\n\nAnswer: <b>(C)</b>\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q44": {
-      "question_uid": "pp:ee:2026:q44",
+    "ee:2026:q44": {
+      "question_uid": "ee:2026:q44",
+      "legacy_uid": "pp:ee:2026:q44",
       "exam_uid": "ee:2026:set1:main:q44",
       "title": "GATE EE 2026 | Set 1 | Question: 44",
       "section": "main",
@@ -1979,12 +1978,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "Line current $I = (V_1 - V_2)/Z$:\n\n<b>Case-1:</b> $Z = 0.75\\angle 0^{\\circ}$ (pure resistance), $\\theta_{12}=0^{\\circ}$:\n\n$I_1 = (1.1 - 0.9)/0.75 = 0.267$ A (real)\n\n$P_{loss1} = |I_1|^2 R = 0.0533$ p.u., $Q_{loss1} = |I_1|^2 X = 0$\n\n<b>Case-2:</b> $Z = j0.75$ (pure reactance), $\\theta_{12}=90^{\\circ}$:\n\n$V_1 = 1.1\\angle 0^{\\circ}$, $V_2 = 0.9\\angle -90^{\\circ}$\n\n$I_2 = (1.1 + j0.9)/(j0.75)$  $\\rightarrow|I_2|^2 > 0$\n\n$P_{loss2} = |I_2|^2 \\times 0 = 0$, $Q_{loss2} = |I_2|^2 \\times 0.75 > 0$\n\nReal power loss: Case-1 > Case-2\n\nReactive power loss: Case-2 > Case-1",
-        "images": []
+        "markdown": "Line current $I = (V_1 - V_2)/Z$:\n\n<b>Case-1:</b> $Z = 0.75\\angle 0^{\\circ}$ (pure resistance), $\\theta_{12}=0^{\\circ}$:\n\n$I_1 = (1.1 - 0.9)/0.75 = 0.267$ A (real)\n\n$P_{loss1} = |I_1|^2 R = 0.0533$ p.u., $Q_{loss1} = |I_1|^2 X = 0$\n\n<b>Case-2:</b> $Z = j0.75$ (pure reactance), $\\theta_{12}=90^{\\circ}$:\n\n$V_1 = 1.1\\angle 0^{\\circ}$, $V_2 = 0.9\\angle -90^{\\circ}$\n\n$I_2 = (1.1 + j0.9)/(j0.75)$  $\\rightarrow|I_2|^2 > 0$\n\n$P_{loss2} = |I_2|^2 \\times 0 = 0$, $Q_{loss2} = |I_2|^2 \\times 0.75 > 0$\n\nReal power loss: Case-1 > Case-2\n\nReactive power loss: Case-2 > Case-1\n\nTherefore, the correct option(s) are **A, D**."
       }
     },
-    "pp:ee:2026:q45": {
-      "question_uid": "pp:ee:2026:q45",
+    "ee:2026:q45": {
+      "question_uid": "ee:2026:q45",
+      "legacy_uid": "pp:ee:2026:q45",
       "exam_uid": "ee:2026:set1:main:q45",
       "title": "GATE EE 2026 | Set 1 | Question: 45",
       "section": "main",
@@ -2024,12 +2023,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "For real orthogonal matrix $A$: $A^T A = I$\n\n<b>(A)</b> $(\\det A)^2 = \\det(A^T A) = \\det I = 1 \\Rightarrow \\det A = \\pm 1$\n\n<b>(B)</b> If $A\\mathbf{v} = \\lambda\\mathbf{v}$, then $|\\lambda|^2\\|\\mathbf{v}\\|^2 = \\|A\\mathbf{v}\\|^2 = \\|\\mathbf{v}\\|^2 \\Rightarrow |\\lambda| = 1$\n\n<b>(C)</b> $\\|A\\mathbf{x}\\| = \\|\\mathbf{x}\\|$ is TRUE, but $(A\\mathbf{x})^T(A\\mathbf{y}) = \\mathbf{x}^T A^T A\\mathbf{y} = \\mathbf{x}^T\\mathbf{y}\\rightarrow$  the inequality part is FALSE\n\n<b>(D)</b> Both $\\|A\\mathbf{x}\\| = \\|\\mathbf{x}\\|$ and $(A\\mathbf{x})^T(A\\mathbf{y}) = \\mathbf{x}^T\\mathbf{y}$ are TRUE",
-        "images": []
+        "markdown": "For real orthogonal matrix $A$: $A^T A = I$\n\n<b>(A)</b> $(\\det A)^2 = \\det(A^T A) = \\det I = 1 \\Rightarrow \\det A = \\pm 1$\n\n<b>(B)</b> If $A\\mathbf{v} = \\lambda\\mathbf{v}$, then $|\\lambda|^2\\|\\mathbf{v}\\|^2 = \\|A\\mathbf{v}\\|^2 = \\|\\mathbf{v}\\|^2 \\Rightarrow |\\lambda| = 1$\n\n<b>(C)</b> $\\|A\\mathbf{x}\\| = \\|\\mathbf{x}\\|$ is TRUE, but $(A\\mathbf{x})^T(A\\mathbf{y}) = \\mathbf{x}^T A^T A\\mathbf{y} = \\mathbf{x}^T\\mathbf{y}\\rightarrow$  the inequality part is FALSE\n\n<b>(D)</b> Both $\\|A\\mathbf{x}\\| = \\|\\mathbf{x}\\|$ and $(A\\mathbf{x})^T(A\\mathbf{y}) = \\mathbf{x}^T\\mathbf{y}$ are TRUE\n\nAnswer: <b>(A), (B), (D)</b>\n\nTherefore, the correct option(s) are **A, B, D**."
       }
     },
-    "pp:ee:2026:q46": {
-      "question_uid": "pp:ee:2026:q46",
+    "ee:2026:q46": {
+      "question_uid": "ee:2026:q46",
+      "legacy_uid": "pp:ee:2026:q46",
       "exam_uid": "ee:2026:set1:main:q46",
       "title": "GATE EE 2026 | Set 1 | Question: 46",
       "section": "main",
@@ -2069,12 +2068,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Unique solution $\\Rightarrow A$ is invertible ($\\det A \\neq 0$).\n\n<b>(A)</b> Invertible $\\Rightarrow A^{-1}$ exists - True\n\n<b>(B)</b> $A$ invertible $\\Rightarrow A^m$ invertible for all $m \\geq 1$ $\\Rightarrow A^m\\mathbf{x} = \\mathbf{b}$ has unique solution $\\mathbf{x} = (A^m)^{-1}\\mathbf{b}$ - True\n\n<b>(C)</b> $A$ invertible $\\Rightarrow \\text{rank}(A) = n$; $A^m$ invertible $\\Rightarrow \\text{rank}(A^m) = n$ - True\n\n<b>(D)</b> Unique solution requires $\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}]) = n$, NOT $<$. (D) contradicts unique solution - False",
-        "images": []
+        "markdown": "Unique solution $\\Rightarrow A$ is invertible ($\\det A \\neq 0$).\n\n<b>(A)</b> Invertible $\\Rightarrow A^{-1}$ exists - True\n\n<b>(B)</b> $A$ invertible $\\Rightarrow A^m$ invertible for all $m \\geq 1$ $\\Rightarrow A^m\\mathbf{x} = \\mathbf{b}$ has unique solution $\\mathbf{x} = (A^m)^{-1}\\mathbf{b}$ - True\n\n<b>(C)</b> $A$ invertible $\\Rightarrow \\text{rank}(A) = n$; $A^m$ invertible $\\Rightarrow \\text{rank}(A^m) = n$ - True\n\n<b>(D)</b> Unique solution requires $\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}]) = n$, NOT $<$. (D) contradicts unique solution - False\n\nAnswer: <b>(A), (B), (C)</b>\n\nTherefore, the correct option(s) are **A, B, C**."
       }
     },
-    "pp:ee:2026:q47": {
-      "question_uid": "pp:ee:2026:q47",
+    "ee:2026:q47": {
+      "question_uid": "ee:2026:q47",
+      "legacy_uid": "pp:ee:2026:q47",
       "exam_uid": "ee:2026:set1:main:q47",
       "title": "GATE EE 2026 | Set 1 | Question: 47",
       "section": "main",
@@ -2112,12 +2111,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Resistance and Potentiometers",
-        "markdown": "At balance, galvanometer current = 0 (no current through G).\n\nWheatstone bridge balance condition:\n\n$\\dfrac{P}{Q} = \\dfrac{R}{S}$\n\n$S = \\dfrac{R \\times Q}{P} = \\dfrac{3000 \\times 500}{2000} = \\dfrac{1500000}{2000} = 750\\ \\Omega$\n\nNote: Internal resistance and galvanometer resistance do not affect the balance condition.",
-        "images": []
+        "markdown": "At balance, galvanometer current = 0 (no current through G).\n\nWheatstone bridge balance condition:\n\n$\\dfrac{P}{Q} = \\dfrac{R}{S}$\n\n$S = \\dfrac{R \\times Q}{P} = \\dfrac{3000 \\times 500}{2000} = \\dfrac{1500000}{2000} = 750\\ \\Omega$\n\nNote: Internal resistance and galvanometer resistance do not affect the balance condition.\n\nTherefore, the correct answer is **750**."
       }
     },
-    "pp:ee:2026:q48": {
-      "question_uid": "pp:ee:2026:q48",
+    "ee:2026:q48": {
+      "question_uid": "ee:2026:q48",
+      "legacy_uid": "pp:ee:2026:q48",
       "exam_uid": "ee:2026:set1:main:q48",
       "title": "GATE EE 2026 | Set 1 | Question: 48",
       "section": "main",
@@ -2155,12 +2154,12 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
-        "markdown": "<b>Optimal dispatch conditions:</b>\n\nFor G1 (no transmission loss from G1):\n\n$\\lambda = \\dfrac{\\partial C_1}{\\partial P_{G1}} = 50 + 0.02P_{G1}$\n\n$70.25 = 50 + 0.02P_{G1} \\Rightarrow P_{G1} = 1012.5$ MW\n\nFor G2 (with loss):\n\n$\\dfrac{\\partial P_L}{\\partial P_{G2}} = 0.002(P_{G2}-50)$\n\nPenalty factor condition:\n\n$70.25(1 - 0.002(P_{G2}-50)) = 50 + 0.002P_{G2}$\n\n$70.25 - 0.1405P_{G2} + 7.025 = 50 + 0.002P_{G2}$\n\n$P_{G2}(0.1405 + 0.002) = 27.275 \\Rightarrow P_{G2} \\approx 191.4$ MW\n\n<b>Power loss:</b>\n\n$P_{Loss} = 0.001(191.4 - 50)^2 = 0.001 \\times 141.4^2 \\approx 20.0$ MW",
-        "images": []
+        "markdown": "<b>Optimal dispatch conditions:</b>\n\nFor G1 (no transmission loss from G1):\n\n$\\lambda = \\dfrac{\\partial C_1}{\\partial P_{G1}} = 50 + 0.02P_{G1}$\n\n$70.25 = 50 + 0.02P_{G1} \\Rightarrow P_{G1} = 1012.5$ MW\n\nFor G2 (with loss):\n\n$\\dfrac{\\partial P_L}{\\partial P_{G2}} = 0.002(P_{G2}-50)$\n\nPenalty factor condition:\n\n$70.25(1 - 0.002(P_{G2}-50)) = 50 + 0.002P_{G2}$\n\n$70.25 - 0.1405P_{G2} + 7.025 = 50 + 0.002P_{G2}$\n\n$P_{G2}(0.1405 + 0.002) = 27.275 \\Rightarrow P_{G2} \\approx 191.4$ MW\n\n<b>Power loss:</b>\n\n$P_{Loss} = 0.001(191.4 - 50)^2 = 0.001 \\times 141.4^2 \\approx 20.0$ MW\n\nTherefore, the correct answer is **20**."
       }
     },
-    "pp:ee:2026:q49": {
-      "question_uid": "pp:ee:2026:q49",
+    "ee:2026:q49": {
+      "question_uid": "ee:2026:q49",
+      "legacy_uid": "pp:ee:2026:q49",
       "exam_uid": "ee:2026:set1:main:q49",
       "title": "GATE EE 2026 | Set 1 | Question: 49",
       "section": "main",
@@ -2198,12 +2197,12 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "Synchronous speed: $N_s = \\dfrac{120 \\times 50}{4} = 1500$ rpm\n\nSlip 1 (shorted): $s_1 = \\dfrac{1500 - 1476}{1500} = \\dfrac{24}{1500} = 0.016$\n\nSlip 2 (external R): $s_2 = \\dfrac{1500 - 1404}{1500} = \\dfrac{96}{1500} = 0.064$\n\nFor <b>constant torque</b>, torque $\\propto \\dfrac{r_2}{s}$ = constant:\n\n$\\dfrac{r_2}{s_1} = \\dfrac{r_2 + R_{ext}}{s_2}$\n\n$r_2 \\cdot s_2 = (r_2 + 0.27) \\cdot s_1$\n\n$r_2(s_2 - s_1) = 0.27 \\times s_1$\n\n$r_2(0.064 - 0.016) = 0.27 \\times 0.016$\n\n$r_2 \\times 0.048 = 0.00432$\n\n$r_2 = 0.09\\ \\Omega$",
-        "images": []
+        "markdown": "Synchronous speed: $N_s = \\dfrac{120 \\times 50}{4} = 1500$ rpm\n\nSlip 1 (shorted): $s_1 = \\dfrac{1500 - 1476}{1500} = \\dfrac{24}{1500} = 0.016$\n\nSlip 2 (external R): $s_2 = \\dfrac{1500 - 1404}{1500} = \\dfrac{96}{1500} = 0.064$\n\nFor <b>constant torque</b>, torque $\\propto \\dfrac{r_2}{s}$ = constant:\n\n$\\dfrac{r_2}{s_1} = \\dfrac{r_2 + R_{ext}}{s_2}$\n\n$r_2 \\cdot s_2 = (r_2 + 0.27) \\cdot s_1$\n\n$r_2(s_2 - s_1) = 0.27 \\times s_1$\n\n$r_2(0.064 - 0.016) = 0.27 \\times 0.016$\n\n$r_2 \\times 0.048 = 0.00432$\n\n$r_2 = 0.09\\ \\Omega$\n\nTherefore, the correct answer is **0.09**."
       }
     },
-    "pp:ee:2026:q50": {
-      "question_uid": "pp:ee:2026:q50",
+    "ee:2026:q50": {
+      "question_uid": "ee:2026:q50",
+      "legacy_uid": "pp:ee:2026:q50",
       "exam_uid": "ee:2026:set1:main:q50",
       "title": "GATE EE 2026 | Set 1 | Question: 50",
       "section": "main",
@@ -2241,12 +2240,12 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
-        "markdown": "<b>Concept:</b>\n\nFor maximum power transfer,\n\n$R_L=R_{th},$\n\nwhere $R_{th}$ is the Thevenin resistance seen from the load terminals.\n\n<b>Step 1: Remove the load</b>\n\nTo find the Thevenin resistance, disconnect $R_L$ and deactivate the independent source.\n\nSince the circuit contains only an independent voltage source,\n\n$10~\\text{V}\n\n\\rightarrow\n\n\\text{Short Circuit}.$\n\n<b>Step 2: Redraw the circuit</b>\n\nAfter short-circuiting the voltage source:\n\n<ul>\n\n<li>The left terminal of the $10~\\Omega$ resistor is connected to ground.</li>\n\n<li>The $5~\\Omega$ resistor is completely shorted and has no effect.</li>\n\n<li>From the load terminals, the $10~\\Omega$ resistor and the $4~\\Omega$ resistor are both connected between the output node and ground.</li>\n\n</ul>\n\nHence, the Thevenin resistance is\n\n$R_{th}\n\n=\n\n10\\parallel4.$\n\n<b>Step 3: Calculate the equivalent resistance</b>\n\n$R_{th}\n\n=\n\n\\frac{10\\times4}{10+4}\n\n=\n\n\\frac{40}{14}\n\n=\n\n\\frac{20}{7}\n\n=\n\n2.857~\\Omega.$\n\nRounded to two decimal places,\n\n$R_{th}=2.86~\\Omega.$\n\n<b>Step 4: Maximum power transfer</b>\n\nFor maximum power transfer,\n\n$R_L=R_{th}=2.86~\\Omega.$",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nFor maximum power transfer,\n\n$R_L=R_{th},$\n\nwhere $R_{th}$ is the Thevenin resistance seen from the load terminals.\n\n<b>Step 1: Remove the load</b>\n\nTo find the Thevenin resistance, disconnect $R_L$ and deactivate the independent source.\n\nSince the circuit contains only an independent voltage source,\n\n$10~\\text{V}\n\n\\rightarrow\n\n\\text{Short Circuit}.$\n\n<b>Step 2: Redraw the circuit</b>\n\nAfter short-circuiting the voltage source:\n\n<ul>\n\n<li>The left terminal of the $10~\\Omega$ resistor is connected to ground.</li>\n\n<li>The $5~\\Omega$ resistor is completely shorted and has no effect.</li>\n\n<li>From the load terminals, the $10~\\Omega$ resistor and the $4~\\Omega$ resistor are both connected between the output node and ground.</li>\n\n</ul>\n\nHence, the Thevenin resistance is\n\n$R_{th}\n\n=\n\n10\\parallel4.$\n\n<b>Step 3: Calculate the equivalent resistance</b>\n\n$R_{th}\n\n=\n\n\\frac{10\\times4}{10+4}\n\n=\n\n\\frac{40}{14}\n\n=\n\n\\frac{20}{7}\n\n=\n\n2.857~\\Omega.$\n\nRounded to two decimal places,\n\n$R_{th}=2.86~\\Omega.$\n\n<b>Step 4: Maximum power transfer</b>\n\nFor maximum power transfer,\n\n$R_L=R_{th}=2.86~\\Omega.$\n\nTherefore, the correct answer is **2.86** (acceptable range: [2.81, 2.91])."
       }
     },
-    "pp:ee:2026:q51": {
-      "question_uid": "pp:ee:2026:q51",
+    "ee:2026:q51": {
+      "question_uid": "ee:2026:q51",
+      "legacy_uid": "pp:ee:2026:q51",
       "exam_uid": "ee:2026:set1:main:q51",
       "title": "GATE EE 2026 | Set 1 | Question: 51",
       "section": "main",
@@ -2284,12 +2283,12 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "Diode conducts when $v_s > V_{dc}$:\n\n$100\\sin\\theta > 50 \\Rightarrow \\sin\\theta > 0.5 \\Rightarrow \\theta \\in [\\pi/6,\\ 5\\pi/6]$\n\nConducting current: $i = \\dfrac{v_s - V_{dc}}{R} = \\dfrac{100\\sin\\theta - 50}{10}$\n\nAverage current:\n\n$I_{avg} = \\dfrac{1}{2\\pi}\\int_{\\pi/6}^{5\\pi/6}\\dfrac{100\\sin\\theta - 50}{10}\\,d\\theta$\n\n$= \\dfrac{1}{2\\pi}\\left[-10\\cos\\theta - 5\\theta\\right]_{\\pi/6}^{5\\pi/6}$\n\n$= \\dfrac{1}{2\\pi}\\left[\\left(-10\\times(-\\frac{\\sqrt{3}}{2}) - \\frac{25\\pi}{6}\\right) - \\left(-10\\times\\frac{\\sqrt{3}}{2} - \\frac{5\\pi}{6}\\right)\\right]$\n\n$= \\dfrac{1}{2\\pi}\\left[10\\sqrt{3} - \\frac{20\\pi}{6}\\right] = \\dfrac{5\\sqrt{3}}{\\pi} - \\dfrac{5}{3} \\approx 2.756 - 1.667 \\approx 1.09$ A",
-        "images": []
+        "markdown": "Diode conducts when $v_s > V_{dc}$:\n\n$100\\sin\\theta > 50 \\Rightarrow \\sin\\theta > 0.5 \\Rightarrow \\theta \\in [\\pi/6,\\ 5\\pi/6]$\n\nConducting current: $i = \\dfrac{v_s - V_{dc}}{R} = \\dfrac{100\\sin\\theta - 50}{10}$\n\nAverage current:\n\n$I_{avg} = \\dfrac{1}{2\\pi}\\int_{\\pi/6}^{5\\pi/6}\\dfrac{100\\sin\\theta - 50}{10}\\,d\\theta$\n\n$= \\dfrac{1}{2\\pi}\\left[-10\\cos\\theta - 5\\theta\\right]_{\\pi/6}^{5\\pi/6}$\n\n$= \\dfrac{1}{2\\pi}\\left[\\left(-10\\times(-\\frac{\\sqrt{3}}{2}) - \\frac{25\\pi}{6}\\right) - \\left(-10\\times\\frac{\\sqrt{3}}{2} - \\frac{5\\pi}{6}\\right)\\right]$\n\n$= \\dfrac{1}{2\\pi}\\left[10\\sqrt{3} - \\frac{20\\pi}{6}\\right] = \\dfrac{5\\sqrt{3}}{\\pi} - \\dfrac{5}{3} \\approx 2.756 - 1.667 \\approx 1.09$ A\n\nTherefore, the correct answer is **1.09** (acceptable range: [1.04, 1.14])."
       }
     },
-    "pp:ee:2026:q52": {
-      "question_uid": "pp:ee:2026:q52",
+    "ee:2026:q52": {
+      "question_uid": "ee:2026:q52",
+      "legacy_uid": "pp:ee:2026:q52",
       "exam_uid": "ee:2026:set1:main:q52",
       "title": "GATE EE 2026 | Set 1 | Question: 52",
       "section": "main",
@@ -2327,12 +2326,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "Contour $C$: center $2+i$, radius $1.5$.\n\n<b>Check singularities:</b>\n\n$z = i$: distance from center $= |2+i-i| = 2 > 1.5 \\rightarrow$  <b>outside</b>\n\n$z = 2$: distance from center $= |2-(2+i)| = 1 < 1.5 \\rightarrow$  <b>inside</b>\n\n<b>By Residue Theorem:</b>\n\n$\\oint = 2\\pi i \\times \\text{Res}_{z=2}\\dfrac{(z+1)^2}{(z-i)(z-2)}$\n\n$\\text{Res}_{z=2} = \\dfrac{(2+1)^2}{(2-i)} = \\dfrac{9}{2-i} = \\dfrac{9(2+i)}{5} = \\dfrac{18+9i}{5}$\n\n$\\oint = 2\\pi i \\times \\dfrac{18+9i}{5} = \\dfrac{2\\pi(-9+18i)}{5}$\n\n$\\left|\\oint\\right| = \\dfrac{2\\pi}{5}\\sqrt{81+324} = \\dfrac{2\\pi}{5}\\times\\sqrt{405} = \\dfrac{2\\pi \\times 9\\sqrt{5}}{5} = \\dfrac{18\\pi}{\\sqrt{5}} \\approx 25.29$",
-        "images": []
+        "markdown": "Contour $C$: center $2+i$, radius $1.5$.\n\n<b>Check singularities:</b>\n\n$z = i$: distance from center $= |2+i-i| = 2 > 1.5 \\rightarrow$  <b>outside</b>\n\n$z = 2$: distance from center $= |2-(2+i)| = 1 < 1.5 \\rightarrow$  <b>inside</b>\n\n<b>By Residue Theorem:</b>\n\n$\\oint = 2\\pi i \\times \\text{Res}_{z=2}\\dfrac{(z+1)^2}{(z-i)(z-2)}$\n\n$\\text{Res}_{z=2} = \\dfrac{(2+1)^2}{(2-i)} = \\dfrac{9}{2-i} = \\dfrac{9(2+i)}{5} = \\dfrac{18+9i}{5}$\n\n$\\oint = 2\\pi i \\times \\dfrac{18+9i}{5} = \\dfrac{2\\pi(-9+18i)}{5}$\n\n$\\left|\\oint\\right| = \\dfrac{2\\pi}{5}\\sqrt{81+324} = \\dfrac{2\\pi}{5}\\times\\sqrt{405} = \\dfrac{2\\pi \\times 9\\sqrt{5}}{5} = \\dfrac{18\\pi}{\\sqrt{5}} \\approx 25.29$\n\nTherefore, the correct answer is **25.3** (acceptable range: [25, 25.6])."
       }
     },
-    "pp:ee:2026:q53": {
-      "question_uid": "pp:ee:2026:q53",
+    "ee:2026:q53": {
+      "question_uid": "ee:2026:q53",
+      "legacy_uid": "pp:ee:2026:q53",
       "exam_uid": "ee:2026:set1:main:q53",
       "title": "GATE EE 2026 | Set 1 | Question: 53",
       "section": "main",
@@ -2370,12 +2369,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Electrostatic Fields",
-        "markdown": "<b>Total sphere charge:</b>\n\n$Q_{vol} = \\rho_v \\times \\dfrac{4}{3}\\pi r^3 = \\dfrac{3}{\\pi} \\times 10^{-6} \\times \\dfrac{4\\pi}{3}(2)^3 = 32 \\times 10^{-6}$ C\n\n<b>Point charge:</b> $q = \\pi \\times 8.854 \\times 10^{-12}$ C\n\n<b>Distances from origin (both points outside sphere $r=2$):</b>\n\n$r_1 = \\sqrt{9+0+16} = 5$ m (start)\n\n$r_2 = \\sqrt{0+0+16} = 4$ m (end)\n\n<b>Work done:</b>\n\n$W = q(V_2 - V_1) = q \\times \\dfrac{Q_{vol}}{4\\pi\\epsilon_0}\\left(\\dfrac{1}{r_2} - \\dfrac{1}{r_1}\\right)$\n\n$= \\pi \\times 8.854 \\times 10^{-12} \\times \\dfrac{32 \\times 10^{-6}}{4\\pi \\times 8.854 \\times 10^{-12}}\\left(\\dfrac{1}{4} - \\dfrac{1}{5}\\right)$\n\n$= \\dfrac{32 \\times 10^{-6}}{4} \\times \\dfrac{1}{20} = 8 \\times 10^{-6} \\times 0.05 = 4 \\times 10^{-7}$ J $= 0.40\\ \\mu$J",
-        "images": []
+        "markdown": "<b>Total sphere charge:</b>\n\n$Q_{vol} = \\rho_v \\times \\dfrac{4}{3}\\pi r^3 = \\dfrac{3}{\\pi} \\times 10^{-6} \\times \\dfrac{4\\pi}{3}(2)^3 = 32 \\times 10^{-6}$ C\n\n<b>Point charge:</b> $q = \\pi \\times 8.854 \\times 10^{-12}$ C\n\n<b>Distances from origin (both points outside sphere $r=2$):</b>\n\n$r_1 = \\sqrt{9+0+16} = 5$ m (start)\n\n$r_2 = \\sqrt{0+0+16} = 4$ m (end)\n\n<b>Work done:</b>\n\n$W = q(V_2 - V_1) = q \\times \\dfrac{Q_{vol}}{4\\pi\\epsilon_0}\\left(\\dfrac{1}{r_2} - \\dfrac{1}{r_1}\\right)$\n\n$= \\pi \\times 8.854 \\times 10^{-12} \\times \\dfrac{32 \\times 10^{-6}}{4\\pi \\times 8.854 \\times 10^{-12}}\\left(\\dfrac{1}{4} - \\dfrac{1}{5}\\right)$\n\n$= \\dfrac{32 \\times 10^{-6}}{4} \\times \\dfrac{1}{20} = 8 \\times 10^{-6} \\times 0.05 = 4 \\times 10^{-7}$ J $= 0.40\\ \\mu$J\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.38, 0.42])."
       }
     },
-    "pp:ee:2026:q54": {
-      "question_uid": "pp:ee:2026:q54",
+    "ee:2026:q54": {
+      "question_uid": "ee:2026:q54",
+      "legacy_uid": "pp:ee:2026:q54",
       "exam_uid": "ee:2026:set1:main:q54",
       "title": "GATE EE 2026 | Set 1 | Question: 54",
       "section": "main",
@@ -2413,12 +2412,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Expand the objective:\n\n$f(\\alpha) = E\\left((X - \\alpha Y)^2\\right) = E(X^2) - 2\\alpha E(XY) + \\alpha^2 E(Y^2)$\n\n$= 4 - 2\\alpha(0.9) + 9\\alpha^2$\n\n$= 9\\alpha^2 - 1.8\\alpha + 4$\n\nMinimise by differentiating and setting to zero:\n\n$\\dfrac{df}{d\\alpha} = 18\\alpha - 1.8 = 0$\n\n$\\alpha = \\dfrac{1.8}{18} = 0.1$",
-        "images": []
+        "markdown": "Expand the objective:\n\n$f(\\alpha) = E\\left((X - \\alpha Y)^2\\right) = E(X^2) - 2\\alpha E(XY) + \\alpha^2 E(Y^2)$\n\n$= 4 - 2\\alpha(0.9) + 9\\alpha^2$\n\n$= 9\\alpha^2 - 1.8\\alpha + 4$\n\nMinimise by differentiating and setting to zero:\n\n$\\dfrac{df}{d\\alpha} = 18\\alpha - 1.8 = 0$\n\n$\\alpha = \\dfrac{1.8}{18} = 0.1$\n\nAnswer: <b>0.1</b>\n\nTherefore, the correct answer is **0.1**."
       }
     },
-    "pp:ee:2026:q55": {
-      "question_uid": "pp:ee:2026:q55",
+    "ee:2026:q55": {
+      "question_uid": "ee:2026:q55",
+      "legacy_uid": "pp:ee:2026:q55",
       "exam_uid": "ee:2026:set1:main:q55",
       "title": "GATE EE 2026 | Set 1 | Question: 55",
       "section": "main",
@@ -2456,12 +2455,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Let $I = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{x^n}{(1+x^n)(1+x^2)}dx$ where $n = 2026$.\n\nAlso define: $J = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{1}{(1+x^n)(1+x^2)}dx$\n\n<b>Step 1:</b> $I + J = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{1}{1+x^2}dx = \\dfrac{1}{\\pi} \\times \\dfrac{\\pi}{2} = \\dfrac{1}{2}$\n\n<b>Step 2:</b> Substitute $x \\to 1/x$ in $I$:\n\n$I = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{x^{-n}}{(1+x^{-n})(1+x^{-2})}\\dfrac{dx}{x^2} = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{1}{(x^n+1)(1+x^2)}dx = J$\n\n<b>Step 3:</b> Since $I = J$:\n\n$2I = \\dfrac{1}{2} \\Rightarrow I = \\dfrac{1}{4} = 0.25$",
-        "images": []
+        "markdown": "Let $I = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{x^n}{(1+x^n)(1+x^2)}dx$ where $n = 2026$.\n\nAlso define: $J = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{1}{(1+x^n)(1+x^2)}dx$\n\n<b>Step 1:</b> $I + J = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{1}{1+x^2}dx = \\dfrac{1}{\\pi} \\times \\dfrac{\\pi}{2} = \\dfrac{1}{2}$\n\n<b>Step 2:</b> Substitute $x \\to 1/x$ in $I$:\n\n$I = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{x^{-n}}{(1+x^{-n})(1+x^{-2})}\\dfrac{dx}{x^2} = \\dfrac{1}{\\pi}\\int_0^{\\infty}\\dfrac{1}{(x^n+1)(1+x^2)}dx = J$\n\n<b>Step 3:</b> Since $I = J$:\n\n$2I = \\dfrac{1}{2} \\Rightarrow I = \\dfrac{1}{4} = 0.25$\n\nAnswer: <b>0.25</b>\n\nTherefore, the correct answer is **0.25**."
       }
     },
-    "pp:ee:2026:q56": {
-      "question_uid": "pp:ee:2026:q56",
+    "ee:2026:ga:q1": {
+      "question_uid": "ee:2026:ga:q1",
+      "legacy_uid": "pp:ee:2026:q56",
       "exam_uid": "ee:2026:set1:ga:q1",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 1",
       "section": "ga",
@@ -2500,12 +2499,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "In the sentence 'The shopkeeper sells lemons':\n\nSubject = 'The shopkeeper'\n\nVerb = 'sells'\n\nObject = 'lemons' (receives the action)",
-        "images": []
+        "markdown": "In the sentence 'The shopkeeper sells lemons':\n\nSubject = 'The shopkeeper'\n\nVerb = 'sells'\n\nObject = 'lemons' (receives the action)\n\nAnswer: <b>(A) object</b>\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q57": {
-      "question_uid": "pp:ee:2026:q57",
+    "ee:2026:ga:q2": {
+      "question_uid": "ee:2026:ga:q2",
+      "legacy_uid": "pp:ee:2026:q57",
       "exam_uid": "ee:2026:set1:ga:q2",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 2",
       "section": "ga",
@@ -2547,8 +2546,9 @@
         "markdown": "The main figure shows an oval and two triangles with a missing bottom-right portion.\n\nTo complete the three non-overlapping shapes:\n The missing piece must complete the right side of the oval\n It must also complete the second triangle pointing downward-right\n The pieces must not overlap each other\n\nOption Q provides the correct curved (oval) edge on the left and the correct triangular edge on the right, fitting perfectly without overlap.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q58": {
-      "question_uid": "pp:ee:2026:q58",
+    "ee:2026:ga:q3": {
+      "question_uid": "ee:2026:ga:q3",
+      "legacy_uid": "pp:ee:2026:q58",
       "exam_uid": "ee:2026:set1:ga:q3",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 3",
       "section": "ga",
@@ -2587,12 +2587,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Set equal: $x^{2} = -x^{2} - 2x - 1$\n\n$\\Rightarrow 2x^{2} + 2x + 1 = 0$\n\nDiscriminant $= (2)^{2} - 4(2)(1) = 4 - 8 = -4 < 0$\n\nNo real solutions -> curves do not intersect.\n\nNote: $-x^{2}-2x-1 = -(x+1)^{2} \\leq 0$ and $x^{2} \\geq 0$, so they only meet if both sides = 0 simultaneously, which is impossible.",
-        "images": []
+        "markdown": "Set equal: $x^{2} = -x^{2} - 2x - 1$\n\n$\\Rightarrow 2x^{2} + 2x + 1 = 0$\n\nDiscriminant $= (2)^{2} - 4(2)(1) = 4 - 8 = -4 < 0$\n\nNo real solutions -> curves do not intersect.\n\nNote: $-x^{2}-2x-1 = -(x+1)^{2} \\leq 0$ and $x^{2} \\geq 0$, so they only meet if both sides = 0 simultaneously, which is impossible.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q59": {
-      "question_uid": "pp:ee:2026:q59",
+    "ee:2026:ga:q4": {
+      "question_uid": "ee:2026:ga:q4",
+      "legacy_uid": "pp:ee:2026:q59",
       "exam_uid": "ee:2026:set1:ga:q4",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 4",
       "section": "ga",
@@ -2631,12 +2631,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Key inference: If Anish had scored 100 runs, he would have become the <i>youngest captain in the team's history</i>.\n\nThis implies the current captain is older than Anish (since Anish becoming captain would make him the youngest-ever captain).\n\n(A) is false - Anish scored 0 runs.\n\n(B) is false - captaincy has not changed.\n\n(D) is not stated - he would be youngest <i>captain</i>, not youngest player.",
-        "images": []
+        "markdown": "Key inference: If Anish had scored 100 runs, he would have become the <i>youngest captain in the team's history</i>.\n\nThis implies the current captain is older than Anish (since Anish becoming captain would make him the youngest-ever captain).\n\n(A) is false - Anish scored 0 runs.\n\n(B) is false - captaincy has not changed.\n\n(D) is not stated - he would be youngest <i>captain</i>, not youngest player.\n\nAnswer: <b>(C)</b>\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ee:2026:q60": {
-      "question_uid": "pp:ee:2026:q60",
+    "ee:2026:ga:q5": {
+      "question_uid": "ee:2026:ga:q5",
+      "legacy_uid": "pp:ee:2026:q60",
       "exam_uid": "ee:2026:set1:ga:q5",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 5",
       "section": "ga",
@@ -2675,12 +2675,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Rotating figure (I) by $45^{\\circ}$ clockwise maps the dominant protrusions from axis-aligned directions to diagonal directions.\n\nComparing with the four options, <b>Q</b> matches the correct $45^{\\circ}$ clockwise rotation.",
-        "images": []
+        "markdown": "Rotating figure (I) by $45^{\\circ}$ clockwise maps the dominant protrusions from axis-aligned directions to diagonal directions.\n\nComparing with the four options, <b>Q</b> matches the correct $45^{\\circ}$ clockwise rotation.\n\nAnswer: <b>(B) Q</b>\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q61": {
-      "question_uid": "pp:ee:2026:q61",
+    "ee:2026:ga:q6": {
+      "question_uid": "ee:2026:ga:q6",
+      "legacy_uid": "pp:ee:2026:q61",
       "exam_uid": "ee:2026:set1:ga:q6",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 6",
       "section": "ga",
@@ -2722,8 +2722,9 @@
         "markdown": null
       }
     },
-    "pp:ee:2026:q62": {
-      "question_uid": "pp:ee:2026:q62",
+    "ee:2026:ga:q7": {
+      "question_uid": "ee:2026:ga:q7",
+      "legacy_uid": "pp:ee:2026:q62",
       "exam_uid": "ee:2026:set1:ga:q7",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 7",
       "section": "ga",
@@ -2762,12 +2763,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Concept:</b>\n\nWhen two secants intersect outside a circle, the angle between them is equal to half the difference of the intercepted arcs.\n\nThus,\n\n$\\angle RTS\n\n=\n\n\\frac12\n\n\\left(\n\n\\widehat{PQ}\n\n-\n\n\\widehat{RS}\n\n\\right).$\n\n<b>Step 1: Determine the intercepted arcs</b>\n\nSince\n\n$PQ$\n\nis the diameter,\n\n$\\widehat{PQ}=180^\\circ.$\n\nAlso, the central angle\n\n$\\angle ROS=80^\\circ,$\n\ntherefore,\n\n$\\widehat{RS}=80^\\circ.$\n\n<b>Step 2: Apply the exterior secant angle theorem</b>\n\nSubstituting the arc measures,\n\n$\\angle RTS\n\n=\n\n\\frac12\n\n\\left(\n\n180^\\circ-80^\\circ\n\n\\right).$\n\n$=\n\n\\frac12\\times100^\\circ\n\n=\n\n50^\\circ.$",
-        "images": []
+        "markdown": "<b>Concept:</b>\n\nWhen two secants intersect outside a circle, the angle between them is equal to half the difference of the intercepted arcs.\n\nThus,\n\n$\\angle RTS\n\n=\n\n\\frac12\n\n\\left(\n\n\\widehat{PQ}\n\n-\n\n\\widehat{RS}\n\n\\right).$\n\n<b>Step 1: Determine the intercepted arcs</b>\n\nSince\n\n$PQ$\n\nis the diameter,\n\n$\\widehat{PQ}=180^\\circ.$\n\nAlso, the central angle\n\n$\\angle ROS=80^\\circ,$\n\ntherefore,\n\n$\\widehat{RS}=80^\\circ.$\n\n<b>Step 2: Apply the exterior secant angle theorem</b>\n\nSubstituting the arc measures,\n\n$\\angle RTS\n\n=\n\n\\frac12\n\n\\left(\n\n180^\\circ-80^\\circ\n\n\\right).$\n\n$=\n\n\\frac12\\times100^\\circ\n\n=\n\n50^\\circ.$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q63": {
-      "question_uid": "pp:ee:2026:q63",
+    "ee:2026:ga:q8": {
+      "question_uid": "ee:2026:ga:q8",
+      "legacy_uid": "pp:ee:2026:q63",
       "exam_uid": "ee:2026:set1:ga:q8",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 8",
       "section": "ga",
@@ -2806,12 +2807,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Pattern: The number inside = factorial of the number of sides.\n\nTriangle (3 sides): $3! = 6$\n\nSquare (4 sides): $4! = 24$\n\nPentagon (5 sides): $5! = 120$\n\nHexagon (6 sides): $6! = 720$",
-        "images": []
+        "markdown": "Pattern: The number inside = factorial of the number of sides.\n\nTriangle (3 sides): $3! = 6$\n\nSquare (4 sides): $4! = 24$\n\nPentagon (5 sides): $5! = 120$\n\nHexagon (6 sides): $6! = 720$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ee:2026:q64": {
-      "question_uid": "pp:ee:2026:q64",
+    "ee:2026:ga:q9": {
+      "question_uid": "ee:2026:ga:q9",
+      "legacy_uid": "pp:ee:2026:q64",
       "exam_uid": "ee:2026:set1:ga:q9",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 9",
       "section": "ga",
@@ -2850,12 +2851,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Step-by-step Transition:\n\nStep 1:\n\nFor bulb 3 (OFF), it has one ON neighbor (bulb 2). It turns ON.\n\nFor bulb 5 (ON), both neighbors (bulbs 4 and 6) are ON. It turns OFF.\n\nNew configuration after Step 1: [1,1,1,0,0,1,1]\n\nStep 2:\n\nFor bulb 4 (OFF), it has exactly one ON neighbor (bulb 5 was OFF). It turns ON.\n\nFor bulb 6 (ON), both neighbors (bulbs 5 and 7) are OFF. So, it remains ON.\n\nNew configuration after Step 2: [1,1,1,1,0,1,1]\n\nContinuing similarly, we perform this process up to Step 8, applying the rules repeatedly: [1,1,1,1,0,1,1] -> [1,1,1,0,1,1,1] -> [1,1,0,1,1,0,1] ... and so on.\n\nFinally, after Step 8, the bulb configuration is determined to be: [0,1,1,0,1,0,1]\n\nCounting the number of ON bulbs at Step 8 gives us 4.",
-        "images": []
+        "markdown": "Step-by-step Transition:\n\nStep 1:\n\nFor bulb 3 (OFF), it has one ON neighbor (bulb 2). It turns ON.\n\nFor bulb 5 (ON), both neighbors (bulbs 4 and 6) are ON. It turns OFF.\n\nNew configuration after Step 1: [1,1,1,0,0,1,1]\n\nStep 2:\n\nFor bulb 4 (OFF), it has exactly one ON neighbor (bulb 5 was OFF). It turns ON.\n\nFor bulb 6 (ON), both neighbors (bulbs 5 and 7) are OFF. So, it remains ON.\n\nNew configuration after Step 2: [1,1,1,1,0,1,1]\n\nContinuing similarly, we perform this process up to Step 8, applying the rules repeatedly: [1,1,1,1,0,1,1] -> [1,1,1,0,1,1,1] -> [1,1,0,1,1,0,1] ... and so on.\n\nFinally, after Step 8, the bulb configuration is determined to be: [0,1,1,0,1,0,1]\n\nCounting the number of ON bulbs at Step 8 gives us 4.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ee:2026:q65": {
-      "question_uid": "pp:ee:2026:q65",
+    "ee:2026:ga:q10": {
+      "question_uid": "ee:2026:ga:q10",
+      "legacy_uid": "pp:ee:2026:q65",
       "exam_uid": "ee:2026:set1:ga:q10",
       "title": "GATE EE 2026 | Set 1 | GA | Question: 10",
       "section": "ga",
@@ -2894,8 +2895,7 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "$P^{2} - Q^{2} = 13$\n\n$\\Rightarrow (P-Q)(P+Q) = 13$\n\nSince 13 is prime and $P, Q$ are positive integers:\n\n$P - Q = 1$ and $P + Q = 13$\n\nSolving: $P = 7,\\ Q = 6$\n\nProduct $= 7 \\times 6 = 42$",
-        "images": []
+        "markdown": "$P^{2} - Q^{2} = 13$\n\n$\\Rightarrow (P-Q)(P+Q) = 13$\n\nSince 13 is prime and $P, Q$ are positive integers:\n\n$P - Q = 1$ and $P + Q = 13$\n\nSolving: $P = 7,\\ Q = 6$\n\nProduct $= 7 \\times 6 = 42$\n\nTherefore, the correct answer is **D**."
       }
     }
   }

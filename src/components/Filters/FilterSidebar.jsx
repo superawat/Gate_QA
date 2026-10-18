@@ -145,7 +145,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             {/* Scrollable Filter Content */}
-            <div className="p-3">
+            <div className="p-3 pb-24">
                 <div className="flex flex-col gap-4">
 
                     {/* ── GATE CSE Section (distinct card with toggle + subjects) ── */}

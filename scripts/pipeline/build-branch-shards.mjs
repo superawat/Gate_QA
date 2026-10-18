@@ -245,11 +245,12 @@ async function buildNewBranchShards() {
       const recordsByQuestionUid = {};
 
       for (const q of (rawData.questions || [])) {
-        const uid = `pp:${branch}:${year}:q${q.qNum}${set > 1 ? `-s${set}` : ""}`;
         const identity = resolveQuestionIdentity(branch, year, set, q.qNum, totalQuestionsInPaper, q);
-        const goLinkEntry = branchGoLinks[uid];
+        const legacyUid = `pp:${branch}:${year}:q${q.qNum}${set > 1 ? `-s${set}` : ""}`;
+        const uid = identity.canonical_uid;
+        const goLinkEntry = branchGoLinks[uid] || branchGoLinks[legacyUid];
         const solution_link = goLinkEntry?.goUrl || null;
-        const sol = solutionsMap[uid];
+        const sol = solutionsMap[uid] || solutionsMap[legacyUid];
 
         let officialAnswer = "A";
         let tolerance = q.tolerance || sol?.tolerance || null;
@@ -272,6 +273,7 @@ async function buildNewBranchShards() {
 
         recordsByQuestionUid[uid] = {
           question_uid: uid,
+          legacy_uid: legacyUid,
           exam_uid: identity.exam_uid,
           title: identity.title,
           section: identity.section,
@@ -308,14 +310,16 @@ async function buildNewBranchShards() {
               },
         };
 
-        // Register in authoritative answer map
-        answersData.records_by_question_uid[uid] = {
+        // Register in authoritative answer map (both canonical UID and legacy UID for zero data loss)
+        const answerRecord = {
           answer_uid: uid,
           type: qType,
           answer: officialAnswer,
           tolerance,
-          source: { kind: "official_answer_key", note: `gate_${branch}_${year}:set_${set}:q${q.qNum}` },
+          source: { kind: "official_answer_key", note: `gate_${branch}_${year}:set_${set}:q${identity.question_number}` },
         };
+        answersData.records_by_question_uid[uid] = answerRecord;
+        answersData.records_by_question_uid[legacyUid] = answerRecord;
 
         totalQuestionsBuilt++;
       }

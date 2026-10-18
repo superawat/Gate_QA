@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { DaQuestionService } from "../../services/DaQuestionService";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 
 export default function DaToggle() {
@@ -16,10 +17,15 @@ export default function DaToggle() {
 
   const [expandedSubjectSlugs, setExpandedSubjectSlugs] = useState(() => new Set());
 
-  const daSubjects = useMemo(
-    () => subjects.filter((subject) => subject?.slug?.startsWith("da:")),
-    [subjects]
-  );
+  const daSubjects = useMemo(() => {
+    if (DaQuestionService.loaded) {
+      const daTags = DaQuestionService.getStructuredTags();
+      if (Array.isArray(daTags?.subjects) && daTags.subjects.length > 0) {
+        return daTags.subjects.filter((subject) => subject?.slug?.startsWith("da:"));
+      }
+    }
+    return subjects.filter((subject) => subject?.slug?.startsWith("da:"));
+  }, [subjects, daLoading]);
 
   const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
   const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
@@ -29,7 +35,7 @@ export default function DaToggle() {
     daSubjects.forEach((subject) => {
       const subjectSlug = subject?.slug;
       if (!subjectSlug) return;
-      const subtopics = structuredSubtopics[subjectSlug] || [];
+      const subtopics = (DaQuestionService.loaded && DaQuestionService.getStructuredTags()?.structuredSubtopics?.[subjectSlug]) || structuredSubtopics[subjectSlug] || [];
       nextMap.set(
         subjectSlug,
         [...subtopics].sort((left, right) =>
@@ -40,7 +46,7 @@ export default function DaToggle() {
       );
     });
     return nextMap;
-  }, [daSubjects, structuredSubtopics]);
+  }, [daSubjects, structuredSubtopics, daLoading]);
 
   useEffect(() => {
     const activeDaSelected = selectedSubjects.filter((slug) => slug.startsWith("da:"));
@@ -261,6 +267,13 @@ export default function DaToggle() {
               );
             })}
           </div>
+      ) : includeDa && daLoading ? (
+        <div className="mt-3 border-t border-[color:var(--color-purple-border)]/50 pt-3">
+          <div className="flex items-center gap-2 py-1 text-xs text-[color:var(--color-text-muted)] animate-pulse">
+            <span className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
+            Loading GATE DA topics...
+          </div>
+        </div>
       ) : null}
     </div>
   );

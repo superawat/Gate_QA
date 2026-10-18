@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { FiZap, FiActivity, FiSettings } from "react-icons/fi";
 import { FaHardHat } from "react-icons/fa";
+import { BranchQuestionService } from "../../services/BranchQuestionService";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 
 const BRANCH_CONFIGS: Record<
@@ -71,22 +72,39 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
 
   // Filter subjects belonging to this branch (e.g. starting with "ec-" or "ec:")
   const branchSubjects = useMemo(() => {
+    if (BranchQuestionService.isLoaded(track)) {
+      const branchTags = BranchQuestionService.getStructuredTags(track);
+      if (Array.isArray(branchTags?.subjects) && branchTags.subjects.length > 0) {
+        return branchTags.subjects.filter((subject: any) => {
+          const slug = String(subject?.slug || "");
+          if (slug.includes("general-aptitude") || slug === "ga") return false;
+          return slug.startsWith(`${track}-`) || slug.startsWith(`${track}:`);
+        });
+      }
+    }
     return subjects.filter((subject: any) => {
       const slug = String(subject?.slug || "");
       if (slug.includes("general-aptitude") || slug === "ga") return false;
       return slug.startsWith(`${track}-`) || slug.startsWith(`${track}:`);
     });
-  }, [subjects, track]);
+  }, [subjects, track, isLoading]);
 
   const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
   const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
 
   const sortedSubtopicsBySubject = useMemo(() => {
     const nextMap = new Map();
+    let subtopicsSource = structuredSubtopics;
+    if (BranchQuestionService.isLoaded(track)) {
+      const branchTags = BranchQuestionService.getStructuredTags(track);
+      if (branchTags?.structuredSubtopics && Object.keys(branchTags.structuredSubtopics).length > 0) {
+        subtopicsSource = { ...branchTags.structuredSubtopics, ...structuredSubtopics };
+      }
+    }
     branchSubjects.forEach((subject: any) => {
       const subjectSlug = subject?.slug;
       if (!subjectSlug) return;
-      const subs = structuredSubtopics[subjectSlug] || [];
+      const subs = subtopicsSource[subjectSlug] || [];
       nextMap.set(
         subjectSlug,
         [...subs].sort((left, right) =>
@@ -97,7 +115,7 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
       );
     });
     return nextMap;
-  }, [branchSubjects, structuredSubtopics]);
+  }, [branchSubjects, structuredSubtopics, track]);
 
   useEffect(() => {
     const activeSelected = selectedSubjects.filter((slug: string) =>
@@ -318,6 +336,13 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
               </div>
             );
           })}
+        </div>
+      ) : includeBranch && isLoading ? (
+        <div className="mt-3 border-t border-[color:var(--color-border)]/50 pt-3">
+          <div className="flex items-center gap-2 py-1 text-xs text-[color:var(--color-text-muted)] animate-pulse">
+            <span className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
+            Loading {config.title} topics...
+          </div>
         </div>
       ) : null}
     </div>

@@ -34,6 +34,7 @@ const BOILERPLATE_MARKERS = [
   "physical principles, constitutive laws",
   "The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.",
   "Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.",
+  "Therefore, the correct answer is **Option MTA**.",
 ];
 
 function isBoilerplate(text) {

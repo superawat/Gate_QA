@@ -766,8 +766,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "gatecse-2020: regular-expression",
-        "markdown": "Check each option against strings with an odd number of 1s:\n\n- Option 1: $(0+1)^*$ inside can add extra 1s, e.g. 1111 (even) is generated False\n\n- Option 2: always ends with 1, so \"10\" is missing False\n\n- Option 3: always starts with 1, so \"01\" is missing False\n\n- Option 4: $(0^*10^*10^*)^*10^*$ gives pairs of 1s and then one more 1, but a leading 0 before a single 1 (e.g. \"01\") cannot be produced False\n\nNone of the options is exactly right, so the official key gave <b>marks to all</b>. A correct expression is $0^*1(0^*10^*1)^*0^*$.\n\n<b>Answer: Option 4 is the closest (MTA in the official key)</b>\n\nAs per Official GATE CSE 2020 Answer key _MTA (Marks to All)",
+        "concept": "Theory of Computation - Regular Expressions",
+        "markdown": "- **Objective:** Find the regular expression representing all binary strings with an **odd number of 1s**.\n- **Evaluating the Options:**\n  - **Option A:** $((0+1)^*1(0+1)^*1)^*10^*$ — Contains $(0+1)^*$ inside the outer Kleene star, which can generate arbitrary substrings including an even number of 1s (e.g., $1111$ can be generated) $\\rightarrow$ **Incorrect**.\n  - **Option B:** $(0^*10^*10^*)^*0^*1$ — Every string generated must end with a $1$, which fails to generate valid strings ending in $0$ such as $\"10\"$ $\\rightarrow$ **Incorrect**.\n  - **Option C:** $10^*(0^*10^*10^*)^*$ — Every string generated must start with a $1$, which fails to generate valid strings starting with $0$ such as $\"01\"$ $\\rightarrow$ **Incorrect**.\n  - **Option D:** $(0^*10^*10^*)^*10^*$ — Generates pairs of $1$s followed by a single $1$ and trailing $0$s, but cannot generate strings with leading $0$s before the solitary $1$ such as $\"01\"$ $\\rightarrow$ **Incorrect**.\n\n- **Conclusion:**\n  None of the four options correctly represents the language (a correct expression is $0^*1(0^*10^*1)^*0^*$). Because of this flaw, the official IIT Delhi committee awarded **Marks to All (MTA)**.\n\nTherefore, none of the options is strictly correct (Official Key: **Marks to All / MTA**).",
         "images": []
       }
     },
@@ -1412,8 +1412,7 @@
       },
       "detailed_solution": {
         "concept": "gatecse-2020: numerical-answers",
-        "markdown": "Block = 256 bytes = 32 words of 8 bytes.\n\nMiss penalty = first word 20 ns + 31 more words $\\times$ 5 ns = 175 ns.\n\nAverage access time = hit time + miss rate $\\times$ miss penalty = $3+0.06\\times175=3+10.5=13.5$ ns.\n\n(If cache access is counted only on hits: $0.94\\times3+0.06\\times175\\approx13.3$, which the official key also accepts.)\n\n<b>Answer: 13.5</b>\n\nOther Answer as per GATE 2020 Answer Key : 13.3 to 13.3 or 13.5 to 13.5",
-        "images": []
+        "markdown": "Other Answer as per GATE 2020 Answer Key : 13.3 to 13.3 or 13.5 to 13.5\n\nTherefore, the correct answer is **13.5**."
       }
     },
     "go:333209": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.596Z",
+  "generatedAt": "2026-10-18T16:30:38.339Z",
   "shardKey": "ce-2015-s1",
   "yearSetKey": "ce-2015-s1",
   "yearSetIdentity": "ce:2015:set-1",
@@ -9,8 +9,9 @@
   "label": "2015 Set 1",
   "questionCount": 65,
   "recordsByQuestionUid": {
-    "pp:ce:2015:q1": {
-      "question_uid": "pp:ce:2015:q1",
+    "ce:2015:q1": {
+      "question_uid": "ce:2015:q1",
+      "legacy_uid": "pp:ce:2015:q1",
       "exam_uid": "ce:2015:set1:main:q1",
       "title": "GATE CE 2015 | Set 1 | Question: 1",
       "section": "main",
@@ -48,12 +49,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Given system of equations has no solution if the lines are parallel i.e., their slopes are equal\n\n$$\\begin{aligned}     \\frac{2}{3}&=\\frac{3}{p} \\\\ \\Rightarrow   \\;\\;   p&=4.5 \\end{aligned}$$",
-        "images": []
+        "markdown": "Given system of equations has no solution if the lines are parallel i.e., their slopes are equal\n\n$$\\begin{aligned}     \\frac{2}{3}&=\\frac{3}{p} \\\\ \\Rightarrow   \\;\\;   p&=4.5 \\end{aligned}$$\n\nTherefore, the correct answer is **4.5** (acceptable range: [4.49, 4.51])."
       }
     },
-    "pp:ce:2015:q2": {
-      "question_uid": "pp:ce:2015:q2",
+    "ce:2015:q2": {
+      "question_uid": "ce:2015:q2",
+      "legacy_uid": "pp:ce:2015:q2",
       "exam_uid": "ce:2015:set1:main:q2",
       "title": "GATE CE 2015 | Set 1 | Question: 2",
       "section": "main",
@@ -93,14 +94,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-9b895eb1a5.webp\" />\n\nExact value is computed by integration which follows the exact shape of graph while computing the area.\n\nWhereas, in Trapezoidal rule, the lines joining each points are considered straight lines which is not the exact variation of graph all the time like as shown figure.\n\n$\\therefore    J\\gt I$\n\nOR\n\n$\\text{Error } =-\\frac{h^{3}}{12}{f}''\\left ( \\Im \\right )\\times n_{i}$\n\nHere, $f\\left ( x \\right )=x^{2}$\n\nor, ${f}'\\left ( x \\right )=2x$\n\nor, ${f}''\\left ( x \\right )=2\\gt 0$\n\nSince ${f}''\\left ( x \\right )$ is positive, the error is negative.\n\nSince error = exact-approximate.\n\n$=I-J$\n\nand since error is negative in this case $J\\gt I$ is true.",
-        "images": [
-          "/question-images/ce/2015/ce-2015-9b895eb1a5.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-9b895eb1a5.webp\" />\n\nExact value is computed by integration which follows the exact shape of graph while computing the area.\n\nWhereas, in Trapezoidal rule, the lines joining each points are considered straight lines which is not the exact variation of graph all the time like as shown figure.\n\n$\\therefore    J\\gt I$\n\nOR\n\n$\\text{Error } =-\\frac{h^{3}}{12}{f}''\\left ( \\Im \\right )\\times n_{i}$\n\nHere, $f\\left ( x \\right )=x^{2}$\n\nor, ${f}'\\left ( x \\right )=2x$\n\nor, ${f}''\\left ( x \\right )=2\\gt 0$\n\nSince ${f}''\\left ( x \\right )$ is positive, the error is negative.\n\nSince error = exact-approximate.\n\n$=I-J$\n\nand since error is negative in this case $J\\gt I$ is true.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q3": {
-      "question_uid": "pp:ce:2015:q3",
+    "ce:2015:q3": {
+      "question_uid": "ce:2015:q3",
+      "legacy_uid": "pp:ce:2015:q3",
       "exam_uid": "ce:2015:set1:main:q3",
       "title": "GATE CE 2015 | Set 1 | Question: 3",
       "section": "main",
@@ -138,14 +137,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Given, $\\; \\; \\; \\; q=0.4$\n\n<img src=\"/question-images/ce/2015/ce-2015-ec09bbc96d.webp\" />\n\nRequired value $=V\\left ( X \\right )=E\\left ( X^{2} \\right )-\\left [ E\\left ( X \\right ) \\right ]^{2}$\n\n$E\\left ( X \\right )=\\sum_{i}^{}\\, X_{i}p_{i}=0\\times 0.4+1\\times 0.6=0.6$\n\n$E\\left ( X^{2} \\right )=\\sum_{i}^{}\\, X_{i}^{2}p_{i}=0^{2}\\times 0.4+1^{2}\\times 0.6=0.6$\n\n$\\therefore \\; \\; \\; V\\left ( X \\right )=E\\left ( X^{2} \\right )-\\left [ E\\left ( X \\right ) \\right ]^{2}=0.6-0.36=0.24$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-ec09bbc96d.webp"
-        ]
+        "markdown": "Given, $\\; \\; \\; \\; q=0.4$\n\n<img src=\"/question-images/ce/2015/ce-2015-ec09bbc96d.webp\" />\n\nRequired value $=V\\left ( X \\right )=E\\left ( X^{2} \\right )-\\left [ E\\left ( X \\right ) \\right ]^{2}$\n\n$E\\left ( X \\right )=\\sum_{i}^{}\\, X_{i}p_{i}=0\\times 0.4+1\\times 0.6=0.6$\n\n$E\\left ( X^{2} \\right )=\\sum_{i}^{}\\, X_{i}^{2}p_{i}=0^{2}\\times 0.4+1^{2}\\times 0.6=0.6$\n\n$\\therefore \\; \\; \\; V\\left ( X \\right )=E\\left ( X^{2} \\right )-\\left [ E\\left ( X \\right ) \\right ]^{2}=0.6-0.36=0.24$\n\nTherefore, the correct answer is **0.24** (acceptable range: [0.23, 0.25])."
       }
     },
-    "pp:ce:2015:q4": {
-      "question_uid": "pp:ce:2015:q4",
+    "ce:2015:q4": {
+      "question_uid": "ce:2015:q4",
+      "legacy_uid": "pp:ce:2015:q4",
       "exam_uid": "ce:2015:set1:main:q4",
       "title": "GATE CE 2015 | Set 1 | Question: 4",
       "section": "main",
@@ -185,12 +182,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "As slump increase, water content increases means\n\nworkability increases.\n\nCompaction factor\n\n$=\\frac{\\text { Weight of partially compacted concrete }}{\\text { Weight of fully compacted concrete }}$\n\n$\\therefore$ Compaction factor will also increase.\n\nThe time required for complete remoulding in\n\nseconds is considered as a measure of\n\nworkability and is expressed as the number of\n\nVee-Bee seconds.\n\n$\\therefore$ As workability increases, Vee-Bee time decreases.",
-        "images": []
+        "markdown": "As slump increase, water content increases means\n\nworkability increases.\n\nCompaction factor\n\n$=\\frac{\\text { Weight of partially compacted concrete }}{\\text { Weight of fully compacted concrete }}$\n\n$\\therefore$ Compaction factor will also increase.\n\nThe time required for complete remoulding in\n\nseconds is considered as a measure of\n\nworkability and is expressed as the number of\n\nVee-Bee seconds.\n\n$\\therefore$ As workability increases, Vee-Bee time decreases.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2015:q5": {
-      "question_uid": "pp:ce:2015:q5",
+    "ce:2015:q5": {
+      "question_uid": "ce:2015:q5",
+      "legacy_uid": "pp:ce:2015:q5",
       "exam_uid": "ce:2015:set1:main:q5",
       "title": "GATE CE 2015 | Set 1 | Question: 5",
       "section": "main",
@@ -230,12 +227,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "An air-entraining agent introduces air in the form\n\nof bubbles that occupy upto 5% of the volume of\n\nconcrete distributed uniformly throughout cement\n\npaste. Thus, for the same amount of water/cement\n\nratio, we get higher workability.",
-        "images": []
+        "markdown": "An air-entraining agent introduces air in the form\n\nof bubbles that occupy upto 5% of the volume of\n\nconcrete distributed uniformly throughout cement\n\npaste. Thus, for the same amount of water/cement\n\nratio, we get higher workability.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q6": {
-      "question_uid": "pp:ce:2015:q6",
+    "ce:2015:q6": {
+      "question_uid": "ce:2015:q6",
+      "legacy_uid": "pp:ce:2015:q6",
       "exam_uid": "ce:2015:set1:main:q6",
       "title": "GATE CE 2015 | Set 1 | Question: 6",
       "section": "main",
@@ -275,14 +272,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-3efdb4bb58.webp\" />",
-        "images": [
-          "/question-images/ce/2015/ce-2015-3efdb4bb58.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-3efdb4bb58.webp\" />\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2015:q7": {
-      "question_uid": "pp:ce:2015:q7",
+    "ce:2015:q7": {
+      "question_uid": "ce:2015:q7",
+      "legacy_uid": "pp:ce:2015:q7",
       "exam_uid": "ce:2015:set1:main:q7",
       "title": "GATE CE 2015 | Set 1 | Question: 7",
       "section": "main",
@@ -322,14 +317,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Matrix Method of Structural Analysis",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-f3769dd50a.webp\" />\n\nBy giving unit displacement in $2^{\\text {nd }}$ direction without\n\ngiving displacement in any other direction, the\n\nforce developed R_{6}, is,\n\n$K_{22}=\\frac{12 E I}{L^{3}}$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-f3769dd50a.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-f3769dd50a.webp\" />\n\nBy giving unit displacement in $2^{\\text {nd }}$ direction without\n\ngiving displacement in any other direction, the\n\nforce developed R_{6}, is,\n\n$K_{22}=\\frac{12 E I}{L^{3}}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2015:q8": {
-      "question_uid": "pp:ce:2015:q8",
+    "ce:2015:q8": {
+      "question_uid": "ce:2015:q8",
+      "legacy_uid": "pp:ce:2015:q8",
       "exam_uid": "ce:2015:set1:main:q8",
       "title": "GATE CE 2015 | Set 1 | Question: 8",
       "section": "main",
@@ -367,12 +360,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
-        "markdown": "Bond strength of concrete\n\n$$\\begin{aligned} &=\\text{ Tensile force in steel}\\\\ \\tau_{b d} \\times\\left(L_{d} \\pi \\phi\\right)&=0.87 f_{y} \\times\\left(\\frac{\\pi}{4} \\phi^{2}\\right)\\\\ \\Rightarrow \\quad L_{d}&=\\frac{0.87 f_{y} \\phi}{4 \\tau_{b d}} \\\\ \\end{aligned}$$\n\nFor deformed bars $\\tau_{\\text {bd }}$ value is increased by 60 %\n\n$$\\begin{aligned} \\therefore \\quad L_{d}&=\\frac{\\phi \\sigma_{s}}{4 \\times\\left(1.6 \\tau_{b d}\\right)}=\\frac{\\phi \\sigma_{s}}{6.4 \\tau_{b d}}\\\\ \\therefore \\quad k&=6.4 \\end{aligned}$$",
-        "images": []
+        "markdown": "Bond strength of concrete\n\n$$\\begin{aligned} &=\\text{ Tensile force in steel}\\\\ \\tau_{b d} \\times\\left(L_{d} \\pi \\phi\\right)&=0.87 f_{y} \\times\\left(\\frac{\\pi}{4} \\phi^{2}\\right)\\\\ \\Rightarrow \\quad L_{d}&=\\frac{0.87 f_{y} \\phi}{4 \\tau_{b d}} \\\\ \\end{aligned}$$\n\nFor deformed bars $\\tau_{\\text {bd }}$ value is increased by 60 %\n\n$$\\begin{aligned} \\therefore \\quad L_{d}&=\\frac{\\phi \\sigma_{s}}{4 \\times\\left(1.6 \\tau_{b d}\\right)}=\\frac{\\phi \\sigma_{s}}{6.4 \\tau_{b d}}\\\\ \\therefore \\quad k&=6.4 \\end{aligned}$$\n\nTherefore, the correct answer is **6.4** (acceptable range: [6.38, 6.42])."
       }
     },
-    "pp:ce:2015:q9": {
-      "question_uid": "pp:ce:2015:q9",
+    "ce:2015:q9": {
+      "question_uid": "ce:2015:q9",
+      "legacy_uid": "pp:ce:2015:q9",
       "exam_uid": "ce:2015:set1:main:q9",
       "title": "GATE CE 2015 | Set 1 | Question: 9",
       "section": "main",
@@ -410,14 +403,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "By symmetry we can consider two parts of beam separately with half the load\n\n<img src=\"/question-images/ce/2015/ce-2015-d5e194450e.webp\" />\n\nMoment at joint $B=10 \\mathrm{kNm}$\n\nCarry over moment at joint A due to 10 kNm moment at propped end $=\\frac{10}{2}=5 \\mathrm{kN}-\\mathrm{m}$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-d5e194450e.webp"
-        ]
+        "markdown": "By symmetry we can consider two parts of beam separately with half the load\n\n<img src=\"/question-images/ce/2015/ce-2015-d5e194450e.webp\" />\n\nMoment at joint $B=10 \\mathrm{kNm}$\n\nCarry over moment at joint A due to 10 kNm moment at propped end $=\\frac{10}{2}=5 \\mathrm{kN}-\\mathrm{m}$\n\nTherefore, the correct answer is **5**."
       }
     },
-    "pp:ce:2015:q10": {
-      "question_uid": "pp:ce:2015:q10",
+    "ce:2015:q10": {
+      "question_uid": "ce:2015:q10",
+      "legacy_uid": "pp:ce:2015:q10",
       "exam_uid": "ce:2015:set1:main:q10",
       "title": "GATE CE 2015 | Set 1 | Question: 10",
       "section": "main",
@@ -455,14 +446,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
-        "markdown": "As plane AB and BC are principle planes, therefore\n\nMohr's circle for the given condition is\n\n<img src=\"/question-images/ce/2015/ce-2015-ec841d440f.webp\" />\n\nHere, normal stress is zero at $45^{\\circ}$ to the principle\n\nplane.",
-        "images": [
-          "/question-images/ce/2015/ce-2015-ec841d440f.webp"
-        ]
+        "markdown": "As plane AB and BC are principle planes, therefore\n\nMohr's circle for the given condition is\n\n<img src=\"/question-images/ce/2015/ce-2015-ec841d440f.webp\" />\n\nHere, normal stress is zero at $45^{\\circ}$ to the principle\n\nplane.\n\nTherefore, the correct answer is **0**."
       }
     },
-    "pp:ce:2015:q11": {
-      "question_uid": "pp:ce:2015:q11",
+    "ce:2015:q11": {
+      "question_uid": "ce:2015:q11",
+      "legacy_uid": "pp:ce:2015:q11",
       "exam_uid": "ce:2015:set1:main:q11",
       "title": "GATE CE 2015 | Set 1 | Question: 11",
       "section": "main",
@@ -502,12 +491,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "$$\\begin{aligned} I_{p} &=W_{L}-W_{p}=40-28=12 \\% \\\\ \\text { Activity } &=\\frac{I p}{C(\\% \\text { clay fraction finer than } 2 \\mu)} \\\\ &=\\frac{12}{40}=0.3 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} I_{p} &=W_{L}-W_{p}=40-28=12 \\% \\\\ \\text { Activity } &=\\frac{I p}{C(\\% \\text { clay fraction finer than } 2 \\mu)} \\\\ &=\\frac{12}{40}=0.3 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q12": {
-      "question_uid": "pp:ce:2015:q12",
+    "ce:2015:q12": {
+      "question_uid": "ce:2015:q12",
+      "legacy_uid": "pp:ce:2015:q12",
       "exam_uid": "ce:2015:set1:main:q12",
       "title": "GATE CE 2015 | Set 1 | Question: 12",
       "section": "main",
@@ -547,12 +536,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
-        "markdown": "Seepage velocity is given by\n\n$V_{s}=\\frac{V}{n}$\n\nwhere, V= discharge velocity\n\n$$\\begin{aligned} n&=\\frac{V_{V}}{V}<1 \\\\ \\text{Hence,}\\quad V_{s}&>V \\end{aligned}$$",
-        "images": []
+        "markdown": "Seepage velocity is given by\n\n$V_{s}=\\frac{V}{n}$\n\nwhere, V= discharge velocity\n\n$$\\begin{aligned} n&=\\frac{V_{V}}{V}<1 \\\\ \\text{Hence,}\\quad V_{s}&>V \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2015:q13": {
-      "question_uid": "pp:ce:2015:q13",
+    "ce:2015:q13": {
+      "question_uid": "ce:2015:q13",
+      "legacy_uid": "pp:ce:2015:q13",
       "exam_uid": "ce:2015:set1:main:q13",
       "title": "GATE CE 2015 | Set 1 | Question: 13",
       "section": "main",
@@ -592,12 +581,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Soil Stabilization and Soil Exploration",
-        "markdown": "As thickness of sampler increase, disturbance increase",
-        "images": []
+        "markdown": "As thickness of sampler increase, disturbance increase\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q14": {
-      "question_uid": "pp:ce:2015:q14",
+    "ce:2015:q14": {
+      "question_uid": "ce:2015:q14",
+      "legacy_uid": "pp:ce:2015:q14",
       "exam_uid": "ce:2015:set1:main:q14",
       "title": "GATE CE 2015 | Set 1 | Question: 14",
       "section": "main",
@@ -637,12 +626,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "$B=\\frac{\\Delta u}{\\Delta \\sigma_{3}}=\\frac{80}{250-150}=0.80$",
-        "images": []
+        "markdown": "$B=\\frac{\\Delta u}{\\Delta \\sigma_{3}}=\\frac{80}{250-150}=0.80$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q15": {
-      "question_uid": "pp:ce:2015:q15",
+    "ce:2015:q15": {
+      "question_uid": "ce:2015:q15",
+      "legacy_uid": "pp:ce:2015:q15",
       "exam_uid": "ce:2015:set1:main:q15",
       "title": "GATE CE 2015 | Set 1 | Question: 15",
       "section": "main",
@@ -682,12 +671,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "The phenomenon where cohesionless soil near the downstream side of dams or sheet piles loses its shear strength due to high upward hydraulic gradient is called piping",
-        "images": []
+        "markdown": "The phenomenon where cohesionless soil near the downstream side of dams or sheet piles loses its shear strength due to high upward hydraulic gradient is called piping\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2015:q16": {
-      "question_uid": "pp:ce:2015:q16",
+    "ce:2015:q16": {
+      "question_uid": "ce:2015:q16",
+      "legacy_uid": "pp:ce:2015:q16",
       "exam_uid": "ce:2015:set1:main:q16",
       "title": "GATE CE 2015 | Set 1 | Question: 16",
       "section": "main",
@@ -727,12 +716,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
-        "markdown": "Continuity equation in steady flow.\n\n$$\\begin{aligned} \\frac{\\partial(\\rho u)}{\\partial x}+\\frac{\\partial(\\rho v)}{\\partial y} &=0 \\\\ \\frac{\\partial}{\\partial x}\\left[\\frac{1}{x} \\cdot x^{2}\\right]+\\frac{\\partial}{\\partial y}\\left(\\frac{1}{x} \\cdot v_{y}\\right) &=0 \\\\ \\frac{\\partial}{\\partial x}(x)+\\frac{1}{x} \\frac{\\partial v_{y}}{x \\partial y} &=0 \\\\ 1+\\frac{1}{x} \\frac{\\partial v_{y}}{\\partial y} &=0 \\\\ -x &=\\frac{\\partial v_{y}}{\\partial y} \\end{aligned}$$\n\nOn integrating both sides\n\n$v_{y}=-x y$",
-        "images": []
+        "markdown": "Continuity equation in steady flow.\n\n$$\\begin{aligned} \\frac{\\partial(\\rho u)}{\\partial x}+\\frac{\\partial(\\rho v)}{\\partial y} &=0 \\\\ \\frac{\\partial}{\\partial x}\\left[\\frac{1}{x} \\cdot x^{2}\\right]+\\frac{\\partial}{\\partial y}\\left(\\frac{1}{x} \\cdot v_{y}\\right) &=0 \\\\ \\frac{\\partial}{\\partial x}(x)+\\frac{1}{x} \\frac{\\partial v_{y}}{x \\partial y} &=0 \\\\ 1+\\frac{1}{x} \\frac{\\partial v_{y}}{\\partial y} &=0 \\\\ -x &=\\frac{\\partial v_{y}}{\\partial y} \\end{aligned}$$\n\nOn integrating both sides\n\n$v_{y}=-x y$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q17": {
-      "question_uid": "pp:ce:2015:q17",
+    "ce:2015:q17": {
+      "question_uid": "ce:2015:q17",
+      "legacy_uid": "pp:ce:2015:q17",
       "exam_uid": "ce:2015:set1:main:q17",
       "title": "GATE CE 2015 | Set 1 | Question: 17",
       "section": "main",
@@ -772,12 +761,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "In closed uniform conduit, velocity head remains\n\nConstant, thus flow will be from higher to lower\n\nPiezometric head,\n\nPiezometrie head $=\\frac{P}{\\gamma}+z$",
-        "images": []
+        "markdown": "In closed uniform conduit, velocity head remains\n\nConstant, thus flow will be from higher to lower\n\nPiezometric head,\n\nPiezometrie head $=\\frac{P}{\\gamma}+z$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2015:q18": {
-      "question_uid": "pp:ce:2015:q18",
+    "ce:2015:q18": {
+      "question_uid": "ce:2015:q18",
+      "legacy_uid": "pp:ce:2015:q18",
       "exam_uid": "ce:2015:set1:main:q18",
       "title": "GATE CE 2015 | Set 1 | Question: 18",
       "section": "main",
@@ -817,12 +806,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "Given diamator, d=1m.\n\n$$\\begin{aligned} \\text{slope,} \\quad S&=\\frac{1}{1000} \\\\ n&=0.01\\\\ \\frac{Q_{full}}{Q_{half}} &= \\frac{\\left[\\frac{A}{N}(R)^{2/3}S^{1/2} \\right]_{\\text{full}}}{\\left[\\frac{A}{N}(R)^{2/3}S^{1/2} \\right]_{\\text{half}}}\\\\ &=\\frac{\\left[AR^{2/3} \\right ]_{\\text{full}}}{\\left[AR^{2/3} \\right ]_{\\text{half}}}\\\\ R_{\\text{full}}&=R_{\\text{Half}}=\\frac{d}{4}\\\\ &=\\frac{\\frac{\\pi d^{2}}{4}}{\\frac{\\pi d^{2}}{8}}=2 \\end{aligned}$$",
-        "images": []
+        "markdown": "Given diamator, d=1m.\n\n$$\\begin{aligned} \\text{slope,} \\quad S&=\\frac{1}{1000} \\\\ n&=0.01\\\\ \\frac{Q_{full}}{Q_{half}} &= \\frac{\\left[\\frac{A}{N}(R)^{2/3}S^{1/2} \\right]_{\\text{full}}}{\\left[\\frac{A}{N}(R)^{2/3}S^{1/2} \\right]_{\\text{half}}}\\\\ &=\\frac{\\left[AR^{2/3} \\right ]_{\\text{full}}}{\\left[AR^{2/3} \\right ]_{\\text{half}}}\\\\ R_{\\text{full}}&=R_{\\text{Half}}=\\frac{d}{4}\\\\ &=\\frac{\\frac{\\pi d^{2}}{4}}{\\frac{\\pi d^{2}}{8}}=2 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q19": {
-      "question_uid": "pp:ce:2015:q19",
+    "ce:2015:q19": {
+      "question_uid": "ce:2015:q19",
+      "legacy_uid": "pp:ce:2015:q19",
       "exam_uid": "ce:2015:set1:main:q19",
       "title": "GATE CE 2015 | Set 1 | Question: 19",
       "section": "main",
@@ -862,12 +851,12 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
-        "markdown": "Gross Command Area is measured in hectares.\n\n(P-III)\n\nDuty has a unit of ha/cumec. (R-I)\n\nDelta of wheat can be practically 40 cm\n\n(S- V)",
-        "images": []
+        "markdown": "Gross Command Area is measured in hectares.\n\n(P-III)\n\nDuty has a unit of ha/cumec. (R-I)\n\nDelta of wheat can be practically 40 cm\n\n(S- V)\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2015:q20": {
-      "question_uid": "pp:ce:2015:q20",
+    "ce:2015:q20": {
+      "question_uid": "ce:2015:q20",
+      "legacy_uid": "pp:ce:2015:q20",
       "exam_uid": "ce:2015:set1:main:q20",
       "title": "GATE CE 2015 | Set 1 | Question: 20",
       "section": "main",
@@ -907,12 +896,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "Kjehldahl Nitrogen=Organic nitrogen+Free ammonia.",
-        "images": []
+        "markdown": "Kjehldahl Nitrogen=Organic nitrogen+Free ammonia.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q21": {
-      "question_uid": "pp:ce:2015:q21",
+    "ce:2015:q21": {
+      "question_uid": "ce:2015:q21",
+      "legacy_uid": "pp:ce:2015:q21",
       "exam_uid": "ce:2015:set1:main:q21",
       "title": "GATE CE 2015 | Set 1 | Question: 21",
       "section": "main",
@@ -952,12 +941,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Municipal Solid Waste Management",
-        "markdown": "Let density of sludge is $\\rho$,\n\n$\\therefore \\; \\; \\frac{c_{1}+c_{2}}{\\rho }=\\frac{c_{1}}{\\rho _{1}}+\\frac{c_{2}}{\\rho _{2}}$\n\nAssuming $c_{1}+c_{2}=100$\n\n$\\therefore \\; \\; \\rho =\\frac{100}{\\frac{c_{1}}{\\rho _{1}}+\\frac{c_{2}}{\\rho _{2}}}$",
-        "images": []
+        "markdown": "Let density of sludge is $\\rho$,\n\n$\\therefore \\; \\; \\frac{c_{1}+c_{2}}{\\rho }=\\frac{c_{1}}{\\rho _{1}}+\\frac{c_{2}}{\\rho _{2}}$\n\nAssuming $c_{1}+c_{2}=100$\n\n$\\therefore \\; \\; \\rho =\\frac{100}{\\frac{c_{1}}{\\rho _{1}}+\\frac{c_{2}}{\\rho _{2}}}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q22": {
-      "question_uid": "pp:ce:2015:q22",
+    "ce:2015:q22": {
+      "question_uid": "ce:2015:q22",
+      "legacy_uid": "pp:ce:2015:q22",
       "exam_uid": "ce:2015:set1:main:q22",
       "title": "GATE CE 2015 | Set 1 | Question: 22",
       "section": "main",
@@ -995,12 +984,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Highway Materials",
-        "markdown": "Relationship between penetration and temperature\n\nis given by,\n\n$$\\begin{array}{l} P=A T+K \\\\ P=\\text { Penetration }\\\\ A= \\text{Temperature susceptibility }\\\\ K= \\text{Constant }\\\\ \\end{array}$$\n\nWith increase in temperature, penetration\n\nincreases.\n\nHence, we will simply take,\n\n$d \\nless \\frac{80}{10}=8 \\mathrm{mm}$",
-        "images": []
+        "markdown": "Relationship between penetration and temperature\n\nis given by,\n\n$$\\begin{array}{l} P=A T+K \\\\ P=\\text { Penetration }\\\\ A= \\text{Temperature susceptibility }\\\\ K= \\text{Constant }\\\\ \\end{array}$$\n\nWith increase in temperature, penetration\n\nincreases.\n\nHence, we will simply take,\n\n$d \\nless \\frac{80}{10}=8 \\mathrm{mm}$\n\nTherefore, the correct answer is **8**."
       }
     },
-    "pp:ce:2015:q23": {
-      "question_uid": "pp:ce:2015:q23",
+    "ce:2015:q23": {
+      "question_uid": "ce:2015:q23",
+      "legacy_uid": "pp:ce:2015:q23",
       "exam_uid": "ce:2015:set1:main:q23",
       "title": "GATE CE 2015 | Set 1 | Question: 23",
       "section": "main",
@@ -1040,14 +1029,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "Free flow speed $(V_{f})$ is that speed at which flow and density is negligible\n\n<img src=\"/question-images/ce/2015/ce-2015-a1c319bc19.webp\" />",
-        "images": [
-          "/question-images/ce/2015/ce-2015-a1c319bc19.webp"
-        ]
+        "markdown": "Free flow speed $(V_{f})$ is that speed at which flow and density is negligible\n\n<img src=\"/question-images/ce/2015/ce-2015-a1c319bc19.webp\" />\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2015:q24": {
-      "question_uid": "pp:ce:2015:q24",
+    "ce:2015:q24": {
+      "question_uid": "ce:2015:q24",
+      "legacy_uid": "pp:ce:2015:q24",
       "exam_uid": "ce:2015:set1:main:q24",
       "title": "GATE CE 2015 | Set 1 | Question: 24",
       "section": "main",
@@ -1087,12 +1074,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Fundamental Concepts of Surveying",
-        "markdown": "Mean sea level (MSL) is used as a reference surface for establishing the vertical control.",
-        "images": []
+        "markdown": "Mean sea level (MSL) is used as a reference surface for establishing the vertical control.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2015:q25": {
-      "question_uid": "pp:ce:2015:q25",
+    "ce:2015:q25": {
+      "question_uid": "ce:2015:q25",
+      "legacy_uid": "pp:ce:2015:q25",
       "exam_uid": "ce:2015:set1:main:q25",
       "title": "GATE CE 2015 | Set 1 | Question: 25",
       "section": "main",
@@ -1132,12 +1119,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "Relative precision $=\\frac{1}{p / e}$\n\nwhere p= Perimeter of traverse\n\ne= Closing error\n\nClosing error, $e=\\sqrt{0.3^{2}+0.4^{2}}=0.5 \\mathrm{m}$\n\nRelative precision $=\\frac{1}{\\frac{1000}{0.5}}=\\frac{1}{2000}$",
-        "images": []
+        "markdown": "Relative precision $=\\frac{1}{p / e}$\n\nwhere p= Perimeter of traverse\n\ne= Closing error\n\nClosing error, $e=\\sqrt{0.3^{2}+0.4^{2}}=0.5 \\mathrm{m}$\n\nRelative precision $=\\frac{1}{\\frac{1000}{0.5}}=\\frac{1}{2000}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2015:q26": {
-      "question_uid": "pp:ce:2015:q26",
+    "ce:2015:q26": {
+      "question_uid": "ce:2015:q26",
+      "legacy_uid": "pp:ce:2015:q26",
       "exam_uid": "ce:2015:set1:main:q26",
       "title": "GATE CE 2015 | Set 1 | Question: 26",
       "section": "main",
@@ -1177,12 +1164,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "For eigen values\n\n$$\\begin{aligned} \\left | A-\\lambda I \\right |&=0 \\\\ \\begin{vmatrix} 3-\\lambda & -2 &2 \\\\ 4 & -4-\\lambda &6 \\\\ 2 & -3 & 5-\\lambda \\end{vmatrix}&=0 \\\\ \\left ( 3-\\lambda \\right )\\left ( -20+4\\lambda -5\\lambda +\\lambda ^{2}+18 \\right ) &\\\\ +2 \\left ( 20-4\\lambda -12 \\right )+2\\left ( -12+8+2\\lambda \\right )&=0 \\\\  \\lambda ^{3}-4\\lambda ^{2}+5\\lambda -2&=0\\end{aligned}$$\n\nOnly 1 and 2 satisfy this equation.\n\n$\\lambda =1,\\: 1,\\: 2$\n\nHence, Smallest eigen value =1 and\n\nLargest eigen value =2",
-        "images": []
+        "markdown": "For eigen values\n\n$$\\begin{aligned} \\left | A-\\lambda I \\right |&=0 \\\\ \\begin{vmatrix} 3-\\lambda & -2 &2 \\\\ 4 & -4-\\lambda &6 \\\\ 2 & -3 & 5-\\lambda \\end{vmatrix}&=0 \\\\ \\left ( 3-\\lambda \\right )\\left ( -20+4\\lambda -5\\lambda +\\lambda ^{2}+18 \\right ) &\\\\ +2 \\left ( 20-4\\lambda -12 \\right )+2\\left ( -12+8+2\\lambda \\right )&=0 \\\\  \\lambda ^{3}-4\\lambda ^{2}+5\\lambda -2&=0\\end{aligned}$$\n\nOnly 1 and 2 satisfy this equation.\n\n$\\lambda =1,\\: 1,\\: 2$\n\nHence, Smallest eigen value =1 and\n\nLargest eigen value =2\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2015:q27": {
-      "question_uid": "pp:ce:2015:q27",
+    "ce:2015:q27": {
+      "question_uid": "ce:2015:q27",
+      "legacy_uid": "pp:ce:2015:q27",
       "exam_uid": "ce:2015:set1:main:q27",
       "title": "GATE CE 2015 | Set 1 | Question: 27",
       "section": "main",
@@ -1220,12 +1207,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$$\\begin{aligned}  f\\left ( x \\right )&=x^{2}-4x+4 \\\\   {f}'\\left ( x \\right )&=2x-4 \\\\   x_{0}&=3 \\\\   f\\left ( 3 \\right )&=1, {f}'\\left ( 3 \\right )=2 \\\\ \\text{By Newton } & \\text{Rapshon method,}\\\\   x_{1}&=x_{0}-\\frac{f\\left ( x_{0} \\right )}{{f}'_{x_{0}}} \\\\    &=3-\\frac{1}{2}=\\frac{5}{2} \\\\   f\\left ( \\frac{5}{2} \\right )&=\\frac{25}{4}-10+4=\\frac{1}{4} \\\\ & \\text{By Secant method,}\\\\   x_{2}&=x_{1}-\\frac{\\left ( x_{1}-x_{0} \\right )f\\left ( x_{1} \\right )}{f\\left ( x_{1} \\right )-f\\left ( x_{0} \\right )} \\\\    &=\\frac{f_{1}x_{0}-f_{0}x_{1}}{f_{1}-f_{0}} \\\\    &=\\frac{\\left ( \\frac{1}{4}\\times 3 \\right )-\\left ( 1\\times \\frac{5}{2} \\right )}{\\frac{1}{4}-1} \\\\    &=\\frac{7}{3}=2.33 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned}  f\\left ( x \\right )&=x^{2}-4x+4 \\\\   {f}'\\left ( x \\right )&=2x-4 \\\\   x_{0}&=3 \\\\   f\\left ( 3 \\right )&=1, {f}'\\left ( 3 \\right )=2 \\\\ \\text{By Newton } & \\text{Rapshon method,}\\\\   x_{1}&=x_{0}-\\frac{f\\left ( x_{0} \\right )}{{f}'_{x_{0}}} \\\\    &=3-\\frac{1}{2}=\\frac{5}{2} \\\\   f\\left ( \\frac{5}{2} \\right )&=\\frac{25}{4}-10+4=\\frac{1}{4} \\\\ & \\text{By Secant method,}\\\\   x_{2}&=x_{1}-\\frac{\\left ( x_{1}-x_{0} \\right )f\\left ( x_{1} \\right )}{f\\left ( x_{1} \\right )-f\\left ( x_{0} \\right )} \\\\    &=\\frac{f_{1}x_{0}-f_{0}x_{1}}{f_{1}-f_{0}} \\\\    &=\\frac{\\left ( \\frac{1}{4}\\times 3 \\right )-\\left ( 1\\times \\frac{5}{2} \\right )}{\\frac{1}{4}-1} \\\\    &=\\frac{7}{3}=2.33 \\end{aligned}$$\n\nTherefore, the correct answer is **2.33** (acceptable range: [2.32, 2.34])."
       }
     },
-    "pp:ce:2015:q28": {
-      "question_uid": "pp:ce:2015:q28",
+    "ce:2015:q28": {
+      "question_uid": "ce:2015:q28",
+      "legacy_uid": "pp:ce:2015:q28",
       "exam_uid": "ce:2015:set1:main:q28",
       "title": "GATE CE 2015 | Set 1 | Question: 28",
       "section": "main",
@@ -1265,12 +1252,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$$\\begin{aligned} x\\left ( ydx+xdy \\right )\\cos \\frac{y}{x}&=y\\left ( xdy-ydx \\right )\\sin \\frac{y}{x} \\\\ \\frac{ydx+xdy}{xdy-ydx}&=\\frac{y}{x}\\tan \\frac{y}{x}\\\\ \\text{Let }  y&=v \\cdot x \\\\   dy&=vdx+xdv \\\\ \\frac{vxdx+vxdx+x^{2}dv}{vxdx+x^{2}dv-vxdx}&=v\\tan v \\\\ \\frac{xdv+2vdx}{xdv}&=v\\tan v \\\\ 1+\\frac{2v}{x}\\frac{dx}{dv}&=v\\tan v \\\\ \\frac{2v}{x}\\frac{dx}{dv}&=v\\tan v-1 \\\\ 2\\frac{dx}{x}&=\\left ( \\tan v-\\frac{1}{v} \\right )dv \\end{aligned}$$\n\nIntegrating both sides.\n\n$$\\begin{aligned}2\\log x&=\\log \\left | \\sec v \\right |-\\log v+\\log c \\\\ \\Rightarrow \\;\\; x^{2}&=\\frac{c\\sec v}{v} \\\\ \\Rightarrow \\;\\; x^{2}\\frac{y}{x}&=c\\sec \\frac{y}{x} \\\\ \\Rightarrow \\;\\; xy\\cos \\frac{y}{x}&=c \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} x\\left ( ydx+xdy \\right )\\cos \\frac{y}{x}&=y\\left ( xdy-ydx \\right )\\sin \\frac{y}{x} \\\\ \\frac{ydx+xdy}{xdy-ydx}&=\\frac{y}{x}\\tan \\frac{y}{x}\\\\ \\text{Let }  y&=v \\cdot x \\\\   dy&=vdx+xdv \\\\ \\frac{vxdx+vxdx+x^{2}dv}{vxdx+x^{2}dv-vxdx}&=v\\tan v \\\\ \\frac{xdv+2vdx}{xdv}&=v\\tan v \\\\ 1+\\frac{2v}{x}\\frac{dx}{dv}&=v\\tan v \\\\ \\frac{2v}{x}\\frac{dx}{dv}&=v\\tan v-1 \\\\ 2\\frac{dx}{x}&=\\left ( \\tan v-\\frac{1}{v} \\right )dv \\end{aligned}$$\n\nIntegrating both sides.\n\n$$\\begin{aligned}2\\log x&=\\log \\left | \\sec v \\right |-\\log v+\\log c \\\\ \\Rightarrow \\;\\; x^{2}&=\\frac{c\\sec v}{v} \\\\ \\Rightarrow \\;\\; x^{2}\\frac{y}{x}&=c\\sec \\frac{y}{x} \\\\ \\Rightarrow \\;\\; xy\\cos \\frac{y}{x}&=c \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q29": {
-      "question_uid": "pp:ce:2015:q29",
+    "ce:2015:q29": {
+      "question_uid": "ce:2015:q29",
+      "legacy_uid": "pp:ce:2015:q29",
       "exam_uid": "ce:2015:set1:main:q29",
       "title": "GATE CE 2015 | Set 1 | Question: 29",
       "section": "main",
@@ -1310,12 +1297,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$f(z)$ has poles at $z=1, -2$\n\nResidue of $f(z)$ at [/latex](z=1)[/latex]\n\n$$\\begin{aligned}  &=\\lim_{z\\rightarrow 1}\\left ( z-1 \\right )f\\left ( z \\right ) \\\\   &=\\lim_{z\\rightarrow 1}\\frac{9}{\\left ( z+2 \\right )^{2}} \\\\&=1 \\end{aligned}$$\n\nResidue of $f(z)$ at $(z=-2)$\n\n$$\\begin{aligned}  &=\\lim_{z\\rightarrow 2}\\frac{d}{dz^{2-1}}\\left [ \\left ( z+2 \\right )^{2}f\\left ( z \\right ) \\right ] \\\\   &=\\lim_{z\\rightarrow 2}\\frac{d}{dz}\\left ( \\frac{9}{z-1} \\right ) \\\\   &=\\lim_{z\\rightarrow 2}\\left ( \\frac{9}{\\left ( z-1 \\right )^{2}} \\right ) \\\\   &=-1\\end{aligned}$$",
-        "images": []
+        "markdown": "$f(z)$ has poles at $z=1, -2$\n\nResidue of $f(z)$ at [/latex](z=1)[/latex]\n\n$$\\begin{aligned}  &=\\lim_{z\\rightarrow 1}\\left ( z-1 \\right )f\\left ( z \\right ) \\\\   &=\\lim_{z\\rightarrow 1}\\frac{9}{\\left ( z+2 \\right )^{2}} \\\\&=1 \\end{aligned}$$\n\nResidue of $f(z)$ at $(z=-2)$\n\n$$\\begin{aligned}  &=\\lim_{z\\rightarrow 2}\\frac{d}{dz^{2-1}}\\left [ \\left ( z+2 \\right )^{2}f\\left ( z \\right ) \\right ] \\\\   &=\\lim_{z\\rightarrow 2}\\frac{d}{dz}\\left ( \\frac{9}{z-1} \\right ) \\\\   &=\\lim_{z\\rightarrow 2}\\left ( \\frac{9}{\\left ( z-1 \\right )^{2}} \\right ) \\\\   &=-1\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q30": {
-      "question_uid": "pp:ce:2015:q30",
+    "ce:2015:q30": {
+      "question_uid": "ce:2015:q30",
+      "legacy_uid": "pp:ce:2015:q30",
       "exam_uid": "ce:2015:set1:main:q30",
       "title": "GATE CE 2015 | Set 1 | Question: 30",
       "section": "main",
@@ -1352,12 +1339,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned}u (x, y, z)&=x^{2}-3yz \\\\  \\triangledown u&=2x\\hat{i}-3z\\hat{j}-3y\\hat{k} \\\\  \\triangledown ul_{at\\: \\left ( 2,\\, -1\\, 4 \\right )}&=4\\hat{i}+12\\hat{j}-3\\hat{k}\\\\ &\\text{Directional derivative}\\\\   &= \\left ( 4\\hat{i}+12\\hat{j}-3\\hat{k} \\right ).\\frac{\\hat{i}+\\hat{j}-\\hat{k}}{\\sqrt{6}} \\\\   &= \\frac{4-12-6}{\\sqrt{6}} =-\\frac{14}{\\sqrt{6}} \\\\   &= -\\frac{7\\sqrt{6}}{3}=-5.715\\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned}u (x, y, z)&=x^{2}-3yz \\\\  \\triangledown u&=2x\\hat{i}-3z\\hat{j}-3y\\hat{k} \\\\  \\triangledown ul_{at\\: \\left ( 2,\\, -1\\, 4 \\right )}&=4\\hat{i}+12\\hat{j}-3\\hat{k}\\\\ &\\text{Directional derivative}\\\\   &= \\left ( 4\\hat{i}+12\\hat{j}-3\\hat{k} \\right ).\\frac{\\hat{i}+\\hat{j}-\\hat{k}}{\\sqrt{6}} \\\\   &= \\frac{4-12-6}{\\sqrt{6}} =-\\frac{14}{\\sqrt{6}} \\\\   &= -\\frac{7\\sqrt{6}}{3}=-5.715\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q31": {
-      "question_uid": "pp:ce:2015:q31",
+    "ce:2015:q31": {
+      "question_uid": "ce:2015:q31",
+      "legacy_uid": "pp:ce:2015:q31",
       "exam_uid": "ce:2015:set1:main:q31",
       "title": "GATE CE 2015 | Set 1 | Question: 31",
       "section": "main",
@@ -1395,12 +1382,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "Let the total volume of air-entrained concrete is unity.\n\n$$\\begin{array}{c} \\frac{M_{C}}{\\rho_{C}}+\\frac{M_{F A}}{\\rho_{F A}}+\\frac{M_{C A}}{\\rho_{C A}}+V_{W}+V_{\\mathrm{Air}}=1.0 \\\\ \\frac{368}{3.14 \\times 1000}+\\frac{606}{2.67 \\times 1000} \\\\ +\\frac{1155}{2.74 \\times 1000}+\\frac{184}{1000}+V_{V}=1.0 \\\\ 0.11720+0.22697+0.42153 \\\\ \\begin{aligned} +0.184+V_{v}&=1.0 \\\\ V_{V}&=0.0503 \\\\ V_{V}&=0.0503 \\times 1000 \\\\ \\quad&=50.3\\; litres / \\mathrm{m}^{3} \\end{aligned} \\end{array}$$",
-        "images": []
+        "markdown": "Let the total volume of air-entrained concrete is unity.\n\n$$\\begin{array}{c} \\frac{M_{C}}{\\rho_{C}}+\\frac{M_{F A}}{\\rho_{F A}}+\\frac{M_{C A}}{\\rho_{C A}}+V_{W}+V_{\\mathrm{Air}}=1.0 \\\\ \\frac{368}{3.14 \\times 1000}+\\frac{606}{2.67 \\times 1000} \\\\ +\\frac{1155}{2.74 \\times 1000}+\\frac{184}{1000}+V_{V}=1.0 \\\\ 0.11720+0.22697+0.42153 \\\\ \\begin{aligned} +0.184+V_{v}&=1.0 \\\\ V_{V}&=0.0503 \\\\ V_{V}&=0.0503 \\times 1000 \\\\ \\quad&=50.3\\; litres / \\mathrm{m}^{3} \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **50.25** (acceptable range: [49.5, 51])."
       }
     },
-    "pp:ce:2015:q32": {
-      "question_uid": "pp:ce:2015:q32",
+    "ce:2015:q32": {
+      "question_uid": "ce:2015:q32",
+      "legacy_uid": "pp:ce:2015:q32",
       "exam_uid": "ce:2015:set1:main:q32",
       "title": "GATE CE 2015 | Set 1 | Question: 32",
       "section": "main",
@@ -1438,14 +1425,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-3c9116b4de.webp\" />\n\n$$\\begin{aligned} F_{1}&=\\frac{100}{5}=20kN \\\\ F_{2}&=\\frac{Per}{\\sum r^{2}} \\\\ &=\\frac{\\left ( 100\\times 0.6 \\right )\\times \\left ( 75\\sqrt{2}\\times 10^{-3} \\right )}{\\left ( 75\\sqrt{2} \\right )^2\\times 4\\times 10^{-6}} \\\\  &=\\frac{\\sqrt{2}}{10}\\times 1000=141.42kN \\\\ \\theta &=45^{\\circ} \\\\ \\Rightarrow \\; \\; F_{R}&=\\sqrt{\\left ( 20 \\right )^{2}+\\left ( 141.42 \\right )^{2}+2\\times 20\\times 141.42\\cos 45^{\\circ}} \\\\ &=156.2 kN\\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-3c9116b4de.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-3c9116b4de.webp\" />\n\n$$\\begin{aligned} F_{1}&=\\frac{100}{5}=20kN \\\\ F_{2}&=\\frac{Per}{\\sum r^{2}} \\\\ &=\\frac{\\left ( 100\\times 0.6 \\right )\\times \\left ( 75\\sqrt{2}\\times 10^{-3} \\right )}{\\left ( 75\\sqrt{2} \\right )^2\\times 4\\times 10^{-6}} \\\\  &=\\frac{\\sqrt{2}}{10}\\times 1000=141.42kN \\\\ \\theta &=45^{\\circ} \\\\ \\Rightarrow \\; \\; F_{R}&=\\sqrt{\\left ( 20 \\right )^{2}+\\left ( 141.42 \\right )^{2}+2\\times 20\\times 141.42\\cos 45^{\\circ}} \\\\ &=156.2 kN\\end{aligned}$$\n\nTherefore, the correct answer is **155.65** (acceptable range: [155, 156.3])."
       }
     },
-    "pp:ce:2015:q33": {
-      "question_uid": "pp:ce:2015:q33",
+    "ce:2015:q33": {
+      "question_uid": "ce:2015:q33",
+      "legacy_uid": "pp:ce:2015:q33",
       "exam_uid": "ce:2015:set1:main:q33",
       "title": "GATE CE 2015 | Set 1 | Question: 33",
       "section": "main",
@@ -1483,12 +1468,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "$$\\begin{aligned} A_{s t} &=4 \\times \\frac{\\pi}{4} \\times 12^{2} \\\\ &=452.38 \\mathrm{mm}^{2} \\\\ x_{u, \\lim } &=0.48 \\times 300=144 \\mathrm{mm} \\\\ \\because \\quad C &=T \\\\ \\Rightarrow \\quad 0.36 f_{c k} b x_{u} &=0.87 \\mathrm{f}_{y} A_{s t} \\\\ \\Rightarrow \\quad x_{u}&=\\frac{0.87 f_{y} A_{s t}}{0.36 f_{c k} b}=90.73 \\mathrm{mm} \\end{aligned}$$\n\n$\\because x_{u} \\lt x_{u, l \\mathrm{im}},$ it is under reinforced section\n\n$$\\begin{aligned} \\Rightarrow \\quad M O R&=0.36 f_{c k} b x_{u}\\left(d-0.42 x_{u}\\right) \\\\ &=42.7708 \\times 10^{6} \\mathrm{N}-\\mathrm{mm} \\\\ &=42.7708 \\mathrm{kN}-\\mathrm{m} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} A_{s t} &=4 \\times \\frac{\\pi}{4} \\times 12^{2} \\\\ &=452.38 \\mathrm{mm}^{2} \\\\ x_{u, \\lim } &=0.48 \\times 300=144 \\mathrm{mm} \\\\ \\because \\quad C &=T \\\\ \\Rightarrow \\quad 0.36 f_{c k} b x_{u} &=0.87 \\mathrm{f}_{y} A_{s t} \\\\ \\Rightarrow \\quad x_{u}&=\\frac{0.87 f_{y} A_{s t}}{0.36 f_{c k} b}=90.73 \\mathrm{mm} \\end{aligned}$$\n\n$\\because x_{u} \\lt x_{u, l \\mathrm{im}},$ it is under reinforced section\n\n$$\\begin{aligned} \\Rightarrow \\quad M O R&=0.36 f_{c k} b x_{u}\\left(d-0.42 x_{u}\\right) \\\\ &=42.7708 \\times 10^{6} \\mathrm{N}-\\mathrm{mm} \\\\ &=42.7708 \\mathrm{kN}-\\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **42.5** (acceptable range: [42, 43])."
       }
     },
-    "pp:ce:2015:q34": {
-      "question_uid": "pp:ce:2015:q34",
+    "ce:2015:q34": {
+      "question_uid": "ce:2015:q34",
+      "legacy_uid": "pp:ce:2015:q34",
       "exam_uid": "ce:2015:set1:main:q34",
       "title": "GATE CE 2015 | Set 1 | Question: 34",
       "section": "main",
@@ -1526,14 +1511,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-538508ae86.webp\" />\n\n$$\\begin{aligned}\n\nL\\phi&=3L\\theta \\\\ \\phi&=3\\theta \\\\4M_{P}\\theta +2M_{P}\\phi &=PL\\phi \\\\ \\frac{4M_{P}\\phi }{3}+2M_{P}\\phi &=PL\\phi \\\\ \\frac{10M_{P}\\phi }{3}&=PL\\phi \\\\   P=\\frac{10M_{P}}{3L} \\; \\Rightarrow \\; C&=\\frac{10}{3}=3.33\n\n\\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-538508ae86.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-538508ae86.webp\" />\n\n$$\\begin{aligned}\n\nL\\phi&=3L\\theta \\\\ \\phi&=3\\theta \\\\4M_{P}\\theta +2M_{P}\\phi &=PL\\phi \\\\ \\frac{4M_{P}\\phi }{3}+2M_{P}\\phi &=PL\\phi \\\\ \\frac{10M_{P}\\phi }{3}&=PL\\phi \\\\   P=\\frac{10M_{P}}{3L} \\; \\Rightarrow \\; C&=\\frac{10}{3}=3.33\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **3.35** (acceptable range: [3.3, 3.4])."
       }
     },
-    "pp:ce:2015:q35": {
-      "question_uid": "pp:ce:2015:q35",
+    "ce:2015:q35": {
+      "question_uid": "ce:2015:q35",
+      "legacy_uid": "pp:ce:2015:q35",
       "exam_uid": "ce:2015:set1:main:q35",
       "title": "GATE CE 2015 | Set 1 | Question: 35",
       "section": "main",
@@ -1571,14 +1554,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-80c15d0c5a.webp\" />\n\nTotal elongation,\n\n$$\\begin{aligned} \\Delta &=\\Delta_{A B}+\\Delta_{B C} \\\\ &=\\frac{P L}{A E}+\\frac{4 P L}{\\pi d_{1} d_{2} E} \\\\ &=\\frac{30 \\pi \\times 1.5}{\\frac{\\pi \\times(0.01)^{2}}{4} \\times 2 \\times 10^{5}} \\\\ &+\\frac{30 \\pi \\times 2}{\\frac{\\pi \\times(0.01) \\times(0.02)}{4} \\times 2 \\times 10^{5}} \\\\ &=9+6=15 \\mathrm{mm} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-80c15d0c5a.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-80c15d0c5a.webp\" />\n\nTotal elongation,\n\n$$\\begin{aligned} \\Delta &=\\Delta_{A B}+\\Delta_{B C} \\\\ &=\\frac{P L}{A E}+\\frac{4 P L}{\\pi d_{1} d_{2} E} \\\\ &=\\frac{30 \\pi \\times 1.5}{\\frac{\\pi \\times(0.01)^{2}}{4} \\times 2 \\times 10^{5}} \\\\ &+\\frac{30 \\pi \\times 2}{\\frac{\\pi \\times(0.01) \\times(0.02)}{4} \\times 2 \\times 10^{5}} \\\\ &=9+6=15 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **15** (acceptable range: [14.5, 15.5])."
       }
     },
-    "pp:ce:2015:q36": {
-      "question_uid": "pp:ce:2015:q36",
+    "ce:2015:q36": {
+      "question_uid": "ce:2015:q36",
+      "legacy_uid": "pp:ce:2015:q36",
       "exam_uid": "ce:2015:set1:main:q36",
       "title": "GATE CE 2015 | Set 1 | Question: 36",
       "section": "main",
@@ -1616,14 +1597,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-a4b72572df.webp\" />\n\n$\\Delta_{\\text {spring }}=\\Delta_{B}-\\Delta_{D}$\n\nCompression of spring\n\n$$\\begin{aligned} =\\frac{(P-R) L^{3}}{3 E I}-\\frac{R L^{3}}{3 E I}&=\\frac{R}{K_{S}} \\\\ \\frac{(P-R) L^{3}}{3 E I}-\\frac{R L^{3}}{3 E I}&=\\frac{R \\times\\left(2 L^{3}\\right)}{3 E I}\\\\ (P-A)-R &=2 R \\\\ P &=4 R \\\\ R &=\\frac{P}{4} \\end{aligned}$$\n\n% force carried by spring =25 %",
-        "images": [
-          "/question-images/ce/2015/ce-2015-a4b72572df.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-a4b72572df.webp\" />\n\n$\\Delta_{\\text {spring }}=\\Delta_{B}-\\Delta_{D}$\n\nCompression of spring\n\n$$\\begin{aligned} =\\frac{(P-R) L^{3}}{3 E I}-\\frac{R L^{3}}{3 E I}&=\\frac{R}{K_{S}} \\\\ \\frac{(P-R) L^{3}}{3 E I}-\\frac{R L^{3}}{3 E I}&=\\frac{R \\times\\left(2 L^{3}\\right)}{3 E I}\\\\ (P-A)-R &=2 R \\\\ P &=4 R \\\\ R &=\\frac{P}{4} \\end{aligned}$$\n\n% force carried by spring =25 %\n\nTherefore, the correct answer is **25**."
       }
     },
-    "pp:ce:2015:q37": {
-      "question_uid": "pp:ce:2015:q37",
+    "ce:2015:q37": {
+      "question_uid": "ce:2015:q37",
+      "legacy_uid": "pp:ce:2015:q37",
       "exam_uid": "ce:2015:set1:main:q37",
       "title": "GATE CE 2015 | Set 1 | Question: 37",
       "section": "main",
@@ -1661,15 +1640,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
-        "markdown": "First calculating reactions\n\n$$\\begin{aligned} \\Sigma M_{A}&=0\\\\ \\Rightarrow\\quad R_{B} \\times 3-10 \\times 9-5 \\times 3 &=0 \\\\ R_{B} &=35 \\mathrm{kN} \\\\ H_{A} &=10 \\mathrm{kN} \\\\ \\Sigma M_{B} &=0 \\\\ \\Rightarrow\\quad R_{A} \\times 3+10 \\times 9 &=0 \\\\ R_{A} &=-30 \\mathrm{kN} \\end{aligned}$$\n\nLet us cut a section 1-1 as shown in figure and consider the lower part.\n\n<img src=\"/question-images/ce/2015/ce-2015-b786dd6a84.webp\" />\n\nGiven AE = 30 kN and L = 3 m.\n\nCalculation for force Pin XY member\n\n<img src=\"/question-images/ce/2015/ce-2015-74d7fdc620.webp\" />\n\n$$\\begin{aligned} \\Sigma F_{\\text {horizontal }} &=0 \\\\ \\Rightarrow \\quad F_{X Y}&=10 \\mathrm{kN} \\end{aligned}$$\n\nStrain energy,\n\n$$\\begin{aligned} U&=\\frac{P^{2} L}{2 A E}\\\\ U &=\\frac{10^{2} \\times 3}{2 \\times 30} \\\\ &=5 \\mathrm{kNm} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-b786dd6a84.webp",
-          "/question-images/ce/2015/ce-2015-74d7fdc620.webp"
-        ]
+        "markdown": "First calculating reactions\n\n$$\\begin{aligned} \\Sigma M_{A}&=0\\\\ \\Rightarrow\\quad R_{B} \\times 3-10 \\times 9-5 \\times 3 &=0 \\\\ R_{B} &=35 \\mathrm{kN} \\\\ H_{A} &=10 \\mathrm{kN} \\\\ \\Sigma M_{B} &=0 \\\\ \\Rightarrow\\quad R_{A} \\times 3+10 \\times 9 &=0 \\\\ R_{A} &=-30 \\mathrm{kN} \\end{aligned}$$\n\nLet us cut a section 1-1 as shown in figure and consider the lower part.\n\n<img src=\"/question-images/ce/2015/ce-2015-b786dd6a84.webp\" />\n\nGiven AE = 30 kN and L = 3 m.\n\nCalculation for force Pin XY member\n\n<img src=\"/question-images/ce/2015/ce-2015-74d7fdc620.webp\" />\n\n$$\\begin{aligned} \\Sigma F_{\\text {horizontal }} &=0 \\\\ \\Rightarrow \\quad F_{X Y}&=10 \\mathrm{kN} \\end{aligned}$$\n\nStrain energy,\n\n$$\\begin{aligned} U&=\\frac{P^{2} L}{2 A E}\\\\ U &=\\frac{10^{2} \\times 3}{2 \\times 30} \\\\ &=5 \\mathrm{kNm} \\end{aligned}$$\n\nTherefore, the correct answer is **5**."
       }
     },
-    "pp:ce:2015:q38": {
-      "question_uid": "pp:ce:2015:q38",
+    "ce:2015:q38": {
+      "question_uid": "ce:2015:q38",
+      "legacy_uid": "pp:ce:2015:q38",
       "exam_uid": "ce:2015:set1:main:q38",
       "title": "GATE CE 2015 | Set 1 | Question: 38",
       "section": "main",
@@ -1709,12 +1685,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "Volume of solids at embankment,\n\n$$\\begin{aligned}\n\nV_{s} &=\\frac{W_{s}}{G_{s} \\gamma_{w}} \\\\\n\nV_{s} &=\\frac{16.2 \\times 5000}{27 \\times 10} \\mathrm{m}^{3} \\\\\n\n&=3000 \\mathrm{m}^{3}\n\n\\end{aligned}$$\n\nVolume of solids will remain constant.\n\nalso,\n\n$$\\begin{aligned}\n\nV &=V_{V}+V_{s} \\\\\n\n&=e V_{s}+V_{s}=V_{s}(1+e) \\\\\n\nV &=3000(1+e) \\\\\n\nV_{X} &=3000 \\times 1.6=4800 \\mathrm{m}^{3} \\\\\n\nV_{Y} &=3000 \\times 1.7=5100 \\mathrm{m}^{3} \\\\\n\nv_{z} &=3000 \\times 1.64=4920 \\mathrm{m}^{3}\n\n\\end{aligned}$$\n\nLet cost of excavation be $\\alpha / \\mathrm{m}^{3}$\n\n$$\\begin{aligned}\n\nP_{X} &=4800 \\alpha+140 \\times \\alpha \\times 2 \\\\\n\n&=5080 \\alpha \\\\\n\nP_{Y} &=5100 \\alpha+80 \\times \\alpha \\times 2 \\\\\n\n&=5260 \\alpha \\\\\n\nP_{Z} &=4920 \\alpha+100 \\times \\alpha \\times 2 \\\\\n\n&=5120 \\alpha\n\n\\end{aligned}$$\n\nHence $P_{X}$ is least.\n\nHence total cost for site X is least.",
-        "images": []
+        "markdown": "Volume of solids at embankment,\n\n$$\\begin{aligned}\n\nV_{s} &=\\frac{W_{s}}{G_{s} \\gamma_{w}} \\\\\n\nV_{s} &=\\frac{16.2 \\times 5000}{27 \\times 10} \\mathrm{m}^{3} \\\\\n\n&=3000 \\mathrm{m}^{3}\n\n\\end{aligned}$$\n\nVolume of solids will remain constant.\n\nalso,\n\n$$\\begin{aligned}\n\nV &=V_{V}+V_{s} \\\\\n\n&=e V_{s}+V_{s}=V_{s}(1+e) \\\\\n\nV &=3000(1+e) \\\\\n\nV_{X} &=3000 \\times 1.6=4800 \\mathrm{m}^{3} \\\\\n\nV_{Y} &=3000 \\times 1.7=5100 \\mathrm{m}^{3} \\\\\n\nv_{z} &=3000 \\times 1.64=4920 \\mathrm{m}^{3}\n\n\\end{aligned}$$\n\nLet cost of excavation be $\\alpha / \\mathrm{m}^{3}$\n\n$$\\begin{aligned}\n\nP_{X} &=4800 \\alpha+140 \\times \\alpha \\times 2 \\\\\n\n&=5080 \\alpha \\\\\n\nP_{Y} &=5100 \\alpha+80 \\times \\alpha \\times 2 \\\\\n\n&=5260 \\alpha \\\\\n\nP_{Z} &=4920 \\alpha+100 \\times \\alpha \\times 2 \\\\\n\n&=5120 \\alpha\n\n\\end{aligned}$$\n\nHence $P_{X}$ is least.\n\nHence total cost for site X is least.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q39": {
-      "question_uid": "pp:ce:2015:q39",
+    "ce:2015:q39": {
+      "question_uid": "ce:2015:q39",
+      "legacy_uid": "pp:ce:2015:q39",
       "exam_uid": "ce:2015:set1:main:q39",
       "title": "GATE CE 2015 | Set 1 | Question: 39",
       "section": "main",
@@ -1752,14 +1728,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-f2adbd888d.webp\" />\n\n$$\\begin{aligned} \\Delta H &=\\frac{C_{C} H_{0}}{1+e_{0}} \\log _{10}\\left[\\frac{\\bar{\\sigma}_{0}+\\Delta \\bar{\\sigma}}{\\bar{\\sigma}_{0}}\\right] \\\\ H_{0} &=\\text { Thickness of clay layer } \\\\ &=10 \\mathrm{m} \\end{aligned}$$\n\n$\\bar{\\sigma}_{0}=$ Effective stress before application\n\nof load at the centre of clay layer\n\n$$\\begin{aligned} \\bar{\\sigma}_{0}&=(15 \\times 2)+(18-10) \\times 6+(18-10) \\times 5 \\\\ &= 118 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\n$\\Delta \\bar{\\sigma}=$ Increase in effective stress due\n\nto the structural weight at the centre of clay layer\n\n$$\\begin{aligned} \\Delta \\bar{\\sigma} &=\\frac{1500}{\\frac{\\pi}{4} \\times(3+12)^{2}}=8.488 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\Rightarrow \\quad \\Delta H &=\\frac{0.3 \\times 10}{1+0.7} \\log _{10}\\left(\\frac{118+8.488}{118}\\right) \\\\ &=0.053236 \\mathrm{m}=53.236 \\mathrm{mm} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-f2adbd888d.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-f2adbd888d.webp\" />\n\n$$\\begin{aligned} \\Delta H &=\\frac{C_{C} H_{0}}{1+e_{0}} \\log _{10}\\left[\\frac{\\bar{\\sigma}_{0}+\\Delta \\bar{\\sigma}}{\\bar{\\sigma}_{0}}\\right] \\\\ H_{0} &=\\text { Thickness of clay layer } \\\\ &=10 \\mathrm{m} \\end{aligned}$$\n\n$\\bar{\\sigma}_{0}=$ Effective stress before application\n\nof load at the centre of clay layer\n\n$$\\begin{aligned} \\bar{\\sigma}_{0}&=(15 \\times 2)+(18-10) \\times 6+(18-10) \\times 5 \\\\ &= 118 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\n$\\Delta \\bar{\\sigma}=$ Increase in effective stress due\n\nto the structural weight at the centre of clay layer\n\n$$\\begin{aligned} \\Delta \\bar{\\sigma} &=\\frac{1500}{\\frac{\\pi}{4} \\times(3+12)^{2}}=8.488 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\Rightarrow \\quad \\Delta H &=\\frac{0.3 \\times 10}{1+0.7} \\log _{10}\\left(\\frac{118+8.488}{118}\\right) \\\\ &=0.053236 \\mathrm{m}=53.236 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **52.5** (acceptable range: [50, 55])."
       }
     },
-    "pp:ce:2015:q40": {
-      "question_uid": "pp:ce:2015:q40",
+    "ce:2015:q40": {
+      "question_uid": "ce:2015:q40",
+      "legacy_uid": "pp:ce:2015:q40",
       "exam_uid": "ce:2015:set1:main:q40",
       "title": "GATE CE 2015 | Set 1 | Question: 40",
       "section": "main",
@@ -1797,14 +1771,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-777bbfe227.webp\" />\n\n$$\\begin{aligned} T_{v}&=\\frac{C_{v} t}{d^{2}} \\\\ \\Rightarrow \\quad T_{v}&=\\frac{0.003 \\times 2 \\times 86400 \\times 365}{\\left(\\frac{20}{2} \\times 100\\right)^{2}}\\\\ T_{v}&=0.1892 \\lt 0.02827 \\\\ T_{v}&=\\frac{\\pi}{4} U^{2}=0.1892 &(\\therefore U \\lt 60 \\%)\\\\ \\Rightarrow \\quad U&=0.4908 \\\\ \\Rightarrow \\quad&\\text{Total consolidation}\\\\ &=\\frac{30}{0.4908}=61.12 \\mathrm{mm}\\\\ \\end{aligned}$$\n\nDegree of consolidation for 50 mm settlement\n\n$$\\begin{aligned} U &=\\frac{50}{61.12}=0.818=81.8 \\% \\\\ \\Rightarrow \\quad T_{v} &=0.60835=\\frac{C_{v} t}{H^{2}} \\\\ \\Rightarrow \\quad t &=\\frac{0.60835 \\times(10)^{2}}{0.003 \\times 10^{-4}} \\\\ &=6.43 \\text { years } \\end{aligned}$$\n\n$\\Rightarrow$Additional number of years =4.43",
-        "images": [
-          "/question-images/ce/2015/ce-2015-777bbfe227.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-777bbfe227.webp\" />\n\n$$\\begin{aligned} T_{v}&=\\frac{C_{v} t}{d^{2}} \\\\ \\Rightarrow \\quad T_{v}&=\\frac{0.003 \\times 2 \\times 86400 \\times 365}{\\left(\\frac{20}{2} \\times 100\\right)^{2}}\\\\ T_{v}&=0.1892 \\lt 0.02827 \\\\ T_{v}&=\\frac{\\pi}{4} U^{2}=0.1892 &(\\therefore U \\lt 60 \\%)\\\\ \\Rightarrow \\quad U&=0.4908 \\\\ \\Rightarrow \\quad&\\text{Total consolidation}\\\\ &=\\frac{30}{0.4908}=61.12 \\mathrm{mm}\\\\ \\end{aligned}$$\n\nDegree of consolidation for 50 mm settlement\n\n$$\\begin{aligned} U &=\\frac{50}{61.12}=0.818=81.8 \\% \\\\ \\Rightarrow \\quad T_{v} &=0.60835=\\frac{C_{v} t}{H^{2}} \\\\ \\Rightarrow \\quad t &=\\frac{0.60835 \\times(10)^{2}}{0.003 \\times 10^{-4}} \\\\ &=6.43 \\text { years } \\end{aligned}$$\n\n$\\Rightarrow$Additional number of years =4.43\n\nTherefore, the correct answer is **4.5** (acceptable range: [4, 5])."
       }
     },
-    "pp:ce:2015:q41": {
-      "question_uid": "pp:ce:2015:q41",
+    "ce:2015:q41": {
+      "question_uid": "ce:2015:q41",
+      "legacy_uid": "pp:ce:2015:q41",
       "exam_uid": "ce:2015:set1:main:q41",
       "title": "GATE CE 2015 | Set 1 | Question: 41",
       "section": "main",
@@ -1842,14 +1814,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-60f90723cd.webp\" />\n\n$$\\begin{aligned} \\text { and }\\quad k_{1}&=10 k_{2}=100 k_{3} \\\\ k_{2} &=\\frac{1}{10} k_{1} \\\\ \\Rightarrow \\quad k_{H} &=\\frac{k_{1} H_{1}+k_{2} H_{2}+k_{3} H_{3}}{H_{1}+H_{2}+H_{3}} \\\\ &=\\frac{100 k_{3} H_{1}+10 k_{3} \\times 2 H_{1}+k_{3} \\times 3 H_{1}}{H_{1}+2 H_{1}+3 H_{1}} \\\\ &=20.5 k_{3}\\\\ k_{v}&=\\frac{H_{1}+H_{2}+H_{3}}{\\frac{H_{1}}{k_{1}}+\\frac{H_{2}}{k_{2}}+\\frac{H_{3}}{k_{3}}}\\\\ &=\\frac{H_{1}+2 H_{1}+3 H_{1}}{H_{1}}+\\frac{2 H_{1}}{10 k_{3}}+\\frac{3 H_{1}}{k_{3}} \\\\ &=1.869 \\mathrm{k}_{3} \\\\ &=\\frac{k_{H}}{k_{v}}=\\frac{2.05 k_{3}}{1.869 k_{3}} \\\\ &=10.9684 \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-60f90723cd.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-60f90723cd.webp\" />\n\n$$\\begin{aligned} \\text { and }\\quad k_{1}&=10 k_{2}=100 k_{3} \\\\ k_{2} &=\\frac{1}{10} k_{1} \\\\ \\Rightarrow \\quad k_{H} &=\\frac{k_{1} H_{1}+k_{2} H_{2}+k_{3} H_{3}}{H_{1}+H_{2}+H_{3}} \\\\ &=\\frac{100 k_{3} H_{1}+10 k_{3} \\times 2 H_{1}+k_{3} \\times 3 H_{1}}{H_{1}+2 H_{1}+3 H_{1}} \\\\ &=20.5 k_{3}\\\\ k_{v}&=\\frac{H_{1}+H_{2}+H_{3}}{\\frac{H_{1}}{k_{1}}+\\frac{H_{2}}{k_{2}}+\\frac{H_{3}}{k_{3}}}\\\\ &=\\frac{H_{1}+2 H_{1}+3 H_{1}}{H_{1}}+\\frac{2 H_{1}}{10 k_{3}}+\\frac{3 H_{1}}{k_{3}} \\\\ &=1.869 \\mathrm{k}_{3} \\\\ &=\\frac{k_{H}}{k_{v}}=\\frac{2.05 k_{3}}{1.869 k_{3}} \\\\ &=10.9684 \\end{aligned}$$\n\nTherefore, the correct answer is **11** (acceptable range: [10, 12])."
       }
     },
-    "pp:ce:2015:q42": {
-      "question_uid": "pp:ce:2015:q42",
+    "ce:2015:q42": {
+      "question_uid": "ce:2015:q42",
+      "legacy_uid": "pp:ce:2015:q42",
       "exam_uid": "ce:2015:set1:main:q42",
       "title": "GATE CE 2015 | Set 1 | Question: 42",
       "section": "main",
@@ -1887,14 +1857,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "$$\\begin{aligned} B'&= B-2e_x\\\\ &= 2-2 \\times 0.15\\\\ &= 1.7m \\end{aligned}$$\n\nAs per Meyerhof theory\n\n$$\\begin{aligned} q_u&=CN_cS_cd_ci_c+\\gamma D_fN_qd_qi_q\\\\ &+0.5B'\\gamma N_\\gamma S_\\gamma d_ri_r\\\\ q_u&=18 \\times 1(1.314 \\times 1.113 \\times 0.444) \\times 33.3\\\\ &+10.5 \\times 1.7 \\times 18 \\times 37.16 \\\\ & \\times (1.314 \\times 1.113 \\times 0.02)\\\\ &=405.84 \\; kN/m^2\\\\ q_{ns}&=\\frac{q_u-\\sigma }{F}=\\frac{q_u-\\gamma D_f}{F}\\\\ &=\\frac{405.84-18 \\times 1}{3}\\\\ &=129.28 \\; kN/m^2\\\\ &\\text{Net safe load}\\\\ &=q_{ns} \\times \\text{Area}\\\\ &=q_{ns} \\times (B' \\times L)\\\\ &=129.28 \\times 1.7 \\times 2\\\\ &=439.55\\; kN \\end{aligned}$$\n\n<img src=\"/question-images/ce/2015/ce-2015-e5b17f12e7.webp\" />",
-        "images": [
-          "/question-images/ce/2015/ce-2015-e5b17f12e7.webp"
-        ]
+        "markdown": "$$\\begin{aligned} B'&= B-2e_x\\\\ &= 2-2 \\times 0.15\\\\ &= 1.7m \\end{aligned}$$\n\nAs per Meyerhof theory\n\n$$\\begin{aligned} q_u&=CN_cS_cd_ci_c+\\gamma D_fN_qd_qi_q\\\\ &+0.5B'\\gamma N_\\gamma S_\\gamma d_ri_r\\\\ q_u&=18 \\times 1(1.314 \\times 1.113 \\times 0.444) \\times 33.3\\\\ &+10.5 \\times 1.7 \\times 18 \\times 37.16 \\\\ & \\times (1.314 \\times 1.113 \\times 0.02)\\\\ &=405.84 \\; kN/m^2\\\\ q_{ns}&=\\frac{q_u-\\sigma }{F}=\\frac{q_u-\\gamma D_f}{F}\\\\ &=\\frac{405.84-18 \\times 1}{3}\\\\ &=129.28 \\; kN/m^2\\\\ &\\text{Net safe load}\\\\ &=q_{ns} \\times \\text{Area}\\\\ &=q_{ns} \\times (B' \\times L)\\\\ &=129.28 \\times 1.7 \\times 2\\\\ &=439.55\\; kN \\end{aligned}$$\n\n<img src=\"/question-images/ce/2015/ce-2015-e5b17f12e7.webp\" />\n\nTherefore, the correct answer is **439** (acceptable range: [434, 444])."
       }
     },
-    "pp:ce:2015:q43": {
-      "question_uid": "pp:ce:2015:q43",
+    "ce:2015:q43": {
+      "question_uid": "ce:2015:q43",
+      "legacy_uid": "pp:ce:2015:q43",
       "exam_uid": "ce:2015:set1:main:q43",
       "title": "GATE CE 2015 | Set 1 | Question: 43",
       "section": "main",
@@ -1932,14 +1900,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-b522b88a2b.webp\" />\n\n$$\\begin{aligned} L&=930 \\mathrm{m} \\\\ D&= 0.3 \\mathrm{m} \\end{aligned}$$\n\nApply energy equation between A and B\n\n$$\\begin{aligned} 20&=\\frac{0.5 V^{2}}{2 g}+\\frac{(0.03)(930) V^{2}}{2 g(0.3)}+\\frac{5.5 V^{2}}{2 g}+\\frac{V^{2}}{20} \\\\\\ 20&=\\frac{(0.03)(930)}{(03)} \\frac{v^{2}}{20}+\\frac{70 v^{2}}{20} \\\\ 20&=\\frac{100 v^{2}}{2 g} \\\\ V&=2 \\mathrm{m} / \\mathrm{se} \\\\ a&=\\frac{\\pi}{4}(0.3)^{2}(2) \\\\ Q&=0.1414 \\mathrm{m}^{3} / \\mathrm{sec} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-b522b88a2b.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-b522b88a2b.webp\" />\n\n$$\\begin{aligned} L&=930 \\mathrm{m} \\\\ D&= 0.3 \\mathrm{m} \\end{aligned}$$\n\nApply energy equation between A and B\n\n$$\\begin{aligned} 20&=\\frac{0.5 V^{2}}{2 g}+\\frac{(0.03)(930) V^{2}}{2 g(0.3)}+\\frac{5.5 V^{2}}{2 g}+\\frac{V^{2}}{20} \\\\\\ 20&=\\frac{(0.03)(930)}{(03)} \\frac{v^{2}}{20}+\\frac{70 v^{2}}{20} \\\\ 20&=\\frac{100 v^{2}}{2 g} \\\\ V&=2 \\mathrm{m} / \\mathrm{se} \\\\ a&=\\frac{\\pi}{4}(0.3)^{2}(2) \\\\ Q&=0.1414 \\mathrm{m}^{3} / \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **0.141** (acceptable range: [0.14, 0.142])."
       }
     },
-    "pp:ce:2015:q44": {
-      "question_uid": "pp:ce:2015:q44",
+    "ce:2015:q44": {
+      "question_uid": "ce:2015:q44",
+      "legacy_uid": "pp:ce:2015:q44",
       "exam_uid": "ce:2015:set1:main:q44",
       "title": "GATE CE 2015 | Set 1 | Question: 44",
       "section": "main",
@@ -1977,12 +1943,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "$$\\begin{aligned} y_{2} &=0.8 \\mathrm{m} \\\\ v_{2} &=1 \\mathrm{m} / \\mathrm{s} \\\\ F_{f_{2}} &=\\frac{v_{2}}{\\sqrt{g D}}=\\frac{1}{\\sqrt{10 \\times \\frac{0.8 \\times 2}{2}}} \\\\ F_{f_{2}} &=0.3535 \\\\ y_{1} &=\\frac{y_{2}}{2}\\left(-1+\\sqrt{1+8 F_{12}^{2}}\\right) \\\\ &=\\frac{0.8}{2}\\left(-1+\\sqrt{1+8 \\times 0.3535^{2}}\\right) \\\\ &=0.165643 \\\\ \\Rightarrow \\quad v_{1} y_{1} &=v_{2} y_{2} \\\\ \\Rightarrow \\quad v_{1} &=\\frac{1 \\times 0.8}{0.165643}=4.83 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} y_{2} &=0.8 \\mathrm{m} \\\\ v_{2} &=1 \\mathrm{m} / \\mathrm{s} \\\\ F_{f_{2}} &=\\frac{v_{2}}{\\sqrt{g D}}=\\frac{1}{\\sqrt{10 \\times \\frac{0.8 \\times 2}{2}}} \\\\ F_{f_{2}} &=0.3535 \\\\ y_{1} &=\\frac{y_{2}}{2}\\left(-1+\\sqrt{1+8 F_{12}^{2}}\\right) \\\\ &=\\frac{0.8}{2}\\left(-1+\\sqrt{1+8 \\times 0.3535^{2}}\\right) \\\\ &=0.165643 \\\\ \\Rightarrow \\quad v_{1} y_{1} &=v_{2} y_{2} \\\\ \\Rightarrow \\quad v_{1} &=\\frac{1 \\times 0.8}{0.165643}=4.83 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **4.8** (acceptable range: [4.75, 4.85])."
       }
     },
-    "pp:ce:2015:q45": {
-      "question_uid": "pp:ce:2015:q45",
+    "ce:2015:q45": {
+      "question_uid": "ce:2015:q45",
+      "legacy_uid": "pp:ce:2015:q45",
       "exam_uid": "ce:2015:set1:main:q45",
       "title": "GATE CE 2015 | Set 1 | Question: 45",
       "section": "main",
@@ -2020,12 +1986,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "$$\\begin{aligned} \\text{Adverb slope }&= -\\frac{1}{1000}\\\\\\\\ Q &=4 \\mathrm{m}^{3} / \\mathrm{s} \\\\ n &=0.01 \\\\ y &=0.5 \\mathrm{m} \\\\ \\frac{d y}{d x} &=\\frac{S_{0}-S_{f}}{1-F_{t}^{2}} \\\\ F_{r} &=\\frac{V}{\\sqrt{g y}}=\\frac{Q}{2 y \\sqrt{g y}} \\\\ &=\\frac{4}{2 \\times 0.5 \\sqrt{10 \\times 0.5}}=1.789 \\\\ R &=\\frac{A}{P}=\\frac{2 \\times 0.5}{2+2 \\times 0.5}=\\frac{1}{3} \\\\ Q &=\\frac{1}{n} A R^{2 / 3} S_{f}^{1 / 2} \\end{aligned}$$\n\nOn solving for $S_{f}$\n\n$$\\begin{aligned} S_{f}^{1 / 2} &=6.923 \\times 10^{-3} \\\\ \\frac{d y}{d x} &=\\frac{-\\frac{1}{10000}-6.923 \\times 10^{-3}}{1-(1.789)^{2}} \\\\ &=3.191 \\times 10^{-3} \\simeq 0.0032 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text{Adverb slope }&= -\\frac{1}{1000}\\\\\\\\ Q &=4 \\mathrm{m}^{3} / \\mathrm{s} \\\\ n &=0.01 \\\\ y &=0.5 \\mathrm{m} \\\\ \\frac{d y}{d x} &=\\frac{S_{0}-S_{f}}{1-F_{t}^{2}} \\\\ F_{r} &=\\frac{V}{\\sqrt{g y}}=\\frac{Q}{2 y \\sqrt{g y}} \\\\ &=\\frac{4}{2 \\times 0.5 \\sqrt{10 \\times 0.5}}=1.789 \\\\ R &=\\frac{A}{P}=\\frac{2 \\times 0.5}{2+2 \\times 0.5}=\\frac{1}{3} \\\\ Q &=\\frac{1}{n} A R^{2 / 3} S_{f}^{1 / 2} \\end{aligned}$$\n\nOn solving for $S_{f}$\n\n$$\\begin{aligned} S_{f}^{1 / 2} &=6.923 \\times 10^{-3} \\\\ \\frac{d y}{d x} &=\\frac{-\\frac{1}{10000}-6.923 \\times 10^{-3}}{1-(1.789)^{2}} \\\\ &=3.191 \\times 10^{-3} \\simeq 0.0032 \\end{aligned}$$\n\nTherefore, the correct answer is **0.0032** (acceptable range: [0.0031, 0.0033])."
       }
     },
-    "pp:ce:2015:q46": {
-      "question_uid": "pp:ce:2015:q46",
+    "ce:2015:q46": {
+      "question_uid": "ce:2015:q46",
+      "legacy_uid": "pp:ce:2015:q46",
       "exam_uid": "ce:2015:set1:main:q46",
       "title": "GATE CE 2015 | Set 1 | Question: 46",
       "section": "main",
@@ -2065,12 +2031,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Dimensional Analysis",
-        "markdown": "$$\\begin{aligned} \\text{For sphere,}\\quad A&=\\frac{\\pi}{4} D^{2} \\\\ F_{D} &=C_{D} \\times \\frac{1}{2} \\times p \\times A \\times V^{2} \\\\ F_{D} &=C_{D} \\times \\frac{1}{2} \\times \\rho \\times\\left(\\frac{\\pi}{4} D^{2}\\right) \\times V^{2} \\\\ \\frac{F_{D}}{\\rho D^{2} V^{2}} &=\\frac{1}{2} \\times\\left(\\frac{\\pi}{4}\\right) \\times C_{D} \\end{aligned}$$\n\nHence, right hand side is dimensionless, so $\\frac{F_{0}}{\\rho D^{2} V^{2}}$ should also be a dimensionless parameter.\n\nOption (C) $\\frac{F_{0}}{\\rho V^{2} D^{2}}, \\frac{\\rho V D}{\\mu}$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text{For sphere,}\\quad A&=\\frac{\\pi}{4} D^{2} \\\\ F_{D} &=C_{D} \\times \\frac{1}{2} \\times p \\times A \\times V^{2} \\\\ F_{D} &=C_{D} \\times \\frac{1}{2} \\times \\rho \\times\\left(\\frac{\\pi}{4} D^{2}\\right) \\times V^{2} \\\\ \\frac{F_{D}}{\\rho D^{2} V^{2}} &=\\frac{1}{2} \\times\\left(\\frac{\\pi}{4}\\right) \\times C_{D} \\end{aligned}$$\n\nHence, right hand side is dimensionless, so $\\frac{F_{0}}{\\rho D^{2} V^{2}}$ should also be a dimensionless parameter.\n\nOption (C) $\\frac{F_{0}}{\\rho V^{2} D^{2}}, \\frac{\\rho V D}{\\mu}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q47": {
-      "question_uid": "pp:ce:2015:q47",
+    "ce:2015:q47": {
+      "question_uid": "ce:2015:q47",
+      "legacy_uid": "pp:ce:2015:q47",
       "exam_uid": "ce:2015:set1:main:q47",
       "title": "GATE CE 2015 | Set 1 | Question: 47",
       "section": "main",
@@ -2108,12 +2074,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
-        "markdown": "Let $P_{p}=$ Precipitation in 2013 at station P\n\n$N_{p}=$ Noramal annual precipitation at station P\n\n$$\\begin{aligned} \\frac{P_{p}}{N_{p}}&=\\frac{1}{3}\\left [ \\frac{P_{Q}}{N_{q}}+\\frac{P_{R}}{N_{R}}+\\frac{P_{S}}{N_{S}} \\right ]\\\\ \\frac{860}{780}&=\\frac{1}{3}\\left [ \\frac{930}{850}+\\frac{1010}{920}+\\frac{P_{S}}{980} \\right ] \\\\ \\Rightarrow \\;\\; P_{s}&=1093.43 mm \\end{aligned}$$",
-        "images": []
+        "markdown": "Let $P_{p}=$ Precipitation in 2013 at station P\n\n$N_{p}=$ Noramal annual precipitation at station P\n\n$$\\begin{aligned} \\frac{P_{p}}{N_{p}}&=\\frac{1}{3}\\left [ \\frac{P_{Q}}{N_{q}}+\\frac{P_{R}}{N_{R}}+\\frac{P_{S}}{N_{S}} \\right ]\\\\ \\frac{860}{780}&=\\frac{1}{3}\\left [ \\frac{930}{850}+\\frac{1010}{920}+\\frac{P_{S}}{980} \\right ] \\\\ \\Rightarrow \\;\\; P_{s}&=1093.43 mm \\end{aligned}$$\n\nTherefore, the correct answer is **1093.5** (acceptable range: [1093, 1094])."
       }
     },
-    "pp:ce:2015:q48": {
-      "question_uid": "pp:ce:2015:q48",
+    "ce:2015:q48": {
+      "question_uid": "ce:2015:q48",
+      "legacy_uid": "pp:ce:2015:q48",
       "exam_uid": "ce:2015:set1:main:q48",
       "title": "GATE CE 2015 | Set 1 | Question: 48",
       "section": "main",
@@ -2151,14 +2117,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-36d251e039.webp\" />\n\nHence, maximum ordinate is 22 $m^{3}/s.$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-36d251e039.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-36d251e039.webp\" />\n\nHence, maximum ordinate is 22 $m^{3}/s.$\n\nTherefore, the correct answer is **22** (acceptable range: [21.9, 22.1])."
       }
     },
-    "pp:ce:2015:q49": {
-      "question_uid": "pp:ce:2015:q49",
+    "ce:2015:q49": {
+      "question_uid": "ce:2015:q49",
+      "legacy_uid": "pp:ce:2015:q49",
       "exam_uid": "ce:2015:set1:main:q49",
       "title": "GATE CE 2015 | Set 1 | Question: 49",
       "section": "main",
@@ -2196,12 +2160,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
-        "markdown": "1 $m^{3}$ of air has 30$\\mu g\\; \\; SO_{2}$\n\n$10^{6}$$m^{3}$ of air has 30g $SO_{2}$\n\n$$\\begin{aligned} 30g\\; SO_{2} &=\\frac{30}{64}\\text{mole}\\; SO_{2} \\\\ \\text{From}\\; PV &=nRT \\\\ V &=\\frac{nRT}{P}=\\frac{n}{P/RT} \\\\ &=\\frac{\\left ( 30/64 \\right )}{41.6\\; mol/m^{3}} \\\\ \\text{Volume of}SO_{2} &=\\frac{30}{64\\times 41.6} \\\\ &=0.01127\\; m^{3} \\end{aligned}$$\n\n$\\Rightarrow$ Concentration of $SO_{2}$ in PPM=0.0113 ppm",
-        "images": []
+        "markdown": "1 $m^{3}$ of air has 30$\\mu g\\; \\; SO_{2}$\n\n$10^{6}$$m^{3}$ of air has 30g $SO_{2}$\n\n$$\\begin{aligned} 30g\\; SO_{2} &=\\frac{30}{64}\\text{mole}\\; SO_{2} \\\\ \\text{From}\\; PV &=nRT \\\\ V &=\\frac{nRT}{P}=\\frac{n}{P/RT} \\\\ &=\\frac{\\left ( 30/64 \\right )}{41.6\\; mol/m^{3}} \\\\ \\text{Volume of}SO_{2} &=\\frac{30}{64\\times 41.6} \\\\ &=0.01127\\; m^{3} \\end{aligned}$$\n\n$\\Rightarrow$ Concentration of $SO_{2}$ in PPM=0.0113 ppm\n\nTherefore, the correct answer is **0.011** (acceptable range: [0.01, 0.012])."
       }
     },
-    "pp:ce:2015:q50": {
-      "question_uid": "pp:ce:2015:q50",
+    "ce:2015:q50": {
+      "question_uid": "ce:2015:q50",
+      "legacy_uid": "pp:ce:2015:q50",
       "exam_uid": "ce:2015:set1:main:q50",
       "title": "GATE CE 2015 | Set 1 | Question: 50",
       "section": "main",
@@ -2239,12 +2203,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "$$\\begin{aligned} \\text { \\% removal } &=\\frac{V_{s}^{\\prime}}{V_{s}} \\times 100 \\\\ V_{s}^{\\prime} &=0.9 \\times V_{s} \\\\ &=0.9 \\times \\text { Overfiow rate } \\\\ V_{s}^{\\prime} &=\\frac{0.9 \\times 40}{86400} \\mathrm{m} / \\mathrm{s} \\\\ \\frac{(G-1) g d^{2}}{18 \\mathrm{v}} &=\\frac{0.9 \\times 40}{86400} \\\\ d &=\\sqrt{\\frac{0.9 \\times 40 \\times 18 \\mathrm{p}_{\\mathrm{w}} \\mathrm{V}}{86400 \\times\\left(G_{s}-1\\right) \\times \\rho_{\\mathrm{w}} \\times g}} \\\\ &=\\sqrt{\\frac{0.9 \\times 40 \\times 18 \\times 1.1 \\times 10^{-6}}{86400 \\times 1.64 \\times 9.81}} \\\\ &=2.2576 \\times 10^{-5} \\mathrm{m}=22.576 \\mathrm{mm} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text { \\% removal } &=\\frac{V_{s}^{\\prime}}{V_{s}} \\times 100 \\\\ V_{s}^{\\prime} &=0.9 \\times V_{s} \\\\ &=0.9 \\times \\text { Overfiow rate } \\\\ V_{s}^{\\prime} &=\\frac{0.9 \\times 40}{86400} \\mathrm{m} / \\mathrm{s} \\\\ \\frac{(G-1) g d^{2}}{18 \\mathrm{v}} &=\\frac{0.9 \\times 40}{86400} \\\\ d &=\\sqrt{\\frac{0.9 \\times 40 \\times 18 \\mathrm{p}_{\\mathrm{w}} \\mathrm{V}}{86400 \\times\\left(G_{s}-1\\right) \\times \\rho_{\\mathrm{w}} \\times g}} \\\\ &=\\sqrt{\\frac{0.9 \\times 40 \\times 18 \\times 1.1 \\times 10^{-6}}{86400 \\times 1.64 \\times 9.81}} \\\\ &=2.2576 \\times 10^{-5} \\mathrm{m}=22.576 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **22** (acceptable range: [20, 24])."
       }
     },
-    "pp:ce:2015:q51": {
-      "question_uid": "pp:ce:2015:q51",
+    "ce:2015:q51": {
+      "question_uid": "ce:2015:q51",
+      "legacy_uid": "pp:ce:2015:q51",
       "exam_uid": "ce:2015:set1:main:q51",
       "title": "GATE CE 2015 | Set 1 | Question: 51",
       "section": "main",
@@ -2282,12 +2246,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "$$\\begin{aligned} &\\frac{d v}{d t}=\\alpha-\\beta v\\\\ &\\Rightarrow \\quad \\int \\frac{d v}{(\\alpha-\\beta v)}=\\int d t\\\\ &\\Rightarrow \\quad \\frac{\\ln (\\alpha-\\beta v)}{-\\beta}=t+C\\\\ &\\text { at } t=3 \\text { sec, } \\frac{d v}{d t}=\\alpha-\\beta v=1.3 \\mathrm{m} / \\mathrm{s}^{2}\\\\ &\\Rightarrow \\frac{\\ln (1.3)}{-0.05}=3+c \\Rightarrow c=-8.247\\\\ &\\therefore \\quad \\ln (2-0.05 \\times v)=(t-8.247)(-0.05)\\\\ &\\Rightarrow 2-0.05 \\times v=1.51 \\mathrm{e}^{-0.05 t}\\\\ &\\Rightarrow v=\\frac{d s}{d t}=40-30.21 e^{-0.05 t}\\\\ &\\Rightarrow s=40 t+604.15 e^{-0.05 t}+c^{\\prime}\\\\ &\\therefore \\quad \\text { at } t=0, s=0 \\Rightarrow c^{\\prime}=-604.15\\\\ &\\Rightarrow \\quad s=40 t+604.15 e^{-0.05 t}-604.15\\\\ &\\text { at } t=35 \\mathrm{sec}\\\\ &\\Rightarrow \\quad s=40 \\times 35+604.15 \\mathrm{e}^{-0.05 \\times 35}-604\\\\ &\\Rightarrow \\quad s=900.84 \\mathrm{m} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} &\\frac{d v}{d t}=\\alpha-\\beta v\\\\ &\\Rightarrow \\quad \\int \\frac{d v}{(\\alpha-\\beta v)}=\\int d t\\\\ &\\Rightarrow \\quad \\frac{\\ln (\\alpha-\\beta v)}{-\\beta}=t+C\\\\ &\\text { at } t=3 \\text { sec, } \\frac{d v}{d t}=\\alpha-\\beta v=1.3 \\mathrm{m} / \\mathrm{s}^{2}\\\\ &\\Rightarrow \\frac{\\ln (1.3)}{-0.05}=3+c \\Rightarrow c=-8.247\\\\ &\\therefore \\quad \\ln (2-0.05 \\times v)=(t-8.247)(-0.05)\\\\ &\\Rightarrow 2-0.05 \\times v=1.51 \\mathrm{e}^{-0.05 t}\\\\ &\\Rightarrow v=\\frac{d s}{d t}=40-30.21 e^{-0.05 t}\\\\ &\\Rightarrow s=40 t+604.15 e^{-0.05 t}+c^{\\prime}\\\\ &\\therefore \\quad \\text { at } t=0, s=0 \\Rightarrow c^{\\prime}=-604.15\\\\ &\\Rightarrow \\quad s=40 t+604.15 e^{-0.05 t}-604.15\\\\ &\\text { at } t=35 \\mathrm{sec}\\\\ &\\Rightarrow \\quad s=40 \\times 35+604.15 \\mathrm{e}^{-0.05 \\times 35}-604\\\\ &\\Rightarrow \\quad s=900.84 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **900** (acceptable range: [895, 905])."
       }
     },
-    "pp:ce:2015:q52": {
-      "question_uid": "pp:ce:2015:q52",
+    "ce:2015:q52": {
+      "question_uid": "ce:2015:q52",
+      "legacy_uid": "pp:ce:2015:q52",
       "exam_uid": "ce:2015:set1:main:q52",
       "title": "GATE CE 2015 | Set 1 | Question: 52",
       "section": "main",
@@ -2327,14 +2291,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-272176322f.webp\" />\n\nFor equilibrium,\n\n$$\\begin{aligned} f N & \\geq m g \\sin \\theta \\\\ \\Rightarrow\\quad f m g \\cos \\theta & \\geq m g \\sin \\theta \\\\ \\Rightarrow\\quad f \\cos \\theta & \\geq \\sin \\theta \\\\ \\Rightarrow\\quad f & \\geq \\tan \\theta \\\\ \\Rightarrow\\quad f & \\geq e \\\\ \\text{or}\\quad e & \\leq f \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2015/ce-2015-272176322f.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2015/ce-2015-272176322f.webp\" />\n\nFor equilibrium,\n\n$$\\begin{aligned} f N & \\geq m g \\sin \\theta \\\\ \\Rightarrow\\quad f m g \\cos \\theta & \\geq m g \\sin \\theta \\\\ \\Rightarrow\\quad f \\cos \\theta & \\geq \\sin \\theta \\\\ \\Rightarrow\\quad f & \\geq \\tan \\theta \\\\ \\Rightarrow\\quad f & \\geq e \\\\ \\text{or}\\quad e & \\leq f \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2015:q53": {
-      "question_uid": "pp:ce:2015:q53",
+    "ce:2015:q53": {
+      "question_uid": "ce:2015:q53",
+      "legacy_uid": "pp:ce:2015:q53",
       "exam_uid": "ce:2015:set1:main:q53",
       "title": "GATE CE 2015 | Set 1 | Question: 53",
       "section": "main",
@@ -2372,12 +2334,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "For a driver having 6/6 vision can see the board\n\nfrom distance 48m.\n\nFor a driver having 6 / 9 vision can see the board\n\nfrom distance $48 \\times \\frac{6}{9}=32 \\mathrm{m}$\n\nVehicle requires 174 \\mathrm{m} to slow down to 30 km / hr.\n\nSo minimum distance of X from the start of Y zone\n\n=174-32=142m",
-        "images": []
+        "markdown": "For a driver having 6/6 vision can see the board\n\nfrom distance 48m.\n\nFor a driver having 6 / 9 vision can see the board\n\nfrom distance $48 \\times \\frac{6}{9}=32 \\mathrm{m}$\n\nVehicle requires 174 \\mathrm{m} to slow down to 30 km / hr.\n\nSo minimum distance of X from the start of Y zone\n\n=174-32=142m\n\nTherefore, the correct answer is **142.08** (acceptable range: [141.84, 142.32])."
       }
     },
-    "pp:ce:2015:q54": {
-      "question_uid": "pp:ce:2015:q54",
+    "ce:2015:q54": {
+      "question_uid": "ce:2015:q54",
+      "legacy_uid": "pp:ce:2015:q54",
       "exam_uid": "ce:2015:set1:main:q54",
       "title": "GATE CE 2015 | Set 1 | Question: 54",
       "section": "main",
@@ -2420,8 +2382,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q55": {
-      "question_uid": "pp:ce:2015:q55",
+    "ce:2015:q55": {
+      "question_uid": "ce:2015:q55",
+      "legacy_uid": "pp:ce:2015:q55",
       "exam_uid": "ce:2015:set1:main:q55",
       "title": "GATE CE 2015 | Set 1 | Question: 55",
       "section": "main",
@@ -2461,12 +2424,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "Magnetic Declination, $\\delta=2^{\\circ} \\mathrm{E}$\n\nMagnetic FB of AB $=\\mathrm{N} 79^{\\circ} 50'E$\n\nTo find local atraction at station A\n\nAs station O is free from local attraction\n\nHeance FB of OA will be correct\n\nCorrect FB of OA $= N 50^{\\circ}20^{\\circ}W=309^{\\circ}40^{\\circ}$\n\n$\\therefore$ Correct BB of $OA = 120^{\\circ}40^{\\circ}$\n\n$\\because$ Obserbed FB of AO\n\n= Observed BB of OA\n\n$=120^{\\circ}40^{\\circ}$\n\n$127^{\\circ}20^{\\circ}$\n\nError $= MB = TB =127^{\\circ}20^{\\circ}=120^{\\circ}40^{\\circ}$\n\n$==2^{\\circ}20^{\\circ}$\n\nCorrection $=+2^{\\circ}20^{\\circ}$\n\nLocal attraction at station A\n\n$=+2^{\\circ}20^{\\circ}=2^{\\circ}20^{\\circ}E$\n\n$\\therefore$ Magnetic FB of $AB=N76^{\\circ}50^{\\circ}E$\n\n$\\delta = 2^{\\circ}E$ and local attraction $=2^{\\circ}20^{\\circ}E$\n\n$\\therefore$ TB of FB of AB $= 70^{\\circ}50^{\\circ}+2^{\\circ}20^{\\circ}+2^{\\circ}$\n\n$=N84^{\\circ}10^{\\prime}E$",
-        "images": []
+        "markdown": "Magnetic Declination, $\\delta=2^{\\circ} \\mathrm{E}$\n\nMagnetic FB of AB $=\\mathrm{N} 79^{\\circ} 50'E$\n\nTo find local atraction at station A\n\nAs station O is free from local attraction\n\nHeance FB of OA will be correct\n\nCorrect FB of OA $= N 50^{\\circ}20^{\\circ}W=309^{\\circ}40^{\\circ}$\n\n$\\therefore$ Correct BB of $OA = 120^{\\circ}40^{\\circ}$\n\n$\\because$ Obserbed FB of AO\n\n= Observed BB of OA\n\n$=120^{\\circ}40^{\\circ}$\n\n$127^{\\circ}20^{\\circ}$\n\nError $= MB = TB =127^{\\circ}20^{\\circ}=120^{\\circ}40^{\\circ}$\n\n$==2^{\\circ}20^{\\circ}$\n\nCorrection $=+2^{\\circ}20^{\\circ}$\n\nLocal attraction at station A\n\n$=+2^{\\circ}20^{\\circ}=2^{\\circ}20^{\\circ}E$\n\n$\\therefore$ Magnetic FB of $AB=N76^{\\circ}50^{\\circ}E$\n\n$\\delta = 2^{\\circ}E$ and local attraction $=2^{\\circ}20^{\\circ}E$\n\n$\\therefore$ TB of FB of AB $= 70^{\\circ}50^{\\circ}+2^{\\circ}20^{\\circ}+2^{\\circ}$\n\n$=N84^{\\circ}10^{\\prime}E$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2015:q56": {
-      "question_uid": "pp:ce:2015:q56",
+    "ce:2015:ga:q1": {
+      "question_uid": "ce:2015:ga:q1",
+      "legacy_uid": "pp:ce:2015:q56",
       "exam_uid": "ce:2015:set1:ga:q1",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 1",
       "section": "ga",
@@ -2508,8 +2471,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q57": {
-      "question_uid": "pp:ce:2015:q57",
+    "ce:2015:ga:q2": {
+      "question_uid": "ce:2015:ga:q2",
+      "legacy_uid": "pp:ce:2015:q57",
       "exam_uid": "ce:2015:set1:ga:q2",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 2",
       "section": "ga",
@@ -2551,8 +2515,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q58": {
-      "question_uid": "pp:ce:2015:q58",
+    "ce:2015:ga:q3": {
+      "question_uid": "ce:2015:ga:q3",
+      "legacy_uid": "pp:ce:2015:q58",
       "exam_uid": "ce:2015:set1:ga:q3",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 3",
       "section": "ga",
@@ -2594,8 +2559,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q59": {
-      "question_uid": "pp:ce:2015:q59",
+    "ce:2015:ga:q4": {
+      "question_uid": "ce:2015:ga:q4",
+      "legacy_uid": "pp:ce:2015:q59",
       "exam_uid": "ce:2015:set1:ga:q4",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 4",
       "section": "ga",
@@ -2637,8 +2603,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q60": {
-      "question_uid": "pp:ce:2015:q60",
+    "ce:2015:ga:q5": {
+      "question_uid": "ce:2015:ga:q5",
+      "legacy_uid": "pp:ce:2015:q60",
       "exam_uid": "ce:2015:set1:ga:q5",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 5",
       "section": "ga",
@@ -2680,8 +2647,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q61": {
-      "question_uid": "pp:ce:2015:q61",
+    "ce:2015:ga:q6": {
+      "question_uid": "ce:2015:ga:q6",
+      "legacy_uid": "pp:ce:2015:q61",
       "exam_uid": "ce:2015:set1:ga:q6",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 6",
       "section": "ga",
@@ -2723,8 +2691,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q62": {
-      "question_uid": "pp:ce:2015:q62",
+    "ce:2015:ga:q7": {
+      "question_uid": "ce:2015:ga:q7",
+      "legacy_uid": "pp:ce:2015:q62",
       "exam_uid": "ce:2015:set1:ga:q7",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 7",
       "section": "ga",
@@ -2766,8 +2735,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q63": {
-      "question_uid": "pp:ce:2015:q63",
+    "ce:2015:ga:q8": {
+      "question_uid": "ce:2015:ga:q8",
+      "legacy_uid": "pp:ce:2015:q63",
       "exam_uid": "ce:2015:set1:ga:q8",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 8",
       "section": "ga",
@@ -2809,8 +2779,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q64": {
-      "question_uid": "pp:ce:2015:q64",
+    "ce:2015:ga:q9": {
+      "question_uid": "ce:2015:ga:q9",
+      "legacy_uid": "pp:ce:2015:q64",
       "exam_uid": "ce:2015:set1:ga:q9",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 9",
       "section": "ga",
@@ -2852,8 +2823,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2015:q65": {
-      "question_uid": "pp:ce:2015:q65",
+    "ce:2015:ga:q10": {
+      "question_uid": "ce:2015:ga:q10",
+      "legacy_uid": "pp:ce:2015:q65",
       "exam_uid": "ce:2015:set1:ga:q10",
       "title": "GATE CE 2015 | Set 1 | GA | Question: 10",
       "section": "ga",

@@ -870,8 +870,8 @@
   "go:80": {
     "question_uid": "go:80",
     "verified_answer": "MTA",
-    "concept_summary": "mathematical-logic: normal",
-    "solution_markdown": "In GATE 2013 marks were given to all for this question\n\nTherefore, the correct answer is **Option MTA**."
+    "concept_summary": "Discrete Mathematics - First Order Logic",
+    "solution_markdown": "$$\\neg\\exists x(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta) \\equiv \\forall x(\\neg\\forall y\\,\\alpha\\vee\\neg\\forall z\\,\\beta) \\equiv \\forall x(\\forall y\\,\\alpha\\rightarrow\\exists z\\,\\neg\\beta)$$\n\n- **Given Expression Simplification:**\n  $$\\begin{aligned}\n  \\neg\\exists x(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta) &\\equiv \\forall x\\,\\neg(\\forall y\\,\\alpha\\wedge\\forall z\\,\\beta) \\\\\n  &\\equiv \\forall x(\\neg\\forall y\\,\\alpha \\vee \\neg\\forall z\\,\\beta) \\\\\n  &\\equiv \\forall x(\\forall y\\,\\alpha \\rightarrow \\exists z\\,\\neg\\beta) \\quad \\text{(Matches Option C)}\n  \\end{aligned}$$\n- **Evaluating Each Option:**\n  - **Option B:** $\\forall x(\\forall z\\,\\beta \\rightarrow \\exists y\\,\\neg\\alpha) \\equiv \\forall x(\\neg\\forall z\\,\\beta \\vee \\neg\\forall y\\,\\alpha)$, which is logically equivalent to the given expression by commutativity of disjunction.\n  - **Option C:** $\\forall x(\\forall y\\,\\alpha \\rightarrow \\exists z\\,\\neg\\beta)$, which is identically equivalent to the given expression.\n  - **Option A:** $\\forall x(\\exists z\\,\\neg\\beta \\rightarrow \\forall y\\,\\alpha) \\equiv \\forall x(\\neg\\exists z\\,\\neg\\beta \\vee \\forall y\\,\\alpha) \\equiv \\forall x(\\forall z\\,\\beta \\vee \\forall y\\,\\alpha)$ $\\rightarrow$ **NOT equivalent**.\n  - **Option D:** $\\forall x(\\exists y\\,\\neg\\alpha \\rightarrow \\exists z\\,\\neg\\beta) \\equiv \\forall x(\\neg\\exists y\\,\\neg\\alpha \\vee \\exists z\\,\\neg\\beta) \\equiv \\forall x(\\forall y\\,\\alpha \\vee \\exists z\\,\\neg\\beta)$ $\\rightarrow$ **NOT equivalent**.\n\nSince both **Option A** and **Option D** are NOT logically equivalent to the given formula, the question had two correct answers under the multiple-choice format, leading to **Marks to All (MTA)** in the official GATE CSE 2013 evaluation.\n\nTherefore, both **Option A** and **Option D** are not equivalent (Official Key: **Marks to All / MTA**)."
   },
   "go:8006": {
     "question_uid": "go:8006",
@@ -894,8 +894,8 @@
   "go:333224": {
     "question_uid": "go:333224",
     "verified_answer": "MTA",
-    "concept_summary": "gatecse-2020: regular-expression",
-    "solution_markdown": "As per Official GATE CSE 2020 Answer key _MTA (Marks to All)\n\nTherefore, the correct answer is **Option MTA**."
+    "concept_summary": "Theory of Computation - Regular Expressions",
+    "solution_markdown": "- **Objective:** Find the regular expression representing all binary strings with an **odd number of 1s**.\n- **Evaluating the Options:**\n  - **Option A:** $((0+1)^*1(0+1)^*1)^*10^*$ — Contains $(0+1)^*$ inside the outer Kleene star, which can generate arbitrary substrings including an even number of 1s (e.g., $1111$ can be generated) $\\rightarrow$ **Incorrect**.\n  - **Option B:** $(0^*10^*10^*)^*0^*1$ — Every string generated must end with a $1$, which fails to generate valid strings ending in $0$ such as $\"10\"$ $\\rightarrow$ **Incorrect**.\n  - **Option C:** $10^*(0^*10^*10^*)^*$ — Every string generated must start with a $1$, which fails to generate valid strings starting with $0$ such as $\"01\"$ $\\rightarrow$ **Incorrect**.\n  - **Option D:** $(0^*10^*10^*)^*10^*$ — Generates pairs of $1$s followed by a single $1$ and trailing $0$s, but cannot generate strings with leading $0$s before the solitary $1$ such as $\"01\"$ $\\rightarrow$ **Incorrect**.\n\n- **Conclusion:**\n  None of the four options correctly represents the language (a correct expression is $0^*1(0^*10^*1)^*0^*$). Because of this flaw, the official IIT Delhi committee awarded **Marks to All (MTA)**.\n\nTherefore, none of the options is strictly correct (Official Key: **Marks to All / MTA**)."
   },
   "go:333210": {
     "question_uid": "go:333210",
@@ -1357,8 +1357,8 @@
   "go:399254": {
     "question_uid": "go:399254",
     "verified_answer": "MTA",
-    "concept_summary": "verbal-aptitude: word-pairs",
-    "solution_markdown": "Often and frequently are synonyms. As a noun, <b>kind</b> means sort or <b>type</b>, so kind : type is the matching synonym pair.\n\n<b>Answer: Type</b>\n\nTherefore, the correct answer is **Option MTA**."
+    "concept_summary": "General Aptitude - Verbal Aptitude",
+    "solution_markdown": "- **Synonym Pair Analysis:**\n  - *\"Often\"* and *\"frequently\"* are direct synonyms expressing high recurrence.\n  - In the analogy pair *kind : _____*, **kind** used as a noun signifies category, class, sort, or **type**.\n  - Therefore, *kind : type* represents the exact synonym relationship.\n- In the official GATE 2023 evaluation, this question was marked as **Marks to All (MTA)** due to ambiguous interpretation of other senses of the word *kind*.\n\nTherefore, the intended synonym pair is **type** (Official Key: **Marks to All / MTA**)."
   },
   "go:399253": {
     "question_uid": "go:399253",

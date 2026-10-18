@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.617Z",
+  "generatedAt": "2026-10-18T16:30:38.379Z",
   "shardKey": "ce-2017-s1",
   "yearSetKey": "ce-2017-s1",
   "yearSetIdentity": "ce:2017:set-1",
@@ -9,8 +9,9 @@
   "label": "2017 Set 1",
   "questionCount": 65,
   "recordsByQuestionUid": {
-    "pp:ce:2017:q1": {
-      "question_uid": "pp:ce:2017:q1",
+    "ce:2017:q1": {
+      "question_uid": "ce:2017:q1",
+      "legacy_uid": "pp:ce:2017:q1",
       "exam_uid": "ce:2017:set1:main:q1",
       "title": "GATE CE 2017 | Set 1 | Question: 1",
       "section": "main",
@@ -50,12 +51,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Given that P is inverse of Q.\n\n$$\\begin{aligned}   P&=Q^{-1}  & P&=Q^{-1} \\\\    PQ&=Q^{-1}Q &  QP&=QQ^{-1} \\\\    PQ&=I &  QP&=I \\\\ \\therefore    PQ&=QP=I \\end{aligned}$$",
-        "images": []
+        "markdown": "Given that P is inverse of Q.\n\n$$\\begin{aligned}   P&=Q^{-1}  & P&=Q^{-1} \\\\    PQ&=Q^{-1}Q &  QP&=QQ^{-1} \\\\    PQ&=I &  QP&=I \\\\ \\therefore    PQ&=QP=I \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q2": {
-      "question_uid": "pp:ce:2017:q2",
+    "ce:2017:q2": {
+      "question_uid": "ce:2017:q2",
+      "legacy_uid": "pp:ce:2017:q2",
       "exam_uid": "ce:2017:set1:main:q2",
       "title": "GATE CE 2017 | Set 1 | Question: 2",
       "section": "main",
@@ -95,12 +96,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "In exponential,\n\n$f\\left ( x \\right )=\\lambda e^{-\\lambda x}$; $x=0$\n\nThe parameter is $\\lambda$\n\nIn Gaussian, $f(x)=\\frac{1}{\\sigma \\sqrt{2\\pi }}e^{-\\frac{1}{2}\\left ( \\frac{x-\\mu }{\\sigma } \\right )^{2}}; \\;\\; -\\infty \\lt x\\lt \\infty$\n\nThe parameters are $\\mu$ and $\\sigma$.",
-        "images": []
+        "markdown": "In exponential,\n\n$f\\left ( x \\right )=\\lambda e^{-\\lambda x}$; $x=0$\n\nThe parameter is $\\lambda$\n\nIn Gaussian, $f(x)=\\frac{1}{\\sigma \\sqrt{2\\pi }}e^{-\\frac{1}{2}\\left ( \\frac{x-\\mu }{\\sigma } \\right )^{2}}; \\;\\; -\\infty \\lt x\\lt \\infty$\n\nThe parameters are $\\mu$ and $\\sigma$.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q3": {
-      "question_uid": "pp:ce:2017:q3",
+    "ce:2017:q3": {
+      "question_uid": "ce:2017:q3",
+      "legacy_uid": "pp:ce:2017:q3",
       "exam_uid": "ce:2017:set1:main:q3",
       "title": "GATE CE 2017 | Set 1 | Question: 3",
       "section": "main",
@@ -140,12 +141,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} f\\left ( x \\right )&=e^{-x-e^{-x}}= e^{-x}.e^{-e^{-x}} \\\\  y\\left ( x \\right )&=\\int f\\left ( x \\right )dx=\\int e^{-x}.e^{-e^{-x}}dx\\\\ \\text{Let }  e^{-x}&=t \\\\  -e^{-x}dx&=dt \\\\ \\int f\\left ( x \\right )dx&=\\int e^{-t}.\\left ( -dt \\right ) \\\\    &=\\frac{e^{-t}}{-1}.\\left ( -d \\right ) \\\\    &=e^{-t} \\\\    &=e^{-\\left ( e^{-x} \\right )} \\\\ &=e^{-e^{-x}} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} f\\left ( x \\right )&=e^{-x-e^{-x}}= e^{-x}.e^{-e^{-x}} \\\\  y\\left ( x \\right )&=\\int f\\left ( x \\right )dx=\\int e^{-x}.e^{-e^{-x}}dx\\\\ \\text{Let }  e^{-x}&=t \\\\  -e^{-x}dx&=dt \\\\ \\int f\\left ( x \\right )dx&=\\int e^{-t}.\\left ( -dt \\right ) \\\\    &=\\frac{e^{-t}}{-1}.\\left ( -d \\right ) \\\\    &=e^{-t} \\\\    &=e^{-\\left ( e^{-x} \\right )} \\\\ &=e^{-e^{-x}} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q4": {
-      "question_uid": "pp:ce:2017:q4",
+    "ce:2017:q4": {
+      "question_uid": "ce:2017:q4",
+      "legacy_uid": "pp:ce:2017:q4",
       "exam_uid": "ce:2017:set1:main:q4",
       "title": "GATE CE 2017 | Set 1 | Question: 4",
       "section": "main",
@@ -185,14 +186,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-650fdf5cdf.webp\" />\n\n$\\sigma=\\alpha T E$\n\n$\\therefore \\;$ Length have no effect on thermal stress.\n\n$\\therefore \\;$ Axial stress is only $\\sigma$.",
-        "images": [
-          "/question-images/ce/2017/ce-2017-650fdf5cdf.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-650fdf5cdf.webp\" />\n\n$\\sigma=\\alpha T E$\n\n$\\therefore \\;$ Length have no effect on thermal stress.\n\n$\\therefore \\;$ Axial stress is only $\\sigma$.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q5": {
-      "question_uid": "pp:ce:2017:q5",
+    "ce:2017:q5": {
+      "question_uid": "ce:2017:q5",
+      "legacy_uid": "pp:ce:2017:q5",
       "exam_uid": "ce:2017:set1:main:q5",
       "title": "GATE CE 2017 | Set 1 | Question: 5",
       "section": "main",
@@ -235,8 +234,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q6": {
-      "question_uid": "pp:ce:2017:q6",
+    "ce:2017:q6": {
+      "question_uid": "ce:2017:q6",
+      "legacy_uid": "pp:ce:2017:q6",
       "exam_uid": "ce:2017:set1:main:q6",
       "title": "GATE CE 2017 | Set 1 | Question: 6",
       "section": "main",
@@ -276,12 +276,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "$x_{u, \\text { bal }}=\\frac{700}{1100+0.87 f_{y}} \\times d$\n\nSo it depends upon grade of steel only.",
-        "images": []
+        "markdown": "$x_{u, \\text { bal }}=\\frac{700}{1100+0.87 f_{y}} \\times d$\n\nSo it depends upon grade of steel only.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q7": {
-      "question_uid": "pp:ce:2017:q7",
+    "ce:2017:q7": {
+      "question_uid": "ce:2017:q7",
+      "legacy_uid": "pp:ce:2017:q7",
       "exam_uid": "ce:2017:set1:main:q7",
       "title": "GATE CE 2017 | Set 1 | Question: 7",
       "section": "main",
@@ -321,12 +321,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Arches",
-        "markdown": "If a two hinged or three hinged parabolic arch is\n\nsubjected to UDL throughout its length, bending\n\nmoment is zero everywhere.",
-        "images": []
+        "markdown": "If a two hinged or three hinged parabolic arch is\n\nsubjected to UDL throughout its length, bending\n\nmoment is zero everywhere.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q8": {
-      "question_uid": "pp:ce:2017:q8",
+    "ce:2017:q8": {
+      "question_uid": "ce:2017:q8",
+      "legacy_uid": "pp:ce:2017:q8",
       "exam_uid": "ce:2017:set1:main:q8",
       "title": "GATE CE 2017 | Set 1 | Question: 8",
       "section": "main",
@@ -366,12 +366,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "Loss in strength of soil due to remoulding\n\nat same water content is termed as\n\nsensitivity.\n\nOver a period of time soil regain a part of\n\nits lost strength is termed as thixotropy.\n\nWhen seepage takes place in upward\n\ndirection, seepage pressure acts in upward\n\ndirection and effective stress is reduced\n\nconsequently shear strength is reduced.\n\nIn liquefaction, due to dynamic/cyclic loading\n\nin loose saturated sand, effective stress\n\ndecreases and decrease in shear strength\n\nis recorded.",
-        "images": []
+        "markdown": "Loss in strength of soil due to remoulding\n\nat same water content is termed as\n\nsensitivity.\n\nOver a period of time soil regain a part of\n\nits lost strength is termed as thixotropy.\n\nWhen seepage takes place in upward\n\ndirection, seepage pressure acts in upward\n\ndirection and effective stress is reduced\n\nconsequently shear strength is reduced.\n\nIn liquefaction, due to dynamic/cyclic loading\n\nin loose saturated sand, effective stress\n\ndecreases and decrease in shear strength\n\nis recorded.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q9": {
-      "question_uid": "pp:ce:2017:q9",
+    "ce:2017:q9": {
+      "question_uid": "ce:2017:q9",
+      "legacy_uid": "pp:ce:2017:q9",
       "exam_uid": "ce:2017:set1:main:q9",
       "title": "GATE CE 2017 | Set 1 | Question: 9",
       "section": "main",
@@ -411,14 +411,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "Hydrostatic pressure acts equally in all directions.\n\n<img src=\"/question-images/ce/2017/ce-2017-ef36fa96a8.webp\" />",
-        "images": [
-          "/question-images/ce/2017/ce-2017-ef36fa96a8.webp"
-        ]
+        "markdown": "Hydrostatic pressure acts equally in all directions.\n\n<img src=\"/question-images/ce/2017/ce-2017-ef36fa96a8.webp\" />\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q10": {
-      "question_uid": "pp:ce:2017:q10",
+    "ce:2017:q10": {
+      "question_uid": "ce:2017:q10",
+      "legacy_uid": "pp:ce:2017:q10",
       "exam_uid": "ce:2017:set1:main:q10",
       "title": "GATE CE 2017 | Set 1 | Question: 10",
       "section": "main",
@@ -458,12 +456,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "Footing is at surface Hence,\n\n$$\\begin{aligned} \\text{Hence},\\quad D_{t}&=0 \\\\ q_{u}&=C N_{c}+\\gamma D_{f} N_{q}+0.5 \\mathrm{B} \\gamma N_{\\gamma} \\end{aligned}$$\n\n$\\Rightarrow \\quad$For clay\n\n$$\\begin{aligned} N_{Y} &=0, N_{q}=1 \\\\ \\therefore \\quad q_{U}&=C N_{c} \\end{aligned}$$\n\nAs per Terzaghi\n\n$N_{c}=5.7$\n\nand as per Meyerhoff and Prandtl.\n\n$$\\begin{aligned} N_{c} &=5.14 \\\\ \\therefore \\quad q_{u} &=(\\pi+2) C_{u} \\end{aligned}$$",
-        "images": []
+        "markdown": "Footing is at surface Hence,\n\n$$\\begin{aligned} \\text{Hence},\\quad D_{t}&=0 \\\\ q_{u}&=C N_{c}+\\gamma D_{f} N_{q}+0.5 \\mathrm{B} \\gamma N_{\\gamma} \\end{aligned}$$\n\n$\\Rightarrow \\quad$For clay\n\n$$\\begin{aligned} N_{Y} &=0, N_{q}=1 \\\\ \\therefore \\quad q_{U}&=C N_{c} \\end{aligned}$$\n\nAs per Terzaghi\n\n$N_{c}=5.7$\n\nand as per Meyerhoff and Prandtl.\n\n$$\\begin{aligned} N_{c} &=5.14 \\\\ \\therefore \\quad q_{u} &=(\\pi+2) C_{u} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2017:q11": {
-      "question_uid": "pp:ce:2017:q11",
+    "ce:2017:q11": {
+      "question_uid": "ce:2017:q11",
+      "legacy_uid": "pp:ce:2017:q11",
       "exam_uid": "ce:2017:set1:main:q11",
       "title": "GATE CE 2017 | Set 1 | Question: 11",
       "section": "main",
@@ -503,12 +501,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stress Distribution in the Soil",
-        "markdown": "$q^{\\prime}=500 \\mathrm{kN} / \\mathrm{m}$\n\n$x=0$ (Just below the line load)\n\n$$\\begin{aligned} \\sigma_{z} &=\\frac{2 q^{\\prime}}{\\pi z}\\left(\\frac{1}{1+\\frac{x^{2}}{z^{2}}}\\right)^{2}=\\frac{2 q^{\\prime}}{\\pi z} \\\\ \\text { Ratio } &=\\frac{\\left(\\sigma_{z}\\right)_{a t, 2 m}}{\\left(\\sigma_{z}\\right)_{a t, 4 m}}=\\frac{\\frac{2 q^{\\prime}}{\\pi \\times 2}}{\\frac{2 q^{\\prime}}{\\pi \\times 4}}=\\frac{4}{2}=2 \\end{aligned}$$",
-        "images": []
+        "markdown": "$q^{\\prime}=500 \\mathrm{kN} / \\mathrm{m}$\n\n$x=0$ (Just below the line load)\n\n$$\\begin{aligned} \\sigma_{z} &=\\frac{2 q^{\\prime}}{\\pi z}\\left(\\frac{1}{1+\\frac{x^{2}}{z^{2}}}\\right)^{2}=\\frac{2 q^{\\prime}}{\\pi z} \\\\ \\text { Ratio } &=\\frac{\\left(\\sigma_{z}\\right)_{a t, 2 m}}{\\left(\\sigma_{z}\\right)_{a t, 4 m}}=\\frac{\\frac{2 q^{\\prime}}{\\pi \\times 2}}{\\frac{2 q^{\\prime}}{\\pi \\times 4}}=\\frac{4}{2}=2 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q12": {
-      "question_uid": "pp:ce:2017:q12",
+    "ce:2017:q12": {
+      "question_uid": "ce:2017:q12",
+      "legacy_uid": "pp:ce:2017:q12",
       "exam_uid": "ce:2017:set1:main:q12",
       "title": "GATE CE 2017 | Set 1 | Question: 12",
       "section": "main",
@@ -548,14 +546,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Viscous Flow of Incompressible Fluid",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-e091510d21.webp\" />\n\nShear stress variation between parallel stationary plates.",
-        "images": [
-          "/question-images/ce/2017/ce-2017-e091510d21.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-e091510d21.webp\" />\n\nShear stress variation between parallel stationary plates.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q13": {
-      "question_uid": "pp:ce:2017:q13",
+    "ce:2017:q13": {
+      "question_uid": "ce:2017:q13",
+      "legacy_uid": "pp:ce:2017:q13",
       "exam_uid": "ce:2017:set1:main:q13",
       "title": "GATE CE 2017 | Set 1 | Question: 13",
       "section": "main",
@@ -595,12 +591,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "The order of reaction is the exponent to which its concentration term in the rate equation is raised.\n\nRate, $r=K\\left [ A \\right ]^{\\alpha }\\left [ B \\right ]^{\\beta }$\n\nFor the first order reaction,\n\n$\\alpha +\\beta =1$",
-        "images": []
+        "markdown": "The order of reaction is the exponent to which its concentration term in the rate equation is raised.\n\nRate, $r=K\\left [ A \\right ]^{\\alpha }\\left [ B \\right ]^{\\beta }$\n\nFor the first order reaction,\n\n$\\alpha +\\beta =1$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q14": {
-      "question_uid": "pp:ce:2017:q14",
+    "ce:2017:q14": {
+      "question_uid": "ce:2017:q14",
+      "legacy_uid": "pp:ce:2017:q14",
       "exam_uid": "ce:2017:set1:main:q14",
       "title": "GATE CE 2017 | Set 1 | Question: 14",
       "section": "main",
@@ -640,14 +636,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Disposal of Sewage Effluents",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-d4148d633c.webp\" />\n\nAs given rate of aeration is less than rate of degradation which decreases with time/distance, minimum DO is observed downstream of point of disposal 'S' where both rate of a reaction and degradation becomes equals.",
-        "images": [
-          "/question-images/ce/2017/ce-2017-d4148d633c.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-d4148d633c.webp\" />\n\nAs given rate of aeration is less than rate of degradation which decreases with time/distance, minimum DO is observed downstream of point of disposal 'S' where both rate of a reaction and degradation becomes equals.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2017:q15": {
-      "question_uid": "pp:ce:2017:q15",
+    "ce:2017:q15": {
+      "question_uid": "ce:2017:q15",
+      "legacy_uid": "pp:ce:2017:q15",
       "exam_uid": "ce:2017:set1:main:q15",
       "title": "GATE CE 2017 | Set 1 | Question: 15",
       "section": "main",
@@ -687,12 +681,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
-        "markdown": "Acid rain primarily consist of $HNO_{3}$, $H_{2}SO_{4}$ and $H_{2}CO_{3}$",
-        "images": []
+        "markdown": "Acid rain primarily consist of $HNO_{3}$, $H_{2}SO_{4}$ and $H_{2}CO_{3}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2017:q16": {
-      "question_uid": "pp:ce:2017:q16",
+    "ce:2017:q16": {
+      "question_uid": "ce:2017:q16",
+      "legacy_uid": "pp:ce:2017:q16",
       "exam_uid": "ce:2017:set1:main:q16",
       "title": "GATE CE 2017 | Set 1 | Question: 16",
       "section": "main",
@@ -732,12 +726,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "Sliding occurs if\n\n$$\\begin{aligned}\n\nf& \\lt e\\\\\n\n\\text{and }\\quad f& \\lt \\frac{V^{2}}{g R}\n\n\\end{aligned}$$\n\nOverturning occurs if\n\n$$\\begin{aligned}\n\nf& \\gt e\\\\\n\n\\text{and }\\quad e& \\lt \\frac{V^{2}}{g R}\n\n\\end{aligned}$$\n\nHence, option (A) is true.",
-        "images": []
+        "markdown": "Sliding occurs if\n\n$$\\begin{aligned}\n\nf& \\lt e\\\\\n\n\\text{and }\\quad f& \\lt \\frac{V^{2}}{g R}\n\n\\end{aligned}$$\n\nOverturning occurs if\n\n$$\\begin{aligned}\n\nf& \\gt e\\\\\n\n\\text{and }\\quad e& \\lt \\frac{V^{2}}{g R}\n\n\\end{aligned}$$\n\nHence, option (A) is true.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q17": {
-      "question_uid": "pp:ce:2017:q17",
+    "ce:2017:q17": {
+      "question_uid": "ce:2017:q17",
+      "legacy_uid": "pp:ce:2017:q17",
       "exam_uid": "ce:2017:set1:main:q17",
       "title": "GATE CE 2017 | Set 1 | Question: 17",
       "section": "main",
@@ -777,12 +771,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Railway and Airport Engineering",
-        "markdown": "Elevation =535 m\n\nAirport Reference Temperature $=22.65^{\\circ} \\mathrm{C}$\n\nEffective Gradient = 1%\n\nRunway length =2000 m under standard conditions.\n\nRunway length correction for $T^{\\circ} \\mathrm{C} .$\n\n$\\Rightarrow$Correction for elevation\n\n$=\\frac{7}{100} \\times 2000 \\times \\frac{535}{300}=249.67 \\mathrm{m}$\n\nCorrected runway length $=2249.67 \\mathrm{m}$\n\n$\\Rightarrow$ Corrected standard $T^{\\circ}$ at 535 m elevation\n\n$=15^{\\circ} \\mathrm{C}-(0.0065 \\times 535)=11.52^{\\circ} \\mathrm{C}$\n\nCorrection for $T^{\\circ}$\n\n$$\\begin{aligned} &=\\frac{1}{100} \\times 2249.67 \\times \\frac{\\Delta T^{\\circ} \\mathrm{C}}{1^{\\circ} \\mathrm{C}} \\\\ \\Delta T^{\\circ} \\mathrm{C} &=22.65-11.52=11.13^{\\circ} \\mathrm{C} \\\\ &=\\frac{1}{100} \\times 2249.67 \\times \\frac{11.13^{\\circ} \\mathrm{C}}{1^{\\circ} \\mathrm{C}} \\\\ &=250.39 \\mathrm{m} \\end{aligned}$$\n\nCorrected Runway length\n\n$$\\begin{array}{l} =2249.67+250.39 \\\\ =2500.06 \\mathrm{m} \\simeq 2500 \\mathrm{m} \\end{array}$$",
-        "images": []
+        "markdown": "Elevation =535 m\n\nAirport Reference Temperature $=22.65^{\\circ} \\mathrm{C}$\n\nEffective Gradient = 1%\n\nRunway length =2000 m under standard conditions.\n\nRunway length correction for $T^{\\circ} \\mathrm{C} .$\n\n$\\Rightarrow$Correction for elevation\n\n$=\\frac{7}{100} \\times 2000 \\times \\frac{535}{300}=249.67 \\mathrm{m}$\n\nCorrected runway length $=2249.67 \\mathrm{m}$\n\n$\\Rightarrow$ Corrected standard $T^{\\circ}$ at 535 m elevation\n\n$=15^{\\circ} \\mathrm{C}-(0.0065 \\times 535)=11.52^{\\circ} \\mathrm{C}$\n\nCorrection for $T^{\\circ}$\n\n$$\\begin{aligned} &=\\frac{1}{100} \\times 2249.67 \\times \\frac{\\Delta T^{\\circ} \\mathrm{C}}{1^{\\circ} \\mathrm{C}} \\\\ \\Delta T^{\\circ} \\mathrm{C} &=22.65-11.52=11.13^{\\circ} \\mathrm{C} \\\\ &=\\frac{1}{100} \\times 2249.67 \\times \\frac{11.13^{\\circ} \\mathrm{C}}{1^{\\circ} \\mathrm{C}} \\\\ &=250.39 \\mathrm{m} \\end{aligned}$$\n\nCorrected Runway length\n\n$$\\begin{array}{l} =2249.67+250.39 \\\\ =2500.06 \\mathrm{m} \\simeq 2500 \\mathrm{m} \\end{array}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q18": {
-      "question_uid": "pp:ce:2017:q18",
+    "ce:2017:q18": {
+      "question_uid": "ce:2017:q18",
+      "legacy_uid": "pp:ce:2017:q18",
       "exam_uid": "ce:2017:set1:main:q18",
       "title": "GATE CE 2017 | Set 1 | Question: 18",
       "section": "main",
@@ -822,12 +816,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "Accuracy of EDMI is generally stated in terms\n\nof constant instruments error and a measuring\n\nerror proportional to the distance being measured:\n\n$\\pm$(a mm + b ppm).\n\nThe first part indicates a\n\nconstant instrument error that is independent of\n\nthe length of the line measured. The second\n\ncomponent is the distance related error.",
-        "images": []
+        "markdown": "Accuracy of EDMI is generally stated in terms\n\nof constant instruments error and a measuring\n\nerror proportional to the distance being measured:\n\n$\\pm$(a mm + b ppm).\n\nThe first part indicates a\n\nconstant instrument error that is independent of\n\nthe length of the line measured. The second\n\ncomponent is the distance related error.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q19": {
-      "question_uid": "pp:ce:2017:q19",
+    "ce:2017:q19": {
+      "question_uid": "ce:2017:q19",
+      "legacy_uid": "pp:ce:2017:q19",
       "exam_uid": "ce:2017:set1:main:q19",
       "title": "GATE CE 2017 | Set 1 | Question: 19",
       "section": "main",
@@ -867,12 +861,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Remote Sensing, GIS, GPS and Photogrammetry",
-        "markdown": "Total number of spectrum band in Enhanced\n\nThematic Mapper sender =8",
-        "images": []
+        "markdown": "Total number of spectrum band in Enhanced\n\nThematic Mapper sender =8\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q20": {
-      "question_uid": "pp:ce:2017:q20",
+    "ce:2017:q20": {
+      "question_uid": "ce:2017:q20",
+      "legacy_uid": "pp:ce:2017:q20",
       "exam_uid": "ce:2017:set1:main:q20",
       "title": "GATE CE 2017 | Set 1 | Question: 20",
       "section": "main",
@@ -910,12 +904,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "Given that the partial differential equation is parabolic.\n\n$\\therefore  \\;\\; B^{2}-4AC=0$ Here $A=3 , C=3$\n\n$\\therefore \\;\\; B^{2}-4\\left ( 3 \\right )\\left ( 3 \\right )=0$\n\n$B^{2}-36=0$\n\n$B^{2}=36$",
-        "images": []
+        "markdown": "Given that the partial differential equation is parabolic.\n\n$\\therefore  \\;\\; B^{2}-4AC=0$ Here $A=3 , C=3$\n\n$\\therefore \\;\\; B^{2}-4\\left ( 3 \\right )\\left ( 3 \\right )=0$\n\n$B^{2}-36=0$\n\n$B^{2}=36$\n\nTherefore, the correct answer is **36** (acceptable range: [35.9, 36.1])."
       }
     },
-    "pp:ce:2017:q21": {
-      "question_uid": "pp:ce:2017:q21",
+    "ce:2017:q21": {
+      "question_uid": "ce:2017:q21",
+      "legacy_uid": "pp:ce:2017:q21",
       "exam_uid": "ce:2017:set1:main:q21",
       "title": "GATE CE 2017 | Set 1 | Question: 21",
       "section": "main",
@@ -953,12 +947,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$\\lim_{x\\rightarrow 0}\\frac{\\tan x}{x^{2}-x}$\n\n(Applying L'Hospital rule)\n\n$\\lim_{x\\rightarrow 0}\\frac{\\sec ^{2}x}{2x^{2}-1}=\\frac{\\sec ^{2}0}{0-1}=\\frac{1}{-1}=-1$",
-        "images": []
+        "markdown": "$\\lim_{x\\rightarrow 0}\\frac{\\tan x}{x^{2}-x}$\n\n(Applying L'Hospital rule)\n\n$\\lim_{x\\rightarrow 0}\\frac{\\sec ^{2}x}{2x^{2}-1}=\\frac{\\sec ^{2}0}{0-1}=\\frac{1}{-1}=-1$\n\nTherefore, the correct answer is **-1** (acceptable range: [-1.1, -0.9])."
       }
     },
-    "pp:ce:2017:q22": {
-      "question_uid": "pp:ce:2017:q22",
+    "ce:2017:q22": {
+      "question_uid": "ce:2017:q22",
+      "legacy_uid": "pp:ce:2017:q22",
       "exam_uid": "ce:2017:set1:main:q22",
       "title": "GATE CE 2017 | Set 1 | Question: 22",
       "section": "main",
@@ -996,12 +990,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "As per Terzaghi's 1-D consolidation theory\n\n$T_{v}=C_{v} \\frac{t}{d^{2}}$\n\nOne way drainage condition d=3m\n\nFor 90% consolidation\n\n$$\\begin{aligned} \\left(T_{v}\\right)_{90} &=C_{v} \\cdot \\frac{t_{90}}{d^{2}} \\\\ 0.85 &=3 \\times 10^{-6} \\times \\frac{t_{90}}{(3)^{2}} \\\\ t_{90} &=\\frac{0.85 \\times 9}{3 \\times 10^{-6}} \\mathrm{min} \\\\ t_{90} &=1770.83 \\simeq 1771 \\text { days } \\end{aligned}$$",
-        "images": []
+        "markdown": "As per Terzaghi's 1-D consolidation theory\n\n$T_{v}=C_{v} \\frac{t}{d^{2}}$\n\nOne way drainage condition d=3m\n\nFor 90% consolidation\n\n$$\\begin{aligned} \\left(T_{v}\\right)_{90} &=C_{v} \\cdot \\frac{t_{90}}{d^{2}} \\\\ 0.85 &=3 \\times 10^{-6} \\times \\frac{t_{90}}{(3)^{2}} \\\\ t_{90} &=\\frac{0.85 \\times 9}{3 \\times 10^{-6}} \\mathrm{min} \\\\ t_{90} &=1770.83 \\simeq 1771 \\text { days } \\end{aligned}$$\n\nTherefore, the correct answer is **1770** (acceptable range: [1765, 1775])."
       }
     },
-    "pp:ce:2017:q23": {
-      "question_uid": "pp:ce:2017:q23",
+    "ce:2017:q23": {
+      "question_uid": "ce:2017:q23",
+      "legacy_uid": "pp:ce:2017:q23",
       "exam_uid": "ce:2017:set1:main:q23",
       "title": "GATE CE 2017 | Set 1 | Question: 23",
       "section": "main",
@@ -1039,12 +1033,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "Given $h_{j}=r$\n\nBecause of the given condition of equal discharge\n\ndistribution in pipe AB and AC, the discharge in AB\n\nand AC will be 50 and 50. Now satisfy continuity\n\nat point B and C,\n\nfor close Loop ABCA,\n\n$$\\begin{aligned}\n\n\\sum n_{1},&=0\\\\\n\n\\Rightarrow \\quad 1(50)^{1.8}+2(20)^{1.5}&=r(50)^{1.5}=0 \\\\\n\n\\Rightarrow \\quad 1143.26-430.42&=r(50)^{1.5} \\\\\n\nr&=0.62\n\n\\end{aligned}$$",
-        "images": []
+        "markdown": "Given $h_{j}=r$\n\nBecause of the given condition of equal discharge\n\ndistribution in pipe AB and AC, the discharge in AB\n\nand AC will be 50 and 50. Now satisfy continuity\n\nat point B and C,\n\nfor close Loop ABCA,\n\n$$\\begin{aligned}\n\n\\sum n_{1},&=0\\\\\n\n\\Rightarrow \\quad 1(50)^{1.8}+2(20)^{1.5}&=r(50)^{1.5}=0 \\\\\n\n\\Rightarrow \\quad 1143.26-430.42&=r(50)^{1.5} \\\\\n\nr&=0.62\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.615** (acceptable range: [0.6, 0.63])."
       }
     },
-    "pp:ce:2017:q24": {
-      "question_uid": "pp:ce:2017:q24",
+    "ce:2017:q24": {
+      "question_uid": "ce:2017:q24",
+      "legacy_uid": "pp:ce:2017:q24",
       "exam_uid": "ce:2017:set1:main:q24",
       "title": "GATE CE 2017 | Set 1 | Question: 24",
       "section": "main",
@@ -1082,14 +1076,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-98b97b8ea6.webp\" />\n\n$\\therefore$ Ordinate of 4 hr U.H. at 3 hr duration $=15.0 m^{3}/sec.$",
-        "images": [
-          "/question-images/ce/2017/ce-2017-98b97b8ea6.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-98b97b8ea6.webp\" />\n\n$\\therefore$ Ordinate of 4 hr U.H. at 3 hr duration $=15.0 m^{3}/sec.$\n\nTherefore, the correct answer is **15**."
       }
     },
-    "pp:ce:2017:q25": {
-      "question_uid": "pp:ce:2017:q25",
+    "ce:2017:q25": {
+      "question_uid": "ce:2017:q25",
+      "legacy_uid": "pp:ce:2017:q25",
       "exam_uid": "ce:2017:set1:main:q25",
       "title": "GATE CE 2017 | Set 1 | Question: 25",
       "section": "main",
@@ -1127,12 +1119,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "$$\\begin{aligned} \\lambda &=900\\text{veh/hour}\\\\ &=\\frac{900}{3600}=\\frac{1}{4} \\mathrm{veh} / \\mathrm{sec} \\\\ P[t \\geq 8 \\mathrm{sec}] &=\\theta^{-\\lambda t} \\\\ &=e^{-\\frac{1}{4} \\times 8}=e^{-2}=0.1353 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\lambda &=900\\text{veh/hour}\\\\ &=\\frac{900}{3600}=\\frac{1}{4} \\mathrm{veh} / \\mathrm{sec} \\\\ P[t \\geq 8 \\mathrm{sec}] &=\\theta^{-\\lambda t} \\\\ &=e^{-\\frac{1}{4} \\times 8}=e^{-2}=0.1353 \\end{aligned}$$\n\nTherefore, the correct answer is **0.1324** (acceptable range: [0.1276, 0.1372])."
       }
     },
-    "pp:ce:2017:q26": {
-      "question_uid": "pp:ce:2017:q26",
+    "ce:2017:q26": {
+      "question_uid": "ce:2017:q26",
+      "legacy_uid": "pp:ce:2017:q26",
       "exam_uid": "ce:2017:set1:main:q26",
       "title": "GATE CE 2017 | Set 1 | Question: 26",
       "section": "main",
@@ -1172,12 +1164,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\int_{-\\infty }^{\\infty }f\\left ( x \\right )dx &= 1 \\\\ \\int_{0}^{1}\\left ( a+bx \\right )dx &= 1 \\\\ \\left.\\begin{matrix} \\left ( ax+\\frac{bx^{2}}{2} \\right ) \\end{matrix}\\right|_{0}^{1}&=1 \\\\ a+\\frac{b}{2}&=1 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\int_{-\\infty }^{\\infty }f\\left ( x \\right )dx &= 1 \\\\ \\int_{0}^{1}\\left ( a+bx \\right )dx &= 1 \\\\ \\left.\\begin{matrix} \\left ( ax+\\frac{bx^{2}}{2} \\right ) \\end{matrix}\\right|_{0}^{1}&=1 \\\\ a+\\frac{b}{2}&=1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q27": {
-      "question_uid": "pp:ce:2017:q27",
+    "ce:2017:q27": {
+      "question_uid": "ce:2017:q27",
+      "legacy_uid": "pp:ce:2017:q27",
       "exam_uid": "ce:2017:set1:main:q27",
       "title": "GATE CE 2017 | Set 1 | Question: 27",
       "section": "main",
@@ -1217,12 +1209,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$\\frac{\\mathrm{d} Q}{\\mathrm{d} t}+Q=1$\n\nComparing with standard form, $I.F.=e^{\\int 1dt}=e^{t}$\n\nSolution is,\n\n$$\\begin{aligned}   Q.e^{t}&=\\int 1.e^{t}dt=e^{t}+C \\\\    Q&=1+Ce^{-t} \\;\\;...(i) \\\\ \\text{When }t&=0, Q=0 \\\\ \\Rightarrow \\;\\;   0&=1+C \\\\ \\Rightarrow \\;\\;   C&=-1 \\end{aligned}$$\n\nTherefore, $Q\\left ( t \\right ) =1-e^{-t}$",
-        "images": []
+        "markdown": "$\\frac{\\mathrm{d} Q}{\\mathrm{d} t}+Q=1$\n\nComparing with standard form, $I.F.=e^{\\int 1dt}=e^{t}$\n\nSolution is,\n\n$$\\begin{aligned}   Q.e^{t}&=\\int 1.e^{t}dt=e^{t}+C \\\\    Q&=1+Ce^{-t} \\;\\;...(i) \\\\ \\text{When }t&=0, Q=0 \\\\ \\Rightarrow \\;\\;   0&=1+C \\\\ \\Rightarrow \\;\\;   C&=-1 \\end{aligned}$$\n\nTherefore, $Q\\left ( t \\right ) =1-e^{-t}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2017:q28": {
-      "question_uid": "pp:ce:2017:q28",
+    "ce:2017:q28": {
+      "question_uid": "ce:2017:q28",
+      "legacy_uid": "pp:ce:2017:q28",
       "exam_uid": "ce:2017:set1:main:q28",
       "title": "GATE CE 2017 | Set 1 | Question: 28",
       "section": "main",
@@ -1262,12 +1254,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$A=\\begin{bmatrix} 5 & -1\\\\ 4 & 1 \\end{bmatrix}$$\n\nCharacteristic equation is $\\left | A-\\lambda I \\right |=0$\n\n$$\\begin{aligned}     \\begin{vmatrix} 5-\\lambda & -1\\\\ 4 & 1-\\lambda \\end{vmatrix}&=0 \\\\ 5-5\\lambda -\\lambda +\\lambda ^{2}+4&=0 \\\\     \\lambda ^{2}-6\\lambda +9&=0 \\\\         \\lambda &=3,\\, 3 \\end{aligned}$$\n\nAlgebraic multiplicity of eigen value 3 is 2. It has only one independent eigen vector exists.",
-        "images": []
+        "markdown": "$$A=\\begin{bmatrix} 5 & -1\\\\ 4 & 1 \\end{bmatrix}$$\n\nCharacteristic equation is $\\left | A-\\lambda I \\right |=0$\n\n$$\\begin{aligned}     \\begin{vmatrix} 5-\\lambda & -1\\\\ 4 & 1-\\lambda \\end{vmatrix}&=0 \\\\ 5-5\\lambda -\\lambda +\\lambda ^{2}+4&=0 \\\\     \\lambda ^{2}-6\\lambda +9&=0 \\\\         \\lambda &=3,\\, 3 \\end{aligned}$$\n\nAlgebraic multiplicity of eigen value 3 is 2. It has only one independent eigen vector exists.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q29": {
-      "question_uid": "pp:ce:2017:q29",
+    "ce:2017:q29": {
+      "question_uid": "ce:2017:q29",
+      "legacy_uid": "pp:ce:2017:q29",
       "exam_uid": "ce:2017:set1:main:q29",
       "title": "GATE CE 2017 | Set 1 | Question: 29",
       "section": "main",
@@ -1307,12 +1299,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Determinacy and indeterminacy",
-        "markdown": "$$\\begin{aligned} \\text{External Indeterminacy}&=r-s=4-3=1 \\text { degree } \\\\ \\text{Internal indeterminacy}&=m-(2 j-3)=15-(2 \\times 8-3)\\\\ & =2 \\text{ degrees} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text{External Indeterminacy}&=r-s=4-3=1 \\text { degree } \\\\ \\text{Internal indeterminacy}&=m-(2 j-3)=15-(2 \\times 8-3)\\\\ & =2 \\text{ degrees} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q30": {
-      "question_uid": "pp:ce:2017:q30",
+    "ce:2017:q30": {
+      "question_uid": "ce:2017:q30",
+      "legacy_uid": "pp:ce:2017:q30",
       "exam_uid": "ce:2017:set1:main:q30",
       "title": "GATE CE 2017 | Set 1 | Question: 30",
       "section": "main",
@@ -1352,12 +1344,12 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Theories of Seepage, Spillways and Miscellaneous",
-        "markdown": "Non-modular outlet :These are the outlets whose\n\ndischarge depends on the difference in water\n\nlevels in the distributing channel and the water <\n\ncourse. The discharge of such outlets, therefore,\n\nvaries with the variation of the water levels in the\n\ndistributing channel and the water course.\n\nSemi-modular outlet : These are the outlets\n\nwhose discharge varies with the variation of the\n\nwater level in the distribution channel but it is\n\nindependent of the water level in the water course,\n\nso long as the minimum working head required\n\nfor their working is available.\n\nModular outlet : These are the outlets whose\n\ndischarge is independent of the water levels in\n\nthe distributing channel and the water course,\n\nwithin reasonable working limits. In other words\n\nmodular outlets maintain a constant discharge\n\nirrespective of variation of the water levels in the\n\ndistributing channel and the water course.",
-        "images": []
+        "markdown": "Non-modular outlet :These are the outlets whose\n\ndischarge depends on the difference in water\n\nlevels in the distributing channel and the water <\n\ncourse. The discharge of such outlets, therefore,\n\nvaries with the variation of the water levels in the\n\ndistributing channel and the water course.\n\nSemi-modular outlet : These are the outlets\n\nwhose discharge varies with the variation of the\n\nwater level in the distribution channel but it is\n\nindependent of the water level in the water course,\n\nso long as the minimum working head required\n\nfor their working is available.\n\nModular outlet : These are the outlets whose\n\ndischarge is independent of the water levels in\n\nthe distributing channel and the water course,\n\nwithin reasonable working limits. In other words\n\nmodular outlets maintain a constant discharge\n\nirrespective of variation of the water levels in the\n\ndistributing channel and the water course.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2017:q31": {
-      "question_uid": "pp:ce:2017:q31",
+    "ce:2017:q31": {
+      "question_uid": "ce:2017:q31",
+      "legacy_uid": "pp:ce:2017:q31",
       "exam_uid": "ce:2017:set1:main:q31",
       "title": "GATE CE 2017 | Set 1 | Question: 31",
       "section": "main",
@@ -1397,15 +1389,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "$Q=\\frac{1}{n} \\times A \\times R^{2 / 3} \\times S^{1 / 2}$\n\n<img src=\"/question-images/ce/2017/ce-2017-894d5cf215.webp\" />\n\n$$\\begin{array}{l} A=1 \\times 0.5=0.5 \\mathrm{m}^{2} \\\\ P=1+(0.5 \\times 2)=2 \\mathrm{m} \\\\ Q=\\frac{1}{0.04} \\times 0.5 \\times\\left(\\frac{0.5}{2}\\right)^{2 / 3} \\times(0.0016)^{1 / 2} \\\\ &=0.1984 \\mathrm{m}^{3} / \\mathrm{s} \\\\ q&=\\frac{Q}{1}=0.1984 \\mathrm{m}^{3} / \\mathrm{s} / \\mathrm{m} \\end{array}$$\n\nFor rectangular channel\n\n$y_{c}=\\left(\\frac{q^{2}}{g}\\right)^{1 / 3}=\\left(\\frac{0.1984^{2}}{9.81}\\right)^{1 / 3}=0.159 \\mathrm{m}$\n\nsince, $y_{n}>y_{c}$ (Thus it is Mild Slope)[/latex]\n\n<img src=\"/question-images/ce/2017/ce-2017-f4a768fcac.webp\" />",
-        "images": [
-          "/question-images/ce/2017/ce-2017-894d5cf215.webp",
-          "/question-images/ce/2017/ce-2017-f4a768fcac.webp"
-        ]
+        "markdown": "$Q=\\frac{1}{n} \\times A \\times R^{2 / 3} \\times S^{1 / 2}$\n\n<img src=\"/question-images/ce/2017/ce-2017-894d5cf215.webp\" />\n\n$$\\begin{array}{l} A=1 \\times 0.5=0.5 \\mathrm{m}^{2} \\\\ P=1+(0.5 \\times 2)=2 \\mathrm{m} \\\\ Q=\\frac{1}{0.04} \\times 0.5 \\times\\left(\\frac{0.5}{2}\\right)^{2 / 3} \\times(0.0016)^{1 / 2} \\\\ &=0.1984 \\mathrm{m}^{3} / \\mathrm{s} \\\\ q&=\\frac{Q}{1}=0.1984 \\mathrm{m}^{3} / \\mathrm{s} / \\mathrm{m} \\end{array}$$\n\nFor rectangular channel\n\n$y_{c}=\\left(\\frac{q^{2}}{g}\\right)^{1 / 3}=\\left(\\frac{0.1984^{2}}{9.81}\\right)^{1 / 3}=0.159 \\mathrm{m}$\n\nsince, $y_{n}>y_{c}$ (Thus it is Mild Slope)[/latex]\n\n<img src=\"/question-images/ce/2017/ce-2017-f4a768fcac.webp\" />\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q32": {
-      "question_uid": "pp:ce:2017:q32",
+    "ce:2017:q32": {
+      "question_uid": "ce:2017:q32",
+      "legacy_uid": "pp:ce:2017:q32",
       "exam_uid": "ce:2017:set1:main:q32",
       "title": "GATE CE 2017 | Set 1 | Question: 32",
       "section": "main",
@@ -1445,12 +1434,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Highway Materials",
-        "markdown": "Bulk specific gravity $=\\frac{A}{B-C}$\n\nApparent specific gravity $=\\frac{A}{A-C}$\n\nWhere,\n\nA= Mass of oven dry aggregate in air\n\nB= Mass of Saturated surface dry aggregate in air\n\nC= Mass of Saturated surface dry aggregate under water\n\n$\\therefore$ Bulk specific gravity\n\n$=\\frac{1000}{1025-625}=\\frac{1000}{400}=2.5$\n\nWater absorption\n\n$=\\frac{1025-1000}{1000} \\times 100=2.5 \\%$",
-        "images": []
+        "markdown": "Bulk specific gravity $=\\frac{A}{B-C}$\n\nApparent specific gravity $=\\frac{A}{A-C}$\n\nWhere,\n\nA= Mass of oven dry aggregate in air\n\nB= Mass of Saturated surface dry aggregate in air\n\nC= Mass of Saturated surface dry aggregate under water\n\n$\\therefore$ Bulk specific gravity\n\n$=\\frac{1000}{1025-625}=\\frac{1000}{400}=2.5$\n\nWater absorption\n\n$=\\frac{1025-1000}{1000} \\times 100=2.5 \\%$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q33": {
-      "question_uid": "pp:ce:2017:q33",
+    "ce:2017:q33": {
+      "question_uid": "ce:2017:q33",
+      "legacy_uid": "pp:ce:2017:q33",
       "exam_uid": "ce:2017:set1:main:q33",
       "title": "GATE CE 2017 | Set 1 | Question: 33",
       "section": "main",
@@ -1490,12 +1479,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "Vehicle arrived upto 60 sec (Red time) = 10\n\nArrival rate $= 1060 \\times 3600=600 \\; vph$\n\n$v=600\\; vph$\n\nDeparture at vehicle starts at 60 second and ends 90 seconds.\n\nSo, between 60 second to 90 second total vehicle departed\n\n= Vehicle arrived upto 60 second + Vehicle arriving between 60 sec to 90 sec\n\n$= 10 + 6003600 \\times 30$\n\n$= 10 + 5= 15$\n\nSo, departure rate = Saturation flow\n\n$= s = 1530 \\times 3600$\n\n$s=1800\\; vph$\n\nAverage delay time is given by\n\n$t_d=\\frac{\\frac{C}{2}\\left ( 1-\\frac{g}{c} \\right )^2}{1-\\frac{v}{s}}$\n\nC = 96 second\n\ng = 96 -60 = 36 seconds\n\nv = 600 Vph\n\ns = 1800 Vph\n\n$t_d=\\frac{\\frac{96}{2}\\left ( 1-\\frac{36}{96} \\right )^2}{1-\\frac{600}{1800}}$\n\n$t_d=28.125 \\; sec$",
-        "images": []
+        "markdown": "Vehicle arrived upto 60 sec (Red time) = 10\n\nArrival rate $= 1060 \\times 3600=600 \\; vph$\n\n$v=600\\; vph$\n\nDeparture at vehicle starts at 60 second and ends 90 seconds.\n\nSo, between 60 second to 90 second total vehicle departed\n\n= Vehicle arrived upto 60 second + Vehicle arriving between 60 sec to 90 sec\n\n$= 10 + 6003600 \\times 30$\n\n$= 10 + 5= 15$\n\nSo, departure rate = Saturation flow\n\n$= s = 1530 \\times 3600$\n\n$s=1800\\; vph$\n\nAverage delay time is given by\n\n$t_d=\\frac{\\frac{C}{2}\\left ( 1-\\frac{g}{c} \\right )^2}{1-\\frac{v}{s}}$\n\nC = 96 second\n\ng = 96 -60 = 36 seconds\n\nv = 600 Vph\n\ns = 1800 Vph\n\n$t_d=\\frac{\\frac{96}{2}\\left ( 1-\\frac{36}{96} \\right )^2}{1-\\frac{600}{1800}}$\n\n$t_d=28.125 \\; sec$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2017:q34": {
-      "question_uid": "pp:ce:2017:q34",
+    "ce:2017:q34": {
+      "question_uid": "ce:2017:q34",
+      "legacy_uid": "pp:ce:2017:q34",
       "exam_uid": "ce:2017:set1:main:q34",
       "title": "GATE CE 2017 | Set 1 | Question: 34",
       "section": "main",
@@ -1535,12 +1524,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "Given, $R=120 \\mathrm{m}, V=60 \\mathrm{kmph}\\text{ and }f=0.15$\n\n$$\\begin{aligned} \\Rightarrow \\quad e+f&=\\frac{v^{2}}{127 R} \\\\ \\Rightarrow \\quad e+0.15&=\\frac{60^{2}}{127 \\times 120} \\\\ \\Rightarrow \\quad e&=\\frac{1}{11.6} \\\\ \\text{Also, if }e&=0\\\\ \\Rightarrow \\quad f&=\\frac{V^{2}}{127 R}=\\frac{60^{2}}{127 \\times 120} \\simeq 0.24 \\end{aligned}$$",
-        "images": []
+        "markdown": "Given, $R=120 \\mathrm{m}, V=60 \\mathrm{kmph}\\text{ and }f=0.15$\n\n$$\\begin{aligned} \\Rightarrow \\quad e+f&=\\frac{v^{2}}{127 R} \\\\ \\Rightarrow \\quad e+0.15&=\\frac{60^{2}}{127 \\times 120} \\\\ \\Rightarrow \\quad e&=\\frac{1}{11.6} \\\\ \\text{Also, if }e&=0\\\\ \\Rightarrow \\quad f&=\\frac{V^{2}}{127 R}=\\frac{60^{2}}{127 \\times 120} \\simeq 0.24 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2017:q35": {
-      "question_uid": "pp:ce:2017:q35",
+    "ce:2017:q35": {
+      "question_uid": "ce:2017:q35",
+      "legacy_uid": "pp:ce:2017:q35",
       "exam_uid": "ce:2017:set1:main:q35",
       "title": "GATE CE 2017 | Set 1 | Question: 35",
       "section": "main",
@@ -1580,14 +1569,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "As per GATE official Answer key MTA( Marks to ALL)\n\n<img src=\"/question-images/ce/2017/ce-2017-5233e4f4e5.webp\" />\n\nStation R is most likely to be affected.",
-        "images": [
-          "/question-images/ce/2017/ce-2017-5233e4f4e5.webp"
-        ]
+        "markdown": "As per GATE official Answer key MTA( Marks to ALL)\n\n<img src=\"/question-images/ce/2017/ce-2017-5233e4f4e5.webp\" />\n\nStation R is most likely to be affected.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q36": {
-      "question_uid": "pp:ce:2017:q36",
+    "ce:2017:q36": {
+      "question_uid": "ce:2017:q36",
+      "legacy_uid": "pp:ce:2017:q36",
       "exam_uid": "ce:2017:set1:main:q36",
       "title": "GATE CE 2017 | Set 1 | Question: 36",
       "section": "main",
@@ -1627,12 +1614,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "Given data: $w_{n}=18 \\%, w_{L}=60 \\%, w_{p}=25 \\%$\n\n% of clay size particle =25 %\n\nLiquidity index\n\n$I_{L}=\\frac{w_{n}-w_{p}}{w_{L}-w_{p}}=\\frac{0.18-0.25}{0.60-0.25}=-0.2$\n\nActivity $=\\frac{I_{p}}{\\% C}=\\frac{w_{L}-w_{p}}{\\% C}=\\frac{60-25}{25}=1.4$",
-        "images": []
+        "markdown": "Given data: $w_{n}=18 \\%, w_{L}=60 \\%, w_{p}=25 \\%$\n\n% of clay size particle =25 %\n\nLiquidity index\n\n$I_{L}=\\frac{w_{n}-w_{p}}{w_{L}-w_{p}}=\\frac{0.18-0.25}{0.60-0.25}=-0.2$\n\nActivity $=\\frac{I_{p}}{\\% C}=\\frac{w_{L}-w_{p}}{\\% C}=\\frac{60-25}{25}=1.4$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2017:q37": {
-      "question_uid": "pp:ce:2017:q37",
+    "ce:2017:q37": {
+      "question_uid": "ce:2017:q37",
+      "legacy_uid": "pp:ce:2017:q37",
       "exam_uid": "ce:2017:set1:main:q37",
       "title": "GATE CE 2017 | Set 1 | Question: 37",
       "section": "main",
@@ -1670,12 +1657,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$$\\begin{aligned}   \\frac{\\mathrm{d} u}{\\mathrm{d} t}&=3t^{2}+1 \\\\ f\\left ( u,\\: t \\right )&=3t^{2}+1 \\\\ u_{0}&=0 \\\\ t_{0}&=0 \\\\ \\Delta t&=2\\\\ &\\text{By Euler's method} \\\\     u_{1}&=u_{0}+hf\\left ( u_{0}t_{0} \\right )  & t_{1}&=t_{0}+h \\\\     &=u_{0}+h\\left ( 3t^{2}_{0}+1 \\right )   &  &=0+2 \\\\     &=0+2\\left ( 3\\left ( 0 \\right )^{2}+1 \\right )   &  &=2 \\\\     &=2 \\end{aligned}$$\n\nAfter first iteration u=0 when t=2,\n\n$$\\begin{aligned}    \\frac{\\mathrm{d} u}{\\mathrm{d} t}&=3t^{2}+1 \\\\     du&=\\left ( 3t^{2}+1 \\right )dt \\\\    \\int du&=\\int_{0}^{2}\\left ( 3t^{2}+1 \\right )dt \\\\     u&=\\left.\\begin{matrix} \\left ( 3\\frac{t^{3}}{3}+t \\right ) \\end{matrix}\\right|_{0}^{2} \\\\     &=8+2=10 \\end{aligned}$$\n\nAbsolute error = Exact value - approx value\n\n$=10-2 =8$",
-        "images": []
+        "markdown": "$$\\begin{aligned}   \\frac{\\mathrm{d} u}{\\mathrm{d} t}&=3t^{2}+1 \\\\ f\\left ( u,\\: t \\right )&=3t^{2}+1 \\\\ u_{0}&=0 \\\\ t_{0}&=0 \\\\ \\Delta t&=2\\\\ &\\text{By Euler's method} \\\\     u_{1}&=u_{0}+hf\\left ( u_{0}t_{0} \\right )  & t_{1}&=t_{0}+h \\\\     &=u_{0}+h\\left ( 3t^{2}_{0}+1 \\right )   &  &=0+2 \\\\     &=0+2\\left ( 3\\left ( 0 \\right )^{2}+1 \\right )   &  &=2 \\\\     &=2 \\end{aligned}$$\n\nAfter first iteration u=0 when t=2,\n\n$$\\begin{aligned}    \\frac{\\mathrm{d} u}{\\mathrm{d} t}&=3t^{2}+1 \\\\     du&=\\left ( 3t^{2}+1 \\right )dt \\\\    \\int du&=\\int_{0}^{2}\\left ( 3t^{2}+1 \\right )dt \\\\     u&=\\left.\\begin{matrix} \\left ( 3\\frac{t^{3}}{3}+t \\right ) \\end{matrix}\\right|_{0}^{2} \\\\     &=8+2=10 \\end{aligned}$$\n\nAbsolute error = Exact value - approx value\n\n$=10-2 =8$\n\nTherefore, the correct answer is **8** (acceptable range: [7.95, 8.05])."
       }
     },
-    "pp:ce:2017:q38": {
-      "question_uid": "pp:ce:2017:q38",
+    "ce:2017:q38": {
+      "question_uid": "ce:2017:q38",
+      "legacy_uid": "pp:ce:2017:q38",
       "exam_uid": "ce:2017:set1:main:q38",
       "title": "GATE CE 2017 | Set 1 | Question: 38",
       "section": "main",
@@ -1713,14 +1700,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Prestressed Concrete Beams",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-6d06126be7.webp\" />\n\nPrestressing force,\n\n$$\\begin{aligned} P&=3 \\times 50 \\times 1200=180000 \\mathrm{N} \\\\ e&=\\left(\\frac{D}{2}-100\\right)=\\left(\\frac{300}{2}-100\\right)=50 \\mathrm{mm} \\end{aligned}$$\n\nStress in concrete at the location of steel\n\n$$\\begin{aligned} &=\\frac{P}{A}+\\frac{P \\cdot e}{I} e\\\\ &=\\frac{180000}{150 \\times 300}+\\frac{180000 \\times 50^{2}}{\\left(\\frac{150 \\times 300^{3}}{12}\\right)} \\\\ &=4.0+1.33=5.333 \\end{aligned}$$\n\nLoss of stress\n\n$=m \\times f_{c}=6 \\times 5.3333=32 \\mathrm{N} / \\mathrm{mm}^{2}$\n\nLoss of prestressing force\n\n$=\\frac{3 \\times 50 \\times 32}{1000} \\mathrm{kN}=4.8 \\mathrm{kN}$",
-        "images": [
-          "/question-images/ce/2017/ce-2017-6d06126be7.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-6d06126be7.webp\" />\n\nPrestressing force,\n\n$$\\begin{aligned} P&=3 \\times 50 \\times 1200=180000 \\mathrm{N} \\\\ e&=\\left(\\frac{D}{2}-100\\right)=\\left(\\frac{300}{2}-100\\right)=50 \\mathrm{mm} \\end{aligned}$$\n\nStress in concrete at the location of steel\n\n$$\\begin{aligned} &=\\frac{P}{A}+\\frac{P \\cdot e}{I} e\\\\ &=\\frac{180000}{150 \\times 300}+\\frac{180000 \\times 50^{2}}{\\left(\\frac{150 \\times 300^{3}}{12}\\right)} \\\\ &=4.0+1.33=5.333 \\end{aligned}$$\n\nLoss of stress\n\n$=m \\times f_{c}=6 \\times 5.3333=32 \\mathrm{N} / \\mathrm{mm}^{2}$\n\nLoss of prestressing force\n\n$=\\frac{3 \\times 50 \\times 32}{1000} \\mathrm{kN}=4.8 \\mathrm{kN}$\n\nTherefore, the correct answer is **4.75** (acceptable range: [4.5, 5])."
       }
     },
-    "pp:ce:2017:q39": {
-      "question_uid": "pp:ce:2017:q39",
+    "ce:2017:q39": {
+      "question_uid": "ce:2017:q39",
+      "legacy_uid": "pp:ce:2017:q39",
       "exam_uid": "ce:2017:set1:main:q39",
       "title": "GATE CE 2017 | Set 1 | Question: 39",
       "section": "main",
@@ -1758,14 +1743,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-a17bdaf2cf.webp\" />\n\n$$\\begin{aligned} A_{1}=100 \\mathrm{mm}^{2}, & E I=2 \\times 10^{5} \\mathrm{MPa} \\\\ A_{2}=60 \\mathrm{mm}^{2}, &E I=3 \\times 10^{5} \\mathrm{MPa} \\\\ \\Delta_{A C}=&\\Delta_{A B}+\\Delta_{B C} \\\\ =& \\frac{1 \\times 10^{3} \\times 400}{100 \\times 2 \\times 10^{5}}+\\frac{1 \\times 10^{3} \\times 900}{60 \\times 3 \\times 10^{5}} \\\\ =& 0.02+0.05=0.07 \\mathrm{mm} \\\\ U=\\frac{1}{2} \\times P \\times \\Delta&=\\frac{1}{2} \\times 1 \\times 1000 \\times 0.07=35 \\mathrm{N}-\\mathrm{mm} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2017/ce-2017-a17bdaf2cf.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-a17bdaf2cf.webp\" />\n\n$$\\begin{aligned} A_{1}=100 \\mathrm{mm}^{2}, & E I=2 \\times 10^{5} \\mathrm{MPa} \\\\ A_{2}=60 \\mathrm{mm}^{2}, &E I=3 \\times 10^{5} \\mathrm{MPa} \\\\ \\Delta_{A C}=&\\Delta_{A B}+\\Delta_{B C} \\\\ =& \\frac{1 \\times 10^{3} \\times 400}{100 \\times 2 \\times 10^{5}}+\\frac{1 \\times 10^{3} \\times 900}{60 \\times 3 \\times 10^{5}} \\\\ =& 0.02+0.05=0.07 \\mathrm{mm} \\\\ U=\\frac{1}{2} \\times P \\times \\Delta&=\\frac{1}{2} \\times 1 \\times 1000 \\times 0.07=35 \\mathrm{N}-\\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **35** (acceptable range: [34.9, 35.1])."
       }
     },
-    "pp:ce:2017:q40": {
-      "question_uid": "pp:ce:2017:q40",
+    "ce:2017:q40": {
+      "question_uid": "ce:2017:q40",
+      "legacy_uid": "pp:ce:2017:q40",
       "exam_uid": "ce:2017:set1:main:q40",
       "title": "GATE CE 2017 | Set 1 | Question: 40",
       "section": "main",
@@ -1803,15 +1786,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-c2397217aa.webp\" />\n\nAs the slope $\\theta_{B}$ is an anticlockwise sense, hence the moment at joint B must be applied in clockwise sense $=40 \\mathrm{kNm}$ to make $\\theta_{B}=0$\n\n<img src=\"/question-images/ce/2017/ce-2017-d84257e3f7.webp\" />",
-        "images": [
-          "/question-images/ce/2017/ce-2017-c2397217aa.webp",
-          "/question-images/ce/2017/ce-2017-d84257e3f7.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-c2397217aa.webp\" />\n\nAs the slope $\\theta_{B}$ is an anticlockwise sense, hence the moment at joint B must be applied in clockwise sense $=40 \\mathrm{kNm}$ to make $\\theta_{B}=0$\n\n<img src=\"/question-images/ce/2017/ce-2017-d84257e3f7.webp\" />\n\nTherefore, the correct answer is **60** (acceptable range: [59, 61])."
       }
     },
-    "pp:ce:2017:q41": {
-      "question_uid": "pp:ce:2017:q41",
+    "ce:2017:q41": {
+      "question_uid": "ce:2017:q41",
+      "legacy_uid": "pp:ce:2017:q41",
       "exam_uid": "ce:2017:set1:main:q41",
       "title": "GATE CE 2017 | Set 1 | Question: 41",
       "section": "main",
@@ -1849,15 +1829,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Influence Line Diagram and Rolling Loads",
-        "markdown": "$\\text { B.M. at } C=50 \\times 4=200 \\mathrm{kNm}$\n\n<img src=\"/question-images/ce/2017/ce-2017-7e04cf2459.webp\" />\n\nILD for BM at C\n\n<img src=\"/question-images/ce/2017/ce-2017-72dd071b3c.webp\" />",
-        "images": [
-          "/question-images/ce/2017/ce-2017-7e04cf2459.webp",
-          "/question-images/ce/2017/ce-2017-72dd071b3c.webp"
-        ]
+        "markdown": "$\\text { B.M. at } C=50 \\times 4=200 \\mathrm{kNm}$\n\n<img src=\"/question-images/ce/2017/ce-2017-7e04cf2459.webp\" />\n\nILD for BM at C\n\n<img src=\"/question-images/ce/2017/ce-2017-72dd071b3c.webp\" />\n\nTherefore, the correct answer is **200** (acceptable range: [199, 201])."
       }
     },
-    "pp:ce:2017:q42": {
-      "question_uid": "pp:ce:2017:q42",
+    "ce:2017:q42": {
+      "question_uid": "ce:2017:q42",
+      "legacy_uid": "pp:ce:2017:q42",
       "exam_uid": "ce:2017:set1:main:q42",
       "title": "GATE CE 2017 | Set 1 | Question: 42",
       "section": "main",
@@ -1895,14 +1872,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-fe2b669b1c.webp\" />\n\n$$\\begin{aligned} P_{c r 1}&=\\frac{\\pi^{2} E \\cdot I}{(2 l)^{2}}=\\frac{\\pi^{2} E I}{4 l^{2}} \\\\ P_{c r 2}&=\\frac{\\pi^{2} E \\cdot I}{\\left(\\frac{l}{\\sqrt{2}}\\right)^{2}}=\\frac{2 \\pi^{2} E I}{l^{2}}\\\\ \\therefore \\text{Required ratio }&=\\frac{P_{C r 2}}{P_{c r 1}}=\\frac{\\frac{2 \\pi^{2} E I}{l^{2}}}{\\frac{\\pi^{2} E I}{4 l^{2}}}=8 \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2017/ce-2017-fe2b669b1c.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-fe2b669b1c.webp\" />\n\n$$\\begin{aligned} P_{c r 1}&=\\frac{\\pi^{2} E \\cdot I}{(2 l)^{2}}=\\frac{\\pi^{2} E I}{4 l^{2}} \\\\ P_{c r 2}&=\\frac{\\pi^{2} E \\cdot I}{\\left(\\frac{l}{\\sqrt{2}}\\right)^{2}}=\\frac{2 \\pi^{2} E I}{l^{2}}\\\\ \\therefore \\text{Required ratio }&=\\frac{P_{C r 2}}{P_{c r 1}}=\\frac{\\frac{2 \\pi^{2} E I}{l^{2}}}{\\frac{\\pi^{2} E I}{4 l^{2}}}=8 \\end{aligned}$$\n\nTherefore, the correct answer is **8.1** (acceptable range: [7.9, 8.3])."
       }
     },
-    "pp:ce:2017:q43": {
-      "question_uid": "pp:ce:2017:q43",
+    "ce:2017:q43": {
+      "question_uid": "ce:2017:q43",
+      "legacy_uid": "pp:ce:2017:q43",
       "exam_uid": "ce:2017:set1:main:q43",
       "title": "GATE CE 2017 | Set 1 | Question: 43",
       "section": "main",
@@ -1940,14 +1915,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-f13acf14fb.webp\" />\n\n$$\\begin{aligned} F_{1}&=\\frac{P}{n}=\\frac{10}{4}=2.5kN \\\\ F_{2}&=\\frac{Pe}{\\sum r^{2}_{i}}\\times r_{1} \\\\&=\\frac{10\\times 15}{4\\times 5^{2}}\\times 5=7.5 kN \\\\ F_{R}&=\\sqrt{F^{2}_{1}+F_{2}^{2}+2F_{1}F_{2}\\cos \\theta } \\\\  &=\\sqrt{2.5^{2}+7.5^{2}+2\\times 2.5\\times 7.5\\times \\cos 135^{\\circ}} \\\\  &=6kN \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2017/ce-2017-f13acf14fb.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-f13acf14fb.webp\" />\n\n$$\\begin{aligned} F_{1}&=\\frac{P}{n}=\\frac{10}{4}=2.5kN \\\\ F_{2}&=\\frac{Pe}{\\sum r^{2}_{i}}\\times r_{1} \\\\&=\\frac{10\\times 15}{4\\times 5^{2}}\\times 5=7.5 kN \\\\ F_{R}&=\\sqrt{F^{2}_{1}+F_{2}^{2}+2F_{1}F_{2}\\cos \\theta } \\\\  &=\\sqrt{2.5^{2}+7.5^{2}+2\\times 2.5\\times 7.5\\times \\cos 135^{\\circ}} \\\\  &=6kN \\end{aligned}$$\n\nTherefore, the correct answer is **6** (acceptable range: [5.9, 6.1])."
       }
     },
-    "pp:ce:2017:q44": {
-      "question_uid": "pp:ce:2017:q44",
+    "ce:2017:q44": {
+      "question_uid": "ce:2017:q44",
+      "legacy_uid": "pp:ce:2017:q44",
       "exam_uid": "ce:2017:set1:main:q44",
       "title": "GATE CE 2017 | Set 1 | Question: 44",
       "section": "main",
@@ -1985,12 +1958,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned}m=2 kg, \\; V_{0}&=1.5\\: m/sec \\\\  \\int_{0}^{t}F\\left ( t \\right )dt &= m\\left ( V-V_{0} \\right ) \\\\  \\int_{0}^{2}3t^{2}dt &= 2\\left ( V-1.5 \\right ) \\\\  \\left [ t^{3} \\right ]_{0}^{2} &= 2\\left ( V-1.5 \\right ) \\\\ \\Rightarrow \\;\\;  \\left ( 8-0 \\right ) &= 2\\left ( V-1.5 \\right ) \\\\   V&=5.5\\: m/s \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned}m=2 kg, \\; V_{0}&=1.5\\: m/sec \\\\  \\int_{0}^{t}F\\left ( t \\right )dt &= m\\left ( V-V_{0} \\right ) \\\\  \\int_{0}^{2}3t^{2}dt &= 2\\left ( V-1.5 \\right ) \\\\  \\left [ t^{3} \\right ]_{0}^{2} &= 2\\left ( V-1.5 \\right ) \\\\ \\Rightarrow \\;\\;  \\left ( 8-0 \\right ) &= 2\\left ( V-1.5 \\right ) \\\\   V&=5.5\\: m/s \\end{aligned}$$\n\nTherefore, the correct answer is **5.5** (acceptable range: [5.4, 5.6])."
       }
     },
-    "pp:ce:2017:q45": {
-      "question_uid": "pp:ce:2017:q45",
+    "ce:2017:q45": {
+      "question_uid": "ce:2017:q45",
+      "legacy_uid": "pp:ce:2017:q45",
       "exam_uid": "ce:2017:set1:main:q45",
       "title": "GATE CE 2017 | Set 1 | Question: 45",
       "section": "main",
@@ -2028,14 +2001,12 @@
       },
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-f8c5bf9b5a.webp\" />\n\nThe minimun time for project completion is with respect to critical path.\n\nCritical Path$\\, \\rightarrow \\, P-Q-U-V$\n\n$T_{cp}=6 + 15 + 14 + 16= 51$ days",
-        "images": [
-          "/question-images/ce/2017/ce-2017-f8c5bf9b5a.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-f8c5bf9b5a.webp\" />\n\nThe minimun time for project completion is with respect to critical path.\n\nCritical Path$\\, \\rightarrow \\, P-Q-U-V$\n\n$T_{cp}=6 + 15 + 14 + 16= 51$ days\n\nTherefore, the correct answer is **51**."
       }
     },
-    "pp:ce:2017:q46": {
-      "question_uid": "pp:ce:2017:q46",
+    "ce:2017:q46": {
+      "question_uid": "ce:2017:q46",
+      "legacy_uid": "pp:ce:2017:q46",
       "exam_uid": "ce:2017:set1:main:q46",
       "title": "GATE CE 2017 | Set 1 | Question: 46",
       "section": "main",
@@ -2073,14 +2044,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
-        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-72bf639988.webp\" />\n\n$$\\begin{aligned} Q_{s t} &=\\frac{1}{2} k \\gamma L_{1} \\tan \\delta A_{s_{1}}+\\frac{1}{2} K\\left[\\gamma L_{1}+\\gamma^{\\prime} L_{2}\\right] \\tan \\delta A_{s_{2}} \\\\ &=\\frac{1}{2} \\times 1 \\times 16 \\times 2 \\tan 23^{\\circ}(3 \\times 2) \\\\ &+\\frac{1}{2} \\times 1[16 \\times 2+77.95] \\times \\tan 23^{\\circ}(5 \\times 3) \\\\ &=390.8 \\mathrm{kN} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2017/ce-2017-72bf639988.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-72bf639988.webp\" />\n\n$$\\begin{aligned} Q_{s t} &=\\frac{1}{2} k \\gamma L_{1} \\tan \\delta A_{s_{1}}+\\frac{1}{2} K\\left[\\gamma L_{1}+\\gamma^{\\prime} L_{2}\\right] \\tan \\delta A_{s_{2}} \\\\ &=\\frac{1}{2} \\times 1 \\times 16 \\times 2 \\tan 23^{\\circ}(3 \\times 2) \\\\ &+\\frac{1}{2} \\times 1[16 \\times 2+77.95] \\times \\tan 23^{\\circ}(5 \\times 3) \\\\ &=390.8 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **388.5** (acceptable range: [385, 392])."
       }
     },
-    "pp:ce:2017:q47": {
-      "question_uid": "pp:ce:2017:q47",
+    "ce:2017:q47": {
+      "question_uid": "ce:2017:q47",
+      "legacy_uid": "pp:ce:2017:q47",
       "exam_uid": "ce:2017:set1:main:q47",
       "title": "GATE CE 2017 | Set 1 | Question: 47",
       "section": "main",
@@ -2118,12 +2087,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
-        "markdown": "Infinite sand slope:\n\nGWT coincides with the ground surface, therefore\n\n$F.O.S. =\\frac{\\gamma^{\\prime}}{\\gamma_{\\mathrm{sat}}} \\times \\frac{\\tan \\phi^{\\prime}}{\\tan \\beta}$\n\nAs slope is on the verge of sliding failure hence,\n\n$$\\begin{array}{l} \\mathrm{F} \\mathrm{O} . \\mathrm{S}=\\frac{\\gamma^{\\prime} \\tan \\phi^{\\prime}}{\\gamma_{\\mathrm{sat}} \\tan \\beta}=1\\\\ (21-9.81) \\tan \\phi^{\\prime}=21 \\tan 20^{\\circ} \\\\ \\phi=34.3^{\\circ} \\end{array}$$",
-        "images": []
+        "markdown": "Infinite sand slope:\n\nGWT coincides with the ground surface, therefore\n\n$F.O.S. =\\frac{\\gamma^{\\prime}}{\\gamma_{\\mathrm{sat}}} \\times \\frac{\\tan \\phi^{\\prime}}{\\tan \\beta}$\n\nAs slope is on the verge of sliding failure hence,\n\n$$\\begin{array}{l} \\mathrm{F} \\mathrm{O} . \\mathrm{S}=\\frac{\\gamma^{\\prime} \\tan \\phi^{\\prime}}{\\gamma_{\\mathrm{sat}} \\tan \\beta}=1\\\\ (21-9.81) \\tan \\phi^{\\prime}=21 \\tan 20^{\\circ} \\\\ \\phi=34.3^{\\circ} \\end{array}$$\n\nTherefore, the correct answer is **34.25** (acceptable range: [34, 34.5])."
       }
     },
-    "pp:ce:2017:q48": {
-      "question_uid": "pp:ce:2017:q48",
+    "ce:2017:q48": {
+      "question_uid": "ce:2017:q48",
+      "legacy_uid": "pp:ce:2017:q48",
       "exam_uid": "ce:2017:set1:main:q48",
       "title": "GATE CE 2017 | Set 1 | Question: 48",
       "section": "main",
@@ -2161,12 +2130,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "Applying Bernoulli's energy balance equation\n\n$$\\begin{aligned} y_{1}+\\frac{Q^{2}}{2 g A_{1}^{2}}&=y_{2}+\\frac{Q^{2}}{2 g A_{2}^{2}}\\\\ \\text{Given }\\quad y_{1}=1 \\mathrm{m}, b&=1 \\mathrm{m}, \\quad y_{2}=0.2 \\\\ \\Rightarrow 1+\\frac{q^{2} \\times 1^{2}}{2 g(1 \\times 1)^{2}}&=0.2+\\frac{q^{2} \\times 1^{2}}{2 g \\times(0.2 \\times 1)^{2}} \\\\ \\Rightarrow \\quad 0.8 &=\\frac{q^{2}}{2 g}\\left(\\frac{1}{(0.2)^{2}}-1\\right) \\\\ 0.8 &=\\frac{q^{2}}{20} \\times 24 \\\\ q &=0.816 \\mathrm{m}^{2} / \\mathrm{s} \\end{aligned}$$",
-        "images": []
+        "markdown": "Applying Bernoulli's energy balance equation\n\n$$\\begin{aligned} y_{1}+\\frac{Q^{2}}{2 g A_{1}^{2}}&=y_{2}+\\frac{Q^{2}}{2 g A_{2}^{2}}\\\\ \\text{Given }\\quad y_{1}=1 \\mathrm{m}, b&=1 \\mathrm{m}, \\quad y_{2}=0.2 \\\\ \\Rightarrow 1+\\frac{q^{2} \\times 1^{2}}{2 g(1 \\times 1)^{2}}&=0.2+\\frac{q^{2} \\times 1^{2}}{2 g \\times(0.2 \\times 1)^{2}} \\\\ \\Rightarrow \\quad 0.8 &=\\frac{q^{2}}{2 g}\\left(\\frac{1}{(0.2)^{2}}-1\\right) \\\\ 0.8 &=\\frac{q^{2}}{20} \\times 24 \\\\ q &=0.816 \\mathrm{m}^{2} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **0.815** (acceptable range: [0.8, 0.83])."
       }
     },
-    "pp:ce:2017:q49": {
-      "question_uid": "pp:ce:2017:q49",
+    "ce:2017:q49": {
+      "question_uid": "ce:2017:q49",
+      "legacy_uid": "pp:ce:2017:q49",
       "exam_uid": "ce:2017:set1:main:q49",
       "title": "GATE CE 2017 | Set 1 | Question: 49",
       "section": "main",
@@ -2204,12 +2173,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Dynamics and Flow Measurements",
-        "markdown": "$$\\begin{aligned} P_{1} A_{1} &=F_{x} \\\\ F_{x} &=\\left(140 \\times 10^{3}\\right)\\left[\\frac{\\pi}{4}\\left(\\frac{0.27}{\\sqrt{\\pi}}\\right)^{2}\\right] \\\\ &=2551.5 \\mathrm{N}\\\\ F_{y} &=P_{2} A_{2} \\\\ &=\\left(1.013 \\times 10^{5}\\right)\\left[\\frac{\\pi}{4}\\left(\\frac{0.14}{\\sqrt{\\pi}}\\right)^{2}\\right] \\\\ &=49637 \\mathrm{N} \\\\ \\text { Resultant force } &=\\sqrt{F_{x}^{2}+F_{y}^{2}} \\\\ &=\\sqrt{(2551.5)^{2}+(49637)^{2}} \\\\ &=259933 \\mathrm{N} \\\\ &=2.60 \\mathrm{kN} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} P_{1} A_{1} &=F_{x} \\\\ F_{x} &=\\left(140 \\times 10^{3}\\right)\\left[\\frac{\\pi}{4}\\left(\\frac{0.27}{\\sqrt{\\pi}}\\right)^{2}\\right] \\\\ &=2551.5 \\mathrm{N}\\\\ F_{y} &=P_{2} A_{2} \\\\ &=\\left(1.013 \\times 10^{5}\\right)\\left[\\frac{\\pi}{4}\\left(\\frac{0.14}{\\sqrt{\\pi}}\\right)^{2}\\right] \\\\ &=49637 \\mathrm{N} \\\\ \\text { Resultant force } &=\\sqrt{F_{x}^{2}+F_{y}^{2}} \\\\ &=\\sqrt{(2551.5)^{2}+(49637)^{2}} \\\\ &=259933 \\mathrm{N} \\\\ &=2.60 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **3.125** (acceptable range: [2.5, 3.75])."
       }
     },
-    "pp:ce:2017:q50": {
-      "question_uid": "pp:ce:2017:q50",
+    "ce:2017:q50": {
+      "question_uid": "ce:2017:q50",
+      "legacy_uid": "pp:ce:2017:q50",
       "exam_uid": "ce:2017:set1:main:q50",
       "title": "GATE CE 2017 | Set 1 | Question: 50",
       "section": "main",
@@ -2247,12 +2216,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "CU test is conducted.\n\n$$\\begin{aligned} \\sigma_{3}= 100 &\\mathrm{kPa}, \\sigma_{a}=80 \\mathrm{kPa}, u=50 \\mathrm{kPa} \\\\ \\sigma_{1}&=\\sigma_{3}+\\sigma_{d} =100+80=180 \\mathrm{kPa} \\\\ \\bar{\\sigma}_{1}&=\\sigma_{1}-u= 180-50=130 \\mathrm{kPa}\\\\ \\bar{\\sigma}_{3}&=\\sigma_{3}-u=100-50=50 \\mathrm{kPa} \\\\ \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right)+2 C^{\\prime} \\tan \\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ \\text{Assume }\\quad C^{\\prime}&=0 \\\\ \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ 130&=50 \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ \\phi^{\\prime}&=26.4^{\\circ} \\end{aligned}$$",
-        "images": []
+        "markdown": "CU test is conducted.\n\n$$\\begin{aligned} \\sigma_{3}= 100 &\\mathrm{kPa}, \\sigma_{a}=80 \\mathrm{kPa}, u=50 \\mathrm{kPa} \\\\ \\sigma_{1}&=\\sigma_{3}+\\sigma_{d} =100+80=180 \\mathrm{kPa} \\\\ \\bar{\\sigma}_{1}&=\\sigma_{1}-u= 180-50=130 \\mathrm{kPa}\\\\ \\bar{\\sigma}_{3}&=\\sigma_{3}-u=100-50=50 \\mathrm{kPa} \\\\ \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right)+2 C^{\\prime} \\tan \\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ \\text{Assume }\\quad C^{\\prime}&=0 \\\\ \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ 130&=50 \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ \\phi^{\\prime}&=26.4^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **26.25** (acceptable range: [25.5, 27])."
       }
     },
-    "pp:ce:2017:q51": {
-      "question_uid": "pp:ce:2017:q51",
+    "ce:2017:q51": {
+      "question_uid": "ce:2017:q51",
+      "legacy_uid": "pp:ce:2017:q51",
       "exam_uid": "ce:2017:set1:main:q51",
       "title": "GATE CE 2017 | Set 1 | Question: 51",
       "section": "main",
@@ -2290,12 +2259,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "Peak of 2 hr direct runoff hydrograph = Peak of 2 hr flood hydrograph-Base flow\n\n=200-20\n\n=180 $m^{3}/sec.$\n\nThe rainfall excess depth for a given duration of 2 hr effective storm/rainfall is given by,\n\nRainfall excess depth\n\n$=2 cm-0.4 \\frac{cm}{hr}\\times 2 hr$\n\n$=1.2 cm$\n\n$\\therefore$Peak of 2 hr UH\n\n$=\\frac{180}{1.2}=150 m^{3}/s-cm$",
-        "images": []
+        "markdown": "Peak of 2 hr direct runoff hydrograph = Peak of 2 hr flood hydrograph-Base flow\n\n=200-20\n\n=180 $m^{3}/sec.$\n\nThe rainfall excess depth for a given duration of 2 hr effective storm/rainfall is given by,\n\nRainfall excess depth\n\n$=2 cm-0.4 \\frac{cm}{hr}\\times 2 hr$\n\n$=1.2 cm$\n\n$\\therefore$Peak of 2 hr UH\n\n$=\\frac{180}{1.2}=150 m^{3}/s-cm$\n\nTherefore, the correct answer is **150** (acceptable range: [149, 151])."
       }
     },
-    "pp:ce:2017:q52": {
-      "question_uid": "pp:ce:2017:q52",
+    "ce:2017:q52": {
+      "question_uid": "ce:2017:q52",
+      "legacy_uid": "pp:ce:2017:q52",
       "exam_uid": "ce:2017:set1:main:q52",
       "title": "GATE CE 2017 | Set 1 | Question: 52",
       "section": "main",
@@ -2333,12 +2302,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
-        "markdown": "$$\\begin{aligned} L_{eq} &=10\\log_{10}\\left [ \\sum 10^{\\frac{L_{i}}{10}} \\right ] \\\\ &=10\\log_{10}\\left ( 10^{\\frac{60}{10}}+10^{\\frac{69}{10}}+10^{\\frac{70}{10}}+10^{\\frac{79}{10}} \\right ) \\\\ &=79.9\\: \\text{dB} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} L_{eq} &=10\\log_{10}\\left [ \\sum 10^{\\frac{L_{i}}{10}} \\right ] \\\\ &=10\\log_{10}\\left ( 10^{\\frac{60}{10}}+10^{\\frac{69}{10}}+10^{\\frac{70}{10}}+10^{\\frac{79}{10}} \\right ) \\\\ &=79.9\\: \\text{dB} \\end{aligned}$$\n\nTherefore, the correct answer is **80** (acceptable range: [79, 81])."
       }
     },
-    "pp:ce:2017:q53": {
-      "question_uid": "pp:ce:2017:q53",
+    "ce:2017:q53": {
+      "question_uid": "ce:2017:q53",
+      "legacy_uid": "pp:ce:2017:q53",
       "exam_uid": "ce:2017:set1:main:q53",
       "title": "GATE CE 2017 | Set 1 | Question: 53",
       "section": "main",
@@ -2376,12 +2345,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "$$\\begin{aligned} v_{s} &=\\frac{(G-1) g d^{2}}{18 v}=\\frac{(3-1) 9.81\\left(0.02 \\times 10^{-3}\\right)^{2}}{18 \\times 10^{-6}} \\times 10^{3} \\\\ &=0.436 \\mathrm{mm} / \\mathrm{sec} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} v_{s} &=\\frac{(G-1) g d^{2}}{18 v}=\\frac{(3-1) 9.81\\left(0.02 \\times 10^{-3}\\right)^{2}}{18 \\times 10^{-6}} \\times 10^{3} \\\\ &=0.436 \\mathrm{mm} / \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.3, 0.5])."
       }
     },
-    "pp:ce:2017:q54": {
-      "question_uid": "pp:ce:2017:q54",
+    "ce:2017:q54": {
+      "question_uid": "ce:2017:q54",
+      "legacy_uid": "pp:ce:2017:q54",
       "exam_uid": "ce:2017:set1:main:q54",
       "title": "GATE CE 2017 | Set 1 | Question: 54",
       "section": "main",
@@ -2419,12 +2388,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "$$\\begin{aligned} \\text{At A,}\\; \\; \\; \\left ( BOD_{5} \\right )_{20^{\\circ}C}&=L\\left ( 1-10^{-k_{D}20^{\\circ}C\\times 5} \\right ) \\\\ 50 &=L\\left ( 1-10^{-0.115\\times 5} \\right ) \\\\ L&= 68.129\\; mg/l\\\\ \\text{Here,} \\; \\; k_{D_{10}}&=k_{D_{20}}\\times \\left [ 1.135 \\right ]^{10-20} \\\\ &=0.115\\times \\left ( 1.135 \\right )^{-10} \\\\ &=0.0324 \\\\ \\text{For C,}\\; \\;\\left ( BOD_{5} \\right )_{10^{\\circ}C} &=L\\left [ 1-10^{-k_{D_{10\\times 4}}} \\right ] \\\\ &=68.13\\left [ 1-10^{-0.0324\\times 5} \\right ] \\\\ &=21.21\\; mg/l \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text{At A,}\\; \\; \\; \\left ( BOD_{5} \\right )_{20^{\\circ}C}&=L\\left ( 1-10^{-k_{D}20^{\\circ}C\\times 5} \\right ) \\\\ 50 &=L\\left ( 1-10^{-0.115\\times 5} \\right ) \\\\ L&= 68.129\\; mg/l\\\\ \\text{Here,} \\; \\; k_{D_{10}}&=k_{D_{20}}\\times \\left [ 1.135 \\right ]^{10-20} \\\\ &=0.115\\times \\left ( 1.135 \\right )^{-10} \\\\ &=0.0324 \\\\ \\text{For C,}\\; \\;\\left ( BOD_{5} \\right )_{10^{\\circ}C} &=L\\left [ 1-10^{-k_{D_{10\\times 4}}} \\right ] \\\\ &=68.13\\left [ 1-10^{-0.0324\\times 5} \\right ] \\\\ &=21.21\\; mg/l \\end{aligned}$$\n\nTherefore, the correct answer is **21** (acceptable range: [20, 22])."
       }
     },
-    "pp:ce:2017:q55": {
-      "question_uid": "pp:ce:2017:q55",
+    "ce:2017:q55": {
+      "question_uid": "ce:2017:q55",
+      "legacy_uid": "pp:ce:2017:q55",
       "exam_uid": "ce:2017:set1:main:q55",
       "title": "GATE CE 2017 | Set 1 | Question: 55",
       "section": "main",
@@ -2462,12 +2431,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "$Q=0.8 \\mathrm{m}^{3} / \\mathrm{d}$\n\nDetention time,\n\n$$\\begin{aligned} D_{t}&=\\frac{V}{Q}=\\frac{4 \\times 2 \\times 2 \\mathrm{m}^{3}}{0.8 \\mathrm{m}^{3} / \\mathrm{day}}=20 \\mathrm{days} \\\\ L_{t}&=\\frac{L_{0}}{1+k_{\\mathrm{e}} t}=\\frac{54}{1+0.1 \\times 20}=18 \\mathrm{mg} / l \\end{aligned}$$",
-        "images": []
+        "markdown": "$Q=0.8 \\mathrm{m}^{3} / \\mathrm{d}$\n\nDetention time,\n\n$$\\begin{aligned} D_{t}&=\\frac{V}{Q}=\\frac{4 \\times 2 \\times 2 \\mathrm{m}^{3}}{0.8 \\mathrm{m}^{3} / \\mathrm{day}}=20 \\mathrm{days} \\\\ L_{t}&=\\frac{L_{0}}{1+k_{\\mathrm{e}} t}=\\frac{54}{1+0.1 \\times 20}=18 \\mathrm{mg} / l \\end{aligned}$$\n\nTherefore, the correct answer is **18** (acceptable range: [17.9, 18.1])."
       }
     },
-    "pp:ce:2017:q56": {
-      "question_uid": "pp:ce:2017:q56",
+    "ce:2017:ga:q1": {
+      "question_uid": "ce:2017:ga:q1",
+      "legacy_uid": "pp:ce:2017:q56",
       "exam_uid": "ce:2017:set1:ga:q1",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 1",
       "section": "ga",
@@ -2509,8 +2478,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q57": {
-      "question_uid": "pp:ce:2017:q57",
+    "ce:2017:ga:q2": {
+      "question_uid": "ce:2017:ga:q2",
+      "legacy_uid": "pp:ce:2017:q57",
       "exam_uid": "ce:2017:set1:ga:q2",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 2",
       "section": "ga",
@@ -2552,8 +2522,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q58": {
-      "question_uid": "pp:ce:2017:q58",
+    "ce:2017:ga:q3": {
+      "question_uid": "ce:2017:ga:q3",
+      "legacy_uid": "pp:ce:2017:q58",
       "exam_uid": "ce:2017:set1:ga:q3",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 3",
       "section": "ga",
@@ -2595,8 +2566,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q59": {
-      "question_uid": "pp:ce:2017:q59",
+    "ce:2017:ga:q4": {
+      "question_uid": "ce:2017:ga:q4",
+      "legacy_uid": "pp:ce:2017:q59",
       "exam_uid": "ce:2017:set1:ga:q4",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 4",
       "section": "ga",
@@ -2638,8 +2610,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q60": {
-      "question_uid": "pp:ce:2017:q60",
+    "ce:2017:ga:q5": {
+      "question_uid": "ce:2017:ga:q5",
+      "legacy_uid": "pp:ce:2017:q60",
       "exam_uid": "ce:2017:set1:ga:q5",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 5",
       "section": "ga",
@@ -2681,8 +2654,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q61": {
-      "question_uid": "pp:ce:2017:q61",
+    "ce:2017:ga:q6": {
+      "question_uid": "ce:2017:ga:q6",
+      "legacy_uid": "pp:ce:2017:q61",
       "exam_uid": "ce:2017:set1:ga:q6",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 6",
       "section": "ga",
@@ -2724,8 +2698,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q62": {
-      "question_uid": "pp:ce:2017:q62",
+    "ce:2017:ga:q7": {
+      "question_uid": "ce:2017:ga:q7",
+      "legacy_uid": "pp:ce:2017:q62",
       "exam_uid": "ce:2017:set1:ga:q7",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 7",
       "section": "ga",
@@ -2767,8 +2742,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q63": {
-      "question_uid": "pp:ce:2017:q63",
+    "ce:2017:ga:q8": {
+      "question_uid": "ce:2017:ga:q8",
+      "legacy_uid": "pp:ce:2017:q63",
       "exam_uid": "ce:2017:set1:ga:q8",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 8",
       "section": "ga",
@@ -2810,8 +2786,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q64": {
-      "question_uid": "pp:ce:2017:q64",
+    "ce:2017:ga:q9": {
+      "question_uid": "ce:2017:ga:q9",
+      "legacy_uid": "pp:ce:2017:q64",
       "exam_uid": "ce:2017:set1:ga:q9",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 9",
       "section": "ga",
@@ -2853,8 +2830,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2017:q65": {
-      "question_uid": "pp:ce:2017:q65",
+    "ce:2017:ga:q10": {
+      "question_uid": "ce:2017:ga:q10",
+      "legacy_uid": "pp:ce:2017:q65",
       "exam_uid": "ce:2017:set1:ga:q10",
       "title": "GATE CE 2017 | Set 1 | GA | Question: 10",
       "section": "ga",
