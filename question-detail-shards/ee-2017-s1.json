@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.373Z",
+  "generatedAt": "2026-10-17T21:30:25.206Z",
   "shardKey": "ee-2017-s1",
   "yearSetKey": "ee-2017-s1",
   "yearSetIdentity": "ee:2017:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ee:2017:q1": {
       "question_uid": "pp:ee:2017:q1",
-      "exam_uid": "ee:2017:set1:q1",
+      "exam_uid": "ee:2017:set1:main:q1",
       "title": "GATE EE 2017 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -32,25 +35,33 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-series",
+          "subtopicLabel": "Fourier Series"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-signals-and-systems",
+          "fourier-series"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "Given that, $$g(t)=\\left\\{\\begin{matrix} t-\\left \\lfloor t \\right \\rfloor, & t \\geq 0\\\\ t-\\left \\lceil t \\right \\rceil & \\text{otherwise} \\end{matrix}\\right.$$\n\nwhere,\n\n$\\left \\lfloor t \\right \\rfloor=$ greatest integer less than or equal to 't'.\n\n$\\left \\lceil t \\right \\rceil=$ smallest integer greater than or equal to 't'.\n\nNow,\n\n<img src=\"/question-images/ee/2017/ee-2017-80b02d6926.webp\" />\n\n<img src=\"/question-images/ee/2017/ee-2017-b20773c01b.webp\" />\n\nSince,  g(t) is nonperiodic. So, there is no Fourier series expansion of this signal and hence no need to calculate harmonic here.\n\nTherefore, the correct answer is **0**."
+        "markdown": "Given that, $$g(t)=\\left\\{\\begin{matrix} t-\\left \\lfloor t \\right \\rfloor, & t \\geq 0\\\\ t-\\left \\lceil t \\right \\rceil & \\text{otherwise} \\end{matrix}\\right.$$\n\nwhere,\n\n$\\left \\lfloor t \\right \\rfloor=$ greatest integer less than or equal to 't'.\n\n$\\left \\lceil t \\right \\rceil=$ smallest integer greater than or equal to 't'.\n\nNow,\n\n<img src=\"/question-images/ee/2017/ee-2017-80b02d6926.webp\" />\n\n<img src=\"/question-images/ee/2017/ee-2017-b20773c01b.webp\" />\n\nSince,  g(t) is nonperiodic. So, there is no Fourier series expansion of this signal and hence no need to calculate harmonic here.",
+        "images": [
+          "/question-images/ee/2017/ee-2017-80b02d6926.webp",
+          "/question-images/ee/2017/ee-2017-b20773c01b.webp"
+        ]
       }
     },
     "pp:ee:2017:q2": {
       "question_uid": "pp:ee:2017:q2",
-      "exam_uid": "ee:2017:set1:q2",
+      "exam_uid": "ee:2017:set1:main:q2",
       "title": "GATE EE 2017 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -72,25 +83,30 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "performance-of-transmission-lines-line-parameters-and-corona",
+          "subtopicLabel": "Performance of Transmission Lines, Line Parameters and Corona"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-power-systems",
+          "performance-of-transmission-lines-line-parameters-and-corona"
         ]
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "$$\\begin{aligned} V_{an}&=220 \\sin (100 \\pi t)V\\\\ i_a&=10 \\sin (100 \\pi t)A\\\\ V_{bn}&=220 \\cos (100 \\pi t)V\\\\ i_b&=10 \\cos (100 \\pi t)A\\\\ p&=V_{an}i_a+V_{bn}i_b\\\\ &=2200 W \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} V_{an}&=220 \\sin (100 \\pi t)V\\\\ i_a&=10 \\sin (100 \\pi t)A\\\\ V_{bn}&=220 \\cos (100 \\pi t)V\\\\ i_b&=10 \\cos (100 \\pi t)A\\\\ p&=V_{an}i_a+V_{bn}i_b\\\\ &=2200 W \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q3": {
       "question_uid": "pp:ee:2017:q3",
-      "exam_uid": "ee:2017:set1:q3",
+      "exam_uid": "ee:2017:set1:main:q3",
       "title": "GATE EE 2017 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -110,25 +126,30 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electrical-machines",
+          "synchronous-machines"
         ]
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "For synchronous motor,\n\n$\\bar{V_t}=\\bar{E_f}+j\\bar{I_a}X_s$\n\nAs currrent is drawn at unity power factors.\n\nTherefore,\n\n$$\\begin{aligned} E_f \\cos \\delta &=V_t \\\\ E_f&= \\frac{V_t}{\\cos \\delta }=\\frac{6.6kV}{\\sqrt{3}} \\times \\frac{1}{\\cos 30^{\\circ}}\\\\ E_f&= \\frac{6.6 \\times 10^3}{\\sqrt{3} \\times \\sqrt{3}} \\times 2V\\\\ V_t &=\\frac{6.6 \\times 10^3}{\\sqrt{3}} \\\\ \\therefore \\;\\;P_e &=\\frac{3V_{ph}E_{ph}}{X_s} \\sin \\delta \\\\ &= \\frac{3 \\times \\frac{6.6 \\times 10^3}{\\sqrt{3}} \\times \\frac{6.6 \\times 10^3}{\\sqrt{3} \\times \\sqrt{3}} \\times 2 }{30} \\times \\sin 30^{\\circ}\\\\ &=838.3kW \\end{aligned}$$\n\nTherefore, the correct answer is **838.5** (acceptable range: [835, 842])."
+        "markdown": "For synchronous motor,\n\n$\\bar{V_t}=\\bar{E_f}+j\\bar{I_a}X_s$\n\nAs currrent is drawn at unity power factors.\n\nTherefore,\n\n$$\\begin{aligned} E_f \\cos \\delta &=V_t \\\\ E_f&= \\frac{V_t}{\\cos \\delta }=\\frac{6.6kV}{\\sqrt{3}} \\times \\frac{1}{\\cos 30^{\\circ}}\\\\ E_f&= \\frac{6.6 \\times 10^3}{\\sqrt{3} \\times \\sqrt{3}} \\times 2V\\\\ V_t &=\\frac{6.6 \\times 10^3}{\\sqrt{3}} \\\\ \\therefore \\;\\;P_e &=\\frac{3V_{ph}E_{ph}}{X_s} \\sin \\delta \\\\ &= \\frac{3 \\times \\frac{6.6 \\times 10^3}{\\sqrt{3}} \\times \\frac{6.6 \\times 10^3}{\\sqrt{3} \\times \\sqrt{3}} \\times 2 }{30} \\times \\sin 30^{\\circ}\\\\ &=838.3kW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q4": {
       "question_uid": "pp:ee:2017:q4",
-      "exam_uid": "ee:2017:set1:q4",
+      "exam_uid": "ee:2017:set1:main:q4",
       "title": "GATE EE 2017 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -150,25 +171,30 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "complex-variables"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "$$\\begin{aligned} \\lim_{z \\to i}&=\\frac{z^2+1}{z^3+2z-i(z^2+2)}\\\\ \\lim_{z \\to i}&=\\frac{2z}{3z^2+2-i(2z)}\\\\ &=\\frac{2i}{3i^2+2-i(2i)}\\\\ &=\\frac{2i}{-3+2+2}\\\\ &=\\frac{2i}{-3+4}=2i \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\lim_{z \\to i}&=\\frac{z^2+1}{z^3+2z-i(z^2+2)}\\\\ \\lim_{z \\to i}&=\\frac{2z}{3z^2+2-i(2z)}\\\\ &=\\frac{2i}{3i^2+2-i(2i)}\\\\ &=\\frac{2i}{-3+2+2}\\\\ &=\\frac{2i}{-3+4}=2i \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q5": {
       "question_uid": "pp:ee:2017:q5",
-      "exam_uid": "ee:2017:set1:q5",
+      "exam_uid": "ee:2017:set1:main:q5",
       "title": "GATE EE 2017 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -190,25 +216,32 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electromagnetic-fields",
+          "electrostatic-fields"
         ]
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "Given that electron, neutron and proton are in straight line.\n\n<img src=\"/question-images/ee/2017/ee-2017-8afce7caac.webp\" />\n\nThe electron will move towards proton and proton will move towards electron and force will be same $F=\\frac{q_1q_2}{4 \\pi \\in _0 R^2}$. But acceleration of electron will be more than proton as mass of electron $\\lt$ mass of proton. Since neutron are neutral they will not move. Thus electron will hit neutron first.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Given that electron, neutron and proton are in straight line.\n\n<img src=\"/question-images/ee/2017/ee-2017-8afce7caac.webp\" />\n\nThe electron will move towards proton and proton will move towards electron and force will be same $F=\\frac{q_1q_2}{4 \\pi \\in _0 R^2}$. But acceleration of electron will be more than proton as mass of electron $\\lt$ mass of proton. Since neutron are neutral they will not move. Thus electron will hit neutron first.",
+        "images": [
+          "/question-images/ee/2017/ee-2017-8afce7caac.webp"
+        ]
       }
     },
     "pp:ee:2017:q6": {
       "question_uid": "pp:ee:2017:q6",
-      "exam_uid": "ee:2017:set1:q6",
+      "exam_uid": "ee:2017:set1:main:q6",
       "title": "GATE EE 2017 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -230,25 +263,30 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "Time scaling property of convolution.\n\nIf, $x(t)*y(t)=z(t)$\n\nThen, $x(ct)*y(ct)=\\frac{1}{c} z(ct)$\n\n$z(ct)=c \\times x(ct) * y(ct)$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Time scaling property of convolution.\n\nIf, $x(t)*y(t)=z(t)$\n\nThen, $x(ct)*y(ct)=\\frac{1}{c} z(ct)$\n\n$z(ct)=c \\times x(ct) * y(ct)$",
+        "images": []
       }
     },
     "pp:ee:2017:q7": {
       "question_uid": "pp:ee:2017:q7",
-      "exam_uid": "ee:2017:set1:q7",
+      "exam_uid": "ee:2017:set1:main:q7",
       "title": "GATE EE 2017 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -270,25 +308,30 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-power-systems",
+          "load-flow-studies"
         ]
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "Given,\n\n$$\\begin{aligned}\n\nY_{11} &=-j12 \\; p.u. \\\\\n\nY_{22} &=-j15 \\; p.u.\\\\\n\nY_{33} &=-j7 \\; p.u. \\\\\n\n&\\text{We know that,} \\\\\n\nY_{11} &=y_{12}+y_{13}=-j12 \\; p.u. \\;\\;...(i) \\\\\n\nY_{22} &=y_{12}+y_{23}=-j15 \\; p.u. \\;\\;...(ii) \\\\\n\nY_{33} &=y_{13}+y_{23}=-j7 \\; p.u. \\;\\;...(iii) \\\\\n\n&\\text{From eq. (i) and (ii)} \\\\\n\ny_{13}-y_{23} &=j3\\; p.u. \\\\\n\ny_{13}+y_{23} &=-j7 \\; p.u. \\\\\n\ny_{13}&= -j2\\; p.u.\\\\\n\ny_{23}&= -j5\\; p.u.\\\\\n\ny_{12}&= -j10\\; p.u.\n\n\\end{aligned}$$\n\nThe p.u. values of line reactances p, q and r are\n\n$$\\begin{aligned} jr&=\\frac{1}{-j2}=j0.5\\; p.u.\\\\ jp&=\\frac{1}{-j5}=j0.2\\; p.u.\\\\ jq&=\\frac{1}{-j10}=j0.1\\; p.u.\\\\ \\therefore \\; p&=0.2, q=0.1, r=0.5 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given,\n\n$$\\begin{aligned}\n\nY_{11} &=-j12 \\; p.u. \\\\\n\nY_{22} &=-j15 \\; p.u.\\\\\n\nY_{33} &=-j7 \\; p.u. \\\\\n\n&\\text{We know that,} \\\\\n\nY_{11} &=y_{12}+y_{13}=-j12 \\; p.u. \\;\\;...(i) \\\\\n\nY_{22} &=y_{12}+y_{23}=-j15 \\; p.u. \\;\\;...(ii) \\\\\n\nY_{33} &=y_{13}+y_{23}=-j7 \\; p.u. \\;\\;...(iii) \\\\\n\n&\\text{From eq. (i) and (ii)} \\\\\n\ny_{13}-y_{23} &=j3\\; p.u. \\\\\n\ny_{13}+y_{23} &=-j7 \\; p.u. \\\\\n\ny_{13}&= -j2\\; p.u.\\\\\n\ny_{23}&= -j5\\; p.u.\\\\\n\ny_{12}&= -j10\\; p.u.\n\n\\end{aligned}$$\n\nThe p.u. values of line reactances p, q and r are\n\n$$\\begin{aligned} jr&=\\frac{1}{-j2}=j0.5\\; p.u.\\\\ jp&=\\frac{1}{-j5}=j0.2\\; p.u.\\\\ jq&=\\frac{1}{-j10}=j0.1\\; p.u.\\\\ \\therefore \\; p&=0.2, q=0.1, r=0.5 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q8": {
       "question_uid": "pp:ee:2017:q8",
-      "exam_uid": "ee:2017:set1:q8",
+      "exam_uid": "ee:2017:set1:main:q8",
       "title": "GATE EE 2017 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -308,25 +351,33 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
         ]
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "Consider the following circuit diagram,\n\n<img src=\"/question-images/ee/2017/ee-2017-b14ee693f9.webp\" />\n\nAfter rearrangement we get\n\n<img src=\"/question-images/ee/2017/ee-2017-18e8cb6511.webp\" />\n\nNow, $R_{AB}=1+\\frac{6}{5}+0.8=3\\Omega$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
+        "markdown": "Consider the following circuit diagram,\n\n<img src=\"/question-images/ee/2017/ee-2017-b14ee693f9.webp\" />\n\nAfter rearrangement we get\n\n<img src=\"/question-images/ee/2017/ee-2017-18e8cb6511.webp\" />\n\nNow, $R_{AB}=1+\\frac{6}{5}+0.8=3\\Omega$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-b14ee693f9.webp",
+          "/question-images/ee/2017/ee-2017-18e8cb6511.webp"
+        ]
       }
     },
     "pp:ee:2017:q9": {
       "question_uid": "pp:ee:2017:q9",
-      "exam_uid": "ee:2017:set1:q9",
+      "exam_uid": "ee:2017:set1:main:q9",
       "title": "GATE EE 2017 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -348,25 +399,32 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "boolean-algebra-and-minimization",
+          "subtopicLabel": "Boolean Algebra and Minimization"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-digital-electronics",
+          "boolean-algebra-and-minimization"
         ]
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-56a002c1e9.webp\" />\n\n$BC+A\\bar{C}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-56a002c1e9.webp\" />\n\n$BC+A\\bar{C}$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-56a002c1e9.webp"
+        ]
       }
     },
     "pp:ee:2017:q10": {
       "question_uid": "pp:ee:2017:q10",
-      "exam_uid": "ee:2017:set1:q10",
+      "exam_uid": "ee:2017:set1:main:q10",
       "title": "GATE EE 2017 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -386,25 +444,30 @@
       "yearSetIdentity": "ee:2017:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "characteristics-of-instruments-and-measurement-systems",
+          "subtopicLabel": "Characteristics of Instruments and Measurement Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electrical-and-electronic-measurements",
+          "characteristics-of-instruments-and-measurement-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Characteristics of Instruments and Measurement Systems",
-        "markdown": "$$\\begin{aligned} V &= 220 \\pm 1\\% \\\\ I&= 5 \\pm 1 \\%\\\\ W &=555 \\pm 2 \\% \\\\ W&= VI \\cos (\\phi )\\\\ p.f. &=\\cos (\\phi )=\\frac{W}{VI} \\\\ &= \\frac{555 \\pm 2 \\%}{(220 \\pm 1\\%)(5 \\pm 1 \\%)}\\\\ &= \\frac{555}{220 \\times 5} \\pm 4\\%\\\\ p.f.&= 0.5 \\pm 4\\% \\end{aligned}$$\n\nTherefore, the correct answer is **4.05** (acceptable range: [4, 4.1])."
+        "markdown": "$$\\begin{aligned} V &= 220 \\pm 1\\% \\\\ I&= 5 \\pm 1 \\%\\\\ W &=555 \\pm 2 \\% \\\\ W&= VI \\cos (\\phi )\\\\ p.f. &=\\cos (\\phi )=\\frac{W}{VI} \\\\ &= \\frac{555 \\pm 2 \\%}{(220 \\pm 1\\%)(5 \\pm 1 \\%)}\\\\ &= \\frac{555}{220 \\times 5} \\pm 4\\%\\\\ p.f.&= 0.5 \\pm 4\\% \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q11": {
       "question_uid": "pp:ee:2017:q11",
-      "exam_uid": "ee:2017:set1:q11",
+      "exam_uid": "ee:2017:set1:main:q11",
       "title": "GATE EE 2017 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -439,13 +502,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$\\frac{V_o(s)}{V_i(s)}=\\frac{1-s}{1+s}=H(s)$\n\nFor the minimum and maximum values of $'\\phi '$\n\n$H(j\\omega )=\\frac{1-j\\omega }{1+j\\omega }$\n\n$\\angle H(j\\omega )=-2 tan^{-1}\\omega$\n\nAt $\\omega =0;  \\;\\; \\; \\angle H(j\\omega )=0^{\\circ}$\n\nAt  $\\omega =\\infty ; \\;\\;\\; \\angle H(j\\omega )=-\\pi$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\frac{V_o(s)}{V_i(s)}=\\frac{1-s}{1+s}=H(s)$\n\nFor the minimum and maximum values of $'\\phi '$\n\n$H(j\\omega )=\\frac{1-j\\omega }{1+j\\omega }$\n\n$\\angle H(j\\omega )=-2 tan^{-1}\\omega$\n\nAt $\\omega =0;  \\;\\; \\; \\angle H(j\\omega )=0^{\\circ}$\n\nAt  $\\omega =\\infty ; \\;\\;\\; \\angle H(j\\omega )=-\\pi$",
+        "images": []
       }
     },
     "pp:ee:2017:q12": {
       "question_uid": "pp:ee:2017:q12",
-      "exam_uid": "ee:2017:set1:q12",
+      "exam_uid": "ee:2017:set1:main:q12",
       "title": "GATE EE 2017 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -480,13 +547,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "The given matrix is symmetric and all its eigen values are distinct. Hence all its eigen vectors are orthogonal one of the eigen vector is\n\n$$x_1=\\begin{bmatrix} 1\\\\ 0\\\\ 1 \\end{bmatrix}$$\n\nThe corresponding orthogonal vector in the given option is C i.e. $$x_2=\\begin{bmatrix} 1\\\\ 0\\\\ -1 \\end{bmatrix}$$\n\n$${x_1}^T\\cdot x_2=\\begin{bmatrix} 1 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} 1\\\\ 0\\\\ -1 \\end{bmatrix}=1+0-1=0$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The given matrix is symmetric and all its eigen values are distinct. Hence all its eigen vectors are orthogonal one of the eigen vector is\n\n$$x_1=\\begin{bmatrix} 1\\\\ 0\\\\ 1 \\end{bmatrix}$$\n\nThe corresponding orthogonal vector in the given option is C i.e. $$x_2=\\begin{bmatrix} 1\\\\ 0\\\\ -1 \\end{bmatrix}$$\n\n$${x_1}^T\\cdot x_2=\\begin{bmatrix} 1 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} 1\\\\ 0\\\\ -1 \\end{bmatrix}=1+0-1=0$$",
+        "images": []
       }
     },
     "pp:ee:2017:q13": {
       "question_uid": "pp:ee:2017:q13",
-      "exam_uid": "ee:2017:set1:q13",
+      "exam_uid": "ee:2017:set1:main:q13",
       "title": "GATE EE 2017 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -520,14 +591,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Power Electronics** (specifically *Power Semiconductor Devices and Commutation Techniques*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Power Semiconductor Devices and Commutation Techniques**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *MOSFET is majority carrier device, whereas IGBT, Diode, Thyristor are minority carrier devices.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (MOSFET is majority carrier device, whereas IGBT, Diode, Thyristor are minority carrier devices.)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2017:q14": {
       "question_uid": "pp:ee:2017:q14",
-      "exam_uid": "ee:2017:set1:q14",
+      "exam_uid": "ee:2017:set1:main:q14",
       "title": "GATE EE 2017 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -560,13 +634,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "Forward path transfer function,$G(s)=\\frac{Ke^{-s}}{s}$\n\nGiven,\n\nPhase margin $=30^{\\circ}$\n\nPhase margin $=180^{\\circ}+\\phi$\n\n$30^{\\circ}=180^{\\circ}+\\phi$\n\n$\\phi =-150^{\\circ}$\n\n$\\phi =\\angle G(j\\omega )_{\\omega =\\omega _{gc}}$\n\n[where $\\omega _{gc}$ is gain crossover frequency ]\n\n$\\angle G(j\\omega )=-90^{\\circ}-57.3\\omega ^{\\circ}$\n\nAt $\\omega =\\omega _{gc}$\n\n$|G(j\\omega )|=1$\n\n$\\frac{k \\times 1}{\\omega }=1$\n\n$\\Rightarrow \\omega =\\omega _{gc}=K \\; rad/sec.$\n\n$\\therefore \\;\\;  \\angle G(j\\omega )_{\\omega =\\omega _{gc}}=-90^{\\circ}-57.3K^{\\circ}$\n\n$-90^{\\circ}-57.3K^{\\circ}=-150^{\\circ}$\n\n$-57.3K^{\\circ}=60^{\\circ}$\n\n$K=\\frac{60}{57.3}=1.047$\n\nTherefore, the correct answer is **1.035** (acceptable range: [1.01, 1.06])."
+        "markdown": "Forward path transfer function,$G(s)=\\frac{Ke^{-s}}{s}$\n\nGiven,\n\nPhase margin $=30^{\\circ}$\n\nPhase margin $=180^{\\circ}+\\phi$\n\n$30^{\\circ}=180^{\\circ}+\\phi$\n\n$\\phi =-150^{\\circ}$\n\n$\\phi =\\angle G(j\\omega )_{\\omega =\\omega _{gc}}$\n\n[where $\\omega _{gc}$ is gain crossover frequency ]\n\n$\\angle G(j\\omega )=-90^{\\circ}-57.3\\omega ^{\\circ}$\n\nAt $\\omega =\\omega _{gc}$\n\n$|G(j\\omega )|=1$\n\n$\\frac{k \\times 1}{\\omega }=1$\n\n$\\Rightarrow \\omega =\\omega _{gc}=K \\; rad/sec.$\n\n$\\therefore \\;\\;  \\angle G(j\\omega )_{\\omega =\\omega _{gc}}=-90^{\\circ}-57.3K^{\\circ}$\n\n$-90^{\\circ}-57.3K^{\\circ}=-150^{\\circ}$\n\n$-57.3K^{\\circ}=60^{\\circ}$\n\n$K=\\frac{60}{57.3}=1.047$",
+        "images": []
       }
     },
     "pp:ee:2017:q15": {
       "question_uid": "pp:ee:2017:q15",
-      "exam_uid": "ee:2017:set1:q15",
+      "exam_uid": "ee:2017:set1:main:q15",
       "title": "GATE EE 2017 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -601,13 +679,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
-        "markdown": "Iron being a ferromagnetic material, magnetic lines of force bend closer to cylindrical axis.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Iron being a ferromagnetic material, magnetic lines of force bend closer to cylindrical axis.",
+        "images": []
       }
     },
     "pp:ee:2017:q16": {
       "question_uid": "pp:ee:2017:q16",
-      "exam_uid": "ee:2017:set1:q16",
+      "exam_uid": "ee:2017:set1:main:q16",
       "title": "GATE EE 2017 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -640,13 +722,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned}\n\nI&=C\\int \\int xy^2\\; dx \\; dy\\\\\n\n&=C\\int_{x=1}^{5}\\int_{y=0}^{2x}xy^2\\; dx \\; dy\\\\\n\n&=C\\int_{1}^{5}x\\left.\\begin{matrix}\n\n\\left ( \\frac{y^3}{3} \\right )\n\n\\end{matrix}\\right|_{0}^{2x}\\; dx\\\\\n\n&=C\\int_{1}^{5}x\\frac{8x^3}{3}dx\\\\\n\n&=C\\int_{1}^{5}8\\frac{x^4}{3}dx\\\\\n\n&=C\\frac{8}{3}\\left.\\begin{matrix}\n\n\\left ( \\frac{x^5}{5} \\right )\n\n\\end{matrix}\\right|_{1}^5\\\\\n\n&=\\frac{8C}{3}\\left ( 5^4-\\frac{1}{5} \\right )\\\\\n\n&=\\frac{8C}{3}(625-0.2)\\\\\n\n&=\\frac{8}{3}(6 \\times 10^{-4})(625-0.2)\\\\\n\n&=0.99968\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.99, 1.01])."
+        "markdown": "$$\\begin{aligned}\n\nI&=C\\int \\int xy^2\\; dx \\; dy\\\\\n\n&=C\\int_{x=1}^{5}\\int_{y=0}^{2x}xy^2\\; dx \\; dy\\\\\n\n&=C\\int_{1}^{5}x\\left.\\begin{matrix}\n\n\\left ( \\frac{y^3}{3} \\right )\n\n\\end{matrix}\\right|_{0}^{2x}\\; dx\\\\\n\n&=C\\int_{1}^{5}x\\frac{8x^3}{3}dx\\\\\n\n&=C\\int_{1}^{5}8\\frac{x^4}{3}dx\\\\\n\n&=C\\frac{8}{3}\\left.\\begin{matrix}\n\n\\left ( \\frac{x^5}{5} \\right )\n\n\\end{matrix}\\right|_{1}^5\\\\\n\n&=\\frac{8C}{3}\\left ( 5^4-\\frac{1}{5} \\right )\\\\\n\n&=\\frac{8C}{3}(625-0.2)\\\\\n\n&=\\frac{8}{3}(6 \\times 10^{-4})(625-0.2)\\\\\n\n&=0.99968\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q17": {
       "question_uid": "pp:ee:2017:q17",
-      "exam_uid": "ee:2017:set1:q17",
+      "exam_uid": "ee:2017:set1:main:q17",
       "title": "GATE EE 2017 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -681,13 +767,20 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
-        "markdown": "Given relationship,\n\n$y(n)=[1+(-1)^n]x(n)$\n\nTime invariance test:\n\n<img src=\"/question-images/ee/2017/ee-2017-9fd6737f5c.webp\" />\n\nSince, $y(n-1)\\neq y'(n)$\n\nSo, the system is time invariant.\n\nInvertibility test:\n\n<img src=\"/question-images/ee/2017/ee-2017-51e38157e8.webp\" />\n\nThus, we are getting many to one mapping between input and output. So, the system is non-invertible.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Given relationship,\n\n$y(n)=[1+(-1)^n]x(n)$\n\nTime invariance test:\n\n<img src=\"/question-images/ee/2017/ee-2017-9fd6737f5c.webp\" />\n\nSince, $y(n-1)\\neq y'(n)$\n\nSo, the system is time invariant.\n\nInvertibility test:\n\n<img src=\"/question-images/ee/2017/ee-2017-51e38157e8.webp\" />\n\nThus, we are getting many to one mapping between input and output. So, the system is non-invertible.",
+        "images": [
+          "/question-images/ee/2017/ee-2017-9fd6737f5c.webp",
+          "/question-images/ee/2017/ee-2017-51e38157e8.webp"
+        ]
       }
     },
     "pp:ee:2017:q18": {
       "question_uid": "pp:ee:2017:q18",
-      "exam_uid": "ee:2017:set1:q18",
+      "exam_uid": "ee:2017:set1:main:q18",
       "title": "GATE EE 2017 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -722,13 +815,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
-        "markdown": "A delay line of 150ns has to be inserted  into the y-channel to get synchronous  between sweep signal applied to x-plate  and test signal applied to y-plate.\n\nTherefore, the correct answer is **A**."
+        "markdown": "A delay line of 150ns has to be inserted  into the y-channel to get synchronous  between sweep signal applied to x-plate  and test signal applied to y-plate.",
+        "images": []
       }
     },
     "pp:ee:2017:q19": {
       "question_uid": "pp:ee:2017:q19",
-      "exam_uid": "ee:2017:set1:q19",
+      "exam_uid": "ee:2017:set1:main:q19",
       "title": "GATE EE 2017 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -761,13 +858,19 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-b66479e028.webp\" />\n\n$$\\begin{aligned} V_{rms}&=\\sqrt{\\frac{1}{\\pi}(300)^2\\frac{2 \\pi}{3}}\\\\ &=300\\sqrt{\\frac{2}{3}}=244.94V\\\\ 3\\frac{V^2}{R}&=\\frac{3 \\times (244.94)^2}{20}=9kW \\end{aligned}$$\n\nTherefore, the correct answer is **9** (acceptable range: [8.5, 9.5])."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-b66479e028.webp\" />\n\n$$\\begin{aligned} V_{rms}&=\\sqrt{\\frac{1}{\\pi}(300)^2\\frac{2 \\pi}{3}}\\\\ &=300\\sqrt{\\frac{2}{3}}=244.94V\\\\ 3\\frac{V^2}{R}&=\\frac{3 \\times (244.94)^2}{20}=9kW \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-b66479e028.webp"
+        ]
       }
     },
     "pp:ee:2017:q20": {
       "question_uid": "pp:ee:2017:q20",
-      "exam_uid": "ee:2017:set1:q20",
+      "exam_uid": "ee:2017:set1:main:q20",
       "title": "GATE EE 2017 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -802,13 +905,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
-        "markdown": "Characteristic equation is,\n\n$s^3+Ks^2+(K+2)s+3=0$\n\nFor this system to be stable, using Routh's criterion, we can write,\n\n$3 \\lt K(K+2)$\n\nor,   $K^2+2K-3 \\gt 0$\n\nor, $(K+3)(K-1) \\gt 0$\n\nHere, the valid answer will be out of all the options given.\n\n$i.e K \\gt 1.$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Characteristic equation is,\n\n$s^3+Ks^2+(K+2)s+3=0$\n\nFor this system to be stable, using Routh's criterion, we can write,\n\n$3 \\lt K(K+2)$\n\nor,   $K^2+2K-3 \\gt 0$\n\nor, $(K+3)(K-1) \\gt 0$\n\nHere, the valid answer will be out of all the options given.\n\n$i.e K \\gt 1.$",
+        "images": []
       }
     },
     "pp:ee:2017:q21": {
       "question_uid": "pp:ee:2017:q21",
-      "exam_uid": "ee:2017:set1:q21",
+      "exam_uid": "ee:2017:set1:main:q21",
       "title": "GATE EE 2017 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -843,13 +950,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "Induction Generator Mode:\n\n$$\\begin{aligned} N & \\gt N_s \\;\\;\\text{i.e.(s is negative)} \\\\ \\because \\;\\; P &=4,\\; f=60Hz \\\\ N_s&=1800 \\; \\text{rpm} \\end{aligned}$$\n\nRotor frequency given $= 5Hz \\Rightarrow (s \\times f)$\n\n$$\\begin{aligned} \\because \\;\\; f &=60Hz \\\\ \\therefore \\;\\; s &=\\frac{5}{60}=0.0833 \\end{aligned}$$\n\n$\\because$   It is induction generator slip will be -0.0833.\n\n$$\\begin{aligned} s &=\\frac{1800-N}{1800}=-0.0833 \\\\ N &=1950 \\; \\text{rpm} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Induction Generator Mode:\n\n$$\\begin{aligned} N & \\gt N_s \\;\\;\\text{i.e.(s is negative)} \\\\ \\because \\;\\; P &=4,\\; f=60Hz \\\\ N_s&=1800 \\; \\text{rpm} \\end{aligned}$$\n\nRotor frequency given $= 5Hz \\Rightarrow (s \\times f)$\n\n$$\\begin{aligned} \\because \\;\\; f &=60Hz \\\\ \\therefore \\;\\; s &=\\frac{5}{60}=0.0833 \\end{aligned}$$\n\n$\\because$   It is induction generator slip will be -0.0833.\n\n$$\\begin{aligned} s &=\\frac{1800-N}{1800}=-0.0833 \\\\ N &=1950 \\; \\text{rpm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q22": {
       "question_uid": "pp:ee:2017:q22",
-      "exam_uid": "ee:2017:set1:q22",
+      "exam_uid": "ee:2017:set1:main:q22",
       "title": "GATE EE 2017 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 1,
@@ -884,13 +995,19 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Miscellaneous",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-6b0e6db262.webp\" />\n\n$$\\begin{aligned} V_{2\\; avg}&=\\frac{V_m}{\\pi}=\\frac{\\pi/2}{\\pi}=\\frac{1}{2}=0.5V \\\\ V_{1\\; avg} &=\\frac{1}{2 \\pi}[ \\int_{0}^{\\pi}\\frac{\\pi}{2}\\sin 100 \\pi t\\cdot d(\\omega t)\\\\ &+\\int_{\\pi}^{2\\pi} \\pi \\sin 100 \\pi t\\cdot d(\\omega t) ]\\\\ &= -0.5V \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-6b0e6db262.webp\" />\n\n$$\\begin{aligned} V_{2\\; avg}&=\\frac{V_m}{\\pi}=\\frac{\\pi/2}{\\pi}=\\frac{1}{2}=0.5V \\\\ V_{1\\; avg} &=\\frac{1}{2 \\pi}[ \\int_{0}^{\\pi}\\frac{\\pi}{2}\\sin 100 \\pi t\\cdot d(\\omega t)\\\\ &+\\int_{\\pi}^{2\\pi} \\pi \\sin 100 \\pi t\\cdot d(\\omega t) ]\\\\ &= -0.5V \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-6b0e6db262.webp"
+        ]
       }
     },
     "pp:ee:2017:q23": {
       "question_uid": "pp:ee:2017:q23",
-      "exam_uid": "ee:2017:set1:q23",
+      "exam_uid": "ee:2017:set1:main:q23",
       "title": "GATE EE 2017 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -923,13 +1040,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "Total number of buses $\\equiv 10$\n\n$G_1 \\equiv$ slack bus\n\n$G_2 \\equiv$ PQ bus (reactive power limit is reached)\n\n<img src=\"/question-images/ee/2017/ee-2017-5eb3730c04.webp\" />\n\nMinimum number of non linear equation to be sloved = Number of unknown bus voltage variables $=(2 \\times 10 -4-2)=14$\n\nTherefore, the correct answer is **14**."
+        "markdown": "Total number of buses $\\equiv 10$\n\n$G_1 \\equiv$ slack bus\n\n$G_2 \\equiv$ PQ bus (reactive power limit is reached)\n\n<img src=\"/question-images/ee/2017/ee-2017-5eb3730c04.webp\" />\n\nMinimum number of non linear equation to be sloved = Number of unknown bus voltage variables $=(2 \\times 10 -4-2)=14$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-5eb3730c04.webp"
+        ]
       }
     },
     "pp:ee:2017:q24": {
       "question_uid": "pp:ee:2017:q24",
-      "exam_uid": "ee:2017:set1:q24",
+      "exam_uid": "ee:2017:set1:main:q24",
       "title": "GATE EE 2017 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -962,13 +1085,17 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "Using KCL at node , we get\n\n$I+0.4I=14$\n\n$I=10A$\n\nNow, power supplied,\n\n$P=25 \\times 10=250W$\n\nTherefore, the correct answer is **250** (acceptable range: [248, 252])."
+        "markdown": "Using KCL at node , we get\n\n$I+0.4I=14$\n\n$I=10A$\n\nNow, power supplied,\n\n$P=25 \\times 10=250W$",
+        "images": []
       }
     },
     "pp:ee:2017:q25": {
       "question_uid": "pp:ee:2017:q25",
-      "exam_uid": "ee:2017:set1:q25",
+      "exam_uid": "ee:2017:set1:main:q25",
       "title": "GATE EE 2017 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 1,
@@ -1001,13 +1128,19 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-91d7eff675.webp\" />\n\n$V_{01}=\\frac{4V_s}{\\sqrt{2} \\pi}=\\frac{4 \\times 220}{\\sqrt{2} \\pi}=198.06V$\n\nTherefore, the correct answer is **198** (acceptable range: [196, 200])."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-91d7eff675.webp\" />\n\n$V_{01}=\\frac{4V_s}{\\sqrt{2} \\pi}=\\frac{4 \\times 220}{\\sqrt{2} \\pi}=198.06V$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-91d7eff675.webp"
+        ]
       }
     },
     "pp:ee:2017:q26": {
       "question_uid": "pp:ee:2017:q26",
-      "exam_uid": "ee:2017:set1:q26",
+      "exam_uid": "ee:2017:set1:main:q26",
       "title": "GATE EE 2017 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1042,13 +1175,19 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-6c2d77b292.webp\" />\n\n$ABC+B\\bar{D}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-6c2d77b292.webp\" />\n\n$ABC+B\\bar{D}$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-6c2d77b292.webp"
+        ]
       }
     },
     "pp:ee:2017:q27": {
       "question_uid": "pp:ee:2017:q27",
-      "exam_uid": "ee:2017:set1:q27",
+      "exam_uid": "ee:2017:set1:main:q27",
       "title": "GATE EE 2017 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1081,13 +1220,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "$$\\begin{aligned}\n\nT &\\propto N^2 \\\\\n\n\\phi &\\propto I_a \\\\\n\nT &\\propto I_a^2\\\\\n\n\\therefore \\; N^2 &\\propto I_a^2 \\\\\n\n\\therefore \\; \\frac{N_2}{N_1}&= \\frac{I_{a2}}{I_{a1}}\\\\\n\n\\therefore \\; 0.5&= \\frac{I_{a2}}{30}\\\\\n\n\\Rightarrow \\; I_{a2}&=15A \\\\\n\n&\\text{For series motor,}\\\\\n\n\\frac{N_2}{N_1} &= \\frac{E_{b2}}{E_{b1}}\\times \\frac{I_{a1}}{I_{a2}}\\\\\n\n\\therefore \\; 0.5 &= \\frac{E_{b2}}{E_{b1}} \\times \\frac{30}{15}\\\\\n\n\\therefore \\; \\frac{E_{b2}}{E_{b1}}&= 0.25\\\\\n\nE_{b1} &=220-30(0.4+0.1) \\\\\n\nE_{b1} &=205V \\\\\n\n\\therefore \\; E_{b2}&=51.25V \\\\\n\n\\therefore \\; E_{b2} &= V-I_{a2}(R_a+R_{se}+R_{ext})\\\\\n\n51.25 &= 220-15(0.4+0.1+R_{ext})\\\\\n\n\\therefore \\;R_{ext}&=10.75\\Omega\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10.75** (acceptable range: [9.5, 12])."
+        "markdown": "$$\\begin{aligned}\n\nT &\\propto N^2 \\\\\n\n\\phi &\\propto I_a \\\\\n\nT &\\propto I_a^2\\\\\n\n\\therefore \\; N^2 &\\propto I_a^2 \\\\\n\n\\therefore \\; \\frac{N_2}{N_1}&= \\frac{I_{a2}}{I_{a1}}\\\\\n\n\\therefore \\; 0.5&= \\frac{I_{a2}}{30}\\\\\n\n\\Rightarrow \\; I_{a2}&=15A \\\\\n\n&\\text{For series motor,}\\\\\n\n\\frac{N_2}{N_1} &= \\frac{E_{b2}}{E_{b1}}\\times \\frac{I_{a1}}{I_{a2}}\\\\\n\n\\therefore \\; 0.5 &= \\frac{E_{b2}}{E_{b1}} \\times \\frac{30}{15}\\\\\n\n\\therefore \\; \\frac{E_{b2}}{E_{b1}}&= 0.25\\\\\n\nE_{b1} &=220-30(0.4+0.1) \\\\\n\nE_{b1} &=205V \\\\\n\n\\therefore \\; E_{b2}&=51.25V \\\\\n\n\\therefore \\; E_{b2} &= V-I_{a2}(R_a+R_{se}+R_{ext})\\\\\n\n51.25 &= 220-15(0.4+0.1+R_{ext})\\\\\n\n\\therefore \\;R_{ext}&=10.75\\Omega\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q28": {
       "question_uid": "pp:ee:2017:q28",
-      "exam_uid": "ee:2017:set1:q28",
+      "exam_uid": "ee:2017:set1:main:q28",
       "title": "GATE EE 2017 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1122,13 +1265,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "$$\\begin{aligned}\n\n\\text{Given:  } \\dot{X}&=\\begin{bmatrix} 1 & 2\\\\ 2 & 0 \\end{bmatrix}X+\\begin{bmatrix} 1\\\\ 2 \\end{bmatrix}u \\\\ \\text{and  } Y&=\\begin{bmatrix} 1 & 0 \\end{bmatrix}X \\\\ \\text{Transfer function} &=C[sI-A]^{-1}B+D \\\\ [sI-A]^{-1}&=\\begin{bmatrix} \\frac{s}{s^2-s-4} & \\frac{2}{s^2-s-4}\\\\ \\frac{2}{s^2-s-4} & \\frac{s-1}{s^2-s-4} \\end{bmatrix} \\\\ [sI-A]^{-1} \\times B&=\\begin{bmatrix} \\frac{s+4}{s^2-s-4}\\\\ \\frac{s-1}{s^2-s-4} \\end{bmatrix} \\\\\n\n\\frac{Y(s)}{U(s)}&=C[sI-A]^{-1} \\times B \\\\ &=\\frac{s+4}{s^2-s-4}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned}\n\n\\text{Given:  } \\dot{X}&=\\begin{bmatrix} 1 & 2\\\\ 2 & 0 \\end{bmatrix}X+\\begin{bmatrix} 1\\\\ 2 \\end{bmatrix}u \\\\ \\text{and  } Y&=\\begin{bmatrix} 1 & 0 \\end{bmatrix}X \\\\ \\text{Transfer function} &=C[sI-A]^{-1}B+D \\\\ [sI-A]^{-1}&=\\begin{bmatrix} \\frac{s}{s^2-s-4} & \\frac{2}{s^2-s-4}\\\\ \\frac{2}{s^2-s-4} & \\frac{s-1}{s^2-s-4} \\end{bmatrix} \\\\ [sI-A]^{-1} \\times B&=\\begin{bmatrix} \\frac{s+4}{s^2-s-4}\\\\ \\frac{s-1}{s^2-s-4} \\end{bmatrix} \\\\\n\n\\frac{Y(s)}{U(s)}&=C[sI-A]^{-1} \\times B \\\\ &=\\frac{s+4}{s^2-s-4}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q29": {
       "question_uid": "pp:ee:2017:q29",
-      "exam_uid": "ee:2017:set1:q29",
+      "exam_uid": "ee:2017:set1:main:q29",
       "title": "GATE EE 2017 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1163,13 +1310,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "When switch is on Neutral side\n\n$$\\begin{aligned} W &= W_1+W_2+W_3\\\\ &=577.35+577.35+577.35 \\\\ &=1732 \\; Watts \\\\ \\text{VA load} &= 3464 =3 V_{ph}I_{ph}\\\\ \\Rightarrow \\; V_{ph}I_{ph} &=1154.66 \\end{aligned}$$\n\nEach $\\Omega$ meter reading\n\n$$\\begin{aligned} &= V_{RN}I_{R} \\cos (\\angle V_{RN} \\; \\text{and}\\; I_R)\\\\ 577.35&= V_{ph}I_{ph} \\cos (\\phi )\\\\ \\cos (\\phi ) &=\\frac{577.35}{1154.66}=05 \\\\ \\phi &= \\cos ^{-1} (0.5)=60^{\\circ} \\end{aligned}$$\n\nWhen switch is on Y-phase side,\n\n$$\\begin{aligned} W_1&= V_{RY}I_R \\cos (\\angle V_{RY} \\; \\text{and}\\; I_R)\\\\ &= \\sqrt{3} V_{ph}I_{ph} \\cos (30^{\\circ}+\\phi ) \\\\ &= \\sqrt{3} \\times 1154.66 \\times \\cos (30^{\\circ}+ 60^{\\circ})\\\\ &= 0 \\text{Watt}\\\\ W_3 &= V_{BY}I_R \\cos (\\angle V_{BY} \\; \\text{and}\\; I_R)\\\\ &=\\sqrt{3} V_{ph}I_{ph} \\cos (30^{\\circ}-\\phi )\\\\ &=\\sqrt{3} \\times 1154.66 \\times \\cos (30^{\\circ}- 60^{\\circ}) \\\\ &= 1732 \\text{Watt}\\\\ W_1&=0\\\\ W_2&=0\\\\ W_3&=1732 \\text{Watt} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "When switch is on Neutral side\n\n$$\\begin{aligned} W &= W_1+W_2+W_3\\\\ &=577.35+577.35+577.35 \\\\ &=1732 \\; Watts \\\\ \\text{VA load} &= 3464 =3 V_{ph}I_{ph}\\\\ \\Rightarrow \\; V_{ph}I_{ph} &=1154.66 \\end{aligned}$$\n\nEach $\\Omega$ meter reading\n\n$$\\begin{aligned} &= V_{RN}I_{R} \\cos (\\angle V_{RN} \\; \\text{and}\\; I_R)\\\\ 577.35&= V_{ph}I_{ph} \\cos (\\phi )\\\\ \\cos (\\phi ) &=\\frac{577.35}{1154.66}=05 \\\\ \\phi &= \\cos ^{-1} (0.5)=60^{\\circ} \\end{aligned}$$\n\nWhen switch is on Y-phase side,\n\n$$\\begin{aligned} W_1&= V_{RY}I_R \\cos (\\angle V_{RY} \\; \\text{and}\\; I_R)\\\\ &= \\sqrt{3} V_{ph}I_{ph} \\cos (30^{\\circ}+\\phi ) \\\\ &= \\sqrt{3} \\times 1154.66 \\times \\cos (30^{\\circ}+ 60^{\\circ})\\\\ &= 0 \\text{Watt}\\\\ W_3 &= V_{BY}I_R \\cos (\\angle V_{BY} \\; \\text{and}\\; I_R)\\\\ &=\\sqrt{3} V_{ph}I_{ph} \\cos (30^{\\circ}-\\phi )\\\\ &=\\sqrt{3} \\times 1154.66 \\times \\cos (30^{\\circ}- 60^{\\circ}) \\\\ &= 1732 \\text{Watt}\\\\ W_1&=0\\\\ W_2&=0\\\\ W_3&=1732 \\text{Watt} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q30": {
       "question_uid": "pp:ee:2017:q30",
-      "exam_uid": "ee:2017:set1:q30",
+      "exam_uid": "ee:2017:set1:main:q30",
       "title": "GATE EE 2017 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1204,13 +1355,17 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
-        "markdown": "For two port network, we can write,\n\n$$\\begin{bmatrix} A &B \\\\ C & D \\end{bmatrix}=\\begin{bmatrix} A_1 & B_1\\\\ C_1 & D_1 \\end{bmatrix}\\begin{bmatrix} A_2 & B_2\\\\ C_2 & D_2 \\end{bmatrix}$$\n\n$A=A_1A_2+B_1C_2\\;\\;...(i)$\n\n$B=A_1B_2+B_1D_2\\;\\;...(ii)$\n\n$V_1=AV_2-BI_2\\;\\;...(iii)$\n\nTo get, $V_T(I_2=0)$; from equation (iii)\n\n$V_2=V_T=\\frac{V_1}{A}=\\frac{V_1}{A_1A_2+B_1C_2}$\n\nTo get $Z_T(V_1=0)$; from equation (iii)\n\n$V_1=AV_2-BI_2$\n\n$0=AV_2-BI_2$\n\n$Z_T=\\frac{V_2}{I_2}=\\frac{B}{A}=\\frac{A_1B_2+B_1D_2}{A_1A_2+B_1C_2}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "For two port network, we can write,\n\n$$\\begin{bmatrix} A &B \\\\ C & D \\end{bmatrix}=\\begin{bmatrix} A_1 & B_1\\\\ C_1 & D_1 \\end{bmatrix}\\begin{bmatrix} A_2 & B_2\\\\ C_2 & D_2 \\end{bmatrix}$$\n\n$A=A_1A_2+B_1C_2\\;\\;...(i)$\n\n$B=A_1B_2+B_1D_2\\;\\;...(ii)$\n\n$V_1=AV_2-BI_2\\;\\;...(iii)$\n\nTo get, $V_T(I_2=0)$; from equation (iii)\n\n$V_2=V_T=\\frac{V_1}{A}=\\frac{V_1}{A_1A_2+B_1C_2}$\n\nTo get $Z_T(V_1=0)$; from equation (iii)\n\n$V_1=AV_2-BI_2$\n\n$0=AV_2-BI_2$\n\n$Z_T=\\frac{V_2}{I_2}=\\frac{B}{A}=\\frac{A_1B_2+B_1D_2}{A_1A_2+B_1C_2}$",
+        "images": []
       }
     },
     "pp:ee:2017:q31": {
       "question_uid": "pp:ee:2017:q31",
-      "exam_uid": "ee:2017:set1:q31",
+      "exam_uid": "ee:2017:set1:main:q31",
       "title": "GATE EE 2017 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1243,13 +1398,19 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-ba0f351a6f.webp\" />\n\n$V_{BE1}=V_{BE2}+I_0R$\n\n$I_0R=V_{BE1}-V_{BE2} =V_I ln\\left ( \\frac{I_R}{I_3} \\right )-V_T ln \\left ( \\frac{I_0}{I_3} \\right )$\n\nwhere,   $I_s\\rightarrow$ Reverse saturation current\n\n$R=\\frac{V_T ln\\left ( \\frac{I_R}{I_0} \\right )}{I_0}=\\frac{0.025 ln\\left ( \\frac{1mA}{1\\mu A} \\right )}{1\\mu A}\n\n=\\frac{0.025 ln (10^3)}{1\\mu A}=172.7 k\\Omega$\n\nTherefore, the correct answer is **172** (acceptable range: [170, 174])."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-ba0f351a6f.webp\" />\n\n$V_{BE1}=V_{BE2}+I_0R$\n\n$I_0R=V_{BE1}-V_{BE2} =V_I ln\\left ( \\frac{I_R}{I_3} \\right )-V_T ln \\left ( \\frac{I_0}{I_3} \\right )$\n\nwhere,   $I_s\\rightarrow$ Reverse saturation current\n\n$R=\\frac{V_T ln\\left ( \\frac{I_R}{I_0} \\right )}{I_0}=\\frac{0.025 ln\\left ( \\frac{1mA}{1\\mu A} \\right )}{1\\mu A}\n\n=\\frac{0.025 ln (10^3)}{1\\mu A}=172.7 k\\Omega$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-ba0f351a6f.webp"
+        ]
       }
     },
     "pp:ee:2017:q32": {
       "question_uid": "pp:ee:2017:q32",
-      "exam_uid": "ee:2017:set1:q32",
+      "exam_uid": "ee:2017:set1:main:q32",
       "title": "GATE EE 2017 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1282,13 +1443,17 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "Average reduction in output voltage due to source inductance $=\\Delta V_{d0}$\n\n$$\\begin{aligned} \\Delta V_{d0}&=4fL_s I_0\\\\ &=4 \\times 50 \\times (10.10^{-3})\\times 14\\\\ &=28V\\\\ \\Delta V_{d0}&=\\frac{V_m}{\\pi}[( \\cos \\alpha - \\cos (\\alpha +\\mu ))]\\\\ \\alpha =0,\\\\ 28&=\\frac{V_m}{\\pi}[1-\\cos \\alpha ]\\\\ 0.282&=1- \\cos \\alpha \\\\ \\cos \\alpha &=0.717\\\\ \\mu &=44.17^{\\circ}\\\\ \\therefore \\; & \\text{Conduction angle of diode}\\\\ &=180^{\\circ}+44.17^{\\circ}\\\\ &=224.17^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **225** (acceptable range: [220, 230])."
+        "markdown": "Average reduction in output voltage due to source inductance $=\\Delta V_{d0}$\n\n$$\\begin{aligned} \\Delta V_{d0}&=4fL_s I_0\\\\ &=4 \\times 50 \\times (10.10^{-3})\\times 14\\\\ &=28V\\\\ \\Delta V_{d0}&=\\frac{V_m}{\\pi}[( \\cos \\alpha - \\cos (\\alpha +\\mu ))]\\\\ \\alpha =0,\\\\ 28&=\\frac{V_m}{\\pi}[1-\\cos \\alpha ]\\\\ 0.282&=1- \\cos \\alpha \\\\ \\cos \\alpha &=0.717\\\\ \\mu &=44.17^{\\circ}\\\\ \\therefore \\; & \\text{Conduction angle of diode}\\\\ &=180^{\\circ}+44.17^{\\circ}\\\\ &=224.17^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q33": {
       "question_uid": "pp:ee:2017:q33",
-      "exam_uid": "ee:2017:set1:q33",
+      "exam_uid": "ee:2017:set1:main:q33",
       "title": "GATE EE 2017 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1323,13 +1488,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "The differentail equation,\n\n$$\\begin{aligned}\n\n(t^2-81)\\frac{dy}{dt}+5+y&= \\sin t\\\\\n\n\\frac{dy}{dt}+\\frac{5t}{t^2-81}y&=\\frac{\\sin t }{t^2-81}\\\\\n\nP&=\\frac{5t}{t^2-81}\\\\\n\nQ&=\\frac{\\sin t}{t^2-81}\\\\\n\nI.F&=e^{\\int \\rho dt}=e^{\\int \\frac{5t}{t^2-81}dt}\\\\\n\n&=e^{\\frac{5}{2}\\int \\frac{2t}{t^2-81}dt}=e^{\\frac{5}{2}\\ln ({t^2-81})}\\\\\n\n&=e^{\\ln {(t^2-81)^{5/2}}}=(t^2-81)^{5/2}\\\\\n\n\\text{Solution is }&\\\\\n\ny(t^2-81)^{5/2}&=\\int \\frac{\\sin t}{t^2-81}(t^2-81)^{5/2}dt\\\\\n\ny&=\\frac{\\int (\\sin t)(t^2-81)^{3/2}dt}{(t^2-81)^{5/2}}+\\frac{C}{(t^2-81)^{5/2}}\\\\\n\n&\\text{The solution exist for  } t\\neq -9, t\\neq +9\n\n\\end{aligned}$$\n\nOnly option (A) not cover 9 and -9. Hence it is correct.\n\nTherefore, the correct answer is **A**."
+        "markdown": "The differentail equation,\n\n$$\\begin{aligned}\n\n(t^2-81)\\frac{dy}{dt}+5+y&= \\sin t\\\\\n\n\\frac{dy}{dt}+\\frac{5t}{t^2-81}y&=\\frac{\\sin t }{t^2-81}\\\\\n\nP&=\\frac{5t}{t^2-81}\\\\\n\nQ&=\\frac{\\sin t}{t^2-81}\\\\\n\nI.F&=e^{\\int \\rho dt}=e^{\\int \\frac{5t}{t^2-81}dt}\\\\\n\n&=e^{\\frac{5}{2}\\int \\frac{2t}{t^2-81}dt}=e^{\\frac{5}{2}\\ln ({t^2-81})}\\\\\n\n&=e^{\\ln {(t^2-81)^{5/2}}}=(t^2-81)^{5/2}\\\\\n\n\\text{Solution is }&\\\\\n\ny(t^2-81)^{5/2}&=\\int \\frac{\\sin t}{t^2-81}(t^2-81)^{5/2}dt\\\\\n\ny&=\\frac{\\int (\\sin t)(t^2-81)^{3/2}dt}{(t^2-81)^{5/2}}+\\frac{C}{(t^2-81)^{5/2}}\\\\\n\n&\\text{The solution exist for  } t\\neq -9, t\\neq +9\n\n\\end{aligned}$$\n\nOnly option (A) not cover 9 and -9. Hence it is correct.",
+        "images": []
       }
     },
     "pp:ee:2017:q34": {
       "question_uid": "pp:ee:2017:q34",
-      "exam_uid": "ee:2017:set1:q34",
+      "exam_uid": "ee:2017:set1:main:q34",
       "title": "GATE EE 2017 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1362,13 +1531,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-f36ae240e8.webp\" />\n\nGiven, $R_a=0.1\\Omega$\n\nAs, DC generator is connected with DC grid, the output voltage will be constant.\n\nWhen generator is running at 800 rpm,\n\nGenerator emf,\n\n$$\\begin{aligned} E_{a1} &=V+I_{a1}R-a \\\\ &= 145+150 \\times 0.1\\\\ &= 160V \\end{aligned}$$\n\nWhen generator is running at 1000 rpm,\n\nGenerator emf,\n\n$$\\begin{aligned} E_{a2} &=E_{a1} \\times \\frac{N_2}{N_1}\\\\ &= 160 \\times \\frac{1000}{800}\\\\ &= 200V \\end{aligned}$$\n\nSo, new armature currrent will be,\n\n$$\\begin{aligned} I_{a2} &=\\frac{E_{a2}-V}{R_a}\\\\ &= \\frac{200-145}{0.1}\\\\ &= 550A \\end{aligned}$$\n\nTherefore, the correct answer is **550** (acceptable range: [548, 552])."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-f36ae240e8.webp\" />\n\nGiven, $R_a=0.1\\Omega$\n\nAs, DC generator is connected with DC grid, the output voltage will be constant.\n\nWhen generator is running at 800 rpm,\n\nGenerator emf,\n\n$$\\begin{aligned} E_{a1} &=V+I_{a1}R-a \\\\ &= 145+150 \\times 0.1\\\\ &= 160V \\end{aligned}$$\n\nWhen generator is running at 1000 rpm,\n\nGenerator emf,\n\n$$\\begin{aligned} E_{a2} &=E_{a1} \\times \\frac{N_2}{N_1}\\\\ &= 160 \\times \\frac{1000}{800}\\\\ &= 200V \\end{aligned}$$\n\nSo, new armature currrent will be,\n\n$$\\begin{aligned} I_{a2} &=\\frac{E_{a2}-V}{R_a}\\\\ &= \\frac{200-145}{0.1}\\\\ &= 550A \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-f36ae240e8.webp"
+        ]
       }
     },
     "pp:ee:2017:q35": {
       "question_uid": "pp:ee:2017:q35",
-      "exam_uid": "ee:2017:set1:q35",
+      "exam_uid": "ee:2017:set1:main:q35",
       "title": "GATE EE 2017 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1401,13 +1576,20 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "To get $R_{th}$ and $V_{th}$, consider the following steps.\n\nCase-1: For $R_{th}$\n\n<img src=\"/question-images/ee/2017/ee-2017-4c930078a0.webp\" />\n\nFor $V_{th}$\n\n<img src=\"/question-images/ee/2017/ee-2017-423078126e.webp\" />\n\nApplying KCL at node,\n\n$\\frac{V_{th}-5}{5}+\\frac{V_{th}+16}{5}=0$\n\n$2V_{th}=-11$\n\n$V_{th}=-5.5 V$\n\nMaximum power transferred,\n\n$P_{max}=\\frac{V_{th}^2}{4R_{th}}= \\frac{5.5^2}{4 \\times 2.5}=3.025W$\n\nTherefore, the correct answer is **3.05** (acceptable range: [3, 3.1])."
+        "markdown": "To get $R_{th}$ and $V_{th}$, consider the following steps.\n\nCase-1: For $R_{th}$\n\n<img src=\"/question-images/ee/2017/ee-2017-4c930078a0.webp\" />\n\nFor $V_{th}$\n\n<img src=\"/question-images/ee/2017/ee-2017-423078126e.webp\" />\n\nApplying KCL at node,\n\n$\\frac{V_{th}-5}{5}+\\frac{V_{th}+16}{5}=0$\n\n$2V_{th}=-11$\n\n$V_{th}=-5.5 V$\n\nMaximum power transferred,\n\n$P_{max}=\\frac{V_{th}^2}{4R_{th}}= \\frac{5.5^2}{4 \\times 2.5}=3.025W$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-4c930078a0.webp",
+          "/question-images/ee/2017/ee-2017-423078126e.webp"
+        ]
       }
     },
     "pp:ee:2017:q36": {
       "question_uid": "pp:ee:2017:q36",
-      "exam_uid": "ee:2017:set1:q36",
+      "exam_uid": "ee:2017:set1:main:q36",
       "title": "GATE EE 2017 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1442,13 +1624,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "$$\\begin{aligned}\n\n\\frac{d^2y}{dt^2}+7\\frac{dy}{dt}+10y&=4x+5\\frac{dx}{dt} \\\\  (s^2+7s+10)Y(s)&=(4+5s)X(s)  \\\\ \\frac{Y(s)}{X(s)}&=\\frac{5s+4}{s^2+7s+10} \\\\  \\text{Impulse response}&=L^{-1}(\\text{Transfer function}) \\\\ &=L^{-1}\\frac{5s+4}{(s+2)(s+5)} \\\\ &=L^{-1}\\left [ -\\frac{2}{s+2} +\\frac{7}{s+5}\\right ] \\\\ &=-2e^{-2t}u(t)+7e^{-5t}u(t)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned}\n\n\\frac{d^2y}{dt^2}+7\\frac{dy}{dt}+10y&=4x+5\\frac{dx}{dt} \\\\  (s^2+7s+10)Y(s)&=(4+5s)X(s)  \\\\ \\frac{Y(s)}{X(s)}&=\\frac{5s+4}{s^2+7s+10} \\\\  \\text{Impulse response}&=L^{-1}(\\text{Transfer function}) \\\\ &=L^{-1}\\frac{5s+4}{(s+2)(s+5)} \\\\ &=L^{-1}\\left [ -\\frac{2}{s+2} +\\frac{7}{s+5}\\right ] \\\\ &=-2e^{-2t}u(t)+7e^{-5t}u(t)\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q37": {
       "question_uid": "pp:ee:2017:q37",
-      "exam_uid": "ee:2017:set1:q37",
+      "exam_uid": "ee:2017:set1:main:q37",
       "title": "GATE EE 2017 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1483,13 +1669,20 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-81b447ef37.webp\" />\n\n$V_{in} \\gt 0\\;\\; V_A=+V_{55},$ D on, $V_o=V_{in}$\n\n$V_{in} \\lt 0\\;\\; V_A=-V_{55},$ D off, $V_o=0$\n\n<img src=\"/question-images/ee/2017/ee-2017-60f21eb4db.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-81b447ef37.webp\" />\n\n$V_{in} \\gt 0\\;\\; V_A=+V_{55},$ D on, $V_o=V_{in}$\n\n$V_{in} \\lt 0\\;\\; V_A=-V_{55},$ D off, $V_o=0$\n\n<img src=\"/question-images/ee/2017/ee-2017-60f21eb4db.webp\" />",
+        "images": [
+          "/question-images/ee/2017/ee-2017-81b447ef37.webp",
+          "/question-images/ee/2017/ee-2017-60f21eb4db.webp"
+        ]
       }
     },
     "pp:ee:2017:q38": {
       "question_uid": "pp:ee:2017:q38",
-      "exam_uid": "ee:2017:set1:q38",
+      "exam_uid": "ee:2017:set1:main:q38",
       "title": "GATE EE 2017 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1524,13 +1717,20 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
-        "markdown": "From the given circuit, consider the following circuit diagram,\n\n<img src=\"/question-images/ee/2017/ee-2017-31c8da3b9b.webp\" />\n\nAfter rearrangement\n\n<img src=\"/question-images/ee/2017/ee-2017-2822ff869e.webp\" />\n\nFor $t \\geq 0$\n\n$I_0=i(0^-)=2.5A$\n\nWe can write,\n\n$i(t)=I_0e^{-\\frac{Rt}{L}}$\n\n$i(t)=2.5e^{-4t}A$\n\nTherefore, the correct answer is **A**."
+        "markdown": "From the given circuit, consider the following circuit diagram,\n\n<img src=\"/question-images/ee/2017/ee-2017-31c8da3b9b.webp\" />\n\nAfter rearrangement\n\n<img src=\"/question-images/ee/2017/ee-2017-2822ff869e.webp\" />\n\nFor $t \\geq 0$\n\n$I_0=i(0^-)=2.5A$\n\nWe can write,\n\n$i(t)=I_0e^{-\\frac{Rt}{L}}$\n\n$i(t)=2.5e^{-4t}A$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-31c8da3b9b.webp",
+          "/question-images/ee/2017/ee-2017-2822ff869e.webp"
+        ]
       }
     },
     "pp:ee:2017:q39": {
       "question_uid": "pp:ee:2017:q39",
-      "exam_uid": "ee:2017:set1:q39",
+      "exam_uid": "ee:2017:set1:main:q39",
       "title": "GATE EE 2017 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1565,13 +1765,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "$$Y_{bus}=\\begin{bmatrix} -j39.9 & j20 & j20\\\\ j20 & -j39.9 &j20 \\\\ j20 & j20 & -j39.9 \\end{bmatrix}$$\n\n<img src=\"/question-images/ee/2017/ee-2017-d741083276.webp\" />\n\nReactance is eliminated in between Bus 1 and 3.\n\n$$\\begin{aligned} Y_{11(new)} &=-j39.9-\\frac{1}{j0.05}-j0.05 \\\\ &=-j19.95 \\\\ Y_{33(new)} &=-j39.9-\\frac{1}{j0.05}-j0.05 \\\\ &=-j19.95 \\\\ Y_{13(new)} &=Y_{31}=-y_{13}-\\frac{1}{j0.05} \\\\ Y_{31(new)} &=-j20-\\frac{1}{j0.05}=0 \\end{aligned}$$\n\nSo, modified admittance matrix is,\n\n$$=\\begin{bmatrix} -j19.95 & j20 &0 \\\\ j20 & -j39.9 & j20\\\\ 0 & j20 & -j19.95 \\end{bmatrix}\\;pu$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$Y_{bus}=\\begin{bmatrix} -j39.9 & j20 & j20\\\\ j20 & -j39.9 &j20 \\\\ j20 & j20 & -j39.9 \\end{bmatrix}$$\n\n<img src=\"/question-images/ee/2017/ee-2017-d741083276.webp\" />\n\nReactance is eliminated in between Bus 1 and 3.\n\n$$\\begin{aligned} Y_{11(new)} &=-j39.9-\\frac{1}{j0.05}-j0.05 \\\\ &=-j19.95 \\\\ Y_{33(new)} &=-j39.9-\\frac{1}{j0.05}-j0.05 \\\\ &=-j19.95 \\\\ Y_{13(new)} &=Y_{31}=-y_{13}-\\frac{1}{j0.05} \\\\ Y_{31(new)} &=-j20-\\frac{1}{j0.05}=0 \\end{aligned}$$\n\nSo, modified admittance matrix is,\n\n$$=\\begin{bmatrix} -j19.95 & j20 &0 \\\\ j20 & -j39.9 & j20\\\\ 0 & j20 & -j19.95 \\end{bmatrix}\\;pu$$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-d741083276.webp"
+        ]
       }
     },
     "pp:ee:2017:q40": {
       "question_uid": "pp:ee:2017:q40",
-      "exam_uid": "ee:2017:set1:q40",
+      "exam_uid": "ee:2017:set1:main:q40",
       "title": "GATE EE 2017 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1606,13 +1812,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "Transfer function,\n\n$\\frac{Y(s)}{U_1(s)}=\\frac{\\frac{k_1}{LJs^2}[1]}{1-\\left [ -\\frac{R}{Ls} -\\frac{k_1k_2}{LJs^2}\\right ]}$\n\n$\\frac{Y(s)}{U_1(s)}=\\frac{k_1}{JLs^2+JRs+k_1k_2}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Transfer function,\n\n$\\frac{Y(s)}{U_1(s)}=\\frac{\\frac{k_1}{LJs^2}[1]}{1-\\left [ -\\frac{R}{Ls} -\\frac{k_1k_2}{LJs^2}\\right ]}$\n\n$\\frac{Y(s)}{U_1(s)}=\\frac{k_1}{JLs^2+JRs+k_1k_2}$",
+        "images": []
       }
     },
     "pp:ee:2017:q41": {
       "question_uid": "pp:ee:2017:q41",
-      "exam_uid": "ee:2017:set1:q41",
+      "exam_uid": "ee:2017:set1:main:q41",
       "title": "GATE EE 2017 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1645,13 +1855,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "$$\\begin{aligned}\n\nG(s)&=\\frac{-s+1}{s+1} \\\\\n\n&\\text{System output,} \\\\  Y(s)&=G(s)\\cdot \\frac{1}{s} \\\\ &=\\frac{-s+1}{s+1}\\cdot \\frac{1}{s} \\\\ &=\\frac{1}{s}-\\frac{2}{s+1} \\\\ y(t)&=u(t)-2e^{-t}u(t)\\\\ y(1.5)&=1-2e^{-1.5} \\\\ &=1-0.466=0.554\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.553** (acceptable range: [0.55, 0.556])."
+        "markdown": "$$\\begin{aligned}\n\nG(s)&=\\frac{-s+1}{s+1} \\\\\n\n&\\text{System output,} \\\\  Y(s)&=G(s)\\cdot \\frac{1}{s} \\\\ &=\\frac{-s+1}{s+1}\\cdot \\frac{1}{s} \\\\ &=\\frac{1}{s}-\\frac{2}{s+1} \\\\ y(t)&=u(t)-2e^{-t}u(t)\\\\ y(1.5)&=1-2e^{-1.5} \\\\ &=1-0.466=0.554\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q42": {
       "question_uid": "pp:ee:2017:q42",
-      "exam_uid": "ee:2017:set1:q42",
+      "exam_uid": "ee:2017:set1:main:q42",
       "title": "GATE EE 2017 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1684,13 +1898,20 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
-        "markdown": "i= 1 A\n\n<img src=\"/question-images/ee/2017/ee-2017-75b7946924.webp\" />\n\nHere, B at point P is\n\n$B=\\frac{\\mu _0I}{4 \\pi d}(\\sin \\theta _1 +\\sin \\theta _2)$\n\nWe know for each segment of hexagon\n\n<img src=\"/question-images/ee/2017/ee-2017-778d7287b4.webp\" />\n\nmagnetic field intensity due to element length dx,\n\n$dH=\\frac{Idx}{4 \\pi r^2}i \\times u_r$\n\nwhere,\n\n$i \\times u_r=(\\sin \\theta)\\hat{k}$....perpendicular to plane of paper\n\n$$\\begin{aligned} H &=\\int dH=\\int \\frac{I \\sin \\theta}{4 \\pi r^2}(dx)\\hat{k} \\\\ B&=\\mu _0 H \\\\ B_p&=\\frac{\\mu _0I}{4 \\pi d}(\\cos \\alpha _1+\\cos \\alpha _2)\\hat{k} \\\\ d&=\\frac{\\sqrt{3}}{2} l\\;\\;\\;...\\text{where}\\; l=1m\\\\ \\alpha _1&=\\alpha _2 =60^{\\circ}\\\\ |B_p| &=\\frac{\\mu _0 I}{4 \\pi \\frac{\\sqrt{3}}{2} }(\\cos 60^{\\circ} +\\cos 60^{\\circ}) \\\\ &\\text{for all six segment} \\\\ 6 \\times |B_p| &=\\frac{4 \\pi \\times 10^{-7} \\times 6 \\times 1}{4 \\pi \\times \\frac{\\sqrt{3}}{2} }(1) \\\\ &=\\frac{12}{\\sqrt{3}}\\times 10^{-7}=\\frac{1.20}{\\sqrt{3}}\\times 10^{-6}T \\\\ B&=0.69 \\mu T \\end{aligned}$$\n\nTherefore, the correct answer is **0.7** (acceptable range: [0.65, 0.75])."
+        "markdown": "i= 1 A\n\n<img src=\"/question-images/ee/2017/ee-2017-75b7946924.webp\" />\n\nHere, B at point P is\n\n$B=\\frac{\\mu _0I}{4 \\pi d}(\\sin \\theta _1 +\\sin \\theta _2)$\n\nWe know for each segment of hexagon\n\n<img src=\"/question-images/ee/2017/ee-2017-778d7287b4.webp\" />\n\nmagnetic field intensity due to element length dx,\n\n$dH=\\frac{Idx}{4 \\pi r^2}i \\times u_r$\n\nwhere,\n\n$i \\times u_r=(\\sin \\theta)\\hat{k}$....perpendicular to plane of paper\n\n$$\\begin{aligned} H &=\\int dH=\\int \\frac{I \\sin \\theta}{4 \\pi r^2}(dx)\\hat{k} \\\\ B&=\\mu _0 H \\\\ B_p&=\\frac{\\mu _0I}{4 \\pi d}(\\cos \\alpha _1+\\cos \\alpha _2)\\hat{k} \\\\ d&=\\frac{\\sqrt{3}}{2} l\\;\\;\\;...\\text{where}\\; l=1m\\\\ \\alpha _1&=\\alpha _2 =60^{\\circ}\\\\ |B_p| &=\\frac{\\mu _0 I}{4 \\pi \\frac{\\sqrt{3}}{2} }(\\cos 60^{\\circ} +\\cos 60^{\\circ}) \\\\ &\\text{for all six segment} \\\\ 6 \\times |B_p| &=\\frac{4 \\pi \\times 10^{-7} \\times 6 \\times 1}{4 \\pi \\times \\frac{\\sqrt{3}}{2} }(1) \\\\ &=\\frac{12}{\\sqrt{3}}\\times 10^{-7}=\\frac{1.20}{\\sqrt{3}}\\times 10^{-6}T \\\\ B&=0.69 \\mu T \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-75b7946924.webp",
+          "/question-images/ee/2017/ee-2017-778d7287b4.webp"
+        ]
       }
     },
     "pp:ee:2017:q43": {
       "question_uid": "pp:ee:2017:q43",
-      "exam_uid": "ee:2017:set1:q43",
+      "exam_uid": "ee:2017:set1:main:q43",
       "title": "GATE EE 2017 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1723,13 +1944,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-1321c4f3e1.webp\" />\n\nUsing equal area criteria:\n\n$A_1=A_2$\n\n$\\int_{\\delta _0}^{\\delta _c}(P_{m0}-P_{max1} \\sin \\delta )d\\delta =\\int_{\\delta _c}^{\\delta _2}(P_{max1} \\sin \\delta -P_{m0})d\\delta$\n\nBy solving above integration,\n\n$P_{max1}=\\frac{P_{m0}(\\delta _2-\\delta _0)}{\\cos \\delta _0- \\cos \\delta _2}$\n\nGiven data:\n\n$$\\begin{aligned} P_{m0} &=1pu \\\\ P_e&= 1.5 \\sin (\\delta _0)=P_{m0}=1pu\\\\ \\delta _0&41.8^{\\circ}=0.7295\\; rad \\\\ \\delta _2 &=1.221\\; rad =96.95^{\\circ} \\end{aligned}$$\n\nSubstitute above values in above equation,\n\n$P_{max1}=\\frac{1(1.221-0.7295)}{\\cos 41.8- \\cos 69.95}=1.220 p.u.$\n\nTherefore, the correct answer is **1.22** (acceptable range: [1.2, 1.24])."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-1321c4f3e1.webp\" />\n\nUsing equal area criteria:\n\n$A_1=A_2$\n\n$\\int_{\\delta _0}^{\\delta _c}(P_{m0}-P_{max1} \\sin \\delta )d\\delta =\\int_{\\delta _c}^{\\delta _2}(P_{max1} \\sin \\delta -P_{m0})d\\delta$\n\nBy solving above integration,\n\n$P_{max1}=\\frac{P_{m0}(\\delta _2-\\delta _0)}{\\cos \\delta _0- \\cos \\delta _2}$\n\nGiven data:\n\n$$\\begin{aligned} P_{m0} &=1pu \\\\ P_e&= 1.5 \\sin (\\delta _0)=P_{m0}=1pu\\\\ \\delta _0&41.8^{\\circ}=0.7295\\; rad \\\\ \\delta _2 &=1.221\\; rad =96.95^{\\circ} \\end{aligned}$$\n\nSubstitute above values in above equation,\n\n$P_{max1}=\\frac{1(1.221-0.7295)}{\\cos 41.8- \\cos 69.95}=1.220 p.u.$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-1321c4f3e1.webp"
+        ]
       }
     },
     "pp:ee:2017:q44": {
       "question_uid": "pp:ee:2017:q44",
-      "exam_uid": "ee:2017:set1:q44",
+      "exam_uid": "ee:2017:set1:main:q44",
       "title": "GATE EE 2017 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1762,13 +1989,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
-        "markdown": "Auxiliary winding impedance $=(24.5+j12.75)\\Omega$\n\nLet $X_c$ be the reactance of the capacitor connected in auxiliary winding\n\n$$\\begin{aligned}\n\nZ_a &= (24.5+j12.75-jX_c)\\Omega \\\\\n\nX_a &=(X_c-12.75),\\; R_a=24.5\\Omega  \\\\\n\n\\therefore \\;\\; \\phi _a &=\\tan^{-1}\\frac{X_c-12.75}{24.5}\\;...(i) \\\\\n\nZ_m&= 12.5+j15.75\\\\\n\n&= 20.10\\angle 51.56^{\\circ}\\Omega \\\\\n\n\\phi _m&= 51.56^{\\circ}\n\n\\end{aligned}$$\n\nFor maximum torque at starting, condition on $\\phi _a$ and $\\phi _m$ is given by $\\left [ \\phi _a=\\frac{90^{\\circ}-\\phi _m}{2} \\right ]$\n\n$\\phi _a=\\frac{90-51.56}{2}=19.22^{\\circ}}\\;...(ii)$\n\nComparing equation (i) and (ii),\n\n$$\\begin{aligned}\n\n\\tan(19.22^{\\circ}) &=\\frac{X_c-12.75}{24.5} \\\\\n\n0.3486 &= \\frac{X_c-12.75}{24.5}\\\\\n\nX_c &=8.541+12.75 \\\\\n\n\\text{Capacitive reactance,}& \\\\\n\nX_c &= 21.291\\Omega \\\\\n\n\\frac{1}{2 \\pi fc}&= 21.291\\\\\n\n\\Rightarrow \\;C&= \\frac{1}{2\\pi \\times 50 \\times 21.291}\\\\\n\n&= 149.51\\mu F\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **150** (acceptable range: [145, 155])."
+        "markdown": "Auxiliary winding impedance $=(24.5+j12.75)\\Omega$\n\nLet $X_c$ be the reactance of the capacitor connected in auxiliary winding\n\n$$\\begin{aligned}\n\nZ_a &= (24.5+j12.75-jX_c)\\Omega \\\\\n\nX_a &=(X_c-12.75),\\; R_a=24.5\\Omega  \\\\\n\n\\therefore \\;\\; \\phi _a &=\\tan^{-1}\\frac{X_c-12.75}{24.5}\\;...(i) \\\\\n\nZ_m&= 12.5+j15.75\\\\\n\n&= 20.10\\angle 51.56^{\\circ}\\Omega \\\\\n\n\\phi _m&= 51.56^{\\circ}\n\n\\end{aligned}$$\n\nFor maximum torque at starting, condition on $\\phi _a$ and $\\phi _m$ is given by $\\left [ \\phi _a=\\frac{90^{\\circ}-\\phi _m}{2} \\right ]$\n\n$\\phi _a=\\frac{90-51.56}{2}=19.22^{\\circ}}\\;...(ii)$\n\nComparing equation (i) and (ii),\n\n$$\\begin{aligned}\n\n\\tan(19.22^{\\circ}) &=\\frac{X_c-12.75}{24.5} \\\\\n\n0.3486 &= \\frac{X_c-12.75}{24.5}\\\\\n\nX_c &=8.541+12.75 \\\\\n\n\\text{Capacitive reactance,}& \\\\\n\nX_c &= 21.291\\Omega \\\\\n\n\\frac{1}{2 \\pi fc}&= 21.291\\\\\n\n\\Rightarrow \\;C&= \\frac{1}{2\\pi \\times 50 \\times 21.291}\\\\\n\n&= 149.51\\mu F\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q45": {
       "question_uid": "pp:ee:2017:q45",
-      "exam_uid": "ee:2017:set1:q45",
+      "exam_uid": "ee:2017:set1:main:q45",
       "title": "GATE EE 2017 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1803,13 +2034,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$f(x)=\\left\\{\\begin{matrix} e^x & x \\lt 1\\\\ \\ln x+ax^2+bx & x \\gt 1 \\end{matrix}\\right.$$\n\nAt x=1,\n\nL.H.S=R.H.S\n\ne=a+b    ...(i)\n\nAt x=1, f'(x) exists\n\n$$f'(x)=\\left\\{\\begin{matrix} e^x & x \\lt 1\\\\ \\frac{1}{x}+20x+b & x \\gt 1 \\end{matrix}\\right.$$\n\nAt x=1,\n\nL.H.S=R.H.S\n\ne=1+2a+b\n\n2a+b=e-1   ...(ii)\n\nFrom equation (i) and (ii),\n\na=-1\n\nb=e+1\n\nf(x) is differentiable at x=1 for unique value of a and b.\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$f(x)=\\left\\{\\begin{matrix} e^x & x \\lt 1\\\\ \\ln x+ax^2+bx & x \\gt 1 \\end{matrix}\\right.$$\n\nAt x=1,\n\nL.H.S=R.H.S\n\ne=a+b    ...(i)\n\nAt x=1, f'(x) exists\n\n$$f'(x)=\\left\\{\\begin{matrix} e^x & x \\lt 1\\\\ \\frac{1}{x}+20x+b & x \\gt 1 \\end{matrix}\\right.$$\n\nAt x=1,\n\nL.H.S=R.H.S\n\ne=1+2a+b\n\n2a+b=e-1   ...(ii)\n\nFrom equation (i) and (ii),\n\na=-1\n\nb=e+1\n\nf(x) is differentiable at x=1 for unique value of a and b.",
+        "images": []
       }
     },
     "pp:ee:2017:q46": {
       "question_uid": "pp:ee:2017:q46",
-      "exam_uid": "ee:2017:set1:q46",
+      "exam_uid": "ee:2017:set1:main:q46",
       "title": "GATE EE 2017 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1842,13 +2077,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "Pole locationof H(z) are given as,\n\n$$\\begin{aligned} z&=\\frac{1}{\\sqrt{2}}e^{j(2K-1)\\frac{\\pi}{4}};\\;\\;K=1,2,3,4\\\\ z_1&=\\frac{1}{\\sqrt{2}}e^{j\\frac{\\pi}{4}} =\\frac{1}{2}(1+j)\\\\ z_2&=\\frac{1}{\\sqrt{2}}e^{j\\frac{3\\pi}{4}} =\\frac{1}{2}(-1+j)\\\\ z_3&=\\frac{1}{\\sqrt{2}}e^{j\\frac{5\\pi}{4}} =\\frac{1}{2}(-1-j)\\\\ z_4&=\\frac{1}{\\sqrt{2}}e^{j\\frac{7\\pi}{4}} =\\frac{1}{2}(1-j)\\\\ \\text{Now,}\\\\ H(z)&=\\frac{K\\cdot z^4}{(z-z_1)(z-z_2)(z-z_3)(z-z_4)}...(i) \\end{aligned}$$\n\n[As h(n) is causal and it starts from n=0, so numerator will have same order as denominator is having]. by solving equation (i)\n\n$$\\begin{aligned}\n\nH(z)&=\\frac{K\\cdot z^4}{z^4+\\frac{1}{4}}\\;\\;...(ii)\\\\\n\n&\\text{Given that,}\\\\\n\nH(1)&=\\frac{5}{4}\\\\\n\n&\\text{From equation (ii),}\\\\\n\nH(1)&=\\frac{K}{1+\\frac{1}{4}}\\Rightarrow \\frac{5}{4}=\\frac{K}{\\frac{5}{4}}\\\\\n\n\\Rightarrow \\; K&=\\frac{25}{16}\\\\\n\nH(z)&=\\frac{\\frac{25}{16}z^4}{z^4+\\frac{1}{4}}\\\\\n\n&\\text{By using division rule,}\\\\\n\nH(z)&=\\frac{25}{16}\\left [ 1+\\frac{1}{4}z^{-4}+\\frac{1}{16}z^{-8}+... \\right ]\\\\\n\n\\text{Thus, }h(8)&=\\frac{1}{16} \\times \\frac{25}{16}=0.097\\\\\n\n&\\text{it is given that,}\\\\\n\ng(n)&=j^nh(n)\\\\\n\ng(8)&=j^8h(8)=h(8)\\\\\n\n\\Rightarrow \\; g(8)&=h(8)=0.097\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.095** (acceptable range: [0.09, 0.1])."
+        "markdown": "Pole locationof H(z) are given as,\n\n$$\\begin{aligned} z&=\\frac{1}{\\sqrt{2}}e^{j(2K-1)\\frac{\\pi}{4}};\\;\\;K=1,2,3,4\\\\ z_1&=\\frac{1}{\\sqrt{2}}e^{j\\frac{\\pi}{4}} =\\frac{1}{2}(1+j)\\\\ z_2&=\\frac{1}{\\sqrt{2}}e^{j\\frac{3\\pi}{4}} =\\frac{1}{2}(-1+j)\\\\ z_3&=\\frac{1}{\\sqrt{2}}e^{j\\frac{5\\pi}{4}} =\\frac{1}{2}(-1-j)\\\\ z_4&=\\frac{1}{\\sqrt{2}}e^{j\\frac{7\\pi}{4}} =\\frac{1}{2}(1-j)\\\\ \\text{Now,}\\\\ H(z)&=\\frac{K\\cdot z^4}{(z-z_1)(z-z_2)(z-z_3)(z-z_4)}...(i) \\end{aligned}$$\n\n[As h(n) is causal and it starts from n=0, so numerator will have same order as denominator is having]. by solving equation (i)\n\n$$\\begin{aligned}\n\nH(z)&=\\frac{K\\cdot z^4}{z^4+\\frac{1}{4}}\\;\\;...(ii)\\\\\n\n&\\text{Given that,}\\\\\n\nH(1)&=\\frac{5}{4}\\\\\n\n&\\text{From equation (ii),}\\\\\n\nH(1)&=\\frac{K}{1+\\frac{1}{4}}\\Rightarrow \\frac{5}{4}=\\frac{K}{\\frac{5}{4}}\\\\\n\n\\Rightarrow \\; K&=\\frac{25}{16}\\\\\n\nH(z)&=\\frac{\\frac{25}{16}z^4}{z^4+\\frac{1}{4}}\\\\\n\n&\\text{By using division rule,}\\\\\n\nH(z)&=\\frac{25}{16}\\left [ 1+\\frac{1}{4}z^{-4}+\\frac{1}{16}z^{-8}+... \\right ]\\\\\n\n\\text{Thus, }h(8)&=\\frac{1}{16} \\times \\frac{25}{16}=0.097\\\\\n\n&\\text{it is given that,}\\\\\n\ng(n)&=j^nh(n)\\\\\n\ng(8)&=j^8h(8)=h(8)\\\\\n\n\\Rightarrow \\; g(8)&=h(8)=0.097\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q47": {
       "question_uid": "pp:ee:2017:q47",
-      "exam_uid": "ee:2017:set1:q47",
+      "exam_uid": "ee:2017:set1:main:q47",
       "title": "GATE EE 2017 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1881,13 +2120,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$$\\begin{aligned} f(x)&=x^6-x-1\\\\ a&=1, b=2, \\in =0.01=10^{-3} \\end{aligned}$$\n\nThe minimum number of iterations by Bisection method is given by\n\n$$\\begin{aligned} \\frac{|b-a|}{2^n} &\\lt \\in\\\\ \\frac{2-1}{2^n} &\\lt 10^{-3}\\\\ \\frac{1}{2^n} &\\lt \\frac{1}{10^{-3}}\\\\ 2^n &\\gt 10^3\\\\ n &\\gt \\frac{\\ln 1000}{\\ln 2}\\\\ n &\\gt 9.96\\\\ n&=10 \\end{aligned}$$\n\nTherefore, the correct answer is **10**."
+        "markdown": "$$\\begin{aligned} f(x)&=x^6-x-1\\\\ a&=1, b=2, \\in =0.01=10^{-3} \\end{aligned}$$\n\nThe minimum number of iterations by Bisection method is given by\n\n$$\\begin{aligned} \\frac{|b-a|}{2^n} &\\lt \\in\\\\ \\frac{2-1}{2^n} &\\lt 10^{-3}\\\\ \\frac{1}{2^n} &\\lt \\frac{1}{10^{-3}}\\\\ 2^n &\\gt 10^3\\\\ n &\\gt \\frac{\\ln 1000}{\\ln 2}\\\\ n &\\gt 9.96\\\\ n&=10 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q48": {
       "question_uid": "pp:ee:2017:q48",
-      "exam_uid": "ee:2017:set1:q48",
+      "exam_uid": "ee:2017:set1:main:q48",
       "title": "GATE EE 2017 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1920,13 +2163,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
-        "markdown": "Synchronous machine A:\n\n11 kV, 50 Hz, Y connected, $X_s=1\\Omega$\n\nSynchronous machine B:\n\n11 kV, 50 Hz, Y connected, $X_s=3\\Omega$\n\nGiven both supplying only reactive power 50MVAR tp 11 kV grid equally\n\n$$\\begin{aligned} \\therefore \\; Q_A &=\\sqrt{3}VI_A \\sin \\phi =25mVAR \\\\ Q_B &= \\sqrt{3}VI_B \\sin \\phi =25mVAR\\\\ \\therefore \\;\\;I_A &=\\frac{25 \\times 10^6}{\\sqrt{3} \\times 11 \\times 10^3}=1312.2A \\\\ \\therefore \\;\\; I_B&= 1312.2A\\\\ E_A &= V-jI_AX_s\\\\ &=\\frac{11 \\times 10^3}{\\sqrt{3}}-j1312.2\\angle 90 \\times 1 \\\\ E_B &=V_jI_BX_s \\\\ &= =\\frac{11 \\times 10^3}{\\sqrt{3}}-j1312.2\\angle 90 \\times 3 \\end{aligned}$$\n\nGiven magnetic circuit to be linear,\n\n$$\\begin{aligned} \\therefore \\;\\; E &\\propto I_f \\\\ \\therefore \\;\\; \\frac{I_{f_A}}{I_{f_B}}&=\\frac{E_A}{E_B} \\\\ E_A&=7663.05V \\\\ E_B &= 10287.45V \\end{aligned}$$\n\nTherefore, ratio of excitation current of machine A to machine B\n\n$\\frac{E_A}{E_B}=0.745$\n\nTherefore, the correct answer is **0.745** (acceptable range: [0.7, 0.79])."
+        "markdown": "Synchronous machine A:\n\n11 kV, 50 Hz, Y connected, $X_s=1\\Omega$\n\nSynchronous machine B:\n\n11 kV, 50 Hz, Y connected, $X_s=3\\Omega$\n\nGiven both supplying only reactive power 50MVAR tp 11 kV grid equally\n\n$$\\begin{aligned} \\therefore \\; Q_A &=\\sqrt{3}VI_A \\sin \\phi =25mVAR \\\\ Q_B &= \\sqrt{3}VI_B \\sin \\phi =25mVAR\\\\ \\therefore \\;\\;I_A &=\\frac{25 \\times 10^6}{\\sqrt{3} \\times 11 \\times 10^3}=1312.2A \\\\ \\therefore \\;\\; I_B&= 1312.2A\\\\ E_A &= V-jI_AX_s\\\\ &=\\frac{11 \\times 10^3}{\\sqrt{3}}-j1312.2\\angle 90 \\times 1 \\\\ E_B &=V_jI_BX_s \\\\ &= =\\frac{11 \\times 10^3}{\\sqrt{3}}-j1312.2\\angle 90 \\times 3 \\end{aligned}$$\n\nGiven magnetic circuit to be linear,\n\n$$\\begin{aligned} \\therefore \\;\\; E &\\propto I_f \\\\ \\therefore \\;\\; \\frac{I_{f_A}}{I_{f_B}}&=\\frac{E_A}{E_B} \\\\ E_A&=7663.05V \\\\ E_B &= 10287.45V \\end{aligned}$$\n\nTherefore, ratio of excitation current of machine A to machine B\n\n$\\frac{E_A}{E_B}=0.745$",
+        "images": []
       }
     },
     "pp:ee:2017:q49": {
       "question_uid": "pp:ee:2017:q49",
-      "exam_uid": "ee:2017:set1:q49",
+      "exam_uid": "ee:2017:set1:main:q49",
       "title": "GATE EE 2017 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -1959,13 +2206,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "$$\\begin{aligned} Z_1&=0.2\\\\ Z_2&=0.2\\\\ Z_0&=0.1\\\\ V_{Th}&=1\\\\ I_f&=3.75\\\\ &\\text{For LG fault,}\\\\ I_f&=\\frac{3V_{Th}}{Z_1+Z_2+Z_0+3Z_n}\\\\ 3.75&=\\frac{3 \\times 1}{0.2+0.2+0.1+3Z_n}\\\\ Z_n&=0.1\\;p.u. \\end{aligned}$$\n\nTherefore, the correct answer is **0.1**."
+        "markdown": "$$\\begin{aligned} Z_1&=0.2\\\\ Z_2&=0.2\\\\ Z_0&=0.1\\\\ V_{Th}&=1\\\\ I_f&=3.75\\\\ &\\text{For LG fault,}\\\\ I_f&=\\frac{3V_{Th}}{Z_1+Z_2+Z_0+3Z_n}\\\\ 3.75&=\\frac{3 \\times 1}{0.2+0.2+0.1+3Z_n}\\\\ Z_n&=0.1\\;p.u. \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q50": {
       "question_uid": "pp:ee:2017:q50",
-      "exam_uid": "ee:2017:set1:q50",
+      "exam_uid": "ee:2017:set1:main:q50",
       "title": "GATE EE 2017 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2000,13 +2251,19 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "$$\\begin{aligned} x(t)&=\\sum_{k=-\\infty }^{\\infty } (-1)^K \\delta \\left ( t-\\frac{K}{2000} \\right )\\\\ &= \\sum_{k=-\\infty }^{\\infty } (-1)^K \\delta (t-KT)\\\\ \\text{where, } &=T=\\frac{1}{2000} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2017/ee-2017-02ac5ee4ef.webp\" />\n\nTime period:\n\n$$\\begin{aligned} T_0&=2T=\\frac{1}{1000}\\\\ \\omega _0&=\\frac{2\\pi}{T_0}=2000 \\pi \\; rad \\end{aligned}$$\n\nSince, x(t) is even-halt wave symmetric. So, its expansion will contain only odd harmonics of cos. Therefore, coefficient of fundamental harmonic is\n\n$$\\begin{aligned} a_1&=\\frac{2}{T}\\int_{-T_0/2}^{T_0/2}x(t) \\cos \\omega _0 t \\; dt\\\\ &=\\frac{4}{T_0}\\int_{0}^{T_0/2}\\delta (t) \\cos \\omega _0 t \\; dt\\\\ &=\\frac{4}{T_0}\\int_{0}^{T_0/2}\\delta (t) \\cos 0 \\; dt\\\\ &=\\frac{4}{T_0}\\left [\\int_{0}^{T_0/2}\\delta (t) \\; dt \\right ]\\\\ &=\\frac{4}{T_0}=4000 \\end{aligned}$$\n\nNow, frequency components available in expansion are\n\n$$\\begin{aligned} \\omega _0,3\\omega _0,...\\\\ 2000\\pi, 6000 \\pi,... \\end{aligned}$$\n\nAs, LTI system given in the question will pass upto $5000\\pi$ rad/sec frequency component of input.So, output will have only one component of sfrequency $2000\\pi$ rad/sec\n\nThus, y(t)= expansion of output $=a_1 \\cos \\omega _0 t=4000 \\cos 2000 \\pi t$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} x(t)&=\\sum_{k=-\\infty }^{\\infty } (-1)^K \\delta \\left ( t-\\frac{K}{2000} \\right )\\\\ &= \\sum_{k=-\\infty }^{\\infty } (-1)^K \\delta (t-KT)\\\\ \\text{where, } &=T=\\frac{1}{2000} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2017/ee-2017-02ac5ee4ef.webp\" />\n\nTime period:\n\n$$\\begin{aligned} T_0&=2T=\\frac{1}{1000}\\\\ \\omega _0&=\\frac{2\\pi}{T_0}=2000 \\pi \\; rad \\end{aligned}$$\n\nSince, x(t) is even-halt wave symmetric. So, its expansion will contain only odd harmonics of cos. Therefore, coefficient of fundamental harmonic is\n\n$$\\begin{aligned} a_1&=\\frac{2}{T}\\int_{-T_0/2}^{T_0/2}x(t) \\cos \\omega _0 t \\; dt\\\\ &=\\frac{4}{T_0}\\int_{0}^{T_0/2}\\delta (t) \\cos \\omega _0 t \\; dt\\\\ &=\\frac{4}{T_0}\\int_{0}^{T_0/2}\\delta (t) \\cos 0 \\; dt\\\\ &=\\frac{4}{T_0}\\left [\\int_{0}^{T_0/2}\\delta (t) \\; dt \\right ]\\\\ &=\\frac{4}{T_0}=4000 \\end{aligned}$$\n\nNow, frequency components available in expansion are\n\n$$\\begin{aligned} \\omega _0,3\\omega _0,...\\\\ 2000\\pi, 6000 \\pi,... \\end{aligned}$$\n\nAs, LTI system given in the question will pass upto $5000\\pi$ rad/sec frequency component of input.So, output will have only one component of sfrequency $2000\\pi$ rad/sec\n\nThus, y(t)= expansion of output $=a_1 \\cos \\omega _0 t=4000 \\cos 2000 \\pi t$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-02ac5ee4ef.webp"
+        ]
       }
     },
     "pp:ee:2017:q51": {
       "question_uid": "pp:ee:2017:q51",
-      "exam_uid": "ee:2017:set1:q51",
+      "exam_uid": "ee:2017:set1:main:q51",
       "title": "GATE EE 2017 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2041,13 +2298,20 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Logic Families and Miscellaneous",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-28de253c83.webp\" />\n\nWhen $V_1=$ high 5 V, $Q_1$ on, $V_{out}=0$\n\n$V_2=$ high 5 V, $Q_2$ on, $V_{out}=0$\n\nThus when any $V_1$ or $V_2$ is high then, $V_{out}=0$\n\n<img src=\"/question-images/ee/2017/ee-2017-def55ab5fd.webp\" />\n\nThus, it is a NOR gate.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-28de253c83.webp\" />\n\nWhen $V_1=$ high 5 V, $Q_1$ on, $V_{out}=0$\n\n$V_2=$ high 5 V, $Q_2$ on, $V_{out}=0$\n\nThus when any $V_1$ or $V_2$ is high then, $V_{out}=0$\n\n<img src=\"/question-images/ee/2017/ee-2017-def55ab5fd.webp\" />\n\nThus, it is a NOR gate.",
+        "images": [
+          "/question-images/ee/2017/ee-2017-28de253c83.webp",
+          "/question-images/ee/2017/ee-2017-def55ab5fd.webp"
+        ]
       }
     },
     "pp:ee:2017:q52": {
       "question_uid": "pp:ee:2017:q52",
-      "exam_uid": "ee:2017:set1:q52",
+      "exam_uid": "ee:2017:set1:main:q52",
       "title": "GATE EE 2017 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2082,13 +2346,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Compensation Techniques and Voltage Profile Control",
-        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-c069a888e9.webp\" />\n\nLoad p.f.\n\n$$\\begin{aligned} \\cos \\phi &=\\cos \\left [ \\tan ^{-1}\\frac{Q}{P} \\right ]\\\\ &=\\cos \\left [ \\tan^{-1}\\frac{1}{1} \\right ]\\\\ &=0.707 \\text{ lag}\\\\ Q_c&=P[\\tan \\phi _1 -\\tan \\phi _2]\\\\ 1&=(\\tan \\cos ^{-1} 0.707- \\tan \\phi _2)\\\\ \\phi _2&=45^{\\circ}\\\\ \\Rightarrow \\; \\cos \\phi _2&=0.707 \\text{ lag} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2017/ee-2017-c069a888e9.webp\" />\n\nLoad p.f.\n\n$$\\begin{aligned} \\cos \\phi &=\\cos \\left [ \\tan ^{-1}\\frac{Q}{P} \\right ]\\\\ &=\\cos \\left [ \\tan^{-1}\\frac{1}{1} \\right ]\\\\ &=0.707 \\text{ lag}\\\\ Q_c&=P[\\tan \\phi _1 -\\tan \\phi _2]\\\\ 1&=(\\tan \\cos ^{-1} 0.707- \\tan \\phi _2)\\\\ \\phi _2&=45^{\\circ}\\\\ \\Rightarrow \\; \\cos \\phi _2&=0.707 \\text{ lag} \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2017/ee-2017-c069a888e9.webp"
+        ]
       }
     },
     "pp:ee:2017:q53": {
       "question_uid": "pp:ee:2017:q53",
-      "exam_uid": "ee:2017:set1:q53",
+      "exam_uid": "ee:2017:set1:main:q53",
       "title": "GATE EE 2017 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2123,13 +2393,17 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "$$\\begin{aligned} V_0&=\\frac{\\alpha V_s}{1-\\alpha }\\\\ \\text{when, } V_s&=32V \\text{ and }V_0=48V\\\\ \\alpha &=\\frac{3}{5}\\\\ \\text{when, }V_s&=72V \\text{ and }V_0=48V\\\\ \\alpha &=\\frac{2}{5}\\\\ \\frac{2}{5}\\leq &\\alpha \\leq \\frac{3}{5}\\\\ \\therefore \\; \\text{This answer is }& \\frac{2}{5}\\leq D \\leq \\frac{3}{5} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} V_0&=\\frac{\\alpha V_s}{1-\\alpha }\\\\ \\text{when, } V_s&=32V \\text{ and }V_0=48V\\\\ \\alpha &=\\frac{3}{5}\\\\ \\text{when, }V_s&=72V \\text{ and }V_0=48V\\\\ \\alpha &=\\frac{2}{5}\\\\ \\frac{2}{5}\\leq &\\alpha \\leq \\frac{3}{5}\\\\ \\therefore \\; \\text{This answer is }& \\frac{2}{5}\\leq D \\leq \\frac{3}{5} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q54": {
       "question_uid": "pp:ee:2017:q54",
-      "exam_uid": "ee:2017:set1:q54",
+      "exam_uid": "ee:2017:set1:main:q54",
       "title": "GATE EE 2017 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "NAT",
       "marks": 2,
@@ -2162,13 +2436,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "Load on 6.6 kV winding = 900 kVA @0.8 pf lag\n\n$\\therefore \\;\\; I_2=\\frac{900 \\times 10^3}{\\sqrt{3} \\times 6.6 \\times 10^3}$\n\n$\\;\\;\\;\\;=78.73\\angle -36.86^{\\circ} A$\n\nTransforamtion Ratio\n\n$$\\begin{aligned} k &=\\frac{1.1}{6.6}=\\frac{1}{6} \\\\ \\therefore \\;\\; I'_2&=\\frac{I_2}{k}=472.4\\angle -36.86^{\\circ} A \\end{aligned}$$\n\nLoad on 400 V winding = 300 kVA at 0.6 p.f.\n\n$\\therefore \\;\\; I_3=\\frac{300 \\times 10^3}{\\sqrt{3} \\times 400}$  $=433.025\\angle -53.13^{\\circ}A$\n\nTransformation ratio $= \\frac{1.1 \\times 1000}{\\frac{400}{\\sqrt{3}}}=4.76$\n\n$$\\begin{aligned} I'_3 &=\\frac{I_3}{k}=\\frac{4333.025}{4.76} \\\\ &= 90.97\\angle -53.13^{\\circ}A \\end{aligned}$$\n\nSo, line value of current\n\n$$\\begin{aligned} &=\\sqrt{3} \\times 90.97\\angle -53.13^{\\circ} \\\\ &= 157.56 \\angle -53.13^{\\circ} \\end{aligned}$$\n\nCurrent drawn by 1.1 kV winding will be\n\n$$\\begin{aligned} I_1&=I'_2+I'_3 \\\\ &=472.4\\angle -36.86 +157.56\\angle -53.13^{\\circ} \\\\ &=377.96 -j283.37 +94.53 -126.04 \\\\ &= 472.49 -j409.41\\\\ &= 625.19\\angle -40.9^{\\circ}A \\end{aligned}$$\n\nTherefore, the correct answer is **625** (acceptable range: [620, 630])."
+        "markdown": "Load on 6.6 kV winding = 900 kVA @0.8 pf lag\n\n$\\therefore \\;\\; I_2=\\frac{900 \\times 10^3}{\\sqrt{3} \\times 6.6 \\times 10^3}$\n\n$\\;\\;\\;\\;=78.73\\angle -36.86^{\\circ} A$\n\nTransforamtion Ratio\n\n$$\\begin{aligned} k &=\\frac{1.1}{6.6}=\\frac{1}{6} \\\\ \\therefore \\;\\; I'_2&=\\frac{I_2}{k}=472.4\\angle -36.86^{\\circ} A \\end{aligned}$$\n\nLoad on 400 V winding = 300 kVA at 0.6 p.f.\n\n$\\therefore \\;\\; I_3=\\frac{300 \\times 10^3}{\\sqrt{3} \\times 400}$  $=433.025\\angle -53.13^{\\circ}A$\n\nTransformation ratio $= \\frac{1.1 \\times 1000}{\\frac{400}{\\sqrt{3}}}=4.76$\n\n$$\\begin{aligned} I'_3 &=\\frac{I_3}{k}=\\frac{4333.025}{4.76} \\\\ &= 90.97\\angle -53.13^{\\circ}A \\end{aligned}$$\n\nSo, line value of current\n\n$$\\begin{aligned} &=\\sqrt{3} \\times 90.97\\angle -53.13^{\\circ} \\\\ &= 157.56 \\angle -53.13^{\\circ} \\end{aligned}$$\n\nCurrent drawn by 1.1 kV winding will be\n\n$$\\begin{aligned} I_1&=I'_2+I'_3 \\\\ &=472.4\\angle -36.86 +157.56\\angle -53.13^{\\circ} \\\\ &=377.96 -j283.37 +94.53 -126.04 \\\\ &= 472.49 -j409.41\\\\ &= 625.19\\angle -40.9^{\\circ}A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2017:q55": {
       "question_uid": "pp:ee:2017:q55",
-      "exam_uid": "ee:2017:set1:q55",
+      "exam_uid": "ee:2017:set1:main:q55",
       "title": "GATE EE 2017 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateee-2017-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2203,7 +2481,8 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "From the diagram C is $y=x$\n\n$$\\begin{aligned} I &=\\int _C (x^2+iy^2)dz\\\\ &= \\int _C (x^2+iy^2)(dx+idy)\\\\ &= \\int _C(x^2++ix^2)(dx+idy)\\\\ &= \\int _Cx^2 \\; dx+ix^2\\; dx+ix^2 \\; dx-x^2 \\; dx\\\\ &= 2i\\int_{0}^{1}x^2 \\; dx=\\left.\\begin{matrix} 2i\\left ( \\frac{x^3}{3} \\right ) \\end{matrix}\\right|_0^1=\\frac{2i}{3} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "From the diagram C is $y=x$\n\n$$\\begin{aligned} I &=\\int _C (x^2+iy^2)dz\\\\ &= \\int _C (x^2+iy^2)(dx+idy)\\\\ &= \\int _C(x^2++ix^2)(dx+idy)\\\\ &= \\int _Cx^2 \\; dx+ix^2\\; dx+ix^2 \\; dx-x^2 \\; dx\\\\ &= 2i\\int_{0}^{1}x^2 \\; dx=\\left.\\begin{matrix} 2i\\left ( \\frac{x^3}{3} \\right ) \\end{matrix}\\right|_0^1=\\frac{2i}{3} \\end{aligned}$$",
+        "images": []
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.649Z",
+  "generatedAt": "2026-10-17T21:30:25.626Z",
   "shardKey": "ce-2018-s1",
   "yearSetKey": "ce-2018-s1",
   "yearSetIdentity": "ce:2018:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ce:2018:q1": {
       "question_uid": "pp:ce:2018:q1",
-      "exam_uid": "ce:2018:set1:q1",
+      "exam_uid": "ce:2018:set1:main:q1",
       "title": "GATE CE 2018 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Option (A): $\\left | A \\right |=6-5=1$\n\nOption (B): $\\left | A \\right |=9-4=5$\n\nOption (C): $\\left | A \\right |=12-12=0$\n\nOption (D): $\\left | A \\right |=8-18=-10$\n\nHence matrix (C) is singular.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Option (A): $\\left | A \\right |=6-5=1$\n\nOption (B): $\\left | A \\right |=9-4=5$\n\nOption (C): $\\left | A \\right |=12-12=0$\n\nOption (D): $\\left | A \\right |=8-18=-10$\n\nHence matrix (C) is singular.",
+        "images": []
       }
     },
     "pp:ce:2018:q2": {
       "question_uid": "pp:ce:2018:q2",
-      "exam_uid": "ce:2018:set1:q2",
+      "exam_uid": "ce:2018:set1:main:q2",
       "title": "GATE CE 2018 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} \\left | Q \\right |&=\\frac{3}{7}\\left ( -\\frac{9}{49}-\\frac{12}{49} \\right )-\\frac{2}{7}\\left ( \\frac{18}{49}-\\frac{4}{49} \\right )+\\frac{6}{7}\\left ( \\frac{-36}{49}-\\frac{6}{49} \\right ) \\\\  &=-1 \\\\   Adj. \\; Q&=\\begin{bmatrix} -\\frac{21}{49} & \\frac{42}{49} &-\\frac{14}{49} \\\\ -\\frac{14}{49}& -\\frac{21}{49} & -\\frac{42}{49}\\\\ -\\frac{42}{49} & -\\frac{14}{49} & \\frac{21}{42} \\end{bmatrix} \\\\ \\therefore\\;\\;    Q^{-1}&=\\frac{Adj\\: Q}{\\left | Q \\right |}=\\begin{bmatrix} \\frac{3}{7} & -\\frac{6}{7} & \\frac{2}{7}\\\\ \\frac{2}{7} & \\frac{3}{7} & \\frac{6}{7}\\\\ \\frac{6}{7} & \\frac{2}{7} & -\\frac{3}{7} \\end{bmatrix} \\end{aligned}$$\n\nOr $\\because$ Q is orthogonal\n\n$\\therefore  \\;\\; Q^{-1}=Q^{T}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\left | Q \\right |&=\\frac{3}{7}\\left ( -\\frac{9}{49}-\\frac{12}{49} \\right )-\\frac{2}{7}\\left ( \\frac{18}{49}-\\frac{4}{49} \\right )+\\frac{6}{7}\\left ( \\frac{-36}{49}-\\frac{6}{49} \\right ) \\\\  &=-1 \\\\   Adj. \\; Q&=\\begin{bmatrix} -\\frac{21}{49} & \\frac{42}{49} &-\\frac{14}{49} \\\\ -\\frac{14}{49}& -\\frac{21}{49} & -\\frac{42}{49}\\\\ -\\frac{42}{49} & -\\frac{14}{49} & \\frac{21}{42} \\end{bmatrix} \\\\ \\therefore\\;\\;    Q^{-1}&=\\frac{Adj\\: Q}{\\left | Q \\right |}=\\begin{bmatrix} \\frac{3}{7} & -\\frac{6}{7} & \\frac{2}{7}\\\\ \\frac{2}{7} & \\frac{3}{7} & \\frac{6}{7}\\\\ \\frac{6}{7} & \\frac{2}{7} & -\\frac{3}{7} \\end{bmatrix} \\end{aligned}$$\n\nOr $\\because$ Q is orthogonal\n\n$\\therefore  \\;\\; Q^{-1}=Q^{T}$",
+        "images": []
       }
     },
     "pp:ce:2018:q3": {
       "question_uid": "pp:ce:2018:q3",
-      "exam_uid": "ce:2018:set1:q3",
+      "exam_uid": "ce:2018:set1:main:q3",
       "title": "GATE CE 2018 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,32 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$f\\left ( x \\right )=x^{3}$ at $x=0$\n\n<img src=\"/question-images/ce/2018/ce-2018-979059a80f.webp\" />\n\nAt $x=0$, the function $y=x^{3}$ has neither minima nor maxima.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$f\\left ( x \\right )=x^{3}$ at $x=0$\n\n<img src=\"/question-images/ce/2018/ce-2018-979059a80f.webp\" />\n\nAt $x=0$, the function $y=x^{3}$ has neither minima nor maxima.",
+        "images": [
+          "/question-images/ce/2018/ce-2018-979059a80f.webp"
+        ]
       }
     },
     "pp:ce:2018:q4": {
       "question_uid": "pp:ce:2018:q4",
-      "exam_uid": "ce:2018:set1:q4",
+      "exam_uid": "ce:2018:set1:main:q4",
       "title": "GATE CE 2018 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -154,25 +174,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "footing-columns-beams-and-slabs",
+          "subtopicLabel": "Footing, Columns, Beams and Slabs"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-rcc-structures",
+          "footing-columns-beams-and-slabs"
         ]
       },
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
-        "markdown": "$$\\begin{aligned} \\text { For column, } & P=\\frac{\\pi^{2} E I_{\\min }}{L^{2}} \\\\ &=\\frac{\\pi^{2} E\\left(\\frac{2 a \\times a^{3}}{12}\\right)}{h^{2}}=\\frac{\\pi^{2} E a^{4}}{6 h^{2}}\\\\ \\text{For new column, }P&=\\frac{\\pi^{2} E\\left[\\frac{3 a \\times(0.5 a)^{3}}{12}\\right]}{(1.5 h)^{2}} \\\\ &=\\frac{1}{12} \\times \\frac{\\pi^{2} E a^{4}}{6 h^{2}}=\\frac{P}{12} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\text { For column, } & P=\\frac{\\pi^{2} E I_{\\min }}{L^{2}} \\\\ &=\\frac{\\pi^{2} E\\left(\\frac{2 a \\times a^{3}}{12}\\right)}{h^{2}}=\\frac{\\pi^{2} E a^{4}}{6 h^{2}}\\\\ \\text{For new column, }P&=\\frac{\\pi^{2} E\\left[\\frac{3 a \\times(0.5 a)^{3}}{12}\\right]}{(1.5 h)^{2}} \\\\ &=\\frac{1}{12} \\times \\frac{\\pi^{2} E a^{4}}{6 h^{2}}=\\frac{P}{12} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q5": {
       "question_uid": "pp:ce:2018:q5",
-      "exam_uid": "ce:2018:set1:q5",
+      "exam_uid": "ce:2018:set1:main:q5",
       "title": "GATE CE 2018 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -194,25 +219,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "beams",
+          "subtopicLabel": "Beams"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-design-of-steel-structures",
+          "beams"
         ]
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Beams",
-        "markdown": "$$\\begin{aligned}\n\n&\\text{Area required for base plate}\\\\ &=\\frac{\\text{Factored load}}{\\text{Bearing capacity of concrete}}\\\\ &=\\frac{2000\\times 10^{3}}{0.45\\times 20}=222222.222mm^{2}\n\n\\end{aligned}$$\n\nSo, side of base plate $=\\sqrt{\\text{Area}}=471.4 mm= 47.14 cm$\n\nSince, provided area must be more than required\n\nSo, answer should be 48 cm.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned}\n\n&\\text{Area required for base plate}\\\\ &=\\frac{\\text{Factored load}}{\\text{Bearing capacity of concrete}}\\\\ &=\\frac{2000\\times 10^{3}}{0.45\\times 20}=222222.222mm^{2}\n\n\\end{aligned}$$\n\nSo, side of base plate $=\\sqrt{\\text{Area}}=471.4 mm= 47.14 cm$\n\nSince, provided area must be more than required\n\nSo, answer should be 48 cm.",
+        "images": []
       }
     },
     "pp:ce:2018:q6": {
       "question_uid": "pp:ce:2018:q6",
-      "exam_uid": "ce:2018:set1:q6",
+      "exam_uid": "ce:2018:set1:main:q6",
       "title": "GATE CE 2018 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -234,25 +264,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-construction-materials-and-management",
+          "subjectLabel": "Construction Materials and Management",
+          "subtopicSlug": "general",
+          "subtopicLabel": "Construction Materials and Management"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-construction-materials-and-management",
+          "general"
         ]
       },
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
-        "markdown": "Le Chatelier Apparatus is used to detemine the soundness of cement as per IS code4031 (part 3); this cement testing procedure is called Le Chatelier test for determining the unsoundness properties of cement due to presence of \"free lime\".\n\nTherefore, the correct answer is **D**."
+        "markdown": "Le Chatelier Apparatus is used to detemine the soundness of cement as per IS code4031 (part 3); this cement testing procedure is called Le Chatelier test for determining the unsoundness properties of cement due to presence of \"free lime\".",
+        "images": []
       }
     },
     "pp:ce:2018:q7": {
       "question_uid": "pp:ce:2018:q7",
-      "exam_uid": "ce:2018:set1:q7",
+      "exam_uid": "ce:2018:set1:main:q7",
       "title": "GATE CE 2018 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -274,25 +309,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "working-stress-and-limit-state-method",
+          "subtopicLabel": "Working Stress and Limit State Method"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-rcc-structures",
+          "working-stress-and-limit-state-method"
         ]
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "Creep is inelastic deformation with time due to\n\nsustained loading\n\nTherefore, the correct answer is **A**."
+        "markdown": "Creep is inelastic deformation with time due to\n\nsustained loading",
+        "images": []
       }
     },
     "pp:ce:2018:q8": {
       "question_uid": "pp:ce:2018:q8",
-      "exam_uid": "ce:2018:set1:q8",
+      "exam_uid": "ce:2018:set1:main:q8",
       "title": "GATE CE 2018 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -314,25 +354,32 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "torsion-of-shafts-and-pressure-vessels",
+          "subtopicLabel": "Torsion of Shafts and Pressure Vessels"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-solid-mechanics",
+          "torsion-of-shafts-and-pressure-vessels"
         ]
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Torsion of Shafts and Pressure Vessels",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-8b146898e2.webp\" />\n\nThe only non-zero stresses are $\\tau_{\\theta z}=\\tau_{z \\theta}=\\tau$\n\nif $\\theta$ is $90^{\\circ}$ then $\\theta=y$\n\n$$\\begin{aligned} \\text{Hence}\\quad\\tau_{z y} &=\\tau_{y z}=\\tau_{\\max } \\\\ &=16 T / \\pi \\mathrm{d}^{3}=0.815 \\mathrm{MPa} \\end{aligned}$$\n\nBut in rest of the planes shear stresses are zero, hence, $\\tau_{x y}=\\tau_{y x}=0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-8b146898e2.webp\" />\n\nThe only non-zero stresses are $\\tau_{\\theta z}=\\tau_{z \\theta}=\\tau$\n\nif $\\theta$ is $90^{\\circ}$ then $\\theta=y$\n\n$$\\begin{aligned} \\text{Hence}\\quad\\tau_{z y} &=\\tau_{y z}=\\tau_{\\max } \\\\ &=16 T / \\pi \\mathrm{d}^{3}=0.815 \\mathrm{MPa} \\end{aligned}$$\n\nBut in rest of the planes shear stresses are zero, hence, $\\tau_{x y}=\\tau_{y x}=0$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-8b146898e2.webp"
+        ]
       }
     },
     "pp:ce:2018:q9": {
       "question_uid": "pp:ce:2018:q9",
-      "exam_uid": "ce:2018:set1:q9",
+      "exam_uid": "ce:2018:set1:main:q9",
       "title": "GATE CE 2018 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -354,25 +401,32 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "footing-columns-beams-and-slabs",
+          "subtopicLabel": "Footing, Columns, Beams and Slabs"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-rcc-structures",
+          "footing-columns-beams-and-slabs"
         ]
       },
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-1335ba461b.webp\" />\n\nDue to presence of more compression steel in\n\nsection Y, NA of section of Y is above than as\n\nof X. It means Y is more under-reinforced than\n\nX so ductility of Y is more.\n\nSince compression steel of Y is more so flexure\n\nresistance of X is less than as of Y.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-1335ba461b.webp\" />\n\nDue to presence of more compression steel in\n\nsection Y, NA of section of Y is above than as\n\nof X. It means Y is more under-reinforced than\n\nX so ductility of Y is more.\n\nSince compression steel of Y is more so flexure\n\nresistance of X is less than as of Y.",
+        "images": [
+          "/question-images/ce/2018/ce-2018-1335ba461b.webp"
+        ]
       }
     },
     "pp:ce:2018:q10": {
       "question_uid": "pp:ce:2018:q10",
-      "exam_uid": "ce:2018:set1:q10",
+      "exam_uid": "ce:2018:set1:main:q10",
       "title": "GATE CE 2018 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -394,25 +448,30 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shallow-foundation-and-bearing-capacity",
+          "subtopicLabel": "Shallow Foundation and Bearing Capacity"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-geotechnical-engineering",
+          "shallow-foundation-and-bearing-capacity"
         ]
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "For strip footing on sand (c=0)\n\n$q_{u}=\\gamma D_{f} N_{q}+0.5 \\mathrm{B} \\gamma N_{\\gamma}$\n\nIn flooding condition water level rises to base\n\nof footing hence IIIrd term unit weight of soil\n\nwill change and IInd term unit weight will be unaffected.\n\n$$\\begin{array}{ll}\n\n\\therefore & q_{u}=\\gamma D_{f} N_{q}+0.5 B \\gamma N_{\\gamma} \\\\\n\n\\because & \\gamma \\simeq \\frac{1}{2} \\gamma_{s a t}\n\n\\end{array}$$\n\nHence third term reduced and second term will\n\nbe same thereby percentage reduction will not be 50%.\n\nAccording to option approach answer should be 25%\n\nNote: If water table rises to ground level then\n\nboth $\\gamma$ will reduce to $\\gamma$.  Hence, percentage\n\nreduction would be approximately 50%.\n\nTherefore, the correct answer is **C**."
+        "markdown": "For strip footing on sand (c=0)\n\n$q_{u}=\\gamma D_{f} N_{q}+0.5 \\mathrm{B} \\gamma N_{\\gamma}$\n\nIn flooding condition water level rises to base\n\nof footing hence IIIrd term unit weight of soil\n\nwill change and IInd term unit weight will be unaffected.\n\n$$\\begin{array}{ll}\n\n\\therefore & q_{u}=\\gamma D_{f} N_{q}+0.5 B \\gamma N_{\\gamma} \\\\\n\n\\because & \\gamma \\simeq \\frac{1}{2} \\gamma_{s a t}\n\n\\end{array}$$\n\nHence third term reduced and second term will\n\nbe same thereby percentage reduction will not be 50%.\n\nAccording to option approach answer should be 25%\n\nNote: If water table rises to ground level then\n\nboth $\\gamma$ will reduce to $\\gamma$.  Hence, percentage\n\nreduction would be approximately 50%.",
+        "images": []
       }
     },
     "pp:ce:2018:q11": {
       "question_uid": "pp:ce:2018:q11",
-      "exam_uid": "ce:2018:set1:q11",
+      "exam_uid": "ce:2018:set1:main:q11",
       "title": "GATE CE 2018 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -447,13 +506,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "Footing placed on surface\n\n$\\therefore \\quad D_{f}=0$\n\nFor square footing,\n\n$q_{u}=C N_{c}+\\gamma D_{f} N_{q}+0.4 B \\gamma N_{\\gamma}$\n\nFor circular footing,\n\n$q_{u}=C N_{c}+\\gamma D_{f} N_{q}+0.3 B \\gamma N_{\\gamma}$\n\nFor sandy soil,\n\n$$\\begin{aligned} C&=0\\\\ \\text{Ratio }\\frac{\\left(q_{u}\\right)_{\\text {circular}}}{\\left(q_{u}\\right)_{\\text {square}}}&=\\frac{3}{4} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Footing placed on surface\n\n$\\therefore \\quad D_{f}=0$\n\nFor square footing,\n\n$q_{u}=C N_{c}+\\gamma D_{f} N_{q}+0.4 B \\gamma N_{\\gamma}$\n\nFor circular footing,\n\n$q_{u}=C N_{c}+\\gamma D_{f} N_{q}+0.3 B \\gamma N_{\\gamma}$\n\nFor sandy soil,\n\n$$\\begin{aligned} C&=0\\\\ \\text{Ratio }\\frac{\\left(q_{u}\\right)_{\\text {circular}}}{\\left(q_{u}\\right)_{\\text {square}}}&=\\frac{3}{4} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q12": {
       "question_uid": "pp:ce:2018:q12",
-      "exam_uid": "ce:2018:set1:q12",
+      "exam_uid": "ce:2018:set1:main:q12",
       "title": "GATE CE 2018 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -487,14 +550,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Fluid Mechanics and Hydraulics - Fluid Properties and Manometry",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Fluid Mechanics and Hydraulics** (specifically *Fluid Properties and Manometry*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Fluid Properties and Manometry**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *inviscid and incompressible fluid flow*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (inviscid and incompressible fluid flow)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q13": {
       "question_uid": "pp:ce:2018:q13",
-      "exam_uid": "ce:2018:set1:q13",
+      "exam_uid": "ce:2018:set1:main:q13",
       "title": "GATE CE 2018 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -529,13 +595,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Municipal Solid Waste Management",
-        "markdown": "Total no. of kms. Travelled by all the vehicles\n\n$=20000\\times 12000\\: km=24\\times 10^{7}\\: km$\n\nTotal $NO_{x}$ emission\n\n$=2\\: g/km\\times 24\\times 10^{7}\\: km$\n\n$=48\\times 10^{7}\\: g$\n\n$=48\\times 10^{4}\\: kg$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Total no. of kms. Travelled by all the vehicles\n\n$=20000\\times 12000\\: km=24\\times 10^{7}\\: km$\n\nTotal $NO_{x}$ emission\n\n$=2\\: g/km\\times 24\\times 10^{7}\\: km$\n\n$=48\\times 10^{7}\\: g$\n\n$=48\\times 10^{4}\\: kg$",
+        "images": []
       }
     },
     "pp:ce:2018:q14": {
       "question_uid": "pp:ce:2018:q14",
-      "exam_uid": "ce:2018:set1:q14",
+      "exam_uid": "ce:2018:set1:main:q14",
       "title": "GATE CE 2018 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -569,14 +639,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Transportation Engineering - Highway Materials",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Highway Materials*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Highway Materials**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *viscosity of bitumen at 60$^{\\circ}C$ is between 2400 and 3600 Poise*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (viscosity of bitumen at 60$^{\\circ}C$ is between 2400 and 3600 Poise)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q15": {
       "question_uid": "pp:ce:2018:q15",
-      "exam_uid": "ce:2018:set1:q15",
+      "exam_uid": "ce:2018:set1:main:q15",
       "title": "GATE CE 2018 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -611,13 +684,19 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-d56d3e23b7.webp\" />\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-d56d3e23b7.webp\" />",
+        "images": [
+          "/question-images/ce/2018/ce-2018-d56d3e23b7.webp"
+        ]
       }
     },
     "pp:ce:2018:q16": {
       "question_uid": "pp:ce:2018:q16",
-      "exam_uid": "ce:2018:set1:q16",
+      "exam_uid": "ce:2018:set1:main:q16",
       "title": "GATE CE 2018 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -651,14 +730,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Traffic Engineering*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Traffic Engineering**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *total delay is minimized*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (total delay is minimized)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q17": {
       "question_uid": "pp:ce:2018:q17",
-      "exam_uid": "ce:2018:set1:q17",
+      "exam_uid": "ce:2018:set1:main:q17",
       "title": "GATE CE 2018 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -691,13 +773,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
-        "markdown": "$$\\begin{aligned} \\omega_{z} &=\\frac{1}{2}\\left[\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right] \\\\ &=\\frac{1}{2}\\left[\\frac{\\partial}{\\partial x}(-x y)-\\frac{\\partial}{\\partial y}(y)^{2}\\right] \\\\ &=\\frac{1}{2}[-y-2 y] \\\\ &=-\\frac{3 y}{2} \\\\ \\text { At point } &(0,-1,1) \\\\ \\omega_{z} &=-\\frac{3}{2} \\times-1=1.50 \\mathrm{rad} / \\mathrm{s} \\end{aligned}$$\n\nNote: Since the density variation is not given continuity equation of incompressible flow can not be applied directly to check the possibility of flow.\n\nTherefore, the correct answer is **1.5**."
+        "markdown": "$$\\begin{aligned} \\omega_{z} &=\\frac{1}{2}\\left[\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right] \\\\ &=\\frac{1}{2}\\left[\\frac{\\partial}{\\partial x}(-x y)-\\frac{\\partial}{\\partial y}(y)^{2}\\right] \\\\ &=\\frac{1}{2}[-y-2 y] \\\\ &=-\\frac{3 y}{2} \\\\ \\text { At point } &(0,-1,1) \\\\ \\omega_{z} &=-\\frac{3}{2} \\times-1=1.50 \\mathrm{rad} / \\mathrm{s} \\end{aligned}$$\n\nNote: Since the density variation is not given continuity equation of incompressible flow can not be applied directly to check the possibility of flow.",
+        "images": []
       }
     },
     "pp:ce:2018:q18": {
       "question_uid": "pp:ce:2018:q18",
-      "exam_uid": "ce:2018:set1:q18",
+      "exam_uid": "ce:2018:set1:main:q18",
       "title": "GATE CE 2018 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -730,13 +816,17 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "Average strength,\n\n$$\\begin{aligned} \\mu &=\\frac{(4 \\times 23)+(2 \\times 28)+(5 \\times 22.5)+(5 \\times 31)+(4 \\times 29)}{20} \\\\ &=26.575 \\mathrm{MPa} \\\\ \\sigma &=\\sqrt{\\frac{\\Sigma(\\mu-f)^{2}}{n-1}} \\\\ &=\\sqrt{\\frac{\\begin{array}{c} (26.575-23)^{2} \\times 4+(26.575-28)^{2} \\times 2\\\\ +(26.575-22.5)^{2} \\times 5+(26.575-31)^{2} \\\\ \\times 5+(26.575-29)^{2} \\times 4 \\end{array}}{(20-1)}} \\\\&=3.7 \\end{aligned}$$\n\nNow, $\\mu-3 \\sigma=26.575-3 \\times 3.7=15.48$\n\nThus, no specimen is having compressive strength less than $\\mu-3 \\sigma.$\n\nTherefore, the correct answer is **0**."
+        "markdown": "Average strength,\n\n$$\\begin{aligned} \\mu &=\\frac{(4 \\times 23)+(2 \\times 28)+(5 \\times 22.5)+(5 \\times 31)+(4 \\times 29)}{20} \\\\ &=26.575 \\mathrm{MPa} \\\\ \\sigma &=\\sqrt{\\frac{\\Sigma(\\mu-f)^{2}}{n-1}} \\\\ &=\\sqrt{\\frac{\\begin{array}{c} (26.575-23)^{2} \\times 4+(26.575-28)^{2} \\times 2\\\\ +(26.575-22.5)^{2} \\times 5+(26.575-31)^{2} \\\\ \\times 5+(26.575-29)^{2} \\times 4 \\end{array}}{(20-1)}} \\\\&=3.7 \\end{aligned}$$\n\nNow, $\\mu-3 \\sigma=26.575-3 \\times 3.7=15.48$\n\nThus, no specimen is having compressive strength less than $\\mu-3 \\sigma.$",
+        "images": []
       }
     },
     "pp:ce:2018:q19": {
       "question_uid": "pp:ce:2018:q19",
-      "exam_uid": "ce:2018:set1:q19",
+      "exam_uid": "ce:2018:set1:main:q19",
       "title": "GATE CE 2018 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -769,13 +859,17 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "Direct bending tensile stress,\n\n$f_{a}=150 Mpa$\n\nDirect shear stress,\n\n$q=50 Mpa$\n\nAccording to IS 800:2007, clause 10.5.10.1.1\n\nThe equivalent stress,\n\n$$\\begin{aligned} f_{e}&=\\sqrt{f^{2}_{a}+3q^{2}}\\leq \\frac{f_{u}}{\\sqrt{3}\\gamma _{mW}} \\\\  f_{e}&=\\sqrt{150^{2}+3\\times 50^{2}} \\\\&=173.21 MPa\\\\ \\Rightarrow \\;\\; f_{e} & \\leq \\frac{f_{u}}{\\sqrt{3}\\gamma _{mW}} \\\\&=\\frac{400}{\\sqrt{3}\\times 1.25} \\\\ &=184.75 MPa \\end{aligned}$$\n\n(Hence OK)\n\nNote: The above check for combination of stressed need not be done for fillet welds where the sum of normal and shear stresses does not exceed $f_{wd}$ [Clause 10.5.10.1.2(b)].\n\nThus, $f_{a}+q=150+50=200$ MPa\n\n$f_{a}+q \\gt f_{wd}$ (= 184.75 MPa)\n\n$\\Rightarrow  \\;\\;f_{e}= 173.21$ MPa\n\nThus, the weld is designed for an equivelent stress of 173.21 MPa\n\nTherefore, the correct answer is **0**."
+        "markdown": "Direct bending tensile stress,\n\n$f_{a}=150 Mpa$\n\nDirect shear stress,\n\n$q=50 Mpa$\n\nAccording to IS 800:2007, clause 10.5.10.1.1\n\nThe equivalent stress,\n\n$$\\begin{aligned} f_{e}&=\\sqrt{f^{2}_{a}+3q^{2}}\\leq \\frac{f_{u}}{\\sqrt{3}\\gamma _{mW}} \\\\  f_{e}&=\\sqrt{150^{2}+3\\times 50^{2}} \\\\&=173.21 MPa\\\\ \\Rightarrow \\;\\; f_{e} & \\leq \\frac{f_{u}}{\\sqrt{3}\\gamma _{mW}} \\\\&=\\frac{400}{\\sqrt{3}\\times 1.25} \\\\ &=184.75 MPa \\end{aligned}$$\n\n(Hence OK)\n\nNote: The above check for combination of stressed need not be done for fillet welds where the sum of normal and shear stresses does not exceed $f_{wd}$ [Clause 10.5.10.1.2(b)].\n\nThus, $f_{a}+q=150+50=200$ MPa\n\n$f_{a}+q \\gt f_{wd}$ (= 184.75 MPa)\n\n$\\Rightarrow  \\;\\;f_{e}= 173.21$ MPa\n\nThus, the weld is designed for an equivelent stress of 173.21 MPa",
+        "images": []
       }
     },
     "pp:ce:2018:q20": {
       "question_uid": "pp:ce:2018:q20",
-      "exam_uid": "ce:2018:set1:q20",
+      "exam_uid": "ce:2018:set1:main:q20",
       "title": "GATE CE 2018 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -808,13 +902,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "Dry soil mass =88 gm\n\nVolume of dry soil = 50 cc\n\nDry density of soil mass,\n\n$$\\begin{aligned} \\rho_{d}&=\\frac{M_{d}}{V_{d}}=\\frac{88}{50} \\mathrm{gm} / \\mathrm{cc}\\\\ \\therefore \\text{ Shrinkage limit, } w_{s}&=\\frac{1}{R}-\\frac{1}{G}=\\frac{1}{\\left(\\rho_{d} / \\rho_{w}\\right)}-\\frac{1}{G} \\\\ w_{s} &=\\frac{\\rho_{w}}{\\rho_{d}}-\\frac{1}{G} \\\\ &=\\frac{1}{1.76}-\\frac{1}{2.71}=0.1990 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "Dry soil mass =88 gm\n\nVolume of dry soil = 50 cc\n\nDry density of soil mass,\n\n$$\\begin{aligned} \\rho_{d}&=\\frac{M_{d}}{V_{d}}=\\frac{88}{50} \\mathrm{gm} / \\mathrm{cc}\\\\ \\therefore \\text{ Shrinkage limit, } w_{s}&=\\frac{1}{R}-\\frac{1}{G}=\\frac{1}{\\left(\\rho_{d} / \\rho_{w}\\right)}-\\frac{1}{G} \\\\ w_{s} &=\\frac{\\rho_{w}}{\\rho_{d}}-\\frac{1}{G} \\\\ &=\\frac{1}{1.76}-\\frac{1}{2.71}=0.1990 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q21": {
       "question_uid": "pp:ce:2018:q21",
-      "exam_uid": "ce:2018:set1:q21",
+      "exam_uid": "ce:2018:set1:main:q21",
       "title": "GATE CE 2018 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -847,13 +945,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "$$\\begin{aligned} \\text { Area ratio } &=\\frac{A_{\\text {outer }}-A_{\\text {inne }} r}{A_{\\text {inner }}} \\times 100 \\\\ &=\\frac{\\frac{\\pi}{4} D_{0}^{2}-\\frac{\\pi}{4} D_{i}^{2}}{\\frac{\\pi}{4} D_{i}^{2}} \\times 100 \\\\ &=\\frac{\\frac{\\pi}{4}(106)^{2}-\\frac{\\pi}{4}(100)^{2}}{\\frac{\\pi}{4}(100)^{2}} \\times 100 \\\\ &=12.36 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "$$\\begin{aligned} \\text { Area ratio } &=\\frac{A_{\\text {outer }}-A_{\\text {inne }} r}{A_{\\text {inner }}} \\times 100 \\\\ &=\\frac{\\frac{\\pi}{4} D_{0}^{2}-\\frac{\\pi}{4} D_{i}^{2}}{\\frac{\\pi}{4} D_{i}^{2}} \\times 100 \\\\ &=\\frac{\\frac{\\pi}{4}(106)^{2}-\\frac{\\pi}{4}(100)^{2}}{\\frac{\\pi}{4}(100)^{2}} \\times 100 \\\\ &=12.36 \\% \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q22": {
       "question_uid": "pp:ce:2018:q22",
-      "exam_uid": "ce:2018:set1:q22",
+      "exam_uid": "ce:2018:set1:main:q22",
       "title": "GATE CE 2018 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -886,13 +988,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Dimensional Analysis",
-        "markdown": "Froude law is valid\n\n$$\\begin{aligned} Q_{r} &=L_{r}^{25} \\\\ \\frac{Q_{m}}{Q_{p}} &=\\left(\\frac{1}{50}\\right)^{25} \\\\ \\frac{Q_{m}}{1000} &=\\left(\\frac{1}{50}\\right)^{25} \\\\ Q_{m} &=0.0566 \\mathrm{m}^{3 / \\mathrm{s}} \\\\ \\text{So},\\quad Q_{m} & \\simeq 0.06 \\mathrm{m}^{3 / \\mathrm{s}} \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "Froude law is valid\n\n$$\\begin{aligned} Q_{r} &=L_{r}^{25} \\\\ \\frac{Q_{m}}{Q_{p}} &=\\left(\\frac{1}{50}\\right)^{25} \\\\ \\frac{Q_{m}}{1000} &=\\left(\\frac{1}{50}\\right)^{25} \\\\ Q_{m} &=0.0566 \\mathrm{m}^{3 / \\mathrm{s}} \\\\ \\text{So},\\quad Q_{m} & \\simeq 0.06 \\mathrm{m}^{3 / \\mathrm{s}} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q23": {
       "question_uid": "pp:ce:2018:q23",
-      "exam_uid": "ce:2018:set1:q23",
+      "exam_uid": "ce:2018:set1:main:q23",
       "title": "GATE CE 2018 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -925,13 +1031,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "$$\\begin{aligned} E_{c}&=\\frac{3}{2} y_{c} \\\\ y_{c}&=\\left(\\frac{q^{2}}{g}\\right)^{1 / 3} \\\\ \\text{Hear},\\quad q&=\\frac{20}{10}=2 \\\\ \\Rightarrow\\quad E_{c}&=\\frac{3}{2}\\left(\\frac{2^{2}}{9.81}\\right)^{1 / 3}=1.11 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "$$\\begin{aligned} E_{c}&=\\frac{3}{2} y_{c} \\\\ y_{c}&=\\left(\\frac{q^{2}}{g}\\right)^{1 / 3} \\\\ \\text{Hear},\\quad q&=\\frac{20}{10}=2 \\\\ \\Rightarrow\\quad E_{c}&=\\frac{3}{2}\\left(\\frac{2^{2}}{9.81}\\right)^{1 / 3}=1.11 \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q24": {
       "question_uid": "pp:ce:2018:q24",
-      "exam_uid": "ce:2018:set1:q24",
+      "exam_uid": "ce:2018:set1:main:q24",
       "title": "GATE CE 2018 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -964,13 +1074,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Flood Routing and Flood Control",
-        "markdown": "In Muskingum flood routing method\n\n$$\\begin{aligned}C_{0}+C_{1}+C_{2}&=1 \\\\ \\Rightarrow \\;\\; C_{2}&=1-\\left ( -0.25 \\right )-0.55=0.7 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+        "markdown": "In Muskingum flood routing method\n\n$$\\begin{aligned}C_{0}+C_{1}+C_{2}&=1 \\\\ \\Rightarrow \\;\\; C_{2}&=1-\\left ( -0.25 \\right )-0.55=0.7 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q25": {
       "question_uid": "pp:ce:2018:q25",
-      "exam_uid": "ce:2018:set1:q25",
+      "exam_uid": "ce:2018:set1:main:q25",
       "title": "GATE CE 2018 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 1,
@@ -1003,13 +1117,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Disposal of Sewage Effluents",
-        "markdown": "Total weight generated by city\n\n$=40\\times 10^{6}\\: kg/year$\n\nWeight of MSW going into landfill\n\n$=0.9\\times 40\\times 10^{6}\\: kg/year$\n\n$=36\\times 10^{6}\\: kg/year$\n\nCompacted density\n\n$=550\\: kg/m^{3}$\n\nCompacted volume of MSW\n\n$=\\frac{36\\times 10^{6}\\: kg/year}{550\\: kg/m^{3}}$\n\n$=65454.5454\\: m^{3}/year$\n\nTotal landfill volume = Vol. of MSD + Vol. of cover\n\nGiven, Volume of MSW $=0.8\\times$ Total landfill volume\n\n$\\therefore$ Vol. of cover $=0.2\\times$ Total landfill volume\n\n$\\therefore$Total landfill volume $=\\frac{65454.5454}{0.8}m^{3}/year =81818.18175m^{3}/year$\n\nHeight of landfill $=3\\: m$\n\n$\\therefore$ Area of lanfill$=\\frac{81818.18175}{3} =27272.7\\: m^{2}/year$\n\nTherefore, the correct answer is **0**."
+        "markdown": "Total weight generated by city\n\n$=40\\times 10^{6}\\: kg/year$\n\nWeight of MSW going into landfill\n\n$=0.9\\times 40\\times 10^{6}\\: kg/year$\n\n$=36\\times 10^{6}\\: kg/year$\n\nCompacted density\n\n$=550\\: kg/m^{3}$\n\nCompacted volume of MSW\n\n$=\\frac{36\\times 10^{6}\\: kg/year}{550\\: kg/m^{3}}$\n\n$=65454.5454\\: m^{3}/year$\n\nTotal landfill volume = Vol. of MSD + Vol. of cover\n\nGiven, Volume of MSW $=0.8\\times$ Total landfill volume\n\n$\\therefore$ Vol. of cover $=0.2\\times$ Total landfill volume\n\n$\\therefore$Total landfill volume $=\\frac{65454.5454}{0.8}m^{3}/year =81818.18175m^{3}/year$\n\nHeight of landfill $=3\\: m$\n\n$\\therefore$ Area of lanfill$=\\frac{81818.18175}{3} =27272.7\\: m^{2}/year$",
+        "images": []
       }
     },
     "pp:ce:2018:q26": {
       "question_uid": "pp:ce:2018:q26",
-      "exam_uid": "ce:2018:set1:q26",
+      "exam_uid": "ce:2018:set1:main:q26",
       "title": "GATE CE 2018 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1044,13 +1162,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "The value of\n\n$$\\begin{aligned}&\\int_{0}^{\\pi }x\\cos ^{2}x\\, dx \\\\    &=\\int_{0}^{\\pi } \\left ( \\frac{x}{2}+\\frac{x\\cos 2x}{2} \\right )dx \\\\   &=\\left.\\begin{matrix} \\frac{x^{2}}{4} \\end{matrix}\\right|_{0}^{\\pi }+\\frac{1}{2}\\left ( \\frac{x\\sin 2x}{2}+\\frac{\\cos 2x}{4} \\right ) \\\\    &=\\frac{\\pi ^{2}}{4}+\\frac{1}{2}\\left \\{ \\left ( 0+\\frac{1}{4} \\right )-\\left ( 0+\\frac{1}{4} \\right ) \\right \\} \\\\    &=\\frac{\\pi ^{2}}{4}+\\frac{1}{2}\\left ( \\frac{1}{4}-\\frac{1}{4} \\right ) \\\\    &=\\frac{\\pi ^{2}}{4} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "The value of\n\n$$\\begin{aligned}&\\int_{0}^{\\pi }x\\cos ^{2}x\\, dx \\\\    &=\\int_{0}^{\\pi } \\left ( \\frac{x}{2}+\\frac{x\\cos 2x}{2} \\right )dx \\\\   &=\\left.\\begin{matrix} \\frac{x^{2}}{4} \\end{matrix}\\right|_{0}^{\\pi }+\\frac{1}{2}\\left ( \\frac{x\\sin 2x}{2}+\\frac{\\cos 2x}{4} \\right ) \\\\    &=\\frac{\\pi ^{2}}{4}+\\frac{1}{2}\\left \\{ \\left ( 0+\\frac{1}{4} \\right )-\\left ( 0+\\frac{1}{4} \\right ) \\right \\} \\\\    &=\\frac{\\pi ^{2}}{4}+\\frac{1}{2}\\left ( \\frac{1}{4}-\\frac{1}{4} \\right ) \\\\    &=\\frac{\\pi ^{2}}{4} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q27": {
       "question_uid": "pp:ce:2018:q27",
-      "exam_uid": "ce:2018:set1:q27",
+      "exam_uid": "ce:2018:set1:main:q27",
       "title": "GATE CE 2018 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1085,13 +1207,19 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Bending and Shear Stresses",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-f57a65a16c.webp\" />\n\n$$\\begin{aligned} I&=\\frac{(0.1)^4}{12} \\\\ \\text{Deflection }\\delta &=\\frac{Pl^2}{3eI} \\\\ 5 \\times 10^{-3}&=\\frac{P(2)^3}{3 \\times 2 \\times 10^11 \\times \\frac{(0.1)^4}{12}} \\\\ P&=3125N \\\\ \\text{Now, } M&= Pl=3125 \\times 2\\\\ &= 6250Nm\\\\ \\text{As, }\\frac{M}{I} &=\\frac{\\sigma }{y}=\\frac{E}{R} \\\\ \\sigma _{max}&=\\frac{M}{Z}=\\frac{6250}{\\frac{(0.1)^3}{6}}\\\\ &=37.5 \\times 10^6 N/m^2=37.5MPa \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-f57a65a16c.webp\" />\n\n$$\\begin{aligned} I&=\\frac{(0.1)^4}{12} \\\\ \\text{Deflection }\\delta &=\\frac{Pl^2}{3eI} \\\\ 5 \\times 10^{-3}&=\\frac{P(2)^3}{3 \\times 2 \\times 10^11 \\times \\frac{(0.1)^4}{12}} \\\\ P&=3125N \\\\ \\text{Now, } M&= Pl=3125 \\times 2\\\\ &= 6250Nm\\\\ \\text{As, }\\frac{M}{I} &=\\frac{\\sigma }{y}=\\frac{E}{R} \\\\ \\sigma _{max}&=\\frac{M}{Z}=\\frac{6250}{\\frac{(0.1)^3}{6}}\\\\ &=37.5 \\times 10^6 N/m^2=37.5MPa \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-f57a65a16c.webp"
+        ]
       }
     },
     "pp:ce:2018:q28": {
       "question_uid": "pp:ce:2018:q28",
-      "exam_uid": "ce:2018:set1:q28",
+      "exam_uid": "ce:2018:set1:main:q28",
       "title": "GATE CE 2018 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1126,13 +1254,19 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Engineering Mechanics",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-ca36a34572.webp\" />\n\nGiven: r=250 mm, W=10 kN\n\nNote:\n\n1. When the cylinder will be about to move out of the cylinder, it will loose its contact at point A, only contact will be at point B.\n\n2. Considering equation of cylinder of that instant under P, W and $R_{B}$ (contact force at B).\n\n$$\\begin{aligned} \\sum \\vec{M}_{B} &=0 \\\\ P\\times OC-W\\times BC &=0 \\end{aligned}$$\n\nIn $\\Delta OCB$\n\n$$\\begin{aligned} OC^{2}+CB^{2} &=OB^{2} \\\\ CB &=\\sqrt{250^{2}-200^{2}}=150 \\\\ P &=\\frac{10\\times 10^{3}\\times 150}{200} \\\\ &=2.5\\times 3\\: \\text{kN}=7.5\\: \\text{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-ca36a34572.webp\" />\n\nGiven: r=250 mm, W=10 kN\n\nNote:\n\n1. When the cylinder will be about to move out of the cylinder, it will loose its contact at point A, only contact will be at point B.\n\n2. Considering equation of cylinder of that instant under P, W and $R_{B}$ (contact force at B).\n\n$$\\begin{aligned} \\sum \\vec{M}_{B} &=0 \\\\ P\\times OC-W\\times BC &=0 \\end{aligned}$$\n\nIn $\\Delta OCB$\n\n$$\\begin{aligned} OC^{2}+CB^{2} &=OB^{2} \\\\ CB &=\\sqrt{250^{2}-200^{2}}=150 \\\\ P &=\\frac{10\\times 10^{3}\\times 150}{200} \\\\ &=2.5\\times 3\\: \\text{kN}=7.5\\: \\text{kN} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-ca36a34572.webp"
+        ]
       }
     },
     "pp:ce:2018:q29": {
       "question_uid": "pp:ce:2018:q29",
-      "exam_uid": "ce:2018:set1:q29",
+      "exam_uid": "ce:2018:set1:main:q29",
       "title": "GATE CE 2018 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1167,13 +1301,17 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "$$\\begin{aligned} \\sigma _{xx} &=30MPa \\\\ \\sigma _{yy} &=50MPa \\\\ \\sigma _{zz} &=0 \\\\ \\varepsilon _{zz} &=\\frac{\\sigma _{zz}}{E}-\\mu \\frac{\\sigma _{xx}}{E}-\\mu \\frac{\\sigma _{yy}}{E} \\\\ &= -\\frac{\\mu }{E} (\\sigma _{xx}+\\sigma _{yy})\\\\ &= -\\frac{0.3}{2 \\times 10^5}(30+50)\\\\ &=-120 \\times 10^{-6} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\sigma _{xx} &=30MPa \\\\ \\sigma _{yy} &=50MPa \\\\ \\sigma _{zz} &=0 \\\\ \\varepsilon _{zz} &=\\frac{\\sigma _{zz}}{E}-\\mu \\frac{\\sigma _{xx}}{E}-\\mu \\frac{\\sigma _{yy}}{E} \\\\ &= -\\frac{\\mu }{E} (\\sigma _{xx}+\\sigma _{yy})\\\\ &= -\\frac{0.3}{2 \\times 10^5}(30+50)\\\\ &=-120 \\times 10^{-6} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q30": {
       "question_uid": "pp:ce:2018:q30",
-      "exam_uid": "ce:2018:set1:q30",
+      "exam_uid": "ce:2018:set1:main:q30",
       "title": "GATE CE 2018 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1208,13 +1346,19 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-f6bc7a5e43.webp\" />\n\n$$\\begin{array}{c} \\text { Now } \\quad R_{1}+R_{2}=\\frac{1}{2} \\times \\frac{L}{3} \\times \\frac{M}{E I}=\\frac{M L}{6 E I} \\\\ \\Sigma M_{O}=0 \\\\ R_{1} L-\\frac{1}{2} \\times \\frac{L}{3} \\times \\frac{M}{E I}\\left(\\frac{2 L}{3}+\\frac{L}{9}\\right)-\\frac{1}{2} \\times \\frac{L}{3} \\\\ \\times \\frac{M}{E I}\\left(\\frac{L}{3}+\\frac{L}{9}\\right)+\\frac{1}{2} \\times \\frac{L}{3} \\times \\frac{M}{E I} \\times \\frac{2 L}{9}=0\\\\ \\quad R_{1}=\\frac{7 M L}{54 E I}+\\frac{4 M L}{54 E I}-\\frac{M L}{27 E I}=\\frac{M L}{6 E I} \\\\ \\therefore \\text{Slope at }P, \\theta_{P}=R_{1}=\\frac{M L}{6 E I} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-f6bc7a5e43.webp\" />\n\n$$\\begin{array}{c} \\text { Now } \\quad R_{1}+R_{2}=\\frac{1}{2} \\times \\frac{L}{3} \\times \\frac{M}{E I}=\\frac{M L}{6 E I} \\\\ \\Sigma M_{O}=0 \\\\ R_{1} L-\\frac{1}{2} \\times \\frac{L}{3} \\times \\frac{M}{E I}\\left(\\frac{2 L}{3}+\\frac{L}{9}\\right)-\\frac{1}{2} \\times \\frac{L}{3} \\\\ \\times \\frac{M}{E I}\\left(\\frac{L}{3}+\\frac{L}{9}\\right)+\\frac{1}{2} \\times \\frac{L}{3} \\times \\frac{M}{E I} \\times \\frac{2 L}{9}=0\\\\ \\quad R_{1}=\\frac{7 M L}{54 E I}+\\frac{4 M L}{54 E I}-\\frac{M L}{27 E I}=\\frac{M L}{6 E I} \\\\ \\therefore \\text{Slope at }P, \\theta_{P}=R_{1}=\\frac{M L}{6 E I} \\end{array}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-f6bc7a5e43.webp"
+        ]
       }
     },
     "pp:ce:2018:q31": {
       "question_uid": "pp:ce:2018:q31",
-      "exam_uid": "ce:2018:set1:q31",
+      "exam_uid": "ce:2018:set1:main:q31",
       "title": "GATE CE 2018 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1249,13 +1393,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
-        "markdown": "$$\\begin{aligned} C_{u}=& 50 \\mathrm{kPa}, \\gamma=18 \\mathrm{kN} / \\mathrm{m}^{3}, \\mathrm{FOS}=2 \\\\ Q_{\\text {up}}=& 9 \\mathrm{C} \\times B^{2}+\\alpha \\bar{C}(4 \\mathrm{BL})=1000 \\mathrm{kN} \\\\ 1000=& 9 \\times 50 \\times 0.5 \\times 0.5+0.75 \\\\ & \\times 50(4 \\times 0.5 \\mathrm{L}) \\\\ L=& 11.83 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} C_{u}=& 50 \\mathrm{kPa}, \\gamma=18 \\mathrm{kN} / \\mathrm{m}^{3}, \\mathrm{FOS}=2 \\\\ Q_{\\text {up}}=& 9 \\mathrm{C} \\times B^{2}+\\alpha \\bar{C}(4 \\mathrm{BL})=1000 \\mathrm{kN} \\\\ 1000=& 9 \\times 50 \\times 0.5 \\times 0.5+0.75 \\\\ & \\times 50(4 \\times 0.5 \\mathrm{L}) \\\\ L=& 11.83 \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q32": {
       "question_uid": "pp:ce:2018:q32",
-      "exam_uid": "ce:2018:set1:q32",
+      "exam_uid": "ce:2018:set1:main:q32",
       "title": "GATE CE 2018 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1290,13 +1438,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Properties and Manometry",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-1aa936f181.webp\" />\n\n$$\\begin{aligned} &P_{a i t} \\text { is in gauge pressure. }\\\\ &\\begin{array}{l} P_{a i r}+\\left(0.6 \\times 10^{3}\\right)(9.81)(3)+\\left(10^{3}\\right)(9.81)(2) \\\\ \\quad+\\left(13.6 \\times 10^{3}\\right)(9.81)(0.5)=196.2 \\times 10^{3} \\\\ P_{a i r}=92.214 \\mathrm{kN} / \\mathrm{m}^{2} \\end{array} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-1aa936f181.webp\" />\n\n$$\\begin{aligned} &P_{a i t} \\text { is in gauge pressure. }\\\\ &\\begin{array}{l} P_{a i r}+\\left(0.6 \\times 10^{3}\\right)(9.81)(3)+\\left(10^{3}\\right)(9.81)(2) \\\\ \\quad+\\left(13.6 \\times 10^{3}\\right)(9.81)(0.5)=196.2 \\times 10^{3} \\\\ P_{a i r}=92.214 \\mathrm{kN} / \\mathrm{m}^{2} \\end{array} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-1aa936f181.webp"
+        ]
       }
     },
     "pp:ce:2018:q33": {
       "question_uid": "pp:ce:2018:q33",
-      "exam_uid": "ce:2018:set1:q33",
+      "exam_uid": "ce:2018:set1:main:q33",
       "title": "GATE CE 2018 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1331,13 +1485,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "Total water to be filtered\n\n$=99 \\times 1.05 \\mathrm{MLD}=103.95 \\mathrm{MLD}$\n\n(Addition of 5 \\% to be used for backwashing)\n\n$$\\begin{aligned}\n\n\\frac{L}{B} &=1.35 \\quad \\text { where } B=5.2 \\mathrm{m} \\\\\n\n\\therefore &=7.02 \\mathrm{m}\n\n\\end{aligned}$$\n\n$\\therefore$Surface area of each filter $=36.504 \\mathrm{m}^{2}$\n\nTotal surface area required\n\n$$\\begin{array}{l}\n\n=\\frac{\\text { Discharge through filter }}{\\text { Rate of filtration }} \\\\\n\n=\\frac{103.95 \\times 10^{3}}{6 \\times 24}=721.875 \\mathrm{m}^{2}\n\n\\end{array}$$\n\nTotal no. of working units required\n\n$$\\begin{array}{l}\n\n=\\frac{721.875}{36.504} \\\\\n\n=19.77 \\text { filters }=20 \\text { filters }\n\n\\end{array}$$\n\n1 unit is to added as standby, thus total no.\n\nof units required = 21\n\nTherefore, the correct answer is **C**."
+        "markdown": "Total water to be filtered\n\n$=99 \\times 1.05 \\mathrm{MLD}=103.95 \\mathrm{MLD}$\n\n(Addition of 5 \\% to be used for backwashing)\n\n$$\\begin{aligned}\n\n\\frac{L}{B} &=1.35 \\quad \\text { where } B=5.2 \\mathrm{m} \\\\\n\n\\therefore &=7.02 \\mathrm{m}\n\n\\end{aligned}$$\n\n$\\therefore$Surface area of each filter $=36.504 \\mathrm{m}^{2}$\n\nTotal surface area required\n\n$$\\begin{array}{l}\n\n=\\frac{\\text { Discharge through filter }}{\\text { Rate of filtration }} \\\\\n\n=\\frac{103.95 \\times 10^{3}}{6 \\times 24}=721.875 \\mathrm{m}^{2}\n\n\\end{array}$$\n\nTotal no. of working units required\n\n$$\\begin{array}{l}\n\n=\\frac{721.875}{36.504} \\\\\n\n=19.77 \\text { filters }=20 \\text { filters }\n\n\\end{array}$$\n\n1 unit is to added as standby, thus total no.\n\nof units required = 21",
+        "images": []
       }
     },
     "pp:ce:2018:q34": {
       "question_uid": "pp:ce:2018:q34",
-      "exam_uid": "ce:2018:set1:q34",
+      "exam_uid": "ce:2018:set1:main:q34",
       "title": "GATE CE 2018 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1372,13 +1530,19 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-d066a1eb75.webp\" />\n\n$$\\begin{aligned} \\mathrm{SSD}_{2} &=0.278 \\times V t_{R}+\\frac{V^{2}}{254 f} \\\\ &=0.278 \\times 50 \\times 2.5+\\frac{50^{2}}{254 \\times 0.38} \\simeq 61 \\mathrm{m} \\\\ \\mathrm{SSD}_{1} &=0.278 \\times 20 \\times 2.5+\\frac{20^{2}}{254 \\times 0.38} \\simeq 18 \\mathrm{m} \\end{aligned}$$\n\nAs per data given and based on calculation of SSD the answer would be 61 m and 18 m.\n\nBut, as per the code IRC : 66 of sight distance calculation at priority intersection, the sight triangle at priority intersection should be formed by measuring a distance of 15 m along minor road and a distance equal to 8 seconds travel at the design speed $(50 \\times 0.278 \\times 8 \\simeq 111 m)$ along major road. Hence answer will be 111 m and 15 m.\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-d066a1eb75.webp\" />\n\n$$\\begin{aligned} \\mathrm{SSD}_{2} &=0.278 \\times V t_{R}+\\frac{V^{2}}{254 f} \\\\ &=0.278 \\times 50 \\times 2.5+\\frac{50^{2}}{254 \\times 0.38} \\simeq 61 \\mathrm{m} \\\\ \\mathrm{SSD}_{1} &=0.278 \\times 20 \\times 2.5+\\frac{20^{2}}{254 \\times 0.38} \\simeq 18 \\mathrm{m} \\end{aligned}$$\n\nAs per data given and based on calculation of SSD the answer would be 61 m and 18 m.\n\nBut, as per the code IRC : 66 of sight distance calculation at priority intersection, the sight triangle at priority intersection should be formed by measuring a distance of 15 m along minor road and a distance equal to 8 seconds travel at the design speed $(50 \\times 0.278 \\times 8 \\simeq 111 m)$ along major road. Hence answer will be 111 m and 15 m.",
+        "images": [
+          "/question-images/ce/2018/ce-2018-d066a1eb75.webp"
+        ]
       }
     },
     "pp:ce:2018:q35": {
       "question_uid": "pp:ce:2018:q35",
-      "exam_uid": "ce:2018:set1:q35",
+      "exam_uid": "ce:2018:set1:main:q35",
       "title": "GATE CE 2018 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1413,13 +1577,19 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "$$\\begin{aligned} \\text { Latitude }_{P Q} &=L_{P Q}=-437 \\mathrm{m} \\\\ L_{S P} &=-83 \\mathrm{m} \\\\ L_{O R} &=+101 \\mathrm{m}\\\\ L_{R S} &=+419 \\mathrm{m} \\\\ \\Sigma \\text { Latitudes } &=-437-83+101+419 \\\\ &=0 \\mathrm{m} \\\\ \\text { Departure }_{P O} &=D_{P O}=+173 \\mathrm{m} \\\\ D_{O R} &=+558 \\mathrm{m} \\\\ D_{8 S} &=-96 \\mathrm{m} \\\\ D_{S P} &=-634 \\mathrm{m} \\end{aligned}$$\n\n$\\Sigma$ Departures =1 m For closure of traverse\n\n$\\Sigma$ Latitude =0\n\n$\\Sigma$ Departure =0\n\nThen,\n\nDeparture of closure =-1 m,\n\nLatitude of closure =0\n\n<img src=\"/question-images/ce/2018/ce-2018-7454dee0c1.webp\" />\n\nSo the length and direction (whole circle bearing of closure is 1m and $270^{\\circ}$ respectively.\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\text { Latitude }_{P Q} &=L_{P Q}=-437 \\mathrm{m} \\\\ L_{S P} &=-83 \\mathrm{m} \\\\ L_{O R} &=+101 \\mathrm{m}\\\\ L_{R S} &=+419 \\mathrm{m} \\\\ \\Sigma \\text { Latitudes } &=-437-83+101+419 \\\\ &=0 \\mathrm{m} \\\\ \\text { Departure }_{P O} &=D_{P O}=+173 \\mathrm{m} \\\\ D_{O R} &=+558 \\mathrm{m} \\\\ D_{8 S} &=-96 \\mathrm{m} \\\\ D_{S P} &=-634 \\mathrm{m} \\end{aligned}$$\n\n$\\Sigma$ Departures =1 m For closure of traverse\n\n$\\Sigma$ Latitude =0\n\n$\\Sigma$ Departure =0\n\nThen,\n\nDeparture of closure =-1 m,\n\nLatitude of closure =0\n\n<img src=\"/question-images/ce/2018/ce-2018-7454dee0c1.webp\" />\n\nSo the length and direction (whole circle bearing of closure is 1m and $270^{\\circ}$ respectively.",
+        "images": [
+          "/question-images/ce/2018/ce-2018-7454dee0c1.webp"
+        ]
       }
     },
     "pp:ce:2018:q36": {
       "question_uid": "pp:ce:2018:q36",
-      "exam_uid": "ce:2018:set1:q36",
+      "exam_uid": "ce:2018:set1:main:q36",
       "title": "GATE CE 2018 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1454,13 +1624,17 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Remote Sensing, GIS, GPS and Photogrammetry",
-        "markdown": "$$\\begin{aligned} A&=100 \\times 100 \\mathrm{m}^{2}\\\\ \\text { Area on photo, }\\\\ a &=1 \\mathrm{cm}^{2} \\\\ \\text { Scale } \\quad 1 \\mathrm{cm} &=100 \\mathrm{m} \\\\ f &=150 \\mathrm{mm} \\\\ h &=650 \\mathrm{m} \\\\ \\text { Scale } \\quad &=\\frac{1}{100}=\\frac{1}{100 \\times 10^{2}}\\\\ &=\\frac{1}{10000}=\\frac{f}{H-h}\\\\ \\Rightarrow \\quad \\frac{1}{10000}&=\\frac{150 \\times 10^{-3}}{H-650} \\\\ \\Rightarrow \\quad H&=2150 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} A&=100 \\times 100 \\mathrm{m}^{2}\\\\ \\text { Area on photo, }\\\\ a &=1 \\mathrm{cm}^{2} \\\\ \\text { Scale } \\quad 1 \\mathrm{cm} &=100 \\mathrm{m} \\\\ f &=150 \\mathrm{mm} \\\\ h &=650 \\mathrm{m} \\\\ \\text { Scale } \\quad &=\\frac{1}{100}=\\frac{1}{100 \\times 10^{2}}\\\\ &=\\frac{1}{10000}=\\frac{f}{H-h}\\\\ \\Rightarrow \\quad \\frac{1}{10000}&=\\frac{150 \\times 10^{-3}}{H-650} \\\\ \\Rightarrow \\quad H&=2150 \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q37": {
       "question_uid": "pp:ce:2018:q37",
-      "exam_uid": "ce:2018:set1:q37",
+      "exam_uid": "ce:2018:set1:main:q37",
       "title": "GATE CE 2018 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1494,14 +1668,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Ordinary Differential Equation *).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Ordinary Differential Equation **.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *6*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (6)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q38": {
       "question_uid": "pp:ce:2018:q38",
-      "exam_uid": "ce:2018:set1:q38",
+      "exam_uid": "ce:2018:set1:main:q38",
       "title": "GATE CE 2018 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1534,13 +1711,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$$\\begin{aligned}\\left ( D^{2}+2D+1 \\right )y&=0 \\;\\;  \\left ( \\therefore \\; \\text{Roots are }-1,-1\\right ) \\\\    CF&=\\left ( C_{1}+C_{2}x \\right )e^{-x} \\\\    y&=C_{1}e^{-x}+C_{2}xe^{-x} \\;\\;...(i) \\\\ y\\left ( 0 \\right )&=1  \\;\\;\\;1=C_{1}        \\;\\;\\;...(ii) \\\\    {y}'&=C_{1}e^{-x}+C_{2}\\left ( e^{-x}-xe^{-x} \\right ) \\\\ {y}'\\left ( 0 \\right )&=-1,  \\;\\;\\;-1=-C_{1}+C_{2}     \\;\\;...(iii)\\\\ \\text{From eq. } & \\text{ (ii) and (iii),}\\\\    C_{1}&=1,\\, C_{2}=0 \\\\ \\therefore \\;\\;   y&=e^{x}\\\\ \\text{At } x=1, y&=e^{-1}=\\frac{1}{e}=0.368\\end{aligned}$$\n\nTherefore, the correct answer is **0.365** (acceptable range: [0.36, 0.37])."
+        "markdown": "$$\\begin{aligned}\\left ( D^{2}+2D+1 \\right )y&=0 \\;\\;  \\left ( \\therefore \\; \\text{Roots are }-1,-1\\right ) \\\\    CF&=\\left ( C_{1}+C_{2}x \\right )e^{-x} \\\\    y&=C_{1}e^{-x}+C_{2}xe^{-x} \\;\\;...(i) \\\\ y\\left ( 0 \\right )&=1  \\;\\;\\;1=C_{1}        \\;\\;\\;...(ii) \\\\    {y}'&=C_{1}e^{-x}+C_{2}\\left ( e^{-x}-xe^{-x} \\right ) \\\\ {y}'\\left ( 0 \\right )&=-1,  \\;\\;\\;-1=-C_{1}+C_{2}     \\;\\;...(iii)\\\\ \\text{From eq. } & \\text{ (ii) and (iii),}\\\\    C_{1}&=1,\\, C_{2}=0 \\\\ \\therefore \\;\\;   y&=e^{x}\\\\ \\text{At } x=1, y&=e^{-1}=\\frac{1}{e}=0.368\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q39": {
       "question_uid": "pp:ce:2018:q39",
-      "exam_uid": "ce:2018:set1:q39",
+      "exam_uid": "ce:2018:set1:main:q39",
       "title": "GATE CE 2018 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1573,13 +1754,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-7b2cb0dca1.webp\" />\n\n$$\\begin{aligned} \\frac{d y}{d x}&=\\frac{1-e^{-\\frac{10}{3} \\ln y}}{250-45 e^{-3 \\ln y}}\\\\ y_{1} &=y_{0}+h f\\left(x_{0}, y_{0}\\right) \\\\ y_{1} &=0.8+1\\left(\\frac{1-e^{-\\frac{10}{3} \\ln 0.8}}{250-45 e^{-3 \\ln 0.8}}\\right] \\\\ &=0.8+1\\left(\\frac{-1.1039}{162.109}\\right) \\\\ &=0.793 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **0.79** (acceptable range: [0.78, 0.8])."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-7b2cb0dca1.webp\" />\n\n$$\\begin{aligned} \\frac{d y}{d x}&=\\frac{1-e^{-\\frac{10}{3} \\ln y}}{250-45 e^{-3 \\ln y}}\\\\ y_{1} &=y_{0}+h f\\left(x_{0}, y_{0}\\right) \\\\ y_{1} &=0.8+1\\left(\\frac{1-e^{-\\frac{10}{3} \\ln 0.8}}{250-45 e^{-3 \\ln 0.8}}\\right] \\\\ &=0.8+1\\left(\\frac{-1.1039}{162.109}\\right) \\\\ &=0.793 \\mathrm{m} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-7b2cb0dca1.webp"
+        ]
       }
     },
     "pp:ce:2018:q40": {
       "question_uid": "pp:ce:2018:q40",
-      "exam_uid": "ce:2018:set1:q40",
+      "exam_uid": "ce:2018:set1:main:q40",
       "title": "GATE CE 2018 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1612,13 +1799,17 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
-        "markdown": "since eccentricity effect is being neglected so column can be considered as concentrically loaded.\n\nUltimate axial load carrying capacity of column.\n\n$$\\begin{aligned} P_{u} &=0.45 \\mathrm{f}_{c k} A_{g}+\\left(0.75 \\mathrm{f}_{y}-0.45 \\mathrm{f}_{c k}\\right) A_{\\mathrm{sc}} \\\\ &=0.45 \\times 20 \\times 250 \\times 300 \\\\ &+(0.75 \\times 415-0.45 \\times 20) 4 \\times \\frac{\\pi}{4} \\times 16^{2} \\\\ &=918.1 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **912.5** (acceptable range: [905, 920])."
+        "markdown": "since eccentricity effect is being neglected so column can be considered as concentrically loaded.\n\nUltimate axial load carrying capacity of column.\n\n$$\\begin{aligned} P_{u} &=0.45 \\mathrm{f}_{c k} A_{g}+\\left(0.75 \\mathrm{f}_{y}-0.45 \\mathrm{f}_{c k}\\right) A_{\\mathrm{sc}} \\\\ &=0.45 \\times 20 \\times 250 \\times 300 \\\\ &+(0.75 \\times 415-0.45 \\times 20) 4 \\times \\frac{\\pi}{4} \\times 16^{2} \\\\ &=918.1 \\mathrm{kN} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q41": {
       "question_uid": "pp:ce:2018:q41",
-      "exam_uid": "ce:2018:set1:q41",
+      "exam_uid": "ce:2018:set1:main:q41",
       "title": "GATE CE 2018 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1651,13 +1842,17 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
-        "markdown": "Nominal shear stress,\n\n$$\\begin{aligned} \\tau_{v}&=\\frac{V_{u}}{b d}=\\frac{200 \\times 10^{3}}{250 \\times 350}=2.286 \\mathrm{N} / \\mathrm{mm}^{2} \\lt \\tau_{c m a x} \\\\ &\\text{(OK)}\\\\ SF&\\text{ taken by stirrups}\\\\ &=\\left(\\tau_{v}-\\tau_{c}\\right) b d \\\\ &=(2.286-0.62) \\times 250 \\times 350 \\\\ &=145.75 \\mathrm{kN} \\\\ \\text{Now, }V_{u s}&=\\frac{0.87 f_{y} A_{s v} d}{S_{v}} \\\\ \\Rightarrow \\quad S_{v}&=\\frac{0.87 \\times 250 \\times 350 \\times 2 \\times \\frac{\\pi}{4} \\times 10^{2}}{145.75 \\times 10^{3}} \\\\ &=82 \\mathrm{mm}=8.2 \\mathrm{cm} \\end{aligned}$$\n\nTherefore, the correct answer is **8** (acceptable range: [7, 9])."
+        "markdown": "Nominal shear stress,\n\n$$\\begin{aligned} \\tau_{v}&=\\frac{V_{u}}{b d}=\\frac{200 \\times 10^{3}}{250 \\times 350}=2.286 \\mathrm{N} / \\mathrm{mm}^{2} \\lt \\tau_{c m a x} \\\\ &\\text{(OK)}\\\\ SF&\\text{ taken by stirrups}\\\\ &=\\left(\\tau_{v}-\\tau_{c}\\right) b d \\\\ &=(2.286-0.62) \\times 250 \\times 350 \\\\ &=145.75 \\mathrm{kN} \\\\ \\text{Now, }V_{u s}&=\\frac{0.87 f_{y} A_{s v} d}{S_{v}} \\\\ \\Rightarrow \\quad S_{v}&=\\frac{0.87 \\times 250 \\times 350 \\times 2 \\times \\frac{\\pi}{4} \\times 10^{2}}{145.75 \\times 10^{3}} \\\\ &=82 \\mathrm{mm}=8.2 \\mathrm{cm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q42": {
       "question_uid": "pp:ce:2018:q42",
-      "exam_uid": "ce:2018:set1:q42",
+      "exam_uid": "ce:2018:set1:main:q42",
       "title": "GATE CE 2018 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1690,13 +1885,19 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-75d266a08c.webp\" />\n\n$$\\begin{aligned} Z_p&= \\frac{A}{2}(\\bar{x_1}+\\bar{x_2})\\\\ &=\\left [ \\frac{140\\times 9}{2}\\left ( 35+35 \\right ) \\right ] \\\\ & \\times 2+\\left [ \\frac{\\left ( 200-18 \\right )\\times 6.1}{2} \\right ] \\\\ &\\times \\left ( \\frac{3.05}{2}+\\frac{3.05}{2} \\right ) \\\\  &=88200+1693.055 \\\\  &=89893.055\\, mm^{3} \\\\ & \\simeq 89.9\\, cm^{3} \\end{aligned}$$\n\nTherefore, the correct answer is **90** (acceptable range: [88, 92])."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-75d266a08c.webp\" />\n\n$$\\begin{aligned} Z_p&= \\frac{A}{2}(\\bar{x_1}+\\bar{x_2})\\\\ &=\\left [ \\frac{140\\times 9}{2}\\left ( 35+35 \\right ) \\right ] \\\\ & \\times 2+\\left [ \\frac{\\left ( 200-18 \\right )\\times 6.1}{2} \\right ] \\\\ &\\times \\left ( \\frac{3.05}{2}+\\frac{3.05}{2} \\right ) \\\\  &=88200+1693.055 \\\\  &=89893.055\\, mm^{3} \\\\ & \\simeq 89.9\\, cm^{3} \\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-75d266a08c.webp"
+        ]
       }
     },
     "pp:ce:2018:q43": {
       "question_uid": "pp:ce:2018:q43",
-      "exam_uid": "ce:2018:set1:q43",
+      "exam_uid": "ce:2018:set1:main:q43",
       "title": "GATE CE 2018 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1729,13 +1930,21 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
-        "markdown": "Force is each member due to applied loading\n\n<img src=\"/question-images/ce/2018/ce-2018-e92a8fa88c.webp\" />\n\n$$\\begin{aligned} F_{A B}&=P(\\text { Comp. }) \\\\ F_{B C}&=3 P(\\text { Comp. }) \\\\ F_{A C}&=\\sqrt{2} P(\\text { Tension }) \\end{aligned}$$\n\nForce in each member due to unit load.\n\n<img src=\"/question-images/ce/2018/ce-2018-bf066ff9ac.webp\" />\n\n$$\\begin{aligned} F_{A B}&=P(\\text { Comp. }) \\\\ F_{B C}&=3 P(\\text { Comp. }) \\\\ F_{A C}&=\\sqrt{2} (\\text { Tension }) \\end{aligned}$$\n\n<img src=\"/question-images/ce/2018/ce-2018-0606545153.webp\" />\n\n$$\\begin{array}{l} \\therefore \\text{ Total deflection }=\\delta_{H_{c}}=\\Sigma \\frac{P k L}{A E} \\\\ =\\frac{5.414 \\times(1000 \\mathrm{N}) \\times(1000 \\mathrm{mm})}{\\left(10 \\mathrm{mm}^{2}\\right) \\times\\left(2 \\times 10^{5} \\mathrm{N} / \\mathrm{mm}^{2}\\right)}=2.7 \\mathrm{mm} \\end{array}$$\n\nTherefore, the correct answer is **2.7** (acceptable range: [2.6, 2.8])."
+        "markdown": "Force is each member due to applied loading\n\n<img src=\"/question-images/ce/2018/ce-2018-e92a8fa88c.webp\" />\n\n$$\\begin{aligned} F_{A B}&=P(\\text { Comp. }) \\\\ F_{B C}&=3 P(\\text { Comp. }) \\\\ F_{A C}&=\\sqrt{2} P(\\text { Tension }) \\end{aligned}$$\n\nForce in each member due to unit load.\n\n<img src=\"/question-images/ce/2018/ce-2018-bf066ff9ac.webp\" />\n\n$$\\begin{aligned} F_{A B}&=P(\\text { Comp. }) \\\\ F_{B C}&=3 P(\\text { Comp. }) \\\\ F_{A C}&=\\sqrt{2} (\\text { Tension }) \\end{aligned}$$\n\n<img src=\"/question-images/ce/2018/ce-2018-0606545153.webp\" />\n\n$$\\begin{array}{l} \\therefore \\text{ Total deflection }=\\delta_{H_{c}}=\\Sigma \\frac{P k L}{A E} \\\\ =\\frac{5.414 \\times(1000 \\mathrm{N}) \\times(1000 \\mathrm{mm})}{\\left(10 \\mathrm{mm}^{2}\\right) \\times\\left(2 \\times 10^{5} \\mathrm{N} / \\mathrm{mm}^{2}\\right)}=2.7 \\mathrm{mm} \\end{array}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-e92a8fa88c.webp",
+          "/question-images/ce/2018/ce-2018-bf066ff9ac.webp",
+          "/question-images/ce/2018/ce-2018-0606545153.webp"
+        ]
       }
     },
     "pp:ce:2018:q44": {
       "question_uid": "pp:ce:2018:q44",
-      "exam_uid": "ce:2018:set1:q44",
+      "exam_uid": "ce:2018:set1:main:q44",
       "title": "GATE CE 2018 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1768,13 +1977,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "$\\mathrm{FOS}=\\frac{10 \\times \\gamma_{\\mathrm{sat}}}{20 \\times \\gamma_{\\mathrm{w}}}=\\frac{10 \\times 20}{20 \\times 10}=1$\n\nTherefore, the correct answer is **1.015** (acceptable range: [1, 1.03])."
+        "markdown": "$\\mathrm{FOS}=\\frac{10 \\times \\gamma_{\\mathrm{sat}}}{20 \\times \\gamma_{\\mathrm{w}}}=\\frac{10 \\times 20}{20 \\times 10}=1$",
+        "images": []
       }
     },
     "pp:ce:2018:q45": {
       "question_uid": "pp:ce:2018:q45",
-      "exam_uid": "ce:2018:set1:q45",
+      "exam_uid": "ce:2018:set1:main:q45",
       "title": "GATE CE 2018 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1807,13 +2020,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "$I^{st}$ Specimen : Drained condition\n\n$\\bar{\\sigma}_{3}=200 \\mathrm{kPa}: \\sigma_{\\mathrm{d}}=400 \\mathrm{kPa}: \\bar{\\sigma}_{1}=600 \\mathrm{kPa}$\n\n$II^{nd}$Specimen : Undrained condition\n\n$$\\begin{aligned} \\sigma_{3} &=200 \\mathrm{kPa} \\\\ \\sigma_{\\mathrm{d}} &=150 \\mathrm{kPa} \\\\ \\sigma_{1} &=\\sigma_{3}+\\sigma_{\\mathrm{d}}=350 \\mathrm{kPa} \\end{aligned}$$\n\nLet pore pressure developed is u\n\n$$\\begin{aligned} \\therefore \\quad \\bar{\\sigma}_{3}&=(200-u)\\\\ \\bar{\\sigma}_{1}&=(350-u)\\\\ \\end{aligned}$$\n\nFrom stress relationship\n\n$\\bar{\\sigma}_{1}=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)+2 c\\tan\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)$\n\nFor clay under drained condition c=0\n\n$$\\begin{aligned} \\therefore \\quad \\bar{\\sigma}_{1} &=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right) \\\\ 600 &=200 \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right) \\\\ \\phi &=30^{\\circ} \\end{aligned}$$\n\nFor second specimen,\n\n$$\\begin{aligned} \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)\\\\ (350-u) &=(200-u) \\tan ^{2}\\left(45^{\\circ}+\\frac{30^{\\circ}}{2}\\right) \\\\ u &=125 \\mathrm{kPa} \\end{aligned}$$\n\nTherefore, the correct answer is **125** (acceptable range: [124, 126])."
+        "markdown": "$I^{st}$ Specimen : Drained condition\n\n$\\bar{\\sigma}_{3}=200 \\mathrm{kPa}: \\sigma_{\\mathrm{d}}=400 \\mathrm{kPa}: \\bar{\\sigma}_{1}=600 \\mathrm{kPa}$\n\n$II^{nd}$Specimen : Undrained condition\n\n$$\\begin{aligned} \\sigma_{3} &=200 \\mathrm{kPa} \\\\ \\sigma_{\\mathrm{d}} &=150 \\mathrm{kPa} \\\\ \\sigma_{1} &=\\sigma_{3}+\\sigma_{\\mathrm{d}}=350 \\mathrm{kPa} \\end{aligned}$$\n\nLet pore pressure developed is u\n\n$$\\begin{aligned} \\therefore \\quad \\bar{\\sigma}_{3}&=(200-u)\\\\ \\bar{\\sigma}_{1}&=(350-u)\\\\ \\end{aligned}$$\n\nFrom stress relationship\n\n$\\bar{\\sigma}_{1}=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)+2 c\\tan\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)$\n\nFor clay under drained condition c=0\n\n$$\\begin{aligned} \\therefore \\quad \\bar{\\sigma}_{1} &=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right) \\\\ 600 &=200 \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right) \\\\ \\phi &=30^{\\circ} \\end{aligned}$$\n\nFor second specimen,\n\n$$\\begin{aligned} \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)\\\\ (350-u) &=(200-u) \\tan ^{2}\\left(45^{\\circ}+\\frac{30^{\\circ}}{2}\\right) \\\\ u &=125 \\mathrm{kPa} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q46": {
       "question_uid": "pp:ce:2018:q46",
-      "exam_uid": "ce:2018:set1:q46",
+      "exam_uid": "ce:2018:set1:main:q46",
       "title": "GATE CE 2018 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1846,13 +2063,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "$$\\begin{aligned} \\Delta H &=\\frac{H_{0} \\Delta e}{1+e_{0}}=\\frac{H_{0} C_{c}}{1+e_{0}} \\log \\left(\\frac{\\sigma_{0}+\\Delta \\sigma}{\\sigma_{0}}\\right) \\\\ \\Delta H &=H_{0}\\left(\\frac{0.55-0.40}{1+0.50}\\right)=\\frac{H_{0} \\times 0.25}{1+0.50} \\log \\left(\\frac{140+\\Delta \\sigma}{140}\\right) \\\\ \\frac{0.15}{0.25} &=\\frac{3}{5}=\\log \\left(\\frac{140+\\Delta \\sigma}{140}\\right) \\\\ \\Delta \\sigma &=417.35 \\mathrm{kPa} \\end{aligned}$$\n\nTherefore, the correct answer is **418** (acceptable range: [416, 420])."
+        "markdown": "$$\\begin{aligned} \\Delta H &=\\frac{H_{0} \\Delta e}{1+e_{0}}=\\frac{H_{0} C_{c}}{1+e_{0}} \\log \\left(\\frac{\\sigma_{0}+\\Delta \\sigma}{\\sigma_{0}}\\right) \\\\ \\Delta H &=H_{0}\\left(\\frac{0.55-0.40}{1+0.50}\\right)=\\frac{H_{0} \\times 0.25}{1+0.50} \\log \\left(\\frac{140+\\Delta \\sigma}{140}\\right) \\\\ \\frac{0.15}{0.25} &=\\frac{3}{5}=\\log \\left(\\frac{140+\\Delta \\sigma}{140}\\right) \\\\ \\Delta \\sigma &=417.35 \\mathrm{kPa} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q47": {
       "question_uid": "pp:ce:2018:q47",
-      "exam_uid": "ce:2018:set1:q47",
+      "exam_uid": "ce:2018:set1:main:q47",
       "title": "GATE CE 2018 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1885,13 +2106,21 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
-        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-36ffab0c78.webp\" />\n\n$$\\begin{aligned} \\text{For clay }\\phi&=0 \\\\ \\therefore \\quad k_{a}&=\\frac{1-\\sin 0}{1+\\sin 0}=1 \\\\ \\end{aligned}$$\n\nEarth pressure when tension cracks are not developed.\n\n$$\\begin{aligned} P_{a} &=\\frac{1}{2}(40+80.4) \\times 2.349 \\\\ &=141.4098 \\end{aligned}$$\n\n<img src=\"/question-images/ce/2018/ce-2018-913d25a80b.webp\" />\n\nEarth pressure when tension cracks are developed\n\n<img src=\"/question-images/ce/2018/ce-2018-d579ce7e73.webp\" />\n\n$$\\begin{aligned}\n\nP_{a} &=\\frac{1}{2} \\times 80.4 \\times 4.68=188.136 \\\\\n\n\\text { Difference } &=141.4098-188.136 \\\\\n\n&=-46.7262 \\mathrm{kN} / \\mathrm{m}^{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **47** (acceptable range: [45, 49])."
+        "markdown": "<img src=\"/question-images/ce/2018/ce-2018-36ffab0c78.webp\" />\n\n$$\\begin{aligned} \\text{For clay }\\phi&=0 \\\\ \\therefore \\quad k_{a}&=\\frac{1-\\sin 0}{1+\\sin 0}=1 \\\\ \\end{aligned}$$\n\nEarth pressure when tension cracks are not developed.\n\n$$\\begin{aligned} P_{a} &=\\frac{1}{2}(40+80.4) \\times 2.349 \\\\ &=141.4098 \\end{aligned}$$\n\n<img src=\"/question-images/ce/2018/ce-2018-913d25a80b.webp\" />\n\nEarth pressure when tension cracks are developed\n\n<img src=\"/question-images/ce/2018/ce-2018-d579ce7e73.webp\" />\n\n$$\\begin{aligned}\n\nP_{a} &=\\frac{1}{2} \\times 80.4 \\times 4.68=188.136 \\\\\n\n\\text { Difference } &=141.4098-188.136 \\\\\n\n&=-46.7262 \\mathrm{kN} / \\mathrm{m}^{2}\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2018/ce-2018-36ffab0c78.webp",
+          "/question-images/ce/2018/ce-2018-913d25a80b.webp",
+          "/question-images/ce/2018/ce-2018-d579ce7e73.webp"
+        ]
       }
     },
     "pp:ce:2018:q48": {
       "question_uid": "pp:ce:2018:q48",
-      "exam_uid": "ce:2018:set1:q48",
+      "exam_uid": "ce:2018:set1:main:q48",
       "title": "GATE CE 2018 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1924,13 +2153,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
-        "markdown": "Thiessen mean value of rainfall;\n\n$P_{avg}=\\frac{\\sum_{i=1}^{6}P_{i}A_{i}}{\\sum_{i=1}^{6}A_{i}}$\n\n$P_{avg}=\\frac{470\\times 95+465\\times 100+435\\times 98+525\\times 80+480\\times 85+510\\times 92}{95+100+98+80+85+92} =479.09 mm$\n\nTherefore, the correct answer is **479** (acceptable range: [478.5, 479.5])."
+        "markdown": "Thiessen mean value of rainfall;\n\n$P_{avg}=\\frac{\\sum_{i=1}^{6}P_{i}A_{i}}{\\sum_{i=1}^{6}A_{i}}$\n\n$P_{avg}=\\frac{470\\times 95+465\\times 100+435\\times 98+525\\times 80+480\\times 85+510\\times 92}{95+100+98+80+85+92} =479.09 mm$",
+        "images": []
       }
     },
     "pp:ce:2018:q49": {
       "question_uid": "pp:ce:2018:q49",
-      "exam_uid": "ce:2018:set1:q49",
+      "exam_uid": "ce:2018:set1:main:q49",
       "title": "GATE CE 2018 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -1963,13 +2196,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "Infiltration rate $f(t)= 30+10e^{-2t}$\n\nTotal infiltration depth in time 10 min. to 30 min.\n\ni.e., 0.166 hour to 0.5 hour\n\n$=\\int_{0.166}^{0.5}\\left ( 30+10e^{-2t} \\right )dt =11.74 mm$\n\nTherefore, the correct answer is **11.5** (acceptable range: [11, 12])."
+        "markdown": "Infiltration rate $f(t)= 30+10e^{-2t}$\n\nTotal infiltration depth in time 10 min. to 30 min.\n\ni.e., 0.166 hour to 0.5 hour\n\n$=\\int_{0.166}^{0.5}\\left ( 30+10e^{-2t} \\right )dt =11.74 mm$",
+        "images": []
       }
     },
     "pp:ce:2018:q50": {
       "question_uid": "pp:ce:2018:q50",
-      "exam_uid": "ce:2018:set1:q50",
+      "exam_uid": "ce:2018:set1:main:q50",
       "title": "GATE CE 2018 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -2002,13 +2239,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Dimensional Analysis",
-        "markdown": "$$\\begin{aligned} \\text { Froude Law }(F r)_{m}&=(F r)_{p} \\\\ \\left(\\frac{V}{\\sqrt{L \\mathrm{g}}}\\right)_{m} &=\\left(\\frac{v}{\\sqrt{L g}}\\right)_{p} \\quad\\left(g_{m}=g_{p}\\right) \\\\ v_{r} &=\\sqrt{L_{r}} \\\\ \\text{or}\\quad \\frac{L_{r}}{T_{r}} &=\\sqrt{L} \\\\ T_{r} &=\\sqrt{L_{r}} \\\\ T_{r} &=\\sqrt{\\frac{1}{30}}=0.1826 \\end{aligned}$$\n\nTherefore, the correct answer is **0.2** (acceptable range: [0.15, 0.25])."
+        "markdown": "$$\\begin{aligned} \\text { Froude Law }(F r)_{m}&=(F r)_{p} \\\\ \\left(\\frac{V}{\\sqrt{L \\mathrm{g}}}\\right)_{m} &=\\left(\\frac{v}{\\sqrt{L g}}\\right)_{p} \\quad\\left(g_{m}=g_{p}\\right) \\\\ v_{r} &=\\sqrt{L_{r}} \\\\ \\text{or}\\quad \\frac{L_{r}}{T_{r}} &=\\sqrt{L} \\\\ T_{r} &=\\sqrt{L_{r}} \\\\ T_{r} &=\\sqrt{\\frac{1}{30}}=0.1826 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q51": {
       "question_uid": "pp:ce:2018:q51",
-      "exam_uid": "ce:2018:set1:q51",
+      "exam_uid": "ce:2018:set1:main:q51",
       "title": "GATE CE 2018 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -2041,13 +2282,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
-        "markdown": "Carbonate hardness = min. (Total hardness, alkalinity)\n\nTotal hardness\n\n$$\\begin{aligned} &=\\left(\\frac{60}{20} \\times 50+\\frac{30}{12.155} \\times 50\\right) \\mathrm{mg} / l as \\mathrm{CaCO}_{3} \\\\ &=150+123.406 \\\\ &=273.406 \\mathrm{mg} / l as \\mathrm{CaCO}_{3} \\\\ &\\text{Alkalinity }=\\left(\\frac{400}{61} \\times 50\\right) \\mathrm{mg} / \\mathrm{l} as \\mathrm{CaCO}_{3} \\\\ &=327.868 \\mathrm{mg} / l as \\mathrm{CaCO}_{3} \\\\ & \\therefore \\quad \\mathrm{CH}=273.4 \\mathrm{mg} / \\mathrm{l} as \\mathrm{CaCO}_{3} \\end{aligned}$$\n\nTherefore, the correct answer is **273** (acceptable range: [272, 274])."
+        "markdown": "Carbonate hardness = min. (Total hardness, alkalinity)\n\nTotal hardness\n\n$$\\begin{aligned} &=\\left(\\frac{60}{20} \\times 50+\\frac{30}{12.155} \\times 50\\right) \\mathrm{mg} / l as \\mathrm{CaCO}_{3} \\\\ &=150+123.406 \\\\ &=273.406 \\mathrm{mg} / l as \\mathrm{CaCO}_{3} \\\\ &\\text{Alkalinity }=\\left(\\frac{400}{61} \\times 50\\right) \\mathrm{mg} / \\mathrm{l} as \\mathrm{CaCO}_{3} \\\\ &=327.868 \\mathrm{mg} / l as \\mathrm{CaCO}_{3} \\\\ & \\therefore \\quad \\mathrm{CH}=273.4 \\mathrm{mg} / \\mathrm{l} as \\mathrm{CaCO}_{3} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q52": {
       "question_uid": "pp:ce:2018:q52",
-      "exam_uid": "ce:2018:set1:q52",
+      "exam_uid": "ce:2018:set1:main:q52",
       "title": "GATE CE 2018 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -2080,13 +2325,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "$$\\begin{aligned} \\text{Ultimate BOD} &=0.87\\; \\text{COD} \\\\ &=0.87\\times 300=261\\: mg/l \\\\ BOD_{3}&=L_{0}\\left ( 1-e^{-k_{27}\\times 3} \\right ) \\\\ k_{27}&=k_{20}\\left ( 1.047 \\right )^{T-20} \\end{aligned}$$\n\nFor municipal sewage, at standard temperature, value of k(base e)=0.23 per day. Thus, value 0.23 per day given is w.r.t. the standard temperature of $20^{\\circ}C$.\n\n$$\\begin{aligned} &=0.23\\left ( 1.047 \\right )^{27-20} \\\\ &=0.317\\; day^{-1} \\\\ BOD_{3} &=261\\left ( 1-e^{-0.317\\times 3} \\right ) \\\\ &= 160.226\\; mg/l \\end{aligned}$$\n\nTherefore, the correct answer is **157.5** (acceptable range: [154, 161])."
+        "markdown": "$$\\begin{aligned} \\text{Ultimate BOD} &=0.87\\; \\text{COD} \\\\ &=0.87\\times 300=261\\: mg/l \\\\ BOD_{3}&=L_{0}\\left ( 1-e^{-k_{27}\\times 3} \\right ) \\\\ k_{27}&=k_{20}\\left ( 1.047 \\right )^{T-20} \\end{aligned}$$\n\nFor municipal sewage, at standard temperature, value of k(base e)=0.23 per day. Thus, value 0.23 per day given is w.r.t. the standard temperature of $20^{\\circ}C$.\n\n$$\\begin{aligned} &=0.23\\left ( 1.047 \\right )^{27-20} \\\\ &=0.317\\; day^{-1} \\\\ BOD_{3} &=261\\left ( 1-e^{-0.317\\times 3} \\right ) \\\\ &= 160.226\\; mg/l \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q53": {
       "question_uid": "pp:ce:2018:q53",
-      "exam_uid": "ce:2018:set1:q53",
+      "exam_uid": "ce:2018:set1:main:q53",
       "title": "GATE CE 2018 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -2119,13 +2368,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "Let 20 kg of C and 1 kg of N is required\n\nLet $x$ kg of WAS is taken\n\n$$\\begin{aligned} \\therefore \\quad \\text{Carbon in x } \\mathrm{kg}&=0.054 x \\mathrm{kg} \\\\ \\text{ Nitrogen in x } \\mathrm{kg}&=0.010 x \\mathrm{kg} \\end{aligned}$$\n\nLet y kg of GW is taken\n\n$$\\begin{aligned} \\therefore \\quad \\text { Carbon in } y \\mathrm{kg} &=0.360 \\mathrm{y} \\mathrm{kg} \\\\ \\text { Nitrogen in } y \\mathrm{kg} &=0.006 \\mathrm{y} \\mathrm{kg} \\end{aligned}$$\n\nTotal Carbon,\n\n$0.054 x+0.36 y=20 \\mathrm{kg}\\quad \\quad\\ldots(i)$\n\nTotal Nitrogen,\n\n$$\\begin{aligned} 0.01 x+0.006 y &=1 \\mathrm{kg} &\\ldots(ii)\\\\ x &=73.26 \\mathrm{kg} \\\\ y &=44.566 \\mathrm{kg} \\\\ \\frac{x}{y} &=\\frac{\\mathrm{WAS}}{\\mathrm{GW}}\\\\ \\therefore &=1.6438 \\simeq 1.64 \\end{aligned}$$\n\nTherefore, the correct answer is **1.65** (acceptable range: [1.6, 1.7])."
+        "markdown": "Let 20 kg of C and 1 kg of N is required\n\nLet $x$ kg of WAS is taken\n\n$$\\begin{aligned} \\therefore \\quad \\text{Carbon in x } \\mathrm{kg}&=0.054 x \\mathrm{kg} \\\\ \\text{ Nitrogen in x } \\mathrm{kg}&=0.010 x \\mathrm{kg} \\end{aligned}$$\n\nLet y kg of GW is taken\n\n$$\\begin{aligned} \\therefore \\quad \\text { Carbon in } y \\mathrm{kg} &=0.360 \\mathrm{y} \\mathrm{kg} \\\\ \\text { Nitrogen in } y \\mathrm{kg} &=0.006 \\mathrm{y} \\mathrm{kg} \\end{aligned}$$\n\nTotal Carbon,\n\n$0.054 x+0.36 y=20 \\mathrm{kg}\\quad \\quad\\ldots(i)$\n\nTotal Nitrogen,\n\n$$\\begin{aligned} 0.01 x+0.006 y &=1 \\mathrm{kg} &\\ldots(ii)\\\\ x &=73.26 \\mathrm{kg} \\\\ y &=44.566 \\mathrm{kg} \\\\ \\frac{x}{y} &=\\frac{\\mathrm{WAS}}{\\mathrm{GW}}\\\\ \\therefore &=1.6438 \\simeq 1.64 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q54": {
       "question_uid": "pp:ce:2018:q54",
-      "exam_uid": "ce:2018:set1:q54",
+      "exam_uid": "ce:2018:set1:main:q54",
       "title": "GATE CE 2018 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -2158,13 +2411,17 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
-        "markdown": "$$\\begin{aligned} N_{s}=& \\frac{365 A\\left[\\left(1+\\frac{r}{100}\\right)^{n}-1\\right] \\times V D F \\times L D F}{\\frac{r}{100}} \\\\ =& \\frac{365 \\times 3000\\left[1.06^{15}-1\\right] \\times 4 \\times 0.75}{0.06} \\times 10^{-6}\\\\ &76.45\\text{msa} \\end{aligned}$$\n\nTherefore, the correct answer is **76.5** (acceptable range: [75, 78])."
+        "markdown": "$$\\begin{aligned} N_{s}=& \\frac{365 A\\left[\\left(1+\\frac{r}{100}\\right)^{n}-1\\right] \\times V D F \\times L D F}{\\frac{r}{100}} \\\\ =& \\frac{365 \\times 3000\\left[1.06^{15}-1\\right] \\times 4 \\times 0.75}{0.06} \\times 10^{-6}\\\\ &76.45\\text{msa} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q55": {
       "question_uid": "pp:ce:2018:q55",
-      "exam_uid": "ce:2018:set1:q55",
+      "exam_uid": "ce:2018:set1:main:q55",
       "title": "GATE CE 2018 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "NAT",
       "marks": 2,
@@ -2197,13 +2454,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Engineering Mechanics",
-        "markdown": "Speed of aircraft,\n\n$$\\begin{aligned} u_{i} &=200\\; \\text{km/hr} \\\\ &=\\frac{200\\times 1000}{3600}=55.56\\; \\text{m/s} \\end{aligned}$$\n\nDeceleration of aircraft on the runway $=1.697 m/s^{2}$\n\nAircraft takes 18 sec to exit the runway strip.\n\nSpeed of the aircraft at the exit of the runway\n\n$$\\begin{aligned} u_{f} &=u_{i}+at \\\\ &=55.56-1.697\\times 18 \\\\ &=25.014\\; \\text{m/s} \\end{aligned}$$\n\nAfter runway aircraft decelerate with $1 m/s^{2}$\n\nTotal distance travelled by the aircraft from the location of exit on the runway\n\n$$\\begin{aligned} U^{2} &=u^{2}+2aS \\\\ 0 &=25.014^{2}-2\\times 1\\times S \\\\ S &=312.8\\; \\text{m} \\end{aligned}$$\n\nTherefore, the correct answer is **315** (acceptable range: [311, 319])."
+        "markdown": "Speed of aircraft,\n\n$$\\begin{aligned} u_{i} &=200\\; \\text{km/hr} \\\\ &=\\frac{200\\times 1000}{3600}=55.56\\; \\text{m/s} \\end{aligned}$$\n\nDeceleration of aircraft on the runway $=1.697 m/s^{2}$\n\nAircraft takes 18 sec to exit the runway strip.\n\nSpeed of the aircraft at the exit of the runway\n\n$$\\begin{aligned} u_{f} &=u_{i}+at \\\\ &=55.56-1.697\\times 18 \\\\ &=25.014\\; \\text{m/s} \\end{aligned}$$\n\nAfter runway aircraft decelerate with $1 m/s^{2}$\n\nTotal distance travelled by the aircraft from the location of exit on the runway\n\n$$\\begin{aligned} U^{2} &=u^{2}+2aS \\\\ 0 &=25.014^{2}-2\\times 1\\times S \\\\ S &=312.8\\; \\text{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2018:q56": {
       "question_uid": "pp:ce:2018:q56",
-      "exam_uid": "ce:2018:set1:q56",
-      "title": "GATE CE 2018 | Set 1 | Question: 56",
+      "exam_uid": "ce:2018:set1:ga:q1",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2225,26 +2486,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *brake, break*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (brake, break)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q57": {
       "question_uid": "pp:ce:2018:q57",
-      "exam_uid": "ce:2018:set1:q57",
-      "title": "GATE CE 2018 | Set 1 | Question: 57",
+      "exam_uid": "ce:2018:set1:ga:q2",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2266,26 +2529,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *unpredictable*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (unpredictable)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q58": {
       "question_uid": "pp:ce:2018:q58",
-      "exam_uid": "ce:2018:set1:q58",
-      "title": "GATE CE 2018 | Set 1 | Question: 58",
+      "exam_uid": "ce:2018:set1:ga:q3",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2307,26 +2572,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *19*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (19)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q59": {
       "question_uid": "pp:ce:2018:q59",
-      "exam_uid": "ce:2018:set1:q59",
-      "title": "GATE CE 2018 | Set 1 | Question: 59",
+      "exam_uid": "ce:2018:set1:ga:q4",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2348,26 +2615,29 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Marks to All As per IIT Key\n\nTherefore, the correct answer is **A**."
+        "markdown": "Marks to All As per IIT Key",
+        "images": []
       }
     },
     "pp:ce:2018:q60": {
       "question_uid": "pp:ce:2018:q60",
-      "exam_uid": "ce:2018:set1:q60",
-      "title": "GATE CE 2018 | Set 1 | Question: 60",
+      "exam_uid": "ce:2018:set1:ga:q5",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2389,26 +2659,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *1*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (1)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q61": {
       "question_uid": "pp:ce:2018:q61",
-      "exam_uid": "ce:2018:set1:q61",
-      "title": "GATE CE 2018 | Set 1 | Question: 61",
+      "exam_uid": "ce:2018:set1:ga:q6",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2430,26 +2702,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *60*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (60)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q62": {
       "question_uid": "pp:ce:2018:q62",
-      "exam_uid": "ce:2018:set1:q62",
-      "title": "GATE CE 2018 | Set 1 | Question: 62",
+      "exam_uid": "ce:2018:set1:ga:q7",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2471,26 +2745,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *832*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (832)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q63": {
       "question_uid": "pp:ce:2018:q63",
-      "exam_uid": "ce:2018:set1:q63",
-      "title": "GATE CE 2018 | Set 1 | Question: 63",
+      "exam_uid": "ce:2018:set1:ga:q8",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2512,26 +2788,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *i, ii and iv only*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (i, ii and iv only)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q64": {
       "question_uid": "pp:ce:2018:q64",
-      "exam_uid": "ce:2018:set1:q64",
-      "title": "GATE CE 2018 | Set 1 | Question: 64",
+      "exam_uid": "ce:2018:set1:ga:q9",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2553,26 +2831,28 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *$\\bigg( 1+ \\dfrac{1}{2} \\bigg) - \\bigg( \\dfrac{1}{51} + \\dfrac{1}{52} \\bigg) \\\\$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** ($\\bigg( 1+ \\dfrac{1}{2} \\bigg) - \\bigg( \\dfrac{1}{51} + \\dfrac{1}{52} \\bigg) \\\\$)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2018:q65": {
       "question_uid": "pp:ce:2018:q65",
-      "exam_uid": "ce:2018:set1:q65",
-      "title": "GATE CE 2018 | Set 1 | Question: 65",
+      "exam_uid": "ce:2018:set1:ga:q10",
+      "title": "GATE CE 2018 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2018-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2594,20 +2874,19 @@
       "yearSetIdentity": "ce:2018:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *5*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (5)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     }
   }

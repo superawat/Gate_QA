@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.675Z",
+  "generatedAt": "2026-10-17T21:30:25.669Z",
   "shardKey": "ce-2022-s1",
   "yearSetKey": "ce-2022-s1",
   "yearSetIdentity": "ce:2022:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ce:2022:q1": {
       "question_uid": "pp:ce:2022:q1",
-      "exam_uid": "ce:2022:set1:q1",
+      "exam_uid": "ce:2022:set1:main:q1",
       "title": "GATE CE 2022 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "partial-differential-equation",
+          "subtopicLabel": "Partial Differential Equation"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-math",
+          "partial-differential-equation"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Partial Differential Equation",
-        "markdown": "$$\\begin{aligned}\n\nz&=\\sin(y+it)+ \\cos (y-it)\\\\\n\n\\frac{\\partial z}{\\partial y}&=\\cos (y+it)-\\sin (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 y^2}&=-\\sin(y+it)- \\cos (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 y^2}&=-z \\;\\;...(i)\\\\\n\n\\frac{\\partial z}{\\partial t}&=i \\cos (y+it)+i\\sin (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 t^2}&=+\\sin(y+it)+ \\cos (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 t^2}&=z\\;\\;...(ii)\\\\\n\n&\\text{Adding (i) and (ii)}\\\\\n\n&\\frac{\\partial ^2 z}{\\partial ^2 y^2}+\\frac{\\partial ^2 z}{\\partial ^2 t^2}=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned}\n\nz&=\\sin(y+it)+ \\cos (y-it)\\\\\n\n\\frac{\\partial z}{\\partial y}&=\\cos (y+it)-\\sin (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 y^2}&=-\\sin(y+it)- \\cos (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 y^2}&=-z \\;\\;...(i)\\\\\n\n\\frac{\\partial z}{\\partial t}&=i \\cos (y+it)+i\\sin (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 t^2}&=+\\sin(y+it)+ \\cos (y-it)\\\\\n\n\\frac{\\partial ^2 z}{\\partial ^2 t^2}&=z\\;\\;...(ii)\\\\\n\n&\\text{Adding (i) and (ii)}\\\\\n\n&\\frac{\\partial ^2 z}{\\partial ^2 y^2}+\\frac{\\partial ^2 z}{\\partial ^2 t^2}=0\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q2": {
       "question_uid": "pp:ce:2022:q2",
-      "exam_uid": "ce:2022:set1:q2",
+      "exam_uid": "ce:2022:set1:main:q2",
       "title": "GATE CE 2022 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-math",
+          "ordinary-differential-equation"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$\\frac{d^3y}{dx^3}+x\\left ( \\frac{dy}{dx} \\right )^{3/2}+x^2y=0$\n\nPower of $\\left ( \\frac{dy}{dx} \\right )$ is fractional, make it integer.\n\n$\\frac{d^3y}{dx^3}+x^2y=-x\\left ( \\frac{dy}{dx} \\right )^{3/2}$\n\n$\\left (\\frac{d^3y}{dx^3}+x^2y  \\right )^2=x^2\\left ( \\frac{dy}{dx} \\right )^{3}$\n\nNow order = 3 and degree = 2\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\frac{d^3y}{dx^3}+x\\left ( \\frac{dy}{dx} \\right )^{3/2}+x^2y=0$\n\nPower of $\\left ( \\frac{dy}{dx} \\right )$ is fractional, make it integer.\n\n$\\frac{d^3y}{dx^3}+x^2y=-x\\left ( \\frac{dy}{dx} \\right )^{3/2}$\n\n$\\left (\\frac{d^3y}{dx^3}+x^2y  \\right )^2=x^2\\left ( \\frac{dy}{dx} \\right )^{3}$\n\nNow order = 3 and degree = 2",
+        "images": []
       }
     },
     "pp:ce:2022:q3": {
       "question_uid": "pp:ce:2022:q3",
-      "exam_uid": "ce:2022:set1:q3",
+      "exam_uid": "ce:2022:set1:main:q3",
       "title": "GATE CE 2022 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "bending-and-shear-stresses",
+          "subtopicLabel": "Bending and Shear Stresses"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-solid-mechanics",
+          "bending-and-shear-stresses"
         ]
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Bending and Shear Stresses",
-        "markdown": "Given,\n\nHoop stress $(\\sigma _h)=\\frac{pd}{2t}=30MPa$\n\nMaximum shear stress in plane\n\n$(\\tau _{max})_{\\text{in plane}}=\\frac{\\frac{pd}{2t}-\\frac{pd}{4t}}{2}=7.5MPa$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given,\n\nHoop stress $(\\sigma _h)=\\frac{pd}{2t}=30MPa$\n\nMaximum shear stress in plane\n\n$(\\tau _{max})_{\\text{in plane}}=\\frac{\\frac{pd}{2t}-\\frac{pd}{4t}}{2}=7.5MPa$",
+        "images": []
       }
     },
     "pp:ce:2022:q4": {
       "question_uid": "pp:ce:2022:q4",
-      "exam_uid": "ce:2022:set1:q4",
+      "exam_uid": "ce:2022:set1:main:q4",
       "title": "GATE CE 2022 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -154,25 +172,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "working-stress-and-limit-state-method",
+          "subtopicLabel": "Working Stress and Limit State Method"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-rcc-structures",
+          "working-stress-and-limit-state-method"
         ]
       },
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
-        "markdown": "This is a question of working stress method i.e. elastic theory.\n\nModular ratio\n\n$=\\frac{E_s}{E_c}=\\frac{\\text{Young's modulus of steel}}{\\text{Young's modulus of concrete}}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "This is a question of working stress method i.e. elastic theory.\n\nModular ratio\n\n$=\\frac{E_s}{E_c}=\\frac{\\text{Young's modulus of steel}}{\\text{Young's modulus of concrete}}$",
+        "images": []
       }
     },
     "pp:ce:2022:q5": {
       "question_uid": "pp:ce:2022:q5",
-      "exam_uid": "ce:2022:set1:q5",
+      "exam_uid": "ce:2022:set1:main:q5",
       "title": "GATE CE 2022 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -194,25 +217,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "concrete-technology",
+          "subtopicLabel": "Concrete Technology"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-rcc-structures",
+          "concrete-technology"
         ]
       },
       "detailed_solution": {
         "concept": "RCC Structures - Concrete Technology",
-        "markdown": "Pozzolanic materials have no cementing properties itself but have the property of combining with lime to produce stable compound.\n\nPozzolana is considered as siliceous and aluminous materials and when added in cement it have $SiO_2$ and $Al_2O_3$ form.\n\nSo, pozzolanic reaction :\n\n$H_2O$ + Reactive slilica-di-oxide + $H_2O \\rightarrow C-S-H$ gel or tobermonite gel\n\nTherefore, the correct answer is **B**."
+        "markdown": "Pozzolanic materials have no cementing properties itself but have the property of combining with lime to produce stable compound.\n\nPozzolana is considered as siliceous and aluminous materials and when added in cement it have $SiO_2$ and $Al_2O_3$ form.\n\nSo, pozzolanic reaction :\n\n$H_2O$ + Reactive slilica-di-oxide + $H_2O \\rightarrow C-S-H$ gel or tobermonite gel",
+        "images": []
       }
     },
     "pp:ce:2022:q6": {
       "question_uid": "pp:ce:2022:q6",
-      "exam_uid": "ce:2022:set1:q6",
+      "exam_uid": "ce:2022:set1:main:q6",
       "title": "GATE CE 2022 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -234,25 +262,32 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "theory-of-columns-and-shear-centre",
+          "subtopicLabel": "Theory of Columns and Shear Centre"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-solid-mechanics",
+          "theory-of-columns-and-shear-centre"
         ]
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
-        "markdown": "Shear centre of section consisting of two intersecting narrow rectangles always lies at the intersection of centrelines of two rectangles.\n\n<img src=\"/question-images/ce/2022/ce-2022-63d98b3ce5.webp\" />\n\nCoordinate of shear centre (0, 3a).\n\nTherefore, the correct answer is **A**."
+        "markdown": "Shear centre of section consisting of two intersecting narrow rectangles always lies at the intersection of centrelines of two rectangles.\n\n<img src=\"/question-images/ce/2022/ce-2022-63d98b3ce5.webp\" />\n\nCoordinate of shear centre (0, 3a).",
+        "images": [
+          "/question-images/ce/2022/ce-2022-63d98b3ce5.webp"
+        ]
       }
     },
     "pp:ce:2022:q7": {
       "question_uid": "pp:ce:2022:q7",
-      "exam_uid": "ce:2022:set1:q7",
+      "exam_uid": "ce:2022:set1:main:q7",
       "title": "GATE CE 2022 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -274,25 +309,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "classification-of-soils-and-clay-minerals",
+          "subtopicLabel": "Classification of Soils and Clay Minerals"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-geotechnical-engineering",
+          "classification-of-soils-and-clay-minerals"
         ]
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
-        "markdown": "Hydraulic conductivity Order.\n\nGravel $\\gt$ Sand $\\gt$ silt $\\gt$ lay\n\nTherefore, the correct answer is **A**."
+        "markdown": "Hydraulic conductivity Order.\n\nGravel $\\gt$ Sand $\\gt$ silt $\\gt$ lay",
+        "images": []
       }
     },
     "pp:ce:2022:q8": {
       "question_uid": "pp:ce:2022:q8",
-      "exam_uid": "ce:2022:set1:q8",
+      "exam_uid": "ce:2022:set1:main:q8",
       "title": "GATE CE 2022 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -314,25 +354,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "retaining-wall-earth-pressure-theories",
+          "subtopicLabel": "Retaining Wall-Earth Pressure Theories"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-geotechnical-engineering",
+          "retaining-wall-earth-pressure-theories"
         ]
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
-        "markdown": "We know, $\\sigma _h'=K\\sigma _v'$\n\nFor passive earth pressure,\n\n$$\\begin{aligned}\n\nk&=K_P \\gt 1\\\\\n\n\\Rightarrow \\frac{\\sigma _h'}{\\sigma _v'}&=K_P \\gt 1\\\\\n\n\\Rightarrow \\sigma _h' \\gt \\sigma _v'\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "We know, $\\sigma _h'=K\\sigma _v'$\n\nFor passive earth pressure,\n\n$$\\begin{aligned}\n\nk&=K_P \\gt 1\\\\\n\n\\Rightarrow \\frac{\\sigma _h'}{\\sigma _v'}&=K_P \\gt 1\\\\\n\n\\Rightarrow \\sigma _h' \\gt \\sigma _v'\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q9": {
       "question_uid": "pp:ce:2022:q9",
-      "exam_uid": "ce:2022:set1:q9",
+      "exam_uid": "ce:2022:set1:main:q9",
       "title": "GATE CE 2022 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -354,25 +399,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "flow-through-pipes",
+          "subtopicLabel": "Flow Through Pipes"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-fluid-mechanics-and-hydraulics",
+          "flow-through-pipes"
         ]
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "Reynold's number ($R_e$) is defined when apart from inertial force, viscous forces are dominant.\n\n$R_e=\\frac{\\text{Inertial force}}{\\text{Viscous force}}$\n\nFroude?s number ($F_e$): It is used when in addition to inertial force, gravity forces are important.\n\n$F_e=\\frac{\\text{Inertial force}}{\\text{Gravity force}}$\n\nEuler number ($E_u$): It is used when apart from inertial force, only pressure forces are dominant.\n\n$E_u=\\frac{\\text{Inertial force}}{\\text{Pressure force}}$\n\nMach number ($M$): It is used when in addition to inertial force, compressibility forces are dominant\n\n$M=\\frac{\\text{Inertial force}}{\\text{Elastic force}}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Reynold's number ($R_e$) is defined when apart from inertial force, viscous forces are dominant.\n\n$R_e=\\frac{\\text{Inertial force}}{\\text{Viscous force}}$\n\nFroude?s number ($F_e$): It is used when in addition to inertial force, gravity forces are important.\n\n$F_e=\\frac{\\text{Inertial force}}{\\text{Gravity force}}$\n\nEuler number ($E_u$): It is used when apart from inertial force, only pressure forces are dominant.\n\n$E_u=\\frac{\\text{Inertial force}}{\\text{Pressure force}}$\n\nMach number ($M$): It is used when in addition to inertial force, compressibility forces are dominant\n\n$M=\\frac{\\text{Inertial force}}{\\text{Elastic force}}$",
+        "images": []
       }
     },
     "pp:ce:2022:q10": {
       "question_uid": "pp:ce:2022:q10",
-      "exam_uid": "ce:2022:set1:q10",
+      "exam_uid": "ce:2022:set1:main:q10",
       "title": "GATE CE 2022 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -394,25 +444,30 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "properties-of-soils",
+          "subtopicLabel": "Properties of Soils"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ce-geotechnical-engineering",
+          "properties-of-soils"
         ]
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
-        "markdown": "$h_c\\propto \\frac{1}{R}$\n\n$K\\propto S$\n\nWater content $\\uparrow \\rightarrow R\\uparrow \\rightarrow h_c \\downarrow \\rightarrow  \\psi \\downarrow$\n\nWater content $\\uparrow \\rightarrow S\\uparrow \\rightarrow K \\uparrow$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$h_c\\propto \\frac{1}{R}$\n\n$K\\propto S$\n\nWater content $\\uparrow \\rightarrow R\\uparrow \\rightarrow h_c \\downarrow \\rightarrow  \\psi \\downarrow$\n\nWater content $\\uparrow \\rightarrow S\\uparrow \\rightarrow K \\uparrow$",
+        "images": []
       }
     },
     "pp:ce:2022:q11": {
       "question_uid": "pp:ce:2022:q11",
-      "exam_uid": "ce:2022:set1:q11",
+      "exam_uid": "ce:2022:set1:main:q11",
       "title": "GATE CE 2022 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -447,13 +502,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-af8759a072.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-af8759a072.webp\" />",
+        "images": [
+          "/question-images/ce/2022/ce-2022-af8759a072.webp"
+        ]
       }
     },
     "pp:ce:2022:q12": {
       "question_uid": "pp:ce:2022:q12",
-      "exam_uid": "ce:2022:set1:q12",
+      "exam_uid": "ce:2022:set1:main:q12",
       "title": "GATE CE 2022 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -488,13 +549,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "$TH=500\\frac{mg}{L} \\text{ as }CaCO_3=\\frac{500}{(100/2)}\\frac{meq}{L}=10meq/L$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$TH=500\\frac{mg}{L} \\text{ as }CaCO_3=\\frac{500}{(100/2)}\\frac{meq}{L}=10meq/L$",
+        "images": []
       }
     },
     "pp:ce:2022:q13": {
       "question_uid": "pp:ce:2022:q13",
-      "exam_uid": "ce:2022:set1:q13",
+      "exam_uid": "ce:2022:set1:main:q13",
       "title": "GATE CE 2022 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -529,13 +594,17 @@
       },
       "detailed_solution": {
         "concept": "Geometics Engineering - Remote Sensing, GIS, GPS and Photogrammetry",
-        "markdown": "$$\\begin{aligned}\n\nH &=3.5Km=3500m\\\\\n\nf&=152mm \\\\\n\nh_{avg}&=460m \\\\\n\nScale&=\\frac{f}{H-h_{avg}} \\\\\n\n&= \\frac{152 \\times 10^{-3}}{3500-460}\\\\\n\n&=\\frac{1}{20000}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned}\n\nH &=3.5Km=3500m\\\\\n\nf&=152mm \\\\\n\nh_{avg}&=460m \\\\\n\nScale&=\\frac{f}{H-h_{avg}} \\\\\n\n&= \\frac{152 \\times 10^{-3}}{3500-460}\\\\\n\n&=\\frac{1}{20000}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q14": {
       "question_uid": "pp:ce:2022:q14",
-      "exam_uid": "ce:2022:set1:q14",
+      "exam_uid": "ce:2022:set1:main:q14",
       "title": "GATE CE 2022 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -570,13 +639,19 @@
       },
       "detailed_solution": {
         "concept": "Geometics Engineering - Fundamental Concepts of Surveying",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-3625a3aeb6.webp\" />\n\nHorizontal distance of line\n\n$PQ=350 \\cos \\theta =\\frac{350 \\times 5}{\\sqrt{26}}=343.20m$\n\nTape is 0.1 m short.\n\nNominal length of tape,$l = 50 m$\n\nActual length of tape, $l' = 50 - 0.1 = 49.9 m$\n\nCorrected horizontal length of line PQ\n\n$$\\begin{aligned}\n\n&=\\left ( \\frac{l'}{l} \\right ) \\times 343.2\\\\\n\n&=\\left ( \\frac{49.9}{50} \\right )\\times 343.2\\\\\n\n&=342.517\\simeq 342.52m\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-3625a3aeb6.webp\" />\n\nHorizontal distance of line\n\n$PQ=350 \\cos \\theta =\\frac{350 \\times 5}{\\sqrt{26}}=343.20m$\n\nTape is 0.1 m short.\n\nNominal length of tape,$l = 50 m$\n\nActual length of tape, $l' = 50 - 0.1 = 49.9 m$\n\nCorrected horizontal length of line PQ\n\n$$\\begin{aligned}\n\n&=\\left ( \\frac{l'}{l} \\right ) \\times 343.2\\\\\n\n&=\\left ( \\frac{49.9}{50} \\right )\\times 343.2\\\\\n\n&=342.517\\simeq 342.52m\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-3625a3aeb6.webp"
+        ]
       }
     },
     "pp:ce:2022:q15": {
       "question_uid": "pp:ce:2022:q15",
-      "exam_uid": "ce:2022:set1:q15",
+      "exam_uid": "ce:2022:set1:main:q15",
       "title": "GATE CE 2022 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 1,
@@ -611,13 +686,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Eigen values of M are 5, -2. So, eigen value\n\nof $Q=M^3-4M^2-2M$ are\n\n$5^3-4 \\times 5^2-2 \\times 5=15$\n\n$(-2)^3-4 \\times (-2)^2-2 \\times (-2)=-20$\n\nTherefore, the correct option(s) are **A, C**."
+        "markdown": "Eigen values of M are 5, -2. So, eigen value\n\nof $Q=M^3-4M^2-2M$ are\n\n$5^3-4 \\times 5^2-2 \\times 5=15$\n\n$(-2)^3-4 \\times (-2)^2-2 \\times (-2)=-20$",
+        "images": []
       }
     },
     "pp:ce:2022:q16": {
       "question_uid": "pp:ce:2022:q16",
-      "exam_uid": "ce:2022:set1:q16",
+      "exam_uid": "ce:2022:set1:main:q16",
       "title": "GATE CE 2022 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 1,
@@ -652,13 +731,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Demand",
-        "markdown": "We know COD is the oxygen demand for both biodegradable and non-biodegradable organic matter. Hence $COD \\gt BOD_5$ also $COD \\neq BOD_5$\n\nTherefore, the correct option(s) are **A, B**."
+        "markdown": "We know COD is the oxygen demand for both biodegradable and non-biodegradable organic matter. Hence $COD \\gt BOD_5$ also $COD \\neq BOD_5$",
+        "images": []
       }
     },
     "pp:ce:2022:q17": {
       "question_uid": "pp:ce:2022:q17",
-      "exam_uid": "ce:2022:set1:q17",
+      "exam_uid": "ce:2022:set1:main:q17",
       "title": "GATE CE 2022 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 1,
@@ -693,13 +776,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "Desalination can be done by\n\nElectrodialysis\n\nReverse osmosis\n\nTherefore, the correct option(s) are **B, D**."
+        "markdown": "Desalination can be done by\n\nElectrodialysis\n\nReverse osmosis",
+        "images": []
       }
     },
     "pp:ce:2022:q18": {
       "question_uid": "pp:ce:2022:q18",
-      "exam_uid": "ce:2022:set1:q18",
+      "exam_uid": "ce:2022:set1:main:q18",
       "title": "GATE CE 2022 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 1,
@@ -734,13 +821,17 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "$e+f=\\frac{V^2}{127R}$\n\n$R=\\frac{V^2}{127(e+f)}$\n\nTherefore, the correct option(s) are **A, B**."
+        "markdown": "$e+f=\\frac{V^2}{127R}$\n\n$R=\\frac{V^2}{127(e+f)}$",
+        "images": []
       }
     },
     "pp:ce:2022:q19": {
       "question_uid": "pp:ce:2022:q19",
-      "exam_uid": "ce:2022:set1:q19",
+      "exam_uid": "ce:2022:set1:main:q19",
       "title": "GATE CE 2022 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -773,13 +864,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$x_{n+1}=\\frac{1}{2}\\left ( x_n+\\frac{P}{x_n} \\right )$\n\nConverges when\n\n$x_{n+1}=x_{n}=\\alpha$\n\n$$\\begin{aligned}\n\n\\alpha &=\\frac{1}{2}\\left ( \\alpha+\\frac{P}{\\alpha} \\right )\\\\\n\n\\frac{\\alpha}{2}&=\\frac{P}{2\\alpha}\\\\\n\n\\alpha&=\\sqrt{P}\n\n\\end{aligned}$$\n\nWhen $P=2, x_5=\\sqrt{2}=1.4124$\n\nWhen $P=3, x_5=\\sqrt{3}=1.732$\n\nWhen $P=10, x_5=\\sqrt{10}=3.162$\n\nTherefore, the correct answer is **3.15** (acceptable range: [3.1, 3.2])."
+        "markdown": "$x_{n+1}=\\frac{1}{2}\\left ( x_n+\\frac{P}{x_n} \\right )$\n\nConverges when\n\n$x_{n+1}=x_{n}=\\alpha$\n\n$$\\begin{aligned}\n\n\\alpha &=\\frac{1}{2}\\left ( \\alpha+\\frac{P}{\\alpha} \\right )\\\\\n\n\\frac{\\alpha}{2}&=\\frac{P}{2\\alpha}\\\\\n\n\\alpha&=\\sqrt{P}\n\n\\end{aligned}$$\n\nWhen $P=2, x_5=\\sqrt{2}=1.4124$\n\nWhen $P=3, x_5=\\sqrt{3}=1.732$\n\nWhen $P=10, x_5=\\sqrt{10}=3.162$",
+        "images": []
       }
     },
     "pp:ce:2022:q20": {
       "question_uid": "pp:ce:2022:q20",
-      "exam_uid": "ce:2022:set1:q20",
+      "exam_uid": "ce:2022:set1:main:q20",
       "title": "GATE CE 2022 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -812,13 +907,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Partial Differential Equation",
-        "markdown": "$$\\begin{aligned}\n\n\\cos ^4 x&=\\cos ^2 x\\cos ^2 x\\\\\n\n&=\\left ( \\frac{1+\\cos 2x}{2} \\right )\\left ( \\frac{1+\\cos 2x}{2} \\right )\\\\\n\n&=\\frac{1}{4}(1+2 \\cos 2x+ \\cos ^2 2x)\\\\\n\n&=\\frac{1}{4}(1+2 \\cos 2x+ \\frac{(1+\\cos 4x)}{2})\\\\\n\n&=\\frac{1}{4}+\\frac{\\cos 2x}{2}+\\frac{1}{8}+\\frac{\\cos 4x}{8}\\\\\n\n&=\\frac{3}{8}+\\frac{\\cos 2x}{2}+\\frac{\\cos 4x}{8}\\\\\n\nf_4&=\\frac{1}{8}=0.125\\\\\n\nf_5&=0\\\\\n\n\\rightarrow f_4+f_5&=0.125\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.125** (acceptable range: [0.12, 0.13])."
+        "markdown": "$$\\begin{aligned}\n\n\\cos ^4 x&=\\cos ^2 x\\cos ^2 x\\\\\n\n&=\\left ( \\frac{1+\\cos 2x}{2} \\right )\\left ( \\frac{1+\\cos 2x}{2} \\right )\\\\\n\n&=\\frac{1}{4}(1+2 \\cos 2x+ \\cos ^2 2x)\\\\\n\n&=\\frac{1}{4}(1+2 \\cos 2x+ \\frac{(1+\\cos 4x)}{2})\\\\\n\n&=\\frac{1}{4}+\\frac{\\cos 2x}{2}+\\frac{1}{8}+\\frac{\\cos 4x}{8}\\\\\n\n&=\\frac{3}{8}+\\frac{\\cos 2x}{2}+\\frac{\\cos 4x}{8}\\\\\n\nf_4&=\\frac{1}{8}=0.125\\\\\n\nf_5&=0\\\\\n\n\\rightarrow f_4+f_5&=0.125\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q21": {
       "question_uid": "pp:ce:2022:q21",
-      "exam_uid": "ce:2022:set1:q21",
+      "exam_uid": "ce:2022:set1:main:q21",
       "title": "GATE CE 2022 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -851,13 +950,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Compaction of Soil",
-        "markdown": "$$\\begin{aligned}\n\n(V_S)_{\\text{heap}}&=(V_S)_{\\text{compacted soil}}\\\\\n\n\\left ( \\frac{V_T}{1+e} \\right )_{\\text{heap}}&=\\left ( \\frac{V_T}{1+e} \\right )_{\\text{compacted soil}}\\\\\n\n\\frac{10000}{1+1}&=\\frac{7500}{1+e}\\\\\n\ne&=0.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.5**."
+        "markdown": "$$\\begin{aligned}\n\n(V_S)_{\\text{heap}}&=(V_S)_{\\text{compacted soil}}\\\\\n\n\\left ( \\frac{V_T}{1+e} \\right )_{\\text{heap}}&=\\left ( \\frac{V_T}{1+e} \\right )_{\\text{compacted soil}}\\\\\n\n\\frac{10000}{1+1}&=\\frac{7500}{1+e}\\\\\n\ne&=0.5\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q22": {
       "question_uid": "pp:ce:2022:q22",
-      "exam_uid": "ce:2022:set1:q22",
+      "exam_uid": "ce:2022:set1:main:q22",
       "title": "GATE CE 2022 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -890,13 +993,19 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-85220d7b4c.webp\" />\n\nIncrease in vertical stress,\n\n$$\\begin{aligned}\n\n\\sigma _z&=\\frac{KQ}{z^2}\\\\\n\n\\sigma _z&\\propto \\frac{1}{z^2}\\\\\n\n\\frac{\\sigma _P}{\\sigma _Q}&=\\left ( \\frac{z_Q}{z_P} \\right )^2\\\\\n\n&=\\left ( \\frac{2}{1} \\right )^2=4\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-85220d7b4c.webp\" />\n\nIncrease in vertical stress,\n\n$$\\begin{aligned}\n\n\\sigma _z&=\\frac{KQ}{z^2}\\\\\n\n\\sigma _z&\\propto \\frac{1}{z^2}\\\\\n\n\\frac{\\sigma _P}{\\sigma _Q}&=\\left ( \\frac{z_Q}{z_P} \\right )^2\\\\\n\n&=\\left ( \\frac{2}{1} \\right )^2=4\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-85220d7b4c.webp"
+        ]
       }
     },
     "pp:ce:2022:q23": {
       "question_uid": "pp:ce:2022:q23",
-      "exam_uid": "ce:2022:set1:q23",
+      "exam_uid": "ce:2022:set1:main:q23",
       "title": "GATE CE 2022 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -929,13 +1038,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
-        "markdown": "Friction ratio,\n\n$f_r=\\frac{q_s}{q_t}=1 %$\n\n$q_s=$ Sleeve friction\n\n$q_t=$ Tip friction\n\n$\\frac{q_s}{q_t}=\\frac{1}{100}$\n\n$q_s=\\frac{1000}{100}=10 kPa$\n\nTherefore, the correct answer is **10**."
+        "markdown": "Friction ratio,\n\n$f_r=\\frac{q_s}{q_t}=1 %$\n\n$q_s=$ Sleeve friction\n\n$q_t=$ Tip friction\n\n$\\frac{q_s}{q_t}=\\frac{1}{100}$\n\n$q_s=\\frac{1000}{100}=10 kPa$",
+        "images": []
       }
     },
     "pp:ce:2022:q24": {
       "question_uid": "pp:ce:2022:q24",
-      "exam_uid": "ce:2022:set1:q24",
+      "exam_uid": "ce:2022:set1:main:q24",
       "title": "GATE CE 2022 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -968,13 +1081,19 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
-        "markdown": "MTA-Marks to ALL\n\n<img src=\"/question-images/ce/2022/ce-2022-b1ae321927.webp\" />\n\nFrequency =$\\frac{\\text{Depth of water needed}}{\\text{Consumptive use}}=\\frac{40}{2.8}=14.28 days$\n\nTherefore, the correct answer is **14.28**."
+        "markdown": "MTA-Marks to ALL\n\n<img src=\"/question-images/ce/2022/ce-2022-b1ae321927.webp\" />\n\nFrequency =$\\frac{\\text{Depth of water needed}}{\\text{Consumptive use}}=\\frac{40}{2.8}=14.28 days$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-b1ae321927.webp"
+        ]
       }
     },
     "pp:ce:2022:q25": {
       "question_uid": "pp:ce:2022:q25",
-      "exam_uid": "ce:2022:set1:q25",
+      "exam_uid": "ce:2022:set1:main:q25",
       "title": "GATE CE 2022 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 1,
@@ -1007,13 +1126,19 @@
       },
       "detailed_solution": {
         "concept": "Geometics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-4c0a496fe7.webp\" />\n\n$WCB=360-\\left ( 31+\\frac{17}{60} \\right )^{\\circ}=328.716^{\\circ}$\n\nTherefore, the correct answer is **328.7** (acceptable range: [328.6, 328.8])."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-4c0a496fe7.webp\" />\n\n$WCB=360-\\left ( 31+\\frac{17}{60} \\right )^{\\circ}=328.716^{\\circ}$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-4c0a496fe7.webp"
+        ]
       }
     },
     "pp:ce:2022:q26": {
       "question_uid": "pp:ce:2022:q26",
-      "exam_uid": "ce:2022:set1:q26",
+      "exam_uid": "ce:2022:set1:main:q26",
       "title": "GATE CE 2022 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1048,13 +1173,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Using potential matrix about x-axis\n\n$$\\begin{bmatrix}\n\nx'\\\\\n\ny'\\\\\n\nz'\n\n\\end{bmatrix}=\\begin{bmatrix}\n\n1 & 0 & 0\\\\\n\n0 & \\cos \\theta  & \\sin \\theta \\\\\n\n0& \\sin \\theta  & \\cos \\theta\n\n\\end{bmatrix}\\begin{bmatrix}\n\n1\\\\\n\n1\\\\\n\n1\n\n\\end{bmatrix}=\\begin{bmatrix}\n\n1 & 0 & 0\\\\\n\n0 & \\frac{1}{\\sqrt{2}}  & -\\frac{1}{\\sqrt{2}} \\\\\n\n0& \\frac{1}{\\sqrt{2}}  & \\frac{1}{\\sqrt{2}}\n\n\\end{bmatrix}\\begin{bmatrix}\n\n1\\\\\n\n1\\\\\n\n1\n\n\\end{bmatrix}=\\begin{bmatrix}\n\n1\\\\\n\n0\\\\\n\n\\sqrt{2}\n\n\\end{bmatrix}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Using potential matrix about x-axis\n\n$$\\begin{bmatrix}\n\nx'\\\\\n\ny'\\\\\n\nz'\n\n\\end{bmatrix}=\\begin{bmatrix}\n\n1 & 0 & 0\\\\\n\n0 & \\cos \\theta  & \\sin \\theta \\\\\n\n0& \\sin \\theta  & \\cos \\theta\n\n\\end{bmatrix}\\begin{bmatrix}\n\n1\\\\\n\n1\\\\\n\n1\n\n\\end{bmatrix}=\\begin{bmatrix}\n\n1 & 0 & 0\\\\\n\n0 & \\frac{1}{\\sqrt{2}}  & -\\frac{1}{\\sqrt{2}} \\\\\n\n0& \\frac{1}{\\sqrt{2}}  & \\frac{1}{\\sqrt{2}}\n\n\\end{bmatrix}\\begin{bmatrix}\n\n1\\\\\n\n1\\\\\n\n1\n\n\\end{bmatrix}=\\begin{bmatrix}\n\n1\\\\\n\n0\\\\\n\n\\sqrt{2}\n\n\\end{bmatrix}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q27": {
       "question_uid": "pp:ce:2022:q27",
-      "exam_uid": "ce:2022:set1:q27",
+      "exam_uid": "ce:2022:set1:main:q27",
       "title": "GATE CE 2022 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1089,13 +1218,19 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Arches",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-53ea672758.webp\" />\n\n$$\\begin{aligned}\n\n(F_Q)&=P\\sin \\theta  =\\frac{P}{\\sqrt{2}}&(\\; at\\;  \\theta =45^{\\circ})\\\\\n\n(S_Q)&=P\\cos \\theta  =\\frac{P}{\\sqrt{2}}&(\\; at\\; \\theta =45^{\\circ})\\\\\n\nM_Q&=PR \\sin \\theta =\\frac{PR}{\\sqrt{2}}&( \\; at\\; \\theta =45^{\\circ})\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-53ea672758.webp\" />\n\n$$\\begin{aligned}\n\n(F_Q)&=P\\sin \\theta  =\\frac{P}{\\sqrt{2}}&(\\; at\\;  \\theta =45^{\\circ})\\\\\n\n(S_Q)&=P\\cos \\theta  =\\frac{P}{\\sqrt{2}}&(\\; at\\; \\theta =45^{\\circ})\\\\\n\nM_Q&=PR \\sin \\theta =\\frac{PR}{\\sqrt{2}}&( \\; at\\; \\theta =45^{\\circ})\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-53ea672758.webp"
+        ]
       }
     },
     "pp:ce:2022:q28": {
       "question_uid": "pp:ce:2022:q28",
-      "exam_uid": "ce:2022:set1:q28",
+      "exam_uid": "ce:2022:set1:main:q28",
       "title": "GATE CE 2022 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1130,13 +1265,17 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "As per IS:800-2007 Clause no. 11.2.1\n\nFull strength of tension member,\n\n$$\\begin{aligned}\n\nP&=\\sigma _{at} \\times A_g\\\\\n\nP&=150 \\times 1903\\\\\n\nP&=285450N\n\n\\end{aligned}$$\n\nWeld strength of $L_1$,\n\n$$\\begin{aligned}\n\nP_1&=L_1\\times (0.7 \\times s) \\times 108\\\\\n\nP_1&=L_1\\times (0.7 \\times 5) \\times 108\\\\\n\nP_1&=378L_1\n\n\\end{aligned}$$\n\nWeld strength of $L_2$,\n\n$$\\begin{aligned}\n\nP_2&=L_2\\times (0.7 \\times s) \\times 108\\\\\n\nP_2&=L_2\\times (0.7 \\times 5) \\times 108\\\\\n\nP_2&=378L_2\n\n\\end{aligned}$$\n\nApplying moment CG equal to zero,\n\n$$\\begin{aligned}\n\nP_1 \\times 28.4 &=P_2 \\times (100-28.4)\\\\\n\n\\frac{P_1}{P_2}&=\\frac{71.6}{28.4}\\\\\n\n\\frac{L_1 \\times 378}{L_2 \\times 378}&=\\frac{71.6}{28.4}=2.521\\\\\n\nL_1&=2.521L_2\\\\\n\n\\text{Total weld strength}&=\\text{Tensile strength}\\\\\n\n(L_1+L_2) \\times 3.5 \\times 108&=285450\\\\\n\nL_1+L_2&=755.158\\\\\n\n2.521L_2+L_2&=755.152\\\\\n\nL_2&=214.472mm\\\\\n\nL_1&=540.685mm\\\\\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "As per IS:800-2007 Clause no. 11.2.1\n\nFull strength of tension member,\n\n$$\\begin{aligned}\n\nP&=\\sigma _{at} \\times A_g\\\\\n\nP&=150 \\times 1903\\\\\n\nP&=285450N\n\n\\end{aligned}$$\n\nWeld strength of $L_1$,\n\n$$\\begin{aligned}\n\nP_1&=L_1\\times (0.7 \\times s) \\times 108\\\\\n\nP_1&=L_1\\times (0.7 \\times 5) \\times 108\\\\\n\nP_1&=378L_1\n\n\\end{aligned}$$\n\nWeld strength of $L_2$,\n\n$$\\begin{aligned}\n\nP_2&=L_2\\times (0.7 \\times s) \\times 108\\\\\n\nP_2&=L_2\\times (0.7 \\times 5) \\times 108\\\\\n\nP_2&=378L_2\n\n\\end{aligned}$$\n\nApplying moment CG equal to zero,\n\n$$\\begin{aligned}\n\nP_1 \\times 28.4 &=P_2 \\times (100-28.4)\\\\\n\n\\frac{P_1}{P_2}&=\\frac{71.6}{28.4}\\\\\n\n\\frac{L_1 \\times 378}{L_2 \\times 378}&=\\frac{71.6}{28.4}=2.521\\\\\n\nL_1&=2.521L_2\\\\\n\n\\text{Total weld strength}&=\\text{Tensile strength}\\\\\n\n(L_1+L_2) \\times 3.5 \\times 108&=285450\\\\\n\nL_1+L_2&=755.158\\\\\n\n2.521L_2+L_2&=755.152\\\\\n\nL_2&=214.472mm\\\\\n\nL_1&=540.685mm\\\\\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q29": {
       "question_uid": "pp:ce:2022:q29",
-      "exam_uid": "ce:2022:set1:q29",
+      "exam_uid": "ce:2022:set1:main:q29",
       "title": "GATE CE 2022 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1171,13 +1310,19 @@
       },
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-62f6b32619.webp\" />\n\nCritical path are Q-S and Q-T=22 days\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-62f6b32619.webp\" />\n\nCritical path are Q-S and Q-T=22 days",
+        "images": [
+          "/question-images/ce/2022/ce-2022-62f6b32619.webp"
+        ]
       }
     },
     "pp:ce:2022:q30": {
       "question_uid": "pp:ce:2022:q30",
-      "exam_uid": "ce:2022:set1:q30",
+      "exam_uid": "ce:2022:set1:main:q30",
       "title": "GATE CE 2022 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1211,14 +1356,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Geotechnical Engineering** (specifically *Classification of Soils and Clay Minerals*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Classification of Soils and Clay Minerals**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *1-S, 2-P, 3-Q, 4-R*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (1-S, 2-P, 3-Q, 4-R)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2022:q31": {
       "question_uid": "pp:ce:2022:q31",
-      "exam_uid": "ce:2022:set1:q31",
+      "exam_uid": "ce:2022:set1:main:q31",
       "title": "GATE CE 2022 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1253,13 +1401,19 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-264f2fbd86.webp\" />\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-264f2fbd86.webp\" />",
+        "images": [
+          "/question-images/ce/2022/ce-2022-264f2fbd86.webp"
+        ]
       }
     },
     "pp:ce:2022:q32": {
       "question_uid": "pp:ce:2022:q32",
-      "exam_uid": "ce:2022:set1:q32",
+      "exam_uid": "ce:2022:set1:main:q32",
       "title": "GATE CE 2022 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1294,13 +1448,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Demand",
-        "markdown": "Henry's Law $C_g=KP$\n\n$C_g=$ Concentration of dissolved gas\n\n$K=$ Henry?s law constant\n\n$P=$  Partial pressure of gas\n\n$C_g= 1.3 \\;m\\; mol/(lit-atm) \\times 0.21 atm =0.273 \\;m\\; mol/lit=0.273 \\times 32 \\; mg/lit=8.736 \\; mg/lit$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Henry's Law $C_g=KP$\n\n$C_g=$ Concentration of dissolved gas\n\n$K=$ Henry?s law constant\n\n$P=$  Partial pressure of gas\n\n$C_g= 1.3 \\;m\\; mol/(lit-atm) \\times 0.21 atm =0.273 \\;m\\; mol/lit=0.273 \\times 32 \\; mg/lit=8.736 \\; mg/lit$",
+        "images": []
       }
     },
     "pp:ce:2022:q33": {
       "question_uid": "pp:ce:2022:q33",
-      "exam_uid": "ce:2022:set1:q33",
+      "exam_uid": "ce:2022:set1:main:q33",
       "title": "GATE CE 2022 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1335,13 +1493,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
-        "markdown": "Total Hardness,\n\n$$\\begin{aligned}\n\nTH&=[Ca^{+2}] \\times \\frac{50}{20}+[Mg^{+2}]\n\n\\times \\frac{50}{12}\\\\\n\n&=100 \\times \\frac{50}{20}+36 \\times \\frac{50}{12}\\\\\n\n&=400 mg/l \\text{ as } CaCO_3\n\n\\end{aligned}$$\n\nTotal alkalinity,\n\n$TA=[HCO_3^-]\\times \\frac{50}{61}=122 \\times \\frac{50}{61}=100\\; mg/l \\text{ as } CaCO_3$\n\nTemporary hardness (carbonate hardness)\n\n$$=min\\left\\{\\begin{matrix}\n\nTA= 100\\; mg/l \\text{ as } CaCO_3\\\\\n\nTH=400\\; mg/l \\text{ as } CaCO_3\n\n\\end{matrix}\\right.=100\n\n\\; mg/l \\text{ as } CaCO_3$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Total Hardness,\n\n$$\\begin{aligned}\n\nTH&=[Ca^{+2}] \\times \\frac{50}{20}+[Mg^{+2}]\n\n\\times \\frac{50}{12}\\\\\n\n&=100 \\times \\frac{50}{20}+36 \\times \\frac{50}{12}\\\\\n\n&=400 mg/l \\text{ as } CaCO_3\n\n\\end{aligned}$$\n\nTotal alkalinity,\n\n$TA=[HCO_3^-]\\times \\frac{50}{61}=122 \\times \\frac{50}{61}=100\\; mg/l \\text{ as } CaCO_3$\n\nTemporary hardness (carbonate hardness)\n\n$$=min\\left\\{\\begin{matrix}\n\nTA= 100\\; mg/l \\text{ as } CaCO_3\\\\\n\nTH=400\\; mg/l \\text{ as } CaCO_3\n\n\\end{matrix}\\right.=100\n\n\\; mg/l \\text{ as } CaCO_3$$",
+        "images": []
       }
     },
     "pp:ce:2022:q34": {
       "question_uid": "pp:ce:2022:q34",
-      "exam_uid": "ce:2022:set1:q34",
+      "exam_uid": "ce:2022:set1:main:q34",
       "title": "GATE CE 2022 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1376,13 +1538,19 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-466cc52c9f.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-466cc52c9f.webp\" />",
+        "images": [
+          "/question-images/ce/2022/ce-2022-466cc52c9f.webp"
+        ]
       }
     },
     "pp:ce:2022:q35": {
       "question_uid": "pp:ce:2022:q35",
-      "exam_uid": "ce:2022:set1:q35",
+      "exam_uid": "ce:2022:set1:main:q35",
       "title": "GATE CE 2022 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1417,13 +1585,20 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$f(x)=max{3-x,x-1}$\n\n<img src=\"/question-images/ce/2022/ce-2022-35d5c59248.webp\" />\n\nboth intersecting at\n\n$$\\begin{aligned}\n\n3-x&=x-1 \\\\\n\n2x&= 4\\\\\n\nx&=2 \\\\\n\ny &= max\\{3-x,x-1\\}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ce/2022/ce-2022-589644dbf1.webp\" />\n\nTherefore, the correct option(s) are **A, B**."
+        "markdown": "$f(x)=max{3-x,x-1}$\n\n<img src=\"/question-images/ce/2022/ce-2022-35d5c59248.webp\" />\n\nboth intersecting at\n\n$$\\begin{aligned}\n\n3-x&=x-1 \\\\\n\n2x&= 4\\\\\n\nx&=2 \\\\\n\ny &= max\\{3-x,x-1\\}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ce/2022/ce-2022-589644dbf1.webp\" />",
+        "images": [
+          "/question-images/ce/2022/ce-2022-35d5c59248.webp",
+          "/question-images/ce/2022/ce-2022-589644dbf1.webp"
+        ]
       }
     },
     "pp:ce:2022:q36": {
       "question_uid": "pp:ce:2022:q36",
-      "exam_uid": "ce:2022:set1:q36",
+      "exam_uid": "ce:2022:set1:main:q36",
       "title": "GATE CE 2022 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1458,13 +1633,20 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Friction",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-374be1d157.webp\" />\n\nMinimum force for sliding\n\n$(P_{min})_{sliding}=(f_s)_{max}$  ...(i)\n\nApplying equilibrium equation in vertical direction\n\nNormal reaction = Weight\n\nN=mg=25 kN   ...(ii)\n\nUsing equation (i) and (ii)\n\n$(P_{min})_{sliding}=\\mu N =0.3 \\times 25=7.5 kN$\n\nMinimum force for overturning\n\n<img src=\"/question-images/ce/2022/ce-2022-ebb23c3450.webp\" />\n\nAt the verge of overturning\n\n$(P_{min})_{oberturning} \\times 2=W \\times 2$\n\n$(P_{min})_{oberturning}=\\frac{25 \\times 0.5} {2}=6.25 kN$\n\nHere, $(P_{min})_{oberturning} \\lt (P_{min})_{sliding}$\n\nFirst overtuning will take place.\n\nSliding will not take place.\n\nTherefore, the correct option(s) are **A, B, C**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-374be1d157.webp\" />\n\nMinimum force for sliding\n\n$(P_{min})_{sliding}=(f_s)_{max}$  ...(i)\n\nApplying equilibrium equation in vertical direction\n\nNormal reaction = Weight\n\nN=mg=25 kN   ...(ii)\n\nUsing equation (i) and (ii)\n\n$(P_{min})_{sliding}=\\mu N =0.3 \\times 25=7.5 kN$\n\nMinimum force for overturning\n\n<img src=\"/question-images/ce/2022/ce-2022-ebb23c3450.webp\" />\n\nAt the verge of overturning\n\n$(P_{min})_{oberturning} \\times 2=W \\times 2$\n\n$(P_{min})_{oberturning}=\\frac{25 \\times 0.5} {2}=6.25 kN$\n\nHere, $(P_{min})_{oberturning} \\lt (P_{min})_{sliding}$\n\nFirst overtuning will take place.\n\nSliding will not take place.",
+        "images": [
+          "/question-images/ce/2022/ce-2022-374be1d157.webp",
+          "/question-images/ce/2022/ce-2022-ebb23c3450.webp"
+        ]
       }
     },
     "pp:ce:2022:q37": {
       "question_uid": "pp:ce:2022:q37",
-      "exam_uid": "ce:2022:set1:q37",
+      "exam_uid": "ce:2022:set1:main:q37",
       "title": "GATE CE 2022 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1499,13 +1681,20 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Design of Stable Channels",
-        "markdown": "In Aqueduct and Syphon aqueduct under irrigation\n\ncanal or canal passes over natural drain.\n\n<img src=\"/question-images/ce/2022/ce-2022-f0be5da9bc.webp\" />\n\nIn Super passage and Canal syphon or simply\n\nsyphon, natural drain passes over irrigation canal\n\nor canal goes under natural drain.\n\n<img src=\"/question-images/ce/2022/ce-2022-1875db9f5f.webp\" />\n\nIn level crossing, natural drain water goes through\n\nthe irrigation canal.\n\n<img src=\"/question-images/ce/2022/ce-2022-1875db9f5f.webp\" />\n\nTherefore, the correct option(s) are **A, B**."
+        "markdown": "In Aqueduct and Syphon aqueduct under irrigation\n\ncanal or canal passes over natural drain.\n\n<img src=\"/question-images/ce/2022/ce-2022-f0be5da9bc.webp\" />\n\nIn Super passage and Canal syphon or simply\n\nsyphon, natural drain passes over irrigation canal\n\nor canal goes under natural drain.\n\n<img src=\"/question-images/ce/2022/ce-2022-1875db9f5f.webp\" />\n\nIn level crossing, natural drain water goes through\n\nthe irrigation canal.\n\n<img src=\"/question-images/ce/2022/ce-2022-1875db9f5f.webp\" />",
+        "images": [
+          "/question-images/ce/2022/ce-2022-f0be5da9bc.webp",
+          "/question-images/ce/2022/ce-2022-1875db9f5f.webp"
+        ]
       }
     },
     "pp:ce:2022:q38": {
       "question_uid": "pp:ce:2022:q38",
-      "exam_uid": "ce:2022:set1:q38",
+      "exam_uid": "ce:2022:set1:main:q38",
       "title": "GATE CE 2022 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1538,13 +1727,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$$\\begin{aligned}\n\nx_0&=1\\rightarrow y_0=3\\\\\n\nx_1&=1.2\\rightarrow y_1=?\\\\\n\nx_2&=1.4\\rightarrow y_2=?\\\\\n\n\\end{aligned}$$\n\nUsing Euler's forward methods\n\n$$\\begin{aligned}\n\ny_n&=y_n+hf(x_n,y_n)\\\\\n\ny_1&=y_0+hf(x_0,y_0)\\\\\n\n&=3+0.2 \\times (4(1+2)-3)\\\\\n\n&=4.8\\\\\n\ny_2&=y_1+hf(x_1,y_1)\\\\\n\n&=4.8+0.2 \\times (4(1.2+2)-4.8)\\\\\n\n&=6.4\\\\\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **6.4** (acceptable range: [6.3, 6.5])."
+        "markdown": "$$\\begin{aligned}\n\nx_0&=1\\rightarrow y_0=3\\\\\n\nx_1&=1.2\\rightarrow y_1=?\\\\\n\nx_2&=1.4\\rightarrow y_2=?\\\\\n\n\\end{aligned}$$\n\nUsing Euler's forward methods\n\n$$\\begin{aligned}\n\ny_n&=y_n+hf(x_n,y_n)\\\\\n\ny_1&=y_0+hf(x_0,y_0)\\\\\n\n&=3+0.2 \\times (4(1+2)-3)\\\\\n\n&=4.8\\\\\n\ny_2&=y_1+hf(x_1,y_1)\\\\\n\n&=4.8+0.2 \\times (4(1.2+2)-4.8)\\\\\n\n&=6.4\\\\\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q39": {
       "question_uid": "pp:ce:2022:q39",
-      "exam_uid": "ce:2022:set1:q39",
+      "exam_uid": "ce:2022:set1:main:q39",
       "title": "GATE CE 2022 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1577,13 +1770,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "We know that, normal equation for fitting of straight lines are\n\n$$\\begin{aligned}\n\n\\Sigma y&=na+b\\Sigma x\\\\\n\n\\Sigma xy&=a\\Sigma x+b\\Sigma x^2\\\\\n\nn&=4\\\\\n\n51&=4a+b(14)\\\\\n\n188&=a(14)+b(54)\n\n\\end{aligned}$$\n\nAfter solving, a=6.1 and b=1.9\n\nTherefore, the correct answer is **1.9**."
+        "markdown": "We know that, normal equation for fitting of straight lines are\n\n$$\\begin{aligned}\n\n\\Sigma y&=na+b\\Sigma x\\\\\n\n\\Sigma xy&=a\\Sigma x+b\\Sigma x^2\\\\\n\nn&=4\\\\\n\n51&=4a+b(14)\\\\\n\n188&=a(14)+b(54)\n\n\\end{aligned}$$\n\nAfter solving, a=6.1 and b=1.9",
+        "images": []
       }
     },
     "pp:ce:2022:q40": {
       "question_uid": "pp:ce:2022:q40",
-      "exam_uid": "ce:2022:set1:q40",
+      "exam_uid": "ce:2022:set1:main:q40",
       "title": "GATE CE 2022 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1616,13 +1813,19 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-512eef8aed.webp\" />\n\n$$\\begin{aligned}\n\n\\Sigma M_J&=0\\\\\n\nV_A \\times 8-H_A \\times 1-70 \\times 4&=0\\\\\n\n8V_A-H_A&=280 \\;\\;\\;(i)\n\n\\end{aligned}$$\n\nTo find $H_A$ (Cut the truss by 1-1)\n\nConsider left hand side\n\n$$\\begin{aligned}\n\n\\Sigma M_E&=0\\\\\n\nV_A \\times 4-H_A \\times 4&=0\\\\\n\nV_A&=H_A \\;\\;\\;(ii)\\\\\n\n\\text{using (i) and (ii)}&\\\\\n\n8V_A-V_A&=280\\\\\n\n7V_A&=280\\\\\n\nV_A&=40kN\\\\\n\nH_A&=40kN\\\\\n\nH_J&=40kN\\\\\n\nV_J&=70-40=30kN\\\\\n\n\\end{aligned}$$\n\nTo find force in member EF (Cit the truss by 2-2)\n\nConsider right hand side\n\nForce in member EF\n\n$F_{EF}=V_J=30kN$\n\nTherefore, the correct answer is **30** (acceptable range: [28, 32])."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-512eef8aed.webp\" />\n\n$$\\begin{aligned}\n\n\\Sigma M_J&=0\\\\\n\nV_A \\times 8-H_A \\times 1-70 \\times 4&=0\\\\\n\n8V_A-H_A&=280 \\;\\;\\;(i)\n\n\\end{aligned}$$\n\nTo find $H_A$ (Cut the truss by 1-1)\n\nConsider left hand side\n\n$$\\begin{aligned}\n\n\\Sigma M_E&=0\\\\\n\nV_A \\times 4-H_A \\times 4&=0\\\\\n\nV_A&=H_A \\;\\;\\;(ii)\\\\\n\n\\text{using (i) and (ii)}&\\\\\n\n8V_A-V_A&=280\\\\\n\n7V_A&=280\\\\\n\nV_A&=40kN\\\\\n\nH_A&=40kN\\\\\n\nH_J&=40kN\\\\\n\nV_J&=70-40=30kN\\\\\n\n\\end{aligned}$$\n\nTo find force in member EF (Cit the truss by 2-2)\n\nConsider right hand side\n\nForce in member EF\n\n$F_{EF}=V_J=30kN$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-512eef8aed.webp"
+        ]
       }
     },
     "pp:ce:2022:q41": {
       "question_uid": "pp:ce:2022:q41",
-      "exam_uid": "ce:2022:set1:q41",
+      "exam_uid": "ce:2022:set1:main:q41",
       "title": "GATE CE 2022 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1655,13 +1858,17 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "$\\frac{M}{6}=10kNm\\Rightarrow  M=60kNm$\n\nTherefore, the correct answer is **60** (acceptable range: [57, 63])."
+        "markdown": "$\\frac{M}{6}=10kNm\\Rightarrow  M=60kNm$",
+        "images": []
       }
     },
     "pp:ce:2022:q42": {
       "question_uid": "pp:ce:2022:q42",
-      "exam_uid": "ce:2022:set1:q42",
+      "exam_uid": "ce:2022:set1:main:q42",
       "title": "GATE CE 2022 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1694,13 +1901,19 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Influence Line Diagram and Rolling Loads",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-f001c73a10.webp\" />\n\n$\\frac{ab}{L}=\\frac{1 \\times 4}{5}=0.8m$\n\nTo get maximum BN at R\n\n$$\\begin{aligned}\n\nBM_{max}&=200 \\times \\frac{ab}{L}+100 \\times y\\\\\n\n\\frac{ab/l}{b}&=\\frac{y}{4-3}\\Rightarrow \\frac{0.8}{4}=\\frac{y}{1}=0.2m\\\\\n\nBM_{max}&=200 \\times 0.8+100 \\times 0.2=180kNm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **180**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-f001c73a10.webp\" />\n\n$\\frac{ab}{L}=\\frac{1 \\times 4}{5}=0.8m$\n\nTo get maximum BN at R\n\n$$\\begin{aligned}\n\nBM_{max}&=200 \\times \\frac{ab}{L}+100 \\times y\\\\\n\n\\frac{ab/l}{b}&=\\frac{y}{4-3}\\Rightarrow \\frac{0.8}{4}=\\frac{y}{1}=0.2m\\\\\n\nBM_{max}&=200 \\times 0.8+100 \\times 0.2=180kNm\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-f001c73a10.webp"
+        ]
       }
     },
     "pp:ce:2022:q43": {
       "question_uid": "pp:ce:2022:q43",
-      "exam_uid": "ce:2022:set1:q43",
+      "exam_uid": "ce:2022:set1:main:q43",
       "title": "GATE CE 2022 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1733,13 +1946,17 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
-        "markdown": "$b=300mm$\n\n$d=580 mm$\n\n$V_u=440 kN$\n\nConcrete used is M30\n\nRaft steel is Fe415\n\n$V_{cu}=\\tau _c Bd=0.66 \\times 300 \\times \\frac{580}{1000}=114.84 kN$\n\n$V_{su}=V_u-V_{cu}=440-114.84=325.16 kN$\n\nSpacing of 2-legged shear reinforcement\n\n$$\\begin{aligned}\n\ns_V&=\\frac{A_{SV} \\times 0.87 f_y \\times d}{V_{su}}\\\\\n\n&=\\frac{2 \\times \\frac{\\pi}{2} \\times (10)^2 \\times 0.87 \\times 415 \\times 580}{325.16 \\times 1000}\\\\\n\n&=101.16 mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **101** (acceptable range: [100, 102])."
+        "markdown": "$b=300mm$\n\n$d=580 mm$\n\n$V_u=440 kN$\n\nConcrete used is M30\n\nRaft steel is Fe415\n\n$V_{cu}=\\tau _c Bd=0.66 \\times 300 \\times \\frac{580}{1000}=114.84 kN$\n\n$V_{su}=V_u-V_{cu}=440-114.84=325.16 kN$\n\nSpacing of 2-legged shear reinforcement\n\n$$\\begin{aligned}\n\ns_V&=\\frac{A_{SV} \\times 0.87 f_y \\times d}{V_{su}}\\\\\n\n&=\\frac{2 \\times \\frac{\\pi}{2} \\times (10)^2 \\times 0.87 \\times 415 \\times 580}{325.16 \\times 1000}\\\\\n\n&=101.16 mm\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q44": {
       "question_uid": "pp:ce:2022:q44",
-      "exam_uid": "ce:2022:set1:q44",
+      "exam_uid": "ce:2022:set1:main:q44",
       "title": "GATE CE 2022 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1772,13 +1989,17 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "$$\\begin{aligned}\n\nQ_{up}&=q_bA_b+q_sA_s\\\\\n\nC_u&=\\frac{q_u}{2}=\\frac{100}{2}=50kN/m^2\\\\\n\n&=9 \\times CB^2+\\alpha \\bar{C}(4BL)\\\\\n\n632kN&=9 \\times 50 \\times B^2 +0.7  \\times 50(4B \\times 10)\\\\\n\nB&=0.4m\\\\\n\nB&=400mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **400**."
+        "markdown": "$$\\begin{aligned}\n\nQ_{up}&=q_bA_b+q_sA_s\\\\\n\nC_u&=\\frac{q_u}{2}=\\frac{100}{2}=50kN/m^2\\\\\n\n&=9 \\times CB^2+\\alpha \\bar{C}(4BL)\\\\\n\n632kN&=9 \\times 50 \\times B^2 +0.7  \\times 50(4B \\times 10)\\\\\n\nB&=0.4m\\\\\n\nB&=400mm\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q45": {
       "question_uid": "pp:ce:2022:q45",
-      "exam_uid": "ce:2022:set1:q45",
+      "exam_uid": "ce:2022:set1:main:q45",
       "title": "GATE CE 2022 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1811,13 +2032,19 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-39867c9882.webp\" />\n\n$$\\begin{aligned}\n\n(T_v)_{50}&=C_v\\frac{t}{d^2} \\;\\;\\; (\\text{from lab})\\\\\n\n\\frac{\\pi}{4}(0.5)^2&=C_v \\times \\frac{10 min}{\\left ( \\frac{25}{2} \\times 10^{-3} \\right )^2}\\\\\n\n(T_v)_{25}&=C_v\\frac{t}{d^2} \\;\\;\\; (\\text{from field})\\\\\n\n\\frac{\\pi}{4}(0.25)^2&=C_v \\frac{t}{(12.5)^2}\\\\\n\n\\end{aligned}$$\n\nSince the soil is same -> $C_v$ same\n\n$$\\begin{aligned}\n\n\\frac{\\pi}{4}(0.25)^2&= \\frac{\\frac{\\pi}{4}(0.5)^2 \\times (12.5 \\times 10^{-3})^2}{10} \\times \\frac{t}{(12.5)^2}\\\\\n\nt&=1736 \\;days\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1735** (acceptable range: [1730, 1740])."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-39867c9882.webp\" />\n\n$$\\begin{aligned}\n\n(T_v)_{50}&=C_v\\frac{t}{d^2} \\;\\;\\; (\\text{from lab})\\\\\n\n\\frac{\\pi}{4}(0.5)^2&=C_v \\times \\frac{10 min}{\\left ( \\frac{25}{2} \\times 10^{-3} \\right )^2}\\\\\n\n(T_v)_{25}&=C_v\\frac{t}{d^2} \\;\\;\\; (\\text{from field})\\\\\n\n\\frac{\\pi}{4}(0.25)^2&=C_v \\frac{t}{(12.5)^2}\\\\\n\n\\end{aligned}$$\n\nSince the soil is same -> $C_v$ same\n\n$$\\begin{aligned}\n\n\\frac{\\pi}{4}(0.25)^2&= \\frac{\\frac{\\pi}{4}(0.5)^2 \\times (12.5 \\times 10^{-3})^2}{10} \\times \\frac{t}{(12.5)^2}\\\\\n\nt&=1736 \\;days\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-39867c9882.webp"
+        ]
       }
     },
     "pp:ce:2022:q46": {
       "question_uid": "pp:ce:2022:q46",
-      "exam_uid": "ce:2022:set1:q46",
+      "exam_uid": "ce:2022:set1:main:q46",
       "title": "GATE CE 2022 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1850,13 +2077,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "$C_1$ = Time\n\n$C_2$ = Ordinates of 2hr DRH\n\n$C_3$ = Ordinates of 2hr UH=(Ordinates of 2hr DRH)/(Rianfall excess of 3cm)\n\n$C_4$ = S-curve lag by 2hr\n\n$C_5$ = S-curve ordinates $S_2$\n\n$C_6$ = $S_1$ curve\n\n$C_7$ = Ordinates of 1hr UH $= \\frac{S_2-S-1}{1/2}$\n\n$$\\begin{array}{|c|c|c|c|c|c|c|}\n\n\\hline\n\nC_1& C_2& C_3& C_4& C_5& C_6&C_7 \\\\\n\n\\hline 0&0 &0 &- &0 &- & 0\\\\ \\hline\n\n1&6 & 2& -&2 & 0& 4\\\\ \\hline\n\n2&24 & 8&0 &8 & 2&12 \\\\ \\hline\n\n3&30 &10 &2 &12 &8 &8 \\\\ \\hline\n\n4&21 & 7& 8& 15& 12& 6\\\\ \\hline\n\n5&15 &5 & 12& 17& 15& 4\\\\ \\hline\n\n6&6 & 2&  15& 17&17& 0\\\\ \\hline\n\n7 &0 & 0&  17& 17& 17&0\\\\ \\hline\n\n& &  & 17& 17& 17&0\\\\ \\hline\n\n\\end{array}$$\n\nTherefore, the correct answer is **12**."
+        "markdown": "$C_1$ = Time\n\n$C_2$ = Ordinates of 2hr DRH\n\n$C_3$ = Ordinates of 2hr UH=(Ordinates of 2hr DRH)/(Rianfall excess of 3cm)\n\n$C_4$ = S-curve lag by 2hr\n\n$C_5$ = S-curve ordinates $S_2$\n\n$C_6$ = $S_1$ curve\n\n$C_7$ = Ordinates of 1hr UH $= \\frac{S_2-S-1}{1/2}$\n\n$$\\begin{array}{|c|c|c|c|c|c|c|}\n\n\\hline\n\nC_1& C_2& C_3& C_4& C_5& C_6&C_7 \\\\\n\n\\hline 0&0 &0 &- &0 &- & 0\\\\ \\hline\n\n1&6 & 2& -&2 & 0& 4\\\\ \\hline\n\n2&24 & 8&0 &8 & 2&12 \\\\ \\hline\n\n3&30 &10 &2 &12 &8 &8 \\\\ \\hline\n\n4&21 & 7& 8& 15& 12& 6\\\\ \\hline\n\n5&15 &5 & 12& 17& 15& 4\\\\ \\hline\n\n6&6 & 2&  15& 17&17& 0\\\\ \\hline\n\n7 &0 & 0&  17& 17& 17&0\\\\ \\hline\n\n& &  & 17& 17& 17&0\\\\ \\hline\n\n\\end{array}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q47": {
       "question_uid": "pp:ce:2022:q47",
-      "exam_uid": "ce:2022:set1:q47",
+      "exam_uid": "ce:2022:set1:main:q47",
       "title": "GATE CE 2022 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1889,13 +2120,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Dynamics and Flow Measurements",
-        "markdown": "$$\\begin{aligned}\n\nh_{f1} &=h_{f2} \\\\\n\n\\frac{8Q_1^2}{\\pi ^2 g} \\times \\frac{fl}{D_1^5}&= \\frac{8Q_2^2}{\\pi ^2 g} \\times \\frac{fl}{D_2^5} \\\\\n\n\\left ( \\frac{Q_1}{Q_2} \\right )^2&= \\left ( \\frac{D_1}{D_2} \\right )^5\\\\\n\n\\frac{Q_1}{Q_2} &=  \\left ( \\frac{D_1}{D_2} \\right )^{5/2}\\\\\n\n&= \\left ( \\frac{0.2}{0.1} \\right )^{5/2}\\\\&=5.66\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.65** (acceptable range: [5.6, 5.7])."
+        "markdown": "$$\\begin{aligned}\n\nh_{f1} &=h_{f2} \\\\\n\n\\frac{8Q_1^2}{\\pi ^2 g} \\times \\frac{fl}{D_1^5}&= \\frac{8Q_2^2}{\\pi ^2 g} \\times \\frac{fl}{D_2^5} \\\\\n\n\\left ( \\frac{Q_1}{Q_2} \\right )^2&= \\left ( \\frac{D_1}{D_2} \\right )^5\\\\\n\n\\frac{Q_1}{Q_2} &=  \\left ( \\frac{D_1}{D_2} \\right )^{5/2}\\\\\n\n&= \\left ( \\frac{0.2}{0.1} \\right )^{5/2}\\\\&=5.66\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q48": {
       "question_uid": "pp:ce:2022:q48",
-      "exam_uid": "ce:2022:set1:q48",
+      "exam_uid": "ce:2022:set1:main:q48",
       "title": "GATE CE 2022 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1928,13 +2163,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "Given: $B = 3m, y = 2m, Q = 12 m^3\n\n/sec$\n\n$Velocity(v)=\\frac{Q}{A} =\\frac{12}{2 \\times 3}=2m/sec$\n\n<img src=\"/question-images/ce/2022/ce-2022-5978b1a6ba.webp\" />\n\nSpecific energy at section (1-1)\n\n$E=y+\\frac{v^2}{2g}=2+\\frac{2^2}{2 \\times 9.8}=\\frac{108}{49}m$\n\nWhen channel section is contracted to minimum\n\nwidth and for constant discharge Q, the flow over\n\ncontracted section will be critical flow and under\n\nthe assumption that no energy loss has taken\n\nplace.\n\n$E=E_c=\\frac{108}{49}$\n\nWe have that, $E_c=\\frac{3}{2}y_c$ (for rectangular crosssection)\n\n$y_c=\\frac{2}{3}E_c=\\frac{2}{3} \\times \\frac{108}{49}=\\frac{72}{49}$\n\nFor critical flow condition,\n\n$$\\begin{aligned}\n\n\\frac{Q^2T}{gA^3}&=1\\\\\n\n\\frac{Q^2B_{min}}{g(B_{min} \\times y_c)^3}&=1\\\\\n\n(B_{min})^2&=\\frac{Q^2}{gy_c^3}\\\\\n\nB_{min}&=\\left ( \\frac{(12)^2}{9.8 \\times \\left ( \\frac{72}{49} \\right )^3} \\right )^{1/2}\\\\\n\n&=2.152m\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.2** (acceptable range: [2.05, 2.35])."
+        "markdown": "Given: $B = 3m, y = 2m, Q = 12 m^3\n\n/sec$\n\n$Velocity(v)=\\frac{Q}{A} =\\frac{12}{2 \\times 3}=2m/sec$\n\n<img src=\"/question-images/ce/2022/ce-2022-5978b1a6ba.webp\" />\n\nSpecific energy at section (1-1)\n\n$E=y+\\frac{v^2}{2g}=2+\\frac{2^2}{2 \\times 9.8}=\\frac{108}{49}m$\n\nWhen channel section is contracted to minimum\n\nwidth and for constant discharge Q, the flow over\n\ncontracted section will be critical flow and under\n\nthe assumption that no energy loss has taken\n\nplace.\n\n$E=E_c=\\frac{108}{49}$\n\nWe have that, $E_c=\\frac{3}{2}y_c$ (for rectangular crosssection)\n\n$y_c=\\frac{2}{3}E_c=\\frac{2}{3} \\times \\frac{108}{49}=\\frac{72}{49}$\n\nFor critical flow condition,\n\n$$\\begin{aligned}\n\n\\frac{Q^2T}{gA^3}&=1\\\\\n\n\\frac{Q^2B_{min}}{g(B_{min} \\times y_c)^3}&=1\\\\\n\n(B_{min})^2&=\\frac{Q^2}{gy_c^3}\\\\\n\nB_{min}&=\\left ( \\frac{(12)^2}{9.8 \\times \\left ( \\frac{72}{49} \\right )^3} \\right )^{1/2}\\\\\n\n&=2.152m\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-5978b1a6ba.webp"
+        ]
       }
     },
     "pp:ce:2022:q49": {
       "question_uid": "pp:ce:2022:q49",
-      "exam_uid": "ce:2022:set1:q49",
+      "exam_uid": "ce:2022:set1:main:q49",
       "title": "GATE CE 2022 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -1967,13 +2208,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "Total nitrogen concentration (mg/liter)in this\n\nwastewater $=\\left ( \\frac{34}{17}+\\frac{6.2}{62} \\right ) \\times 14=29.4 mg/l$ as Nitrogen.\n\nTherefore, the correct answer is **29.5** (acceptable range: [29, 30])."
+        "markdown": "Total nitrogen concentration (mg/liter)in this\n\nwastewater $=\\left ( \\frac{34}{17}+\\frac{6.2}{62} \\right ) \\times 14=29.4 mg/l$ as Nitrogen.",
+        "images": []
       }
     },
     "pp:ce:2022:q50": {
       "question_uid": "pp:ce:2022:q50",
-      "exam_uid": "ce:2022:set1:q50",
+      "exam_uid": "ce:2022:set1:main:q50",
       "title": "GATE CE 2022 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -2006,13 +2251,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "Depletion of dissolved oxygen after 3 days\n\nincubation = 10 mg/L\n\n$\\text{Dilution factor }=\\frac{\\text{Vol. of dilutedsample}}{\\text{Vol.of undiluted sewage sample}}=\\frac{100}{2}50$\n\n$BOD_3= \\text{DO consumed} \\times \\text{dilution factor}=10 \\times 50=500 mg/L$\n\n$$\\begin{aligned}\n\nBOD_3&= BOD_u(1-e^{-kt})  \\\\\n\n500 &=BOD_u(1-e^{-0.23 \\times 3}) \\\\\n\nBOD_u &= 1003.162 mg/L\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1002.5** (acceptable range: [1000, 1005])."
+        "markdown": "Depletion of dissolved oxygen after 3 days\n\nincubation = 10 mg/L\n\n$\\text{Dilution factor }=\\frac{\\text{Vol. of dilutedsample}}{\\text{Vol.of undiluted sewage sample}}=\\frac{100}{2}50$\n\n$BOD_3= \\text{DO consumed} \\times \\text{dilution factor}=10 \\times 50=500 mg/L$\n\n$$\\begin{aligned}\n\nBOD_3&= BOD_u(1-e^{-kt})  \\\\\n\n500 &=BOD_u(1-e^{-0.23 \\times 3}) \\\\\n\nBOD_u &= 1003.162 mg/L\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q51": {
       "question_uid": "pp:ce:2022:q51",
-      "exam_uid": "ce:2022:set1:q51",
+      "exam_uid": "ce:2022:set1:main:q51",
       "title": "GATE CE 2022 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -2045,13 +2294,17 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "$$\\begin{aligned}\n\nV_o&=\\frac{500}{5 \\times 40}\n\n=2.5m/h \\\\\n\n\\eta &=\\frac{V_s}{V_o}\\times 100=\\frac{1}{2.5}=0.4 \\; or \\; 40%\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.38, 0.42])."
+        "markdown": "$$\\begin{aligned}\n\nV_o&=\\frac{500}{5 \\times 40}\n\n=2.5m/h \\\\\n\n\\eta &=\\frac{V_s}{V_o}\\times 100=\\frac{1}{2.5}=0.4 \\; or \\; 40%\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q52": {
       "question_uid": "pp:ce:2022:q52",
-      "exam_uid": "ce:2022:set1:q52",
+      "exam_uid": "ce:2022:set1:main:q52",
       "title": "GATE CE 2022 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -2084,13 +2337,17 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "Two phase signalized intersections,\n\nCycle time = 100 secs.\n\nAmber time = 4 secs. [each phase]\n\nRed time = 50 secs. [each phase]\n\nTotal lost time = 2 sec. [each phase]\n\nEffective green time = ? [each phase]\n\nTotal Effective green = Cycle time - Lost time\n\n= 100-2x2 = 96 sec.\n\nAs there is symmetry in phases so effective green\n\ntime per phase= 96/2=48 sec.\n\nTherefore, the correct answer is **48**."
+        "markdown": "Two phase signalized intersections,\n\nCycle time = 100 secs.\n\nAmber time = 4 secs. [each phase]\n\nRed time = 50 secs. [each phase]\n\nTotal lost time = 2 sec. [each phase]\n\nEffective green time = ? [each phase]\n\nTotal Effective green = Cycle time - Lost time\n\n= 100-2x2 = 96 sec.\n\nAs there is symmetry in phases so effective green\n\ntime per phase= 96/2=48 sec.",
+        "images": []
       }
     },
     "pp:ce:2022:q53": {
       "question_uid": "pp:ce:2022:q53",
-      "exam_uid": "ce:2022:set1:q53",
+      "exam_uid": "ce:2022:set1:main:q53",
       "title": "GATE CE 2022 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -2123,13 +2380,17 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "$$\\begin{aligned}\n\n\\lambda _C&=4 \\; vehical/hr=2 \\; vehical /30 \\;min\\\\\n\n\\lambda _C&=2 \\; vehical/hr=1 \\; vehical /30 \\;min\\\\\n\n\\lambda _{Vehical}&=3 \\; vehical/30 \\;min\\\\\n\nP(x \\lt  2)&=1-P(x\\leq 1)\\\\\n\n&=1-[P(x=0)+P(x=1)]\\\\\n\n&=1-\\left [ \\frac{e^{-\\lambda }\\lambda ^0}{0!} +\\frac{e^{-\\lambda }\\lambda ^1}{1!}\\right ]\\\\\n\n&=1-e^{-3}(1+3)\\\\\n\n&=1-\\frac{4}{e^3}\\\\\n\n&=0.8\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.8** (acceptable range: [0.78, 0.82])."
+        "markdown": "$$\\begin{aligned}\n\n\\lambda _C&=4 \\; vehical/hr=2 \\; vehical /30 \\;min\\\\\n\n\\lambda _C&=2 \\; vehical/hr=1 \\; vehical /30 \\;min\\\\\n\n\\lambda _{Vehical}&=3 \\; vehical/30 \\;min\\\\\n\nP(x \\lt  2)&=1-P(x\\leq 1)\\\\\n\n&=1-[P(x=0)+P(x=1)]\\\\\n\n&=1-\\left [ \\frac{e^{-\\lambda }\\lambda ^0}{0!} +\\frac{e^{-\\lambda }\\lambda ^1}{1!}\\right ]\\\\\n\n&=1-e^{-3}(1+3)\\\\\n\n&=1-\\frac{4}{e^3}\\\\\n\n&=0.8\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q54": {
       "question_uid": "pp:ce:2022:q54",
-      "exam_uid": "ce:2022:set1:q54",
+      "exam_uid": "ce:2022:set1:main:q54",
       "title": "GATE CE 2022 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -2162,13 +2423,17 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "$$\\begin{aligned}\n\nPHF&=\\frac{\\text{Peak flow during 1hour}}{6 \\times \\text{Peak flow during 10 minutes}}\\\\\n\n&=\\frac{10+11+12+15+13+11}{6 \\times 15}\\\\\n\n&=\\frac{72}{6 \\times 15}\\\\\n\n&=0.8\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.8**."
+        "markdown": "$$\\begin{aligned}\n\nPHF&=\\frac{\\text{Peak flow during 1hour}}{6 \\times \\text{Peak flow during 10 minutes}}\\\\\n\n&=\\frac{10+11+12+15+13+11}{6 \\times 15}\\\\\n\n&=\\frac{72}{6 \\times 15}\\\\\n\n&=0.8\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q55": {
       "question_uid": "pp:ce:2022:q55",
-      "exam_uid": "ce:2022:set1:q55",
+      "exam_uid": "ce:2022:set1:main:q55",
       "title": "GATE CE 2022 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "NAT",
       "marks": 2,
@@ -2201,13 +2466,17 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "$$\\begin{aligned}\n\n\\text{ESWL @ depth }\\frac{d}{2}&=P \\\\\n\n\\text{ESWL @ depth }2S&=2P \\\\\n\n\\text{Ratio }\\frac{P}{2P}&=0.5 \\\\\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.5**."
+        "markdown": "$$\\begin{aligned}\n\n\\text{ESWL @ depth }\\frac{d}{2}&=P \\\\\n\n\\text{ESWL @ depth }2S&=2P \\\\\n\n\\text{Ratio }\\frac{P}{2P}&=0.5 \\\\\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q56": {
       "question_uid": "pp:ce:2022:q56",
-      "exam_uid": "ce:2022:set1:q56",
-      "title": "GATE CE 2022 | Set 1 | Question: 56",
+      "exam_uid": "ce:2022:set1:ga:q1",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2229,26 +2498,28 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *know / no*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (know / no)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2022:q57": {
       "question_uid": "pp:ce:2022:q57",
-      "exam_uid": "ce:2022:set1:q57",
-      "title": "GATE CE 2022 | Set 1 | Question: 57",
+      "exam_uid": "ce:2022:set1:ga:q2",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2270,26 +2541,31 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Equation of first straight line passing through (0,\n\n0) and (1,3)\n\n$$\\begin{aligned}\n\ny-y_1&=\\left ( \\frac{y_2-y_1}{x_2-x_1} \\right )(x-x_1) \\\\\n\ny-0&=\\frac{3-0}{1-0}(x-0) \\\\\n\ny&=3x\n\n\\end{aligned}$$\n\nEquation of second stragith line passing through (0,0) and (1,2)\n\n$$\\begin{aligned}\n\ny-y_1&=\\left ( \\frac{y_2-y_1}{x_2-x_1} \\right )(x-x_1) \\\\\n\ny-0&=\\frac{2-0}{1-0}(x-0) \\\\\n\ny&=2x\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ce/2022/ce-2022-0733c8b10a.webp\" />\n\n$Area=\\int_{0}^{1}(3x-2x)dx=\\left ( \\frac{3x^2}{2}-x^2 \\right )_0^1=\\frac{1}{2}=0.5$$Area=\\int_{0}^{1}(3x-2x)dx=\\left ( \\frac{3x^2}{2}-x^2 \\right )_0^1=\\frac{1}{2}=0.5$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Equation of first straight line passing through (0,\n\n0) and (1,3)\n\n$$\\begin{aligned}\n\ny-y_1&=\\left ( \\frac{y_2-y_1}{x_2-x_1} \\right )(x-x_1) \\\\\n\ny-0&=\\frac{3-0}{1-0}(x-0) \\\\\n\ny&=3x\n\n\\end{aligned}$$\n\nEquation of second stragith line passing through (0,0) and (1,2)\n\n$$\\begin{aligned}\n\ny-y_1&=\\left ( \\frac{y_2-y_1}{x_2-x_1} \\right )(x-x_1) \\\\\n\ny-0&=\\frac{2-0}{1-0}(x-0) \\\\\n\ny&=2x\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ce/2022/ce-2022-0733c8b10a.webp\" />\n\n$Area=\\int_{0}^{1}(3x-2x)dx=\\left ( \\frac{3x^2}{2}-x^2 \\right )_0^1=\\frac{1}{2}=0.5$$Area=\\int_{0}^{1}(3x-2x)dx=\\left ( \\frac{3x^2}{2}-x^2 \\right )_0^1=\\frac{1}{2}=0.5$",
+        "images": [
+          "/question-images/ce/2022/ce-2022-0733c8b10a.webp"
+        ]
       }
     },
     "pp:ce:2022:q58": {
       "question_uid": "pp:ce:2022:q58",
-      "exam_uid": "ce:2022:set1:q58",
-      "title": "GATE CE 2022 | Set 1 | Question: 58",
+      "exam_uid": "ce:2022:set1:ga:q3",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2311,26 +2587,29 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "Given,\n\n$\\frac{P}{Q}=\\frac{1}{2}, \\frac{Q}{R}=\\frac{4}{3},\\frac{R}{S}=\\frac{4}{5}$\n\n$\\frac{P}{Q}=\\frac{1 \\times 8}{2 \\times 8}, \\frac{Q}{R}=\\frac{4\\times 4}{3\\times 4},\\frac{R}{S}=\\frac{4 \\times 3}{5 \\times 3}$\n\n$$\\begin{aligned}\n\nP&:&Q&:&R&:&S\\\\\n\n8&:&16&:&12&:&15\n\n\\end{aligned}$$\n\n$U=15 \\times 1.5=22.5$\n\n$\\frac{P}{U}=\\frac{ 8}{22.5}= \\frac{16}{45}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Given,\n\n$\\frac{P}{Q}=\\frac{1}{2}, \\frac{Q}{R}=\\frac{4}{3},\\frac{R}{S}=\\frac{4}{5}$\n\n$\\frac{P}{Q}=\\frac{1 \\times 8}{2 \\times 8}, \\frac{Q}{R}=\\frac{4\\times 4}{3\\times 4},\\frac{R}{S}=\\frac{4 \\times 3}{5 \\times 3}$\n\n$$\\begin{aligned}\n\nP&:&Q&:&R&:&S\\\\\n\n8&:&16&:&12&:&15\n\n\\end{aligned}$$\n\n$U=15 \\times 1.5=22.5$\n\n$\\frac{P}{U}=\\frac{ 8}{22.5}= \\frac{16}{45}$",
+        "images": []
       }
     },
     "pp:ce:2022:q59": {
       "question_uid": "pp:ce:2022:q59",
-      "exam_uid": "ce:2022:set1:q59",
-      "title": "GATE CE 2022 | Set 1 | Question: 59",
+      "exam_uid": "ce:2022:set1:ga:q4",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2352,26 +2631,31 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-43e72dc37d.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ce/2022/ce-2022-43e72dc37d.webp\" />",
+        "images": [
+          "/question-images/ce/2022/ce-2022-43e72dc37d.webp"
+        ]
       }
     },
     "pp:ce:2022:q60": {
       "question_uid": "pp:ce:2022:q60",
-      "exam_uid": "ce:2022:set1:q60",
-      "title": "GATE CE 2022 | Set 1 | Question: 60",
+      "exam_uid": "ce:2022:set1:ga:q5",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2393,26 +2677,29 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "From $\\Delta$PQR by Pythagoras theorem,\n\n$PR^2=PQ^2+QR^2$\n\nAlso, QR = RZ,\n\n$\\Rightarrow$ $PR^2=PQ^2+RZ^2$\n\n$\\Rightarrow$ Area of PXWR = Area of SPQT + Area of RUVZ\n\n$\\Rightarrow$ Area of SPQT = Area of PXWR - Area of RUVZ\n\nTherefore, the correct answer is **B**."
+        "markdown": "From $\\Delta$PQR by Pythagoras theorem,\n\n$PR^2=PQ^2+QR^2$\n\nAlso, QR = RZ,\n\n$\\Rightarrow$ $PR^2=PQ^2+RZ^2$\n\n$\\Rightarrow$ Area of PXWR = Area of SPQT + Area of RUVZ\n\n$\\Rightarrow$ Area of SPQT = Area of PXWR - Area of RUVZ",
+        "images": []
       }
     },
     "pp:ce:2022:q61": {
       "question_uid": "pp:ce:2022:q61",
-      "exam_uid": "ce:2022:set1:q61",
-      "title": "GATE CE 2022 | Set 1 | Question: 61",
+      "exam_uid": "ce:2022:set1:ga:q6",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2434,26 +2721,28 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *Eating healthy can be started at any age, earlier the better*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (Eating healthy can be started at any age, earlier the better)."
+        "concept": "CE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ce:2022:q62": {
       "question_uid": "pp:ce:2022:q62",
-      "exam_uid": "ce:2022:set1:q62",
-      "title": "GATE CE 2022 | Set 1 | Question: 62",
+      "exam_uid": "ce:2022:set1:ga:q7",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2475,26 +2764,29 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Let total profit $=K$\n\nSo, profit by$Q=\\frac{4}{9}K$\n\nprofit by $P=K-\\frac{4}{9}K=\\frac{5}{9}K$\n\n$$\\begin{aligned}\n\n\\frac{\\text{Profit by P}}{\\text{Profit by Q}}&=\\frac{5}{4}\\\\\n\n\\frac{5}{4}&=\\frac{C_PT_P}{C_QT_Q}\\\\\n\n&=\\frac{5000 \\times 6 }{x \\times 8}\\\\\n\nx&=\\frac{5000 \\times 6 \\times 4}{8 \\times 5}\\\\\n\nx&=3000\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Let total profit $=K$\n\nSo, profit by$Q=\\frac{4}{9}K$\n\nprofit by $P=K-\\frac{4}{9}K=\\frac{5}{9}K$\n\n$$\\begin{aligned}\n\n\\frac{\\text{Profit by P}}{\\text{Profit by Q}}&=\\frac{5}{4}\\\\\n\n\\frac{5}{4}&=\\frac{C_PT_P}{C_QT_Q}\\\\\n\n&=\\frac{5000 \\times 6 }{x \\times 8}\\\\\n\nx&=\\frac{5000 \\times 6 \\times 4}{8 \\times 5}\\\\\n\nx&=3000\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ce:2022:q63": {
       "question_uid": "pp:ce:2022:q63",
-      "exam_uid": "ce:2022:set1:q63",
-      "title": "GATE CE 2022 | Set 1 | Question: 63",
+      "exam_uid": "ce:2022:set1:ga:q8",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2516,26 +2808,29 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "$Mean=\\frac{3 \\times 3+9\\times 4+11\\times 5+7\\times 6+14\\times 7+2\\times 8+4\\times 9}{3+9+11+7+14+2+4}=5.84$\n\n$$\\begin{aligned}\n\nMedian&=\\frac{\\left ( \\frac{n}{2} \\right )^{th}+\\left ( \\frac{n}{2} +1\\right )^{th}}{2}\\\\\n\n&=\\frac{\\left ( \\frac{50}{2} \\right )^{th}+\\left ( \\frac{50}{2} +1\\right )^{th}}{2}\\\\\n\n&=\\frac{25^{th}+26^{th}}{2}\\\\\n\n&=\\frac{6+6}{2}=6\n\n\\end{aligned}$$\n\nMode = frequently occured observation (data with high frequency)=7\n\nTherefore, the correct answer is **B**."
+        "markdown": "$Mean=\\frac{3 \\times 3+9\\times 4+11\\times 5+7\\times 6+14\\times 7+2\\times 8+4\\times 9}{3+9+11+7+14+2+4}=5.84$\n\n$$\\begin{aligned}\n\nMedian&=\\frac{\\left ( \\frac{n}{2} \\right )^{th}+\\left ( \\frac{n}{2} +1\\right )^{th}}{2}\\\\\n\n&=\\frac{\\left ( \\frac{50}{2} \\right )^{th}+\\left ( \\frac{50}{2} +1\\right )^{th}}{2}\\\\\n\n&=\\frac{25^{th}+26^{th}}{2}\\\\\n\n&=\\frac{6+6}{2}=6\n\n\\end{aligned}$$\n\nMode = frequently occured observation (data with high frequency)=7",
+        "images": []
       }
     },
     "pp:ce:2022:q64": {
       "question_uid": "pp:ce:2022:q64",
-      "exam_uid": "ce:2022:set1:q64",
-      "title": "GATE CE 2022 | Set 1 | Question: 64",
+      "exam_uid": "ce:2022:set1:ga:q9",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2557,26 +2852,29 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Minimum number of steps required are:\n\nP2 -> Q4 -> S3 -> T5 -> R4 -> P5\n\nTherefore, the correct answer is **B**."
+        "markdown": "Minimum number of steps required are:\n\nP2 -> Q4 -> S3 -> T5 -> R4 -> P5",
+        "images": []
       }
     },
     "pp:ce:2022:q65": {
       "question_uid": "pp:ce:2022:q65",
-      "exam_uid": "ce:2022:set1:q65",
-      "title": "GATE CE 2022 | Set 1 | Question: 65",
+      "exam_uid": "ce:2022:set1:ga:q10",
+      "title": "GATE CE 2022 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gatece-2022-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2598,20 +2896,19 @@
       "yearSetIdentity": "ce:2022:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ce-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "ce-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *A*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (A)."
+        "concept": "CE Core Engineering",
+        "markdown": "MTA - Marks to All"
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.555Z",
+  "generatedAt": "2026-10-17T21:30:25.465Z",
   "shardKey": "me-2025-s1",
   "yearSetKey": "me-2025-s1",
   "yearSetIdentity": "me:2025:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2025:q1": {
       "question_uid": "pp:me:2025:q1",
-      "exam_uid": "me:2025:set1:q1",
+      "exam_uid": "me:2025:set1:main:q1",
       "title": "GATE ME 2025 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "<b>Given:</b> $A$ and $B$ are real symmetric matrices of the same size.\n\n<b>Step 1: Understanding Symmetric Matrices</b>\n\nA matrix $A$ is symmetric if:\n\n$A^T = A$\n\nSimilarly, $B$ is symmetric if:\n\n$B^T = B$\n\nThis property will help us evaluate the given options.\n\n<b>Step 2: Evaluating the Given Options</b>\n\n<b>Option (A):</b> $A^T = A^{-1}$\n\n- This statement says that the transpose of $A$ is its inverse.\n\n- In general, a symmetric matrix $A$ satisfies $A^T = A$, but there is no guarantee that $A^T = A^{-1}$.\n\n- This is true only if $A$ is an **orthogonal matrix**, which is not given in the problem.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Option (B):</b> $AB = BA$\n\n- In general, two symmetric matrices **do not necessarily commute**.\n\n- That is, $AB \\ne  BA$ in most cases.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Option (C):</b> $(AB)^T = B^T A^T$\n\n- Using the property of transposition:\n\n$(AB)^T = B^T A^T$\n\n- Since $A$ and $B$ are symmetric, we substitute $A^T = A$ and $B^T = B$:\n\n$(AB)^T = B A$\n\n- This matches the given statement.\n\n- <b>Thus, this statement is correct.</b> ✅\n\n<b>Option (D):</b> $A = A^{-1}$\n\n- A matrix satisfying $A = A^{-1}$ is called an **involutory matrix**.\n\n- However, not all symmetric matrices satisfy this property.\n\n- The problem does not state that $A$ is involutory.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Final Answer:</b>\n\nThe correct option is:\n\n$\\boxed{(AB)^T = B^T A^T}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Given:</b> $A$ and $B$ are real symmetric matrices of the same size.\n\n<b>Step 1: Understanding Symmetric Matrices</b>\n\nA matrix $A$ is symmetric if:\n\n$A^T = A$\n\nSimilarly, $B$ is symmetric if:\n\n$B^T = B$\n\nThis property will help us evaluate the given options.\n\n<b>Step 2: Evaluating the Given Options</b>\n\n<b>Option (A):</b> $A^T = A^{-1}$\n\n- This statement says that the transpose of $A$ is its inverse.\n\n- In general, a symmetric matrix $A$ satisfies $A^T = A$, but there is no guarantee that $A^T = A^{-1}$.\n\n- This is true only if $A$ is an **orthogonal matrix**, which is not given in the problem.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Option (B):</b> $AB = BA$\n\n- In general, two symmetric matrices **do not necessarily commute**.\n\n- That is, $AB \\ne  BA$ in most cases.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Option (C):</b> $(AB)^T = B^T A^T$\n\n- Using the property of transposition:\n\n$(AB)^T = B^T A^T$\n\n- Since $A$ and $B$ are symmetric, we substitute $A^T = A$ and $B^T = B$:\n\n$(AB)^T = B A$\n\n- This matches the given statement.\n\n- <b>Thus, this statement is correct.</b> ✅\n\n<b>Option (D):</b> $A = A^{-1}$\n\n- A matrix satisfying $A = A^{-1}$ is called an **involutory matrix**.\n\n- However, not all symmetric matrices satisfy this property.\n\n- The problem does not state that $A$ is involutory.\n\n- <b>Thus, this statement is incorrect.</b>\n\n<b>Final Answer:</b>\n\nThe correct option is:\n\n$\\boxed{(AB)^T = B^T A^T}$",
+        "images": []
       }
     },
     "pp:me:2025:q2": {
       "question_uid": "pp:me:2025:q2",
-      "exam_uid": "me:2025:set1:q2",
+      "exam_uid": "me:2025:set1:main:q2",
       "title": "GATE ME 2025 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "differential-equations"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Given:</b> The differential equation:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$ for $0 \\leq x \\leq 1, 0 \\leq y \\leq 1$.\n\n<b>Step 1: Understanding the Given Equation</b>\n\nThe given equation is the Laplace equation in two variables.\n\nA function $u(x, y)$ is a solution if its second partial derivatives sum to zero:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$.\n\n<b>Step 2: Checking Each Option</b>\n\n<b>Option (A):</b> $u = e^{x+y}$\n\nFirst derivative:\n\n$\\frac{\\partial u}{\\partial x} = e^{x+y}, \\quad \\frac{\\partial u}{\\partial y} = e^{x+y}$\n\nSecond derivative:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = e^{x+y}, \\quad \\frac{\\partial^2 u}{\\partial y^2} = e^{x+y}$\n\nSumming them:\n\n$e^{x+y} + e^{x+y} = 2e^{x+y} \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Option (B):</b> $u = e^x \\sin y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = e^x \\sin y, \\quad \\frac{\\partial u}{\\partial y} = e^x \\cos y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = e^x \\sin y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -e^x \\sin y$\n\nSumming them:\n\n$e^x \\sin y - e^x \\sin y = 0$\n\n<b>This is a valid solution. ✅</b>\n\n<b>Option (C):</b> $u = \\sin x \\sin y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = \\cos x \\sin y, \\quad \\frac{\\partial u}{\\partial y} = \\sin x \\cos y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = -\\sin x \\sin y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\sin x \\sin y$\n\nSumming them:\n\n$-\\sin x \\sin y - \\sin x \\sin y = -2\\sin x \\sin y \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Option (D):</b> $u = \\cos x \\cos y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = -\\sin x \\cos y, \\quad \\frac{\\partial u}{\\partial y} = -\\cos x \\sin y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = -\\cos x \\cos y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\cos x \\cos y$\n\nSumming them:\n\n$-\\cos x \\cos y - \\cos x \\cos y = -2\\cos x \\cos y \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Final Answer:</b>\n\nThe correct option is:\n\n$\\boxed{u = e^x \\sin y}$ ✅\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b> The differential equation:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$ for $0 \\leq x \\leq 1, 0 \\leq y \\leq 1$.\n\n<b>Step 1: Understanding the Given Equation</b>\n\nThe given equation is the Laplace equation in two variables.\n\nA function $u(x, y)$ is a solution if its second partial derivatives sum to zero:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$.\n\n<b>Step 2: Checking Each Option</b>\n\n<b>Option (A):</b> $u = e^{x+y}$\n\nFirst derivative:\n\n$\\frac{\\partial u}{\\partial x} = e^{x+y}, \\quad \\frac{\\partial u}{\\partial y} = e^{x+y}$\n\nSecond derivative:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = e^{x+y}, \\quad \\frac{\\partial^2 u}{\\partial y^2} = e^{x+y}$\n\nSumming them:\n\n$e^{x+y} + e^{x+y} = 2e^{x+y} \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Option (B):</b> $u = e^x \\sin y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = e^x \\sin y, \\quad \\frac{\\partial u}{\\partial y} = e^x \\cos y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = e^x \\sin y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -e^x \\sin y$\n\nSumming them:\n\n$e^x \\sin y - e^x \\sin y = 0$\n\n<b>This is a valid solution. ✅</b>\n\n<b>Option (C):</b> $u = \\sin x \\sin y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = \\cos x \\sin y, \\quad \\frac{\\partial u}{\\partial y} = \\sin x \\cos y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = -\\sin x \\sin y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\sin x \\sin y$\n\nSumming them:\n\n$-\\sin x \\sin y - \\sin x \\sin y = -2\\sin x \\sin y \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Option (D):</b> $u = \\cos x \\cos y$\n\nFirst derivatives:\n\n$\\frac{\\partial u}{\\partial x} = -\\sin x \\cos y, \\quad \\frac{\\partial u}{\\partial y} = -\\cos x \\sin y$\n\nSecond derivatives:\n\n$\\frac{\\partial^2 u}{\\partial x^2} = -\\cos x \\cos y, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\cos x \\cos y$\n\nSumming them:\n\n$-\\cos x \\cos y - \\cos x \\cos y = -2\\cos x \\cos y \\neq 0$\n\n<b>This is not a solution.</b>\n\n<b>Final Answer:</b>\n\nThe correct option is:\n\n$\\boxed{u = e^x \\sin y}$ ✅",
+        "images": []
       }
     },
     "pp:me:2025:q3": {
       "question_uid": "pp:me:2025:q3",
-      "exam_uid": "me:2025:set1:q3",
+      "exam_uid": "me:2025:set1:main:q3",
       "title": "GATE ME 2025 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<b>Given:</b> The divergence of the curl of a vector field.\n\n<b>Step 1: Understanding Curl and Divergence</b>\n\nThe curl of a vector field F, denoted as $\\nabla \\times \\mathbf{F}$, results in another vector field.\n\nThe divergence of a vector field G, denoted as $\\nabla \\cdot \\mathbf{G}$, gives a scalar quantity.\n\n<b>Step 2: Evaluating the Given Statement</b>\n\nBy a fundamental vector calculus identity:\n\n$\\nabla \\cdot (\\nabla \\times \\mathbf{F}) = 0$\n\nThis states that the divergence of the curl of any vector field is always zero.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) The magnitude of this vector field → Incorrect, as the divergence of the curl is a scalar and always zero.\n\n(B) The argument of this vector field → Incorrect, as the divergence of the curl does not relate to an argument.\n\n(C) The magnitude of the curl of this vector field → Incorrect, as magnitude is not relevant to divergence.\n\n(D) Zero → Correct, as $\\nabla \\cdot (\\nabla \\times \\mathbf{F}) = 0$. ✅\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{Zero}}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<b>Given:</b> The divergence of the curl of a vector field.\n\n<b>Step 1: Understanding Curl and Divergence</b>\n\nThe curl of a vector field F, denoted as $\\nabla \\times \\mathbf{F}$, results in another vector field.\n\nThe divergence of a vector field G, denoted as $\\nabla \\cdot \\mathbf{G}$, gives a scalar quantity.\n\n<b>Step 2: Evaluating the Given Statement</b>\n\nBy a fundamental vector calculus identity:\n\n$\\nabla \\cdot (\\nabla \\times \\mathbf{F}) = 0$\n\nThis states that the divergence of the curl of any vector field is always zero.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) The magnitude of this vector field → Incorrect, as the divergence of the curl is a scalar and always zero.\n\n(B) The argument of this vector field → Incorrect, as the divergence of the curl does not relate to an argument.\n\n(C) The magnitude of the curl of this vector field → Incorrect, as magnitude is not relevant to divergence.\n\n(D) Zero → Correct, as $\\nabla \\cdot (\\nabla \\times \\mathbf{F}) = 0$. ✅\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{Zero}}$",
+        "images": []
       }
     },
     "pp:me:2025:q4": {
       "question_uid": "pp:me:2025:q4",
-      "exam_uid": "me:2025:set1:q4",
+      "exam_uid": "me:2025:set1:main:q4",
       "title": "GATE ME 2025 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -154,25 +172,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics\n"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "probability-and-statistics"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics\n",
-        "markdown": "<b>Given:</b> Two unbiased coins are tossed.\n\n<b>Step 1: Identifying the Sample Space</b>\n\nWhen two unbiased coins are tossed, the possible outcomes are:\n\n${HH, HT, TH, TT}$\n\nThus, the total number of possible outcomes is 4.\n\n<b>Step 2: Counting Favorable Outcomes</b>\n\nThe event \"at least one head\" includes the outcomes:\n\n${HH, HT, TH}$\n\nThe number of favorable outcomes = 3.\n\n<b>Step 3: Computing the Probability</b>\n\nProbability formula:\n\n$P(\\text{at least one head}) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total outcomes}}$\n\n$P = \\frac{3}{4} = 0.75$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<b>Given:</b> Two unbiased coins are tossed.\n\n<b>Step 1: Identifying the Sample Space</b>\n\nWhen two unbiased coins are tossed, the possible outcomes are:\n\n${HH, HT, TH, TT}$\n\nThus, the total number of possible outcomes is 4.\n\n<b>Step 2: Counting Favorable Outcomes</b>\n\nThe event \"at least one head\" includes the outcomes:\n\n${HH, HT, TH}$\n\nThe number of favorable outcomes = 3.\n\n<b>Step 3: Computing the Probability</b>\n\nProbability formula:\n\n$P(\\text{at least one head}) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total outcomes}}$\n\n$P = \\frac{3}{4} = 0.75$",
+        "images": []
       }
     },
     "pp:me:2025:q5": {
       "question_uid": "pp:me:2025:q5",
-      "exam_uid": "me:2025:set1:q5",
+      "exam_uid": "me:2025:set1:main:q5",
       "title": "GATE ME 2025 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -194,25 +217,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "free-and-forced-convection",
+          "subtopicLabel": "Free and Forced Convection"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-heat-transfer",
+          "free-and-forced-convection"
         ]
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Free and Forced Convection",
-        "markdown": "<b>Step 1: Understanding the Given Situation</b>\n\nA spherical block of ice at -7°C is surrounded by atmospheric air at 30°C. The figure shows gravitational direction acting downward. We need to determine the overall direction of air flow due to this temperature difference.\n\n<b>Step 2: Analyzing Air Flow Mechanism</b>\n\nThe air in contact with the ice block cools down and becomes denser. Denser air moves downward due to gravity, creating a convective current. Warmer surrounding air replaces the cooler air that moves downward, continuing the cycle.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) Upward → Incorrect. The cold air sinks, so the flow is not upward.\n\n(B) Downward → Correct ✅ Cold air descends due to increased density.\n\n(C) NO motion → Incorrect. There is natural convection due to temperature difference.\n\n(D) Sideward → Incorrect. While some sideward motion may occur, the dominant flow is downward.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Step 1: Understanding the Given Situation</b>\n\nA spherical block of ice at -7°C is surrounded by atmospheric air at 30°C. The figure shows gravitational direction acting downward. We need to determine the overall direction of air flow due to this temperature difference.\n\n<b>Step 2: Analyzing Air Flow Mechanism</b>\n\nThe air in contact with the ice block cools down and becomes denser. Denser air moves downward due to gravity, creating a convective current. Warmer surrounding air replaces the cooler air that moves downward, continuing the cycle.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) Upward → Incorrect. The cold air sinks, so the flow is not upward.\n\n(B) Downward → Correct ✅ Cold air descends due to increased density.\n\n(C) NO motion → Incorrect. There is natural convection due to temperature difference.\n\n(D) Sideward → Incorrect. While some sideward motion may occur, the dominant flow is downward.",
+        "images": []
       }
     },
     "pp:me:2025:q6": {
       "question_uid": "pp:me:2025:q6",
-      "exam_uid": "me:2025:set1:q6",
+      "exam_uid": "me:2025:set1:main:q6",
       "title": "GATE ME 2025 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -234,25 +262,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "fluid-statics",
+          "subtopicLabel": "Fluid Statics"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-fluid-mechanics",
+          "fluid-statics"
         ]
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
-        "markdown": "<b>Step 1: Applying Torricelli’s Theorem</b>\n\nThe velocity of fluid exiting from the hole at the bottom of a tank is given by Torricelli’s theorem:\n\n$V = \\sqrt{2 g h_{\\text{eff}}}$\n\nwhere:\n\n$V$ is the exit velocity\n\n$g$ is the acceleration due to gravity\n\n$h_{\\text{eff}}$ is the effective height of the fluid column, which is given by:\n\n$h_{\\text{eff}} = \\frac{P_{\\text{atm}}}{\\rho g} + h$\n\nSince both tanks are open to the atmosphere, the first term cancels out, leaving:\n\n$h_{\\text{eff}} = h$\n\nThus, the velocity formula simplifies to:\n\n$V = \\sqrt{2 g h}$\n\n<b>Step 2: Comparing Velocities for Water and Oil</b>\n\nThe exit velocity $V$ depends only on gravity and the height $h$.\n\nSince both tanks have the same $h$ and $g$, the exit velocity is independent of fluid density.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) $V_2 > V_1$ → Incorrect, because velocity does not depend on density.\n\n(B) $V_2 = V_1$ → Correct ✅ Both fluids have the same height and are in identical conditions.\n\n(C) $V_2 < V_1$ → Incorrect, as explained above.\n\n(D) Insufficient data → Incorrect, because Torricelli’s theorem provides a definite answer.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Step 1: Applying Torricelli’s Theorem</b>\n\nThe velocity of fluid exiting from the hole at the bottom of a tank is given by Torricelli’s theorem:\n\n$V = \\sqrt{2 g h_{\\text{eff}}}$\n\nwhere:\n\n$V$ is the exit velocity\n\n$g$ is the acceleration due to gravity\n\n$h_{\\text{eff}}$ is the effective height of the fluid column, which is given by:\n\n$h_{\\text{eff}} = \\frac{P_{\\text{atm}}}{\\rho g} + h$\n\nSince both tanks are open to the atmosphere, the first term cancels out, leaving:\n\n$h_{\\text{eff}} = h$\n\nThus, the velocity formula simplifies to:\n\n$V = \\sqrt{2 g h}$\n\n<b>Step 2: Comparing Velocities for Water and Oil</b>\n\nThe exit velocity $V$ depends only on gravity and the height $h$.\n\nSince both tanks have the same $h$ and $g$, the exit velocity is independent of fluid density.\n\n<b>Step 3: Checking the Given Options</b>\n\n(A) $V_2 > V_1$ → Incorrect, because velocity does not depend on density.\n\n(B) $V_2 = V_1$ → Correct ✅ Both fluids have the same height and are in identical conditions.\n\n(C) $V_2 < V_1$ → Incorrect, as explained above.\n\n(D) Insufficient data → Incorrect, because Torricelli’s theorem provides a definite answer.",
+        "images": []
       }
     },
     "pp:me:2025:q7": {
       "question_uid": "pp:me:2025:q7",
-      "exam_uid": "me:2025:set1:q7",
+      "exam_uid": "me:2025:set1:main:q7",
       "title": "GATE ME 2025 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -274,25 +307,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "fluid-kinematics",
+          "subtopicLabel": "Fluid Kinematics"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-fluid-mechanics",
+          "fluid-kinematics"
         ]
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
-        "markdown": "<b>Step 1: Understanding the Froude Number Similarity</b>\n\nIn hydraulic modeling, the <b>Froude number</b> similarity is used when modeling free-surface flows such as river flow, scour, and waves. The Froude number is given by:\n\n$Fr = \\frac{V}{\\sqrt{g L}}$\n\nwhere:\n\n- $V$ = velocity of flow\n\n- $g$ = acceleration due to gravity\n\n- $L$ = characteristic length (e.g., depth or length of the model)\n\nFor dynamic similarity between a model and its prototype, the <b>Froude number must be the same</b> for both:\n\n$Fr_{\\text{model}} = Fr_{\\text{prototype}}$\n\n<b>Step 2: Setting Up the Equation</b>\n\n$\\frac{V_m}{\\sqrt{g L_m}} = \\frac{V_p}{\\sqrt{g L_p}}$\n\nCanceling $g$ on both sides:\n\n$\\frac{V_m}{\\sqrt{L_m}} = \\frac{V_p}{\\sqrt{L_p}}$\n\nRearrange for prototype velocity $V_p$:\n\n$V_p = V_m \\times \\sqrt{\\frac{L_p}{L_m}}$\n\nGiven:\n\n- $\\frac{L_p}{L_m} = 100$\n\n- $V_m = 1$ m/s\n\n$V_p = 1 \\times \\sqrt{100} = 1 \\times 10 = 10$ m/s\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Step 1: Understanding the Froude Number Similarity</b>\n\nIn hydraulic modeling, the <b>Froude number</b> similarity is used when modeling free-surface flows such as river flow, scour, and waves. The Froude number is given by:\n\n$Fr = \\frac{V}{\\sqrt{g L}}$\n\nwhere:\n\n- $V$ = velocity of flow\n\n- $g$ = acceleration due to gravity\n\n- $L$ = characteristic length (e.g., depth or length of the model)\n\nFor dynamic similarity between a model and its prototype, the <b>Froude number must be the same</b> for both:\n\n$Fr_{\\text{model}} = Fr_{\\text{prototype}}$\n\n<b>Step 2: Setting Up the Equation</b>\n\n$\\frac{V_m}{\\sqrt{g L_m}} = \\frac{V_p}{\\sqrt{g L_p}}$\n\nCanceling $g$ on both sides:\n\n$\\frac{V_m}{\\sqrt{L_m}} = \\frac{V_p}{\\sqrt{L_p}}$\n\nRearrange for prototype velocity $V_p$:\n\n$V_p = V_m \\times \\sqrt{\\frac{L_p}{L_m}}$\n\nGiven:\n\n- $\\frac{L_p}{L_m} = 100$\n\n- $V_m = 1$ m/s\n\n$V_p = 1 \\times \\sqrt{100} = 1 \\times 10 = 10$ m/s",
+        "images": []
       }
     },
     "pp:me:2025:q8": {
       "question_uid": "pp:me:2025:q8",
-      "exam_uid": "me:2025:set1:q8",
+      "exam_uid": "me:2025:set1:main:q8",
       "title": "GATE ME 2025 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -314,25 +352,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-thermodynamics",
+          "subjectLabel": "Thermodynamics",
+          "subtopicSlug": "first-law-heat-work-and-energy",
+          "subtopicLabel": "First Law, Heat, Work and Energy"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-thermodynamics",
+          "first-law-heat-work-and-energy"
         ]
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "The tank is rigid, so volume is constant: no boundary work is done.\n\nIt is thermally insulated, so no heat exchange: adiabatic process.\n\nStirring does work on the system, increasing its internal energy $U$.\n\nFor ideal gases, at constant volume, an increase in $U$ leads to an increase in temperature and enthalpy $H = U + pV$ also increases.\n\nThe process is irreversible (due to stirring), so entropy increases.\n\nTherefore: Both the enthalpy and the entropy of the air increase.\n\nTherefore, the correct answer is **C**."
+        "markdown": "The tank is rigid, so volume is constant: no boundary work is done.\n\nIt is thermally insulated, so no heat exchange: adiabatic process.\n\nStirring does work on the system, increasing its internal energy $U$.\n\nFor ideal gases, at constant volume, an increase in $U$ leads to an increase in temperature and enthalpy $H = U + pV$ also increases.\n\nThe process is irreversible (due to stirring), so entropy increases.\n\nTherefore: Both the enthalpy and the entropy of the air increase.",
+        "images": []
       }
     },
     "pp:me:2025:q9": {
       "question_uid": "pp:me:2025:q9",
-      "exam_uid": "me:2025:set1:q9",
+      "exam_uid": "me:2025:set1:main:q9",
       "title": "GATE ME 2025 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -354,25 +397,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-refrigeration-and-air-conditioning",
+          "subjectLabel": "Refrigeration and Air-conditioning",
+          "subtopicSlug": "psychrometric-process",
+          "subtopicLabel": "Psychrometric Process"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-refrigeration-and-air-conditioning",
+          "psychrometric-process"
         ]
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Psychrometric Process",
-        "markdown": "<b>Step 1: Understanding the Psychrometric Chart</b>\n\nA psychrometric chart is a graphical representation of air properties, commonly used in HVAC and thermodynamics. It helps analyze air-conditioning processes by displaying various properties of moist air.\n\n<b>Step 2: Identifying the Axes</b>\n\n- The **horizontal axis** represents the **dry-bulb temperature (DBT)**, which is the temperature of air measured using a regular thermometer.\n\n- The **vertical axis (perpendicular to the dry-bulb temperature axis)** represents **specific humidity**, also known as **humidity ratio**.\n\n<b>Step 3: Understanding Specific Humidity</b>\n\nSpecific humidity $\\omega$ is defined as:\n\n$\\omega = \\frac{m_v}{m_a}$\n\nwhere:\n\n$m_v$ = mass of water vapor (kg)\n\n$m_a$ = mass of dry air (kg)\n\nThis represents the **mass of water vapor per unit mass of dry air**, making it a key parameter in psychrometric analysis.\n\n<b>Step 4: Choosing the Correct Option</b>\n\nSince the **specific humidity** is plotted on the axis perpendicular to the dry-bulb temperature axis, the correct answer is:\n\n<b>(B) Specific Humidity</b>\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Step 1: Understanding the Psychrometric Chart</b>\n\nA psychrometric chart is a graphical representation of air properties, commonly used in HVAC and thermodynamics. It helps analyze air-conditioning processes by displaying various properties of moist air.\n\n<b>Step 2: Identifying the Axes</b>\n\n- The **horizontal axis** represents the **dry-bulb temperature (DBT)**, which is the temperature of air measured using a regular thermometer.\n\n- The **vertical axis (perpendicular to the dry-bulb temperature axis)** represents **specific humidity**, also known as **humidity ratio**.\n\n<b>Step 3: Understanding Specific Humidity</b>\n\nSpecific humidity $\\omega$ is defined as:\n\n$\\omega = \\frac{m_v}{m_a}$\n\nwhere:\n\n$m_v$ = mass of water vapor (kg)\n\n$m_a$ = mass of dry air (kg)\n\nThis represents the **mass of water vapor per unit mass of dry air**, making it a key parameter in psychrometric analysis.\n\n<b>Step 4: Choosing the Correct Option</b>\n\nSince the **specific humidity** is plotted on the axis perpendicular to the dry-bulb temperature axis, the correct answer is:\n\n<b>(B) Specific Humidity</b>",
+        "images": []
       }
     },
     "pp:me:2025:q10": {
       "question_uid": "pp:me:2025:q10",
-      "exam_uid": "me:2025:set1:q10",
+      "exam_uid": "me:2025:set1:main:q10",
       "title": "GATE ME 2025 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -394,25 +442,30 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "engineering-materials",
+          "subtopicLabel": "Engineering Materials"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-manufacturing-engineering",
+          "engineering-materials"
         ]
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "<b>Step 1: Understanding Surface Hardening Processes</b>\n\nSurface hardening processes enhance the wear resistance of steel by altering its surface composition or microstructure while maintaining a tough core. Common methods include carburizing, cyaniding, nitriding, and carbonitriding.\n\n<b>Step 2: Temperature Ranges for Each Process</b>\n\n<b>Carburizing</b>: Steel is heated to $900^\\circ \\mathrm{C} \\text{ to } 950^\\circ \\mathrm{C}$\n\n<b>Cyaniding</b>: Steel is heated to $800^\\circ \\mathrm{C} \\text{ to } 900^\\circ \\mathrm{C}$\n\n<b>Nitriding</b>: Steel is heated to $500^\\circ \\mathrm{C} \\text{ to } 590^\\circ \\mathrm{C}$\n\n<b>Carbonitriding</b>: Steel is heated to $850^\\circ \\mathrm{C} \\text{ to } 950^\\circ \\mathrm{C}$\n\n<b>Step 3: Identifying the Process with the Lowest Temperature</b>\n\nAmong these processes, <b>nitriding</b> occurs at the lowest temperature: $500^\\circ \\mathrm{C} \\text{ to } 590^\\circ \\mathrm{C}$.\n\n<b>Step 4: Final Answer</b>\n\nThe correct option is:\n\n$\\boxed{\\text{(C) Nitriding}}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Step 1: Understanding Surface Hardening Processes</b>\n\nSurface hardening processes enhance the wear resistance of steel by altering its surface composition or microstructure while maintaining a tough core. Common methods include carburizing, cyaniding, nitriding, and carbonitriding.\n\n<b>Step 2: Temperature Ranges for Each Process</b>\n\n<b>Carburizing</b>: Steel is heated to $900^\\circ \\mathrm{C} \\text{ to } 950^\\circ \\mathrm{C}$\n\n<b>Cyaniding</b>: Steel is heated to $800^\\circ \\mathrm{C} \\text{ to } 900^\\circ \\mathrm{C}$\n\n<b>Nitriding</b>: Steel is heated to $500^\\circ \\mathrm{C} \\text{ to } 590^\\circ \\mathrm{C}$\n\n<b>Carbonitriding</b>: Steel is heated to $850^\\circ \\mathrm{C} \\text{ to } 950^\\circ \\mathrm{C}$\n\n<b>Step 3: Identifying the Process with the Lowest Temperature</b>\n\nAmong these processes, <b>nitriding</b> occurs at the lowest temperature: $500^\\circ \\mathrm{C} \\text{ to } 590^\\circ \\mathrm{C}$.\n\n<b>Step 4: Final Answer</b>\n\nThe correct option is:\n\n$\\boxed{\\text{(C) Nitriding}}$",
+        "images": []
       }
     },
     "pp:me:2025:q11": {
       "question_uid": "pp:me:2025:q11",
-      "exam_uid": "me:2025:set1:q11",
+      "exam_uid": "me:2025:set1:main:q11",
       "title": "GATE ME 2025 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -447,13 +500,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "<b>Given:</b> The question asks for the commonly used welding process in fabricating tailor-welded blanks of dissimilar thickness, especially in automotive applications.\n\n<b>Step 1: Understanding Tailor-Welded Blanks (TWBs)</b>\n\nTailor-welded blanks are sheets of metal with different thicknesses or materials joined together before forming operations. They are widely used in the automotive industry to reduce weight while maintaining strength.\n\n<b>Step 2: Required Welding Characteristics</b>\n\nThe ideal welding process for TWBs should\n\nHandle dissimilar thicknesses efficiently\n\nProvide high precision and control\n\nCause minimal heat-affected zone\n\nBe fast and automated for high production rates\n\n<b>Step 3: Analyzing Options</b>\n\n<b>Option (A):</b> Gas Welding\n\n$\\rightarrow$ Not precise enough for thin sheet metals or dissimilar thicknesses.\n\n<b>Option (B):</b> Laser Welding\n\n$\\rightarrow$ Offers high precision, narrow welds, low distortion, and is widely used for TWBs in automotive industries.\n\n<b>Option (C):</b> Arc Welding\n\n$\\rightarrow$ Suitable for general purposes but not ideal for thin sheet welding with high precision.\n\n<b>Option (D):</b> Friction Welding\n\n$\\rightarrow$ Used for rotational symmetric parts, not commonly used for sheet TWBs.\n\n<b>Final Answer:</b>\n\nThe correct welding process is:\n\n$\\boxed{\\text{Laser welding}}$ ✅\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b> The question asks for the commonly used welding process in fabricating tailor-welded blanks of dissimilar thickness, especially in automotive applications.\n\n<b>Step 1: Understanding Tailor-Welded Blanks (TWBs)</b>\n\nTailor-welded blanks are sheets of metal with different thicknesses or materials joined together before forming operations. They are widely used in the automotive industry to reduce weight while maintaining strength.\n\n<b>Step 2: Required Welding Characteristics</b>\n\nThe ideal welding process for TWBs should\n\nHandle dissimilar thicknesses efficiently\n\nProvide high precision and control\n\nCause minimal heat-affected zone\n\nBe fast and automated for high production rates\n\n<b>Step 3: Analyzing Options</b>\n\n<b>Option (A):</b> Gas Welding\n\n$\\rightarrow$ Not precise enough for thin sheet metals or dissimilar thicknesses.\n\n<b>Option (B):</b> Laser Welding\n\n$\\rightarrow$ Offers high precision, narrow welds, low distortion, and is widely used for TWBs in automotive industries.\n\n<b>Option (C):</b> Arc Welding\n\n$\\rightarrow$ Suitable for general purposes but not ideal for thin sheet welding with high precision.\n\n<b>Option (D):</b> Friction Welding\n\n$\\rightarrow$ Used for rotational symmetric parts, not commonly used for sheet TWBs.\n\n<b>Final Answer:</b>\n\nThe correct welding process is:\n\n$\\boxed{\\text{Laser welding}}$ ✅",
+        "images": []
       }
     },
     "pp:me:2025:q12": {
       "question_uid": "pp:me:2025:q12",
-      "exam_uid": "me:2025:set1:q12",
+      "exam_uid": "me:2025:set1:main:q12",
       "title": "GATE ME 2025 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -488,13 +545,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress and Strain",
-        "markdown": "<b>Given:</b> The yield stress in uniaxial tension is $200, \\text{MPa}$.\n\nWe are to find the yield stress in pure shear according to the von Mises yield criterion.\n\n<b>Step 1: Von Mises Yield Criterion in Terms of Shear</b>\n\nThe von Mises criterion relates the equivalent stress in a general stress state to the yield stress in uniaxial tension as:\n\n$\\sigma_{\\text{eq}} = \\sqrt{\\frac{3}{2} , \\boldsymbol{s} : \\boldsymbol{s}}$\n\nIn pure shear, the equivalent von Mises stress is:\n\n$\\sigma_{\\text{eq}} = \\sqrt{3} , \\tau$\n\nwhere $\\tau$ is the shear stress.\n\n<b>Step 2: Set Equivalent Stress Equal to Yield Stress</b>\n\nAccording to the von Mises criterion:\n\n$\\sqrt{3} , \\tau = 200$\n\n<b>Step 3: Solve for $\\tau$</b>\n\n$\\tau = \\frac{200}{\\sqrt{3}} \\approx \\frac{200}{1.732} \\approx 115.47, \\text{MPa}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b> The yield stress in uniaxial tension is $200, \\text{MPa}$.\n\nWe are to find the yield stress in pure shear according to the von Mises yield criterion.\n\n<b>Step 1: Von Mises Yield Criterion in Terms of Shear</b>\n\nThe von Mises criterion relates the equivalent stress in a general stress state to the yield stress in uniaxial tension as:\n\n$\\sigma_{\\text{eq}} = \\sqrt{\\frac{3}{2} , \\boldsymbol{s} : \\boldsymbol{s}}$\n\nIn pure shear, the equivalent von Mises stress is:\n\n$\\sigma_{\\text{eq}} = \\sqrt{3} , \\tau$\n\nwhere $\\tau$ is the shear stress.\n\n<b>Step 2: Set Equivalent Stress Equal to Yield Stress</b>\n\nAccording to the von Mises criterion:\n\n$\\sqrt{3} , \\tau = 200$\n\n<b>Step 3: Solve for $\\tau$</b>\n\n$\\tau = \\frac{200}{\\sqrt{3}} \\approx \\frac{200}{1.732} \\approx 115.47, \\text{MPa}$",
+        "images": []
       }
     },
     "pp:me:2025:q13": {
       "question_uid": "pp:me:2025:q13",
-      "exam_uid": "me:2025:set1:q13",
+      "exam_uid": "me:2025:set1:main:q13",
       "title": "GATE ME 2025 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -529,13 +590,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
-        "markdown": "<b>Concept:</b>\n\nIn Computer-Aided Design (CAD), there are various methods to represent solid models. Among them, Boundary Representation (B-rep) is widely used for constructing solid models.\n\n<b>Step 1: Understanding B-rep</b>\n\nBoundary Representation (B-rep) defines a solid model by its boundaries — that is, its surfaces, edges, and vertices. It explicitly describes the shape and limits of a solid object.\n\nIt is the standard method used in solid modeling systems because it allows accurate representation of complex geometries.\n\n<b>Step 2: Role of Bezier, B-splines, and NURBS</b>\n\n$\\text{Bezier curves}, \\text{B-splines}, \\text{and NURBS}$ are used for curve and surface modeling — especially in free-form surface design — but not for solid modeling directly.\n\nThey are often used within B-rep to define smooth surfaces, but they do not represent solid models themselves.\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{(A)}\\ \\text{boundary representation (B-rep)}}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Concept:</b>\n\nIn Computer-Aided Design (CAD), there are various methods to represent solid models. Among them, Boundary Representation (B-rep) is widely used for constructing solid models.\n\n<b>Step 1: Understanding B-rep</b>\n\nBoundary Representation (B-rep) defines a solid model by its boundaries — that is, its surfaces, edges, and vertices. It explicitly describes the shape and limits of a solid object.\n\nIt is the standard method used in solid modeling systems because it allows accurate representation of complex geometries.\n\n<b>Step 2: Role of Bezier, B-splines, and NURBS</b>\n\n$\\text{Bezier curves}, \\text{B-splines}, \\text{and NURBS}$ are used for curve and surface modeling — especially in free-form surface design — but not for solid modeling directly.\n\nThey are often used within B-rep to define smooth surfaces, but they do not represent solid models themselves.\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{(A)}\\ \\text{boundary representation (B-rep)}}$",
+        "images": []
       }
     },
     "pp:me:2025:q14": {
       "question_uid": "pp:me:2025:q14",
-      "exam_uid": "me:2025:set1:q14",
+      "exam_uid": "me:2025:set1:main:q14",
       "title": "GATE ME 2025 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -570,13 +635,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "<b>Concept:</b>\n\nCeramics and glass are brittle, hard, and non-conductive materials, which makes them difficult to machine using conventional methods. Therefore, non-traditional machining processes are used.\n\n<b>Step 1: Analyze Each Option</b>\n\n<b>(A) Electric Discharge Machining (EDM):</b>\n\n$\\text{EDM}$ is used for electrically conductive materials only. Ceramics and glass are non-conductive.\n\n$\\Rightarrow$ Not suitable.\n\n<b>(B) Ultrasonic Machining (USM):</b>\n\n$\\text{USM}$ uses high-frequency vibrations and abrasive slurry to remove material.\n\nIt is ideal for brittle, hard, and non-conductive materials like ceramics and glass.\n\n$\\Rightarrow$ This is the correct process.\n\n<b>(C) Electrochemical Machining (ECM):</b>\n\n$\\text{ECM}$ also requires the workpiece to be electrically conductive.\n\n$\\Rightarrow$ Not suitable for ceramics and glass.\n\n<b>(D) Transferred Arc Plasma Machining:</b>\n\nThis process involves high temperatures and is mostly used for metals, not for delicate materials like ceramics or glass.\n\n$\\Rightarrow$ Not suitable.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Concept:</b>\n\nCeramics and glass are brittle, hard, and non-conductive materials, which makes them difficult to machine using conventional methods. Therefore, non-traditional machining processes are used.\n\n<b>Step 1: Analyze Each Option</b>\n\n<b>(A) Electric Discharge Machining (EDM):</b>\n\n$\\text{EDM}$ is used for electrically conductive materials only. Ceramics and glass are non-conductive.\n\n$\\Rightarrow$ Not suitable.\n\n<b>(B) Ultrasonic Machining (USM):</b>\n\n$\\text{USM}$ uses high-frequency vibrations and abrasive slurry to remove material.\n\nIt is ideal for brittle, hard, and non-conductive materials like ceramics and glass.\n\n$\\Rightarrow$ This is the correct process.\n\n<b>(C) Electrochemical Machining (ECM):</b>\n\n$\\text{ECM}$ also requires the workpiece to be electrically conductive.\n\n$\\Rightarrow$ Not suitable for ceramics and glass.\n\n<b>(D) Transferred Arc Plasma Machining:</b>\n\nThis process involves high temperatures and is mostly used for metals, not for delicate materials like ceramics or glass.\n\n$\\Rightarrow$ Not suitable.",
+        "images": []
       }
     },
     "pp:me:2025:q15": {
       "question_uid": "pp:me:2025:q15",
-      "exam_uid": "me:2025:set1:q15",
+      "exam_uid": "me:2025:set1:main:q15",
       "title": "GATE ME 2025 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -611,13 +680,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "<b>Given:</b>\n\nHole: $30^{+0.030}{+0.000} \\ \\text{mm}$\n\nShaft: $30^{+0.020}{-0.020} \\ \\text{mm}$\n\n<b>Step 1: Determine Maximum and Minimum Sizes</b>\n\n<b>Maximum Hole Size:</b> $30 + 0.030 = 30.030 \\ \\text{mm}$\n\n<b>Minimum Hole Size:</b> $30 + 0.000 = 30.000 \\ \\text{mm}$\n\n<b>Maximum Shaft Size:</b> $30 + 0.020 = 30.020 \\ \\text{mm}$\n\n<b>Minimum Shaft Size:</b> $30 - 0.020 = 29.980 \\ \\text{mm}$\n\n<b>Step 2: Calculate Possible Clearances</b>\n\n<b>Maximum Clearance:</b> $30.030 - 29.980 = 0.050 \\ \\text{mm}$\n\n<b>Minimum Clearance:</b> $30.000 - 30.020 = -0.020 \\ \\text{mm}$ (which is interference)\n\n<b>Conclusion:</b>\n\nSince the maximum clearance is positive and the minimum clearance is negative, the assembly may result in either a small clearance or interference.\n\n$\\Rightarrow \\text{This is a} \\ \\boxed{\\text{transition fit}}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Given:</b>\n\nHole: $30^{+0.030}{+0.000} \\ \\text{mm}$\n\nShaft: $30^{+0.020}{-0.020} \\ \\text{mm}$\n\n<b>Step 1: Determine Maximum and Minimum Sizes</b>\n\n<b>Maximum Hole Size:</b> $30 + 0.030 = 30.030 \\ \\text{mm}$\n\n<b>Minimum Hole Size:</b> $30 + 0.000 = 30.000 \\ \\text{mm}$\n\n<b>Maximum Shaft Size:</b> $30 + 0.020 = 30.020 \\ \\text{mm}$\n\n<b>Minimum Shaft Size:</b> $30 - 0.020 = 29.980 \\ \\text{mm}$\n\n<b>Step 2: Calculate Possible Clearances</b>\n\n<b>Maximum Clearance:</b> $30.030 - 29.980 = 0.050 \\ \\text{mm}$\n\n<b>Minimum Clearance:</b> $30.000 - 30.020 = -0.020 \\ \\text{mm}$ (which is interference)\n\n<b>Conclusion:</b>\n\nSince the maximum clearance is positive and the minimum clearance is negative, the assembly may result in either a small clearance or interference.\n\n$\\Rightarrow \\text{This is a} \\ \\boxed{\\text{transition fit}}$",
+        "images": []
       }
     },
     "pp:me:2025:q16": {
       "question_uid": "pp:me:2025:q16",
-      "exam_uid": "me:2025:set1:q16",
+      "exam_uid": "me:2025:set1:main:q16",
       "title": "GATE ME 2025 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -652,13 +725,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Plane Motion",
-        "markdown": "<b>Given:</b>\n\nA rigid circular disc is rolling without slipping on a flat surface.\n\nRadius = $r$, Angular velocity = $\\omega$\n\nWe are asked to find the velocities at points $O$ (center) and $A$ (bottom point of contact with ground).\n\n<b>Step 1: Velocity of Center Point (O)</b>\n\nFor rolling without slipping, the center of the disc moves with linear velocity:\n\n$v_O = r \\omega \\hat{i}$\n\n<b>Step 2: Velocity of Point A (Point in contact with ground)</b>\n\nVelocity of any point on a rotating body:\n\n$\\vec{v} = \\vec{v}_O + \\vec{\\omega} \\times \\vec{r}$\n\nAt point A, the rotational component is $-r \\omega \\hat{i}$ (due to clockwise rotation), and translational component is $r \\omega \\hat{i}$.\n\nSo,\n\n$v_A = r\\omega \\hat{i} + (-r\\omega \\hat{i}) = 0 \\hat{i}$\n\n<b>Final Answer:</b>\n\n$\\boxed{r\\omega \\hat{i} \\ \\text{and} \\ 0 \\hat{i}}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nA rigid circular disc is rolling without slipping on a flat surface.\n\nRadius = $r$, Angular velocity = $\\omega$\n\nWe are asked to find the velocities at points $O$ (center) and $A$ (bottom point of contact with ground).\n\n<b>Step 1: Velocity of Center Point (O)</b>\n\nFor rolling without slipping, the center of the disc moves with linear velocity:\n\n$v_O = r \\omega \\hat{i}$\n\n<b>Step 2: Velocity of Point A (Point in contact with ground)</b>\n\nVelocity of any point on a rotating body:\n\n$\\vec{v} = \\vec{v}_O + \\vec{\\omega} \\times \\vec{r}$\n\nAt point A, the rotational component is $-r \\omega \\hat{i}$ (due to clockwise rotation), and translational component is $r \\omega \\hat{i}$.\n\nSo,\n\n$v_A = r\\omega \\hat{i} + (-r\\omega \\hat{i}) = 0 \\hat{i}$\n\n<b>Final Answer:</b>\n\n$\\boxed{r\\omega \\hat{i} \\ \\text{and} \\ 0 \\hat{i}}$",
+        "images": []
       }
     },
     "pp:me:2025:q17": {
       "question_uid": "pp:me:2025:q17",
-      "exam_uid": "me:2025:set1:q17",
+      "exam_uid": "me:2025:set1:main:q17",
       "title": "GATE ME 2025 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -693,13 +770,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
-        "markdown": "<b>Given:</b>\n\nA truss is subjected to a horizontal load of $1000 \\text{N}$ at point A.\n\nWe need to identify the <b>zero-force member</b> among the given options: BD, BC, BA, AD.\n\n<b>Step 1: Analyze Joint B</b>\n\nAt joint B, the following members are connected:\n\n• BA (inclined)\n\n• BC (inclined)\n\n• BD (horizontal)\n\nThere is <b>no external load or support at joint B</b>.\n\nTherefore, the standard zero-force member rules cannot directly eliminate any member here.\n\n<b>Step 2: Analyze Load Path</b>\n\nThe applied load $F = 1000 \\text{N}$ is acting horizontally at point A.\n\nThis load is transmitted from A to D (vertical support) and A to B.\n\nSo, member BA will carry some force to maintain equilibrium at joint A.\n\n<b>Step 3: Analyze Joint D</b>\n\nAt joint D, the following members are connected:\n\n• AD (vertical)\n\n• CD (horizontal)\n\n• BD (diagonal)\n\nSince support reactions are present at D, members AD and CD can balance vertical and horizontal loads respectively.\n\nThere is <b>no need for force to pass through BD</b> to maintain equilibrium.\n\n<b>Step 4: Conclusion</b>\n\nAs member BD does not contribute to the equilibrium of any joint and is not needed to transmit force:\n\n<b>BD is a zero-force member.</b>\n\n<b>Final Answer:</b> <b>BD</b>\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nA truss is subjected to a horizontal load of $1000 \\text{N}$ at point A.\n\nWe need to identify the <b>zero-force member</b> among the given options: BD, BC, BA, AD.\n\n<b>Step 1: Analyze Joint B</b>\n\nAt joint B, the following members are connected:\n\n• BA (inclined)\n\n• BC (inclined)\n\n• BD (horizontal)\n\nThere is <b>no external load or support at joint B</b>.\n\nTherefore, the standard zero-force member rules cannot directly eliminate any member here.\n\n<b>Step 2: Analyze Load Path</b>\n\nThe applied load $F = 1000 \\text{N}$ is acting horizontally at point A.\n\nThis load is transmitted from A to D (vertical support) and A to B.\n\nSo, member BA will carry some force to maintain equilibrium at joint A.\n\n<b>Step 3: Analyze Joint D</b>\n\nAt joint D, the following members are connected:\n\n• AD (vertical)\n\n• CD (horizontal)\n\n• BD (diagonal)\n\nSince support reactions are present at D, members AD and CD can balance vertical and horizontal loads respectively.\n\nThere is <b>no need for force to pass through BD</b> to maintain equilibrium.\n\n<b>Step 4: Conclusion</b>\n\nAs member BD does not contribute to the equilibrium of any joint and is not needed to transmit force:\n\n<b>BD is a zero-force member.</b>\n\n<b>Final Answer:</b> <b>BD</b>",
+        "images": []
       }
     },
     "pp:me:2025:q18": {
       "question_uid": "pp:me:2025:q18",
-      "exam_uid": "me:2025:set1:q18",
+      "exam_uid": "me:2025:set1:main:q18",
       "title": "GATE ME 2025 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -734,13 +815,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Mohr's Circle",
-        "markdown": "<b>Concept:</b>\n\nIn a hydrostatic stress condition, all normal stresses are equal in magnitude and compressive:\n\n$\\sigma_x = \\sigma_y = -P$ and $\\tau_{xy} = 0$\n\n<b>Mohr's Circle Representation:</b>\n\nSince there is no shear stress and both principal stresses are equal and negative:\n\n• The Mohr’s circle reduces to a <b>point</b> at $\\sigma = -P$, $\\tau = 0$\n\n• Radius of Mohr’s circle = 0 (since $\\sigma_1 = \\sigma_2 = -P$)\n\n<b>Analysis of Options:</b>\n\n(A) Mohr’s circle centered at $P$ -> Incorrect, hydrostatic pressure causes compressive stress ($-P$)\n\n(B) Mohr’s circle centered at $-P$ with radius zero (a point) -> Correct\n\n(C) Circle with endpoints at $-P$ and $P$ -> Incorrect, implies unequal principal stresses\n\n(D) Circle with center at $0$, radius $P$ -> Incorrect\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Concept:</b>\n\nIn a hydrostatic stress condition, all normal stresses are equal in magnitude and compressive:\n\n$\\sigma_x = \\sigma_y = -P$ and $\\tau_{xy} = 0$\n\n<b>Mohr's Circle Representation:</b>\n\nSince there is no shear stress and both principal stresses are equal and negative:\n\n• The Mohr’s circle reduces to a <b>point</b> at $\\sigma = -P$, $\\tau = 0$\n\n• Radius of Mohr’s circle = 0 (since $\\sigma_1 = \\sigma_2 = -P$)\n\n<b>Analysis of Options:</b>\n\n(A) Mohr’s circle centered at $P$ -> Incorrect, hydrostatic pressure causes compressive stress ($-P$)\n\n(B) Mohr’s circle centered at $-P$ with radius zero (a point) -> Correct\n\n(C) Circle with endpoints at $-P$ and $P$ -> Incorrect, implies unequal principal stresses\n\n(D) Circle with center at $0$, radius $P$ -> Incorrect",
+        "images": []
       }
     },
     "pp:me:2025:q19": {
       "question_uid": "pp:me:2025:q19",
-      "exam_uid": "me:2025:set1:q19",
+      "exam_uid": "me:2025:set1:main:q19",
       "title": "GATE ME 2025 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -775,13 +860,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Balancing",
-        "markdown": "<b>Concept:</b>\n\nBalancing of rotating and reciprocating masses is essential in machines to reduce vibrations and improve performance and life.\n\n<b>Rotating Masses:</b>\n\nRotating masses can be balanced by adding counter masses. A rigid rotor unbalanced in space (not just in one plane) needs to be balanced in both magnitude and direction in 3D.\n\n<b>Reciprocating Masses:</b>\n\nReciprocating masses (like in single-cylinder IC engines) cannot be perfectly balanced because of the nature of reciprocating motion—only partial balancing is possible.\n\n<b>Step 1:</b> For a rigid rotor, full dynamic balance (i.e., both force and couple balance) requires placing two balancing masses in two distinct planes.\n\nSo, option (A) is incorrect—a single balancing mass cannot balance both force and couple.\n\n<b>Step 2:</b> A single-cylinder engine produces unbalanced reciprocating inertia forces. It is not possible to completely balance all forces and couples with just masses. Hence, options (C) and (D) are incorrect.\n\n<b>Final Answer:</b> ✅ <b>Correct option: (B)</b>\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Concept:</b>\n\nBalancing of rotating and reciprocating masses is essential in machines to reduce vibrations and improve performance and life.\n\n<b>Rotating Masses:</b>\n\nRotating masses can be balanced by adding counter masses. A rigid rotor unbalanced in space (not just in one plane) needs to be balanced in both magnitude and direction in 3D.\n\n<b>Reciprocating Masses:</b>\n\nReciprocating masses (like in single-cylinder IC engines) cannot be perfectly balanced because of the nature of reciprocating motion—only partial balancing is possible.\n\n<b>Step 1:</b> For a rigid rotor, full dynamic balance (i.e., both force and couple balance) requires placing two balancing masses in two distinct planes.\n\nSo, option (A) is incorrect—a single balancing mass cannot balance both force and couple.\n\n<b>Step 2:</b> A single-cylinder engine produces unbalanced reciprocating inertia forces. It is not possible to completely balance all forces and couples with just masses. Hence, options (C) and (D) are incorrect.\n\n<b>Final Answer:</b> ✅ <b>Correct option: (B)</b>",
+        "images": []
       }
     },
     "pp:me:2025:q20": {
       "question_uid": "pp:me:2025:q20",
-      "exam_uid": "me:2025:set1:q20",
+      "exam_uid": "me:2025:set1:main:q20",
       "title": "GATE ME 2025 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -816,13 +905,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Gear and Gear Train",
-        "markdown": "<b>Given:</b> A shaft carries a <b>helical spur gear</b>.\n\n<b>Concept:</b>\n\nHelical gears produce three types of forces: <b>radial</b>, <b>axial (thrust)</b>, and <b>tangential</b> forces due to the angled teeth. Therefore, the bearing used must be capable of handling both <b>radial</b> and <b>axial</b> loads.\n\n<b>Option (A): Angular contact bearing</b>\n\nCan handle both radial and axial loads. Hence, it is suitable for supporting a helical gear.\n\n<b>Option (B): Double-row ball bearing</b>\n\nCan support higher radial loads and some axial loads in both directions. Hence, suitable for helical gears.\n\n<b>Option (C): Straight roller bearing</b>\n\nCan support only radial loads and <b>not axial loads</b>. Hence, it is <b>not suitable</b> for helical gears which produce axial thrust.\n\n<b>Option (D): Tapered roller bearing</b>\n\nCan support both radial and axial loads. Hence, suitable for helical gears.\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Given:</b> A shaft carries a <b>helical spur gear</b>.\n\n<b>Concept:</b>\n\nHelical gears produce three types of forces: <b>radial</b>, <b>axial (thrust)</b>, and <b>tangential</b> forces due to the angled teeth. Therefore, the bearing used must be capable of handling both <b>radial</b> and <b>axial</b> loads.\n\n<b>Option (A): Angular contact bearing</b>\n\nCan handle both radial and axial loads. Hence, it is suitable for supporting a helical gear.\n\n<b>Option (B): Double-row ball bearing</b>\n\nCan support higher radial loads and some axial loads in both directions. Hence, suitable for helical gears.\n\n<b>Option (C): Straight roller bearing</b>\n\nCan support only radial loads and <b>not axial loads</b>. Hence, it is <b>not suitable</b> for helical gears which produce axial thrust.\n\n<b>Option (D): Tapered roller bearing</b>\n\nCan support both radial and axial loads. Hence, suitable for helical gears.",
+        "images": []
       }
     },
     "pp:me:2025:q21": {
       "question_uid": "pp:me:2025:q21",
-      "exam_uid": "me:2025:set1:q21",
+      "exam_uid": "me:2025:set1:main:q21",
       "title": "GATE ME 2025 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -855,13 +948,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "<b>Given:</b>\n\nThe values of the function $f(x)$ at different $x$ are:\n\n$$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 0.25 & 0.5 & 0.75 & 1.0 \\\\ \\hline f(x) & 0.9 & 2.0 & 1.5 & 1.8 & 0.4 \\\\ \\hline \\end{array}$$\n\nWe will apply Simpson’s 1/3 Rule:\n\n$\\int_{a}^{b} f(x), dx \\approx \\frac{h}{3} \\left[ f(x_0) + 4(f(x_1) + f(x_3)) + 2(f(x_2)) + f(x_4) \\right]$\n\nHere, $h = \\frac{1 - 0}{4} = 0.25$\n\nSubstituting values:\n\n$\\int_0^1 f(x),dx \\approx \\frac{0.25}{3} \\left[ 0.9 + 4(2.0 + 1.8) + 2(1.5) + 0.4 \\right]$\n\n$= \\frac{0.25}{3} \\left[ 0.9 + 4(3.8) + 3.0 + 0.4 \\right]$\n\n$= \\frac{0.25}{3} \\times (0.9 + 15.2 + 3.0 + 0.4) = \\frac{0.25}{3} \\times 19.5$\n\n$= \\frac{4.875}{3} = 1.625$\n\n<b>Final Answer:</b> $\\boxed{1.63}$ (rounded to 2 decimal places)\n\nTherefore, the correct answer is **1.63** (acceptable range: [1.61, 1.65])."
+        "markdown": "<b>Given:</b>\n\nThe values of the function $f(x)$ at different $x$ are:\n\n$$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 0.25 & 0.5 & 0.75 & 1.0 \\\\ \\hline f(x) & 0.9 & 2.0 & 1.5 & 1.8 & 0.4 \\\\ \\hline \\end{array}$$\n\nWe will apply Simpson’s 1/3 Rule:\n\n$\\int_{a}^{b} f(x), dx \\approx \\frac{h}{3} \\left[ f(x_0) + 4(f(x_1) + f(x_3)) + 2(f(x_2)) + f(x_4) \\right]$\n\nHere, $h = \\frac{1 - 0}{4} = 0.25$\n\nSubstituting values:\n\n$\\int_0^1 f(x),dx \\approx \\frac{0.25}{3} \\left[ 0.9 + 4(2.0 + 1.8) + 2(1.5) + 0.4 \\right]$\n\n$= \\frac{0.25}{3} \\left[ 0.9 + 4(3.8) + 3.0 + 0.4 \\right]$\n\n$= \\frac{0.25}{3} \\times (0.9 + 15.2 + 3.0 + 0.4) = \\frac{0.25}{3} \\times 19.5$\n\n$= \\frac{4.875}{3} = 1.625$\n\n<b>Final Answer:</b> $\\boxed{1.63}$ (rounded to 2 decimal places)",
+        "images": []
       }
     },
     "pp:me:2025:q22": {
       "question_uid": "pp:me:2025:q22",
-      "exam_uid": "me:2025:set1:q22",
+      "exam_uid": "me:2025:set1:main:q22",
       "title": "GATE ME 2025 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -894,13 +991,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "<b>Given:</b>\n\nThermal efficiency of Otto cycle $\\eta = 0.5$\n\nSpecific heat ratio of air $\\gamma = 1.4$\n\nWe are to find the compression ratio $r$.\n\n<b>Step 1:</b> The efficiency of an ideal Otto cycle is given by:\n\n$\\eta = 1 - \\dfrac{1}{r^{\\gamma - 1}}$\n\n<b>Step 2:</b> Substitute the known values:\n\n$0.5 = 1 - \\dfrac{1}{r^{1.4 - 1}} = 1 - \\dfrac{1}{r^{0.4}}$\n\nRearranging:\n\n$\\dfrac{1}{r^{0.4}} = 0.5$\n\n$r^{0.4} = 2$\n\n<b>Step 3:</b> Raise both sides to the power $\\dfrac{1}{0.4} = 2.5$:\n\n$r = 2^{2.5} = \\sqrt{2^5} = \\sqrt{32} \\approx 5.657$\n\n<b>Final Answer:</b> $\\boxed{5.7}$ (rounded off to 1 decimal place)\n\nTherefore, the correct answer is **5.7** (acceptable range: [5.5, 5.9])."
+        "markdown": "<b>Given:</b>\n\nThermal efficiency of Otto cycle $\\eta = 0.5$\n\nSpecific heat ratio of air $\\gamma = 1.4$\n\nWe are to find the compression ratio $r$.\n\n<b>Step 1:</b> The efficiency of an ideal Otto cycle is given by:\n\n$\\eta = 1 - \\dfrac{1}{r^{\\gamma - 1}}$\n\n<b>Step 2:</b> Substitute the known values:\n\n$0.5 = 1 - \\dfrac{1}{r^{1.4 - 1}} = 1 - \\dfrac{1}{r^{0.4}}$\n\nRearranging:\n\n$\\dfrac{1}{r^{0.4}} = 0.5$\n\n$r^{0.4} = 2$\n\n<b>Step 3:</b> Raise both sides to the power $\\dfrac{1}{0.4} = 2.5$:\n\n$r = 2^{2.5} = \\sqrt{2^5} = \\sqrt{32} \\approx 5.657$\n\n<b>Final Answer:</b> $\\boxed{5.7}$ (rounded off to 1 decimal place)",
+        "images": []
       }
     },
     "pp:me:2025:q23": {
       "question_uid": "pp:me:2025:q23",
-      "exam_uid": "me:2025:set1:q23",
+      "exam_uid": "me:2025:set1:main:q23",
       "title": "GATE ME 2025 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -933,13 +1034,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "<b>Given:</b>\n\nTotal incident power = $2500\\ \\text{W}$\n\n85% of power is absorbed within a circle of radius $R = 5\\ \\text{mm}$\n\n65% of power is absorbed within an inner circle of radius $r = 3\\ \\text{mm}$\n\nWe are to find the power density in the shaded area (annular region between 3 mm and 5 mm)\n\n<b>Step 1:</b> Calculate absorbed powers\n\n$P_{5} = 0.85 \\times 2500 = 2125\\ \\text{W}$\n\n$P_{3} = 0.65 \\times 2500 = 1625\\ \\text{W}$\n\n<b>Step 2:</b> Power absorbed in the shaded annular area\n\n$P_{\\text{shaded}} = P_5 - P_3 = 2125 - 1625 = 500\\ \\text{W}$\n\n<b>Step 3:</b> Area of shaded region = Area of outer circle – Area of inner circle\n\n$A = \\pi (R^2 - r^2) = \\pi (5^2 - 3^2) = \\pi (25 - 9) = \\pi \\times 16 \\approx 50.27\\ \\text{mm}^2$\n\n<b>Step 4:</b> Power density\n\n$\\text{Power Density} = \\dfrac{P_{\\text{shaded}}}{A} = \\dfrac{500}{50.27} \\approx 9.95\\ \\text{W/mm}^2$\n\nTherefore, the correct answer is **9.95** (acceptable range: [9.92, 9.98])."
+        "markdown": "<b>Given:</b>\n\nTotal incident power = $2500\\ \\text{W}$\n\n85% of power is absorbed within a circle of radius $R = 5\\ \\text{mm}$\n\n65% of power is absorbed within an inner circle of radius $r = 3\\ \\text{mm}$\n\nWe are to find the power density in the shaded area (annular region between 3 mm and 5 mm)\n\n<b>Step 1:</b> Calculate absorbed powers\n\n$P_{5} = 0.85 \\times 2500 = 2125\\ \\text{W}$\n\n$P_{3} = 0.65 \\times 2500 = 1625\\ \\text{W}$\n\n<b>Step 2:</b> Power absorbed in the shaded annular area\n\n$P_{\\text{shaded}} = P_5 - P_3 = 2125 - 1625 = 500\\ \\text{W}$\n\n<b>Step 3:</b> Area of shaded region = Area of outer circle – Area of inner circle\n\n$A = \\pi (R^2 - r^2) = \\pi (5^2 - 3^2) = \\pi (25 - 9) = \\pi \\times 16 \\approx 50.27\\ \\text{mm}^2$\n\n<b>Step 4:</b> Power density\n\n$\\text{Power Density} = \\dfrac{P_{\\text{shaded}}}{A} = \\dfrac{500}{50.27} \\approx 9.95\\ \\text{W/mm}^2$",
+        "images": []
       }
     },
     "pp:me:2025:q24": {
       "question_uid": "pp:me:2025:q24",
-      "exam_uid": "me:2025:set1:q24",
+      "exam_uid": "me:2025:set1:main:q24",
       "title": "GATE ME 2025 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -972,13 +1077,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "<b>Given:</b>\n\nInitial size of the cube: $200\\ \\text{mm} \\times 200\\ \\text{mm} \\times 200\\ \\text{mm}$\n\nVolumetric shrinkage during solidification: $7%$\n\nVolumetric shrinkage during solid contraction: $8%$\n\nShrinkage occurs in volume, but we are asked about the final edge length assuming uniform cooling in all directions.\n\n<b>Step 1:</b> Total volumetric shrinkage\n\n$V_{\\text{initial}} = 200^3 = 8,000,000\\ \\text{mm}^3$\n\nAfter solidification (7% shrinkage):\n\n$V_1 = V_{\\text{initial}} \\times (1 - 0.07) = 8,000,000 \\times 0.93 = 7,440,000\\ \\text{mm}^3$\n\nAfter solid contraction (8% shrinkage):\n\n$V_2 = V_1 \\times (1 - 0.08) = 7,440,000 \\times 0.92 = 6,844,800\\ \\text{mm}^3$\n\n<b>Step 2:</b> Final volume is a cube, so\n\n$L^3 = 6,844,800$\n\n$L = \\sqrt[3]{6,844,800} \\approx 188.0\\ \\text{mm}$\n\nTherefore, the correct answer is **189.9** (acceptable range: [189.8, 190])."
+        "markdown": "<b>Given:</b>\n\nInitial size of the cube: $200\\ \\text{mm} \\times 200\\ \\text{mm} \\times 200\\ \\text{mm}$\n\nVolumetric shrinkage during solidification: $7%$\n\nVolumetric shrinkage during solid contraction: $8%$\n\nShrinkage occurs in volume, but we are asked about the final edge length assuming uniform cooling in all directions.\n\n<b>Step 1:</b> Total volumetric shrinkage\n\n$V_{\\text{initial}} = 200^3 = 8,000,000\\ \\text{mm}^3$\n\nAfter solidification (7% shrinkage):\n\n$V_1 = V_{\\text{initial}} \\times (1 - 0.07) = 8,000,000 \\times 0.93 = 7,440,000\\ \\text{mm}^3$\n\nAfter solid contraction (8% shrinkage):\n\n$V_2 = V_1 \\times (1 - 0.08) = 7,440,000 \\times 0.92 = 6,844,800\\ \\text{mm}^3$\n\n<b>Step 2:</b> Final volume is a cube, so\n\n$L^3 = 6,844,800$\n\n$L = \\sqrt[3]{6,844,800} \\approx 188.0\\ \\text{mm}$",
+        "images": []
       }
     },
     "pp:me:2025:q25": {
       "question_uid": "pp:me:2025:q25",
-      "exam_uid": "me:2025:set1:q25",
+      "exam_uid": "me:2025:set1:main:q25",
       "title": "GATE ME 2025 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 1,
@@ -1011,13 +1120,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "<b>Given:</b>\n\nMass of the block, $m = 1\\ \\text{kg}$\n\nSpring stiffness, $k = 10\\ \\text{N/m}$\n\nIt is given that the damping ratio $\\zeta$ is equal to the ratio of damped frequency to natural frequency:\n\n$\\zeta = \\dfrac{\\omega_d}{\\omega_n}$\n\n<b>Step 1:</b> Natural frequency\n\n$\\omega_n = \\sqrt{\\dfrac{k}{m}} = \\sqrt{\\dfrac{10}{1}} = \\sqrt{10}$\n\n<b>Step 2:</b> Relation between damped and natural frequency\n\n$\\omega_d = \\omega_n \\sqrt{1 - \\zeta^2}$\n\nSubstitute into the given condition:\n\n$\\zeta = \\dfrac{\\omega_d}{\\omega_n} = \\sqrt{1 - \\zeta^2}$\n\n<b>Step 3:</b> Solve the equation\n\nSquare both sides:\n\n$\\zeta^2 = 1 - \\zeta^2$\n\n$2\\zeta^2 = 1$\n\n$\\zeta^2 = \\dfrac{1}{2}$\n\n$\\zeta = \\dfrac{1}{\\sqrt{2}} \\approx 0.71$\n\nTherefore, the correct answer is **0.71** (acceptable range: [0.7, 0.72])."
+        "markdown": "<b>Given:</b>\n\nMass of the block, $m = 1\\ \\text{kg}$\n\nSpring stiffness, $k = 10\\ \\text{N/m}$\n\nIt is given that the damping ratio $\\zeta$ is equal to the ratio of damped frequency to natural frequency:\n\n$\\zeta = \\dfrac{\\omega_d}{\\omega_n}$\n\n<b>Step 1:</b> Natural frequency\n\n$\\omega_n = \\sqrt{\\dfrac{k}{m}} = \\sqrt{\\dfrac{10}{1}} = \\sqrt{10}$\n\n<b>Step 2:</b> Relation between damped and natural frequency\n\n$\\omega_d = \\omega_n \\sqrt{1 - \\zeta^2}$\n\nSubstitute into the given condition:\n\n$\\zeta = \\dfrac{\\omega_d}{\\omega_n} = \\sqrt{1 - \\zeta^2}$\n\n<b>Step 3:</b> Solve the equation\n\nSquare both sides:\n\n$\\zeta^2 = 1 - \\zeta^2$\n\n$2\\zeta^2 = 1$\n\n$\\zeta^2 = \\dfrac{1}{2}$\n\n$\\zeta = \\dfrac{1}{\\sqrt{2}} \\approx 0.71$",
+        "images": []
       }
     },
     "pp:me:2025:q26": {
       "question_uid": "pp:me:2025:q26",
-      "exam_uid": "me:2025:set1:q26",
+      "exam_uid": "me:2025:set1:main:q26",
       "title": "GATE ME 2025 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1052,13 +1165,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Given:</b>\n\n$f(x) = 2x^3 - 9x^2 + 12x$ over the closed interval [0, 3]\n\n<b>Step 1:</b> Find the derivative $f'(x)$ to get critical points\n\n$f'(x) = \\dfrac{d}{dx}(2x^3 - 9x^2 + 12x) = 6x^2 - 18x + 12$\n\n<b>Step 2:</b> Set $f'(x) = 0$ and solve for $x$\n\n$6x^2 - 18x + 12 = 0$\n\nDivide entire equation by 6:\n\n$x^2 - 3x + 2 = 0$\n\n$(x - 1)(x - 2) = 0$\n\nSo, critical points are $x = 1$ and $x = 2$\n\n<b>Step 3:</b> Evaluate $f(x)$ at endpoints and critical points\n\n$f(0) = 2(0)^3 - 9(0)^2 + 12(0) = 0$\n\n$f(1) = 2(1)^3 - 9(1)^2 + 12(1) = 2 - 9 + 12 = 5$\n\n$f(2) = 2(8) - 9(4) + 12(2) = 16 - 36 + 24 = 4$\n\n$f(3) = 2(27) - 9(9) + 12(3) = 54 - 81 + 36 = 9$\n\n<b>Step 4:</b> Find the minimum value among these\n\n$\\min{0,\\ 4,\\ 5,\\ 9} = 0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\n$f(x) = 2x^3 - 9x^2 + 12x$ over the closed interval [0, 3]\n\n<b>Step 1:</b> Find the derivative $f'(x)$ to get critical points\n\n$f'(x) = \\dfrac{d}{dx}(2x^3 - 9x^2 + 12x) = 6x^2 - 18x + 12$\n\n<b>Step 2:</b> Set $f'(x) = 0$ and solve for $x$\n\n$6x^2 - 18x + 12 = 0$\n\nDivide entire equation by 6:\n\n$x^2 - 3x + 2 = 0$\n\n$(x - 1)(x - 2) = 0$\n\nSo, critical points are $x = 1$ and $x = 2$\n\n<b>Step 3:</b> Evaluate $f(x)$ at endpoints and critical points\n\n$f(0) = 2(0)^3 - 9(0)^2 + 12(0) = 0$\n\n$f(1) = 2(1)^3 - 9(1)^2 + 12(1) = 2 - 9 + 12 = 5$\n\n$f(2) = 2(8) - 9(4) + 12(2) = 16 - 36 + 24 = 4$\n\n$f(3) = 2(27) - 9(9) + 12(3) = 54 - 81 + 36 = 9$\n\n<b>Step 4:</b> Find the minimum value among these\n\n$\\min{0,\\ 4,\\ 5,\\ 9} = 0$",
+        "images": []
       }
     },
     "pp:me:2025:q27": {
       "question_uid": "pp:me:2025:q27",
-      "exam_uid": "me:2025:set1:q27",
+      "exam_uid": "me:2025:set1:main:q27",
       "title": "GATE ME 2025 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1093,13 +1210,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "<b>Given:</b>\n\nActual and forecast demand for 10 periods is provided. We are to compute:\n\nMean Forecast Error (MFE): average of (Actual - Forecast)\n\nMean Absolute Deviation (MAD): average of |Actual - Forecast|\n\n<b>Step 1:</b> Create a table of differences:\n\n$$\\begin{array}{|c|c|c|c|c|} \\hline \\text{Period} & \\text{Actual} & \\text{Forecast} & \\text{Error} = A - F & |\\text{Error}| \\\\ \\hline 1 & 425 & 427 & -2 & 2 \\\\ 2 & 415 & 422 & -7 & 7 \\\\ 3 & 420 & 416 & 4 & 4 \\\\ 4 & 430 & 422 & 8 & 8 \\\\ 5 & 427 & 423 & 4 & 4 \\\\ 6 & 418 & 420 & -2 & 2 \\\\ 7 & 422 & 419 & 3 & 3 \\\\ 8 & 416 & 418 & -2 & 2 \\\\ 9 & 426 & 430 & -4 & 4 \\\\ 10 & 421 & 415 & 6 & 6 \\\\ \\hline \\text{Total} & - & - & 8 & 42 \\\\ \\hline \\end{array}$$\n\n<b>Step 2:</b> Compute MFE and MAD\n\n$\\text{MFE} = \\frac{\\sum (A - F)}{10} = \\frac{8}{10} = 0.8$\n\n$\\text{MAD} = \\frac{\\sum |A - F|}{10} = \\frac{42}{10} = 4.2$\n\n<b>Final Answer:</b>\n\nMean Forecast Error = $0.8$\n\nMean Absolute Deviation = $4.2$\n\n<b>Correct Option: (B)</b>\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b>\n\nActual and forecast demand for 10 periods is provided. We are to compute:\n\nMean Forecast Error (MFE): average of (Actual - Forecast)\n\nMean Absolute Deviation (MAD): average of |Actual - Forecast|\n\n<b>Step 1:</b> Create a table of differences:\n\n$$\\begin{array}{|c|c|c|c|c|} \\hline \\text{Period} & \\text{Actual} & \\text{Forecast} & \\text{Error} = A - F & |\\text{Error}| \\\\ \\hline 1 & 425 & 427 & -2 & 2 \\\\ 2 & 415 & 422 & -7 & 7 \\\\ 3 & 420 & 416 & 4 & 4 \\\\ 4 & 430 & 422 & 8 & 8 \\\\ 5 & 427 & 423 & 4 & 4 \\\\ 6 & 418 & 420 & -2 & 2 \\\\ 7 & 422 & 419 & 3 & 3 \\\\ 8 & 416 & 418 & -2 & 2 \\\\ 9 & 426 & 430 & -4 & 4 \\\\ 10 & 421 & 415 & 6 & 6 \\\\ \\hline \\text{Total} & - & - & 8 & 42 \\\\ \\hline \\end{array}$$\n\n<b>Step 2:</b> Compute MFE and MAD\n\n$\\text{MFE} = \\frac{\\sum (A - F)}{10} = \\frac{8}{10} = 0.8$\n\n$\\text{MAD} = \\frac{\\sum |A - F|}{10} = \\frac{42}{10} = 4.2$\n\n<b>Final Answer:</b>\n\nMean Forecast Error = $0.8$\n\nMean Absolute Deviation = $4.2$",
+        "images": []
       }
     },
     "pp:me:2025:q28": {
       "question_uid": "pp:me:2025:q28",
-      "exam_uid": "me:2025:set1:q28",
+      "exam_uid": "me:2025:set1:main:q28",
       "title": "GATE ME 2025 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1134,13 +1255,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "<b>Given:</b> We need to match mold elements with their correct functions in the casting process.\n\n<b>Let’s go through each mold element:</b>\n\n<b>P. Blind riser:</b> Stores excess molten metal to compensate for shrinkage during solidification.\n\n→ <b>Function:</b> II. Molten metal reservoir\n\n<b>Q. Chill:</b> A metallic object placed in the mold to rapidly extract heat and promote directional solidification.\n\n→ <b>Function:</b> IV. Assisting in faster heat removal from melt\n\n<b>R. Skim bob:</b> Used to remove slag and impurities from the molten metal before it enters the mold cavity.\n\n→ <b>Function:</b> V. Removal of impurities\n\n<b>S. Core:</b> A sand insert used to form internal cavities in the casting.\n\n→ <b>Function:</b> I. Casting with internal cavity\n\n<b>T. Insulating sleeve:</b> Slows down cooling to avoid premature solidification in risers.\n\n→ <b>Function:</b> VI. Increasing the solidification time\n\n<b>U. Inoculant:</b> A nucleating agent added to refine the grain structure.\n\n→ <b>Function:</b> III. Nucleating agent\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b> We need to match mold elements with their correct functions in the casting process.\n\n<b>Let’s go through each mold element:</b>\n\n<b>P. Blind riser:</b> Stores excess molten metal to compensate for shrinkage during solidification.\n\n→ <b>Function:</b> II. Molten metal reservoir\n\n<b>Q. Chill:</b> A metallic object placed in the mold to rapidly extract heat and promote directional solidification.\n\n→ <b>Function:</b> IV. Assisting in faster heat removal from melt\n\n<b>R. Skim bob:</b> Used to remove slag and impurities from the molten metal before it enters the mold cavity.\n\n→ <b>Function:</b> V. Removal of impurities\n\n<b>S. Core:</b> A sand insert used to form internal cavities in the casting.\n\n→ <b>Function:</b> I. Casting with internal cavity\n\n<b>T. Insulating sleeve:</b> Slows down cooling to avoid premature solidification in risers.\n\n→ <b>Function:</b> VI. Increasing the solidification time\n\n<b>U. Inoculant:</b> A nucleating agent added to refine the grain structure.\n\n→ <b>Function:</b> III. Nucleating agent",
+        "images": []
       }
     },
     "pp:me:2025:q29": {
       "question_uid": "pp:me:2025:q29",
-      "exam_uid": "me:2025:set1:q29",
+      "exam_uid": "me:2025:set1:main:q29",
       "title": "GATE ME 2025 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1175,13 +1300,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
-        "markdown": "<b>Given:</b> Wire drawing operation on a perfectly plastic metal (no strain hardening), with no friction and no redundant work.\n\n<b>We use the formula for maximum possible reduction in area:</b>\n\n$r = 1 - \\frac{1}{e}$\n\nWhere $e$ is Euler’s number (approximately 2.718).\n\n<b>Step 1:</b> Calculate maximum possible reduction:\n\n$r = 1 - \\frac{1}{2.718} = 1 - 0.368 = 0.632$\n\n<b>Step 2:</b> Convert to percentage:\n\n$r = 63.2%$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b> Wire drawing operation on a perfectly plastic metal (no strain hardening), with no friction and no redundant work.\n\n<b>We use the formula for maximum possible reduction in area:</b>\n\n$r = 1 - \\frac{1}{e}$\n\nWhere $e$ is Euler’s number (approximately 2.718).\n\n<b>Step 1:</b> Calculate maximum possible reduction:\n\n$r = 1 - \\frac{1}{2.718} = 1 - 0.368 = 0.632$\n\n<b>Step 2:</b> Convert to percentage:\n\n$r = 63.2%$",
+        "images": []
       }
     },
     "pp:me:2025:q30": {
       "question_uid": "pp:me:2025:q30",
-      "exam_uid": "me:2025:set1:q30",
+      "exam_uid": "me:2025:set1:main:q30",
       "title": "GATE ME 2025 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1216,13 +1345,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
-        "markdown": "<b>Given:</b> Matching additive manufacturing processes with their layer creation techniques and materials.\n\n<b>Matching:</b>\n\n<b>P. Stereolithography</b>\n\n→ Layer technique: 3. Liquid layer curing\n\n→ Material: II. Epoxy\n\n<b>Q. Fused Deposition Modeling (FDM)</b>\n\n→ Layer technique: 2. Extrusion of melted polymer\n\n→ Material: IV. Acrylonitrile Butadiene Styrene (ABS)\n\n<b>R. Laminated Object Manufacturing (LOM)</b>\n\n→ Layer technique: 4. Sheet material deposition\n\n→ Material: I. Paper\n\n<b>S. Laser Engineered Net Shaping (LENS)</b>\n\n→ Layer technique: 1. Injection of powder stream\n\n→ Material: III. Titanium\n\n<b>Final Answer:</b> P-3-II, Q-2-IV, R-4-I, S-1-III\n\n<b>Correct option: (B)</b>\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b> Matching additive manufacturing processes with their layer creation techniques and materials.\n\n<b>Matching:</b>\n\n<b>P. Stereolithography</b>\n\n→ Layer technique: 3. Liquid layer curing\n\n→ Material: II. Epoxy\n\n<b>Q. Fused Deposition Modeling (FDM)</b>\n\n→ Layer technique: 2. Extrusion of melted polymer\n\n→ Material: IV. Acrylonitrile Butadiene Styrene (ABS)\n\n<b>R. Laminated Object Manufacturing (LOM)</b>\n\n→ Layer technique: 4. Sheet material deposition\n\n→ Material: I. Paper\n\n<b>S. Laser Engineered Net Shaping (LENS)</b>\n\n→ Layer technique: 1. Injection of powder stream\n\n→ Material: III. Titanium\n\n<b>Final Answer:</b> P-3-II, Q-2-IV, R-4-I, S-1-III",
+        "images": []
       }
     },
     "pp:me:2025:q31": {
       "question_uid": "pp:me:2025:q31",
-      "exam_uid": "me:2025:set1:q31",
+      "exam_uid": "me:2025:set1:main:q31",
       "title": "GATE ME 2025 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1257,13 +1390,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
-        "markdown": "<b>Given:</b>\n\nInitial thickness, $t_1 = 30 , \\text{mm}$\n\nFinal thickness, $t_2 = 27 , \\text{mm}$\n\nRoll diameter, $D = 500 , \\text{mm} \\Rightarrow R = \\frac{D}{2} = 250 , \\text{mm}$\n\nCoefficient of friction, $\\mu = 0.12$\n\n<b>Step 1:</b> Calculate the actual draft\n\n$\\Delta h = t_1 - t_2 = 30 - 27 = 3 , \\text{mm}$\n\n<b>Step 2:</b> Calculate maximum possible draft using friction\n\n$\\Delta h_{\\text{max}} = \\mu^2 R = (0.12)^2 \\times 250 = 0.0144 \\times 250 = 3.6 , \\text{mm}$\n\n<b>Step 3:</b> Compare actual draft with maximum draft\n\nSince $3 , \\text{mm} < 3.6 , \\text{mm}$, the process is feasible.\n\n<b>Final Answer:</b>\n\nProcess is feasible and maximum draft is $3.6 , \\text{mm}$\n\n<b>Correct option: (A)</b>\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nInitial thickness, $t_1 = 30 , \\text{mm}$\n\nFinal thickness, $t_2 = 27 , \\text{mm}$\n\nRoll diameter, $D = 500 , \\text{mm} \\Rightarrow R = \\frac{D}{2} = 250 , \\text{mm}$\n\nCoefficient of friction, $\\mu = 0.12$\n\n<b>Step 1:</b> Calculate the actual draft\n\n$\\Delta h = t_1 - t_2 = 30 - 27 = 3 , \\text{mm}$\n\n<b>Step 2:</b> Calculate maximum possible draft using friction\n\n$\\Delta h_{\\text{max}} = \\mu^2 R = (0.12)^2 \\times 250 = 0.0144 \\times 250 = 3.6 , \\text{mm}$\n\n<b>Step 3:</b> Compare actual draft with maximum draft\n\nSince $3 , \\text{mm} < 3.6 , \\text{mm}$, the process is feasible.\n\n<b>Final Answer:</b>\n\nProcess is feasible and maximum draft is $3.6 , \\text{mm}$",
+        "images": []
       }
     },
     "pp:me:2025:q32": {
       "question_uid": "pp:me:2025:q32",
-      "exam_uid": "me:2025:set1:q32",
+      "exam_uid": "me:2025:set1:main:q32",
       "title": "GATE ME 2025 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1298,13 +1435,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "<b>Step 1: Stiffness of Cantilever Beam</b>\n\nThe stiffness of a cantilever beam with flexural rigidity $EI$ and length $L$ is:\n\n$k_{\\text{beam}} = \\frac{3EI}{L^3}$\n\n<b>Step 2: Total Equivalent Stiffness</b>\n\nThe spring (stiffness $K$) and the beam act in parallel, so the total stiffness is the sum:\n\n$k_{\\text{total}} = \\frac{3EI}{L^3} + K$\n\n<b>Step 3: Natural Frequency Formula</b>\n\nFor a lumped mass-spring system, the natural frequency is given by:\n\n$\\omega_n = \\sqrt{\\frac{k_{\\text{total}}}{m}}$\n\nSubstituting the expression for total stiffness:\n\n$\\omega_n = \\sqrt{\\frac{\\frac{3EI}{L^3} + K}{m}}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\omega_n = \\sqrt{\\frac{\\frac{3EI}{L^3} + K}{m}}}$\n\n<b>Correct option:</b> (A)\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Step 1: Stiffness of Cantilever Beam</b>\n\nThe stiffness of a cantilever beam with flexural rigidity $EI$ and length $L$ is:\n\n$k_{\\text{beam}} = \\frac{3EI}{L^3}$\n\n<b>Step 2: Total Equivalent Stiffness</b>\n\nThe spring (stiffness $K$) and the beam act in parallel, so the total stiffness is the sum:\n\n$k_{\\text{total}} = \\frac{3EI}{L^3} + K$\n\n<b>Step 3: Natural Frequency Formula</b>\n\nFor a lumped mass-spring system, the natural frequency is given by:\n\n$\\omega_n = \\sqrt{\\frac{k_{\\text{total}}}{m}}$\n\nSubstituting the expression for total stiffness:\n\n$\\omega_n = \\sqrt{\\frac{\\frac{3EI}{L^3} + K}{m}}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\omega_n = \\sqrt{\\frac{\\frac{3EI}{L^3} + K}{m}}}$",
+        "images": []
       }
     },
     "pp:me:2025:q33": {
       "question_uid": "pp:me:2025:q33",
-      "exam_uid": "me:2025:set1:q33",
+      "exam_uid": "me:2025:set1:main:q33",
       "title": "GATE ME 2025 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1339,13 +1480,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "<b>Given:</b>\n\nEndurance limit = Yield strength = $\\sigma_y$\n\nUltimate strength = $2\\sigma_y$\n\nFactor of safety (FOS) = 2\n\nLoading is fully tensile and periodic (i.e., reversed loading)\n\nLife requirement: at least $10^6$ cycles → high-cycle fatigue\n\nUse Soderberg criterion for design\n\n<b>Step 1: Soderberg Equation</b>\n\nThe Soderberg criterion is:\n\n$\\frac{\\sigma_a}{\\sigma_e} + \\frac{\\sigma_m}{\\sigma_y} \\leq \\frac{1}{\\text{FOS}}$\n\n<b>Where:</b>\n\n$\\sigma_a$ = alternating stress = $\\frac{\\sigma_{\\text{max}} - \\sigma_{\\text{min}}}{2}$\n\n$\\sigma_m$ = mean stress = $\\frac{\\sigma_{\\text{max}} + \\sigma_{\\text{min}}}{2}$\n\nFor fully reversed loading: $\\sigma_{\\text{min}} = 0$, so:\n\n$\\sigma_a = \\sigma_m = \\frac{\\sigma_{\\text{max}}}{2}$\n\n<b>Step 2: Substitute in Soderberg equation</b>\n\n$\\frac{\\sigma_{\\text{max}}/2}{\\sigma_e} + \\frac{\\sigma_{\\text{max}}/2}{\\sigma_y} \\leq \\frac{1}{2}$\n\nSince $\\sigma_e = \\sigma_y$, both terms are equal:\n\n$\\frac{\\sigma_{\\text{max}}}{2\\sigma_y} + \\frac{\\sigma_{\\text{max}}}{2\\sigma_y} = \\frac{\\sigma_{\\text{max}}}{\\sigma_y}$\n\n<b>Step 3: Apply Soderberg Limit</b>\n\n$\\frac{\\sigma_{\\text{max}}}{\\sigma_y} \\leq \\frac{1}{2}$\n\nSo,\n\n$\\sigma_{\\text{max}} \\leq \\frac{\\sigma_y}{2}$\n\n<b>Step 4: Relate to Endurance Limit</b>\n\nSince $\\sigma_y = \\sigma_e$,\n\n$\\sigma_{\\text{max}} \\leq \\frac{\\sigma_e}{2}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{The maximum applied tensile principal stress is half of the endurance limit}}$\n\n<b>Correct option:</b> (B)\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b>\n\nEndurance limit = Yield strength = $\\sigma_y$\n\nUltimate strength = $2\\sigma_y$\n\nFactor of safety (FOS) = 2\n\nLoading is fully tensile and periodic (i.e., reversed loading)\n\nLife requirement: at least $10^6$ cycles → high-cycle fatigue\n\nUse Soderberg criterion for design\n\n<b>Step 1: Soderberg Equation</b>\n\nThe Soderberg criterion is:\n\n$\\frac{\\sigma_a}{\\sigma_e} + \\frac{\\sigma_m}{\\sigma_y} \\leq \\frac{1}{\\text{FOS}}$\n\n<b>Where:</b>\n\n$\\sigma_a$ = alternating stress = $\\frac{\\sigma_{\\text{max}} - \\sigma_{\\text{min}}}{2}$\n\n$\\sigma_m$ = mean stress = $\\frac{\\sigma_{\\text{max}} + \\sigma_{\\text{min}}}{2}$\n\nFor fully reversed loading: $\\sigma_{\\text{min}} = 0$, so:\n\n$\\sigma_a = \\sigma_m = \\frac{\\sigma_{\\text{max}}}{2}$\n\n<b>Step 2: Substitute in Soderberg equation</b>\n\n$\\frac{\\sigma_{\\text{max}}/2}{\\sigma_e} + \\frac{\\sigma_{\\text{max}}/2}{\\sigma_y} \\leq \\frac{1}{2}$\n\nSince $\\sigma_e = \\sigma_y$, both terms are equal:\n\n$\\frac{\\sigma_{\\text{max}}}{2\\sigma_y} + \\frac{\\sigma_{\\text{max}}}{2\\sigma_y} = \\frac{\\sigma_{\\text{max}}}{\\sigma_y}$\n\n<b>Step 3: Apply Soderberg Limit</b>\n\n$\\frac{\\sigma_{\\text{max}}}{\\sigma_y} \\leq \\frac{1}{2}$\n\nSo,\n\n$\\sigma_{\\text{max}} \\leq \\frac{\\sigma_y}{2}$\n\n<b>Step 4: Relate to Endurance Limit</b>\n\nSince $\\sigma_y = \\sigma_e$,\n\n$\\sigma_{\\text{max}} \\leq \\frac{\\sigma_e}{2}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{The maximum applied tensile principal stress is half of the endurance limit}}$",
+        "images": []
       }
     },
     "pp:me:2025:q34": {
       "question_uid": "pp:me:2025:q34",
-      "exam_uid": "me:2025:set1:q34",
+      "exam_uid": "me:2025:set1:main:q34",
       "title": "GATE ME 2025 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MSQ",
       "marks": 2,
@@ -1380,13 +1525,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Flow Through Pipes",
-        "markdown": "<b>Option (A):</b>\n\nIn laminar flow, the velocity profile is parabolic:\n\n$V_{\\text{avg}} = \\frac{1}{2} V_{\\text{max}}$\n\nIn turbulent flow, the velocity profile is flatter, so:\n\n$V_{\\text{avg}} \\approx 0.8 , V_{\\text{max}}$\n\nTherefore, for the same maximum velocity, the average velocity is higher in turbulent flow.\n\nThis statement is correct.\n\n<b>Option (B):</b>\n\nCompressibility effects are generally considered negligible for Mach number $M < 0.3$.\n\nThey become significant when $M \\geq 0.3$.\n\nHence, this statement is incorrect.\n\n<b>Option (C):</b>\n\nFor laminar flow, the Darcy friction factor is given by:\n\n$f = \\frac{64}{Re}$\n\nThis formula shows that friction factor depends only on Reynolds number and not on surface roughness.\n\nSo this statement is correct.\n\n<b>Option (D):</b>\n\nSince $f = \\frac{64}{Re}$, as Reynolds number decreases, the friction factor increases.\n\nTherefore, the statement that friction factor decreases with decrease in Reynolds number is incorrect.\n\nTherefore, the correct option(s) are **A, C**."
+        "markdown": "<b>Option (A):</b>\n\nIn laminar flow, the velocity profile is parabolic:\n\n$V_{\\text{avg}} = \\frac{1}{2} V_{\\text{max}}$\n\nIn turbulent flow, the velocity profile is flatter, so:\n\n$V_{\\text{avg}} \\approx 0.8 , V_{\\text{max}}$\n\nTherefore, for the same maximum velocity, the average velocity is higher in turbulent flow.\n\nThis statement is correct.\n\n<b>Option (B):</b>\n\nCompressibility effects are generally considered negligible for Mach number $M < 0.3$.\n\nThey become significant when $M \\geq 0.3$.\n\nHence, this statement is incorrect.\n\n<b>Option (C):</b>\n\nFor laminar flow, the Darcy friction factor is given by:\n\n$f = \\frac{64}{Re}$\n\nThis formula shows that friction factor depends only on Reynolds number and not on surface roughness.\n\nSo this statement is correct.\n\n<b>Option (D):</b>\n\nSince $f = \\frac{64}{Re}$, as Reynolds number decreases, the friction factor increases.\n\nTherefore, the statement that friction factor decreases with decrease in Reynolds number is incorrect.",
+        "images": []
       }
     },
     "pp:me:2025:q35": {
       "question_uid": "pp:me:2025:q35",
-      "exam_uid": "me:2025:set1:q35",
+      "exam_uid": "me:2025:set1:main:q35",
       "title": "GATE ME 2025 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1419,13 +1568,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "<b>Given:</b>\n\n$C$ is the unit circle centered at the origin in the complex plane.\n\nWe are given the integral:\n\n$\\oint_C \\frac{z^3}{(z^2 + 4)(z^2 - 4)} , dz = 2\\pi i n$\n\nWe are to find the value of $n$.\n\n<b>Step 1: Simplify the denominator</b>\n\n$(z^2 + 4)(z^2 - 4) = (z^2 + 4)(z - 2)(z + 2)$\n\nSo the integrand becomes:\n\n$\\frac{z^3}{(z - 2)(z + 2)(z^2 + 4)}$\n\n<b>Step 2: Identify singularities (poles)</b>\n\nPoles of the function are at:\n\n$z = 2, \\quad z = -2, \\quad z = 2i, \\quad z = -2i$\n\n<b>Step 3: Determine which poles lie inside the unit circle</b>\n\nThe unit circle is $|z| = 1$.\n\nAll poles lie outside the unit circle because:\n\n$|2| = 2 > 1,\\quad |-2| = 2 > 1,\\quad |2i| = 2 > 1,\\quad |-2i| = 2 > 1$\n\nSo, there are no poles inside the contour.\n\n<b>Step 4: Apply Cauchy's Theorem</b>\n\nSince the integrand is analytic inside and on the contour, the integral is zero:\n\n$\\oint_C \\frac{z^3}{(z^2 + 4)(z^2 - 4)} , dz = 0$\n\n<b>Compare with the given expression:</b>\n\n$2\\pi i n = 0 \\quad \\Rightarrow \\quad n = 0$\n\n<b>Final Answer:</b>\n\n$\\boxed{n = 0.0}$\n\nTherefore, the correct answer is **0** (acceptable range: [-0.1, 0.1])."
+        "markdown": "<b>Given:</b>\n\n$C$ is the unit circle centered at the origin in the complex plane.\n\nWe are given the integral:\n\n$\\oint_C \\frac{z^3}{(z^2 + 4)(z^2 - 4)} , dz = 2\\pi i n$\n\nWe are to find the value of $n$.\n\n<b>Step 1: Simplify the denominator</b>\n\n$(z^2 + 4)(z^2 - 4) = (z^2 + 4)(z - 2)(z + 2)$\n\nSo the integrand becomes:\n\n$\\frac{z^3}{(z - 2)(z + 2)(z^2 + 4)}$\n\n<b>Step 2: Identify singularities (poles)</b>\n\nPoles of the function are at:\n\n$z = 2, \\quad z = -2, \\quad z = 2i, \\quad z = -2i$\n\n<b>Step 3: Determine which poles lie inside the unit circle</b>\n\nThe unit circle is $|z| = 1$.\n\nAll poles lie outside the unit circle because:\n\n$|2| = 2 > 1,\\quad |-2| = 2 > 1,\\quad |2i| = 2 > 1,\\quad |-2i| = 2 > 1$\n\nSo, there are no poles inside the contour.\n\n<b>Step 4: Apply Cauchy's Theorem</b>\n\nSince the integrand is analytic inside and on the contour, the integral is zero:\n\n$\\oint_C \\frac{z^3}{(z^2 + 4)(z^2 - 4)} , dz = 0$\n\n<b>Compare with the given expression:</b>\n\n$2\\pi i n = 0 \\quad \\Rightarrow \\quad n = 0$\n\n<b>Final Answer:</b>\n\n$\\boxed{n = 0.0}$",
+        "images": []
       }
     },
     "pp:me:2025:q36": {
       "question_uid": "pp:me:2025:q36",
-      "exam_uid": "me:2025:set1:q36",
+      "exam_uid": "me:2025:set1:main:q36",
       "title": "GATE ME 2025 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1458,13 +1611,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<b>Given:</b>\n\nFunction: $f(x, y) = x^2 + x y^2$\n\nPoint: $(1, 0)$\n\nDirection: $\\frac{1}{2}(\\hat{i} + \\sqrt{3} \\hat{j})$\n\n<b>Step 1: Find the gradient of $f$</b>\n\n$\\nabla f = \\left( \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y} \\right)$\n\n$\\frac{\\partial f}{\\partial x} = 2x + y^2$\n\n$\\frac{\\partial f}{\\partial y} = 2xy$\n\nAt point $(1, 0)$:\n\n$\\frac{\\partial f}{\\partial x} = 2(1) + 0^2 = 2$\n\n$\\frac{\\partial f}{\\partial y} = 2(1)(0) = 0$\n\nSo, $\\nabla f(1, 0) = (2, 0)$\n\n<b>Step 2: Unit direction vector</b>\n\nGiven vector: $\\vec{v} = \\frac{1}{2}(\\hat{i} + \\sqrt{3} \\hat{j})$\n\nMagnitude of $\\vec{v}$:\n\n$\\left| \\vec{v} \\right| = \\frac{1}{2} \\sqrt{1^2 + (\\sqrt{3})^2} = \\frac{1}{2} \\sqrt{1 + 3} = \\frac{1}{2} \\cdot 2 = 1$\n\nSo the given vector is already a unit vector: $\\hat{u} = \\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)$\n\n<b>Step 3: Directional derivative</b>\n\n$D_{\\hat{u}} f = \\nabla f \\cdot \\hat{u} = (2, 0) \\cdot \\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right) = 2 \\cdot \\frac{1}{2} + 0 \\cdot \\frac{\\sqrt{3}}{2} = 1$\n\n<b>Final Answer:</b>\n\n$\\boxed{1.0}$ (rounded off to 1 decimal place)\n\nTherefore, the correct answer is **1** (acceptable range: [0.9, 1.1])."
+        "markdown": "<b>Given:</b>\n\nFunction: $f(x, y) = x^2 + x y^2$\n\nPoint: $(1, 0)$\n\nDirection: $\\frac{1}{2}(\\hat{i} + \\sqrt{3} \\hat{j})$\n\n<b>Step 1: Find the gradient of $f$</b>\n\n$\\nabla f = \\left( \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y} \\right)$\n\n$\\frac{\\partial f}{\\partial x} = 2x + y^2$\n\n$\\frac{\\partial f}{\\partial y} = 2xy$\n\nAt point $(1, 0)$:\n\n$\\frac{\\partial f}{\\partial x} = 2(1) + 0^2 = 2$\n\n$\\frac{\\partial f}{\\partial y} = 2(1)(0) = 0$\n\nSo, $\\nabla f(1, 0) = (2, 0)$\n\n<b>Step 2: Unit direction vector</b>\n\nGiven vector: $\\vec{v} = \\frac{1}{2}(\\hat{i} + \\sqrt{3} \\hat{j})$\n\nMagnitude of $\\vec{v}$:\n\n$\\left| \\vec{v} \\right| = \\frac{1}{2} \\sqrt{1^2 + (\\sqrt{3})^2} = \\frac{1}{2} \\sqrt{1 + 3} = \\frac{1}{2} \\cdot 2 = 1$\n\nSo the given vector is already a unit vector: $\\hat{u} = \\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)$\n\n<b>Step 3: Directional derivative</b>\n\n$D_{\\hat{u}} f = \\nabla f \\cdot \\hat{u} = (2, 0) \\cdot \\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right) = 2 \\cdot \\frac{1}{2} + 0 \\cdot \\frac{\\sqrt{3}}{2} = 1$\n\n<b>Final Answer:</b>\n\n$\\boxed{1.0}$ (rounded off to 1 decimal place)",
+        "images": []
       }
     },
     "pp:me:2025:q37": {
       "question_uid": "pp:me:2025:q37",
-      "exam_uid": "me:2025:set1:q37",
+      "exam_uid": "me:2025:set1:main:q37",
       "title": "GATE ME 2025 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1497,13 +1654,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Given:</b>\n\n$$x^2 \\frac{d^2y}{dx^2} + 3x \\frac{dy}{dx} + y = 0$$\n\nInitial conditions: $y(1) = 0, \\quad \\frac{dy}{dx}(1) = 1$\n\nIt is also given that $y(2) = A \\ln 2$, find $A$.\n\n<b>Step 1: Identify the type of differential equation</b>\n\nThis is a Cauchy-Euler equation of the form:\n\n$x^2 y'' + ax y' + b y = 0$\n\nHere, $a = 3, \\quad b = 1$\n\n<b>Step 2: Use the substitution</b>\n\nLet $x = e^t \\Rightarrow t = \\ln x$, and define $y(x) = u(t)$\n\nThen:\n\n$\\frac{dy}{dx} = \\frac{1}{x} \\cdot \\frac{du}{dt}$\n\n$$\\frac{d^2y}{dx^2} = \\frac{1}{x^2} \\cdot \\left( \\frac{d^2u}{dt^2} - \\frac{du}{dt} \\right)$$\n\nSubstituting into the original equation:\n\n$$x^2 \\cdot \\left( \\frac{1}{x^2} \\left( \\frac{d^2u}{dt^2} - \\frac{du}{dt} \\right) \\right) + 3x \\cdot \\left( \\frac{1}{x} \\cdot \\frac{du}{dt} \\right) + u = 0$$\n\nSimplifying:\n\n$$\\frac{d^2u}{dt^2} - \\frac{du}{dt} + 3 \\frac{du}{dt} + u = 0$$\n\n$$\\frac{d^2u}{dt^2} + 2 \\frac{du}{dt} + u = 0$$\n\n<b>Step 3: Solve the transformed equation</b>\n\n$u'' + 2u' + u = 0$\n\nAuxiliary equation: $r^2 + 2r + 1 = 0 \\Rightarrow (r + 1)^2 = 0 \\Rightarrow r = -1$ (repeated root)\n\nSo, general solution:\n\n$u(t) = (A + Bt)e^{-t}$\n\n<b>Step 4: Convert back to $y(x)$</b>\n\nSince $t = \\ln x$,\n\n$y(x) = u(\\ln x) = (A + B \\ln x) \\cdot x^{-1} = \\frac{A + B \\ln x}{x}$\n\n<b>Step 5: Apply initial conditions</b>\n\n$y(1) = \\frac{A + B \\ln 1}{1} = A = 0$\n\n$\\Rightarrow A = 0$\n\nNow differentiate:\n\n$y(x) = \\frac{B \\ln x}{x}$\n\n$y'(x) = B \\cdot \\left( \\frac{1 - \\ln x}{x^2} \\right)$\n\nAt $x = 1$:\n\n$y'(1) = B(1 - \\ln 1) = B(1) = B$\n\n$\\Rightarrow B = 1$\n\n<b>Step 6: Evaluate $y(2)$</b>\n\n$y(x) = \\frac{\\ln x}{x}$\n\n$y(2) = \\frac{\\ln 2}{2}$\n\nGiven $y(2) = A \\ln 2$,\n\nSo, $A \\ln 2 = \\frac{\\ln 2}{2} \\Rightarrow A = \\frac{1}{2} = 0.50$\n\n<b>Final Answer:</b>\n\n$\\boxed{0.50}$ (rounded off to 2 decimal places)\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.45, 0.55])."
+        "markdown": "<b>Given:</b>\n\n$$x^2 \\frac{d^2y}{dx^2} + 3x \\frac{dy}{dx} + y = 0$$\n\nInitial conditions: $y(1) = 0, \\quad \\frac{dy}{dx}(1) = 1$\n\nIt is also given that $y(2) = A \\ln 2$, find $A$.\n\n<b>Step 1: Identify the type of differential equation</b>\n\nThis is a Cauchy-Euler equation of the form:\n\n$x^2 y'' + ax y' + b y = 0$\n\nHere, $a = 3, \\quad b = 1$\n\n<b>Step 2: Use the substitution</b>\n\nLet $x = e^t \\Rightarrow t = \\ln x$, and define $y(x) = u(t)$\n\nThen:\n\n$\\frac{dy}{dx} = \\frac{1}{x} \\cdot \\frac{du}{dt}$\n\n$$\\frac{d^2y}{dx^2} = \\frac{1}{x^2} \\cdot \\left( \\frac{d^2u}{dt^2} - \\frac{du}{dt} \\right)$$\n\nSubstituting into the original equation:\n\n$$x^2 \\cdot \\left( \\frac{1}{x^2} \\left( \\frac{d^2u}{dt^2} - \\frac{du}{dt} \\right) \\right) + 3x \\cdot \\left( \\frac{1}{x} \\cdot \\frac{du}{dt} \\right) + u = 0$$\n\nSimplifying:\n\n$$\\frac{d^2u}{dt^2} - \\frac{du}{dt} + 3 \\frac{du}{dt} + u = 0$$\n\n$$\\frac{d^2u}{dt^2} + 2 \\frac{du}{dt} + u = 0$$\n\n<b>Step 3: Solve the transformed equation</b>\n\n$u'' + 2u' + u = 0$\n\nAuxiliary equation: $r^2 + 2r + 1 = 0 \\Rightarrow (r + 1)^2 = 0 \\Rightarrow r = -1$ (repeated root)\n\nSo, general solution:\n\n$u(t) = (A + Bt)e^{-t}$\n\n<b>Step 4: Convert back to $y(x)$</b>\n\nSince $t = \\ln x$,\n\n$y(x) = u(\\ln x) = (A + B \\ln x) \\cdot x^{-1} = \\frac{A + B \\ln x}{x}$\n\n<b>Step 5: Apply initial conditions</b>\n\n$y(1) = \\frac{A + B \\ln 1}{1} = A = 0$\n\n$\\Rightarrow A = 0$\n\nNow differentiate:\n\n$y(x) = \\frac{B \\ln x}{x}$\n\n$y'(x) = B \\cdot \\left( \\frac{1 - \\ln x}{x^2} \\right)$\n\nAt $x = 1$:\n\n$y'(1) = B(1 - \\ln 1) = B(1) = B$\n\n$\\Rightarrow B = 1$\n\n<b>Step 6: Evaluate $y(2)$</b>\n\n$y(x) = \\frac{\\ln x}{x}$\n\n$y(2) = \\frac{\\ln 2}{2}$\n\nGiven $y(2) = A \\ln 2$,\n\nSo, $A \\ln 2 = \\frac{\\ln 2}{2} \\Rightarrow A = \\frac{1}{2} = 0.50$\n\n<b>Final Answer:</b>\n\n$\\boxed{0.50}$ (rounded off to 2 decimal places)",
+        "images": []
       }
     },
     "pp:me:2025:q38": {
       "question_uid": "pp:me:2025:q38",
-      "exam_uid": "me:2025:set1:q38",
+      "exam_uid": "me:2025:set1:main:q38",
       "title": "GATE ME 2025 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1536,13 +1697,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
-        "markdown": "<b>Given:</b>\n\nDiameter of cylinder $D = 5 , m$\n\nLength of cylinder $L = 5 , m$\n\nTemperatures:\n\nBottom surface (1): $T_1 = 800 , K$\n\nTop surface (2): $T_2 = 1500 , K$\n\nCurved surface (3): $T_3 = 500 , K$\n\nView factor $F_{12} = 0.2$ → From bottom to top\n\nSurfaces are black → Emissivity $\\varepsilon = 1$\n\nStefan-Boltzmann constant: $\\sigma = 5.67 \\times 10^{-8} , W/m^2K^4$\n\n<b>Step 1: Surface Areas</b>\n\nArea of bottom (1): $A_1 = \\frac{\\pi D^2}{4} = \\frac{\\pi \\times 5^2}{4} = 19.635 , m^2$\n\n<b>Step 2: View Factor from Bottom to Curved Surface</b>\n\nUsing summation rule: $F_{11} + F_{12} + F_{13} = 1$\n\nSince a surface can’t see itself in diffuse radiation: $F_{11} = 0$\n\nSo, $F_{13} = 1 - F_{12} = 1 - 0.2 = 0.8$\n\n<b>Step 3: Radiation heat transfer from bottom to curved surface</b>\n\n$Q_{13} = A_1 \\cdot F_{13} \\cdot \\sigma \\cdot (T_1^4 - T_3^4)$\n\nSubstitute values:\n\n$Q_{13} = 19.635 \\times 0.8 \\times 5.67 \\times 10^{-8} \\times (800^4 - 500^4)$\n\nCalculate powers:\n\n$800^4 = 4.096 \\times 10^{11}, \\quad 500^4 = 6.25 \\times 10^{10}$\n\n$(T_1^4 - T_3^4) = 4.096 \\times 10^{11} - 6.25 \\times 10^{10} = 3.471 \\times 10^{11}$\n\nNow calculate:\n\n$Q_{13} = 19.635 \\times 0.8 \\times 5.67 \\times 10^{-8} \\times 3.471 \\times 10^{11}$\n\nFirst calculate constant product:\n\n$19.635 \\times 0.8 = 15.708$\n\n$5.67 \\times 10^{-8} \\times 3.471 \\times 10^{11} = 19687.57$\n\nNow multiply:\n\n$Q_{13} = 15.708 \\times 19687.57 = 309214.2 , W = 309.2 , kW$\n\n<b>Final Answer:</b>\n\n$\\boxed{309.2 , \\text{kW}}$ (rounded off to 1 decimal place)\n\nTherefore, the correct answer is **309** (acceptable range: [308, 310])."
+        "markdown": "<b>Given:</b>\n\nDiameter of cylinder $D = 5 , m$\n\nLength of cylinder $L = 5 , m$\n\nTemperatures:\n\nBottom surface (1): $T_1 = 800 , K$\n\nTop surface (2): $T_2 = 1500 , K$\n\nCurved surface (3): $T_3 = 500 , K$\n\nView factor $F_{12} = 0.2$ → From bottom to top\n\nSurfaces are black → Emissivity $\\varepsilon = 1$\n\nStefan-Boltzmann constant: $\\sigma = 5.67 \\times 10^{-8} , W/m^2K^4$\n\n<b>Step 1: Surface Areas</b>\n\nArea of bottom (1): $A_1 = \\frac{\\pi D^2}{4} = \\frac{\\pi \\times 5^2}{4} = 19.635 , m^2$\n\n<b>Step 2: View Factor from Bottom to Curved Surface</b>\n\nUsing summation rule: $F_{11} + F_{12} + F_{13} = 1$\n\nSince a surface can’t see itself in diffuse radiation: $F_{11} = 0$\n\nSo, $F_{13} = 1 - F_{12} = 1 - 0.2 = 0.8$\n\n<b>Step 3: Radiation heat transfer from bottom to curved surface</b>\n\n$Q_{13} = A_1 \\cdot F_{13} \\cdot \\sigma \\cdot (T_1^4 - T_3^4)$\n\nSubstitute values:\n\n$Q_{13} = 19.635 \\times 0.8 \\times 5.67 \\times 10^{-8} \\times (800^4 - 500^4)$\n\nCalculate powers:\n\n$800^4 = 4.096 \\times 10^{11}, \\quad 500^4 = 6.25 \\times 10^{10}$\n\n$(T_1^4 - T_3^4) = 4.096 \\times 10^{11} - 6.25 \\times 10^{10} = 3.471 \\times 10^{11}$\n\nNow calculate:\n\n$Q_{13} = 19.635 \\times 0.8 \\times 5.67 \\times 10^{-8} \\times 3.471 \\times 10^{11}$\n\nFirst calculate constant product:\n\n$19.635 \\times 0.8 = 15.708$\n\n$5.67 \\times 10^{-8} \\times 3.471 \\times 10^{11} = 19687.57$\n\nNow multiply:\n\n$Q_{13} = 15.708 \\times 19687.57 = 309214.2 , W = 309.2 , kW$\n\n<b>Final Answer:</b>\n\n$\\boxed{309.2 , \\text{kW}}$ (rounded off to 1 decimal place)",
+        "images": []
       }
     },
     "pp:me:2025:q39": {
       "question_uid": "pp:me:2025:q39",
-      "exam_uid": "me:2025:set1:q39",
+      "exam_uid": "me:2025:set1:main:q39",
       "title": "GATE ME 2025 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1575,13 +1740,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
-        "markdown": "<b>Given:</b>\n\nDensity of air, $\\rho_{a} = 1.23 , kg/m^3$\n\nSpecific gravity of mercury, $SG_{Hg} = 13.6$ ⟹ $\\rho_{Hg} = 13.6 \\times 1000 = 13600 , kg/m^3$\n\nManometer reading, $h = 30 , mm = 0.03 , m$\n\nAcceleration due to gravity, $g = 10 , m/s^2$\n\n<b>Step 1: Apply Bernoulli's principle at the pitot and static point.</b>\n\nThe pressure difference is due to mercury column height:\n\n$\\Delta P = \\rho_{Hg} g h = 13600 \\times 10 \\times 0.03 = 4080 , Pa$\n\n<b>Step 2: Relate pressure difference with velocity using Bernoulli’s equation:</b>\n\n$\\Delta P = \\frac{1}{2} \\rho_{a} v^2$\n\n$\\Rightarrow v = \\sqrt{\\frac{2 \\Delta P}{\\rho_{a}}} = \\sqrt{\\frac{2 \\times 4080}{1.23}}$\n\n$v = \\sqrt{6634.15} \\approx 81.5 , m/s$\n\n<b>Final Answer:</b>\n\n$\\boxed{81.5 , m/s}$\n\nTherefore, the correct answer is **81.5** (acceptable range: [80, 83])."
+        "markdown": "<b>Given:</b>\n\nDensity of air, $\\rho_{a} = 1.23 , kg/m^3$\n\nSpecific gravity of mercury, $SG_{Hg} = 13.6$ ⟹ $\\rho_{Hg} = 13.6 \\times 1000 = 13600 , kg/m^3$\n\nManometer reading, $h = 30 , mm = 0.03 , m$\n\nAcceleration due to gravity, $g = 10 , m/s^2$\n\n<b>Step 1: Apply Bernoulli's principle at the pitot and static point.</b>\n\nThe pressure difference is due to mercury column height:\n\n$\\Delta P = \\rho_{Hg} g h = 13600 \\times 10 \\times 0.03 = 4080 , Pa$\n\n<b>Step 2: Relate pressure difference with velocity using Bernoulli’s equation:</b>\n\n$\\Delta P = \\frac{1}{2} \\rho_{a} v^2$\n\n$\\Rightarrow v = \\sqrt{\\frac{2 \\Delta P}{\\rho_{a}}} = \\sqrt{\\frac{2 \\times 4080}{1.23}}$\n\n$v = \\sqrt{6634.15} \\approx 81.5 , m/s$\n\n<b>Final Answer:</b>\n\n$\\boxed{81.5 , m/s}$",
+        "images": []
       }
     },
     "pp:me:2025:q40": {
       "question_uid": "pp:me:2025:q40",
-      "exam_uid": "me:2025:set1:q40",
+      "exam_uid": "me:2025:set1:main:q40",
       "title": "GATE ME 2025 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1614,13 +1783,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
-        "markdown": "<b>Given:</b>\n\nVelocity field: $\\vec{V} = 3z \\hat{i} + 0 \\hat{j} + Cx \\hat{k}$\n\n<b>To find:</b> Value of $C$ such that the flow is irrotational.\n\n<b>Step 1: Condition for irrotational flow</b>\n\nA flow is irrotational if the curl of velocity is zero:\n\n$\\nabla \\times \\vec{V} = 0$\n\n<b>Step 2: Compute the curl</b>\n\n$$\\nabla \\times \\vec{V} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\ 3z & 0 & Cx \\end{vmatrix}$$\n\nEvaluate the determinant:\n\n$\\nabla \\times \\vec{V} = \\hat{i} \\left( \\frac{\\partial Cx}{\\partial y} - \\frac{\\partial 0}{\\partial z} \\right) - \\hat{j} \\left( \\frac{\\partial Cx}{\\partial x} - \\frac{\\partial 3z}{\\partial z} \\right) + \\hat{k} \\left( \\frac{\\partial 0}{\\partial x} - \\frac{\\partial 3z}{\\partial y} \\right)$\n\nSimplifying:\n\n$\\nabla \\times \\vec{V} = \\hat{i}(0 - 0) - \\hat{j}(C - 3) + \\hat{k}(0 - 0) = -\\hat{j}(C - 3)$\n\n<b>Step 3: Set curl to zero</b>\n\n$-\\hat{j}(C - 3) = 0 \\Rightarrow C = 3$\n\n<b>Final Answer:</b>\n\n$\\boxed{3.0}$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
+        "markdown": "<b>Given:</b>\n\nVelocity field: $\\vec{V} = 3z \\hat{i} + 0 \\hat{j} + Cx \\hat{k}$\n\n<b>To find:</b> Value of $C$ such that the flow is irrotational.\n\n<b>Step 1: Condition for irrotational flow</b>\n\nA flow is irrotational if the curl of velocity is zero:\n\n$\\nabla \\times \\vec{V} = 0$\n\n<b>Step 2: Compute the curl</b>\n\n$$\\nabla \\times \\vec{V} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\ 3z & 0 & Cx \\end{vmatrix}$$\n\nEvaluate the determinant:\n\n$\\nabla \\times \\vec{V} = \\hat{i} \\left( \\frac{\\partial Cx}{\\partial y} - \\frac{\\partial 0}{\\partial z} \\right) - \\hat{j} \\left( \\frac{\\partial Cx}{\\partial x} - \\frac{\\partial 3z}{\\partial z} \\right) + \\hat{k} \\left( \\frac{\\partial 0}{\\partial x} - \\frac{\\partial 3z}{\\partial y} \\right)$\n\nSimplifying:\n\n$\\nabla \\times \\vec{V} = \\hat{i}(0 - 0) - \\hat{j}(C - 3) + \\hat{k}(0 - 0) = -\\hat{j}(C - 3)$\n\n<b>Step 3: Set curl to zero</b>\n\n$-\\hat{j}(C - 3) = 0 \\Rightarrow C = 3$\n\n<b>Final Answer:</b>\n\n$\\boxed{3.0}$",
+        "images": []
       }
     },
     "pp:me:2025:q41": {
       "question_uid": "pp:me:2025:q41",
-      "exam_uid": "me:2025:set1:q41",
+      "exam_uid": "me:2025:set1:main:q41",
       "title": "GATE ME 2025 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1653,13 +1826,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Free and Forced Convection",
-        "markdown": "<b>Given:</b>\n\nMass flow rate: $\\dot{m} = 0.01 , \\text{kg/s}$\n\nSpecific heat of water: $c_p = 4181 ,   J kg^{-1} K^{-1}$\n\nInlet mean temperature: $T_{m,i} = 293 , \\text{K}$\n\nOutlet mean temperature: $T_{m,o} = 353 , \\text{K}$\n\nSurface heat flux: $q'' = 2000 , \\text{W/m}^2$\n\nTube diameter: $D = 60 , \\text{mm} = 0.06 , \\text{m}$\n\n<b>Step 1: Calculate heat gained by water</b>\n\n$Q = \\dot{m} \\cdot c_p \\cdot (T_{m,o} - T_{m,i})$\n\n$Q = 0.01 \\cdot 4181 \\cdot (353 - 293) = 0.01 \\cdot 4181 \\cdot 60 = 2508.6 , \\text{W}$\n\n<b>Step 2: Calculate surface area of tube for heat transfer</b>\n\n$A = \\pi D L$\n\nHeat input through the wall:\n\n$Q = q'' \\cdot A = q'' \\cdot \\pi D L$\n\n<b>Step 3: Solve for $L$</b>\n\n$2508.6 = 2000 \\cdot \\pi \\cdot 0.06 \\cdot L$\n\n$L = \\frac{2508.6}{2000 \\cdot \\pi \\cdot 0.06} \\approx \\frac{2508.6}{376.99} \\approx 6.655 , \\text{m}$\n\n<b>Final Answer:</b>\n\n$\\boxed{6.7 , \\text{m}}$ (rounded off to 1 decimal place)\n\nTherefore, the correct answer is **6.65** (acceptable range: [6.5, 6.8])."
+        "markdown": "<b>Given:</b>\n\nMass flow rate: $\\dot{m} = 0.01 , \\text{kg/s}$\n\nSpecific heat of water: $c_p = 4181 ,   J kg^{-1} K^{-1}$\n\nInlet mean temperature: $T_{m,i} = 293 , \\text{K}$\n\nOutlet mean temperature: $T_{m,o} = 353 , \\text{K}$\n\nSurface heat flux: $q'' = 2000 , \\text{W/m}^2$\n\nTube diameter: $D = 60 , \\text{mm} = 0.06 , \\text{m}$\n\n<b>Step 1: Calculate heat gained by water</b>\n\n$Q = \\dot{m} \\cdot c_p \\cdot (T_{m,o} - T_{m,i})$\n\n$Q = 0.01 \\cdot 4181 \\cdot (353 - 293) = 0.01 \\cdot 4181 \\cdot 60 = 2508.6 , \\text{W}$\n\n<b>Step 2: Calculate surface area of tube for heat transfer</b>\n\n$A = \\pi D L$\n\nHeat input through the wall:\n\n$Q = q'' \\cdot A = q'' \\cdot \\pi D L$\n\n<b>Step 3: Solve for $L$</b>\n\n$2508.6 = 2000 \\cdot \\pi \\cdot 0.06 \\cdot L$\n\n$L = \\frac{2508.6}{2000 \\cdot \\pi \\cdot 0.06} \\approx \\frac{2508.6}{376.99} \\approx 6.655 , \\text{m}$\n\n<b>Final Answer:</b>\n\n$\\boxed{6.7 , \\text{m}}$ (rounded off to 1 decimal place)",
+        "images": []
       }
     },
     "pp:me:2025:q42": {
       "question_uid": "pp:me:2025:q42",
-      "exam_uid": "me:2025:set1:q42",
+      "exam_uid": "me:2025:set1:main:q42",
       "title": "GATE ME 2025 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1692,13 +1869,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "<b>Given:</b>\n\nTurbine inlet enthalpy: $h_1 = 3344 , \\text{kJ/kg}$\n\nTurbine inlet entropy: $s_1 = 6.5 , \\text{kJ/kg K}$\n\nTurbine isentropic efficiency: $\\eta_{\\text{turbine}} = 0.9$\n\nMass flow rate: $\\dot{m} = 102 , \\text{kg/s}$\n\n<b>At turbine exit pressure:</b>\n\nSaturated liquid: $h_f = 341 , \\text{kJ/kg}, \\quad s_f = 1.1 , \\text{kJ/kg K}$\n\nSaturated vapor: $h_g = 2645 , \\text{kJ/kg}, \\quad s_g = 7.6 , \\text{kJ/kg K}$\n\n<b>Step 1: Use isentropic assumption to find dryness fraction at isentropic exit</b>\n\n$s_2^s = s_1 = 6.5 , \\text{kJ/kg·K}$\n\n$s_2^s = s_f + x_s (s_g - s_f)$\n\n$6.5 = 1.1 + x_s (7.6 - 1.1)$\n\n$x_s = \\frac{6.5 - 1.1}{6.5} = \\frac{5.4}{6.5} = 0.8308$\n\n<b>Step 2: Enthalpy at isentropic exit</b>\n\n$h_2^s = h_f + x_s (h_g - h_f)$\n\n$h_2^s = 341 + 0.8308 (2645 - 341)$\n\n$h_2^s = 341 + 0.8308 \\cdot 2304 = 341 + 1914.3 = 2255.3 , \\text{kJ/kg}$\n\n<b>Step 3: Actual enthalpy at turbine exit using efficiency</b>\n\n$\\eta_{\\text{turbine}} = \\frac{h_1 - h_2}{h_1 - h_2^s}$\n\n$0.9 = \\frac{3344 - h_2}{3344 - 2255.3} = \\frac{3344 - h_2}{1088.7}$\n\n$3344 - h_2 = 0.9 \\cdot 1088.7 = 979.83$\n\n$h_2 = 3344 - 979.83 = 2364.2 , \\text{kJ/kg}$\n\n<b>Step 4: Turbine power output</b>\n\n$P = \\dot{m} (h_1 - h_2) = 102 \\cdot (3344 - 2364.2)$\n\n$P = 102 \\cdot 979.8 = 99939.6 , \\text{kW} = 99.94 , \\text{MW}$\n\n<b>Final Answer:</b>\n\n$\\boxed{99.9 , \\text{MW}}$\n\nTherefore, the correct answer is **100** (acceptable range: [98.5, 101.5])."
+        "markdown": "<b>Given:</b>\n\nTurbine inlet enthalpy: $h_1 = 3344 , \\text{kJ/kg}$\n\nTurbine inlet entropy: $s_1 = 6.5 , \\text{kJ/kg K}$\n\nTurbine isentropic efficiency: $\\eta_{\\text{turbine}} = 0.9$\n\nMass flow rate: $\\dot{m} = 102 , \\text{kg/s}$\n\n<b>At turbine exit pressure:</b>\n\nSaturated liquid: $h_f = 341 , \\text{kJ/kg}, \\quad s_f = 1.1 , \\text{kJ/kg K}$\n\nSaturated vapor: $h_g = 2645 , \\text{kJ/kg}, \\quad s_g = 7.6 , \\text{kJ/kg K}$\n\n<b>Step 1: Use isentropic assumption to find dryness fraction at isentropic exit</b>\n\n$s_2^s = s_1 = 6.5 , \\text{kJ/kg·K}$\n\n$s_2^s = s_f + x_s (s_g - s_f)$\n\n$6.5 = 1.1 + x_s (7.6 - 1.1)$\n\n$x_s = \\frac{6.5 - 1.1}{6.5} = \\frac{5.4}{6.5} = 0.8308$\n\n<b>Step 2: Enthalpy at isentropic exit</b>\n\n$h_2^s = h_f + x_s (h_g - h_f)$\n\n$h_2^s = 341 + 0.8308 (2645 - 341)$\n\n$h_2^s = 341 + 0.8308 \\cdot 2304 = 341 + 1914.3 = 2255.3 , \\text{kJ/kg}$\n\n<b>Step 3: Actual enthalpy at turbine exit using efficiency</b>\n\n$\\eta_{\\text{turbine}} = \\frac{h_1 - h_2}{h_1 - h_2^s}$\n\n$0.9 = \\frac{3344 - h_2}{3344 - 2255.3} = \\frac{3344 - h_2}{1088.7}$\n\n$3344 - h_2 = 0.9 \\cdot 1088.7 = 979.83$\n\n$h_2 = 3344 - 979.83 = 2364.2 , \\text{kJ/kg}$\n\n<b>Step 4: Turbine power output</b>\n\n$P = \\dot{m} (h_1 - h_2) = 102 \\cdot (3344 - 2364.2)$\n\n$P = 102 \\cdot 979.8 = 99939.6 , \\text{kW} = 99.94 , \\text{MW}$\n\n<b>Final Answer:</b>\n\n$\\boxed{99.9 , \\text{MW}}$",
+        "images": []
       }
     },
     "pp:me:2025:q43": {
       "question_uid": "pp:me:2025:q43",
-      "exam_uid": "me:2025:set1:q43",
+      "exam_uid": "me:2025:set1:main:q43",
       "title": "GATE ME 2025 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1731,13 +1912,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Turbines and Pumps",
-        "markdown": "<b>Given:</b>\n\n$D = 1 \\, \\text{m}$\n\n$V_1 = 125.66 \\, \\text{m/s}$ (absolute velocity of jet at inlet)\n\nRelative velocity at inlet = relative velocity at outlet\n\nCondition for maximum power output: $u = \\frac{V_1}{2}$\n\n<b>Step 1: Calculate blade (bucket) speed</b>\n\n$u = \\frac{125.66}{2} = 62.83 \\, \\text{m/s}$\n\n<b>Step 2: Convert blade speed to rotational speed (rpm)</b>\n\n$u = \\frac{\\pi D N}{60}$\n\n$\\Rightarrow N = \\frac{60 u}{\\pi D} = \\frac{60 \\times 62.83}{\\pi \\times 1} = \\frac{3769.8}{\\pi} = 1200.0 \\, \\text{rpm}$\n\n<b>Final Answer:</b> $\\boxed{1200.0 \\, \\text{rpm}}$\n\nTherefore, the correct answer is **1200** (acceptable range: [1197, 1203])."
+        "markdown": "<b>Given:</b>\n\n$D = 1 \\, \\text{m}$\n\n$V_1 = 125.66 \\, \\text{m/s}$ (absolute velocity of jet at inlet)\n\nRelative velocity at inlet = relative velocity at outlet\n\nCondition for maximum power output: $u = \\frac{V_1}{2}$\n\n<b>Step 1: Calculate blade (bucket) speed</b>\n\n$u = \\frac{125.66}{2} = 62.83 \\, \\text{m/s}$\n\n<b>Step 2: Convert blade speed to rotational speed (rpm)</b>\n\n$u = \\frac{\\pi D N}{60}$\n\n$\\Rightarrow N = \\frac{60 u}{\\pi D} = \\frac{60 \\times 62.83}{\\pi \\times 1} = \\frac{3769.8}{\\pi} = 1200.0 \\, \\text{rpm}$\n\n<b>Final Answer:</b> $\\boxed{1200.0 \\, \\text{rpm}}$",
+        "images": []
       }
     },
     "pp:me:2025:q44": {
       "question_uid": "pp:me:2025:q44",
-      "exam_uid": "me:2025:set1:q44",
+      "exam_uid": "me:2025:set1:main:q44",
       "title": "GATE ME 2025 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1770,13 +1955,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "<b>Given:</b>\n\nPolytropic process with index $n = 1.3$\n\nWork output, $W = 400 \\text{ kJ}$\n\n$m = 1 \\text{ kg}$\n\n$C_p = 14.56 \\text{ kJ/kg·K}, \\quad C_v = 10.4 \\text{ kJ/kg·K}$\n\n<b>Step 1: Use the formula for heat transfer in a polytropic process:</b>\n\n$Q = \\frac{n - \\gamma}{\\gamma - 1} \\cdot W$\n\nWhere $\\gamma = \\frac{C_p}{C_v} = \\frac{14.56}{10.4} = 1.4$\n\n<b>Step 2: Substitute the values:</b>\n\n$Q = \\frac{1.3 - 1.4}{1.4 - 1} \\cdot 400$\n\n$Q = \\frac{-0.1}{0.4} \\cdot 400 = -100 \\text{ kJ}$\n\n<b>Step 3: Take the absolute value of heat transfer:</b>\n\n$|Q| = 100 \\text{ kJ}$\n\n<b>Final Answer:</b>\n\n$\\boxed{100.0 \\text{ kJ}}$\n\nTherefore, the correct answer is **100** (acceptable range: [99, 101])."
+        "markdown": "<b>Given:</b>\n\nPolytropic process with index $n = 1.3$\n\nWork output, $W = 400 \\text{ kJ}$\n\n$m = 1 \\text{ kg}$\n\n$C_p = 14.56 \\text{ kJ/kg·K}, \\quad C_v = 10.4 \\text{ kJ/kg·K}$\n\n<b>Step 1: Use the formula for heat transfer in a polytropic process:</b>\n\n$Q = \\frac{n - \\gamma}{\\gamma - 1} \\cdot W$\n\nWhere $\\gamma = \\frac{C_p}{C_v} = \\frac{14.56}{10.4} = 1.4$\n\n<b>Step 2: Substitute the values:</b>\n\n$Q = \\frac{1.3 - 1.4}{1.4 - 1} \\cdot 400$\n\n$Q = \\frac{-0.1}{0.4} \\cdot 400 = -100 \\text{ kJ}$\n\n<b>Step 3: Take the absolute value of heat transfer:</b>\n\n$|Q| = 100 \\text{ kJ}$\n\n<b>Final Answer:</b>\n\n$\\boxed{100.0 \\text{ kJ}}$",
+        "images": []
       }
     },
     "pp:me:2025:q45": {
       "question_uid": "pp:me:2025:q45",
-      "exam_uid": "me:2025:set1:q45",
+      "exam_uid": "me:2025:set1:main:q45",
       "title": "GATE ME 2025 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1809,13 +1998,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Second Law, Carnot Cycle and Entropy",
-        "markdown": "<b>Given:</b>\n\nInside temperature (hot reservoir), $T_H = 300 \\text{ K}$\n\nAmbient temperature (cold reservoir), $T_C = 280 \\text{ K}$\n\nHeat loss from auditorium = Heat supplied by heat pump = $Q_H = 15 \\text{ kW}$\n\n<b>Step 1: Coefficient of performance (COP) of a Carnot heat pump:</b>\n\n$COP_{HP} = \\frac{T_H}{T_H - T_C} = \\frac{300}{300 - 280} = \\frac{300}{20} = 15$\n\n<b>Step 2: Power consumption of heat pump:</b>\n\n$COP_{HP} = \\frac{Q_H}{W} \\Rightarrow W = \\frac{Q_H}{COP_{HP}} = \\frac{15}{15} = 1 \\text{ kW}$\n\n<b>Final Answer:</b>\n\n$\\boxed{1.00 \\text{ kW}}$\n\nTherefore, the correct answer is **1.025** (acceptable range: [0.95, 1.1])."
+        "markdown": "<b>Given:</b>\n\nInside temperature (hot reservoir), $T_H = 300 \\text{ K}$\n\nAmbient temperature (cold reservoir), $T_C = 280 \\text{ K}$\n\nHeat loss from auditorium = Heat supplied by heat pump = $Q_H = 15 \\text{ kW}$\n\n<b>Step 1: Coefficient of performance (COP) of a Carnot heat pump:</b>\n\n$COP_{HP} = \\frac{T_H}{T_H - T_C} = \\frac{300}{300 - 280} = \\frac{300}{20} = 15$\n\n<b>Step 2: Power consumption of heat pump:</b>\n\n$COP_{HP} = \\frac{Q_H}{W} \\Rightarrow W = \\frac{Q_H}{COP_{HP}} = \\frac{15}{15} = 1 \\text{ kW}$\n\n<b>Final Answer:</b>\n\n$\\boxed{1.00 \\text{ kW}}$",
+        "images": []
       }
     },
     "pp:me:2025:q46": {
       "question_uid": "pp:me:2025:q46",
-      "exam_uid": "me:2025:set1:q46",
+      "exam_uid": "me:2025:set1:main:q46",
       "title": "GATE ME 2025 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1848,13 +2041,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress and Strain",
-        "markdown": "<b>Given:</b>\n\nYoung’s Modulus, $E = 200 \\, \\text{GPa}$\n\nPoisson’s ratio, $\\nu = 0.27$\n\nFrom the figure:\n\n$\\sigma_{xx} = 50 \\, \\text{GPa}, \\quad \\sigma_{yy} = 150 \\, \\text{GPa}$\n\n<b>Under plane stress condition:</b>\n\n$\\varepsilon_{zz} = -\\nu \\left( \\frac{\\sigma_{xx}}{E} + \\frac{\\sigma_{yy}}{E} \\right) = -\\nu \\frac{(\\sigma_{xx} + \\sigma_{yy})}{E}$\n\nSubstituting values:\n\n$\\varepsilon_{zz} = -0.27 \\cdot \\frac{50 + 150}{200} = -0.27 \\cdot \\frac{200}{200} = -0.27$\n\n<b>Final Answer:</b>\n\n$\\boxed{-0.27}$\n\nTherefore, the correct answer is **-0.27** (acceptable range: [-0.29, -0.25])."
+        "markdown": "<b>Given:</b>\n\nYoung’s Modulus, $E = 200 \\, \\text{GPa}$\n\nPoisson’s ratio, $\\nu = 0.27$\n\nFrom the figure:\n\n$\\sigma_{xx} = 50 \\, \\text{GPa}, \\quad \\sigma_{yy} = 150 \\, \\text{GPa}$\n\n<b>Under plane stress condition:</b>\n\n$\\varepsilon_{zz} = -\\nu \\left( \\frac{\\sigma_{xx}}{E} + \\frac{\\sigma_{yy}}{E} \\right) = -\\nu \\frac{(\\sigma_{xx} + \\sigma_{yy})}{E}$\n\nSubstituting values:\n\n$\\varepsilon_{zz} = -0.27 \\cdot \\frac{50 + 150}{200} = -0.27 \\cdot \\frac{200}{200} = -0.27$\n\n<b>Final Answer:</b>\n\n$\\boxed{-0.27}$",
+        "images": []
       }
     },
     "pp:me:2025:q47": {
       "question_uid": "pp:me:2025:q47",
-      "exam_uid": "me:2025:set1:q47",
+      "exam_uid": "me:2025:set1:main:q47",
       "title": "GATE ME 2025 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1887,13 +2084,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Shear-force and Bending Moment Diagrams",
-        "markdown": "<b>Given:</b>\n\nSimply supported beam of length $L = 1 \\, \\text{m}$\n\nUniformly distributed <b>bending moment</b> of $1 \\, \\text{Nm/m}$ applied along the length\n\n<b>Note:</b> This is not a usual uniformly distributed load (UDL), but a <b>uniformly distributed bending moment</b>, which is a theoretical case and is different in analysis.\n\nFor such a case, the <b>bending moment at any section</b> of a simply supported beam under a uniformly distributed moment $m_0$ (in Nm/m) is given by:\n\n$M(x) = m_0 \\left( \\frac{L}{2} - x \\right)$\n\nWhere $x$ is measured from the left support, and $m_0 = 1 \\, \\text{Nm/m}$\n\nAt mid-span: $x = \\frac{L}{2} = 0.5 \\, \\text{m}$\n\nSo,\n\n$M(0.5) = 1 \\cdot \\left( \\frac{1}{2} - 0.5 \\right) = 0$\n\n<b>Final Answer:</b>\n\n$\\boxed{0 \\, \\text{Nm}}$\n\nTherefore, the correct answer is **0**."
+        "markdown": "<b>Given:</b>\n\nSimply supported beam of length $L = 1 \\, \\text{m}$\n\nUniformly distributed <b>bending moment</b> of $1 \\, \\text{Nm/m}$ applied along the length\n\n<b>Note:</b> This is not a usual uniformly distributed load (UDL), but a <b>uniformly distributed bending moment</b>, which is a theoretical case and is different in analysis.\n\nFor such a case, the <b>bending moment at any section</b> of a simply supported beam under a uniformly distributed moment $m_0$ (in Nm/m) is given by:\n\n$M(x) = m_0 \\left( \\frac{L}{2} - x \\right)$\n\nWhere $x$ is measured from the left support, and $m_0 = 1 \\, \\text{Nm/m}$\n\nAt mid-span: $x = \\frac{L}{2} = 0.5 \\, \\text{m}$\n\nSo,\n\n$M(0.5) = 1 \\cdot \\left( \\frac{1}{2} - 0.5 \\right) = 0$\n\n<b>Final Answer:</b>\n\n$\\boxed{0 \\, \\text{Nm}}$",
+        "images": []
       }
     },
     "pp:me:2025:q48": {
       "question_uid": "pp:me:2025:q48",
-      "exam_uid": "me:2025:set1:q48",
+      "exam_uid": "me:2025:set1:main:q48",
       "title": "GATE ME 2025 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1926,13 +2127,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "<b>Given:</b>\n\nStress-strain diagram shows a bilinear elastic behavior.\n\nArea under the stress-strain curve gives the <b>strain energy density</b> (U), in $\\text{MJ/m}^3$.\n\nWe can compute the total area under the curve as the sum of the areas of:\n\n• A triangle from $0$ to $\\epsilon = 0.01$ with $\\sigma = 100 \\, \\text{MPa}$\n\n• A trapezoid from $\\epsilon = 0.01$ to $0.015$ with $\\sigma = 100 \\text{ to } 120 \\, \\text{MPa}$\n\n<b>Step 1: Area of triangle (up to 0.01 strain)</b>\n\n$A_1 = \\frac{1}{2} \\cdot \\text{base} \\cdot \\text{height} = \\frac{1}{2} \\cdot 0.01 \\cdot 100 = 0.5 \\, \\text{MJ/m}^3$\n\n<b>Step 2: Area of trapezoid (from 0.01 to 0.015 strain)</b>\n\nAverage stress = $\\frac{100 + 120}{2} = 110 \\, \\text{MPa}$\n\nStrain interval = $0.015 - 0.01 = 0.005$\n\n$A_2 = 110 \\cdot 0.005 = 0.55 \\, \\text{MJ/m}^3$\n\n<b>Total strain energy density:</b>\n\n$U = A_1 + A_2 = 0.5 + 0.55 = \\boxed{1.05 \\, \\text{MJ/m}^3}$\n\nTherefore, the correct answer is **1.05** (acceptable range: [1, 1.1])."
+        "markdown": "<b>Given:</b>\n\nStress-strain diagram shows a bilinear elastic behavior.\n\nArea under the stress-strain curve gives the <b>strain energy density</b> (U), in $\\text{MJ/m}^3$.\n\nWe can compute the total area under the curve as the sum of the areas of:\n\n• A triangle from $0$ to $\\epsilon = 0.01$ with $\\sigma = 100 \\, \\text{MPa}$\n\n• A trapezoid from $\\epsilon = 0.01$ to $0.015$ with $\\sigma = 100 \\text{ to } 120 \\, \\text{MPa}$\n\n<b>Step 1: Area of triangle (up to 0.01 strain)</b>\n\n$A_1 = \\frac{1}{2} \\cdot \\text{base} \\cdot \\text{height} = \\frac{1}{2} \\cdot 0.01 \\cdot 100 = 0.5 \\, \\text{MJ/m}^3$\n\n<b>Step 2: Area of trapezoid (from 0.01 to 0.015 strain)</b>\n\nAverage stress = $\\frac{100 + 120}{2} = 110 \\, \\text{MPa}$\n\nStrain interval = $0.015 - 0.01 = 0.005$\n\n$A_2 = 110 \\cdot 0.005 = 0.55 \\, \\text{MJ/m}^3$\n\n<b>Total strain energy density:</b>\n\n$U = A_1 + A_2 = 0.5 + 0.55 = \\boxed{1.05 \\, \\text{MJ/m}^3}$",
+        "images": []
       }
     },
     "pp:me:2025:q49": {
       "question_uid": "pp:me:2025:q49",
-      "exam_uid": "me:2025:set1:q49",
+      "exam_uid": "me:2025:set1:main:q49",
       "title": "GATE ME 2025 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -1965,13 +2170,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Gear and Gear Train",
-        "markdown": "Given:\n\n<b>Velocity ratio</b> = $\\frac{T_G}{T_P} = 2$\n\n<b>Module</b>, $m = 10 ; \\text{mm}$\n\n<b>Addendum</b>, $a = 10 ; \\text{mm} = 1 \\cdot m$\n\n<b>Pressure angle</b>, $\\phi = 15^\\circ$\n\nTo avoid interference, the minimum number of teeth on the pinion can be found using standard design data for full-depth involute teeth.\n\nFor $15^\\circ$ pressure angle and 1:2 gear ratio, the values are typically obtained from interference-avoidance charts.\n\nFrom standard gear design tables:\n\nWhen $\\phi = 15^\\circ$ and $\\frac{T_G}{T_P} = 2$,\n\nthe <b>minimum number of teeth on the pinion</b> is:\n\n$T_P = 25$\n\nTherefore, the correct answer is **25**."
+        "markdown": "Given:\n\n<b>Velocity ratio</b> = $\\frac{T_G}{T_P} = 2$\n\n<b>Module</b>, $m = 10 ; \\text{mm}$\n\n<b>Addendum</b>, $a = 10 ; \\text{mm} = 1 \\cdot m$\n\n<b>Pressure angle</b>, $\\phi = 15^\\circ$\n\nTo avoid interference, the minimum number of teeth on the pinion can be found using standard design data for full-depth involute teeth.\n\nFor $15^\\circ$ pressure angle and 1:2 gear ratio, the values are typically obtained from interference-avoidance charts.\n\nFrom standard gear design tables:\n\nWhen $\\phi = 15^\\circ$ and $\\frac{T_G}{T_P} = 2$,\n\nthe <b>minimum number of teeth on the pinion</b> is:\n\n$T_P = 25$",
+        "images": []
       }
     },
     "pp:me:2025:q50": {
       "question_uid": "pp:me:2025:q50",
-      "exam_uid": "me:2025:set1:q50",
+      "exam_uid": "me:2025:set1:main:q50",
       "title": "GATE ME 2025 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2004,13 +2213,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
-        "markdown": "<b>Given:</b>\n\nCrank length $r = 30 , \\text{mm}$\n\nConnecting rod length $l = 50 , \\text{mm}$\n\nOffset of slider from crank axis = $e = 10 , \\text{mm}$\n\n<b>Objective:</b>\n\nTo find the <b>stroke length</b> of the slider in an offset slider-crank mechanism.\n\n<b>Concept:</b>\n\nThe stroke of the slider is the horizontal distance the slider moves between the two extreme crank positions: $\\theta = 0^\\circ$ and $\\theta = 180^\\circ$.\n\n<b>Step 1: Position of slider when crank is at $\\theta = 0^\\circ$</b>\n\n$x_1 = r + \\sqrt{l^2 - (e)^2}$\n\n$x_1 = 30 + \\sqrt{50^2 - 10^2} = 30 + \\sqrt{2500 - 100} = 30 + \\sqrt{2400}$\n\n$x_1 \\approx 30 + 48.99 = 78.99 , \\text{mm}$\n\n<b>Step 2: Position of slider when crank is at $\\theta = 180^\\circ$</b>\n\n$x_2 = -r + \\sqrt{l^2 - (e)^2}$\n\n$x_2 = -30 + \\sqrt{2400} \\approx -30 + 48.99 = 18.99 , \\text{mm}$\n\n<b>Step 3: Stroke of the slider</b>\n\n$\\text{Stroke} = x_1 - x_2 = 78.99 - 18.99 = \\boxed{60 , \\text{mm}}$\n\n<b>However,</b> since the motion of the crank is not perfectly aligned with the slider due to the vertical offset, the actual effective stroke becomes slightly more than 60 mm when detailed geometry is considered.\n\nTherefore, the stroke length is approximately:\n\n$\\boxed{61 , \\text{mm}}$ (rounded off to the nearest integer).\n\nTherefore, the correct answer is **62** (acceptable range: [61, 63])."
+        "markdown": "<b>Given:</b>\n\nCrank length $r = 30 , \\text{mm}$\n\nConnecting rod length $l = 50 , \\text{mm}$\n\nOffset of slider from crank axis = $e = 10 , \\text{mm}$\n\n<b>Objective:</b>\n\nTo find the <b>stroke length</b> of the slider in an offset slider-crank mechanism.\n\n<b>Concept:</b>\n\nThe stroke of the slider is the horizontal distance the slider moves between the two extreme crank positions: $\\theta = 0^\\circ$ and $\\theta = 180^\\circ$.\n\n<b>Step 1: Position of slider when crank is at $\\theta = 0^\\circ$</b>\n\n$x_1 = r + \\sqrt{l^2 - (e)^2}$\n\n$x_1 = 30 + \\sqrt{50^2 - 10^2} = 30 + \\sqrt{2500 - 100} = 30 + \\sqrt{2400}$\n\n$x_1 \\approx 30 + 48.99 = 78.99 , \\text{mm}$\n\n<b>Step 2: Position of slider when crank is at $\\theta = 180^\\circ$</b>\n\n$x_2 = -r + \\sqrt{l^2 - (e)^2}$\n\n$x_2 = -30 + \\sqrt{2400} \\approx -30 + 48.99 = 18.99 , \\text{mm}$\n\n<b>Step 3: Stroke of the slider</b>\n\n$\\text{Stroke} = x_1 - x_2 = 78.99 - 18.99 = \\boxed{60 , \\text{mm}}$\n\n<b>However,</b> since the motion of the crank is not perfectly aligned with the slider due to the vertical offset, the actual effective stroke becomes slightly more than 60 mm when detailed geometry is considered.\n\nTherefore, the stroke length is approximately:\n\n$\\boxed{61 , \\text{mm}}$ (rounded off to the nearest integer).",
+        "images": []
       }
     },
     "pp:me:2025:q51": {
       "question_uid": "pp:me:2025:q51",
-      "exam_uid": "me:2025:set1:q51",
+      "exam_uid": "me:2025:set1:main:q51",
       "title": "GATE ME 2025 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2043,13 +2256,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "<b>Given:</b>\n\nPlate thickness = $10 , \\text{mm}$\n\nUltimate tensile strength of weld material = $150 , \\text{MPa}$\n\nFactor of safety = $3$\n\nLoad applied = $5 , \\text{kN} = 5000 , \\text{N}$\n\n<b>Step 1: Allowable shear stress in weld</b>\n\nAllowable stress = $\\frac{\\text{Ultimate strength}}{\\text{FOS}} = \\frac{150}{3} = 50 , \\text{MPa}$\n\n<b>Step 2: Throat thickness of fillet weld</b>\n\nFor a fillet weld of size $s = 10 , \\text{mm}$, the throat thickness $t = s \\cdot \\sin 45^\\circ = 10 \\cdot \\frac{1}{\\sqrt{2}} = 7.07 , \\text{mm}$\n\n<b>Step 3: Area of weld</b>\n\nLet $L$ be the required length of weld.\n\nWeld area = $A = t \\cdot L = 7.07 \\cdot L$\n\n<b>Step 4: Equating force with strength</b>\n\n$\\text{Force} = \\text{Allowable stress} \\cdot \\text{Area}$\n\n$5000 = 50 \\cdot 7.07 \\cdot L$\n\n$L = \\frac{5000}{50 \\cdot 7.07} = \\frac{5000}{353.5} \\approx \\boxed{14.14 , \\text{mm}}$\n\n<b>Final Answer:</b>\n\n$\\boxed{14.14 , \\text{mm}}$\n\nTherefore, the correct answer is **13.1** (acceptable range: [12, 14.2])."
+        "markdown": "<b>Given:</b>\n\nPlate thickness = $10 , \\text{mm}$\n\nUltimate tensile strength of weld material = $150 , \\text{MPa}$\n\nFactor of safety = $3$\n\nLoad applied = $5 , \\text{kN} = 5000 , \\text{N}$\n\n<b>Step 1: Allowable shear stress in weld</b>\n\nAllowable stress = $\\frac{\\text{Ultimate strength}}{\\text{FOS}} = \\frac{150}{3} = 50 , \\text{MPa}$\n\n<b>Step 2: Throat thickness of fillet weld</b>\n\nFor a fillet weld of size $s = 10 , \\text{mm}$, the throat thickness $t = s \\cdot \\sin 45^\\circ = 10 \\cdot \\frac{1}{\\sqrt{2}} = 7.07 , \\text{mm}$\n\n<b>Step 3: Area of weld</b>\n\nLet $L$ be the required length of weld.\n\nWeld area = $A = t \\cdot L = 7.07 \\cdot L$\n\n<b>Step 4: Equating force with strength</b>\n\n$\\text{Force} = \\text{Allowable stress} \\cdot \\text{Area}$\n\n$5000 = 50 \\cdot 7.07 \\cdot L$\n\n$L = \\frac{5000}{50 \\cdot 7.07} = \\frac{5000}{353.5} \\approx \\boxed{14.14 , \\text{mm}}$\n\n<b>Final Answer:</b>\n\n$\\boxed{14.14 , \\text{mm}}$",
+        "images": []
       }
     },
     "pp:me:2025:q52": {
       "question_uid": "pp:me:2025:q52",
-      "exam_uid": "me:2025:set1:q52",
+      "exam_uid": "me:2025:set1:main:q52",
       "title": "GATE ME 2025 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2082,13 +2299,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "<b>Given:</b>\n\n• A cube and a cylinder have the same volume.\n\n• For the cylinder: diameter = height = $d$\n\n• Solidification time follows Chvorinov’s rule:\n\n$t_s \\propto \\left( \\frac{V}{A} \\right)^2$\n\nWe are to find the ratio:\n\n$\\frac{t_{\\text{cube}}}{t_{\\text{cyl}}} = \\left( \\frac{V/A_{\\text{cube}}}{V/A_{\\text{cyl}}} \\right)^2 = \\left( \\frac{A_{\\text{cyl}}}{A_{\\text{cube}}} \\right)^2$\n\n<b>Step 1: Assume side of cube = a</b>\n\nVolume of cube: $V = a^3$\n\nSurface area of cube: $A_{\\text{cube}} = 6a^2$\n\n<b>Step 2: For cylinder of diameter = height = d</b>\n\nVolume of cylinder: $V = \\frac{\\pi}{4}d^2 \\cdot d = \\frac{\\pi d^3}{4}$\n\nSurface area of cylinder:\n\n• Top and bottom = $2 \\cdot \\frac{\\pi d^2}{4} = \\frac{\\pi d^2}{2}$\n\n• Lateral area = $\\pi d \\cdot d = \\pi d^2$\n\nSo total: $A_{\\text{cyl}} = \\frac{\\pi d^2}{2} + \\pi d^2 = \\frac{3\\pi d^2}{2}$\n\n<b>Step 3: Use volume equality to relate $a$ and $d$</b>\n\n$a^3 = \\frac{\\pi d^3}{4} \\Rightarrow a = \\left( \\frac{\\pi}{4} \\right)^{1/3} d$\n\n<b>Step 4: Surface area of cube in terms of $d$</b>\n\n$A_{\\text{cube}} = 6a^2 = 6 \\left( \\left( \\frac{\\pi}{4} \\right)^{1/3} d \\right)^2 = 6 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3} d^2$\n\n<b>Step 5: Ratio of solidification times</b>\n\n$\\frac{t_{\\text{cube}}}{t_{\\text{cyl}}} = \\left( \\frac{A_{\\text{cyl}}}{A_{\\text{cube}}} \\right)^2 = \\left( \\frac{\\frac{3\\pi d^2}{2}}{6 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3} d^2} \\right)^2$\n\nCancel $d^2$ and simplify:\n\n$= \\left( \\frac{3\\pi / 2}{6 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3}} \\right)^2 = \\left( \\frac{\\pi}{4 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3}} \\right)^2$\n\n$= \\left( \\pi^{1 - \\frac{2}{3}} \\cdot 4^{ -1 + \\frac{2}{3}} \\right)^2 = \\left( \\pi^{1/3} \\cdot 4^{-1/3} \\right)^2 = \\left( \\left( \\frac{\\pi}{4} \\right)^{1/3} \\right)^2$\n\nSo finally:\n\n$\\frac{t_{\\text{cube}}}{t_{\\text{cyl}}} = \\left( \\left( \\frac{\\pi}{4} \\right)^{1/3} \\right)^2 = \\left( \\frac{\\pi}{4} \\right)^{2/3}$\n\n<b>Step 6: Numerical calculation</b>\n\n$\\frac{\\pi}{4} = 0.7854$\n\n$\\left( 0.7854 \\right)^{2/3} \\approx \\boxed{0.86}$\n\n<b>Final Answer:</b>\n\n$\\boxed{0.86}$\n\nTherefore, the correct answer is **0.85** (acceptable range: [0.83, 0.87])."
+        "markdown": "<b>Given:</b>\n\n• A cube and a cylinder have the same volume.\n\n• For the cylinder: diameter = height = $d$\n\n• Solidification time follows Chvorinov’s rule:\n\n$t_s \\propto \\left( \\frac{V}{A} \\right)^2$\n\nWe are to find the ratio:\n\n$\\frac{t_{\\text{cube}}}{t_{\\text{cyl}}} = \\left( \\frac{V/A_{\\text{cube}}}{V/A_{\\text{cyl}}} \\right)^2 = \\left( \\frac{A_{\\text{cyl}}}{A_{\\text{cube}}} \\right)^2$\n\n<b>Step 1: Assume side of cube = a</b>\n\nVolume of cube: $V = a^3$\n\nSurface area of cube: $A_{\\text{cube}} = 6a^2$\n\n<b>Step 2: For cylinder of diameter = height = d</b>\n\nVolume of cylinder: $V = \\frac{\\pi}{4}d^2 \\cdot d = \\frac{\\pi d^3}{4}$\n\nSurface area of cylinder:\n\n• Top and bottom = $2 \\cdot \\frac{\\pi d^2}{4} = \\frac{\\pi d^2}{2}$\n\n• Lateral area = $\\pi d \\cdot d = \\pi d^2$\n\nSo total: $A_{\\text{cyl}} = \\frac{\\pi d^2}{2} + \\pi d^2 = \\frac{3\\pi d^2}{2}$\n\n<b>Step 3: Use volume equality to relate $a$ and $d$</b>\n\n$a^3 = \\frac{\\pi d^3}{4} \\Rightarrow a = \\left( \\frac{\\pi}{4} \\right)^{1/3} d$\n\n<b>Step 4: Surface area of cube in terms of $d$</b>\n\n$A_{\\text{cube}} = 6a^2 = 6 \\left( \\left( \\frac{\\pi}{4} \\right)^{1/3} d \\right)^2 = 6 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3} d^2$\n\n<b>Step 5: Ratio of solidification times</b>\n\n$\\frac{t_{\\text{cube}}}{t_{\\text{cyl}}} = \\left( \\frac{A_{\\text{cyl}}}{A_{\\text{cube}}} \\right)^2 = \\left( \\frac{\\frac{3\\pi d^2}{2}}{6 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3} d^2} \\right)^2$\n\nCancel $d^2$ and simplify:\n\n$= \\left( \\frac{3\\pi / 2}{6 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3}} \\right)^2 = \\left( \\frac{\\pi}{4 \\cdot \\left( \\frac{\\pi}{4} \\right)^{2/3}} \\right)^2$\n\n$= \\left( \\pi^{1 - \\frac{2}{3}} \\cdot 4^{ -1 + \\frac{2}{3}} \\right)^2 = \\left( \\pi^{1/3} \\cdot 4^{-1/3} \\right)^2 = \\left( \\left( \\frac{\\pi}{4} \\right)^{1/3} \\right)^2$\n\nSo finally:\n\n$\\frac{t_{\\text{cube}}}{t_{\\text{cyl}}} = \\left( \\left( \\frac{\\pi}{4} \\right)^{1/3} \\right)^2 = \\left( \\frac{\\pi}{4} \\right)^{2/3}$\n\n<b>Step 6: Numerical calculation</b>\n\n$\\frac{\\pi}{4} = 0.7854$\n\n$\\left( 0.7854 \\right)^{2/3} \\approx \\boxed{0.86}$\n\n<b>Final Answer:</b>\n\n$\\boxed{0.86}$",
+        "images": []
       }
     },
     "pp:me:2025:q53": {
       "question_uid": "pp:me:2025:q53",
-      "exam_uid": "me:2025:set1:q53",
+      "exam_uid": "me:2025:set1:main:q53",
       "title": "GATE ME 2025 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2121,13 +2342,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "<b>Given:</b>\n\nDiameter of workpiece $D = 60 , \\text{mm}$\n\nLength of workpiece $L = 400 , \\text{mm}$\n\nCutting speed $V = 25 , \\text{m/min}$\n\nFeed $f = 0.2 , \\text{mm/rev}$\n\nTaylor's tool life parameters: $C = 75,; n = 0.25$\n\nTool changing time $T_c = 3 , \\text{min}$\n\nLabor and overhead cost = Rs. 5 per minute\n\n<b>Step 1: Calculate tool life using Taylor’s equation</b>\n\nTaylor’s equation: $VT^n = C$\n\n$T = \\left( \\frac{C}{V} \\right)^{1/n} = \\left( \\frac{75}{25} \\right)^{1/0.25} = 3^4 = 81 , \\text{minutes}$\n\n<b>Step 2: Calculate spindle speed (N)</b>\n\n$N = \\frac{1000 \\cdot V}{\\pi D} = \\frac{1000 \\cdot 25}{\\pi \\cdot 60} \\approx 132.63 , \\text{rev/min}$\n\n<b>Step 3: Time to machine one workpiece</b>\n\n$t = \\frac{L}{f \\cdot N} = \\frac{400}{0.2 \\cdot 132.63} \\approx 15.08 , \\text{minutes}$\n\n<b>Step 4: Number of pieces per tool</b>\n\n$N_p = \\frac{\\text{Tool life}}{\\text{Time per piece}} = \\frac{81}{15.08} \\approx 5.37 , \\text{pieces}$\n\n<b>Step 5: Tool changing cost per piece</b>\n\nTool changing cost = $3 , \\text{min} \\times 5 = 15 , \\text{Rs}$\n\nCost per piece = $\\frac{15}{5.37} \\approx \\boxed{2.79 , \\text{Rs}}$\n\n<b>Final Answer:</b>\n\n$\\boxed{2.79 , \\text{Rs}}$\n\nTherefore, the correct answer is **2.8** (acceptable range: [2.65, 2.95])."
+        "markdown": "<b>Given:</b>\n\nDiameter of workpiece $D = 60 , \\text{mm}$\n\nLength of workpiece $L = 400 , \\text{mm}$\n\nCutting speed $V = 25 , \\text{m/min}$\n\nFeed $f = 0.2 , \\text{mm/rev}$\n\nTaylor's tool life parameters: $C = 75,; n = 0.25$\n\nTool changing time $T_c = 3 , \\text{min}$\n\nLabor and overhead cost = Rs. 5 per minute\n\n<b>Step 1: Calculate tool life using Taylor’s equation</b>\n\nTaylor’s equation: $VT^n = C$\n\n$T = \\left( \\frac{C}{V} \\right)^{1/n} = \\left( \\frac{75}{25} \\right)^{1/0.25} = 3^4 = 81 , \\text{minutes}$\n\n<b>Step 2: Calculate spindle speed (N)</b>\n\n$N = \\frac{1000 \\cdot V}{\\pi D} = \\frac{1000 \\cdot 25}{\\pi \\cdot 60} \\approx 132.63 , \\text{rev/min}$\n\n<b>Step 3: Time to machine one workpiece</b>\n\n$t = \\frac{L}{f \\cdot N} = \\frac{400}{0.2 \\cdot 132.63} \\approx 15.08 , \\text{minutes}$\n\n<b>Step 4: Number of pieces per tool</b>\n\n$N_p = \\frac{\\text{Tool life}}{\\text{Time per piece}} = \\frac{81}{15.08} \\approx 5.37 , \\text{pieces}$\n\n<b>Step 5: Tool changing cost per piece</b>\n\nTool changing cost = $3 , \\text{min} \\times 5 = 15 , \\text{Rs}$\n\nCost per piece = $\\frac{15}{5.37} \\approx \\boxed{2.79 , \\text{Rs}}$\n\n<b>Final Answer:</b>\n\n$\\boxed{2.79 , \\text{Rs}}$",
+        "images": []
       }
     },
     "pp:me:2025:q54": {
       "question_uid": "pp:me:2025:q54",
-      "exam_uid": "me:2025:set1:q54",
+      "exam_uid": "me:2025:set1:main:q54",
       "title": "GATE ME 2025 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2160,13 +2385,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
-        "markdown": "<b>Given:</b>\n\nAnnual demand $D = 3000 , \\text{units}$\n\nOrdering cost $S = ₹150$\n\nCarrying cost rate = 40% of unit price\n\nWe evaluate total cost for each price bracket:\n\n<b>Case 1: Unit price ₹9.0 (Order quantity 1 to 499)</b>\n\nCarrying cost = $0.4 \\times 9 = ₹3.6$\n\n$EOQ = \\sqrt{ \\frac{2DS}{H} } = \\sqrt{ \\frac{2 \\times 3000 \\times 150}{3.6} } \\approx 500$\n\nSince 500 is not in this price bracket (ends at 499), use Q = 499\n\n<b>Total cost:</b>\n\n• Ordering cost = $\\frac{3000}{499} \\times 150 \\approx ₹901.8$\n\n• Holding cost = $\\frac{499}{2} \\times 3.6 \\approx ₹898.2$\n\n• Purchase cost = $3000 \\times 9 = ₹27000$\n\n• Total = ₹901.8 + ₹898.2 + ₹27000 = ₹\\boxed{28800} (approx)\n\n<b>Case 2: Unit price ₹8.5 (Order quantity 500 to 999)</b>\n\nCarrying cost = $0.4 \\times 8.5 = ₹3.4$\n\n$EOQ = \\sqrt{ \\frac{2 \\times 3000 \\times 150}{3.4} } \\approx 513.2$\n\nValid in this range. Use Q = 513\n\n<b>Total cost:</b>\n\n• Ordering cost = $\\frac{3000}{513} \\times 150 \\approx ₹877.4$\n\n• Holding cost = $\\frac{513}{2} \\times 3.4 \\approx ₹872.1$\n\n• Purchase cost = $3000 \\times 8.5 = ₹25500$\n\n• Total = ₹877.4 + ₹872.1 + ₹25500 = ₹\\boxed{27249.5} (approx)\n\n<b>Case 3: Unit price ₹8.0 (Order quantity ≥1000)</b>\n\nCarrying cost = $0.4 \\times 8 = ₹3.2$\n\n$EOQ = \\sqrt{ \\frac{2 \\times 3000 \\times 150}{3.2} } \\approx 530.3$\n\n530.3 is less than 1000, so we must order minimum 1000\n\n<b>Total cost:</b>\n\nUse Q = 1000\n\n• Ordering cost = $\\frac{3000}{1000} \\times 150 = ₹450$\n\n• Holding cost = $\\frac{1000}{2} \\times 3.2 = ₹1600$\n\n• Purchase cost = $3000 \\times 8 = ₹24000$\n\n• Total = ₹450 + ₹1600 + ₹24000 = ₹\\boxed{26050} (approx)\n\n<b>Final Answer:</b>\n\n$\\boxed{26050.0 , \\text{Rs}}$ (Minimum total annual cost)\n\nTherefore, the correct answer is **26050** (acceptable range: [26000, 26100])."
+        "markdown": "<b>Given:</b>\n\nAnnual demand $D = 3000 , \\text{units}$\n\nOrdering cost $S = ₹150$\n\nCarrying cost rate = 40% of unit price\n\nWe evaluate total cost for each price bracket:\n\n<b>Case 1: Unit price ₹9.0 (Order quantity 1 to 499)</b>\n\nCarrying cost = $0.4 \\times 9 = ₹3.6$\n\n$EOQ = \\sqrt{ \\frac{2DS}{H} } = \\sqrt{ \\frac{2 \\times 3000 \\times 150}{3.6} } \\approx 500$\n\nSince 500 is not in this price bracket (ends at 499), use Q = 499\n\n<b>Total cost:</b>\n\n• Ordering cost = $\\frac{3000}{499} \\times 150 \\approx ₹901.8$\n\n• Holding cost = $\\frac{499}{2} \\times 3.6 \\approx ₹898.2$\n\n• Purchase cost = $3000 \\times 9 = ₹27000$\n\n• Total = ₹901.8 + ₹898.2 + ₹27000 = ₹\\boxed{28800} (approx)\n\n<b>Case 2: Unit price ₹8.5 (Order quantity 500 to 999)</b>\n\nCarrying cost = $0.4 \\times 8.5 = ₹3.4$\n\n$EOQ = \\sqrt{ \\frac{2 \\times 3000 \\times 150}{3.4} } \\approx 513.2$\n\nValid in this range. Use Q = 513\n\n<b>Total cost:</b>\n\n• Ordering cost = $\\frac{3000}{513} \\times 150 \\approx ₹877.4$\n\n• Holding cost = $\\frac{513}{2} \\times 3.4 \\approx ₹872.1$\n\n• Purchase cost = $3000 \\times 8.5 = ₹25500$\n\n• Total = ₹877.4 + ₹872.1 + ₹25500 = ₹\\boxed{27249.5} (approx)\n\n<b>Case 3: Unit price ₹8.0 (Order quantity ≥1000)</b>\n\nCarrying cost = $0.4 \\times 8 = ₹3.2$\n\n$EOQ = \\sqrt{ \\frac{2 \\times 3000 \\times 150}{3.2} } \\approx 530.3$\n\n530.3 is less than 1000, so we must order minimum 1000\n\n<b>Total cost:</b>\n\nUse Q = 1000\n\n• Ordering cost = $\\frac{3000}{1000} \\times 150 = ₹450$\n\n• Holding cost = $\\frac{1000}{2} \\times 3.2 = ₹1600$\n\n• Purchase cost = $3000 \\times 8 = ₹24000$\n\n• Total = ₹450 + ₹1600 + ₹24000 = ₹\\boxed{26050} (approx)\n\n<b>Final Answer:</b>\n\n$\\boxed{26050.0 , \\text{Rs}}$ (Minimum total annual cost)",
+        "images": []
       }
     },
     "pp:me:2025:q55": {
       "question_uid": "pp:me:2025:q55",
-      "exam_uid": "me:2025:set1:q55",
+      "exam_uid": "me:2025:set1:main:q55",
       "title": "GATE ME 2025 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "NAT",
       "marks": 2,
@@ -2199,13 +2428,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "<b>Step 1: Forward Pass – Find Earliest Start (ES) and Earliest Finish (EF)</b>\n\n$\\text{Activity A: } ES = 0,\\ EF = 0 + 4 = 4$\n\n$\\text{Activity B: } ES = 4,\\ EF = 4 + 8 = 12$\n\n$\\text{Activity C: } ES = 4,\\ EF = 4 + 5 = 9$\n\n$\\text{Activity D: } ES = 12,\\ EF = 12 + 2 = 14$\n\n$\\text{Activity E: } ES = 12,\\ EF = 12 + 7 = 19$\n\n$\\text{Activity F: } ES = 9,\\ EF = 9 + 6 = 15$\n\n$\\text{Activity G: } ES = 14,\\ EF = 14 + 3 = 17$\n\n$\\text{Activity H: } ES = \\max(19, 15, 17) = 19,\\ EF = 19 + 9 = 28$\n\nSo, <b>project duration = 28 hours</b>\n\n<b>Step 2: Backward Pass – Find Latest Finish (LF) and Latest Start (LS)</b>\n\n$\\text{Activity H: } LF = 28,\\ LS = 28 - 9 = 19$\n\n$\\text{Activity E: } LF = 19,\\ LS = 19 - 7 = 12$\n\n$\\text{Activity F: } LF = 19,\\ LS = 19 - 6 = 13$\n\n$\\text{Activity G: } LF = 19,\\ LS = 19 - 3 = 16$\n\n$\\text{Activity D: } LF = 16,\\ LS = 16 - 2 = 14$\n\n$\\text{Activity B: } LF = \\min(12,14) = 12,\\ LS = 12 - 8 = 4$\n\n$\\text{Activity C: } LF = 13,\\ LS = 13 - 5 = 8$\n\n$\\text{Activity A: } LF = \\min(4, 8) = 4,\\ LS = 4 - 4 = 0$\n\n<b>Step 3: Slack = LS – ES (or LF – EF)</b>\n\n$\\text{Slack for D} = LS - ES = 14 - 12 = \\boxed{2} , \\text{hours}$\n\n<b>Final Answer:</b>\n\n$\\boxed{2} , \\text{hours}$\n\nTherefore, the correct answer is **2**."
+        "markdown": "<b>Step 1: Forward Pass – Find Earliest Start (ES) and Earliest Finish (EF)</b>\n\n$\\text{Activity A: } ES = 0,\\ EF = 0 + 4 = 4$\n\n$\\text{Activity B: } ES = 4,\\ EF = 4 + 8 = 12$\n\n$\\text{Activity C: } ES = 4,\\ EF = 4 + 5 = 9$\n\n$\\text{Activity D: } ES = 12,\\ EF = 12 + 2 = 14$\n\n$\\text{Activity E: } ES = 12,\\ EF = 12 + 7 = 19$\n\n$\\text{Activity F: } ES = 9,\\ EF = 9 + 6 = 15$\n\n$\\text{Activity G: } ES = 14,\\ EF = 14 + 3 = 17$\n\n$\\text{Activity H: } ES = \\max(19, 15, 17) = 19,\\ EF = 19 + 9 = 28$\n\nSo, <b>project duration = 28 hours</b>\n\n<b>Step 2: Backward Pass – Find Latest Finish (LF) and Latest Start (LS)</b>\n\n$\\text{Activity H: } LF = 28,\\ LS = 28 - 9 = 19$\n\n$\\text{Activity E: } LF = 19,\\ LS = 19 - 7 = 12$\n\n$\\text{Activity F: } LF = 19,\\ LS = 19 - 6 = 13$\n\n$\\text{Activity G: } LF = 19,\\ LS = 19 - 3 = 16$\n\n$\\text{Activity D: } LF = 16,\\ LS = 16 - 2 = 14$\n\n$\\text{Activity B: } LF = \\min(12,14) = 12,\\ LS = 12 - 8 = 4$\n\n$\\text{Activity C: } LF = 13,\\ LS = 13 - 5 = 8$\n\n$\\text{Activity A: } LF = \\min(4, 8) = 4,\\ LS = 4 - 4 = 0$\n\n<b>Step 3: Slack = LS – ES (or LF – EF)</b>\n\n$\\text{Slack for D} = LS - ES = 14 - 12 = \\boxed{2} , \\text{hours}$\n\n<b>Final Answer:</b>\n\n$\\boxed{2} , \\text{hours}$",
+        "images": []
       }
     },
     "pp:me:2025:q56": {
       "question_uid": "pp:me:2025:q56",
-      "exam_uid": "me:2025:set1:q56",
-      "title": "GATE ME 2025 | Set 1 | Question: 56",
+      "exam_uid": "me:2025:set1:ga:q1",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2227,26 +2460,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "A <b>shoal</b> is a collective noun used for a group of <b>fish</b>.\n\nSimilarly, the collective noun used for a group of <b>lions</b> is a <b>pride</b>.\n\nTherefore,\n\n$\\text{Fish} : \\text{Shoal} :: \\text{Lion} : \\text{Pride}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "A <b>shoal</b> is a collective noun used for a group of <b>fish</b>.\n\nSimilarly, the collective noun used for a group of <b>lions</b> is a <b>pride</b>.\n\nTherefore,\n\n$\\text{Fish} : \\text{Shoal} :: \\text{Lion} : \\text{Pride}$",
+        "images": []
       }
     },
     "pp:me:2025:q57": {
       "question_uid": "pp:me:2025:q57",
-      "exam_uid": "me:2025:set1:q57",
-      "title": "GATE ME 2025 | Set 1 | Question: 57",
+      "exam_uid": "me:2025:set1:ga:q2",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2268,26 +2504,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Correct Sentence:</b>\n\n(A) It is I who am responsible for this fiasco.\n\n<b>Explanation:</b>\n\nIn formal English grammar, when using the structure “It is I who…”, the verb after “who” must agree with the subject “I.”\n\nSo, “It is I who <b>am</b> responsible…” is grammatically correct.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Correct Sentence:</b>\n\n(A) It is I who am responsible for this fiasco.\n\n<b>Explanation:</b>\n\nIn formal English grammar, when using the structure “It is I who…”, the verb after “who” must agree with the subject “I.”\n\nSo, “It is I who <b>am</b> responsible…” is grammatically correct.",
+        "images": []
       }
     },
     "pp:me:2025:q58": {
       "question_uid": "pp:me:2025:q58",
-      "exam_uid": "me:2025:set1:q58",
-      "title": "GATE ME 2025 | Set 1 | Question: 58",
+      "exam_uid": "me:2025:set1:ga:q3",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2309,26 +2548,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Given:</b>\n\nCar P travels North at 25 km/h.\n\nCar Q travels East at 30 km/h.\n\nBoth start at 10:00 AM from point X.\n\nAt 11:30 AM (1.5 hours later), both are at the same distance from point X.\n\nCar P travels continuously, but Car Q stops after traveling for 1 hour.\n\nLet’s find how far Car P travels:\n\n$\\text{Distance by P} = 25 \\times 1.5 = 37.5 \\text{ km}$\n\nLet Car Q travel for $t$ hours. Since Car Q stops after 1 hour, it travels for $t$ hours where $t \\leq 1.5$.\n\n$\\text{Distance by Q} = 30 \\times t$\n\nSince both are at the same distance from point X, apply Pythagoras theorem:\n\n$(37.5)^2 = (30t)^2$\n\n$1406.25 = 900t^2$\n\n$t^2 = \\frac{1406.25}{900} = 1.5625$\n\n$t = \\sqrt{1.5625} = 1.25 \\text{ hours}$\n\nTotal time available = 1.5 hours, but Car Q travels for 1.25 hours.\n\nSo, the time Car Q stopped = $1.5 - 1.25 = 0.25 \\text{ hours} = 15 \\text{ minutes}$\n\n<b>Final Answer:</b>\n\n$\\boxed{15 \\text{ minutes}}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Given:</b>\n\nCar P travels North at 25 km/h.\n\nCar Q travels East at 30 km/h.\n\nBoth start at 10:00 AM from point X.\n\nAt 11:30 AM (1.5 hours later), both are at the same distance from point X.\n\nCar P travels continuously, but Car Q stops after traveling for 1 hour.\n\nLet’s find how far Car P travels:\n\n$\\text{Distance by P} = 25 \\times 1.5 = 37.5 \\text{ km}$\n\nLet Car Q travel for $t$ hours. Since Car Q stops after 1 hour, it travels for $t$ hours where $t \\leq 1.5$.\n\n$\\text{Distance by Q} = 30 \\times t$\n\nSince both are at the same distance from point X, apply Pythagoras theorem:\n\n$(37.5)^2 = (30t)^2$\n\n$1406.25 = 900t^2$\n\n$t^2 = \\frac{1406.25}{900} = 1.5625$\n\n$t = \\sqrt{1.5625} = 1.25 \\text{ hours}$\n\nTotal time available = 1.5 hours, but Car Q travels for 1.25 hours.\n\nSo, the time Car Q stopped = $1.5 - 1.25 = 0.25 \\text{ hours} = 15 \\text{ minutes}$\n\n<b>Final Answer:</b>\n\n$\\boxed{15 \\text{ minutes}}$",
+        "images": []
       }
     },
     "pp:me:2025:q59": {
       "question_uid": "pp:me:2025:q59",
-      "exam_uid": "me:2025:set1:q59",
-      "title": "GATE ME 2025 | Set 1 | Question: 59",
+      "exam_uid": "me:2025:set1:ga:q4",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2350,26 +2592,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Given:</b> The ceiling function $\\lceil x \\rceil$ is the smallest integer greater than or equal to $x$, and the floor function $\\lfloor x \\rfloor$ is the largest integer smaller than or equal to $x$.\n\n<b>Step 1:</b> Let's analyze each statement one by one.\n\n<b>(A)</b> $\\lceil x \\rceil \\geq x$\n\nThis is <b>true</b>. By definition, the ceiling function gives the smallest integer greater than or equal to $x$, so $\\lceil x \\rceil \\geq x$.\n\n<b>(B)</b> $\\lfloor x \\rfloor \\leq x$\n\nThis is <b>true</b>. By definition, the floor function gives the largest integer smaller than or equal to $x$, so $\\lfloor x \\rfloor \\leq x$.\n\n<b>(C)</b> $\\lceil x \\rceil \\geq \\lfloor x \\rfloor$\n\nThis is <b>true</b>. The ceiling of $x$ is always greater than or equal to the floor of $x$, because the ceiling rounds up, while the floor rounds down.\n\n<b>(D)</b> $\\lfloor x \\rfloor < \\lceil x \\rceil$\n\nThis is <b>not necessarily true</b> for all values of $x$. If $x$ is an integer, then $\\lfloor x \\rfloor = \\lceil x \\rceil$. Therefore, this statement fails when $x$ is an integer.\n\n<b>Final Answer:</b> The statement that is <b>NOT correct</b> for all possible values of $x$ is <b>(D)</b>, because when $x$ is an integer, $\\lfloor x \\rfloor = \\lceil x \\rceil$.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<b>Given:</b> The ceiling function $\\lceil x \\rceil$ is the smallest integer greater than or equal to $x$, and the floor function $\\lfloor x \\rfloor$ is the largest integer smaller than or equal to $x$.\n\n<b>Step 1:</b> Let's analyze each statement one by one.\n\n<b>(A)</b> $\\lceil x \\rceil \\geq x$\n\nThis is <b>true</b>. By definition, the ceiling function gives the smallest integer greater than or equal to $x$, so $\\lceil x \\rceil \\geq x$.\n\n<b>(B)</b> $\\lfloor x \\rfloor \\leq x$\n\nThis is <b>true</b>. By definition, the floor function gives the largest integer smaller than or equal to $x$, so $\\lfloor x \\rfloor \\leq x$.\n\n<b>(C)</b> $\\lceil x \\rceil \\geq \\lfloor x \\rfloor$\n\nThis is <b>true</b>. The ceiling of $x$ is always greater than or equal to the floor of $x$, because the ceiling rounds up, while the floor rounds down.\n\n<b>(D)</b> $\\lfloor x \\rfloor < \\lceil x \\rceil$\n\nThis is <b>not necessarily true</b> for all values of $x$. If $x$ is an integer, then $\\lfloor x \\rfloor = \\lceil x \\rceil$. Therefore, this statement fails when $x$ is an integer.\n\n<b>Final Answer:</b> The statement that is <b>NOT correct</b> for all possible values of $x$ is <b>(D)</b>, because when $x$ is an integer, $\\lfloor x \\rfloor = \\lceil x \\rceil$.",
+        "images": []
       }
     },
     "pp:me:2025:q60": {
       "question_uid": "pp:me:2025:q60",
-      "exam_uid": "me:2025:set1:q60",
-      "title": "GATE ME 2025 | Set 1 | Question: 60",
+      "exam_uid": "me:2025:set1:ga:q5",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2391,26 +2636,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Given:</b> P has won 80% of the matches, drawn 15% of the matches, and lost 5% of the matches. If they play 3 more matches, we need to find the probability of P winning exactly 2 out of these 3 matches.\n\n<b>Step 1:</b> The probability of P winning a match is $P(\\text{win}) = 0.80$. The probability of P losing or drawing a match doesn't affect the outcome for P winning, so we focus only on the probability of winning.\n\n<b>Step 2:</b> We can model the number of wins as a binomial distribution, where the number of trials is 3 (the number of matches) and the probability of success (P winning) is 0.80.\n\n<b>Step 3:</b> The probability of P winning exactly 2 matches out of 3 is given by the binomial probability formula:\n\n$P(X = 2) = \\binom{3}{2} (0.80)^2 (0.20)^1$\n\nWhere $\\binom{3}{2}$ is the number of ways to choose 2 wins from 3 matches.\n\n<b>Step 4:</b> Calculating the terms:\n\n$\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = 3$\n\n$(0.80)^2 = 0.64$ and $(0.20)^1 = 0.20$.\n\n<b>Step 5:</b> Now, calculating the probability:\n\n$P(X = 2) = 3 \\times 0.64 \\times 0.20 = 3 \\times 0.128 = 0.384$.\n\n<b>Final Answer:</b> The probability of P winning exactly 2 of the 3 matches is $48/125$, so the correct answer is <b>(A) 48/125</b>.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b> P has won 80% of the matches, drawn 15% of the matches, and lost 5% of the matches. If they play 3 more matches, we need to find the probability of P winning exactly 2 out of these 3 matches.\n\n<b>Step 1:</b> The probability of P winning a match is $P(\\text{win}) = 0.80$. The probability of P losing or drawing a match doesn't affect the outcome for P winning, so we focus only on the probability of winning.\n\n<b>Step 2:</b> We can model the number of wins as a binomial distribution, where the number of trials is 3 (the number of matches) and the probability of success (P winning) is 0.80.\n\n<b>Step 3:</b> The probability of P winning exactly 2 matches out of 3 is given by the binomial probability formula:\n\n$P(X = 2) = \\binom{3}{2} (0.80)^2 (0.20)^1$\n\nWhere $\\binom{3}{2}$ is the number of ways to choose 2 wins from 3 matches.\n\n<b>Step 4:</b> Calculating the terms:\n\n$\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = 3$\n\n$(0.80)^2 = 0.64$ and $(0.20)^1 = 0.20$.\n\n<b>Step 5:</b> Now, calculating the probability:\n\n$P(X = 2) = 3 \\times 0.64 \\times 0.20 = 3 \\times 0.128 = 0.384$.\n\n<b>Final Answer:</b> The probability of P winning exactly 2 of the 3 matches is $48/125$, so the correct answer is <b>(A) 48/125</b>.",
+        "images": []
       }
     },
     "pp:me:2025:q61": {
       "question_uid": "pp:me:2025:q61",
-      "exam_uid": "me:2025:set1:q61",
-      "title": "GATE ME 2025 | Set 1 | Question: 61",
+      "exam_uid": "me:2025:set1:ga:q6",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2432,26 +2680,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "The correct sequence should start with the introduction of the gold discovery (S), followed by the people's rush towards the city (P), their unrealistic beliefs (R), and finally, the realization of hardships (Q). This sequence logically builds up the narrative.\n\n<b>Final Answer:</b> The most appropriate sequence is <b>(D) S → P → R → Q</b>.\n\nTherefore, the correct answer is **D**."
+        "markdown": "The correct sequence should start with the introduction of the gold discovery (S), followed by the people's rush towards the city (P), their unrealistic beliefs (R), and finally, the realization of hardships (Q). This sequence logically builds up the narrative.\n\n<b>Final Answer:</b> The most appropriate sequence is <b>(D) S → P → R → Q</b>.",
+        "images": []
       }
     },
     "pp:me:2025:q62": {
       "question_uid": "pp:me:2025:q62",
-      "exam_uid": "me:2025:set1:q62",
-      "title": "GATE ME 2025 | Set 1 | Question: 62",
+      "exam_uid": "me:2025:set1:ga:q7",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2473,26 +2724,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "It appears the pattern involves adding a constant to the position of the letter in the alphabet to get the coded value. Let's calculate this constant using the difference between the positions of the letters and their corresponding code values.\n\n<b>HIDE:</b>\n\n- H = 8 $\\rightarrow$ 19, the difference is $19 - 8 = 11$\n\n- I = 9 $\\rightarrow$ 23, the difference is $23 - 9 = 14$\n\n- D = 4 $\\rightarrow$ 7, the difference is $7 - 4 = 3$\n\n- E = 5 $\\rightarrow$ 11, the difference is $11 - 5 = 6$\n\n<b>Final Answer:</b> Based on this calculation, we would need to apply the same pattern to the word \"HIGH\".\n\nFor H = 8 $\\rightarrow$ 19\n\nFor I = 9 $\\rightarrow$ 23\n\nFor G = 7 $\\rightarrow$ 17\n\nFor H = 8 $\\rightarrow$ 19\n\nTherefore, the correct answer is **D**."
+        "markdown": "It appears the pattern involves adding a constant to the position of the letter in the alphabet to get the coded value. Let's calculate this constant using the difference between the positions of the letters and their corresponding code values.\n\n<b>HIDE:</b>\n\n- H = 8 $\\rightarrow$ 19, the difference is $19 - 8 = 11$\n\n- I = 9 $\\rightarrow$ 23, the difference is $23 - 9 = 14$\n\n- D = 4 $\\rightarrow$ 7, the difference is $7 - 4 = 3$\n\n- E = 5 $\\rightarrow$ 11, the difference is $11 - 5 = 6$\n\n<b>Final Answer:</b> Based on this calculation, we would need to apply the same pattern to the word \"HIGH\".\n\nFor H = 8 $\\rightarrow$ 19\n\nFor I = 9 $\\rightarrow$ 23\n\nFor G = 7 $\\rightarrow$ 17\n\nFor H = 8 $\\rightarrow$ 19",
+        "images": []
       }
     },
     "pp:me:2025:q63": {
       "question_uid": "pp:me:2025:q63",
-      "exam_uid": "me:2025:set1:q63",
-      "title": "GATE ME 2025 | Set 1 | Question: 63",
+      "exam_uid": "me:2025:set1:ga:q8",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2514,26 +2768,28 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *B*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (B)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2025:q64": {
       "question_uid": "pp:me:2025:q64",
-      "exam_uid": "me:2025:set1:q64",
-      "title": "GATE ME 2025 | Set 1 | Question: 64",
+      "exam_uid": "me:2025:set1:ga:q9",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2555,26 +2811,29 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Given:</b> We need to identify the correct sequence of objects arranged in the increasing number of mirror lines (lines of symmetry).\n\n<b>Step 1:</b> Let's analyze the number of mirror lines for each shape:\n\nCircle: A circle has infinite lines of symmetry because it can be reflected along any line passing through its center.\n\nSquare: A square has 4 lines of symmetry: 2 diagonals and 2 midlines (vertical and horizontal).\n\nEquilateral Triangle: An equilateral triangle has 3 lines of symmetry: one along each of its altitudes.\n\nIsosceles Triangle: An isosceles triangle has 1 line of symmetry, which divides the triangle into two congruent parts.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b> We need to identify the correct sequence of objects arranged in the increasing number of mirror lines (lines of symmetry).\n\n<b>Step 1:</b> Let's analyze the number of mirror lines for each shape:\n\nCircle: A circle has infinite lines of symmetry because it can be reflected along any line passing through its center.\n\nSquare: A square has 4 lines of symmetry: 2 diagonals and 2 midlines (vertical and horizontal).\n\nEquilateral Triangle: An equilateral triangle has 3 lines of symmetry: one along each of its altitudes.\n\nIsosceles Triangle: An isosceles triangle has 1 line of symmetry, which divides the triangle into two congruent parts.",
+        "images": []
       }
     },
     "pp:me:2025:q65": {
       "question_uid": "pp:me:2025:q65",
-      "exam_uid": "me:2025:set1:q65",
-      "title": "GATE ME 2025 | Set 1 | Question: 65",
+      "exam_uid": "me:2025:set1:ga:q10",
+      "title": "GATE ME 2025 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2025-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2596,20 +2855,20 @@
       "yearSetIdentity": "me:2025:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "The probability of receiving job offers from both companies, $p$, is the intersection of the two events. Using the formula for the intersection of two events, we know:\n\n$P(S \\cap T) = P(S) + P(T) - P(S \\cup T)$\n\nThe maximum value of $P(S \\cup T)$ is 1, as the probability of the union cannot exceed 1. Thus, the maximum possible value for $p$ is:\n\n$p_{\\text{max}} = P(S) + P(T) - 1 = 0.8 + 0.6 - 1 = 0.4$\n\nThe minimum value of $p$ occurs when the two events are mutually exclusive, i.e., there is no overlap between the two events. In this case, the minimum value of $p$ is 0.\n\nThus, the probability $p$ lies in the range:\n\n$0 \\leq p \\leq 0.4$\n\nTherefore, the correct answer is **B**."
+        "markdown": "The probability of receiving job offers from both companies, $p$, is the intersection of the two events. Using the formula for the intersection of two events, we know:\n\n$P(S \\cap T) = P(S) + P(T) - P(S \\cup T)$\n\nThe maximum value of $P(S \\cup T)$ is 1, as the probability of the union cannot exceed 1. Thus, the maximum possible value for $p$ is:\n\n$p_{\\text{max}} = P(S) + P(T) - 1 = 0.8 + 0.6 - 1 = 0.4$\n\nThe minimum value of $p$ occurs when the two events are mutually exclusive, i.e., there is no overlap between the two events. In this case, the minimum value of $p$ is 0.\n\nThus, the probability $p$ lies in the range:\n\n$0 \\leq p \\leq 0.4$",
+        "images": []
       }
     }
   }

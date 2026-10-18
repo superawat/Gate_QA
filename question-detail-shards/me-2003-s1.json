@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.432Z",
+  "generatedAt": "2026-10-17T21:30:25.276Z",
   "shardKey": "me-2003-s1",
   "yearSetKey": "me-2003-s1",
   "yearSetIdentity": "me:2003:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2003:q1": {
       "question_uid": "pp:me:2003:q1",
-      "exam_uid": "me:2003:set1:q1",
+      "exam_uid": "me:2003:set1:main:q1",
       "title": "GATE ME 2003 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -37,25 +40,30 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$\\lim_{x \\to 0}frac{\\sin^2 x}{x}$\n\n$=\\lim_{x \\to 0}\\left (frac{\\sin x}{x} \\right )^2 x$\n\n$=1 \\times 0 =0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\lim_{x \\to 0}frac{\\sin^2 x}{x}$\n\n$=\\lim_{x \\to 0}\\left (frac{\\sin x}{x} \\right )^2 x$\n\n$=1 \\times 0 =0$",
+        "images": []
       }
     },
     "pp:me:2003:q2": {
       "question_uid": "pp:me:2003:q2",
-      "exam_uid": "me:2003:set1:q2",
+      "exam_uid": "me:2003:set1:main:q2",
       "title": "GATE ME 2003 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -69,10 +77,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "C",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "me",
@@ -80,25 +85,29 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "numerical-methods"
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Numerical Methods*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Methods**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *$O(h^{4})$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** ($O(h^{4})$)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2003:q3": {
       "question_uid": "pp:me:2003:q3",
-      "exam_uid": "me:2003:set1:q3",
+      "exam_uid": "me:2003:set1:main:q3",
       "title": "GATE ME 2003 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -123,25 +132,30 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\small A=\\left[\\begin{array}{ll}4 & 1 \\\\ 1 & 4\\end{array}\\right]$$\n\n$\\text{Now }\\quad|A-\\lambda I|=0$\n\n$\\text{where} \\quad \\lambda= \\text{ eigen value}$\n\n$$\\therefore \\quad\\left|\\begin{array}{cc}4-\\lambda & 1 \\\\ 1 & 4-\\lambda \\\\ (4-\\lambda)^{2}-1 & =0\\end{array}\\right|=0$$\n\n$\\text{or,} \\quad(4-\\lambda)^{2}-(1)^{2}=0$\n\n$\\text{or,} (4-\\lambda+1)(4-\\lambda-1)=0$\n\n$\\text{or,} \\quad(5-\\lambda)(3-\\lambda)=0$\n\n$\\therefore \\quad \\lambda=3,5$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\small A=\\left[\\begin{array}{ll}4 & 1 \\\\ 1 & 4\\end{array}\\right]$$\n\n$\\text{Now }\\quad|A-\\lambda I|=0$\n\n$\\text{where} \\quad \\lambda= \\text{ eigen value}$\n\n$$\\therefore \\quad\\left|\\begin{array}{cc}4-\\lambda & 1 \\\\ 1 & 4-\\lambda \\\\ (4-\\lambda)^{2}-1 & =0\\end{array}\\right|=0$$\n\n$\\text{or,} \\quad(4-\\lambda)^{2}-(1)^{2}=0$\n\n$\\text{or,} (4-\\lambda+1)(4-\\lambda-1)=0$\n\n$\\text{or,} \\quad(5-\\lambda)(3-\\lambda)=0$\n\n$\\therefore \\quad \\lambda=3,5$",
+        "images": []
       }
     },
     "pp:me:2003:q4": {
       "question_uid": "pp:me:2003:q4",
-      "exam_uid": "me:2003:set1:q4",
+      "exam_uid": "me:2003:set1:main:q4",
       "title": "GATE ME 2003 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -166,25 +180,32 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "bending-of-beams",
+          "subtopicLabel": "Bending of Beams"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-strength-of-materials",
+          "bending-of-beams"
         ]
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "Polar moment of inertia perpendicular to the plane of paper\n\n$I_{p}=\\frac{\\pi D^{4}}{32}$\n\n<img src=\"/question-images/me/2003/me-2003-0ec680ae73.webp\" />\n\nBy 'Perpendicular Axis\" theorem\n\n$$\\begin{aligned} I_{x x}+I_{y y} &=I_{p} \\quad\\left[\\because I_{x x}=I_{y y}\\right] \\\\ 2 I_{x x} &=\\frac{\\pi D^{4}}{32} \\\\ \\therefore \\quad I_{x x} &=I_{y y}=\\frac{\\pi D^{4}}{64} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Polar moment of inertia perpendicular to the plane of paper\n\n$I_{p}=\\frac{\\pi D^{4}}{32}$\n\n<img src=\"/question-images/me/2003/me-2003-0ec680ae73.webp\" />\n\nBy 'Perpendicular Axis\" theorem\n\n$$\\begin{aligned} I_{x x}+I_{y y} &=I_{p} \\quad\\left[\\because I_{x x}=I_{y y}\\right] \\\\ 2 I_{x x} &=\\frac{\\pi D^{4}}{32} \\\\ \\therefore \\quad I_{x x} &=I_{y y}=\\frac{\\pi D^{4}}{64} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-0ec680ae73.webp"
+        ]
       }
     },
     "pp:me:2003:q5": {
       "question_uid": "pp:me:2003:q5",
-      "exam_uid": "me:2003:set1:q5",
+      "exam_uid": "me:2003:set1:main:q5",
       "title": "GATE ME 2003 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -209,25 +230,32 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "bending-of-beams",
+          "subtopicLabel": "Bending of Beams"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-strength-of-materials",
+          "bending-of-beams"
         ]
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-44f26e09d8.webp\" />\n\nTaking moment about A, we have\n\n$$\\begin{aligned} R_{B} \\times L &=P \\times \\frac{L}{3} \\\\ \\therefore \\quad R_{B} &=\\frac{P}{3}\\\\ \\text{and }\\quad R_{A}=P-R_{B}&=P-\\frac{P}{3}\\\\ R_{A}&=\\frac{2 P}{3} \\end{aligned}$$\n\nBending moment at the point of application of load,\n\n$M=\\frac{2 P}{3} \\times \\frac{L}{3}=\\frac{2 P L}{9}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-44f26e09d8.webp\" />\n\nTaking moment about A, we have\n\n$$\\begin{aligned} R_{B} \\times L &=P \\times \\frac{L}{3} \\\\ \\therefore \\quad R_{B} &=\\frac{P}{3}\\\\ \\text{and }\\quad R_{A}=P-R_{B}&=P-\\frac{P}{3}\\\\ R_{A}&=\\frac{2 P}{3} \\end{aligned}$$\n\nBending moment at the point of application of load,\n\n$M=\\frac{2 P}{3} \\times \\frac{L}{3}=\\frac{2 P L}{9}$",
+        "images": [
+          "/question-images/me/2003/me-2003-44f26e09d8.webp"
+        ]
       }
     },
     "pp:me:2003:q6": {
       "question_uid": "pp:me:2003:q6",
-      "exam_uid": "me:2003:set1:q6",
+      "exam_uid": "me:2003:set1:main:q6",
       "title": "GATE ME 2003 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -252,25 +280,30 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "stress-and-strain",
+          "subtopicLabel": "Stress and Strain"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-strength-of-materials",
+          "stress-and-strain"
         ]
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress and Strain",
-        "markdown": "$$\\begin{aligned} \\text{Given,}\\quad E_{S}&=206 \\mathrm{GPa} \\\\ \\text{and}\\quad E_{I}&=100 \\mathrm{GPa} \\end{aligned}$$\n\nElongation in mild steel,\n\n$\\Delta L_{s}=\\frac{P L}{A E_{s}} \\qquad\\cdots(i)$\n\nElongation in cast Iron,\n\n$\\Delta L_{1}=\\frac{P L}{A E_{I}} \\qquad\\cdots(ii)$\n\nDividing Eq. (ii) by Eq. (i), we get\n\n$\\frac{\\Delta L_{s}}{\\Delta L_{l}}=\\frac{E_{I}}{E_{S}}$\n\nsince diameter and length of both shafts are equal\n\n$\\therefore \\quad \\frac{\\Delta L_{S}}{\\Delta L_{I}}=\\frac{100}{206} \\lt 1$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\text{Given,}\\quad E_{S}&=206 \\mathrm{GPa} \\\\ \\text{and}\\quad E_{I}&=100 \\mathrm{GPa} \\end{aligned}$$\n\nElongation in mild steel,\n\n$\\Delta L_{s}=\\frac{P L}{A E_{s}} \\qquad\\cdots(i)$\n\nElongation in cast Iron,\n\n$\\Delta L_{1}=\\frac{P L}{A E_{I}} \\qquad\\cdots(ii)$\n\nDividing Eq. (ii) by Eq. (i), we get\n\n$\\frac{\\Delta L_{s}}{\\Delta L_{l}}=\\frac{E_{I}}{E_{S}}$\n\nsince diameter and length of both shafts are equal\n\n$\\therefore \\quad \\frac{\\Delta L_{S}}{\\Delta L_{I}}=\\frac{100}{206} \\lt 1$",
+        "images": []
       }
     },
     "pp:me:2003:q7": {
       "question_uid": "pp:me:2003:q7",
-      "exam_uid": "me:2003:set1:q7",
+      "exam_uid": "me:2003:set1:main:q7",
       "title": "GATE ME 2003 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -295,25 +328,30 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "bending-of-beams",
+          "subtopicLabel": "Bending of Beams"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-strength-of-materials",
+          "bending-of-beams"
         ]
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "Let, d= diameter of circular cross-section\n\na= side of square cross-section\n\nsince cross-sectional area of square and circular cross-section are equal\n\n$\\therefore \\quad \\frac{\\pi}{4} d^{2}=a^{2}\\quad \\cdots(i)$\n\nFor circular cross-section,\n\n$\\sigma_{c}=\\frac{M y}{I}=\\frac{M \\cdot \\frac{d}{2}}{\\frac{\\pi d^{4}}{64}}=\\frac{32 M}{\\pi d^{3}}$\n\nSquare cross-section,\n\n$$\\begin{aligned} \\sigma_{s} &=\\frac{M \\cdot y}{I} \\\\ &=\\frac{M \\frac{a}{2}}{\\frac{a^{4}}{12}}=\\frac{6 M}{a^{3}} \\\\ \\text{Now}\\quad \\frac{\\sigma_{c}}{\\sigma_{s}} &=\\frac{\\frac{32 M}{\\pi d^{3}}}{\\frac{6 M}{a^{3}}}=\\frac{32 a^{3}}{6 \\pi d^{3}}\\\\ &=\\frac{32}{6 \\pi}\\left(\\frac{a}{d}\\right)^{2}\\left(\\frac{a}{d}\\right) \\\\ &=\\frac{32}{6 \\pi} \\times\\left(\\frac{\\pi}{4}\\right) \\times\\left(\\sqrt{\\frac{\\pi}{4}}\\right) \\\\ &=\\frac{32}{24} \\sqrt{\\frac{\\pi}{4}}=\\frac{32 \\sqrt{\\pi}}{48}>1 \\\\ \\sigma_{c}&> \\sigma_{s} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Let, d= diameter of circular cross-section\n\na= side of square cross-section\n\nsince cross-sectional area of square and circular cross-section are equal\n\n$\\therefore \\quad \\frac{\\pi}{4} d^{2}=a^{2}\\quad \\cdots(i)$\n\nFor circular cross-section,\n\n$\\sigma_{c}=\\frac{M y}{I}=\\frac{M \\cdot \\frac{d}{2}}{\\frac{\\pi d^{4}}{64}}=\\frac{32 M}{\\pi d^{3}}$\n\nSquare cross-section,\n\n$$\\begin{aligned} \\sigma_{s} &=\\frac{M \\cdot y}{I} \\\\ &=\\frac{M \\frac{a}{2}}{\\frac{a^{4}}{12}}=\\frac{6 M}{a^{3}} \\\\ \\text{Now}\\quad \\frac{\\sigma_{c}}{\\sigma_{s}} &=\\frac{\\frac{32 M}{\\pi d^{3}}}{\\frac{6 M}{a^{3}}}=\\frac{32 a^{3}}{6 \\pi d^{3}}\\\\ &=\\frac{32}{6 \\pi}\\left(\\frac{a}{d}\\right)^{2}\\left(\\frac{a}{d}\\right) \\\\ &=\\frac{32}{6 \\pi} \\times\\left(\\frac{\\pi}{4}\\right) \\times\\left(\\sqrt{\\frac{\\pi}{4}}\\right) \\\\ &=\\frac{32}{24} \\sqrt{\\frac{\\pi}{4}}=\\frac{32 \\sqrt{\\pi}}{48}>1 \\\\ \\sigma_{c}&> \\sigma_{s} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q8": {
       "question_uid": "pp:me:2003:q8",
-      "exam_uid": "me:2003:set1:q8",
+      "exam_uid": "me:2003:set1:main:q8",
       "title": "GATE ME 2003 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -338,25 +376,30 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "planar-mechanisms",
+          "subtopicLabel": "Planar Mechanisms"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "planar-mechanisms"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
-        "markdown": "Crank and slotted lever mechanism is mostly used\n\nin shaping machines, which is the inversion of\n\nsingle slider-crank chain.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Crank and slotted lever mechanism is mostly used\n\nin shaping machines, which is the inversion of\n\nsingle slider-crank chain.",
+        "images": []
       }
     },
     "pp:me:2003:q9": {
       "question_uid": "pp:me:2003:q9",
-      "exam_uid": "me:2003:set1:q9",
+      "exam_uid": "me:2003:set1:main:q9",
       "title": "GATE ME 2003 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -381,29 +424,34 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "planar-mechanisms",
+          "subtopicLabel": "Planar Mechanisms"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "planar-mechanisms"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
-        "markdown": "Double crank mechanism is obtained when the\n\nshortest link is fixed. Here, the shortest link is p.\n\nTherefore link of length p should be fixed.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Double crank mechanism is obtained when the\n\nshortest link is fixed. Here, the shortest link is p.\n\nTherefore link of length p should be fixed.",
+        "images": []
       }
     },
     "pp:me:2003:q10": {
       "question_uid": "pp:me:2003:q10",
-      "exam_uid": "me:2003:set1:q10",
+      "exam_uid": "me:2003:set1:main:q10",
       "title": "GATE ME 2003 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "Consider the arrangement shown in the figure below where J is the combined polar mass moment of inertia of the disc and the shafts. $K_1,K_2,K_3$ are the torsional stiffness of the respective shafts. The natural frequency of torsional oscillation  of the disc is given by <br><img src= \"/wp-content/uploads/GATE/ME/20031/q10.jpg\">",
+      "question": "Consider the arrangement shown in the figure below where J is the combined polar mass moment of inertia of the disc and the shafts. $K_1,K_2,K_3$ are the torsional stiffness of the respective shafts. The natural frequency of torsional oscillation  of the disc is given by <br><img src=\"/question-images/me/2003/me-2003-9d7a0a7851.webp\">",
       "options": [
         "$\\sqrt{\\frac{{K_{1}+K_{2}+K_{3}}}{J}}$",
         "$\\sqrt{\\frac{{K_{1}K_{2}+K_{2}K_{3}+K_{3}K_{1}}}{J(K_{1}+K_{2})}}$",
@@ -424,25 +472,30 @@
       "yearSetIdentity": "me:2003:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "vibration",
+          "subtopicLabel": "Vibration"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "vibration"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "Equivalent stiffness\n\n$k_{\\mathrm{eq}}=\\frac{k_{1} k_{2}}{k_{1}+k_{2}}+k_{3}=\\frac{k_{1} k_{2}+k_{1} k_{3}+k_{2} k_{3}}{k_{1}+k_{2}}$\n\nNow natural frequency\n\n$=\\sqrt{\\frac{k_{e q}}{J}}=\\sqrt{\\frac{k_{1} k_{2}+k_{1} k_{3}+k_{2} k_{3}}{J\\left(k_{1}+k_{2}\\right)}}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Equivalent stiffness\n\n$k_{\\mathrm{eq}}=\\frac{k_{1} k_{2}}{k_{1}+k_{2}}+k_{3}=\\frac{k_{1} k_{2}+k_{1} k_{3}+k_{2} k_{3}}{k_{1}+k_{2}}$\n\nNow natural frequency\n\n$=\\sqrt{\\frac{k_{e q}}{J}}=\\sqrt{\\frac{k_{1} k_{2}+k_{1} k_{3}+k_{2} k_{3}}{J\\left(k_{1}+k_{2}\\right)}}$",
+        "images": []
       }
     },
     "pp:me:2003:q11": {
       "question_uid": "pp:me:2003:q11",
-      "exam_uid": "me:2003:set1:q11",
+      "exam_uid": "me:2003:set1:main:q11",
       "title": "GATE ME 2003 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -480,13 +533,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Torsion of Shafts",
-        "markdown": "$\\tau_{\\max }=\\frac{16 T}{\\pi d^{3}}=240$\n\nWhen shaft diameter is doubled then\n\n$$\\begin{aligned} \\tau_{\\max }^{\\prime} &=\\frac{16 \\mathrm{T}}{\\pi(2 \\mathrm{d})^{3}}=\\frac{16 \\mathrm{T}}{8 \\pi \\mathrm{d}^{3}} \\\\ &=\\frac{\\tau_{\\max }}{8}=\\frac{240}{8} \\\\ \\tau_{\\max }^{\\prime} &=30 \\mathrm{MPa} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$\\tau_{\\max }=\\frac{16 T}{\\pi d^{3}}=240$\n\nWhen shaft diameter is doubled then\n\n$$\\begin{aligned} \\tau_{\\max }^{\\prime} &=\\frac{16 \\mathrm{T}}{\\pi(2 \\mathrm{d})^{3}}=\\frac{16 \\mathrm{T}}{8 \\pi \\mathrm{d}^{3}} \\\\ &=\\frac{\\tau_{\\max }}{8}=\\frac{240}{8} \\\\ \\tau_{\\max }^{\\prime} &=30 \\mathrm{MPa} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q12": {
       "question_uid": "pp:me:2003:q12",
-      "exam_uid": "me:2003:set1:q12",
+      "exam_uid": "me:2003:set1:main:q12",
       "title": "GATE ME 2003 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -524,17 +581,21 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Brakes and Clutches",
-        "markdown": "The wire ropes are designated by the number of strands multiplied by the number of wires in each strand.\n\nTherefore, $6\\times 9 =$ Number of strands $\\times$ Number of wires in each strand.\n\nTherefore, the correct answer is **C**."
+        "markdown": "The wire ropes are designated by the number of strands multiplied by the number of wires in each strand.\n\nTherefore, $6\\times 9 =$ Number of strands $\\times$ Number of wires in each strand.",
+        "images": []
       }
     },
     "pp:me:2003:q13": {
       "question_uid": "pp:me:2003:q13",
-      "exam_uid": "me:2003:set1:q13",
+      "exam_uid": "me:2003:set1:main:q13",
       "title": "GATE ME 2003 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A cylindrical body of cross -sectional area A, height H and density $\\rho _s$, is immersed to depth h in a liquid of density $\\rho$, and tied to the bottom with a string .The tension in the string is <br><img src= \"/wp-content/uploads/GATE/ME/20031/q13.jpg\">",
+      "question": "A cylindrical body of cross -sectional area A, height H and density $\\rho _s$, is immersed to depth h in a liquid of density $\\rho$, and tied to the bottom with a string .The tension in the string is <br><img src=\"/question-images/me/2003/me-2003-2433121cb8.webp\">",
       "options": [
         "$\\rho$ghA ",
         " ($\\rho _s - \\rho$)ghA ",
@@ -568,13 +629,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
-        "markdown": "Let T = Tension in string acting in the downward direction\n\n<img src=\"/question-images/me/2003/me-2003-f18b3c6090.webp\" />\n\nWeight of body,\n\n$W=M g(\\downarrow)$\n\n$=\\rho_{\\mathrm{s}} A H g$\n\nBuoyant force,\n\n$$\\begin{aligned} F_{B} &=\\rho g \\forall(\\uparrow) \\\\ &=\\rho g A h \\end{aligned}$$\n\nFor equilibrium,\n\nWeight of sphere + Tesnion in string $w_{+T_{i}}$\n\n= Buoyant force\n\nor $T=F_{B}-W$\n\n$=\\rho g A h-\\rho_{s} A H g$\n\n$=\\left(\\rho h-\\rho_{s} H\\right) g A$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Let T = Tension in string acting in the downward direction\n\n<img src=\"/question-images/me/2003/me-2003-f18b3c6090.webp\" />\n\nWeight of body,\n\n$W=M g(\\downarrow)$\n\n$=\\rho_{\\mathrm{s}} A H g$\n\nBuoyant force,\n\n$$\\begin{aligned} F_{B} &=\\rho g \\forall(\\uparrow) \\\\ &=\\rho g A h \\end{aligned}$$\n\nFor equilibrium,\n\nWeight of sphere + Tesnion in string $w_{+T_{i}}$\n\n= Buoyant force\n\nor $T=F_{B}-W$\n\n$=\\rho g A h-\\rho_{s} A H g$\n\n$=\\left(\\rho h-\\rho_{s} H\\right) g A$",
+        "images": [
+          "/question-images/me/2003/me-2003-f18b3c6090.webp"
+        ]
       }
     },
     "pp:me:2003:q14": {
       "question_uid": "pp:me:2003:q14",
-      "exam_uid": "me:2003:set1:q14",
+      "exam_uid": "me:2003:set1:main:q14",
       "title": "GATE ME 2003 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -612,13 +679,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "Given data:\n\n$$\\begin{aligned} P &=2 \\mathrm{kW} \\\\ V &=40 \\text { litres }=\\frac{40}{1000}=0.04 \\mathrm{m}^{3} \\\\ t &=20 \\mathrm{minutes}=20 \\times 60 \\mathrm{s} \\\\ &=1200 \\mathrm{s} \\\\ c_{p} &=4.2 \\mathrm{kJ} / \\mathrm{kg} \\mathrm{K} \\end{aligned}$$\n\nHeat supplied:\n\n$$\\begin{aligned} Q &=\\text { Power } \\times \\text { Time } \\\\ &=2 \\times 1200=2400 \\mathrm{kJ} \\\\ \\text { also } \\qquad & Q=m c_{p} \\Delta T=\\rho V c_{p} \\Delta T \\quad \\because m=p V \\\\ \\therefore \\qquad 2400 &=1000 \\times 0.04 \\times 4.2 \\times \\Delta T \\\\ \\text { or } \\qquad \\Delta T &=14.28^{\\circ} \\mathrm{C} \\approx 14.3^{\\circ} \\mathrm{C} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given data:\n\n$$\\begin{aligned} P &=2 \\mathrm{kW} \\\\ V &=40 \\text { litres }=\\frac{40}{1000}=0.04 \\mathrm{m}^{3} \\\\ t &=20 \\mathrm{minutes}=20 \\times 60 \\mathrm{s} \\\\ &=1200 \\mathrm{s} \\\\ c_{p} &=4.2 \\mathrm{kJ} / \\mathrm{kg} \\mathrm{K} \\end{aligned}$$\n\nHeat supplied:\n\n$$\\begin{aligned} Q &=\\text { Power } \\times \\text { Time } \\\\ &=2 \\times 1200=2400 \\mathrm{kJ} \\\\ \\text { also } \\qquad & Q=m c_{p} \\Delta T=\\rho V c_{p} \\Delta T \\quad \\because m=p V \\\\ \\therefore \\qquad 2400 &=1000 \\times 0.04 \\times 4.2 \\times \\Delta T \\\\ \\text { or } \\qquad \\Delta T &=14.28^{\\circ} \\mathrm{C} \\approx 14.3^{\\circ} \\mathrm{C} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q15": {
       "question_uid": "pp:me:2003:q15",
-      "exam_uid": "me:2003:set1:q15",
+      "exam_uid": "me:2003:set1:main:q15",
       "title": "GATE ME 2003 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -656,13 +727,19 @@
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Heat Pumps and Cycles",
-        "markdown": "Given data:\n\n$$\\begin{aligned} T_{1} &=27^{\\circ} \\mathrm{C} \\\\ &=(27+273) \\mathrm{K}=300 \\mathrm{K} \\\\ T_{2} &=-13^{\\circ} \\mathrm{C} \\\\ &=(-13+273) \\mathrm{K}=260 \\mathrm{K} \\\\ Q_{2} &=750 \\mathrm{W} \\\\ Q_{1} &=1000 \\mathrm{W} \\end{aligned}$$\n\n<img src=\"/question-images/me/2003/me-2003-30a43e60f8.webp\" />\n\n$(\\mathrm{COP})_{\\mathrm{HP}}=\\frac{Q_{1}}{Q_{1}-Q_{2}}$ for actual heat pump\n\n$=\\frac{1000}{1000-750}=\\frac{1000}{250}=4$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given data:\n\n$$\\begin{aligned} T_{1} &=27^{\\circ} \\mathrm{C} \\\\ &=(27+273) \\mathrm{K}=300 \\mathrm{K} \\\\ T_{2} &=-13^{\\circ} \\mathrm{C} \\\\ &=(-13+273) \\mathrm{K}=260 \\mathrm{K} \\\\ Q_{2} &=750 \\mathrm{W} \\\\ Q_{1} &=1000 \\mathrm{W} \\end{aligned}$$\n\n<img src=\"/question-images/me/2003/me-2003-30a43e60f8.webp\" />\n\n$(\\mathrm{COP})_{\\mathrm{HP}}=\\frac{Q_{1}}{Q_{1}-Q_{2}}$ for actual heat pump\n\n$=\\frac{1000}{1000-750}=\\frac{1000}{250}=4$",
+        "images": [
+          "/question-images/me/2003/me-2003-30a43e60f8.webp"
+        ]
       }
     },
     "pp:me:2003:q16": {
       "question_uid": "pp:me:2003:q16",
-      "exam_uid": "me:2003:set1:q16",
+      "exam_uid": "me:2003:set1:main:q16",
       "title": "GATE ME 2003 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -700,13 +777,19 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-f3bb4d5de8.webp\" />\n\nHeat loss from one surface of the plate\n\n$$\\begin{aligned} Q &=\\frac{ \\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\left(\\frac{1-\\varepsilon_{1}}{A_{1} \\varepsilon_{1}}\\right)+\\frac{1}{A_{1}}+\\frac{1-\\varepsilon_{2}}{A_{2} \\varepsilon_{2}}} \\\\ &=\\frac{\\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\left(\\frac{1}{A_{1} \\varepsilon_{1}}\\right)+\\left(\\frac{1-\\varepsilon_{2}}{A_{2} \\varepsilon_{2}}\\right)}\\\\ \\text { Given } A_{1}&=10 \\times 10^{-4} \\mathrm{m}^{2}=10^{-3} \\mathrm{m}^{2} \\\\ T_{1}&=800 \\mathrm{K} \\\\ \\varepsilon_{1}&=0.6 \\\\ T_{2}&=300 \\mathrm{K} \\\\ \\varepsilon_{2}&=0.3 \\\\ A_{2}&=100 \\mathrm{m}^{2} \\\\ &=\\frac{5.67 \\times 10^{-8}\\left[(800)^{4}-(300)^{4}\\right]}{\\frac{1}{10^{-3}} \\times \\frac{1}{0.6}+\\frac{1}{100}\\left(\\frac{1-0.3}{0.3}\\right)} \\end{aligned}$$\n\n$\\therefore$ Heat loss from both surface =2Q\n\n$=2 \\times 13.66=27.32 \\mathrm{W}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-f3bb4d5de8.webp\" />\n\nHeat loss from one surface of the plate\n\n$$\\begin{aligned} Q &=\\frac{ \\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\left(\\frac{1-\\varepsilon_{1}}{A_{1} \\varepsilon_{1}}\\right)+\\frac{1}{A_{1}}+\\frac{1-\\varepsilon_{2}}{A_{2} \\varepsilon_{2}}} \\\\ &=\\frac{\\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\left(\\frac{1}{A_{1} \\varepsilon_{1}}\\right)+\\left(\\frac{1-\\varepsilon_{2}}{A_{2} \\varepsilon_{2}}\\right)}\\\\ \\text { Given } A_{1}&=10 \\times 10^{-4} \\mathrm{m}^{2}=10^{-3} \\mathrm{m}^{2} \\\\ T_{1}&=800 \\mathrm{K} \\\\ \\varepsilon_{1}&=0.6 \\\\ T_{2}&=300 \\mathrm{K} \\\\ \\varepsilon_{2}&=0.3 \\\\ A_{2}&=100 \\mathrm{m}^{2} \\\\ &=\\frac{5.67 \\times 10^{-8}\\left[(800)^{4}-(300)^{4}\\right]}{\\frac{1}{10^{-3}} \\times \\frac{1}{0.6}+\\frac{1}{100}\\left(\\frac{1-0.3}{0.3}\\right)} \\end{aligned}$$\n\n$\\therefore$ Heat loss from both surface =2Q\n\n$=2 \\times 13.66=27.32 \\mathrm{W}$",
+        "images": [
+          "/question-images/me/2003/me-2003-f3bb4d5de8.webp"
+        ]
       }
     },
     "pp:me:2003:q17": {
       "question_uid": "pp:me:2003:q17",
-      "exam_uid": "me:2003:set1:q17",
+      "exam_uid": "me:2003:set1:main:q17",
       "title": "GATE ME 2003 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -744,13 +827,19 @@
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Properties of Moist Air",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-97b0585051.webp\" />\n\nFor unsaturated air i.e ., $\\phi \\lt  100 \\%$\n\nDry bulb temperature $\\gt$ Wet bulb temperature $\\gt$ Dew point temperature\n\ni.e., $T_{d b} \\gt T_{w b}  \\gt T_{d n}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-97b0585051.webp\" />\n\nFor unsaturated air i.e ., $\\phi \\lt  100 \\%$\n\nDry bulb temperature $\\gt$ Wet bulb temperature $\\gt$ Dew point temperature\n\ni.e., $T_{d b} \\gt T_{w b}  \\gt T_{d n}$",
+        "images": [
+          "/question-images/me/2003/me-2003-97b0585051.webp"
+        ]
       }
     },
     "pp:me:2003:q18": {
       "question_uid": "pp:me:2003:q18",
-      "exam_uid": "me:2003:set1:q18",
+      "exam_uid": "me:2003:set1:main:q18",
       "title": "GATE ME 2003 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -788,13 +877,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "Equivalence ratio is defined as the actual fuel air\n\nratio to stoichiometric fuel air ratio\n\n$\\phi=\\frac{\\left(\\frac{F}{A}\\right)_{\\text {Actual }}}{\\left(\\frac{F}{A}\\right)_{\\text {Stoich }}}$\n\nFor both idling and peak power condition. Fuel-air\n\nratio required is more than the stoichiometric fuel-\n\nair ratio.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Equivalence ratio is defined as the actual fuel air\n\nratio to stoichiometric fuel air ratio\n\n$\\phi=\\frac{\\left(\\frac{F}{A}\\right)_{\\text {Actual }}}{\\left(\\frac{F}{A}\\right)_{\\text {Stoich }}}$\n\nFor both idling and peak power condition. Fuel-air\n\nratio required is more than the stoichiometric fuel-\n\nair ratio.",
+        "images": []
       }
     },
     "pp:me:2003:q19": {
       "question_uid": "pp:me:2003:q19",
-      "exam_uid": "me:2003:set1:q19",
+      "exam_uid": "me:2003:set1:main:q19",
       "title": "GATE ME 2003 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -832,13 +925,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "For same compression ratio and the same heat supplied, Otto cycle is most efficient and diesel cycle is least efficient. In practice, however, the compression ratio of the Diesel engine ranges between 14 and 25 whereas that of the Otto engine between 6 and 12 . Because of its higher efficiency than the Otto engine.\n\nTherefore, the correct answer is **C**."
+        "markdown": "For same compression ratio and the same heat supplied, Otto cycle is most efficient and diesel cycle is least efficient. In practice, however, the compression ratio of the Diesel engine ranges between 14 and 25 whereas that of the Otto engine between 6 and 12 . Because of its higher efficiency than the Otto engine.",
+        "images": []
       }
     },
     "pp:me:2003:q20": {
       "question_uid": "pp:me:2003:q20",
-      "exam_uid": "me:2003:set1:q20",
+      "exam_uid": "me:2003:set1:main:q20",
       "title": "GATE ME 2003 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -876,13 +973,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "From the observation of the T-s diagram of the rankine cycle, it reveals that heat is transferred to the working fluid during process 2-2' at a relatively low temperature. This lowers the average heat addition temperature and thus the cycle efficiency.\n\nTo remove this remedy, we look for the ways to raise the temperature of the liquid leaving the pump (called the feed water ) before it enters the boiler. One possibility is to transfer heat to the feed water from the expanding steam in a counter flow heat exchanger built into the turbine, that is, to use regeneration. A practical regeneration process in steam power plant is accomplished by extracting steam from the turbine at various points. This steam is used to heat the feed water and the device where the feed water is heated by regeneration is called feed water heater. So, regeneration improves cycle efficiency by increasing the average temperature of heat addition in the boiler.\n\nTherefore, the correct answer is **C**."
+        "markdown": "From the observation of the T-s diagram of the rankine cycle, it reveals that heat is transferred to the working fluid during process 2-2' at a relatively low temperature. This lowers the average heat addition temperature and thus the cycle efficiency.\n\nTo remove this remedy, we look for the ways to raise the temperature of the liquid leaving the pump (called the feed water ) before it enters the boiler. One possibility is to transfer heat to the feed water from the expanding steam in a counter flow heat exchanger built into the turbine, that is, to use regeneration. A practical regeneration process in steam power plant is accomplished by extracting steam from the turbine at various points. This steam is used to heat the feed water and the device where the feed water is heated by regeneration is called feed water heater. So, regeneration improves cycle efficiency by increasing the average temperature of heat addition in the boiler.",
+        "images": []
       }
     },
     "pp:me:2003:q21": {
       "question_uid": "pp:me:2003:q21",
-      "exam_uid": "me:2003:set1:q21",
+      "exam_uid": "me:2003:set1:main:q21",
       "title": "GATE ME 2003 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -920,13 +1021,19 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "In impulse turbine, the steam pressure remains\n\nconstant while it flows through the moving blades,\n\nWhere only the kinetic energy converts into\n\n'mechanical energy.\n\n<img src=\"/question-images/me/2003/me-2003-1455b8a7bc.webp\" />\n\nTherefore, the correct answer is **D**."
+        "markdown": "In impulse turbine, the steam pressure remains\n\nconstant while it flows through the moving blades,\n\nWhere only the kinetic energy converts into\n\n'mechanical energy.\n\n<img src=\"/question-images/me/2003/me-2003-1455b8a7bc.webp\" />",
+        "images": [
+          "/question-images/me/2003/me-2003-1455b8a7bc.webp"
+        ]
       }
     },
     "pp:me:2003:q22": {
       "question_uid": "pp:me:2003:q22",
-      "exam_uid": "me:2003:set1:q22",
+      "exam_uid": "me:2003:set1:main:q22",
       "title": "GATE ME 2003 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -964,13 +1071,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "$$\\begin{aligned} &\\text{Strcture} &\\text{Rockwell hardness} \\\\ &\\text{Coarse pearlite} &RC15\\\\ &\\text{Fine peralite} &RC25 \\\\ &\\text{Martensite} &RC65 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} &\\text{Strcture} &\\text{Rockwell hardness} \\\\ &\\text{Coarse pearlite} &RC15\\\\ &\\text{Fine peralite} &RC25 \\\\ &\\text{Martensite} &RC65 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q23": {
       "question_uid": "pp:me:2003:q23",
-      "exam_uid": "me:2003:set1:q23",
+      "exam_uid": "me:2003:set1:main:q23",
       "title": "GATE ME 2003 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1008,13 +1119,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "Permeability or porosity of the moulding sand is the measure of its ability to permit air to flow through it.\n\nSo, hardness of green sand mould increases by restricted the air permitted in the sand i.e. decrease its permeability.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Permeability or porosity of the moulding sand is the measure of its ability to permit air to flow through it.\n\nSo, hardness of green sand mould increases by restricted the air permitted in the sand i.e. decrease its permeability.",
+        "images": []
       }
     },
     "pp:me:2003:q24": {
       "question_uid": "pp:me:2003:q24",
-      "exam_uid": "me:2003:set1:q24",
+      "exam_uid": "me:2003:set1:main:q24",
       "title": "GATE ME 2003 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1052,13 +1167,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "Oxyacctylene welding can be used for engineering practice. The temperature produced by inner cone of the flame is around $3150^{\\circ} \\mathrm{C}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Oxyacctylene welding can be used for engineering practice. The temperature produced by inner cone of the flame is around $3150^{\\circ} \\mathrm{C}$",
+        "images": []
       }
     },
     "pp:me:2003:q25": {
       "question_uid": "pp:me:2003:q25",
-      "exam_uid": "me:2003:set1:q25",
+      "exam_uid": "me:2003:set1:main:q25",
       "title": "GATE ME 2003 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1096,13 +1215,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
-        "markdown": "Cold forming or cold working can be defined as the plastic deforming of metals and alloys under conditions of temperature and strain rate.\n\nTheoretically, the working temperature for cold working is below the recrystallization temperature of the metal/alloy (which is about one-half the absolute melting temperature.)\n\nTherefore, the correct answer is **C**."
+        "markdown": "Cold forming or cold working can be defined as the plastic deforming of metals and alloys under conditions of temperature and strain rate.\n\nTheoretically, the working temperature for cold working is below the recrystallization temperature of the metal/alloy (which is about one-half the absolute melting temperature.)",
+        "images": []
       }
     },
     "pp:me:2003:q26": {
       "question_uid": "pp:me:2003:q26",
-      "exam_uid": "me:2003:set1:q26",
+      "exam_uid": "me:2003:set1:main:q26",
       "title": "GATE ME 2003 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1140,13 +1263,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Quality screw threads are produced by only thread casting.\n\nQuality screw threads are made by die-casting and permanent mould casting are very accurate and of high finish, if properly made.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Quality screw threads are produced by only thread casting.\n\nQuality screw threads are made by die-casting and permanent mould casting are very accurate and of high finish, if properly made.",
+        "images": []
       }
     },
     "pp:me:2003:q27": {
       "question_uid": "pp:me:2003:q27",
-      "exam_uid": "me:2003:set1:q27",
+      "exam_uid": "me:2003:set1:main:q27",
       "title": "GATE ME 2003 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1184,13 +1311,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "In EDM material is removed by erosion of repeated\n\nspark.\n\nTherefore, the correct answer is **D**."
+        "markdown": "In EDM material is removed by erosion of repeated\n\nspark.",
+        "images": []
       }
     },
     "pp:me:2003:q28": {
       "question_uid": "pp:me:2003:q28",
-      "exam_uid": "me:2003:set1:q28",
+      "exam_uid": "me:2003:set1:main:q28",
       "title": "GATE ME 2003 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1228,13 +1359,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "25 lines between 18 and 30 since therefore\n\n$\\Delta=\\sqrt{18 \\times 30}=23.24$\n\nNow, the tolerance unit i is given by\n\n$i=0.45 \\sqrt[3]{23.24}+0.001(23.24)$\n\n$=1.31 microns$\n\nFor shaft quality '7', fundamental tolerance\n\nTolerance Grade,\n\n$$\\begin{aligned} IT7 &=16 i \\\\ &=16 \\times 1.31=20.96 \\text { microns } \\end{aligned}$$\n\nHence, Shaft tolerance\n\n$$\\begin{aligned} &=25-\\left(20.96 \\times 10^{-3}\\right) \\mathrm{mm} \\\\ &=24.979 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "25 lines between 18 and 30 since therefore\n\n$\\Delta=\\sqrt{18 \\times 30}=23.24$\n\nNow, the tolerance unit i is given by\n\n$i=0.45 \\sqrt[3]{23.24}+0.001(23.24)$\n\n$=1.31 microns$\n\nFor shaft quality '7', fundamental tolerance\n\nTolerance Grade,\n\n$$\\begin{aligned} IT7 &=16 i \\\\ &=16 \\times 1.31=20.96 \\text { microns } \\end{aligned}$$\n\nHence, Shaft tolerance\n\n$$\\begin{aligned} &=25-\\left(20.96 \\times 10^{-3}\\right) \\mathrm{mm} \\\\ &=24.979 \\mathrm{mm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q29": {
       "question_uid": "pp:me:2003:q29",
-      "exam_uid": "me:2003:set1:q29",
+      "exam_uid": "me:2003:set1:main:q29",
       "title": "GATE ME 2003 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1272,13 +1407,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Theory of Machine",
-        "markdown": "We clearly see that cylinder can either revolve about x-axis or slide along x-axis and all the motions are restricted.\n\nHence, Number of degrees of freedom = 2 and movability includes the six degrees of freedom of the device as a whole, as the ground link were not fixed.\n\nSo, 4 degrees of freedom are constrained or arrested.\n\nTherefore, the correct answer is **B**."
+        "markdown": "We clearly see that cylinder can either revolve about x-axis or slide along x-axis and all the motions are restricted.\n\nHence, Number of degrees of freedom = 2 and movability includes the six degrees of freedom of the device as a whole, as the ground link were not fixed.\n\nSo, 4 degrees of freedom are constrained or arrested.",
+        "images": []
       }
     },
     "pp:me:2003:q30": {
       "question_uid": "pp:me:2003:q30",
-      "exam_uid": "me:2003:set1:q30",
+      "exam_uid": "me:2003:set1:main:q30",
       "title": "GATE ME 2003 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1292,10 +1431,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "me",
@@ -1315,14 +1451,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Industrial Engineering** (specifically *PERT and CPM*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **PERT and CPM**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$\\Rightarrow$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($\\Rightarrow$)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2003:q31": {
       "question_uid": "pp:me:2003:q31",
-      "exam_uid": "me:2003:set1:q31",
+      "exam_uid": "me:2003:set1:main:q31",
       "title": "GATE ME 2003 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1360,13 +1499,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Given equation are\n\n$$\\begin{array}{r} x+2 y+z=6 \\\\ 2 x+y+2 z=6 \\\\ x+y+z=5 \\end{array}$$\n\nGiven system can be written as\n\n$$\\left[\\begin{array}{lll} 1 & 2 & 1 \\\\ 2 & 1 & 2 \\\\ 1 & 1 & 1 \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\\\ z \\end{array}\\right]=\\left[\\begin{array}{l} 6 \\\\ 6 \\\\ 5 \\end{array}\\right]$$\n\nApplying row operation\n\n$$\\begin{array}{l} R_{2} \\rightarrow R_{2}-2 R_{1}, R_{3} \\rightarrow R_{3}-R_{1} \\\\ {\\left[\\begin{array}{ccc} 1 & 2 & 1 \\\\ 0 & -3 & 0 \\\\ 0 & -1 & 0 \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\\\ z \\end{array}\\right]=\\left[\\begin{array}{c} 6 \\\\ -6 \\\\ -1 \\end{array}\\right]} \\end{array}$$\n\n$\\text{and applying} R_{3} \\rightarrow 3 R_{3}-R_{2}$\n\n$$\\left[\\begin{array}{ccc} 1 & 2 & 1 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 0 \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\\\ z \\end{array}\\right]=\\left[\\begin{array}{c} 6 \\\\ -6 \\\\ 3 \\end{array}\\right]$$\n\nsince the rank of coefficient matrix is 2 and rank of argument matrix is 3, which are not equal. Hence, system has no solution.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given equation are\n\n$$\\begin{array}{r} x+2 y+z=6 \\\\ 2 x+y+2 z=6 \\\\ x+y+z=5 \\end{array}$$\n\nGiven system can be written as\n\n$$\\left[\\begin{array}{lll} 1 & 2 & 1 \\\\ 2 & 1 & 2 \\\\ 1 & 1 & 1 \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\\\ z \\end{array}\\right]=\\left[\\begin{array}{l} 6 \\\\ 6 \\\\ 5 \\end{array}\\right]$$\n\nApplying row operation\n\n$$\\begin{array}{l} R_{2} \\rightarrow R_{2}-2 R_{1}, R_{3} \\rightarrow R_{3}-R_{1} \\\\ {\\left[\\begin{array}{ccc} 1 & 2 & 1 \\\\ 0 & -3 & 0 \\\\ 0 & -1 & 0 \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\\\ z \\end{array}\\right]=\\left[\\begin{array}{c} 6 \\\\ -6 \\\\ -1 \\end{array}\\right]} \\end{array}$$\n\n$\\text{and applying} R_{3} \\rightarrow 3 R_{3}-R_{2}$\n\n$$\\left[\\begin{array}{ccc} 1 & 2 & 1 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 0 \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\\\ z \\end{array}\\right]=\\left[\\begin{array}{c} 6 \\\\ -6 \\\\ 3 \\end{array}\\right]$$\n\nsince the rank of coefficient matrix is 2 and rank of argument matrix is 3, which are not equal. Hence, system has no solution.",
+        "images": []
       }
     },
     "pp:me:2003:q32": {
       "question_uid": "pp:me:2003:q32",
-      "exam_uid": "me:2003:set1:q32",
+      "exam_uid": "me:2003:set1:main:q32",
       "title": "GATE ME 2003 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1404,13 +1547,19 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-010efb54de.webp\" />\n\nArea enclosed $=\\int_{0}^{1}|(x^2-x)|dx$\n\n$\\;\\;=\\left | \\frac{x^3}{3}-\\frac{x^2}{2} \\right |_0^1$\n\n$=\\left | -\\frac{1}{6} \\right |=\\frac{1}{6}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-010efb54de.webp\" />\n\nArea enclosed $=\\int_{0}^{1}|(x^2-x)|dx$\n\n$\\;\\;=\\left | \\frac{x^3}{3}-\\frac{x^2}{2} \\right |_0^1$\n\n$=\\left | -\\frac{1}{6} \\right |=\\frac{1}{6}$",
+        "images": [
+          "/question-images/me/2003/me-2003-010efb54de.webp"
+        ]
       }
     },
     "pp:me:2003:q33": {
       "question_uid": "pp:me:2003:q33",
-      "exam_uid": "me:2003:set1:q33",
+      "exam_uid": "me:2003:set1:main:q33",
       "title": "GATE ME 2003 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1448,13 +1597,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "Given differential equation\n\n$$\\begin{aligned} \\frac{d y}{d x}+y^{2} &=0 \\\\ \\Rightarrow \\quad-\\frac{d y}{y^{2}} &=d x \\end{aligned}$$\n\nOn integrating, we get\n\n$-\\int \\frac{d y}{y^{2}}=\\int d x ; \\quad \\frac{1}{y}=x+c\\\\ \\therefore y=\\frac{1}{x+c}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given differential equation\n\n$$\\begin{aligned} \\frac{d y}{d x}+y^{2} &=0 \\\\ \\Rightarrow \\quad-\\frac{d y}{y^{2}} &=d x \\end{aligned}$$\n\nOn integrating, we get\n\n$-\\int \\frac{d y}{y^{2}}=\\int d x ; \\quad \\frac{1}{y}=x+c\\\\ \\therefore y=\\frac{1}{x+c}$",
+        "images": []
       }
     },
     "pp:me:2003:q34": {
       "question_uid": "pp:me:2003:q34",
-      "exam_uid": "me:2003:set1:q34",
+      "exam_uid": "me:2003:set1:main:q34",
       "title": "GATE ME 2003 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1492,13 +1645,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$\\vec{F}=x\\hat{i}-y\\hat{j}$\n\nFor divergence\n\nGrade  $\\vec{F}=\\Delta \\cdot \\vec{F}$\n\n$\\;\\;=\\left ( \\hat{i}\\frac{\\partial }{\\partial x}+\\hat{j}\\frac{\\partial }{\\partial y} +\\hat{k}\\frac{\\partial }{\\partial z}\\right )\\cdot (x\\hat{i}-y\\hat{j})$\n\n$\\;\\;=1-1=0$\n\nHence vector field is divergence free.\n\nFor irrotation\n\nCurl   $\\vec{F}=\\Delta \\times \\vec{F}$\n\n$\\;\\;=\\left ( \\hat{i}\\frac{\\partial }{\\partial x}+\\hat{j}\\frac{\\partial }{\\partial y} +\\hat{k}\\frac{\\partial }{\\partial z}\\right )\\times (x\\hat{i}-y\\hat{j})$\n\n$$\\;\\;=\\begin{vmatrix} i & j & k\\\\ \\frac{\\partial }{\\partial x}& \\frac{\\partial }{\\partial y} & \\frac{\\partial }{\\partial z}\\\\ x& -y & 0 \\end{vmatrix}$$\n\n$\\;\\;=\\hat{i}(0-0)-\\hat{j}(0-0)+\\hat{k}(0-0)=0$\n\nHence vector field is irrotational\n\nTherefore, the correct answer is **C**."
+        "markdown": "$\\vec{F}=x\\hat{i}-y\\hat{j}$\n\nFor divergence\n\nGrade  $\\vec{F}=\\Delta \\cdot \\vec{F}$\n\n$\\;\\;=\\left ( \\hat{i}\\frac{\\partial }{\\partial x}+\\hat{j}\\frac{\\partial }{\\partial y} +\\hat{k}\\frac{\\partial }{\\partial z}\\right )\\cdot (x\\hat{i}-y\\hat{j})$\n\n$\\;\\;=1-1=0$\n\nHence vector field is divergence free.\n\nFor irrotation\n\nCurl   $\\vec{F}=\\Delta \\times \\vec{F}$\n\n$\\;\\;=\\left ( \\hat{i}\\frac{\\partial }{\\partial x}+\\hat{j}\\frac{\\partial }{\\partial y} +\\hat{k}\\frac{\\partial }{\\partial z}\\right )\\times (x\\hat{i}-y\\hat{j})$\n\n$$\\;\\;=\\begin{vmatrix} i & j & k\\\\ \\frac{\\partial }{\\partial x}& \\frac{\\partial }{\\partial y} & \\frac{\\partial }{\\partial z}\\\\ x& -y & 0 \\end{vmatrix}$$\n\n$\\;\\;=\\hat{i}(0-0)-\\hat{j}(0-0)+\\hat{k}(0-0)=0$\n\nHence vector field is irrotational",
+        "images": []
       }
     },
     "pp:me:2003:q35": {
       "question_uid": "pp:me:2003:q35",
-      "exam_uid": "me:2003:set1:q35",
+      "exam_uid": "me:2003:set1:main:q35",
       "title": "GATE ME 2003 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1536,13 +1693,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$L[\\sin \\omega t]=\\frac{\\omega}{s^{2}+\\omega^{2}}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$L[\\sin \\omega t]=\\frac{\\omega}{s^{2}+\\omega^{2}}$",
+        "images": []
       }
     },
     "pp:me:2003:q36": {
       "question_uid": "pp:me:2003:q36",
-      "exam_uid": "me:2003:set1:q36",
+      "exam_uid": "me:2003:set1:main:q36",
       "title": "GATE ME 2003 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1580,17 +1741,21 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Probability of drawing two red balls\n\n$=\\frac{5}{10} \\times \\frac{4}{9}=\\frac{2}{9}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Probability of drawing two red balls\n\n$=\\frac{5}{10} \\times \\frac{4}{9}=\\frac{2}{9}$",
+        "images": []
       }
     },
     "pp:me:2003:q37": {
       "question_uid": "pp:me:2003:q37",
-      "exam_uid": "me:2003:set1:q37",
+      "exam_uid": "me:2003:set1:main:q37",
       "title": "GATE ME 2003 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": " A truss consists of horizontal members (AC, CD, DB and EF) and vertical members (CE and DE) having length l each. The members AE, DE and BF are inclined at 45$^{\\circ}$ to the horizontal. For the uniformly distributed load \"p\" per unit length on the member EF of the truss shown in figure given below, the force in the member CD is  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q37.jpg\">",
+      "question": " A truss consists of horizontal members (AC, CD, DB and EF) and vertical members (CE and DE) having length l each. The members AE, DE and BF are inclined at 45$^{\\circ}$ to the horizontal. For the uniformly distributed load \"p\" per unit length on the member EF of the truss shown in figure given below, the force in the member CD is  <br><img src=\"/question-images/me/2003/me-2003-9eed97dc92.webp\">",
       "options": [
         "$\\frac{pl}{2}$",
         "$pl$",
@@ -1624,17 +1789,24 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-3e5d29ca16.webp\" />\n\n$$\\begin{aligned} R_{A}+R_{B}&=P l \\\\ \\text{Taking moment about} \\\\ Pl(l+1 / 2)&=R_{B} \\times 3 l\\\\ \\therefore R_{B}&=\\frac{P l}{2}\\\\ \\therefore R_{A}&=\\frac{P l}{2}\\\\ \\end{aligned}$$\n\nJoint A\n\n<img src=\"/question-images/me/2003/me-2003-7232a83de3.webp\" />\n\nNow at joint A\n\n$$\\begin{aligned} \\Sigma F_{V} &=0 \\\\ F_{E A} \\sin 45^{\\circ} &=\\frac{P l}{2}\\\\ \\therefore \\quad F_{E A}&=\\frac{P l}{\\sqrt{2}} \\\\ F_{A C}&=F_{E A} \\cos 45^{\\circ} \\\\ F_{A C}&=\\frac{P l}{\\sqrt{2}} \\times \\frac{1}{\\sqrt{2}} \\\\ F_{A C}&=\\frac{P l}{2}\\\\ \\text{At joint C} \\\\ F_{C A}&=F_{C D}=\\frac{P l}{2} \\quad\\left[\\because F_{C E}=0\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-3e5d29ca16.webp\" />\n\n$$\\begin{aligned} R_{A}+R_{B}&=P l \\\\ \\text{Taking moment about} \\\\ Pl(l+1 / 2)&=R_{B} \\times 3 l\\\\ \\therefore R_{B}&=\\frac{P l}{2}\\\\ \\therefore R_{A}&=\\frac{P l}{2}\\\\ \\end{aligned}$$\n\nJoint A\n\n<img src=\"/question-images/me/2003/me-2003-7232a83de3.webp\" />\n\nNow at joint A\n\n$$\\begin{aligned} \\Sigma F_{V} &=0 \\\\ F_{E A} \\sin 45^{\\circ} &=\\frac{P l}{2}\\\\ \\therefore \\quad F_{E A}&=\\frac{P l}{\\sqrt{2}} \\\\ F_{A C}&=F_{E A} \\cos 45^{\\circ} \\\\ F_{A C}&=\\frac{P l}{\\sqrt{2}} \\times \\frac{1}{\\sqrt{2}} \\\\ F_{A C}&=\\frac{P l}{2}\\\\ \\text{At joint C} \\\\ F_{C A}&=F_{C D}=\\frac{P l}{2} \\quad\\left[\\because F_{C E}=0\\right] \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-3e5d29ca16.webp",
+          "/question-images/me/2003/me-2003-7232a83de3.webp"
+        ]
       }
     },
     "pp:me:2003:q38": {
       "question_uid": "pp:me:2003:q38",
-      "exam_uid": "me:2003:set1:q38",
+      "exam_uid": "me:2003:set1:main:q38",
       "title": "GATE ME 2003 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A bullet of mass \"m\" travels at a very high velocity v (as shown in the figure) and gets embedded inside the block of mass \"M\" initially at rest on a rough horizontal floor. The block with the bullet is seen to move a distance \"s\" along the floor. Assuming $\\mu$  to be the coefficient of kinetic friction between the block and the floor and \"g\" the acceleration due to gravity what is the velocity v of the bullet? <br><img src= \"/wp-content/uploads/GATE/ME/20031/q38.jpg\">",
+      "question": "A bullet of mass \"m\" travels at a very high velocity v (as shown in the figure) and gets embedded inside the block of mass \"M\" initially at rest on a rough horizontal floor. The block with the bullet is seen to move a distance \"s\" along the floor. Assuming $\\mu$  to be the coefficient of kinetic friction between the block and the floor and \"g\" the acceleration due to gravity what is the velocity v of the bullet? <br><img src=\"/question-images/me/2003/me-2003-aa1ca4ab5d.webp\">",
       "options": [
         "$\\frac{M+m}{m}\\sqrt{2\\mu gs}$",
         "$\\frac{M-m}{m}\\sqrt{2\\mu gs}$",
@@ -1668,13 +1840,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Impulse and Momentum, Energy Formulations",
-        "markdown": "From conservation of linear momentum\n\n$$\\begin{aligned} m V&=(M+m) U\\\\ \\therefore \\quad U & =\\frac{m V}{M+m} \\\\ \\vec{f}_{k} & =\\mu N(-\\hat{i}) \\\\ \\vec{f}_{k} & =\\mu(M+m) g(-\\hat{i}) \\\\ \\vec{a} & =\\frac{7_{k}}{(M+m)} \\\\ \\vec{a} & =\\mu g(-\\hat{i}) \\\\ \\text{Now }\\quad V_{2}^{2}&=U^{2}-2 \\mu g s \\\\ \\therefore & 0=\\left(\\frac{m V}{M+m}\\right)^{2}-2 \\mu g s \\\\ \\therefore & V=\\left(\\frac{M+m}{m}\\right) \\sqrt{2 \\mu g s} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "From conservation of linear momentum\n\n$$\\begin{aligned} m V&=(M+m) U\\\\ \\therefore \\quad U & =\\frac{m V}{M+m} \\\\ \\vec{f}_{k} & =\\mu N(-\\hat{i}) \\\\ \\vec{f}_{k} & =\\mu(M+m) g(-\\hat{i}) \\\\ \\vec{a} & =\\frac{7_{k}}{(M+m)} \\\\ \\vec{a} & =\\mu g(-\\hat{i}) \\\\ \\text{Now }\\quad V_{2}^{2}&=U^{2}-2 \\mu g s \\\\ \\therefore & 0=\\left(\\frac{m V}{M+m}\\right)^{2}-2 \\mu g s \\\\ \\therefore & V=\\left(\\frac{M+m}{m}\\right) \\sqrt{2 \\mu g s} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q39": {
       "question_uid": "pp:me:2003:q39",
-      "exam_uid": "me:2003:set1:q39",
+      "exam_uid": "me:2003:set1:main:q39",
       "title": "GATE ME 2003 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1712,13 +1888,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "From differential equation of elastic curve\n\n$$\\begin{aligned} \\frac{d^{2} y}{d x^{2}} &=\\frac{M}{E I} \\\\ \\therefore \\quad y &=\\frac{1}{E I} \\iint M d x+C_{1} x+C_{2} \\end{aligned}$$\n\nAs area moment (I) increases, the deflection (y) will reduce.\n\nTherefore, the correct answer is **A**."
+        "markdown": "From differential equation of elastic curve\n\n$$\\begin{aligned} \\frac{d^{2} y}{d x^{2}} &=\\frac{M}{E I} \\\\ \\therefore \\quad y &=\\frac{1}{E I} \\iint M d x+C_{1} x+C_{2} \\end{aligned}$$\n\nAs area moment (I) increases, the deflection (y) will reduce.",
+        "images": []
       }
     },
     "pp:me:2003:q40": {
       "question_uid": "pp:me:2003:q40",
-      "exam_uid": "me:2003:set1:q40",
+      "exam_uid": "me:2003:set1:main:q40",
       "title": "GATE ME 2003 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1756,13 +1936,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "$\\sigma_{1 / 2}=\\frac{\\sigma_{x}+\\sigma_{y}}{2} \\pm \\sqrt{\\left(\\frac{\\sigma_{x}-\\sigma_{y}}{2}\\right)^{2}+\\tau_{x y}^{2}}$\n\nFor pure shear,\n\n$$\\begin{array}{l} \\sigma_{x} \\text { and } \\sigma_{y}=0 \\text { and } \\tau_{x y}=\\tau \\\\ \\Rightarrow \\sigma_{1 / 2}=0 \\pm \\sqrt{\\tau^{2}}=\\pm \\tau \\end{array}$$\n\n$\\therefore$ Maximum principal stress $=\\tau$\n\nIt can be written as $2 \\tau \\sin 45^{\\circ} \\cos 45^{\\circ}$\n\n$=2 \\times \\tau \\times \\frac{1}{\\sqrt{2}} \\times \\frac{1}{\\sqrt{2}}=\\tau$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\sigma_{1 / 2}=\\frac{\\sigma_{x}+\\sigma_{y}}{2} \\pm \\sqrt{\\left(\\frac{\\sigma_{x}-\\sigma_{y}}{2}\\right)^{2}+\\tau_{x y}^{2}}$\n\nFor pure shear,\n\n$$\\begin{array}{l} \\sigma_{x} \\text { and } \\sigma_{y}=0 \\text { and } \\tau_{x y}=\\tau \\\\ \\Rightarrow \\sigma_{1 / 2}=0 \\pm \\sqrt{\\tau^{2}}=\\pm \\tau \\end{array}$$\n\n$\\therefore$ Maximum principal stress $=\\tau$\n\nIt can be written as $2 \\tau \\sin 45^{\\circ} \\cos 45^{\\circ}$\n\n$=2 \\times \\tau \\times \\frac{1}{\\sqrt{2}} \\times \\frac{1}{\\sqrt{2}}=\\tau$",
+        "images": []
       }
     },
     "pp:me:2003:q41": {
       "question_uid": "pp:me:2003:q41",
-      "exam_uid": "me:2003:set1:q41",
+      "exam_uid": "me:2003:set1:main:q41",
       "title": "GATE ME 2003 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1800,13 +1984,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Flywheel",
-        "markdown": "Average speed,\n\n$$\\begin{aligned} \\omega &=\\frac{2 \\pi \\times 1200}{60}=125.66 \\mathrm{rad} / \\mathrm{s} \\\\ \\text{we know that}\\\\ \\Delta E &=10^{2} \\mathrm{C}_{S}\\\\ \\text{and}\\quad \\Delta E &=\\frac{M R^{2}}{2} \\times \\omega^{2} \\times C_{S} \\\\ \\therefore \\quad M &=\\frac{2 \\Delta E}{R^{2} \\times \\omega^{2} \\times C_{S}} \\\\ &=\\frac{2 \\times 2000}{\\left(\\frac{1}{2}\\right)^{2} \\times(125.66)^{2} \\times 0.02} \\\\ &=50.66\\approx51 \\mathrm{kg} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Average speed,\n\n$$\\begin{aligned} \\omega &=\\frac{2 \\pi \\times 1200}{60}=125.66 \\mathrm{rad} / \\mathrm{s} \\\\ \\text{we know that}\\\\ \\Delta E &=10^{2} \\mathrm{C}_{S}\\\\ \\text{and}\\quad \\Delta E &=\\frac{M R^{2}}{2} \\times \\omega^{2} \\times C_{S} \\\\ \\therefore \\quad M &=\\frac{2 \\Delta E}{R^{2} \\times \\omega^{2} \\times C_{S}} \\\\ &=\\frac{2 \\times 2000}{\\left(\\frac{1}{2}\\right)^{2} \\times(125.66)^{2} \\times 0.02} \\\\ &=50.66\\approx51 \\mathrm{kg} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q42": {
       "question_uid": "pp:me:2003:q42",
-      "exam_uid": "me:2003:set1:q42",
+      "exam_uid": "me:2003:set1:main:q42",
       "title": "GATE ME 2003 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1844,13 +2032,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "For shaft loaded at middle with mass M\n\n$\\text { Deflection: } \\Delta=\\frac{M g l^{3}}{48 E I}$\n\nMoment of inertia,\n\n$$\\begin{aligned} I &=\\frac{\\pi}{64} d^{4}=\\frac{\\pi}{64} \\times\\left(30 \\times 10^{-3}\\right)^{4} \\\\ &=3.976 \\times 10^{-8} \\mathrm{m}^{4} \\end{aligned}$$\n\nSo; deflection of shaft,\n\n$$\\begin{array}{l} \\Delta=\\frac{M g l^{3}}{48 E I}=\\frac{10 \\times 9.81 \\times\\left(500 \\times 10^{-3}\\right)^{3}}{48 \\times 2.1 \\times 10^{11} \\times 3.976 \\times 10^{-8}}\\\\ =3.06 \\times 10^{-5} \\mathrm{m} \\\\ \\omega_{n}=\\sqrt{\\frac{g}{\\Delta}}=\\sqrt{\\frac{9.81}{3.06 \\times 10^{-5}}}=566.24 \\mathrm{rad} / \\mathrm{s} \\end{array}$$\n\nNatural frequency,\n\n$f_{n}=\\frac{\\omega_{n}}{2 \\pi}=\\frac{566.24}{2 \\pi}=90.11 \\mathrm{Hz}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "For shaft loaded at middle with mass M\n\n$\\text { Deflection: } \\Delta=\\frac{M g l^{3}}{48 E I}$\n\nMoment of inertia,\n\n$$\\begin{aligned} I &=\\frac{\\pi}{64} d^{4}=\\frac{\\pi}{64} \\times\\left(30 \\times 10^{-3}\\right)^{4} \\\\ &=3.976 \\times 10^{-8} \\mathrm{m}^{4} \\end{aligned}$$\n\nSo; deflection of shaft,\n\n$$\\begin{array}{l} \\Delta=\\frac{M g l^{3}}{48 E I}=\\frac{10 \\times 9.81 \\times\\left(500 \\times 10^{-3}\\right)^{3}}{48 \\times 2.1 \\times 10^{11} \\times 3.976 \\times 10^{-8}}\\\\ =3.06 \\times 10^{-5} \\mathrm{m} \\\\ \\omega_{n}=\\sqrt{\\frac{g}{\\Delta}}=\\sqrt{\\frac{9.81}{3.06 \\times 10^{-5}}}=566.24 \\mathrm{rad} / \\mathrm{s} \\end{array}$$\n\nNatural frequency,\n\n$f_{n}=\\frac{\\omega_{n}}{2 \\pi}=\\frac{566.24}{2 \\pi}=90.11 \\mathrm{Hz}$",
+        "images": []
       }
     },
     "pp:me:2003:q43": {
       "question_uid": "pp:me:2003:q43",
-      "exam_uid": "me:2003:set1:q43",
+      "exam_uid": "me:2003:set1:main:q43",
       "title": "GATE ME 2003 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1888,13 +2080,19 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Bearings, Shafts and keys",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-37967d090e.webp\" />\n\nDiameter of shaft =d\n\nTorque transmitted =T\n\nForce acting on circumference of shaft\n\n$F=\\frac{T}{d / 2}=\\frac{2 T}{d}$\n\nResisting area $=\\frac{l \\times d}{4}$\n\nAverage shear stress\n\n$\\tau=\\frac{F}{A}=\\frac{2 T}{d} \\times \\frac{4}{l d}=\\frac{8 T}{l d^{2}}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-37967d090e.webp\" />\n\nDiameter of shaft =d\n\nTorque transmitted =T\n\nForce acting on circumference of shaft\n\n$F=\\frac{T}{d / 2}=\\frac{2 T}{d}$\n\nResisting area $=\\frac{l \\times d}{4}$\n\nAverage shear stress\n\n$\\tau=\\frac{F}{A}=\\frac{2 T}{d} \\times \\frac{4}{l d}=\\frac{8 T}{l d^{2}}$",
+        "images": [
+          "/question-images/me/2003/me-2003-37967d090e.webp"
+        ]
       }
     },
     "pp:me:2003:q44": {
       "question_uid": "pp:me:2003:q44",
-      "exam_uid": "me:2003:set1:q44",
+      "exam_uid": "me:2003:set1:main:q44",
       "title": "GATE ME 2003 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1932,13 +2130,17 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Brakes and Clutches",
-        "markdown": "$$\\begin{aligned} \\frac{T_{1}}{T_{2}} &=e^{m q} \\\\ \\Rightarrow \\qquad 3 &=e^{\\mu \\pi}\\\\ \\Rightarrow \\qquad \\ln 3&=\\mu \\pi \\\\ \\Rightarrow \\qquad \\mu=0.345&=0.35 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} \\frac{T_{1}}{T_{2}} &=e^{m q} \\\\ \\Rightarrow \\qquad 3 &=e^{\\mu \\pi}\\\\ \\Rightarrow \\qquad \\ln 3&=\\mu \\pi \\\\ \\Rightarrow \\qquad \\mu=0.345&=0.35 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q45": {
       "question_uid": "pp:me:2003:q45",
-      "exam_uid": "me:2003:set1:q45",
+      "exam_uid": "me:2003:set1:main:q45",
       "title": "GATE ME 2003 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1976,13 +2178,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
-        "markdown": "Mass of water striking per second $=\\rho Q$\n\nForce on weighing balance due to water striking\n\n= Initial momentum - Final momentum\n\n$=\\rho Q U-0$\n\n$=\\rho Q U$\n\nWeight of container and water $=m g$\n\nNow total force on weighing balance\n\n$=m g+\\rho Q U$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Mass of water striking per second $=\\rho Q$\n\nForce on weighing balance due to water striking\n\n= Initial momentum - Final momentum\n\n$=\\rho Q U-0$\n\n$=\\rho Q U$\n\nWeight of container and water $=m g$\n\nNow total force on weighing balance\n\n$=m g+\\rho Q U$",
+        "images": []
       }
     },
     "pp:me:2003:q46": {
       "question_uid": "pp:me:2003:q46",
-      "exam_uid": "me:2003:set1:q46",
+      "exam_uid": "me:2003:set1:main:q46",
       "title": "GATE ME 2003 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2020,17 +2226,21 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
-        "markdown": "$c_{p h}=2000 \\mathrm{J} / \\mathrm{kgK} ; \\quad m_{h}=5 \\mathrm{kg} / \\mathrm{s}$\n\n$c_{\\mathrm{pc}}=4000 \\mathrm{J} / \\mathrm{kgK} ; \\quad T_{h i}=150^{\\circ} \\mathrm{C} ; \\quad m_{c}=10 \\mathrm{kg} / \\mathrm{s}$\n\n$T_{\\mathrm{c}}=20^{\\circ} \\mathrm{C}_{\\mathrm{i}} \\quad T_{c o}=?$\n\nHeat lost by hot fluid = Heat gained by cold fluid\n\n$$\\begin{aligned} m_{h} c_{\\text {ph }}\\left(T_{h i}-T_{h o}\\right)&=m_{c} c_{\\rho c}\\left(T_{c o}-T_{c i}\\right) \\\\ &5 \\times 2000 \\times(150-100) \\\\ \\quad&=10 \\times 4000\\left(T_{c o}-T_{c i}\\right) \\\\ \\therefore \\quad T_{c o}&=32.5^{\\circ} \\mathrm{C} \\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$c_{p h}=2000 \\mathrm{J} / \\mathrm{kgK} ; \\quad m_{h}=5 \\mathrm{kg} / \\mathrm{s}$\n\n$c_{\\mathrm{pc}}=4000 \\mathrm{J} / \\mathrm{kgK} ; \\quad T_{h i}=150^{\\circ} \\mathrm{C} ; \\quad m_{c}=10 \\mathrm{kg} / \\mathrm{s}$\n\n$T_{\\mathrm{c}}=20^{\\circ} \\mathrm{C}_{\\mathrm{i}} \\quad T_{c o}=?$\n\nHeat lost by hot fluid = Heat gained by cold fluid\n\n$$\\begin{aligned} m_{h} c_{\\text {ph }}\\left(T_{h i}-T_{h o}\\right)&=m_{c} c_{\\rho c}\\left(T_{c o}-T_{c i}\\right) \\\\ &5 \\times 2000 \\times(150-100) \\\\ \\quad&=10 \\times 4000\\left(T_{c o}-T_{c i}\\right) \\\\ \\therefore \\quad T_{c o}&=32.5^{\\circ} \\mathrm{C} \\\\ \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q47": {
       "question_uid": "pp:me:2003:q47",
-      "exam_uid": "me:2003:set1:q47",
+      "exam_uid": "me:2003:set1:main:q47",
       "title": "GATE ME 2003 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "Air flow through a venture and into atmosphere. Air density is a $\\rho$; atmospheric pressure is $P_{a}$; throat  diameter is $D_{t}$; exit diameter is D and exit velocity is U. The throat is connected to a cylinder containing a frictionless piston attached to a spring. The spring constant is k. The bottom surface of the piston is exposed to atmosphere. Due to the flow, the piston moves by distance x. Assuming incompressible frictionless flow, x is  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q47.jpg\">",
+      "question": "Air flow through a venture and into atmosphere. Air density is a $\\rho$; atmospheric pressure is $P_{a}$; throat  diameter is $D_{t}$; exit diameter is D and exit velocity is U. The throat is connected to a cylinder containing a frictionless piston attached to a spring. The spring constant is k. The bottom surface of the piston is exposed to atmosphere. Due to the flow, the piston moves by distance x. Assuming incompressible frictionless flow, x is  <br><img src=\"/question-images/me/2003/me-2003-67bd09929f.webp\">",
       "options": [
         "$(\\rho U^{2}/2k)\\pi D_{s}^{2}$",
         "$(\\frac{\\rho U^{2}}{8k})\\left [ \\frac{D^{2}}{D_{t}^{2}} -1\\right ]\\pi D_{s}^{2}$",
@@ -2064,13 +2274,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
-        "markdown": "Applying continuity equation, we get\n\n<img src=\"/question-images/me/2003/me-2003-a7d40a89f7.webp\" />\n\n$$\\begin{aligned} A_1V_1&=A_2V_2\\\\ V_1&=\\left ( \\frac{A_2}{A_1} \\right )V_2=\\left ( \\frac{\\frac{\\pi}{4}D^2}{\\frac{\\pi}{4}D_t^2} \\right )U\\\\ V_1&=\\left ( \\frac{D}{D_t} \\right )^2U\\;\\;...(i)\\\\ &\\text{Applying Bernoulli's equation}\\\\ \\frac{p_1}{\\rho g}+\\frac{V_1^2}{2g}&=\\frac{p_2}{\\rho g}+\\frac{V_2^2}{2g}\\\\ [z_1=z_2 & \\text{  because venturi is horizontal}]\\\\ \\frac{p_1-p_2}{\\rho g}&=\\frac{V_2^2-V_1^2}{2g}\\\\ p_1-p_2&=\\frac{\\rho}{2}(V_2^2-V_1^2)\\\\ &\\text{From Eq.(i), we get}\\\\ p_1-p_2&=\\frac{\\rho }{2}\\left [ U^2-\\left ( \\frac{D}{D_t} \\right )^4 U^2 \\right ]\\\\ &=\\frac{\\rho }{2}U^2\\left [ 1-\\left ( \\frac{D}{D_t} \\right )^4 \\right ]\\;\\;...(ii)\\\\ \\text{Since, spring force}&= \\text{ pressure force due to air}\\\\ -kx&=\\frac{\\pi}{4}D_s^2 \\times (p_1-p_2)\\\\ &\\text{From Eq. (ii), we get}\\\\ -kx&=\\frac{\\pi}{4}D_s^2 \\times \\frac{\\rho U^2}{2}\\left [ 1- \\left ( \\frac{D}{D_t} \\right )^4\\right ]\\\\ \\therefore \\;\\;x&=\\frac{\\rho U^2}{8k}\\left [ \\left (\\frac{D}{D_t} \\right )^4-1 \\right ] \\pi D_s^2 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Applying continuity equation, we get\n\n<img src=\"/question-images/me/2003/me-2003-a7d40a89f7.webp\" />\n\n$$\\begin{aligned} A_1V_1&=A_2V_2\\\\ V_1&=\\left ( \\frac{A_2}{A_1} \\right )V_2=\\left ( \\frac{\\frac{\\pi}{4}D^2}{\\frac{\\pi}{4}D_t^2} \\right )U\\\\ V_1&=\\left ( \\frac{D}{D_t} \\right )^2U\\;\\;...(i)\\\\ &\\text{Applying Bernoulli's equation}\\\\ \\frac{p_1}{\\rho g}+\\frac{V_1^2}{2g}&=\\frac{p_2}{\\rho g}+\\frac{V_2^2}{2g}\\\\ [z_1=z_2 & \\text{  because venturi is horizontal}]\\\\ \\frac{p_1-p_2}{\\rho g}&=\\frac{V_2^2-V_1^2}{2g}\\\\ p_1-p_2&=\\frac{\\rho}{2}(V_2^2-V_1^2)\\\\ &\\text{From Eq.(i), we get}\\\\ p_1-p_2&=\\frac{\\rho }{2}\\left [ U^2-\\left ( \\frac{D}{D_t} \\right )^4 U^2 \\right ]\\\\ &=\\frac{\\rho }{2}U^2\\left [ 1-\\left ( \\frac{D}{D_t} \\right )^4 \\right ]\\;\\;...(ii)\\\\ \\text{Since, spring force}&= \\text{ pressure force due to air}\\\\ -kx&=\\frac{\\pi}{4}D_s^2 \\times (p_1-p_2)\\\\ &\\text{From Eq. (ii), we get}\\\\ -kx&=\\frac{\\pi}{4}D_s^2 \\times \\frac{\\rho U^2}{2}\\left [ 1- \\left ( \\frac{D}{D_t} \\right )^4\\right ]\\\\ \\therefore \\;\\;x&=\\frac{\\rho U^2}{8k}\\left [ \\left (\\frac{D}{D_t} \\right )^4-1 \\right ] \\pi D_s^2 \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-a7d40a89f7.webp"
+        ]
       }
     },
     "pp:me:2003:q48": {
       "question_uid": "pp:me:2003:q48",
-      "exam_uid": "me:2003:set1:q48",
+      "exam_uid": "me:2003:set1:main:q48",
       "title": "GATE ME 2003 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2108,13 +2324,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Transfer in Flow Over Plates and Pipes",
-        "markdown": "We know that\n\n$\\frac{\\delta _v}{\\delta _r}=(Pr)^{1/3}$\n\nHere,  $Pr \\\\gt 1$\n\n$\\therefore \\;\\; \\delta _v \\gt \\delta _r$\n\nTherefore, the correct answer is **A**."
+        "markdown": "We know that\n\n$\\frac{\\delta _v}{\\delta _r}=(Pr)^{1/3}$\n\nHere,  $Pr \\\\gt 1$\n\n$\\therefore \\;\\; \\delta _v \\gt \\delta _r$",
+        "images": []
       }
     },
     "pp:me:2003:q49": {
       "question_uid": "pp:me:2003:q49",
-      "exam_uid": "me:2003:set1:q49",
+      "exam_uid": "me:2003:set1:main:q49",
       "title": "GATE ME 2003 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2152,13 +2372,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Availability and Irreversibility",
-        "markdown": "$T d S=d U+p d V$\n\nThis equation holds good for any process reversible or irreversible, undergone by a closed system, since it is a relation among properties which are independent of the both.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$T d S=d U+p d V$\n\nThis equation holds good for any process reversible or irreversible, undergone by a closed system, since it is a relation among properties which are independent of the both.",
+        "images": []
       }
     },
     "pp:me:2003:q50": {
       "question_uid": "pp:me:2003:q50",
-      "exam_uid": "me:2003:set1:q50",
+      "exam_uid": "me:2003:set1:main:q50",
       "title": "GATE ME 2003 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2196,13 +2420,19 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-36b89e82ba.webp\" />\n\nGiven data:\n\n$$\\begin{aligned} c_{p} &=0.98 \\mathrm{kJ} / \\mathrm{kgK} \\\\ c_{v} &=0.7538 \\mathrm{kJ} / \\mathrm{kgK} \\\\ p_{1} &=20 \\mathrm{bar} \\\\ T_{1} &=1500 \\mathrm{K} \\\\ p_{2} &=1 \\mathrm{bar} \\\\ \\eta_{\\mathrm{isen}} &=0.94 \\\\ \\gamma &=\\frac{c_{p}}{c_{v}}=\\frac{0.98}{0.7538}=1.3 \\end{aligned}$$\n\nFor process 1-2 s\n\n$$\\begin{aligned} \\frac{T_{1}}{T_{2 s}} &=\\left(\\frac{p_{1}}{p_{2}}\\right)^{\\frac{\\gamma-1}{\\gamma}} \\\\ \\frac{1500}{T_{2 s}} &=\\left(\\frac{20}{1}\\right)^{\\frac{1.3-1}{1.3}}=(20)^{0.2307}=1.996 \\\\ \\text{or}\\quad T_{2 s} &=751.50 \\mathrm{K} \\\\ \\eta_{\\mathrm{isen}} &=\\frac{T_{1}-T_{2}}{T_{1}-T_{2 s}} \\\\ 0.94 &=\\frac{1500-T_{2}}{1500-751.50} \\\\ &=\\frac{1500-T_{2}}{748.5} \\\\ \\text{or}\\quad 1500-T_{2}&=0.94 \\times 748.5=703.59 \\\\ \\text{or}\\quad T_{2}&=796.41 \\mathrm{K} \\end{aligned}$$\n\nWork developed by the turbine per kg of gas,\n\n$$\\begin{aligned} w &=c_{p}\\left(T_{1}-T_{2}\\right) \\\\ &=0.98(1500-796.41) \\\\ &=689.51 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-36b89e82ba.webp\" />\n\nGiven data:\n\n$$\\begin{aligned} c_{p} &=0.98 \\mathrm{kJ} / \\mathrm{kgK} \\\\ c_{v} &=0.7538 \\mathrm{kJ} / \\mathrm{kgK} \\\\ p_{1} &=20 \\mathrm{bar} \\\\ T_{1} &=1500 \\mathrm{K} \\\\ p_{2} &=1 \\mathrm{bar} \\\\ \\eta_{\\mathrm{isen}} &=0.94 \\\\ \\gamma &=\\frac{c_{p}}{c_{v}}=\\frac{0.98}{0.7538}=1.3 \\end{aligned}$$\n\nFor process 1-2 s\n\n$$\\begin{aligned} \\frac{T_{1}}{T_{2 s}} &=\\left(\\frac{p_{1}}{p_{2}}\\right)^{\\frac{\\gamma-1}{\\gamma}} \\\\ \\frac{1500}{T_{2 s}} &=\\left(\\frac{20}{1}\\right)^{\\frac{1.3-1}{1.3}}=(20)^{0.2307}=1.996 \\\\ \\text{or}\\quad T_{2 s} &=751.50 \\mathrm{K} \\\\ \\eta_{\\mathrm{isen}} &=\\frac{T_{1}-T_{2}}{T_{1}-T_{2 s}} \\\\ 0.94 &=\\frac{1500-T_{2}}{1500-751.50} \\\\ &=\\frac{1500-T_{2}}{748.5} \\\\ \\text{or}\\quad 1500-T_{2}&=0.94 \\times 748.5=703.59 \\\\ \\text{or}\\quad T_{2}&=796.41 \\mathrm{K} \\end{aligned}$$\n\nWork developed by the turbine per kg of gas,\n\n$$\\begin{aligned} w &=c_{p}\\left(T_{1}-T_{2}\\right) \\\\ &=0.98(1500-796.41) \\\\ &=689.51 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-36b89e82ba.webp"
+        ]
       }
     },
     "pp:me:2003:q51": {
       "question_uid": "pp:me:2003:q51",
-      "exam_uid": "me:2003:set1:q51",
+      "exam_uid": "me:2003:set1:main:q51",
       "title": "GATE ME 2003 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2240,13 +2470,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "Volumetric efficiency\n\n$$\\begin{aligned} &=\\frac{\\text { actual volume }}{\\text { swept volume }}=\\frac{V_{a}}{V_{s}}=0.9 \\\\ \\text{or}\\qquad V_{a}&=0.9 V_{s} \\end{aligned}$$\n\nMass of air,\n\n$$\\begin{aligned} m_{a} &=\\rho_{\\text {air }} V_{a}=0.9 V_{s} \\\\ m_{f} &=0.05 \\times 0.9 V_{s}=0.045 V_{s} \\\\ \\eta_{\\text {thermal }} &=\\frac{p_{\\text {mep }} \\times L A}{m_{f} \\times C . V} \\\\ 0.3 &=\\frac{p_{m} \\times V_{s}}{0.045 V_{s} \\times 45 \\times 10^{6}} \\\\ \\text{or}\\quad p_{m} &=0.6075 \\times 10^{6} \\mathrm{Pa}\\\\ &=6.075 bar \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Volumetric efficiency\n\n$$\\begin{aligned} &=\\frac{\\text { actual volume }}{\\text { swept volume }}=\\frac{V_{a}}{V_{s}}=0.9 \\\\ \\text{or}\\qquad V_{a}&=0.9 V_{s} \\end{aligned}$$\n\nMass of air,\n\n$$\\begin{aligned} m_{a} &=\\rho_{\\text {air }} V_{a}=0.9 V_{s} \\\\ m_{f} &=0.05 \\times 0.9 V_{s}=0.045 V_{s} \\\\ \\eta_{\\text {thermal }} &=\\frac{p_{\\text {mep }} \\times L A}{m_{f} \\times C . V} \\\\ 0.3 &=\\frac{p_{m} \\times V_{s}}{0.045 V_{s} \\times 45 \\times 10^{6}} \\\\ \\text{or}\\quad p_{m} &=0.6075 \\times 10^{6} \\mathrm{Pa}\\\\ &=6.075 bar \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q52": {
       "question_uid": "pp:me:2003:q52",
-      "exam_uid": "me:2003:set1:q52",
+      "exam_uid": "me:2003:set1:main:q52",
       "title": "GATE ME 2003 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2284,13 +2518,19 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "$$\\begin{aligned} V_{c} &=10 \\% V_{s}=0.10 V_{s} \\\\ \\frac{V_{s}}{V_{c}} &=\\frac{1}{0.10}=10 \\\\ \\gamma &=1.4 \\end{aligned}$$\n\n<img src=\"/question-images/me/2003/me-2003-33ba562fea.webp\" />\n\nCompression ratio,\n\n$$\\begin{aligned} r &=\\frac{V_{1}}{V_{c}}=\\frac{V_{c}+V_{s}}{V_{c}} \\\\ &=1+\\frac{V_{s}}{V_{c}}=1+10=11\\\\ \\eta_{ \\mathrm{Otto}} &=1-\\frac{1}{r^{\\gamma-1}}=1-\\frac{1}{11^{1.4-1}} \\\\ &=1-\\frac{1}{11^{0.4}}=1-\\frac{1}{2.609} \\\\ &=1-0.3832=0.6168=61.67 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} V_{c} &=10 \\% V_{s}=0.10 V_{s} \\\\ \\frac{V_{s}}{V_{c}} &=\\frac{1}{0.10}=10 \\\\ \\gamma &=1.4 \\end{aligned}$$\n\n<img src=\"/question-images/me/2003/me-2003-33ba562fea.webp\" />\n\nCompression ratio,\n\n$$\\begin{aligned} r &=\\frac{V_{1}}{V_{c}}=\\frac{V_{c}+V_{s}}{V_{c}} \\\\ &=1+\\frac{V_{s}}{V_{c}}=1+10=11\\\\ \\eta_{ \\mathrm{Otto}} &=1-\\frac{1}{r^{\\gamma-1}}=1-\\frac{1}{11^{1.4-1}} \\\\ &=1-\\frac{1}{11^{0.4}}=1-\\frac{1}{2.609} \\\\ &=1-0.3832=0.6168=61.67 \\% \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-33ba562fea.webp"
+        ]
       }
     },
     "pp:me:2003:q53": {
       "question_uid": "pp:me:2003:q53",
-      "exam_uid": "me:2003:set1:q53",
+      "exam_uid": "me:2003:set1:main:q53",
       "title": "GATE ME 2003 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2328,13 +2568,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Turbines and Pumps",
-        "markdown": "$$\\begin{aligned} &Condition-1 &Condition-2\\\\ N_{1}&=500 \\mathrm{rpm} &N_{2}=100 \\mathrm{rpm}\\\\ H_{1}&=30 \\mathrm{m} &H_{2}=?\\\\ Q_{1}&=60 \\text { litre/min } &Q_{2}=?\\\\ \\end{aligned}$$\n\n$$\\begin{aligned} \\text{Unit speed: }\\quad N_{u}&=\\frac{N}{\\sqrt{H}} \\\\ \\left(N_{u}\\right)_{1}&=\\left(N_{v}\\right)_{2} \\\\ \\frac{N_{1}}{\\sqrt{H_{1}}}&=\\frac{N_{2}}{\\sqrt{H_{2}}} \\\\ \\frac{500}{\\sqrt{30}}&=\\frac{1000}{\\sqrt{H_{2}}} \\\\ \\text{or}\\quad \\sqrt{H_{2}}&=\\frac{1000}{500} \\times \\sqrt{30}=2 \\times \\sqrt{30}\\\\ \\text{or }\\quad H_{2}&=4 \\times 30=120 \\mathrm{m}\\\\ \\text{Unit speed: }Q_{u}&=\\frac{Q}{\\sqrt{H}}\\\\ \\left(Q_{u}\\right)_{1}&=\\left(Q_{u}\\right)_{2} \\\\ \\frac{N_{1}}{\\sqrt{H_{1}}}&=\\frac{N_{2}}{\\sqrt{H_{2}}} \\\\ \\frac{500}{\\sqrt{30}}&=\\frac{1000}{\\sqrt{H_{2}}}\\\\ \\text{or}\\quad\\sqrt{H_{2}}&=\\frac{1000}{500} \\times \\sqrt{30}=2 \\times \\sqrt{30}\\\\ \\text{or }\\quad H_{2}&=4 \\times 30=120 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} &Condition-1 &Condition-2\\\\ N_{1}&=500 \\mathrm{rpm} &N_{2}=100 \\mathrm{rpm}\\\\ H_{1}&=30 \\mathrm{m} &H_{2}=?\\\\ Q_{1}&=60 \\text { litre/min } &Q_{2}=?\\\\ \\end{aligned}$$\n\n$$\\begin{aligned} \\text{Unit speed: }\\quad N_{u}&=\\frac{N}{\\sqrt{H}} \\\\ \\left(N_{u}\\right)_{1}&=\\left(N_{v}\\right)_{2} \\\\ \\frac{N_{1}}{\\sqrt{H_{1}}}&=\\frac{N_{2}}{\\sqrt{H_{2}}} \\\\ \\frac{500}{\\sqrt{30}}&=\\frac{1000}{\\sqrt{H_{2}}} \\\\ \\text{or}\\quad \\sqrt{H_{2}}&=\\frac{1000}{500} \\times \\sqrt{30}=2 \\times \\sqrt{30}\\\\ \\text{or }\\quad H_{2}&=4 \\times 30=120 \\mathrm{m}\\\\ \\text{Unit speed: }Q_{u}&=\\frac{Q}{\\sqrt{H}}\\\\ \\left(Q_{u}\\right)_{1}&=\\left(Q_{u}\\right)_{2} \\\\ \\frac{N_{1}}{\\sqrt{H_{1}}}&=\\frac{N_{2}}{\\sqrt{H_{2}}} \\\\ \\frac{500}{\\sqrt{30}}&=\\frac{1000}{\\sqrt{H_{2}}}\\\\ \\text{or}\\quad\\sqrt{H_{2}}&=\\frac{1000}{500} \\times \\sqrt{30}=2 \\times \\sqrt{30}\\\\ \\text{or }\\quad H_{2}&=4 \\times 30=120 \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q54": {
       "question_uid": "pp:me:2003:q54",
-      "exam_uid": "me:2003:set1:q54",
+      "exam_uid": "me:2003:set1:main:q54",
       "title": "GATE ME 2003 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2372,13 +2616,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "Hardness is greatly depend on the carbon content present in the steel.\n\nCyaniding is case-hardening with powered potassium cyanide or potassium ferrocyanide mixed with potassium bichromate, substituted for carbon. Cyaniding produces a thin but very hard case in a very short time.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Hardness is greatly depend on the carbon content present in the steel.\n\nCyaniding is case-hardening with powered potassium cyanide or potassium ferrocyanide mixed with potassium bichromate, substituted for carbon. Cyaniding produces a thin but very hard case in a very short time.",
+        "images": []
       }
     },
     "pp:me:2003:q55": {
       "question_uid": "pp:me:2003:q55",
-      "exam_uid": "me:2003:set1:q55",
+      "exam_uid": "me:2003:set1:main:q55",
       "title": "GATE ME 2003 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2416,13 +2664,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "$\\text { Given, } \\mathrm{d}=200 \\mathrm{mm}, \\mathrm{r}=100 \\mathrm{mm}=0.1 \\mathrm{m}$\n\nAccording to Caine's relation:\n\nSolidification time,\n\n$$\\begin{aligned} t&=Q\\left(\\frac{V}{A}\\right)^{2} \\\\ t&=0.97 \\times 10^{6}\\left(\\frac{\\frac{4}{3} \\pi(0.1)^{3}}{4 \\pi(0.1)^{2}}\\right)^{2} \\\\ t&=0.97 \\times 10^{6}\\left(\\frac{0.1}{3}\\right)^{2}\\\\ &=1077.78 \\;\\mathrm{second}\\\\ &\\approx 1078 \\;\\mathrm{second} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$\\text { Given, } \\mathrm{d}=200 \\mathrm{mm}, \\mathrm{r}=100 \\mathrm{mm}=0.1 \\mathrm{m}$\n\nAccording to Caine's relation:\n\nSolidification time,\n\n$$\\begin{aligned} t&=Q\\left(\\frac{V}{A}\\right)^{2} \\\\ t&=0.97 \\times 10^{6}\\left(\\frac{\\frac{4}{3} \\pi(0.1)^{3}}{4 \\pi(0.1)^{2}}\\right)^{2} \\\\ t&=0.97 \\times 10^{6}\\left(\\frac{0.1}{3}\\right)^{2}\\\\ &=1077.78 \\;\\mathrm{second}\\\\ &\\approx 1078 \\;\\mathrm{second} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q56": {
       "question_uid": "pp:me:2003:q56",
-      "exam_uid": "me:2003:set1:q56",
+      "exam_uid": "me:2003:set1:main:q56",
       "title": "GATE ME 2003 | Set 1 | Question: 56",
+      "section": "main",
+      "question_number": 56,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2460,13 +2712,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Sheet Metal Operation",
-        "markdown": "Given, Shell diameter\n\n$d=100 \\mathrm{mm}$\n\nShell height,\n\n$h=100 \\mathrm{mm}$\n\nCorner radius,\n\n$$\\begin{array}{ll} & r=0.4 \\mathrm{mm} \\\\ \\text { Here } & d>20 \\mathrm{r} \\end{array}$$\n\n$\\therefore$Blank diameter,\n\n$$\\begin{aligned} D &=\\sqrt{d^{2}+4 h d} \\\\ &=\\sqrt{(100)^{2}+4 \\times 100 \\times 100}=224 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given, Shell diameter\n\n$d=100 \\mathrm{mm}$\n\nShell height,\n\n$h=100 \\mathrm{mm}$\n\nCorner radius,\n\n$$\\begin{array}{ll} & r=0.4 \\mathrm{mm} \\\\ \\text { Here } & d>20 \\mathrm{r} \\end{array}$$\n\n$\\therefore$Blank diameter,\n\n$$\\begin{aligned} D &=\\sqrt{d^{2}+4 h d} \\\\ &=\\sqrt{(100)^{2}+4 \\times 100 \\times 100}=224 \\mathrm{mm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q57": {
       "question_uid": "pp:me:2003:q57",
-      "exam_uid": "me:2003:set1:q57",
+      "exam_uid": "me:2003:set1:main:q57",
       "title": "GATE ME 2003 | Set 1 | Question: 57",
+      "section": "main",
+      "question_number": 57,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2504,13 +2760,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "Force required for extrusion\n\n$$\\begin{aligned} &=k A_{1} \\ln \\left(\\frac{A_{i}}{A_{f}}\\right)\\\\ \\text{where }\\quad k&= \\text{ extrusion constant}\\\\ &=250 \\times 10^{6} \\mathrm{N} / \\mathrm{m}^{2} \\\\ A_{i} &=\\text { initial area } \\\\ &=\\frac{\\pi}{4} \\times(0.1)^{2}=7.854 \\times 10^{-3} \\mathrm{m} \\\\ A_{f} &=\\text { final area }=\\frac{\\pi}{4} \\times(0.05)^{2} \\\\ &=1.96 \\times 10^{-3} \\mathrm{m} \\end{aligned}$$\n\nExtrusion force,\n\n$$\\begin{aligned} P &=250 \\times 10^{6} \\times \\frac{\\pi}{4} \\times(0.1)^{2} \\\\ & \\quad \\quad \\quad\\ln \\left( \\frac{7.854 \\times 10^{-3}}{1.96 \\times 10^{-3}}\\right) \\\\ &=2.72 \\times 10^{6} \\mathrm{N} \\\\ &=2.72 \\mathrm{MN} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Force required for extrusion\n\n$$\\begin{aligned} &=k A_{1} \\ln \\left(\\frac{A_{i}}{A_{f}}\\right)\\\\ \\text{where }\\quad k&= \\text{ extrusion constant}\\\\ &=250 \\times 10^{6} \\mathrm{N} / \\mathrm{m}^{2} \\\\ A_{i} &=\\text { initial area } \\\\ &=\\frac{\\pi}{4} \\times(0.1)^{2}=7.854 \\times 10^{-3} \\mathrm{m} \\\\ A_{f} &=\\text { final area }=\\frac{\\pi}{4} \\times(0.05)^{2} \\\\ &=1.96 \\times 10^{-3} \\mathrm{m} \\end{aligned}$$\n\nExtrusion force,\n\n$$\\begin{aligned} P &=250 \\times 10^{6} \\times \\frac{\\pi}{4} \\times(0.1)^{2} \\\\ & \\quad \\quad \\quad\\ln \\left( \\frac{7.854 \\times 10^{-3}}{1.96 \\times 10^{-3}}\\right) \\\\ &=2.72 \\times 10^{6} \\mathrm{N} \\\\ &=2.72 \\mathrm{MN} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q58": {
       "question_uid": "pp:me:2003:q58",
-      "exam_uid": "me:2003:set1:q58",
+      "exam_uid": "me:2003:set1:main:q58",
       "title": "GATE ME 2003 | Set 1 | Question: 58",
+      "section": "main",
+      "question_number": 58,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2548,13 +2808,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Sheet Metal Operation",
-        "markdown": "Given, Punched diameter\n\n$d=20 \\mathrm{mm}$\n\nSheet thickness,\n\n$t=2 \\mathrm{mm}$\n\nClearance: c=3% of t\n\nPunch diameter,\n\n$$\\begin{aligned} D &=d-2 c \\\\ &=20-2 \\times \\frac{3}{100} \\times 2=19.88 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given, Punched diameter\n\n$d=20 \\mathrm{mm}$\n\nSheet thickness,\n\n$t=2 \\mathrm{mm}$\n\nClearance: c=3% of t\n\nPunch diameter,\n\n$$\\begin{aligned} D &=d-2 c \\\\ &=20-2 \\times \\frac{3}{100} \\times 2=19.88 \\mathrm{mm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q59": {
       "question_uid": "pp:me:2003:q59",
-      "exam_uid": "me:2003:set1:q59",
+      "exam_uid": "me:2003:set1:main:q59",
       "title": "GATE ME 2003 | Set 1 | Question: 59",
+      "section": "main",
+      "question_number": 59,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2592,13 +2856,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Velocity of first cutting tool\n\n$V_{1}=50 \\times 0.25=12.5 \\mathrm{mm} / \\mathrm{min}$\n\nVelocity of second cutting tool\n\n$V_{2}=0.25 \\times 80=20 \\mathrm{mm} / \\mathrm{min}$\n\nsince tool life = no. of component produce $\\times$ tool constant\n\n$\\therefore$ Tool life for first tool,\n\n$T_{1}=500 \\mathrm{K}$\n\nTool life for second tool,\n\n$$\\begin{aligned} \\qquad T_{2}&=122 \\mathrm{K} \\\\ \\text { Now, } V_{1} T_{1}^{n}&=V_{2} T_{2}^{n} \\\\ \\Rightarrow(12.5) \\times(500 \\mathrm{K})^{n}&=20 \\times(122 \\mathrm{K})^{n}\\\\ \\therefore \\qquad\\left(\\frac{500}{122}\\right)^{n}&=1.6 \\\\ \\therefore \\qquad n&=0.333 \\end{aligned}$$\n\nHence number of components produced by one cutting tool at 60 rpm\n\n$$\\begin{array}{l} \\Rightarrow 12.5 \\times\\left(\\frac{500 k}{10}\\right)^{0.333}=60 \\times 0.25 \\times(x k) 0.333 \\\\ \\left(\\frac{x}{50}\\right)^{0.333}=\\frac{12.5}{60 \\times 0.25} \\\\ \\left(\\frac{x}{50}\\right)^{0.333}=\\frac{12.5}{60 \\times 0.25} \\\\ \\therefore \\quad x=29 \\end{array}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Velocity of first cutting tool\n\n$V_{1}=50 \\times 0.25=12.5 \\mathrm{mm} / \\mathrm{min}$\n\nVelocity of second cutting tool\n\n$V_{2}=0.25 \\times 80=20 \\mathrm{mm} / \\mathrm{min}$\n\nsince tool life = no. of component produce $\\times$ tool constant\n\n$\\therefore$ Tool life for first tool,\n\n$T_{1}=500 \\mathrm{K}$\n\nTool life for second tool,\n\n$$\\begin{aligned} \\qquad T_{2}&=122 \\mathrm{K} \\\\ \\text { Now, } V_{1} T_{1}^{n}&=V_{2} T_{2}^{n} \\\\ \\Rightarrow(12.5) \\times(500 \\mathrm{K})^{n}&=20 \\times(122 \\mathrm{K})^{n}\\\\ \\therefore \\qquad\\left(\\frac{500}{122}\\right)^{n}&=1.6 \\\\ \\therefore \\qquad n&=0.333 \\end{aligned}$$\n\nHence number of components produced by one cutting tool at 60 rpm\n\n$$\\begin{array}{l} \\Rightarrow 12.5 \\times\\left(\\frac{500 k}{10}\\right)^{0.333}=60 \\times 0.25 \\times(x k) 0.333 \\\\ \\left(\\frac{x}{50}\\right)^{0.333}=\\frac{12.5}{60 \\times 0.25} \\\\ \\left(\\frac{x}{50}\\right)^{0.333}=\\frac{12.5}{60 \\times 0.25} \\\\ \\therefore \\quad x=29 \\end{array}$$",
+        "images": []
       }
     },
     "pp:me:2003:q60": {
       "question_uid": "pp:me:2003:q60",
-      "exam_uid": "me:2003:set1:q60",
+      "exam_uid": "me:2003:set1:main:q60",
       "title": "GATE ME 2003 | Set 1 | Question: 60",
+      "section": "main",
+      "question_number": 60,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2636,17 +2904,21 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "Given Metric thread M 16\n\nIn case of threads always rollers (wires) are used.\n\n$\\text { Pitch: } p=2 \\mathrm{mm}$\n\nPitch diameter $=14.701 \\mathrm{mm}$\n\nIn case of Metric thread $\\;2\\theta=60^{\\circ}$\n\n$\\Rightarrow \\theta=30^{\\circ}$\n\nFor a best size wire\n\n$d w=\\frac{P}{2} \\sec \\theta=\\frac{2}{2} \\sec 30^{\\circ}=1.155 \\mathrm{mm}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given Metric thread M 16\n\nIn case of threads always rollers (wires) are used.\n\n$\\text { Pitch: } p=2 \\mathrm{mm}$\n\nPitch diameter $=14.701 \\mathrm{mm}$\n\nIn case of Metric thread $\\;2\\theta=60^{\\circ}$\n\n$\\Rightarrow \\theta=30^{\\circ}$\n\nFor a best size wire\n\n$d w=\\frac{P}{2} \\sec \\theta=\\frac{2}{2} \\sec 30^{\\circ}=1.155 \\mathrm{mm}$",
+        "images": []
       }
     },
     "pp:me:2003:q61": {
       "question_uid": "pp:me:2003:q61",
-      "exam_uid": "me:2003:set1:q61",
+      "exam_uid": "me:2003:set1:main:q61",
       "title": "GATE ME 2003 | Set 1 | Question: 61",
+      "section": "main",
+      "question_number": 61,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "Two slip gauges of 10 mm width measuring 1.000 mm and 1.002 mm are kept side by side in contact with each other lengthwise. An optical flat is kept resting on the slip gauges as shown in the figure. Monochromatic light of wavelength 0.0058928 mm is used in the inspection. The total number of straight fringes that can be observed on both slip gauges is <br><img src= \"/wp-content/uploads/GATE/ME/20031/q61.jpg\">",
+      "question": "Two slip gauges of 10 mm width measuring 1.000 mm and 1.002 mm are kept side by side in contact with each other lengthwise. An optical flat is kept resting on the slip gauges as shown in the figure. Monochromatic light of wavelength 0.0058928 mm is used in the inspection. The total number of straight fringes that can be observed on both slip gauges is <br><img src=\"/question-images/me/2003/me-2003-1781dd1cef.webp\">",
       "options": [
         "2",
         "6",
@@ -2656,10 +2928,7 @@
       "answer_meta": {
         "type": "MCQ",
         "answer": "A",
-        "tolerance": {
-          "lower": 0,
-          "upper": 0
-        },
+        "tolerance": null,
         "source": "official_key"
       },
       "track": "me",
@@ -2679,18 +2948,21 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Manufacturing Engineering** (specifically *Metrology and Inspection*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Metrology and Inspection**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *2*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (2)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2003:q62": {
       "question_uid": "pp:me:2003:q62",
-      "exam_uid": "me:2003:set1:q62",
+      "exam_uid": "me:2003:set1:main:q62",
       "title": "GATE ME 2003 | Set 1 | Question: 62",
+      "section": "main",
+      "question_number": 62,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": " A part shown in the figure is machined to the sizes given below <br><img src= \"/wp-content/uploads/GATE/ME/20031/q62.jpg\"> <br> $P=35.00 \\pm 0.08 mm$<br>\n$Q=12.00 \\pm 0.02 mm$ <br>$R=13.00^{+0.04}_{-0.02}mm$\nWith 100% confidence, the resultant dimension W will have the specification ",
+      "question": " A part shown in the figure is machined to the sizes given below <br><img src=\"/question-images/me/2003/me-2003-645859016e.webp\"> <br> $P=35.00 \\pm 0.08 mm$<br>\n$Q=12.00 \\pm 0.02 mm$ <br>$R=13.00^{+0.04}_{-0.02}mm$\nWith 100% confidence, the resultant dimension W will have the specification ",
       "options": [
         "$9.99 \\pm 0.03 mm$",
         "$9.99 \\pm 0.13 mm$",
@@ -2724,13 +2996,19 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "$$\\begin{aligned} P&=35+0.08 \\mathrm{mm} \\\\ Q&=12.00+0.02 \\mathrm{mm} \\\\ R&=13.0_{-0.02}^{+0.04}=13.01 \\pm 0.03 \\end{aligned}$$\n\nNow all have same bilateral tolerance, so\n\n$P=Q+W+R$\n\n<img src=\"/question-images/me/2003/me-2003-c9ae7c6c9f.webp\" />\n\n$\\therefore P=Q+W+R$\n\nConsidering dimension\n\n$\\Rightarrow \\quad 35=12+W+13.01$\n\n$W=9.99 \\mathrm{mm}$\n\nTolerance are probabilities and not the absolute Value on any part, at least one section must be there that treated as sink, and tolerance of sink will be cumulative sum of all tolerances.\n\n$\\therefore$Tolerance $=0.08+0.02+0.03=0.13$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} P&=35+0.08 \\mathrm{mm} \\\\ Q&=12.00+0.02 \\mathrm{mm} \\\\ R&=13.0_{-0.02}^{+0.04}=13.01 \\pm 0.03 \\end{aligned}$$\n\nNow all have same bilateral tolerance, so\n\n$P=Q+W+R$\n\n<img src=\"/question-images/me/2003/me-2003-c9ae7c6c9f.webp\" />\n\n$\\therefore P=Q+W+R$\n\nConsidering dimension\n\n$\\Rightarrow \\quad 35=12+W+13.01$\n\n$W=9.99 \\mathrm{mm}$\n\nTolerance are probabilities and not the absolute Value on any part, at least one section must be there that treated as sink, and tolerance of sink will be cumulative sum of all tolerances.\n\n$\\therefore$Tolerance $=0.08+0.02+0.03=0.13$",
+        "images": [
+          "/question-images/me/2003/me-2003-c9ae7c6c9f.webp"
+        ]
       }
     },
     "pp:me:2003:q63": {
       "question_uid": "pp:me:2003:q63",
-      "exam_uid": "me:2003:set1:q63",
+      "exam_uid": "me:2003:set1:main:q63",
       "title": "GATE ME 2003 | Set 1 | Question: 63",
+      "section": "main",
+      "question_number": 63,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2768,13 +3046,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "Let n quantities are produced by each machine.\n\nThe total cost in production\n\n$$\\begin{aligned} &=100+2 \\times n+200+n \\\\ &=300+3 n \\end{aligned}$$\n\nFor the first 800 units, selling price is 3.50 Rs/Units\n\nHence for breakeven point\n\n$$\\begin{aligned} 300+3 n&=3.5 \\times 2 n\\\\ \\therefore \\quad 7 n&=300+3 n\\\\ \\text{or}\\quad n&=75\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Let n quantities are produced by each machine.\n\nThe total cost in production\n\n$$\\begin{aligned} &=100+2 \\times n+200+n \\\\ &=300+3 n \\end{aligned}$$\n\nFor the first 800 units, selling price is 3.50 Rs/Units\n\nHence for breakeven point\n\n$$\\begin{aligned} 300+3 n&=3.5 \\times 2 n\\\\ \\therefore \\quad 7 n&=300+3 n\\\\ \\text{or}\\quad n&=75\\\\ \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q64": {
       "question_uid": "pp:me:2003:q64",
-      "exam_uid": "me:2003:set1:q64",
+      "exam_uid": "me:2003:set1:main:q64",
       "title": "GATE ME 2003 | Set 1 | Question: 64",
+      "section": "main",
+      "question_number": 64,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2812,13 +3094,19 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Total duration $=25 \\mathrm{hr}$\n\n$P=\\frac{71}{110}=0.645$\n\n<img src=\"/question-images/me/2003/me-2003-5d27ab4d52.webp\" />\n\n$$\\begin{aligned} n &=\\frac{Z^{2}}{L^{2}} \\cdot \\frac{(1-P)}{P} \\\\ 110 &=\\frac{1.96^{2}}{L^{2}} \\cdot \\frac{(1-0.645)}{0.645} \\\\ L &=0.1386 \\\\ \\text{Lower limit }&=16.1 \\times(1-0.1386) \\\\ &=13.89 \\mathrm{hrs} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Total duration $=25 \\mathrm{hr}$\n\n$P=\\frac{71}{110}=0.645$\n\n<img src=\"/question-images/me/2003/me-2003-5d27ab4d52.webp\" />\n\n$$\\begin{aligned} n &=\\frac{Z^{2}}{L^{2}} \\cdot \\frac{(1-P)}{P} \\\\ 110 &=\\frac{1.96^{2}}{L^{2}} \\cdot \\frac{(1-0.645)}{0.645} \\\\ L &=0.1386 \\\\ \\text{Lower limit }&=16.1 \\times(1-0.1386) \\\\ &=13.89 \\mathrm{hrs} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-5d27ab4d52.webp"
+        ]
       }
     },
     "pp:me:2003:q65": {
       "question_uid": "pp:me:2003:q65",
-      "exam_uid": "me:2003:set1:q65",
+      "exam_uid": "me:2003:set1:main:q65",
       "title": "GATE ME 2003 | Set 1 | Question: 65",
+      "section": "main",
+      "question_number": 65,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2856,13 +3144,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "Taking forecast for the first period equal to demand.\n\n$F=F_{t-1}+\\alpha e_{t-1}$\n\n$$\\begin{array}{c|c|c} D_i &F_i & e_i\\\\ \\hline 70&70&0 \\\\ 68&70&-2 \\\\ 82& 69&2\\\\ 98&74.32&20.68 \\\\ \\hline &82.59& \\end{array}$$\n\nHence answer is 83.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Taking forecast for the first period equal to demand.\n\n$F=F_{t-1}+\\alpha e_{t-1}$\n\n$$\\begin{array}{c|c|c} D_i &F_i & e_i\\\\ \\hline 70&70&0 \\\\ 68&70&-2 \\\\ 82& 69&2\\\\ 98&74.32&20.68 \\\\ \\hline &82.59& \\end{array}$$\n\nHence answer is 83.",
+        "images": []
       }
     },
     "pp:me:2003:q66": {
       "question_uid": "pp:me:2003:q66",
-      "exam_uid": "me:2003:set1:q66",
+      "exam_uid": "me:2003:set1:main:q66",
       "title": "GATE ME 2003 | Set 1 | Question: 66",
+      "section": "main",
+      "question_number": 66,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2900,13 +3192,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
-        "markdown": "Given, Demand (D)=8,00,000 per annum\n\nOrder $\\text{cost} C_{0}=$ Rs. 1200 per order\n\nHolding cost $C_{h}=$ Rs. 120 per stored piece per annum\n\nWe know that,\n\n$$\\begin{aligned} \\mathrm{EOQ} &=\\sqrt{\\frac{2 C_{o} D}{C_{h}}} \\\\ &=\\sqrt{\\frac{2 \\times 800000 \\times 1200}{120}} \\\\ &=4000 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given, Demand (D)=8,00,000 per annum\n\nOrder $\\text{cost} C_{0}=$ Rs. 1200 per order\n\nHolding cost $C_{h}=$ Rs. 120 per stored piece per annum\n\nWe know that,\n\n$$\\begin{aligned} \\mathrm{EOQ} &=\\sqrt{\\frac{2 C_{o} D}{C_{h}}} \\\\ &=\\sqrt{\\frac{2 \\times 800000 \\times 1200}{120}} \\\\ &=4000 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q67": {
       "question_uid": "pp:me:2003:q67",
-      "exam_uid": "me:2003:set1:q67",
+      "exam_uid": "me:2003:set1:main:q67",
       "title": "GATE ME 2003 | Set 1 | Question: 67",
+      "section": "main",
+      "question_number": 67,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2944,17 +3240,23 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Linear Programming",
-        "markdown": "Given system are\n\n$$\\begin{aligned} x_{1}+3 x_{2} & \\leq 40 \\qquad\\ldots(i)\\\\ 3 x_{1}+x_{2} & \\leq 24 \\qquad\\ldots(ii)\\\\ x_{1}+x_{2} & \\leq 10 \\qquad\\ldots(iii)\\\\ x, &>0, x_{2}>0 \\end{aligned}$$\n\nObjective function,\n\n$z=2 x_{1}+5 x_{2}$\n\n<img src=\"/question-images/me/2003/me-2003-b4cee28bc3.webp\" />\n\nSolving the eqs. (ii) and (iii); we get\n\n$$\\begin{aligned} x_{1}&=7\\\\ and\\quad x_{2} &=3 \\\\ z_{\\max } &=2 \\times 7+5 \\times 3=29 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given system are\n\n$$\\begin{aligned} x_{1}+3 x_{2} & \\leq 40 \\qquad\\ldots(i)\\\\ 3 x_{1}+x_{2} & \\leq 24 \\qquad\\ldots(ii)\\\\ x_{1}+x_{2} & \\leq 10 \\qquad\\ldots(iii)\\\\ x, &>0, x_{2}>0 \\end{aligned}$$\n\nObjective function,\n\n$z=2 x_{1}+5 x_{2}$\n\n<img src=\"/question-images/me/2003/me-2003-b4cee28bc3.webp\" />\n\nSolving the eqs. (ii) and (iii); we get\n\n$$\\begin{aligned} x_{1}&=7\\\\ and\\quad x_{2} &=3 \\\\ z_{\\max } &=2 \\times 7+5 \\times 3=29 \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-b4cee28bc3.webp"
+        ]
       }
     },
     "pp:me:2003:q68": {
       "question_uid": "pp:me:2003:q68",
-      "exam_uid": "me:2003:set1:q68",
+      "exam_uid": "me:2003:set1:main:q68",
       "title": "GATE ME 2003 | Set 1 | Question: 68",
+      "section": "main",
+      "question_number": 68,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": " A Project consists of activities A to M shown in the net in the following figure with the duration of the activities marked in days \n <br><img src= \"/wp-content/uploads/GATE/ME/20031/q68.jpg\"><br>\nThe project can be completed ",
+      "question": " A Project consists of activities A to M shown in the net in the following figure with the duration of the activities marked in days \n <br><img src=\"/question-images/me/2003/me-2003-b10a90b488.webp\"><br>\nThe project can be completed ",
       "options": [
         " between 18, 19 days ",
         "between 20, 22 days ",
@@ -2988,17 +3290,23 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-db8fd32225.webp\" />\n\nMaximum time along path CFKM.\n\nSo this is the critical path.\n\n$\\therefore$ The project can be completed in\n\n4+9+3+8= 24days\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-db8fd32225.webp\" />\n\nMaximum time along path CFKM.\n\nSo this is the critical path.\n\n$\\therefore$ The project can be completed in\n\n4+9+3+8= 24days",
+        "images": [
+          "/question-images/me/2003/me-2003-db8fd32225.webp"
+        ]
       }
     },
     "pp:me:2003:q69": {
       "question_uid": "pp:me:2003:q69",
-      "exam_uid": "me:2003:set1:q69",
+      "exam_uid": "me:2003:set1:main:q69",
       "title": "GATE ME 2003 | Set 1 | Question: 69",
+      "section": "main",
+      "question_number": 69,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "Match the following  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q69.jpg\">",
+      "question": "Match the following  <br><img src=\"/question-images/me/2003/me-2003-7ea41cd8b7.webp\">",
       "options": [
         "P - 2 Q - 1 R - 7 S - 6 ",
         " P - 3 Q - 1 R - 5 S - 7 ",
@@ -3032,17 +3340,21 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Turbines and Pumps",
-        "markdown": "Curtis = Velocity compounding\n\nRateau = Pressure compounding\n\nKaplan = Axial flow turbine\n\nFrancis  =  Mixed flow turbine\n\nTherefore, the correct answer is **B**."
+        "markdown": "Curtis = Velocity compounding\n\nRateau = Pressure compounding\n\nKaplan = Axial flow turbine\n\nFrancis  =  Mixed flow turbine",
+        "images": []
       }
     },
     "pp:me:2003:q70": {
       "question_uid": "pp:me:2003:q70",
-      "exam_uid": "me:2003:set1:q70",
+      "exam_uid": "me:2003:set1:main:q70",
       "title": "GATE ME 2003 | Set 1 | Question: 70",
+      "section": "main",
+      "question_number": 70,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "Match the following <br><img src= \"/wp-content/uploads/GATE/ME/20031/q70.jpg\">",
+      "question": "Match the following <br><img src=\"/question-images/me/2003/me-2003-b853f0c192.webp\">",
       "options": [
         "P - 2 Q - 5 R - 1 S - 3 ",
         "P - 6 Q - 3 R - 4 S - 4 ",
@@ -3076,17 +3388,21 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "(P) Aluminium-Gas tungsten Arc welding\n\n(Q) Die steel-Atomic Hydrogen welding\n\n(R) Copper wire-Soldering\n\n(S) Titanium sheet-Laser Beam welding\n\nTherefore, the correct answer is **D**."
+        "markdown": "(P) Aluminium-Gas tungsten Arc welding\n\n(Q) Die steel-Atomic Hydrogen welding\n\n(R) Copper wire-Soldering\n\n(S) Titanium sheet-Laser Beam welding",
+        "images": []
       }
     },
     "pp:me:2003:q71": {
       "question_uid": "pp:me:2003:q71",
-      "exam_uid": "me:2003:set1:q71",
+      "exam_uid": "me:2003:set1:main:q71",
       "title": "GATE ME 2003 | Set 1 | Question: 71",
+      "section": "main",
+      "question_number": 71,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A reel of mass \"m\" and radius of gyration \"k\" is rolling down smoothly from rest with one end of the thread wound on it held in the ceiling as depicted in the figure. Consider the thickness of the thread and its mass negligible in comparison with the radius \"r\" of the hub and the reel mass \"m\". Symbol \"g\" represents the acceleration due to gravity. <br><img src= \"/wp-content/uploads/GATE/ME/20031/q7172.jpg\"><br><br>The linear acceleration of the reel is ",
+      "question": "A reel of mass \"m\" and radius of gyration \"k\" is rolling down smoothly from rest with one end of the thread wound on it held in the ceiling as depicted in the figure. Consider the thickness of the thread and its mass negligible in comparison with the radius \"r\" of the hub and the reel mass \"m\". Symbol \"g\" represents the acceleration due to gravity. <br><img src=\"/question-images/me/2003/me-2003-4c5fd6c24b.webp\"><br><br>The linear acceleration of the reel is ",
       "options": [
         "$\\frac{gr^{2}}{(r^{2}+k^{2})}$",
         "$\\frac{gk^{2}}{(r^{2}+k^{2})}$",
@@ -3120,17 +3436,23 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Plane Motion",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-eceeda8955.webp\" />\n\nLet a= linear acceleration\n\nFor a vertical translation motion.\n\n$m g-T=m a \\qquad\\ldots(i)$\n\nFor rotational motion\n\n$T \\times r=I$\n\n[$a=r \\alpha$ (pure rolling)][/latex]\n\n$\\pi=m k^{2} \\frac{a}{r}$\n\n$\\therefore \\quad T=\\frac{m k^{2}}{r^{2}} \\cdot a \\qquad\\ldots(ii)$\n\nFrom Eqs. (i) and (ii), we get\n\n$m g-\\frac{m k^{2}}{r^{2}} \\cdot a=m a$\n\n$\\alpha a=\\frac{g r^{2}}{k^{2}+r^{2}}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-eceeda8955.webp\" />\n\nLet a= linear acceleration\n\nFor a vertical translation motion.\n\n$m g-T=m a \\qquad\\ldots(i)$\n\nFor rotational motion\n\n$T \\times r=I$\n\n[$a=r \\alpha$ (pure rolling)][/latex]\n\n$\\pi=m k^{2} \\frac{a}{r}$\n\n$\\therefore \\quad T=\\frac{m k^{2}}{r^{2}} \\cdot a \\qquad\\ldots(ii)$\n\nFrom Eqs. (i) and (ii), we get\n\n$m g-\\frac{m k^{2}}{r^{2}} \\cdot a=m a$\n\n$\\alpha a=\\frac{g r^{2}}{k^{2}+r^{2}}$",
+        "images": [
+          "/question-images/me/2003/me-2003-eceeda8955.webp"
+        ]
       }
     },
     "pp:me:2003:q72": {
       "question_uid": "pp:me:2003:q72",
-      "exam_uid": "me:2003:set1:q72",
+      "exam_uid": "me:2003:set1:main:q72",
       "title": "GATE ME 2003 | Set 1 | Question: 72",
+      "section": "main",
+      "question_number": 72,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A reel of mass \"m\" and radius of gyration \"k\" is rolling down smoothly from rest with one end of the thread wound on it held in the ceiling as depicted in the figure. Consider the thickness of the thread and its mass negligible in comparison with the radius \"r\" of the hub and the reel mass \"m\". Symbol \"g\" represents the acceleration due to gravity. <br><img src= \"/wp-content/uploads/GATE/ME/20031/q7172.jpg\"><br><br>The tension in the thread is ",
+      "question": "A reel of mass \"m\" and radius of gyration \"k\" is rolling down smoothly from rest with one end of the thread wound on it held in the ceiling as depicted in the figure. Consider the thickness of the thread and its mass negligible in comparison with the radius \"r\" of the hub and the reel mass \"m\". Symbol \"g\" represents the acceleration due to gravity. <br><img src=\"/question-images/me/2003/me-2003-4c5fd6c24b.webp\"><br><br>The tension in the thread is ",
       "options": [
         "$\\frac{mgr^{2}}{(r^{2}+k^{2})}$",
         "$\\frac{mgrk}{(r^{2}+k^{2})}$",
@@ -3164,13 +3486,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Plane Motion",
-        "markdown": "$$\\begin{aligned} T &=\\frac{m k^{2}}{r^{2}} \\cdot a \\\\ &=\\frac{m k^{2}}{r^{2}} \\times \\frac{g r^{2}}{\\left(k^{2}+r^{2}\\right)}=\\frac{m g k^{2}}{\\left(k^{2}+r^{2}\\right)} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} T &=\\frac{m k^{2}}{r^{2}} \\cdot a \\\\ &=\\frac{m k^{2}}{r^{2}} \\times \\frac{g r^{2}}{\\left(k^{2}+r^{2}\\right)}=\\frac{m g k^{2}}{\\left(k^{2}+r^{2}\\right)} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q73": {
       "question_uid": "pp:me:2003:q73",
-      "exam_uid": "me:2003:set1:q73",
+      "exam_uid": "me:2003:set1:main:q73",
       "title": "GATE ME 2003 | Set 1 | Question: 73",
+      "section": "main",
+      "question_number": 73,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3208,13 +3534,19 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Mohr's Circle",
-        "markdown": "Mohr's circle is a point\n\n<img src=\"/question-images/me/2003/me-2003-b2f7960344.webp\" />\n\n$$\\begin{aligned} \\text { i.e., } \\quad& \\sigma_{1} &=\\sigma_{2}=175 \\mathrm{MPa} \\\\ \\text { and } \\quad& \\tau_{\\max } &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Mohr's circle is a point\n\n<img src=\"/question-images/me/2003/me-2003-b2f7960344.webp\" />\n\n$$\\begin{aligned} \\text { i.e., } \\quad& \\sigma_{1} &=\\sigma_{2}=175 \\mathrm{MPa} \\\\ \\text { and } \\quad& \\tau_{\\max } &=0 \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-b2f7960344.webp"
+        ]
       }
     },
     "pp:me:2003:q74": {
       "question_uid": "pp:me:2003:q74",
-      "exam_uid": "me:2003:set1:q74",
+      "exam_uid": "me:2003:set1:main:q74",
       "title": "GATE ME 2003 | Set 1 | Question: 74",
+      "section": "main",
+      "question_number": 74,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3252,17 +3584,21 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Mohr's Circle",
-        "markdown": "Mohr's circle is a point, hence maximum and minimum stress at point  P is same in all directions.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Mohr's circle is a point, hence maximum and minimum stress at point  P is same in all directions.",
+        "images": []
       }
     },
     "pp:me:2003:q75": {
       "question_uid": "pp:me:2003:q75",
-      "exam_uid": "me:2003:set1:q75",
+      "exam_uid": "me:2003:set1:main:q75",
       "title": "GATE ME 2003 | Set 1 | Question: 75",
+      "section": "main",
+      "question_number": 75,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "The circular disc shown in its plan view in the figure rotates in a plane parallel to the horizontal plane about the point O at a uniform angular velocity $\\omega$. Two other points A and B are located on the line OZ at distances $r_{A}$\n and $r_{B}$\n from O respectively.  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q7576.jpg\"><br><br>The velocity of point B with respect to point A is a vector of magnitude ",
+      "question": "The circular disc shown in its plan view in the figure rotates in a plane parallel to the horizontal plane about the point O at a uniform angular velocity $\\omega$. Two other points A and B are located on the line OZ at distances $r_{A}$\n and $r_{B}$\n from O respectively.  <br><img src=\"/question-images/me/2003/me-2003-9f36e86dd2.webp\"><br><br>The velocity of point B with respect to point A is a vector of magnitude ",
       "options": [
         "0",
         " $\\omega (r_{A}-r_{B})$\n) and direction opposite to the direction of motion of point B ",
@@ -3296,17 +3632,21 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Displacement, Velocity and Acceleration",
-        "markdown": "Linear velocity of A and B are $\\omega r_{A}$ and respectively.\n\n$$\\begin{aligned} \\because r_{B}&>r_{A}\\\\ \\therefore \\omega r_{B}&>\\omega r_{A} \\end{aligned}$$\n\nVelocity of B with respect to A\n\n$\\left(\\vec{V}_{B / A}\\right)=\\overrightarrow{\\omega r_{B}}-\\overrightarrow{\\omega r_{A}}$\n\n$\\omega\\left(r_{B}-r_{A}\\right)$ in the direction of motion of point B.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Linear velocity of A and B are $\\omega r_{A}$ and respectively.\n\n$$\\begin{aligned} \\because r_{B}&>r_{A}\\\\ \\therefore \\omega r_{B}&>\\omega r_{A} \\end{aligned}$$\n\nVelocity of B with respect to A\n\n$\\left(\\vec{V}_{B / A}\\right)=\\overrightarrow{\\omega r_{B}}-\\overrightarrow{\\omega r_{A}}$\n\n$\\omega\\left(r_{B}-r_{A}\\right)$ in the direction of motion of point B.",
+        "images": []
       }
     },
     "pp:me:2003:q76": {
       "question_uid": "pp:me:2003:q76",
-      "exam_uid": "me:2003:set1:q76",
+      "exam_uid": "me:2003:set1:main:q76",
       "title": "GATE ME 2003 | Set 1 | Question: 76",
+      "section": "main",
+      "question_number": 76,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "The circular disc shown in its plan view in the figure rotates in a plane parallel to the horizontal plane about the point O at a uniform angular velocity $\\omega$. Two other points A and B are located on the line OZ at distances $r_{A}$\n and $r_{B}$\n from O respectively.  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q7576.jpg\"><br><br>The acceleration of point B with respect to point A is a vector of magnitude ",
+      "question": "The circular disc shown in its plan view in the figure rotates in a plane parallel to the horizontal plane about the point O at a uniform angular velocity $\\omega$. Two other points A and B are located on the line OZ at distances $r_{A}$\n and $r_{B}$\n from O respectively.  <br><img src=\"/question-images/me/2003/me-2003-9f36e86dd2.webp\"><br><br>The acceleration of point B with respect to point A is a vector of magnitude ",
       "options": [
         "0",
         "$\\omega (r_{B}-r_{A})$\n and direction same as the direction of motion of point B",
@@ -3340,17 +3680,21 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Displacement, Velocity and Acceleration",
-        "markdown": "Acceleration of point B with respect to point A\n\n$$\\begin{aligned} \\overrightarrow{a_{B / A}} &=\\vec{a}_{B}-\\vec{a}_{A} \\\\ &=\\overrightarrow{\\omega^{2} r_{B}}-\\overrightarrow{\\omega^{2} r_{A}} \\\\ &=\\omega^{2}\\left(r_{B}-r_{A}\\right) \\end{aligned}$$ in direction from Z to O\n\nTherefore, the correct answer is **D**."
+        "markdown": "Acceleration of point B with respect to point A\n\n$$\\begin{aligned} \\overrightarrow{a_{B / A}} &=\\vec{a}_{B}-\\vec{a}_{A} \\\\ &=\\overrightarrow{\\omega^{2} r_{B}}-\\overrightarrow{\\omega^{2} r_{A}} \\\\ &=\\omega^{2}\\left(r_{B}-r_{A}\\right) \\end{aligned}$$ in direction from Z to O",
+        "images": []
       }
     },
     "pp:me:2003:q77": {
       "question_uid": "pp:me:2003:q77",
-      "exam_uid": "me:2003:set1:q77",
+      "exam_uid": "me:2003:set1:main:q77",
       "title": "GATE ME 2003 | Set 1 | Question: 77",
+      "section": "main",
+      "question_number": 77,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A uniform rigid slenderbar of mass 10 kg, hinged at the left end is suspended with the help of spring and damper arrangement as shown in the figure where K = 2 kN/m, C = 500 Ns/m and the stiffness of the torsional spring $K_{\\theta }$\r\n is  1 kN/m/rad. Ignore the hinge dimensions.  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q7778.jpg\"><br><br>The un-damped natural frequency of oscillations of the bar about the hinge point is ",
+      "question": "A uniform rigid slenderbar of mass 10 kg, hinged at the left end is suspended with the help of spring and damper arrangement as shown in the figure where K = 2 kN/m, C = 500 Ns/m and the stiffness of the torsional spring $K_{\\theta }$\r\n is  1 kN/m/rad. Ignore the hinge dimensions.  <br><img src=\"/question-images/me/2003/me-2003-57fc8c98a6.webp\"><br><br>The un-damped natural frequency of oscillations of the bar about the hinge point is ",
       "options": [
         "42.43 rad/s ",
         "30 rad/s ",
@@ -3384,17 +3728,23 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "For small feflection, after equlibrium\n\n<img src=\"/question-images/me/2003/me-2003-5f3571af31.webp\" />\n\n$$\\begin{aligned} \\text{Now,}\\quad \\theta &=\\frac{x_{1}}{0.4}=\\frac{x_{2}}{0.5} \\\\ \\therefore \\quad x_{1} &=0.4\\;\\theta\\\\ \\text{and}\\quad x_{2}&=0.5\\;\\theta \\end{aligned}$$\n\nMoment of inertia\n\n$$\\begin{array}{l} =\\frac{m l_{2}^{2}}{3}=\\frac{10 \\times(0.5)^{2}}{3} \\\\ =0.833 \\mathrm{kgm}^{2} \\end{array}$$\n\nNow, from Newton's law of motion\n\n$$\\begin{aligned} & c\\dot{x}_{1} l_{1}+k x_{2} l_{2}+k_{\\theta} \\cdot \\theta+I \\ddot{\\theta}=0 \\\\ &\\Rightarrow \\mathrm{Cl}_{1}^{2} \\dot{\\theta}+\\mathrm{k} l_{2}^{2} \\theta+\\mathrm{k}_{\\theta} \\cdot \\theta+\\mathrm{l} \\ddot{\\mathbf{\\theta}}=0 \\\\ &\\Rightarrow 500 \\times(0.4)^{2} \\dot{\\theta}+\\left(2000 \\times(0.5)^{2}+1000\\right) \\theta \\\\ &+0.833 \\ddot{\\theta}=0\\\\ &\\Rightarrow0.833\\ddot{\\theta}+80\\dot{\\theta}+1500\\theta \\qquad \\cdots(i) \\end{aligned}$$\n\nEquation can be written as:\n\n$$\\begin{aligned} I \\ddot{\\theta}+C_{T} \\dot{\\theta}+K_{T} \\theta&=0\\\\ \\therefore \\qquad I&=0.833\\\\ C_{T}&=80 \\\\ K_{T}&=1500 \\end{aligned}$$\n\nNow natural frequency,\n\n$$\\begin{aligned} \\omega_{n} &=\\sqrt{\\frac{k_{T}}{I}}=\\sqrt{\\frac{1500}{0.833}} \\\\ &=42.43 \\mathrm{rad} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For small feflection, after equlibrium\n\n<img src=\"/question-images/me/2003/me-2003-5f3571af31.webp\" />\n\n$$\\begin{aligned} \\text{Now,}\\quad \\theta &=\\frac{x_{1}}{0.4}=\\frac{x_{2}}{0.5} \\\\ \\therefore \\quad x_{1} &=0.4\\;\\theta\\\\ \\text{and}\\quad x_{2}&=0.5\\;\\theta \\end{aligned}$$\n\nMoment of inertia\n\n$$\\begin{array}{l} =\\frac{m l_{2}^{2}}{3}=\\frac{10 \\times(0.5)^{2}}{3} \\\\ =0.833 \\mathrm{kgm}^{2} \\end{array}$$\n\nNow, from Newton's law of motion\n\n$$\\begin{aligned} & c\\dot{x}_{1} l_{1}+k x_{2} l_{2}+k_{\\theta} \\cdot \\theta+I \\ddot{\\theta}=0 \\\\ &\\Rightarrow \\mathrm{Cl}_{1}^{2} \\dot{\\theta}+\\mathrm{k} l_{2}^{2} \\theta+\\mathrm{k}_{\\theta} \\cdot \\theta+\\mathrm{l} \\ddot{\\mathbf{\\theta}}=0 \\\\ &\\Rightarrow 500 \\times(0.4)^{2} \\dot{\\theta}+\\left(2000 \\times(0.5)^{2}+1000\\right) \\theta \\\\ &+0.833 \\ddot{\\theta}=0\\\\ &\\Rightarrow0.833\\ddot{\\theta}+80\\dot{\\theta}+1500\\theta \\qquad \\cdots(i) \\end{aligned}$$\n\nEquation can be written as:\n\n$$\\begin{aligned} I \\ddot{\\theta}+C_{T} \\dot{\\theta}+K_{T} \\theta&=0\\\\ \\therefore \\qquad I&=0.833\\\\ C_{T}&=80 \\\\ K_{T}&=1500 \\end{aligned}$$\n\nNow natural frequency,\n\n$$\\begin{aligned} \\omega_{n} &=\\sqrt{\\frac{k_{T}}{I}}=\\sqrt{\\frac{1500}{0.833}} \\\\ &=42.43 \\mathrm{rad} / \\mathrm{s} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-5f3571af31.webp"
+        ]
       }
     },
     "pp:me:2003:q78": {
       "question_uid": "pp:me:2003:q78",
-      "exam_uid": "me:2003:set1:q78",
+      "exam_uid": "me:2003:set1:main:q78",
       "title": "GATE ME 2003 | Set 1 | Question: 78",
+      "section": "main",
+      "question_number": 78,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A uniform rigid slenderbar of mass 10 kg, hinged at the left end is suspended with the help of spring and damper arrangement as shown in the figure where K = 2 kN/m, C = 500 Ns/m and the stiffness of the torsional spring $K_{\\theta }$\r\n is  1 kN/m/rad. Ignore the hinge dimensions.  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q7778.jpg\"><br><br>The damping coefficient in the vibration equation is given by ",
+      "question": "A uniform rigid slenderbar of mass 10 kg, hinged at the left end is suspended with the help of spring and damper arrangement as shown in the figure where K = 2 kN/m, C = 500 Ns/m and the stiffness of the torsional spring $K_{\\theta }$\r\n is  1 kN/m/rad. Ignore the hinge dimensions.  <br><img src=\"/question-images/me/2003/me-2003-57fc8c98a6.webp\"><br><br>The damping coefficient in the vibration equation is given by ",
       "options": [
         "500 Nms/rad ",
         "500 N/(m/s) ",
@@ -3428,13 +3778,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "Equivalent damping coefficient,\n\n$C_{T}=80 \\mathrm{Nms} / \\mathrm{rad}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Equivalent damping coefficient,\n\n$C_{T}=80 \\mathrm{Nms} / \\mathrm{rad}$",
+        "images": []
       }
     },
     "pp:me:2003:q79": {
       "question_uid": "pp:me:2003:q79",
-      "exam_uid": "me:2003:set1:q79",
+      "exam_uid": "me:2003:set1:main:q79",
       "title": "GATE ME 2003 | Set 1 | Question: 79",
+      "section": "main",
+      "question_number": 79,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3472,13 +3826,19 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Gears",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-d661e5bf46.webp\" />\n\n$$\\begin{aligned} \\frac{N_{1}}{N_{4}}&=12 \\\\ \\frac{N_{1}}{N_{2}}&=4=\\frac{D_{2}}{D_{1}} \\\\ m_{1} & =3, m_{2}=4 \\\\ \\text { since, }\\qquad & \\frac{D_{1}}{Z_{1}}=\\frac{D_{2}}{Z_{2}} \\\\ \\Rightarrow & \\frac{Z_{1}}{Z_{2}}=\\frac{D_{1}}{D_{2}}=\\frac{N_{2}}{N_{1}}=\\frac{1}{4} \\\\ Z_{2} & =Z_{1} \\times 4=64\\\\ \\text{and }\\quad \\frac{N_{1}}{N_{4}}&=\\frac{D_{2} \\times D_{4}}{D_{1} \\times D_{3}} \\\\ \\Rightarrow \\quad 12&=\\frac{D_{4}}{D_{3}} \\times 4 \\\\ \\Rightarrow \\quad \\frac{D_{4}}{D_{3}}&=3 \\\\ since, \\quad \\frac{Z_{3}}{Z_{4}}&=\\frac{D_{3}}{D_{4}} \\\\ Z_{4}&=Z_{3} \\frac{D_{4}}{D_{3}}=15 \\times 3=45 \\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-d661e5bf46.webp\" />\n\n$$\\begin{aligned} \\frac{N_{1}}{N_{4}}&=12 \\\\ \\frac{N_{1}}{N_{2}}&=4=\\frac{D_{2}}{D_{1}} \\\\ m_{1} & =3, m_{2}=4 \\\\ \\text { since, }\\qquad & \\frac{D_{1}}{Z_{1}}=\\frac{D_{2}}{Z_{2}} \\\\ \\Rightarrow & \\frac{Z_{1}}{Z_{2}}=\\frac{D_{1}}{D_{2}}=\\frac{N_{2}}{N_{1}}=\\frac{1}{4} \\\\ Z_{2} & =Z_{1} \\times 4=64\\\\ \\text{and }\\quad \\frac{N_{1}}{N_{4}}&=\\frac{D_{2} \\times D_{4}}{D_{1} \\times D_{3}} \\\\ \\Rightarrow \\quad 12&=\\frac{D_{4}}{D_{3}} \\times 4 \\\\ \\Rightarrow \\quad \\frac{D_{4}}{D_{3}}&=3 \\\\ since, \\quad \\frac{Z_{3}}{Z_{4}}&=\\frac{D_{3}}{D_{4}} \\\\ Z_{4}&=Z_{3} \\frac{D_{4}}{D_{3}}=15 \\times 3=45 \\\\ \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-d661e5bf46.webp"
+        ]
       }
     },
     "pp:me:2003:q80": {
       "question_uid": "pp:me:2003:q80",
-      "exam_uid": "me:2003:set1:q80",
+      "exam_uid": "me:2003:set1:main:q80",
       "title": "GATE ME 2003 | Set 1 | Question: 80",
+      "section": "main",
+      "question_number": 80,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3516,17 +3876,21 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Gears",
-        "markdown": "Centre distance in second stage\n\n$$\\begin{aligned} &=\\frac{D_{3}+D_{4}}{2} \\\\ m &=\\frac{D_{3}}{Z_{3}}=\\frac{D_{4}}{Z_{4}} \\\\ \\Rightarrow \\quad 4&=\\frac{D_{4}}{45} \\\\ \\Rightarrow \\quad D_{4}&=180 \\mathrm{mm}\\\\ D_{3}&=\\frac{180}{3}=60 \\mathrm{mm} \\\\ \\text{Centre distance }&=\\frac{180+60}{2}=120 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Centre distance in second stage\n\n$$\\begin{aligned} &=\\frac{D_{3}+D_{4}}{2} \\\\ m &=\\frac{D_{3}}{Z_{3}}=\\frac{D_{4}}{Z_{4}} \\\\ \\Rightarrow \\quad 4&=\\frac{D_{4}}{45} \\\\ \\Rightarrow \\quad D_{4}&=180 \\mathrm{mm}\\\\ D_{3}&=\\frac{180}{3}=60 \\mathrm{mm} \\\\ \\text{Centre distance }&=\\frac{180+60}{2}=120 \\mathrm{mm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q81": {
       "question_uid": "pp:me:2003:q81",
-      "exam_uid": "me:2003:set1:q81",
+      "exam_uid": "me:2003:set1:main:q81",
       "title": "GATE ME 2003 | Set 1 | Question: 81",
+      "section": "main",
+      "question_number": 81,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A syringe with a frictionless plunger contacts water and has its end a 100mm longer needle of 1mm diameter .The internal diameter of the syringe is 10mm. Water density is $1000kg/m^{3}$. The plunger is pushed in at 10 mm/s and the water comes out as a jet<br><img src= \"/wp-content/uploads/GATE/ME/20031/q8182.jpg\"><br><br>Assuming ideal flow, the force F in Newton required on the plunger to push out the water is",
+      "question": "A syringe with a frictionless plunger contacts water and has its end a 100mm longer needle of 1mm diameter .The internal diameter of the syringe is 10mm. Water density is $1000kg/m^{3}$. The plunger is pushed in at 10 mm/s and the water comes out as a jet<br><img src=\"/question-images/me/2003/me-2003-2b7042e1f1.webp\"><br><br>Assuming ideal flow, the force F in Newton required on the plunger to push out the water is",
       "options": [
         "0",
         "0.04",
@@ -3560,17 +3924,23 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
-        "markdown": "<img src=\"/question-images/me/2003/me-2003-d44f06d07d.webp\" />\n\nApplying continuity equation at sections 1 and 2 we get\n\n$$\\begin{aligned} A_{1} v_{1} &=A_{2} V_{2} \\\\ v_{2} &=\\left(\\frac{A_{1}}{A_{2}}\\right) v_{1} \\\\ v_{2} &=\\frac{\\frac{\\pi}{4} \\times(0.01)^{2}}{\\frac{\\pi}{4} \\times(0.001)^{2}} \\times 0.01 \\\\ &=1 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$\n\nApplying Bernoulli's equation at sections 1 and 2 we get\n\n$\\frac{p_{1}}{\\rho g}+\\frac{v_{1}^{2}}{2 g}+z_{1}=\\frac{p_{2}}{\\rho g}+\\frac{v_{2}^{2}}{2 g}+z_{2}$\n\nsince $\\quad z_{1}=z_{2}$\n\nand taking gauge pressure\n\n$$\\begin{aligned} p_{2} &=0 \\quad (atmospheric)\\\\ \\therefore \\quad \\frac{p_{1}}{\\rho g} &=\\frac{V_{2}^{2}-V_{1}^{2}}{2 g}\\\\ p_{1} &=\\frac{\\rho}{2}\\left(V_{2}^{2}-V_{1}^{2}\\right) \\\\ &=\\frac{1000}{2}\\left[(1)^{2}-(0.01)^{2}\\right] \\\\ &=499.95 \\mathrm{N} / \\mathrm{m}^{2}\\\\ &\\text{Force required on plunger},\\\\ &=p_{1} \\times A_{1}=499.95 \\times \\frac{\\pi}{4} \\times(0.01)^{2} \\\\ &=0.039 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/me/2003/me-2003-d44f06d07d.webp\" />\n\nApplying continuity equation at sections 1 and 2 we get\n\n$$\\begin{aligned} A_{1} v_{1} &=A_{2} V_{2} \\\\ v_{2} &=\\left(\\frac{A_{1}}{A_{2}}\\right) v_{1} \\\\ v_{2} &=\\frac{\\frac{\\pi}{4} \\times(0.01)^{2}}{\\frac{\\pi}{4} \\times(0.001)^{2}} \\times 0.01 \\\\ &=1 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$\n\nApplying Bernoulli's equation at sections 1 and 2 we get\n\n$\\frac{p_{1}}{\\rho g}+\\frac{v_{1}^{2}}{2 g}+z_{1}=\\frac{p_{2}}{\\rho g}+\\frac{v_{2}^{2}}{2 g}+z_{2}$\n\nsince $\\quad z_{1}=z_{2}$\n\nand taking gauge pressure\n\n$$\\begin{aligned} p_{2} &=0 \\quad (atmospheric)\\\\ \\therefore \\quad \\frac{p_{1}}{\\rho g} &=\\frac{V_{2}^{2}-V_{1}^{2}}{2 g}\\\\ p_{1} &=\\frac{\\rho}{2}\\left(V_{2}^{2}-V_{1}^{2}\\right) \\\\ &=\\frac{1000}{2}\\left[(1)^{2}-(0.01)^{2}\\right] \\\\ &=499.95 \\mathrm{N} / \\mathrm{m}^{2}\\\\ &\\text{Force required on plunger},\\\\ &=p_{1} \\times A_{1}=499.95 \\times \\frac{\\pi}{4} \\times(0.01)^{2} \\\\ &=0.039 \\mathrm{N} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2003/me-2003-d44f06d07d.webp"
+        ]
       }
     },
     "pp:me:2003:q82": {
       "question_uid": "pp:me:2003:q82",
-      "exam_uid": "me:2003:set1:q82",
+      "exam_uid": "me:2003:set1:main:q82",
       "title": "GATE ME 2003 | Set 1 | Question: 82",
+      "section": "main",
+      "question_number": 82,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": " A syringe with a frictionless plunger contacts water and has its end a 100mm longer needle of 1mm diameter .The internal diameter of the syringe is 10mm. Water density is $1000kg/m^{3}$. The plunger is pushed in at 10 mm/s and the water comes out as a jet<br><img src= \"/wp-content/uploads/GATE/ME/20031/q8182.jpg\"><br><br>Neglect losses in the cylinder and assume fully developed laminar viscous flow throughout the needle; the Darcy friction factor is 64/Re. Where Re is the Reynolds number. Give that the viscosity of water is $1.0\\times 10^{-3}$\n kg/s m , the force F in Newton required on the plunger is",
+      "question": " A syringe with a frictionless plunger contacts water and has its end a 100mm longer needle of 1mm diameter .The internal diameter of the syringe is 10mm. Water density is $1000kg/m^{3}$. The plunger is pushed in at 10 mm/s and the water comes out as a jet<br><img src=\"/question-images/me/2003/me-2003-2b7042e1f1.webp\"><br><br>Neglect losses in the cylinder and assume fully developed laminar viscous flow throughout the needle; the Darcy friction factor is 64/Re. Where Re is the Reynolds number. Give that the viscosity of water is $1.0\\times 10^{-3}$\n kg/s m , the force F in Newton required on the plunger is",
       "options": [
         "0.13",
         "0.16",
@@ -3604,17 +3974,21 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
-        "markdown": "$$\\begin{aligned} \\operatorname{Re} &=\\frac{\\rho V_{2} d_{2}}{\\mu}=\\frac{1000 \\times 1 \\times 0.001}{1 \\times 10^{-3}} \\\\ &=1000 \\end{aligned}\\\\ \\text{Now Darcy's friction factor},\\\\ f=\\frac{64}{\\operatorname{Re}}=\\frac{64}{1000}=0.064\\\\ \\text{Head loss in needle,} \\\\ \\begin{aligned} h_{f} &=\\frac{f L V^{2}}{2 g d}=\\frac{0.064 \\times 0.1 \\times(1)^{2}}{2 \\times 9.81 \\times 0.001} \\\\ &=0.3262 \\mathrm{m} \\text { of water } \\end{aligned}$$\n\nApplying Bernoulli's equation at points and we get\n\n$\\frac{p_{1}}{\\rho g}+\\frac{V_{1}^{2}}{2 g}+z_{1}=\\frac{p_{2}}{\\rho g}+\\frac{V_{2}^{2}}{2 g}+z_{2}+h_{f}$\n\n$\\text{since }\\quad z_{1}=z_{2}$\n\n$\\text{and }\\quad p_{2}=0 \\qquad (atmospheric)$\n\n$$\\begin{aligned} \\frac{p_{1}}{\\rho g} &=\\left(\\frac{V_{2}^{2}-V_{1}^{2}}{2 g}\\right)+h_{f} \\\\ p_{1} &=\\frac{\\rho}{2}\\left(V_{2}^{2}-V_{1}^{2}\\right)+\\rho g h_{f} \\\\ &=\\frac{1000}{2}\\left[(1)^{2}-(0.01)^{2}\\right] \\\\ &+1000 \\times 9.81 \\times 0.3262 \\\\ &=3699.97 \\mathrm{N} / \\mathrm{m}^{2} \\end{aligned}$$\n\nForce required on plunger,\n\n$=p_{1} \\times A_{1}=3699.97 \\times \\frac{\\pi}{4} \\times(0.01)^{2}\\\\ =0.29 \\mathrm{N}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\operatorname{Re} &=\\frac{\\rho V_{2} d_{2}}{\\mu}=\\frac{1000 \\times 1 \\times 0.001}{1 \\times 10^{-3}} \\\\ &=1000 \\end{aligned}\\\\ \\text{Now Darcy's friction factor},\\\\ f=\\frac{64}{\\operatorname{Re}}=\\frac{64}{1000}=0.064\\\\ \\text{Head loss in needle,} \\\\ \\begin{aligned} h_{f} &=\\frac{f L V^{2}}{2 g d}=\\frac{0.064 \\times 0.1 \\times(1)^{2}}{2 \\times 9.81 \\times 0.001} \\\\ &=0.3262 \\mathrm{m} \\text { of water } \\end{aligned}$$\n\nApplying Bernoulli's equation at points and we get\n\n$\\frac{p_{1}}{\\rho g}+\\frac{V_{1}^{2}}{2 g}+z_{1}=\\frac{p_{2}}{\\rho g}+\\frac{V_{2}^{2}}{2 g}+z_{2}+h_{f}$\n\n$\\text{since }\\quad z_{1}=z_{2}$\n\n$\\text{and }\\quad p_{2}=0 \\qquad (atmospheric)$\n\n$$\\begin{aligned} \\frac{p_{1}}{\\rho g} &=\\left(\\frac{V_{2}^{2}-V_{1}^{2}}{2 g}\\right)+h_{f} \\\\ p_{1} &=\\frac{\\rho}{2}\\left(V_{2}^{2}-V_{1}^{2}\\right)+\\rho g h_{f} \\\\ &=\\frac{1000}{2}\\left[(1)^{2}-(0.01)^{2}\\right] \\\\ &+1000 \\times 9.81 \\times 0.3262 \\\\ &=3699.97 \\mathrm{N} / \\mathrm{m}^{2} \\end{aligned}$$\n\nForce required on plunger,\n\n$=p_{1} \\times A_{1}=3699.97 \\times \\frac{\\pi}{4} \\times(0.01)^{2}\\\\ =0.29 \\mathrm{N}$",
+        "images": []
       }
     },
     "pp:me:2003:q83": {
       "question_uid": "pp:me:2003:q83",
-      "exam_uid": "me:2003:set1:q83",
+      "exam_uid": "me:2003:set1:main:q83",
       "title": "GATE ME 2003 | Set 1 | Question: 83",
+      "section": "main",
+      "question_number": 83,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": " Heat is being transferred by convection from water at $48^{\\circ}C$\n to a glass plate whose surface that is exposed to the water is at $40^{\\circ}C$. The thermal conductivity of water is 0.6 W/mK and the thermal conductivity of glass is 1.2 W/mK. The spatial gradient of temperature in the water at the water - glass interface is  $dT/dy =1\\times 10^{4}$\nK/m  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q8384.jpg\"><br><br>The value of the temperature gradient in the glass at the water-glass interface in K/m is ",
+      "question": " Heat is being transferred by convection from water at $48^{\\circ}C$\n to a glass plate whose surface that is exposed to the water is at $40^{\\circ}C$. The thermal conductivity of water is 0.6 W/mK and the thermal conductivity of glass is 1.2 W/mK. The spatial gradient of temperature in the water at the water - glass interface is  $dT/dy =1\\times 10^{4}$\nK/m  <br><img src=\"/question-images/me/2003/me-2003-cc88ea576f.webp\"><br><br>The value of the temperature gradient in the glass at the water-glass interface in K/m is ",
       "options": [
         "$-2\\times 10^{4}$",
         "0",
@@ -3648,17 +4022,21 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
-        "markdown": "$T_{w} = 48^{o}C; T_{g}=40^{o}C$\n\n$k_{w} = 0.6 W/mk; k_{g}= 1.2W/mk$\n\n$\\left(\\frac{d T}{d y}\\right)_{w}=1 \\times 10^{4} \\mathrm{K} / \\mathrm{m}$\n\nAt water-glass interface,\n\n$$\\begin{aligned} -k_{w} A\\left(\\frac{d T}{d y}\\right)_{w}&=-k_{g} A\\left(\\frac{d T}{d y}\\right)_{g} \\\\ \\text { or } k_{w}\\left(\\frac{d T}{d y}\\right)_{w} &=k_{g}\\left(\\frac{d T}{d y}\\right)_{g} \\\\ 0.6 \\times 1 \\times 10^{4} &=1.2 \\times\\left(\\frac{d T}{d y}\\right)_{g} \\\\\\left(\\frac{d T}{d y}\\right)_{g} &=0.5 \\times 10^{4} \\mathrm{K} / \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$T_{w} = 48^{o}C; T_{g}=40^{o}C$\n\n$k_{w} = 0.6 W/mk; k_{g}= 1.2W/mk$\n\n$\\left(\\frac{d T}{d y}\\right)_{w}=1 \\times 10^{4} \\mathrm{K} / \\mathrm{m}$\n\nAt water-glass interface,\n\n$$\\begin{aligned} -k_{w} A\\left(\\frac{d T}{d y}\\right)_{w}&=-k_{g} A\\left(\\frac{d T}{d y}\\right)_{g} \\\\ \\text { or } k_{w}\\left(\\frac{d T}{d y}\\right)_{w} &=k_{g}\\left(\\frac{d T}{d y}\\right)_{g} \\\\ 0.6 \\times 1 \\times 10^{4} &=1.2 \\times\\left(\\frac{d T}{d y}\\right)_{g} \\\\\\left(\\frac{d T}{d y}\\right)_{g} &=0.5 \\times 10^{4} \\mathrm{K} / \\mathrm{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q84": {
       "question_uid": "pp:me:2003:q84",
-      "exam_uid": "me:2003:set1:q84",
+      "exam_uid": "me:2003:set1:main:q84",
       "title": "GATE ME 2003 | Set 1 | Question: 84",
+      "section": "main",
+      "question_number": 84,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": " Heat is being transferred by convection from water at $48^{\\circ}C$\n to a glass plate whose surface that is exposed to the water is at $40^{\\circ}C$. The thermal conductivity of water is 0.6 W/mK and the thermal conductivity of glass is 1.2 W/mK. The spatial gradient of temperature in the water at the water - glass interface is  $dT/dy =1\\times 10^{4}$\nK/m  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q8384.jpg\"><br><br>The heat transfer coefficient h in $W/m^{2}$\n K is",
+      "question": " Heat is being transferred by convection from water at $48^{\\circ}C$\n to a glass plate whose surface that is exposed to the water is at $40^{\\circ}C$. The thermal conductivity of water is 0.6 W/mK and the thermal conductivity of glass is 1.2 W/mK. The spatial gradient of temperature in the water at the water - glass interface is  $dT/dy =1\\times 10^{4}$\nK/m  <br><img src=\"/question-images/me/2003/me-2003-cc88ea576f.webp\"><br><br>The heat transfer coefficient h in $W/m^{2}$\n K is",
       "options": [
         "0",
         "4.8",
@@ -3692,13 +4070,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
-        "markdown": "For water\n\n$$\\begin{aligned} \\left(Q_{\\text {conv }}\\right)_{\\text {water }} &=\\left(Q_{\\text {cond }}\\right)_{\\text {vater }} \\\\ n_{w} A\\left(T_{w}-T_{g}\\right) &=k_{w} A\\left(\\frac{d T}{d y}\\right)_{w}\\\\ \\text{or} \\quad A\\left(T_{w}-T_{g}\\right) &=k_{w}\\left(\\frac{d T}{d y}\\right)_{w} \\\\ h_{w} \\times(48-40) &=0.6 \\times 1 \\times 10^{4}\\\\ \\text{or }\\quad h_{w}&=750 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "For water\n\n$$\\begin{aligned} \\left(Q_{\\text {conv }}\\right)_{\\text {water }} &=\\left(Q_{\\text {cond }}\\right)_{\\text {vater }} \\\\ n_{w} A\\left(T_{w}-T_{g}\\right) &=k_{w} A\\left(\\frac{d T}{d y}\\right)_{w}\\\\ \\text{or} \\quad A\\left(T_{w}-T_{g}\\right) &=k_{w}\\left(\\frac{d T}{d y}\\right)_{w} \\\\ h_{w} \\times(48-40) &=0.6 \\times 1 \\times 10^{4}\\\\ \\text{or }\\quad h_{w}&=750 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q85": {
       "question_uid": "pp:me:2003:q85",
-      "exam_uid": "me:2003:set1:q85",
+      "exam_uid": "me:2003:set1:main:q85",
       "title": "GATE ME 2003 | Set 1 | Question: 85",
+      "section": "main",
+      "question_number": 85,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3736,13 +4118,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "For isothermal process\n\n$$\\begin{aligned} \\text { Work } &=p_{1} V_{1} \\ln \\frac{V_{2}}{V_{1}} \\\\ &=\\left(2 \\times 10^{5}\\right) \\times(1) \\times \\ln \\frac{2}{1} \\\\ &=138629.4 \\mathrm{J}=138.63 \\mathrm{kJ} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "For isothermal process\n\n$$\\begin{aligned} \\text { Work } &=p_{1} V_{1} \\ln \\frac{V_{2}}{V_{1}} \\\\ &=\\left(2 \\times 10^{5}\\right) \\times(1) \\times \\ln \\frac{2}{1} \\\\ &=138629.4 \\mathrm{J}=138.63 \\mathrm{kJ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q86": {
       "question_uid": "pp:me:2003:q86",
-      "exam_uid": "me:2003:set1:q86",
+      "exam_uid": "me:2003:set1:main:q86",
       "title": "GATE ME 2003 | Set 1 | Question: 86",
+      "section": "main",
+      "question_number": 86,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3780,17 +4166,23 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "Given process is isothermal, so change in entropy of universe\n\n<img src=\"/question-images/me/2003/me-2003-50d64a67e3.webp\" />\n\n$(dS)_{universe}=(dS)_{system}+(dS)_{surrounding}$\n\nWork done in isothermal process\n\n$$\\begin{aligned}\n\n&=P_1V_1 lm(V_2/V_1) \\\\\n\n&=200 \\times 1 ln(2/1) \\\\\n\n&= 138.62 kJ\\\\\n\n\\delta Q&=dU+\\delta W\\\\\n\n\\delta Q&=138.62 kJ\\;\\;(\\because \\; dU=0)\n\n\\end{aligned}$$\n\nHeat taken by sirrounding to the system =138.62 KJ\n\nChange in entropy of surrounding\n\n$(dS)_{surr}=\\frac{-138.62}{298}=-0.465 kJ/K$\n\nMass of nitrogen gas $=\\frac{PV}{RT}=\\frac{200 \\times 1 }{\\frac{8.314}{28} \\times 298}$\n\n$m=2.26kg$\n\nChange in entropy of system\n\n$$\\begin{aligned}\n\n&=mc_v ln\\left ( \\frac{T_2}{T_1} \\right )+mR ln\\left ( \\frac{V_2}{V_1} \\right ) \\\\\n\n&=mR ln \\left ( \\frac{V_2}{V_1} \\right ) \\;\\;\\because \\; T_1=T_2\\\\\n\n&= 2.26 \\times \\frac{8.314}{28} ln\\left ( \\frac{2}{1} \\right )\\\\\n\n&= 0.456kJ/K\\\\\n\n(dS)_{universe}&=0.465-0.465 \\\\\n\n&= 0\n\n\\end{aligned}$$\n\nTherefore, option (C) is correct.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Given process is isothermal, so change in entropy of universe\n\n<img src=\"/question-images/me/2003/me-2003-50d64a67e3.webp\" />\n\n$(dS)_{universe}=(dS)_{system}+(dS)_{surrounding}$\n\nWork done in isothermal process\n\n$$\\begin{aligned}\n\n&=P_1V_1 lm(V_2/V_1) \\\\\n\n&=200 \\times 1 ln(2/1) \\\\\n\n&= 138.62 kJ\\\\\n\n\\delta Q&=dU+\\delta W\\\\\n\n\\delta Q&=138.62 kJ\\;\\;(\\because \\; dU=0)\n\n\\end{aligned}$$\n\nHeat taken by sirrounding to the system =138.62 KJ\n\nChange in entropy of surrounding\n\n$(dS)_{surr}=\\frac{-138.62}{298}=-0.465 kJ/K$\n\nMass of nitrogen gas $=\\frac{PV}{RT}=\\frac{200 \\times 1 }{\\frac{8.314}{28} \\times 298}$\n\n$m=2.26kg$\n\nChange in entropy of system\n\n$$\\begin{aligned}\n\n&=mc_v ln\\left ( \\frac{T_2}{T_1} \\right )+mR ln\\left ( \\frac{V_2}{V_1} \\right ) \\\\\n\n&=mR ln \\left ( \\frac{V_2}{V_1} \\right ) \\;\\;\\because \\; T_1=T_2\\\\\n\n&= 2.26 \\times \\frac{8.314}{28} ln\\left ( \\frac{2}{1} \\right )\\\\\n\n&= 0.456kJ/K\\\\\n\n(dS)_{universe}&=0.465-0.465 \\\\\n\n&= 0\n\n\\end{aligned}$$\n\nTherefore, option (C) is correct.",
+        "images": [
+          "/question-images/me/2003/me-2003-50d64a67e3.webp"
+        ]
       }
     },
     "pp:me:2003:q87": {
       "question_uid": "pp:me:2003:q87",
-      "exam_uid": "me:2003:set1:q87",
+      "exam_uid": "me:2003:set1:main:q87",
       "title": "GATE ME 2003 | Set 1 | Question: 87",
+      "section": "main",
+      "question_number": 87,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A refrigerator based on ideal vapour compression cycle operates between the temperature limits of $-20^{\\circ}C$\n and $40^{\\circ}C$. The refrigerant enters the condenser as saturated vapour and leaves as saturated liquid. The enthalpy and entropy values for saturated liquid and vapour at these temperatures are given in the table below.  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q8788.jpg\"><br><br>If refrigerant circulation rate is 0.025 kg/s, the refrigeration effect is equal to ",
+      "question": "A refrigerator based on ideal vapour compression cycle operates between the temperature limits of $-20^{\\circ}C$\n and $40^{\\circ}C$. The refrigerant enters the condenser as saturated vapour and leaves as saturated liquid. The enthalpy and entropy values for saturated liquid and vapour at these temperatures are given in the table below.  <br><img src=\"/question-images/me/2003/me-2003-d31d787b60.webp\"><br><br>If refrigerant circulation rate is 0.025 kg/s, the refrigeration effect is equal to ",
       "options": [
         "2.1 kW",
         "2.5 kW",
@@ -3824,17 +4216,23 @@
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Vapor and Gas Refrigeration",
-        "markdown": "$m=0.025 \\mathrm{kg} / \\mathrm{s}$\n\n$At \\quad T_{C}=40^{\\circ} \\mathrm{C}$\n\nFrom given table, we get\n\n$$\\begin{aligned} h_{2}=h_{g}=200 \\mathrm{kJ} / \\mathrm{kg} \\\\ s_{2}=s_{g}=0.67 \\mathrm{kJ} / \\mathrm{kgK} \\\\ h_{3}=h_{f}= 80 \\mathrm{kJ} / \\mathrm{kg}=h_{4} \\end{aligned}$$\n\n<img src=\"/question-images/me/2003/me-2003-12361c6c46.webp\" />\n\n$\\text{At }\\quad T_{e}=20^{\\circ} \\mathrm{C}$\n\nFrom given table, we get\n\n$$\\begin{aligned} s_{f} &=0.07 \\mathrm{kJ} / \\mathrm{kg} \\mathrm{K} \\\\ \\mathrm{s}_{g} &=0.7366 \\mathrm{kJ} / \\mathrm{kgK} \\\\ h_{f} &=20 \\mathrm{kJ} / \\mathrm{kg}, h_{g}=180 \\mathrm{kJ} / \\mathrm{kg} \\\\ s_{1} &=s_{2}=s_{f}+x_{1}\\left(s_{g}-s_{f}\\right) \\\\ 0.67 &=0.07+x_{1}(0.7366-0.07)\\\\ \\text{or}\\quad x_{1} &= 0.9 \\end{aligned}$$\n\nSpecific enthalpy at point 1\n\n$$\\begin{aligned} h_{1} &=h_{f}+x_{1}\\left(h_{g}-h_{f}\\right) \\\\ &=20+0.9(180-20) \\\\ &=164 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nRefrigeation effect\n\n$\\mathrm{Re}=m\\left(h_{1}-h_{4}\\right) =0.025(164-80)=2.1kW$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$m=0.025 \\mathrm{kg} / \\mathrm{s}$\n\n$At \\quad T_{C}=40^{\\circ} \\mathrm{C}$\n\nFrom given table, we get\n\n$$\\begin{aligned} h_{2}=h_{g}=200 \\mathrm{kJ} / \\mathrm{kg} \\\\ s_{2}=s_{g}=0.67 \\mathrm{kJ} / \\mathrm{kgK} \\\\ h_{3}=h_{f}= 80 \\mathrm{kJ} / \\mathrm{kg}=h_{4} \\end{aligned}$$\n\n<img src=\"/question-images/me/2003/me-2003-12361c6c46.webp\" />\n\n$\\text{At }\\quad T_{e}=20^{\\circ} \\mathrm{C}$\n\nFrom given table, we get\n\n$$\\begin{aligned} s_{f} &=0.07 \\mathrm{kJ} / \\mathrm{kg} \\mathrm{K} \\\\ \\mathrm{s}_{g} &=0.7366 \\mathrm{kJ} / \\mathrm{kgK} \\\\ h_{f} &=20 \\mathrm{kJ} / \\mathrm{kg}, h_{g}=180 \\mathrm{kJ} / \\mathrm{kg} \\\\ s_{1} &=s_{2}=s_{f}+x_{1}\\left(s_{g}-s_{f}\\right) \\\\ 0.67 &=0.07+x_{1}(0.7366-0.07)\\\\ \\text{or}\\quad x_{1} &= 0.9 \\end{aligned}$$\n\nSpecific enthalpy at point 1\n\n$$\\begin{aligned} h_{1} &=h_{f}+x_{1}\\left(h_{g}-h_{f}\\right) \\\\ &=20+0.9(180-20) \\\\ &=164 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nRefrigeation effect\n\n$\\mathrm{Re}=m\\left(h_{1}-h_{4}\\right) =0.025(164-80)=2.1kW$",
+        "images": [
+          "/question-images/me/2003/me-2003-12361c6c46.webp"
+        ]
       }
     },
     "pp:me:2003:q88": {
       "question_uid": "pp:me:2003:q88",
-      "exam_uid": "me:2003:set1:q88",
+      "exam_uid": "me:2003:set1:main:q88",
       "title": "GATE ME 2003 | Set 1 | Question: 88",
+      "section": "main",
+      "question_number": 88,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A refrigerator based on ideal vapour compression cycle operates between the temperature limits of $-20^{\\circ}C$\n and $40^{\\circ}C$. The refrigerant enters the condenser as saturated vapour and leaves as saturated liquid. The enthalpy and entropy values for saturated liquid and vapour at these temperatures are given in the table below.  <br><img src= \"/wp-content/uploads/GATE/ME/20031/q8788.jpg\"><br><br>The COP of the refrigerator is ",
+      "question": "A refrigerator based on ideal vapour compression cycle operates between the temperature limits of $-20^{\\circ}C$\n and $40^{\\circ}C$. The refrigerant enters the condenser as saturated vapour and leaves as saturated liquid. The enthalpy and entropy values for saturated liquid and vapour at these temperatures are given in the table below.  <br><img src=\"/question-images/me/2003/me-2003-d31d787b60.webp\"><br><br>The COP of the refrigerator is ",
       "options": [
         "2",
         "2.33",
@@ -3868,13 +4266,17 @@
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Vapor and Gas Refrigeration",
-        "markdown": "$$\\begin{aligned} \\mathrm{COP} &=\\frac{\\text { Refrigeration effect }}{\\text { Work input }} \\\\ &=\\frac{\\mathrm{Re}}{W}=\\frac{2.1}{m\\left(h_{2}-h_{1}\\right)} \\\\ &=\\frac{2.1}{0.025(200-164)} \\\\ &=2.33 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} \\mathrm{COP} &=\\frac{\\text { Refrigeration effect }}{\\text { Work input }} \\\\ &=\\frac{\\mathrm{Re}}{W}=\\frac{2.1}{m\\left(h_{2}-h_{1}\\right)} \\\\ &=\\frac{2.1}{0.025(200-164)} \\\\ &=2.33 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q89": {
       "question_uid": "pp:me:2003:q89",
-      "exam_uid": "me:2003:set1:q89",
+      "exam_uid": "me:2003:set1:main:q89",
       "title": "GATE ME 2003 | Set 1 | Question: 89",
+      "section": "main",
+      "question_number": 89,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3912,13 +4314,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Given\n\n$$\\begin{aligned} N &=200 \\mathrm{rpm} \\\\ \\text { Feed }\\left(t_{1}\\right) &=\\text { uncut chip thickness }=0.25 \\\\ \\text { Depth } &=0.4 \\mathrm{mm} \\end{aligned}$$\n\nRake angle,\n\n$\\alpha=10^{\\circ}$\n\nShear angle,\n\n$\\phi=27.75^{\\circ}$\n\nWe Know\n\n$$\\begin{aligned} \\tan \\phi &=\\frac{\\cos \\alpha}{\\frac{t_{2}}{t_{1}}-\\sin \\alpha} \\\\ \\Rightarrow \\quad t_{2} &=t_{1}\\left[\\frac{\\cos \\alpha}{\\tan \\phi}+\\sin \\alpha\\right] \\\\ &=0.25\\left[\\frac{\\cos 10^{\\circ}}{\\tan 27.75^{\\circ}}+\\sin 10^{\\circ}\\right] \\\\ &=0.511 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given\n\n$$\\begin{aligned} N &=200 \\mathrm{rpm} \\\\ \\text { Feed }\\left(t_{1}\\right) &=\\text { uncut chip thickness }=0.25 \\\\ \\text { Depth } &=0.4 \\mathrm{mm} \\end{aligned}$$\n\nRake angle,\n\n$\\alpha=10^{\\circ}$\n\nShear angle,\n\n$\\phi=27.75^{\\circ}$\n\nWe Know\n\n$$\\begin{aligned} \\tan \\phi &=\\frac{\\cos \\alpha}{\\frac{t_{2}}{t_{1}}-\\sin \\alpha} \\\\ \\Rightarrow \\quad t_{2} &=t_{1}\\left[\\frac{\\cos \\alpha}{\\tan \\phi}+\\sin \\alpha\\right] \\\\ &=0.25\\left[\\frac{\\cos 10^{\\circ}}{\\tan 27.75^{\\circ}}+\\sin 10^{\\circ}\\right] \\\\ &=0.511 \\mathrm{mm} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2003:q90": {
       "question_uid": "pp:me:2003:q90",
-      "exam_uid": "me:2003:set1:q90",
+      "exam_uid": "me:2003:set1:main:q90",
       "title": "GATE ME 2003 | Set 1 | Question: 90",
+      "section": "main",
+      "question_number": 90,
+      "solution_link": null,
       "year": "gateme-2003-set1",
       "type": "MCQ",
       "marks": 1,
@@ -3956,7 +4362,8 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "From earnest and merchant theory\n\n$$\\begin{aligned} 2 \\phi+\\lambda-\\alpha &=90^{\\circ} \\\\ \\lambda &=90^{\\circ}+10-2 \\times 27.75^{\\circ} \\\\ \\therefore \\qquad \\lambda &=44.5^{\\circ} \\\\ \\mu &=\\tan \\left(44.5^{\\circ}\\right)=0.98 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "From earnest and merchant theory\n\n$$\\begin{aligned} 2 \\phi+\\lambda-\\alpha &=90^{\\circ} \\\\ \\lambda &=90^{\\circ}+10-2 \\times 27.75^{\\circ} \\\\ \\therefore \\qquad \\lambda &=44.5^{\\circ} \\\\ \\mu &=\\tan \\left(44.5^{\\circ}\\right)=0.98 \\end{aligned}$$",
+        "images": []
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.472Z",
+  "generatedAt": "2026-10-17T21:30:25.337Z",
   "shardKey": "me-2014-s1",
   "yearSetKey": "me-2014-s1",
   "yearSetIdentity": "me:2014:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2014:q1": {
       "question_uid": "pp:me:2014:q1",
-      "exam_uid": "me:2014:set1:q1",
+      "exam_uid": "me:2014:set1:main:q1",
       "title": "GATE ME 2014 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Let D=-12 for the given matrix\n\n$$|A|=\\left|\\begin{array}{ccc}2 & 6 & 0 \\\\4 & 12 & 8 \\\\-2 & 0 & 4\\end{array}\\right|=(2)^{3}\\left|\\begin{array}{ccc}1 & 3 & 0 \\\\2 & 6 & 4 \\\\-1 & 0 & 2\\end{array}\\right|$$\n\n(Taking 2 common from each row)\n\n$$\\begin{aligned}\\therefore \\text{Det}(A) &=(2)^{3} \\times D \\\\=& 8 x-12=-96\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Let D=-12 for the given matrix\n\n$$|A|=\\left|\\begin{array}{ccc}2 & 6 & 0 \\\\4 & 12 & 8 \\\\-2 & 0 & 4\\end{array}\\right|=(2)^{3}\\left|\\begin{array}{ccc}1 & 3 & 0 \\\\2 & 6 & 4 \\\\-1 & 0 & 2\\end{array}\\right|$$\n\n(Taking 2 common from each row)\n\n$$\\begin{aligned}\\therefore \\text{Det}(A) &=(2)^{3} \\times D \\\\=& 8 x-12=-96\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q2": {
       "question_uid": "pp:me:2014:q2",
-      "exam_uid": "me:2014:set1:q2",
+      "exam_uid": "me:2014:set1:main:q2",
       "title": "GATE ME 2014 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$\\lim_{x \\rightarrow 0} \\frac{x-\\sin x}{1-\\cos x}$\n\nApplying L ' Hospital's rule\n\n$\\lim_{x \\rightarrow 0} \\frac{\\frac{d}{dx}(x-sinx)}{\\frac{d}{dx}(1-cosx)}=\\lim_{x \\rightarrow 0} \\frac{(1-\\cos x)}{\\sin x}$\n\n(It is still of $\\frac{0}{0}$ form)\n\nAgain applying L' Hospital's rule\n\n$\\lim_{x \\rightarrow 0} \\frac{\\frac{d}{d x}(1-\\cos x)}{\\frac{d}{d x}(\\sin x)}=\\lim_{x \\rightarrow 0} \\frac{\\sin x}{\\cos x}=\\frac{0}{1}=0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$\\lim_{x \\rightarrow 0} \\frac{x-\\sin x}{1-\\cos x}$\n\nApplying L ' Hospital's rule\n\n$\\lim_{x \\rightarrow 0} \\frac{\\frac{d}{dx}(x-sinx)}{\\frac{d}{dx}(1-cosx)}=\\lim_{x \\rightarrow 0} \\frac{(1-\\cos x)}{\\sin x}$\n\n(It is still of $\\frac{0}{0}$ form)\n\nAgain applying L' Hospital's rule\n\n$\\lim_{x \\rightarrow 0} \\frac{\\frac{d}{d x}(1-\\cos x)}{\\frac{d}{d x}(\\sin x)}=\\lim_{x \\rightarrow 0} \\frac{\\sin x}{\\cos x}=\\frac{0}{1}=0$",
+        "images": []
       }
     },
     "pp:me:2014:q3": {
       "question_uid": "pp:me:2014:q3",
-      "exam_uid": "me:2014:set1:q3",
+      "exam_uid": "me:2014:set1:main:q3",
       "title": "GATE ME 2014 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "complex-variables"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "$$\\begin{aligned} Let z&=\\frac{1+i}{1-i} \\\\ or z&=\\frac{(1+i)(1+i)}{(1-i)(1+i)}=\\frac{1+i^{2}+2 i}{1-i^{2}}=\\frac{2 i}{2}=i \\\\ z&=x+i y=i \\\\ SO, x&=0 \\\\ y &=1 \\end{aligned}$$\n\n$$\\begin{aligned} Arg(z) &=\\tan ^{-1}\\left(\\frac{y}{x}\\right) \\\\ &=\\tan ^{-1}\\left(\\frac{1}{0}\\right)=\\tan ^{-1} \\infty=\\frac{\\pi}{2} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} Let z&=\\frac{1+i}{1-i} \\\\ or z&=\\frac{(1+i)(1+i)}{(1-i)(1+i)}=\\frac{1+i^{2}+2 i}{1-i^{2}}=\\frac{2 i}{2}=i \\\\ z&=x+i y=i \\\\ SO, x&=0 \\\\ y &=1 \\end{aligned}$$\n\n$$\\begin{aligned} Arg(z) &=\\tan ^{-1}\\left(\\frac{y}{x}\\right) \\\\ &=\\tan ^{-1}\\left(\\frac{1}{0}\\right)=\\tan ^{-1} \\infty=\\frac{\\pi}{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q4": {
       "question_uid": "pp:me:2014:q4",
-      "exam_uid": "me:2014:set1:q4",
+      "exam_uid": "me:2014:set1:main:q4",
       "title": "GATE ME 2014 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -154,25 +172,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} \\frac{d x}{d t} &=3 x-5 y \\\\ \\frac{d y}{d t} &=4 x+8 y \\\\ \\frac{d}{d t}\\left\\{\\begin{array}{l}x \\\\y\\end{array}\\right\\}&=\\left[\\begin{array}{cc}3 & -5 \\\\4 & 8\\end{array}\\right]\\left\\{\\begin{array}{l}x \\\\y\\end{array}\\right\\}=\\left[\\begin{array}{cc} 3 x & -5 y \\\\4 x & +8 y\\end{array}\\right]\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\frac{d x}{d t} &=3 x-5 y \\\\ \\frac{d y}{d t} &=4 x+8 y \\\\ \\frac{d}{d t}\\left\\{\\begin{array}{l}x \\\\y\\end{array}\\right\\}&=\\left[\\begin{array}{cc}3 & -5 \\\\4 & 8\\end{array}\\right]\\left\\{\\begin{array}{l}x \\\\y\\end{array}\\right\\}=\\left[\\begin{array}{cc} 3 x & -5 y \\\\4 x & +8 y\\end{array}\\right]\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q5": {
       "question_uid": "pp:me:2014:q5",
-      "exam_uid": "me:2014:set1:q5",
+      "exam_uid": "me:2014:set1:main:q5",
       "title": "GATE ME 2014 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -194,25 +217,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "For linear dependency, det $$\\left|\\begin{array}{ccc}1 & 1 & 1 \\\\ 2 & 3 & 1 \\\\ 5 & 6 & 4\\end{array}\\right|$$ must be zero.\n\n$\\therefore \\Delta=1(12-6)-1(8-5)+1(12-15)$\n\n$=6-3-3=0$\n\n$\\therefore$  There three vectors are linearly dependent.\n\nTherefore, the correct answer is **B**."
+        "markdown": "For linear dependency, det $$\\left|\\begin{array}{ccc}1 & 1 & 1 \\\\ 2 & 3 & 1 \\\\ 5 & 6 & 4\\end{array}\\right|$$ must be zero.\n\n$\\therefore \\Delta=1(12-6)-1(8-5)+1(12-15)$\n\n$=6-3-3=0$\n\n$\\therefore$  There three vectors are linearly dependent.",
+        "images": []
       }
     },
     "pp:me:2014:q6": {
       "question_uid": "pp:me:2014:q6",
-      "exam_uid": "me:2014:set1:q6",
+      "exam_uid": "me:2014:set1:main:q6",
       "title": "GATE ME 2014 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -234,25 +262,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "stress-and-strain",
+          "subtopicLabel": "Stress and Strain"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-strength-of-materials",
+          "stress-and-strain"
         ]
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress and Strain",
-        "markdown": "For thermal stress to be developed, there must be constraint in the system. So, although strain develops but there is no thermal stress.\n\nTherefore, the correct answer is **C**."
+        "markdown": "For thermal stress to be developed, there must be constraint in the system. So, although strain develops but there is no thermal stress.",
+        "images": []
       }
     },
     "pp:me:2014:q7": {
       "question_uid": "pp:me:2014:q7",
-      "exam_uid": "me:2014:set1:q7",
+      "exam_uid": "me:2014:set1:main:q7",
       "title": "GATE ME 2014 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 1,
@@ -272,25 +305,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "stress-strain-relationship-and-elastic-constants",
+          "subtopicLabel": "Stress-strain Relationship and Elastic Constants"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-strength-of-materials",
+          "stress-strain-relationship-and-elastic-constants"
         ]
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "$$\\begin{array}{l} v=-\\frac{\\text { Lateral strain }}{\\text { Longitudinal strain }}=-\\frac{\\left(\\frac{\\Delta D}{D}\\right)}{\\left(\\frac{\\Delta L}{L}\\right)} \\\\ v=\\left(\\frac{L}{D}\\right)\\left(-\\frac{\\Delta D}{\\Delta L}\\right) \\\\ \\text{given,}L=500\\mathrm{mm},D=50\\mathrm{mm}\\\\ \\Delta D=-0.015, \\Delta L=+0.5 \\mathrm{mm} \\\\ \\qquad v=\\frac{500}{50} \\times \\frac{0.015}{0.500}=0.3 \\end{array}$$\n\nTherefore, the correct answer is **0.3**."
+        "markdown": "$$\\begin{array}{l} v=-\\frac{\\text { Lateral strain }}{\\text { Longitudinal strain }}=-\\frac{\\left(\\frac{\\Delta D}{D}\\right)}{\\left(\\frac{\\Delta L}{L}\\right)} \\\\ v=\\left(\\frac{L}{D}\\right)\\left(-\\frac{\\Delta D}{\\Delta L}\\right) \\\\ \\text{given,}L=500\\mathrm{mm},D=50\\mathrm{mm}\\\\ \\Delta D=-0.015, \\Delta L=+0.5 \\mathrm{mm} \\\\ \\qquad v=\\frac{500}{50} \\times \\frac{0.015}{0.500}=0.3 \\end{array}$$",
+        "images": []
       }
     },
     "pp:me:2014:q8": {
       "question_uid": "pp:me:2014:q8",
-      "exam_uid": "me:2014:set1:q8",
+      "exam_uid": "me:2014:set1:main:q8",
       "title": "GATE ME 2014 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -312,25 +350,30 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "vibration",
+          "subtopicLabel": "Vibration"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "vibration"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "The system with critical damping returns to equilibrium in fastest time without any oscillation. In critically damped free vibrations, the damping force is just sufficient to dissipate the energy within   One cycle of motion. The system never executes  a cycle, it approaches equilibrium with exponentially decaying displacement.\n\nTherefore, the correct answer is **B**."
+        "markdown": "The system with critical damping returns to equilibrium in fastest time without any oscillation. In critically damped free vibrations, the damping force is just sufficient to dissipate the energy within   One cycle of motion. The system never executes  a cycle, it approaches equilibrium with exponentially decaying displacement.",
+        "images": []
       }
     },
     "pp:me:2014:q9": {
       "question_uid": "pp:me:2014:q9",
-      "exam_uid": "me:2014:set1:q9",
+      "exam_uid": "me:2014:set1:main:q9",
       "title": "GATE ME 2014 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -352,25 +395,32 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "plane-motion",
+          "subtopicLabel": "Plane Motion"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-engineering-mechanics",
+          "plane-motion"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Plane Motion",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-43d99ffc44.webp\" />\n\n$$\\begin{aligned} V_{P}= & \\omega \\times \\overline{O P}=2 \\omega r \\\\ V_{C}= & \\omega \\times \\overline{O C}=\\omega r \\\\ V_{O}= & \\omega \\times 0=0 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-43d99ffc44.webp\" />\n\n$$\\begin{aligned} V_{P}= & \\omega \\times \\overline{O P}=2 \\omega r \\\\ V_{C}= & \\omega \\times \\overline{O C}=\\omega r \\\\ V_{O}= & \\omega \\times 0=0 \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-43d99ffc44.webp"
+        ]
       }
     },
     "pp:me:2014:q10": {
       "question_uid": "pp:me:2014:q10",
-      "exam_uid": "me:2014:set1:q10",
+      "exam_uid": "me:2014:set1:main:q10",
       "title": "GATE ME 2014 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -392,29 +442,34 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-machine-design",
+          "subjectLabel": "Machine Design",
+          "subtopicSlug": "gears",
+          "subtopicLabel": "Gears"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-machine-design",
+          "gears"
         ]
       },
       "detailed_solution": {
         "concept": "Machine Design - Gears",
-        "markdown": "Example of Lower Pair:\n\nRevolute pair, Prismatic joint, Screw pair, cylindrical\n\njoint, spherical joint.\n\nExample of higher pair:\n\nWheel rolling an surface, cam and follower contact,\n\nmeshing teeth of two gears.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Example of Lower Pair:\n\nRevolute pair, Prismatic joint, Screw pair, cylindrical\n\njoint, spherical joint.\n\nExample of higher pair:\n\nWheel rolling an surface, cam and follower contact,\n\nmeshing teeth of two gears.",
+        "images": []
       }
     },
     "pp:me:2014:q11": {
       "question_uid": "pp:me:2014:q11",
-      "exam_uid": "me:2014:set1:q11",
+      "exam_uid": "me:2014:set1:main:q11",
       "title": "GATE ME 2014 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "A rigid link PQ is 2 m long and oriented at $20^{\\circ}$  to the horizontal as shown in the figure.  The magnitude and direction of velocity $V_{Q}$ , and the direction of velocity $V_{P}$  are given. The magnitude of $V_{P}$(in m/s) a t this instant is  <br><img src= \"/wp-content/uploads/GATE/ME/20141/q11.jpg\"/>",
+      "question": "A rigid link PQ is 2 m long and oriented at $20^{\\circ}$  to the horizontal as shown in the figure.  The magnitude and direction of velocity $V_{Q}$ , and the direction of velocity $V_{P}$  are given. The magnitude of $V_{P}$(in m/s) a t this instant is  <br><img src=\"/question-images/me/2014/me-2014-8e7a7a9c06.webp\" />",
       "options": [
         "2.14",
         "1.89",
@@ -445,13 +500,19 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-5a831091d6.webp\" />\n\n$$\\begin{aligned} \\therefore \\; \\omega _{PQ}&=\\frac{V_P}{PI_{PQ}}=\\frac{V_Q}{QI_{PQ}} \\\\ PI_{PQ}&=\\text{Distance between P and }I_{PQ} \\\\ &= 2 \\cos 70^{\\circ}+ 2 \\sin 70^{\\circ} \\times \\tan 45^{\\circ}\\\\ QI_{PQ} &= \\text{Distance between Q and }I_{PQ} \\\\ &=\\sqrt{2}\\times 2 \\times \\sin 70^{\\circ} \\\\ &= 2.66m\\\\ \\therefore \\;\\; \\frac{V_P}{2.56} &=\\frac{1}{2.66}\\\\ V_P&=\\frac{2.56}{2.66}=0.96\\; m/s \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-5a831091d6.webp\" />\n\n$$\\begin{aligned} \\therefore \\; \\omega _{PQ}&=\\frac{V_P}{PI_{PQ}}=\\frac{V_Q}{QI_{PQ}} \\\\ PI_{PQ}&=\\text{Distance between P and }I_{PQ} \\\\ &= 2 \\cos 70^{\\circ}+ 2 \\sin 70^{\\circ} \\times \\tan 45^{\\circ}\\\\ QI_{PQ} &= \\text{Distance between Q and }I_{PQ} \\\\ &=\\sqrt{2}\\times 2 \\times \\sin 70^{\\circ} \\\\ &= 2.66m\\\\ \\therefore \\;\\; \\frac{V_P}{2.56} &=\\frac{1}{2.66}\\\\ V_P&=\\frac{2.56}{2.66}=0.96\\; m/s \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-5a831091d6.webp"
+        ]
       }
     },
     "pp:me:2014:q12": {
       "question_uid": "pp:me:2014:q12",
-      "exam_uid": "me:2014:set1:q12",
+      "exam_uid": "me:2014:set1:main:q12",
       "title": "GATE ME 2014 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -486,13 +547,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Fins and Unsteady Heat Transfer",
-        "markdown": "Biot number\n\n$\\mathrm{Bi}=\\frac{h l}{k}=\\frac{\\frac{l}{k A}}{\\frac{1}{h A}} \\\\ \\mathrm{Bi}=\\frac{\\text { Conductive resistance of solid }}{\\text { Convective resistance of fluid }}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Biot number\n\n$\\mathrm{Bi}=\\frac{h l}{k}=\\frac{\\frac{l}{k A}}{\\frac{1}{h A}} \\\\ \\mathrm{Bi}=\\frac{\\text { Conductive resistance of solid }}{\\text { Convective resistance of fluid }}$",
+        "images": []
       }
     },
     "pp:me:2014:q13": {
       "question_uid": "pp:me:2014:q13",
-      "exam_uid": "me:2014:set1:q13",
+      "exam_uid": "me:2014:set1:main:q13",
       "title": "GATE ME 2014 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -527,17 +592,21 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Availability and Irreversibility",
-        "markdown": "Exergy is also known as availability and it is maximum theoretical work obtainable, when a system interacts to equilibrium with dead state or reference environment.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Exergy is also known as availability and it is maximum theoretical work obtainable, when a system interacts to equilibrium with dead state or reference environment.",
+        "images": []
       }
     },
     "pp:me:2014:q14": {
       "question_uid": "pp:me:2014:q14",
-      "exam_uid": "me:2014:set1:q14",
+      "exam_uid": "me:2014:set1:main:q14",
       "title": "GATE ME 2014 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "Consider a two-dimensional laminar flow over a long cylinder as shown in the figure below. <br><img src= \"/wp-content/uploads/GATE/ME/20141/q14.jpg\"/><br>The free stream velocity is $U_{\\infty}$  and the free stream temperature $T_{\\infty}$ is lower than the cylinder surface temperature  $T_{s}$. The local heat transfer coefficient is minimum at point ",
+      "question": "Consider a two-dimensional laminar flow over a long cylinder as shown in the figure below. <br><img src=\"/question-images/me/2014/me-2014-9277e574bb.webp\" /><br>The free stream velocity is $U_{\\infty}$  and the free stream temperature $T_{\\infty}$ is lower than the cylinder surface temperature  $T_{s}$. The local heat transfer coefficient is minimum at point ",
       "options": [
         "1",
         "2",
@@ -568,13 +637,19 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Transfer in Flow Over Plates and Pipes",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-753c6738de.webp\" />\n\n$$\\begin{aligned} &1.\\mathrm{Re}=500\\\\ &2.\\mathrm{Re}=10^{4}\\\\ &3.\\mathrm{Re}=2 \\times 10^{5}\\\\ &4.\\mathrm{Re}=2 \\times 10^{6}\\\\ \\end{aligned}$$\n\nExperimental results for the variation of the local Nusselt number with $\\theta$ are shown in above figure for the cylinder in cross flow of air. The results are strongly influenced by the nature of boundary layer development on the surface. Starting at the stagnation point, Nu decreases with increasing $\\theta$ as a result of laminar boundary layer development. Nu as a result of laminar boundary layer development. Nu reaches minimum at $80^{\\circ}$ where separation occurs. So, at point 2, the local heat transfer coefficient is minimum.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-753c6738de.webp\" />\n\n$$\\begin{aligned} &1.\\mathrm{Re}=500\\\\ &2.\\mathrm{Re}=10^{4}\\\\ &3.\\mathrm{Re}=2 \\times 10^{5}\\\\ &4.\\mathrm{Re}=2 \\times 10^{6}\\\\ \\end{aligned}$$\n\nExperimental results for the variation of the local Nusselt number with $\\theta$ are shown in above figure for the cylinder in cross flow of air. The results are strongly influenced by the nature of boundary layer development on the surface. Starting at the stagnation point, Nu decreases with increasing $\\theta$ as a result of laminar boundary layer development. Nu as a result of laminar boundary layer development. Nu reaches minimum at $80^{\\circ}$ where separation occurs. So, at point 2, the local heat transfer coefficient is minimum.",
+        "images": [
+          "/question-images/me/2014/me-2014-753c6738de.webp"
+        ]
       }
     },
     "pp:me:2014:q15": {
       "question_uid": "pp:me:2014:q15",
-      "exam_uid": "me:2014:set1:q15",
+      "exam_uid": "me:2014:set1:main:q15",
       "title": "GATE ME 2014 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -609,13 +684,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-c659ab8f0f.webp\" />\n\n(A submerged body in stable equilibrium)\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-c659ab8f0f.webp\" />\n\n(A submerged body in stable equilibrium)",
+        "images": [
+          "/question-images/me/2014/me-2014-c659ab8f0f.webp"
+        ]
       }
     },
     "pp:me:2014:q16": {
       "question_uid": "pp:me:2014:q16",
-      "exam_uid": "me:2014:set1:q16",
+      "exam_uid": "me:2014:set1:main:q16",
       "title": "GATE ME 2014 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -650,13 +731,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "Ideal work input: $w=v_{f} \\Delta p$\n\n$$\\begin{aligned} &=\\frac{1}{\\rho_{\\text {water }}}\\left(p_{2}-p_{1}\\right) \\\\ &=\\frac{(3000-80)}{1000} \\\\ &=\\frac{2920}{1000}=2.92 \\mathrm{kJ} / \\mathrm{kg} \\\\ \\text { Actual input work }&=\\frac{w}{\\eta}= \\frac{2.92}{0.85}\\\\ &=3.43\\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Ideal work input: $w=v_{f} \\Delta p$\n\n$$\\begin{aligned} &=\\frac{1}{\\rho_{\\text {water }}}\\left(p_{2}-p_{1}\\right) \\\\ &=\\frac{(3000-80)}{1000} \\\\ &=\\frac{2920}{1000}=2.92 \\mathrm{kJ} / \\mathrm{kg} \\\\ \\text { Actual input work }&=\\frac{w}{\\eta}= \\frac{2.92}{0.85}\\\\ &=3.43\\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q17": {
       "question_uid": "pp:me:2014:q17",
-      "exam_uid": "me:2014:set1:q17",
+      "exam_uid": "me:2014:set1:main:q17",
       "title": "GATE ME 2014 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -691,13 +776,17 @@
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Vapor and Gas Refrigeration",
-        "markdown": "$$\\begin{array}{l} \\mathrm{R} 744-\\mathrm{CO}_{2} \\\\ \\mathrm{R} 290-\\mathrm{C}_{3} \\mathrm{H}_{8}(\\text { Propane }) \\\\ \\mathrm{R} 502-\\mathrm{CHClF}_{3}+\\mathrm{CCIF}_{2} \\mathrm{CF}_{3} \\\\ \\mathrm{R} 718-\\text { Water } \\end{array}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{array}{l} \\mathrm{R} 744-\\mathrm{CO}_{2} \\\\ \\mathrm{R} 290-\\mathrm{C}_{3} \\mathrm{H}_{8}(\\text { Propane }) \\\\ \\mathrm{R} 502-\\mathrm{CHClF}_{3}+\\mathrm{CCIF}_{2} \\mathrm{CF}_{3} \\\\ \\mathrm{R} 718-\\text { Water } \\end{array}$$",
+        "images": []
       }
     },
     "pp:me:2014:q18": {
       "question_uid": "pp:me:2014:q18",
-      "exam_uid": "me:2014:set1:q18",
+      "exam_uid": "me:2014:set1:main:q18",
       "title": "GATE ME 2014 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -732,13 +821,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "When jobs are coming in random manner then number of arrivals of jobs in a fixed time interval will follow poisson probability distribution. Service time will follow exponential distribution.\n\nTherefore, the correct answer is **B**."
+        "markdown": "When jobs are coming in random manner then number of arrivals of jobs in a fixed time interval will follow poisson probability distribution. Service time will follow exponential distribution.",
+        "images": []
       }
     },
     "pp:me:2014:q19": {
       "question_uid": "pp:me:2014:q19",
-      "exam_uid": "me:2014:set1:q19",
+      "exam_uid": "me:2014:set1:main:q19",
       "title": "GATE ME 2014 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -773,13 +866,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "High value of $\\alpha$ shows more weightage is given to immediate forecast. Less value of $\\alpha$ shows less weightage is given to immediate forecast or almost equal weightage is given. So high value of $\\alpha$ is chosen when nature of demand is not reliable or unstable.\n\nTherefore, the correct answer is **B**."
+        "markdown": "High value of $\\alpha$ shows more weightage is given to immediate forecast. Less value of $\\alpha$ shows less weightage is given to immediate forecast or almost equal weightage is given. So high value of $\\alpha$ is chosen when nature of demand is not reliable or unstable.",
+        "images": []
       }
     },
     "pp:me:2014:q20": {
       "question_uid": "pp:me:2014:q20",
-      "exam_uid": "me:2014:set1:q20",
+      "exam_uid": "me:2014:set1:main:q20",
       "title": "GATE ME 2014 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -814,13 +911,19 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-1e40b5bb40.webp\" />\n\nNormal Coordinates :\n\n$P(0,0), Q(100,0), R(100,50), S(0,50)$\n\nWith cutter compensation :\n\n$P_{1}(-8,-8), Q(108,-8), R(108,58), S(-8,58)$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-1e40b5bb40.webp\" />\n\nNormal Coordinates :\n\n$P(0,0), Q(100,0), R(100,50), S(0,50)$\n\nWith cutter compensation :\n\n$P_{1}(-8,-8), Q(108,-8), R(108,58), S(-8,58)$",
+        "images": [
+          "/question-images/me/2014/me-2014-1e40b5bb40.webp"
+        ]
       }
     },
     "pp:me:2014:q21": {
       "question_uid": "pp:me:2014:q21",
-      "exam_uid": "me:2014:set1:q21",
+      "exam_uid": "me:2014:set1:main:q21",
       "title": "GATE ME 2014 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -855,13 +958,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "To check and calibrate geometric features of machine tools, we use laser interferometer.\n\nTherefore, the correct answer is **C**."
+        "markdown": "To check and calibrate geometric features of machine tools, we use laser interferometer.",
+        "images": []
       }
     },
     "pp:me:2014:q22": {
       "question_uid": "pp:me:2014:q22",
-      "exam_uid": "me:2014:set1:q22",
+      "exam_uid": "me:2014:set1:main:q22",
       "title": "GATE ME 2014 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -896,13 +1003,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "Aluminium has high tendency of oxidation so during welding it is converted into aluminium oxide ($\\text{Al}_2O_3$) and $\\text{Al}_2O_3$ has very high melting point ($2702^{\\circ}C$), so now it will not melt and welding can not be performed easily.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Aluminium has high tendency of oxidation so during welding it is converted into aluminium oxide ($\\text{Al}_2O_3$) and $\\text{Al}_2O_3$ has very high melting point ($2702^{\\circ}C$), so now it will not melt and welding can not be performed easily.",
+        "images": []
       }
     },
     "pp:me:2014:q23": {
       "question_uid": "pp:me:2014:q23",
-      "exam_uid": "me:2014:set1:q23",
+      "exam_uid": "me:2014:set1:main:q23",
       "title": "GATE ME 2014 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -937,13 +1048,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Cutting force $F_c=400 \\; N$\n\ndepth $d=2 \\; mm$\n\nfeed rate $f=0.1 \\; mm/rev.$\n\nIt means per revolution it moves 0.1 mm (t)\n\nSpecific cutting pressure\n\n$=\\frac{F_c}{d \\times t}=\\frac{400}{2 \\times 0.1}=2000 \\; N/mm^2$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Cutting force $F_c=400 \\; N$\n\ndepth $d=2 \\; mm$\n\nfeed rate $f=0.1 \\; mm/rev.$\n\nIt means per revolution it moves 0.1 mm (t)\n\nSpecific cutting pressure\n\n$=\\frac{F_c}{d \\times t}=\\frac{400}{2 \\times 0.1}=2000 \\; N/mm^2$",
+        "images": []
       }
     },
     "pp:me:2014:q24": {
       "question_uid": "pp:me:2014:q24",
-      "exam_uid": "me:2014:set1:q24",
+      "exam_uid": "me:2014:set1:main:q24",
       "title": "GATE ME 2014 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -978,13 +1093,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "Martensitic steel is very hard and brittle after quenching.\n\nTo reduce brittleness while retaining most of the hardness, the steel is reheated below the critical temperature and then cooled.\n\nThis heat treatment process is called tempering.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Martensitic steel is very hard and brittle after quenching.\n\nTo reduce brittleness while retaining most of the hardness, the steel is reheated below the critical temperature and then cooled.\n\nThis heat treatment process is called tempering.",
+        "images": []
       }
     },
     "pp:me:2014:q25": {
       "question_uid": "pp:me:2014:q25",
-      "exam_uid": "me:2014:set1:q25",
+      "exam_uid": "me:2014:set1:main:q25",
       "title": "GATE ME 2014 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1019,13 +1138,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
-        "markdown": "Plastic deformation is used to remove contamination layers between the surfaces to be welded, in solid-state welding.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Plastic deformation is used to remove contamination layers between the surfaces to be welded, in solid-state welding.",
+        "images": []
       }
     },
     "pp:me:2014:q26": {
       "question_uid": "pp:me:2014:q26",
-      "exam_uid": "me:2014:set1:q26",
+      "exam_uid": "me:2014:set1:main:q26",
       "title": "GATE ME 2014 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1060,13 +1183,19 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-89896f04af.webp\"/>\n\n$$\\begin{aligned} \\int_{C}(\\phi d x+\\psi d y) &=\\iint_{E}\\left(\\frac{\\partial \\psi}{\\partial x}-\\frac{\\partial \\phi}{\\partial y}\\right) d x d y \\\\ \\phi &=y \\\\ \\psi &=-x \\\\ \\frac{\\partial \\psi}{\\partial x} &=-1 \\\\ \\frac{\\partial \\phi}{\\partial y} &=1 \\\\ I &=\\iint_{E}\\left(\\frac{\\partial \\psi}{\\partial x}-\\frac{\\partial \\phi}{\\partial y}\\right) d x d y \\\\ &=\\int_{0}^{1 / 2} \\int_{0}^{2 \\pi}(-2) r d \\theta d r \\\\ &=-2\\left(\\int_{0}^{1 / 2} r d r\\right)\\left(\\int_{0}^{2 \\pi} r d \\theta\\right) \\\\ &=-2\\left(\\frac{r^{2}}{2}\\right)_{0}^{1 / 2} 2 \\pi=-\\frac{\\pi}{2} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-89896f04af.webp\"/>\n\n$$\\begin{aligned} \\int_{C}(\\phi d x+\\psi d y) &=\\iint_{E}\\left(\\frac{\\partial \\psi}{\\partial x}-\\frac{\\partial \\phi}{\\partial y}\\right) d x d y \\\\ \\phi &=y \\\\ \\psi &=-x \\\\ \\frac{\\partial \\psi}{\\partial x} &=-1 \\\\ \\frac{\\partial \\phi}{\\partial y} &=1 \\\\ I &=\\iint_{E}\\left(\\frac{\\partial \\psi}{\\partial x}-\\frac{\\partial \\phi}{\\partial y}\\right) d x d y \\\\ &=\\int_{0}^{1 / 2} \\int_{0}^{2 \\pi}(-2) r d \\theta d r \\\\ &=-2\\left(\\int_{0}^{1 / 2} r d r\\right)\\left(\\int_{0}^{2 \\pi} r d \\theta\\right) \\\\ &=-2\\left(\\frac{r^{2}}{2}\\right)_{0}^{1 / 2} 2 \\pi=-\\frac{\\pi}{2} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-89896f04af.webp"
+        ]
       }
     },
     "pp:me:2014:q27": {
       "question_uid": "pp:me:2014:q27",
-      "exam_uid": "me:2014:set1:q27",
+      "exam_uid": "me:2014:set1:main:q27",
       "title": "GATE ME 2014 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1099,17 +1228,21 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned} \\frac{d^{2} y}{d x^{2}} &=0 \\\\ \\frac{d y}{d x} &=C_{1} \\\\ \\Rightarrow \\qquad C_{1} &=2 \\\\ y &=C_{1} x+C_{2} \\\\ at \\qquad x &=0 ; \\quad y=5=C_{2} \\\\ \\therefore \\qquad y &=2 x+5 \\\\ at \\qquad y(15) &=2 \\times 15+5=35 \\end{aligned}$$\n\nTherefore, the correct answer is **35** (acceptable range: [34, 36])."
+        "markdown": "$$\\begin{aligned} \\frac{d^{2} y}{d x^{2}} &=0 \\\\ \\frac{d y}{d x} &=C_{1} \\\\ \\Rightarrow \\qquad C_{1} &=2 \\\\ y &=C_{1} x+C_{2} \\\\ at \\qquad x &=0 ; \\quad y=5=C_{2} \\\\ \\therefore \\qquad y &=2 x+5 \\\\ at \\qquad y(15) &=2 \\times 15+5=35 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q28": {
       "question_uid": "pp:me:2014:q28",
-      "exam_uid": "me:2014:set1:q28",
+      "exam_uid": "me:2014:set1:main:q28",
       "title": "GATE ME 2014 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
-      "question": "in the folowing table, x is a discrete random variable and p(x) is the pobability destiny. The standard deviation of x is   <br><img src= \"/wp-content/uploads/GATE/ME/20141/q28.jpg\"/> ",
+      "question": "in the folowing table, x is a discrete random variable and p(x) is the pobability destiny. The standard deviation of x is   <br><img src=\"/question-images/me/2014/me-2014-6b10ac7342.webp\" /> ",
       "options": [
         "0.18",
         "0.36",
@@ -1140,13 +1273,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Mean,\n\n$$\\begin{aligned} \\bar{x} &=\\frac{\\Sigma_{i} x_{i}}{\\Sigma f_{i}} \\\\ &=\\frac{1 \\times 0.3+2 \\times 0.8+3 \\times 0.1}{1}=1.8 \\end{aligned}$$\n\nStandard deviation,\n\n$\\sigma=\\left(\\frac{\\Sigma f_{x_{i}}^{2}}{\\Sigma f_{i}}-\\bar{x}^{2}\\right)^{1 / 2}$\n\n$\\therefore \\quad \\sigma=\\left(\\frac{0.3 \\times 1^{2}+0.6 \\times 2^{2}+0.1 \\times 3^{2}}{1}-1.8^{2}\\right)^{1 / 2}$\n\n$=\\left(3.6-1.8^{2}\\right)^{1 / 2}=(0.36)^{1 / 2}=0.6$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Mean,\n\n$$\\begin{aligned} \\bar{x} &=\\frac{\\Sigma_{i} x_{i}}{\\Sigma f_{i}} \\\\ &=\\frac{1 \\times 0.3+2 \\times 0.8+3 \\times 0.1}{1}=1.8 \\end{aligned}$$\n\nStandard deviation,\n\n$\\sigma=\\left(\\frac{\\Sigma f_{x_{i}}^{2}}{\\Sigma f_{i}}-\\bar{x}^{2}\\right)^{1 / 2}$\n\n$\\therefore \\quad \\sigma=\\left(\\frac{0.3 \\times 1^{2}+0.6 \\times 2^{2}+0.1 \\times 3^{2}}{1}-1.8^{2}\\right)^{1 / 2}$\n\n$=\\left(3.6-1.8^{2}\\right)^{1 / 2}=(0.36)^{1 / 2}=0.6$",
+        "images": []
       }
     },
     "pp:me:2014:q29": {
       "question_uid": "pp:me:2014:q29",
-      "exam_uid": "me:2014:set1:q29",
+      "exam_uid": "me:2014:set1:main:q29",
       "title": "GATE ME 2014 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1179,13 +1316,19 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$I=\\int_{-1}^{1}|x| \\mathrm{d} x$\n\n$n=3, h=\\frac{1-(-1)}{3}=\\frac{2}{3}$\n\n<img src=\"/question-images/me/2014/me-2014-0ae3e4958f.webp\" />\n\nBy Trapezoidal rule\n\n$\\int_{-1}^{1}|x| d x=\\frac{h}{2}\\left[\\left(y_{0}+y_{3}\\right)+2\\left(y_{1}+y_{2}\\right)\\right]$\n\n$=\\frac{2}{3 \\times 2}\\left[(1+1)+2\\left(\\frac{1}{3}+\\frac{1}{3}\\right)\\right]$\n\n$=\\frac{1}{3}\\left[2+\\frac{4}{3}\\right]=1.11$\n\nTherefore, the correct answer is **1.15** (acceptable range: [1.1, 1.2])."
+        "markdown": "$I=\\int_{-1}^{1}|x| \\mathrm{d} x$\n\n$n=3, h=\\frac{1-(-1)}{3}=\\frac{2}{3}$\n\n<img src=\"/question-images/me/2014/me-2014-0ae3e4958f.webp\" />\n\nBy Trapezoidal rule\n\n$\\int_{-1}^{1}|x| d x=\\frac{h}{2}\\left[\\left(y_{0}+y_{3}\\right)+2\\left(y_{1}+y_{2}\\right)\\right]$\n\n$=\\frac{2}{3 \\times 2}\\left[(1+1)+2\\left(\\frac{1}{3}+\\frac{1}{3}\\right)\\right]$\n\n$=\\frac{1}{3}\\left[2+\\frac{4}{3}\\right]=1.11$",
+        "images": [
+          "/question-images/me/2014/me-2014-0ae3e4958f.webp"
+        ]
       }
     },
     "pp:me:2014:q30": {
       "question_uid": "pp:me:2014:q30",
-      "exam_uid": "me:2014:set1:q30",
+      "exam_uid": "me:2014:set1:main:q30",
       "title": "GATE ME 2014 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1218,17 +1361,21 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "$$\\begin{aligned} \\sigma_{1} &=\\frac{\\sigma_{x}+\\sigma_{y}}{2}+\\sqrt{\\left(\\frac{\\sigma_{x}-\\sigma_{y}}{2}\\right)^{2}+\\tau_{x y}^{2}} \\\\ &=\\frac{+6-4}{2}+\\sqrt{\\left(\\frac{+6-4}{2}\\right)^{2}+(-8)^{2}} \\\\ &=-1+\\sqrt{25+64} \\\\ &=-1+\\sqrt{89}=8.4339 \\mathrm{MPa} \\end{aligned}$$\n\nTherefore, the correct answer is **8.45** (acceptable range: [8.4, 8.5])."
+        "markdown": "$$\\begin{aligned} \\sigma_{1} &=\\frac{\\sigma_{x}+\\sigma_{y}}{2}+\\sqrt{\\left(\\frac{\\sigma_{x}-\\sigma_{y}}{2}\\right)^{2}+\\tau_{x y}^{2}} \\\\ &=\\frac{+6-4}{2}+\\sqrt{\\left(\\frac{+6-4}{2}\\right)^{2}+(-8)^{2}} \\\\ &=-1+\\sqrt{25+64} \\\\ &=-1+\\sqrt{89}=8.4339 \\mathrm{MPa} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q31": {
       "question_uid": "pp:me:2014:q31",
-      "exam_uid": "me:2014:set1:q31",
+      "exam_uid": "me:2014:set1:main:q31",
       "title": "GATE ME 2014 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
-      "question": "A block R of mass 100kg is placed on a block S of mass 150kg as shown in the figure. Block R is tied to the wall by a massless and intextensible string PQ. If the coefficient of static friction for all surfaces is 0.4, the  minimum force F(in kN) needed to move the block S is  <br><img src= \"/wp-content/uploads/GATE/ME/20141/q31.jpg\"/> ",
+      "question": "A block R of mass 100kg is placed on a block S of mass 150kg as shown in the figure. Block R is tied to the wall by a massless and intextensible string PQ. If the coefficient of static friction for all surfaces is 0.4, the  minimum force F(in kN) needed to move the block S is  <br><img src=\"/question-images/me/2014/me-2014-fa0ca151a9.webp\" /> ",
       "options": [
         "0.69",
         "0.88",
@@ -1259,13 +1406,19 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-344c435a48.webp\" />\n\n$$\\begin{aligned} F &=\\mu\\left(W_{S}+W_{R}\\right)+\\mu W_{R} \\\\ F &=\\mu\\left(W_{S}+2 W_{R}\\right) \\\\ &=0.4(150+2 \\times 100) \\times 9.81 \\\\ &=1373.4 \\mathrm{N}=1.37 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-344c435a48.webp\" />\n\n$$\\begin{aligned} F &=\\mu\\left(W_{S}+W_{R}\\right)+\\mu W_{R} \\\\ F &=\\mu\\left(W_{S}+2 W_{R}\\right) \\\\ &=0.4(150+2 \\times 100) \\times 9.81 \\\\ &=1373.4 \\mathrm{N}=1.37 \\mathrm{kN} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-344c435a48.webp"
+        ]
       }
     },
     "pp:me:2014:q32": {
       "question_uid": "pp:me:2014:q32",
-      "exam_uid": "me:2014:set1:q32",
+      "exam_uid": "me:2014:set1:main:q32",
       "title": "GATE ME 2014 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1298,13 +1451,19 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Gears",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-b7e7ccd950.webp\" />\n\n$$\\begin{aligned} \\frac{N_{P}}{N_{G}} &=5=\\frac{T_{G}}{T_{P}} \\\\ T_{G} &=5 T_{P} \\\\ C &=\\frac{m}{2}\\left(T_{P}+T_{G}\\right) \\\\ T_{P}+T_{G} &=\\frac{2 C}{m}=\\frac{2 \\times 450}{5} \\\\ &=180 \\\\ \\text{or }\\quad 6 T_{P}&=180 \\\\ \\text{or }\\quad T_{P}&=30 \\end{aligned}$$\n\nTherefore, the correct answer is **30** (acceptable range: [29, 31])."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-b7e7ccd950.webp\" />\n\n$$\\begin{aligned} \\frac{N_{P}}{N_{G}} &=5=\\frac{T_{G}}{T_{P}} \\\\ T_{G} &=5 T_{P} \\\\ C &=\\frac{m}{2}\\left(T_{P}+T_{G}\\right) \\\\ T_{P}+T_{G} &=\\frac{2 C}{m}=\\frac{2 \\times 450}{5} \\\\ &=180 \\\\ \\text{or }\\quad 6 T_{P}&=180 \\\\ \\text{or }\\quad T_{P}&=30 \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-b7e7ccd950.webp"
+        ]
       }
     },
     "pp:me:2014:q33": {
       "question_uid": "pp:me:2014:q33",
-      "exam_uid": "me:2014:set1:q33",
+      "exam_uid": "me:2014:set1:main:q33",
       "title": "GATE ME 2014 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1337,13 +1496,19 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-5b39c8ff87.webp\" />\n\n$$\\begin{aligned} P &=m g=0.5 \\times 9.81=4.905 N \\\\ L &=0.01 \\mathrm{m} \\\\ f_{n} &=100 \\mathrm{Hz} \\\\ \\omega_{n} &=2 \\pi f_{n}=628 \\mathrm{rad} / \\mathrm{s} \\\\ \\omega_{n} &=\\sqrt{\\frac{k}{m}}\\\\ \\text { or } \\quad k&=m \\omega_{n}^{2}=0.5 \\times(628)^{2}\\\\ &=197192 \\mathrm{N} / \\mathrm{m}\\\\ \\delta &=\\frac{P L^{3}}{3 E I} \\\\ \\Rightarrow \\frac{P}{\\delta} &=\\frac{3 E I}{L^{3}} \\\\ \\text{or}\\quad EI&=\\frac{P}{\\delta }\\times\\frac{L^{3}}{3}\\\\ &=197192 \\times \\frac{(0.01)^{3}}{3} \\\\ &=0.06573 \\mathrm{Nm}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **0.0655** (acceptable range: [0.064, 0.067])."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-5b39c8ff87.webp\" />\n\n$$\\begin{aligned} P &=m g=0.5 \\times 9.81=4.905 N \\\\ L &=0.01 \\mathrm{m} \\\\ f_{n} &=100 \\mathrm{Hz} \\\\ \\omega_{n} &=2 \\pi f_{n}=628 \\mathrm{rad} / \\mathrm{s} \\\\ \\omega_{n} &=\\sqrt{\\frac{k}{m}}\\\\ \\text { or } \\quad k&=m \\omega_{n}^{2}=0.5 \\times(628)^{2}\\\\ &=197192 \\mathrm{N} / \\mathrm{m}\\\\ \\delta &=\\frac{P L^{3}}{3 E I} \\\\ \\Rightarrow \\frac{P}{\\delta} &=\\frac{3 E I}{L^{3}} \\\\ \\text{or}\\quad EI&=\\frac{P}{\\delta }\\times\\frac{L^{3}}{3}\\\\ &=197192 \\times \\frac{(0.01)^{3}}{3} \\\\ &=0.06573 \\mathrm{Nm}^{2} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-5b39c8ff87.webp"
+        ]
       }
     },
     "pp:me:2014:q34": {
       "question_uid": "pp:me:2014:q34",
-      "exam_uid": "me:2014:set1:q34",
+      "exam_uid": "me:2014:set1:main:q34",
       "title": "GATE ME 2014 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1376,13 +1541,19 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Turbines and Pumps",
-        "markdown": "$$\\begin{aligned} Q &=0.05 \\mathrm{m}^{3} / \\mathrm{s} \\\\ F &=1000 \\mathrm{N} \\\\ \\rho &=1000 \\mathrm{kg} / \\mathrm{m}^{3} \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-98bdd06725.webp\" />\n\n$F=\\rho a V^{2}$\n\nwhere a= cross-section area fo the jet\n\n$$\\begin{aligned} Q&=a V \\\\ \\therefore \\quad F&=\\rho Q V \\\\ 1000 &=1000 \\times 0.05 \\times V \\\\ \\text{or}\\quad V &=20 \\mathrm{m} / \\mathrm{s} \\\\ Q &=a V \\\\ Q &=\\frac{\\pi}{4} d^{2} V \\\\ \\text{or}\\quad 0.05&=\\frac{3.14}{4} \\times d^{2} \\times 20 \\\\ \\text{or}\\quad d^{2}&=0.00318 \\\\ d&=0.05643 \\mathrm{m} \\\\&=56.43mm \\end{aligned}$$\n\nTherefore, the correct answer is **56.5** (acceptable range: [56, 57])."
+        "markdown": "$$\\begin{aligned} Q &=0.05 \\mathrm{m}^{3} / \\mathrm{s} \\\\ F &=1000 \\mathrm{N} \\\\ \\rho &=1000 \\mathrm{kg} / \\mathrm{m}^{3} \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-98bdd06725.webp\" />\n\n$F=\\rho a V^{2}$\n\nwhere a= cross-section area fo the jet\n\n$$\\begin{aligned} Q&=a V \\\\ \\therefore \\quad F&=\\rho Q V \\\\ 1000 &=1000 \\times 0.05 \\times V \\\\ \\text{or}\\quad V &=20 \\mathrm{m} / \\mathrm{s} \\\\ Q &=a V \\\\ Q &=\\frac{\\pi}{4} d^{2} V \\\\ \\text{or}\\quad 0.05&=\\frac{3.14}{4} \\times d^{2} \\times 20 \\\\ \\text{or}\\quad d^{2}&=0.00318 \\\\ d&=0.05643 \\mathrm{m} \\\\&=56.43mm \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-98bdd06725.webp"
+        ]
       }
     },
     "pp:me:2014:q35": {
       "question_uid": "pp:me:2014:q35",
-      "exam_uid": "me:2014:set1:q35",
+      "exam_uid": "me:2014:set1:main:q35",
       "title": "GATE ME 2014 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1415,13 +1586,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
-        "markdown": "$$\\begin{aligned} N &=m g=200 \\mathrm{N} \\\\(f_{s})_{max} &=\\mu_{s} N \\\\ &=0.4 \\times 200=80 \\end{aligned}$$\n\nupto $8 \\sec [P=10 t] \\rightarrow$ no motion\n\n$\\Rightarrow$ from 8 sec to 10 sec\n\n$$\\begin{aligned} f_{k} &=\\mu_{k} N \\\\ &=0.2 \\times 200=40 \\mathrm{N} \\end{aligned}$$\n\nAverage applied force\n\n$=\\frac{P_{\\max }+P_{\\min }}{2}$\n\n$=\\frac{100+80}{2}=90 \\mathrm{N}$\n\nAverage resultant force = Avg. applied force kinetic friction\n\n$=90-40=50 N$\n\nAverage acceration\n\n$$\\begin{aligned} &=\\frac{50 \\times 9.8}{200} \\\\ \\Rightarrow \\quad V &=u+a t\\\\ u&=0\\\\ a&=\\frac{50 \\times 9.8}{200} \\\\ t&=2 \\text{second}\\\\ \\therefore V&=\\frac{50 \\times 9.8}{200} \\times 2=4.9 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **4.9** (acceptable range: [4.8, 5])."
+        "markdown": "$$\\begin{aligned} N &=m g=200 \\mathrm{N} \\\\(f_{s})_{max} &=\\mu_{s} N \\\\ &=0.4 \\times 200=80 \\end{aligned}$$\n\nupto $8 \\sec [P=10 t] \\rightarrow$ no motion\n\n$\\Rightarrow$ from 8 sec to 10 sec\n\n$$\\begin{aligned} f_{k} &=\\mu_{k} N \\\\ &=0.2 \\times 200=40 \\mathrm{N} \\end{aligned}$$\n\nAverage applied force\n\n$=\\frac{P_{\\max }+P_{\\min }}{2}$\n\n$=\\frac{100+80}{2}=90 \\mathrm{N}$\n\nAverage resultant force = Avg. applied force kinetic friction\n\n$=90-40=50 N$\n\nAverage acceration\n\n$$\\begin{aligned} &=\\frac{50 \\times 9.8}{200} \\\\ \\Rightarrow \\quad V &=u+a t\\\\ u&=0\\\\ a&=\\frac{50 \\times 9.8}{200} \\\\ t&=2 \\text{second}\\\\ \\therefore V&=\\frac{50 \\times 9.8}{200} \\times 2=4.9 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q36": {
       "question_uid": "pp:me:2014:q36",
-      "exam_uid": "me:2014:set1:q36",
+      "exam_uid": "me:2014:set1:main:q36",
       "title": "GATE ME 2014 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1454,17 +1629,23 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Dynamic Analysis of Slider-crank",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-58ce965510.webp\" />\n\n$$\\begin{aligned} \\omega &=10 \\mathrm{rad} / \\mathrm{s} \\\\ \\theta &=30^{\\circ} \\\\ r &=\\frac{s}{2}=0.1 \\mathrm{m} \\\\ \\text { Unbalanced force }&=m \\omega^{2} r \\sin 30^{\\circ} & \\\\ &=6 \\times 100 \\times 0.1 \\times \\frac{1}{2} \\\\ &=30 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **30** (acceptable range: [29, 31])."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-58ce965510.webp\" />\n\n$$\\begin{aligned} \\omega &=10 \\mathrm{rad} / \\mathrm{s} \\\\ \\theta &=30^{\\circ} \\\\ r &=\\frac{s}{2}=0.1 \\mathrm{m} \\\\ \\text { Unbalanced force }&=m \\omega^{2} r \\sin 30^{\\circ} & \\\\ &=6 \\times 100 \\times 0.1 \\times \\frac{1}{2} \\\\ &=30 \\mathrm{N} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-58ce965510.webp"
+        ]
       }
     },
     "pp:me:2014:q37": {
       "question_uid": "pp:me:2014:q37",
-      "exam_uid": "me:2014:set1:q37",
+      "exam_uid": "me:2014:set1:main:q37",
       "title": "GATE ME 2014 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
-      "question": "An offset slider-crank mechanism is shown in the figure at an instant. Conventionally, the Quick Return Ratio (QRR) is considered to be greater than one. The value of QRR is _______   <br><img src= \"/wp-content/uploads/GATE/ME/20141/q37.jpg\"/> ",
+      "question": "An offset slider-crank mechanism is shown in the figure at an instant. Conventionally, the Quick Return Ratio (QRR) is considered to be greater than one. The value of QRR is _______   <br><img src=\"/question-images/me/2014/me-2014-b52e207b76.webp\" /> ",
       "options": [],
       "answer_meta": {
         "type": "NAT",
@@ -1493,17 +1674,21 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Dynamic Analysis of Slider-crank",
-        "markdown": "Length of connecting rod: $l_{r}=40 \\mathrm{mm}$\n\nCrank radius: $r=20 \\mathrm{mm}$\n\nEccentricity: $e=10 \\mathrm{mm}$\n\n$$\\begin{aligned} &\\phi=\\cos ^{-1}\\left(\\frac{e}{l+r}\\right)-\\cos ^{-1}\\left(\\frac{e}{l-r}\\right) \\\\ &=\\cos ^{-1}\\left(\\frac{1}{6}\\right)-\\cos ^{-1}\\left(\\frac{1}{2}\\right)=20.4^{\\circ} \\\\ &\\mathrm{QRR}=\\frac{\\text { Time of advance stroke }}{\\text { Time of return stroke }} \\\\ &=\\left(\\frac{\\theta_{C}}{2 \\pi N}\\right)\\left(\\frac{2 \\pi N}{\\theta_{R}}\\right) \\\\ &\\mathrm{QRR} =\\frac{\\theta_{C}}{\\theta_{R}}=\\frac{180^{\\circ}+\\phi}{180^{\\circ}-\\phi} \\\\ &=\\frac{180^{\\circ}+20.4^{\\circ}}{180^{\\circ}-20.4^{\\circ}}=1.25 \\end{aligned}$$\n\nTherefore, the correct answer is **1.25** (acceptable range: [1.2, 1.3])."
+        "markdown": "Length of connecting rod: $l_{r}=40 \\mathrm{mm}$\n\nCrank radius: $r=20 \\mathrm{mm}$\n\nEccentricity: $e=10 \\mathrm{mm}$\n\n$$\\begin{aligned} &\\phi=\\cos ^{-1}\\left(\\frac{e}{l+r}\\right)-\\cos ^{-1}\\left(\\frac{e}{l-r}\\right) \\\\ &=\\cos ^{-1}\\left(\\frac{1}{6}\\right)-\\cos ^{-1}\\left(\\frac{1}{2}\\right)=20.4^{\\circ} \\\\ &\\mathrm{QRR}=\\frac{\\text { Time of advance stroke }}{\\text { Time of return stroke }} \\\\ &=\\left(\\frac{\\theta_{C}}{2 \\pi N}\\right)\\left(\\frac{2 \\pi N}{\\theta_{R}}\\right) \\\\ &\\mathrm{QRR} =\\frac{\\theta_{C}}{\\theta_{R}}=\\frac{180^{\\circ}+\\phi}{180^{\\circ}-\\phi} \\\\ &=\\frac{180^{\\circ}+20.4^{\\circ}}{180^{\\circ}-20.4^{\\circ}}=1.25 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q38": {
       "question_uid": "pp:me:2014:q38",
-      "exam_uid": "me:2014:set1:q38",
+      "exam_uid": "me:2014:set1:main:q38",
       "title": "GATE ME 2014 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
-      "question": "A rigid uniform rod AB of length L and mass m is hinged at C such that AC = L/3, CB = 2L/3. Ends A and B are supported by springs of spring constant k. The natural frequency of the system is given by <br><img src= \"/wp-content/uploads/GATE/ME/20141/q38.jpg\"/> ",
+      "question": "A rigid uniform rod AB of length L and mass m is hinged at C such that AC = L/3, CB = 2L/3. Ends A and B are supported by springs of spring constant k. The natural frequency of the system is given by <br><img src=\"/question-images/me/2014/me-2014-d5a09d2f76.webp\" /> ",
       "options": [
         "$\\sqrt{\\frac{k}{2m}}$",
         "$\\sqrt{\\frac{k}{m}}$",
@@ -1534,13 +1719,19 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-52555a77b5.webp\" />\n\n$$\\begin{aligned} \\theta &=\\frac{y_{A}}{\\left(\\frac{L}{3}\\right)}=\\frac{y_{B}}{\\left(\\frac{2 L}{3}\\right)} \\\\ I_{0} &=I_{C}+m\\left(\\frac{2 L}{3}-\\frac{L}{2}\\right)^{2} \\\\ I_{C} &=\\frac{m L^{2}}{12} \\\\ \\therefore \\quad I_{0} &=\\frac{m L^{2}}{12}+\\frac{m L^{2}}{36}=\\frac{m L^{2}}{9} \\end{aligned}$$\n\nTaking, $\\Sigma M_{0}=0$\n\n$$\\begin{array}{l} \\Rightarrow\\left(k y_{A} \\times \\frac{L}{3}\\right)+\\left(k y_{B} \\times \\frac{2 L}{3}\\right)+I_{0} \\ddot{\\theta}=0 \\\\ \\Rightarrow k \\theta\\left(\\frac{L}{3}\\right)^{2}+k \\theta\\left(\\frac{2 L}{3}\\right)^{2}+\\frac{m L^{2}}{9} \\ddot{\\theta}=0 \\\\ \\Rightarrow\\left(\\frac{m L^{2}}{9}\\right) \\ddot{\\theta}+\\left(\\frac{5 k L^{2}}{9}\\right) \\theta=0 \\\\ \\Rightarrow \\ddot{\\theta}+\\left(\\frac{5 k}{m}\\right) \\theta=0 \\\\ \\omega_{n}^{2}=\\frac{5 k}{m} \\\\ \\quad \\omega_{n}=\\sqrt{\\frac{5 k}{m}} \\\\ \\end{array}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-52555a77b5.webp\" />\n\n$$\\begin{aligned} \\theta &=\\frac{y_{A}}{\\left(\\frac{L}{3}\\right)}=\\frac{y_{B}}{\\left(\\frac{2 L}{3}\\right)} \\\\ I_{0} &=I_{C}+m\\left(\\frac{2 L}{3}-\\frac{L}{2}\\right)^{2} \\\\ I_{C} &=\\frac{m L^{2}}{12} \\\\ \\therefore \\quad I_{0} &=\\frac{m L^{2}}{12}+\\frac{m L^{2}}{36}=\\frac{m L^{2}}{9} \\end{aligned}$$\n\nTaking, $\\Sigma M_{0}=0$\n\n$$\\begin{array}{l} \\Rightarrow\\left(k y_{A} \\times \\frac{L}{3}\\right)+\\left(k y_{B} \\times \\frac{2 L}{3}\\right)+I_{0} \\ddot{\\theta}=0 \\\\ \\Rightarrow k \\theta\\left(\\frac{L}{3}\\right)^{2}+k \\theta\\left(\\frac{2 L}{3}\\right)^{2}+\\frac{m L^{2}}{9} \\ddot{\\theta}=0 \\\\ \\Rightarrow\\left(\\frac{m L^{2}}{9}\\right) \\ddot{\\theta}+\\left(\\frac{5 k L^{2}}{9}\\right) \\theta=0 \\\\ \\Rightarrow \\ddot{\\theta}+\\left(\\frac{5 k}{m}\\right) \\theta=0 \\\\ \\omega_{n}^{2}=\\frac{5 k}{m} \\\\ \\quad \\omega_{n}=\\sqrt{\\frac{5 k}{m}} \\\\ \\end{array}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-52555a77b5.webp"
+        ]
       }
     },
     "pp:me:2014:q39": {
       "question_uid": "pp:me:2014:q39",
-      "exam_uid": "me:2014:set1:q39",
+      "exam_uid": "me:2014:set1:main:q39",
       "title": "GATE ME 2014 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1573,13 +1764,17 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Bearings, Shafts and keys",
-        "markdown": "$$\\begin{aligned} r &=20 \\mathrm{mm}, \\quad N=2000 \\mathrm{rpm} \\\\ c &=20 \\times 10^{-3}, \\quad \\mu=0.03 \\mathrm{Ns} / \\mathrm{m}^{2} \\\\ p &=\\frac{2000}{1600} \\mathrm{N} / \\mathrm{mm}^{2} \\qquad \\left(p=\\frac{W}{A}\\right)\\\\ &=1.25 \\mathrm{MPa}, S=? \\\\ S &=\\frac{Z N}{60 p}\\left(\\frac{r}{c}\\right)^{2} \\\\ &=\\frac{0.03 \\times 2000}{60 \\times 1.25 \\times 10^{6}}\\left(\\frac{20}{20 \\times 10^{-3}}\\right)^{2} \\\\ &=0.8 \\end{aligned}$$\n\nTherefore, the correct answer is **0.8** (acceptable range: [0.75, 0.85])."
+        "markdown": "$$\\begin{aligned} r &=20 \\mathrm{mm}, \\quad N=2000 \\mathrm{rpm} \\\\ c &=20 \\times 10^{-3}, \\quad \\mu=0.03 \\mathrm{Ns} / \\mathrm{m}^{2} \\\\ p &=\\frac{2000}{1600} \\mathrm{N} / \\mathrm{mm}^{2} \\qquad \\left(p=\\frac{W}{A}\\right)\\\\ &=1.25 \\mathrm{MPa}, S=? \\\\ S &=\\frac{Z N}{60 p}\\left(\\frac{r}{c}\\right)^{2} \\\\ &=\\frac{0.03 \\times 2000}{60 \\times 1.25 \\times 10^{6}}\\left(\\frac{20}{20 \\times 10^{-3}}\\right)^{2} \\\\ &=0.8 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q40": {
       "question_uid": "pp:me:2014:q40",
-      "exam_uid": "me:2014:set1:q40",
+      "exam_uid": "me:2014:set1:main:q40",
       "title": "GATE ME 2014 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1612,13 +1807,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "Given,\n\n$$\\begin{array}{c} l=200 \\mathrm{mm} ; \\quad \\Delta T=250^{\\circ} \\mathrm{C} ; \\quad \\alpha=1 \\times 10^{-5} /^{\\circ} \\mathrm{C} \\\\ E=200 \\mathrm{GPa} ; \\quad \\sigma=? \\\\ \\sigma=\\alpha \\Delta T E=10^{-5} \\times 250 \\times 200 \\times 10^{3} \\\\ =500 \\mathrm{MPa} \\end{array}$$\n\nTherefore, the correct answer is **500** (acceptable range: [499, 501])."
+        "markdown": "Given,\n\n$$\\begin{array}{c} l=200 \\mathrm{mm} ; \\quad \\Delta T=250^{\\circ} \\mathrm{C} ; \\quad \\alpha=1 \\times 10^{-5} /^{\\circ} \\mathrm{C} \\\\ E=200 \\mathrm{GPa} ; \\quad \\sigma=? \\\\ \\sigma=\\alpha \\Delta T E=10^{-5} \\times 250 \\times 200 \\times 10^{3} \\\\ =500 \\mathrm{MPa} \\end{array}$$",
+        "images": []
       }
     },
     "pp:me:2014:q41": {
       "question_uid": "pp:me:2014:q41",
-      "exam_uid": "me:2014:set1:q41",
+      "exam_uid": "me:2014:set1:main:q41",
       "title": "GATE ME 2014 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1651,17 +1850,21 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Pure Substances",
-        "markdown": "From the first law of thermodynamics\n\n$$\\begin{aligned} \\delta q &=d u+p d v \\\\ \\delta q &=\\left(u_{2}-u_{1}\\right)+p\\left(v_{2}-v_{1}\\right) \\\\ \\delta q &=(2967-504)+2 \\times 10^{2} \\\\ &(1.5493-0.001061) \\\\ \\delta q &=2463+309.6478 \\\\ &=2772.6478 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nFor 1.5kg of water\n\n$$\\begin{aligned} Q &=2772.6478 \\times 1.5 \\\\ &=4158.97 \\mathrm{kj} \\end{aligned}$$\n\nAlternatively:\n\n$$\\begin{aligned} Q &=m\\left(h_{2}-h_{1}\\right) \\\\ &=1.5(3277-505) \\\\ &=4158 \\mathrm{kJ} \\end{aligned}$$\n\nTherefore, the correct answer is **4157.5** (acceptable range: [4155, 4160])."
+        "markdown": "From the first law of thermodynamics\n\n$$\\begin{aligned} \\delta q &=d u+p d v \\\\ \\delta q &=\\left(u_{2}-u_{1}\\right)+p\\left(v_{2}-v_{1}\\right) \\\\ \\delta q &=(2967-504)+2 \\times 10^{2} \\\\ &(1.5493-0.001061) \\\\ \\delta q &=2463+309.6478 \\\\ &=2772.6478 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nFor 1.5kg of water\n\n$$\\begin{aligned} Q &=2772.6478 \\times 1.5 \\\\ &=4158.97 \\mathrm{kj} \\end{aligned}$$\n\nAlternatively:\n\n$$\\begin{aligned} Q &=m\\left(h_{2}-h_{1}\\right) \\\\ &=1.5(3277-505) \\\\ &=4158 \\mathrm{kJ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q42": {
       "question_uid": "pp:me:2014:q42",
-      "exam_uid": "me:2014:set1:q42",
+      "exam_uid": "me:2014:set1:main:q42",
       "title": "GATE ME 2014 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
-      "question": "Consider one dimensional steady state heat conduction across a wall (as shown in figure below) of thickness 30 mm and thermal conductivity 15 W/m.K. At x = 0, a constant heat flux, $q''= 1\\times 10^5 W/m^2$  is applied. On the other side of the wall, heat is removed from the wall by convection with a fluid at 25$^{\\circ}$C and heat transfer coefficient of 250 $W/m^2$ K. The temperature  (in $^{\\circ}$C), at x = 0 is _______  <br><img src= \"/wp-content/uploads/GATE/ME/20141/q42.jpg\"/>",
+      "question": "Consider one dimensional steady state heat conduction across a wall (as shown in figure below) of thickness 30 mm and thermal conductivity 15 W/m.K. At x = 0, a constant heat flux, $q''= 1\\times 10^5 W/m^2$  is applied. On the other side of the wall, heat is removed from the wall by convection with a fluid at 25$^{\\circ}$C and heat transfer coefficient of 250 $W/m^2$ K. The temperature  (in $^{\\circ}$C), at x = 0 is _______  <br><img src=\"/question-images/me/2014/me-2014-27ee8f285b.webp\" />",
       "options": [],
       "answer_meta": {
         "type": "NAT",
@@ -1690,13 +1893,19 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
-        "markdown": "Given data:\n\n$$\\begin{aligned} \\delta&=30 \\mathrm{mm}=0.03 \\mathrm{m} ; \\quad k=15 \\mathrm{W} / \\mathrm{mK} \\\\ q^{\\prime \\prime}&=1 \\times 10^{5} \\mathrm{W} / \\mathrm{m}^{2} ; \\quad T_{\\infty}=25^{\\circ} \\mathrm{C} \\\\ h&=250 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-aa22e6e219.webp\" />\n\nHeat transfer due to convection from outside\n\nsurface per unit area:\n\n$$\\begin{aligned} q^{\\prime \\prime} &=\\frac{Q}{A}=h\\left(T_{2}-T_{\\infty}\\right) \\\\ 1 \\times 10^{5} &=250\\left(T_{2}-25\\right) \\\\ \\text{or}\\qquad T_{2} &=425^{\\circ} \\mathrm{C} \\end{aligned}$$\n\nHeat transfer through wall per unit area,\n\n$$\\begin{aligned} q^{\\prime \\prime} &=\\frac{k\\left(T_{1}-T_{2}\\right)}{\\delta} \\\\ 1 \\times 10^{5} &=\\frac{15\\left(T_{1}-425\\right)}{0.03}\\\\ \\text{or }\\qquad T_{1}&=625^{\\circ} \\mathrm{C} \\end{aligned}$$\n\nTherefore, the correct answer is **625** (acceptable range: [620, 630])."
+        "markdown": "Given data:\n\n$$\\begin{aligned} \\delta&=30 \\mathrm{mm}=0.03 \\mathrm{m} ; \\quad k=15 \\mathrm{W} / \\mathrm{mK} \\\\ q^{\\prime \\prime}&=1 \\times 10^{5} \\mathrm{W} / \\mathrm{m}^{2} ; \\quad T_{\\infty}=25^{\\circ} \\mathrm{C} \\\\ h&=250 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-aa22e6e219.webp\" />\n\nHeat transfer due to convection from outside\n\nsurface per unit area:\n\n$$\\begin{aligned} q^{\\prime \\prime} &=\\frac{Q}{A}=h\\left(T_{2}-T_{\\infty}\\right) \\\\ 1 \\times 10^{5} &=250\\left(T_{2}-25\\right) \\\\ \\text{or}\\qquad T_{2} &=425^{\\circ} \\mathrm{C} \\end{aligned}$$\n\nHeat transfer through wall per unit area,\n\n$$\\begin{aligned} q^{\\prime \\prime} &=\\frac{k\\left(T_{1}-T_{2}\\right)}{\\delta} \\\\ 1 \\times 10^{5} &=\\frac{15\\left(T_{1}-425\\right)}{0.03}\\\\ \\text{or }\\qquad T_{1}&=625^{\\circ} \\mathrm{C} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-aa22e6e219.webp"
+        ]
       }
     },
     "pp:me:2014:q43": {
       "question_uid": "pp:me:2014:q43",
-      "exam_uid": "me:2014:set1:q43",
+      "exam_uid": "me:2014:set1:main:q43",
       "title": "GATE ME 2014 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1729,13 +1938,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
-        "markdown": "$$\\begin{aligned} \\text{Radius: }\\quad r&=10 \\mathrm{mm} \\\\ \\therefore \\text{Diameter: }d&=2 r=2 \\times 10=20 \\mathrm{mm}=0.02 \\mathrm{m} \\\\ m &=36 \\mathrm{kg} / \\mathrm{hr}=\\frac{36}{3600}=0.01 \\mathrm{kg} / \\mathrm{s} \\\\ \\mu &=0.001 \\mathrm{kg} / \\mathrm{ms} \\end{aligned}$$\n\nReynolds number: $\\text{Re}=\\frac{\\rho V d}{\\mu}$\n\nFrom continuity equation, $m=\\rho A V$\n\n$$\\begin{aligned} \\text{or }\\quad V&=\\frac{m}{\\rho A}=\\frac{m}{\\frac{\\rho \\pi d^{2}}{4}}=\\frac{4 m}{\\rho \\pi d^{2}} \\\\ \\therefore \\quad \\mathrm{Re}&=\\frac{\\rho d}{\\mu} \\times \\frac{4 \\mathrm{m}}{\\rho \\pi d^{2}}=\\frac{4 \\mathrm{m}}{\\pi \\mu \\mathrm{d}}\\\\ &=\\frac{4 \\times 0.01}{3.14 \\times 0.001 \\times 0.02}=636.94 \\end{aligned}$$\n\nTherefore, the correct answer is **636.5** (acceptable range: [635, 638])."
+        "markdown": "$$\\begin{aligned} \\text{Radius: }\\quad r&=10 \\mathrm{mm} \\\\ \\therefore \\text{Diameter: }d&=2 r=2 \\times 10=20 \\mathrm{mm}=0.02 \\mathrm{m} \\\\ m &=36 \\mathrm{kg} / \\mathrm{hr}=\\frac{36}{3600}=0.01 \\mathrm{kg} / \\mathrm{s} \\\\ \\mu &=0.001 \\mathrm{kg} / \\mathrm{ms} \\end{aligned}$$\n\nReynolds number: $\\text{Re}=\\frac{\\rho V d}{\\mu}$\n\nFrom continuity equation, $m=\\rho A V$\n\n$$\\begin{aligned} \\text{or }\\quad V&=\\frac{m}{\\rho A}=\\frac{m}{\\frac{\\rho \\pi d^{2}}{4}}=\\frac{4 m}{\\rho \\pi d^{2}} \\\\ \\therefore \\quad \\mathrm{Re}&=\\frac{\\rho d}{\\mu} \\times \\frac{4 \\mathrm{m}}{\\rho \\pi d^{2}}=\\frac{4 \\mathrm{m}}{\\pi \\mu \\mathrm{d}}\\\\ &=\\frac{4 \\times 0.01}{3.14 \\times 0.001 \\times 0.02}=636.94 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q44": {
       "question_uid": "pp:me:2014:q44",
-      "exam_uid": "me:2014:set1:q44",
+      "exam_uid": "me:2014:set1:main:q44",
       "title": "GATE ME 2014 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1768,13 +1981,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
-        "markdown": "Given data:\n\n$$\\begin{aligned} d&=10 \\mathrm{cm} \\\\ V&=0.1 \\mathrm{m} / \\mathrm{s} \\\\ \\mathrm{v}&=10^{-5} \\mathrm{m}^{2} / \\mathrm{s} \\end{aligned}$$\n\nReynold's number,\n\n$\\mathrm{Re}=\\frac{V d}{v}=\\frac{0.1 \\times 0.1}{10^{-5}}=1000$\n\nFriction factor\n\n$f=\\frac{64}{\\mathrm{Re}}=\\frac{64}{1000}=0.064$\n\nTherefore, the correct answer is **0.065** (acceptable range: [0.06, 0.07])."
+        "markdown": "Given data:\n\n$$\\begin{aligned} d&=10 \\mathrm{cm} \\\\ V&=0.1 \\mathrm{m} / \\mathrm{s} \\\\ \\mathrm{v}&=10^{-5} \\mathrm{m}^{2} / \\mathrm{s} \\end{aligned}$$\n\nReynold's number,\n\n$\\mathrm{Re}=\\frac{V d}{v}=\\frac{0.1 \\times 0.1}{10^{-5}}=1000$\n\nFriction factor\n\n$f=\\frac{64}{\\mathrm{Re}}=\\frac{64}{1000}=0.064$",
+        "images": []
       }
     },
     "pp:me:2014:q45": {
       "question_uid": "pp:me:2014:q45",
-      "exam_uid": "me:2014:set1:q45",
+      "exam_uid": "me:2014:set1:main:q45",
       "title": "GATE ME 2014 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1807,13 +2024,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
-        "markdown": "Given data:\n\n$$\\begin{aligned} d &=100 \\mathrm{mm}=0.1 \\mathrm{m} \\\\ L &=100 \\mathrm{mm}=0.1 \\mathrm{m} \\\\ u &=10 \\mathrm{m} / \\mathrm{s} \\\\ \\mu &=0.1 \\mathrm{kg} / \\mathrm{ms} \\\\ d y &=2 \\mathrm{mm}=2 \\times 10^{-3} \\mathrm{m} \\\\ \\tau &=\\mu \\frac{\\mathrm{d} \\mathrm{u}}{\\mathrm{d} \\mathrm{y}} \\\\ &=0.1 \\times \\frac{10}{2 \\times 10^{-3}}=500 \\mathrm{N} / \\mathrm{m}^{2} \\\\ \\text{Frictional area }&= \\pi dL=3.14 \\times0.1 \\times 0.1\\\\ &=0.0314 \\mathrm{m}^{2} \\end{aligned}$$\n\nFrictional resistance force,\n\n$$\\begin{aligned} &=\\tau \\times \\pi \\mathrm{d} L \\\\ &=500 \\times 0.0314=15.7 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **15.5** (acceptable range: [15, 16])."
+        "markdown": "Given data:\n\n$$\\begin{aligned} d &=100 \\mathrm{mm}=0.1 \\mathrm{m} \\\\ L &=100 \\mathrm{mm}=0.1 \\mathrm{m} \\\\ u &=10 \\mathrm{m} / \\mathrm{s} \\\\ \\mu &=0.1 \\mathrm{kg} / \\mathrm{ms} \\\\ d y &=2 \\mathrm{mm}=2 \\times 10^{-3} \\mathrm{m} \\\\ \\tau &=\\mu \\frac{\\mathrm{d} \\mathrm{u}}{\\mathrm{d} \\mathrm{y}} \\\\ &=0.1 \\times \\frac{10}{2 \\times 10^{-3}}=500 \\mathrm{N} / \\mathrm{m}^{2} \\\\ \\text{Frictional area }&= \\pi dL=3.14 \\times0.1 \\times 0.1\\\\ &=0.0314 \\mathrm{m}^{2} \\end{aligned}$$\n\nFrictional resistance force,\n\n$$\\begin{aligned} &=\\tau \\times \\pi \\mathrm{d} L \\\\ &=500 \\times 0.0314=15.7 \\mathrm{N} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q46": {
       "question_uid": "pp:me:2014:q46",
-      "exam_uid": "me:2014:set1:q46",
+      "exam_uid": "me:2014:set1:main:q46",
       "title": "GATE ME 2014 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1848,13 +2069,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Transfer in Flow Over Plates and Pipes",
-        "markdown": "$$\\begin{aligned} q^{\\prime \\prime} &=-\\left.k \\frac{\\partial T}{\\partial y}\\right|_{y=0} \\\\ &=h\\left(T_{w}-T_{\\infty}\\right) \\\\ T_{w}-T &=\\left(T_{w}-T_{\\infty}\\right)\\left[a+\\frac{b y}{L}+c\\left(\\frac{y}{L}\\right)^{2}\\right] \\\\ \\frac{\\partial T}{\\partial y} & =\\left(T_{w}-T_{\\infty}\\right)\\left[\\frac{b}{L}+\\frac{2 c}{L^{2}} y\\right] \\\\ -\\left.\\frac{\\partial T}{\\partial y}\\right|_{y=0} &=\\left(T_{w}-T_{\\infty}\\right) \\frac{b}{L} \\\\ \\text{or} \\quad q^{\\prime \\prime}&=k\\left(T_{w}-T_{\\infty}\\right) \\frac{b}{L} \\\\ \\therefore \\quad N u &=\\frac{q^{\\prime \\prime}}{T_{w}-T_{\\infty}} \\frac{L}{k}=b \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} q^{\\prime \\prime} &=-\\left.k \\frac{\\partial T}{\\partial y}\\right|_{y=0} \\\\ &=h\\left(T_{w}-T_{\\infty}\\right) \\\\ T_{w}-T &=\\left(T_{w}-T_{\\infty}\\right)\\left[a+\\frac{b y}{L}+c\\left(\\frac{y}{L}\\right)^{2}\\right] \\\\ \\frac{\\partial T}{\\partial y} & =\\left(T_{w}-T_{\\infty}\\right)\\left[\\frac{b}{L}+\\frac{2 c}{L^{2}} y\\right] \\\\ -\\left.\\frac{\\partial T}{\\partial y}\\right|_{y=0} &=\\left(T_{w}-T_{\\infty}\\right) \\frac{b}{L} \\\\ \\text{or} \\quad q^{\\prime \\prime}&=k\\left(T_{w}-T_{\\infty}\\right) \\frac{b}{L} \\\\ \\therefore \\quad N u &=\\frac{q^{\\prime \\prime}}{T_{w}-T_{\\infty}} \\frac{L}{k}=b \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q47": {
       "question_uid": "pp:me:2014:q47",
-      "exam_uid": "me:2014:set1:q47",
+      "exam_uid": "me:2014:set1:main:q47",
       "title": "GATE ME 2014 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -1887,13 +2112,19 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-932b2d9559.webp\" />\n\nGiven:\n\n$$\\begin{aligned} p_{1}&=0.1 \\mathrm{MPa} ; \\quad T_{1}=308 \\mathrm{K} ; \\quad \\gamma=1.4 \\\\ R&=288.8 \\mathrm{J} / \\mathrm{kgK} ; \\quad r=8 \\\\ T_{s}&=2660 \\mathrm{K} \\\\ &\\begin{aligned} Q_{s}&=m c_{v}\\left(T_{3}-T_{2}\\right) \\\\ c_{v}&=\\frac{R}{\\gamma-1}=\\frac{288.8}{0.4}=722 \\mathrm{J} / \\mathrm{kgK} \\\\ \\frac{T_{2}}{T_{1}}&=\\left(\\frac{V_{1}}{V_{2}}\\right)^{\\gamma-1}=(8)^{0.4}\\\\\n\nT_{2} &=308 \\times 8^{0.4}=707.6 \\mathrm{K} \\\\\n\nQ_{s} &=m c_{v} \\Delta T \\\\\n\n&=1 \\times 722(2660-707.6) \\\\\n\n&=1409.6 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned} \\end{aligned}$$\n\nTherefore, the correct answer is **1410** (acceptable range: [1400, 1420])."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-932b2d9559.webp\" />\n\nGiven:\n\n$$\\begin{aligned} p_{1}&=0.1 \\mathrm{MPa} ; \\quad T_{1}=308 \\mathrm{K} ; \\quad \\gamma=1.4 \\\\ R&=288.8 \\mathrm{J} / \\mathrm{kgK} ; \\quad r=8 \\\\ T_{s}&=2660 \\mathrm{K} \\\\ &\\begin{aligned} Q_{s}&=m c_{v}\\left(T_{3}-T_{2}\\right) \\\\ c_{v}&=\\frac{R}{\\gamma-1}=\\frac{288.8}{0.4}=722 \\mathrm{J} / \\mathrm{kgK} \\\\ \\frac{T_{2}}{T_{1}}&=\\left(\\frac{V_{1}}{V_{2}}\\right)^{\\gamma-1}=(8)^{0.4}\\\\\n\nT_{2} &=308 \\times 8^{0.4}=707.6 \\mathrm{K} \\\\\n\nQ_{s} &=m c_{v} \\Delta T \\\\\n\n&=1 \\times 722(2660-707.6) \\\\\n\n&=1409.6 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned} \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-932b2d9559.webp"
+        ]
       }
     },
     "pp:me:2014:q48": {
       "question_uid": "pp:me:2014:q48",
-      "exam_uid": "me:2014:set1:q48",
+      "exam_uid": "me:2014:set1:main:q48",
       "title": "GATE ME 2014 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1928,17 +2159,23 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Second Law, Carnot Cycle and Entropy",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-0ab76a513e.webp\" />\n\nFor reversible heat engine,\n\n$$\\begin{aligned} (\\Delta S)_{\\text{ Reversible cycle }}&=0\\\\ \\frac{Q_1}{T_1}+\\frac{Q_2}{T_2}-\\frac{Q_3}{T_3}&=0\\\\ \\frac{2}{1000}+\\frac{Q_2}{800}-\\frac{1}{400}&=0\\\\ Q_2&=0.4 kJ\\\\ \\text{From heat balance, }\\\\ Q_1+Q_2&=W+Q_3\\\\ 2+0.4&=W+1\\\\ W&=1.4 kJ \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-0ab76a513e.webp\" />\n\nFor reversible heat engine,\n\n$$\\begin{aligned} (\\Delta S)_{\\text{ Reversible cycle }}&=0\\\\ \\frac{Q_1}{T_1}+\\frac{Q_2}{T_2}-\\frac{Q_3}{T_3}&=0\\\\ \\frac{2}{1000}+\\frac{Q_2}{800}-\\frac{1}{400}&=0\\\\ Q_2&=0.4 kJ\\\\ \\text{From heat balance, }\\\\ Q_1+Q_2&=W+Q_3\\\\ 2+0.4&=W+1\\\\ W&=1.4 kJ \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-0ab76a513e.webp"
+        ]
       }
     },
     "pp:me:2014:q49": {
       "question_uid": "pp:me:2014:q49",
-      "exam_uid": "me:2014:set1:q49",
+      "exam_uid": "me:2014:set1:main:q49",
       "title": "GATE ME 2014 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
-      "question": "An ideal reheat Rankine cycle operates between the pressure limits of 10 kPa and 8 MPa, with reheat being done at 4 MPa. The temperature of steam at the inlets of both turbines is 500$^{\\circ}$C and the enthalpy of steam is 3185 kJ/kg at the exit of the high pressure turbine and 2247 kJ/kg at the exit of low pressure turbine. The enthalpy of water at the exit from the pump is 191 kJ/kg. Use the following table for relevant data.  <br><img src= \"/wp-content/uploads/GATE/ME/20141/q49.jpg\"/><br> Disregarding the pump work, the cycle efficiency (in percentage) is __________",
+      "question": "An ideal reheat Rankine cycle operates between the pressure limits of 10 kPa and 8 MPa, with reheat being done at 4 MPa. The temperature of steam at the inlets of both turbines is 500$^{\\circ}$C and the enthalpy of steam is 3185 kJ/kg at the exit of the high pressure turbine and 2247 kJ/kg at the exit of low pressure turbine. The enthalpy of water at the exit from the pump is 191 kJ/kg. Use the following table for relevant data.  <br><img src=\"/question-images/me/2014/me-2014-4132c1ebb3.webp\" /><br> Disregarding the pump work, the cycle efficiency (in percentage) is __________",
       "options": [],
       "answer_meta": {
         "type": "NAT",
@@ -1967,13 +2204,19 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "<img src=\"/question-images/me/2014/me-2014-931023a8fd.webp\" />\n\nGiven\n\n$$\\begin{aligned} p_{2} &=10 \\mathrm{kPa} ; \\quad p_{1}=8 \\mathrm{MPa} \\\\ p_{3} &=4 \\mathrm{MPa} ; \\quad h_{2}=3185 \\mathrm{kJ} / \\mathrm{kg} \\\\ h_{4} &=2247 \\mathrm{kJ} / \\mathrm{kg} ; \\quad h_{1}=3399 \\mathrm{kJ} / \\mathrm{kg} \\\\ h_{3} &=3446 \\mathrm{kJ} / \\mathrm{kg} ; \\quad h_{6}=191 \\mathrm{kJ} / \\mathrm{kg} \\\\ w_{\\mathrm{T}} &=\\left(h_{1}-h_{2}\\right)+\\left(h_{3}-h_{4}\\right) \\\\ q_{s} &=\\left(h_{1}-h_{6}\\right)+\\left(h_{3}-h_{2}\\right) \\\\ \\therefore \\quad w_{T} &=(3399-3185)+(3446-2247) \\\\ &=1413 \\mathrm{kJ} / \\mathrm{kg} \\\\ q_{\\mathrm{s}} &=(3399-191)+(3446-3185) \\\\ &=3469 \\mathrm{kJ} / \\mathrm{kg} \\\\ \\eta &=\\frac{w_{\\mathrm{T}}}{q_{\\mathrm{s}}}=\\frac{1413}{3469}=0.4073 \\\\ &=40.73 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **41** (acceptable range: [40, 42])."
+        "markdown": "<img src=\"/question-images/me/2014/me-2014-931023a8fd.webp\" />\n\nGiven\n\n$$\\begin{aligned} p_{2} &=10 \\mathrm{kPa} ; \\quad p_{1}=8 \\mathrm{MPa} \\\\ p_{3} &=4 \\mathrm{MPa} ; \\quad h_{2}=3185 \\mathrm{kJ} / \\mathrm{kg} \\\\ h_{4} &=2247 \\mathrm{kJ} / \\mathrm{kg} ; \\quad h_{1}=3399 \\mathrm{kJ} / \\mathrm{kg} \\\\ h_{3} &=3446 \\mathrm{kJ} / \\mathrm{kg} ; \\quad h_{6}=191 \\mathrm{kJ} / \\mathrm{kg} \\\\ w_{\\mathrm{T}} &=\\left(h_{1}-h_{2}\\right)+\\left(h_{3}-h_{4}\\right) \\\\ q_{s} &=\\left(h_{1}-h_{6}\\right)+\\left(h_{3}-h_{2}\\right) \\\\ \\therefore \\quad w_{T} &=(3399-3185)+(3446-2247) \\\\ &=1413 \\mathrm{kJ} / \\mathrm{kg} \\\\ q_{\\mathrm{s}} &=(3399-191)+(3446-3185) \\\\ &=3469 \\mathrm{kJ} / \\mathrm{kg} \\\\ \\eta &=\\frac{w_{\\mathrm{T}}}{q_{\\mathrm{s}}}=\\frac{1413}{3469}=0.4073 \\\\ &=40.73 \\% \\end{aligned}$$",
+        "images": [
+          "/question-images/me/2014/me-2014-931023a8fd.webp"
+        ]
       }
     },
     "pp:me:2014:q50": {
       "question_uid": "pp:me:2014:q50",
-      "exam_uid": "me:2014:set1:q50",
+      "exam_uid": "me:2014:set1:main:q50",
       "title": "GATE ME 2014 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2008,13 +2251,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$\\lambda=\\frac{5}{8}$\n\n$\\mu=\\frac{60}{40} \\cdot \\frac{3}{2}$\n\nProbability of idleness $=1-\\frac{\\lambda}{\\mu}$\n\n$=1-\\frac{5}{8} \\times \\frac{2}{3}=\\frac{7}{12}$\n\nIdle time (in hrs) per shift $=\\frac{7}{12} \\times 8$\n\n$=\\frac{14}{3}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$\\lambda=\\frac{5}{8}$\n\n$\\mu=\\frac{60}{40} \\cdot \\frac{3}{2}$\n\nProbability of idleness $=1-\\frac{\\lambda}{\\mu}$\n\n$=1-\\frac{5}{8} \\times \\frac{2}{3}=\\frac{7}{12}$\n\nIdle time (in hrs) per shift $=\\frac{7}{12} \\times 8$\n\n$=\\frac{14}{3}$",
+        "images": []
       }
     },
     "pp:me:2014:q51": {
       "question_uid": "pp:me:2014:q51",
-      "exam_uid": "me:2014:set1:q51",
+      "exam_uid": "me:2014:set1:main:q51",
       "title": "GATE ME 2014 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -2047,13 +2294,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
-        "markdown": "$$\\begin{aligned} L(t)&= L_{0}\\left(1+t^{2}\\right) \\\\ \\Rightarrow d L&= L_{0} \\times 2 t d t \\\\ \\text{As }\\quad d\\epsilon _{T}&=\\frac{d L}{L} \\\\ d \\varepsilon_{T}&=\\frac{L_{0} 2 t d t}{L_{0}\\left(1+t^{2}\\right)} \\\\ \\frac{d \\epsilon_{T}}{d t} &=\\frac{2 t}{1+t^{2}} \\\\ \\text{at}\\qquad t &=1 \\mathrm{min} \\\\ \\frac{d \\epsilon_{T}}{d t}&=\\frac{2 \\times 1}{1+t^{2}}=1 \\; {min} ^{-1} \\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.9, 1.1])."
+        "markdown": "$$\\begin{aligned} L(t)&= L_{0}\\left(1+t^{2}\\right) \\\\ \\Rightarrow d L&= L_{0} \\times 2 t d t \\\\ \\text{As }\\quad d\\epsilon _{T}&=\\frac{d L}{L} \\\\ d \\varepsilon_{T}&=\\frac{L_{0} 2 t d t}{L_{0}\\left(1+t^{2}\\right)} \\\\ \\frac{d \\epsilon_{T}}{d t} &=\\frac{2 t}{1+t^{2}} \\\\ \\text{at}\\qquad t &=1 \\mathrm{min} \\\\ \\frac{d \\epsilon_{T}}{d t}&=\\frac{2 \\times 1}{1+t^{2}}=1 \\; {min} ^{-1} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q52": {
       "question_uid": "pp:me:2014:q52",
-      "exam_uid": "me:2014:set1:q52",
+      "exam_uid": "me:2014:set1:main:q52",
       "title": "GATE ME 2014 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -2086,17 +2337,21 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "$$\\begin{aligned} \\gamma &=\\cot \\phi+\\tan (\\phi-\\alpha) \\\\ \\text { Given, } \\alpha&=0 \\\\ &=0.2 \\mathrm{mm} \\\\ t_{c} &=0.5 \\mathrm{mm} \\\\ r &=\\frac{t}{t_{c}}=\\frac{0.2}{0.5}=0.4 \\\\ \\tan \\phi &=\\frac{r \\cos \\alpha}{1-r \\sin \\alpha}=r \\\\ \\therefore \\gamma(\\text { shear strain }) &=\\cot \\phi+\\tan (\\phi-\\alpha) \\\\ &=\\frac{1+\\tan ^{2} \\phi}{\\tan \\phi}=\\frac{1+0.4^{2}}{0.4} \\\\ &=\\frac{1.16}{0.4}=2.9 \\end{aligned}$$\n\nTherefore, the correct answer is **2.9** (acceptable range: [2.8, 3])."
+        "markdown": "$$\\begin{aligned} \\gamma &=\\cot \\phi+\\tan (\\phi-\\alpha) \\\\ \\text { Given, } \\alpha&=0 \\\\ &=0.2 \\mathrm{mm} \\\\ t_{c} &=0.5 \\mathrm{mm} \\\\ r &=\\frac{t}{t_{c}}=\\frac{0.2}{0.5}=0.4 \\\\ \\tan \\phi &=\\frac{r \\cos \\alpha}{1-r \\sin \\alpha}=r \\\\ \\therefore \\gamma(\\text { shear strain }) &=\\cot \\phi+\\tan (\\phi-\\alpha) \\\\ &=\\frac{1+\\tan ^{2} \\phi}{\\tan \\phi}=\\frac{1+0.4^{2}}{0.4} \\\\ &=\\frac{1.16}{0.4}=2.9 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q53": {
       "question_uid": "pp:me:2014:q53",
-      "exam_uid": "me:2014:set1:q53",
+      "exam_uid": "me:2014:set1:main:q53",
       "title": "GATE ME 2014 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
-      "question": "For the given assembly: 25 H7/g8, match Group A with Group B <br><img src= \"/wp-content/uploads/GATE/ME/20141/q53.jpg\"/>",
+      "question": "For the given assembly: 25 H7/g8, match Group A with Group B <br><img src=\"/question-images/me/2014/me-2014-cd579dced1.webp\" />",
       "options": [
         "P-I, Q-III, R-IV, S-II",
         "P-I, Q-IV, R-III, S-II",
@@ -2126,14 +2381,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Manufacturing Engineering** (specifically *Metrology and Inspection*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Metrology and Inspection**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *P-II,Q-IV, R-III, S-I*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (P-II,Q-IV, R-III, S-I)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q54": {
       "question_uid": "pp:me:2014:q54",
-      "exam_uid": "me:2014:set1:q54",
+      "exam_uid": "me:2014:set1:main:q54",
       "title": "GATE ME 2014 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -2166,13 +2424,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Given,n=0.2\n\n$T_{c t}=1.5 \\text { minute }$\n\nTool life for maximum production rate,\n\n$$\\begin{aligned} &=\\left(\\frac{1}{n}-1\\right) T_{c t} \\\\ \\therefore \\text { Tool life } &=\\left(\\frac{1}{0.2}-1\\right) \\times 1.5 \\\\ &=4 \\times 1.5=6 \\text { minutes } \\end{aligned}$$\n\nTherefore, the correct answer is **6** (acceptable range: [5.9, 6.1])."
+        "markdown": "Given,n=0.2\n\n$T_{c t}=1.5 \\text { minute }$\n\nTool life for maximum production rate,\n\n$$\\begin{aligned} &=\\left(\\frac{1}{n}-1\\right) T_{c t} \\\\ \\therefore \\text { Tool life } &=\\left(\\frac{1}{0.2}-1\\right) \\times 1.5 \\\\ &=4 \\times 1.5=6 \\text { minutes } \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q55": {
       "question_uid": "pp:me:2014:q55",
-      "exam_uid": "me:2014:set1:q55",
+      "exam_uid": "me:2014:set1:main:q55",
       "title": "GATE ME 2014 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -2205,13 +2467,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
-        "markdown": "$$\\begin{aligned} \\text { Volume of core } &=\\frac{\\pi}{4} D^{2} H=0.785 \\times 0.1^{2} \\times 0.1 \\\\ &=7.85 \\times 10^{-4} \\mathrm{m}^{3} \\\\ \\text{Net buoyancy force} &=\\left(\\rho_{\\mathrm{A} 1}-\\rho_{\\text {core }}\\right) V_{\\text {core }} g \\\\ &=1000 \\times 9.81 \\times 7.85 \\times 10^{-4} \\\\ &=7.7 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **7.5** (acceptable range: [7, 8])."
+        "markdown": "$$\\begin{aligned} \\text { Volume of core } &=\\frac{\\pi}{4} D^{2} H=0.785 \\times 0.1^{2} \\times 0.1 \\\\ &=7.85 \\times 10^{-4} \\mathrm{m}^{3} \\\\ \\text{Net buoyancy force} &=\\left(\\rho_{\\mathrm{A} 1}-\\rho_{\\text {core }}\\right) V_{\\text {core }} g \\\\ &=1000 \\times 9.81 \\times 7.85 \\times 10^{-4} \\\\ &=7.7 \\mathrm{N} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2014:q56": {
       "question_uid": "pp:me:2014:q56",
-      "exam_uid": "me:2014:set1:q56",
-      "title": "GATE ME 2014 | Set 1 | Question: 56",
+      "exam_uid": "me:2014:set1:ga:q1",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2233,26 +2499,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *was allowed to*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (was allowed to)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q57": {
       "question_uid": "pp:me:2014:q57",
-      "exam_uid": "me:2014:set1:q57",
-      "title": "GATE ME 2014 | Set 1 | Question: 57",
+      "exam_uid": "me:2014:set1:ga:q2",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2274,26 +2542,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Some entrepreneurs are doctors*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Some entrepreneurs are doctors)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q58": {
       "question_uid": "pp:me:2014:q58",
-      "exam_uid": "me:2014:set1:q58",
-      "title": "GATE ME 2014 | Set 1 | Question: 58",
+      "exam_uid": "me:2014:set1:ga:q3",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2315,26 +2585,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *dispel*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (dispel)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q59": {
       "question_uid": "pp:me:2014:q59",
-      "exam_uid": "me:2014:set1:q59",
-      "title": "GATE ME 2014 | Set 1 | Question: 59",
+      "exam_uid": "me:2014:set1:ga:q4",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2356,26 +2628,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *K*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (K)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q60": {
       "question_uid": "pp:me:2014:q60",
-      "exam_uid": "me:2014:set1:q60",
-      "title": "GATE ME 2014 | Set 1 | Question: 60",
+      "exam_uid": "me:2014:set1:ga:q5",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 1,
@@ -2395,26 +2669,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **725**.\n\n### Conclusion\n\nTherefore, the correct answer is **725**."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q61": {
       "question_uid": "pp:me:2014:q61",
-      "exam_uid": "me:2014:set1:q61",
-      "title": "GATE ME 2014 | Set 1 | Question: 61",
+      "exam_uid": "me:2014:set1:ga:q6",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2436,26 +2712,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *N,V,B,D*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (N,V,B,D)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q62": {
       "question_uid": "pp:me:2014:q62",
-      "exam_uid": "me:2014:set1:q62",
-      "title": "GATE ME 2014 | Set 1 | Question: 62",
+      "exam_uid": "me:2014:set1:ga:q7",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2477,26 +2755,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *a resident female with annual income Rs 9 lakh*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (a resident female with annual income Rs 9 lakh)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q63": {
       "question_uid": "pp:me:2014:q63",
-      "exam_uid": "me:2014:set1:q63",
-      "title": "GATE ME 2014 | Set 1 | Question: 63",
+      "exam_uid": "me:2014:set1:ga:q8",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "NAT",
       "marks": 2,
@@ -2516,26 +2796,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **560**.\n\n### Conclusion\n\nTherefore, the correct answer is **560**."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q64": {
       "question_uid": "pp:me:2014:q64",
-      "exam_uid": "me:2014:set1:q64",
-      "title": "GATE ME 2014 | Set 1 | Question: 64",
+      "exam_uid": "me:2014:set1:ga:q9",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2557,26 +2839,28 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *2006*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (2006)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     },
     "pp:me:2014:q65": {
       "question_uid": "pp:me:2014:q65",
-      "exam_uid": "me:2014:set1:q65",
-      "title": "GATE ME 2014 | Set 1 | Question: 65",
+      "exam_uid": "me:2014:set1:ga:q10",
+      "title": "GATE ME 2014 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2014-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2598,20 +2882,19 @@
       "yearSetIdentity": "me:2014:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *01-Mar*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (01-Mar)."
+        "concept": "ME Core Engineering",
+        "markdown": null
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.258Z",
+  "generatedAt": "2026-10-17T21:30:25.026Z",
   "shardKey": "ec-2015-s3",
   "yearSetKey": "ec-2015-s3",
   "yearSetIdentity": "ec:2015:set-3",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ec:2015:q1-s3": {
       "question_uid": "pp:ec:2015:q1-s3",
-      "exam_uid": "ec:2015:set3:q1",
+      "exam_uid": "ec:2015:set3:main:q1",
       "title": "GATE EC 2015 | Set 3 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Long Method:\n\n$$\\begin{aligned} A &=\\left[\\begin{array}{cc} 1 & \\tan x \\\\ -\\tan x & 1 \\end{array}\\right] \\\\ A^{T} &=\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\\\ \\operatorname{ad} A &=\\left[\\begin{array}{cc} 1 & \\tan x \\\\ -\\tan x & 1 \\end{array}\\right] \\\\ A^{-1} &=\\frac{1}{|A|}[a d j(A)]^{T} \\\\ &=\\frac{1}{1+\\tan ^{2} x}\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\\\ &=\\frac{1}{\\sec ^{2} x}\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\end{aligned}$$\n\nHere,\n\n$$\\begin{aligned} A^{\\top} A^{-1} &=\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\frac{1}{\\sec ^{2} x}\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\\\ &=\\frac{1}{\\sec ^{2} x}\\left[\\begin{array}{cc} 1-\\tan ^{2} x & -2 \\tan x \\\\ 2 \\tan x & 1-\\tan ^{2} x \\end{array}\\right] \\\\ A^{\\top} A^{-1} &=\\left[\\begin{array}{cc} \\frac{1-\\tan ^{2} x}{\\sec ^{2} x} & \\frac{-2 \\tan x}{\\sec ^{2} x} \\\\ \\frac{2 \\tan x}{\\sec ^{2} x} & \\frac{1-\\tan ^{2} x}{\\sec ^{2} x} \\end{array}\\right] \\\\ \\left|A^{T} A^{-1}\\right| &=\\left(\\frac{1-\\tan ^{2} x}{\\sec ^{2} x}\\right)^{2}+\\left(\\frac{2 \\tan x}{\\sec ^{2} x}\\right)^{2} \\\\ &=\\frac{1+\\tan ^{4} x-2 \\tan ^{2} x+4 \\tan ^{2} x}{\\sec ^{4} x}\\\\ &=1 \\end{aligned}$$\n\nOr\n\nShort Method:\n\n$$\\begin{aligned} \\text{since, }|A B|&=|A||B| \\\\ \\left|A^{T} A^{-1}\\right| &=\\left|A^{T}\\right|\\left|A^{-1}\\right| \\\\ &=|A| \\times \\frac{1}{|A|}=1 \\\\ &\\left(\\text { Note }:\\left|A^{T}\\right|=|A| \\text { and }\\left|A^{-1}\\right|=\\frac{1}{|A|} \\right) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Long Method:\n\n$$\\begin{aligned} A &=\\left[\\begin{array}{cc} 1 & \\tan x \\\\ -\\tan x & 1 \\end{array}\\right] \\\\ A^{T} &=\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\\\ \\operatorname{ad} A &=\\left[\\begin{array}{cc} 1 & \\tan x \\\\ -\\tan x & 1 \\end{array}\\right] \\\\ A^{-1} &=\\frac{1}{|A|}[a d j(A)]^{T} \\\\ &=\\frac{1}{1+\\tan ^{2} x}\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\\\ &=\\frac{1}{\\sec ^{2} x}\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\end{aligned}$$\n\nHere,\n\n$$\\begin{aligned} A^{\\top} A^{-1} &=\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\frac{1}{\\sec ^{2} x}\\left[\\begin{array}{cc} 1 & -\\tan x \\\\ \\tan x & 1 \\end{array}\\right] \\\\ &=\\frac{1}{\\sec ^{2} x}\\left[\\begin{array}{cc} 1-\\tan ^{2} x & -2 \\tan x \\\\ 2 \\tan x & 1-\\tan ^{2} x \\end{array}\\right] \\\\ A^{\\top} A^{-1} &=\\left[\\begin{array}{cc} \\frac{1-\\tan ^{2} x}{\\sec ^{2} x} & \\frac{-2 \\tan x}{\\sec ^{2} x} \\\\ \\frac{2 \\tan x}{\\sec ^{2} x} & \\frac{1-\\tan ^{2} x}{\\sec ^{2} x} \\end{array}\\right] \\\\ \\left|A^{T} A^{-1}\\right| &=\\left(\\frac{1-\\tan ^{2} x}{\\sec ^{2} x}\\right)^{2}+\\left(\\frac{2 \\tan x}{\\sec ^{2} x}\\right)^{2} \\\\ &=\\frac{1+\\tan ^{4} x-2 \\tan ^{2} x+4 \\tan ^{2} x}{\\sec ^{4} x}\\\\ &=1 \\end{aligned}$$\n\nOr\n\nShort Method:\n\n$$\\begin{aligned} \\text{since, }|A B|&=|A||B| \\\\ \\left|A^{T} A^{-1}\\right| &=\\left|A^{T}\\right|\\left|A^{-1}\\right| \\\\ &=|A| \\times \\frac{1}{|A|}=1 \\\\ &\\left(\\text { Note }:\\left|A^{T}\\right|=|A| \\text { and }\\left|A^{-1}\\right|=\\frac{1}{|A|} \\right) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q2-s3": {
       "question_uid": "pp:ec:2015:q2-s3",
-      "exam_uid": "ec:2015:set3:q2",
+      "exam_uid": "ec:2015:set3:main:q2",
       "title": "GATE EC 2015 | Set 3 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Partial derivative w.r.t.\n\n$\\frac{\\partial}{\\partial y}\\left(x^{2}+y^{2}\\right)=2 y$\n\nPartial derivative w.r.t. x\n\n$\\frac{\\partial}{\\partial x}(6 y+4 x)=4$\n\nFrom given condition\n\n$$\\begin{aligned} 2 y&=4 \\\\ \\Rightarrow y\\quad &=2 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Partial derivative w.r.t.\n\n$\\frac{\\partial}{\\partial y}\\left(x^{2}+y^{2}\\right)=2 y$\n\nPartial derivative w.r.t. x\n\n$\\frac{\\partial}{\\partial x}(6 y+4 x)=4$\n\nFrom given condition\n\n$$\\begin{aligned} 2 y&=4 \\\\ \\Rightarrow y\\quad &=2 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q3-s3": {
       "question_uid": "pp:ec:2015:q3-s3",
-      "exam_uid": "ec:2015:set3:q3",
+      "exam_uid": "ec:2015:set3:main:q3",
       "title": "GATE EC 2015 | Set 3 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "complex-analysis",
+          "subtopicLabel": "Complex Analysis"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-math",
+          "complex-analysis"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
-        "markdown": "By Cauchy integral formula\n\n$$\\begin{array}{l} \\oint \\frac{f(z)}{\\left(z-z_{0}\\right)^{n+1} d z}=\\frac{2 \\pi i f^{*}\\left(z_{0}\\right)}{n !} \\\\ \\oint \\frac{d z}{\\left(z-z_{0}\\right)^{n+1}}=\\frac{2 \\pi i}{n !} \\cdot 0=0 \\end{array}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "By Cauchy integral formula\n\n$$\\begin{array}{l} \\oint \\frac{f(z)}{\\left(z-z_{0}\\right)^{n+1} d z}=\\frac{2 \\pi i f^{*}\\left(z_{0}\\right)}{n !} \\\\ \\oint \\frac{d z}{\\left(z-z_{0}\\right)^{n+1}}=\\frac{2 \\pi i}{n !} \\cdot 0=0 \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q4-s3": {
       "question_uid": "pp:ec:2015:q4-s3",
-      "exam_uid": "ec:2015:set3:q4",
+      "exam_uid": "ec:2015:set3:main:q4",
       "title": "GATE EC 2015 | Set 3 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -152,25 +170,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transforms-frequency-response-and-correlation",
+          "subtopicLabel": "Fourier Transforms, Frequency Response and Correlation"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-signals-and-systems",
+          "fourier-transforms-frequency-response-and-correlation"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "$$\\begin{aligned} g(t) &=e^{-t} \\sin (2 \\pi t) u(t) \\\\ \\text { Area } &=\\int_{-\\infty}^{\\infty} g(t) d t \\\\ &=\\int_{-\\infty}^{\\infty} \\sin (2 \\pi t) u(t) e^{-t} d t=\\left.G(s)\\right|_{s=0} \\\\ G(s) &=\\frac{2 \\pi}{(s+1)^{2}+4 \\pi^{2}} \\\\ \\text { Area } &=\\left.\\frac{2 \\pi}{(s+1)^{2}+4 \\pi^{2}}\\right|_{S=0}=0.155 \\end{aligned}$$\n\nTherefore, the correct answer is **0.15** (acceptable range: [0.14, 0.16])."
+        "markdown": "$$\\begin{aligned} g(t) &=e^{-t} \\sin (2 \\pi t) u(t) \\\\ \\text { Area } &=\\int_{-\\infty}^{\\infty} g(t) d t \\\\ &=\\int_{-\\infty}^{\\infty} \\sin (2 \\pi t) u(t) e^{-t} d t=\\left.G(s)\\right|_{s=0} \\\\ G(s) &=\\frac{2 \\pi}{(s+1)^{2}+4 \\pi^{2}} \\\\ \\text { Area } &=\\left.\\frac{2 \\pi}{(s+1)^{2}+4 \\pi^{2}}\\right|_{S=0}=0.155 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q5-s3": {
       "question_uid": "pp:ec:2015:q5-s3",
-      "exam_uid": "ec:2015:set3:q5",
+      "exam_uid": "ec:2015:set3:main:q5",
       "title": "GATE EC 2015 | Set 3 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -190,25 +213,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "dtfs-dtft-and-dft",
+          "subtopicLabel": "DTFS, DTFT and DFT"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-signals-and-systems",
+          "dtfs-dtft-and-dft"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "$$\\begin{aligned} \\sum_{n=0}^{\\infty}\\left(\\frac{1}{2}\\right)^{n} &=\\sum_{n=-\\infty}^{\\infty} n\\left(\\frac{1}{2}\\right)^{n} u(n) \\\\ &=Z \\cdot T\\left[n\\left(\\frac{1}{2}\\right)^{n} u(n)\\right]_{z=1} \\\\ =& \\frac{\\frac{1}{2} Z^{-1}}{\\left(1-\\frac{1}{2} z^{-1}\\right)^{2}}=\\left.\\frac{\\frac{Z}{2}}{\\left(z-\\frac{1}{2}\\right)^{2}}\\right|_{z=1} \\\\ =& \\frac{1 / 2}{1 / 4}=2 \\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+        "markdown": "$$\\begin{aligned} \\sum_{n=0}^{\\infty}\\left(\\frac{1}{2}\\right)^{n} &=\\sum_{n=-\\infty}^{\\infty} n\\left(\\frac{1}{2}\\right)^{n} u(n) \\\\ &=Z \\cdot T\\left[n\\left(\\frac{1}{2}\\right)^{n} u(n)\\right]_{z=1} \\\\ =& \\frac{\\frac{1}{2} Z^{-1}}{\\left(1-\\frac{1}{2} z^{-1}\\right)^{2}}=\\left.\\frac{\\frac{Z}{2}}{\\left(z-\\frac{1}{2}\\right)^{2}}\\right|_{z=1} \\\\ =& \\frac{1 / 2}{1 / 4}=2 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q6-s3": {
       "question_uid": "pp:ec:2015:q6-s3",
-      "exam_uid": "ec:2015:set3:q6",
+      "exam_uid": "ec:2015:set3:main:q6",
       "title": "GATE EC 2015 | Set 3 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -228,25 +256,32 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-network-theory",
+          "network-theorems"
         ]
       },
       "detailed_solution": {
         "concept": "Network Theory - Network Theorems",
-        "markdown": "$$\\begin{aligned} V_{Th}&=V_{6\\;\\omega}\\\\ \\frac{V_{A}-12}{3}+\\frac{V_{A}}{6} &=V_{6 \\Omega} \\\\ V_{A}\\left[\\frac{1}{3}+\\frac{1}{6}\\right] &=1+4 \\\\ V_{A} \\frac{3}{6} &=5 \\\\ V_{T h} &=V_{6 \\Omega}=V_{A}=10 \\mathrm{V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-26668a2736.webp\" />\n\nTherefore, the correct answer is **10**."
+        "markdown": "$$\\begin{aligned} V_{Th}&=V_{6\\;\\omega}\\\\ \\frac{V_{A}-12}{3}+\\frac{V_{A}}{6} &=V_{6 \\Omega} \\\\ V_{A}\\left[\\frac{1}{3}+\\frac{1}{6}\\right] &=1+4 \\\\ V_{A} \\frac{3}{6} &=5 \\\\ V_{T h} &=V_{6 \\Omega}=V_{A}=10 \\mathrm{V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-26668a2736.webp\" />",
+        "images": [
+          "/question-images/ec/2015/ec-2015-26668a2736.webp"
+        ]
       }
     },
     "pp:ec:2015:q7-s3": {
       "question_uid": "pp:ec:2015:q7-s3",
-      "exam_uid": "ec:2015:set3:q7",
+      "exam_uid": "ec:2015:set3:main:q7",
       "title": "GATE EC 2015 | Set 3 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -266,25 +301,32 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-network-theory",
+          "basics-of-network-analysis"
         ]
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-f2946e0482.webp\" />\n\n$$\\begin{aligned} \\frac{V_{x}}{20}+\\frac{V_{x}-V_{y}}{10}+0.5 V_{x}&=5 \\mathrm{A} \\\\ V_{x}\\left[\\frac{1}{20}+\\frac{1}{10}+0.5\\right]&=5+\\frac{V_{y}}{10} \\\\ 13 \\mathrm{V}_{x}&=100+2 \\mathrm{V}_{y} \\quad\\ldots(i)\\\\ \\text { and also, } V_{y}&=0.25 \\mathrm{V}_{x} \\quad\\dots(ii) \\end{aligned}$$\n\nSolving equations (i) and (ii), we have\n\n$$\\begin{aligned} 52 V_{y} &=100+2 V_{y} \\\\ 50 V_{y} &=100 \\Rightarrow V_{y}=2 \\mathrm{V} \\\\ V_{x} &=4 V_{y}=8 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **8** (acceptable range: [7.95, 8.05])."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-f2946e0482.webp\" />\n\n$$\\begin{aligned} \\frac{V_{x}}{20}+\\frac{V_{x}-V_{y}}{10}+0.5 V_{x}&=5 \\mathrm{A} \\\\ V_{x}\\left[\\frac{1}{20}+\\frac{1}{10}+0.5\\right]&=5+\\frac{V_{y}}{10} \\\\ 13 \\mathrm{V}_{x}&=100+2 \\mathrm{V}_{y} \\quad\\ldots(i)\\\\ \\text { and also, } V_{y}&=0.25 \\mathrm{V}_{x} \\quad\\dots(ii) \\end{aligned}$$\n\nSolving equations (i) and (ii), we have\n\n$$\\begin{aligned} 52 V_{y} &=100+2 V_{y} \\\\ 50 V_{y} &=100 \\Rightarrow V_{y}=2 \\mathrm{V} \\\\ V_{x} &=4 V_{y}=8 \\mathrm{V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-f2946e0482.webp"
+        ]
       }
     },
     "pp:ec:2015:q8-s3": {
       "question_uid": "pp:ec:2015:q8-s3",
-      "exam_uid": "ec:2015:set3:q8",
+      "exam_uid": "ec:2015:set3:main:q8",
       "title": "GATE EC 2015 | Set 3 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -304,25 +346,32 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "sinusoidal-steady-state-analysis",
+          "subtopicLabel": "Sinusoidal Steady State Analysis"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-network-theory",
+          "sinusoidal-steady-state-analysis"
         ]
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "Circuit contains balanced Wheat-stone bridge. Also at high frequencies capacitor can be considered as short circuits.\n\nRedrawing the circuit\n\n<img src=\"/question-images/ec/2015/ec-2015-e3a4aa6db9.webp\" />\n\n$$\\begin{aligned} V_{0} &=1 \\sin \\omega t \\times 1 k \\Omega=0.5 \\sin \\omega t \\\\ \\text { Peak output } &=0.5 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.49, 0.51])."
+        "markdown": "Circuit contains balanced Wheat-stone bridge. Also at high frequencies capacitor can be considered as short circuits.\n\nRedrawing the circuit\n\n<img src=\"/question-images/ec/2015/ec-2015-e3a4aa6db9.webp\" />\n\n$$\\begin{aligned} V_{0} &=1 \\sin \\omega t \\times 1 k \\Omega=0.5 \\sin \\omega t \\\\ \\text { Peak output } &=0.5 \\mathrm{V} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-e3a4aa6db9.webp"
+        ]
       }
     },
     "pp:ec:2015:q9-s3": {
       "question_uid": "pp:ec:2015:q9-s3",
-      "exam_uid": "ec:2015:set3:q9",
+      "exam_uid": "ec:2015:set3:main:q9",
       "title": "GATE EC 2015 | Set 3 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -344,25 +393,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "ic-fabrication",
+          "subtopicLabel": "IC Fabrication"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-electronic-devices",
+          "ic-fabrication"
         ]
       },
       "detailed_solution": {
         "concept": "Electronic Devices - IC Fabrication",
-        "markdown": "Dry oxidation is preferred for gate oxides.\n\nTherefore, the correct answer is **D**."
+        "markdown": "Dry oxidation is preferred for gate oxides.",
+        "images": []
       }
     },
     "pp:ec:2015:q10-s3": {
       "question_uid": "pp:ec:2015:q10-s3",
-      "exam_uid": "ec:2015:set3:q10",
+      "exam_uid": "ec:2015:set3:main:q10",
       "title": "GATE EC 2015 | Set 3 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -384,25 +438,30 @@
       "yearSetIdentity": "ec:2015:set-3",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "bjt-and-fet-basics",
+          "subtopicLabel": "BJT and FET Basics"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ec-electronic-devices",
+          "bjt-and-fet-basics"
         ]
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$W_{B}$ doubled (increased) $\\rightarrow$ early effect is still present but its effect less severe relative to previous $W_{B}$. Slope $I_{C}$ versus $V_{C E}$ decreases.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$W_{B}$ doubled (increased) $\\rightarrow$ early effect is still present but its effect less severe relative to previous $W_{B}$. Slope $I_{C}$ versus $V_{C E}$ decreases.",
+        "images": []
       }
     },
     "pp:ec:2015:q11-s3": {
       "question_uid": "pp:ec:2015:q11-s3",
-      "exam_uid": "ec:2015:set3:q11",
+      "exam_uid": "ec:2015:set3:main:q11",
       "title": "GATE EC 2015 | Set 3 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -435,13 +494,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "$$\\begin{aligned} V_{E B} &=0.7 \\mathrm{V} \\\\ I_{B} &=0.0383 \\mathrm{mA} \\\\ I_{C} &=1.916 \\mathrm{mA} \\\\ V_{E C} &=3-I_{C} R_{C} \\\\ &=3-(1.916 \\times 0.5)=2.04 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+        "markdown": "$$\\begin{aligned} V_{E B} &=0.7 \\mathrm{V} \\\\ I_{B} &=0.0383 \\mathrm{mA} \\\\ I_{C} &=1.916 \\mathrm{mA} \\\\ V_{E C} &=3-I_{C} R_{C} \\\\ &=3-(1.916 \\times 0.5)=2.04 \\mathrm{V} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q12-s3": {
       "question_uid": "pp:ec:2015:q12-s3",
-      "exam_uid": "ec:2015:set3:q12",
+      "exam_uid": "ec:2015:set3:main:q12",
       "title": "GATE EC 2015 | Set 3 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -474,13 +537,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "$f_{3 \\mathrm{dB}}=\\frac{1}{2 \\pi R C}=159.15 \\mathrm{Hz}$\n\nTherefore, the correct answer is **159.5** (acceptable range: [159, 160])."
+        "markdown": "$f_{3 \\mathrm{dB}}=\\frac{1}{2 \\pi R C}=159.15 \\mathrm{Hz}$",
+        "images": []
       }
     },
     "pp:ec:2015:q13-s3": {
       "question_uid": "pp:ec:2015:q13-s3",
-      "exam_uid": "ec:2015:set3:q13",
+      "exam_uid": "ec:2015:set3:main:q13",
       "title": "GATE EC 2015 | Set 3 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -513,13 +580,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "The circuits work as a voltage doubler.\n\n$\\therefore V_{a b}=2 \\times 50=100$\n\nTherefore, the correct answer is **100**."
+        "markdown": "The circuits work as a voltage doubler.\n\n$\\therefore V_{a b}=2 \\times 50=100$",
+        "images": []
       }
     },
     "pp:ec:2015:q14-s3": {
       "question_uid": "pp:ec:2015:q14-s3",
-      "exam_uid": "ec:2015:set3:q14",
+      "exam_uid": "ec:2015:set3:main:q14",
       "title": "GATE EC 2015 | Set 3 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -554,13 +625,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "Q is applied as negative edge triggering clock.\n\n$\\Rightarrow$  Counter is up counter.\n\nReset signal $=\\overline{Q_{2} \\cdot Q_{0}}$\n\nThe counter resets at 101\n\n$\\Rightarrow$ Counter is MOD-5\n\nTherefore, the correct answer is **A**."
+        "markdown": "Q is applied as negative edge triggering clock.\n\n$\\Rightarrow$  Counter is up counter.\n\nReset signal $=\\overline{Q_{2} \\cdot Q_{0}}$\n\nThe counter resets at 101\n\n$\\Rightarrow$ Counter is MOD-5",
+        "images": []
       }
     },
     "pp:ec:2015:q15-s3": {
       "question_uid": "pp:ec:2015:q15-s3",
-      "exam_uid": "ec:2015:set3:q15",
+      "exam_uid": "ec:2015:set3:main:q15",
       "title": "GATE EC 2015 | Set 3 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -595,13 +670,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Families",
-        "markdown": "Case (i): If any input is logic 0 (i.e.,  0 V ) then\n\ncorresponding diode is \"ON\" and due to ideal\n\ndiode output voltage  $V_{0}=0$  as well as if there is\n\nany input logic 1 (i.e.,  10 V) corresponding diode\n\nwill be OFF.\n\nCase (ii): If all the inputs are high (i.e.,  10 V) then\n\nall the diodes are R.B. (OFF) and output voltage  $V_{0}=10 \\mathrm{V}$\n\nSo, it is a positive 3 -inputs AND gate.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Case (i): If any input is logic 0 (i.e.,  0 V ) then\n\ncorresponding diode is \"ON\" and due to ideal\n\ndiode output voltage  $V_{0}=0$  as well as if there is\n\nany input logic 1 (i.e.,  10 V) corresponding diode\n\nwill be OFF.\n\nCase (ii): If all the inputs are high (i.e.,  10 V) then\n\nall the diodes are R.B. (OFF) and output voltage  $V_{0}=10 \\mathrm{V}$\n\nSo, it is a positive 3 -inputs AND gate.",
+        "images": []
       }
     },
     "pp:ec:2015:q16-s3": {
       "question_uid": "pp:ec:2015:q16-s3",
-      "exam_uid": "ec:2015:set3:q16",
+      "exam_uid": "ec:2015:set3:main:q16",
       "title": "GATE EC 2015 | Set 3 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -636,13 +715,17 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Microprocessor 8085 Programming",
-        "markdown": "Product can be obtained by repeated addition.\n\nOnly {C) option satisfied addition repeatedly.\n\nHere register 'B' is used as count to add register\n\n'C' to accumulator, initially having OOH. Adding\n\n'B' times 'C' to accumulator.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Product can be obtained by repeated addition.\n\nOnly {C) option satisfied addition repeatedly.\n\nHere register 'B' is used as count to add register\n\n'C' to accumulator, initially having OOH. Adding\n\n'B' times 'C' to accumulator.",
+        "images": []
       }
     },
     "pp:ec:2015:q17-s3": {
       "question_uid": "pp:ec:2015:q17-s3",
-      "exam_uid": "ec:2015:set3:q17",
+      "exam_uid": "ec:2015:set3:main:q17",
       "title": "GATE EC 2015 | Set 3 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -677,13 +760,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
-        "markdown": "$$\\begin{aligned} IR&= \\frac{d}{dt}(SR)\\\\ &\\text{Step response,} \\\\ y(t)&=\\int_{-\\infty }^{t}h(\\tau )\\cdot d\\tau \\\\ h(t)&= \\frac{d}{dt}y(t) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} IR&= \\frac{d}{dt}(SR)\\\\ &\\text{Step response,} \\\\ y(t)&=\\int_{-\\infty }^{t}h(\\tau )\\cdot d\\tau \\\\ h(t)&= \\frac{d}{dt}y(t) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q18-s3": {
       "question_uid": "pp:ec:2015:q18-s3",
-      "exam_uid": "ec:2015:set3:q18",
+      "exam_uid": "ec:2015:set3:main:q18",
       "title": "GATE EC 2015 | Set 3 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -718,13 +805,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$$\\begin{aligned} y(n)&=\\sum_{i=0}^{3} \\alpha_{i} x(n-i) \\\\ &=\\alpha_{0}x[n]+\\alpha_{1} x[n-1]+\\alpha_{2} x[n-2]+\\alpha_{3} x[n-3] \\\\ \\Rightarrow Y(z)&=\\alpha_{0} X(z)+\\alpha_{1} X(z) z^{-1}+\\alpha_{2} X(z) z^{-2} \\\\ & +\\alpha_{3} X(z) z^{-3} \\\\ H(z)&=\\alpha_{0}+\\alpha_{1} z^{-1}+\\alpha_{2} z^{-2}+\\alpha_{3} z^{-3} \\\\ \\text {Null at }&\\text{zero frequency } \\\\ \\Rightarrow \\quad z&=\\left.e^{j \\omega}\\right|_{\\omega=0}\\\\ 0 &= \\alpha_{0}+\\alpha_{1}+\\alpha_{2}+\\alpha_{3} \\end{aligned}$$\n\nOption (A) satisfies the condition\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} y(n)&=\\sum_{i=0}^{3} \\alpha_{i} x(n-i) \\\\ &=\\alpha_{0}x[n]+\\alpha_{1} x[n-1]+\\alpha_{2} x[n-2]+\\alpha_{3} x[n-3] \\\\ \\Rightarrow Y(z)&=\\alpha_{0} X(z)+\\alpha_{1} X(z) z^{-1}+\\alpha_{2} X(z) z^{-2} \\\\ & +\\alpha_{3} X(z) z^{-3} \\\\ H(z)&=\\alpha_{0}+\\alpha_{1} z^{-1}+\\alpha_{2} z^{-2}+\\alpha_{3} z^{-3} \\\\ \\text {Null at }&\\text{zero frequency } \\\\ \\Rightarrow \\quad z&=\\left.e^{j \\omega}\\right|_{\\omega=0}\\\\ 0 &= \\alpha_{0}+\\alpha_{1}+\\alpha_{2}+\\alpha_{3} \\end{aligned}$$\n\nOption (A) satisfies the condition",
+        "images": []
       }
     },
     "pp:ec:2015:q19-s3": {
       "question_uid": "pp:ec:2015:q19-s3",
-      "exam_uid": "ec:2015:set3:q19",
+      "exam_uid": "ec:2015:set3:main:q19",
       "title": "GATE EC 2015 | Set 3 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -757,13 +848,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "As we know,\n\n$$\\begin{aligned} \\text { Slope } &=\\frac{y_{2}-y_{1}}{x_{2}-x_{1}} \\\\ \\therefore \\quad 40 \\mathrm{dB} / \\mathrm{dec} &=\\frac{40-0}{\\log 300-\\log _{L}}\\\\ or, \\log \\left(\\frac{300}{f_{L}}\\right)&=\\frac{40}{40}=1 f_{L}=30 \\mathrm{Hz} \\end{aligned}$$\n\nSimilarly,\n\n$$\\begin{aligned} -40 \\mathrm{dB} / \\mathrm{dec}&=\\frac{40-0}{\\log 900-\\log f_{H}}\\\\ \\log \\left(\\frac{900}{f_{H}}\\right) &=-1 \\\\ \\text { or, } \\quad f_{H}&=9000 \\mathrm{Hz} \\\\ \\text { Therefore, } f_{H}-f_{L}&=9000-30 =8970 \\mathrm{Hz} \\end{aligned}$$\n\nTherefore, the correct answer is **8970**."
+        "markdown": "As we know,\n\n$$\\begin{aligned} \\text { Slope } &=\\frac{y_{2}-y_{1}}{x_{2}-x_{1}} \\\\ \\therefore \\quad 40 \\mathrm{dB} / \\mathrm{dec} &=\\frac{40-0}{\\log 300-\\log _{L}}\\\\ or, \\log \\left(\\frac{300}{f_{L}}\\right)&=\\frac{40}{40}=1 f_{L}=30 \\mathrm{Hz} \\end{aligned}$$\n\nSimilarly,\n\n$$\\begin{aligned} -40 \\mathrm{dB} / \\mathrm{dec}&=\\frac{40-0}{\\log 900-\\log f_{H}}\\\\ \\log \\left(\\frac{900}{f_{H}}\\right) &=-1 \\\\ \\text { or, } \\quad f_{H}&=9000 \\mathrm{Hz} \\\\ \\text { Therefore, } f_{H}-f_{L}&=9000-30 =8970 \\mathrm{Hz} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q20-s3": {
       "question_uid": "pp:ec:2015:q20-s3",
-      "exam_uid": "ec:2015:set3:q20",
+      "exam_uid": "ec:2015:set3:main:q20",
       "title": "GATE EC 2015 | Set 3 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 1,
@@ -796,13 +891,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$$\\begin{aligned} G(s) &=\\frac{10}{s(s+10)} \\\\ P M &=180^{\\circ}+\\left.\\angle G(\\omega) H(\\omega)\\right|_{\\omega=\\omega_{g c}} \\end{aligned}$$\n\nThe gain cross over frequency can be calculated by\n\n$$\\begin{aligned} |G(\\omega) H(\\omega)|&=1 \\\\ \\frac{10}{\\omega \\sqrt{\\omega^{2}+100}}&=1 \\\\ \\omega_{g c}^{4}+100 \\omega_{g c}^{2}&-100=0\\\\ \\text { Or } \\quad \\omega_{g c}^{2}&=0.99, \\quad-100.99 \\\\ \\text { Or } \\quad \\omega_{g c}&=0.99 \\text { rad/sec. } \\\\ \\therefore P M &=180^{\\circ}+\\left(-90^{\\circ}-\\tan ^{-1} \\frac{\\omega_{g c}}{10}\\right) \\\\ &=180^{\\circ}-90^{\\circ}-\\tan ^{-1} \\frac{0.99}{10} \\\\ & \\simeq 84.364^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **84.25** (acceptable range: [84, 84.5])."
+        "markdown": "$$\\begin{aligned} G(s) &=\\frac{10}{s(s+10)} \\\\ P M &=180^{\\circ}+\\left.\\angle G(\\omega) H(\\omega)\\right|_{\\omega=\\omega_{g c}} \\end{aligned}$$\n\nThe gain cross over frequency can be calculated by\n\n$$\\begin{aligned} |G(\\omega) H(\\omega)|&=1 \\\\ \\frac{10}{\\omega \\sqrt{\\omega^{2}+100}}&=1 \\\\ \\omega_{g c}^{4}+100 \\omega_{g c}^{2}&-100=0\\\\ \\text { Or } \\quad \\omega_{g c}^{2}&=0.99, \\quad-100.99 \\\\ \\text { Or } \\quad \\omega_{g c}&=0.99 \\text { rad/sec. } \\\\ \\therefore P M &=180^{\\circ}+\\left(-90^{\\circ}-\\tan ^{-1} \\frac{\\omega_{g c}}{10}\\right) \\\\ &=180^{\\circ}-90^{\\circ}-\\tan ^{-1} \\frac{0.99}{10} \\\\ & \\simeq 84.364^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q21-s3": {
       "question_uid": "pp:ec:2015:q21-s3",
-      "exam_uid": "ec:2015:set3:q21",
+      "exam_uid": "ec:2015:set3:main:q21",
       "title": "GATE EC 2015 | Set 3 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -837,13 +936,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
-        "markdown": "For phase lead compensator\n\n$$\\begin{aligned} G_{c}(s)&=\\frac{(1+s \\tau)}{(1+\\alpha s \\tau)} \\quad ; \\quad \\alpha \\lt 1\\\\ \\text{Here,}\\quad \\tau&=\\frac{1}{a}\\\\ \\text{and}\\quad \\alpha \\tau&=\\frac{1}{b}\\\\ \\text{or,}\\quad \\alpha&=\\frac{a}{b} \\lt 1\\\\ \\text{or,}\\quad a& \\lt b \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For phase lead compensator\n\n$$\\begin{aligned} G_{c}(s)&=\\frac{(1+s \\tau)}{(1+\\alpha s \\tau)} \\quad ; \\quad \\alpha \\lt 1\\\\ \\text{Here,}\\quad \\tau&=\\frac{1}{a}\\\\ \\text{and}\\quad \\alpha \\tau&=\\frac{1}{b}\\\\ \\text{or,}\\quad \\alpha&=\\frac{a}{b} \\lt 1\\\\ \\text{or,}\\quad a& \\lt b \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q22-s3": {
       "question_uid": "pp:ec:2015:q22-s3",
-      "exam_uid": "ec:2015:set3:q22",
+      "exam_uid": "ec:2015:set3:main:q22",
       "title": "GATE EC 2015 | Set 3 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -878,13 +981,17 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "(GMSK) is used to transmit GSM signals.\n\nTherefore, the correct answer is **D**."
+        "markdown": "(GMSK) is used to transmit GSM signals.",
+        "images": []
       }
     },
     "pp:ec:2015:q23-s3": {
       "question_uid": "pp:ec:2015:q23-s3",
-      "exam_uid": "ec:2015:set3:q23",
+      "exam_uid": "ec:2015:set3:main:q23",
       "title": "GATE EC 2015 | Set 3 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -919,13 +1026,17 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "The bandwidth of a PM signal is given by\n\n$B=2\\left(\\Delta f+f_{m}\\right)$\n\nNow, for single tone PM signal\n\n$$\\begin{aligned} \\Delta f&=A_{m} K_{\\rho} f_{m} \\\\ \\therefore \\quad B&=2\\left(K_{p} A_{m}+1\\right) f_{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "The bandwidth of a PM signal is given by\n\n$B=2\\left(\\Delta f+f_{m}\\right)$\n\nNow, for single tone PM signal\n\n$$\\begin{aligned} \\Delta f&=A_{m} K_{\\rho} f_{m} \\\\ \\therefore \\quad B&=2\\left(K_{p} A_{m}+1\\right) f_{m} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q24-s3": {
       "question_uid": "pp:ec:2015:q24-s3",
-      "exam_uid": "ec:2015:set3:q24",
+      "exam_uid": "ec:2015:set3:main:q24",
       "title": "GATE EC 2015 | Set 3 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -960,13 +1071,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
-        "markdown": "Directivity (0) is increased by adding more antenna elements in an antenna array. Effective area $(A_{e})$ and directivity (D) are related by\n\n$A_{e}=\\frac{\\lambda^{2}}{4 \\pi} D$\n\n$\\Rightarrow D \\uparrow A_{e} \\uparrow$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Directivity (0) is increased by adding more antenna elements in an antenna array. Effective area $(A_{e})$ and directivity (D) are related by\n\n$A_{e}=\\frac{\\lambda^{2}}{4 \\pi} D$\n\n$\\Rightarrow D \\uparrow A_{e} \\uparrow$",
+        "images": []
       }
     },
     "pp:ec:2015:q25-s3": {
       "question_uid": "pp:ec:2015:q25-s3",
-      "exam_uid": "ec:2015:set3:q25",
+      "exam_uid": "ec:2015:set3:main:q25",
       "title": "GATE EC 2015 | Set 3 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 1,
@@ -1001,13 +1116,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "The teflon dielectric between the lines has\n\n$\\tan \\delta=\\text{Loss tangent}=0$\n\nFor the medium between the lines\n\n$G=0$\n\nTherefore, the correct answer is **B**."
+        "markdown": "The teflon dielectric between the lines has\n\n$\\tan \\delta=\\text{Loss tangent}=0$\n\nFor the medium between the lines\n\n$G=0$",
+        "images": []
       }
     },
     "pp:ec:2015:q26-s3": {
       "question_uid": "pp:ec:2015:q26-s3",
-      "exam_uid": "ec:2015:set3:q26",
+      "exam_uid": "ec:2015:set3:main:q26",
       "title": "GATE EC 2015 | Set 3 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1040,13 +1159,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$$\\begin{aligned} f(x) &=x^{3}-5 x^{2}+6 x-8 \\\\ x_{0} &=5 \\\\ f^{\\prime}(x) &=3 x^{2}-10 x+6 \\\\ x_{1} &=x_{0}-\\frac{f\\left(x_{0}\\right)}{f^{\\prime}\\left(x_{0}\\right)} \\\\ &=5-\\frac{f(5)}{f^{\\prime}(5)} \\\\ &=5-\\frac{5^{3}-5 \\times 5^{2}+6 \\times 5-8}{3 \\times 5^{2}-10 \\times 5+6} \\\\ &=5-\\frac{22}{31}=5-0.7097 \\\\ &=4.2903 \\end{aligned}$$\n\nTherefore, the correct answer is **4.3** (acceptable range: [4.25, 4.35])."
+        "markdown": "$$\\begin{aligned} f(x) &=x^{3}-5 x^{2}+6 x-8 \\\\ x_{0} &=5 \\\\ f^{\\prime}(x) &=3 x^{2}-10 x+6 \\\\ x_{1} &=x_{0}-\\frac{f\\left(x_{0}\\right)}{f^{\\prime}\\left(x_{0}\\right)} \\\\ &=5-\\frac{f(5)}{f^{\\prime}(5)} \\\\ &=5-\\frac{5^{3}-5 \\times 5^{2}+6 \\times 5-8}{3 \\times 5^{2}-10 \\times 5+6} \\\\ &=5-\\frac{22}{31}=5-0.7097 \\\\ &=4.2903 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q27-s3": {
       "question_uid": "pp:ec:2015:q27-s3",
-      "exam_uid": "ec:2015:set3:q27",
+      "exam_uid": "ec:2015:set3:main:q27",
       "title": "GATE EC 2015 | Set 3 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1078,14 +1201,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Probability and Statistics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **6**.\n\n### Conclusion\n\nTherefore, the correct answer is **6**."
+        "concept": "EC Core Engineering",
+        "markdown": null
       }
     },
     "pp:ec:2015:q28-s3": {
       "question_uid": "pp:ec:2015:q28-s3",
-      "exam_uid": "ec:2015:set3:q28",
+      "exam_uid": "ec:2015:set3:main:q28",
       "title": "GATE EC 2015 | Set 3 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1118,13 +1244,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned} D^{2}+3 D+2 &=0 \\\\ D &=-1,-2 \\\\ x(t) &=C_{1} e^{-t}+C_{2} e^{-2 t} \\\\ x(1) &=\\frac{10}{e}=C_{1} e^{-1}+C_{2} e^{-2} \\\\ C_{1}+C_{2} e^{-1} &=10 \\; \\; \\ldots(i)\\\\ C_{1}+C_{2} &=20 \\; \\; \\ldots(ii)\\\\ \\text { From here, } \\quad C_{1}=& \\cdot \\frac{10 e-20}{e-1} ; \\quad C_{2}=\\left(\\frac{10 e}{e-1}\\right) \\\\ x(2) &=\\left(\\frac{10 e-20}{e-1}\\right) e^{-2}+\\left(\\frac{10 e }{e-1}\\right) e^{-4} \\\\ &=0.8566 \\end{aligned}$$\n\nTherefore, the correct answer is **0.855** (acceptable range: [0.83, 0.88])."
+        "markdown": "$$\\begin{aligned} D^{2}+3 D+2 &=0 \\\\ D &=-1,-2 \\\\ x(t) &=C_{1} e^{-t}+C_{2} e^{-2 t} \\\\ x(1) &=\\frac{10}{e}=C_{1} e^{-1}+C_{2} e^{-2} \\\\ C_{1}+C_{2} e^{-1} &=10 \\; \\; \\ldots(i)\\\\ C_{1}+C_{2} &=20 \\; \\; \\ldots(ii)\\\\ \\text { From here, } \\quad C_{1}=& \\cdot \\frac{10 e-20}{e-1} ; \\quad C_{2}=\\left(\\frac{10 e}{e-1}\\right) \\\\ x(2) &=\\left(\\frac{10 e-20}{e-1}\\right) e^{-2}+\\left(\\frac{10 e }{e-1}\\right) e^{-4} \\\\ &=0.8566 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q29-s3": {
       "question_uid": "pp:ec:2015:q29-s3",
-      "exam_uid": "ec:2015:set3:q29",
+      "exam_uid": "ec:2015:set3:main:q29",
       "title": "GATE EC 2015 | Set 3 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1157,13 +1287,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$$\\begin{array}{c} \\vec{D}=2 \\rho^{2} \\hat{a}_{p}+z \\hat{a}_{z} \\\\ \\text { surface: } \\rho=1, z=0 \\text { and } z=5 \\\\ \\oiint_{s} \\vec{D} \\cdot ds=\\int_{\\text {Top surface}} \\vec{D} \\cdot ds \\\\ +\\int_{\\text {Bottom surface}} \\vec{D} \\cdot ds \\\\ +\\int_{\\text {curved surface }} \\vec{D} \\cdot ds \\\\ =5 \\pi+0+20 \\pi=25 \\pi=78.54 \\end{array}$$\n\nTherefore, the correct answer is **78.5** (acceptable range: [78, 79])."
+        "markdown": "$$\\begin{array}{c} \\vec{D}=2 \\rho^{2} \\hat{a}_{p}+z \\hat{a}_{z} \\\\ \\text { surface: } \\rho=1, z=0 \\text { and } z=5 \\\\ \\oiint_{s} \\vec{D} \\cdot ds=\\int_{\\text {Top surface}} \\vec{D} \\cdot ds \\\\ +\\int_{\\text {Bottom surface}} \\vec{D} \\cdot ds \\\\ +\\int_{\\text {curved surface }} \\vec{D} \\cdot ds \\\\ =5 \\pi+0+20 \\pi=25 \\pi=78.54 \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q30-s3": {
       "question_uid": "pp:ec:2015:q30-s3",
-      "exam_uid": "ec:2015:set3:q30",
+      "exam_uid": "ec:2015:set3:main:q30",
       "title": "GATE EC 2015 | Set 3 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1196,13 +1330,19 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-c03f8cf819.webp\" />\n\n$$\\begin{aligned} Z_{\\mathrm{eq}} &=\\frac{j 5 \\Omega \\times\\left(\\frac{1}{j \\omega C}+j 5\\right)}{j 5 \\Omega+j 5 \\Omega+\\frac{1}{j \\omega C}} \\\\ I &=0 \\text { if } Z \\text { is } \\infty \\\\ Z &=Z_{\\mathrm{eq}}+50+j 5\\\\ \\text{For z to be } \\infty, Z_{e q}&=\\infty \\\\ \\Rightarrow j 5+j 5+\\frac{1}{j \\omega C}&=0\\\\ 10 &=\\frac{1}{5000 \\times C} \\\\ C &=\\frac{1}{5 \\times 10^{3} \\times 10}=20 \\mu \\mathrm{F} \\end{aligned}$$\n\nTherefore, the correct answer is **20**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-c03f8cf819.webp\" />\n\n$$\\begin{aligned} Z_{\\mathrm{eq}} &=\\frac{j 5 \\Omega \\times\\left(\\frac{1}{j \\omega C}+j 5\\right)}{j 5 \\Omega+j 5 \\Omega+\\frac{1}{j \\omega C}} \\\\ I &=0 \\text { if } Z \\text { is } \\infty \\\\ Z &=Z_{\\mathrm{eq}}+50+j 5\\\\ \\text{For z to be } \\infty, Z_{e q}&=\\infty \\\\ \\Rightarrow j 5+j 5+\\frac{1}{j \\omega C}&=0\\\\ 10 &=\\frac{1}{5000 \\times C} \\\\ C &=\\frac{1}{5 \\times 10^{3} \\times 10}=20 \\mu \\mathrm{F} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-c03f8cf819.webp"
+        ]
       }
     },
     "pp:ec:2015:q31-s3": {
       "question_uid": "pp:ec:2015:q31-s3",
-      "exam_uid": "ec:2015:set3:q31",
+      "exam_uid": "ec:2015:set3:main:q31",
       "title": "GATE EC 2015 | Set 3 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1237,13 +1377,19 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-b1551636ec.webp\" />\n\n$$\\begin{aligned} \\left[\\begin{array}{l} V_{1} \\\\ I_{1} \\end{array}\\right] &=\\left[\\begin{array}{ll} A & B \\\\ C & D \\end{array}\\right]\\left[\\begin{array}{l} V_{2} \\\\ I_{2} \\end{array}\\right] \\\\ \\text { When } I_{2} &=0 \\\\ V_{1} &=(5+j 4+2) I_{1} \\\\ V_{2} &=2 I_{1} \\\\ A &=\\left.\\frac{V_{1}}{V_{2}}\\right|_{I_{2}=0}=\\frac{7+j 4}{2}=3.5+j 2 \\\\ C &=\\left.\\frac{I_{1}}{V_{2}}\\right|_{I_{2}=0}=\\frac{1}{2}=0.5 \\end{aligned}$$\n\nOption (B) matches. From here only\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-b1551636ec.webp\" />\n\n$$\\begin{aligned} \\left[\\begin{array}{l} V_{1} \\\\ I_{1} \\end{array}\\right] &=\\left[\\begin{array}{ll} A & B \\\\ C & D \\end{array}\\right]\\left[\\begin{array}{l} V_{2} \\\\ I_{2} \\end{array}\\right] \\\\ \\text { When } I_{2} &=0 \\\\ V_{1} &=(5+j 4+2) I_{1} \\\\ V_{2} &=2 I_{1} \\\\ A &=\\left.\\frac{V_{1}}{V_{2}}\\right|_{I_{2}=0}=\\frac{7+j 4}{2}=3.5+j 2 \\\\ C &=\\left.\\frac{I_{1}}{V_{2}}\\right|_{I_{2}=0}=\\frac{1}{2}=0.5 \\end{aligned}$$\n\nOption (B) matches. From here only",
+        "images": [
+          "/question-images/ec/2015/ec-2015-b1551636ec.webp"
+        ]
       }
     },
     "pp:ec:2015:q32-s3": {
       "question_uid": "pp:ec:2015:q32-s3",
-      "exam_uid": "ec:2015:set3:q32",
+      "exam_uid": "ec:2015:set3:main:q32",
       "title": "GATE EC 2015 | Set 3 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1278,13 +1424,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
-        "markdown": "State matrix form:\n\n$$\\begin{array}{l} \\dot{x}=\\left[\\begin{array}{cc} 2 & -1 \\\\ 0 & -4 \\end{array}\\right] x+\\left[\\begin{array}{c} 3 \\\\ -1 \\end{array}\\right] u \\\\ y=\\left[\\begin{array}{ll} 3 & -2 \\end{array}\\right] x \\end{array}$$\n\nThe transfer function from tate matrix can be calculated as:\n\n$T(S)=C(s l-A]^{-1} B+D$\n\nHere,\n\n$$[s l-A]^{-1}=\\left[\\begin{array}{cc} s-2 & 1 \\\\ 0 & s+4 \\end{array}\\right]^{-1}$$\n\n$$\\begin{aligned} &=\\frac{1}{(s-2)(s+4)}\\left[\\begin{array}{cc} (s+4) & -1 \\\\ 0 & (s-2) \\end{array}\\right] \\\\ \\Rightarrow &C[s /-A]^{-1} B \\\\ =& \\frac{1}{(s-2)(s+4)}[3-2]\\left[\\begin{array}{cc} (s+4) & -1 \\\\ 0 & (s-2) \\end{array}\\right]\\left[\\begin{array}{c} 3 \\\\ -1 \\end{array}\\right] \\\\ =& \\frac{1}{(s-2)(s+4)}[3-2]\\left[\\begin{array}{c} 3 s+12+1 \\\\ -s+2 \\end{array}\\right] \\\\ =& \\frac{1}{(s-2)(s+4)}[9 s+39+2 s-4] \\\\ =& \\frac{11 s+35}{(s-2)(s+4)} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "State matrix form:\n\n$$\\begin{array}{l} \\dot{x}=\\left[\\begin{array}{cc} 2 & -1 \\\\ 0 & -4 \\end{array}\\right] x+\\left[\\begin{array}{c} 3 \\\\ -1 \\end{array}\\right] u \\\\ y=\\left[\\begin{array}{ll} 3 & -2 \\end{array}\\right] x \\end{array}$$\n\nThe transfer function from tate matrix can be calculated as:\n\n$T(S)=C(s l-A]^{-1} B+D$\n\nHere,\n\n$$[s l-A]^{-1}=\\left[\\begin{array}{cc} s-2 & 1 \\\\ 0 & s+4 \\end{array}\\right]^{-1}$$\n\n$$\\begin{aligned} &=\\frac{1}{(s-2)(s+4)}\\left[\\begin{array}{cc} (s+4) & -1 \\\\ 0 & (s-2) \\end{array}\\right] \\\\ \\Rightarrow &C[s /-A]^{-1} B \\\\ =& \\frac{1}{(s-2)(s+4)}[3-2]\\left[\\begin{array}{cc} (s+4) & -1 \\\\ 0 & (s-2) \\end{array}\\right]\\left[\\begin{array}{c} 3 \\\\ -1 \\end{array}\\right] \\\\ =& \\frac{1}{(s-2)(s+4)}[3-2]\\left[\\begin{array}{c} 3 s+12+1 \\\\ -s+2 \\end{array}\\right] \\\\ =& \\frac{1}{(s-2)(s+4)}[9 s+39+2 s-4] \\\\ =& \\frac{11 s+35}{(s-2)(s+4)} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q33-s3": {
       "question_uid": "pp:ec:2015:q33-s3",
-      "exam_uid": "ec:2015:set3:q33",
+      "exam_uid": "ec:2015:set3:main:q33",
       "title": "GATE EC 2015 | Set 3 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1319,13 +1469,17 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "Built in potential,\n\n$$\\begin{aligned} \\Psi_{0} &=\\frac{1}{2} \\times\\left(10^{6} \\mathrm{V} / \\mathrm{m}\\right) \\times\\left(1.1 \\times 10^{-6} \\mathrm{m}\\right) \\\\ &=0.55 \\mathrm{Volts} \\end{aligned}$$\n\nBut in question (option (c)) is given as 700 mV.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Built in potential,\n\n$$\\begin{aligned} \\Psi_{0} &=\\frac{1}{2} \\times\\left(10^{6} \\mathrm{V} / \\mathrm{m}\\right) \\times\\left(1.1 \\times 10^{-6} \\mathrm{m}\\right) \\\\ &=0.55 \\mathrm{Volts} \\end{aligned}$$\n\nBut in question (option (c)) is given as 700 mV.",
+        "images": []
       }
     },
     "pp:ec:2015:q34-s3": {
       "question_uid": "pp:ec:2015:q34-s3",
-      "exam_uid": "ec:2015:set3:q34",
+      "exam_uid": "ec:2015:set3:main:q34",
       "title": "GATE EC 2015 | Set 3 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1358,13 +1512,17 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$\\lambda=\\frac{\\Delta I_{D}}{I_{D} \\Delta V_{D S}}=\\frac{0.02 \\mathrm{mA}}{1 \\mathrm{mA} \\times 1 \\mathrm{V}}=0.02$\n\nTherefore, the correct answer is **0.022** (acceptable range: [0.018, 0.026])."
+        "markdown": "$\\lambda=\\frac{\\Delta I_{D}}{I_{D} \\Delta V_{D S}}=\\frac{0.02 \\mathrm{mA}}{1 \\mathrm{mA} \\times 1 \\mathrm{V}}=0.02$",
+        "images": []
       }
     },
     "pp:ec:2015:q35-s3": {
       "question_uid": "pp:ec:2015:q35-s3",
-      "exam_uid": "ec:2015:set3:q35",
+      "exam_uid": "ec:2015:set3:main:q35",
       "title": "GATE EC 2015 | Set 3 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1397,13 +1555,17 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$$\\begin{aligned} I_{C} &=I_{s} e^{V_{B E} / V_{T}} \\\\ I_{E} &=\\frac{\\beta+1}{\\beta} I_{C} \\\\ &=\\frac{\\beta+1}{\\beta} I_{S} \\cdot e^{V_{B E} / V_{T}} \\end{aligned}$$\n\n$I_{E}$ will be maximum when $\\beta$ is 50.\n\n$$\\begin{aligned} &=(1.02)\\left(10^{-9} \\times 10^{-6}\\right) e^{\\frac{700 \\times 10^{-3}}{25 \\times 10^{-3}}} \\\\ &=1475 \\mu \\mathrm{A} \\end{aligned}$$\n\nTherefore, the correct answer is **1475** (acceptable range: [1465, 1485])."
+        "markdown": "$$\\begin{aligned} I_{C} &=I_{s} e^{V_{B E} / V_{T}} \\\\ I_{E} &=\\frac{\\beta+1}{\\beta} I_{C} \\\\ &=\\frac{\\beta+1}{\\beta} I_{S} \\cdot e^{V_{B E} / V_{T}} \\end{aligned}$$\n\n$I_{E}$ will be maximum when $\\beta$ is 50.\n\n$$\\begin{aligned} &=(1.02)\\left(10^{-9} \\times 10^{-6}\\right) e^{\\frac{700 \\times 10^{-3}}{25 \\times 10^{-3}}} \\\\ &=1475 \\mu \\mathrm{A} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q36-s3": {
       "question_uid": "pp:ec:2015:q36-s3",
-      "exam_uid": "ec:2015:set3:q36",
+      "exam_uid": "ec:2015:set3:main:q36",
       "title": "GATE EC 2015 | Set 3 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1438,13 +1600,19 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "The given circuit is similar to\n\n<img src=\"/question-images/ec/2015/ec-2015-9d14ed1343.webp\" />\n\nAfter three clock Y is 100.\n\nTherefore, the correct answer is **D**."
+        "markdown": "The given circuit is similar to\n\n<img src=\"/question-images/ec/2015/ec-2015-9d14ed1343.webp\" />\n\nAfter three clock Y is 100.",
+        "images": [
+          "/question-images/ec/2015/ec-2015-9d14ed1343.webp"
+        ]
       }
     },
     "pp:ec:2015:q37-s3": {
       "question_uid": "pp:ec:2015:q37-s3",
-      "exam_uid": "ec:2015:set3:q37",
+      "exam_uid": "ec:2015:set3:main:q37",
       "title": "GATE EC 2015 | Set 3 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1479,13 +1647,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
-        "markdown": "Universal gate is a gate by which every other gate\n\ncan be realized.\n\nGate 1 and Gate 2 are basic gates and can not\n\nbe used as universal gates.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Universal gate is a gate by which every other gate\n\ncan be realized.\n\nGate 1 and Gate 2 are basic gates and can not\n\nbe used as universal gates.",
+        "images": []
       }
     },
     "pp:ec:2015:q38-s3": {
       "question_uid": "pp:ec:2015:q38-s3",
-      "exam_uid": "ec:2015:set3:q38",
+      "exam_uid": "ec:2015:set3:main:q38",
       "title": "GATE EC 2015 | Set 3 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1520,13 +1692,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Families",
-        "markdown": "For TTL gate, open end acts as logic '1 '.\n\nSo if we connect 5 V battery to ground then\n\npressing the switches allow logic 'O' while opening\n\nthe switches allow logic '1 '. In case of 5 V battery\n\nboth opening and closing of switches allow\n\nlogic '1' and hence circuit can't act as SR latch.\n\nTherefore, the correct answer is **D**."
+        "markdown": "For TTL gate, open end acts as logic '1 '.\n\nSo if we connect 5 V battery to ground then\n\npressing the switches allow logic 'O' while opening\n\nthe switches allow logic '1 '. In case of 5 V battery\n\nboth opening and closing of switches allow\n\nlogic '1' and hence circuit can't act as SR latch.",
+        "images": []
       }
     },
     "pp:ec:2015:q39-s3": {
       "question_uid": "pp:ec:2015:q39-s3",
-      "exam_uid": "ec:2015:set3:q39",
+      "exam_uid": "ec:2015:set3:main:q39",
       "title": "GATE EC 2015 | Set 3 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1559,13 +1735,19 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-073a5a57d9.webp\" />\n\nApply nodal analysis at inverting terminal\n\n$\\frac{V_{\\text {in }}-0}{10 \\mathrm{k} \\Omega}=\\frac{0-V_{x}}{10 \\mathrm{k} \\Omega}$\n\n$\\Rightarrow \\quad V_{\\text {in }}=-V_{x} \\qquad\\ldots(i)$\n\nAgain apply nodal analysis at node $V_{x}$\n\n$\\frac{0-V_{x}}{10 k \\Omega}=\\frac{V_{x}-0}{R}+\\frac{V_{x}-V_{0}}{10 k \\Omega}\\qquad\\ldots(ii)$\n\nPut the value of V from equation (i) in equation  (ii), we get\n\n$R = 1\\Omega$\n\nTherefore, the correct answer is **1**."
+        "markdown": "<img src=\"/question-images/ec/2015/ec-2015-073a5a57d9.webp\" />\n\nApply nodal analysis at inverting terminal\n\n$\\frac{V_{\\text {in }}-0}{10 \\mathrm{k} \\Omega}=\\frac{0-V_{x}}{10 \\mathrm{k} \\Omega}$\n\n$\\Rightarrow \\quad V_{\\text {in }}=-V_{x} \\qquad\\ldots(i)$\n\nAgain apply nodal analysis at node $V_{x}$\n\n$\\frac{0-V_{x}}{10 k \\Omega}=\\frac{V_{x}-0}{R}+\\frac{V_{x}-V_{0}}{10 k \\Omega}\\qquad\\ldots(ii)$\n\nPut the value of V from equation (i) in equation  (ii), we get\n\n$R = 1\\Omega$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-073a5a57d9.webp"
+        ]
       }
     },
     "pp:ec:2015:q40-s3": {
       "question_uid": "pp:ec:2015:q40-s3",
-      "exam_uid": "ec:2015:set3:q40",
+      "exam_uid": "ec:2015:set3:main:q40",
       "title": "GATE EC 2015 | Set 3 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1598,13 +1780,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
-        "markdown": "Lower transistor $\\left(M_{1}\\right)$ to work in saturation\n\n$V_{D S_{1}} \\geq V_{G S_{1}}-V_{T N}$\n\nSo, for minimum $V_{D D}$\n\n$$\\begin{aligned} V_{D S_{1}} &=V_{G S 1}-V_{T N} \\\\ V_{D S_{1}} &=2-1=1 \\mathrm{V} \\\\ \\therefore \\quad V_{D_{1}} &=1 \\mathrm{V}\\\\ \\text{and}\\quad I_{D_{1}}&=K^{\\prime}\\left(V_{G S_{1}}-V_{T N}\\right)^{2}\\\\ I_{D_{1}}&=\\frac{1 \\mathrm{mA}}{V^{2}} \\times(2-1)^{2}=1 \\mathrm{mA} \\end{aligned}$$\n\nNow transistor $M_{2}, V_{D G}=0 V$\n\nSo, it will work into saturation region and same current will flow.\n\n$$\\begin{aligned} I_{D_{2}}&=I_{D_{1}}=K^{\\prime}\\left(V_{G S_{2}}-V_{T N}\\right)^{2} \\\\ 1 \\mathrm{mA}&=1 \\mathrm{mAN}^{2} \\times\\left(V_{D D}-1-1\\right)^{2} \\\\ &\\left(\\because V_{S_{2}}=V_{D_{1}}\\right)\\\\ \\therefore \\quad V_{D D}&=3 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
+        "markdown": "Lower transistor $\\left(M_{1}\\right)$ to work in saturation\n\n$V_{D S_{1}} \\geq V_{G S_{1}}-V_{T N}$\n\nSo, for minimum $V_{D D}$\n\n$$\\begin{aligned} V_{D S_{1}} &=V_{G S 1}-V_{T N} \\\\ V_{D S_{1}} &=2-1=1 \\mathrm{V} \\\\ \\therefore \\quad V_{D_{1}} &=1 \\mathrm{V}\\\\ \\text{and}\\quad I_{D_{1}}&=K^{\\prime}\\left(V_{G S_{1}}-V_{T N}\\right)^{2}\\\\ I_{D_{1}}&=\\frac{1 \\mathrm{mA}}{V^{2}} \\times(2-1)^{2}=1 \\mathrm{mA} \\end{aligned}$$\n\nNow transistor $M_{2}, V_{D G}=0 V$\n\nSo, it will work into saturation region and same current will flow.\n\n$$\\begin{aligned} I_{D_{2}}&=I_{D_{1}}=K^{\\prime}\\left(V_{G S_{2}}-V_{T N}\\right)^{2} \\\\ 1 \\mathrm{mA}&=1 \\mathrm{mAN}^{2} \\times\\left(V_{D D}-1-1\\right)^{2} \\\\ &\\left(\\because V_{S_{2}}=V_{D_{1}}\\right)\\\\ \\therefore \\quad V_{D D}&=3 \\mathrm{V} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q41-s3": {
       "question_uid": "pp:ec:2015:q41-s3",
-      "exam_uid": "ec:2015:set3:q41",
+      "exam_uid": "ec:2015:set3:main:q41",
       "title": "GATE EC 2015 | Set 3 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1637,13 +1823,19 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "During positive cycles: $V_{1}=\\frac{V_{\\text {in }}}{2}$\n\nDuring negative cycles: $V_{0}=\\frac{V_{\\text {in }}}{3}$\n\n<img src=\"/question-images/ec/2015/ec-2015-fbb1ec1394.webp\" />\n\n$V_{D C}=\\frac{V_{m}}{2} \\cdot \\frac{1}{\\pi}+\\frac{V_{m}}{3} \\cdot \\frac{1}{\\pi}=\\frac{6 \\pi}{2 \\pi}+\\frac{6 \\pi}{3 \\pi}=5 \\mathrm{V}$\n\nTherefore, the correct answer is **5** (acceptable range: [4.85, 5.15])."
+        "markdown": "During positive cycles: $V_{1}=\\frac{V_{\\text {in }}}{2}$\n\nDuring negative cycles: $V_{0}=\\frac{V_{\\text {in }}}{3}$\n\n<img src=\"/question-images/ec/2015/ec-2015-fbb1ec1394.webp\" />\n\n$V_{D C}=\\frac{V_{m}}{2} \\cdot \\frac{1}{\\pi}+\\frac{V_{m}}{3} \\cdot \\frac{1}{\\pi}=\\frac{6 \\pi}{2 \\pi}+\\frac{6 \\pi}{3 \\pi}=5 \\mathrm{V}$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-fbb1ec1394.webp"
+        ]
       }
     },
     "pp:ec:2015:q42-s3": {
       "question_uid": "pp:ec:2015:q42-s3",
-      "exam_uid": "ec:2015:set3:q42",
+      "exam_uid": "ec:2015:set3:main:q42",
       "title": "GATE EC 2015 | Set 3 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1678,13 +1870,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "Poles are at  $z=\\pm 2$\n\nSince  x[n]  is absolutely summable hence, DTFT\n\nexists which implies ROC must include unit circle.\n\n$\\Rightarrow x(t)$ is a non-causal signal.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Poles are at  $z=\\pm 2$\n\nSince  x[n]  is absolutely summable hence, DTFT\n\nexists which implies ROC must include unit circle.\n\n$\\Rightarrow x(t)$ is a non-causal signal.",
+        "images": []
       }
     },
     "pp:ec:2015:q43-s3": {
       "question_uid": "pp:ec:2015:q43-s3",
-      "exam_uid": "ec:2015:set3:q43",
+      "exam_uid": "ec:2015:set3:main:q43",
       "title": "GATE EC 2015 | Set 3 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -1719,13 +1915,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$$\\begin{aligned} \\frac{Y(z)}{X(z)}&=\\frac{\\frac{5}{3}[1-z]}{z^{2}-z+\\frac{2}{9}} \\\\ \\Rightarrow \\quad \\eta (z)&=\\frac{5}{3} \\frac{(1-z)}{\\left(z-\\frac{1}{3}\\right)\\left(z-\\frac{2}{3}\\right)}\\\\ \\eta(z) &=\\frac{5 z}{z-\\frac{1}{3}}-\\frac{5 z}{z-\\frac{2}{3}} \\\\ y(n) &=5\\left(\\frac{1}{3}\\right)^{n} u(n)-5\\left(\\frac{2}{3}\\right)^{n} u(n) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} \\frac{Y(z)}{X(z)}&=\\frac{\\frac{5}{3}[1-z]}{z^{2}-z+\\frac{2}{9}} \\\\ \\Rightarrow \\quad \\eta (z)&=\\frac{5}{3} \\frac{(1-z)}{\\left(z-\\frac{1}{3}\\right)\\left(z-\\frac{2}{3}\\right)}\\\\ \\eta(z) &=\\frac{5 z}{z-\\frac{1}{3}}-\\frac{5 z}{z-\\frac{2}{3}} \\\\ y(n) &=5\\left(\\frac{1}{3}\\right)^{n} u(n)-5\\left(\\frac{2}{3}\\right)^{n} u(n) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q44-s3": {
       "question_uid": "pp:ec:2015:q44-s3",
-      "exam_uid": "ec:2015:set3:q44",
+      "exam_uid": "ec:2015:set3:main:q44",
       "title": "GATE EC 2015 | Set 3 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1758,13 +1958,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "$$\\begin{aligned} \\tilde{x}[n]&=1+\\cos \\left(\\frac{\\pi n}{8}\\right)\\\\ &=1+\\frac{e^{\\left(\\frac{2 \\pi}{16}\\right)} h}{2}+\\frac{e^{-\\left(\\frac{2 \\pi}{16}\\right)}}{2} &(N=16)\\\\ &=1+\\frac{e^{\\left(\\frac{2 \\pi}{16}\\right)}}{2}+\\frac{e^{-\\left(\\frac{2 \\pi}{16}\\right)}}{2} \\\\ \\Rightarrow a_{1}&=\\frac{1}{2}\\text{ and also } a_{31}=a_{15}=a_{-1}=\\frac{1}{2} \\end{aligned}$$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.48, 0.52])."
+        "markdown": "$$\\begin{aligned} \\tilde{x}[n]&=1+\\cos \\left(\\frac{\\pi n}{8}\\right)\\\\ &=1+\\frac{e^{\\left(\\frac{2 \\pi}{16}\\right)} h}{2}+\\frac{e^{-\\left(\\frac{2 \\pi}{16}\\right)}}{2} &(N=16)\\\\ &=1+\\frac{e^{\\left(\\frac{2 \\pi}{16}\\right)}}{2}+\\frac{e^{-\\left(\\frac{2 \\pi}{16}\\right)}}{2} \\\\ \\Rightarrow a_{1}&=\\frac{1}{2}\\text{ and also } a_{31}=a_{15}=a_{-1}=\\frac{1}{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q45-s3": {
       "question_uid": "pp:ec:2015:q45-s3",
-      "exam_uid": "ec:2015:set3:q45",
+      "exam_uid": "ec:2015:set3:main:q45",
       "title": "GATE EC 2015 | Set 3 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1797,13 +2001,19 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
-        "markdown": "$x(t)=\\frac{\\sin \\left(\\frac{\\pi t}{2}\\right)}{\\left(\\frac{\\pi t}{2}\\right)} * \\sum_{n=-\\infty}^{\\infty} \\delta[t-10 n]$\n\n<img src=\"/question-images/ec/2015/ec-2015-4db3240379.webp\" />\n\n$$\\begin{aligned} f_{\\max } &=0.2 \\mathrm{Hz} \\\\ \\Rightarrow \\quad f_{s} &=2 f_{\\max }=0.4 \\mathrm{Hz} \\end{aligned}$$\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.39, 0.41])."
+        "markdown": "$x(t)=\\frac{\\sin \\left(\\frac{\\pi t}{2}\\right)}{\\left(\\frac{\\pi t}{2}\\right)} * \\sum_{n=-\\infty}^{\\infty} \\delta[t-10 n]$\n\n<img src=\"/question-images/ec/2015/ec-2015-4db3240379.webp\" />\n\n$$\\begin{aligned} f_{\\max } &=0.2 \\mathrm{Hz} \\\\ \\Rightarrow \\quad f_{s} &=2 f_{\\max }=0.4 \\mathrm{Hz} \\end{aligned}$$",
+        "images": [
+          "/question-images/ec/2015/ec-2015-4db3240379.webp"
+        ]
       }
     },
     "pp:ec:2015:q46-s3": {
       "question_uid": "pp:ec:2015:q46-s3",
-      "exam_uid": "ec:2015:set3:q46",
+      "exam_uid": "ec:2015:set3:main:q46",
       "title": "GATE EC 2015 | Set 3 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1836,13 +2046,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
-        "markdown": "The transfer function due to the disturbance torque $T_{d}(s) \\text { is }$\n\n$$\\begin{aligned} \\frac{\\theta(s)}{T_{d}(s)}&=\\frac{-\\frac{1}{(J s+B)} \\times \\frac{1}{s}}{1+\\left(\\frac{1}{J s+B}\\right)\\left(\\frac{K_{b} K_{T}}{R_{a}+L_{a} s}\\right)} \\\\ &=\\frac{-\\left(R_{a}+L_{a} s\\right) \\cdot \\frac{1}{s}}{\\left(R_{a}+L_{a} s\\right)(J s+B)+K_{b} K_{T}} \\end{aligned}$$\n\nThe steady value of response for unit impulse input\n\n$$\\begin{aligned} &=\\frac{-s\\left(R_{a}+L_{a} s\\right) \\cdot \\frac{1}{s}}{\\left(R_{a}+L_{a} s\\right)(J s+B)+K_{b} K_{T}}.T_{d}\\\\ &=-\\frac{R_{a}}{R_{a} B+K_{b} K_{T}} \\cdot 1\\\\ \\text{Given:}\\\\ K_{T}&=1 \\mathrm{N}-\\mathrm{m} / \\mathrm{A} R_{a}=1 \\Omega \\\\ B&=1 \\mathrm{N}-\\mathrm{m} / \\mathrm{rad} / \\mathrm{sec}\\\\ \\text{and }\\quad K_{b}&=1 \\mathrm{V} / \\mathrm{rad} / \\mathrm{sec} \\end{aligned}$$\n\nSubstituting the given values into above equation,  we get\n\n$\\theta(0)=-\\frac{1}{2}=-0.5 \\mathrm{rad}$\n\nTherefore, the correct answer is **-0.5** (acceptable range: [-0.51, -0.49])."
+        "markdown": "The transfer function due to the disturbance torque $T_{d}(s) \\text { is }$\n\n$$\\begin{aligned} \\frac{\\theta(s)}{T_{d}(s)}&=\\frac{-\\frac{1}{(J s+B)} \\times \\frac{1}{s}}{1+\\left(\\frac{1}{J s+B}\\right)\\left(\\frac{K_{b} K_{T}}{R_{a}+L_{a} s}\\right)} \\\\ &=\\frac{-\\left(R_{a}+L_{a} s\\right) \\cdot \\frac{1}{s}}{\\left(R_{a}+L_{a} s\\right)(J s+B)+K_{b} K_{T}} \\end{aligned}$$\n\nThe steady value of response for unit impulse input\n\n$$\\begin{aligned} &=\\frac{-s\\left(R_{a}+L_{a} s\\right) \\cdot \\frac{1}{s}}{\\left(R_{a}+L_{a} s\\right)(J s+B)+K_{b} K_{T}}.T_{d}\\\\ &=-\\frac{R_{a}}{R_{a} B+K_{b} K_{T}} \\cdot 1\\\\ \\text{Given:}\\\\ K_{T}&=1 \\mathrm{N}-\\mathrm{m} / \\mathrm{A} R_{a}=1 \\Omega \\\\ B&=1 \\mathrm{N}-\\mathrm{m} / \\mathrm{rad} / \\mathrm{sec}\\\\ \\text{and }\\quad K_{b}&=1 \\mathrm{V} / \\mathrm{rad} / \\mathrm{sec} \\end{aligned}$$\n\nSubstituting the given values into above equation,  we get\n\n$\\theta(0)=-\\frac{1}{2}=-0.5 \\mathrm{rad}$",
+        "images": []
       }
     },
     "pp:ec:2015:q47-s3": {
       "question_uid": "pp:ec:2015:q47-s3",
-      "exam_uid": "ec:2015:set3:q47",
+      "exam_uid": "ec:2015:set3:main:q47",
       "title": "GATE EC 2015 | Set 3 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1875,13 +2089,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
-        "markdown": "The open loop transfer function of the system:\n\n$G(s) H(s)=\\frac{K(s+3) \\times 10}{(s+2)}$\n\nIn order to lie a point s=-2.75, the angle condition must be satisfy and therefore the magnitude condition is\n\n$$\\begin{aligned} &\\mid G(s) H(s) \\|_{s=-275}=1 \\\\ &=\\left.\\frac{10 K \\sqrt{s^{2}+3^{2}}}{\\sqrt{s^{2}+2^{2}}}\\right|_{s=-2.75}=1 \\\\ &=\\frac{10 K \\sqrt{(3-2.75)^{2}}}{\\sqrt{(2-2.75)^{2}}}=1 \\\\ &=\\frac{0.25 \\times 10 K}{0.75} or K=0.3 \\end{aligned}$$\n\nTherefore, the correct answer is **0.3** (acceptable range: [0.29, 0.31])."
+        "markdown": "The open loop transfer function of the system:\n\n$G(s) H(s)=\\frac{K(s+3) \\times 10}{(s+2)}$\n\nIn order to lie a point s=-2.75, the angle condition must be satisfy and therefore the magnitude condition is\n\n$$\\begin{aligned} &\\mid G(s) H(s) \\|_{s=-275}=1 \\\\ &=\\left.\\frac{10 K \\sqrt{s^{2}+3^{2}}}{\\sqrt{s^{2}+2^{2}}}\\right|_{s=-2.75}=1 \\\\ &=\\frac{10 K \\sqrt{(3-2.75)^{2}}}{\\sqrt{(2-2.75)^{2}}}=1 \\\\ &=\\frac{0.25 \\times 10 K}{0.75} or K=0.3 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q48-s3": {
       "question_uid": "pp:ec:2015:q48-s3",
-      "exam_uid": "ec:2015:set3:q48",
+      "exam_uid": "ec:2015:set3:main:q48",
       "title": "GATE EC 2015 | Set 3 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1914,13 +2132,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
-        "markdown": "Using Routh's tabular or:\n\n$$\\begin{array}{c|lll} s^{5} & 1 & 3 & -4 \\\\ s^{4} & 2 & 6 & -8 \\\\ s^{3} & 0 8 & 0(12) & 0 \\\\ s^{2} & 3 & -8 & 0 \\\\ s^{1} & \\frac{100}{3} & 0 & 0 \\\\ s^{0} & -8 & & \\end{array}$$\n\nAuxiliary equation:\n\n$$\\begin{aligned} A &=2 s^{4}+6 s^{2}-8=0 \\\\ \\frac{d A}{d s} &=8 s^{3}+12 s=0 \\end{aligned}$$\n\nAs one time row of zero occur in Routh's table therefore a pair of imaginary pole exists, also  number of sign change in Routh's table is one. Hence, two poles lie strictly in the left half of s-plane.\n\nTherefore, the correct answer is **2**."
+        "markdown": "Using Routh's tabular or:\n\n$$\\begin{array}{c|lll} s^{5} & 1 & 3 & -4 \\\\ s^{4} & 2 & 6 & -8 \\\\ s^{3} & 0 8 & 0(12) & 0 \\\\ s^{2} & 3 & -8 & 0 \\\\ s^{1} & \\frac{100}{3} & 0 & 0 \\\\ s^{0} & -8 & & \\end{array}$$\n\nAuxiliary equation:\n\n$$\\begin{aligned} A &=2 s^{4}+6 s^{2}-8=0 \\\\ \\frac{d A}{d s} &=8 s^{3}+12 s=0 \\end{aligned}$$\n\nAs one time row of zero occur in Routh's table therefore a pair of imaginary pole exists, also  number of sign change in Routh's table is one. Hence, two poles lie strictly in the left half of s-plane.",
+        "images": []
       }
     },
     "pp:ec:2015:q49-s3": {
       "question_uid": "pp:ec:2015:q49-s3",
-      "exam_uid": "ec:2015:set3:q49",
+      "exam_uid": "ec:2015:set3:main:q49",
       "title": "GATE EC 2015 | Set 3 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1953,13 +2175,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
-        "markdown": "$$\\begin{array}{l} \\text { Energy of } x_{1}[n]=\\sum_{n=-\\infty}^{\\infty}\\left|x_{1}[n]\\right|^{2} \\\\ \\begin{aligned} =\\sum_{n=0}^{\\infty} \\alpha^{2} &\\left(\\frac{1}{4}\\right)^{n}=\\alpha^{2} \\cdot \\frac{1}{1-\\frac{1}{4}}=\\alpha^{2} \\cdot \\frac{4}{3} \\\\ \\text { Energy of } x_{2}[n] &=1.5+1.5=3 \\\\ \\Rightarrow \\quad \\alpha^{2} \\frac{4}{3} &=3 \\\\ \\alpha^{2}=\\frac{9}{4} \\\\ \\quad \\alpha=1.5 \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **1.5** (acceptable range: [1.49, 1.51])."
+        "markdown": "$$\\begin{array}{l} \\text { Energy of } x_{1}[n]=\\sum_{n=-\\infty}^{\\infty}\\left|x_{1}[n]\\right|^{2} \\\\ \\begin{aligned} =\\sum_{n=0}^{\\infty} \\alpha^{2} &\\left(\\frac{1}{4}\\right)^{n}=\\alpha^{2} \\cdot \\frac{1}{1-\\frac{1}{4}}=\\alpha^{2} \\cdot \\frac{4}{3} \\\\ \\text { Energy of } x_{2}[n] &=1.5+1.5=3 \\\\ \\Rightarrow \\quad \\alpha^{2} \\frac{4}{3} &=3 \\\\ \\alpha^{2}=\\frac{9}{4} \\\\ \\quad \\alpha=1.5 \\end{aligned} \\end{array}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q50-s3": {
       "question_uid": "pp:ec:2015:q50-s3",
-      "exam_uid": "ec:2015:set3:q50",
+      "exam_uid": "ec:2015:set3:main:q50",
       "title": "GATE EC 2015 | Set 3 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -1992,13 +2218,17 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "$f_{\\lambda}(x)=\\frac{1}{2}|x| e^{-x}$\n\n$f_{x}(x)$ is an even function.\n\n$$\\begin{aligned} \\text{So, }E(X)&=\\bar{X}=\\int_{-\\infty}^{\\infty} x f(x) d x=0 \\\\ \\text { Variance, } & \\sigma_{X}^{2}=E\\left[X^{2}\\right]-(\\bar{X})^{2}=E\\left[X^{2}\\right] \\\\ \\text { So. } \\quad & \\sigma_{X}^{2}=E\\left[X^{2}\\right]=\\int_{-\\infty}^{\\infty} x^{2} f_{X}(x) d x\\\\ &=\\frac{1}{2} \\int_{-\\infty}^{\\infty} x^{2}|x| e^{-|x|} d x=\\int_{0}^{-\\infty} x^{3} e^{-x} d x \\\\ &=\\left[-e^{-x}\\left(x^{3}+3 x^{2}+6 x+6\\right)\\right]_{0}^{\\infty}=6 \\end{aligned}$$\n\nTherefore, the correct answer is **6**."
+        "markdown": "$f_{\\lambda}(x)=\\frac{1}{2}|x| e^{-x}$\n\n$f_{x}(x)$ is an even function.\n\n$$\\begin{aligned} \\text{So, }E(X)&=\\bar{X}=\\int_{-\\infty}^{\\infty} x f(x) d x=0 \\\\ \\text { Variance, } & \\sigma_{X}^{2}=E\\left[X^{2}\\right]-(\\bar{X})^{2}=E\\left[X^{2}\\right] \\\\ \\text { So. } \\quad & \\sigma_{X}^{2}=E\\left[X^{2}\\right]=\\int_{-\\infty}^{\\infty} x^{2} f_{X}(x) d x\\\\ &=\\frac{1}{2} \\int_{-\\infty}^{\\infty} x^{2}|x| e^{-|x|} d x=\\int_{0}^{-\\infty} x^{3} e^{-x} d x \\\\ &=\\left[-e^{-x}\\left(x^{3}+3 x^{2}+6 x+6\\right)\\right]_{0}^{\\infty}=6 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q51-s3": {
       "question_uid": "pp:ec:2015:q51-s3",
-      "exam_uid": "ec:2015:set3:q51",
+      "exam_uid": "ec:2015:set3:main:q51",
       "title": "GATE EC 2015 | Set 3 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -2033,13 +2263,17 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
-        "markdown": "$$\\begin{aligned} x(t) &=-\\sqrt{2}\\left[\\frac{\\sin \\left(\\frac{\\pi t}{5}\\right)}{\\left(\\frac{\\pi t}{5}\\right)}\\right] \\sin \\left(\\pi t-\\frac{\\pi}{4}\\right) \\\\ x(t) &=\\text{Re}\\left[\\tilde{x}(t) e^{i 2 \\pi t_{c} t}\\right] \\\\ \\tilde{x}(t) &=\\text { Complex envelope } \\\\ &=\\sqrt{2}\\left[\\frac{\\sin \\left(\\frac{\\pi t}{5}\\right)}{\\left(\\frac{\\pi t}{5}\\right)}\\right] e^{i \\pi / 4} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} x(t) &=-\\sqrt{2}\\left[\\frac{\\sin \\left(\\frac{\\pi t}{5}\\right)}{\\left(\\frac{\\pi t}{5}\\right)}\\right] \\sin \\left(\\pi t-\\frac{\\pi}{4}\\right) \\\\ x(t) &=\\text{Re}\\left[\\tilde{x}(t) e^{i 2 \\pi t_{c} t}\\right] \\\\ \\tilde{x}(t) &=\\text { Complex envelope } \\\\ &=\\sqrt{2}\\left[\\frac{\\sin \\left(\\frac{\\pi t}{5}\\right)}{\\left(\\frac{\\pi t}{5}\\right)}\\right] e^{i \\pi / 4} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q52-s3": {
       "question_uid": "pp:ec:2015:q52-s3",
-      "exam_uid": "ec:2015:set3:q52",
+      "exam_uid": "ec:2015:set3:main:q52",
       "title": "GATE EC 2015 | Set 3 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -2072,13 +2306,17 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "For a binary symmetric pulse\n\n$$\\begin{aligned} \\therefore \\quad R_{n}(t)&=\\left[1-\\frac{1}{T}\\right] \\\\ \\therefore R_{n}\\left(\\frac{3 T}{4}\\right)&=\\left[1-\\frac{3 \\pi / 4}{\\pi}\\right]=\\frac{1}{4}=0.25 \\end{aligned}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
+        "markdown": "For a binary symmetric pulse\n\n$$\\begin{aligned} \\therefore \\quad R_{n}(t)&=\\left[1-\\frac{1}{T}\\right] \\\\ \\therefore R_{n}\\left(\\frac{3 T}{4}\\right)&=\\left[1-\\frac{3 \\pi / 4}{\\pi}\\right]=\\frac{1}{4}=0.25 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q53-s3": {
       "question_uid": "pp:ec:2015:q53-s3",
-      "exam_uid": "ec:2015:set3:q53",
+      "exam_uid": "ec:2015:set3:main:q53",
       "title": "GATE EC 2015 | Set 3 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "MCQ",
       "marks": 2,
@@ -2113,13 +2351,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "$$\\begin{aligned} l &=3 \\mathrm{m} \\\\ f &=37.5 \\mathrm{MHz} \\\\ \\Rightarrow \\quad \\lambda &=\\frac{3 \\times 10^{8}}{37.5 \\times 10^{6}}=8 \\mathrm{m} \\\\ Z_{\\text {in }}(S C) &=j Z_{0} \\tan \\beta l=j 120 \\pi \\tan \\frac{2 \\pi}{8} \\cdot 3 \\\\ &=-j 120 \\pi \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} l &=3 \\mathrm{m} \\\\ f &=37.5 \\mathrm{MHz} \\\\ \\Rightarrow \\quad \\lambda &=\\frac{3 \\times 10^{8}}{37.5 \\times 10^{6}}=8 \\mathrm{m} \\\\ Z_{\\text {in }}(S C) &=j Z_{0} \\tan \\beta l=j 120 \\pi \\tan \\frac{2 \\pi}{8} \\cdot 3 \\\\ &=-j 120 \\pi \\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q54-s3": {
       "question_uid": "pp:ec:2015:q54-s3",
-      "exam_uid": "ec:2015:set3:q54",
+      "exam_uid": "ec:2015:set3:main:q54",
       "title": "GATE EC 2015 | Set 3 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -2152,13 +2394,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "$$\\begin{aligned} \\text { At } t&=0 \\\\ &V_{\\text {in }}=400 \\times \\frac{R_{0}}{R_{0}+R_{s}}=400 \\times \\frac{50}{200}=100 V \\\\ \\text { At } t&=T_{0} \\Gamma_{L} 100 \\text { volts reflects }\\\\ \\text { At } t&=2T_{0}\\\\ V_{\\text {in }} &=100+\\left(1+\\Gamma_{\\text {in }}\\right) \\Gamma_{L} 100=62.5 \\\\ \\Gamma_{\\text {in }} &=\\frac{R_{s}-R_{o}}{R_{s}+R_{o}}=\\frac{1}{2} \\\\ \\text { Therefore, } \\Gamma_{L} &=-\\frac{1}{4}=\\frac{R_{L}-50}{R_{L}+50} \\\\ R_{L} &=30 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **30** (acceptable range: [29, 31])."
+        "markdown": "$$\\begin{aligned} \\text { At } t&=0 \\\\ &V_{\\text {in }}=400 \\times \\frac{R_{0}}{R_{0}+R_{s}}=400 \\times \\frac{50}{200}=100 V \\\\ \\text { At } t&=T_{0} \\Gamma_{L} 100 \\text { volts reflects }\\\\ \\text { At } t&=2T_{0}\\\\ V_{\\text {in }} &=100+\\left(1+\\Gamma_{\\text {in }}\\right) \\Gamma_{L} 100=62.5 \\\\ \\Gamma_{\\text {in }} &=\\frac{R_{s}-R_{o}}{R_{s}+R_{o}}=\\frac{1}{2} \\\\ \\text { Therefore, } \\Gamma_{L} &=-\\frac{1}{4}=\\frac{R_{L}-50}{R_{L}+50} \\\\ R_{L} &=30 \\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ec:2015:q55-s3": {
       "question_uid": "pp:ec:2015:q55-s3",
-      "exam_uid": "ec:2015:set3:q55",
+      "exam_uid": "ec:2015:set3:main:q55",
       "title": "GATE EC 2015 | Set 3 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateec-2015-set3",
       "type": "NAT",
       "marks": 2,
@@ -2191,7 +2437,8 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "$$\\begin{aligned} C &=\\frac{2 \\pi \\in}{ln \\frac{b}{a}} \\\\ 172 \\times 10^{-12} &=\\frac{2 \\pi \\epsilon}{ln 5} \\\\ & \\in \\frac{172 \\times 10^{-12} \\times ln 5}{2 \\pi} \\end{aligned}$$\n\nIf ratio of $\\frac{b}{a}$ is doubled then\n\n$$\\begin{array}{l} C=\\frac{2 \\pi \\epsilon}{\\ln 10}=\\frac{2 \\pi \\times \\frac{172 \\times 10^{-12} \\times \\ln 5}{2 \\pi}}{\\ln 10} \\\\ C=120.22 \\mathrm{pF} \\end{array}$$\n\nTherefore, the correct answer is **120.2** (acceptable range: [120, 120.4])."
+        "markdown": "$$\\begin{aligned} C &=\\frac{2 \\pi \\in}{ln \\frac{b}{a}} \\\\ 172 \\times 10^{-12} &=\\frac{2 \\pi \\epsilon}{ln 5} \\\\ & \\in \\frac{172 \\times 10^{-12} \\times ln 5}{2 \\pi} \\end{aligned}$$\n\nIf ratio of $\\frac{b}{a}$ is doubled then\n\n$$\\begin{array}{l} C=\\frac{2 \\pi \\epsilon}{\\ln 10}=\\frac{2 \\pi \\times \\frac{172 \\times 10^{-12} \\times \\ln 5}{2 \\pi}}{\\ln 10} \\\\ C=120.22 \\mathrm{pF} \\end{array}$$",
+        "images": []
       }
     }
   }

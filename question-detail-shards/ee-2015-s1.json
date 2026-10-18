@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.362Z",
+  "generatedAt": "2026-10-17T21:30:25.176Z",
   "shardKey": "ee-2015-s1",
   "yearSetKey": "ee-2015-s1",
   "yearSetIdentity": "ee:2015:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ee:2015:q1": {
       "question_uid": "pp:ee:2015:q1",
-      "exam_uid": "ee:2015:set1:q1",
+      "exam_uid": "ee:2015:set1:main:q1",
       "title": "GATE EE 2015 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -32,25 +35,30 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "probability-and-statistics"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} f(x)&=\\left\\{\\begin{matrix} a+bx & \\text{for }0 \\lt x \\lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now given }E(X)&=2/3\\\\ \\int_{0}^{1}xf(x)dx&=\\frac{2}{3}\\\\ \\int_{0}^{1}x(a+bx)dx&=\\frac{2}{3}\\\\ a\\left ( \\frac{x^2}{2} \\right )_0^1+b\\left ( \\frac{x^3}{3} \\right )_0^1&=\\frac{2}{3}\\\\ a\\left ( \\frac{1}{2} \\right )+b\\left ( \\frac{1}{3} \\right )&=\\frac{2}{3}\\\\ 3a+2b&=4\\;\\;...(i)\\\\ \\text{Now, }\\int_{0}^{1}f(x)dx &=1\\\\ (\\text{total probability} & \\text{ is always equal to 1})\\\\ \\int_{0}^{1}(a+bx)dx&=\\left ( ax+\\frac{bx^2}{2} \\right )_0^1=1\\\\ a+\\frac{b}{2}&=1\\\\ 2a+b&=2\\;\\;...(ii)\\\\ \\text{Now solving } & \\text{ (i) and (ii), we get}\\\\ a&=0,b=2\\\\ So,\\; \\;f(x)&=\\left\\{\\begin{matrix} 2x & \\text{for }0 \\lt x lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now we need}&\\\\ P(x \\lt 0.5)&=\\int_{0}^{0.5}2xdx=2\\left ( \\frac{x^2}{2} \\right )_0^{0.5}\\\\ &=0.5^2-0^2=0.25 \\end{aligned}$$\n\nTherefore, the correct answer is **0.25**."
+        "markdown": "$$\\begin{aligned} f(x)&=\\left\\{\\begin{matrix} a+bx & \\text{for }0 \\lt x \\lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now given }E(X)&=2/3\\\\ \\int_{0}^{1}xf(x)dx&=\\frac{2}{3}\\\\ \\int_{0}^{1}x(a+bx)dx&=\\frac{2}{3}\\\\ a\\left ( \\frac{x^2}{2} \\right )_0^1+b\\left ( \\frac{x^3}{3} \\right )_0^1&=\\frac{2}{3}\\\\ a\\left ( \\frac{1}{2} \\right )+b\\left ( \\frac{1}{3} \\right )&=\\frac{2}{3}\\\\ 3a+2b&=4\\;\\;...(i)\\\\ \\text{Now, }\\int_{0}^{1}f(x)dx &=1\\\\ (\\text{total probability} & \\text{ is always equal to 1})\\\\ \\int_{0}^{1}(a+bx)dx&=\\left ( ax+\\frac{bx^2}{2} \\right )_0^1=1\\\\ a+\\frac{b}{2}&=1\\\\ 2a+b&=2\\;\\;...(ii)\\\\ \\text{Now solving } & \\text{ (i) and (ii), we get}\\\\ a&=0,b=2\\\\ So,\\; \\;f(x)&=\\left\\{\\begin{matrix} 2x & \\text{for }0 \\lt x lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now we need}&\\\\ P(x \\lt 0.5)&=\\int_{0}^{0.5}2xdx=2\\left ( \\frac{x^2}{2} \\right )_0^{0.5}\\\\ &=0.5^2-0^2=0.25 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q2": {
       "question_uid": "pp:ee:2015:q2",
-      "exam_uid": "ee:2015:set1:q2",
+      "exam_uid": "ee:2015:set1:main:q2",
       "title": "GATE EE 2015 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -72,25 +80,30 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Intermediate value theorem states that if a function is continious and $f(a) \\cdot f(b) \\lt 0$, then surely there is a root in (a,b). The contrapositive of this theorem is that if a function is continious and has no root in (a,b) then surely $f(a) \\cdot f(b) \\geq 0$. But since it is given that there is no root in the closed interval [a,b] it means $f(a) \\cdot f(b) \\neq 0$.\n\nSo surely $f(a) \\cdot f(b) \\gt 0$ which is choise(C).\n\nTherefore, the correct answer is **C**."
+        "markdown": "Intermediate value theorem states that if a function is continious and $f(a) \\cdot f(b) \\lt 0$, then surely there is a root in (a,b). The contrapositive of this theorem is that if a function is continious and has no root in (a,b) then surely $f(a) \\cdot f(b) \\geq 0$. But since it is given that there is no root in the closed interval [a,b] it means $f(a) \\cdot f(b) \\neq 0$.\n\nSo surely $f(a) \\cdot f(b) \\gt 0$ which is choise(C).",
+        "images": []
       }
     },
     "pp:ee:2015:q3": {
       "question_uid": "pp:ee:2015:q3",
-      "exam_uid": "ee:2015:set1:q3",
+      "exam_uid": "ee:2015:set1:main:q3",
       "title": "GATE EE 2015 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -110,25 +123,30 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "linear-algebra"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Consider a symmetric matrix $$A =\\begin{bmatrix} a & b\\\\ b & d \\end{bmatrix}$$\n\nGiven $a+d=-6$\n\n$|A|=ad-b^2$\n\nNow since $b^2$ is always non-negative, maximum determinant will come when $b^2=0$.\n\nSo we need to maximize\n\n$$\\begin{aligned} |A|&=ad-0=ad=a \\times -(6+a) \\\\ &= -a^2-6a\\\\ \\frac{d|A|}{da} &=-2a-6=0 \\\\ \\Rightarrow \\;\\; a &=-3 \\text{ is the only stationary point} \\end{aligned}$$\n\nSince, $$\\left [\\frac{d^2|A|}{da} \\right ]_{a=-3}=-2 \\lt 0$$, we have a maximum at $a=-3$.\n\nSince $a+d=-6$, corresponding value of $d=-3$.\n\n$|A|=ad=-3 \\times -3=9$\n\nTherefore, the correct answer is **9**."
+        "markdown": "Consider a symmetric matrix $$A =\\begin{bmatrix} a & b\\\\ b & d \\end{bmatrix}$$\n\nGiven $a+d=-6$\n\n$|A|=ad-b^2$\n\nNow since $b^2$ is always non-negative, maximum determinant will come when $b^2=0$.\n\nSo we need to maximize\n\n$$\\begin{aligned} |A|&=ad-0=ad=a \\times -(6+a) \\\\ &= -a^2-6a\\\\ \\frac{d|A|}{da} &=-2a-6=0 \\\\ \\Rightarrow \\;\\; a &=-3 \\text{ is the only stationary point} \\end{aligned}$$\n\nSince, $$\\left [\\frac{d^2|A|}{da} \\right ]_{a=-3}=-2 \\lt 0$$, we have a maximum at $a=-3$.\n\nSince $a+d=-6$, corresponding value of $d=-3$.\n\n$|A|=ad=-3 \\times -3=9$",
+        "images": []
       }
     },
     "pp:ee:2015:q4": {
       "question_uid": "pp:ee:2015:q4",
-      "exam_uid": "ee:2015:set1:q4",
+      "exam_uid": "ee:2015:set1:main:q4",
       "title": "GATE EE 2015 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -150,25 +168,30 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "coordinate-systems-and-vector-calculus",
+          "subtopicLabel": "Coordinate Systems and Vector Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electromagnetic-fields",
+          "coordinate-systems-and-vector-calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Coordinate Systems and Vector Calculus",
-        "markdown": "$\\bar{f}=\\frac{1}{r^2}\\hat{r}$\n\nFrom divergence theorem as we know,\n\n$$\\begin{aligned} \\int _{vol.} (\\triangledown \\cdot \\bar{f})dV &=\\oint \\oint _S \\bar{f}\\cdot d\\bar{S}\\\\ \\oint \\oint _S \\bar{f}\\cdot d\\bar{S} &= \\oint \\oint _S \\left ( \\frac{1}{r^2} \\cdot \\hat{r}\\right ) \\times r^2 \\sin \\theta \\cdot d\\theta \\cdot d\\phi \\cdot \\hat{r} \\\\ &= \\oint \\oint _S \\sin \\theta \\cdot d\\theta \\cdot d\\phi=4\\pi \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$\\bar{f}=\\frac{1}{r^2}\\hat{r}$\n\nFrom divergence theorem as we know,\n\n$$\\begin{aligned} \\int _{vol.} (\\triangledown \\cdot \\bar{f})dV &=\\oint \\oint _S \\bar{f}\\cdot d\\bar{S}\\\\ \\oint \\oint _S \\bar{f}\\cdot d\\bar{S} &= \\oint \\oint _S \\left ( \\frac{1}{r^2} \\cdot \\hat{r}\\right ) \\times r^2 \\sin \\theta \\cdot d\\theta \\cdot d\\phi \\cdot \\hat{r} \\\\ &= \\oint \\oint _S \\sin \\theta \\cdot d\\theta \\cdot d\\phi=4\\pi \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q5": {
       "question_uid": "pp:ee:2015:q5",
-      "exam_uid": "ee:2015:set1:q5",
+      "exam_uid": "ee:2015:set1:main:q5",
       "title": "GATE EE 2015 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -190,25 +213,30 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "characteristics-of-instruments-and-measurement-systems",
+          "subtopicLabel": "Characteristics of Instruments and Measurement Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electrical-and-electronic-measurements",
+          "characteristics-of-instruments-and-measurement-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Characteristics of Instruments and Measurement Systems",
-        "markdown": "$R_1=50\\Omega$\n\n$R_2=60\\Omega$\n\n$R_3=100\\pm 5%\\Omega$\n\nThe value of $R_3 \\text{with} \\pm 5$%  of tollerance,\n\n$$\\begin{aligned} R_3&= 100\\pm 5\\% \\\\ &= 100+100 \\times \\frac{5}{100}=105 \\Omega \\\\ &= 100-100 \\times \\frac{5}{100}=95 \\Omega \\end{aligned}$$\n\nIn both condition, the bridge is balance, so under balance condition,\n\n$$\\begin{aligned} \\frac{R_1}{R_3}&=\\frac{R_2}{R_x} \\\\ R_x&=\\frac{R_2R_3}{R_1} \\\\ (i) \\; \\text{when}, \\; R_3&=105\\Omega \\\\ \\therefore \\;\\;R_x &= \\frac{105 \\times 65}{50}=136.50\\Omega \\\\ (ii)\\; \\text{when}, \\; R_3&=95 \\Omega \\\\ \\therefore \\;\\;R_x &= \\frac{95 \\times 65}{50}=123.50\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$R_1=50\\Omega$\n\n$R_2=60\\Omega$\n\n$R_3=100\\pm 5%\\Omega$\n\nThe value of $R_3 \\text{with} \\pm 5$%  of tollerance,\n\n$$\\begin{aligned} R_3&= 100\\pm 5\\% \\\\ &= 100+100 \\times \\frac{5}{100}=105 \\Omega \\\\ &= 100-100 \\times \\frac{5}{100}=95 \\Omega \\end{aligned}$$\n\nIn both condition, the bridge is balance, so under balance condition,\n\n$$\\begin{aligned} \\frac{R_1}{R_3}&=\\frac{R_2}{R_x} \\\\ R_x&=\\frac{R_2R_3}{R_1} \\\\ (i) \\; \\text{when}, \\; R_3&=105\\Omega \\\\ \\therefore \\;\\;R_x &= \\frac{105 \\times 65}{50}=136.50\\Omega \\\\ (ii)\\; \\text{when}, \\; R_3&=95 \\Omega \\\\ \\therefore \\;\\;R_x &= \\frac{95 \\times 65}{50}=123.50\\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q6": {
       "question_uid": "pp:ee:2015:q6",
-      "exam_uid": "ee:2015:set1:q6",
+      "exam_uid": "ee:2015:set1:main:q6",
       "title": "GATE EE 2015 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -228,25 +256,32 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "galvanometers-voltmeters-and-ammeters",
+          "subtopicLabel": "Galvanometers, Voltmeters and Ammeters"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electrical-and-electronic-measurements",
+          "galvanometers-voltmeters-and-ammeters"
         ]
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-c029082fc4.webp\" />\n\n$I_{fs}=50A,$\n\n$V_m=0.1V,$\n\n$R_m=\\frac{0.1}{50}=2 \\times 10^{-3}\\Omega$\n\n$\\because \\; m=10$\n\n$R_{sh}=\\frac{R_m}{(m-1)}$\n\n$\\;\\;\\;=\\frac{2 \\times 10^{-3}}{9}=0.22\\Omega$\n\nTherefore, the correct answer is **0.225** (acceptable range: [0.22, 0.23])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-c029082fc4.webp\" />\n\n$I_{fs}=50A,$\n\n$V_m=0.1V,$\n\n$R_m=\\frac{0.1}{50}=2 \\times 10^{-3}\\Omega$\n\n$\\because \\; m=10$\n\n$R_{sh}=\\frac{R_m}{(m-1)}$\n\n$\\;\\;\\;=\\frac{2 \\times 10^{-3}}{9}=0.22\\Omega$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-c029082fc4.webp"
+        ]
       }
     },
     "pp:ee:2015:q7": {
       "question_uid": "pp:ee:2015:q7",
-      "exam_uid": "ee:2015:set1:q7",
+      "exam_uid": "ee:2015:set1:main:q7",
       "title": "GATE EE 2015 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -268,25 +303,29 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-analog-electronics",
+          "operational-amplifiers"
         ]
       },
       "detailed_solution": {
-        "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Electronics** (specifically *Operational Amplifiers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Operational Amplifiers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *P, Q and R only*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (P, Q and R only)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2015:q8": {
       "question_uid": "pp:ee:2015:q8",
-      "exam_uid": "ee:2015:set1:q8",
+      "exam_uid": "ee:2015:set1:main:q8",
       "title": "GATE EE 2015 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -306,25 +345,32 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-power-electronics",
+          "choppers"
         ]
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-53768bb84e.webp\" />\n\nStep down chopper\n\n$$\\begin{aligned} \\Rightarrow \\; V_0&=\\alpha V_s\\\\ V_0&=I_0R+E\\\\ I_0&=\\frac{V_0-E}{R}\\\\ I_0&=\\frac{\\alpha V_s-E}{R}\\\\ &=\\frac{(0.4)20-5}{3}=1A \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-53768bb84e.webp\" />\n\nStep down chopper\n\n$$\\begin{aligned} \\Rightarrow \\; V_0&=\\alpha V_s\\\\ V_0&=I_0R+E\\\\ I_0&=\\frac{V_0-E}{R}\\\\ I_0&=\\frac{\\alpha V_s-E}{R}\\\\ &=\\frac{(0.4)20-5}{3}=1A \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-53768bb84e.webp"
+        ]
       }
     },
     "pp:ee:2015:q9": {
       "question_uid": "pp:ee:2015:q9",
-      "exam_uid": "ee:2015:set1:q9",
+      "exam_uid": "ee:2015:set1:main:q9",
       "title": "GATE EE 2015 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -344,25 +390,30 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "System input: $\\sin \\omega _0 t$\n\n$$\\begin{aligned}\n\nf_0&=\\frac{1}{2T}Hz\\\\\n\n\\text{Therefore,}\\\\\n\n\\omega _0&=2 \\pi f_0=\\frac{2 \\pi}{2T}=\\frac{\\pi}{T}\\; rad/sec\\\\\n\ny(t)&=\\frac{1}{T}\\int_{t-T}^{t}\\sin \\omega _0\\tau \\; d\\tau\\\\\n\n&=\\frac{1}{T}[-\\cos\\omega _0 t ]_{t-T}^t\\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t -\\cos\\omega _0 (t-T) ]\\\\\n\n&\\left [ \\because \\; \\omega _0=\\frac{t}{T} \\right ]\\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t -\\cos\\left ( \\frac{\\pi t}{T}- \\pi \\right ) ]\\\\ \\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t +\\cos\\omega _0 t ]\\\\\n\n&=-\\frac{2}{T} \\cos\\omega _0 t \\\\\n\n&=\\frac{2}{T}\\sin (\\omega _0 t -90^{\\circ}) \\\\\n\n&=\\text{Output is lagging by }90^{\\circ} \\text{ w.r.t. input.}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **90**."
+        "markdown": "System input: $\\sin \\omega _0 t$\n\n$$\\begin{aligned}\n\nf_0&=\\frac{1}{2T}Hz\\\\\n\n\\text{Therefore,}\\\\\n\n\\omega _0&=2 \\pi f_0=\\frac{2 \\pi}{2T}=\\frac{\\pi}{T}\\; rad/sec\\\\\n\ny(t)&=\\frac{1}{T}\\int_{t-T}^{t}\\sin \\omega _0\\tau \\; d\\tau\\\\\n\n&=\\frac{1}{T}[-\\cos\\omega _0 t ]_{t-T}^t\\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t -\\cos\\omega _0 (t-T) ]\\\\\n\n&\\left [ \\because \\; \\omega _0=\\frac{t}{T} \\right ]\\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t -\\cos\\left ( \\frac{\\pi t}{T}- \\pi \\right ) ]\\\\ \\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t +\\cos\\omega _0 t ]\\\\\n\n&=-\\frac{2}{T} \\cos\\omega _0 t \\\\\n\n&=\\frac{2}{T}\\sin (\\omega _0 t -90^{\\circ}) \\\\\n\n&=\\text{Output is lagging by }90^{\\circ} \\text{ w.r.t. input.}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q10": {
       "question_uid": "pp:ee:2015:q10",
-      "exam_uid": "ee:2015:set1:q10",
+      "exam_uid": "ee:2015:set1:main:q10",
       "title": "GATE EE 2015 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -383,25 +434,32 @@
       "yearSetIdentity": "ee:2015:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "$$\\begin{aligned} g(t)&=u(t)-u(t-1)\\\\ G(s)&=\\frac{1}{s}-\\frac{e^{-s}}{s}\\\\ G(s) \\times G(s)&=g(t)* g(t) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-b8932a73de.webp\" />\n\nMaximum value =1\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} g(t)&=u(t)-u(t-1)\\\\ G(s)&=\\frac{1}{s}-\\frac{e^{-s}}{s}\\\\ G(s) \\times G(s)&=g(t)* g(t) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-b8932a73de.webp\" />\n\nMaximum value =1",
+        "images": [
+          "/question-images/ee/2015/ee-2015-b8932a73de.webp"
+        ]
       }
     },
     "pp:ee:2015:q11": {
       "question_uid": "pp:ee:2015:q11",
-      "exam_uid": "ee:2015:set1:q11",
+      "exam_uid": "ee:2015:set1:main:q11",
       "title": "GATE EE 2015 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -434,13 +492,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Time Varying Fields",
-        "markdown": "$$\\begin{aligned} A&=10cm \\times 5 cm\\\\ B(t)&=0.25 \\sin \\omega t,\\; R=0.4\\Omega \\\\ P&=i^2 R\\\\ \\because \\; e&=-\\frac{d\\phi }{dt}=-\\frac{d}{dt}(B \\times A)\\\\ &=-\\frac{d}{dt}[0.25 \\times 50 \\times 10^{-4} \\sin \\omega t]\\\\ e&=-0.25 \\times 50 \\times 10^4 \\omega \\cos \\omega t\\\\ &=-1.25 \\times 10^{-3}\\omega \\cos \\omega t\\\\ P_{evg}&=\\frac{e^2_{rms}}{R}\\\\ P&=\\int_{0}^{T}\\frac{(12.5 \\times 100 \\pi \\times 10^{-4})^2}{0.4} \\times \\cos ^2 \\omega t d(\\omega t)\\\\ &=(12.5 \\times \\pi \\times 10^{-2})^2 \\times \\frac{1}{2 \\times 0.4}\\\\ &=0.193\\; \\text{Watt} \\end{aligned}$$\n\nTherefore, the correct answer is **0.185** (acceptable range: [0.17, 0.2])."
+        "markdown": "$$\\begin{aligned} A&=10cm \\times 5 cm\\\\ B(t)&=0.25 \\sin \\omega t,\\; R=0.4\\Omega \\\\ P&=i^2 R\\\\ \\because \\; e&=-\\frac{d\\phi }{dt}=-\\frac{d}{dt}(B \\times A)\\\\ &=-\\frac{d}{dt}[0.25 \\times 50 \\times 10^{-4} \\sin \\omega t]\\\\ e&=-0.25 \\times 50 \\times 10^4 \\omega \\cos \\omega t\\\\ &=-1.25 \\times 10^{-3}\\omega \\cos \\omega t\\\\ P_{evg}&=\\frac{e^2_{rms}}{R}\\\\ P&=\\int_{0}^{T}\\frac{(12.5 \\times 100 \\pi \\times 10^{-4})^2}{0.4} \\times \\cos ^2 \\omega t d(\\omega t)\\\\ &=(12.5 \\times \\pi \\times 10^{-2})^2 \\times \\frac{1}{2 \\times 0.4}\\\\ &=0.193\\; \\text{Watt} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q12": {
       "question_uid": "pp:ee:2015:q12",
-      "exam_uid": "ee:2015:set1:q12",
+      "exam_uid": "ee:2015:set1:main:q12",
       "title": "GATE EE 2015 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -475,13 +537,17 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
-        "markdown": "$$\\begin{aligned} \\vec{B}&=\\frac{\\mu _0 I}{2\\pi \\left ( \\frac{L}{2} \\right )}(-\\hat{z})+\\frac{\\mu _0 I}{2\\pi \\left ( \\frac{3L}{2} \\right )}(-\\hat{z}) \\\\ &=\\frac{\\mu _0 I(-\\hat{z})}{2\\pi L}\\left ( 2+\\frac{2}{3} \\right )\\\\ &=-\\frac{4}{3}\\frac{\\mu _0 I}{\\pi L}\\hat{z} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\vec{B}&=\\frac{\\mu _0 I}{2\\pi \\left ( \\frac{L}{2} \\right )}(-\\hat{z})+\\frac{\\mu _0 I}{2\\pi \\left ( \\frac{3L}{2} \\right )}(-\\hat{z}) \\\\ &=\\frac{\\mu _0 I(-\\hat{z})}{2\\pi L}\\left ( 2+\\frac{2}{3} \\right )\\\\ &=-\\frac{4}{3}\\frac{\\mu _0 I}{\\pi L}\\hat{z} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q13": {
       "question_uid": "pp:ee:2015:q13",
-      "exam_uid": "ee:2015:set1:q13",
+      "exam_uid": "ee:2015:set1:main:q13",
       "title": "GATE EE 2015 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -516,13 +582,19 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "The circuit is\n\n<img src=\"/question-images/ee/2015/ee-2015-c18dd39bc4.webp\" />\n\nSince circuit has negative feedback, so with help of virtual short $V_A=V_B$\n\nSo, KVL in the loop from A to B given,\n\n$I\\left ( \\frac{1}{sC} \\right )-V_i+I\\left ( \\frac{1}{sC} \\right )=0$\n\nSo,  $I=\\frac{V_i(sC)}{2}$\n\nSo,   $V_A=-IR$\n\n$V_A=-\\frac{sCRV_i}{2}$\n\nand   $V_A=V_B$\n\nSo,   $V_B=-\\frac{sCRV_i}{2}$\n\nNow,   $\\frac{V_B-V_o}{R}=I$\n\nSo,   $V_o=V_B-IR$\n\n$V_o=-\\frac{V_i(sCR)}{2}-\\frac{V_i(sCR)}{2}$\n\n$\\;\\; =-V_i(sCR)$\n\nSo,  $V_o=-j\\omega RCV_i$\n\nSo, $V_o$ lag $V_i$ by $90^{\\circ}$ or phase of  $V_o$ w.r.t $V_i$ is $-90^{\\circ}$.\n\nTherefore, the correct answer is **D**."
+        "markdown": "The circuit is\n\n<img src=\"/question-images/ee/2015/ee-2015-c18dd39bc4.webp\" />\n\nSince circuit has negative feedback, so with help of virtual short $V_A=V_B$\n\nSo, KVL in the loop from A to B given,\n\n$I\\left ( \\frac{1}{sC} \\right )-V_i+I\\left ( \\frac{1}{sC} \\right )=0$\n\nSo,  $I=\\frac{V_i(sC)}{2}$\n\nSo,   $V_A=-IR$\n\n$V_A=-\\frac{sCRV_i}{2}$\n\nand   $V_A=V_B$\n\nSo,   $V_B=-\\frac{sCRV_i}{2}$\n\nNow,   $\\frac{V_B-V_o}{R}=I$\n\nSo,   $V_o=V_B-IR$\n\n$V_o=-\\frac{V_i(sCR)}{2}-\\frac{V_i(sCR)}{2}$\n\n$\\;\\; =-V_i(sCR)$\n\nSo,  $V_o=-j\\omega RCV_i$\n\nSo, $V_o$ lag $V_i$ by $90^{\\circ}$ or phase of  $V_o$ w.r.t $V_i$ is $-90^{\\circ}$.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-c18dd39bc4.webp"
+        ]
       }
     },
     "pp:ee:2015:q14": {
       "question_uid": "pp:ee:2015:q14",
-      "exam_uid": "ee:2015:set1:q14",
+      "exam_uid": "ee:2015:set1:main:q14",
       "title": "GATE EE 2015 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -555,13 +627,19 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "Consider the circuit shown in figure.\n\n<img src=\"/question-images/ee/2015/ee-2015-ce3f2d864d.webp\" />\n\n$V_C=9V$\n\n$So,\\;\\; \\frac{15-9}{R_C}=I_E$\n\n$\\frac{6}{R_C}=I_E$\n\n$and \\;\\;\\frac{9-0.7}{R_B}=I_B$\n\n$So,\\;\\;\\frac{8.3}{R_B}=I_B$\n\n$So, \\;\\; \\frac{I_E}{I_B}=\\frac{6 \\times R_B}{R_C \\times 8.3}$\n\n$(\\beta +1)=\\frac{R_B \\times 6}{R_C \\times 8.3}$\n\n$\\frac{R_B}{R_C}=105.13$\n\nTherefore, the correct answer is **105** (acceptable range: [100, 110])."
+        "markdown": "Consider the circuit shown in figure.\n\n<img src=\"/question-images/ee/2015/ee-2015-ce3f2d864d.webp\" />\n\n$V_C=9V$\n\n$So,\\;\\; \\frac{15-9}{R_C}=I_E$\n\n$\\frac{6}{R_C}=I_E$\n\n$and \\;\\;\\frac{9-0.7}{R_B}=I_B$\n\n$So,\\;\\;\\frac{8.3}{R_B}=I_B$\n\n$So, \\;\\; \\frac{I_E}{I_B}=\\frac{6 \\times R_B}{R_C \\times 8.3}$\n\n$(\\beta +1)=\\frac{R_B \\times 6}{R_C \\times 8.3}$\n\n$\\frac{R_B}{R_C}=105.13$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-ce3f2d864d.webp"
+        ]
       }
     },
     "pp:ee:2015:q15": {
       "question_uid": "pp:ee:2015:q15",
-      "exam_uid": "ee:2015:set1:q15",
+      "exam_uid": "ee:2015:set1:main:q15",
       "title": "GATE EE 2015 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -596,13 +674,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
-        "markdown": "$F=A\\oplus B$\n\n$\\;\\;=\\bar{A}B+A\\bar{B}$\n\n$\\;\\;=\\bar{A}\\bar{B}I_0+\\bar{A}BI_1+A\\bar{B}I_2+ABI_3$\n\n$\\Rightarrow \\; I_0=0, I_1=1, I_2=1, i_3=0$\n\n$I_3I_2I_1I_0=0110$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$F=A\\oplus B$\n\n$\\;\\;=\\bar{A}B+A\\bar{B}$\n\n$\\;\\;=\\bar{A}\\bar{B}I_0+\\bar{A}BI_1+A\\bar{B}I_2+ABI_3$\n\n$\\Rightarrow \\; I_0=0, I_1=1, I_2=1, i_3=0$\n\n$I_3I_2I_1I_0=0110$",
+        "images": []
       }
     },
     "pp:ee:2015:q16": {
       "question_uid": "pp:ee:2015:q16",
-      "exam_uid": "ee:2015:set1:q16",
+      "exam_uid": "ee:2015:set1:main:q16",
       "title": "GATE EE 2015 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -637,13 +719,17 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Miscellaneous",
-        "markdown": "To maintain the direction of power flow from system 2 to system 1, the voltage $V_1=-485kV$ and voltage $V_2=500kV$ and $I=1.5kA$.\n\nSince, current cannot flow in reverse direction. Option (B) is correct answer.\n\nTherefore, the correct answer is **B**."
+        "markdown": "To maintain the direction of power flow from system 2 to system 1, the voltage $V_1=-485kV$ and voltage $V_2=500kV$ and $I=1.5kA$.\n\nSince, current cannot flow in reverse direction. Option (B) is correct answer.",
+        "images": []
       }
     },
     "pp:ee:2015:q17": {
       "question_uid": "pp:ee:2015:q17",
-      "exam_uid": "ee:2015:set1:q17",
+      "exam_uid": "ee:2015:set1:main:q17",
       "title": "GATE EE 2015 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -677,14 +763,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Power Systems - Generating Power Stations",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Power Systems** (specifically *Generating Power Stations*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Generating Power Stations**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Q and R only*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Q and R only)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2015:q18": {
       "question_uid": "pp:ee:2015:q18",
-      "exam_uid": "ee:2015:set1:q18",
+      "exam_uid": "ee:2015:set1:main:q18",
       "title": "GATE EE 2015 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -719,13 +808,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-454883d154.webp\" />\n\nPower =5x1=5 Watt\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-454883d154.webp\" />\n\nPower =5x1=5 Watt",
+        "images": [
+          "/question-images/ee/2015/ee-2015-454883d154.webp"
+        ]
       }
     },
     "pp:ee:2015:q19": {
       "question_uid": "pp:ee:2015:q19",
-      "exam_uid": "ee:2015:set1:q19",
+      "exam_uid": "ee:2015:set1:main:q19",
       "title": "GATE EE 2015 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 1,
@@ -758,13 +853,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-77c54b1db8.webp\" />\n\n$2-1(i_1+i)-i=0$\n\n$2-i_1-2i=0$\n\n$2i + i_1=2\\;\\;...(i)$\n\n$\\frac{V-2}{1}+\\frac{V}{1}+\\frac{V-(-20i)}{2}=0$\n\n$2(V-2)+2V+V+20i=0$\n\n$5V+20i=4$\n\nwhere,  $\\frac{V}{1}=i$\n\n$\\Rightarrow \\; 25i=4$\n\n$i=\\frac{4}{25}A$\n\n$i_1=2-2 \\times \\frac{4}{25} =1.68A$\n\n$V_{AB}=1.68 \\times 2=3.36 V$\n\nTherefore, the correct answer is **3.35** (acceptable range: [3.3, 3.4])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-77c54b1db8.webp\" />\n\n$2-1(i_1+i)-i=0$\n\n$2-i_1-2i=0$\n\n$2i + i_1=2\\;\\;...(i)$\n\n$\\frac{V-2}{1}+\\frac{V}{1}+\\frac{V-(-20i)}{2}=0$\n\n$2(V-2)+2V+V+20i=0$\n\n$5V+20i=4$\n\nwhere,  $\\frac{V}{1}=i$\n\n$\\Rightarrow \\; 25i=4$\n\n$i=\\frac{4}{25}A$\n\n$i_1=2-2 \\times \\frac{4}{25} =1.68A$\n\n$V_{AB}=1.68 \\times 2=3.36 V$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-77c54b1db8.webp"
+        ]
       }
     },
     "pp:ee:2015:q20": {
       "question_uid": "pp:ee:2015:q20",
-      "exam_uid": "ee:2015:set1:q20",
+      "exam_uid": "ee:2015:set1:main:q20",
       "title": "GATE EE 2015 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -799,13 +900,20 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Resonance and Locus Diagrams",
-        "markdown": "$Z=j\\omega L||\\frac{1}{j\\omega C}$\n\n$\\;\\;=\\frac{L/C}{j\\omega L+\\frac{1}{j\\omega C}}$\n\n$\\;\\;=\\frac{(L/C)j\\omega C}{-\\omega ^2 LC+1}$\n\n$Z=\\frac{j\\omega L}{1-\\omega^2 LC}$\n\n$|Z|=\\frac{\\omega L}{1-\\omega^2 LC}$\n\nFor,  $1\\gt \\omega^2 LC;$\n\n$Z=+ve$\n\n<img src=\"/question-images/ee/2015/ee-2015-719a361bd8.webp\" />\n\nFor, $1 \\lt \\omega^2 LC;$\n\n$Z=-ve$\n\n<img src=\"/question-images/ee/2015/ee-2015-9d8f18524f.webp\" />\n\nTherefore, the correct answer is **B**."
+        "markdown": "$Z=j\\omega L||\\frac{1}{j\\omega C}$\n\n$\\;\\;=\\frac{L/C}{j\\omega L+\\frac{1}{j\\omega C}}$\n\n$\\;\\;=\\frac{(L/C)j\\omega C}{-\\omega ^2 LC+1}$\n\n$Z=\\frac{j\\omega L}{1-\\omega^2 LC}$\n\n$|Z|=\\frac{\\omega L}{1-\\omega^2 LC}$\n\nFor,  $1\\gt \\omega^2 LC;$\n\n$Z=+ve$\n\n<img src=\"/question-images/ee/2015/ee-2015-719a361bd8.webp\" />\n\nFor, $1 \\lt \\omega^2 LC;$\n\n$Z=-ve$\n\n<img src=\"/question-images/ee/2015/ee-2015-9d8f18524f.webp\" />",
+        "images": [
+          "/question-images/ee/2015/ee-2015-719a361bd8.webp",
+          "/question-images/ee/2015/ee-2015-9d8f18524f.webp"
+        ]
       }
     },
     "pp:ee:2015:q21": {
       "question_uid": "pp:ee:2015:q21",
-      "exam_uid": "ee:2015:set1:q21",
+      "exam_uid": "ee:2015:set1:main:q21",
       "title": "GATE EE 2015 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -840,13 +948,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-a68dda37ef.webp\" />\n\n$$\\begin{aligned} R_a &= 0.1\\Omega \\\\ V_{OC}&= 200V\\\\ I'_{f}&= \\frac{I_f}{2}\\\\ \\omega '&= \\frac{\\omega _{rated}}{2}\\\\ E_g&= k\\phi \\omega \\\\ E'_g&= k\\frac{\\phi }{2} \\times \\frac{\\omega }{2}\\\\ &= \\frac{200}{4}=50V\\\\ V&=V(\\infty )-[V(\\infty )-V(0)]e^{-t/T} \\\\ &= 50-[50-0]e^{-t/T} \\\\ 25&= 50[1-e^{-t/RC} ]\\\\ \\frac{1}{2}&= 1-e^{-t/100 \\times 10^{-6}}\\\\ e^{-t/10^{-4}}&= \\frac{1}{2}\\\\ t&=0.693 \\times 10^{-4}\\\\ &=69.3\\mu s \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-a68dda37ef.webp\" />\n\n$$\\begin{aligned} R_a &= 0.1\\Omega \\\\ V_{OC}&= 200V\\\\ I'_{f}&= \\frac{I_f}{2}\\\\ \\omega '&= \\frac{\\omega _{rated}}{2}\\\\ E_g&= k\\phi \\omega \\\\ E'_g&= k\\frac{\\phi }{2} \\times \\frac{\\omega }{2}\\\\ &= \\frac{200}{4}=50V\\\\ V&=V(\\infty )-[V(\\infty )-V(0)]e^{-t/T} \\\\ &= 50-[50-0]e^{-t/T} \\\\ 25&= 50[1-e^{-t/RC} ]\\\\ \\frac{1}{2}&= 1-e^{-t/100 \\times 10^{-6}}\\\\ e^{-t/10^{-4}}&= \\frac{1}{2}\\\\ t&=0.693 \\times 10^{-4}\\\\ &=69.3\\mu s \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-a68dda37ef.webp"
+        ]
       }
     },
     "pp:ee:2015:q22": {
       "question_uid": "pp:ee:2015:q22",
-      "exam_uid": "ee:2015:set1:q22",
+      "exam_uid": "ee:2015:set1:main:q22",
       "title": "GATE EE 2015 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -881,13 +995,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "Self inductance of primary coil is 500 mH.\n\nSelf inductance of secondary coil is 600 mH.\n\nMutual inductance is 480 mH.\n\n$$\\begin{aligned} \\text{So,} \\;\\; L_1&=800mH \\\\ L_2&=600 mH \\\\ M &=480mH \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-369a74c2e2.webp\" />\n\nThe voltage source $V_1$ is sinusoidal with frequency 50 Hz.\n\n$$\\begin{aligned} \\text{So,} \\;\\; V_2&=L_2 \\frac{dI_2}{dt}+\\frac{MdI_1}{dt} \\\\ V_2&=0 \\\\ \\text{So,} \\;\\; j\\omega L_2I_2 &=-j\\omega MI_1 \\\\ \\text{So,} \\;\\; I_2&=-I_1 \\frac{M}{L_2}=-\\frac{4}{5}I_1 \\\\ \\text{Now,} \\;\\; V_1&= L_1 \\frac{dI_1}{dt}+\\frac{MdI_2}{dt} \\\\ V_1 &=j\\omega L_1I_1+j\\omega MI_2 \\\\ V_1&=j\\omega [L_1I_1+MI_2] \\\\ V_1&=j\\omega [800mH-384mH]I_1 \\\\ \\frac{V_1}{I_1}&=j\\omega [416mH] \\end{aligned}$$\n\nSo, equivalent inductance is $416 mH.$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Self inductance of primary coil is 500 mH.\n\nSelf inductance of secondary coil is 600 mH.\n\nMutual inductance is 480 mH.\n\n$$\\begin{aligned} \\text{So,} \\;\\; L_1&=800mH \\\\ L_2&=600 mH \\\\ M &=480mH \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-369a74c2e2.webp\" />\n\nThe voltage source $V_1$ is sinusoidal with frequency 50 Hz.\n\n$$\\begin{aligned} \\text{So,} \\;\\; V_2&=L_2 \\frac{dI_2}{dt}+\\frac{MdI_1}{dt} \\\\ V_2&=0 \\\\ \\text{So,} \\;\\; j\\omega L_2I_2 &=-j\\omega MI_1 \\\\ \\text{So,} \\;\\; I_2&=-I_1 \\frac{M}{L_2}=-\\frac{4}{5}I_1 \\\\ \\text{Now,} \\;\\; V_1&= L_1 \\frac{dI_1}{dt}+\\frac{MdI_2}{dt} \\\\ V_1 &=j\\omega L_1I_1+j\\omega MI_2 \\\\ V_1&=j\\omega [L_1I_1+MI_2] \\\\ V_1&=j\\omega [800mH-384mH]I_1 \\\\ \\frac{V_1}{I_1}&=j\\omega [416mH] \\end{aligned}$$\n\nSo, equivalent inductance is $416 mH.$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-369a74c2e2.webp"
+        ]
       }
     },
     "pp:ee:2015:q23": {
       "question_uid": "pp:ee:2015:q23",
-      "exam_uid": "ee:2015:set1:q23",
+      "exam_uid": "ee:2015:set1:main:q23",
       "title": "GATE EE 2015 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -921,14 +1041,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electrical Machines - Transformers",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Transformers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Transformers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *current transformer.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (current transformer.)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2015:q24": {
       "question_uid": "pp:ee:2015:q24",
-      "exam_uid": "ee:2015:set1:q24",
+      "exam_uid": "ee:2015:set1:main:q24",
       "title": "GATE EE 2015 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -963,13 +1086,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "From initial line equation,\n\n$20 dB=20log_{10}K$\n\nas we know,\n\n$20 dB=20log_{10}K$\n\n$K=10$\n\nnow, from the given plot we know type of system is one.\n\nHence, $G(s)=\\frac{K(1+sT_1)}{(1+sT_2)}$\n\n$T_1=\\frac{1}{10}; \\;\\;T_2=\\frac{1}{1000}$\n\n$G(s)=\\frac{10(1+0.001s)}{(1+0.1s)} =\\frac{(1000+s)}{10(s+10)}$\n\nTherefore, the correct answer is **D**."
+        "markdown": "From initial line equation,\n\n$20 dB=20log_{10}K$\n\nas we know,\n\n$20 dB=20log_{10}K$\n\n$K=10$\n\nnow, from the given plot we know type of system is one.\n\nHence, $G(s)=\\frac{K(1+sT_1)}{(1+sT_2)}$\n\n$T_1=\\frac{1}{10}; \\;\\;T_2=\\frac{1}{1000}$\n\n$G(s)=\\frac{10(1+0.001s)}{(1+0.1s)} =\\frac{(1000+s)}{10(s+10)}$",
+        "images": []
       }
     },
     "pp:ee:2015:q25": {
       "question_uid": "pp:ee:2015:q25",
-      "exam_uid": "ee:2015:set1:q25",
+      "exam_uid": "ee:2015:set1:main:q25",
       "title": "GATE EE 2015 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1004,13 +1131,19 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-43aa7b6595.webp\" />\n\n$\\frac{Y(s)}{X_2(s)}|_{X_1(s)=0}=\\frac{G_2}{1-(-G_1G_2-G_1)} =\\frac{G_2}{1+G_1(1+G_2)}$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-43aa7b6595.webp\" />\n\n$\\frac{Y(s)}{X_2(s)}|_{X_1(s)=0}=\\frac{G_2}{1-(-G_1G_2-G_1)} =\\frac{G_2}{1+G_1(1+G_2)}$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-43aa7b6595.webp"
+        ]
       }
     },
     "pp:ee:2015:q26": {
       "question_uid": "pp:ee:2015:q26",
-      "exam_uid": "ee:2015:set1:q26",
+      "exam_uid": "ee:2015:set1:main:q26",
       "title": "GATE EE 2015 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1044,14 +1177,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Linear Algebra*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Linear Algebra**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$\\frac{1}{3\\sqrt{3}}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($\\frac{1}{3\\sqrt{3}}$)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2015:q27": {
       "question_uid": "pp:ee:2015:q27",
-      "exam_uid": "ee:2015:set1:q27",
+      "exam_uid": "ee:2015:set1:main:q27",
       "title": "GATE EE 2015 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1084,13 +1220,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned}\n\nD^2+5D+6&=0 \\\\\n\nD &=-1,-3 \\\\\n\ny(t)&=c_1e^{-2t}+c_2e^{-3t} \\\\\n\n\\text{Given,  } y(0)&=2 \\\\\n\n\\Rightarrow \\; c_1+c_2 &=2\\;\\;...(i) \\\\\n\ny(1)&=-\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\; \\frac{c_1}{e^2}+\\frac{c_2}{e^3} &= -\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\;ec_1+c_2 &=3e-1\\;\\;\\;...(ii) \\\\\n\n\\text{Now solving equation} &\\text{ (i) and (ii), we get} \\\\\n\nc_1=3, &c_2=-1\\\\\n\n\\text{Substituting in  }y(t),& we get \\\\\n\ny(t)&=3e^{-2t}-e^{-3t}\\\\\n\n\\text{Now,   }\\frac{dy}{dt}&=-6e^{-2t}+3e^{-3t}\\\\\n\n\\left ( \\frac{dy}{dt} \\right )_{t=0}&=-6+3=-3\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **-3**."
+        "markdown": "$$\\begin{aligned}\n\nD^2+5D+6&=0 \\\\\n\nD &=-1,-3 \\\\\n\ny(t)&=c_1e^{-2t}+c_2e^{-3t} \\\\\n\n\\text{Given,  } y(0)&=2 \\\\\n\n\\Rightarrow \\; c_1+c_2 &=2\\;\\;...(i) \\\\\n\ny(1)&=-\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\; \\frac{c_1}{e^2}+\\frac{c_2}{e^3} &= -\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\;ec_1+c_2 &=3e-1\\;\\;\\;...(ii) \\\\\n\n\\text{Now solving equation} &\\text{ (i) and (ii), we get} \\\\\n\nc_1=3, &c_2=-1\\\\\n\n\\text{Substituting in  }y(t),& we get \\\\\n\ny(t)&=3e^{-2t}-e^{-3t}\\\\\n\n\\text{Now,   }\\frac{dy}{dt}&=-6e^{-2t}+3e^{-3t}\\\\\n\n\\left ( \\frac{dy}{dt} \\right )_{t=0}&=-6+3=-3\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q28": {
       "question_uid": "pp:ee:2015:q28",
-      "exam_uid": "ee:2015:set1:q28",
+      "exam_uid": "ee:2015:set1:main:q28",
       "title": "GATE EE 2015 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1125,13 +1265,20 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-22c34dd034.webp\" />\n\nSo, cos(t) is\n\n<img src=\"/question-images/ee/2015/ee-2015-0a1cf32978.webp\" />\n\nSo, sgn(cos t) is a rectangular signal which is even and has half wave symmetry.\n\nSo, Fourier series will have only cosine terms with add harmonics only.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-22c34dd034.webp\" />\n\nSo, cos(t) is\n\n<img src=\"/question-images/ee/2015/ee-2015-0a1cf32978.webp\" />\n\nSo, sgn(cos t) is a rectangular signal which is even and has half wave symmetry.\n\nSo, Fourier series will have only cosine terms with add harmonics only.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-22c34dd034.webp",
+          "/question-images/ee/2015/ee-2015-0a1cf32978.webp"
+        ]
       }
     },
     "pp:ee:2015:q29": {
       "question_uid": "pp:ee:2015:q29",
-      "exam_uid": "ee:2015:set1:q29",
+      "exam_uid": "ee:2015:set1:main:q29",
       "title": "GATE EE 2015 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1166,13 +1313,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "P(A wins) = P( 6 in first throw by A) + P(A not 6, B not 6,)+...\n\n$$\\begin{aligned} &=\\frac{1}{6}+\\frac{5}{6}\\frac{5}{6}\\frac{1}{6}+....\\\\ &=\\frac{1}{6}\\left ( 1+\\left ( \\frac{5}{6} \\right )^2+\\left ( \\frac{5}{6} \\right )^4+... \\right )\\\\ &=\\frac{1}{6}\\left ( \\frac{1}{1-\\left (\\frac{5}{6} \\right )^2} \\right )=\\frac{6}{11} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "P(A wins) = P( 6 in first throw by A) + P(A not 6, B not 6,)+...\n\n$$\\begin{aligned} &=\\frac{1}{6}+\\frac{5}{6}\\frac{5}{6}\\frac{1}{6}+....\\\\ &=\\frac{1}{6}\\left ( 1+\\left ( \\frac{5}{6} \\right )^2+\\left ( \\frac{5}{6} \\right )^4+... \\right )\\\\ &=\\frac{1}{6}\\left ( \\frac{1}{1-\\left (\\frac{5}{6} \\right )^2} \\right )=\\frac{6}{11} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q30": {
       "question_uid": "pp:ee:2015:q30",
-      "exam_uid": "ee:2015:set1:q30",
+      "exam_uid": "ee:2015:set1:main:q30",
       "title": "GATE EE 2015 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1207,13 +1358,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Resistance and Potentiometers",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-357ba78430.webp\" />\n\n$$\\begin{aligned} V_0 &= \\left [ \\frac{R(1+x)}{PR+R(1+x)}-\\frac{R}{R+PR} \\right ]E\\\\ V_0 &=\\left [ \\frac{R(1+x)}{R+(1+x+P)}-\\frac{R}{R+(1+P)} \\right ]E \\\\ V_0&= \\left [ \\frac{1+x}{1+x+P}-\\frac{1}{1+P} \\right ]E\\\\ V_0&=\\left [ \\frac{(1+x)(1+P)-(1+x+P)}{(1+x+P)(1+P)} \\right ]E \\\\ V_0&=\\left [ \\frac{1+x+Px+P-1-x-P}{1+P+x+xP+P+P^2} \\right ]E \\\\ V_0&=\\left [ \\frac{Px}{1+2P+P^2+x+xP} \\right ]E \\end{aligned}$$\n\nFor maximum $V_0,$\n\n$\\frac{dV_0}{dP}=0$\n\n$\\Rightarrow \\;\\frac{x}{1+x+P(P+2+x)}-\\frac{xP(2P+x+2)}{1+x+P(2+P+x)^2}=0$\n\n$\\Rightarrow \\; [1+x+P(2+P+x)]=P(2P+x+2)$\n\n$\\Rightarrow \\; 1+x+2P+P^2+Px=2p^2+Px+2P$\n\n$\\Rightarrow \\; 1+x=P^2$\n\n$\\Rightarrow \\; P=\\sqrt{1+x}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-357ba78430.webp\" />\n\n$$\\begin{aligned} V_0 &= \\left [ \\frac{R(1+x)}{PR+R(1+x)}-\\frac{R}{R+PR} \\right ]E\\\\ V_0 &=\\left [ \\frac{R(1+x)}{R+(1+x+P)}-\\frac{R}{R+(1+P)} \\right ]E \\\\ V_0&= \\left [ \\frac{1+x}{1+x+P}-\\frac{1}{1+P} \\right ]E\\\\ V_0&=\\left [ \\frac{(1+x)(1+P)-(1+x+P)}{(1+x+P)(1+P)} \\right ]E \\\\ V_0&=\\left [ \\frac{1+x+Px+P-1-x-P}{1+P+x+xP+P+P^2} \\right ]E \\\\ V_0&=\\left [ \\frac{Px}{1+2P+P^2+x+xP} \\right ]E \\end{aligned}$$\n\nFor maximum $V_0,$\n\n$\\frac{dV_0}{dP}=0$\n\n$\\Rightarrow \\;\\frac{x}{1+x+P(P+2+x)}-\\frac{xP(2P+x+2)}{1+x+P(2+P+x)^2}=0$\n\n$\\Rightarrow \\; [1+x+P(2+P+x)]=P(2P+x+2)$\n\n$\\Rightarrow \\; 1+x+2P+P^2+Px=2p^2+Px+2P$\n\n$\\Rightarrow \\; 1+x=P^2$\n\n$\\Rightarrow \\; P=\\sqrt{1+x}$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-357ba78430.webp"
+        ]
       }
     },
     "pp:ee:2015:q31": {
       "question_uid": "pp:ee:2015:q31",
-      "exam_uid": "ee:2015:set1:q31",
+      "exam_uid": "ee:2015:set1:main:q31",
       "title": "GATE EE 2015 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1246,13 +1403,21 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-35ad6f9717.webp\" />\n\n$S_1$ is turn ON for 0.2 ms\n\n$S_2$ is turn ON for 0.3 ms.\n\nSwitching cycle time period is 0.5 ms.\n\n<img src=\"/question-images/ee/2015/ee-2015-589727f84f.webp\" />\n\nthe output voltage $V_0$ across $R_L$ is\n\n<img src=\"/question-images/ee/2015/ee-2015-4eb28fbd4a.webp\" />\n\n$$\\begin{aligned} V_0&= \\frac{1}{0.5 \\times 10^{-3}}\\left [ \\int_{0}^{0.2}10dt +\\int_{0.2}^{0.5}5 dt \\right ]\\\\ &= \\frac{1}{0.5 \\times 10^{-3}} [10(0.2)+5(0.5-0.2)]\\\\ &=\\frac{1}{0.5 \\times 10^{-3}} [2 \\times 10^{-3}+1.5 \\times 10^{-3}] \\\\ &= \\frac{3.5 \\times 10^{-3}}{0.5 \\times 10^{-3}}=7V \\end{aligned}$$\n\nTherefore, the correct answer is **7**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-35ad6f9717.webp\" />\n\n$S_1$ is turn ON for 0.2 ms\n\n$S_2$ is turn ON for 0.3 ms.\n\nSwitching cycle time period is 0.5 ms.\n\n<img src=\"/question-images/ee/2015/ee-2015-589727f84f.webp\" />\n\nthe output voltage $V_0$ across $R_L$ is\n\n<img src=\"/question-images/ee/2015/ee-2015-4eb28fbd4a.webp\" />\n\n$$\\begin{aligned} V_0&= \\frac{1}{0.5 \\times 10^{-3}}\\left [ \\int_{0}^{0.2}10dt +\\int_{0.2}^{0.5}5 dt \\right ]\\\\ &= \\frac{1}{0.5 \\times 10^{-3}} [10(0.2)+5(0.5-0.2)]\\\\ &=\\frac{1}{0.5 \\times 10^{-3}} [2 \\times 10^{-3}+1.5 \\times 10^{-3}] \\\\ &= \\frac{3.5 \\times 10^{-3}}{0.5 \\times 10^{-3}}=7V \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-35ad6f9717.webp",
+          "/question-images/ee/2015/ee-2015-589727f84f.webp",
+          "/question-images/ee/2015/ee-2015-4eb28fbd4a.webp"
+        ]
       }
     },
     "pp:ee:2015:q32": {
       "question_uid": "pp:ee:2015:q32",
-      "exam_uid": "ee:2015:set1:q32",
+      "exam_uid": "ee:2015:set1:main:q32",
       "title": "GATE EE 2015 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1287,13 +1452,17 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
-        "markdown": "The average voltage across inductor, $V_L=0$ and hence the given circuit is a boost regular so average voltage across capacitor is equal to average voltage across the load so,\n\n$V_0=\\left ( \\frac{1}{1-\\delta } \\right )V_{dc}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The average voltage across inductor, $V_L=0$ and hence the given circuit is a boost regular so average voltage across capacitor is equal to average voltage across the load so,\n\n$V_0=\\left ( \\frac{1}{1-\\delta } \\right )V_{dc}$",
+        "images": []
       }
     },
     "pp:ee:2015:q33": {
       "question_uid": "pp:ee:2015:q33",
-      "exam_uid": "ee:2015:set1:q33",
+      "exam_uid": "ee:2015:set1:main:q33",
       "title": "GATE EE 2015 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1326,13 +1495,19 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
-        "markdown": "The rms value of the fundamental component of output voltage,\n\n$$\\begin{aligned} V_{R1}&=\\frac{V_s}{\\sqrt{2}}\\times m_i \\\\ &= \\frac{100}{\\sqrt{2}} \\times 0.7=49.49V \\end{aligned}$$\n\nAmplitude of the value is peak value (i.e.)\n\n$V_{R_{peak}}=\\sqrt{2} \\times 49.49=70V$\n\n<img src=\"/question-images/ee/2015/ee-2015-1a3fa7829a.webp\" />\n\n$V_{R_{peak}}$ is the amplitude of fundamental voltage at the VSI. $V_{0_{(peak)}}$ is the amplitude of fundamental voltage at the resistor.\n\n$$\\begin{aligned}\n\nZ&=\\frac{R(-jX_C)}{R-X_Cj} \\\\\n\n&= \\frac{5(-j50)}{5-j50}\\\\\n\n&= 4.97\\angle -5.71^{\\circ}\\Omega \\\\\n\n\\text{where, } X_C&= \\frac{1}{\\omega C}\\\\\n\n&=\\frac{1}{2 \\pi \\times 50 \\times 63.66 \\times 10^{-6}} \\\\\n\n&= 50\\Omega \\\\\n\nX_L &=\\omega L \\\\\n\n&=2 \\pi \\times 50 \\times 9.55 \\times 10^{-3} \\\\\n\n&= 3 \\Omega\\\\\n\nV_{0(peak)}&=V_{R_{peak}} \\times \\frac{4.97\\angle -5.71^{\\circ}}{(4.97\\angle -5.71^{\\circ})+j3}\\\\\n\n&=62.75\\angle -32.5^{\\circ}\\;V\n\n\\end{aligned}$$\n\nTherefore, the amplitude of the fundamental component in the output voltage,\n\n$V_0=62.75V$\n\nTherefore, the correct answer is **62** (acceptable range: [60, 64])."
+        "markdown": "The rms value of the fundamental component of output voltage,\n\n$$\\begin{aligned} V_{R1}&=\\frac{V_s}{\\sqrt{2}}\\times m_i \\\\ &= \\frac{100}{\\sqrt{2}} \\times 0.7=49.49V \\end{aligned}$$\n\nAmplitude of the value is peak value (i.e.)\n\n$V_{R_{peak}}=\\sqrt{2} \\times 49.49=70V$\n\n<img src=\"/question-images/ee/2015/ee-2015-1a3fa7829a.webp\" />\n\n$V_{R_{peak}}$ is the amplitude of fundamental voltage at the VSI. $V_{0_{(peak)}}$ is the amplitude of fundamental voltage at the resistor.\n\n$$\\begin{aligned}\n\nZ&=\\frac{R(-jX_C)}{R-X_Cj} \\\\\n\n&= \\frac{5(-j50)}{5-j50}\\\\\n\n&= 4.97\\angle -5.71^{\\circ}\\Omega \\\\\n\n\\text{where, } X_C&= \\frac{1}{\\omega C}\\\\\n\n&=\\frac{1}{2 \\pi \\times 50 \\times 63.66 \\times 10^{-6}} \\\\\n\n&= 50\\Omega \\\\\n\nX_L &=\\omega L \\\\\n\n&=2 \\pi \\times 50 \\times 9.55 \\times 10^{-3} \\\\\n\n&= 3 \\Omega\\\\\n\nV_{0(peak)}&=V_{R_{peak}} \\times \\frac{4.97\\angle -5.71^{\\circ}}{(4.97\\angle -5.71^{\\circ})+j3}\\\\\n\n&=62.75\\angle -32.5^{\\circ}\\;V\n\n\\end{aligned}$$\n\nTherefore, the amplitude of the fundamental component in the output voltage,\n\n$V_0=62.75V$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-1a3fa7829a.webp"
+        ]
       }
     },
     "pp:ee:2015:q34": {
       "question_uid": "pp:ee:2015:q34",
-      "exam_uid": "ee:2015:set1:q34",
+      "exam_uid": "ee:2015:set1:main:q34",
       "title": "GATE EE 2015 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1365,13 +1540,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "$N_S=\\frac{120f}{P}=1500$\n\nSlip due to 5th harmmonic\n\n$S_5=\\frac{N_S+\\frac{N_s}{5}}{N_S}=\\frac{6}{5}=1.2$\n\nTherefore, the correct answer is **1.19** (acceptable range: [1.16, 1.22])."
+        "markdown": "$N_S=\\frac{120f}{P}=1500$\n\nSlip due to 5th harmmonic\n\n$S_5=\\frac{N_S+\\frac{N_s}{5}}{N_S}=\\frac{6}{5}=1.2$",
+        "images": []
       }
     },
     "pp:ee:2015:q35": {
       "question_uid": "pp:ee:2015:q35",
-      "exam_uid": "ee:2015:set1:q35",
+      "exam_uid": "ee:2015:set1:main:q35",
       "title": "GATE EE 2015 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1406,13 +1585,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
-        "markdown": "$x[n]=(0.25)^nu(n)+(0.5)^n u(-n-1)$\n\nSignal $x[n]$ is sum of two signals, one is right sided $[(-0.25)^n u(n)]$ and other is left sided $[(0.5)^n u(-n-1)]$. The right sided signal will have pole at location with magnitude 0.25. So, ROC is $|z| \\gt 0.25$. The left sided signal will have pole at location with magnitude 0.5. So, ROC is $|z| \\lt 0.5$. So, ROC of X(z) (Z-transform of x(n) will be ) $0.25 \\lt |z| \\lt 0.5$.\n\nTherefore, the correct answer is **C**."
+        "markdown": "$x[n]=(0.25)^nu(n)+(0.5)^n u(-n-1)$\n\nSignal $x[n]$ is sum of two signals, one is right sided $[(-0.25)^n u(n)]$ and other is left sided $[(0.5)^n u(-n-1)]$. The right sided signal will have pole at location with magnitude 0.25. So, ROC is $|z| \\gt 0.25$. The left sided signal will have pole at location with magnitude 0.5. So, ROC is $|z| \\lt 0.5$. So, ROC of X(z) (Z-transform of x(n) will be ) $0.25 \\lt |z| \\lt 0.5$.",
+        "images": []
       }
     },
     "pp:ee:2015:q36": {
       "question_uid": "pp:ee:2015:q36",
-      "exam_uid": "ee:2015:set1:q36",
+      "exam_uid": "ee:2015:set1:main:q36",
       "title": "GATE EE 2015 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1445,13 +1628,19 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
-        "markdown": "A capacitor is made as shown in figure\n\n<img src=\"/question-images/ee/2015/ee-2015-386382ebd3.webp\" />\n\nBreakdown of dielectric air is 30 kV/cm and breakdown of dielectric glass is 300 kV/cm.\n\nWe need to find maximum value of $V_{AB}$ so that no $C_1$ or $C_2$ breaks down.\n\nSince, area and width of  $C_1$ and $C_2$ is same but $\\varepsilon _{r_1}=1$ and $\\varepsilon _{r_2}=4$\n\nSo,  $C_2=4C_1$\n\nSo, if $V_{AB}$ is applied,\n\n$V_{C_1}=\\frac{4}{5}V_{AB}$ and $V_{C_2}=\\frac{1}{5}V_{AB}$\n\nFor $C_1$ not breakdown, we need\n\n$$\\begin{aligned} \\frac{4}{5}\\frac{V_{AB}}{5mm}&\\lt 30kV/cm \\\\ V_{AB}& \\lt \\frac{30 \\times 25 \\times 1000}{4}V \\\\ V_{A}& \\lt 18.75kV \\end{aligned}$$\n\nTherefore, the correct answer is **18.5** (acceptable range: [17, 20])."
+        "markdown": "A capacitor is made as shown in figure\n\n<img src=\"/question-images/ee/2015/ee-2015-386382ebd3.webp\" />\n\nBreakdown of dielectric air is 30 kV/cm and breakdown of dielectric glass is 300 kV/cm.\n\nWe need to find maximum value of $V_{AB}$ so that no $C_1$ or $C_2$ breaks down.\n\nSince, area and width of  $C_1$ and $C_2$ is same but $\\varepsilon _{r_1}=1$ and $\\varepsilon _{r_2}=4$\n\nSo,  $C_2=4C_1$\n\nSo, if $V_{AB}$ is applied,\n\n$V_{C_1}=\\frac{4}{5}V_{AB}$ and $V_{C_2}=\\frac{1}{5}V_{AB}$\n\nFor $C_1$ not breakdown, we need\n\n$$\\begin{aligned} \\frac{4}{5}\\frac{V_{AB}}{5mm}&\\lt 30kV/cm \\\\ V_{AB}& \\lt \\frac{30 \\times 25 \\times 1000}{4}V \\\\ V_{A}& \\lt 18.75kV \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-386382ebd3.webp"
+        ]
       }
     },
     "pp:ee:2015:q37": {
       "question_uid": "pp:ee:2015:q37",
-      "exam_uid": "ee:2015:set1:q37",
+      "exam_uid": "ee:2015:set1:main:q37",
       "title": "GATE EE 2015 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1484,13 +1673,19 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
-        "markdown": "JK flip-flop1 and 2 from a syncgronous sequential circuits and they are synchronized with the output of 0th JK flip-flop.\n\n<img src=\"/question-images/ee/2015/ee-2015-e8619dc254.webp\" />\n\nNumber of cycles = 3 i.e. equal to 6 clock cycles.\n\nTherefore, the correct answer is **6**."
+        "markdown": "JK flip-flop1 and 2 from a syncgronous sequential circuits and they are synchronized with the output of 0th JK flip-flop.\n\n<img src=\"/question-images/ee/2015/ee-2015-e8619dc254.webp\" />\n\nNumber of cycles = 3 i.e. equal to 6 clock cycles.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-e8619dc254.webp"
+        ]
       }
     },
     "pp:ee:2015:q38": {
       "question_uid": "pp:ee:2015:q38",
-      "exam_uid": "ee:2015:set1:q38",
+      "exam_uid": "ee:2015:set1:main:q38",
       "title": "GATE EE 2015 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1524,14 +1719,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Electronics** (specifically *Boolean Algebra and Minimization*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Boolean Algebra and Minimization**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$(A+\\bar{C}+D)(\\bar{A}+B+D)$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($(A+\\bar{C}+D)(\\bar{A}+B+D)$)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2015:q39": {
       "question_uid": "pp:ee:2015:q39",
-      "exam_uid": "ee:2015:set1:q39",
+      "exam_uid": "ee:2015:set1:main:q39",
       "title": "GATE EE 2015 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1566,13 +1764,20 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "The circuit is\n\n<img src=\"/question-images/ee/2015/ee-2015-fa2bea7507.webp\" />\n\nNow, the gain of op-amp is 1000\n\nSo,   $V_o=1000(V_+-V_-)$\n\nSince  $V_+=0$ (grounded)\n\n$V_-=V_A$\n\nThe above circuit can be redrawn as\n\n<img src=\"/question-images/ee/2015/ee-2015-8d5d15c398.webp\" />\n\nSo, $V_o=1000\\;VA$\n\nNow, KCL at node 'A'\n\n$\\frac{V_A-V_i}{1000}=\\left ( \\frac{V_A-V_o}{1/sC} \\right )$\n\n$\\frac{V_A-V_i}{1000}=\\frac{V_A-(-1000V_A)}{1/sC}$\n\n$\\frac{V_A-V_i}{1000}=(1001V_A)sC$\n\n$V_A-V_i=(1001)\\times 1000V_AsC$\n\n$V_A-V_i=s(1001000 \\times 10^{-6}) V_A$\n\n$V_A-s1.001V_A=V_i$\n\n$V_A=\\left [ \\frac{V_i}{1-s(1.001)} \\right ]$\n\nSince,  $V_o=-1000V_A$\n\n$\\;\\; =-\\frac{1000}{1-s(1.001)} V_i$\n\nSince, pole is at (1/1.001), so time constant is approax '1001'.\n\nTherefore, the correct answer is **A**."
+        "markdown": "The circuit is\n\n<img src=\"/question-images/ee/2015/ee-2015-fa2bea7507.webp\" />\n\nNow, the gain of op-amp is 1000\n\nSo,   $V_o=1000(V_+-V_-)$\n\nSince  $V_+=0$ (grounded)\n\n$V_-=V_A$\n\nThe above circuit can be redrawn as\n\n<img src=\"/question-images/ee/2015/ee-2015-8d5d15c398.webp\" />\n\nSo, $V_o=1000\\;VA$\n\nNow, KCL at node 'A'\n\n$\\frac{V_A-V_i}{1000}=\\left ( \\frac{V_A-V_o}{1/sC} \\right )$\n\n$\\frac{V_A-V_i}{1000}=\\frac{V_A-(-1000V_A)}{1/sC}$\n\n$\\frac{V_A-V_i}{1000}=(1001V_A)sC$\n\n$V_A-V_i=(1001)\\times 1000V_AsC$\n\n$V_A-V_i=s(1001000 \\times 10^{-6}) V_A$\n\n$V_A-s1.001V_A=V_i$\n\n$V_A=\\left [ \\frac{V_i}{1-s(1.001)} \\right ]$\n\nSince,  $V_o=-1000V_A$\n\n$\\;\\; =-\\frac{1000}{1-s(1.001)} V_i$\n\nSince, pole is at (1/1.001), so time constant is approax '1001'.",
+        "images": [
+          "/question-images/ee/2015/ee-2015-fa2bea7507.webp",
+          "/question-images/ee/2015/ee-2015-8d5d15c398.webp"
+        ]
       }
     },
     "pp:ee:2015:q40": {
       "question_uid": "pp:ee:2015:q40",
-      "exam_uid": "ee:2015:set1:q40",
+      "exam_uid": "ee:2015:set1:main:q40",
       "title": "GATE EE 2015 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1607,13 +1812,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - A-D and D-A Converters",
-        "markdown": "The reference voltage is 5 V.\n\nThe number of bits in ADC are 8.\n\nSo, the resolution will be $=\\frac{5}{2^8-1}=\\frac{5}{255}$\n\nThe applied input is 3.5 V.\n\nThe succesive approximation ADC start working from the MSB so,\n\nAfter one clock:\n\nSAR will toggle it's MSB from $0\\rightarrow 1$. So, output of SAR will be 1000 0000.\n\nAfter second clock:\n\nSAR will toggle its 7th bit from $0\\rightarrow 1$ but 1100 0000 will result in value greater than 3.5. So, output of SAR after 2nd clock will be 1000 0000.\n\nAfter third clock:\n\nSAR will toggle it's 6th bit from $0\\rightarrow 1$ and output will be 1010 0000.\n\nTherefore, the correct answer is **A**."
+        "markdown": "The reference voltage is 5 V.\n\nThe number of bits in ADC are 8.\n\nSo, the resolution will be $=\\frac{5}{2^8-1}=\\frac{5}{255}$\n\nThe applied input is 3.5 V.\n\nThe succesive approximation ADC start working from the MSB so,\n\nAfter one clock:\n\nSAR will toggle it's MSB from $0\\rightarrow 1$. So, output of SAR will be 1000 0000.\n\nAfter second clock:\n\nSAR will toggle its 7th bit from $0\\rightarrow 1$ but 1100 0000 will result in value greater than 3.5. So, output of SAR after 2nd clock will be 1000 0000.\n\nAfter third clock:\n\nSAR will toggle it's 6th bit from $0\\rightarrow 1$ and output will be 1010 0000.",
+        "images": []
       }
     },
     "pp:ee:2015:q41": {
       "question_uid": "pp:ee:2015:q41",
-      "exam_uid": "ee:2015:set1:q41",
+      "exam_uid": "ee:2015:set1:main:q41",
       "title": "GATE EE 2015 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1646,13 +1855,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
-        "markdown": "$$\\begin{aligned} C_1&=0.01P_1^2+30P_1+10\\\\ \\frac{dC_1}{dP_1}&=2 \\times 0.01P_1+30\\\\ &=0.02P_1+30\\\\ C_2&=0.05P_2^2+10P_2+10\\\\ \\frac{dC-2}{dP_2}&=0.1P_2+10\\\\ \\text{For optimum } &\\text{incremental cost,}\\\\ \\frac{dC_1}{dP_1}&=\\frac{dC_2}{dP_2}\\\\ 0.02P_1+30&=0.1P_2+10\\\\ 0.02P_1-0.1P_2&=-20 \\;\\;...(i)\\\\ \\text{Given, }P_1+P_2&=200 \\;\\;...(ii)\\\\ \\text{Solving } & \\text{equation (i) and (ii),}\\\\ P_2&=200, P_1=0\\\\ \\text{But the }& \\text{range of }P_1 \\text{ and }P_2 \\text{ are specified as}\\\\ 100MW \\leq & P_1 \\leq 150MW\\\\ 100MW \\leq & P_2 \\leq 180MW\\\\ \\text{hence, }& P_2=200 MW \\text{ is not valid}\\\\ \\text{so, both }& P_1 \\text{ and } P_2 \\text{ are operating at}\\\\ P_1=100,P_2=100\\;& \\Rightarrow \\; P_1+P_2=200\\\\ IC_1=\\frac{dC_1}{dP_1}&=0.02 \\times P_1+30=32 Rs/MW\\\\ IC_2=\\frac{dC_2}{dP_2}&=0.1 \\times P_2+10=20 Rs/MW \\end{aligned}$$\n\nTherefore, the correct answer is **20**."
+        "markdown": "$$\\begin{aligned} C_1&=0.01P_1^2+30P_1+10\\\\ \\frac{dC_1}{dP_1}&=2 \\times 0.01P_1+30\\\\ &=0.02P_1+30\\\\ C_2&=0.05P_2^2+10P_2+10\\\\ \\frac{dC-2}{dP_2}&=0.1P_2+10\\\\ \\text{For optimum } &\\text{incremental cost,}\\\\ \\frac{dC_1}{dP_1}&=\\frac{dC_2}{dP_2}\\\\ 0.02P_1+30&=0.1P_2+10\\\\ 0.02P_1-0.1P_2&=-20 \\;\\;...(i)\\\\ \\text{Given, }P_1+P_2&=200 \\;\\;...(ii)\\\\ \\text{Solving } & \\text{equation (i) and (ii),}\\\\ P_2&=200, P_1=0\\\\ \\text{But the }& \\text{range of }P_1 \\text{ and }P_2 \\text{ are specified as}\\\\ 100MW \\leq & P_1 \\leq 150MW\\\\ 100MW \\leq & P_2 \\leq 180MW\\\\ \\text{hence, }& P_2=200 MW \\text{ is not valid}\\\\ \\text{so, both }& P_1 \\text{ and } P_2 \\text{ are operating at}\\\\ P_1=100,P_2=100\\;& \\Rightarrow \\; P_1+P_2=200\\\\ IC_1=\\frac{dC_1}{dP_1}&=0.02 \\times P_1+30=32 Rs/MW\\\\ IC_2=\\frac{dC_2}{dP_2}&=0.1 \\times P_2+10=20 Rs/MW \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q42": {
       "question_uid": "pp:ee:2015:q42",
-      "exam_uid": "ee:2015:set1:q42",
+      "exam_uid": "ee:2015:set1:main:q42",
       "title": "GATE EE 2015 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1687,13 +1900,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "FDLF method gives approximate solution not because it uses several assumption but due to the fixed number of iterations.\n\nTherefore, the correct answer is **D**."
+        "markdown": "FDLF method gives approximate solution not because it uses several assumption but due to the fixed number of iterations.",
+        "images": []
       }
     },
     "pp:ee:2015:q43": {
       "question_uid": "pp:ee:2015:q43",
-      "exam_uid": "ee:2015:set1:q43",
+      "exam_uid": "ee:2015:set1:main:q43",
       "title": "GATE EE 2015 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1726,13 +1943,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
-        "markdown": "Let $3-\\phi$ fault occurs at t=0\n\n$\\Rightarrow \\; P_e=0\\text{ for }t\\geq 0^+$\n\nNow, swing equation for $t\\geq 0^+$\n\n$$\\begin{aligned}\n\n\\frac{2H}{\\omega _s}\\frac{d^2\\delta }{dt^2} &=P_m \\\\\n\n\\frac{d^2\\delta }{dt^2}&= \\frac{P_m \\omega _s }{2H}\\\\\n\n\\frac{d\\delta }{dt}&= \\frac{P_m \\omega _s }{2H}t+C\\\\\n\nC=\\left.\\begin{matrix}\n\n\\frac{d\\delta }{dt}\n\n\\end{matrix}\\right| _{t=0^+}&=\\omega (t=0^+)-\\omega _s\\\\\n\nC=\\omega _s-\\omega _s&=0\\;(\\omega (t-0^+)=\\omega _s) \\\\\n\n\\frac{d\\delta }{dt}&=\\frac{P_m \\omega _s }{2H}t \\\\\n\n\\Rightarrow \\; \\delta &= \\frac{P_m \\omega _s }{4H}t^2+C'\\\\\n\nC'&= \\delta |_{t=0^+}=\\delta _0\\\\\n\n\\delta  &= \\frac{P_m \\omega _s }{4H}t^2+\\delta _0\\\\\n\n\\text{Now in problem,}\\\\\n\n\\delta (t=0.02)&\\\\\n\n&=\\frac{1 \\times 2  \\times 180  \\times 50 \\times 0.02^2 +5^{\\circ}}{4 \\times 2}\\\\\n\n&=5.9^{\\circ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.9** (acceptable range: [5.7, 6.1])."
+        "markdown": "Let $3-\\phi$ fault occurs at t=0\n\n$\\Rightarrow \\; P_e=0\\text{ for }t\\geq 0^+$\n\nNow, swing equation for $t\\geq 0^+$\n\n$$\\begin{aligned}\n\n\\frac{2H}{\\omega _s}\\frac{d^2\\delta }{dt^2} &=P_m \\\\\n\n\\frac{d^2\\delta }{dt^2}&= \\frac{P_m \\omega _s }{2H}\\\\\n\n\\frac{d\\delta }{dt}&= \\frac{P_m \\omega _s }{2H}t+C\\\\\n\nC=\\left.\\begin{matrix}\n\n\\frac{d\\delta }{dt}\n\n\\end{matrix}\\right| _{t=0^+}&=\\omega (t=0^+)-\\omega _s\\\\\n\nC=\\omega _s-\\omega _s&=0\\;(\\omega (t-0^+)=\\omega _s) \\\\\n\n\\frac{d\\delta }{dt}&=\\frac{P_m \\omega _s }{2H}t \\\\\n\n\\Rightarrow \\; \\delta &= \\frac{P_m \\omega _s }{4H}t^2+C'\\\\\n\nC'&= \\delta |_{t=0^+}=\\delta _0\\\\\n\n\\delta  &= \\frac{P_m \\omega _s }{4H}t^2+\\delta _0\\\\\n\n\\text{Now in problem,}\\\\\n\n\\delta (t=0.02)&\\\\\n\n&=\\frac{1 \\times 2  \\times 180  \\times 50 \\times 0.02^2 +5^{\\circ}}{4 \\times 2}\\\\\n\n&=5.9^{\\circ}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q44": {
       "question_uid": "pp:ee:2015:q44",
-      "exam_uid": "ee:2015:set1:q44",
+      "exam_uid": "ee:2015:set1:main:q44",
       "title": "GATE EE 2015 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1767,13 +1988,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "From the phasor $I_2$ and $I_4$ are having $180^{\\circ}$ phase shift. $|I_1|$ is higher than all other. Hence fault occurred at point Q.\n\nTherefore, the correct answer is **B**."
+        "markdown": "From the phasor $I_2$ and $I_4$ are having $180^{\\circ}$ phase shift. $|I_1|$ is higher than all other. Hence fault occurred at point Q.",
+        "images": []
       }
     },
     "pp:ee:2015:q45": {
       "question_uid": "pp:ee:2015:q45",
-      "exam_uid": "ee:2015:set1:q45",
+      "exam_uid": "ee:2015:set1:main:q45",
       "title": "GATE EE 2015 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1806,13 +2031,17 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "$i(t)=\\frac{8}{1}+\\frac{12 \\sin t}{\\sqrt{1+1}}=8+6\\sqrt{2} \\sin t$\n\n$i_{rms}(t)=\\sqrt{8^2+\\frac{1}{2}(6\\sqrt{2} )^2}=10A$\n\nTherefore, the correct answer is **10** (acceptable range: [9.9, 10.1])."
+        "markdown": "$i(t)=\\frac{8}{1}+\\frac{12 \\sin t}{\\sqrt{1+1}}=8+6\\sqrt{2} \\sin t$\n\n$i_{rms}(t)=\\sqrt{8^2+\\frac{1}{2}(6\\sqrt{2} )^2}=10A$",
+        "images": []
       }
     },
     "pp:ee:2015:q46": {
       "question_uid": "pp:ee:2015:q46",
-      "exam_uid": "ee:2015:set1:q46",
+      "exam_uid": "ee:2015:set1:main:q46",
       "title": "GATE EE 2015 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1845,13 +2074,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-34f4baeb42.webp\" />\n\n$V_1=10V, I_2=4 A, V_2=0\\;\\;Cond...(i)$\n\n$V_1=5V, I_2=1.25 A,$  $V_2=1.25 \\times 1=1.25V\\;\\;Cond...(ii)$\n\n$V_1=3V, I_2=? , R=2\\Omega \\;\\;Cond...(iii)$\n\nas we know from ABCD parameter,\n\n$V_1=AV_2-BI_2$\n\n$I_1=CV_2-DI_2$\n\nFrom condition (i),\n\n$10=A(0)-B(4)$\n\n$B=-\\frac{10}{4}$\n\nFrom condition (ii),\n\n$5=A(1.25)-\\left ( -\\frac{10}{4} \\right ) \\times 1.25$\n\n$A=\\frac{\\left ( 5-\\frac{12.5}{4} \\right )}{1.25}=1.5$\n\nFrom condition (iii),\n\n$3=1.5(2I)-\\left ( -\\frac{10}{4} \\right )\\times I$\n\n$3=3I+2.5I$\n\n$I=0.545 A$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.4, 0.6])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-34f4baeb42.webp\" />\n\n$V_1=10V, I_2=4 A, V_2=0\\;\\;Cond...(i)$\n\n$V_1=5V, I_2=1.25 A,$  $V_2=1.25 \\times 1=1.25V\\;\\;Cond...(ii)$\n\n$V_1=3V, I_2=? , R=2\\Omega \\;\\;Cond...(iii)$\n\nas we know from ABCD parameter,\n\n$V_1=AV_2-BI_2$\n\n$I_1=CV_2-DI_2$\n\nFrom condition (i),\n\n$10=A(0)-B(4)$\n\n$B=-\\frac{10}{4}$\n\nFrom condition (ii),\n\n$5=A(1.25)-\\left ( -\\frac{10}{4} \\right ) \\times 1.25$\n\n$A=\\frac{\\left ( 5-\\frac{12.5}{4} \\right )}{1.25}=1.5$\n\nFrom condition (iii),\n\n$3=1.5(2I)-\\left ( -\\frac{10}{4} \\right )\\times I$\n\n$3=3I+2.5I$\n\n$I=0.545 A$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-34f4baeb42.webp"
+        ]
       }
     },
     "pp:ee:2015:q47": {
       "question_uid": "pp:ee:2015:q47",
-      "exam_uid": "ee:2015:set1:q47",
+      "exam_uid": "ee:2015:set1:main:q47",
       "title": "GATE EE 2015 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1884,13 +2119,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b1fceb637f.webp\" />\n\n$\\Rightarrow \\; \\frac{V_0^2}{2}=12.5$\n\n$\\Rightarrow \\; V_0^2=12.5 \\times 2$\n\n$\\Rightarrow \\; V_0=5$\n\nKCL at A,\n\n$\\Rightarrow \\; -2.5-k(5)+5=0$\n\n$\\Rightarrow \\; k=\\frac{2.5}{5}=\\frac{1}{2}$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.48, 0.52])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b1fceb637f.webp\" />\n\n$\\Rightarrow \\; \\frac{V_0^2}{2}=12.5$\n\n$\\Rightarrow \\; V_0^2=12.5 \\times 2$\n\n$\\Rightarrow \\; V_0=5$\n\nKCL at A,\n\n$\\Rightarrow \\; -2.5-k(5)+5=0$\n\n$\\Rightarrow \\; k=\\frac{2.5}{5}=\\frac{1}{2}$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-b1fceb637f.webp"
+        ]
       }
     },
     "pp:ee:2015:q48": {
       "question_uid": "pp:ee:2015:q48",
-      "exam_uid": "ee:2015:set1:q48",
+      "exam_uid": "ee:2015:set1:main:q48",
       "title": "GATE EE 2015 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1923,13 +2164,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "$V_t=200V, N=1000 \\text{rpm}, I_{a0}=0A\\;...(1)$\n\n$V_t=V(say), N=500\\text{rpm}, T_d=T_{fL}\\;...(2)$\n\n$V_t=V(said),N=520\\text{rpm},$\n\n$T'_L=\\frac{T_L}{2}=\\frac{T_{FL}}{2}\\;\\;...(3)$\n\n$P_{lossws}=0$\n\n$R_a=1\\Omega$\n\nFrom condition (1),\n\n$E_b=V_t-I_aR_a$\n\n$E_{b_1}=200V, N=1000\\text{rpm}$\n\nSince from (2),\n\n$$\\begin{aligned} N_2 &=500\\text{rpm} \\\\ E_{b_2} &=\\frac{500 \\times 200}{1000}=100V \\\\ E_{b_2} &= V-I_{fL}R_a\\\\ 100 &= V-I_{fL}R_a\\\\ 100 &= V-I_{fL}\\;...(4)\\\\ & \\text{Again (3)},\\\\ N_3 &= 520 \\text{rpm}\\\\ E_{b_3}&= \\frac{520 \\times 200}{1000}=104V\\\\ & \\text{as we know}\\\\ 104&=V-\\frac{I_{fL}}{2}\\times R \\\\ &= V-\\frac{I_{fL}}{2}\\;...(5)\\\\ &\\text{From equation (4) and (5),}\\\\ 100 + I_{fL}&= 104+\\frac{I_{fL}}{2}\\\\ \\text{on solving,} I_{fL}&=8A \\end{aligned}$$\n\nTherefore, the correct answer is **8**."
+        "markdown": "$V_t=200V, N=1000 \\text{rpm}, I_{a0}=0A\\;...(1)$\n\n$V_t=V(say), N=500\\text{rpm}, T_d=T_{fL}\\;...(2)$\n\n$V_t=V(said),N=520\\text{rpm},$\n\n$T'_L=\\frac{T_L}{2}=\\frac{T_{FL}}{2}\\;\\;...(3)$\n\n$P_{lossws}=0$\n\n$R_a=1\\Omega$\n\nFrom condition (1),\n\n$E_b=V_t-I_aR_a$\n\n$E_{b_1}=200V, N=1000\\text{rpm}$\n\nSince from (2),\n\n$$\\begin{aligned} N_2 &=500\\text{rpm} \\\\ E_{b_2} &=\\frac{500 \\times 200}{1000}=100V \\\\ E_{b_2} &= V-I_{fL}R_a\\\\ 100 &= V-I_{fL}R_a\\\\ 100 &= V-I_{fL}\\;...(4)\\\\ & \\text{Again (3)},\\\\ N_3 &= 520 \\text{rpm}\\\\ E_{b_3}&= \\frac{520 \\times 200}{1000}=104V\\\\ & \\text{as we know}\\\\ 104&=V-\\frac{I_{fL}}{2}\\times R \\\\ &= V-\\frac{I_{fL}}{2}\\;...(5)\\\\ &\\text{From equation (4) and (5),}\\\\ 100 + I_{fL}&= 104+\\frac{I_{fL}}{2}\\\\ \\text{on solving,} I_{fL}&=8A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q49": {
       "question_uid": "pp:ee:2015:q49",
-      "exam_uid": "ee:2015:set1:q49",
+      "exam_uid": "ee:2015:set1:main:q49",
       "title": "GATE EE 2015 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -1962,13 +2207,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "$$\\begin{aligned} E_b &=\\frac{\\phi ZNP}{60A} =222V\\\\ I_a&= \\frac{V-E_b}{P_a}\\\\ &= \\frac{230-222}{0.267}\\\\ &=29.9625A \\\\ T &=\\frac{60}{2\\pi (1000)}[222 \\times 29.96-600] \\\\ &= 57.8 N-m \\end{aligned}$$\n\nTherefore, the correct answer is **57.5** (acceptable range: [57, 58])."
+        "markdown": "$$\\begin{aligned} E_b &=\\frac{\\phi ZNP}{60A} =222V\\\\ I_a&= \\frac{V-E_b}{P_a}\\\\ &= \\frac{230-222}{0.267}\\\\ &=29.9625A \\\\ T &=\\frac{60}{2\\pi (1000)}[222 \\times 29.96-600] \\\\ &= 57.8 N-m \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q50": {
       "question_uid": "pp:ee:2015:q50",
-      "exam_uid": "ee:2015:set1:q50",
+      "exam_uid": "ee:2015:set1:main:q50",
       "title": "GATE EE 2015 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -2001,13 +2250,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-a496485e14.webp\" />\n\n$$\\begin{aligned} K &=\\frac{200}{600}=\\frac{1}{3} \\\\ R_{eq} &=12 \\times \\frac{1}{9}=1.33\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **1.35** (acceptable range: [1.3, 1.4])."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-a496485e14.webp\" />\n\n$$\\begin{aligned} K &=\\frac{200}{600}=\\frac{1}{3} \\\\ R_{eq} &=12 \\times \\frac{1}{9}=1.33\\Omega \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-a496485e14.webp"
+        ]
       }
     },
     "pp:ee:2015:q51": {
       "question_uid": "pp:ee:2015:q51",
-      "exam_uid": "ee:2015:set1:q51",
+      "exam_uid": "ee:2015:set1:main:q51",
       "title": "GATE EE 2015 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "NAT",
       "marks": 2,
@@ -2040,13 +2295,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "$$\\begin{aligned} S_{T_2} &=\\frac{1+j6}{(1+j6)+(0.8+j4.8)} \\times 1000\\angle \\cos ^{-1}(0.8) \\\\ &= \\frac{(1+j6)}{(1.8+j0.8)} 1000\\angle \\cos ^{-1}(0.8)\\\\ &=0.55 \\angle 0 \\times 1000\\angle \\cos ^{-1}(0.8) \\\\ &= 555.55\\angle 36.89^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **555** (acceptable range: [554, 556])."
+        "markdown": "$$\\begin{aligned} S_{T_2} &=\\frac{1+j6}{(1+j6)+(0.8+j4.8)} \\times 1000\\angle \\cos ^{-1}(0.8) \\\\ &= \\frac{(1+j6)}{(1.8+j0.8)} 1000\\angle \\cos ^{-1}(0.8)\\\\ &=0.55 \\angle 0 \\times 1000\\angle \\cos ^{-1}(0.8) \\\\ &= 555.55\\angle 36.89^{\\circ} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2015:q52": {
       "question_uid": "pp:ee:2015:q52",
-      "exam_uid": "ee:2015:set1:q52",
+      "exam_uid": "ee:2015:set1:main:q52",
       "title": "GATE EE 2015 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2081,13 +2340,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "Equations from the flow diagram,$\\dot{x}_1=5x_1-2x_2+u_1$\n\n$y_1=x_1$\n\n$\\dot{x}_2=5x_1+x_2+u_1+u_2$\n\n$y_2=x_1-x_2$\n\n$$\\dot{x}=\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}x+\\begin{bmatrix} 1 &0 \\\\ 1& 1 \\end{bmatrix}u$$\n\n$$y=\\begin{bmatrix} 1 & 0\\\\ 1 & -1 \\end{bmatrix}x$$\n\nConsidering the SISO cases:[/latex]\n\n$1. \\;\\;u_1(input)$ and $y_1(output):$\n\n$$A\\triangleq\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}$$\n\n$$B\\triangleq\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}$$ and  $$C=\\begin{bmatrix} 1 &0 \\end{bmatrix}$$\n\n$$O\\triangleq\\begin{bmatrix} C\\\\ CA \\end{bmatrix}=\\begin{bmatrix} 1 & 0\\\\ 5 & -2 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank (O)=2$\n\n$\\Rightarrow \\;  Observable$\n\n$$C\\triangleq\\begin{bmatrix} B & AB \\end{bmatrix}=\\begin{bmatrix} 1 &3 \\\\ 1 & 3 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank(C)\\neq 2$\n\n$\\Rightarrow \\; non-controllable$\n\n$2.\\;\\;u_2(input)$ and  $y_1(output):$\n\n$$A\\triangleq\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}$$\n\n$$B\\triangleq\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}$$ and  $$C\\triangleq \\begin{bmatrix} 1 &-1 \\end{bmatrix}$$\n\n$$O\\triangleq\\begin{bmatrix} 1 & 0\\\\ 5 & -2 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank (O)=2$\n\n$\\Rightarrow \\; Observable$\n\n$$C\\triangleq\\begin{bmatrix} 0 &-2 \\\\ 1 & 1 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank(C)=2$\n\n$\\Rightarrow \\; controllable$\n\n$3. \\;\\;u_2(input)$ and $y_2(output) :$\n\n$Rank(O)\\neq 2\\Rightarrow$ non-observable\n\n$Rank(C) =2 \\Rightarrow$ controllable\n\n$4. \\; \\; u_1 (input)$ and $y_2(output)$:\n\nnon-observale and non-controllable.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Equations from the flow diagram,$\\dot{x}_1=5x_1-2x_2+u_1$\n\n$y_1=x_1$\n\n$\\dot{x}_2=5x_1+x_2+u_1+u_2$\n\n$y_2=x_1-x_2$\n\n$$\\dot{x}=\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}x+\\begin{bmatrix} 1 &0 \\\\ 1& 1 \\end{bmatrix}u$$\n\n$$y=\\begin{bmatrix} 1 & 0\\\\ 1 & -1 \\end{bmatrix}x$$\n\nConsidering the SISO cases:[/latex]\n\n$1. \\;\\;u_1(input)$ and $y_1(output):$\n\n$$A\\triangleq\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}$$\n\n$$B\\triangleq\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}$$ and  $$C=\\begin{bmatrix} 1 &0 \\end{bmatrix}$$\n\n$$O\\triangleq\\begin{bmatrix} C\\\\ CA \\end{bmatrix}=\\begin{bmatrix} 1 & 0\\\\ 5 & -2 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank (O)=2$\n\n$\\Rightarrow \\;  Observable$\n\n$$C\\triangleq\\begin{bmatrix} B & AB \\end{bmatrix}=\\begin{bmatrix} 1 &3 \\\\ 1 & 3 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank(C)\\neq 2$\n\n$\\Rightarrow \\; non-controllable$\n\n$2.\\;\\;u_2(input)$ and  $y_1(output):$\n\n$$A\\triangleq\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}$$\n\n$$B\\triangleq\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}$$ and  $$C\\triangleq \\begin{bmatrix} 1 &-1 \\end{bmatrix}$$\n\n$$O\\triangleq\\begin{bmatrix} 1 & 0\\\\ 5 & -2 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank (O)=2$\n\n$\\Rightarrow \\; Observable$\n\n$$C\\triangleq\\begin{bmatrix} 0 &-2 \\\\ 1 & 1 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank(C)=2$\n\n$\\Rightarrow \\; controllable$\n\n$3. \\;\\;u_2(input)$ and $y_2(output) :$\n\n$Rank(O)\\neq 2\\Rightarrow$ non-observable\n\n$Rank(C) =2 \\Rightarrow$ controllable\n\n$4. \\; \\; u_1 (input)$ and $y_2(output)$:\n\nnon-observale and non-controllable.",
+        "images": []
       }
     },
     "pp:ee:2015:q53": {
       "question_uid": "pp:ee:2015:q53",
-      "exam_uid": "ee:2015:set1:q53",
+      "exam_uid": "ee:2015:set1:main:q53",
       "title": "GATE EE 2015 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2122,13 +2385,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
-        "markdown": "Response of transfer function is unit for all $\\omega$.\n\n$M=1; P_1=2-j3$\n\nSecond order system, hence number of poles =2\n\nTherefore, second pole $P_2=2+j3$\n\nNow for M=1, and due to x-axis symmetry of root locus of transfer function, position of zeroes must be\n\n$Z_1=-2-j3$ and $Z_2=-2+j3$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Response of transfer function is unit for all $\\omega$.\n\n$M=1; P_1=2-j3$\n\nSecond order system, hence number of poles =2\n\nTherefore, second pole $P_2=2+j3$\n\nNow for M=1, and due to x-axis symmetry of root locus of transfer function, position of zeroes must be\n\n$Z_1=-2-j3$ and $Z_2=-2+j3$",
+        "images": []
       }
     },
     "pp:ee:2015:q54": {
       "question_uid": "pp:ee:2015:q54",
-      "exam_uid": "ee:2015:set1:q54",
+      "exam_uid": "ee:2015:set1:main:q54",
       "title": "GATE EE 2015 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2163,13 +2430,19 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
-        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-0904c1ed6f.webp\" />\n\n$\\frac{Y(s)}{X(s)}=\\frac{G_1+G_2}{1-(-G_1H-G_2H)}$\n\n$\\;\\;\\;=\\frac{G_1+G_2}{1+G_1H+G_2H)}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-0904c1ed6f.webp\" />\n\n$\\frac{Y(s)}{X(s)}=\\frac{G_1+G_2}{1-(-G_1H-G_2H)}$\n\n$\\;\\;\\;=\\frac{G_1+G_2}{1+G_1H+G_2H)}$",
+        "images": [
+          "/question-images/ee/2015/ee-2015-0904c1ed6f.webp"
+        ]
       }
     },
     "pp:ee:2015:q55": {
       "question_uid": "pp:ee:2015:q55",
-      "exam_uid": "ee:2015:set1:q55",
+      "exam_uid": "ee:2015:set1:main:q55",
       "title": "GATE EE 2015 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateee-2015-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2204,7 +2477,8 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus Techniques",
-        "markdown": "$\\frac{K(s+3)}{s(s+1)(s+2)}$\n\n$P=3, \\; Z=1$\n\n$P-Z=3-1=2$\n\nasymptotes angle $=90^{\\circ}, 180^{\\circ}$\n\nCentroid $=\\frac{(-3)-(-3)}{2}=0$\n\nas root locus never cross asymptotes so, will remain in left sideof x-axis.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$\\frac{K(s+3)}{s(s+1)(s+2)}$\n\n$P=3, \\; Z=1$\n\n$P-Z=3-1=2$\n\nasymptotes angle $=90^{\\circ}, 180^{\\circ}$\n\nCentroid $=\\frac{(-3)-(-3)}{2}=0$\n\nas root locus never cross asymptotes so, will remain in left sideof x-axis.",
+        "images": []
       }
     }
   }

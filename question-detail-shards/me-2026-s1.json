@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.560Z",
+  "generatedAt": "2026-10-17T21:30:25.476Z",
   "shardKey": "me-2026-s1",
   "yearSetKey": "me-2026-s1",
   "yearSetIdentity": "me:2026:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:me:2026:q1": {
       "question_uid": "pp:me:2026:q1",
-      "exam_uid": "me:2026:set1:q1",
+      "exam_uid": "me:2026:set1:main:q1",
       "title": "GATE ME 2026 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Domain A is bounded by $x^2 = 4y$ ordinate $x = 2$ and $x$ axis.\n\n<b>Step 1: Find limits of integration</b>\n\nFrom $x^2 = 4y \\Rightarrow y = \\dfrac{x^2}{4}$\n\nFor x: 0 to 2\n\nFor y: 0 to $\\dfrac{x^2}{4}$\n\n<b>Step 2: Set up integral</b>\n\n$\\iint_A y \\, dx \\, dy = \\int_0^2 \\int_0^{x^2/4} y \\, dy \\, dx$\n\n<b>Step 3: Inner integral</b>\n\n$\\int_0^{x^2/4} y \\, dy = \\left[\\dfrac{y^2}{2}\\right]_0^{x^2/4} = \\dfrac{1}{2} \\cdot \\dfrac{x^4}{16} = \\dfrac{x^4}{32}$\n\n<b>Step 4: Outer integral</b>\n\n$\\int_0^2 \\dfrac{x^4}{32} \\, dx = \\dfrac{1}{32} \\left[\\dfrac{x^5}{5}\\right]_0^2 = \\dfrac{1}{32} \\cdot \\dfrac{32}{5} = \\dfrac{1}{5}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Domain A is bounded by $x^2 = 4y$ ordinate $x = 2$ and $x$ axis.\n\n<b>Step 1: Find limits of integration</b>\n\nFrom $x^2 = 4y \\Rightarrow y = \\dfrac{x^2}{4}$\n\nFor x: 0 to 2\n\nFor y: 0 to $\\dfrac{x^2}{4}$\n\n<b>Step 2: Set up integral</b>\n\n$\\iint_A y \\, dx \\, dy = \\int_0^2 \\int_0^{x^2/4} y \\, dy \\, dx$\n\n<b>Step 3: Inner integral</b>\n\n$\\int_0^{x^2/4} y \\, dy = \\left[\\dfrac{y^2}{2}\\right]_0^{x^2/4} = \\dfrac{1}{2} \\cdot \\dfrac{x^4}{16} = \\dfrac{x^4}{32}$\n\n<b>Step 4: Outer integral</b>\n\n$\\int_0^2 \\dfrac{x^4}{32} \\, dx = \\dfrac{1}{32} \\left[\\dfrac{x^5}{5}\\right]_0^2 = \\dfrac{1}{32} \\cdot \\dfrac{32}{5} = \\dfrac{1}{5}$",
+        "images": []
       }
     },
     "pp:me:2026:q2": {
       "question_uid": "pp:me:2026:q2",
-      "exam_uid": "me:2026:set1:q2",
+      "exam_uid": "me:2026:set1:main:q2",
       "title": "GATE ME 2026 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<b>Concept: Gradient of a Scalar Function</b>\n\nFor a scalar function $\\varphi$ the gradient $\\nabla\\varphi$ is defined as:\n\n$\\nabla\\varphi = \\dfrac{\\partial\\varphi}{\\partial x}\\hat{i} + \\dfrac{\\partial\\varphi}{\\partial y}\\hat{j} + \\dfrac{\\partial\\varphi}{\\partial z}\\hat{k}$\n\n<b>Key Properties:</b>\n\n(1) $\\nabla\\varphi$ always points in the direction of <b>maximum rate of increase</b> of $\\varphi$.\n\n(2) $\\nabla\\varphi$ is always <b>perpendicular (normal)</b> to the surface of constant $\\varphi$ (i.e. the level surface where $\\varphi = c$).\n\n(3) Its magnitude gives the <b>maximum</b> rate of change (not minimum).\n\n(4) It is not always zero.\n\n<b>Checking Options:</b>\n\n(A) Always perpendicular to surface of constant $\\varphi$ ->  Correct\n\n(B) Always parallel ->  Wrong\n\n(C) Minimum rate of change ->  Wrong (it is maximum)\n\n(D) Always zero ->  Wrong\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Concept: Gradient of a Scalar Function</b>\n\nFor a scalar function $\\varphi$ the gradient $\\nabla\\varphi$ is defined as:\n\n$\\nabla\\varphi = \\dfrac{\\partial\\varphi}{\\partial x}\\hat{i} + \\dfrac{\\partial\\varphi}{\\partial y}\\hat{j} + \\dfrac{\\partial\\varphi}{\\partial z}\\hat{k}$\n\n<b>Key Properties:</b>\n\n(1) $\\nabla\\varphi$ always points in the direction of <b>maximum rate of increase</b> of $\\varphi$.\n\n(2) $\\nabla\\varphi$ is always <b>perpendicular (normal)</b> to the surface of constant $\\varphi$ (i.e. the level surface where $\\varphi = c$).\n\n(3) Its magnitude gives the <b>maximum</b> rate of change (not minimum).\n\n(4) It is not always zero.\n\n<b>Checking Options:</b>\n\n(A) Always perpendicular to surface of constant $\\varphi$ ->  Correct\n\n(B) Always parallel ->  Wrong\n\n(C) Minimum rate of change ->  Wrong (it is maximum)\n\n(D) Always zero ->  Wrong",
+        "images": []
       }
     },
     "pp:me:2026:q3": {
       "question_uid": "pp:me:2026:q3",
-      "exam_uid": "me:2026:set1:q3",
+      "exam_uid": "me:2026:set1:main:q3",
       "title": "GATE ME 2026 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "differential-equations"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Given PDE:</b>\n\n$\\dfrac{\\partial^3\\varphi}{\\partial x^3} + \\dfrac{\\partial^2\\varphi}{\\partial y^2}\\dfrac{\\partial\\varphi}{\\partial x} + \\left(\\dfrac{\\partial^2\\varphi}{\\partial x^2}\\right)^2 + \\dfrac{\\partial\\varphi}{\\partial y} = 0$\n\n<b>Step 1: Find Order (m)</b>\n\nOrder = highest order derivative present in the equation.\n\nHighest derivative = $\\dfrac{\\partial^3\\varphi}{\\partial x^3}$ -> Order = <b>3</b>\n\nSo $m = 3$\n\n<b>Step 2: Find Degree (n)</b>\n\nDegree = power of the highest order derivative after clearing any fractional powers.\n\nThe highest order derivative $\\dfrac{\\partial^3\\varphi}{\\partial x^3}$ appears with power <b>1</b>.\n\nSo $n = 1$\n\n<b>Step 3: Calculate (m - n)</b>\n\n$m - n = 3 - 1 = 2$\n\n<b>Note:</b> The term $\\left(\\dfrac{\\partial^2\\varphi}{\\partial x^2}\\right)^2$ is of order 2 not order 3 so it does not affect the degree of the equation.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given PDE:</b>\n\n$\\dfrac{\\partial^3\\varphi}{\\partial x^3} + \\dfrac{\\partial^2\\varphi}{\\partial y^2}\\dfrac{\\partial\\varphi}{\\partial x} + \\left(\\dfrac{\\partial^2\\varphi}{\\partial x^2}\\right)^2 + \\dfrac{\\partial\\varphi}{\\partial y} = 0$\n\n<b>Step 1: Find Order (m)</b>\n\nOrder = highest order derivative present in the equation.\n\nHighest derivative = $\\dfrac{\\partial^3\\varphi}{\\partial x^3}$ -> Order = <b>3</b>\n\nSo $m = 3$\n\n<b>Step 2: Find Degree (n)</b>\n\nDegree = power of the highest order derivative after clearing any fractional powers.\n\nThe highest order derivative $\\dfrac{\\partial^3\\varphi}{\\partial x^3}$ appears with power <b>1</b>.\n\nSo $n = 1$\n\n<b>Step 3: Calculate (m - n)</b>\n\n$m - n = 3 - 1 = 2$\n\n<b>Note:</b> The term $\\left(\\dfrac{\\partial^2\\varphi}{\\partial x^2}\\right)^2$ is of order 2 not order 3 so it does not affect the degree of the equation.",
+        "images": []
       }
     },
     "pp:me:2026:q4": {
       "question_uid": "pp:me:2026:q4",
-      "exam_uid": "me:2026:set1:q4",
+      "exam_uid": "me:2026:set1:main:q4",
       "title": "GATE ME 2026 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -154,25 +172,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "numerical-methods"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "The Newton-Raphson method is derived from the <b>Taylor series expansion</b> of $f(x)$ about a point $x_n$.\n\n<b>Derivation:</b>\n\nExpand $f(x)$ using Taylor series around $x_n$:\n\n$f(x) = f(x_n) + (x - x_n)f'(x_n) + \\dfrac{(x-x_n)^2}{2!}f''(x_n) + \\cdots$\n\nTruncating after the first derivative term and setting $f(x) = 0$:\n\n$0 = f(x_n) + (x_{n+1} - x_n)f'(x_n)$\n\nSolving for $x_{n+1}$:\n\n$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$\n\nThis is the standard Newton-Raphson iteration formula derived from Taylor series.\n\nTherefore, the correct answer is **A**."
+        "markdown": "The Newton-Raphson method is derived from the <b>Taylor series expansion</b> of $f(x)$ about a point $x_n$.\n\n<b>Derivation:</b>\n\nExpand $f(x)$ using Taylor series around $x_n$:\n\n$f(x) = f(x_n) + (x - x_n)f'(x_n) + \\dfrac{(x-x_n)^2}{2!}f''(x_n) + \\cdots$\n\nTruncating after the first derivative term and setting $f(x) = 0$:\n\n$0 = f(x_n) + (x_{n+1} - x_n)f'(x_n)$\n\nSolving for $x_{n+1}$:\n\n$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$\n\nThis is the standard Newton-Raphson iteration formula derived from Taylor series.",
+        "images": []
       }
     },
     "pp:me:2026:q5": {
       "question_uid": "pp:me:2026:q5",
-      "exam_uid": "me:2026:set1:q5",
+      "exam_uid": "me:2026:set1:main:q5",
       "title": "GATE ME 2026 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -194,25 +217,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-math",
+          "numerical-methods"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "<b>Given:</b>\n\n$n = \\int_0^4 \\dfrac{dx}{1+x}$\n\n<b>Step 1: Exact solution (n)</b>\n\n$n = \\left[\\ln(1+x)\\right]_0^4 = \\ln 5 - \\ln 1 = \\ln 5 = 1.6094$\n\n<b>Step 2: Trapezoidal Rule with 4 equal subintervals</b>\n\n$h = \\dfrac{4-0}{4} = 1$\n\nPoints: $x_0=0, x_1=1, x_2=2, x_3=3, x_4=4$\n\n$f(x) = \\dfrac{1}{1+x}$\n\n$f(0)=1, \\; f(1)=0.5, \\; f(2)=0.333, \\; f(3)=0.25, \\; f(4)=0.2$\n\n<b>Trapezoidal formula:</b>\n\n$m = \\dfrac{h}{2}\\left[f(x_0) + 2f(x_1) + 2f(x_2) + 2f(x_3) + f(x_4)\\right]$\n\n$m = \\dfrac{1}{2}\\left[1 + 2(0.5) + 2(0.333) + 2(0.25) + 0.2\\right]$\n\n$m = \\dfrac{1}{2}\\left[1 + 1 + 0.667 + 0.5 + 0.2\\right]$\n\n$m = \\dfrac{1}{2} \\times 3.367 = 1.6833$\n\n<b>Step 3:</b>\n\n$m - n = 1.6833 - 1.6094 = 0.0739 \\approx 0.074$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\n$n = \\int_0^4 \\dfrac{dx}{1+x}$\n\n<b>Step 1: Exact solution (n)</b>\n\n$n = \\left[\\ln(1+x)\\right]_0^4 = \\ln 5 - \\ln 1 = \\ln 5 = 1.6094$\n\n<b>Step 2: Trapezoidal Rule with 4 equal subintervals</b>\n\n$h = \\dfrac{4-0}{4} = 1$\n\nPoints: $x_0=0, x_1=1, x_2=2, x_3=3, x_4=4$\n\n$f(x) = \\dfrac{1}{1+x}$\n\n$f(0)=1, \\; f(1)=0.5, \\; f(2)=0.333, \\; f(3)=0.25, \\; f(4)=0.2$\n\n<b>Trapezoidal formula:</b>\n\n$m = \\dfrac{h}{2}\\left[f(x_0) + 2f(x_1) + 2f(x_2) + 2f(x_3) + f(x_4)\\right]$\n\n$m = \\dfrac{1}{2}\\left[1 + 2(0.5) + 2(0.333) + 2(0.25) + 0.2\\right]$\n\n$m = \\dfrac{1}{2}\\left[1 + 1 + 0.667 + 0.5 + 0.2\\right]$\n\n$m = \\dfrac{1}{2} \\times 3.367 = 1.6833$\n\n<b>Step 3:</b>\n\n$m - n = 1.6833 - 1.6094 = 0.0739 \\approx 0.074$",
+        "images": []
       }
     },
     "pp:me:2026:q6": {
       "question_uid": "pp:me:2026:q6",
-      "exam_uid": "me:2026:set1:q6",
+      "exam_uid": "me:2026:set1:main:q6",
       "title": "GATE ME 2026 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -234,25 +262,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "plane-motion",
+          "subtopicLabel": "Plane Motion"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-engineering-mechanics",
+          "plane-motion"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Plane Motion",
-        "markdown": "<b>Given:</b>\n\nAngular velocity $\\omega = 3$ rad/s\n\nRelative speed of block $\\dot{r} = 0.2$ m/s\n\n<b>Coriolis Acceleration Formula:</b>\n\n$a_{Cor} = 2\\omega\\dot{r}$\n\n<b>Note:</b> The Coriolis acceleration is given by $2\\vec{\\omega} \\times \\vec{v}_{rel}$ where $\\vec{v}_{rel}$ is the velocity of the block relative to the rotating frame.\n\n<b>Calculation:</b>\n\n$a_{Cor} = 2 \\times \\omega \\times \\dot{r}$\n\n$a_{Cor} = 2 \\times 3 \\times 0.2$\n\n$a_{Cor} = 1.2 \\, m/s^2$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nAngular velocity $\\omega = 3$ rad/s\n\nRelative speed of block $\\dot{r} = 0.2$ m/s\n\n<b>Coriolis Acceleration Formula:</b>\n\n$a_{Cor} = 2\\omega\\dot{r}$\n\n<b>Note:</b> The Coriolis acceleration is given by $2\\vec{\\omega} \\times \\vec{v}_{rel}$ where $\\vec{v}_{rel}$ is the velocity of the block relative to the rotating frame.\n\n<b>Calculation:</b>\n\n$a_{Cor} = 2 \\times \\omega \\times \\dot{r}$\n\n$a_{Cor} = 2 \\times 3 \\times 0.2$\n\n$a_{Cor} = 1.2 \\, m/s^2$",
+        "images": []
       }
     },
     "pp:me:2026:q7": {
       "question_uid": "pp:me:2026:q7",
-      "exam_uid": "me:2026:set1:q7",
+      "exam_uid": "me:2026:set1:main:q7",
       "title": "GATE ME 2026 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -274,25 +307,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "gear-and-gear-train",
+          "subtopicLabel": "Gear and Gear Train"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "gear-and-gear-train"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Gear and Gear Train",
-        "markdown": "An <b>idler gear</b> is a gear that is inserted between the driver and the driven gear to change the direction of rotation. It does <b>not affect the overall speed ratio</b> of the gear train.\n\nFrom the figure:\n\nGear 1 is the <b>driver</b>.\n\nGears 2 and 3 are mounted on the same shaft (compound gear).\n\nGear 3 drives Gear 4.\n\nGear 4 drives Gear 5 (the driven gear).\n\nThe overall speed ratio is\n\n$\\dfrac{\\omega_5}{\\omega_1}=\n\n\\dfrac{N_1}{N_2}\n\n\\times\n\n\\dfrac{N_3}{N_4}\n\n\\times\n\n\\dfrac{N_4}{N_5}\n\n=\n\n\\dfrac{N_1N_3}{N_2N_5}$\n\nNotice that $N_4$ cancels out completely. Therefore, Gear 4 does not affect the speed ratio and serves only to transmit motion and change the direction of rotation.\n\nHence, <b>Gear 4 is the idler gear.</b>\n\nTherefore, the correct answer is **A**."
+        "markdown": "An <b>idler gear</b> is a gear that is inserted between the driver and the driven gear to change the direction of rotation. It does <b>not affect the overall speed ratio</b> of the gear train.\n\nFrom the figure:\n\nGear 1 is the <b>driver</b>.\n\nGears 2 and 3 are mounted on the same shaft (compound gear).\n\nGear 3 drives Gear 4.\n\nGear 4 drives Gear 5 (the driven gear).\n\nThe overall speed ratio is\n\n$\\dfrac{\\omega_5}{\\omega_1}=\n\n\\dfrac{N_1}{N_2}\n\n\\times\n\n\\dfrac{N_3}{N_4}\n\n\\times\n\n\\dfrac{N_4}{N_5}\n\n=\n\n\\dfrac{N_1N_3}{N_2N_5}$\n\nNotice that $N_4$ cancels out completely. Therefore, Gear 4 does not affect the speed ratio and serves only to transmit motion and change the direction of rotation.\n\nHence, <b>Gear 4 is the idler gear.</b>",
+        "images": []
       }
     },
     "pp:me:2026:q8": {
       "question_uid": "pp:me:2026:q8",
-      "exam_uid": "me:2026:set1:q8",
+      "exam_uid": "me:2026:set1:main:q8",
       "title": "GATE ME 2026 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -314,25 +352,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "vibration",
+          "subtopicLabel": "Vibration"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "vibration"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "<b>Given:</b>\n\nCritical damping coefficient $c_c = 350$ N s/m\n\nDamping coefficient $c = 35$ N s/m\n\n<b>Step 1: Damping ratio</b>\n\n$\\zeta = \\dfrac{c}{c_c} = \\dfrac{35}{350} = 0.1$\n\n<b>Step 2: Logarithmic Decrement formula</b>\n\n$\\delta = \\dfrac{2\\pi\\zeta}{\\sqrt{1-\\zeta^2}}$\n\n<b>Step 3: Substitute values</b>\n\n$\\delta = \\dfrac{2\\pi \\times 0.1}{\\sqrt{1-(0.1)^2}}$\n\n$\\delta = \\dfrac{0.6283}{\\sqrt{1-0.01}}$\n\n$\\delta = \\dfrac{0.6283}{\\sqrt{0.99}}$\n\n$\\delta = \\dfrac{0.6283}{0.995} = 0.6314 \\approx 0.63$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nCritical damping coefficient $c_c = 350$ N s/m\n\nDamping coefficient $c = 35$ N s/m\n\n<b>Step 1: Damping ratio</b>\n\n$\\zeta = \\dfrac{c}{c_c} = \\dfrac{35}{350} = 0.1$\n\n<b>Step 2: Logarithmic Decrement formula</b>\n\n$\\delta = \\dfrac{2\\pi\\zeta}{\\sqrt{1-\\zeta^2}}$\n\n<b>Step 3: Substitute values</b>\n\n$\\delta = \\dfrac{2\\pi \\times 0.1}{\\sqrt{1-(0.1)^2}}$\n\n$\\delta = \\dfrac{0.6283}{\\sqrt{1-0.01}}$\n\n$\\delta = \\dfrac{0.6283}{\\sqrt{0.99}}$\n\n$\\delta = \\dfrac{0.6283}{0.995} = 0.6314 \\approx 0.63$",
+        "images": []
       }
     },
     "pp:me:2026:q9": {
       "question_uid": "pp:me:2026:q9",
-      "exam_uid": "me:2026:set1:q9",
+      "exam_uid": "me:2026:set1:main:q9",
       "title": "GATE ME 2026 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -354,25 +397,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-machine-design",
+          "subjectLabel": "Machine Design",
+          "subtopicSlug": "springs",
+          "subtopicLabel": "Springs"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-machine-design",
+          "springs"
         ]
       },
       "detailed_solution": {
         "concept": "Machine Design - Springs",
-        "markdown": "<b>Given:</b>\n\nMean coil diameter = D\n\nWire diameter = d\n\nAxial force = F\n\n<b>Two stress components act on the wire cross-section:</b>\n\n<b>1. Torsional shear stress</b> due to twisting moment $T = \\dfrac{FD}{2}$:\n\n$\\tau_t = \\dfrac{16T}{\\pi d^3} = \\dfrac{16 \\times \\dfrac{FD}{2}}{\\pi d^3} = \\dfrac{8FD}{\\pi d^3}$\n\n<b>2. Direct shear stress</b> due to axial load F:\n\n$\\tau_d = \\dfrac{4F}{\\pi d^2}$\n\n<b>Maximum shear stress (without Wahl's correction):</b>\n\n$\\tau_{max} = \\tau_t + \\tau_d = \\dfrac{8FD}{\\pi d^3} + \\dfrac{4F}{\\pi d^2}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nMean coil diameter = D\n\nWire diameter = d\n\nAxial force = F\n\n<b>Two stress components act on the wire cross-section:</b>\n\n<b>1. Torsional shear stress</b> due to twisting moment $T = \\dfrac{FD}{2}$:\n\n$\\tau_t = \\dfrac{16T}{\\pi d^3} = \\dfrac{16 \\times \\dfrac{FD}{2}}{\\pi d^3} = \\dfrac{8FD}{\\pi d^3}$\n\n<b>2. Direct shear stress</b> due to axial load F:\n\n$\\tau_d = \\dfrac{4F}{\\pi d^2}$\n\n<b>Maximum shear stress (without Wahl's correction):</b>\n\n$\\tau_{max} = \\tau_t + \\tau_d = \\dfrac{8FD}{\\pi d^3} + \\dfrac{4F}{\\pi d^2}$",
+        "images": []
       }
     },
     "pp:me:2026:q10": {
       "question_uid": "pp:me:2026:q10",
-      "exam_uid": "me:2026:set1:q10",
+      "exam_uid": "me:2026:set1:main:q10",
       "title": "GATE ME 2026 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -394,25 +442,30 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "gyroscope",
+          "subtopicLabel": "Gyroscope"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "me-theory-of-machine",
+          "gyroscope"
         ]
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Gyroscope",
-        "markdown": "<b>Given:</b>\n\nMass moment of inertia of rotor $I = 1.0 \\, kg \\cdot m^2$\n\nEngine speed $N = 500$ RPM\n\nAeroplane speed $V = 1200$ km/hr\n\nTurn radius $R = 2$ km = 2000 m\n\n<b>Step 1: Angular velocity of rotor</b>\n\n$\\omega_r = \\dfrac{2\\pi N}{60} = \\dfrac{2\\pi \\times 500}{60} = \\dfrac{1000\\pi}{60} = 52.36 \\, rad/s$\n\n<b>Step 2: Angular velocity of precession</b>\n\n$V = 1200 \\, km/hr = \\dfrac{1200 \\times 1000}{3600} = 333.33 \\, m/s$\n\n$\\omega_p = \\dfrac{V}{R} = \\dfrac{333.33}{2000} = 0.1667 \\, rad/s$\n\n<b>Step 3: Gyroscopic moment</b>\n\n$C = I \\cdot \\omega_r \\cdot \\omega_p$\n\n$C = 1.0 \\times 52.36 \\times 0.1667$\n\n$C = 8.73 \\, N \\cdot m$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nMass moment of inertia of rotor $I = 1.0 \\, kg \\cdot m^2$\n\nEngine speed $N = 500$ RPM\n\nAeroplane speed $V = 1200$ km/hr\n\nTurn radius $R = 2$ km = 2000 m\n\n<b>Step 1: Angular velocity of rotor</b>\n\n$\\omega_r = \\dfrac{2\\pi N}{60} = \\dfrac{2\\pi \\times 500}{60} = \\dfrac{1000\\pi}{60} = 52.36 \\, rad/s$\n\n<b>Step 2: Angular velocity of precession</b>\n\n$V = 1200 \\, km/hr = \\dfrac{1200 \\times 1000}{3600} = 333.33 \\, m/s$\n\n$\\omega_p = \\dfrac{V}{R} = \\dfrac{333.33}{2000} = 0.1667 \\, rad/s$\n\n<b>Step 3: Gyroscopic moment</b>\n\n$C = I \\cdot \\omega_r \\cdot \\omega_p$\n\n$C = 1.0 \\times 52.36 \\times 0.1667$\n\n$C = 8.73 \\, N \\cdot m$",
+        "images": []
       }
     },
     "pp:me:2026:q11": {
       "question_uid": "pp:me:2026:q11",
-      "exam_uid": "me:2026:set1:q11",
+      "exam_uid": "me:2026:set1:main:q11",
       "title": "GATE ME 2026 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -447,13 +500,17 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Bolted, Riveted and Welded Joint",
-        "markdown": "<b>Given:</b>\n\nLength of weld = $l$\n\nFillet weld leg size = $h$\n\nAllowable shear strength = $\\tau_{all}$\n\nTensile force = $P$ (parallel to weld length)\n\nTwo parallel fillet welds (top and bottom)\n\n<b>Step 1: Throat thickness of fillet weld</b>\n\nFor a fillet weld the throat thickness is:\n\n$t = \\dfrac{h}{\\sqrt{2}} = 0.707h$\n\n<b>Step 2: Throat area for two welds</b>\n\n$A_{throat} = 2 \\times t \\times l = 2 \\times \\dfrac{h}{\\sqrt{2}} \\times l = \\sqrt{2} \\, h \\, l$\n\n<b>Step 3: Critical load</b>\n\nThe force P acts as shear on the throat area:\n\n$P_{critical} = \\tau_{all} \\times A_{throat}$\n\n$P_{critical} = \\tau_{all} \\times \\sqrt{2} \\, h \\, l$\n\n$P_{critical} = \\sqrt{2} \\, h \\, l \\, \\tau_{all}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nLength of weld = $l$\n\nFillet weld leg size = $h$\n\nAllowable shear strength = $\\tau_{all}$\n\nTensile force = $P$ (parallel to weld length)\n\nTwo parallel fillet welds (top and bottom)\n\n<b>Step 1: Throat thickness of fillet weld</b>\n\nFor a fillet weld the throat thickness is:\n\n$t = \\dfrac{h}{\\sqrt{2}} = 0.707h$\n\n<b>Step 2: Throat area for two welds</b>\n\n$A_{throat} = 2 \\times t \\times l = 2 \\times \\dfrac{h}{\\sqrt{2}} \\times l = \\sqrt{2} \\, h \\, l$\n\n<b>Step 3: Critical load</b>\n\nThe force P acts as shear on the throat area:\n\n$P_{critical} = \\tau_{all} \\times A_{throat}$\n\n$P_{critical} = \\tau_{all} \\times \\sqrt{2} \\, h \\, l$\n\n$P_{critical} = \\sqrt{2} \\, h \\, l \\, \\tau_{all}$",
+        "images": []
       }
     },
     "pp:me:2026:q12": {
       "question_uid": "pp:me:2026:q12",
-      "exam_uid": "me:2026:set1:q12",
+      "exam_uid": "me:2026:set1:main:q12",
       "title": "GATE ME 2026 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -488,13 +545,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Gear and Gear Train",
-        "markdown": "Different types of gear arrangements and their shaft configurations:\n\n<b>Spur Gears:</b> Parallel shafts\n\n<b>Bevel Gears:</b> Intersecting shafts\n\n<b>Helical Gears:</b> Parallel or non-parallel non-intersecting shafts\n\n<b>Worm Gears:</b> Non-parallel and non-intersecting shafts (also called skew shafts)\n\nThe worm and worm gear axes are typically at <b>$90^\\circ$</b> to each other and do not intersect.\n\nThey are used when:\n\n(1) Large speed reduction is required in a single stage.\n\n(2) Shafts are at right angles but do not intersect.\n\n(3) Self-locking mechanism is needed.\n\nTherefore, the correct answer is **A**."
+        "markdown": "Different types of gear arrangements and their shaft configurations:\n\n<b>Spur Gears:</b> Parallel shafts\n\n<b>Bevel Gears:</b> Intersecting shafts\n\n<b>Helical Gears:</b> Parallel or non-parallel non-intersecting shafts\n\n<b>Worm Gears:</b> Non-parallel and non-intersecting shafts (also called skew shafts)\n\nThe worm and worm gear axes are typically at <b>$90^\\circ$</b> to each other and do not intersect.\n\nThey are used when:\n\n(1) Large speed reduction is required in a single stage.\n\n(2) Shafts are at right angles but do not intersect.\n\n(3) Self-locking mechanism is needed.",
+        "images": []
       }
     },
     "pp:me:2026:q13": {
       "question_uid": "pp:me:2026:q13",
-      "exam_uid": "me:2026:set1:q13",
+      "exam_uid": "me:2026:set1:main:q13",
       "title": "GATE ME 2026 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -529,13 +590,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "<b>Concept: Enthalpy of Ideal Gas</b>\n\nFor an ideal gas enthalpy depends only on temperature:\n\n$h = c_p T$\n\nwhere $c_p$ is specific heat at constant pressure and T is temperature.\n\n<b>Given:</b>\n\nStates 2 and 3 lie on the <b>same isotherm</b> which means:\n\n$T_2 = T_3$\n\n<b>Therefore:</b>\n\n$h_2 = c_p T_2$ and $h_3 = c_p T_3$\n\nSince $T_2 = T_3$:\n\n$h_2 = h_3$\n\nThis is because for an ideal gas internal energy and enthalpy are functions of temperature only (Joule's law).\n\nPressure does not affect enthalpy of an ideal gas.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Concept: Enthalpy of Ideal Gas</b>\n\nFor an ideal gas enthalpy depends only on temperature:\n\n$h = c_p T$\n\nwhere $c_p$ is specific heat at constant pressure and T is temperature.\n\n<b>Given:</b>\n\nStates 2 and 3 lie on the <b>same isotherm</b> which means:\n\n$T_2 = T_3$\n\n<b>Therefore:</b>\n\n$h_2 = c_p T_2$ and $h_3 = c_p T_3$\n\nSince $T_2 = T_3$:\n\n$h_2 = h_3$\n\nThis is because for an ideal gas internal energy and enthalpy are functions of temperature only (Joule's law).\n\nPressure does not affect enthalpy of an ideal gas.",
+        "images": []
       }
     },
     "pp:me:2026:q14": {
       "question_uid": "pp:me:2026:q14",
-      "exam_uid": "me:2026:set1:q14",
+      "exam_uid": "me:2026:set1:main:q14",
       "title": "GATE ME 2026 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -570,13 +635,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
-        "markdown": "<b>Concept: Flow through a curved path (bend)</b>\n\nWhen fluid flows through a curved path it requires a centripetal force directed towards the centre of curvature.\n\n<b>Analysis:</b>\n\nIn a  $90^\\circ$  tube bend the fluid follows a curved path.\n\nThe centripetal acceleration is directed towards the <b>inner wall</b> of the bend.\n\nThis centripetal force is provided by the pressure difference between outer and inner walls.\n\n<b>Pressure equation along radial direction:</b>\n\n$\\dfrac{\\partial P}{\\partial r} = \\dfrac{\\rho V^2}{r}$\n\nwhere r is the radius of curvature.\n\nSince $\\dfrac{\\partial P}{\\partial r} > 0$ pressure increases from inner to outer wall.\n\nTherefore: $P_o > P_i$\n\nThe outer wall has higher pressure than the inner wall.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Concept: Flow through a curved path (bend)</b>\n\nWhen fluid flows through a curved path it requires a centripetal force directed towards the centre of curvature.\n\n<b>Analysis:</b>\n\nIn a  $90^\\circ$  tube bend the fluid follows a curved path.\n\nThe centripetal acceleration is directed towards the <b>inner wall</b> of the bend.\n\nThis centripetal force is provided by the pressure difference between outer and inner walls.\n\n<b>Pressure equation along radial direction:</b>\n\n$\\dfrac{\\partial P}{\\partial r} = \\dfrac{\\rho V^2}{r}$\n\nwhere r is the radius of curvature.\n\nSince $\\dfrac{\\partial P}{\\partial r} > 0$ pressure increases from inner to outer wall.\n\nTherefore: $P_o > P_i$\n\nThe outer wall has higher pressure than the inner wall.",
+        "images": []
       }
     },
     "pp:me:2026:q15": {
       "question_uid": "pp:me:2026:q15",
-      "exam_uid": "me:2026:set1:q15",
+      "exam_uid": "me:2026:set1:main:q15",
       "title": "GATE ME 2026 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -611,13 +680,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Flow Through Pipes",
-        "markdown": "<b>Given:</b>\n\nIsothermal flow of ideal gas through uniform pipe.\n\nPressure gradient causes finite density change.\n\nFlow is subsonic throughout.\n\n<b>Analysis:</b>\n\nFor isothermal flow: $T = \\text{constant}$\n\nFor ideal gas: $P = \\rho R T$\n\nSince T is constant: $P \\propto \\rho$\n\nAs gas flows along pipe pressure drops due to friction:\n\n$P_1 > P_2 > P_3 \\cdots$\n\nTherefore density also decreases along flow:\n\n$\\rho_1 > \\rho_2 > \\rho_3 \\cdots$\n\n<b>Continuity equation for uniform cross-section pipe:</b>\n\n$\\rho A V = \\text{constant}$\n\nSince A is constant:\n\n$\\rho V = \\text{constant}$\n\nAs $\\rho$ decreases along flow V must increase:\n\n$V \\propto \\dfrac{1}{\\rho}$\n\nTherefore average flow velocity <b>increases along the flow</b>.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nIsothermal flow of ideal gas through uniform pipe.\n\nPressure gradient causes finite density change.\n\nFlow is subsonic throughout.\n\n<b>Analysis:</b>\n\nFor isothermal flow: $T = \\text{constant}$\n\nFor ideal gas: $P = \\rho R T$\n\nSince T is constant: $P \\propto \\rho$\n\nAs gas flows along pipe pressure drops due to friction:\n\n$P_1 > P_2 > P_3 \\cdots$\n\nTherefore density also decreases along flow:\n\n$\\rho_1 > \\rho_2 > \\rho_3 \\cdots$\n\n<b>Continuity equation for uniform cross-section pipe:</b>\n\n$\\rho A V = \\text{constant}$\n\nSince A is constant:\n\n$\\rho V = \\text{constant}$\n\nAs $\\rho$ decreases along flow V must increase:\n\n$V \\propto \\dfrac{1}{\\rho}$\n\nTherefore average flow velocity <b>increases along the flow</b>.",
+        "images": []
       }
     },
     "pp:me:2026:q16": {
       "question_uid": "pp:me:2026:q16",
-      "exam_uid": "me:2026:set1:q16",
+      "exam_uid": "me:2026:set1:main:q16",
       "title": "GATE ME 2026 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -652,13 +725,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
-        "markdown": "<b>Bernoulli's Equation applicability:</b>\n\nStandard Bernoulli's equation:\n\n$\\dfrac{P}{\\rho g} + \\dfrac{V^2}{2g} + z = \\text{constant}$\n\n<b>Conditions for applicability:</b>\n\n(1) Can be applied between any two points along a <b>streamline</b> for steady incompressible flow (rotational or irrotational).\n\n(2) Can be applied between any two <b>arbitrary points</b> (not necessarily on same streamline) ONLY for steady incompressible <b>irrotational</b> flow.\n\n<b>Checking each option:</b>\n\n(A) Any two arbitrary points for steady incompressible <b>rotational</b> flow -> CANNOT be applied\n\n(Correct answer)\n\n(B) Any two arbitrary points for steady incompressible <b>irrotational</b> flow -> CAN be applied\n\n(C) Any two points along streamline for steady incompressible flow -> CAN be applied\n\n(D) Any two points along streamline for steady incompressible rotational flow -> CAN be applied\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Bernoulli's Equation applicability:</b>\n\nStandard Bernoulli's equation:\n\n$\\dfrac{P}{\\rho g} + \\dfrac{V^2}{2g} + z = \\text{constant}$\n\n<b>Conditions for applicability:</b>\n\n(1) Can be applied between any two points along a <b>streamline</b> for steady incompressible flow (rotational or irrotational).\n\n(2) Can be applied between any two <b>arbitrary points</b> (not necessarily on same streamline) ONLY for steady incompressible <b>irrotational</b> flow.\n\n<b>Checking each option:</b>\n\n(A) Any two arbitrary points for steady incompressible <b>rotational</b> flow -> CANNOT be applied\n\n(Correct answer)\n\n(B) Any two arbitrary points for steady incompressible <b>irrotational</b> flow -> CAN be applied\n\n(C) Any two points along streamline for steady incompressible flow -> CAN be applied\n\n(D) Any two points along streamline for steady incompressible rotational flow -> CAN be applied",
+        "images": []
       }
     },
     "pp:me:2026:q17": {
       "question_uid": "pp:me:2026:q17",
-      "exam_uid": "me:2026:set1:q17",
+      "exam_uid": "me:2026:set1:main:q17",
       "title": "GATE ME 2026 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -693,13 +770,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Free and Forced Convection",
-        "markdown": "<b>Concept: Natural Convection between Plates</b>\n\nIn natural convection fluid near a <b>hot wall</b> rises and fluid near a <b>cold wall</b> falls.\n\n<b>From the velocity profile shown:</b>\n\nThe velocity profile shows fluid moving <b>upward near Plate 1</b> and <b>downward near Plate 2</b>.\n\n<b>Analysis:</b>\n\nFluid rising near Plate 1 -> Plate 1 is <b>hotter</b> than the fluid -> $T_1 > T_3$\n\nFluid falling near Plate 2 -> Plate 2 is <b>colder</b> than the fluid -> $T_2 < T_3$\n\nThe fluid at quiescent state is at $T_3$ which lies between $T_1$ and $T_2$.\n\nTherefore:\n\n$T_1 > T_3$ and $T_3 > T_2$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Concept: Natural Convection between Plates</b>\n\nIn natural convection fluid near a <b>hot wall</b> rises and fluid near a <b>cold wall</b> falls.\n\n<b>From the velocity profile shown:</b>\n\nThe velocity profile shows fluid moving <b>upward near Plate 1</b> and <b>downward near Plate 2</b>.\n\n<b>Analysis:</b>\n\nFluid rising near Plate 1 -> Plate 1 is <b>hotter</b> than the fluid -> $T_1 > T_3$\n\nFluid falling near Plate 2 -> Plate 2 is <b>colder</b> than the fluid -> $T_2 < T_3$\n\nThe fluid at quiescent state is at $T_3$ which lies between $T_1$ and $T_2$.\n\nTherefore:\n\n$T_1 > T_3$ and $T_3 > T_2$",
+        "images": []
       }
     },
     "pp:me:2026:q18": {
       "question_uid": "pp:me:2026:q18",
-      "exam_uid": "me:2026:set1:q18",
+      "exam_uid": "me:2026:set1:main:q18",
       "title": "GATE ME 2026 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -734,13 +815,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "<b>Given:</b>\n\nIsothermal expansion of ideal gas in piston cylinder.\n\nNet heat supplied = Net work done\n\n<b>First Law of Thermodynamics:</b>\n\n$Q - W = \\Delta U$\n\nFor isothermal process of ideal gas:\n\n$\\Delta U = 0$ (since temperature is constant)\n\nTherefore: $Q = W$\n\nThis is consistent with the given statement -> First law is satisfied\n\n<b>Second Law of Thermodynamics:</b>\n\nThe process involves an isothermal expansion where heat is completely converted to work.\n\nThis is possible only if the process is <b>reversible</b> and heat is absorbed from a single thermal reservoir.\n\nThis does NOT violate the second law because:\n\n(1) It is not a cyclic process.\n\n(2) It is a reversible isothermal expansion.\n\n(3) The entropy of the universe does not decrease.\n\n$\\Delta S_{system} = \\dfrac{Q}{T} > 0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nIsothermal expansion of ideal gas in piston cylinder.\n\nNet heat supplied = Net work done\n\n<b>First Law of Thermodynamics:</b>\n\n$Q - W = \\Delta U$\n\nFor isothermal process of ideal gas:\n\n$\\Delta U = 0$ (since temperature is constant)\n\nTherefore: $Q = W$\n\nThis is consistent with the given statement -> First law is satisfied\n\n<b>Second Law of Thermodynamics:</b>\n\nThe process involves an isothermal expansion where heat is completely converted to work.\n\nThis is possible only if the process is <b>reversible</b> and heat is absorbed from a single thermal reservoir.\n\nThis does NOT violate the second law because:\n\n(1) It is not a cyclic process.\n\n(2) It is a reversible isothermal expansion.\n\n(3) The entropy of the universe does not decrease.\n\n$\\Delta S_{system} = \\dfrac{Q}{T} > 0$",
+        "images": []
       }
     },
     "pp:me:2026:q19": {
       "question_uid": "pp:me:2026:q19",
-      "exam_uid": "me:2026:set1:q19",
+      "exam_uid": "me:2026:set1:main:q19",
       "title": "GATE ME 2026 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -775,13 +860,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
-        "markdown": "<b>Given:</b>\n\nMass supported = 500 kg\n\nInclination angle = $60^\\circ$  with horizontal\n\nPiston diameter = 30 cm = 0.30 m\n\n$g = 10 \\, m/s^2$\n\n<b>Step 1: Force along piston axis</b>\n\nThe piston is inclined at $60^\\circ$ with horizontal.\n\nComponent of weight along piston axis:\n\n$F = mg\\sin 60^\\circ = 500 \\times 10 \\times \\sin 60^\\circ$\n\n$F = 5000 \\times \\dfrac{\\sqrt{3}}{2} = 5000 \\times 0.866 = 4330 \\, N$\n\n<b>Step 2: Piston area</b>\n\n$A = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi \\times (0.30)^2}{4} = \\dfrac{\\pi \\times 0.09}{4} = 0.07069 \\, m^2$\n\n<b>Step 3: Pressure</b>\n\n$P = \\dfrac{F}{A} = \\dfrac{4330}{0.07069} = 61,258 \\, Pa \\approx 61.26 \\, kPa$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nMass supported = 500 kg\n\nInclination angle = $60^\\circ$  with horizontal\n\nPiston diameter = 30 cm = 0.30 m\n\n$g = 10 \\, m/s^2$\n\n<b>Step 1: Force along piston axis</b>\n\nThe piston is inclined at $60^\\circ$ with horizontal.\n\nComponent of weight along piston axis:\n\n$F = mg\\sin 60^\\circ = 500 \\times 10 \\times \\sin 60^\\circ$\n\n$F = 5000 \\times \\dfrac{\\sqrt{3}}{2} = 5000 \\times 0.866 = 4330 \\, N$\n\n<b>Step 2: Piston area</b>\n\n$A = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi \\times (0.30)^2}{4} = \\dfrac{\\pi \\times 0.09}{4} = 0.07069 \\, m^2$\n\n<b>Step 3: Pressure</b>\n\n$P = \\dfrac{F}{A} = \\dfrac{4330}{0.07069} = 61,258 \\, Pa \\approx 61.26 \\, kPa$",
+        "images": []
       }
     },
     "pp:me:2026:q20": {
       "question_uid": "pp:me:2026:q20",
-      "exam_uid": "me:2026:set1:q20",
+      "exam_uid": "me:2026:set1:main:q20",
       "title": "GATE ME 2026 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -816,13 +905,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "<b>Dross (P):</b> Dross refers to lighter impurities (oxides and other materials) that float to the top surface of molten metal during casting.\n\n-> P matches II\n\n<b>Scab (Q):</b> A scab is a rough thin layer of metal that protrudes above the casting surface. It forms on top of a thin layer of sand that gets embedded in the casting surface.\n\n-> Q matches III\n\n<b>Scar (R):</b> A scar is a shallow blow found on a flat casting surface. It is a depression or mark on the surface of the casting.\n\n-> R matches I\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Dross (P):</b> Dross refers to lighter impurities (oxides and other materials) that float to the top surface of molten metal during casting.\n\n-> P matches II\n\n<b>Scab (Q):</b> A scab is a rough thin layer of metal that protrudes above the casting surface. It forms on top of a thin layer of sand that gets embedded in the casting surface.\n\n-> Q matches III\n\n<b>Scar (R):</b> A scar is a shallow blow found on a flat casting surface. It is a depression or mark on the surface of the casting.\n\n-> R matches I",
+        "images": []
       }
     },
     "pp:me:2026:q21": {
       "question_uid": "pp:me:2026:q21",
-      "exam_uid": "me:2026:set1:q21",
+      "exam_uid": "me:2026:set1:main:q21",
       "title": "GATE ME 2026 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -857,13 +950,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
-        "markdown": "<b>Concept: STL File Errors in Additive Manufacturing</b>\n\nSTL (STereoLithography) file represents 3D surfaces as a mesh of triangular facets.\n\n<b>Common errors associated with STL files:</b>\n\n<b>Missing Facet (B):</b> When a triangular facet is absent from the mesh leaving a hole in the surface. This is a valid STL error.\n\n<b>Non-manifold topology conditions (C):</b> When edges are shared by more than two facets or geometry is not properly closed. This is a valid STL error.\n\n<b>Degenerate facets (D):</b> When a triangular facet has zero area (all three vertices are collinear or coincident). This is a valid STL error.\n\n<b>Staircase effect (A):</b> This is NOT an error in the STL file itself. The staircase effect is an artifact that occurs during the <b>slicing and building process</b> in additive manufacturing due to layer-by-layer deposition. It is related to the manufacturing process not the STL file format.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Concept: STL File Errors in Additive Manufacturing</b>\n\nSTL (STereoLithography) file represents 3D surfaces as a mesh of triangular facets.\n\n<b>Common errors associated with STL files:</b>\n\n<b>Missing Facet (B):</b> When a triangular facet is absent from the mesh leaving a hole in the surface. This is a valid STL error.\n\n<b>Non-manifold topology conditions (C):</b> When edges are shared by more than two facets or geometry is not properly closed. This is a valid STL error.\n\n<b>Degenerate facets (D):</b> When a triangular facet has zero area (all three vertices are collinear or coincident). This is a valid STL error.\n\n<b>Staircase effect (A):</b> This is NOT an error in the STL file itself. The staircase effect is an artifact that occurs during the <b>slicing and building process</b> in additive manufacturing due to layer-by-layer deposition. It is related to the manufacturing process not the STL file format.",
+        "images": []
       }
     },
     "pp:me:2026:q22": {
       "question_uid": "pp:me:2026:q22",
-      "exam_uid": "me:2026:set1:q22",
+      "exam_uid": "me:2026:set1:main:q22",
       "title": "GATE ME 2026 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -898,13 +995,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "<b>Given:</b>\n\nWorkpiece height = 205 mm (from figure)\n\nWorkpiece width = 100 mm\n\nPlain slab milling cutter used from top\n\n<b>Concept:</b>\n\nThe fixture height H must be less than the workpiece height so that the milling cutter can machine the top surface of the workpiece without hitting the fixture.\n\n<b>Analysis:</b>\n\nThe workpiece is 205 mm tall.\n\nThe fixture holds the workpiece from sides.\n\nThe milling cutter machines the top surface of the workpiece.\n\n<b>The fixture height H must be:</b>\n\n(1) High enough to firmly hold the workpiece -> H should be substantial\n\n(2) Low enough so the cutter can access the top of the workpiece without interference\n\n(3) The fixture should not protrude above the workpiece top surface\n\nThe most suitable height is one that provides firm clamping while staying below the machining surface.\n\nH = 200 mm allows firm holding just below the top of 205 mm workpiece leaving 5 mm clearance for cutter.\n\nH = 210 mm would be above workpiece height -> cutter would hit fixture\n\nH = 150 mm -> insufficient holding for 205 mm workpiece\n\nH = 70 mm -> too low for proper clamping\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nWorkpiece height = 205 mm (from figure)\n\nWorkpiece width = 100 mm\n\nPlain slab milling cutter used from top\n\n<b>Concept:</b>\n\nThe fixture height H must be less than the workpiece height so that the milling cutter can machine the top surface of the workpiece without hitting the fixture.\n\n<b>Analysis:</b>\n\nThe workpiece is 205 mm tall.\n\nThe fixture holds the workpiece from sides.\n\nThe milling cutter machines the top surface of the workpiece.\n\n<b>The fixture height H must be:</b>\n\n(1) High enough to firmly hold the workpiece -> H should be substantial\n\n(2) Low enough so the cutter can access the top of the workpiece without interference\n\n(3) The fixture should not protrude above the workpiece top surface\n\nThe most suitable height is one that provides firm clamping while staying below the machining surface.\n\nH = 200 mm allows firm holding just below the top of 205 mm workpiece leaving 5 mm clearance for cutter.\n\nH = 210 mm would be above workpiece height -> cutter would hit fixture\n\nH = 150 mm -> insufficient holding for 205 mm workpiece\n\nH = 70 mm -> too low for proper clamping",
+        "images": []
       }
     },
     "pp:me:2026:q23": {
       "question_uid": "pp:me:2026:q23",
-      "exam_uid": "me:2026:set1:q23",
+      "exam_uid": "me:2026:set1:main:q23",
       "title": "GATE ME 2026 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -939,13 +1040,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "<b>Ten-Point Height Formula:</b>\n\n$R_z = \\dfrac{1}{5}\\left[(P_1+P_2+P_3+P_4+P_5) - (V_1+V_2+V_3+V_4+V_5)\\right]$\n\nwhere $P_1$ to $P_5$ are five highest peaks and $V_1$ to $V_5$ are five lowest valleys.\n\n<b>Step 1: Five highest peaks</b>\n\nArranging peaks in descending order:\n\n8.3, 6.9, 6.7, 6.3, 6.2\n\n$P_{avg} = 8.3 + 6.9 + 6.7 + 6.3 + 6.2 = 34.4$\n\n<b>Step 2: Five lowest valleys</b>\n\nArranging valleys in ascending order:\n\n1.92, 1.97, 2.01, 2.81, 2.82\n\n$V_{avg} = 1.92 + 1.97 + 2.01 + 2.81 + 2.82 = 11.53$\n\n<b>Step 3: Ten-point height</b>\n\n$R_z = \\dfrac{1}{5}(34.4 - 11.53) = \\dfrac{22.87}{5} = 4.574 \\approx 4.57 \\, \\mu m$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Ten-Point Height Formula:</b>\n\n$R_z = \\dfrac{1}{5}\\left[(P_1+P_2+P_3+P_4+P_5) - (V_1+V_2+V_3+V_4+V_5)\\right]$\n\nwhere $P_1$ to $P_5$ are five highest peaks and $V_1$ to $V_5$ are five lowest valleys.\n\n<b>Step 1: Five highest peaks</b>\n\nArranging peaks in descending order:\n\n8.3, 6.9, 6.7, 6.3, 6.2\n\n$P_{avg} = 8.3 + 6.9 + 6.7 + 6.3 + 6.2 = 34.4$\n\n<b>Step 2: Five lowest valleys</b>\n\nArranging valleys in ascending order:\n\n1.92, 1.97, 2.01, 2.81, 2.82\n\n$V_{avg} = 1.92 + 1.97 + 2.01 + 2.81 + 2.82 = 11.53$\n\n<b>Step 3: Ten-point height</b>\n\n$R_z = \\dfrac{1}{5}(34.4 - 11.53) = \\dfrac{22.87}{5} = 4.574 \\approx 4.57 \\, \\mu m$",
+        "images": []
       }
     },
     "pp:me:2026:q24": {
       "question_uid": "pp:me:2026:q24",
-      "exam_uid": "me:2026:set1:q24",
+      "exam_uid": "me:2026:set1:main:q24",
       "title": "GATE ME 2026 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -978,13 +1083,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress and Strain",
-        "markdown": "<b>Step 1: Von Mises criterion (Distortion Energy Theory)</b>\n\nFor biaxial stress state ($\\sigma_z = 0$):\n\n$\\sigma_{vm} = \\sqrt{\\sigma_x^2 - \\sigma_x\\sigma_y + \\sigma_y^2}$\n\n<b>Step 2: Substitute values</b>\n\n$\\sigma_{vm} = \\sqrt{\\sigma^2 - (\\sigma)(-2\\sigma) + (-2\\sigma)^2}$\n\n$\\sigma_{vm} = \\sqrt{\\sigma^2 + 2\\sigma^2 + 4\\sigma^2}$\n\n$\\sigma_{vm} = \\sqrt{7\\sigma^2} = \\sigma\\sqrt{7}$\n\n<b>Step 3: Apply factor of safety</b>\n\n$\\sigma_{vm} = \\dfrac{S_y}{FOS}$\n\n$\\sigma\\sqrt{7} = \\dfrac{550}{2} = 275$\n\n$\\sigma = \\dfrac{275}{\\sqrt{7}} = \\dfrac{275}{2.6458} = 103.9 \\approx 158.9 \\, MPa$\n\n$\\sigma = \\dfrac{275}{\\sqrt{7}} = 103.93 \\, MPa$\n\nTherefore, the correct answer is **103.5** (acceptable range: [102, 105])."
+        "markdown": "<b>Step 1: Von Mises criterion (Distortion Energy Theory)</b>\n\nFor biaxial stress state ($\\sigma_z = 0$):\n\n$\\sigma_{vm} = \\sqrt{\\sigma_x^2 - \\sigma_x\\sigma_y + \\sigma_y^2}$\n\n<b>Step 2: Substitute values</b>\n\n$\\sigma_{vm} = \\sqrt{\\sigma^2 - (\\sigma)(-2\\sigma) + (-2\\sigma)^2}$\n\n$\\sigma_{vm} = \\sqrt{\\sigma^2 + 2\\sigma^2 + 4\\sigma^2}$\n\n$\\sigma_{vm} = \\sqrt{7\\sigma^2} = \\sigma\\sqrt{7}$\n\n<b>Step 3: Apply factor of safety</b>\n\n$\\sigma_{vm} = \\dfrac{S_y}{FOS}$\n\n$\\sigma\\sqrt{7} = \\dfrac{550}{2} = 275$\n\n$\\sigma = \\dfrac{275}{\\sqrt{7}} = \\dfrac{275}{2.6458} = 103.9 \\approx 158.9 \\, MPa$\n\n$\\sigma = \\dfrac{275}{\\sqrt{7}} = 103.93 \\, MPa$",
+        "images": []
       }
     },
     "pp:me:2026:q25": {
       "question_uid": "pp:me:2026:q25",
-      "exam_uid": "me:2026:set1:q25",
+      "exam_uid": "me:2026:set1:main:q25",
       "title": "GATE ME 2026 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 1,
@@ -1017,13 +1126,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Fins and Unsteady Heat Transfer",
-        "markdown": "<b>Given:</b>\n\nRadius of sphere $r = 5$ mm $= 0.005$ m\n\nInitial temperature $T_i = 400^\\circ C$\n\nBath temperature $T_\\infty = 20^\\circ C$\n\nConvection coefficient $h = 500 \\, W/(m^2K)$\n\nDensity $\\rho = 3000 \\, kg/m^3$\n\nThermal conductivity $k = 10 \\, W/(mK)$\n\nSpecific heat $c = 1000 \\, J/(kgK)$\n\n<b>Step 1: Check Biot number</b>\n\n$L_c = \\dfrac{V}{A} = \\dfrac{\\frac{4}{3}\\pi r^3}{4\\pi r^2} = \\dfrac{r}{3} = \\dfrac{0.005}{3} = 0.001667 \\, m$\n\n$Bi = \\dfrac{hL_c}{k} = \\dfrac{500 \\times 0.001667}{10} = 0.0833 < 0.1$\n\nSince Bi < 0.1 lumped capacitance method is applicable.\n\n<b>Step 2: Lumped capacitance equation</b>\n\n$\\dfrac{T - T_\\infty}{T_i - T_\\infty} = e^{-t/\\tau}$\n\nwhere $\\tau = \\dfrac{\\rho c L_c}{h} = \\dfrac{3000 \\times 1000 \\times 0.001667}{500} = 10 \\, s$\n\n<b>Step 3: Solve for time</b>\n\n$\\dfrac{50 - 20}{400 - 20} = e^{-t/10}$\n\n$\\dfrac{30}{380} = e^{-t/10}$\n\n$0.07895 = e^{-t/10}$\n\n$-\\dfrac{t}{10} = \\ln(0.07895) = -2.539$\n\n$t = 25.39 \\, seconds$\n\nTherefore, the correct answer is **25.25** (acceptable range: [24.5, 26])."
+        "markdown": "<b>Given:</b>\n\nRadius of sphere $r = 5$ mm $= 0.005$ m\n\nInitial temperature $T_i = 400^\\circ C$\n\nBath temperature $T_\\infty = 20^\\circ C$\n\nConvection coefficient $h = 500 \\, W/(m^2K)$\n\nDensity $\\rho = 3000 \\, kg/m^3$\n\nThermal conductivity $k = 10 \\, W/(mK)$\n\nSpecific heat $c = 1000 \\, J/(kgK)$\n\n<b>Step 1: Check Biot number</b>\n\n$L_c = \\dfrac{V}{A} = \\dfrac{\\frac{4}{3}\\pi r^3}{4\\pi r^2} = \\dfrac{r}{3} = \\dfrac{0.005}{3} = 0.001667 \\, m$\n\n$Bi = \\dfrac{hL_c}{k} = \\dfrac{500 \\times 0.001667}{10} = 0.0833 < 0.1$\n\nSince Bi < 0.1 lumped capacitance method is applicable.\n\n<b>Step 2: Lumped capacitance equation</b>\n\n$\\dfrac{T - T_\\infty}{T_i - T_\\infty} = e^{-t/\\tau}$\n\nwhere $\\tau = \\dfrac{\\rho c L_c}{h} = \\dfrac{3000 \\times 1000 \\times 0.001667}{500} = 10 \\, s$\n\n<b>Step 3: Solve for time</b>\n\n$\\dfrac{50 - 20}{400 - 20} = e^{-t/10}$\n\n$\\dfrac{30}{380} = e^{-t/10}$\n\n$0.07895 = e^{-t/10}$\n\n$-\\dfrac{t}{10} = \\ln(0.07895) = -2.539$\n\n$t = 25.39 \\, seconds$",
+        "images": []
       }
     },
     "pp:me:2026:q26": {
       "question_uid": "pp:me:2026:q26",
-      "exam_uid": "me:2026:set1:q26",
+      "exam_uid": "me:2026:set1:main:q26",
       "title": "GATE ME 2026 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1058,13 +1171,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "<b>Given:</b>\n\n$w = \\log_e z = \\log_e(x + iy)$\n\n<b>Step 1: Express w in terms of real and imaginary parts</b>\n\n$z = x + iy = re^{i\\theta}$\n\nwhere $r = \\sqrt{x^2+y^2}$ and $\\theta = \\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\n$w = \\log_e z = \\log_e r + i\\theta$\n\n$w = \\dfrac{1}{2}\\log_e(x^2+y^2) + i\\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\nSo: $u = \\dfrac{1}{2}\\log_e(x^2+y^2)$ and $v = \\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\n<b>Step 2: Check analyticity</b>\n\n$w = \\log_e z$ is analytic everywhere except where $z = 0$ (i.e. at origin where logarithm is undefined) and along the branch cut.\n\n<b>Step 3: Check options</b>\n\n(A) w is analytic everywhere except at z = 0 ->\n\nCorrect\n\n(B) w is non-analytic everywhere -> Wrong\n\n(C) Conjugate functions are $\\log_e(x^2+y^2)$ and $\\log_e(x^2-y^2)$ ->\n\nWrong (second part incorrect)\n\n(D) Conjugate functions are $\\tan^{-1}(x/y)$ and $\\tan^{-1}(y/x)$ ->\n\nWrong (first part incorrect)\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\n$w = \\log_e z = \\log_e(x + iy)$\n\n<b>Step 1: Express w in terms of real and imaginary parts</b>\n\n$z = x + iy = re^{i\\theta}$\n\nwhere $r = \\sqrt{x^2+y^2}$ and $\\theta = \\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\n$w = \\log_e z = \\log_e r + i\\theta$\n\n$w = \\dfrac{1}{2}\\log_e(x^2+y^2) + i\\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\nSo: $u = \\dfrac{1}{2}\\log_e(x^2+y^2)$ and $v = \\tan^{-1}\\left(\\dfrac{y}{x}\\right)$\n\n<b>Step 2: Check analyticity</b>\n\n$w = \\log_e z$ is analytic everywhere except where $z = 0$ (i.e. at origin where logarithm is undefined) and along the branch cut.\n\n<b>Step 3: Check options</b>\n\n(A) w is analytic everywhere except at z = 0 ->\n\nCorrect\n\n(B) w is non-analytic everywhere -> Wrong\n\n(C) Conjugate functions are $\\log_e(x^2+y^2)$ and $\\log_e(x^2-y^2)$ ->\n\nWrong (second part incorrect)\n\n(D) Conjugate functions are $\\tan^{-1}(x/y)$ and $\\tan^{-1}(y/x)$ ->\n\nWrong (first part incorrect)",
+        "images": []
       }
     },
     "pp:me:2026:q27": {
       "question_uid": "pp:me:2026:q27",
-      "exam_uid": "me:2026:set1:q27",
+      "exam_uid": "me:2026:set1:main:q27",
       "title": "GATE ME 2026 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1099,13 +1216,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Step 1: Assume solution of the form</b>\n\n$y(x,t) = X(x) \\cdot T(t)$\n\nFrom initial condition: $y(x,0) = 10e^{-2x}$\n\nThis suggests $X(x) = 10e^{-2x}$\n\n<b>Step 2: Assume</b> $y(x,t) = 10e^{-2x + \\lambda t}$\n\n<b>Step 3: Substitute into PDE</b>\n\n$\\dfrac{\\partial y}{\\partial x} = -2 \\cdot 10e^{-2x+\\lambda t}$\n\n$\\dfrac{\\partial y}{\\partial t} = \\lambda \\cdot 10e^{-2x+\\lambda t}$\n\nSubstituting:\n\n$-2 \\cdot 10e^{-2x+\\lambda t} = 3\\lambda \\cdot 10e^{-2x+\\lambda t} + 10e^{-2x+\\lambda t}$\n\nDividing by $10e^{-2x+\\lambda t}$:\n\n$-2 = 3\\lambda + 1$\n\n$3\\lambda = -3$\n\n$\\lambda = -1$\n\n<b>Step 4: Solution</b>\n\n$y(x,t) = 10e^{-2x-t}$\n\n<b>Verification:</b> At t=0: $y(x,0) = 10e^{-2x}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Step 1: Assume solution of the form</b>\n\n$y(x,t) = X(x) \\cdot T(t)$\n\nFrom initial condition: $y(x,0) = 10e^{-2x}$\n\nThis suggests $X(x) = 10e^{-2x}$\n\n<b>Step 2: Assume</b> $y(x,t) = 10e^{-2x + \\lambda t}$\n\n<b>Step 3: Substitute into PDE</b>\n\n$\\dfrac{\\partial y}{\\partial x} = -2 \\cdot 10e^{-2x+\\lambda t}$\n\n$\\dfrac{\\partial y}{\\partial t} = \\lambda \\cdot 10e^{-2x+\\lambda t}$\n\nSubstituting:\n\n$-2 \\cdot 10e^{-2x+\\lambda t} = 3\\lambda \\cdot 10e^{-2x+\\lambda t} + 10e^{-2x+\\lambda t}$\n\nDividing by $10e^{-2x+\\lambda t}$:\n\n$-2 = 3\\lambda + 1$\n\n$3\\lambda = -3$\n\n$\\lambda = -1$\n\n<b>Step 4: Solution</b>\n\n$y(x,t) = 10e^{-2x-t}$\n\n<b>Verification:</b> At t=0: $y(x,0) = 10e^{-2x}$",
+        "images": []
       }
     },
     "pp:me:2026:q28": {
       "question_uid": "pp:me:2026:q28",
-      "exam_uid": "me:2026:set1:q28",
+      "exam_uid": "me:2026:set1:main:q28",
       "title": "GATE ME 2026 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1140,13 +1261,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "<b>Given:</b>\n\n$f(t) = \\sin 2t \\sin 4t$\n\n<b>Step 1: Use product to sum formula</b>\n\n$\\sin A \\sin B = \\dfrac{1}{2}[\\cos(A-B) - \\cos(A+B)]$\n\n$\\sin 2t \\sin 4t = \\dfrac{1}{2}[\\cos(2t-4t) - \\cos(2t+4t)]$\n\n$= \\dfrac{1}{2}[\\cos(-2t) - \\cos(6t)]$\n\n$= \\dfrac{1}{2}[\\cos 2t - \\cos 6t]$\n\n<b>Step 2: Apply Laplace transform</b>\n\n$L\\{\\cos at\\} = \\dfrac{s}{s^2+a^2}$\n\n$L\\{f(t)\\} = \\dfrac{1}{2}\\left[\\dfrac{s}{s^2+4} - \\dfrac{s}{s^2+36}\\right]$\n\n<b>Step 3: Simplify</b>\n\n$= \\dfrac{s}{2}\\left[\\dfrac{(s^2+36)-(s^2+4)}{(s^2+4)(s^2+36)}\\right]$\n\n$= \\dfrac{s}{2} \\times \\dfrac{32}{(s^2+4)(s^2+36)}$\n\n$= \\dfrac{16s}{(s^2+4)(s^2+36)}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\n$f(t) = \\sin 2t \\sin 4t$\n\n<b>Step 1: Use product to sum formula</b>\n\n$\\sin A \\sin B = \\dfrac{1}{2}[\\cos(A-B) - \\cos(A+B)]$\n\n$\\sin 2t \\sin 4t = \\dfrac{1}{2}[\\cos(2t-4t) - \\cos(2t+4t)]$\n\n$= \\dfrac{1}{2}[\\cos(-2t) - \\cos(6t)]$\n\n$= \\dfrac{1}{2}[\\cos 2t - \\cos 6t]$\n\n<b>Step 2: Apply Laplace transform</b>\n\n$L\\{\\cos at\\} = \\dfrac{s}{s^2+a^2}$\n\n$L\\{f(t)\\} = \\dfrac{1}{2}\\left[\\dfrac{s}{s^2+4} - \\dfrac{s}{s^2+36}\\right]$\n\n<b>Step 3: Simplify</b>\n\n$= \\dfrac{s}{2}\\left[\\dfrac{(s^2+36)-(s^2+4)}{(s^2+4)(s^2+36)}\\right]$\n\n$= \\dfrac{s}{2} \\times \\dfrac{32}{(s^2+4)(s^2+36)}$\n\n$= \\dfrac{16s}{(s^2+4)(s^2+36)}$",
+        "images": []
       }
     },
     "pp:me:2026:q29": {
       "question_uid": "pp:me:2026:q29",
-      "exam_uid": "me:2026:set1:q29",
+      "exam_uid": "me:2026:set1:main:q29",
       "title": "GATE ME 2026 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1181,13 +1306,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "<b>Given:</b>\n\nTotal council members = 10\n\nEngineering school = 2 students\n\nScience school = 3 students\n\nArts school = 5 students\n\nSelect 3 students at random.\n\n<b>Total ways to select 3 from 10:</b>\n\n$\\binom{10}{3} = \\dfrac{10!}{3! \\times 7!} = 120$\n\n<b>Favorable cases: 2 from same school + 1 from different school</b>\n\n<b>Case 1: 2 from Engineering (2) + 1 from others (8)</b>\n\n$\\binom{2}{2} \\times \\binom{8}{1} = 1 \\times 8 = 8$\n\n<b>Case 2: 2 from Science (3) + 1 from others (7)</b>\n\n$\\binom{3}{2} \\times \\binom{7}{1} = 3 \\times 7 = 21$\n\n<b>Case 3: 2 from Arts (5) + 1 from others (5)</b>\n\n$\\binom{5}{2} \\times \\binom{5}{1} = 10 \\times 5 = 50$\n\n<b>Total favorable cases:</b>\n\n$8 + 21 + 50 = 79$\n\n<b>Probability: </b>\n\n$P = \\dfrac{79}{120}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nTotal council members = 10\n\nEngineering school = 2 students\n\nScience school = 3 students\n\nArts school = 5 students\n\nSelect 3 students at random.\n\n<b>Total ways to select 3 from 10:</b>\n\n$\\binom{10}{3} = \\dfrac{10!}{3! \\times 7!} = 120$\n\n<b>Favorable cases: 2 from same school + 1 from different school</b>\n\n<b>Case 1: 2 from Engineering (2) + 1 from others (8)</b>\n\n$\\binom{2}{2} \\times \\binom{8}{1} = 1 \\times 8 = 8$\n\n<b>Case 2: 2 from Science (3) + 1 from others (7)</b>\n\n$\\binom{3}{2} \\times \\binom{7}{1} = 3 \\times 7 = 21$\n\n<b>Case 3: 2 from Arts (5) + 1 from others (5)</b>\n\n$\\binom{5}{2} \\times \\binom{5}{1} = 10 \\times 5 = 50$\n\n<b>Total favorable cases:</b>\n\n$8 + 21 + 50 = 79$\n\n<b>Probability: </b>\n\n$P = \\dfrac{79}{120}$",
+        "images": []
       }
     },
     "pp:me:2026:q30": {
       "question_uid": "pp:me:2026:q30",
-      "exam_uid": "me:2026:set1:q30",
+      "exam_uid": "me:2026:set1:main:q30",
       "title": "GATE ME 2026 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1222,13 +1351,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Shear-force and Bending Moment Diagrams",
-        "markdown": "<b>Given:</b>\n\nCantilever beam of length L.\n\nConcentrated load P at L/2 from fixed end.\n\nMoment M = PL/2 at free end.\n\n<b>Step 1: Reactions at fixed end</b>\n\nVertical reaction: $R_A = P$ (upward)\n\nFixed end moment: $M_A = P \\times \\dfrac{L}{2} - \\dfrac{PL}{2} = 0$\n\n<b>Step 2: Shear Force Diagram (SFD)</b>\n\nFrom free end (right) to left:\n\nAt free end: No load -> SFD = 0\n\nAt moment M application point: No change in SFD (moment doesn't change shear)\n\nBetween free end and load P: SFD = 0\n\nAt load P: SFD jumps by P -> SFD = P\n\nFrom load P to fixed end: SFD = P (constant)\n\n<b>Step 3: Bending Moment Diagram (BMD)</b>\n\nFrom free end to left:\n\nAt free end: BMD = 0\n\nJust right of M: BMD = $+\\dfrac{PL}{2}$ (due to applied moment M = PL/2)\n\nJust left of M: BMD = $+\\dfrac{PL}{2}$\n\nAt load P point (L/2 from fixed): BMD = $\\dfrac{PL}{2} - 0 = \\dfrac{PL}{2}$\n\nAt fixed end: BMD = $P \\times \\dfrac{L}{2} = \\dfrac{PL}{2}$\n\nSFD is constant at P from fixed support to load point and zero beyond.\n\nBMD is constant at PL/2 throughout.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Given:</b>\n\nCantilever beam of length L.\n\nConcentrated load P at L/2 from fixed end.\n\nMoment M = PL/2 at free end.\n\n<b>Step 1: Reactions at fixed end</b>\n\nVertical reaction: $R_A = P$ (upward)\n\nFixed end moment: $M_A = P \\times \\dfrac{L}{2} - \\dfrac{PL}{2} = 0$\n\n<b>Step 2: Shear Force Diagram (SFD)</b>\n\nFrom free end (right) to left:\n\nAt free end: No load -> SFD = 0\n\nAt moment M application point: No change in SFD (moment doesn't change shear)\n\nBetween free end and load P: SFD = 0\n\nAt load P: SFD jumps by P -> SFD = P\n\nFrom load P to fixed end: SFD = P (constant)\n\n<b>Step 3: Bending Moment Diagram (BMD)</b>\n\nFrom free end to left:\n\nAt free end: BMD = 0\n\nJust right of M: BMD = $+\\dfrac{PL}{2}$ (due to applied moment M = PL/2)\n\nJust left of M: BMD = $+\\dfrac{PL}{2}$\n\nAt load P point (L/2 from fixed): BMD = $\\dfrac{PL}{2} - 0 = \\dfrac{PL}{2}$\n\nAt fixed end: BMD = $P \\times \\dfrac{L}{2} = \\dfrac{PL}{2}$\n\nSFD is constant at P from fixed support to load point and zero beyond.\n\nBMD is constant at PL/2 throughout.",
+        "images": []
       }
     },
     "pp:me:2026:q31": {
       "question_uid": "pp:me:2026:q31",
-      "exam_uid": "me:2026:set1:q31",
+      "exam_uid": "me:2026:set1:main:q31",
       "title": "GATE ME 2026 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1263,13 +1396,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
-        "markdown": "Since there is a <b>hinge</b>, the beam can be analyzed as two separate members.\n\nFor the left member, taking moments about A:\n\n$H(1)=10(0.5)$\n\n$H=5\\text{ kN}$\n\nThus, the hinge exerts a force of 5 kN. Therefore, a downward force of 5 kN acts on the right member at the hinge.\n\nNow consider the right member. Taking moments about support B:\n\n$R_C(0.8)+5(0.2)-25(0.2)=0$\n\n$0.8R_C=4$\n\n$R_C=5\\text{ kN}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Since there is a <b>hinge</b>, the beam can be analyzed as two separate members.\n\nFor the left member, taking moments about A:\n\n$H(1)=10(0.5)$\n\n$H=5\\text{ kN}$\n\nThus, the hinge exerts a force of 5 kN. Therefore, a downward force of 5 kN acts on the right member at the hinge.\n\nNow consider the right member. Taking moments about support B:\n\n$R_C(0.8)+5(0.2)-25(0.2)=0$\n\n$0.8R_C=4$\n\n$R_C=5\\text{ kN}$",
+        "images": []
       }
     },
     "pp:me:2026:q32": {
       "question_uid": "pp:me:2026:q32",
-      "exam_uid": "me:2026:set1:q32",
+      "exam_uid": "me:2026:set1:main:q32",
       "title": "GATE ME 2026 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1304,13 +1441,17 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "The beam is massless and carries a concentrated mass of 5 kg at the free end. Therefore, it can be modeled as a spring-mass system.\n\nEquivalent stiffness at the free end due to a unit load on the overhang:\n\n$\\delta=\\frac{PL^2a^2}{3EI}\n\n\\quad\\text{for}\\quad\n\nL=3\\,\\text{m},\\; a=2\\,\\text{m}$\n\nUsing the standard result for the given overhanging beam,\n\n$\\delta=\\frac{4P}{EI}$\n\nHence,\n\n$k=\\frac{P}{\\delta}\n\n=\\frac{EI}{4}\n\n\\frac{1}{}\n\n\\;=\\;50\\ \\text{N/m}$\n\nSubstituting\n\n$E=200\\times10^9\\ \\text{N/m}^2,\n\n\\qquad\n\nI=10^{-8}\\ \\text{m}^4$\n\n$EI=2000\\ \\text{N\\,m}^2$\n\nTherefore,\n\n$k=\\frac{2000}{4}=500\\ \\text{N/m}$\n\nThe natural frequency is\n\n$\\omega_n=\\sqrt{\\frac{k}{m}}\n\n=\\sqrt{\\frac{500}{5}}\n\n=\\sqrt{100}\n\n=10\\ \\text{rad/s}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "The beam is massless and carries a concentrated mass of 5 kg at the free end. Therefore, it can be modeled as a spring-mass system.\n\nEquivalent stiffness at the free end due to a unit load on the overhang:\n\n$\\delta=\\frac{PL^2a^2}{3EI}\n\n\\quad\\text{for}\\quad\n\nL=3\\,\\text{m},\\; a=2\\,\\text{m}$\n\nUsing the standard result for the given overhanging beam,\n\n$\\delta=\\frac{4P}{EI}$\n\nHence,\n\n$k=\\frac{P}{\\delta}\n\n=\\frac{EI}{4}\n\n\\frac{1}{}\n\n\\;=\\;50\\ \\text{N/m}$\n\nSubstituting\n\n$E=200\\times10^9\\ \\text{N/m}^2,\n\n\\qquad\n\nI=10^{-8}\\ \\text{m}^4$\n\n$EI=2000\\ \\text{N\\,m}^2$\n\nTherefore,\n\n$k=\\frac{2000}{4}=500\\ \\text{N/m}$\n\nThe natural frequency is\n\n$\\omega_n=\\sqrt{\\frac{k}{m}}\n\n=\\sqrt{\\frac{500}{5}}\n\n=\\sqrt{100}\n\n=10\\ \\text{rad/s}$",
+        "images": []
       }
     },
     "pp:me:2026:q33": {
       "question_uid": "pp:me:2026:q33",
-      "exam_uid": "me:2026:set1:q33",
+      "exam_uid": "me:2026:set1:main:q33",
       "title": "GATE ME 2026 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1345,13 +1486,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Fins and Unsteady Heat Transfer",
-        "markdown": "Given:\n\nSquare fin: side length = a\n\nCircular fin: diameter = d = a (same as side length)\n\nSame material -> same thermal conductivity k\n\nSame heat transfer coefficient h\n\n<b>Formula for heat transfer from a very long fin:</b>\n\n$Q = \\sqrt{hPkA_c} \\cdot \\theta_0$\n\nwhere P = perimeter, A_c = cross-sectional area, $\\theta_0$ = base temperature excess\n\n<b>For Square fin:</b>\n\n$P_{sq} = 4a$\n\n$A_{sq} = a^2$\n\n$Q_{sq} = \\sqrt{h \\cdot 4a \\cdot k \\cdot a^2} \\cdot \\theta_0 = \\sqrt{4hka^3} \\cdot \\theta_0 = 2a\\sqrt{hka} \\cdot \\theta_0$\n\n<b>For Circular fin (d = a):</b>\n\n$P_{cir} = \\pi d = \\pi a$\n\n$A_{cir} = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi a^2}{4}$\n\n$Q_{cir} = \\sqrt{h \\cdot \\pi a \\cdot k \\cdot \\dfrac{\\pi a^2}{4}} \\cdot \\theta_0 = \\sqrt{\\dfrac{\\pi^2 h k a^3}{4}} \\cdot \\theta_0 = \\dfrac{\\pi a}{2}\\sqrt{hka} \\cdot \\theta_0$\n\n<b>Ratio:</b>\n\n$\\dfrac{Q_{sq}}{Q_{cir}} = \\dfrac{2a\\sqrt{hka}}{\\dfrac{\\pi a}{2}\\sqrt{hka}} = \\dfrac{2}{\\dfrac{\\pi}{2}} = \\dfrac{4}{\\pi}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given:\n\nSquare fin: side length = a\n\nCircular fin: diameter = d = a (same as side length)\n\nSame material -> same thermal conductivity k\n\nSame heat transfer coefficient h\n\n<b>Formula for heat transfer from a very long fin:</b>\n\n$Q = \\sqrt{hPkA_c} \\cdot \\theta_0$\n\nwhere P = perimeter, A_c = cross-sectional area, $\\theta_0$ = base temperature excess\n\n<b>For Square fin:</b>\n\n$P_{sq} = 4a$\n\n$A_{sq} = a^2$\n\n$Q_{sq} = \\sqrt{h \\cdot 4a \\cdot k \\cdot a^2} \\cdot \\theta_0 = \\sqrt{4hka^3} \\cdot \\theta_0 = 2a\\sqrt{hka} \\cdot \\theta_0$\n\n<b>For Circular fin (d = a):</b>\n\n$P_{cir} = \\pi d = \\pi a$\n\n$A_{cir} = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi a^2}{4}$\n\n$Q_{cir} = \\sqrt{h \\cdot \\pi a \\cdot k \\cdot \\dfrac{\\pi a^2}{4}} \\cdot \\theta_0 = \\sqrt{\\dfrac{\\pi^2 h k a^3}{4}} \\cdot \\theta_0 = \\dfrac{\\pi a}{2}\\sqrt{hka} \\cdot \\theta_0$\n\n<b>Ratio:</b>\n\n$\\dfrac{Q_{sq}}{Q_{cir}} = \\dfrac{2a\\sqrt{hka}}{\\dfrac{\\pi a}{2}\\sqrt{hka}} = \\dfrac{2}{\\dfrac{\\pi}{2}} = \\dfrac{4}{\\pi}$",
+        "images": []
       }
     },
     "pp:me:2026:q34": {
       "question_uid": "pp:me:2026:q34",
-      "exam_uid": "me:2026:set1:q34",
+      "exam_uid": "me:2026:set1:main:q34",
       "title": "GATE ME 2026 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1386,13 +1531,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
-        "markdown": "The ideal regenerative Rankine cycle with open feed water heater has the following state points:\n\n1 -> Condenser exit (saturated liquid at low pressure)\n\n2 -> After pump 1 (compressed liquid)\n\n3 -> Feed water heater exit (saturated liquid at intermediate pressure)\n\n4 -> After pump 2 / Boiler inlet (compressed liquid)\n\n5 -> Turbine extraction point (wet/saturated steam)\n\n<b>Process descriptions:</b>\n\n1->2: Isentropic compression in pump 1 (vertical line on T-s)\n\n2->3: Mixing in feed water heater (not a simple process on T-s)\n\n3->4: Isentropic compression in pump 2 (vertical line on T-s)\n\n4->3: Heating in boiler (horizontal then two-phase then superheated)\n\n4->5: Expansion in turbine (isentropic - vertical line)\n\n5->2: Extraction steam to feed water heater\n\nremaining steam 5->1: Expansion in turbine to condenser\n\nThe correct T-s diagram shows:\n\n(1) Isentropic pump processes as vertical lines\n\n(2) Boiler heating as curve from 3 to 4\n\n(3) Turbine expansion as vertical line from 4\n\n(4) State 3 lies between states 1 and 2 on entropy axis\n\nTherefore, the correct answer is **A**."
+        "markdown": "The ideal regenerative Rankine cycle with open feed water heater has the following state points:\n\n1 -> Condenser exit (saturated liquid at low pressure)\n\n2 -> After pump 1 (compressed liquid)\n\n3 -> Feed water heater exit (saturated liquid at intermediate pressure)\n\n4 -> After pump 2 / Boiler inlet (compressed liquid)\n\n5 -> Turbine extraction point (wet/saturated steam)\n\n<b>Process descriptions:</b>\n\n1->2: Isentropic compression in pump 1 (vertical line on T-s)\n\n2->3: Mixing in feed water heater (not a simple process on T-s)\n\n3->4: Isentropic compression in pump 2 (vertical line on T-s)\n\n4->3: Heating in boiler (horizontal then two-phase then superheated)\n\n4->5: Expansion in turbine (isentropic - vertical line)\n\n5->2: Extraction steam to feed water heater\n\nremaining steam 5->1: Expansion in turbine to condenser\n\nThe correct T-s diagram shows:\n\n(1) Isentropic pump processes as vertical lines\n\n(2) Boiler heating as curve from 3 to 4\n\n(3) Turbine expansion as vertical line from 4\n\n(4) State 3 lies between states 1 and 2 on entropy axis",
+        "images": []
       }
     },
     "pp:me:2026:q35": {
       "question_uid": "pp:me:2026:q35",
-      "exam_uid": "me:2026:set1:q35",
+      "exam_uid": "me:2026:set1:main:q35",
       "title": "GATE ME 2026 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1427,13 +1576,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
-        "markdown": "<b>Euler's Law for Polyhedra:</b>\n\n$F - E + V - L = 2(B - G)$\n\n<b>Check each object:</b>\n\n<b>P1:</b> F=6, E=12, V=8, L=0, B=1, G=0\n\n$6 - 12 + 8 - 0 = 2$ and $2(1-0) = 2$ -> $2 = 2$\n\nValid\n\n<b>P2:</b> F=5, E=8, V=5, L=0, B=1, G=0\n\n$5 - 8 + 5 - 0 = 2$ and $2(1-0) = 2$ -> $2 = 2$\n\nValid\n\n<b>P3:</b> F=5, E=12, V=8, L=0, B=1, G=0\n\n$5 - 12 + 8 - 0 = 1$ and $2(1-0) = 2$ -> $1 \\neq 2$\n\nNOT Valid\n\n<b>P4:</b> F=10, E=24, V=16, L=0, B=1, G=0\n\n$10 - 24 + 16 - 0 = 2$ and $2(1-0) = 2$ -> $2 = 2$\n\nValid\n\nP3 does not satisfy Euler's law therefore it is NOT a topologically valid closed polyhedral object.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Euler's Law for Polyhedra:</b>\n\n$F - E + V - L = 2(B - G)$\n\n<b>Check each object:</b>\n\n<b>P1:</b> F=6, E=12, V=8, L=0, B=1, G=0\n\n$6 - 12 + 8 - 0 = 2$ and $2(1-0) = 2$ -> $2 = 2$\n\nValid\n\n<b>P2:</b> F=5, E=8, V=5, L=0, B=1, G=0\n\n$5 - 8 + 5 - 0 = 2$ and $2(1-0) = 2$ -> $2 = 2$\n\nValid\n\n<b>P3:</b> F=5, E=12, V=8, L=0, B=1, G=0\n\n$5 - 12 + 8 - 0 = 1$ and $2(1-0) = 2$ -> $1 \\neq 2$\n\nNOT Valid\n\n<b>P4:</b> F=10, E=24, V=16, L=0, B=1, G=0\n\n$10 - 24 + 16 - 0 = 2$ and $2(1-0) = 2$ -> $2 = 2$\n\nValid\n\nP3 does not satisfy Euler's law therefore it is NOT a topologically valid closed polyhedral object.",
+        "images": []
       }
     },
     "pp:me:2026:q36": {
       "question_uid": "pp:me:2026:q36",
-      "exam_uid": "me:2026:set1:q36",
+      "exam_uid": "me:2026:set1:main:q36",
       "title": "GATE ME 2026 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1468,13 +1621,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Linear Programming",
-        "markdown": "<b>Rules for writing Dual of Minimization problem with ≥ constraints:</b>\n\n(1) Dual is a Maximization problem.\n\n(2) Dual objective coefficients = RHS of primal constraints.\n\n(3) Dual constraint coefficients = transpose of primal constraint matrix.\n\n(4) Dual constraints use ≤.\n\n(5) Dual variables $k_i \\geq 0$.\n\n<b>Dual objective:</b>\n\nMaximize $W = 0.4k_1 + 0.6k_2 + 2.0k_3 + 1.8k_4$\n\n<b>Dual constraints (from columns of primal):</b>\n\nFor $x_1$ column: $0.1, 0, 0.1, 0.2$\n\n$0.1k_1 + 0k_2 + 0.1k_3 + 0.2k_4 \\leq 0.07$\n\nFor $x_2$ column: $0, 0.1, 0.2, 0.1$\n\n$0k_1 + 0.1k_2 + 0.2k_3 + 0.1k_4 \\leq 0.05$\n\nThis matches Option A exactly.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Rules for writing Dual of Minimization problem with ≥ constraints:</b>\n\n(1) Dual is a Maximization problem.\n\n(2) Dual objective coefficients = RHS of primal constraints.\n\n(3) Dual constraint coefficients = transpose of primal constraint matrix.\n\n(4) Dual constraints use ≤.\n\n(5) Dual variables $k_i \\geq 0$.\n\n<b>Dual objective:</b>\n\nMaximize $W = 0.4k_1 + 0.6k_2 + 2.0k_3 + 1.8k_4$\n\n<b>Dual constraints (from columns of primal):</b>\n\nFor $x_1$ column: $0.1, 0, 0.1, 0.2$\n\n$0.1k_1 + 0k_2 + 0.1k_3 + 0.2k_4 \\leq 0.07$\n\nFor $x_2$ column: $0, 0.1, 0.2, 0.1$\n\n$0k_1 + 0.1k_2 + 0.2k_3 + 0.1k_4 \\leq 0.05$\n\nThis matches Option A exactly.",
+        "images": []
       }
     },
     "pp:me:2026:q37": {
       "question_uid": "pp:me:2026:q37",
-      "exam_uid": "me:2026:set1:q37",
+      "exam_uid": "me:2026:set1:main:q37",
       "title": "GATE ME 2026 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -1509,13 +1666,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "<b>Critical Ratio Formula:</b>\n\n$CR = \\dfrac{\\text{Time remaining}}{\\text{Work remaining}} = \\dfrac{\\text{Due date} - \\text{Current day}}{\\text{Work remaining}}$\n\n<b>Calculate CR for each job:</b>\n\n<b>Job M:</b>\n\n$CR_M = \\dfrac{26 - 20}{5} = \\dfrac{6}{5} = 1.2$ -> CR > 1 (ahead of schedule)\n\n<b>Job N:</b>\n\n$CR_N = \\dfrac{24 - 20}{10} = \\dfrac{4}{10} = 0.4$ -> CR < 1 (behind schedule)\n\n<b>Job O:</b>\n\n$CR_O = \\dfrac{28 - 20}{10} = \\dfrac{8}{10} = 0.8$ -> CR < 1 (behind schedule)\n\n<b>Job P:</b>\n\n$CR_P = \\dfrac{31 - 20}{5} = \\dfrac{11}{5} = 2.2$ -> CR > 1 (ahead of schedule)\n\nJobs N and O have critical ratio less than unity.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Critical Ratio Formula:</b>\n\n$CR = \\dfrac{\\text{Time remaining}}{\\text{Work remaining}} = \\dfrac{\\text{Due date} - \\text{Current day}}{\\text{Work remaining}}$\n\n<b>Calculate CR for each job:</b>\n\n<b>Job M:</b>\n\n$CR_M = \\dfrac{26 - 20}{5} = \\dfrac{6}{5} = 1.2$ -> CR > 1 (ahead of schedule)\n\n<b>Job N:</b>\n\n$CR_N = \\dfrac{24 - 20}{10} = \\dfrac{4}{10} = 0.4$ -> CR < 1 (behind schedule)\n\n<b>Job O:</b>\n\n$CR_O = \\dfrac{28 - 20}{10} = \\dfrac{8}{10} = 0.8$ -> CR < 1 (behind schedule)\n\n<b>Job P:</b>\n\n$CR_P = \\dfrac{31 - 20}{5} = \\dfrac{11}{5} = 2.2$ -> CR > 1 (ahead of schedule)\n\nJobs N and O have critical ratio less than unity.",
+        "images": []
       }
     },
     "pp:me:2026:q38": {
       "question_uid": "pp:me:2026:q38",
-      "exam_uid": "me:2026:set1:q38",
+      "exam_uid": "me:2026:set1:main:q38",
       "title": "GATE ME 2026 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1548,13 +1709,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
-        "markdown": "Given:\n\nMass of block $m = 50$ kg\n\nInclination angle $\\theta = 30^\\circ$\n\nCoefficient of static friction $\\mu_s = 0.3$\n\nTwo pulleys (string arrangement doubles the effort)\n\n<b>Step 1: Forces on block along incline</b>\n\nWeight component along incline (downward):\n\n$W_{||} = mg\\sin\\theta = 50 \\times 10 \\times \\sin 30° = 50 \\times 10 \\times 0.5 = 250 \\, N$\n\nNormal force:\n\n$N = mg\\cos\\theta = 50 \\times 10 \\times \\cos 30° = 500 \\times 0.866 = 433 \\, N$\n\nFriction force (opposing upward motion -> acts downward):\n\n$F_f = \\mu_s N = 0.3 \\times 433 = 129.9 \\, N$\n\n<b>Step 2: Required force to move block upward</b>\n\n$F_{required} = W_{||} + F_f = 250 + 129.9 = 379.9 \\, N$\n\n<b>Step 3: Effect of pulley arrangement</b>\n\nWith two pulleys the string provides mechanical advantage of 2.\n\nThe tension in string = $Mg$\n\nForce on block = $2 \\times Mg$\n\n<b>Step 4: Minimum M</b>\n\n$2Mg = F_{required}$\n\n$2 \\times M \\times 10 = 379.9$\n\n$M = \\dfrac{379.9}{20} = 19.0 \\, kg$\n\nTherefore, the correct answer is **19** (acceptable range: [18.5, 19.5])."
+        "markdown": "Given:\n\nMass of block $m = 50$ kg\n\nInclination angle $\\theta = 30^\\circ$\n\nCoefficient of static friction $\\mu_s = 0.3$\n\nTwo pulleys (string arrangement doubles the effort)\n\n<b>Step 1: Forces on block along incline</b>\n\nWeight component along incline (downward):\n\n$W_{||} = mg\\sin\\theta = 50 \\times 10 \\times \\sin 30° = 50 \\times 10 \\times 0.5 = 250 \\, N$\n\nNormal force:\n\n$N = mg\\cos\\theta = 50 \\times 10 \\times \\cos 30° = 500 \\times 0.866 = 433 \\, N$\n\nFriction force (opposing upward motion -> acts downward):\n\n$F_f = \\mu_s N = 0.3 \\times 433 = 129.9 \\, N$\n\n<b>Step 2: Required force to move block upward</b>\n\n$F_{required} = W_{||} + F_f = 250 + 129.9 = 379.9 \\, N$\n\n<b>Step 3: Effect of pulley arrangement</b>\n\nWith two pulleys the string provides mechanical advantage of 2.\n\nThe tension in string = $Mg$\n\nForce on block = $2 \\times Mg$\n\n<b>Step 4: Minimum M</b>\n\n$2Mg = F_{required}$\n\n$2 \\times M \\times 10 = 379.9$\n\n$M = \\dfrac{379.9}{20} = 19.0 \\, kg$",
+        "images": []
       }
     },
     "pp:me:2026:q39": {
       "question_uid": "pp:me:2026:q39",
-      "exam_uid": "me:2026:set1:q39",
+      "exam_uid": "me:2026:set1:main:q39",
       "title": "GATE ME 2026 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1587,13 +1752,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress and Strain",
-        "markdown": "<b>Step 1: Shear stress at neutral axis formula</b>\n\n$\\tau = \\dfrac{VQ}{Ib}$\n\nwhere:\n\nV = shear force at section\n\nQ = first moment of area above neutral axis\n\nI = moment of inertia of cross-section\n\nb = width at neutral axis\n\n<b>Step 2: Calculate section properties</b>\n\n$b = 20 \\, mm, \\quad d = 45 \\, mm$\n\n$I = \\dfrac{bd^3}{12} = \\dfrac{20 \\times 45^3}{12} = \\dfrac{20 \\times 91125}{12} = 151875 \\, mm^4$\n\n$Q = b \\times \\dfrac{d}{2} \\times \\dfrac{d}{4} = 20 \\times 22.5 \\times 11.25 = 5062.5 \\, mm^3$\n\n<b>Step 3: Find shear force V</b>\n\n$\\tau = \\dfrac{VQ}{Ib}$\n\n$3 = \\dfrac{V \\times 5062.5}{151875 \\times 20}$\n\n$V = \\dfrac{3 \\times 151875 \\times 20}{5062.5} = \\dfrac{9112500}{5062.5} = 1800 \\, N = 1.8 \\, kN$\n\n<b>Step 4: Find P from reactions</b>\n\nPoint C is at 2 m from A and load P is also at 2 m from A (at same point).\n\nReaction at B: $R_B = \\dfrac{P \\times 2}{5} = 0.4P$\n\nReaction at A: $R_A = P - 0.4P = 0.6P$\n\nShear force just right of P = $R_B = 0.4P$... but at C (on neutral axis at load point):\n\nShear at section between A and P: $V = R_A = 0.6P$... checking with shear at C just left of load:\n\n$V = R_A = 0.6P = 1.8 \\, kN$\n\n$P = \\dfrac{1.8}{0.6} = 3.0 \\, kN$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
+        "markdown": "<b>Step 1: Shear stress at neutral axis formula</b>\n\n$\\tau = \\dfrac{VQ}{Ib}$\n\nwhere:\n\nV = shear force at section\n\nQ = first moment of area above neutral axis\n\nI = moment of inertia of cross-section\n\nb = width at neutral axis\n\n<b>Step 2: Calculate section properties</b>\n\n$b = 20 \\, mm, \\quad d = 45 \\, mm$\n\n$I = \\dfrac{bd^3}{12} = \\dfrac{20 \\times 45^3}{12} = \\dfrac{20 \\times 91125}{12} = 151875 \\, mm^4$\n\n$Q = b \\times \\dfrac{d}{2} \\times \\dfrac{d}{4} = 20 \\times 22.5 \\times 11.25 = 5062.5 \\, mm^3$\n\n<b>Step 3: Find shear force V</b>\n\n$\\tau = \\dfrac{VQ}{Ib}$\n\n$3 = \\dfrac{V \\times 5062.5}{151875 \\times 20}$\n\n$V = \\dfrac{3 \\times 151875 \\times 20}{5062.5} = \\dfrac{9112500}{5062.5} = 1800 \\, N = 1.8 \\, kN$\n\n<b>Step 4: Find P from reactions</b>\n\nPoint C is at 2 m from A and load P is also at 2 m from A (at same point).\n\nReaction at B: $R_B = \\dfrac{P \\times 2}{5} = 0.4P$\n\nReaction at A: $R_A = P - 0.4P = 0.6P$\n\nShear force just right of P = $R_B = 0.4P$... but at C (on neutral axis at load point):\n\nShear at section between A and P: $V = R_A = 0.6P$... checking with shear at C just left of load:\n\n$V = R_A = 0.6P = 1.8 \\, kN$\n\n$P = \\dfrac{1.8}{0.6} = 3.0 \\, kN$",
+        "images": []
       }
     },
     "pp:me:2026:q40": {
       "question_uid": "pp:me:2026:q40",
-      "exam_uid": "me:2026:set1:q40",
+      "exam_uid": "me:2026:set1:main:q40",
       "title": "GATE ME 2026 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1626,13 +1795,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Plane Motion",
-        "markdown": "<b>Step 1: Velocity analysis using instantaneous centre</b>\n\nSince A moves vertically downward and B moves horizontally the instantaneous centre of rotation (IC) is at the intersection of lines perpendicular to these velocities.\n\nIC is at the corner (intersection of the two walls).\n\n<b>Step 2: Angular velocity of bar</b>\n\nLet length of bar = L.\n\nA is on vertical wall: $A = (0, y_A)$\n\nB is on horizontal wall: $B = (x_B, 0)$\n\nAt  $45^\\circ$ : $x_B = L\\cos 45^\\circ = \\dfrac{L}{\\sqrt{2}}$ and $y_A = L\\sin 45^\\circ = \\dfrac{L}{\\sqrt{2}}$\n\nDistance of A from IC = $y_A = \\dfrac{L}{\\sqrt{2}}$\n\n$v_A = \\omega \\times IA$\n\n$6 = \\omega \\times \\dfrac{L}{\\sqrt{2}}$\n\n$\\omega = \\dfrac{6\\sqrt{2}}{L}$\n\n<b>Step 3: Distance of G from IC</b>\n\nG is midpoint of AB.\n\n$G = \\left(\\dfrac{L}{2\\sqrt{2}}, \\dfrac{L}{2\\sqrt{2}}\\right)$\n\n$IG = \\sqrt{\\left(\\dfrac{L}{2\\sqrt{2}}\\right)^2 + \\left(\\dfrac{L}{2\\sqrt{2}}\\right)^2} = \\sqrt{\\dfrac{L^2}{8} + \\dfrac{L^2}{8}} = \\sqrt{\\dfrac{L^2}{4}} = \\dfrac{L}{2}$\n\n<b>Step 4: Velocity of G</b>\n\n$v_G = \\omega \\times IG = \\dfrac{6\\sqrt{2}}{L} \\times \\dfrac{L}{2} = \\dfrac{6\\sqrt{2}}{2} = 3\\sqrt{2} = 4.24 \\, m/s$\n\nTherefore, the correct answer is **4.245** (acceptable range: [4.2, 4.29])."
+        "markdown": "<b>Step 1: Velocity analysis using instantaneous centre</b>\n\nSince A moves vertically downward and B moves horizontally the instantaneous centre of rotation (IC) is at the intersection of lines perpendicular to these velocities.\n\nIC is at the corner (intersection of the two walls).\n\n<b>Step 2: Angular velocity of bar</b>\n\nLet length of bar = L.\n\nA is on vertical wall: $A = (0, y_A)$\n\nB is on horizontal wall: $B = (x_B, 0)$\n\nAt  $45^\\circ$ : $x_B = L\\cos 45^\\circ = \\dfrac{L}{\\sqrt{2}}$ and $y_A = L\\sin 45^\\circ = \\dfrac{L}{\\sqrt{2}}$\n\nDistance of A from IC = $y_A = \\dfrac{L}{\\sqrt{2}}$\n\n$v_A = \\omega \\times IA$\n\n$6 = \\omega \\times \\dfrac{L}{\\sqrt{2}}$\n\n$\\omega = \\dfrac{6\\sqrt{2}}{L}$\n\n<b>Step 3: Distance of G from IC</b>\n\nG is midpoint of AB.\n\n$G = \\left(\\dfrac{L}{2\\sqrt{2}}, \\dfrac{L}{2\\sqrt{2}}\\right)$\n\n$IG = \\sqrt{\\left(\\dfrac{L}{2\\sqrt{2}}\\right)^2 + \\left(\\dfrac{L}{2\\sqrt{2}}\\right)^2} = \\sqrt{\\dfrac{L^2}{8} + \\dfrac{L^2}{8}} = \\sqrt{\\dfrac{L^2}{4}} = \\dfrac{L}{2}$\n\n<b>Step 4: Velocity of G</b>\n\n$v_G = \\omega \\times IG = \\dfrac{6\\sqrt{2}}{L} \\times \\dfrac{L}{2} = \\dfrac{6\\sqrt{2}}{2} = 3\\sqrt{2} = 4.24 \\, m/s$",
+        "images": []
       }
     },
     "pp:me:2026:q41": {
       "question_uid": "pp:me:2026:q41",
-      "exam_uid": "me:2026:set1:q41",
+      "exam_uid": "me:2026:set1:main:q41",
       "title": "GATE ME 2026 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1665,13 +1838,17 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Thin Cylinder",
-        "markdown": "Given:\n\nDiameter of cylinder $d = 3$ m -> Radius $r = 1.5$ m\n\nWall thickness $t = 15$ mm $= 0.015$ m\n\nYoung's modulus $E = 210$ GPa\n\nPoisson's ratio $\\nu = 0.3$\n\nAllowable normal strain $\\varepsilon_{allow} = 0.00034$\n\n<b>Step 1: Hoop and longitudinal stress in thin cylinder</b>\n\n$\\sigma_h = \\dfrac{Pr}{t} = \\dfrac{P \\times 1.5}{0.015} = 100P$\n\n$\\sigma_l = \\dfrac{Pr}{2t} = \\dfrac{P \\times 1.5}{2 \\times 0.015} = 50P$\n\n<b>Step 2: Hoop strain (maximum strain at outer surface)</b>\n\n$\\varepsilon_h = \\dfrac{\\sigma_h}{E} - \\nu\\dfrac{\\sigma_l}{E}$\n\n$\\varepsilon_h = \\dfrac{100P}{210 \\times 10^9} - 0.3 \\times \\dfrac{50P}{210 \\times 10^9}$\n\n$\\varepsilon_h = \\dfrac{P}{210 \\times 10^9}(100 - 15) = \\dfrac{85P}{210 \\times 10^9}$\n\n<b>Step 3: Apply allowable strain condition</b>\n\n$0.00034 = \\dfrac{85P}{210 \\times 10^9}$\n\n$P = \\dfrac{0.00034 \\times 210 \\times 10^9}{85} = \\dfrac{71400000}{85} = 840000 \\, Pa$\n\n$P = 840 \\, kPa$\n\nTherefore, the correct answer is **840** (acceptable range: [838, 842])."
+        "markdown": "Given:\n\nDiameter of cylinder $d = 3$ m -> Radius $r = 1.5$ m\n\nWall thickness $t = 15$ mm $= 0.015$ m\n\nYoung's modulus $E = 210$ GPa\n\nPoisson's ratio $\\nu = 0.3$\n\nAllowable normal strain $\\varepsilon_{allow} = 0.00034$\n\n<b>Step 1: Hoop and longitudinal stress in thin cylinder</b>\n\n$\\sigma_h = \\dfrac{Pr}{t} = \\dfrac{P \\times 1.5}{0.015} = 100P$\n\n$\\sigma_l = \\dfrac{Pr}{2t} = \\dfrac{P \\times 1.5}{2 \\times 0.015} = 50P$\n\n<b>Step 2: Hoop strain (maximum strain at outer surface)</b>\n\n$\\varepsilon_h = \\dfrac{\\sigma_h}{E} - \\nu\\dfrac{\\sigma_l}{E}$\n\n$\\varepsilon_h = \\dfrac{100P}{210 \\times 10^9} - 0.3 \\times \\dfrac{50P}{210 \\times 10^9}$\n\n$\\varepsilon_h = \\dfrac{P}{210 \\times 10^9}(100 - 15) = \\dfrac{85P}{210 \\times 10^9}$\n\n<b>Step 3: Apply allowable strain condition</b>\n\n$0.00034 = \\dfrac{85P}{210 \\times 10^9}$\n\n$P = \\dfrac{0.00034 \\times 210 \\times 10^9}{85} = \\dfrac{71400000}{85} = 840000 \\, Pa$\n\n$P = 840 \\, kPa$",
+        "images": []
       }
     },
     "pp:me:2026:q42": {
       "question_uid": "pp:me:2026:q42",
-      "exam_uid": "me:2026:set1:q42",
+      "exam_uid": "me:2026:set1:main:q42",
       "title": "GATE ME 2026 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1704,13 +1881,17 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Bolted, Riveted and Welded Joint",
-        "markdown": "The plate is subjected to biaxial normal stresses:\n\n$\\sigma_x=-6.5\\ \\text{MPa}\n\n\\qquad\n\n\\sigma_y=25\\ \\text{MPa}\n\n\\qquad\n\n\\tau_{xy}=0$\n\nThe weld is along the diagonal of the square, making an angle\n\n$\\theta=45^\\circ$\n\nwith the horizontal. Hence, the normal to the weld is also at $45^\\circ$ to the principal stress directions.\n\nThe shear stress on an inclined plane is\n\n$\\tau_n\n\n=\n\n-\\dfrac{\\sigma_x-\\sigma_y}{2}\\sin(2\\theta)\n\n+\\tau_{xy}\\cos(2\\theta)$\n\nSince $\\tau_{xy}=0$ and $\\theta=45^\\circ$,\n\n$\\tau_n\n\n=\n\n-\\dfrac{-6.5-25}{2}\\sin 90^\\circ\n\n\\;=\\;\n\n15.75\\ \\text{MPa}$\n\nTherefore, the ratio of the normal stress (perpendicular to the weld) to the shear stress on the weld is\n\n$\\dfrac{\\sigma_n}{\\tau_n}\n\n=\n\n\\dfrac{\\frac{\\sigma_x+\\sigma_y}{2}}\n\n{\\dfrac{\\sigma_y-\\sigma_x}{2}}\n\n=\n\n\\dfrac{25-6.5}{25+6.5}\n\n=\n\n\\dfrac{18.5}{31.5}\n\n\\approx 0.587$\n\nTherefore, the correct answer is **0.59** (acceptable range: [0.57, 0.61])."
+        "markdown": "The plate is subjected to biaxial normal stresses:\n\n$\\sigma_x=-6.5\\ \\text{MPa}\n\n\\qquad\n\n\\sigma_y=25\\ \\text{MPa}\n\n\\qquad\n\n\\tau_{xy}=0$\n\nThe weld is along the diagonal of the square, making an angle\n\n$\\theta=45^\\circ$\n\nwith the horizontal. Hence, the normal to the weld is also at $45^\\circ$ to the principal stress directions.\n\nThe shear stress on an inclined plane is\n\n$\\tau_n\n\n=\n\n-\\dfrac{\\sigma_x-\\sigma_y}{2}\\sin(2\\theta)\n\n+\\tau_{xy}\\cos(2\\theta)$\n\nSince $\\tau_{xy}=0$ and $\\theta=45^\\circ$,\n\n$\\tau_n\n\n=\n\n-\\dfrac{-6.5-25}{2}\\sin 90^\\circ\n\n\\;=\\;\n\n15.75\\ \\text{MPa}$\n\nTherefore, the ratio of the normal stress (perpendicular to the weld) to the shear stress on the weld is\n\n$\\dfrac{\\sigma_n}{\\tau_n}\n\n=\n\n\\dfrac{\\frac{\\sigma_x+\\sigma_y}{2}}\n\n{\\dfrac{\\sigma_y-\\sigma_x}{2}}\n\n=\n\n\\dfrac{25-6.5}{25+6.5}\n\n=\n\n\\dfrac{18.5}{31.5}\n\n\\approx 0.587$",
+        "images": []
       }
     },
     "pp:me:2026:q43": {
       "question_uid": "pp:me:2026:q43",
-      "exam_uid": "me:2026:set1:q43",
+      "exam_uid": "me:2026:set1:main:q43",
       "title": "GATE ME 2026 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1743,13 +1924,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
-        "markdown": "Given:\n\nDensity of water $\\rho = 1000 \\, kg/m^3$\n\nPipe radius $r_1 = 15$ cm $= 0.15$ m\n\nFlow rate $Q = 4.5 \\, m^3/min = \\dfrac{4.5}{60} = 0.075 \\, m^3/s$\n\nDiffuser length $L = 0.5$ m\n\nDiffuser radius: $r = 0.15 + 0.4x^2$\n\n<b>Step 1: Velocity at inlet (x = 0)</b>\n\n$A_1 = \\pi r_1^2 = \\pi \\times (0.15)^2 = 0.07069 \\, m^2$\n\n$V_1 = \\dfrac{Q}{A_1} = \\dfrac{0.075}{0.07069} = 1.0609 \\, m/s$\n\n<b>Step 2: Velocity at outlet (x = 0.5 m)</b>\n\n$r_2 = 0.15 + 0.4 \\times (0.5)^2 = 0.15 + 0.1 = 0.25 \\, m$\n\n$A_2 = \\pi r_2^2 = \\pi \\times (0.25)^2 = 0.19635 \\, m^2$\n\n$V_2 = \\dfrac{Q}{A_2} = \\dfrac{0.075}{0.19635} = 0.3820 \\, m/s$\n\n<b>Step 3: Pressure at outlet</b>\n\nOutlet is at atmospheric pressure: $P_2 = 0$ (gauge)\n\n<b>Step 4: Pressure at inlet using Bernoulli</b>\n\n$P_1 + \\dfrac{1}{2}\\rho V_1^2 = P_2 + \\dfrac{1}{2}\\rho V_2^2$\n\n$P_1 = \\dfrac{1}{2} \\times 1000 \\times (0.3820^2 - 1.0609^2)$\n\n$P_1 = 500 \\times (0.1459 - 1.1255) = 500 \\times (-0.9796) = -489.8 \\, Pa$\n\n<b>Step 5: Force on flange (momentum equation)</b>\n\n$F + P_1 A_1 - P_2 A_2 = \\rho Q(V_2 - V_1)$\n\n$F = \\rho Q(V_2 - V_1) - P_1 A_1$\n\n$F = 1000 \\times 0.075 \\times (0.382 - 1.0609) - (-489.8 \\times 0.07069)$\n\n$F = 75 \\times (-0.6789) + 34.62$\n\n$F = -50.92 + 34.62 = -16.30 \\, N$\n\nMagnitude of force $= 16.30 \\, N$\n\nTherefore, the correct answer is **16.3** (acceptable range: [15.5, 17.1])."
+        "markdown": "Given:\n\nDensity of water $\\rho = 1000 \\, kg/m^3$\n\nPipe radius $r_1 = 15$ cm $= 0.15$ m\n\nFlow rate $Q = 4.5 \\, m^3/min = \\dfrac{4.5}{60} = 0.075 \\, m^3/s$\n\nDiffuser length $L = 0.5$ m\n\nDiffuser radius: $r = 0.15 + 0.4x^2$\n\n<b>Step 1: Velocity at inlet (x = 0)</b>\n\n$A_1 = \\pi r_1^2 = \\pi \\times (0.15)^2 = 0.07069 \\, m^2$\n\n$V_1 = \\dfrac{Q}{A_1} = \\dfrac{0.075}{0.07069} = 1.0609 \\, m/s$\n\n<b>Step 2: Velocity at outlet (x = 0.5 m)</b>\n\n$r_2 = 0.15 + 0.4 \\times (0.5)^2 = 0.15 + 0.1 = 0.25 \\, m$\n\n$A_2 = \\pi r_2^2 = \\pi \\times (0.25)^2 = 0.19635 \\, m^2$\n\n$V_2 = \\dfrac{Q}{A_2} = \\dfrac{0.075}{0.19635} = 0.3820 \\, m/s$\n\n<b>Step 3: Pressure at outlet</b>\n\nOutlet is at atmospheric pressure: $P_2 = 0$ (gauge)\n\n<b>Step 4: Pressure at inlet using Bernoulli</b>\n\n$P_1 + \\dfrac{1}{2}\\rho V_1^2 = P_2 + \\dfrac{1}{2}\\rho V_2^2$\n\n$P_1 = \\dfrac{1}{2} \\times 1000 \\times (0.3820^2 - 1.0609^2)$\n\n$P_1 = 500 \\times (0.1459 - 1.1255) = 500 \\times (-0.9796) = -489.8 \\, Pa$\n\n<b>Step 5: Force on flange (momentum equation)</b>\n\n$F + P_1 A_1 - P_2 A_2 = \\rho Q(V_2 - V_1)$\n\n$F = \\rho Q(V_2 - V_1) - P_1 A_1$\n\n$F = 1000 \\times 0.075 \\times (0.382 - 1.0609) - (-489.8 \\times 0.07069)$\n\n$F = 75 \\times (-0.6789) + 34.62$\n\n$F = -50.92 + 34.62 = -16.30 \\, N$\n\nMagnitude of force $= 16.30 \\, N$",
+        "images": []
       }
     },
     "pp:me:2026:q44": {
       "question_uid": "pp:me:2026:q44",
-      "exam_uid": "me:2026:set1:q44",
+      "exam_uid": "me:2026:set1:main:q44",
       "title": "GATE ME 2026 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1782,13 +1967,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
-        "markdown": "Given:\n\nTwo surfaces each of area $A = 1 \\, m^2$ placed perpendicular to each other.\n\nHot surface temperature $T_1 = 1000$ K, emissivity $\\varepsilon_1 = 0.4$\n\nSurface 2 is insulated (reradiating surface)\n\nSurrounding room temperature $T_3 = 300$ K\n\nView factor $F_{12} = 0.2$\n\n<b>Step 1: Determine view factors</b>\n\n$F_{12} = 0.2$\n\n$F_{11} = 0$ (flat surface)\n\n$F_{13} = 1 - F_{12} = 1 - 0.2 = 0.8$\n\n<b>Step 2: Radiation resistances</b>\n\nSurface resistance of hot surface:\n\n$R_1 = \\dfrac{1 - \\varepsilon_1}{\\varepsilon_1 A_1} = \\dfrac{1 - 0.4}{0.4 \\times 1} = \\dfrac{0.6}{0.4} = 1.5 \\, m^{-2}$\n\nSpace resistance between surface 1 and surroundings:\n\n$R_{13} = \\dfrac{1}{A_1 F_{13}} = \\dfrac{1}{1 \\times 0.8} = 1.25 \\, m^{-2}$\n\nSpace resistance between surface 1 and surface 2:\n\n$R_{12} = \\dfrac{1}{A_1 F_{12}} = \\dfrac{1}{1 \\times 0.2} = 5 \\, m^{-2}$\n\nSpace resistance between surface 2 and surroundings:\n\n$R_{23} = \\dfrac{1}{A_2 F_{23}} = \\dfrac{1}{1 \\times 0.2} = 5 \\, m^{-2}$\n\n<b>Step 3: Equivalent resistance of parallel path through surface 2</b>\n\nSince surface 2 is reradiating $R_{12}$ and $R_{23}$ are in series:\n\n$R_{12+23} = R_{12} + R_{23} = 5 + 5 = 10 \\, m^{-2}$\n\nThis is in parallel with $R_{13}$:\n\n$R_{parallel} = \\dfrac{R_{13} \\times R_{12+23}}{R_{13} + R_{12+23}} = \\dfrac{1.25 \\times 10}{1.25 + 10} = \\dfrac{12.5}{11.25} = 1.111 \\, m^{-2}$\n\n<b>Step 4: Total resistance</b>\n\n$R_{total} = R_1 + R_{parallel} = 1.5 + 1.111 = 2.611 \\approx 2.61 \\, m^{-2}$\n\nTherefore, the correct answer is **2.55** (acceptable range: [2.5, 2.6])."
+        "markdown": "Given:\n\nTwo surfaces each of area $A = 1 \\, m^2$ placed perpendicular to each other.\n\nHot surface temperature $T_1 = 1000$ K, emissivity $\\varepsilon_1 = 0.4$\n\nSurface 2 is insulated (reradiating surface)\n\nSurrounding room temperature $T_3 = 300$ K\n\nView factor $F_{12} = 0.2$\n\n<b>Step 1: Determine view factors</b>\n\n$F_{12} = 0.2$\n\n$F_{11} = 0$ (flat surface)\n\n$F_{13} = 1 - F_{12} = 1 - 0.2 = 0.8$\n\n<b>Step 2: Radiation resistances</b>\n\nSurface resistance of hot surface:\n\n$R_1 = \\dfrac{1 - \\varepsilon_1}{\\varepsilon_1 A_1} = \\dfrac{1 - 0.4}{0.4 \\times 1} = \\dfrac{0.6}{0.4} = 1.5 \\, m^{-2}$\n\nSpace resistance between surface 1 and surroundings:\n\n$R_{13} = \\dfrac{1}{A_1 F_{13}} = \\dfrac{1}{1 \\times 0.8} = 1.25 \\, m^{-2}$\n\nSpace resistance between surface 1 and surface 2:\n\n$R_{12} = \\dfrac{1}{A_1 F_{12}} = \\dfrac{1}{1 \\times 0.2} = 5 \\, m^{-2}$\n\nSpace resistance between surface 2 and surroundings:\n\n$R_{23} = \\dfrac{1}{A_2 F_{23}} = \\dfrac{1}{1 \\times 0.2} = 5 \\, m^{-2}$\n\n<b>Step 3: Equivalent resistance of parallel path through surface 2</b>\n\nSince surface 2 is reradiating $R_{12}$ and $R_{23}$ are in series:\n\n$R_{12+23} = R_{12} + R_{23} = 5 + 5 = 10 \\, m^{-2}$\n\nThis is in parallel with $R_{13}$:\n\n$R_{parallel} = \\dfrac{R_{13} \\times R_{12+23}}{R_{13} + R_{12+23}} = \\dfrac{1.25 \\times 10}{1.25 + 10} = \\dfrac{12.5}{11.25} = 1.111 \\, m^{-2}$\n\n<b>Step 4: Total resistance</b>\n\n$R_{total} = R_1 + R_{parallel} = 1.5 + 1.111 = 2.611 \\approx 2.61 \\, m^{-2}$",
+        "images": []
       }
     },
     "pp:me:2026:q45": {
       "question_uid": "pp:me:2026:q45",
-      "exam_uid": "me:2026:set1:q45",
+      "exam_uid": "me:2026:set1:main:q45",
       "title": "GATE ME 2026 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1821,13 +2010,17 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
-        "markdown": "Given:\n\nConvective coefficient Fluid 1 (inside): $h_i = 50 \\, W/(m^2K)$\n\nConvective coefficient Fluid 2 (outside): $h_o = 80 \\, W/(m^2K)$\n\nThermal conductivity of tube: $k = 386 \\, W/(mK)$\n\nLength $L = 1$ m\n\nInside radius $r_i = 10$ mm $= 0.01$ m\n\nTube thickness $= 1$ mm $\\rightarrow$ Outside radius $r_o = 11$ mm $= 0.011$ m\n\nFluid 1: inlet $60^{\\circ}C$ outlet $40^{\\circ}C$ $\\rightarrow T_{avg,1} = 50^{\\circ}C$\n\nFluid 2: inlet $20^{\\circ}C$ outlet $30^{\\circ}C$ $\\rightarrow T_{avg,2} = 25^{\\circ}C$\n\n<b>Step 1: Overall heat transfer resistance</b>\n\nInside convection resistance:\n\n$R_i = \\dfrac{1}{h_i A_i} = \\dfrac{1}{50 \\times 2\\pi \\times 0.01 \\times 1} = \\dfrac{1}{3.1416} = 0.3183 \\, K/W$\n\nConduction resistance through tube wall:\n\n$R_{cond} = \\dfrac{\\ln(r_o/r_i)}{2\\pi k L} = \\dfrac{\\ln(0.011/0.01)}{2\\pi \\times 386 \\times 1} = \\dfrac{\\ln(1.1)}{2425.1} = \\dfrac{0.09531}{2425.1} = 3.93 \\times 10^{-5} \\, K/W$\n\nOutside convection resistance:\n\n$R_o = \\dfrac{1}{h_o A_o} = \\dfrac{1}{80 \\times 2\\pi \\times 0.011 \\times 1} = \\dfrac{1}{5.5292} = 0.1809 \\, K/W$\n\n<b>Step 2: Total resistance</b>\n\n$R_{total} = R_i + R_{cond} + R_o = 0.3183 + 0.0000393 + 0.1809 = 0.4992 \\, K/W$\n\n<b>Step 3: LMTD for counter flow</b>\n\n$\\Delta T_1 = 60 - 30 = 30^{\\circ}C$\n\n$\\Delta T_2 = 40 - 20 = 20^{\\circ}C$\n\n$LMTD = \\dfrac{\\Delta T_1 - \\Delta T_2}{\\ln(\\Delta T_1/\\Delta T_2)} = \\dfrac{30 - 20}{\\ln(30/20)} = \\dfrac{10}{\\ln(1.5)} = \\dfrac{10}{0.4055} = 24.66^{\\circ}C$\n\n<b>Step 4: Heat transfer rate</b>\n\n$Q = \\dfrac{LMTD}{R_{total}} = \\dfrac{24.66}{0.4992} = 49.4 \\, W$\n\nTherefore, the correct answer is **50.5** (acceptable range: [49.5, 51.5])."
+        "markdown": "Given:\n\nConvective coefficient Fluid 1 (inside): $h_i = 50 \\, W/(m^2K)$\n\nConvective coefficient Fluid 2 (outside): $h_o = 80 \\, W/(m^2K)$\n\nThermal conductivity of tube: $k = 386 \\, W/(mK)$\n\nLength $L = 1$ m\n\nInside radius $r_i = 10$ mm $= 0.01$ m\n\nTube thickness $= 1$ mm $\\rightarrow$ Outside radius $r_o = 11$ mm $= 0.011$ m\n\nFluid 1: inlet $60^{\\circ}C$ outlet $40^{\\circ}C$ $\\rightarrow T_{avg,1} = 50^{\\circ}C$\n\nFluid 2: inlet $20^{\\circ}C$ outlet $30^{\\circ}C$ $\\rightarrow T_{avg,2} = 25^{\\circ}C$\n\n<b>Step 1: Overall heat transfer resistance</b>\n\nInside convection resistance:\n\n$R_i = \\dfrac{1}{h_i A_i} = \\dfrac{1}{50 \\times 2\\pi \\times 0.01 \\times 1} = \\dfrac{1}{3.1416} = 0.3183 \\, K/W$\n\nConduction resistance through tube wall:\n\n$R_{cond} = \\dfrac{\\ln(r_o/r_i)}{2\\pi k L} = \\dfrac{\\ln(0.011/0.01)}{2\\pi \\times 386 \\times 1} = \\dfrac{\\ln(1.1)}{2425.1} = \\dfrac{0.09531}{2425.1} = 3.93 \\times 10^{-5} \\, K/W$\n\nOutside convection resistance:\n\n$R_o = \\dfrac{1}{h_o A_o} = \\dfrac{1}{80 \\times 2\\pi \\times 0.011 \\times 1} = \\dfrac{1}{5.5292} = 0.1809 \\, K/W$\n\n<b>Step 2: Total resistance</b>\n\n$R_{total} = R_i + R_{cond} + R_o = 0.3183 + 0.0000393 + 0.1809 = 0.4992 \\, K/W$\n\n<b>Step 3: LMTD for counter flow</b>\n\n$\\Delta T_1 = 60 - 30 = 30^{\\circ}C$\n\n$\\Delta T_2 = 40 - 20 = 20^{\\circ}C$\n\n$LMTD = \\dfrac{\\Delta T_1 - \\Delta T_2}{\\ln(\\Delta T_1/\\Delta T_2)} = \\dfrac{30 - 20}{\\ln(30/20)} = \\dfrac{10}{\\ln(1.5)} = \\dfrac{10}{0.4055} = 24.66^{\\circ}C$\n\n<b>Step 4: Heat transfer rate</b>\n\n$Q = \\dfrac{LMTD}{R_{total}} = \\dfrac{24.66}{0.4992} = 49.4 \\, W$",
+        "images": []
       }
     },
     "pp:me:2026:q46": {
       "question_uid": "pp:me:2026:q46",
-      "exam_uid": "me:2026:set1:q46",
+      "exam_uid": "me:2026:set1:main:q46",
       "title": "GATE ME 2026 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1860,13 +2053,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Availability and Irreversibility",
-        "markdown": "Given:\n\nLiquid temperature $T = 250^{\\circ}C = 523 \\, K$\n\nAmbient temperature $T_0 = 25^{\\circ}C = 298 \\, K$\n\nFlow rate $\\dot{V} = 100 \\, LPM = \\dfrac{100}{1000 \\times 60} = \\dfrac{1}{600} \\, m^3/s$\n\nDensity $\\rho = 1000 \\, kg/m^3$\n\nSpecific heat $c_p = 4.18 \\, kJ/(kgK) = 4180 \\, J/(kgK)$\n\n<b>Step 1: Mass flow rate</b>\n\n$\\dot{m} = \\rho \\dot{V} = 1000 \\times \\dfrac{1}{600} = \\dfrac{1000}{600} = 1.6667 \\, kg/s$\n\n<b>Step 2: Rate of exergy of hot liquid stream</b>\n\nSpecific flow exergy:\n\n$\\psi = c_p\\left[(T - T_0) - T_0 \\ln\\dfrac{T}{T_0}\\right]$\n\n$\\psi = 4180\\left[(523 - 298) - 298 \\times \\ln\\dfrac{523}{298}\\right]$\n\n$\\psi = 4180\\left[225 - 298 \\times \\ln(1.7550)\\right]$\n\n$\\psi = 4180\\left[225 - 298 \\times 0.5623\\right]$\n\n$\\psi = 4180\\left[225 - 167.57\\right]$\n\n$\\psi = 4180 \\times 57.43 = 240056 \\, J/kg$\n\n<b>Step 3: Rate of exergy</b>\n\n$\\dot{E}_x = \\dot{m} \\times \\psi = 1.6667 \\times 240056 = 400093 \\, W \\approx 400.09 \\, kW$\n\nTherefore, the correct answer is **401** (acceptable range: [396, 406])."
+        "markdown": "Given:\n\nLiquid temperature $T = 250^{\\circ}C = 523 \\, K$\n\nAmbient temperature $T_0 = 25^{\\circ}C = 298 \\, K$\n\nFlow rate $\\dot{V} = 100 \\, LPM = \\dfrac{100}{1000 \\times 60} = \\dfrac{1}{600} \\, m^3/s$\n\nDensity $\\rho = 1000 \\, kg/m^3$\n\nSpecific heat $c_p = 4.18 \\, kJ/(kgK) = 4180 \\, J/(kgK)$\n\n<b>Step 1: Mass flow rate</b>\n\n$\\dot{m} = \\rho \\dot{V} = 1000 \\times \\dfrac{1}{600} = \\dfrac{1000}{600} = 1.6667 \\, kg/s$\n\n<b>Step 2: Rate of exergy of hot liquid stream</b>\n\nSpecific flow exergy:\n\n$\\psi = c_p\\left[(T - T_0) - T_0 \\ln\\dfrac{T}{T_0}\\right]$\n\n$\\psi = 4180\\left[(523 - 298) - 298 \\times \\ln\\dfrac{523}{298}\\right]$\n\n$\\psi = 4180\\left[225 - 298 \\times \\ln(1.7550)\\right]$\n\n$\\psi = 4180\\left[225 - 298 \\times 0.5623\\right]$\n\n$\\psi = 4180\\left[225 - 167.57\\right]$\n\n$\\psi = 4180 \\times 57.43 = 240056 \\, J/kg$\n\n<b>Step 3: Rate of exergy</b>\n\n$\\dot{E}_x = \\dot{m} \\times \\psi = 1.6667 \\times 240056 = 400093 \\, W \\approx 400.09 \\, kW$",
+        "images": []
       }
     },
     "pp:me:2026:q47": {
       "question_uid": "pp:me:2026:q47",
-      "exam_uid": "me:2026:set1:q47",
+      "exam_uid": "me:2026:set1:main:q47",
       "title": "GATE ME 2026 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1899,13 +2096,17 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Pure Substances",
-        "markdown": "Given:\n\nCylinder diameter $= 15$ cm $= 0.15$ m\n\nMass of water $m = 5$ kg\n\nInitial temperature $T_1 = 80^{\\circ}C$ with quality $x_1 = 0.10$\n\nFinal temperature $T_2 = 130^{\\circ}C$\n\nAt $80^{\\circ}C$: $v_f = 0.001029 \\, m^3/kg$, $v_g = 3.4053 \\, m^3/kg$\n\nAt $130^{\\circ}C$: $v_f = 0.001070 \\, m^3/kg$, $v_g = 0.66808 \\, m^3/kg$\n\n<b>Step 1: Initial specific volume</b>\n\n$v_1 = v_f + x_1(v_g - v_f)$\n\n$v_1 = 0.001029 + 0.10 \\times (3.4053 - 0.001029)$\n\n$v_1 = 0.001029 + 0.10 \\times 3.4043 = 0.001029 + 0.34043 = 0.34146 \\, m^3/kg$\n\n<b>Step 2: Total volume (rigid vessel)</b>\n\n$V_{total} = m \\times v_1 = 5 \\times 0.34146 = 1.7073 \\, m^3$\n\n<b>Step 3: Final state specific volume</b>\n\n$v_2 = \\dfrac{V_{total}}{m} = \\dfrac{1.7073}{5} = 0.34146 \\, m^3/kg$\n\n<b>Step 4: Final quality at $130^\\circ$ </b>\n\n$x_2 = \\dfrac{v_2 - v_{f2}}{v_{g2} - v_{f2}} = \\dfrac{0.34146 - 0.001070}{0.66808 - 0.001070} = \\dfrac{0.34039}{0.66701} = 0.5103$\n\n<b>Step 5: Liquid and vapor volumes</b>\n\nCross-sectional area: $A = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi \\times 0.15^2}{4} = 0.017671 \\, m^2$\n\nInitial liquid volume: $V_{f1} = m(1-x_1)v_{f1} = 5 \\times 0.9 \\times 0.001029 = 0.004631 \\, m^3$\n\nInitial liquid height: $H_{f1} = \\dfrac{V_{f1}}{A} = \\dfrac{0.004631}{0.017671} = 0.2621 \\, m$\n\nFinal liquid volume: $V_{f2} = m(1-x_2)v_{f2} = 5 \\times 0.4897 \\times 0.001070 = 0.002620 \\, m^3$\n\nFinal liquid height: $H_{f2} = \\dfrac{V_{f2}}{A} = \\dfrac{0.002620}{0.017671} = 0.1483 \\, m$\n\n<b>Step 6: Dip in liquid level</b>\n\n$\\Delta H = H_{f1} - H_{f2} = 0.2621 - 0.1483 = 0.1138 \\, m = 11.38 \\, cm$\n\nTherefore, the correct answer is **11.45** (acceptable range: [11, 11.9])."
+        "markdown": "Given:\n\nCylinder diameter $= 15$ cm $= 0.15$ m\n\nMass of water $m = 5$ kg\n\nInitial temperature $T_1 = 80^{\\circ}C$ with quality $x_1 = 0.10$\n\nFinal temperature $T_2 = 130^{\\circ}C$\n\nAt $80^{\\circ}C$: $v_f = 0.001029 \\, m^3/kg$, $v_g = 3.4053 \\, m^3/kg$\n\nAt $130^{\\circ}C$: $v_f = 0.001070 \\, m^3/kg$, $v_g = 0.66808 \\, m^3/kg$\n\n<b>Step 1: Initial specific volume</b>\n\n$v_1 = v_f + x_1(v_g - v_f)$\n\n$v_1 = 0.001029 + 0.10 \\times (3.4053 - 0.001029)$\n\n$v_1 = 0.001029 + 0.10 \\times 3.4043 = 0.001029 + 0.34043 = 0.34146 \\, m^3/kg$\n\n<b>Step 2: Total volume (rigid vessel)</b>\n\n$V_{total} = m \\times v_1 = 5 \\times 0.34146 = 1.7073 \\, m^3$\n\n<b>Step 3: Final state specific volume</b>\n\n$v_2 = \\dfrac{V_{total}}{m} = \\dfrac{1.7073}{5} = 0.34146 \\, m^3/kg$\n\n<b>Step 4: Final quality at $130^\\circ$ </b>\n\n$x_2 = \\dfrac{v_2 - v_{f2}}{v_{g2} - v_{f2}} = \\dfrac{0.34146 - 0.001070}{0.66808 - 0.001070} = \\dfrac{0.34039}{0.66701} = 0.5103$\n\n<b>Step 5: Liquid and vapor volumes</b>\n\nCross-sectional area: $A = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi \\times 0.15^2}{4} = 0.017671 \\, m^2$\n\nInitial liquid volume: $V_{f1} = m(1-x_1)v_{f1} = 5 \\times 0.9 \\times 0.001029 = 0.004631 \\, m^3$\n\nInitial liquid height: $H_{f1} = \\dfrac{V_{f1}}{A} = \\dfrac{0.004631}{0.017671} = 0.2621 \\, m$\n\nFinal liquid volume: $V_{f2} = m(1-x_2)v_{f2} = 5 \\times 0.4897 \\times 0.001070 = 0.002620 \\, m^3$\n\nFinal liquid height: $H_{f2} = \\dfrac{V_{f2}}{A} = \\dfrac{0.002620}{0.017671} = 0.1483 \\, m$\n\n<b>Step 6: Dip in liquid level</b>\n\n$\\Delta H = H_{f1} - H_{f2} = 0.2621 - 0.1483 = 0.1138 \\, m = 11.38 \\, cm$",
+        "images": []
       }
     },
     "pp:me:2026:q48": {
       "question_uid": "pp:me:2026:q48",
-      "exam_uid": "me:2026:set1:q48",
+      "exam_uid": "me:2026:set1:main:q48",
       "title": "GATE ME 2026 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1938,13 +2139,17 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Turbines and Pumps",
-        "markdown": "Given:\n\nOuter diameter of turbine $D = 1$ m $\\rightarrow$ Radius $R = 0.5$ m\n\nSpeed $N = 600$ RPM\n\nNormal component of absolute velocity at inlet $V_{f1} = 10 \\, m/s$\n\nGuide blade angle $\\alpha = 15^{\\circ}$\n\n<b>Step 1: Peripheral velocity at inlet</b>\n\n$u_1 = \\dfrac{\\pi D N}{60} = \\dfrac{\\pi \\times 1 \\times 600}{60} = 10\\pi = 31.416 \\, m/s$\n\n<b>Step 2: Whirl component of absolute velocity</b>\n\n$V_{w1} = \\dfrac{V_{f1}}{\\tan\\alpha} = \\dfrac{10}{\\tan 15^{\\circ}} = \\dfrac{10}{0.2679} = 37.32 \\, m/s$\n\n<b>Step 3: Velocity of flow relative to runner</b>\n\nRelative velocity components:\n\n$V_{w1,rel} = V_{w1} - u_1 = 37.32 - 31.416 = 5.904 \\, m/s$\n\n$V_{f1,rel} = V_{f1} = 10 \\, m/s$\n\n<b>Step 4: Inlet vane angle</b>\n\n$\\tan\\beta_1 = \\dfrac{V_{f1}}{V_{w1} - u_1} = \\dfrac{10}{5.904} = 1.6938$\n\n$\\beta_1 = \\tan^{-1}(1.6938) = 59.4^{\\circ}$\n\nTherefore, the correct answer is **59.5** (acceptable range: [57.5, 61.5])."
+        "markdown": "Given:\n\nOuter diameter of turbine $D = 1$ m $\\rightarrow$ Radius $R = 0.5$ m\n\nSpeed $N = 600$ RPM\n\nNormal component of absolute velocity at inlet $V_{f1} = 10 \\, m/s$\n\nGuide blade angle $\\alpha = 15^{\\circ}$\n\n<b>Step 1: Peripheral velocity at inlet</b>\n\n$u_1 = \\dfrac{\\pi D N}{60} = \\dfrac{\\pi \\times 1 \\times 600}{60} = 10\\pi = 31.416 \\, m/s$\n\n<b>Step 2: Whirl component of absolute velocity</b>\n\n$V_{w1} = \\dfrac{V_{f1}}{\\tan\\alpha} = \\dfrac{10}{\\tan 15^{\\circ}} = \\dfrac{10}{0.2679} = 37.32 \\, m/s$\n\n<b>Step 3: Velocity of flow relative to runner</b>\n\nRelative velocity components:\n\n$V_{w1,rel} = V_{w1} - u_1 = 37.32 - 31.416 = 5.904 \\, m/s$\n\n$V_{f1,rel} = V_{f1} = 10 \\, m/s$\n\n<b>Step 4: Inlet vane angle</b>\n\n$\\tan\\beta_1 = \\dfrac{V_{f1}}{V_{w1} - u_1} = \\dfrac{10}{5.904} = 1.6938$\n\n$\\beta_1 = \\tan^{-1}(1.6938) = 59.4^{\\circ}$",
+        "images": []
       }
     },
     "pp:me:2026:q49": {
       "question_uid": "pp:me:2026:q49",
-      "exam_uid": "me:2026:set1:q49",
+      "exam_uid": "me:2026:set1:main:q49",
       "title": "GATE ME 2026 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -1977,13 +2182,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Sheet Metal Operation",
-        "markdown": "Given:\n\nStretching in length $= 30\\%$ $\\rightarrow \\varepsilon_l = \\ln(1.30)$\n\nReduction in thickness $= 15\\%$ $\\rightarrow \\varepsilon_t = \\ln(1 - 0.15) = \\ln(0.85)$\n\n<b>Step 1: True strains</b>\n\n$\\varepsilon_l = \\ln(1.30) = 0.2624$ (length direction)\n\n$\\varepsilon_t = \\ln(0.85) = -0.1625$ (thickness direction)\n\n<b>Step 2: Width strain using volume constancy</b>\n\n$\\varepsilon_l + \\varepsilon_w + \\varepsilon_t = 0$\n\n$\\varepsilon_w = -\\varepsilon_l - \\varepsilon_t = -0.2624 - (-0.1625) = -0.0999$\n\n<b>Step 3: Normal anisotropy</b>\n\n$R = \\dfrac{\\varepsilon_w}{\\varepsilon_t} = \\dfrac{-0.0999}{-0.1625} = 0.615 \\approx 0.61$\n\n<b>Note:</b> Normal anisotropy R (also called Lankford coefficient) is the ratio of width strain to thickness strain.\n\nTherefore, the correct answer is **0.61** (acceptable range: [0.59, 0.63])."
+        "markdown": "Given:\n\nStretching in length $= 30\\%$ $\\rightarrow \\varepsilon_l = \\ln(1.30)$\n\nReduction in thickness $= 15\\%$ $\\rightarrow \\varepsilon_t = \\ln(1 - 0.15) = \\ln(0.85)$\n\n<b>Step 1: True strains</b>\n\n$\\varepsilon_l = \\ln(1.30) = 0.2624$ (length direction)\n\n$\\varepsilon_t = \\ln(0.85) = -0.1625$ (thickness direction)\n\n<b>Step 2: Width strain using volume constancy</b>\n\n$\\varepsilon_l + \\varepsilon_w + \\varepsilon_t = 0$\n\n$\\varepsilon_w = -\\varepsilon_l - \\varepsilon_t = -0.2624 - (-0.1625) = -0.0999$\n\n<b>Step 3: Normal anisotropy</b>\n\n$R = \\dfrac{\\varepsilon_w}{\\varepsilon_t} = \\dfrac{-0.0999}{-0.1625} = 0.615 \\approx 0.61$\n\n<b>Note:</b> Normal anisotropy R (also called Lankford coefficient) is the ratio of width strain to thickness strain.",
+        "images": []
       }
     },
     "pp:me:2026:q50": {
       "question_uid": "pp:me:2026:q50",
-      "exam_uid": "me:2026:set1:q50",
+      "exam_uid": "me:2026:set1:main:q50",
       "title": "GATE ME 2026 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2016,13 +2225,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "Given:\n\nActual demand January 2026 $= D_{Jan} = 500$ units\n\nActual demand February 2026 $= D_{Feb} = 635$ units\n\nForecast for January 2026 $= F_{Jan} = 250$ units\n\nSmoothing constant $\\alpha = 0.7$\n\n<b>Exponential Smoothing Formula:</b>\n\n$F_{t+1} = \\alpha D_t + (1-\\alpha)F_t$\n\n<b>Step 1: Forecast for February 2026</b>\n\n$F_{Feb} = \\alpha D_{Jan} + (1-\\alpha)F_{Jan}$\n\n$F_{Feb} = 0.7 \\times 500 + 0.3 \\times 250$\n\n$F_{Feb} = 350 + 75 = 425 \\, \\text{units}$\n\n<b>Step 2: Forecast for March 2026</b>\n\n$F_{Mar} = \\alpha D_{Feb} + (1-\\alpha)F_{Feb}$\n\n$F_{Mar} = 0.7 \\times 635 + 0.3 \\times 425$\n\n$F_{Mar} = 444.5 + 127.5 = 572 \\, \\text{units}$\n\nTherefore, the correct answer is **572**."
+        "markdown": "Given:\n\nActual demand January 2026 $= D_{Jan} = 500$ units\n\nActual demand February 2026 $= D_{Feb} = 635$ units\n\nForecast for January 2026 $= F_{Jan} = 250$ units\n\nSmoothing constant $\\alpha = 0.7$\n\n<b>Exponential Smoothing Formula:</b>\n\n$F_{t+1} = \\alpha D_t + (1-\\alpha)F_t$\n\n<b>Step 1: Forecast for February 2026</b>\n\n$F_{Feb} = \\alpha D_{Jan} + (1-\\alpha)F_{Jan}$\n\n$F_{Feb} = 0.7 \\times 500 + 0.3 \\times 250$\n\n$F_{Feb} = 350 + 75 = 425 \\, \\text{units}$\n\n<b>Step 2: Forecast for March 2026</b>\n\n$F_{Mar} = \\alpha D_{Feb} + (1-\\alpha)F_{Feb}$\n\n$F_{Mar} = 0.7 \\times 635 + 0.3 \\times 425$\n\n$F_{Mar} = 444.5 + 127.5 = 572 \\, \\text{units}$",
+        "images": []
       }
     },
     "pp:me:2026:q51": {
       "question_uid": "pp:me:2026:q51",
-      "exam_uid": "me:2026:set1:q51",
+      "exam_uid": "me:2026:set1:main:q51",
       "title": "GATE ME 2026 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2055,13 +2268,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
-        "markdown": "<b>Given:</b>\n\nHolding cost $C_h = \\text{Rs.} \\, 0.50$ per unit per month $= 0.50 \\times 12 = \\text{Rs.} \\, 6$ per unit per year\n\nOrdering cost $C_o = \\text{Rs.} \\, 550$ per order\n\nAnnual demand $D = 10000$ units per year\n\nShortage cost $= \\infty$ (no shortage allowed)\n\n<b>EOQ Formula:</b>$EOQ = \\sqrt{\\dfrac{2DC_o}{C_h}}$\n\n<b>Substituting values:</b>\n\n$EOQ = \\sqrt{\\dfrac{2 \\times 10000 \\times 550}{6}}$\n\n$EOQ = \\sqrt{\\dfrac{11000000}{6}}$\n\n$EOQ = \\sqrt{1833333.33}$\n\n$EOQ = 1354.0 \\approx 1354 \\, \\text{units per order}$\n\nTherefore, the correct answer is **1354** (acceptable range: [1353, 1355])."
+        "markdown": "<b>Given:</b>\n\nHolding cost $C_h = \\text{Rs.} \\, 0.50$ per unit per month $= 0.50 \\times 12 = \\text{Rs.} \\, 6$ per unit per year\n\nOrdering cost $C_o = \\text{Rs.} \\, 550$ per order\n\nAnnual demand $D = 10000$ units per year\n\nShortage cost $= \\infty$ (no shortage allowed)\n\n<b>EOQ Formula:</b>$EOQ = \\sqrt{\\dfrac{2DC_o}{C_h}}$\n\n<b>Substituting values:</b>\n\n$EOQ = \\sqrt{\\dfrac{2 \\times 10000 \\times 550}{6}}$\n\n$EOQ = \\sqrt{\\dfrac{11000000}{6}}$\n\n$EOQ = \\sqrt{1833333.33}$\n\n$EOQ = 1354.0 \\approx 1354 \\, \\text{units per order}$",
+        "images": []
       }
     },
     "pp:me:2026:q52": {
       "question_uid": "pp:me:2026:q52",
-      "exam_uid": "me:2026:set1:q52",
+      "exam_uid": "me:2026:set1:main:q52",
       "title": "GATE ME 2026 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2094,13 +2311,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "<b>Given:</b>\n\nCrystal structure = FCC\n\nDensity $\\rho = 2.71 \\, g/cm^3$\n\nAtomic weight $A = 26.98 \\, g/mol$\n\nAvogadro's number $N_A = 6.023 \\times 10^{23}$\n\n<b>Step 1: Number of atoms per unit cell in FCC</b>\n\nFCC has $n = 4$ atoms per unit cell.\n\n<b>Step 2: Lattice parameter using density formula</b>\n\n$\\rho = \\dfrac{nA}{N_A a^3}$\n\n$a^3 = \\dfrac{nA}{N_A \\rho} = \\dfrac{4 \\times 26.98}{6.023 \\times 10^{23} \\times 2.71}$\n\n$a^3 = \\dfrac{107.92}{1.6322 \\times 10^{24}} = 6.6117 \\times 10^{-23} \\, cm^3$\n\n$a = (6.6117 \\times 10^{-23})^{1/3}$\n\n$a = 4.0497 \\times 10^{-8} \\, cm = 0.40497 \\, nm$\n\n<b>Step 3: Atomic radius for FCC</b>\n\nIn FCC the atoms touch along face diagonal:\n\n$4r = a\\sqrt{2}$\n\n$r = \\dfrac{a\\sqrt{2}}{4} = \\dfrac{0.40497 \\times 1.4142}{4} = \\dfrac{0.57270}{4} = 0.14318 \\, nm$\n\n$r \\approx 0.14 \\, nm$\n\nTherefore, the correct answer is **0.14** (acceptable range: [0.12, 0.16])."
+        "markdown": "<b>Given:</b>\n\nCrystal structure = FCC\n\nDensity $\\rho = 2.71 \\, g/cm^3$\n\nAtomic weight $A = 26.98 \\, g/mol$\n\nAvogadro's number $N_A = 6.023 \\times 10^{23}$\n\n<b>Step 1: Number of atoms per unit cell in FCC</b>\n\nFCC has $n = 4$ atoms per unit cell.\n\n<b>Step 2: Lattice parameter using density formula</b>\n\n$\\rho = \\dfrac{nA}{N_A a^3}$\n\n$a^3 = \\dfrac{nA}{N_A \\rho} = \\dfrac{4 \\times 26.98}{6.023 \\times 10^{23} \\times 2.71}$\n\n$a^3 = \\dfrac{107.92}{1.6322 \\times 10^{24}} = 6.6117 \\times 10^{-23} \\, cm^3$\n\n$a = (6.6117 \\times 10^{-23})^{1/3}$\n\n$a = 4.0497 \\times 10^{-8} \\, cm = 0.40497 \\, nm$\n\n<b>Step 3: Atomic radius for FCC</b>\n\nIn FCC the atoms touch along face diagonal:\n\n$4r = a\\sqrt{2}$\n\n$r = \\dfrac{a\\sqrt{2}}{4} = \\dfrac{0.40497 \\times 1.4142}{4} = \\dfrac{0.57270}{4} = 0.14318 \\, nm$\n\n$r \\approx 0.14 \\, nm$",
+        "images": []
       }
     },
     "pp:me:2026:q53": {
       "question_uid": "pp:me:2026:q53",
-      "exam_uid": "me:2026:set1:q53",
+      "exam_uid": "me:2026:set1:main:q53",
       "title": "GATE ME 2026 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2133,13 +2354,20 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Given: Feed, $f=0.24 \\mathrm{~mm} / \\mathrm{rev}$, Uncut chip thikness (True feed), $t_1\\left(f_t\\right)=0.23 \\mathrm{~mm}$, Shear angle, $\\phi=20^{\\circ}$, Tangential  force, $F_C=800 \\mathrm{~N}$, Radial force, $F_R=150 \\mathrm{~N}$..\n\n$R=\\sqrt{F_C^2+F_T^2}$\n\n$F_C$ - Tangential force\n\n$F_T$ - Thrust force\n\n$F_R$ - Radial force\n\n$F_F$ - Feed force\n\n<img src=\"/question-images/me/2026/me-2026-aec3b50843.webp\" />\n\n<img src=\"/question-images/me/2026/me-2026-09d51656af.webp\" />\n\n$F \\text { (Feed) }$\n\nUncut chip thikness, $\\frac{f_t}{f}=\\cos \\psi$\n\nor,\n\n$$\\begin{aligned}\n\n\\frac{t_1}{f} & =\\cos \\psi \\\\\n\n\\frac{0.23}{0.24} & =\\cos \\psi \\\\\n\n\\psi & =\\cos ^{-1}(0.9583) \\\\\n\n\\psi & =16.6045 \\\\\n\nF_R & =F_T \\sin \\psi \\\\\n\nF_T & =\\frac{F_R}{\\sin \\psi}=\\frac{150}{\\sin (16.6045)} \\\\\n\nF_T & =524.9093 \\mathrm{~N}\n\n\\end{aligned}$$\n\nShear force (From Merchant circle)\n\n$$\\begin{aligned}\n\n& F_S=F_C \\cos \\phi-F_T \\sin \\phi \\\\\n\n& F_S=800 \\cos 20^{\\circ}-524.9093 \\sin 20^{\\circ} \\\\\n\n& F_S=751-179.529 \\\\\n\n& F_S=572.22 \\mathrm{~N}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **572.5** (acceptable range: [571, 574])."
+        "markdown": "Given: Feed, $f=0.24 \\mathrm{~mm} / \\mathrm{rev}$, Uncut chip thikness (True feed), $t_1\\left(f_t\\right)=0.23 \\mathrm{~mm}$, Shear angle, $\\phi=20^{\\circ}$, Tangential  force, $F_C=800 \\mathrm{~N}$, Radial force, $F_R=150 \\mathrm{~N}$..\n\n$R=\\sqrt{F_C^2+F_T^2}$\n\n$F_C$ - Tangential force\n\n$F_T$ - Thrust force\n\n$F_R$ - Radial force\n\n$F_F$ - Feed force\n\n<img src=\"/question-images/me/2026/me-2026-aec3b50843.webp\" />\n\n<img src=\"/question-images/me/2026/me-2026-09d51656af.webp\" />\n\n$F \\text { (Feed) }$\n\nUncut chip thikness, $\\frac{f_t}{f}=\\cos \\psi$\n\nor,\n\n$$\\begin{aligned}\n\n\\frac{t_1}{f} & =\\cos \\psi \\\\\n\n\\frac{0.23}{0.24} & =\\cos \\psi \\\\\n\n\\psi & =\\cos ^{-1}(0.9583) \\\\\n\n\\psi & =16.6045 \\\\\n\nF_R & =F_T \\sin \\psi \\\\\n\nF_T & =\\frac{F_R}{\\sin \\psi}=\\frac{150}{\\sin (16.6045)} \\\\\n\nF_T & =524.9093 \\mathrm{~N}\n\n\\end{aligned}$$\n\nShear force (From Merchant circle)\n\n$$\\begin{aligned}\n\n& F_S=F_C \\cos \\phi-F_T \\sin \\phi \\\\\n\n& F_S=800 \\cos 20^{\\circ}-524.9093 \\sin 20^{\\circ} \\\\\n\n& F_S=751-179.529 \\\\\n\n& F_S=572.22 \\mathrm{~N}\n\n\\end{aligned}$$",
+        "images": [
+          "/question-images/me/2026/me-2026-aec3b50843.webp",
+          "/question-images/me/2026/me-2026-09d51656af.webp"
+        ]
       }
     },
     "pp:me:2026:q54": {
       "question_uid": "pp:me:2026:q54",
-      "exam_uid": "me:2026:set1:q54",
+      "exam_uid": "me:2026:set1:main:q54",
       "title": "GATE ME 2026 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2172,13 +2400,17 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "<b>Given:</b>\n\nCase 1: Speed $N_1 = 200$ RPM $\\rightarrow$ Tool life $T_1 = 150$ holes\n\nCase 2: Speed $N_2 = 300$ RPM $\\rightarrow$ Tool life $T_2 = 60$ holes\n\n<b>Taylor's Tool Life Equation:</b>\n\n$V T^n = C$\n\nwhere V is cutting speed T is tool life and n is the exponent.\n\n<b>Note:</b> Cutting speed is proportional to RPM (since diameter is same):\n\n$V \\propto N$\n\n<b>Step 1: Apply Taylor's equation for both cases</b>\n\n$$\\begin{aligned}\n\nN_1 T_1^n & =N_2 T_2^n \\\\\n\n\\text { Tool life } & =\\text { Number of holes }\\left(\\frac{L}{s \\times N}\\right) \\\\\n\n200\\left[150 \\times \\frac{L}{s \\times 200}\\right]^n & =300\\left[60 \\times \\frac{L}{s \\times 300}\\right]^n \\\\\n\n(0.75)^n & =1.5(0.2)^n \\\\\n\nn & =\\frac{\\ln 1.5}{\\ln 3.75}=0.3067\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.31** (acceptable range: [0.29, 0.33])."
+        "markdown": "<b>Given:</b>\n\nCase 1: Speed $N_1 = 200$ RPM $\\rightarrow$ Tool life $T_1 = 150$ holes\n\nCase 2: Speed $N_2 = 300$ RPM $\\rightarrow$ Tool life $T_2 = 60$ holes\n\n<b>Taylor's Tool Life Equation:</b>\n\n$V T^n = C$\n\nwhere V is cutting speed T is tool life and n is the exponent.\n\n<b>Note:</b> Cutting speed is proportional to RPM (since diameter is same):\n\n$V \\propto N$\n\n<b>Step 1: Apply Taylor's equation for both cases</b>\n\n$$\\begin{aligned}\n\nN_1 T_1^n & =N_2 T_2^n \\\\\n\n\\text { Tool life } & =\\text { Number of holes }\\left(\\frac{L}{s \\times N}\\right) \\\\\n\n200\\left[150 \\times \\frac{L}{s \\times 200}\\right]^n & =300\\left[60 \\times \\frac{L}{s \\times 300}\\right]^n \\\\\n\n(0.75)^n & =1.5(0.2)^n \\\\\n\nn & =\\frac{\\ln 1.5}{\\ln 3.75}=0.3067\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:me:2026:q55": {
       "question_uid": "pp:me:2026:q55",
-      "exam_uid": "me:2026:set1:q55",
+      "exam_uid": "me:2026:set1:main:q55",
       "title": "GATE ME 2026 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "NAT",
       "marks": 2,
@@ -2211,13 +2443,17 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "<b>Given:</b>\n\nPERT network activities with time estimates:\n\n$t_e = \\dfrac{t_o + 4t_m + t_p}{6}$\n\n<b>Step 1: Calculate expected time for each activity</b>\n\nActivity 1-2: $t_e = \\dfrac{2 + 4(4) + 12}{6} = \\dfrac{2 + 16 + 12}{6} = \\dfrac{30}{6} = 5$ weeks\n\nActivity 1-3: $t_e = \\dfrac{2 + 4(4) + 6}{6} = \\dfrac{2 + 16 + 6}{6} = \\dfrac{24}{6} = 4$ weeks\n\nActivity 1-4: $t_e = \\dfrac{3 + 4(4) + 11}{6} = \\dfrac{3 + 16 + 11}{6} = \\dfrac{30}{6} = 5$ weeks\n\nActivity 2-5: $t_e = \\dfrac{3 + 4(6) + 9}{6} = \\dfrac{3 + 24 + 9}{6} = \\dfrac{36}{6} = 6$ weeks\n\nActivity 3-4: $t_e = \\dfrac{2 + 4(5) + 14}{6} = \\dfrac{2 + 20 + 14}{6} = \\dfrac{36}{6} = 6$ weeks\n\nActivity 3-5: $t_e = \\dfrac{3 + 4(3) + 3}{6} = \\dfrac{3 + 12 + 3}{6} = \\dfrac{18}{6} = 3$ weeks\n\nActivity 4-5: $t_e = \\dfrac{3 + 4(6) + 15}{6} = \\dfrac{3 + 24 + 15}{6} = \\dfrac{42}{6} = 7$ weeks\n\nActivity 5-6: $t_e = \\dfrac{2 + 4(5) + 8}{6} = \\dfrac{2 + 20 + 8}{6} = \\dfrac{30}{6} = 5$ weeks\n\n<b>Step 2: Identify all paths from 1 to 6</b>\n\nPath 1: $1 \\rightarrow 2 \\rightarrow 5 \\rightarrow 6$ $= 5 + 6 + 5 = 16$ weeks\n\nPath 2: $1 \\rightarrow 3 \\rightarrow 5 \\rightarrow 6$ $= 4 + 3 + 5 = 12$ weeks\n\nPath 3: $1 \\rightarrow 3 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6$ $= 4 + 6 + 7 + 5 = 22$ weeks\n\nPath 4: $1 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6$ $= 5 + 7 + 5 = 17$ weeks\n\n<b>Step 3: Critical path = Longest path</b>\n\nMaximum duration $= 22$ weeks via path $1 \\rightarrow 3 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6$\n\nTherefore, the correct answer is **22**."
+        "markdown": "<b>Given:</b>\n\nPERT network activities with time estimates:\n\n$t_e = \\dfrac{t_o + 4t_m + t_p}{6}$\n\n<b>Step 1: Calculate expected time for each activity</b>\n\nActivity 1-2: $t_e = \\dfrac{2 + 4(4) + 12}{6} = \\dfrac{2 + 16 + 12}{6} = \\dfrac{30}{6} = 5$ weeks\n\nActivity 1-3: $t_e = \\dfrac{2 + 4(4) + 6}{6} = \\dfrac{2 + 16 + 6}{6} = \\dfrac{24}{6} = 4$ weeks\n\nActivity 1-4: $t_e = \\dfrac{3 + 4(4) + 11}{6} = \\dfrac{3 + 16 + 11}{6} = \\dfrac{30}{6} = 5$ weeks\n\nActivity 2-5: $t_e = \\dfrac{3 + 4(6) + 9}{6} = \\dfrac{3 + 24 + 9}{6} = \\dfrac{36}{6} = 6$ weeks\n\nActivity 3-4: $t_e = \\dfrac{2 + 4(5) + 14}{6} = \\dfrac{2 + 20 + 14}{6} = \\dfrac{36}{6} = 6$ weeks\n\nActivity 3-5: $t_e = \\dfrac{3 + 4(3) + 3}{6} = \\dfrac{3 + 12 + 3}{6} = \\dfrac{18}{6} = 3$ weeks\n\nActivity 4-5: $t_e = \\dfrac{3 + 4(6) + 15}{6} = \\dfrac{3 + 24 + 15}{6} = \\dfrac{42}{6} = 7$ weeks\n\nActivity 5-6: $t_e = \\dfrac{2 + 4(5) + 8}{6} = \\dfrac{2 + 20 + 8}{6} = \\dfrac{30}{6} = 5$ weeks\n\n<b>Step 2: Identify all paths from 1 to 6</b>\n\nPath 1: $1 \\rightarrow 2 \\rightarrow 5 \\rightarrow 6$ $= 5 + 6 + 5 = 16$ weeks\n\nPath 2: $1 \\rightarrow 3 \\rightarrow 5 \\rightarrow 6$ $= 4 + 3 + 5 = 12$ weeks\n\nPath 3: $1 \\rightarrow 3 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6$ $= 4 + 6 + 7 + 5 = 22$ weeks\n\nPath 4: $1 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6$ $= 5 + 7 + 5 = 17$ weeks\n\n<b>Step 3: Critical path = Longest path</b>\n\nMaximum duration $= 22$ weeks via path $1 \\rightarrow 3 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6$",
+        "images": []
       }
     },
     "pp:me:2026:q56": {
       "question_uid": "pp:me:2026:q56",
-      "exam_uid": "me:2026:set1:q56",
-      "title": "GATE ME 2026 | Set 1 | Question: 56",
+      "exam_uid": "me:2026:set1:ga:q1",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 1",
+      "section": "ga",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2239,26 +2475,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Analysis of each blank:</b>\n\n<b>Blank 1:</b> The sentence is in past tense as indicated by 'needed' in the next sentence.\n\nSo we need past tense verb -> <b>scored</b>\n\n<b>Blank 2:</b> The team scored runs even though it was raining.\n\nThis shows contrast/concession -> <b>despite</b> (followed by noun)\n\n<b>Note:</b> 'in spite of' is also grammatically correct but 'scoring' in option D makes it wrong as Blank 1 needs past tense.\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Analysis of each blank:</b>\n\n<b>Blank 1:</b> The sentence is in past tense as indicated by 'needed' in the next sentence.\n\nSo we need past tense verb -> <b>scored</b>\n\n<b>Blank 2:</b> The team scored runs even though it was raining.\n\nThis shows contrast/concession -> <b>despite</b> (followed by noun)\n\n<b>Note:</b> 'in spite of' is also grammatically correct but 'scoring' in option D makes it wrong as Blank 1 needs past tense.",
+        "images": []
       }
     },
     "pp:me:2026:q57": {
       "question_uid": "pp:me:2026:q57",
-      "exam_uid": "me:2026:set1:q57",
-      "title": "GATE ME 2026 | Set 1 | Question: 57",
+      "exam_uid": "me:2026:set1:ga:q2",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 2",
+      "section": "ga",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2280,26 +2519,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Given equation:\n\n$\\log_2 x + \\log_{\\sqrt{2}} x = 48$\n\n<b>Step 1:</b> Convert $\\log_{\\sqrt{2}} x$ to base 2.\n\n$\\log_{\\sqrt{2}} x = \\dfrac{\\log_2 x}{\\log_2 \\sqrt{2}} = \\dfrac{\\log_2 x}{1/2} = 2\\log_2 x$\n\n<b>Step 2:</b> Substitute back.\n\n$\\log_2 x + 2\\log_2 x = 48$\n\n$3\\log_2 x = 48$\n\n$\\log_2 x = 16$\n\n$x = 2^{16}$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Given equation:\n\n$\\log_2 x + \\log_{\\sqrt{2}} x = 48$\n\n<b>Step 1:</b> Convert $\\log_{\\sqrt{2}} x$ to base 2.\n\n$\\log_{\\sqrt{2}} x = \\dfrac{\\log_2 x}{\\log_2 \\sqrt{2}} = \\dfrac{\\log_2 x}{1/2} = 2\\log_2 x$\n\n<b>Step 2:</b> Substitute back.\n\n$\\log_2 x + 2\\log_2 x = 48$\n\n$3\\log_2 x = 48$\n\n$\\log_2 x = 16$\n\n$x = 2^{16}$",
+        "images": []
       }
     },
     "pp:me:2026:q58": {
       "question_uid": "pp:me:2026:q58",
-      "exam_uid": "me:2026:set1:q58",
-      "title": "GATE ME 2026 | Set 1 | Question: 58",
+      "exam_uid": "me:2026:set1:ga:q3",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 3",
+      "section": "ga",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2321,26 +2563,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Pattern Analysis:</b>\n\nObserve the sequence of grids carefully.\n\n<b>Grid 1:</b> Triangle at top-center Row 1 and Circle at bottom-left Row 3\n\n<b>Grid 2:</b> Triangle moves to middle Row 2 and Circle moves to bottom Row 3\n\n<b>Grid 3:</b> Circle moves to top Row 1 and Triangle moves to bottom Row 3\n\n<b>Pattern:</b> The shapes shift one position downward in each step and swap positions.\n\nIn the next figure the Circle should be at top-left and Triangle at bottom-right.\n\nTherefore, the correct answer is **A**."
+        "markdown": "<b>Pattern Analysis:</b>\n\nObserve the sequence of grids carefully.\n\n<b>Grid 1:</b> Triangle at top-center Row 1 and Circle at bottom-left Row 3\n\n<b>Grid 2:</b> Triangle moves to middle Row 2 and Circle moves to bottom Row 3\n\n<b>Grid 3:</b> Circle moves to top Row 1 and Triangle moves to bottom Row 3\n\n<b>Pattern:</b> The shapes shift one position downward in each step and swap positions.\n\nIn the next figure the Circle should be at top-left and Triangle at bottom-right.",
+        "images": []
       }
     },
     "pp:me:2026:q59": {
       "question_uid": "pp:me:2026:q59",
-      "exam_uid": "me:2026:set1:q59",
-      "title": "GATE ME 2026 | Set 1 | Question: 59",
+      "exam_uid": "me:2026:set1:ga:q4",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 4",
+      "section": "ga",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2362,26 +2607,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Logic:</b>\n\nThe original statement is a <b>Universal Affirmative</b>:\n\n\"All mangoes are good\" -> $\\forall x: G(x)$\n\n<b>Negation of Universal Affirmative</b> is <b>Particular Negative</b>:\n\n\"There exists at least one x such that x is NOT good\"\n\n$\\neg(\\forall x: G(x)) \\equiv \\exists x: \\neg G(x)$\n\n<b>Checking each option:</b>\n\n(A) All mangoes are not good -> Too strong. Not necessarily true.\n\n(B) No mango is good -> Too strong. Not necessarily true.\n\n(C) Some good some not -> Not necessarily true.\n\n(D) At least one mango is not good -> This is exactly the logical negation.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<b>Logic:</b>\n\nThe original statement is a <b>Universal Affirmative</b>:\n\n\"All mangoes are good\" -> $\\forall x: G(x)$\n\n<b>Negation of Universal Affirmative</b> is <b>Particular Negative</b>:\n\n\"There exists at least one x such that x is NOT good\"\n\n$\\neg(\\forall x: G(x)) \\equiv \\exists x: \\neg G(x)$\n\n<b>Checking each option:</b>\n\n(A) All mangoes are not good -> Too strong. Not necessarily true.\n\n(B) No mango is good -> Too strong. Not necessarily true.\n\n(C) Some good some not -> Not necessarily true.\n\n(D) At least one mango is not good -> This is exactly the logical negation.",
+        "images": []
       }
     },
     "pp:me:2026:q60": {
       "question_uid": "pp:me:2026:q60",
-      "exam_uid": "me:2026:set1:q60",
-      "title": "GATE ME 2026 | Set 1 | Question: 60",
+      "exam_uid": "me:2026:set1:ga:q5",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 5",
+      "section": "ga",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2403,26 +2651,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Given Statements:</b>\n\n(S1) Average of four numbers = 25 -> Sum = 100\n\n(S2) Each number $\\leq$ 40\n\n(S3) Each number $\\leq$ 20\n\n<b>Check Option (C): (S1) and (S3) together imply (S2)</b>\n\nIf average = 25 and each number ≥ 20:\n\nLet three numbers = 20 each -> Fourth = 100 - 60 = 40\n\nBut what if three numbers = 20 -> Fourth = 40\n\nWhat if three numbers = 20 -> can fourth exceed 40?\n\nIf three numbers = 20 -> Fourth = 40 (exactly)\n\nIf one number = 19 (less than 20) -> violates S3\n\nSo with S1 and S3: maximum any number can be = 100 - (3×20) = 40\n\nTherefore each number $\\leq$ 40 which is S2\n\n<b>Answer: (C) (S1) and (S3) together imply (S2)</b>\n\nTherefore, the correct answer is **C**."
+        "markdown": "<b>Given Statements:</b>\n\n(S1) Average of four numbers = 25 -> Sum = 100\n\n(S2) Each number $\\leq$ 40\n\n(S3) Each number $\\leq$ 20\n\n<b>Check Option (C): (S1) and (S3) together imply (S2)</b>\n\nIf average = 25 and each number ≥ 20:\n\nLet three numbers = 20 each -> Fourth = 100 - 60 = 40\n\nBut what if three numbers = 20 -> Fourth = 40\n\nWhat if three numbers = 20 -> can fourth exceed 40?\n\nIf three numbers = 20 -> Fourth = 40 (exactly)\n\nIf one number = 19 (less than 20) -> violates S3\n\nSo with S1 and S3: maximum any number can be = 100 - (3×20) = 40\n\nTherefore each number $\\leq$ 40 which is S2",
+        "images": []
       }
     },
     "pp:me:2026:q61": {
       "question_uid": "pp:me:2026:q61",
-      "exam_uid": "me:2026:set1:q61",
-      "title": "GATE ME 2026 | Set 1 | Question: 61",
+      "exam_uid": "me:2026:set1:ga:q6",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 6",
+      "section": "ga",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2444,26 +2695,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Analysis of each blank:</b>\n\nSentence: 'People are crowding around ___ pit into which ___ elephant has fallen...'\n\n<b>Blank 1:</b> 'pit' starts with consonant sound -> use <b>a</b>\n\n<b>Blank 2:</b> 'elephant' starts with vowel sound -> use <b>an</b>\n\n<b>Blank 3:</b> 'bewildered ___ miserable' -> joining two adjectives -> use <b>and</b>\n\n<b>Blank 4:</b> 'look up ___ a vast crowd' -> use <b>at</b> (look up at)\n\nSequence: a; an; and; at\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Analysis of each blank:</b>\n\nSentence: 'People are crowding around ___ pit into which ___ elephant has fallen...'\n\n<b>Blank 1:</b> 'pit' starts with consonant sound -> use <b>a</b>\n\n<b>Blank 2:</b> 'elephant' starts with vowel sound -> use <b>an</b>\n\n<b>Blank 3:</b> 'bewildered ___ miserable' -> joining two adjectives -> use <b>and</b>\n\n<b>Blank 4:</b> 'look up ___ a vast crowd' -> use <b>at</b> (look up at)\n\nSequence: a; an; and; at",
+        "images": []
       }
     },
     "pp:me:2026:q62": {
       "question_uid": "pp:me:2026:q62",
-      "exam_uid": "me:2026:set1:q62",
-      "title": "GATE ME 2026 | Set 1 | Question: 62",
+      "exam_uid": "me:2026:set1:ga:q7",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 7",
+      "section": "ga",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2485,26 +2739,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Given:</b>\n\nTotal items sold = 250\n\nAverage selling price = Rs. 60\n\nTotal revenue = $250 \\times 60 = Rs. \\, 15000$\n\n<b>Let quantity of T = t</b>\n\nQuantity of S = 2t\n\nQuantity of R = 3t\n\nQuantity of Q = 4t\n\nQuantity of P = p\n\n<b>Step 1: Total quantity equation</b>\n\n$p + 4t + 3t + 2t + t = 250$\n\n$p + 10t = 250 \\quad \\cdots (1)$\n\n<b>Step 2: Total revenue equation</b>\n\n$100p + 50(4t) + 40(3t) + 60(2t) + 60t = 15000$\n\n$100p + 200t + 120t + 120t + 60t = 15000$\n\n$100p + 500t = 15000$\n\n$p + 5t = 150 \\quad \\cdots (2)$\n\n<b>Step 3: Solve (1) and (2)</b>\n\n$(1) - (2): \\, 5t = 100 \\Rightarrow t = 20$\n\n$p = 150 - 5(20) = 150 - 100 = 50$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given:</b>\n\nTotal items sold = 250\n\nAverage selling price = Rs. 60\n\nTotal revenue = $250 \\times 60 = Rs. \\, 15000$\n\n<b>Let quantity of T = t</b>\n\nQuantity of S = 2t\n\nQuantity of R = 3t\n\nQuantity of Q = 4t\n\nQuantity of P = p\n\n<b>Step 1: Total quantity equation</b>\n\n$p + 4t + 3t + 2t + t = 250$\n\n$p + 10t = 250 \\quad \\cdots (1)$\n\n<b>Step 2: Total revenue equation</b>\n\n$100p + 50(4t) + 40(3t) + 60(2t) + 60t = 15000$\n\n$100p + 200t + 120t + 120t + 60t = 15000$\n\n$100p + 500t = 15000$\n\n$p + 5t = 150 \\quad \\cdots (2)$\n\n<b>Step 3: Solve (1) and (2)</b>\n\n$(1) - (2): \\, 5t = 100 \\Rightarrow t = 20$\n\n$p = 150 - 5(20) = 150 - 100 = 50$",
+        "images": []
       }
     },
     "pp:me:2026:q63": {
       "question_uid": "pp:me:2026:q63",
-      "exam_uid": "me:2026:set1:q63",
-      "title": "GATE ME 2026 | Set 1 | Question: 63",
+      "exam_uid": "me:2026:set1:ga:q8",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 8",
+      "section": "ga",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2526,26 +2783,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "b>Given:</b>\n\nString P (diameter) = $l$\n\nString K (semicircle) = $\\dfrac{\\pi l}{2}$\n\n<b>After shortening by x:</b>\n\nNew length of P = $l - x$ (new diameter)\n\nNew length of K = $\\dfrac{\\pi l}{2} - x$ (now forms full circle)\n\n<b>Condition:</b> Shortened K forms full circle with shortened P as diameter.\n\nCircumference of full circle = $\\pi \\times \\text{diameter} = \\pi(l-x)$\n\n<b>Setting up equation:</b>\n\n$\\dfrac{\\pi l}{2} - x = \\pi(l - x)$\n\n$\\dfrac{\\pi l}{2} - x = \\pi l - \\pi x$\n\n$\\pi x - x = \\pi l - \\dfrac{\\pi l}{2}$\n\n$x(\\pi - 1) = \\dfrac{\\pi l}{2}$\n\n$\\dfrac{x}{l} = \\dfrac{\\pi}{2(\\pi - 1)}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "b>Given:</b>\n\nString P (diameter) = $l$\n\nString K (semicircle) = $\\dfrac{\\pi l}{2}$\n\n<b>After shortening by x:</b>\n\nNew length of P = $l - x$ (new diameter)\n\nNew length of K = $\\dfrac{\\pi l}{2} - x$ (now forms full circle)\n\n<b>Condition:</b> Shortened K forms full circle with shortened P as diameter.\n\nCircumference of full circle = $\\pi \\times \\text{diameter} = \\pi(l-x)$\n\n<b>Setting up equation:</b>\n\n$\\dfrac{\\pi l}{2} - x = \\pi(l - x)$\n\n$\\dfrac{\\pi l}{2} - x = \\pi l - \\pi x$\n\n$\\pi x - x = \\pi l - \\dfrac{\\pi l}{2}$\n\n$x(\\pi - 1) = \\dfrac{\\pi l}{2}$\n\n$\\dfrac{x}{l} = \\dfrac{\\pi}{2(\\pi - 1)}$",
+        "images": []
       }
     },
     "pp:me:2026:q64": {
       "question_uid": "pp:me:2026:q64",
-      "exam_uid": "me:2026:set1:q64",
-      "title": "GATE ME 2026 | Set 1 | Question: 64",
+      "exam_uid": "me:2026:set1:ga:q9",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 9",
+      "section": "ga",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2567,26 +2827,29 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "verbal-ability",
-          "subtopicLabel": "Verbal Ability"
+          "subtopicSlug": "verbal-aptitude",
+          "subtopicLabel": "Verbal Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "verbal-ability"
+          "verbal-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Given conditions:</b>\n\n(i) Daughter and Brother are in same column.\n\n(ii) Son is seated diagonally across the sibling of the worst orator.\n\n(iii) Best and worst orators are in same row.\n\n<b>Seating Grid:</b>\n\n$$\\begin{array}{|c|c|c|} \\hline & \\text{Col 1} & \\text{Col 2} \\\\ \\hline \\text{Row 1} & & \\\\ \\hline \\text{Row 2} & & \\\\ \\hline \\end{array}$$\n\n<b>From condition (i):</b> Daughter and Brother -> same column (say Col 2)\n\nSo Meritorius and Son -> Col 1\n\n<b>From condition (ii):</b> Son is diagonal to sibling of worst orator.\n\nSiblings of Meritorius = Brother\n\nSo Son is diagonal to Brother.\n\n<b>Arrangement:</b>\n\nRow 1 Col 1 = Son | Row 1 Col 2 = Daughter\n\nRow 2 Col 1 = Meritorius | Row 2 Col 2 = Brother\n\nSon (R1,C1) is diagonal to Brother (R2,C2)\n\n<b>From condition (iii):</b> Best and worst in same row.\n\nWorst orator = Brother -> sibling of worst = Meritorius\n\nBest and Brother are in Row 2 -> Best = Meritorius\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Given conditions:</b>\n\n(i) Daughter and Brother are in same column.\n\n(ii) Son is seated diagonally across the sibling of the worst orator.\n\n(iii) Best and worst orators are in same row.\n\n<b>Seating Grid:</b>\n\n$$\\begin{array}{|c|c|c|} \\hline & \\text{Col 1} & \\text{Col 2} \\\\ \\hline \\text{Row 1} & & \\\\ \\hline \\text{Row 2} & & \\\\ \\hline \\end{array}$$\n\n<b>From condition (i):</b> Daughter and Brother -> same column (say Col 2)\n\nSo Meritorius and Son -> Col 1\n\n<b>From condition (ii):</b> Son is diagonal to sibling of worst orator.\n\nSiblings of Meritorius = Brother\n\nSo Son is diagonal to Brother.\n\n<b>Arrangement:</b>\n\nRow 1 Col 1 = Son | Row 1 Col 2 = Daughter\n\nRow 2 Col 1 = Meritorius | Row 2 Col 2 = Brother\n\nSon (R1,C1) is diagonal to Brother (R2,C2)\n\n<b>From condition (iii):</b> Best and worst in same row.\n\nWorst orator = Brother -> sibling of worst = Meritorius\n\nBest and Brother are in Row 2 -> Best = Meritorius",
+        "images": []
       }
     },
     "pp:me:2026:q65": {
       "question_uid": "pp:me:2026:q65",
-      "exam_uid": "me:2026:set1:q65",
-      "title": "GATE ME 2026 | Set 1 | Question: 65",
+      "exam_uid": "me:2026:set1:ga:q10",
+      "title": "GATE ME 2026 | Set 1 | GA | Question: 10",
+      "section": "ga",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateme-2026-set1",
       "type": "MCQ",
       "marks": 2,
@@ -2608,20 +2871,20 @@
       "yearSetIdentity": "me:2026:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "me-general-aptitude",
+          "subjectSlug": "ga",
           "subjectLabel": "General Aptitude",
-          "subtopicSlug": "numerical-ability",
-          "subtopicLabel": "Numerical Ability"
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
         },
         "secondary": [],
         "conceptTags": [
-          "me-general-aptitude",
-          "numerical-ability"
+          "quantitative-aptitude"
         ]
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Pattern Analysis:</b>\n\nThe large figure is formed by tiling a small pattern repeatedly.\n\n<b>Method:</b> Compare the top-left corner of the large figure with each of the given patterns P Q R S.\n\nThe large figure when divided into identical small blocks matches pattern <b>Q</b> when tiled in a 3×3 arrangement.\n\nPattern Q matches the repeating unit that generates the given figure when arranged side by side both horizontally and vertically.\n\nTherefore, the correct answer is **B**."
+        "markdown": "<b>Pattern Analysis:</b>\n\nThe large figure is formed by tiling a small pattern repeatedly.\n\n<b>Method:</b> Compare the top-left corner of the large figure with each of the given patterns P Q R S.\n\nThe large figure when divided into identical small blocks matches pattern <b>Q</b> when tiled in a 3×3 arrangement.\n\nPattern Q matches the repeating unit that generates the given figure when arranged side by side both horizontally and vertically.",
+        "images": []
       }
     }
   }

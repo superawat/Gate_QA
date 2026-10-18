@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T09:23:21.341Z",
+  "generatedAt": "2026-10-17T21:30:25.145Z",
   "shardKey": "ee-2010-s1",
   "yearSetKey": "ee-2010-s1",
   "yearSetIdentity": "ee:2010:set-1",
@@ -11,8 +11,11 @@
   "recordsByQuestionUid": {
     "pp:ee:2010:q1": {
       "question_uid": "pp:ee:2010:q1",
-      "exam_uid": "ee:2010:set1:q1",
+      "exam_uid": "ee:2010:set1:main:q1",
       "title": "GATE EE 2010 | Set 1 | Question: 1",
+      "section": "main",
+      "question_number": 1,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -34,25 +37,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$P=\\int_{0}^{1}xe^x\\; dx$\n\nIntegrating by parts:\n\n$$\\begin{aligned} \\text{Let } \\; u&= x,\\\\ dv&= e^x\\; dx\\\\ du&= dx,\\\\ v&=\\int e^x\\; dx=e^x \\\\ \\text{Now, } \\int udv&= uv-\\int v\\; du\\\\ \\therefore \\;\\;\\int x e^x\\; dx &=xe^x-\\int e^x\\; dx \\\\ &=xe^x-e^x+c \\\\ \\int_{0}^{1} xe^x\\; dx&= [xe^x-e^x]_0^1\\\\ &= (1 \\times e^1 -e^1)-(0 \\times e^0 -e^0)\\\\ &= 0-(-1)\\\\ &= 1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$P=\\int_{0}^{1}xe^x\\; dx$\n\nIntegrating by parts:\n\n$$\\begin{aligned} \\text{Let } \\; u&= x,\\\\ dv&= e^x\\; dx\\\\ du&= dx,\\\\ v&=\\int e^x\\; dx=e^x \\\\ \\text{Now, } \\int udv&= uv-\\int v\\; du\\\\ \\therefore \\;\\;\\int x e^x\\; dx &=xe^x-\\int e^x\\; dx \\\\ &=xe^x-e^x+c \\\\ \\int_{0}^{1} xe^x\\; dx&= [xe^x-e^x]_0^1\\\\ &= (1 \\times e^1 -e^1)-(0 \\times e^0 -e^0)\\\\ &= 0-(-1)\\\\ &= 1 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q2": {
       "question_uid": "pp:ee:2010:q2",
-      "exam_uid": "ee:2010:set1:q2",
+      "exam_uid": "ee:2010:set1:main:q2",
       "title": "GATE EE 2010 | Set 1 | Question: 2",
+      "section": "main",
+      "question_number": 2,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -74,25 +82,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "calculus"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} \\vec{r} &= x\\hat{i}+y\\hat{j}+z\\hat{k}\\\\ \\text{div } \\vec{r}&= \\bigtriangledown \\cdot \\vec{r}\\\\ &=\\left ( \\hat{i}\\frac{\\partial }{\\partial x}+\\hat{j}\\frac{\\partial }{\\partial y}+\\hat{k}\\frac{\\partial }{\\partial z} \\right )(x\\hat{i}+y\\hat{j}+z\\hat{k})\\\\ &=\\frac{\\partial x}{\\partial x}+\\frac{\\partial y}{\\partial y}+\\frac{\\partial z}{\\partial z}\\\\ &=1+1+1=3 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} \\vec{r} &= x\\hat{i}+y\\hat{j}+z\\hat{k}\\\\ \\text{div } \\vec{r}&= \\bigtriangledown \\cdot \\vec{r}\\\\ &=\\left ( \\hat{i}\\frac{\\partial }{\\partial x}+\\hat{j}\\frac{\\partial }{\\partial y}+\\hat{k}\\frac{\\partial }{\\partial z} \\right )(x\\hat{i}+y\\hat{j}+z\\hat{k})\\\\ &=\\frac{\\partial x}{\\partial x}+\\frac{\\partial y}{\\partial y}+\\frac{\\partial z}{\\partial z}\\\\ &=1+1+1=3 \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q3": {
       "question_uid": "pp:ee:2010:q3",
-      "exam_uid": "ee:2010:set1:q3",
+      "exam_uid": "ee:2010:set1:main:q3",
       "title": "GATE EE 2010 | Set 1 | Question: 3",
+      "section": "main",
+      "question_number": 3,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -114,25 +127,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-math",
+          "complex-variables"
         ]
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "If period $= T,$ then $x(t+T)=x(t)$\n\nHere,  $x(t)= 8 \\sin(0.8 \\pi t+\\pi /4)$\n\nputting $x(t+T)=x(t)$ we get\n\n$8 \\sin(0.8\\pi (t+T)+\\pi /4)=8 \\sin (0.8 \\pi t+\\pi /4)$\n\n$\\sin(0.8\\pi (t+T)+\\pi /4)= \\sin (0.8 \\pi t+ \\pi /4)$\n\n$\\sin(\\theta _1)=\\sin(\\theta _2)\\Rightarrow \\theta _1=\\theta _2+2 \\pi$\n\n$\\therefore \\;\\;  0.8\\pi (t+T)+ \\pi /4=0.8 \\pi t+ \\pi /4+2 \\pi$\n\n$0.8\\pi T=2 \\pi$\n\n$T=2.5 s$\n\nTherefore, the correct answer is **D**."
+        "markdown": "If period $= T,$ then $x(t+T)=x(t)$\n\nHere,  $x(t)= 8 \\sin(0.8 \\pi t+\\pi /4)$\n\nputting $x(t+T)=x(t)$ we get\n\n$8 \\sin(0.8\\pi (t+T)+\\pi /4)=8 \\sin (0.8 \\pi t+\\pi /4)$\n\n$\\sin(0.8\\pi (t+T)+\\pi /4)= \\sin (0.8 \\pi t+ \\pi /4)$\n\n$\\sin(\\theta _1)=\\sin(\\theta _2)\\Rightarrow \\theta _1=\\theta _2+2 \\pi$\n\n$\\therefore \\;\\;  0.8\\pi (t+T)+ \\pi /4=0.8 \\pi t+ \\pi /4+2 \\pi$\n\n$0.8\\pi T=2 \\pi$\n\n$T=2.5 s$",
+        "images": []
       }
     },
     "pp:ee:2010:q4": {
       "question_uid": "pp:ee:2010:q4",
-      "exam_uid": "ee:2010:set1:q4",
+      "exam_uid": "ee:2010:set1:main:q4",
       "title": "GATE EE 2010 | Set 1 | Question: 4",
+      "section": "main",
+      "question_number": 4,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -154,25 +172,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "Integrator is always a linear system.\n\n$$\\begin{aligned} \\text{Since, }y(t)&=\\int_{-\\infty }^{5t}x(\\tau )d\\tau \\;\\;t \\gt 0 \\\\ &\\text{For t=1,} \\\\ y(t)&= \\int_{-\\infty }^{5}x(\\tau )d\\tau \\end{aligned}$$\n\nhere value at t=1 depends on future values like at t=2,3,... of input x(t).\n\nSo, it is a noncausal systems.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Integrator is always a linear system.\n\n$$\\begin{aligned} \\text{Since, }y(t)&=\\int_{-\\infty }^{5t}x(\\tau )d\\tau \\;\\;t \\gt 0 \\\\ &\\text{For t=1,} \\\\ y(t)&= \\int_{-\\infty }^{5}x(\\tau )d\\tau \\end{aligned}$$\n\nhere value at t=1 depends on future values like at t=2,3,... of input x(t).\n\nSo, it is a noncausal systems.",
+        "images": []
       }
     },
     "pp:ee:2010:q5": {
       "question_uid": "pp:ee:2010:q5",
-      "exam_uid": "ee:2010:set1:q5",
+      "exam_uid": "ee:2010:set1:main:q5",
       "title": "GATE EE 2010 | Set 1 | Question: 5",
+      "section": "main",
+      "question_number": 5,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -194,25 +217,33 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "transients-and-steady-state-response",
+          "subtopicLabel": "Transients and Steady State Response"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electric-circuits",
+          "transients-and-steady-state-response"
         ]
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
-        "markdown": "As the switch has been closed for a long time, the circuit is in steady state. At steadystate, capacitor is open circuit,\n\n<img src=\"/question-images/ee/2010/ee-2010-44959ec53c.webp\" />\n\nUsing KVL,\n\n$5-I-4I=0 I=1A$\n\n$V_c(0^-)=4 \\times 1=4V$\n\nAs the voltage across capacitorcan not change abruptly,\n\nSo, $V_c(0^+)=V_c(0^-)=4V$\n\nCircuit at $t=0^+$\n\n<img src=\"/question-images/ee/2010/ee-2010-08c5be1cc5.webp\" />\n\nCurrent through capacitor at $t=0^+$\n\n$I_c(0^+)=\\frac{4}{4}=1A$\n\nTherefore, the correct answer is **B**."
+        "markdown": "As the switch has been closed for a long time, the circuit is in steady state. At steadystate, capacitor is open circuit,\n\n<img src=\"/question-images/ee/2010/ee-2010-44959ec53c.webp\" />\n\nUsing KVL,\n\n$5-I-4I=0 I=1A$\n\n$V_c(0^-)=4 \\times 1=4V$\n\nAs the voltage across capacitorcan not change abruptly,\n\nSo, $V_c(0^+)=V_c(0^-)=4V$\n\nCircuit at $t=0^+$\n\n<img src=\"/question-images/ee/2010/ee-2010-08c5be1cc5.webp\" />\n\nCurrent through capacitor at $t=0^+$\n\n$I_c(0^+)=\\frac{4}{4}=1A$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-44959ec53c.webp",
+          "/question-images/ee/2010/ee-2010-08c5be1cc5.webp"
+        ]
       }
     },
     "pp:ee:2010:q6": {
       "question_uid": "pp:ee:2010:q6",
-      "exam_uid": "ee:2010:set1:q6",
+      "exam_uid": "ee:2010:set1:main:q6",
       "title": "GATE EE 2010 | Set 1 | Question: 6",
+      "section": "main",
+      "question_number": 6,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -234,25 +265,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-series",
+          "subtopicLabel": "Fourier Series"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-signals-and-systems",
+          "fourier-series"
         ]
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
-        "markdown": "The given signal is odd as wel as having half wave symmetry.\n\nSo, it has only sine terms with odd harmonics. So, for second harmonic term amplitude =0.\n\nTherefore, the correct answer is **A**."
+        "markdown": "The given signal is odd as wel as having half wave symmetry.\n\nSo, it has only sine terms with odd harmonics. So, for second harmonic term amplitude =0.",
+        "images": []
       }
     },
     "pp:ee:2010:q7": {
       "question_uid": "pp:ee:2010:q7",
-      "exam_uid": "ee:2010:set1:q7",
+      "exam_uid": "ee:2010:set1:main:q7",
       "title": "GATE EE 2010 | Set 1 | Question: 7",
+      "section": "main",
+      "question_number": 7,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -274,25 +310,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
         ]
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "A resistor has linear characteristics\n\ni.e. $V=Ri$\n\n$\\Rightarrow \\;\\; V=i$\n\nLoad line,\n\n$V+i=100$\n\n$i+i=100$\n\ncurrent through resistance,\n\n$i=\\frac{100}{2}=50A$\n\nTherefore, the correct answer is **B**."
+        "markdown": "A resistor has linear characteristics\n\ni.e. $V=Ri$\n\n$\\Rightarrow \\;\\; V=i$\n\nLoad line,\n\n$V+i=100$\n\n$i+i=100$\n\ncurrent through resistance,\n\n$i=\\frac{100}{2}=50A$",
+        "images": []
       }
     },
     "pp:ee:2010:q8": {
       "question_uid": "pp:ee:2010:q8",
-      "exam_uid": "ee:2010:set1:q8",
+      "exam_uid": "ee:2010:set1:main:q8",
       "title": "GATE EE 2010 | Set 1 | Question: 8",
+      "section": "main",
+      "question_number": 8,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -314,25 +355,32 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "measurement-of-energy-and-power",
+          "subtopicLabel": "Measurement of Energy and Power"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electrical-and-electronic-measurements",
+          "measurement-of-energy-and-power"
         ]
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-61cc081d3a.webp\" />\n\nPotential coil draws negligible current. So current through $Z_1$ and $Z_2$ is same.\n\ncurrent through current coil $=I_{cc}=I$\n\nVoltage across potential coil $=V_{pc}$\n\nVoltage across $Z_1=V_{pc}=V$\n\nWattmeter reads power consumed by $Z_2$, as voltage across potential coil = Voltage across $Z_2$\n\nCurrent through current coil = Current through $Z_2$.\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-61cc081d3a.webp\" />\n\nPotential coil draws negligible current. So current through $Z_1$ and $Z_2$ is same.\n\ncurrent through current coil $=I_{cc}=I$\n\nVoltage across potential coil $=V_{pc}$\n\nVoltage across $Z_1=V_{pc}=V$\n\nWattmeter reads power consumed by $Z_2$, as voltage across potential coil = Voltage across $Z_2$\n\nCurrent through current coil = Current through $Z_2$.",
+        "images": [
+          "/question-images/ee/2010/ee-2010-61cc081d3a.webp"
+        ]
       }
     },
     "pp:ee:2010:q9": {
       "question_uid": "pp:ee:2010:q9",
-      "exam_uid": "ee:2010:set1:q9",
+      "exam_uid": "ee:2010:set1:main:q9",
       "title": "GATE EE 2010 | Set 1 | Question: 9",
+      "section": "main",
+      "question_number": 9,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -354,25 +402,32 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "galvanometers-voltmeters-and-ammeters",
+          "subtopicLabel": "Galvanometers, Voltmeters and Ammeters"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-electrical-and-electronic-measurements",
+          "galvanometers-voltmeters-and-ammeters"
         ]
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
-        "markdown": "To extend the range of ammeter, a resistance $R_{sh}$ is connected across the meter.\n\n<img src=\"/question-images/ee/2010/ee-2010-625680ea75.webp\" />\n\n$I_m=$ full scale deflection current=5A\n\n$I=25A$\n\nMultiplying power $=m=\\frac{I}{I_m}=\\frac{25}{5}=5$\n\n$I_m=\\frac{IR_{sh}}{R_{sh}+R_m}$\n\n$\\frac{I}{I_m}=\\frac{R_{sh}+R_m}{R_{sh}}$\n\n$m=1+\\frac{R_m}{R_{sh}}$\n\n$R_{sh}=\\frac{R_m}{m-1}=\\frac{0.2}{5-1}=0.05$\n\nTherefore, the correct answer is **D**."
+        "markdown": "To extend the range of ammeter, a resistance $R_{sh}$ is connected across the meter.\n\n<img src=\"/question-images/ee/2010/ee-2010-625680ea75.webp\" />\n\n$I_m=$ full scale deflection current=5A\n\n$I=25A$\n\nMultiplying power $=m=\\frac{I}{I_m}=\\frac{25}{5}=5$\n\n$I_m=\\frac{IR_{sh}}{R_{sh}+R_m}$\n\n$\\frac{I}{I_m}=\\frac{R_{sh}+R_m}{R_{sh}}$\n\n$m=1+\\frac{R_m}{R_{sh}}$\n\n$R_{sh}=\\frac{R_m}{m-1}=\\frac{0.2}{5-1}=0.05$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-625680ea75.webp"
+        ]
       }
     },
     "pp:ee:2010:q10": {
       "question_uid": "pp:ee:2010:q10",
-      "exam_uid": "ee:2010:set1:q10",
+      "exam_uid": "ee:2010:set1:main:q10",
       "title": "GATE EE 2010 | Set 1 | Question: 10",
+      "section": "main",
+      "question_number": 10,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -394,25 +449,30 @@
       "yearSetIdentity": "ee:2010:set-1",
       "taxonomy": {
         "primary": {
-          "subjectSlug": "ga",
-          "subjectLabel": "General Aptitude",
-          "subtopicSlug": "quantitative-aptitude",
-          "subtopicLabel": "Quantitative Aptitude"
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "feedback-characteristics-of-control-systems",
+          "subtopicLabel": "Feedback Characteristics of Control Systems"
         },
         "secondary": [],
         "conceptTags": [
-          "quantitative-aptitude"
+          "ee-control-systems",
+          "feedback-characteristics-of-control-systems"
         ]
       },
       "detailed_solution": {
         "concept": "Control Systems - Feedback Characteristics of Control Systems",
-        "markdown": "$G=100\\pm 10$%\n\n$\\frac{\\Delta G}{G}=10$% or 0.1\n\n$H=\\frac{9}{100}$\n\nOverall gain,\n\n$T=\\frac{G}{1+GH}$\n\n$T=\\frac{100}{1+100 \\times \\frac{9}{100}}=10$\n\nSensitivity w.r.t.  $'G'=\\frac{1}{1+GH} \\times 10$%\n\n$\\;\\;\\;=\\frac{1}{1+10 \\times 1}\\times 10$%\n\n$\\;\\;\\;=\\frac{10}{11}\\cong 1$%\n\nTherefore, the correct answer is **A**."
+        "markdown": "$G=100\\pm 10$%\n\n$\\frac{\\Delta G}{G}=10$% or 0.1\n\n$H=\\frac{9}{100}$\n\nOverall gain,\n\n$T=\\frac{G}{1+GH}$\n\n$T=\\frac{100}{1+100 \\times \\frac{9}{100}}=10$\n\nSensitivity w.r.t.  $'G'=\\frac{1}{1+GH} \\times 10$%\n\n$\\;\\;\\;=\\frac{1}{1+10 \\times 1}\\times 10$%\n\n$\\;\\;\\;=\\frac{10}{11}\\cong 1$%",
+        "images": []
       }
     },
     "pp:ee:2010:q11": {
       "question_uid": "pp:ee:2010:q11",
-      "exam_uid": "ee:2010:set1:q11",
+      "exam_uid": "ee:2010:set1:main:q11",
       "title": "GATE EE 2010 | Set 1 | Question: 11",
+      "section": "main",
+      "question_number": 11,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -447,13 +507,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$\\frac{C(s)}{R(s)}=\\frac{2}{s+1}$\n\n$R(s)=\\frac{1}{s}(step-input)$\n\n$C(s)=R(s)\\left ( \\frac{2}{s+1} \\right )$\n\n$\\;\\;=\\frac{2}{s(s+1)} =2\\left ( \\frac{1}{s} -\\frac{1}{s-1}\\right )$\n\n$C(t)=L^{-1}[C(s)]=2[-1-e^{-t}]$\n\nFinal value of $C(t)=C_{ss}=2$\n\n98% of $C_{ss}=0.98 \\times 2=1.96$\n\nLet,  $t=T$, the response reaches 98% of its final values.\n\n$1.96=2[1-e^{-T}]$\n\n$T\\approx 4 sec$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$\\frac{C(s)}{R(s)}=\\frac{2}{s+1}$\n\n$R(s)=\\frac{1}{s}(step-input)$\n\n$C(s)=R(s)\\left ( \\frac{2}{s+1} \\right )$\n\n$\\;\\;=\\frac{2}{s(s+1)} =2\\left ( \\frac{1}{s} -\\frac{1}{s-1}\\right )$\n\n$C(t)=L^{-1}[C(s)]=2[-1-e^{-t}]$\n\nFinal value of $C(t)=C_{ss}=2$\n\n98% of $C_{ss}=0.98 \\times 2=1.96$\n\nLet,  $t=T$, the response reaches 98% of its final values.\n\n$1.96=2[1-e^{-T}]$\n\n$T\\approx 4 sec$",
+        "images": []
       }
     },
     "pp:ee:2010:q12": {
       "question_uid": "pp:ee:2010:q12",
-      "exam_uid": "ee:2010:set1:q12",
+      "exam_uid": "ee:2010:set1:main:q12",
       "title": "GATE EE 2010 | Set 1 | Question: 12",
+      "section": "main",
+      "question_number": 12,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -488,13 +552,17 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "In such system, volumetric flow rate C is analogous to current and pressure is analogous to voltage\n\nThe hydraulic capacitance due to storage in gravity field is defined as\n\n$C=\\frac{A}{\\rho g}$\n\nwhere,  A= Area of the tank\n\n$\\rho$= Density of the fluid\n\ng= Acceleration due to gravity\n\nThe hydraulic capacitance is represented by A and C. Liquid trying to flow out of a container,can meet with resistance in several ways. If the outlet is a pipe, the friction between the liquid and the pile wall produces resistance to flow. Such resistance is represented by B and D.\n\nTherefore, the correct answer is **D**."
+        "markdown": "In such system, volumetric flow rate C is analogous to current and pressure is analogous to voltage\n\nThe hydraulic capacitance due to storage in gravity field is defined as\n\n$C=\\frac{A}{\\rho g}$\n\nwhere,  A= Area of the tank\n\n$\\rho$= Density of the fluid\n\ng= Acceleration due to gravity\n\nThe hydraulic capacitance is represented by A and C. Liquid trying to flow out of a container,can meet with resistance in several ways. If the outlet is a pipe, the friction between the liquid and the pile wall produces resistance to flow. Such resistance is represented by B and D.",
+        "images": []
       }
     },
     "pp:ee:2010:q13": {
       "question_uid": "pp:ee:2010:q13",
-      "exam_uid": "ee:2010:set1:q13",
+      "exam_uid": "ee:2010:set1:main:q13",
       "title": "GATE EE 2010 | Set 1 | Question: 13",
+      "section": "main",
+      "question_number": 13,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -529,13 +597,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "Secondary current\n\n$I_2=1\\angle 0^{\\circ}$\n\nA Secondary current referred to primary side\n\n$$\\begin{aligned} I'_2 &=\\left ( \\frac{N_2}{N_1} \\right )I_2 \\\\ &= \\frac{2}{1} \\times 1\\angle 0^{\\circ}=2\\angle 0^{\\circ}A \\end{aligned}$$\n\nAs the core losses are neglected, magnetizing current $(I_m)$ will be in phase with flux $(\\phi )$. Therefore $I_m$ lags the induced emf by $90^{\\circ} I_m=1\\angle -90^{\\circ}A$\n\nPrimary current,\n\n$$\\begin{aligned} I_1 &=I_m+I'_2 \\\\ &=1\\angle -90^{\\circ} + 2\\angle 0^{\\circ} \\\\ &\\approx 2.24\\angle -26.56^{\\circ}A \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Secondary current\n\n$I_2=1\\angle 0^{\\circ}$\n\nA Secondary current referred to primary side\n\n$$\\begin{aligned} I'_2 &=\\left ( \\frac{N_2}{N_1} \\right )I_2 \\\\ &= \\frac{2}{1} \\times 1\\angle 0^{\\circ}=2\\angle 0^{\\circ}A \\end{aligned}$$\n\nAs the core losses are neglected, magnetizing current $(I_m)$ will be in phase with flux $(\\phi )$. Therefore $I_m$ lags the induced emf by $90^{\\circ} I_m=1\\angle -90^{\\circ}A$\n\nPrimary current,\n\n$$\\begin{aligned} I_1 &=I_m+I'_2 \\\\ &=1\\angle -90^{\\circ} + 2\\angle 0^{\\circ} \\\\ &\\approx 2.24\\angle -26.56^{\\circ}A \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q14": {
       "question_uid": "pp:ee:2010:q14",
-      "exam_uid": "ee:2010:set1:q14",
+      "exam_uid": "ee:2010:set1:main:q14",
       "title": "GATE EE 2010 | Set 1 | Question: 14",
+      "section": "main",
+      "question_number": 14,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -570,13 +642,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - High Voltage DC Transmission",
-        "markdown": "Power flows in the indicated direction when $V_{AB} \\gt 0$, $V_{CD} \\gt 0$ and $V_{AB} \\gt V_{CD}$\n\nSince current flows high voltage to low voltage.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Power flows in the indicated direction when $V_{AB} \\gt 0$, $V_{CD} \\gt 0$ and $V_{AB} \\gt V_{CD}$\n\nSince current flows high voltage to low voltage.",
+        "images": []
       }
     },
     "pp:ee:2010:q15": {
       "question_uid": "pp:ee:2010:q15",
-      "exam_uid": "ee:2010:set1:q15",
+      "exam_uid": "ee:2010:set1:main:q15",
       "title": "GATE EE 2010 | Set 1 | Question: 15",
+      "section": "main",
+      "question_number": 15,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -611,13 +687,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "Starting current in induction motor can be as large as 5 to 6 times the full load current. As compared to starting current $(I_{st})$, exciting current $(I_{m})$ is very small $(I_m \\lt lt I_{st})$\n\nTherefore, shunt branch can be neglected in the circuit model of the motor.\n\n<img src=\"/question-images/ee/2010/ee-2010-a3d472e53f.webp\" />\n\n$I_{st}=\\frac{V}{(r_s+r_r)+j(X_s+X_r)}$\n\n$|I_{st}|=\\frac{V}{\\sqrt{(r_s+r_r)^2+(X_s+X_r)^2}}A$\n\nTherefore, the correct answer is **A**."
+        "markdown": "Starting current in induction motor can be as large as 5 to 6 times the full load current. As compared to starting current $(I_{st})$, exciting current $(I_{m})$ is very small $(I_m \\lt lt I_{st})$\n\nTherefore, shunt branch can be neglected in the circuit model of the motor.\n\n<img src=\"/question-images/ee/2010/ee-2010-a3d472e53f.webp\" />\n\n$I_{st}=\\frac{V}{(r_s+r_r)+j(X_s+X_r)}$\n\n$|I_{st}|=\\frac{V}{\\sqrt{(r_s+r_r)^2+(X_s+X_r)^2}}A$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-a3d472e53f.webp"
+        ]
       }
     },
     "pp:ee:2010:q16": {
       "question_uid": "pp:ee:2010:q16",
-      "exam_uid": "ee:2010:set1:q16",
+      "exam_uid": "ee:2010:set1:main:q16",
       "title": "GATE EE 2010 | Set 1 | Question: 16",
+      "section": "main",
+      "question_number": 16,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -652,13 +734,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Power System Transients",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-e0bc9f2ec7.webp\" />\n\nIf a step voltage of magnitude 'V' travels through transmission line which is terminated with a inductive load $Z_L=L_1s$ then voltage transmitted (Induced) across the $Z_L=L_1s$\n\n$$\\begin{aligned} V'(t)&=2Ve^{-Z_st/L_1} \\\\ \\text{At time }&t=0 \\\\ V'(t)&=2V \\\\ \\text{If }V&=1 \\\\ V'&=2p.u. \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-e0bc9f2ec7.webp\" />\n\nIf a step voltage of magnitude 'V' travels through transmission line which is terminated with a inductive load $Z_L=L_1s$ then voltage transmitted (Induced) across the $Z_L=L_1s$\n\n$$\\begin{aligned} V'(t)&=2Ve^{-Z_st/L_1} \\\\ \\text{At time }&t=0 \\\\ V'(t)&=2V \\\\ \\text{If }V&=1 \\\\ V'&=2p.u. \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-e0bc9f2ec7.webp"
+        ]
       }
     },
     "pp:ee:2010:q17": {
       "question_uid": "pp:ee:2010:q17",
-      "exam_uid": "ee:2010:set1:q17",
+      "exam_uid": "ee:2010:set1:main:q17",
       "title": "GATE EE 2010 | Set 1 | Question: 17",
+      "section": "main",
+      "question_number": 17,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -693,13 +781,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
-        "markdown": "$$\\begin{aligned} V_1&=100\\angle 30^{\\circ}V\\\\ V_2&=100\\angle 0^{\\circ}V \\end{aligned}$$\n\nas $\\delta _1 \\gt \\delta _2$, current will flow from bus 1 to bus 2\n\n$$\\begin{aligned} Z&=0+j5\\Omega \\\\ I&=\\frac{V_1-V_2}{Z}\\\\ &=\\frac{100\\angle 30^{\\circ}-100\\angle 0^{\\circ}}{j5}\\\\ &=10.35\\angle 15^{\\circ}A\\\\ &\\text{Complex power, }\\\\ &=S=P+j\\theta =V_1I^*\\\\ P+jQ&=100\\angle 30^{\\circ} \\times (10.35\\angle 15^{\\circ})\\\\ &\\approx 1000+j268\\\\ P&=1000W \\text{ and }Q=268 \\text{ VAR} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$$\\begin{aligned} V_1&=100\\angle 30^{\\circ}V\\\\ V_2&=100\\angle 0^{\\circ}V \\end{aligned}$$\n\nas $\\delta _1 \\gt \\delta _2$, current will flow from bus 1 to bus 2\n\n$$\\begin{aligned} Z&=0+j5\\Omega \\\\ I&=\\frac{V_1-V_2}{Z}\\\\ &=\\frac{100\\angle 30^{\\circ}-100\\angle 0^{\\circ}}{j5}\\\\ &=10.35\\angle 15^{\\circ}A\\\\ &\\text{Complex power, }\\\\ &=S=P+j\\theta =V_1I^*\\\\ P+jQ&=100\\angle 30^{\\circ} \\times (10.35\\angle 15^{\\circ})\\\\ &\\approx 1000+j268\\\\ P&=1000W \\text{ and }Q=268 \\text{ VAR} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q18": {
       "question_uid": "pp:ee:2010:q18",
-      "exam_uid": "ee:2010:set1:q18",
+      "exam_uid": "ee:2010:set1:main:q18",
       "title": "GATE EE 2010 | Set 1 | Question: 18",
+      "section": "main",
+      "question_number": 18,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -734,13 +826,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "Rated MVA of circuit breaker = $200 MVA \\;\\sqrt{3} \\times |V(line)|_{rated} \\times$ Symmetrical breaking current =Rated MVA of CB\n\nSymmetrical breaking current $=\\frac{200}{\\sqrt{3} \\times 33}=35kA$\n\nTherefore, the correct answer is **C**."
+        "markdown": "Rated MVA of circuit breaker = $200 MVA \\;\\sqrt{3} \\times |V(line)|_{rated} \\times$ Symmetrical breaking current =Rated MVA of CB\n\nSymmetrical breaking current $=\\frac{200}{\\sqrt{3} \\times 33}=35kA$",
+        "images": []
       }
     },
     "pp:ee:2010:q19": {
       "question_uid": "pp:ee:2010:q19",
-      "exam_uid": "ee:2010:set1:q19",
+      "exam_uid": "ee:2010:set1:main:q19",
       "title": "GATE EE 2010 | Set 1 | Question: 19",
+      "section": "main",
+      "question_number": 19,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -775,13 +871,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-d7cf83207c.webp\" />\n\n$I_1=200 \\times \\left ( \\frac{5}{400} \\right )=2.75A$\n\n$I_2=250 \\times \\left ( \\frac{5}{400} \\right )=3.125A$\n\nCurrent through operating coil,\n\n$I_{OC}=I_2-I_1=3.125-2.75=0.375A$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-d7cf83207c.webp\" />\n\n$I_1=200 \\times \\left ( \\frac{5}{400} \\right )=2.75A$\n\n$I_2=250 \\times \\left ( \\frac{5}{400} \\right )=3.125A$\n\nCurrent through operating coil,\n\n$I_{OC}=I_2-I_1=3.125-2.75=0.375A$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-d7cf83207c.webp"
+        ]
       }
     },
     "pp:ee:2010:q20": {
       "question_uid": "pp:ee:2010:q20",
-      "exam_uid": "ee:2010:set1:q20",
+      "exam_uid": "ee:2010:set1:main:q20",
       "title": "GATE EE 2010 | Set 1 | Question: 20",
+      "section": "main",
+      "question_number": 20,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -816,13 +918,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
-        "markdown": "Equivalent circuit for the zero sequence network depends upon the impedances met by the zero sequence currents flowing through the three phases and their sum, $3I_{a0}$, flowing through the neutral impedance and returning through the ground or a neutral conductor.\n\nIf there is no complete path for zero sequence currents in a circuit, the zero sequence impedance is infinite.\n\nThus a Y-connected circuit with ungrounded neutral has infinite impedance to zero sequence currents.\n\nA delta-connected circuit provides no path for zero sequence currents flowing in the line. The zero sequence currents being single phase, circulate within the winding. Hence viewed from its terminals its zero sequence impedance is infinite.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Equivalent circuit for the zero sequence network depends upon the impedances met by the zero sequence currents flowing through the three phases and their sum, $3I_{a0}$, flowing through the neutral impedance and returning through the ground or a neutral conductor.\n\nIf there is no complete path for zero sequence currents in a circuit, the zero sequence impedance is infinite.\n\nThus a Y-connected circuit with ungrounded neutral has infinite impedance to zero sequence currents.\n\nA delta-connected circuit provides no path for zero sequence currents flowing in the line. The zero sequence currents being single phase, circulate within the winding. Hence viewed from its terminals its zero sequence impedance is infinite.",
+        "images": []
       }
     },
     "pp:ee:2010:q21": {
       "question_uid": "pp:ee:2010:q21",
-      "exam_uid": "ee:2010:set1:q21",
+      "exam_uid": "ee:2010:set1:main:q21",
       "title": "GATE EE 2010 | Set 1 | Question: 21",
+      "section": "main",
+      "question_number": 21,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -857,13 +963,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
-        "markdown": "$V_o=\\left ( 1+\\frac{2R}{R} \\right )V$\n\n$\\;\\;=(1+2)(2)=6V$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$V_o=\\left ( 1+\\frac{2R}{R} \\right )V$\n\n$\\;\\;=(1+2)(2)=6V$",
+        "images": []
       }
     },
     "pp:ee:2010:q22": {
       "question_uid": "pp:ee:2010:q22",
-      "exam_uid": "ee:2010:set1:q22",
+      "exam_uid": "ee:2010:set1:main:q22",
       "title": "GATE EE 2010 | Set 1 | Question: 22",
+      "section": "main",
+      "question_number": 22,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -898,13 +1008,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
-        "markdown": "Diode $D_1$ is On and diode $D_2$ is OFF.\n\nSo,    $V_0=10 \\times \\frac{10}{10+10}=5\\; V$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Diode $D_1$ is On and diode $D_2$ is OFF.\n\nSo,    $V_0=10 \\times \\frac{10}{10+10}=5\\; V$",
+        "images": []
       }
     },
     "pp:ee:2010:q23": {
       "question_uid": "pp:ee:2010:q23",
-      "exam_uid": "ee:2010:set1:q23",
+      "exam_uid": "ee:2010:set1:main:q23",
       "title": "GATE EE 2010 | Set 1 | Question: 23",
+      "section": "main",
+      "question_number": 23,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -939,13 +1053,20 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Miscellaneous",
-        "markdown": "When switch is connected to A for time duration $T_1$\n\n<img src=\"/question-images/ee/2010/ee-2010-a895f30870.webp\" />\n\n$V_{out}=V_{in}$\n\nWhen switch is connected to B for time duration $T_2$\n\n<img src=\"/question-images/ee/2010/ee-2010-8ee2eb5572.webp\" />\n\nAverage output voltage $=\\frac{V_{in}T_1}{T_1+T_2}=\\alpha V_{in}$\n\nwhere, $\\alpha =\\text{duty cycle}=\\frac{T_1}{T_1+T_2}$\n\nTherefore, the converter shown is a step down chooper.\n\nTherefore, the correct answer is **A**."
+        "markdown": "When switch is connected to A for time duration $T_1$\n\n<img src=\"/question-images/ee/2010/ee-2010-a895f30870.webp\" />\n\n$V_{out}=V_{in}$\n\nWhen switch is connected to B for time duration $T_2$\n\n<img src=\"/question-images/ee/2010/ee-2010-8ee2eb5572.webp\" />\n\nAverage output voltage $=\\frac{V_{in}T_1}{T_1+T_2}=\\alpha V_{in}$\n\nwhere, $\\alpha =\\text{duty cycle}=\\frac{T_1}{T_1+T_2}$\n\nTherefore, the converter shown is a step down chooper.",
+        "images": [
+          "/question-images/ee/2010/ee-2010-a895f30870.webp",
+          "/question-images/ee/2010/ee-2010-8ee2eb5572.webp"
+        ]
       }
     },
     "pp:ee:2010:q24": {
       "question_uid": "pp:ee:2010:q24",
-      "exam_uid": "ee:2010:set1:q24",
+      "exam_uid": "ee:2010:set1:main:q24",
       "title": "GATE EE 2010 | Set 1 | Question: 24",
+      "section": "main",
+      "question_number": 24,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -980,13 +1101,17 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "BJT blocks positive voltage and diode blocks negative voltage and both devices aloows positive current.\n\nTherefore, the correct answer is **C**."
+        "markdown": "BJT blocks positive voltage and diode blocks negative voltage and both devices aloows positive current.",
+        "images": []
       }
     },
     "pp:ee:2010:q25": {
       "question_uid": "pp:ee:2010:q25",
-      "exam_uid": "ee:2010:set1:q25",
+      "exam_uid": "ee:2010:set1:main:q25",
       "title": "GATE EE 2010 | Set 1 | Question: 25",
+      "section": "main",
+      "question_number": 25,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1021,13 +1146,17 @@
       },
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
-        "markdown": "For firing angle, $\\alpha$, average output voltage of the converter is given by\n\n$V_0=\\frac{2V_m}{\\pi}\\cos \\alpha$\n\nwhen, $\\alpha =0^{\\circ}$\n\n$$\\begin{aligned} V_0=\\frac{2V_m}{\\pi}\\cos 0^{\\circ}&=300 \\\\ \\frac{2V_m}{\\pi}&=300 \\\\ \\text{when, } \\alpha &= 60^{\\circ}\\\\ V_0&=\\frac{2V_m}{\\pi} \\cos 60^{\\circ} \\\\ &= 300 \\cos 60^{\\circ}\\\\ &=150V \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "For firing angle, $\\alpha$, average output voltage of the converter is given by\n\n$V_0=\\frac{2V_m}{\\pi}\\cos \\alpha$\n\nwhen, $\\alpha =0^{\\circ}$\n\n$$\\begin{aligned} V_0=\\frac{2V_m}{\\pi}\\cos 0^{\\circ}&=300 \\\\ \\frac{2V_m}{\\pi}&=300 \\\\ \\text{when, } \\alpha &= 60^{\\circ}\\\\ V_0&=\\frac{2V_m}{\\pi} \\cos 60^{\\circ} \\\\ &= 300 \\cos 60^{\\circ}\\\\ &=150V \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q26": {
       "question_uid": "pp:ee:2010:q26",
-      "exam_uid": "ee:2010:set1:q26",
+      "exam_uid": "ee:2010:set1:main:q26",
       "title": "GATE EE 2010 | Set 1 | Question: 26",
+      "section": "main",
+      "question_number": 26,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1061,14 +1190,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Calculus",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Calculus*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Calculus**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *a maximum*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (a maximum)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2010:q27": {
       "question_uid": "pp:ee:2010:q27",
-      "exam_uid": "ee:2010:set1:q27",
+      "exam_uid": "ee:2010:set1:main:q27",
       "title": "GATE EE 2010 | Set 1 | Question: 27",
+      "section": "main",
+      "question_number": 27,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1103,13 +1235,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} &P(\\text{II is red | I is white})\\\\ &=\\frac{P(\\text{II is red and I is white})}{P(\\text{I is white})}\\\\ &=\\frac{\\frac{3}{6}\\times \\frac{4}{7}}{\\frac{4}{7}}=\\frac{3}{6}=\\frac{1}{2} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} &P(\\text{II is red | I is white})\\\\ &=\\frac{P(\\text{II is red and I is white})}{P(\\text{I is white})}\\\\ &=\\frac{\\frac{3}{6}\\times \\frac{4}{7}}{\\frac{4}{7}}=\\frac{3}{6}=\\frac{1}{2} \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q28": {
       "question_uid": "pp:ee:2010:q28",
-      "exam_uid": "ee:2010:set1:q28",
+      "exam_uid": "ee:2010:set1:main:q28",
       "title": "GATE EE 2010 | Set 1 | Question: 28",
+      "section": "main",
+      "question_number": 28,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1144,13 +1280,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Given, $$P=\\begin{bmatrix} 1 & 1 &0 \\\\ 0& 2 & 2\\\\ 0& 0 & 3 \\end{bmatrix}$$\n\nP is triangular. So eigen values are the diagonal elements themselves. Eigen values are therefore, $\\lambda _1=1,\\lambda _2=2,\\lambda _3=3.$\n\nNow, the eigen value problem is $[A-\\lambda I]\\hat{x}=0$\n\n$$\\begin{bmatrix} 1-\\lambda &1 &0 \\\\ 0 & 2-\\lambda & 2\\\\ 0& 0 &3-\\lambda \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\nPutting $\\lambda _1=1$, we get the eigen vector corresponding to this eigen value,\n\n$$\\begin{bmatrix} 0&1 &0 \\\\ 0 & 1& 2\\\\ 0& 0 &2 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\nWhich gives the equations\n\n$$\\begin{aligned} x_2&=0 \\\\ x_2+2x_3&=0 \\\\ 2x_3 &=0 \\end{aligned}$$\n\nThe solution is $x_2=0, x_3=0, x_1=k$\n\nSo, one eigen vector is $$\\hat{x_1}=\\begin{bmatrix} k\\\\ 0\\\\ 0 \\end{bmatrix}\\;i.e.\\; x_1:x_2:x_3=k:0:0$$\n\nSince, none of the eigen vectors given in choises matches with this, ratio we need to proceed further and find the other eigen vectors corresponding to the other eigen values.\n\nNow, corresponding to $\\lambda _2=2,$ we get by substituting $\\lambda =2,$, in the eigen value problem, the following set of equations,\n\n$$\\begin{bmatrix} -1&1 &0 \\\\ 0 & 0& 2\\\\ 0& 0 &1 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\nWhich gives the equations,\n\n$$\\begin{aligned} -x_1+x_2&=0 \\\\ 2x_3&=0 \\\\ x_3&=0 \\end{aligned}$$\n\nSolution is $x_3=0, x_1=k, x_2=k$\n\n$$\\therefore \\; \\hat{X_2}=\\begin{bmatrix} k\\\\ k\\\\ 0 \\end{bmatrix}\\;i.e.\\; x_1:x_2:x_3=1:1:0$$\n\nSince none of the eigen vectors given in the choises is of this ratio, we need to proceed further and find 3rd eigen vector also.\n\nBy putting  $\\lambda =3,$ in the eigen value problem, we get\n\n$$\\begin{bmatrix} -2&1 &0 \\\\ 0 & -1& 2\\\\ 0& 0 &0 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\n$$\\begin{aligned} -2x_1+x_2&=0 \\\\ -x_2+2x_3&=0 \\end{aligned}$$\n\nputting $x_1=k$, we get, $x_2=2k$ and $x_3=k$\n\n$$\\therefore \\; \\hat{X_3}=\\begin{bmatrix} k\\\\ 2k\\\\ k \\end{bmatrix}\\;i.e.\\; x_1:x_2:x_3=1:2:1$$\n\nOnly the eigen vector geven in choise $$\\begin{bmatrix} 1\\\\ 2\\\\ 1 \\end{bmatrix}$$ is in this ratio.\n\nTherefore, the correct answer is **B**."
+        "markdown": "Given, $$P=\\begin{bmatrix} 1 & 1 &0 \\\\ 0& 2 & 2\\\\ 0& 0 & 3 \\end{bmatrix}$$\n\nP is triangular. So eigen values are the diagonal elements themselves. Eigen values are therefore, $\\lambda _1=1,\\lambda _2=2,\\lambda _3=3.$\n\nNow, the eigen value problem is $[A-\\lambda I]\\hat{x}=0$\n\n$$\\begin{bmatrix} 1-\\lambda &1 &0 \\\\ 0 & 2-\\lambda & 2\\\\ 0& 0 &3-\\lambda \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\nPutting $\\lambda _1=1$, we get the eigen vector corresponding to this eigen value,\n\n$$\\begin{bmatrix} 0&1 &0 \\\\ 0 & 1& 2\\\\ 0& 0 &2 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\nWhich gives the equations\n\n$$\\begin{aligned} x_2&=0 \\\\ x_2+2x_3&=0 \\\\ 2x_3 &=0 \\end{aligned}$$\n\nThe solution is $x_2=0, x_3=0, x_1=k$\n\nSo, one eigen vector is $$\\hat{x_1}=\\begin{bmatrix} k\\\\ 0\\\\ 0 \\end{bmatrix}\\;i.e.\\; x_1:x_2:x_3=k:0:0$$\n\nSince, none of the eigen vectors given in choises matches with this, ratio we need to proceed further and find the other eigen vectors corresponding to the other eigen values.\n\nNow, corresponding to $\\lambda _2=2,$ we get by substituting $\\lambda =2,$, in the eigen value problem, the following set of equations,\n\n$$\\begin{bmatrix} -1&1 &0 \\\\ 0 & 0& 2\\\\ 0& 0 &1 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\nWhich gives the equations,\n\n$$\\begin{aligned} -x_1+x_2&=0 \\\\ 2x_3&=0 \\\\ x_3&=0 \\end{aligned}$$\n\nSolution is $x_3=0, x_1=k, x_2=k$\n\n$$\\therefore \\; \\hat{X_2}=\\begin{bmatrix} k\\\\ k\\\\ 0 \\end{bmatrix}\\;i.e.\\; x_1:x_2:x_3=1:1:0$$\n\nSince none of the eigen vectors given in the choises is of this ratio, we need to proceed further and find 3rd eigen vector also.\n\nBy putting  $\\lambda =3,$ in the eigen value problem, we get\n\n$$\\begin{bmatrix} -2&1 &0 \\\\ 0 & -1& 2\\\\ 0& 0 &0 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2\\\\ x_3 \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0\\\\ 0 \\end{bmatrix}$$\n\n$$\\begin{aligned} -2x_1+x_2&=0 \\\\ -x_2+2x_3&=0 \\end{aligned}$$\n\nputting $x_1=k$, we get, $x_2=2k$ and $x_3=k$\n\n$$\\therefore \\; \\hat{X_3}=\\begin{bmatrix} k\\\\ 2k\\\\ k \\end{bmatrix}\\;i.e.\\; x_1:x_2:x_3=1:2:1$$\n\nOnly the eigen vector geven in choise $$\\begin{bmatrix} 1\\\\ 2\\\\ 1 \\end{bmatrix}$$ is in this ratio.",
+        "images": []
       }
     },
     "pp:ee:2010:q29": {
       "question_uid": "pp:ee:2010:q29",
-      "exam_uid": "ee:2010:set1:q29",
+      "exam_uid": "ee:2010:set1:main:q29",
       "title": "GATE EE 2010 | Set 1 | Question: 29",
+      "section": "main",
+      "question_number": 29,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1185,13 +1325,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned}\n\n\\text{Given,  }\\frac{d^2x}{dt^2}+6\\frac{dx}{dt}+8x=0\\\\\n\nx(0)=1\\text{  and   }\\left.\\begin{matrix}\n\n\\frac{dx}{dt}\n\n\\end{matrix}\\right|_{t=0}=0\\\\\n\nD^2+6D+8=0\\\\\n\n(D+4)(D+2)=0\\\\\n\nD=-2, D=-4\\\\\n\n\\therefore \\;\\;\\text{ Solution is }\\\\\n\nx=C_1e^{-2t}+C_2e^{-4t}\\\\\n\n\\text{Since,   }x(0)=1\\\\\n\n\\text{We have  }C_1+C_2=1\\;\\;...(i)\\\\\n\n\\frac{dx}{dt}=-2C_1e^{-2t}-4C_2e^{-4t}\\\\\n\n\\text{Since,   }\\left [ \\frac{dx}{dt} \\right ]_{t=0}=0, \\text{  we have}\\\\\n\n-2C_1-4C_2=0\\;\\;\\;...(ii)\\\\\n\n\\text{Solving (i) and (ii) we have } \\\\ C_1=2 \\; and \\;C_2=-1\\\\\n\n\\text{So the solution is }\\\\\n\nx(t)=2e^{-2t}-e^{-4t}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned}\n\n\\text{Given,  }\\frac{d^2x}{dt^2}+6\\frac{dx}{dt}+8x=0\\\\\n\nx(0)=1\\text{  and   }\\left.\\begin{matrix}\n\n\\frac{dx}{dt}\n\n\\end{matrix}\\right|_{t=0}=0\\\\\n\nD^2+6D+8=0\\\\\n\n(D+4)(D+2)=0\\\\\n\nD=-2, D=-4\\\\\n\n\\therefore \\;\\;\\text{ Solution is }\\\\\n\nx=C_1e^{-2t}+C_2e^{-4t}\\\\\n\n\\text{Since,   }x(0)=1\\\\\n\n\\text{We have  }C_1+C_2=1\\;\\;...(i)\\\\\n\n\\frac{dx}{dt}=-2C_1e^{-2t}-4C_2e^{-4t}\\\\\n\n\\text{Since,   }\\left [ \\frac{dx}{dt} \\right ]_{t=0}=0, \\text{  we have}\\\\\n\n-2C_1-4C_2=0\\;\\;\\;...(ii)\\\\\n\n\\text{Solving (i) and (ii) we have } \\\\ C_1=2 \\; and \\;C_2=-1\\\\\n\n\\text{So the solution is }\\\\\n\nx(t)=2e^{-2t}-e^{-4t}\n\n\\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q30": {
       "question_uid": "pp:ee:2010:q30",
-      "exam_uid": "ee:2010:set1:q30",
+      "exam_uid": "ee:2010:set1:main:q30",
       "title": "GATE EE 2010 | Set 1 | Question: 30",
+      "section": "main",
+      "question_number": 30,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1226,13 +1370,17 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} x_1+2x_2+x_3+4x_4&= 2\\\\ 3x_1+6x_2+3x_3+12x_4&= 6 \\end{aligned}$$\n\nThe augmental matrix is $$\\begin{bmatrix} 1 & 2 & 1 & 4\\\\ 3 & 6 & 3 & 12 \\end{bmatrix}\\begin{bmatrix} 2\\\\ 6 \\end{bmatrix}$$\n\nPerforming gauss-elimination on this we get\n\n$$\\begin{bmatrix} 1 & 2 & 1 & 4\\\\ 3 & 6 & 3 & 12 \\end{bmatrix}\\begin{bmatrix} 2\\\\ 6 \\end{bmatrix}\\overset{R_2-3R_1}{\\rightarrow}\\begin{bmatrix} 1 & 2 & 1 & 4\\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\\begin{bmatrix} 2\\\\ 0 \\end{bmatrix}$$\n\n$rank (A)=rank(A|B)=1$\n\nSo, system is consistent.\n\nSince, system's rank =1 is less than the number of variables, only infinite (multiple) non-trival solution exists.\n\nTherefore, the correct answer is **D**."
+        "markdown": "$$\\begin{aligned} x_1+2x_2+x_3+4x_4&= 2\\\\ 3x_1+6x_2+3x_3+12x_4&= 6 \\end{aligned}$$\n\nThe augmental matrix is $$\\begin{bmatrix} 1 & 2 & 1 & 4\\\\ 3 & 6 & 3 & 12 \\end{bmatrix}\\begin{bmatrix} 2\\\\ 6 \\end{bmatrix}$$\n\nPerforming gauss-elimination on this we get\n\n$$\\begin{bmatrix} 1 & 2 & 1 & 4\\\\ 3 & 6 & 3 & 12 \\end{bmatrix}\\begin{bmatrix} 2\\\\ 6 \\end{bmatrix}\\overset{R_2-3R_1}{\\rightarrow}\\begin{bmatrix} 1 & 2 & 1 & 4\\\\ 0 & 0 & 0 & 0 \\end{bmatrix}\\begin{bmatrix} 2\\\\ 0 \\end{bmatrix}$$\n\n$rank (A)=rank(A|B)=1$\n\nSo, system is consistent.\n\nSince, system's rank =1 is less than the number of variables, only infinite (multiple) non-trival solution exists.",
+        "images": []
       }
     },
     "pp:ee:2010:q31": {
       "question_uid": "pp:ee:2010:q31",
-      "exam_uid": "ee:2010:set1:q31",
+      "exam_uid": "ee:2010:set1:main:q31",
       "title": "GATE EE 2010 | Set 1 | Question: 31",
+      "section": "main",
+      "question_number": 31,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1267,13 +1415,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
-        "markdown": "By using Parseval's theorem,\n\n$$\\begin{aligned} \\int_{-\\infty }^{\\infty }|X(\\omega )|^2 d\\omega &= 2 \\pi \\int_{-1}^{1}1 \\; dt=2 \\pi \\times 2\\\\ \\int_{-\\infty }^{\\infty }|X(\\omega )|^2 d\\omega &=4 \\pi \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+        "markdown": "By using Parseval's theorem,\n\n$$\\begin{aligned} \\int_{-\\infty }^{\\infty }|X(\\omega )|^2 d\\omega &= 2 \\pi \\int_{-1}^{1}1 \\; dt=2 \\pi \\times 2\\\\ \\int_{-\\infty }^{\\infty }|X(\\omega )|^2 d\\omega &=4 \\pi \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q32": {
       "question_uid": "pp:ee:2010:q32",
-      "exam_uid": "ee:2010:set1:q32",
+      "exam_uid": "ee:2010:set1:main:q32",
       "title": "GATE EE 2010 | Set 1 | Question: 32",
+      "section": "main",
+      "question_number": 32,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1308,13 +1460,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
-        "markdown": "x[n] = { <b>1</b>, -1}, M=2\n\ny[n] = {<b>1</b>,0,0,0,-1}, $N_1=5$\n\nSince, output hasnumber of elements\n\n$N_1=M+N-1$\n\nwhere N is number of elements in impulse response h[n].\n\n$\\therefore \\;\\; 5=2+N-1$\n\n$N=4$\n\nLet it be $a_1,a_2,b_1,b_2$\n\n$y[n]=[a_1,(a_2-a_1), (b_1-a_2), (b_2-b_1), -b_2]$\n\nComaparing with\n\n$y[n]=1, 0,0,0,-1]$\n\n$a_1=1$\n\n$a_2=a_1=1$\n\n$b_1=a_1=1$\n\n$b_2=b_1=1$\n\nTherefore,\n\n$h[n]=\\{1,1,1,1 \\}$\n\nTherefore, the correct answer is **C**."
+        "markdown": "x[n] = { <b>1</b>, -1}, M=2\n\ny[n] = {<b>1</b>,0,0,0,-1}, $N_1=5$\n\nSince, output hasnumber of elements\n\n$N_1=M+N-1$\n\nwhere N is number of elements in impulse response h[n].\n\n$\\therefore \\;\\; 5=2+N-1$\n\n$N=4$\n\nLet it be $a_1,a_2,b_1,b_2$\n\n$y[n]=[a_1,(a_2-a_1), (b_1-a_2), (b_2-b_1), -b_2]$\n\nComaparing with\n\n$y[n]=1, 0,0,0,-1]$\n\n$a_1=1$\n\n$a_2=a_1=1$\n\n$b_1=a_1=1$\n\n$b_2=b_1=1$\n\nTherefore,\n\n$h[n]=\\{1,1,1,1 \\}$",
+        "images": []
       }
     },
     "pp:ee:2010:q33": {
       "question_uid": "pp:ee:2010:q33",
-      "exam_uid": "ee:2010:set1:q33",
+      "exam_uid": "ee:2010:set1:main:q33",
       "title": "GATE EE 2010 | Set 1 | Question: 33",
+      "section": "main",
+      "question_number": 33,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1349,13 +1505,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
-        "markdown": "Assuming voltage of the node $V_a$\n\n<img src=\"/question-images/ee/2010/ee-2010-328aa320e6.webp\" />\n\n$V_a=1 \\times 12 =12V$\n\nApplying KCL,\n\n$-2+1+I=0$\n\n$I=1A$\n\n$I=\\frac{V_a-6}{R}$\n\n$\\;\\;=\\frac{12-6}{R}=\\frac{6}{R}$\n\n$\\Rightarrow \\;I=\\frac{6}{R}$\n\n$\\Rightarrow \\; R=6\\Omega$\n\nTherefore, the correct answer is **B**."
+        "markdown": "Assuming voltage of the node $V_a$\n\n<img src=\"/question-images/ee/2010/ee-2010-328aa320e6.webp\" />\n\n$V_a=1 \\times 12 =12V$\n\nApplying KCL,\n\n$-2+1+I=0$\n\n$I=1A$\n\n$I=\\frac{V_a-6}{R}$\n\n$\\;\\;=\\frac{12-6}{R}=\\frac{6}{R}$\n\n$\\Rightarrow \\;I=\\frac{6}{R}$\n\n$\\Rightarrow \\; R=6\\Omega$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-328aa320e6.webp"
+        ]
       }
     },
     "pp:ee:2010:q34": {
       "question_uid": "pp:ee:2010:q34",
-      "exam_uid": "ee:2010:set1:q34",
+      "exam_uid": "ee:2010:set1:main:q34",
       "title": "GATE EE 2010 | Set 1 | Question: 34",
+      "section": "main",
+      "question_number": 34,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1390,13 +1552,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-d4ddd7966e.webp\" />\n\n$V_1^{ab}=Z_{11}I_1+Z_{12}I_2$\n\n$V_2=Z_{21}I_1+Z_{22}I_2$\n\nAs,  $1\\Omega$ resistor is connected in series with the network as port-1.\n\n$V_2$ does not get affected,\n\n$V_1^{ef}=V_1^{ab}+I_1 \\times 1$\n\n$\\;\\;=Z_{11}I_1+Z_{12}I_2+I_1$\n\n$\\;\\;=(Z_{11}+1)I_1+Z_{12}I_2$\n\nModified Z-parameter $$=\\begin{bmatrix} Z_{11}+1 & Z_{12}\\\\ Z_{21} &Z_{22} \\end{bmatrix}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-d4ddd7966e.webp\" />\n\n$V_1^{ab}=Z_{11}I_1+Z_{12}I_2$\n\n$V_2=Z_{21}I_1+Z_{22}I_2$\n\nAs,  $1\\Omega$ resistor is connected in series with the network as port-1.\n\n$V_2$ does not get affected,\n\n$V_1^{ef}=V_1^{ab}+I_1 \\times 1$\n\n$\\;\\;=Z_{11}I_1+Z_{12}I_2+I_1$\n\n$\\;\\;=(Z_{11}+1)I_1+Z_{12}I_2$\n\nModified Z-parameter $$=\\begin{bmatrix} Z_{11}+1 & Z_{12}\\\\ Z_{21} &Z_{22} \\end{bmatrix}$$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-d4ddd7966e.webp"
+        ]
       }
     },
     "pp:ee:2010:q35": {
       "question_uid": "pp:ee:2010:q35",
-      "exam_uid": "ee:2010:set1:q35",
+      "exam_uid": "ee:2010:set1:main:q35",
       "title": "GATE EE 2010 | Set 1 | Question: 35",
+      "section": "main",
+      "question_number": 35,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1431,13 +1599,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - A.C. Bridges",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-c8e5203726.webp\" />\n\n$Z_1=R+j\\omega L$\n\n$Z_2=R_2$\n\n$Z_3=R_3$\n\n$Z_4=R_4||\\left ( \\frac{-j}{\\omega C_4} \\right )$\n\n$\\;\\;=R_4||\\left ( \\frac{1}{\\omega C_4} \\right )$\n\n$\\;\\;=\\frac{R_4}{1+j\\omega C_4R_4}$\n\nAt balance,\n\n$Z_1Z_4=Z_2Z_3$\n\n$(R+ j\\omega L)\\left ( \\frac{R_4}{1+j\\omega C_4R_4} \\right )=R_2R_3$\n\n$R_4(R+ j\\omega L)=R_2R_3(1+j\\omega C_4R_4)$\n\n$RR_4+j\\omega L R_4=R_2R_3+j\\omega R_2R_3R_4C_4$\n\nEquating real and imaginary terms\n\n$RR_4=R_2R_3$\n\n$R=\\frac{R_2R_3}{R_4}$\n\n$\\omega LR_4=\\omega R_2R_3R_4C_4$\n\n$L=R_2R_3C_4$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-c8e5203726.webp\" />\n\n$Z_1=R+j\\omega L$\n\n$Z_2=R_2$\n\n$Z_3=R_3$\n\n$Z_4=R_4||\\left ( \\frac{-j}{\\omega C_4} \\right )$\n\n$\\;\\;=R_4||\\left ( \\frac{1}{\\omega C_4} \\right )$\n\n$\\;\\;=\\frac{R_4}{1+j\\omega C_4R_4}$\n\nAt balance,\n\n$Z_1Z_4=Z_2Z_3$\n\n$(R+ j\\omega L)\\left ( \\frac{R_4}{1+j\\omega C_4R_4} \\right )=R_2R_3$\n\n$R_4(R+ j\\omega L)=R_2R_3(1+j\\omega C_4R_4)$\n\n$RR_4+j\\omega L R_4=R_2R_3+j\\omega R_2R_3R_4C_4$\n\nEquating real and imaginary terms\n\n$RR_4=R_2R_3$\n\n$R=\\frac{R_2R_3}{R_4}$\n\n$\\omega LR_4=\\omega R_2R_3R_4C_4$\n\n$L=R_2R_3C_4$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-c8e5203726.webp"
+        ]
       }
     },
     "pp:ee:2010:q36": {
       "question_uid": "pp:ee:2010:q36",
-      "exam_uid": "ee:2010:set1:q36",
+      "exam_uid": "ee:2010:set1:main:q36",
       "title": "GATE EE 2010 | Set 1 | Question: 36",
+      "section": "main",
+      "question_number": 36,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1471,14 +1645,17 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Control Systems** (specifically *Frequency Response Analysis*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Frequency Response Analysis**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *D*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (D)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     },
     "pp:ee:2010:q37": {
       "question_uid": "pp:ee:2010:q37",
-      "exam_uid": "ee:2010:set1:q37",
+      "exam_uid": "ee:2010:set1:main:q37",
       "title": "GATE EE 2010 | Set 1 | Question: 37",
+      "section": "main",
+      "question_number": 37,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1513,13 +1690,17 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
-        "markdown": "$$A=\\begin{bmatrix} -1 &2 \\\\ 0 & 2 \\end{bmatrix}$$ and $$B=\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}$$\n\n$$[sI-A]=\\begin{bmatrix} s & 0\\\\ 0 & s \\end{bmatrix}-\\begin{bmatrix} -1 &2 \\\\ 0 & 2 \\end{bmatrix}$$\n\n$$=\\begin{bmatrix} s+1 &-2 \\\\ 0 & s-2 \\end{bmatrix} [sI-A]^{-1}$$\n\n$$=\\frac{\\begin{bmatrix} s-1 &2 \\\\ 0 & s+1 \\end{bmatrix}}{(s+1)(s+2)}\\;\\;...(i)$$\n\nTransfer function $= C[sI-A]^{-1}B$\n\nSo, denominator of equation (i) gives pole of the system.\n\n$(s+1)(s-2)=0$\n\n$s=-1 \\; and \\; 2$\n\nOne pole lies in RHS of s-plane. Hence, system is unstable.\n\nFor controllability, $Q_c$ is defined as\n\n$$Q_c=\\begin{bmatrix} B\\; : & AB \\end{bmatrix}$$\n\n$$AB=\\begin{bmatrix} -1 &2 \\\\ 0 & 2 \\end{bmatrix}\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}=\\begin{bmatrix} 2\\\\ 2 \\end{bmatrix}$$\n\n$$Q_C=\\begin{bmatrix} 0 &2 \\\\ 1 & 2 \\end{bmatrix}$$\n\n$|Q_c|\\neq 0$\n\nHence the system is controllable.\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$A=\\begin{bmatrix} -1 &2 \\\\ 0 & 2 \\end{bmatrix}$$ and $$B=\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}$$\n\n$$[sI-A]=\\begin{bmatrix} s & 0\\\\ 0 & s \\end{bmatrix}-\\begin{bmatrix} -1 &2 \\\\ 0 & 2 \\end{bmatrix}$$\n\n$$=\\begin{bmatrix} s+1 &-2 \\\\ 0 & s-2 \\end{bmatrix} [sI-A]^{-1}$$\n\n$$=\\frac{\\begin{bmatrix} s-1 &2 \\\\ 0 & s+1 \\end{bmatrix}}{(s+1)(s+2)}\\;\\;...(i)$$\n\nTransfer function $= C[sI-A]^{-1}B$\n\nSo, denominator of equation (i) gives pole of the system.\n\n$(s+1)(s-2)=0$\n\n$s=-1 \\; and \\; 2$\n\nOne pole lies in RHS of s-plane. Hence, system is unstable.\n\nFor controllability, $Q_c$ is defined as\n\n$$Q_c=\\begin{bmatrix} B\\; : & AB \\end{bmatrix}$$\n\n$$AB=\\begin{bmatrix} -1 &2 \\\\ 0 & 2 \\end{bmatrix}\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}=\\begin{bmatrix} 2\\\\ 2 \\end{bmatrix}$$\n\n$$Q_C=\\begin{bmatrix} 0 &2 \\\\ 1 & 2 \\end{bmatrix}$$\n\n$|Q_c|\\neq 0$\n\nHence the system is controllable.",
+        "images": []
       }
     },
     "pp:ee:2010:q38": {
       "question_uid": "pp:ee:2010:q38",
-      "exam_uid": "ee:2010:set1:q38",
+      "exam_uid": "ee:2010:set1:main:q38",
       "title": "GATE EE 2010 | Set 1 | Question: 38",
+      "section": "main",
+      "question_number": 38,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1554,13 +1735,19 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Root Locus Techniques",
-        "markdown": "Characteristic equation,\n\n$s(s+1)(s+3)+k(s+2)=0$\n\n$1+\\frac{k(s+2)}{s(s+1)(s+3)}=0$\n\nComparing with $1+G(s)H(s)=0$\n\n$G(s)H(s)=$ open-loop transfer function (OLTF) $=\\frac{k(s+2)}{s(s+1)(s+2)}$\n\nNumber of zeros=Z=1 zero at -2\n\nNumber of poles = P= 3 poles at 0, -1 and -3\n\nNumber of branches terminating at infinity\n\n$= P-Z = 3-1 =2$\n\nAngle of asymptotes\n\n$=\\frac{(2k+1)\\times 180^{\\circ}}{P-Z}$\n\n$=\\frac{(2k+1)\\times 180^{\\circ}}{2}$\n\n$=(2k+1) \\times 90^{\\circ}$\n\n$=90^{\\circ} \\; and \\; 270^{\\circ}$\n\n$Centroid=\\frac{\\Sigma poles -\\Sigma zeros}{P-Z}$\n\n$=\\frac{0-1-3-(-2)}{2}=1$\n\n<img src=\"/question-images/ee/2010/ee-2010-e2e333f3f4.webp\" />\n\nBreakaway point lies in the range $-1 \\lt Re[s] \\lt 0$ and two branches terminates at infinityalong the asymptotes $Re(s)=-1$.\n\nTherefore, the correct answer is **C**."
+        "markdown": "Characteristic equation,\n\n$s(s+1)(s+3)+k(s+2)=0$\n\n$1+\\frac{k(s+2)}{s(s+1)(s+3)}=0$\n\nComparing with $1+G(s)H(s)=0$\n\n$G(s)H(s)=$ open-loop transfer function (OLTF) $=\\frac{k(s+2)}{s(s+1)(s+2)}$\n\nNumber of zeros=Z=1 zero at -2\n\nNumber of poles = P= 3 poles at 0, -1 and -3\n\nNumber of branches terminating at infinity\n\n$= P-Z = 3-1 =2$\n\nAngle of asymptotes\n\n$=\\frac{(2k+1)\\times 180^{\\circ}}{P-Z}$\n\n$=\\frac{(2k+1)\\times 180^{\\circ}}{2}$\n\n$=(2k+1) \\times 90^{\\circ}$\n\n$=90^{\\circ} \\; and \\; 270^{\\circ}$\n\n$Centroid=\\frac{\\Sigma poles -\\Sigma zeros}{P-Z}$\n\n$=\\frac{0-1-3-(-2)}{2}=1$\n\n<img src=\"/question-images/ee/2010/ee-2010-e2e333f3f4.webp\" />\n\nBreakaway point lies in the range $-1 \\lt Re[s] \\lt 0$ and two branches terminates at infinityalong the asymptotes $Re(s)=-1$.",
+        "images": [
+          "/question-images/ee/2010/ee-2010-e2e333f3f4.webp"
+        ]
       }
     },
     "pp:ee:2010:q39": {
       "question_uid": "pp:ee:2010:q39",
-      "exam_uid": "ee:2010:set1:q39",
+      "exam_uid": "ee:2010:set1:main:q39",
       "title": "GATE EE 2010 | Set 1 | Question: 39",
+      "section": "main",
+      "question_number": 39,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1595,13 +1782,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
-        "markdown": "As field voltage is held constant, so field current does not change.\n\nWhen the generator is connected with open-circuit transmission line, line draws charging current.\n\n<img src=\"/question-images/ee/2010/ee-2010-45d198dfe8.webp\" />\n\nTherefore, $V_t$ is higher than $E_g$  i.e. $V_t \\gt E_g$\n\nBut when the generator is disconnected from the line, no charging current is delivered by the generator i.e. $I_C=0$. In this $V_t=E_g$\n\nSo, terminal voltage decreases.\n\nTherefore, the correct answer is **A**."
+        "markdown": "As field voltage is held constant, so field current does not change.\n\nWhen the generator is connected with open-circuit transmission line, line draws charging current.\n\n<img src=\"/question-images/ee/2010/ee-2010-45d198dfe8.webp\" />\n\nTherefore, $V_t$ is higher than $E_g$  i.e. $V_t \\gt E_g$\n\nBut when the generator is disconnected from the line, no charging current is delivered by the generator i.e. $I_C=0$. In this $V_t=E_g$\n\nSo, terminal voltage decreases.",
+        "images": [
+          "/question-images/ee/2010/ee-2010-45d198dfe8.webp"
+        ]
       }
     },
     "pp:ee:2010:q40": {
       "question_uid": "pp:ee:2010:q40",
-      "exam_uid": "ee:2010:set1:q40",
+      "exam_uid": "ee:2010:set1:main:q40",
       "title": "GATE EE 2010 | Set 1 | Question: 40",
+      "section": "main",
+      "question_number": 40,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1636,13 +1829,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
-        "markdown": "As both the machines are coupled, rotor of both the machines rotate at same speed.\n\nRotor speed of DC machine = 1600 rpm\n\nRotor spedd of induction machine =\n\n$N_r$ rotor speed of DC machine\n\n$N_r$=1600 rpm\n\nSpeed of stator field in induction machine $=N_s$\n\n$$\\begin{aligned} N_s &= \\frac{120f}{P}\\\\ &= \\frac{120 \\times 50}{4}=1500 \\; \\text{rpm} \\end{aligned}$$\n\nSlip of rotor wrt stator field in induction machine\n\n$s=\\frac{N_s-N_r}{N_s}=\\frac{1500-1600}{1500}=-0.067$\n\nAs slip is negative, induction machine acts as a generator and the dc machine acts as a motor.\n\nTherefore, the correct answer is **C**."
+        "markdown": "As both the machines are coupled, rotor of both the machines rotate at same speed.\n\nRotor speed of DC machine = 1600 rpm\n\nRotor spedd of induction machine =\n\n$N_r$ rotor speed of DC machine\n\n$N_r$=1600 rpm\n\nSpeed of stator field in induction machine $=N_s$\n\n$$\\begin{aligned} N_s &= \\frac{120f}{P}\\\\ &= \\frac{120 \\times 50}{4}=1500 \\; \\text{rpm} \\end{aligned}$$\n\nSlip of rotor wrt stator field in induction machine\n\n$s=\\frac{N_s-N_r}{N_s}=\\frac{1500-1600}{1500}=-0.067$\n\nAs slip is negative, induction machine acts as a generator and the dc machine acts as a motor.",
+        "images": []
       }
     },
     "pp:ee:2010:q41": {
       "question_uid": "pp:ee:2010:q41",
-      "exam_uid": "ee:2010:set1:q41",
+      "exam_uid": "ee:2010:set1:main:q41",
       "title": "GATE EE 2010 | Set 1 | Question: 41",
+      "section": "main",
+      "question_number": 41,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1677,13 +1874,19 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-6be1c492f5.webp\" />\n\nLet VA rating of the transformer S.\n\nRated voltage (line to line) on secondary side = 200V\n\nRated current $=\\frac{S}{\\sqrt{3}\\;200}$\n\nBase impedance $=\\frac{\\text{rated phase to neutral voltage}}{\\text{rated current}}$\n\n$Z_B=\\frac{200\\sqrt{3}}{S/200\\sqrt{3}}=\\frac{(200)^2}{S}$\n\npu impedance on secondary side $=\\frac{4}{Z_B}=\\frac{4}{(200)^2 S}=\\frac{4S}{(200)^2}$\n\npu impedance in primary side and secondary side are equal.\n\nTherefore pu impedance on primary side $Z_{1\\; pu}=\\frac{4S}{(200)^2}$\n\nRated phase to neutral voltage on primary side $V_{p1}=\\frac{100}{\\sqrt{3}}$\n\nRated primary current (phase) $=\\frac{S}{\\sqrt{3}V_{l-l}}=\\frac{S}{\\sqrt{3}100}$\n\nBase impedance $=\\frac{\\text{rated phase to neutral voltage}}{\\text{rated current}} =\\frac{100\\sqrt{3}}{S/100\\sqrt{3}}=\\frac{(100)^2}{S}$\n\nLoad impedance reffered to primary side $Z_1=$ base impedance (primary side) $\\times$ pu impedance\n\n$=\\frac{(100)^2}{S} \\times \\frac{4S}{(200)^2}=(1+j0)\\Omega$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-6be1c492f5.webp\" />\n\nLet VA rating of the transformer S.\n\nRated voltage (line to line) on secondary side = 200V\n\nRated current $=\\frac{S}{\\sqrt{3}\\;200}$\n\nBase impedance $=\\frac{\\text{rated phase to neutral voltage}}{\\text{rated current}}$\n\n$Z_B=\\frac{200\\sqrt{3}}{S/200\\sqrt{3}}=\\frac{(200)^2}{S}$\n\npu impedance on secondary side $=\\frac{4}{Z_B}=\\frac{4}{(200)^2 S}=\\frac{4S}{(200)^2}$\n\npu impedance in primary side and secondary side are equal.\n\nTherefore pu impedance on primary side $Z_{1\\; pu}=\\frac{4S}{(200)^2}$\n\nRated phase to neutral voltage on primary side $V_{p1}=\\frac{100}{\\sqrt{3}}$\n\nRated primary current (phase) $=\\frac{S}{\\sqrt{3}V_{l-l}}=\\frac{S}{\\sqrt{3}100}$\n\nBase impedance $=\\frac{\\text{rated phase to neutral voltage}}{\\text{rated current}} =\\frac{100\\sqrt{3}}{S/100\\sqrt{3}}=\\frac{(100)^2}{S}$\n\nLoad impedance reffered to primary side $Z_1=$ base impedance (primary side) $\\times$ pu impedance\n\n$=\\frac{(100)^2}{S} \\times \\frac{4S}{(200)^2}=(1+j0)\\Omega$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-6be1c492f5.webp"
+        ]
       }
     },
     "pp:ee:2010:q42": {
       "question_uid": "pp:ee:2010:q42",
-      "exam_uid": "ee:2010:set1:q42",
+      "exam_uid": "ee:2010:set1:main:q42",
       "title": "GATE EE 2010 | Set 1 | Question: 42",
+      "section": "main",
+      "question_number": 42,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1718,13 +1921,19 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Distribution Systems, Cables and Insulators",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-20371d719e.webp\" />\n\nLine to line voltage $=V_{l-l}=11kV$\n\n$$\\begin{aligned} V_P&=\\text{Phase to ground voltage} \\\\ V_P&=\\frac{V_{l-l}}{\\sqrt{3}}=\\frac{11}{\\sqrt{3}}kV \\\\ e_1+e_2&= \\frac{11}{\\sqrt{3}}kV=6.35kV \\;\\;...(i)\\\\ I&=I_1+I_2 \\\\ (j\\omega 5C) \\times e_1 &= (j\\omega C) \\times e_2 +(j\\omega 5C) \\times C_2 \\;\\;..(ii)\\\\ 5e_1&=6e_2\\\\ \\text{Solving } & \\text{equation (i) and (ii), we get,} \\\\ e_1&=3.46kV\\\\ e_2&=2.89kV \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-20371d719e.webp\" />\n\nLine to line voltage $=V_{l-l}=11kV$\n\n$$\\begin{aligned} V_P&=\\text{Phase to ground voltage} \\\\ V_P&=\\frac{V_{l-l}}{\\sqrt{3}}=\\frac{11}{\\sqrt{3}}kV \\\\ e_1+e_2&= \\frac{11}{\\sqrt{3}}kV=6.35kV \\;\\;...(i)\\\\ I&=I_1+I_2 \\\\ (j\\omega 5C) \\times e_1 &= (j\\omega C) \\times e_2 +(j\\omega 5C) \\times C_2 \\;\\;..(ii)\\\\ 5e_1&=6e_2\\\\ \\text{Solving } & \\text{equation (i) and (ii), we get,} \\\\ e_1&=3.46kV\\\\ e_2&=2.89kV \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-20371d719e.webp"
+        ]
       }
     },
     "pp:ee:2010:q43": {
       "question_uid": "pp:ee:2010:q43",
-      "exam_uid": "ee:2010:set1:q43",
+      "exam_uid": "ee:2010:set1:main:q43",
       "title": "GATE EE 2010 | Set 1 | Question: 43",
+      "section": "main",
+      "question_number": 43,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1759,13 +1968,20 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Distribution Systems, Cables and Insulators",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-67119a0866.webp\" />\n\n$$\\begin{aligned} Z'&=Z/3\\\\ \\frac{1}{\\omega C'}&=\\frac{1}{3\\omega C}\\\\ C'&=3C \\end{aligned}$$\n\n<img src=\"/question-images/ee/2010/ee-2010-e77db0b1fb.webp\" />\n\nEquivalent capacitance ($C_{eq}$) between a phase and ground\n\n$$\\begin{aligned} C_{eq} &=C'+C_2=3C_1+C_2\\\\ C_{eq} &= 3 \\times 0.2+0.4=1\\mu F\\\\ &\\text{Per phase voltage,}\\\\ V_P&=\\frac{11}{\\sqrt{3}}kV\\\\ &\\text{Per phase charging current}\\\\ I&=j\\omega C_{eq}V_P\\\\ |I_C|&=\\omega C_{eq}V_P\\\\ &=2 \\pi \\times 50 \\times 1 \\times 1 \\times 10^{-6}\\\\ & \\times \\frac{11}{\\sqrt{3}} \\times 10^3\\\\ &\\approx 2A \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-67119a0866.webp\" />\n\n$$\\begin{aligned} Z'&=Z/3\\\\ \\frac{1}{\\omega C'}&=\\frac{1}{3\\omega C}\\\\ C'&=3C \\end{aligned}$$\n\n<img src=\"/question-images/ee/2010/ee-2010-e77db0b1fb.webp\" />\n\nEquivalent capacitance ($C_{eq}$) between a phase and ground\n\n$$\\begin{aligned} C_{eq} &=C'+C_2=3C_1+C_2\\\\ C_{eq} &= 3 \\times 0.2+0.4=1\\mu F\\\\ &\\text{Per phase voltage,}\\\\ V_P&=\\frac{11}{\\sqrt{3}}kV\\\\ &\\text{Per phase charging current}\\\\ I&=j\\omega C_{eq}V_P\\\\ |I_C|&=\\omega C_{eq}V_P\\\\ &=2 \\pi \\times 50 \\times 1 \\times 1 \\times 10^{-6}\\\\ & \\times \\frac{11}{\\sqrt{3}} \\times 10^3\\\\ &\\approx 2A \\end{aligned}$$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-67119a0866.webp",
+          "/question-images/ee/2010/ee-2010-e77db0b1fb.webp"
+        ]
       }
     },
     "pp:ee:2010:q44": {
       "question_uid": "pp:ee:2010:q44",
-      "exam_uid": "ee:2010:set1:q44",
+      "exam_uid": "ee:2010:set1:main:q44",
       "title": "GATE EE 2010 | Set 1 | Question: 44",
+      "section": "main",
+      "question_number": 44,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1800,13 +2016,17 @@
       },
       "detailed_solution": {
         "concept": "Power Systems - Per Unit System",
-        "markdown": "$$\\begin{aligned} Z_{pu(new)}=Z_{pu(old)} \\times &\\frac{(MVA_B)_{new}}{(MVA)_{old}} \\times \\frac{(kV_B)_{old}^2}{(kV_B)_{new}^2}\\\\ (MVA_B)_{new}&=200 MVA\\\\ (kV_B)_{new}&=25 kV\\\\ \\text{Base impedance,}\\\\ Z_B&=\\frac{(kV_B)^2}{(MVA_B)}\\\\ (kV_B) \\text{ in line}&=220 kV\\\\ Z_B&=\\frac{220^2}{200}=242\\Omega \\\\ X_{l-pu}&=\\frac{X_{l}}{Z_B}=\\frac{150}{242}=0.62\\;p.u.\\\\ G_1:25kV,& 100MVA,\\\\ X_{G1}&=0.09pu\\\\ X_{G1} &\\text{ (0n base 200 MVA )}\\\\ &=0.09 \\times \\frac{200}{100}=0.18\\;p.u.\\\\ \\{ (kV_B)_{old}&=(kV_B)_{new}\\}\\\\ G_2:2kV,& 100MVA,\\\\ X_{G2}&=0.09pu\\\\ X_{G2} &\\text{ (0n base 200 MVA )}\\\\ &=0.09 \\times \\frac{200}{100}=0.18\\;p.u.\\\\ T_1: 25 kV/220 \\;kV, & 90 \\;MVA\\\\ X_{T1}&=0.12\\;p.u.\\\\ X_{T1} &\\text{ (0n base 200 MVA )}\\\\ &=0.12 \\times \\frac{200}{90}=0.27\\;p.u.\\\\ T_2: 220 kV/25 \\;kV, & 90 \\;MVA\\\\ X_{T2}&=0.12\\;p.u.\\\\ X_{T2} &\\text{ (0n base 200 MVA )}\\\\ &=0.12 \\times \\frac{200}{90}=0.27\\;p.u.\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "$$\\begin{aligned} Z_{pu(new)}=Z_{pu(old)} \\times &\\frac{(MVA_B)_{new}}{(MVA)_{old}} \\times \\frac{(kV_B)_{old}^2}{(kV_B)_{new}^2}\\\\ (MVA_B)_{new}&=200 MVA\\\\ (kV_B)_{new}&=25 kV\\\\ \\text{Base impedance,}\\\\ Z_B&=\\frac{(kV_B)^2}{(MVA_B)}\\\\ (kV_B) \\text{ in line}&=220 kV\\\\ Z_B&=\\frac{220^2}{200}=242\\Omega \\\\ X_{l-pu}&=\\frac{X_{l}}{Z_B}=\\frac{150}{242}=0.62\\;p.u.\\\\ G_1:25kV,& 100MVA,\\\\ X_{G1}&=0.09pu\\\\ X_{G1} &\\text{ (0n base 200 MVA )}\\\\ &=0.09 \\times \\frac{200}{100}=0.18\\;p.u.\\\\ \\{ (kV_B)_{old}&=(kV_B)_{new}\\}\\\\ G_2:2kV,& 100MVA,\\\\ X_{G2}&=0.09pu\\\\ X_{G2} &\\text{ (0n base 200 MVA )}\\\\ &=0.09 \\times \\frac{200}{100}=0.18\\;p.u.\\\\ T_1: 25 kV/220 \\;kV, & 90 \\;MVA\\\\ X_{T1}&=0.12\\;p.u.\\\\ X_{T1} &\\text{ (0n base 200 MVA )}\\\\ &=0.12 \\times \\frac{200}{90}=0.27\\;p.u.\\\\ T_2: 220 kV/25 \\;kV, & 90 \\;MVA\\\\ X_{T2}&=0.12\\;p.u.\\\\ X_{T2} &\\text{ (0n base 200 MVA )}\\\\ &=0.12 \\times \\frac{200}{90}=0.27\\;p.u.\\\\ \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q45": {
       "question_uid": "pp:ee:2010:q45",
-      "exam_uid": "ee:2010:set1:q45",
+      "exam_uid": "ee:2010:set1:main:q45",
       "title": "GATE EE 2010 | Set 1 | Question: 45",
+      "section": "main",
+      "question_number": 45,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1841,13 +2061,17 @@
       },
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
-        "markdown": "$KVL\\Rightarrow$\n\n$\\; \\; \\; 10=10kI_b+0.7+(100)(I_b)100$\n\n$\\; \\; \\; I_b=\\frac{9.3}{20k}=0.465 mA$\n\n$\\; \\; \\; V_o=100\\times 0.465\\times 100=4.65 V$\n\nTherefore, the correct answer is **A**."
+        "markdown": "$KVL\\Rightarrow$\n\n$\\; \\; \\; 10=10kI_b+0.7+(100)(I_b)100$\n\n$\\; \\; \\; I_b=\\frac{9.3}{20k}=0.465 mA$\n\n$\\; \\; \\; V_o=100\\times 0.465\\times 100=4.65 V$",
+        "images": []
       }
     },
     "pp:ee:2010:q46": {
       "question_uid": "pp:ee:2010:q46",
-      "exam_uid": "ee:2010:set1:q46",
+      "exam_uid": "ee:2010:set1:main:q46",
       "title": "GATE EE 2010 | Set 1 | Question: 46",
+      "section": "main",
+      "question_number": 46,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1882,13 +2106,19 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Logic Families and Miscellaneous",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-5078c2c0ec.webp\" />\n\nTherefore, the correct answer is **A**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-5078c2c0ec.webp\" />",
+        "images": [
+          "/question-images/ee/2010/ee-2010-5078c2c0ec.webp"
+        ]
       }
     },
     "pp:ee:2010:q47": {
       "question_uid": "pp:ee:2010:q47",
-      "exam_uid": "ee:2010:set1:q47",
+      "exam_uid": "ee:2010:set1:main:q47",
       "title": "GATE EE 2010 | Set 1 | Question: 47",
+      "section": "main",
+      "question_number": 47,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1923,13 +2153,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Microprocessors",
-        "markdown": "First of all content of PC is loaded into stack i.e. address of next instruction to be executed is loaded onto stack. i.e.  SP is decremented then PC is loaded by address given in call instruction.\n\nTherefore, the correct answer is **D**."
+        "markdown": "First of all content of PC is loaded into stack i.e. address of next instruction to be executed is loaded onto stack. i.e.  SP is decremented then PC is loaded by address given in call instruction.",
+        "images": []
       }
     },
     "pp:ee:2010:q48": {
       "question_uid": "pp:ee:2010:q48",
-      "exam_uid": "ee:2010:set1:q48",
+      "exam_uid": "ee:2010:set1:main:q48",
       "title": "GATE EE 2010 | Set 1 | Question: 48",
+      "section": "main",
+      "question_number": 48,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -1964,13 +2198,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "At no load $I_0=0, \\; N_0=1500\\text{rpm}$\n\n$\\;\\;\\;\\; E_a=V=200V$\n\nAssuming $N\\propto E_a,$\n\n$$\\begin{aligned} \\text {at}\\;\\; N &= 1400 \\;\\text{rpm}\\\\ \\Rightarrow \\;E_a &=200 \\times \\frac{1400}{1500} \\\\ E_a&= 186.67V\\\\ I_a&=\\frac{T\\omega }{E_a} \\\\ &= \\frac{5 \\times 1400 \\times \\frac{2 \\pi}{60}}{186.67}\\\\ &= 3.925A\\\\ I_aR_a&=V-E \\\\ &=200-186.67=13.33V\\\\ R_a&=\\frac{13.33}{3.925}=3.39\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "At no load $I_0=0, \\; N_0=1500\\text{rpm}$\n\n$\\;\\;\\;\\; E_a=V=200V$\n\nAssuming $N\\propto E_a,$\n\n$$\\begin{aligned} \\text {at}\\;\\; N &= 1400 \\;\\text{rpm}\\\\ \\Rightarrow \\;E_a &=200 \\times \\frac{1400}{1500} \\\\ E_a&= 186.67V\\\\ I_a&=\\frac{T\\omega }{E_a} \\\\ &= \\frac{5 \\times 1400 \\times \\frac{2 \\pi}{60}}{186.67}\\\\ &= 3.925A\\\\ I_aR_a&=V-E \\\\ &=200-186.67=13.33V\\\\ R_a&=\\frac{13.33}{3.925}=3.39\\Omega \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q49": {
       "question_uid": "pp:ee:2010:q49",
-      "exam_uid": "ee:2010:set1:q49",
+      "exam_uid": "ee:2010:set1:main:q49",
       "title": "GATE EE 2010 | Set 1 | Question: 49",
+      "section": "main",
+      "question_number": 49,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2005,13 +2243,17 @@
       },
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
-        "markdown": "For, $N=1400\\; \\text{rpm}, \\; E_a=186.67V$\n\nRequired $V=E_a+I_aR_a$\n\n$\\;\\;\\;=186.67+I_a(3.39)$\n\nwhere $I_a$ is function of torque, [/latex]\n\nTo develope 5 N-m it requires 3.925A\n\n$$\\begin{aligned} I_a &=3.9925\\left ( \\frac{2.5}{5} \\right ) \\\\ I_a &=\\frac{3.925}{2}=1.9625A \\\\ V_{applied}&=186.67+(1.9625)(3.39 )\\\\ &=193.3V \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "For, $N=1400\\; \\text{rpm}, \\; E_a=186.67V$\n\nRequired $V=E_a+I_aR_a$\n\n$\\;\\;\\;=186.67+I_a(3.39)$\n\nwhere $I_a$ is function of torque, [/latex]\n\nTo develope 5 N-m it requires 3.925A\n\n$$\\begin{aligned} I_a &=3.9925\\left ( \\frac{2.5}{5} \\right ) \\\\ I_a &=\\frac{3.925}{2}=1.9625A \\\\ V_{applied}&=186.67+(1.9625)(3.39 )\\\\ &=193.3V \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q50": {
       "question_uid": "pp:ee:2010:q50",
-      "exam_uid": "ee:2010:set1:q50",
+      "exam_uid": "ee:2010:set1:main:q50",
       "title": "GATE EE 2010 | Set 1 | Question: 50",
+      "section": "main",
+      "question_number": 50,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2046,13 +2288,19 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-98b03e69ce.webp\" />\n\nSince, g(t) has width of 2-unit and f(t) has 1 unit, therefore we have to first expand f(t) by 2 unit and for this we have to scale f(t) by 1/2.\n\ni.e.    $f_1(t)=f\\left ( \\frac{1}{2}t \\right )$\n\nNow shift it by three unit to get g(t)\n\n$g(t)=f_1(t-3)=f\\left ( \\frac{t-3}{2} \\right )=f\\left ( \\frac{t}{2}-\\frac{3}{2} \\right )$\n\nTherefore, the correct answer is **D**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-98b03e69ce.webp\" />\n\nSince, g(t) has width of 2-unit and f(t) has 1 unit, therefore we have to first expand f(t) by 2 unit and for this we have to scale f(t) by 1/2.\n\ni.e.    $f_1(t)=f\\left ( \\frac{1}{2}t \\right )$\n\nNow shift it by three unit to get g(t)\n\n$g(t)=f_1(t-3)=f\\left ( \\frac{t-3}{2} \\right )=f\\left ( \\frac{t}{2}-\\frac{3}{2} \\right )$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-98b03e69ce.webp"
+        ]
       }
     },
     "pp:ee:2010:q51": {
       "question_uid": "pp:ee:2010:q51",
-      "exam_uid": "ee:2010:set1:q51",
+      "exam_uid": "ee:2010:set1:main:q51",
       "title": "GATE EE 2010 | Set 1 | Question: 51",
+      "section": "main",
+      "question_number": 51,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2087,13 +2335,17 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
-        "markdown": "$$\\begin{aligned} g(t) &=\\left\\{\\begin{matrix} 1 &3 \\lt t \\lt 5 \\\\ 0& t \\lt 3, t \\gt 5 \\end{matrix}\\right. \\\\ \\Rightarrow \\; g(t) &=u(t-3)-u(t-5) \\\\ L(g(t))&=L(u(t-3))-L(u(t-5)) \\\\ &= \\frac{1}{s}e^{-3s}-\\frac{1}{s}e^{-5s}\\\\ &= \\frac{1}{s}(e^{-3s}-e^{-5s})\\\\ &= \\frac{e^{-3s}}{s}(1-e^{-2s}) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+        "markdown": "$$\\begin{aligned} g(t) &=\\left\\{\\begin{matrix} 1 &3 \\lt t \\lt 5 \\\\ 0& t \\lt 3, t \\gt 5 \\end{matrix}\\right. \\\\ \\Rightarrow \\; g(t) &=u(t-3)-u(t-5) \\\\ L(g(t))&=L(u(t-3))-L(u(t-5)) \\\\ &= \\frac{1}{s}e^{-3s}-\\frac{1}{s}e^{-5s}\\\\ &= \\frac{1}{s}(e^{-3s}-e^{-5s})\\\\ &= \\frac{e^{-3s}}{s}(1-e^{-2s}) \\end{aligned}$$",
+        "images": []
       }
     },
     "pp:ee:2010:q52": {
       "question_uid": "pp:ee:2010:q52",
-      "exam_uid": "ee:2010:set1:q52",
+      "exam_uid": "ee:2010:set1:main:q52",
       "title": "GATE EE 2010 | Set 1 | Question: 52",
+      "section": "main",
+      "question_number": 52,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2128,13 +2380,19 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-39576f7045.webp\" />\n\n$F=\\bar{X}\\bar{Y}+YZ$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ee/2010/ee-2010-39576f7045.webp\" />\n\n$F=\\bar{X}\\bar{Y}+YZ$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-39576f7045.webp"
+        ]
       }
     },
     "pp:ee:2010:q53": {
       "question_uid": "pp:ee:2010:q53",
-      "exam_uid": "ee:2010:set1:q53",
+      "exam_uid": "ee:2010:set1:main:q53",
       "title": "GATE EE 2010 | Set 1 | Question: 53",
+      "section": "main",
+      "question_number": 53,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2169,13 +2427,17 @@
       },
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
-        "markdown": "From the figure, it is clear that, two NAND gates generate the $\\bar{X}$ and $\\bar{Y}$ and now two AND gates with i/p $\\bar{X}$ and $\\bar{Y}$ and inputs Y and Z is used to generate two terms of SOP form and OR gate is used to sum them and generate th F.\n\nTherefore, the correct answer is **D**."
+        "markdown": "From the figure, it is clear that, two NAND gates generate the $\\bar{X}$ and $\\bar{Y}$ and now two AND gates with i/p $\\bar{X}$ and $\\bar{Y}$ and inputs Y and Z is used to generate two terms of SOP form and OR gate is used to sum them and generate th F.",
+        "images": []
       }
     },
     "pp:ee:2010:q54": {
       "question_uid": "pp:ee:2010:q54",
-      "exam_uid": "ee:2010:set1:q54",
+      "exam_uid": "ee:2010:set1:main:q54",
       "title": "GATE EE 2010 | Set 1 | Question: 54",
+      "section": "main",
+      "question_number": 54,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2210,13 +2472,19 @@
       },
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
-        "markdown": "Initial current through the inductor is zeroand capacitor voltage is charged upto voltage $V_c(0^-)=100V$\n\nAs current through inductor and voltage across capacitor can not change abruptly\n\nSo, after closing the switch,\n\n$i_L(0^+)=i_L(0^-)=0$\n\nand $V_c(0^+)=V_c(0^-)=100V$\n\nThe circuit id s-domain\n\n<img src=\"/question-images/ee/2010/ee-2010-2b364a9d98.webp\" />\n\n$I(s)=\\frac{100/s}{\\left ( sL+\\frac{1}{sC} \\right )}$\n\n$\\;\\;=\\frac{100}{L}\\left ( \\frac{1}{s^2+\\frac{1}{LC}} \\right )$\n\n$\\;\\;=100\\sqrt{\\frac{C}{L}}\\left ( \\frac{1/\\sqrt{LC}}{s^2+(1/\\sqrt{LC})^2} \\right )$\n\ntaking inverse laplace transform\n\n$i(t)=L^{-1}[I(s)]$\n\n$\\;\\;=100\\sqrt{\\frac{C}{L}} \\sin \\frac{1}{\\sqrt{LC}}t$\n\n$\\;\\;=100 \\times \\sqrt{\\frac{10 \\times 10^3}{1 \\times 10^{-3}}}\\times$  $\\sin\\left ( \\frac{1}{\\sqrt{1 \\times 10^{-3} \\times 10 \\times 10^{-6}}} \\right )$\n\n$i(t)=10\\sin (10^4 t)A$\n\nTherefore, the correct answer is **D**."
+        "markdown": "Initial current through the inductor is zeroand capacitor voltage is charged upto voltage $V_c(0^-)=100V$\n\nAs current through inductor and voltage across capacitor can not change abruptly\n\nSo, after closing the switch,\n\n$i_L(0^+)=i_L(0^-)=0$\n\nand $V_c(0^+)=V_c(0^-)=100V$\n\nThe circuit id s-domain\n\n<img src=\"/question-images/ee/2010/ee-2010-2b364a9d98.webp\" />\n\n$I(s)=\\frac{100/s}{\\left ( sL+\\frac{1}{sC} \\right )}$\n\n$\\;\\;=\\frac{100}{L}\\left ( \\frac{1}{s^2+\\frac{1}{LC}} \\right )$\n\n$\\;\\;=100\\sqrt{\\frac{C}{L}}\\left ( \\frac{1/\\sqrt{LC}}{s^2+(1/\\sqrt{LC})^2} \\right )$\n\ntaking inverse laplace transform\n\n$i(t)=L^{-1}[I(s)]$\n\n$\\;\\;=100\\sqrt{\\frac{C}{L}} \\sin \\frac{1}{\\sqrt{LC}}t$\n\n$\\;\\;=100 \\times \\sqrt{\\frac{10 \\times 10^3}{1 \\times 10^{-3}}}\\times$  $\\sin\\left ( \\frac{1}{\\sqrt{1 \\times 10^{-3} \\times 10 \\times 10^{-6}}} \\right )$\n\n$i(t)=10\\sin (10^4 t)A$",
+        "images": [
+          "/question-images/ee/2010/ee-2010-2b364a9d98.webp"
+        ]
       }
     },
     "pp:ee:2010:q55": {
       "question_uid": "pp:ee:2010:q55",
-      "exam_uid": "ee:2010:set1:q55",
+      "exam_uid": "ee:2010:set1:main:q55",
       "title": "GATE EE 2010 | Set 1 | Question: 55",
+      "section": "main",
+      "question_number": 55,
+      "solution_link": null,
       "year": "gateee-2010-set1",
       "type": "MCQ",
       "marks": 1,
@@ -2250,8 +2518,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
-        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Power Electronics** (specifically *Power Semiconductor Devices and Commutation Techniques*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Power Semiconductor Devices and Commutation Techniques**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *52$\\mu s$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (52$\\mu s$)."
+        "concept": "EE Core Engineering",
+        "markdown": null
       }
     }
   }

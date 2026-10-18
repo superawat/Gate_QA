@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T11:12:51.271Z",
+  "generatedAt": "2026-10-17T21:39:52.230Z",
   "shardKey": "2012-s0",
   "yearSetKey": "2012-s0",
   "yearSetIdentity": "cse:2012:set-0",
@@ -47,6 +47,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Logical Reasoning",
+        "markdown": "Let R = it rains, M = match is played. Rule: $R\\rightarrow\\neg M$.\n\n- I1: M is true, so $\\neg M$ is false $\\rightarrow$ R must be false (modus tollens) $\\rightarrow$ valid.\n\n- I2: $\\neg R$ does not tell us anything about M (denying the antecedent) $\\rightarrow$ invalid.",
+        "images": []
       }
     },
     "go:34": {
@@ -87,6 +92,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "BCNF is stricter than 3NF: every BCNF relation is in 3NF, but not the other way round.\n\nOption 2 describes 2NF (no partial dependency), not 3NF.",
+        "images": []
       }
     },
     "go:35": {
@@ -127,6 +137,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "There is no break, so control falls through from case 'A' to all following cases:\n\nprints \"Choice A\" (newline), then \"Choice B\", then \" No Choice\".",
+        "images": []
       }
     },
     "go:36": {
@@ -164,6 +179,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation",
+        "markdown": "If any NP-complete problem were in P, every NP problem would be in P, i.e. P = NP. So with P $\\ne$ NP, no NP-complete problem is in P.",
+        "images": []
       }
     },
     "go:37": {
@@ -204,6 +224,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Search in a balanced BST takes $\\Theta(\\log N)$ with $N=n2^n$:\n\n$\\log(n2^n)=n+\\log n=\\Theta(n)$",
+        "images": []
       }
     },
     "go:38": {
@@ -244,6 +269,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Boolean Algebra",
+        "markdown": "f is 1 exactly in the rows where X = 1, whatever Y is. So f = X.",
+        "images": []
       }
     },
     "go:39": {
@@ -285,6 +315,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "$0.5=1.0\\times2^{-1}$. The hidden 1 is not stored, so the fraction bits are all 0, and the actual exponent is $-$1 (stored as 126).",
+        "images": []
       }
     },
     "go:40": {
@@ -325,6 +360,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Fork System Call",
+        "markdown": "Each fork doubles the processes: $2^3=8$ in total, including the original.\n\nChild processes = 8 $-$ 1 = 7",
+        "images": []
       }
     },
     "go:41": {
@@ -365,6 +405,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Checking each statement:\n\n- Inside the interval, sin x has a minimum at $3\\pi/2$ (value $-$1).\n\n- At the left end $\\pi/4$, sin x is increasing, so nearby points are larger: it is a local minimum.\n\n- At $7\\pi/4$, sin x is increasing towards it, so it is a local maximum.",
+        "images": []
       }
     },
     "go:42": {
@@ -405,6 +450,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Application Layer Protocols",
+        "markdown": "PDUs by layer: application = message, transport = segment, network = datagram, link = frame.",
+        "images": []
       }
     },
     "go:43": {
@@ -444,6 +494,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$A=\\begin{bmatrix}1&1\\\\1&-1\\end{bmatrix}$$ has $A^2=2I$, so $A^{19}=(A^2)^9A=512A$.\n\nThe eigenvalues of A are $\\pm\\sqrt2$ ($\\lambda^2=2$), so those of $A^{19}$ are $\\pm512\\sqrt2$.",
+        "images": []
       }
     },
     "go:44": {
@@ -484,6 +539,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "The NFA reads one a to reach the final state, and the $\\varepsilon$ arcs let it go back and read more a's. It accepts $a^+$ (a, aa, aaa, ...).\n\nOver {a}, the only string not accepted is $\\varepsilon$. Complement = {$\\varepsilon$}.",
+        "images": []
       }
     },
     "go:45": {
@@ -524,6 +584,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "\"Some real numbers are rational\": there exists an x that is real and rational.\n\n$\\exists x\\,(real(x)\\wedge rational(x))$",
+        "images": []
       }
     },
     "go:46": {
@@ -564,6 +629,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - ER Diagram",
+        "markdown": "In the ER model, attributes may be multi-valued or composite. In a relational table (1NF), each attribute in a row holds a single atomic value or NULL.",
+        "images": []
       }
     },
     "go:47": {
@@ -605,6 +675,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "The official GATE key is Q and R: HAVING used with GROUP BY, and the grouped attributes shown in SELECT.\n\nNote: in standard SQL, HAVING without GROUP BY is allowed (the whole table is one group), and GROUP BY columns need not appear in SELECT. So P and S are also defensible.",
+        "images": []
       }
     },
     "go:48": {
@@ -645,6 +720,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recurrence Relation",
+        "markdown": "Move n $-$ 1 discs to the spare peg, move the largest disc (1 move), then move the n $-$ 1 discs on top.\n\nT(n) = 2T(n $-$ 1) + 1",
+        "images": []
       }
     },
     "go:49": {
@@ -685,6 +765,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Planarity",
+        "markdown": "Euler's formula: f = e $-$ v + 2 = 15 $-$ 10 + 2 = 7 faces, including the one unbounded outer face.\n\nBounded faces = 7 $-$ 1 = 6",
+        "images": []
       }
     },
     "go:50": {
@@ -725,6 +810,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Asymptotic Notations",
+        "markdown": "The average over all inputs can never exceed the worst case, so A(n) $\\le$ W(n), i.e. A(n) = O(W(n)). It may equal W(n) (e.g. merge sort), so o(W(n)) is not always true.",
+        "images": []
       }
     },
     "go:51": {
@@ -765,6 +855,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - ROM",
+        "markdown": "Inputs: two 4-bit numbers = 8 address bits $\\rightarrow$ $2^8=256$ words. Output: product up to 8 bits.\n\nROM size = 256 $\\times$ 8 = 2048 bits = 2 Kbits",
+        "images": []
       }
     },
     "go:52": {
@@ -806,6 +901,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "Register renaming gives fresh physical registers to repeated uses of a register name, removing WAR and WAW (false dependency) hazards.",
+        "images": []
       }
     },
     "go:1577": {
@@ -846,6 +946,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "$F(x)=P(X\\le x)$:\n\n- F($-$1) = P(X = $-$1) = 0.5\n\n- F(1) = 0.5 + 0.5 = 1",
+        "images": []
       }
     },
     "go:1605": {
@@ -886,6 +991,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - TCP",
+        "markdown": "E-mail uses SMTP (an application layer protocol), which runs over TCP. IP is network layer.",
+        "images": []
       }
     },
     "go:1606": {
@@ -926,6 +1036,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - IP Addressing",
+        "markdown": "Class C: first 3 bits are fixed as 110, and the network part is 24 bits. Free network bits = 24 $-$ 3 = 21 $\\rightarrow$ $2^{21}$ networks.",
+        "images": []
       }
     },
     "go:1608": {
@@ -966,6 +1081,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Decidability",
+        "markdown": "Checking each statement:\n\n- 1: whether a program ever produces output is undecidable (like the halting problem).\n\n- 2: whether the complement of a given CFL is CFL is undecidable.\n\n- 3, 4: regular and recursive languages are closed under complement, so the answer is always \"yes\" $\\rightarrow$ decidable.",
+        "images": []
       }
     },
     "go:1609": {
@@ -1006,6 +1126,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Language",
+        "markdown": "Split each string into pieces ab, aa, baa:\n\n- 1) ab | aa | baa | ab | aa $\\rightarrow$ valid\n\n- 2) aa | aa | baa | aa $\\rightarrow$ valid\n\n- 3) baa | aa | ab | aa | aa | b: the last \"b\" cannot be covered $\\rightarrow$ not in L*\n\n- 4) baa | aa | ab | aa $\\rightarrow$ valid",
+        "images": []
       }
     },
     "go:1611": {
@@ -1046,6 +1171,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Isomorphism",
+        "markdown": "The given graph has 8 vertices and 8 edges, exactly one cycle of length 5, and a degree-4 vertex on that cycle carrying a pendant vertex and a path of length 2.\n\n- A has a 3-cycle and D has a 4-cycle $\\rightarrow$ not isomorphic.\n\n- C has a 5-cycle but no vertex of degree 4.\n\n- B matches: 5-cycle (closed by the long arc), with the degree-4 vertex carrying one leaf and a 2-edge path.",
+        "images": []
       }
     },
     "go:1612": {
@@ -1086,6 +1216,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Transaction and Concurrency",
+        "markdown": "In any interleaving that is not serial:\n\n- T1 reads P before T2 writes P $\\rightarrow$ T1 $\\rightarrow$ T2\n\n- T2 reads Q before T1 writes Q $\\rightarrow$ T2 $\\rightarrow$ T1\n\nThe precedence graph has a cycle, so the schedule is not conflict serializable.",
+        "images": []
       }
     },
     "go:1614": {
@@ -1123,6 +1258,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics",
+        "markdown": "f(1) = $-$5 $\\lt$ 0 and f(9) $\\gt$ 0.\n\n- Iteration 1: x = 5, f(5) = 471 $\\gt$ 0 $\\rightarrow$ [1, 5]\n\n- Iteration 2: x = 3, f(3) = 41 $\\gt$ 0 $\\rightarrow$ [1, 3]\n\n- Iteration 3: x = 2, f(2) = 16 $-$ 8 $-$ 4 $-$ 4 = 0 $\\rightarrow$ root found",
+        "images": []
       }
     },
     "go:786": {
@@ -1162,6 +1302,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms",
+        "markdown": "Squaring weights greater than 1 keeps their order, so the same tree stays minimum. But the total weight is $t'=\\sum w_i^2$, not $t^2=(\\sum w_i)^2$.\n\n- $t'=t^2$ is false in general.\n\n- $t'\\lt t^2$ fails when the tree has a single edge ($t'=t^2$).\n\n- With equal weights there can be several MSTs, so T' need not be the same T.\n\nNone of the options is always true.",
+        "images": []
       }
     },
     "go:1615": {
@@ -1202,6 +1347,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - K Map",
+        "markdown": "1s at (ab, cd) = (00, 00), (10, 00), (10, 01), (00, 10). Don't cares at (01, 00), (11, 00), (00, 01), (10, 10).\n\n- $\\bar b\\bar d$: four corners (00/10 columns, 00/10 rows), covering (00,00), (10,00), (00,10)\n\n- $\\bar b\\bar c$: columns 00/10, rows 00/01, covering (10,01)",
+        "images": []
       }
     },
     "go:1749": {
@@ -1242,6 +1392,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "<b>FCFS:</b> P1 0-5, P2 5-12, P3 12-16 $\\rightarrow$ P1, P2, P3\n\n<b>RR2:</b> P1 0-2, P2 2-4, P1 4-6, P3 6-8, P2 8-10, P1 10-11 (done), P3 11-13 (done), P2 13-16 (done) $\\rightarrow$ P1, P3, P2",
+        "images": []
       }
     },
     "go:1750": {
@@ -1282,6 +1437,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Process Synchronization",
+        "markdown": "Suppose P1 holds the lock (L = 1). P2 calls Fetch_And_Add, gets 1 (L becomes 2), and before P2 executes \"L = 1\", P1 releases (L = 0). Then P2 sets L = 1.\n\nNow nobody holds the lock but L = 1, so every process spins forever.",
+        "images": []
       }
     },
     "go:1751": {
@@ -1322,6 +1482,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Checking each statement:\n\n- First roll 4 or 5: no second roll, sum $\\lt$ 6. First roll 6: success, probability 1/6.\n\n- First 1: need second $\\ge$ 5 (2/6); first 2: $\\ge$ 4 (3/6); first 3: $\\ge$ 3 (4/6).\n\n$P=\\frac16+\\frac16\\cdot\\frac{2+3+4}{6}=\\frac{6}{36}+\\frac{9}{36}=\\frac{15}{36}=\\frac{5}{12}$",
+        "images": []
       }
     },
     "go:1752": {
@@ -1363,6 +1528,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Subnetting",
+        "markdown": "245.248.128.0/20 covers third octet 128 to 143.\n\n- A (half) = a /21 block: 128-135 or 136-143\n\n- B (quarter) = a /22 block that does not overlap A\n\nA = 245.248.136.0/21 (136-143) and B = 245.248.128.0/22 (128-131) do not overlap. Option 2 overlaps, and options 3 and 4 use invalid blocks.",
+        "images": []
       }
     },
     "go:1756": {
@@ -1403,6 +1573,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "One slot is always kept empty so that full and empty can be told apart.\n\n- Empty: REAR == FRONT\n\n- Full: the next REAR position would hit FRONT: (REAR + 1) mod n == FRONT",
+        "images": []
       }
     },
     "go:1758": {
@@ -1443,6 +1618,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Runtime Environment",
+        "markdown": "An access link points to the activation record of the lexically enclosing procedure.\n\n- A1 and A2 are declared in Main $\\rightarrow$ links to Main\n\n- A21 is declared in A2 $\\rightarrow$ link to A2\n\n- The second A1 (called from A21) is still declared in Main $\\rightarrow$ link to Main\n\nThat is figure D.",
+        "images": []
       }
     },
     "go:1759": {
@@ -1483,6 +1663,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Functions",
+        "markdown": "All functions to {a, b}: $2^n$. Remove the 2 constant functions (all to a, all to b), which are not onto.",
+        "images": []
       }
     },
     "go:473": {
@@ -1524,6 +1709,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Counting",
+        "markdown": "Choose 4 vertices: $\\binom64=15$. Four labelled vertices form $\\frac{(4-1)!}{2}=3$ different 4-cycles.\n\n15 $\\times$ 3 = 45",
+        "images": []
       }
     },
     "go:1762": {
@@ -1564,6 +1754,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Sorting",
+        "markdown": "Merge sort makes $O(n\\log n)$ comparisons. Each comparison of two n-length strings can take O(n).\n\nTotal = $O(n^2\\log n)$",
+        "images": []
       }
     },
     "go:1765": {
@@ -1604,6 +1799,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "Dijkstra from S: B = 3, A = 4, D = 7 (via S).\n\n- Pop B: D via B = 7, not strictly shorter, so D keeps parent S.\n\n- Pop A: C = 5. Pop C: E = 6 (D via C = 8, no change).\n\n- Pop E: T = 10 (via E), G = 8.\n\n- Pop D: T via D = 10, not strictly shorter, so T keeps parent E.\n\nPath: S $\\rightarrow$ A $\\rightarrow$ C $\\rightarrow$ E $\\rightarrow$ T",
+        "images": []
       }
     },
     "go:2149": {
@@ -1644,6 +1844,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Disk",
+        "markdown": "Addresses per block = 128 / 8 = 16.\n\nMax blocks = 8 (direct) + 16 (single indirect) + 16 $\\times$ 16 (double indirect) = 280\n\nMax size = 280 $\\times$ 128 B = 35840 B = 35 KB",
+        "images": []
       }
     },
     "go:2150": {
@@ -1684,6 +1889,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Page Replacement",
+        "markdown": "Reference string 1, 2, 3, 2, 4, 1, 3, 2, 4, 1 with 3 frames:\n\n- OPTIMAL: faults on 1, 2, 3, 4 (evict 2), 2 (evict 3) $\\rightarrow$ 5\n\n- FIFO: faults on 1, 2, 3, 4, 1, 2 $\\rightarrow$ 6\n\n- LRU: faults on 1, 2, 3, 4, 1, 3, 2, 4, 1 $\\rightarrow$ 9",
+        "images": []
       }
     },
     "go:2151": {
@@ -1724,6 +1934,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Relational Algebra",
+        "markdown": "Referential integrity: every B value in r1 must appear as a C value in r2. So $\\Pi_B(r_1)\\subseteq\\Pi_C(r_2)$, i.e. $\\Pi_B(r_1)-\\Pi_C(r_2)=\\phi$.\n\nEquality need not hold (r2 may have C values nobody refers to).",
+        "images": []
       }
     },
     "go:2153": {
@@ -1764,6 +1979,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Communication",
+        "markdown": "Checking each statement:\n\n- Per packet: $T_t=\\frac{1000}{10^6}=1$ ms; per link: $T_p=\\frac{10^5}{10^8}=1$ ms\n\n- Packets are pipelined: the source sends all 1000 packets in 1000 ms. The last packet then needs 2 more transmissions (at R1, R2) and 3 propagations.\n\nTotal = 1000 + 2 $\\times$ 1 + 3 $\\times$ 1 = 1005 ms",
+        "images": []
       }
     },
     "go:2156": {
@@ -1804,6 +2024,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Congestion Control",
+        "markdown": "Checking each statement:\n\n- Transmissions 1-3 (slow start): 2, 4, 8 (threshold reached)\n\n- 4, 5: 9, 10 (additive increase), timeout during the 5th\n\n- New threshold = 10/2 = 5, window restarts at 2\n\n- 6: 2, 7: 4, 8: 5 (capped at the threshold), 9: 6, 10: 7",
+        "images": []
       }
     },
     "go:2159": {
@@ -1844,6 +2069,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "Each state remembers the last two symbols. The missing moves:\n\n- 00 on 0 gives three 0s $\\rightarrow$ dead state q; 00 on 1 $\\rightarrow$ 01\n\n- 01 on 1 $\\rightarrow$ 11\n\n- 10 on 0 $\\rightarrow$ 00\n\n- 11 on 0 $\\rightarrow$ 10\n\nThese are exactly the entries in table D.",
+        "images": []
       }
     },
     "go:2163": {
@@ -1884,6 +2114,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Checking each statement:\n\n- Only a right child: height = 1 + height(right) $\\rightarrow$ B1\n\n- Both children: height = 1 + max(h1, h2) $\\rightarrow$ B2",
+        "images": []
       }
     },
     "go:2176": {
@@ -1924,6 +2159,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "prtFun's static a starts at 2 and keeps its value; b is local and becomes 2 each time.\n\n- 1st call: a = 2 + 2 = 4 $\\rightarrow$ prints 4 2\n\n- 2nd call: a = 4 + 2 = 6 $\\rightarrow$ prints 6 2\n\n- main: its own static a = 1 + 1 = 2, global b = 0 $\\rightarrow$ prints 2 0",
+        "images": []
       }
     },
     "go:43314": {
@@ -1964,6 +2204,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "Now prtFun's a is a register (automatic) variable, re-created as 2 on every call.\n\n- Each call: a = 2 + 2 = 4, b = 2 $\\rightarrow$ prints 4 2 twice\n\n- main: local a = 1 + 1 = 2, global b = 0 $\\rightarrow$ prints 2 0",
+        "images": []
       }
     },
     "go:2180": {
@@ -2004,6 +2249,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Joins",
+        "markdown": "A $\\cup$ B (duplicates removed) has 5 tuples, with Ids 12, 15, 99, 25, 98.\n\n- With C.Id = 10 (10 $\\lt$ 15 is true): all 5 tuples match\n\n- With C.Id = 99: only tuples with Id $\\gt$ 40: 99, 98 $\\rightarrow$ 2\n\nTotal = 5 + 2 = 7",
+        "images": []
       }
     },
     "go:43313": {
@@ -2044,6 +2294,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "There is no 'Arun' in B, so the subquery is empty. \"$\\gt$ ALL (empty set)\" is true for every row.\n\nAll 3 tuples of A are returned.",
+        "images": []
       }
     },
     "go:2181": {
@@ -2084,6 +2339,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "Work out the sets:\n\n- FIRST(S) = {a, b, $\\varepsilon$}, and A $\\rightarrow$ S, B $\\rightarrow$ S, so FIRST(A) = FIRST(B) = {a, b, $\\varepsilon$}\n\n- In aAbB and bAaB, A is followed by b or a $\\rightarrow$ FOLLOW(A) = {a, b}\n\n- B is at the end, so FOLLOW(B) = FOLLOW(S) = {$} $\\cup$ FOLLOW(A) $\\cup$ FOLLOW(B) = {a, b, $}",
+        "images": []
       }
     },
     "go:43312": {
@@ -2124,6 +2384,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "Checking each statement:\n\n- E1 = M[S, a]: S $\\rightarrow$ aAbB (FIRST), and S $\\rightarrow\\varepsilon$ since a $\\in$ FOLLOW(S)\n\n- E2 = M[S, b]: S $\\rightarrow$ bAaB, and S $\\rightarrow\\varepsilon$ since b $\\in$ FOLLOW(S)\n\n- E3 = M[B, $]: B $\\rightarrow$ S, since S can be $\\varepsilon$ and $ $\\in$ FOLLOW(B)",
+        "images": []
       }
     },
     "go:2192": {
@@ -2164,6 +2429,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "Checking each statement:\n\n- Blocks = 256 KB / 32 B = 8192, sets = 8192 / 4 = 2048 $\\rightarrow$ index = 11 bits\n\n- Offset = 5 bits\n\nTag = 32 $-$ 11 $-$ 5 = 16 bits",
+        "images": []
       }
     },
     "go:43311": {
@@ -2204,6 +2474,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "Each entry = 16 (tag) + 2 (valid) + 1 (modified) + 1 (replacement) = 20 bits. There are 8192 entries (one per block).\n\n8192 $\\times$ 20 = 163840 bits = 160 Kbits",
+        "images": []
       }
     },
     "go:2193": {
@@ -2244,6 +2519,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Profit = 50q $-$ 5q$^2$. $\\frac{d}{dq}=50-10q=0\\Rightarrow q=5$",
+        "images": []
       }
     },
     "go:2195": {
@@ -2284,6 +2564,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "\"Despite\" needs something negative that the mission overcame: setbacks.",
+        "images": []
       }
     },
     "go:2197": {
@@ -2324,6 +2609,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "Mitigate = make less severe $\\rightarrow$ diminish.",
+        "images": []
       }
     },
     "go:2198": {
@@ -2364,6 +2654,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "\"Less\" cannot be modified by \"very\" this way. It should be \"very little\" or \"very low\".",
+        "images": []
       }
     },
     "go:2200": {
@@ -2404,6 +2699,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "For an animal (not a person), use \"that\" or \"which\". In a defining clause after \"the one\", \"that\" is the right choice.",
+        "images": []
       }
     },
     "go:2209": {
@@ -2444,6 +2744,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Aptitude",
+        "markdown": "The advert says \"persons\" and asks for nothing based on gender, so it is not gender-discriminatory.",
+        "images": []
       }
     },
     "go:2210": {
@@ -2484,6 +2789,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "$\\frac{dy}{dx}=2-0.2x=0\\Rightarrow x=10$\n\ny = 2(10) $-$ 0.1(100) = 10 m",
+        "images": []
       }
     },
     "go:2211": {
@@ -2525,6 +2835,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Bayes' theorem:\n\n$P(Y\\mid R)=\\frac{0.4\\times0.72}{0.6\\times0.96+0.4\\times0.72}=\\frac{0.288}{0.864}\\approx0.334$",
+        "images": []
       }
     },
     "go:2212": {
@@ -2565,6 +2880,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Checking each statement:\n\n- Adding 7: mean +7 (P true), SD unchanged (Q false)\n\n- Doubling: mean doubles (R true), SD doubles (S false)",
+        "images": []
       }
     },
     "go:2213": {
@@ -2605,6 +2925,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Quantitative Aptitude",
+        "markdown": "Letter positions:\n\n- First letters: A(1), C(3), F(6), J(10), adding 2, 3, 4, so next is 15 = O\n\n- Second letters: D(4), G(7), K(11), P(16), adding 3, 4, 5, so next is 22 = V",
+        "images": []
       }
     }
   }
