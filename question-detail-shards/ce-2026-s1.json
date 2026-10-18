@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.719Z",
+  "generatedAt": "2026-10-18T16:30:38.595Z",
   "shardKey": "ce-2026-s1",
   "yearSetKey": "ce-2026-s1",
   "yearSetIdentity": "ce:2026:set-1",
@@ -9,8 +9,9 @@
   "label": "2026 Set 1",
   "questionCount": 65,
   "recordsByQuestionUid": {
-    "pp:ce:2026:q1": {
-      "question_uid": "pp:ce:2026:q1",
+    "ce:2026:q1": {
+      "question_uid": "ce:2026:q1",
+      "legacy_uid": "pp:ce:2026:q1",
       "exam_uid": "ce:2026:set1:main:q1",
       "title": "GATE CE 2026 | Set 1 | Question: 1",
       "section": "main",
@@ -50,12 +51,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Given: $$P = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{bmatrix}$$\n\n<b>Trace of P:</b> $\\text{tr}(P) = 1 + 1 + 1 = 3$\n\n<b>Eigenvalues:</b> Solve $\\det(P - \\lambda I) = 0$\n\n$(1-\\lambda)[(1-\\lambda)^2 - 0] - 0 + 1[0 - (1-\\lambda)] = 0$\n\n$(1-\\lambda)^3 - (1-\\lambda) = 0$\n\n$(1-\\lambda)[(1-\\lambda)^2 - 1] = 0$\n\n$(1-\\lambda)[\\lambda^2 - 2\\lambda] = 0$\n\n$(1-\\lambda)\\cdot\\lambda(\\lambda - 2) = 0$\n\nEigenvalues: $\\lambda = 0, 1, 2$\n\n<b>Sum of eigenvalues</b> = $0 + 1 + 2 = 3$ = Trace\n\n<b>Checking other options:</b>\n\n(B) $P^T P \\neq I$ (P is not orthogonal)\n\n(C) P is symmetric ($P^T = P$), not skew-symmetric\n\n(D) Eigenvalues are 0, 1, 2  -  not all magnitude 1\n\nTherefore, Option (A) is TRUE.",
-        "images": []
+        "markdown": "Given: $$P = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{bmatrix}$$\n\n<b>Trace of P:</b> $\\text{tr}(P) = 1 + 1 + 1 = 3$\n\n<b>Eigenvalues:</b> Solve $\\det(P - \\lambda I) = 0$\n\n$(1-\\lambda)[(1-\\lambda)^2 - 0] - 0 + 1[0 - (1-\\lambda)] = 0$\n\n$(1-\\lambda)^3 - (1-\\lambda) = 0$\n\n$(1-\\lambda)[(1-\\lambda)^2 - 1] = 0$\n\n$(1-\\lambda)[\\lambda^2 - 2\\lambda] = 0$\n\n$(1-\\lambda)\\cdot\\lambda(\\lambda - 2) = 0$\n\nEigenvalues: $\\lambda = 0, 1, 2$\n\n<b>Sum of eigenvalues</b> = $0 + 1 + 2 = 3$ = Trace\n\n<b>Checking other options:</b>\n\n(B) $P^T P \\neq I$ (P is not orthogonal)\n\n(C) P is symmetric ($P^T = P$), not skew-symmetric\n\n(D) Eigenvalues are 0, 1, 2  -  not all magnitude 1\n\nTherefore, Option (A) is TRUE.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q2": {
-      "question_uid": "pp:ce:2026:q2",
+    "ce:2026:q2": {
+      "question_uid": "ce:2026:q2",
+      "legacy_uid": "pp:ce:2026:q2",
       "exam_uid": "ce:2026:set1:main:q2",
       "title": "GATE CE 2026 | Set 1 | Question: 2",
       "section": "main",
@@ -95,12 +96,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "<b>Given system:</b>\n\n$x_1 + x_2 + x_3 = 0 \\quad \\cdots (1)$\n\n$x_1 + 0 \\cdot x_2 + 2x_3 = 0 \\quad \\cdots (2)$\n\n<b>Step 1:</b> Count equations vs unknowns: 2 equations, 3 unknowns $\\rightarrow$ underdetermined system.\n\n<b>Step 2:</b> Find rank of coefficient matrix:\n\n$$\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 2 \\end{bmatrix}$$\n\nR2 $\\rightarrow$ R2 - R1: $$\\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & -1 & 1 \\end{bmatrix}$$\n\nRank = 2\n\n<b>Step 3:</b> Degrees of freedom = 3 - 2 = 1 $\\rightarrow$ solution is a <b>line</b> in 3D space (passing through the origin).\n\nEach equation represents a plane through origin. Intersection of two planes through origin = a line through origin.",
-        "images": []
+        "markdown": "<b>Given system:</b>\n\n$x_1 + x_2 + x_3 = 0 \\quad \\cdots (1)$\n\n$x_1 + 0 \\cdot x_2 + 2x_3 = 0 \\quad \\cdots (2)$\n\n<b>Step 1:</b> Count equations vs unknowns: 2 equations, 3 unknowns $\\rightarrow$ underdetermined system.\n\n<b>Step 2:</b> Find rank of coefficient matrix:\n\n$$\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 2 \\end{bmatrix}$$\n\nR2 $\\rightarrow$ R2 - R1: $$\\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & -1 & 1 \\end{bmatrix}$$\n\nRank = 2\n\n<b>Step 3:</b> Degrees of freedom = 3 - 2 = 1 $\\rightarrow$ solution is a <b>line</b> in 3D space (passing through the origin).\n\nEach equation represents a plane through origin. Intersection of two planes through origin = a line through origin.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2026:q3": {
-      "question_uid": "pp:ce:2026:q3",
+    "ce:2026:q3": {
+      "question_uid": "ce:2026:q3",
+      "legacy_uid": "pp:ce:2026:q3",
       "exam_uid": "ce:2026:set1:main:q3",
       "title": "GATE CE 2026 | Set 1 | Question: 3",
       "section": "main",
@@ -140,12 +141,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "<b>For a thin-walled sphere under internal pressure p:</b>\n\n<b>Step 1  -  Hoop stress (circumferential):</b>\n\nBy equilibrium: $\\sigma_1 = \\sigma_2 = \\dfrac{pR}{2t}$\n\nBoth principal stresses are equal in magnitude (biaxial state).\n\n<b>Step 2  -  Maximum shear stress:</b>\n\nIn-plane maximum shear stress:\n\n$\\tau_{max,in} = \\dfrac{\\sigma_1 - \\sigma_2}{2} = \\dfrac{\\dfrac{pR}{2t} - \\dfrac{pR}{2t}}{2} = 0$\n\nSince both principal stresses are equal, the in-plane shear stress is <b>zero</b>.\n\n<b>Therefore:</b>\n\nMaximum tensile stress = $\\dfrac{pR}{2t}$\n\nMaximum shear stress = 0",
-        "images": []
+        "markdown": "<b>For a thin-walled sphere under internal pressure p:</b>\n\n<b>Step 1  -  Hoop stress (circumferential):</b>\n\nBy equilibrium: $\\sigma_1 = \\sigma_2 = \\dfrac{pR}{2t}$\n\nBoth principal stresses are equal in magnitude (biaxial state).\n\n<b>Step 2  -  Maximum shear stress:</b>\n\nIn-plane maximum shear stress:\n\n$\\tau_{max,in} = \\dfrac{\\sigma_1 - \\sigma_2}{2} = \\dfrac{\\dfrac{pR}{2t} - \\dfrac{pR}{2t}}{2} = 0$\n\nSince both principal stresses are equal, the in-plane shear stress is <b>zero</b>.\n\n<b>Therefore:</b>\n\nMaximum tensile stress = $\\dfrac{pR}{2t}$\n\nMaximum shear stress = 0\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2026:q4": {
-      "question_uid": "pp:ce:2026:q4",
+    "ce:2026:q4": {
+      "question_uid": "ce:2026:q4",
+      "legacy_uid": "pp:ce:2026:q4",
       "exam_uid": "ce:2026:set1:main:q4",
       "title": "GATE CE 2026 | Set 1 | Question: 4",
       "section": "main",
@@ -185,12 +186,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
-        "markdown": "Shear center will lie on the axis of symmery and at the point of intersection of axis of legs.",
-        "images": []
+        "markdown": "Shear center will lie on the axis of symmery and at the point of intersection of axis of legs.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2026:q5": {
-      "question_uid": "pp:ce:2026:q5",
+    "ce:2026:q5": {
+      "question_uid": "ce:2026:q5",
+      "legacy_uid": "pp:ce:2026:q5",
       "exam_uid": "ce:2026:set1:main:q5",
       "title": "GATE CE 2026 | Set 1 | Question: 5",
       "section": "main",
@@ -230,12 +231,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Concrete Technology",
-        "markdown": "<b>Definitions:</b>\n\n<b>Creep:</b> Time-dependent deformation of concrete under <b>sustained (long-term) loading</b> at constant stress. It is the phenomenon used to determine long-term deformation.\n\n<b>Shrinkage:</b> Volume change due to loss of moisture  -  not load-dependent.\n\n<b>Modulus of Rupture:</b> Flexural tensile strength of concrete  -  measured by beam bending test.\n\n<b>Split Tensile Strength:</b> Indirect tensile strength  -  measured by splitting a cylinder.\n\nTherefore, <b>Creep</b> is the property used to determine long-term deformation under sustained loading.",
-        "images": []
+        "markdown": "<b>Definitions:</b>\n\n<b>Creep:</b> Time-dependent deformation of concrete under <b>sustained (long-term) loading</b> at constant stress. It is the phenomenon used to determine long-term deformation.\n\n<b>Shrinkage:</b> Volume change due to loss of moisture  -  not load-dependent.\n\n<b>Modulus of Rupture:</b> Flexural tensile strength of concrete  -  measured by beam bending test.\n\n<b>Split Tensile Strength:</b> Indirect tensile strength  -  measured by splitting a cylinder.\n\nTherefore, <b>Creep</b> is the property used to determine long-term deformation under sustained loading.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q6": {
-      "question_uid": "pp:ce:2026:q6",
+    "ce:2026:q6": {
+      "question_uid": "ce:2026:q6",
+      "legacy_uid": "pp:ce:2026:q6",
       "exam_uid": "ce:2026:set1:main:q6",
       "title": "GATE CE 2026 | Set 1 | Question: 6",
       "section": "main",
@@ -275,12 +276,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "Given: Two parallel pipes, same length L, same friction factor f, same head loss h.\n\nDiameters: $D_1 = 600$ mm, $D_2 = 400$ mm\n\n<b>Darcy-Weisbach equation:</b>\n\n$h_f = \\dfrac{fLV^2}{2gD} = \\dfrac{8fLQ^2}{\\pi^2 g D^5}$\n\nSince $h_f$, f, L are the same for both pipes:\n\n$Q \\propto D^{5/2}$\n\n<b>Ratio of flowrates:</b>\n\n$\\dfrac{Q_1}{Q_2} = \\left(\\dfrac{D_1}{D_2}\\right)^{5/2} = \\left(\\dfrac{600}{400}\\right)^{5/2} = (1.5)^{5/2}$\n\n$(1.5)^{5/2} = (1.5)^2 \\times (1.5)^{0.5} = 2.25 \\times 1.2247 = \\mathbf{2.756} \\approx \\mathbf{2.76}$",
-        "images": []
+        "markdown": "Given: Two parallel pipes, same length L, same friction factor f, same head loss h.\n\nDiameters: $D_1 = 600$ mm, $D_2 = 400$ mm\n\n<b>Darcy-Weisbach equation:</b>\n\n$h_f = \\dfrac{fLV^2}{2gD} = \\dfrac{8fLQ^2}{\\pi^2 g D^5}$\n\nSince $h_f$, f, L are the same for both pipes:\n\n$Q \\propto D^{5/2}$\n\n<b>Ratio of flowrates:</b>\n\n$\\dfrac{Q_1}{Q_2} = \\left(\\dfrac{D_1}{D_2}\\right)^{5/2} = \\left(\\dfrac{600}{400}\\right)^{5/2} = (1.5)^{5/2}$\n\n$(1.5)^{5/2} = (1.5)^2 \\times (1.5)^{0.5} = 2.25 \\times 1.2247 = \\mathbf{2.756} \\approx \\mathbf{2.76}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2026:q7": {
-      "question_uid": "pp:ce:2026:q7",
+    "ce:2026:q7": {
+      "question_uid": "ce:2026:q7",
+      "legacy_uid": "pp:ce:2026:q7",
       "exam_uid": "ce:2026:set1:main:q7",
       "title": "GATE CE 2026 | Set 1 | Question: 7",
       "section": "main",
@@ -320,12 +321,12 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
-        "markdown": "<b>Step 1: Determine the relationship between head discharge and outlet discharge</b>\n\nLet the head discharge (canal capacity) be $Q_h$ and the outlet delivery discharge be $Q_o$.\n\nThe canal losses are given as 50% of the head discharge:\n\n$\\text{Canal Losses} = 0.50\\,Q_h$\n\nThe outlet discharge is the head discharge minus the losses:\n\n$Q_o = Q_h - \\text{Canal Losses}$\n\n$Q_o = Q_h - 0.50Q_h = 0.50Q_h$\n\n<b>Step 2: Calculate the canal capacity</b>\n\nThe canal is required to deliver 10 cumec at the outlet. Therefore,\n\n$10 = 0.50Q_h$\n\n$Q_h = \\frac{10}{0.50} = 20\\ \\text{cumec}$\n\nThus, the head discharge (canal capacity) is:\n\n$\\boxed{Q_h = 20\\ \\text{cumec}}$\n\n<b>Step 3: Compute the duty on canal capacity</b>\n\nDuty on canal capacity is defined as the irrigated area per unit head discharge:\n\n$D = \\frac{\\text{Area}}{Q_h}$\n\nSubstituting the given values:\n\n$D = \\frac{7500}{20}$\n\n$D = 375\\ \\text{hectare/cumec}$",
-        "images": []
+        "markdown": "<b>Step 1: Determine the relationship between head discharge and outlet discharge</b>\n\nLet the head discharge (canal capacity) be $Q_h$ and the outlet delivery discharge be $Q_o$.\n\nThe canal losses are given as 50% of the head discharge:\n\n$\\text{Canal Losses} = 0.50\\,Q_h$\n\nThe outlet discharge is the head discharge minus the losses:\n\n$Q_o = Q_h - \\text{Canal Losses}$\n\n$Q_o = Q_h - 0.50Q_h = 0.50Q_h$\n\n<b>Step 2: Calculate the canal capacity</b>\n\nThe canal is required to deliver 10 cumec at the outlet. Therefore,\n\n$10 = 0.50Q_h$\n\n$Q_h = \\frac{10}{0.50} = 20\\ \\text{cumec}$\n\nThus, the head discharge (canal capacity) is:\n\n$\\boxed{Q_h = 20\\ \\text{cumec}}$\n\n<b>Step 3: Compute the duty on canal capacity</b>\n\nDuty on canal capacity is defined as the irrigated area per unit head discharge:\n\n$D = \\frac{\\text{Area}}{Q_h}$\n\nSubstituting the given values:\n\n$D = \\frac{7500}{20}$\n\n$D = 375\\ \\text{hectare/cumec}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q8": {
-      "question_uid": "pp:ce:2026:q8",
+    "ce:2026:q8": {
+      "question_uid": "ce:2026:q8",
+      "legacy_uid": "pp:ce:2026:q8",
       "exam_uid": "ce:2026:set1:main:q8",
       "title": "GATE CE 2026 | Set 1 | Question: 8",
       "section": "main",
@@ -365,12 +366,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Soil Stabilization and Soil Exploration",
-        "markdown": "<b>Menard (I)</b> $\\rightarrow$ <b>Pressuremeter test (Q):</b> Louis Ménard developed the pressuremeter test in the 1950s for in-situ soil testing.\n\n<b>Marchetti (II)</b> $\\rightarrow$ <b>Dilatometer test (P):</b> Silvano Marchetti developed the flat dilatometer test (DMT) in 1975.\n\n<b>Casagrande (III)</b> $\\rightarrow$ <b>Liquid limit test (S):</b> Arthur Casagrande developed the standard liquid limit (Atterberg) test device.\n\n<b>Proctor (IV)</b> $\\rightarrow$ <b>Compaction test (R):</b> R.R. Proctor developed the standard compaction test.",
-        "images": []
+        "markdown": "<b>Menard (I)</b> $\\rightarrow$ <b>Pressuremeter test (Q):</b> Louis Ménard developed the pressuremeter test in the 1950s for in-situ soil testing.\n\n<b>Marchetti (II)</b> $\\rightarrow$ <b>Dilatometer test (P):</b> Silvano Marchetti developed the flat dilatometer test (DMT) in 1975.\n\n<b>Casagrande (III)</b> $\\rightarrow$ <b>Liquid limit test (S):</b> Arthur Casagrande developed the standard liquid limit (Atterberg) test device.\n\n<b>Proctor (IV)</b> $\\rightarrow$ <b>Compaction test (R):</b> R.R. Proctor developed the standard compaction test.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q9": {
-      "question_uid": "pp:ce:2026:q9",
+    "ce:2026:q9": {
+      "question_uid": "ce:2026:q9",
+      "legacy_uid": "pp:ce:2026:q9",
       "exam_uid": "ce:2026:set1:main:q9",
       "title": "GATE CE 2026 | Set 1 | Question: 9",
       "section": "main",
@@ -410,12 +411,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Railway and Airport Engineering",
-        "markdown": "<b>As per official GATE answer key Marks to All (MTA) </b>\n\n<b>Standard ICAO corrections to basic runway length:</b>\n\n<b>1. Elevation correction:</b>\n\nFor every 300 m rise in elevation above MSL, the basic length increases by 7%.\n\n$\\text{Correction factor} = 0.07 \\times \\dfrac{H}{300}$\n\n<b>2. Temperature correction:</b>\n\nFor every 1$\\circ$C rise in airport reference temperature above standard, length increases by 1%.\n\n$\\text{Correction factor} = 0.01 \\times T$\n\n<b>3. Gradient correction:</b>\n\nFor every 1% effective gradient, length increases by 10%.\n\n$\\text{Correction factor} = 0.10 \\times G$",
-        "images": []
+        "markdown": "<b>As per official GATE answer key Marks to All (MTA) </b>\n\n<b>Standard ICAO corrections to basic runway length:</b>\n\n<b>1. Elevation correction:</b>\n\nFor every 300 m rise in elevation above MSL, the basic length increases by 7%.\n\n$\\text{Correction factor} = 0.07 \\times \\dfrac{H}{300}$\n\n<b>2. Temperature correction:</b>\n\nFor every 1$\\circ$C rise in airport reference temperature above standard, length increases by 1%.\n\n$\\text{Correction factor} = 0.01 \\times T$\n\n<b>3. Gradient correction:</b>\n\nFor every 1% effective gradient, length increases by 10%.\n\n$\\text{Correction factor} = 0.10 \\times G$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q10": {
-      "question_uid": "pp:ce:2026:q10",
+    "ce:2026:q10": {
+      "question_uid": "ce:2026:q10",
+      "legacy_uid": "pp:ce:2026:q10",
       "exam_uid": "ce:2026:set1:main:q10",
       "title": "GATE CE 2026 | Set 1 | Question: 10",
       "section": "main",
@@ -455,12 +456,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Fundamental Concepts of Surveying",
-        "markdown": "<b>Given:</b>\n\nLength of line AB, $L = 100\\ \\text{m}$\n\nWhole Circle Bearing (WCB) of AB, $\\theta = 150^\\circ$\n\n<b>Step 1: Determine the quadrant</b>\n\nA WCB of $150^\\circ$ lies between $90^\\circ$ and $180^\\circ$. Therefore, the line lies in the <b>South-East (SE)</b> quadrant.\n\nHence:\n\nLatitude = Negative (South)\n\nDeparture = Positive (East)\n\n<b>Step 2: Calculate Latitude</b>\n\nLatitude is given by:\n\n$\\text{Latitude} = L\\cos\\theta = 100\\cos 150^\\circ  =100(-0.8660)\n\n=-86.60\\ \\text{m}$\n\n<b>Step 3: Calculate Departure</b>\n\nDeparture is given by:\n\n$\\text{Departure} = L\\sin\\theta = 100\\sin 150^\\circ =100(0.5)=50.00\\ \\text{m}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nLength of line AB, $L = 100\\ \\text{m}$\n\nWhole Circle Bearing (WCB) of AB, $\\theta = 150^\\circ$\n\n<b>Step 1: Determine the quadrant</b>\n\nA WCB of $150^\\circ$ lies between $90^\\circ$ and $180^\\circ$. Therefore, the line lies in the <b>South-East (SE)</b> quadrant.\n\nHence:\n\nLatitude = Negative (South)\n\nDeparture = Positive (East)\n\n<b>Step 2: Calculate Latitude</b>\n\nLatitude is given by:\n\n$\\text{Latitude} = L\\cos\\theta = 100\\cos 150^\\circ  =100(-0.8660)\n\n=-86.60\\ \\text{m}$\n\n<b>Step 3: Calculate Departure</b>\n\nDeparture is given by:\n\n$\\text{Departure} = L\\sin\\theta = 100\\sin 150^\\circ =100(0.5)=50.00\\ \\text{m}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2026:q11": {
-      "question_uid": "pp:ce:2026:q11",
+    "ce:2026:q11": {
+      "question_uid": "ce:2026:q11",
+      "legacy_uid": "pp:ce:2026:q11",
       "exam_uid": "ce:2026:set1:main:q11",
       "title": "GATE CE 2026 | Set 1 | Question: 11",
       "section": "main",
@@ -500,12 +501,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "Given:\n\nInitial depth $L_0 = 0.8$ m, Initial porosity $n_0 = 40\\% = 0.40$\n\nExpanded porosity $n_e = 70\\% = 0.70$\n\n<b>Using conservation of solid volume:</b>\n\nVolume of solids = constant\n\n$L_0(1 - n_0) = L_e(1 - n_e)$\n\n<b>Solving for expanded depth $L_e$:</b>\n\n$L_e = \\dfrac{L_0(1 - n_0)}{1 - n_e} = \\dfrac{0.8 \\times (1 - 0.40)}{1 - 0.70}$\n\n$L_e = \\dfrac{0.8 \\times 0.60}{0.30} = \\dfrac{0.48}{0.30} = \\mathbf{1.6 \\text{ m}}$\n\nHmm, that gives 1.6. Let me recheck: $\\dfrac{0.8 \\times 0.6}{0.3} = \\dfrac{0.48}{0.3} = 1.6$",
-        "images": []
+        "markdown": "Given:\n\nInitial depth $L_0 = 0.8$ m, Initial porosity $n_0 = 40\\% = 0.40$\n\nExpanded porosity $n_e = 70\\% = 0.70$\n\n<b>Using conservation of solid volume:</b>\n\nVolume of solids = constant\n\n$L_0(1 - n_0) = L_e(1 - n_e)$\n\n<b>Solving for expanded depth $L_e$:</b>\n\n$L_e = \\dfrac{L_0(1 - n_0)}{1 - n_e} = \\dfrac{0.8 \\times (1 - 0.40)}{1 - 0.70}$\n\n$L_e = \\dfrac{0.8 \\times 0.60}{0.30} = \\dfrac{0.48}{0.30} = \\mathbf{1.6 \\text{ m}}$\n\nHmm, that gives 1.6. Let me recheck: $\\dfrac{0.8 \\times 0.6}{0.3} = \\dfrac{0.48}{0.3} = 1.6$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2026:q12": {
-      "question_uid": "pp:ce:2026:q12",
+    "ce:2026:q12": {
+      "question_uid": "ce:2026:q12",
+      "legacy_uid": "pp:ce:2026:q12",
       "exam_uid": "ce:2026:set1:main:q12",
       "title": "GATE CE 2026 | Set 1 | Question: 12",
       "section": "main",
@@ -545,12 +546,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "<b>Stokes' law</b> gives the terminal settling velocity of a small spherical particle in a viscous fluid:\n\n$v_s = \\dfrac{(\\rho_s - \\rho_w) g d^2}{18\\mu}$\n\nwhere:\n\n$v_s$ = settling velocity\n\n$\\rho_s$ = density of particle\n\n$\\rho_w$ = density of water\n\n$g$ = acceleration due to gravity\n\n$d$ = diameter of particle\n\n$\\mu$ = dynamic viscosity of fluid\n\n<b>Other laws:</b>\n\nDarcy's law $\\rightarrow$ groundwater flow through porous media\n\nDupuit's law $\\rightarrow$ unconfined aquifer flow assumption\n\nBernoulli's law $\\rightarrow$ energy conservation in flowing fluid\n\nTherefore, Settling velocity of inorganic particles is governed by <b>Stokes' law</b>.",
-        "images": []
+        "markdown": "<b>Stokes' law</b> gives the terminal settling velocity of a small spherical particle in a viscous fluid:\n\n$v_s = \\dfrac{(\\rho_s - \\rho_w) g d^2}{18\\mu}$\n\nwhere:\n\n$v_s$ = settling velocity\n\n$\\rho_s$ = density of particle\n\n$\\rho_w$ = density of water\n\n$g$ = acceleration due to gravity\n\n$d$ = diameter of particle\n\n$\\mu$ = dynamic viscosity of fluid\n\n<b>Other laws:</b>\n\nDarcy's law $\\rightarrow$ groundwater flow through porous media\n\nDupuit's law $\\rightarrow$ unconfined aquifer flow assumption\n\nBernoulli's law $\\rightarrow$ energy conservation in flowing fluid\n\nTherefore, Settling velocity of inorganic particles is governed by <b>Stokes' law</b>.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2026:q13": {
-      "question_uid": "pp:ce:2026:q13",
+    "ce:2026:q13": {
+      "question_uid": "ce:2026:q13",
+      "legacy_uid": "pp:ce:2026:q13",
       "exam_uid": "ce:2026:set1:main:q13",
       "title": "GATE CE 2026 | Set 1 | Question: 13",
       "section": "main",
@@ -590,12 +591,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "<b>Correct GVF profile  -  water surface slope relationships:</b>\n\nFor mild slope (M profiles), using $\\dfrac{dy}{dx} = S_0 \\dfrac{1 - (y_n/y)^3}{1 - (y_c/y)^3}$:\n\n<b>M1 profile:</b> $y > y_n > y_c$ $\\rightarrow$ $\\dfrac{dy}{dx} > 0$ $\\rightarrow$ <b>Positive</b> water surface slope\n\n<b>M2 profile:</b> $y_n > y > y_c$ $\\rightarrow$ $\\dfrac{dy}{dx} < 0$ $\\rightarrow$ <b>Negative</b> water surface slope\n\n<b>M3 profile:</b> $y_n > y_c > y$ $\\rightarrow$ $\\dfrac{dy}{dx} > 0$ $\\rightarrow$ <b>Positive</b> water surface slope\n\nTherefore, Correct matching: P-(I), Q-(II), R-(I)\n\nOptions NOT correct:\n\n<b>(B)</b> says R-(III) $\\rightarrow$ wrong (M3 is positive, not zero)\n\n<b>(C)</b> says P-(II) $\\rightarrow$ wrong (M1 is positive)\n\n<b>(D)</b> says Q-(III) $\\rightarrow$ wrong (M2 is negative)",
-        "images": []
+        "markdown": "<b>Correct GVF profile  -  water surface slope relationships:</b>\n\nFor mild slope (M profiles), using $\\dfrac{dy}{dx} = S_0 \\dfrac{1 - (y_n/y)^3}{1 - (y_c/y)^3}$:\n\n<b>M1 profile:</b> $y > y_n > y_c$ $\\rightarrow$ $\\dfrac{dy}{dx} > 0$ $\\rightarrow$ <b>Positive</b> water surface slope\n\n<b>M2 profile:</b> $y_n > y > y_c$ $\\rightarrow$ $\\dfrac{dy}{dx} < 0$ $\\rightarrow$ <b>Negative</b> water surface slope\n\n<b>M3 profile:</b> $y_n > y_c > y$ $\\rightarrow$ $\\dfrac{dy}{dx} > 0$ $\\rightarrow$ <b>Positive</b> water surface slope\n\nTherefore, Correct matching: P-(I), Q-(II), R-(I)\n\nOptions NOT correct:\n\n<b>(B)</b> says R-(III) $\\rightarrow$ wrong (M3 is positive, not zero)\n\n<b>(C)</b> says P-(II) $\\rightarrow$ wrong (M1 is positive)\n\n<b>(D)</b> says Q-(III) $\\rightarrow$ wrong (M2 is negative)\n\nTherefore, the correct option(s) are **B, C, D**."
       }
     },
-    "pp:ce:2026:q14": {
-      "question_uid": "pp:ce:2026:q14",
+    "ce:2026:q14": {
+      "question_uid": "ce:2026:q14",
+      "legacy_uid": "pp:ce:2026:q14",
       "exam_uid": "ce:2026:set1:main:q14",
       "title": "GATE CE 2026 | Set 1 | Question: 14",
       "section": "main",
@@ -635,12 +636,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Railway and Airport Engineering",
-        "markdown": "<b>Derivation of Cant formula:</b>\n\nFor a vehicle travelling at speed $V$ km/h on a curve of radius $R$ metres:\n\nCentrifugal acceleration $= \\dfrac{V^2}{R}$ (in appropriate units)\n\nFor equilibrium, the cant (superelevation) $C$ is: $\\dfrac{GV^2}{gR}$\n\nConverting V from km/h to m/s: $V_{m/s} = \\dfrac{V_{km/h}}{3.6}$\n\n$C = \\dfrac{G \\cdot \\left(\\dfrac{V}{3.6}\\right)^2}{9.81 \\cdot R} = \\dfrac{GV^2}{9.81 \\times 12.96 \\times R} = \\dfrac{GV^2}{127.1 R} \\approx \\dfrac{GV^2}{127R}$\n\nwhere G = dynamic gauge in mm, V in km/h, R in m.\n\nThis is the standard Indian Railways formula for cant on Broad Gauge.",
-        "images": []
+        "markdown": "<b>Derivation of Cant formula:</b>\n\nFor a vehicle travelling at speed $V$ km/h on a curve of radius $R$ metres:\n\nCentrifugal acceleration $= \\dfrac{V^2}{R}$ (in appropriate units)\n\nFor equilibrium, the cant (superelevation) $C$ is: $\\dfrac{GV^2}{gR}$\n\nConverting V from km/h to m/s: $V_{m/s} = \\dfrac{V_{km/h}}{3.6}$\n\n$C = \\dfrac{G \\cdot \\left(\\dfrac{V}{3.6}\\right)^2}{9.81 \\cdot R} = \\dfrac{GV^2}{9.81 \\times 12.96 \\times R} = \\dfrac{GV^2}{127.1 R} \\approx \\dfrac{GV^2}{127R}$\n\nwhere G = dynamic gauge in mm, V in km/h, R in m.\n\nThis is the standard Indian Railways formula for cant on Broad Gauge.\n\nTherefore, the correct option(s) are **A, B**."
       }
     },
-    "pp:ce:2026:q15": {
-      "question_uid": "pp:ce:2026:q15",
+    "ce:2026:q15": {
+      "question_uid": "ce:2026:q15",
+      "legacy_uid": "pp:ce:2026:q15",
       "exam_uid": "ce:2026:set1:main:q15",
       "title": "GATE CE 2026 | Set 1 | Question: 15",
       "section": "main",
@@ -680,12 +681,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "(A) Suspended settleable organic solids\n\nThese are removed mainly in primary sedimentation tanks, not in secondary treatment. Therefore, they are not removed in secondary treatment.\n\n(B) Colloids including dissolved organic matter\n\nThis is the main target of secondary treatment. Hence, removed.\n\n(C) Pathogens\n\nSecondary treatment may reduce pathogens but does not reliably remove them. Disinfection is required for pathogen removal. Hence, not removed.\n\n(D) Fat and grease\n\nThese are primarily removed during preliminary/primary treatment by skimming. Hence, not removed in secondary treatment.",
-        "images": []
+        "markdown": "(A) Suspended settleable organic solids\n\nThese are removed mainly in primary sedimentation tanks, not in secondary treatment. Therefore, they are not removed in secondary treatment.\n\n(B) Colloids including dissolved organic matter\n\nThis is the main target of secondary treatment. Hence, removed.\n\n(C) Pathogens\n\nSecondary treatment may reduce pathogens but does not reliably remove them. Disinfection is required for pathogen removal. Hence, not removed.\n\n(D) Fat and grease\n\nThese are primarily removed during preliminary/primary treatment by skimming. Hence, not removed in secondary treatment.\n\nTherefore, the correct option(s) are **A, C, D**."
       }
     },
-    "pp:ce:2026:q16": {
-      "question_uid": "pp:ce:2026:q16",
+    "ce:2026:q16": {
+      "question_uid": "ce:2026:q16",
+      "legacy_uid": "pp:ce:2026:q16",
       "exam_uid": "ce:2026:set1:main:q16",
       "title": "GATE CE 2026 | Set 1 | Question: 16",
       "section": "main",
@@ -723,12 +724,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Given:\n\nBag I: 4 white + 6 black = 10 balls\n\nBag II: 4 white + 3 black = 7 balls\n\n<b>Using Bayes' Theorem:</b>\n\nLet B = event of drawing a black ball\n\nLet $B_1$ = Bag I chosen, $B_2$ = Bag II chosen\n\n$P(B_1) = P(B_2) = \\dfrac{1}{2}$ (equal probability of choosing either bag)\n\n$P(B | B_1) = \\dfrac{6}{10} = 0.6$\n\n$P(B | B_2) = \\dfrac{3}{7} \\approx 0.4286$\n\n<b>Total probability of black ball:</b>\n\n$P(B) = P(B_1) \\cdot P(B|B_1) + P(B_2) \\cdot P(B|B_2)$\n\n$P(B) = \\dfrac{1}{2} \\times \\dfrac{6}{10} + \\dfrac{1}{2} \\times \\dfrac{3}{7} = \\dfrac{3}{10} + \\dfrac{3}{14} = \\dfrac{21}{70} + \\dfrac{15}{70} = \\dfrac{36}{70}$\n\n<b>Probability black ball came from Bag I:</b>\n\n$P(B_1|B) = \\dfrac{P(B_1) \\cdot P(B|B_1)}{P(B)} = \\dfrac{\\dfrac{1}{2} \\times \\dfrac{6}{10}}{\\dfrac{36}{70}} = \\dfrac{\\dfrac{3}{10}}{\\dfrac{36}{70}} = \\dfrac{3}{10} \\times \\dfrac{70}{36} = \\dfrac{210}{360} = \\dfrac{7}{12} \\approx \\mathbf{0.58}$",
-        "images": []
+        "markdown": "Given:\n\nBag I: 4 white + 6 black = 10 balls\n\nBag II: 4 white + 3 black = 7 balls\n\n<b>Using Bayes' Theorem:</b>\n\nLet B = event of drawing a black ball\n\nLet $B_1$ = Bag I chosen, $B_2$ = Bag II chosen\n\n$P(B_1) = P(B_2) = \\dfrac{1}{2}$ (equal probability of choosing either bag)\n\n$P(B | B_1) = \\dfrac{6}{10} = 0.6$\n\n$P(B | B_2) = \\dfrac{3}{7} \\approx 0.4286$\n\n<b>Total probability of black ball:</b>\n\n$P(B) = P(B_1) \\cdot P(B|B_1) + P(B_2) \\cdot P(B|B_2)$\n\n$P(B) = \\dfrac{1}{2} \\times \\dfrac{6}{10} + \\dfrac{1}{2} \\times \\dfrac{3}{7} = \\dfrac{3}{10} + \\dfrac{3}{14} = \\dfrac{21}{70} + \\dfrac{15}{70} = \\dfrac{36}{70}$\n\n<b>Probability black ball came from Bag I:</b>\n\n$P(B_1|B) = \\dfrac{P(B_1) \\cdot P(B|B_1)}{P(B)} = \\dfrac{\\dfrac{1}{2} \\times \\dfrac{6}{10}}{\\dfrac{36}{70}} = \\dfrac{\\dfrac{3}{10}}{\\dfrac{36}{70}} = \\dfrac{3}{10} \\times \\dfrac{70}{36} = \\dfrac{210}{360} = \\dfrac{7}{12} \\approx \\mathbf{0.58}$\n\nTherefore, the correct answer is **0.58** (acceptable range: [0.5, 0.66])."
       }
     },
-    "pp:ce:2026:q17": {
-      "question_uid": "pp:ce:2026:q17",
+    "ce:2026:q17": {
+      "question_uid": "ce:2026:q17",
+      "legacy_uid": "pp:ce:2026:q17",
       "exam_uid": "ce:2026:set1:main:q17",
       "title": "GATE CE 2026 | Set 1 | Question: 17",
       "section": "main",
@@ -766,12 +767,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "<b>Given matrix:</b> $$A = \\begin{bmatrix} 9 & 15 \\\\ 15 & 50 \\end{bmatrix}$$\n\n<b>Cholesky decomposition:</b> $A = LL^T$, where $$L = \\begin{bmatrix} l_{11} & 0 \\\\ l_{21} & l_{22} \\end{bmatrix}$$\n\n<b>Step 1  -  Find $l_{11}$:</b>\n\n$l_{11} = \\sqrt{a_{11}} = \\sqrt{9} = 3$\n\n<b>Step 2  -  Find $l_{21}$:</b>\n\n$l_{21} = \\dfrac{a_{21}}{l_{11}} = \\dfrac{15}{3} = 5$\n\n<b>Step 3  -  Find $l_{22}$:</b>\n\n$l_{22} = \\sqrt{a_{22} - l_{21}^2} = \\sqrt{50 - 25} = \\sqrt{25} = 5$\n\n$|l_{22}| = \\mathbf{5}$",
-        "images": []
+        "markdown": "<b>Given matrix:</b> $$A = \\begin{bmatrix} 9 & 15 \\\\ 15 & 50 \\end{bmatrix}$$\n\n<b>Cholesky decomposition:</b> $A = LL^T$, where $$L = \\begin{bmatrix} l_{11} & 0 \\\\ l_{21} & l_{22} \\end{bmatrix}$$\n\n<b>Step 1  -  Find $l_{11}$:</b>\n\n$l_{11} = \\sqrt{a_{11}} = \\sqrt{9} = 3$\n\n<b>Step 2  -  Find $l_{21}$:</b>\n\n$l_{21} = \\dfrac{a_{21}}{l_{11}} = \\dfrac{15}{3} = 5$\n\n<b>Step 3  -  Find $l_{22}$:</b>\n\n$l_{22} = \\sqrt{a_{22} - l_{21}^2} = \\sqrt{50 - 25} = \\sqrt{25} = 5$\n\n$|l_{22}| = \\mathbf{5}$\n\nTherefore, the correct answer is **5**."
       }
     },
-    "pp:ce:2026:q18": {
-      "question_uid": "pp:ce:2026:q18",
+    "ce:2026:q18": {
+      "question_uid": "ce:2026:q18",
+      "legacy_uid": "pp:ce:2026:q18",
       "exam_uid": "ce:2026:set1:main:q18",
       "title": "GATE CE 2026 | Set 1 | Question: 18",
       "section": "main",
@@ -809,12 +810,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Given: $(x + y - 7)^2 + (y + 3x - 13)^2 = 0$\n\n<b>Key insight:</b> Sum of two squares equals zero only when <b>each square is zero</b>.\n\n$(x + y - 7)^2 = 0 \\Rightarrow x + y = 7 \\quad \\cdots (1)$\n\n$(y + 3x - 13)^2 = 0 \\Rightarrow y + 3x = 13 \\quad \\cdots (2)$\n\n<b>Solving the system:</b>\n\nSubtract (1) from (2):\n\n$(y + 3x) - (x + y) = 13 - 7$\n\n$2x = 6 \\Rightarrow x = 3$\n\nSubstitute into (1): $3 + y = 7 \\Rightarrow y = 4$\n\n<b>Calculate </b> $x^3 + y^3 = 3^3 + 4^3 = 27 + 64 = \\mathbf{91}$",
-        "images": []
+        "markdown": "Given: $(x + y - 7)^2 + (y + 3x - 13)^2 = 0$\n\n<b>Key insight:</b> Sum of two squares equals zero only when <b>each square is zero</b>.\n\n$(x + y - 7)^2 = 0 \\Rightarrow x + y = 7 \\quad \\cdots (1)$\n\n$(y + 3x - 13)^2 = 0 \\Rightarrow y + 3x = 13 \\quad \\cdots (2)$\n\n<b>Solving the system:</b>\n\nSubtract (1) from (2):\n\n$(y + 3x) - (x + y) = 13 - 7$\n\n$2x = 6 \\Rightarrow x = 3$\n\nSubstitute into (1): $3 + y = 7 \\Rightarrow y = 4$\n\n<b>Calculate </b> $x^3 + y^3 = 3^3 + 4^3 = 27 + 64 = \\mathbf{91}$\n\nTherefore, the correct answer is **91**."
       }
     },
-    "pp:ce:2026:q19": {
-      "question_uid": "pp:ce:2026:q19",
+    "ce:2026:q19": {
+      "question_uid": "ce:2026:q19",
+      "legacy_uid": "pp:ce:2026:q19",
       "exam_uid": "ce:2026:set1:main:q19",
       "title": "GATE CE 2026 | Set 1 | Question: 19",
       "section": "main",
@@ -852,12 +853,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
-        "markdown": "<b>Concept:</b> The area of steel per unit width must remain the same to resist the same design moment.\n\nGiven:\n\n10 mm bars at spacing $s_1 = 150$ mm\n\n12 mm bars at spacing $s_2 = ?$\n\n<b>Area of steel per unit width must be equal:</b>\n\n$\\dfrac{A_{st1}}{s_1} = \\dfrac{A_{st2}}{s_2}$\n\n$\\dfrac{\\pi/4 \\times 10^2}{150} = \\dfrac{\\pi/4 \\times 12^2}{s_2}$\n\n$s_2 = 150 \\times \\dfrac{12^2}{10^2} = 150 \\times \\dfrac{144}{100} = 150 \\times 1.44 = \\mathbf{216 \\text{ mm}}$",
-        "images": []
+        "markdown": "<b>Concept:</b> The area of steel per unit width must remain the same to resist the same design moment.\n\nGiven:\n\n10 mm bars at spacing $s_1 = 150$ mm\n\n12 mm bars at spacing $s_2 = ?$\n\n<b>Area of steel per unit width must be equal:</b>\n\n$\\dfrac{A_{st1}}{s_1} = \\dfrac{A_{st2}}{s_2}$\n\n$\\dfrac{\\pi/4 \\times 10^2}{150} = \\dfrac{\\pi/4 \\times 12^2}{s_2}$\n\n$s_2 = 150 \\times \\dfrac{12^2}{10^2} = 150 \\times \\dfrac{144}{100} = 150 \\times 1.44 = \\mathbf{216 \\text{ mm}}$\n\nTherefore, the correct answer is **216** (acceptable range: [214, 218])."
       }
     },
-    "pp:ce:2026:q20": {
-      "question_uid": "pp:ce:2026:q20",
+    "ce:2026:q20": {
+      "question_uid": "ce:2026:q20",
+      "legacy_uid": "pp:ce:2026:q20",
       "exam_uid": "ce:2026:set1:main:q20",
       "title": "GATE CE 2026 | Set 1 | Question: 20",
       "section": "main",
@@ -895,12 +896,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "<b>Concept:</b> The design strength of a fillet weld = weld size x throat factor x length x weld strength.\n\nFor the same load, the product (size x length) must remain constant.\n\nGiven:\n\nOriginal: size $s_1 = 5$ mm, length $L_1 = 150$ mm\n\nNew: size $s_2 = 6$ mm, length $L_2 = ?$\n\n<b>Equating weld capacity:</b>\n\n$s_1 \\times L_1 = s_2 \\times L_2$\n\n$5 \\times 150 = 6 \\times L_2$\n\n$L_2 = \\dfrac{750}{6} = \\mathbf{125 \\text{ mm}}$",
-        "images": []
+        "markdown": "<b>Concept:</b> The design strength of a fillet weld = weld size x throat factor x length x weld strength.\n\nFor the same load, the product (size x length) must remain constant.\n\nGiven:\n\nOriginal: size $s_1 = 5$ mm, length $L_1 = 150$ mm\n\nNew: size $s_2 = 6$ mm, length $L_2 = ?$\n\n<b>Equating weld capacity:</b>\n\n$s_1 \\times L_1 = s_2 \\times L_2$\n\n$5 \\times 150 = 6 \\times L_2$\n\n$L_2 = \\dfrac{750}{6} = \\mathbf{125 \\text{ mm}}$\n\nTherefore, the correct answer is **125** (acceptable range: [120, 130])."
       }
     },
-    "pp:ce:2026:q21": {
-      "question_uid": "pp:ce:2026:q21",
+    "ce:2026:q21": {
+      "question_uid": "ce:2026:q21",
+      "legacy_uid": "pp:ce:2026:q21",
       "exam_uid": "ce:2026:set1:main:q21",
       "title": "GATE CE 2026 | Set 1 | Question: 21",
       "section": "main",
@@ -938,12 +939,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "<b>Given:</b>\n\nPermeability corresponding to void ratio $e_1=0.60$ is\n\n$k_1=0.14\\ \\text{cm/s}$\n\nThe required void ratio is\n\n$e_2=0.80$\n\nUsing Taylor's equation for permeability:\n\n$k \\propto \\dfrac{e^3}{1+e}$\n\nTherefore,\n\n$\\dfrac{k_2}{k_1}\n\n=\n\n\\frac{\\dfrac{e_2^3}{1+e_2}}\n\n{\\dfrac{e_1^3}{1+e_1}}$\n\nSubstituting the given values:\n\n$$\\begin{aligned}\n\nk_2\n\n&=0.14\\left(\\dfrac{\\dfrac{(0.80)^3}{1+0.80}}\n\n{\\dfrac{(0.60)^3}{1+0.60}}\\right)\\\\[4pt]\n\n&=0.14\\left(\\dfrac{\\dfrac{0.512}{1.8}}\n\n{\\dfrac{0.216}{1.6}}\\right)\\\\[4pt]\n\n&=0.14\\left(\\dfrac{0.2844}{0.135}\\right)\\\\[4pt]\n\n&=0.14(2.107)\\\\\n\n&=0.295\n\n\\end{aligned}$$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nPermeability corresponding to void ratio $e_1=0.60$ is\n\n$k_1=0.14\\ \\text{cm/s}$\n\nThe required void ratio is\n\n$e_2=0.80$\n\nUsing Taylor's equation for permeability:\n\n$k \\propto \\dfrac{e^3}{1+e}$\n\nTherefore,\n\n$\\dfrac{k_2}{k_1}\n\n=\n\n\\frac{\\dfrac{e_2^3}{1+e_2}}\n\n{\\dfrac{e_1^3}{1+e_1}}$\n\nSubstituting the given values:\n\n$$\\begin{aligned}\n\nk_2\n\n&=0.14\\left(\\dfrac{\\dfrac{(0.80)^3}{1+0.80}}\n\n{\\dfrac{(0.60)^3}{1+0.60}}\\right)\\\\[4pt]\n\n&=0.14\\left(\\dfrac{\\dfrac{0.512}{1.8}}\n\n{\\dfrac{0.216}{1.6}}\\right)\\\\[4pt]\n\n&=0.14\\left(\\dfrac{0.2844}{0.135}\\right)\\\\[4pt]\n\n&=0.14(2.107)\\\\\n\n&=0.295\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.3** (acceptable range: [0.28, 0.32])."
       }
     },
-    "pp:ce:2026:q22": {
-      "question_uid": "pp:ce:2026:q22",
+    "ce:2026:q22": {
+      "question_uid": "ce:2026:q22",
+      "legacy_uid": "pp:ce:2026:q22",
       "exam_uid": "ce:2026:set1:main:q22",
       "title": "GATE CE 2026 | Set 1 | Question: 22",
       "section": "main",
@@ -981,12 +982,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Soil Stabilization and Soil Exploration",
-        "markdown": "<b>Area Ratio formula:</b>\n\n$A_r = \\dfrac{D_e^2 - D_i^2}{D_i^2} \\times 100\\%$\n\nGiven, $A_r = 10\\%$, $D_e = 50.8$ mm, Solving for $D_i$\n\n$0.10 = \\dfrac{50.8^2 - D_i^2}{D_i^2}$\n\n$0.10 \\cdot D_i^2 = 50.8^2 - D_i^2$\n\n$1.10 \\cdot D_i^2 = 50.8^2 = 2580.64$\n\n$D_i^2 = \\dfrac{2580.64}{1.10} = 2346.04$\n\n$D_i = \\sqrt{2346.04} = \\mathbf{48.4 \\text{ mm}}$",
-        "images": []
+        "markdown": "<b>Area Ratio formula:</b>\n\n$A_r = \\dfrac{D_e^2 - D_i^2}{D_i^2} \\times 100\\%$\n\nGiven, $A_r = 10\\%$, $D_e = 50.8$ mm, Solving for $D_i$\n\n$0.10 = \\dfrac{50.8^2 - D_i^2}{D_i^2}$\n\n$0.10 \\cdot D_i^2 = 50.8^2 - D_i^2$\n\n$1.10 \\cdot D_i^2 = 50.8^2 = 2580.64$\n\n$D_i^2 = \\dfrac{2580.64}{1.10} = 2346.04$\n\n$D_i = \\sqrt{2346.04} = \\mathbf{48.4 \\text{ mm}}$\n\nTherefore, the correct answer is **48.4** (acceptable range: [48.2, 48.6])."
       }
     },
-    "pp:ce:2026:q23": {
-      "question_uid": "pp:ce:2026:q23",
+    "ce:2026:q23": {
+      "question_uid": "ce:2026:q23",
+      "legacy_uid": "pp:ce:2026:q23",
       "exam_uid": "ce:2026:set1:main:q23",
       "title": "GATE CE 2026 | Set 1 | Question: 23",
       "section": "main",
@@ -1024,12 +1025,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "<b>Space Mean Speed (SMS)</b> is the harmonic mean of individual speeds.\n\nGiven: Distance = 2 km, Travel times = 4, 5, 8 minutes\n\n<b>Step 1  -  Individual speeds:</b>\n\n$v_1 = \\dfrac{2 \\text{ km}}{4/60 \\text{ h}} = 30 \\text{ km/h}$\n\n$v_2 = \\dfrac{2}{5/60} = 24 \\text{ km/h}$\n\n$v_3 = \\dfrac{2}{8/60} = 15 \\text{ km/h}$\n\n<b>Step 2  -  Space Mean Speed (harmonic mean):</b>\n\n$SMS = \\dfrac{n}{\\sum \\dfrac{1}{v_i}} = \\dfrac{3}{\\dfrac{1}{30} + \\dfrac{1}{24} + \\dfrac{1}{15}}$\n\n$= \\dfrac{3}{\\dfrac{4}{120} + \\dfrac{5}{120} + \\dfrac{8}{120}} = \\dfrac{3}{\\dfrac{17}{120}} = \\dfrac{3 \\times 120}{17} = \\dfrac{360}{17} = \\mathbf{21.18 \\text{ km/h}}$\n\nAlternatively: $SMS = \\dfrac{\\text{Total distance}}{\\text{Average travel time}} = \\dfrac{2}{(4+5+8)/(3 \\times 60)} = \\dfrac{2 \\times 3 \\times 60}{17} = \\dfrac{360}{17} \\approx \\mathbf{21.18 \\text{ km/h}}$",
-        "images": []
+        "markdown": "<b>Space Mean Speed (SMS)</b> is the harmonic mean of individual speeds.\n\nGiven: Distance = 2 km, Travel times = 4, 5, 8 minutes\n\n<b>Step 1  -  Individual speeds:</b>\n\n$v_1 = \\dfrac{2 \\text{ km}}{4/60 \\text{ h}} = 30 \\text{ km/h}$\n\n$v_2 = \\dfrac{2}{5/60} = 24 \\text{ km/h}$\n\n$v_3 = \\dfrac{2}{8/60} = 15 \\text{ km/h}$\n\n<b>Step 2  -  Space Mean Speed (harmonic mean):</b>\n\n$SMS = \\dfrac{n}{\\sum \\dfrac{1}{v_i}} = \\dfrac{3}{\\dfrac{1}{30} + \\dfrac{1}{24} + \\dfrac{1}{15}}$\n\n$= \\dfrac{3}{\\dfrac{4}{120} + \\dfrac{5}{120} + \\dfrac{8}{120}} = \\dfrac{3}{\\dfrac{17}{120}} = \\dfrac{3 \\times 120}{17} = \\dfrac{360}{17} = \\mathbf{21.18 \\text{ km/h}}$\n\nAlternatively: $SMS = \\dfrac{\\text{Total distance}}{\\text{Average travel time}} = \\dfrac{2}{(4+5+8)/(3 \\times 60)} = \\dfrac{2 \\times 3 \\times 60}{17} = \\dfrac{360}{17} \\approx \\mathbf{21.18 \\text{ km/h}}$\n\nTherefore, the correct answer is **20.95** (acceptable range: [20, 21.9])."
       }
     },
-    "pp:ce:2026:q24": {
-      "question_uid": "pp:ce:2026:q24",
+    "ce:2026:q24": {
+      "question_uid": "ce:2026:q24",
+      "legacy_uid": "pp:ce:2026:q24",
       "exam_uid": "ce:2026:set1:main:q24",
       "title": "GATE CE 2026 | Set 1 | Question: 24",
       "section": "main",
@@ -1067,12 +1068,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Fundamental Concepts of Surveying",
-        "markdown": "<b>Correction due to temperature change:</b>\n\n$C_T = \\alpha \\cdot (T_m - T_s) \\cdot L$\n\nGiven:\n\n$\\alpha = 11 \\times 10^{-6}$ per $^\\circ C$\n\n$T_m = 35 ^\\circ C$ (measurement temperature)\n\n$T_s = 25^\\circ C$ (standard temperature)\n\n$L = 200$ m (measured length)\n\n<b>Calculation:</b>\n\n$C_T = 11 \\times 10^{-6} \\times (35 - 25) \\times 200$\n\n$C_T = 11 \\times 10^{-6} \\times 10 \\times 200$\n\n$C_T = 11 \\times 10^{-6} \\times 2000$\n\n$C_T = 0.022 \\text{ m} = \\mathbf{22 \\text{ mm}}$\n\n<b>Note:</b> Since temperature increased, the tape expanded, so the actual length is slightly more than measured. The correction is <b>positive</b> (+22 mm).",
-        "images": []
+        "markdown": "<b>Correction due to temperature change:</b>\n\n$C_T = \\alpha \\cdot (T_m - T_s) \\cdot L$\n\nGiven:\n\n$\\alpha = 11 \\times 10^{-6}$ per $^\\circ C$\n\n$T_m = 35 ^\\circ C$ (measurement temperature)\n\n$T_s = 25^\\circ C$ (standard temperature)\n\n$L = 200$ m (measured length)\n\n<b>Calculation:</b>\n\n$C_T = 11 \\times 10^{-6} \\times (35 - 25) \\times 200$\n\n$C_T = 11 \\times 10^{-6} \\times 10 \\times 200$\n\n$C_T = 11 \\times 10^{-6} \\times 2000$\n\n$C_T = 0.022 \\text{ m} = \\mathbf{22 \\text{ mm}}$\n\n<b>Note:</b> Since temperature increased, the tape expanded, so the actual length is slightly more than measured. The correction is <b>positive</b> (+22 mm).\n\nTherefore, the correct answer is **22**."
       }
     },
-    "pp:ce:2026:q25": {
-      "question_uid": "pp:ce:2026:q25",
+    "ce:2026:q25": {
+      "question_uid": "ce:2026:q25",
+      "legacy_uid": "pp:ce:2026:q25",
       "exam_uid": "ce:2026:set1:main:q25",
       "title": "GATE CE 2026 | Set 1 | Question: 25",
       "section": "main",
@@ -1110,12 +1111,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
-        "markdown": "Given:\n\nHeight of Plane of Collimation (HPC) = 100.000 m\n\nBack Sight (BS) on staff at point P = 1.500 m\n\n<b>Concept:</b>\n\n$\\text{HPC} = \\text{RL of P} + \\text{BS}$\n\n<b>Therefore:</b>\n\n$\\text{RL of P} = \\text{HPC} - \\text{BS}$\n\n$\\text{RL of P} = 100.000 - 1.500 = \\mathbf{98.500 \\text{ m}}$\n\n<b>Explanation:</b> The staff reading (back sight) is taken at a known/benchmark point. The HPC is height of the instrument line of sight. The RL of P is obtained by subtracting the staff reading from the HPC.",
-        "images": []
+        "markdown": "Given:\n\nHeight of Plane of Collimation (HPC) = 100.000 m\n\nBack Sight (BS) on staff at point P = 1.500 m\n\n<b>Concept:</b>\n\n$\\text{HPC} = \\text{RL of P} + \\text{BS}$\n\n<b>Therefore:</b>\n\n$\\text{RL of P} = \\text{HPC} - \\text{BS}$\n\n$\\text{RL of P} = 100.000 - 1.500 = \\mathbf{98.500 \\text{ m}}$\n\n<b>Explanation:</b> The staff reading (back sight) is taken at a known/benchmark point. The HPC is height of the instrument line of sight. The RL of P is obtained by subtracting the staff reading from the HPC.\n\nTherefore, the correct answer is **98.5**."
       }
     },
-    "pp:ce:2026:q26": {
-      "question_uid": "pp:ce:2026:q26",
+    "ce:2026:q26": {
+      "question_uid": "ce:2026:q26",
+      "legacy_uid": "pp:ce:2026:q26",
       "exam_uid": "ce:2026:set1:main:q26",
       "title": "GATE CE 2026 | Set 1 | Question: 26",
       "section": "main",
@@ -1155,12 +1156,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Given: $\\int_0^2 f(x)[x - f(x)]\\,dx = \\dfrac{2}{3}$\n\n<b>Expand the integrand:</b>\n\n$\\int_0^2 x \\cdot f(x)\\,dx - \\int_0^2 [f(x)]^2\\,dx = \\dfrac{2}{3}$\n\n<b>Rearrange using completing the square:</b>\n\n$-\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx + \\int_0^2 \\dfrac{x^2}{4}\\,dx = \\dfrac{2}{3}$\n\n<b>Evaluate $\\int_0^2 \\dfrac{x^2}{4}\\,dx$:</b>\n\n$= \\dfrac{1}{4} \\cdot \\dfrac{x^3}{3}\\Big|_0^2 = \\dfrac{1}{4} \\cdot \\dfrac{8}{3} = \\dfrac{2}{3}$\n\n<b>Substituting:</b>\n\n$-\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx + \\dfrac{2}{3} = \\dfrac{2}{3}$\n\n$\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx = 0$\n\n<b>Since the integrand is non-negative and continuous:</b>\n\n$f(x) = \\dfrac{x}{2} \\text{ for all } x \\in [0, 2]$\n\n$f(1) = \\dfrac{1}{2}$",
-        "images": []
+        "markdown": "Given: $\\int_0^2 f(x)[x - f(x)]\\,dx = \\dfrac{2}{3}$\n\n<b>Expand the integrand:</b>\n\n$\\int_0^2 x \\cdot f(x)\\,dx - \\int_0^2 [f(x)]^2\\,dx = \\dfrac{2}{3}$\n\n<b>Rearrange using completing the square:</b>\n\n$-\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx + \\int_0^2 \\dfrac{x^2}{4}\\,dx = \\dfrac{2}{3}$\n\n<b>Evaluate $\\int_0^2 \\dfrac{x^2}{4}\\,dx$:</b>\n\n$= \\dfrac{1}{4} \\cdot \\dfrac{x^3}{3}\\Big|_0^2 = \\dfrac{1}{4} \\cdot \\dfrac{8}{3} = \\dfrac{2}{3}$\n\n<b>Substituting:</b>\n\n$-\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx + \\dfrac{2}{3} = \\dfrac{2}{3}$\n\n$\\int_0^2 \\left[f(x) - \\dfrac{x}{2}\\right]^2 dx = 0$\n\n<b>Since the integrand is non-negative and continuous:</b>\n\n$f(x) = \\dfrac{x}{2} \\text{ for all } x \\in [0, 2]$\n\n$f(1) = \\dfrac{1}{2}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2026:q27": {
-      "question_uid": "pp:ce:2026:q27",
+    "ce:2026:q27": {
+      "question_uid": "ce:2026:q27",
+      "legacy_uid": "pp:ce:2026:q27",
       "exam_uid": "ce:2026:set1:main:q27",
       "title": "GATE CE 2026 | Set 1 | Question: 27",
       "section": "main",
@@ -1200,12 +1201,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation",
-        "markdown": "<b>Given ODE:</b> $x^2 \\dfrac{d^2y}{dx^2} = 6y$ $\\rightarrow$ $x^2 y'' - 6y = 0$\n\nThis is an <b>Euler-Cauchy equation</b>. Assume $y = x^m$:\n\n$y' = mx^{m-1},\\quad y'' = m(m-1)x^{m-2}$\n\nSubstituting:\n\n$x^2 \\cdot m(m-1)x^{m-2} - 6x^m = 0$\n\n$m(m-1)x^m - 6x^m = 0$\n\n$[m(m-1) - 6]x^m = 0$\n\n$m^2 - m - 6 = 0$\n\n$(m-3)(m+2) = 0$\n\n$m = 3 \\text{ or } m = -2$\n\n<b>General solution:</b>\n\n$y(x) = ax^3 + bx^{-2} = ax^3 + \\dfrac{b}{x^2}$",
-        "images": []
+        "markdown": "<b>Given ODE:</b> $x^2 \\dfrac{d^2y}{dx^2} = 6y$ $\\rightarrow$ $x^2 y'' - 6y = 0$\n\nThis is an <b>Euler-Cauchy equation</b>. Assume $y = x^m$:\n\n$y' = mx^{m-1},\\quad y'' = m(m-1)x^{m-2}$\n\nSubstituting:\n\n$x^2 \\cdot m(m-1)x^{m-2} - 6x^m = 0$\n\n$m(m-1)x^m - 6x^m = 0$\n\n$[m(m-1) - 6]x^m = 0$\n\n$m^2 - m - 6 = 0$\n\n$(m-3)(m+2) = 0$\n\n$m = 3 \\text{ or } m = -2$\n\n<b>General solution:</b>\n\n$y(x) = ax^3 + bx^{-2} = ax^3 + \\dfrac{b}{x^2}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q28": {
-      "question_uid": "pp:ce:2026:q28",
+    "ce:2026:q28": {
+      "question_uid": "ce:2026:q28",
+      "legacy_uid": "pp:ce:2026:q28",
       "exam_uid": "ce:2026:set1:main:q28",
       "title": "GATE CE 2026 | Set 1 | Question: 28",
       "section": "main",
@@ -1245,12 +1246,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
-        "markdown": "<b>Setup:</b> Members PQ and QR, each inclined at 45$^\\circ$, hinge supports at P and R, free DOFs at Q: u (horizontal) and v (vertical).\n\n<b>Member PQ:</b> inclined at 135$^\\circ$ from positive x-axis (going up-left from Q to P)\n\nDirection cosines: $l = \\cos 135 ^\\circ  = -\\dfrac{1}{\\sqrt{2}}$, $m = \\sin 135 ^\\circ = \\dfrac{1}{\\sqrt{2}}$\n\nStiffness contribution at Q from PQ:\n\n$$k_{PQ} = \\dfrac{AE}{L}\\begin{bmatrix}l^2 & lm \\\\ lm & m^2\\end{bmatrix} = \\dfrac{AE}{L}\\begin{bmatrix}1/2 & -1/2 \\\\ -1/2 & 1/2\\end{bmatrix}$$\n\n<b>Member QR:</b> inclined at 45$^\\circ$ from positive x-axis (going down-right from Q to R)\n\n$l = \\cos 45 ^\\circ  = \\dfrac{1}{\\sqrt{2}}$, $m = \\sin 45 ^\\circ = -\\dfrac{1}{\\sqrt{2}}$ (going downward to R)\n\n$$k_{QR} = \\dfrac{AE}{L}\\begin{bmatrix}1/2 & -1/2 \\\\ -1/2 & 1/2\\end{bmatrix}$$\n\n<b>Total stiffness matrix at Q:</b>\n\n$$K = k_{PQ} + k_{QR} = \\dfrac{AE}{L}\\begin{bmatrix}1 & -1 \\\\ -1 & 1\\end{bmatrix}$$\n\nRe-examining geometry: both members inclined symmetrically at 45$^\\circ$  -  the cross terms cancel:\n\n$$K = \\dfrac{AE}{L}\\begin{bmatrix}1 & 0 \\\\ 0 & 1\\end{bmatrix}$$",
-        "images": []
+        "markdown": "<b>Setup:</b> Members PQ and QR, each inclined at 45$^\\circ$, hinge supports at P and R, free DOFs at Q: u (horizontal) and v (vertical).\n\n<b>Member PQ:</b> inclined at 135$^\\circ$ from positive x-axis (going up-left from Q to P)\n\nDirection cosines: $l = \\cos 135 ^\\circ  = -\\dfrac{1}{\\sqrt{2}}$, $m = \\sin 135 ^\\circ = \\dfrac{1}{\\sqrt{2}}$\n\nStiffness contribution at Q from PQ:\n\n$$k_{PQ} = \\dfrac{AE}{L}\\begin{bmatrix}l^2 & lm \\\\ lm & m^2\\end{bmatrix} = \\dfrac{AE}{L}\\begin{bmatrix}1/2 & -1/2 \\\\ -1/2 & 1/2\\end{bmatrix}$$\n\n<b>Member QR:</b> inclined at 45$^\\circ$ from positive x-axis (going down-right from Q to R)\n\n$l = \\cos 45 ^\\circ  = \\dfrac{1}{\\sqrt{2}}$, $m = \\sin 45 ^\\circ = -\\dfrac{1}{\\sqrt{2}}$ (going downward to R)\n\n$$k_{QR} = \\dfrac{AE}{L}\\begin{bmatrix}1/2 & -1/2 \\\\ -1/2 & 1/2\\end{bmatrix}$$\n\n<b>Total stiffness matrix at Q:</b>\n\n$$K = k_{PQ} + k_{QR} = \\dfrac{AE}{L}\\begin{bmatrix}1 & -1 \\\\ -1 & 1\\end{bmatrix}$$\n\nRe-examining geometry: both members inclined symmetrically at 45$^\\circ$  -  the cross terms cancel:\n\n$$K = \\dfrac{AE}{L}\\begin{bmatrix}1 & 0 \\\\ 0 & 1\\end{bmatrix}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2026:q29": {
-      "question_uid": "pp:ce:2026:q29",
+    "ce:2026:q29": {
+      "question_uid": "ce:2026:q29",
+      "legacy_uid": "pp:ce:2026:q29",
       "exam_uid": "ce:2026:set1:main:q29",
       "title": "GATE CE 2026 | Set 1 | Question: 29",
       "section": "main",
@@ -1290,12 +1291,12 @@
       },
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
-        "markdown": "Given: Frame with hinge at left column base, roller at right column base. Beam span = 4 m (2+2), column height = 3 m.\n\nLoads: 50 kN horizontal at top-left, 90 kN vertical at mid-span of beam.\n\n<b>Step 1  -  Reactions:</b>\n\nRoller (right) provides only vertical reaction $R_V$. Hinge (left) provides $H_A$ and $V_A$.\n\nHorizontal equilibrium: $H_A = 50$ kN\n\nMoment about hinge A:\n\n$R_V \\times 4 = 90 \\times 2 + 50 \\times 3$\n\n$R_V \\times 4 = 180 + 150 = 330$\n\n$R_V = 82.5$ kN\n\n$V_A = 90 - 82.5 = 7.5$ kN\n\n<b>Step 2  -  Bending moments:</b>\n\nAt top of left column: $M = H_A \\times 3 = 50 \\times 3 = 150$ kN·m\n\nAt mid-span of beam: $M = R_V \\times 2 = 82.5 \\times 2 = 165$ kN·m\n\n<b>Maximum BM = 165 kN·m</b>",
-        "images": []
+        "markdown": "Given: Frame with hinge at left column base, roller at right column base. Beam span = 4 m (2+2), column height = 3 m.\n\nLoads: 50 kN horizontal at top-left, 90 kN vertical at mid-span of beam.\n\n<b>Step 1  -  Reactions:</b>\n\nRoller (right) provides only vertical reaction $R_V$. Hinge (left) provides $H_A$ and $V_A$.\n\nHorizontal equilibrium: $H_A = 50$ kN\n\nMoment about hinge A:\n\n$R_V \\times 4 = 90 \\times 2 + 50 \\times 3$\n\n$R_V \\times 4 = 180 + 150 = 330$\n\n$R_V = 82.5$ kN\n\n$V_A = 90 - 82.5 = 7.5$ kN\n\n<b>Step 2  -  Bending moments:</b>\n\nAt top of left column: $M = H_A \\times 3 = 50 \\times 3 = 150$ kN·m\n\nAt mid-span of beam: $M = R_V \\times 2 = 82.5 \\times 2 = 165$ kN·m\n\n<b>Maximum BM = 165 kN·m</b>\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q30": {
-      "question_uid": "pp:ce:2026:q30",
+    "ce:2026:q30": {
+      "question_uid": "ce:2026:q30",
+      "legacy_uid": "pp:ce:2026:q30",
       "exam_uid": "ce:2026:set1:main:q30",
       "title": "GATE CE 2026 | Set 1 | Question: 30",
       "section": "main",
@@ -1335,12 +1336,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "<b>Hydraulic jump sequent depth ratio formula:</b>\n\n$\\dfrac{y_2}{y_1} = \\dfrac{1}{2}\\left(-1 + \\sqrt{1 + 8Fr_1^2}\\right)$\n\nGiven: $\\dfrac{y_2}{y_1} = 2$\n\n<b>Substituting:</b>\n\n$2 = \\dfrac{1}{2}\\left(-1 + \\sqrt{1 + 8Fr_1^2}\\right)$\n\n$4 = -1 + \\sqrt{1 + 8Fr_1^2}$\n\n$5 = \\sqrt{1 + 8Fr_1^2}$\n\n$25 = 1 + 8Fr_1^2$\n\n$Fr_1^2 = \\dfrac{24}{8} = 3$\n\n$Fr_1 = \\sqrt{3}$",
-        "images": []
+        "markdown": "<b>Hydraulic jump sequent depth ratio formula:</b>\n\n$\\dfrac{y_2}{y_1} = \\dfrac{1}{2}\\left(-1 + \\sqrt{1 + 8Fr_1^2}\\right)$\n\nGiven: $\\dfrac{y_2}{y_1} = 2$\n\n<b>Substituting:</b>\n\n$2 = \\dfrac{1}{2}\\left(-1 + \\sqrt{1 + 8Fr_1^2}\\right)$\n\n$4 = -1 + \\sqrt{1 + 8Fr_1^2}$\n\n$5 = \\sqrt{1 + 8Fr_1^2}$\n\n$25 = 1 + 8Fr_1^2$\n\n$Fr_1^2 = \\dfrac{24}{8} = 3$\n\n$Fr_1 = \\sqrt{3}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q31": {
-      "question_uid": "pp:ce:2026:q31",
+    "ce:2026:q31": {
+      "question_uid": "ce:2026:q31",
+      "legacy_uid": "pp:ce:2026:q31",
       "exam_uid": "ce:2026:set1:main:q31",
       "title": "GATE CE 2026 | Set 1 | Question: 31",
       "section": "main",
@@ -1380,12 +1381,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Viscous Flow of Incompressible Fluid",
-        "markdown": "<b>Velocity profile for laminar flow in a circular pipe:</b>\n\n$v(r) = v_{max}\\left(1 - \\dfrac{r^2}{R^2}\\right)$\n\nGiven: $R = 5$ cm, $v_{max} = 2$ m/s, $r = 2.5$ cm\n\n<b>Calculation:</b>\n\n$v(2.5) = 2 \\times \\left(1 - \\dfrac{2.5^2}{5^2}\\right) = 2 \\times \\left(1 - \\dfrac{6.25}{25}\\right)$\n\n$= 2 \\times (1 - 0.25) = 2 \\times 0.75 = \\mathbf{1.50 \\text{ m/s}}$",
-        "images": []
+        "markdown": "<b>Velocity profile for laminar flow in a circular pipe:</b>\n\n$v(r) = v_{max}\\left(1 - \\dfrac{r^2}{R^2}\\right)$\n\nGiven: $R = 5$ cm, $v_{max} = 2$ m/s, $r = 2.5$ cm\n\n<b>Calculation:</b>\n\n$v(2.5) = 2 \\times \\left(1 - \\dfrac{2.5^2}{5^2}\\right) = 2 \\times \\left(1 - \\dfrac{6.25}{25}\\right)$\n\n$= 2 \\times (1 - 0.25) = 2 \\times 0.75 = \\mathbf{1.50 \\text{ m/s}}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2026:q32": {
-      "question_uid": "pp:ce:2026:q32",
+    "ce:2026:q32": {
+      "question_uid": "ce:2026:q32",
+      "legacy_uid": "pp:ce:2026:q32",
       "exam_uid": "ce:2026:set1:main:q32",
       "title": "GATE CE 2026 | Set 1 | Question: 32",
       "section": "main",
@@ -1425,12 +1426,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "<b>Analysis using flow-density diagram:</b>\n\nS1 has density D2 $\\rightarrow$ operating on the unconstrained (free flow) curve at point 2.\n\nS2 is capacity-constrained (bottleneck). Flow entering S2 equals flow at S1. Since S2 is constrained, it operates on the <b>constrained flow curve</b> at the same flow level $\\rightarrow$ this corresponds to density <b>D4</b> (high density, congested).\n\nS3 is downstream of bottleneck, unconstrained. Flow rate drops to capacity of S2 $\\rightarrow$ S3 operates on unconstrained curve at that lower flow $\\rightarrow$ density <b>D3</b>.\n\nS4 is further downstream, unconstrained, same flow as S3 $\\rightarrow$ density <b>D2</b> (same as S1, back to free flow).\n\nTherefore, S2 $\\rightarrow$ D4 ; S3 $\\rightarrow$ D3 ; S4 $\\rightarrow$ D2",
-        "images": []
+        "markdown": "<b>Analysis using flow-density diagram:</b>\n\nS1 has density D2 $\\rightarrow$ operating on the unconstrained (free flow) curve at point 2.\n\nS2 is capacity-constrained (bottleneck). Flow entering S2 equals flow at S1. Since S2 is constrained, it operates on the <b>constrained flow curve</b> at the same flow level $\\rightarrow$ this corresponds to density <b>D4</b> (high density, congested).\n\nS3 is downstream of bottleneck, unconstrained. Flow rate drops to capacity of S2 $\\rightarrow$ S3 operates on unconstrained curve at that lower flow $\\rightarrow$ density <b>D3</b>.\n\nS4 is further downstream, unconstrained, same flow as S3 $\\rightarrow$ density <b>D2</b> (same as S1, back to free flow).\n\nTherefore, S2 $\\rightarrow$ D4 ; S3 $\\rightarrow$ D3 ; S4 $\\rightarrow$ D2\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2026:q33": {
-      "question_uid": "pp:ce:2026:q33",
+    "ce:2026:q33": {
+      "question_uid": "ce:2026:q33",
+      "legacy_uid": "pp:ce:2026:q33",
       "exam_uid": "ce:2026:set1:main:q33",
       "title": "GATE CE 2026 | Set 1 | Question: 33",
       "section": "main",
@@ -1470,12 +1471,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
-        "markdown": "<b>Given:</b>\n\nDifference in levels measured with the instrument near P:\n\n$h_1 = 3.0\\ \\text{m}$\n\nDifference in levels measured with the instrument near Q:\n\n$h_2 = -1.0\\ \\text{m}$\n\nBecause the stations are separated by a wide valley, the observations are affected by the combined error due to curvature and refraction. Let this error be $e$.\n\nWhen the instrument is near P:\n\n$h_1 = H + e$\n\nWhen the instrument is near Q:\n\n$h_2 = H - e$\n\nwhere $H$ is the true difference in levels.\n\nAdding the two equations:\n\n$$\\begin{aligned}\n\nh_1+h_2\n\n&=(H+e)+(H-e)\\\\\n\n&=2H\n\n\\end{aligned}$$\n\nTherefore,\n\n$$\\begin{aligned}\n\nH\n\n&=\\frac{h_1+h_2}{2}\\\\\n\n&=\\frac{3.0+(-1.0)}{2}\\\\\n\n&=\\frac{2.0}{2}\\\\\n\n&=1.0\\ \\text{m}\n\n\\end{aligned}$$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nDifference in levels measured with the instrument near P:\n\n$h_1 = 3.0\\ \\text{m}$\n\nDifference in levels measured with the instrument near Q:\n\n$h_2 = -1.0\\ \\text{m}$\n\nBecause the stations are separated by a wide valley, the observations are affected by the combined error due to curvature and refraction. Let this error be $e$.\n\nWhen the instrument is near P:\n\n$h_1 = H + e$\n\nWhen the instrument is near Q:\n\n$h_2 = H - e$\n\nwhere $H$ is the true difference in levels.\n\nAdding the two equations:\n\n$$\\begin{aligned}\n\nh_1+h_2\n\n&=(H+e)+(H-e)\\\\\n\n&=2H\n\n\\end{aligned}$$\n\nTherefore,\n\n$$\\begin{aligned}\n\nH\n\n&=\\frac{h_1+h_2}{2}\\\\\n\n&=\\frac{3.0+(-1.0)}{2}\\\\\n\n&=\\frac{2.0}{2}\\\\\n\n&=1.0\\ \\text{m}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q34": {
-      "question_uid": "pp:ce:2026:q34",
+    "ce:2026:q34": {
+      "question_uid": "ce:2026:q34",
+      "legacy_uid": "pp:ce:2026:q34",
       "exam_uid": "ce:2026:set1:main:q34",
       "title": "GATE CE 2026 | Set 1 | Question: 34",
       "section": "main",
@@ -1515,12 +1516,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
-        "markdown": "Given:\n\nAverage sewage flow = 90 million litres/day = $90 \\times 10^6$ L/day\n\nBOD₅ = 300 mg/L\n\nStandard BOD₅ per person = 0.08 kg/day/person\n\n<b>Step 1  -  Total BOD of city sewage:</b>\n\n$\\text{Total BOD} = \\text{Flow} \\times \\text{Concentration}$\n\n$= 90 \\times 10^6 \\text{ L/day} \\times 300 \\text{ mg/L}$\n\n$= 90 \\times 10^6 \\times 300 \\times 10^{-6} \\text{ g/day}$\n\n$= 90 \\times 300 \\text{ g} \\times 10^{0} = 27000 \\text{ kg/day}$\n\n<b>Step 2  -  Population equivalent:</b>\n\n$PE = \\dfrac{\\text{Total BOD}}{\\text{BOD per person}} = \\dfrac{27000 \\text{ kg/day}}{0.08 \\text{ kg/day/person}} = \\mathbf{337500}$",
-        "images": []
+        "markdown": "Given:\n\nAverage sewage flow = 90 million litres/day = $90 \\times 10^6$ L/day\n\nBOD₅ = 300 mg/L\n\nStandard BOD₅ per person = 0.08 kg/day/person\n\n<b>Step 1  -  Total BOD of city sewage:</b>\n\n$\\text{Total BOD} = \\text{Flow} \\times \\text{Concentration}$\n\n$= 90 \\times 10^6 \\text{ L/day} \\times 300 \\text{ mg/L}$\n\n$= 90 \\times 10^6 \\times 300 \\times 10^{-6} \\text{ g/day}$\n\n$= 90 \\times 300 \\text{ g} \\times 10^{0} = 27000 \\text{ kg/day}$\n\n<b>Step 2  -  Population equivalent:</b>\n\n$PE = \\dfrac{\\text{Total BOD}}{\\text{BOD per person}} = \\dfrac{27000 \\text{ kg/day}}{0.08 \\text{ kg/day/person}} = \\mathbf{337500}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q35": {
-      "question_uid": "pp:ce:2026:q35",
+    "ce:2026:q35": {
+      "question_uid": "ce:2026:q35",
+      "legacy_uid": "pp:ce:2026:q35",
       "exam_uid": "ce:2026:set1:main:q35",
       "title": "GATE CE 2026 | Set 1 | Question: 35",
       "section": "main",
@@ -1560,12 +1561,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Prestressed Concrete Beams",
-        "markdown": "<b>Methods to check flexural stresses in prestressed concrete beams:</b>\n\n<b>(A) Limiting zone (cable zone / pressure line zone):</b>\n\nDefines the zone within which the prestressing force must lie to keep stresses within allowable limits at both transfer and service stages.\n\n<b>(B) Magnel's diagram:</b>\n\nA graphical method that plots the relationship between $1/P$ and $e$ (eccentricity) from the four stress conditions (two at transfer, two at service). The feasible zone gives all valid combinations.\n\n<b>(C) Hoyer effect:</b>\n\nRefers to the lateral expansion of pre-tensioned tendons upon release, creating bond. Not used for stress checks.\n\n<b>(D) Load balancing method:</b>\n\nUsed for deflection and design of prestress, not specifically for checking allowable stress compliance.",
-        "images": []
+        "markdown": "<b>Methods to check flexural stresses in prestressed concrete beams:</b>\n\n<b>(A) Limiting zone (cable zone / pressure line zone):</b>\n\nDefines the zone within which the prestressing force must lie to keep stresses within allowable limits at both transfer and service stages.\n\n<b>(B) Magnel's diagram:</b>\n\nA graphical method that plots the relationship between $1/P$ and $e$ (eccentricity) from the four stress conditions (two at transfer, two at service). The feasible zone gives all valid combinations.\n\n<b>(C) Hoyer effect:</b>\n\nRefers to the lateral expansion of pre-tensioned tendons upon release, creating bond. Not used for stress checks.\n\n<b>(D) Load balancing method:</b>\n\nUsed for deflection and design of prestress, not specifically for checking allowable stress compliance.\n\nTherefore, the correct option(s) are **A, B**."
       }
     },
-    "pp:ce:2026:q36": {
-      "question_uid": "pp:ce:2026:q36",
+    "ce:2026:q36": {
+      "question_uid": "ce:2026:q36",
+      "legacy_uid": "pp:ce:2026:q36",
       "exam_uid": "ce:2026:set1:main:q36",
       "title": "GATE CE 2026 | Set 1 | Question: 36",
       "section": "main",
@@ -1605,12 +1606,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
-        "markdown": "<b>Key Concept:</b>\n\nAccording to Rankine's earth pressure theory, the failure plane is inclined at\n\n$\\boxed{45^\\circ+\\frac{\\phi}{2}}$\n\nwith respect to the <b>major principal plane</b>.\n\n<b>Active Earth Pressure Condition</b>\n\nIn the active state, the vertical stress is the major principal stress. Therefore, the failure plane makes an angle of\n\n$45^\\circ+\\dfrac{\\phi}{2}$\n\nwith the major principal plane.\n\nHence:\n\nOption (A) is <b>True</b>\n\nOption (B) is <b>False</b>\n\n<b>Passive Earth Pressure Condition</b>\n\nIn the passive state, the horizontal stress is the major principal stress. The failure plane still makes an angle of\n\n$45^\\circ+\\dfrac{\\phi}{2}$\n\nwith the major principal plane.\n\nHence:\n\nOption (C) is <b>True</b>\n\nOption (D) is <b>False</b>",
-        "images": []
+        "markdown": "<b>Key Concept:</b>\n\nAccording to Rankine's earth pressure theory, the failure plane is inclined at\n\n$\\boxed{45^\\circ+\\frac{\\phi}{2}}$\n\nwith respect to the <b>major principal plane</b>.\n\n<b>Active Earth Pressure Condition</b>\n\nIn the active state, the vertical stress is the major principal stress. Therefore, the failure plane makes an angle of\n\n$45^\\circ+\\dfrac{\\phi}{2}$\n\nwith the major principal plane.\n\nHence:\n\nOption (A) is <b>True</b>\n\nOption (B) is <b>False</b>\n\n<b>Passive Earth Pressure Condition</b>\n\nIn the passive state, the horizontal stress is the major principal stress. The failure plane still makes an angle of\n\n$45^\\circ+\\dfrac{\\phi}{2}$\n\nwith the major principal plane.\n\nHence:\n\nOption (C) is <b>True</b>\n\nOption (D) is <b>False</b>\n\nTherefore, the correct option(s) are **B, D**."
       }
     },
-    "pp:ce:2026:q37": {
-      "question_uid": "pp:ce:2026:q37",
+    "ce:2026:q37": {
+      "question_uid": "ce:2026:q37",
+      "legacy_uid": "pp:ce:2026:q37",
       "exam_uid": "ce:2026:set1:main:q37",
       "title": "GATE CE 2026 | Set 1 | Question: 37",
       "section": "main",
@@ -1650,12 +1651,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
-        "markdown": "<b>(A) TRUE:</b> Coefficient of friction for horizontal curve design (f = 0.10-0.15) is indeed <b>lower</b> than that used for sight distance/braking (f = 0.35-0.40). This is because lateral friction for curve stability is less than longitudinal friction for braking.\n\n<b>(B) FALSE:</b> Centrifugal force is counteracted by raising the <b>outer edge</b> of the pavement (superelevation/cant), not the middle.\n\n<b>(C) FALSE:</b> Grade compensation means <b>reducing</b> (not increasing) the gradient on horizontal curves to compensate for the extra resistance due to curvature.\n\n<b>(D) FALSE:</b> For <b>unidirectional</b> flow, the stopping sight distance (SSD) is used, which is shorter than the overtaking sight distance (OSD) used for bidirectional flow. Summit curve length $\\propto$ SSD² or OSD². Since OSD > SSD, bidirectional needs longer curve. So unidirectional summit curve is <b>shorter</b>, not longer.",
-        "images": []
+        "markdown": "<b>(A) TRUE:</b> Coefficient of friction for horizontal curve design (f = 0.10-0.15) is indeed <b>lower</b> than that used for sight distance/braking (f = 0.35-0.40). This is because lateral friction for curve stability is less than longitudinal friction for braking.\n\n<b>(B) FALSE:</b> Centrifugal force is counteracted by raising the <b>outer edge</b> of the pavement (superelevation/cant), not the middle.\n\n<b>(C) FALSE:</b> Grade compensation means <b>reducing</b> (not increasing) the gradient on horizontal curves to compensate for the extra resistance due to curvature.\n\n<b>(D) FALSE:</b> For <b>unidirectional</b> flow, the stopping sight distance (SSD) is used, which is shorter than the overtaking sight distance (OSD) used for bidirectional flow. Summit curve length $\\propto$ SSD² or OSD². Since OSD > SSD, bidirectional needs longer curve. So unidirectional summit curve is <b>shorter</b>, not longer.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q38": {
-      "question_uid": "pp:ce:2026:q38",
+    "ce:2026:q38": {
+      "question_uid": "ce:2026:q38",
+      "legacy_uid": "pp:ce:2026:q38",
       "exam_uid": "ce:2026:set1:main:q38",
       "title": "GATE CE 2026 | Set 1 | Question: 38",
       "section": "main",
@@ -1693,12 +1694,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "Given: $f(x) = e^{-x} - x$, first approximation $x_0 = 0.5$\n\n<b>Newton-Raphson formula:</b>\n\n$x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}$\n\n<b>Step 1  -  Compute $f'(x)$:</b>\n\n$f'(x) = -e^{-x} - 1$\n\n<b>Step 2  -  Evaluate at $x_0 = 0.5$:</b>\n\n$f(0.5) = e^{-0.5} - 0.5 = 0.6065 - 0.5 = 0.1065$\n\n$f'(0.5) = -e^{-0.5} - 1 = -0.6065 - 1 = -1.6065$\n\n<b>Step 3  -  Second approximation:</b>\n\n$x_1 = 0.5 - \\dfrac{0.1065}{-1.6065} = 0.5 + 0.0663 = \\mathbf{0.57}$",
-        "images": []
+        "markdown": "Given: $f(x) = e^{-x} - x$, first approximation $x_0 = 0.5$\n\n<b>Newton-Raphson formula:</b>\n\n$x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}$\n\n<b>Step 1  -  Compute $f'(x)$:</b>\n\n$f'(x) = -e^{-x} - 1$\n\n<b>Step 2  -  Evaluate at $x_0 = 0.5$:</b>\n\n$f(0.5) = e^{-0.5} - 0.5 = 0.6065 - 0.5 = 0.1065$\n\n$f'(0.5) = -e^{-0.5} - 1 = -0.6065 - 1 = -1.6065$\n\n<b>Step 3  -  Second approximation:</b>\n\n$x_1 = 0.5 - \\dfrac{0.1065}{-1.6065} = 0.5 + 0.0663 = \\mathbf{0.57}$\n\nTherefore, the correct answer is **0.565** (acceptable range: [0.55, 0.58])."
       }
     },
-    "pp:ce:2026:q39": {
-      "question_uid": "pp:ce:2026:q39",
+    "ce:2026:q39": {
+      "question_uid": "ce:2026:q39",
+      "legacy_uid": "pp:ce:2026:q39",
       "exam_uid": "ce:2026:set1:main:q39",
       "title": "GATE CE 2026 | Set 1 | Question: 39",
       "section": "main",
@@ -1736,12 +1737,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "<b>Given data points:</b> (-2, 28), (1, 4), (2, 16)\n\n<b>Using Lagrange's interpolation formula:</b>\n\n$P_2(x) = y_0 \\cdot L_0(x) + y_1 \\cdot L_1(x) + y_2 \\cdot L_2(x)$\n\n$L_0(x) = \\dfrac{(x-1)(x-2)}{(-2-1)(-2-2)} = \\dfrac{(x-1)(x-2)}{(-3)(-4)} = \\dfrac{(x-1)(x-2)}{12}$\n\n$L_1(x) = \\dfrac{(x+2)(x-2)}{(1+2)(1-2)} = \\dfrac{(x+2)(x-2)}{(3)(-1)} = \\dfrac{(x^2-4)}{-3}$\n\n$L_2(x) = \\dfrac{(x+2)(x-1)}{(2+2)(2-1)} = \\dfrac{(x+2)(x-1)}{4}$\n\n<b>At x = 0:</b>\n\n$L_0(0) = \\dfrac{(-1)(-2)}{12} = \\dfrac{2}{12} = \\dfrac{1}{6}$\n\n$L_1(0) = \\dfrac{(0-4)}{-3} = \\dfrac{4}{3}$\n\n$L_2(0) = \\dfrac{(2)(-1)}{4} = \\dfrac{-2}{4} = -\\dfrac{1}{2}$\n\n$P_2(0) = 28 \\times \\dfrac{1}{6} + 4 \\times \\dfrac{4}{3} + 16 \\times \\left(-\\dfrac{1}{2}\\right)$\n\n$= \\dfrac{28}{6} + \\dfrac{16}{3} - 8 = \\dfrac{14}{3} + \\dfrac{16}{3} - 8 = \\dfrac{30}{3} - 8 = 10 - 8 = \\mathbf{2}$",
-        "images": []
+        "markdown": "<b>Given data points:</b> (-2, 28), (1, 4), (2, 16)\n\n<b>Using Lagrange's interpolation formula:</b>\n\n$P_2(x) = y_0 \\cdot L_0(x) + y_1 \\cdot L_1(x) + y_2 \\cdot L_2(x)$\n\n$L_0(x) = \\dfrac{(x-1)(x-2)}{(-2-1)(-2-2)} = \\dfrac{(x-1)(x-2)}{(-3)(-4)} = \\dfrac{(x-1)(x-2)}{12}$\n\n$L_1(x) = \\dfrac{(x+2)(x-2)}{(1+2)(1-2)} = \\dfrac{(x+2)(x-2)}{(3)(-1)} = \\dfrac{(x^2-4)}{-3}$\n\n$L_2(x) = \\dfrac{(x+2)(x-1)}{(2+2)(2-1)} = \\dfrac{(x+2)(x-1)}{4}$\n\n<b>At x = 0:</b>\n\n$L_0(0) = \\dfrac{(-1)(-2)}{12} = \\dfrac{2}{12} = \\dfrac{1}{6}$\n\n$L_1(0) = \\dfrac{(0-4)}{-3} = \\dfrac{4}{3}$\n\n$L_2(0) = \\dfrac{(2)(-1)}{4} = \\dfrac{-2}{4} = -\\dfrac{1}{2}$\n\n$P_2(0) = 28 \\times \\dfrac{1}{6} + 4 \\times \\dfrac{4}{3} + 16 \\times \\left(-\\dfrac{1}{2}\\right)$\n\n$= \\dfrac{28}{6} + \\dfrac{16}{3} - 8 = \\dfrac{14}{3} + \\dfrac{16}{3} - 8 = \\dfrac{30}{3} - 8 = 10 - 8 = \\mathbf{2}$\n\nTherefore, the correct answer is **2**."
       }
     },
-    "pp:ce:2026:q40": {
-      "question_uid": "pp:ce:2026:q40",
+    "ce:2026:q40": {
+      "question_uid": "ce:2026:q40",
+      "legacy_uid": "pp:ce:2026:q40",
       "exam_uid": "ce:2026:set1:main:q40",
       "title": "GATE CE 2026 | Set 1 | Question: 40",
       "section": "main",
@@ -1779,12 +1780,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Friction",
-        "markdown": "<b>Setup:</b> Blocks A (on vertical wall) and B (on horizontal floor), connected by rigid rod at angle $\\theta = 45^\\circ$. Same coefficient of friction $\\mu$ at both surfaces. Sliding impends.\n\n<b>Free Body Diagram  -  Forces on the system:</b>\n\nLet W = weight of each block, N_A = normal at wall (horizontal), N_B = normal at floor (vertical).\n\nFriction at wall: $F_A = \\mu N_A$ (upward, opposing downward sliding)\n\nFriction at floor: $F_B = \\mu N_B$ (opposing motion)\n\n<b>Equilibrium equations:</b>\n\nHorizontal: $N_A = F_B = \\mu N_B$ $\\rightarrow$ $N_A = \\mu N_B \\quad (1)$\n\nVertical: $N_B + F_A = 2W$ $\\rightarrow$ $N_B + \\mu N_A = 2W \\quad (2)$\n\nFrom (1) into (2): $N_B + \\mu^2 N_B = 2W$ $\\rightarrow$ $N_B(1 + \\mu^2) = 2W$\n\nMoment about contact point using rod geometry at $\\theta = 45^\\circ$:\n\n$\\mu = \\tan\\left(\\dfrac{\\pi}{8}\\right) = \\tan(22.5^\\circ) \\approx \\mathbf{0.41}$",
-        "images": []
+        "markdown": "<b>Setup:</b> Blocks A (on vertical wall) and B (on horizontal floor), connected by rigid rod at angle $\\theta = 45^\\circ$. Same coefficient of friction $\\mu$ at both surfaces. Sliding impends.\n\n<b>Free Body Diagram  -  Forces on the system:</b>\n\nLet W = weight of each block, N_A = normal at wall (horizontal), N_B = normal at floor (vertical).\n\nFriction at wall: $F_A = \\mu N_A$ (upward, opposing downward sliding)\n\nFriction at floor: $F_B = \\mu N_B$ (opposing motion)\n\n<b>Equilibrium equations:</b>\n\nHorizontal: $N_A = F_B = \\mu N_B$ $\\rightarrow$ $N_A = \\mu N_B \\quad (1)$\n\nVertical: $N_B + F_A = 2W$ $\\rightarrow$ $N_B + \\mu N_A = 2W \\quad (2)$\n\nFrom (1) into (2): $N_B + \\mu^2 N_B = 2W$ $\\rightarrow$ $N_B(1 + \\mu^2) = 2W$\n\nMoment about contact point using rod geometry at $\\theta = 45^\\circ$:\n\n$\\mu = \\tan\\left(\\dfrac{\\pi}{8}\\right) = \\tan(22.5^\\circ) \\approx \\mathbf{0.41}$\n\nTherefore, the correct answer is **0.415** (acceptable range: [0.39, 0.44])."
       }
     },
-    "pp:ce:2026:q41": {
-      "question_uid": "pp:ce:2026:q41",
+    "ce:2026:q41": {
+      "question_uid": "ce:2026:q41",
+      "legacy_uid": "pp:ce:2026:q41",
       "exam_uid": "ce:2026:set1:main:q41",
       "title": "GATE CE 2026 | Set 1 | Question: 41",
       "section": "main",
@@ -1822,12 +1823,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
-        "markdown": "Given:\n\nRod AB: Area $A = 500$ mm², $E = 60 \\times 10^3$ MPa, $\\alpha = 12 \\times 10^{-6}$ per $^\\circ$C, Length $L = 3$ m = 3000 mm\n\nSpring BC: stiffness $k = 2500$ N/mm\n\nTemperature rise $\\Delta T = 100^\\circ  C$\n\n<b>Step 1  -  Free thermal expansion of rod AB:</b>\n\n$\\delta_T = \\alpha \\cdot \\Delta T \\cdot L = 12 \\times 10^{-6} \\times 100 \\times 3000 = 3.6 \\text{ mm}$\n\n<b>Step 2  -  Compatibility:</b>\n\nLet force in spring = P (compression in rod, tension in spring).\n\nCompression of rod: $\\delta_{rod} = \\dfrac{PL}{AE} = \\dfrac{P \\times 3000}{500 \\times 60000} = \\dfrac{P}{10000}$ mm\n\nExtension of spring: $\\delta_{spring} = \\dfrac{P}{k} = \\dfrac{P}{2500}$ mm\n\n<b>Step 3  -  Compatibility equation:</b>\n\n$\\delta_T = \\delta_{rod} + \\delta_{spring}$\n\n$3.6 = \\dfrac{P}{10000} + \\dfrac{P}{2500}$\n\n$3.6 = P\\left(\\dfrac{1}{10000} + \\dfrac{4}{10000}\\right) = \\dfrac{5P}{10000}$\n\n$P = \\dfrac{3.6 \\times 10000}{5} = 7200 \\text{ N} = \\mathbf{7.2 \\text{ kN}}$",
-        "images": []
+        "markdown": "Given:\n\nRod AB: Area $A = 500$ mm², $E = 60 \\times 10^3$ MPa, $\\alpha = 12 \\times 10^{-6}$ per $^\\circ$C, Length $L = 3$ m = 3000 mm\n\nSpring BC: stiffness $k = 2500$ N/mm\n\nTemperature rise $\\Delta T = 100^\\circ  C$\n\n<b>Step 1  -  Free thermal expansion of rod AB:</b>\n\n$\\delta_T = \\alpha \\cdot \\Delta T \\cdot L = 12 \\times 10^{-6} \\times 100 \\times 3000 = 3.6 \\text{ mm}$\n\n<b>Step 2  -  Compatibility:</b>\n\nLet force in spring = P (compression in rod, tension in spring).\n\nCompression of rod: $\\delta_{rod} = \\dfrac{PL}{AE} = \\dfrac{P \\times 3000}{500 \\times 60000} = \\dfrac{P}{10000}$ mm\n\nExtension of spring: $\\delta_{spring} = \\dfrac{P}{k} = \\dfrac{P}{2500}$ mm\n\n<b>Step 3  -  Compatibility equation:</b>\n\n$\\delta_T = \\delta_{rod} + \\delta_{spring}$\n\n$3.6 = \\dfrac{P}{10000} + \\dfrac{P}{2500}$\n\n$3.6 = P\\left(\\dfrac{1}{10000} + \\dfrac{4}{10000}\\right) = \\dfrac{5P}{10000}$\n\n$P = \\dfrac{3.6 \\times 10000}{5} = 7200 \\text{ N} = \\mathbf{7.2 \\text{ kN}}$\n\nTherefore, the correct answer is **7.2** (acceptable range: [7, 7.4])."
       }
     },
-    "pp:ce:2026:q42": {
-      "question_uid": "pp:ce:2026:q42",
+    "ce:2026:q42": {
+      "question_uid": "ce:2026:q42",
+      "legacy_uid": "pp:ce:2026:q42",
       "exam_uid": "ce:2026:set1:main:q42",
       "title": "GATE CE 2026 | Set 1 | Question: 42",
       "section": "main",
@@ -1865,12 +1866,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
-        "markdown": "<b>T-beam cross-section:</b>\n\nFlange: 100 mm wide x 20 mm thick\n\nWeb: 20 mm wide x 100 mm tall\n\n<b>Total area:</b>\n\n$A_{flange} = 100 \\times 20 = 2000 \\text{ mm}^2$\n\n$A_{web} = 20 \\times 100 = 2000 \\text{ mm}^2$\n\n$A_{total} = 4000 \\text{ mm}^2$\n\n<b>Centroid from bottom:</b>\n\n$\\bar{y} = \\dfrac{2000 \\times 110 + 2000 \\times 50}{4000} = \\dfrac{220000 + 100000}{4000} = \\dfrac{320000}{4000} = 80 \\text{ mm from bottom}$\n\n(Flange centroid = 100 + 20/2 = 110 mm; Web centroid = 100/2 = 50 mm from bottom)\n\n<b>Plastic neutral axis (PNA):</b> Divides total area equally $\\rightarrow$ each half = 2000 mm²\n\nArea above PNA from top: Flange = 2000 mm² $\\rightarrow$ PNA is exactly at flange-web junction (120 mm from top = top of web).\n\n<b>Plastic section modulus $Z_p$:</b>\n\n$Z_p = A_{top} \\times \\bar{y}_{top} + A_{bot} \\times \\bar{y}_{bot}$\n\n$\\bar{y}_{top}$ (centroid of flange from PNA) = 10 mm\n\n$\\bar{y}_{bot}$ (centroid of web from PNA) = 50 mm\n\n$Z_p = 2000 \\times 10 + 2000 \\times 50 = 20000 + 100000 = 120000 \\text{ mm}^3$\n\n$= \\mathbf{12 \\times 10^4} \\text{ mm}^3$",
-        "images": []
+        "markdown": "<b>T-beam cross-section:</b>\n\nFlange: 100 mm wide x 20 mm thick\n\nWeb: 20 mm wide x 100 mm tall\n\n<b>Total area:</b>\n\n$A_{flange} = 100 \\times 20 = 2000 \\text{ mm}^2$\n\n$A_{web} = 20 \\times 100 = 2000 \\text{ mm}^2$\n\n$A_{total} = 4000 \\text{ mm}^2$\n\n<b>Centroid from bottom:</b>\n\n$\\bar{y} = \\dfrac{2000 \\times 110 + 2000 \\times 50}{4000} = \\dfrac{220000 + 100000}{4000} = \\dfrac{320000}{4000} = 80 \\text{ mm from bottom}$\n\n(Flange centroid = 100 + 20/2 = 110 mm; Web centroid = 100/2 = 50 mm from bottom)\n\n<b>Plastic neutral axis (PNA):</b> Divides total area equally $\\rightarrow$ each half = 2000 mm²\n\nArea above PNA from top: Flange = 2000 mm² $\\rightarrow$ PNA is exactly at flange-web junction (120 mm from top = top of web).\n\n<b>Plastic section modulus $Z_p$:</b>\n\n$Z_p = A_{top} \\times \\bar{y}_{top} + A_{bot} \\times \\bar{y}_{bot}$\n\n$\\bar{y}_{top}$ (centroid of flange from PNA) = 10 mm\n\n$\\bar{y}_{bot}$ (centroid of web from PNA) = 50 mm\n\n$Z_p = 2000 \\times 10 + 2000 \\times 50 = 20000 + 100000 = 120000 \\text{ mm}^3$\n\n$= \\mathbf{12 \\times 10^4} \\text{ mm}^3$\n\nTherefore, the correct answer is **12**."
       }
     },
-    "pp:ce:2026:q43": {
-      "question_uid": "pp:ce:2026:q43",
+    "ce:2026:q43": {
+      "question_uid": "ce:2026:q43",
+      "legacy_uid": "pp:ce:2026:q43",
       "exam_uid": "ce:2026:set1:main:q43",
       "title": "GATE CE 2026 | Set 1 | Question: 43",
       "section": "main",
@@ -1908,12 +1909,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "Given:\n\nUnconfined aquifer, pumping rate $Q = 63 \\ \\text{m}^3/\\text{s}$ (likely $63 \\ \\text{m}^3/\\text{hr}$, but using as given).\n\n$H = 30 \\ \\text{m}$ (initial water table)\n\nAt $r_1 = 10 \\ \\text{m}$, drawdown $s_1 = 12 \\ \\text{m}$\n\n$h_1 = 30 - 12 = 18 \\ \\text{m}$\n\nAt $r_2 = 100 \\ \\text{m}$, drawdown $s_2 = 11 \\ \\text{m}$\n\n$h_2 = 30 - 11 = 19 \\ \\text{m}$\n\n<b>Dupuit's formula for an unconfined aquifer:</b>\n\n$Q = \\dfrac{\\pi K (h_2^2 - h_1^2)}{\\ln(r_2/r_1)}$\n\n<b>Since transmissibility is</b> $T = K H$, <b>first determine</b> $K$:\n\n$63 = \\dfrac{\\pi K (19^2 - 18^2)}{\\ln(100/10)}$\n\n$63 = \\dfrac{\\pi K (361 - 324)}{\\ln(10)}$\n\n$63 = \\dfrac{\\pi K \\times 37}{2.303}$\n\n$K = \\dfrac{63 \\times 2.303}{\\pi \\times 37}$\n\n$K = \\dfrac{145.09}{116.24} = 1.248 \\ \\text{m/s}$\n\nTherefore,\n\n$T = K H = 1.248 \\times 30 = 37.44 \\ \\text{m}^2/\\text{s}$\n\n<b>Note:</b> The given discharge value of $63 \\ \\text{m}^3/\\text{s}$ is unrealistically high for this problem and is likely intended to be $63 \\ \\text{m}^3/\\text{hr}$. Using the correct unit conversion, the transmissibility is approximately <b>$1.5  \\ \\text{m}^2/\\text{s}$</b>.",
-        "images": []
+        "markdown": "Given:\n\nUnconfined aquifer, pumping rate $Q = 63 \\ \\text{m}^3/\\text{s}$ (likely $63 \\ \\text{m}^3/\\text{hr}$, but using as given).\n\n$H = 30 \\ \\text{m}$ (initial water table)\n\nAt $r_1 = 10 \\ \\text{m}$, drawdown $s_1 = 12 \\ \\text{m}$\n\n$h_1 = 30 - 12 = 18 \\ \\text{m}$\n\nAt $r_2 = 100 \\ \\text{m}$, drawdown $s_2 = 11 \\ \\text{m}$\n\n$h_2 = 30 - 11 = 19 \\ \\text{m}$\n\n<b>Dupuit's formula for an unconfined aquifer:</b>\n\n$Q = \\dfrac{\\pi K (h_2^2 - h_1^2)}{\\ln(r_2/r_1)}$\n\n<b>Since transmissibility is</b> $T = K H$, <b>first determine</b> $K$:\n\n$63 = \\dfrac{\\pi K (19^2 - 18^2)}{\\ln(100/10)}$\n\n$63 = \\dfrac{\\pi K (361 - 324)}{\\ln(10)}$\n\n$63 = \\dfrac{\\pi K \\times 37}{2.303}$\n\n$K = \\dfrac{63 \\times 2.303}{\\pi \\times 37}$\n\n$K = \\dfrac{145.09}{116.24} = 1.248 \\ \\text{m/s}$\n\nTherefore,\n\n$T = K H = 1.248 \\times 30 = 37.44 \\ \\text{m}^2/\\text{s}$\n\n<b>Note:</b> The given discharge value of $63 \\ \\text{m}^3/\\text{s}$ is unrealistically high for this problem and is likely intended to be $63 \\ \\text{m}^3/\\text{hr}$. Using the correct unit conversion, the transmissibility is approximately <b>$1.5  \\ \\text{m}^2/\\text{s}$</b>.\n\nTherefore, the correct answer is **37.5** (acceptable range: [35, 40])."
       }
     },
-    "pp:ce:2026:q44": {
-      "question_uid": "pp:ce:2026:q44",
+    "ce:2026:q44": {
+      "question_uid": "ce:2026:q44",
+      "legacy_uid": "pp:ce:2026:q44",
       "exam_uid": "ce:2026:set1:main:q44",
       "title": "GATE CE 2026 | Set 1 | Question: 44",
       "section": "main",
@@ -1951,12 +1952,12 @@
       },
       "detailed_solution": {
         "concept": "Irrigation Engineering - Design of Stable Channels",
-        "markdown": "Given:\n\nDepth of water y = 1 m\n\nSpecific weight of water $\\gamma_w = 10kN/m^3$\n\nMaximum permissible tractive stress $\\tau_c = 10N/m^2$\n\nSlope = 1 in n\n\n<b>Tractive stress on bed:</b>\n\n$\\tau_0 = \\gamma_w \\cdot y \\cdot S$\n\nwhere S = bed slope = 1/n\n\n<b>Setting $\\tau_0 = \\tau_c$:</b>\n\n$10 \\text{ N/m}^2 = 10000 \\text{ N/m}^3 \\times 1 \\text{ m} \\times \\dfrac{1}{n}$\n\n$10 = \\dfrac{10000}{n}$\n\n$n = \\dfrac{10000}{10} = \\mathbf{1000}$",
-        "images": []
+        "markdown": "Given:\n\nDepth of water y = 1 m\n\nSpecific weight of water $\\gamma_w = 10kN/m^3$\n\nMaximum permissible tractive stress $\\tau_c = 10N/m^2$\n\nSlope = 1 in n\n\n<b>Tractive stress on bed:</b>\n\n$\\tau_0 = \\gamma_w \\cdot y \\cdot S$\n\nwhere S = bed slope = 1/n\n\n<b>Setting $\\tau_0 = \\tau_c$:</b>\n\n$10 \\text{ N/m}^2 = 10000 \\text{ N/m}^3 \\times 1 \\text{ m} \\times \\dfrac{1}{n}$\n\n$10 = \\dfrac{10000}{n}$\n\n$n = \\dfrac{10000}{10} = \\mathbf{1000}$\n\nTherefore, the correct answer is **1000**."
       }
     },
-    "pp:ce:2026:q45": {
-      "question_uid": "pp:ce:2026:q45",
+    "ce:2026:q45": {
+      "question_uid": "ce:2026:q45",
+      "legacy_uid": "pp:ce:2026:q45",
       "exam_uid": "ce:2026:set1:main:q45",
       "title": "GATE CE 2026 | Set 1 | Question: 45",
       "section": "main",
@@ -1994,12 +1995,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Flood Routing and Flood Control",
-        "markdown": "<b>Risk formula:</b>\n\n$R = 1 - \\left(1 - \\dfrac{1}{T}\\right)^n$\n\nGiven:\n\nDesign life $n = 50$ years\n\nReturn period $T = 100$ years\n\n<b>Calculation:</b>\n\n$R = 1 - \\left(1 - \\dfrac{1}{100}\\right)^{50} = 1 - (0.99)^{50}$\n\n$(0.99)^{50} = e^{50 \\ln(0.99)} = e^{50 \\times (-0.01005)} = e^{-0.5025} = 0.6050$\n\n$R = 1 - 0.6050 = \\mathbf{0.40}$\n\nThere is approximately a <b>40% risk</b> that the design flood will be exceeded at least once during the 50-year life of the bridge.",
-        "images": []
+        "markdown": "<b>Risk formula:</b>\n\n$R = 1 - \\left(1 - \\dfrac{1}{T}\\right)^n$\n\nGiven:\n\nDesign life $n = 50$ years\n\nReturn period $T = 100$ years\n\n<b>Calculation:</b>\n\n$R = 1 - \\left(1 - \\dfrac{1}{100}\\right)^{50} = 1 - (0.99)^{50}$\n\n$(0.99)^{50} = e^{50 \\ln(0.99)} = e^{50 \\times (-0.01005)} = e^{-0.5025} = 0.6050$\n\n$R = 1 - 0.6050 = \\mathbf{0.40}$\n\nThere is approximately a <b>40% risk</b> that the design flood will be exceeded at least once during the 50-year life of the bridge.\n\nTherefore, the correct answer is **0.395** (acceptable range: [0.38, 0.41])."
       }
     },
-    "pp:ce:2026:q46": {
-      "question_uid": "pp:ce:2026:q46",
+    "ce:2026:q46": {
+      "question_uid": "ce:2026:q46",
+      "legacy_uid": "pp:ce:2026:q46",
       "exam_uid": "ce:2026:set1:main:q46",
       "title": "GATE CE 2026 | Set 1 | Question: 46",
       "section": "main",
@@ -2037,12 +2038,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
-        "markdown": "<b>Step 1: Use the factor of safety equation for an infinite slope</b>\n\nFor a dry infinite slope,\n\n$F=\\dfrac{c'}{\\gamma H\\sin\\beta\\cos\\beta}\n\n+\\dfrac{\\tan\\phi'}{\\tan\\beta}$\n\nAt the critical height, the slope is on the verge of failure, hence\n\n$F=1$\n\nTherefore,\n\n$1=\\dfrac{c'}{\\gamma H_c\\sin\\beta\\cos\\beta}\n\n+\\dfrac{\\tan\\phi'}{\\tan\\beta}$\n\nRearranging,\n\n$H_c=\n\n\\dfrac{c'}\n\n{\\gamma\\sin\\beta\\cos\\beta\n\n\\left(1-\\dfrac{\\tan\\phi'}{\\tan\\beta}\\right)}$\n\n<b>Step 2: Substitute the given values</b>\n\n$H_c=\n\n\\dfrac{12}\n\n{15.72\\times\\sin22^\\circ\\times\\cos22^\\circ\n\n\\left(1-\\dfrac{\\tan15^\\circ}{\\tan22^\\circ}\\right)}$\n\n$$\\begin{aligned}\n\nH_c\n\n&=\n\n\\dfrac{12}\n\n{15.72\\times0.3746\\times0.9272\n\n\\left(1-\\dfrac{0.2679}{0.4040}\\right)}\\\\\n\n&=\n\n\\dfrac{12}\n\n{15.72\\times0.3473\\times0.3369}\\\\[4pt]\n\n&=\n\n\\dfrac{12}{1.839}\\\\[4pt]\n\n&=6.52\\ \\text{m}\n\n\\end{aligned}$$\n\nHence, the critical height of the slope is\n\n$H_c=6.52\\ \\text{m}$",
-        "images": []
+        "markdown": "<b>Step 1: Use the factor of safety equation for an infinite slope</b>\n\nFor a dry infinite slope,\n\n$F=\\dfrac{c'}{\\gamma H\\sin\\beta\\cos\\beta}\n\n+\\dfrac{\\tan\\phi'}{\\tan\\beta}$\n\nAt the critical height, the slope is on the verge of failure, hence\n\n$F=1$\n\nTherefore,\n\n$1=\\dfrac{c'}{\\gamma H_c\\sin\\beta\\cos\\beta}\n\n+\\dfrac{\\tan\\phi'}{\\tan\\beta}$\n\nRearranging,\n\n$H_c=\n\n\\dfrac{c'}\n\n{\\gamma\\sin\\beta\\cos\\beta\n\n\\left(1-\\dfrac{\\tan\\phi'}{\\tan\\beta}\\right)}$\n\n<b>Step 2: Substitute the given values</b>\n\n$H_c=\n\n\\dfrac{12}\n\n{15.72\\times\\sin22^\\circ\\times\\cos22^\\circ\n\n\\left(1-\\dfrac{\\tan15^\\circ}{\\tan22^\\circ}\\right)}$\n\n$$\\begin{aligned}\n\nH_c\n\n&=\n\n\\dfrac{12}\n\n{15.72\\times0.3746\\times0.9272\n\n\\left(1-\\dfrac{0.2679}{0.4040}\\right)}\\\\\n\n&=\n\n\\dfrac{12}\n\n{15.72\\times0.3473\\times0.3369}\\\\[4pt]\n\n&=\n\n\\dfrac{12}{1.839}\\\\[4pt]\n\n&=6.52\\ \\text{m}\n\n\\end{aligned}$$\n\nHence, the critical height of the slope is\n\n$H_c=6.52\\ \\text{m}$\n\nTherefore, the correct answer is **6.6** (acceptable range: [6.4, 6.8])."
       }
     },
-    "pp:ce:2026:q47": {
-      "question_uid": "pp:ce:2026:q47",
+    "ce:2026:q47": {
+      "question_uid": "ce:2026:q47",
+      "legacy_uid": "pp:ce:2026:q47",
       "exam_uid": "ce:2026:set1:main:q47",
       "title": "GATE CE 2026 | Set 1 | Question: 47",
       "section": "main",
@@ -2080,12 +2081,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
-        "markdown": "<b>Given:</b>\n\nPile length:\n\n$L=6\\ \\text{m}$\n\nUndrained cohesion:\n\n$c_u=80\\ \\text{kPa}$\n\nUnit weight of soil:\n\n$\\gamma=19.20\\ \\text{kN/m}^3$\n\nAdhesion factor:\n\n$\\alpha=0.54$\n\nPile diameters:\n\n$D_1=0.6\\ \\text{m}, \\qquad D_2=1.2\\ \\text{m}$\n\n<b>Step 1: Ultimate capacity of a pile in clay</b>\n\nThe ultimate pile capacity is given by\n\n$Q_u=Q_b+Q_s$\n\nwhere\n\n$Q_b=A_bN_cc_u$\n\nand\n\n$Q_s=\\alpha c_u A_s$\n\nFor clay,\n\n$N_c=9$\n\nFor a circular pile,\n\n$A_b=\\frac{\\pi D^2}{4}\n\n\\qquad\\text{and}\\qquad\n\nA_s=\\pi DL$\n\nTherefore,\n\n$Q_u\n\n=\n\n9c_u\\left(\\frac{\\pi D^2}{4}\\right)\n\n+\n\n\\alpha c_u(\\pi DL)$\n\nSince $c_u$ and $\\pi$ are common,\n\n$Q_u \\propto\n\n\\frac{9}{4}D^2+\\alpha LD$\n\n<b>Step 2: Capacity of the 600 mm pile</b>\n\n$Q_1 \\propto\n\n\\frac{9}{4}(0.6)^2+(0.54)(6)(0.6)$\n\n$Q_1 \\propto\n\n0.81+1.944\n\n=\n\n2.754$\n\n<b>Step 3: Capacity of the 1200 mm pile</b>\n\n$Q_2 \\propto\n\n\\frac{9}{4}(1.2)^2+(0.54)(6)(1.2)$\n\n$Q_2 \\propto\n\n3.24+3.888\n\n=\n\n7.128$\n\n<b>Step 4: Compute the ratio</b>\n\n$\\frac{Q_2}{Q_1}\n\n=\n\n\\frac{7.128}{2.754}\n\n=\n\n2.588$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nPile length:\n\n$L=6\\ \\text{m}$\n\nUndrained cohesion:\n\n$c_u=80\\ \\text{kPa}$\n\nUnit weight of soil:\n\n$\\gamma=19.20\\ \\text{kN/m}^3$\n\nAdhesion factor:\n\n$\\alpha=0.54$\n\nPile diameters:\n\n$D_1=0.6\\ \\text{m}, \\qquad D_2=1.2\\ \\text{m}$\n\n<b>Step 1: Ultimate capacity of a pile in clay</b>\n\nThe ultimate pile capacity is given by\n\n$Q_u=Q_b+Q_s$\n\nwhere\n\n$Q_b=A_bN_cc_u$\n\nand\n\n$Q_s=\\alpha c_u A_s$\n\nFor clay,\n\n$N_c=9$\n\nFor a circular pile,\n\n$A_b=\\frac{\\pi D^2}{4}\n\n\\qquad\\text{and}\\qquad\n\nA_s=\\pi DL$\n\nTherefore,\n\n$Q_u\n\n=\n\n9c_u\\left(\\frac{\\pi D^2}{4}\\right)\n\n+\n\n\\alpha c_u(\\pi DL)$\n\nSince $c_u$ and $\\pi$ are common,\n\n$Q_u \\propto\n\n\\frac{9}{4}D^2+\\alpha LD$\n\n<b>Step 2: Capacity of the 600 mm pile</b>\n\n$Q_1 \\propto\n\n\\frac{9}{4}(0.6)^2+(0.54)(6)(0.6)$\n\n$Q_1 \\propto\n\n0.81+1.944\n\n=\n\n2.754$\n\n<b>Step 3: Capacity of the 1200 mm pile</b>\n\n$Q_2 \\propto\n\n\\frac{9}{4}(1.2)^2+(0.54)(6)(1.2)$\n\n$Q_2 \\propto\n\n3.24+3.888\n\n=\n\n7.128$\n\n<b>Step 4: Compute the ratio</b>\n\n$\\frac{Q_2}{Q_1}\n\n=\n\n\\frac{7.128}{2.754}\n\n=\n\n2.588$\n\nTherefore, the correct answer is **2.575** (acceptable range: [2.5, 2.65])."
       }
     },
-    "pp:ce:2026:q48": {
-      "question_uid": "pp:ce:2026:q48",
+    "ce:2026:q48": {
+      "question_uid": "ce:2026:q48",
+      "legacy_uid": "pp:ce:2026:q48",
       "exam_uid": "ce:2026:set1:main:q48",
       "title": "GATE CE 2026 | Set 1 | Question: 48",
       "section": "main",
@@ -2123,12 +2124,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
-        "markdown": "Given:\n\nNumber of piles:\n\n$n=25=5\\times 5$\n\nDiameter of each pile:\n\n$d=1\\ \\text{m}$\n\nLength of each pile:\n\n$L=15\\ \\text{m}$\n\nCohesion of soil:\n\n$c=20\\ \\text{kN/m}^2$\n\nAdhesion factor:\n\n$\\alpha=0.75$\n\nThe piles are friction piles with negligible end bearing.\n\n<b>Step 1: Capacity of the pile group considering individual pile failure</b>\n\nUltimate capacity of one pile is\n\n$Q_{up}=\\alpha c\\pi dL$\n\nTherefore, the ultimate capacity of 25 piles is\n\n$Q_{ug1}\n\n=\n\n25Q_{up}\n\n=\n\n25\\alpha c\\pi dL$\n\nSubstituting the given values,\n\n$Q_{ug1}\n\n=\n\n25(0.75)c\\pi(1)(15)$\n\n<b>Step 2: Capacity of the pile group acting as a block</b>\n\nFor a $5\\times5$ pile group, the overall width of the block is\n\n$B=4s+d$\n\nThe perimeter of the block is\n\n$P=4B=4(4s+d)$\n\nFor block failure in clay, the ultimate capacity is obtained from the shear resistance developed along the perimeter of the block:\n\n$Q_{ug2}\n\n=\n\ncPL\n\n=\n\nc\\,[4(4s+d)]\\,L$\n\n<b>Step 3: Apply the condition of optimum spacing</b>\n\nFor optimum spacing, the efficiency of the pile group is unity. Hence,\n\n$Q_{ug1}=Q_{ug2}$\n\nTherefore,\n\n$25\\alpha c\\pi dL\n\n=\n\nc\\,[4(4s+d)]\\,L$\n\nCancelling the common terms $c$ and $L$,\n\n$25\\alpha\\pi d\n\n=\n\n4(4s+d)$\n\nSubstituting $\\alpha=0.75$ and $d=1$,\n\n$25(0.75)\\pi\n\n=\n\n4(4s+1)$\n\n$18.75\\pi\n\n=\n\n16s+4$\n\n$16s\n\n=\n\n18.75\\pi-4$\n\n$s\n\n=\n\n\\frac{18.75\\pi-4}{16}$\n\n$=\n\n\\frac{18.75(3.1416)-4}{16}\n\n\\approx 3.43\\ \\text{m}$\n\n<b>Step 4: Compute the spacing-to-diameter ratio</b>\n\nSince $d=1\\ \\text{m}$,\n\n$\\frac{s}{d}\n\n=\n\n\\frac{3.43}{1}\n\n=\n\n3.43$",
-        "images": []
+        "markdown": "Given:\n\nNumber of piles:\n\n$n=25=5\\times 5$\n\nDiameter of each pile:\n\n$d=1\\ \\text{m}$\n\nLength of each pile:\n\n$L=15\\ \\text{m}$\n\nCohesion of soil:\n\n$c=20\\ \\text{kN/m}^2$\n\nAdhesion factor:\n\n$\\alpha=0.75$\n\nThe piles are friction piles with negligible end bearing.\n\n<b>Step 1: Capacity of the pile group considering individual pile failure</b>\n\nUltimate capacity of one pile is\n\n$Q_{up}=\\alpha c\\pi dL$\n\nTherefore, the ultimate capacity of 25 piles is\n\n$Q_{ug1}\n\n=\n\n25Q_{up}\n\n=\n\n25\\alpha c\\pi dL$\n\nSubstituting the given values,\n\n$Q_{ug1}\n\n=\n\n25(0.75)c\\pi(1)(15)$\n\n<b>Step 2: Capacity of the pile group acting as a block</b>\n\nFor a $5\\times5$ pile group, the overall width of the block is\n\n$B=4s+d$\n\nThe perimeter of the block is\n\n$P=4B=4(4s+d)$\n\nFor block failure in clay, the ultimate capacity is obtained from the shear resistance developed along the perimeter of the block:\n\n$Q_{ug2}\n\n=\n\ncPL\n\n=\n\nc\\,[4(4s+d)]\\,L$\n\n<b>Step 3: Apply the condition of optimum spacing</b>\n\nFor optimum spacing, the efficiency of the pile group is unity. Hence,\n\n$Q_{ug1}=Q_{ug2}$\n\nTherefore,\n\n$25\\alpha c\\pi dL\n\n=\n\nc\\,[4(4s+d)]\\,L$\n\nCancelling the common terms $c$ and $L$,\n\n$25\\alpha\\pi d\n\n=\n\n4(4s+d)$\n\nSubstituting $\\alpha=0.75$ and $d=1$,\n\n$25(0.75)\\pi\n\n=\n\n4(4s+1)$\n\n$18.75\\pi\n\n=\n\n16s+4$\n\n$16s\n\n=\n\n18.75\\pi-4$\n\n$s\n\n=\n\n\\frac{18.75\\pi-4}{16}$\n\n$=\n\n\\frac{18.75(3.1416)-4}{16}\n\n\\approx 3.43\\ \\text{m}$\n\n<b>Step 4: Compute the spacing-to-diameter ratio</b>\n\nSince $d=1\\ \\text{m}$,\n\n$\\frac{s}{d}\n\n=\n\n\\frac{3.43}{1}\n\n=\n\n3.43$\n\nTherefore, the correct answer is **3.4** (acceptable range: [3.2, 3.6])."
       }
     },
-    "pp:ce:2026:q49": {
-      "question_uid": "pp:ce:2026:q49",
+    "ce:2026:q49": {
+      "question_uid": "ce:2026:q49",
+      "legacy_uid": "pp:ce:2026:q49",
       "exam_uid": "ce:2026:set1:main:q49",
       "title": "GATE CE 2026 | Set 1 | Question: 49",
       "section": "main",
@@ -2166,12 +2167,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "<b>Net ultimate bearing capacity for strip footing on pure clay ($\\phi = 0$) by Terzaghi:</b>\n\n$q_{net,ult} = c \\cdot N_c + \\gamma \\cdot D_f(N_q - 1)$\n\nFor $\\phi = 0$: $N_c = 5.7$, $N_q = 1$, $N_\\gamma = 0$\n\n$q_{net,ult} = c \\cdot N_c + \\gamma \\cdot D_f \\cdot (1-1) = c \\cdot N_c = 20 \\times 5.7 = 114 \\text{ kN/m}^2$\n\n<b>After water table rises to ground surface:</b>\n\nFor $\\phi = 0$ pure clay: $N_q = 1$, so the $(N_q - 1)$ term = 0 regardless of water table.\n\nThe cohesion term $c \\cdot N_c$ is unaffected by water table.\n\n$q_{net,ult} = 114 \\text{ kN/m}^2$ (same as before)\n\n<b>Percentage change = 0%</b>\n\n<b>Explanation:</b> For $\\phi = 0$ soils, net ultimate bearing capacity is independent of unit weight, so water table rise has no effect.",
-        "images": []
+        "markdown": "<b>Net ultimate bearing capacity for strip footing on pure clay ($\\phi = 0$) by Terzaghi:</b>\n\n$q_{net,ult} = c \\cdot N_c + \\gamma \\cdot D_f(N_q - 1)$\n\nFor $\\phi = 0$: $N_c = 5.7$, $N_q = 1$, $N_\\gamma = 0$\n\n$q_{net,ult} = c \\cdot N_c + \\gamma \\cdot D_f \\cdot (1-1) = c \\cdot N_c = 20 \\times 5.7 = 114 \\text{ kN/m}^2$\n\n<b>After water table rises to ground surface:</b>\n\nFor $\\phi = 0$ pure clay: $N_q = 1$, so the $(N_q - 1)$ term = 0 regardless of water table.\n\nThe cohesion term $c \\cdot N_c$ is unaffected by water table.\n\n$q_{net,ult} = 114 \\text{ kN/m}^2$ (same as before)\n\n<b>Percentage change = 0%</b>\n\n<b>Explanation:</b> For $\\phi = 0$ soils, net ultimate bearing capacity is independent of unit weight, so water table rise has no effect.\n\nTherefore, the correct answer is **0**."
       }
     },
-    "pp:ce:2026:q50": {
-      "question_uid": "pp:ce:2026:q50",
+    "ce:2026:q50": {
+      "question_uid": "ce:2026:q50",
+      "legacy_uid": "pp:ce:2026:q50",
       "exam_uid": "ce:2026:set1:main:q50",
       "title": "GATE CE 2026 | Set 1 | Question: 50",
       "section": "main",
@@ -2209,12 +2210,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "<b>Phase 1: 08:00 am to 08:30 am (Incident Period)</b>\n\nArrival rate:\n\n$\\lambda_1=6000\\ \\text{veh/h}$\n\nNumber of open lanes:\n\n$3-1=2\\ \\text{lanes}$\n\nCapacity under queue conditions:\n\n$C_1=2\\times1600=3200\\ \\text{veh/h}$\n\nQueue accumulation rate:\n\n$\\lambda_1-C_1\n\n=\n\n6000-3200\n\n=\n\n2800\\ \\text{veh/h}$\n\nQueue at 08:30 am:\n\n$=\n\n2800\\times0.5\n\n=\n\n1400\\ \\text{vehicles}$\n\n<b>Phase 2: 08:30 am to 09:00 am (Post-Incident Peak Hour)</b>\n\nArrival rate:\n\n$\\lambda_1=6000\\ \\text{veh/h}$\n\nAll three lanes are reopened.\n\nSince a queue already exists, the lanes discharge at queue capacity:\n\n$C_2\n\n=\n\n3\\times1600\n\n=\n\n4800\\ \\text{veh/h}$\n\nQueue accumulation rate:\n\n$\\lambda_1-C_2\n\n=\n\n6000-4800\n\n=\n\n1200\\ \\text{veh/h}$\n\nQueue built during this phase:\n\n$1200\\times0.5\n\n=\n\n600\\ \\text{vehicles}$\n\nQueue at 09:00 am:\n\n$=\n\n1400+600\n\n=\n\n2000\\ \\text{vehicles}$\n\n<b>Phase 3: 09:00 am to 10:00 am (Reduced Demand Period)</b>\n\nArrival rate:\n\n$\\lambda_2=5000\\ \\text{veh/h}$\n\nSince the queue still exists, the three lanes continue to operate at queue discharge capacity:\n\n$C_3\n\n=\n\n4800\\ \\text{veh/h}$\n\nQueue accumulation rate:\n\n$\\lambda_2-C_3\n\n=\n\n5000-4800\n\n=\n\n200\\ \\text{veh/h}$\n\nQueue built during this phase:\n\n$200\\times1.0\n\n=\n\n200\\ \\text{vehicles}$\n\n<b>Total Queue at 10:00 am</b>\n\n$\\text{Total Queue}\n\n=\n\n2000+200\n\n=\n\n2200\\ \\text{vehicles}$",
-        "images": []
+        "markdown": "<b>Phase 1: 08:00 am to 08:30 am (Incident Period)</b>\n\nArrival rate:\n\n$\\lambda_1=6000\\ \\text{veh/h}$\n\nNumber of open lanes:\n\n$3-1=2\\ \\text{lanes}$\n\nCapacity under queue conditions:\n\n$C_1=2\\times1600=3200\\ \\text{veh/h}$\n\nQueue accumulation rate:\n\n$\\lambda_1-C_1\n\n=\n\n6000-3200\n\n=\n\n2800\\ \\text{veh/h}$\n\nQueue at 08:30 am:\n\n$=\n\n2800\\times0.5\n\n=\n\n1400\\ \\text{vehicles}$\n\n<b>Phase 2: 08:30 am to 09:00 am (Post-Incident Peak Hour)</b>\n\nArrival rate:\n\n$\\lambda_1=6000\\ \\text{veh/h}$\n\nAll three lanes are reopened.\n\nSince a queue already exists, the lanes discharge at queue capacity:\n\n$C_2\n\n=\n\n3\\times1600\n\n=\n\n4800\\ \\text{veh/h}$\n\nQueue accumulation rate:\n\n$\\lambda_1-C_2\n\n=\n\n6000-4800\n\n=\n\n1200\\ \\text{veh/h}$\n\nQueue built during this phase:\n\n$1200\\times0.5\n\n=\n\n600\\ \\text{vehicles}$\n\nQueue at 09:00 am:\n\n$=\n\n1400+600\n\n=\n\n2000\\ \\text{vehicles}$\n\n<b>Phase 3: 09:00 am to 10:00 am (Reduced Demand Period)</b>\n\nArrival rate:\n\n$\\lambda_2=5000\\ \\text{veh/h}$\n\nSince the queue still exists, the three lanes continue to operate at queue discharge capacity:\n\n$C_3\n\n=\n\n4800\\ \\text{veh/h}$\n\nQueue accumulation rate:\n\n$\\lambda_2-C_3\n\n=\n\n5000-4800\n\n=\n\n200\\ \\text{veh/h}$\n\nQueue built during this phase:\n\n$200\\times1.0\n\n=\n\n200\\ \\text{vehicles}$\n\n<b>Total Queue at 10:00 am</b>\n\n$\\text{Total Queue}\n\n=\n\n2000+200\n\n=\n\n2200\\ \\text{vehicles}$\n\nTherefore, the correct answer is **2200**."
       }
     },
-    "pp:ce:2026:q51": {
-      "question_uid": "pp:ce:2026:q51",
+    "ce:2026:q51": {
+      "question_uid": "ce:2026:q51",
+      "legacy_uid": "pp:ce:2026:q51",
       "exam_uid": "ce:2026:set1:main:q51",
       "title": "GATE CE 2026 | Set 1 | Question: 51",
       "section": "main",
@@ -2252,12 +2253,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Highway Materials",
-        "markdown": "Given: Mix proportions by weight: CA=58%, FA=25%, Filler=12%, Bitumen=5%\n\nSp. gravity: $G_{CA}=2.68$, $G_{FA}=2.45$, $G_{filler}=2.42$, $G_b=1.15$\n\nBulk sp. gravity of mix $G_m = 2.2$\n\n<b>Step 1  -  Theoretical max sp. gravity $G_{mm}$:</b>\n\n$\\dfrac{1}{G_{mm}} = \\dfrac{0.58}{2.68} + \\dfrac{0.25}{2.45} + \\dfrac{0.12}{2.42} + \\dfrac{0.05}{1.15} = 0.2164 + 0.1020 + 0.0496 + 0.0435 = 0.4115$\n\n$G_{mm} = \\dfrac{1}{0.4115} = 2.430$\n\n<b>Step 2  -  Total air voids $V_a$:</b>\n\n$V_a = \\left(1 - \\dfrac{G_m}{G_{mm}}\\right) \\times 100 = \\left(1 - \\dfrac{2.2}{2.430}\\right) \\times 100 = 9.47\\%$\n\n<b>Step 3  -  Volume of bitumen $V_b$:</b>\n\n$V_b = \\dfrac{G_m}{G_b} \\times P_b = \\dfrac{2.2}{1.15} \\times 0.05 = 0.0957 = 9.57\\%$\n\n<b>Step 4  -  VMA (Voids in Mineral Aggregate):</b>\n\n$VMA = V_a + V_b = 9.47 + 9.57 = 19.04\\%$\n\n<b>Step 5  -  VFB:</b>\n\n$VFB = \\dfrac{V_b}{VMA} \\times 100 = \\dfrac{9.57}{19.04} \\times 100 = \\mathbf{50\\%}$",
-        "images": []
+        "markdown": "Given: Mix proportions by weight: CA=58%, FA=25%, Filler=12%, Bitumen=5%\n\nSp. gravity: $G_{CA}=2.68$, $G_{FA}=2.45$, $G_{filler}=2.42$, $G_b=1.15$\n\nBulk sp. gravity of mix $G_m = 2.2$\n\n<b>Step 1  -  Theoretical max sp. gravity $G_{mm}$:</b>\n\n$\\dfrac{1}{G_{mm}} = \\dfrac{0.58}{2.68} + \\dfrac{0.25}{2.45} + \\dfrac{0.12}{2.42} + \\dfrac{0.05}{1.15} = 0.2164 + 0.1020 + 0.0496 + 0.0435 = 0.4115$\n\n$G_{mm} = \\dfrac{1}{0.4115} = 2.430$\n\n<b>Step 2  -  Total air voids $V_a$:</b>\n\n$V_a = \\left(1 - \\dfrac{G_m}{G_{mm}}\\right) \\times 100 = \\left(1 - \\dfrac{2.2}{2.430}\\right) \\times 100 = 9.47\\%$\n\n<b>Step 3  -  Volume of bitumen $V_b$:</b>\n\n$V_b = \\dfrac{G_m}{G_b} \\times P_b = \\dfrac{2.2}{1.15} \\times 0.05 = 0.0957 = 9.57\\%$\n\n<b>Step 4  -  VMA (Voids in Mineral Aggregate):</b>\n\n$VMA = V_a + V_b = 9.47 + 9.57 = 19.04\\%$\n\n<b>Step 5  -  VFB:</b>\n\n$VFB = \\dfrac{V_b}{VMA} \\times 100 = \\dfrac{9.57}{19.04} \\times 100 = \\mathbf{50\\%}$\n\nTherefore, the correct answer is **50** (acceptable range: [48, 52])."
       }
     },
-    "pp:ce:2026:q52": {
-      "question_uid": "pp:ce:2026:q52",
+    "ce:2026:q52": {
+      "question_uid": "ce:2026:q52",
+      "legacy_uid": "pp:ce:2026:q52",
       "exam_uid": "ce:2026:set1:main:q52",
       "title": "GATE CE 2026 | Set 1 | Question: 52",
       "section": "main",
@@ -2295,12 +2296,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
-        "markdown": "<b>Step 1: Identify B.S. and F.S. readings</b>\n\nSince the instrument was shifted after the 6th reading:\n\nBack sights (B.S.):\n\n$0.385,\\ 1.045$\n\nTherefore,\n\n$\\sum BS\n\n=\n\n0.385+1.045\n\n=\n\n1.430$\n\nFore sights (F.S.):\n\n$4.850,\\ 4.580$\n\nTherefore,\n\n$\\sum FS\n\n=\n\n4.850+4.580\n\n=\n\n9.430$\n\n<b>Step 2: Compute the difference in elevation</b>\n\nUsing the relation,\n\n$\\Delta RL\n\n=\n\n\\sum BS-\\sum FS$\n\nSubstituting the values,\n\n$\\Delta RL\n\n=\n\n1.430-9.430\n\n=\n\n-8.0\\ \\text{m}$\n\nHence, the last point is 8 m lower than the first point.\n\n<b>Step 3: Compute the horizontal distance</b>\n\nThe 6th reading (F.S.) and the 7th reading (B.S.) are taken on the same change point.\n\nTherefore, the number of unique ground stations is\n\n$9$\n\nHence, the number of intervals is\n\n$9-1=8$\n\nSince each interval is 20 m,\n\n$L=8\\times20=160\\ \\text{m}$\n\n<b>Step 4: Compute the gradient</b>\n\n$\\text{Gradient}\n\n=\n\n\\dfrac{\\text{Vertical fall}}{\\text{Horizontal distance}}\\times100$\n\n$=\n\n\\dfrac{8}{160}\\times100$\n\n$=\n\n5\\%$",
-        "images": []
+        "markdown": "<b>Step 1: Identify B.S. and F.S. readings</b>\n\nSince the instrument was shifted after the 6th reading:\n\nBack sights (B.S.):\n\n$0.385,\\ 1.045$\n\nTherefore,\n\n$\\sum BS\n\n=\n\n0.385+1.045\n\n=\n\n1.430$\n\nFore sights (F.S.):\n\n$4.850,\\ 4.580$\n\nTherefore,\n\n$\\sum FS\n\n=\n\n4.850+4.580\n\n=\n\n9.430$\n\n<b>Step 2: Compute the difference in elevation</b>\n\nUsing the relation,\n\n$\\Delta RL\n\n=\n\n\\sum BS-\\sum FS$\n\nSubstituting the values,\n\n$\\Delta RL\n\n=\n\n1.430-9.430\n\n=\n\n-8.0\\ \\text{m}$\n\nHence, the last point is 8 m lower than the first point.\n\n<b>Step 3: Compute the horizontal distance</b>\n\nThe 6th reading (F.S.) and the 7th reading (B.S.) are taken on the same change point.\n\nTherefore, the number of unique ground stations is\n\n$9$\n\nHence, the number of intervals is\n\n$9-1=8$\n\nSince each interval is 20 m,\n\n$L=8\\times20=160\\ \\text{m}$\n\n<b>Step 4: Compute the gradient</b>\n\n$\\text{Gradient}\n\n=\n\n\\dfrac{\\text{Vertical fall}}{\\text{Horizontal distance}}\\times100$\n\n$=\n\n\\dfrac{8}{160}\\times100$\n\n$=\n\n5\\%$\n\nTherefore, the correct answer is **5**."
       }
     },
-    "pp:ce:2026:q53": {
-      "question_uid": "pp:ce:2026:q53",
+    "ce:2026:q53": {
+      "question_uid": "ce:2026:q53",
+      "legacy_uid": "pp:ce:2026:q53",
       "exam_uid": "ce:2026:set1:main:q53",
       "title": "GATE CE 2026 | Set 1 | Question: 53",
       "section": "main",
@@ -2338,12 +2339,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "<b>Given:</b>\n\nInfluent flow rate:\n\n$Q=20000\\ \\text{m}^3/\\text{day}$\n\nAeration tank volume:\n\n$V=6000\\ \\text{m}^3$\n\nBiomass concentration in aeration tank:\n\n$X=3000\\ \\text{mg/L}\n\n=3\\ \\text{kg/m}^3$\n\nBiological Sludge Residence Time (BSRT):\n\n$\\theta_c=6\\ \\text{days}$\n\nRecycle sludge flow rate:\n\n$Q_r=6000\\ \\text{m}^3/\\text{day}$\n\nInfluent and effluent biomass concentrations are negligible.\n\n<b>Step 1: Determine the mass of biomass in the system</b>\n\nThe biomass inventory in the aeration tank is\n\n$M=VX\n\n=6000\\times 3\n\n=18000\\ \\text{kg}$\n\n<b>Step 2: Use the definition of BSRT (Solids Retention Time)</b>\n\nBSRT is given by\n\n$\\theta_c\n\n=\n\n\\dfrac{\\text{Mass of solids in system}}\n\n{\\text{Mass of solids leaving system per day}}$\n\nSince the influent and treated effluent contain negligible biomass,\n\n$\\text{Mass of solids leaving system}\n\n=\n\nQ_wX_r$\n\nwhere\n\n$Q_w$\n\n= sludge wasting flow rate, and\n\n$X_r$\n\n= concentration of return sludge.\n\nTherefore,\n\n$6\n\n=\n\n\\dfrac{18000}{Q_wX_r}$\n\n$Q_wX_r\n\n=\n\n3000\\ \\text{kg/day}$\n\n<b>Step 3: Determine the return sludge concentration</b>\n\nAt steady state, the solids entering the aeration tank through recycle equal the solids leaving the aeration tank to the SST:\n\n$(Q+Q_r)X\n\n=\n\nQ_rX_r$\n\nSubstituting the values,\n\n$(20000+6000)(3)\n\n=\n\n6000X_r$\n\n$78000\n\n=\n\n6000X_r$\n\n$X_r\n\n=\n\n13\\ \\text{kg/m}^3$\n\n<b>Step 4: Calculate the sludge wasting flow rate</b>\n\nFrom Step 2,\n\n$Q_wX_r\n\n=\n\n3000$\n\n$Q_w\n\n=\n\n\\dfrac{3000}{13}\n\n=\n\n230.77\\ \\text{m}^3/\\text{day}$",
-        "images": []
+        "markdown": "<b>Given:</b>\n\nInfluent flow rate:\n\n$Q=20000\\ \\text{m}^3/\\text{day}$\n\nAeration tank volume:\n\n$V=6000\\ \\text{m}^3$\n\nBiomass concentration in aeration tank:\n\n$X=3000\\ \\text{mg/L}\n\n=3\\ \\text{kg/m}^3$\n\nBiological Sludge Residence Time (BSRT):\n\n$\\theta_c=6\\ \\text{days}$\n\nRecycle sludge flow rate:\n\n$Q_r=6000\\ \\text{m}^3/\\text{day}$\n\nInfluent and effluent biomass concentrations are negligible.\n\n<b>Step 1: Determine the mass of biomass in the system</b>\n\nThe biomass inventory in the aeration tank is\n\n$M=VX\n\n=6000\\times 3\n\n=18000\\ \\text{kg}$\n\n<b>Step 2: Use the definition of BSRT (Solids Retention Time)</b>\n\nBSRT is given by\n\n$\\theta_c\n\n=\n\n\\dfrac{\\text{Mass of solids in system}}\n\n{\\text{Mass of solids leaving system per day}}$\n\nSince the influent and treated effluent contain negligible biomass,\n\n$\\text{Mass of solids leaving system}\n\n=\n\nQ_wX_r$\n\nwhere\n\n$Q_w$\n\n= sludge wasting flow rate, and\n\n$X_r$\n\n= concentration of return sludge.\n\nTherefore,\n\n$6\n\n=\n\n\\dfrac{18000}{Q_wX_r}$\n\n$Q_wX_r\n\n=\n\n3000\\ \\text{kg/day}$\n\n<b>Step 3: Determine the return sludge concentration</b>\n\nAt steady state, the solids entering the aeration tank through recycle equal the solids leaving the aeration tank to the SST:\n\n$(Q+Q_r)X\n\n=\n\nQ_rX_r$\n\nSubstituting the values,\n\n$(20000+6000)(3)\n\n=\n\n6000X_r$\n\n$78000\n\n=\n\n6000X_r$\n\n$X_r\n\n=\n\n13\\ \\text{kg/m}^3$\n\n<b>Step 4: Calculate the sludge wasting flow rate</b>\n\nFrom Step 2,\n\n$Q_wX_r\n\n=\n\n3000$\n\n$Q_w\n\n=\n\n\\dfrac{3000}{13}\n\n=\n\n230.77\\ \\text{m}^3/\\text{day}$\n\nTherefore, the correct answer is **240** (acceptable range: [230, 250])."
       }
     },
-    "pp:ce:2026:q54": {
-      "question_uid": "pp:ce:2026:q54",
+    "ce:2026:q54": {
+      "question_uid": "ce:2026:q54",
+      "legacy_uid": "pp:ce:2026:q54",
       "exam_uid": "ce:2026:set1:main:q54",
       "title": "GATE CE 2026 | Set 1 | Question: 54",
       "section": "main",
@@ -2381,12 +2382,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "Given:\n\nArea $= 7 ha = 70000 m^2$,\n\nRunoff coefficient C = 0.60\n\nTime of entry: A=10 min, B=20 min, C=15 min, D=25 min\n\n$I = \\dfrac{25}{t+10}$ cm/h\n\n<b>Rational method:</b> $Q = C \\cdot I \\cdot A$\n\nDesign duration = longest time of concentration = <b>25 min</b> (from corner D, since all corners must contribute for max flow)\n\n<b>Intensity at t = 25 min:</b>\n\n$I = \\dfrac{25}{25+10} = \\dfrac{25}{35} = 0.7143 \\text{ cm/h} = 7.143 \\times 10^{-3} \\text{ m/h}$\n\n<b>Design flow:</b>\n\n$Q = C \\times I \\times A = 0.60 \\times 7.143 \\times 10^{-3} \\text{ m/h} \\times 70000 \\text{ m}^2$\n\n$= 0.60 \\times 7.143 \\times 10^{-3} \\times 70000$\n\n$= 0.60 \\times 500 = \\mathbf{300 \\text{ m}^3/\\text{h}}$",
-        "images": []
+        "markdown": "Given:\n\nArea $= 7 ha = 70000 m^2$,\n\nRunoff coefficient C = 0.60\n\nTime of entry: A=10 min, B=20 min, C=15 min, D=25 min\n\n$I = \\dfrac{25}{t+10}$ cm/h\n\n<b>Rational method:</b> $Q = C \\cdot I \\cdot A$\n\nDesign duration = longest time of concentration = <b>25 min</b> (from corner D, since all corners must contribute for max flow)\n\n<b>Intensity at t = 25 min:</b>\n\n$I = \\dfrac{25}{25+10} = \\dfrac{25}{35} = 0.7143 \\text{ cm/h} = 7.143 \\times 10^{-3} \\text{ m/h}$\n\n<b>Design flow:</b>\n\n$Q = C \\times I \\times A = 0.60 \\times 7.143 \\times 10^{-3} \\text{ m/h} \\times 70000 \\text{ m}^2$\n\n$= 0.60 \\times 7.143 \\times 10^{-3} \\times 70000$\n\n$= 0.60 \\times 500 = \\mathbf{300 \\text{ m}^3/\\text{h}}$\n\nTherefore, the correct answer is **300**."
       }
     },
-    "pp:ce:2026:q55": {
-      "question_uid": "pp:ce:2026:q55",
+    "ce:2026:q55": {
+      "question_uid": "ce:2026:q55",
+      "legacy_uid": "pp:ce:2026:q55",
       "exam_uid": "ce:2026:set1:main:q55",
       "title": "GATE CE 2026 | Set 1 | Question: 55",
       "section": "main",
@@ -2424,12 +2425,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "Given:\n\nMaximum demand = 12 million litres/day = $12 \\times 10^6L/day = 12000 m^3/day$\n\nDepth H = 4 m\n\nDetention period T = 6 hours = 0.25 day\n\nVelocity of flow v = 0.003 m/s\n\n<b>Step 1  -  Volume of tank:</b>\n\n$V = Q \\times T = \\dfrac{12000}{24} \\times 6 = 500 \\times 6 = 3000 \\text{ m}^3$\n\n<b>Step 2  -  Length of tank:</b>\n\nFlow Q = $\\dfrac{12000}{24 \\times 3600} = \\dfrac{12000}{86400} = 0.1389 \\text{ m}^3/\\text{s}$\n\nCross-sectional area = $\\dfrac{Q}{v} = \\dfrac{0.1389}{0.003} = 46.3 \\text{ m}^2$\n\nArea = Width x Depth $\\rightarrow$ Width = $\\dfrac{46.3}{4} = 11.57$ m\n\nLength = $\\dfrac{V}{\\text{Width} \\times \\text{Depth}} = \\dfrac{3000}{11.57 \\times 4} = \\dfrac{3000}{46.3} = 64.8$ m\n\n<b>Step 3  -  Check width:</b>\n\n$W = \\dfrac{Q}{v \\times H} = \\dfrac{0.1389}{0.003 \\times 4} = \\dfrac{0.1389}{0.012} = \\mathbf{11.57 \\text{ m}}$",
-        "images": []
+        "markdown": "Given:\n\nMaximum demand = 12 million litres/day = $12 \\times 10^6L/day = 12000 m^3/day$\n\nDepth H = 4 m\n\nDetention period T = 6 hours = 0.25 day\n\nVelocity of flow v = 0.003 m/s\n\n<b>Step 1  -  Volume of tank:</b>\n\n$V = Q \\times T = \\dfrac{12000}{24} \\times 6 = 500 \\times 6 = 3000 \\text{ m}^3$\n\n<b>Step 2  -  Length of tank:</b>\n\nFlow Q = $\\dfrac{12000}{24 \\times 3600} = \\dfrac{12000}{86400} = 0.1389 \\text{ m}^3/\\text{s}$\n\nCross-sectional area = $\\dfrac{Q}{v} = \\dfrac{0.1389}{0.003} = 46.3 \\text{ m}^2$\n\nArea = Width x Depth $\\rightarrow$ Width = $\\dfrac{46.3}{4} = 11.57$ m\n\nLength = $\\dfrac{V}{\\text{Width} \\times \\text{Depth}} = \\dfrac{3000}{11.57 \\times 4} = \\dfrac{3000}{46.3} = 64.8$ m\n\n<b>Step 3  -  Check width:</b>\n\n$W = \\dfrac{Q}{v \\times H} = \\dfrac{0.1389}{0.003 \\times 4} = \\dfrac{0.1389}{0.012} = \\mathbf{11.57 \\text{ m}}$\n\nTherefore, the correct answer is **11.5** (acceptable range: [11, 12])."
       }
     },
-    "pp:ce:2026:q56": {
-      "question_uid": "pp:ce:2026:q56",
+    "ce:2026:ga:q1": {
+      "question_uid": "ce:2026:ga:q1",
+      "legacy_uid": "pp:ce:2026:q56",
       "exam_uid": "ce:2026:set1:ga:q1",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 1",
       "section": "ga",
@@ -2468,12 +2469,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "In the sentence 'The shopkeeper sells lemons.':\n\n<b>Subject</b> = 'The shopkeeper' (who performs the action)\n\n<b>Verb</b> = 'sells' (the action)\n\n<b>Object</b> = 'lemons' (what receives the action)\n\n<b>Predicate</b> = 'sells lemons' (verb + object together)\n\n'Lemons' is the word that receives the action of selling, so it is the <b>direct object</b>.",
-        "images": []
+        "markdown": "In the sentence 'The shopkeeper sells lemons.':\n\n<b>Subject</b> = 'The shopkeeper' (who performs the action)\n\n<b>Verb</b> = 'sells' (the action)\n\n<b>Object</b> = 'lemons' (what receives the action)\n\n<b>Predicate</b> = 'sells lemons' (verb + object together)\n\n'Lemons' is the word that receives the action of selling, so it is the <b>direct object</b>.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q57": {
-      "question_uid": "pp:ce:2026:q57",
+    "ce:2026:ga:q2": {
+      "question_uid": "ce:2026:ga:q2",
+      "legacy_uid": "pp:ce:2026:q57",
       "exam_uid": "ce:2026:set1:ga:q2",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 2",
       "section": "ga",
@@ -2512,12 +2513,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "The main figure shows an oval and two triangles with a missing bottom-right portion.\n\nTo complete the three non-overlapping shapes:\n\nThe missing piece must complete the right side of the oval\n\nIt must also complete the second triangle pointing downward-right\n\nThe pieces must not overlap each other\n\nOption Q provides the correct curved (oval) edge on the left and the correct triangular edge on the right, fitting perfectly without overlap.",
-        "images": []
+        "markdown": "The main figure shows an oval and two triangles with a missing bottom-right portion.\n\nTo complete the three non-overlapping shapes:\n\nThe missing piece must complete the right side of the oval\n\nIt must also complete the second triangle pointing downward-right\n\nThe pieces must not overlap each other\n\nOption Q provides the correct curved (oval) edge on the left and the correct triangular edge on the right, fitting perfectly without overlap.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q58": {
-      "question_uid": "pp:ce:2026:q58",
+    "ce:2026:ga:q3": {
+      "question_uid": "ce:2026:ga:q3",
+      "legacy_uid": "pp:ce:2026:q58",
       "exam_uid": "ce:2026:set1:ga:q3",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 3",
       "section": "ga",
@@ -2556,12 +2557,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Step 1: Equate the two equations</b>\n\nAt the point of intersection,\n\n$x^2=-x^2-2x-1$\n\nRearranging,\n\n$2x^2+2x+1=0$\n\n<b>Step 2: Check the nature of roots</b>\n\nFor the quadratic equation\n\n$ax^2+bx+c=0$\n\nthe discriminant is\n\n$D=b^2-4ac$\n\nHere,\n\n$a=2,\\quad b=2,\\quad c=1$\n\nTherefore,\n\n$D=2^2-4(2)(1)=4-8 =-4$\n\nSince\n\n$D<0$\n\nthe equation has no real roots.\n\nHence, the two curves do not intersect in the real $(x,y)$ plane.\n\nTherefore,",
-        "images": []
+        "markdown": "<b>Step 1: Equate the two equations</b>\n\nAt the point of intersection,\n\n$x^2=-x^2-2x-1$\n\nRearranging,\n\n$2x^2+2x+1=0$\n\n<b>Step 2: Check the nature of roots</b>\n\nFor the quadratic equation\n\n$ax^2+bx+c=0$\n\nthe discriminant is\n\n$D=b^2-4ac$\n\nHere,\n\n$a=2,\\quad b=2,\\quad c=1$\n\nTherefore,\n\n$D=2^2-4(2)(1)=4-8 =-4$\n\nSince\n\n$D<0$\n\nthe equation has no real roots.\n\nHence, the two curves do not intersect in the real $(x,y)$ plane.\n\nTherefore,\n\n<b>Answer:</b> (A) $\\boxed{0}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q59": {
-      "question_uid": "pp:ce:2026:q59",
+    "ce:2026:ga:q4": {
+      "question_uid": "ce:2026:ga:q4",
+      "legacy_uid": "pp:ce:2026:q59",
       "exam_uid": "ce:2026:set1:ga:q4",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 4",
       "section": "ga",
@@ -2600,12 +2601,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Analysis of the paragraph:</b>\n\nAnish did NOT score hundred runs (he got out without scoring) $\\rightarrow$ (A) is false.\n\nThere is no mention of Anish being captain before the game $\\rightarrow$ (B) is false.\n\nIf Anish had scored 100 runs, he would have become the <i>youngest captain in his team's history</i>  -  this means the current captain holds that record, i.e., is younger than all past captains but still older than Anish would have been $\\rightarrow$ (C) is <b>TRUE</b>.\n\nThere is no information stating Anish is the youngest player in the team $\\rightarrow$ (D) is not supported.\n\nThe paragraph implies Anish would have been the youngest captain, meaning the current captain is older than Anish (at least in terms of when they were made captain).",
-        "images": []
+        "markdown": "<b>Analysis of the paragraph:</b>\n\nAnish did NOT score hundred runs (he got out without scoring) $\\rightarrow$ (A) is false.\n\nThere is no mention of Anish being captain before the game $\\rightarrow$ (B) is false.\n\nIf Anish had scored 100 runs, he would have become the <i>youngest captain in his team's history</i>  -  this means the current captain holds that record, i.e., is younger than all past captains but still older than Anish would have been $\\rightarrow$ (C) is <b>TRUE</b>.\n\nThere is no information stating Anish is the youngest player in the team $\\rightarrow$ (D) is not supported.\n\nThe paragraph implies Anish would have been the youngest captain, meaning the current captain is older than Anish (at least in terms of when they were made captain).\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2026:q60": {
-      "question_uid": "pp:ce:2026:q60",
+    "ce:2026:ga:q5": {
+      "question_uid": "ce:2026:ga:q5",
+      "legacy_uid": "pp:ce:2026:q60",
       "exam_uid": "ce:2026:set1:ga:q5",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 5",
       "section": "ga",
@@ -2647,8 +2648,9 @@
         "markdown": "Rotating figure (I) by $45^{\\circ}$ clockwise maps the dominant protrusions from axis-aligned directions to diagonal directions.\n\nComparing with the four options, <b>Q</b> matches the correct $45^{\\circ}$ clockwise rotation.\n\nAnswer: <b>(B) Q</b>\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2026:q61": {
-      "question_uid": "pp:ce:2026:q61",
+    "ce:2026:ga:q6": {
+      "question_uid": "ce:2026:ga:q6",
+      "legacy_uid": "pp:ce:2026:q61",
       "exam_uid": "ce:2026:set1:ga:q6",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 6",
       "section": "ga",
@@ -2687,12 +2689,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Matching synonyms:</b>\n\n<b>Lonely</b> $\\rightarrow$ <b>Solitary (q)</b>  -  both mean alone or isolated\n\n<b>Literal</b> $\\rightarrow$ <b>Verbatim (p)</b>  -  both mean word-for-word or exact\n\n<b>Lousy</b> $\\rightarrow$ <b>Terrible (s)</b>  -  both mean very bad or poor quality\n\n<b>Lethal</b> $\\rightarrow$ <b>Deadly (r)</b>  -  both mean causing death\n\nTherefore the correct match is: (i)-(q) ; (ii)-(p) ; (iii)-(s) ; (iv)-(r)",
-        "images": []
+        "markdown": "<b>Matching synonyms:</b>\n\n<b>Lonely</b> $\\rightarrow$ <b>Solitary (q)</b>  -  both mean alone or isolated\n\n<b>Literal</b> $\\rightarrow$ <b>Verbatim (p)</b>  -  both mean word-for-word or exact\n\n<b>Lousy</b> $\\rightarrow$ <b>Terrible (s)</b>  -  both mean very bad or poor quality\n\n<b>Lethal</b> $\\rightarrow$ <b>Deadly (r)</b>  -  both mean causing death\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q62": {
-      "question_uid": "pp:ce:2026:q62",
+    "ce:2026:ga:q7": {
+      "question_uid": "ce:2026:ga:q7",
+      "legacy_uid": "pp:ce:2026:q62",
       "exam_uid": "ce:2026:set1:ga:q7",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 7",
       "section": "ga",
@@ -2731,12 +2733,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Step 1: Determine the measure of arc RS</b>\n\nThe central angle subtending arc\n\n$RS$\n\nis\n\n$\\angle ROS=80^\\circ.$\n\nHence,\n\n$m(\\widehat{RS})=80^\\circ.$\n\nSince\n\n$PQ$\n\nis a diameter, the upper semicircle\n\n$\\widehat{PQ}$\n\nmeasures\n\n$180^\\circ.$\n\nTherefore,\n\n$m(\\widehat{PR})+m(\\widehat{RS})+m(\\widehat{SQ})\n\n=\n\n180^\\circ$\n\n$m(\\widehat{PR})+m(\\widehat{SQ})\n\n=\n\n180^\\circ-80^\\circ\n\n=\n\n100^\\circ.$\n\n<b>Step 2: Use the theorem for two secants intersecting outside a circle</b>\n\nFor two secants intersecting outside a circle,\n\n$\\angle RTS\n\n=\n\n\\frac{1}{2}\n\n\\left(\n\nm(\\widehat{PQ})\n\n-\n\nm(\\widehat{RS})\n\n\\right).$\n\nSubstituting,\n\n$\\angle RTS\n\n=\n\n\\frac{1}{2}\n\n\\left(\n\n180^\\circ-80^\\circ\n\n\\right)$\n\n$=\n\n\\frac{100^\\circ}{2}\n\n=\n\n50^\\circ.$",
-        "images": []
+        "markdown": "<b>Step 1: Determine the measure of arc RS</b>\n\nThe central angle subtending arc\n\n$RS$\n\nis\n\n$\\angle ROS=80^\\circ.$\n\nHence,\n\n$m(\\widehat{RS})=80^\\circ.$\n\nSince\n\n$PQ$\n\nis a diameter, the upper semicircle\n\n$\\widehat{PQ}$\n\nmeasures\n\n$180^\\circ.$\n\nTherefore,\n\n$m(\\widehat{PR})+m(\\widehat{RS})+m(\\widehat{SQ})\n\n=\n\n180^\\circ$\n\n$m(\\widehat{PR})+m(\\widehat{SQ})\n\n=\n\n180^\\circ-80^\\circ\n\n=\n\n100^\\circ.$\n\n<b>Step 2: Use the theorem for two secants intersecting outside a circle</b>\n\nFor two secants intersecting outside a circle,\n\n$\\angle RTS\n\n=\n\n\\frac{1}{2}\n\n\\left(\n\nm(\\widehat{PQ})\n\n-\n\nm(\\widehat{RS})\n\n\\right).$\n\nSubstituting,\n\n$\\angle RTS\n\n=\n\n\\frac{1}{2}\n\n\\left(\n\n180^\\circ-80^\\circ\n\n\\right)$\n\n$=\n\n\\frac{100^\\circ}{2}\n\n=\n\n50^\\circ.$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2026:q63": {
-      "question_uid": "pp:ce:2026:q63",
+    "ce:2026:ga:q8": {
+      "question_uid": "ce:2026:ga:q8",
+      "legacy_uid": "pp:ce:2026:q63",
       "exam_uid": "ce:2026:set1:ga:q8",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 8",
       "section": "ga",
@@ -2775,12 +2777,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
-        "markdown": "<b>Observation  -  relationship between polygon sides and number:</b>\n\nTriangle (3 sides) $\\rightarrow$ 6 = $3!$ = $1 \\times 2 \\times 3$\n\nSquare (4 sides) $\\rightarrow$ 24 = $4!$ = $1 \\times 2 \\times 3 \\times 4$\n\nPentagon (5 sides) $\\rightarrow$ 120 = $5!$ = $1 \\times 2 \\times 3 \\times 4 \\times 5$\n\nHexagon (6 sides) $\\rightarrow$ $X = 6!$ = $1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6$\n\n<b>Pattern:</b> The number inside each polygon = factorial of the number of sides.\n\n$X = 6! = 720$",
-        "images": []
+        "markdown": "<b>Observation  -  relationship between polygon sides and number:</b>\n\nTriangle (3 sides) $\\rightarrow$ 6 = $3!$ = $1 \\times 2 \\times 3$\n\nSquare (4 sides) $\\rightarrow$ 24 = $4!$ = $1 \\times 2 \\times 3 \\times 4$\n\nPentagon (5 sides) $\\rightarrow$ 120 = $5!$ = $1 \\times 2 \\times 3 \\times 4 \\times 5$\n\nHexagon (6 sides) $\\rightarrow$ $X = 6!$ = $1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6$\n\n<b>Pattern:</b> The number inside each polygon = factorial of the number of sides.\n\n$X = 6! = 720$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2026:q64": {
-      "question_uid": "pp:ce:2026:q64",
+    "ce:2026:ga:q9": {
+      "question_uid": "ce:2026:ga:q9",
+      "legacy_uid": "pp:ce:2026:q64",
       "exam_uid": "ce:2026:set1:ga:q9",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 9",
       "section": "ga",
@@ -2819,12 +2821,12 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "<b>Represent ON by 1 and OFF by 0.</b>\n\nFrom the figure, the initial configuration is:\n\n$0001000$\n\nThe updating rules are applied simultaneously at every step.\n\n<b>Step 1:</b>\n\n$0001000\n\n\\rightarrow\n\n0011100$\n\n(This matches the figure.)\n\n<b>Step 2:</b>\n\n$0011100\n\n\\rightarrow\n\n0110110$\n\n(This also matches the figure.)\n\nContinuing similarly,\n\n<b>Step 3:</b>\n\n$0110110\n\n\\rightarrow\n\n1110111$\n\n<b>Step 4:</b>\n\n$1110111\n\n\\rightarrow\n\n1010101$\n\n<b>Step 5:</b>\n\n$1010101\n\n\\rightarrow\n\n1010101$\n\nThe configuration becomes stable and remains unchanged thereafter.\n\nHence,\n\n$\\text{State at Step 8}\n\n=\n\n1010101$\n\nNumber of bulbs that are ON:\n\n$1+1+1+1=4$",
-        "images": []
+        "markdown": "<b>Represent ON by 1 and OFF by 0.</b>\n\nFrom the figure, the initial configuration is:\n\n$0001000$\n\nThe updating rules are applied simultaneously at every step.\n\n<b>Step 1:</b>\n\n$0001000\n\n\\rightarrow\n\n0011100$\n\n(This matches the figure.)\n\n<b>Step 2:</b>\n\n$0011100\n\n\\rightarrow\n\n0110110$\n\n(This also matches the figure.)\n\nContinuing similarly,\n\n<b>Step 3:</b>\n\n$0110110\n\n\\rightarrow\n\n1110111$\n\n<b>Step 4:</b>\n\n$1110111\n\n\\rightarrow\n\n1010101$\n\n<b>Step 5:</b>\n\n$1010101\n\n\\rightarrow\n\n1010101$\n\nThe configuration becomes stable and remains unchanged thereafter.\n\nHence,\n\n$\\text{State at Step 8}\n\n=\n\n1010101$\n\nNumber of bulbs that are ON:\n\n$1+1+1+1=4$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2026:q65": {
-      "question_uid": "pp:ce:2026:q65",
+    "ce:2026:ga:q10": {
+      "question_uid": "ce:2026:ga:q10",
+      "legacy_uid": "pp:ce:2026:q65",
       "exam_uid": "ce:2026:set1:ga:q10",
       "title": "GATE CE 2026 | Set 1 | GA | Question: 10",
       "section": "ga",
@@ -2863,8 +2865,7 @@
       },
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
-        "markdown": "Given: $P^2 = Q^2 + 13$, where P and Q are positive integers.\n\n<b>Step 1:</b> Rearrange:\n\n$P^2 - Q^2 = 13$\n\n$(P - Q)(P + Q) = 13$\n\n<b>Step 2:</b> Since 13 is prime, the only factor pairs of 13 are:\n\n$13 = 1 \\times 13$\n\n<b>Step 3:</b> Set up equations:\n\n$P - Q = 1$\n\n$P + Q = 13$\n\n<b>Step 4:</b> Solve:\n\nAdding: $2P = 14 \\Rightarrow P = 7$\n\nSubtracting: $2Q = 12 \\Rightarrow Q = 6$\n\n<b>Step 5:</b> Verify: $7^2 = 49$, $6^2 + 13 = 36 + 13 = 49$\n\n<b>Product:</b> $P \\times Q = 7 \\times 6 = \\mathbf{42}$",
-        "images": []
+        "markdown": "Given: $P^2 = Q^2 + 13$, where P and Q are positive integers.\n\n<b>Step 1:</b> Rearrange:\n\n$P^2 - Q^2 = 13$\n\n$(P - Q)(P + Q) = 13$\n\n<b>Step 2:</b> Since 13 is prime, the only factor pairs of 13 are:\n\n$13 = 1 \\times 13$\n\n<b>Step 3:</b> Set up equations:\n\n$P - Q = 1$\n\n$P + Q = 13$\n\n<b>Step 4:</b> Solve:\n\nAdding: $2P = 14 \\Rightarrow P = 7$\n\nSubtracting: $2Q = 12 \\Rightarrow Q = 6$\n\n<b>Step 5:</b> Verify: $7^2 = 49$, $6^2 + 13 = 36 + 13 = 49$\n\n<b>Product:</b> $P \\times Q = 7 \\times 6 = \\mathbf{42}$\n\nTherefore, the correct answer is **D**."
       }
     }
   }

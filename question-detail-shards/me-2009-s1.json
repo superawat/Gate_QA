@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.305Z",
+  "generatedAt": "2026-10-18T16:30:37.752Z",
   "shardKey": "me-2009-s1",
   "yearSetKey": "me-2009-s1",
   "yearSetIdentity": "me:2009:set-1",
@@ -9,8 +9,9 @@
   "label": "2009 Set 1",
   "questionCount": 60,
   "recordsByQuestionUid": {
-    "pp:me:2009:q1": {
-      "question_uid": "pp:me:2009:q1",
+    "me:2009:q1": {
+      "question_uid": "me:2009:q1",
+      "legacy_uid": "pp:me:2009:q1",
       "exam_uid": "me:2009:set1:main:q1",
       "title": "GATE ME 2009 | Set 1 | Question: 1",
       "section": "main",
@@ -50,12 +51,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$\\text{If }\\quad A^{T}=A^{-1}$\n\nthen A is orthogonal matrix.\n\nTherefore $A . A^{-1}=A^{-1} A=I$\n\n$\\text{and }A^{T} A=A A^{T}=I$\n\nsince $\\mathrm{M}$ is orthogonal matrix\n\n$M^{T} M=I$\n\n$$=\\left[\\begin{array}{cc}\\frac{3}{5} & x \\\\ \\frac{4}{5} & \\frac{3}{5}\\end{array}\\right]\\left[\\begin{array}{cc}\\frac{3}{5} & \\frac{4}{5} \\\\ x & \\frac{3}{5}\\end{array}\\right]=\\left[\\begin{array}{cc}1 & 0 \\\\ 0 & 1\\end{array}\\right]$$\n\n$$\\left[\\begin{aligned} \\left(\\frac{3}{5}\\right)^{2}+x^{2} \\quad\\left(\\frac{3}{5} \\cdot \\frac{4}{5}\\right)+\\frac{3}{5} x \\\\ \\left(\\frac{4}{5} \\cdot \\frac{3}{5}\\right)+\\frac{3}{5} \\cdot x\\left(\\frac{4}{5}\\right)^{2}+\\left(\\frac{3}{5}\\right)^{2} \\end{aligned} \\right]$$\n\n$$=\\left[\\begin{array}{cc}1 & 0 \\\\ 0 & 1\\end{array}\\right] \\Rightarrow \\text{Compare both sides} a_{12}$$\n\n$a_{12}=\\left(\\frac{3}{5}\\right)\\left(\\frac{4}{5}\\right)+\\left(\\frac{3}{5}\\right) x=0$\n\n$\\Rightarrow \\quad \\frac{3}{5} x=-\\frac{3}{5} \\cdot \\frac{4}{5}$\n\n$\\Rightarrow x=-\\frac{4}{5}$",
-        "images": []
+        "markdown": "$\\text{If }\\quad A^{T}=A^{-1}$\n\nthen A is orthogonal matrix.\n\nTherefore $A . A^{-1}=A^{-1} A=I$\n\n$\\text{and }A^{T} A=A A^{T}=I$\n\nsince $\\mathrm{M}$ is orthogonal matrix\n\n$M^{T} M=I$\n\n$$=\\left[\\begin{array}{cc}\\frac{3}{5} & x \\\\ \\frac{4}{5} & \\frac{3}{5}\\end{array}\\right]\\left[\\begin{array}{cc}\\frac{3}{5} & \\frac{4}{5} \\\\ x & \\frac{3}{5}\\end{array}\\right]=\\left[\\begin{array}{cc}1 & 0 \\\\ 0 & 1\\end{array}\\right]$$\n\n$$\\left[\\begin{aligned} \\left(\\frac{3}{5}\\right)^{2}+x^{2} \\quad\\left(\\frac{3}{5} \\cdot \\frac{4}{5}\\right)+\\frac{3}{5} x \\\\ \\left(\\frac{4}{5} \\cdot \\frac{3}{5}\\right)+\\frac{3}{5} \\cdot x\\left(\\frac{4}{5}\\right)^{2}+\\left(\\frac{3}{5}\\right)^{2} \\end{aligned} \\right]$$\n\n$$=\\left[\\begin{array}{cc}1 & 0 \\\\ 0 & 1\\end{array}\\right] \\Rightarrow \\text{Compare both sides} a_{12}$$\n\n$a_{12}=\\left(\\frac{3}{5}\\right)\\left(\\frac{4}{5}\\right)+\\left(\\frac{3}{5}\\right) x=0$\n\n$\\Rightarrow \\quad \\frac{3}{5} x=-\\frac{3}{5} \\cdot \\frac{4}{5}$\n\n$\\Rightarrow x=-\\frac{4}{5}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q2": {
-      "question_uid": "pp:me:2009:q2",
+    "me:2009:q2": {
+      "question_uid": "me:2009:q2",
+      "legacy_uid": "pp:me:2009:q2",
       "exam_uid": "me:2009:set1:main:q2",
       "title": "GATE ME 2009 | Set 1 | Question: 2",
       "section": "main",
@@ -95,12 +96,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$\\text{Vector field,}$\n\n$\\vec{f}=3 x z \\hat{i}+2 x y \\hat{j}-y z^{2} \\hat{k}$\n\n$\\vec{f}=\\left[f_{1} \\hat{i}+f_{2} \\hat{j}+f_{3} \\hat{k}\\right]$\n\n$$\\begin{aligned}&\\text{Divergence of vector field} \\vec{f}=\\nabla \\cdot \\vec{f} \\\\ &\\text{Div}(f)=\\left(i \\frac{\\partial}{\\partial x}+\\hat{j} \\frac{\\partial}{\\partial y}+\\hat{k} \\frac{\\partial}{\\partial z}\\right) \\cdot\\left(t_{1} \\hat{i}+f_{2} \\hat{j}+f_{3} \\hat{k}\\right) \\\\ &\\text{Div}(f)=\\frac{\\partial f_{1}}{\\partial x}+\\frac{\\partial f_{2}}{\\partial y}+\\frac{\\partial f_{3}}{\\partial z} \\\\ &\\text{Div}(f)=\\frac{\\partial}{\\partial x}[3 x z]+\\frac{\\partial}{\\partial y}[2 x y]+\\frac{\\partial}{\\partial z}\\left[-2 y z^{2}\\right] \\\\ &\\text{Div}(f)=3 z+2 x-2 z y \\\\ &\\text{Div}(f)|_{(1,1,1)}=3(1)+2(1)-2(1)(1)=3 \\end{aligned}$$",
-        "images": []
+        "markdown": "$\\text{Vector field,}$\n\n$\\vec{f}=3 x z \\hat{i}+2 x y \\hat{j}-y z^{2} \\hat{k}$\n\n$\\vec{f}=\\left[f_{1} \\hat{i}+f_{2} \\hat{j}+f_{3} \\hat{k}\\right]$\n\n$$\\begin{aligned}&\\text{Divergence of vector field} \\vec{f}=\\nabla \\cdot \\vec{f} \\\\ &\\text{Div}(f)=\\left(i \\frac{\\partial}{\\partial x}+\\hat{j} \\frac{\\partial}{\\partial y}+\\hat{k} \\frac{\\partial}{\\partial z}\\right) \\cdot\\left(t_{1} \\hat{i}+f_{2} \\hat{j}+f_{3} \\hat{k}\\right) \\\\ &\\text{Div}(f)=\\frac{\\partial f_{1}}{\\partial x}+\\frac{\\partial f_{2}}{\\partial y}+\\frac{\\partial f_{3}}{\\partial z} \\\\ &\\text{Div}(f)=\\frac{\\partial}{\\partial x}[3 x z]+\\frac{\\partial}{\\partial y}[2 x y]+\\frac{\\partial}{\\partial z}\\left[-2 y z^{2}\\right] \\\\ &\\text{Div}(f)=3 z+2 x-2 z y \\\\ &\\text{Div}(f)|_{(1,1,1)}=3(1)+2(1)-2(1)(1)=3 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q3": {
-      "question_uid": "pp:me:2009:q3",
+    "me:2009:q3": {
+      "question_uid": "me:2009:q3",
+      "legacy_uid": "pp:me:2009:q3",
       "exam_uid": "me:2009:set1:main:q3",
       "title": "GATE ME 2009 | Set 1 | Question: 3",
       "section": "main",
@@ -140,12 +141,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "$$\\begin{aligned} L^{-1}\\left(\\frac{1}{s^{2}+s}\\right) &=? \\\\ \\frac{1}{s^{2}+s} &=\\frac{1}{s(s+1)}=\\frac{1}{s}-\\frac{1}{s+1} \\\\ L^{-1}\\left(\\frac{1}{s^{2}+s}\\right) &=L^{-1}\\left(\\frac{1}{s}\\right)--L^{-1}\\left(\\frac{1}{s+1}\\right) \\\\ &=1-e^{-t} \\end{aligned}$$\n\n[Using standard formulae]\n\nStandard formula:\n\n$$\\begin{aligned} L^{-1}\\left(\\frac{1}{s}\\right) &=1 \\\\ L^{-1}\\left(\\frac{1}{s+a}\\right) &=e^{-a t} \\\\ L^{-1}\\left(\\frac{1}{s-a}\\right) &=e^{a t} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} L^{-1}\\left(\\frac{1}{s^{2}+s}\\right) &=? \\\\ \\frac{1}{s^{2}+s} &=\\frac{1}{s(s+1)}=\\frac{1}{s}-\\frac{1}{s+1} \\\\ L^{-1}\\left(\\frac{1}{s^{2}+s}\\right) &=L^{-1}\\left(\\frac{1}{s}\\right)--L^{-1}\\left(\\frac{1}{s+1}\\right) \\\\ &=1-e^{-t} \\end{aligned}$$\n\n[Using standard formulae]\n\nStandard formula:\n\n$$\\begin{aligned} L^{-1}\\left(\\frac{1}{s}\\right) &=1 \\\\ L^{-1}\\left(\\frac{1}{s+a}\\right) &=e^{-a t} \\\\ L^{-1}\\left(\\frac{1}{s-a}\\right) &=e^{a t} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q4": {
-      "question_uid": "pp:me:2009:q4",
+    "me:2009:q4": {
+      "question_uid": "me:2009:q4",
+      "legacy_uid": "pp:me:2009:q4",
       "exam_uid": "me:2009:set1:main:q4",
       "title": "GATE ME 2009 | Set 1 | Question: 4",
       "section": "main",
@@ -185,12 +186,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "Three coins are tossed simultaneously, the total\n\nnumber of ways $=2^{3}=8$\n\nNumber of ways to get all tails = 1\n\n$Probability to get all tails$\n\n$=\\frac{\\text { Number of ways for tails }}{\\text { Total number of ways }}=\\frac{1}{8}$\n\nTherefore probability to get at least one head is\n\n$=1-\\frac{1}{8}=\\frac{7}{8}$\n\nor, Total number of ways with at least one head is\n\n$$\\left.\\begin{matrix} & &\\left.\\begin{array}{lll} H & T & T \\\\ T & H & T \\\\ T & T & H \\end{array} \\right] \\\\ &&\\left.\\begin{array}{lll} H & T & T \\\\ T & H & T \\\\ T & T & H \\end{array} \\right] \\\\ &&\\left.\\begin{array}{lll} H & H & H \\end{array} \\right] \\end{matrix}\\right\\}$$\n\nTherefore probability to get at least one head $=\\frac{7}{8}$",
-        "images": []
+        "markdown": "Three coins are tossed simultaneously, the total\n\nnumber of ways $=2^{3}=8$\n\nNumber of ways to get all tails = 1\n\n$Probability to get all tails$\n\n$=\\frac{\\text { Number of ways for tails }}{\\text { Total number of ways }}=\\frac{1}{8}$\n\nTherefore probability to get at least one head is\n\n$=1-\\frac{1}{8}=\\frac{7}{8}$\n\nor, Total number of ways with at least one head is\n\n$$\\left.\\begin{matrix} & &\\left.\\begin{array}{lll} H & T & T \\\\ T & H & T \\\\ T & T & H \\end{array} \\right] \\\\ &&\\left.\\begin{array}{lll} H & T & T \\\\ T & H & T \\\\ T & T & H \\end{array} \\right] \\\\ &&\\left.\\begin{array}{lll} H & H & H \\end{array} \\right] \\end{matrix}\\right\\}$$\n\nTherefore probability to get at least one head $=\\frac{7}{8}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q5": {
-      "question_uid": "pp:me:2009:q5",
+    "me:2009:q5": {
+      "question_uid": "me:2009:q5",
+      "legacy_uid": "pp:me:2009:q5",
       "exam_uid": "me:2009:set1:main:q5",
       "title": "GATE ME 2009 | Set 1 | Question: 5",
       "section": "main",
@@ -230,12 +231,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Thermodynamic System and Processes",
-        "markdown": "If a closed system is undergoing an irreversible\n\nprocess, the entropy of the system can increase,\n\ndecrease or remain constant",
-        "images": []
+        "markdown": "If a closed system is undergoing an irreversible\n\nprocess, the entropy of the system can increase,\n\ndecrease or remain constant\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q6": {
-      "question_uid": "pp:me:2009:q6",
+    "me:2009:q6": {
+      "question_uid": "me:2009:q6",
+      "legacy_uid": "pp:me:2009:q6",
       "exam_uid": "me:2009:set1:main:q6",
       "title": "GATE ME 2009 | Set 1 | Question: 6",
       "section": "main",
@@ -275,14 +276,12 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-4b8b5103a4.webp\" />\n\n$$\\begin{array}{l} T_{s}=100^{\\circ} \\mathrm{C} \\\\ \\text{At}\\; \\mathrm{y}=0 ; q_{\\mathrm{cond}}=q_{\\mathrm{conv}} \\\\ -\\left.k_{f} \\frac{\\partial T}{\\partial y}\\right|_{y=0}=h \\Delta T=h\\left(T_{s}-T_{\\infty}\\right) \\\\ -\\left.(1) \\frac{\\partial}{\\partial y}\\left[30+70 e^{-y}\\right]\\right|_{y=0}=h(100-30) \\\\ -\\left.\\left[0+70(-1) e^{-y}\\right]\\right|_{y=0}=h(70) \\\\ 70 e^{-0}=h(70) \\\\ ^{0} \\mathrm{h}=1 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} \\end{array}$$\n\nAlternatively\n\nGiven data:\n\n$$\\begin{aligned} T_{\\infty}&=30^{\\circ} \\mathrm{C} \\\\ T_{s}&=100^{\\circ} \\mathrm{C} \\\\ k_{f}&=1 \\mathrm{W} / \\mathrm{mK} \\\\ T&=30+70 \\exp (-y) \\end{aligned}$$\n\nDifferentiating w.r.t y, we get\n\n$$\\begin{aligned} \\text{At }\\quad y &=0\\\\ \\frac{d T}{d y}&=-70 e^{-y}\\\\ \\left(\\frac{d T}{d y}\\right)^{y=0}&=-70 \\end{aligned}$$\n\nWe know that local convective heat transfer coefficient:\n\n$h_{x}=\\frac{-k_{1}\\left(\\frac{d T}{d y}\\right)_{y=0}}{T_{s}-T_{\\infty}}=\\frac{-1 \\times(-70)}{100-30}=1 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K}$",
-        "images": [
-          "/question-images/me/2009/me-2009-4b8b5103a4.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-4b8b5103a4.webp\" />\n\n$$\\begin{array}{l} T_{s}=100^{\\circ} \\mathrm{C} \\\\ \\text{At}\\; \\mathrm{y}=0 ; q_{\\mathrm{cond}}=q_{\\mathrm{conv}} \\\\ -\\left.k_{f} \\frac{\\partial T}{\\partial y}\\right|_{y=0}=h \\Delta T=h\\left(T_{s}-T_{\\infty}\\right) \\\\ -\\left.(1) \\frac{\\partial}{\\partial y}\\left[30+70 e^{-y}\\right]\\right|_{y=0}=h(100-30) \\\\ -\\left.\\left[0+70(-1) e^{-y}\\right]\\right|_{y=0}=h(70) \\\\ 70 e^{-0}=h(70) \\\\ ^{0} \\mathrm{h}=1 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} \\end{array}$$\n\nAlternatively\n\nGiven data:\n\n$$\\begin{aligned} T_{\\infty}&=30^{\\circ} \\mathrm{C} \\\\ T_{s}&=100^{\\circ} \\mathrm{C} \\\\ k_{f}&=1 \\mathrm{W} / \\mathrm{mK} \\\\ T&=30+70 \\exp (-y) \\end{aligned}$$\n\nDifferentiating w.r.t y, we get\n\n$$\\begin{aligned} \\text{At }\\quad y &=0\\\\ \\frac{d T}{d y}&=-70 e^{-y}\\\\ \\left(\\frac{d T}{d y}\\right)^{y=0}&=-70 \\end{aligned}$$\n\nWe know that local convective heat transfer coefficient:\n\n$h_{x}=\\frac{-k_{1}\\left(\\frac{d T}{d y}\\right)_{y=0}}{T_{s}-T_{\\infty}}=\\frac{-1 \\times(-70)}{100-30}=1 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q7": {
-      "question_uid": "pp:me:2009:q7",
+    "me:2009:q7": {
+      "question_uid": "me:2009:q7",
+      "legacy_uid": "pp:me:2009:q7",
       "exam_uid": "me:2009:set1:main:q7",
       "title": "GATE ME 2009 | Set 1 | Question: 7",
       "section": "main",
@@ -322,12 +321,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "Given data for constant temperature process\n\n$$\\begin{array}{l} p_{1}=0.8 \\mathrm{MPa}=800 \\mathrm{kPa} \\\\ V_{1}=0.015 \\mathrm{m}^{3} \\\\ V_{2}=0.030 \\mathrm{m}^{3} \\end{array}$$\n\nWe know that work done for constant temperature process,\n\n$$\\begin{aligned} W &=p_{1} V_{1} \\log _{e} \\frac{V_{2}}{V_{1}} \\\\ &=800 \\times 0.015 \\log _{e} \\frac{0.030}{0.015} \\\\ &=8.317 \\mathrm{kJ} \\approx 8.32 \\mathrm{kJ} \\end{aligned}$$",
-        "images": []
+        "markdown": "Given data for constant temperature process\n\n$$\\begin{array}{l} p_{1}=0.8 \\mathrm{MPa}=800 \\mathrm{kPa} \\\\ V_{1}=0.015 \\mathrm{m}^{3} \\\\ V_{2}=0.030 \\mathrm{m}^{3} \\end{array}$$\n\nWe know that work done for constant temperature process,\n\n$$\\begin{aligned} W &=p_{1} V_{1} \\log _{e} \\frac{V_{2}}{V_{1}} \\\\ &=800 \\times 0.015 \\log _{e} \\frac{0.030}{0.015} \\\\ &=8.317 \\mathrm{kJ} \\approx 8.32 \\mathrm{kJ} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q8": {
-      "question_uid": "pp:me:2009:q8",
+    "me:2009:q8": {
+      "question_uid": "me:2009:q8",
+      "legacy_uid": "pp:me:2009:q8",
       "exam_uid": "me:2009:set1:main:q8",
       "title": "GATE ME 2009 | Set 1 | Question: 8",
       "section": "main",
@@ -367,14 +366,12 @@
       },
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Vapor and Gas Refrigeration",
-        "markdown": "Given data:\n\n$$\\begin{aligned} h_{2} &=283 \\mathrm{kJ} / \\mathrm{kg} \\\\ h_{3} &=116 \\mathrm{kJ} / \\mathrm{kg} \\\\ &=h_{4} \\\\ h_{1} &=232 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\n<img src=\"/question-images/me/2009/me-2009-b40b0e1ce8.webp\" />\n\nCoefficient of performance,\n\n$$\\begin{aligned} \\mathrm{COP} &=\\frac{\\text { Refrigerating effect: Re }}{\\text { Work input: } w} \\\\ \\text { where } \\mathrm{Re} &=h_{1}-h_{4}=232-116 \\\\ &=116 \\mathrm{kJ} / \\mathrm{kg}\\\\ \\text { and } \\quad w &=h_{2}-h_{1}=283-232 \\\\ &=51 \\mathrm{kJ} / \\mathrm{kg} \\\\ \\therefore \\quad \\mathrm{COP} &=\\frac{116}{51}=2.27 \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-b40b0e1ce8.webp"
-        ]
+        "markdown": "Given data:\n\n$$\\begin{aligned} h_{2} &=283 \\mathrm{kJ} / \\mathrm{kg} \\\\ h_{3} &=116 \\mathrm{kJ} / \\mathrm{kg} \\\\ &=h_{4} \\\\ h_{1} &=232 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\n<img src=\"/question-images/me/2009/me-2009-b40b0e1ce8.webp\" />\n\nCoefficient of performance,\n\n$$\\begin{aligned} \\mathrm{COP} &=\\frac{\\text { Refrigerating effect: Re }}{\\text { Work input: } w} \\\\ \\text { where } \\mathrm{Re} &=h_{1}-h_{4}=232-116 \\\\ &=116 \\mathrm{kJ} / \\mathrm{kg}\\\\ \\text { and } \\quad w &=h_{2}-h_{1}=283-232 \\\\ &=51 \\mathrm{kJ} / \\mathrm{kg} \\\\ \\therefore \\quad \\mathrm{COP} &=\\frac{116}{51}=2.27 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q9": {
-      "question_uid": "pp:me:2009:q9",
+    "me:2009:q9": {
+      "question_uid": "me:2009:q9",
+      "legacy_uid": "pp:me:2009:q9",
       "exam_uid": "me:2009:set1:main:q9",
       "title": "GATE ME 2009 | Set 1 | Question: 9",
       "section": "main",
@@ -414,15 +411,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "Reversible steady flow process\n\n<img src=\"/question-images/me/2009/me-2009-1bc350dd69.webp\" />\n\nState 1: Inlet State\n\n2: Outlet\n\nPotential and kinetic energy change ignored.\n\nv= Specific volume of the gas\n\nP= Pressure of the gas\n\nSpecific work required to be supplied to the\n\ncompressor for this gas compression process is\n\n$w=\\int_{1}^{2} v d p \\quad$\n\n(Open system flow in compressor)\n\n<img src=\"/question-images/me/2009/me-2009-f8b273cd0e.webp\" />",
-        "images": [
-          "/question-images/me/2009/me-2009-1bc350dd69.webp",
-          "/question-images/me/2009/me-2009-f8b273cd0e.webp"
-        ]
+        "markdown": "Reversible steady flow process\n\n<img src=\"/question-images/me/2009/me-2009-1bc350dd69.webp\" />\n\nState 1: Inlet State\n\n2: Outlet\n\nPotential and kinetic energy change ignored.\n\nv= Specific volume of the gas\n\nP= Pressure of the gas\n\nSpecific work required to be supplied to the\n\ncompressor for this gas compression process is\n\n$w=\\int_{1}^{2} v d p \\quad$\n\n(Open system flow in compressor)\n\n<img src=\"/question-images/me/2009/me-2009-f8b273cd0e.webp\" />\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q10": {
-      "question_uid": "pp:me:2009:q10",
+    "me:2009:q10": {
+      "question_uid": "me:2009:q10",
+      "legacy_uid": "pp:me:2009:q10",
       "exam_uid": "me:2009:set1:main:q10",
       "title": "GATE ME 2009 | Set 1 | Question: 10",
       "section": "main",
@@ -462,14 +456,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
-        "markdown": "Free body Diagram\n\n<img src=\"/question-images/me/2009/me-2009-bc05c00eaf.webp\" />\n\nAssume normal reaction =R (Newton)\n\nBalancing force in horizontal direction\n\n$(\\Sigma F x=0)$\n\n$$\\begin{aligned} \\mu R &=100 \\\\ (0.2) R &=100 \\\\ R &=500 \\mathrm{N} \\end{aligned}$$\n\nBalancing the force in vertical direction\n\n$$\\begin{aligned} (\\Sigma F y&=0) \\\\ T+R-W &=0 \\\\ \\Rightarrow T+500-981 &=0 \\\\ T &=481 \\mathrm{N} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-bc05c00eaf.webp"
-        ]
+        "markdown": "Free body Diagram\n\n<img src=\"/question-images/me/2009/me-2009-bc05c00eaf.webp\" />\n\nAssume normal reaction =R (Newton)\n\nBalancing force in horizontal direction\n\n$(\\Sigma F x=0)$\n\n$$\\begin{aligned} \\mu R &=100 \\\\ (0.2) R &=100 \\\\ R &=500 \\mathrm{N} \\end{aligned}$$\n\nBalancing the force in vertical direction\n\n$$\\begin{aligned} (\\Sigma F y&=0) \\\\ T+R-W &=0 \\\\ \\Rightarrow T+500-981 &=0 \\\\ T &=481 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q11": {
-      "question_uid": "pp:me:2009:q11",
+    "me:2009:q11": {
+      "question_uid": "me:2009:q11",
+      "legacy_uid": "pp:me:2009:q11",
       "exam_uid": "me:2009:set1:main:q11",
       "title": "GATE ME 2009 | Set 1 | Question: 11",
       "section": "main",
@@ -509,12 +501,12 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "In plane stress problem principal stresses,\n\n$\\sigma_{1}=100 \\mathrm{MPa}$ $\\text{and  } \\sigma_{2}=40 \\mathrm{MPa}$\n\nMagnitude of the maximum shear stress in plane stress case is given by\n\n$\\tau_{\\max }=\\frac{\\sigma_{1}-\\sigma_{2}}{2}=\\frac{100-40}{2}=30 \\mathrm{MPa}$",
-        "images": []
+        "markdown": "In plane stress problem principal stresses,\n\n$\\sigma_{1}=100 \\mathrm{MPa}$ $\\text{and  } \\sigma_{2}=40 \\mathrm{MPa}$\n\nMagnitude of the maximum shear stress in plane stress case is given by\n\n$\\tau_{\\max }=\\frac{\\sigma_{1}-\\sigma_{2}}{2}=\\frac{100-40}{2}=30 \\mathrm{MPa}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q12": {
-      "question_uid": "pp:me:2009:q12",
+    "me:2009:q12": {
+      "question_uid": "me:2009:q12",
+      "legacy_uid": "pp:me:2009:q12",
       "exam_uid": "me:2009:set1:main:q12",
       "title": "GATE ME 2009 | Set 1 | Question: 12",
       "section": "main",
@@ -554,14 +546,12 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-c0726fc37c.webp\" />\n\n$O_{1} P=125 \\mathrm{mm}$\n\nQuick Return Mechanism\n\n$\\frac{\\text { Time of working (Forward) stroke }}{\\text { Time of return stroke }} =\\frac{\\beta}{\\alpha}$\n\n$$\\begin{aligned} &=\\frac{360-\\alpha}{\\alpha} \\\\ \\frac{2}{1} &=\\frac{360^{\\circ}-\\alpha}{\\alpha}\\\\ \\Rightarrow \\quad 2 \\alpha&=360^{\\circ}-\\alpha \\\\ \\Rightarrow \\quad 3 \\alpha&=360^{\\circ} \\\\ \\Rightarrow \\quad \\alpha&=120^{\\circ}\\\\ \\Rightarrow \\quad \\frac{\\alpha}{2}&=60^{\\circ} \\end{aligned}$$\n\nThe extreme position of the crank $\\left(O_{1} P\\right)$ are shown\n\nin figure.\n\nFrom right angle triangle $O_{2} O_{1} P_{1},$ we find that\n\n$$\\begin{aligned} \\sin \\left(90^{\\circ}-\\alpha / 2\\right) &=\\frac{O_{1} P_{1}}{O_{1} O_{2}} \\\\ \\sin \\left(90^{\\circ}-60^{\\circ}\\right) &=\\frac{125}{O_{1} O_{2}}=\\frac{125}{d} \\\\ \\sin 30^{\\circ} &=\\frac{125}{d}\\\\ \\text{or} \\quad d&=\\frac{125}{\\sin 30^{\\circ}}=250 \\mathrm{mm} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-c0726fc37c.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-c0726fc37c.webp\" />\n\n$O_{1} P=125 \\mathrm{mm}$\n\nQuick Return Mechanism\n\n$\\frac{\\text { Time of working (Forward) stroke }}{\\text { Time of return stroke }} =\\frac{\\beta}{\\alpha}$\n\n$$\\begin{aligned} &=\\frac{360-\\alpha}{\\alpha} \\\\ \\frac{2}{1} &=\\frac{360^{\\circ}-\\alpha}{\\alpha}\\\\ \\Rightarrow \\quad 2 \\alpha&=360^{\\circ}-\\alpha \\\\ \\Rightarrow \\quad 3 \\alpha&=360^{\\circ} \\\\ \\Rightarrow \\quad \\alpha&=120^{\\circ}\\\\ \\Rightarrow \\quad \\frac{\\alpha}{2}&=60^{\\circ} \\end{aligned}$$\n\nThe extreme position of the crank $\\left(O_{1} P\\right)$ are shown\n\nin figure.\n\nFrom right angle triangle $O_{2} O_{1} P_{1},$ we find that\n\n$$\\begin{aligned} \\sin \\left(90^{\\circ}-\\alpha / 2\\right) &=\\frac{O_{1} P_{1}}{O_{1} O_{2}} \\\\ \\sin \\left(90^{\\circ}-60^{\\circ}\\right) &=\\frac{125}{O_{1} O_{2}}=\\frac{125}{d} \\\\ \\sin 30^{\\circ} &=\\frac{125}{d}\\\\ \\text{or} \\quad d&=\\frac{125}{\\sin 30^{\\circ}}=250 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q13": {
-      "question_uid": "pp:me:2009:q13",
+    "me:2009:q13": {
+      "question_uid": "me:2009:q13",
+      "legacy_uid": "pp:me:2009:q13",
       "exam_uid": "me:2009:set1:main:q13",
       "title": "GATE ME 2009 | Set 1 | Question: 13",
       "section": "main",
@@ -601,12 +591,12 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "Critical or whirling speed,\n\n$\\omega_{c}=\\omega_{n}=\\sqrt{\\frac{K}{m}}=\\sqrt{\\frac{g}{\\delta}} \\mathrm{Hz}$\n\nIf $N_{c}$ is the critical or whirling speed in rpm then\n\n$$\\begin{aligned} \\frac{2 \\pi N_{c}}{60} &=\\sqrt{\\frac{g}{\\delta}} \\\\ \\Rightarrow \\quad \\frac{2 \\pi N_{c}}{60} &=\\sqrt{\\frac{9.81 \\mathrm{m} / \\mathrm{s}^{2}}{1.8 \\times 10^{-3} \\mathrm{m}}}\\\\ \\Rightarrow \\quad N_{c}&=705.32 \\mathrm{rpm} \\approx 705 \\mathrm{rpm} \\end{aligned}$$",
-        "images": []
+        "markdown": "Critical or whirling speed,\n\n$\\omega_{c}=\\omega_{n}=\\sqrt{\\frac{K}{m}}=\\sqrt{\\frac{g}{\\delta}} \\mathrm{Hz}$\n\nIf $N_{c}$ is the critical or whirling speed in rpm then\n\n$$\\begin{aligned} \\frac{2 \\pi N_{c}}{60} &=\\sqrt{\\frac{g}{\\delta}} \\\\ \\Rightarrow \\quad \\frac{2 \\pi N_{c}}{60} &=\\sqrt{\\frac{9.81 \\mathrm{m} / \\mathrm{s}^{2}}{1.8 \\times 10^{-3} \\mathrm{m}}}\\\\ \\Rightarrow \\quad N_{c}&=705.32 \\mathrm{rpm} \\approx 705 \\mathrm{rpm} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q14": {
-      "question_uid": "pp:me:2009:q14",
+    "me:2009:q14": {
+      "question_uid": "me:2009:q14",
+      "legacy_uid": "pp:me:2009:q14",
       "exam_uid": "me:2009:set1:main:q14",
       "title": "GATE ME 2009 | Set 1 | Question: 14",
       "section": "main",
@@ -646,14 +636,12 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
-        "markdown": "A solid circular shaft of diameter d is subjected to a combined bending moment Mand torque T.\n\nFor design of shaft using the relation $\\frac{16}{\\pi d^{3}} \\sqrt{M^{2}+T^{2}}$ the mechanical property torsional yield strength $\\left(S_{s y}\\right)$ is used.\n\n<img src=\"/question-images/me/2009/me-2009-db1336f108.webp\" />\n\n$$\\begin{aligned} T_{e q} &=\\sqrt{M^{2}+T^{2}} \\\\ \\frac{\\tau}{r} &=\\frac{T_{e q}}{I_{P}} \\\\ \\tau &=\\frac{16}{\\pi d^{3}} \\sqrt{M^{2}+T^{2}} \\\\ &\\leq \\frac{S_{s y}}{N}(\\text { for safe design }) \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-db1336f108.webp"
-        ]
+        "markdown": "A solid circular shaft of diameter d is subjected to a combined bending moment Mand torque T.\n\nFor design of shaft using the relation $\\frac{16}{\\pi d^{3}} \\sqrt{M^{2}+T^{2}}$ the mechanical property torsional yield strength $\\left(S_{s y}\\right)$ is used.\n\n<img src=\"/question-images/me/2009/me-2009-db1336f108.webp\" />\n\n$$\\begin{aligned} T_{e q} &=\\sqrt{M^{2}+T^{2}} \\\\ \\frac{\\tau}{r} &=\\frac{T_{e q}}{I_{P}} \\\\ \\tau &=\\frac{16}{\\pi d^{3}} \\sqrt{M^{2}+T^{2}} \\\\ &\\leq \\frac{S_{s y}}{N}(\\text { for safe design }) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q15": {
-      "question_uid": "pp:me:2009:q15",
+    "me:2009:q15": {
+      "question_uid": "me:2009:q15",
+      "legacy_uid": "pp:me:2009:q15",
       "exam_uid": "me:2009:set1:main:q15",
       "title": "GATE ME 2009 | Set 1 | Question: 15",
       "section": "main",
@@ -693,14 +681,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "$$\\begin{aligned} &\\text{Space Lattice }&\\text{Effective Number of }\\\\ &\\text{Lattice point in }&\\text{unit cell}\\\\ & \\text{Simple Cubic }&1 / 8 \\times 8=1\\\\ &\\text{Body Centered Cubic}\\\\ &\\text { (B.C.C.) } &\\quad 1 / 8 \\times 8+1=2\\\\ &\\text{Face Centered Cubic}\\\\ &(F.C.C.)&1 / 8 \\times 8+1 / 2 \\times 6=4 \\end{aligned}$$\n\n<img src=\"/question-images/me/2009/me-2009-6356153629.webp\" />",
-        "images": [
-          "/question-images/me/2009/me-2009-6356153629.webp"
-        ]
+        "markdown": "$$\\begin{aligned} &\\text{Space Lattice }&\\text{Effective Number of }\\\\ &\\text{Lattice point in }&\\text{unit cell}\\\\ & \\text{Simple Cubic }&1 / 8 \\times 8=1\\\\ &\\text{Body Centered Cubic}\\\\ &\\text { (B.C.C.) } &\\quad 1 / 8 \\times 8+1=2\\\\ &\\text{Face Centered Cubic}\\\\ &(F.C.C.)&1 / 8 \\times 8+1 / 2 \\times 6=4 \\end{aligned}$$\n\n<img src=\"/question-images/me/2009/me-2009-6356153629.webp\" />\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q16": {
-      "question_uid": "pp:me:2009:q16",
+    "me:2009:q16": {
+      "question_uid": "me:2009:q16",
+      "legacy_uid": "pp:me:2009:q16",
       "exam_uid": "me:2009:set1:main:q16",
       "title": "GATE ME 2009 | Set 1 | Question: 16",
       "section": "main",
@@ -740,12 +726,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Friction at tool-chip interface can be reduced by increasing the cutting speed.",
-        "images": []
+        "markdown": "Friction at tool-chip interface can be reduced by increasing the cutting speed.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q17": {
-      "question_uid": "pp:me:2009:q17",
+    "me:2009:q17": {
+      "question_uid": "me:2009:q17",
+      "legacy_uid": "pp:me:2009:q17",
       "exam_uid": "me:2009:set1:main:q17",
       "title": "GATE ME 2009 | Set 1 | Question: 17",
       "section": "main",
@@ -785,15 +771,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "Cold Shut:\n\n<img src=\"/question-images/me/2009/me-2009-7dbd2a26eb.webp\" />\n\nTwo stream of liquid metal which are not hot enough to fuse properly result into a casting\n\ndefect known as cold shut\n\nOR\n\nFor a casting with gates at its two sides, the misrun may show up at the centre of the casting. When this happens, the defect is called a cold shut.\n\nSwell: This defect is found on the vertical surface of a casting if the moulding sand is deformed by the hydrostatic pressure caused by the high moisture content in the sand.\n\nWash: A low projection on the drag surface of a casting commencing near the gate is called a wash. This is caused by erosion of sand due to the high velocity jet of liquid metal in bottom gating.\n\nScab: This refers to the rough thin layer of a metal, protruding above the casting surface on the top of a thin layer of sand. The layer is held on the casting by a metal stringer through the sand. A scab results when the upheaved sand is separated from the mould surface and the liquid metal flows into the space between the mould and the displaced sand.\n\n<img src=\"/question-images/me/2009/me-2009-4642f81c7e.webp\" />",
-        "images": [
-          "/question-images/me/2009/me-2009-7dbd2a26eb.webp",
-          "/question-images/me/2009/me-2009-4642f81c7e.webp"
-        ]
+        "markdown": "Cold Shut:\n\n<img src=\"/question-images/me/2009/me-2009-7dbd2a26eb.webp\" />\n\nTwo stream of liquid metal which are not hot enough to fuse properly result into a casting\n\ndefect known as cold shut\n\nOR\n\nFor a casting with gates at its two sides, the misrun may show up at the centre of the casting. When this happens, the defect is called a cold shut.\n\nSwell: This defect is found on the vertical surface of a casting if the moulding sand is deformed by the hydrostatic pressure caused by the high moisture content in the sand.\n\nWash: A low projection on the drag surface of a casting commencing near the gate is called a wash. This is caused by erosion of sand due to the high velocity jet of liquid metal in bottom gating.\n\nScab: This refers to the rough thin layer of a metal, protruding above the casting surface on the top of a thin layer of sand. The layer is held on the casting by a metal stringer through the sand. A scab results when the upheaved sand is separated from the mould surface and the liquid metal flows into the space between the mould and the displaced sand.\n\n<img src=\"/question-images/me/2009/me-2009-4642f81c7e.webp\" />\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q18": {
-      "question_uid": "pp:me:2009:q18",
+    "me:2009:q18": {
+      "question_uid": "me:2009:q18",
+      "legacy_uid": "pp:me:2009:q18",
       "exam_uid": "me:2009:set1:main:q18",
       "title": "GATE ME 2009 | Set 1 | Question: 18",
       "section": "main",
@@ -833,12 +816,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "The expected time $\\left(t_{e}\\right)$ of PERT activity in terms of optimistic time $\\left(t_{0}\\right),$ pessimistic time $\\left(t_{p}\\right)$ and  most likely time $\\left(t_{l}\\right)$ is given by\n\n$t_{e}=\\frac{t_{0}+4 t_{1}+t_{p}}{6}$",
-        "images": []
+        "markdown": "The expected time $\\left(t_{e}\\right)$ of PERT activity in terms of optimistic time $\\left(t_{0}\\right),$ pessimistic time $\\left(t_{p}\\right)$ and  most likely time $\\left(t_{l}\\right)$ is given by\n\n$t_{e}=\\frac{t_{0}+4 t_{1}+t_{p}}{6}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q19": {
-      "question_uid": "pp:me:2009:q19",
+    "me:2009:q19": {
+      "question_uid": "me:2009:q19",
+      "legacy_uid": "pp:me:2009:q19",
       "exam_uid": "me:2009:set1:main:q19",
       "title": "GATE ME 2009 | Set 1 | Question: 19",
       "section": "main",
@@ -878,12 +861,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
-        "markdown": "Correct data structure for solid models is given\n\nby:\n\nVertices $\\rightarrow$ edges $\\rightarrow$ faces $\\rightarrow$ solid parts",
-        "images": []
+        "markdown": "Correct data structure for solid models is given\n\nby:\n\nVertices $\\rightarrow$ edges $\\rightarrow$ faces $\\rightarrow$ solid parts\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q20": {
-      "question_uid": "pp:me:2009:q20",
+    "me:2009:q20": {
+      "question_uid": "me:2009:q20",
+      "legacy_uid": "pp:me:2009:q20",
       "exam_uid": "me:2009:set1:main:q20",
       "title": "GATE ME 2009 | Set 1 | Question: 20",
       "section": "main",
@@ -923,12 +906,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
-        "markdown": "Exponential smoothing methods of forecasting takes a fraction of forecast error into account for next period forecast\n\n$$\\begin{aligned} F_{t}&=F_{t-1}+\\alpha\\left(D_{t-1}-F_{t-1}\\right) \\\\ F_{t}&=F_{t-1}+\\alpha e_{t} \\end{aligned}$$\n\nwhere, $F_{t}$ is the forecast at time t\n\n$D_{t}$ is the actual demand at time t\n\n$F_{t-1}$ is the forecast at time t-1\n\n$\\alpha$ is the smoothing coefficient\n\n$e_{t}=D_{t-1}-F_{t-1}$ is forecast error\n\nThe value of $\\alpha$ varies between 0 and 1, with commonly used value of 0.01 to 0.30 .\n\nNew estimate = Old estimate of latest actual demand $+\\alpha$ [latest actual demand - old estimate of latest actual demand]\n\nExponential smoothing provides a convenient, systematic and recursive method of revisiting the forecast for the next period whenever discrepancy exists between the previously forecast demand for current period and the actual demand for current period.",
-        "images": []
+        "markdown": "Exponential smoothing methods of forecasting takes a fraction of forecast error into account for next period forecast\n\n$$\\begin{aligned} F_{t}&=F_{t-1}+\\alpha\\left(D_{t-1}-F_{t-1}\\right) \\\\ F_{t}&=F_{t-1}+\\alpha e_{t} \\end{aligned}$$\n\nwhere, $F_{t}$ is the forecast at time t\n\n$D_{t}$ is the actual demand at time t\n\n$F_{t-1}$ is the forecast at time t-1\n\n$\\alpha$ is the smoothing coefficient\n\n$e_{t}=D_{t-1}-F_{t-1}$ is forecast error\n\nThe value of $\\alpha$ varies between 0 and 1, with commonly used value of 0.01 to 0.30 .\n\nNew estimate = Old estimate of latest actual demand $+\\alpha$ [latest actual demand - old estimate of latest actual demand]\n\nExponential smoothing provides a convenient, systematic and recursive method of revisiting the forecast for the next period whenever discrepancy exists between the previously forecast demand for current period and the actual demand for current period.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q21": {
-      "question_uid": "pp:me:2009:q21",
+    "me:2009:q21": {
+      "question_uid": "me:2009:q21",
+      "legacy_uid": "pp:me:2009:q21",
       "exam_uid": "me:2009:set1:main:q21",
       "title": "GATE ME 2009 | Set 1 | Question: 21",
       "section": "main",
@@ -968,12 +951,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
-        "markdown": "$$\\begin{aligned} u &=x y \\\\ u_{x} &=\\frac{\\partial u}{\\partial x}=y \\\\ u_{y} &=\\frac{\\partial u}{\\partial y}=x \\\\ f(z) &=u(x, y)+i v(x, y) \\\\ f^{\\prime}(z) &=u_{x}+i v_{x}=v_{y}-i u_{y} \\end{aligned}$$\n\nCauchy Riemann Equation\n\n$$\\begin{aligned} u_{x} &=v_{y} \\\\ v_{x} &=-u_{y} \\\\ f^{\\prime}(z) &=u_{x}-i u_{y} \\\\ f^{\\prime}(z) &=y-i x \\\\ \\text{Put x=z and y}&=0\\\\ f^{\\prime}(z) &=0-i z \\\\ f(z) &=\\int(-i z) d z \\\\ f(z) &=-i \\frac{z^{2}}{2}+c_{1}+i c_{2} \\\\ c_{1} &=0(\\text { constant in real part }) \\\\ f(z) &=\\frac{-i z^{2}}{2}+i c_{2} \\\\ &=\\frac{-i(x+i y)^{2}}{2}+i c_{2} \\\\ f(z) &=x y+\\frac{i\\left(y^{2}-x^{2}\\right)}{2}+i c_{2} \\\\ f(z) &=u(x, y)+i v(x, y) \\end{aligned}$$\n\nComparing imaginary part\n\n$$\\begin{aligned} v &=\\frac{y^{2}-x^{2}}{2}+c_{2} \\\\ &=\\frac{y^{2}-x^{2}}{2}+k \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} u &=x y \\\\ u_{x} &=\\frac{\\partial u}{\\partial x}=y \\\\ u_{y} &=\\frac{\\partial u}{\\partial y}=x \\\\ f(z) &=u(x, y)+i v(x, y) \\\\ f^{\\prime}(z) &=u_{x}+i v_{x}=v_{y}-i u_{y} \\end{aligned}$$\n\nCauchy Riemann Equation\n\n$$\\begin{aligned} u_{x} &=v_{y} \\\\ v_{x} &=-u_{y} \\\\ f^{\\prime}(z) &=u_{x}-i u_{y} \\\\ f^{\\prime}(z) &=y-i x \\\\ \\text{Put x=z and y}&=0\\\\ f^{\\prime}(z) &=0-i z \\\\ f(z) &=\\int(-i z) d z \\\\ f(z) &=-i \\frac{z^{2}}{2}+c_{1}+i c_{2} \\\\ c_{1} &=0(\\text { constant in real part }) \\\\ f(z) &=\\frac{-i z^{2}}{2}+i c_{2} \\\\ &=\\frac{-i(x+i y)^{2}}{2}+i c_{2} \\\\ f(z) &=x y+\\frac{i\\left(y^{2}-x^{2}\\right)}{2}+i c_{2} \\\\ f(z) &=u(x, y)+i v(x, y) \\end{aligned}$$\n\nComparing imaginary part\n\n$$\\begin{aligned} v &=\\frac{y^{2}-x^{2}}{2}+c_{2} \\\\ &=\\frac{y^{2}-x^{2}}{2}+k \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q22": {
-      "question_uid": "pp:me:2009:q22",
+    "me:2009:q22": {
+      "question_uid": "me:2009:q22",
+      "legacy_uid": "pp:me:2009:q22",
       "exam_uid": "me:2009:set1:main:q22",
       "title": "GATE ME 2009 | Set 1 | Question: 22",
       "section": "main",
@@ -1013,12 +996,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
-        "markdown": "Given differential equation is\n\n$$\\begin{aligned} x \\frac{d y}{d x}+y &=x^{4} \\\\ \\Rightarrow \\frac{d y}{d x}+\\left(\\frac{1}{x}\\right) y &=x^{3} \\end{aligned}$$\n\nStandard form\n\n$\\Rightarrow \\quad \\frac{d y}{d x}+P y=Q$\n\nwhere P and Q function of x only and solution is given by\n\n$y(\\text { I.F. })=\\int Q \\cdot(I F .) d x+C$\n\nwhere, integrating factor (I.F.)$=e^{\\int P d x}$\n\n$\\text{Here} \\quad P =\\frac{1}{x} \\text { and } Q=x^{3}$\n\n$\\text { I.F. } =e^{\\int \\frac{1}{x} d x}=e^{\\ln x}=x$\n\nSolution $\\quad y(x)=\\int x^{3} \\cdot x d x+c$\n\n$y x=\\frac{x^{5}}{5}+c$\n\ngiven condition\n\n$y(1)=\\frac{6}{5}$\n\nmeans at $x=1 ; y=\\frac{6}{5}$\n\n$\\Rightarrow \\quad \\frac{6}{5} \\times 1=\\frac{1}{5}+c$\n\n$\\Rightarrow \\quad c=\\frac{6}{5}-\\frac{1}{5}=1$\n\nTherefore $y x=\\frac{x^{5}}{5}+1$\n\n$\\Rightarrow \\quad y=\\frac{x^{4}}{5}+\\frac{1}{x}$",
-        "images": []
+        "markdown": "Given differential equation is\n\n$$\\begin{aligned} x \\frac{d y}{d x}+y &=x^{4} \\\\ \\Rightarrow \\frac{d y}{d x}+\\left(\\frac{1}{x}\\right) y &=x^{3} \\end{aligned}$$\n\nStandard form\n\n$\\Rightarrow \\quad \\frac{d y}{d x}+P y=Q$\n\nwhere P and Q function of x only and solution is given by\n\n$y(\\text { I.F. })=\\int Q \\cdot(I F .) d x+C$\n\nwhere, integrating factor (I.F.)$=e^{\\int P d x}$\n\n$\\text{Here} \\quad P =\\frac{1}{x} \\text { and } Q=x^{3}$\n\n$\\text { I.F. } =e^{\\int \\frac{1}{x} d x}=e^{\\ln x}=x$\n\nSolution $\\quad y(x)=\\int x^{3} \\cdot x d x+c$\n\n$y x=\\frac{x^{5}}{5}+c$\n\ngiven condition\n\n$y(1)=\\frac{6}{5}$\n\nmeans at $x=1 ; y=\\frac{6}{5}$\n\n$\\Rightarrow \\quad \\frac{6}{5} \\times 1=\\frac{1}{5}+c$\n\n$\\Rightarrow \\quad c=\\frac{6}{5}-\\frac{1}{5}=1$\n\nTherefore $y x=\\frac{x^{5}}{5}+1$\n\n$\\Rightarrow \\quad y=\\frac{x^{4}}{5}+\\frac{1}{x}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q23": {
-      "question_uid": "pp:me:2009:q23",
+    "me:2009:q23": {
+      "question_uid": "me:2009:q23",
+      "legacy_uid": "pp:me:2009:q23",
       "exam_uid": "me:2009:set1:main:q23",
       "title": "GATE ME 2009 | Set 1 | Question: 23",
       "section": "main",
@@ -1058,14 +1041,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-a6e4759ac4.webp\" />\n\nPath AB:\n\n$$\\begin{aligned} x^{2}+y^{2} &=1 \\\\ x &=\\cos \\theta \\\\ y &=\\sin \\theta \\end{aligned}$$\n\nAlong path AB $\\theta$ varies from $0^{\\circ} \\; \\text { to }  \\; 90^{\\circ}[0 \\text { to } \\pi / 2]$\n\n$\\int_{\\text {Path } A B}(x+y)^{2}(r d \\theta)$\n\n$=\\int_{0}^{\\pi / 2}(\\cos \\theta+\\sin \\theta)^{2} 1 \\cdot d \\theta$\n\n$=\\int_{0}^{\\pi / 2}\\left(\\sin ^{2} \\theta+\\cos ^{2} \\theta+2 \\sin \\theta \\cos \\theta\\right) d \\theta$\n\n$=\\int_{0}^{\\pi / 2}(1+\\sin 2 \\theta) d \\theta$\n\n$=\\theta+\\left.\\frac{(-\\cos 2 \\theta)}{2}\\right|_{0} ^{\\pi / 2}$\n\n$=\\frac{\\pi}{2}-\\frac{1}{2}\\left[\\cos 2 \\frac{\\pi}{2}-\\cos 0\\right]$\n\n$=\\frac{\\pi}{2}-\\frac{1}{2}[-1-1]=\\frac{\\pi}{2}+1$",
-        "images": [
-          "/question-images/me/2009/me-2009-a6e4759ac4.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-a6e4759ac4.webp\" />\n\nPath AB:\n\n$$\\begin{aligned} x^{2}+y^{2} &=1 \\\\ x &=\\cos \\theta \\\\ y &=\\sin \\theta \\end{aligned}$$\n\nAlong path AB $\\theta$ varies from $0^{\\circ} \\; \\text { to }  \\; 90^{\\circ}[0 \\text { to } \\pi / 2]$\n\n$\\int_{\\text {Path } A B}(x+y)^{2}(r d \\theta)$\n\n$=\\int_{0}^{\\pi / 2}(\\cos \\theta+\\sin \\theta)^{2} 1 \\cdot d \\theta$\n\n$=\\int_{0}^{\\pi / 2}\\left(\\sin ^{2} \\theta+\\cos ^{2} \\theta+2 \\sin \\theta \\cos \\theta\\right) d \\theta$\n\n$=\\int_{0}^{\\pi / 2}(1+\\sin 2 \\theta) d \\theta$\n\n$=\\theta+\\left.\\frac{(-\\cos 2 \\theta)}{2}\\right|_{0} ^{\\pi / 2}$\n\n$=\\frac{\\pi}{2}-\\frac{1}{2}\\left[\\cos 2 \\frac{\\pi}{2}-\\cos 0\\right]$\n\n$=\\frac{\\pi}{2}-\\frac{1}{2}[-1-1]=\\frac{\\pi}{2}+1$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q24": {
-      "question_uid": "pp:me:2009:q24",
+    "me:2009:q24": {
+      "question_uid": "me:2009:q24",
+      "legacy_uid": "pp:me:2009:q24",
       "exam_uid": "me:2009:set1:main:q24",
       "title": "GATE ME 2009 | Set 1 | Question: 24",
       "section": "main",
@@ -1105,14 +1086,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Let the point be the(x,y,z)\n\n<img src=\"/question-images/me/2009/me-2009-5a9441a977.webp\" />\n\nThe distance between two given coordinates is given as\n\n$$\\begin{aligned} D^{2} &=\\sqrt{(x-0)^{2}+(y-0)^{2}-(z-0)^{2}} \\\\ D^{2} &=x^{2}+y^{2}+z^{2} \\\\ \\text { given } z^{2} &=1+x y \\\\ D^{2} &=x^{2}+y^{2}+1+x y \\end{aligned}$$\n\nLet $D^{2}=U$\n\n$U=x^{2}+y^{2}+1+x y$\n\nFor minimum or nearest distance\n\n$$\\begin{aligned} p &=\\frac{\\partial u}{\\partial x}=0 \\\\ \\Rightarrow 2x+y &=0 &... i \\\\ \\Rightarrow \\quad q &=\\frac{\\partial u}{\\partial y}=0 \\\\ &=2y+x=0&... ii \\end{aligned}$$\n\nBy solving equation (i) and (ii)\n\n$$\\begin{aligned} &x=0\\\\ &y=0\\\\ &z=1\\\\ &\\begin{aligned} r &=\\frac{\\partial^{2} v}{\\partial x^{2}}=2 \\\\ t &=\\frac{\\partial^{2} v}{\\partial y^{2}}=2 \\\\ s &=\\frac{\\partial^{2} u}{\\partial x \\partial y}=1 \\\\ r t-s^{2} &=2 \\times 2-1^{2}=3 \\\\ r t-s^{2} &>0 \\\\r &>0 \\end{aligned} \\end{aligned}$$\n\n$\\therefore$ distance is minimum.\n\nHence the distance should be\n\n$D=\\sqrt{(0-0)^{2}+(0-0)^{2}-(1-0)^{2}}$\n\n$D=1 \\mathrm{m}$",
-        "images": [
-          "/question-images/me/2009/me-2009-5a9441a977.webp"
-        ]
+        "markdown": "Let the point be the(x,y,z)\n\n<img src=\"/question-images/me/2009/me-2009-5a9441a977.webp\" />\n\nThe distance between two given coordinates is given as\n\n$$\\begin{aligned} D^{2} &=\\sqrt{(x-0)^{2}+(y-0)^{2}-(z-0)^{2}} \\\\ D^{2} &=x^{2}+y^{2}+z^{2} \\\\ \\text { given } z^{2} &=1+x y \\\\ D^{2} &=x^{2}+y^{2}+1+x y \\end{aligned}$$\n\nLet $D^{2}=U$\n\n$U=x^{2}+y^{2}+1+x y$\n\nFor minimum or nearest distance\n\n$$\\begin{aligned} p &=\\frac{\\partial u}{\\partial x}=0 \\\\ \\Rightarrow 2x+y &=0 &... i \\\\ \\Rightarrow \\quad q &=\\frac{\\partial u}{\\partial y}=0 \\\\ &=2y+x=0&... ii \\end{aligned}$$\n\nBy solving equation (i) and (ii)\n\n$$\\begin{aligned} &x=0\\\\ &y=0\\\\ &z=1\\\\ &\\begin{aligned} r &=\\frac{\\partial^{2} v}{\\partial x^{2}}=2 \\\\ t &=\\frac{\\partial^{2} v}{\\partial y^{2}}=2 \\\\ s &=\\frac{\\partial^{2} u}{\\partial x \\partial y}=1 \\\\ r t-s^{2} &=2 \\times 2-1^{2}=3 \\\\ r t-s^{2} &>0 \\\\r &>0 \\end{aligned} \\end{aligned}$$\n\n$\\therefore$ distance is minimum.\n\nHence the distance should be\n\n$D=\\sqrt{(0-0)^{2}+(0-0)^{2}-(1-0)^{2}}$\n\n$D=1 \\mathrm{m}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q25": {
-      "question_uid": "pp:me:2009:q25",
+    "me:2009:q25": {
+      "question_uid": "me:2009:q25",
+      "legacy_uid": "pp:me:2009:q25",
       "exam_uid": "me:2009:set1:main:q25",
       "title": "GATE ME 2009 | Set 1 | Question: 25",
       "section": "main",
@@ -1152,14 +1131,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-8735867f1d.webp\" />\n\n$\\text{Curve 1:} y^{2}=4 x$\n\n$\\text{Curve 2:} x^{2}=4 y$\n\nIntersection points of curve 1 and 2\n\n$y^{2}=4 x=4 \\sqrt{4 y}=8 \\sqrt{y}$\n\n$y^{4}=8 \\times 8 y$\n\n$\\Rightarrow \\quad y\\left(y^{3}-64\\right)=0$\n\n$\\text { Solution } \\quad y=A \\text { and } y=0$\n\n$then \\quad x=4 \\quad x=0$\n\nTherefore intersection point are A(4,4) and 0(0,0)\n\nThe area enclosed between curves' 1 and 2 are given by\n\n$$\\begin{aligned} \\text { Area } &=\\int_{x_{1}}^{x_{2}}\\left(y_{1}-y_{2}\\right) dx=\\int_{0}^{4}\\left(\\sqrt{4 x}-\\frac{x^{2}}{4}\\right) dx \\\\ &=2 \\frac{x^{3 / 2}}{3 / 2}-\\left.\\frac{x^{3}}{3 \\times 4}\\right|_{0} ^{4} \\\\ &=\\frac{4}{3}(4)^{3 / 2}-\\frac{(4)^{3}}{3 \\times 5}=\\frac{16}{3} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-8735867f1d.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-8735867f1d.webp\" />\n\n$\\text{Curve 1:} y^{2}=4 x$\n\n$\\text{Curve 2:} x^{2}=4 y$\n\nIntersection points of curve 1 and 2\n\n$y^{2}=4 x=4 \\sqrt{4 y}=8 \\sqrt{y}$\n\n$y^{4}=8 \\times 8 y$\n\n$\\Rightarrow \\quad y\\left(y^{3}-64\\right)=0$\n\n$\\text { Solution } \\quad y=A \\text { and } y=0$\n\n$then \\quad x=4 \\quad x=0$\n\nTherefore intersection point are A(4,4) and 0(0,0)\n\nThe area enclosed between curves' 1 and 2 are given by\n\n$$\\begin{aligned} \\text { Area } &=\\int_{x_{1}}^{x_{2}}\\left(y_{1}-y_{2}\\right) dx=\\int_{0}^{4}\\left(\\sqrt{4 x}-\\frac{x^{2}}{4}\\right) dx \\\\ &=2 \\frac{x^{3 / 2}}{3 / 2}-\\left.\\frac{x^{3}}{3 \\times 4}\\right|_{0} ^{4} \\\\ &=\\frac{4}{3}(4)^{3 / 2}-\\frac{(4)^{3}}{3 \\times 5}=\\frac{16}{3} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q26": {
-      "question_uid": "pp:me:2009:q26",
+    "me:2009:q26": {
+      "question_uid": "me:2009:q26",
+      "legacy_uid": "pp:me:2009:q26",
       "exam_uid": "me:2009:set1:main:q26",
       "title": "GATE ME 2009 | Set 1 | Question: 26",
       "section": "main",
@@ -1199,12 +1176,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "For uniformly distributed random variable $P(x)=P$\n\n$P(v)=$ probability density function\n\n$$\\begin{array}{c} \\int_{E\\left(x^{2}\\right) \\text{mean }=}^{1} x P(x) d x \\quad \\int_{0}^{1} x p d x \\\\ =\\frac{P\\left[x^{2} / 2\\right]_{0}^{1}}{P[x]_{0}^{1}}=\\frac{1}{2} \\\\ \\qquad \\begin{aligned} \\Rightarrow E\\left(x^{2}\\right)&=\\frac{\\int x^{2} P(x) d x}{\\int P(x) d x}\\\\&=\\frac{\\int_{0}^{1} x^{2} p d x}{\\int_{0}^{1} p d x}\\\\ &=\\frac{p\\left[x^{3} / 3\\right]_{0}^{1}}{p[x]_{0}^{1}} \\\\ &=\\frac{p(1 / 3-0)}{p(1-0)} \\end{aligned} \\\\ \\qquad \\begin{aligned} \\text { variance } \\sigma^{2} &=E\\left(x^{2}\\right)-(E(x))^{2} \\\\ &=\\frac{1}{3}-\\left(\\frac{1}{2}\\right)^{2}\\\\ &=\\frac{1}{3}-\\frac{1}{4}=\\frac{1}{12} \\end{aligned} \\end{array}$$\n\nStandard deviation $\\sigma=\\frac{1}{\\sqrt{12}}$\n\nAlternate\n\n$^{\\prime} x^{\\prime} \\; \\text{defined on} \\;  [0,1]$\n\nVariance $\\quad U(x)=\\frac{(b-a)^{2}}{12}=\\frac{(1-0)^{2}}{12}$\n\n$\\therefore$ Standard deviation\n\n$\\sigma=\\frac{1}{\\sqrt{12}}$",
-        "images": []
+        "markdown": "For uniformly distributed random variable $P(x)=P$\n\n$P(v)=$ probability density function\n\n$$\\begin{array}{c} \\int_{E\\left(x^{2}\\right) \\text{mean }=}^{1} x P(x) d x \\quad \\int_{0}^{1} x p d x \\\\ =\\frac{P\\left[x^{2} / 2\\right]_{0}^{1}}{P[x]_{0}^{1}}=\\frac{1}{2} \\\\ \\qquad \\begin{aligned} \\Rightarrow E\\left(x^{2}\\right)&=\\frac{\\int x^{2} P(x) d x}{\\int P(x) d x}\\\\&=\\frac{\\int_{0}^{1} x^{2} p d x}{\\int_{0}^{1} p d x}\\\\ &=\\frac{p\\left[x^{3} / 3\\right]_{0}^{1}}{p[x]_{0}^{1}} \\\\ &=\\frac{p(1 / 3-0)}{p(1-0)} \\end{aligned} \\\\ \\qquad \\begin{aligned} \\text { variance } \\sigma^{2} &=E\\left(x^{2}\\right)-(E(x))^{2} \\\\ &=\\frac{1}{3}-\\left(\\frac{1}{2}\\right)^{2}\\\\ &=\\frac{1}{3}-\\frac{1}{4}=\\frac{1}{12} \\end{aligned} \\end{array}$$\n\nStandard deviation $\\sigma=\\frac{1}{\\sqrt{12}}$\n\nAlternate\n\n$^{\\prime} x^{\\prime} \\; \\text{defined on} \\;  [0,1]$\n\nVariance $\\quad U(x)=\\frac{(b-a)^{2}}{12}=\\frac{(1-0)^{2}}{12}$\n\n$\\therefore$ Standard deviation\n\n$\\sigma=\\frac{1}{\\sqrt{12}}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q27": {
-      "question_uid": "pp:me:2009:q27",
+    "me:2009:q27": {
+      "question_uid": "me:2009:q27",
+      "legacy_uid": "pp:me:2009:q27",
       "exam_uid": "me:2009:set1:main:q27",
       "title": "GATE ME 2009 | Set 1 | Question: 27",
       "section": "main",
@@ -1244,14 +1221,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
-        "markdown": "Given data:\n\n$$\\begin{aligned} d_{1}&=20 \\mathrm{cm}=0.2 \\mathrm{m} \\\\ d_{2}&=10 \\mathrm{cm}=0.1 \\mathrm{mm} \\\\ p_{1}&=150 \\mathrm{kP} \\mathrm{a}=150000 \\mathrm{Pa} \\end{aligned}$$\n\nVapour pressure,\n\n$p_{v}=50 \\mathrm{kPa}$\n\nSpecific weight\n\n$w=5 \\mathrm{kN} / \\mathrm{m}^{3}=5000 \\mathrm{N} / \\mathrm{m}^{3}=\\rho \\mathrm{g}$\n\n<img src=\"/question-images/me/2009/me-2009-418714b23f.webp\" />\n\nApplying continuity equation at section (1)-(1) and\n\n(2)-(2), we get\n\n$A_{1} V_{1}=A_{2} V_{2} \\quad$ for incompressible flow\n\n$$\\begin{aligned} \\frac{\\pi}{4} d_{1}^{2} V_{1} &=\\frac{\\pi}{4} d_{2}^{2} V_{2} \\\\ d_{1}^{2} V_{1} &=d_{2}^{2} V_{2}\\\\ or \\quad V_{1}&=\\left(\\frac{d_{2}}{d_{1}}\\right)^{2} V_{2}=\\left(\\frac{10}{20}\\right)^{2} V_{2} \\\\ V_{1}&=0.25 \\mathrm{V}_{2} \\end{aligned}$$\n\nThe maximum pressure in downstream of reducer should be greater or equal to vapour pressure $\\left(p_{v}\\right)$ to avoid cavitation. Therefore for maximum discharge,\n\n$p_{2}=p_{v}=50 \\mathrm{kPa}=50000 \\mathrm{Pa}$\n\nApplying Bernoulli's equation a section (1)-(1) and (2)-(2), we get\n\n$\\frac{p_{1}}{\\rho g}+\\frac{V_{1}^{2}}{2 g}+z_{1}=\\frac{p_{2}}{\\rho g}+\\frac{V_{2}^{2}}{2 g}+z_{2}$\n\n$\\frac{p_{1}}{\\rho g}+\\frac{V_{1}^{2}}{2 g}=\\frac{p_{2}}{\\rho g}+\\frac{V_{2}^{2}}{2 g} \\quad \\because z_{1}=z_{2}$\n\n$\\frac{150000}{5000}+\\frac{(0.25)^{2} V_{2}^{2}}{2 \\times 9.81}=\\frac{50000}{5000}+\\frac{V_{2}^{2}}{2 \\times 9.81}$\n\n$30+0.00318 V_{2}^{2}=10+0.0509 V_{2}^{2}$\n\n$V_{2}^{2}=418.51$\n\n$\\text{or }\\quad V_{2}=20.45 \\mathrm{m} / \\mathrm{s}$\n\n$\\therefore \\quad Q=A_{2} V_{2}=\\frac{\\pi}{4} d_{2}^{2} V_{2}$\n\n$=\\frac{3.14}{4} \\times(0.1)^{2} \\times 20.45=0.160 \\mathrm{m}^{3} / \\mathrm{s}$",
-        "images": [
-          "/question-images/me/2009/me-2009-418714b23f.webp"
-        ]
+        "markdown": "Given data:\n\n$$\\begin{aligned} d_{1}&=20 \\mathrm{cm}=0.2 \\mathrm{m} \\\\ d_{2}&=10 \\mathrm{cm}=0.1 \\mathrm{mm} \\\\ p_{1}&=150 \\mathrm{kP} \\mathrm{a}=150000 \\mathrm{Pa} \\end{aligned}$$\n\nVapour pressure,\n\n$p_{v}=50 \\mathrm{kPa}$\n\nSpecific weight\n\n$w=5 \\mathrm{kN} / \\mathrm{m}^{3}=5000 \\mathrm{N} / \\mathrm{m}^{3}=\\rho \\mathrm{g}$\n\n<img src=\"/question-images/me/2009/me-2009-418714b23f.webp\" />\n\nApplying continuity equation at section (1)-(1) and\n\n(2)-(2), we get\n\n$A_{1} V_{1}=A_{2} V_{2} \\quad$ for incompressible flow\n\n$$\\begin{aligned} \\frac{\\pi}{4} d_{1}^{2} V_{1} &=\\frac{\\pi}{4} d_{2}^{2} V_{2} \\\\ d_{1}^{2} V_{1} &=d_{2}^{2} V_{2}\\\\ or \\quad V_{1}&=\\left(\\frac{d_{2}}{d_{1}}\\right)^{2} V_{2}=\\left(\\frac{10}{20}\\right)^{2} V_{2} \\\\ V_{1}&=0.25 \\mathrm{V}_{2} \\end{aligned}$$\n\nThe maximum pressure in downstream of reducer should be greater or equal to vapour pressure $\\left(p_{v}\\right)$ to avoid cavitation. Therefore for maximum discharge,\n\n$p_{2}=p_{v}=50 \\mathrm{kPa}=50000 \\mathrm{Pa}$\n\nApplying Bernoulli's equation a section (1)-(1) and (2)-(2), we get\n\n$\\frac{p_{1}}{\\rho g}+\\frac{V_{1}^{2}}{2 g}+z_{1}=\\frac{p_{2}}{\\rho g}+\\frac{V_{2}^{2}}{2 g}+z_{2}$\n\n$\\frac{p_{1}}{\\rho g}+\\frac{V_{1}^{2}}{2 g}=\\frac{p_{2}}{\\rho g}+\\frac{V_{2}^{2}}{2 g} \\quad \\because z_{1}=z_{2}$\n\n$\\frac{150000}{5000}+\\frac{(0.25)^{2} V_{2}^{2}}{2 \\times 9.81}=\\frac{50000}{5000}+\\frac{V_{2}^{2}}{2 \\times 9.81}$\n\n$30+0.00318 V_{2}^{2}=10+0.0509 V_{2}^{2}$\n\n$V_{2}^{2}=418.51$\n\n$\\text{or }\\quad V_{2}=20.45 \\mathrm{m} / \\mathrm{s}$\n\n$\\therefore \\quad Q=A_{2} V_{2}=\\frac{\\pi}{4} d_{2}^{2} V_{2}$\n\n$=\\frac{3.14}{4} \\times(0.1)^{2} \\times 20.45=0.160 \\mathrm{m}^{3} / \\mathrm{s}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q28": {
-      "question_uid": "pp:me:2009:q28",
+    "me:2009:q28": {
+      "question_uid": "me:2009:q28",
+      "legacy_uid": "pp:me:2009:q28",
       "exam_uid": "me:2009:set1:main:q28",
       "title": "GATE ME 2009 | Set 1 | Question: 28",
       "section": "main",
@@ -1291,14 +1266,12 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-1ec8461d1f.webp\" />\n\n$$\\begin{aligned} T_{h 1}&=102^{\\circ} \\mathrm{C} \\\\ T_{c 1}&=15^{\\circ} \\mathrm{C} \\\\ m_{h}&=1 \\mathrm{kg} / \\mathrm{s} \\\\ c_{p h}&=4 \\mathrm{kJ} / \\mathrm{kgK} \\end{aligned}$$\n\nOverall heat transfer coefficient\n\n$U=1 \\mathrm{kW} / \\mathrm{m}^{2} \\mathrm{K}$\n\nHeat transfer surface area,\n\n$A=5 \\mathrm{m}^{2}$\n\nGiven:\n\n$m_{c} c_{p c}=m_{h} c_{p h}=1 \\times 4=4 \\mathrm{kJ} / \\mathrm{s} \\mathrm{k}$\n\nNeglect heat transfer between the heat exchanger and the ambient.\n\nThe heat exchanger is characterized by the following relation[/latex]\n\n$$\\begin{aligned} 2 \\epsilon &=1-\\exp (-2 N T U) \\\\ \\text{or }\\quad \\in&=\\frac{1-\\exp (-2 N T U)}{2} \\\\ N T U &=\\frac{U A}{C_{\\min }} \\\\ &=\\frac{1 \\times 5}{4}=1.25 \\\\ \\epsilon &=\\frac{1-\\exp (-2 N T U)}{2} \\\\ &=\\frac{1-\\exp (-2 \\times 1.25)}{2}=0.46 \\end{aligned}$$\n\nThe maximum possible heat transfer rate,\n\n$$\\begin{aligned} Q_{\\max } &=C_{\\min }\\left(T_{h 1}-T_{c 1}\\right) \\\\ &=4 \\times(102-15)=348 \\mathrm{kW} \\end{aligned}$$\n\nActual rate of heat transfer,\n\n$$\\begin{aligned} Q &=\\epsilon Q_{\\max } \\\\ &=0.46 \\times 348=160 \\mathrm{kW}\\\\ \\text{also }\\quad Q&=C_{c}\\left(T_{c 2}-T_{c 1}\\right)\\\\ \\therefore \\quad 160&=4 \\times\\left(T_{\\mathrm{c} 2}-15\\right)\\\\ \\text{or}\\quad T_{c 2}&=55^{\\circ} \\mathrm{C}\\\\ \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-1ec8461d1f.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-1ec8461d1f.webp\" />\n\n$$\\begin{aligned} T_{h 1}&=102^{\\circ} \\mathrm{C} \\\\ T_{c 1}&=15^{\\circ} \\mathrm{C} \\\\ m_{h}&=1 \\mathrm{kg} / \\mathrm{s} \\\\ c_{p h}&=4 \\mathrm{kJ} / \\mathrm{kgK} \\end{aligned}$$\n\nOverall heat transfer coefficient\n\n$U=1 \\mathrm{kW} / \\mathrm{m}^{2} \\mathrm{K}$\n\nHeat transfer surface area,\n\n$A=5 \\mathrm{m}^{2}$\n\nGiven:\n\n$m_{c} c_{p c}=m_{h} c_{p h}=1 \\times 4=4 \\mathrm{kJ} / \\mathrm{s} \\mathrm{k}$\n\nNeglect heat transfer between the heat exchanger and the ambient.\n\nThe heat exchanger is characterized by the following relation[/latex]\n\n$$\\begin{aligned} 2 \\epsilon &=1-\\exp (-2 N T U) \\\\ \\text{or }\\quad \\in&=\\frac{1-\\exp (-2 N T U)}{2} \\\\ N T U &=\\frac{U A}{C_{\\min }} \\\\ &=\\frac{1 \\times 5}{4}=1.25 \\\\ \\epsilon &=\\frac{1-\\exp (-2 N T U)}{2} \\\\ &=\\frac{1-\\exp (-2 \\times 1.25)}{2}=0.46 \\end{aligned}$$\n\nThe maximum possible heat transfer rate,\n\n$$\\begin{aligned} Q_{\\max } &=C_{\\min }\\left(T_{h 1}-T_{c 1}\\right) \\\\ &=4 \\times(102-15)=348 \\mathrm{kW} \\end{aligned}$$\n\nActual rate of heat transfer,\n\n$$\\begin{aligned} Q &=\\epsilon Q_{\\max } \\\\ &=0.46 \\times 348=160 \\mathrm{kW}\\\\ \\text{also }\\quad Q&=C_{c}\\left(T_{c 2}-T_{c 1}\\right)\\\\ \\therefore \\quad 160&=4 \\times\\left(T_{\\mathrm{c} 2}-15\\right)\\\\ \\text{or}\\quad T_{c 2}&=55^{\\circ} \\mathrm{C}\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q29": {
-      "question_uid": "pp:me:2009:q29",
+    "me:2009:q29": {
+      "question_uid": "me:2009:q29",
+      "legacy_uid": "pp:me:2009:q29",
       "exam_uid": "me:2009:set1:main:q29",
       "title": "GATE ME 2009 | Set 1 | Question: 29",
       "section": "main",
@@ -1338,14 +1311,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
-        "markdown": "Given data for Otto cycle:\n\n<img src=\"/question-images/me/2009/me-2009-547587059e.webp\" />\n\nCompression ratio,\n\n$$\\begin{aligned} r &=\\frac{v_{1}}{v_{2}}=10 \\\\ p_{1} &=100 \\mathrm{kPa} \\\\ T_{1} &=27^{\\circ} \\mathrm{C}=(27+273) \\mathrm{K} \\\\ &=300 \\mathrm{K} \\\\ q_{1} &=1500 \\mathrm{kJ} / \\mathrm{kg} \\\\ q_{2} &=700 \\mathrm{kJ} / \\mathrm{kg} \\\\ R &=0.287 \\mathrm{kJ} / \\mathrm{kgK} \\\\ p_{1} v_{1} &=R T_{1} \\\\ 100 \\times v_{1} &=0.287 \\times 300 \\\\ \\text{or }\\quad v_{1} &=0.861 \\mathrm{m}^{3} / \\mathrm{kg}\\\\ \\text { also } \\quad v_{1}&=10 v_{2} \\\\ \\therefore \\quad 0.861&=10 v_{2} \\\\ \\text{or}\\quad v_{2} &=0.0861 \\mathrm{m}^{3} / \\mathrm{kg} \\end{aligned}$$\n\nSpecific work done per cycle,\n\n$$\\begin{aligned} w &=q_{1}-q_{2} \\\\ &=1500-700=800 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nWe know that mean effective pressure,\n\n$$\\begin{aligned} p_{m} &=\\frac{w}{v_{s}}=\\frac{800}{v_{1}-v_{2}} \\\\ &=\\frac{800}{0.861-0.0861}=1032.39 \\mathrm{kPa} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-547587059e.webp"
-        ]
+        "markdown": "Given data for Otto cycle:\n\n<img src=\"/question-images/me/2009/me-2009-547587059e.webp\" />\n\nCompression ratio,\n\n$$\\begin{aligned} r &=\\frac{v_{1}}{v_{2}}=10 \\\\ p_{1} &=100 \\mathrm{kPa} \\\\ T_{1} &=27^{\\circ} \\mathrm{C}=(27+273) \\mathrm{K} \\\\ &=300 \\mathrm{K} \\\\ q_{1} &=1500 \\mathrm{kJ} / \\mathrm{kg} \\\\ q_{2} &=700 \\mathrm{kJ} / \\mathrm{kg} \\\\ R &=0.287 \\mathrm{kJ} / \\mathrm{kgK} \\\\ p_{1} v_{1} &=R T_{1} \\\\ 100 \\times v_{1} &=0.287 \\times 300 \\\\ \\text{or }\\quad v_{1} &=0.861 \\mathrm{m}^{3} / \\mathrm{kg}\\\\ \\text { also } \\quad v_{1}&=10 v_{2} \\\\ \\therefore \\quad 0.861&=10 v_{2} \\\\ \\text{or}\\quad v_{2} &=0.0861 \\mathrm{m}^{3} / \\mathrm{kg} \\end{aligned}$$\n\nSpecific work done per cycle,\n\n$$\\begin{aligned} w &=q_{1}-q_{2} \\\\ &=1500-700=800 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nWe know that mean effective pressure,\n\n$$\\begin{aligned} p_{m} &=\\frac{w}{v_{s}}=\\frac{800}{v_{1}-v_{2}} \\\\ &=\\frac{800}{0.861-0.0861}=1032.39 \\mathrm{kPa} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q30": {
-      "question_uid": "pp:me:2009:q30",
+    "me:2009:q30": {
+      "question_uid": "me:2009:q30",
+      "legacy_uid": "pp:me:2009:q30",
       "exam_uid": "me:2009:set1:main:q30",
       "title": "GATE ME 2009 | Set 1 | Question: 30",
       "section": "main",
@@ -1385,14 +1356,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - Second Law, Carnot Cycle and Entropy",
-        "markdown": "Given data:\n\n$$\\begin{array}{ll} Q_{1}=100 \\mathrm{kW} ; & Q_{2}=50 \\mathrm{kW} \\\\ T_{3}=290 \\mathrm{K} ; & T_{4}=348 \\mathrm{K} \\end{array}$$\n\n<img src=\"/question-images/me/2009/me-2009-956125391c.webp\" />\n\nHeat engine work output,\n\n$$\\begin{aligned} W &=Q_{1}-Q_{2} \\\\ W &=100-50=50 \\mathrm{kW} \\\\ &=\\text { Pump input work } \\\\ (\\mathrm{COP})_{\\mathrm{HP}} &=\\frac{Q_{4}}{W} \\\\ \\text{also}(\\mathrm{COP})_{\\mathrm{HP}} &=\\frac{T_{4}}{T_{4}-T_{3}} \\\\ \\therefore \\quad \\frac{Q_{4}}{W} &=\\frac{T_{4}}{T_{4}-T_{3}} \\\\ \\frac{Q_{4}}{50} &=\\frac{348}{348-290}=\\frac{348}{58}\\\\ \\text{or}\\quad Q_{4}&=300 \\mathrm{kW} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-956125391c.webp"
-        ]
+        "markdown": "Given data:\n\n$$\\begin{array}{ll} Q_{1}=100 \\mathrm{kW} ; & Q_{2}=50 \\mathrm{kW} \\\\ T_{3}=290 \\mathrm{K} ; & T_{4}=348 \\mathrm{K} \\end{array}$$\n\n<img src=\"/question-images/me/2009/me-2009-956125391c.webp\" />\n\nHeat engine work output,\n\n$$\\begin{aligned} W &=Q_{1}-Q_{2} \\\\ W &=100-50=50 \\mathrm{kW} \\\\ &=\\text { Pump input work } \\\\ (\\mathrm{COP})_{\\mathrm{HP}} &=\\frac{Q_{4}}{W} \\\\ \\text{also}(\\mathrm{COP})_{\\mathrm{HP}} &=\\frac{T_{4}}{T_{4}-T_{3}} \\\\ \\therefore \\quad \\frac{Q_{4}}{W} &=\\frac{T_{4}}{T_{4}-T_{3}} \\\\ \\frac{Q_{4}}{50} &=\\frac{348}{348-290}=\\frac{348}{58}\\\\ \\text{or}\\quad Q_{4}&=300 \\mathrm{kW} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q31": {
-      "question_uid": "pp:me:2009:q31",
+    "me:2009:q31": {
+      "question_uid": "me:2009:q31",
+      "legacy_uid": "pp:me:2009:q31",
       "exam_uid": "me:2009:set1:main:q31",
       "title": "GATE ME 2009 | Set 1 | Question: 31",
       "section": "main",
@@ -1432,12 +1401,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
-        "markdown": "Incompressible flow satisfy continuity equation\n\n$\\frac{\\partial u}{\\partial x}+\\frac{\\partial v}{\\partial y}=0$\n\n$P. u=2 y, v=-3 x$\n\n$\\frac{\\partial(2 y)}{\\partial x}+\\frac{\\partial(-3 x)}{\\partial y}$\n\nIncompressible flow $\\Rightarrow \\quad 0+0=0$\n\n$Q. u=3 x y, v=0$\n\n$\\frac{\\partial(3 x y)}{\\partial x}+\\frac{\\partial(0)}{\\partial y}$\n\nCompressible flow $\\Rightarrow 3 y+0 \\neq 0$\n\n$R. u=-2 x, v=2 y$\n\n$\\frac{\\partial(-2 x)}{\\partial x}+\\frac{\\partial(2 y)}{\\partial y}$\n\nIncompressible flow\n\n$-2+2=0$\n\nFor irrotational flow condition is\n\n$$\\begin{aligned} \\omega_{2} &=\\frac{1}{2}\\left(\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right)=0 \\\\ \\text { For P:} \\quad & u=2 y, v=-3 x \\\\ & \\omega_{2}=\\frac{1}{2}\\left[\\frac{\\partial(-3 x)}{\\partial x}-\\frac{\\partial(2 y)}{\\partial y}\\right] \\\\ &=\\frac{1}{2}[-3-2] \\neq 0 \\;\\;\\;\\text{   (Rotational flow)}\\end{aligned}$$\n\n$$\\begin{aligned} \\text{For Q: }\\quad u &=3 x y, v=0 \\\\ \\omega_{2} &=\\frac{1}{2}\\left[\\frac{\\partial(0)}{\\partial x}-\\frac{\\partial(3 x y)}{\\partial y}\\right] \\\\ &=\\frac{1}{2}[0-3 x] \\neq 0 \\;\\;\\;\\text{   (Rotational flow)} \\end{aligned}$$\n\n$$\\begin{aligned} \\text{For R: }\\quad u &=-2 x, v=2 y \\\\ \\omega_{2} &=\\frac{1}{2}\\left[\\frac{\\partial(2 y)}{\\partial x}-\\frac{\\partial(-2 x)}{\\partial y}\\right] \\\\ &=\\frac{1}{2}[0-0]=0 \\; \\; \\; \\text{  (Irrotational flow)}\\end{aligned}$$",
-        "images": []
+        "markdown": "Incompressible flow satisfy continuity equation\n\n$\\frac{\\partial u}{\\partial x}+\\frac{\\partial v}{\\partial y}=0$\n\n$P. u=2 y, v=-3 x$\n\n$\\frac{\\partial(2 y)}{\\partial x}+\\frac{\\partial(-3 x)}{\\partial y}$\n\nIncompressible flow $\\Rightarrow \\quad 0+0=0$\n\n$Q. u=3 x y, v=0$\n\n$\\frac{\\partial(3 x y)}{\\partial x}+\\frac{\\partial(0)}{\\partial y}$\n\nCompressible flow $\\Rightarrow 3 y+0 \\neq 0$\n\n$R. u=-2 x, v=2 y$\n\n$\\frac{\\partial(-2 x)}{\\partial x}+\\frac{\\partial(2 y)}{\\partial y}$\n\nIncompressible flow\n\n$-2+2=0$\n\nFor irrotational flow condition is\n\n$$\\begin{aligned} \\omega_{2} &=\\frac{1}{2}\\left(\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right)=0 \\\\ \\text { For P:} \\quad & u=2 y, v=-3 x \\\\ & \\omega_{2}=\\frac{1}{2}\\left[\\frac{\\partial(-3 x)}{\\partial x}-\\frac{\\partial(2 y)}{\\partial y}\\right] \\\\ &=\\frac{1}{2}[-3-2] \\neq 0 \\;\\;\\;\\text{   (Rotational flow)}\\end{aligned}$$\n\n$$\\begin{aligned} \\text{For Q: }\\quad u &=3 x y, v=0 \\\\ \\omega_{2} &=\\frac{1}{2}\\left[\\frac{\\partial(0)}{\\partial x}-\\frac{\\partial(3 x y)}{\\partial y}\\right] \\\\ &=\\frac{1}{2}[0-3 x] \\neq 0 \\;\\;\\;\\text{   (Rotational flow)} \\end{aligned}$$\n\n$$\\begin{aligned} \\text{For R: }\\quad u &=-2 x, v=2 y \\\\ \\omega_{2} &=\\frac{1}{2}\\left[\\frac{\\partial(2 y)}{\\partial x}-\\frac{\\partial(-2 x)}{\\partial y}\\right] \\\\ &=\\frac{1}{2}[0-0]=0 \\; \\; \\; \\text{  (Irrotational flow)}\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q32": {
-      "question_uid": "pp:me:2009:q32",
+    "me:2009:q32": {
+      "question_uid": "me:2009:q32",
+      "legacy_uid": "pp:me:2009:q32",
       "exam_uid": "me:2009:set1:main:q32",
       "title": "GATE ME 2009 | Set 1 | Question: 32",
       "section": "main",
@@ -1477,12 +1446,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Flow Through Pipes",
-        "markdown": "Given data:\n\n$$\\begin{aligned} \\text{Length: }\\quad L&=1 \\mathrm{km}=1000 \\mathrm{m} \\\\ \\text{Diameter: }\\quad d&=200 \\mathrm{mm}=0.2 \\mathrm{m}\\\\ \\text{Discharge: }\\quad Q&=0.07 \\mathrm{m}^{3} / \\mathrm{s} \\\\ \\text{Friction factor}\\\\ f&=0.02 \\\\ \\text { Density: } \\rho&=1000 \\mathrm{kg} / \\mathrm{m}^{3} \\\\ Q&=A V \\\\ Q&=\\frac{\\pi}{4} d^{2} V \\\\ 0.07&=\\frac{3.14}{4} \\times(0.2)^{2} \\times V\\\\ or \\qquad V&=2.23 \\mathrm{m} / \\mathrm{s}\\\\ \\end{aligned}$$\n\nWe know that head loss due to function,\n\n$$\\begin{aligned} h_{f} &=\\frac{f L V^{2}}{2 g d}=\\frac{0.02 \\times 1000 \\times(2.23)^{2}}{2 \\times 9.81 \\times 0.2} \\\\ &=25.34 \\mathrm{m} \\end{aligned}$$\n\nPumping power required to maintain the flow,\n\n$$\\begin{aligned} P &=\\rho Q g h_{f} \\\\ &=1000 \\times 0.07 \\times 9.81 \\times 25.34 \\\\ &=17400.9 \\mathrm{W}=17.4 \\mathrm{kW} \\end{aligned}$$",
-        "images": []
+        "markdown": "Given data:\n\n$$\\begin{aligned} \\text{Length: }\\quad L&=1 \\mathrm{km}=1000 \\mathrm{m} \\\\ \\text{Diameter: }\\quad d&=200 \\mathrm{mm}=0.2 \\mathrm{m}\\\\ \\text{Discharge: }\\quad Q&=0.07 \\mathrm{m}^{3} / \\mathrm{s} \\\\ \\text{Friction factor}\\\\ f&=0.02 \\\\ \\text { Density: } \\rho&=1000 \\mathrm{kg} / \\mathrm{m}^{3} \\\\ Q&=A V \\\\ Q&=\\frac{\\pi}{4} d^{2} V \\\\ 0.07&=\\frac{3.14}{4} \\times(0.2)^{2} \\times V\\\\ or \\qquad V&=2.23 \\mathrm{m} / \\mathrm{s}\\\\ \\end{aligned}$$\n\nWe know that head loss due to function,\n\n$$\\begin{aligned} h_{f} &=\\frac{f L V^{2}}{2 g d}=\\frac{0.02 \\times 1000 \\times(2.23)^{2}}{2 \\times 9.81 \\times 0.2} \\\\ &=25.34 \\mathrm{m} \\end{aligned}$$\n\nPumping power required to maintain the flow,\n\n$$\\begin{aligned} P &=\\rho Q g h_{f} \\\\ &=1000 \\times 0.07 \\times 9.81 \\times 25.34 \\\\ &=17400.9 \\mathrm{W}=17.4 \\mathrm{kW} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q33": {
-      "question_uid": "pp:me:2009:q33",
+    "me:2009:q33": {
+      "question_uid": "me:2009:q33",
+      "legacy_uid": "pp:me:2009:q33",
       "exam_uid": "me:2009:set1:main:q33",
       "title": "GATE ME 2009 | Set 1 | Question: 33",
       "section": "main",
@@ -1522,14 +1491,12 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Fins and Unsteady Heat Transfer",
-        "markdown": "Given data:\n\n$h_{1}=20 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} ; \\quad h_{0}=50 \\mathrm{W} / \\mathrm{m}^{2} \\\\ \\mathrm{K} ; \\quad T_{\\infty^{\\prime} 0}=20^{\\circ} \\mathrm{C} k_{1}=20 \\mathrm{W} / \\mathrm{mK} ; \\quad k_{2}=50 \\mathrm{W} / \\mathrm{mK}$\n\n$\\mathrm{L}_{1}=0.30 \\mathrm{m} ; \\quad \\mathrm{L}_{2}=0.15 \\mathrm{m}$\n\n<img src=\"/question-images/me/2009/me-2009-3e1cb580b9.webp\" />\n\nHeat flow:\n\n$$\\begin{aligned} Q &=\\frac{T_{\\infty, i}-T_{\\infty, 0}}{R_{t_{i}}+R_{t_{1}}+R_{t_{2}}+R_{t_{o}}} \\\\ Q &=\\frac{T_{\\infty, i}-T_{\\infty, 0}}{\\frac{1}{h_{i} A}+\\frac{L_{1}}{k_{1} A}+\\frac{L_{2}}{k_{2} A}+\\frac{1}{h_{o} A}} \\\\ \\frac{Q}{A} &=\\frac{T_{\\infty, i}-T_{\\infty, 0}}{\\frac{1}{h_{i}}+\\frac{L_{1}}{k_{1}}+\\frac{L_{2}}{k_{2}}+\\frac{1}{h_{0}}} \\\\ &=\\frac{20-(-2)}{\\frac{1}{20}+\\frac{0.30}{20}+\\frac{0.15}{50}+\\frac{1}{50}} \\\\ &=\\frac{20+2}{\\frac{5+1.50+0.3+2}{100}}=\\frac{22 \\times 100}{8.8}=250 \\mathrm{W} \\\\ \\text{also}\\qquad \\frac{Q}{A}&= \\frac{T_{\\infty, 1}-T}{\\frac{1}{h_{i}}+\\frac{L_{1}}{k_{1}}}\\\\ \\therefore \\qquad 250&=\\frac{20-T}{\\frac{1}{20}+\\frac{0.3}{20}}=\\frac{20-T}{\\frac{0.3}{20}}\\\\ 250 \\times \\frac{0.3}{20}&=20-T\\\\ 16.25&=20-T \\\\ \\text{or }\\quad T &=20-16.25 \\\\ &=3.75^{\\circ} \\mathrm{C} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-3e1cb580b9.webp"
-        ]
+        "markdown": "Given data:\n\n$h_{1}=20 \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K} ; \\quad h_{0}=50 \\mathrm{W} / \\mathrm{m}^{2} \\\\ \\mathrm{K} ; \\quad T_{\\infty^{\\prime} 0}=20^{\\circ} \\mathrm{C} k_{1}=20 \\mathrm{W} / \\mathrm{mK} ; \\quad k_{2}=50 \\mathrm{W} / \\mathrm{mK}$\n\n$\\mathrm{L}_{1}=0.30 \\mathrm{m} ; \\quad \\mathrm{L}_{2}=0.15 \\mathrm{m}$\n\n<img src=\"/question-images/me/2009/me-2009-3e1cb580b9.webp\" />\n\nHeat flow:\n\n$$\\begin{aligned} Q &=\\frac{T_{\\infty, i}-T_{\\infty, 0}}{R_{t_{i}}+R_{t_{1}}+R_{t_{2}}+R_{t_{o}}} \\\\ Q &=\\frac{T_{\\infty, i}-T_{\\infty, 0}}{\\frac{1}{h_{i} A}+\\frac{L_{1}}{k_{1} A}+\\frac{L_{2}}{k_{2} A}+\\frac{1}{h_{o} A}} \\\\ \\frac{Q}{A} &=\\frac{T_{\\infty, i}-T_{\\infty, 0}}{\\frac{1}{h_{i}}+\\frac{L_{1}}{k_{1}}+\\frac{L_{2}}{k_{2}}+\\frac{1}{h_{0}}} \\\\ &=\\frac{20-(-2)}{\\frac{1}{20}+\\frac{0.30}{20}+\\frac{0.15}{50}+\\frac{1}{50}} \\\\ &=\\frac{20+2}{\\frac{5+1.50+0.3+2}{100}}=\\frac{22 \\times 100}{8.8}=250 \\mathrm{W} \\\\ \\text{also}\\qquad \\frac{Q}{A}&= \\frac{T_{\\infty, 1}-T}{\\frac{1}{h_{i}}+\\frac{L_{1}}{k_{1}}}\\\\ \\therefore \\qquad 250&=\\frac{20-T}{\\frac{1}{20}+\\frac{0.3}{20}}=\\frac{20-T}{\\frac{0.3}{20}}\\\\ 250 \\times \\frac{0.3}{20}&=20-T\\\\ 16.25&=20-T \\\\ \\text{or }\\quad T &=20-16.25 \\\\ &=3.75^{\\circ} \\mathrm{C} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q34": {
-      "question_uid": "pp:me:2009:q34",
+    "me:2009:q34": {
+      "question_uid": "me:2009:q34",
+      "legacy_uid": "pp:me:2009:q34",
       "exam_uid": "me:2009:set1:main:q34",
       "title": "GATE ME 2009 | Set 1 | Question: 34",
       "section": "main",
@@ -1569,15 +1536,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-da88314351.webp\" />\n\nThe velocity profile of a fully developed laminar flow in a straight circular pipe, as shown in figure,  is given by the expression\n\n$$\\begin{aligned} u(r) &=-\\frac{R^{2}}{4 \\mu}\\left(\\frac{d p}{d x}\\right)\\left[1-\\frac{r^{2}}{R^{2}}\\right] \\\\ &=U_{\\max }\\left[1-\\frac{r^{2}}{R^{2}}\\right] \\\\ \\text { where } \\quad U_{\\max } &=-\\frac{R^{2}}{4 \\mu}\\left(\\frac{d p}{d x}\\right) \\end{aligned}$$\n\nwhere $\\frac{d p}{d x}$ is a constant\n\nThe average velocity of fluid in the pipe,\n\n$V_{\\mathrm{avg}}=\\frac{U_{\\max }}{2}=-\\frac{R^{2}}{8 \\mu}\\left(\\frac{d p}{d x}\\right)$\n\nAlternatively\n\nGiven velocity profile expression,\n\n$u(r)=\\frac{-R^{2}}{4 \\mu}\\left(\\frac{d p}{d x}\\right)\\left[1-\\frac{r^{2}}{R^{2}}\\right]$\n\nConsider a small circular ring element of radius r and thickness dr as shown in figure.\n\n<img src=\"/question-images/me/2009/me-2009-3614a4a737.webp\" />\n\nThe fluld flowing por socond through small elementaryring.\n\ndQ= Velocity at radius r x Area of a small ring element of a small\n\n$$\\begin{aligned} &=u \\times 2 \\pi r d r \\\\ &=\\frac{-1}{4 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[1-\\frac{r^{2}}{R^{2}}\\right] \\times 2 \\pi r d r \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[r-\\frac{r^{3}}{R^{2}}\\right] d r \\end{aligned}$$\n\nNet discharge flow through pipe,\n\n$$\\begin{aligned} Q &=\\int_{0}^{R} \\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[r-\\frac{r^{3}}{R^{2}}\\right] d r \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right) \\int_{0}^{R}\\left[r-\\frac{r^{3}}{R^{2}}\\right] d r \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[\\frac{r^{2}}{2}-\\frac{r^{4}}{4 R^{2}}\\right]^{A} \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[\\frac{R^{2}}{2}-\\frac{R^{4}}{4 R^{2}}\\right] \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left(\\frac{R^{2}}{2}-\\frac{R^{4}}{4}\\right) \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right) \\times \\frac{R^{2}}{4}=\\frac{-\\pi}{8 \\mu} R^{4}\\left(\\frac{d p}{d x}\\right)\\end{aligned}$$\n\nAverage velocity,\n\n$$\\begin{aligned}\\bar{u} &=\\frac{Q}{\\pi R^{2}}=\\frac{\\overline{8} \\mu}{\\pi R^{2}}\\left(\\frac{d p}{d x}\\right) \\\\ &=\\frac{- R^{2}}{8 \\mu}\\left(\\frac{d p}{d x}\\right)  \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-da88314351.webp",
-          "/question-images/me/2009/me-2009-3614a4a737.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-da88314351.webp\" />\n\nThe velocity profile of a fully developed laminar flow in a straight circular pipe, as shown in figure,  is given by the expression\n\n$$\\begin{aligned} u(r) &=-\\frac{R^{2}}{4 \\mu}\\left(\\frac{d p}{d x}\\right)\\left[1-\\frac{r^{2}}{R^{2}}\\right] \\\\ &=U_{\\max }\\left[1-\\frac{r^{2}}{R^{2}}\\right] \\\\ \\text { where } \\quad U_{\\max } &=-\\frac{R^{2}}{4 \\mu}\\left(\\frac{d p}{d x}\\right) \\end{aligned}$$\n\nwhere $\\frac{d p}{d x}$ is a constant\n\nThe average velocity of fluid in the pipe,\n\n$V_{\\mathrm{avg}}=\\frac{U_{\\max }}{2}=-\\frac{R^{2}}{8 \\mu}\\left(\\frac{d p}{d x}\\right)$\n\nAlternatively\n\nGiven velocity profile expression,\n\n$u(r)=\\frac{-R^{2}}{4 \\mu}\\left(\\frac{d p}{d x}\\right)\\left[1-\\frac{r^{2}}{R^{2}}\\right]$\n\nConsider a small circular ring element of radius r and thickness dr as shown in figure.\n\n<img src=\"/question-images/me/2009/me-2009-3614a4a737.webp\" />\n\nThe fluld flowing por socond through small elementaryring.\n\ndQ= Velocity at radius r x Area of a small ring element of a small\n\n$$\\begin{aligned} &=u \\times 2 \\pi r d r \\\\ &=\\frac{-1}{4 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[1-\\frac{r^{2}}{R^{2}}\\right] \\times 2 \\pi r d r \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[r-\\frac{r^{3}}{R^{2}}\\right] d r \\end{aligned}$$\n\nNet discharge flow through pipe,\n\n$$\\begin{aligned} Q &=\\int_{0}^{R} \\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[r-\\frac{r^{3}}{R^{2}}\\right] d r \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right) \\int_{0}^{R}\\left[r-\\frac{r^{3}}{R^{2}}\\right] d r \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[\\frac{r^{2}}{2}-\\frac{r^{4}}{4 R^{2}}\\right]^{A} \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left[\\frac{R^{2}}{2}-\\frac{R^{4}}{4 R^{2}}\\right] \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right)\\left(\\frac{R^{2}}{2}-\\frac{R^{4}}{4}\\right) \\\\ &=\\frac{-\\pi}{2 \\mu} R^{2}\\left(\\frac{d p}{d x}\\right) \\times \\frac{R^{2}}{4}=\\frac{-\\pi}{8 \\mu} R^{4}\\left(\\frac{d p}{d x}\\right)\\end{aligned}$$\n\nAverage velocity,\n\n$$\\begin{aligned}\\bar{u} &=\\frac{Q}{\\pi R^{2}}=\\frac{\\overline{8} \\mu}{\\pi R^{2}}\\left(\\frac{d p}{d x}\\right) \\\\ &=\\frac{- R^{2}}{8 \\mu}\\left(\\frac{d p}{d x}\\right)  \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q35": {
-      "question_uid": "pp:me:2009:q35",
+    "me:2009:q35": {
+      "question_uid": "me:2009:q35",
+      "legacy_uid": "pp:me:2009:q35",
       "exam_uid": "me:2009:set1:main:q35",
       "title": "GATE ME 2009 | Set 1 | Question: 35",
       "section": "main",
@@ -1617,14 +1581,12 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Torsion of Shafts",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-89323d0178.webp\" />\n\nEq.1 $\\quad T_{1}+T_{2}=T_{0}$\n\nEq.2 Angle of twist for both shafts at section X-X will be same.\n\nTherefore,\n\n$$\\begin{aligned} \\frac{T_{1} L}{4 G J} &=\\frac{T_{2} \\times 3 L}{4 G J} \\\\ \\text { Eq. (ii) } \\quad \\therefore \\quad T_{1} &=3 T_{2} \\end{aligned}$$\n\nSolving (i) and (ii)\n\n$$\\begin{aligned} T_{2}&=\\frac{T_{0}}{4}, T_{1}=\\frac{3 T_{0}}{4}\\\\ \\text { Shear stress in } 1 &=\\frac{16 T_{1}}{\\pi d^{3}}=\\frac{16}{\\pi d^{3}} \\times \\frac{3 T_{0}}{4} \\\\ &=\\frac{12 T_{0}}{\\pi d^{3}} \\\\ \\text { Shear stress in } 2 &=\\frac{16 T_{2}}{\\pi d^{3}}=\\frac{16}{\\pi d^{3}} \\times \\frac{T_{0}}{4}=\\frac{4 T_{0}}{\\pi d^{3}} \\end{aligned}$$\n\nHence maximum shear stress in shaft is $\\frac{12 T_{0}}{\\pi d^{3}}$",
-        "images": [
-          "/question-images/me/2009/me-2009-89323d0178.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-89323d0178.webp\" />\n\nEq.1 $\\quad T_{1}+T_{2}=T_{0}$\n\nEq.2 Angle of twist for both shafts at section X-X will be same.\n\nTherefore,\n\n$$\\begin{aligned} \\frac{T_{1} L}{4 G J} &=\\frac{T_{2} \\times 3 L}{4 G J} \\\\ \\text { Eq. (ii) } \\quad \\therefore \\quad T_{1} &=3 T_{2} \\end{aligned}$$\n\nSolving (i) and (ii)\n\n$$\\begin{aligned} T_{2}&=\\frac{T_{0}}{4}, T_{1}=\\frac{3 T_{0}}{4}\\\\ \\text { Shear stress in } 1 &=\\frac{16 T_{1}}{\\pi d^{3}}=\\frac{16}{\\pi d^{3}} \\times \\frac{3 T_{0}}{4} \\\\ &=\\frac{12 T_{0}}{\\pi d^{3}} \\\\ \\text { Shear stress in } 2 &=\\frac{16 T_{2}}{\\pi d^{3}}=\\frac{16}{\\pi d^{3}} \\times \\frac{T_{0}}{4}=\\frac{4 T_{0}}{\\pi d^{3}} \\end{aligned}$$\n\nHence maximum shear stress in shaft is $\\frac{12 T_{0}}{\\pi d^{3}}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q36": {
-      "question_uid": "pp:me:2009:q36",
+    "me:2009:q36": {
+      "question_uid": "me:2009:q36",
+      "legacy_uid": "pp:me:2009:q36",
       "exam_uid": "me:2009:set1:main:q36",
       "title": "GATE ME 2009 | Set 1 | Question: 36",
       "section": "main",
@@ -1664,14 +1626,12 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Gear and Gear Train",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-01e2cfa41b.webp\" />\n\n$$\\begin{aligned} \\frac{-N}{5}+y &=0 \\quad[\\text { Gear 5 is fixed }] \\\\ N+y & =-60 \\quad \\text { [counter clockwise }] \\\\ N+\\frac{N}{5}& =-60 \\\\ \\frac{6 N}{5}&=-60\\\\ N&=-50 \\\\ y&=+\\frac{50}{5}=10 \\mathrm{rpm} \\end{aligned}$$\n\nPositive sign is taken clockwise hence arm rolate\n\nat +10 rpm clockwise.",
-        "images": [
-          "/question-images/me/2009/me-2009-01e2cfa41b.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-01e2cfa41b.webp\" />\n\n$$\\begin{aligned} \\frac{-N}{5}+y &=0 \\quad[\\text { Gear 5 is fixed }] \\\\ N+y & =-60 \\quad \\text { [counter clockwise }] \\\\ N+\\frac{N}{5}& =-60 \\\\ \\frac{6 N}{5}&=-60\\\\ N&=-50 \\\\ y&=+\\frac{50}{5}=10 \\mathrm{rpm} \\end{aligned}$$\n\nPositive sign is taken clockwise hence arm rolate\n\nat +10 rpm clockwise.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q37": {
-      "question_uid": "pp:me:2009:q37",
+    "me:2009:q37": {
+      "question_uid": "me:2009:q37",
+      "legacy_uid": "pp:me:2009:q37",
       "exam_uid": "me:2009:set1:main:q37",
       "title": "GATE ME 2009 | Set 1 | Question: 37",
       "section": "main",
@@ -1711,12 +1671,12 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Static Dynamic Loading and Failure Theories",
-        "markdown": "$$\\begin{aligned} \\text { Diameter: } d&=30 \\mathrm{mm} \\\\ F_{\\max }&=+160 \\mathrm{kN} \\text { (Tension) } \\\\ F_{\\min }&=-40 \\mathrm{kN} \\text { (Compression) } \\\\ \\text { Tensile strength: } S_{u}&=600 \\mathrm{MPa} \\\\ \\text { Yield strength: } S_{y}&=430 \\mathrm{MPa}\\\\ \\text{Corrected endurance,}\\\\ S_{e}&=240 \\mathrm{MPa} \\end{aligned}$$\n\nMaximum stress,\n\n$$\\begin{aligned} \\sigma_{\\max } &=\\frac{F_{\\max }}{A}=\\frac{160 \\times 10^{3} \\mathrm{N}}{\\frac{\\pi}{4}(30)^{2} \\mathrm{mm}^{2}} \\\\ &=226.47 \\mathrm{MPa}(\\text { Tensile }) \\end{aligned}$$\n\nMinimum stress,\n\n$$\\begin{aligned} \\sigma_{\\min }&=\\frac{F_{\\min }}{A}=\\frac{-40 \\times 10^{3} \\mathrm{N}}{\\frac{\\pi}{4}(30)^{2} \\mathrm{mm}^{2}}\\\\ &=-56.62 \\mathrm{MPa} \\quad (Compression)\\\\ \\end{aligned}$$\n\nStress amplitude,\n\n$$\\begin{aligned} \\sigma_{a} &=\\frac{1}{2}\\left(\\sigma_{\\max }-\\sigma_{\\min }\\right) \\\\ &=\\frac{1}{2}[226.47-(-56.62)] \\\\ &=141.54 \\mathrm{MPa} \\end{aligned}$$\n\nMean stress,\n\n$$\\begin{aligned} \\sigma_{m} &=\\frac{1}{2}\\left(\\sigma_{\\max }+\\sigma_{\\min }\\right) \\\\ &=\\frac{1}{2}[226.47+(-56.62)] \\\\ &=84.925 \\mathrm{MPa} \\end{aligned}$$\n\nAssume factor of safety is n then\n\n$$\\begin{array}{l} S_{a}=n \\sigma_{a}=141.54 n \\\\ S_{m}=n \\sigma_{m}=84.925 \\mathrm{n} \\end{array}$$\n\nThe equation of soderberg line is as follows\n\n$$\\begin{array}{l} \\quad \\frac{S_{a}}{S_{e}}+\\frac{S_{m}}{S_{y t}}=1 \\\\ \\Rightarrow \\frac{141.54 n}{240}+\\frac{84.925 n}{420}=1 \\\\ \\Rightarrow \\quad n=1.26 \\end{array}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text { Diameter: } d&=30 \\mathrm{mm} \\\\ F_{\\max }&=+160 \\mathrm{kN} \\text { (Tension) } \\\\ F_{\\min }&=-40 \\mathrm{kN} \\text { (Compression) } \\\\ \\text { Tensile strength: } S_{u}&=600 \\mathrm{MPa} \\\\ \\text { Yield strength: } S_{y}&=430 \\mathrm{MPa}\\\\ \\text{Corrected endurance,}\\\\ S_{e}&=240 \\mathrm{MPa} \\end{aligned}$$\n\nMaximum stress,\n\n$$\\begin{aligned} \\sigma_{\\max } &=\\frac{F_{\\max }}{A}=\\frac{160 \\times 10^{3} \\mathrm{N}}{\\frac{\\pi}{4}(30)^{2} \\mathrm{mm}^{2}} \\\\ &=226.47 \\mathrm{MPa}(\\text { Tensile }) \\end{aligned}$$\n\nMinimum stress,\n\n$$\\begin{aligned} \\sigma_{\\min }&=\\frac{F_{\\min }}{A}=\\frac{-40 \\times 10^{3} \\mathrm{N}}{\\frac{\\pi}{4}(30)^{2} \\mathrm{mm}^{2}}\\\\ &=-56.62 \\mathrm{MPa} \\quad (Compression)\\\\ \\end{aligned}$$\n\nStress amplitude,\n\n$$\\begin{aligned} \\sigma_{a} &=\\frac{1}{2}\\left(\\sigma_{\\max }-\\sigma_{\\min }\\right) \\\\ &=\\frac{1}{2}[226.47-(-56.62)] \\\\ &=141.54 \\mathrm{MPa} \\end{aligned}$$\n\nMean stress,\n\n$$\\begin{aligned} \\sigma_{m} &=\\frac{1}{2}\\left(\\sigma_{\\max }+\\sigma_{\\min }\\right) \\\\ &=\\frac{1}{2}[226.47+(-56.62)] \\\\ &=84.925 \\mathrm{MPa} \\end{aligned}$$\n\nAssume factor of safety is n then\n\n$$\\begin{array}{l} S_{a}=n \\sigma_{a}=141.54 n \\\\ S_{m}=n \\sigma_{m}=84.925 \\mathrm{n} \\end{array}$$\n\nThe equation of soderberg line is as follows\n\n$$\\begin{array}{l} \\quad \\frac{S_{a}}{S_{e}}+\\frac{S_{m}}{S_{y t}}=1 \\\\ \\Rightarrow \\frac{141.54 n}{240}+\\frac{84.925 n}{420}=1 \\\\ \\Rightarrow \\quad n=1.26 \\end{array}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q38": {
-      "question_uid": "pp:me:2009:q38",
+    "me:2009:q38": {
+      "question_uid": "me:2009:q38",
+      "legacy_uid": "pp:me:2009:q38",
       "exam_uid": "me:2009:set1:main:q38",
       "title": "GATE ME 2009 | Set 1 | Question: 38",
       "section": "main",
@@ -1756,14 +1716,12 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-074e1fefcc.webp\" />\n\n$$\\begin{array}{l} K_{1}=K_{2}=16 \\mathrm{MN} / \\mathrm{m}=16 \\times 10^{6} \\mathrm{N} / \\mathrm{m} \\\\ K_{3}=K_{4}=32 \\mathrm{MN} / \\mathrm{m}=32 \\times 10^{6} \\mathrm{N} / \\mathrm{m} \\end{array}$$\n\nAll the springs are in parallel combination.\n\nTherefore,\n\nEquivalent stiffness,\n\n$$\\begin{aligned} K_{\\mathrm{eq}} &=K_{1}+K_{2}+K_{3}+K_{4} \\\\ &=16+16+32+32 \\\\ &=96 \\mathrm{MN} / \\mathrm{m} \\end{aligned}$$\n\nAt resonance\n\n$$\\begin{aligned} \\omega &=\\omega_{n}=\\sqrt{\\frac{K}{m}} \\\\ \\frac{2 \\pi N}{60} &=\\sqrt{\\frac{K}{m}}=\\sqrt{\\frac{96 \\times 10^{6} N / m}{240 \\mathrm{kg}}} \\\\ N &=6042.5 \\mathrm{rpm} \\approx 6040 \\mathrm{rpm} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-074e1fefcc.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-074e1fefcc.webp\" />\n\n$$\\begin{array}{l} K_{1}=K_{2}=16 \\mathrm{MN} / \\mathrm{m}=16 \\times 10^{6} \\mathrm{N} / \\mathrm{m} \\\\ K_{3}=K_{4}=32 \\mathrm{MN} / \\mathrm{m}=32 \\times 10^{6} \\mathrm{N} / \\mathrm{m} \\end{array}$$\n\nAll the springs are in parallel combination.\n\nTherefore,\n\nEquivalent stiffness,\n\n$$\\begin{aligned} K_{\\mathrm{eq}} &=K_{1}+K_{2}+K_{3}+K_{4} \\\\ &=16+16+32+32 \\\\ &=96 \\mathrm{MN} / \\mathrm{m} \\end{aligned}$$\n\nAt resonance\n\n$$\\begin{aligned} \\omega &=\\omega_{n}=\\sqrt{\\frac{K}{m}} \\\\ \\frac{2 \\pi N}{60} &=\\sqrt{\\frac{K}{m}}=\\sqrt{\\frac{96 \\times 10^{6} N / m}{240 \\mathrm{kg}}} \\\\ N &=6042.5 \\mathrm{rpm} \\approx 6040 \\mathrm{rpm} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q39": {
-      "question_uid": "pp:me:2009:q39",
+    "me:2009:q39": {
+      "question_uid": "me:2009:q39",
+      "legacy_uid": "pp:me:2009:q39",
       "exam_uid": "me:2009:set1:main:q39",
       "title": "GATE ME 2009 | Set 1 | Question: 39",
       "section": "main",
@@ -1803,12 +1761,12 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
-        "markdown": "Stiffness of spring: $K=3.6 \\mathrm{kN} / \\mathrm{m}$\n\nDamping constant of the damper\n\n$$\\begin{array}{l} C=400 \\mathrm{Ns} / \\mathrm{m}\\\\ \\text { Mass, } \\quad m=50 \\mathrm{kg} \\\\ m\\ddot{x}+c \\dot{x}+K x=0 \\end{array}$$\n\n[Suspension system consisting spring\n\nand damper]\n\nDamping factor\n\n$$\\begin{aligned} \\text{(d) or}\\;\\xi\\;&=\\frac{C}{C_{C}}=\\frac{C}{2 \\sqrt{K m}} \\\\ &=\\frac{400 \\mathrm{Ns} / \\mathrm{m}}{2 \\sqrt{3.6 \\times 10^{3} \\times 50 \\mathrm{N} / \\mathrm{m} \\times \\mathrm{kg}}} \\\\ &=0.471 \\end{aligned}$$\n\nNatural frequency,\n\n$$\\begin{aligned} \\omega_{n} &=\\sqrt{\\frac{K}{m}}=\\sqrt{\\frac{3.6 \\times 10^{3}}{50}} \\\\ &=8.485 \\mathrm{rad} / \\mathrm{s} \\end{aligned}$$\n\nDamped natural frequency,\n\n$$\\begin{aligned} \\omega_{d} &=\\omega_{n} \\sqrt{1-\\xi^{2}}=8.485 \\sqrt{1-(0.471)^{2}} \\\\ 2 \\pi f_{d} &=\\omega_{d}=7.48 \\mathrm{rad} / \\mathrm{s} \\\\ f_{d} &=1.19 \\mathrm{Hz} \\end{aligned}$$",
-        "images": []
+        "markdown": "Stiffness of spring: $K=3.6 \\mathrm{kN} / \\mathrm{m}$\n\nDamping constant of the damper\n\n$$\\begin{array}{l} C=400 \\mathrm{Ns} / \\mathrm{m}\\\\ \\text { Mass, } \\quad m=50 \\mathrm{kg} \\\\ m\\ddot{x}+c \\dot{x}+K x=0 \\end{array}$$\n\n[Suspension system consisting spring\n\nand damper]\n\nDamping factor\n\n$$\\begin{aligned} \\text{(d) or}\\;\\xi\\;&=\\frac{C}{C_{C}}=\\frac{C}{2 \\sqrt{K m}} \\\\ &=\\frac{400 \\mathrm{Ns} / \\mathrm{m}}{2 \\sqrt{3.6 \\times 10^{3} \\times 50 \\mathrm{N} / \\mathrm{m} \\times \\mathrm{kg}}} \\\\ &=0.471 \\end{aligned}$$\n\nNatural frequency,\n\n$$\\begin{aligned} \\omega_{n} &=\\sqrt{\\frac{K}{m}}=\\sqrt{\\frac{3.6 \\times 10^{3}}{50}} \\\\ &=8.485 \\mathrm{rad} / \\mathrm{s} \\end{aligned}$$\n\nDamped natural frequency,\n\n$$\\begin{aligned} \\omega_{d} &=\\omega_{n} \\sqrt{1-\\xi^{2}}=8.485 \\sqrt{1-(0.471)^{2}} \\\\ 2 \\pi f_{d} &=\\omega_{d}=7.48 \\mathrm{rad} / \\mathrm{s} \\\\ f_{d} &=1.19 \\mathrm{Hz} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q40": {
-      "question_uid": "pp:me:2009:q40",
+    "me:2009:q40": {
+      "question_uid": "me:2009:q40",
+      "legacy_uid": "pp:me:2009:q40",
       "exam_uid": "me:2009:set1:main:q40",
       "title": "GATE ME 2009 | Set 1 | Question: 40",
       "section": "main",
@@ -1848,15 +1806,12 @@
       },
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-5d03e79713.webp\" />\n\nFor arm AB:\n\nAt ant section X-X, at a distance x frome A\n\n$$\\begin{aligned} M_{x} &=-P x \\\\ U_{A B} &=\\int \\frac{M_{x}^{2} d x}{2 E I}=\\int_{0}^{L} \\frac{(-P x)^{2}}{2 E I} d x \\\\ U_{A B} &=\\frac{P^{2}}{2 E I}\\left(\\frac{x^{3}}{3}\\right)_{0}^{L}=\\frac{P^{2} L^{3}}{6 E I} \\end{aligned}$$\n\nFor arm BC:\n\n<img src=\"/question-images/me/2009/me-2009-1c56a2691c.webp\" />\n\n$$\\begin{aligned} R_{B}+R_{C} &=0 \\\\ M_{C} &=0 \\\\ R_{B} L-P L &=0 \\\\ R_{B} &=P \\\\ R_{C} &=-P \\\\ M_{x} &=R_{C} x=P_{x} \\\\ U_{B C} &=\\int_{0}^{L} \\frac{M_{x}^{2} d x}{2 E I}=\\int_{0}^{L} \\frac{P^{2} x^{2} d x}{2 E I} \\\\ &=\\frac{P^{2} L^{3}}{6 E I} \\end{aligned}$$\n\nTotal strain energy sotred in the frame of two arm\n\n$$\\begin{array}{l} U=U_{A B}+U_{B C} \\\\ U=\\frac{P^{2} L^{3}}{6 E I}+\\frac{P^{2} L^{3}}{6 E I}=\\frac{P^{2} L^{3}}{3 E I} \\end{array}$$\n\nTherefore, vertical deflection of A is\n\n$\\delta_{A}=\\frac{\\partial U}{\\partial P}=\\frac{\\partial}{\\partial P}\\left[\\frac{P^{2} L^{3}}{3 E I}\\right]=\\frac{2 P L^{3}}{3 E I}$",
-        "images": [
-          "/question-images/me/2009/me-2009-5d03e79713.webp",
-          "/question-images/me/2009/me-2009-1c56a2691c.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-5d03e79713.webp\" />\n\nFor arm AB:\n\nAt ant section X-X, at a distance x frome A\n\n$$\\begin{aligned} M_{x} &=-P x \\\\ U_{A B} &=\\int \\frac{M_{x}^{2} d x}{2 E I}=\\int_{0}^{L} \\frac{(-P x)^{2}}{2 E I} d x \\\\ U_{A B} &=\\frac{P^{2}}{2 E I}\\left(\\frac{x^{3}}{3}\\right)_{0}^{L}=\\frac{P^{2} L^{3}}{6 E I} \\end{aligned}$$\n\nFor arm BC:\n\n<img src=\"/question-images/me/2009/me-2009-1c56a2691c.webp\" />\n\n$$\\begin{aligned} R_{B}+R_{C} &=0 \\\\ M_{C} &=0 \\\\ R_{B} L-P L &=0 \\\\ R_{B} &=P \\\\ R_{C} &=-P \\\\ M_{x} &=R_{C} x=P_{x} \\\\ U_{B C} &=\\int_{0}^{L} \\frac{M_{x}^{2} d x}{2 E I}=\\int_{0}^{L} \\frac{P^{2} x^{2} d x}{2 E I} \\\\ &=\\frac{P^{2} L^{3}}{6 E I} \\end{aligned}$$\n\nTotal strain energy sotred in the frame of two arm\n\n$$\\begin{array}{l} U=U_{A B}+U_{B C} \\\\ U=\\frac{P^{2} L^{3}}{6 E I}+\\frac{P^{2} L^{3}}{6 E I}=\\frac{P^{2} L^{3}}{3 E I} \\end{array}$$\n\nTherefore, vertical deflection of A is\n\n$\\delta_{A}=\\frac{\\partial U}{\\partial P}=\\frac{\\partial}{\\partial P}\\left[\\frac{P^{2} L^{3}}{3 E I}\\right]=\\frac{2 P L^{3}}{3 E I}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q41": {
-      "question_uid": "pp:me:2009:q41",
+    "me:2009:q41": {
+      "question_uid": "me:2009:q41",
+      "legacy_uid": "pp:me:2009:q41",
       "exam_uid": "me:2009:set1:main:q41",
       "title": "GATE ME 2009 | Set 1 | Question: 41",
       "section": "main",
@@ -1896,14 +1851,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mechanics - Translation and Rotation",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-5629c40257.webp\" />\n\nat this moment\n\n$$\\begin{aligned} \\omega&=0\\\\ \\text{but }\\quad \\alpha &\\neq 0 \\;\\text{[start of rotation]} \\\\ \\overrightarrow{a_{C M}}&=\\vec{a}_{r}+\\vec{a}_{t}\\\\ \\end{aligned}$$\n\n(because centre of mass is in circular motion at a radius L/2)\n\n$$\\begin{aligned} \\vec{a}_{r} &=0 \\\\ \\vec{a}_{t} &=\\frac{L}{2} \\alpha(\\hat{i}) \\\\ T &=I \\alpha(\\text { about hinge }) \\\\ P \\times \\frac{2 L}{3} &=\\frac{M L^{2}}{3} \\alpha \\\\ \\alpha &=\\frac{2 P}{M L} \\\\ \\vec{a}_{C M} &=\\frac{L}{2} \\times \\frac{2 P}{M L}(\\hat{i}) \\\\ \\vec{a}_{C M} &=\\frac{P}{M} (\\hat{i}) \\end{aligned}$$\n\nLet R be the reaction in horizontal direction from hinge\n\n$$\\begin{aligned} (\\Sigma \\vec{f})_{ext} &=m\\vec{s}_{CM} \\;[\\text{in horizontal direction}] \\\\ P+R &=Ma_{CM} \\\\ P+R &= M \\times \\frac{P}{M}\\\\ P+R &=P \\\\ R&=0 \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-5629c40257.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-5629c40257.webp\" />\n\nat this moment\n\n$$\\begin{aligned} \\omega&=0\\\\ \\text{but }\\quad \\alpha &\\neq 0 \\;\\text{[start of rotation]} \\\\ \\overrightarrow{a_{C M}}&=\\vec{a}_{r}+\\vec{a}_{t}\\\\ \\end{aligned}$$\n\n(because centre of mass is in circular motion at a radius L/2)\n\n$$\\begin{aligned} \\vec{a}_{r} &=0 \\\\ \\vec{a}_{t} &=\\frac{L}{2} \\alpha(\\hat{i}) \\\\ T &=I \\alpha(\\text { about hinge }) \\\\ P \\times \\frac{2 L}{3} &=\\frac{M L^{2}}{3} \\alpha \\\\ \\alpha &=\\frac{2 P}{M L} \\\\ \\vec{a}_{C M} &=\\frac{L}{2} \\times \\frac{2 P}{M L}(\\hat{i}) \\\\ \\vec{a}_{C M} &=\\frac{P}{M} (\\hat{i}) \\end{aligned}$$\n\nLet R be the reaction in horizontal direction from hinge\n\n$$\\begin{aligned} (\\Sigma \\vec{f})_{ext} &=m\\vec{s}_{CM} \\;[\\text{in horizontal direction}] \\\\ P+R &=Ma_{CM} \\\\ P+R &= M \\times \\frac{P}{M}\\\\ P+R &=P \\\\ R&=0 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q42": {
-      "question_uid": "pp:me:2009:q42",
+    "me:2009:q42": {
+      "question_uid": "me:2009:q42",
+      "legacy_uid": "pp:me:2009:q42",
       "exam_uid": "me:2009:set1:main:q42",
       "title": "GATE ME 2009 | Set 1 | Question: 42",
       "section": "main",
@@ -1943,12 +1896,12 @@
       },
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
-        "markdown": "1. D' Alembert's principle $\\longrightarrow$ Dynamic-static analysis\n\n2. Grubler's criterion $\\longrightarrow$ Mobility (for plane mechanism)\n\n3. Grashoff's law $\\longrightarrow$ Continuous relative rotation\n\n4. Kennedy's theorem $\\longrightarrow$ Velocity and acceleration",
-        "images": []
+        "markdown": "1. D' Alembert's principle $\\longrightarrow$ Dynamic-static analysis\n\n2. Grubler's criterion $\\longrightarrow$ Mobility (for plane mechanism)\n\n3. Grashoff's law $\\longrightarrow$ Continuous relative rotation\n\n4. Kennedy's theorem $\\longrightarrow$ Velocity and acceleration\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:me:2009:q43": {
-      "question_uid": "pp:me:2009:q43",
+    "me:2009:q43": {
+      "question_uid": "me:2009:q43",
+      "legacy_uid": "pp:me:2009:q43",
       "exam_uid": "me:2009:set1:main:q43",
       "title": "GATE ME 2009 | Set 1 | Question: 43",
       "section": "main",
@@ -1988,14 +1941,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
-        "markdown": "Using Wilson Harris model (Deterministic Model)\n\n<img src=\"/question-images/me/2009/me-2009-ee86dc3d2e.webp\" />\n\nR= Consumption Rate =2555 units annually\n\nQ= Ordered Quantity\n\nT= Cycle Time\n\nt= Lead Time = 8 days $=\\frac{8}{365}\\text{years}$\n\nx= Reorder Quantity (Point)\n\nUsing Geometry of triangle\n\n$$\\begin{aligned} R &=\\frac{Q}{T}=\\frac{x}{t} \\\\ 2555 &=\\frac{x}{(8 / 365)} \\\\ \\text{or} \\quad x &=56 \\text { unit } \\end{aligned}$$\n\nTherefore, the reorder point to achieve optimum inventory is 56 units.",
-        "images": [
-          "/question-images/me/2009/me-2009-ee86dc3d2e.webp"
-        ]
+        "markdown": "Using Wilson Harris model (Deterministic Model)\n\n<img src=\"/question-images/me/2009/me-2009-ee86dc3d2e.webp\" />\n\nR= Consumption Rate =2555 units annually\n\nQ= Ordered Quantity\n\nT= Cycle Time\n\nt= Lead Time = 8 days $=\\frac{8}{365}\\text{years}$\n\nx= Reorder Quantity (Point)\n\nUsing Geometry of triangle\n\n$$\\begin{aligned} R &=\\frac{Q}{T}=\\frac{x}{t} \\\\ 2555 &=\\frac{x}{(8 / 365)} \\\\ \\text{or} \\quad x &=56 \\text { unit } \\end{aligned}$$\n\nTherefore, the reorder point to achieve optimum inventory is 56 units.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q44": {
-      "question_uid": "pp:me:2009:q44",
+    "me:2009:q44": {
+      "question_uid": "me:2009:q44",
+      "legacy_uid": "pp:me:2009:q44",
       "exam_uid": "me:2009:set1:main:q44",
       "title": "GATE ME 2009 | Set 1 | Question: 44",
       "section": "main",
@@ -2035,14 +1986,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - Linear Programming",
-        "markdown": "Linear Programming Problem (LPP)\n\nMaximize, $z=3 x_{1}+2 x_{2}$\n\n$$\\begin{aligned} \\text{Constraints }\\quad x_{1} &\\leq 4 &\\quad \\ldots(i)\\\\ x_{2} & \\leq 6 &\\quad \\ldots(ii)\\\\ 3 x_{1}+2 x_{2} & \\leq 18 &\\quad \\ldots(iii)\\\\ x_{1} & \\leq 0, x_{2} \\leq 0 &\\quad \\ldots(iv) \\end{aligned}$$\n\nUsing graphical method\n\n<img src=\"/question-images/me/2009/me-2009-a25dbdad29.webp\" />\n\nBecause objective function have slope same as constraint (iii) i.e. objective function is parallel to constraint. Therefore the LPP has multiple optimal solution.\n\nFor example at Point B\n\n$$\\begin{aligned} \\text { Maximum, } z &=3 x_{1}+2 x_{2} \\\\ &=3(4)+2(3)=18 \\end{aligned}$$\n\nand at point C,\n\nMaximum, $z=3(2)+2(6)=18$",
-        "images": [
-          "/question-images/me/2009/me-2009-a25dbdad29.webp"
-        ]
+        "markdown": "Linear Programming Problem (LPP)\n\nMaximize, $z=3 x_{1}+2 x_{2}$\n\n$$\\begin{aligned} \\text{Constraints }\\quad x_{1} &\\leq 4 &\\quad \\ldots(i)\\\\ x_{2} & \\leq 6 &\\quad \\ldots(ii)\\\\ 3 x_{1}+2 x_{2} & \\leq 18 &\\quad \\ldots(iii)\\\\ x_{1} & \\leq 0, x_{2} \\leq 0 &\\quad \\ldots(iv) \\end{aligned}$$\n\nUsing graphical method\n\n<img src=\"/question-images/me/2009/me-2009-a25dbdad29.webp\" />\n\nBecause objective function have slope same as constraint (iii) i.e. objective function is parallel to constraint. Therefore the LPP has multiple optimal solution.\n\nFor example at Point B\n\n$$\\begin{aligned} \\text { Maximum, } z &=3 x_{1}+2 x_{2} \\\\ &=3(4)+2(3)=18 \\end{aligned}$$\n\nand at point C,\n\nMaximum, $z=3(2)+2(6)=18$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q45": {
-      "question_uid": "pp:me:2009:q45",
+    "me:2009:q45": {
+      "question_uid": "me:2009:q45",
+      "legacy_uid": "pp:me:2009:q45",
       "exam_uid": "me:2009:set1:main:q45",
       "title": "GATE ME 2009 | Set 1 | Question: 45",
       "section": "main",
@@ -2082,12 +2031,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "SPT Rule Arranging in increasing order of processing time.\n\n$$\\begin{aligned}\\text { Jobs } & \\text { Processing time (days)} \\\\ i &\\;\\;4 \\\\ iii &\\;\\;5 \\\\ v &\\;\\;6 \\\\ vi &\\;\\;8 \\\\ ii &\\;\\;9 \\\\ iv &\\;\\;10\\end{aligned}$$\n\n$$\\begin{aligned} \\text { Jobs} &\\;\\;\\text{ Flow time (days)} \\\\ i &\\;\\;4 \\\\ iii &\\;\\;4+5=9 \\\\ v &\\;\\;4+54+6=15 \\\\ vi &\\;\\;4+5+6+8=23 \\\\ ii &\\;\\;4+5+6+8+9=32 \\\\ iv &\\;\\; \\underline{4+5+6+8+9+10=42}\\\\ & \\text{Total flow time} = 125 \\end{aligned}$$\n\nAvg. flow time $=\\frac{\\text { Total flow time }}{\\text { Number of jobs }}$\n\n$=\\frac{125}{6}=20.83 \\text { days }$",
-        "images": []
+        "markdown": "SPT Rule Arranging in increasing order of processing time.\n\n$$\\begin{aligned}\\text { Jobs } & \\text { Processing time (days)} \\\\ i &\\;\\;4 \\\\ iii &\\;\\;5 \\\\ v &\\;\\;6 \\\\ vi &\\;\\;8 \\\\ ii &\\;\\;9 \\\\ iv &\\;\\;10\\end{aligned}$$\n\n$$\\begin{aligned} \\text { Jobs} &\\;\\;\\text{ Flow time (days)} \\\\ i &\\;\\;4 \\\\ iii &\\;\\;4+5=9 \\\\ v &\\;\\;4+54+6=15 \\\\ vi &\\;\\;4+5+6+8=23 \\\\ ii &\\;\\;4+5+6+8+9=32 \\\\ iv &\\;\\; \\underline{4+5+6+8+9+10=42}\\\\ & \\text{Total flow time} = 125 \\end{aligned}$$\n\nAvg. flow time $=\\frac{\\text { Total flow time }}{\\text { Number of jobs }}$\n\n$=\\frac{125}{6}=20.83 \\text { days }$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q46": {
-      "question_uid": "pp:me:2009:q46",
+    "me:2009:q46": {
+      "question_uid": "me:2009:q46",
+      "legacy_uid": "pp:me:2009:q46",
       "exam_uid": "me:2009:set1:main:q46",
       "title": "GATE ME 2009 | Set 1 | Question: 46",
       "section": "main",
@@ -2127,12 +2076,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "During orthogonal machining.\n\nShear strain: $\\gamma=\\cot \\phi+\\tan (\\phi-\\alpha)$\n\nCutting tool having rake angle: $\\alpha=0^{\\circ}$\n\nthen $\\quad \\gamma=\\cot \\phi+\\tan \\phi$\n\nFor minimum value of shea\n\n$$\\begin{aligned} \\frac{d \\gamma}{d \\phi} &=\\frac{d}{d \\phi}(\\cot \\phi+\\tan \\phi)=0 \\\\ \\frac{d \\gamma}{d \\phi} &=-\\operatorname{cosec}^{2} \\phi+\\sec ^{2} \\phi=0\\\\ -\\frac{1}{\\sin ^{2} \\phi}+\\frac{1}{\\cos ^{2} \\phi} &=0 \\\\ \\Rightarrow \\frac{\\cos ^{2} \\phi-\\sin ^{2} \\phi}{\\cos ^{2} \\phi \\sin ^{2} \\phi}&=0 \\\\ \\Rightarrow \\cos 2 \\phi=0=\\cos \\frac{\\pi}{2}&=\\cos \\frac{3 \\pi}{2} \\\\ \\Rightarrow \\phi &= \\frac{\\pi}{4}\\\\ \\frac{d^{2} \\gamma}{d \\phi^{2}}&=-2 \\text{cosec} \\phi \\cdot(-\\operatorname{cosec} \\phi \\cot \\phi) \\\\ &+2\\sec\\phi.(\\sec\\phi\\tan\\phi)\\\\ \\frac{d^{2} \\gamma}{d \\phi^{2}}&=2 \\text{cosec}^{2} \\phi \\cot \\phi+2 \\sec ^{2} \\phi\\\\ \\left.\\frac{d^{2} \\gamma}{d \\phi^{2}}\\right|_{a+\\phi=\\frac{\\pi}{4}}& \\gt 0 \\end{aligned}$$\n\nTherefore $\\gamma$ is minimum at $\\phi=\\frac{\\pi}{4}$\n\nTherefore minimum shear strain $\\gamma$ is given by\n\n$$\\begin{aligned} \\gamma &=\\cot \\frac{\\pi}{4}+\\tan \\frac{\\pi}{4} \\\\ &=2^{\\circ} \\end{aligned}$$",
-        "images": []
+        "markdown": "During orthogonal machining.\n\nShear strain: $\\gamma=\\cot \\phi+\\tan (\\phi-\\alpha)$\n\nCutting tool having rake angle: $\\alpha=0^{\\circ}$\n\nthen $\\quad \\gamma=\\cot \\phi+\\tan \\phi$\n\nFor minimum value of shea\n\n$$\\begin{aligned} \\frac{d \\gamma}{d \\phi} &=\\frac{d}{d \\phi}(\\cot \\phi+\\tan \\phi)=0 \\\\ \\frac{d \\gamma}{d \\phi} &=-\\operatorname{cosec}^{2} \\phi+\\sec ^{2} \\phi=0\\\\ -\\frac{1}{\\sin ^{2} \\phi}+\\frac{1}{\\cos ^{2} \\phi} &=0 \\\\ \\Rightarrow \\frac{\\cos ^{2} \\phi-\\sin ^{2} \\phi}{\\cos ^{2} \\phi \\sin ^{2} \\phi}&=0 \\\\ \\Rightarrow \\cos 2 \\phi=0=\\cos \\frac{\\pi}{2}&=\\cos \\frac{3 \\pi}{2} \\\\ \\Rightarrow \\phi &= \\frac{\\pi}{4}\\\\ \\frac{d^{2} \\gamma}{d \\phi^{2}}&=-2 \\text{cosec} \\phi \\cdot(-\\operatorname{cosec} \\phi \\cot \\phi) \\\\ &+2\\sec\\phi.(\\sec\\phi\\tan\\phi)\\\\ \\frac{d^{2} \\gamma}{d \\phi^{2}}&=2 \\text{cosec}^{2} \\phi \\cot \\phi+2 \\sec ^{2} \\phi\\\\ \\left.\\frac{d^{2} \\gamma}{d \\phi^{2}}\\right|_{a+\\phi=\\frac{\\pi}{4}}& \\gt 0 \\end{aligned}$$\n\nTherefore $\\gamma$ is minimum at $\\phi=\\frac{\\pi}{4}$\n\nTherefore minimum shear strain $\\gamma$ is given by\n\n$$\\begin{aligned} \\gamma &=\\cot \\frac{\\pi}{4}+\\tan \\frac{\\pi}{4} \\\\ &=2^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q47": {
-      "question_uid": "pp:me:2009:q47",
+    "me:2009:q47": {
+      "question_uid": "me:2009:q47",
+      "legacy_uid": "pp:me:2009:q47",
       "exam_uid": "me:2009:set1:main:q47",
       "title": "GATE ME 2009 | Set 1 | Question: 47",
       "section": "main",
@@ -2172,12 +2121,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Electrochemical machining\n\nInter electrode gap, $y=0.2 \\mathrm{mm}$\n\nSupply voltage (DC), $V=12 \\mathrm{V}$\n\nSpecific resistance of electrolyte,\n\n$1 / K=2 \\Omega \\mathrm{cm}$\n\nAtomic weight of iron $A=55.85$\n\nValency of iron: $Z=2$\n\nFaraday's constant: F=96540 coulombs\n\nMaterial is removed from iron surface of\n\n$20 \\mathrm{mm} \\times 20 \\mathrm{mm}$\n\n$$\\begin{aligned} \\text { Surface area: } a &=20 \\times 20 \\mathrm{mm}^{2} \\\\ &=2 \\times 2 \\mathrm{cm}^{2} \\end{aligned}$$\n\nRate of mass removal in the form\n\n$\\dot{m}=\\frac{A I}{Z F}$\n\nCurrent density with this gap is\n\n$J=\\frac{K(V-\\Delta V)}{y}$\n\nAssume total over voltage to be 0 volt\n\n$(\\Delta V=0)$\n\n$$\\begin{aligned} J &=\\frac{K V}{y}=\\frac{V}{y\\left(\\frac{1}{K}\\right)} \\\\ &=\\frac{12 V}{\\left(\\frac{0.2}{10} \\mathrm{cm}\\right)(2 \\Omega \\mathrm{cm})}=300 \\mathrm{amp} / \\mathrm{cm}^{2} \\end{aligned}$$\n\nCurrent: I=(Current Density)$\\times$(Surface Area)\n\n$$\\begin{array}{l} =300 \\mathrm{Amp} / \\mathrm{cm}^{2} \\times\\left(2 \\times 2 \\mathrm{cm}^{2}\\right) \\\\ =1200 \\mathrm{Amp} \\end{array}$$\n\nRate of mass removal is\n\n$\\dot{m}=\\frac{A I}{Z F}=\\frac{(55.85)(1200)}{2 \\times 96540}=0.3471 \\mathrm{gm} / \\mathrm{s}$",
-        "images": []
+        "markdown": "Electrochemical machining\n\nInter electrode gap, $y=0.2 \\mathrm{mm}$\n\nSupply voltage (DC), $V=12 \\mathrm{V}$\n\nSpecific resistance of electrolyte,\n\n$1 / K=2 \\Omega \\mathrm{cm}$\n\nAtomic weight of iron $A=55.85$\n\nValency of iron: $Z=2$\n\nFaraday's constant: F=96540 coulombs\n\nMaterial is removed from iron surface of\n\n$20 \\mathrm{mm} \\times 20 \\mathrm{mm}$\n\n$$\\begin{aligned} \\text { Surface area: } a &=20 \\times 20 \\mathrm{mm}^{2} \\\\ &=2 \\times 2 \\mathrm{cm}^{2} \\end{aligned}$$\n\nRate of mass removal in the form\n\n$\\dot{m}=\\frac{A I}{Z F}$\n\nCurrent density with this gap is\n\n$J=\\frac{K(V-\\Delta V)}{y}$\n\nAssume total over voltage to be 0 volt\n\n$(\\Delta V=0)$\n\n$$\\begin{aligned} J &=\\frac{K V}{y}=\\frac{V}{y\\left(\\frac{1}{K}\\right)} \\\\ &=\\frac{12 V}{\\left(\\frac{0.2}{10} \\mathrm{cm}\\right)(2 \\Omega \\mathrm{cm})}=300 \\mathrm{amp} / \\mathrm{cm}^{2} \\end{aligned}$$\n\nCurrent: I=(Current Density)$\\times$(Surface Area)\n\n$$\\begin{array}{l} =300 \\mathrm{Amp} / \\mathrm{cm}^{2} \\times\\left(2 \\times 2 \\mathrm{cm}^{2}\\right) \\\\ =1200 \\mathrm{Amp} \\end{array}$$\n\nRate of mass removal is\n\n$\\dot{m}=\\frac{A I}{Z F}=\\frac{(55.85)(1200)}{2 \\times 96540}=0.3471 \\mathrm{gm} / \\mathrm{s}$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q48": {
-      "question_uid": "pp:me:2009:q48",
+    "me:2009:q48": {
+      "question_uid": "me:2009:q48",
+      "legacy_uid": "pp:me:2009:q48",
       "exam_uid": "me:2009:set1:main:q48",
       "title": "GATE ME 2009 | Set 1 | Question: 48",
       "section": "main",
@@ -2217,12 +2166,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
-        "markdown": "M05 $\\longrightarrow$ Spindle Stop/Off\n\nG01 $\\longrightarrow$ Linear Interpolation\n\nG04 $\\longrightarrow$ Dwell\n\nG90 $\\longrightarrow$ Absolute Coordinate System or (Absolute Programming)",
-        "images": []
+        "markdown": "M05 $\\longrightarrow$ Spindle Stop/Off\n\nG01 $\\longrightarrow$ Linear Interpolation\n\nG04 $\\longrightarrow$ Dwell\n\nG90 $\\longrightarrow$ Absolute Coordinate System or (Absolute Programming)\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q49": {
-      "question_uid": "pp:me:2009:q49",
+    "me:2009:q49": {
+      "question_uid": "me:2009:q49",
+      "legacy_uid": "pp:me:2009:q49",
       "exam_uid": "me:2009:set1:main:q49",
       "title": "GATE ME 2009 | Set 1 | Question: 49",
       "section": "main",
@@ -2262,14 +2211,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
-        "markdown": "$60 \\mathrm{mm}$ diameter lies in the diameter step of $50-80 \\mathrm{mm} .$\n\nTherefore, geometric mean diameter,\n\n$D=\\sqrt{D_{\\min } \\times D_{\\max }}=\\sqrt{50 \\times 80}=63.246 \\mathrm{mm}$\n\nFundamental tolerance,\n\n$$\\begin{aligned} i &=\\left(0.45 D^{1 / 3}+0.001 D\\right) \\mu \\mathrm{m} \\\\ &=\\left[0.45(63.246)^{1 / 3}+0.001(63.246)\\right] \\\\ &=1.859 \\mu \\mathrm{m}=0.00186 \\mathrm{mm} \\\\ I T 8 &=25 \\mathrm{i}=25 \\times 0.00186=0.04646 \\mathrm{mm} \\end{aligned}$$\n\nFundamental deviation for 'f' shaft,\n\n$$\\begin{aligned} \\epsilon_{d} &=-5.5 D^{0.41} \\\\ &=-5.5[63.246]^{0.41} \\\\ &=-0.030115 \\mathrm{mm} \\end{aligned}$$\n\n<img src=\"/question-images/me/2009/me-2009-64560bc1b7.webp\" />\n\nUpper limit of shaft\n\n$$\\begin{aligned} &= \\text{Basic size} - \\text{ Fundamental deviation}\\\\ &=60-0.03012=59.9678 \\mathrm{mm} \\\\ &\\approx 59.97 \\mathrm{mm} \\end{aligned}$$\n\nLower limit of shaft\n\n$$\\begin{aligned} &= \\text{Upper limit }- \\text{Tolerance}\\\\ &=59.97-0.0464=59.9236 \\mathrm{mm}\\\\ & \\approx 59.924 \\mathrm{mm} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-64560bc1b7.webp"
-        ]
+        "markdown": "$60 \\mathrm{mm}$ diameter lies in the diameter step of $50-80 \\mathrm{mm} .$\n\nTherefore, geometric mean diameter,\n\n$D=\\sqrt{D_{\\min } \\times D_{\\max }}=\\sqrt{50 \\times 80}=63.246 \\mathrm{mm}$\n\nFundamental tolerance,\n\n$$\\begin{aligned} i &=\\left(0.45 D^{1 / 3}+0.001 D\\right) \\mu \\mathrm{m} \\\\ &=\\left[0.45(63.246)^{1 / 3}+0.001(63.246)\\right] \\\\ &=1.859 \\mu \\mathrm{m}=0.00186 \\mathrm{mm} \\\\ I T 8 &=25 \\mathrm{i}=25 \\times 0.00186=0.04646 \\mathrm{mm} \\end{aligned}$$\n\nFundamental deviation for 'f' shaft,\n\n$$\\begin{aligned} \\epsilon_{d} &=-5.5 D^{0.41} \\\\ &=-5.5[63.246]^{0.41} \\\\ &=-0.030115 \\mathrm{mm} \\end{aligned}$$\n\n<img src=\"/question-images/me/2009/me-2009-64560bc1b7.webp\" />\n\nUpper limit of shaft\n\n$$\\begin{aligned} &= \\text{Basic size} - \\text{ Fundamental deviation}\\\\ &=60-0.03012=59.9678 \\mathrm{mm} \\\\ &\\approx 59.97 \\mathrm{mm} \\end{aligned}$$\n\nLower limit of shaft\n\n$$\\begin{aligned} &= \\text{Upper limit }- \\text{Tolerance}\\\\ &=59.97-0.0464=59.9236 \\mathrm{mm}\\\\ & \\approx 59.924 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q50": {
-      "question_uid": "pp:me:2009:q50",
+    "me:2009:q50": {
+      "question_uid": "me:2009:q50",
+      "legacy_uid": "pp:me:2009:q50",
       "exam_uid": "me:2009:set1:main:q50",
       "title": "GATE ME 2009 | Set 1 | Question: 50",
       "section": "main",
@@ -2309,12 +2256,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
-        "markdown": "P. Metallic chills $\\longrightarrow$ progressive solidification\n\nQ. Metallic chaplets $\\longrightarrow$ support for the core\n\nR. Riser $\\longrightarrow$ reservoir of the molten metal\n\nS. Exothermic padding $\\longrightarrow$ control cooling of critical section\n\nRiser $\\longrightarrow$ supply additional metal to the casting\n\nas it shrinks during solidification.\n\nChills $\\longrightarrow$ Function of chills is to increase rate of solidification in critical regions.\n\nChaplets $\\longrightarrow$ To keep the core from shifting metal support (chaplets) may be used to anchor the core in place.",
-        "images": []
+        "markdown": "P. Metallic chills $\\longrightarrow$ progressive solidification\n\nQ. Metallic chaplets $\\longrightarrow$ support for the core\n\nR. Riser $\\longrightarrow$ reservoir of the molten metal\n\nS. Exothermic padding $\\longrightarrow$ control cooling of critical section\n\nRiser $\\longrightarrow$ supply additional metal to the casting\n\nas it shrinks during solidification.\n\nChills $\\longrightarrow$ Function of chills is to increase rate of solidification in critical regions.\n\nChaplets $\\longrightarrow$ To keep the core from shifting metal support (chaplets) may be used to anchor the core in place.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q51": {
-      "question_uid": "pp:me:2009:q51",
+    "me:2009:q51": {
+      "question_uid": "me:2009:q51",
+      "legacy_uid": "pp:me:2009:q51",
       "exam_uid": "me:2009:set1:main:q51",
       "title": "GATE ME 2009 | Set 1 | Question: 51",
       "section": "main",
@@ -2354,12 +2301,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "Applying the steady flow energy equation,\n\n$m\\left(h_{1}+\\frac{V_{1}^{2}}{2}+g z_{1}\\right)+Q=m\\left(h_{2}+\\frac{V_{2}^{2}}{2}+g z_{2}\\right)+W$\n\nwhere Q=0 for adiabatic flow,\n\n$m\\left(h_{1}+\\frac{V_{1}^{2}}{2}+g z_{1}\\right)=m\\left(h_{2}+\\frac{V_{2}^{2}}{2}+g z_{2}\\right)+W$\n\nOn units balancing, we get\n\n$$\\begin{array}{l} \\qquad m\\left(n_{1}+\\frac{V_{1}^{2}}{2000}+\\frac{g z_{1}}{1000}\\right)=m\\left(h_{2}+\\frac{V_{2}^{2}}{2000}+\\frac{g z_{2}}{1000}\\right)+W \\\\ 20\\left(3200+\\frac{(160)^{2}}{2000}+\\frac{9.81 \\times 10}{1000}\\right)=20(2600+ \\\\ \\qquad \\left.\\frac{(100)^{2}}{2000}+\\frac{9.81 \\times 6}{1000}\\right)+W \\end{array}$$\n\n$$\\begin{aligned} 64257.96 &=52101.17+W \\\\ W &=12156.79 \\mathrm{kW}\\\\ &=12.1568 \\mathrm{MW} \\\\ &\\approx 12.157 \\mathrm{MW} \\end{aligned}$$",
-        "images": []
+        "markdown": "Applying the steady flow energy equation,\n\n$m\\left(h_{1}+\\frac{V_{1}^{2}}{2}+g z_{1}\\right)+Q=m\\left(h_{2}+\\frac{V_{2}^{2}}{2}+g z_{2}\\right)+W$\n\nwhere Q=0 for adiabatic flow,\n\n$m\\left(h_{1}+\\frac{V_{1}^{2}}{2}+g z_{1}\\right)=m\\left(h_{2}+\\frac{V_{2}^{2}}{2}+g z_{2}\\right)+W$\n\nOn units balancing, we get\n\n$$\\begin{array}{l} \\qquad m\\left(n_{1}+\\frac{V_{1}^{2}}{2000}+\\frac{g z_{1}}{1000}\\right)=m\\left(h_{2}+\\frac{V_{2}^{2}}{2000}+\\frac{g z_{2}}{1000}\\right)+W \\\\ 20\\left(3200+\\frac{(160)^{2}}{2000}+\\frac{9.81 \\times 10}{1000}\\right)=20(2600+ \\\\ \\qquad \\left.\\frac{(100)^{2}}{2000}+\\frac{9.81 \\times 6}{1000}\\right)+W \\end{array}$$\n\n$$\\begin{aligned} 64257.96 &=52101.17+W \\\\ W &=12156.79 \\mathrm{kW}\\\\ &=12.1568 \\mathrm{MW} \\\\ &\\approx 12.157 \\mathrm{MW} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q52": {
-      "question_uid": "pp:me:2009:q52",
+    "me:2009:q52": {
+      "question_uid": "me:2009:q52",
+      "legacy_uid": "pp:me:2009:q52",
       "exam_uid": "me:2009:set1:main:q52",
       "title": "GATE ME 2009 | Set 1 | Question: 52",
       "section": "main",
@@ -2399,12 +2346,12 @@
       },
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
-        "markdown": "Specific work supplied to the pump,\n\n$v_{P}=v\\left(p_{1}-p_{2}\\right) \\mathrm{kJ} / \\mathrm{kg}$\n\nWhere v is in $\\mathrm{m}^{3} / \\mathrm{kg}$\n\n$p_{1}$ and $p_{2}$ are in kPa\n\n$$\\begin{aligned} \\therefore \\quad w_{p} &=\\frac{p_{1}-p_{2}}{p}=\\frac{3000-70}{1000} \\\\ &=2.93 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$",
-        "images": []
+        "markdown": "Specific work supplied to the pump,\n\n$v_{P}=v\\left(p_{1}-p_{2}\\right) \\mathrm{kJ} / \\mathrm{kg}$\n\nWhere v is in $\\mathrm{m}^{3} / \\mathrm{kg}$\n\n$p_{1}$ and $p_{2}$ are in kPa\n\n$$\\begin{aligned} \\therefore \\quad w_{p} &=\\frac{p_{1}-p_{2}}{p}=\\frac{3000-70}{1000} \\\\ &=2.93 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q53": {
-      "question_uid": "pp:me:2009:q53",
+    "me:2009:q53": {
+      "question_uid": "me:2009:q53",
+      "legacy_uid": "pp:me:2009:q53",
       "exam_uid": "me:2009:set1:main:q53",
       "title": "GATE ME 2009 | Set 1 | Question: 53",
       "section": "main",
@@ -2444,14 +2391,12 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
-        "markdown": "$$\\begin{array}{l} T_{1}=727^{\\circ} \\mathrm{C}=1000 \\mathrm{K} \\\\ T_{2}=227^{\\circ} \\mathrm{C}=500 \\mathrm{K} \\\\ \\epsilon=0.7 \\end{array}$$\n\n<img src=\"/question-images/me/2009/me-2009-ef6650a591.webp\" />\n\nEnergy incident upon plate 1 (irradiation)\n\n= Radiosity of plate 2, since $F_{12}=F_{21}=1$\n\nNow energy leaving from surface 2 is\n\n$=E_{2}+(1-\\alpha) E_{\\mathrm{b} 1}$\n\n$E_{2}=$ Energy emitting due to own temperature\n\n$=\\epsilon \\sigma T_{2}^{4}=0.7 \\times 5.67 \\times 10^{-8} \\times 500^{4}$\n\n$=2480.62 \\mathrm{W} / \\mathrm{m}^{2}$\n\n$\\sigma(1-\\alpha) E_{\\mathrm{b}_{1}}$\n\n= Fraction of energy reflected from surface 2\n\n$=(1-0.7) \\times 5.67 \\times 10^{-8} \\times 1000^{4}=17010 \\mathrm{W} / \\mathrm{m}^{2}$\n\n$\\therefore$ Total energy incident upon plate 1\n\n$=19.49 \\mathrm{kW} / \\mathrm{m}^{2}$",
-        "images": [
-          "/question-images/me/2009/me-2009-ef6650a591.webp"
-        ]
+        "markdown": "$$\\begin{array}{l} T_{1}=727^{\\circ} \\mathrm{C}=1000 \\mathrm{K} \\\\ T_{2}=227^{\\circ} \\mathrm{C}=500 \\mathrm{K} \\\\ \\epsilon=0.7 \\end{array}$$\n\n<img src=\"/question-images/me/2009/me-2009-ef6650a591.webp\" />\n\nEnergy incident upon plate 1 (irradiation)\n\n= Radiosity of plate 2, since $F_{12}=F_{21}=1$\n\nNow energy leaving from surface 2 is\n\n$=E_{2}+(1-\\alpha) E_{\\mathrm{b} 1}$\n\n$E_{2}=$ Energy emitting due to own temperature\n\n$=\\epsilon \\sigma T_{2}^{4}=0.7 \\times 5.67 \\times 10^{-8} \\times 500^{4}$\n\n$=2480.62 \\mathrm{W} / \\mathrm{m}^{2}$\n\n$\\sigma(1-\\alpha) E_{\\mathrm{b}_{1}}$\n\n= Fraction of energy reflected from surface 2\n\n$=(1-0.7) \\times 5.67 \\times 10^{-8} \\times 1000^{4}=17010 \\mathrm{W} / \\mathrm{m}^{2}$\n\n$\\therefore$ Total energy incident upon plate 1\n\n$=19.49 \\mathrm{kW} / \\mathrm{m}^{2}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q54": {
-      "question_uid": "pp:me:2009:q54",
+    "me:2009:q54": {
+      "question_uid": "me:2009:q54",
+      "legacy_uid": "pp:me:2009:q54",
       "exam_uid": "me:2009:set1:main:q54",
       "title": "GATE ME 2009 | Set 1 | Question: 54",
       "section": "main",
@@ -2491,14 +2436,12 @@
       },
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-6cbaca5292.webp\" />\n\nThe net radiation heat exchange between plate 1\n\nand plate 2 [i.e. infinite parallel gray planes]\n\n$$\\begin{aligned} Q_{12} &=\\frac{A_{1} \\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\frac{1}{\\epsilon_{1}}+\\frac{1}{\\epsilon_{2}}-1} \\\\ \\frac{Q_{12}}{A_{1}} &=\\frac{\\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\frac{1}{\\epsilon_{1}}+\\frac{1}{\\epsilon_{2}}-1} \\\\ &=\\frac{5.67 \\times 10^{-8}\\left[(1000)^{4}-(500)^{4}\\right]}{\\frac{1}{0.8}+\\frac{1}{0.7}-1} \\\\ &=31678.34 \\mathrm{W} / \\mathrm{m}^{2}=31.68 \\mathrm{kW} / \\mathrm{m}^{2} \\end{aligned}$$",
-        "images": [
-          "/question-images/me/2009/me-2009-6cbaca5292.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-6cbaca5292.webp\" />\n\nThe net radiation heat exchange between plate 1\n\nand plate 2 [i.e. infinite parallel gray planes]\n\n$$\\begin{aligned} Q_{12} &=\\frac{A_{1} \\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\frac{1}{\\epsilon_{1}}+\\frac{1}{\\epsilon_{2}}-1} \\\\ \\frac{Q_{12}}{A_{1}} &=\\frac{\\sigma\\left(T_{1}^{4}-T_{2}^{4}\\right)}{\\frac{1}{\\epsilon_{1}}+\\frac{1}{\\epsilon_{2}}-1} \\\\ &=\\frac{5.67 \\times 10^{-8}\\left[(1000)^{4}-(500)^{4}\\right]}{\\frac{1}{0.8}+\\frac{1}{0.7}-1} \\\\ &=31678.34 \\mathrm{W} / \\mathrm{m}^{2}=31.68 \\mathrm{kW} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q55": {
-      "question_uid": "pp:me:2009:q55",
+    "me:2009:q55": {
+      "question_uid": "me:2009:q55",
+      "legacy_uid": "pp:me:2009:q55",
       "exam_uid": "me:2009:set1:main:q55",
       "title": "GATE ME 2009 | Set 1 | Question: 55",
       "section": "main",
@@ -2538,15 +2481,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-ba0d79905a.webp\" />\n\n<img src=\"/question-images/me/2009/me-2009-1850787bf8.webp\" />\n\nCritical path $=1 \\rightarrow 3 \\rightarrow 5 \\rightarrow 6 \\rightarrow 7$ (Marked by double lines)\n\nTherefore, critical path duration of the network is\n\n$=6+4+5+3=18\\text{days}$",
-        "images": [
-          "/question-images/me/2009/me-2009-ba0d79905a.webp",
-          "/question-images/me/2009/me-2009-1850787bf8.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-ba0d79905a.webp\" />\n\n<img src=\"/question-images/me/2009/me-2009-1850787bf8.webp\" />\n\nCritical path $=1 \\rightarrow 3 \\rightarrow 5 \\rightarrow 6 \\rightarrow 7$ (Marked by double lines)\n\nTherefore, critical path duration of the network is\n\n$=6+4+5+3=18\\text{days}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:me:2009:q56": {
-      "question_uid": "pp:me:2009:q56",
+    "me:2009:q56": {
+      "question_uid": "me:2009:q56",
+      "legacy_uid": "pp:me:2009:q56",
       "exam_uid": "me:2009:set1:main:q56",
       "title": "GATE ME 2009 | Set 1 | Question: 56",
       "section": "main",
@@ -2586,12 +2526,12 @@
       },
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
-        "markdown": "$\\Sigma \\sigma^{2}$ along the critical path\n\n$$\\begin{aligned} \\sigma^{2} &=\\underset{1-3}{\\sigma^{2}}+\\underset{3-5}{\\sigma^{2}}+\\underset{5-6}{\\sigma^{2}}+\\underset{6-7}{\\sigma^{2}} \\\\ &=\\frac{4}{36}+\\frac{16}{36}+\\frac{4}{36}+\\frac{4}{36} \\\\ &=\\frac{28}{36}=0.77 \\end{aligned}$$\n\nStandard deviation of critical path is\n\n$\\sigma=\\sqrt{\\frac{28}{36}}=0.88$",
-        "images": []
+        "markdown": "$\\Sigma \\sigma^{2}$ along the critical path\n\n$$\\begin{aligned} \\sigma^{2} &=\\underset{1-3}{\\sigma^{2}}+\\underset{3-5}{\\sigma^{2}}+\\underset{5-6}{\\sigma^{2}}+\\underset{6-7}{\\sigma^{2}} \\\\ &=\\frac{4}{36}+\\frac{16}{36}+\\frac{4}{36}+\\frac{4}{36} \\\\ &=\\frac{28}{36}=0.77 \\end{aligned}$$\n\nStandard deviation of critical path is\n\n$\\sigma=\\sqrt{\\frac{28}{36}}=0.88$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q57": {
-      "question_uid": "pp:me:2009:q57",
+    "me:2009:q57": {
+      "question_uid": "me:2009:q57",
+      "legacy_uid": "pp:me:2009:q57",
       "exam_uid": "me:2009:set1:main:q57",
       "title": "GATE ME 2009 | Set 1 | Question: 57",
       "section": "main",
@@ -2631,14 +2571,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "<img src=\"/question-images/me/2009/me-2009-5651fda07b.webp\" />\n\nTaylor's tool life equations,\n\n$V T^{m}=$constant =K\n\n$$\\begin{aligned} (60)(81)^{n}&=k \\qquad \\cdots(i)\\\\ (90)(36)^{n}&=k \\qquad \\cdots(ii)\\\\ \\end{aligned}$$\n\nDivide Eq. (i) by Eq. (ii)\n\n$$\\begin{aligned} \\frac{(60)(81)^{n}}{(90)(36)^{n}}&=1 \\\\ \\Rightarrow \\left(\\frac{81}{36}\\right)^{n}&=\\left(\\frac{90}{60}\\right)\\\\ \\Rightarrow \\quad(2.25)^{n}&=1.5 \\\\ \\Rightarrow \\quad n \\ln (2.25)&=\\ln 1.5 \\\\ \\Rightarrow n&=0.5 \\end{aligned}$$\n\nKeep the value of n in Eq. (i)\n\n$(60)(81)^{0.5}=k$\n\n$\\Rightarrow \\; k=540$",
-        "images": [
-          "/question-images/me/2009/me-2009-5651fda07b.webp"
-        ]
+        "markdown": "<img src=\"/question-images/me/2009/me-2009-5651fda07b.webp\" />\n\nTaylor's tool life equations,\n\n$V T^{m}=$constant =K\n\n$$\\begin{aligned} (60)(81)^{n}&=k \\qquad \\cdots(i)\\\\ (90)(36)^{n}&=k \\qquad \\cdots(ii)\\\\ \\end{aligned}$$\n\nDivide Eq. (i) by Eq. (ii)\n\n$$\\begin{aligned} \\frac{(60)(81)^{n}}{(90)(36)^{n}}&=1 \\\\ \\Rightarrow \\left(\\frac{81}{36}\\right)^{n}&=\\left(\\frac{90}{60}\\right)\\\\ \\Rightarrow \\quad(2.25)^{n}&=1.5 \\\\ \\Rightarrow \\quad n \\ln (2.25)&=\\ln 1.5 \\\\ \\Rightarrow n&=0.5 \\end{aligned}$$\n\nKeep the value of n in Eq. (i)\n\n$(60)(81)^{0.5}=k$\n\n$\\Rightarrow \\; k=540$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q58": {
-      "question_uid": "pp:me:2009:q58",
+    "me:2009:q58": {
+      "question_uid": "me:2009:q58",
+      "legacy_uid": "pp:me:2009:q58",
       "exam_uid": "me:2009:set1:main:q58",
       "title": "GATE ME 2009 | Set 1 | Question: 58",
       "section": "main",
@@ -2678,12 +2616,12 @@
       },
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
-        "markdown": "Taylor's tool life equation\n\n$V T^{0.5}=K=540$\n\nif cutting speed is halved.\n\n$$\\begin{aligned} V_{1}=V & \\qquad T_{1}=T \\\\ V_{2}=V / 2 &\\qquad T_{2}=? \\\\ V_{1} T_{1}^{0.5} & =V_{2} T_{2}^{0.5} \\\\ T_{2} & =T_{1}\\left(\\frac{V_{1}}{V_{2}}\\right)^{2}=T_{1}\\left(\\frac{V}{V / 2}\\right)^{2} \\\\ T_{2} & =4 T_{1}=4 T \\end{aligned}$$\n\nPercentage increase in tool life\n\n$=\\frac{T_{2}-T_{1}}{T_{1}} \\times 100=\\frac{4 T-T}{T} \\times 100=300 \\%$",
-        "images": []
+        "markdown": "Taylor's tool life equation\n\n$V T^{0.5}=K=540$\n\nif cutting speed is halved.\n\n$$\\begin{aligned} V_{1}=V & \\qquad T_{1}=T \\\\ V_{2}=V / 2 &\\qquad T_{2}=? \\\\ V_{1} T_{1}^{0.5} & =V_{2} T_{2}^{0.5} \\\\ T_{2} & =T_{1}\\left(\\frac{V_{1}}{V_{2}}\\right)^{2}=T_{1}\\left(\\frac{V}{V / 2}\\right)^{2} \\\\ T_{2} & =4 T_{1}=4 T \\end{aligned}$$\n\nPercentage increase in tool life\n\n$=\\frac{T_{2}-T_{1}}{T_{1}} \\times 100=\\frac{4 T-T}{T} \\times 100=300 \\%$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:me:2009:q59": {
-      "question_uid": "pp:me:2009:q59",
+    "me:2009:q59": {
+      "question_uid": "me:2009:q59",
+      "legacy_uid": "pp:me:2009:q59",
       "exam_uid": "me:2009:set1:main:q59",
       "title": "GATE ME 2009 | Set 1 | Question: 59",
       "section": "main",
@@ -2723,12 +2661,12 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Gears",
-        "markdown": "Module: $m=4 \\mathrm{mm}$\n\nNumber of teeth: $\\quad T=21$\n\nSpeed: $N=960 \\mathrm{rpm}$\n\nPressure angle: $\\quad \\phi=20^{\\circ}$\n\nFace width: $b=25 \\mathrm{mm}$\n\nFull depth involute spur pinion\n\nTransmission of power\n\n$P=15 \\mathrm{kW} \\text { at } 960 \\mathrm{rpm}$\n\nPower = Torque x Angular speed\n\n$P=T_{w}=F_{t} \\times r \\times \\omega$\n\n= Tangential force $\\times$ Radius $\\times \\omega$\n\n$$\\begin{aligned} \\text { Radius: } r&=\\frac{D}{2}=\\frac{m T}{2}=\\frac{4 \\times 21}{2}=42 \\mathrm{mm} \\\\ P&=F_{t} \\times r \\times \\omega \\\\ \\Rightarrow 15 \\times 1000&=F_{t} \\times 42 \\times 10^{-3} \\times \\frac{2 \\pi \\times 960}{60}\\\\ \\Rightarrow \\quad F_{t}&=3552.56 \\mathrm{N} \\end{aligned}$$",
-        "images": []
+        "markdown": "Module: $m=4 \\mathrm{mm}$\n\nNumber of teeth: $\\quad T=21$\n\nSpeed: $N=960 \\mathrm{rpm}$\n\nPressure angle: $\\quad \\phi=20^{\\circ}$\n\nFace width: $b=25 \\mathrm{mm}$\n\nFull depth involute spur pinion\n\nTransmission of power\n\n$P=15 \\mathrm{kW} \\text { at } 960 \\mathrm{rpm}$\n\nPower = Torque x Angular speed\n\n$P=T_{w}=F_{t} \\times r \\times \\omega$\n\n= Tangential force $\\times$ Radius $\\times \\omega$\n\n$$\\begin{aligned} \\text { Radius: } r&=\\frac{D}{2}=\\frac{m T}{2}=\\frac{4 \\times 21}{2}=42 \\mathrm{mm} \\\\ P&=F_{t} \\times r \\times \\omega \\\\ \\Rightarrow 15 \\times 1000&=F_{t} \\times 42 \\times 10^{-3} \\times \\frac{2 \\pi \\times 960}{60}\\\\ \\Rightarrow \\quad F_{t}&=3552.56 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:me:2009:q60": {
-      "question_uid": "pp:me:2009:q60",
+    "me:2009:q60": {
+      "question_uid": "me:2009:q60",
+      "legacy_uid": "pp:me:2009:q60",
       "exam_uid": "me:2009:set1:main:q60",
       "title": "GATE ME 2009 | Set 1 | Question: 60",
       "section": "main",
@@ -2768,8 +2706,7 @@
       },
       "detailed_solution": {
         "concept": "Machine Design - Gears",
-        "markdown": "Tooth geometry factor, Y=0.32\n\nCombined effect of dynamic load and allied factor\n\nintensifying the stress is $f_{s}=1.5$\n\n$F_{t}=\\frac{\\sigma_{b} b Y_{m}}{f_{s}}$\n\n$\\Rightarrow 3552 N=\\frac{\\sigma_{b}(25 \\mathrm{mm})(0.32)(4 \\mathrm{mm})}{1.5}$\n\n$\\Rightarrow \\quad \\sigma_{b}=166.5 \\mathrm{MPa}$",
-        "images": []
+        "markdown": "Tooth geometry factor, Y=0.32\n\nCombined effect of dynamic load and allied factor\n\nintensifying the stress is $f_{s}=1.5$\n\n$F_{t}=\\frac{\\sigma_{b} b Y_{m}}{f_{s}}$\n\n$\\Rightarrow 3552 N=\\frac{\\sigma_{b}(25 \\mathrm{mm})(0.32)(4 \\mathrm{mm})}{1.5}$\n\n$\\Rightarrow \\quad \\sigma_{b}=166.5 \\mathrm{MPa}$\n\nTherefore, the correct answer is **B**."
       }
     }
   }

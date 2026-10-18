@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.573Z",
+  "generatedAt": "2026-10-18T16:30:38.275Z",
   "shardKey": "ce-2011-s1",
   "yearSetKey": "ce-2011-s1",
   "yearSetIdentity": "ce:2011:set-1",
@@ -9,8 +9,9 @@
   "label": "2011 Set 1",
   "questionCount": 65,
   "recordsByQuestionUid": {
-    "pp:ce:2011:q1": {
-      "question_uid": "pp:ce:2011:q1",
+    "ce:2011:q1": {
+      "question_uid": "ce:2011:q1",
+      "legacy_uid": "pp:ce:2011:q1",
       "exam_uid": "ce:2011:set1:main:q1",
       "title": "GATE CE 2011 | Set 1 | Question: 1",
       "section": "main",
@@ -50,12 +51,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "Since\n\n$$\\begin{aligned} \\left ( A+{A}' \\right )&=A^{t}+\\left ( A^{t} \\right )^{t} \\\\      &=A^{t}+A\\\\ \\text{i.e. }     S^{t}&=S \\\\ \\therefore\\;\\; & \\text{ S is symmetric}\\\\ \\text{Since }\\left ( A-A^{t} \\right )^{t}&=A^{t}-\\left ( A^{t} \\right )^{t} \\\\      &=A^{t}-A \\\\ &=-\\left ( A-A^{t} \\right ) \\\\ \\text{i.e. }     D^{t}&=-D \\end{aligned}$$\n\nSo D is Skew-Symmetric.",
-        "images": []
+        "markdown": "Since\n\n$$\\begin{aligned} \\left ( A+{A}' \\right )&=A^{t}+\\left ( A^{t} \\right )^{t} \\\\      &=A^{t}+A\\\\ \\text{i.e. }     S^{t}&=S \\\\ \\therefore\\;\\; & \\text{ S is symmetric}\\\\ \\text{Since }\\left ( A-A^{t} \\right )^{t}&=A^{t}-\\left ( A^{t} \\right )^{t} \\\\      &=A^{t}-A \\\\ &=-\\left ( A-A^{t} \\right ) \\\\ \\text{i.e. }     D^{t}&=-D \\end{aligned}$$\n\nSo D is Skew-Symmetric.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q2": {
-      "question_uid": "pp:ce:2011:q2",
+    "ce:2011:q2": {
+      "question_uid": "ce:2011:q2",
+      "legacy_uid": "pp:ce:2011:q2",
       "exam_uid": "ce:2011:set1:main:q2",
       "title": "GATE CE 2011 | Set 1 | Question: 2",
       "section": "main",
@@ -95,12 +96,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$$\\begin{aligned}   x_{i+1}&=x_{i}-\\frac{f\\left ( x_{i} \\right )}{{f}'\\left ( x_{i} \\right )} \\\\      &=x_{i}-\\left ( \\frac{x_{i}^{2}-N}{2x_{i}} \\right ) \\\\      &=\\frac{x_{i}^{2}+N}{2x_{i}} \\\\ &=\\frac{1}{2}\\left [ x_{i}+\\frac{N}{x_{i}} \\right ] \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned}   x_{i+1}&=x_{i}-\\frac{f\\left ( x_{i} \\right )}{{f}'\\left ( x_{i} \\right )} \\\\      &=x_{i}-\\left ( \\frac{x_{i}^{2}-N}{2x_{i}} \\right ) \\\\      &=\\frac{x_{i}^{2}+N}{2x_{i}} \\\\ &=\\frac{1}{2}\\left [ x_{i}+\\frac{N}{x_{i}} \\right ] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q3": {
-      "question_uid": "pp:ce:2011:q3",
+    "ce:2011:q3": {
+      "question_uid": "ce:2011:q3",
+      "legacy_uid": "pp:ce:2011:q3",
       "exam_uid": "ce:2011:set1:main:q3",
       "title": "GATE CE 2011 | Set 1 | Question: 3",
       "section": "main",
@@ -140,12 +141,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "P(one ball is Red & another is blue)\n\n=p(first is Red and second is Blue)\n\n$=\\frac{4}{7}\\times \\frac{3}{7} =\\frac{12}{49}$",
-        "images": []
+        "markdown": "P(one ball is Red & another is blue)\n\n=p(first is Red and second is Blue)\n\n$=\\frac{4}{7}\\times \\frac{3}{7} =\\frac{12}{49}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q4": {
-      "question_uid": "pp:ce:2011:q4",
+    "ce:2011:q4": {
+      "question_uid": "ce:2011:q4",
+      "legacy_uid": "pp:ce:2011:q4",
       "exam_uid": "ce:2011:set1:main:q4",
       "title": "GATE CE 2011 | Set 1 | Question: 4",
       "section": "main",
@@ -185,14 +186,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
-        "markdown": "Effective throat thickness is the shortest distance from the root of fillet weld to the face of the line joining the toes. The effective throat thickness should not be less than 3 mm.\n\nEffective throat thickness =Ks\n\nwhere s is the size of weld in mm and K is a constant. The value of K depends upon the angle between the fusion faces.\n\n<img src=\"/question-images/ce/2011/ce-2011-2b8645e3de.webp\" />",
-        "images": [
-          "/question-images/ce/2011/ce-2011-2b8645e3de.webp"
-        ]
+        "markdown": "Effective throat thickness is the shortest distance from the root of fillet weld to the face of the line joining the toes. The effective throat thickness should not be less than 3 mm.\n\nEffective throat thickness =Ks\n\nwhere s is the size of weld in mm and K is a constant. The value of K depends upon the angle between the fusion faces.\n\n<img src=\"/question-images/ce/2011/ce-2011-2b8645e3de.webp\" />\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q5": {
-      "question_uid": "pp:ce:2011:q5",
+    "ce:2011:q5": {
+      "question_uid": "ce:2011:q5",
+      "legacy_uid": "pp:ce:2011:q5",
       "exam_uid": "ce:2011:set1:main:q5",
       "title": "GATE CE 2011 | Set 1 | Question: 5",
       "section": "main",
@@ -232,14 +231,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
-        "markdown": "Working axial load\n\n$$\\begin{aligned}\n\n&=\\frac{\\text { Factored axial load }}{1.5} \\\\\n\n&=\\frac{2000}{1.5}=1333.33 \\mathrm{kN}\n\n\\end{aligned}$$\n\nThe allowable bearing pressure on concrete may be given as,\n\n$$\\begin{aligned}\n\n\\sigma_{\\text {all }} &=\\frac{\\text { Direct load }}{\\text { Area of base plate }} \\\\\n\n&=\\frac{1333.33 \\times 10^{3}}{650 \\times 420}=4.88 \\mathrm{N} / \\mathrm{mm}^{2}\n\n\\end{aligned}$$\n\nThe permissible stress in direct compression in\n\nvarious grades of concrete as per IS 456: 2000\n\nare tabulated below:\n\n<img src=\"/question-images/ce/2011/ce-2011-57f7f95afc.webp\" />\n\nThe permissible stress in concrete should be more\n\nthan the allowable bearing pressure. Thus the\n\nminimum grade of concrete which should be used\n\nis M20",
-        "images": [
-          "/question-images/ce/2011/ce-2011-57f7f95afc.webp"
-        ]
+        "markdown": "Working axial load\n\n$$\\begin{aligned}\n\n&=\\frac{\\text { Factored axial load }}{1.5} \\\\\n\n&=\\frac{2000}{1.5}=1333.33 \\mathrm{kN}\n\n\\end{aligned}$$\n\nThe allowable bearing pressure on concrete may be given as,\n\n$$\\begin{aligned}\n\n\\sigma_{\\text {all }} &=\\frac{\\text { Direct load }}{\\text { Area of base plate }} \\\\\n\n&=\\frac{1333.33 \\times 10^{3}}{650 \\times 420}=4.88 \\mathrm{N} / \\mathrm{mm}^{2}\n\n\\end{aligned}$$\n\nThe permissible stress in direct compression in\n\nvarious grades of concrete as per IS 456: 2000\n\nare tabulated below:\n\n<img src=\"/question-images/ce/2011/ce-2011-57f7f95afc.webp\" />\n\nThe permissible stress in concrete should be more\n\nthan the allowable bearing pressure. Thus the\n\nminimum grade of concrete which should be used\n\nis M20\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q6": {
-      "question_uid": "pp:ce:2011:q6",
+    "ce:2011:q6": {
+      "question_uid": "ce:2011:q6",
+      "legacy_uid": "pp:ce:2011:q6",
       "exam_uid": "ce:2011:set1:main:q6",
       "title": "GATE CE 2011 | Set 1 | Question: 6",
       "section": "main",
@@ -279,12 +276,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
-        "markdown": "Corrosion in steel occupies a volume several times\n\ngreater than volume of reinforcing steel hence\n\nexerts radial pressure on adjoining concrete layer.\n\nAs a consequence, cracking results along\n\nreinforcing bars and concrete starts spalling.",
-        "images": []
+        "markdown": "Corrosion in steel occupies a volume several times\n\ngreater than volume of reinforcing steel hence\n\nexerts radial pressure on adjoining concrete layer.\n\nAs a consequence, cracking results along\n\nreinforcing bars and concrete starts spalling.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q7": {
-      "question_uid": "pp:ce:2011:q7",
+    "ce:2011:q7": {
+      "question_uid": "ce:2011:q7",
+      "legacy_uid": "pp:ce:2011:q7",
       "exam_uid": "ce:2011:set1:main:q7",
       "title": "GATE CE 2011 | Set 1 | Question: 7",
       "section": "main",
@@ -324,12 +321,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
-        "markdown": "The term fineness modulus is used to indicate an\n\nindex number which roughly proportional to\n\naverage size of particle in entire quantity of\n\naggregate\n\n$F_{M Q}=\\sqrt{F_{M P} \\times F_{M R}}$ (Geometric mean)",
-        "images": []
+        "markdown": "The term fineness modulus is used to indicate an\n\nindex number which roughly proportional to\n\naverage size of particle in entire quantity of\n\naggregate\n\n$F_{M Q}=\\sqrt{F_{M P} \\times F_{M R}}$ (Geometric mean)\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q8": {
-      "question_uid": "pp:ce:2011:q8",
+    "ce:2011:q8": {
+      "question_uid": "ce:2011:q8",
+      "legacy_uid": "pp:ce:2011:q8",
       "exam_uid": "ce:2011:set1:main:q8",
       "title": "GATE CE 2011 | Set 1 | Question: 8",
       "section": "main",
@@ -372,8 +369,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q9": {
-      "question_uid": "pp:ce:2011:q9",
+    "ce:2011:q9": {
+      "question_uid": "ce:2011:q9",
+      "legacy_uid": "pp:ce:2011:q9",
       "exam_uid": "ce:2011:set1:main:q9",
       "title": "GATE CE 2011 | Set 1 | Question: 9",
       "section": "main",
@@ -413,16 +411,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
-        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-1c01310f60.webp\" />\n\nPoint P:\n\nPoint P lies on NA, hence bending stress is zero\n\nat point P.\n\nPoint P also lies at mid span, so shear force, V=0\n\n$\\Rightarrow$ Shear stress, $\\tau=0$\n\n$\\therefore$ State of stress of point P will be\n\n<img src=\"/question-images/ce/2011/ce-2011-658bbc78b4.webp\" />\n\nPoint Q :\n\nAt point Q flexural stress is maximum and nature\n\nof which is tensile due to downward loading.\n\nPoint Q lies at the extreme of beam, therefore,\n\nshear stress at point Q is zero.\n\n$\\therefore$ State of stress of point Q will be\n\n<img src=\"/question-images/ce/2011/ce-2011-0693832676.webp\" />",
-        "images": [
-          "/question-images/ce/2011/ce-2011-1c01310f60.webp",
-          "/question-images/ce/2011/ce-2011-658bbc78b4.webp",
-          "/question-images/ce/2011/ce-2011-0693832676.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-1c01310f60.webp\" />\n\nPoint P:\n\nPoint P lies on NA, hence bending stress is zero\n\nat point P.\n\nPoint P also lies at mid span, so shear force, V=0\n\n$\\Rightarrow$ Shear stress, $\\tau=0$\n\n$\\therefore$ State of stress of point P will be\n\n<img src=\"/question-images/ce/2011/ce-2011-658bbc78b4.webp\" />\n\nPoint Q :\n\nAt point Q flexural stress is maximum and nature\n\nof which is tensile due to downward loading.\n\nPoint Q lies at the extreme of beam, therefore,\n\nshear stress at point Q is zero.\n\n$\\therefore$ State of stress of point Q will be\n\n<img src=\"/question-images/ce/2011/ce-2011-0693832676.webp\" />\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q10": {
-      "question_uid": "pp:ce:2011:q10",
+    "ce:2011:q10": {
+      "question_uid": "ce:2011:q10",
+      "legacy_uid": "pp:ce:2011:q10",
       "exam_uid": "ce:2011:set1:main:q10",
       "title": "GATE CE 2011 | Set 1 | Question: 10",
       "section": "main",
@@ -462,12 +456,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
-        "markdown": "Critical hydraulic gradient is given by\n\n$i_{c r}=\\frac{G-1}{1+e}=\\frac{2.67-1}{1+0.70}=0.98$",
-        "images": []
+        "markdown": "Critical hydraulic gradient is given by\n\n$i_{c r}=\\frac{G-1}{1+e}=\\frac{2.67-1}{1+0.70}=0.98$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q11": {
-      "question_uid": "pp:ce:2011:q11",
+    "ce:2011:q11": {
+      "question_uid": "ce:2011:q11",
+      "legacy_uid": "pp:ce:2011:q11",
       "exam_uid": "ce:2011:set1:main:q11",
       "title": "GATE CE 2011 | Set 1 | Question: 11",
       "section": "main",
@@ -507,12 +501,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
-        "markdown": "General shear tailure is generally associated with dense sand. So if intergranular packing of sand decreases then sand will behave as loose sand.\n\nHence likelihood of general shear failure with decrease.",
-        "images": []
+        "markdown": "General shear tailure is generally associated with dense sand. So if intergranular packing of sand decreases then sand will behave as loose sand.\n\nHence likelihood of general shear failure with decrease.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q12": {
-      "question_uid": "pp:ce:2011:q12",
+    "ce:2011:q12": {
+      "question_uid": "ce:2011:q12",
+      "legacy_uid": "pp:ce:2011:q12",
       "exam_uid": "ce:2011:set1:main:q12",
       "title": "GATE CE 2011 | Set 1 | Question: 12",
       "section": "main",
@@ -552,14 +546,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-00e2c304ac.webp\" />\n\nAngle between major principal plane and failure\n\nplane is $\\theta_{1}$ , from Mohr's circle\n\n$$\\begin{array}{r} 2\\theta_{1}=90^{\\circ}+\\phi \\\\ \\theta_{1}=45^{\\circ}+\\frac{\\phi}{2} \\end{array}$$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-00e2c304ac.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-00e2c304ac.webp\" />\n\nAngle between major principal plane and failure\n\nplane is $\\theta_{1}$ , from Mohr's circle\n\n$$\\begin{array}{r} 2\\theta_{1}=90^{\\circ}+\\phi \\\\ \\theta_{1}=45^{\\circ}+\\frac{\\phi}{2} \\end{array}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q13": {
-      "question_uid": "pp:ce:2011:q13",
+    "ce:2011:q13": {
+      "question_uid": "ce:2011:q13",
+      "legacy_uid": "pp:ce:2011:q13",
       "exam_uid": "ce:2011:set1:main:q13",
       "title": "GATE CE 2011 | Set 1 | Question: 13",
       "section": "main",
@@ -602,8 +594,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q14": {
-      "question_uid": "pp:ce:2011:q14",
+    "ce:2011:q14": {
+      "question_uid": "ce:2011:q14",
+      "legacy_uid": "pp:ce:2011:q14",
       "exam_uid": "ce:2011:set1:main:q14",
       "title": "GATE CE 2011 | Set 1 | Question: 14",
       "section": "main",
@@ -643,12 +636,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "According to Stoke s law\n\n$$\\begin{aligned} v&= D \\\\ \\Rightarrow \\frac{v_{1}}{v_{2}}&=\\left(\\frac{D_{1}}{D_{2}}\\right)^{2} \\Rightarrow \\frac{0.5}{v_{2}}=\\left(\\frac{0.075}{0.0075}\\right)^{2} \\\\ \\Rightarrow \\quad v_{2}&=\\frac{0.5}{100} \\quad \\Rightarrow \\quad v_{2}=0.005 \\mathrm{mm} / \\mathrm{s} \\end{aligned}$$",
-        "images": []
+        "markdown": "According to Stoke s law\n\n$$\\begin{aligned} v&= D \\\\ \\Rightarrow \\frac{v_{1}}{v_{2}}&=\\left(\\frac{D_{1}}{D_{2}}\\right)^{2} \\Rightarrow \\frac{0.5}{v_{2}}=\\left(\\frac{0.075}{0.0075}\\right)^{2} \\\\ \\Rightarrow \\quad v_{2}&=\\frac{0.5}{100} \\quad \\Rightarrow \\quad v_{2}=0.005 \\mathrm{mm} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q15": {
-      "question_uid": "pp:ce:2011:q15",
+    "ce:2011:q15": {
+      "question_uid": "ce:2011:q15",
+      "legacy_uid": "pp:ce:2011:q15",
       "exam_uid": "ce:2011:set1:main:q15",
       "title": "GATE CE 2011 | Set 1 | Question: 15",
       "section": "main",
@@ -691,8 +684,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q16": {
-      "question_uid": "pp:ce:2011:q16",
+    "ce:2011:q16": {
+      "question_uid": "ce:2011:q16",
+      "legacy_uid": "pp:ce:2011:q16",
       "exam_uid": "ce:2011:set1:main:q16",
       "title": "GATE CE 2011 | Set 1 | Question: 16",
       "section": "main",
@@ -732,12 +726,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "It may be noted that the critical flow condition is\n\ngoverned solely by the channel geometry and discharge. Other channel properties such as bed slope and roughness do not influence the critical flow condition for any given discharge.",
-        "images": []
+        "markdown": "It may be noted that the critical flow condition is\n\ngoverned solely by the channel geometry and discharge. Other channel properties such as bed slope and roughness do not influence the critical flow condition for any given discharge.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q17": {
-      "question_uid": "pp:ce:2011:q17",
+    "ce:2011:q17": {
+      "question_uid": "ce:2011:q17",
+      "legacy_uid": "pp:ce:2011:q17",
       "exam_uid": "ce:2011:set1:main:q17",
       "title": "GATE CE 2011 | Set 1 | Question: 17",
       "section": "main",
@@ -777,12 +771,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Buoyancy and Floatation",
-        "markdown": "A completely submerged body will be in stable equilibrium when CG lies below the centre of buoyancy. It will be in unstable equilibrium when CG lies above the centre of buoyancy And when the CG coincides with the centre of buoyancy. The body will be in neutral equilibrium",
-        "images": []
+        "markdown": "A completely submerged body will be in stable equilibrium when CG lies below the centre of buoyancy. It will be in unstable equilibrium when CG lies above the centre of buoyancy And when the CG coincides with the centre of buoyancy. The body will be in neutral equilibrium\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q18": {
-      "question_uid": "pp:ce:2011:q18",
+    "ce:2011:q18": {
+      "question_uid": "ce:2011:q18",
+      "legacy_uid": "pp:ce:2011:q18",
       "exam_uid": "ce:2011:set1:main:q18",
       "title": "GATE CE 2011 | Set 1 | Question: 18",
       "section": "main",
@@ -822,12 +816,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "The height of the hump attains its maximum value at the chocked condition. Increasing the height of hump after chocked condition results in\n\nnydraulic jump formation in case of super critical fiow. Thus height of water surface will drastical changes upstream and downstream of hump.",
-        "images": []
+        "markdown": "The height of the hump attains its maximum value at the chocked condition. Increasing the height of hump after chocked condition results in\n\nnydraulic jump formation in case of super critical fiow. Thus height of water surface will drastical changes upstream and downstream of hump.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q19": {
-      "question_uid": "pp:ce:2011:q19",
+    "ce:2011:q19": {
+      "question_uid": "ce:2011:q19",
+      "legacy_uid": "pp:ce:2011:q19",
       "exam_uid": "ce:2011:set1:main:q19",
       "title": "GATE CE 2011 | Set 1 | Question: 19",
       "section": "main",
@@ -867,12 +861,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "Rapid mixing is the process by which coagulant is throughly mixed with water after which the process of flocculation will occur.",
-        "images": []
+        "markdown": "Rapid mixing is the process by which coagulant is throughly mixed with water after which the process of flocculation will occur.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q20": {
-      "question_uid": "pp:ce:2011:q20",
+    "ce:2011:q20": {
+      "question_uid": "ce:2011:q20",
+      "legacy_uid": "pp:ce:2011:q20",
       "exam_uid": "ce:2011:set1:main:q20",
       "title": "GATE CE 2011 | Set 1 | Question: 20",
       "section": "main",
@@ -912,12 +906,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
-        "markdown": "$$\\begin{aligned} \\% R &=\\left(\\frac{10^{6}-10^{2}}{10^{6}}\\right) \\times 100 \\\\ &=0.9999 \\times 100=99.99 \\% \\\\ \\log R &=\\log 10^{6}-\\log 10^{2}=6-2=4 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\% R &=\\left(\\frac{10^{6}-10^{2}}{10^{6}}\\right) \\times 100 \\\\ &=0.9999 \\times 100=99.99 \\% \\\\ \\log R &=\\log 10^{6}-\\log 10^{2}=6-2=4 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q21": {
-      "question_uid": "pp:ce:2011:q21",
+    "ce:2011:q21": {
+      "question_uid": "ce:2011:q21",
+      "legacy_uid": "pp:ce:2011:q21",
       "exam_uid": "ce:2011:set1:main:q21",
       "title": "GATE CE 2011 | Set 1 | Question: 21",
       "section": "main",
@@ -957,12 +951,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
-        "markdown": "Soot is a general term that refers to impure carbon particles resulting from the incomplete combustion of hydrocarbons. Soot, as an air borne contaminant in the environment has many different sources but they are all the result of some form of pyrolysis.",
-        "images": []
+        "markdown": "Soot is a general term that refers to impure carbon particles resulting from the incomplete combustion of hydrocarbons. Soot, as an air borne contaminant in the environment has many different sources but they are all the result of some form of pyrolysis.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q22": {
-      "question_uid": "pp:ce:2011:q22",
+    "ce:2011:q22": {
+      "question_uid": "ce:2011:q22",
+      "legacy_uid": "pp:ce:2011:q22",
       "exam_uid": "ce:2011:set1:main:q22",
       "title": "GATE CE 2011 | Set 1 | Question: 22",
       "section": "main",
@@ -1002,12 +996,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "Probability of arriving 'n' number of vehicles in time t\n\n$P(n)=\\frac{(\\lambda t)^{n} e^{-\\lambda t}}{n !}$\n\nIf time headway is greater than or equal to time t,\n\nthen number of vehicles arrive is zero,\n\n$\\Rightarrow \\quad P(0) \\frac{\\left(\\lambda t_{1}\\right)^{o} e^{-\\lambda t_{1}}}{o !}=e^{-\\lambda t_{1}}$",
-        "images": []
+        "markdown": "Probability of arriving 'n' number of vehicles in time t\n\n$P(n)=\\frac{(\\lambda t)^{n} e^{-\\lambda t}}{n !}$\n\nIf time headway is greater than or equal to time t,\n\nthen number of vehicles arrive is zero,\n\n$\\Rightarrow \\quad P(0) \\frac{\\left(\\lambda t_{1}\\right)^{o} e^{-\\lambda t_{1}}}{o !}=e^{-\\lambda t_{1}}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q23": {
-      "question_uid": "pp:ce:2011:q23",
+    "ce:2011:q23": {
+      "question_uid": "ce:2011:q23",
+      "legacy_uid": "pp:ce:2011:q23",
       "exam_uid": "ce:2011:set1:main:q23",
       "title": "GATE CE 2011 | Set 1 | Question: 23",
       "section": "main",
@@ -1050,8 +1044,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q24": {
-      "question_uid": "pp:ce:2011:q24",
+    "ce:2011:q24": {
+      "question_uid": "ce:2011:q24",
+      "legacy_uid": "pp:ce:2011:q24",
       "exam_uid": "ce:2011:set1:main:q24",
       "title": "GATE CE 2011 | Set 1 | Question: 24",
       "section": "main",
@@ -1094,8 +1089,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q25": {
-      "question_uid": "pp:ce:2011:q25",
+    "ce:2011:q25": {
+      "question_uid": "ce:2011:q25",
+      "legacy_uid": "pp:ce:2011:q25",
       "exam_uid": "ce:2011:set1:main:q25",
       "title": "GATE CE 2011 | Set 1 | Question: 25",
       "section": "main",
@@ -1138,8 +1134,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q26": {
-      "question_uid": "pp:ce:2011:q26",
+    "ce:2011:q26": {
+      "question_uid": "ce:2011:q26",
+      "legacy_uid": "pp:ce:2011:q26",
       "exam_uid": "ce:2011:set1:main:q26",
       "title": "GATE CE 2011 | Set 1 | Question: 26",
       "section": "main",
@@ -1179,12 +1176,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$f=u+iv \\text{ and }   u=3x^{2}-3y^{2}$\n\nFor $f$ to be analysis, we have Cauchy-Riemann conditions,\n\n$$\\begin{aligned} \\frac{\\partial u}{\\partial x}&=\\frac{\\partial V}{\\partial y}  \\;\\;\\;...(i) \\\\   \\frac{\\partial u}{\\partial y}&=-\\frac{\\partial v}{\\partial x} \\;\\;\\;...(ii)\\\\ \\text{From } & \\text{ (i) we have,}\\\\   6x&=\\frac{\\partial v}{\\partial y} \\\\ \\Rightarrow \\;  \\int \\partial v&=\\int 6x\\partial y \\\\   v&=6\\frac{x^{2}}{2}+f\\left ( x \\right )\\\\ \\text{i.e., } v&=3x^{2}+f\\left ( x \\right )\\;\\;...(iii)\\\\ \\text{Now applying }&\\text{equation (ii) we get,}\\\\  \\frac{\\partial u}{\\partial y}&=-\\frac{\\partial v}{\\partial x} \\\\ \\Rightarrow  \\; \\; -6y&=-\\left [ 6x+\\frac{df}{dx} \\right ]\\\\ \\Rightarrow \\;\\; 6x+\\frac{df}{dx}&=6y \\\\   \\frac{df}{dx}&=6y-6x \\\\ &\\text{By integrating,}\\\\ f\\left ( x \\right )&=6yx-3x^{2}+K\\\\ \\text{Substitute }& \\text{in equation (iii),}\\\\  v&=3x^{2}+6yx-3x^{2}+K \\\\ \\Rightarrow  \\;\\; v&=6yx+K \\end{aligned}$$",
-        "images": []
+        "markdown": "$f=u+iv \\text{ and }   u=3x^{2}-3y^{2}$\n\nFor $f$ to be analysis, we have Cauchy-Riemann conditions,\n\n$$\\begin{aligned} \\frac{\\partial u}{\\partial x}&=\\frac{\\partial V}{\\partial y}  \\;\\;\\;...(i) \\\\   \\frac{\\partial u}{\\partial y}&=-\\frac{\\partial v}{\\partial x} \\;\\;\\;...(ii)\\\\ \\text{From } & \\text{ (i) we have,}\\\\   6x&=\\frac{\\partial v}{\\partial y} \\\\ \\Rightarrow \\;  \\int \\partial v&=\\int 6x\\partial y \\\\   v&=6\\frac{x^{2}}{2}+f\\left ( x \\right )\\\\ \\text{i.e., } v&=3x^{2}+f\\left ( x \\right )\\;\\;...(iii)\\\\ \\text{Now applying }&\\text{equation (ii) we get,}\\\\  \\frac{\\partial u}{\\partial y}&=-\\frac{\\partial v}{\\partial x} \\\\ \\Rightarrow  \\; \\; -6y&=-\\left [ 6x+\\frac{df}{dx} \\right ]\\\\ \\Rightarrow \\;\\; 6x+\\frac{df}{dx}&=6y \\\\   \\frac{df}{dx}&=6y-6x \\\\ &\\text{By integrating,}\\\\ f\\left ( x \\right )&=6yx-3x^{2}+K\\\\ \\text{Substitute }& \\text{in equation (iii),}\\\\  v&=3x^{2}+6yx-3x^{2}+K \\\\ \\Rightarrow  \\;\\; v&=6yx+K \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q27": {
-      "question_uid": "pp:ce:2011:q27",
+    "ce:2011:q27": {
+      "question_uid": "ce:2011:q27",
+      "legacy_uid": "pp:ce:2011:q27",
       "exam_uid": "ce:2011:set1:main:q27",
       "title": "GATE CE 2011 | Set 1 | Question: 27",
       "section": "main",
@@ -1224,12 +1221,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "if f(x) is continuous at $x=\\frac{\\pi }{2}$\n\n$\\lim_{x\\rightarrow \\frac{\\pi }{2}}\\frac{\\lambda \\cos x}{\\frac{\\pi }{2}-x}=f\\left ( \\frac{\\pi }{2} \\right )=1$\n\nSince the limit is in form of $\\frac{0}{0}$, we can use L'Hospitals rule on LHS of equation (i) and get\n\n$$\\begin{aligned} \\lim_{x\\rightarrow \\frac{\\pi }{2}}\\frac{-\\lambda \\sin x}{-1}&=1 \\\\ \\Rightarrow \\;\\; \\lambda \\sin \\frac{\\pi }{2}&=1 \\\\ \\Rightarrow \\;\\; \\lambda &=1\\end{aligned}$$",
-        "images": []
+        "markdown": "if f(x) is continuous at $x=\\frac{\\pi }{2}$\n\n$\\lim_{x\\rightarrow \\frac{\\pi }{2}}\\frac{\\lambda \\cos x}{\\frac{\\pi }{2}-x}=f\\left ( \\frac{\\pi }{2} \\right )=1$\n\nSince the limit is in form of $\\frac{0}{0}$, we can use L'Hospitals rule on LHS of equation (i) and get\n\n$$\\begin{aligned} \\lim_{x\\rightarrow \\frac{\\pi }{2}}\\frac{-\\lambda \\sin x}{-1}&=1 \\\\ \\Rightarrow \\;\\; \\lambda \\sin \\frac{\\pi }{2}&=1 \\\\ \\Rightarrow \\;\\; \\lambda &=1\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q28": {
-      "question_uid": "pp:ce:2011:q28",
+    "ce:2011:q28": {
+      "question_uid": "ce:2011:q28",
+      "legacy_uid": "pp:ce:2011:q28",
       "exam_uid": "ce:2011:set1:main:q28",
       "title": "GATE CE 2011 | Set 1 | Question: 28",
       "section": "main",
@@ -1269,12 +1266,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "Let\n\n$$\\begin{aligned}  I&=\\int_{0}^{a}\\frac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{a-x}} dx \\;\\;  ...(i) \\\\ \\text{Since } \\int_{0}^{a}f\\left ( x \\right )dx&=\\int_{0}^{a}f\\left ( a-x \\right )dx \\\\    I&=\\int_{0}^{a}\\frac{\\sqrt{a-x}}{\\sqrt{a-x}+\\sqrt{x}}dx \\;\\; ...(ii)\\\\ (i)+(ii) \\; \\Rightarrow \\; 2I&=\\int_{0}^{a}\\frac{\\sqrt{x}+\\sqrt{a-x}}{\\sqrt{x}+\\sqrt{a-x}}dx \\\\ \\Rightarrow \\;\\; 2I&=\\int_{0}^{a}dx \\\\ \\Rightarrow  \\;\\; 2I&=a \\\\ \\Rightarrow \\;\\;  I&=a/2\\end{aligned}$$",
-        "images": []
+        "markdown": "Let\n\n$$\\begin{aligned}  I&=\\int_{0}^{a}\\frac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{a-x}} dx \\;\\;  ...(i) \\\\ \\text{Since } \\int_{0}^{a}f\\left ( x \\right )dx&=\\int_{0}^{a}f\\left ( a-x \\right )dx \\\\    I&=\\int_{0}^{a}\\frac{\\sqrt{a-x}}{\\sqrt{a-x}+\\sqrt{x}}dx \\;\\; ...(ii)\\\\ (i)+(ii) \\; \\Rightarrow \\; 2I&=\\int_{0}^{a}\\frac{\\sqrt{x}+\\sqrt{a-x}}{\\sqrt{x}+\\sqrt{a-x}}dx \\\\ \\Rightarrow \\;\\; 2I&=\\int_{0}^{a}dx \\\\ \\Rightarrow  \\;\\; 2I&=a \\\\ \\Rightarrow \\;\\;  I&=a/2\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q29": {
-      "question_uid": "pp:ce:2011:q29",
+    "ce:2011:q29": {
+      "question_uid": "ce:2011:q29",
+      "legacy_uid": "pp:ce:2011:q29",
       "exam_uid": "ce:2011:set1:main:q29",
       "title": "GATE CE 2011 | Set 1 | Question: 29",
       "section": "main",
@@ -1317,8 +1314,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q30": {
-      "question_uid": "pp:ce:2011:q30",
+    "ce:2011:q30": {
+      "question_uid": "ce:2011:q30",
+      "legacy_uid": "pp:ce:2011:q30",
       "exam_uid": "ce:2011:set1:main:q30",
       "title": "GATE CE 2011 | Set 1 | Question: 30",
       "section": "main",
@@ -1358,12 +1356,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
-        "markdown": "$\\frac{\\mathrm{d} y}{\\mathrm{d} x}+\\frac{y}{x}=x, \\; y\\left ( 1 \\right )=1$\n\nThis is a linear differential equation $\\frac{\\mathrm{d} y}{\\mathrm{d} x}+Py =Q$ with $P=\\frac{1}{x}$ and $Q=x$\n\nIF = Integrating Factor\n\n$=e^{\\int Pdx}=e^{\\int \\frac{1}{x}dx}=e^{\\ln x}=x$\n\nSolution is,\n\n$$\\begin{aligned}  y.IF&=\\int Q\\left ( IF \\right )dx+C \\\\   y.x&=\\int \\left ( x.x \\right )dx+C \\\\   yx&=\\int x^{2}dx+C \\\\   yx&=\\frac{x^{3}}{3}+C \\\\  y&=\\frac{x^{2}}{3}+\\frac{C}{x} \\end{aligned}$$\n\nNow, $y(1)=1$\n\n$\\Rightarrow \\; \\frac{1^{2}}{3}+\\frac{C}{1} =1 \\; \\Rightarrow \\; C=\\frac{2}{3}$\n\nSo the solution is $y=\\frac{x^{3}}{3}+\\frac{2}{3x}$",
-        "images": []
+        "markdown": "$\\frac{\\mathrm{d} y}{\\mathrm{d} x}+\\frac{y}{x}=x, \\; y\\left ( 1 \\right )=1$\n\nThis is a linear differential equation $\\frac{\\mathrm{d} y}{\\mathrm{d} x}+Py =Q$ with $P=\\frac{1}{x}$ and $Q=x$\n\nIF = Integrating Factor\n\n$=e^{\\int Pdx}=e^{\\int \\frac{1}{x}dx}=e^{\\ln x}=x$\n\nSolution is,\n\n$$\\begin{aligned}  y.IF&=\\int Q\\left ( IF \\right )dx+C \\\\   y.x&=\\int \\left ( x.x \\right )dx+C \\\\   yx&=\\int x^{2}dx+C \\\\   yx&=\\frac{x^{3}}{3}+C \\\\  y&=\\frac{x^{2}}{3}+\\frac{C}{x} \\end{aligned}$$\n\nNow, $y(1)=1$\n\n$\\Rightarrow \\; \\frac{1^{2}}{3}+\\frac{C}{1} =1 \\; \\Rightarrow \\; C=\\frac{2}{3}$\n\nSo the solution is $y=\\frac{x^{3}}{3}+\\frac{2}{3x}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q31": {
-      "question_uid": "pp:ce:2011:q31",
+    "ce:2011:q31": {
+      "question_uid": "ce:2011:q31",
+      "legacy_uid": "pp:ce:2011:q31",
       "exam_uid": "ce:2011:set1:main:q31",
       "title": "GATE CE 2011 | Set 1 | Question: 31",
       "section": "main",
@@ -1403,14 +1401,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
-        "markdown": "Number os possible hinges, $n=2$\n\nStatical Indeterminacy, $r=1$\n\nNumber of independent mechanisms,\n\n$i=n-r=2-1=1$\n\n<img src=\"/question-images/ce/2011/ce-2011-8ca4dce0ba.webp\" />\n\n$$\\begin{aligned}\n\n\\Delta &=7\\theta =3\\phi\\\\ \\text{By principle of virtual work,}&\\text{ we get,}\\\\ W\\times \\Delta -M_{P}\\theta -M_{P}\\left ( \\theta +\\phi \\right )&=0 \\\\ W\\times 7\\theta &=2M_{P}\\theta +M_{P}\\phi \\\\ W\\times 7\\theta &=2M_{P}\\theta +M_{P}\\times \\frac{7\\theta }{3} \\\\  7W&=\\frac{6M_{P}+7M_{P}}{3} \\\\ W&=\\frac{13M_{P}}{21}\n\n\\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-8ca4dce0ba.webp"
-        ]
+        "markdown": "Number os possible hinges, $n=2$\n\nStatical Indeterminacy, $r=1$\n\nNumber of independent mechanisms,\n\n$i=n-r=2-1=1$\n\n<img src=\"/question-images/ce/2011/ce-2011-8ca4dce0ba.webp\" />\n\n$$\\begin{aligned}\n\n\\Delta &=7\\theta =3\\phi\\\\ \\text{By principle of virtual work,}&\\text{ we get,}\\\\ W\\times \\Delta -M_{P}\\theta -M_{P}\\left ( \\theta +\\phi \\right )&=0 \\\\ W\\times 7\\theta &=2M_{P}\\theta +M_{P}\\phi \\\\ W\\times 7\\theta &=2M_{P}\\theta +M_{P}\\times \\frac{7\\theta }{3} \\\\  7W&=\\frac{6M_{P}+7M_{P}}{3} \\\\ W&=\\frac{13M_{P}}{21}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q32": {
-      "question_uid": "pp:ce:2011:q32",
+    "ce:2011:q32": {
+      "question_uid": "ce:2011:q32",
+      "legacy_uid": "pp:ce:2011:q32",
       "exam_uid": "ce:2011:set1:main:q32",
       "title": "GATE CE 2011 | Set 1 | Question: 32",
       "section": "main",
@@ -1450,16 +1446,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Shear Force and Bending Moment",
-        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-0e03855f1d.webp\" />\n\nBending moment at a distance $x$ from $P, M_{x} = Wx$\n\nMember PQ has varying BM with a maximum value\n\nof WL at Q and it has no twisting moment.\n\n<img src=\"/question-images/ce/2011/ce-2011-ed9dc9da50.webp\" />\n\nNow moment WL will act as a twisting moment for\n\nthe member QR. Portion QR has varying BM with\n\na maximum value of 2WL at R.\n\n<img src=\"/question-images/ce/2011/ce-2011-cc6d76e41e.webp\" />\n\nNow moment 2WL will act as a twisting moment\n\nfor portion RS which is constant in nature.",
-        "images": [
-          "/question-images/ce/2011/ce-2011-0e03855f1d.webp",
-          "/question-images/ce/2011/ce-2011-ed9dc9da50.webp",
-          "/question-images/ce/2011/ce-2011-cc6d76e41e.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-0e03855f1d.webp\" />\n\nBending moment at a distance $x$ from $P, M_{x} = Wx$\n\nMember PQ has varying BM with a maximum value\n\nof WL at Q and it has no twisting moment.\n\n<img src=\"/question-images/ce/2011/ce-2011-ed9dc9da50.webp\" />\n\nNow moment WL will act as a twisting moment for\n\nthe member QR. Portion QR has varying BM with\n\na maximum value of 2WL at R.\n\n<img src=\"/question-images/ce/2011/ce-2011-cc6d76e41e.webp\" />\n\nNow moment 2WL will act as a twisting moment\n\nfor portion RS which is constant in nature.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q33": {
-      "question_uid": "pp:ce:2011:q33",
+    "ce:2011:q33": {
+      "question_uid": "ce:2011:q33",
+      "legacy_uid": "pp:ce:2011:q33",
       "exam_uid": "ce:2011:set1:main:q33",
       "title": "GATE CE 2011 | Set 1 | Question: 33",
       "section": "main",
@@ -1499,12 +1491,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
-        "markdown": "Maximum force resisted by bond strength\n\n$=\\sigma_{b}(\\pi D L)$\n\nMaximum tensile force resisted by bar\n\n$=\\sigma_{s t}\\left(\\frac{\\pi}{4} D^{2}\\right)$\n\n$\\therefore$ Maximum value of P= Minimum of $\\left\\{\\sigma_{b}(\\pi D L)\\text{or}\\left(\\sigma_{s t} \\frac{\\pi}{4} D^{2}\\right)\\right\\}$",
-        "images": []
+        "markdown": "Maximum force resisted by bond strength\n\n$=\\sigma_{b}(\\pi D L)$\n\nMaximum tensile force resisted by bar\n\n$=\\sigma_{s t}\\left(\\frac{\\pi}{4} D^{2}\\right)$\n\n$\\therefore$ Maximum value of P= Minimum of $\\left\\{\\sigma_{b}(\\pi D L)\\text{or}\\left(\\sigma_{s t} \\frac{\\pi}{4} D^{2}\\right)\\right\\}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q34": {
-      "question_uid": "pp:ce:2011:q34",
+    "ce:2011:q34": {
+      "question_uid": "ce:2011:q34",
+      "legacy_uid": "pp:ce:2011:q34",
       "exam_uid": "ce:2011:set1:main:q34",
       "title": "GATE CE 2011 | Set 1 | Question: 34",
       "section": "main",
@@ -1544,12 +1536,12 @@
       },
       "detailed_solution": {
         "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
-        "markdown": "Shear strength of the concrete $=\\tau_{c} \\times B d$\n\n$=0.75 \\times 400 \\times 750 \\times 10^{-3}=225 \\mathrm{kN}$\n\nMaximum shear strength of concrete\n\n$$\\begin{array}{l}\n\n=\\tau_{c \\max } \\times B d \\\\\n\n=2.1 \\times 400 \\times 750 \\times 10^{-3}=630 \\mathrm{kN}\n\n\\end{array}$$\n\nDesign shear in beam P is 400kN which is less\n\nthan the maximum shear that the concrete can\n\nsustain. But the design shear is more than the\n\nnominal shear of 225 kN.\n\n$\\therefore$ Shear reinforcement is designed for\n\n$=400-225=175 \\mathrm{kN}$\n\nDesign shear in beam Q is 750 kN which is more\n\nthan the maximum shear that the concrete can\n\nsustain. Hence the beam Q should be redesigned.",
-        "images": []
+        "markdown": "Shear strength of the concrete $=\\tau_{c} \\times B d$\n\n$=0.75 \\times 400 \\times 750 \\times 10^{-3}=225 \\mathrm{kN}$\n\nMaximum shear strength of concrete\n\n$$\\begin{array}{l}\n\n=\\tau_{c \\max } \\times B d \\\\\n\n=2.1 \\times 400 \\times 750 \\times 10^{-3}=630 \\mathrm{kN}\n\n\\end{array}$$\n\nDesign shear in beam P is 400kN which is less\n\nthan the maximum shear that the concrete can\n\nsustain. But the design shear is more than the\n\nnominal shear of 225 kN.\n\n$\\therefore$ Shear reinforcement is designed for\n\n$=400-225=175 \\mathrm{kN}$\n\nDesign shear in beam Q is 750 kN which is more\n\nthan the maximum shear that the concrete can\n\nsustain. Hence the beam Q should be redesigned.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q35": {
-      "question_uid": "pp:ce:2011:q35",
+    "ce:2011:q35": {
+      "question_uid": "ce:2011:q35",
+      "legacy_uid": "pp:ce:2011:q35",
       "exam_uid": "ce:2011:set1:main:q35",
       "title": "GATE CE 2011 | Set 1 | Question: 35",
       "section": "main",
@@ -1589,12 +1581,12 @@
       },
       "detailed_solution": {
         "concept": "Design of Steel Structures - Beams",
-        "markdown": "PQ is a horizontal stiffener in the given plate girder. Horizontal stiffeners are also called longitudinal stiffeners. The horizontal stiffener are provided in the compression zone of the web. The first horizontal stiffener is provided at one-fifth of the distance from the compression flange to the tension flange. If required another stiffener is provided at the neutral axis. Horizontal stiffeners are not continuous and are provided between vertical stiffeners.\n\nRS is a vertical stiffener in the given plate girder. Vertical stiffeners are also called transverse stiffeners. It is assumed that the vertical stiffener is not subjected to any load and is selected to provide necessary lateral stiffness only and can therefore, br crimped or joggled for tight fittings. Such stiffeners increase the buckling resistance of the web caused by shear.",
-        "images": []
+        "markdown": "PQ is a horizontal stiffener in the given plate girder. Horizontal stiffeners are also called longitudinal stiffeners. The horizontal stiffener are provided in the compression zone of the web. The first horizontal stiffener is provided at one-fifth of the distance from the compression flange to the tension flange. If required another stiffener is provided at the neutral axis. Horizontal stiffeners are not continuous and are provided between vertical stiffeners.\n\nRS is a vertical stiffener in the given plate girder. Vertical stiffeners are also called transverse stiffeners. It is assumed that the vertical stiffener is not subjected to any load and is selected to provide necessary lateral stiffness only and can therefore, br crimped or joggled for tight fittings. Such stiffeners increase the buckling resistance of the web caused by shear.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q36": {
-      "question_uid": "pp:ce:2011:q36",
+    "ce:2011:q36": {
+      "question_uid": "ce:2011:q36",
+      "legacy_uid": "pp:ce:2011:q36",
       "exam_uid": "ce:2011:set1:main:q36",
       "title": "GATE CE 2011 | Set 1 | Question: 36",
       "section": "main",
@@ -1634,12 +1626,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
-        "markdown": "The tensile resistance of a pile is given as\n\n$$\\begin{aligned} Q_{t} &=Q_{s}+W+Q_{b} \\\\ \\text{Where}\\quad Q_{s} &=\\text { shaft resistance }=\\alpha c A_{s} \\\\ W &=\\text { weight of pile } \\\\ Q_{1} &=c N_{c} A_{b} \\\\ \\therefore \\quad Q_{1} &=\\alpha c A_{s}+W+c N_{c} A_{b} \\\\ &=0.3 \\times 50 \\times \\pi \\times 0.35 \\times 8+20 \\\\ &+\\frac{50 \\times 9 \\times \\pi\\left(0.75^{2}-0.35^{2}\\right)}{4} \\\\ &=300.796 \\mathrm{kN} \\end{aligned}$$",
-        "images": []
+        "markdown": "The tensile resistance of a pile is given as\n\n$$\\begin{aligned} Q_{t} &=Q_{s}+W+Q_{b} \\\\ \\text{Where}\\quad Q_{s} &=\\text { shaft resistance }=\\alpha c A_{s} \\\\ W &=\\text { weight of pile } \\\\ Q_{1} &=c N_{c} A_{b} \\\\ \\therefore \\quad Q_{1} &=\\alpha c A_{s}+W+c N_{c} A_{b} \\\\ &=0.3 \\times 50 \\times \\pi \\times 0.35 \\times 8+20 \\\\ &+\\frac{50 \\times 9 \\times \\pi\\left(0.75^{2}-0.35^{2}\\right)}{4} \\\\ &=300.796 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q37": {
-      "question_uid": "pp:ce:2011:q37",
+    "ce:2011:q37": {
+      "question_uid": "ce:2011:q37",
+      "legacy_uid": "pp:ce:2011:q37",
       "exam_uid": "ce:2011:set1:main:q37",
       "title": "GATE CE 2011 | Set 1 | Question: 37",
       "section": "main",
@@ -1679,12 +1671,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
-        "markdown": "The time required for any degree of consolidation can be obtained from the Taylor's formula,\n\n$T_{v}=\\frac{C_{v} t}{d^{2}}$\n\nsince C_{v} is constant for same type of soil and $T_{v}$ is constant for same degree of consolidation,\n\n$t \\propto d^{2}$ where d is the length of drainage path.\n\n$$\\begin{aligned} \\frac{t_{1}}{t_{2}}&=\\left(\\frac{d_{1}}{d_{2}}\\right)^{2}\\\\ \\Rightarrow \\quad \\frac{36}{t_{2}}&=\\left(\\frac{10}{10 / 2}\\right)^{2} \\\\ \\Rightarrow \\quad t_{2}&=\\frac{36}{4} \\\\ \\Rightarrow \\quad t_{2}&=9 \\;\\text{months} \\end{aligned}$$",
-        "images": []
+        "markdown": "The time required for any degree of consolidation can be obtained from the Taylor's formula,\n\n$T_{v}=\\frac{C_{v} t}{d^{2}}$\n\nsince C_{v} is constant for same type of soil and $T_{v}$ is constant for same degree of consolidation,\n\n$t \\propto d^{2}$ where d is the length of drainage path.\n\n$$\\begin{aligned} \\frac{t_{1}}{t_{2}}&=\\left(\\frac{d_{1}}{d_{2}}\\right)^{2}\\\\ \\Rightarrow \\quad \\frac{36}{t_{2}}&=\\left(\\frac{10}{10 / 2}\\right)^{2} \\\\ \\Rightarrow \\quad t_{2}&=\\frac{36}{4} \\\\ \\Rightarrow \\quad t_{2}&=9 \\;\\text{months} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q38": {
-      "question_uid": "pp:ce:2011:q38",
+    "ce:2011:q38": {
+      "question_uid": "ce:2011:q38",
+      "legacy_uid": "pp:ce:2011:q38",
       "exam_uid": "ce:2011:set1:main:q38",
       "title": "GATE CE 2011 | Set 1 | Question: 38",
       "section": "main",
@@ -1724,12 +1716,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
-        "markdown": "When the top end of the vane completely shear the soil, Then the torque at failure is given by\n\n$$\\begin{aligned} T&=c_{u} \\pi\\left(\\frac{d^{\\prime} h}{2}+\\frac{d^{3}}{6}\\right)\\\\ \\Rightarrow \\frac{4.6}{1000}&=c_{u} \\times \\pi \\times\\left(\\frac{(0.05)^{2} \\times 0.1}{2}+\\frac{(0.05)^{3}}{6}\\right) \\\\ \\Rightarrow \\quad c_{u}&=10 \\mathrm{kPa} \\end{aligned}$$",
-        "images": []
+        "markdown": "When the top end of the vane completely shear the soil, Then the torque at failure is given by\n\n$$\\begin{aligned} T&=c_{u} \\pi\\left(\\frac{d^{\\prime} h}{2}+\\frac{d^{3}}{6}\\right)\\\\ \\Rightarrow \\frac{4.6}{1000}&=c_{u} \\times \\pi \\times\\left(\\frac{(0.05)^{2} \\times 0.1}{2}+\\frac{(0.05)^{3}}{6}\\right) \\\\ \\Rightarrow \\quad c_{u}&=10 \\mathrm{kPa} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q39": {
-      "question_uid": "pp:ce:2011:q39",
+    "ce:2011:q39": {
+      "question_uid": "ce:2011:q39",
+      "legacy_uid": "pp:ce:2011:q39",
       "exam_uid": "ce:2011:set1:main:q39",
       "title": "GATE CE 2011 | Set 1 | Question: 39",
       "section": "main",
@@ -1769,15 +1761,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
-        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-14a1fb0a31.webp\" />\n\nFor single pipe\n\n$$\\begin{array}{r} n=\\frac{81 L Q}{\\pi^{2} g D^{2}} \\\\ L=1500 \\mathrm{m}, \\mathrm{D}=0.6 \\mathrm{m} \\\\ n_{f}=20 \\mathrm{m} \\\\ Q_{1}=\\frac{0.112}{\\sqrt{1}} \\end{array}$$\n\n<img src=\"/question-images/ce/2011/ce-2011-3995f83de8.webp\" />\n\nIn case of double pipe discharge is increased by 25% than that of previous case hence.\n\n$$\\begin{aligned} 2Q_{2}&=1.25Q_{1}\\\\ 20 &= \\frac{8F\\times 500\\times(0.625Q_{1})^{2}}{9.81\\times \\pi^{2}\\times d^{5}}\\\\ Q_{1}&= \\frac{0.402\\times d^{5/2}}{\\sqrt{f}}\\\\ \\frac{Q_{1}^{2}}{d^{5}}&=0.413\\\\ Q_{1}^{2}&=\\frac{0.413d^{5}}{f}\\\\ Q_{1}&=\\frac{0.642d^{5/2}}{\\sqrt{f}}\\ldots\\\\ \\text{From eq }(i) &\\text{and }(ii),\\text{ we get}\\\\ d&=437 \\mathrm{cm}=50 \\mathrm{cm} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-14a1fb0a31.webp",
-          "/question-images/ce/2011/ce-2011-3995f83de8.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-14a1fb0a31.webp\" />\n\nFor single pipe\n\n$$\\begin{array}{r} n=\\frac{81 L Q}{\\pi^{2} g D^{2}} \\\\ L=1500 \\mathrm{m}, \\mathrm{D}=0.6 \\mathrm{m} \\\\ n_{f}=20 \\mathrm{m} \\\\ Q_{1}=\\frac{0.112}{\\sqrt{1}} \\end{array}$$\n\n<img src=\"/question-images/ce/2011/ce-2011-3995f83de8.webp\" />\n\nIn case of double pipe discharge is increased by 25% than that of previous case hence.\n\n$$\\begin{aligned} 2Q_{2}&=1.25Q_{1}\\\\ 20 &= \\frac{8F\\times 500\\times(0.625Q_{1})^{2}}{9.81\\times \\pi^{2}\\times d^{5}}\\\\ Q_{1}&= \\frac{0.402\\times d^{5/2}}{\\sqrt{f}}\\\\ \\frac{Q_{1}^{2}}{d^{5}}&=0.413\\\\ Q_{1}^{2}&=\\frac{0.413d^{5}}{f}\\\\ Q_{1}&=\\frac{0.642d^{5/2}}{\\sqrt{f}}\\ldots\\\\ \\text{From eq }(i) &\\text{and }(ii),\\text{ we get}\\\\ d&=437 \\mathrm{cm}=50 \\mathrm{cm} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q40": {
-      "question_uid": "pp:ce:2011:q40",
+    "ce:2011:q40": {
+      "question_uid": "ce:2011:q40",
+      "legacy_uid": "pp:ce:2011:q40",
       "exam_uid": "ce:2011:set1:main:q40",
       "title": "GATE CE 2011 | Set 1 | Question: 40",
       "section": "main",
@@ -1817,12 +1806,12 @@
       },
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
-        "markdown": "$$\\begin{aligned} \\mathrm{q}&=9 \\mathrm{m}^{3} / \\mathrm{s} / \\mathrm{m}\\\\ \\text{and }y_{1}&=46 \\mathrm{cm}=0.46 \\mathrm{m} \\\\ \\therefore \\quad V_{1}&=\\frac{q}{y_{1}}=\\frac{9}{0.46}=19.565 \\mathrm{m} / \\mathrm{s} \\\\ F_{1}&=\\frac{V_{1}}{\\sqrt{g y_{1}}}=\\frac{19.565}{\\sqrt{9.81 \\times 0.46}}=9.21 \\end{aligned}$$\n\nThus, flow is super -critical.\n\nThus the sequent depth will be\n\n$$\\begin{aligned} \\frac{y_{2}}{y_{1}}&=\\frac{1}{2}\\left[-1+\\sqrt{1+8 F_{1}^{2}}\\right]\\\\ \\Rightarrow \\quad y_{2}&=\\frac{0.46}{2}\\left[-1+\\sqrt{1+8 \\times(9.21)^{2}}\\right] \\\\ \\Rightarrow \\quad y_{2}&=0.23 \\times 25.07 \\\\ \\Rightarrow \\quad y_{2}&=5.77 \\mathrm{m} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\mathrm{q}&=9 \\mathrm{m}^{3} / \\mathrm{s} / \\mathrm{m}\\\\ \\text{and }y_{1}&=46 \\mathrm{cm}=0.46 \\mathrm{m} \\\\ \\therefore \\quad V_{1}&=\\frac{q}{y_{1}}=\\frac{9}{0.46}=19.565 \\mathrm{m} / \\mathrm{s} \\\\ F_{1}&=\\frac{V_{1}}{\\sqrt{g y_{1}}}=\\frac{19.565}{\\sqrt{9.81 \\times 0.46}}=9.21 \\end{aligned}$$\n\nThus, flow is super -critical.\n\nThus the sequent depth will be\n\n$$\\begin{aligned} \\frac{y_{2}}{y_{1}}&=\\frac{1}{2}\\left[-1+\\sqrt{1+8 F_{1}^{2}}\\right]\\\\ \\Rightarrow \\quad y_{2}&=\\frac{0.46}{2}\\left[-1+\\sqrt{1+8 \\times(9.21)^{2}}\\right] \\\\ \\Rightarrow \\quad y_{2}&=0.23 \\times 25.07 \\\\ \\Rightarrow \\quad y_{2}&=5.77 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q41": {
-      "question_uid": "pp:ce:2011:q41",
+    "ce:2011:q41": {
+      "question_uid": "ce:2011:q41",
+      "legacy_uid": "pp:ce:2011:q41",
       "exam_uid": "ce:2011:set1:main:q41",
       "title": "GATE CE 2011 | Set 1 | Question: 41",
       "section": "main",
@@ -1862,12 +1851,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Source of Water Supply, Distribution System and Well Hydraulics",
-        "markdown": "We know that,\n\n$$\\begin{aligned} n&=S_{y}+S_{r} \\\\ \\Rightarrow\\quad S_{y}&=S_{t}-n=0.15-0.40=-0.25 \\end{aligned}$$\n\nThe negative sign signifies the decrease in storage. Change in volume of aquifer\n\n$=150 \\times(23-20)=450 \\mathrm{ha}-\\mathrm{m}$\n\nSpecific yield is nothing but the actual volume of water that can be extracted by force of gravity from a unit volume of aquifer.\n\n$\\therefore$Change in water storage\n\n$=450 \\times 0.25=112.5 \\mathrm{ha}-\\mathrm{m}$",
-        "images": []
+        "markdown": "We know that,\n\n$$\\begin{aligned} n&=S_{y}+S_{r} \\\\ \\Rightarrow\\quad S_{y}&=S_{t}-n=0.15-0.40=-0.25 \\end{aligned}$$\n\nThe negative sign signifies the decrease in storage. Change in volume of aquifer\n\n$=150 \\times(23-20)=450 \\mathrm{ha}-\\mathrm{m}$\n\nSpecific yield is nothing but the actual volume of water that can be extracted by force of gravity from a unit volume of aquifer.\n\n$\\therefore$Change in water storage\n\n$=450 \\times 0.25=112.5 \\mathrm{ha}-\\mathrm{m}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q42": {
-      "question_uid": "pp:ce:2011:q42",
+    "ce:2011:q42": {
+      "question_uid": "ce:2011:q42",
+      "legacy_uid": "pp:ce:2011:q42",
       "exam_uid": "ce:2011:set1:main:q42",
       "title": "GATE CE 2011 | Set 1 | Question: 42",
       "section": "main",
@@ -1907,12 +1896,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
-        "markdown": "Average airflow rate\n\n$= 1.5-\\left ( \\frac{1.5-1.4}{24\\times 60} \\right )\\times 12=1.45\\; m^{3}/min$\n\nTotal airflow through the sampler during 24 hours\n\n$=1.45\\times 24\\times 60=2088\\: m^{3}$\n\nTSP concentration in the ambient air\n\n$=\\left ( \\frac{10.283-9.787}{2088} \\right )\\times 10^6=237.5\\mu g/m^3$",
-        "images": []
+        "markdown": "Average airflow rate\n\n$= 1.5-\\left ( \\frac{1.5-1.4}{24\\times 60} \\right )\\times 12=1.45\\; m^{3}/min$\n\nTotal airflow through the sampler during 24 hours\n\n$=1.45\\times 24\\times 60=2088\\: m^{3}$\n\nTSP concentration in the ambient air\n\n$=\\left ( \\frac{10.283-9.787}{2088} \\right )\\times 10^6=237.5\\mu g/m^3$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q43": {
-      "question_uid": "pp:ce:2011:q43",
+    "ce:2011:q43": {
+      "question_uid": "ce:2011:q43",
+      "legacy_uid": "pp:ce:2011:q43",
       "exam_uid": "ce:2011:set1:main:q43",
       "title": "GATE CE 2011 | Set 1 | Question: 43",
       "section": "main",
@@ -1952,12 +1941,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
-        "markdown": "$OCl^{-}\\: +\\: H^{+}\\: \\rightleftharpoons ^{K}\\; \\; HOCl;\\; K=10^{7.5}$\n\nNow,\n\n$$\\begin{aligned} \\frac{\\left [ HOCl \\right ]}{\\left [ OCl^{-} \\right ]\\left [ H^{+} \\right ]} &= K\\\\ pH&=7.5 \\\\ \\left [ H^{+} \\right ]&=10^{7.5} \\\\ \\left [ \\frac{HOCl}{OCl^{-}} \\right ]&=10^{7.5}\\times 10^{-7.5}=1 \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\left [ HOCl \\right ] &=\\left [ OCl^{-} \\right ] \\\\ \\left [ \\text{Free chlorine residual} \\right ]&=\\left [ HOCl \\right ]+\\left [ OCl^{-} \\right ] \\\\ \\text{Free chlorine residual} &= 2\\; \\text{mg/l}\\\\ \\left [ \\text{Free chlorine residual} \\right ] &=\\frac{2\\times 10^{-3}}{Mol.\\; wt\\; of\\; Cl_{2}} \\\\ &=\\frac{2\\times 10^{-3}}{2\\times 35.5} \\\\ &=2.817\\times 10^{-5}\\; \\text{moles/l} \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; 2.817\\times 10^{-5} &=\\left [ HOCl \\right ]+\\left [ OCl^{-} \\right ] \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\left [ OCl^{-} \\right ] &=\\frac{2.817\\times 10^{-5}}{2} \\\\ \\because \\; \\; \\; \\; \\; \\; \\; \\left [ OCl^{-} \\right ] &=\\left [ HOCl \\right ] \\\\ &=1.4084\\times 10^{-5}\\; \\text{moles/l} \\end{aligned}$$",
-        "images": []
+        "markdown": "$OCl^{-}\\: +\\: H^{+}\\: \\rightleftharpoons ^{K}\\; \\; HOCl;\\; K=10^{7.5}$\n\nNow,\n\n$$\\begin{aligned} \\frac{\\left [ HOCl \\right ]}{\\left [ OCl^{-} \\right ]\\left [ H^{+} \\right ]} &= K\\\\ pH&=7.5 \\\\ \\left [ H^{+} \\right ]&=10^{7.5} \\\\ \\left [ \\frac{HOCl}{OCl^{-}} \\right ]&=10^{7.5}\\times 10^{-7.5}=1 \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\left [ HOCl \\right ] &=\\left [ OCl^{-} \\right ] \\\\ \\left [ \\text{Free chlorine residual} \\right ]&=\\left [ HOCl \\right ]+\\left [ OCl^{-} \\right ] \\\\ \\text{Free chlorine residual} &= 2\\; \\text{mg/l}\\\\ \\left [ \\text{Free chlorine residual} \\right ] &=\\frac{2\\times 10^{-3}}{Mol.\\; wt\\; of\\; Cl_{2}} \\\\ &=\\frac{2\\times 10^{-3}}{2\\times 35.5} \\\\ &=2.817\\times 10^{-5}\\; \\text{moles/l} \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; 2.817\\times 10^{-5} &=\\left [ HOCl \\right ]+\\left [ OCl^{-} \\right ] \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\left [ OCl^{-} \\right ] &=\\frac{2.817\\times 10^{-5}}{2} \\\\ \\because \\; \\; \\; \\; \\; \\; \\; \\left [ OCl^{-} \\right ] &=\\left [ HOCl \\right ] \\\\ &=1.4084\\times 10^{-5}\\; \\text{moles/l} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q44": {
-      "question_uid": "pp:ce:2011:q44",
+    "ce:2011:q44": {
+      "question_uid": "ce:2011:q44",
+      "legacy_uid": "pp:ce:2011:q44",
       "exam_uid": "ce:2011:set1:main:q44",
       "title": "GATE CE 2011 | Set 1 | Question: 44",
       "section": "main",
@@ -2000,8 +1989,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q45": {
-      "question_uid": "pp:ce:2011:q45",
+    "ce:2011:q45": {
+      "question_uid": "ce:2011:q45",
+      "legacy_uid": "pp:ce:2011:q45",
       "exam_uid": "ce:2011:set1:main:q45",
       "title": "GATE CE 2011 | Set 1 | Question: 45",
       "section": "main",
@@ -2044,8 +2034,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q46": {
-      "question_uid": "pp:ce:2011:q46",
+    "ce:2011:q46": {
+      "question_uid": "ce:2011:q46",
+      "legacy_uid": "pp:ce:2011:q46",
       "exam_uid": "ce:2011:set1:main:q46",
       "title": "GATE CE 2011 | Set 1 | Question: 46",
       "section": "main",
@@ -2085,12 +2076,12 @@
       },
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
-        "markdown": "Average delay\n\n$$\\begin{aligned} &=\\frac{\\left(\\begin{array}{c}\\text { Area of triangle formed } \\\\ \\text { by arrival curve }\\end{array}\\right)-\\left(\\begin{array}{c}\\text { Area of triangle formed } \\\\ \\text { by departure curve }\\end{array}\\right)}{\\text { No. of vehicles }} \\\\ &=\\frac{\\frac{1}{2} \\times 40 \\times 50-\\frac{1}{2} \\times 40 \\times 20}{40} \\\\ &=15 \\mathrm{sec} \\end{aligned}$$",
-        "images": []
+        "markdown": "Average delay\n\n$$\\begin{aligned} &=\\frac{\\left(\\begin{array}{c}\\text { Area of triangle formed } \\\\ \\text { by arrival curve }\\end{array}\\right)-\\left(\\begin{array}{c}\\text { Area of triangle formed } \\\\ \\text { by departure curve }\\end{array}\\right)}{\\text { No. of vehicles }} \\\\ &=\\frac{\\frac{1}{2} \\times 40 \\times 50-\\frac{1}{2} \\times 40 \\times 20}{40} \\\\ &=15 \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q47": {
-      "question_uid": "pp:ce:2011:q47",
+    "ce:2011:q47": {
+      "question_uid": "ce:2011:q47",
+      "legacy_uid": "pp:ce:2011:q47",
       "exam_uid": "ce:2011:set1:main:q47",
       "title": "GATE CE 2011 | Set 1 | Question: 47",
       "section": "main",
@@ -2130,12 +2121,12 @@
       },
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
-        "markdown": "In a closed loop travers, the algebraic sum of all the latitudes should be equal to zeroi.e., $\\Sigma.=0$\n\n$$\\begin{aligned} \\Rightarrow\\quad L \\cos 33.7500^{\\circ}&+300 \\cos 86.3847^{\\circ} \\\\ +354.524 \\cos &169.3819^{\\circ}+450 \\\\ \\cos 243.900^{\\circ}&+268 \\cos 317.5^{\\circ}=0 \\\\ \\Rightarrow\\quad L \\cos 33.75^{\\circ} &=329.9166 \\\\ \\Rightarrow\\quad L &=396.79 \\mathrm{m} \\end{aligned}$$",
-        "images": []
+        "markdown": "In a closed loop travers, the algebraic sum of all the latitudes should be equal to zeroi.e., $\\Sigma.=0$\n\n$$\\begin{aligned} \\Rightarrow\\quad L \\cos 33.7500^{\\circ}&+300 \\cos 86.3847^{\\circ} \\\\ +354.524 \\cos &169.3819^{\\circ}+450 \\\\ \\cos 243.900^{\\circ}&+268 \\cos 317.5^{\\circ}=0 \\\\ \\Rightarrow\\quad L \\cos 33.75^{\\circ} &=329.9166 \\\\ \\Rightarrow\\quad L &=396.79 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q48": {
-      "question_uid": "pp:ce:2011:q48",
+    "ce:2011:q48": {
+      "question_uid": "ce:2011:q48",
+      "legacy_uid": "pp:ce:2011:q48",
       "exam_uid": "ce:2011:set1:main:q48",
       "title": "GATE CE 2011 | Set 1 | Question: 48",
       "section": "main",
@@ -2175,14 +2166,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "Relative density is given by\n\n$$\\begin{aligned} I_{D}(\\%)&=\\left(\\frac{e_{\\max }-e_{\\text {nat }}}{e_{\\max }-e_{\\min }}\\right) \\times 100\\\\ \\Rightarrow \\quad 40&=\\left(\\frac{1-e_{n a t}}{1-0.5}\\right) \\times 100 \\\\ \\Rightarrow \\quad 0.4 \\times 0.5&=1-e_{\\text {nat }} \\\\ \\Rightarrow \\quad e_{\\text {nat }}&=0.8 \\\\ \\text{Also,} \\quad G_{\\text {sea }}&=\\frac{\\gamma_{\\text {sea }}}{\\gamma_{w}} \\\\ \\Rightarrow \\quad \\gamma_{\\text {sea }}&=1.03 \\times 9.81 \\\\ \\Rightarrow \\quad \\gamma_{\\mathrm{sea}}&=10.1043 \\mathrm{kN} / \\mathrm{m}^{3} \\\\ \\end{aligned}$$\n\n<img src=\"/question-images/ce/2011/ce-2011-154ef49ee3.webp\" />\n\n$$\\begin{aligned} \\gamma_{\\mathrm{sat}}&=\\left(\\frac{G \\gamma_{sea}+\\mathrm{Se}_{\\text {nat }} \\times \\gamma_{\\text {sea }}}{1+e_{\\text {nat }}}\\right)\\\\ &=\\left(\\frac{2.67 \\times 10.1043 +1 \\times 0.8 \\times 10.1043}{1+0.8}\\right) \\\\ &=19.48 \\mathrm{kN} / \\mathrm{m}^{3} \\end{aligned}$$\n\nTotal stress at the bottom of sand layer,\n\n$$\\begin{aligned} \\sigma &=20 \\times \\gamma_{\\operatorname{sen}}+30 \\times \\gamma_{\\text {sat}} \\\\ &=20 \\times 10.1043+30 \\times 19.48 \\\\ &=786.486 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nPore water pressure at the bottom of sand layer,\n\n$$\\begin{aligned} u &=(20+30) \\times 10.1043 \\\\ &=505.215 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nEffective stress at the bottom of sand layer.\n\n$$\\begin{aligned} \\bar{\\sigma} &=\\sigma-u=786.486 -505.215 \\\\ &=281.271 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-154ef49ee3.webp"
-        ]
+        "markdown": "Relative density is given by\n\n$$\\begin{aligned} I_{D}(\\%)&=\\left(\\frac{e_{\\max }-e_{\\text {nat }}}{e_{\\max }-e_{\\min }}\\right) \\times 100\\\\ \\Rightarrow \\quad 40&=\\left(\\frac{1-e_{n a t}}{1-0.5}\\right) \\times 100 \\\\ \\Rightarrow \\quad 0.4 \\times 0.5&=1-e_{\\text {nat }} \\\\ \\Rightarrow \\quad e_{\\text {nat }}&=0.8 \\\\ \\text{Also,} \\quad G_{\\text {sea }}&=\\frac{\\gamma_{\\text {sea }}}{\\gamma_{w}} \\\\ \\Rightarrow \\quad \\gamma_{\\text {sea }}&=1.03 \\times 9.81 \\\\ \\Rightarrow \\quad \\gamma_{\\mathrm{sea}}&=10.1043 \\mathrm{kN} / \\mathrm{m}^{3} \\\\ \\end{aligned}$$\n\n<img src=\"/question-images/ce/2011/ce-2011-154ef49ee3.webp\" />\n\n$$\\begin{aligned} \\gamma_{\\mathrm{sat}}&=\\left(\\frac{G \\gamma_{sea}+\\mathrm{Se}_{\\text {nat }} \\times \\gamma_{\\text {sea }}}{1+e_{\\text {nat }}}\\right)\\\\ &=\\left(\\frac{2.67 \\times 10.1043 +1 \\times 0.8 \\times 10.1043}{1+0.8}\\right) \\\\ &=19.48 \\mathrm{kN} / \\mathrm{m}^{3} \\end{aligned}$$\n\nTotal stress at the bottom of sand layer,\n\n$$\\begin{aligned} \\sigma &=20 \\times \\gamma_{\\operatorname{sen}}+30 \\times \\gamma_{\\text {sat}} \\\\ &=20 \\times 10.1043+30 \\times 19.48 \\\\ &=786.486 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nPore water pressure at the bottom of sand layer,\n\n$$\\begin{aligned} u &=(20+30) \\times 10.1043 \\\\ &=505.215 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nEffective stress at the bottom of sand layer.\n\n$$\\begin{aligned} \\bar{\\sigma} &=\\sigma-u=786.486 -505.215 \\\\ &=281.271 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q49": {
-      "question_uid": "pp:ce:2011:q49",
+    "ce:2011:q49": {
+      "question_uid": "ce:2011:q49",
+      "legacy_uid": "pp:ce:2011:q49",
       "exam_uid": "ce:2011:set1:main:q49",
       "title": "GATE CE 2011 | Set 1 | Question: 49",
       "section": "main",
@@ -2222,14 +2211,12 @@
       },
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
-        "markdown": "The effective stress will not alter due to change in sea water level. The total stress will increase due to increase in sea water level. The pore water pressure will also increase in the same proportion, thus nullifying the effect of each other\n\n<img src=\"/question-images/ce/2011/ce-2011-3c00ef2c25.webp\" />\n\n$$\\begin{aligned} \\sigma &=22 \\times 10.1043+30 \\times 19.48 \\\\ &=806.695 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ u &=(22+30) \\times 10.1043 \\\\ &=525.424 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\therefore\\quad \\bar{\\sigma} &=\\sigma-u=806.695-525.424 \\\\ &=281.271 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-3c00ef2c25.webp"
-        ]
+        "markdown": "The effective stress will not alter due to change in sea water level. The total stress will increase due to increase in sea water level. The pore water pressure will also increase in the same proportion, thus nullifying the effect of each other\n\n<img src=\"/question-images/ce/2011/ce-2011-3c00ef2c25.webp\" />\n\n$$\\begin{aligned} \\sigma &=22 \\times 10.1043+30 \\times 19.48 \\\\ &=806.695 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ u &=(22+30) \\times 10.1043 \\\\ &=525.424 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\therefore\\quad \\bar{\\sigma} &=\\sigma-u=806.695-525.424 \\\\ &=281.271 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q50": {
-      "question_uid": "pp:ce:2011:q50",
+    "ce:2011:q50": {
+      "question_uid": "ce:2011:q50",
+      "legacy_uid": "pp:ce:2011:q50",
       "exam_uid": "ce:2011:set1:main:q50",
       "title": "GATE CE 2011 | Set 1 | Question: 50",
       "section": "main",
@@ -2269,12 +2256,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "Volume of UH,\n\n$=1\\times 60\\times 60\\times \\left ( 0+3+8+6+3+2 \\right )= 79200m^{3}$\n\nBut, catchment area $\\times 1\\times 10^{-2}=$ volume of UH\n\n$\\Rightarrow$ Catchment area $=\\frac{79200}{10^{-2}}$\n\n$\\Rightarrow$ Catchment area $=7920000 m^{2}$\n\n$\\Rightarrow$ Catchment area $=7.92 km^{2}$",
-        "images": []
+        "markdown": "Volume of UH,\n\n$=1\\times 60\\times 60\\times \\left ( 0+3+8+6+3+2 \\right )= 79200m^{3}$\n\nBut, catchment area $\\times 1\\times 10^{-2}=$ volume of UH\n\n$\\Rightarrow$ Catchment area $=\\frac{79200}{10^{-2}}$\n\n$\\Rightarrow$ Catchment area $=7920000 m^{2}$\n\n$\\Rightarrow$ Catchment area $=7.92 km^{2}$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q51": {
-      "question_uid": "pp:ce:2011:q51",
+    "ce:2011:q51": {
+      "question_uid": "ce:2011:q51",
+      "legacy_uid": "pp:ce:2011:q51",
       "exam_uid": "ce:2011:set1:main:q51",
       "title": "GATE CE 2011 | Set 1 | Question: 51",
       "section": "main",
@@ -2314,14 +2301,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
-        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-f552c0d079.webp\" />\n\nPeak of 3-h UH $= 6 m^{3}$/s\n\nRunoff due to storm\n\n$=6.6\\times \\frac{2}{10}\\times 3=6$ cm\n\nPeak flow due to storm\n\n$=6\\times 6+5=41\\, m^{3}/s$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-f552c0d079.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-f552c0d079.webp\" />\n\nPeak of 3-h UH $= 6 m^{3}$/s\n\nRunoff due to storm\n\n$=6.6\\times \\frac{2}{10}\\times 3=6$ cm\n\nPeak flow due to storm\n\n$=6\\times 6+5=41\\, m^{3}/s$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q52": {
-      "question_uid": "pp:ce:2011:q52",
+    "ce:2011:q52": {
+      "question_uid": "ce:2011:q52",
+      "legacy_uid": "pp:ce:2011:q52",
       "exam_uid": "ce:2011:set1:main:q52",
       "title": "GATE CE 2011 | Set 1 | Question: 52",
       "section": "main",
@@ -2361,14 +2346,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
-        "markdown": "The free diagram of the beam is shown below\n\n<img src=\"/question-images/ce/2011/ce-2011-63b226da66.webp\" />\n\nFrom similar triangles, we get\n\n$$\\begin{aligned} \\frac{L}{\\delta_{1}}=\\frac{2 L}{\\delta_{2}} \\\\ \\Rightarrow \\quad \\delta_{2}=2 \\delta_{1} \\quad &\\ldots(i) \\end{aligned}$$\n\nTaking moments about hinge, we get\n\n$$\\begin{aligned} P \\times 2 L-k \\delta_{2} \\times 2 L-k \\delta_{1} \\times L&=0 \\\\ \\Rightarrow \\quad 2 P-k\\left(2 \\delta_{2}+\\delta_{1}\\right)&=0 &[\\therefore\\text{ from(i)}]\\\\ \\Rightarrow \\quad 2 P-k\\left(4 \\delta_{1}+\\delta_{1}\\right)&=0 \\\\ \\Rightarrow \\quad \\delta_{1}&=\\frac{2 P}{5 k} \\end{aligned}$$\n\nFrom (i), we get\n\n$\\delta_{2}=2 \\times \\frac{2 P}{5 k}=\\frac{4 P}{5 k}$",
-        "images": [
-          "/question-images/ce/2011/ce-2011-63b226da66.webp"
-        ]
+        "markdown": "The free diagram of the beam is shown below\n\n<img src=\"/question-images/ce/2011/ce-2011-63b226da66.webp\" />\n\nFrom similar triangles, we get\n\n$$\\begin{aligned} \\frac{L}{\\delta_{1}}=\\frac{2 L}{\\delta_{2}} \\\\ \\Rightarrow \\quad \\delta_{2}=2 \\delta_{1} \\quad &\\ldots(i) \\end{aligned}$$\n\nTaking moments about hinge, we get\n\n$$\\begin{aligned} P \\times 2 L-k \\delta_{2} \\times 2 L-k \\delta_{1} \\times L&=0 \\\\ \\Rightarrow \\quad 2 P-k\\left(2 \\delta_{2}+\\delta_{1}\\right)&=0 &[\\therefore\\text{ from(i)}]\\\\ \\Rightarrow \\quad 2 P-k\\left(4 \\delta_{1}+\\delta_{1}\\right)&=0 \\\\ \\Rightarrow \\quad \\delta_{1}&=\\frac{2 P}{5 k} \\end{aligned}$$\n\nFrom (i), we get\n\n$\\delta_{2}=2 \\times \\frac{2 P}{5 k}=\\frac{4 P}{5 k}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q53": {
-      "question_uid": "pp:ce:2011:q53",
+    "ce:2011:q53": {
+      "question_uid": "ce:2011:q53",
+      "legacy_uid": "pp:ce:2011:q53",
       "exam_uid": "ce:2011:set1:main:q53",
       "title": "GATE CE 2011 | Set 1 | Question: 53",
       "section": "main",
@@ -2408,12 +2391,12 @@
       },
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
-        "markdown": "$$\\begin{aligned} R_{1} &=k \\delta_{1}=k \\times \\frac{2 P}{5 k} \\\\ &=\\frac{2 \\times 100}{5}=40 \\mathrm{kN} \\\\ R_{2} &=k \\delta_{2}=k \\times \\frac{4 P}{5 k} \\\\ &=\\frac{4 \\times 100}{5}=80 \\mathrm{kN} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} R_{1} &=k \\delta_{1}=k \\times \\frac{2 P}{5 k} \\\\ &=\\frac{2 \\times 100}{5}=40 \\mathrm{kN} \\\\ R_{2} &=k \\delta_{2}=k \\times \\frac{4 P}{5 k} \\\\ &=\\frac{4 \\times 100}{5}=80 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q54": {
-      "question_uid": "pp:ce:2011:q54",
+    "ce:2011:q54": {
+      "question_uid": "ce:2011:q54",
+      "legacy_uid": "pp:ce:2011:q54",
       "exam_uid": "ce:2011:set1:main:q54",
       "title": "GATE CE 2011 | Set 1 | Question: 54",
       "section": "main",
@@ -2453,12 +2436,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "2 % of solids +98 % water $\\rightarrow$ 100 % of sludge\n\nlet x be the density of sludge.\n\n$$\\begin{aligned} \\therefore \\quad \\frac{100}{x}&=\\frac{98}{1000}+\\frac{2}{2.2 \\times 1000} \\\\ &\\quad \\quad \\ldots\\text{ Harmonic mean }\\\\ \\therefore \\quad x&=1011 \\mathrm{kg} / \\mathrm{ms} \\end{aligned}$$",
-        "images": []
+        "markdown": "2 % of solids +98 % water $\\rightarrow$ 100 % of sludge\n\nlet x be the density of sludge.\n\n$$\\begin{aligned} \\therefore \\quad \\frac{100}{x}&=\\frac{98}{1000}+\\frac{2}{2.2 \\times 1000} \\\\ &\\quad \\quad \\ldots\\text{ Harmonic mean }\\\\ \\therefore \\quad x&=1011 \\mathrm{kg} / \\mathrm{ms} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q55": {
-      "question_uid": "pp:ce:2011:q55",
+    "ce:2011:q55": {
+      "question_uid": "ce:2011:q55",
+      "legacy_uid": "pp:ce:2011:q55",
       "exam_uid": "ce:2011:set1:main:q55",
       "title": "GATE CE 2011 | Set 1 | Question: 55",
       "section": "main",
@@ -2498,12 +2481,12 @@
       },
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
-        "markdown": "Now,\n\n$$\\begin{aligned} V_{1} &=\\text { Volume of sludge (initial) } \\\\ &=\\text { Volume of solids }+\\text { Volume of } w \\\\ &=\\frac{2}{2.2 \\times 1000}+\\frac{98}{1000} \\\\ V_{1} &=0.0989 \\mathrm{m}^{3} \\end{aligned}$$\n\nVolume of sludge after thickness\n\n$$\\begin{aligned} &=V_{2}=\\frac{V_{1}}{2} \\\\ V_{2} &=0.04945 \\mathrm{m}^{3}\\\\ \\therefore \\quad 0.04945&= \\text{ Vol. of solids }+\\text{ Vol. of water}\\\\ \\therefore \\quad 0.04945&=\\frac{2}{2.2 \\times 1000}+\\frac{x}{1000} \\\\ \\therefore \\quad x&=48.545 \\% \\end{aligned}$$\n\n$\\therefore \\text{ Solids content }(%\\text{ by Wt.})$\n\n$$\\begin{array}{l} =\\frac{2}{2+48.545} \\times 100 \\\\ =3.957 \\% \\\\ \\approx 3.96 \\% \\end{array}$$",
-        "images": []
+        "markdown": "Now,\n\n$$\\begin{aligned} V_{1} &=\\text { Volume of sludge (initial) } \\\\ &=\\text { Volume of solids }+\\text { Volume of } w \\\\ &=\\frac{2}{2.2 \\times 1000}+\\frac{98}{1000} \\\\ V_{1} &=0.0989 \\mathrm{m}^{3} \\end{aligned}$$\n\nVolume of sludge after thickness\n\n$$\\begin{aligned} &=V_{2}=\\frac{V_{1}}{2} \\\\ V_{2} &=0.04945 \\mathrm{m}^{3}\\\\ \\therefore \\quad 0.04945&= \\text{ Vol. of solids }+\\text{ Vol. of water}\\\\ \\therefore \\quad 0.04945&=\\frac{2}{2.2 \\times 1000}+\\frac{x}{1000} \\\\ \\therefore \\quad x&=48.545 \\% \\end{aligned}$$\n\n$\\therefore \\text{ Solids content }(%\\text{ by Wt.})$\n\n$$\\begin{array}{l} =\\frac{2}{2+48.545} \\times 100 \\\\ =3.957 \\% \\\\ \\approx 3.96 \\% \\end{array}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q56": {
-      "question_uid": "pp:ce:2011:q56",
+    "ce:2011:ga:q1": {
+      "question_uid": "ce:2011:ga:q1",
+      "legacy_uid": "pp:ce:2011:q56",
       "exam_uid": "ce:2011:set1:ga:q1",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 1",
       "section": "ga",
@@ -2545,8 +2528,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q57": {
-      "question_uid": "pp:ce:2011:q57",
+    "ce:2011:ga:q2": {
+      "question_uid": "ce:2011:ga:q2",
+      "legacy_uid": "pp:ce:2011:q57",
       "exam_uid": "ce:2011:set1:ga:q2",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 2",
       "section": "ga",
@@ -2588,8 +2572,9 @@
         "markdown": "Inexplicable means not explicable; that cannot be explained, understood, or\naccounted for. So the best synonym here is incomprehensible.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q58": {
-      "question_uid": "pp:ce:2011:q58",
+    "ce:2011:ga:q3": {
+      "question_uid": "ce:2011:ga:q3",
+      "legacy_uid": "pp:ce:2011:q58",
       "exam_uid": "ce:2011:set1:ga:q3",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 3",
       "section": "ga",
@@ -2631,8 +2616,9 @@
         "markdown": "Amalgamate means combine or unite to form one organization or structure. So\nthe best option here is split. Separate on the other hand, although a close\nsynonym, it is too general to be the best antonym in the given question while\nMerge is the synonym; Collect is not related.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q59": {
-      "question_uid": "pp:ce:2011:q59",
+    "ce:2011:ga:q4": {
+      "question_uid": "ce:2011:ga:q4",
+      "legacy_uid": "pp:ce:2011:q59",
       "exam_uid": "ce:2011:set1:ga:q4",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 4",
       "section": "ga",
@@ -2674,8 +2660,9 @@
         "markdown": "The tone of the sentence clearly indicates a word that is similar to understated is\nneeded for the blank. Alternatively, the word should be antonym of strong (fail to\nmake strong impression). Therefore, the best choice is restrained which means\ncontrolled/reserved/timid.\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ce:2011:q60": {
-      "question_uid": "pp:ce:2011:q60",
+    "ce:2011:ga:q5": {
+      "question_uid": "ce:2011:ga:q5",
+      "legacy_uid": "pp:ce:2011:q60",
       "exam_uid": "ce:2011:set1:ga:q5",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 5",
       "section": "ga",
@@ -2717,8 +2704,9 @@
         "markdown": "Contemplate is a transitive verb and hence is followed by a gerund Hence the\ncorrect usage of contemplate is verb+ ing form.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q61": {
-      "question_uid": "pp:ce:2011:q61",
+    "ce:2011:ga:q6": {
+      "question_uid": "ce:2011:ga:q6",
+      "legacy_uid": "pp:ce:2011:q61",
       "exam_uid": "ce:2011:set1:ga:q6",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 6",
       "section": "ga",
@@ -2760,8 +2748,9 @@
         "markdown": "By observation of the table, we can say S\n$$\\begin{array}{|c|c|c|c|c|} \\hline &P&Q&R&S \\\\ \\hline \\text{Requirement}&800&600&300&200 \\\\ \\hline text{Potency}&0.4&0.5&0.4&0.8\\\\ \\hline \\end{array}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ce:2011:q62": {
-      "question_uid": "pp:ce:2011:q62",
+    "ce:2011:ga:q7": {
+      "question_uid": "ce:2011:ga:q7",
+      "legacy_uid": "pp:ce:2011:q62",
       "exam_uid": "ce:2011:set1:ga:q7",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 7",
       "section": "ga",
@@ -2803,8 +2792,9 @@
         "markdown": "The given passage clearly deals with how to deal with bereavement and grief and\nso after the tragedy occurs and not about precautions. Therefore, irrespective of\nthe causes of death, a school student rarely gets into details of causes?which is\nbeyond the scope of the context. Rest all are important in dealing with grief.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ce:2011:q63": {
-      "question_uid": "pp:ce:2011:q63",
+    "ce:2011:ga:q8": {
+      "question_uid": "ce:2011:ga:q8",
+      "legacy_uid": "pp:ce:2011:q63",
       "exam_uid": "ce:2011:set1:ga:q8",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 8",
       "section": "ga",
@@ -2846,8 +2836,9 @@
         "markdown": "$10\\left ( \\frac{10-1}{10} \\right )=10\\left ( \\frac{9}{10} \\right )^3=\\frac{729}{1000}=7.29 \\; \\text{ litres}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ce:2011:q64": {
-      "question_uid": "pp:ce:2011:q64",
+    "ce:2011:ga:q9": {
+      "question_uid": "ce:2011:ga:q9",
+      "legacy_uid": "pp:ce:2011:q64",
       "exam_uid": "ce:2011:set1:ga:q9",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 9",
       "section": "ga",
@@ -2889,8 +2880,9 @@
         "markdown": null
       }
     },
-    "pp:ce:2011:q65": {
-      "question_uid": "pp:ce:2011:q65",
+    "ce:2011:ga:q10": {
+      "question_uid": "ce:2011:ga:q10",
+      "legacy_uid": "pp:ce:2011:q65",
       "exam_uid": "ce:2011:set1:ga:q10",
       "title": "GATE CE 2011 | Set 1 | GA | Question: 10",
       "section": "ga",

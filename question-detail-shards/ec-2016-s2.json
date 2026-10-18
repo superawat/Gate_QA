@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:30:25.033Z",
+  "generatedAt": "2026-10-18T16:30:36.822Z",
   "shardKey": "ec-2016-s2",
   "yearSetKey": "ec-2016-s2",
   "yearSetIdentity": "ec:2016:set-2",
@@ -9,8 +9,9 @@
   "label": "2016 Set 2",
   "questionCount": 55,
   "recordsByQuestionUid": {
-    "pp:ec:2016:q1-s2": {
-      "question_uid": "pp:ec:2016:q1-s2",
+    "ec:2016:q1-s2": {
+      "question_uid": "ec:2016:q1-s2",
+      "legacy_uid": "pp:ec:2016:q1-s2",
       "exam_uid": "ec:2016:set2:main:q1",
       "title": "GATE EC 2016 | Set 2 | Question: 1",
       "section": "main",
@@ -48,12 +49,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "A has an eigen value is zero\n\n$$\\begin{aligned} \\therefore \\quad|A|&=0 \\\\ \\left| \\begin{array}{lll} 3 & 2 & 4\\\\9 & 7 & 13 \\\\ -6 & -4 & -9+x\\end{array}\\right|&=0 \\\\ 3(-63+7 x+52)-2(-81+9 x+78)&+4(-36+42)=0 \\\\ 3(7 x-11)-2(9 x-3)+4(6)&=0 \\\\ 21 x-33-18 x+6+24&=0 \\\\ 3 x-3&=0 \\\\ x&=1 \\end{aligned}$$",
-        "images": []
+        "markdown": "A has an eigen value is zero\n\n$$\\begin{aligned} \\therefore \\quad|A|&=0 \\\\ \\left| \\begin{array}{lll} 3 & 2 & 4\\\\9 & 7 & 13 \\\\ -6 & -4 & -9+x\\end{array}\\right|&=0 \\\\ 3(-63+7 x+52)-2(-81+9 x+78)&+4(-36+42)=0 \\\\ 3(7 x-11)-2(9 x-3)+4(6)&=0 \\\\ 21 x-33-18 x+6+24&=0 \\\\ 3 x-3&=0 \\\\ x&=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.95, 1.05])."
       }
     },
-    "pp:ec:2016:q2-s2": {
-      "question_uid": "pp:ec:2016:q2-s2",
+    "ec:2016:q2-s2": {
+      "question_uid": "ec:2016:q2-s2",
+      "legacy_uid": "pp:ec:2016:q2-s2",
       "exam_uid": "ec:2016:set2:main:q2",
       "title": "GATE EC 2016 | Set 2 | Question: 2",
       "section": "main",
@@ -91,12 +92,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
-        "markdown": "$f(z)=2 z^{3}+b_{1}|z|^{3}$\n\nGiven that f(z) is analytic.\n\nwhich is possible only when b=0\n\nsince $\\left|z^{3}\\right|$ is differentiable at the origin but not analytic.\n\n$2 z^{3}$ is analytic everywhere\n\n$$\\begin{aligned} \\therefore \\quad f(z)&=2 z^{3}+b\\left|z^{3}\\right| \\text{ is analytic}\\\\ \\text{only when }\\quad b&=0 \\end{aligned}$$",
-        "images": []
+        "markdown": "$f(z)=2 z^{3}+b_{1}|z|^{3}$\n\nGiven that f(z) is analytic.\n\nwhich is possible only when b=0\n\nsince $\\left|z^{3}\\right|$ is differentiable at the origin but not analytic.\n\n$2 z^{3}$ is analytic everywhere\n\n$$\\begin{aligned} \\therefore \\quad f(z)&=2 z^{3}+b\\left|z^{3}\\right| \\text{ is analytic}\\\\ \\text{only when }\\quad b&=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
       }
     },
-    "pp:ec:2016:q3-s2": {
-      "question_uid": "pp:ec:2016:q3-s2",
+    "ec:2016:q3-s2": {
+      "question_uid": "ec:2016:q3-s2",
+      "legacy_uid": "pp:ec:2016:q3-s2",
       "exam_uid": "ec:2016:set2:main:q3",
       "title": "GATE EC 2016 | Set 2 | Question: 3",
       "section": "main",
@@ -136,14 +137,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{array}{l} f(x)=x^{3}-3 x^{2}+1 \\\\ f^{\\prime}(x)=3 x^{2}-6 x \\\\ f(x)=0 \\end{array}$$\n\n<img src=\"/question-images/ec/2016/ec-2016-efcc9f9167.webp\" />\n\n$$\\begin{aligned} 3 x^{2}-6 x &=0 \\\\ 3 x(x-2) &=0 \\\\ x &=0,2 \\\\ f^{\\prime \\prime}(x) &=6 x-6 \\\\ \\text{At}\\quad x &=0 \\quad f^{\\prime \\prime}(0)=-6 \\text { maxima } \\\\ x &=2 \\quad f^{\\prime \\prime}(2)=6 \\text { minima } \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-efcc9f9167.webp"
-        ]
+        "markdown": "$$\\begin{array}{l} f(x)=x^{3}-3 x^{2}+1 \\\\ f^{\\prime}(x)=3 x^{2}-6 x \\\\ f(x)=0 \\end{array}$$\n\n<img src=\"/question-images/ec/2016/ec-2016-efcc9f9167.webp\" />\n\n$$\\begin{aligned} 3 x^{2}-6 x &=0 \\\\ 3 x(x-2) &=0 \\\\ x &=0,2 \\\\ f^{\\prime \\prime}(x) &=6 x-6 \\\\ \\text{At}\\quad x &=0 \\quad f^{\\prime \\prime}(0)=-6 \\text { maxima } \\\\ x &=2 \\quad f^{\\prime \\prime}(2)=6 \\text { minima } \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2016:q4-s2": {
-      "question_uid": "pp:ec:2016:q4-s2",
+    "ec:2016:q4-s2": {
+      "question_uid": "ec:2016:q4-s2",
+      "legacy_uid": "pp:ec:2016:q4-s2",
       "exam_uid": "ec:2016:set2:main:q4",
       "title": "GATE EC 2016 | Set 2 | Question: 4",
       "section": "main",
@@ -183,14 +182,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-64c45c63c5.webp\" />\n\nHence, 3 solutions.",
-        "images": [
-          "/question-images/ec/2016/ec-2016-64c45c63c5.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-64c45c63c5.webp\" />\n\nHence, 3 solutions.\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2016:q5-s2": {
-      "question_uid": "pp:ec:2016:q5-s2",
+    "ec:2016:q5-s2": {
+      "question_uid": "ec:2016:q5-s2",
+      "legacy_uid": "pp:ec:2016:q5-s2",
       "exam_uid": "ec:2016:set2:main:q5",
       "title": "GATE EC 2016 | Set 2 | Question: 5",
       "section": "main",
@@ -228,12 +225,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "$$\\begin{aligned} I &=\\hat{x} 15 \\cos \\omega t+\\hat{y} 5 \\sin \\omega t \\\\ \\| I &=\\sqrt{\\left(15 \\cos (t)^{2}+(5 \\sin \\omega t)^{2}\\right.} \\\\ &=\\sqrt{225 \\cos ^{2} \\omega t+25 \\sin ^{2} \\omega t} \\\\ &=\\sqrt{25+200 \\cos ^{2} \\omega t} \\end{aligned}$$\n\n|I| is minimum when $\\cos ^{2}\\omega t=0$\n\n$text{or}\\quad \\theta=\\omega t=90^{\\circ}$",
-        "images": []
+        "markdown": "$$\\begin{aligned} I &=\\hat{x} 15 \\cos \\omega t+\\hat{y} 5 \\sin \\omega t \\\\ \\| I &=\\sqrt{\\left(15 \\cos (t)^{2}+(5 \\sin \\omega t)^{2}\\right.} \\\\ &=\\sqrt{225 \\cos ^{2} \\omega t+25 \\sin ^{2} \\omega t} \\\\ &=\\sqrt{25+200 \\cos ^{2} \\omega t} \\end{aligned}$$\n\n|I| is minimum when $\\cos ^{2}\\omega t=0$\n\n$text{or}\\quad \\theta=\\omega t=90^{\\circ}$\n\nTherefore, the correct answer is **90**."
       }
     },
-    "pp:ec:2016:q6-s2": {
-      "question_uid": "pp:ec:2016:q6-s2",
+    "ec:2016:q6-s2": {
+      "question_uid": "ec:2016:q6-s2",
+      "legacy_uid": "pp:ec:2016:q6-s2",
       "exam_uid": "ec:2016:set2:main:q6",
       "title": "GATE EC 2016 | Set 2 | Question: 6",
       "section": "main",
@@ -273,12 +270,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Network Theorems",
-        "markdown": "In maximum power transformation, half of the voltage drops across source resistance, remaining half across the load.\n\n$\\therefore$ voltage across source (R)\n\n$$\\begin{aligned} I_{L} R &=\\frac{V_{s}}{2} \\\\ I_{L} &=\\frac{V_{s}}{2 R} \\end{aligned}$$",
-        "images": []
+        "markdown": "In maximum power transformation, half of the voltage drops across source resistance, remaining half across the load.\n\n$\\therefore$ voltage across source (R)\n\n$$\\begin{aligned} I_{L} R &=\\frac{V_{s}}{2} \\\\ I_{L} &=\\frac{V_{s}}{2 R} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2016:q7-s2": {
-      "question_uid": "pp:ec:2016:q7-s2",
+    "ec:2016:q7-s2": {
+      "question_uid": "ec:2016:q7-s2",
+      "legacy_uid": "pp:ec:2016:q7-s2",
       "exam_uid": "ec:2016:set2:main:q7",
       "title": "GATE EC 2016 | Set 2 | Question: 7",
       "section": "main",
@@ -318,16 +315,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "at$t = 0^{-}$, Switch is at position-1\n\n<img src=\"/question-images/ec/2016/ec-2016-3fbc926c78.webp\" />\n\nwhere, $\\quad V_{c}\\left(0^{-}\\right)=\\frac{10 \\times 2}{2+3}=4 \\mathrm{V} \\ldots(1) \\\\ \\therefore \\quad V_{c}(0-)=V_{c}\\left(0^{+}\\right)=4 \\mathrm{V}$\n\n$\\text{at }t = \\infty$\n\n<img src=\"/question-images/ec/2016/ec-2016-f08fb93bca.webp\" />\n\n$V_{c}(\\infty)=5 \\times 2=10 \\mathrm{V}$\n\nThe time constant of the circuit is\n\n<img src=\"/question-images/ec/2016/ec-2016-c0304b464d.webp\" />\n\n$$\\begin{aligned} \\tau &=R_{\\mathrm{eq}} C_{\\mathrm{eq}} \\\\ &=(4+2) \\times 0.1=0.6 \\mathrm{sec} \\\\ \\therefore V_{c}(t)=V_{c}(\\infty) &+\\left[V_{c}\\left(0^{+}\\right)-V_{c}(\\infty)\\right] e^{-t / \\tau} \\\\ &=10+(4-10) e^{-t / 0.6} \\\\ V_{c}(t) &=\\left(10-6 e^{-t / 0.6}\\right) \\mathrm{V} \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-3fbc926c78.webp",
-          "/question-images/ec/2016/ec-2016-f08fb93bca.webp",
-          "/question-images/ec/2016/ec-2016-c0304b464d.webp"
-        ]
+        "markdown": "at$t = 0^{-}$, Switch is at position-1\n\n<img src=\"/question-images/ec/2016/ec-2016-3fbc926c78.webp\" />\n\nwhere, $\\quad V_{c}\\left(0^{-}\\right)=\\frac{10 \\times 2}{2+3}=4 \\mathrm{V} \\ldots(1) \\\\ \\therefore \\quad V_{c}(0-)=V_{c}\\left(0^{+}\\right)=4 \\mathrm{V}$\n\n$\\text{at }t = \\infty$\n\n<img src=\"/question-images/ec/2016/ec-2016-f08fb93bca.webp\" />\n\n$V_{c}(\\infty)=5 \\times 2=10 \\mathrm{V}$\n\nThe time constant of the circuit is\n\n<img src=\"/question-images/ec/2016/ec-2016-c0304b464d.webp\" />\n\n$$\\begin{aligned} \\tau &=R_{\\mathrm{eq}} C_{\\mathrm{eq}} \\\\ &=(4+2) \\times 0.1=0.6 \\mathrm{sec} \\\\ \\therefore V_{c}(t)=V_{c}(\\infty) &+\\left[V_{c}\\left(0^{+}\\right)-V_{c}(\\infty)\\right] e^{-t / \\tau} \\\\ &=10+(4-10) e^{-t / 0.6} \\\\ V_{c}(t) &=\\left(10-6 e^{-t / 0.6}\\right) \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2016:q8-s2": {
-      "question_uid": "pp:ec:2016:q8-s2",
+    "ec:2016:q8-s2": {
+      "question_uid": "ec:2016:q8-s2",
+      "legacy_uid": "pp:ec:2016:q8-s2",
       "exam_uid": "ec:2016:set2:main:q8",
       "title": "GATE EC 2016 | Set 2 | Question: 8",
       "section": "main",
@@ -365,12 +358,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
-        "markdown": "At resonance (for parallel RLC circuit)\n\n$$\\begin{array}{l} I_{R}=I \\\\ I_{L}=Q I \\angle-90^{\\circ} \\\\ I_{C}=Q I \\angle 90^{\\circ} \\end{array}$$\n\nFor parallel RLC circuit\n\n$$\\begin{aligned} \\frac{\\left|I_{L}\\right|}{\\left|I_{R}\\right|} &=\\frac{I Q}{I}=Q=R \\sqrt{\\frac{C}{L}} \\\\ &=10 \\sqrt{\\frac{10 \\times 10^{-6}}{10 \\times 10^{-3}}}=0.316 \\end{aligned}$$",
-        "images": []
+        "markdown": "At resonance (for parallel RLC circuit)\n\n$$\\begin{array}{l} I_{R}=I \\\\ I_{L}=Q I \\angle-90^{\\circ} \\\\ I_{C}=Q I \\angle 90^{\\circ} \\end{array}$$\n\nFor parallel RLC circuit\n\n$$\\begin{aligned} \\frac{\\left|I_{L}\\right|}{\\left|I_{R}\\right|} &=\\frac{I Q}{I}=Q=R \\sqrt{\\frac{C}{L}} \\\\ &=10 \\sqrt{\\frac{10 \\times 10^{-6}}{10 \\times 10^{-3}}}=0.316 \\end{aligned}$$\n\nTherefore, the correct answer is **0.32** (acceptable range: [0.3, 0.34])."
       }
     },
-    "pp:ec:2016:q9-s2": {
-      "question_uid": "pp:ec:2016:q9-s2",
+    "ec:2016:q9-s2": {
+      "question_uid": "ec:2016:q9-s2",
+      "legacy_uid": "pp:ec:2016:q9-s2",
       "exam_uid": "ec:2016:set2:main:q9",
       "title": "GATE EC 2016 | Set 2 | Question: 9",
       "section": "main",
@@ -408,14 +401,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
-        "markdown": "For T-network,\n\n<img src=\"/question-images/ec/2016/ec-2016-e2431fda8f.webp\" />\n\n$$\\begin{aligned} Z_{11} &=Z_{a}+Z_{c} \\\\ Z_{22} &=Z_{b}+Z_{c} \\\\ \\text { and, } \\quad Z_{12} &=Z_{21}=Z_{c} \\\\ \\text { Given, } &[Z]=\\left[\\begin{array}{cc} 2 j \\omega & j \\omega \\\\ j \\omega & 3+2 j \\omega \\end{array}\\right] \\\\ \\text { Therefore } Z_{12} &=j \\omega \\\\ \\text { and, } \\quad Z_{22} &=3+2 j \\omega \\\\ &=3+j \\omega+j \\omega \\\\ &=Z_{b}+Z_{c} \\\\ &=R_{b}+j \\omega+Z_{c} \\\\ & R_{b}=3 \\Omega \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-e2431fda8f.webp"
-        ]
+        "markdown": "For T-network,\n\n<img src=\"/question-images/ec/2016/ec-2016-e2431fda8f.webp\" />\n\n$$\\begin{aligned} Z_{11} &=Z_{a}+Z_{c} \\\\ Z_{22} &=Z_{b}+Z_{c} \\\\ \\text { and, } \\quad Z_{12} &=Z_{21}=Z_{c} \\\\ \\text { Given, } &[Z]=\\left[\\begin{array}{cc} 2 j \\omega & j \\omega \\\\ j \\omega & 3+2 j \\omega \\end{array}\\right] \\\\ \\text { Therefore } Z_{12} &=j \\omega \\\\ \\text { and, } \\quad Z_{22} &=3+2 j \\omega \\\\ &=3+j \\omega+j \\omega \\\\ &=Z_{b}+Z_{c} \\\\ &=R_{b}+j \\omega+Z_{c} \\\\ & R_{b}=3 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **3** (acceptable range: [2.98, 3.02])."
       }
     },
-    "pp:ec:2016:q10-s2": {
-      "question_uid": "pp:ec:2016:q10-s2",
+    "ec:2016:q10-s2": {
+      "question_uid": "ec:2016:q10-s2",
+      "legacy_uid": "pp:ec:2016:q10-s2",
       "exam_uid": "ec:2016:set2:main:q10",
       "title": "GATE EC 2016 | Set 2 | Question: 10",
       "section": "main",
@@ -453,15 +444,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
-        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-3f2bc5ba20.webp\" />\n\n<img src=\"/question-images/ec/2016/ec-2016-d260d22027.webp\" />\n\n$$\\begin{aligned} \\text { Energy, } E_{x(i)} &=\\frac{1}{2 \\pi} \\int_{-\\infty}^{\\infty}|X(\\omega)|^{2} d \\omega \\\\ &=\\frac{1}{2 \\pi} \\int_{-4 \\pi}^{4 \\pi}\\left(\\frac{1}{4}\\right)^{2} d \\omega \\\\ &=\\frac{1}{2 \\pi} \\times \\frac{1}{16}[8 \\pi]=\\frac{1}{4}=0.25 \\mathrm{J} \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-3f2bc5ba20.webp",
-          "/question-images/ec/2016/ec-2016-d260d22027.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-3f2bc5ba20.webp\" />\n\n<img src=\"/question-images/ec/2016/ec-2016-d260d22027.webp\" />\n\n$$\\begin{aligned} \\text { Energy, } E_{x(i)} &=\\frac{1}{2 \\pi} \\int_{-\\infty}^{\\infty}|X(\\omega)|^{2} d \\omega \\\\ &=\\frac{1}{2 \\pi} \\int_{-4 \\pi}^{4 \\pi}\\left(\\frac{1}{4}\\right)^{2} d \\omega \\\\ &=\\frac{1}{2 \\pi} \\times \\frac{1}{16}[8 \\pi]=\\frac{1}{4}=0.25 \\mathrm{J} \\end{aligned}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
       }
     },
-    "pp:ec:2016:q11-s2": {
-      "question_uid": "pp:ec:2016:q11-s2",
+    "ec:2016:q11-s2": {
+      "question_uid": "ec:2016:q11-s2",
+      "legacy_uid": "pp:ec:2016:q11-s2",
       "exam_uid": "ec:2016:set2:main:q11",
       "title": "GATE EC 2016 | Set 2 | Question: 11",
       "section": "main",
@@ -501,12 +489,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "Ebers-Moll model is valid for all the region of operation.",
-        "images": []
+        "markdown": "Ebers-Moll model is valid for all the region of operation.\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2016:q12-s2": {
-      "question_uid": "pp:ec:2016:q12-s2",
+    "ec:2016:q12-s2": {
+      "question_uid": "ec:2016:q12-s2",
+      "legacy_uid": "pp:ec:2016:q12-s2",
       "exam_uid": "ec:2016:set2:main:q12",
       "title": "GATE EC 2016 | Set 2 | Question: 12",
       "section": "main",
@@ -546,12 +534,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "$$\\begin{aligned} r_{ds} &=\\frac{1}{\\mu_{n} C_{01} \\frac{W}{L}\\left(V_{\\mathrm{as}}-v_{r}\\right)} \\\\ r_{ds} &=\\text { channel resistance } \\end{aligned}$$\n\n$$\\begin{array}{l} W \\uparrow r \\downarrow A \\rightarrow \\text { correct } \\\\ V_{T} \\downarrow r \\downarrow B \\rightarrow \\text { correct } \\\\ L \\uparrow r \\uparrow C \\rightarrow \\text { correct } \\\\ V_{\\triangle} \\uparrow r \\downarrow \\therefore D \\rightarrow \\text { Wrong statement } \\end{array}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} r_{ds} &=\\frac{1}{\\mu_{n} C_{01} \\frac{W}{L}\\left(V_{\\mathrm{as}}-v_{r}\\right)} \\\\ r_{ds} &=\\text { channel resistance } \\end{aligned}$$\n\n$$\\begin{array}{l} W \\uparrow r \\downarrow A \\rightarrow \\text { correct } \\\\ V_{T} \\downarrow r \\downarrow B \\rightarrow \\text { correct } \\\\ L \\uparrow r \\uparrow C \\rightarrow \\text { correct } \\\\ V_{\\triangle} \\uparrow r \\downarrow \\therefore D \\rightarrow \\text { Wrong statement } \\end{array}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2016:q13-s2": {
-      "question_uid": "pp:ec:2016:q13-s2",
+    "ec:2016:q13-s2": {
+      "question_uid": "ec:2016:q13-s2",
+      "legacy_uid": "pp:ec:2016:q13-s2",
       "exam_uid": "ec:2016:set2:main:q13",
       "title": "GATE EC 2016 | Set 2 | Question: 13",
       "section": "main",
@@ -589,15 +577,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-50b3ef85bd.webp\" />\n\nLet diode: ON\n\n$$\\begin{aligned} \\Rightarrow \\; V_A&=2-0.7=1.3V \\\\ i_2&=\\frac{1.3}{6k\\Omega } \\\\ i_1&= \\frac{0.7}{2k\\Omega }\\\\ i_d&=i_2-i_1 \\\\ &= \\frac{1.3}{6k\\Omega } -\\frac{0.7}{2k\\Omega }\\\\ &= -ve \\end{aligned}$$\n\nNot possible\n\nLet Diode is OFF\n\n<img src=\"/question-images/ec/2016/ec-2016-f7854f93c4.webp\" />\n\n$i_2=\\frac{2V}{2k\\Omega +6k\\Omega }=0.25mA$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-50b3ef85bd.webp",
-          "/question-images/ec/2016/ec-2016-f7854f93c4.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-50b3ef85bd.webp\" />\n\nLet diode: ON\n\n$$\\begin{aligned} \\Rightarrow \\; V_A&=2-0.7=1.3V \\\\ i_2&=\\frac{1.3}{6k\\Omega } \\\\ i_1&= \\frac{0.7}{2k\\Omega }\\\\ i_d&=i_2-i_1 \\\\ &= \\frac{1.3}{6k\\Omega } -\\frac{0.7}{2k\\Omega }\\\\ &= -ve \\end{aligned}$$\n\nNot possible\n\nLet Diode is OFF\n\n<img src=\"/question-images/ec/2016/ec-2016-f7854f93c4.webp\" />\n\n$i_2=\\frac{2V}{2k\\Omega +6k\\Omega }=0.25mA$\n\nTherefore, the correct answer is **0.25**."
       }
     },
-    "pp:ec:2016:q14-s2": {
-      "question_uid": "pp:ec:2016:q14-s2",
+    "ec:2016:q14-s2": {
+      "question_uid": "ec:2016:q14-s2",
+      "legacy_uid": "pp:ec:2016:q14-s2",
       "exam_uid": "ec:2016:set2:main:q14",
       "title": "GATE EC 2016 | Set 2 | Question: 14",
       "section": "main",
@@ -635,12 +620,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
-        "markdown": "$$\\begin{aligned} R_{2} &=\\frac{V_{T}}{I_{2}} \\ln \\left(\\frac{I_{1}}{I_{2}}\\right)=\\frac{26 \\times 10^{-3}}{100 \\times 10^{-6}} \\ln \\left(\\frac{1 \\times 10^{-3}}{100 \\times 10^{-6}}\\right) \\\\ &=598.67 \\Omega \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} R_{2} &=\\frac{V_{T}}{I_{2}} \\ln \\left(\\frac{I_{1}}{I_{2}}\\right)=\\frac{26 \\times 10^{-3}}{100 \\times 10^{-6}} \\ln \\left(\\frac{1 \\times 10^{-3}}{100 \\times 10^{-6}}\\right) \\\\ &=598.67 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **590** (acceptable range: [570, 610])."
       }
     },
-    "pp:ec:2016:q15-s2": {
-      "question_uid": "pp:ec:2016:q15-s2",
+    "ec:2016:q15-s2": {
+      "question_uid": "ec:2016:q15-s2",
+      "legacy_uid": "pp:ec:2016:q15-s2",
       "exam_uid": "ec:2016:set2:main:q15",
       "title": "GATE EC 2016 | Set 2 | Question: 15",
       "section": "main",
@@ -683,8 +668,9 @@
         "markdown": null
       }
     },
-    "pp:ec:2016:q16-s2": {
-      "question_uid": "pp:ec:2016:q16-s2",
+    "ec:2016:q16-s2": {
+      "question_uid": "ec:2016:q16-s2",
+      "legacy_uid": "pp:ec:2016:q16-s2",
       "exam_uid": "ec:2016:set2:main:q16",
       "title": "GATE EC 2016 | Set 2 | Question: 16",
       "section": "main",
@@ -727,8 +713,9 @@
         "markdown": null
       }
     },
-    "pp:ec:2016:q17-s2": {
-      "question_uid": "pp:ec:2016:q17-s2",
+    "ec:2016:q17-s2": {
+      "question_uid": "ec:2016:q17-s2",
+      "legacy_uid": "pp:ec:2016:q17-s2",
       "exam_uid": "ec:2016:set2:main:q17",
       "title": "GATE EC 2016 | Set 2 | Question: 17",
       "section": "main",
@@ -766,15 +753,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
-        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-5fb89b1a82.webp\" />\n\nThe waveform of the gate output\n\n<img src=\"/question-images/ec/2016/ec-2016-49310e9688.webp\" />\n\nAverage power dissipated\n\n$P=\\frac{V^{2}}{R} \\times \\frac{T_{\\mathrm{ON}}}{T}=\\frac{5^{2}}{10 \\mathrm{k}} \\times \\frac{3 T}{5 T}=1.5 \\mathrm{mW}$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-5fb89b1a82.webp",
-          "/question-images/ec/2016/ec-2016-49310e9688.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-5fb89b1a82.webp\" />\n\nThe waveform of the gate output\n\n<img src=\"/question-images/ec/2016/ec-2016-49310e9688.webp\" />\n\nAverage power dissipated\n\n$P=\\frac{V^{2}}{R} \\times \\frac{T_{\\mathrm{ON}}}{T}=\\frac{5^{2}}{10 \\mathrm{k}} \\times \\frac{3 T}{5 T}=1.5 \\mathrm{mW}$\n\nTherefore, the correct answer is **1.5** (acceptable range: [1.45, 1.55])."
       }
     },
-    "pp:ec:2016:q18-s2": {
-      "question_uid": "pp:ec:2016:q18-s2",
+    "ec:2016:q18-s2": {
+      "question_uid": "ec:2016:q18-s2",
+      "legacy_uid": "pp:ec:2016:q18-s2",
       "exam_uid": "ec:2016:set2:main:q18",
       "title": "GATE EC 2016 | Set 2 | Question: 18",
       "section": "main",
@@ -814,14 +798,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "In case of a full adder,\n\n<img src=\"/question-images/ec/2016/ec-2016-3824dd5b62.webp\" />\n\n$$\\begin{aligned} \\therefore \\quad I_{0}&=0 \\\\ I_{1}&=C_{\\text {in }} \\\\ I_{2}&=C_{\\text {in }} \\\\ I_{3}&=1 \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-3824dd5b62.webp"
-        ]
+        "markdown": "In case of a full adder,\n\n<img src=\"/question-images/ec/2016/ec-2016-3824dd5b62.webp\" />\n\n$$\\begin{aligned} \\therefore \\quad I_{0}&=0 \\\\ I_{1}&=C_{\\text {in }} \\\\ I_{2}&=C_{\\text {in }} \\\\ I_{3}&=1 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2016:q19-s2": {
-      "question_uid": "pp:ec:2016:q19-s2",
+    "ec:2016:q19-s2": {
+      "question_uid": "ec:2016:q19-s2",
+      "legacy_uid": "pp:ec:2016:q19-s2",
       "exam_uid": "ec:2016:set2:main:q19",
       "title": "GATE EC 2016 | Set 2 | Question: 19",
       "section": "main",
@@ -858,12 +840,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$$\\begin{aligned} L\\left(\\frac{d y}{d t}\\right) &=(s Y(s)-y(0)) \\\\ Y(s) &=G(s) \\times \\frac{1}{s}=\\frac{s-2}{s(s+1)(s+3)} \\\\ y(0)&=\\lim _{s \\rightarrow \\infty} s Y(s) \\\\ \\text{(Applying } & \\text{initial value theorem) } \\\\ &=\\lim _{s \\rightarrow \\infty} \\frac{s-2}{(s+1)(s+3)} \\\\ &=\\frac{\\left(1-\\frac{2}{s}\\right)}{s\\left(1+\\frac{1}{s}\\right)\\left(1+\\frac{3}{s}\\right)} \\\\ y(0)&=0 \\\\ L\\left(\\frac{d y}{d t}\\right) &=s Y(s)=\\frac{s \\times(s-2)}{s(s+1)(s+3)} \\\\ &=\\frac{s-2}{(s+1)(s+3)} \\\\ \\left.\\frac{d y}{d t}\\right|_{t=0} &=\\lim _{s \\rightarrow \\infty} s L\\left(\\frac{d y}{d t}\\right) \\\\ &=\\lim _{s \\rightarrow \\infty} \\frac{s \\times(s-2)}{(s+1)(s+3)}\\\\ &=\\frac{\\left(1-\\frac{2}{s}\\right)}{\\left(1+\\frac{1}{s}\\right)\\left(1+\\frac{3}{s}\\right)}=1 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} L\\left(\\frac{d y}{d t}\\right) &=(s Y(s)-y(0)) \\\\ Y(s) &=G(s) \\times \\frac{1}{s}=\\frac{s-2}{s(s+1)(s+3)} \\\\ y(0)&=\\lim _{s \\rightarrow \\infty} s Y(s) \\\\ \\text{(Applying } & \\text{initial value theorem) } \\\\ &=\\lim _{s \\rightarrow \\infty} \\frac{s-2}{(s+1)(s+3)} \\\\ &=\\frac{\\left(1-\\frac{2}{s}\\right)}{s\\left(1+\\frac{1}{s}\\right)\\left(1+\\frac{3}{s}\\right)} \\\\ y(0)&=0 \\\\ L\\left(\\frac{d y}{d t}\\right) &=s Y(s)=\\frac{s \\times(s-2)}{s(s+1)(s+3)} \\\\ &=\\frac{s-2}{(s+1)(s+3)} \\\\ \\left.\\frac{d y}{d t}\\right|_{t=0} &=\\lim _{s \\rightarrow \\infty} s L\\left(\\frac{d y}{d t}\\right) \\\\ &=\\lim _{s \\rightarrow \\infty} \\frac{s \\times(s-2)}{(s+1)(s+3)}\\\\ &=\\frac{\\left(1-\\frac{2}{s}\\right)}{\\left(1+\\frac{1}{s}\\right)\\left(1+\\frac{3}{s}\\right)}=1 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2016:q20-s2": {
-      "question_uid": "pp:ec:2016:q20-s2",
+    "ec:2016:q20-s2": {
+      "question_uid": "ec:2016:q20-s2",
+      "legacy_uid": "pp:ec:2016:q20-s2",
       "exam_uid": "ec:2016:set2:main:q20",
       "title": "GATE EC 2016 | Set 2 | Question: 20",
       "section": "main",
@@ -901,14 +883,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$G(s)=\\frac{1-s}{4+2 s}$\n\nand $\\angle G(s)=-\\tan ^{-1} \\omega-\\tan ^{-1} \\frac{\\omega}{2}$\n\nat $s=0, \\quad|G(s)|=\\frac{1}{4}=0.25$\n\nand $\\left.\\angle G(s)\\right|_{\\omega=0}=0^{\\circ}$\n\nat $s=\\infty, \\quad|G(s)|=-\\frac{1}{2}=-0.5$\n\nand $\\left.\\angle G(s)\\right|_{m \\times \\infty}=-180^{\\circ}$\n\nNyquist plot is\n\n<img src=\"/question-images/ec/2016/ec-2016-6cf7ea465c.webp\" />\n\nHence, number of encirclements of (-1 + j0) = 0",
-        "images": [
-          "/question-images/ec/2016/ec-2016-6cf7ea465c.webp"
-        ]
+        "markdown": "$G(s)=\\frac{1-s}{4+2 s}$\n\nand $\\angle G(s)=-\\tan ^{-1} \\omega-\\tan ^{-1} \\frac{\\omega}{2}$\n\nat $s=0, \\quad|G(s)|=\\frac{1}{4}=0.25$\n\nand $\\left.\\angle G(s)\\right|_{\\omega=0}=0^{\\circ}$\n\nat $s=\\infty, \\quad|G(s)|=-\\frac{1}{2}=-0.5$\n\nand $\\left.\\angle G(s)\\right|_{m \\times \\infty}=-180^{\\circ}$\n\nNyquist plot is\n\n<img src=\"/question-images/ec/2016/ec-2016-6cf7ea465c.webp\" />\n\nHence, number of encirclements of (-1 + j0) = 0\n\nTherefore, the correct answer is **0**."
       }
     },
-    "pp:ec:2016:q21-s2": {
-      "question_uid": "pp:ec:2016:q21-s2",
+    "ec:2016:q21-s2": {
+      "question_uid": "ec:2016:q21-s2",
+      "legacy_uid": "pp:ec:2016:q21-s2",
       "exam_uid": "ec:2016:set2:main:q21",
       "title": "GATE EC 2016 | Set 2 | Question: 21",
       "section": "main",
@@ -946,12 +926,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "Minimum required average codeword length in bits for error free reconstruction\n\n$$\\begin{aligned} L_{\\min } &=H(\\text { Entropy }) \\\\ H=\\frac{1}{2} \\log _{2} 2+\\frac{1}{4} \\log _{2} 4 &+\\frac{1}{8} \\log _{2} 8+\\frac{1}{8} \\log _{2} 8 \\\\ &=\\frac{1}{2}+\\frac{1}{2}+\\frac{3}{8}+\\frac{3}{8}=1.75 \\\\ \\Rightarrow \\quad L_{\\text {min }} &=1.75 \\mathrm{bits} / \\text { word } \\end{aligned}$$",
-        "images": []
+        "markdown": "Minimum required average codeword length in bits for error free reconstruction\n\n$$\\begin{aligned} L_{\\min } &=H(\\text { Entropy }) \\\\ H=\\frac{1}{2} \\log _{2} 2+\\frac{1}{4} \\log _{2} 4 &+\\frac{1}{8} \\log _{2} 8+\\frac{1}{8} \\log _{2} 8 \\\\ &=\\frac{1}{2}+\\frac{1}{2}+\\frac{3}{8}+\\frac{3}{8}=1.75 \\\\ \\Rightarrow \\quad L_{\\text {min }} &=1.75 \\mathrm{bits} / \\text { word } \\end{aligned}$$\n\nTherefore, the correct answer is **1.75** (acceptable range: [1.74, 1.76])."
       }
     },
-    "pp:ec:2016:q22-s2": {
-      "question_uid": "pp:ec:2016:q22-s2",
+    "ec:2016:q22-s2": {
+      "question_uid": "ec:2016:q22-s2",
+      "legacy_uid": "pp:ec:2016:q22-s2",
       "exam_uid": "ec:2016:set2:main:q22",
       "title": "GATE EC 2016 | Set 2 | Question: 22",
       "section": "main",
@@ -989,12 +969,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "$$\\begin{array}{l} f_{s}=8 \\mathrm{kHz} \\\\ n=8 \\text { bits/sample } \\\\ M=4 \\\\ B W_{\\min }=\\frac{R_{b}}{2 \\log _{2} M}=\\frac{R_{b}}{4}=\\frac{8 \\times 8}{4}=16 \\mathrm{kHz} \\end{array}$$",
-        "images": []
+        "markdown": "$$\\begin{array}{l} f_{s}=8 \\mathrm{kHz} \\\\ n=8 \\text { bits/sample } \\\\ M=4 \\\\ B W_{\\min }=\\frac{R_{b}}{2 \\log _{2} M}=\\frac{R_{b}}{4}=\\frac{8 \\times 8}{4}=16 \\mathrm{kHz} \\end{array}$$\n\nTherefore, the correct answer is **16** (acceptable range: [15.9, 16.1])."
       }
     },
-    "pp:ec:2016:q23-s2": {
-      "question_uid": "pp:ec:2016:q23-s2",
+    "ec:2016:q23-s2": {
+      "question_uid": "ec:2016:q23-s2",
+      "legacy_uid": "pp:ec:2016:q23-s2",
       "exam_uid": "ec:2016:set2:main:q23",
       "title": "GATE EC 2016 | Set 2 | Question: 23",
       "section": "main",
@@ -1034,12 +1014,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$\\mathrm{Ba}_{\\mathrm{z}}$ magnetic field\n\n$v_{x} a_{x}+v_{z} a_{z}$ velocity\n\n$$\\begin{aligned} F&=Q(v \\times B) \\text{ by Lorentz's law}\\\\ &=Q\\left(v_{x} a_{x}+v_{z} a_{z}\\right) \\times B a_{z} \\\\ F_{y} &=Q v_{x} \\cdot B\\left(-a_{y}\\right) \\end{aligned}$$\n\nThis results in a circular path in the XY plane with  $v_{z} a_{z}$ component causing a linear path.\n\nBoth result in a helical path along Z axis.",
-        "images": []
+        "markdown": "$\\mathrm{Ba}_{\\mathrm{z}}$ magnetic field\n\n$v_{x} a_{x}+v_{z} a_{z}$ velocity\n\n$$\\begin{aligned} F&=Q(v \\times B) \\text{ by Lorentz's law}\\\\ &=Q\\left(v_{x} a_{x}+v_{z} a_{z}\\right) \\times B a_{z} \\\\ F_{y} &=Q v_{x} \\cdot B\\left(-a_{y}\\right) \\end{aligned}$$\n\nThis results in a circular path in the XY plane with  $v_{z} a_{z}$ component causing a linear path.\n\nBoth result in a helical path along Z axis.\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2016:q24-s2": {
-      "question_uid": "pp:ec:2016:q24-s2",
+    "ec:2016:q24-s2": {
+      "question_uid": "ec:2016:q24-s2",
+      "legacy_uid": "pp:ec:2016:q24-s2",
       "exam_uid": "ec:2016:set2:main:q24",
       "title": "GATE EC 2016 | Set 2 | Question: 24",
       "section": "main",
@@ -1079,12 +1059,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
-        "markdown": "$\\beta(\\omega)$ is known so $V_{g}$ can be calculated.\n\n$v_{p}=\\omega / \\beta$ can be calculated.\n\nPolarization can be identified.\n\n$\\mu_{r}$ and $\\epsilon_{r}$ cannot be found, due to which power flux cannot be calculated as power flux\n\n$P=\\frac{1}{2} \\frac{|E|^{2}}{\\eta}, \\text{ where }\\eta=120 \\pi \\times \\sqrt{\\frac{\\mu_{r}}{\\epsilon_{r}}}$",
-        "images": []
+        "markdown": "$\\beta(\\omega)$ is known so $V_{g}$ can be calculated.\n\n$v_{p}=\\omega / \\beta$ can be calculated.\n\nPolarization can be identified.\n\n$\\mu_{r}$ and $\\epsilon_{r}$ cannot be found, due to which power flux cannot be calculated as power flux\n\n$P=\\frac{1}{2} \\frac{|E|^{2}}{\\eta}, \\text{ where }\\eta=120 \\pi \\times \\sqrt{\\frac{\\mu_{r}}{\\epsilon_{r}}}$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2016:q25-s2": {
-      "question_uid": "pp:ec:2016:q25-s2",
+    "ec:2016:q25-s2": {
+      "question_uid": "ec:2016:q25-s2",
+      "legacy_uid": "pp:ec:2016:q25-s2",
       "exam_uid": "ec:2016:set2:main:q25",
       "title": "GATE EC 2016 | Set 2 | Question: 25",
       "section": "main",
@@ -1122,12 +1102,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Miscellaneous Topics",
-        "markdown": "$$\\begin{aligned} & \\sin \\alpha_{\\max } &=\\sqrt{n_{1}^{2}-n_{2}^{2}}=\\sqrt{1.5^{2}-1.4^{2}} \\\\ \\Rightarrow & \\alpha_{\\max } &=\\sin ^{-1}(0.5385)=32.58^{\\circ} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} & \\sin \\alpha_{\\max } &=\\sqrt{n_{1}^{2}-n_{2}^{2}}=\\sqrt{1.5^{2}-1.4^{2}} \\\\ \\Rightarrow & \\alpha_{\\max } &=\\sin ^{-1}(0.5385)=32.58^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **32.5** (acceptable range: [32, 33])."
       }
     },
-    "pp:ec:2016:q26-s2": {
-      "question_uid": "pp:ec:2016:q26-s2",
+    "ec:2016:q26-s2": {
+      "question_uid": "ec:2016:q26-s2",
+      "legacy_uid": "pp:ec:2016:q26-s2",
       "exam_uid": "ec:2016:set2:main:q26",
       "title": "GATE EC 2016 | Set 2 | Question: 26",
       "section": "main",
@@ -1165,12 +1145,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
-        "markdown": "$\\frac{d y}{d x}=-3 y+2, \\quad y(0)=1$\n\nIf $|1-3 h| \\lt 1,$ then solution of differential equation is stable.\n\n$$\\begin{array}{c} -1 \\lt 1-3 h \\\\lt 1 \\\\ -2 \\lt -3 h \\lt 0 \\\\ 0 \\lt h \\lt \\frac{2}{3} \\\\ h_{\\max }=\\frac{2}{3}=0.66 \\end{array}$$",
-        "images": []
+        "markdown": "$\\frac{d y}{d x}=-3 y+2, \\quad y(0)=1$\n\nIf $|1-3 h| \\lt 1,$ then solution of differential equation is stable.\n\n$$\\begin{array}{c} -1 \\lt 1-3 h \\\\lt 1 \\\\ -2 \\lt -3 h \\lt 0 \\\\ 0 \\lt h \\lt \\frac{2}{3} \\\\ h_{\\max }=\\frac{2}{3}=0.66 \\end{array}$$\n\nTherefore, the correct answer is **0.65** (acceptable range: [0.6, 0.7])."
       }
     },
-    "pp:ec:2016:q27-s2": {
-      "question_uid": "pp:ec:2016:q27-s2",
+    "ec:2016:q27-s2": {
+      "question_uid": "ec:2016:q27-s2",
+      "legacy_uid": "pp:ec:2016:q27-s2",
       "exam_uid": "ec:2016:set2:main:q27",
       "title": "GATE EC 2016 | Set 2 | Question: 27",
       "section": "main",
@@ -1208,12 +1188,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
-        "markdown": "By Green's theorem\n\n$$\\begin{aligned} \\int x y^{2} d x+x^{2} y d y &=\\iint_{R}\\left(\\frac{d}{d x}\\left(x^{2} y\\right)-\\frac{d}{d y}\\left(x y^{2}\\right)\\right) d x d y \\\\ &=\\iint_{R}(2 x y-2 x y)=0 \\end{aligned}$$",
-        "images": []
+        "markdown": "By Green's theorem\n\n$$\\begin{aligned} \\int x y^{2} d x+x^{2} y d y &=\\iint_{R}\\left(\\frac{d}{d x}\\left(x^{2} y\\right)-\\frac{d}{d y}\\left(x y^{2}\\right)\\right) d x d y \\\\ &=\\iint_{R}(2 x y-2 x y)=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0** (acceptable range: [-0.03, 0.03])."
       }
     },
-    "pp:ec:2016:q28-s2": {
-      "question_uid": "pp:ec:2016:q28-s2",
+    "ec:2016:q28-s2": {
+      "question_uid": "ec:2016:q28-s2",
+      "legacy_uid": "pp:ec:2016:q28-s2",
       "exam_uid": "ec:2016:set2:main:q28",
       "title": "GATE EC 2016 | Set 2 | Question: 28",
       "section": "main",
@@ -1251,12 +1231,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
-        "markdown": "$$\\begin{aligned} P(X+Y \\leq 1) &=\\int_{x=0}^{1} \\int_{y=0}^{(1-x)} f_{x y}(x, y) d x d y \\\\ &=\\int_{x=0}^{1} \\int_{y=0}^{1-x}(x+y) d x d y \\\\ &=\\int_{x=0}^{1}\\left(x y+\\frac{y^{2}}{2}\\right)_{0}^{1-x}\\\\ &=\\int_{x=0}^{1}\\left(x(1-x)+\\frac{(1-x)^{2}}{2}\\right) d x \\\\ &=\\int_{x=0}^{1}\\left(\\frac{1}{2}-\\frac{x^{2}}{2}\\right) d x=\\left(\\frac{x}{2}-\\frac{x^{3}}{6}\\right)_{0}^{1} \\\\ &=\\frac{1}{2}-\\frac{1}{6}=\\frac{1}{3}=0.33 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} P(X+Y \\leq 1) &=\\int_{x=0}^{1} \\int_{y=0}^{(1-x)} f_{x y}(x, y) d x d y \\\\ &=\\int_{x=0}^{1} \\int_{y=0}^{1-x}(x+y) d x d y \\\\ &=\\int_{x=0}^{1}\\left(x y+\\frac{y^{2}}{2}\\right)_{0}^{1-x}\\\\ &=\\int_{x=0}^{1}\\left(x(1-x)+\\frac{(1-x)^{2}}{2}\\right) d x \\\\ &=\\int_{x=0}^{1}\\left(\\frac{1}{2}-\\frac{x^{2}}{2}\\right) d x=\\left(\\frac{x}{2}-\\frac{x^{3}}{6}\\right)_{0}^{1} \\\\ &=\\frac{1}{2}-\\frac{1}{6}=\\frac{1}{3}=0.33 \\end{aligned}$$\n\nTherefore, the correct answer is **0.33** (acceptable range: [0.32, 0.34])."
       }
     },
-    "pp:ec:2016:q29-s2": {
-      "question_uid": "pp:ec:2016:q29-s2",
+    "ec:2016:q29-s2": {
+      "question_uid": "ec:2016:q29-s2",
+      "legacy_uid": "pp:ec:2016:q29-s2",
       "exam_uid": "ec:2016:set2:main:q29",
       "title": "GATE EC 2016 | Set 2 | Question: 29",
       "section": "main",
@@ -1294,12 +1274,12 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$$\\begin{aligned} \\text { Trace of } A&=14 \\\\ 2+b&=14 \\\\ a+b &=7 &\\ldots(i)\\\\ \\text { det }(A)&=100 \\\\ \\begin{array}{r|rrr|} & a & 37 & \\\\5& 0 & 2 & 4 \\\\& 0 & 0 & b\\end{array}=100\\\\ 5 \\times 2 \\times a \\times b &=100 \\\\ 10 a b &=100 \\\\ a b &=10 &\\ldots(ii) \\end{aligned}$$\n\nFrom equation (i) and (ii)\n\n$$\\begin{aligned} \\text { either }\\quad a&=5,b=2\\\\ \\text{or}\\quad a&=2b=5\\\\ |a-b|&=|5-2|=3 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text { Trace of } A&=14 \\\\ 2+b&=14 \\\\ a+b &=7 &\\ldots(i)\\\\ \\text { det }(A)&=100 \\\\ \\begin{array}{r|rrr|} & a & 37 & \\\\5& 0 & 2 & 4 \\\\& 0 & 0 & b\\end{array}=100\\\\ 5 \\times 2 \\times a \\times b &=100 \\\\ 10 a b &=100 \\\\ a b &=10 &\\ldots(ii) \\end{aligned}$$\n\nFrom equation (i) and (ii)\n\n$$\\begin{aligned} \\text { either }\\quad a&=5,b=2\\\\ \\text{or}\\quad a&=2b=5\\\\ |a-b|&=|5-2|=3 \\end{aligned}$$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
       }
     },
-    "pp:ec:2016:q30-s2": {
-      "question_uid": "pp:ec:2016:q30-s2",
+    "ec:2016:q30-s2": {
+      "question_uid": "ec:2016:q30-s2",
+      "legacy_uid": "pp:ec:2016:q30-s2",
       "exam_uid": "ec:2016:set2:main:q30",
       "title": "GATE EC 2016 | Set 2 | Question: 30",
       "section": "main",
@@ -1339,16 +1319,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "$R_{eq}\\Rightarrow$\n\n<img src=\"/question-images/ec/2016/ec-2016-4e15e55950.webp\" />\n\nBy using delta to star conversion\n\n<img src=\"/question-images/ec/2016/ec-2016-f4ecee79d7.webp\" />\n\nAgain by star to delta conversion\n\n<img src=\"/question-images/ec/2016/ec-2016-8e8d297be0.webp\" />\n\n$$\\begin{aligned} R_{\\mathrm{ab}} &=\\{4 \\| 1)+(4 \\| 1)\\}\\|\\{1 \\| 4)\\} \\\\ &=\\left(\\frac{4}{5}+\\frac{4}{5}\\right) \\| \\frac{4}{5}=\\frac{8}{15} \\Omega \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-4e15e55950.webp",
-          "/question-images/ec/2016/ec-2016-f4ecee79d7.webp",
-          "/question-images/ec/2016/ec-2016-8e8d297be0.webp"
-        ]
+        "markdown": "$R_{eq}\\Rightarrow$\n\n<img src=\"/question-images/ec/2016/ec-2016-4e15e55950.webp\" />\n\nBy using delta to star conversion\n\n<img src=\"/question-images/ec/2016/ec-2016-f4ecee79d7.webp\" />\n\nAgain by star to delta conversion\n\n<img src=\"/question-images/ec/2016/ec-2016-8e8d297be0.webp\" />\n\n$$\\begin{aligned} R_{\\mathrm{ab}} &=\\{4 \\| 1)+(4 \\| 1)\\}\\|\\{1 \\| 4)\\} \\\\ &=\\left(\\frac{4}{5}+\\frac{4}{5}\\right) \\| \\frac{4}{5}=\\frac{8}{15} \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
       }
     },
-    "pp:ec:2016:q31-s2": {
-      "question_uid": "pp:ec:2016:q31-s2",
+    "ec:2016:q31-s2": {
+      "question_uid": "ec:2016:q31-s2",
+      "legacy_uid": "pp:ec:2016:q31-s2",
       "exam_uid": "ec:2016:set2:main:q31",
       "title": "GATE EC 2016 | Set 2 | Question: 31",
       "section": "main",
@@ -1386,14 +1362,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
-        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-867ca3a9c9.webp\" />\n\nUsing KVL in the outer loop\n\n$60-5\\left(0.16 V_{x}\\right)-\\frac{V_{x}}{5} \\times 3-V_{x}=0$\n\n$\\text{or}\\quad v_{x}=25 \\mathrm{V}$\n\n$\\therefore$ The current flowing through\n\n$R_{2}=\\frac{V_{x}}{5}=\\frac{25}{5}=5 \\mathrm{A}$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-867ca3a9c9.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-867ca3a9c9.webp\" />\n\nUsing KVL in the outer loop\n\n$60-5\\left(0.16 V_{x}\\right)-\\frac{V_{x}}{5} \\times 3-V_{x}=0$\n\n$\\text{or}\\quad v_{x}=25 \\mathrm{V}$\n\n$\\therefore$ The current flowing through\n\n$R_{2}=\\frac{V_{x}}{5}=\\frac{25}{5}=5 \\mathrm{A}$\n\nTherefore, the correct answer is **5** (acceptable range: [4.9, 5.1])."
       }
     },
-    "pp:ec:2016:q32-s2": {
-      "question_uid": "pp:ec:2016:q32-s2",
+    "ec:2016:q32-s2": {
+      "question_uid": "ec:2016:q32-s2",
+      "legacy_uid": "pp:ec:2016:q32-s2",
       "exam_uid": "ec:2016:set2:main:q32",
       "title": "GATE EC 2016 | Set 2 | Question: 32",
       "section": "main",
@@ -1431,12 +1405,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - Digital Filters",
-        "markdown": "$$\\begin{aligned} \\text{Given, }H(s)&=\\frac{2 s+6}{s^{2}+6 s+8}=\\frac{1}{s+2}+\\frac{1}{s+4} \\\\ h(t) &=e^{-2 t} u(t)+e^{-4 t} u(t) \\\\ \\text{Given, }f_{s} &=2 \\mathrm{Hz} \\end{aligned}$$\n\n$$\\begin{aligned} \\text { For discrete time }, t &=n T_{s}=\\frac{n}{2} \\\\ h[n] &=\\left(e^{-n}+e^{-2 n}\\right) \\cup(n] \\\\ H(z) &=\\frac{1}{1-e^{-1} Z^{-1}}+\\frac{1}{1-e^{-2} Z^{-1}} \\\\ &=\\frac{Z}{Z-e^{-1}}+\\frac{Z}{Z-e^{-2}} \\\\ &=\\frac{2 Z^{2}-0.5032 Z}{Z^{2}-0.5032 Z+0.049} \\\\ K &=0.049 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text{Given, }H(s)&=\\frac{2 s+6}{s^{2}+6 s+8}=\\frac{1}{s+2}+\\frac{1}{s+4} \\\\ h(t) &=e^{-2 t} u(t)+e^{-4 t} u(t) \\\\ \\text{Given, }f_{s} &=2 \\mathrm{Hz} \\end{aligned}$$\n\n$$\\begin{aligned} \\text { For discrete time }, t &=n T_{s}=\\frac{n}{2} \\\\ h[n] &=\\left(e^{-n}+e^{-2 n}\\right) \\cup(n] \\\\ H(z) &=\\frac{1}{1-e^{-1} Z^{-1}}+\\frac{1}{1-e^{-2} Z^{-1}} \\\\ &=\\frac{Z}{Z-e^{-1}}+\\frac{Z}{Z-e^{-2}} \\\\ &=\\frac{2 Z^{2}-0.5032 Z}{Z^{2}-0.5032 Z+0.049} \\\\ K &=0.049 \\end{aligned}$$\n\nTherefore, the correct answer is **0.05** (acceptable range: [0.04, 0.06])."
       }
     },
-    "pp:ec:2016:q33-s2": {
-      "question_uid": "pp:ec:2016:q33-s2",
+    "ec:2016:q33-s2": {
+      "question_uid": "ec:2016:q33-s2",
+      "legacy_uid": "pp:ec:2016:q33-s2",
       "exam_uid": "ec:2016:set2:main:q33",
       "title": "GATE EC 2016 | Set 2 | Question: 33",
       "section": "main",
@@ -1474,12 +1448,12 @@
       },
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
-        "markdown": "From the given question\n\n$$\\begin{aligned} x_{1}[n] &=x\\left[\\frac{n}{3}\\right] \\\\ x_{1}[k]=\\{12,2 j, 0,&-2 j, 12,2 j, 0,-2 j, 12,2 j, 0,-2\\} \\\\ x_{1}[8] &=12 ; \\quad x_{1}(11)=-2 j \\\\ \\therefore \\quad \\frac{x_{1}(8)}{x_{1}(11)} &=\\left|\\frac{12}{-2 j}\\right|=6 \\end{aligned}$$",
-        "images": []
+        "markdown": "From the given question\n\n$$\\begin{aligned} x_{1}[n] &=x\\left[\\frac{n}{3}\\right] \\\\ x_{1}[k]=\\{12,2 j, 0,&-2 j, 12,2 j, 0,-2 j, 12,2 j, 0,-2\\} \\\\ x_{1}[8] &=12 ; \\quad x_{1}(11)=-2 j \\\\ \\therefore \\quad \\frac{x_{1}(8)}{x_{1}(11)} &=\\left|\\frac{12}{-2 j}\\right|=6 \\end{aligned}$$\n\nTherefore, the correct answer is **6** (acceptable range: [5.9, 6.1])."
       }
     },
-    "pp:ec:2016:q34-s2": {
-      "question_uid": "pp:ec:2016:q34-s2",
+    "ec:2016:q34-s2": {
+      "question_uid": "ec:2016:q34-s2",
+      "legacy_uid": "pp:ec:2016:q34-s2",
       "exam_uid": "ec:2016:set2:main:q34",
       "title": "GATE EC 2016 | Set 2 | Question: 34",
       "section": "main",
@@ -1517,15 +1491,12 @@
       },
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
-        "markdown": "At $t = 0^{-}$\n\n<img src=\"/question-images/ec/2016/ec-2016-c164b8bd34.webp\" />\n\n$i_{L}\\left(0^{-}\\right)=\\frac{10}{1}=10 \\mathrm{A}$\n\nFor $t>0$ (using Laplace transform)\n\n<img src=\"/question-images/ec/2016/ec-2016-9d86c36a19.webp\" />\n\n$$\\begin{array}{l} I(s)=\\frac{10 \\times 10^{-3}}{10^{-3} s+\\frac{10^{6}}{10 s}} \\\\ V_{c}(s)=I(s) \\times \\frac{10^{6}}{10 s} \\\\ V_{c}(s)=\\frac{10^{6}}{s^{2}+10^{8}} \\end{array}$$\n\nTaking inverse Laplace, we get\n\n$V_{c}(t)=100 \\sin 10^{4} t \\mathrm{V}$\n\n$\\therefore$ Steady state magnitude voltage across capacitor is 100V.",
-        "images": [
-          "/question-images/ec/2016/ec-2016-c164b8bd34.webp",
-          "/question-images/ec/2016/ec-2016-9d86c36a19.webp"
-        ]
+        "markdown": "At $t = 0^{-}$\n\n<img src=\"/question-images/ec/2016/ec-2016-c164b8bd34.webp\" />\n\n$i_{L}\\left(0^{-}\\right)=\\frac{10}{1}=10 \\mathrm{A}$\n\nFor $t>0$ (using Laplace transform)\n\n<img src=\"/question-images/ec/2016/ec-2016-9d86c36a19.webp\" />\n\n$$\\begin{array}{l} I(s)=\\frac{10 \\times 10^{-3}}{10^{-3} s+\\frac{10^{6}}{10 s}} \\\\ V_{c}(s)=I(s) \\times \\frac{10^{6}}{10 s} \\\\ V_{c}(s)=\\frac{10^{6}}{s^{2}+10^{8}} \\end{array}$$\n\nTaking inverse Laplace, we get\n\n$V_{c}(t)=100 \\sin 10^{4} t \\mathrm{V}$\n\n$\\therefore$ Steady state magnitude voltage across capacitor is 100V.\n\nTherefore, the correct answer is **100** (acceptable range: [99, 101])."
       }
     },
-    "pp:ec:2016:q35-s2": {
-      "question_uid": "pp:ec:2016:q35-s2",
+    "ec:2016:q35-s2": {
+      "question_uid": "ec:2016:q35-s2",
+      "legacy_uid": "pp:ec:2016:q35-s2",
       "exam_uid": "ec:2016:set2:main:q35",
       "title": "GATE EC 2016 | Set 2 | Question: 35",
       "section": "main",
@@ -1565,12 +1536,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "In a MOS - Capacitor\n\n$$\\begin{aligned} \\left(V_{G 1}-V_{T}\\right) & \\propto Q \\\\ \\frac{\\left(V_{G 1}-V_{T}\\right)}{\\left(V_{G 2}-V_{T}\\right)} &=\\frac{Q_{1}}{Q_{2}} \\\\ \\frac{0.8-V_{T}}{1.3-V_{T}} &=\\frac{2 \\times 10^{11}}{4 \\times 10^{11}} \\\\ \\text { On solving, } \\quad V_{T} &=0.3 \\mathrm{V}\\\\ \\text{Now Consider, } &\\frac{V_{G 2}-V_{T}}{V_{G 3}-V_{T}}=\\frac{Q_{2}}{Q_{3}} \\\\ \\frac{1.3-0.3}{1.8-0.3}&=\\frac{4 \\times 10^{11}}{Q_{3}}\\\\ \\end{aligned}$$\n\nInverse charge density with $V_{G}=1.8 \\mathrm{V}$\n\n$Q_{3}=6 \\times 10^{11} / \\mathrm{cm}^{2}$",
-        "images": []
+        "markdown": "In a MOS - Capacitor\n\n$$\\begin{aligned} \\left(V_{G 1}-V_{T}\\right) & \\propto Q \\\\ \\frac{\\left(V_{G 1}-V_{T}\\right)}{\\left(V_{G 2}-V_{T}\\right)} &=\\frac{Q_{1}}{Q_{2}} \\\\ \\frac{0.8-V_{T}}{1.3-V_{T}} &=\\frac{2 \\times 10^{11}}{4 \\times 10^{11}} \\\\ \\text { On solving, } \\quad V_{T} &=0.3 \\mathrm{V}\\\\ \\text{Now Consider, } &\\frac{V_{G 2}-V_{T}}{V_{G 3}-V_{T}}=\\frac{Q_{2}}{Q_{3}} \\\\ \\frac{1.3-0.3}{1.8-0.3}&=\\frac{4 \\times 10^{11}}{Q_{3}}\\\\ \\end{aligned}$$\n\nInverse charge density with $V_{G}=1.8 \\mathrm{V}$\n\n$Q_{3}=6 \\times 10^{11} / \\mathrm{cm}^{2}$\n\nTherefore, the correct answer is **B**."
       }
     },
-    "pp:ec:2016:q36-s2": {
-      "question_uid": "pp:ec:2016:q36-s2",
+    "ec:2016:q36-s2": {
+      "question_uid": "ec:2016:q36-s2",
+      "legacy_uid": "pp:ec:2016:q36-s2",
       "exam_uid": "ec:2016:set2:main:q36",
       "title": "GATE EC 2016 | Set 2 | Question: 36",
       "section": "main",
@@ -1610,12 +1581,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "In any type of PN junction\n\n$$\\begin{aligned} v_{B R} &\\propto \\frac{1}{\\text { Doping Concentration }}\\\\ \\text{i.e.}\\quad V_{B R} &\\propto \\frac{1}{N_{D}} \\text { (or)  } V_{B R}=\\frac{\\varepsilon E^{2}}{2 q N_{D}} \\\\ \\therefore V_{BR} \\times N_{D} \\rightarrow &\\text { is a constant } \\end{aligned}$$",
-        "images": []
+        "markdown": "In any type of PN junction\n\n$$\\begin{aligned} v_{B R} &\\propto \\frac{1}{\\text { Doping Concentration }}\\\\ \\text{i.e.}\\quad V_{B R} &\\propto \\frac{1}{N_{D}} \\text { (or)  } V_{B R}=\\frac{\\varepsilon E^{2}}{2 q N_{D}} \\\\ \\therefore V_{BR} \\times N_{D} \\rightarrow &\\text { is a constant } \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2016:q37-s2": {
-      "question_uid": "pp:ec:2016:q37-s2",
+    "ec:2016:q37-s2": {
+      "question_uid": "ec:2016:q37-s2",
+      "legacy_uid": "pp:ec:2016:q37-s2",
       "exam_uid": "ec:2016:set2:main:q37",
       "title": "GATE EC 2016 | Set 2 | Question: 37",
       "section": "main",
@@ -1653,12 +1624,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
-        "markdown": "$$\\begin{aligned} |\\varepsilon|&=\\frac{q}{\\varepsilon} N_{D} X_{N} \\\\ 50 \\times 10^{3}&=\\frac{1.6 \\times 10^{-19}}{8.85 \\times 10^{-14} \\times 11.7} \\times 10^{17} \\times X_{N} \\\\ \\text { On solving, } \\quad X_{N} &=3.2356 \\times 10^{-6} \\mathrm{cm} \\\\ &=3.236 \\times 10^{-8} \\mathrm{m} \\\\ x_{N} &=L=32.36 \\mathrm{nm}\\\\ &=L=32.36 \\mathrm{nm} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} |\\varepsilon|&=\\frac{q}{\\varepsilon} N_{D} X_{N} \\\\ 50 \\times 10^{3}&=\\frac{1.6 \\times 10^{-19}}{8.85 \\times 10^{-14} \\times 11.7} \\times 10^{17} \\times X_{N} \\\\ \\text { On solving, } \\quad X_{N} &=3.2356 \\times 10^{-6} \\mathrm{cm} \\\\ &=3.236 \\times 10^{-8} \\mathrm{m} \\\\ x_{N} &=L=32.36 \\mathrm{nm}\\\\ &=L=32.36 \\mathrm{nm} \\end{aligned}$$\n\nTherefore, the correct answer is **32** (acceptable range: [30, 34])."
       }
     },
-    "pp:ec:2016:q38-s2": {
-      "question_uid": "pp:ec:2016:q38-s2",
+    "ec:2016:q38-s2": {
+      "question_uid": "ec:2016:q38-s2",
+      "legacy_uid": "pp:ec:2016:q38-s2",
       "exam_uid": "ec:2016:set2:main:q38",
       "title": "GATE EC 2016 | Set 2 | Question: 38",
       "section": "main",
@@ -1696,12 +1667,12 @@
       },
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
-        "markdown": "since $V_{G S} \\gt V_{D S}$ MOSFET is in linear operation\n\n$$\\begin{aligned} I_{D} &=K_{N}^{\\prime}\\left[V_{G S}-V_{T}\\right] V_{D S} \\\\ \\frac{d I_{D}}{d V_{G S}} &=K_{N} V_{D S} \\\\ g_{m} &=K_{N}^{\\prime} V_{D S} \\\\ 0.5 \\times 10^{-6} &=K_{N}^{\\prime}\\left[50 \\times 10^{-3}\\right] \\therefore K_{N}^{\\prime}=10^{-5} \\\\ I_{D} &=K_{N}\\left[V_{G S}-V_{T}\\right] V_{D S} \\\\ \\frac{d I_{D}}{d V_{D S}} &=K_{N}\\left[V_{G S}-V_{T}\\right] \\\\ g_{d} &=K_{N}\\left[V_{G S}-V_{T}\\right] \\\\ 8 \\times 10^{-6} &=10^{-5}\\left[2-V_{T}\\right] \\\\ \\text { On solving } V_{T} &=1.2 \\mathrm{V} \\end{aligned}$$",
-        "images": []
+        "markdown": "since $V_{G S} \\gt V_{D S}$ MOSFET is in linear operation\n\n$$\\begin{aligned} I_{D} &=K_{N}^{\\prime}\\left[V_{G S}-V_{T}\\right] V_{D S} \\\\ \\frac{d I_{D}}{d V_{G S}} &=K_{N} V_{D S} \\\\ g_{m} &=K_{N}^{\\prime} V_{D S} \\\\ 0.5 \\times 10^{-6} &=K_{N}^{\\prime}\\left[50 \\times 10^{-3}\\right] \\therefore K_{N}^{\\prime}=10^{-5} \\\\ I_{D} &=K_{N}\\left[V_{G S}-V_{T}\\right] V_{D S} \\\\ \\frac{d I_{D}}{d V_{D S}} &=K_{N}\\left[V_{G S}-V_{T}\\right] \\\\ g_{d} &=K_{N}\\left[V_{G S}-V_{T}\\right] \\\\ 8 \\times 10^{-6} &=10^{-5}\\left[2-V_{T}\\right] \\\\ \\text { On solving } V_{T} &=1.2 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **1.2** (acceptable range: [1.18, 1.22])."
       }
     },
-    "pp:ec:2016:q39-s2": {
-      "question_uid": "pp:ec:2016:q39-s2",
+    "ec:2016:q39-s2": {
+      "question_uid": "ec:2016:q39-s2",
+      "legacy_uid": "pp:ec:2016:q39-s2",
       "exam_uid": "ec:2016:set2:main:q39",
       "title": "GATE EC 2016 | Set 2 | Question: 39",
       "section": "main",
@@ -1739,12 +1710,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
-        "markdown": "$V_{\\text {ripple }}=\\frac{I_{D C} \\cdot T}{C}=\\frac{1 \\times 1 \\times 10^{-3}}{475 \\times 10^{-6}}=2.105 \\mathrm{Volts}$",
-        "images": []
+        "markdown": "$V_{\\text {ripple }}=\\frac{I_{D C} \\cdot T}{C}=\\frac{1 \\times 1 \\times 10^{-3}}{475 \\times 10^{-6}}=2.105 \\mathrm{Volts}$\n\nTherefore, the correct answer is **2.05** (acceptable range: [1.9, 2.2])."
       }
     },
-    "pp:ec:2016:q40-s2": {
-      "question_uid": "pp:ec:2016:q40-s2",
+    "ec:2016:q40-s2": {
+      "question_uid": "ec:2016:q40-s2",
+      "legacy_uid": "pp:ec:2016:q40-s2",
       "exam_uid": "ec:2016:set2:main:q40",
       "title": "GATE EC 2016 | Set 2 | Question: 40",
       "section": "main",
@@ -1782,14 +1753,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "Initially switch is closed and $V_{B}=10 \\mathrm{V}$\n\n$\\Rightarrow \\quad V_{01}=-10 \\mathrm{V}$\n\n$\\Rightarrow \\quad V_{0}=-V_{2}=-5 \\mathrm{V}$\n\n$\\Rightarrow \\quad V_{A}=\\frac{V_{0}}{4 k+1 k} \\times 1 k=-1 V$\n\n<img src=\"/question-images/ec/2016/ec-2016-9be1fb5f1e.webp\" />\n\nAt t=0\n\nThe switch is opened and as $t \\rightarrow \\infty, V_{B}$ approaches $-10 \\mathrm{V}$\n\nLet at $t=T_{1}$\n\n$V_{B}$ exceeds $V_{A}(-1 \\mathrm{V})$ so that $V_{01}$changes from\n\n$-10 \\vee \\text{ to } 10 \\vee$\n\n$$\\begin{aligned} \\Rightarrow V_{0} \\text { charges from }-5 & \\vee \\text { to } 5 \\mathrm{V} \\\\ V_{B} &=V_{f}+\\left(V_{i}-V_{f}\\right) e^{-t / \\tau} \\\\ &=-10+[10-(-10)] e^{-t / R C} \\\\ \\text { At. } t=T_{1} \\quad & V_{B}=-1 \\\\ -1 \\mathrm{V} &=-10+20 e^{-T / R C}\\\\ \\Rightarrow \\quad T_{1}&=R C \\ln \\frac{20}{9} \\\\ &=10 \\times 10^{3} \\times 100 \\times 10^{-6} \\times 0.798 \\\\ &=0.798 \\mathrm{sec} \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-9be1fb5f1e.webp"
-        ]
+        "markdown": "Initially switch is closed and $V_{B}=10 \\mathrm{V}$\n\n$\\Rightarrow \\quad V_{01}=-10 \\mathrm{V}$\n\n$\\Rightarrow \\quad V_{0}=-V_{2}=-5 \\mathrm{V}$\n\n$\\Rightarrow \\quad V_{A}=\\frac{V_{0}}{4 k+1 k} \\times 1 k=-1 V$\n\n<img src=\"/question-images/ec/2016/ec-2016-9be1fb5f1e.webp\" />\n\nAt t=0\n\nThe switch is opened and as $t \\rightarrow \\infty, V_{B}$ approaches $-10 \\mathrm{V}$\n\nLet at $t=T_{1}$\n\n$V_{B}$ exceeds $V_{A}(-1 \\mathrm{V})$ so that $V_{01}$changes from\n\n$-10 \\vee \\text{ to } 10 \\vee$\n\n$$\\begin{aligned} \\Rightarrow V_{0} \\text { charges from }-5 & \\vee \\text { to } 5 \\mathrm{V} \\\\ V_{B} &=V_{f}+\\left(V_{i}-V_{f}\\right) e^{-t / \\tau} \\\\ &=-10+[10-(-10)] e^{-t / R C} \\\\ \\text { At. } t=T_{1} \\quad & V_{B}=-1 \\\\ -1 \\mathrm{V} &=-10+20 e^{-T / R C}\\\\ \\Rightarrow \\quad T_{1}&=R C \\ln \\frac{20}{9} \\\\ &=10 \\times 10^{3} \\times 100 \\times 10^{-6} \\times 0.798 \\\\ &=0.798 \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **0.8** (acceptable range: [0.7, 0.9])."
       }
     },
-    "pp:ec:2016:q41-s2": {
-      "question_uid": "pp:ec:2016:q41-s2",
+    "ec:2016:q41-s2": {
+      "question_uid": "ec:2016:q41-s2",
+      "legacy_uid": "pp:ec:2016:q41-s2",
       "exam_uid": "ec:2016:set2:main:q41",
       "title": "GATE EC 2016 | Set 2 | Question: 41",
       "section": "main",
@@ -1827,12 +1796,12 @@
       },
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
-        "markdown": "$$\\begin{aligned} \\text { Overall input } &=V_{\\text {ios }}+V_{\\text {input }} \\\\ &=5 \\mathrm{mV}+25 \\mathrm{mV}=30 \\mathrm{mV}\\\\ v_{0}&=\\frac{\\left(1+\\frac{R_{F}}{R_{1}}\\right)}{1+\\frac{1}{A_{a}}\\left(1+\\frac{R_{F}}{R_{1}}\\right)} \\times \\text { Overall input } \\\\ &=\\frac{1+\\frac{15 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}}{1+\\frac{1}{100}\\left(1+\\frac{15 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)} \\times 30 \\times 10^{-3}=413.79 \\mathrm{mv} \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} \\text { Overall input } &=V_{\\text {ios }}+V_{\\text {input }} \\\\ &=5 \\mathrm{mV}+25 \\mathrm{mV}=30 \\mathrm{mV}\\\\ v_{0}&=\\frac{\\left(1+\\frac{R_{F}}{R_{1}}\\right)}{1+\\frac{1}{A_{a}}\\left(1+\\frac{R_{F}}{R_{1}}\\right)} \\times \\text { Overall input } \\\\ &=\\frac{1+\\frac{15 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}}{1+\\frac{1}{100}\\left(1+\\frac{15 \\mathrm{k} \\Omega}{1 \\mathrm{k} \\Omega}\\right)} \\times 30 \\times 10^{-3}=413.79 \\mathrm{mv} \\end{aligned}$$\n\nTherefore, the correct answer is **412.5** (acceptable range: [400, 425])."
       }
     },
-    "pp:ec:2016:q42-s2": {
-      "question_uid": "pp:ec:2016:q42-s2",
+    "ec:2016:q42-s2": {
+      "question_uid": "ec:2016:q42-s2",
+      "legacy_uid": "pp:ec:2016:q42-s2",
       "exam_uid": "ec:2016:set2:main:q42",
       "title": "GATE EC 2016 | Set 2 | Question: 42",
       "section": "main",
@@ -1872,16 +1841,12 @@
       },
       "detailed_solution": {
         "concept": "Microprocessors - Interfacing and Peripheral Devices",
-        "markdown": "$$\\begin{aligned} &  \\text {8kB ROM is given }\\\\ &\\therefore 2^{n}=8 k B=2^{3}\\left(2^{10}\\right)=2^{13} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2016/ec-2016-6c86b942dd.webp\" />\n\n$\\therefore$ 13 Address lines are required for memory chip.\n\nBut the address range given as 1000H-2FFF H\n\n<img src=\"/question-images/ec/2016/ec-2016-c6a2739c0c.webp\" />\n\nIn order to get $\\overline{C S}$ as low, the condition is\n\n$A_{15}=A_{14}=0$ and $A_{13}=0 / 1, A_{12}=1 / 0$\n\nThe circuit to generate an active low chip select signal can be given as shown below:\n\n<img src=\"/question-images/ec/2016/ec-2016-56c20b58b2.webp\" />\n\nThe logical expression can be written as,\n\n$$\\begin{aligned} F &=A_{15}+A_{14}+\\left(A_{13} \\odot A_{12}\\right) \\\\ &=A_{15}+A_{14}+\\left(A_{13} \\cdot A_{12}+\\bar{A}_{13} \\cdot \\bar{A}_{12}\\right) \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-6c86b942dd.webp",
-          "/question-images/ec/2016/ec-2016-c6a2739c0c.webp",
-          "/question-images/ec/2016/ec-2016-56c20b58b2.webp"
-        ]
+        "markdown": "$$\\begin{aligned} &  \\text {8kB ROM is given }\\\\ &\\therefore 2^{n}=8 k B=2^{3}\\left(2^{10}\\right)=2^{13} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2016/ec-2016-6c86b942dd.webp\" />\n\n$\\therefore$ 13 Address lines are required for memory chip.\n\nBut the address range given as 1000H-2FFF H\n\n<img src=\"/question-images/ec/2016/ec-2016-c6a2739c0c.webp\" />\n\nIn order to get $\\overline{C S}$ as low, the condition is\n\n$A_{15}=A_{14}=0$ and $A_{13}=0 / 1, A_{12}=1 / 0$\n\nThe circuit to generate an active low chip select signal can be given as shown below:\n\n<img src=\"/question-images/ec/2016/ec-2016-56c20b58b2.webp\" />\n\nThe logical expression can be written as,\n\n$$\\begin{aligned} F &=A_{15}+A_{14}+\\left(A_{13} \\odot A_{12}\\right) \\\\ &=A_{15}+A_{14}+\\left(A_{13} \\cdot A_{12}+\\bar{A}_{13} \\cdot \\bar{A}_{12}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2016:q43-s2": {
-      "question_uid": "pp:ec:2016:q43-s2",
+    "ec:2016:q43-s2": {
+      "question_uid": "ec:2016:q43-s2",
+      "legacy_uid": "pp:ec:2016:q43-s2",
       "exam_uid": "ec:2016:set2:main:q43",
       "title": "GATE EC 2016 | Set 2 | Question: 43",
       "section": "main",
@@ -1924,8 +1889,9 @@
         "markdown": null
       }
     },
-    "pp:ec:2016:q44-s2": {
-      "question_uid": "pp:ec:2016:q44-s2",
+    "ec:2016:q44-s2": {
+      "question_uid": "ec:2016:q44-s2",
+      "legacy_uid": "pp:ec:2016:q44-s2",
       "exam_uid": "ec:2016:set2:main:q44",
       "title": "GATE EC 2016 | Set 2 | Question: 44",
       "section": "main",
@@ -1965,16 +1931,12 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Finite State Machine and Miscellaneous",
-        "markdown": "For State A\n\n<img src=\"/question-images/ec/2016/ec-2016-7abe31cf5a.webp\" />\n\nFor State B\n\n<img src=\"/question-images/ec/2016/ec-2016-db62337bfd.webp\" />\n\nFor State C\n\n<img src=\"/question-images/ec/2016/ec-2016-f1394c4ff6.webp\" />\n\nIn state 'C' when X Y Z= 111 ; the ambiguity occurs. Because from state 'C'\n\n$$\\begin{aligned} \\text{When, }\\quad X&=1\\\\ Z&=1 \\Rightarrow \\text { Next state }=A \\\\ \\text{When, }\\quad Y&=1\\\\ Z&=1 \\Rightarrow \\text { Next state }=B \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-7abe31cf5a.webp",
-          "/question-images/ec/2016/ec-2016-db62337bfd.webp",
-          "/question-images/ec/2016/ec-2016-f1394c4ff6.webp"
-        ]
+        "markdown": "For State A\n\n<img src=\"/question-images/ec/2016/ec-2016-7abe31cf5a.webp\" />\n\nFor State B\n\n<img src=\"/question-images/ec/2016/ec-2016-db62337bfd.webp\" />\n\nFor State C\n\n<img src=\"/question-images/ec/2016/ec-2016-f1394c4ff6.webp\" />\n\nIn state 'C' when X Y Z= 111 ; the ambiguity occurs. Because from state 'C'\n\n$$\\begin{aligned} \\text{When, }\\quad X&=1\\\\ Z&=1 \\Rightarrow \\text { Next state }=A \\\\ \\text{When, }\\quad Y&=1\\\\ Z&=1 \\Rightarrow \\text { Next state }=B \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     },
-    "pp:ec:2016:q45-s2": {
-      "question_uid": "pp:ec:2016:q45-s2",
+    "ec:2016:q45-s2": {
+      "question_uid": "ec:2016:q45-s2",
+      "legacy_uid": "pp:ec:2016:q45-s2",
       "exam_uid": "ec:2016:set2:main:q45",
       "title": "GATE EC 2016 | Set 2 | Question: 45",
       "section": "main",
@@ -2012,12 +1974,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
-        "markdown": "$$\\begin{aligned} G(s)&=\\frac{1}{s^{2}+2 s} \\\\ \\frac{Y(s)}{R(s)}&=\\frac{\\frac{K}{s^{2}+2 s}}{1+\\frac{K}{s^{2}+2 s}}=\\frac{K}{s^{2}+2 s+K} \\end{aligned}$$\n\nMinimum settling time and no overshoot implies critical damping i.e.\n\n$$\\begin{aligned} \\xi &=1 \\\\ \\omega_{n} &=\\sqrt{K} \\\\ \\therefore \\quad 2 \\times \\xi \\cdot \\omega_{n} &=2 \\\\ \\omega_{n} &=1 \\\\ \\Rightarrow \\quad \\sqrt{K} &=1 \\text { or } K=1 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} G(s)&=\\frac{1}{s^{2}+2 s} \\\\ \\frac{Y(s)}{R(s)}&=\\frac{\\frac{K}{s^{2}+2 s}}{1+\\frac{K}{s^{2}+2 s}}=\\frac{K}{s^{2}+2 s+K} \\end{aligned}$$\n\nMinimum settling time and no overshoot implies critical damping i.e.\n\n$$\\begin{aligned} \\xi &=1 \\\\ \\omega_{n} &=\\sqrt{K} \\\\ \\therefore \\quad 2 \\times \\xi \\cdot \\omega_{n} &=2 \\\\ \\omega_{n} &=1 \\\\ \\Rightarrow \\quad \\sqrt{K} &=1 \\text { or } K=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.95, 1.05])."
       }
     },
-    "pp:ec:2016:q46-s2": {
-      "question_uid": "pp:ec:2016:q46-s2",
+    "ec:2016:q46-s2": {
+      "question_uid": "ec:2016:q46-s2",
+      "legacy_uid": "pp:ec:2016:q46-s2",
       "exam_uid": "ec:2016:set2:main:q46",
       "title": "GATE EC 2016 | Set 2 | Question: 46",
       "section": "main",
@@ -2055,12 +2017,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$1+G(s) H(s)=1+\\frac{K}{(s+1)(s+2)(s+3)}=0$\n\n$(s+1)\\left(s^{2}+5 s+6\\right)+K=0$\n\n$s^{3}+5 s^{2}+6 s+s^{2}+5 s+6+k=0$\n\n$\\Rightarrow s^{3}+6 s^{2}+11 s+6+K=$\n\nGain margin =0dB and phase margin $=0^{\\circ}$\n\nIt implies marginal stable system\n\nBy Routh Array\n\n$$\\begin{array}{r|rr} s^{3} & 1 & 11 \\\\ s^{2} & 6 &(6+k) \\\\ s & \\frac{66-6-K}{6} & 0 \\\\ s^{\\circ} & 6+K & \\end{array}$$\n\nFor marginal stable system,\n\n$60-K=0$\n\n$K=60$",
-        "images": []
+        "markdown": "$1+G(s) H(s)=1+\\frac{K}{(s+1)(s+2)(s+3)}=0$\n\n$(s+1)\\left(s^{2}+5 s+6\\right)+K=0$\n\n$s^{3}+5 s^{2}+6 s+s^{2}+5 s+6+k=0$\n\n$\\Rightarrow s^{3}+6 s^{2}+11 s+6+K=$\n\nGain margin =0dB and phase margin $=0^{\\circ}$\n\nIt implies marginal stable system\n\nBy Routh Array\n\n$$\\begin{array}{r|rr} s^{3} & 1 & 11 \\\\ s^{2} & 6 &(6+k) \\\\ s & \\frac{66-6-K}{6} & 0 \\\\ s^{\\circ} & 6+K & \\end{array}$$\n\nFor marginal stable system,\n\n$60-K=0$\n\n$K=60$\n\nTherefore, the correct answer is **60** (acceptable range: [59.5, 60.5])."
       }
     },
-    "pp:ec:2016:q47-s2": {
-      "question_uid": "pp:ec:2016:q47-s2",
+    "ec:2016:q47-s2": {
+      "question_uid": "ec:2016:q47-s2",
+      "legacy_uid": "pp:ec:2016:q47-s2",
       "exam_uid": "ec:2016:set2:main:q47",
       "title": "GATE EC 2016 | Set 2 | Question: 47",
       "section": "main",
@@ -2098,12 +2060,12 @@
       },
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
-        "markdown": "$$\\begin{aligned} G(s)=\\frac{K}{(s+0.1)(s+10)\\left(s+p_{1}\\right)} \\\\ \\angle G(s)=-\\tan ^{-1} \\frac{\\omega}{0.1}-\\tan ^{-1} \\frac{\\omega}{10}-\\tan ^{-1} \\frac{\\omega}{p_{1}} \\\\ \\left.\\angle G(s)\\right|_{\\omega=1}=-\\tan ^{-1} \\frac{1}{0.1}-\\tan ^{-1} \\frac{1}{10}-\\tan ^{-1} \\frac{1}{p_{1}} \\\\ =-135^{\\circ} \\\\ -\\tan ^{-1} 10-\\tan ^{-1} 0.1-\\tan ^{-1} \\frac{1}{p_{1}}=-135^{\\circ} \\\\ -84.28^{\\circ}-5.71^{\\circ}-\\tan ^{-1} \\frac{1}{p_{1}}=-135^{\\circ} \\\\ -\\tan ^{-1} \\frac{1}{p_{1}}=-135^{\\circ}+90^{\\circ}\\\\ \\tan ^{-1} \\frac{1}{p_{1}} =45^{\\circ} \\\\ \\frac{1}{p_{1}} =1 \\Rightarrow p_{1}=1 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} G(s)=\\frac{K}{(s+0.1)(s+10)\\left(s+p_{1}\\right)} \\\\ \\angle G(s)=-\\tan ^{-1} \\frac{\\omega}{0.1}-\\tan ^{-1} \\frac{\\omega}{10}-\\tan ^{-1} \\frac{\\omega}{p_{1}} \\\\ \\left.\\angle G(s)\\right|_{\\omega=1}=-\\tan ^{-1} \\frac{1}{0.1}-\\tan ^{-1} \\frac{1}{10}-\\tan ^{-1} \\frac{1}{p_{1}} \\\\ =-135^{\\circ} \\\\ -\\tan ^{-1} 10-\\tan ^{-1} 0.1-\\tan ^{-1} \\frac{1}{p_{1}}=-135^{\\circ} \\\\ -84.28^{\\circ}-5.71^{\\circ}-\\tan ^{-1} \\frac{1}{p_{1}}=-135^{\\circ} \\\\ -\\tan ^{-1} \\frac{1}{p_{1}}=-135^{\\circ}+90^{\\circ}\\\\ \\tan ^{-1} \\frac{1}{p_{1}} =45^{\\circ} \\\\ \\frac{1}{p_{1}} =1 \\Rightarrow p_{1}=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.95, 1.05])."
       }
     },
-    "pp:ec:2016:q48-s2": {
-      "question_uid": "pp:ec:2016:q48-s2",
+    "ec:2016:q48-s2": {
+      "question_uid": "ec:2016:q48-s2",
+      "legacy_uid": "pp:ec:2016:q48-s2",
       "exam_uid": "ec:2016:set2:main:q48",
       "title": "GATE EC 2016 | Set 2 | Question: 48",
       "section": "main",
@@ -2141,12 +2103,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "Power spectral density of $x(t)=S_{X}(t)$\n\n$$\\begin{aligned} &S_{X}(f)=\\frac{|G(f)|^{2}}{T} \\sum_{n=-\\infty}^{\\infty} R_{b}(\\tau) e^{j 2 \\pi fn \\tau} \\\\ &R_{b}(\\tau)=E\\left[\\beta_{n} \\beta_{n-\\tau}\\right] \\\\ &=E\\left[\\left(\\alpha_{n}+k \\alpha_{n-3}\\right)\\left(\\alpha_{n-\\tau}+k \\alpha_{n-\\tau-3}\\right)\\right] \\\\ &=E\\left[\\alpha_{n} \\alpha_{n-\\tau}\\right]+k E\\left[\\alpha_{n-3} \\alpha_{n-7}\\right]+k E\\left[\\alpha_{n} \\alpha_{n-\\tau-3}\\right] \\\\ &+k^{2} E\\left[\\alpha_{n-3} \\alpha_{n--3}\\right] \\\\ &=E\\left[\\alpha_{n} \\alpha_{n-\\tau}\\right]+k E\\left[\\alpha_{n-3} \\alpha_{n-\\tau-3+3}\\right]+k E\\left[\\alpha_{n} \\alpha_{n-\\tau-3}\\right] \\\\ &\\quad +k^{2} E\\left[\\alpha_{n-3} \\alpha_{n-\\tau-3}\\right] \\\\ &= A(\\tau)+k R(\\tau-3)+k R(\\tau+3)+k^{2} R(\\tau) \\\\ &=\\left(1+k^{2}\\right) R(\\tau)+k R(\\tau+3)+k R(\\tau-3) & \\end{aligned}$$\n\nHence autocorrection function can be defined\n\n$$R_{b}(\\tau)=\\left\\{\\begin{array}{cc} 1+k^{2} & \\tau=0 \\\\ k & \\tau=\\pm 3 \\\\ 0 & \\text { otherwise } \\end{array}\\right\\}$$\n\nPower spectral density\n\n$$\\begin{aligned} s_{b}(f)&=1+k^{2}+2 k \\cos (2 \\pi f 3 T)\\\\ \\text{Null will occur at }f&=\\frac{1}{3 T} \\\\ f&=\\frac{1}{3 T}\\\\ s_{b}(f)&=1+k^{2}+2 k \\cos (2 \\pi)=0\\\\ \\Rightarrow\\quad 1+k^{2}+2 k&=0 \\\\ \\Rightarrow\\quad (k+1)^{2}&=0 \\\\ \\therefore \\quad k&=-1 \\end{aligned}$$",
-        "images": []
+        "markdown": "Power spectral density of $x(t)=S_{X}(t)$\n\n$$\\begin{aligned} &S_{X}(f)=\\frac{|G(f)|^{2}}{T} \\sum_{n=-\\infty}^{\\infty} R_{b}(\\tau) e^{j 2 \\pi fn \\tau} \\\\ &R_{b}(\\tau)=E\\left[\\beta_{n} \\beta_{n-\\tau}\\right] \\\\ &=E\\left[\\left(\\alpha_{n}+k \\alpha_{n-3}\\right)\\left(\\alpha_{n-\\tau}+k \\alpha_{n-\\tau-3}\\right)\\right] \\\\ &=E\\left[\\alpha_{n} \\alpha_{n-\\tau}\\right]+k E\\left[\\alpha_{n-3} \\alpha_{n-7}\\right]+k E\\left[\\alpha_{n} \\alpha_{n-\\tau-3}\\right] \\\\ &+k^{2} E\\left[\\alpha_{n-3} \\alpha_{n--3}\\right] \\\\ &=E\\left[\\alpha_{n} \\alpha_{n-\\tau}\\right]+k E\\left[\\alpha_{n-3} \\alpha_{n-\\tau-3+3}\\right]+k E\\left[\\alpha_{n} \\alpha_{n-\\tau-3}\\right] \\\\ &\\quad +k^{2} E\\left[\\alpha_{n-3} \\alpha_{n-\\tau-3}\\right] \\\\ &= A(\\tau)+k R(\\tau-3)+k R(\\tau+3)+k^{2} R(\\tau) \\\\ &=\\left(1+k^{2}\\right) R(\\tau)+k R(\\tau+3)+k R(\\tau-3) & \\end{aligned}$$\n\nHence autocorrection function can be defined\n\n$$R_{b}(\\tau)=\\left\\{\\begin{array}{cc} 1+k^{2} & \\tau=0 \\\\ k & \\tau=\\pm 3 \\\\ 0 & \\text { otherwise } \\end{array}\\right\\}$$\n\nPower spectral density\n\n$$\\begin{aligned} s_{b}(f)&=1+k^{2}+2 k \\cos (2 \\pi f 3 T)\\\\ \\text{Null will occur at }f&=\\frac{1}{3 T} \\\\ f&=\\frac{1}{3 T}\\\\ s_{b}(f)&=1+k^{2}+2 k \\cos (2 \\pi)=0\\\\ \\Rightarrow\\quad 1+k^{2}+2 k&=0 \\\\ \\Rightarrow\\quad (k+1)^{2}&=0 \\\\ \\therefore \\quad k&=-1 \\end{aligned}$$\n\nTherefore, the correct answer is **-1** (acceptable range: [-1.01, -0.99])."
       }
     },
-    "pp:ec:2016:q49-s2": {
-      "question_uid": "pp:ec:2016:q49-s2",
+    "ec:2016:q49-s2": {
+      "question_uid": "ec:2016:q49-s2",
+      "legacy_uid": "pp:ec:2016:q49-s2",
       "exam_uid": "ec:2016:set2:main:q49",
       "title": "GATE EC 2016 | Set 2 | Question: 49",
       "section": "main",
@@ -2184,12 +2146,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
-        "markdown": "$$\\begin{array}{l} \\text { Channel spectrum } 500 \\mathrm{Hz}-2000 \\mathrm{Hz} \\\\ \\text { hence } B W=1500 \\mathrm{Hz} \\\\ B W=\\frac{R_{b}}{\\log _{2} M}(1+\\alpha) \\\\ 1500=\\frac{R_{b}}{\\log _{2} 16}(1+\\alpha) \\\\ 1500=\\frac{4800}{\\log _{2} 16}(1+\\alpha) \\\\ 1500=1200(1+\\alpha) \\\\ \\Rightarrow \\quad \\alpha=0.25 \\end{array}$$",
-        "images": []
+        "markdown": "$$\\begin{array}{l} \\text { Channel spectrum } 500 \\mathrm{Hz}-2000 \\mathrm{Hz} \\\\ \\text { hence } B W=1500 \\mathrm{Hz} \\\\ B W=\\frac{R_{b}}{\\log _{2} M}(1+\\alpha) \\\\ 1500=\\frac{R_{b}}{\\log _{2} 16}(1+\\alpha) \\\\ 1500=\\frac{4800}{\\log _{2} 16}(1+\\alpha) \\\\ 1500=1200(1+\\alpha) \\\\ \\Rightarrow \\quad \\alpha=0.25 \\end{array}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
       }
     },
-    "pp:ec:2016:q50-s2": {
-      "question_uid": "pp:ec:2016:q50-s2",
+    "ec:2016:q50-s2": {
+      "question_uid": "ec:2016:q50-s2",
+      "legacy_uid": "pp:ec:2016:q50-s2",
       "exam_uid": "ec:2016:set2:main:q50",
       "title": "GATE EC 2016 | Set 2 | Question: 50",
       "section": "main",
@@ -2227,12 +2189,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
-        "markdown": "$$\\begin{aligned} X(t) &=3 V(t)-8 \\quad \\text { and } \\quad E[V(t)]=0 \\\\ R_{v}(\\tau) &=4 e^{-5|\\tau|} \\\\ \\text { Power of } X(t) &=E\\left[X^{2}(t)\\right] \\\\ &=E\\left[9 V^{2}(t)\\right]+64-48 E[V(t)] \\\\ &=9 E\\left[V^{2}(t)\\right]+64-48 E[V(t)] \\\\ E\\left[V^{2}(t)\\right] &=R_{v}(0)=4 \\\\ \\text { Power of } X(t) &=((9 \\times 4)+64) \\\\ &=100 \\end{aligned}$$",
-        "images": []
+        "markdown": "$$\\begin{aligned} X(t) &=3 V(t)-8 \\quad \\text { and } \\quad E[V(t)]=0 \\\\ R_{v}(\\tau) &=4 e^{-5|\\tau|} \\\\ \\text { Power of } X(t) &=E\\left[X^{2}(t)\\right] \\\\ &=E\\left[9 V^{2}(t)\\right]+64-48 E[V(t)] \\\\ &=9 E\\left[V^{2}(t)\\right]+64-48 E[V(t)] \\\\ E\\left[V^{2}(t)\\right] &=R_{v}(0)=4 \\\\ \\text { Power of } X(t) &=((9 \\times 4)+64) \\\\ &=100 \\end{aligned}$$\n\nTherefore, the correct answer is **100** (acceptable range: [99, 101])."
       }
     },
-    "pp:ec:2016:q51-s2": {
-      "question_uid": "pp:ec:2016:q51-s2",
+    "ec:2016:q51-s2": {
+      "question_uid": "ec:2016:q51-s2",
+      "legacy_uid": "pp:ec:2016:q51-s2",
       "exam_uid": "ec:2016:set2:main:q51",
       "title": "GATE EC 2016 | Set 2 | Question: 51",
       "section": "main",
@@ -2270,14 +2232,12 @@
       },
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
-        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-61955ecc92.webp\" />\n\nInformation in bits when you learn which symbol has been received when zero is transmitted.\n\nCase-I= when $y_{0}$ is received and $x_{0},$ is transmitted\n\nCase-II = when $y_{1}$, is received and $x_{0}$ is transmitted\n\nThus, the overall average information, we can say H\n\n$$\\begin{aligned} H=& P\\left(y_{0} \\mid x_{0}\\right) \\log _{2}\\left(\\frac{1}{P\\left(y_{0} \\mid x_{0}\\right)}\\right) \\\\ &+P\\left(y_{1} \\mid x_{0}\\right) \\log _{2}\\left(\\frac{1}{P\\left(y_{1} \\mid x_{0}\\right)}\\right) \\\\ =&\\left[\\frac{3}{4} \\log _{2}\\left(\\frac{4}{3}\\right)+\\frac{1}{4} \\log _{2}(4)\\right] \\text { bits } \\\\ =& 0.811 \\text { bits } \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-61955ecc92.webp"
-        ]
+        "markdown": "<img src=\"/question-images/ec/2016/ec-2016-61955ecc92.webp\" />\n\nInformation in bits when you learn which symbol has been received when zero is transmitted.\n\nCase-I= when $y_{0}$ is received and $x_{0},$ is transmitted\n\nCase-II = when $y_{1}$, is received and $x_{0}$ is transmitted\n\nThus, the overall average information, we can say H\n\n$$\\begin{aligned} H=& P\\left(y_{0} \\mid x_{0}\\right) \\log _{2}\\left(\\frac{1}{P\\left(y_{0} \\mid x_{0}\\right)}\\right) \\\\ &+P\\left(y_{1} \\mid x_{0}\\right) \\log _{2}\\left(\\frac{1}{P\\left(y_{1} \\mid x_{0}\\right)}\\right) \\\\ =&\\left[\\frac{3}{4} \\log _{2}\\left(\\frac{4}{3}\\right)+\\frac{1}{4} \\log _{2}(4)\\right] \\text { bits } \\\\ =& 0.811 \\text { bits } \\end{aligned}$$\n\nTherefore, the correct answer is **0.81** (acceptable range: [0.8, 0.82])."
       }
     },
-    "pp:ec:2016:q52-s2": {
-      "question_uid": "pp:ec:2016:q52-s2",
+    "ec:2016:q52-s2": {
+      "question_uid": "ec:2016:q52-s2",
+      "legacy_uid": "pp:ec:2016:q52-s2",
       "exam_uid": "ec:2016:set2:main:q52",
       "title": "GATE EC 2016 | Set 2 | Question: 52",
       "section": "main",
@@ -2317,12 +2277,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "$$\\begin{array}{l} \\text { Let, } E=E_{1} \\text { , Energy } E_{1}=\\frac{Q_{1}^{2}}{2 C_{1}} \\\\ \\text { Electrically isolated } \\Rightarrow Q_{2}=Q_{1} \\\\ \\begin{aligned} d_{2}=2 d_{1} \\Rightarrow \\;& C_{2}=\\frac{C_{1}}{2} \\\\ E_{2} &=\\frac{Q_{2}^{2}}{2 C_{2}}=\\frac{Q_{1}^{2}}{\\frac{2 C_{1}}{2}}=2\\left(\\frac{Q_{1}^{2}}{2 C_{1}}\\right) \\\\ &=2 E_{1}=2 E \\end{aligned} \\end{array}$$",
-        "images": []
+        "markdown": "$$\\begin{array}{l} \\text { Let, } E=E_{1} \\text { , Energy } E_{1}=\\frac{Q_{1}^{2}}{2 C_{1}} \\\\ \\text { Electrically isolated } \\Rightarrow Q_{2}=Q_{1} \\\\ \\begin{aligned} d_{2}=2 d_{1} \\Rightarrow \\;& C_{2}=\\frac{C_{1}}{2} \\\\ E_{2} &=\\frac{Q_{2}^{2}}{2 C_{2}}=\\frac{Q_{1}^{2}}{\\frac{2 C_{1}}{2}}=2\\left(\\frac{Q_{1}^{2}}{2 C_{1}}\\right) \\\\ &=2 E_{1}=2 E \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **A**."
       }
     },
-    "pp:ec:2016:q53-s2": {
-      "question_uid": "pp:ec:2016:q53-s2",
+    "ec:2016:q53-s2": {
+      "question_uid": "ec:2016:q53-s2",
+      "legacy_uid": "pp:ec:2016:q53-s2",
       "exam_uid": "ec:2016:set2:main:q53",
       "title": "GATE EC 2016 | Set 2 | Question: 53",
       "section": "main",
@@ -2365,8 +2325,9 @@
         "markdown": null
       }
     },
-    "pp:ec:2016:q54-s2": {
-      "question_uid": "pp:ec:2016:q54-s2",
+    "ec:2016:q54-s2": {
+      "question_uid": "ec:2016:q54-s2",
+      "legacy_uid": "pp:ec:2016:q54-s2",
       "exam_uid": "ec:2016:set2:main:q54",
       "title": "GATE EC 2016 | Set 2 | Question: 54",
       "section": "main",
@@ -2404,14 +2365,12 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
-        "markdown": "At frequency of $1 \\mathrm{GHz}$ the line is matched and $| \\Gamma |=0$ as seen in the graph.\n\n<img src=\"/question-images/ec/2016/ec-2016-0829fb05aa.webp\" />\n\nThe line $T_{1}$ is having $50 \\Omega$ load parallel to $T_{2}$ input impedance.\n\nThis load is $50\\Omega$ when $T_{2}$ input impedance is infinite.\n\n$$\\begin{aligned} Z_{\\text {in } 2}&=\\infty=Z_{L 2} \\text{ (open circuit) }\\\\ T_{2}\\text{ has to be a }\\frac{\\lambda}{2}\\text{ line}.&\\\\ f &=1 \\mathrm{GHz} \\\\ \\lambda &=\\frac{2 \\times 10^{10}}{1 \\times 10^{9}} \\mathrm{cm} \\\\ \\frac{\\lambda}{2} &=L=10 \\mathrm{cm}=0.1 \\mathrm{m} \\end{aligned}$$",
-        "images": [
-          "/question-images/ec/2016/ec-2016-0829fb05aa.webp"
-        ]
+        "markdown": "At frequency of $1 \\mathrm{GHz}$ the line is matched and $| \\Gamma |=0$ as seen in the graph.\n\n<img src=\"/question-images/ec/2016/ec-2016-0829fb05aa.webp\" />\n\nThe line $T_{1}$ is having $50 \\Omega$ load parallel to $T_{2}$ input impedance.\n\nThis load is $50\\Omega$ when $T_{2}$ input impedance is infinite.\n\n$$\\begin{aligned} Z_{\\text {in } 2}&=\\infty=Z_{L 2} \\text{ (open circuit) }\\\\ T_{2}\\text{ has to be a }\\frac{\\lambda}{2}\\text{ line}.&\\\\ f &=1 \\mathrm{GHz} \\\\ \\lambda &=\\frac{2 \\times 10^{10}}{1 \\times 10^{9}} \\mathrm{cm} \\\\ \\frac{\\lambda}{2} &=L=10 \\mathrm{cm}=0.1 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **0.1** (acceptable range: [0.09, 0.11])."
       }
     },
-    "pp:ec:2016:q55-s2": {
-      "question_uid": "pp:ec:2016:q55-s2",
+    "ec:2016:q55-s2": {
+      "question_uid": "ec:2016:q55-s2",
+      "legacy_uid": "pp:ec:2016:q55-s2",
       "exam_uid": "ec:2016:set2:main:q55",
       "title": "GATE EC 2016 | Set 2 | Question: 55",
       "section": "main",
@@ -2451,8 +2410,7 @@
       },
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
-        "markdown": "Velocity being free velocity,\n\n$$\\begin{aligned} \\frac{1}{2} m v^{2} &=q V \\\\ v &=\\frac{d}{t}=\\sqrt{\\frac{2 q V}{m}} \\\\ \\Rightarrow t \\propto \\frac{d}{\\sqrt{V}} \\end{aligned}$$",
-        "images": []
+        "markdown": "Velocity being free velocity,\n\n$$\\begin{aligned} \\frac{1}{2} m v^{2} &=q V \\\\ v &=\\frac{d}{t}=\\sqrt{\\frac{2 q V}{m}} \\\\ \\Rightarrow t \\propto \\frac{d}{\\sqrt{V}} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
       }
     }
   }
