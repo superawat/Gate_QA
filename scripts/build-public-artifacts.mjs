@@ -236,6 +236,19 @@ function writeText(filePath, contents) {
   fs.writeFileSync(filePath, contents, "utf8");
 }
 
+function writeTextIfChanged(filePath, contents) {
+  ensureDir(path.dirname(filePath));
+  const next = String(contents || "").replace(/\r\n/g, "\n");
+  if (fs.existsSync(filePath)) {
+    try {
+      const current = fs.readFileSync(filePath, "utf8").replace(/\r\n/g, "\n");
+      if (current === next) return false;
+    } catch (_) {}
+  }
+  fs.writeFileSync(filePath, next, "utf8");
+  return true;
+}
+
 function stripBuildMetadata(value) {
   if (Array.isArray(value)) {
     return value.map(stripBuildMetadata);
@@ -243,7 +256,7 @@ function stripBuildMetadata(value) {
   if (value && typeof value === "object") {
     return Object.fromEntries(
       Object.entries(value)
-        .filter(([key]) => key !== "generatedAt" && key !== "dataRevision")
+        .filter(([key]) => key !== "generatedAt" && key !== "dataRevision" && key !== "detailed_solution")
         .map(([key, entry]) => [key, stripBuildMetadata(entry)])
     );
   }
@@ -2137,7 +2150,6 @@ async function buildArtifacts() {
       : []
   );
   const detailShardsUnchanged =
-    existingShardKeys.size === detailShards.size &&
     Array.from(detailShards.entries()).every(([shardKey, payload]) => {
       const existingPayload = readJson(path.join(DETAIL_SHARDS_DIR, `${shardKey}.json`), null);
       return existingPayload && hasSameGeneratedContent(existingPayload, payload);
@@ -2147,6 +2159,13 @@ async function buildArtifacts() {
     const existingPayload = readJson(path.join(DETAIL_SHARDS_DIR, `${shardKey}.json`), null);
     if (existingPayload?.generatedAt && hasSameGeneratedContent(existingPayload, payload)) {
       payload.generatedAt = existingPayload.generatedAt;
+      if (existingPayload.recordsByQuestionUid) {
+        for (const [uid, record] of Object.entries(payload.recordsByQuestionUid)) {
+          if (existingPayload.recordsByQuestionUid[uid]?.detailed_solution) {
+            record.detailed_solution = existingPayload.recordsByQuestionUid[uid].detailed_solution;
+          }
+        }
+      }
     }
   }
 
@@ -2270,14 +2289,14 @@ async function buildArtifacts() {
   }
   // -------------------------------------------------------------------------
 
-  writeJson(path.join(PUBLIC_DIR, "question-bank-manifest.json"), manifest);
-  writeJson(MOCK_CATALOG_PATH, mockCatalog);
-  writeJson(path.join(PUBLIC_DIR, "question-search-index.json"), searchIndex);
-  writeText(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(manifest, questions, generatedAt));
-  writeText(path.join(PUBLIC_DIR, "robots.txt"), buildRobotsTxt());
-  writeJson(path.join(DOCS_GENERATED_DIR, "data-status.json"), dataStatusJson);
-  writeText(path.join(DOCS_GENERATED_DIR, "DATA_STATUS.md"), `${dataStatusMarkdown}\n`);
-  writeJson(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
+  writeJsonIfChanged(path.join(PUBLIC_DIR, "question-bank-manifest.json"), manifest);
+  writeJsonIfChanged(MOCK_CATALOG_PATH, mockCatalog);
+  writeJsonIfChanged(path.join(PUBLIC_DIR, "question-search-index.json"), searchIndex);
+  writeTextIfChanged(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(manifest, questions, generatedAt));
+  writeTextIfChanged(path.join(PUBLIC_DIR, "robots.txt"), buildRobotsTxt());
+  writeJsonIfChanged(path.join(DOCS_GENERATED_DIR, "data-status.json"), dataStatusJson);
+  writeTextIfChanged(path.join(DOCS_GENERATED_DIR, "DATA_STATUS.md"), `${dataStatusMarkdown}\n`);
+  writeJsonIfChanged(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
 
   enrichShardsWithSolutions(DETAIL_SHARDS_DIR);
   await buildDaPublicArtifacts();

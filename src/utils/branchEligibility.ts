@@ -7,9 +7,8 @@
  */
 
 import { EXAM_TRACKS, normalizeExamTrack, getQuestionTrack, isAptitudeQuestion, isAptitudeSubjectSlug } from "./examTrack";
-import { readBranchPreferences, DEFAULT_BRANCH } from "./branchPreference";
-
 export const UNIVERSAL_APTITUDE_TRACK = "aptitude";
+export const DEFAULT_BRANCH = "cse";
 
 /**
  * Normalizes branch identifiers (e.g. "cs" -> "cse", "it" -> "cse", "ece" -> "ec")

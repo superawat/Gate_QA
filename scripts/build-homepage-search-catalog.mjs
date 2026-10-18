@@ -230,7 +230,27 @@ export async function buildHomepageSearchCatalog({
     generatedAt: new Date().toISOString(),
   };
 
+  if (fs.existsSync(outputPath)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
+      if (
+        JSON.stringify({ ...existing, generatedAt: undefined }) ===
+        JSON.stringify({ ...catalog, generatedAt: undefined })
+      ) {
+        catalog.generatedAt = existing.generatedAt;
+      }
+    } catch (_) {}
+  }
+
   const jsonContent = JSON.stringify(catalog);
+  if (fs.existsSync(outputPath)) {
+    try {
+      const current = fs.readFileSync(outputPath, "utf-8");
+      if (current === jsonContent) {
+        return catalog;
+      }
+    } catch (_) {}
+  }
   fs.writeFileSync(outputPath, jsonContent, "utf-8");
 
   console.log(

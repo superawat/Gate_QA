@@ -1,5 +1,23 @@
 # Changelog
 
+- **Circular Dependency Resolution in Branch Preferences & Playwright E2E Suite Stabilization (DEC-190)**:
+  - *Context*: Running `npm run test:e2e` failed 20 out of 21 tests with `Locator: getByRole('link', { name: /GATE QA home/i }) Expected: visible Timeout: 5000ms`, caused by the React app failing to mount and hanging indefinitely on the initial static splash screen (`#app-splash`). Browser console diagnostic revealed `[PAGE ERROR]: Error [ReferenceError]: Cannot access 'mr' before initialization at assets/index-*.js`.
+  - *Root Cause*:
+    - `src/utils/branchPreference.ts` re-exported `UNIVERSAL_APTITUDE_TRACK` from `src/utils/branchEligibility.ts`.
+    - Concurrently, `src/utils/branchEligibility.ts` imported `DEFAULT_BRANCH` from `src/utils/branchPreference.ts` (along with unused `readBranchPreferences`).
+    - In Vite/Rollup production module bundling, this circular dependency created a Temporal Dead Zone (TDZ) where `branchPreference.ts` export binding was evaluated before `branchEligibility.ts` had declared `UNIVERSAL_APTITUDE_TRACK = "aptitude"`, throwing a fatal `ReferenceError` during bundle initialization and blocking React from mounting across all routes.
+  - *Accomplishments*:
+    - **Circular Import Elimination (`src/utils/branchEligibility.ts`)**:
+      - Removed the circular import of `DEFAULT_BRANCH` and `readBranchPreferences` from `branchPreference.ts`.
+      - Declared `export const DEFAULT_BRANCH = "cse"` directly in `branchEligibility.ts`, establishing a clean directed acyclic dependency graph (`examTrack.js` $\to$ `branchEligibility.ts` $\to$ `branchPreference.ts`).
+    - **Zero Breaking Changes**:
+      - Kept `export const DEFAULT_BRANCH = "cse"` and re-exports in `branchPreference.ts`, guaranteeing 100% backward compatibility for all consuming components (`TrackerPage.jsx`, `BranchSelectionWall.jsx`, etc.).
+  - *Verification*:
+    - **Playwright E2E**: Full test suite passed 21/21 (100% green in 55.1s across `a11y.axe`, `branch-data-isolation`, `mock-test-flow`, `multi-branch-flow`, and `practice-flow`).
+    - **Vitest Unit Tests**: All 107 test files passed, 1,369 tests green (100% pass rate).
+    - **TypeScript Typecheck**: Clean (`tsc -p tsconfig.json --noEmit` exited with 0 errors).
+    - **Production Build**: Clean (`npm run build` generated fresh shards, search indices, and 3,605 pre-rendered SEO pages).
+
 - **Historical Question Identity, Official Renumbering, and Direct GateOverflow Discussion Linking (DEC-189)**:
   - *Context*: Engineering branch papers (`ec`, `ee`, `me`, `ce`) imported from PracticePaper stored questions in a flat sequential index. Modern 65-question papers placed Technical questions at Q1–55 and General Aptitude (GA) questions at Q56–65, displaying misleading labels like "Question: 56" instead of "GA | Question: 1". Furthermore, GateOverflow discussion links were missing or falling back to general search queries rather than pointing to exact question URLs on branch subdomains (`me.gateoverflow.in`, `ee.gateoverflow.in`, etc.).
   - *Accomplishments*:
