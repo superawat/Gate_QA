@@ -3243,6 +3243,73 @@ describe("evaluateAnswer", () => {
         correct: false,
       });
     });
+
+    test("DEC-200: evaluates ISRO CS 2025 Q5 (isro:cs:2025:q5) as MCQ Option D (11 enclosed parks)", () => {
+      const record = {
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      };
+      expect(evaluateAnswer(record, "D")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "d")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, "B")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, "C")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    describe("DEC-201: Question Data Integrity & Answer Corrections", () => {
+      test("evaluates go:3354 (GATE IT 2008 Q44) as MCQ Option A (Master Theorem case 2)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:1954 (GATE CSE 2014 Set 2 Q2) as NAT exact 3.9 (rounded to one decimal place)", () => {
+        const record = {
+          type: "NAT",
+          answer: 3.9,
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, 3.9)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "3.9")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 3.90)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 3.8)).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, 3.88)).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:2303 (GATE CSE 1993 Q8.5) as MCQ Option E (None of the above)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "E",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "E")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "e")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+    });
   });
 });
 

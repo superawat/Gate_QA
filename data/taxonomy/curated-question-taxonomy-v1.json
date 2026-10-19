@@ -27,6 +27,59 @@
       },
       "rationale": "GATE CSE 2020 Q17 evaluates the probability that a randomly chosen binary relation on a 3-element set is reflexive (2^6 / 2^9 = 1/8 = 0.125). It bridges combinatorial probability with reflexive relation counting.",
       "syllabusRef": "GATE 2025 CSE Section 1 (Engineering Mathematics / Discrete Mathematics)"
+    },
+    "go:1075": {
+      "question_uid": "go:1075",
+      "exam_uid": "cse:2004:set1:main:q81",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "algorithms",
+          "topicSlug": "graph-algorithms",
+          "subtopicSlug": "graph-algorithms"
+        },
+        "secondary": [
+          {
+            "subjectSlug": "discrete-math",
+            "topicSlug": "graph-theory",
+            "subtopicSlug": "graph-connectivity"
+          }
+        ],
+        "conceptTags": [
+          "graph-theory",
+          "graph-connectivity",
+          "cycles",
+          "connected-components"
+        ]
+      },
+      "rationale": "GATE CSE 2004 Q81 examines intersection and union connectivity of graphs on the same vertex set. If G1 \u2229 G2 is disconnected, then G1 \u222a G2 must contain a cycle. It bridges algorithm graph properties with discrete mathematics graph connectivity.",
+      "syllabusRef": "GATE 2025 CSE Section 1 (Discrete Mathematics) and Section 2 (Algorithms)"
+    },
+    "go:1073": {
+      "question_uid": "go:1073",
+      "exam_uid": "cse:2004:set1:main:q79",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "discrete-math",
+          "topicSlug": "combinatorics",
+          "subtopicSlug": "combinatory"
+        },
+        "secondary": [
+          {
+            "subjectSlug": "discrete-math",
+            "topicSlug": "graph-theory",
+            "subtopicSlug": "graph-theory"
+          }
+        ],
+        "conceptTags": [
+          "graph-theory",
+          "labeled-graphs",
+          "graph-edges",
+          "combinatorics",
+          "counting"
+        ]
+      },
+      "rationale": "GATE CSE 2004 Q79 asks for the number of simple graphs on n labeled vertices having at least (n^2 - 3n)/2 edges. Out of N = C(n,2) = (n^2 - n)/2 possible edges, selecting at least (n^2 - 3n)/2 is equivalent to omitting at most n edges, giving sum_{k=0}^n C(N, k) (Option D). It bridges combinatorics and counting with graph theory.",
+      "syllabusRef": "GATE 2025 CSE Section 1 (Discrete Mathematics: Combinatorics and Graph Theory)"
     }
   }
 }

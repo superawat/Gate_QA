@@ -144,6 +144,34 @@ describe("Question Component - Mobile & Responsive Layout", () => {
     expect(container.querySelector("ol.question-options, ol[style*=\"upper-alpha\"]")).toBeTruthy();
   });
 
+  test("renders options when question stem contains a <ul> bullet list (DEC-200 / isro:cs:2025:q5)", () => {
+    const questionWithBulletList = {
+      question_uid: "isro:cs:2025:q5",
+      title: "ISRO CS 2025 | Question 5",
+      question: "There are 20 shopping malls in a city interconnected by roads. Each shopping mall can be reached through 3 different roads. It is assumed that:<ul><li>only one park is planned to be constructed in a region</li><li>roads do not cross each other</li><li>road(s) do not pass through a park.</li></ul>What is the maximum number of parks that can be constructed in the regions enclosed by roads?",
+      type: "MCQ",
+      options: [
+        { label: "A", text: "12", html: "12" },
+        { label: "B", text: "30", html: "30" },
+        { label: "C", text: "60", html: "60" },
+        { label: "D", text: "11", html: "11" },
+      ],
+      answer_meta: {
+        type: "MCQ",
+        answer: "D",
+      },
+    };
+
+    const { container } = render(<Question question={questionWithBulletList} />);
+    expect(container.innerHTML).toContain("There are 20 shopping malls");
+    expect(container.innerHTML).toContain("only one park is planned");
+    expect(container.innerHTML).toContain("12");
+    expect(container.innerHTML).toContain("30");
+    expect(container.innerHTML).toContain("60");
+    expect(container.innerHTML).toContain("11");
+    expect(container.querySelector("ol.question-options")).toBeTruthy();
+  });
+
   test("renders question-stem-content and question-html-body classes, and image renders without any modal/popup", () => {
     const questionWithDiagram = {
       question_uid: "isro:cs:2025:q1",

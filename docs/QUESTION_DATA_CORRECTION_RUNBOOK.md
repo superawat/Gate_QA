@@ -1,6 +1,8 @@
 # Question & Answer Maintenance Roadmap and Execution Runbook
 
 > **Scope**: Master end-to-end operational guide for modifying question answers, converting question types (MCQ $\leftrightarrow$ MSQ $\leftrightarrow$ NAT $\leftrightarrow$ MTA), handling defective questions, repairing question bodies/options/LaTeX, rebuilding generated shards, and writing regression tests across **GATE CSE**, **GATE DA**, and **Special Aptitude** banks.
+>
+> **Companion Plan**: For a deep diagnosis matrix and step-by-step resolution plan specifically targeting JSON problem archetypes (including subtopic bridging, option diagram restoration, and suppressed option lists), see [`docs/QUESTION_JSON_RESOLUTION_PLAN.md`](file:///docs/QUESTION_JSON_RESOLUTION_PLAN.md).
 
 ---
 

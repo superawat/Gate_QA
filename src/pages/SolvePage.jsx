@@ -255,6 +255,16 @@ const SolvePage = ({
             }
           }
 
+          if (isIsroQuestion({ question_uid: questionUid })) {
+            const isroDetail = await IsroQuestionService.ensureQuestionDetail({ question_uid: questionUid });
+            if (isroDetail && active) {
+              setResolvedQuestion(isroDetail);
+              setQuestionDetailError("");
+              setIsQuestionDetailLoading(false);
+              return;
+            }
+          }
+
           if (active) {
             setResolvedQuestion(null);
             setIsQuestionDetailLoading(false);

@@ -130,4 +130,55 @@ describe("IsroQuestionService", () => {
     expect(detailed?.question).toContain(">40</li>");
     expect(detailed?.preview).toBe("What is the output of the code snippet?");
   });
+
+  test("properly appends options when question stem contains a <ul> bullet list (DEC-200)", async () => {
+    const mockQ5 = [
+      {
+        question_uid: "isro:cs:2025:q5",
+        exam_uid: "isro-2025-q5",
+        title: "ISRO CS 2025 | Question 5",
+        question: "There are 20 shopping malls in a city. It is assumed that:<ul><li>roads do not cross</li></ul>What is the max number of parks?",
+        type: "MCQ",
+        options: [
+          { label: "A", text: "12", html: "12" },
+          { label: "B", text: "30", html: "30" },
+          { label: "C", text: "60", html: "60" },
+          { label: "D", text: "11", html: "11" },
+        ],
+        answer: "D",
+        marks: 1,
+        negativeMarks: 0.33,
+        subject: "discrete-math",
+        subjectSlug: "discrete-math",
+      },
+    ];
+
+    global.fetch = vi.fn((url) => {
+      if (String(url).endsWith("isro-all.json")) {
+        return Promise.resolve({ ok: true, json: async () => mockQ5 });
+      }
+      return Promise.resolve({
+        ok: true,
+        json: async () => ({
+          records_by_question_uid: {
+            "isro:cs:2025:q5": {
+              question_uid: "isro:cs:2025:q5",
+              type: "MCQ",
+              answer: "D",
+              marks: 1,
+              negativeMarks: 0.33,
+            },
+          },
+        }),
+      });
+    });
+
+    const detailed = await IsroQuestionService.ensureQuestionDetail("isro:cs:2025:q5");
+    expect(detailed).toBeDefined();
+    expect(detailed?.question).toContain("<ul><li>roads do not cross</li></ul>");
+    expect(detailed?.question).toContain("<ol class=\"question-options\"");
+    expect(detailed?.question).toContain(">12</li>");
+    expect(detailed?.question).toContain(">11</li>");
+    expect(IsroQuestionService.getAnswerForQuestion(detailed)?.answer).toBe("D");
+  });
 });

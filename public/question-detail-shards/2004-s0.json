@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:31:38.966Z",
+  "generatedAt": "2026-10-19T11:50:38.821Z",
   "shardKey": "2004-s0",
   "yearSetKey": "2004-s0",
   "yearSetIdentity": "cse:2004:set-0",
@@ -3056,8 +3056,8 @@
         "primary": {
           "subjectSlug": "discrete-math",
           "subjectLabel": "Discrete Mathematics",
-          "subtopicSlug": "graph-coloring",
-          "subtopicLabel": "Graph Coloring"
+          "subtopicSlug": "graph-theory",
+          "subtopicLabel": "Graph Theory"
         },
         "secondary": [],
         "conceptTags": []
@@ -3136,12 +3136,30 @@
       "taxonomy": {
         "primary": {
           "subjectSlug": "discrete-math",
-          "subjectLabel": "Discrete Mathematics",
+          "topicSlug": "combinatorics",
           "subtopicSlug": "combinatory",
-          "subtopicLabel": "Combinatory"
+          "subjectLabel": "Discrete Mathematics"
         },
-        "secondary": [],
-        "conceptTags": []
+        "secondary": [
+          {
+            "subjectSlug": "discrete-math",
+            "topicSlug": "graph-theory",
+            "subtopicSlug": "graph-theory",
+            "subjectLabel": "Discrete Mathematics"
+          }
+        ],
+        "conceptTags": [
+          "graph-theory",
+          "labeled-graphs",
+          "graph-edges",
+          "combinatorics",
+          "counting"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "discrete-mathematics: combinatorics & graph-theory",
+        "markdown": "For an undirected simple graph on $n$ labeled vertices:\n\n1. **Total Possible Edges:**\n   Any pair of vertices can either have an edge between them or not. The total number of unordered vertex pairs (possible edges) is:\n   $$N = \\binom{n}{2} = \\frac{n(n-1)}{2} = \\frac{n^2 - n}{2}$$\n\n2. **Selecting at Least $\\frac{n^2 - 3n}{2}$ Edges:**\n   We are asked for the number of graphs having at least $E = \\frac{n^2 - 3n}{2}$ edges.\n   Choosing $k$ edges out of $N$ possible edges can be done in $\\binom{N}{k}$ ways.\n   Summing over all allowed edge counts from $E$ to $N$:\n   $$\\sum_{k = E}^{N} \\binom{N}{k} = \\sum_{k = \\frac{n^2 - 3n}{2}}^{\\frac{n^2 - n}{2}} \\binom{\\frac{n^2 - n}{2}}{k}$$\n\n3. **Applying Binomial Symmetry:**\n   The difference between the maximum edges and the minimum edges required is:\n   $$N - E = \\frac{n^2 - n}{2} - \\frac{n^2 - 3n}{2} = \\frac{2n}{2} = n$$\n   By binomial symmetry, $\\binom{N}{k} = \\binom{N}{N - k}$. Substituting $j = N - k$:\n   - When $k = E = \\frac{n^2 - 3n}{2}$, $j = N - E = n$.\n   - When $k = N = \\frac{n^2 - n}{2}$, $j = 0$.\n   \n   Therefore:\n   $$\\sum_{k = E}^{N} \\binom{N}{k} = \\sum_{j = 0}^{n} \\binom{N}{j} = \\sum_{k = 0}^{n} \\binom{\\frac{n^2 - n}{2}}{k}$$\n\nThis matches **Option D**.\n\n<b>Answer: Option D</b>",
+        "images": []
       }
     },
     "go:1074": {
@@ -3194,6 +3212,7 @@
         "gatecse-2004",
         "algorithms",
         "graph-algorithms",
+        "graph-theory",
         "normal"
       ],
       "question_uid": "go:1075",
@@ -3217,12 +3236,24 @@
       "taxonomy": {
         "primary": {
           "subjectSlug": "algorithms",
-          "subjectLabel": "Algorithms",
+          "topicSlug": "graph-algorithms",
           "subtopicSlug": "graph-algorithms",
-          "subtopicLabel": "Graph Algorithms"
+          "subjectLabel": "Algorithms"
         },
-        "secondary": [],
-        "conceptTags": []
+        "secondary": [
+          {
+            "subjectSlug": "discrete-math",
+            "topicSlug": "graph-theory",
+            "subtopicSlug": "graph-connectivity",
+            "subjectLabel": "Discrete Mathematics"
+          }
+        ],
+        "conceptTags": [
+          "graph-theory",
+          "graph-connectivity",
+          "cycles",
+          "connected-components"
+        ]
       }
     },
     "go:1076": {

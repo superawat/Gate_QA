@@ -1,5 +1,106 @@
 # Changelog
 
+- **Question Taxonomy Bridging to Graph Theory & Detailed Solution for `go:1073` (DEC-202)**:
+  - *Context*:
+    - **`go:1073` (GATE CSE 2004 Q79, Discrete Mathematics)**: Evaluates the number of simple undirected graphs on $n$ labeled vertices having at least $\frac{n^2 - 3n}{2}$ edges. Although tagged with `"graph-theory"`, it was exclusively categorized under `combinatory` without a cross-disciplinary bridge to Graph Theory, lacked a `"graph-theory"` subtopic mapping in the authoritative GATE syllabus taxonomy, and lacked a step-by-step mathematical derivation.
+  - *Mathematical Derivation & Proof*:
+    - The total number of possible edges on $n$ labeled vertices is $N = \binom{n}{2} = \frac{n(n-1)}{2} = \frac{n^2 - n}{2}$.
+    - Selecting at least $E = \frac{n^2 - 3n}{2}$ edges requires summing $\binom{N}{k}$ from $k = E$ to $N$.
+    - The difference is $N - E = \frac{n^2 - n}{2} - \frac{n^2 - 3n}{2} = \frac{2n}{2} = n$.
+    - By binomial symmetry $\binom{N}{k} = \binom{N}{N - k}$, letting $j = N - k$ yields:
+      $$\sum_{k = E}^{N} \binom{N}{k} = \sum_{j = 0}^{n} \binom{N}{j} = \sum_{k = 0}^{n} \binom{\frac{n^2 - n}{2}}{k}$$
+    - This rigorously confirms **Option D**.
+  - *Accomplishments*:
+    - **Syllabus Taxonomy Subtopic Registration**: Added `"graph-theory"` as an explicit subtopic under the `graph-theory` topic in `data/taxonomy/gate-syllabus-taxonomy-v1.json`, enabling direct subtopic lookup in `subtopicLookup.json`.
+    - **Curated Multi-Level Taxonomy**: Added `go:1073` to `data/taxonomy/curated-question-taxonomy-v1.json` with Primary taxonomy: `discrete-math / combinatorics / combinatory` and Secondary taxonomy: `discrete-math / graph-theory / graph-theory`, with concept tags `["graph-theory", "labeled-graphs", "graph-edges", "combinatorics", "counting"]`.
+    - **Authentic Mathematical Solution**: Added a full step-by-step derivation with KaTeX binomial formulas into `data/solutions/cse-v1.json`.
+    - **Static Shard & Index Regeneration**: Executed `node scripts/precompute-subtopics.mjs; node scripts/build-public-artifacts.mjs`, regenerating `subtopicLookup.json`, `public/question-detail-shards/2004-s0.json`, and `public/question-search-index.json`.
+    - **Automated Regression Testing**: Added unit test in `src/services/QuestionService.test.js` validating `QuestionService.resolveQuestionTaxonomy` resolution of primary Combinatorics and secondary Graph Theory for `go:1073`.
+  - *Verification*: Full Vitest suite passing (1,402 tests passed across 109 test files, 0 failures), QA semantic data audit clean (`npm run qa:validate-data`, 0 errors), TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
+
+- **Question Integrity, Options Diagram Restoration & Answer Key Corrections for `go:1075`, `go:3354`, `go:1954`, `go:1224`, and `go:2303` (DEC-201)**:
+  - *Context*:
+    - **`go:1075` (GATE CSE 2004 Q81)**: Examines intersection and union connectivity of graphs on the same vertex set ($G_1 \cap G_2$ disconnected $\implies G_1 \cup G_2$ must contain a cycle). Lacked the `"Graph Theory"` tag and secondary Discrete Mathematics cross-subject taxonomy.
+    - **`go:3354` (GATE IT 2008 Q44)**: Recurrence relation $T(n) = \sqrt{2} T(n/2) + \sqrt{n}$ with $T(1)=1$ for $n=2^{2k}$ was erroneously tagged with answer key Option C ($√(n) \log √(n)$) instead of Option A ($√(n) (\log n + 1)$).
+    - **`go:1954` (GATE CSE 2014 Set 2 Q2)**: Expected word length in *"The quick brown fox jumps over the lazy dog"* with 9 words ($E = 35/9 = 3.888...$). Problem explicitly requests rounding to one decimal place ($3.9$). GateQA had a loose range (`3.8` to `3.9`) and displayed `3.8` as correct instead of `3.9`.
+    - **`go:1224` (GATE CSE 2007 Q26)**: Poset refinement partitions on set $S=\{a, b, c, d\}$ had confusing, text-only option representations that were hard to interpret and error-prone. Authentic original Hasse diagrams for Options A, B, C, and D were needed.
+    - **`go:2303` (GATE CSE 1993 Q8.5)**: Evaluates whether strict less-than relation ($<$) on $\mathbb{R}$ is a partial ordering. Had broken BBCode `[latex]\lt[/latex]`, missing Option E ("None of the above"), was mistakenly listed in `unsupported_question_uids_v1.json`, and had incorrect answer key D instead of E.
+  - *Mathematical Derivations & Official Evidence*:
+    - **`go:3354`**: In $T(n) = a T(n/b) + f(n)$, $a = \sqrt{2} = 2^{1/2}$, $b = 2$, $f(n) = \sqrt{n} = n^{1/2}$. Here $n^{\log_b a} = n^{\log_2 2^{1/2}} = n^{1/2} = \sqrt{n} = \Theta(f(n))$. By Master Theorem Case 2, $T(n) = \Theta(\sqrt{n} \log n)$. Exact division by $\sqrt{n}$: let $S(n) = T(n)/\sqrt{n}$, then $S(n) = S(n/2) + 1$, with $S(1)=1 \implies S(n) = 1 + \log_2 n \implies T(n) = \sqrt{n}(\log n + 1)$, which is **Option A**.
+    - **`go:1954`**: Word lengths: $3, 5, 5, 3, 5, 4, 3, 4, 3$. Sum of lengths = $35$. Total words = $9$. Expected length $E[L] = 35/9 = 3.8888...$ Rounding to 1 decimal place gives strictly **3.9**.
+    - **`go:1224`**: Partitions $\pi_1 = \{abcd\}$ (coarsest, 1 block), $\pi_2 = \{ab, cd\}$, $\pi_3 = \{abc, d\}$, $\pi_4 = \{a, b, c, d\}$ (finest, 4 singleton blocks). Refinement partial order: $\pi_4 \preceq \pi_2 \preceq \pi_1$ and $\pi_4 \preceq \pi_3 \preceq \pi_1$. However, $\{ab, cd\} \not\subseteq \{abc, d\}$ and vice versa, so $\pi_2$ and $\pi_3$ are incomparable. The correct Hasse diagram is a diamond poset lattice with $\pi_4$ at the bottom, $\pi_1$ at the top, and incomparable elements $\pi_2$ and $\pi_3$ in parallel (**Option C**).
+    - **`go:2303`**: Strict less-than ($<$) is irreflexive ($\forall x, x < x$ is false), asymmetric ($x < y \implies y \not< x$), and transitive. Because it fails reflexivity, it is not a partial ordering. Option A claims it is a partial ordering (false). Option B claims it is a partial ordering (false). Option C claims it is not a partial ordering because it is *not* asymmetric (false, it *is* asymmetric). Option D claims it is not a partial ordering because it is *not* antisymmetric (false, asymmetry implies antisymmetry). Thus, all four statements are false, and the authentic correct choice is **Option E: None of the above**.
+  - *Resolution & Accomplishments*:
+    - **`go:1075`**: Added `"graph-theory"` tag to question metadata and configured cross-disciplinary curated taxonomy in `data/taxonomy/curated-question-taxonomy-v1.json` (Primary: `algorithms` / `graph-algorithms`, Secondary: `discrete-math` / `graph-theory` / `graph-connectivity`).
+    - **`go:3354`**: Updated answer key from `"C"` to `"A"` in `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and `public/questions-with-answers.json`.
+    - **`go:1954`**: Removed tolerance range and set exact NAT answer to `3.9` with `tolerance: null` across all authoritative registries, master answer datasets, and question bank.
+    - **`go:1224`**: Extracted and cropped high-resolution diagrams from authentic GateOverflow records, converted to optimized WebP (`public/question-images/cse/2007/go_1224_opt_{a,b,c,d}.webp`), and embedded clean `<img>` tags inside `<ol style="list-style-type:upper-alpha">`.
+    - **`go:2303`**: Cleaned BBCode `[latex]\lt[/latex]` to `$<$`, restored Option E (`<li>None of the above</li>`), updated answer key from `"D"` to `"E"`, and removed `go:2303` from `public/data/answers/unsupported_question_uids_v1.json`.
+    - **Pipeline Rebuild**: Ran `node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs`, regenerating detail shards `2004-s0.json`, `it-2008-s0.json`, `2014-s2.json`, `2007-s0.json`, and `1993-s0.json` while skipping 55 unchanged shards.
+    - **Regression Tests**: Added automated unit tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, and `src/services/QuestionService.test.js`.
+  - *Verification*: Full Vitest suite passing (1,401 tests passed across 109 test files, 0 failures), QA semantic data audit clean (`npm run qa:validate-data`, 0 errors), TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
+- **Question Options Visibility & Answer Key Correction for ISRO CS 2025 Q5 (`isro:cs:2025:q5`) (DEC-200)**:
+  - *Context*:
+    - On `isro:cs:2025:q5` (ISRO CS 2025 Question 5, Discrete Mathematics - Planar Graphs & Euler's Formula), options (A: 12, B: 30, C: 60, D: 11) were completely invisible to users on the practice solve interface (`/practice/question/isro:cs:2025:q5`).
+    - Furthermore, the stored answer key in the ISRO registry was erroneously marked as Option A (12) instead of the officially and mathematically correct Option D (11).
+  - *Root Cause & Mathematical Derivation*:
+    - **Options Suppression Bug**:
+      - In both `IsroQuestionService.ts` and `Question.jsx`, options rendering was guarded by a naive regex `/<(ol|ul)\b[^>]*>/i.test(rawQuestionHtml)`.
+      - Because the problem stem for Q5 contained an unordered bullet list (`<ul><li>only one park is planned to be constructed in a region</li>...</ul>`), the condition evaluated to `true`, mistakenly assuming that the question HTML already had options embedded. Consequently, neither service nor component appended the options list `<ol class="question-options">`, causing all four options to disappear from view.
+    - **Mathematical Proof & Official ISRO Key Alignment**:
+      - Vertices: $V = 20$ shopping malls.
+      - Regularity: Each shopping mall connects to 3 roads $\implies \text{deg}(v) = 3$ for each $v \in V$.
+      - Handshaking Lemma: $2|E| = \sum \text{deg}(v) = 20 \times 3 = 60 \implies |E| = 30$ edges (roads).
+      - Planarity: Roads do not cross each other $\implies$ graph is planar and connected.
+      - Euler's Formula: $|V| - |E| + |F| = 2 \implies 20 - 30 + |F| = 2 \implies |F| = 12$ total regions (faces).
+      - Enclosed Regions Constraint: The question asks: *"What is the maximum number of parks that can be constructed in the **regions enclosed by roads**?"*
+      - Exactly 1 of the 12 faces is the unbounded exterior (outer) region, which is not enclosed by roads.
+      - Therefore, the number of bounded enclosed regions is $|F_{\text{enclosed}}| = 12 - 1 = 11$.
+      - The correct option is strictly **Option D (11)**.
+  - *Resolution & Accomplishments*:
+    - **Robust Option Detection (`IsroQuestionService.ts` & `Question.jsx`)**:
+      - Replaced naive `/<(ol|ul)\b/i` checks with structured option detection: `/<ol\b[^>]*(?:class=["'][^"']*(?:qa-options|question-options)|style=["'][^"']*(?:upper-alpha|lower-alpha)|type=["'][Aa]["']|data-option-label)/i.test(html) || extractEmbeddedOptions(html).length >= 2`.
+      - Question stems with unordered lists `<ul>` (or ordered description steps) now properly preserve and render their choice options.
+    - **Standalone ISRO Question Direct Navigation (`src/pages/SolvePage.jsx`)**:
+      - Added `isIsroQuestion` handling to `loadStandaloneQuestion` so direct URL visits to `/practice/question/isro:cs:2025:q5` resolve immediately via `IsroQuestionService.ensureQuestionDetail`.
+    - **Comprehensive Answer Key Synchronization**:
+      - Updated `isro:cs:2025:q5` answer to `"D"` across `data/isro/answers-isro.json`, `public/data/isro/answers-isro.json`, `data/isro/isro-2025.json`, `public/data/isro/isro-2025.json`, `data/isro/isro-all.json`, `public/data/isro/isro-all.json`.
+      - Added manual patch in `data/answers/manual-answers-patch-v1.json`.
+      - Synchronized question UID answer maps in `data/answers/answers_by_question_uid_v1.json` and `public/data/answers/answers_by_question_uid_v1.json`.
+      - Synchronized `public/data/answers/answers_by_exam_uid_v1.json` (`isro-2025-q5`) and `public/data/answers/answers_master_v1.json` (`manual:isro:cs:2025:q5`).
+      - Added full step-by-step mathematical derivation in `detailed_solution` with Euler's formula proof and bounded vs unbounded region breakdown.
+    - **Automated Regression Testing**:
+      - Added test in `src/utils/evaluateAnswer.test.js` validating evaluation of `isro:cs:2025:q5` as MCQ Option D.
+      - Added test in `src/services/AnswerService.test.js` validating `AnswerService.getAnswerForQuestion` resolution of `isro:cs:2025:q5`.
+      - Added test in `src/services/IsroQuestionService.test.js` validating options appending when question stem has a `<ul>` list.
+      - Added test in `src/components/Question/Question.test.jsx` confirming `Question` component renders all 4 options for `isro:cs:2025:q5`.
+  - *Verification*: Full Vitest suite passing (1,388 tests passed across 108 files, 0 failures), data integrity validation clean (`npm run qa:validate-data-integrity` 0 errors), TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
+- **Question Data Integrity & Taxonomy Retagging for `go:460041` and `go:2733` to Group Theory (DEC-199)**:
+  - *Context*: Two Discrete Mathematics questions were incorrectly categorized under inaccurate subtopics due to legacy tag priority ordering:
+    - `go:460041` (GATE CSE 2025 Set 1 Q39): Investigates whether the algebraic structure $(F, \odot)$ of pointwise functions into non-negative integers forms an Abelian group or monoid. It was incorrectly classified under "Identify Function" because the legacy tag `identify-function` took precedence over `group-theory`.
+    - `go:2733` (GATE CSE 1996 Q2.4): Evaluates algebraic properties of bijective functions under composition, $(\mathbb{Z}_p^*, \times)$, string concatenation monoids, and the 1-step subgroup test. It was classified under "Set Theory" because `set-theory` appeared ahead of `group-theory` in the tag array.
+  - *Mathematical Justification & Official Syllabus Alignment*:
+    - Both questions evaluate group axioms (closure, associativity, identity, inverse existence, commutativity, and subgroup criteria) under the GATE syllabus topic *Set Theory & Algebra* $\rightarrow$ *Group Theory*.
+    - Neither question involves finding the function computed by imperative code or recurrence ("Identify Function"), nor simple set operations/Venn diagrams ("Set Theory").
+  - *Accomplishments*:
+    - **Tag & Taxonomy Correction**:
+      - In `public/questions-with-answers.json`, removed `identify-function` from `go:460041` and removed `set-theory` from `go:2733`, promoting `group-theory` as the primary subtopic tag.
+      - Synchronized `public/questions-filtered-with-ids.json` and `public/questions-filtered.json`.
+      - Updated `concept_summary` in `data/solutions/cse-v1.json` for `go:460041` from `set-theory&algebra: identify-function` to `set-theory&algebra: group-theory`.
+    - **Static Shard & Search Index Rebuild**:
+      - Executed `node scripts/precompute-subtopics.mjs; node scripts/build-public-artifacts.mjs`.
+      - Generated updated static detail shards `public/question-detail-shards/2025-s1.json` and `public/question-detail-shards/1996-s0.json` with `subtopicSlug: "group-theory"` and `subtopicLabel: "Group Theory"`.
+      - Regenerated `public/question-search-index.json`, `public/homepage-search-catalog.json`, and `public/mock_catalog_v1.json`.
+    - **Automated Regression Tests**:
+      - Added regression test cases in `src/services/QuestionService.test.js` validating that `QuestionService.resolveQuestionTaxonomy` and `QuestionService.normalizeQuestion` resolve `go:460041` and `go:2733` strictly to `group-theory` ("Group Theory") under *Set Theory & Algebra* within *Discrete Mathematics*.
+    - **Verification**:
+      - All 38 tests passed in `src/services/QuestionService.test.js`.
+      - Full QA data integrity validation clean (`npm run qa:validate-data`, 0 errors).
+      - TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
 - **E2E Test Suite Stabilization & Accessibility Control Alignment (DEC-198)**:
   - *Context*: Playwright E2E tests failed on three specs (`tests/e2e/a11y.axe.spec.js`, `tests/e2e/branch-data-isolation.spec.js`, and `tests/e2e/practice-flow.spec.js`) following recent breadcrumb and branch preference updates.
   - *Accomplishments*:

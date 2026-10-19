@@ -48,7 +48,7 @@ Before doing research or writing code:
 * **Testing:** Vitest for unit tests (`npm run test:unit`), Playwright for E2E (`npm run test:e2e`), TypeScript for type checking (`npm run typecheck`).
 * **Git Integrity:** Only commit or merge git branches when explicitly requested by the user.
 
-* **Master Architectural Documents:** [`docs/ARCHITECTURE.md`](file:///docs/ARCHITECTURE.md), [`docs/DATABASE.md`](file:///docs/DATABASE.md), [`docs/TRACKER.md`](file:///docs/TRACKER.md), [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md), [`docs/CHANGELOG.md`](file:///docs/CHANGELOG.md).
+* **Master Architectural Documents:** [`docs/ARCHITECTURE.md`](file:///docs/ARCHITECTURE.md), [`docs/DATABASE.md`](file:///docs/DATABASE.md), [`docs/TRACKER.md`](file:///docs/TRACKER.md), [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md), [`docs/QUESTION_JSON_RESOLUTION_PLAN.md`](file:///docs/QUESTION_JSON_RESOLUTION_PLAN.md), [`docs/CHANGELOG.md`](file:///docs/CHANGELOG.md).
 
 ---
 
@@ -72,8 +72,8 @@ Before doing research or writing code:
 
 ## 5. Question & Answer Maintenance Protocol
 
-Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), or repairing formulas/options:
-1. **Follow the Runbook**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) for the 6-phase protocol.
+Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), repairing formulas/options, or resolving taxonomy/diagram issues:
+1. **Follow the Runbook & Resolution Plan**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) and [`docs/QUESTION_JSON_RESOLUTION_PLAN.md`](file:///docs/QUESTION_JSON_RESOLUTION_PLAN.md) for the 6-phase protocol, 6 JSON problem archetypes, and exact file checklists.
 2. **Patch Authoritative Store**: Always update `data/answers/manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (both `data/` and `public/data/`), runtime answer indices (`public/data/answers/`), and `public/questions-with-answers.json`.
 3. **Rebuild Static Shards**: Run `node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs`.
 4. **Add Regression Tests**: Add test cases in `src/utils/evaluateAnswer.test.js` and verify with `npm run test:unit`.

@@ -1,4 +1,10 @@
 {
+  "go:1073": {
+    "question_uid": "go:1073",
+    "verified_answer": "D",
+    "concept_summary": "discrete-mathematics: combinatorics & graph-theory",
+    "solution_markdown": "For an undirected simple graph on $n$ labeled vertices:\n\n1. **Total Possible Edges:**\n   Any pair of vertices can either have an edge between them or not. The total number of unordered vertex pairs (possible edges) is:\n   $$N = \\binom{n}{2} = \\frac{n(n-1)}{2} = \\frac{n^2 - n}{2}$$\n\n2. **Selecting at Least $\\frac{n^2 - 3n}{2}$ Edges:**\n   We are asked for the number of graphs having at least $E = \\frac{n^2 - 3n}{2}$ edges.\n   Choosing $k$ edges out of $N$ possible edges can be done in $\\binom{N}{k}$ ways.\n   Summing over all allowed edge counts from $E$ to $N$:\n   $$\\sum_{k = E}^{N} \\binom{N}{k} = \\sum_{k = \\frac{n^2 - 3n}{2}}^{\\frac{n^2 - n}{2}} \\binom{\\frac{n^2 - n}{2}}{k}$$\n\n3. **Applying Binomial Symmetry:**\n   The difference between the maximum edges and the minimum edges required is:\n   $$N - E = \\frac{n^2 - n}{2} - \\frac{n^2 - 3n}{2} = \\frac{2n}{2} = n$$\n   By binomial symmetry, $\\binom{N}{k} = \\binom{N}{N - k}$. Substituting $j = N - k$:\n   - When $k = E = \\frac{n^2 - 3n}{2}$, $j = N - E = n$.\n   - When $k = N = \\frac{n^2 - n}{2}$, $j = 0$.\n   \n   Therefore:\n   $$\\sum_{k = E}^{N} \\binom{N}{k} = \\sum_{j = 0}^{n} \\binom{N}{j} = \\sum_{k = 0}^{n} \\binom{\\frac{n^2 - n}{2}}{k}$$\n\nThis matches **Option D**.\n\n<b>Answer: Option D</b>"
+  },
   "go:523089": {
     "question_uid": "go:523089",
     "verified_answer": "B",
@@ -2975,7 +2981,7 @@
     "verified_answer": [
       "B"
     ],
-    "concept_summary": "set-theory&algebra: identify-function",
+    "concept_summary": "set-theory&algebra: group-theory",
     "solution_markdown": "$(f_1\\odot f_2)(n)=f_1(n)+f_2(n)$ &mdash; pointwise addition of functions into the non-negative integers.\n\n- <b>Closure:</b> the sum of two non-negative-integer values is still a non-negative integer, so $F$ is closed under $\\odot$.\n\n- <b>Associativity:</b> inherited directly from ordinary integer addition being associative.\n\n- <b>Identity:</b> the constant-zero function $z(n)=0$ satisfies $f\\odot z=f$ for every $f$ &mdash; an identity element exists.\n\n- <b>Commutativity:</b> $f_1(n)+f_2(n)=f_2(n)+f_1(n)$ pointwise, so $\\odot$ is commutative.\n\n- <b>Inverses:</b> for a general $f$ (e.g. $f(n)=n$), we'd need some $g$ with $f(n)+g(n)=0$, forcing $g(n)=-f(n)$ &mdash; but negative values aren't allowed in the codomain $A$. So inverses generally don't exist.\n\nSince it's closed, associative, has an identity, and is commutative, but lacks inverses, $(F,\\odot)$ is exactly an <b>Abelian monoid</b> (not a group).\n\n<b>Answer: (F, &#8857;) is an Abelian monoid.</b>\n\nTherefore, the correct option(s) are **B**."
   },
   "go:460040": {

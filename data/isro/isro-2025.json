@@ -248,7 +248,7 @@
         "html": "11"
       }
     ],
-    "answer": "A",
+    "answer": "D",
     "marks": 1,
     "negativeMarks": 0.33,
     "subject": "discrete-math",
@@ -262,7 +262,11 @@
       "planar-graphs-and-euler-formula"
     ],
     "detailShardKey": "isro-2025-s0",
-    "gateoverflow_id": 496440
+    "gateoverflow_id": 496440,
+    "detailed_solution": {
+      "concept": "Planar Graphs & Euler's Formula",
+      "markdown": "### Step-by-Step Derivation\n\n1. **Model as a Planar Graph:**\n   - Each shopping mall is a vertex, so $|V| = 20$.\n   - Each shopping mall can be reached through 3 different roads, meaning the graph is 3-regular: $\\text{deg}(v) = 3$ for each $v \\in V$.\n   - Since roads do not cross each other, the graph is planar.\n\n2. **Calculate Number of Edges (Roads):**\n   - By the Handshaking Lemma:\n     $$2|E| = \\sum_{v \\in V} \\text{deg}(v) = 20 \\times 3 = 60 \\implies |E| = 30$$\n\n3. **Apply Euler's Formula for Planar Graphs:**\n   - For any connected planar graph:\n     $$|V| - |E| + |F| = 2$$\n     $$20 - 30 + |F| = 2 \\implies |F| = 12$$\n   - There are 12 total faces (regions) formed by the planar drawing.\n\n4. **Determine Regions Enclosed by Roads:**\n   - The total number of faces $|F| = 12$ includes **1 unbounded exterior (outer) region** and **11 bounded interior regions**.\n   - Parks are planned only in **regions enclosed by roads** (interior bounded regions).\n   - Therefore, the maximum number of parks that can be constructed is:\n     $$|F_{\\text{enclosed}}| = |F| - 1 = 12 - 1 = 11$$\n\n**Correct Answer:** **Option (D) 11**"
+    }
   },
   {
     "question_uid": "isro:cs:2025:q6",

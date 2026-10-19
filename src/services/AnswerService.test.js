@@ -2790,6 +2790,93 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         });
       });
     });
+
+    describe("DEC-200: isro:cs:2025:q5 (ISRO CS 2025 Q5)", () => {
+      beforeEach(() => {
+        IsroQuestionService.answersByQuestionUid = {
+          "isro:cs:2025:q5": {
+            question_uid: "isro:cs:2025:q5",
+            type: "MCQ",
+            answer: "D",
+            tolerance: null,
+          },
+        };
+      });
+
+      test("resolves isro:cs:2025:q5 as MCQ Option D (11 enclosed parks)", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "isro:cs:2025:q5",
+          exam_uid: "isro-2025-q5",
+          title: "ISRO CS 2025 | Question: 5",
+        });
+        expect(answer).toMatchObject({
+          type: "MCQ",
+          answer: "D",
+        });
+      });
+    });
+
+    describe("DEC-201: AnswerService Resolution for go:3354, go:1954, go:2303", () => {
+      test("resolves go:3354 (GATE IT 2008 Q44) as MCQ Option A", () => {
+        AnswerService.answersByQuestionUid = {
+          "go:3354": {
+            answer_uid: "v2:1.28.1",
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          },
+        };
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:3354",
+          title: "GATE IT 2008 | Question: 44",
+        });
+        expect(answer).toMatchObject({
+          type: "MCQ",
+          answer: "A",
+        });
+      });
+
+      test("resolves go:1954 (GATE CSE 2014 Set 2 Q2) as NAT 3.9", () => {
+        AnswerService.answersByQuestionUid = {
+          "go:1954": {
+            answer_uid: "manual:go:1954",
+            type: "NAT",
+            answer: 3.9,
+            tolerance: null,
+          },
+        };
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:1954",
+          exam_uid: "cse:2014:set2:main:q2",
+          title: "GATE CSE 2014 Set 2 | Question: 2",
+        });
+        expect(answer).toMatchObject({
+          type: "NAT",
+          answer: 3.9,
+          tolerance: null,
+        });
+      });
+
+      test("resolves go:2303 (GATE CSE 1993 Q8.5) as MCQ Option E", () => {
+        AnswerService.answersByQuestionUid = {
+          "go:2303": {
+            answer_uid: "manual:go:2303",
+            type: "MCQ",
+            answer: "E",
+            tolerance: null,
+          },
+        };
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:2303",
+          exam_uid: "cse:1993:set1:main:q8-5",
+          title: "GATE CSE 1993 | Question: 8.5",
+        });
+        expect(answer).toMatchObject({
+          type: "MCQ",
+          answer: "E",
+        });
+      });
+    });
   });
 });
 

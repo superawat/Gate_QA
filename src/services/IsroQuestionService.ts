@@ -118,10 +118,11 @@ const normalizeRow = (row: any, answerRecords: Record<string, any>): QuestionRow
   const type = normalizeType(row.type || "MCQ");
   const rawQuestionHtml = clean(row.question || row.questionHtml);
   const normalizedOpts = normalizeOptions(row);
-  const hasEmbeddedList = /<ol\b[^>]*>/i.test(rawQuestionHtml) || /<ul\b[^>]*>/i.test(rawQuestionHtml);
+  const hasEmbeddedOptions = /<ol\b[^>]*(?:class=["'][^"']*(?:qa-options|question-options)|style=["'][^"']*(?:upper-alpha|lower-alpha)|type=["'][Aa]["']|data-option-label)/i.test(rawQuestionHtml)
+    || extractEmbeddedOptions(rawQuestionHtml).length >= 2;
 
   let questionHtml = rawQuestionHtml;
-  if (!hasEmbeddedList && normalizedOpts.length > 0) {
+  if (!hasEmbeddedOptions && normalizedOpts.length > 0) {
     const validOpts = normalizedOpts.filter((opt: any) => clean(opt?.html || opt?.text));
     if (validOpts.length > 0) {
       const optionsHtml = `<ol class="question-options" style="list-style-type: upper-alpha; margin-top: 1rem; padding-left: 1.75rem;">${validOpts

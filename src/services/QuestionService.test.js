@@ -833,6 +833,135 @@ describe("QuestionService", () => {
       expect(resolved.secondary).toEqual([]);
       expect(resolved.conceptTags).toEqual([]);
     });
+
+    test("resolves go:460041 (GATE CSE 2025 Set 1 Q39) as Group Theory under Discrete Mathematics", () => {
+      const question = {
+        question_uid: "go:460041",
+        title: "GATE CSE 2025 | Set 1 | Question: 39",
+        tags: [
+          "set-theory&algebra",
+          "group-theory",
+          "multiple-selects",
+          "easy",
+          "two-marks",
+          "gatecse-2025",
+          "gatecse-2025-set1",
+        ],
+      };
+
+      const resolved = QuestionService.resolveQuestionTaxonomy(question);
+      expect(resolved.primary.subjectSlug).toBe("discrete-math");
+      expect(resolved.primary.subjectLabel).toBe("Discrete Mathematics");
+      expect(resolved.primary.topicSlug).toBe("set-theory-algebra");
+      expect(resolved.primary.topicLabel).toBe("Set Theory & Algebra");
+      expect(resolved.primary.subtopicSlug).toBe("group-theory");
+      expect(resolved.primary.subtopicLabel).toBe("Group Theory");
+
+      const normalized = QuestionService.normalizeQuestion(question);
+      expect(normalized.subtopics).toEqual([
+        { slug: "group-theory", label: "Group Theory" },
+      ]);
+      expect(normalized.taxonomy.primary.subtopicSlug).toBe("group-theory");
+    });
+
+    test("resolves go:2733 (GATE CSE 1996 Q2.4) as Group Theory under Discrete Mathematics", () => {
+      const question = {
+        question_uid: "go:2733",
+        title: "GATE CSE 1996 | Question: 2.4",
+        tags: [
+          "gate1996",
+          "set-theory&algebra",
+          "normal",
+          "group-theory",
+        ],
+      };
+
+      const resolved = QuestionService.resolveQuestionTaxonomy(question);
+      expect(resolved.primary.subjectSlug).toBe("discrete-math");
+      expect(resolved.primary.subjectLabel).toBe("Discrete Mathematics");
+      expect(resolved.primary.topicSlug).toBe("set-theory-algebra");
+      expect(resolved.primary.topicLabel).toBe("Set Theory & Algebra");
+      expect(resolved.primary.subtopicSlug).toBe("group-theory");
+      expect(resolved.primary.subtopicLabel).toBe("Group Theory");
+
+      const normalized = QuestionService.normalizeQuestion(question);
+      expect(normalized.subtopics).toEqual([
+        { slug: "group-theory", label: "Group Theory" },
+      ]);
+      expect(normalized.taxonomy.primary.subtopicSlug).toBe("group-theory");
+    });
+
+    describe("DEC-201: Question Normalization & Options Parsing for go:1224 and go:2303", () => {
+      test("normalizes go:1224 with 4 Hasse diagram image options", () => {
+        const question = {
+          question_uid: "go:1224",
+          title: "GATE CSE 2007 | Question: 26",
+          question: '<p>Let $S = \\{a, b, c, d\\}$ and $\\Pi = \\{\\pi_1, \\pi_2, \\pi_3, \\pi_4\\}$ be partitions on $S$...</p><ol style="list-style-type:upper-alpha"><li><img src="/question-images/cse/2007/go_1224_opt_a.webp" alt="Option A Hasse Diagram" width="81" height="155" /></li><li><img src="/question-images/cse/2007/go_1224_opt_b.webp" alt="Option B Hasse Diagram" width="166" height="187" /></li><li><img src="/question-images/cse/2007/go_1224_opt_c.webp" alt="Option C Hasse Diagram" width="224" height="221" /></li><li><img src="/question-images/cse/2007/go_1224_opt_d.webp" alt="Option D Hasse Diagram" width="240" height="153" /></li></ol>',
+          tags: ["gatecse-2007", "set-theory&algebra", "poset", "hasse-diagram", "normal"],
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options.map(o => o.label)).toEqual(["A", "B", "C", "D"]);
+        expect(options[0].html).toContain("go_1224_opt_a.webp");
+        expect(options[2].html).toContain("go_1224_opt_c.webp");
+      });
+
+      test("normalizes go:2303 with 5 options including Option E None of the above", () => {
+        const question = {
+          question_uid: "go:2303",
+          title: "GATE CSE 1993 | Question: 8.5",
+          question: '<p>The less-than relation, $<$, on reals is</p><ol style="list-style-type:upper-alpha"><li>a partial ordering since it is asymmetric and reflexive</li><li>a partial ordering since it is antisymmetric and reflexive</li><li>not a partial ordering because it is not asymmetric and not reflexive</li><li>not a partial ordering because it is not antisymmetric and reflexive</li><li>None of the above</li></ol>',
+          tags: ["gate1993", "discrete-mathematics", "set-theory-and-algebra", "normal"],
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(5);
+        expect(options.map(o => o.label)).toEqual(["A", "B", "C", "D", "E"]);
+        expect(options[4].label).toBe("E");
+        expect(options[4].text).toBe("None of the above");
+      });
+
+      test("bridges go:1075 with graph-theory tag and secondary Discrete Mathematics taxonomy", () => {
+        const question = {
+          question_uid: "go:1075",
+          title: "GATE CSE 2004 | Question: 81",
+          tags: ["gatecse-2004", "algorithms", "graph-algorithms", "graph-theory", "normal"],
+        };
+        const resolved = QuestionService.resolveQuestionTaxonomy(question);
+        expect(resolved.primary.subjectSlug).toBe("algorithms");
+        expect(question.tags).toContain("graph-theory");
+      });
+
+      test("bridges go:1073 with secondary Graph Theory taxonomy under Discrete Mathematics", () => {
+        const question = {
+          question_uid: "go:1073",
+          title: "GATE CSE 2004 | Question: 79",
+          tags: ["gatecse-2004", "graph-theory", "combinatory", "normal", "counting"],
+          taxonomy: {
+            primary: {
+              subjectSlug: "discrete-math",
+              subjectLabel: "Discrete Mathematics",
+              topicSlug: "combinatorics",
+              subtopicSlug: "combinatory",
+            },
+            secondary: [
+              {
+                subjectSlug: "discrete-math",
+                subjectLabel: "Discrete Mathematics",
+                topicSlug: "graph-theory",
+                subtopicSlug: "graph-theory",
+              },
+            ],
+            conceptTags: ["graph-theory", "labeled-graphs", "graph-edges", "combinatorics", "counting"],
+          },
+        };
+        const resolved = QuestionService.resolveQuestionTaxonomy(question);
+        expect(resolved.primary.subjectSlug).toBe("discrete-math");
+        expect(resolved.primary.topicSlug).toBe("combinatorics");
+        expect(resolved.secondary).toHaveLength(1);
+        expect(resolved.secondary[0].topicSlug).toBe("graph-theory");
+        expect(question.tags).toContain("graph-theory");
+      });
+    });
   });
 });
 

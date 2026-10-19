@@ -10,6 +10,7 @@ import { cleanLatexHtml } from "../../utils/latexClean";
 import { getQuestionSolutionLink } from "../../utils/solutionLink";
 import { formatCodeSnippets } from "../../utils/codeSnippet";
 import DetailedSolutionView from "../QuestionDetail/DetailedSolutionView";
+import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 
 function Question({
   question = {},
@@ -42,14 +43,15 @@ function Question({
 
   const sanitizedQuestionHtml = useMemo(() => {
     let rawContent = question.question || question.questionHtml || "";
-    const hasList = /<(ol|ul)\b[^>]*>/i.test(rawContent);
+    const hasEmbeddedOptions = /<ol\b[^>]*(?:class=["'][^"']*(?:qa-options|question-options)|style=["'][^"']*(?:upper-alpha|lower-alpha)|type=["'][Aa]["']|data-option-label)/i.test(rawContent)
+      || extractEmbeddedOptions(rawContent).length >= 2;
     const options = (Array.isArray(question.normalizedOptions) && question.normalizedOptions.length > 0)
       ? question.normalizedOptions
       : (Array.isArray(question.options) && question.options.length > 0)
         ? question.options
         : null;
 
-    if (!hasList && options && options.length > 0) {
+    if (!hasEmbeddedOptions && options && options.length > 0) {
       const validOptions = options
         .map((opt) => (typeof opt === "string" ? opt : (opt?.html || opt?.text || opt?.value || "")))
         .filter((val) => typeof val === "string" && val.trim().length > 0);

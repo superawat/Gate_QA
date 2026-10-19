@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:39:52.230Z",
+  "generatedAt": "2026-10-19T08:52:42.861Z",
   "shardKey": "2025-s1",
   "yearSetKey": "2025-s1",
   "yearSetIdentity": "cse:2025:set-1",
@@ -2611,7 +2611,6 @@
       "question": "<div class=\"qa-q-view-content\">\n<a name=\"460041\"></a><div itemprop=\"text\"><p>$A=\\{0,1,2,3, \\ldots\\}$ is the set of non-negative integers. Let $F$ be the set of functions from $A$ to itself. For any two functions, $f_{1}, f_{2} \\in \\mathrm{~F}$, we define</p><p>$$\\left(f_{1} \\odot f_{2}\\right)(n)=f_{1}(n)+f_{2}(n) $$</p><p>for every number $n$ in $A$. Which of the following is/are CORRECT about the mathematical structure $(\\mathrm{F}, \\odot)$ ?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>$(\\mathrm{F}, \\odot)$ is an Abelian group.</li><li>$(\\mathrm{F}, \\odot)$ is an Abelian monoid.</li><li>$(F, \\odot)$ is a non-Abelian group.</li><li>$(\\mathrm{F}, \\odot)$ is a non-Abelian monoid.</li></ol></div>\n</div>",
       "tags": [
         "set-theory&algebra",
-        "identify-function",
         "group-theory",
         "multiple-selects",
         "easy",
@@ -2654,14 +2653,14 @@
         "primary": {
           "subjectSlug": "discrete-math",
           "subjectLabel": "Discrete Mathematics",
-          "subtopicSlug": "identify-function",
-          "subtopicLabel": "Identify Function"
+          "subtopicSlug": "group-theory",
+          "subtopicLabel": "Group Theory"
         },
         "secondary": [],
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "set-theory&algebra: identify-function",
+        "concept": "set-theory&algebra: group-theory",
         "markdown": "$(f_1\\odot f_2)(n)=f_1(n)+f_2(n)$ &mdash; pointwise addition of functions into the non-negative integers.\n\n- <b>Closure:</b> the sum of two non-negative-integer values is still a non-negative integer, so $F$ is closed under $\\odot$.\n\n- <b>Associativity:</b> inherited directly from ordinary integer addition being associative.\n\n- <b>Identity:</b> the constant-zero function $z(n)=0$ satisfies $f\\odot z=f$ for every $f$ &mdash; an identity element exists.\n\n- <b>Commutativity:</b> $f_1(n)+f_2(n)=f_2(n)+f_1(n)$ pointwise, so $\\odot$ is commutative.\n\n- <b>Inverses:</b> for a general $f$ (e.g. $f(n)=n$), we'd need some $g$ with $f(n)+g(n)=0$, forcing $g(n)=-f(n)$ &mdash; but negative values aren't allowed in the codomain $A$. So inverses generally don't exist.\n\nSince it's closed, associative, has an identity, and is commutative, but lacks inverses, $(F,\\odot)$ is exactly an <b>Abelian monoid</b> (not a group).",
         "images": []
       }

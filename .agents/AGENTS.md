@@ -75,15 +75,15 @@ Before doing research or writing code:
 * `src/utils/`: Core utilities (`cloudSyncManager.js`, `syncQueue.js`, `practiceProgress.js`, `mockTest.js`, `branchQuestionIdentity.js`, `solutionLink.js`).
 * `src/components/QuestionDetail/`: Question presentation & derivation (`DetailedSolutionView.jsx`, `Question.jsx`).
 * `src/components/AnswerPanel/`: Solution action bar & keypad (`AnswerPanel.jsx`).
-* `docs/`: Master architectural documents (`ARCHITECTURE.md`, `DATABASE.md`, `TRACKER.md`, `QUESTION_DATA_CORRECTION_RUNBOOK.md`, `CHANGELOG.md`).
+* `docs/`: Master architectural documents (`ARCHITECTURE.md`, `DATABASE.md`, `TRACKER.md`, `QUESTION_DATA_CORRECTION_RUNBOOK.md`, `QUESTION_JSON_RESOLUTION_PLAN.md`, `CHANGELOG.md`).
 * `.llm-memory/`: Distilled summaries for fast LLM retrieval.
 
 ---
 
 ## 6. Question & Answer Maintenance Protocol
 
-Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), or repairing formulas/options:
-1. **Follow the Runbook**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) for the 6-phase protocol.
+Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), repairing formulas/options, or resolving taxonomy/diagram issues:
+1. **Follow the Runbook & Resolution Plan**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) and [`docs/QUESTION_JSON_RESOLUTION_PLAN.md`](file:///docs/QUESTION_JSON_RESOLUTION_PLAN.md) for the 6-phase protocol, 6 JSON problem archetypes, and exact file checklists.
 2. **Patch Authoritative Store**: Always update `data/answers/manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (both `data/` and `public/data/`), runtime answer indices (`public/data/answers/`), and `public/questions-with-answers.json`.
 3. **Rebuild Static Shards**: Run `node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs`.
 4. **Add Regression Tests**: Add test cases in `src/utils/evaluateAnswer.test.js` and verify with `npm run test:unit`.
