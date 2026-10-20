@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:36.676Z",
+  "generatedAt": "2026-10-20T06:04:13.056Z",
   "shardKey": "ec-2011-s1",
   "yearSetKey": "ec-2011-s1",
   "yearSetIdentity": "ec:2011:set-1",
@@ -1100,7 +1100,7 @@
       "year": "gateec-2011-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "The value of the integral $\\oint_{c}\\frac{-3z+4}{(z^{4}+4z+5)}$ dz where c is the circle |z| = 1 is given by",
+      "question": "The value of the integral $\\oint_{c}\\frac{-3z+4}{(z^{2}+4z+5)}$ dz where c is the circle |z| = 1 is given by",
       "options": [
         "0",
         "$1/10$",
@@ -1131,7 +1131,8 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
-        "markdown": "$$\\begin{aligned} I&=\\oint_{c} \\frac{-3 z+4}{\\left(z^{2}+4 z+5\\right)} d z\\\\ &=2 \\pi i \\; \\text{ ( sum of residues)}\\\\ &\\text{Poles of } \\frac{-3 z+4}{\\left(z^{2}+4 z+5\\right)}\\text{ are given by}\\\\ &z^{2}+4 z+5 &=0 \\\\ z&=\\frac{-4 \\pm \\sqrt{16-20}}{2} =\\frac{-4 \\pm 2 i}{2} \\\\ &=-2 \\pm i & \\end{aligned}$$\n\nsince the poles lie outside the circle |z|=1\n\nSo, f(z) is analytic inside the circle |z|=1\n\nHence, $\\quad \\oint_{c} f(z) d z=2 \\pi i(0)=0$\n\nTherefore, the correct answer is **A**."
+        "markdown": "- **Integral Formulation:**\n  We are tasked with evaluating the contour integral:\n  $$I = \\oint_{C} \\frac{-3z + 4}{z^2 + 4z + 5} \\, dz$$\n  where $C$ is the circle $|z| = 1$ traversed in the counter-clockwise direction.\n\n- **Singularity Analysis (Poles of Integrand):**\n  - Set the denominator equal to zero to identify the poles of $f(z) = \\frac{-3z + 4}{z^2 + 4z + 5}$:\n    $$z^2 + 4z + 5 = 0$$\n  - Using the quadratic formula $z = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$:\n    $$z = \\frac{-4 \\pm \\sqrt{4^2 - 4(1)(5)}}{2} = \\frac{-4 \\pm \\sqrt{16 - 20}}{2} = \\frac{-4 \\pm 2i}{2}$$\n    $$z_1 = -2 + i, \\quad z_2 = -2 - i$$\n  - Thus, the integrand has two simple poles at $z = -2 + i$ and $z = -2 - i$.\n\n- **Checking Pole Locations Relative to Contour $C$ ($|z| = 1$):**\n  - The contour $C$ is a circle centered at the origin with radius $R = 1$.\n  - Calculate the modulus (distance from the origin) for both poles:\n    $$|z_1| = |-2 + i| = \\sqrt{(-2)^2 + (1)^2} = \\sqrt{4 + 1} = \\sqrt{5} \\approx 2.236$$\n    $$|z_2| = |-2 - i| = \\sqrt{(-2)^2 + (-1)^2} = \\sqrt{4 + 1} = \\sqrt{5} \\approx 2.236$$\n  - Since $|z_1| = \\sqrt{5} > 1$ and $|z_2| = \\sqrt{5} > 1$, **both poles lie strictly outside** the contour $C$.\n\n- **Applying Cauchy's Integral Theorem:**\n  - Since $f(z)$ has no singularities inside or on the closed contour $C$, $f(z)$ is analytic everywhere inside and on $C$.\n  - By Cauchy's Integral Theorem, if a function $f(z)$ is analytic within and on a simple closed contour $C$, then:\n    $$\\oint_{C} f(z) \\, dz = 0$$\n\nTherefore, the value of the integral is **0**, and the correct answer is **Option A**.",
+        "images": []
       }
     },
     "ec:2011:q26": {

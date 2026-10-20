@@ -3310,6 +3310,72 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
       });
     });
+
+    describe("DEC-202: Question Data Integrity & Answer Corrections", () => {
+      test("evaluates go:426523 (GATE EE 2024 GA Q1) as MCQ Option A (flatter)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:2018 (GATE CSE 2014 Set 2 Q51) as NAT 5", () => {
+        const record = {
+          type: "NAT",
+          answer: 5,
+          tolerance: { lower: 5, upper: 5, abs: 0.01 },
+        };
+        expect(evaluateAnswer(record, 5)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "5")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 4)).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, 6)).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates ec:2008:q3 (GATE EC 2008 Q3) as MCQ Option D (infinite number of complex solutions)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates ec:2011:q25 (GATE EC 2011 Q25) as MCQ Option A (0)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:912 (GATE CSE 2003 Q22) as MCQ Option A (remain Theta(n^2))", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+    });
   });
 });
 

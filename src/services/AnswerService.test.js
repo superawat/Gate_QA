@@ -2876,6 +2876,106 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
           answer: "E",
         });
       });
+
+      describe("DEC-202: Question Data Integrity & Answer Corrections", () => {
+        test("resolves go:426523 (GATE EE 2024 GA Q1) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:426523": {
+              answer_uid: "manual:go:426523",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:426523",
+            link: "https://gateoverflow.in/426523/gate-2024-electrical-ga-question-1",
+            title: "GATE 2024 Electrical | General Aptitude Question: 1",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
+
+        test("resolves go:2018 (GATE CSE 2014 Set 2 Q51) as NAT 5", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:2018": {
+              answer_uid: "manual:go:2018",
+              type: "NAT",
+              answer: 5,
+              tolerance: { lower: 5, upper: 5, abs: 0.01 },
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:2018",
+            link: "https://gateoverflow.in/2018/gate-cse-2014-set-2-question-51",
+            title: "GATE CSE 2014 Set 2 | Question: 51",
+          });
+          expect(answer).toMatchObject({
+            type: "NAT",
+            answer: 5,
+          });
+        });
+
+        test("resolves ec:2008:q3 (GATE EC 2008 Q3) as MCQ Option D", () => {
+          AnswerService.answersByQuestionUid = {
+            "ec:2008:q3": {
+              answer_uid: "ec:2008:q3",
+              type: "MCQ",
+              answer: "D",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "ec:2008:q3",
+            title: "GATE EC 2008 | Set 1 | Question: 3",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "D",
+          });
+        });
+
+        test("resolves ec:2011:q25 (GATE EC 2011 Q25) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "ec:2011:q25": {
+              answer_uid: "ec:2011:q25",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "ec:2011:q25",
+            title: "GATE EC 2011 | Set 1 | Question: 25",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
+
+        test("resolves go:912 (GATE CSE 2003 Q22) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:912": {
+              answer_uid: "v2:1.19.2",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:912",
+            link: "https://gateoverflow.in/912/gate-cse-2003-question-22",
+            title: "GATE CSE 2003 | Question: 22",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
+      });
     });
   });
 });

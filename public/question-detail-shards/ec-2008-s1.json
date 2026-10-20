@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:36.636Z",
+  "generatedAt": "2026-10-20T06:04:13.045Z",
   "shardKey": "ec-2008-s1",
   "yearSetKey": "ec-2008-s1",
   "yearSetIdentity": "ec:2008:set-1",
@@ -125,7 +125,7 @@
       ],
       "answer_meta": {
         "type": "MCQ",
-        "answer": "A",
+        "answer": "D",
         "tolerance": {
           "lower": 0,
           "upper": 0
@@ -150,7 +150,8 @@
       },
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
-        "markdown": "sinz can have value between -1 to +1. Thus no solution.\n\nTherefore, the correct answer is **A**."
+        "markdown": "- **Problem Statement:** Determine the nature of the solutions to $\\sin(z) = 10$, where $z$ is a complex variable ($z \\in \\mathbb{C}$).\n\n- **Real Domain vs. Complex Domain:**\n  - In real analysis ($x \\in \\mathbb{R}$), sine is bounded: $-1 \\le \\sin(x) \\le 1$. Thus, $\\sin(x) = 10$ has no real solutions.\n  - In complex analysis ($z \\in \\mathbb{C}$), the sine function is an entire, unbounded function defined via Euler's formula:\n    $$\\sin(z) = \\frac{e^{iz} - e^{-iz}}{2i}$$\n\n- **Solving the Equation:**\n  $$\\frac{e^{iz} - e^{-iz}}{2i} = 10 \\implies e^{iz} - e^{-iz} = 20i \\implies (e^{iz})^2 - 20i(e^{iz}) - 1 = 0$$\n  Let $w = e^{iz}$. Applying the quadratic formula:\n  $$w = \\frac{20i \\pm \\sqrt{(-20i)^2 - 4(1)(-1)}}{2} = \\frac{20i \\pm \\sqrt{-400 + 4}}{2} = 10i \\pm i\\sqrt{99} = i(10 \\pm 3\\sqrt{11})$$\n  Both roots are distinct, purely imaginary numbers with positive imaginary parts.\n\n- **Determining $z$:**\n  $$e^{iz} = i(10 \\pm 3\\sqrt{11}) = (10 \\pm 3\\sqrt{11}) e^{i\\left(\\frac{\\pi}{2} + 2k\\pi\\right)}, \\quad k \\in \\mathbb{Z}$$\n  Taking the natural logarithm on both sides:\n  $$iz = \\ln(10 \\pm 3\\sqrt{11}) + i\\left(\\frac{\\pi}{2} + 2k\\pi\\right), \\quad k \\in \\mathbb{Z}$$\n  $$z = \\left(\\frac{\\pi}{2} + 2k\\pi\\right) - i\\ln(10 \\pm 3\\sqrt{11}), \\quad k \\in \\mathbb{Z}$$\n  Since $k$ can be any integer ($k \\in \\mathbb{Z}$), there are **an infinite number of complex solutions**.\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
       }
     },
     "ec:2008:q4": {

@@ -962,6 +962,63 @@ describe("QuestionService", () => {
         expect(question.tags).toContain("graph-theory");
       });
     });
+
+    describe("DEC-202: Question Verification & Solution Integrity (go:426523, go:2018, ec:2008:q3, ec:2011:q25, go:912)", () => {
+      test("verifies ec:2011:q25 does not contain z^4 and has correct z^2 denominator", () => {
+        const question = {
+          question_uid: "ec:2011:q25",
+          title: "GATE EC 2011 | Set 1 | Question: 25",
+          question: "The value of the integral $\\oint_{c}\\frac{-3z+4}{(z^{2}+4z+5)}$ dz where c is the circle |z| = 1 is given by",
+          options: ["0", "$1/10$", "$4/5$", "1"],
+        };
+        expect(question.question).toContain("z^{2}+4z+5");
+        expect(question.question).not.toContain("z^{4}+4z+5");
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options[0].text).toBe("0");
+      });
+
+      test("verifies ec:2008:q3 has 4 choices with infinite complex solutions", () => {
+        const question = {
+          question_uid: "ec:2008:q3",
+          title: "GATE EC 2008 | Set 1 | Question: 3",
+          question: "The equation sin(z) = 10 has",
+          options: [
+            "no real or complex solution",
+            "exactly two distinct complex solutions",
+            "a unique solution",
+            "an infinite number of complex solutions",
+          ],
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options[3].text).toBe("an infinite number of complex solutions");
+      });
+
+      test("verifies go:426523 options normalization with Option A flatter", () => {
+        const question = {
+          question_uid: "go:426523",
+          title: "GATE 2024 Electrical | General Aptitude Question: 1",
+          question: "<p>If ' $\\rightarrow$ ' denotes increasing order of intensity, then the meaning of the words [talk $\\rightarrow$ shout $\\rightarrow$ scream] is analogous to [please $\\rightarrow$ __________ $\\rightarrow$ pander].</p><ol style=\"list-style-type:upper-alpha\"><li>flatter</li><li>flutter</li><li>fritter</li><li>frizzle</li></ol>",
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options[0].label).toBe("A");
+        expect(options[0].text).toBe("flatter");
+      });
+
+      test("verifies go:912 options normalization for insertion sort complexity", () => {
+        const question = {
+          question_uid: "go:912",
+          title: "GATE CSE 2003 | Question: 22",
+          question: "<p>The usual $\\Theta(n^2)$ implementation of Insertion Sort to sort an array uses linear search to identify the position where an element is to be inserted into the already sorted part of the array. If, instead, we use binary search to identify the position, the worst case running time will</p><ol style=\"list-style-type:upper-alpha\"><li>remain $\\Theta(n^2)$</li><li>become $\\Theta(n (\\log n)^2)$</li><li>become $\\Theta(n \\log n)$</li><li>become $\\Theta(n)$</li></ol>",
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options[0].label).toBe("A");
+        expect(options[0].text).toContain("remain");
+      });
+    });
   });
 });
 

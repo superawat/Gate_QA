@@ -531,6 +531,152 @@ Therefore, none of the options is strictly correct (Official Key: **Marks to All
 Therefore, the intended synonym pair is **type** (Official Key: **Marks to All / MTA**).`,
     images: [],
   },
+  "go:426523": {
+    concept: "General Aptitude - Verbal Aptitude",
+    markdown: `- **Analogy Structure:**
+  The problem presents two sequences with the relationship denoted by '$\\rightarrow$', which indicates an **increasing order of intensity**.
+
+- **First Sequence Analysis:**
+  $$\\text{[talk } \\rightarrow \\text{ shout } \\rightarrow \\text{ scream]}$$
+  - **Talk**: Normal, conversational vocal communication at standard intensity.
+  - **Shout**: Speaking or calling out with a raised, loud voice to convey emotion, distance, or urgency (higher intensity than *talk*).
+  - **Scream**: Uttering a loud, piercing, high-pitched cry of extreme fear, pain, or excitement (highest intensity).
+  - *Relationship*: All three words denote vocal expression, strictly ordered by increasing degree/volume of vocal intensity.
+
+- **Second Sequence Analysis:**
+  $$\\text{[please } \\rightarrow \\text{ \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ } \\rightarrow \\text{ pander]}$$
+  - **Please**: To make someone happy or satisfied; to give standard contentment or gratification (mild/baseline intensity).
+  - **Pander**: To gratify, indulge, or cater to someone's lowest desires, weaknesses, or unreasonable wishes to an extreme or distasteful degree (highest intensity of gratification).
+  - *Target*: We require a word that denotes an intermediate degree of pleasing or gratification—stronger and more excessive than *please*, but less extreme or debased than *pander*.
+
+- **Evaluation of Options:**
+  - **(A) Flatter**: To lavish insincere, exaggerated, or excessive praise on someone in order to please or win favor. This fits directly between *please* and *pander* in intensity.
+  - **(B) Flutter**: To flap wings rapidly or move with light, irregular, trembling motions (unrelated to pleasing or gratification).
+  - **(C) Fritter**: To squander or waste time, money, or resources bit by bit (unrelated).
+  - **(D) Frizzle**: To fry until crisp or curl hair tightly (unrelated).
+
+Therefore, the appropriate word to fill the blank is **flatter**, and the correct answer is **Option A**.`,
+    images: [],
+  },
+  "go:2018": {
+    concept: "Discrete Mathematics - Graph Theory",
+    markdown: `- **Self-Complementary Graph Principles:**
+  - A simple undirected graph $G = (V, E)$ is said to be **self-complementary** if it is isomorphic to its complement $\\overline{G}$, denoted $G \\cong \\overline{G}$.
+  - Two isomorphic graphs have the identical number of vertices and the identical number of edges:
+    $$|V(G)| = |V(\\overline{G})| = n, \\quad |E(G)| = |E(\\overline{G})| = e$$
+  - The sum of edges in $G$ and its complement $\\overline{G}$ equals the number of edges in the complete graph $K_n$:
+    $$|E(G)| + |E(\\overline{G})| = |E(K_n)| = \\binom{n}{2} = \\frac{n(n - 1)}{2}$$
+  - Since $|E(G)| = |E(\\overline{G})| = e$:
+    $$2e = \\frac{n(n - 1)}{2} \\implies e = \\frac{n(n - 1)}{4}$$
+  - For any self-complementary graph, the number of edges must satisfy $e = \\frac{n(n - 1)}{4}$. (This also requires $\\frac{n(n-1)}{4}$ to be an integer, so $n \\equiv 0 \\pmod 4$ or $n \\equiv 1 \\pmod 4$).
+
+- **Applying to Cycle Graph $C_n$:**
+  - A cycle on $n$ vertices ($C_n$, where $n \\ge 3$) has exactly $e = n$ edges.
+  - Since $C_n$ is isomorphic to its complement $\\overline{C_n}$, it is a self-complementary graph.
+  - Equating the number of edges $e = n$ with the self-complementary edge formula:
+    $$\\frac{n(n - 1)}{4} = n$$
+  - Since $n \\ge 3 > 0$, divide both sides by $n$:
+    $$\\frac{n - 1}{4} = 1 \\implies n - 1 = 4 \\implies n = 5$$
+
+- **Alternative Derivation via Complement Edge Count:**
+  - Number of edges in the complement: $|E(\\overline{C_n})| = \\frac{n(n - 1)}{2} - n$.
+  - Equating edge counts of isomorphic graphs:
+    $$n = \\frac{n(n - 1)}{2} - n \\implies 2n = \\frac{n(n - 1)}{2} \\implies n = \\frac{n(n - 1)}{4} \\implies n = 5$$
+
+- **Structural Verification for $n = 5$:**
+  - For $n = 5$, $C_5$ has 5 vertices and 5 edges.
+  - The complete graph $K_5$ has $\\binom{5}{2} = 10$ edges, so the complement $\\overline{C_5}$ has $10 - 5 = 5$ edges.
+  - In $C_5$, every vertex has degree 2. In $\\overline{C_5}$, every vertex has degree $(5 - 1) - 2 = 2$.
+  - Any 2-regular connected graph on 5 vertices is isomorphic to $C_5$ (the complement of a regular pentagon is a 5-pointed star/pentagram, which is homeomorphic/isomorphic to $C_5$).
+
+Therefore, the value of $n$ is **5**.`,
+    images: [],
+  },
+  "ec:2008:q3": {
+    concept: "Engineering Mathematics - Complex Analysis",
+    markdown: `- **Problem Statement:** Determine the nature of the solutions to $\\sin(z) = 10$, where $z$ is a complex variable ($z \\in \\mathbb{C}$).
+
+- **Real Domain vs. Complex Domain:**
+  - In real analysis ($x \\in \\mathbb{R}$), sine is bounded: $-1 \\le \\sin(x) \\le 1$. Thus, $\\sin(x) = 10$ has no real solutions.
+  - In complex analysis ($z \\in \\mathbb{C}$), the sine function is an entire, unbounded function defined via Euler's formula:
+    $$\\sin(z) = \\frac{e^{iz} - e^{-iz}}{2i}$$
+
+- **Solving the Equation:**
+  $$\\frac{e^{iz} - e^{-iz}}{2i} = 10 \\implies e^{iz} - e^{-iz} = 20i \\implies (e^{iz})^2 - 20i(e^{iz}) - 1 = 0$$
+  Let $w = e^{iz}$. Applying the quadratic formula:
+  $$w = \\frac{20i \\pm \\sqrt{(-20i)^2 - 4(1)(-1)}}{2} = \\frac{20i \\pm \\sqrt{-400 + 4}}{2} = 10i \\pm i\\sqrt{99} = i(10 \\pm 3\\sqrt{11})$$
+  Both roots are distinct, purely imaginary numbers with positive imaginary parts.
+
+- **Determining $z$:**
+  $$e^{iz} = i(10 \\pm 3\\sqrt{11}) = (10 \\pm 3\\sqrt{11}) e^{i\\left(\\frac{\\pi}{2} + 2k\\pi\\right)}, \\quad k \\in \\mathbb{Z}$$
+  Taking the natural logarithm on both sides:
+  $$iz = \\ln(10 \\pm 3\\sqrt{11}) + i\\left(\\frac{\\pi}{2} + 2k\\pi\\right), \\quad k \\in \\mathbb{Z}$$
+  $$z = \\left(\\frac{\\pi}{2} + 2k\\pi\\right) - i\\ln(10 \\pm 3\\sqrt{11}), \\quad k \\in \\mathbb{Z}$$
+  Since $k$ can be any integer ($k \\in \\mathbb{Z}$), there are **an infinite number of complex solutions**.
+
+Therefore, the correct answer is **Option D**.`,
+    images: [],
+  },
+  "ec:2011:q25": {
+    concept: "Engineering Mathematics - Complex Analysis",
+    markdown: `- **Integral Formulation:**
+  We are tasked with evaluating the contour integral:
+  $$I = \\oint_{C} \\frac{-3z + 4}{z^2 + 4z + 5} \\, dz$$
+  where $C$ is the circle $|z| = 1$ traversed in the counter-clockwise direction.
+
+- **Singularity Analysis (Poles of Integrand):**
+  - Set the denominator equal to zero to identify the poles of $f(z) = \\frac{-3z + 4}{z^2 + 4z + 5}$:
+    $$z^2 + 4z + 5 = 0$$
+  - Using the quadratic formula $z = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$:
+    $$z = \\frac{-4 \\pm \\sqrt{4^2 - 4(1)(5)}}{2} = \\frac{-4 \\pm \\sqrt{16 - 20}}{2} = \\frac{-4 \\pm 2i}{2}$$
+    $$z_1 = -2 + i, \\quad z_2 = -2 - i$$
+  - Thus, the integrand has two simple poles at $z = -2 + i$ and $z = -2 - i$.
+
+- **Checking Pole Locations Relative to Contour $C$ ($|z| = 1$):**
+  - The contour $C$ is a circle centered at the origin with radius $R = 1$.
+  - Calculate the modulus (distance from the origin) for both poles:
+    $$|z_1| = |-2 + i| = \\sqrt{(-2)^2 + (1)^2} = \\sqrt{4 + 1} = \\sqrt{5} \\approx 2.236$$
+    $$|z_2| = |-2 - i| = \\sqrt{(-2)^2 + (-1)^2} = \\sqrt{4 + 1} = \\sqrt{5} \\approx 2.236$$
+  - Since $|z_1| = \\sqrt{5} > 1$ and $|z_2| = \\sqrt{5} > 1$, **both poles lie strictly outside** the contour $C$.
+
+- **Applying Cauchy's Integral Theorem:**
+  - Since $f(z)$ has no singularities inside or on the closed contour $C$, $f(z)$ is analytic everywhere inside and on $C$.
+  - By Cauchy's Integral Theorem, if a function $f(z)$ is analytic within and on a simple closed contour $C$, then:
+    $$\\oint_{C} f(z) \\, dz = 0$$
+
+Therefore, the value of the integral is **0**, and the correct answer is **Option A**.`,
+    images: [],
+  },
+  "go:912": {
+    concept: "Algorithms - Sorting & Searching",
+    markdown: `- **Algorithm Overview (Binary Insertion Sort):**
+  - Standard Insertion Sort sorts an array $A[0 \\dots n-1]$ incrementally.
+  - At the start of iteration $i$ (where $1 \\le i \\le n-1$), subarray $A[0 \\dots i-1]$ is already sorted.
+  - The algorithm places $A[i]$ into its correct relative position within $A[0 \\dots i-1]$.
+
+- **Comparison Complexity with Binary Search:**
+  - In standard insertion sort, a linear scan finds the insertion index using up to $i$ comparisons, taking $\\sum_{i=1}^{n-1} i = \\Theta(n^2)$ comparisons.
+  - If **binary search** is used instead, finding the correct position of $A[i]$ in the sorted subarray $A[0 \\dots i-1]$ of size $i$ requires $\\lceil \\log_2(i + 1) \\rceil$ comparisons.
+  - Summing over all $n-1$ iterations:
+    $$\\sum_{i=1}^{n-1} \\lceil \\log_2(i + 1) \\rceil = \\Theta\\left(\\sum_{i=1}^{n} \\log i\\right) = \\Theta(\\log(n!)) = \\Theta(n \\log n)$$
+  - Thus, binary search successfully reduces the **comparison complexity** to $\\Theta(n \\log n)$.
+
+- **Shift / Data Movement Complexity:**
+  - However, the underlying data structure is a **contiguous array**.
+  - Once the correct insertion index $k$ ($0 \\le k \\le i$) is determined, all elements from $A[k]$ to $A[i-1]$ must be shifted one position to the right to make room for $A[i]$.
+  - In the worst case (e.g., when the input array is sorted in reverse order), every element $A[i]$ must be inserted at index $0$.
+  - In iteration $i$, exactly $i$ elements must be shifted.
+  - Summing the shifts across all $n-1$ iterations:
+    $$\\sum_{i=1}^{n-1} i = \\frac{(n-1)n}{2} = \\Theta(n^2)$$
+
+- **Total Worst-Case Time Complexity:**
+  - The total running time is the sum of comparison time and data shifting time:
+    $$\\text{Total Worst-Case Time} = \\Theta(n \\log n) \\; [\\text{Comparisons}] + \\Theta(n^2) \\; [\\text{Element Shifts}] = \\Theta(n^2)$$
+  - Because shifting elements in a contiguous array still requires $\\Theta(n^2)$ operations in the worst case, binary search does not reduce the overall time complexity.
+
+Therefore, the worst-case running time will **remain $\\Theta(n^2)$**, and the correct answer is **Option A**.`,
+    images: [],
+  },
 };
 
 export function applyAuthenticPatches() {
