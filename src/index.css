@@ -8,6 +8,17 @@
   font-family: var(--font-display);
 }
 
+/* Ergonomic touch scrollbars: hide native scrollbar tracks on touch devices */
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Structured question options content */
 .da-question-options,
 .question-options {

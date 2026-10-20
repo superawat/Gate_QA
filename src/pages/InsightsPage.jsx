@@ -383,18 +383,18 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOn
   if (isWideOnMobile) {
     return (
       <div
-        className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:border-[color:var(--color-primary-border)] flex flex-row sm:flex-col items-center sm:items-stretch justify-between gap-3`}
+        className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:border-[color:var(--color-primary-border)] flex flex-row sm:flex-col items-center sm:items-stretch justify-between gap-3 min-w-0`}
       >
-        <div className="flex items-center sm:justify-between gap-2.5 min-w-0">
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate order-2 sm:order-1">{label}</p>
+        <div className="flex items-center sm:justify-between gap-2 min-w-0">
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.05em] sm:tracking-[0.08em] text-[color:var(--color-text-muted)] truncate order-2 sm:order-1">{label}</p>
           {Icon && (
             <div className={`flex items-center justify-center w-8 h-8 sm:w-7 sm:h-7 rounded-xl sm:rounded-lg shrink-0 ${token.iconBg} order-1 sm:order-2`}>
               <Icon className="text-xs sm:text-[11px]" />
             </div>
           )}
         </div>
-        <div className="flex sm:block flex-col items-end sm:items-start shrink-0">
-          <p className="text-xl sm:text-2xl font-bold tabular-nums text-[color:var(--color-text)] tracking-tight leading-none sm:leading-tight">{value}</p>
+        <div className="flex sm:block flex-col items-end sm:items-start shrink-0 min-w-0">
+          <p className="text-xl sm:text-2xl font-bold tabular-nums text-[color:var(--color-text)] tracking-tight leading-none sm:leading-tight truncate">{value}</p>
           {sublabel && <p className="mt-0.5 sm:mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 truncate">{sublabel}</p>}
         </div>
       </div>
@@ -403,19 +403,19 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOn
 
   return (
     <div
-      className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:border-[color:var(--color-primary-border)] flex flex-col justify-between`}
+      className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:border-[color:var(--color-primary-border)] flex flex-col justify-between min-w-0`}
     >
-      <div className="flex items-center justify-between gap-1.5">
-        <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate">{label}</p>
+      <div className="flex items-center justify-between gap-1.5 min-w-0">
+        <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.05em] sm:tracking-[0.08em] text-[color:var(--color-text-muted)] truncate">{label}</p>
         {Icon && (
           <div className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-lg shrink-0 ${token.iconBg}`}>
             <Icon className="text-[10px] sm:text-xs" />
           </div>
         )}
       </div>
-      <div className="mt-2">
-        <p className="text-xl sm:text-2xl font-bold tabular-nums text-[color:var(--color-text)] tracking-tight">{value}</p>
-        {sublabel && <p className="mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 leading-tight line-clamp-1">{sublabel}</p>}
+      <div className="mt-2 min-w-0">
+        <p className="text-xl sm:text-2xl font-bold tabular-nums text-[color:var(--color-text)] tracking-tight truncate">{value}</p>
+        {sublabel && <p className="mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 leading-tight truncate">{sublabel}</p>}
       </div>
     </div>
   );
@@ -2173,7 +2173,7 @@ const WrongAnswersTab = ({ wrongQuestions = [], onSwitchTab }) => {
       <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 sm:p-4 shadow-sm space-y-3">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {/* Status segmented control */}
-          <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-medium self-start sm:self-auto overflow-x-auto max-w-full">
+          <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-medium self-start sm:self-auto overflow-x-auto scrollbar-none max-w-full">
             <button
               type="button"
               onClick={() => setStatusFilter("all")}
@@ -2534,6 +2534,22 @@ const InsightsPage = ({
     navigate({ search: `?${params.toString()}` }, { replace: true });
   }, [location.search, navigate]);
 
+  const tabButtonRefs = useRef({});
+  useEffect(() => {
+    const el = tabButtonRefs.current[activeTab];
+    if (el && typeof el.scrollIntoView === "function") {
+      try {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      } catch {
+        // Fallback for older browsers
+      }
+    }
+  }, [activeTab]);
+
   const handleTrackChange = useCallback((trackId) => {
     setSelectedTrack(trackId);
     const params = new URLSearchParams(location.search);
@@ -2759,7 +2775,7 @@ const InsightsPage = ({
         <header className="rounded-2xl sm:rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 sm:p-5 shadow-[var(--shadow-card)] space-y-3 sm:space-y-4">
           {/* Top navigation row: Breadcrumbs/Back on left, Actions on right */}
           <div className="flex items-center justify-between gap-2.5 sm:gap-4">
-            <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 shrink">
               <Link
                 to={HOME_ROUTE}
                 className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] shadow-xs focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
@@ -2768,16 +2784,16 @@ const InsightsPage = ({
               >
                 <FiHome className="text-base sm:text-lg shrink-0" />
               </Link>
-              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <span className="text-[color:var(--color-text-muted)]/50 text-xs select-none" aria-hidden="true">/</span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary-soft)] px-2.5 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--color-primary-text)] truncate">
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary-soft)] px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] text-[color:var(--color-primary-text)] whitespace-nowrap shrink-0">
                   <FaChartLine className="text-xs shrink-0" />
                   <span>Insights</span>
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <button
                 type="button"
                 role="switch"
@@ -2796,27 +2812,29 @@ const InsightsPage = ({
               <Link
                 to={selectedTrack === "all" ? PRACTICE_ROUTE : `${PRACTICE_ROUTE}?track=${selectedTrack}`}
                 aria-label="Open Practice"
-                className="inline-flex h-9 sm:h-10 items-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary)] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs sm:shadow-sm shrink-0"
+                className="inline-flex h-9 sm:h-10 items-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary)] px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs sm:shadow-sm shrink-0"
               >
                 <FaCompass className="text-xs sm:text-sm shrink-0" />
-                <span>Open Practice</span>
+                <span>
+                  <span className="hidden sm:inline">Open </span>Practice
+                </span>
               </Link>
             </div>
           </div>
 
           {/* Bottom row: Title & Description on left, Track Switcher on right */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pt-1 border-t border-[color:var(--color-border)]/50">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pt-2 sm:pt-3 border-t border-[color:var(--color-border)]/50">
             <div className="min-w-0">
               <h1 className="text-lg sm:text-2xl font-bold font-display tracking-tight text-[color:var(--color-text)] text-balance">
                 Performance &amp; Practice Analytics
               </h1>
-              <p className="text-xs sm:text-sm text-[color:var(--color-text-muted)] mt-0.5 text-pretty line-clamp-1 sm:line-clamp-none">
+              <p className="text-xs sm:text-sm text-[color:var(--color-text-muted)] mt-0.5 text-pretty line-clamp-2 sm:line-clamp-none">
                 Syllabus coverage, accuracy diagnostics, spaced repetition &amp; attempt trends
               </p>
             </div>
 
             {/* Track Switcher */}
-            <div className="w-full md:w-auto shrink-0 overflow-x-auto no-scrollbar">
+            <div className="w-full md:w-auto shrink-0 overflow-x-auto scrollbar-none">
               <div className="inline-flex w-full md:w-auto items-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs gap-1">
                 {trackOptions.map((option) => {
                   const TrackIcon = TRACK_ICONS[option.id] || FaGraduationCap;
@@ -2827,9 +2845,9 @@ const InsightsPage = ({
                       type="button"
                       data-testid={`insights-track-${option.id}`}
                       onClick={() => handleTrackChange(option.id)}
-                      className={`flex-1 md:flex-initial inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
+                      className={`flex-1 md:flex-initial inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all whitespace-nowrap ${
                         isSelected
-                          ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                          ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold border border-[color:var(--color-border)]/50"
                           : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
                       }`}
                     >
@@ -2895,7 +2913,10 @@ const InsightsPage = ({
         ) : (
           <>
             {/* Tab navigation */}
-            <div className="flex gap-1 overflow-x-auto no-scrollbar rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 shadow-xs">
+            <nav
+              aria-label="Performance insights navigation"
+              className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none overscroll-x-contain rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 sm:p-1.5 shadow-xs"
+            >
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 const TabIcon = tab.icon;
@@ -2911,34 +2932,40 @@ const InsightsPage = ({
                 return (
                   <button
                     key={tab.id}
+                    ref={(el) => {
+                      if (el) {
+                        tabButtonRefs.current[tab.id] = el;
+                      }
+                    }}
                     type="button"
-                    onClick={() => handleTabChange(tab.id)}
                     aria-label={tab.label}
-                    className={`flex-1 min-w-[64px] sm:min-w-0 min-h-[42px] inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl px-1.5 py-2 sm:px-3.5 sm:py-2.5 text-xs font-semibold transition-all shrink-0 sm:shrink ${
+                    aria-current={isActive ? "page" : undefined}
+                    onClick={() => handleTabChange(tab.id)}
+                    className={`shrink-0 sm:flex-1 sm:min-w-0 min-h-[42px] inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-xl px-3 py-2 sm:px-3 sm:py-2.5 text-xs font-semibold transition-all ${
                       isActive
                         ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold border border-[color:var(--color-border)]"
-                        : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)]/50"
+                        : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)]/60"
                     }`}
                   >
                     <TabIcon className={`text-xs shrink-0 ${isActive ? "text-sky-600 dark:text-sky-400" : ""}`} />
-                    <span className="text-[11px] sm:text-sm">
+                    <span className="text-xs sm:text-sm whitespace-nowrap">
                       <span className="inline sm:hidden">{shortLabel}</span>
                       <span className="hidden sm:inline">{tab.label}</span>
                     </span>
                     {tab.id === "wrong" && wrongCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold tabular-nums ${
+                      <span className={`inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 rounded-full text-[10px] font-bold tabular-nums leading-none ${
                         isActive
                           ? "bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30"
-                          : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)]"
+                          : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] border border-[color:var(--color-border)]/60"
                       }`}>
                         {wrongCount}
                       </span>
                     )}
                     {tab.id === "review" && dueReviewCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold tabular-nums ${
+                      <span className={`inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 rounded-full text-[10px] font-bold tabular-nums leading-none ${
                         isActive
                           ? "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30"
-                          : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)]"
+                          : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] border border-[color:var(--color-border)]/60"
                       }`}>
                         {dueReviewCount}
                       </span>
@@ -2946,10 +2973,10 @@ const InsightsPage = ({
                   </button>
                 );
               })}
-            </div>
+            </nav>
 
             {/* Tab content */}
-            <div key={activeTab} className="min-h-[400px] animate-card-fade">
+            <div key={activeTab} className="min-h-[400px] animate-fade-in">
               {activeTab === "overview" && (
                 <OverviewTab insights={scopedInsights} summary={summary} />
               )}
