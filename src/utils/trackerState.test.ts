@@ -168,18 +168,24 @@ describe("trackerState", () => {
     });
 
     it("persists and loads tracker preferences", () => {
+      const initial = loadTrackerPreferences();
+      expect(initial.showOverview).toBe(false);
+
       const prefs = saveTrackerPreferences({
         countdownDisplayMode: "compact",
         showCountdownWidget: false,
+        showOverview: true,
         visibleColumns: ["marks", "target", "priority"],
       });
       expect(prefs.countdownDisplayMode).toBe("compact");
       expect(prefs.showCountdownWidget).toBe(false);
+      expect(prefs.showOverview).toBe(true);
       expect(prefs.visibleColumns).toEqual(["marks", "target", "priority"]);
 
       const loaded = loadTrackerPreferences();
       expect(loaded.countdownDisplayMode).toBe("compact");
       expect(loaded.showCountdownWidget).toBe(false);
+      expect(loaded.showOverview).toBe(true);
       expect(loaded.visibleColumns).toEqual(["marks", "target", "priority"]);
     });
   });

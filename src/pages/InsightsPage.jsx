@@ -23,6 +23,11 @@ import {
   FaBolt,
   FaCogs,
   FaBuilding,
+  FaChartPie,
+  FaSearch,
+  FaTimes,
+  FaPlay,
+  FaRedo,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -74,8 +79,86 @@ import {
   getInsightTracksForSelectedBranches,
   isItemEligibleForTrack,
 } from "../utils/branchPreference";
+import { resolveQuestionIdentity } from "../utils/branchQuestionIdentity";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
+
+export function resolveQuestionDisplayTitle(item = {}, getQuestionById = null) {
+  const storageKey = String(item?.storageKey || item?.question_uid || item?.uid || "").trim();
+
+  // 1. If explicit human-readable title is already provided (and not just matching the raw storage key)
+  const itemTitle = String(item?.title || "").trim();
+  if (itemTitle && itemTitle !== storageKey) {
+    return itemTitle;
+  }
+
+  // 2. Lookup in Question bank via getQuestionById
+  if (typeof getQuestionById === "function" && storageKey) {
+    const qObj = getQuestionById(storageKey);
+    const qTitle = String(qObj?.title || "").trim();
+    if (qTitle && qTitle !== storageKey) {
+      return qTitle;
+    }
+  }
+
+  // 3. Branch questions with pp: format (e.g. pp:me:2018:q57 or pp:ce:2020:q12-s2)
+  const ppMatch = storageKey.match(/^pp:([a-z]+):(\d+):q(\d+)(?:-s(\d+))?/i);
+  if (ppMatch) {
+    const [, branch, yearStr, qNumStr, setStr] = ppMatch;
+    const branchUpper = branch.toUpperCase();
+    const year = Number(yearStr);
+    const qNum = Number(qNumStr);
+    const set = setStr ? Number(setStr) : null;
+    const resolved = resolveQuestionIdentity(branch.toLowerCase(), year, set, qNum, 65);
+    if (resolved?.title) {
+      return resolved.title;
+    }
+    return `GATE ${branchUpper} ${year} | Question: ${qNum}`;
+  }
+
+  // 4. Aptitude questions (e.g. APT-RSN-9655, APT-ENG-6771, APT-QNT-3498, APT-SPT-1024)
+  if (storageKey.startsWith("APT-") || storageKey.startsWith("apt-")) {
+    const categoryPart = storageKey.slice(4, 7).toUpperCase();
+    const categoryMap = {
+      RSN: "Reasoning",
+      ENG: "English",
+      QNT: "Quantitative Aptitude",
+      SPT: "Spatial Aptitude",
+      VER: "Verbal Ability",
+    };
+    const catName = categoryMap[categoryPart] || item?.subjectLabel || "Aptitude";
+    return `${catName} Practice`;
+  }
+
+  // 5. ISRO questions (e.g. isro:cs:2020:q12)
+  const isroMatch = storageKey.match(/^isro:([a-z]+):(\d+):q(\d+)/i);
+  if (isroMatch) {
+    const [, branch, year, qNum] = isroMatch;
+    return `ISRO ${branch.toUpperCase()} ${year} | Question: ${qNum}`;
+  }
+
+  // 6. DA questions (e.g. da:2024:q15 or da:2024:set1:q15)
+  const daMatch = storageKey.match(/^da:(\d+)(?::set(\d+))?:q(\d+)/i);
+  if (daMatch) {
+    const [, year, set, qNum] = daMatch;
+    const setStr = set ? `Set ${set} | ` : "";
+    return `GATE DA ${year} | ${setStr}Question: ${qNum}`;
+  }
+
+  // 7. Questions with meaningful subject / subtopic labels
+  if (item?.subjectLabel && item.subjectLabel !== "Unknown" && item.subjectLabel !== "General") {
+    const firstSubtopic = Array.isArray(item.subtopics) && item.subtopics.length > 0
+      ? item.subtopics[0]?.label || item.subtopics[0]?.slug
+      : null;
+    if (firstSubtopic) {
+      return `${item.subjectLabel} · ${firstSubtopic} Question`;
+    }
+    return `${item.subjectLabel} Question`;
+  }
+
+  // 8. If all else fails, return storageKey
+  return storageKey;
+}
 
 const formatNumber = (value) => {
   const numeric = Number(value);
@@ -156,6 +239,7 @@ const relativeTimeLabel = (isoString) => {
 const TABS = [
   { id: "overview", label: "Overview", icon: FaChartLine },
   { id: "review", label: "Review Queue", icon: FaCalendarCheck },
+  { id: "infographics", label: "Infographics", icon: FaChartPie },
   { id: "wrong", label: "Wrong Answers", icon: FaTimesCircle },
   { id: "mock-history", label: "Mock History", icon: FaHistory },
 ];
@@ -269,29 +353,29 @@ const ProgressRing = ({ value, size = 80, strokeWidth = 7, color = "#059669", la
 const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOnMobile = false }) => {
   const accentMap = {
     sky: {
-      border: "border-sky-500/25 dark:border-sky-500/35",
-      background: "bg-gradient-to-br from-sky-500/10 via-sky-500/5 to-transparent dark:from-sky-500/15 dark:via-sky-950/25 dark:to-transparent",
-      iconBg: "bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/20",
+      border: "border-sky-500/20 dark:border-sky-500/30",
+      background: "bg-[color:var(--color-surface)]",
+      iconBg: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20",
     },
     rose: {
-      border: "border-rose-500/25 dark:border-rose-500/35",
-      background: "bg-gradient-to-br from-rose-500/10 via-rose-500/5 to-transparent dark:from-rose-500/15 dark:via-rose-950/25 dark:to-transparent",
-      iconBg: "bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/20",
+      border: "border-rose-500/20 dark:border-rose-500/30",
+      background: "bg-[color:var(--color-surface)]",
+      iconBg: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20",
     },
     amber: {
-      border: "border-amber-500/25 dark:border-amber-500/35",
-      background: "bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-500/15 dark:via-amber-950/25 dark:to-transparent",
-      iconBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/20",
+      border: "border-amber-500/20 dark:border-amber-500/30",
+      background: "bg-[color:var(--color-surface)]",
+      iconBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20",
     },
     emerald: {
-      border: "border-emerald-500/25 dark:border-emerald-500/35",
-      background: "bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent dark:from-emerald-500/15 dark:via-emerald-950/25 dark:to-transparent",
-      iconBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20",
+      border: "border-emerald-500/20 dark:border-emerald-500/30",
+      background: "bg-[color:var(--color-surface)]",
+      iconBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20",
     },
     violet: {
-      border: "border-purple-500/25 dark:border-purple-500/35",
-      background: "bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent dark:from-purple-500/15 dark:via-purple-950/25 dark:to-transparent",
-      iconBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/20",
+      border: "border-purple-500/20 dark:border-purple-500/30",
+      background: "bg-[color:var(--color-surface)]",
+      iconBg: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20",
     },
   };
   const token = accentMap[accent] || accentMap.sky;
@@ -299,18 +383,18 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOn
   if (isWideOnMobile) {
     return (
       <div
-        className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:scale-[1.01] flex flex-row sm:flex-col items-center sm:items-stretch justify-between gap-3`}
+        className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:border-[color:var(--color-primary-border)] flex flex-row sm:flex-col items-center sm:items-stretch justify-between gap-3`}
       >
         <div className="flex items-center sm:justify-between gap-2.5 min-w-0">
-          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate order-2 sm:order-1">{label}</p>
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate order-2 sm:order-1">{label}</p>
           {Icon && (
-            <div className={`flex items-center justify-center w-8 h-8 sm:w-6 sm:h-6 rounded-xl sm:rounded-lg shrink-0 ${token.iconBg} order-1 sm:order-2`}>
-              <Icon className="text-xs sm:text-[10px]" />
+            <div className={`flex items-center justify-center w-8 h-8 sm:w-7 sm:h-7 rounded-xl sm:rounded-lg shrink-0 ${token.iconBg} order-1 sm:order-2`}>
+              <Icon className="text-xs sm:text-[11px]" />
             </div>
           )}
         </div>
         <div className="flex sm:block flex-col items-end sm:items-start shrink-0">
-          <p className="text-2xl font-black text-[color:var(--color-text)] tracking-tight leading-none sm:leading-tight">{value}</p>
+          <p className="text-xl sm:text-2xl font-bold tabular-nums text-[color:var(--color-text)] tracking-tight leading-none sm:leading-tight">{value}</p>
           {sublabel && <p className="mt-0.5 sm:mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 truncate">{sublabel}</p>}
         </div>
       </div>
@@ -319,7 +403,7 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOn
 
   return (
     <div
-      className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:scale-[1.01] flex flex-col justify-between`}
+      className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:border-[color:var(--color-primary-border)] flex flex-col justify-between`}
     >
       <div className="flex items-center justify-between gap-1.5">
         <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate">{label}</p>
@@ -330,7 +414,7 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOn
         )}
       </div>
       <div className="mt-2">
-        <p className="text-2xl font-black text-[color:var(--color-text)] tracking-tight">{value}</p>
+        <p className="text-xl sm:text-2xl font-bold tabular-nums text-[color:var(--color-text)] tracking-tight">{value}</p>
         {sublabel && <p className="mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 leading-tight line-clamp-1">{sublabel}</p>}
       </div>
     </div>
@@ -480,9 +564,9 @@ const SubjectRadarChart = ({ data = [] }) => {
         </div>
       )}
 
-      <div className="h-[320px] w-full overflow-hidden">
-        <ResponsiveContainer width="100%" height="100%">
-          <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="65%">
+      <div className="h-[280px] sm:h-[340px] w-full min-w-0 overflow-hidden">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+          <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="62%">
             <PolarGrid stroke={chartTheme.grid} strokeWidth={1} strokeDasharray="3 3" />
             <PolarAngleAxis
               dataKey="subject"
@@ -652,19 +736,19 @@ const TimeTrendChart = ({ data = [] }) => {
 
   if (chartData.length === 0) {
     return (
-      <div className="flex h-[260px] items-center justify-center rounded-2xl border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-sm text-[color:var(--color-text-muted)]">
-        Timed attempt trends will appear after your next submission.
+      <div className="flex h-[240px] items-center justify-center rounded-2xl border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4 text-center text-xs sm:text-sm text-[color:var(--color-text-muted)]">
+        Timed attempt trends will appear after your next practice or mock submission.
       </div>
     );
   }
 
   return (
-    <div className="h-[280px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData} margin={{ top: 20, right: 24, left: -20, bottom: 10 }}>
+    <div className="h-[260px] sm:h-[300px] w-full min-w-0">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+        <LineChart data={chartData} margin={{ top: 15, right: 15, left: -20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartTheme.grid} />
-          <XAxis dataKey="displayDate" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: chartTheme.tick }} />
-          <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: chartTheme.tick }} allowDecimals={false} />
+          <XAxis dataKey="displayDate" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: chartTheme.tick }} />
+          <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: chartTheme.tick }} allowDecimals={false} />
           <RechartsTooltip
             content={({ active, payload }) => {
               if (!active || !payload?.length) {
@@ -672,11 +756,11 @@ const TimeTrendChart = ({ data = [] }) => {
               }
               const item = payload[0].payload;
               return (
-                <div className="rounded-xl p-4 text-sm shadow-xl" style={{ backgroundColor: "var(--chart-tooltip-bg)", border: "1px solid var(--chart-tooltip-border)" }}>
-                  <p className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.date}</p>
-                  <p className="mt-2" style={{ color: "var(--chart-tooltip-muted)" }}>Attempts: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.attempts}</span></p>
-                  <p style={{ color: "var(--chart-tooltip-muted)" }}>Accuracy: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatPercent(item.accuracyPercent)}</span></p>
-                  <p style={{ color: "var(--chart-tooltip-muted)" }}>Avg time: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatDuration(item.averageDurationMs)}</span></p>
+                <div className="rounded-xl p-3.5 text-xs shadow-xl backdrop-blur tabular-nums" style={{ backgroundColor: "var(--chart-tooltip-bg)", border: "1px solid var(--chart-tooltip-border)" }}>
+                  <p className="font-semibold text-sm mb-1.5" style={{ color: "var(--chart-tooltip-text)" }}>{item.date}</p>
+                  <p className="flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>Attempts: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.attempts}</span></p>
+                  <p className="flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>Accuracy: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatPercent(item.accuracyPercent)}</span></p>
+                  <p className="flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>Avg time: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatDuration(item.averageDurationMs)}</span></p>
                 </div>
               );
             }}
@@ -1090,17 +1174,17 @@ const YearCoverageGrid = ({ years = [] }) => {
   });
 
   return (
-    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-      <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Exam Year Coverage</h2>
-      <p className="mt-1 text-sm text-[color:var(--color-text-muted)] mb-4">
+    <section className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-5 shadow-[var(--shadow-card)]">
+      <h2 className="text-base sm:text-lg font-semibold text-[color:var(--color-text)]">Decade &amp; Year Breakdown</h2>
+      <p className="mt-0.5 text-xs sm:text-sm text-[color:var(--color-text-muted)] mb-4">
         Ensure you have solved questions from all recent exam years.
       </p>
       
-      <div className="space-y-6">
+      <div className="space-y-5">
         {Object.entries(decades).sort(([a], [b]) => Number(b) - Number(a)).map(([decade, decadeYears]) => (
           <div key={decade}>
-            <h3 className="text-sm font-semibold text-[color:var(--color-text-muted)] mb-3">{decade}s</h3>
-            <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)] mb-2.5 tabular-nums">{decade}s</h3>
+            <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {decadeYears.sort((a, b) => Number(b.key) - Number(a.key)).map(year => {
                 const coveragePercent = Math.round((year.coverageRate || 0) * 100);
                 const isZero = coveragePercent === 0;
@@ -1111,30 +1195,30 @@ const YearCoverageGrid = ({ years = [] }) => {
                   <Link
                     key={year.key}
                     to={practiceUrl}
-                    className={`group block rounded-xl border p-3 transition ${
+                    className={`group block rounded-xl border p-2.5 sm:p-3 transition-all ${
                       isZero 
                         ? "border-dashed border-[color:var(--color-border)] bg-transparent hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-surface-muted)]" 
-                        : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] hover:border-[color:var(--color-primary)] hover:shadow-md"
+                        : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] hover:border-[color:var(--color-primary)] hover:shadow-xs"
                     }`}
                   >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-bold text-[color:var(--color-text)]">{year.key}</span>
-                      <span className="text-[10px] text-[color:var(--color-text-muted)]">{coveragePercent}% cov</span>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="font-bold tabular-nums text-xs sm:text-sm text-[color:var(--color-text)]">{year.key}</span>
+                      <span className="text-[10px] font-semibold tabular-nums text-[color:var(--color-text-muted)]">{coveragePercent}% cov</span>
                     </div>
-                    <div className="w-full h-1.5 bg-[color:var(--color-border)] rounded-full mb-2 overflow-hidden">
+                    <div className="w-full h-1.5 bg-[color:var(--color-border)] rounded-full mb-1.5 overflow-hidden">
                       <div 
-                        className="h-full bg-[color:var(--color-primary)] rounded-full" 
+                        className="h-full bg-[color:var(--color-primary)] rounded-full transition-all duration-300" 
                         style={{ width: `${coveragePercent}%` }}
                       />
                     </div>
                     {!isZero && (
-                      <div className="flex justify-between items-center text-[10px]">
+                      <div className="flex justify-between items-center text-[10px] tabular-nums">
                         <span className="text-[color:var(--color-text-muted)]">{year.attemptedQuestions}/{year.availableQuestions} Qs</span>
                         <span className="font-bold" style={{ color: getAccuracyTone(year.accuracyRate).color }}>{accuracyPercent}% acc</span>
                       </div>
                     )}
                     {isZero && (
-                      <div className="text-[10px] text-[color:var(--color-text-muted)] text-center">
+                      <div className="text-[10px] text-[color:var(--color-text-muted)] text-center tabular-nums">
                         {year.availableQuestions} Qs available
                       </div>
                     )}
@@ -1167,29 +1251,29 @@ const YearAccuracyTrend = ({ years = [] }) => {
   if (chartData.length < 3) return null;
 
   return (
-    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-      <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Year-wise Accuracy Trend</h2>
-      <p className="mt-1 text-sm text-[color:var(--color-text-muted)] mb-6">
-        Are you performing better on newer exam papers?
+    <section className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-5 shadow-[var(--shadow-card)]">
+      <h2 className="text-base sm:text-lg font-semibold text-[color:var(--color-text)]">Year-wise Accuracy Trend</h2>
+      <p className="mt-0.5 text-xs sm:text-sm text-[color:var(--color-text-muted)] mb-4">
+        Exam question solving performance across recent GATE examination cycles.
       </p>
       
-      <div className="h-64 w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+      <div className="h-60 sm:h-72 w-full min-w-0">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+          <LineChart data={chartData} margin={{ top: 5, right: 15, left: -15, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={theme.grid} />
             <XAxis 
               dataKey="year" 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fontSize: 12, fill: theme.text }} 
+              tick={{ fontSize: 11, fill: theme.text }} 
               dy={10} 
             />
             <YAxis 
               domain={[0, 100]} 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fontSize: 12, fill: theme.text }} 
-              dx={-10} 
+              tick={{ fontSize: 11, fill: theme.text }} 
+              dx={-5} 
               tickFormatter={(val) => `${val}%`} 
             />
             <RechartsTooltip content={<ChartTooltip />} />
@@ -1295,15 +1379,12 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
       {subjectsList.length > 0 && (
         <CollapsibleSection
           title={
-            <div className="flex items-start gap-3.5">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-sky-500/10 text-sky-500 border border-sky-500/20">
+            <div className="flex items-center gap-3.5">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-sky-500/10 text-sky-500 border border-sky-500/20">
                 <FaChartLine className="text-base" />
               </div>
               <div className="min-w-0 flex-1">
                 <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Subject Progress</h2>
-                <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
-                  Questions attempted out of total available per subject.
-                </p>
               </div>
             </div>
           }
@@ -1378,85 +1459,6 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
       {/* Smart Practice Banner — always visible */}
       <SmartPracticeBanner subtopics={subtopicsList} reviewQueue={reviewQueueList} />
 
-      {/* Skill Radar — collapsible */}
-      <CollapsibleSection
-        title={
-          <div className="flex items-start gap-3.5">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-violet-500/10 text-violet-500 border border-violet-500/20">
-              <FaCompass className="text-base" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Skill Radar</h2>
-              <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
-                360° overview of accuracy (solid blue) and syllabus coverage (dashed purple) across subjects.
-              </p>
-            </div>
-          </div>
-        }
-        defaultOpen={subjectsList.length >= 3}
-      >
-        {subjectsList.length >= 3 ? (
-          <SubjectRadarChart data={subjectsList} />
-        ) : (
-          <div className="flex flex-col items-center gap-3 py-8">
-            <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
-            <div className="flex items-center gap-4 text-sm text-[color:var(--color-text-muted)]">
-              <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-correct, #059669)" }} /> Correct
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-incorrect, #e11d48)" }} /> Incorrect
-              </span>
-            </div>
-          </div>
-        )}
-      </CollapsibleSection>
-
-      {/* Exam Year Coverage — collapsible */}
-      {Array.isArray(insights.years) && insights.years.length > 0 && (
-        <CollapsibleSection
-          title={
-            <div className="flex items-start gap-3.5">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-sky-500/10 text-sky-500 border border-sky-500/20">
-                <FaHistory className="text-base" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Exam Year Coverage</h2>
-                <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
-                  Breakdown of attempted vs total available questions across GATE exam years.
-                </p>
-              </div>
-            </div>
-          }
-          defaultOpen={false}
-        >
-          <div className="space-y-6">
-            <YearCoverageGrid years={insights.years} />
-            <YearAccuracyTrend years={insights.years} />
-          </div>
-        </CollapsibleSection>
-      )}
-
-      {/* Practice Trend — collapsible, closed by default */}
-      <CollapsibleSection
-        title={
-          <div className="flex items-start gap-3.5">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-              <FaClock className="text-base" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Practice Trend</h2>
-              <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
-                Daily attempt volume and accuracy over time from practice and mock submissions.
-              </p>
-            </div>
-          </div>
-        }
-        defaultOpen={false}
-      >
-        <TimeTrendChart data={insights.attemptTimeline || []} />
-      </CollapsibleSection>
-
       {/* All Subjects — collapsible, closed by default */}
       <CollapsibleSection
         title={
@@ -1484,13 +1486,195 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
   );
 };
 
-/* ── Wrong Answers tab ──────────────────────────────────────────────────── */
+/* ── Infographics tab ──────────────────────────────────────────────────── */
 
-const ReviewQueueTab = ({ reviewQueue = [] }) => {
+const InfographicsTab = ({ insights = {}, summary = {} }) => {
+  const subjectsList = Array.isArray(insights?.subjects) ? insights.subjects : [];
+  const attemptTimeline = Array.isArray(insights?.attemptTimeline) ? insights.attemptTimeline : [];
+  const years = Array.isArray(insights?.years) ? insights.years : [];
+
+  const totalCorrect = useMemo(() =>
+    subjectsList.reduce((sum, s) => sum + (Number(s?.correctAttempts) || 0), 0)
+  , [subjectsList]);
+  const totalIncorrect = useMemo(() =>
+    subjectsList.reduce((sum, s) => sum + (Number(s?.incorrectAttempts) || 0), 0)
+  , [subjectsList]);
+
+  return (
+    <div className="space-y-6">
+      {/* Skill Radar — collapsible, open by default */}
+      <CollapsibleSection
+        title={
+          <div className="flex items-start gap-3.5">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20">
+              <FaCompass className="text-base" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-base sm:text-lg font-semibold text-[color:var(--color-text)]">Skill Radar</h2>
+              <p className="mt-0.5 text-xs sm:text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                360° overview of accuracy (solid blue) and syllabus coverage (dashed purple) across subjects.
+              </p>
+            </div>
+          </div>
+        }
+        defaultOpen={true}
+      >
+        {subjectsList.length >= 3 ? (
+          <SubjectRadarChart data={subjectsList} />
+        ) : (
+          <div className="flex flex-col items-center gap-3 py-6">
+            <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
+            <div className="flex items-center gap-4 text-xs sm:text-sm text-[color:var(--color-text-muted)] font-medium">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "var(--chart-series-correct, #059669)" }} />
+                <span>Correct: <strong className="tabular-nums text-[color:var(--color-text)]">{formatNumber(totalCorrect)}</strong></span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "var(--chart-series-incorrect, #e11d48)" }} />
+                <span>Incorrect: <strong className="tabular-nums text-[color:var(--color-text)]">{formatNumber(totalIncorrect)}</strong></span>
+              </span>
+            </div>
+          </div>
+        )}
+      </CollapsibleSection>
+
+      {/* Practice Trend — collapsible, open by default */}
+      <CollapsibleSection
+        title={
+          <div className="flex items-start gap-3.5">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <FaClock className="text-base" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-base sm:text-lg font-semibold text-[color:var(--color-text)]">Practice Trend</h2>
+              <p className="mt-0.5 text-xs sm:text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                Daily attempt volume and accuracy over time from practice and mock submissions.
+              </p>
+            </div>
+          </div>
+        }
+        defaultOpen={true}
+      >
+        <TimeTrendChart data={attemptTimeline} />
+      </CollapsibleSection>
+
+      {/* Exam Year Coverage — collapsible, open by default */}
+      {years.length > 0 && (
+        <CollapsibleSection
+          title={
+            <div className="flex items-start gap-3.5">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                <FaHistory className="text-base" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-base sm:text-lg font-semibold text-[color:var(--color-text)]">Exam Year Coverage</h2>
+                <p className="mt-0.5 text-xs sm:text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                  Breakdown of attempted vs total available questions across GATE exam years.
+                </p>
+              </div>
+            </div>
+          }
+          defaultOpen={true}
+        >
+          <div className="space-y-6">
+            <YearCoverageGrid years={years} />
+            <YearAccuracyTrend years={years} />
+          </div>
+        </CollapsibleSection>
+      )}
+    </div>
+  );
+};
+
+/* ── Review Queue tab ───────────────────────────────────────────────────── */
+
+const ITEMS_PER_PAGE = 15;
+
+const ReviewQueueTab = ({ reviewQueue = [], onSwitchTab }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { startReviewSession } = useSession();
   const { getQuestionById } = useFilterActions();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [subjectFilter, setSubjectFilter] = useState("all");
+  const [difficultyFilter, setDifficultyFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("urgency");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const subjects = useMemo(() => {
+    const set = new Set();
+    reviewQueue.forEach((item) => {
+      if (item.subjectLabel) set.add(item.subjectLabel);
+    });
+    return Array.from(set).sort();
+  }, [reviewQueue]);
+
+  const hardDueCount = useMemo(
+    () => reviewQueue.filter((item) => item.difficultyLabel === "Hard").length,
+    [reviewQueue]
+  );
+
+  const maxOverdueDays = useMemo(
+    () => reviewQueue.reduce((max, item) => Math.max(max, Number(item.daysOverdue || 0)), 0),
+    [reviewQueue]
+  );
+
+  const filtered = useMemo(() => {
+    let result = [...reviewQueue];
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      result = result.filter((item) => {
+        const key = String(item.storageKey || "").toLowerCase();
+        const title = resolveQuestionDisplayTitle(item, getQuestionById).toLowerCase();
+        const subject = String(item.subjectLabel || "").toLowerCase();
+        const subtopics = (Array.isArray(item.subtopics) ? item.subtopics : [])
+          .map((s) => String(s?.label || s?.slug || "").toLowerCase())
+          .join(" ");
+        return key.includes(q) || title.includes(q) || subject.includes(q) || subtopics.includes(q);
+      });
+    }
+
+    if (subjectFilter !== "all") {
+      result = result.filter((item) => item.subjectLabel === subjectFilter);
+    }
+
+    if (difficultyFilter !== "all") {
+      result = result.filter(
+        (item) => String(item.difficultyLabel || "").toLowerCase() === difficultyFilter.toLowerCase()
+      );
+    }
+
+    result.sort((a, b) => {
+      if (sortBy === "urgency") {
+        const overdueA = Number(a.daysOverdue || 0);
+        const overdueB = Number(b.daysOverdue || 0);
+        if (overdueB !== overdueA) return overdueB - overdueA;
+        return Number(b.difficultyScore || 0) - Number(a.difficultyScore || 0);
+      }
+      if (sortBy === "difficulty") {
+        return Number(b.difficultyScore || 0) - Number(a.difficultyScore || 0);
+      }
+      if (sortBy === "level-asc") {
+        return Number(a.reviewLevel || 0) - Number(b.reviewLevel || 0);
+      }
+      if (sortBy === "level-desc") {
+        return Number(b.reviewLevel || 0) - Number(a.reviewLevel || 0);
+      }
+      return String(a.storageKey || "").localeCompare(String(b.storageKey || ""));
+    });
+
+    return result;
+  }, [reviewQueue, searchQuery, subjectFilter, difficultyFilter, sortBy, getQuestionById]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, subjectFilter, difficultyFilter, sortBy]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+  const page = Math.min(currentPage, totalPages);
+  const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   const handleNavigateToQuestion = useCallback((storageKey) => {
     const questionPool = reviewQueue
@@ -1504,130 +1688,394 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
     });
   }, [navigate, location.pathname, location.search, reviewQueue, getQuestionById, startReviewSession]);
 
-  if (!reviewQueue.length) {
+  const handleStartReviewAll = useCallback(() => {
+    const targetPool = filtered.length > 0 ? filtered : reviewQueue;
+    if (!targetPool.length) return;
+    handleNavigateToQuestion(targetPool[0].storageKey);
+  }, [filtered, reviewQueue, handleNavigateToQuestion]);
+
+  const hasActiveFilters = searchQuery.trim() !== "" || subjectFilter !== "all" || difficultyFilter !== "all" || sortBy !== "urgency";
+  const handleResetFilters = () => {
+    setSearchQuery("");
+    setSubjectFilter("all");
+    setDifficultyFilter("all");
+    setSortBy("urgency");
+  };
+
+  if (reviewQueue.length === 0) {
     return (
-      <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] p-8 text-center shadow-[var(--shadow-soft)]">
-        <FaCalendarCheck className="mx-auto text-3xl text-[color:var(--color-success-text)] mb-3" />
-        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No due reviews</h2>
-        <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
-          Your scheduled reviews are clear. New due cards appear automatically after practice submissions.
+      <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 text-center shadow-[var(--shadow-soft)] max-w-xl mx-auto">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+          <FaCheckCircle className="text-2xl" />
+        </div>
+        <h2 className="text-xl font-bold text-[color:var(--color-text)]">Review Queue Clear</h2>
+        <p className="mt-2 text-sm text-[color:var(--color-text-muted)] text-pretty">
+          All scheduled spaced-repetition reviews are complete. Questions you practice will automatically enter review cycles based on your performance.
         </p>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/practice"
+            className="inline-flex items-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+          >
+            Practice Questions <FaArrowRight className="text-[10px]" />
+          </Link>
+          {typeof onSwitchTab === "function" && (
+            <button
+              type="button"
+              onClick={() => onSwitchTab("wrong")}
+              className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 py-2.5 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)]"
+            >
+              Check Wrong Answers <FaArrowRight className="text-[10px]" />
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <div className="grid gap-3 sm:grid-cols-3">
-        <div className="stagger-card-1">
-          <div className="rounded-2xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-warning-text)]">Due Now</p>
-            <p className="text-2xl font-bold text-[color:var(--color-warning-text)]">{formatNumber(reviewQueue.length)}</p>
+      {/* Summary stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <StatCard
+          label="Due Reviews"
+          value={formatNumber(reviewQueue.length)}
+          icon={FaCalendarCheck}
+          accent="amber"
+          sublabel="Scheduled for repetition"
+        />
+        <StatCard
+          label="Hard Due"
+          value={formatNumber(hardDueCount)}
+          icon={FaExclamationTriangle}
+          accent="rose"
+          sublabel="High priority target"
+        />
+        <StatCard
+          label="Max Overdue"
+          value={maxOverdueDays > 0 ? `${formatNumber(maxOverdueDays)}d` : "0d"}
+          icon={FaHistory}
+          accent="sky"
+          sublabel={maxOverdueDays > 0 ? "Longest pending card" : "All up to date"}
+          isWideOnMobile={true}
+        />
+      </div>
+
+      {/* Filter and control toolbar */}
+      <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 sm:p-4 shadow-sm space-y-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div className="relative flex-1 min-w-[200px]">
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-[color:var(--color-text-muted)] pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by UID, title, or topic..."
+              className="w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-8 pr-8 py-2 text-xs sm:text-sm text-[color:var(--color-text)] placeholder-[color:var(--color-text-muted)]/70 focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                aria-label="Clear search"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] p-1"
+              >
+                <FaTimes />
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              value={subjectFilter}
+              onChange={(e) => setSubjectFilter(e.target.value)}
+              aria-label="Filter by subject"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-2 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="all">All Subjects ({reviewQueue.length})</option>
+              {subjects.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+
+            <select
+              value={difficultyFilter}
+              onChange={(e) => setDifficultyFilter(e.target.value)}
+              aria-label="Filter by difficulty"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-2 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="all">All Difficulties</option>
+              <option value="hard">Hard</option>
+              <option value="medium">Medium</option>
+              <option value="light">Light</option>
+            </select>
+
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              aria-label="Sort queue by"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-2 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="urgency">Sort: Most Overdue</option>
+              <option value="difficulty">Sort: Hardest First</option>
+              <option value="level-asc">Sort: Lowest Level</option>
+              <option value="level-desc">Sort: Highest Level</option>
+            </select>
+
+            {filtered.length > 0 && (
+              <button
+                type="button"
+                onClick={handleStartReviewAll}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-[color:var(--color-primary)] hover:opacity-95 text-white px-3.5 py-2 text-xs font-semibold shadow-sm transition shrink-0 ml-auto sm:ml-0"
+              >
+                <FaPlay className="text-[9px]" />
+                <span>Start Review ({filtered.length})</span>
+              </button>
+            )}
           </div>
         </div>
-        <div className="stagger-card-2">
-          <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Hard Due</p>
-            <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">
-              {formatNumber(reviewQueue.filter((item) => item.difficultyLabel === "Hard").length)}
-            </p>
-          </div>
-        </div>
-        <div className="stagger-card-3">
-          <div className="rounded-2xl border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">Oldest</p>
-            <p className="text-2xl font-bold text-[color:var(--color-info-text)]">
-              {formatNumber(reviewQueue.reduce((max, item) => Math.max(max, Number(item.daysOverdue || 0)), 0))}d
-            </p>
-          </div>
+
+        <div className="flex items-center justify-between text-xs text-[color:var(--color-text-muted)] pt-1 border-t border-[color:var(--color-border)]/50">
+          <span className="tabular-nums">
+            Showing <strong className="text-[color:var(--color-text)]">{paginated.length}</strong> of <strong className="text-[color:var(--color-text)]">{filtered.length}</strong> due question{filtered.length !== 1 ? "s" : ""}
+          </span>
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-[color:var(--color-primary)] hover:underline"
+            >
+              <FaRedo className="text-[9px]" /> Reset Filters
+            </button>
+          )}
         </div>
       </div>
 
-      <div className="space-y-2">
-        {reviewQueue.map((item, index) => {
-          const subtopicLabels = (Array.isArray(item.subtopics) ? item.subtopics : [])
-            .map((subtopic) => subtopic?.label || subtopic?.slug || "")
-            .filter(Boolean)
-            .slice(0, 2);
-          const dueLabel = Number(item.daysOverdue || 0) > 0
-            ? `${item.daysOverdue}d overdue`
-            : "Due today";
+      {/* Review cards list */}
+      {filtered.length === 0 ? (
+        <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 text-center shadow-[var(--shadow-soft)]">
+          <p className="text-sm font-semibold text-[color:var(--color-text)]">No review questions match your filters</p>
+          <p className="mt-1 text-xs text-[color:var(--color-text-muted)]">Try adjusting your search query, subject, or difficulty criteria.</p>
+          <button
+            type="button"
+            onClick={handleResetFilters}
+            className="mt-3.5 inline-flex items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-1.5 text-xs font-semibold text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)] transition"
+          >
+            <FaRedo className="text-[9px]" /> Reset Filters
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-2.5">
+          {paginated.map((item, index) => {
+            const subtopicLabels = (Array.isArray(item.subtopics) ? item.subtopics : [])
+              .map((subtopic) => subtopic?.label || subtopic?.slug || "")
+              .filter(Boolean)
+              .slice(0, 2);
+            const isOverdue = Number(item.daysOverdue || 0) > 0;
+            const dueLabel = isOverdue ? `${item.daysOverdue}d overdue` : "Due today";
 
-          const staggerClass = `stagger-card-${Math.min(5, (index % 5) + 1)}`;
-          return (
-            <div key={`${item.storageKey}-${index}`} className={staggerClass}>
+            return (
               <button
+                key={`${item.storageKey}-${index}`}
                 type="button"
                 onClick={() => handleNavigateToQuestion(item.storageKey)}
-                className="group block w-full rounded-2xl border border-[color:var(--color-warning-border)] bg-gradient-to-r from-[color:var(--color-warning-soft)] to-[color:var(--color-surface)] px-4 py-3.5 text-left transition hover:border-[color:var(--color-warning-text)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[color:var(--color-warning-border)]"
+                className="group block w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 sm:p-4 text-left transition-all duration-150 hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-surface-hover)] hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="min-w-0 flex-1 space-y-2">
                     <div className="flex flex-wrap items-center gap-2">
-                      <FaCalendarCheck className="text-[color:var(--color-warning-text)]" />
-                      <p className="truncate text-sm font-semibold text-[color:var(--color-text)]">{item.storageKey}</p>
-                      <DifficultyBadge label={item.difficultyLabel} score={item.difficultyScore} />
-                      {item.type ? (
-                        <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+                      {(() => {
+                        const displayTitle = resolveQuestionDisplayTitle(item, getQuestionById);
+                        const isDifferent = displayTitle !== item.storageKey;
+                        return (
+                          <span
+                            className="text-xs sm:text-sm font-semibold text-[color:var(--color-text)] truncate max-w-[280px] sm:max-w-md"
+                            title={`Question ID: ${item.storageKey}`}
+                          >
+                            {isDifferent ? (
+                              <>
+                                <span>{displayTitle}</span>
+                                <span className="sr-only">{item.storageKey}</span>
+                              </>
+                            ) : (
+                              item.storageKey
+                            )}
+                          </span>
+                        );
+                      })()}
+                      {item.type && (
+                        <span className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">
                           {item.type}
                         </span>
-                      ) : null}
+                      )}
+                      <DifficultyBadge label={item.difficultyLabel} score={item.difficultyScore} />
+                      {isOverdue ? (
+                        <span className="inline-flex items-center gap-1 rounded-md border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-600 dark:text-amber-400 tabular-nums">
+                          <FaClock className="text-[9px]" />
+                          {dueLabel}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                          {dueLabel}
+                        </span>
+                      )}
+                      <span className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-1.5 py-0.5 text-[10px] font-semibold text-[color:var(--color-text-muted)] tabular-nums">
+                        Level {item.reviewLevel || 0}
+                      </span>
                     </div>
-                    <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)]">
-                      <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-info-text)]">{item.subjectLabel}</span>
+
+                    <div className="flex flex-wrap items-center gap-1.5 text-xs text-[color:var(--color-text-muted)]">
+                      <span className="font-semibold text-[color:var(--color-text)]">{item.subjectLabel}</span>
                       {subtopicLabels.map((label) => (
-                        <span key={label} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-primary-text)]">
+                        <span
+                          key={label}
+                          className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-1.5 py-0.5 text-[10px] text-[color:var(--color-text-muted)] max-w-[160px] truncate"
+                        >
                           {label}
                         </span>
                       ))}
+                      {item.attempts > 0 && (
+                        <span className="text-[11px] text-[color:var(--color-text-muted)] tabular-nums sm:ml-2">
+                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{item.correctAttempts}✓</span>{" "}
+                          <span className="text-rose-600 dark:text-rose-400 font-semibold">{item.incorrectAttempts}✗</span> of {item.attempts}
+                        </span>
+                      )}
                     </div>
                   </div>
-                  <div className="shrink-0 text-right">
-                    <p className="text-xs font-semibold text-[color:var(--color-warning-text)]">{dueLabel}</p>
-                    <p className="mt-0.5 text-[10px] text-[color:var(--color-text-muted)]">Level {item.reviewLevel || 0}</p>
-                    <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] transition-colors group-hover:text-[color:var(--color-warning-text)] ml-auto" />
+
+                  <div className="shrink-0 flex items-center justify-end sm:flex-col sm:items-end gap-1 border-t sm:border-t-0 pt-2 sm:pt-0 border-[color:var(--color-border)]/50">
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[color:var(--color-primary)] group-hover:translate-x-0.5 transition-transform">
+                      <span>Review</span>
+                      <FaArrowRight className="text-[10px]" />
+                    </span>
                   </div>
                 </div>
               </button>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 pt-2">
+          <button
+            type="button"
+            disabled={page <= 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+            aria-label="Previous page"
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            ← Prev
+          </button>
+          <span className="text-xs sm:text-sm text-[color:var(--color-text-muted)] tabular-nums px-3">
+            Page {page} of {totalPages}
+          </span>
+          <button
+            type="button"
+            disabled={page >= totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+            aria-label="Next page"
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            Next →
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
-const ITEMS_PER_PAGE = 15;
+/* ── Wrong Answers tab ──────────────────────────────────────────────────── */
 
-const WrongAnswersTab = ({ wrongQuestions = [] }) => {
+const WrongAnswersTab = ({ wrongQuestions = [], onSwitchTab }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { startReviewSession } = useSession();
+  const { getQuestionById } = useFilterActions();
+
+  const [searchQuery, setSearchQuery] = useState("");
   const [subjectFilter, setSubjectFilter] = useState("all");
-  const [statusFilter, setStatusFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all"); // "all" | "still-wrong" | "recovered"
+  const [difficultyFilter, setDifficultyFilter] = useState("all");
+  const [typeFilter, setTypeFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("recent");
   const [currentPage, setCurrentPage] = useState(1);
 
   const subjects = useMemo(() => {
-    const uniqueSubjects = new Set(wrongQuestions.map((q) => q.subjectLabel));
+    const uniqueSubjects = new Set(wrongQuestions.map((q) => q.subjectLabel).filter(Boolean));
     return Array.from(uniqueSubjects).sort();
   }, [wrongQuestions]);
 
+  const stillWrongCount = useMemo(
+    () => wrongQuestions.filter((q) => !q.lastCorrect).length,
+    [wrongQuestions]
+  );
+  const recoveredCount = useMemo(
+    () => wrongQuestions.filter((q) => q.lastCorrect).length,
+    [wrongQuestions]
+  );
+
   const filtered = useMemo(() => {
     let result = [...wrongQuestions];
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      result = result.filter((item) => {
+        const key = String(item.storageKey || "").toLowerCase();
+        const title = resolveQuestionDisplayTitle(item, getQuestionById).toLowerCase();
+        const subject = String(item.subjectLabel || "").toLowerCase();
+        const subtopics = (Array.isArray(item.subtopics) ? item.subtopics : [])
+          .map((s) => String(s?.label || s?.slug || "").toLowerCase())
+          .join(" ");
+        return key.includes(q) || title.includes(q) || subject.includes(q) || subtopics.includes(q);
+      });
+    }
+
     if (subjectFilter !== "all") {
       result = result.filter((q) => q.subjectLabel === subjectFilter);
     }
+
     if (statusFilter === "still-wrong") {
       result = result.filter((q) => !q.lastCorrect);
     } else if (statusFilter === "recovered") {
       result = result.filter((q) => q.lastCorrect);
     }
-    return result.sort((a, b) => {
-      if (a.lastCorrect !== b.lastCorrect) {
-        return a.lastCorrect ? 1 : -1;
+
+    if (difficultyFilter !== "all") {
+      result = result.filter(
+        (q) => String(q.difficultyLabel || "").toLowerCase() === difficultyFilter.toLowerCase()
+      );
+    }
+
+    if (typeFilter !== "all") {
+      result = result.filter(
+        (q) => String(q.type || "").toLowerCase() === typeFilter.toLowerCase()
+      );
+    }
+
+    result.sort((a, b) => {
+      if (sortBy === "recent") {
+        if (a.lastCorrect !== b.lastCorrect) {
+          return a.lastCorrect ? 1 : -1;
+        }
+        return String(b.lastSubmittedAt || "").localeCompare(String(a.lastSubmittedAt || ""));
       }
-      return String(b.lastSubmittedAt || "").localeCompare(String(a.lastSubmittedAt || ""));
+      if (sortBy === "mistakes") {
+        return Number(b.incorrectAttempts || 0) - Number(a.incorrectAttempts || 0);
+      }
+      if (sortBy === "difficulty") {
+        return Number(b.difficultyScore || 0) - Number(a.difficultyScore || 0);
+      }
+      return String(a.storageKey || "").localeCompare(String(b.storageKey || ""));
     });
-  }, [wrongQuestions, subjectFilter, statusFilter]);
+
+    return result;
+  }, [wrongQuestions, searchQuery, subjectFilter, statusFilter, difficultyFilter, typeFilter, sortBy, getQuestionById]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, subjectFilter, statusFilter, difficultyFilter, typeFilter, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const page = Math.min(currentPage, totalPages);
@@ -1639,169 +2087,338 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
     });
   }, [navigate, location.pathname, location.search]);
 
-  // Reset page when filters change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [subjectFilter, statusFilter]);
+  const handleDrillStillWrong = useCallback(() => {
+    const stillWrongPool = wrongQuestions.filter((q) => !q.lastCorrect);
+    if (!stillWrongPool.length) return;
+    const firstKey = stillWrongPool[0].storageKey;
+    const questionPool = stillWrongPool
+      .map((item) => (getQuestionById ? getQuestionById(item.storageKey) : null) || { question_uid: item.storageKey })
+      .filter(Boolean);
+    if (typeof startReviewSession === "function") {
+      startReviewSession(questionPool, firstKey);
+    }
+    handleNavigateToQuestion(firstKey);
+  }, [wrongQuestions, getQuestionById, startReviewSession, handleNavigateToQuestion]);
 
-  const stillWrongCount = wrongQuestions.filter((q) => !q.lastCorrect).length;
-  const recoveredCount = wrongQuestions.filter((q) => q.lastCorrect).length;
+  const hasActiveFilters = searchQuery.trim() !== "" || subjectFilter !== "all" || statusFilter !== "all" || difficultyFilter !== "all" || typeFilter !== "all" || sortBy !== "recent";
+  const handleResetFilters = () => {
+    setSearchQuery("");
+    setSubjectFilter("all");
+    setStatusFilter("all");
+    setDifficultyFilter("all");
+    setTypeFilter("all");
+    setSortBy("recent");
+  };
 
   if (wrongQuestions.length === 0) {
     return (
-      <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] p-8 text-center shadow-[var(--shadow-soft)]">
-        <FaCheckCircle className="mx-auto text-3xl text-[color:var(--color-success-text)] mb-3" />
-        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No Wrong Answers!</h2>
-        <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
-          You haven't gotten any questions wrong yet. Keep up the great work!
+      <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 text-center shadow-[var(--shadow-soft)] max-w-xl mx-auto">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+          <FaCheckCircle className="text-2xl" />
+        </div>
+        <h2 className="text-xl font-bold text-[color:var(--color-text)]">Zero Incorrect Questions</h2>
+        <p className="mt-2 text-sm text-[color:var(--color-text-muted)] text-pretty">
+          You haven't logged any incorrect attempts yet. Continue solving practice questions to identify and master challenging concepts.
         </p>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/practice"
+            className="inline-flex items-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+          >
+            Start Practicing <FaArrowRight className="text-[10px]" />
+          </Link>
+          {typeof onSwitchTab === "function" && (
+            <button
+              type="button"
+              onClick={() => onSwitchTab("review")}
+              className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 py-2.5 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)]"
+            >
+              Check Review Queue <FaArrowRight className="text-[10px]" />
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-5">
-      {/* Summary strip */}
-      <div className="grid gap-3 sm:grid-cols-3">
-        <div className="stagger-card-1">
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-[var(--shadow-soft)]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">Total Wrong</p>
-            <p className="text-2xl font-bold text-[color:var(--color-text)]">{formatNumber(wrongQuestions.length)}</p>
-          </div>
-        </div>
-        <div className="stagger-card-2">
-          <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Still Wrong</p>
-            <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">{formatNumber(stillWrongCount)}</p>
-            <p className="text-[10px] text-[color:var(--color-danger-text)]">Last attempt was incorrect</p>
-          </div>
-        </div>
-        <div className="stagger-card-3">
-          <div className="rounded-2xl border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-success-text)]">Recovered</p>
-            <p className="text-2xl font-bold text-[color:var(--color-success-text)]">{formatNumber(recoveredCount)}</p>
-            <p className="text-[10px] text-[color:var(--color-success-text)]">Now answered correctly</p>
-          </div>
-        </div>
+    <div className="space-y-4">
+      {/* Summary stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <StatCard
+          label="Total Wrong"
+          value={formatNumber(wrongQuestions.length)}
+          icon={FaTimesCircle}
+          accent="rose"
+          sublabel="Questions missed at least once"
+        />
+        <StatCard
+          label="Still Wrong"
+          value={formatNumber(stillWrongCount)}
+          icon={FaExclamationTriangle}
+          accent="amber"
+          sublabel="Last attempt was incorrect"
+        />
+        <StatCard
+          label="Recovered"
+          value={formatNumber(recoveredCount)}
+          icon={FaCheckCircle}
+          accent="emerald"
+          sublabel="Answered correctly since"
+          isWideOnMobile={true}
+        />
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-sm">
-        <FaFilter className="text-[color:var(--color-text-muted)] text-sm" />
-        <select
-          value={subjectFilter}
-          onChange={(e) => setSubjectFilter(e.target.value)}
-          className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-sm text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:ring-1 focus:ring-[color:var(--color-primary)]"
-        >
-          <option value="all">All Subjects</option>
-          {subjects.map((s) => (
-            <option key={s} value={s}>{s}</option>
-          ))}
-        </select>
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-sm text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:ring-1 focus:ring-[color:var(--color-primary)]"
-        >
-          <option value="all">All Status</option>
-          <option value="still-wrong">Still Wrong</option>
-          <option value="recovered">Recovered</option>
-        </select>
-        <span className="ml-auto text-xs text-[color:var(--color-text-muted)]">
-          {filtered.length} question{filtered.length !== 1 ? "s" : ""}
-        </span>
+      {/* Filter and control toolbar */}
+      <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 sm:p-4 shadow-sm space-y-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          {/* Status segmented control */}
+          <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-medium self-start sm:self-auto overflow-x-auto max-w-full">
+            <button
+              type="button"
+              onClick={() => setStatusFilter("all")}
+              className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap ${
+                statusFilter === "all"
+                  ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-semibold"
+                  : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+              }`}
+            >
+              All <span className="tabular-nums ml-1 opacity-75">({wrongQuestions.length})</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setStatusFilter("still-wrong")}
+              className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap ${
+                statusFilter === "still-wrong"
+                  ? "bg-[color:var(--color-surface)] text-rose-600 dark:text-rose-400 shadow-sm font-semibold"
+                  : "text-[color:var(--color-text-muted)] hover:text-rose-600"
+              }`}
+            >
+              Still Wrong <span className="tabular-nums ml-1 opacity-75">({stillWrongCount})</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setStatusFilter("recovered")}
+              className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap ${
+                statusFilter === "recovered"
+                  ? "bg-[color:var(--color-surface)] text-emerald-600 dark:text-emerald-400 shadow-sm font-semibold"
+                  : "text-[color:var(--color-text-muted)] hover:text-emerald-600"
+              }`}
+            >
+              Recovered <span className="tabular-nums ml-1 opacity-75">({recoveredCount})</span>
+            </button>
+          </div>
+
+          {stillWrongCount > 0 && (
+            <button
+              type="button"
+              onClick={handleDrillStillWrong}
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-3.5 py-1.5 text-xs font-semibold shadow-sm transition"
+            >
+              <FaPlay className="text-[9px]" />
+              <span>Drill Still-Wrong ({stillWrongCount})</span>
+            </button>
+          )}
+        </div>
+
+        {/* Search and secondary filter controls */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-[color:var(--color-border)]/50">
+          <div className="relative flex-1 min-w-[200px]">
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-[color:var(--color-text-muted)] pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by UID, title, or topic..."
+              className="w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-8 pr-8 py-1.5 text-xs sm:text-sm text-[color:var(--color-text)] placeholder-[color:var(--color-text-muted)]/70 focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                aria-label="Clear search"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] p-1"
+              >
+                <FaTimes />
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              value={subjectFilter}
+              onChange={(e) => setSubjectFilter(e.target.value)}
+              aria-label="Filter by subject"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="all">All Subjects</option>
+              {subjects.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+
+            <select
+              value={difficultyFilter}
+              onChange={(e) => setDifficultyFilter(e.target.value)}
+              aria-label="Filter by difficulty"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="all">All Difficulties</option>
+              <option value="hard">Hard</option>
+              <option value="medium">Medium</option>
+              <option value="light">Light</option>
+            </select>
+
+            <select
+              value={typeFilter}
+              onChange={(e) => setTypeFilter(e.target.value)}
+              aria-label="Filter by type"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="all">All Types</option>
+              <option value="mcq">MCQ</option>
+              <option value="msq">MSQ</option>
+              <option value="nat">NAT</option>
+            </select>
+
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              aria-label="Sort by"
+              className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-xs text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-primary)]"
+            >
+              <option value="recent">Sort: Recent Attempts</option>
+              <option value="mistakes">Sort: Most Missed</option>
+              <option value="difficulty">Sort: Hardest First</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between text-xs text-[color:var(--color-text-muted)] pt-1 border-t border-[color:var(--color-border)]/50">
+          <span className="tabular-nums">
+            Showing <strong className="text-[color:var(--color-text)]">{paginated.length}</strong> of <strong className="text-[color:var(--color-text)]">{filtered.length}</strong> question{filtered.length !== 1 ? "s" : ""}
+          </span>
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-[color:var(--color-primary)] hover:underline"
+            >
+              <FaRedo className="text-[9px]" /> Reset Filters
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Question list */}
-      <div className="space-y-2">
-        {paginated.map((q, index) => {
-          const subtopicLabels = (Array.isArray(q.subtopics) ? q.subtopics : [])
-            .map((st) => st?.label || st?.slug || "")
-            .filter(Boolean)
-            .slice(0, 3);
+      {filtered.length === 0 ? (
+        <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 text-center shadow-[var(--shadow-soft)]">
+          <p className="text-sm font-semibold text-[color:var(--color-text)]">No questions match the selected filters</p>
+          <p className="mt-1 text-xs text-[color:var(--color-text-muted)]">Try clearing search or adjusting your status, subject, or difficulty settings.</p>
+          <button
+            type="button"
+            onClick={handleResetFilters}
+            className="mt-3.5 inline-flex items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-1.5 text-xs font-semibold text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)] transition"
+          >
+            <FaRedo className="text-[9px]" /> Reset Filters
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-2.5">
+          {paginated.map((q, index) => {
+            const subtopicLabels = (Array.isArray(q.subtopics) ? q.subtopics : [])
+              .map((st) => st?.label || st?.slug || "")
+              .filter(Boolean)
+              .slice(0, 3);
 
-          const staggerClass = `stagger-card-${Math.min(5, (index % 5) + 1)}`;
-          const isFirstRecovered = q.lastCorrect && (index === 0 || !paginated[index - 1].lastCorrect);
-
-          return (
-            <React.Fragment key={`${q.storageKey}-${index}`}>
-              {isFirstRecovered && (
-                <div className="pt-4 pb-2">
-                  <div className="flex items-center gap-2 border-b border-[color:var(--color-success-border)] pb-2">
-                    <FaCheckCircle className="text-[color:var(--color-success-text)] text-sm" />
-                    <h3 className="text-sm font-extrabold text-[color:var(--color-success-text)] uppercase tracking-wider">
-                      Recovered Questions
-                    </h3>
-                    <span className="rounded-full bg-[color:var(--color-success-soft)] px-2.5 py-0.5 text-[10px] font-bold text-[color:var(--color-success-text)]">
-                      {recoveredCount}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-xs text-[color:var(--color-text-muted)]">
-                    These are previously incorrect questions that you have successfully solved.
-                  </p>
-                </div>
-              )}
-              <div className={staggerClass}>
-                <div
-                  className={`group rounded-2xl border px-4 py-3.5 transition-all hover:shadow-md cursor-pointer ${
-                    q.lastCorrect
-                      ? "border-[color:var(--color-success-border)] bg-gradient-to-r from-[color:var(--color-success-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-success-text)]"
-                      : "border-[color:var(--color-danger-border)] bg-gradient-to-r from-[color:var(--color-danger-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-danger-text)]"
-                  }`}
-                  onClick={() => handleNavigateToQuestion(q.storageKey)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === "Enter" && handleNavigateToQuestion(q.storageKey)}
-                >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
+            return (
+              <div
+                key={`${q.storageKey}-${index}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => handleNavigateToQuestion(q.storageKey)}
+                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleNavigateToQuestion(q.storageKey)}
+                className="group block w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 sm:p-4 text-left transition-all duration-150 hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-surface-hover)] hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)] cursor-pointer"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="min-w-0 flex-1 space-y-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       {q.lastCorrect ? (
-                        <FaCheckCircle className="text-[color:var(--color-success-text)] shrink-0" />
+                        <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                          <FaCheckCircle className="text-[9px]" />
+                          Recovered
+                        </span>
                       ) : (
-                        <FaTimesCircle className="text-[color:var(--color-danger-text)] shrink-0" />
+                        <span className="inline-flex items-center gap-1 rounded-md border border-rose-500/30 bg-rose-500/10 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-rose-600 dark:text-rose-400">
+                          <FaTimesCircle className="text-[9px]" />
+                          Still Wrong
+                        </span>
                       )}
-                      <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">
-                        {q.storageKey}
-                      </p>
+                      {(() => {
+                        const displayTitle = resolveQuestionDisplayTitle(q, getQuestionById);
+                        const isDifferent = displayTitle !== q.storageKey;
+                        return (
+                          <span
+                            className="text-xs sm:text-sm font-semibold text-[color:var(--color-text)] truncate max-w-[280px] sm:max-w-md"
+                            title={`Question ID: ${q.storageKey}`}
+                          >
+                            {isDifferent ? (
+                              <>
+                                <span>{displayTitle}</span>
+                                <span className="sr-only">{q.storageKey}</span>
+                              </>
+                            ) : (
+                              q.storageKey
+                            )}
+                          </span>
+                        );
+                      })()}
                       {q.type && (
-                        <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+                        <span className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">
                           {q.type}
                         </span>
                       )}
                       <DifficultyBadge label={q.difficultyLabel} score={q.difficultyScore} />
                     </div>
-                    <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                      <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">
-                        {q.subjectLabel}
-                      </span>
+
+                    <div className="flex flex-wrap items-center gap-1.5 text-xs text-[color:var(--color-text-muted)]">
+                      <span className="font-semibold text-[color:var(--color-text)]">{q.subjectLabel}</span>
                       {subtopicLabels.map((st) => (
-                        <span key={st} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 text-[10px] font-semibold text-[color:var(--color-primary-text)]">
+                        <span
+                          key={st}
+                          className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-1.5 py-0.5 text-[10px] text-[color:var(--color-text-muted)] max-w-[160px] truncate"
+                        >
                           {st}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="shrink-0 text-right">
-                    <p className="text-xs text-[color:var(--color-text-muted)]">{relativeTimeLabel(q.lastSubmittedAt)}</p>
-                    <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
-                      {q.correctAttempts}✓ {q.incorrectAttempts}✗ of {q.attempts}
-                    </p>
-                    {q.averageDurationMs > 0 ? (
-                      <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
-                        Avg {formatDuration(q.averageDurationMs)}
+                  <div className="shrink-0 flex items-center justify-between sm:flex-col sm:items-end gap-1.5 border-t sm:border-t-0 pt-2 sm:pt-0 border-[color:var(--color-border)]/50">
+                    <div className="text-left sm:text-right text-xs">
+                      <p className="tabular-nums font-medium text-[color:var(--color-text)]">
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">{q.correctAttempts}✓</span>{" "}
+                        <span className="text-rose-600 dark:text-rose-400 font-bold">{q.incorrectAttempts}✗</span>{" "}
+                        <span className="text-[color:var(--color-text-muted)]">of {q.attempts}</span>
                       </p>
-                    ) : null}
-                    <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] group-hover:text-[color:var(--color-primary)] transition-colors ml-auto" />
+                      <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[color:var(--color-text-muted)] tabular-nums">
+                        <span>{relativeTimeLabel(q.lastSubmittedAt)}</span>
+                        {q.averageDurationMs > 0 && (
+                          <span>• Avg {formatDuration(q.averageDurationMs)}</span>
+                        )}
+                      </div>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[color:var(--color-primary)] group-hover:translate-x-0.5 transition-transform">
+                      <span>Solve</span>
+                      <FaArrowRight className="text-[10px]" />
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
-          </React.Fragment>
-        );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
 
       {/* Pagination */}
       {totalPages > 1 && (
@@ -1809,19 +2426,21 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
           <button
             type="button"
             disabled={page <= 1}
-            onClick={() => setCurrentPage(page - 1)}
-            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
+            onClick={() => setCurrentPage((p) => p - 1)}
+            aria-label="Previous page"
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             ← Prev
           </button>
-          <span className="text-sm text-[color:var(--color-text-muted)] px-3">
+          <span className="text-xs sm:text-sm text-[color:var(--color-text-muted)] tabular-nums px-3">
             Page {page} of {totalPages}
           </span>
           <button
             type="button"
             disabled={page >= totalPages}
-            onClick={() => setCurrentPage(page + 1)}
-            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
+            onClick={() => setCurrentPage((p) => p + 1)}
+            aria-label="Next page"
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Next →
           </button>
@@ -2135,12 +2754,12 @@ const InsightsPage = ({
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
     >
-      <section className="space-y-4 sm:space-y-5 pb-24 md:pb-8">
+      <section className="space-y-4 sm:space-y-5 pb-[calc(5rem+env(safe-area-inset-bottom,16px))] md:pb-10">
         {/* Hero header */}
-        <header className="rounded-2xl sm:rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 sm:p-5 shadow-[var(--shadow-card)]">
-          <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 sm:gap-4">
-            {/* Left: Home button & Insights title pill */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
+        <header className="rounded-2xl sm:rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 sm:p-5 shadow-[var(--shadow-card)] space-y-3 sm:space-y-4">
+          {/* Top navigation row: Breadcrumbs/Back on left, Actions on right */}
+          <div className="flex items-center justify-between gap-2.5 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
               <Link
                 to={HOME_ROUTE}
                 className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] shadow-xs focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
@@ -2149,14 +2768,16 @@ const InsightsPage = ({
               >
                 <FiHome className="text-base sm:text-lg shrink-0" />
               </Link>
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary-soft)] px-2.5 py-1.5 sm:px-3 text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--color-primary-text)]">
-                <FaChartLine className="text-xs" />
-                <span>Insights</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <span className="text-[color:var(--color-text-muted)]/50 text-xs select-none" aria-hidden="true">/</span>
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary-soft)] px-2.5 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--color-primary-text)] truncate">
+                  <FaChartLine className="text-xs shrink-0" />
+                  <span>Insights</span>
+                </span>
               </div>
             </div>
 
-            {/* Actions: Theme Toggle & Practice CTA (Right on mobile, far-right on desktop) */}
-            <div className="flex items-center gap-2 shrink-0 order-2 lg:order-3 ml-auto lg:ml-0">
+            <div className="flex items-center gap-2 shrink-0">
               <button
                 type="button"
                 role="switch"
@@ -2174,16 +2795,29 @@ const InsightsPage = ({
               </button>
               <Link
                 to={selectedTrack === "all" ? PRACTICE_ROUTE : `${PRACTICE_ROUTE}?track=${selectedTrack}`}
-                className="inline-flex h-9 sm:h-10 items-center rounded-xl bg-[color:var(--color-primary)] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs sm:shadow-sm"
+                aria-label="Open Practice"
+                className="inline-flex h-9 sm:h-10 items-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary)] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs sm:shadow-sm shrink-0"
               >
-                <FaCompass className="mr-1.5 sm:mr-2 text-xs sm:text-sm" />
+                <FaCompass className="text-xs sm:text-sm shrink-0" />
                 <span>Open Practice</span>
               </Link>
             </div>
+          </div>
 
-            {/* Track Switcher (Row 2 on mobile, center on desktop) */}
-            <div className="w-full lg:w-auto order-3 lg:order-2">
-              <div className="flex flex-wrap lg:inline-flex w-full lg:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs gap-1">
+          {/* Bottom row: Title & Description on left, Track Switcher on right */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pt-1 border-t border-[color:var(--color-border)]/50">
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-2xl font-bold font-display tracking-tight text-[color:var(--color-text)] text-balance">
+                Performance &amp; Practice Analytics
+              </h1>
+              <p className="text-xs sm:text-sm text-[color:var(--color-text-muted)] mt-0.5 text-pretty line-clamp-1 sm:line-clamp-none">
+                Syllabus coverage, accuracy diagnostics, spaced repetition &amp; attempt trends
+              </p>
+            </div>
+
+            {/* Track Switcher */}
+            <div className="w-full md:w-auto shrink-0 overflow-x-auto no-scrollbar">
+              <div className="inline-flex w-full md:w-auto items-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs gap-1">
                 {trackOptions.map((option) => {
                   const TrackIcon = TRACK_ICONS[option.id] || FaGraduationCap;
                   const isSelected = selectedTrack === option.id;
@@ -2193,7 +2827,7 @@ const InsightsPage = ({
                       type="button"
                       data-testid={`insights-track-${option.id}`}
                       onClick={() => handleTrackChange(option.id)}
-                      className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
+                      className={`flex-1 md:flex-initial inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
                         isSelected
                           ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                           : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -2261,7 +2895,7 @@ const InsightsPage = ({
         ) : (
           <>
             {/* Tab navigation */}
-            <div className="flex gap-1 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 shadow-xs">
+            <div className="flex gap-1 overflow-x-auto no-scrollbar rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 shadow-xs">
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 const TabIcon = tab.icon;
@@ -2271,14 +2905,16 @@ const InsightsPage = ({
                     ? "Wrong"
                     : tab.id === "mock-history"
                       ? "Mocks"
-                      : "Overview";
+                      : tab.id === "infographics"
+                        ? "Charts"
+                        : "Overview";
                 return (
                   <button
                     key={tab.id}
                     type="button"
                     onClick={() => handleTabChange(tab.id)}
                     aria-label={tab.label}
-                    className={`flex-1 min-h-[42px] inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl px-1.5 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold transition-all ${
+                    className={`flex-1 min-w-[64px] sm:min-w-0 min-h-[42px] inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl px-1.5 py-2 sm:px-3.5 sm:py-2.5 text-xs font-semibold transition-all shrink-0 sm:shrink ${
                       isActive
                         ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold border border-[color:var(--color-border)]"
                         : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)]/50"
@@ -2290,7 +2926,7 @@ const InsightsPage = ({
                       <span className="hidden sm:inline">{tab.label}</span>
                     </span>
                     {tab.id === "wrong" && wrongCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
+                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold tabular-nums ${
                         isActive
                           ? "bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30"
                           : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)]"
@@ -2299,7 +2935,7 @@ const InsightsPage = ({
                       </span>
                     )}
                     {tab.id === "review" && dueReviewCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
+                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold tabular-nums ${
                         isActive
                           ? "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30"
                           : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)]"
@@ -2318,10 +2954,13 @@ const InsightsPage = ({
                 <OverviewTab insights={scopedInsights} summary={summary} />
               )}
               {activeTab === "review" && (
-                <ReviewQueueTab reviewQueue={scopedInsights.reviewQueue || []} />
+                <ReviewQueueTab reviewQueue={scopedInsights.reviewQueue || []} onSwitchTab={handleTabChange} />
+              )}
+              {activeTab === "infographics" && (
+                <InfographicsTab insights={scopedInsights} summary={summary} />
               )}
               {activeTab === "wrong" && (
-                <WrongAnswersTab wrongQuestions={scopedInsights.wrongQuestions || []} />
+                <WrongAnswersTab wrongQuestions={scopedInsights.wrongQuestions || []} onSwitchTab={handleTabChange} />
               )}
               {activeTab === "mock-history" && (
                 <MockHistoryPanel onStartMockTest={onStartMockTest} />

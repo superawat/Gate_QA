@@ -720,12 +720,14 @@ export const buildWeakTopicInsights = ({
       ? question.subtopics
       : (Array.isArray(rawQuestion?.subtopics) ? rawQuestion.subtopics : []);
     const year = question.exam?.year || rawQuestion?.exam?.year || rawQuestion?.year || null;
+    const title = String(question.title || rawQuestion?.title || "").trim() || null;
 
     const meta = {
       subjectSlug,
       subjectLabel,
       subtopics,
       year,
+      title,
     };
     questionMetaByStorageKey.set(storageKey, meta);
     const uidKey = String(question?.question_uid || question?.uid || rawQuestion?.question_uid || rawQuestion?.uid || "").trim();
@@ -837,7 +839,8 @@ export const buildWeakTopicInsights = ({
         ).trim() || "Unknown";
         const subtopics = Array.isArray(fallbackQ.subtopics) ? fallbackQ.subtopics : [];
         const year = fallbackQ.exam?.year || fallbackQ.year || null;
-        meta = { subjectSlug, subjectLabel, subtopics, year };
+        const fallbackTitle = String(fallbackQ.title || "").trim() || null;
+        meta = { subjectSlug, subjectLabel, subtopics, year, title: fallbackTitle };
         questionMetaByStorageKey.set(trimmedKey, meta);
       }
     }
@@ -845,6 +848,7 @@ export const buildWeakTopicInsights = ({
     const resolvedSubjectSlug = meta?.subjectSlug || "general";
     const resolvedSubjectLabel = meta?.subjectLabel || "General";
     const resolvedSubtopics = meta?.subtopics || [];
+    const resolvedTitle = meta?.title || String(entry.title || "").trim() || null;
 
     const difficultyMeta = {
       difficultyScore: normalizedEntry.difficultyScore,
@@ -854,6 +858,7 @@ export const buildWeakTopicInsights = ({
 
     difficultyQuestions.push({
       storageKey,
+      title: resolvedTitle,
       subjectLabel: resolvedSubjectLabel,
       subjectSlug: resolvedSubjectSlug,
       subtopics: resolvedSubtopics,
@@ -868,6 +873,7 @@ export const buildWeakTopicInsights = ({
     if (normalizedEntry.isReviewDue) {
       reviewQueue.push({
         storageKey,
+        title: resolvedTitle,
         subjectLabel: resolvedSubjectLabel,
         subjectSlug: resolvedSubjectSlug,
         subtopics: resolvedSubtopics,
@@ -890,6 +896,7 @@ export const buildWeakTopicInsights = ({
     if (rawIncorrect > 0 || normalizedEntry.lastCorrect === false) {
       wrongQuestions.push({
         storageKey,
+        title: resolvedTitle,
         subjectLabel: resolvedSubjectLabel,
         subjectSlug: resolvedSubjectSlug,
         subtopics: resolvedSubtopics,

@@ -250,36 +250,37 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     );
   };
 
-  it("renders the tracker page with header, 3-pillar metrics, and hierarchical table", () => {
+  it("renders the tracker page with header, glanceable summary, and hierarchical table", () => {
     renderTrackerPage();
     expect(screen.getByRole("heading", { name: /gate cse preparation tracker/i })).toBeTruthy();
-    expect(screen.getByText(/theory progress/i)).toBeTruthy();
-    expect(screen.getByText(/pyq practice/i)).toBeTruthy();
-    expect(screen.getByText(/practice accuracy/i)).toBeTruthy();
+    expect(screen.getByRole("button", { name: /preparation summary/i })).toBeTruthy();
     expect(screen.getByText(/subject breakdown/i)).toBeTruthy();
     expect(screen.getAllByText(/engineering mathematics/i).length).toBeGreaterThan(0);
   });
 
-  it("toggles preparation summary dropdown to collapse and expand metrics to save space", () => {
+  it("toggles preparation summary dropdown to expand and collapse metrics to save space", () => {
     renderTrackerPage();
-    // Initially open
-    expect(screen.getByText(/theory progress/i)).toBeTruthy();
-    const toggleBtn = screen.getByRole("button", { name: /preparation summary/i });
-    expect(toggleBtn.getAttribute("aria-expanded")).toBe("true");
-    expect(within(toggleBtn).getByText(/^collapse$/i)).toBeTruthy();
-
-    // Click collapse button
-    fireEvent.click(toggleBtn);
-
-    // Detailed cards should now be collapsed to save space
+    // Initially closed by default
     expect(screen.queryByText(/theory progress/i)).toBeNull();
+    const toggleBtn = screen.getByRole("button", { name: /preparation summary/i });
     expect(toggleBtn.getAttribute("aria-expanded")).toBe("false");
     expect(within(toggleBtn).getByText(/^expand$/i)).toBeTruthy();
 
-    // Click expand button to restore
+    // Click expand button
     fireEvent.click(toggleBtn);
+
+    // Detailed cards should now be visible
     expect(screen.getByText(/theory progress/i)).toBeTruthy();
+    expect(screen.getByText(/pyq practice/i)).toBeTruthy();
+    expect(screen.getByText(/practice accuracy/i)).toBeTruthy();
     expect(toggleBtn.getAttribute("aria-expanded")).toBe("true");
+    expect(within(toggleBtn).getByText(/^collapse$/i)).toBeTruthy();
+
+    // Click collapse button to restore
+    fireEvent.click(toggleBtn);
+    expect(screen.queryByText(/theory progress/i)).toBeNull();
+    expect(toggleBtn.getAttribute("aria-expanded")).toBe("false");
+    expect(within(toggleBtn).getByText(/^expand$/i)).toBeTruthy();
   });
 
   it("switches to GATE DA track when DA button is clicked", () => {

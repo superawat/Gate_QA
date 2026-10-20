@@ -64,6 +64,7 @@ export interface UserTrackerPreferences {
   examDateDa: string;         // default: "2027-02-07"
   countdownDisplayMode: "hero" | "compact" | "hidden";
   showCountdownWidget: boolean;
+  showOverview?: boolean;
   visibleColumns?: string[];  // e.g. ["marks", "target", "priority", "remarks"]
   updatedAt: string;
 }
@@ -158,6 +159,7 @@ export const DEFAULT_TRACKER_PREFERENCES: UserTrackerPreferences = {
   examDateDa: "2027-02-07",
   countdownDisplayMode: "hero",
   showCountdownWidget: true,
+  showOverview: false,
   visibleColumns: [],
   updatedAt: new Date().toISOString(),
 };

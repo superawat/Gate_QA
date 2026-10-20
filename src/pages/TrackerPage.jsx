@@ -197,8 +197,8 @@ export default function TrackerPage() {
     setPreferences(updated);
   }, []);
 
-  // Preparation Summary overview dropdown state (persisted in preferences)
-  const isOverviewOpen = preferences.showOverview !== false;
+  // Preparation Summary overview dropdown state (persisted in preferences, default closed)
+  const isOverviewOpen = preferences.showOverview === true;
   const toggleOverview = useCallback(() => {
     handleUpdatePreferences({ showOverview: !isOverviewOpen });
   }, [handleUpdatePreferences, isOverviewOpen]);

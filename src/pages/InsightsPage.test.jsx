@@ -878,5 +878,283 @@ describe("InsightsPage", () => {
     expect(screen.queryByText("Operating Systems")).toBeNull();
     expect(screen.queryByText("DBMS & Warehousing")).toBeNull();
   });
+
+  test("renders Infographics tab between Review and Wrong tabs, moves Skill Radar, Exam Year Coverage, and Practice Trend to Infographics tab, and removes Subject Progress subtitle", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 20,
+      subjects: [
+        { key: "algo", label: "Algorithms", accuracyRate: 0.8, attemptedCount: 10, correctAttempts: 8, incorrectAttempts: 2, coverageRate: 0.5, availableQuestions: 20 },
+        { key: "os", label: "Operating Systems", accuracyRate: 0.7, attemptedCount: 10, correctAttempts: 7, incorrectAttempts: 3, coverageRate: 0.5, availableQuestions: 20 },
+        { key: "cn", label: "Computer Networks", accuracyRate: 0.6, attemptedCount: 5, correctAttempts: 3, incorrectAttempts: 2, coverageRate: 0.3, availableQuestions: 20 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [],
+      years: [
+        { key: "2024", attemptedQuestions: 10, availableQuestions: 65, coverageRate: 0.15, accuracyRate: 0.8, attemptedCount: 10 },
+        { key: "2023", attemptedQuestions: 10, availableQuestions: 65, coverageRate: 0.15, accuracyRate: 0.7, attemptedCount: 10 },
+        { key: "2022", attemptedQuestions: 5, availableQuestions: 65, coverageRate: 0.08, accuracyRate: 0.6, attemptedCount: 5 },
+      ],
+      attemptTimeline: [
+        { date: "2026-05-01", attempts: 5, correct: 4, incorrect: 1, accuracyRate: 0.8, averageDurationMs: 60000 },
+        { date: "2026-05-02", attempts: 10, correct: 7, incorrect: 3, accuracyRate: 0.7, averageDurationMs: 55000 },
+      ],
+    });
+
+    renderInsightsPage();
+    await screen.findByText("Subject Progress");
+
+    // 1. Verify subheading is removed
+    expect(screen.queryByText(/questions attempted out of total available per subject/i)).toBeNull();
+
+    // 2. Verify header has clean typography and links
+    expect(screen.getByText("Performance & Practice Analytics")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /back to home/i })).toBeTruthy();
+    expect(screen.getByRole("link", { name: /open practice/i })).toBeTruthy();
+
+    // 3. Verify Overview tab does NOT render Skill Radar, Exam Year Coverage, or Practice Trend
+    expect(screen.queryByText("Skill Radar")).toBeNull();
+    expect(screen.queryByText("Decade & Year Breakdown")).toBeNull();
+
+    // 4. Verify Infographics tab button exists
+    const infographicsTabBtn = screen.getByRole("button", { name: /infographics/i });
+    expect(infographicsTabBtn).toBeTruthy();
+
+    // Verify tab order: Overview, Review Queue, Infographics, Wrong Answers, Mock History
+    const tabButtons = screen.getAllByRole("button").filter((btn) =>
+      ["Overview", "Review Queue", "Infographics", "Wrong Answers", "Mock History"].includes(btn.getAttribute("aria-label"))
+    );
+    const tabLabels = tabButtons.map((btn) => btn.getAttribute("aria-label"));
+    expect(tabLabels).toEqual([
+      "Overview",
+      "Review Queue",
+      "Infographics",
+      "Wrong Answers",
+      "Mock History",
+    ]);
+
+    // 5. Click Infographics tab -> now Skill Radar, Practice Trend, and Exam Year Coverage are rendered
+    fireEvent.click(infographicsTabBtn);
+
+    expect(await screen.findByText("Skill Radar")).toBeTruthy();
+    expect(screen.getByText("Practice Trend")).toBeTruthy();
+    expect(screen.getByText("Exam Year Coverage")).toBeTruthy();
+    expect(screen.getByText("Decade & Year Breakdown")).toBeTruthy();
+    expect(screen.getByText("Year-wise Accuracy Trend")).toBeTruthy();
+  });
+
+  test("supports ?tab=infographics query parameter directly", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 15,
+      subjects: [
+        { key: "algo", label: "Algorithms", accuracyRate: 0.8, attemptedCount: 10, correctAttempts: 8, incorrectAttempts: 2, coverageRate: 0.5, availableQuestions: 20 },
+        { key: "os", label: "Operating Systems", accuracyRate: 0.7, attemptedCount: 10, correctAttempts: 7, incorrectAttempts: 3, coverageRate: 0.5, availableQuestions: 20 },
+        { key: "cn", label: "Computer Networks", accuracyRate: 0.6, attemptedCount: 5, correctAttempts: 3, incorrectAttempts: 2, coverageRate: 0.3, availableQuestions: 20 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [],
+      years: [],
+      attemptTimeline: [],
+    });
+
+    render(
+      <MemoryRouter initialEntries={["/insights?tab=infographics"]}>
+        <InsightsPage hasResumeRoute={false} onResumePractice={vi.fn()} />
+      </MemoryRouter>
+    );
+
+    expect(await screen.findByText("Skill Radar")).toBeTruthy();
+    expect(screen.getByText("Practice Trend")).toBeTruthy();
+  });
+
+  test("ReviewQueueTab renders summary stats, search filter, and Start Review CTA", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [
+        { storageKey: "q-rev-1", subjectLabel: "Algorithms", difficultyLabel: "Hard", daysOverdue: 3 },
+        { storageKey: "q-rev-2", subjectLabel: "Databases", difficultyLabel: "Medium", daysOverdue: 0 },
+      ],
+    });
+
+    renderInsightsPage();
+
+    fireEvent.click(await screen.findByRole("button", { name: /review queue/i }));
+
+    // Check StatCards
+    expect(await screen.findByText("Due Reviews")).toBeTruthy();
+    expect(screen.getByText("Hard Due")).toBeTruthy();
+    expect(screen.getByText("Max Overdue")).toBeTruthy();
+    expect(screen.getByText("3d")).toBeTruthy();
+
+    // Check Start Review CTA button
+    const startReviewBtn = screen.getByRole("button", { name: /start review/i });
+    expect(startReviewBtn).toBeTruthy();
+
+    // Test Search input filtering
+    const searchInput = screen.getByPlaceholderText(/search by uid/i);
+    fireEvent.change(searchInput, { target: { value: "Databases" } });
+
+    expect(screen.queryByText("q-rev-1")).toBeNull();
+    expect(screen.getByText("q-rev-2")).toBeTruthy();
+
+    // Clear search
+    fireEvent.click(screen.getByRole("button", { name: /clear search/i }));
+    expect(screen.getByText("q-rev-1")).toBeTruthy();
+    expect(screen.getByText("q-rev-2")).toBeTruthy();
+  });
+
+  test("ReviewQueueTab renders baseline empty state when queue is empty", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [],
+    });
+
+    renderInsightsPage();
+
+    fireEvent.click(await screen.findByRole("button", { name: /review queue/i }));
+
+    expect(await screen.findByText("Review Queue Clear")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /practice questions/i })).toBeTruthy();
+  });
+
+  test("WrongAnswersTab renders summary stats, status segmented pills, search filter, and Drill CTA", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 8,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [
+        { storageKey: "q-wrong-1", subjectLabel: "Algorithms", difficultyLabel: "Hard", lastCorrect: false, attempts: 2, correctAttempts: 0, incorrectAttempts: 2 },
+        { storageKey: "q-wrong-2", subjectLabel: "Computer Networks", difficultyLabel: "Medium", lastCorrect: true, attempts: 3, correctAttempts: 1, incorrectAttempts: 2 },
+      ],
+      reviewQueue: [],
+    });
+
+    renderInsightsPage();
+
+    fireEvent.click(await screen.findByRole("button", { name: /wrong answers/i }));
+
+    // Check StatCards
+    expect(await screen.findByText("Total Wrong")).toBeTruthy();
+    expect(screen.getAllByText("Still Wrong").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Recovered").length).toBeGreaterThan(0);
+
+    // Check Drill Still-Wrong CTA button
+    expect(screen.getByRole("button", { name: /drill still-wrong/i })).toBeTruthy();
+
+    // Check Status segmented control buttons
+    const stillWrongFilterBtn = screen.getByRole("button", { name: /^still wrong \(/i });
+    const recoveredFilterBtn = screen.getByRole("button", { name: /^recovered \(/i });
+    expect(stillWrongFilterBtn).toBeTruthy();
+    expect(recoveredFilterBtn).toBeTruthy();
+
+    // Filter to Still Wrong only
+    fireEvent.click(stillWrongFilterBtn);
+    expect(screen.getByText("q-wrong-1")).toBeTruthy();
+    expect(screen.queryByText("q-wrong-2")).toBeNull();
+
+    // Filter to Recovered only
+    fireEvent.click(recoveredFilterBtn);
+    expect(screen.queryByText("q-wrong-1")).toBeNull();
+    expect(screen.getByText("q-wrong-2")).toBeTruthy();
+
+    // Search filter
+    const searchInput = screen.getByPlaceholderText(/search by uid/i);
+    fireEvent.change(searchInput, { target: { value: "Algorithms" } });
+    expect(screen.queryByText("q-wrong-2")).toBeNull();
+    expect(screen.getByText(/no questions match the selected filters/i)).toBeTruthy();
+  });
+
+  test("WrongAnswersTab renders baseline empty state when no wrong questions exist", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [],
+    });
+
+    renderInsightsPage();
+
+    fireEvent.click(await screen.findByRole("button", { name: /wrong answers/i }));
+
+    expect(await screen.findByText("Zero Incorrect Questions")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /start practicing/i })).toBeTruthy();
+  });
+
+  test("displays question titles instead of raw IDs and hides IDs behind in Review Queue and Wrong Answers", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [
+        {
+          storageKey: "go:359762",
+          title: "GATE ECE 2020 | General Aptitude Question: 9",
+          subjectLabel: "General Aptitude",
+          difficultyLabel: "Medium",
+          lastCorrect: false,
+          attempts: 4,
+          correctAttempts: 1,
+          incorrectAttempts: 3,
+        },
+      ],
+      reviewQueue: [
+        {
+          storageKey: "APT-RSN-9655",
+          subjectLabel: "Reasoning",
+          difficultyLabel: "Light",
+          daysOverdue: 132,
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+        },
+        {
+          storageKey: "go:2195",
+          title: "GATE CSE 2012 | Question: 57",
+          subjectLabel: "General Aptitude",
+          difficultyLabel: "Light",
+          daysOverdue: 132,
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+        },
+      ],
+    });
+
+    renderInsightsPage();
+
+    // Check Review Queue tab
+    fireEvent.click(await screen.findByRole("button", { name: /review queue/i }));
+
+    // Authentic titles are displayed as headings
+    expect(await screen.findByText("GATE CSE 2012 | Question: 57")).toBeTruthy();
+    expect(screen.getByText("Reasoning Practice")).toBeTruthy();
+
+    // Raw IDs are hidden behind in sr-only spans with tooltips
+    const rsnHeading = screen.getByTitle("Question ID: APT-RSN-9655");
+    expect(rsnHeading).toBeTruthy();
+    expect(rsnHeading.querySelector(".sr-only")?.textContent).toBe("APT-RSN-9655");
+
+    const goHeading = screen.getByTitle("Question ID: go:2195");
+    expect(goHeading).toBeTruthy();
+    expect(goHeading.querySelector(".sr-only")?.textContent).toBe("go:2195");
+
+    // Check Wrong Answers tab
+    fireEvent.click(screen.getByRole("button", { name: /wrong answers/i }));
+
+    // Authentic title displayed
+    expect(await screen.findByText("GATE ECE 2020 | General Aptitude Question: 9")).toBeTruthy();
+    const wrongHeading = screen.getByTitle("Question ID: go:359762");
+    expect(wrongHeading).toBeTruthy();
+    expect(wrongHeading.querySelector(".sr-only")?.textContent).toBe("go:359762");
+  });
 });
+
 

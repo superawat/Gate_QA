@@ -1,5 +1,77 @@
 # Changelog
 
+- **Human-Readable Question Titles & Hidden Machine IDs in Review Queue & Wrong Answers (DEC-207)**:
+  - *Context*:
+    - In the Insights page (`/insights`), both the Review Queue (`ReviewQueueTab`) and Wrong Answers (`WrongAnswersTab`) cards displayed raw machine storage keys (e.g. `go:2195`, `APT-RSN-9655`, `go:359762`, `go:39696`, `pp:me:2018:q57`) as their primary visible title.
+    - User requested using human-readable question titles on cards rather than raw IDs, keeping the ID hidden behind for cleaner UI while preserving accessibility and testability.
+  - *Accomplishments*:
+    - **Weak Topic Analyzer Question Title Metadata**:
+      - In `src/utils/weakTopicAnalyzer.js`, extracted and stored authentic `title` in `questionMetaByStorageKey` and fallback questions from `QuestionService.getQuestionById`.
+      - Attached `title: resolvedTitle` to `difficultyQuestions`, `reviewQueue`, and `wrongQuestions`.
+    - **Question Display Title Resolution Engine (`resolveQuestionDisplayTitle`)**:
+      - In `src/pages/InsightsPage.jsx`, implemented `resolveQuestionDisplayTitle(item, getQuestionById)` supporting all question archetypes:
+        1. Pre-existing human-readable `item.title`.
+        2. FilterContext question bank lookup via `getQuestionById(storageKey)?.title`.
+        3. Canonical engineering branch question numbering and titles via `resolveQuestionIdentity` (e.g. `pp:me:2018:q57` $\to$ `GATE ME 2018 | GA | Question: 2`).
+        4. Special Aptitude question prefixes (`APT-RSN-*` $\to$ `Reasoning Practice`, `APT-ENG-*` $\to$ `English Practice`, `APT-QNT-*` $\to$ `Quantitative Aptitude Practice`, `APT-SPT-*` $\to$ `Spatial Aptitude Practice`).
+        5. ISRO (`isro:cs:2020:q12` $\to$ `ISRO CS 2020 | Question: 12`) and DA (`da:2024:q15` $\to$ `GATE DA 2024 | Question: 15`).
+        6. Subtopic / subject fallbacks (`${subject} · ${subtopic} Question`).
+    - **UI Card Header & Hidden Machine ID**:
+      - Replaced raw monospace machine ID heading with the human-readable question title across both `ReviewQueueTab` and `WrongAnswersTab`.
+      - Kept the machine ID hidden behind using a hover tooltip (`title={`Question ID: ${storageKey}`}`) and `<span className="sr-only">{storageKey}</span>` for assistive technologies and automated testing-library queries.
+    - **Search & Filter Enhancement**:
+      - Updated search filtering in both tabs to search against `title` as well as UID, subject, and subtopic keywords.
+    - **Automated Verification**:
+      - Added regression tests in `src/pages/InsightsPage.test.jsx`.
+      - Verified: 32/32 tests passed in `InsightsPage.test.jsx`, 14/14 tests passed in `weakTopicAnalyzer.test.js`, TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
+- **Review Queue & Wrong Answers Tabs UI Revamp (Baseline UI & Mobile Optimization) (DEC-206)**:
+  - *Context*:
+    - The Review Queue (`ReviewQueueTab`) and Wrong Answers (`WrongAnswersTab`) tabs in `/insights` suffered from AI-slop design anti-patterns:
+      1. Garish multi-color gradients (`bg-gradient-to-r from-warning-soft/danger-soft to-surface`) on every question card.
+      2. Missing actionable empty states (empty states had dashed green borders and no primary next-action CTA button).
+      3. Poor information density and lack of filtering: Review Queue lacked search, subject, difficulty, and sort filters. Wrong Answers buried status filtering in a native `<select>`.
+      4. Severe low-contrast bug in Wrong Answers cards where `text-[color:var(--color-border)]` was used for attempt breakdown and duration, making critical information nearly invisible.
+      5. Zero-friction review workflows: Users had no one-click "Start Review Session" or "Drill Still-Wrong" CTA buttons.
+  - *Accomplishments*:
+    - **`ReviewQueueTab` Modernization**:
+      - Upgraded top summary cards to disciplined `StatCard` surfaces (`Due Reviews`, `Hard Due`, `Max Overdue`) with `tabular-nums`.
+      - Built a high-density action toolbar featuring inline search by question UID / subject / subtopic with clear button (`FaTimes`), dropdown filters for Subject, Difficulty (`All`, `Hard`, `Medium`, `Light`), and Sort order (`Most Overdue`, `Hardest First`, `Lowest Level`, `Highest Level`), plus an active filter reset button.
+      - Added a primary **"Start Review (N)"** CTA button launching a review session for all filtered due cards starting at the first question.
+      - Redesigned review cards with clean, disciplined surfaces (`bg-[color:var(--color-surface)]`, `border-[color:var(--color-border)]`, `hover:border-[color:var(--color-primary-border)]`), monospace question UIDs, type badges (`MCQ`, `MSQ`, `NAT`), `DifficultyBadge`, urgency badges with overdue days in tabular numerals, spaced repetition level tags (`Level X`), and attempt history summaries.
+      - Built an anti-slop empty state ("Review Queue Clear") with dual primary actions: "Practice Questions" (`/practice`) and "Check Wrong Answers" (`onSwitchTab("wrong")`).
+    - **`WrongAnswersTab` Modernization**:
+      - Replaced raw colored blocks with `StatCard` metrics (`Total Wrong`, `Still Wrong`, `Recovered`).
+      - Elevated status filtering from a buried `<select>` to a zero-friction segmented pill control: `[ All (N) ] [ Still Wrong (X) ] [ Recovered (Y) ]`.
+      - Added a prominent **"Drill Still-Wrong (N)"** CTA button that initializes a review session specifically for all currently unsolved incorrect questions.
+      - Added comprehensive filters: UID / keyword search, Subject dropdown, Difficulty dropdown, Question Type dropdown (`MCQ`, `MSQ`, `NAT`), and Sort order (`Recent Attempts`, `Most Missed`, `Hardest First`).
+      - Completely fixed the unreadable text color defect: replaced `text-[color:var(--color-border)]` with high-contrast, semantic colors (`font-bold text-emerald-600 dark:text-emerald-400` for correct count, `font-bold text-rose-600 dark:text-rose-400` for incorrect count, `tabular-nums text-[color:var(--color-text-muted)]` for relative time and average duration).
+      - Replaced card gradients with clean baseline-ui surface styling and distinct status pills (`Recovered` in emerald and `Still Wrong` in rose).
+      - Built a clean empty state ("Zero Incorrect Questions") with "Start Practicing" and "Check Review Queue" CTAs.
+    - **Mobile Ergonomics**:
+      - Stacked controls gracefully with vertical touch targets $\ge 40$px, horizontal scrollable segmented pill tracks, and responsive pagination controls with `tabular-nums`.
+    - **Testing**: Added unit tests in `src/pages/InsightsPage.test.jsx` covering summary StatCards, search/filter interactions, segmented status pills, CTA triggers, and empty states.
+  - *Verification*: All 31 tests in `InsightsPage.test.jsx` passed (100%), TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
+- **Insights Page UI Modernization, Infographics Tab, Header Ordering & Baseline UI Optimization (DEC-205)**:
+  - *Context*:
+    - The Insights page (`/insights`, `src/pages/InsightsPage.jsx`) had visual clutter, disordered header elements on mobile/desktop, and lack of visual grouping for graphical charts.
+    - User requested:
+      1. Adding a dedicated "Infographics" tab between Review Queue and Wrong Answers.
+      2. Moving Skill Radar, Exam Year Coverage, and Practice Trend out of the Overview tab into the Infographics tab.
+      3. Removing the redundant subtitle in Subject Progress ("questions attempted out of total available per subject.").
+      4. Fixing the disordered header layout and optimizing for mobile ergonomics in compliance with `baseline-ui` standards.
+  - *Accomplishments*:
+    - **Infographics Tab & Chart Relocation**: Created `InfographicsTab` component containing Skill Radar (multidimensional radar chart with attempted/all toggle and legend or correct/incorrect fallback), Practice Trend (daily volume and accuracy line chart), and Exam Year Coverage (`YearCoverageGrid` decades/years grid and `YearAccuracyTrend` line chart). Removed these 3 chart blocks from `OverviewTab`.
+    - **Tab Order & Navigation**: Updated `TABS` array to `[Overview, Review Queue, Infographics, Wrong Answers, Mock History]`. Added responsive tab bar with horizontal scroll (`overflow-x-auto no-scrollbar`), touch targets $\ge 42$px, clean shortLabels on mobile (`Overview`, `Review`, `Charts`, `Wrong`, `Mocks`), and `tabular-nums` on notification counters.
+    - **Header Reordering & Hierarchy**: Restructured hero header into an ordered two-row layout:
+      - Top row: Breadcrumb navigation (`[Home] / [Insights]`) on the left, Theme switch (`role="switch"`) and Open Practice link on the right.
+      - Bottom row: Editorial title `h1` ("Performance & Practice Analytics") using DM Serif Display (`font-display`) and descriptive subtitle on the left; clean, non-wrapping horizontal-scrolling track switcher on the right (`CS`, `DA`, `Aptitude`, `Combined`).
+    - **Baseline UI & Anti-Slop Improvements**: Replaced heavy multi-stop gradient cards in `StatCard` with disciplined surface tokens (`bg-[color:var(--color-surface)]`), applied `tabular-nums` across timers, percentages, attempt counts, and score ratios, added `minWidth={0}` to all Recharts containers preventing container measure errors, and updated bottom safe-area padding (`pb-[calc(5rem+env(safe-area-inset-bottom,16px))] md:pb-10`).
+    - **Subject Progress Subheading Removed**: Removed the subtitle `<p>Questions attempted out of total available per subject.</p>` from Subject Progress in `OverviewTab`.
+    - **Testing**: Added unit test cases in `src/pages/InsightsPage.test.jsx` verifying tab order, chart relocation, query parameter direct mounting (`?tab=infographics`), header links/titles, and absence of the removed subheading.
+  - *Verification*: Full Vitest suite passing (1,418 tests passed across 109 test files, 0 failures), TypeScript typecheck clean (`npm run typecheck`, 0 errors).
+
 - **Five-Question Resolution: Answer Key, Formula Correction, Exponent Repair, and Solution Coverage for `go:426523`, `go:2018`, `ec:2008:q3`, `ec:2011:q25`, and `go:912` (DEC-203)**:
   - *Context*:
     - **`go:426523` (GATE 2024 EE GA Q1, General Aptitude - Verbal Aptitude)**: Reporter stated answer was incorrect. The question presents an increasing intensity analogy `[talk -> shout -> scream]` to `[please -> _____ -> pander]`. The official answer is Option A (`flatter`). However, `detailed_solution` in `data/solutions/cse-v1.json` had a corrupted, mismatched calculus derivation about $\max(x, x^3)$ and $\{-1, 0, 1\}$.
