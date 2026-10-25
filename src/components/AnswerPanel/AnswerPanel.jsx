@@ -22,7 +22,7 @@ import {
 } from "../../utils/practiceProgress";
 import { enqueueChange } from "../../utils/syncQueue";
 import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
-import { MTA_EXPLANATION_TEXT } from "../../utils/questionType";
+import { MTA_EXPLANATION_TEXT, isMtaQuestion } from "../../utils/questionType";
 
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
 
@@ -173,8 +173,13 @@ export default function AnswerPanel({
     return false;
   }, [result, isSolved, targetStorageKey, progressStorageKey]);
 
+  const isMta = useMemo(
+    () => isMtaQuestion(question, answerRecord),
+    [question, answerRecord]
+  );
+
   const unlockDetailedSolutions = Boolean(filters?.unlockDetailedSolutions);
-  const isUnlocked = hasAttempted || unlockDetailedSolutions;
+  const isUnlocked = isMta || hasAttempted || unlockDetailedSolutions;
 
   const solutionLink = useMemo(() => {
     if (passedSolutionLink) {
@@ -528,7 +533,7 @@ export default function AnswerPanel({
       );
     }
 
-    if (!answerRecord) {
+    if (!answerRecord && !isMta) {
       return (
         <div className="rounded-2xl border border-amber-200 bg-amber-50 dark:bg-amber-950/30 p-4 text-amber-950 dark:text-amber-100">
           <p className="text-sm font-semibold">Answer unavailable</p>
@@ -549,21 +554,20 @@ export default function AnswerPanel({
       );
     }
 
-    if (["UNSUPPORTED", "SUBJECTIVE", "AMBIGUOUS", "MTA", "MARKS_TO_ALL"].includes(answerRecord.type)) {
-      const isMta = answerRecord.type === "MTA" || answerRecord.type === "MARKS_TO_ALL";
+    if (isMta || (answerRecord && ["UNSUPPORTED", "SUBJECTIVE", "AMBIGUOUS", "MTA", "MARKS_TO_ALL"].includes(answerRecord.type))) {
       let colorClass = "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)]";
       let message = "Refer to standard solution.";
 
       if (isMta) {
         colorClass = "border-emerald-300 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200";
         message = MTA_EXPLANATION_TEXT;
-      } else if (answerRecord.type === "UNSUPPORTED") {
+      } else if (answerRecord?.type === "UNSUPPORTED") {
         colorClass = "border-amber-300 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200";
         message = "Non-standard format.";
-      } else if (answerRecord.type === "SUBJECTIVE") {
+      } else if (answerRecord?.type === "SUBJECTIVE") {
         colorClass = "border-purple-300 bg-purple-50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-200";
         message = "Subjective answer.";
-      } else if (answerRecord.type === "AMBIGUOUS") {
+      } else if (answerRecord?.type === "AMBIGUOUS") {
         colorClass = "border-orange-300 bg-orange-50 dark:bg-orange-950/30 text-orange-900 dark:text-orange-200";
         message = "Ambiguous question.";
       }

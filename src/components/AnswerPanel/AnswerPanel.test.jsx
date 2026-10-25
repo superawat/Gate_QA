@@ -786,6 +786,57 @@ describe("AnswerPanel", () => {
       expect(onToggle).not.toHaveBeenCalled();
       expect(screen.getByText(/Please attempt the question at least once/i)).toBeTruthy();
     });
+
+    test("unlocks Detailed Solution by default for MTA questions even when unlockDetailedSolutions is OFF and question not attempted", () => {
+      mockFilterState.filters = { unlockDetailedSolutions: false };
+      const mtaQ = {
+        question_uid: "test:mta-1",
+        title: "Sample MTA Question",
+        answer_meta: { type: "MTA", answer: "MTA" },
+      };
+      AnswerService.answersByQuestionUid["test:mta-1"] = {
+        type: "MTA",
+        answer: "MTA",
+      };
+
+      const onToggle = vi.fn();
+      render(
+        <AnswerPanel
+          question={mtaQ}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn.getAttribute("title")).toBe("View Detailed Solution");
+
+      fireEvent.click(btn);
+      expect(onToggle).toHaveBeenCalledTimes(1);
+      expect(screen.queryByText(/Please attempt the question at least once/i)).toBeNull();
+    });
+
+    test("keeps Detailed Solution unlocked for MTA questions when question object has type MTA directly", () => {
+      mockFilterState.filters = { unlockDetailedSolutions: false };
+      const mtaQ = {
+        question_uid: "test:mta-direct",
+        title: "Direct MTA Question",
+        type: "MTA",
+      };
+
+      const onToggle = vi.fn();
+      render(
+        <AnswerPanel
+          question={mtaQ}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn.getAttribute("title")).toBe("View Detailed Solution");
+
+      fireEvent.click(btn);
+      expect(onToggle).toHaveBeenCalledTimes(1);
+    });
   });
 
 

@@ -45,3 +45,51 @@ export function getDisplayQuestionTypeLabel(question = null) {
   }
   return token.toUpperCase();
 }
+
+export function isMtaQuestion(question = null, answerRecord = null) {
+  const record =
+    answerRecord ||
+    (question && typeof question === "object"
+      ? AnswerService.getAnswerForQuestion(question)
+      : null);
+
+  if (record) {
+    const recType = String(record.type || "")
+      .toUpperCase()
+      .trim()
+      .replace(/[\s-]+/g, "_");
+    const recAns = String(record.answer || "").toUpperCase().trim();
+    if (recType === "MTA" || recType === "MARKS_TO_ALL" || recAns === "MTA") {
+      return true;
+    }
+  }
+
+  if (!question || typeof question !== "object") {
+    return false;
+  }
+
+  if (getDisplayQuestionTypeToken(question) === "mta") {
+    return true;
+  }
+
+  const candidates = [
+    question.type,
+    question.answer_meta?.type,
+    question.answerMeta?.type,
+    question.answer,
+    question.answer_meta?.answer,
+    question.answerMeta?.answer,
+  ];
+
+  for (const candidate of candidates) {
+    const normalized = String(candidate || "")
+      .toUpperCase()
+      .trim()
+      .replace(/[\s-]+/g, "_");
+    if (normalized === "MTA" || normalized === "MARKS_TO_ALL") {
+      return true;
+    }
+  }
+
+  return false;
+}

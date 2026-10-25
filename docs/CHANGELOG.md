@@ -1,4 +1,12 @@
 # Changelog
+- **Default Detailed Solution Unlock for MTA (Marks to All) Questions (DEC-245)**:
+  - Made an automatic exception to the Detailed Solution attempt lock for questions classified as MTA (Marks to All).
+  - Because MTA questions are non-interactive and have no valid answer to submit, detailed solutions are now unlocked by default even if the user has never attempted the question.
+  - Preserved standard attempt-gating behavior for all other questions (MCQ, MSQ, NAT), where detailed solutions remain locked until attempted or unless bypassed by the global "Unlock solutions" toggle.
+  - The "Unlock solutions" toggle remains OFF by default. When enabled, it continues to unlock detailed solutions for all questions regardless of attempt status.
+  - Implemented `isMtaQuestion(question, answerRecord)` utility in `src/utils/questionType.js` and wired into `AnswerPanel.jsx` (`isUnlocked = isMta || hasAttempted || unlockDetailedSolutions`).
+  - Added unit test coverage in `src/utils/questionType.test.js` and `src/components/AnswerPanel/AnswerPanel.test.jsx`.
+
 - **Dedicated Blog Article Namespace & TypeScript Reading UI (DEC-244)**:
   - Moved 11 editorial articles to canonical `/blog/:slug` URLs, kept the five practice landing pages at their root routes, and added SPA plus static HTML compatibility redirects for old article URLs.
   - Normalized blog metadata, tags, categories, breadcrumbs, and internal links. Publication dates remain optional when the source date is unknown; missing reading times are estimated from rich-copy words.
