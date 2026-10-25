@@ -680,6 +680,7 @@ export const FilterProvider = ({
         hideSolved: false,
         showOnlySolved: false,
         showOnlyBookmarked: false,
+        unlockDetailedSolutions: false,
         searchQuery: ''
         };
     });
@@ -2639,6 +2640,10 @@ export const FilterProvider = ({
         updateFilters({ showOnlyBookmarked: !!value });
     }, [updateFilters]);
 
+    const setUnlockDetailedSolutions = useCallback((value) => {
+        updateFilters({ unlockDetailedSolutions: !!value });
+    }, [updateFilters]);
+
     const setIncludeCse = useCallback((value) => {
         const isEnabled = typeof value === 'function' ? value(includeCse) : Boolean(value);
         setIncludeCseState(isEnabled);
@@ -2750,6 +2755,7 @@ export const FilterProvider = ({
             hideSolved: false,
             showOnlySolved: false,
             showOnlyBookmarked: false,
+            unlockDetailedSolutions: false,
             searchQuery: ''
         });
     }, [defaultSelectedTypes, structuredTags]);
@@ -2846,6 +2852,7 @@ export const FilterProvider = ({
         setHideSolved,
         setShowOnlySolved,
         setShowOnlyBookmarked,
+        setUnlockDetailedSolutions,
         setIncludeCse,
         setIncludeDa,
         setIncludeIsro,
@@ -2858,7 +2865,7 @@ export const FilterProvider = ({
         toggleSolved, markQuestionsSolved, toggleBookmark, isQuestionSolved,
         isQuestionBookmarked, getQuestionProgressId,
         refreshProgressState,
-        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setIncludeCse, setIncludeDa, setIncludeIsro,
+        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setUnlockDetailedSolutions, setIncludeCse, setIncludeDa, setIncludeIsro,
         setIncludeEc, setIncludeEe, setIncludeMe, setIncludeCe
     ]);
 

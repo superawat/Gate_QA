@@ -20,6 +20,7 @@ const mockFilterState = {
   progressStorageKeys: { progress: "test_progress" },
   aptitudeProgressStorageKeys: { progress: "test_apt_progress" },
   daProgressStorageKeys: { progress: "test_da_progress" },
+  filters: {},
 };
 
 const mockSession = {
@@ -654,6 +655,7 @@ describe("AnswerPanel", () => {
     };
 
     beforeEach(() => {
+      mockFilterState.filters = { unlockDetailedSolutions: false };
       AnswerService.answersByQuestionUid["test:detailed-sol-1"] = {
         type: "MCQ",
         answer: "A",
@@ -748,6 +750,41 @@ describe("AnswerPanel", () => {
 
       fireEvent.click(btn);
       expect(onToggle).toHaveBeenCalledTimes(1);
+    });
+
+    test("unlocks Detailed Solution when unlockDetailedSolutions filter is ON, even without attempt", () => {
+      mockFilterState.filters = { unlockDetailedSolutions: true };
+      const onToggle = vi.fn();
+      render(
+        <AnswerPanel
+          question={questionWithDetailedSol}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn.getAttribute("title")).toBe("View Detailed Solution");
+
+      fireEvent.click(btn);
+      expect(onToggle).toHaveBeenCalledTimes(1);
+    });
+
+    test("keeps Detailed Solution locked when unlockDetailedSolutions filter is OFF and question not attempted", () => {
+      mockFilterState.filters = { unlockDetailedSolutions: false };
+      const onToggle = vi.fn();
+      render(
+        <AnswerPanel
+          question={questionWithDetailedSol}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn.getAttribute("title")).toContain("Attempt the question at least once");
+
+      fireEvent.click(btn);
+      expect(onToggle).not.toHaveBeenCalled();
+      expect(screen.getByText(/Please attempt the question at least once/i)).toBeTruthy();
     });
   });
 

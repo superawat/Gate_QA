@@ -47,6 +47,8 @@ export default function AnswerPanel({
     getQuestionProgressId,
   } = useFilterActions();
 
+  const { filters } = useFilterState();
+
   const { goBack, canGoBack } = useSession();
   const canMovePrevious = typeof canGoPrevious === "boolean" ? canGoPrevious : canGoBack;
   const canMoveNext = typeof canGoNext === "boolean" ? canGoNext : false;
@@ -170,6 +172,9 @@ export default function AnswerPanel({
     } catch (_) {}
     return false;
   }, [result, isSolved, targetStorageKey, progressStorageKey]);
+
+  const unlockDetailedSolutions = Boolean(filters?.unlockDetailedSolutions);
+  const isUnlocked = hasAttempted || unlockDetailedSolutions;
 
   const solutionLink = useMemo(() => {
     if (passedSolutionLink) {
@@ -802,7 +807,7 @@ export default function AnswerPanel({
   );
 
   const handleToggleDetailedSolution = useCallback(() => {
-    if (!hasAttempted) {
+    if (!isUnlocked) {
       showToast("Please attempt the question at least once to view the detailed solution.");
       return;
     }
@@ -820,12 +825,10 @@ export default function AnswerPanel({
         }, 100);
       }
     }
-  }, [hasAttempted, isDetailedSolutionOpen, onToggleDetailedSolution, showToast]);
+  }, [isUnlocked, isDetailedSolutionOpen, onToggleDetailedSolution, showToast]);
 
   const renderDetailedSolutionButton = (additionalClasses = "") => {
     if (!hasDetailedSol) return null;
-
-    const isUnlocked = hasAttempted;
 
     return (
       <button

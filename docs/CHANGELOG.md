@@ -1,4 +1,10 @@
 # Changelog
+- **Detailed Solution Unlock Toggle (DEC-243)**:
+  - Added a fourth progress filter toggle ("Unlock solutions", default: OFF) in `ProgressFilterToggles.tsx` and `FilterSidebar.jsx`.
+  - When ON, bypasses the `hasAttempted` restriction on the Detailed Solution button across `AnswerPanel.jsx`, allowing learners who prefer to study solutions directly to view derivations without submitting an attempt first.
+  - When OFF (default), preserves the existing pedagogical attempt-first requirement with the lock icon and guidance toast.
+  - Session-only state (not serialized to URL query params), resets cleanly via `clearFilters` (activating the Reset button in `FilterSidebar.jsx`). Added comprehensive unit tests in `AnswerPanel.test.jsx` and `FilterContext.test.jsx`.
+
 - **CI/CD Runner OS Pinning & Pipeline Deprecation (DEC-242)**:
   - Fixed GitHub Actions CI pipeline failure in `node.js.yml` where `npx playwright install --with-deps chromium` failed with `ERROR: Playwright does not support chromium on ubuntu26.04-x64`.
   - Replaced floating `runs-on: ubuntu-latest` with pinned `runs-on: ubuntu-24.04` (Ubuntu 24.04 LTS Noble Numbat), ensuring stable Playwright OS compatibility across all CI steps (`test:e2e`, `qa:a11y:axe`, `lighthouse:mobile`).

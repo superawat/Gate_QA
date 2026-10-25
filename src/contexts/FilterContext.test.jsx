@@ -1838,6 +1838,44 @@ describe('FilterContext', () => {
             });
         });
     });
+
+    describe('unlockDetailedSolutions toggle and actions', () => {
+        const UnlockSolutionsTestComponent = () => {
+            const { filters } = useFilterState();
+            const { setUnlockDetailedSolutions, clearFilters } = useFilterActions();
+            return (
+                <div>
+                    <span data-testid="unlock-status">{filters.unlockDetailedSolutions ? 'true' : 'false'}</span>
+                    <button data-testid="enable-unlock" onClick={() => setUnlockDetailedSolutions(true)}>Enable</button>
+                    <button data-testid="disable-unlock" onClick={() => setUnlockDetailedSolutions(false)}>Disable</button>
+                    <button data-testid="reset-filters" onClick={clearFilters}>Reset</button>
+                </div>
+            );
+        };
+
+        test('defaults to false, toggles with setUnlockDetailedSolutions, and resets with clearFilters', () => {
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <UnlockSolutionsTestComponent />
+                </FilterProvider>
+            );
+
+            expect(getByTestId('unlock-status').textContent).toBe('false');
+
+            fireEvent.click(getByTestId('enable-unlock'));
+            expect(getByTestId('unlock-status').textContent).toBe('true');
+
+            fireEvent.click(getByTestId('disable-unlock'));
+            expect(getByTestId('unlock-status').textContent).toBe('false');
+
+            fireEvent.click(getByTestId('enable-unlock'));
+            expect(getByTestId('unlock-status').textContent).toBe('true');
+
+            fireEvent.click(getByTestId('reset-filters'));
+            expect(getByTestId('unlock-status').textContent).toBe('false');
+        });
+    });
 });
+
 
 

@@ -230,6 +230,7 @@ export interface FilterSelectionState {
   hideSolved: boolean;
   showOnlySolved: boolean;
   showOnlyBookmarked: boolean;
+  unlockDetailedSolutions?: boolean;
 }
 
 export type FilterUpdate = Partial<FilterSelectionState>;
@@ -275,6 +276,7 @@ export interface FilterActionsShape {
   setHideSolved?: (value: boolean) => void;
   setShowOnlySolved?: (value: boolean) => void;
   setShowOnlyBookmarked?: (value: boolean) => void;
+  setUnlockDetailedSolutions?: (value: boolean) => void;
   setIncludeCse?: (value: boolean | ((prev: boolean) => boolean)) => void;
   setIncludeDa?: (value: boolean | ((prev: boolean) => boolean)) => void;
   setIncludeIsro?: (value: boolean | ((prev: boolean) => boolean)) => void;

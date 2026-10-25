@@ -44,7 +44,8 @@ const FilterSidebar = ({ className = "", onClose }) => {
         clearFilters,
         setHideSolved,
         setShowOnlyBookmarked,
-        setShowOnlySolved
+        setShowOnlySolved,
+        setUnlockDetailedSolutions
     } = useFilterActions();
     const questionTypes = Array.isArray(structuredTags.questionTypes) && structuredTags.questionTypes.length > 0
         ? structuredTags.questionTypes
@@ -66,6 +67,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
         || filters.hideSolved
         || filters.showOnlySolved
         || filters.showOnlyBookmarked
+        || filters.unlockDetailedSolutions
         || hasSearchQuery;
 
     return (
@@ -102,9 +104,11 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         hideSolved={filters.hideSolved}
                         showOnlySolved={filters.showOnlySolved}
                         showOnlyBookmarked={filters.showOnlyBookmarked}
+                        unlockDetailedSolutions={filters.unlockDetailedSolutions}
                         onToggleHideSolved={setHideSolved}
                         onToggleShowOnlySolved={setShowOnlySolved}
                         onToggleShowBookmarked={setShowOnlyBookmarked}
+                        onToggleUnlockDetailedSolutions={setUnlockDetailedSolutions}
                     />
                 </div>
             </div>

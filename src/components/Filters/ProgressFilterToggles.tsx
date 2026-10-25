@@ -5,21 +5,27 @@ interface ToggleRowProps {
     label: string;
     checked: boolean;
     onChange?: (checked: boolean) => void;
+    badge?: React.ReactNode;
 }
 
 interface ProgressFilterTogglesProps {
     hideSolved?: boolean;
     showOnlySolved?: boolean;
     showOnlyBookmarked?: boolean;
+    unlockDetailedSolutions?: boolean;
     onToggleHideSolved?: (checked: boolean) => void;
     onToggleShowOnlySolved?: (checked: boolean) => void;
     onToggleShowBookmarked?: (checked: boolean) => void;
+    onToggleUnlockDetailedSolutions?: (checked: boolean) => void;
 }
 
-const ToggleRow = ({ id, label, checked, onChange }: ToggleRowProps) => {
+const ToggleRow = ({ id, label, checked, onChange, badge }: ToggleRowProps) => {
     return (
         <label htmlFor={id} className="flex cursor-pointer items-center justify-between gap-3 py-1.5">
-            <span className="text-sm font-medium text-[color:var(--color-text)]">{label}</span>
+            <span className="flex items-center gap-1.5 text-sm font-medium text-[color:var(--color-text)]">
+                <span>{label}</span>
+                {badge}
+            </span>
             <span className="relative inline-flex h-6 w-11 items-center">
                 <input
                     id={id}
@@ -39,9 +45,11 @@ const ProgressFilterToggles = ({
     hideSolved = false,
     showOnlySolved = false,
     showOnlyBookmarked = false,
+    unlockDetailedSolutions = false,
     onToggleHideSolved,
     onToggleShowOnlySolved,
-    onToggleShowBookmarked
+    onToggleShowBookmarked,
+    onToggleUnlockDetailedSolutions
 }: ProgressFilterTogglesProps) => {
     return (
         <div className="space-y-1">
@@ -62,6 +70,17 @@ const ProgressFilterToggles = ({
                 label="Bookmarked only"
                 checked={showOnlyBookmarked}
                 onChange={onToggleShowBookmarked}
+            />
+            <ToggleRow
+                id="unlock-detailed-solutions-toggle"
+                label="Unlock solutions"
+                checked={unlockDetailedSolutions}
+                onChange={onToggleUnlockDetailedSolutions}
+                badge={
+                    <span className="rounded-full border border-pink-300/60 bg-pink-100 px-1.5 py-0.5 text-[10px] font-bold leading-none text-pink-600 dark:border-pink-800/60 dark:bg-pink-950/60 dark:text-pink-400">
+                        new
+                    </span>
+                }
             />
         </div>
     );
