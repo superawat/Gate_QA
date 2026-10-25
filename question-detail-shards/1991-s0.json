@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:31:38.966Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1991-s0",
   "yearSetKey": "1991-s0",
   "yearSetIdentity": "cse:1991:set-0",
@@ -36,6 +36,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 9,
       "track": "cse",
       "yearSetKey": "1991-s0",
       "yearSetIdentity": "cse:1991:set-0",
@@ -123,6 +124,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1991-s0",
       "yearSetIdentity": "cse:1991:set-0",
@@ -163,6 +165,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1991-s0",
       "yearSetIdentity": "cse:1991:set-0",
@@ -206,6 +209,10 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "A",
+        "D"
+      ],
       "track": "cse",
       "yearSetKey": "1991-s0",
       "yearSetIdentity": "cse:1991:set-0",
@@ -292,6 +299,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 33.33,
       "track": "cse",
       "yearSetKey": "1991-s0",
       "yearSetIdentity": "cse:1991:set-0",
@@ -774,6 +782,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "Let $H=F_1\\wedge F_2$. The two premises say that both $H\\to F_3$ and $H\\to\\neg F_3$ are tautologies. If any assignment made $H$ true, that assignment would force both $F_3$ and $\\neg F_3$, an impossibility. Thus no assignment satisfies $F_1\\wedge F_2$.\n\n**Therefore, the correct answer is Option B: the conjunction is not satisfiable.**",
+        "images": []
       }
     },
     "go:527": {

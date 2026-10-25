@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1994-s0",
   "yearSetKey": "1994-s0",
   "yearSetIdentity": "cse:1994:set-0",
@@ -47,6 +47,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "For any matrices, $(AB)'=B'A'$. Since $A$ and $B$ are symmetric, $A'=A$ and $B'=B$, so\n\n$$ (AB)'=B'A'=BA. $$\n\nSymmetry of each factor does not imply $AA'=I$, $A=A^{-1}$, or that $A$ and $B$ commute; those require additional conditions.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
       }
     },
     "go:2439": {
@@ -119,6 +124,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -132,7 +138,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "For arbitrary events, inclusion-exclusion gives\n\n$$P(A\\cup B)=P(A)+P(B)-P(A\\cap B).$$\n\nBecause $P(A\\cap B)\\ge0$, it follows that $P(A\\cup B)\\le P(A)+P(B)$, so D is always true. A requires independence, B omits the overlap term, and C has the conditional-probability formula reversed.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
+      }
     },
     "go:2442": {
       "title": "GATE CSE 1994 | Question: 1.5",
@@ -158,6 +169,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -200,6 +212,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -213,7 +226,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "Count graphs up to isomorphism (the intended meaning of “distinct” here). With one vertex there is 1 graph. With two vertices there are 2 possibilities: no edge or one edge. With three vertices, the unlabeled graphs are determined by having 0, 1, 2, or 3 edges, giving 4 possibilities. Thus the total for one, two, or three vertices is\n\n$$1+2+4=7.$$\n\nIf vertices were labeled, the count would instead be $1+2+8=11$; that interpretation is not represented among the choices.\n\n**Therefore, the correct answer is Option C (7).**",
+        "images": []
+      }
     },
     "go:2444": {
       "title": "GATE CSE 1994 | Question: 1.7, ISRO2017-14",
@@ -282,6 +300,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -336,6 +355,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Let the rows be $r_1=(0,0,-3)$, $r_2=(9,3,5)$, and $r_3=(3,1,1)$. The first two rows are independent because $r_2$ has nonzero first coordinate while $r_1$ does not. The third row is a combination of them:\n\n$$r_3=\\frac{2}{9}r_1+\\frac13r_2.$$\n\nHence the row space has dimension 2. The matrix is neither zero nor full rank.\n\n**Therefore, the correct answer is Option C (2).**",
+        "images": []
       }
     },
     "go:2451": {
@@ -376,6 +400,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Group Theory",
+        "markdown": "In multiplicative notation,\n\n$$ (g\\circ h)^2=(g\\circ h)\\circ(g\\circ h)=g\\circ h\\circ g\\circ h. $$\n\nBecause the group is abelian, commute the middle $h$ and $g$ to get $g\\circ g\\circ h\\circ h=g^2\\circ h^2$. The other statements would require every element to have order at most 2, would force every element to be the identity, or would assert that every abelian group is finite; none follows from being abelian.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
       }
     },
     "go:2452": {
@@ -402,6 +431,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -441,6 +471,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -480,6 +511,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -519,6 +551,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -558,6 +591,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -571,7 +605,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Combinatory",
+        "markdown": "A contiguous substring is determined by its starting position and length. For length $k$, there are $n-k+1$ starting positions. Summing over lengths $1$ to $n$ gives\n\n$$n+(n-1)+\\cdots+1=\\frac{n(n+1)}2.$$\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
+      }
     },
     "go:2459": {
       "title": "GATE CSE 1994 | Question: 1.16",
@@ -597,6 +636,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -679,6 +719,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -720,6 +761,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -759,6 +801,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -838,6 +881,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -881,6 +925,10 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "A",
+        "B"
+      ],
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -920,6 +968,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -962,6 +1011,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 0.93,
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -975,7 +1025,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "The complement of “at least one occurs” is that all three fail. Independence gives\n\n$$P(\\text{none})=(1-0.8)(1-0.5)(1-0.3)=0.2\\cdot0.5\\cdot0.7=0.07.$$\n\nTherefore, $P(\\text{at least one})=1-0.07=0.93$.\n\n**Therefore, the numerical answer is 0.93.**",
+        "images": []
+      }
     },
     "go:2476": {
       "title": "GATE CSE 1994 | Question: 2.9",
@@ -1018,6 +1073,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Lattice",
+        "markdown": "Count Hasse diagrams up to isomorphism. There is one lattice at each size 1, 2, and 3: a single point, a two-element chain, and a three-element chain. At size 4 there are exactly two: a four-element chain and the diamond with one bottom, two incomparable middle elements, and one top. No other four-element partial order supplies both a meet and a join for every pair.\n\nThe five diagrams (lines mark the Hasse covers) are:\n\n    1 element: o       2-element chain: o        3-element chain: o\n                                      |                            |\n                                      o                            o\n                                                                   |\n                                                                   o\n\n    4-element chain: o                4-element diamond:   o\n                     |                                     ／ ＼\n                     o                                    o   o\n                     |                                     ＼ ／\n                     o                                      o\n                     |\n                     o\n\nThus there are $1+1+1+2=5$ Hasse diagrams.\n\n**Therefore, the numerical answer is 5.**",
+        "images": []
       }
     },
     "go:2478": {
@@ -1271,6 +1331,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Set Theory",
+        "markdown": "The statement is true (using the standard convention that countable includes finite sets). If $A$ is countable, it admits an injection into $\\mathbb N$. Any subset $B\\subseteq A$ inherits that same injection by restriction, so $B$ also injects into $\\mathbb N$ and is countable. Equivalently, a subset of an enumeration of $A$ is itself finite or can be enumerated in increasing index order.\n\n**Therefore, the statement is True (1).**",
+        "images": []
       }
     },
     "go:2496": {
@@ -1397,6 +1462,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "To test whether $p\\leftrightarrow q$ implies $p\\to\\neg q$, compare their truth values:\n\n| $p$ | $q$ | $p\\leftrightarrow q$ | $p\\to\\neg q$ |\n|---|---|---|---|\n| T | T | T | F |\n| T | F | F | T |\n| F | T | F | T |\n| F | F | T | T |\n\nThe first row has a true premise and a false conclusion, so the implication does not hold. The statement “does not imply” is therefore true.\n\n**Therefore, the numerical answer is 1 (True).**",
+        "images": []
       }
     },
     "go:2507": {
@@ -1428,6 +1498,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 11,
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",
@@ -1470,6 +1541,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 16,
       "track": "cse",
       "yearSetKey": "1994-s0",
       "yearSetIdentity": "cse:1994:set-0",

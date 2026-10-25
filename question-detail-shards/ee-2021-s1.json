@@ -52,7 +52,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Characteristic equation of A\n\n$$\\begin{aligned} \\left|A_{2 \\times 2}-\\lambda I\\right|&=(-1)^{2} \\lambda^{2}+(-1)^{1} \\text{Tr}(A) \\lambda+|A|=0 \\\\ \\lambda^{2}-(p-p) \\lambda+\\left(-p^{2}-q^{2}\\right) &=0 \\\\ \\Rightarrow \\qquad \\qquad\\lambda^{2}-1 &=0 \\\\ \\Rightarrow \\qquad\\qquad \\lambda &=\\pm 1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q2": {
       "question_uid": "ee:2021:q2",
@@ -97,7 +98,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "Since sum of the roots is a complex number\n\n$\\Rightarrow$ absent one root is complex\n\nSo all the roots cannot be real.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:q3": {
       "question_uid": "ee:2021:q3",
@@ -142,7 +144,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$x_{0} \\in(0,1)$, where $f(x)=0$ is stationary point\n\nand $f^{\\prime \\prime}(x)>0 \\qquad \\qquad \\forall x \\in(0,1)$\n\nSo $\\qquad \\qquad f^{\\prime}\\left(x_{0}\\right)=0$\n\nand $\\qquad \\qquad f^{\\prime}(0)>0, \\text { where } x_{0} \\in(0,1)$\n\nHence, f(x) has exactly one local minima in $(0,1)$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q4": {
       "question_uid": "ee:2021:q4",
@@ -187,7 +190,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
         "markdown": "Given circuit can be resolved as shown below,\n\n<img src=\"/question-images/ee/2021/ee-2021-5bc92804ec.webp\" />\n\n$V_{T H}=15+50=65 \\mathrm{~V}$\n\n<img src=\"/question-images/ee/2021/ee-2021-e3ac945e2a.webp\" />\n\n$$\\begin{aligned} V_{x} &=2+3+10=15 \\mathrm{~V} \\\\ R_{\\mathrm{TH}} &=\\frac{V_{x}}{1}=15 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q5": {
       "question_uid": "ee:2021:q5",
@@ -232,7 +236,8 @@
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Magnetostatic Fields",
         "markdown": "If $\\vec{B}$ is magnetic flux density then $\\vec{\\nabla} \\cdot \\vec{B}=0$\n\n$$\\begin{aligned} &\\vec{\\nabla} \\cdot \\vec{B}=\\frac{\\partial B x}{\\partial x}+\\frac{\\partial B y}{\\partial y}+\\frac{\\partial B z}{\\partial z}\\\\ &\\frac{\\partial}{\\partial x}(10 x)+\\frac{\\partial}{\\partial y}(20 y)+\\frac{\\partial}{\\partial z}(-30 z)=\\vec{\\nabla} \\cdot \\vec{B}\\\\ &\\qquad \\qquad \\vec{\\nabla} \\cdot \\vec{B}=10+20-30=0 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ee:2021:q6": {
       "question_uid": "ee:2021:q6",
@@ -277,7 +282,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "$$\\begin{aligned} y(t) &=\\max (0, x(t)) \\\\ &=\\left\\{\\begin{array}{cl} 0, & x(t) \\lt 0 \\\\ x(t), & x(t)\\gt 0 \\end{array}\\right. \\end{aligned}$$\n\n<img src=\"/question-images/ee/2021/ee-2021-b6485cf7a9.webp\" />\n\nLinearity check:\n\nat input $x_{1}(t)=-2$, output $y_{1}(t)=0$\n\nat input $x_{2}(t)=1$, output $y_{2}(t)=1$\n\n<img src=\"/question-images/ee/2021/ee-2021-68f48bf1c4.webp\" />\n\n$\\therefore$ system is non-linear because it violates law of additivity.\n\nCheck for time-invariance :\n\nDelayed $\\mathrm{O} / \\mathrm{P}:$\n\n$$y\\left(t-t_{0}\\right)=\\left\\{\\begin{array}{cl} x\\left(t-t_{0}\\right), & x\\left(t-t_{0}\\right) \\gt  0 \\\\ 0 & x\\left(t-t_{0}\\right)\\lt 0 \\end{array}\\right.$$\n\n$\\mathrm{O} / \\mathrm{P}$ of system when input is $x\\left(t-t_{0}\\right)=f(t)$\n\n$$y_{1}(t)=\\left\\{\\begin{array}{cl} f(t), & f(t) \\gt 0 \\\\ 0, & f(t)\\lt 0 \\end{array}=\\left\\{\\begin{array}{cl} x\\left(t-t_{0}\\right), & x\\left(t-t_{0}\\right)\\gt  0 \\\\ 0, & x\\left(t-t_{0}\\right)\\lt 0 \\end{array}\\right.\\right.$$\n\nTherefore, system is time-invariant.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:q7": {
       "question_uid": "ee:2021:q7",
@@ -322,7 +328,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
         "markdown": "$$\\begin{aligned} h(n) &=\\text { Resultant impulse response } \\\\ &=h_{1}(n) * h_{2}(n) \\end{aligned}$$\n\nBy applying z -transform\n\n$$\\begin{aligned} H(z) &=H_{1}(z) \\cdot H_{2}(z) \\\\ &=\\left(z+z^{-1}\\right)\\left(1+z^{-1}\\right) \\\\ &=z+Z^{-1}+1+z^{2} \\end{aligned}$$\n\nBy applying inverse ZT,\n\n$h(n)=\\delta(n+1)+\\delta(n-1)+\\delta(n)+\\delta(n-2)$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q8": {
       "question_uid": "ee:2021:q8",
@@ -367,7 +374,8 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "P: Damper bars used in synchronous machine (U) to prevent hunting (X)\n\nQ: Skewed rotor slots used in induction motor (S) t avoid magnetic locking (Y)\n\nR: Compensating winding used in DC machine (V) to neutralize cross magnetizing effects of armature reaction (Z) under main poles (polar zone).\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q9": {
       "question_uid": "ee:2021:q9",
@@ -412,7 +420,8 @@
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
         "markdown": "$$\\left[\\begin{array}{l} \\Delta P \\\\ \\Delta Q \\end{array}\\right]=J\\left[\\begin{array}{l} \\Delta \\delta \\\\ \\Delta V \\end{array}\\right] \\text { where } J=\\left[\\begin{array}{ll} H & S \\\\ M & R \\end{array}\\right]$$\n\nFor size of M\n\nRow = No. of unknown variables of $Q=N_{L}$\n\nColumn = No. of variable which has $\\delta=N_{L}+\\left(N-1-N_{L}\\right)$\n\n$$\\begin{aligned} &=N-1\\\\ \\text{So}, \\quad\\text{ size of }M&=N_{L} \\times(N-1) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ee:2021:q10": {
       "question_uid": "ee:2021:q10",
@@ -457,7 +466,8 @@
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
         "markdown": "$$\\begin{aligned} I C_{1} &=I C_{2} \\\\ 40+0.2 P_{1} &=32+0.4 P_{2} \\\\ 0.4 P_{2}-0.2 P_{1} &=8 \\\\ P_{2}+P_{1} &=260 \\end{aligned}$$\n\nSolving equation (i) and (ii),\n\n$P_{1}=160 \\mathrm{MW} ; P_{2}=100 \\mathrm{MW}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q11": {
       "question_uid": "ee:2021:q11",
@@ -502,7 +512,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
         "markdown": "$$\\begin{aligned} \\frac{E(s)}{R(s)} &=\\frac{R(s)-H \\times C(s)}{R(s)}=1-H \\times \\frac{C(s)}{R(s)} \\\\ &=1-\\frac{H G}{1+G H}=\\frac{1+G H-G H}{1+G H} \\\\ &=\\frac{1}{1+G H} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q12": {
       "question_uid": "ee:2021:q12",
@@ -547,7 +558,8 @@
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - A.C. Bridges",
         "markdown": "Maxwell's bridge is used for measurement of inductance.\n\nWein's bridge is used for measurement of frequency\n\nKelvin's bridge is used for measurement of low value of resistance.\n\nSchering bridge is used for measurement of capacitance, dilectric loss and permittivity etc.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q13": {
       "question_uid": "ee:2021:q13",
@@ -590,7 +602,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "If two curves cut orthogonally then product of slopes $= -1$\n\n$$\\begin{aligned} x^{2}+y^{2} &=1 \\\\ 2 x+2 y \\frac{d y}{d x} &=0 \\\\ \\left(M_{1}\\right)_{u, v} &=\\frac{d y}{d x}=\\frac{-x}{y}=\\frac{-u}{v} \\\\ (x-1)^{2}+(y-1)^{2} &=r^{2} \\\\ \\left(M_{2}\\right)_{u, v} &=\\left(\\frac{d y}{d x}\\right)=\\left(\\frac{-2(x-1)}{2(y-1)}\\right)_{(u . v)}=\\frac{1-u}{v-1} \\\\ \\because \\qquad \\qquad M_{1} M_{2} &=-1\\\\ \\frac{-u}{v} \\times \\frac{1-u}{v-1}&=-1\\\\ -u+u^{2} &=-v^{2}+v \\\\ u^{2}+v^{2} &=v+u \\\\ \\because \\qquad \\qquad x^{2}+y^{2} &=1 \\\\ \\therefore \\qquad \\qquad u+v &=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
-      }
+      },
+      "answer": "1"
     },
     "ee:2021:q14": {
       "question_uid": "ee:2021:q14",
@@ -633,7 +646,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-9d807bd918.webp\" />\n\n<img src=\"/question-images/ee/2021/ee-2021-f9d3f92664.webp\" />\n\n$$\\begin{aligned} Z_{L} &=(j 5) \\|\\left(j 5-j X_{c}\\right) \\\\ \\frac{(j 5)\\left(j 5-j X_{c}\\right)}{j 5+j 5-j X_{c}} &=\\infty \\\\ j 5+j-j X_{c} &=0 \\\\ \\Rightarrow\\qquad \\qquad j X_{c} &=j 10 \\\\ \\Rightarrow\\qquad \\qquad X_{c} &=10 \\Omega \\\\ X_{c} &=\\frac{1}{\\omega C}=10 \\\\ \\Rightarrow\\qquad \\qquad C&=\\frac{1}{10 \\times 5 \\times 10^{3}} \\\\ C &=\\frac{1}{5 \\times 10^{4}} \\times \\frac{10^{2}}{10^{2}}=\\frac{10^{2}}{5 \\times 10^{6}}=20 \\mu \\mathrm{F} \\end{aligned}$$\n\nTherefore, the correct answer is **20**."
-      }
+      },
+      "answer": "20"
     },
     "ee:2021:q15": {
       "question_uid": "ee:2021:q15",
@@ -676,7 +690,8 @@
       "detailed_solution": {
         "concept": "Power Systems - Distribution Systems, Cables and Insulators",
         "markdown": "$$\\begin{aligned} \\left(R_{\\text {eq }}\\right)_{\\text {conductor }} &=0.7+0.5=1.2 \\Omega \\\\ \\left(R_{\\text {eq }}\\right)_{\\text {in }} &=\\frac{1}{\\left(R_{e q}\\right)_{\\text {in }}}=\\frac{1}{\\left(R_{\\text {in }}\\right)_{1}}+\\frac{1}{\\left(R_{\\text {in }}\\right)_{2}}=\\frac{1}{900 \\times 10^{6}}+\\frac{1}{600 \\times 10^{6}} \\\\ \\left(R_{\\mathrm{eq}}\\right)_{\\text {in }} &=360 \\times 10^{6} \\Omega\\\\ \\frac{\\left(R_{\\text {eq }}\\right)_{\\text {in }}}{\\left(R_{\\text {eq }}\\right)_{\\text {conductor }}}&=\\frac{360 \\times 10^{6}}{1.2}=300 \\times 10^{6} \\end{aligned}$$\n\nTherefore, the correct answer is **300**."
-      }
+      },
+      "answer": "300"
     },
     "ee:2021:q16": {
       "question_uid": "ee:2021:q16",
@@ -719,7 +734,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
         "markdown": "$$\\begin{aligned} \\frac{V_{x}-6}{1}+\\frac{V_{x}}{4}+\\frac{V_{x}-V_{y}}{2} & =0 \\\\ 4 V_{x}-24+V_{x}+2 V_{x}-2 V_{y} & =0 \\\\ 7 V_{x}-2 V_{y} & =24 \\\\ \\text { If } V_{y}=0 \\qquad\\qquad 7 V_{x} & =24 \\\\ \\Rightarrow\\qquad\\qquad V_{x} & =\\frac{24}{7} \\\\ \\Rightarrow\\qquad\\qquad \\frac{V_{y}-V_{x}}{2}+\\frac{V_{y}-\\beta V_{x}}{3} & =2 \\\\ 3 V_{y}-3 V_{x}+2 V_{y}-2 \\beta V_{x} & =12 \\\\ 5 V_{y}-(3+2 \\beta) V_{x} & =12 \\\\ V_{y} & =0\\\\ -(3+2 \\beta) \\frac{24}{7} &=12 \\\\ (3+2 \\beta) &=\\frac{-7}{2} \\\\ 2 \\beta &=\\frac{-7}{2}-3=\\frac{-7-6}{2}=\\frac{-13}{2} \\\\ \\beta &=\\frac{-13}{4}=-3.25 \\end{aligned}$$\n\nTherefore, the correct answer is **-3.25** (acceptable range: [-3.3, -3.2])."
-      }
+      },
+      "answer": "-3.25"
     },
     "ee:2021:q17": {
       "question_uid": "ee:2021:q17",
@@ -762,7 +778,8 @@
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Electrostatic Fields",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-6fd8b876b3.webp\" />\n\nIn this case work done is independent of type of path but depends an intial and final point.\n\n$$\\begin{array}{ccccccccc}\n\nx & y & z & & r & \\theta & \\phi \\\\\n\n(0, & 10, & 0) & \\rightarrow & (10, & 90^{\\circ}, & \\left.90^{\\circ}\\right) & \\text { Initial point }\\\\\n\nx & y & z & & r & \\theta & \\phi & \\\\\n\n(5, & 5, & 5) & \\rightarrow & (5 \\sqrt{3}, & 54.73^{\\circ}, & \\left.45^{\\circ}\\right) &  \\text { Intermediate point } \\\\\n\nx & y & z & & r & \\theta & \\phi & \\\\\n\n(5, & 0, & 0) & \\rightarrow & (5, & 90^{\\circ}, & \\left.0^{\\circ}\\right) &  \\text { Final point }\n\n\\end{array}$$\n\nWork done (by external source) in moving Q-charge ($10 \\mu C$) in the presence of electric field $\\vec{E}$ is\n\n$$\\begin{aligned} W&=-Q \\int_{\\text {initial point }}^{\\text {final point }} \\vec{E} \\cdot d \\vec{l}=-\\left(10 \\times 10^{-6}\\right) \\int_{r=10}^{r=5} \\frac{9 \\times 10^{3}}{r^{2}} \\hat{a}_{r} \\cdot d r \\hat{a}_{r} \\\\ W&=-10 \\times 10^{-6}\\left(9 \\times 10^{3}\\right)\\left(-\\frac{1}{r}\\right)_{r=10}^{5} \\\\ &=9 \\times 10^{-2}\\left[\\frac{1}{5}-\\frac{1}{10}\\right]=9 \\times 10^{-2}\\left[\\frac{10-5}{50}\\right]=9 \\times 10^{-2}\\left(10^{-1}\\right) \\\\ W&=9 \\mathrm{~mJ} \\end{aligned}$$\n\nTherefore, the correct answer is **9** (acceptable range: [8.9, 9.1])."
-      }
+      },
+      "answer": "9"
     },
     "ee:2021:q18": {
       "question_uid": "ee:2021:q18",
@@ -805,7 +822,8 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "$$\\begin{aligned} P_{i / p} &=40 \\mathrm{~kW}, \\quad \\text { stator loss }=1 \\mathrm{~kW}, \\quad \\mathrm{~F} \\text { and } W=2.025 \\mathrm{~kW} \\\\ \\text { Stator } \\mathrm{o} / \\mathrm{p} &=40-1=39 \\mathrm{~kW} \\\\ \\qquad \\text { Slip } &=\\frac{1000-975}{1000}=0.025 \\\\ \\text { Rotor } \\mathrm{o} / \\mathrm{p} &=\\text { Rotor } \\mathrm{i} / \\mathrm{p} \\times(1-\\mathrm{s}) \\\\ &=39(1-0.025)=38.025 \\mathrm{~kW} \\\\ \\text { Motor } \\mathrm{o} / \\mathrm{p} &=38.025-2.025=36 \\mathrm{~kW}\\\\ \\eta&=\\frac{\\text { Motor output }}{\\text { Motor input }}=\\frac{36}{40} \\times 100=90 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **90** (acceptable range: [89.5, 90.5])."
-      }
+      },
+      "answer": "90"
     },
     "ee:2021:q19": {
       "question_uid": "ee:2021:q19",
@@ -848,7 +866,8 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-50ab37a9d7.webp\" />\n\nGiven real power in (p.u.), $P=0.866$\n\n$$\\begin{aligned} P &=\\frac{E V \\sin \\left(\\delta_{1}-\\delta_{2}\\right)}{X_{\\mathrm{eq}}}=\\left|\\frac{1 \\times 0.85}{0.4+0.1+0.35}\\right| \\sin \\left(\\delta_{1}-\\delta_{2}\\right) \\\\ \\left(\\delta_{1}-\\delta_{2}\\right) &=60^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **60** (acceptable range: [59, 61])."
-      }
+      },
+      "answer": "60"
     },
     "ee:2021:q20": {
       "question_uid": "ee:2021:q20",
@@ -891,7 +910,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "From response plot\n\n$$\\begin{aligned} M_{r} &=26 \\mathrm{~dB}=20 \\\\ \\therefore \\qquad \\qquad \\frac{1}{2 \\xi \\sqrt{1-\\xi^{2}}} &=20 \\\\ \\therefore \\qquad \\qquad \\xi &=0.025 \\end{aligned}$$\n\nFrom electrical network\n\n$$\\begin{aligned} \\chi&=\\frac{R}{2} \\sqrt{\\frac{C}{L}}=0.025 \\\\ \\therefore \\qquad \\qquad R&=0.10 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **0.1** (acceptable range: [0.09, 0.11])."
-      }
+      },
+      "answer": "0.1"
     },
     "ee:2021:q21": {
       "question_uid": "ee:2021:q21",
@@ -934,7 +954,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
         "markdown": "$$\\begin{aligned} \\frac{V_{0}(j \\omega)}{V_{i}(j \\omega)} &=\\frac{1}{1+j \\omega R C} \\\\ \\frac{8}{10} \\angle \\theta &=\\frac{1}{1+j \\omega R C} \\\\ 1+j \\omega R C &=1.25 \\angle \\theta \\\\ \\omega R C &=\\sqrt{1.25^{2}-1^{2}} \\\\ \\omega R C &=0.75 \\\\ C &=\\frac{0.75}{2000 \\pi \\times 50}=2.38 \\mu\\mathrm{F} \\end{aligned}$$\n\nTherefore, the correct answer is **2.4** (acceptable range: [2.3, 2.5])."
-      }
+      },
+      "answer": "2.4"
     },
     "ee:2021:q22": {
       "question_uid": "ee:2021:q22",
@@ -977,7 +998,8 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-564e31277f.webp\" />\n\n$y = 1$ for 24 m sec\n\n$$\\begin{array}{llcccc} & & Q_{15} & Q_{14} & \\ldots \\ldots & Q_{0} \\\\ y=1 & \\text { Starts at } & 0100 & 0000 & 0000 & 0000 \\\\ y=1 & \\text { Ends at } & 1111 & 1111 & 1111 & 1111 \\end{array}$$\n\nTotal number of states for which $y=1$ is $2^{16}-2^{14}$\n\n$$\\begin{aligned} \\text { Time is }\\left(2^{16}-2^{14}\\right) T &=24 \\mathrm{msec} \\\\ f &=\\frac{1}{T}=2.05 \\mathrm{MHz} \\end{aligned}$$\n\nTherefore, the correct answer is **2.05** (acceptable range: [2, 2.1])."
-      }
+      },
+      "answer": "2.05"
     },
     "ee:2021:q23": {
       "question_uid": "ee:2021:q23",
@@ -1020,7 +1042,8 @@
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-40ad4e3ce6.webp\" />\n\n$$\\begin{aligned} I_{C}&=\\frac{5 \\mathrm{~V}}{3.3 \\mathrm{k}}=1.515 \\mathrm{~mA} \\\\ I_{E}&=1.53 \\mathrm{~mA} \\\\ I_{B}&=0.0151 \\mathrm{~mA}\\\\ -12+1.2 \\mathrm{k} \\times 1.53 \\mathrm{~m}+& 0.7+V_{B}=0 \\\\ V_{B} &=9.464 \\mathrm{~V} \\\\ I_{x} &=\\frac{12-V_{B}}{4.7 \\mathrm{k}}=\\frac{12-9.464}{4.7 \\mathrm{k}}=0.539 \\mathrm{~mA} \\\\ I_{x}+I_{B} &=I_{y} \\\\ \\Rightarrow \\qquad\\qquad I_{y} &=0.5396+0.0151 \\\\ I_{y} &=0.5546 \\mathrm{~mA} \\\\ V_{B} &=0.5546 \\mathrm{~m} \\times R_{2}=9.464 \\\\ R_{2} &=17.06 \\mathrm{k} \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **17.2** (acceptable range: [16.7, 17.7])."
-      }
+      },
+      "answer": "17.2"
     },
     "ee:2021:q24": {
       "question_uid": "ee:2021:q24",
@@ -1063,7 +1086,8 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "$$\\begin{aligned} \\left(V_{D}\\right)_{\\text {peak }} \\text { for worst case } &=(230+20 \\%) \\times \\sqrt{2} \\\\ &=\\left(230+230 \\times \\frac{20}{100}\\right) \\times \\sqrt{2}=390.32 \\mathrm{~V} \\end{aligned}$$\n\nTherefore, the correct answer is **390** (acceptable range: [389, 391])."
-      }
+      },
+      "answer": "390"
     },
     "ee:2021:q25": {
       "question_uid": "ee:2021:q25",
@@ -1106,7 +1130,8 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
         "markdown": "To calculate $R_{0}$ min' we must find $I_{L}$ max\n\n$$\\begin{aligned} I_{s \\min } &=I_{z} \\min +I_{L \\max } \\\\ \\frac{V_{i \\min }-V_{z}}{R_{s}} &=I_{z} \\min +I_{L \\max } \\end{aligned}$$\n\nFor ideal zener diode, $I_{z \\min }=0$\n\n$$\\begin{aligned} \\frac{V_{i \\min }-V_{z}}{R_{s}} &=I_{L \\max } \\\\ \\frac{6-5}{6} &=I_{L \\max } \\\\ I_{L} \\max &=\\frac{1}{6} \\mathrm{~A} \\\\ R_{0} \\min &=\\frac{V_{z}}{I_{L \\max }}=\\frac{5}{1 / 6}=30 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **30** (acceptable range: [29, 31])."
-      }
+      },
+      "answer": "30"
     },
     "ee:2021:q26": {
       "question_uid": "ee:2021:q26",
@@ -1151,7 +1176,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} x^{4}+2 &=4 x^{3} \\\\ f_{1}(x) &=x^{4}+2 \\\\ f_{2}(x) &=4 x^{3} \\end{aligned}$$\n\nIt is clear that point of intersection of these graphs is solution (or) root of $p(x) = 0$\n\n<img src=\"/question-images/ee/2021/ee-2021-b4ce3bf8f3.webp\" />\n\nAccording to intermediate value theorem\n\n$P(0)$ and $P(1)$ are having opposite signs\n\n$\\therefore$ a root of $p(x) = 0$ in $(0, 1)$\n\nand also from graph, there is only one point of intersection\n\nHence exactly one real root exists in $(0, 1)$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q27": {
       "question_uid": "ee:2021:q27",
@@ -1196,7 +1222,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$F(H) = p$, let x = Number of tosses\n\n$$\\begin{aligned} &\\begin{array}{|c|c|c|c|c|c|} \\hline x & 1 & 2 & 3 & 4 & 5 \\ldots \\\\ \\hline P(x) & p & (1-p) p & (1-p)^{2} p & & \\\\ \\hline \\end{array}\\\\ &\\begin{aligned} E(x) &=\\sum x_{i} P(x)=p+2(1-p) p+3(p)(1-p)^{2}+\\ldots \\\\ &=p\\left[1+2(1-p)+3(1-p)^{2}+\\ldots\\right] \\\\ &=p[1-(1-p)]^{-2}=\\frac{1}{p} \\end{aligned} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q28": {
       "question_uid": "ee:2021:q28",
@@ -1241,7 +1268,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$\\oint_{C} \\frac{d z}{z^{2}(z-4)}$\n\n<img src=\"/question-images/ee/2021/ee-2021-f8cad4cc46.webp\" />\n\nSingularities are given by $z^{2}(z-4)=0$\n\n$\\Rightarrow \\qquad\\qquad z=0,4$\n\n$z=0$ is pole of order $m=2$ lies inside contour 'c'\n\n$z=4$ is pole of order $m=1$ lies outside 'c'\n\n$$\\begin{aligned} \\text{Res}_{0} &=\\frac{1}{(2-1) !} \\text{lt}_{\\rightarrow 0} \\frac{d^{2-1}}{d z^{2-1}}\\left[(z-0)^{2} \\frac{1}{z^{2}(z-4)}\\right] \\\\ &=\\frac{-1}{(0.4)^{2}}=\\frac{-1}{16}\\\\ \\text{By CRT}\\\\ \\oint_{C} f(z) d z &=2 \\pi j \\text{Res}_{0}=2 \\pi j\\left[\\frac{-1}{16}\\right] \\\\ &=\\frac{-j \\pi }{8} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q29": {
       "question_uid": "ee:2021:q29",
@@ -1286,7 +1314,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "At $t = 0^-$\n\n<img src=\"/question-images/ee/2021/ee-2021-845f92a403.webp\" />\n\n$i_{L}\\left(0^{-}\\right)=\\frac{10}{1}=10 \\mathrm{~A}$\n\nFor$t > 0$\n\n<img src=\"/question-images/ee/2021/ee-2021-f6c0feb389.webp\" />\n\nAt $t = \\infty$\n\n<img src=\"/question-images/ee/2021/ee-2021-63def55611.webp\" />\n\n$i(\\infty)=\\frac{40}{5}=8 \\mathrm{~A}$\n\n$R_{\\text{eq}}:$\n\n<img src=\"/question-images/ee/2021/ee-2021-a4e32c0fff.webp\" />\n\n$$\\begin{aligned} R_{\\mathrm{eq}} &=5 \\Omega \\\\ \\tau &=\\frac{L}{R_{\\mathrm{eq}}}=\\frac{0.5}{5}=0.1 \\mathrm{sec} \\\\ i(t) &=8+[10-8] e^{-t / 0.1} \\\\ &=8+2 e^{-10 t} \\mathrm{~A} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q30": {
       "question_uid": "ee:2021:q30",
@@ -1331,7 +1360,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
         "markdown": "Circuit in s-domain,\n\n<img src=\"/question-images/ee/2021/ee-2021-57c70d40c3.webp\" />\n\n$$\\begin{aligned} -S I_{1}+(4 s+5) I_{2} &=0 \\\\ \\Rightarrow\\qquad \\qquad I_{2} &=\\frac{s}{4 s+5} I_{1} \\\\ V_{1} &=(4+6 s) I_{1}-\\frac{s^{2}}{4 s+5} I_{1} \\\\ \\frac{V_{1}}{I_{1}} &=\\frac{(4+6 s)(4 s+5)-s^{2}}{4 s+5} \\\\ &=\\frac{24 s^{2}+30 s+16 s+20-s^{2}}{4 s+5} \\\\ Z_{\\text {in }} &=\\frac{23 s^{2}+46 s+20}{4 s+5} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ee:2021:q31": {
       "question_uid": "ee:2021:q31",
@@ -1376,7 +1406,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "As we know,\n\n$$\\begin{aligned} n \\cdot a^{n} u(n) & \\rightleftharpoons \\frac{a z}{(z-a)^{2}} \\\\ \\frac{1}{a} \\cdot n \\cdot a^{n} u(n) & \\rightleftharpoons \\frac{z}{(z-a)^{2}} \\\\ f(n) &=n \\cdot a^{n-1} u(n) \\rightleftharpoons \\frac{z}{(z-a)^{2}}=F(z) \\end{aligned}$$\n\nTime-shifting property,\n\n$$\\begin{aligned} f(n) &\\rightleftharpoons F(z) \\\\ f(n+1) &\\rightleftharpoons z \\cdot F(z) & \\\\ x(n)&=(n+1) a^{n} u(n+1) \\rightleftharpoons \\frac{z^{2}}{(z-a)^{2}}=X(z) & \\\\ \\text{Thus},\\qquad \\qquad x(n)&=(n+1) a^{n} u(n+1)=(n+1) a^{n} \\cdot u(n) \\\\ &[\\because(n+1) u(n+1)=(n+1) u(n) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q32": {
       "question_uid": "ee:2021:q32",
@@ -1421,7 +1452,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
         "markdown": "$f(t) \\rightleftharpoons F(\\omega)=\\int_{-\\infty}^{\\infty} f(t) e^{-j \\omega t} d t$\n\nThe following informations are given about $f(t) \\rightleftharpoons F(\\omega).$\n\n$$\\begin{array}{l} (i) f(t)=f(-t)\\\\ (ii) \\left.F(\\omega)\\right|_{\\omega=0}=1\\\\ (iii) \\frac{d F(\\omega)}{d \\omega}=-\\omega F(\\omega)\\\\ \\text{From }(iii), \\frac{d F(\\omega)}{d \\omega}+\\omega F(\\omega)=0 \\end{array}$$\n\nBy solving the above linear differential equations, (by mathematics)\n\n$$\\begin{aligned} \\ln F(\\omega) &=-\\frac{\\omega^{2}}{2} \\\\ \\Rightarrow \\qquad\\qquad F(\\omega) &=K \\cdot e^{-\\omega^{2} / 2} \\\\ \\text { Put } \\omega=0, \\qquad\\qquad F(0) &=K \\\\ \\Rightarrow \\qquad\\qquad 1 &=K \\text { (from info. } \\\\ \\text { From (iv), } \\qquad\\qquad F(\\omega) &=e^{-\\omega^{2} / 2} \\\\ \\text{As we know}, e^{-a t^{2}}, a \\gt 0 &\\rightleftharpoons \\sqrt{\\frac{\\pi}{a}} e^{-\\omega^{2} / 4 a}\\\\ \\text{At }a=\\frac{1}{2}, \\qquad\\qquad\\quad e^{-t^{2} / 2} &\\rightleftharpoons \\sqrt{\\frac{\\pi}{1 / 2}} \\cdot e^{-\\omega^{2} / 2}\\\\ f(t)&=\\frac{1}{\\sqrt{2 \\pi}} e^{-t^{2} / 2} \\rightleftharpoons e^{-\\omega^{2} / 2}=F(\\omega)\\\\ \\text { Thus, }\\qquad\\qquad f(t)&=\\frac{1}{\\sqrt{2 \\pi}} e^{-t^{2} / 2} \\\\ \\text { At } t=0, \\qquad\\qquad f(0)&=\\frac{1}{\\sqrt{2 \\pi}} \\lt 1 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ee:2021:q33": {
       "question_uid": "ee:2021:q33",
@@ -1466,7 +1498,8 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
         "markdown": "$$\\begin{aligned} W_{i 1} &=2500 \\mathrm{~W} \\text { at } 440 \\mathrm{~V}, 50 \\mathrm{~Hz} \\\\ W_{i 2} &=850 \\mathrm{~W} \\text { at } 220 \\mathrm{~V}, 25 \\mathrm{~Hz} \\\\ W_{i 3} &=R_{e_{3}}+P_{H_{3}} \\text { at } 440 \\mathrm{~V}, 50 \\mathrm{~Hz} \\\\ R_{\\theta_{3}} &=?, \\quad P_{h_{3}}=?, \\quad \\frac{v}{f}=\\mathrm{constant} \\\\ \\Rightarrow \\qquad \\qquad\\quad 2500 &=A f+B f^{2} &\\left\\{\\frac{400}{50}=\\frac{220}{25}=\\text { Constant }\\right\\} \\\\ \\text { or, }\\qquad \\qquad \\quad \\frac{2500}{f} &=A+B f \\\\ \\text{or},\\qquad \\qquad \\frac{2500}{50}&=A+B(50) &\\ldots(i)\\\\ \\text{and}\\qquad \\qquad \\frac{850}{25}&=\\mathrm{A}+\\mathrm{B}(25)&\\ldots(ii) \\end{aligned}$$\n\nSolving (i) and (ii), we get\n\n$$\\begin{aligned} 25 B &=\\frac{2500}{50}-\\frac{850}{25}=\\frac{2500-1700}{50} \\\\ &=\\frac{800}{50}=16 \\\\ B &=\\frac{16}{25} \\\\ \\text{and from (i)},\\qquad A &=50-\\frac{16}{25} \\times 50=50-32=18\\\\ \\text{So, at} 50 \\mathrm{~Hz}\\\\ P_{h}&=A f=18 \\times 50=900 \\mathrm{~W} \\\\ P_{e}&=B f=\\left(\\frac{16}{25}\\right) \\times(50)^{2}=1600 \\mathrm{~W} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ee:2021:q34": {
       "question_uid": "ee:2021:q34",
@@ -1511,7 +1544,8 @@
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-c74f9fa201.webp\" />\n\n$$\\begin{aligned} L_{e q}&=\\frac{L_{1} L_{2}-M^{2}}{\\left(L_{1}+L_{2}-2 M\\right)} \\\\ X_{\\mathrm{eq}}&=\\frac{1.5 \\times 1.5-0.5^{2}}{1.5+1.5-2 \\times 0.5}=1 \\mathrm{p.u.} \\end{aligned}$$\n\n<img src=\"/question-images/ee/2021/ee-2021-1da4c49ab8.webp\" />\n\n$$\\begin{aligned} P_{\\max }&=\\frac{|E||V|}{1}\\\\ P_{\\max }&=|E||V| \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ee:2021:q35": {
       "question_uid": "ee:2021:q35",
@@ -1556,7 +1590,8 @@
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-f805f3b805.webp\" />\n\n$$\\begin{aligned} V_{1} &=j 1 i_{1}+j 1\\left(i_{1}+i_{2}+i_{3}\\right) \\\\ V_{1} &=2 j i_{1}+j i_{2}+j i_{3} \\\\ \\text{and}\\qquad \\qquad V_{2} &=j i_{1}+2 j i_{2}+j i_{3} \\\\ V_{3} &=j i_{1}+j i_{2}+2 j i_{3} \\\\ \\therefore \\qquad \\left[\\begin{array}{l} V_{1} \\\\ V_{2} \\\\ V_{3} \\end{array}\\right]&=\\left[\\begin{array}{ccc} 2 j & j & j \\\\ j & 2 j & j \\\\ j & j & 2 j \\end{array}\\right]\\left[\\begin{array}{l} i_{1} \\\\ i_{2} \\\\ i_{3} \\end{array}\\right]\\\\ Z_{\\text {bus }}&=\\left[\\begin{array}{ccc} 2 j & j & j \\\\ j & 2 j & j \\\\ j & j & 2 j \\end{array}\\right] \\\\ Y_{\\text {bus }}&=\\left[\\begin{array}{ccc} \\frac{-3 j}{4} & \\frac{j}{4} & \\frac{j}{4} \\\\ \\frac{j}{4} & \\frac{-3 j}{4} & \\frac{j}{4} \\\\ \\frac{j}{4} & \\frac{j}{4} & \\frac{-3 j}{4} \\end{array}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q36": {
       "question_uid": "ee:2021:q36",
@@ -1601,7 +1636,8 @@
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
         "markdown": "$$\\begin{aligned} I_{B O} &=\\frac{1}{3}\\left(I_{A}+I_{B}+I_{C}\\right) \\\\ 0.1 &=\\frac{1}{3}\\left(1.1 \\angle 0+I_{B}+1 \\angle 120^{\\circ}+0.1\\right) \\\\ I_{B} &=0.3-1.1 \\angle 0-0.1-1 \\angle 120^{\\circ} \\\\ I_{B} &=-0.9-1 \\angle 120^{\\circ} \\\\ I_{B} &=0.1+1 \\angle 240^{\\circ} \\\\ I_{B} &=1 \\angle-120^{\\circ}+0.1 \\angle 0^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:q37": {
       "question_uid": "ee:2021:q37",
@@ -1646,7 +1682,8 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-d91073b20b.webp\" />\n\n<img src=\"/question-images/ee/2021/ee-2021-121b801418.webp\" />\n\n$D_{1}=\\bar{Q}_{2} Q_{0}+Q_{1} \\bar{Q}_{0}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:q38": {
       "question_uid": "ee:2021:q38",
@@ -1689,7 +1726,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} \\text{Given}:\\qquad A^{5}&=0\\\\ A x &=\\lambda x \\\\ \\Rightarrow \\qquad \\qquad A^{5} x &=\\lambda^{5} x \\quad(\\because x \\neq 0) \\\\ \\Rightarrow \\qquad \\qquad \\lambda^{5} &=0 \\\\ \\Rightarrow \\qquad \\qquad \\lambda &=0 \\end{aligned}$$\n\nEigen values of $A+I$ given $\\lambda+1$\n\n$\\because$ Eigen values of $I_{A}=1$\n\nHence $|A+I|=$ Product of eigen values $=1 \\times 1 \\times 1 \\times \\ldots 10$times\n\n$=1$\n\nTherefore, the correct answer is **1**."
-      }
+      },
+      "answer": "1"
     },
     "ee:2021:q39": {
       "question_uid": "ee:2021:q39",
@@ -1732,7 +1770,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Three-Phase Circuits",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-a558095e6f.webp\" />\n\n$$\\begin{aligned} I_{R} &=\\frac{V_{R B}}{-j 10}=\\frac{V_{L} \\angle-60^{\\circ}}{-j 10}=\\frac{V_{L}}{10} \\angle 30^{\\circ} \\\\ I_{Y} &=\\frac{V_{Y B}}{j 10}=\\frac{V_{L} \\angle-120^{\\circ}}{-j 10}=\\frac{V_{L}}{10} \\angle 150^{\\circ} \\\\ \\text { and }\\qquad \\qquad I_{B}&=-\\left(I_{R}+I_{Y}\\right)=\\frac{V_{L}}{10} \\angle-90^{\\circ} \\\\ \\therefore \\qquad \\qquad \\left|\\frac{I_{B}}{I_{R}}\\right|&=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
-      }
+      },
+      "answer": "1"
     },
     "ee:2021:q40": {
       "question_uid": "ee:2021:q40",
@@ -1775,7 +1814,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-43499750e3.webp\" />\n\n$=\\frac{-j}{\\omega C}=\\frac{-j}{1000 \\times 0.5 \\times 10^{-3}}=-j 2 \\Omega$\n\n<img src=\"/question-images/ee/2021/ee-2021-fa058ada9e.webp\" />\n\n$Z_{\\text {in }}=2 \\| j 2=\\frac{j 4}{2+j 2}=\\frac{j 2}{1+j 1}$\n\nFor maximum power transfer,\n\n$R_{L}=\\left|Z_{\\mathrm{TH}}\\right|=\\frac{2}{\\sqrt{2}}=\\sqrt{2}=1.414 \\Omega$\n\nTherefore, the correct answer is **1.41** (acceptable range: [1.4, 1.42])."
-      }
+      },
+      "answer": "1.41"
     },
     "ee:2021:q41": {
       "question_uid": "ee:2021:q41",
@@ -1818,7 +1858,8 @@
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Magnetostatic Fields",
         "markdown": "Force on a charge moving with $\\vec{v}$ velocity due to magnetic field is\n\n$$\\begin{aligned} \\vec{F} &=Q(\\vec{v} \\times \\vec{B}) \\\\ &=1[10 \\hat{x} \\times(10 y \\hat{x}+10 x \\hat{y}+10 \\hat{z}]\\\\ &=10(10 x) \\hat{z}+10(10)(-\\hat{y}) \\\\ &=100 x \\hat{z}-100 \\hat{y} \\\\ \\left.\\vec{F}\\right|_{x=0^{+}} &=-100 \\hat{y} \\\\ |\\vec{F}| &=\\sqrt{(-100)^{2}}=100 \\text { Newton } \\end{aligned}$$\n\n<img src=\"/question-images/ee/2021/ee-2021-4112d3e5b5.webp\" />\n\nTherefore, the correct answer is **100**."
-      }
+      },
+      "answer": "100"
     },
     "ee:2021:q42": {
       "question_uid": "ee:2021:q42",
@@ -1861,7 +1902,8 @@
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Electrostatic Fields",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-345e43d5dd.webp\" />\n\nIf voltage source is removed then in both cases charge O is constant.\n\n$$\\begin{aligned} \\text { Case-1: }\\left(Q_{1},=Q ; V_{1}=\\right.&V) \\\\ Q_{1} &=C_{1} V_{1} \\\\ Q &=\\frac{\\epsilon_{0}(5) A}{d} V_{1} \\\\ Q &=5\\left(\\frac{\\epsilon_{0} A}{d}\\right) V_{1} \\\\ \\text { Case-2: }\\left(Q_{2}=Q ; V_{2}\\right) & \\\\ Q_{2} &=C_{2} V_{2} \\\\ Q &=\\frac{\\epsilon_{0}(1) A}{d} V_{2} \\\\ Q &=\\left(\\frac{\\epsilon_{0} A}{d}\\right) V_{2} \\end{aligned}$$\n\nEquation (i) is equal to equation (ii)\n\n$$\\begin{aligned} \\Rightarrow 5\\left(\\frac{\\epsilon_{0} A}{d}\\right) V_{1} &=\\left(\\frac{\\epsilon_{0} A}{d}\\right) V_{2} \\\\ \\Rightarrow \\qquad \\qquad 5 V_{1} &=V_{2} \\\\ \\frac{V_{2}}{V_{1}} &=5 \\\\ E_{1} &=\\frac{V_{1}}{d} ; E_{2}=\\frac{V_{2}}{d} \\\\ \\frac{E_{2}}{E_{1}} &=\\frac{V_{2} / d}{V_{1} / d} \\\\ \\Rightarrow \\qquad \\qquad \\frac{E_{2}}{E_{1}} &=\\frac{V_{2}}{V_{1}} \\end{aligned}$$\n\nPut equation (iii) in equation (iv),\n\n$\\Rightarrow \\Rightarrow \\qquad \\qquad \\frac{E_{2}}{E_{1}}=5$\n\nTherefore, the correct answer is **5**."
-      }
+      },
+      "answer": "5"
     },
     "ee:2021:q43": {
       "question_uid": "ee:2021:q43",
@@ -1904,7 +1946,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
         "markdown": "Fourier transform, $F(\\omega)=A \\tau S a^{2}\\left(\\frac{\\omega \\tau}{2}\\right)$\n\n$$\\begin{aligned} \\text { As } A=1, \\tau=1 \\\\ H \\omega) &=S a^{2}\\left(\\frac{\\omega}{2}\\right) \\\\ \\left.F(\\omega)\\right|_{\\text {peak }} &=F(0)=S a^{2}(0)=1 \\end{aligned}$$\n\n$\\because$ Peak value of sampling function occurs at $\\omega=0$\n\nPeak value $=1$\n\n<img src=\"/question-images/ee/2021/ee-2021-ba0e372cde.webp\" />\n\nTherefore, the correct answer is **1**."
-      }
+      },
+      "answer": "1"
     },
     "ee:2021:q44": {
       "question_uid": "ee:2021:q44",
@@ -1947,7 +1990,8 @@
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
         "markdown": "$$\\begin{aligned} I_{L} &=\\frac{100 \\times 10^{3}}{200}=500 \\mathrm{~A} \\\\ I_{S h} &=\\frac{200}{50}=4 \\mathrm{~A} \\\\ I_{a} &=504 \\mathrm{~A} \\\\ E_{q} &=V+I_{a} R_{a}+\\text { Brush drop } \\\\ &=200+504(0.025)+2 \\mathrm{~V} \\\\ &=214.6 \\mathrm{~V}\\\\ \\text{In motoring case:} V I&=10 \\mathrm{~kW}, V=200 \\mathrm{~V}\\\\ \\therefore \\qquad \\qquad I &=\\frac{10000}{200}=50 A \\\\ I_{f} &=4 \\mathrm{~A}, I_{a}=I_{L}-I_{f} \\\\ &=46 \\mathrm{~A} \\\\ E_{b} &=V-I_{a} R_{a}-\\text { Brush Drop } \\\\ &=200-46(0.025)-2=196.85 \\mathrm{~V} \\\\ \\frac{N_{m}}{N_{g}} &=\\frac{E_{b}}{E_{g}} \\\\ N_{m} &=\\frac{E_{b}}{E_{g}} \\times N_{g} \\\\ \\therefore \\qquad \\qquad N_{m} &=\\frac{196.85}{214.6} \\times 300=275.18 \\mathrm{rpm} \\end{aligned}$$\n\nTherefore, the correct answer is **275** (acceptable range: [273, 277])."
-      }
+      },
+      "answer": "275"
     },
     "ee:2021:q45": {
       "question_uid": "ee:2021:q45",
@@ -1990,7 +2034,8 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "$$\\begin{aligned} N_{\\max } &=650 \\mathrm{rpm}, P=8,50 \\mathrm{~Hz} \\\\ s_{m} &=\\frac{750-650}{750}=0.1333 \\\\ s_{m} &=\\frac{R_{2}}{X_{2}} \\\\ \\therefore\\qquad \\qquad X_{2} &=\\frac{R_{2}}{s_{m}}=\\frac{0.08}{0.133}=0.601 \\Omega \\\\ R_{2} &=0.08 \\Omega, X_{2}=0.601 \\Omega \\end{aligned}$$\n\nCondition for maximum $T_{\\mathrm{s}}$\n\n$$\\begin{aligned} \\Rightarrow \\qquad \\qquad R_{2} & =X_{2} \\\\ \\therefore \\qquad \\qquad R_{2}+ R_{\\text {ext }} & =X_{2} \\\\ \\therefore \\qquad \\qquad R_{\\text {ext }} & =0.601-0.08=0.521 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **0.52** (acceptable range: [0.5, 0.54])."
-      }
+      },
+      "answer": "0.52"
     },
     "ee:2021:q46": {
       "question_uid": "ee:2021:q46",
@@ -2033,7 +2078,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$$\\begin{aligned} q(s)&=s^{2}+10 s+144=0 \\\\ \\omega_{n}&=12 ; \\xi=\\frac{5}{12} \\\\ \\omega_{d}&=\\omega_{n} \\sqrt{1-\\xi^{2}} \\\\ \\quad&=12 \\sqrt{\\frac{119}{144}}=10.90 \\end{aligned}$$\n\nTherefore, the correct answer is **10.9** (acceptable range: [10.8, 11])."
-      }
+      },
+      "answer": "10.9"
     },
     "ee:2021:q47": {
       "question_uid": "ee:2021:q47",
@@ -2076,7 +2122,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$$\\begin{aligned} e_{s s} &=\\lim _{s \\rightarrow 0}\\left[\\frac{s R}{1+G_{C} G_{p}}-\\frac{s D G_{p}}{1+G_{C} G_{P}}\\right] \\\\ R(s) &=0 ; D(s)=\\frac{1}{s} \\\\ \\therefore \\qquad\\qquad e_{s s}&=\\frac{2.2}{1+2.2 K}=0.1 \\\\ \\therefore \\qquad\\qquad K_{\\min }&=9.54 \\end{aligned}$$\n\nTherefore, the correct answer is **9.55** (acceptable range: [9.5, 9.6])."
-      }
+      },
+      "answer": "9.55"
     },
     "ee:2021:q48": {
       "question_uid": "ee:2021:q48",
@@ -2119,7 +2166,8 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-fbdba6806c.webp\" />\n\nWe know,\n\nRMS value of full wave rectified sine $=\\frac{V_{m}}{\\sqrt{2}}=0.707 V_{m}$\n\nFor clipped wave form\n\nAs $0 \\rightarrow \\frac{\\pi}{4}$ and $\\frac{3 \\pi}{4} \\rightarrow \\pi$ wave form are identical\n\n$$\\begin{aligned} &\\text { rms value of clipped wave } \\\\ &\\left.=\\sqrt{\\frac{1}{\\pi}\\left[2 \\int_{0}^{\\pi / 4} V_{m}^{2} \\sin ^{2} \\omega t+\\int_{\\pi / 4}^{3 \\pi / 4}\\left(0.707 V_{m}\\right)^{2} d \\omega t\\right.}\\right] \\\\ &= \\sqrt{\\frac{1}{\\pi}\\left(\\int_{0}^{\\pi / 4} \\frac{2 V_{m}^{2}}{2}[1-\\cos 2 \\omega t] d \\omega t+\\frac{1}{2} V_{m}^{2} \\times \\frac{\\pi}{2}\\right)^{1 / 2}}\\\\ &=\\left[\\frac{1}{\\pi}\\left[V_{m}^{2}\\left(\\frac{\\pi}{4}-\\frac{1}{2} \\sin \\frac{\\pi}{2}\\right)+\\frac{V_{m}^{2}}{4} \\pi\\right]\\right]^{1 / 2} \\\\ &=\\left[\\frac{V_{m}^{2}}{\\pi}\\left[\\frac{\\pi}{4}-\\frac{1}{2}\\right]+\\frac{V_{m}^{2}}{4}\\right]^{1 / 2}=0.5838 V_{m} \\\\ \\text { Ratio } &=\\frac{0.707}{0.5838}=1.21 \\end{aligned}$$\n\nTherefore, the correct answer is **1.215** (acceptable range: [1.2, 1.23])."
-      }
+      },
+      "answer": "1.215"
     },
     "ee:2021:q49": {
       "question_uid": "ee:2021:q49",
@@ -2162,7 +2210,8 @@
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
         "markdown": "$\\dot{x}=-x-K x=x(-k I-I)$\n\nCharacteristic equation,\n\n$$\\begin{aligned} |S I+K I+I| &=0 \\\\ |(S+1+K) I| &=0 \\\\ \\therefore \\qquad\\qquad S+1+K &=0 \\\\ S &=-1-K \\\\ -2 &=-1-K \\\\ K &=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
-      }
+      },
+      "answer": "1"
     },
     "ee:2021:q50": {
       "question_uid": "ee:2021:q50",
@@ -2205,7 +2254,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-86dfbc68aa.webp\" />\n\n$$\\begin{aligned} I_{1}&=\\frac{5}{22}(p-p) \\\\ V_{0}&=j \\omega M I_{1}=7.3=\\left(2 \\pi \\times 10 \\times 10^{3}\\right) \\times M \\times\\left(\\frac{5}{22}\\right) \\\\ M&=51.10 \\mu \\mathrm{H} \\end{aligned}$$\n\nTherefore, the correct answer is **51** (acceptable range: [50, 52])."
-      }
+      },
+      "answer": "51"
     },
     "ee:2021:q51": {
       "question_uid": "ee:2021:q51",
@@ -2248,7 +2298,8 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-b2bd5a3799.webp\" />\n\n<img src=\"/question-images/ee/2021/ee-2021-184da1ee2f.webp\" />\n\n<img src=\"/question-images/ee/2021/ee-2021-f569d3a812.webp\" />\n\n$$\\begin{aligned} v_{0}&=v_{i}-v_{c}\\\\ \\text{For }1^{\\text {st }}\\text{ half cycle}, \\quad v_{0}&=5-v_{c} \\\\ \\text{For }2^{\\text {nd }}\\text{ half cycle}, \\quad v_{0}&=-v_{c}\\\\ v_{p-p} &=\\left(5-V_{c \\;\\min}\\right)-\\left(-V_{c}\\; \\max \\right) \\\\ 6.2 &=5+V_{c \\;\\max }-V_{c \\;\\min} \\\\ \\Rightarrow \\quad V_{c \\max }-V_{c \\;\\min } &=1.2 \\ldots(\\alpha) \\end{aligned}$$\n\nFor first half cycle i.e. $0 \\lt t \\lt \\frac{T}{2}$\n\n$$\\begin{aligned} v_{c}\\left(0^{+}\\right) &=v_{c}(0)=v_{c}\\left(0^{-}\\right)=v_{c} \\min \\\\ v_{c}(\\infty) &=5 \\mathrm{~V} \\\\ \\therefore \\qquad\\qquad v_{c}(t) &=v_{c}(\\infty)+\\left[v_{c}\\left(0^{+}\\right)-v_{c}(\\infty)\\right] e^{-t / \\tau} \\\\ v_{c}(t) &=5+\\left[V_{c m i n}-5\\right] e^{-t / 2 \\tau}=V_{c m a x} \\\\ \\Rightarrow \\qquad\\qquad V_{c} \\max &=5\\left[1-e^{-T / 2 \\tau}\\right]+V_{c m i n} e^{-T / 2 \\tau} \\end{aligned}$$\n\n$For \\frac{T}{2} \\lt t \\lt T$\n\n<img src=\"/question-images/ee/2021/ee-2021-40586a44f4.webp\" />\n\n$$\\begin{aligned} v_{c}(t) &=v_{c}\\left(\\frac{T}{2}\\right) e^{-t(t-T / 2) \\tau} \\\\ \\therefore\\qquad v_{c}(t) &=V_{c m a x} e^{-(t-T / 2) \\tau} \\\\ \\text{at } t =T,\\qquad \\qquad v_{c} &=V_{c} \\mathrm{~min} \\\\ \\Rightarrow \\qquad \\qquad V_{C \\mathrm{~min}} &=V_{C \\max } e^{-T / 2 \\tau}\\\\ \\text { As } \\quad V_{c \\text { max }}-V_{c \\text { min }}&=1.2 \\qquad \\qquad [\\text { From }(\\alpha)]\\\\ \\therefore \\quad V_{\\text {cmax }}-V_{c \\max } e^{-T / 2 t} &=1.2 \\\\ V_{c} \\max &=\\frac{1.2}{1-e^{-T / 2 \\tau}} \\\\ \\Rightarrow \\qquad\\qquad V_{c} \\max &=\\frac{1.2}{1-e^{-T / 2 \\tau}}=5\\left[1-e^{-T / 2 \\tau}\\right]+V_{c \\min } e^{-2 \\tau} \\end{aligned}$$\n\nFrom (ii),\n\n$$\\begin{aligned} V_{c \\max } &=5\\left[1-e^{-T / 2 \\tau}\\right]+\\left(V_{c m a x} e^{-T / 2 \\tau}\\right) e^{-T / 2 \\tau} \\\\ V_{c \\max } &=5\\left[1-e^{-T / 2 \\tau}\\right]+V_{c \\max } e^{-T / \\tau} \\\\ \\Rightarrow \\qquad \\qquad V_{c \\max }\\left[1-e^{-T / \\tau}\\right] &=5\\left[1-e^{-T / 2 \\tau}\\right] \\\\ V_{c} \\max &=\\frac{5\\left[1-e^{-T / 2 \\tau}\\right]}{\\left[1+e^{-T / 2 \\tau}\\right]\\left[1-e^{-T / 2 \\tau}\\right]} \\end{aligned}$$\n\nUsing equation (iii)\n\n$$\\begin{aligned} \\frac{1.2}{1-e^{-T / 2 \\tau}} &=\\frac{5}{1+e^{-T / 2 \\tau}} \\\\ \\Rightarrow \\qquad \\qquad 1.2+1.2 e^{-T / 2 \\tau} &=5-5 e^{-\\pi / 2 t} \\\\ \\Rightarrow \\qquad \\qquad 6.2 e^{-T / 2 \\tau} &=3.8 \\\\ e^{-T / 2 \\tau} &=\\frac{3.8}{6.2}=0.6129 \\\\ \\frac{T}{2 \\tau} &=0.4895\\\\ \\text { as }\\qquad \\qquad T&=\\frac{1}{f}=\\frac{1}{100} \\mathrm{sec}\\\\ \\text { and }\\qquad \\qquad \\tau & =R C=820 \\mathrm{C} \\\\ \\Rightarrow \\qquad \\qquad \\frac{1}{(100)(2)(820) C} & =0.4895 \\\\ \\therefore \\qquad \\qquad C & =12.46 \\mu \\mathrm{F} \\end{aligned}$$\n\nTherefore, the correct answer is **12.45** (acceptable range: [12.3, 12.6])."
-      }
+      },
+      "answer": "12.45"
     },
     "ee:2021:q52": {
       "question_uid": "ee:2021:q52",
@@ -2291,7 +2342,8 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-ee9c59c07b.webp\" />\n\n$$\\begin{aligned} v_{c}(t)&=v_{c \\text { final }}+\\left[v_{\\text {initial }}-v_{c^{\\prime}} \\text { final }\\right] e^{- t / R C} \\\\ \\text { Charging, } \\qquad \\qquad v_{c}(t)&=5+(1.6-5) e^{-t / R C}\\\\ &=5-3.4 e^{-t / R C}\\\\ t=t_{1}, \\qquad \\qquad v_{c}(t) &= 2.4 \\mathrm{~V} \\\\ 2.4 &=5-3.4 e^{-t / \\mathrm{RC}} \\\\ 3.4 e^{-11 / \\mathrm{RC}} &= 2.6 \\\\ t_{1} &= \\ln \\left(\\frac{3.4}{2.6}\\right) R C=0.268 \\times R C \\end{aligned}$$\n\nDischarging,\n\n$$\\begin{aligned} v_{c}(t) &=0+(2.4-0) e^{-t / \\mathrm{RC}} \\\\ &=2.4 e^{-t / \\mathrm{RC}} \\\\ t=t_{2}, \\qquad v_{c}\\left(t_{a}\\right) &=1.6 \\mathrm{~V} \\\\ 1.6 &=2.4 e^{-12 / \\mathrm{AC}} \\\\ t_{2} &=\\ln \\left(\\frac{2.4}{1.6}\\right) R C=0.405 \\times R C \\\\ T &=t_{1}+t_{2}=(0.268+0.405) \\mathrm{RC} \\\\ T &=0.673 \\mathrm{RC} \\\\ f &=\\frac{1}{0.673 R C}=\\frac{1}{0.673 \\times 10^{4} \\times 47 \\times 10^{-9}} \\\\ f &=3157.46 \\mathrm{~Hz} \\end{aligned}$$\n\nTherefore, the correct answer is **3160** (acceptable range: [3150, 3170])."
-      }
+      },
+      "answer": "3160"
     },
     "ee:2021:q53": {
       "question_uid": "ee:2021:q53",
@@ -2334,7 +2386,8 @@
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
         "markdown": "Checking for continuous conduction mode\n\n$$\\begin{aligned} \\Delta I_{L} &=\\frac{\\alpha V_{S}}{f L}=\\frac{0.6 \\times 15}{25 \\times 10^{3} \\times 1 \\times 10^{-3}}=0.36 \\mathrm{~A} \\\\ \\frac{\\Delta I_{L}}{2} &=0.18 \\mathrm{~A} \\\\ I_{L, \\min } &=I_{L}-\\frac{\\Delta I_{L}}{2}=I_{S}-\\frac{\\Delta I_{L}}{2} \\\\ &=(9.375-0.18)=9.195>0 \\end{aligned}$$\n\nAs it is continuous conduction\n\n$$\\begin{aligned} V_{0}&=\\frac{V_{S}}{1-\\alpha}=\\frac{15}{1-0.6}=37.5 \\mathrm{~V} \\\\ I_{0}&=\\frac{V_{0}}{R}=\\frac{37.5}{10}=3.75 \\mathrm{~V} \\\\ \\frac{V_{0}}{V_{S}}&=\\frac{I_{S}}{I_{0}}=\\frac{1}{1-\\alpha} \\\\ I_{S}&=\\frac{I_{0}}{1-\\alpha}=\\frac{3.75}{1-0.6}=9.375 \\mathrm{~A} \\\\ R_{\\text {in }}&=\\frac{V_{S}}{I_{S}}=\\frac{15}{9.375}=1.6 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **1.6** (acceptable range: [1.55, 1.65])."
-      }
+      },
+      "answer": "1.6"
     },
     "ee:2021:q54": {
       "question_uid": "ee:2021:q54",
@@ -2377,7 +2430,8 @@
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
         "markdown": "<img src=\"/question-images/ee/2021/ee-2021-9b632713f6.webp\" />\n\n$\\alpha=0.75, \\quad f=25 \\mathrm{kHz}$\n\nAssume continous conduction:\n\n$$\\begin{aligned} V_{0}&=\\frac{\\alpha V_{s}}{1-\\alpha}=\\frac{0.75 \\times 20}{1-0.75} \\\\ V_{0}&=60 \\mathrm{~V}\\\\ I_{0} &=\\frac{V_{0}}{R}=\\frac{60}{10}=6 \\mathrm{~A} \\\\ I_{L} &=\\frac{I_{0}}{1-\\alpha}=\\frac{6}{1-0.75}=24 \\mathrm{~A} \\\\ \\Delta I_{L} &=\\frac{\\alpha V_{s}}{f_{L}}=\\frac{0.75 \\times 60}{25 \\times 10^{3} \\times\\left(1 \\times 10^{-3}\\right)}=1.8 \\mathrm{~A} \\\\ I_{L \\min } &=I_{L}-\\frac{\\Delta I_{L}}{2}=24-\\frac{1.8}{2}=24-0.9 \\\\ \\left(I_{L \\min }=23.1 \\mathrm{~A}\\right) &>0 \\end{aligned}$$\n\n$\\therefore$ Continous conduction assumption is correct.\n\n$I_{L}=24 \\mathrm{~A}$\n\nTherefore, the correct answer is **24**."
-      }
+      },
+      "answer": "24"
     },
     "ee:2021:q55": {
       "question_uid": "ee:2021:q55",
@@ -2420,7 +2474,8 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "$$\\begin{aligned} \\widehat{V_{01}} &=m_{a} V_{S}=0.8 \\times 325=260 \\mathrm{~V} \\\\ \\widehat{V_{01}} &=\\frac{4 V_{S}}{\\pi} \\sin d=260 \\\\ \\frac{4(325)}{\\pi} \\sin d &=260 \\\\ \\sin d &=\\frac{260 \\times \\pi}{4 \\times 325}=0.628 \\\\ d &=38.9 \\\\ \\therefore \\qquad \\qquad \\theta &=\\frac{\\pi}{2}-d=90^{\\circ}-38.9=51.1 \\end{aligned}$$\n\nTherefore, the correct answer is **51** (acceptable range: [50, 52])."
-      }
+      },
+      "answer": "51"
     },
     "ee:2021:ga:q1": {
       "question_uid": "ee:2021:ga:q1",
@@ -2464,7 +2519,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "We cannot use 'which' for people, 'who' is the only word which acts as a subject for the verb.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:ga:q2": {
       "question_uid": "ee:2021:ga:q2",
@@ -2508,7 +2564,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Upon rotation, we get the below figure.\n\n<img src=\"/question-images/ee/2021/ee-2021-f18907c78e.webp\" />\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:ga:q3": {
       "question_uid": "ee:2021:ga:q3",
@@ -2552,7 +2609,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Sum of the interior angle $=(n-2) \\times 180=1440$\n\nThe interior angle between two sides of polygon is $\\frac{1440}{10}=144.$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:ga:q4": {
       "question_uid": "ee:2021:ga:q4",
@@ -2596,7 +2654,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Consider expression $\\frac{x^{n}-a^{n}}{x+a}.$\n\nNow assuming similar expression $11^{52}-1=\\left(11^{13}\\right)^{4}-(1)^{4}$\n\n$$\\begin{aligned}\n\n\\frac{\\left(11^{13}\\right)^{4}-(1)^{4}}{11^{3}+1} &=\\frac{\\left.\\left((11)^{13}\\right)^{2}-(1)^{2}\\right)\\left(\\left(11^{13}\\right)^{2}+(1)^{2}\\right)}{11^{3}+1} \\\\\n\n&=\\left[\\left(11^{13}-1\\right)\\right]\\left[\\left(11^{13}\\right)^{2}+(1)^{2}\\right]\n\n\\end{aligned}$$\n\nHence, $11^{52}-1$ is divisible by $11^{13}+1.$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:ga:q5": {
       "question_uid": "ee:2021:ga:q5",
@@ -2640,7 +2699,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Oasis is surrounded by sand as Island is surrounded by water\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:ga:q6": {
       "question_uid": "ee:2021:ga:q6",
@@ -2684,7 +2744,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "First statement is ridiculous, third and fourth are contradictory to what is given in the passage.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:ga:q7": {
       "question_uid": "ee:2021:ga:q7",
@@ -2728,7 +2789,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Side of outer first square $=10 \\mathrm{~cm}$\n\nSide of outer second $=\\frac{10}{\\sqrt{2}} \\mathrm{~cm}$\n\nlike wise,\n\nSide of outer third square $=\\left(\\frac{10}{(\\sqrt{2})^{2}}\\right)$\n\nHence,\n\nside of smallest square $=\\frac{10}{(\\sqrt{2})^{5}}$\n\nArea of smallest square $=\\left(\\frac{10}{(\\sqrt{2})^{5}}\\right)^{2}=\\frac{100}{2^{5}}=3.125$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ee:2021:ga:q8": {
       "question_uid": "ee:2021:ga:q8",
@@ -2772,7 +2834,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "n is a continuous random variable for continuous random variable\n\n$$\\begin{aligned} \\therefore \\qquad f(x)&=\\left\\{\\begin{array}{cc} \\frac{1}{\\beta-\\alpha} & \\alpha \\leq x \\leq \\beta \\\\ 0 & \\text { otherwise } \\end{array}\\right.\\\\ \\text{From here},\\qquad \\alpha&=0, \\beta=100 \\end{aligned}$$\n\nFor continuous probability function mean\n\n$=\\frac{\\alpha+\\beta}{2}=\\frac{0+100}{2}=50$\n\nAlternate Solution:\n\n$$\\begin{aligned} \\text{Given:}\\qquad \\text { pdf } f(x) &=10^{-2}, 0\\lt x \\lt 100 \\\\ E(x) &=\\int_{0}^{100} x f(x) d x=\\int_{0}^{100} x 10^{-2} d x \\\\ &\\left.=\\frac{1}{100} \\frac{x^{2}}{2}\\right]_{0}^{100}=\\frac{100}{2}=50 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:ga:q9": {
       "question_uid": "ee:2021:ga:q9",
@@ -2816,7 +2879,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Total number of student in the year-2\n\n$= 60 + 5 = 65$\n\nStudents who failed in the year and appeared in year-2 = 10\n\nSo the students who appeared first time in year-2 $= 65 - 10 = 55$\n\nSimilarly, Total number of students in year-3 = 53\n\nStudents who failed in the year-2 and appeared in year-3 = 5\n\nSo, the students who appeared first time in year-3\n\n$= 53 - 5 = 48$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ee:2021:ga:q10": {
       "question_uid": "ee:2021:ga:q10",
@@ -2860,7 +2924,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "$\\because$ S and V must be parked together and Q and S also must be parked together.\n\nThese two condition possiible parkings are:\n\nQSV----\n\nVSQ----\n\nWe can observe that in all cases only one car can be parked in between Q and V which is car S.\n\nHence option (a) is incorrect.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     }
   }
 }

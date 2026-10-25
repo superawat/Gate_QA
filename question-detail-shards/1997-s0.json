@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:31:38.966Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1997-s0",
   "yearSetKey": "1997-s0",
   "yearSetIdentity": "cse:1997:set-0",
@@ -33,6 +33,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -46,7 +47,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Let $R_1$ and $R_2$ denote rain today and tomorrow. By inclusion-exclusion,\n\n$$P(R_1\\cup R_2)=P(R_1)+P(R_2)-P(R_1\\cap R_2).$$\n\nSubstitute the given probabilities: $0.7=0.5+0.6-P(R_1\\cap R_2)$, so the intersection probability is $0.4$.\n\n**Option D (0.4).**",
+        "images": []
+      }
     },
     "go:2218": {
       "title": "GATE CSE 1997 | Question: 1.2",
@@ -124,6 +130,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "The matrix is upper triangular. Its determinant is the product of its diagonal entries:\n\n$$6\\cdot2\\cdot4\\cdot(-1)=-48.$$\n\n**Option B (-48).**",
+        "images": []
       }
     },
     "go:2220": {
@@ -150,6 +161,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -189,6 +201,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -226,6 +239,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -266,6 +280,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -305,6 +320,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -344,6 +360,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -383,6 +400,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -422,6 +440,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -544,6 +563,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -583,6 +603,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -596,7 +617,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Group Theory",
+        "markdown": "The operation $n*m=\\max(n,m)$ is associative, commutative, and idempotent. However, a monoid identity $e$ would need to satisfy $\\max(n,e)=n$ for every integer $n$, requiring $e\\le n$ for all integers. No least integer exists, so there is no identity. Without an identity the structure is not a monoid, and consequently it is not a group.\n\n**Option D (none of the above).**",
+        "images": []
+      }
     },
     "go:2233": {
       "title": "GATE CSE 1997 | Question: 3.2",
@@ -622,6 +648,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -635,7 +662,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "Option C simplifies as\n\n$$p\\lor(p\\to q)=p\\lor(\\neg p\\lor q)=(p\\lor\\neg p)\\lor q=\\mathrm{True}.$$\n\nThe other options are falsifiable: A with $p=F,q=T$; B with $p=F,q=T$; and D with $p=T,q=F$. Only C is a tautology.\n\n**Option C.**",
+        "images": []
+      }
     },
     "go:2234": {
       "title": "GATE CSE 1997 | Question: 3.3",
@@ -675,6 +707,13 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Lattice",
+        "markdown": "In the Hasse diagram, the bottom element is $f$ and the top is $a$. An element $x$ complements $e$ when $e\\wedge x=f$ and $e\\vee x=a$.\n\nThe elements incomparable with $e$ are $g,c,d$. For each, the greatest common lower bound with $e$ is $f$, and the least common upper bound is $a$, so all three are complements. The comparable elements $b$ and $f$ fail the join condition; $a$ and $e$ fail the meet condition.\n\n**Option B (3 complements).**",
+        "images": [
+          "/question-images/2484788142081845029.webp"
+        ]
       }
     },
     "go:2235": {
@@ -701,6 +740,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -781,6 +821,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -820,6 +861,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -859,6 +901,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -898,6 +941,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -939,6 +983,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -976,6 +1021,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -989,7 +1035,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "The quadratic $f(x)=2x^2-2x+6$ opens upward, so its maximum on a closed interval occurs at an endpoint. Evaluate:\n\n$$f(0)=6,\\qquad f(2)=2(4)-4+6=10.$$\n\nThus the maximum is $10$.\n\n**Option B (10).**",
+        "images": []
+      }
     },
     "go:2243": {
       "title": "GATE CSE 1997 | Question: 4.2",
@@ -1029,6 +1080,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "The matrix $I_{12}$ is the identity matrix with its first two rows interchanged; it is the permutation matrix that swaps coordinates 1 and 2. Right multiplication by a permutation matrix swaps the corresponding columns of $A$. Therefore the first column of $AI_{12}$ is the original second column of $A$.\n\n**Option C.**",
+        "images": []
       }
     },
     "go:2244": {
@@ -1114,6 +1170,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Polynomials",
+        "markdown": "The values at $x=0,1,2,3$ are $5,4,9,20$. Their first differences are $-1,5,11$, and their second differences are $6,6$. A constant nonzero second difference identifies a quadratic polynomial, while a linear polynomial would have zero second differences. The minimum degree is $2$.\n\n**Option B.**",
+        "images": []
       }
     },
     "go:2246": {
@@ -1140,6 +1201,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1220,6 +1282,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1299,6 +1362,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1338,6 +1402,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1461,6 +1526,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1500,6 +1566,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1553,6 +1620,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Partial Order",
+        "markdown": "The constraints place $x$ below every $a_i$ and each $a_i$ below $y$. Thus every total order must begin with $x$, end with $y$, and place the $n$ middle elements in any permutation. There are $n!$ such orders.\n\n**Option A ($n!$).**",
+        "images": []
       }
     },
     "go:2258": {
@@ -1579,6 +1651,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1632,6 +1705,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Relations",
+        "markdown": "Equivalence relations correspond one-to-one with set partitions: each equivalence class is one block of a partition. The number of partitions of a four-element set is the Bell number\n\n$$B_4=1+7+6+1=15,$$\n\nfrom partitions into respectively 1, 2, 3, and 4 blocks.\n\n**Option A (15).**",
+        "images": []
       }
     },
     "go:2260": {
@@ -1658,6 +1736,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1697,6 +1776,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1736,6 +1816,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1775,6 +1856,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1814,6 +1896,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1853,6 +1936,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -1893,6 +1977,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -2089,6 +2174,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -2208,6 +2294,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 9,
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",
@@ -2248,6 +2335,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 9.006,
       "track": "cse",
       "yearSetKey": "1997-s0",
       "yearSetIdentity": "cse:1997:set-0",

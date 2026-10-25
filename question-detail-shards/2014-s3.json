@@ -746,8 +746,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear Algebra",
-        "markdown": "$\\dim(V_1\\cap V_2)=\\dim V_1+\\dim V_2-\\dim(V_1+V_2)\\ge4+4-6=2$",
+        "concept": "Linear Algebra - Dimension Formula for Subspace Intersection",
+        "markdown": "- **Concept / Subtopic**: Linear Algebra - Dimension Formula for Subspace Intersection\n- **Given Parameters**:\n  - Ambient vector space $V$ with dimension:\n    $$\\dim(V) = 6$$\n  - Subspaces $V_1, V_2 \\subseteq V$ with dimensions:\n    $$\\dim(V_1) = 4, \\quad \\dim(V_2) = 4$$\n- **Governing Equations**:\n  - By Grassmann's dimension formula for vector subspaces:\n    $$\\dim(V_1 + V_2) = \\dim(V_1) + \\dim(V_2) - \\dim(V_1 \\cap V_2)$$\n    $$\\dim(V_1 \\cap V_2) = \\dim(V_1) + \\dim(V_2) - \\dim(V_1 + V_2)$$\n- **Step-by-Step Analytical Derivation**:\n  1. Substitute known subspace dimensions:\n     $$\\dim(V_1 \\cap V_2) = 4 + 4 - \\dim(V_1 + V_2) = 8 - \\dim(V_1 + V_2)$$\n  2. **Bounds on the Sum Subspace $(V_1 + V_2)$**:\n     - Because $V_1 + V_2$ is a subspace of the ambient 6-dimensional space $V$, its dimension cannot exceed $\\dim(V)$:\n       $$\\dim(V_1 + V_2) \\le \\dim(V) = 6$$\n  3. **Minimize $\\dim(V_1 \\cap V_2)$**:\n     - To make $\\dim(V_1 \\cap V_2) = 8 - \\dim(V_1 + V_2)$ as small as possible, $\\dim(V_1 + V_2)$ must take its maximum possible value of $6$:\n       $$\\dim(V_1 \\cap V_2)_{\\min} = 8 - 6 = 2$$\n  4. Thus, the smallest possible dimension of $V_1 \\cap V_2$ is **2**.\n\nTherefore, the correct answer is **2**.",
         "images": []
       }
     },
@@ -1619,8 +1619,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Databases - Candidate Key",
-        "markdown": "A prime attribute is one that belongs to at least one candidate key.",
+        "concept": "Database Management Systems (DBMS) - Relational Normalization & Prime Attributes",
+        "markdown": "- **Concept / Subtopic**: Database Management Systems (DBMS) - Relational Normalization & Prime Attributes\n- **Formal Relational Definition**:\n  - In relational database theory and normalization (Codd, Date, Elmasri & Navathe):\n    - A **Candidate Key** is a minimal superkey capable of uniquely identifying every tuple in a relation $R$.\n    - A **Prime Attribute** (or key attribute) of a relation schema $R$ is defined as any attribute that is a member of **at least one (some) candidate key** of $R$.\n    - A **Non-Prime Attribute** is an attribute that does not appear in any candidate key.\n- **Distractor Analysis**:\n  - **Option A**: Incorrect. An attribute does not need to appear in *all* candidate keys to be prime; appearing in just one is sufficient.\n  - **Option B**: Correct. Standard textbook definition of a prime attribute.\n  - **Option C**: Incorrect. Foreign keys enforce referential integrity between relations and have no bearing on the primality of an attribute.\n  - **Option D**: Incorrect. If a relation has multiple candidate keys, an attribute belonging to an alternate key is still prime even if it is not selected as the primary key.\n\nTherefore, the correct answer is **Option B (in some candidate key of $R$)**.",
         "images": []
       }
     },

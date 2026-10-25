@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "2026-s2",
   "yearSetKey": "2026-s2",
   "yearSetIdentity": "cse:2026:set-2",
@@ -1989,7 +1989,8 @@
       },
       "detailed_solution": {
         "concept": "gatecse-2026-set2: algorithms",
-        "markdown": "To correctly compute $T[i][j]=2T[i-1][j]+3T[i][j-1]$, both dependencies &mdash; $T[i-1][j]$ (the cell directly above) and $T[i][j-1]$ (the cell directly to the left) &mdash; must already hold their <i>final, correct</i> values before $T[i][j]$ is computed.\n\n<b>Algorithm B1</b> (row-major: outer loop over $i$, inner over $j$): when computing $T[i][j]$, $T[i-1][j]$ was already finalized in the previous (fully completed) $i-1$ row, and $T[i][j-1]$ was already finalized earlier in the same row (since $j-1<j$ and the inner loop moves left-to-right). Both dependencies are satisfied in time. <b>Correct.</b>\n\n<b>Algorithm B2</b> (processes cells in order of increasing anti-diagonal $s=i+j$): for a cell $T[i][j]$ with $i+j=s$, its dependency $T[i-1][j]$ lies on diagonal $s-1$ and $T[i][j-1]$ also lies on diagonal $s-1$ &mdash; both are processed in the strictly earlier iteration $s-1<s$ (all cells of a smaller diagonal are done before any cell of a larger diagonal begins). Both dependencies are also satisfied in time. <b>Correct.</b>\n\n<b>Answer: Both algorithms B1 and B2 are correct.</b>\n\nTherefore, the correct answer is **Option A**."
+        "markdown": "To correctly compute $T[i][j]=2T[i-1][j]+3T[i][j-1]$, both dependencies &mdash; $T[i-1][j]$ (the cell directly above) and $T[i][j-1]$ (the cell directly to the left) &mdash; must already hold their <i>final, correct</i> values before $T[i][j]$ is computed.\n\n<b>Algorithm B1</b> (row-major: outer loop over $i$, inner over $j$): when computing $T[i][j]$, $T[i-1][j]$ was already finalized in the previous (fully completed) $i-1$ row, and $T[i][j-1]$ was already finalized earlier in the same row (since $j-1<j$ and the inner loop moves left-to-right). Both dependencies are satisfied in time. <b>Correct.</b>\n\n<b>Algorithm B2</b> (processes cells in order of increasing anti-diagonal $s=i+j$): for a cell $T[i][j]$ with $i+j=s$, its dependency $T[i-1][j]$ lies on diagonal $s-1$ and $T[i][j-1]$ also lies on diagonal $s-1$ &mdash; both are processed in the strictly earlier iteration $s-1<s$ (all cells of a smaller diagonal are done before any cell of a larger diagonal begins). Both dependencies are also satisfied in time. <b>Correct.</b>\n\n<b>Answer: Both algorithms B1 and B2 are correct.</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "go:523116": {
@@ -3099,7 +3100,8 @@
       },
       "detailed_solution": {
         "concept": "gatecse-2026-set2: programming-in-c",
-        "markdown": "Trace the program step by step:\n\n$a=5,\\ b=11,\\ c=20$.\n\n$\\text{ptr}=\\&a$ (ptr now points to $a$).\n\n${*}\\text{ptr}=c$ &rarr; sets $a=20$ (since ptr points to $a$, and we assign it $c$'s current value $20$).\n\n$\\text{ptr}=\\&c$ (ptr now points to $c$ instead).\n\n$a={*}(\\&b)$ &rarr; sets $a=b=11$ (overwriting the earlier $20$).\n\n$c={*}\\text{ptr}-a$ &rarr; ${*}\\text{ptr}$ is $c$ itself (since ptr points to $c$), whose value is still $20$ (unchanged since it was first set); so $c=20-a=20-11=9$.\n\n$\\text{printf}$ prints the final value of $c$, which is $9$.\n\n<b>Answer: 9</b>\n\nTherefore, the correct answer is **9**."
+        "markdown": "Trace the program step by step:\n\n$a=5,\\ b=11,\\ c=20$.\n\n$\\text{ptr}=\\&a$ (ptr now points to $a$).\n\n${*}\\text{ptr}=c$ &rarr; sets $a=20$ (since ptr points to $a$, and we assign it $c$'s current value $20$).\n\n$\\text{ptr}=\\&c$ (ptr now points to $c$ instead).\n\n$a={*}(\\&b)$ &rarr; sets $a=b=11$ (overwriting the earlier $20$).\n\n$c={*}\\text{ptr}-a$ &rarr; ${*}\\text{ptr}$ is $c$ itself (since ptr points to $c$), whose value is still $20$ (unchanged since it was first set); so $c=20-a=20-11=9$.\n\n$\\text{printf}$ prints the final value of $c$, which is $9$.\n\n<b>Answer: 9</b>\n\nTherefore, the correct answer is **9**.",
+        "images": []
       }
     },
     "go:523095": {

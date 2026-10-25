@@ -50,9 +50,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Engineering Mathematics - Laplace Equation & Mean Value Property on Square Domain",
+        "markdown": "- **Governing Equation & Symmetry Setup:**\n  - The potential field $T(x, y)$ satisfies the two-dimensional Laplace equation inside a square domain of size $2\\text{ m} \\times 2\\text{ m}$:\n    $$\\nabla^2 T = \\frac{\\partial^2 T}{\\partial x^2} + \\frac{\\partial^2 T}{\\partial y^2} = 0$$\n  - Laplace's equation is linear and elliptic. Solutions possess the **Mean Value Property**: the value of harmonic function $T$ at the center $C$ of a symmetric domain equals the average of the boundary potentials weighted by symmetry.\n\n- **Principle of Superposition:**\n  - By 4-fold rotational symmetry of the square domain about its center $C$, each of the four boundary edges $E_1, E_2, E_3, E_4$ contributes equally to the potential at $C$.\n  - If a single edge is held at potential $1$ and the other three edges at $0$, its contribution to the center is $\\frac{1}{4}$.\n  - For the given Dirichlet boundary conditions:\n    - Three edges are held at $T = 50$.\n    - The fourth edge is held at $T = 100$.\n  - Applying superposition:\n    $$T(C) = \\frac{T_{E_1} + T_{E_2} + T_{E_3} + T_{E_4}}{4}$$\n    $$T(C) = \\frac{50 + 50 + 50 + 100}{4} = \\frac{250}{4} = 62.5$$\n\n- **Distractor Analysis:**\n  - Option A ($50$): Represents the potential if all four edges were held at $50$.\n  - Option C ($75$): Represents the simple arithmetic mean of the two distinct boundary values $\\frac{50 + 100}{2}$, failing to account for the three edges at $50$.\n  - Option D ($87.5$): Erroneously assumes three edges are at $100$ and one edge at $50$.\n\nTherefore, the correct answer is **Option B (62.5)**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "ce:2024:q2-s2": {
       "question_uid": "ce:2024:q2-s2",
@@ -97,7 +99,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "According to properties of a matrix\n\n(i) $(A+B)^{\\top}=A^{\\top}+B^{\\top}$\n\nThe sum of transpose of matrices is equal to the transpose of the sum of two matrices.\n\n(ii) $(A B)^{\\top}=B^{\\top} A^{\\top}$\n\nThe product of the transpose of two matrices in reverse order is equal to the transpose of the product of them.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q3-s2": {
       "question_uid": "ce:2024:q3-s2",
@@ -142,7 +145,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "The second derivative of a function of using fourth order central divided difference method is given by\n\n$f(x+2 h)+16 f(x+h)-30 f(x)$\n\n$f^{\\prime \\prime}(x)=\\frac{+16 f(x-h)-f(x-2 h)}{12 h}$\n\nwhere, $\\mathrm{h}-1$ step size.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q4-s2": {
       "question_uid": "ce:2024:q4-s2",
@@ -187,7 +191,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\nf(x) & =x^{3}-27 x+4 \\\\\n\nf^{\\prime}(x) & =3 x^{2}-27\\\\\n\nf^{\\prime}(x) & =0 \\\\\n\n3 x^{2}-27 & =0 \\\\\n\nx & = \\pm 3 \\\\\n\nx & =3 \\in(1,6)\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ce/2024/ce-2024-a7d4457db3.webp\" />\n\nSo at $x=3$ function has point at local minima.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q5-s2": {
       "question_uid": "ce:2024:q5-s2",
@@ -232,7 +237,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation",
         "markdown": "$P: \\frac{d y}{d x}=\\frac{x^{4}+3 x^{2} y^{2}+2 y^{4}}{x^{3} y}$\n\n$\\frac{d y}{d x}=\\left(\\frac{x^{4}}{x^{3} y}\\right)+\\left(\\frac{3 x^{2} y^{2}}{x^{3} y}\\right)+\\left(\\frac{2 y^{4}}{x^{3} y}\\right)$\n\n$\\frac{d y}{d x}=\\left(\\frac{x}{y}\\right)+3\\left(\\frac{y}{x}\\right)+2\\left(\\frac{y}{x}\\right)^{3}$\n\n$\\frac{d y}{d x}=\\left(\\frac{1}{y / x}\\right)+3\\left(\\frac{y}{x}\\right)+2\\left(\\frac{y}{x}\\right)^{3}$\n\n$\\frac{d y}{d x}=f\\left(\\frac{y}{x}\\right)$\n\nSo $P$ is a homogenous ODE\n\n$\\mathrm{Q}: \\frac{\\mathrm{dy}}{\\mathrm{dx}}=\\frac{-\\mathrm{y}^{2}}{\\mathrm{x}^{2}}$\n\n$x^{2} d y=-y^{2} d x$\n\n$y^{2} d x+x^{2} d y=0$\n\n$M=y^{2} \\quad \\frac{d M}{\\partial y}=2 y$\n\n$N=x^{2} \\quad \\frac{\\partial N}{\\partial \\mathrm{x}}=2 \\mathrm{x}$\n\nSo $\\mathrm{Q}$ is non exact $\\mathrm{ODE}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q6-s2": {
       "question_uid": "ce:2024:q6-s2",
@@ -277,7 +283,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Torsion of Shafts and Pressure Vessels",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-a4fc2c012b.webp\" />\n\n$\\left.\\Sigma \\mathrm{M}_{\\mathrm{Q}}\\right)=0 \\Rightarrow \\mathrm{R}_{\\mathrm{P}} \\times 3-3 \\times 2=0$\n\n$\\mathrm{R}_{\\mathrm{P}}=2 \\mathrm{kN} \\& \\mathrm{R}_{\\mathrm{Q}}=1 \\mathrm{kN}$\n\nAs beam $\\mathrm{PQ}$ is rigid \\& for no rotation settlement at both $P$ \\& Q should be same.\n\n$$\\begin{aligned}\n\n\\Delta_{\\mathrm{P}} & =\\Delta_{\\mathrm{Q}} \\\\\n\n\\frac{\\mathrm{R}_{\\mathrm{P}}}{\\mathrm{K}_{\\mathrm{P}}} & =\\frac{\\mathrm{R}_{\\mathrm{Q}}}{\\mathrm{K}_{\\mathrm{Q}}} \\\\\n\n\\Rightarrow \\mathrm{K}_{\\mathrm{Q}} & =\\frac{\\mathrm{R}_{\\mathrm{Q}}}{\\mathrm{R}_{\\mathrm{P}}} \\times \\mathrm{K}_{\\mathrm{P}}=\\frac{1}{2} \\times 100=50 \\mathrm{kN} / \\mathrm{m}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2024:q7-s2": {
       "question_uid": "ce:2024:q7-s2",
@@ -322,7 +329,8 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "P: In a pure project organization, the project manager has the complete authority and control over the project.\n\nQ: In a matrix organization, employees have more than one boss and work on multiple teams. This leads to quick response to changes, conflicts and project needs.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q8-s2": {
       "question_uid": "ce:2024:q8-s2",
@@ -367,7 +375,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
         "markdown": "Position of shear centre will be at R.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2024:q9-s2": {
       "question_uid": "ce:2024:q9-s2",
@@ -412,7 +421,8 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "Schedule variance $=\\mathrm{BCWP}-\\mathrm{BCWS}$\n\n$$\\begin{aligned}\n\n& =150-200 \\\\\n\n& =-50\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q10-s2": {
       "question_uid": "ce:2024:q10-s2",
@@ -457,7 +467,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "As per Rankine Grashoff method\n\n$$\\text { rere, } \\quad \\begin{aligned}\n\nM_{u x} & =\\frac{r^{4}}{8\\left(1+r^{4}\\right)} w \\ell_{x}^{2} \\\\\n\nM_{u y} & =\\frac{r^{2}}{8\\left(1+r^{4}\\right)} w \\ell_{x}^{2} \\\\\n\n\\text { Her } & =\\frac{\\ell_{y}}{\\ell_{x}} \\\\\n\n\\Rightarrow \\quad \\frac{M_{u x}}{M_{u y}} & =r^{2}=\\left(\\frac{\\ell_{y}}{\\ell_{x}}\\right)^{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2024:q11-s2": {
       "question_uid": "ce:2024:q11-s2",
@@ -502,7 +513,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
         "markdown": "In working stress method, safety is accounted for by considering factor of safety in material strength only and no factor is considered in load.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q12-s2": {
       "question_uid": "ce:2024:q12-s2",
@@ -547,7 +559,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
         "markdown": "Flexible footing over clayey soil: In flexible footing, the contact pressure at the interface between footing and soil is uniformly distributed producing dish-shape pattern in clayey soil.\n\n<img src=\"/question-images/ce/2024/ce-2024-a710036afa.webp\" />\n\nFlexible footing over Granular soil: In granular soil, modulus of elasticty $\\left(E_{S}\\right)$ varies across the width being maximum at the centre and minimum at edge. As $\\mathrm{E}$ is maximum at centre, defflection is less at centre. As $E$ is less at edge deflection is more at edge.\n\n<img src=\"/question-images/ce/2024/ce-2024-92fcd6b523.webp\" />\n\nRigid footing on Clayey soil: In case of flexible footing, deflection is more at centre. Hence pressure developed at centre is less. Deflection is less in flexible footing at edge, hence in rigid footing pressure developed is more at edge.\n\n<img src=\"/question-images/ce/2024/ce-2024-bdb851e624.webp\" />\n\nRigid footing on Granular soil\n\n<img src=\"/question-images/ce/2024/ce-2024-7cdc38dab9.webp\" />\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q13-s2": {
       "question_uid": "ce:2024:q13-s2",
@@ -592,7 +605,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
         "markdown": "Value of skempton's pore pressure coefficient  may be as large as 2 to 3 for very loose saturated fine sand.\n\nIt can be ( -0.5 to 0 ) for heavily over consolidated clays.\n\nFor normally consolidated clays $\\mathrm{A}=0.5-1$\n\nFor OC clays, $A=f(O C R)$, for heavily over consolidated clays, $A \\lt 0$.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2024:q14-s2": {
       "question_uid": "ce:2024:q14-s2",
@@ -637,7 +651,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Properties and Manometry",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-1db64f22ef.webp\" />\n\nVarious types of newtonian \\& non-newtonian fluids are shown in the figure.\n\nFluids which obeys Newton's law of viscosity $\\left(\\tau=\\mu \\frac{\\mathrm{du}}{\\mathrm{dy}}\\right)$ are called Newtonian Fluids and those fluids which do not obey this rule are called Non-Newtonian Fluids.\n\nGeneral relationship between shear stress and velocity gradient is given by\n\n$\\tau=\\mathrm{A}\\left(\\frac{\\mathrm{du}}{\\mathrm{dy}}\\right)^{\\mathrm{n}}+\\mathrm{B}$\n\nIn the figures shown above, slope of the curve is called apparent viscosity.\n\nFluid for which apparent viscosity increases with du/dy are called Dilatant.\n\nDilatant fluids are also called shear thickening fluids. Examples of dilatant fluids are solution with suspended starch or sand, sugar in water.\n\nFluids for which apparent viscosity decreases with du/dy are called Pseudo Plastic.\n\nPseudo plastic fluid are also called shear thinning fluid. Examples are paints, polymer solutions, blood, paper pulp, syrup, molasses, milk, gelatine.\n\nBingham Plastic (ideal plastic) fluids require a certain minimum shear stress $t_{y}$ (yield stress) before they start flowing. Examples: tooth paste, sewage sludge, drilling mud have time dependent Newtonian Behaviour.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q15-s2": {
       "question_uid": "ce:2024:q15-s2",
@@ -682,7 +697,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
         "markdown": "(I) Following treatment techniques are used to remove particulate Matter (PM).\n\nSettling chambers\n\nInertial or Impact separators\n\nCentrifugal separators or Cyclonic separators\n\nFilters\n\n(e) Electrostatic precipitators\n\n(f) Scrubbers or wet collectors\n\n(II) Following treatment techniques are used to remove/control gaseous contaminants\n\nCombustion techniques\n\nThis method is used when gases are of organic nature.\n\nEquipments used in combustion are:\n\n(i) vapour incinerators\n\n(ii) after burners\n\n(iii) Flares (process is called as flaring)\n\nNote: Flaring (i.e. combustion method) is suitable for the removal of carbon monoxide because during combustion, carbon reacts with carbon monoxide to form $\\mathrm{CO}_{2}$.\n\nAbsorption\n\nIn this method, effluent gases are passed through absorbers (or scrubbers) which contain liquid absorbents that remove various gaseous pollutants.\n\n$$\\begin{array}{|l|l|}\n\n\\hline\n\n\\text{Gaseous pollutant} & \\text{Common absorbent used as solid form}  \\\\\n\n\\hline\n\n\\mathrm{SO}_{2}  &  \\text{Dimethylaniline, ammonium sulphite, sodium sulphite etc. }\n\n\\\\\n\n\\hline\n\n\\mathrm{H}_{2} \\mathrm{~S}  & \\text{Mixture of  NaOH  and phenol,soda Ash etc. }\n\n\\\\\n\n\\hline\n\n\\mathrm{NO}_{\\mathrm{x}}  & \\text{Water, aqueous nitric acid} \\\\\n\n\\hline\n\n\\mathrm{HF}  & Water,  \\mathrm{NaOH}  \\\\\n\n\\hline\n\n\\end{array}$$\n\nAdsorption technique\n\nIn this method, the effluent gases are passed through adsorbers which contain solids of porous structure.\n\n$$\\begin{array}{|l|l|}\n\n\\hline\n\n\\text{Gaseous pollutant} &\n\n\\text{Common absorbent used as solid form}  \\\\\n\n\\hline\n\n\\mathrm{SO}_{2}  &\n\n\\text{Pulverised limestone\n\nor Dolomite }\n\n\\\\\n\n\\hline\n\n\\mathrm{H}_{2} \\mathrm{~S} &\\text{ Iron oxide} \\\\\n\n\\hline\n\n\\mathrm{NO}_{\\mathrm{x}}  & \\text{Silica gel} \\\\\n\n\\hline\n\n\\mathrm{HF} & \\text{Lump limestone} \\\\\n\n\\hline\n\n\\end{array}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2024:q16-s2": {
       "question_uid": "ce:2024:q16-s2",
@@ -727,7 +743,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Disposal of Sewage Effluents",
         "markdown": "As glucose $\\left(\\mathrm{C}_{6} \\mathrm{H}_{12} \\mathrm{O}_{6}\\right)$ does not contains sulphur hence anaerobic decomposition of glucose does not release $\\mathrm{H}_{2} \\mathrm{~S}$.\n\nAnaerobic decomposition of glucose gives $\\mathrm{CO}_{2}$, $\\mathrm{CH}_{4}, \\mathrm{H}_{2} \\mathrm{O}$ as its byproducts.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2024:q17-s2": {
       "question_uid": "ce:2024:q17-s2",
@@ -772,7 +789,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Railway and Airport Engineering",
         "markdown": "$$\\begin{array}{c|c|c}\n\n\\text{End to end section of runway}  (\\mathrm{m})& Graident  (\\%)  & \\mathrm{RL}  (\\mathrm{m})  \\\\\n\n\\hline\n\n0 & +1 &  100(  given  )  \\\\\n\n200 & -1 &  100+200 \\times \\frac{1}{100}=102  \\\\\n\n600 & +0.8 &  98+600 \\times \\frac{0.8}{100}=102.8  \\\\\n\n1200 & +0.2 &  102.8+400 \\times \\frac{0.2}{100}=103.6  \\\\\n\n1600 & -0.5 &  103.6-400 \\times \\frac{0.5}{100}=101.6  \\\\\n\n\\end{array}$$\n\nEffective gradient $=\\frac{103.6-98}{2000} \\times 100=0.28 \\%$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2024:q18-s2": {
       "question_uid": "ce:2024:q18-s2",
@@ -815,9 +833,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Transportation Engineering - Horizontal Curves & Superelevation Criteria",
+        "markdown": "- **Mechanics of Superelevation on Horizontal Curves:**\n  - When vehicles traverse horizontal curves, an outward centrifugal force $P = \\frac{m v^2}{R}$ acts on the mass center.\n  - To counteract this force and prevent lateral skidding or overturning, **superelevation (cant)** is provided by raising the outer edge or rail with respect to the inner edge or rail:\n    $$e + f = \\frac{v^2}{g R}$$\n\n- **Mode-by-Mode Application:**\n  - **1. Highways:**\n    - Motor vehicles negotiate highway curves at high cruising speeds ($60 - 100\\text{ km/h}$). Superelevation is universally designed per IRC:73 guidelines to balance centrifugal acceleration, raising the outer pavement edge above the inner edge.\n  - **2. Railways:**\n    - Railway trains run on fixed flanged rails at high speeds. The outer rail is raised above the inner rail by an equilibrium cant $C_a = \\frac{G v^2}{g R}$ to eliminate lateral thrust on rail flanges, distribute vertical loads equally across both rails, and prevent derailment.\n  - **3. Taxiways (Airport Engineering):**\n    - Under ICAO (Annex 14) and FAA airfield design standards, aircraft navigate curved taxiways at very low speeds (typically $15 - 30\\text{ km/h}$). Centrifugal acceleration at these speeds is negligible.\n    - Introducing superelevation would impose transverse slopes that create severe hazards for wide-body, low-wing commercial aircraft, including uneven main gear load distribution, tip clearance reduction, fuel sloshing, and cross-slope tipping during braking. Hence, **superelevation is not provided on taxiways**.\n\n- **Conclusion:**\n  - The outer edge is raised above the inner edge in horizontal curves for **Highways and Railways only**.\n\nTherefore, the correct answer is **Option B (Highways and Railways only)**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "ce:2024:q19-s2": {
       "question_uid": "ce:2024:q19-s2",
@@ -860,9 +880,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Pavement Design - Critical Stress Combinations in Rigid Pavements (IRC:58)",
+        "markdown": "- **Rigid Pavement Stress Mechanisms:**\n  - In a jointed plain concrete pavement (JPCP), stresses arise from wheel loads ($S_{wl}$) and temperature variations (differential temperature warping $S_t$ and uniform subgrade frictional restraint $S_f$).\n  - Critical load combinations occur where wheel load stresses and thermal warping stresses induce peak tension on the same face of the slab.\n\n- **Stress State during Summer Midnight:**\n  - **1. Temperature Warping Stress ($S_t$):**\n    - At night/midnight, the top surface of the slab cools rapidly through radiation into the atmosphere while the slab bottom remains relatively warm ($T_{\\text{top}} < T_{\\text{bottom}}$).\n    - The slab edges and corners curl upward (concave curvature), lifting off the subgrade.\n    - This upward curling induces high **tensile warping stress at the top surface of the slab corner ($S_t^c$)**.\n  - **2. Wheel Load Stress ($S_{wl}$):**\n    - When a wheel load acts on the cantilevered, unsupported corner, it bends the corner downward, creating peak **tensile bending stress at the top surface of the slab ($S_{wl}^c$)**.\n    - Since both thermal warping and wheel load cause tension at the top of the corner, they act additively:\n      $$\\text{Total Tensile Stress at Corner} = S_{wl}^c + S_t^c$$\n  - **3. Frictional Stress ($S_f$):**\n    - Subgrade friction arises from uniform contraction/expansion of the entire slab over the subbase. Frictional resistance develops towards the interior and longitudinal edges, but free edges and corners experience zero restraint ($S_f = 0$ at the corners).\n\n- **Conclusion:**\n  - The critical stress combination in the concrete slab during summer midnight occurs at the corner and is given by:\n    $$\\text{Critical Stress} = S_{wl}^c + S_t^c$$\n\nTherefore, the correct answer is **Option A ($S_{wl}^c+S_t^c$)**.",
+        "images": []
+      },
+      "answer": "A"
     },
     "ce:2024:q20-s2": {
       "question_uid": "ce:2024:q20-s2",
@@ -907,7 +929,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Remote Sensing, GIS, GPS and Photogrammetry",
         "markdown": "$\\text { Scale }=\\frac{1}{13000}$\n\nFlying height $(\\mathrm{H})=3000 \\mathrm{~m}$\n\nElevation $(h)=1050 m$\n\n$$\\begin{aligned}\n\nS & =\\frac{f}{H-h} \\\\\n\n\\frac{1}{13000} & =\\frac{f}{3000-1050} \\\\\n\n\\therefore \\quad f & =0.15 m=150 \\mathrm{~mm}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q21-s2": {
       "question_uid": "ce:2024:q21-s2",
@@ -952,7 +975,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Fundamental Concepts of Surveying",
         "markdown": "Bubble tube is used for levelling\n\nPlumb bob is used for centering\n\nTangent screw in theodolite is used for minor movements\n\nStadia cross wire is used in Tacheometry\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q22-s2": {
       "question_uid": "ce:2024:q22-s2",
@@ -997,7 +1021,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
         "markdown": "Most probable value with equal weightage\n\n$=30^{\\circ}\\left[\\frac{30^{\\prime}+29^{\\prime} 40^{\\prime \\prime}+30^{\\prime} 20^{\\prime \\prime}+31^{\\prime} 20^{\\prime \\prime}}{4}\\right]=30^{\\circ} 30^{\\prime} 20^{\\prime \\prime}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q23-s2": {
       "question_uid": "ce:2024:q23-s2",
@@ -1040,7 +1065,8 @@
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
         "markdown": "Shape factor $=\\frac{Z_{p}}{Z_{e}}$\n\n<img src=\"/question-images/ce/2024/ce-2024-f11ede93a8.webp\" />\n\n$$\\begin{aligned}\n\nZ_p & =\\frac{A}{2}\\left(\\bar{y}_1+\\bar{y}_2\\right) \\\\\n\n& =\\frac{2 \\times 12 \\times 3}{2}(6+1.5)=270 \\\\\n\nS F & =\\frac{270}{150.92}=1.79\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.8** (acceptable range: [1.75, 1.85])."
-      }
+      },
+      "answer": "1.8"
     },
     "ce:2024:q24-s2": {
       "question_uid": "ce:2024:q24-s2",
@@ -1083,7 +1109,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
         "markdown": "Given,\n\nLength of pile $(L)=10 \\mathrm{~m}$\n\nDiameter of pile $(D)=0.7 \\mathrm{~m}$\n\nCohesion of clay $\\left(C_{4}\\right)=50 \\mathrm{kPa}$\n\nAdhesion factor $(\\alpha)=0.5$\n\nPullout capacity $(\\mathrm{P})=$ ?\n\nUplift pull out capacity $=$ skin friction resistance + wt. of pile\n\nFor clay, $(P)$ skin friction resistance $=f_{s} A_{s}$\n\n$P=\\alpha C_{u} A_{s}+W$\n\nTaking unit wt of concrete $=25 \\mathrm{kN} / \\mathrm{m}^{3}$\n\n$P=0.5 \\times 50 \\times \\pi \\times 0.7 \\times 10+\\frac{\\pi(0.7)^{2}}{4} \\times \\gamma_{c}$\n\n$P=0.5 \\times 50 \\times \\pi \\times 0.7 \\times 10+\\frac{\\pi(0.7)^{2}}{4} \\times 25$\n\n$=550 \\mathrm{kN}$\n\nTherefore, the correct answer is **550** (acceptable range: [545, 555])."
-      }
+      },
+      "answer": "550"
     },
     "ce:2024:q25-s2": {
       "question_uid": "ce:2024:q25-s2",
@@ -1126,7 +1153,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "Discharge $(\\mathrm{Q})=30 \\mathrm{~m}^{3} / \\mathrm{s}$\n\nWidth of channel $(B)=2 \\mathrm{~m}$\n\nBed slope $=1$ in 300\n\nEnergy correction factor $(\\alpha)=1.1$\n\n$\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$\n\nDischarge per unit width $(q)=\\frac{Q}{B}  =\\frac{30}{2}=15 \\mathrm{~m}^{3} / \\mathrm{sec} / \\mathrm{m}$\n\nCritical depth does not depend on slope or the roughness of channel.\n\nCritical depth $\\left(y_{c}\\right)=\\left(\\frac{q^{2} \\cdot \\alpha}{g}\\right)^{1 / 3}\n\n=\\left(\\frac{1.1 \\times 15^{2}}{10}\\right)^{1 / 3}=2.914 \\mathrm{~m} \\simeq 2.91 \\mathrm{~m}$\n\nTherefore, the correct answer is **2.91** (acceptable range: [2.88, 2.94])."
-      }
+      },
+      "answer": "2.91"
     },
     "ce:2024:q26-s2": {
       "question_uid": "ce:2024:q26-s2",
@@ -1171,7 +1199,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Probability of having a heart attack without medicine $=80 \\%$\n\nProbability of having a heart attack with medicine $=$ $(80 \\%) \\times 0.5=40 \\%$\n\nTotal probability that a randomly selected patient out of 100 takes medicines $X$ and has a heart attack.\n\n$=\\frac{50}{100} \\times 0.4=0.2=20 \\%$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2024:q27-s2": {
       "question_uid": "ce:2024:q27-s2",
@@ -1216,7 +1245,8 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - Engineering Mechanics",
         "markdown": "Let us consider sfittness of beam as $\\mathrm{k}_{\\mathrm{b}}$. Here both the stiffness elements are in parallel.\n\n$$\\begin{aligned}\n\n\\Rightarrow \\quad \\mathrm{k}_{\\text {eq }} & =\\mathrm{k}_{1}+\\mathrm{k}_{2} \\\\\n\n& =\\mathrm{k}+\\frac{48 \\mathrm{EI}}{(2 \\ell)^{3}}=\\mathrm{k}+\\frac{6 \\mathrm{EI}}{\\ell^{3}}\n\n\\end{aligned}$$\n\nNatural frequency $\\omega_{n}=\\sqrt{\\frac{k_{\\text {eq }}}{m}}$\n\n$\\omega_{n}=\\sqrt{\\frac{\\left(\\mathrm{k}+\\frac{6 \\mathrm{EI}}{\\ell^{3}}\\right)}{m}}=\\sqrt{\\frac{\\mathrm{k} \\ell^{3}+6 \\mathrm{El}}{\\mathrm{m} \\ell^{3}}}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q28-s2": {
       "question_uid": "ce:2024:q28-s2",
@@ -1261,7 +1291,8 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "$\\mathrm{C} / \\mathrm{s}=\\frac{54000-30000}{15-12}=8000 \\mathrm{Rs} /$ day\n\n$\\Rightarrow$ If $\\mathrm{C} / \\mathrm{s}$ is less than indirect cost per day then it would be economically advisable to complete the activity early by crashing. Hence both the statements P and Q are correct.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q29-s2": {
       "question_uid": "ce:2024:q29-s2",
@@ -1306,7 +1337,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-82d89161e7.webp\" />\n\n$\\sigma_{\\text {temp }}=E \\alpha \\Delta T$\n\n$\\sigma_{\\mathrm{cr}}=\\frac{\\pi^{2} \\mathrm{E}}{\\lambda_{\\text {eff }}^{2}}=\\frac{\\pi^{2} E}{\\left(\\ell_{\\text {eff }} / r\\right)^{2}}$\n\n$\\Rightarrow$ For given support $\\rightarrow \\ell_{\\text {eff }}=\\frac{1}{2}$\n\nHence,\n\n$$\\begin{aligned}\n\n\\mathrm{E} \\alpha \\Delta \\mathrm{T} & =\\frac{\\pi^{2} \\mathrm{E}}{\\left(\\frac{\\mathrm{I}}{2 \\mathrm{r}}\\right)^{2}} \\\\\n\n\\Rightarrow \\quad \\Delta \\mathrm{T} & =\\frac{\\pi^{2} \\times 4}{\\alpha 5\\left(\\frac{1}{2}\\right)^{2}}=\\frac{\\pi^{2} \\times 4}{12 \\times 10^{-6} \\times 105^{2}} \\\\\n\n\\Rightarrow \\quad \\Delta \\mathrm{T} & =298^{\\circ} \\mathrm{C}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q30-s2": {
       "question_uid": "ce:2024:q30-s2",
@@ -1351,7 +1383,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
         "markdown": "When rough retaining wall moves toward the back fill passive earth pressure $\\left(\\mathrm{P}_{\\mathrm{P}}\\right)$ condition will develop which can be represented with the help of diagram shown below.\n\n<img src=\"/question-images/ce/2024/ce-2024-2d19c0e86d.webp\" />\n\nHence wall friction force/resistance $(\\mathrm{F})$ mobilizes in upward direction along the wall.\n\nEarth pressure due to surcharge is assumed to be constant along the depth of retaining wall and actual variation of stress due to surcharge is neglected.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q31-s2": {
       "question_uid": "ce:2024:q31-s2",
@@ -1396,7 +1429,8 @@
       "detailed_solution": {
         "concept": "Irrigation Engineering - Design of Stable Channels",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-5d002bcfb7.webp\" />\n\n$$\\begin{aligned}\n\n\\cot \\theta & =1.25 \\\\\n\n\\theta & =0.675 \\mathrm{rad} \\\\\n\n\\mathrm{n} & =0.013 \\\\\n\n\\mathrm{Q} & =25 \\mathrm{~m}^{3} / \\mathrm{s}, \\mathrm{S}=\\frac{1}{1500}\n\n\\end{aligned}$$\n\nUsing manning's equation:\n\n$$\\begin{aligned}\n\n\\text { Area } & =y^{2}(\\theta+\\cot \\theta) \\\\\n\nA & =1.925 y^{2} \\\\\n\nR & =\\frac{y}{2} \\\\\n\nQ & =\\frac{A}{n} R^{2 / 3}(S)^{1 / 2} \\\\\n\n25 & =\\frac{1.925 y^{2}}{0.013}\\left(\\frac{y}{2}\\right)^{2 / 3}\\left(\\frac{1}{1500}\\right)^{1 / 2} \\\\\n\n\\Rightarrow \\quad y & =2.40 \\mathrm{~m}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q32-s2": {
       "question_uid": "ce:2024:q32-s2",
@@ -1441,7 +1475,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "$$\\begin{array}{|c|}\n\n\\hline\n\nAnthracite \\\\\n\n\\mathrm{G}_{\\mathrm{S}}=1.50 \\\\\n\n\\hline\n\nSilica sand \\\\\n\n\\mathrm{G}_{\\mathrm{S}}=2.60  \\\\\n\n\\mathrm{D}=0.2 \\mathrm{~mm}  \\\\\n\n\\hline\n\nIImenite sand \\\\\n\n\\mathrm{G}_{\\mathrm{S}}=4.20  \\\\\n\n\\hline\n\n\\end{array}$$\n\nLet the settling velocity of anthracite pacticle at top, silica pacticle at middle \\& ilmenite pacticle at bottom, after back washing be $\\left(V_{S}\\right)_{T},\\left(V_{S}\\right),\\left(V_{S}\\right)_{B}$ respectively.\n\nFor Middle silica sand\n\n$$\\begin{aligned}\n\n& v_{S}=\\frac{\\left(G_{s_{1}}-1\\right) \\gamma_{w} D_{1}^{2}}{18 \\mu} \\\\\n\n& v_{S}=K(2.6-1)(0.2)^{2}\n\n\\end{aligned}$$\n\n$V_{S}=K(1.6)(0.2)^{2} \\text { where, } K=\\frac{\\gamma_{w}}{18 \\mu}$\n\nFor Top Anthracite\n\n$$\\begin{aligned}\n\n& \\left(\\mathrm{V}_{\\mathrm{S}}\\right)_{\\mathrm{T}}=\\mathrm{K}\\left(\\mathrm{G}_{\\mathrm{S}_{2}}-1\\right)\\left(\\mathrm{D}_{2}\\right)^{2} \\\\\n\n& \\left(\\mathrm{~V}_{\\mathrm{S}}\\right)_{\\mathrm{T}}=\\mathrm{K}(0.5)\\left(\\mathrm{D}_{2}\\right)^{2}\n\n\\end{aligned}$$\n\nAs anthracite lies above silica layer\n\nSo, anthracite particles should have settling velocity less than silica particles\n\n$\\left(\\mathrm{V}_{\\mathrm{S}}\\right)_{\\mathrm{T}} \\lt \\mathrm{V}_{\\mathrm{S}}$\n\nSo, $K(0.5)\\left(D_{2}\\right)^{2} \\lt  K(1.6)(0.2)^{2}$\n\n$\\mathrm{D}_{2}$ or $\\mathrm{D}_{\\text {Top }} \\lt \\sqrt{\\frac{1.6 \\times(0.2)^{2}}{0.5}}$\n\n$\\mathrm{D}_{2}$ or $\\mathrm{D}_{\\text {Top }} \\lt 0.357 \\mathrm{~mm}$\n\nFor bottom ilmenite sand\n\n$\\left(\\mathrm{V}_{\\mathrm{S}}\\right)_{\\mathrm{B}}=\\mathrm{K}\\left(\\mathrm{G}_{\\mathrm{S}_{3}}-1\\right)\\left(\\mathrm{D}_{3}^{2}\\right)$\n\n$\\left(\\mathrm{V}_{\\mathrm{S}}\\right)_{\\mathrm{B}}=\\mathrm{K}(4.2-1)\\left(\\mathrm{D}_{3}^{2}\\right)$\n\nAs, ilimite layer lies below silica lyers\n\nSo, ilimite particles should have settling velocity greater than silica\n\ni.e., $\\left(V_{S}\\right)_{B}  \\gt V_{S}$\n\n$\\mathrm{K}(3.2)\\left(\\mathrm{D}_{3}^{2}\\right) \\gt \\mathrm{K}(1.6)(0.2)^{2}$\n\n$\\mathrm{D}_{3}$ or $\\mathrm{D}_{\\text {bottom }} \\gt \\sqrt{\\frac{1.6 \\times(0.2)^{2}}{3.2}}$\n\n$\\mathrm{D}_{3}$ or $\\mathrm{D}_{\\text {bottom }} \\gt 0.141 \\mathrm{~mm}$\n\nHence, diameter of anthracite particle is slightly greater than $0.35 \\mathrm{~mm} \\&$ diameter of ilmenite particle is slightly greater than $0.141 \\mathrm{~mm}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:q33-s2": {
       "question_uid": "ce:2024:q33-s2",
@@ -1486,7 +1521,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "$$\\begin{array}{|c|c|c|}\n\n\\hline\n\n\\text{Mid speed (kmph) }& \\% \\text{of vehicles} & Cumulative \\% \\\\\n\n\\hline\n\n5 & 1.4 & 1.4 \\\\\n\n\\hline\n\n15 & 6.2 & 7.6 \\\\\n\n\\hline\n\n25 & 15.2 & 22.8 \\\\\n\n\\hline\n\n35 & 25.8 & 48.6 \\\\\n\n\\hline\n\n45 & 20.8 & 69.4 \\\\\n\n\\hline\n\n55 & 15.6 & 85 \\\\\n\n\\hline\n\n65 & 5.8 & 90.8 \\\\\n\n\\hline\n\n75 & 4.8 & 95.6 \\\\\n\n\\hline\n\n85 & 2.6 & 98.2 \\\\\n\n\\hline\n\n95 & 1.8 & 100 \\\\\n\n\\hline\n\n\\end{array}$$\n\nHence $85^{\\text {th }}$ percentile speed or safe speed $=55$ $\\mathrm{km} / \\mathrm{hr}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:q34-s2": {
       "question_uid": "ce:2024:q34-s2",
@@ -1531,7 +1567,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "(A) $\\vec{p} \\times(\\vec{q} \\times \\vec{r})=(\\vec{p} \\cdot \\vec{r}) \\vec{q}-(\\vec{p} \\cdot \\vec{q}) \\vec{r}$\n\n(This is always true for any three given vectors)\n\n(B) We know that $\\vec{a} \\cdot \\vec{b}=\\vec{b} \\cdot \\vec{a}$ is always true but $\\vec{a} \\times \\vec{b} \\neq \\vec{b} \\times \\vec{a}$ because $\\vec{a} \\times \\vec{b}=-\\vec{b} \\times \\vec{a}$\n\nThis can be true only when $\\vec{a} \\times \\vec{b}=0$\n\nSo, $\\quad \\vec{r} \\cdot(\\vec{p} \\times \\vec{q})=\\vec{r} .(\\vec{q} \\times \\vec{p})$\n\n$\\vec{r} \\cdot(\\vec{p} \\times \\vec{q})=-\\vec{r} \\cdot(\\vec{p} \\times \\vec{q})$\n\nThis can be true if\n\n$$\\begin{aligned}\n\n\\vec{r} \\cdot(\\vec{p} \\times q) & =0 \\\\\n\n\\vec{p} \\times \\vec{q} & =\\hat{i}-2 \\hat{j}+j\n\n\\end{aligned}$$\n\n$(\\vec{r} \\cdot \\vec{p} \\times \\vec{q})=0$ this is true in this case\n\n(C) $\\vec{p} \\times(\\vec{q} \\times \\vec{r})$ can't be equal to $(\\vec{p} \\times \\vec{q}) \\times \\vec{r}$ because\n\n$\\vec{p} \\times(\\vec{q} \\times \\vec{r}) \\perp \\vec{p}$ and $(\\vec{p} \\times \\vec{q}) \\times \\vec{r}) \\perp \\vec{r}$\n\nSo, $(\\vec{p} \\times(\\vec{q} \\times \\vec{r}) \\neq(\\vec{p} \\times \\vec{q})) \\times \\vec{r}$\n\n(D) $\\vec{p} \\times(\\vec{q} \\times \\vec{r})+\\vec{q} \\times(\\vec{r} \\times \\vec{p})+\\vec{r} \\times(\\vec{p} \\times \\vec{q})=\\overrightarrow{0}$\n\n$(\\vec{p} . \\vec{r}) \\vec{q}-(\\vec{p} . \\vec{q}) \\vec{r}+(\\vec{q} . \\vec{p}) \\vec{p}-(\\vec{q} \\cdot \\vec{r}) \\vec{p}+(\\vec{r} . \\vec{q}) \\vec{p}-(\\vec{r} . \\vec{q})) \\vec{q}$\n\n$0=0$\n\n$$\\begin{aligned}\n\n& \\vec{p} \\cdot \\vec{r}=\\vec{r} \\cdot \\vec{p} \\\\\n\n& \\vec{p} \\cdot \\vec{q}=\\vec{q} \\cdot \\vec{p} \\\\\n\n& \\vec{q} \\cdot \\vec{r}=\\vec{r} \\cdot \\vec{q}\n\n\\end{aligned}$$\n\n(Hence proved)\n\nTherefore, the correct option(s) are **A, B, D**."
-      }
+      },
+      "answer": "A, B, D"
     },
     "ce:2024:q35-s2": {
       "question_uid": "ce:2024:q35-s2",
@@ -1576,7 +1613,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
         "markdown": "A fine grained soil when compacted on dry side of optimum has a flocculant (random) structure.\n\nCompacted fine grained soils with flocculant structure has isotropic permeability\n\nThe top most flow line below which seepage takes place through a dam body is called phreatic line.\n\nHydrostatic pressure is observed below phreatic line where as pressure on and above the phreatic line is atmospheric.\n\nTherefore, the correct option(s) are **C, D**."
-      }
+      },
+      "answer": "C, D"
     },
     "ce:2024:q36-s2": {
       "question_uid": "ce:2024:q36-s2",
@@ -1621,7 +1659,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
         "markdown": "In a bituminous mix\n\nVMA $=$ Voids in mineral aggregate\n\n$\\mathrm{VMA}=\\mathrm{V}_{\\mathrm{b}} \\%+\\mathrm{V}_{\\mathrm{v}} \\%$\n\nwhere, $\\mathrm{V}_{\\mathrm{b}} \\%=$ Percentage volume of bitumen\n\n$\\mathrm{V}_{\\mathrm{v}} \\%=$ Percentage air voids\n\nToughness is determined by aggregate impact test and hardness is determined by los angeles abrasion test.\n\nAn initial concavity in CBR curve indicate errors which may occur due to following reasons and also require correction\n\nTop layer of soil too soft\n\nTop surface of soil specimen is not even\n\nThe penetration plunger of the loading machine is not vertical and the bottom of plunger is not horizontal.\n\nTherefore, the correct option(s) are **A, C, D**."
-      }
+      },
+      "answer": "A, C, D"
     },
     "ce:2024:q37-s2": {
       "question_uid": "ce:2024:q37-s2",
@@ -1664,7 +1703,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\ni_{\\text {eff }} & =\\lim _{m \\rightarrow \\infty}\\left(1+\\frac{0.05}{m}\\right)^{m}-1 \\\\\n\n& =e^{\\lim _{m \\rightarrow \\infty}\\left(1+\\frac{0.05}{m}\\right) \\times m-1} \\\\\n\n& =e^{\\lim _{m \\rightarrow \\infty}\\left(\\frac{0.05}{m} \\times m\\right)-1} \\\\\n\n& =e^{0.05}-1=0.05127\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.13** (acceptable range: [5.11, 5.15])."
-      }
+      },
+      "answer": "5.13"
     },
     "ce:2024:q38-s2": {
       "question_uid": "ce:2024:q38-s2",
@@ -1707,7 +1747,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned}\n\nA & =\\left[\\begin{array}{lll}\n\n2 & 1 & 4 \\\\\n\n1 & 0 & 3\n\n\\end{array}\\right] \\\\\n\nB & =\\left[\\begin{array}{cc}\n\n-1 & 0 \\\\\n\n2 & 3 \\\\\n\n1 & 4\n\n\\end{array}\\right] \\\\\n\nA B & =\\left[\\begin{array}{ll}\n\n-2+2+4 & 0+3+16 \\\\\n\n-1+0+3 & 0+0+12\n\n\\end{array}\\right] \\\\\n\n& =\\left[\\begin{array}{ll}\n\n4 & 19 \\\\\n\n2 & 12\n\n\\end{array}\\right] \\\\\n\n& =48-38=10\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10**."
-      }
+      },
+      "answer": "10"
     },
     "ce:2024:q39-s2": {
       "question_uid": "ce:2024:q39-s2",
@@ -1750,7 +1791,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-3a0750eae7.webp\" />\n\nVertical deflection at $\\mathrm{Q}=\\frac{\\mathrm{Pl}^{3}}{3 \\mathrm{El}}+\\frac{\\mathrm{Ml}^{2}}{2 \\mathrm{El}}$\n\n$\\Delta_{Q}=\\frac{(15 \\mathrm{kN})(3 \\mathrm{~m})^{3}}{3 \\times 2 \\times 10^{5} \\mathrm{kNm}^{2}}+\\frac{(22.5 \\mathrm{kNm})}{2 \\times 2 \\times 10^{5}}$\n\n$\\Delta_{\\mathrm{Q}}=\\left(6.75 \\times 10^{-4}+5.0625 \\times 10^{-4}\\right) \\mathrm{m}$\n\n$\\Delta_{\\mathrm{Q}}=1.181 \\mathrm{~mm}$\n\nTherefore, the correct answer is **1.181** (acceptable range: [1.176, 1.186])."
-      }
+      },
+      "answer": "1.181"
     },
     "ce:2024:q40-s2": {
       "question_uid": "ce:2024:q40-s2",
@@ -1793,7 +1835,8 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Influence Line Diagram and Rolling Loads",
         "markdown": "Beam is determinate\n\nILD for $\\mathrm{BM}$ at ' $\\mathrm{P}$ ' is given by\n\n<img src=\"/question-images/ce/2024/ce-2024-28c65f2139.webp\" />\n\nHence when point load is at ' $Q$ ', the point of $\\max$ ordinate for ILD for BM at $\\mathrm{P}, \\mathrm{BM}$ at $\\mathrm{P}$ will be max.\n\n$\\Rightarrow \\mathrm{M}_{\\mathrm{P} \\text { max }}=10 \\times 15=150 \\mathrm{kN}-\\mathrm{m}$\n\nTherefore, the correct answer is **150**."
-      }
+      },
+      "answer": "150"
     },
     "ce:2024:q41-s2": {
       "question_uid": "ce:2024:q41-s2",
@@ -1836,7 +1879,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "The minimum compressive strain in the column\n\n$\\varepsilon_{\\mathrm{c}_{1} \\max }=0.0035-0.75 \\varepsilon_{\\mathrm{c}_{1} \\min }$\n\n$\\varepsilon_{\\mathrm{c}_{1} \\min }=$ strain in the least compressed fibre\n\n<img src=\"/question-images/ce/2024/ce-2024-2068dadfdf.webp\" />\n\nIn the strain diagram,\n\nFrom triangle $\\triangle \\mathrm{OAD}$ and $\\triangle \\mathrm{OBC}$\n\n$$\\begin{aligned}\n\n& \\Rightarrow \\quad \\frac{\\varepsilon_{\\mathrm{c}_{1} \\max }}{1.1 \\mathrm{D}}=\\frac{\\varepsilon_{\\mathrm{c}_{1} \\min }}{0.1 \\mathrm{D}} \\Rightarrow \\varepsilon_{\\mathrm{c}_{1} \\min }=\\frac{1}{11} \\varepsilon_{\\mathrm{c}_{1} \\max } \\\\\n\n& \\varepsilon_{\\mathrm{c}_{1} \\max }=0.0035-0.75 \\times \\frac{1}{11} \\varepsilon_{\\mathrm{c}_{1} \\max } \\\\\n\n& \\Rightarrow \\quad \\varepsilon_{\\mathrm{c}_{1} \\max }=3.276 \\times 10^{-3}=3.28 \\times 10^{-3}\n\n\\end{aligned}$$\n\nHence, the correct answer is 3.28\n\nTherefore, the correct answer is **3.3** (acceptable range: [3.2, 3.4])."
-      }
+      },
+      "answer": "3.3"
     },
     "ce:2024:q42-s2": {
       "question_uid": "ce:2024:q42-s2",
@@ -1879,7 +1923,8 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-64142b5dfb.webp\" />\n\nCritical path:\n\nA-K-L-H\n\nProject duration $=30$ days\n\nTherefore, the correct answer is **30**."
-      }
+      },
+      "answer": "30"
     },
     "ce:2024:q43-s2": {
       "question_uid": "ce:2024:q43-s2",
@@ -1922,7 +1967,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
         "markdown": "$(\\Delta \\mathrm{H})$ total head loss $=15 \\mathrm{~m}$\n\n$\\left(n_{d}\\right)$ number of equipotential drops $=10$\n\n(I) length of flow field $=3 \\mathrm{~m}$\n\n(G) specific gravity $=2.65$\n\n(FOS) factor of safety $=2$\n\n(e) void ratio $=$ ?\n\n$(\\Delta h)$ equipotential drop of head\n\n$$\\begin{aligned}\n\n& =\\frac{\\text { Total head loss }}{\\text { no. of equipotential drop }} \\\\\n\n\\Delta \\mathrm{h} & =\\frac{\\Delta \\mathrm{H}}{\\mathrm{N}_{\\mathrm{d}}}=\\frac{15}{10}=1.5 \\mathrm{~m}\n\n\\end{aligned}$$\n\nFOS against quick sand condition $=\\frac{i_{c r}}{i}$\n\n(i) hydraulic gradient $=\\frac{\\Delta \\mathrm{h}}{\\mathrm{l}}=\\frac{1.5}{3}=0.5$\n\n$2=\\frac{i_{c r}}{0.5},\\left(i_{c r}\\right)$ ciritical hydraulic gradient $=1$\n\nCritical hydraulic gradient $\\left(\\mathrm{i}_{\\mathrm{cr}}\\right)=\\frac{\\mathrm{G}-1}{1+\\mathrm{e}}=1=\\frac{2.65-1}{1+\\mathrm{e}}$\n\n(e)void ratio $=0.65$\n\nTherefore, the correct answer is **0.65** (acceptable range: [0.63, 0.67])."
-      }
+      },
+      "answer": "0.65"
     },
     "ce:2024:q44-s2": {
       "question_uid": "ce:2024:q44-s2",
@@ -1965,7 +2011,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
         "markdown": "maximum density $\\left(\\gamma_{\\mathrm{d}}\\right)_{\\max }=1.8 \\mathrm{~g} / \\mathrm{cm}^{3}$\n\nminimum density $\\left(\\gamma_{\\mathrm{d}}\\right)_{\\min }=1.3 \\mathrm{~g} / \\mathrm{cm}^{3}$\n\nspecific gravity $(G)=2.7$\n\n$\\left(I_{D}\\right)$ relative density $=\\frac{\\gamma_{d \\max }\\left(\\gamma_{d}-\\gamma_{d \\min }\\right)}{\\gamma_{d}\\left(\\gamma_{d \\max }-\\gamma_{d \\min }\\right)}$\n\n$\\therefore \\quad(n)$ percentage of voids\n\n$=\\frac{\\left(\\mathrm{V}_{\\mathrm{v}}\\right) \\text { volume of voids } \\times 100}{\\left(\\mathrm{~V}_{\\mathrm{T}}\\right) \\text { Total volume }}=50 \\%$\n\nPorosity( $n$ ) $=0.5$\n\nvoid ratio (e) $=\\frac{\\mathrm{n}}{1-\\mathrm{n}}=\\frac{0.5}{1-0.5}=1$\n\n$\\left(\\gamma_{\\mathrm{d}}\\right)_{\\text {insitu }}=\\frac{\\mathrm{G} \\cdot \\gamma_{\\mathrm{w}}}{1+\\mathrm{e}}=\\frac{2.7 \\times 1}{1+1}=1.35 \\mathrm{~g} / \\mathrm{cm}^{3}$\n\n$\\left(I_{D}\\right)=\\frac{1.8(1.35-1.3)}{1.35(1.8-1.3)}=0.13$\n\nRelative density $\\left(I_{D}\\right)=0.13$\n\nTherefore, the correct answer is **0.13** (acceptable range: [0.12, 0.14])."
-      }
+      },
+      "answer": "0.13"
     },
     "ce:2024:q45-s2": {
       "question_uid": "ce:2024:q45-s2",
@@ -2008,7 +2055,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
         "markdown": "In stress-path triaxial testing, we can control both radial and axial stress.\n\n<img src=\"/question-images/ce/2024/ce-2024-2bdd19f061.webp\" />\n\n$$\\begin{aligned} & \\sigma_1=\\sigma_3 \\tan ^2\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)+2 \\mathrm{C} \\tan \\left(45^{\\circ}+\\frac{\\phi}{2}\\right) \\\\ & 300=100 \\tan ^2\\left(45^{\\circ}+\\frac{\\phi}{2}\\right)+0\\end{aligned}$$\n\n[Since for drained test $C=0$ ]\n\n$\\Rightarrow \\phi=30^{\\circ}$\n\nAngle between normal to major plane and failure plane is $45+\\frac{\\phi}{2}$\n\nAngle between normal to minor plane and failure plane is $45^{\\circ}-\\frac{\\phi}{2}$\n\n$\\Rightarrow$ Angle between minor plane and failure plane\n\n$=45-\\frac{\\phi}{2}=45^{\\circ}-\\frac{30^{\\circ}}{2}=30^{\\circ}$\n\nTherefore, the correct answer is **30**."
-      }
+      },
+      "answer": "30"
     },
     "ce:2024:q46-s2": {
       "question_uid": "ce:2024:q46-s2",
@@ -2051,7 +2099,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
         "markdown": "Assume $\\phi \\leq \\mathrm{i}_{\\text {lowest }}$\n\n$$\\begin{aligned}\n\n\\phi & =\\left(\\frac{\\mathrm{P}-\\mathrm{R}}{\\mathrm{t}}\\right)_{\\text {eff. duration }} \\\\\n\n& =\\frac{11-6}{8}=0.625\n\n\\end{aligned}$$\n\nAssume $0.625 \\lt \\phi \\leq 0.8$\n\n$$\\begin{aligned}\n\n\\phi & =\\left(\\frac{P-R}{t}\\right)_{\\text {eff. }} \\\\\n\n& =\\frac{10.5-6}{7}=0.643\n\n\\end{aligned}$$\n\n$$\\begin{array}{c|c|c}\n\n\\mathrm{t}(\\mathrm{m}) & Rainfall \\; (\\mathrm{cm})  & Intensity \\; \\mathrm{cm} / \\mathrm{h}  \\\\\n\n\\hline\n\n0-1  & 0.5 & 0.5 \\\\\n\n1-2  & 1 & 1 \\\\\n\n2-3 & 1.6 & 1.6 \\\\\n\n3-4  & 2.4 & 2.4 \\\\\n\n4-5 & 1.8 & 1.8 \\\\\n\n5-6  & 1.6 & 1.6 \\\\\n\n6-7  & 1.3 & 1.3 \\\\\n\n7-8  & 0.8 & 0.8 \\\\\n\n\\end{array}$$\n\nTherefore, the correct answer is **0.645** (acceptable range: [0.64, 0.65])."
-      }
+      },
+      "answer": "0.645"
     },
     "ce:2024:q47-s2": {
       "question_uid": "ce:2024:q47-s2",
@@ -2094,7 +2143,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Dynamics and Flow Measurements",
         "markdown": "Initially, we have,\n\n<img src=\"/question-images/ce/2024/ce-2024-9b9339cf88.webp\" />\n\nTo replace the pipe, head loss has to be same\n\n$$\\begin{aligned}\n\n& h_{f p}=h_{f Q} \\\\\n\n\\Rightarrow \\quad & \\frac{f_{f p} L Q^{2}}{12.1 D_{P}^{5}}=\\frac{f_{f Q} L Q^{2}}{12.1 D_{Q}^{5}} \\\\\n\n\\Rightarrow \\quad & \\frac{0.04 \\times 500 \\times Q^{2}}{12.1 \\times 1^{5}}=\\frac{0.01 \\times 500 \\times Q^{2}}{12.1 \\times D_{Q}^{5}} \\\\\n\n\\Rightarrow \\quad & D_{Q}^{5}=\\frac{0.01}{0.04} \\\\\n\n\\Rightarrow \\quad & D_{Q}=\\left(\\frac{0.01}{0.04}\\right)^{1 / 5}=0.7579 \\mathrm{~m} \\\\\n\n& \\simeq 0.76 \\mathrm{~m}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.75** (acceptable range: [0.7, 0.8])."
-      }
+      },
+      "answer": "0.75"
     },
     "ce:2024:q48-s2": {
       "question_uid": "ce:2024:q48-s2",
@@ -2137,7 +2187,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-2e7762517f.webp\" />\n\nLet at any instant depth of liquid in tank is ' $h$ ' $m$ and in time (dt), the depth falls by (-dh)\n\n<img src=\"/question-images/ce/2024/ce-2024-cda57b08cd.webp\" />\n\n$\\Rightarrow\\left(C_{d} \\cdot\\left(\\frac{\\pi d^{2}}{4}\\right) \\sqrt{2 g h}\\right) d t=A_{0}(-d h)$\n\n$\\mathrm{t}=\\int \\mathrm{dt}=\\frac{\\mathrm{A}_{0}}{\\mathrm{C}_{\\mathrm{d}} \\cdot \\frac{\\pi \\mathrm{d}^{2}}{4} \\sqrt{2 \\mathrm{~g}}} \\int_{\\mathrm{H}_{1}}^{\\mathrm{H}_{2}}\\left(\\frac{-\\mathrm{dH}}{\\sqrt{\\mathrm{h}}}\\right)$\n\n$t=\\frac{A_{0}}{C_{d} \\cdot \\frac{\\pi d^{2}}{4} \\sqrt{2 g}}\\left[2\\left(\\sqrt{\\mathrm{H}_{1}}-\\sqrt{\\mathrm{H}_{2}}\\right)\\right]$\n\n$\\mathrm{t}=\\left[\\frac{2 \\times 1.5 \\mathrm{~m}^{2}}{0.6 \\times \\frac{\\pi}{4}(0.1)^{2} \\mathrm{~m}^{2} \\sqrt{2 \\times 10 \\frac{\\mathrm{m}}{\\mathrm{s}^{2}}}} \\times 2(\\sqrt{5}-\\sqrt{3.5}) \\mathrm{m}^{1 / 2}\\right] \\mathrm{sec}$\n\n$\\mathrm{t}=103.985 \\mathrm{sec}$\n\nTherefore, the correct answer is **104** (acceptable range: [102, 106])."
-      }
+      },
+      "answer": "104"
     },
     "ce:2024:q49-s2": {
       "question_uid": "ce:2024:q49-s2",
@@ -2180,7 +2231,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-458e783daa.webp\" />\n\nwidth of channel $(B)=4 \\mathrm{~m}$\n\ndischarge $(Q)=2 \\mathrm{~m}^{3} / \\mathrm{s}$\n\ndepth of $\\operatorname{flow}(\\mathrm{y})=0.4 \\mathrm{~m}$\n\n<img src=\"/question-images/ce/2024/ce-2024-99566a82ce.webp\" />\n\nSpecific energy at section (1) - (1) (E)\n\n$$\\begin{aligned}\n\n& =\\mathrm{y}_{1}+\\frac{\\mathrm{V}_{1}^{2}}{2 \\mathrm{~g}} \\\\\n\n& =0.4+\\frac{\\mathrm{Q}^{2}}{\\mathrm{~B}_{1}^{2} \\times 2 \\mathrm{~g} \\times \\mathrm{y}_{1}^{2}} \\\\\n\n& =0.4+\\frac{2^{2}}{4^{2} \\times 2 \\times 9.81 \\times 0.4^{2}} \\\\\n\n& =0.4796 \\mathrm{~m}\n\n\\end{aligned}$$\n\nWhen channel section is contracted to minimum width and for constant discharge Q. The flow over contracted section will be critical flow.\n\n$$\\begin{aligned}\n\nE & =E_{c}=\\frac{3}{2} \\cdot y_{c} \\\\\n\n\\therefore \\quad 0.4796 & =\\frac{3}{2} \\times y_{c} \\\\\n\n\\Rightarrow \\quad \\quad \\quad y_{c} & =0.4796 \\times \\frac{2}{3}=0.3197 \\mathrm{~m}\n\n\\end{aligned}$$\n\nFor critical flow condition, $\\frac{\\mathrm{Q}^{2} \\mathrm{~T}}{\\mathrm{gA}^{3}}=1$\n\n$\\frac{\\mathrm{Q}^{2} \\mathrm{~B}_{\\min }}{\\mathrm{gB}_{\\min \\mathrm{y}_{\\mathrm{c}}^{3}}^{3}}=1$\n\n$$\\begin{aligned}\n\n\\Rightarrow \\quad \\mathrm{B}_{\\min }^{2} & =\\frac{\\mathrm{Q}^{2}}{9 \\mathrm{y}_{\\mathrm{c}}^{3}}=1 \\\\\n\n\\mathrm{~B}_{\\min } & =\\left(\\frac{\\mathrm{Q}^{2}}{\\mathrm{gy_{c } ^ { 3 }}}\\right)^{1 / 3} \\\\\n\n& =\\left(\\frac{2^{2}}{9.81 \\times 0.3197^{3}}\\right)^{1 / 2} \\\\\n\n& =3.5325 \\mathrm{~m} \\simeq 3.53 \\mathrm{~m}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **3.5** (acceptable range: [3.3, 3.7])."
-      }
+      },
+      "answer": "3.5"
     },
     "ce:2024:q50-s2": {
       "question_uid": "ce:2024:q50-s2",
@@ -2223,7 +2275,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "Given,\n\nDischarge, $\\mathrm{Q}=10 \\mathrm{MLD}$\n\nDetention period, $\\mathrm{t}_{\\mathrm{d}}=2 \\mathrm{hr}$\n\nOver flow rate, $\\mathrm{V}_{0}=40,000$ litres $/ \\mathrm{m}^{2} /$ day\n\n$\\mathrm{H}=$ ?\n\nAs, Surface area of tank $=\\frac{\\text { Discharge }}{\\text { Over flow rate }}=\\frac{\\mathrm{Q}}{\\mathrm{V}_{0}}$\n\nSo,\n\n$$\\begin{aligned}\n\n& \\text { S.A. }=\\frac{10 \\times 10^{6} \\mathrm{~L} / \\text { day }}{40,000 \\mathrm{~L} / \\mathrm{m}^{2} / \\text { day }} \\\\\n\n& \\text { S.A }=250 \\mathrm{~m}^{2}\n\n\\end{aligned}$$\n\nVolume of tank $(V)=Q \\times t_{d}$\n\n$$\\begin{aligned}\n\n& =\\frac{10 \\times 10^{6} \\times 10^{-3}}{24} \\times 2 \\mathrm{~m}^{3} \\\\\n\n& \\mathrm{~V}=833.33 \\mathrm{~m}^{3}\n\n\\end{aligned}$$\n\nHence,\n\nHeight of water in tank or  Height of setting zone\n\n$$\\begin{aligned}\n\nH & =\\frac{833.33 \\mathrm{~m}^{3}}{250 \\mathrm{~m}^{2}} \\\\\n\nH & =3.33 \\mathrm{~m}\n\n\\end{aligned}$$\n\nNote: In reality, height of water in tank OR height of settling zone is estimated by above approach but if the bottom of sedimentation tank is assumed to be sloping or hoppered (i.e sludge zone is also considered) then height of water in tank is determined as follows:\n\nUsing,\n\nVolume of tank $(V)=D^{2}\\left(\\frac{\\pi}{4} H+0.011 D\\right)$\n\nAs,\n\n$$\\begin{aligned}\n\n\\text { S.A. } & =\\frac{\\pi}{4} D^{2}=250 \\mathrm{~m}^{2} \\\\\n\nD & =17.835 \\mathrm{~m}\n\n\\end{aligned}$$\n\nSo, $833.33=(17.835)^{2}\\left(\\frac{\\pi}{4} H+0.011(17.835)\\right)$\n\nSo, $\\mathrm{H}=3.085 \\mathrm{~m}$\n\nTherefore, the correct answer is **3.2** (acceptable range: [3, 3.4])."
-      }
+      },
+      "answer": "3.2"
     },
     "ce:2024:q51-s2": {
       "question_uid": "ce:2024:q51-s2",
@@ -2266,7 +2319,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Municipal Solid Waste Management",
         "markdown": "Organic waste $=\\mathrm{C}_{240} \\mathrm{O}_{200} \\mathrm{H}_{180} \\mathrm{~N}_{5} \\mathrm{~S}$\n\nWeight of organic waste $=1 \\mathrm{~kg}$\n\nBurning of organic waste converts\n\nsulphur into sulphur dioxide as follows:\n\n$\\mathrm{C}_{240} \\mathrm{O}_{200} \\mathrm{H}_{180} \\mathrm{~N}_{5} \\mathrm{~S}+\\mathrm{O}_{2} \\rightarrow \\mathrm{xCO}_{2}+\\mathrm{yH}_{2} \\mathrm{O}+\\mathrm{zH}_{2} \\mathrm{O}+\\mathrm{SO}_{2}$\n\ni.e. 6362 of organic waste produces $64 \\mathrm{~g}$ of sulphur dioxide.\n\nSo,\n\n$1 \\mathrm{~kg}$ of organic waste produces $\\frac{64}{6362} \\times 1000 \\mathrm{gm}$ of $\\mathrm{SO}_{2}$\n\nSo, Amount of $\\mathrm{SO}_{2}$ produced $=10 \\; \\mathrm{grams} / \\mathrm{kg}$\n\nTherefore, the correct answer is **10.05** (acceptable range: [9.9, 10.2])."
-      }
+      },
+      "answer": "10.05"
     },
     "ce:2024:q52-s2": {
       "question_uid": "ce:2024:q52-s2",
@@ -2309,7 +2363,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Railway and Airport Engineering",
         "markdown": "Constructed equillibrium cant\n\n$=\\frac{\\mathrm{GV}_{\\mathrm{eq}}^{2}}{127 \\mathrm{R}}=\\frac{1.75 \\times 70^{2}}{127 \\times 1080}=0.062518 \\mathrm{~m}=62.52 \\mathrm{~mm}$\n\nWith allowable cant deficiency of $100 \\mathrm{~mm}$\n\nMaximum speed of train can run with theoretical cant $=62.52+100=162.52 \\mathrm{~mm}$\n\n$$\\begin{aligned}\n\n& \\therefore & 162.52 \\times 10^{-3} & =\\frac{1.75 \\times \\mathrm{V}_{\\mathrm{m}}^{2}}{127 \\times 1080} \\\\\n\n& \\therefore & \\mathrm{V}_{\\mathrm{m}} & =112.86 \\mathrm{kmph} \\simeq 113 \\mathrm{kmph}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **114** (acceptable range: [112, 116])."
-      }
+      },
+      "answer": "114"
     },
     "ce:2024:q53-s2": {
       "question_uid": "ce:2024:q53-s2",
@@ -2352,7 +2407,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
         "markdown": "<b>Step 1: Algebraic difference of gradients</b>\n\n$A = |+3 - (-5)| = 8% = 0.08$\n\n<b>Step 2: Conversion of speed</b>\n\n$V = \\frac{80 \\times 1000}{3600} = 22.22 , \\text{m/s}$\n\n<b>Step 3: Reaction distance</b>\n\n$S_r = V \\times t = 22.22 \\times 2 = 44.44 , \\text{m}$\n\n<b>Step 4: Braking distance</b>\n\n$S_b = \\frac{V^2}{2 g f}\n\n= \\frac{(22.22)^2}{2 \\times 9.81 \\times 0.36}\n\n= 69.94 , \\text{m}$\n\n<b>Step 5: Stopping Sight Distance (SSD)</b>\n\n$S = S_r + S_b = 44.44 + 69.94 = 114.38 , \\text{m}$\n\n<b>Step 6: Length of summit curve (SSD criterion)</b>\n\nFor summit curve, when\n\n$L \\ge S$\n\n$L = \\frac{A S^2}{2(\\sqrt{h_1} + \\sqrt{h_2})^2}$\n\n$\\sqrt{h_1} = \\sqrt{2.30} = 1.517,\n\n\\quad\n\n\\sqrt{h_2} = \\sqrt{0.35} = 0.592$\n\n$(\\sqrt{h_1} + \\sqrt{h_2})^2 = (2.109)^2 = 4.448$\n\n$L = \\frac{0.08 \\times (114.38)^2}{2 \\times 4.448}\n\n= \\frac{1046.6}{8.896}\n\n= 117.70 , \\text{m}$\n\n<b>Check condition:</b>\n\n$L = 117.70 , \\text{m} \\ge S = 114.38 , \\text{m}$\n\nHence, the condition is satisfied.\n\nTherefore, the correct answer is **118.5** (acceptable range: [117, 120])."
-      }
+      },
+      "answer": "118.5"
     },
     "ce:2024:q54-s2": {
       "question_uid": "ce:2024:q54-s2",
@@ -2395,7 +2451,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
         "markdown": "$$\\begin{array}{c|c|c}\n\nLine & Length & Bearing \\\\\n\n\\hline\n\nPQ &  4 \\mathrm{~m}  &  30^{\\circ}  \\\\\n\nQR &  4 \\mathrm{~m}  &  90^{\\circ}  \\\\\n\nRP &  \\mathrm{L}  &  240^{\\circ}  \\\\\n\n\\end{array}$$\n\nClosed traverse,\n\n$\\Sigma \\mathrm{L}=0,4 \\cos 30^{\\circ}+4 \\cos 90^{\\circ}+\\mathrm{L} \\cos 240^{\\circ}=0$\n\n$\\therefore \\mathrm{L}=6.928 \\mathrm{~m} \\approx 7 \\mathrm{~m}$\n\nTherefore, the correct answer is **7** (acceptable range: [6, 8])."
-      }
+      },
+      "answer": "7"
     },
     "ce:2024:q55-s2": {
       "question_uid": "ce:2024:q55-s2",
@@ -2438,7 +2495,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-e44a4992b7.webp\" />\n\nUsing go through line (starting from $\\mathrm{P}$ )\n\n$-2.05+0.1+1.655=-0.295$\n\n(means $\\mathrm{R}$ is 0.295 lower than $\\mathrm{P}$ )\n\n$\\therefore \\quad \\mathrm{RL}$ of $\\mathrm{R}=200-0.295=199.705$\n\nTherefore, the correct answer is **199.705** (acceptable range: [199.704, 199.706])."
-      }
+      },
+      "answer": "199.705"
     },
     "ce:2024:ga:q1-s2": {
       "question_uid": "ce:2024:ga:q1-s2",
@@ -2482,7 +2540,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Drizzle means intermittant rain\n\nDownpour means heavy rain\n\nQuarrel means an angry argument\n\nFeud means an angry and bitter argument\n\nBicker means to argue about things that are\n\nnot important.\n\nNow its very clear that\n\ndrizzle $\\rightarrow$ rain $\\rightarrow$ downpour is analogous to\n\nbicker $\\rightarrow$ quarrel $\\rightarrow$ feud\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:ga:q2-s2": {
       "question_uid": "ce:2024:ga:q2-s2",
@@ -2526,7 +2585,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-b9d3fb35d4.webp\" />\n\nFrom above Venn diagram its clear that (ii) and (iii)\n\nare valid deductions.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:ga:q3-s2": {
       "question_uid": "ce:2024:ga:q3-s2",
@@ -2570,7 +2630,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\n\\text { Actual result } & =\\mathrm{pq} \\\\\n\n\\text { wrong result } & =\\mathrm{p} / \\mathrm{q} \\\\\n\n\\frac{\\text { Wrong result }}{\\text { Actual result }} & =0.2 \\text { (result reduced by } 80 \\% \\text { ) } \\\\\n\n\\frac{\\mathrm{p} / \\mathrm{q}}{\\mathrm{pq}} & =0.2=\\frac{2}{10}=\\frac{1}{5} \\\\\n\n\\frac{1}{\\mathrm{q}^2} & =\\frac{1}{5} \\Rightarrow \\mathrm{q}=\\sqrt{5}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2024:ga:q4-s2": {
       "question_uid": "ce:2024:ga:q4-s2",
@@ -2614,7 +2675,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{gathered}\n\n1+3=4=2^{2} \\\\\n\n1+3+5=9=3^{2} \\\\\n\n1+3+5+7=4^{2} \\\\\n\n(1+3+5+4 \\ldots .2 \\text { times })=20^{2} \\\\\n\n\\frac{20^{2}}{20^{2}}=1\n\n\\end{gathered}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2024:ga:q5-s2": {
       "question_uid": "ce:2024:ga:q5-s2",
@@ -2658,7 +2720,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Let no. of girls in $8^{\\text {th }}=$ no. of girls in $9^{\\text {th }}$\n\n$=x$\n\n$\\frac{\\text { No. of girls in } 8^{\\text {th }} \\text { class }}{\\text { No. of girls in } 9^{\\text {th }} \\text { class }}=\\frac{\\text { No. of boys in } 9^{\\text {th }} \\text { class }}{\\text { No. of girls in } 9^{\\text {th }} \\text { class }}$\n\n$$\\begin{aligned}\n\n\\frac{x}{450-x} & =\\frac{360-x}{x} \\\\\n\nx^{2} & =(450-x)(360-x) \\\\\n\nx^{2} & =16200-450 x-360 x+x^{2} \\\\\n\nx & =\\left(\\frac{16200}{810}\\right) \\\\\n\n& =200\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:ga:q6-s2": {
       "question_uid": "ce:2024:ga:q6-s2",
@@ -2700,9 +2763,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "General Aptitude - Verbal Aptitude (Phrasal Verbs with 'Stand')",
+        "markdown": "- **Given Sentence:**\n  - *\"Yoko Roi stands ___(i)____ as an author for standing ___(ii)___ as an honorary fellow, after she stood ___(iii)___ her writings that stand ___(iv)___ the freedom of speech.\"*\n\n- **Idiomatic Phrasal Verb Principles:**\n  - **Stand out:** To be prominent, distinguished, or noticeably superior in excellence.\n  - **Stand down:** To resign, step down, or withdraw from an official role, post, or honor.\n  - **Stand by:** To adhere to, support, defend, or remain steadfast in one's principles or writings despite controversy.\n  - **Stand for:** To advocate, represent, or champion an ideal or principle.\n\n- **Analytical Sentence Breakdown:**\n  - **Blank (i):** *\"Yoko Roi stands [out] as an author...\"*\n    - The clause highlights her prominence and distinction as a writer; *\"stand out\"* is the appropriate idiom.\n  - **Blank (ii):** *\"...for standing [down] as an honorary fellow...\"*\n    - The clause describes resigning or relinquishing her fellowship position; *\"stand down\"* denotes stepping down from office.\n  - **Blank (iii):** *\"...after she stood [by] her writings...\"*\n    - The clause describes her refusal to retract her work, firmly defending it; *\"stand by\"* means to uphold or maintain loyalty to one's beliefs.\n  - **Blank (iv):** *\"...that stand [for] the freedom of speech.\"*\n    - The relative clause defines literature that champions or advocates the principle of free speech; *\"stand for\"* means to advocate or support.\n  - Combining the selections yields: **(i) out, (ii) down, (iii) by, (iv) for**.\n\n- **Distractor Analysis:**\n  - Option A incorrectly uses *\"stood in\"* in blank (iii), which means to serve as a temporary substitute.\n  - Options B and C use *\"stands down\"* in blank (i) and *\"standing out\"* in blank (ii), which completely reverses the meaning and syntax of the sentence.\n\nTherefore, the correct answer is **Option D ((i) out (ii) down (iii) by (iv) for)**.",
+        "images": []
+      },
+      "answer": "D"
     },
     "ce:2024:ga:q7-s2": {
       "question_uid": "ce:2024:ga:q7-s2",
@@ -2746,7 +2811,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/ce/2024/ce-2024-0eed83c6ab.webp\" />\n\nLet the radius of cylinder $=\\mathrm{R}$ and the radius of chalk $=r$\n\n$2 r+2 r+2 r=2 R$\n\n$r=(R / 3)$\n\nVolume of cylinder $=\\pi \\mathrm{R}^{2} \\mathrm{~h}$\n\nVolume of chalk $=\\pi\\left(\\frac{\\mathrm{R}}{3}\\right)^{2} \\mathrm{~h}$\n\n$\\frac{\\text { Volume of occupied space }}{\\text { Volume of empty space }}=\\frac{7 \\pi \\frac{R^{2}}{9} h}{\\pi R^{2} h-\\frac{7 \\pi R^{2}}{9}}$\n\n$=\\frac{7 / 9}{2 / 9}=\\left(\\frac{7}{2}\\right)$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2024:ga:q8-s2": {
       "question_uid": "ce:2024:ga:q8-s2",
@@ -2790,7 +2856,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Risk reduction value $(0-5000)$\n\n$=1-0.45$\n\n$=0.55$\n\nwhich is maximum.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2024:ga:q9-s2": {
       "question_uid": "ce:2024:ga:q9-s2",
@@ -2832,9 +2899,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "General Aptitude - Spatial Aptitude (Orthographic & Planar Projections)",
+        "markdown": "- **Given Parameters & Assembly Layout:**\n  - Assembly composed of 5 identical unit cubes and 1 smaller cube.\n  - **Top View (Direction $X$):** Looking vertically downward yields Figure B, a $2 \\times 2$ grid with the smaller cube located in the bottom-right quadrant.\n    - Base layer: $2 \\times 2$ arrangement of 4 unit cubes.\n    - Upper level:\n      - One unit cube sits on the back-left base cube (forming a column of height 2).\n      - One smaller cube sits on the top face of the back-right base cube.\n  - **Direction $Y$ View:** Looking horizontally along the arrow $Y$ shown in Figure A (perpendicular to the right vertical face).\n\n- **Analytical Derivation of the View from Direction $Y$:**\n  - Viewing along direction $Y$ projects the 3D assembly onto a 2D vertical plane:\n    - **Width of the Silhouette (Lateral Columns):**\n      - **Left column:** Corresponds to the front portion of the assembly (front-right and front-left cubes). Since both have a height of 1 unit, the left column has a total silhouette height of $1$ unit.\n      - **Right column:** Corresponds to the rear portion of the assembly (back-right and back-left cubes). The unit cube sitting on the back-left base cube gives this column a total silhouette height of $2$ units.\n    - **Position of the Smaller Cube:**\n      - The smaller cube sits on top of the back-right base cube (at elevation $z = 1$).\n      - In lateral position, the back-right cube forms the rightmost vertical boundary in the $Y$-direction projection.\n      - Therefore, the smaller cube appears in the right column, resting on the horizontal line dividing the first and second levels, flush against the right outer boundary.\n  - Comparing with the given options, **Figure (A)** accurately represents this planar projection: a left column of height $1$, a right column of height $2$, and the smaller square resting on the lower square of the right column against the right edge.\n\n- **Distractor Analysis:**\n  - Figure (B) depicts a vertical dividing line through the upper unit square rather than a smaller cube.\n  - Figure (C) places the smaller square against the left boundary of the right column rather than the outer right edge.\n  - Figure (D) places the smaller cube on top of the left column (height 1), which directly contradicts Figure A.\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
+      },
+      "answer": "A"
     },
     "ce:2024:ga:q10-s2": {
       "question_uid": "ce:2024:ga:q10-s2",
@@ -2878,7 +2947,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "When the cube is rotated that is held with one of\n\nthe four body diagonals aligned to the vertical axis\n\n<img src=\"/question-images/ce/2024/ce-2024-68a42e36ea.webp\" />\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     }
   }
 }

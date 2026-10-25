@@ -52,7 +52,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Exact value of $\\int_{0.5}^{1.5}\\frac{dx}{x}=\\left [ \\log x \\right ]_{0.5}^{1.5} = \\log (1.5)- \\log(0.5) =1.0986$\n\nApproximate value by Simpson's rule with 3 point is,\n\n$$\\begin{aligned}  I&=\\frac{h}{3}\\left ( f\\left ( 0 \\right )+4f\\left ( 1 \\right )+f\\left ( 2 \\right ) \\right ) \\\\    n_{i}&=n_{pt}-1=3-1=2 \\end{aligned}$$\n\n($n_{pt}$ is the number of pts and $n_{i}$ is the number of intervals)\n\nHere $h=\\frac{b-a}{n_{i}}=\\frac{1.5-0.5}{2}=0.5$\n\nThe table is\n\n<img src=\"/question-images/ce/2012/ce-2012-28f26afeac.webp\" />\n\n$I=\\frac{0.5}{3}\\left ( \\frac{1}{0.5}+4 \\times 1+\\frac{1}{1.5}\\right ) = 1.1111$\n\nSo the estimate exceeds the exact value by,\n\nApproximate value-Exact value\n\n$=0.012499  \\approx 0.012499$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q2": {
       "question_uid": "ce:2012:q2",
@@ -97,7 +98,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "The annual precipitation is normally distributed with $\\mu =1000\\: mm$ and $\\sigma =200\\: mm$\n\n$$\\begin{aligned} p\\left ( x\\gt 1200 \\right ) &=p\\left ( z\\gt \\frac{1200-1000}{200} \\right ) \\\\ &=p\\left ( z\\gt 1 \\right ) \\end{aligned}$$\n\nWhere z is the standard normal variate.\n\nIn normal distribution\n\nNow, since\n\n$p\\left ( -1\\lt z\\lt 1 \\right )\\approx 0.68$\n\n($\\simeq 68%$ of data is within one standard deviation of mean)\n\n$$\\begin{aligned} p\\left ( 0\\lt z\\lt 1 \\right ) &=\\frac{0.68}{2}&=0.34 \\\\ \\text{So} p\\left ( z\\gt 1 \\right ) &=0.5-0.34 \\\\ &=0.16\\simeq 16\\% \\end{aligned}$$\n\nwhich is $\\lt 50\\%$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q3": {
       "question_uid": "ce:2012:q3",
@@ -142,7 +144,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "$e^{x}=1+x+\\frac{x^{2}}{2!}+\\frac{x^{3}}{3!}...$\n\n(By McLaurin's series expansion)\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q4": {
       "question_uid": "ce:2012:q4",
@@ -187,7 +190,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
         "markdown": "$\\mu =\\left | \\frac{\\text{Lateral strain}}{\\text{Axial strain}} \\right |$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q5": {
       "question_uid": "ce:2012:q5",
@@ -232,7 +236,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Shear Force and Bending Moment",
         "markdown": "We know that\n\n$$\\begin{aligned} \\frac{d S}{d x} &=W ; \\frac{d M}{d X}=S_{x} \\\\ E 1 \\cdot \\frac{d^{2} y}{d x^{2}} &=M \\\\ \\therefore\\quad \\frac{d^{2} y}{d x^{2}} &=\\frac{M}{E I} \\\\ \\text{Also}\\quad \\frac{M}{I} &=\\frac{f}{y}=\\frac{E}{R} \\quad \\therefore \\frac{M}{E I}=\\frac{1}{R} \\\\ \\therefore\\quad \\frac{d^{2} y}{d x^{2}} &=\\frac{1}{R} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q6": {
       "question_uid": "ce:2012:q6",
@@ -277,7 +282,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-68f71584ab.webp\" />\n\nMaximum shear stress,\n\n$\\tau=\\frac{\\sigma_{1}-\\sigma_{2}}{2}=\\frac{P-P}{2}=0$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q7": {
       "question_uid": "ce:2012:q7",
@@ -322,7 +328,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-720d2cc77d.webp\" />\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q8": {
       "question_uid": "ce:2012:q8",
@@ -367,7 +374,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q9": {
       "question_uid": "ce:2012:q9",
@@ -412,7 +420,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q10": {
       "question_uid": "ce:2012:q10",
@@ -457,7 +466,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
         "markdown": "Eulars critical load,\n\n$$\\begin{aligned} P_{e}&=\\frac{\\pi^{2}EI}{I^{2}_{\\text{eft}}}\\\\ \\frac{P_{e1}}{P_{e2}}=\\left[\\frac{(I_{\\text{elf}})_{2}}{(I_{\\text{elf}})_{1}} \\right ]^{2}&=\\left[\\frac{I}{1/2}\\right ]^{2}=4 \\end{aligned}$$\n\n<img src=\"/question-images/ce/2012/ce-2012-0f0dfb9048.webp\" />\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q11": {
       "question_uid": "ce:2012:q11",
@@ -502,7 +512,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
         "markdown": "$$\\begin{aligned} \\therefore \\quad \\tau&=c+\\bar{\\sigma}_{a} \\tan \\phi \\\\ \\text{For sands,} \\quad c&=0 \\\\ \\Rightarrow \\quad \\tau&=\\bar{\\sigma}_{n} \\tan \\phi \\\\ \\therefore \\quad \\frac{\\tau}{\\sigma_{n}}&=\\tan \\phi=\\tan 38^{\\circ}=0.781 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q12": {
       "question_uid": "ce:2012:q12",
@@ -547,7 +558,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Compaction of Soil",
         "markdown": "Optimum moisture content of the soil decreases with increase compactive efforts.\n\n<img src=\"/question-images/ce/2012/ce-2012-1561be82ea.webp\" />\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q13": {
       "question_uid": "ce:2012:q13",
@@ -592,7 +604,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-0d8e9be112.webp\" />\n\n$$\\begin{aligned} 1_{p}\\text{ of soil } &=28 \\% \\\\ \\mathrm{I}_{\\mathrm{P}} \\text{ of A-line }&=0.73\\left(\\mathrm{w}_{\\mathrm{L}}-20\\right) \\\\ &=0.73(40-20)=14.6\\\\ \\because \\quad 1_{p} &\\text{ of soil } \\gt 1_{p}\\text{ of A-line}\\\\ \\end{aligned}$$\n\n$\\therefore$ It will be above A-line and also $35 \\lt w_{2} \\lt 50$\n\nSo it is CI.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q14": {
       "question_uid": "ce:2012:q14",
@@ -637,7 +650,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q15": {
       "question_uid": "ce:2012:q15",
@@ -682,7 +696,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
         "markdown": "Given, $\\gamma=20 \\mathrm{kN} / \\mathrm{m}^{3}$\n\nShear strength $\\mathrm{s}=25 \\mathrm{kN} / \\mathrm{m}^{2}$\n\nBearing capacity factor, $N_{c}=5.7$\n\n$$\\begin{aligned} \\because\\quad &=c \\quad \\Rightarrow c=25 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ q_{u}&=c N_{c}=25 \\times 5.7 \\\\ \\Rightarrow \\gamma \\mathrm{D}_{t}&=25 \\times 5.7\\\\ \\Rightarrow \\quad D_{1}&=7.1 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q16": {
       "question_uid": "ce:2012:q16",
@@ -727,7 +742,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-7cd24900d9.webp\" />\n\n$$\\begin{aligned} \\because \\quad A &=(B+n y) y=\\left(10+\\frac{4}{3} \\times 3\\right) \\times 3 \\\\ &=(10+4) 3=42 m^{2} \\\\ P &=B+2 y \\sqrt{n^{2}+1} \\\\ &=10+6 \\sqrt{(4 / 3)^{2}+1} \\\\ &=10+6 \\times \\frac{5}{3}=20 m \\\\ \\therefore \\quad R &=\\frac{A}{P}=\\frac{42}{20}=2.1 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q17": {
       "question_uid": "ce:2012:q17",
@@ -772,7 +788,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "Froude Number\n\n$$\\begin{aligned} F&=\\frac{V}{\\sqrt{g y}} \\\\ \\Rightarrow 0.8&=\\frac{V}{\\sqrt{9.81 \\mathrm{y}}} &\\ldots(i)\\\\ \\because \\quad Q&=A V \\\\ \\Rightarrow \\quad 100&=(5 \\mathrm{y}) \\mathrm{V} \\\\ \\Rightarrow \\quad v&=\\frac{100}{5 y}=\\frac{20}{y} \\\\ \\therefore \\text{From eq. (i)}\\\\ 0.8&=\\frac{20}{\\sqrt{9.81} \\cdot(y)^{3 / 2}} \\\\ \\Rightarrow \\quad y^{3 / 2}&=\\frac{20}{0.8 \\sqrt{9.81}} \\\\ \\therefore \\quad y&=3.99 \\simeq 4 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q18": {
       "question_uid": "ce:2012:q18",
@@ -817,7 +834,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-a0c8a08807.webp\" />\n\n$$\\begin{aligned} Q_{1}&=Q_{2}+Q_{3}\\\\ A_{1}V_{1}&=A_{2}V_{2}+A_{3}V_{3}\\\\ \\Rightarrow \\frac{\\pi}{4}(4)^{2} \\times 6&=\\frac{\\pi}{4}(4)^{2} \\times 5+\\frac{\\pi}{4}(2)^{2} \\times V_{3} \\\\ \\Rightarrow \\quad 16 \\times 6&=16 \\times 5+4 \\mathrm{V}_{3} \\\\ \\Rightarrow \\quad 16&=4 \\mathrm{V}_{3} \\\\ \\Rightarrow \\quad V_{3}&=4 \\mathrm{m} / \\mathrm{s} \\\\ \\therefore \\qquad V&=4 \\mathrm{m} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q19": {
       "question_uid": "ce:2012:q19",
@@ -862,7 +880,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q20": {
       "question_uid": "ce:2012:q20",
@@ -907,7 +926,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q21": {
       "question_uid": "ce:2012:q21",
@@ -952,7 +972,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Design of sewers and Sewerage System",
         "markdown": "To control the backing up of sewage in the incoming sewer, the crown of the outgoing sewer should not be higher than the crown of incoming sewer.\n\nThere may be more than one incoming sewer in a manhole that's why\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q22": {
       "question_uid": "ce:2012:q22",
@@ -997,7 +1018,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "When both roads are one-way they total no. of\n\nconflict point, x=6\n\nWhen both roads are two-way they total no. of\n\nconflict point, y=24\n\n$\\therefore \\frac{x}{y}=\\frac{6}{24}=\\frac{1}{4}=0.25$\n\nNote:\n\n<img src=\"/question-images/ce/2012/ce-2012-ad02d718a0.webp\" />\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q23": {
       "question_uid": "ce:2012:q23",
@@ -1042,7 +1064,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Highway Materials",
         "markdown": "Since softening point for Y is higher than X\n\n$\\therefore \\quad$ Viscosity of Y is high as compared to X and\n\npenetration will be more in X, because it will offer,\n\nless resistance to penetrate.\n\n$\\therefore \\quad$ Both statement I & II are false.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q24": {
       "question_uid": "ce:2012:q24",
@@ -1087,7 +1110,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q25": {
       "question_uid": "ce:2012:q25",
@@ -1132,7 +1156,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "Reciprocal levelling eliminates the errors due to\n\n(i) Error in instrument adjustment.\n\n(ii) Combined effect of earth's curvature and the refraction of the atmosphere.\n\n(iii) Variation in the average refraction.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q26": {
       "question_uid": "ce:2012:q26",
@@ -1177,7 +1202,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Error in central difference formula is $0\\left ( h^{2} \\right )$\n\nThis means,\n\n$\\text{error } \\propto  h^{2}$\n\nIf error for $h=0.03$ is $2\\times 10^{-3}$\n\nthen,\n\nError for $h=0.002$ is approximately\n\n$2\\times 10^{-3}\\times \\frac{\\left ( 0.02 \\right )^{2}}{\\left ( 0.03 \\right )^{2}}\\simeq 9\\times 10^{-4}$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q27": {
       "question_uid": "ce:2012:q27",
@@ -1222,7 +1248,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Since negative and positive are equally likely, the distribution of number of negative values is binomial with n=5 and p=1/2\n\nLet X represent number of negative values in 5 trials.\n\np(at most 1 negative value)\n\n$$\\begin{aligned} &=p\\left ( x\\leq 1 \\right ) \\\\ &=p\\left ( x=0 \\right )+p\\left ( x=1 \\right ) \\\\ &=5C_{0}\\left ( \\frac{1}{2} \\right )^{0}\\left ( \\frac{1}{2} \\right )^{5}+5C_{1}\\left ( \\frac{1}{2} \\right )^{1}\\left ( \\frac{1}{2} \\right )^{4}\\\\&=\\frac{6}{32} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q28": {
       "question_uid": "ce:2012:q28",
@@ -1267,7 +1294,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "We need eigen values of $$A=\\begin{bmatrix} 9 & 5\\\\ 5 & 8 \\end{bmatrix}$$\n\nThe characteristic equation is,\n\n$$\\begin{aligned} \\begin{bmatrix} 9-\\lambda & 5\\\\ 5 & 8-\\lambda \\end{bmatrix}&=0 \\\\ \\left ( 9-\\lambda \\right )\\left ( 8-\\lambda \\right )-25&=0 \\\\ \\Rightarrow \\;\\; \\lambda ^{2}-17\\lambda +47&=0 \\end{aligned}$$\n\nSo eigen values are,\n\n$\\lambda =3.48,\\: 13.53$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q29": {
       "question_uid": "ce:2012:q29",
@@ -1312,7 +1340,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-06290540ba.webp\" />\n\nThe area of parallelogram OPQR in figure shown above, is the magnitude of the vector product\n\n$$\\begin{aligned}  &=\\left | \\overrightarrow{OP}\\times \\overrightarrow{OR} \\right | \\\\  \\overrightarrow{OP}&=a\\hat{i}+b\\hat{j} \\\\  \\overrightarrow{OR}&=c\\hat{i}+d\\hat{j} \\\\  \\overrightarrow{OP}\\times \\overrightarrow{OR}&=\\begin{vmatrix} i & j & k\\\\ a & b & 0\\\\ c & d & 0 \\end{vmatrix} \\\\    &=0\\hat{i}+0\\hat{j}+\\left ( ad-bc \\right )\\hat{k} \\\\ \\left | \\overrightarrow{OP}\\times \\overrightarrow{OR} \\right |&=\\sqrt{0^{2}+0^{2}+\\left ( ad-bc \\right )^{2}} \\\\    &=ad-bc \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q30": {
       "question_uid": "ce:2012:q30",
@@ -1357,7 +1386,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
         "markdown": "$$\\begin{aligned} \\text{Given, }\\frac{\\mathrm{d} y}{\\mathrm{d} x}+2y&=0 \\text{ and } y(1)=5 \\\\    \\frac{\\mathrm{d} y}{\\mathrm{d} x}&=-2y \\\\    \\int \\frac{dy}{y}&=\\int -2dx \\\\ \\Rightarrow \\;\\;  \\ln y&=-2x+c \\\\ \\Rightarrow   \\;\\; y&=e^{-2x}.e^{c}=c_{1}e^{-2x} \\\\    y\\left ( 1 \\right )&=c_{1}e^{-2}=5 \\\\ \\Rightarrow \\; c_{1}&=\\frac{5}{e^{-2}} \\\\ \\text{So, }   y&=\\frac{5}{e^{-2}}e^{-2x}=5e^{2}e^{-2x} \\\\     &=36.95\\, e^{-2x} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q31": {
       "question_uid": "ce:2012:q31",
@@ -1402,7 +1432,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-42050295b0.webp\" />\n\n$$\\begin{aligned} \\delta &=\\delta_{1}+0 \\\\ &=\\frac{5}{384} \\frac{(w / 2) l^{4}}{E I} \\\\ \\delta &=\\frac{5}{768} \\frac{w l^{4}}{E I} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q32": {
       "question_uid": "ce:2012:q32",
@@ -1447,7 +1478,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-84d545c942.webp\" />\n\n$$\\begin{aligned} \\Sigma F_y &=0 \\\\ \\Rightarrow \\;\\; V_R-P&=0\\\\ \\Rightarrow \\;\\;V_R&=P\\\\ \\Sigma M_Q&=0\\\\ \\Rightarrow \\;\\; H_Rh-M&=0\\\\ \\Rightarrow \\;\\;H_R&=\\frac{M}{h} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q33": {
       "question_uid": "ce:2012:q33",
@@ -1492,7 +1524,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Prestressed Concrete Beams",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-b69c6cf93b.webp\" />\n\n$\\text { Total stress at Bottom }=\\frac{P}{A}+\\frac{P_{\\theta}}{I} y-\\frac{M}{Z}$\n\n$$\\begin{aligned} \\text { Here, } Z &=\\frac{b d^{2}}{6}=\\frac{500 \\times 750^{2}}{6} \\\\ &=46.875 \\times 10^{6} \\mathrm{mm}^{3} \\\\ e &=145 \\mathrm{mm} ; P=1620 \\mathrm{kN} \\\\ M &=\\frac{w l^{2}}{8}=\\frac{45 \\times 7.3^{2}}{8}=299.76 \\mathrm{kNm} \\\\ \\therefore \\frac{P}{A} &=\\frac{1620 \\times 10^{3}}{500 \\times 750}=4.32 \\mathrm{N} / \\mathrm{mm}^{2} \\\\ \\frac{P e}{Z} &=\\frac{1620 \\times 10^{3} \\times 145}{46.875 \\times 10^{6}}=5.01 \\mathrm{N} / \\mathrm{mm}^{2} \\\\ \\frac{M}{Z}&=\\frac{299.76 \\times 10^{6}}{46.875 \\times 10^{6}} =6.39 \\mathrm{N} / \\mathrm{mm}^{2} \\\\ \\therefore &\\text { Total stress at bottom } =4.32+5.01-6.39 \\\\ &=2.94 \\mathrm{N} / \\mathrm{mm}^{2} . \\text { (comp.) } \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q34": {
       "question_uid": "ce:2012:q34",
@@ -1537,7 +1570,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q35": {
       "question_uid": "ce:2012:q35",
@@ -1582,7 +1616,8 @@
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-c5779ef817.webp\" />\n\nMaximum force transmitted by plate $=P$\n\n$P=A_{g}\\times \\frac{f_{y}}{1.1}= \\left ( 12\\times 100 \\right )\\times \\frac{250}{1.1} =272.72 kN$\n\nForce resisted by weld,\n\n$P=272.72 kN \\;\\;\\;...(i)$\n\nLet length of weld on either side $=l$\n\nSize of weld (S)=10 mm\n\nForce resisted by weld $=\\frac{0.7\\times S}{1.25}\\times \\left ( \\frac{f_{u}}{\\sqrt{3}}\\right )\\times l$\n\nSize = 10 mm\n\nThroat thickness $=0.7\\times 10= 7 mm$\n\n$=\\frac{7\\times 410}{1.25\\times \\sqrt{3}}\\times l \\;\\;\\;...(ii)$\n\nFrom equations(i) and (ii),\n\n$272.72\\times 10^{3}=\\frac{7\\times 410}{1.25\\times \\sqrt{3}\\times l}$\n\n$l=205.8$ mm\n\nLength eq. of each side$=\\frac{l}{2}= 103 mm\\simeq 105 mm$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q36": {
       "question_uid": "ce:2012:q36",
@@ -1627,7 +1662,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Effective Stress and Permeability",
         "markdown": "Given, For first specimen.\n\n$\\frac{h_{1}}{h_{2}}=1.25 \\; \\& \\; k_{2}=5 k_{1}$\n\nthen for second specimen, $\\frac{h'_1}{h'_2}=?$\n\nWe know that; for falling head permeability test.\n\n$$\\begin{aligned} k&=\\frac{2.303 a L}{A \\cdot t} \\log _{10}\\left(\\frac{h_{1}}{h_{2}}\\right)\\\\ \\therefore \\quad \\frac{k_{2}}{k_{1}}&=\\frac{\\log _{10}\\left(h'_{1} / h'_{2}\\right)}{\\log _{10}\\left(h_{1} / h_{2}\\right)} \\\\ \\Rightarrow 5 \\log _{10} 1.25&=\\log _{10}\\left(\\frac{h'_{1}}{h'_{2}}\\right) \\\\ \\Rightarrow \\quad \\frac{h'_{1}}{h'_{2}}&=3.05 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q37": {
       "question_uid": "ce:2012:q37",
@@ -1672,7 +1708,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
         "markdown": "Given\n\n$$\\begin{aligned} \\Delta \\bar{\\sigma} &=20 \\mathrm{kPa}, \\bar{\\sigma}_{0}=100 \\mathrm{kPa} \\\\ G &=2.7 \\\\ \\mathrm{w} &=45 \\% \\\\ \\mathrm{C}_{\\mathrm{c}} &=0.45 \\\\ \\mathrm{C}_{\\mathrm{r}} &=0.05 \\\\ \\mathrm{H}_{0} &=1 \\mathrm{m} \\\\ \\therefore \\quad \\Delta \\mathrm{H} &=\\frac{\\mathrm{C}_{\\mathrm{c}} \\mathrm{H}_{0}}{1+\\mathrm{e}_{0}} \\log _{10}\\left[\\frac{\\overline{\\mathrm{\\sigma}}_{0}+\\Delta \\overline{\\mathrm{o}}}{\\overline{\\mathrm{\\sigma}}_{0}}\\right] \\\\ \\text{Also},\\quad wG&=eS \\\\ \\Rightarrow \\quad 0.45 \\times 2.7 &=e .1 \\\\ \\Rightarrow \\quad &=1.215 \\\\ \\therefore \\quad \\Delta H &=\\frac{0.45 \\times 1}{1+1.215} \\log _{10}\\left(\\frac{(100+20)}{100}\\right) \\\\ &=\\frac{0.45}{2.215} \\log _{10}\\left(\\frac{120}{100}\\right) \\\\ &=0.016 \\mathrm{m}=16 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:q38": {
       "question_uid": "ce:2012:q38",
@@ -1717,7 +1754,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
         "markdown": "Ther given situation can be represented as\n\n<img src=\"/question-images/ce/2012/ce-2012-abfabf0278.webp\" />\n\n$$\\begin{aligned} \\sigma &=(1.5+0.5) \\gamma_{\\operatorname{sat}} \\\\ u &=2.05 \\gamma_{w} \\\\ \\sigma^{\\prime} &=\\sigma-u \\\\ &=2 \\gamma_{\\text{sat}}-2.05 \\gamma_{w} \\\\ &=15.89 \\mathrm{kPa} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q39": {
       "question_uid": "ce:2012:q39",
@@ -1762,7 +1800,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Evaporation, Transpiration and Stream Flow Measurement",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-92c7d7caa8.webp\" />\n\n$$\\begin{aligned} V_{0.2}&=0.6m/s \\\\ V_{0.8}&=0.4 m/s \\\\ V&=\\frac{V_{0.2}+V_{0.8}}{2} \\\\ &=\\frac{0.6+0.4}{2}=0.5 m/s\\\\ Q&=AV \\\\ &= \\frac{1}{2}\\times 1\\times 4\\times 0.5=1.0m^{3}/s. \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q40": {
       "question_uid": "ce:2012:q40",
@@ -1807,7 +1846,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q41": {
       "question_uid": "ce:2012:q41",
@@ -1852,7 +1892,8 @@
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
         "markdown": "Given, Base period, B=120 days\n\n$\\Delta=55-10=45 \\mathrm{cm}=0.45 \\mathrm{m}$\n\n$\\because \\quad \\Delta=8.64 \\frac{B}{D}, \\quad \\therefore D=\\frac{8.64 \\times 120}{0.45}=2304$\n\n$\\therefore \\text{ Area, } \\quad A=2304 \\times 0.01=23.04$\n\nAs efficiency of Irrigation is 60 %\n\nThen required area for wheat crop\n\n$=23.04 \\times \\frac{60}{100}=13.82 \\mathrm{ha}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q42": {
       "question_uid": "ce:2012:q42",
@@ -1897,7 +1938,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
         "markdown": "$$\\begin{aligned} \\mathrm{P}^{\\mathrm{H}} &=9.25 \\\\ \\because\\quad \\mathrm{PH}+\\mathrm{P}^{\\mathrm{OH}} &=14 \\\\ \\Rightarrow\\quad \\mathrm{p}^{OH} &=14-9.25=4.75 \\\\ \\Rightarrow\\quad -\\log _{10}\\left[\\mathrm{OH}^{-}\\right] &=4.75 \\\\ \\therefore \\quad [\\mathrm{OH}] &=1.778 \\times 10^{-5}\\left(\\frac{\\mathrm{mol}}{\\mathrm{lit}}\\right) \\\\ \\therefore \\quad \\frac{\\mathrm{mol}}{\\mathrm{lit}} \\text { of } \\mathrm{OH}^{-} &=1.778 \\times 10^{-5} \\\\ \\therefore \\quad \\frac{\\mathrm{gm}}{\\mathrm{lit}} \\text { of } \\mathrm{OH}^{-} &=1.778 \\times 10^{-5} \\times 17 \\\\ &=30.226 \\times 10^{-5} \\\\ &=302.6 \\times 10^{-6} \\mathrm{gm} / \\mathrm{it} \\\\ \\therefore \\quad \\left[\\mathrm{OH}^{-}\\right] &=302.6 \\times 10^{-3} \\mathrm{mg} / \\mathrm{lit} \\\\ &=0.302 \\mathrm{mg} / \\mathrm{lit} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q43": {
       "question_uid": "ce:2012:q43",
@@ -1942,7 +1984,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "Overflow rate,$V_{0}=0.2\\times 10^{-3}$ m/s\n\nWater required to treat raw water,\n\n$4.2\\; m^{3}/min=\\frac{4.2}{60}\\; m^{3}/s=0.07\\; m^{3}/s$\n\n$\\therefore$ Required surface area, A\n\n$\\; \\; \\; \\; \\; \\; \\; \\; =\\frac{0.07}{0.2\\times 10^{-3}}=350\\; m^{2}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q44": {
       "question_uid": "ce:2012:q44",
@@ -1987,7 +2030,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
         "markdown": "Number of commercial vehicles per day,\n\n$A=4500$\n\nAnnual traffic growth rate,\n\n$r=8 \\%$\n\nDesign life, n=15 years The cumulative standard axles,\n\n$N_{s}=100 \\times 10^{6}$\n\nVehicle damage factor used\n\n$$\\begin{aligned} &=\\frac{N_{s} \\times r}{365 A\\left[(1+r)^{n}-1\\right]} \\\\ &=\\frac{100 \\times 10^{6} \\times 0.08}{365 \\times 4500 \\times\\left[(1+0.08)^{15}-1\\right]} \\\\ &=2.24 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q45": {
       "question_uid": "ce:2012:q45",
@@ -2032,7 +2076,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
         "markdown": "$$\\begin{array}{ccc} \\text{Length of curve,} &L_{c}&=200 \\mathrm{m} \\\\ \\text{ Radius,}&R&=300 \\mathrm{m}\\\\ \\text{Width,}&w&=7.5 \\mathrm{m}\\\\ \\text{SSD, }&S&=80 \\mathrm{m} \\\\ \\because \\quad L_{c} \\gt S&& \\end{array}$$\n\nSet back distance,\n\n$$\\begin{aligned} m &=(R)-(R-d) \\cos \\frac{\\alpha}{2} \\\\ \\frac{\\alpha}{2} &=\\frac{180 \\cdot S}{2 \\pi(R-d)}=\\frac{180 \\times 80}{2 \\pi \\times\\left(300-\\frac{7.5}{4}\\right)} \\\\ &=7.687 \\\\ m &=300-\\left(300-\\frac{7.5}{4}\\right) \\cos (7.687) \\\\ &=2.67 \\end{aligned}$$\n\nAfter this: The setback distance (in m) required from the centre line of the inner lane of the pavement is $= 4.55-\\frac{7.5}{4} = 2.675 m$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:q46": {
       "question_uid": "ce:2012:q46",
@@ -2077,7 +2122,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "Capacity per lane\n\n$$\\begin{aligned} &=\\frac{1800}{2}=900 \\text { Vehicle/hour } \\\\ k_{j} &=\\frac{1000}{5}=200 \\text { Veh. } / \\mathrm{km} \\\\ q_{\\max } &=\\frac{V_{s t} \\times k_{j}}{4} \\\\ 900 &=\\frac{V_{s t} \\times 200}{4}\\\\ \\Rightarrow \\quad V_{s t}&=18 \\mathrm{kmph} \\\\ \\therefore \\quad V&=V_{s f}\\left[1-\\frac{k}{k_{j}}\\right] \\\\ \\therefore \\quad q&=v k \\\\ \\because \\quad q&=V k \\\\ \\end{aligned}$$\n\nSince traffice volume =1000 vehicle/hour for two lane\n\nSo, for single lane,\n\n$$\\begin{aligned} q&=500 \\text{ vehicle/hour } \\\\ q&=V_{s f}\\left[1-\\frac{k}{k_{l}}\\right] k \\\\ \\Rightarrow \\quad 500&=18\\left[1-\\frac{k}{200}\\right] k \\\\ \\Rightarrow \\quad 27.77&=k-\\frac{k^{2}}{200} \\\\ \\Rightarrow \\quad 5554&=200 k-k^{2} \\\\ \\Rightarrow \\quad k^{2}-200 k&+5554=0 \\\\ \\therefore \\quad k=33.32 &\\text{Veh./km (for single lane)}\\\\ \\end{aligned}$$\n\nSo, for two lane urban road,\n\n$k=33.32 \\times 2=66.64=67$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q47": {
       "question_uid": "ce:2012:q47",
@@ -2122,7 +2168,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "$$\\begin{aligned} x(\\tan 3+\\tan 0.1)&=(x-100)\\left(\\tan 5^{\\circ}+\\tan 0.5^{\\circ}\\right) \\\\ \\Rightarrow \\quad x&=228.758 \\end{aligned}$$\n\n<img src=\"/question-images/ce/2012/ce-2012-1495549b9e.webp\" />\n\n$$\\begin{aligned} \\text { Height of tower } &=228.758\\left(\\tan 3^{\\circ}+\\tan 0.1^{\\circ}\\right) \\\\ &=12.387 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q48": {
       "question_uid": "ce:2012:q48",
@@ -2167,7 +2214,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
         "markdown": "$$\\begin{aligned} k&=0.09 \\mathrm{m} / \\mathrm{day} \\\\ G&=2.70 \\\\ e&=0.85 \\\\ q&=k H_{L} \\frac{N_{t}}{N_{0}}\\\\ H_{L} &=H_{1}-H_{2}=10-1.5=8.5 \\mathrm{m} \\\\ N_{t} &=\\text { No. of flow lines } \\\\ &=3+1=4 \\\\ N_{\\mathrm{d}}&=\\text{ No of equipotential drops }\\\\ &=7+1=8 \\\\ q &=0.09 \\times 8.5 \\times 4 / 8 \\\\ &=0.38 \\mathrm{m}^{2} / \\mathrm{day} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q49": {
       "question_uid": "ce:2012:q49",
@@ -2212,7 +2260,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
         "markdown": "$H_{2}=H_{1}-H_{2}=10-1.5=8.5 \\mathrm{m}$\n\nloss of head per drop\n\n$=\\frac{8.5}{8}=1.0625$\n\n$\\therefore$ Hydraulic gradient,\n\n$$\\begin{aligned} i &=\\frac{1.0625}{3}=0.354 \\\\ \\therefore \\quad & \\mathrm{FOS}=\\frac{\\mathrm{i}_{\\mathrm{C}}}{\\mathrm{i}}=\\frac{0.9189}{0.354}=2.60 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q50": {
       "question_uid": "ce:2012:q50",
@@ -2257,7 +2306,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "Given,\n\nFlow rate $Q_{0}=500 \\mathrm{m}^{3} / \\mathrm{hour}$\n\nInfluent BOD $S_{0}=150 \\mathrm{mg} / \\mathrm{lit}$\n\neffluent $\\mathrm{BOD},=10 \\mathrm{mg} / \\mathrm{lit}$\n\nHydraulic retention time =8 hour $=\\frac{1}{3}$ day\n\nMean-cell resistance time,\n\n$\\left(\\theta_{C}\\right)=240$ hour =10 day\n\n$M \\cdot L \\cdot S \\cdot S,(X)=$2000 mg /lit.\n\n<img src=\"/question-images/ce/2012/ce-2012-397f33f2a3.webp\" />\n\n$\\frac{F}{M}=\\frac{Q_{0} S_{0}}{V X}=\\frac{500 \\times 150}{4000 \\times 2000} \\times 24$\n\n$=0.225 \\mathrm{kg}$ Biomass per day\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q51": {
       "question_uid": "ce:2012:q51",
@@ -2302,7 +2352,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "Mean cell recidence time,\n\n$$\\begin{aligned} \\theta_{C} &=\\frac{V X}{Q_{w} X_{u}} \\\\ \\Rightarrow \\quad Q_{W} X_{u} &=\\frac{V X}{\\theta_{C}}=\\frac{4000 \\times 2000 \\times 10^{-3}}{10} \\\\ &=800 \\mathrm{kg} / \\mathrm{day} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q52": {
       "question_uid": "ce:2012:q52",
@@ -2347,7 +2398,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-924c7600f6.webp\" />\n\n<img src=\"/question-images/ce/2012/ce-2012-efbffe7b41.webp\" />\n\n$\\mathrm{Given}, X_{u} \\gt 100 \\mathrm{mm}$\n\nand section is under reinforced.\n\n$$\\begin{array}{c} \\Rightarrow 0.36 f_{c k}(325) X_{u}+0.45 f_{c k}(675) \\times 100 \\\\ =0.87 f_{y} A_{s t}\\\\ \\Rightarrow 0.36 \\times 25 \\times 325 X_{u}+0.45 \\times 25 \\times 625 \\times 100 \\\\ \\end{array}$$\n\n$$\\begin{aligned} &=0.87 \\times 415 \\times 4000 \\\\ \\Rightarrow \\quad X_{u}&=234.13 \\mathrm{mm} \\\\ \\text{Take }\\quad X_{u}&=236.3 \\mathrm{mm} \\\\ \\text{Check }\\quad x_{u (I)}&=0.48 \\times 570 \\\\ &=273.6 \\\\ \\therefore \\quad X_{u}& \\lt X_{u(I)} &\\text{(OK)} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:q53": {
       "question_uid": "ce:2012:q53",
@@ -2392,7 +2444,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "$$\\begin{aligned} M_{u}=& 0.36 f_{c k}(325) X_{u} \\\\ &\\left(d-0.42 X_{u}\\right)+0.45\\\\ \\text{or}\\quad \\quad &f_{ck} (675) 100(d-50) \\\\ &=0.36 \\times 25 \\times 325 \\times 236.3 \\\\ &\\quad(570-0.42 \\times 236.3)+0.45 \\\\ &\\quad \\times 25 \\times 675 \\times 100(570-50) \\\\ &=325.374+394.875 \\\\ &=720.25 \\mathrm{kNm} \\end{aligned}$$\n\nTake $717.00 \\mathrm{kNm}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q54": {
       "question_uid": "ce:2012:q54",
@@ -2437,7 +2490,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
         "markdown": "<img src=\"/question-images/ce/2012/ce-2012-61740207cc.webp\" />\n\nPeak ordinate of unit hydrograph can be found by equating the Area of triangle by volume of the catchment.\n\n$\\Rightarrow \\;\\; \\frac{1}{2} \\cdot Q_{P} \\cdot \\left ( 15\\times 3600 \\right ) = 50\\times 10^{6}\\times 1\\times 10^{-2}$\n\n$\\Rightarrow \\;\\; Q_{P}=18.52 m^{3}/s$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:q55": {
       "question_uid": "ce:2012:q55",
@@ -2482,7 +2536,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
         "markdown": "Total infiltration $=0.5\\times 1=0.5cm$\n\nTotal runoff =5.5-0.5=5.0 cm\n\n$\\therefore$ Peak of the direct runoff hydrograph due to 5 cm of rainfall excess depth\n\n$=18.52\\times 5=92.60cm$\n\nPeak of the flood hydrograph\n\n=Peak of D.R.H. + Base flow\n\n=92.60+10=102.60 $m^{3}/s$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:ga:q1": {
       "question_uid": "ce:2012:ga:q1",
@@ -2526,7 +2581,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:ga:q2": {
       "question_uid": "ce:2012:ga:q2",
@@ -2570,7 +2626,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:ga:q3": {
       "question_uid": "ce:2012:ga:q3",
@@ -2614,7 +2671,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:ga:q4": {
       "question_uid": "ce:2012:ga:q4",
@@ -2658,7 +2716,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ce:2012:ga:q5": {
       "question_uid": "ce:2012:ga:q5",
@@ -2702,7 +2761,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:ga:q6": {
       "question_uid": "ce:2012:ga:q6",
@@ -2746,7 +2806,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2012:ga:q7": {
       "question_uid": "ce:2012:ga:q7",
@@ -2790,7 +2851,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:ga:q8": {
       "question_uid": "ce:2012:ga:q8",
@@ -2834,7 +2896,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ce:2012:ga:q9": {
       "question_uid": "ce:2012:ga:q9",
@@ -2878,7 +2941,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "ce:2012:ga:q10": {
       "question_uid": "ce:2012:ga:q10",
@@ -2922,7 +2986,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     }
   }
 }

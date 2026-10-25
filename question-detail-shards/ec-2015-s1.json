@@ -50,7 +50,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} x-2 y+3 z&=-1 \\\\ x-3 y+1 z&=1, \\text { and } \\\\ -2 x+1 y-6 z&= k \\\\ \\left[A:B \\right]&=\\left[\\begin{array}{rrrrr} 1 & -2 & 3 :& -1 \\\\ 1 & -3 & 4 :& 1 \\\\ -2 & 4 & 6 :& k \\end{array}\\right]\\\\ R_{2} \\rightarrow R_{2}-R_{1}, R_{3} &\\rightarrow R_{1}+2 R_{1} \\\\ \\left[\\begin{array}{cccc} 1 & -2 & 3 :& -1 \\\\ 0 & -1 & 1 :& 2 \\\\ 0 & 0 & 0 :& k-2 \\end{array}\\right] \\end{aligned}$$\n\nFor Infinlto may solulion\n\n$$\\begin{aligned} \\rho(A: B)&=p(A)\\\\ &= r \\lt  \\text{ number of variables}\\\\ \\rho(A: B)&=2 \\\\ k-2&=0 \\\\ k&=2 \\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      }
+      },
+      "answer": "2"
     },
     "ec:2015:q2": {
       "question_uid": "ec:2015:q2",
@@ -95,7 +96,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "Since $f(1)\\neq f(-1)$ Rolle's mean value theorem does not apply\n\nBy Lagrange moon voluo theorem\n\n$$\\begin{aligned} f^{\\prime}(x) &=\\frac{((1)-f(-1)}{1-(-1)}=\\frac{2}{2}=1 \\\\ -2 x+3 x^{2} &=1 \\\\ x &=1-\\frac{1}{3}\\\\ x \\text{ lies in }(-1,1) \\\\ \\Rightarrow \\quad x&=-\\frac{1}{3} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2015:q3": {
       "question_uid": "ec:2015:q3",
@@ -140,7 +142,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$P(A \\cup B)=P(A)+P(B)-P(A \\cap B)$\n\nsince $P(A \\cap B)=P(A) \\rho(B)$\n\n(not necessarily equal to zero).\n\nSo, $P(A \\cup B)=P(A)+P(B)$ is false.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q4": {
       "question_uid": "ec:2015:q4",
@@ -185,7 +188,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
         "markdown": "$f(z)= \\bar{z} =x-i y$\n\n$$\\begin{array}{cc} u=x & v=-y \\\\ \\Rightarrow u_{x}=1 & v_{x}=0 \\\\ u_{y}=0 & v_{y}=-1 \\end{array}$$\n\n$u_{x} \\neq v_{y}$ i.e. C-R not satisfied\n\n$\\Rightarrow \\bar{z}$ is not analytic function.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2015:q5": {
       "question_uid": "ec:2015:q5",
@@ -228,7 +232,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{array}{r} A x=\\lambda N \\\\ {\\left[\\begin{array}{lll} 4 & 1 & 2 \\\\ p & 2 & 1 \\\\ 14 & -4 & 10 \\end{array}\\right]\\left[\\begin{array}{l} 1 \\\\ 2 \\\\ 3 \\end{array}\\right]=\\lambda\\left[\\begin{array}{c} 1 \\\\ 2 \\\\ 3 \\end{array}\\right]} \\\\ {\\left[\\begin{array}{c} 12 \\\\ p+7 \\\\ 36 \\end{array}\\right]=\\lambda\\left[\\begin{array}{l} 1 \\\\ 2 \\\\ 3 \\end{array}\\right]} \\\\ \\frac{p+7}{12}=2 \\Rightarrow p=17 \\end{array}$$\n\nTherefore, the correct answer is **17** (acceptable range: [16.5, 17.5])."
-      }
+      },
+      "answer": "17"
     },
     "ec:2015:q6": {
       "question_uid": "ec:2015:q6",
@@ -271,7 +276,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
         "markdown": "$$\\begin{array}{l} \\text { At resonance, } I=\\frac{10}{4} \\\\ \\qquad \\begin{aligned} \\omega&=\\frac{1}{\\sqrt{0.1 \\times 10^{-3} \\times 10^{-6}}}=10^{5} \\text { rad/sec } \\\\ X_{C}&=\\frac{1}{\\omega C}=\\frac{1}{10^{5} \\times 1 \\times 10^{-6}}=10 \\Omega \\\\ V_{C}&=I X_{C}=10 \\times \\frac{10}{4}=25 \\mathrm{V} \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **25** (acceptable range: [24, 26])."
-      }
+      },
+      "answer": "25"
     },
     "ec:2015:q7": {
       "question_uid": "ec:2015:q7",
@@ -314,7 +320,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "Modifying the given circuit\n\n<img src=\"/question-images/ec/2015/ec-2015-8b6fd148e2.webp\" />\n\n$$\\begin{aligned} R_{a b} &=\\left(\\frac{1}{2 R}+\\frac{1}{R}+\\frac{1}{R}+\\frac{1}{2 R}\\right)^{-1} \\\\ &=\\frac{R}{3}=\\frac{300}{3}=100 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **100** (acceptable range: [99.5, 100.5])."
-      }
+      },
+      "answer": "100"
     },
     "ec:2015:q8": {
       "question_uid": "ec:2015:q8",
@@ -359,7 +366,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "<img src=\"/question-images/ec/2015/ec-2015-54de1814d5.webp\" />\n\nCurrent flowing through both the parallel $4 \\Omega$ will\n\nbe I.\n\n$\\text { So, } V_{2}=4(I+I+2 I)+4 I \\quad \\text { by KVL }$\n\n$I+I+2 I=5 \\quad \\text{by KCL}$\n\n$$\\begin{aligned} I &=\\frac{5}{4} A \\\\ V_{2} &=4 \\times 5+\\frac{4 \\times 5}{4}=25 \\mathrm{V} \\\\ V_{1} &=4 I=\\frac{4 \\times 5}{4}=5 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q9": {
       "question_uid": "ec:2015:q9",
@@ -402,9 +410,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "EC Core Engineering",
-        "markdown": null
-      }
+        "concept": "Electronic Devices - PN-Junction Diodes & Tunnel Diode Negative Differential Resistance",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - PN-Junction Diodes & Tunnel Diode Negative Differential Resistance\n- **Given Phenomenon**:\n  - Observation of a **negative differential resistance (NDR)** region ($dV/dI < 0$) in the forward current-voltage ($I-V$) characteristics of a silicon PN junction.\n- **Governing Principles**:\n  - Negative differential resistance in a simple PN junction is the definitive operational characteristic of a **Tunnel Diode** (Esaki diode).\n  - To realize quantum mechanical band-to-band tunneling:\n    1. Both the P-type and N-type sides must be **degenerately (heavily) doped**, typically exceeding $10^{19}\\text{ cm}^{-3}$ (approximately 1 impurity atom per $10^3$ to $10^4$ silicon host atoms).\n    2. Degenerate doping drives the Fermi level $E_F$ into the conduction band on the n-side ($E_{Fn} > E_C$) and into the valence band on the p-side ($E_{Fp} < E_V$).\n    3. The resulting depletion region width becomes extremely thin (on the order of $W \\approx 5\\text{ to }10\\text{ nm} = 50\\text{ to }100\\ \\text{\\AA}$).\n- **Step-by-Step Analytical Derivation**:\n  - At zero bias, the Fermi levels align, and no net current flows.\n  - When a small forward bias $V$ is applied ($0 < V < V_P$), filled electron states in the conduction band of the n-region directly align with available empty hole states in the valence band of the p-region. Electrons tunnel across the ultrathin barrier, yielding a sharp increase in tunneling current up to peak value $I_P$.\n  - As forward bias increases further beyond peak voltage $V_P$ ($V_P < V < V_V$), the band overlap decreases as the valence band edge of the p-side drops below the filled conduction band states of the n-side. Consequently, the tunneling current decreases with increasing voltage, creating the **negative differential resistance region**.\n  - Beyond the valley voltage $V_V$, regular thermal diffusion current over the barrier dominates, behaving like a conventional diode.\n  - If only one region is heavily doped (e.g., $p^+ n$ or $n^+ p$), the junction forms a Zener diode with a wider depletion width where forward tunneling cannot occur.\n- **Distractor Analysis**:\n  - **Options B and C are incorrect**: Asymmetric heavy doping ($p^+ n$ or $n^+ p$) results in conventional rectifier or Zener diodes that exhibit strictly positive dynamic resistance in forward bias.\n  - **Option D is incorrect**: Inserting an intrinsic region forms a PIN diode, which eliminates tunneling and provides high reverse breakdown voltage and RF attenuation.\n\nTherefore, the correct answer is **Option A (both the P-region and the N-region are heavily doped)**.",
+        "images": []
+      },
+      "answer": "A"
     },
     "ec:2015:q10": {
       "question_uid": "ec:2015:q10",
@@ -447,7 +457,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "$$\\begin{aligned} &=\\frac{1}{\\sigma_{N}}=\\frac{1}{N_{D} q \\mu_{n}} \\\\ &=\\frac{1}{10^{16} \\times 1.6 \\times 10^{-19} \\times 1200}=0.52 \\Omega-\\mathrm{cm} \\end{aligned}$$\n\nTherefore, the correct answer is **0.52** (acceptable range: [0.5, 0.54])."
-      }
+      },
+      "answer": "0.52"
     },
     "ec:2015:q11": {
       "question_uid": "ec:2015:q11",
@@ -492,7 +503,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "The circuit can be redrawn as\n\n<img src=\"/question-images/ec/2015/ec-2015-0f8ebb07f0.webp\" />\n\nDuring positive pulse. both diodes are forward\n\nbiased. During negative pulse, both diodes are\n\nreverse biased.\n\nSo, $V_{o}=0V$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q12": {
       "question_uid": "ec:2015:q12",
@@ -535,7 +547,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "Zener is not in breakdown region\n\nHence, $V_{0}=10 \\times \\frac{1}{2}=5 \\mathrm{V}$\n\nTherefore, the correct answer is **5**."
-      }
+      },
+      "answer": "5"
     },
     "ec:2015:q13": {
       "question_uid": "ec:2015:q13",
@@ -580,7 +593,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "<img src=\"/question-images/ec/2015/ec-2015-bf472911c2.webp\" />\n\n$$\\begin{aligned} v_{c}\\left(0^{-}\\right) &=0 \\mathrm{V} \\\\ v_{c}\\left(0^{+}\\right) &=0 \\mathrm{V} \\\\ v_{c}(\\infty) &=3 \\mathrm{V}\\\\ \\text{Time constant,}\\\\ \\tau &=\\mathrm{RC}=120 \\times 0.1 \\times 10^{-6} \\\\ \\mathrm{v}_{\\mathrm{c}}(t) &=3+(0-3) e^{-t / \\tau} \\\\ &=3\\left(1-e^{-t / \\tau}\\right) \\\\ I_{\\mathrm{c}}(t) &=\\frac{\\mathrm{Cd} v_{\\mathrm{c}}(t)}{d t}=\\frac{0.1 \\times 10^{-6} \\times 3 \\times e^{-t / \\tau}}{\\tau} \\\\ &=\\frac{0.1 \\times 10^{-6} \\times 3 e^{-t / \\tau}}{120 \\times 0.1 \\times 10^{-6}} \\\\ &=\\frac{1}{40} e^{-t / \\tau} \\\\ \\text { Energy } &=\\int_{0}^{\\infty} V_{I} d t \\\\ &=\\left.\\int_{0}^{\\infty} 3 \\cdot \\frac{1}{40} \\times e^{-t / \\tau} \\\\ & =-\\frac{3}{40} \\times \\tau e^{-t / \\tau} \\right|_{0}^{\\infty}\\\\ &=\\frac{3}{40} \\times 12 \\times 10^{-6}=0.9 \\mu \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q14": {
       "question_uid": "ec:2015:q14",
@@ -625,7 +639,8 @@
       "detailed_solution": {
         "concept": "Microprocessors - Basics of 8085 Microprocessor",
         "markdown": "Shift register are accumulator and flag register\n\n(A and F).\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2015:q15": {
       "question_uid": "ec:2015:q15",
@@ -668,7 +683,8 @@
       "detailed_solution": {
         "concept": "Microprocessors - Interfacing and Peripheral Devices",
         "markdown": "Memory size $=16 \\mathrm{kB}=214 \\mathrm{bits }$\n\nNumber of address lines = Number of data lines\n\n$$\\begin{aligned} 2^{n} \\cdot 2^{n} &=2^{14} \\\\ \\quad n &=7 \\end{aligned}$$\n\nTherefore, the correct answer is **7**."
-      }
+      },
+      "answer": "7"
     },
     "ec:2015:q16": {
       "question_uid": "ec:2015:q16",
@@ -711,7 +727,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
         "markdown": "Step size $=0.0625 \\mathrm{V}$\n\nDecimal equivalent $=15$\n\nAnalog output $=15 \\times 0.0625=0.9375 Volts$\n\nTherefore, the correct answer is **0.935** (acceptable range: [0.93, 0.94])."
-      }
+      },
+      "answer": "0.935"
     },
     "ec:2015:q17": {
       "question_uid": "ec:2015:q17",
@@ -756,7 +773,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "$x(t)*\\delta (-t-t_0)=x(-t)*\\delta (t+t_0)=x(-t-t_0)$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2015:q18": {
       "question_uid": "ec:2015:q18",
@@ -801,7 +819,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
         "markdown": "$$\\begin{array}{l} x(t)=-3 t, \\quad-1\\lt t \\lt 1 \\\\ x\\left(\\frac{t-1}{2}\\right)=-\\frac{3}{2}(t-1) \\qquad-1 \\lt t \\lt 3 \\\\ \\text { and } \\quad T=6 \\\\ \\text { Average power }=\\frac{1}{6} \\int_{-1}^{3}\\left(-\\frac{3}{2}(t-1)\\right)^{2} d t=2 \\end{array}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2015:q19": {
       "question_uid": "ec:2015:q19",
@@ -844,9 +863,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "EC Core Engineering",
-        "markdown": null
-      }
+        "concept": "Control Systems - Basics of Feedback Systems & Closed-Loop Properties",
+        "markdown": "- **Concept / Subtopic**: Control Systems - Basics of Feedback Systems & Closed-Loop Properties\n- **System Configuration**:\n  - Negative feedback closed-loop system with open-loop forward transfer function $G(s)$ and feedback path $H(s)$:\n    $$T(s) = \\frac{G(s)}{1 + G(s)H(s)}$$\n- **Governing Principles & Analytical Properties**:\n  1. **Gain Reduction**:\n     - The closed-loop DC gain is $A_f = \\frac{A}{1 + A\\beta}$.\n     - Because $(1 + A\\beta) > 1$, negative feedback **reduces the overall gain**. (Statement A is a true property).\n  2. **Bandwidth Expansion**:\n     - For a standard first-order low-pass system with open-loop upper cut-off frequency $\\omega_H$:\n       $$\\omega_{Hf} = \\omega_H (1 + A\\beta)$$\n     - The closed-loop bandwidth is **increased (widened)** by the factor $(1 + A\\beta)$, preserving the gain-bandwidth product.\n     - Therefore, negative feedback **DOES NOT reduce bandwidth**; it expands bandwidth. (Statement B is what negative feedback does NOT do).\n  3. **Disturbance Rejection**:\n     - Output sensitivity to an extraneous disturbance $D(s)$ introduced in the forward path is scaled down by $\\frac{1}{1 + G(s)H(s)}$. Thus, negative feedback **improves disturbance rejection**. (Statement C is a true property).\n  4. **Sensitivity Reduction**:\n     - Sensitivity of the closed-loop transfer function $T$ with respect to variations in $G$ is given by:\n       $$S_G^T = \\frac{\\partial T / T}{\\partial G / G} = \\frac{1}{1 + G(s)H(s)}$$\n     - Therefore, negative feedback **reduces sensitivity to parameter variations**. (Statement D is a true property).\n- **Conclusion**:\n  - Negative feedback increases bandwidth, so it does not reduce it.\n\nTherefore, the correct answer is **Option B (reduce bandwidth)**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "ec:2015:q20": {
       "question_uid": "ec:2015:q20",
@@ -889,7 +910,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
         "markdown": "$G(s)=\\frac{K}{s(s+1)(s+3)}$\n\nThe characteristic equation\n\n$$\\begin{array}{l} =1+G(s) H(s)=0 \\\\ =s(s+1)(s+3)+K=0 \\\\ =s^{3}+4 s^{2}+3 s+K=0 \\end{array}$$\n\nUsing Routh's tabular form\n\n$$\\begin{array}{c|cc} s^{3} & 1 & 3 \\\\ s^{2} & 4 & K \\\\ s^{1} & \\frac{12-K}{4} & 0 \\\\ s^{0} & K & \\end{array}$$\n\nIn order to cross the imaginary axis, system\n\nshould be marginally stable\n\n$$\\begin{aligned} \\frac{12-K}{4}&=0\\\\ \\text{or }\\quad K&=12 \\end{aligned}$$\n\nTherefore, the correct answer is **12**."
-      }
+      },
+      "answer": "12"
     },
     "ec:2015:q21": {
       "question_uid": "ec:2015:q21",
@@ -934,7 +956,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "$G(s)=\\frac{10(s+1)}{(s+10)}$\n\nFor $\\omega=0 \\Rightarrow M_{1}=1$ and $\\phi_{1}=0^{\\circ}$\n\n$\\omega=0 \\Rightarrow M_{2}=10$\n\nand $\\phi_{2}=-\\tan ^{-1} \\infty+\\tan ^{-1} \\infty=0^{\\circ}$\n\n$\\therefore$ Polar plot\n\n<img src=\"/question-images/ec/2015/ec-2015-e51e952584.webp\" />\n\nAs the zero is nearer to the imaginary axis hence\n\nthe direction of polar plot is clockwise.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q22": {
       "question_uid": "ec:2015:q22",
@@ -979,7 +1002,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "Slope signal = Slope of delta modulator\n\n$$\\begin{aligned} A_{m}\\left(2 \\pi f_{m}\\right) &=\\Delta f_{s} \\\\ A_{m}\\left(2 \\pi 2 \\times 10^{3}\\right) &=20,000 \\times 0.1 \\\\ A_{m} &=\\frac{1}{2 \\pi} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q23": {
       "question_uid": "ec:2015:q23",
@@ -1024,7 +1048,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "Given s(t) is an SSB modulated signal.\n\nAlternate Solution\n\nIt is the canonical representation of a bandpass signal.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q24": {
       "question_uid": "ec:2015:q24",
@@ -1069,7 +1094,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
         "markdown": "$H_{\\phi}=\\frac{I}{2 \\pi r} \\hat{a}_{\\phi}$\n\n$\\Rightarrow \\quad H_{\\phi} \\propto \\frac{1}{r}$option(c) is satisfied.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q25": {
       "question_uid": "ec:2015:q25",
@@ -1112,7 +1138,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "$\\vec{E}(z, t)=\\hat{a}_{y} 2 \\cos \\left(10^{8} t-\\frac{z}{\\sqrt{2}}\\right) \\mathrm{V} / \\mathrm{m}$\n\nGeneral form of\n\n$\\vec{E}(z, t)=\\hat{a}_{y} E_{o} \\cos (\\omega t-\\beta z) \\vee / m$\n\nComparing both, we get $\\beta=\\frac{1}{\\sqrt{2}}$\n\nsince, $\\beta=\\frac{2 \\pi}{\\lambda}$\n\n$\\Rightarrow \\quad \\lambda=\\frac{2 \\pi}{\\beta}=\\frac{2 \\pi}{\\frac{1}{\\sqrt{2}}}=2 \\sqrt{2} \\pi m$\n\n$\\Rightarrow \\quad \\lambda=8.88 \\mathrm{m}$\n\nTherefore, the correct answer is **8.885** (acceptable range: [8.85, 8.92])."
-      }
+      },
+      "answer": "8.885"
     },
     "ec:2015:q26": {
       "question_uid": "ec:2015:q26",
@@ -1157,7 +1184,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} \\left(D^{2}+2 D+1\\right) &=0 \\\\ D &=-1,-1 \\\\ y(t) &=\\left(C_{1}+C_{2} t\\right) e^{-t} \\\\ y(t) &=C_{2} e^{-t}+\\left(C_{1}+C_{2} t\\right)\\left(-e^{-t}\\right) \\\\ y(0) &=y^{\\prime}(0)=1 \\\\ \\text { From here, } C_{1} &=1, C_{2}=2 \\\\ \\Rightarrow \\quad\\quad y(t) &=(1+2 t) e^{-t} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2015:q27": {
       "question_uid": "ec:2015:q27",
@@ -1202,7 +1230,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\vec{P}=x^{3} y \\vec{a}_{x}-x^{2} y^{2} \\vec{a}_{y}-x^{2} y z \\vec{a}_{z}$\n\nFor solenoidal, $\\nabla \\cdot \\vec{P}=0$\n\n$$\\begin{aligned} \\Rightarrow \\nabla \\cdot \\vec{P} &=\\frac{\\partial P_{r}}{\\partial x}+\\frac{\\partial P_{y}}{\\partial y}+\\frac{\\partial P_{z}}{\\partial z} \\\\ &=3 r^{2} y-2 r^{2} y-x^{2} y \\\\ &=0 \\end{aligned}$$\n\n$\\Rightarrow \\vec{P}$ is solenoidal\n\nFor irrotational, $\\nabla \\times \\vec{P}=0$\n\n$$\\Rightarrow \\nabla \\times \\vec{P}=\\left|\\begin{array}{ccc}\\vec{a}_{x} & \\vec{a}_{y} & \\vec{a}_{z} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ x^{3} y & -x^{2} y^{2} & -x^{2} y z\\end{array}\\right|$$\n\n$=\\vec{a}_{x}\\left(-x^{2} z\\right)+\\vec{a}_{y}(2 x y z)+\\vec{a}_{z}\\left(-2 x^{2}-x^{3}\\right)$\n\n$\\neq 0$\n\n$\\Rightarrow \\vec{P}$ is not irrotational.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q28": {
       "question_uid": "ec:2015:q28",
@@ -1247,7 +1276,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} f(x) &=e^{-x}\\left(x^{2}+x+1\\right) \\\\ f^{\\prime}(x) &=e^{-x}(2 x+1)-e^{-x}\\left(x^{2}+x+1\\right) \\\\ &=e^{-x}\\left(x-x^{2}\\right)=e^{-x}(x)(1-x) \\end{aligned}$$\n\nPutting $f^{\\prime}(x)=0,$ we get\n\n$$\\begin{aligned} x &=0 \\text { or } x=1 \\\\ f^{\\prime \\prime}(x) &=e^{-x}(1-2 x)-\\theta^{-x}\\left(x-x^{2}\\right) \\\\ &=e^{-x}\\left(1-3 x+x^{2}\\right)\\\\ \\text{At }x&=0, f^{\\prime \\prime}(x)=1 \\text{ (so we have a minimum).}\\\\ \\text{At }x&=1, f^{\\prime \\prime}(x)=-\\frac{1}{e} \\\\ &\\quad \\quad\\text{(so we have a maximum).}\\\\ \\end{aligned}$$\n\nOnly curve (b) slows a single local minimum at x=0 and a single local maximum at x=1\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2015:q29": {
       "question_uid": "ec:2015:q29",
@@ -1290,7 +1320,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/ec/2015/ec-2015-b6698383d9.webp\" />\n\n$x^{2}+4 y^{2}=1$\n\nArea of rectangle\n\n$$\\begin{aligned} &=2 x \\cdot 2 y=4 x y\\\\ \\text { Let } \\quad &=(\\text { Area })^{2} \\\\ &=16 x^{2} y^{2} \\\\ &=4 x^{2}\\left(1-x^{2}\\right) \\quad\\left(\\because 1-x^{2}=4 y^{2}\\right) \\\\ f^{\\prime}(x) &=0 \\\\ \\frac{d}{d x}\\left[4\\left(x^{2}-x^{4}\\right)\\right] &=0 \\\\ 4\\left(2 x-4 x^{3}\\right) &=0\\\\ \\text{We get, }\\quad x&=\\pm \\frac{1}{\\sqrt{2}} \\\\ y &=\\pm \\frac{1}{\\sqrt{8}} \\\\ \\text { Area } &=4 x y=4 \\times \\frac{1}{\\sqrt{2}} \\times \\frac{1}{\\sqrt{8}}=1 \\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.95, 1.05])."
-      }
+      },
+      "answer": "1"
     },
     "ec:2015:q30": {
       "question_uid": "ec:2015:q30",
@@ -1335,7 +1366,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State Analysis",
         "markdown": "$$\\begin{aligned} &\\xi=\\frac{1}{2 Q} ; Q=\\frac{1}{R} \\sqrt{\\frac{L}{C}}\\\\ &\\therefore \\text { Damping ratio }=\\xi=\\frac{R}{2} \\sqrt{\\frac{C}{L}} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q31": {
       "question_uid": "ec:2015:q31",
@@ -1378,7 +1410,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "$$\\begin{aligned} & v_{c}\\left(0^{-}\\right)=0 \\mathrm{V} \\\\ & v_{c}\\left(0^{+}\\right)=0 \\mathrm{V} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-2c05adebec.webp\" />\n\n$$\\begin{aligned} v_{c}(\\infty)&=\\frac{2}{2+3} \\times 10 \\\\ &=4 \\mathrm{V}[\\text { By voltage divider }] \\\\ v_{c}(t)&=4\\left[1-e^{-t / \\tau}\\right] \\\\ \\tau &=R_{\\mathrm{eq}} C=\\frac{3 \\times 2}{3+2} \\times \\frac{5}{6} \\\\ &=1 \\mathrm{sec} \\\\ v_{c}(1) &=4\\left[1-e^{-1 / 1}\\right]=2.528 \\mathrm{Volts} \\end{aligned}$$\n\nTherefore, the correct answer is **2.53** (acceptable range: [2.48, 2.58])."
-      }
+      },
+      "answer": "2.53"
     },
     "ec:2015:q32": {
       "question_uid": "ec:2015:q32",
@@ -1421,7 +1454,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Network Theorems",
         "markdown": "<img src=\"/question-images/ec/2015/ec-2015-b49606adda.webp\" />\n\nFor maximum power transfer\n\n$$\\begin{aligned} R_{L} &=\\left|Z_{T h}\\right|=|2 \\| j 2| \\\\ &=\\left|\\frac{2 \\times j 2}{2+j 2}\\right|=1.414 \\Omega \\\\ V_{T h} &=\\frac{8 \\angle 90^{\\circ}}{2+j 2}=2.828 \\angle 45^{\\circ} \\end{aligned}$$\n\n<img src=\"/question-images/ec/2015/ec-2015-ae6a1b6521.webp\" />\n\n$$\\begin{aligned} I &=\\frac{2.828 \\angle 45^{\\circ}}{1.414 \\angle 45^{\\circ}+1.414}=1.08 \\angle 22.5^{\\circ} \\\\ \\text { Power } &=I^{2} R=(1.08)^{2} \\times \\sqrt{2}=1.649 \\mathrm{W} \\end{aligned}$$\n\nTherefore, the correct answer is **1.65** (acceptable range: [1.6, 1.7])."
-      }
+      },
+      "answer": "1.65"
     },
     "ec:2015:q33": {
       "question_uid": "ec:2015:q33",
@@ -1464,7 +1498,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "$$\\begin{aligned} C_{j} &\\propto \\frac{1}{\\sqrt{V_{b i}+V_{R}}} \\\\ \\frac{C_{2 j}}{C_{1 j}}&=\\sqrt{\\frac{V_{b i}+V_{R_{1}}}{V_{b i}+V_{R_{2}}}} \\\\ C_{2 j}&=C_{1 j} \\sqrt{\\frac{2}{8}}=\\frac{C_{1 j}}{2}=2.5 \\mathrm{pF} \\end{aligned}$$\n\nSo, answer is 2.5\n\nTherefore, the correct answer is **2.5** (acceptable range: [2.4, 2.6])."
-      }
+      },
+      "answer": "2.5"
     },
     "ec:2015:q34": {
       "question_uid": "ec:2015:q34",
@@ -1507,7 +1542,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "Under channel length modulation,\n\n$$\\begin{aligned} I_{D}&=I_{\\text {Dsat }}\\left(1+\\lambda V_{\\text {DS }}\\right)\\\\ \\frac{d I_{D}}{d V_{D S}} &=\\frac{1}{r_{0}}=\\lambda I_{\\text {Dsat }} \\\\ r_{O} &=\\frac{1}{\\lambda I_{D \\text { sat }}}=\\frac{1}{0.05 \\times 10^{-3}}=20 \\mathrm{k} \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **20** (acceptable range: [19, 21])."
-      }
+      },
+      "answer": "20"
     },
     "ec:2015:q35": {
       "question_uid": "ec:2015:q35",
@@ -1550,7 +1586,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "The hole current density injected from P region to N region is given by\n\n$\\frac{q n_{i}^{2} D_{p}}{N_{D} L_{p}}\\left[\\exp \\left(\\frac{V_{F B}}{\\eta V_{T}}\\right)-1\\right]$\n\nwhere,\n\nq= charge on electron\n\n$n_{i}=$ Intrinsic carrier concentration in silicon\n\n$N_{D}=$ Donor doping\n\n$D_{p}=$ Hole diffusion coefficient\n\n$L_{p}=$ Mean diffusion length of hole\n\n$V_{F B}=$ Forward voltage applied across diode\n\n$$\\begin{aligned} V_{T}=& k T / q=26 \\mathrm{mV} \\\\ L_{p} &=\\sqrt{\\tau_{p} D_{p}}=\\sqrt{100 \\times 10^{-6} \\times 36} \\\\ &=0.06 \\mathrm{cm} \\end{aligned}$$\n\nUsing the above values, we get hole current  density injected from P region to N region\n\nTherefore, the correct answer is **29** (acceptable range: [28, 30])."
-      }
+      },
+      "answer": "29"
     },
     "ec:2015:q36": {
       "question_uid": "ec:2015:q36",
@@ -1595,7 +1632,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
         "markdown": "$F(X, Y, Z)=\\bar{X} Y \\bar{Z}+X \\overline{Y Z}+X Y \\bar{Z}+X Y Z$\n\n<img src=\"/question-images/ec/2015/ec-2015-7816eb2f26.webp\" />\n\n$F=(X+Y+Z)(X+Y+\\bar{Z})(X+\\bar{Y}+\\bar{Z})(\\bar{X}+Y+\\bar{Z})$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q37": {
       "question_uid": "ec:2015:q37",
@@ -1638,7 +1676,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
         "markdown": "<img src=\"/question-images/ec/2015/ec-2015-a867aaa097.webp\" />\n\nZ is '1' for 40 n-sec.\n\nTherefore, the correct answer is **40**."
-      }
+      },
+      "answer": "40"
     },
     "ec:2015:q38": {
       "question_uid": "ec:2015:q38",
@@ -1683,7 +1722,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
         "markdown": "$$\\begin{aligned} M(a, b, c) &=a b+b c+c a \\\\ \\overline{M(a, b, c)} &=\\frac{a b+b c+c a}{a b \\cdot b c} \\cdot \\overline{c a} \\\\ &=(\\bar{a}+\\bar{b})(\\bar{b}+\\bar{c})(\\bar{c}+\\bar{a}) \\\\ M(a, b, \\bar{c}) &=a b+b \\bar{c}+\\bar{c} a \\end{aligned}$$\n\n$$\\begin{array}{l} \\begin{aligned} M(\\overline{M(a, b, c)}, M(a, b, \\bar{c}) c) &=\\\\ \\left[\\begin{array}{l}(\\overline{a b} \\cdot \\overline{b c} \\cdot \\overline{c a})(a b+b \\bar{c}+\\overline{c a}) \\\\ +(a b+b \\bar{c}+\\bar{c} a)(c)+(\\overline{a b} \\cdot \\overline{b c} \\cdot \\bar{a} a \\mid)\\end{array}\\right]\\end{aligned} \\\\ =\\left[\\begin{array}{l} (\\bar{a}+\\bar{b})(\\bar{b}+\\bar{c})(\\bar{c}+\\bar{a})(a b+b \\bar{c}+\\bar{c} a) \\\\ +a b c+(\\bar{a}+\\bar{b})(\\bar{b}+\\bar{c})(\\bar{c}+\\bar{a}) c \\end{array}\\right] \\\\ =(\\bar{a}+\\bar{b})(\\bar{b}+\\bar{c})(\\bar{c}+\\bar{a})[a b+b \\bar{c}+\\bar{c} a+c]+a b c \\\\ =(\\bar{a}+\\bar{b})(\\bar{b}+\\bar{c})(\\bar{c}+\\bar{a})[a+b+c]+a b c \\\\ =(\\bar{a} \\bar{b}+\\bar{b} \\bar{c}+\\bar{c} \\bar{a})[a+b+c]+a b c \\\\ F=a \\bar{b} \\bar{c}+b \\bar{c} \\bar{a}+c \\bar{a} \\bar{b}+a b c \\\\ F=A \\oplus B \\oplus C \\end{array}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2015:q39": {
       "question_uid": "ec:2015:q39",
@@ -1728,7 +1768,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "$V_{G S}=V_{D S}$\n\nHence MOS transistor is in saturation.\n\nIn saturation,\n\n$I_{D}=k\\left(V_{G S}-V_{T}\\right)^{2}=k\\left(V_{D D}-V_{S S}-V_{T}\\right)^{2}$\n\nAs, $V_{S S}$ increases $I_{D}$ decreases\n\n(Not linearly because square factor)\n\nHence option (a) is correct.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q40": {
       "question_uid": "ec:2015:q40",
@@ -1771,7 +1812,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "$$\\begin{aligned} I_{50 \\Omega} &=\\frac{1}{50} A=I_{100 \\Omega} \\\\ V_{0} &=\\frac{1}{100}[250(1+\\delta)-250(1-\\delta)] \\\\ &=\\frac{1}{1000} \\times 250=0.25 \\mathrm{V}=250 \\mathrm{mV} \\end{aligned}$$\n\nTherefore, the correct answer is **250** (acceptable range: [249, 251])."
-      }
+      },
+      "answer": "250"
     },
     "ec:2015:q41": {
       "question_uid": "ec:2015:q41",
@@ -1816,7 +1858,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Oscillator Circuits",
         "markdown": "Frequency of Wein bridge oscillator is $\\omega_{0} =\\frac{1}{R C}$\n\nbut in the question time constant is double so\n\nfrequency becomes half.\n\n$$\\begin{aligned} \\omega_{0} &=\\frac{1}{2 R C} \\\\ Z_{1} &=2 R+\\frac{1}{j \\omega C}=2(R-j R) \\\\ Z_{2} &=\\frac{R \\times \\frac{1}{2 j \\omega C}}{R+\\frac{1}{2 j \\omega C}}=\\frac{\\frac{R^{2}}{j}}{R-j R} \\\\ \\beta &=\\frac{Z_{2}}{Z_{1}+Z_{2}}=\\frac{1}{5} \\\\ 1+\\frac{R_{1}}{R_{2}}&=5 \\quad \\Rightarrow R_{1}=4 R_{2} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2015:q42": {
       "question_uid": "ec:2015:q42",
@@ -1859,7 +1902,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
         "markdown": "$$\\begin{aligned} I_{2} &=I_{s} e^{\\frac{V_{B E_{2}}}{\\eta V_{T}}} \\\\ V_{B E_{2}} &=V_{2} \\\\ I_{1} &=I_{S} e^{\\frac{V_{BE_{1}}}{\\eta V_{T}} } \\\\ V_{B E_{1}} &=V_{1} \\\\ \\frac{I_{1}}{I_{2}} &=e^{\\frac{V_{1}-V_{2}}{\\eta} V_{T}} \\end{aligned}$$\n\nsince, $V_{T}$ at $27^{\\circ}$ is $26 \\mathrm{mV}$ then $V_{T}$ at $50^{\\circ}$ is $27.99 \\mathrm{mV}$ Thus,\n\n$V_{1}-V_{2}=83.15 \\mathrm{mV}$\n\nTherefore, the correct answer is **83.75** (acceptable range: [83.5, 84])."
-      }
+      },
+      "answer": "83.75"
     },
     "ec:2015:q43": {
       "question_uid": "ec:2015:q43",
@@ -1904,7 +1948,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "$$\\begin{aligned} \\left[\\begin{array}{l}A \\\\ B \\\\ C\\end{array}\\right]&=\\left[\\begin{array}{l}a+b+c \\\\ a+b W_{3}^{-1}+c W_{3}^{-2} \\\\ a+b W_{3}^{-2}+c W_{3}^{-1}\\end{array}\\right] \\\\ \\left[\\begin{array}{l}p \\\\ q \\\\ r\\end{array}\\right]&=\\left[\\begin{array}{ccc}1 & w_{3}^{2} & w_{3}^{1} \\\\ 1 & w_{3}^{1} w_{3}^{2} & w_{3}^{2} w_{3}^{1} \\\\ 1 & w_{3}^{2} w_{3}^{2} & W_{3}^{1} W_{3}^{1}\\end{array}\\right]\\left[\\begin{array}{c}\\frac{a+b+c}{3} \\\\ \\frac{a+b W_{3}^{-1}+c W_{3}^{2}}{3} \\\\ \\frac{a+b W_{3}^{-2}+c W_{3}^{-1}}{3}\\end{array}\\right] \\\\ \\text{where }&\\quad W_{3}^{4}=e^{i \\frac{2 \\pi}{3}} \\\\ &\\quad W_{3}^{2}=e^{i \\frac{4 \\pi}{3}}\\\\ W_{3}^{-1}&=e^{-j \\frac{2 \\pi}{3}} \\\\ W_{3}^{-2}&=e^{-j \\frac{4 \\pi}{3}} \\\\ W_{3}^{-4}&=W_{3}^{-1}=e^{-j \\frac{2 \\pi}{3}} \\\\ \\left[\\begin{array}{l}p \\\\q \\\\r\\end{array}\\right]&=\\left[\\begin{array}{l} c \\\\a \\\\b\\end{array}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q44": {
       "question_uid": "ec:2015:q44",
@@ -1949,7 +1994,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "The difference equation of the system\n\n$x(n)-\\frac{1}{6} y(n-2)+\\frac{5}{6} y(n-1)=y(n)$\n\n$$H(z)=\\begin{array}{l}Y(z) \\\\ x(z)\\end{array}=\\frac{1}{1+\\frac{1}{6} z^{-2}-\\frac{5}{6} z^{-1}}$$\n\n$Poles are at z=\\frac{1}{2}, \\frac{1}{3}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q45": {
       "question_uid": "ec:2015:q45",
@@ -1994,7 +2040,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "$$\\begin{aligned} H(z) &=\\frac{z^{4}}{\\left[\\left(z-\\frac{1}{2}\\right)^{2}+\\frac{1}{4}\\right]\\left[\\left(z+\\frac{1}{2}\\right)^{2}+\\frac{1}{4}\\right]} \\\\ \\text { Poles } &=\\frac{1}{2} \\pm j \\frac{1}{2},-\\frac{1}{2} \\pm j \\frac{1}{2} \\\\ &=\\frac{z^{4}}{\\left(z^{2}-z+\\frac{1}{2}\\right)\\left(z^{2}+z+\\frac{1}{2}\\right)} \\\\ &=\\frac{z^{4}}{z^{4}+z^{2}+\\frac{1}{4}-z^{2}}\\\\ H(z)&=\\frac{z^{4}}{z^{4}+\\frac{1}{4}} \\\\ &\\left.=z^{4}+\\frac{1}{4}\\right) z^{4}\\left(1-\\frac{1}{4} z^{-4} \\cdots\\right.\\\\ &\\quad \\quad \\frac{z+\\frac{1}{4}}{-\\frac{1}{4}} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q46": {
       "question_uid": "ec:2015:q46",
@@ -2037,7 +2084,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
         "markdown": "$$\\begin{aligned} G(s) &=\\frac{K(s+4)}{(s+8)\\left(s^{2}-9\\right)} \\\\ &=\\frac{K(s+4)}{(s+8)(s+3)(s-3)} \\end{aligned}$$\n\nFor the point (-1+2 j) to lie on the root locus the angle condition must be satisfy\n\ni.e. $\\angle G(s) H(s)=\\pm(2 Q+1) 180^{\\circ}$\n\nTaking LHS:\n\n$$\\begin{array}{l} \\left.\\angle G(s) H(s)\\right|_{s=-1+2 j} \\\\ =\\frac{\\angle K+\\angle(s+4)}{\\angle(s+8)+\\angle(s+3)+\\angle(s-3)} \\\\ =\\frac{\\angle K+\\angle(-1+2 j+4)}{\\angle(-1+2 j+8)+\\angle(-1+2 j+3)+\\angle(-1+2 j-3)} \\\\ =\\frac{0+\\tan ^{-1}\\left(\\frac{2}{3}\\right)}{\\tan ^{-1}\\left(\\frac{2}{7}\\right)+\\tan ^{-1}(1)+180^{\\circ}-\\tan ^{-1}\\left(\\frac{1}{2}\\right)} \\\\ =33.69^{\\circ}-15.945^{\\circ}-45^{\\circ}-180^{\\circ}+26.565^{\\circ} \\\\ \\simeq 180^{\\circ} \\end{array}$$\n\nAs angle condition is satisfied the value of system gain K can be obtained by using magnitude\n\ncondition\n\n$$\\begin{array}{l} i.e. |G(s) H(s)|_{s=-1+2 j}=1 \\\\ =\\frac{K \\sqrt{(-1+4)^{2}+2^{2}}}{\\sqrt{(-1+8)^{2}+2^{2}} \\cdot \\sqrt{(-1+3)^{2}+2^{2}} \\cdot \\sqrt{(-1-3)^{2}+2^{2}}} \\\\ =1 \\\\ =\\frac{K \\sqrt{9+4}}{\\sqrt{49+4} \\sqrt{4+4} \\sqrt{16+4}}=1 \\\\ =\\frac{K \\sqrt{13}}{\\sqrt{53} \\sqrt{8} \\sqrt{20}}=1 \\\\ K=\\frac{\\sqrt{53 \\times 8 \\times 20}}{\\sqrt{13}}=25.54 \\end{array}$$\n\nTherefore, the correct answer is **25.5** (acceptable range: [25, 26])."
-      }
+      },
+      "answer": "25.5"
     },
     "ec:2015:q47": {
       "question_uid": "ec:2015:q47",
@@ -2080,7 +2128,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
         "markdown": "$G_{C}(s)=\\frac{s+2}{s+4} \\quad\\dots(i)$\n\nFor lead compensator,\n\n<img src=\"/question-images/ec/2015/ec-2015-71dc89bd3c.webp\" />\n\nTransfer function $=\\frac{1+s \\tau}{1+\\alpha s \\tau} \\quad\\dots(ii)$\n\nWhere,\n\n$\\tau=$ Lead time constant $=R_{1} C$\n\nand $\\alpha=\\frac{R_{2}}{R_{1}+R_{2}}$\n\nComparing equation (i) and (ii), we get\n\n$\\tau=\\frac{1}{2} \\quad$ and $\\quad \\alpha \\tau=\\frac{1}{4}$\n\nor, $\\alpha=\\frac{1}{2}$\n\n$\\therefore$ RC time constant =0.5\n\nTherefore, the correct answer is **0.5**."
-      }
+      },
+      "answer": "0.5"
     },
     "ec:2015:q48": {
       "question_uid": "ec:2015:q48",
@@ -2125,7 +2174,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
         "markdown": "$G(s)=\\left(K_{p}+\\frac{K_{I}}{s}\\right)\\left(\\frac{1}{s(s+2)}\\right)$\n\nThe closed loop transfer function for unity feedback\n\n$$\\begin{aligned} \\frac{G(s)}{1+G(s)} &=\\frac{\\left(K_{p} s+K_{I}\\right)}{s^{2}(s+2)+\\left(K_{p} s+K_{I}\\right)} \\\\ &=\\frac{K_{p} s+K_{I}}{s^{3}+2 s^{2}+K_{p} s+K_{I}} \\end{aligned}$$\n\nUsing Routh's tabular form:\n\n$$\\begin{array}{c|cc} s^{3} & 1 & K_{p} \\\\ s^{2} & 2 & K_{I} \\\\ s^{1} & \\frac{2 K_{p}-K_{I}}{2} & 0 \\\\ s^{0} & K_{p} & \\end{array}$$\n\nFor system to be stable;\n\n$$\\begin{aligned} K_{p}& \\gt 0\\\\ \\text{and }\\frac{2 K_{p}-K_{I}}{2}& \\gt 0 \\\\ \\text{or} \\quad 2 K_{p}-K_{I}& \\gt 0 \\\\ \\text{or} \\quad K_{p}& \\gt \\frac{K_{I}}{2} \\gt 0 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2015:q49": {
       "question_uid": "ec:2015:q49",
@@ -2168,7 +2218,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "$$\\begin{array}{l} P(X=1 / Y=0) \\\\ =\\frac{P(Y=0 / X=1) P(X=1)}{P(Y=0 / X=1) P(X=1)+P(Y=0 / X=0) P(X=0)} \\\\ =\\frac{\\left(\\frac{1}{7}\\right)(0.8)}{\\left(\\frac{1}{7}\\right)(0.8)+\\left(\\frac{6}{7}\\right)(0.2)}=0.4 \\end{array}$$\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.39, 0.41])."
-      }
+      },
+      "answer": "0.4"
     },
     "ec:2015:q50": {
       "question_uid": "ec:2015:q50",
@@ -2211,7 +2262,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "In the question 1t 1s given that GSM requires\n\n200 kHz for users and uses TDMA scheme to\n\naccommodate them. Thus for the next users we\n\nwill required an extra of 200kHz bandwidth. Thus\n\n400 kHz bandwidth is to be used\n\nTherefore, the correct answer is **400**."
-      }
+      },
+      "answer": "400"
     },
     "ec:2015:q51": {
       "question_uid": "ec:2015:q51",
@@ -2254,7 +2306,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "$$\\begin{array}{l} \\quad x(t)=m(t) \\cos 2400 \\pi t \\\\ \\text { thus } \\quad y(t)=10 x(t)+x^{2}(t) \\\\ \\therefore y(t)=10 m(t) \\cos (2400 \\pi t)+m^{2}(t) \\cos ^{2}(2400 \\pi t) \\\\ =10 m(t) \\cos (2400 \\pi t)+\\frac{1}{2} m^{2}(t) \\frac{1}{2} \\cos (4800 \\pi t) \\end{array}$$\n\nDrawing the spectrum set spectrum of x(t) be\n\n<img src=\"/question-images/ec/2015/ec-2015-b9672aab31.webp\" />\n\n<img src=\"/question-images/ec/2015/ec-2015-bd4c89c548.webp\" />\n\n$y(t) = 10x(t) + x^{2}(t)$\n\n<img src=\"/question-images/ec/2015/ec-2015-239dafb9aa.webp\" />\n\nTo recover z(t)\n\n$$\\begin{aligned} 1200-W \\gt 700 & \\Rightarrow W \\lt 500 \\\\ 1200+W \\lt 1700 & \\Rightarrow W \\lt 500 \\\\ 2 W \\lt 700 & \\Rightarrow W \\lt 350 \\\\ 2400-2 W \\gt 1700 & \\Rightarrow W \\lt 350 \\end{aligned}$$\n\nSo, that maximum value of W should be less than 350 Hz\n\nTherefore, the correct answer is **349.5** (acceptable range: [349, 350])."
-      }
+      },
+      "answer": "349.5"
     },
     "ec:2015:q52": {
       "question_uid": "ec:2015:q52",
@@ -2299,7 +2352,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "According to MAP criteria, for optimum threshold,\n\n$f_{R}\\left(r \\mid s_{0}\\right) P\\left(s_{0}\\right) \\sum_{k_{1}}^{r_{0}} f_{B}\\left(r \\mid s_{1}\\right) P\\left(s_{1}\\right)$\n\nGiven that,\n\n$P\\left(s_{0}\\right)=\\frac{1}{3} \\text { and } P\\left(s_{1}\\right)=\\frac{2}{3}$\n\n<img src=\"/question-images/ec/2015/ec-2015-92cb3d7624.webp\" />\n\nFrom the above figure, it is clear that,\n\n$$\\begin{array}{l} f_{B}\\left(r \\mid s_{0}\\right) P\\left(s_{0}\\right)>f_{R}\\left(r \\mid s_{1}\\right) P\\left(s_{1}\\right) \\Rightarrow \\text { for } r<-1 \\\\ f_{A}\\left(r \\mid s_{1}\\right) P\\left(s_{1}\\right)>f_{R}\\left(r \\mid s_{0}\\right) P\\left(s_{0}\\right) \\Rightarrow \\text { for } r>-1 \\end{array}$$\n\nSo, optimum threshold will be, $r_{\\mathrm{th}}=-1$\n\n$$\\begin{aligned} \\text{ For }r_{\\mathrm{th}}=-1& \\\\ P\\left(r_{0} \\mid s_{1}\\right) P\\left(s_{1}\\right)&=0\\\\ P\\left(r_{1} \\mid s_{0}\\right) P\\left(s_{0}\\right)&=\\frac{1}{12}[1-(-1)]=\\frac{1}{6} \\\\ P_{e(\\mathrm{min})}&=P\\left(r_{0} \\mid s_{1}\\right) P\\left(s_{1}\\right)+P\\left(q \\mid s_{0}\\right) P\\left(s_{0}\\right)=\\frac{1}{6} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2015:q53": {
       "question_uid": "ec:2015:q53",
@@ -2344,7 +2398,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
         "markdown": "$$\\begin{aligned} H_{z}(x, y, z, t) &=0.1 \\cos (25 \\pi x) \\cos (30.3 \\pi y) \\\\ & \\cos \\left(12 \\pi \\times 10^{9} t-\\beta z\\right)^{-1 / m}\\\\ a &=0.08 m, b=0.033 m \\end{aligned}$$\n\nAxial component is $\\mathrm{H} \\Rightarrow$ the propagating mode is\n\n$T E_{\\text {mn}}$, m, n can be found by\n\n$$\\begin{array}{l} \\quad \\frac{m \\pi}{a} x=25 \\pi x \\\\ \\Rightarrow \\quad \\frac{m}{0.08}=25 \\\\ \\Rightarrow \\quad m=2 \\\\ \\Rightarrow \\quad \\frac{n\\pi}{b} y=30.3 \\pi y \\\\ \\Rightarrow \\quad \\frac{n}{0.033}=30.3 \\\\ \\Rightarrow \\quad n=1 \\end{array}$$\n\n$\\therefore$ The mode of propagation is $T E_{21}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2015:q54": {
       "question_uid": "ec:2015:q54",
@@ -2387,7 +2442,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "$\\vec{E}(x, t)=\\hat{a}_{y} 24 \\pi \\cos \\left(\\omega t-K_{o} x\\right) V / m$\n\nPower density\n\n$\\vec{P}=\\frac{1}{2} \\frac{|E|^{2}}{\\eta}=\\frac{1}{2} \\frac{(24 \\pi)^{2}}{120 \\pi} \\hat{a}_{x}$\n\nTime-averaged power\n\n$$\\begin{aligned} P_{\\mathrm{avg}} &=\\vec{P} \\cdot \\overrightarrow{d s} \\\\ &=\\left[\\frac{1}{2} \\frac{(24 \\pi)^{2}}{120 \\pi} \\hat{a}_{x}\\right] \\cdot\\left[\\frac{\\hat{a}_{x}+\\hat{a}_{y}}{\\sqrt{2}} \\times 10^{-2}\\right] \\\\ P_{\\mathrm{avg}} &=\\frac{24 \\pi}{\\sqrt{2}}=53.29 \\mathrm{mW} \\end{aligned}$$\n\nTherefore, the correct answer is **53.5** (acceptable range: [53, 54])."
-      }
+      },
+      "answer": "53.5"
     },
     "ec:2015:q55": {
       "question_uid": "ec:2015:q55",
@@ -2430,7 +2486,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "Material has $\\mu_{R}$ and $\\epsilon_{R}$ complex.\n\n$\\eta \\text { of material }=\\sqrt{\\frac{j \\omega \\mu}{\\sigma+j \\omega \\epsilon}}=\\sqrt{\\frac{\\mu_{o} \\mu_{R}}{\\epsilon_{o} \\epsilon_{R}}}=120 \\pi$\n\nwhere, $\\sigma=0 \\quad$ (dielectric)\n\nNo reflections at the boundary.\n\n$$\\begin{aligned} \\gamma &=\\text { Propagation constant } \\\\ &=\\sqrt{j \\omega \\mu_{o} \\mu_{R}\\left(0+j \\omega \\epsilon_{o} \\epsilon_{R}\\right)} \\\\ &=\\sqrt{j \\omega \\mu_{o} \\epsilon_{o}(1-j 2)} \\\\ &=j \\omega \\sqrt{\\mu_{o} \\epsilon_{o}}+j 2 \\omega \\sqrt{\\mu_{o} \\epsilon_{o}} \\\\ \\alpha &=2 \\omega \\sqrt{\\mu_{o} \\epsilon_{o}}=4.6 \\frac{1}{\\mathrm{m}} \\\\ |E| &=E_{o} e^{-\\alpha z} \\text { with } Z=0.1 \\mathrm{m} \\\\ |E| &=0.1 \\mathrm{V} / \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **0.1** (acceptable range: [0.08, 0.12])."
-      }
+      },
+      "answer": "0.1"
     }
   }
 }

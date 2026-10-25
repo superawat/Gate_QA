@@ -52,7 +52,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f(x)$ has a local minimum at $x=x_{0}$\n\nif ${f}'\\left ( x_{0} \\right )=0$\n\nand ${f}''\\left ( x_{0} \\right ) \\gt 0$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q2-s2": {
       "question_uid": "ce:2015:q2-s2",
@@ -95,7 +96,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "$$\\begin{aligned}   f\\left ( x \\right )&=-2+6x-4x^{2}+0.5x^{3} \\\\    {f}'\\left ( x \\right )&=6-8x+1.5x^{2} \\\\    x_{ini}&=0\\\\ \\text{By Newton }&\\text{Raphson Method,}\\\\    x_{1}&=x_{ini}-\\frac{f\\left ( x_{ini} \\right )}{{f}'\\left ( x_{ini} \\right )} \\\\    &=  0-\\frac{-2}{6} \\\\ \\Rightarrow    \\;\\;x_{1}&=\\frac{1}{3} \\\\ \\therefore \\;\\;  \\Delta x&=x_{1}-x_{ini}=\\frac{1}{3} \\end{aligned}$$\n\nTherefore, the correct answer is **0.35** (acceptable range: [0.3, 0.4])."
-      }
+      },
+      "answer": "0.35"
     },
     "ce:2015:q3-s2": {
       "question_uid": "ce:2015:q3-s2",
@@ -140,7 +142,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} I&=\\int_{0}^{\\pi /2}\\frac{\\cos x+i\\sin x}{\\cos x-i\\sin x}dx \\\\  &=\\int_{0}^{\\pi /2}\\frac{e^{ix}}{e^{-ix}}dx=e^{2ix}dx \\\\  &=\\frac{1}{2i}\\left [ e^{2ix} \\right ]_{0}^{\\pi /2} \\\\ &=\\frac{1}{2i}\\left [ e^{i\\pi }-1 \\right ] \\\\ &=\\frac{1}{2i}\\left ( -1-1 \\right ) \\\\  &=-\\frac{1}{i}=i \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2015:q4-s2": {
       "question_uid": "ce:2015:q4-s2",
@@ -185,7 +188,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$y=\\: \\lim_{x\\rightarrow \\infty }\\left ( 1+\\frac{1}{x} \\right )^{2x}$\n\n$\\log y = \\lim_{x\\rightarrow \\infty }2x\\log \\left ( 1+\\frac{1}{x} \\right )$\n\nWhich is in the form of $\\infty \\times 0$.\n\nTo convert this into $\\frac{0}{0}$ form, we rewrite as,\n\n$\\Rightarrow   \\log y= \\lim_{x\\rightarrow \\infty }\\frac{2\\log \\left ( 1+\\frac{1}{x} \\right )}{1/x}$\n\nNow is in $\\frac{0}{0}$ form.\n\nUsing L'Hospital's Rule,\n\n$$\\begin{aligned}   \\log y&=\\lim_{x\\rightarrow \\infty }\\frac{\\frac{2\\times -\\frac{1}{x^{2}}}{1+\\frac{1}{x}}}{-\\frac{1}{x^{2}}} \\\\   \\log y&=\\lim_{x\\rightarrow \\infty }\\frac{2}{1+\\frac{1}{x}}=2 \\\\ \\therefore  \\;\\;  y&= e^{2}\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q5-s2": {
       "question_uid": "ce:2015:q5-s2",
@@ -230,7 +234,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Rank of A=1\n\nBecause each row will be scalar multiple of first row.So we will get only one-zero row in row Echeleaon form of A.\n\nAlternative:\n\nRank of A=1\n\nBecause all the minors of order greater than 1 will be zero.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:q6-s2": {
       "question_uid": "ce:2015:q6-s2",
@@ -273,7 +278,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Shear Force and Bending Moment",
         "markdown": "Reaction at B\n\n<img src=\"/question-images/ce/2015/ce-2015-1fbe4da7a7.webp\" />\n\n$$\\begin{aligned} \\Delta_{\\mathrm{B}}&=0 \\text { (Compatibility condition) }\\\\ \\frac{10 \\times(0.75)^{3}}{3 E I}&+\\frac{2.5 \\times 0.75^{2}}{2 E I}-\\frac{R_{B} \\times 0.75^{3}}{3 E I}=0 \\\\ \\frac{9 R_{B}}{64 E I}&=\\frac{135}{64 E I}\\\\ \\therefore \\quad \\mathrm{R}_{\\mathrm{B}}&=15 \\mathrm{kN} \\end{aligned}$$\n\nBM at a distance x from free end\n\nReaction at B\n\n<img src=\"/question-images/ce/2015/ce-2015-292c783128.webp\" />\n\n$$\\begin{aligned} & & \\mathrm{BM}_{x} &=10 \\times x-15 \\times(x-0.25)=0 \\\\ \\Rightarrow & & 10 x &=15 x-3.75 \\\\ \\Rightarrow & & 5 x &=3.75 \\\\ \\therefore & & x &=0.75 \\mathrm{m} \\end{aligned}$$\n\n$\\therefore$ From end A, distance is 0.25m\n\nTherefore, the correct answer is **0.25**."
-      }
+      },
+      "answer": "0.25"
     },
     "ce:2015:q7-s2": {
       "question_uid": "ce:2015:q7-s2",
@@ -318,7 +324,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
         "markdown": "Under hydrostatic loading condition, stresses at a point in all directions are equal and hence no shear stress.\n\nAlternatively,\n\n$\\tau=\\frac{\\sigma_{1}-\\sigma_{2}}{2}=\\frac{50-50}{2}=0$\n\nThus, Mohr's circle reduces to a point.\n\nHence shear stress at all orientations is zero.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q8-s2": {
       "question_uid": "ce:2015:q8-s2",
@@ -361,9 +368,13 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Structural Mechanics - Boundary Conditions & Guided Roller Support Stiffness",
+        "markdown": "- **Kinematic Degrees of Freedom of a Guided Roller Support:**\n  - A guided support (also termed a shear release or vertical guide) constrains specific displacements while permitting others:\n\n- **1. Horizontal Translation ($\\Delta x$):**\n  - The member is locked between rigid vertical bearing surfaces, completely preventing horizontal displacement:\n    $$\\Delta x = 0$$\n  - To enforce zero displacement under any horizontal load, the horizontal spring stiffness must be infinite:\n    $$k_x \\to \\infty$$\n\n- **2. Vertical Translation ($\\Delta y$):**\n  - The rollers move freely along the vertical slot without developing any resisting vertical shear force ($R_y = 0$).\n  - Unrestrained vertical displacement under zero reaction corresponds to zero stiffness:\n    $$k_y = 0$$\n\n- **3. Rotational Slope ($\\theta$):**\n  - The paired guide rollers hold the member horizontally and prevent any rotational tilting of the cross-section:\n    $$\\theta = 0$$\n  - Enforcing zero rotation under applied bending moments corresponds to infinite rotational stiffness:\n    $$k_\\theta \\to \\infty$$\n\n- **Conclusion:**\n  - The limiting spring stiffness values are:\n    $$(k_x, \\; k_y, \\; k_\\theta) = (\\infty, \\; 0, \\; \\infty)$$\n\nTherefore, the correct answer is **Option A (\\infty ,0,\\infty)**.",
+        "images": [
+          "/question-images/ce/2015/ce-2015-87237d1353.webp"
+        ]
+      },
+      "answer": "A"
     },
     "ce:2015:q9-s2": {
       "question_uid": "ce:2015:q9-s2",
@@ -408,7 +419,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-ccaa4453bc.webp\" />\n\n$$e_{\\min }=\\operatorname{maximum}\\left\\{\\begin{array}{l} \\frac{L}{500}+\\frac{D}{30} \\\\ 20 \\mathrm{mm} \\end{array}\\right.$$\n\nx-x will be major axis and y-y will be minor axis.\n\n$$\\begin{aligned} \\therefore \\quad e_{\\min y y}&=\\frac{3000}{500}+\\frac{450}{30}=21 \\mathrm{mm} \\\\ \\text{and }\\quad e_{\\min xx}&=\\frac{3000}{500}+\\frac{600}{30}=26 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:q10-s2": {
       "question_uid": "ce:2015:q10-s2",
@@ -451,9 +463,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Design of Steel Structures - Bolted Connections & Prying Action (IS 800:2007)",
+        "markdown": "- **Physical Mechanism of Prying Action:**\n  - In structural steel connections (such as T-stub, hanger, or beam-to-column end-plate connections) subjected to tensile forces, bolts are placed in axial tension.\n  - Because the connected flange or plate possesses finite flexural flexibility, it undergoes bending deformation under load.\n\n- **Development of Prying Forces ($Q$):**\n  - As the center of the flange bends outward away from the base member, the outer extremities (toes) of the flexible flange press against the rigid supporting surface.\n  - By lever action, this tip contact develops an upward compressive reaction $Q$ at the flange edges.\n  - By equilibrium of the free body, this contact force introduces an additional, equal and opposite tensile reaction in the connecting bolts:\n    $$T_b = T_e + Q$$\n    where $T_b$ is the total tensile force on the bolt, $T_e$ is the direct external tension, and $Q$ is the prying force.\n\n- **Conclusion:**\n  - Prying forces are additional **tensile forces due to the flexibility of connected parts**.\n\nTherefore, the correct answer is **Option B (tensile forces due to the flexibility of connected parts)**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "ce:2015:q11-s2": {
       "question_uid": "ce:2015:q11-s2",
@@ -498,7 +512,8 @@
       "detailed_solution": {
         "concept": "Design of Steel Structures - Tension Member",
         "markdown": "As per IS 800:2007\n\n<img src=\"/question-images/ce/2015/ce-2015-56e2052e1c.webp\" />\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q12-s2": {
       "question_uid": "ce:2015:q12-s2",
@@ -543,7 +558,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
         "markdown": "$$\\begin{aligned} S.e&=w.G_{s}\\\\ \\text{Given }S&=1\\text{ (Fully saturated soil)}\\\\ w&=100 \\%=1 \\\\ e&=G_{s} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:q13-s2": {
       "question_uid": "ce:2015:q13-s2",
@@ -588,7 +604,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-21ff354785.webp\" />\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q14-s2": {
       "question_uid": "ce:2015:q14-s2",
@@ -633,7 +650,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
         "markdown": "$q_{n u}=\\mathrm{c} N_{c}$ (as per Terzaghi) independent of depth and size of footing.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q15-s2": {
       "question_uid": "ce:2015:q15-s2",
@@ -678,7 +696,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-fdb4302567.webp\" />\n\n$$\\begin{array}{c} K_{a} q=2 c \\sqrt{K_{a}} \\\\ q=\\frac{2 c}{\\sqrt{K_{a}}} \\end{array}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q16-s2": {
       "question_uid": "ce:2015:q16-s2",
@@ -723,7 +742,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Dimensional Analysis",
         "markdown": "As per Froude Law\n\n$$\\begin{aligned} \\left(\\frac{V}{\\sqrt{L g}}\\right)_{m}&=\\left(\\frac{V}{\\sqrt{L g}}\\right)_{p} \\\\ \\Rightarrow \\quad V_{r}&=\\sqrt{L_{r}} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q17-s2": {
       "question_uid": "ce:2015:q17-s2",
@@ -766,7 +786,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
         "markdown": "Convective acceleration $=\\frac{u \\partial u}{\\partial x}$\n\n$=15 \\times \\frac{15-1.5}{0.375}=540 \\mathrm{m} / \\mathrm{s}^{2}$\n\nTherefore, the correct answer is **540**."
-      }
+      },
+      "answer": "540"
     },
     "ce:2015:q18-s2": {
       "question_uid": "ce:2015:q18-s2",
@@ -809,9 +830,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Open Channel Flow - Hydraulic Jump, Sequent Depths & Alternate Depths",
+        "markdown": "- **Definitions of Depth Parameters:**\n  - Consider a hydraulic jump in a horizontal, frictionless rectangular channel:\n    - $y_p$: Pre-jump depth (supercritical flow regime, Froude number $Fr_1 > 1$).\n    - $y_s$: Sequent depth (post-jump subcritical flow regime, $Fr_2 < 1$).\n    - $y_a$: Alternate depth corresponding to $y_p$.\n\n- **1. Pre-jump Depth vs Sequent Depth ($y_p < y_s$):**\n  - By momentum conservation, the sequent depth ratio is:\n    $$\\frac{y_s}{y_p} = \\frac{1}{2}\\left(-1 + \\sqrt{1 + 8Fr_1^2}\\right)$$\n  - Since $Fr_1 > 1$, $\\frac{y_s}{y_p} > 1 \\implies y_s > y_p$.\n\n- **2. Sequent Depth vs Alternate Depth ($y_s < y_a$):**\n  - By definition, **alternate depths** have the **same specific energy**:\n    $$E(y_a) = E(y_p)$$\n  - A real hydraulic jump involves severe internal turbulence and eddy formation, dissipating head $\\Delta E_L > 0$:\n    $$E(y_p) - E(y_s) = \\Delta E_L = \\frac{(y_s - y_p)^3}{4 y_p y_s} > 0 \\implies E(y_p) > E(y_s)$$\n  - Substituting $E(y_p) = E(y_a)$:\n    $$E(y_a) > E(y_s)$$\n  - Both $y_a$ and $y_s$ lie on the subcritical limb of the specific energy curve ($y > y_c$). On this limb, specific energy increases monotonically with depth:\n    $$\\frac{dE}{dy} = 1 - \\frac{q^2}{gy^3} = 1 - Fr^2 > 0 \\quad (\\text{since } Fr < 1)$$\n  - Therefore, higher specific energy corresponds to greater depth:\n    $$E(y_a) > E(y_s) \\implies y_a > y_s$$\n\n- **Complete Ordering:**\n  - Combining inequalities:\n    $$y_p < y_s < y_a$$\n\nTherefore, the correct answer is **Option B (y_{p} < y_{s} < y_{a})**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "ce:2015:q19-s2": {
       "question_uid": "ce:2015:q19-s2",
@@ -854,9 +877,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Groundwater Hydrology - Porosity, Specific Yield & Specific Retention",
+        "markdown": "- **Physical Definitions in an Unconfined Aquifer:**\n  - Consider a representative saturated unconfined aquifer block of total bulk volume $V$.\n  - The total volume of pore space is $V_v$, giving the **porosity** $\\eta$:\n    $$\\eta = \\frac{V_v}{V}$$\n\n- **Partitioning of Water Upon Gravity Drainage:**\n  - When the water table falls, gravity drains water out of the pores:\n    1. **Specific Yield ($S_y$):** The fraction of total volume that drains under the action of gravity:\n       $$S_y = \\frac{V_{w, \\text{drain}}}{V}$$\n    2. **Specific Retention ($S_r$):** The fraction of total volume retained against gravity by capillary and molecular forces:\n       $$S_r = \\frac{V_{w, \\text{retain}}}{V}$$\n\n- **Volume Conservation:**\n  - Because all pore space in a fully saturated aquifer is occupied by water that either drains under gravity or remains retained:\n    $$V_v = V_{w, \\text{drain}} + V_{w, \\text{retain}}$$\n  - Dividing both sides by total volume $V$:\n    $$\\frac{V_v}{V} = \\frac{V_{w, \\text{drain}}}{V} + \\frac{V_{w, \\text{retain}}}{V}$$\n    $$\\eta = S_y + S_r \\iff S_y + S_r = \\eta$$\n\nTherefore, the correct answer is **Option A (S_{y}+S_{r}=\\eta)**.",
+        "images": []
+      },
+      "answer": "A"
     },
     "ce:2015:q20-s2": {
       "question_uid": "ce:2015:q20-s2",
@@ -899,7 +924,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality Characteristics of Water",
         "markdown": "$1 \\mathrm{kg}=1 \\text { litre }$\n\nTDS (in %) in the sample\n\n$=\\frac{500 \\times 10^{-3} \\mathrm{g}}{1000 \\mathrm{g}} \\times 100=0.05 \\%$\n\nTherefore, the correct answer is **0.05**."
-      }
+      },
+      "answer": "0.05"
     },
     "ce:2015:q21-s2": {
       "question_uid": "ce:2015:q21-s2",
@@ -942,9 +968,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Environmental Engineering - Physiological Effects of Gaseous Air Pollutants",
+        "markdown": "- **Physiological Action of Sulfur Dioxide ($SO_2$):**\n  - $SO_2$ is a highly water-soluble gas. Upon inhalation, it rapidly dissolves in the moist mucus lining of the upper respiratory tract to form sulfurous acid ($H_2SO_3$) and sulfuric acid ($H_2SO_4$).\n  - This causes severe irritation of mucosal membranes, reflex bronchoconstriction, and increases airway resistance, impairing the **functioning of the respiratory system** and worsening asthma and chronic bronchitis.\n\n- **Physiological Action of Carbon Monoxide (CO):**\n  - $CO$ is a colorless, odorless systemic poison that diffuses across alveolar membranes into the blood.\n  - Hemoglobin has an affinity for $CO$ that is approximately $200\\text{ to }250$ times greater than for oxygen. $CO$ binds with hemoglobin to form carboxyhemoglobin ($COHb$):\n    $$\\text{Hb} + \\text{CO} \\rightleftharpoons \\text{COHb}$$\n  - This displaces oxygen and alters the conformation of hemoglobin, drastically impairing the **oxygen carrying capacity of blood** and resulting in systemic tissue hypoxia.\n\n- **Conclusion:**\n  - $SO_2$ and $CO$ adversely affect the **functioning of the respiratory system and oxygen carrying capacity of blood respectively**.\n\nTherefore, the correct answer is **Option C (functioning of the respiratory system and oxygen carrying capacity of blood respectively)**.",
+        "images": []
+      },
+      "answer": "C"
     },
     "ce:2015:q22-s2": {
       "question_uid": "ce:2015:q22-s2",
@@ -989,7 +1017,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
         "markdown": "$$\\begin{aligned} R &=335 \\mathrm{m} \\\\ V &=320 \\mathrm{km} / \\mathrm{hr} \\\\ e+f &=\\frac{V^{2}}{127 R} \\\\ \\Rightarrow \\quad f &=\\frac{V^{2}}{127 R}-e\\\\ &=\\frac{320^{2}}{127 \\times 335}-\\tan 33^{\\circ} \\\\ &=1.761 \\end{aligned}$$\n\nNote: While deriving the above equation, we consider '$1-e f \\simeq 1$' but this is not valid in this case because banking provided is very high $\\left(\\tan 33^{\\circ}=0.65\\right).$ So formula used should be $\\frac{e+f}{1-e f}=\\frac{V^{2}}{127 R}$ which will result in f=0.685\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q23-s2": {
       "question_uid": "ce:2015:q23-s2",
@@ -1034,7 +1063,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "Design length is the average of (i) and (iii) as per\n\nIndian Roads Congress (IRC) recommendations\n\nfor storage lanes\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:q24-s2": {
       "question_uid": "ce:2015:q24-s2",
@@ -1077,7 +1107,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "Using Rise and Fall method\n\n$$\\begin{aligned} \\Sigma F S, &>\\Sigma B . S \\\\ \\therefore \\text { Fall }&=\\Sigma F . S,-\\Sigma B . S .=R . L, \\text { of first }\\\\ &\\text{station - R.L, of last station}\\\\ &=5.645-3.085=2.56 \\mathrm{m}\\\\ R.L.\\text{ (last station) }&= R.L.\\text{ (firet station) - Fall}\\\\ &=100-2.56=97.44 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **97.44**."
-      }
+      },
+      "answer": "97.44"
     },
     "ce:2015:q25-s2": {
       "question_uid": "ce:2015:q25-s2",
@@ -1122,7 +1153,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "Correction due to curvature,\n\n$C_{c}=-0.0785 d^{2}$\n\nCorrection due to refraction,\n\n$C_{f}=+0.0112 d^{2}$\n\n$\\therefore$ Composite correction\n\n$$\\begin{aligned} C &=-0.0785 d^{2}+0.0112 d^{2} \\\\ &=-0.0673 d^{2} \\end{aligned}$$\n\nwhere d is in km, C is in m.\n\n$\\Rightarrow \\quad C=0.0673 \\times 1^{2}=0.0673 \\mathrm{m}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q26-s2": {
       "question_uid": "ce:2015:q26-s2",
@@ -1165,7 +1197,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned} f\\left ( x \\right ) &=\\begin{cases} \\frac{x}{4}\\left ( 4-x^{2} \\right ), & \\text{ if } \\; \\; 0\\leq x\\leq 2\\\\ 0, & \\text{ if } \\; \\; Otherwise \\end{cases} \\\\ \\mu _{x} &=\\int_{0}^{2}xf\\left ( x \\right )dx \\\\ \\therefore \\text{Mean}\\: \\left ( \\mu _{x} \\right ) &=\\int_{0}^{2}x\\frac{x}{4}\\left ( 4-x^{2} \\right )dx \\\\ &=\\int_{0}^{2}\\left ( x^{2}-\\frac{x^{4}}{4} \\right )dx \\\\ &=\\left [ \\frac{x^{3}}{3}-\\frac{x^{5}}{20} \\right ]_{0}^{2}=\\frac{8}{3}-\\frac{32}{20}=\\frac{16}{15} \\\\ &=1.066 \\end{aligned}$$\n\nTherefore, the correct answer is **1.065** (acceptable range: [1.06, 1.07])."
-      }
+      },
+      "answer": "1.065"
     },
     "ce:2015:q27-s2": {
       "question_uid": "ce:2015:q27-s2",
@@ -1208,7 +1241,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation ",
         "markdown": "$\\frac{\\mathrm{d^{2}} y}{\\mathrm{d} x^{2}}=-12x^{2}+24x-20$\n\nIntegrating both sides wrt. x,\n\n$\\frac{\\mathrm{d} y}{\\mathrm{d} x}=-4x^{3}+12x^{2}-20x+c_{1}$\n\nIntegrating both sides wrt. x, $y=-x^{4}+4x^{3}-10x^{2}+c_{1}x+c_{2} \\;\\;...(i)$\n\nAt $x=0, \\; y=5$\n\n$\\Rightarrow \\;\\;  5=c_{2}$\n\nAt $x=2, \\; y=21$\n\n$$\\begin{aligned} \\Rightarrow \\;\\;   21&=-16+32-40+2c_{1}+c_{2} \\\\    2c_{1}&=21+16-2+40-5 \\\\    2c_{1}&=40 \\\\    c_{1}&=20 \\\\ \\Rightarrow \\;\\;  y&=-x^{4}+4x^{3}-10x^{2}+20x+5\\\\ &\\text{Put } x=1 \\\\ \\Rightarrow \\;\\;   y&=-1+4-10+20+5 \\\\    y&=18 \\end{aligned}$$\n\nTherefore, the correct answer is **18**."
-      }
+      },
+      "answer": "18"
     },
     "ce:2015:q28-s2": {
       "question_uid": "ce:2015:q28-s2",
@@ -1253,7 +1287,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$A=\\begin{bmatrix} 2 & 1\\\\ 1 & p \\end{bmatrix}$$\n\nLet $\\lambda _{1}$ and $\\lambda _{2}$ be the eigen value of matrix A\n\n$\\therefore  \\;\\;   \\frac{\\lambda _{1}}{\\lambda _[2]}=\\frac{3}{1}$ for $p=2$\n\nSum of eigen value\n\n$=\\lambda _{1}+\\lambda _{2}=2+p \\;\\;...(i)$\n\nProduct of eigen value\n\n$=\\lambda _{1}\\lambda _{2}=2p-1 \\;\\;...(ii)$\n\n$$\\begin{aligned}     \\frac{\\lambda _{1}}{\\lambda _{2}}&=\\frac{3}{1} \\\\ \\Rightarrow \\;\\;    \\lambda _{1}&=3\\lambda _{2}\\\\ &\\text{From eq. (i)}\\\\ \\Rightarrow \\;\\;   3\\lambda _{2}+\\lambda _{2}&=2+p \\\\      4\\lambda _{2}&=2+p \\\\       \\lambda _{2}&=\\frac{p+2}{4} \\\\ \\text{From eq. (ii)}\\\\ \\Rightarrow \\;\\;   3\\lambda _{2}^{2}&=2p-1 \\\\ \\Rightarrow \\;\\; 3\\left ( \\frac{p+2}{4} \\right )^{2}&=2p-1 \\\\ \\Rightarrow    \\;\\; p&=2,\\frac{14}{3}\\end{aligned}$$\n\nOR\n\n$$\\begin{aligned}   A=\\begin{bmatrix} 2 & 1\\\\ 1 & p \\end{bmatrix} \\\\    A-I\\lambda &=0 \\\\ \\begin{bmatrix} 2-\\lambda & 1\\\\ 1 & p-\\lambda \\end{bmatrix}&=0 \\\\ \\left ( 2-\\lambda \\right )\\left ( p-\\lambda \\right )-1&=0 \\\\ \\lambda ^{2}-\\left ( p+2 \\right )\\lambda +\\left ( 2p-1 \\right )=0\\end{aligned}$$\n\nBy putting values of p from options.\n\nBy putting option (D) $\\frac{14}{3}$ in above equations gives value 5, $\\frac{5}{3}$.\n\nHence ratio of two eigen values $=\\frac{5}{5/3}= 3:1$.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q29-s2": {
       "question_uid": "ce:2015:q29-s2",
@@ -1296,7 +1331,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "$a=0, b=0.8, \\Delta x=0.4$\n\n$f\\left ( x \\right )=0.2+25x-200x^{2}+675x^{3}-900x^{4}+400x^{5}$\n\n<img src=\"/question-images/ce/2015/ce-2015-afeca9b25b.webp\" />\n\nBy Simpson's 1/3 Rule,\n\n$$\\begin{aligned} y\\left ( x \\right )&=\\int_{0}^{0.8}\\left ( 0.2+25x-200x^{2}+675x^{3}-900x^{4}+400x^{5} \\right )dx \\\\  &=\\frac{4}{3}\\left [ y_{0}+4y_{1}+y_{2} \\right ] \\\\ y_{0}&=y\\left ( 0 \\right )=0.2 \\\\ y_{1}&=y\\left ( 0.4 \\right )=2.456 \\\\ y_{2}&=y\\left ( 0.8 \\right )=0.232 \\\\ y\\left ( n \\right )&=\\frac{0.4}{3}\\left ( 0.2+4\\times 2.456+0.232 \\right ) \\\\  &=1.367 \\end{aligned}$$\n\nTherefore, the correct answer is **1.365** (acceptable range: [1.36, 1.37])."
-      }
+      },
+      "answer": "1.365"
     },
     "ce:2015:q30-s2": {
       "question_uid": "ce:2015:q30-s2",
@@ -1341,7 +1377,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
         "markdown": "Deflection under load $P=\\theta L$\n\nWork done by force $P=\\frac{1}{2} P(\\theta L)$\n\n<img src=\"/question-images/ce/2015/ce-2015-e99625de19.webp\" />\n\nStrain energy stored in spring\n\n$$\\begin{aligned} &=\\frac{1}{2}[k(2 \\theta)](2 \\theta) \\\\ \\frac{1}{2} P(\\theta L) &=\\frac{4 k \\theta^{2}}{2} \\\\ \\Rightarrow \\quad \\theta &=\\frac{P L}{4 k} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q31-s2": {
       "question_uid": "ce:2015:q31-s2",
@@ -1384,7 +1421,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-329aa81799.webp\" />\n\n$$\\begin{aligned} \\text{Radius. }R&=\\frac{1}{C}=250 \\mathrm{m} \\\\ O A &=\\sqrt{250^{2}-5^{2}} \\\\ &=249.95 \\mathrm{m} \\\\ \\text { Deflection } &=A A^{\\prime}=250-249.95 \\\\ &=0.05 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **0.05**."
-      }
+      },
+      "answer": "0.05"
     },
     "ce:2015:q32-s2": {
       "question_uid": "ce:2015:q32-s2",
@@ -1427,7 +1465,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-b742bf0948.webp\" />\n\nDeflection of point B= Deflection of spring\n\n$\\Delta_{B}=\\frac{(P-R) L^{3}}{3 E I}=\\frac{R}{k}$\n\nWhere, R= Force in the spring\n\n$$\\begin{aligned} \\Rightarrow \\frac{(50-R) 200^{3}}{3 \\times 200 \\times 10^{3} \\times \\frac{5 \\times 10^{3}}{12}}&=\\frac{R}{2} \\\\ 0.064(50-R)&= R \\\\ 3.2&=R+0.064 R \\\\ R &=3.0075 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **3.15** (acceptable range: [3, 3.3])."
-      }
+      },
+      "answer": "3.15"
     },
     "ce:2015:q33-s2": {
       "question_uid": "ce:2015:q33-s2",
@@ -1470,7 +1509,8 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Influence Line Diagram and Rolling Loads",
         "markdown": "C.G. of system= 2.5 m from any load\n\nFor maximum bending moment, system of load\n\nshould be,\n\n<img src=\"/question-images/ce/2015/ce-2015-0c2569e5f7.webp\" />\n\nMaximum BM will occur below load at C.\n\nOrdinate of ILD at C\n\n$$\\begin{aligned} &=\\frac{(12-1.25) \\times(12+1.25)}{24} \\\\ &=5.935 \\end{aligned}$$\n\nOrdinate of LLD at D\n\n$$\\begin{aligned} &=\\frac{5.935 \\times 8.25}{13.25}=3.695 \\\\ \\text { Maximum } \\mathrm{BM} &=5.935 \\times 3+3.695 \\times 3 \\\\ &=28.89 \\mathrm{kN}-\\mathrm{m} \\end{aligned}$$\n\nMaximum bending stress,\n\n$$\\begin{aligned} \\frac{M}{Z}&=\\frac{28.89 \\times 10^{3}}{16.2 \\times 10^{-6} \\times 10^{9}}\\\\ &=1.783 \\mathrm{GPa} \\end{aligned}$$\n\nTherefore, the correct answer is **1.785** (acceptable range: [1.78, 1.79])."
-      }
+      },
+      "answer": "1.785"
     },
     "ce:2015:q34-s2": {
       "question_uid": "ce:2015:q34-s2",
@@ -1513,7 +1553,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
         "markdown": "The structure may fail when, the load exceeds the design load\n\n(ii) the strength is less than the characteristic strength\n\n(iii) both the load exceeds the design load and strength is less than the characteristic strength.\n\nThe probability of load exceeding design load = 5%\n\n(iv) The probability of strength less than characteristic strength = 5%\n\nThe probability of failure is\n\n$=0.05 \\times 0.95+0.05 \\times 0.95+0.05 \\times 0.05$\n\n$=0.0975$\n\nTherefore, the correct answer is **0.095** (acceptable range: [0.09, 0.1])."
-      }
+      },
+      "answer": "0.095"
     },
     "ce:2015:q35-s2": {
       "question_uid": "ce:2015:q35-s2",
@@ -1558,7 +1599,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Prestressed Concrete Beams",
         "markdown": "Given, net loss =10 %\n\nFinal prestressing force after loss =750 kN\n\nHence, initial prestressing force\n\n$=\\frac{750}{0.9}=833.33 \\mathrm{kN}$\n\nInitial stresses at top and bottom\n\n$$\\begin{array}{l}\n\n=\\frac{P}{A} \\pm \\frac{P e}{Z}=\\frac{833.33 \\times 10^{3}}{250 \\times 400} \\pm \\frac{833.33 \\times 10^{3} \\times 100 \\times 6}{250 \\times 400^{2}} \\\\\n\n=8.33 \\pm 12.50 \\\\\n\n\\end{array}$$\n\nStress at top $=8.33-12.50=-4.17$ (tensile)\n\nStress at bottom $=8.33+12.50=20.83$ (Comp.)\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q36-s2": {
       "question_uid": "ce:2015:q36-s2",
@@ -1601,9 +1643,13 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Plastic Analysis of Structures - Kinematic Upper-Bound Collapse Load of Stepped Beams",
+        "markdown": "- **Beam Geometry & Plastic Capacities:**\n  - Fixed-ended beam of span $L$ clamped at ends $X$ and $Z$.\n  - Stepped cross-section:\n    - Left half ($XY$, length $L/2$): Plastic moment capacity $= 2M_p$.\n    - Right half ($YZ$, length $L/2$): Plastic moment capacity $= M_p$.\n  - Concentrated load $W$ is applied at distance $L/3$ from the left support $X$ (point $C$).\n  - Distances: $XC = L/3$, $CY = L/2 - L/3 = L/6$, $YZ = L/2$.\n\n- **Kinematic (Upper-Bound) Method:**\n  - By the kinematic theorem, the true collapse load $W_c$ is the minimum load computed from all kinematically admissible collapse mechanisms.\n\n- **Mechanism 1 (Plastic hinge forms under the point load at C):**\n  - Plastic hinges form at clamped support $X$ ($2M_p$), under load $C$ ($2M_p$), and at clamped support $Z$ ($M_p$).\n  - Let downward deflection under the load at $C$ be $\\Delta$.\n  - Rotations of the two segments:\n    $$\\theta_1 = \\frac{\\Delta}{L/3} = \\frac{3\\Delta}{L}$$\n    $$\\theta_2 = \\frac{\\Delta}{2L/3} = \\frac{3\\Delta}{2L}$$\n  - Internal work done by plastic hinges:\n    $$W_i = 2M_p(\\theta_1) + 2M_p(\\theta_1 + \\theta_2) + M_p(\\theta_2)$$\n    $$W_i = 2M_p\\left(\\frac{3\\Delta}{L}\\right) + 2M_p\\left(\\frac{9\\Delta}{2L}\\right) + M_p\\left(\\frac{3\\Delta}{2L}\\right) = (6 + 9 + 1.5)\\frac{M_p \\Delta}{L} = 16.5 \\frac{M_p \\Delta}{L}$$\n  - External work done: $W_e = W \\cdot \\Delta$.\n  - Equating $W_e = W_i$:\n    $$W_1 = 16.5 \\frac{M_p}{L}$$\n\n- **Mechanism 2 (Plastic hinge forms at cross-section change point Y):**\n  - Because the moment capacity drops abruptly from $2M_p$ to $M_p$ at point $Y$, a plastic hinge can form in the weaker cross-section immediately to the right of $Y$ (capacity $M_p$).\n  - Plastic hinges form at clamped support $X$ ($2M_p$), at section change $Y$ ($M_p$), and at clamped support $Z$ ($M_p$).\n  - Segments $XY$ and $YZ$ rotate as straight rigid links. Let vertical deflection at $Y$ be $\\Delta_Y$.\n  - Rotations of the two halves:\n    $$\\theta_1 = \\frac{\\Delta_Y}{L/2} = \\frac{2\\Delta_Y}{L}$$\n    $$\\theta_2 = \\frac{\\Delta_Y}{L/2} = \\frac{2\\Delta_Y}{L}$$\n  - Deflection at the load point $C$ ($x = L/3$):\n    $$\\Delta_C = \\frac{L/3}{L/2} \\Delta_Y = \\frac{2}{3}\\Delta_Y$$\n  - Internal work done by plastic hinges:\n    $$W_i = 2M_p(\\theta_1) + M_p(\\theta_1 + \\theta_2) + M_p(\\theta_2)$$\n    $$W_i = 2M_p\\left(\\frac{2\\Delta_Y}{L}\\right) + M_p\\left(\\frac{4\\Delta_Y}{L}\\right) + M_p\\left(\\frac{2\\Delta_Y}{L}\\right) = (4 + 4 + 2)\\frac{M_p \\Delta_Y}{L} = 10 \\frac{M_p \\Delta_Y}{L}$$\n  - External work done:\n    $$W_e = W \\cdot \\Delta_C = W \\cdot \\left(\\frac{2}{3}\\Delta_Y\\right)$$\n  - Equating $W_e = W_i$:\n    $$W \\cdot \\frac{2}{3}\\Delta_Y = 10 \\frac{M_p \\Delta_Y}{L} \\implies W_2 = 10 \\times \\frac{3}{2}\\frac{M_p}{L} = 15.0 \\frac{M_p}{L}$$\n\n- **Determination of True Collapse Load:**\n  $$W_c = \\min(W_1, W_2) = \\min\\left(16.5\\frac{M_p}{L}, \\; 15.0\\frac{M_p}{L}\\right) = 15.0 \\frac{M_p}{L}$$\n  - The beam collapses under Mechanism 2 at a lower load of $15.0 M_p/L$.\n\nTherefore, the correct answer is **Option C (15.0 $M_{p}/L$)**.",
+        "images": [
+          "/question-images/ce/2015/ce-2015-fc2b838737.webp"
+        ]
+      },
+      "answer": "C"
     },
     "ce:2015:q37-s2": {
       "question_uid": "ce:2015:q37-s2",
@@ -1646,7 +1692,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
         "markdown": "$$\\begin{aligned} \\gamma_{\\mathrm{d}} &=\\frac{918}{588}=1.561 \\mathrm{g} / \\mathrm{cc} \\\\ \\gamma_{\\mathrm{d}} &=\\frac{G \\gamma_{\\mathrm{w}}}{1+e} \\\\ 1.561 &=\\frac{2.67 \\times 1}{1+\\mathrm{e}} \\\\ e &=0.71 \\end{aligned}$$\n\nTherefore, the correct answer is **0.71** (acceptable range: [0.7, 0.72])."
-      }
+      },
+      "answer": "0.71"
     },
     "ce:2015:q38-s2": {
       "question_uid": "ce:2015:q38-s2",
@@ -1689,7 +1736,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
         "markdown": "$$\\begin{aligned} e &=1.3 \\\\ C_{C} &=0.6 \\\\ C_{V} &=1 \\mathrm{m}^{2} / \\mathrm{year} \\\\ \\Delta H &=\\frac{\\mathrm{C}_{\\mathrm{c}} \\mathrm{H}_{0}}{1+\\mathrm{e}_{0}} \\log _{10}\\left[\\frac{\\overline{\\mathrm{\\sigma}}_{0}+\\Delta \\bar{\\sigma}}{\\bar{\\sigma}_{0}}\\right] \\end{aligned}$$\n\nAs increase in vertical pressure $(\\Delta \\sigma)$ is equal to existing effective over burden pressure $\\left(\\bar{\\sigma}_{0}\\right),$\n\n$$\\begin{aligned} &=\\frac{0.6 \\times 4}{1+1.3} \\log _{10}\\left(\\frac{\\bar{\\sigma}_{0}+\\bar{\\sigma}_{0}}{\\bar{\\sigma}_{0}}\\right) \\\\ &=\\frac{0.6 \\times 4}{2.3} \\log _{10} 2 \\\\ &=0.314 \\mathrm{m}=314 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **314.5** (acceptable range: [313, 316])."
-      }
+      },
+      "answer": "314.5"
     },
     "ce:2015:q39-s2": {
       "question_uid": "ce:2015:q39-s2",
@@ -1732,7 +1780,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
         "markdown": "Ultimate bearing capacity\n\n$$\\begin{aligned} &=\\lambda\\left(\\sigma_{\\mathrm{v} a v}+2 C_{u}\\right) A_{s} \\\\ &=0.15\\left[18 \\times 12.5+2 C_{u}\\right] \\times(\\pi \\times 0.4 \\times 25) \\\\ \\end{aligned}$$\n\n$C_{u}$ is the average value of all layers i.e., 60 kPa.\n\n$$\\begin{aligned} &=0.15[18 \\times 12.5+2 \\times 60] \\times(\\pi \\times 0.4 \\times 25) \\\\ &=1625.77 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **1625** (acceptable range: [1620, 1630])."
-      }
+      },
+      "answer": "1625"
     },
     "ce:2015:q40-s2": {
       "question_uid": "ce:2015:q40-s2",
@@ -1777,7 +1826,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-48dc734505.webp\" />\n\n$$\\begin{aligned} \\frac{\\alpha_{2}-\\alpha_{2t}}{2}&= c \\cos \\phi+\\frac{\\alpha_{2}-\\alpha_{2t}}{2}\\sin\\phi\\\\ \\text{as}\\quad q&=10\\sqrt{3}+0.5p\\\\ \\Rightarrow \\quad c \\cos\\phi&=10\\sqrt{3}\\\\ \\Rightarrow \\quad \\tan \\beta&=\\sin^{-1}(0.5)=30^{\\circ}\\\\ \\Rightarrow \\quad c&=\\frac{10\\sqrt{3}}{\\frac{\\sqrt{3}}{2}}=20\\\\ \\Rightarrow \\quad c&=20\\\\ \\phi&=30^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:q41-s2": {
       "question_uid": "ce:2015:q41-s2",
@@ -1822,7 +1872,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-f7eeab2a6e.webp\" />\n\n$$\\begin{aligned} \\phi_{\\text {clay }}&=0 \\\\ K_{a_{1}}&=\\frac{1-\\sin \\phi}{1+\\sin \\phi}=\\frac{1}{3} \\\\ K_{a_{2}}&=1 \\\\ p_{B}&=K_{a_{1}} \\gamma z=\\frac{1}{3} \\times 18 \\times 3=18 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ p_{B^{\\prime}}&=K_{a_{2}} \\gamma z-2 c \\sqrt{K_{a_{2}}} \\\\ &=1 \\times 18 \\times 3-2 \\times 20 \\sqrt{1}=14 \\\\ p_{C}&=K_{a_{2}} \\gamma Z-2 c \\sqrt{K_{a_{2}}} \\\\ &=18 \\times 6-2 \\times 20 \\sqrt{1}=68 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTotal active earth pressure per unit length of wall\n\n$P_{a}=\\frac{1}{2} \\times 18 \\times 3+\\frac{1}{2}(68+54) \\times 3=150 \\mathrm{kN} / \\mathrm{m}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q42-s2": {
       "question_uid": "ce:2015:q42-s2",
@@ -1865,7 +1916,8 @@
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
         "markdown": "Gram and wheat are Rabi crops.\n\nSo both are grown in the same period.\n\nDischarge required for gram,\n\n$Q_{g}=\\frac{A_{g}}{D_{g}}=\\frac{2000 \\times 0.3}{8.64 \\times \\frac{18}{0.12}}=0.4630 \\mathrm{m}^{3} / \\mathrm{s}$\n\nDischarge required for wheat,\n\n$Q_{w}=\\frac{A_{w}}{D_{w}}=\\frac{2000 \\times 0.5}{8.64 \\times \\frac{18}{0.15}}=0.9645 \\mathrm{m}^{3} / \\mathrm{s}$\n\n$Total discharge =Q_{g}+Q_{w}=1.4275 \\mathrm{m}^{3} / \\mathrm{s}$\n\nTherefore, the correct answer is **1.45** (acceptable range: [1.4, 1.5])."
-      }
+      },
+      "answer": "1.45"
     },
     "ce:2015:q43-s2": {
       "question_uid": "ce:2015:q43-s2",
@@ -1908,7 +1960,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Hydrostatic Forces",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-b55196f024.webp\" />\n\n$$\\begin{aligned} \\bar{h} &=1.5+1.5\\left(\\frac{2}{3}\\right)=2.5 \\mathrm{m} \\\\ F_{R} &=\\rho g \\bar{h} A \\\\ &=(800)(9.81)(2.5)\\left(\\frac{1}{2} \\times 2 \\times 1.5\\right) \\\\ &=29430 \\mathrm{N}=29.43 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **29.4** (acceptable range: [29.3, 29.5])."
-      }
+      },
+      "answer": "29.4"
     },
     "ce:2015:q44-s2": {
       "question_uid": "ce:2015:q44-s2",
@@ -1953,7 +2006,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
         "markdown": "Continuity equation\n\n$$\\begin{aligned}\n\n\\frac{\\partial u}{\\partial x}+\\frac{\\partial v}{\\partial y} &=0 \\\\\n\n\\Rightarrow \\quad(2-2 x y)+(2 x y-2) &=0 \\\\\n\n0 &=0\n\n\\end{aligned}$$\n\nHence, incompressible fluid.\n\n$$\\begin{aligned}\n\n\\omega_{z} &=\\frac{1}{2}\\left[\\frac{\\partial v}{\\partial x}-\\frac{\\partial u}{\\partial y}\\right] \\\\\n\n&=\\frac{1}{2}\\left[y^{2}-\\frac{3 x^{2}}{3}-\\left(\\frac{3 y^{2}}{3}-x^{2}\\right)\\right] \\\\\n\n&=\\frac{1}{2}\\left[y^{2}-x^{2}-y^{2}+x^{2}\\right] \\\\\n\n&=0\n\n\\end{aligned}$$\n\nHence, flow is irrotational.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q45-s2": {
       "question_uid": "ce:2015:q45-s2",
@@ -1998,7 +2052,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Evaporation, Transpiration and Stream Flow Measurement",
         "markdown": "Let 'x' cm evaporation takes place in month of June.\n\nTotal inflow\n\n$$\\begin{array}{l} =\\left(\\frac{10 \\times 30 \\times 24 \\times 60 \\times 60}{20 \\times 10^{6}} \\times 100\\right)+10 \\\\ =139.6 \\mathrm{cm} \\end{array}$$\n\nTotal outflow\n\n$$\\begin{array}{l} =\\left(\\frac{15 \\times 30 \\times 24 \\times 60 \\times 60}{20 \\times 10^{6}} \\times 100\\right)+1.8+x\\\\ =196.2+x \\mathrm{cm} \\end{array}$$\n\nAs total outflow is more than total inflow, therefore depression in storage takes place.\n\nDepression in storage\n\n$$\\begin{aligned} =-\\frac{16 \\times 10^{6}}{20 \\times 10^{6}} \\times 100&=-80 \\mathrm{cm} \\\\ \\Rightarrow 139.6-(196.2+x)&=-80 \\\\ -x &=-80+56.6\\\\ \\therefore \\quad x&=23.4 \\mathrm{cm} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:q46-s2": {
       "question_uid": "ce:2015:q46-s2",
@@ -2041,7 +2096,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-f116560373.webp\" />\n\n$$\\begin{aligned} f &= 0.024,d=700mm,l=6000m\\\\ h_{f}&=\\frac{ftQ^{2}}{12.1d^{5}}\\\\ 30&=h_{f_{1}}=h{f_{2}}\\\\ 30&=\\frac{0.024\\times3000\\times Q^{2}}{12.1\\times 0.7^{5}}+\\frac{0.024\\times 3000 \\times (Q-0.5)^{2}}{12.1\\times (0.7)^{5}}\\\\ &=35.40Q^{2}+35.40(Q-0.15)^{2}\\\\ \\therefore Q&=0.722 m^{3}/ s\\\\ \\therefore Q_{8}&=Q=0.15=0.572m^{2}/s \\end{aligned}$$\n\nTherefore, the correct answer is **0.57** (acceptable range: [0.56, 0.58])."
-      }
+      },
+      "answer": "0.57"
     },
     "ce:2015:q47-s2": {
       "question_uid": "ce:2015:q47-s2",
@@ -2084,7 +2140,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Municipal Solid Waste Management",
         "markdown": "Solid waste generated per day\n\n$=2\\times 200000=400000\\: kg$\n\nTotal solid waste generated in 25 years\n\n$=400000\\times 365\\times 25=3.65\\times 10^{9}\\: kg$\n\nCompaction ratio,\n\n$4=\\frac{Volume\\; before\\; compaction}{Volume\\; after\\; compaction}$\n\nVolume of waste before compaction,\n\n$V=\\frac{3.65\\times 10^{9}}{100}=3.65\\times 10^{7}\\: m^{3}$\n\nVolume of waste after compaction,\n\n$V'=\\frac{3.65\\times 10^{7}}{4}=9.125\\times 10^{6}\\: m^{3}$\n\n$\\frac{SW+cover}{SW}=\\frac{SW}{SW}+\\frac{cover}{SW}=1.5$\n\n$\\frac{Cover}{SW}=0.5$\n\n$Cover=0.5\\times 9.125\\times 10^{6}$\n\n$\\; \\; \\; =4.5625\\times 10^{6}\\: m^{3}$\n\n$$\\begin{aligned} \\text{Total volume} &=SW+Cover \\\\ &=\\left ( 9.125+4.5625 \\right )\\times 10^{6}\\: m^{3} \\\\ &=13.6875\\: million\\: m^{3} \\end{aligned}$$\n\nTherefore, the correct answer is **13.7** (acceptable range: [13.6, 13.8])."
-      }
+      },
+      "answer": "13.7"
     },
     "ce:2015:q48-s2": {
       "question_uid": "ce:2015:q48-s2",
@@ -2127,7 +2184,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "Total water filtered in a day\n\n$=60 \\times 60 \\times 24=86400 \\mathrm{m}^{3} / \\mathrm{day}$\n\nTotal surface area of filter required\n\n$=\\frac{86400 m^{3} / d a y}{120 m^{3} / d a y / m^{2}}=720 m^{2}$\n\nArea of one filter $=6 \\times 10=60 \\mathrm{m}^{2}$\n\nTotal no. of filter $=\\frac{720}{60}=12\\text{ filtres }$\n\nAs two filters are out of service, number of filters working =12-2=10\n\nTotal surface area of filter\n\n$=60 \\times 10=600 \\mathrm{m}^{2}$\n\nThe new loading rate\n\n$=\\frac{86400 m^{3} / d a y}{600 m^{2}}=144 m^{3} / d a y / m^{2}$\n\nTherefore, the correct answer is **144**."
-      }
+      },
+      "answer": "144"
     },
     "ce:2015:q49-s2": {
       "question_uid": "ce:2015:q49-s2",
@@ -2172,7 +2230,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
         "markdown": "BOD remaining FTER 7 DAYS\n\n$$\\begin{aligned} &=BOD_{u}e^{-kt} \\\\ &=20\\times e^{-0.15\\times 7} \\\\ &=20\\times 0.35=7 \\\\ \\%: remaining &=\\frac{7\\times 100}{20}=35\\% \\end{aligned}$$\n\nBOD exerted in 7 days\n\n$=\\left ( 100-35 \\right )\\%=65\\%$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:q50-s2": {
       "question_uid": "ce:2015:q50-s2",
@@ -2215,7 +2274,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "$$\\begin{aligned} V_{0} &=\\frac{Q}{B L} \\\\ Q &=\\left(32.5 \\mathrm{m}^{3} / \\mathrm{d} / \\mathrm{m}^{2}\\right) \\times 32.5 \\times 8 \\\\ &=8450 \\mathrm{m}^{3} / \\mathrm{d}\\\\ \\text{Weir length }&=75 \\mathrm{m} \\\\ \\end{aligned}$$\n\n$\\therefore$ Weir loading rate,\n\n$q=\\frac{8450}{75}=112.67 \\mathrm{m}^{3} / \\mathrm{d} / \\mathrm{m}$\n\nTherefore, the correct answer is **1750**."
-      }
+      },
+      "answer": "1750"
     },
     "ce:2015:q51-s2": {
       "question_uid": "ce:2015:q51-s2",
@@ -2258,7 +2318,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "Traffic volume,\n\n$$\\begin{aligned} q &=u k \\\\ q &=(70-0.7 k) k \\\\ &=70 k-0.7 k^{2} \\end{aligned}$$\n\nMaximum possible volume is capacity of road\n\nFor maximum volume,\n\n$$\\begin{aligned} \\frac{d q}{d k}&=0 \\\\ \\Rightarrow \\quad 70-1.4 k&=0\\\\ \\Rightarrow \\quad k&=50 \\mathrm{Veh} / \\mathrm{km} \\\\ \\text{Now, capacity,}\\\\ C&=(70-0.7 \\times 50) \\times 50 \\\\ C&=1750 \\mathrm{Veh} / \\mathrm{hr} \\end{aligned}$$\n\nTherefore, the correct answer is **1750**."
-      }
+      },
+      "answer": "1750"
     },
     "ce:2015:q52-s2": {
       "question_uid": "ce:2015:q52-s2",
@@ -2301,9 +2362,13 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
-      }
+        "concept": "Highway Materials - Aggregate Mechanical Properties & Standard Laboratory Tests",
+        "markdown": "- **Matching Aggregate Mechanical Properties to Testing Principles:**\n  - **P. Resistance to Impact $\\rightarrow$ 3. Toughness:**\n    - The Aggregate Impact Value (AIV) test (IS: 2386 Part 4) measures the resistance of mineral aggregate to sudden shock or impact loading produced by 15 blows of a $13.5\\text{--}14\\text{ kg}$ hammer falling from a height of $38\\text{ cm}$.\n    - Resistance to impact is defined as **toughness**. $\\implies \\mathbf{P - 3}$.\n\n  - **Q. Resistance to Wear $\\rightarrow$ 1. Hardness:**\n    - The Los Angeles Abrasion test (or Deval abrasion test, IS: 2386 Part 4) measures the resistance of aggregate particles to surface rubbing, abrasion, and attrition caused by abrasive steel spheres in a rotating drum.\n    - Resistance to wear and surface abrasion defines **hardness**. $\\implies \\mathbf{Q - 1}$.\n\n  - **R. Resistance to Weathering Action $\\rightarrow$ 4. Soundness:**\n    - The Soundness test (IS: 2386 Part 5) assesses the resistance of aggregates to simulated freeze-thaw and wet-dry cycles through repeated immersion in saturated sodium or magnesium sulfate solutions followed by oven-drying.\n    - Resistance to weathering and chemical disintegration is defined as **soundness**. $\\implies \\mathbf{R - 4}$.\n\n  - **S. Resistance to Crushing $\\rightarrow$ 2. Strength:**\n    - The Aggregate Crushing Value (ACV) test (IS: 2386 Part 4) measures the relative resistance of aggregate to gradual compression under a standard static compressive load of $400\\text{ kN}$ applied over 10 minutes.\n    - Resistance to crushing defines compressive **strength**. $\\implies \\mathbf{S - 2}$.\n\n- **Synthesis:**\n  - Matching: $\\mathbf{P-3, \\; Q-1, \\; R-4, \\; S-2}$.\n\nTherefore, the correct answer is **Option B (P-3, Q-1, R-4, S-2)**.",
+        "images": [
+          "/question-images/ce/2015/ce-2015-34412ae12c.webp"
+        ]
+      },
+      "answer": "B"
     },
     "ce:2015:q53-s2": {
       "question_uid": "ce:2015:q53-s2",
@@ -2348,7 +2413,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Highway Materials",
         "markdown": "Theoretical specific gravity,\n\n$$\\begin{aligned} G_{t} &=\\frac{w_{1}+w_{2}+w_{3}+w_{4}}{\\frac{w_{1}}{G_{1}}+\\frac{W_{2}}{G_{2}}+\\frac{W_{3}}{G_{3}}+\\frac{W_{4}}{G_{b}}} \\\\ &=\\frac{55+35.8+3.7+5.5}{\\frac{55}{2.6}+\\frac{35.8}{2.7}+\\frac{3.7}{2.65}+\\frac{5.5}{1.01}}+ \\\\ &=2.42 \\end{aligned}$$\n\nEffective specific gravity of aggregates (coarse + fine) is given by,\n\n$$\\begin{aligned} G^{\\prime} &=\\frac{(55 \\times 2.6)+(35.8 \\times 2.7)}{55+35.8} \\\\ &=2.639=2.64 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:q54-s2": {
       "question_uid": "ce:2015:q54-s2",
@@ -2393,7 +2459,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
         "markdown": "<img src=\"/question-images/ce/2015/ce-2015-31234b320c.webp\" />\n\n$Let S_{1} S_{3}=l_{1}\\text{ and }S_{2} S_{3}=l_{2}$\n\nNorthing of $\\mathrm{S}_{3}:$\n\n$$\\begin{aligned} &500+l_{1} \\cos 45^{\\circ}=450+l_{2} \\cos 26^{\\circ} 34^{\\prime} \\\\ &l_{1} \\cos 45^{\\circ}-l_{2} \\cos 26^{\\circ} 34^{\\prime}=-50 &\\ldots(i) \\end{aligned}$$\n\nEasting of $\\mathrm{S}_{3}:$\n\n$$\\begin{aligned} 500+l_{1} \\sin 45^{\\circ}=600-l_{2} \\sin 26^{\\circ} 34^{\\prime} \\\\ l_{1} \\sin 45^{\\circ}+l_{2} \\sin 26^{\\circ} 34^{\\prime}=100 &\\ldots(ii) \\end{aligned}$$\n\nSolving eq. (i) and eq. (ii),\n\n$$\\begin{aligned} l_{1}&=70.707 \\\\ l_{2}&=111.802 \\end{aligned}$$\n\n$\\therefore \\quad$ Easting of $S_{3}=500+70.707 \\sin 45^{\\circ}$\n\n$=550 \\mathrm{m}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2015:q55-s2": {
       "question_uid": "ce:2015:q55-s2",
@@ -2436,7 +2503,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "Staff readings shows that station B is below station A\n\n$$\\begin{aligned} a_{1} &=1.350 \\\\ a_{2} &=0.550 \\\\ b_{1} &=1.550 \\\\ b_{2} &=0.750 \\\\ h_{18} &=\\frac{\\left(b_{1}-a_{1}\\right)+\\left(b_{2}-a_{2}\\right)}{2} \\\\ &=\\frac{(1.550-1.350)+(0.750-0.550)}{2} \\\\ &=0.200\\\\ \\text{RL of }B&=\\text{RL of A}-0.200 \\\\ &=100.200-0.200 \\\\ &=100.000 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **100**."
-      }
+      },
+      "answer": "100"
     },
     "ce:2015:ga:q1-s2": {
       "question_uid": "ce:2015:ga:q1-s2",
@@ -2480,7 +2548,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:ga:q2-s2": {
       "question_uid": "ce:2015:ga:q2-s2",
@@ -2524,7 +2593,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:ga:q3-s2": {
       "question_uid": "ce:2015:ga:q3-s2",
@@ -2568,7 +2638,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "ce:2015:ga:q4-s2": {
       "question_uid": "ce:2015:ga:q4-s2",
@@ -2612,7 +2683,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ce:2015:ga:q5-s2": {
       "question_uid": "ce:2015:ga:q5-s2",
@@ -2656,7 +2728,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:ga:q6-s2": {
       "question_uid": "ce:2015:ga:q6-s2",
@@ -2700,7 +2773,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:ga:q7-s2": {
       "question_uid": "ce:2015:ga:q7-s2",
@@ -2744,7 +2818,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:ga:q8-s2": {
       "question_uid": "ce:2015:ga:q8-s2",
@@ -2788,7 +2863,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ce:2015:ga:q9-s2": {
       "question_uid": "ce:2015:ga:q9-s2",
@@ -2832,7 +2908,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ce:2015:ga:q10-s2": {
       "question_uid": "ce:2015:ga:q10-s2",
@@ -2876,7 +2953,8 @@
       "detailed_solution": {
         "concept": "CE Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     }
   }
 }

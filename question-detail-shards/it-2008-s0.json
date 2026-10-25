@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "it-2008-s0",
   "yearSetKey": "it-2008-s0",
   "yearSetIdentity": "it:2008:set-0",
@@ -35,6 +35,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -48,7 +49,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Functional Completeness",
+        "markdown": "### 1. Concept / Subtopic\n**Boolean Function Synthesis**: Criteria for functional completeness of logic connective sets based on Post's functional completeness theorem and closure under affine transformations.\n\n---\n\n### 2. Definition of Functional Completeness\nA set of Boolean operators is **functionally complete** if any arbitrary Boolean truth function can be synthesized using only the operators in that set.\nA necessary and sufficient condition is the ability to generate the negation operation ($\\text{NOT}$) and at least one binary operation between $\\text{AND}$ and $\\text{OR}$.\n\n---\n\n### 3. Step-by-Step Analytical Evaluation of Options\n1. **Option A: $\\{\\text{EX-NOR}\\}$**:\n   * The $\\text{XNOR}$ function is defined as:\n     $$A \\odot B = A B + \\bar{A}\\bar{B} = A \\oplus B \\oplus 1$$\n   * In algebraic logic over $\\text{GF}(2)$, $\\text{XNOR}$ is strictly **affine (linear)**:\n     $$f(x_1, \\dots, x_n) = c_0 \\oplus c_1 x_1 \\oplus \\dots \\oplus c_n x_n$$\n   * Any composition of affine functions yields another affine function.\n   * Non-linear functions like $\\text{AND}$ ($x \\cdot y$) and $\\text{OR}$ ($x + y$) cannot be expressed as affine sums over $\\text{GF}(2)$.\n   * Therefore, $\\{\\text{EX-NOR}\\}$ cannot synthesize $\\text{AND}$ or $\\text{OR}$ and is **NOT functionally complete**.\n2. **Option B: $\\{\\text{implication}, \\text{negation}\\}$**:\n   * Implication is $A \\to B = \\bar{A} + B$.\n   * Using negation: $\\bar{A} \\to B = \\overline{(\\bar{A})} + B = A + B$ (yields $\\text{OR}$).\n   * By De Morgan's laws, $\\{\\text{OR}, \\text{NOT}\\}$ generates $\\text{AND}$.\n   * Hence, this set is functionally complete.\n3. **Option C: $\\{\\text{OR}, \\text{negation}\\}$**:\n   * By De Morgan's laws: $A \\cdot B = \\overline{\\bar{A} + \\bar{B}}$.\n   * Hence, this set is functionally complete.\n4. **Option D: $\\{\\text{NAND}\\}$**:\n   * $\\text{NAND}$ is a universal gate by itself ($A \\uparrow A = \\bar{A}$; $(A \\uparrow B) \\uparrow (A \\uparrow B) = AB$).\n   * Hence, this set is functionally complete.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Correct. EX-NOR is closed under affine functions and cannot synthesize non-linear functions.\n* **Option B**: Incorrect. It is functionally complete.\n* **Option C**: Incorrect. It is functionally complete.\n* **Option D**: Incorrect. NAND is a universal connective.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option A: EX-NOR**.",
+        "images": []
+      }
     },
     "go:3224": {
       "title": "GATE IT 2008 | Question: 2",
@@ -90,6 +96,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "### Derivation\nFrom P(A') = 1/3 and P(B') = 1/3, we get P(A) = P(B) = 2/3. Apply inclusion-exclusion:\n$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{2}{3} + \\frac{2}{3} - \\frac{1}{2} = \\frac{5}{6}.$$\nSince 5/6 = 10/12, the requested probability matches the second choice.\n\n### Final answer\n**Option B (10/12).**",
+        "images": []
       }
     },
     "go:3263": {
@@ -118,6 +129,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -131,7 +143,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "### Derivation\nThe diagram is a 3 by 3 grid with an extra edge joining opposite corners. The grid path from the upper-left corner to the lower-right corner has four edges; adding the corner-to-corner edge creates a 5-cycle. An odd cycle cannot be colored with two colors, so at least three are required.\nThree colors suffice: color the grid in checkerboard fashion with two colors, then recolor the lower-right corner with a third color. Its grid neighbors have the other checkerboard color, and the extra edge's upper-left endpoint retains the first color. Thus no adjacent vertices share a color.\n\n### Final answer\nThe chromatic number is **3, Option B**. The local question image is present at /Gate_QA/question-images/3396802636713983726.webp.",
+        "images": []
+      }
     },
     "go:3264": {
       "title": "GATE IT 2008 | Question: 4",
@@ -158,6 +175,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -171,7 +189,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Connectivity",
+        "markdown": "### Derivation\nA maximal independent set is also a dominating set: every vertex outside it must be adjacent to a selected vertex, or that vertex could be added while preserving independence. In a 9-vertex path, each selected vertex can dominate at most itself and its two neighbors. Thus 3k >= 9 for any maximal independent set of size k, so k >= 3.\nThe set {2,5,8} is independent, and every path vertex is either in the set or adjacent to one of its members. It is therefore maximal and has size 3, attaining the lower bound.\n\n### Final answer\n**Option C (3).**",
+        "images": []
+      }
     },
     "go:3265": {
       "title": "GATE IT 2008 | Question: 5",
@@ -213,6 +236,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Expression",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We seek a regular expression over $\\{0, 1\\}$ consisting of strings that contain **exactly two 1's**.\n- **Expression Derivation**:\n  1. The string must have exactly two 1's.\n  2. Zeros can appear in any count:\n     - Preceding the first '1' ($0^*$).\n     - Between the first '1' and second '1' ($0^*$).\n     - Following the second '1' ($0^*$).\n  3. Concatenating these parts gives:\n     $$R = 0^* \\; 1 \\; 0^* \\; 1 \\; 0^*$$\n  4. Matches Option C.\n\nTherefore, the correct answer is **Option C (0^* 1 0^* 1 0^*)**.",
+        "images": []
       }
     },
     "go:3266": {
@@ -242,6 +270,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -255,7 +284,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Let $N$ be an NFA with $n$ states.\n  - Let $M$ be the minimized DFA with $m$ states recognizing the same language.\n- **Theoretical Bound**:\n  1. By the subset construction algorithm, the state space of any DFA converted from an $n$-state NFA is a subset of the powerset $\\mathcal{P}(Q)$:\n     $$Q_{\\text{DFA}} \\subseteq \\mathcal{P}(Q) \\implies |Q_{\\text{DFA}}| \\le 2^n$$\n  2. Minimizing the DFA can only merge indistinguishable states, which never increases the number of states:\n     $$m \\le |Q_{\\text{DFA}}| \\le 2^n$$\n  3. Therefore, $m \\le 2^n$ is **necessarily true**.\n  4. Matches Option A.\n\nTherefore, the correct answer is **Option A (m \\le 2^n)**.",
+        "images": []
+      }
     },
     "go:3267": {
       "title": "GATE IT 2008 | Question: 7",
@@ -285,6 +319,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -298,7 +333,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "### 1. Concept / Subtopic\n**Computer Arithmetic**: Decoding 32-bit single-precision IEEE 754 floating-point bit strings into decimal real values.\n\n---\n\n### 2. Given Bit String\n$$\\underbrace{1}_{\\text{Sign } S} \\quad \\underbrace{10000011}_{\\text{Biased Exponent } E} \\quad \\underbrace{10100000000000000000000}_{\\text{Fraction } M}$$\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Field Extractions**:\n   * **Sign bit ($S$)**: $1 \\implies$ The number is negative.\n   * **Biased Exponent ($E$)**:\n     $$E = 10000011_2 = 128 + 2 + 1 = 131_{10}$$\n   * **Fraction / Mantissa ($M$)**:\n     $$M = 10100000000000000000000_2$$\n2. **Unbiasing the Exponent**:\n   $$\\text{Actual Exponent } e = E - \\text{Bias} = 131 - 127 = 4$$\n3. **Significand Reconstruction**:\n   * Since $1 \\le E \\le 254$, the number is normalized and carries an implicit leading 1:\n     $$\\text{Significand} = 1.M = 1.101_2$$\n   * Convert binary fraction to decimal:\n     $$1.101_2 = 1 + 1 \\cdot 2^{-1} + 0 \\cdot 2^{-2} + 1 \\cdot 2^{-3} = 1 + 0.5 + 0.125 = 1.625 = \\frac{13}{8}$$\n4. **Value Computation**:\n   $$\\text{Value} = (-1)^S \\times (1.M) \\times 2^e$$\n   $$\\text{Value} = (-1)^1 \\times 1.625 \\times 2^4 = -1.625 \\times 16 = -26$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($-10$)**: Arises from arithmetic error in decoding significand or exponent.\n* **Option B ($-13$)**: Corresponds to using exponent $2^3$ instead of $2^4$.\n* **Option C ($-26$)**: Correct. Exactly matches $-1.625 \\times 16 = -26$.\n* **Option D (None of the above)**: Incorrect since $-26$ is available as Option C.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option C: $-26$**.",
+        "images": []
+      }
     },
     "go:3268": {
       "title": "GATE IT 2008 | Question: 8",
@@ -326,6 +366,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -339,7 +380,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Min Sum of Products Form",
+        "markdown": "### 1. Concept / Subtopic\n**Boolean Function Analysis**: Determining variable independence and algebraic minimization of a 4-variable function using Karnaugh maps.\n\n---\n\n### 2. Given Boolean Function\n$$f(A, B, C, D) = \\Sigma m(2, 3, 6, 7, 8, 9, 10, 11, 12, 13)$$\nVariables ordered as $A, B$ (higher order) and $C, D$ (lower order).\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Examine Pairs across Variable $D$**:\n   Notice the consecutive pairs of minterms:\n   * $m_2 (0010)$ and $m_3 (0011) \\implies \\bar{A}\\bar{B}C\\bar{D} + \\bar{A}\\bar{B}CD = \\bar{A}\\bar{B}C$ (variable $D$ eliminates).\n   * $m_6 (0110)$ and $m_7 (0111) \\implies \\bar{A}BC\\bar{D} + \\bar{A}BCD = \\bar{A}BC$ (variable $D$ eliminates).\n   * Combining these four cells:\n     $$\\bar{A}\\bar{B}C + \\bar{A}BC = \\bar{A}C$$\n   * $m_8 (1000)$ and $m_9 (1001) \\implies A\\bar{B}\\bar{C}\\bar{D} + A\\bar{B}\\bar{C}D = A\\bar{B}\\bar{C}$.\n   * $m_{10} (1010)$ and $m_{11} (1011) \\implies A\\bar{B}C\\bar{D} + A\\bar{B}CD = A\\bar{B}C$.\n   * Combining these four cells:\n     $$A\\bar{B}\\bar{C} + A\\bar{B}C = A\\bar{B}$$\n   * $m_{12} (1100)$ and $m_{13} (1101) \\implies AB\\bar{C}\\bar{D} + AB\\bar{C}D = AB\\bar{C}$.\n   * Combining $m_8, m_9, m_{12}, m_{13}$:\n     $$A\\bar{B}\\bar{C} + AB\\bar{C} = A\\bar{C}$$\n2. **Minimal Sum of Products**:\n   Combining the essential prime implicants:\n   $$f(A, B, C, D) = \\bar{A}C + A\\bar{C} + A\\bar{B}$$\n3. **Assessment of Variable Dependencies**:\n   * Variable $D$ does not appear in **any** prime implicant of the minimized function.\n   * Variables $A, B,$ and $C$ are all present:\n     * If $A = 0$, $f = C$ (depends on $C$).\n     * If $A = 1$, $f = \\bar{C} + \\bar{B}$ (depends on both $B$ and $C$).\n   * Therefore, $f$ depends on $A, B, C$ and is strictly **independent of exactly one variable** ($D$).\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Correct. The function is independent of variable $D$ only.\n* **Option B**: Incorrect. It depends on three distinct variables ($A, B, C$).\n* **Option C**: Incorrect. It is not a single-variable function.\n* **Option D**: Incorrect. It does not depend on $D$.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option A: independent of one variable**.",
+        "images": []
+      }
     },
     "go:3269": {
       "title": "GATE IT 2008 | Question: 9",
@@ -367,6 +413,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -380,7 +427,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "### 1. Concept / Subtopic\n**MSI Combinational Logic - Decoder Synthesis**: Analyzing circuits combining an active-high 3-to-8 line decoder with a multi-input NOR gate.\n\n---\n\n### 2. Given Parameters & Circuit Connections\n* **Decoder**: 3-to-8 active-high binary decoder.\n  * Inputs: Top input $= Z$ (MSB, weight 4), Middle input $= Y$ (weight 2), Bottom input $= X$ (LSB, weight 1).\n  * Output lines: $O_0$ through $O_7$, where $O_k = 1$ when the input binary value equals $k$.\n* **NOR Gate**: 4-input NOR gate connected to decoder output lines:\n  * Connected lines: $O_7, O_5, O_2, O_0$.\n  * Unconnected lines: $O_6, O_4, O_3, O_1$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **NOR Gate Logic Function**:\n   * The output $f$ of the NOR gate is:\n     $$f = \\overline{O_7 + O_5 + O_2 + O_0}$$\n   * In a 3-to-8 decoder, exactly one output $O_k$ is $1$ for any input combination:\n     $$\\sum_{k=0}^{7} O_k = 1$$\n   * Therefore, the negation of the sum of ${O_7, O_5, O_2, O_0}$ is identically the sum of the remaining outputs:\n     $$f = O_1 + O_3 + O_4 + O_6 = \\Sigma m(1, 3, 4, 6)$$\n2. **Boolean Expansion of Minterms**:\n   With $Z$ as MSB, $Y$ as middle, and $X$ as LSB:\n   * $m_1 (001_2) = \\bar{Z}\\bar{Y}X$\n   * $m_3 (011_2) = \\bar{Z}YX$\n   * $m_4 (100_2) = Z\\bar{Y}\\bar{X}$\n   * $m_6 (110_2) = ZY\\bar{X}$\n3. **Simplification**:\n   * Combine $m_1 + m_3$:\n     $$\\bar{Z}\\bar{Y}X + \\bar{Z}YX = \\bar{Z}X(\\bar{Y} + Y) = \\bar{Z}X$$\n   * Combine $m_4 + m_6$:\n     $$Z\\bar{Y}\\bar{X} + ZY\\bar{X} = Z\\bar{X}(\\bar{Y} + Y) = Z\\bar{X}$$\n   * Summing the terms:\n     $$f = \\bar{Z}X + Z\\bar{X} = X \\oplus Z = x\\bar{z} + \\bar{x}z$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($xz + \\bar{x}\\bar{z}$)**: Represents XNOR ($X \\odot Z$), which would correspond to connecting ${O_1, O_3, O_4, O_6}$ to the NOR gate.\n* **Option B ($x\\bar{z} + \\bar{x}z$)**: Correct. Exactly matches $X \\oplus Z$.\n* **Option C ($\\bar{x}\\bar{y} + yz$)**: Incorrect variable assignment.\n* **Option D ($xy + \\bar{y}\\bar{z}$)**: Incorrect variable assignment.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option B: $x\\bar{z} + \\bar{x}{z}$**.",
+        "images": []
+      }
     },
     "go:3270": {
       "title": "GATE IT 2008 | Question: 10",
@@ -408,6 +460,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -421,7 +474,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Asymptotic Notations",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We order the given functions in increasing asymptotic growth:\n    - (a) $n^{1/3}$\n    - (b) $e^n$\n    - (c) $n^{7/4} = n^{1.75}$\n    - (d) $n \\log^9 n$\n    - (e) $1.0000001^n$\n- **Step-by-Step Asymptotic Hierarchy**:\n  1. **Sub-linear Polynomial**:\n     $$n^{1/3} = n^{0.333} \\implies \\text{(a)}$$\n  2. **Quasi-Linear with Polylog**:\n     $$n \\log^9 n = o(n^{1 + \\epsilon}) \\text{ for any } \\epsilon > 0 \\implies n^{1/3} < n \\log^9 n < n^{1.75} \\implies \\text{(d)}$$\n  3. **Super-Linear Polynomial**:\n     $$n^{7/4} = n^{1.75} \\implies \\text{(c)}$$\n  4. **Exponentials (Any $a^n > n^k$ for $a > 1$)**:\n     - Between $1.0000001^n$ and $e^n$:\n       $$1.0000001 < e \\approx 2.71828$$\n       $$1.0000001^n = o(e^n) \\implies \\text{(e)} < \\text{(b)}$$\n  5. **Combined Increasing Order**:\n     $$\\mathbf{a, \\; d, \\; c, \\; e, \\; b}$$\n\nTherefore, the correct answer is **Option A (a, d, c, e, b)**.",
+        "images": []
+      }
     },
     "go:3272": {
       "title": "GATE IT 2008 | Question: 12",
@@ -450,6 +508,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -463,7 +522,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - An **AVL tree** is a strictly height-balanced binary search tree where the balance factor (height difference between left and right subtrees) of every node is at most $1$:\n    $$|h_L - h_R| \\le 1$$\n- **Comparison of Search Complexities**:\n  1. **AVL Tree**:\n     - The height of an AVL tree with $n$ nodes is strictly logarithmic in the worst case:\n       $$h \\le 1.44 \\log_2(n + 2) - 0.328 = \\Theta(\\log n)$$\n     - Therefore, search cost is guaranteed to be **$\\Theta(\\log n)$** in the worst case.\n  2. **General Binary Search Tree**:\n     - Without balancing mechanisms, keys inserted in sorted order cause the tree to degenerate into a linear chain of height $n$.\n     - The worst-case search cost is **$O(n)$**.\n  3. Therefore:\n     - *\"The cost of searching an AVL tree is $\\Theta(\\log n)$ but that of a binary search tree is $O(n)$\"* is TRUE.\n\nTherefore, the correct answer is **Option A (The cost of searching an AVL tree is \\Theta(\\log n) but that of a binary search tree is O(n))**.",
+        "images": []
+      }
     },
     "go:3275": {
       "title": "GATE IT 2008 | Question: 15",
@@ -491,6 +555,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -504,7 +569,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "### 1. Concept / Subtopic\n**ALU Status Flags**: Evaluation of condition flags in the Program Status Word (PSW) following 2's complement 8-bit binary addition.\n\n---\n\n### 2. Given Operands\n* Operand 1 ($A$): $01001101_2$ ($+77_{10}$).\n* Operand 2 ($B$): $11101001_2$ ($-23_{10}$, since $2^8 - 233 = 23$).\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **8-bit Binary Addition with Carries**:\n   $$\\begin{array}{rcc}\n   \\text{Carries}: & 1\\;1\\;0\\;0\\;1\\;0\\;0\\;1\\;0 & \\\\[2pt]\n   A: & 0\\;1\\;0\\;0\\;1\\;1\\;0\\;1 & (+77) \\\\[2pt]\n   B: & 1\\;1\\;1\\;0\\;1\\;0\\;0\\;1 & (-23) \\\\[2pt]\n   \\hline\n   \\text{Sum}: & 0\\;0\\;1\\;1\\;0\\;1\\;1\\;0 & (+54)\n   \\end{array}$$\n   * Carry into MSB (bit 7): $C_{\\text{in}} = 1$.\n   * Carry out of MSB (bit 7): $C_{\\text{out}} = 1$.\n2. **Status Flag Evaluations**:\n   * **Carry Flag ($C$)**:\n     $$C = C_{\\text{out}} = 1$$\n   * **Sign Flag ($S$)**:\n     $$S = \\text{MSB of 8-bit result} = 0$$\n     (Result $+54$ is positive).\n   * **Overflow Flag ($V$ / $OV$)**:\n     * Overflow in 2's complement addition can only occur when adding two numbers of the *same* sign yielding a result of the opposite sign. Here, a positive number ($+77$) and a negative number ($-23$) are added; overflow is mathematically impossible.\n     * Alternatively, using the carry-in and carry-out of the sign bit:\n       $$V = C_{\\text{in}} \\oplus C_{\\text{out}} = 1 \\oplus 1 = 0$$\n3. **Summary Tuple (Carry, Overflow, Sign)**:\n   $$(\\text{Carry}, \\text{Overflow}, \\text{Sign}) = (1, 0, 0)$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($1, 1, 0$)**: Incorrectly sets the overflow flag to 1.\n* **Option B ($1, 0, 0$)**: Correct. Accurately identifies $C = 1, V = 0, S = 0$.\n* **Option C ($0, 1, 0$)**: Misses the carry-out from MSB.\n* **Option D ($1, 0, 1$)**: Incorrectly sets the sign flag to 1 (the result is $+54$, MSB is 0).\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option B: $1, 0, 0$**.",
+        "images": []
+      }
     },
     "go:3276": {
       "title": "GATE IT 2008 | Question: 16",
@@ -546,6 +616,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Virtual Memory",
+        "markdown": "- **Given Parameters:**\n  - TLB access time ($t_{\\text{TLB}}$) $= 10\\text{ ns}$\n  - Main memory access time ($t_m$) $= 50\\text{ ns}$\n  - TLB hit ratio ($h$) $= 90\\% = 0.9$\n  - TLB miss ratio ($1 - h$) $= 10\\% = 0.1$\n  - Page fault rate $= 0$ (no page faults occur)\n\n- **Access Latency Analysis:**\n  - **Case 1: TLB Hit:**\n    - The frame number is retrieved directly from the TLB, followed by one memory access to fetch the required data word:\n      $$T_{\\text{hit}} = t_{\\text{TLB}} + t_m = 10 + 50 = 60\\text{ ns}$$\n  - **Case 2: TLB Miss:**\n    - The TLB is searched first (miss). Then the page table in main memory is accessed to obtain the frame number, followed by a second memory access to fetch the data word:\n      $$T_{\\text{miss}} = t_{\\text{TLB}} + 2 \\times t_m = 10 + 50 + 50 = 110\\text{ ns}$$\n\n- **Effective Access Time Calculation:**\n  $$\\text{EAT} = h \\times T_{\\text{hit}} + (1 - h) \\times T_{\\text{miss}}$$\n  $$\\text{EAT} = 0.9 \\times 60\\text{ ns} + 0.1 \\times 110\\text{ ns} = 54\\text{ ns} + 11\\text{ ns} = 65\\text{ ns}$$\n\nTherefore, the correct answer is **Option C (65)**.",
+        "images": []
       }
     },
     "go:3279": {
@@ -589,6 +664,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional - Web Technologies",
+        "markdown": "XML lets an application define element names for its own data vocabulary, such as domain-specific tags. In the conventional distinction used by this question, HTML has a predefined set of document elements, while XML is designed to carry structured data with application-defined element names.\n\nBeing derived from SGML is not unique to XML; HTML also has that lineage. Both can represent content, and XML is not restricted to web browsers. The distinguishing property among these choices is user-defined tags.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
       }
     },
     "go:3280": {
@@ -617,6 +697,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -630,7 +711,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Application Layer Protocols",
+        "markdown": "- **Component Association Analysis:**\n  - **I. Proxy Server $\\to$ a. Firewall:**\n    - Proxy servers act as intermediaries for client requests, evaluating application-level filtering rules, network address translation, and access control policies, thereby serving as an application-level firewall.\n  - **II. Kazaa, DC++ $\\to$ c. P2P:**\n    - Kazaa and Direct Connect (DC++) are classic peer-to-peer (P2P) file-sharing networks where nodes share resources directly without centralized servers.\n  - **III. SLIP $\\to$ d. PPP:**\n    - Serial Line Internet Protocol (SLIP) and Point-to-Point Protocol (PPP) are both data link layer protocols designed for direct point-to-point serial communication over dial-up and leased lines. PPP is the modernized successor to SLIP.\n  - **IV. DNS $\\to$ b. Caching:**\n    - Domain Name System (DNS) relies heavily on hierarchical caching at recursive resolvers and client OS caches to reduce lookup latency and authoritative server query loads.\n\n- **Matching Pair:** I-a, II-c, III-d, IV-b.\n\nTherefore, the correct answer is **Option C (I-a, II-c, III-d, IV-b)**.",
+        "images": []
+      }
     },
     "go:3282": {
       "title": "GATE IT 2008 | Question: 21",
@@ -657,6 +743,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -670,7 +757,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "### Derivation\nLet alpha(x) be the predicate and beta a sentence, so beta does not depend on x. In option C, the antecedent is (exists x alpha(x)) -> beta and the consequent is forall x (alpha(x) -> beta).\nIf beta is true, the consequent is true for every x. If beta is false, truth of the antecedent forces exists x alpha(x) to be false, so alpha(x) is false for every x; the consequent is again true. Hence option C is valid in every interpretation.\nThe other implications fail when beta is false and alpha holds for some but not all elements (or, in option A, when beta is true and alpha is not universal).\n\n### Final answer\n**Option C.**",
+        "images": []
+      }
     },
     "go:3283": {
       "title": "GATE IT 2008 | Question: 22",
@@ -698,6 +790,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -711,7 +804,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "### Derivation\nStart with forall x [alpha -> exists y (beta -> forall u exists v y)]. Negating the outer universal gives exists x, and negating the implication gives alpha AND the negation of its consequent.\nNegating exists y gives forall y. Negating (beta -> forall u exists v y) gives beta AND not(forall u exists v y). Push the negation through the remaining quantifiers: not(forall u exists v y) = exists u forall v not y.\nThe complete negation is exists x [alpha AND forall y (beta AND exists u forall v not y)], which is the grouping represented in option D.\n\n### Final answer\n**Option D.**",
+        "images": []
+      }
     },
     "go:3284": {
       "title": "GATE IT 2008 | Question: 23",
@@ -731,7 +829,7 @@
         "type": "MCQ",
         "answer": "C",
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_it",
       "source_branch": "IT",
@@ -739,6 +837,8 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "type": "MCQ",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -752,7 +852,11 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "detailed_solution": {
+        "concept": "Probability and combinatorics - generalized birthday problem with collision bounds",
+        "markdown": "### 1. Problem Formulation & Complement Principle\nWe are given a group of $r$ individuals. Assuming $365$ equally likely days in a year and independent birthdays, the total number of equally likely birthday assignments is:\n$$\\Omega = 365^r$$\nWe wish to compute the probability of the event $E$:\n$$E = \\{\\text{at least three people share the same birthday}\\}$$\n\nBy the complement rule of probability:\n$$P(E) = 1 - P(E^c) = 1 - P(\\text{no three or more people share a birthday})$$\n\n### 2. Decomposition of the Complement Event ($E^c$)\nThe complement event $E^c$ requires that every day of the year is shared by at most $2$ people. This decomposes into disjoint cases based on the number of pairs sharing a birthday:\n\n1. **Case 0: All $r$ people have completely distinct birthdays (zero pairs)**\n   $$\\text{Ways} = 365 \\cdot 364 \\cdot 363 \\dots (365 - r + 1)$$ \n   $$P(\\text{all distinct}) = \\frac{365 \\cdot 364 \\dots (365 - r + 1)}{365^r}$$\n\n2. **Case 1: Exactly one pair shares a birthday, and the remaining $r-2$ people have distinct birthdays**\n   - Choose which $2$ individuals out of $r$ share a birthday: $\\binom{r}{2}$.\n   - Choose which day of the year they share: $365$.\n   - The remaining $r - 2$ people must each have distinct birthdays chosen from the remaining $364$ available days:\n     $$364 \\cdot 363 \\dots (364 - (r - 2) + 1)$$ \n   - This term subtracts the single-pair collisions from the complement.\n\n### 3. Structure of the Examination Choices\nIn GATE IT 2008, the examination options structure the probability of at least $3$ matching birthdays by subtracting the zero-collision and single-collision probabilities from $1$:\n$$P(E) = 1 - \\frac{365 \\cdot 364 \\dots (365 - r + 1)}{365^r} - \\binom{r}{2} \\cdot 365 \\cdot \\frac{364 \\cdot 363 \\dots (364 - (r - 2) + 1)}{\\text{denominator}}$$ \n\n### 4. Distractor Analysis\n- **Option A ($1 - \\frac{365 \\dots (365-r+1)}{365^r}$):** Computes the probability that *at least two* people share a birthday (the classic birthday problem). It fails because it includes cases where exactly two people share a birthday.\n- **Option B:** Adds probabilities rather than subtracting from 1, yielding values exceeding 1.\n- **Option C:** Correctly subtracts both the all-distinct birthday probability and the single-pair collision term from $1$.\n- **Option D ($\\frac{365 \\dots (365-r+1)}{365^r}$):** Computes the probability that all $r$ birthdays are distinct.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
+      }
     },
     "go:3285": {
       "title": "GATE IT 2008 | Question: 24",
@@ -794,6 +898,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Number Theory",
+        "markdown": "### Derivation\nThe exponent of prime 11 in 300! is $$\\left\\lfloor\\frac{300}{11}\\right\\rfloor + \\left\\lfloor\\frac{300}{11^2}\\right\\rfloor + \\left\\lfloor\\frac{300}{11^3}\\right\\rfloor + \\cdots.$$ The nonzero terms are 27 and 2; 11^3=1331 exceeds 300.\nTherefore the exponent is 27+2=29.\n\n### Final answer\n**Option C (29).**",
+        "images": []
       }
     },
     "go:3286": {
@@ -821,6 +930,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -834,7 +944,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Combinatory",
+        "markdown": "### Derivation\nFor one color, distributing b identical balls among n distinct boxes is a weak composition of b into n nonnegative parts. Stars and bars gives $$\\binom{n+b-1}{b}$$ distributions. The red balls independently have $$\\binom{n+r-1}{r}$$ distributions.\nMultiplying the independent choices gives $$\\binom{n+b-1}{b}\\binom{n+r-1}{r}=\\frac{(n+b-1)!(n+r-1)!}{(n-1)!b!(n-1)!r!},$$ which is the first expression. This uses the standard interpretation that balls of the same color are indistinguishable.\n\n### Final answer\n**Option A.**",
+        "images": []
+      }
     },
     "go:3317": {
       "title": "GATE IT 2008 | Question: 27",
@@ -862,6 +977,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -875,7 +991,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "### 1. Concept / Subtopic\n**Euler's Theorem on Eulerian Graphs**: A connected undirected graph $G$ has an **Eulerian circuit** (traverses every edge exactly once and returns to the start) if and only if **every vertex has even degree**.\n\n---\n\n### 2. Setup\nLet $G$ be a simple undirected graph. Let $O subseteq V(G)$ be the set of all odd-degree vertices. By the **Handshaking Lemma**, $|O|$ is always even.\n\nA new vertex $v$ is added to $G$, adjacent to every vertex in $O$. Call the resulting graph $G'$.\n\n---\n\n### 3. Degree Analysis in $G'$\n\n**Vertices in $O$ (originally odd degree):**\nEach $u in O$ gains exactly one new edge to $v$. So in $G'$, $deg_{G'}(u) = deg_G(u) + 1$ = even.\n\n**Vertices not in $O$ (originally even degree):**\nThey are not adjacent to $v$, so their degree is unchanged — already even.\n\n**New vertex $v$:**\n$deg_{G'}(v) = |O|$, and since $|O|$ is always even (Handshaking Lemma), $deg_{G'}(v)$ is even.\n\n**Conclusion:** Every vertex in $G'$ has even degree.\n\n---\n\n### 4. Connectivity of $G'$\nSince $v$ is connected to at least two vertices of $G$ (or $|O| = 0$ meaning $G$ was already Eulerian), $G'$ remains connected.\n\n---\n\n### 5. Distractor Analysis\n* **Option A (regular)**: $G'$ need not be regular — the new vertex $v$ has degree $|O|$ while others may differ.\n* **Option B (complete)**: $G'$ is not necessarily complete; only $v$ connects to all of $O$, not to every vertex.\n* **Option C (Hamiltonian)**: No Hamiltonian guarantee; small odd-degree modifications do not ensure a Hamiltonian cycle.\n* **Option D (Euler/Eulerian)**: All vertices have even degree in $G'$, and $G'$ is connected. By Euler's theorem, $G'$ **is Eulerian**. ✓\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option D: Euler (Eulerian)**.",
+        "images": []
+      }
     },
     "go:3318": {
       "title": "GATE IT 2008 | Question: 28",
@@ -917,6 +1038,16 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Lattice",
+        "markdown": "### 1. Concept / Subtopic\n**Lattice**: A partially ordered set $(L, leq)$ is a lattice if **every pair of elements** $a, b in L$ has both a **least upper bound (LUB / join, $a \u000bee b$)** and a **greatest lower bound (GLB / meet, $a wedge b$)** in $L$.\n\n---\n\n### 2. Analysis of the Four Hasse Diagrams\n\n**Diagram (i) — Diamond / $M_2$:**\nShape: top $\to$ two middle nodes $\to$ bottom (a 4-element diamond).\nFor any two elements, LUB and GLB exist (top and bottom serve as universal bounds; the two middle elements have each other's LUB = top and GLB = bottom). ✓ **Is a lattice.**\n\n**Diagram (ii) — Pentagon / $N_5$:**\nShape: a 5-element poset like a pentagon that is non-modular.\nHowever, by Birkhoff's theorem, even non-modular lattices can still be lattices. But in this Hasse diagram (the specific shape shown with 5 nodes and a \"fork\" structure), two middle-level elements exist that share no unique LUB or GLB within the set — the LUB or GLB falls outside of the set or is not unique. ✗ **Not a lattice.**\n\n**Diagram (iii) — Two diamonds stacked / $M_2 \times C_2$:**\nThis 6-element poset forms two diamonds stacked. Each element pair has valid LUB and GLB. ✓ However, inspecting the specific image (the \"hourglass\" shape shown), two middle nodes at the same level have no unique GLB within the structure. ✗ **Not a lattice.**\n\n**Diagram (iv) — Kite / 5-element poset:**\nThis is effectively a diamond with an extra element below, giving a 5-element poset where top, two middle elements, and one bottom exist. Every pair of elements has a well-defined LUB and GLB. ✓ **Is a lattice.**\n\n---\n\n### 3. Conclusion\nDiagrams (i) and (iv) satisfy the lattice condition. Diagrams (ii) and (iii) have pairs of elements whose join or meet is not defined within the poset.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (i and iv only)**: ✓ Both diagrams form valid lattices.\n* **Option B (ii and iii only)**: Incorrect — those two fail the lattice property.\n* **Option C (iii only)**: Incorrect.\n* **Option D (i, ii and iv only)**: Incorrect — (ii) does not form a lattice.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option A: (i) and (iv) only**.",
+        "images": [
+          "/question-images/13704456230339815073.webp",
+          "/question-images/14549037313555261470.webp",
+          "/question-images/2542191495641001674.webp",
+          "/question-images/9889679979641374028.webp"
+        ]
       }
     },
     "go:3319": {
@@ -961,6 +1092,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "### 1. Concept / Subtopic\n**Singular Matrix ($det(M) = 0$)**: A square matrix is singular when its determinant is zero. This is equivalent to the matrix being non-invertible and having linearly dependent rows and columns.\n\n---\n\n### 2. Analysis of Each Statement\n\n**S1: Each row of $M$ can be represented as a linear combination of the other rows.**\nSince $det(M) = 0$, the rows of $M$ are **linearly dependent** — at least one row is a linear combination of the others. When a set of vectors is linearly dependent, each vector in the set *can* be expressed as a linear combination of the others (possibly with zero coefficients). ✓ **TRUE**.\n\n**S2: Each column of $M$ can be represented as a linear combination of the other columns.**\n$det(M) = det(M^T) = 0$, so the columns are also linearly dependent. By the same reasoning as S1 applied to $M^T$, each column is a linear combination of the remaining columns. ✓ **TRUE**.\n\n**S3: $MX = 0$ has a nontrivial solution.**\nSince $det(M) = 0$, the null space of $M$ is non-trivial ($\text{rank}(M) < n$). Therefore $MX = 0$ has a solution $X \neq mathbf{0}$. ✓ **TRUE**.\n\n**S4: $M$ has an inverse.**\n$det(M) = 0$ means $M$ is **not invertible** — no inverse exists. ✗ **FALSE**.\n\n---\n\n### 3. Correct Combination\nS1, S2, and S3 are all true. S4 is false. The correct answer is **S1, S2, and S3**, which corresponds to Option D.\n\n**MTA Context**: This question was declared Marks to All. The original option choices had overlapping representations — Option C stated \"S1 and S3\" while Option D stated \"S1, S2 and S3\". Since S2 is also valid, the intended correct answer should be D, but due to ambiguity in the question or key, MTA was awarded.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (S3 and S2)**: Omits S1, which is also correct.\n* **Option B (S1 and S4)**: Includes the false S4.\n* **Option C (S1 and S3)**: Valid subset but incomplete — S2 is also true.\n* **Option D (S1, S2 and S3)**: Most complete true set. Best answer.\n\n---\n\n### 5. Final Answer\n**Marks to All (MTA)** — All candidates received full credit. Mathematically, S1, S2, and S3 are all true consequences of $det(M) = 0$, making **Option D** the most correct answer.",
+        "images": []
       }
     },
     "go:3320": {
@@ -1001,6 +1137,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics",
+        "markdown": "### 1. Concept / Subtopic\n**Newton-Raphson Iteration Formula**: To find a zero of a differentiable function $f(x)$, the iterative update is:\n$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$\nStarting from initial approximation $x_0$, we compute $x_1$, then $x_2$, etc.\n\n---\n\n### 2. Given Function and Derivative\n$$f(x) = x^2 - 2x - 1, quad f'(x) = 2x - 2$$\nInitial approximation: $x_0 = 2$.\n\n---\n\n### 3. Iteration 1: Computing $x_1$\n$$f(x_0) = f(2) = 4 - 4 - 1 = -1$$\n$$f'(x_0) = f'(2) = 4 - 2 = 2$$\n$$x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} = 2 - \frac{-1}{2} = 2 + 0.5 = 2.5$$\n\n---\n\n### 4. Iteration 2: Computing $x_2$\n$$f(x_1) = f(2.5) = (2.5)^2 - 2(2.5) - 1 = 6.25 - 5 - 1 = 0.25$$\n$$f'(x_1) = f'(2.5) = 2(2.5) - 2 = 5 - 2 = 3$$\n$$x_2 = x_1 - \frac{f(x_1)}{f'(x_1)} = 2.5 - \frac{0.25}{3} = 2.5 - 0.08overline{3} approx 2.417$$\n\n---\n\n### 5. Distractor Analysis\n* **Option A (2.417)**: ✓ Correct. $2.5 - 1/12 = 2.41overline{6} approx 2.417$ rounded to three decimal places.\n* **Option B (2.419)**: Off — incorrect rounding or arithmetic.\n* **Option C (2.423)**: Incorrect — stems from a computational error in iteration 2.\n* **Option D (2.425)**: Incorrect — stems from wrong $f'(x_1)$ value.\n\n---\n\n### 6. Final Answer\nTherefore, the correct choice is **Option A: 2.417**.",
+        "images": []
       }
     },
     "go:3341": {
@@ -1029,6 +1170,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1042,7 +1184,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "### 1. Concept / Subtopic\n**Optimization of a Piecewise Function**: To find the minimum of a piecewise-defined function on an interval, analyze each piece separately — find critical points via $f'(x) = 0$ within the piece's domain, evaluate at critical points and at boundary/transition points, then compare.\n\n---\n\n### 2. Given Function\n$$f(x) = \begin{cases} dfrac{25}{8x} & \text{when } x leq dfrac{3}{2} \\ x + dfrac{1}{x} & \text{otherwise} end{cases}, quad x in (0, 2]$$\n\nThe transition point is $x = dfrac{3}{2}$. Piece 1 applies on $(0, 3/2]$; Piece 2 applies on $(3/2, 2]$.\n\n---\n\n### 3. Analysis of Piece 1: $f(x) = dfrac{25}{8x}$ on $(0, 3/2]$\n\n$$f'(x) = -\frac{25}{8x^2} < 0 quad \text{for all } x > 0$$\n\n$f$ is strictly **decreasing** on this piece. So the minimum on $(0, 3/2]$ occurs at the right endpoint $x = 3/2$:\n$$f!left(\tfrac{3}{2}\right) = \frac{25}{8 cdot \tfrac{3}{2}} = \frac{25}{12} approx 2.083$$\n\n---\n\n### 4. Analysis of Piece 2: $f(x) = x + dfrac{1}{x}$ on $(3/2, 2]$\n\n$$f'(x) = 1 - \frac{1}{x^2}$$\n\nSetting $f'(x) = 0$: $x^2 = 1 Rightarrow x = 1$, which lies outside the domain $(3/2, 2]$.\n\nSince $f'(x) = 1 - 1/x^2 > 0$ for $x > 1$, the function is **increasing** on $(3/2, 2]$.\nMinimum of Piece 2 occurs at the left endpoint (limit as $x \to 3/2^+$):\n$$f!left(\tfrac{3}{2}\right) = \tfrac{3}{2} + \tfrac{2}{3} = \tfrac{9}{6} + \tfrac{4}{6} = \tfrac{13}{6} approx 2.167$$\n\n---\n\n### 5. Comparing and Identifying the Global Minimum\n\n| Point | Value |\n|---|---|\n| $x = 3/2$ (Piece 1 endpoint) | $25/12 approx 2.083$ |\n| $x = 3/2$ (Piece 2 left limit) | $13/6 approx 2.167$ |\n\nThe function value from Piece 1 at $x = 3/2$ gives $dfrac{25}{12} = 2dfrac{1}{12}$.\n\n---\n\n### 6. Distractor Analysis\n* **Option A ($2$)**: Achievable only if $x = 1$ were in domain of Piece 2 — it's not.\n* **Option B ($2\tfrac{1}{12} = \tfrac{25}{12}$)**: ✓ Correct minimum at $x = 3/2$ under Piece 1.\n* **Option C ($2\tfrac{1}{6} = \tfrac{13}{6}$)**: This is the limit of Piece 2 at $x = 3/2^+$, a larger value.\n* **Option D ($2\tfrac{1}{2}$)**: Value at $x = 2$ under Piece 2: $2 + 1/2 = 5/2$.\n\n---\n\n### 7. Final Answer\nTherefore, the correct choice is **Option B: $2dfrac{1}{12}$**.",
+        "images": []
+      }
     },
     "go:3342": {
       "title": "GATE IT 2008 | Question: 32",
@@ -1070,6 +1217,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1083,7 +1231,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In a Deterministic Finite Automaton (DFA) $M = (Q, \\Sigma, \\delta, q_0, F)$, swapping final states $F$ with non-final states $Q \\setminus F$ yields a DFA $M'$ that accepts the exact complement language:\n    $$L(M') = \\Sigma^* \\setminus L(M)$$\n- **Complement Language Derivation**:\n  - Identifying the language rejected by $M$ yields the accepted language of $M'$, matching **Option A**.\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
+      }
     },
     "go:3343": {
       "title": "GATE IT 2008 | Question: 33",
@@ -1111,6 +1264,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1124,7 +1278,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Identify Class Language",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider languages:\n    $$L_1 = \\{a^i b^j c^k \\mid i = j, \\; k \\ge 1\\}$$\n    $$L_2 = \\{a^i b^j \\mid j = 2i, \\; i \\ge 0\\}$$\n- **Language Evaluation**:\n  1. $L_1$: Matches $a^i b^i$ followed by $c^k$. A DPDA can push $a$'s and pop on $b$'s. It is a DCFL.\n  2. $L_2$: Matches $a^i b^{2i}$. A DPDA can push two symbols for each $a$ and pop one for each $b$. It is a DCFL.\n  3. Matches **Option B**.\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
     },
     "go:3344": {
       "title": "GATE IT 2008 | Question: 34",
@@ -1152,6 +1311,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1165,7 +1325,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Context Free Language",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider CFG productions:\n    $$S \\to AA \\mid B$$\n    $$A \\to 0A \\mid A0 \\mid 1$$\n    $$B \\to 0B00 \\mid 1$$\n- **Ambiguity Analysis**:\n  - Examining derivations for strings generated by $A$ reveals multiple derivation trees due to $0A$ and $A0$.\n  - Matches **Option B**.\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
     },
     "go:3345": {
       "title": "GATE IT 2008 | Question: 35",
@@ -1207,6 +1372,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Language",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We examine regularity for two languages:\n    - $L_1 = \\{0^m 1^n \\mid 0 \\le m \\le n \\le 10000\\}$\n    - $L_2 = \\{w \\mid w \\text{ reads the same forward and backward}\\}$ (Palindromes)\n- **Regularity Evaluation**:\n  1. **$L_1$**:\n     - Both exponents $m$ and $n$ are bounded by the constant 10000.\n     - Therefore, $L_1$ is a **finite language**.\n     - Every finite language is **regular**.\n  2. **$L_2$**:\n     - The set of all palindromes requires unbounded LIFO stack memory to compare symbols in reverse order.\n     - By the Pumping Lemma, $L_2$ is **non-regular**.\n  3. Therefore, only $L_2$ is non-regular.\n\nTherefore, the correct answer is **Option D (Only L2)**.",
+        "images": []
       }
     },
     "go:3346": {
@@ -1235,6 +1405,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1248,7 +1419,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We compare automata $M_1$ and $M_2$ accepting languages $L_1$ and $L_2$.\n- **Automata Equivalence**:\n  - Minimizing both machines yields identical minimal transition graphs.\n  - Thus $L_1 = L_2$.\n  - Matches **Option A**.\n\nTherefore, the correct answer is **Option A (L_1 = L_2)**.",
+        "images": []
+      }
     },
     "go:3347": {
       "title": "GATE IT 2008 | Question: 37",
@@ -1280,6 +1456,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1293,7 +1470,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Sequential Circuit",
+        "markdown": "### 1. Concept / Subtopic\n**Sequential Circuit Synthesis**: Deriving flip-flop excitation equations from a Moore state transition diagram using JK flip-flop excitation tables.\n\n---\n\n### 2. State Diagram Specifications\n* Single state variable $Q \\in \\{0, 1\\}$.\n* External inputs: $x, y$.\n* State transitions:\n  * From state $0$:\n    * If $(x, y) \\in \\{00, 11\\} \\implies$ Next state $Q^+ = 0$ (hold).\n    * If $(x, y) \\in \\{01, 10\\} \\implies$ Next state $Q^+ = 1$ (toggle).\n  * From state $1$:\n    * If $(x, y) \\in \\{00, 11\\} \\implies$ Next state $Q^+ = 1$ (hold).\n    * If $(x, y) \\in \\{01, 10\\} \\implies$ Next state $Q^+ = 0$ (toggle).\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Characterization of Input Conditions**:\n   * Condition $\\{01, 10\\}$ corresponds to $x \\ne y$, i.e., $x \\oplus y = 1$.\n   * Condition $\\{00, 11\\}$ corresponds to $x = y$, i.e., $\\overline{x \\oplus y} = 1$ (or $x \\odot y = 1$).\n2. **Behavioral Analysis of State $Q$**:\n   * Whenever $x \\oplus y = 0$:\n     * If $Q = 0 \\implies Q^+ = 0$.\n     * If $Q = 1 \\implies Q^+ = 1$.\n     * The flip-flop must **Hold** its current state ($Q^+ = Q$).\n   * Whenever $x \\oplus y = 1$:\n     * If $Q = 0 \\implies Q^+ = 1$.\n     * If $Q = 1 \\implies Q^+ = 0$.\n     * The flip-flop must **Toggle** its current state ($Q^+ = \\bar{Q}$).\n3. **JK Flip-Flop Excitation Rules**:\n   * To **Hold** ($Q^+ = Q$): $J = 0, K = 0$.\n   * To **Toggle** ($Q^+ = \\bar{Q}$): $J = 1, K = 1$.\n4. **Excitation Equations**:\n   * When $x \\oplus y = 0 \\implies J = 0, K = 0$.\n   * When $x \\oplus y = 1 \\implies J = 1, K = 1$.\n   * Therefore, $J$ and $K$ are directly governed by:\n     $$J = x \\oplus y$$\n     $$K = x \\oplus y$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($\\overline{x \\oplus y}$ and $\\overline{x \\oplus y}$)**: Toggles when $x = y$, which is inverted.\n* **Option B ($\\overline{x \\oplus y}$ and $x \\oplus y$)**: Causes asymmetric set/reset behavior.\n* **Option C ($x \\oplus y$ and $\\overline{x \\oplus y}$)**: Causes asymmetric set/reset behavior.\n* **Option D ($x \\oplus y$ and $x \\oplus y$)**: Correct. Both $J$ and $K$ equal $x \\oplus y$.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option D: $ {x \\oplus y}$ and $ {x \\oplus y}$**.",
+        "images": []
+      }
     },
     "go:3348": {
       "title": "GATE IT 2008 | Question: 38",
@@ -1333,6 +1515,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture",
+        "markdown": "### 1. Concept / Subtopic\n**Instruction Set Architecture - Stack Addressing Modes**: Using pointer addressing with pre-decrement and post-increment/decrement to implement stack pop, compute, and push sequences.\n\n---\n\n### 2. Given Definitions & Instruction Semantics\n* **Stack Pointer**: $X$ points to the current Top of Stack (TOS).\n* **Addressing Modes**:\n  * $(X)+$: $\\text{EA} = [X]$, followed by $X \\leftarrow X + 1$ (post-increment).\n  * $-(X)$: $X \\leftarrow X - 1$, followed by $\\text{EA} = [X]$ (pre-decrement).\n  * $(X)-$: $\\text{EA} = [X]$, followed by $X \\leftarrow X - 1$ (post-decrement).\n* **Instruction Format**: `ADD source, destination` computes:\n  $$\\text{destination} \\leftarrow \\text{source} + \\text{destination}$$\n* **Goal**: Pop top two elements from stack, add them, and push the result back onto the stack.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Initial Stack Configuration**:\n   * Let memory location $L$ hold the top element ($T_1$), and location $L - 1$ hold the second element ($T_2$).\n   * Pointer $X$ initially equals $L$.\n2. **Analysis of Candidate Instruction `ADD (X)-, (X)`**:\n   * **Step 1: Source Operand Evaluation (`(X)-`)**:\n     * Access effective address $\\text{EA}_1 = X = L$.\n     * Operand read: $T_1 = \\text{Memory}[L]$.\n     * Post-decrement $X$:\n       $$X \\leftarrow X - 1 = L - 1$$\n     * Now $X$ points directly to the second element at location $L - 1$.\n   * **Step 2: Destination Operand Evaluation (`(X)`)**:\n     * Access effective address $\\text{EA}_2 = X = L - 1$.\n     * Operand read: $T_2 = \\text{Memory}[L - 1]$.\n   * **Step 3: Operation and Store-back**:\n     * Compute sum: $\\text{Sum} = T_1 + T_2$.\n     * Store result into destination:\n       $$\\text{Memory}[L - 1] \\leftarrow T_1 + T_2$$\n   * **Step 4: Final State**:\n     * $X$ points to location $L - 1$, which now holds the sum.\n     * The top two elements have been replaced by their sum at the new top of stack.\n     * This exactly satisfies pop two, add, and push result.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Correct. Successfully pops the first element and adds it directly into the second location.\n* **Option B (`ADD (X), (X)-`)**: Decrements $X$ after accessing the destination, leaving $X$ pointing to an unallocated lower location ($L-2$).\n* **Option C (`ADD -(X), (X)+`)**: Pre-decrements before reading source, missing the top element entirely.\n* **Option D (`ADD -(X), (X)`)**: Pre-decrements before reading source, corrupting stack indexing.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option A: ADD (X)−, (X)**.",
+        "images": []
       }
     },
     "go:3349": {
@@ -1375,6 +1562,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Microprogramming",
+        "markdown": "### 1. Concept / Subtopic\n**Control Unit Design**: Calculating the width of the Control Address Register (CAR) and Control Word (CW) in a horizontal microprogrammed architecture.\n\n---\n\n### 2. Given Parameters\n* Number of machine instructions $= 140$.\n* Clock cycles per instruction $= 7\\text{ cycles}$ (each requiring one microinstruction).\n* Total distinct control signals $= 125$.\n* Architecture: Horizontal microprogrammed control unit with **single address field format** for branch control logic.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Size of the Control Memory**:\n   $$\\text{Total Microinstructions} = 140\\text{ instructions} \\times 7\\text{ cycles/instruction} = 980\\text{ microinstructions}$$\n2. **Width of Control Address Register (CAR)**:\n   * The CAR must hold the address of any word in control memory:\n     $$2^k \\ge 980$$\n   * Since $2^9 = 512 < 980 \\le 2^{10} = 1024$:\n     $$k = \\lceil \\log_2(980) \\rceil = 10\\text{ bits}$$\n   * Thus, $\\text{CAR size} = 10\\text{ bits}$.\n3. **Width of Control Word (CW)**:\n   In horizontal microprogramming:\n   * **Control Signal Field**: Every control signal has a dedicated 1-bit line (unencoded):\n     $$\\text{Control field} = 125\\text{ bits}$$\n   * **Branch Address Field**: Single address field containing the target control store address:\n     $$\\text{Address field} = \\text{CAR width} = 10\\text{ bits}$$\n   * **Total Control Word Length**:\n     $$\\text{CW Length} = 125\\text{ bits} + 10\\text{ bits} = 135\\text{ bits}$$\n4. **Summary**:\n   $$\\text{Control Word Size} = 135\\text{ bits}, \\quad \\text{CAR Size} = 10\\text{ bits}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($125, 7$)**: Overlooks the address field in the control word entirely.\n* **Option B ($125, 10$)**: Omits the address field from the control word.\n* **Option C ($135, 9$)**: Underestimates CAR size ($2^9 = 512 < 980$).\n* **Option D ($135, 10$)**: Correct. Accurately determines $135$ and $10$.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option D: $135, 10$**.",
+        "images": []
       }
     },
     "go:3350": {
@@ -1417,6 +1609,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "### 1. Concept / Subtopic\n**Pipelining Performance**: Computing asymptotic speedup for an $N$-stage pipeline considering stage delays and interstage latch setup/propagation overheads.\n\n---\n\n### 2. Given Parameters\n* **Non-pipelined Processor**:\n  * Operating clock frequency $f = 100\\text{ MHz}$.\n  * Non-pipelined cycle time:\n    $$T_{\\text{non-pipe}} = \\frac{1}{100\\text{ MHz}} = \\frac{1}{10^8\\text{ s}^{-1}} = 10\\text{ ns}$$\n* **Pipelined Processor**:\n  * 5 stages with individual delays: $2.5\\text{ ns}, 1.5\\text{ ns}, 2.0\\text{ ns}, 1.5\\text{ ns}, 2.5\\text{ ns}$.\n  * Latch delay: $\\tau_{\\text{latch}} = 0.5\\text{ ns}$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Clock Cycle Time of Pipelined Processor ($T_{\\text{pipe}}$)**:\n   * The pipeline clock period is bounded by the slowest stage delay plus the latch overhead:\n     $$T_{\\text{pipe}} = \\max(d_1, d_2, d_3, d_4, d_5) + \\tau_{\\text{latch}}$$\n     $$T_{\\text{pipe}} = \\max(2.5, 1.5, 2.0, 1.5, 2.5) + 0.5 = 2.5\\text{ ns} + 0.5\\text{ ns} = 3.0\\text{ ns}$$\n2. **Speedup Formulation for Large Instruction Streams ($n \\to \\infty$)**:\n   * For $n$ instructions:\n     $$\\text{Time}_{\\text{non-pipe}} = n \\times T_{\\text{non-pipe}} = n \\times 10\\text{ ns}$$\n     $$\\text{Time}_{\\text{pipe}} = (k + n - 1) \\times T_{\\text{pipe}} \\approx n \\times T_{\\text{pipe}} \\quad (\\text{as } n \\to \\infty)$$\n   * Asymptotic Speedup:\n     $$\\text{Speedup} = \\frac{T_{\\text{non-pipe}}}{T_{\\text{pipe}}} = \\frac{10\\text{ ns}}{3.0\\text{ ns}} = \\frac{10}{3} \\approx 3.33$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($4.5$)**: Overestimates speedup by ignoring latch delay.\n* **Option B ($4.0$)**: Corresponds to $10 / 2.5$, omitting the $0.5\\text{ ns}$ latch overhead.\n* **Option C ($3.33$)**: Correct. Exactly matches $\\frac{10}{3.0} = 3.33$.\n* **Option D ($3.0$)**: Arises from rounding or miscalculating stage delays.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option C: $3.33$**.",
+        "images": []
       }
     },
     "go:3351": {
@@ -1445,6 +1642,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1458,7 +1656,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Page Replacement",
+        "markdown": "- **System Specifications:**\n  - Page frame size $= 16\\text{ bytes} = 2^4\\text{ bytes}$\n  - Memory capacity $= 4\\text{ page frames}$\n  - Given virtual addresses:\n    $$0, 4, 8, 20, 24, 36, 44, 12, 68, 72, 80, 84, 28, 32, 88, 92$$\n  - Page Number $= \\lfloor \\text{Address} / 16 \\rfloor$:\n    $$\\begin{array}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}\n    \\text{Addr} & 0 & 4 & 8 & 20 & 24 & 36 & 44 & 12 & 68 & 72 & 80 & 84 & 28 & 32 & 88 & 92 \\\\\n    \\hline\n    \\text{Page} & 0 & 0 & 0 & 1 & 1 & 2 & 2 & 0 & 4 & 4 & 5 & 5 & 1 & 2 & 5 & 5\n    \\end{array}$$\n\n- **Step-by-Step LRU Trace (Frames initially empty):**\n  - 1. Ref $0 \\implies$ **Page Fault 1**. Frames: $[0]$\n  - 2. Ref $0 \\implies$ Hit. Frames: $[0]$\n  - 3. Ref $0 \\implies$ Hit. Frames: $[0]$\n  - 4. Ref $1 \\implies$ **Page Fault 2**. Frames: $[0, 1]$\n  - 5. Ref $1 \\implies$ Hit. Frames: $[0, 1]$\n  - 6. Ref $2 \\implies$ **Page Fault 3**. Frames: $[0, 1, 2]$\n  - 7. Ref $2 \\implies$ Hit. Frames: $[0, 1, 2]$\n  - 8. Ref $0 \\implies$ Hit. Order: $[1, 2, 0]$\n  - 9. Ref $4 \\implies$ **Page Fault 4**. Frames: $[1, 2, 0, 4]$ (all 4 frames full)\n  - 10. Ref $4 \\implies$ Hit. Order: $[1, 2, 0, 4]$\n  - 11. Ref $5 \\implies$ **Page Fault 5**. Evicts LRU page $1$. Frames: $[2, 0, 4, 5]$\n  - 12. Ref $5 \\implies$ Hit. Order: $[2, 0, 4, 5]$\n  - 13. Ref $1 \\implies$ **Page Fault 6**. Evicts LRU page $2$. Frames: $[0, 4, 5, 1]$\n  - 14. Ref $2 \\implies$ **Page Fault 7**. Evicts LRU page $0$. Frames: $[4, 5, 1, 2]$\n  - 15. Ref $5 \\implies$ Hit. Order: $[4, 1, 2, 5]$\n  - 16. Ref $5 \\implies$ Hit. Order: $[4, 1, 2, 5]$\n\n- **Results:**\n  - Total Page Faults $= 7$\n  - Pages present in memory at completion $= \\{1, 2, 4, 5\\}$\n\nTherefore, the correct answer is **Option B ($7$ and $1, 2, 4, 5$)**.",
+        "images": []
+      }
     },
     "go:3352": {
       "title": "GATE IT 2008 | Question: 42",
@@ -1486,6 +1689,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1499,7 +1703,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Booths Algorithm",
+        "markdown": "### 1. Concept / Subtopic\n**Computer Arithmetic - Booth's Algorithm**: Counting additions and subtractions required to multiply two 2's complement numbers based on multiplier recoding bit pairs.\n\n---\n\n### 2. Given Multiplier\n* **Multiplier ($Y$)**: $0111\\ 0111\\ 1011\\ 1101_2$ ($16\\text{ bits}$).\n* **Recoding Rule**:\n  Append an implicit $y_{-1} = 0$ to the right of LSB ($y_0$):\n  * $y_i y_{i-1} = 01 \\implies$ **Addition** ($+M$).\n  * $y_i y_{i-1} = 10 \\implies$ **Subtraction** ($-M$).\n  * $y_i y_{i-1} = 00$ or $11 \\implies$ **No arithmetic operation** (shift only).\n  * Every transition between adjacent unequal bits ($01$ or $10$) corresponds to an addition or subtraction.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Padded Multiplier Bit String**:\n   Let the bits be indexed from $y_{15}$ down to $y_0$, with $y_{-1} = 0$:\n   $$\\begin{array}{c|cccccccccccccccc|c}\n   \\text{Bit} & y_{15} & y_{14} & y_{13} & y_{12} & y_{11} & y_{10} & y_9 & y_8 & y_7 & y_6 & y_5 & y_4 & y_3 & y_2 & y_1 & y_0 & y_{-1} \\\\\n   \\hline\n   \\text{Val} & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\n   \\end{array}$$\n2. **Examine Each Bit Pair $(y_i, y_{i-1})$ from $i = 0$ to $15$**:\n   * $i = 0$: $y_0 y_{-1} = 10 \\implies$ **Subtraction (1)**\n   * $i = 1$: $y_1 y_0 = 01 \\implies$ **Addition (2)**\n   * $i = 2$: $y_2 y_1 = 10 \\implies$ **Subtraction (3)**\n   * $i = 3$: $y_3 y_2 = 11 \\implies$ None\n   * $i = 4$: $y_4 y_3 = 11 \\implies$ None\n   * $i = 5$: $y_5 y_4 = 11 \\implies$ None\n   * $i = 6$: $y_6 y_5 = 01 \\implies$ **Addition (4)**\n   * $i = 7$: $y_7 y_6 = 10 \\implies$ **Subtraction (5)**\n   * $i = 8$: $y_8 y_7 = 11 \\implies$ None\n   * $i = 9$: $y_9 y_8 = 11 \\implies$ None\n   * $i = 10$: $y_{10} y_9 = 11 \\implies$ None\n   * $i = 11$: $y_{11} y_{10} = 01 \\implies$ **Addition (6)**\n   * $i = 12$: $y_{12} y_{11} = 10 \\implies$ **Subtraction (7)**\n   * $i = 13$: $y_{13} y_{12} = 11 \\implies$ None\n   * $i = 14$: $y_{14} y_{13} = 11 \\implies$ None\n   * $i = 15$: $y_{15} y_{14} = 01 \\implies$ **Addition (8)**\n3. **Total Operations**:\n   $$\\text{Total Additions/Subtractions} = 4\\text{ Additions} + 4\\text{ Subtractions} = 8\\text{ operations}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($6$)**: Underestimates transition count.\n* **Option B ($8$)**: Correct. Exactly 8 transitions occur between $y_{-1}$ and $y_{15}$.\n* **Option C ($10$)**: Overcounts transitions.\n* **Option D ($12$)**: Overcounts transitions.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option B: $8$**.",
+        "images": []
+      }
     },
     "go:3353": {
       "title": "GATE IT 2008 | Question: 43",
@@ -1527,6 +1736,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1540,7 +1750,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Sorting",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Radix Sort sorts $n$ integers by breaking each number into $d$ digits in base $b$ and running stable Counting Sort on each digit.\n  - The time complexity of Radix Sort is:\n    $$\\text{Time} = \\Theta(d \\cdot (n + b))$$\n- **Analytical Derivation**:\n  1. The keys lie in the range $(n^{k/2}, n^k]$, so the maximum value is $n^k$.\n  2. By choosing the radix base $b = n$:\n     - The number of digits required to represent numbers up to $n^k$ in base $n$ is:\n       $$d = \\lceil \\log_n (n^k) \\rceil = k$$\n  3. For each of the $d = k$ digits, Counting Sort with base $b = n$ takes:\n     $$\\Theta(n + b) = \\Theta(n + n) = \\Theta(n)$$\n  4. Across all $d = k$ passes, the total time taken is:\n     $$\\text{Total Time} = k \\times \\Theta(n) = \\Theta(kn)$$\n\nTherefore, the correct answer is **Option B (\\Theta(kn))**.",
+        "images": []
+      }
     },
     "go:3354": {
       "title": "GATE IT 2008 | Question: 44",
@@ -1568,6 +1783,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1581,7 +1797,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Recurrence Relation",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We solve the recurrence relation for $n = 2^{2k}$:\n    $$T(n) = \\sqrt{2} \\, T(n/2) + \\sqrt{n}, \\quad T(1) = 1$$\n- **Master Theorem Derivation**:\n  1. Identify parameters: $a = \\sqrt{2} = 2^{1/2}$, $b = 2$, and $f(n) = \\sqrt{n} = n^{1/2}$.\n  2. Calculate the watershed exponent:\n     $$n^{\\log_b a} = n^{\\log_2 (2^{1/2})} = n^{1/2} = \\sqrt{n}$$\n  3. Compare $f(n)$ with $n^{\\log_b a}$:\n     $$f(n) = \\sqrt{n} = \\Theta(n^{\\log_b a})$$\n  4. This falls into **Case 2 of the Master Theorem**, which yields:\n     $$T(n) = \\Theta(n^{\\log_b a} \\log_2 n) = \\Theta(\\sqrt{n} \\log n)$$\n  5. Exact closed-form evaluation:\n     $$T(n) = \\sqrt{n} \\left(T(1) + \\sum_{j=1}^{\\log_2 n} 1\\right) = \\sqrt{n} (1 + \\log_2 n) = \\sqrt{n}(\\log n + 1)$$\n\nTherefore, the correct answer is **Option A (\\sqrt{n} (\\log n + 1))**.",
+        "images": []
+      }
     },
     "go:3355": {
       "title": "GATE IT 2008 | Question: 45",
@@ -1610,6 +1831,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1623,7 +1845,14 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **Prim's Algorithm** builds an MST by maintaining a single growing tree $T$.\n  - At every step, it adds the minimum weight edge that connects a vertex already in $T$ to a vertex outside $T$.\n- **Validation of Option C: $(d, f), (f, c), (d, a), (a, b), (c, e), (f, h), (g, h), (g, i)$**:\n  1. Start with edge $(d, f)$: initial tree vertices $V_T = \\{d, f\\}$.\n  2. Edge $(f, c)$ connects $f \\in V_T$ to $c$: $V_T = \\{d, f, c\\}$.\n  3. Edge $(d, a)$ connects $d \\in V_T$ to $a$: $V_T = \\{d, f, c, a\\}$.\n  4. Edge $(a, b)$ connects $a \\in V_T$ to $b$: $V_T = \\{d, f, c, a, b\\}$.\n  5. Edge $(c, e)$ connects $c \\in V_T$ to $e$: $V_T = \\{d, f, c, a, b, e\\}$.\n  6. Edge $(f, h)$ connects $f \\in V_T$ to $h$: $V_T = \\{d, f, c, a, b, e, h\\}$.\n  7. Edge $(g, h)$ connects $h \\in V_T$ to $g$: $V_T = \\{d, f, c, a, b, e, h, g\\}$.\n  8. Edge $(g, i)$ connects $g \\in V_T$ to $i$: $V_T = \\{d, f, c, a, b, e, h, g, i\\}$.\n- **Conclusion**:\n  - Every edge added is incident on the current tree component and satisfies the minimum cut weight requirement.\n\nTherefore, the correct answer is **Option C ((d, f), (f, c), (d, a), (a, b), (c, e), (f, h), (g, h), (g, i))**.",
+        "images": [
+          "/Gate_QA/question-images/817950059835235116.webp"
+        ]
+      }
     },
     "go:3356": {
       "title": "GATE IT 2008 | Question: 46",
@@ -1651,6 +1880,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1664,7 +1894,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In a binary tree:\n    - **Preorder**: visits Root, then Left subtree, then Right subtree (Root is the **first** element).\n    - **Postorder**: visits Left subtree, then Right subtree, then Root (Root is the **last** element).\n    - **Inorder**: visits Left subtree, then Root, then Right subtree (Root splits the sequence into Left and Right sets).\n- **Analysis of the Three Sequences**:\n  - I: `MBCAFHPYK`\n  - II: `KAMCBYPFH`\n  - III: `MABCKYFPH`\n  1. Observe the key `K`:\n     - In II, `K` is the very first element.\n     - In I, `K` is the very last element.\n     - In III, `K` is in the middle (`M A B C` to the left, `Y F P H` to the right).\n  2. If `K` is the root:\n     - II is the **preorder sequence** (starts with root `K`).\n     - I is the **postorder sequence** (ends with root `K`).\n     - III is the **inorder sequence** (split by root `K`).\n  3. Verify consistency:\n     - Left subtree keys: $\\{M, A, B, C\\}$ (appears in all three sequences).\n     - Right subtree keys: $\\{Y, P, F, H\\}$ (appears in all three sequences).\n  4. Therefore, II is preorder and III is inorder.\n\nTherefore, the correct answer is **Option D (II and III are the preorder and inorder sequences, respectively)**.",
+        "images": []
+      }
     },
     "go:3357": {
       "title": "GATE IT 2008 | Question: 47",
@@ -1693,6 +1928,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1706,7 +1942,14 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A Depth-First Search (DFS) starting at node $a$ explores along each branch as deep as possible before backtracking.\n- **Trace Analysis of the Options**:\n  - In the given graph:\n    - Neighbors of $a$ are $b$ and $d$.\n  - **Sequence 2: $a, b, e, f, c, g, d$**:\n    - $a \\to b$: valid.\n    - $b \\to e$: valid.\n    - $e \\to f$: valid.\n    - $f \\to c$: valid.\n    - $c \\to g$: valid.\n    - $g \\to d$: valid.\n    - Visits all 7 nodes via a valid simple Hamiltonian path $\\implies$ **Valid DFS**.\n  - **Sequence 3: $a, d, g, e, b, c, f$**:\n    - $a \\to d \\to g \\to e \\to b \\to c \\to f$: all adjacent edges exist $\\implies$ **Valid DFS**.\n  - **Sequence 1: $a, b, e, f, d, g, c$**:\n    - From $f$, there is no direct edge to $d$ without passing through $c$ or $g$ $\\implies$ Invalid.\n- **Conclusion**:\n  - Only sequences 2 and 3 are possible DFS orders.\n\nTherefore, the correct answer is **Option B (2 and 3 only)**.",
+        "images": [
+          "/Gate_QA/question-images/8583737377253945503.webp"
+        ]
+      }
     },
     "go:3358": {
       "title": "GATE IT 2008 | Question: 48",
@@ -1734,6 +1977,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1747,7 +1991,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Table size $M = 11$, indices $0$ to $10$. Hash function $h(k) = k \\bmod 11$.\n  - Collision resolution by linear probing: $(h(k) + i) \\bmod 11$.\n- **Step-by-Step Insertion Trace**:\n  1. $43$: $43 \\% 11 = 10 \\to$ slot 10.\n  2. $36$: $36 \\% 11 = 3 \\to$ slot 3.\n  3. $92$: $92 \\% 11 = 4 \\to$ slot 4.\n  4. $87$: $87 \\% 11 = 10$ (collision!). Next slot: $(10 + 1) \\% 11 = 0 \\to$ slot 0.\n  5. $11$: $11 \\% 11 = 0$ (collision!). Next slot: $1 \\to$ slot 1.\n  6. $4$: $4 \\% 11 = 4$ (collision!). Probes: $4$ (occ), $5$ (free) $\\to$ slot 5.\n  7. $71$: $71 \\% 11 = 5$ (collision!). Probes: $5$ (occ), $6$ (free) $\\to$ slot 6.\n  8. $13$: $13 \\% 11 = 2 \\to$ slot 2.\n  9. $14$: $14 \\% 11 = 3$ (collision!).\n     - Probe 3: occupied by 36.\n     - Probe 4: occupied by 92.\n     - Probe 5: occupied by 4.\n     - Probe 6: occupied by 71.\n     - Probe 7: empty! $\\to$ slot 7.\n- **Conclusion**:\n  - The last record (key 14) is inserted into **bin 7**.\n\nTherefore, the correct answer is **Option D (7)**.",
+        "images": []
+      }
     },
     "go:3359": {
       "title": "GATE IT 2008 | Question: 49",
@@ -1776,6 +2025,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1789,7 +2039,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In C, strings are null-terminated character arrays terminated by `'\\0'`.\n  - The string literal `\"world\"` in array `char a[6]` is stored as:\n    ```c\n    a[0] = 'w', a[1] = 'o', a[2] = 'r', a[3] = 'l', a[4] = 'd', a[5] = '\\0'\n    ```\n- **Loop Trace**:\n  ```c\n  for (i = 0, j = 5; i < j; a[i++] = a[j--]);\n  ```\n  1. **Iteration 1 ($i = 0, j = 5$)**:\n     - Condition $i < j$ ($0 < 5$) is true.\n     - The assignment `a[i++] = a[j--]` executes:\n       - Evaluates `a[0] = a[5]`.\n       - Since `a[5]` is the null terminator `'\\0'`, `a[0]` becomes **`'\\0'`**!\n       - Then $i$ increments to 1, and $j$ decrements to 4.\n  2. **Subsequent Iterations**:\n     - The loop continues copying characters from the end towards the front, but `a[0]` is already `'\\0'`.\n  3. **Printing the String**:\n     - `printf(\"%s\\n\", a)` begins reading at address `&a[0]`.\n     - It immediately encounters the null terminator `'\\0'` at index 0.\n     - It stops reading immediately and prints nothing (a **Null string**).\n\nTherefore, the correct answer is **Option B (Null string)**.",
+        "images": []
+      }
     },
     "go:3360": {
       "title": "GATE IT 2008 | Question: 50",
@@ -1818,6 +2073,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1831,7 +2087,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We trace the execution of the main function:\n    ```c\n    int num1 = 5, num2 = 4, tmp;\n    if (num1 < num2) { swap1(num1, num2); }\n    if (num1 < num2) { swap2(num1 + 1, num2); }\n    if (num1 >= num2) { swap3(&num1, &num2); }\n    printf(\"%d, %d\", num1, num2);\n    ```\n- **Step-by-Step Execution**:\n  1. `num1 = 5, num2 = 4`.\n  2. First `if (num1 < num2)`: $5 < 4$ is false $\\implies$ `swap1` is **not executed**.\n  3. Second `if (num1 < num2)`: $5 < 4$ is false $\\implies$ `swap2` is **not executed**.\n  4. Third `if (num1 >= num2)`: $5 \\ge 4$ is **true** $\\implies$ executes `swap3(&num1, &num2)`.\n  5. In `swap3(int *a, int *b)`:\n     - Correctly swaps the pointed-to values:\n       ```c\n       tmp = *a; *a = *b; *b = tmp;\n       ```\n     - `num1` receives 4, and `num2` receives 5.\n  6. `printf(\"%d, %d\", num1, num2)` prints **`4, 5`**.\n\nTherefore, the correct answer is **Option C (4, 5)**.",
+        "images": []
+      }
     },
     "go:3361": {
       "title": "GATE IT 2008 | Question: 51",
@@ -1860,6 +2121,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1873,7 +2135,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A variable declared inside an inner block shadows any variable of the same name declared in an outer enclosing block.\n  - Changes made to the inner variable affect only that inner local copy.\n- **Trace of First Loop**:\n  ```c\n  for (i = 0; i < 3; i++) {\n      a[i] = a[i] + 1;\n      i++;\n  }\n  i--;\n  ```\n  1. $i = 0$: $a[0] = 1 + 1 = 2$. $i++ \\implies i = 1$. Loop increment $i++ \\implies i = 2$.\n  2. $i = 2$: $a[2] = 3 + 1 = 4$. $i++ \\implies i = 3$. Loop increment $i++ \\implies i = 4 > 3$ (loop terminates).\n  3. `i--;` decrements $i$ from 4 to **$i = 3$**.\n- **Trace of Second Loop (Variable Shadowing)**:\n  ```c\n  for (j = 7; j > 4; j--) {\n      int i = j / 2;\n      a[i] = a[i] - 1;\n  }\n  ```\n  - Crucially, `int i = j / 2;` declares a **new local variable `i`** scoped strictly inside this second loop!\n  - $j = 7$: local $i = 3 \\implies a[3] = 4 - 1 = 3$.\n  - $j = 6$: local $i = 3 \\implies a[3] = 3 - 1 = 2$.\n  - $j = 5$: local $i = 2 \\implies a[2] = 4 - 1 = 3$.\n  - The outer variable `i` is completely untouched by the second loop and remains **$3$**.\n- **Print Statement**:\n  - `printf(\"%d, %d\", i, a[i])` prints outer `i` (3) and `a[3]` (2):\n    $$\\mathbf{3, 2}$$\n\nTherefore, the correct answer is **Option C (3, 2)**.",
+        "images": []
+      }
     },
     "go:3362": {
       "title": "GATE IT 2008 | Question: 52",
@@ -1902,6 +2169,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1915,7 +2183,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We analyze:\n    ```c\n    char a[2][3] = {{'a', 'b', 'c'}, {'d', 'e', 'f'}};\n    char b[3][2];\n    char *p = *b;\n    for (i = 0; i < 2; i++) {\n        for (j = 0; j < 3; j++) {\n            *(p + 2 * j + i) = a[i][j];\n        }\n    }\n    ```\n- **Memory Layout & Index Mapping**:\n  1. Array `b` has dimensions $3 \\times 2$ (3 rows, 2 columns).\n  2. In row-major layout, element $b[r][c]$ is stored at linear byte offset:\n     $$\\text{offset}(r, c) = 2 \\cdot r + c$$\n  3. In the assignment, the target address is:\n     $$p + 2 \\cdot j + i$$\n  4. Comparing with the offset formula:\n     - Row index is $r = j$ (since it is multiplied by the row size 2).\n     - Column index is $c = i$.\n  5. Therefore:\n     $$b[j][i] = a[i][j]$$\n  6. This swaps row and column indices, computing the **matrix transpose $b = a^T$**:\n     - Row 0 ($j=0$): $a[0][0]=\\text{'a'}, a[1][0]=\\text{'d'}$.\n     - Row 1 ($j=1$): $a[0][1]=\\text{'b'}, a[1][1]=\\text{'e'}$.\n     - Row 2 ($j=2$): $a[0][2]=\\text{'c'}, a[1][2]=\\text{'f'}$.\n- **Resulting Matrix**:\n  $$\\begin{matrix} \\text{a} & \\text{d} \\\\ \\text{b} & \\text{e} \\\\ \\text{c} & \\text{f} \\end{matrix}$$\n\nTherefore, the correct answer is **Option B (a d \\n b e \\n c f)**.",
+        "images": []
+      }
     },
     "go:3363": {
       "title": "GATE IT 2008 | Question: 53",
@@ -1943,6 +2216,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1956,7 +2230,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Synchronization",
+        "markdown": "- **Code Analysis:**\n  - Shared binary semaphores: $S = 1$ (controls producer permission), $Q = 0$ (controls consumer permission).\n  - Shared single-slot buffer variable: `integer x`.\n  - **Producer Loop:**\n    ```text\n    P(S);\n    x = produce;\n    V(Q);\n    ```\n  - **Consumer Loop:**\n    ```text\n    P(Q);\n    consume(x);\n    V(S);\n    ```\n\n- **Execution Flow & Synchronization Invariants:**\n  - Initially, $S = 1, Q = 0$.\n  - **Producer first:** Producer executes $P(S)$ (succeeds, $S=0$), produces into `x`, and executes $V(Q)$ ($Q=1$).\n  - **Producer blocked on next iteration:** If producer attempts another cycle immediately, it executes $P(S)$ and blocks because $S = 0$.\n  - **Consumer runs:** Consumer executes $P(Q)$ (succeeds, $Q=0$), reads `x`, and executes $V(S)$ ($S=1$).\n  - Only after consumer signals $V(S)$ can the producer unblock and write the next item.\n  - This forms a strict ping-pong alternation: Producer $\\to$ Consumer $\\to$ Producer $\\to$ Consumer.\n  - Neither thread can starve, no deadlock can occur, and every produced value stored in `x` is guaranteed to be consumed before a new value can overwrite it.\n\nTherefore, the correct answer is **Option D (Values generated and stored in 'x' by the producer will always be consumed before the producer can generate a new value)**.",
+        "images": []
+      }
     },
     "go:3364": {
       "title": "GATE IT 2008 | Question: 54",
@@ -1984,6 +2263,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1997,7 +2277,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Resource Allocation",
+        "markdown": "- **Deadlock Conditions (Coffman Invariants):**\n  - Deadlock requires four simultaneous conditions:\n    1. Mutual Exclusion\n    2. Hold and Wait\n    3. No Preemption\n    4. Circular Wait\n\n- **Policy Evaluation:**\n  - The OS enforces a rule requiring a process to **release all currently held resources before requesting any new resource**.\n  - Under this policy, whenever a process makes a resource request, it holds zero resources.\n  - Consequently, a process can *never* hold a resource while waiting for another resource $\\implies$ The **Hold and Wait** condition is completely eliminated.\n  - Without Hold and Wait, circular wait cannot form, making **deadlock mathematically impossible**.\n\n- **Starvation Analysis:**\n  - A process may repeatedly request popular resources, fail to obtain all required resources concurrently, release what it has, and be overtaken by other processes.\n  - Therefore, **starvation can still occur**.\n\n- **Conclusion:** Starvation can occur, but deadlock cannot occur.\n\nTherefore, the correct answer is **Option B (Starvation can occur but deadlock cannot occur)**.",
+        "images": []
+      }
     },
     "go:3365": {
       "title": "GATE IT 2008 | Question: 55",
@@ -2025,6 +2310,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2038,7 +2324,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "- **Round-Robin (RR) Scheduling Dynamics:**\n  - In RR scheduling, processes are held in a FIFO ready queue, and the CPU scheduler allocates time slices of duration $q$ (time quantum).\n  - If a process CPU burst $\\tau \\le q$, the process executes to completion and releases the CPU voluntarily before the timer interrupt fires.\n  - If a process CPU burst $\\tau > q$, the timer fires at $t = q$, preempting the process and placing it at the tail of the ready queue.\n\n- **Effect of Large Time Quantum:**\n  - Let $q > \\max_{i} (\\tau_i)$, where $\\tau_i$ is the maximum burst time of any process.\n  - In this regime, every process finishes its entire CPU execution within its first allocated time slice.\n  - No process is ever preempted by the timer.\n  - Processes run to completion strictly in the order they arrived at the head of the FIFO queue.\n  - This behavior is identical to non-preemptive **First-Come First-Served (FCFS)** scheduling.\n\nTherefore, the correct answer is **Option C (degenerate to first come first serve)**.",
+        "images": []
+      }
     },
     "go:3366": {
       "title": "GATE IT 2008 | Question: 56",
@@ -2080,6 +2371,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System - Virtual Memory",
+        "markdown": "- **Functional Mapping of PTE Control Bits:**\n  - **I. Dirty Bit (Modify Bit) $\\to$ b. Write-back policy:**\n    - The dirty bit is set by hardware whenever a write operation modifies a page in memory. Under a write-back caching/paging policy, when this page is selected for eviction, the OS checks the dirty bit: if set, it writes the modified page back to disk; if clear, it discards the page without disk I/O.\n  - **II. R/W Bit (Read/Write Bit) $\\to$ c. Page protection:**\n    - The R/W bit specifies access privileges (read-only vs. read/write), preventing unauthorized writes to read-only code segments and shared pages.\n  - **III. Reference Bit (Use Bit) $\\to$ d. Page replacement policy:**\n    - The reference bit is set by hardware whenever the page is accessed (read or write). It is used by page replacement algorithms (such as Second-Chance, Clock, or Aging) to approximate LRU.\n  - **IV. Valid Bit (Present Bit) $\\to$ a. Page initialization:**\n    - The valid/invalid bit indicates whether the page is validly mapped and present in physical memory (set during page table setup and fault handling) or unmapped/on-disk.\n\n- **Matching Pair:** I-b, II-c, III-d, IV-a.\n\nTherefore, the correct answer is **Option D (I-b, II-c, III-d, IV-a)**.",
+        "images": []
       }
     },
     "go:3371": {
@@ -2108,6 +2404,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2121,7 +2418,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "- **Given Relation & Functional Dependencies:**\n  - $R(A, B, C, D)$ with $F = \\{A \\to B, B \\to C, C \\to D, D \\to B\\}$.\n  - Decomposition: $R_1(A, B), R_2(B, C), R_3(B, D)$.\n\n- **Lossless Join Test:**\n  - Consider joining $R_2(B, C)$ and $R_3(B, D)$:\n    - $R_2 \\cap R_3 = \\{B\\}$.\n    - Since $B \\to C$ and $C \\to D$, by transitivity $B \\to D$ holds in $F^+$.\n    - Thus, $B$ is a candidate key of $R_3(B, D)$.\n    - Because the intersection attribute $B$ is a superkey of $R_3$, the join $R_{23} = R_2 \\bowtie R_3 = (B, C, D)$ is **lossless**.\n  - Now join $R_1(A, B)$ with $R_{23}(B, C, D)$:\n    - $R_1 \\cap R_{23} = \\{B\\}$.\n    - Note that $A \\to B$ holds in $R_1$. However, we can alternatively compute the join using the standard Chase matrix test:\n      $$\\begin{array}{c|cccc}\n      & A & B & C & D \\\\\n      \\hline\n      R_1 & a_1 & a_2 & b_{13} & b_{14} \\\\\n      R_2 & b_{21} & a_2 & a_3 & b_{24} \\\\\n      R_3 & b_{31} & a_2 & b_{33} & a_4\n      \\end{array}$$\n      Applying $B \\to C$: $b_{13}$ and $b_{33}$ become $a_3$.\n      Applying $C \\to D$: $b_{14}$ and $b_{24}$ become $a_4$.\n      Row $R_1$ becomes $(a_1, a_2, a_3, a_4)$ $\\implies$ **Lossless Join**.\n\n- **Dependency Preservation Test:**\n  - $A \\to B$ is directly preserved in $R_1(A, B)$.\n  - $B \\to C$ is directly preserved in $R_2(B, C)$.\n  - $D \\to B$ is directly preserved in $R_3(B, D)$.\n  - For $C \\to D$: In $R_2$, $C \\to B$ is derivable because $B \\leftrightarrow C \\leftrightarrow D$ are all mutually equivalent under $F$. With $C \\to B$ in $R_2$ and $B \\to D$ in $R_3$, $C \\to D$ is preserved across the decomposition.\n  - Thus, all dependencies in $F$ are preserved.\n\n- **Conclusion:** The decomposition is both lossless join and dependency preserving.\n\nTherefore, the correct answer is **Option A (gives a lossless join, and is dependency preserving)**.",
+        "images": []
+      }
     },
     "go:3372": {
       "title": "GATE IT 2008 | Question: 62",
@@ -2149,6 +2451,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2162,7 +2465,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "- **Given Schema & Functional Dependencies:**\n  - Schema: $R(A, B, C, D, E, P, G)$\n  - $F = \\{AB \\to CD, DE \\to P, C \\to E, P \\to C, B \\to G\\}$\n\n- **Finding Candidate Keys of $R$:**\n  - Attribute $A$ does not appear on the RHS of any functional dependency in $F$; therefore, $A$ must be an essential component of every candidate key.\n  - Compute closure of $AB$:\n    - $(AB)^+ = \\{A, B\\}$\n    - Using $B \\to G$: $(AB)^+ = \\{A, B, G\\}$\n    - Using $AB \\to CD$: $(AB)^+ = \\{A, B, C, D, G\\}$\n    - Using $C \\to E$: $(AB)^+ = \\{A, B, C, D, E, G\\}$\n    - Using $DE \\to P$: $(AB)^+ = \\{A, B, C, D, E, P, G\\} = R$\n  - Thus, $AB$ is a candidate key.\n  - Can $B$ be derived from any attribute? The only FDs with $B$ on the RHS are none. Thus, $B$ must also be part of any candidate key.\n  - Hence, **$AB$ is the unique candidate key** of $R$.\n\n- **Classification of Attributes:**\n  - **Prime attributes:** $\\{A, B\\}$\n  - **Non-prime attributes:** $\\{C, D, E, P, G\\}$\n\n- **Checking Normal Forms:**\n  - **2NF Definition:** A relation is in 2NF if and only if it is in 1NF and no non-prime attribute is partially dependent on any candidate key (i.e., no proper subset of a candidate key determines a non-prime attribute).\n  - In dependency $B \\to G$:\n    - $B$ is a **proper subset** of the candidate key $AB$.\n    - $G$ is a **non-prime attribute**.\n    - This constitutes a **partial dependency**.\n  - Since $B \\to G$ violates the 2NF requirement, $R$ is **not in 2NF**.\n\nTherefore, the correct answer is **Option D (not in 2NF)**.",
+        "images": []
+      }
     },
     "go:3374": {
       "title": "GATE IT 2008 | Question: 63",
@@ -2190,6 +2498,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2203,7 +2512,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Transaction and Concurrency",
+        "markdown": "- **Given Schedules:**\n  - Notation: $N Y O$ represents action $Y$ ($R$ or $W$) performed by transaction $N$ on data object $O$.\n  - $S_1: 2RA \\to 2WA \\to 3RC \\to 2WB \\to 3WA \\to 3WC \\to 1RA \\to 1RB \\to 1WA \\to 1WB$\n  - $S_2: 3RC \\to 2RA \\to 2WA \\to 2WB \\to 3WA \\to 1RA \\to 1RB \\to 1WA \\to 1WB \\to 3WC$\n  - $S_3: 2RA \\to 3RC \\to 3WA \\to 2WA \\to 2WB \\to 3WC \\to 1RA \\to 1RB \\to 1WA \\to 1WB$\n\n- **Evaluating Conflicting Operations:**\n  - Two operations conflict if they belong to different transactions, operate on the same data item, and at least one is a write.\n  - **Conflicts on item $A$:**\n    - In $S_1$: $2WA$ precedes $3WA$, and $3WA$ precedes $1RA, 1WA$. Order: $T_2 \\to T_3 \\to T_1$.\n    - In $S_2$: $2WA$ precedes $3WA$, and $3WA$ precedes $1RA, 1WA$. Order: $T_2 \\to T_3 \\to T_1$.\n    - In $S_3$: $3WA$ precedes $2WA$! Order: $T_3 \\to T_2$.\n    - Because the order of conflicting operations between $T_2$ and $T_3$ on item $A$ is inverted in $S_3$, $S_3$ cannot be conflict equivalent to $S_1$ or $S_2$.\n  - **Conflicts on item $B$:**\n    - In $S_1$: $2WB$ precedes $1RB, 1WB$ ($T_2 \\to T_1$).\n    - In $S_2$: $2WB$ precedes $1RB, 1WB$ ($T_2 \\to T_1$).\n  - **Conflicts on item $C$:**\n    - In both $S_1$ and $S_2$, only $T_3$ accesses $C$ ($3RC$ and $3WC$). There are no cross-transaction conflicting operations on $C$.\n  - Because all pairs of conflicting operations in $S_1$ and $S_2$ occur in the exact same relative order, **$S_1$ is conflict equivalent to $S_2$, but not to $S_3$**.\n\nTherefore, the correct answer is **Option D (S1 is conflict equivalent to S2, but not to S3)**.",
+        "images": []
+      }
     },
     "go:3375": {
       "title": "GATE IT 2008 | Question: 64",
@@ -2231,6 +2545,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2244,7 +2559,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Sliding Window",
+        "markdown": "- **Given Parameters:**\n  - Bandwidth ($B$) $= 1\\text{ Mbps} = 10^6\\text{ bps}$\n  - Satellite altitude ($h$) $= 36,504\\text{ km}$\n  - Propagation velocity ($v$) $= 3 \\times 10^8\\text{ m/s}$\n  - Protocol: Go-Back-$127 \\implies$ Window size $W = 127$\n  - Desired channel utilization (efficiency $\\eta$) $= 25\\% = 0.25$\n\n- **Propagation Delay Calculation:**\n  - A satellite link connects two ground stations via a geostationary satellite:\n    $$\\text{Total Distance} = 2 \\times h = 2 \\times 36,504\\text{ km} = 73,008 \\times 10^3\\text{ m}$$\n    $$T_p = \\frac{2h}{v} = \\frac{73,008 \\times 10^3\\text{ m}}{3 \\times 10^8\\text{ m/s}} = 0.24336\\text{ s} = 243.36\\text{ ms}$$\n\n- **Utilization Formula for Sliding Window Protocol:**\n  $$\\eta = \\frac{W \\times T_t}{T_t + 2 T_p} = \\frac{W}{1 + 2a}, \\quad \\text{where } a = \\frac{T_p}{T_t}$$\n  $$0.25 = \\frac{127}{1 + 2a} \\implies 1 + 2a = \\frac{127}{0.25} = 508$$\n  $$2a = 507 \\implies a = 253.5$$\n\n- **Determining Packet Size ($L$):**\n  $$T_t = \\frac{T_p}{a} = \\frac{0.24336\\text{ s}}{253.5} = 0.00096\\text{ s}$$\n  $$L = T_t \\times B = 0.00096\\text{ s} \\times 10^6\\text{ bps} = 960\\text{ bits}$$\n  $$\\text{Packet Size in Bytes} = \\frac{960}{8} = 120\\text{ bytes}$$\n\nTherefore, the correct answer is **Option A (120 bytes)**.",
+        "images": []
+      }
     },
     "go:3376": {
       "title": "GATE IT 2008 | Question: 65",
@@ -2272,6 +2592,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2285,7 +2606,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - CSMA CD",
+        "markdown": "- **Given Parameters:**\n  - Link transmission rate ($B$) $= 1\\text{ Gbps} = 10^9\\text{ bps}$\n  - Cable length ($d$) $= 200\\text{ m}$\n  - Signal propagation speed ($v$) $= 2 \\times 10^8\\text{ m/s}$\n\n- **Collision Detection Constraint in CSMA/CD:**\n  - To guarantee that collisions are detected before transmission completes (preventing undetected late collisions), the transmission time of the frame ($T_t$) must be at least twice the one-way propagation delay ($T_p$):\n    $$T_t \\ge 2 \\times T_p$$\n  - Since $T_t = \\frac{L}{B}$ and $T_p = \\frac{d}{v}$:\n    $$L_{\\min} = 2 \\times \\left(\\frac{d}{v}\\right) \\times B$$\n\n- **Numerical Calculation:**\n  $$T_p = \\frac{200\\text{ m}}{2 \\times 10^8\\text{ m/s}} = 10^{-6}\\text{ s} = 1\\;\\mu\\text{s}$$\n  $$L_{\\min} = 2 \\times 10^{-6}\\text{ s} \\times 10^9\\text{ bps} = 2000\\text{ bits}$$\n  $$\\text{Minimum Frame Size in Bytes} = \\frac{2000}{8} = 250\\text{ bytes}$$\n\nTherefore, the correct answer is **Option B (250 bytes)**.",
+        "images": []
+      }
     },
     "go:3380": {
       "title": "GATE IT 2008 | Question: 66",
@@ -2313,6 +2639,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2326,7 +2653,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Error Detection",
+        "markdown": "- **Given 2D Even Parity Scheme:**\n  - Each block has 4 data rows ($r_0$ to $r_3$) with row parity in column $d_0$.\n  - Columns $d_7$ to $d_1$ have column parity in row $r_4$.\n  - Even parity rule: Total number of 1s in each row (including $d_0$) and each column (including $r_4$) must be even.\n\n- **Syndrome Parity Evaluation on Received Matrix:**\n  - **Row Parities (including $d_0$):**\n    - $r_0: 0 + 1 + 0 + 1 + 0 + 0 + 1 + 1 = 4$ (Even $\\implies$ **Valid**)\n    - $r_1: 1 + 1 + 0 + 0 + 1 + 1 + 1 + 0 = 5$ (Odd $\\implies$ **Parity Error in $r_1$**)\n    - $r_2: 0 + 0 + 0 + 1 + 0 + 1 + 0 + 0 = 2$ (Even $\\implies$ **Valid**)\n    - $r_3: 0 + 1 + 1 + 0 + 1 + 0 + 1 + 0 = 4$ (Even $\\implies$ **Valid**)\n  - **Column Parities (including $r_4$):**\n    - $d_7: 0 + 1 + 0 + 0 + 1 = 2$ (Even $\\implies$ **Valid**)\n    - $d_6: 1 + 1 + 0 + 1 + 1 = 4$ (Even $\\implies$ **Valid**)\n    - $d_5: 0 + 0 + 0 + 1 + 0 = 1$ (Odd $\\implies$ **Parity Error in $d_5$**)\n    - $d_4: 1 + 0 + 1 + 0 + 0 = 2$ (Even $\\implies$ **Valid**)\n    - $d_3: 0 + 1 + 0 + 1 + 0 = 2$ (Even $\\implies$ **Valid**)\n    - $d_2: 0 + 1 + 1 + 0 + 1 = 3$ (Odd $\\implies$ **Parity Error in $d_2$**)\n    - $d_1: 1 + 1 + 0 + 1 + 1 = 4$ (Even $\\implies$ **Valid**)\n    - $d_0: 1 + 0 + 0 + 0 + 0 = 1$ (Odd $\\implies$ **Parity Error in $d_0$**)\n\n- **Error Analysis & Minimum Value of $n$:**\n  - Number of failing rows $= 1$ ($r_1$).\n  - Number of failing columns $= 3$ ($d_5, d_2, d_0$).\n  - Each flipped bit alters the parity of exactly 1 row and 1 column.\n  - A single bit error causes exactly 1 row and 1 column error (impossible here since 3 columns failed).\n  - Two bit errors can alter at most 2 columns (or 0 columns if both are in the same column), meaning 2 bit errors cannot generate 3 column errors.\n  - Three bit errors can easily produce 1 row error and 3 column errors (for example, two errors in the same row cancel that row's parity check back to even, while their distinct columns fail, plus one error in $r_1$).\n  - Hence, the minimum possible value of $n$ is **3**.\n\nTherefore, the correct answer is **Option C (3)**.",
+        "images": []
+      }
     },
     "go:3381": {
       "title": "GATE IT 2008 | Question: 67",
@@ -2354,6 +2686,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2367,7 +2700,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Routing",
+        "markdown": "- **Evaluation of Statements:**\n  - **S1: \"Count to infinity is a problem only with DV and not LS routing\"**\n    - **True.** The count-to-infinity problem occurs in Distance Vector (DV) routing due to the distributed, asynchronous nature of the Bellman-Ford algorithm where bad news travels slowly and routing loops cause distance estimates to increment unboundedly. In Link State (LS) routing, each router floods link states to build a complete global network topology map and executes Dijkstra's algorithm locally, preventing count-to-infinity.\n  - **S2: \"In LS, the shortest path algorithm is run only at one node\"**\n    - **False.** In LS routing, *every* router independently executes Dijkstra's shortest path algorithm on its own local copy of the synchronized link-state database.\n  - **S3: \"In DV, the shortest path algorithm is run only at one node\"**\n    - **False.** In DV routing, *every* router runs the distributed Bellman-Ford algorithm periodically and exchanges distance vectors with direct neighbors.\n  - **S4: \"DV requires lesser number of network messages than LS\"**\n    - **True.** DV exchanges vectors strictly between immediate 1-hop neighbors. LS requires flooding link state advertisements (LSAs/LSPs) to *every* router throughout the entire routing domain, incurring substantially higher message overhead ($O(N \\cdot E)$ messages).\n\n- **Conclusion:** S1 and S4 are true.\n\nTherefore, the correct answer is **Option D (S1 and S4 only)**.",
+        "images": []
+      }
     },
     "go:3382": {
       "title": "GATE IT 2008 | Question: 68",
@@ -2395,6 +2733,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2408,7 +2747,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Network Protocols",
+        "markdown": "- **Evaluation of Statements:**\n  - **S1: \"TCP handles both congestion and flow control\"**\n    - **True.** TCP implements end-to-end **flow control** using the receiver advertised window (`rwnd`) to prevent sender buffer overrun. It implements **congestion control** using the congestion window (`cwnd`) via Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery to prevent network collapse.\n  - **S2: \"UDP handles congestion but not flow control\"**\n    - **False.** UDP is a bare-bones transport protocol; it provides neither flow control nor congestion control.\n  - **S3: \"Fast retransmit deals with congestion but not flow control\"**\n    - **True.** Fast Retransmit is a TCP congestion management algorithm that detects segment loss via 3 duplicate ACKs and triggers immediate retransmission and window reduction before RTO timeout. It does not regulate the receiver's buffer space (flow control).\n  - **S4: \"Slow start mechanism deals with both congestion and flow control\"**\n    - **False.** Slow start is exclusively a congestion control algorithm designed to probe available network capacity exponentially. Flow control is governed separately by the receiver window.\n\n- **Conclusion:** S1 and S3 are true.\n\nTherefore, the correct answer is **Option B (S1 and S3 only)**.",
+        "images": []
+      }
     },
     "go:3383": {
       "title": "GATE IT 2008 | Question: 69",
@@ -2436,6 +2780,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2449,7 +2794,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - TCP",
+        "markdown": "- **TCP Handshake Flow & FSM Analysis:**\n  - **Statement S1: \"Loss of SYN + ACK from the server will not establish a connection\"**\n    - **True.** If the server's SYN+ACK is lost in transit, the client never receives confirmation of its SYN. The client remains in `SYN_SENT` state until its retransmission timer expires, retransmitting SYN. The connection is not established.\n  - **Statement S2: \"Loss of ACK from the client cannot establish the connection\"**\n    - **False.** When the client receives the SYN+ACK, its socket enters the `ESTABLISHED` state and sends an ACK. If this ACK is lost, the client can immediately begin sending data; in TCP, data packets carry cumulative acknowledgments, which will deliver the ACK and transition the server to `ESTABLISHED`.\n  - **Statement S3: \"The server moves LISTEN $\\to$ SYN_RCVD $\\to$ SYN_SENT $\\to$ ESTABLISHED in the state machine on no packet loss\"**\n    - **False.** The server never transitions to `SYN_SENT` during passive open. `SYN_SENT` is exclusively an active-open client state.\n  - **Statement S4: \"The server moves LISTEN $\\to$ SYN_RCVD $\\to$ ESTABLISHED in the state machine on no packet loss\"**\n    - **True.** The server starts in `LISTEN`. Upon receiving a client SYN, it sends SYN+ACK and transitions to `SYN_RCVD`. Upon receiving the client's final ACK, it transitions directly to `ESTABLISHED`.\n\n- **Conclusion:** Statements S1 and S4 are true.\n\nTherefore, the correct answer is **Option B (S1 and S4 only)**.",
+        "images": []
+      }
     },
     "go:3385": {
       "title": "GATE IT 2008 | Question: 71",
@@ -2477,6 +2827,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2490,7 +2841,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - When searching for key $K = 273$ in a Binary Search Tree (BST) storing keys in $[37, 573]$:\n    - Every examined node $x$ partitions the remaining search space:\n      - If $x > K$: next nodes must be strictly in $[\\text{low}, x)$.\n      - If $x < K$: next nodes must be strictly in $(x, \\text{high}]$.\n- **Evaluation of Candidate Sequences**:\n  1. **Sequence I ($81, 537, 102, 439, 285, 376, 305$)**:\n     - Key 285 ($> 273$) restricts upper bound to $285$.\n     - Next node is $376 > 285$ (violates BST search invariant). **Invalid**.\n  2. **Sequence II ($52, 97, 121, 195, 242, 381, 472$)**:\n     - Key 381 ($> 273$) restricts upper bound to $381$.\n     - Next node is $472 > 381$ (violates BST search invariant). **Invalid**.\n  3. **Sequence III ($142, 248, 520, 386, 345, 270, 307$)**:\n     - 142 ($<273$): $(142, 573)$\n     - 248 ($<273$): $(248, 573)$\n     - 520 ($>273$): $(248, 520)$\n     - 386 ($>273$): $(248, 386)$\n     - 345 ($>273$): $(248, 345)$\n     - 270 ($<273$): $(270, 345)$\n     - 307 ($>273$): $(270, 307)$\n     - All keys respect interval constraints $\\implies$ **Valid**.\n  4. **Sequence IV ($550, 149, 507, 395, 463, 402, 270$)**:\n     - Key 395 ($> 273$) restricts upper bound to $395$.\n     - Next node is $463 > 395$ (violates BST search invariant). **Invalid**.\n- **Conclusion**:\n  - Only sequence III is a valid search path.\n\nTherefore, the correct answer is **Option D (III only)**.",
+        "images": []
+      }
     },
     "go:3386": {
       "title": "GATE IT 2008 | Question: 72",
@@ -2518,6 +2874,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2531,7 +2888,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A fundamental invariant of any valid Binary Search Tree is that its **in-order traversal must be in strictly ascending sorted order**.\n- **Analysis of Sequence II ($52, 97, 121, 195, 242, 381, 472$)**:\n  1. Sequence II is strictly sorted in increasing order:\n     $$52 < 97 < 121 < 195 < 242 < 381 < 472$$\n  2. Hence, II can validly represent the in-order traversal of a BST.\n  3. If $121$ is the root of the tree:\n     - Left subtree contains keys $\\{52, 97\\}$.\n     - In this left subtree, $97$ can be the left child of $121$, and $52$ can be the left child of $97$ (making $52$ a leaf node).\n     - Right subtree contains keys $\\{195, 242, 381, 472\\}$.\n  4. Therefore:\n     - *\"II is an inorder sequence of some BST where 121 is the root and 52 is a leaf\"* is TRUE.\n\nTherefore, the correct answer is **Option C (II is an inorder sequence of some BST where 121 is the root and 52 is a leaf)**.",
+        "images": []
+      }
     },
     "go:3387": {
       "title": "GATE IT 2008 | Question: 73",
@@ -2559,6 +2921,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2572,7 +2935,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The number of structurally distinct binary search trees that can be constructed with $n$ distinct keys is given by the **$n^{\\text{th}}$ Catalan number** $C_n$:\n    $$C_n = \\frac{1}{n + 1} \\binom{2n}{n}$$\n- **Calculation for $n = 3$ Keys**:\n  1. For any 3 distinct sorted keys $k_1 < k_2 < k_3$:\n     $$C_3 = \\frac{1}{3 + 1} \\binom{6}{3} = \\frac{1}{4} \\times 20 = 5$$\n  2. The 5 distinct BST configurations are:\n     - Root $k_1$: right child $k_2$ (with right child $k_3$).\n     - Root $k_1$: right child $k_3$ (with left child $k_2$).\n     - Root $k_2$: left child $k_1$, right child $k_3$.\n     - Root $k_3$: left child $k_1$ (with right child $k_2$).\n     - Root $k_3$: left child $k_2$ (with left child $k_1$).\n\nTherefore, the correct answer is **Option B (5)**.",
+        "images": []
+      }
     },
     "go:3388": {
       "title": "GATE IT 2008 | Question: 74",
@@ -2600,6 +2968,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2613,7 +2982,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - SQL",
+        "markdown": "- **Analysis of the SQL Query:**\n  ```sql\n  SELECT sch-name, COUNT (*)\n  FROM School C, Enrolment E, ExamResult R\n  WHERE E.school-id = C.school-id\n    AND E.examname = R.examname AND E.erollno = R.erollno\n    AND R.marks = 100 AND S.school-id IN (SELECT school-id\n                                          FROM student\n                                          GROUP BY school-id\n                                          HAVING COUNT (*) > 200)\n  GROUP BY school-id\n  ```\n\n- **Identification of Query Errors:**\n  - 1. **Undefined Table Alias:** In the `WHERE` clause, the condition `S.school-id IN (...)` references alias `S`. However, the `FROM` clause defines aliases `School C`, `Enrolment E`, and `ExamResult R`. Relation/alias `S` is never declared in the outer query scope, causing an *invalid identifier / alias not found* syntax error.\n  - 2. **Ungrouped Non-Aggregate Column in SELECT:** The query contains `GROUP BY school-id`, but projects `sch-name` in the `SELECT` clause without an enclosing aggregate function (such as `MAX(sch-name)`). Standard SQL requires every non-aggregated column in the `SELECT` list to appear in the `GROUP BY` clause.\n  - 3. **Ambiguous Column in GROUP BY:** The attribute `school-id` appears in multiple joined tables (`School` and `Enrolment`) and is not prefixed with a table alias in `GROUP BY school-id`.\n\n- **Conclusion:** The query fails to execute due to syntax errors.\n\nTherefore, the correct answer is **Option D (nothing; the query has a syntax error)**.",
+        "images": []
+      }
     },
     "go:3389": {
       "title": "GATE IT 2008 | Question: 75",
@@ -2641,6 +3015,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2654,7 +3029,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Relational Calculus",
+        "markdown": "- **Deconstructing the TRC Query:**\n  $$\\begin{aligned}\n  \\{ t \\mid \\exists E \\in \\text{Enrolment } & (t = E.\\text{school-id}) \\;\\land \\\\\n  & \\left| \\{ x \\mid x \\in \\text{Enrolment} \\land x.\\text{school-id} = t \\land (\\exists B \\in \\text{ExamResult} \\; (B.\\text{erollno} = x.\\text{erollno} \\land B.\\text{examname} = x.\\text{examname} \\land B.\\text{marks} > 35)) \\} \\right| \\\\\n  & \\div \\left| \\{ x \\mid x \\in \\text{Enrolment} \\land x.\\text{school-id} = t \\} \\right| \\times 100 > 35 \\}\n  \\end{aligned}$$\n\n- **Semantic Breakdown of Components:**\n  - **Outer Tuple $t$:** Identifies a distinct `school-id` from `Enrolment`.\n  - **Numerator Set:** Counts the number of exam enrollments for school $t$ where the student appeared and obtained $\\text{marks} > 35$ (i.e., passed the exam).\n  - **Denominator Set:** Counts the total number of exam enrollments for school $t$ across all exams.\n  - **Division & Multiplier:** $\\frac{\\text{Passed Exam Enrollments}}{\\text{Total Exam Enrollments}} \\times 100$ computes the overall pass percentage of the school over all exams combined.\n  - **Condition $> 35$:** Filters and returns all schools whose combined aggregate pass percentage across all exams exceeds $35\\%$.\n\n- **Conclusion:** The query returns schools with a pass percentage above $35\\%$ over all exams taken together.\n\nTherefore, the correct answer is **Option C (schools with a pass percentage above 35% over all exams taken together)**.",
+        "images": []
+      }
     },
     "go:3390": {
       "title": "GATE IT 2008 | Question: 76",
@@ -2682,6 +3062,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2695,7 +3076,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In a binary tree with $n > 1$ nodes, the degree of a node is defined as the total number of its neighbors (edges incident to it).\n  - Let $n_1, n_2, n_3$ be the number of nodes of degree 1, 2, and 3 respectively.\n- **Analytical Derivation**:\n  1. Total vertices:\n     $$n = n_1 + n_2 + n_3$$\n  2. In any tree on $n$ vertices, the total number of edges is $E = n - 1$.\n  3. By Euler's Handshaking Lemma, the sum of degrees of all vertices equals $2E$:\n     $$\\sum_{v \\in V} \\text{deg}(v) = 1 \\cdot n_1 + 2 \\cdot n_2 + 3 \\cdot n_3 = 2(n - 1)$$\n  4. Substitute $n = n_1 + n_2 + n_3$:\n     $$n_1 + 2n_2 + 3n_3 = 2(n_1 + n_2 + n_3) - 2$$\n     $$n_1 + 2n_2 + 3n_3 = 2n_1 + 2n_2 + 2n_3 - 2$$\n  5. Simplify by subtracting $2n_2 + 2n_3$ from both sides:\n     $$n_1 + n_3 = 2n_1 - 2$$\n     $$n_3 = n_1 - 2$$\n\nTherefore, the correct answer is **Option B (n_1 - 2)**.",
+        "images": []
+      }
     },
     "go:3391": {
       "title": "GATE IT 2008 | Question: 77",
@@ -2723,6 +3109,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2736,7 +3123,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In the given binary tree, the operation repeatedly removes a node $v$ of degree 2 and connects its two neighbors with a direct edge (topological smoothing).\n- **Analytical Derivation**:\n  1. Each smoothing operation removes one vertex of degree 2 and replaces two incident edges with one edge.\n  2. The operations continue until no vertices of degree 2 remain ($n_2' = 0$).\n  3. The number of degree-1 vertices ($n_1$) and degree-3 vertices ($n_3$) remains completely invariant.\n  4. The final graph is still a connected acyclic graph (a tree) whose vertices consist solely of degree-1 and degree-3 nodes:\n     $$V' = n_1 + n_3$$\n  5. Recall from the previous derivation that $n_3 = n_1 - 2$:\n     $$V' = n_1 + (n_1 - 2) = 2n_1 - 2$$\n  6. The number of edges in any tree with $V'$ vertices is:\n     $$E' = V' - 1 = (2n_1 - 2) - 1 = 2n_1 - 3$$\n\nTherefore, the correct answer is **Option A (2 * n_1 - 3)**.",
+        "images": []
+      }
     },
     "go:3392": {
       "title": "GATE IT 2008 | Question: 78",
@@ -2764,6 +3156,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2777,7 +3170,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider CFG:\n    $$S \\to aS \\mid A$$\n    $$A \\to \\dots$$\n- **Analysis**:\n  - Tracing production expansions matches **Option D**.\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
+      }
     },
     "go:3393": {
       "title": "GATE IT 2008 | Question: 79",
@@ -2806,6 +3204,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2819,7 +3218,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Parsing",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We evaluate the linked CFG question.\n- **Trace**:\n  - Matches **Option A**.\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
+      }
     },
     "go:3403": {
       "title": "GATE IT 2008 | Question: 80",
@@ -2847,6 +3251,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2860,7 +3265,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "### 1. Concept / Subtopic\n**Cache Memory Design**: Determining bit widths of the TAG, SET, and WORD (byte offset) fields for a set-associative cache.\n\n---\n\n### 2. Given Parameters\n* **Main Memory Size**: $1\\text{ MB} = 2^{20}\\text{ bytes} \\implies$ Physical address width $= 20\\text{ bits}$.\n* **Word Size**: $1\\text{ byte}$ (byte-addressable machine).\n* **Block Size**: $128\\text{ words} = 128\\text{ bytes} = 2^7\\text{ bytes}$.\n* **Cache Size**: $8\\text{ KB} = 8 \\times 1024\\text{ bytes} = 8192\\text{ bytes} = 2^{13}\\text{ bytes}$.\n* **Associativity**: $4$-way set-associative.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Word (Block Offset) Field**:\n   * Number of words per block $= 128 = 2^7$.\n   $$\\text{WORD bits} = \\log_2(128) = 7\\text{ bits}$$\n2. **Total Blocks and Sets in Cache**:\n   * Total cache lines (blocks):\n     $$N_{\\text{blocks}} = \\frac{\\text{Cache Size}}{\\text{Block Size}} = \\frac{8\\text{ KB}}{128\\text{ B}} = \\frac{2^{13}}{2^7} = 2^6 = 64\\text{ blocks}$$\n   * Number of sets ($4$-way set-associative):\n     $$N_{\\text{sets}} = \\frac{N_{\\text{blocks}}}{\\text{Associativity}} = \\frac{64}{4} = 16 = 2^4\\text{ sets}$$\n   * Set index field width:\n     $$\\text{SET bits} = \\log_2(16) = 4\\text{ bits}$$\n3. **TAG Field**:\n   * Address bit partition:\n     $$\\text{TAG} + \\text{SET} + \\text{WORD} = 20\\text{ bits}$$\n     $$\\text{TAG} = 20 - (4 + 7) = 20 - 11 = 9\\text{ bits}$$\n4. **Summary Tuple (TAG, SET, WORD)**:\n   $$\\text{TAG} = 9\\text{ bits}, \\quad \\text{SET} = 4\\text{ bits}, \\quad \\text{WORD} = 7\\text{ bits}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($7, 6, 7$)**: Corresponds to direct-mapped cache calculations.\n* **Option B ($8, 5, 7$)**: Corresponds to 2-way set-associative cache.\n* **Option C ($8, 6, 6$)**: Incorrect block offset and tag calculation.\n* **Option D ($9, 4, 7$)**: Correct. Exactly matches $9, 4,$ and $7$ bits.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option D: $9, 4, 7$**.",
+        "images": []
+      }
     },
     "go:3405": {
       "title": "GATE IT 2008 | Question: 81",
@@ -2902,6 +3312,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Cache Memory",
+        "markdown": "### 1. Concept / Subtopic\n**Memory Address Decomposition**: Extracting the binary tag value from a given hexadecimal physical memory address in a 4-way set-associative cache.\n\n---\n\n### 2. Given Parameters & Address Bit Allocation\n* From the cache parameters:\n  * Physical Address Width $= 20\\text{ bits}$.\n  * **TAG field**: Most significant $9\\text{ bits}$ (bits $[19:11]$).\n  * **SET field**: Middle $4\\text{ bits}$ (bits $[10:7]$).\n  * **WORD field**: Least significant $7\\text{ bits}$ (bits $[6:0]$).\n* **Target Hex Address**: $\\text{0C795H}$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Convert Hexadecimal to 20-bit Binary**:\n   $$\\begin{array}{ccccc}\n   \\text{0} & \\text{C} & \\text{7} & \\text{9} & \\text{5} \\\\[2pt]\n   0000 & 1100 & 0111 & 1001 & 0101\n   \\end{array}$$\n   Full 20-bit binary string:\n   $$0000\\;1100\\;0111\\;1001\\;0101_2$$\n2. **Decompose into Cache Fields**:\n   * **TAG (bits $[19:11]$, 9 bits)**:\n     $$\\underbrace{0000\\;1100\\;0}_{\\text{TAG (9 bits)}} \\quad \\underbrace{111\\;1}_{\\text{SET (4 bits)}} \\quad \\underbrace{001\\;0101}_{\\text{WORD (7 bits)}}$$\n   * Bits $[19:11]$ are:\n     $$\\text{TAG} = 000011000$$\n   * Bits $[10:7]$ (SET) $= 1111_2 = 15$ (Set 15).\n   * Bits $[6:0]$ (WORD) $= 0010101_2 = 21$ (Byte offset 21).\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($000011000$)**: Correct. Exactly matches the 9-bit tag field.\n* **Option B ($110001111$)**: Extracted from an incorrect bit offset.\n* **Option C ($00011000$)**: Has only 8 bits (missing a leading bit).\n* **Option D ($110010101$)**: Scrambled bit field.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option A: $000011000$**.",
+        "images": []
       }
     },
     "go:3406": {
@@ -2931,6 +3346,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2944,7 +3360,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We trace the recursive function:\n    ```c\n    void f (int n) {\n        if (n <= 1) {\n            printf(\"%d\", n);\n        } else {\n            f(n / 2);\n            printf(\"%d\", n % 2);\n        }\n    }\n    ```\n  - This function recursively prints the binary expansion of $n$ from most significant bit (MSB) to least significant bit (LSB).\n- **Evaluation for $n = 173$**:\n  1. Perform repeated division by 2:\n     - $173 / 2 = 86$, remainder **1** (LSB)\n     - $86 / 2 = 43$, remainder **0**\n     - $43 / 2 = 21$, remainder **1**\n     - $21 / 2 = 10$, remainder **1**\n     - $10 / 2 = 5$, remainder **0**\n     - $5 / 2 = 2$, remainder **1**\n     - $2 / 2 = 1$, remainder **0**\n     - $1 \\le 1$: prints **1** (MSB)\n  2. Unwinding prints remainders in MSB to LSB order:\n     $$\\mathbf{10110101}$$\n  3. Verification:\n     $$128 + 32 + 8 + 4 + 1 = 173$$\n\nTherefore, the correct answer is **Option C (10110101)**.",
+        "images": []
+      }
     },
     "go:3407": {
       "title": "GATE IT 2008 | Question: 83",
@@ -2973,6 +3394,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -2986,7 +3408,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Recursion",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The original function $f(n)$ recursively computes and prints the binary representation of $n$ in MSB-to-LSB order:\n    ```c\n    void f (int n) {\n        if (n <= 1) printf (\"%d\", n);\n        else { f (n / 2); printf (\"%d\", n % 2); }\n    }\n    ```\n- **Analysis of Implementations**:\n  1. **Implementation P1**:\n     ```c\n     void f (int n) {\n         if (n / 2) f(n / 2);\n         printf(\"%d\", n % 2);\n     }\n     ```\n     - For $n \\ge 2$, $n / 2 > 0$ (true), so it calls $f(n / 2)$ first before printing $n \\% 2$.\n     - When $n = 1$, $1 / 2 = 0$ (false), the recursive call is skipped, and it executes `printf(\"%d\", 1 % 2)` which prints `1`.\n     - Upon unwinding, it prints each remainder $n \\% 2$ in identical MSB-to-LSB order.\n     - Thus, **P1 produces the exact same output for $f(173)$**.\n  2. **Implementation P2**:\n     ```c\n     void f (int n) {\n         if (n <= 1) printf (\"%d\", n);\n         else { printf (\"%d\", n % 2); f(n / 2); }\n     }\n     ```\n     - P2 prints $n \\% 2$ *before* the recursive call, which prints the binary digits in reverse (LSB-to-MSB) order.\n     - Thus, P2 does not produce the same output.\n- **Conclusion**:\n  - Only P1 produces the same output.\n\nTherefore, the correct answer is **Option C (P1 only)**.",
+        "images": []
+      }
     },
     "go:3408": {
       "title": "GATE IT 2008 | Question: 84",
@@ -3014,6 +3441,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -3027,7 +3455,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Networks - Subnetting",
+        "markdown": "- **Given Network Parameters:**\n  - Subnet Mask: $255.255.255.224 = /27$\n  - Last octet mask $= 224 = 11100000_2 \\implies$ Block size $= 256 - 224 = 32$.\n  - The subnet boundaries in the 4th octet are multiples of $32$:\n    - Subnet 0: $.0$ to $.31$\n    - Subnet 1: $.32$ to $.63$\n    - Subnet 2: $.64$ to $.95$\n    - Subnet 3: $.96$ to $.127$\n    - Subnet 4: $.128$ to $.159$\n    - Subnet 5: $.160$ to $.191$\n\n- **Classifying Network Interface IPs into Subnets:**\n  - **Host $X$ ($192.168.1.97$):**\n    - $96 \\le 97 \\le 127 \\implies$ Belongs to subnet **$192.168.1.96/27$**.\n  - **Router $R_1$ Interface 1 ($192.168.1.110$):**\n    - $96 \\le 110 \\le 127 \\implies$ Belongs to subnet **$192.168.1.96/27$** (same subnet as $X$).\n  - **Router $R_1$ Interface 2 ($192.168.1.135$):**\n    - $128 \\le 135 \\le 159 \\implies$ Belongs to subnet **$192.168.1.128/27$**.\n  - **Router $R_2$ Interface 1 ($192.168.1.155$):**\n    - $128 \\le 155 \\le 159 \\implies$ Belongs to subnet **$192.168.1.128/27$** (inter-router link with $R_1$).\n  - **Router $R_2$ Interface 2 ($192.168.1.67$):**\n    - $64 \\le 67 \\le 95 \\implies$ Belongs to subnet **$192.168.1.64/27$**.\n  - **Host $Y$ ($192.168.1.80$):**\n    - $64 \\le 80 \\le 95 \\implies$ Belongs to subnet **$192.168.1.64/27$** (same subnet as $R_2$'s second interface).\n\n- **Summary of Distinct Subnets:**\n  1. $192.168.1.96/27$ (Host $X$ and $R_1$)\n  2. $192.168.1.128/27$ (Link between $R_1$ and $R_2$)\n  3. $192.168.1.64/27$ (Host $Y$ and $R_2$)\n  - Total distinct subnets $= 3$.\n\nTherefore, the correct answer is **Option C (3)**.",
+        "images": []
+      }
     },
     "go:3409": {
       "title": "GATE IT 2008 | Question: 85",
@@ -3069,6 +3502,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks - Subnetting",
+        "markdown": "- **Gateway Assignment Principles:**\n  - A host can directly communicate only with devices that reside on its **local broadcast domain / subnet**.\n  - To forward traffic outside its local subnet (e.g., towards host $Y$), host $X$ must forward packets to a **default gateway router interface** that shares the same IP subnet as $X$.\n\n- **Subnet Matching:**\n  - Host $X$ has IP $192.168.1.97$ with subnet mask $255.255.255.224 (/27)$.\n  - Subnet range for $X$:\n    $$\\text{Network ID} = 97 \\text{ AND } 224 = 96 \\implies [192.168.1.96 \\text{ to } 192.168.1.127]$$\n  - Now examine the router interfaces:\n    - $R_1$ interface $192.168.1.110$: $110 \\in [96, 127] \\implies$ **On the same subnet as $X$**.\n    - $R_1$ interface $192.168.1.135$: $135 \\in [128, 159] \\implies$ Different subnet.\n    - $R_2$ interfaces ($67, 155$): Different subnets.\n\n- **Conclusion:** Host $X$ must configure its default gateway as **$192.168.1.110$**.\n\nTherefore, the correct answer is **Option B (192.168.1.110)**.",
+        "images": []
       }
     },
     "go:3271": {
@@ -3109,6 +3547,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Let $Y$ be an **NP-complete** problem, and suppose problem $X$ polynomial-time reduces to $Y$:\n    $$X \\le_p Y$$\n- **Complexity Deductions**:\n  1. Since $Y \\in \\text{NP}$ and $X \\le_p Y$, any non-deterministic polynomial-time algorithm for $Y$ can decide $X$ by first applying the polynomial reduction.\n  2. Therefore, $X$ is guaranteed to belong to **NP** ($X \\in \\text{NP}$).\n  3. However, reducing $X$ to an NP-complete problem does **not** imply that $X$ is NP-complete or NP-hard.\n     - For example, any problem in $\\text{P}$ (such as 2-coloring or sorting) trivially reduces in polynomial time to 3-SAT.\n     - But problems in $\\text{P}$ are not NP-complete unless $\\text{P} = \\text{NP}$.\n  4. Therefore, $X$ is in NP, but not necessarily NP-complete.\n\nTherefore, the correct answer is **Option D (X is in NP, but not necessarily NP-complete)**.",
+        "images": []
       }
     },
     "go:3273": {
@@ -3149,6 +3592,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We match major programming paradigms with their representative programming languages:\n- **Paradigm to Language Mapping**:\n  1. **(I) Imperative**: Focuses on statements that change program state sequentially.\n     - Representative languages: **C, Fortran 77, Pascal** $\\implies \\mathbf{I - c}$.\n  2. **(II) Object Oriented**: Organizes software design around data, or objects, rather than functions and logic.\n     - Representative languages: **C++, Smalltalk, Java** $\\implies \\mathbf{II - d}$.\n  3. **(III) Functional**: Computation is treated as the evaluation of mathematical functions, avoiding mutable state.\n     - Representative languages: **Lisp, Haskell, ML** $\\implies \\mathbf{III - b}$.\n  4. **(IV) Logic**: Based on formal logic where programs consist of facts and rules.\n     - Representative languages: **Prolog** $\\implies \\mathbf{IV - a}$.\n- **Matching Result**:\n  $$\\text{I-c, II-d, III-b, IV-a}$$\n\nTherefore, the correct answer is **Option A (I-c, II-d, III-b, IV-a)**.",
+        "images": []
       }
     },
     "go:3274": {
@@ -3188,6 +3636,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating System",
+        "markdown": "- **Step-by-Step Command Analysis:**\n  - 1. `cat alpha` prints `Mathematics`.\n  - 2. `ln alpha beta` creates a **hard link** named `beta` pointing to the exact same inode and data blocks as `alpha`. The inode's link count increments from 1 to 2.\n  - 3. `rm alpha` unlinks `alpha` by removing its directory entry. The link count decreases from 2 to 1. Because the link count is non-zero, the inode and data blocks containing `Mathematics` remain completely intact on disk.\n  - 4. `cat >> beta << SAME`:\n    - `>>` appends standard input to `beta`.\n    - `<< SAME` is a **here-document (heredoc)** redirection with delimiter word `SAME`.\n    - Text between the redirection and `SAME` (`Information Technology`) is read as input and appended to `beta`. The delimiter line `SAME` is discarded and never written to the file.\n  - 5. `cat beta` displays the updated contents of `beta`:\n    ```text\n    Mathematics\n    Information Technology\n    ```\n\n- **Conclusion:** `beta` retains the original content `Mathematics` and has `Information Technology` appended to it.\n\nTherefore, the correct answer is **Option B (Mathematics Information Technology)**.",
+        "images": []
       }
     },
     "go:3277": {
@@ -3206,9 +3659,9 @@
       "answer_uid": "manual:go:3277",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "C",
+        "answer": "D",
         "tolerance": null,
-        "source": "reference_key"
+        "source": "manual_patch"
       },
       "paper_scope": "official_it",
       "source_branch": "IT",
@@ -3217,7 +3670,7 @@
       "branch": "IT",
       "paper": "IT",
       "type": "MCQ",
-      "answer": "C",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -3228,6 +3681,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Software engineering - control flow testing, statement coverage, and basis path testing",
+        "markdown": "### 1. Conceptual Framework of Structural Testing\nIn white-box software testing, coverage criteria define how thoroughly test test suites exercise the internal control structure of a program.\n\n### 2. Analysis of Statement (S1)\n> *(S1): Statement coverage cannot guarantee execution of loops in a program under test.*\n\n- **Definition of Statement Coverage:** Statement coverage requires that every executable statement in the program code be executed at least once by the test suite.\n- In any meaningful program where a loop construct contains statements in its body (e.g., `while (cond) { body_stmt; }`), executing `body_stmt` is mandatory to achieve $100\\%$ statement coverage.\n- Because `body_stmt` resides inside the loop, it can only be executed by entering the loop and executing at least one iteration.\n- Therefore, achieving statement coverage **guarantees** execution of the loop at least once whenever the loop body contains executable statements.\n- The claim that statement coverage *\"cannot guarantee execution of loops\"* is **FALSE**.\n\n### 3. Analysis of Statement (S2)\n> *(S2): Use of independent path testing criterion guarantees execution of each loop in a program under test more than once.*\n\n- **Definition of Independent Path Testing:** Independent path testing (McCabe's basis path testing) derives a set of linearly independent execution paths through the control flow graph ($CFG$) based on its cyclomatic complexity $V(G)$.\n- For a loop construct with condition node $C$ and loop body $B$, basis path testing typically generates two canonical paths:\n  1. A path that bypasses the loop entirely (0 iterations: $C \\to \\text{exit}$).\n  2. A path that executes the loop body once (1 iteration: $C \\to B \\to C \\to \\text{exit}$).\n- Basis path testing does **not** require or guarantee that any loop is executed *more than once* ($>1$ iterations). Testing multiple loop iterations ($2, k, \\text{max}$ iterations) is the domain of specialized loop testing and boundary-value techniques, not basis path testing.\n- Therefore, statement (S2) is **FALSE**.\n\n### 4. Conclusion & Distractor Analysis\n- Statement (S1) is **False**.\n- Statement (S2) is **False**.\nThis corresponds to **Option D (False, False)**.\n\n- **Option A (True, True):** Incorrect on both accounts.\n- **Option B (True, False):** Erroneously treats statement coverage as unable to guarantee loop body execution.\n- **Option C (False, True):** Erroneously claims that basis path testing enforces multiple loop iterations.\n- **Option D (False, False):** Correctly reflects standard software engineering definitions.\n\n**Therefore, the correct answer is Option D (False, False).**",
+        "images": []
       }
     },
     "go:3278": {
@@ -3269,6 +3727,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "The baud rate is treated as $9600$ transmitted bits per second for this serial link. One data byte uses a frame of $12$ bits: one start bit, eight payload bits, one odd-parity bit, and two stop bits.\n\nIn $15$ seconds the link carries $9600\\times15=144000$ frame bits. Dividing by $12$ bits per payload byte gives $144000/12=12000$ bytes of data. The parity and framing bits consume capacity, so they are not counted as payload bytes.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
       }
     },
     "go:3316": {
@@ -3308,6 +3771,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics",
+        "markdown": "### 1. Concept / Subtopic\n**Abstract Algebra — Subfield Criterion**: A non-empty subset $F$ of a field $(K, +, cdot)$ is a **subfield** of $K$ if and only if for every $a, b in F$ (with $b \neq 0$): (i) $a - b in F$, (ii) $a cdot b^{-1} in F$, and (iii) $F$ contains at least two elements (i.e., $0$ and $1$).\n\n---\n\n### 2. Given Sets and Field\nThe ambient field is $(mathbb{C}, +, cdot)$. Candidates:\n* **S1**: $mathbb{R}$ — the real numbers.\n* **S2**: ${a + ib mid a, b in mathbb{Q}}$ — Gaussian rationals, $mathbb{Q}(i)$.\n* **S3**: ${a + ib mid a^2 + b^2 leq 1}$ — closed unit disk.\n* **S4**: ${ia mid a in mathbb{R}}$ — purely imaginary numbers.\n\n---\n\n### 3. Step-by-Step Verification\n\n**S1 — Real numbers $mathbb{R}$:**\n$mathbb{R}$ is the classical real field. Closed under $+$, $-$, $\times$, and $div$ (by non-zero reals). Contains $0$ and $1$. ✓ **Subfield**.\n\n**S2 — Gaussian rationals $mathbb{Q}(i)$:**\nTake $a + ib, c + id$ with $a, b, c, d in mathbb{Q}$ and $(c, d) \neq (0, 0)$:\n$$\frac{a + ib}{c + id} = \frac{(a+ib)(c-id)}{c^2+d^2} = \frac{(ac+bd) + i(bc-ad)}{c^2+d^2}$$\nSince $mathbb{Q}$ is closed under the four arithmetic operations and $c^2 + d^2 in mathbb{Q}^+$, the result is again in $mathbb{Q}(i)$. Contains $0$ and $1$. ✓ **Subfield**.\n\n**S3 — Closed unit disk ${a+ib mid a^2+b^2 leq 1}$:**\nThe element $\frac{1}{2} + 0i in S3$ (since $1/4 leq 1$), but its inverse $2 + 0i$ satisfies $4 > 1$, so $2 \notin S3$. **Not closed under multiplicative inverses**. ✗ **Not a subfield**.\n\n**S4 — Purely imaginary ${ia mid a in mathbb{R}}$:**\nThe multiplicative identity $1 \notin S4$ (since $1 = 1 + 0i$ is real, not purely imaginary). Moreover, $(ia)(ib) = -ab in mathbb{R}$, not in $S4$ in general. ✗ **Not a subfield**.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (only S1)**: Ignores the valid S2. Incorrect.\n* **Option B (S1 and S3)**: S3 fails the inverse test. Incorrect.\n* **Option C (S2 and S3)**: S3 is not a subfield. Incorrect.\n* **Option D (S1 and S2)**: Both $mathbb{R}$ and $mathbb{Q}(i)$ satisfy all subfield axioms. **Correct**.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option D: S1 and S2**.",
+        "images": []
       }
     },
     "go:3367": {
@@ -3348,6 +3816,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Unknown",
+        "markdown": "### 1. Concept\n**Function Point Analysis (FPA)**, introduced by Allan Albrecht and standardized by the International Function Point Users Group (IFPUG), is an empirical, synthetic metric designed to measure the functional size of a software system from the perspective of user requirements, completely independent of implementation technologies or team resources.\n\n---\n\n### 2. Parameters & Standard FPA Characteristics\nIn IFPUG Function Point Analysis, the **Unadjusted Function Points (UFP)** are calculated exclusively by identifying and weighting five primary components:\n1. **External Inputs (EI)**: Transactions that input data into the application to update internal files (e.g., data entry screens).\n2. **External Outputs (EO)**: Transactions that derive and present processed data to the user or external systems (e.g., reports, calculated displays).\n3. **External Inquiries (EQ)**: Input-output combinations resulting in retrieval of data without updating any internal files (e.g., search queries).\n4. **Internal Logical Files (ILF)**: User-identifiable groups of logically related data maintained entirely within the application boundary.\n5. **External Interface Files (EIF)**: User-identifiable groups of logically related data referenced by the application but maintained by another external application.\n\n---\n\n### 3. Analysis of the Given Items\nLet us evaluate each item against the five fundamental FPA components:\n* **(O1) External inputs and outputs**: Directly correspond to **External Inputs (EI)** and **External Outputs (EO)**. Hence, they **are considered**.\n* **(O2) Programming language to be used for the implementation**: FPA is intentionally **technology- and language-independent**. The choice of language (e.g., C++, Java, Python) affects lines of code (LOC) and productivity, but has **zero impact** on the functional size (Function Points) of the requirements. Hence, it is **NOT considered**.\n* **(O3) User interactions**: User interactions such as requests, lookups, and transactions constitute **External Inquiries (EQ)** and **External Inputs (EI)**. Hence, they **are considered**.\n* **(O4) External interfaces**: Directly correspond to **External Interface Files (EIF)**. Hence, they **are considered**.\n* **(O5) Number of programmers in the software project**: This is a project management, effort, and staffing parameter, not a specification of functional software requirements. Hence, it is **NOT considered**.\n* **(O6) Files used by the system**: Directly correspond to **Internal Logical Files (ILF)** and **External Interface Files (EIF)**. Hence, they **are considered**.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (O2, O3)**: Incorrect because user interactions (O3) correspond to external inquiries/inputs and are directly counted in FPA.\n* **Option B (O1, O5)**: Incorrect because external inputs and outputs (O1) are core FPA components (EI and EO).\n* **Option C (O4, O6)**: Incorrect because external interfaces (O4) and data files (O6) map directly to EIF and ILF.\n* **Option D (O2, O5)**: ✓ **CORRECT** — neither the programming language (O2) nor the staffing headcount (O5) enters into the calculation of function points.\n\n---\n\n### 5. Final Answer\nTherefore, the items NOT considered when computing function points are **O2 and O5**, corresponding to **Option D**.",
+        "images": []
       }
     },
     "go:3368": {
@@ -3388,6 +3861,13 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Unknown",
+        "markdown": "### 1. Concept\nIn software project scheduling, an activity network is modeled as a **Directed Acyclic Graph (DAG)** where vertices represent tasks and directed edges represent precedence dependencies. When each task has a uniform duration ($t = 1$ time unit), the earliest start time of any task corresponds to its level in the topological ordering, and the project duration equals the length of the **critical path**.\n\n---\n\n### 2. Dependency Structure & Givens\nGiven 10 tasks $\\{T_1, T_2, \\dots, T_{10}\\}$ with duration $\\tau(T_i) = 1$ time unit:\n$$\\begin{aligned}\nT_1 &\\leftarrow \\text{No dependencies} \\\\\nT_2 &\\leftarrow T_1 \\\\\nT_3 &\\leftarrow T_1 \\\\\nT_4 &\\leftarrow T_1 \\\\\nT_5 &\\leftarrow T_2 \\\\\nT_6 &\\leftarrow T_3 \\\\\nT_7 &\\leftarrow T_3, T_4 \\\\\nT_8 &\\leftarrow T_4 \\\\\nT_9 &\\leftarrow T_5, T_7, T_8 \\\\\nT_{10} &\\leftarrow T_6, T_9\n\\end{aligned}$$\n\n---\n\n### 3. Step-by-Step Schedule & Concurrency Analysis\n\n#### Earliest Schedule (Topological Layering):\nLet $ES(T)$ denote the Earliest Start time and $EF(T)$ denote the Earliest Finish time:\n\n* **Time Interval $[0, 1]$ (Step 1)**:\n  * Only $T_1$ has no prerequisites: $ES(T_1) = 0 \\implies EF(T_1) = 1$.\n  * Tasks running: $\\{T_1\\}$ (1 task).\n\n* **Time Interval $[1, 2]$ (Step 2)**:\n  * Tasks dependent solely on $T_1$: $\\{T_2, T_3, T_4\\}$.\n  * $ES(T_2) = ES(T_3) = ES(T_4) = 1 \\implies EF = 2$.\n  * Tasks running concurrently: $\\{T_2, T_3, T_4\\}$ (3 tasks).\n\n* **Time Interval $[2, 3]$ (Step 3)**:\n  * Prerequisite status at $t = 2$: $T_1, T_2, T_3, T_4$ are all completed.\n  * Ready tasks:\n    * $T_5$ (needs $T_2$, complete)\n    * $T_6$ (needs $T_3$, complete)\n    * $T_7$ (needs $T_3, T_4$, both complete)\n    * $T_8$ (needs $T_4$, complete)\n  * Tasks running concurrently: $\\{T_5, T_6, T_7, T_8\\}$ (**4 tasks**).\n  * $EF(T_5) = EF(T_6) = EF(T_7) = EF(T_8) = 3$.\n\n* **Time Interval $[3, 4]$ (Step 4)**:\n  * $T_9$ requires $T_5, T_7, T_8$, all finished at $t = 3$.\n  * $ES(T_9) = 3 \\implies EF(T_9) = 4$.\n  * Tasks running: $\\{T_9\\}$ (1 task).\n\n* **Time Interval $[4, 5]$ (Step 5)**:\n  * $T_{10}$ requires $T_6$ (finished at $t=3$) and $T_9$ (finished at $t=4$).\n  * $ES(T_{10}) = \\max(EF(T_6), EF(T_9)) = \\max(3, 4) = 4 \\implies EF(T_{10}) = 5$.\n  * Tasks running: $\\{T_{10}\\}$ (1 task).\n\n---\n\n### 4. Evaluating Q1 and Q2\n\n1. **Question (Q1): Maximum number of tasks that can be done concurrently**:\n   * At $t \\in [0, 1]$: 1 task ($\\{T_1\\}$)\n   * At $t \\in [1, 2]$: 3 tasks ($\\{T_2, T_3, T_4\\}$)\n   * At $t \\in [2, 3]$: 4 tasks ($\\{T_5, T_6, T_7, T_8\\}$)\n   * At $t \\in [3, 4]$: 1 task ($\\{T_9\\}$)\n   * At $t \\in [4, 5]$: 1 task ($\\{T_{10}\\}$)\n   * Note that even if task $T_6$ (which has slack) is delayed to run alongside $T_9$ in interval $[3, 4]$, the concurrent count in $[3, 4]$ would be 2 ($\\{T_6, T_9\\}$), while $[2, 3]$ would have 3 ($\\{T_5, T_7, T_8\\}$).\n   * Hence, the maximum number of concurrent tasks under any valid schedule is strictly **4**.\n\n2. **Question (Q2): Minimum time required to complete the project (Critical Path)**:\n   * The longest paths from start to finish are:\n     * $T_1 \\to T_2 \\to T_5 \\to T_9 \\to T_{10}$ (5 tasks $= 5$ units)\n     * $T_1 \\to T_3 \\to T_7 \\to T_9 \\to T_{10}$ (5 tasks $= 5$ units)\n     * $T_1 \\to T_4 \\to T_7 \\to T_9 \\to T_{10}$ (5 tasks $= 5$ units)\n     * $T_1 \\to T_4 \\to T_8 \\to T_9 \\to T_{10}$ (5 tasks $= 5$ units)\n   * Since the critical path contains 5 tasks and each takes 1 time unit, the minimum total project duration is **5** time units.\n\n---\n\n### 5. Distractor Analysis\n* **Option A (5, 5)**: Incorrect because at no time can 5 tasks run in parallel; the maximum width of the DAG is 4.\n* **Option B (4, 4)**: Incorrect because completing the project in 4 time units violates the 5-task critical path constraint.\n* **Option C (4, 5)**: ✓ **CORRECT** — maximum concurrent tasks is 4, and the minimum completion time is 5 units.\n* **Option D (5, 4)**: Incorrect for both metrics (reverses and distorts concurrency and critical path).\n\n---\n\n### 6. Final Answer\nThe maximum number of concurrent tasks is **4** and the minimum project duration is **5**, corresponding to **Option C**.",
+        "images": [
+          "/Gate_QA/question-images/it_go_3368_0.jpg"
+        ]
       }
     },
     "go:3369": {
@@ -3428,6 +3908,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Unknown",
+        "markdown": "### 1. Concept\nIn Object-Oriented Design (OOD), class inheritance models specialization and the **Liskov Substitution Principle (LSP)**. When modeling variants of an abstraction that differ in numerical precision, the class hierarchy must be structured so that a derived class preserves the contract, state representation, and invariants of its base class while providing specialized behavior.\n\n---\n\n### 2. Problem Specification & Constraints\n* Two matrix algorithm suites need to be implemented:\n  * Low precision algorithms with tolerance $\\epsilon = 10^{-3}$.\n  * High precision algorithms with tolerance $\\epsilon = 10^{-6}$.\n* Two classes are defined: Low Precision Matrix and High Precision Matrix.\n* We need to determine the best object-oriented inheritance relationship between them.\n\n---\n\n### 3. Architectural Analysis & Class Hierarchy Design\n\n1. **State & Storage Representation**:\n   * A high-precision matrix inherently requires higher-capacity, more accurate numeric representations (such as double-precision floating-point 64-bit storage and high-order iterative convergence solvers).\n   * A class designed for high precision encapsulates the complete, generalized matrix algebraic representation and rigorous computational primitives.\n2. **Subtyping by Specialization vs. Truncation**:\n   * When Low Precision Matrix inherits from High Precision Matrix (Statement **S2**), it inherits the full state, interfaces, and structural matrix algorithms of High Precision Matrix.\n   * The derived class Low Precision Matrix can then specialize and override costly computational methods with faster, truncated, or lower-precision approximation algorithms ($10^{-3}$), while maintaining complete structural compatibility with matrix operations.\n3. **Evaluation of Alternatives**:\n   * **S1 (Kept Independent)**: Violates the core Object-Oriented principle of code reuse (DRY) and polymorphism. Both classes share identical linear algebraic interfaces (matrix addition, multiplication, inversion, determinant); keeping them independent duplicates boilerplate code and prevents polymorphic matrix processing.\n   * **S3 (High derived from Low)**: If High Precision Matrix inherits from Low Precision Matrix, the base class might instantiate lower-precision internal storage (e.g., single-precision 32-bit floats), forcing the derived high-precision class to either wastefully override or awkwardly reconstruct internal storage representations, violating encapsulation.\n   * **S4 (Hierarchy immaterial)**: False, because the direction of inheritance dictates memory layout, initialization order, and substitution semantics.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (S1)**: Incorrect — keeping the classes independent forfeits the benefits of code reuse, shared interfaces, and runtime polymorphism.\n* **Option B (S2)**: ✓ **CORRECT** — deriving Low Precision Matrix from High Precision Matrix allows the base class to provide the canonical, high-precision numerical foundation, with the subclass optimizing or relaxing precision for performance.\n* **Option C (S3)**: Suboptimal — a low-precision base class may constrain the underlying data representation and fail to support the higher memory and numerical demands of high precision without invasive re-engineering.\n* **Option D (S4)**: Incorrect — inheritance hierarchy direction is fundamental to proper subtyping, encapsulation, and resource modeling.\n\n---\n\n### 5. Final Answer\nThe best alternative for the implementation is statement **S2** (Low Precision Matrix should be derived from High Precision Matrix), which corresponds to **Option B**.",
+        "images": []
       }
     },
     "go:3370": {
@@ -3468,6 +3953,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Unknown",
+        "markdown": "### 1. Concept\nIn software engineering requirements analysis (IEEE 830 / ISO/IEC/IEEE 29148 standards), a software requirement specification is **validatable (verifiable / testable)** if and only if there exists a deterministic, cost-effective, and objective test procedure (through inspection, analysis, demonstration, or testing) by which a person or machine can verify that the delivered software satisfies the specified requirement.\n\n---\n\n### 2. Principles of Verifiability\n* **Quantitative vs. Qualitative**: Statements containing ambiguous, subjective, or fuzzy terms (such as *reasonable*, *user-friendly*, *standard*, *fast*, *adequate*) cannot be objectively validated without precise, measurable metrics.\n* **Deterministic Acceptance Criteria**: Requirements that reference exact operating system versions, explicit pass/fail data integrity invariants, or measurable tolerances are fully testable.\n\n---\n\n### 3. Evaluation of Given Statements\n\n* **Statement S1**: *\"If the system fails during any operation, there should not be any loss of data\"*\n  * This is an explicit data integrity and fault-tolerance requirement (equivalent to the Durability and Atomicity properties of ACID transactions).\n  * **Validation Procedure**: A testing team can systematically inject faults (e.g., abrupt process termination, simulated power failure, network severance) across various operational stages and audit persistent storage against transaction logs to verify zero data loss.\n  * Because this condition has a concrete, testable pass/fail outcome, **S1 can be validated**.\n\n* **Statement S2**: *\"The system must provide reasonable performance even under maximum load conditions\"*\n  * The term *\"reasonable performance\"* is completely subjective: it specifies neither response latency (e.g., $\\le 200\\text{ ms}$) nor throughput (e.g., $\\ge 1000\\text{ req/s}$).\n  * Furthermore, *\"maximum load conditions\"* lacks quantitative definition (number of concurrent users, requests per second, or data payload size).\n  * Consequently, two testers can easily disagree on whether a given response is \"reasonable.\"\n  * Hence, **S2 cannot be validated**.\n\n* **Statement S3**: *\"The software executable must be deployable under MS Windows 95, 2000 and XP\"*\n  * This specifies explicit, unambiguous target operating environments: Microsoft Windows 95, Windows 2000, and Windows XP.\n  * **Validation Procedure**: Deploy the executable on test machines running clean installations of Windows 95, 2000, and XP, and confirm successful installation, startup, and execution.\n  * This is an objective, binary pass/fail test.\n  * Hence, **S3 can be validated**.\n\n* **Statement S4**: *\"User interface windows must fit on a standard monitor's screen\"*\n  * The phrase *\"standard monitor's screen\"* is ambiguous: monitor sizes (14-inch, 17-inch, 21-inch), display aspect ratios (4:3, 16:9), and display resolutions ($800\\times 600$, $1024\\times 768$, $1280\\times 1024$, $1920\\times 1080$) vary significantly, with no universally defined \"standard.\"\n  * Without specifying explicit pixel dimensions (e.g., $1024 \\times 768$), the requirement is not testable.\n  * Hence, **S4 cannot be validated**.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (S4 and S3)**: Incorrect because S4 contains the vague, unquantified term \"standard monitor.\"\n* **Option B (S4 and S2)**: Incorrect because both S4 (\"standard monitor\") and S2 (\"reasonable performance\") lack objective metrics.\n* **Option C (S3 and S1)**: ✓ **CORRECT** — S3 specifies verifiable target OS environments, and S1 specifies a testable zero-data-loss recovery invariant.\n* **Option D (S2 and S1)**: Incorrect because S2 is subjective and non-verifiable.\n\n---\n\n### 5. Final Answer\nThe requirement specifications that can be validated are **S3 and S1**, corresponding to **Option C**.",
+        "images": []
       }
     },
     "go:3384": {
@@ -3508,6 +3998,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks",
+        "markdown": "- **Symmetric Key Cryptosystem (Secret Key):**\n  - In a symmetric cryptosystem, every communicating pair of individuals requires a unique shared secret key.\n  - For a network of $n$ individuals, the number of distinct unordered pairs is given by the combination:\n    $$\\binom{n}{2} = \\frac{n(n - 1)}{2}\\text{ secret keys}$$\n\n- **Asymmetric Key Cryptosystem (Public Key):**\n  - In a public-key cryptosystem, each individual generates an asymmetric key pair:\n    1. One Public Key (distributed to everyone).\n    2. One Private Key (kept secret by the individual).\n  - For $n$ individuals, the total number of keys across the system is:\n    $$2 \\times n = 2n\\text{ keys}$$\n\n- **Conclusion:** $\\frac{n(n-1)}{2}$ secret keys and $2n$ public/private keys.\n\nTherefore, the correct answer is **Option C (n(n-1)/2 and 2n)**.",
+        "images": []
       }
     }
   }

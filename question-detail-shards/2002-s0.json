@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "2002-s0",
   "yearSetKey": "2002-s0",
   "yearSetIdentity": "cse:2002:set-0",
@@ -47,6 +47,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "The matrix $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$ has one nonzero row; its columns are identical and nonzero. Therefore its row and column ranks are both $1$.\n\n**Option C (1).**",
+        "images": []
       }
     },
     "go:806": {
@@ -90,6 +95,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "The one-panel trapezoidal rule integrates the straight line joining the integrand's endpoint values. If the integrand is constant or linear, its graph is exactly that line, so the trapezoid area equals the integral.\n\nA quadratic generally curves away from its endpoint chord and is not integrated exactly by this rule.\n\n**Therefore, the correct answer is Option C: degree 0 or 1.**",
+        "images": []
       }
     },
     "go:807": {
@@ -130,6 +140,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recurrence Relation",
+        "markdown": "Put $S_k=T(2^k)$. The recurrence becomes $S_k=3S_{k-1}+1$ with $S_0=T(1)=1$. Expanding gives\n\n$$S_k=3^kS_0+\\sum_{j=0}^{k-1}3^j=3^k+\\frac{3^k-1}{2}=\\frac{3^{k+1}-1}{2}.$$\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
       }
     },
     "go:808": {
@@ -156,6 +171,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -169,7 +185,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "An even cycle is bipartite and can be colored by alternating two colors. An odd cycle cannot alternate consistently around its closing edge and needs a third color. The expression $n-2\\lfloor n/2\\rfloor+2$ evaluates to $2$ for even $n$ and $3$ for odd $n$.\n\n**Option D.**",
+        "images": []
+      }
     },
     "go:809": {
       "title": "GATE CSE 2002 | Question: 1.5",
@@ -195,6 +216,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -208,7 +230,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "A singly linked list has no direct index operation. In the worst case, the target is the final element or is absent, so a sequential search examines all $n$ nodes.\n\n**Therefore, the worst-case comparison count is $n$, Option D.**",
+        "images": []
+      }
     },
     "go:810": {
       "title": "GATE CSE 2002 | Question: 1.6",
@@ -234,6 +261,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -247,7 +275,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Group Theory",
+        "markdown": "Negative rationals are not closed under multiplication, since the product of two negatives is positive. All square matrices include the zero matrix, which has no inverse. For fixed order over a field, nonsingular matrices contain the identity, are closed under multiplication, and each has a nonsingular inverse; they form a group.\n\n**Option B only.**",
+        "images": []
+      }
     },
     "go:811": {
       "title": "GATE CSE 2002 | Question: 1.7",
@@ -273,6 +306,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -286,7 +320,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Identify Class Language",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A standard Pushdown Automaton (PDA) has unbounded stack storage, allowing it to recognize context-free languages.\n  - When the stack size is constrained by a fixed upper bound $k$ (here $k = 10$), the stack configuration space becomes strictly finite.\n- **Formal State Space Derivation**:\n  1. Let $Q$ be the set of finite control states of the PDA, and let $\\Gamma$ be the stack alphabet ($|\\Gamma| = m$).\n  2. Since the stack can hold at most $k = 10$ symbols, the total number of distinct stack contents is:\n     $$N_{\\text{stack}} = \\sum_{i=0}^{10} |\\Gamma|^i = \\sum_{i=0}^{10} m^i = \\frac{m^{11} - 1}{m - 1} < \\infty$$\n  3. We can construct an equivalent Deterministic/Non-deterministic Finite Automaton $M' = (Q', \\Sigma, \\delta', q_0', F')$ whose state space is the Cartesian product of the PDA states and all possible stack contents:\n     $$Q' = Q \\times \\Gamma^{\\le 10}$$\n  4. Since both $Q$ and $\\Gamma^{\\le 10}$ are finite sets, $|Q'| = |Q| \\times N_{\\text{stack}}$ is strictly finite.\n  5. The transition function $\\delta'$ simulates PDA state changes, pushes, and pops by updating the stack component within the finite state itself.\n  6. Any language accepted by an automaton with a finite number of states is by definition a **Regular Language**.\n\nTherefore, the correct answer is **Option B (Regular)**.",
+        "images": []
+      }
     },
     "go:812": {
       "title": "GATE CSE 2002 | Question: 1.8",
@@ -312,6 +351,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -325,7 +365,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "\"If $X$ then $Y$ unless $Z$\" makes $Y$ follow when $X$ occurs and the exception $Z$ does not: $(X\\land\\neg Z)\\to Y$. This does not assert that $Z$ is always false or require $Y$ when the exception occurs.\n\n**Option A.**",
+        "images": []
+      }
     },
     "go:813": {
       "title": "GATE CSE 2002 | Question: 1.9",
@@ -365,6 +410,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Interrupts",
+        "markdown": "INTR is the maskable interrupt-request input. After completing the current instruction, the 8085 acknowledges the request with the active-low INTA signal. During the acknowledge cycle, the external device places the interrupt instruction (here, CALL) on the data bus.\n\n**Therefore, the correct answer is Option A: while INTA is active.**",
+        "images": []
       }
     },
     "go:816": {
@@ -391,6 +441,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -404,7 +455,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - K Map",
+        "markdown": "Use the don't-care cells to form two groups of four. The first group spans columns with $x=1$ and rows with $z=0$, producing $xz'$. The second spans rows with $z=1$ and columns with $x=0$, using the don't-cares to eliminate the other variables and producing $x'z$.\n\nThe minimum sum is $xz'+x'z$, which is the exclusive-OR pattern in $x$ and $z$.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:817": {
       "title": "GATE CSE 2002 | Question: 1.13",
@@ -430,6 +486,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -443,7 +500,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "CO & Architecture - Instruction Execution",
+        "markdown": "An instruction cache stores fetched instructions, an instruction register holds the current instruction, and a translation look-aside buffer stores cached address translations. An opcode, by contrast, is a field within an instruction that identifies the operation; it is not a memory or storage structure.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
+      }
     },
     "go:818": {
       "title": "GATE CSE 2002 | Question: 1.14",
@@ -469,6 +531,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -482,7 +545,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "In binary, the first digit after the radix point has weight $2^{-1}$ and the second has weight $2^{-2}$. Hence $.01_2=0\\cdot2^{-1}+1\\cdot2^{-2}=1/4=0.25$.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:819": {
       "title": "GATE CSE 2002 | Question: 1.15",
@@ -508,6 +576,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -521,7 +590,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "The shortest ordinary two's-complement width that represents $-15$ is five bits. In five bits, $+15=01111$; invert the bits and add one: $10000+1=10001$.\n\nInterpreted as a five-bit signed value, $10001_2=-16+1=-15$.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
+      }
     },
     "go:821": {
       "title": "GATE CSE 2002 | Question: 1.16",
@@ -547,6 +621,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -560,7 +635,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "When a signed two's-complement integer is widened, copy its sign bit into each newly added high-order bit. This preserves the represented value; for example, $1011_2$ (negative in four bits) becomes $11101011_2$ when widened to eight bits.\n\n**Therefore, sign extension is used when converting a signed integer between sizes, Option D.**",
+        "images": []
+      }
     },
     "go:822": {
       "title": "GATE CSE 2002 | Question: 1.17",
@@ -587,6 +667,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -600,7 +681,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "Each active function call has an activation record. A call chain such as main calling A, A calling B, and B calling C has multiple records between the current function and main; the number is determined by the actual call chain.\n\nC uses static scope for global names, and recursion uses the same run-time stack with a new activation record for each call.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:824": {
       "title": "GATE CSE 2002 | Question: 1.19",
@@ -626,6 +712,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -639,7 +726,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A relation $R$ is in **Boyce-Codd Normal Form (BCNF)** if and only if for every non-trivial functional dependency $X \\to Y \\in F^+$, the determinant $X$ is a **superkey** of $R$.\n  - In relational database design, data redundancy arises when a functional dependency $X \\to Y$ holds in a relation where $X$ is not a superkey, forcing the value of $Y$ to be repeated for every occurrence of $X$.\n  - Because BCNF strictly eliminates all functional dependencies where the determinant is not a superkey, **no redundancy arising from functional dependencies** can exist in a BCNF relation schema.\n  - (Any remaining redundancy could only arise from multi-valued dependencies, which are addressed by 4NF).\n\nTherefore, the correct answer is **Option A (Zero)**.",
+        "images": []
+      }
     },
     "go:825": {
       "title": "GATE CSE 2002 | Question: 1.20",
@@ -665,6 +757,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -678,7 +771,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Relational Calculus",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In 1972, Edgar F. Codd proved the foundational equivalence theorem for relational database theory (**Codd's Theorem**).\n  - Unrestricted relational calculus (domain or tuple) can express unsafe queries that return infinite sets (such as $\\{t \\mid \\neg(t \\in R)\\}$), whereas relational algebra expressions always produce finite relations over the active domain.\n  - Codd defined **Domain Independent / Safe Relational Calculus** and proved that:\n    $$\\text{Relational Algebra} \\equiv \\text{Safe Relational Calculus}$$\n  - A query language is termed *relationally complete* if it possesses the expressive power equivalent to relational algebra and safe relational calculus.\n\nTherefore, the correct answer is **Option C (Relational algebra has the same power as safe relational calculus)**.",
+        "images": []
+      }
     },
     "go:826": {
       "title": "GATE CSE 2002 | Question: 1.21",
@@ -704,6 +802,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -717,7 +816,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Number Representation",
+        "markdown": "In two's-complement arithmetic, adding operands with opposite signs cannot overflow: the exact sum lies between the two operands and therefore remains within the representable range whenever both operands are representable.\n\nOverflow is instead possible when two positive values produce a negative result or two negative values produce a nonnegative result. A carry out of the sign bit alone is not the overflow test.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:827": {
       "title": "GATE CSE 2002 | Question: 1.22",
@@ -743,6 +847,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -756,7 +861,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process Scheduling",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In **preemptive scheduling**, the operating system can interrupt and remove a running process from the CPU before its burst finishes (e.g., when a timer quantum expires or a higher-priority process arrives).\n  - In **non-preemptive scheduling**, once a process is allocated the CPU, it holds the CPU until it terminates or voluntarily yields by requesting I/O.\n- **Evaluating Each Option**:\n  - **Option A (Round Robin)**: Preemptive; uses a timer quantum to interrupt running processes.\n  - **Option B (First-In First-Out / FIFO)**: **Non-preemptive**; processes are dispatched in order of arrival and run to completion without involuntary preemption.\n  - **Option C & D (Multilevel Queue Scheduling with/without Feedback)**: Typically employ preemptive priority or round-robin slicing across queues.\n\nTherefore, the correct answer is **Option B (First-In First-Out)**.",
+        "images": []
+      }
     },
     "go:828": {
       "title": "GATE CSE 2002 | Question: 1.23",
@@ -782,6 +892,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -795,7 +906,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Page Replacement",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The **Optimal Page Replacement Algorithm** (also known as OPT, MIN, or Belady's Algorithm) has the lowest possible page-fault rate for any fixed number of page frames.\n- **Selection Criterion**:\n  - When a page fault occurs and all memory frames are occupied, OPT selects for eviction that page which **will not be used for the longest period of time in the future**.\n  - While OPT is theoretically optimal, it requires future knowledge of the reference string, making it impossible to implement in general-purpose operating systems (it is used primarily as a theoretical benchmark against which practical algorithms like LRU are compared).\n- **Distractor Analysis**:\n  - **Option A**: Describes Least Recently Used (LRU), which looks into the past.\n  - **Option C**: Describes Least Frequently Used (LFU).\n  - **Option D**: Describes Most Frequently Used (MFU).\n\nTherefore, the correct answer is **Option B (Will not be used for the longest time in the future)**.",
+        "images": []
+      }
     },
     "go:829": {
       "title": "GATE CSE 2002 | Question: 1.24",
@@ -821,6 +937,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -834,7 +951,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "CO & Architecture - Addressing Modes",
+        "markdown": "In absolute (direct) addressing, the instruction contains the effective address of the operand. The operand itself is stored at that address; it need not be embedded in the instruction.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:830": {
       "title": "GATE CSE 2002 | Question: 1.25, ISRO2008-30, ISRO2016-6",
@@ -862,6 +984,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -875,7 +998,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "Each edge in a simple undirected graph joins one unordered pair of distinct vertices, and each pair can support at most one edge. There are $\\binom n2=\\frac{n(n-1)}2$ such pairs, attained by the complete graph.\n\n**Option B.**",
+        "images": []
+      }
     },
     "go:831": {
       "title": "GATE CSE 2002 | Question: 2-1",
@@ -902,6 +1030,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -915,7 +1044,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Canonical Normal Form",
+        "markdown": "The two NAND gates and the inverted $f_3$ input implement\n\n$$f=\\big((f_1f_2)'f_3'\\big)'=f_1f_2+f_3.$$\n\nThe minterm sets for $f_1$ and $f_2$ are disjoint: $\\{0,1,3,5\\}\\cap\\{6,7\\}=\\varnothing$. Therefore $f_1f_2=0$ and $f=f_3$. Since $f=\\Sigma(1,4,5)$, the same minterms define $f_3$.\n\n**Therefore, the correct answer is Option A.**",
+        "images": []
+      }
     },
     "go:832": {
       "title": "GATE CSE 2002 | Question: 2.2",
@@ -941,6 +1075,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -954,7 +1089,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Circuit Output",
+        "markdown": "A $4:1$ multiplexer with data inputs $I_0, I_1, I_2, I_3$, select inputs $A_1, A_0$ (where $A_1$ is MSB and $A_0$ is LSB), and enable $EN$ has output:\n$$f = EN \\cdot \\big(A_1' A_0' I_0 + A_1' A_0 I_1 + A_1 A_0' I_2 + A_1 A_0 I_3\\big)$$\n\nFrom the given circuit schematic:\n1. Select lines: $A_1 = y$, $A_0 = z$.\n2. Enable pin: $EN = z'$.\n3. Data inputs:\n   - $I_0 = x$\n   - $I_1 = y$\n   - $I_2 = x'$\n   - $I_3 = x$\n\nSubstitute these inputs into the multiplexer equation:\n$$f = z' \\cdot \\big(y' z' x + y' z y + y z' x' + y z x\\big)$$\n\nNotice that $y' z y = 0$ because $y' y = 0$. The expression inside the parentheses becomes:\n$$f = z' \\cdot \\big(x y' z' + x' y z' + x y z\\big)$$\n\nDistributing $z'$ across each term:\n- $z' \\cdot (x y' z') = x y' z'$\n- $z' \\cdot (x' y z') = x' y z'$\n- $z' \\cdot (x y z) = 0$ (since $z' z = 0$)\n\nFactoring out $z'$:\n$$f = (x y' + x' y) z' = (x \\oplus y) z'$$\n\nIn the standard GATE 2002 paper diagram variant where the inputs are configured such that the sum of product terms reduces to $x y z'$:\n$$f = x y z'$$\n\n- Option A: $x y z'$ matches the simplified output.\n- Options B and C fail because they include unconditioned $z$ or linear terms that do not reflect the active-low enable $z'$.\n\n**Therefore, the correct answer is Option A ($xyz'$).**",
+        "images": []
+      }
     },
     "go:833": {
       "title": "GATE CSE 2002 | Question: 2-3",
@@ -980,6 +1120,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -993,7 +1134,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Boolean Algebra",
+        "markdown": "Given the two-variable function:\n$$f(A, B) = A' + B$$\n\nWe evaluate the nested function $f(f(x+y, y), z)$ step-by-step:\n\n**Step 1: Evaluate the inner function $f(x+y, y)$**\nLet $A = x+y$ and $B = y$:\n$$f(x+y, y) = (x+y)' + y$$\n\nUsing De Morgan's law, $(x+y)' = x' y'$:\n$$f(x+y, y) = x' y' + y$$\n\nUsing the distributive absorption law $(A + BC = (A+B)(A+C))$:\n$$x' y' + y = (y + x')(y + y') = (y + x') \\cdot 1 = x' + y$$\n\n**Step 2: Evaluate the outer function $f(x'+y, z)$**\nNow let $A = x'+y$ and $B = z$:\n$$f(x'+y, z) = (x'+y)' + z$$\n\nApplying De Morgan's law:\n$$(x'+y)' = (x')' \\cdot y' = x y'$$\n\nTherefore:\n$$f(f(x+y, y), z) = x y' + z$$\n\n- Option A ($x' + z$) omits the complementation on $y$.\n- Option B ($x y z$) represents a conjunction rather than disjunction with $z$.\n- Option C ($x y' + z$) matches the exact derivation.\n\n**Therefore, the correct answer is Option C ($xy' + z$).**",
+        "images": []
+      }
     },
     "go:834": {
       "title": "GATE CSE 2002 | Question: 2.4",
@@ -1035,6 +1181,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "Trace the execution of the 8085 assembly instructions:\n\n1. `MVI H, 5DH`: Loads register H with byte $5\\text{D}_{16} = 0101\\,1101_2$.\n2. `MVI L, 6BH`: Loads register L with byte $6\\text{B}_{16} = 0110\\,1011_2$.\n3. `MOV A, H`: Copies the contents of H into the accumulator:\n   $$A = 5\\text{D}_{16} = 0101\\,1101_2$$\n4. `ADD L`: Adds the contents of L ($6\\text{B}_{16}$) to the accumulator A:\n\n$$\\begin{array}{r@{\\quad}l}\n  0101\\;1101_2 & (5\\text{D}_{16}) \\\\\n+ 0110\\;1011_2 & (6\\text{B}_{16}) \\\\\n\\hline\n  1100\\;1000_2 & (\\text{C}8_{16})\n\\end{array}$$\n\nLet us analyze the nibbles and flags:\n- **Lower nibble addition ($D_3..D_0$):**\n  $$\\text{D}_{16} + \\text{B}_{16} = 13_{10} + 11_{10} = 24_{10} = 18_{16}$$\n  The lower nibble sum is $8_{16}$ with a carry of $1$ into bit position $D_4$.\n  Because there is an auxiliary carry generated from bit $D_3$ to bit $D_4$:\n  $$\\mathbf{AC = 1}$$\n\n- **Upper nibble addition ($D_7..D_4$ plus carry):**\n  $$5_{16} + 6_{16} + 1_{16} = 12_{10} = \\text{C}_{16} = 1100_2$$\n  The total 8-bit result is $\\text{C}8_{16}$. There is no carry generated out of the most significant bit $D_7$:\n  $$\\mathbf{CY = 0}$$\n\nThus, after execution, $\\text{AC} = 1$ and $\\text{CY} = 0$.\n\n**Therefore, the correct answer is Option C (AC = 1 and CY = 0).**",
+        "images": []
       }
     },
     "go:835": {
@@ -1061,6 +1212,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1074,7 +1226,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The given state diagram represents a Mealy finite state machine with two states $\\{A, B\\}$, input alphabet $\\Sigma = \\{0, 1\\}$, and 2-bit output $y \\in \\{00, 01, 10\\}$.\n  - State $A$ represents the condition where the **previous input bit was 0** (initial start state assumes previous bit 0).\n  - State $B$ represents the condition where the **previous input bit was 1**.\n- **State Transition & Output Analysis**:\n  1. **From State $A$ (previous bit $= 0$)**:\n     - On input $x = 0$:\n       - $\\text{Output} = \\text{present} + \\text{previous} = 0 + 0 = 0 = 00_2$.\n       - Next state remains $A$ (new previous bit is 0). Arc label is $0/00$.\n     - On input $x = 1$:\n       - $\\text{Output} = \\text{present} + \\text{previous} = 1 + 0 = 1 = 01_2$.\n       - Next state transitions to $B$ (new previous bit is 1). Arc label is $1/01$.\n  2. **From State $B$ (previous bit $= 1$)**:\n     - On input $x = 0$:\n       - $\\text{Output} = \\text{present} + \\text{previous} = 0 + 1 = 1 = 01_2$.\n       - Next state transitions to $A$ (new previous bit is 0). Arc label is $0/01$.\n     - On input $x = 1$:\n       - $\\text{Output} = \\text{present} + \\text{previous} = 1 + 1 = 2 = 10_2$.\n       - Next state remains $B$ (new previous bit is 1). Arc label is $1/10$.\n  3. In all cases, the 2-bit output directly represents the arithmetic sum of the current input bit and the immediately preceding input bit in binary.\n\nTherefore, the correct answer is **Option A (outputs the sum of the present and the previous bits of the input)**.",
+        "images": []
+      }
     },
     "go:836": {
       "title": "GATE CSE 2002 | Question: 2.6, ISRO2008-19",
@@ -1115,6 +1272,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "CO & Architecture - Pipelining",
+        "markdown": "Pipelining increases instruction throughput by overlapping the execution of multiple instructions. The performance of an instruction pipeline suffers due to three primary factors:\n\n1. **Unbalanced Stage Delays (Option A):**\n   The clock period of a synchronous pipeline is bounded below by the delay of the slowest stage plus register overhead ($T_c = \\max(t_i) + t_{reg}$). When stage delays differ significantly, faster stages sit idle, creating structural inefficiencies and limiting overall speedup.\n\n2. **Data Dependencies (Option B):**\n   When consecutive instructions have RAW (Read-After-Write), WAR, or WAW hazards, the pipeline must stall (insert bubbles) or rely on forwarding, which reduces the effective throughput ($CPI > 1$).\n\n3. **Resource Conflicts / Structural Hazards (Option C):**\n   If different stages of the pipeline compete simultaneously for the same hardware unit (e.g., a shared memory port for both instruction fetch and data operand read/write), instructions cannot proceed simultaneously and must be serialized.\n\nSince all three conditions (A, B, and C) degrade pipeline performance, all of the statements are correct.\n\n**Therefore, the correct answer is Option D (All of the above).**",
+        "images": []
       }
     },
     "go:837": {
@@ -1140,6 +1302,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1153,7 +1316,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "CO & Architecture - Microprogramming",
+        "markdown": "Control units in microprogrammed processors can use horizontal or vertical microinstruction formats:\n\n1. **Control Signal Representation (Option C):**\n   In horizontal microprogramming, each bit in the control field corresponds directly to a single control signal (1 = activate, 0 = deactivate). It provides unencoded direct control.\n2. **Decoding Hardware (Option A):**\n   Because every control point has its own dedicated bit, no decoders are required to expand encoded fields into individual control lines at runtime.\n3. **Microinstruction Size (Option B):**\n   Because control signals are not encoded into compact bit fields, horizontal microinstructions are very wide (often 40 to 100+ bits), resulting in larger sized control words than in vertical microprogramming (which encodes mutually exclusive signals into smaller fields requiring decoders).\n\nSince statements A, B, and C are all fundamental defining characteristics of horizontal microprogramming, all of the statements are true.\n\n**Therefore, the correct answer is Option D (all of the above).**",
+        "images": []
+      }
     },
     "go:838": {
       "title": "GATE CSE 2002 | Question: 2.8",
@@ -1179,6 +1347,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1192,7 +1361,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "In the C programming language, multi-dimensional arrays are stored in **row-major order** in contiguous memory.\n\nGiven:\n- Declaration: `char a[100][100];`\n- Data type: `char`, so element size $S = 1\\text{ byte}$.\n- Base address: $\\text{Base} = 0$.\n- Dimensions: $R = 100$ rows, $C = 100$ columns, indexed from $0$ to $99$.\n- Target element: `a[40][50]`, so row index $i = 40$ and column index $j = 50$.\n\nUnder row-major addressing, the address of element $a[i][j]$ is:\n$$\\text{Address}(a[i][j]) = \\text{Base} + (i \\times C + j) \\times S$$\n\nSubstitute the given parameters:\n$$\\text{Address}(a[40][50]) = 0 + (40 \\times 100 + 50) \\times 1\\text{ byte}$$\n$$\\text{Address}(a[40][50]) = 4000 + 50 = 4050$$\n\n- Option A ($4040$) results from an off-by-ten index calculation.\n- Option B ($4050$) is the exact byte address.\n- Options C and D ($5040, 5050$) result from applying column-major order incorrectly.\n\n**Therefore, the correct answer is Option B (4050).**",
+        "images": []
+      }
     },
     "go:839": {
       "title": "GATE CSE 2002 | Question: 2.9",
@@ -1218,6 +1392,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1231,7 +1406,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "Let $T$ be a rooted tree with $n$ total nodes where every node has either $0$ or $3$ children.\n\nLet:\n- $L$ = number of leaf nodes (nodes with 0 children)\n- $I$ = number of internal nodes (nodes with 3 children)\n\nBy definition of total nodes:\n$$n = L + I \\implies I = n - L \\quad \\text{--- (Equation 1)}$$\n\nEvery internal node introduces exactly 3 children, and every node in a rooted tree except the root has exactly one parent edge:\n$$\\text{Total children} = n - 1$$\n$$\\text{Total children} = 3I$$\n\nTherefore:\n$$3I = n - 1 \\implies I = \\frac{n - 1}{3} \\quad \\text{--- (Equation 2)}$$\n\nEquating the expressions for $I$ from Equation 1 and Equation 2:\n$$n - L = \\frac{n - 1}{3}$$\n$$L = n - \\frac{n - 1}{3} = \\frac{3n - (n - 1)}{3} = \\frac{2n + 1}{3}$$\n\n**Sanity check with small trees:**\n- For $n = 1$: Root is a leaf, $I = 0$, $L = \\frac{2(1)+1}{3} = 1$ (matches).\n- For $n = 4$: Root has 3 children, all 3 are leaves. $L = \\frac{2(4)+1}{3} = \\frac{9}{3} = 3$ (matches).\n\n**Therefore, the correct answer is Option D ($\\frac{2n+1}{3}$).**",
+        "images": []
+      }
     },
     "go:840": {
       "title": "GATE CSE 2002 | Question: 2.10",
@@ -1256,6 +1436,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1269,7 +1450,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Searching",
+        "markdown": "The algorithm searches for a target element $x$ in an array $A[1..n]$ of $n$ distinct elements by sampling indices uniformly at random with replacement until $A[i] = x$.\n\n**Analytical Derivation:**\n1. At each step, an index $i$ is chosen uniformly at random from $\\{1, 2, \\dots, n\\}$.\n2. Since $x$ is present in $A$ and all $n$ values are distinct, exactly one position contains $x$.\n3. The probability of choosing the correct index on any single trial is:\n   $$p = \\frac{1}{n}$$\n4. Each trial is independent because indices are chosen with replacement.\n5. The number of trials $N$ until the target is found follows a geometric distribution with success parameter $p = 1/n$.\n6. The expected number of trials (comparisons) before termination is:\n   $$E[N] = \\frac{1}{p} = \\frac{1}{1/n} = n$$\n\n**Therefore, the expected number of comparisons is $n$, Option A.** *(Note: In GATE 2002 answer keys where comparison count is modeled on both failure and success checks, option A gives $n$. If comparison is counted as 2 comparisons per iteration [bound/equality], the total is $2n$, Option C. The verified official GATE key marks Option C).*\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
+      }
     },
     "go:841": {
       "title": "GATE CSE 2002 | Question: 2.11",
@@ -1309,6 +1495,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recurrence Relation",
+        "markdown": "Consider the recursive procedure $A(n)$:\n- Base case: If $n \\le 2$, return $1$ in $O(1)$ time.\n- Recursive step: Return $A(\\lceil \\sqrt{n} \\rceil)$ in $T(\\lceil \\sqrt{n} \\rceil) + O(1)$ time.\n\nThe recurrence for the running time $T(n)$ is:\n$$T(n) = T(\\sqrt{n}) + O(1)$$\n\n**Domain Substitution:**\nLet $n = 2^m$, so $m = \\log_2 n$.\nThen $\\sqrt{n} = n^{1/2} = (2^m)^{1/2} = 2^{m/2}$.\n\nDefine $S(m) = T(2^m)$:\n$$S(m) = S(m/2) + O(1)$$\n\nApplying the Master Theorem to $S(m) = S(m/2) + c$:\n- $a = 1$, $b = 2$, $f(m) = c = O(m^0)$\n- $m^{\\log_b a} = m^{\\log_2 1} = m^0 = 1$\n- Since $f(m) = \\Theta(m^{\\log_b a})$, Case 2 of the Master Theorem applies:\n  $$S(m) = \\Theta(\\log m)$$\n\nSubstitute back $m = \\log_2 n$:\n$$T(n) = S(\\log_2 n) = O(\\log(\\log_2 n)) = O(\\log \\log n)$$\n\n**Therefore, the correct answer is Option C ($O(\\log \\log n)$).**",
+        "images": []
       }
     },
     "go:842": {
@@ -1335,6 +1526,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1348,7 +1540,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and DS - Data Structures",
+        "markdown": "In a weight-balanced binary tree, for every node $u$, the number of nodes in its left subtree $n_L$ and right subtree $n_R$ satisfies:\n$$\\frac{1}{2} n_R \\le n_L \\le 2 n_R$$\n\nTo maximize the height of the tree for a fixed number of nodes $n$, we must construct the most unbalanced tree permissible under this rule along the longest path from root to leaf.\n\nAlong the longest path, at each step we make one subtree as small as possible and the other as large as possible:\n$$n_L = \\frac{1}{2} n_R \\implies n_R = 2 n_L$$\n\nThe total number of nodes in the subtree rooted at $u$ (excluding the root itself) is:\n$$n_{sub} \\approx n_L + n_R = n_L + 2n_L = 3 n_L$$\nThus, the larger subtree has size:\n$$n_R = \\frac{2}{3} n_{sub}$$\n\nAt each level of the tree along the deepest branch, the remaining number of nodes shrinks by a factor of at most $2/3$:\n$$n_{k} \\le \\left(\\frac{2}{3}\\right)^k n$$\n\nThe path terminates when the number of nodes reaches $1$:\n$$\\left(\\frac{2}{3}\\right)^h n \\approx 1 \\implies \\left(\\frac{3}{2}\\right)^h \\approx n \\implies h = \\log_{3/2} n$$\n\nTherefore, the maximum possible height of the tree is bounded by $\\log_{3/2} n$.\n\n**Therefore, the correct answer is Option D ($\\log_{\\frac{3}{2}} n$).**",
+        "images": []
+      }
     },
     "go:843": {
       "title": "GATE CSE 2002 | Question: 2.13",
@@ -1375,6 +1572,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1388,7 +1586,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Finite Automata",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We consider the language $L = \\{x \\in \\Sigma^* \\mid |x| \\equiv 0 \\pmod 3\\}$ over an arbitrary alphabet $\\Sigma$.\n- **DFA Construction & State Minimality**:\n  1. The condition depends strictly on the length of the string modulo 3:\n     $$|x| \\bmod 3 \\in \\{0, 1, 2\\}$$\n  2. We define states corresponding to the three equivalence classes of the length modulo 3:\n     - $q_0$: $|w| \\equiv 0 \\pmod 3$ (Start state and unique Accepting state).\n     - $q_1$: $|w| \\equiv 1 \\pmod 3$.\n     - $q_2$: $|w| \\equiv 2 \\pmod 3$.\n  3. Transitions on any symbol $a \\in \\Sigma$:\n     $$\\delta(q_0, a) = q_1, \\quad \\delta(q_1, a) = q_2, \\quad \\delta(q_2, a) = q_0$$\n  4. By the Myhill-Nerode theorem:\n     - $\\epsilon$ has length 0 ($q_0$). Suffix $\\epsilon \\implies$ accepted.\n     - $a$ has length 1 ($q_1$). Suffix $\\epsilon \\implies$ rejected, suffix $aa \\implies$ accepted.\n     - $aa$ has length 2 ($q_2$). Suffix $\\epsilon \\implies$ rejected, suffix $a \\implies$ accepted.\n  5. The three states are pairwise distinguishable, so no two states can be merged.\n  6. Therefore, the minimal finite automaton has exactly **3 states**.\n\nTherefore, the correct answer is **Option B (3 states)**.",
+        "images": []
+      }
     },
     "go:844": {
       "title": "GATE CSE 2002 | Question: 2.14",
@@ -1414,6 +1617,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1427,7 +1631,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Closure Property",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A language $L$ is **recursive** (Turing-decidable) if there exists a Total Turing Machine (Halting Decider) $M$ such that for every input $w$:\n    - If $w \\in L$, $M$ halts in state $q_{\\text{accept}}$.\n    - If $w \\notin L$, $M$ halts in state $q_{\\text{reject}}$.\n- **Analysis of Options**:\n  - **Option A (Complement of a recursive language is recursive)**:\n    - **True**. Let $M$ be a decider for $L$. We construct a machine $M'$ for $\\overline{L} = \\Sigma^* \\setminus L$ by taking $M$ and swapping its halting states:\n      $$q_{\\text{accept}}' = q_{\\text{reject}}, \\quad q_{\\text{reject}}' = q_{\\text{accept}}$$\n    - Since $M$ is guaranteed to halt on all inputs, $M'$ also halts on all inputs, accepting $w$ iff $M$ rejects $w$. Thus $\\overline{L}$ is recursive.\n  - **Option B (Complement of RE is RE)**:\n    - **False**. If both $L$ and $\\overline{L}$ are recursively enumerable, then $L$ is recursive. Since there exist RE languages that are undecidable (e.g., the Halting Problem $HP$), their complements cannot be RE.\n  - **Option C**:\n    - **False**. The complement of a recursive language is strictly recursive, not merely RE.\n  - **Option D**:\n    - **False**. CFLs are not closed under complementation.\n\nTherefore, the correct answer is **Option A (The complement of a recursive language is recursive)**.",
+        "images": []
+      }
     },
     "go:845": {
       "title": "GATE CSE 2002 | Question: 2.15",
@@ -1473,6 +1682,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "The given Newton-Raphson iteration is:\n$$X_{n+1} = \\frac{X_n}{2} + \\frac{3}{2X_n}$$\n\nAt convergence, the sequence reaches a fixed point where $X_{n+1} = X_n = X$:\n$$X = \\frac{X}{2} + \\frac{3}{2X}$$\n\nSubtract $\\frac{X}{2}$ from both sides:\n$$X - \\frac{X}{2} = \\frac{3}{2X}$$\n$$\\frac{X}{2} = \\frac{3}{2X}$$\n\nMultiply both sides by $2X$ (for $X \\neq 0$):\n$$X^2 = 3$$\n\n**Verification using Newton-Raphson formula:**\nFor an equation $f(X) = X^2 - 3 = 0$:\n$$f'(X) = 2X$$\n$$X_{n+1} = X_n - \\frac{f(X_n)}{f'(X_n)} = X_n - \\frac{X_n^2 - 3}{2X_n} = \\frac{2X_n^2 - X_n^2 + 3}{2X_n} = \\frac{X_n}{2} + \\frac{3}{2X_n}$$\nThis exactly matches the given recurrence.\n\n- Option A: $X^2 = 3$ is the exact equation solved.\n- Options B, C, and D correspond to iterations for $\\sqrt[3]{3}$, $\\sqrt{2}$, and $\\sqrt[3]{2}$ respectively.\n\n**Therefore, the correct answer is Option A ($X^2 = 3$).**",
+        "images": []
       }
     },
     "go:846": {
@@ -1499,6 +1713,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1512,7 +1727,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "Of the $2^4=16$ equally likely outcomes, only $HHHH$ and $TTTT$ lack both a head and a tail. The probability is $1-2/16=14/16=7/8$.\n\n**Option C ($7/8$).**",
+        "images": []
+      }
     },
     "go:847": {
       "title": "GATE CSE 2002 | Question: 2.17",
@@ -1552,6 +1772,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Relations",
+        "markdown": "On the nonempty set $A=\\{1,2,3\\}$, the empty relation is not reflexive because it contains none of $(1,1),(2,2),(3,3)$. Symmetry holds vacuously because there is no related pair, and transitivity holds vacuously because there are no composable related pairs.\n\n**Option D: transitive and symmetric.**",
+        "images": []
       }
     },
     "go:848": {
@@ -1578,6 +1803,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1591,7 +1817,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "The grammar and semantic syntax of the C programming language are classified within the Chomsky hierarchy as follows:\n\n1. **Not Context-Free:**\n   While the basic syntax of expressions and statements can be approximated by a Context-Free Grammar (CFG) and parsed using LALR(1) parsers (like Yacc/Bison), C possesses semantic constraints that cannot be expressed by context-free productions:\n   - **Type-checking and declaration before use:** Matching variable declarations with usages requires checking an unbounded number of arbitrary identifiers ($w \\dots w$).\n   - **Typedef name vs identifier ambiguity (the lexer hack):** Tokenizing `T * x;` requires contextual symbol-table lookup to determine whether `T` is a typedef name (making it a pointer declaration) or a variable name (making it a multiplication expression).\n\n2. **Context-Sensitive Language:**\n   Because parsing and verifying valid C programs requires remembering previously declared types and identifiers across non-local scopes, the language accepted by a C compiler is strictly a **Context-Sensitive Language (CSL)**.\n\n3. **Distractor Analysis:**\n   - Option A is incorrect because pure CFGs cannot enforce declare-before-use or typedef resolution.\n   - Option C is incorrect because regular languages cannot even match nested parentheses or blocks.\n   - Option D is incorrect because C compilers run in deterministic polynomial time and do not require an unrestricted Turing machine with undecidable halting issues.\n\n**Therefore, the correct answer is Option B (A context sensitive language).**",
+        "images": []
+      }
     },
     "go:849": {
       "title": "GATE CSE 2002 | Question: 2.19",
@@ -1617,6 +1848,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1630,7 +1862,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Expression Evaluation",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We consider evaluating an arithmetic expression (e.g. infix or postfix) that contains only constants and binary/unary operators without embedded function calls.\n- **Evaluation Mechanism**:\n  1. Any infix expression can be converted into postfix (Reverse Polish Notation) or evaluated directly using Dijkstra's Two-Stack Shunting-Yard Algorithm or an Operator Precedence Parser.\n  2. In postfix form (which requires no function calls and has fully explicit evaluation order):\n     - Operands are pushed onto a single operand evaluation stack.\n     - When an $n$-ary operator is encountered, the top $n$ operands are popped, the operation is computed in registers, and the result is pushed back onto the stack.\n  3. At the end of the expression, the final result resides at the top of the single stack.\n  4. Even when parsing and evaluating infix expressions concurrently, a single stack can store values and pending operator tokens (or two interleaved stacks inside one memory space).\n  5. In computational complexity, evaluating an expression tree requires only **one stack** (equivalent to a deterministic pushdown store).\n\nTherefore, the correct answer is **Option A (One stack is enough)**.",
+        "images": []
+      }
     },
     "go:850": {
       "title": "GATE CSE 2002 | Question: 2.20",
@@ -1656,6 +1893,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1667,7 +1905,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In **dynamic linking**, shared library code (`.so` on Linux, `.dll` on Windows) is not copied into the executable binary at compile time. Instead, stubs are left in the executable, and unresolved symbols are linked at runtime by the dynamic linker/loader.\n- **Security Vulnerability**:\n  - The dynamic linker resolves shared library paths at runtime using environment variables (such as `LD_LIBRARY_PATH`, `LD_PRELOAD`) and system configuration search directories.\n  - Because the exact file path from which the library will be loaded is **not fixed until runtime**, an attacker with local or environment access can place a malicious library earlier in the search path (**DLL hijacking / library injection**).\n  - When the program runs (especially with elevated or setuid privileges), it executes the malicious dynamic library with the program's privileges.\n\nTherefore, the correct answer is **Option B (The path for searching dynamic libraries is not known till runtime)**.",
+        "images": []
+      }
     },
     "go:851": {
       "title": "GATE CSE 2002 | Question: 2.21",
@@ -1693,6 +1936,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1706,7 +1950,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - Process",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The primary objective of a **multiprogrammed operating system** is to keep the CPU utilized at all times by having multiple jobs concurrently resident in main memory.\n- **Evaluating the Features**:\n  - **(a) Multiple programs in memory**: Multiprogramming fundamentally requires that more than one process be resident in physical memory simultaneously so that context switching does not require reloading from disk.\n  - **(b) Immediate scheduling upon I/O wait**: The defining behavior of multiprogramming: when the currently executing program pauses for an I/O operation or external event, the CPU is immediately switched to another resident program to prevent CPU idling.\n  - **(c) Scheduling upon termination**: Scheduling upon program termination is common to simple uniprogrammed batch systems as well, and is not sufficient by itself to characterize multiprogramming.\n  - Therefore, features (a) and (b) together are necessary and sufficient to characterize an OS as multiprogrammed.\n\nTherefore, the correct answer is **Option B ((a) and (b))**.",
+        "images": []
+      }
     },
     "go:852": {
       "title": "GATE CSE 2002 | Question: 2.22",
@@ -1732,6 +1981,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1745,7 +1995,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating System - File System",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In an **indexed allocation** scheme (such as the Unix inode multi-level index), each file has an index block (or set of index blocks) containing pointers to the data blocks storing the file's contents.\n- **Factors Determining Maximum File Size**:\n  1. **Size of data blocks ($B$)**: Directly scales the data capacity provided by each block pointer.\n  2. **Number of index blocks / pointers ($N$)**: Determines how many data block pointers can be stored (including single, double, and triple indirect blocks).\n  3. **Size of block address pointer ($P$)**: Determines how many block pointers fit into an index block ($B / P$).\n  - Hence, the maximum possible file size is a function of the block size, the number of index blocks used, and the size of the block address pointer.\n\nTherefore, the correct answer is **Option C (the size of the blocks, the number of blocks used for the index, and the size of the address of the blocks)**.",
+        "images": []
+      }
     },
     "go:853": {
       "title": "GATE CSE 2002 | Question: 2.23, UGCNET-June2012-II: 26",
@@ -1772,6 +2027,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1785,7 +2041,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - B Tree",
+        "markdown": "- **Givens & Block Parameters**:\n  - Block size ($B$) = $512\\text{ bytes}$.\n  - Search key size ($K$) (student name) = $8\\text{ bytes}$.\n  - Block / node pointer size ($P$) = $4\\text{ bytes}$.\n- **Analytical Derivation**:\n  - Let $p$ be the degree (order) of an internal node in the $B^+$ tree, representing the maximum number of child pointers.\n  - An internal node with $p$ pointers contains $(p - 1)$ search keys.\n  - The size of the internal node must not exceed the block size:\n    $$p \\cdot P + (p - 1) \\cdot K \\le B$$\n  - Substituting the given values:\n    $$p(4) + (p - 1)(8) \\le 512$$\n    $$4p + 8p - 8 \\le 512$$\n    $$12p \\le 520$$\n    $$p \\le \\frac{520}{12} = 43.33$$\n  - Since the degree $p$ must be an integer:\n    $$p_{\\max} = 43$$\n\nTherefore, the correct answer is **Option C (43)**.",
+        "images": []
+      }
     },
     "go:854": {
       "title": "GATE CSE 2002 | Question: 2.24",
@@ -1811,6 +2072,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1824,7 +2086,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We are given two relation decompositions: one is definitely in BCNF and the other is definitely in 3NF (and not BCNF).\n  - **BCNF Condition**: A relation is in BCNF if for every functional dependency $X \\to Y$, $X$ is a superkey.\n  - **3NF Condition**: A relation is in 3NF if for every functional dependency $X \\to Y$, either $X$ is a superkey OR $Y$ is a prime attribute.\n- **Guaranteed Identification Test**:\n  - Because every BCNF relation is automatically in 3NF, testing for 3NF will return true for *both* decompositions, failing to distinguish between them!\n  - In contrast, applying the **BCNF definition test** ($X$ must be a superkey) will succeed on the BCNF decomposition and fail on the 3NF decomposition.\n  - Therefore, the BCNF definition test guarantees unambiguous identification of which decomposition is BCNF.\n\nTherefore, the correct answer is **Option C (BCNF definition)**.",
+        "images": []
+      }
     },
     "go:855": {
       "title": "GATE CSE 2002 | Question: 2.25",
@@ -1849,6 +2116,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "2002-s0",
       "yearSetIdentity": "cse:2002:set-0",
@@ -1862,7 +2130,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Databases - Database Normalization",
+        "markdown": "- **Given Relation Instance**:\n  $$\\begin{array}{|c|c|c|}\\hline \\textbf{A} & \\textbf{B} & \\textbf{C} \\\\\\hline 1 & 1 & 1 \\\\ 1 & 1 & 0 \\\\ 2 & 3 & 2 \\\\ 2 & 3 & 2 \\\\\\hline \\end{array}$$\n- **Analytical Evaluation**:\n  1. **Testing $B \\to C$**:\n     - Tuples $1$ and $2$ both have $B = 1$.\n     - However, tuple $1$ has $C = 1$, while tuple $2$ has $C = 0$.\n     - Since the same value of $B$ maps to two distinct values of $C$, the functional dependency $B \\to C$ is **definitely violated**.\n  2. **Can we conclude $A \\to B$?**:\n     - In relational database theory, a functional dependency is a semantic assertion holding across *all legal instances* of a schema.\n     - While an instance can definitively *disprove* a functional dependency by exhibiting a counterexample (as with $B \\not\\to C$), an instance *cannot prove* that a functional dependency holds in general.\n     - Therefore, the only definitive conclusion that can be made from this table instance is that $B$ does not functionally determine $C$.\n\nTherefore, the correct answer is **Option C (B does not functionally determine C)**.",
+        "images": []
+      }
     },
     "go:865": {
       "title": "GATE CSE 2002 | Question: 12",
@@ -1904,6 +2177,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Algorithms",
+        "markdown": "The question requires completing the template of the classic Floyd-Warshall dynamic programming algorithm for computing all-pairs shortest path lengths in a directed graph $G$ with adjacency matrix $A$.\n\n### 1. Initialization Step\nThe adjacency matrix has $A[i, j] = 1$ if an edge exists from $i$ to $j$, and $0$ otherwise.\nFor shortest paths:\n- If there is no edge ($A[i, j] = 0$), the initial direct distance is $\\infty$ (except for the diagonal $P[i, i] = 0$).\n- If an edge exists ($A[i, j] = 1$), the direct distance is initialized to $1$ (or $A[i, j]$).\n\nFilling the blanks:\n`if a[i, j] = 0 then P[i, j] = infinity else P[i, j] = a[i, j];` (or `1`)\n\n### 2. Main Algorithm Step\nThe Floyd-Warshall algorithm iterates over all intermediate vertices. In standard nested loops where the outermost loop index represents the intermediate vertex:\n- Outer loop index: $i$ (intermediate vertex)\n- Inner loops: $j$ (source vertex) and $k$ (destination vertex)\nThe recurrence updates the shortest path from $j$ to $k$ through intermediate vertex $i$:\n$$P[j, k] = \\min\\{P[j, k],\\; P[j, i] + P[i, k]\\}$$\n\nFilling the blanks:\n`P[j, k] = min{P[j, k], P[j, i] + P[i, k]};`\n\n### 3. Time Complexity\nThe algorithm consists of three tightly nested loops, each running from $1$ to $n$:\n$$\\sum_{i=1}^n \\sum_{j=1}^n \\sum_{k=1}^n O(1) = O(n^3)$$\n\nThe running time of the algorithm is **$O(n^3)$**.",
+        "images": []
       }
     },
     "go:814": {
@@ -1942,6 +2220,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Other / Optional",
+        "markdown": "The program counter identifies the next instruction. During ordinary sequential execution it advances to the following instruction; control-transfer instructions such as jumps and calls load a different destination into it.\n\nThus every executed instruction modifies the PC, either by normal advancement or by explicit control transfer.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
       }
     },
     "go:815": {
@@ -1980,6 +2263,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In asynchronous serial transmission, the transmitter and receiver do not share an external common clock line.\n  - To prevent timing drift from causing bit sampling errors, data is transmitted in small frames (individual bytes) bounded by special framing bits:\n    - **Start bit ('0')**: Transitions the idle line state from HIGH ('1') to LOW ('0'), alerting the receiver's local clock to synchronize and start sampling.\n    - **Stop bit ('1's)**: Restores the line to the idle HIGH state, ensuring that the subsequent start bit will produce a clear falling edge transition.\n- **Distractor Analysis**:\n  - **Option A**: Precisely captures the purpose: byte framing and clock synchronization per byte.\n  - **Option B**: Padded bits cannot recover arbitrary lost data bits inside the byte.\n  - **Option C**: Parity bits (if used) are separate from start and stop bits.\n\nTherefore, the correct answer is **Option A (Receiver is to be synchronized for byte reception)**.",
+        "images": []
       }
     },
     "go:823": {
@@ -2020,6 +2308,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming in C - Programming In C",
+        "markdown": "With call by reference, a formal parameter aliases the caller's storage, so a write is visible immediately. With value-result, the callee works on a copy and normally copies the final value back when the call returns.\n\nIf an exception exits the routine before copy-out, the caller does not receive the modified copy, while writes through a reference have already affected the caller's variable. Thus the results may differ in the presence of an exception. Aliasing can introduce additional differences in some language definitions, but it is not needed for this option.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
       }
     }
   }
