@@ -1,4 +1,9 @@
 # Changelog
+- **CI/CD Runner OS Pinning & Pipeline Deprecation (DEC-242)**:
+  - Fixed GitHub Actions CI pipeline failure in `node.js.yml` where `npx playwright install --with-deps chromium` failed with `ERROR: Playwright does not support chromium on ubuntu26.04-x64`.
+  - Replaced floating `runs-on: ubuntu-latest` with pinned `runs-on: ubuntu-24.04` (Ubuntu 24.04 LTS Noble Numbat), ensuring stable Playwright OS compatibility across all CI steps (`test:e2e`, `qa:a11y:axe`, `lighthouse:mobile`).
+  - Removed obsolete `.github/workflows/gate-question-pipeline.yml` automated scraper workflow to prevent unverified scrapes, cron failure noise, and race conditions with manual curation runbooks.
+
 - **Classic CSE (2001–2013) HOLDs Resolution & Complete Milestone (DEC-241)**:
   - Researched, derived, and resolved all 14 questions previously held across the Classic CSE era (2001–2013), providing complete step-by-step KaTeX mathematical derivations, historical source reconciliations, and official answer-key updates:
     - `go:3733` (GATE IT 2004 Q89): Validating XML parser classification against `intro.dtd` $\implies$ **Option A (Well-formed and validated)**. Documented the historical examination typesetting space in `<! ELEMENT`.
