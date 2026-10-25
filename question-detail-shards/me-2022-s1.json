@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:38.026Z",
+  "generatedAt": "2026-10-25T18:50:27.431Z",
   "shardKey": "me-2022-s1",
   "yearSetKey": "me-2022-s1",
   "yearSetIdentity": "me:2022:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\np&=\\lim_{x \\to \\pi}\\left ( \\frac{x^2+\\alpha x+2 \\pi ^2}{x-\\pi+2 \\sin x} \\right ) \\\\\n\np&=\\left ( \\frac{\\pi ^2+\\alpha \\pi +2 \\pi ^2}{\\pi-\\pi+2 \\sin \\pi } \\right ) \\\\\n\n&= \\frac{3 \\pi ^2+\\alpha \\pi}{0}\\\\\n\n\\therefore \\;\\; \\alpha &= -3 \\pi\\\\\n\np&=\\lim_{x \\to \\pi}\\left ( \\frac{x^2- 3 \\pi x+2 \\pi ^2}{x-\\pi+2 \\sin x} \\right ) \\\\\n\n&=\\lim_{x \\to \\pi}\\left ( \\frac{2x- 3 \\pi }{1+2 \\cos \\pi} \\right ) \\\\\n\n&= \\frac{2 \\pi-3 \\pi}{1-2}=\\frac{-\\pi}{-1}=\\pi\\\\\n\n\\therefore \\; \\alpha &=-3 \\pi \\text{ and }p= \\pi\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q2": {
       "question_uid": "me:2022:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "T(x, 0) = x $\\Rightarrow$ option (c) is not correct.\n\nT(0, y) = y $\\Rightarrow$ all options satisfied.\n\nT(x, 1) = 1 + x; $\\Rightarrow$ only option (b) is satisfied.\n\nT(1, y) = 1 + y is $\\Rightarrow$ only option (b) is satisfied.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q3": {
       "question_uid": "me:2022:q3",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\n\\varphi &=\\frac{1}{2}(x^2+y^2+z^2)\\\\\n\n\\triangledown \\varphi &=(x\\hat{i}+y\\hat{j}+z\\hat{k})=\\bar{F}\\\\\n\n\\oiint_{S}(\\triangledown \\varphi\\cdot \\bar{n})dS&=\\int \\int _v\\int Div\\; \\bar{F} dv\\\\\n\n&=\\int \\int \\int 3dv\\\\\n\n&=3v\\\\\n\n&=3\\left ( \\frac{4}{3} \\pi \\right )=4\\pi\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q4": {
       "question_uid": "me:2022:q4",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f(x)=x^3, \\;\\;  -1 \\leq x \\leq 1$\n\nIt is an odd function\n\nFourier series contains only sine terms.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q5": {
       "question_uid": "me:2022:q5",
@@ -236,8 +232,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$A=\\begin{bmatrix}\n\n10 & 2k+5\\\\\n\n3k-3 & k+5\n\n\\end{bmatrix}$$\n\n$(2k + 5) = (3k - 3)$\n\n$k=8$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q6": {
       "question_uid": "me:2022:q6",
@@ -282,8 +277,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Euler's Theory of Column",
         "markdown": "Draw FBD of AB\n\n<img src=\"/question-images/me/2022/me-2022-4294662956.webp\" />\n\n$\\Sigma M_A=0$\n\n$W \\times 2.5=T \\sin 30^{\\circ} \\times 2.5$\n\n$T=2W$\n\nCompressive load acting on AB $=T \\cos 30^{\\circ}=2W \\times \\frac{\\sqrt{3}}{2}=\\sqrt{3}W$\n\nBuckling happens when $\\sqrt{3}W=P_{cr}=\\frac{\\pi ^2 EI}{L_e^2}$\n\n$\\sqrt{3}W=\\frac{\\pi ^2 EI}{L^2} \\;\\;(\\because L_e=L \\text{as both ends hinged})$\n\n$W=\\frac{1 \\times \\pi ^2 EI}{\\sqrt{3} \\times (2.5)^2}=0.0924 \\pi^2 EI$\n\n$W0.0924 \\pi^2 EI=\\beta  \\pi ^2 EI$\n\n$\\beta  =0.0924 m^{-2}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q7": {
       "question_uid": "me:2022:q7",
@@ -328,8 +322,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Gyroscope",
         "markdown": "$h_1\n\n= 400 mm, h_2\n\n= ?$\n\n$\\omega _1=\\omega \\;\\;\\;\\omega _2=2\\omega$\n\nFor Watt governor,\n\n$$\\begin{aligned}\n\nh&=\\frac{g}{\\omega ^2}\\\\\n\nh\\propto \\frac{1}{\\omega ^2}\\\\\n\n\\Rightarrow h_1\\omega _1^2&=h_2\\omega _2^2\\\\\n\n400 \\times \\omega ^2&=h_2 \\times (2\\omega )^2\\\\\n\nh_2&=100mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q8": {
       "question_uid": "me:2022:q8",
@@ -374,8 +367,7 @@
       "detailed_solution": {
         "concept": "Machine Design - Bolted, Riveted and Welded Joint",
         "markdown": "$\\text{Screw efficiency}=\\frac{\\text{Work done by the applied force/rev}}{\\text{Work done in lifting the load/rev}}$\n\nEfficiency of screw jack $\\eta =\\frac{\\tan \\alpha }{\\tan(\\alpha +\\phi )}$\n\nEfficiency depends on helix angle and friction angle.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q9": {
       "question_uid": "me:2022:q9",
@@ -420,8 +412,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "No. of steps required for one full revolution of\n\nstepper motor shaft or lead screws $n_S= 600$\n\nPitch $(p) = 5 mm$\n\nLinear table speed $V_{table}= 5 m/min\n\n= 5000 mm/min$\n\nRPM of lead Screw $(N_S)= \\frac{V_{table}}{p}=1000 rpm$\n\nWe have equation of frequency of pulse generator\n\n$$\\begin{aligned}\n\nf_p&= N_s \\times n_S\\\\\n\nf_p&= 1000 \\times 600=600,000 pulses/min\\\\\n\nf_p&=\\frac{600000}{60}pulses/sec\\\\\n\nf_p&=10000 pulses/sec \\text{ or }Hz\\\\\n\nf_p&=10kHz\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q10": {
       "question_uid": "me:2022:q10",
@@ -466,8 +457,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-fdb2a1f1d9.webp\" />\n\nIf,\n\n$D_{hole} = 25.00 mm,$\n\n$D_{shaft} = 25.01 mm$   ( Interference fit.)\n\n$D_{hole} = 25.03 mm,$\n\n$D_{shaft} = 24.99 mm$\n\n$$   (Clearance fit)\n\nSome of the assemblies provide clearance fit and\n\nsome provides interference fit.\n\nHence, It is transition fit\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q11": {
       "question_uid": "me:2022:q11",
@@ -512,8 +502,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Linear Programming",
         "markdown": "In a Linear programming problem if a resource is\n\nnot fully utilized. The shadow price or dual price\n\nof the particular resource is zero.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q12": {
       "question_uid": "me:2022:q12",
@@ -558,8 +547,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-39afb0825a.webp\" />\n\nCNC milling machines will not be treated as\n\ninventory.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:q13": {
       "question_uid": "me:2022:q13",
@@ -604,8 +592,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Availability and Irreversibility",
         "markdown": "The Clausius inequality holds good for any cycle.\n\n$\\oint \\frac{dQ}{T}=0\\Rightarrow$  Reversible cycle\n\n$\\oint \\frac{dQ}{T} \\lt 0\\Rightarrow$   Irreversible cycle\n\n$\\oint \\frac{dQ}{T} \\gt 0\\Rightarrow$ Impossible cycle\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q14": {
       "question_uid": "me:2022:q14",
@@ -650,8 +637,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
         "markdown": "$$\\begin{aligned}\n\n\\frac{dT}{dt}&=? \\text{ at }x=1,y=1,t=1\\\\\n\n\\frac{dT}{dt}&=\\frac{\\partial T}{\\partial t}\\frac{dt}{dt}+\\frac{\\partial T}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial T}{\\partial y}\\frac{dy}{dt}\\\\\n\n&=\\frac{\\partial T}{\\partial t}+u\\frac{\\partial T}{\\partial x}+v\\frac{\\partial T}{\\partial y}\\\\\n\n&=4+(2x)(4x+y)+(y+3t)(x)\\\\\n\n&=4+8x^2+3xy+3xt\\\\\n\n&\\text{at }x=1,y=1,t=1\\\\\n\n\\frac{dT}{dt}&=4+8(1)^2+3(1)+3(1)\\\\\n\n&=18\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q15": {
       "question_uid": "me:2022:q15",
@@ -696,8 +682,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
         "markdown": "$u\\frac{\\partial u}{\\partial x}+v\\frac{\\partial u}{\\partial y}=g\\beta (T-T_\\infty )+v\\frac{\\partial^2 u}{\\partial y^2}$\n\nThis is the equation that governs the fluid motion in\n\nthe boundary layer due to effect of Buoyancy\n\n$g\\beta (T-T_\\infty )=\\frac{m}{s^2} \\times \\frac{1}{K} \\times K=m/s^2$\n\nUnit of  $g\\beta (T-T_\\infty )= m/s^2$\n\nBuoyancy force is due to density difference and\n\ngravitational effect\n\n$g\\beta (T-T_\\infty )$ represents Buoyancy force per unit mass.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:q16": {
       "question_uid": "me:2022:q16",
@@ -742,8 +727,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
         "markdown": "(c) Wrong : Maximum shear stress theory good for\n\nductile material.\n\n(d) If shear force = 0, M = C, But elastic curve is always\n\nnon-linear.\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "me:2022:q17": {
       "question_uid": "me:2022:q17",
@@ -788,8 +772,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
         "markdown": "Case-hardening, also referred to as surfacehardening, commonly involves one of four different\n\nmethods: carburizing, nitriding, cyaniding, or\n\ncarbonitriding. Case- hardening is used on parts\n\nsuch as gear teeth, cutting wheels, and tools. These\n\ncase-hardened pieces represent a compromise\n\nbetween the hard, wear-resistant brittleness of\n\nhigh-carbon steel and the softer, more ductile, less\n\nwear-resistant low-carbon steels.\n\nTherefore, the correct option(s) are **A, B, D**."
-      },
-      "answer": "A, B, D"
+      }
     },
     "me:2022:q18": {
       "question_uid": "me:2022:q18",
@@ -834,8 +817,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "Fused-deposition modeling consists of a computercontrolled extruder, through which a polymer\n\nfilament is deposited to produce a part slice by\n\nslice.\n\nSelective laser sintering uses a high-powered laser\n\nbeam to sinter powders or coatings on the powders\n\nin a desired pattern. Selective laser sintering has\n\nbeen applied to polymers, sand, ceramics, and\n\nmetals.\n\nStereolithography involves a computer-controlled\n\nlaser-focusing system, that cures a liquid\n\nthermosetting polymer containing a photosensitive\n\ncuring agent.\n\nDirected energy deposition (DED) processes\n\nenable the creation of parts by melting material as it is being deposited. Although this basic approach\n\ncan work for polymers, ceramics, and metal matrix\n\ncomposites, it is predominantly used for metal\n\npowders. Thus, this technology is often referred to\n\nas \"metal deposition\" technology.\n\nTherefore, the correct option(s) are **B, D**."
-      },
-      "answer": "B, D"
+      }
     },
     "me:2022:q19": {
       "question_uid": "me:2022:q19",
@@ -880,8 +862,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
         "markdown": "Surface Treatments:\n\nDuring machining operations,small scratches\n\nand grooves are invariably introduced into the\n\nworkpiece surface by cutting tool action. These\n\nsurface markings can limit the fatigue life. It has\n\nbeen observed that improving the surface finish by\n\npolishing will enhance fatigue life significantly.\n\nOne of the most effective methods of increasing\n\nfatigue performance is by imposing residual\n\ncompressive stresses within a thin outer surface\n\nlayer. Thus, a surface tensile stress of external\n\norigin will be partially nullified and reduced in\n\nmagnitude by the residual compressive stress. The\n\nnet effect is that the likelihood of crack formation\n\nand therefore of fatigue failure is reduced.\n\nResidual compressive stresses are commonly\n\nintroduced into ductile metals mechanically by\n\nlocalized plastic deformation within the outer\n\nsurface region. Commercially, this is often\n\naccomplished by a process termed shot peening.\n\nSmall, hard particles (shot) having diameters\n\nwithin the range of 0.1 to 1.0 mm are projected at\n\nhigh velocities onto the surface to be treated. The\n\nresulting deformation induces compressive stresses\n\nto a depth of between one-quarter and one-half of\n\nthe shot diameter.\n\nTherefore, the correct option(s) are **A, B, D**."
-      },
-      "answer": "A, B, D"
+      }
     },
     "me:2022:q20": {
       "question_uid": "me:2022:q20",
@@ -926,8 +907,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
         "markdown": "$$\\begin{aligned}\n\n\\frac{\\dot{m}}{A}&=\\sqrt{\\frac{\\gamma }{R}}\\frac{P_0}{\\sqrt{T_0}}\\frac{1}{\\left ( \\frac{\\gamma +1}{2} \\right )^{\\frac{\\gamma +1}{2(\\gamma -1)}}}\\\\\n\n\\frac{\\dot{m}}{A}&=0.685 \\times \\sqrt{P_0\\rho _0} \\;\\;\\;...\\text{ for Air}\\\\\n\n\\frac{T_c}{T_0}&=\\frac{T^*}{T_0}=\\frac{2}{\\gamma +1}=0.8333\\\\\n\n&(\\text{critical temp ratio})\\\\\n\n\\frac{P_c}{P_0}&=\\frac{P^*}{P_0}=\\left ( \\frac{2}{\\gamma +1} \\right )^{\\frac{\\gamma }{\\gamma -1}}=0.5282\\\\\n\n&(\\text{critical pressure ratio})\n\n\\end{aligned}$$\n\nwhere $\\gamma=$  Adiabatic index = 1.4\n\nIf $P_0$ increases , mass flow rate increases. Mach\n\nnumber at the exit plane of the nozzle will remain\n\nunchanged at unity.\n\nSince the maximum expected velocity from the\n\nconverging nozzle is sound velocity.\n\n$$\n\n$$\n\nTherefore, the correct option(s) are **B, C**."
-      },
-      "answer": "B, C"
+      }
     },
     "me:2022:q21": {
       "question_uid": "me:2022:q21",
@@ -970,8 +950,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "Given,\n\n$I_{rod} = 0.1 kgcm^2 = 1\\times  10^{-5} kg m^2$\n\n$m_{point} = 10^{-3} kg$\n\n$V_{point} = 2 m/s$\n\n$\\omega _{o(rod)}=0 rad/s$\n\n$$\n\nTo find:  $\\omega _{final}$\n\nSince there is no external moment involved about\n\nO. Therefore the Angular momentum of the system\n\nabout O in conserved.\n\n$$\n\n$$\\begin{aligned}\n\n\\therefore \\; I_{rod}\\; \\omega _{initial}+(mV_0r)_{point}&=(I_{rod}+I_{point})\\omega _{final}\\\\\n\n10^{-3} \\times 2 \\times 0.1&=(10^{-5}+10^{-3}(10^{-1})^{2})\\omega _{final}\\\\\n\n2 \\times 10^{-4}&=2 \\times 10^{-5}\\omega _{final}\\\\\n\n\\omega _{final}&=10rad/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10**."
-      },
-      "answer": "10"
+      }
     },
     "me:2022:q22": {
       "question_uid": "me:2022:q22",
@@ -1014,8 +993,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-be62cea24d.webp\" />\n\nConsidering the differential ring mass of differential\n\nring\n\n$$\\begin{aligned}\n\nd_m&=\\frac{\\text{mass of ring}}{\\text{volume of ring}}(dV)\\\\\n\n&=\\frac{M}{\\pi(R^2-r^2)t}2 \\pi ada \\times t\\\\\n\n&=\\frac{2Mada}{(R^2-r^2)}\\\\\n\nI_0&=\\bar{I}=\\int a^2 d_m\\\\\n\n&=\\int_{r}^{R}\\frac{2Ma^3da}{(R^2-r^2)}\\\\\n\n&=\\frac{2M}{(R^2-r^2)} \\times \\left [ \\frac{a^4}{4} \\right ]_r^R\\\\\n\n&=\\frac{M}{2}\\frac{R^4-r^4}{R^2-r^2}\\\\\n\n&=\\frac{M}{2}{R^2+r^2}\\\\\n\nI&=\\bar{I}+mr^2\\\\\n\n&=\\frac{M}{2}(R^2+r^2)+Mr^2=\\frac{5MR^2}{4}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/me/2022/me-2022-460e012127.webp\" />\n\nTaking moments about A\n\n$$\\begin{aligned}\n\n\\Sigma M_A&=0\\\\\n\nI\\ddot{\\theta }+Mg(r \\sin \\theta )&=0\\\\\n\n\\frac{5MR^2}{4}\\ddot{\\theta }+Mg\\left ( \\frac{R}{\\sqrt{2}} \\right )\\theta &=0\\;\\;(\\because \\sin \\theta \\cong \\theta )\\\\\n\n\\ddot{\\theta }+\\frac{4g}{5\\sqrt{2}R}\\theta &=0\\\\\n\n\\omega _n&=\\sqrt{\\frac{4g}{5\\sqrt{2}R}}\\\\\n\nT&=\\frac{2 \\pi}{\\omega _n}= \\pi\\left ( 2 \\times \\sqrt{\\frac{5\\sqrt{2}}{5} \\times \\frac{R}{g}} \\right )\\\\\n\n\\beta &=2.65\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.66** (acceptable range: [2.62, 2.7])."
-      },
-      "answer": "2.66"
+      }
     },
     "me:2022:q23": {
       "question_uid": "me:2022:q23",
@@ -1058,8 +1036,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "Copper At. Wt = 63, Valency = 2\n\n$e=\\frac{\\text{At.\\; Wt}}{\\text{Valency}}=\\frac{63}{2}=31.5$\n\nAluminium At. Wt = 27, Valency = 3\n\n$e=\\frac{27}{3}=9$\n\nMaterial Removal Rate in g/s is given by\n\n$MRR=\\frac{e.I}{F}$\n\ne = Chemical equivalent\n\nI = Current\n\nF = Faraday constant\n\nAt Constant current & Faraday's constant\n\n$$\\begin{aligned}\n\nMRR\\propto e\\\\\n\n\\frac{MRR_{Cu}}{MRR_{Al}}&=\\frac{e_{Cu}}{e_{Al}}\\\\\n\n\\frac{100}{MRR_{Al}}&=\\frac{31.5}{9}\\\\\n\nMRR_{Al}&=28.57 mg/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **28.5** (acceptable range: [27, 30])."
-      },
-      "answer": "28.5"
+      }
     },
     "me:2022:q24": {
       "question_uid": "me:2022:q24",
@@ -1102,8 +1079,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
         "markdown": "Polytropic process]\n\n$$\\begin{aligned}\n\nP_1 &= 110 kPa,\\\\\n\nV_1&= 5m^3,\\\\\n\nV_2&=2.5 m^3,\\\\\n\nn&=1.2\\\\\n\n\\Rightarrow \\; P_1V_1^n&=P_2V_2^n\\\\\n\nP_2&=P_1\\left ( \\frac{V_1}{V_2} \\right )^n\\\\\n\n&=110 \\times \\left ( \\frac{5}{2.5} \\right )^{1.2}\\\\\n\nP_2&=252.71 kPa\\\\\n\nW&=\\frac{P_1V_1=P_2V_2}{n-1}\\\\\n\n&=\\frac{110 \\times 5-252.71 \\times 2.5}{1.2-1}\\\\\n\nW&=-408.92kJ\\\\\n\n|W|&=408.92kJ\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **409** (acceptable range: [404, 414])."
-      },
-      "answer": "409"
+      }
     },
     "me:2022:q25": {
       "question_uid": "me:2022:q25",
@@ -1146,8 +1122,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-602ec267e6.webp\" />\n\nEquilibrium Temperature $=T_S=?$\n\nIn this it is mentioned that entire flux is absorbed by\n\nthe plate it means for solar flux absorptivity is 1.\n\nKirchoff's law $\\alpha =\\varepsilon =0.21$\n\nSurface of cast iron and surrounding fluid\n\ntemperature difference is small due to this we can\n\nuse Kirchoff's law\n\nAt equilibrium condition\n\nEnergy absorbed = Energy leaving\n\n$$\\begin{aligned}\n\n\\alpha GA&=\\varepsilon A\\sigma (T_S^4-T_\\infty ^4)\\\\\n\n1 \\times 600 &=0.21 \\times 5.669 \\times 10^{-8}(T_S^4-298^4)\\\\\n\nT_S&=491.34K\\\\\n\nT_S&=218.34^{\\circ}C\\\\\n\nT_S&=218^{\\circ}C\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **217.5** (acceptable range: [210, 225])."
-      },
-      "answer": "217.5"
+      }
     },
     "me:2022:q26": {
       "question_uid": "me:2022:q26",
@@ -1192,8 +1167,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$$\\begin{aligned}\n\nf(z)&=\\frac{6z}{(2z^4-3\\tau ^3+7\\tau ^2-3x+5)}\\\\\n\n&=\\frac{6z}{(2z^4+2z^2)(5z^2+5)-3z^3-3z}\\\\\n\n&=\\frac{6z}{qz^2(z^2+1)+5(z^2+1)-3z(z^2+1)}\\\\\n\n&=\\frac{6z}{(z^2+1)(2z^2-3z+5)}\\\\\n\n\\therefore \\oint f(z)dz&=2 \\pi i \\lim_{z \\to 1}(z-i)f(z)\\\\\n\n&=2\\pi i \\lim_{z \\to i}\\frac{6z}{(z+i)(2z^2-3z+5)}\\\\\n\n&=2 \\pi i \\frac{6i}{2i(3-3i)}\\\\\n\n&=\\frac{2 \\pi i}{(1-i)}\\\\\n\n&=\\pi(i-1)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q27": {
       "question_uid": "me:2022:q27",
@@ -1238,8 +1212,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Euler's Theory of Column",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-24b357328d.webp\" />\n\nNo vertical deflection allowed\n\n$\\delta _{VC}=\\delta _{VB}=0 \\text{   (Vertical deflection) }$\n\n<img src=\"/question-images/me/2022/me-2022-d6ae472f84.webp\" />\n\n$$\\begin{aligned}\n\n\\delta _B&=\\frac{ML^2}{2EI}-\\frac{NL^2}{3EI}=0\\\\\n\n\\frac{M}{2}&\\frac{NL}{3}\\\\\n\nN&=\\frac{3M}{2L}\\;\\;(\\because L=4a)\\\\\n\nN&=\\frac{3Pa}{2 \\times 4 a}\\\\\n\nN&=\\frac{3}{8}P \\text{   (downward)}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q28": {
       "question_uid": "me:2022:q28",
@@ -1284,8 +1257,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
         "markdown": "The given mechanism is\n\n<img src=\"/question-images/me/2022/me-2022-b31a6e1f91.webp\" />\n\nAs we know sliding pair is a special. Case of turning\n\npair with infinite lengths limit. So the equivalent\n\ndiagram would be. Since two parallel lines meets at\n\ninfinite point $O, 2O_2$  are same.\n\n<img src=\"/question-images/me/2022/me-2022-2685a343c9.webp\" />\n\n$l_1=3 cm$ shortest line,\n\n$l_2=5cm$\n\n$l_3=l_{3(\\infty )}=L_x+3 ,$ longest link\n\n$l_4=l_{4(\\infty )}=L_x+1.5$\n\nFor Grashoff's rule to satisfy\n\n$l_1+l_3 \\leq l_2 +l_4$\n\n$3+L_x+3 \\leq 5+L_x+1.5$\n\n$6 \\leq 6.5$\n\nLHS is less than RHS.\n\nHence, Grashoff's rule is satisfied in this\n\nmechanism. Since shortest link is fixed. It will be a\n\ndouble crank mechanism.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q29": {
       "question_uid": "me:2022:q29",
@@ -1330,8 +1302,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
         "markdown": "The relation between the frequency at peak and\n\nnatural frequency is given\n\n$\\omega _p=\\omega _n\\sqrt{1-2\\zeta ^2}$\n\n$\\omega _p \\gt \\omega _n$\n\nThe relation between the damped frequency and\n\nnatural frequency\n\n$\\omega _d=\\omega _n\\sqrt{1-\\zeta ^2}$\n\n$\\omega _d \\gt \\omega _n$\n\n$\\frac{\\omega _p}{\\omega _d}=\\frac{\\sqrt{1-2\\zeta ^2}}{\\sqrt{1-\\zeta ^2}} \\lt 1$\n\nTherefore,\n\n$\\omega _p \\lt \\omega _d \\lt \\omega _n$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q30": {
       "question_uid": "me:2022:q30",
@@ -1376,8 +1347,7 @@
       "detailed_solution": {
         "concept": "Machine Design - Bolted, Riveted and Welded Joint",
         "markdown": "The given load is eccentric lateral load which results\n\nin\n\n(i) primary shear due to direct loading\n\n(ii) secondary shear due to eccentricity\n\n(i) Primary shear:\n\n$F_p=\\frac{F}{n}=\\frac{10kN}{2}=5kN$\n\n(ii) Secondary shear:\n\n$F_s=\\frac{m}{r_1^2+r_2^2} \\times r =\\frac{10 \\times 3\\sqrt{7}a}{a^2+a^2} \\times a=15\\sqrt{7}kN   \\; \\; \\; \\; (\\because a=50mm)$\n\nFinding resultant:\n\n$R=\\sqrt{F_p^2+F_s^2+2F_pF_s \\cos \\theta }$\n\nHere,\n\n$\\theta \\text{ is }90^{\\circ}$\n\nAs secondary load is same on both rivets. Both are\n\ncritical due to loading.\n\n$$\n\n$\\therefore \\;\\;R_{max}=\\sqrt{F_p^2+F_s^2}=\\sqrt{5^2+(15\\sqrt{7})^2}=40kN$\n\nDesign of Rivet:\n\n$$\\begin{aligned}\n\n\\tau _{max} &=\\frac{S_{ys}}{FOS} \\\\\n\n\\frac{R_{max}}{A}&= \\frac{50}{1}\\\\\n\n\\frac{40 \\times 10^3}{A} &=50 \\\\\n\nA&= 800 mm^2\n\n\\end{aligned}$$\n\nAs FOS is considered as 1, A represents the\n\nminimum cross section area required.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q31": {
       "question_uid": "me:2022:q31",
@@ -1422,8 +1392,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
         "markdown": "Fraction of pro eutectoid $\\alpha-$ Ferrite\n\n$=\\frac{0.8-0.5}{0.8-0.025}=0.387$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q32": {
       "question_uid": "me:2022:q32",
@@ -1468,8 +1437,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-e6c6dcf7a7.webp\" />\n\nActivity 'G'\n\n<img src=\"/question-images/me/2022/me-2022-5e3a36d9b5.webp\" />\n\nLFT of activity 'G' = 10 hours\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q33": {
       "question_uid": "me:2022:q33",
@@ -1514,8 +1482,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
         "markdown": "As buoyancy force is neglected we can neglect\n\ndensity of fluid ($$) in the following equation.\n\n$$\\begin{aligned}\n\nV&=\\frac{1}{18\\mu _f}(\\rho _b-\\rho _f)gd^2\\\\\n\n&=\\frac{11000 \\times 10 \\times (10^{-4})^2}{18 \\times 1.1 \\times 10^{-3}}\\\\\n\n&=\\frac{1}{18}m/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q34": {
       "question_uid": "me:2022:q34",
@@ -1560,8 +1527,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-b60e278687.webp\" />\n\nApplying momentum equation to the pipe flow,\n\n$\\Sigma \\vec{F}=(\\dot{m}\\vec{V})_{out}-(\\dot{m}\\vec{V})_{in}+\\frac{\\partial }{\\partial t}(m\\vec{V})_{e,v}$\n\n$P_1A-P_2A+F=\\dot{m}(V_2)-\\dot{m}(V_1)$\n\n$$\\begin{aligned}\n\n\\therefore \\; F&=\\dot{m}(V_2-V_1)-(P_1-P_2)A\\\\\n\n&=\\rho _1AV_1(V_2-V_1)-(P_1-P_2)A\\\\\n\n&=\\frac{ \\pi d^2}{4}\\left [ \\rho (V_1V_2-V_1^2)-(P_1-P_2) \\right ]\\\\\n\n&=\\frac{\\pi \\times 1^2}{4}\\left [ 1 \\times (100 \\times 170 -100^2)-(10 \\times 10^3) \\right ]\\\\\n\n&=-750 \\pi N\n\n\\end{aligned}$$\n\nNegative sign shows that assumed direction of\n\nforce is opposite of actual direction.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q35": {
       "question_uid": "me:2022:q35",
@@ -1606,8 +1572,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Fins and Unsteady Heat Transfer",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-64176cfdd8.webp\" />\n\n$\\dot{q}=\\frac{\\cos 2 \\pi x}{L}$\n\nTotal heat generation $=Q_g=\\int_{o}^{L}\\dot{q}d(\\text{Volume})$\n\n$$\\begin{aligned}\n\nQ_g&=\\int_{o}^{L}\\dot{q}Adx\\\\\n\n&=\\int_{o}^{L}\\left ( \\frac{\\cos 2\\pi x}{L} \\right )Adx\\\\\n\n&=A\\left [ \\frac{\\sin \\left (\\frac{2 \\pi x}{L}  \\right ) }{\\frac{ 2 \\pi }{L}} \\right ]_{0}^{L}\\\\\n\n&=\\left ( \\frac{L}{2 \\pi} \\right )A\\left [  \\sin \\left (\\frac{2 \\pi x}{L} \\right )- \\sin (0) \\right ]\n\n\\end{aligned}$$\n\n$Q_g=0$\n\nAt steady state  $Q_{stored}=0$\n\n$Q_{in}+Q_{gen}-Q_{out}=Q_{stored}$\n\n$Q_{gen}=Q_{out}$\n\n$0=hA_S(T_S-T_\\infty$\n\n$h \\text{ and } A_S$ can't be zero it means $T_S=T_ \\infty$\n\nIt indicate that $T_S$ is independent of heat transfer\n\ncoefficient.\n\nSo it means temperature of body any where is\n\nindependent of heat transfer coefficient.\n\nSo by increasing heat transfer coefficient there is no\n\nchange in the temperature at mid location.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q36": {
       "question_uid": "me:2022:q36",
@@ -1652,8 +1617,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned}\n\n\\begin{pmatrix}\n\nx &y\n\n\\end{pmatrix}\\begin{pmatrix}\n\n2 &5-2\\alpha  \\\\\n\n\\alpha & 1\n\n\\end{pmatrix}&=\\begin{pmatrix}\n\n0 &0\n\n\\end{pmatrix}\\\\\n\n2x+\\alpha y&=0\\\\\n\n(5-2\\alpha )x+y&=0\\\\\n\n\\therefore \\begin{pmatrix}\n\n2 & \\alpha \\\\\n\n5-2\\alpha  & 1\n\n\\end{pmatrix}\\begin{pmatrix}\n\nx\\\\y\n\n\\end{pmatrix}&=\\begin{pmatrix}\n\n0\\\\0\n\n\\end{pmatrix} \\;\\;\\; . . . . (1)\n\n\\end{aligned}$$\n\nTo get infinite number of non-trivial solutions $$\\begin{aligned}\n\n\\begin{vmatrix}\n\n2 &\\alpha  \\\\\n\n5-2\\alpha & 1\n\n\\end{vmatrix}&=0\\\\\n\n2-(5\\alpha -2\\alpha ^2)&=0\\\\\n\n(2\\alpha -1)(\\alpha -2)&=0\\\\\n\n\\therefore \\alpha =\\frac{1}{2},\\alpha &=2\\\\\n\n\\end{aligned}$$\n\nAt $\\alpha =\\frac{1}{2}$; eq. (1) gives $(4x+y)=0$  . . .(2)\n\noption (B) is satisfied by (2)\n\nAt $\\alpha =2$; eq. (1) gives $(x+y)=0$  . . .(3)\n\noption (A) is satisfied by (3)$$\n\nBoth options (A) and (B) are correct\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "me:2022:q37": {
       "question_uid": "me:2022:q37",
@@ -1696,8 +1660,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned}\n\nP(x=1)&=P(x=2)\\\\\n\n\\frac{e^{-\\lambda }\\lambda }{1!}&=\\frac{e^{-\\lambda }\\lambda ^2}{2!}\\\\\n\n\\therefore \\lambda &=2\\\\\n\nP(x=3)&=\\frac{e^{-2}2^3}{3!}=0.18\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.18** (acceptable range: [0.17, 0.19])."
-      },
-      "answer": "0.18"
+      }
     },
     "me:2022:q38": {
       "question_uid": "me:2022:q38",
@@ -1740,8 +1703,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-3c1fe547a7.webp\" />\n\nComponent of $\\vec{a}$ parallel to $\\vec{b}=\\frac{\\vec{a}\\cdot \\vec{b}}{|\\vec{b}|}=\\frac{20}{\\sqrt{46}}=2.95$\n\nNow,\n\n$$\\begin{aligned}\n\n|\\vec{a}|^2&=2.95^2+(a\\perp )^2\\\\\n\n78&=2.95^2+(a\\perp )^2\\\\\n\na\\perp&=8.32\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **8.3** (acceptable range: [7.9, 8.7])."
-      },
-      "answer": "8.3"
+      }
     },
     "me:2022:q39": {
       "question_uid": "me:2022:q39",
@@ -1784,8 +1746,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-93ff03e72f.webp\" />\n\nBy method of sections cut CI, EI and EF and prefer\n\nthe right hand side\n\nFor equilibrium:\n\n$\\Sigma M_E=0$ Anticlockwise positive\n\n$T_{CI}(1.5)-2(1.5)-4(6)=0$\n\n$\\Rightarrow  T_{CI}=\\frac{3+24}{1.5}=18kN$\n\nTherefore, the correct answer is **18**."
-      },
-      "answer": "18"
+      }
     },
     "me:2022:q40": {
       "question_uid": "me:2022:q40",
@@ -1828,8 +1789,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-e1b9327593.webp\" />\n\nBy pythagoras theorem:\n\n$PQ = 13 m$\n\nBy Geometry:\n\n$$\\begin{aligned}\n\n5^2-PR^{'2}&=10^2-AR^{'2}\\\\\n\nQR'&=13-PR'\\\\\n\n\\Rightarrow PR'&=\\frac{25}{13}m\\\\\n\n\\Rightarrow QR'&=\\frac{144}{13}m\\\\\n\n\\Sigma M_P&=0\\\\\n\n\\Rightarrow F(PR')&=N_Q(PQ)\\\\\n\n\\Rightarrow N_Q&=\\frac{25}{169}F\\\\\n\n\\Sigma F&=0\\\\\n\n\\Rightarrow N_P&=F-\\frac{25}{169}F\\\\\n\n&=\\frac{144}{169}F\n\n\\end{aligned}$$\n\nNow, $f_P=\\mu _PN_P, f_Q=\\mu _QN_Q, \\Sigma F_x=0$\n\n$$\\begin{aligned}\n\n\\mu _PN_P&=\\mu _QN_Q\\\\\n\n\\frac{\\mu _Q}{\\mu _P}&=\\frac{N_P}{N_Q}\\\\\n\n&=\\frac{144}{25}=5.76\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.75** (acceptable range: [5.7, 5.8])."
-      },
-      "answer": "5.75"
+      }
     },
     "me:2022:q41": {
       "question_uid": "me:2022:q41",
@@ -1872,8 +1832,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-9a3141a6ac.webp\" />\n\nAbout point P there is no external torque.\n\n[Because Torques of N and 'mg' balances and\n\nfriction force pass through point P, hence its torque\n\nis zero]$$\n\n$\\therefore \\left [ \\frac{d\\vec{L}}{dt} =\\vec{\\tau }_{ext}\\right ]_{\\text{about P}}=0$\n\nwhere   $\\vec{\\tau }=$ Torque and $\\vec{L }=$ Angular momentum\n\n$$\\begin{aligned}\n\n\\vec{L_i}&=\\vec{L_f}\\\\\n\nI_0\\omega &=I_0\\omega '+mvr\\\\\n\n\\frac{mr^2}{2}\\omega &=\\frac{mr^2}{2}\\omega'+m\\omega 'r^2\\\\\n\n\\therefore \\omega '&=\\frac{\\omega }{3}=\\frac{5}{3}\\\\\n\n\\Rightarrow v&=\\omega ' \\times r\\\\&=\\frac{5}{3} \\times 0.15=0.25 m/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
-      },
-      "answer": "0.25"
+      }
     },
     "me:2022:q42": {
       "question_uid": "me:2022:q42",
@@ -1916,8 +1875,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Thin Cylinder",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-e72839a476.webp\" />\n\n$\\pi(d+\\delta d)=1.001 \\pi d$\n\n$\\varepsilon _1=\\frac{\\delta d}{d}=0.001=\\frac{Pd}{4tE}(2-v)$\n\n$\\frac{Pd}{4tE}=\\frac{0.001}{(2-v)}=6 \\times 10^{-4}$\n\nRadial strain\n\n$\\varepsilon _2=\\frac{\\delta t}{t}=\\frac{1}{E}\\left [ \\sigma _r-v(\\sigma _h-\\sigma _L) \\right ]$\n\n$\\frac{\\delta t}{t}=\\frac{1}{E}\\left [ -v\\frac{Pd}{4t}(2+1) \\right ]$\n\n$\\frac{\\delta t}{t}=-\\frac{Pd}{4tE}v(3)=-6 \\times 10^{-4} \\times \\frac{1}{3}(3)=-6 \\times 10^{-4}$\n\nTherefore,\n\nThe corresponding change in the wall thickness of\n\nthe cylindrical portion\n\n$=100 \\times \\left [ \\frac{\\bar{t}-t}{t} \\right ]=100 \\times \\frac{\\delta t}{t}=100 \\times (-6) \\times 10^{-4}=-0.06 \\%$\n\nTherefore, the correct answer is **-0.06** (acceptable range: [-0.062, -0.058])."
-      },
-      "answer": "-0.06"
+      }
     },
     "me:2022:q43": {
       "question_uid": "me:2022:q43",
@@ -1960,8 +1918,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Gear and Gear Train",
         "markdown": "Speed of gear 1 $N_1 =0$,\n\nSpeed of gear 3 $N_3 =900rpm$,\n\nSpeed of Arm  $N_{arm} =?$,\n\nTeeth of gear 1 $z_1=?$\n\nTeeth of gear 2 $z_2=20$\n\nTeeth of gear 3 $z_3=80$\n\nTeeth of gear 2\n\n$$\\begin{aligned}\n\nz_3&=z_1+2z_2\\\\\n\n80&=z_1+2(20)\\\\\n\nz_1&=40\n\n\\end{aligned}$$\n\n$$\\begin{array}{|c|c|c|c|c|c|} \\hline\n\n\\text{S.No}&\\text{Condition of mtotion} &\\text{Speed of arm} &\\text{Speed of gear 1} &\\text{Speed of gear 2} &\\text{Speed of gear 3}\\\\ \\hline 1&\\text{Arm is fixed and gear 1 with +x rev}&0&+1&\\frac{-z_1}{z_2}(1)&\\frac{-z_1}{z_3}(1)\\\\ \\hline\n\n2&\\text{Arm is fixed and gear 1 with +x rev}&0&+x&\\frac{-z_1}{z_2}(x)&\\frac{-z_1}{z_3}(x)\\\\ \\hline\n\n3&\\text{Arm with +y rev}&+y&y&+y&+y\\\\ \\hline\n\n4&\\text{Total }&y&x+y &y-x\\frac{z_1}{z_2}&y-\\frac{z_1}{z_3}(x)\\\\ \\hline\n\n\\end{array}$$\n\n$$\\begin{aligned}\n\nN_1&=x+y=0\\\\\n\n\\Rightarrow x&=-y \\\\\n\nN_3&=y-\\frac{z_1}{z_3}(x)=900\\\\\n\n&=y-\\frac{40}{80}(x)=900\\\\\n\n\\Rightarrow y-\\frac{40}{80}(-y)=900\\\\\n\n1.5y&=900\\\\\n\ny&=600 rpm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **600**."
-      },
-      "answer": "600"
+      }
     },
     "me:2022:q44": {
       "question_uid": "me:2022:q44",
@@ -2004,8 +1961,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "Cutting speed $(V) = 4m/sec$\n\nOrthogonal rake angle $\\alpha =5^{\\circ}$\n\nUncut chip thickness ($(t_1)=.0.2mm$\n\nWidth of cut $(w) = 3 mm$\n\nFriction angle $\\beta =45^{\\circ}$\n\nShear angle $(\\phi ) =25^{\\circ}$\n\nShear strength $(\\tau _0 ) =1000MPa$\n\nCutting force $(F_c)=$____N\n\n$$\\begin{aligned}\n\nF_S &= R \\cos (\\phi +\\beta -\\alpha )\\\\\n\nR&=\\frac{\\tau _0 \\cdot A_S}{\\cos (\\phi +\\beta -\\alpha )} \\\\\n\nR&=\\frac{\\tau _0 \\cdot wt_1}{\\sin \\phi \\cos (\\phi +\\beta -\\alpha )} \\\\\n\nF_c&= R \\cdot \\cos (\\beta -\\alpha )\\\\\n\n&=\\frac{\\tau _0 \\cdot wt_1\\cdot \\cos (\\beta -\\alpha )}{\\sin \\phi \\cos (\\phi +\\beta -\\alpha )} \\\\\n\n&= \\frac{1000 \\times 3 \\times 0.2 \\times \\cos (45-5)}{\\sin 25\\cdot \\cos (25+45-5)}\\\\\n\n&=2573.4N\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2573** (acceptable range: [2570, 2576])."
-      },
-      "answer": "2573"
+      }
     },
     "me:2022:q45": {
       "question_uid": "me:2022:q45",
@@ -2048,8 +2004,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "Given data, cylindrical tube thickness $(t)$ = 1 mm\n\nDiameter $(D)$ = 100 mm\n\nOrthogonal cutting such that entire wall thickness\n\nof tube is cut in single pass.\n\nTherefore, Tube thickness = depth of cut = $d = 1 mm$\n\nAxial feed of the tool $= 1 m/min = f.N$\n\nSpecific cutting Energy $(U) = 6 \\; J/mm^3$\n\nPower _________ kW\n\nSpecific cutting energy$(U) = 6 \\; J/mm^3=\\frac{\\text{Power}}{\\text{MRR}}$\n\n$$\\begin{aligned}\n\nPower &= 6 \\times MRR \\\\\n\n&= 6 \\times f.d.v\\\\\n\n&= 6 \\times f.d. \\pi.D.N\\\\\n\n&= 6 \\times d \\times \\pi \\times D \\times f.N\\\\\n\n&= 6 \\times 1 \\times \\pi \\times 100 \\times 1 \\times \\frac{1000}{60}\\\\\n\n&= 31415.9\\;J/sec \\; or \\; Watt\\\\\n\n&=31.4 \\;kW\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **31** (acceptable range: [30, 32])."
-      },
-      "answer": "31"
+      }
     },
     "me:2022:q46": {
       "question_uid": "me:2022:q46",
@@ -2092,8 +2047,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
         "markdown": "Initial thickness $h_1=4mm$\n\nWidth $w= 100 mm$\n\nRoll Diameter $D= 200 mm$\n\nRoll Radius $R= 100 mm$\n\nCoefficient of Friction $\\mu =0.1$\n\nFlow stress is given by $\\sigma =207+414\\varepsilon$\n\n<img src=\"/question-images/me/2022/me-2022-561363fab0.webp\" />\n\nWe have equation for maximum possible reduction\n\nis\n\n$$\\begin{aligned}\n\n\\Delta h&=\\mu ^2R\\\\\n\n\\Delta h&=(0.1)^2 \\times 100=1mm=h_1-h_2\\\\\n\nh_2&=h_1-\\Delta h=4-1=3mm\n\n\\end{aligned}$$\n\nNow True strain $\\varepsilon = \\ln\\left ( \\frac{h_1}{h_2} \\right )= \\ln \\left ( \\frac{4}{3} \\right )=0.2876$\n\nStress when no rolling $\\varepsilon =0, \\sigma _1=207 MPa$\n\nStress when material is rolled to maximum possible\n\nextent $\\varepsilon =0.2876, \\sigma _2=207+414(0.2876)=326.06 MPa$\n\nSince Strain hardening characteristics is linear the\n\naverage flow stress $\\bar{\\sigma }=\\frac{\\sigma _1+\\sigma _2}{2}=\\frac{207+326.06}{2}=266.53MPa$\n\nProjected length of contact\n\n$L=\\sqrt{R\\cdot \\Delta h}=\\sqrt{100 \\times 1}=10mm$\n\nRolls separation force,\n\n$$\\begin{aligned}\n\nF&=1.15\\bar{\\sigma }\\left ( 1+\\frac{\\mu L}{2\\bar{h}} \\right )wL\\\\\n\n&=1.15 \\times 266.53\\left ( 1+\\frac{0.1 \\times 10}{2 \\times \\frac{7}{2}} \\right ) \\times 100 \\times 10\\\\\n\nF&=350.3 N\\\\\n\nF&=0.350kN\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **350** (acceptable range: [340, 360])."
-      },
-      "answer": "350"
+      }
     },
     "me:2022:q47": {
       "question_uid": "me:2022:q47",
@@ -2136,8 +2090,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
         "markdown": "Welding current = 150A\n\nWelding voltage = 20V\n\nHeat Generated $Q_1 = V \\times I=150 \\times 20=3000 Watt$\n\nNet Heat supplied to the Work Piece $(Q_2)=Q_1 \\times \\eta _{HT} =300 \\times 0.7=2100 Watt$\n\nHeat Required to Melt the material $(Q_3)=Q_2 \\times \\eta _{m} =2100 \\times 0.6=1260 Watt$\n\nSince Heat Required to melt the material is given\n\ndirectly in the question $10^5 \\; J/mm^3$\n\nHence we can write\n\n$1260=10 \\times$ Volumetric metal Deposition Rate (VMDR)\n\n(VMDR) $=\\frac{1260}{10}=126 mm^3/s$\n\nIt means total $126 mm^3/s$ metal need to be deposited in the gap between Work Piece\n\nIt is given in the question that 60% of the total volume is to be filled by electrode.\n\nHence, effective volumetric metal deposition by electrode$=126 \\times 0.6=75.6 mm^3/s$\n\nVolumetric metal deposition rate = Cross section\n\nArea of electrode x Electrode feed rate\n\n$75.6=\\frac{\\pi}{4}d_e^2 \\times \\text{feed rate}$\n\n$\\text{feed rate}=\\frac{75.6}{\\frac{\\pi}{4}(3)^2}=10.69mm/s$\n\nTherefore, the correct answer is **10.7** (acceptable range: [10.5, 10.9])."
-      },
-      "answer": "10.7"
+      }
     },
     "me:2022:q48": {
       "question_uid": "me:2022:q48",
@@ -2180,8 +2133,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Queuing Theory and Transportation",
         "markdown": "Minimum total processing time = 500 min\n\nIf the processing time of job 4 each machine is\n\nincreased by 20 minutes then the revised minimum\n\ntotal processing time will be 520 minutes\n\nProof: Assume the following data\n\n$$\\begin{array}{|c|c|c|c|c|c|}\n\n\\hline\n\n&M_1&M_2&M_3&M_4& \\text{Row min}\\\\ \\hline\n\nJ_1& 80 & 150 & 100 & 130 & 80\\\\ \\hline\n\nJ_2& 240 & 250 & 300 & 160 & 160\\\\ \\hline\n\nJ_3& 130 & 80 & 170 & 190 & 80\\\\ \\hline\n\nJ_4& 190 & 220 & 180 & 180 & 180\\\\ \\hline\n\n\\end{array}$$\n\n$$\\begin{array}{|c|c|c|c|}\n\n\\hline\n\n\\underline{0}&70&20&50\\\\ \\hline\n\n80&90& 140&\\underline{0}\\\\ \\hline\n\n50&\\underline{0}&90&110\\\\ \\hline\n\n10&40&\\underline{0}&0\\\\ \\hline\n\n\\end{array}$$\n\nThe assignments are\n\n$J_1-M_1=80$\n\n$J_2-M_4=160$\n\n$J_3-M_2=80$\n\n$J_4-M_3=180$\n\nMinimum total processing time = 80+160+80+180 = 500 mins\n\nIf Job '4' times are increased by 20 mins then\n\n$$\\begin{array}{|c|c|c|c|c|c|}\n\n\\hline\n\n&M_1&M_2&M_3&M_4& \\text{Row min}\\\\ \\hline\n\nJ_1& 80 & 150 & 100 & 130 & 80\\\\ \\hline\n\nJ_2& 240 & 250 & 300 & 160 & 160\\\\ \\hline\n\nJ_3& 130 & 80 & 170 & 190 & 80\\\\ \\hline\n\nJ_4& 210 & 240 & 200 & 250 & 200\\\\ \\hline\n\n\\end{array}$$\n\n$$\\begin{array}{|c|c|c|c|}\n\n\\hline\n\n\\underline{0}&70&20&50\\\\ \\hline\n\n80&90& 140&\\underline{0}\\\\ \\hline\n\n50&\\underline{0}&90&110\\\\ \\hline\n\n10&40&\\underline{0}&0\\\\ \\hline\n\n\\end{array}$$\n\nThe assignments are\n\n$J_1-M_1=80$\n\n$J_2-M_4=160$\n\n$J_3-M_2=80$\n\n$J_4-M_3=200$\n\nMinimum total processing time = 80+160+80+200 = 520 mins\n\nTherefore, the correct answer is **520**."
-      },
-      "answer": "520"
+      }
     },
     "me:2022:q49": {
       "question_uid": "me:2022:q49",
@@ -2224,8 +2176,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-2ede3d41e9.webp\" />\n\nTo produce 10 units of 'P'\n\nNo. of units of 'A' required = (4x10)+(2x3x2x10)\n\n= 160 units\n\nNet requirement of 'A' = 160 - 50 = 110 units\n\nTherefore, the correct answer is **110**."
-      },
-      "answer": "110"
+      }
     },
     "me:2022:q50": {
       "question_uid": "me:2022:q50",
@@ -2268,8 +2219,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
         "markdown": "1D Steady heat conduction\n\n<img src=\"/question-images/me/2022/me-2022-a5cf9f2f06.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{Q}{A} &=4.5\\frac{kW}{m^2}=4500 \\frac{W}{m^2}\\\\\n\nk&=15W/mk \\\\\n\nS_{gen}&=? \\\\\n\n\\frac{Q}{A} &= k\\left [ \\frac{T_1-T_2}{dx} \\right ]\\\\\n\n4500&= 15\\left [ \\frac{80-T_2}{0.1} \\right ]\\\\\n\nT_2 &=50^{\\circ}C=323K \\\\\n\nT_1 &=80^{\\circ}C=353K \\\\\n\n\\therefore \\;\\; \\frac{S_{gen}}{Area}&=\\frac{-Q}{AT_1}+\\frac{Q}{AT_2} \\\\\n\n&=\\frac{-4500}{353}+\\frac{4500}{323} \\\\\n\nS_{gen} &= 1.18\\frac{W}{m^2K}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.18** (acceptable range: [1.12, 1.24])."
-      },
-      "answer": "1.18"
+      }
     },
     "me:2022:q51": {
       "question_uid": "me:2022:q51",
@@ -2312,8 +2262,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-374acc70d5.webp\" />\n\n$$\\begin{aligned}\n\nW_{HPT}&=400kJ/kg\\\\\n\nW_{LPT}&=850kJ/kg\\\\\n\nW_{P}&=15kJ/kg\\\\\n\n\\eta &=0.35=\\frac{W_{net}}{Q_S}\\\\\n\nQ_S&=3859.375 kJ/kg\\\\\n\n\\therefore \\; W_{net}&=Q_S-Q_R\\\\\n\nQ_R&=3859.375-1235\\\\\n\nQ_R&=2624.37 kJ/kg\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2625** (acceptable range: [2620, 2630])."
-      },
-      "answer": "2625"
+      }
     },
     "me:2022:q52": {
       "question_uid": "me:2022:q52",
@@ -2356,8 +2305,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - IC Engine",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-a456e2a7ab.webp\" />\n\n$$\\begin{aligned}\n\nV_S&=250cm^3\\\\\n\nV_C&=35.7 cm^3\\\\\n\nT_1&=300K\\\\\n\nP_1&=100kPa\\\\\n\nQ_S&=800kJ/kg\\\\\n\nC_v&=0.718kJ/kgK\\\\\n\n\\gamma &=1.4\\\\\n\nP_3&=\\_\\_\\_kPa\\\\\n\n\\frac{T_2}{T_1}&=\\left ( \\frac{P_2}{P_1} \\right )^{\\frac{\\gamma -1}{\\gamma }}=\\left ( \\frac{V_1}{V_2} \\right )^{\\gamma -1}=\\left ( \\frac{V_S+V_C}{V_C} \\right )^{\\gamma -1}\\\\\n\n\\frac{T_2}{300}&=\\left ( \\frac{P_2}{100} \\right )^{\\frac{1.4-1}{1.4 }}=\\left ( \\frac{250+35.7}{35.7} \\right )^{1.4 -1}\\\\\n\nT_2&=689.31K\\\\\n\nP_2&=1838.82kPa\\\\\n\nQ_S&=c_v \\times (T_3-T_2)\\\\\n\n800&=0.718(T_3-689.31)\\\\\n\nT_3&=1803.516K\\\\\n\n&\\text{For Process 2-3(Volume is constant)}\\\\\n\n\\frac{P_3}{P_2}&=\\frac{T_3}{T_2}\\\\\n\nP_3&=\\frac{1803.516}{689.31} \\times 1838.82\\\\\n\nP_3&=4811kPa\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4802.5** (acceptable range: [4780, 4825])."
-      },
-      "answer": "4802.5"
+      }
     },
     "me:2022:q53": {
       "question_uid": "me:2022:q53",
@@ -2400,8 +2348,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
         "markdown": "Given,\n\nStream function,\n\n$$\\begin{aligned}\n\n\\psi &=kx^3y; \\; k=1m^{-2}s^{-1}\\\\\n\nu&=-\\frac{\\partial \\psi }{\\partial y}\\Rightarrow u=-x^3\\\\\n\nv&=-\\frac{\\partial \\psi }{\\partial x}\\Rightarrow v=3x^2y\\\\\n\n\\vec{V}&=-x^3\\hat{i}+3x^2y\\hat{j}\\\\\n\na_x&=\\frac{\\partial u}{\\partial t}+u\\frac{\\partial u}{\\partial x}+v\\frac{\\partial u}{\\partial y}+w\\frac{\\partial u}{\\partial z}\\\\\n\na_x&=-x^3(-3x^2)\\Rightarrow a_x=3x^5\\\\\n\nAt\\; &(1,1), \\; a_x=3m/sec^2\\\\\n\na_y&=\\frac{\\partial v}{\\partial t}+u\\frac{\\partial v}{\\partial x}+v\\frac{\\partial v}{\\partial y}+w\\frac{\\partial v}{\\partial z}\\\\\n\na_y&=-x^3(6xy)+3(x^2y)(3x^2)\\\\\n\n&=-6x^4y+9x^4y=3x^4y\\\\\n\n\\vec{a}&=3x^5\\hat{i}+3x^4y\\hat{j}\\\\\n\nAt& \\;\\;(1,1)\\\\\n\n\\vec{a}&=3\\hat{i}+3\\hat{j}\\\\\n\n\\Rightarrow |a|=\\sqrt{3^2+3^2}&=4.24m/s^2\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4.24** (acceptable range: [4.2, 4.28])."
-      },
-      "answer": "4.24"
+      }
     },
     "me:2022:q54": {
       "question_uid": "me:2022:q54",
@@ -2444,8 +2391,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
         "markdown": "$T_\\infty =293K,T_{surrounding}=0K, h=100W/m^2K, K_{slab}=10W/mK$\n\n<img src=\"/question-images/me/2022/me-2022-fb1c6f8744.webp\" />\n\nUnder steady state\n\n$$\\begin{aligned}\n\nQ_{stored}&=0\\\\\n\nQ_{in}&=Q_{out}\\\\\n\nQ_{cond}&=Q_{conv}+Q_{rad}\\\\\n\nK\\left [ \\frac{T_1-T_2}{L} \\right ]&=h(T_2-T_\\infty )+\\varepsilon \\sigma (T_2^4-T_{surr}^4)\\\\\n\n10\\left [ \\frac{T_1-300}{0.2} \\right ]&=100(300-293 )+0.5 \\times 5.67 \\times 10^{-8} (300^4-0^4)\\\\\n\nT_1-300&=\\frac{929.635}{50}\\\\\n\nT_1&=18.59+300\\\\\n\nT_1&=318.59\\\\\n\nT_1&=318.6K=319K\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **319** (acceptable range: [315, 323])."
-      },
-      "answer": "319"
+      }
     },
     "me:2022:q55": {
       "question_uid": "me:2022:q55",
@@ -2488,8 +2434,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-91e7711f91.webp\" />\n\nFor preferred heat exchange between load and water.\n\n$$\\begin{aligned}\n\nQ_{blood}&=Q_{water}\\\\\n\n\\dot{m}_h c_h(T_{h_1}-T_{h_2})&=\\dot{m}_c c_c(T_{c_2}-T_{c_1})\\\\\n\n\\dot{m}_h c_h(37-25)&=\\dot{m}_c c_c(18-4)\\\\\n\n12\\dot{m}_h c_h&=14\\dot{m}_c c_c\\\\\n\n\\dot{m}_h c_h&=\\frac{14}{12}\\dot{m}_c c_c\\\\\n\n\\dot{m}_hc_h&=1.167\\dot{m}_cc_c\\\\\n\n\\dot{m}_hc_h& \\lt \\dot{m}_cc_c\\\\\n\n\\dot{m}_cc_c&=c_{min}, \\dot{m}_hc_h=c_{max}\\\\\n\n\\varepsilon &=\\frac{Q_{act}}{Q_{max}}=\\frac{\\dot{m}_cc_c(T_{c_2}-T_{c_1})}{c_{min}(T_{h_1}-T_{c_1})}=\\frac{T_{c_2}-T_{c_1}}{T_{h_1}-T_{c_1}}\\\\\n\n\\varepsilon &=\\frac{T_{c_2}-T_{c_1}}{T_{h_1}-T_{c_1}}=\\frac{18-4}{37-4}=0.424\\\\\n\n\\varepsilon &=0.42\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.42** (acceptable range: [0.4, 0.44])."
-      },
-      "answer": "0.42"
+      }
     },
     "me:2022:ga:q1": {
       "question_uid": "me:2022:ga:q1",
@@ -2533,8 +2478,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Two hours of tennis is time,\n\ntoo tired means to an excessive degree.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:ga:q2": {
       "question_uid": "me:2022:ga:q2",
@@ -2578,8 +2522,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Sum of terms = Average x No. of terms\n\nM+N+S = 4000 x 3 = 12000\n\nN+S+P = 5000 x 3 = 15000\n\nP- M = 3000\n\nM = 6000 ? 3000 = 3000\n\nM is 50 % P\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q3": {
       "question_uid": "me:2022:ga:q3",
@@ -2623,8 +2566,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-9e3fd6d398.webp\" />\n\n$$\\begin{aligned}\n\nD&=S \\times T\\\\\n\n80&=10t+18(6-t)\\\\\n\n\\Rightarrow \\;\\; t&=3.5 hrs\\\\\n\nD_{10 \\; kmph}&=3.5 \\times 10=35kms\\\\\n\n35 & \\text{ km is what \\% of } 85 \\; kms?\\\\\n\n\\frac{35}{80} \\times 100% &= 43.75%\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:ga:q4": {
       "question_uid": "me:2022:ga:q4",
@@ -2668,8 +2610,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Difficulty level as per given statements\n\nFrench < Dutch\n\nJapanese < Chinese\n\nDutch < Japanese\n\nSpanish < French\n\nFrom above relation, we can conclude following relation\n\nFrench < Dutch < Japanese < Chinese\n\nQ leaving most difficult pair of languages.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:ga:q5": {
       "question_uid": "me:2022:ga:q5",
@@ -2713,8 +2654,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "View from arrow direction is\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q6": {
       "question_uid": "me:2022:ga:q6",
@@ -2758,8 +2698,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Compassion and empathy refers to suffering of\n\nothers.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:ga:q7": {
       "question_uid": "me:2022:ga:q7",
@@ -2803,8 +2742,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<img src=\"/wp-content/uploads/GATE/ME/20221/a62a.jpg\" />\n\nFrom above diagram,\n\nClearly diameter of circle = side of Rhombus = a\n\n<img src=\"/question-images/me/2022/me-2022-a8c6036942.webp\" />\n\n$a=\\sqrt{\\left ( \\frac{1}{2} \\right )^2+\\left ( \\frac{1}{2} \\right )^2}=\\frac{1}{\\sqrt{2}}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q8": {
       "question_uid": "me:2022:ga:q8",
@@ -2848,8 +2786,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-338cb60a06.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{\\sqrt{3}}{4}a^2 &=s^2 &=\\pi r^2&=k\\\\\n\na&=\\sqrt{\\frac{4k}{\\sqrt{3}}}&s=\\sqrt{k} &\\;\\;\\; r=\\sqrt{\\frac{\\pi}{k}}\\\\\n\n&\\text{Perimeters:}\\\\\n\n3a&:&4a&:&2 \\pi ^2\\\\\n\n3\\frac{2\\sqrt{k}}{3^{1/4}}&:&4\\sqrt{k}&:&2 \\pi \\frac{\\sqrt{k}}{\\sqrt{\\pi}}\\\\\n\n3^{3/4}&:&2&:&\\sqrt{\\pi}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:ga:q9": {
       "question_uid": "me:2022:ga:q9",
@@ -2893,8 +2830,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-c08fac9e8b.webp\" />\n\nNo male is teacher is correct.\n\nEngineer and Professor relation not given.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q10": {
       "question_uid": "me:2022:ga:q10",
@@ -2938,8 +2874,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "3 pm - 3am = 12 hrs\n\nCoincide is\n\n11 times in 12 hours\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     }
   }
 }

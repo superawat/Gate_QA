@@ -34248,8 +34248,8 @@
   {
     "question_uid": "go:1371",
     "title": "GATE CSE 2005 | Question: 35",
-    "subjectSlug": "discrete-math",
-    "subjectLabel": "Discrete Mathematics",
+    "subjectSlug": "prog-ds",
+    "subjectLabel": "Programming and DS",
     "year": 2005,
     "set": null,
     "yearSetKey": "2005-s0",
@@ -34265,19 +34265,30 @@
     "preview": "How many distinct binary search trees can be created out of $4$ distinct keys?",
     "taxonomy": {
       "primary": {
-        "subjectSlug": "discrete-math",
-        "subjectLabel": "Discrete Mathematics",
-        "subtopicSlug": "graph-theory",
-        "subtopicLabel": "Graph Theory"
+        "subjectSlug": "prog-ds",
+        "topicSlug": "trees-heaps",
+        "subtopicSlug": "binary-search-tree",
+        "subjectLabel": "Programming and DS"
       },
-      "secondary": [],
-      "conceptTags": []
+      "secondary": [
+        {
+          "subjectSlug": "discrete-math",
+          "topicSlug": "combinatorics",
+          "subtopicSlug": "counting",
+          "subjectLabel": "Discrete Mathematics"
+        }
+      ],
+      "conceptTags": [
+        "binary-search-tree",
+        "catalan-number",
+        "counting"
+      ]
     },
-    "searchText": "gate cse 2005 | question: 35 discrete mathematics graph theory 2005 gatecse-2005 graph-theory counting normal how many distinct binary search trees can be created out of $4$ distinct keys?",
+    "searchText": "gate cse 2005 | question: 35 programming and ds discrete mathematics binary search tree catalan number counting 2005 gatecse-2005 data-structures binary-search-tree normal how many distinct binary search trees can be created out of $4$ distinct keys?",
     "tags": [
       "gatecse-2005",
-      "graph-theory",
-      "counting",
+      "data-structures",
+      "binary-search-tree",
       "normal"
     ]
   },
@@ -107229,7 +107240,7 @@
       "secondary": [],
       "conceptTags": []
     },
-    "searchText": "gate cse 2025 | set 2 | question: 11 compiler design backpatching 2025 set 2 compiler-design backpatching intermediate-code one-mark easy grammar multiple-selects two-marks syntax-directed-translation context-free-grammar parsing lr-parser gatecse-2025 gatecse-2025-set2 ​​​​consider the following statements about the use of backpatching in a compiler for intermediate code generation: backpatching can be used to generate code for boolean expression in one pass. back[atching can be used to generate code for flow-of-control statements in one pass. which one of the folloeing options is correct?",
+    "searchText": "gate cse 2025 | set 2 | question: 11 compiler design backpatching 2025 set 2 compiler-design backpatching intermediate-code one-mark easy grammar multiple-selects two-marks syntax-directed-translation context-free-grammar parsing lr-parser gatecse-2025 gatecse-2025-set2 ​​​​consider the following statements about the use of backpatching in a compiler for intermediate code generation: backpatching can be used to generate code for boolean expression in one pass. backpatching can be used to generate code for flow-of-control statements in one pass. which one of the following options is correct?",
     "tags": [
       "compiler-design",
       "backpatching",
@@ -116197,7 +116208,7 @@
     "volume": null,
     "type": "MCQ",
     "link": "https://gateoverflow.in/3594/gate-it-2006-question-51",
-    "preview": "Which one of the choices given below would be printed when the following program is executed? #include <stdio.h> int a1 = {6, 7, 8, 18, 34, 67}; int a2 = {23, 56, 28, 29}; int a3…",
+    "preview": "Which one of the choices given below would be printed when the following program is executed? #include <stdio.h> int a1[] = {6, 7, 8, 18, 34, 67}; int a2[] = {23, 56, 28, 29}; int…",
     "taxonomy": {
       "primary": {
         "subjectSlug": "prog-c",
@@ -116208,7 +116219,7 @@
       "secondary": [],
       "conceptTags": []
     },
-    "searchText": "gate it 2006 | question: 51 programming in c programming in c 2006 it gateit-2006 programming programming-in-c normal it which one of the choices given below would be printed when the following program is executed? #include <stdio.h> int a1 = {6, 7, 8, 18, 34, 67}; int a2 = {23, 56, 28, 29}; int a3 = {-12, 27, -31}; int *x = {a1, a2, a3}; void print(int *a) { printf(\"%d,\", a[0][2]); printf(\"%d,\", *a[2]); printf(\"%d,\", *++a[0]); printf(\"%d,\", *(++a)[0]); printf(\"%d\\n\", a[-1][+1]); } main { print(x); }",
+    "searchText": "gate it 2006 | question: 51 programming in c programming in c 2006 it gateit-2006 programming programming-in-c normal it which one of the choices given below would be printed when the following program is executed? #include <stdio.h> int a1[] = {6, 7, 8, 18, 34, 67}; int a2[] = {23, 56, 28, 29}; int a3[] = {-12, 27, -31}; int *x[] = {a1, a2, a3}; void print(int *a[]) { printf(\"%d,\", a[0][2]); printf(\"%d,\", *a[2]); printf(\"%d,\", *++a[0]); printf(\"%d,\", *(++a)[0]); printf(\"%d\\n\", a[-1][+1]); } int main() { print(x); }",
     "tags": [
       "gateit-2006",
       "programming",

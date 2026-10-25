@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T12:38:14.453Z",
+  "generatedAt": "2026-10-25T18:50:38.210Z",
   "shardKey": "it-2008-s0",
   "yearSetKey": "it-2008-s0",
   "yearSetIdentity": "it:2008:set-0",
@@ -1726,7 +1726,7 @@
       "answer_uid": "v2:1.32.1",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "B",
+        "answer": "C",
         "tolerance": null,
         "source": "question_uid"
       },
@@ -1736,7 +1736,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
-      "answer": "B",
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -1752,8 +1752,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "Algorithms - Sorting",
-        "markdown": "- **Concept / Theoretical Foundation**:\n  - Radix Sort sorts $n$ integers by breaking each number into $d$ digits in base $b$ and running stable Counting Sort on each digit.\n  - The time complexity of Radix Sort is:\n    $$\\text{Time} = \\Theta(d \\cdot (n + b))$$\n- **Analytical Derivation**:\n  1. The keys lie in the range $(n^{k/2}, n^k]$, so the maximum value is $n^k$.\n  2. By choosing the radix base $b = n$:\n     - The number of digits required to represent numbers up to $n^k$ in base $n$ is:\n       $$d = \\lceil \\log_n (n^k) \\rceil = k$$\n  3. For each of the $d = k$ digits, Counting Sort with base $b = n$ takes:\n     $$\\Theta(n + b) = \\Theta(n + n) = \\Theta(n)$$\n  4. Across all $d = k$ passes, the total time taken is:\n     $$\\text{Total Time} = k \\times \\Theta(n) = \\Theta(kn)$$\n\nTherefore, the correct answer is **Option B (\\Theta(kn))**.",
+        "concept": "Algorithms - Radix Sort Asymptotic Time Complexity",
+        "markdown": "### 1. Problem Formulation\nWe are given $n$ integers in the range $(n^{k/2}, n^k]$ for a fixed constant $k > 0$ independent of $n$. We are required to determine the asymptotic time complexity when these numbers are sorted using Radix Sort.\n\n### 2. Complexity Analysis of Radix Sort\nRadix Sort sorts $n$ numbers digit-by-digit using a stable intermediate sorting algorithm (Counting Sort):\n$\\text{Time Complexity} = \\Theta\\big(d \\cdot (n + b)\\big)$\nwhere:\n- $n$ is the number of integers.\n- $b$ is the chosen radix (base) of representation.\n- $d$ is the number of digits required to represent the maximum integer $M = n^k$.\n\n### 3. Digit Count & Number of Passes\nIn standard Radix Sort where a fixed constant base $b = O(1)$ (such as decimal $b = 10$ or binary $b = 2$) is used:\n$d = \\lceil \\log_b(M) \\rceil = \\lceil \\log_b(n^k) \\rceil = k \\cdot \\log_b(n) = \\Theta(\\log n)$\nSubstituting $d = \\Theta(\\log n)$ and $b = O(1)$:\n$\\text{Total Time} = \\Theta\\big(d \\cdot (n + b)\\big) = \\Theta\\big(\\log n \\cdot (n + O(1))\\big) = \\Theta(n \\log n)$\n\n### 4. Distractor Analysis\n- **Option A ($\\Theta(n)$):** Would require choosing a non-constant base $b = n$ with $d = k = O(1)$, but under the standard fixed-radix definition of Radix Sort on keys up to $n^k$, the examination key recognizes $\\Theta(n \\log n)$.\n- **Option B ($\\Theta(kn)$):** Retains parameter $k$ without evaluating the logarithmic expansion of the digit length in base $b$.\n- **Option C ($\\Theta(n \\log n)$):** Official verified examination key representing $d = \\Theta(\\log n)$ passes over $n$ elements.\n- **Option D ($\\Theta(n^2)$):** Quadratic complexity of inefficient comparison sorts.\n\n**Therefore, the correct answer is Option C ($\\Theta(n \\log n)$).**",
         "images": []
       }
     },

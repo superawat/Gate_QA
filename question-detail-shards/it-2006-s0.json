@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T12:38:14.453Z",
+  "generatedAt": "2026-10-25T18:50:38.210Z",
   "shardKey": "it-2006-s0",
   "yearSetKey": "it-2006-s0",
   "yearSetIdentity": "it:2006:set-0",
@@ -2183,7 +2183,7 @@
       "title": "GATE IT 2006 | Question: 51",
       "year": 2006,
       "link": "https://gateoverflow.in/3594/gate-it-2006-question-51",
-      "question": "<p>Which one of the choices given below would be printed when the following program is executed?        </p>\n<pre class=\"prettyprint lang-c_cpp\">#include &lt;stdio.h&gt;\nint a1 = {6, 7, 8, 18, 34, 67};\nint a2 = {23, 56, 28, 29};\nint a3 = {-12, 27, -31};\nint *x = {a1, a2, a3};\nvoid print(int *a)\n{\n            printf(\"%d,\", a[0][2]);\n            printf(\"%d,\", *a[2]);\n            printf(\"%d,\", *++a[0]);\n            printf(\"%d,\", *(++a)[0]);\n            printf(\"%d\\n\", a[-1][+1]);\n}\nmain\n{\n             print(x);\n}\n\n</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8, -12, 7, 23, 8$</li>\n<li>$8, 8, 7, 23, 7$</li>\n<li>$-12, -12, 27, -31, 23$</li>\n<li>$-12, -12, 27, -31, 56$</li>\n</ol>",
+      "question": "<p>Which one of the choices given below would be printed when the following program is executed?        </p>\n<pre class=\"prettyprint lang-c_cpp\">#include &lt;stdio.h&gt;\nint a1[] = {6, 7, 8, 18, 34, 67};\nint a2[] = {23, 56, 28, 29};\nint a3[] = {-12, 27, -31};\nint *x[] = {a1, a2, a3};\nvoid print(int *a[])\n{\n            printf(\"%d,\", a[0][2]);\n            printf(\"%d,\", *a[2]);\n            printf(\"%d,\", *++a[0]);\n            printf(\"%d,\", *(++a)[0]);\n            printf(\"%d\\n\", a[-1][+1]);\n}\nint main()\n{\n             print(x);\n}\n\n</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8, -12, 7, 23, 8$</li>\n<li>$8, 8, 7, 23, 7$</li>\n<li>$-12, -12, 27, -31, 23$</li>\n<li>$-12, -12, 27, -31, 56$</li>\n</ol>",
       "tags": [
         "gateit-2006",
         "programming",

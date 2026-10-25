@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:36.949Z",
+  "generatedAt": "2026-10-25T18:50:27.010Z",
   "shardKey": "ec-2022-s1",
   "yearSetKey": "ec-2022-s1",
   "yearSetIdentity": "ec:2022:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\oint \\vec{F} (x,y)\\cdot [dx\\vec{i}+dy\\vec{j}]$\n\nGiven $\\vec{F} (x,y)=x\\vec{i}+y\\vec{j}$\n\n$\\therefore \\int_{c}xdx+ydy=0$\n\nBecause here vector is conservative.\n\nIf the integral function is the total derivative\n\nover the closed contoure then it will be zero\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q2": {
       "question_uid": "ec:2022:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Here equation will be\n\n$x-\\sqrt{2}y+3z=1$\n\n$-x+\\sqrt{2}y-3z=3$\n\ntherefore inconsistant solution i.e. there will not\n\nbe any solution.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q3": {
       "question_uid": "ec:2022:q3",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-f9130f0acb.webp\" />\n\nApplying Nodal equation at Node-A\n\n$$\\begin{aligned}\n\n\\frac{V_A}{2k}+\\frac{V_A-5}{2k}&=10^{-3}\\\\\n\n\\Rightarrow 2V_A-5&=2k \\times 10^{-3}\\\\\n\nV_A&=3.5V\\\\\n\nAgain,&\\\\\n\nI&=\\frac{5-V_A}{2k}\\\\\n\n&=\\frac{5-3.5}{2k}\\\\\n\n&=0.75 \\times 10^{-3}A\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:q4": {
       "question_uid": "ec:2022:q4",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "Here, there is no any return closed path for Current (I) . Hence I=0\n\nCurrent always flow in loop.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:q5": {
       "question_uid": "ec:2022:q5",
@@ -236,8 +232,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "$x(t)=\\frac{t}{(1+t^2)^2}$\n\nAs we know that FT of\n\n$te^{-|t|} \\; \\underleftrightarrow{FT} \\;\\frac{-j4\\omega }{(1+\\omega ^2)^2}$\n\nDuality\n\n$\\frac{-j4\\omega }{(1+t ^2)^2} \\leftrightarrow 2 \\pi(-\\omega )e^{-|-\\omega |}$\n\n$\\Rightarrow  \\frac{t}{(1+t^2)^2} \\underrightarrow{FT} \\frac{-2\\pi}{-j4}\\omega e^{-|\\omega |}$\n\n$\\Rightarrow \\;\\;\\;\\rightarrow\\frac{\\pi}{j2} \\omega e^{-|\\omega |}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q6": {
       "question_uid": "ec:2022:q6",
@@ -282,8 +277,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-95ab90a673.webp\" />\n\nFrom continuity equation of electrons\n\n$$\\frac{dn}{dt}=n\\mu _n\\frac{dE}{dx}+\\mu _nE\\frac{dn}{dx}+G_n-R_n+x_n\\frac{d^2x}{dx^2} \\;\\;\\;...(i)$$\n\n[Because\n\n$\\vec{E}$ is not mentioned hence\n\n$\\frac{dE}{dx}=0$\n\nFor\n\n$x \\gt 0, G_n$  is also zero\n\n$n=\\frac{n_i^2}{N_A}=\\frac{10^{20}}{10^{17}}=10^3$\n\n$n=n_0+\\delta n=10^3+10^{14}=10^{14}$\n\nat steady state,\n\n$\\frac{db}{dt}=0$\n\nHence equation (i) becomes:\n\n$$O=D_n\\frac{d^2\\delta n}{dx^2}-\\frac{\\delta n}{\\tau _n}$$\n\n$$\\frac{d^2\\delta n}{dx^2}=\\frac{\\delta n}{L_n^2} \\;\\;\\;...(ii)$$\n\nFrom solving equation (ii)\n\n$\\delta _n(x)=\\delta _n(0)e^{-x/L_n}$\n\nat\n\n$x=2\\mu m$\n\n$\\delta _n(2\\mu m)=10^{14}e^{-2/2}=10^{14}e^{-1}=0.37 \\times 10^{14}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q7": {
       "question_uid": "ec:2022:q7",
@@ -328,8 +322,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "Here we have to find the value of\n\n$E_c-E_{fn}$\n\nAs we know,\n\n$E_C-E_F=kT \\ln\\left ( \\frac{N_c}{n} \\right ) \\;\\;\\;...(i)$\n\n$E_C-E_{F1}=kT \\ln\\left ( \\frac{N_c}{n_1} \\right ) \\;\\;\\;...(ii)$\n\n$E_C-E_{F2}=kT \\ln\\left ( \\frac{N_c}{n_2} \\right ) \\;\\;\\;...(iii)$\n\nEquation (ii) - Equation (iii)\n\n$(E_C-E_{F1})-(E_C-E_{F2})=kT \\ln \\left ( \\frac{\\frac{N_c}{n_1}}{\\frac{N_c}{n_2}} \\right )=kT \\ln \\frac{n_2}{n_1}$\n\n$\\Rightarrow 200meV-(E_C-E_{F2})=26meV \\times \\ln \\left ( \\frac{0.5 \\times 10^{16}}{1 \\times 10^{16}} \\right )$\n\n$200meV-(E_C-E_{F2})=+26meV \\ln (0.5)=-18$\n\n$(E_C-E_{F2})=200+8=218meV$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q8": {
       "question_uid": "ec:2022:q8",
@@ -374,8 +367,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-169790a1e7.webp\" />\n\n$$\\begin{aligned}\n\n\\mu _PCO_x\\left ( \\frac{\\omega }{L} \\right )_1[4-V_0-1]^2&=\\mu _nCO_x\\left ( \\frac{\\omega }{L} \\right )_2[V_0-0-1]^2\\\\\n\n\\Rightarrow \\frac{300}{40}\\times \\frac{1}{5}(V_0-1)^2&=(3-V_0)^2\\\\\n\n\\Rightarrow \\sqrt{1.5}\n\n(V_0-1)&=3-V_0\\\\\n\n\\Rightarrow V_0&=\\frac{3+\\sqrt{1.5}}{\\sqrt{1.5}+1} \\lt 2V\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q9": {
       "question_uid": "ec:2022:q9",
@@ -420,8 +412,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-e7e249452b.webp\" />\n\n$f=\\bar{C}\\bar{D}I_0+\\bar{C}DI_1+C\\bar{D}I_2+CDI_3$\n\nFor this\n\n$A_0=A_3=0$\n\n$A_1=A_2=1$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q10": {
       "question_uid": "ec:2022:q10",
@@ -466,8 +457,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-7433d30a2f.webp\" />\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q11": {
       "question_uid": "ec:2022:q11",
@@ -512,8 +502,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-72de88a437.webp\" />\n\nFor K = 2, point A will be -0.8x2 = -1.6\n\nHence N = -2, P = 0\n\n(By default Nyquist contoure is considered in\n\nclockwise direction)\n\nP - N = 2\n\nNumber of closed loop pole in right side of the\n\ncomplex plane.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q12": {
       "question_uid": "ec:2022:q12",
@@ -558,8 +547,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
         "markdown": "Here 5 Root Locus branches are diverging from\n\nsame point, this can possible only when if we\n\nhave 5 poles in the system at the same point\n\nbecause Root Locus branch departs from open\n\nloop pole and\n\nNumber of Root Locus branches = Number of\n\nopen loop poles or Number of zero (Whichever is\n\ngreater).\n\nHere, there are 5 multiple Real poles, and\n\nmatching with option (A).\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q13": {
       "question_uid": "ec:2022:q13",
@@ -604,8 +592,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-9fb68d5fa5.webp\" />\n\nFor the system to be delay system\n\n$$\\begin{aligned}\n\ny(t)&=x(t-t_d) \\\\\n\ny(F)&=e^{-J\\omega t_d}  \\times F\\\\\n\n\\Rightarrow H(F)&=\\frac{Y(F)}{X(F)}=e^{-J\\omega t_d}\n\n\\end{aligned}$$\n\nTherefore, TF of delay system\n\nHere given system is constant, hence this is\n\nnot delay system, therefore statement-I is Incorrect\n\n$S_y(f)=S_x(f)|H(f)|^2$\n\nand $|H(f)|=1 (given)$\n\nHence,\n\n$S_y(f)=S_x(f)\\; for \\; -\\alpha \\leq f\\leq \\alpha$\n\nStatement - II is correct.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q14": {
       "question_uid": "ec:2022:q14",
@@ -650,8 +637,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-9fb68d5fa5.webp\" />\n\nIn series connection, current pass through each element remain same. Hence, $i_c=i_d$\n\nSo, $i_d=\n\n2\\sin (t+\\pi/2)$.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q15": {
       "question_uid": "ec:2022:q15",
@@ -696,8 +682,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Given\n\n$$\\begin{aligned}\n\nf(x,y)&=e^{(\\xi x+\\eta y)}\\\\\n\n\\frac{\\partial f(x,y)}{\\partial x}&=\\xi \\cdot e^{(\\xi x+\\eta y)}\\\\\n\n\\frac{\\partial^2 f(x,y)}{\\partial x^2}&=\\xi ^2\\cdot e^{(\\xi x+\\eta y)}\\\\\n\n\\end{aligned}$$\n\nSimilarly,\n\n$\\frac{\\partial^2 f(x,y)}{\\partial y^2}=\\eta ^2\\cdot e^{(\\xi x+\\eta y)}$\n\nNow, as given\n\n$a \\frac{\\partial^2 f(x,y)}{\\partial x^2}+b\\frac{\\partial^2 f(x,y)}{\\partial y^2}=f(x,y)$\n\nor\n\n$a \\times \\xi ^2\\cdot e^{(\\xi x+\\eta y)}+b \\times  \\eta  ^2\\cdot e^{(\\xi x+\\eta y)}= e^{(\\xi x+\\eta y)}$\n\n$a\\cdot \\xi ^2+b\\cdot \\eta ^2=1$\n\nThus,\n\n$\\xi =\\frac{1}{\\sqrt{2a}}, \\eta = \\frac{1}{\\sqrt{2b}}$\n\n$(\\xi =\\frac{1}{\\sqrt{a}}, \\eta = 0)$ and $(\\xi =0, \\eta = \\frac{1}{\\sqrt{b}})$ satisfy the above result.\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "ec:2022:q16": {
       "question_uid": "ec:2022:q16",
@@ -742,8 +727,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "$$\\begin{aligned}\n\n\\frac{V_{out}}{V_{in}}&=\\frac{-2000}{1000+\\frac{1}{j\\omega  \\times 10^{-6}}}\\\\\n\nGain&=\\frac{V_{out}}{V_{in}}\\frac{-2}{1+\\frac{1}{\\left (\\frac{j\\omega }{1000}  \\right ) }}\n\n\\end{aligned}$$\n\n$\\omega \\rightarrow \\infty \\Rightarrow gain=-2$\n\n$\\omega \\rightarrow 0 \\Rightarrow gain=0$\n\n$\\omega _c=1000$ rad/sec = cutoff frequency\n\nHence, it is HPF.\n\nTherefore, the correct option(s) are **B, C**."
-      },
-      "answer": "B, C"
+      }
     },
     "ec:2022:q17": {
       "question_uid": "ec:2022:q17",
@@ -788,8 +772,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
         "markdown": "A. x + z + xy = x(1 + y) + z = x + z\n\nB. (x + y) (x + z) = x + xz + xy + yz\n\n= x(1 + y + z) + yz\n\n= x + yz\n\nC. x + xy + yz = x(1+y) + yz\n\n= x + yz\n\nD. x + xz + xy = x (1 + z + y)\n\n= x\n\nTherefore, the correct option(s) are **B, C**."
-      },
-      "answer": "B, C"
+      }
     },
     "ec:2022:q18": {
       "question_uid": "ec:2022:q18",
@@ -834,8 +817,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Families",
         "markdown": "(A) $NM_H$ will not be always equal to $NM_L$\n\nbecause it depends on transistors parameters\n\nlike size\n\n$NM_H=V_{IL}-V_{OL}$\n\n$NM_L=V_{OH}-V_{IH}$\n\nCondition for\n\n$NM_H=NM_L$ : when\n\n$V_{TN}=|V_{TP}|\\; and \\; V_{IP}=\\frac{V_{DD}}{2}$\n\nIf\n\n$\\frac{K_p}{K_n}<  > 1$ then $NM_H\\neq NM_L$\n\n(B) Due to capacitive leading of stage, dynamic\n\npower consumption during switching will not\n\nbe zero.\n\n(C) For\n\n$V_{DD}-|V_{TP}|\\leq V_{in}\\leq V_{DD}$ [logic high\n\ninput]\n\nPMOS $\\rightarrow$ cut off\n\nNMOS  $\\rightarrow$ Linear\n\n(D) Mobility of electrons influences the switching\n\nspeed because\n\nPropagation delay,\n\n$\\tau _p=\\frac{\\tau _{PLH}+P_{PHL}}{2}$\n\n$\\tau _{PLH}=\\frac{C_LV_{DD}}{\\mu _p C_{ox} \\frac{W}{L} (V_{GS}\\;\\; V_{TP})^2}$\n\n$\\mu _p$ dependent\n\non mobality\n\nTherefore (C) is only correct.\n\nTherefore, the correct option(s) are **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q19": {
       "question_uid": "ec:2022:q19",
@@ -880,8 +862,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communication Systems",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-2d2f29d4fd.webp\" />\n\n$H(X^2)=H(Y)=\\Sigma P_Y(Y_i) \\log _2 \\frac{1}{P_Y(Y_i)}= \\frac{1}{2} \\log _2 2+\\frac{1}{2} \\log _2 2=1 bit/symbol$\n\n$H(X)=\\frac{1}{4} \\log _2 4+\\frac{1}{2} \\log _2 2+\\frac{1}{4} \\log _2 4=1.5 bit/symbol$\n\n$H(X) \\gt H(X^2)$\n\nHence option (C) is not correct.\n\nTherefore, the correct option(s) are **A, B, D**."
-      },
-      "answer": "A, B, D"
+      }
     },
     "ec:2022:q20": {
       "question_uid": "ec:2022:q20",
@@ -926,8 +907,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Uniform Plane Waves",
         "markdown": "As we know, wave equation is given by\n\n$\\frac{\\partial^2 f(x,t)}{\\partial x^2}=\\frac{C^2d^2f(x,y)}{dt^2}$\n\nHere, option (A) and (C) are satisfying the above\n\nstandard wave equation.\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2022:q21": {
       "question_uid": "ec:2022:q21",
@@ -970,8 +950,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "Sum of frequency of No. of wickets = 5 +7 + 8 + 25\n\n+ 20 +17 + 8 + 4 + 3 + 2 + 1 = 100\n\nMean = Average of the 50th & 51th matches\n\n= 4\n\nTherefore, the correct answer is **4**."
-      },
-      "answer": "4"
+      }
     },
     "ec:2022:q22": {
       "question_uid": "ec:2022:q22",
@@ -1014,8 +993,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$$\\begin{aligned}\n\nRoots\\;\\; (z-1)(z+1)&=0\\\\\n\nz&=\\pm 1\\\\\n\n\\because \\; z&=-1 \\text{ is in contour}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n\\Rightarrow \\oint _c \\frac{2^z}{z^2-1}&=\\left [ \\lim_{z \\to -1} \\frac{(z+1)2^z}{(z+1)(z-1)} \\right ] \\times 2 \\pi i\\\\\n\n&=\\frac{2^{-1}}{(-1-1)} \\times 2 \\pi i\\\\\n\n&=-\\frac{1}{2} \\pi i\\\\\n\n\\Rightarrow \\;\\; A&=1/2=0.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.5**."
-      },
-      "answer": "0.5"
+      }
     },
     "ec:2022:q23": {
       "question_uid": "ec:2022:q23",
@@ -1058,8 +1036,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "$$\\begin{aligned}\n\nx_1(t)=e^{-1}U(t)&\\underleftrightarrow{L.T.}\\frac{1}{(s+1)}\\\\\n\nx_2(t)=U(t)-U(t-2)&\\underleftrightarrow{L.T.}\\frac{1}{s}-\\frac{e^{-2s}}{s}=\\frac{1-e^{-2s}}{s}\\\\\n\ny(t)=x_1(t)\\otimes x_2(t)&\\underleftrightarrow{L.T.} \\frac{(1-e^{-2s})}{s(s+1)} \\\\\n\ny(t)&\\underleftrightarrow{L.T.}\\frac{1-e^{-2s}}{s(s+1)}\\\\\n\n\\lim_{t \\to \\infty }y(t)&=\\lim_{s \\to 0 }\\frac{s(1-e^{-2s})}{s(s+1)}=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ec:2022:q24": {
       "question_uid": "ec:2022:q24",
@@ -1102,8 +1079,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "$$\\begin{aligned}\n\nQ_{IN}&=-CO_X(V_G-V_T)\\\\\n\nQ_{IN_1}&=-CO_X(V_{G1}-V_T)\\;\\;\\;...(i)\\\\\n\nQ_{IN_2}&=-CO_X(V_{G2}-V_T)\\;\\;\\;...(ii)\\\\\n\n&(ii)-(i)\\\\\n\nQ_{IN_2}-Q_{IN_1}&=-CO_X(V_{G2}-V_{G1})\\\\\n\nQ_{IN_2}-(-2.2\\mu c/cm^2)&=-1.7\\mu c/cm^2(4-2)\\\\\n\nQ_{IN_2}&=2.2\\mu c/cm^2-3.4\\mu c/cm^2\\\\\n\n&=-5.6\\mu c/cm^2\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.6** (acceptable range: [5.5, 5.7])."
-      },
-      "answer": "5.6"
+      }
     },
     "ec:2022:q25": {
       "question_uid": "ec:2022:q25",
@@ -1146,8 +1122,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communication Systems",
         "markdown": "$$\\begin{aligned}\n\n\\text{BIT RATE}&=[\\text{SYBOL RATE}] \\times \\log_{20}M\\\\\n\n1.\\;\\; QPSK, \\; M&=4,n=2\\\\\n\nR_{b1}&=1 \\times 2 =2mbps\\\\\n\n2.\\;\\; 16 QAM_1\\Rightarrow  M=16,n=4\\\\\n\nR_{b2}&=1 \\times 4=4mbps\\\\\n\nR_b&=\\frac{2m+4m}{2}\\\\\n\nR_b&=3 mbps\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **3** (acceptable range: [2.99, 3.01])."
-      },
-      "answer": "3"
+      }
     },
     "ec:2022:q26": {
       "question_uid": "ec:2022:q26",
@@ -1192,8 +1167,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f(x)=8 \\log _e x-x^2+3$ when\n\n$x \\in [1,e]$\n\nDifferentiating both side,\n\n$$\\begin{aligned}\n\nf(x)&=\\frac{8}{x}-2x=0 \\; where\\; x \\gt  0\\\\\n\nf'(x)&=0\\\\\n\n\\frac{8}{x}-2x&=0\\\\\n\n8-2x^2&=0\\\\\n\nx^2&=4\\\\\n\nx&=\\pm 2\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\nf''(x)&=\\frac{-8}{x^2}-2 \\\\\n\nf''(2)&=-6 \\lt  0\\\\\n\n\\end{aligned}$$\n\nf(x) is maximum for x = 2\n\nMinimum of f(x) will be in [1, e]\n\n= min [f(1), f(e)]\n\n$f(e)=8 \\ln e -e^2+3=3.61$\n\nHence, minimum value of f(x) occurs at x=1\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:q27": {
       "question_uid": "ec:2022:q27",
@@ -1238,8 +1212,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "After multiply by $v_1$ on both sides,\n\n$$\\begin{aligned}\n\nAv_1&=\\alpha v_1v_1^Tv_1+ \\beta v_2v_2^Tv_1\n\nAv_1&=\\alpha v_1\n\n\\end{aligned}$$\n\n$\\alpha$ is an eigen value of A.\n\nAfter multiply by $v_2$ on both sides,\n\n$$\\begin{aligned}\n\nAv_2&=\\alpha v_1v_1^Tv_2+ \\beta v_2v_2^Tv_2\n\nAv_2&=\\beta v_2\n\n\\end{aligned}$$\n\n$\\beta$ is an eigen value of A.\n\n$v_1v_1^T$ and $v_2v_2^T$  both are singular matrieces.\n\nTherefore, A is also a singular matrix.\n\n$|A|=0\\Rightarrow \\lambda _A=0$\n\nHence $\\lambda _A= 0,\\alpha ,\\beta$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q28": {
       "question_uid": "ec:2022:q28",
@@ -1284,8 +1257,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State",
         "markdown": "$$\\begin{aligned}\n\nZ(j\\omega )&=R_1+\\frac{R_2\\cdot 1/j\\omega c}{R_2+ 1/j\\omega c}\\\\\n\n&=R_1+\\frac{R_2}{\\frac{1}{2}+jR_2\\omega c}\\\\\n\nZ(j\\omega )_{\\omega =0}&=R_1+R_2\\\\\n\n\\Rightarrow R_1+R_2&=5k\\Omega \\\\\n\nZ|j\\omega |_{\\omega \\rightarrow \\infty }&=R_1\\\\\n\n\\Rightarrow R_1&=2k\\Omega \\\\\n\nR_2&=3k\\Omega\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q29": {
       "question_uid": "ec:2022:q29",
@@ -1330,8 +1302,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Sinusoidal Steady State",
         "markdown": "$i(t)=\\frac{V(t)}{1+Z}$ where,\n\n$V(t)= \\sin t$\n\n$\\because$ Given i(t) is lagging (from plot)\n\n$$\\begin{aligned}\n\nI_{max}&=\\frac{V_{max}}{Z}=\\frac{1}{Z}\\\\\n\n\\Rightarrow Z&=1/\\sqrt{2}\\\\\n\nZ&=(1+j\\omega L)\\Rightarrow L=1\\\\\n\nas\\; \\omega &=1(\\sin \\omega t)=\\sin t\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:q30": {
       "question_uid": "ec:2022:q30",
@@ -1376,8 +1347,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "$\\mu _n Co_x=1mA/V^2; W=100\\mu m;L=10\\mu m$\n\n$V_T= \\perp V; V_{GS}=[2-\\sin 2t]V;V_{DS}=1V$\n\n<img src=\"/question-images/ec/2022/ec-2022-952b4f3a84.webp\" />\n\nLet,\n\n$$\\begin{aligned}\n\nV_{GS} &=3V(max)\\\\\n\n\\Rightarrow V_{DS} &\\lt V_{GS}-V_t\\\\\n\n\\because \\; 1 &\\lt (3-1)\n\n\\end{aligned}$$\n\nMOSFET in triode region\n\n$$\\begin{aligned}\n\nI_{Dmax}&=\\mu _CO_x\\left ( \\frac{\\omega }{L} \\right )\\left \\{ \\left ( V_{as \\; max}-V_t \\right )V_{DS}-\\frac{1}{2}V_{DS}^2 \\right \\}\\\\\n\n&=1 \\times \\left ( \\frac{100}{10} \\right )\\left \\{ (3-1) \\times 1-\\frac{1}{2} \\times 1^2 \\right \\}mA\\\\\n\n&=10(2-1/2)\\\\\n\n&=15mA\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q31": {
       "question_uid": "ec:2022:q31",
@@ -1422,8 +1392,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Multivibrators and 555 Timer",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-d6fc0cd88f.webp\" />\n\nWhen,\n\n$$\\begin{aligned}\n\nV_0&=+15V\\\\\n\nV^+&=\\frac{R}{3R} \\times 15=5V\\\\\n\nV_{cmax}&=5V\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2022/ec-2022-a75ce26190.webp\" />\n\nWhen,\n\n$$\\begin{aligned}\n\nV_0&=-12V\\\\\n\nV^+&=\\frac{2R}{3R} \\times (-12)=5V\\\\\n\nV_{cmin}&=-8V\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2022/ec-2022-f28b0b20c7.webp\" />\n\n$V_{cmax}=V_{cmin}=5-(-8)=13V$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:q32": {
       "question_uid": "ec:2022:q32",
@@ -1468,8 +1437,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-49e4718484.webp\" />\n\n$$\\begin{aligned}\n\n\\text{maximum gain}&=12dB\\\\\n\n20 \\times \\log A_{max}&=12\\\\\n\nA_{max}&=4\\\\\n\n1+\\frac{R_2}{R_1}&=4\\\\\n\nR_2&=3R_1\\\\\n\nR&=3 \\times 1=3k\\Omega \\\\\n\n\\log _{10}\\omega _c&=3\\\\\n\nomega _c&=1000rad/sec\\\\\n\nomega _c&=\\frac{1}{R_3C}\\\\\n\nC&=\\frac{1}{R_3 \\times \\omega _c}\\\\\n\nC&=\\frac{1}{1000 \\times 1000}=1\\mu F\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q33": {
       "question_uid": "ec:2022:q33",
@@ -1514,8 +1482,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "2-bit counter\n\n$$\\begin{aligned}\n\nMSB&&LSB(J,K)\\\\\n\n0&&0\\\\\n\n0&&1\\\\\n\n1&&0\\\\\n\n1&&1\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2022/ec-2022-f75fe2e14a.webp\" />\n\nDuty cycle =50%\n\nOutput frequency =$f_0/4$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q34": {
       "question_uid": "ec:2022:q34",
@@ -1560,8 +1527,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
         "markdown": "$p(s)=s^4+5s^2+4+k$\n\n$$\\begin{matrix}\n\ns^4 &  1& 5 &(4+k) \\\\\n\ns^3& 0 & 0 & \\\\\n\ns^2&  &  & \\\\\n\ns&  &  & \\\\\n\ns^0&  &  &\n\n\\end{matrix}$$\n\n$s^4+5s^2+(4+k)=0$\n\n$4s^3+10s=0$\n\n$(4s^2+10)=0$\n\n$s=\\pm j\\sqrt{5/2}$\n\n$$\\begin{matrix}\n\ns^4 &  1& 5 &(4+k) \\\\\n\ns^3& 4 & 10 & \\\\\n\ns^2& 5/2 & (4+k) & \\\\\n\ns^1&10-\\frac{4(4+k)}{5/2}  &  & \\\\\n\ns^0& (4+k) &  &\n\n\\end{matrix}$$\n\n$$\\begin{aligned}\n\n(4+k) & \\gt 0\\\\\n\nk & \\gt -4\\\\\n\n10 \\times \\frac{5}{2}& \\gt 4(4+K)\\\\\n\n(4+K)& \\lt \\frac{25}{4}\\\\\n\nK& \\lt 9/4\n\n\\end{aligned}$$\n\n$\\Rightarrow$  All roots be on imaginary axis\n\n$-4\\leq K\\leqslant 9/4$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q35": {
       "question_uid": "ec:2022:q35",
@@ -1606,8 +1572,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$$\\begin{aligned}\n\n\\Sigma u_n&=\\Sigma \\frac{n}{2^n}\\\\\n\n&\\text{Ratio test; }\\\\\n\n\\lim_{n \\to \\infty }\\frac{u_{n+1}}{u_n}&=\\lim_{n \\to \\infty }\\frac{n+1}{2^{n+1}} \\times \\frac{2^n}{n}=\\frac{1}{2}\\\\\n\n\\frac{1}{2}& \\lt 2\n\n\\end{aligned}$$\n\n$\\therefore$ By ratio test,\n\n$\\Sigma u_n$ is convergent.\n\n(A) c=1, d=-1\n\n$\\Sigma u_n=\\Sigma \\frac{1}{n}$ is divergent by P-test\n\n(B) c=0.5, d=-10\n\n$$\\begin{aligned}\n\n\\Sigma u_n&=\\Sigma \\frac{n^{-10}}{(0.5)^n}\\\\\n\n&\\text{Ratio test; }\\\\\n\n\\lim_{n \\to \\infty }\\frac{u_{n+1}}{u_n}&=\\lim_{n \\to \\infty }\\frac{(n+1)^{-10}}{(0.5)^{n+1}} \\times \\frac{(0.5)^n}{n^{10}}\\\\\n\n&=\\frac{1}{0.5}=2\\\\\n\n2& \\gt 1\n\n\\end{aligned}$$\n\n$\\therefore$ By ratio test,\n\n$\\Sigma u_n$ is divergent.\n\n(D)  c=1,d=-2\n\n$\\Sigma u_n=\\Sigma \\frac{n^{-2}}{(1)^n}=\\Sigma \\frac{1}{n^2}$\n\n$\\Sigma u_n$ is convergent by P-test.\n\nTherefore, the correct option(s) are **B, D**."
-      },
-      "answer": "B, D"
+      }
     },
     "ec:2022:q36": {
       "question_uid": "ec:2022:q36",
@@ -1652,8 +1617,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-44500eac8e.webp\" />\n\nSince, LTI systems does not change the frequency of sinusoidal input. So S3 and S4 are definitely not LTI as input and output sinusoidal frequencies are different.\n\nTherefore, the correct option(s) are **C, D**."
-      },
-      "answer": "C, D"
+      }
     },
     "ec:2022:q37": {
       "question_uid": "ec:2022:q37",
@@ -1698,8 +1662,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "At equilibrium $n = p = n_i$\n\nfor intrinsic\n\nsemiconductor\n\nCollector region is generally lightly doped\n\nthen base region in BJT. Hence option B is\n\nwrong.\n\nBy increasing temperature above 300K,\n\nmobality of electrons decreases hence option\n\n(D) is also wrong\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2022:q38": {
       "question_uid": "ec:2022:q38",
@@ -1744,8 +1707,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "$$\\left.\\begin{matrix}\n\nA &\\rightarrow   &A  &P_7 \\\\\n\nA&\\rightarrow   &B  &P_1 \\\\\n\nA&\\rightarrow   &C  &P_4\n\n\\end{matrix}\\right\\} \\Rightarrow P_1+P_4+P_7=1$$\n\n$$\\left.\\begin{matrix}\n\nB &\\rightarrow   &A  &P_2 \\\\\n\nB&\\rightarrow   &B  &P_3\n\n\\end{matrix}\\right\\} \\Rightarrow P_2+P_3=1$$\n\n$$\\left.\\begin{matrix}\n\nC &\\rightarrow   &A  &P_6 \\\\\n\nC&\\rightarrow   &C  &P_5\n\n\\end{matrix}\\right\\} \\Rightarrow P_5+P_6=1$$\n\n$P_2+P_3=P_5+P_6\\Rightarrow$ Option (A) is correct.\n\n$P_1+P_4+P_7=1\\Rightarrow$ Option (C) is correct.\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2022:q39": {
       "question_uid": "ec:2022:q39",
@@ -1790,8 +1752,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
         "markdown": "$$\\begin{aligned}\n\ny &=A+\\bar{B} =\\overline{\\bar{A}\\cdot B}\\\\\n\nf(A,B)&=A+\\bar{B} \\\\\n\nf(0,B) &=0+\\bar{B}=\\bar{B}\\Rightarrow NOT\\; Gate \\\\\n\nf(A,\\bar{B}) &=A+\\bar{\\bar{B}} =A+B\\Rightarrow OR \\;Gate\\\\\n\nf(0,f(A,\\bar{B}))&=0+(\\overline{A+B})\\Rightarrow NOR \\; Gate \\\\\n\nf(\\bar{A},B) &= \\bar{A}+\\bar{B}=\\overline{A\\cdot B}\\Rightarrow NAND\\; Gate\\\\\n\nf(0,f(\\bar{A},B))&=0+\\overline{\\overline{A\\cdot B}} =A\\cdot B\\Rightarrow AND \\; Gate\n\n\\end{aligned}$$\n\nSince, we can implement NOT Gate we can\n\nalso implement OR, AND, NOR and NAND Gate.\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2022:q40": {
       "question_uid": "ec:2022:q40",
@@ -1836,8 +1797,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$$\\begin{aligned}\n\nG_1(s)&=\\frac{10}{s^2+s+1}\\\\\n\n\\omega _{n1}^2&=1\\\\\n\n2\\xi _1 \\times 1&=1\\\\\n\n\\xi _1&=1/2\\\\\n\nG_2(s)&=\\frac{10}{s^2+s\\sqrt{10}+10}\\\\\n\n\\omega _{n2}^2&=10\\\\\n\n2\\xi _1 \\times \\sqrt{10}&=\\sqrt{10}\\\\\n\n\\xi _2&=1/2\\\\\n\n\\end{aligned}$$\n\n$\\because M_P$  depends on\n\n$\\xi$ only\n\n$y_1(t) \\; and \\; y_2(t)$ have same percentage peak\n\novershoot.\n\n$\\omega _{d_1}=\\omega _{n_1}\\sqrt{1-\\xi ^2}$\n\n$\\Rightarrow \\omega _{d_1}\\neq \\omega _{d_2} \\;\\; \\because \\omega _{n_1}\\neq \\omega _{n_2}$\n\ndamped frequency of oscillation is not same.\n\n$$\\begin{aligned}\n\nT_s &=\\frac{4}{\\xi \\omega _n}(2%\\; setting \\; time) \\\\\n\nT_{s_1} &\\neq  T_{s_2} \\;\\because \\omega _{n_1}\\neq \\omega _{n_2}\\\\\n\nC_1(s) &= \\frac{10 \\times 1/s}{s^2+s+1}\\\\\n\nC_{ss} &=\\lim_{s \\to 0}s\\cdot C_1(s) \\\\\n\n&= 10\\\\\n\nC_2(s) &= \\frac{10 \\times 1/s}{s^2+\\sqrt{10}s+10}\\\\\n\nC_{ss} &=\\lim_{s \\to 0}s\\cdot C_2(s) \\\\\n\n&= \\frac{10}{10}1=1\n\n\\end{aligned}$$\n\nSteady - state value is not same.\n\nTherefore, the correct option(s) are **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q41": {
       "question_uid": "ec:2022:q41",
@@ -1882,8 +1842,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
         "markdown": "$$\\begin{aligned}\n\nH_{pe}(f) &=\\frac{1}{H_{de}(f)} \\\\\n\n\\Rightarrow |H_{pe}(f)|^2&= \\frac{1}{|H_{de}(f)|^2} \\;\\;\\;...(i)\\\\\n\nH_{Pe}(\\omega )&=1+j\\frac{\\omega }{\\omega _0}\\;\\;where\\; \\omega _0=10^4 \\\\\n\n|H_{Pe}(\\omega )|&= \\sqrt{1+(\\omega /\\omega _0)^2}\\\\\n\n|H_{Pe}(\\omega )|^2 &=1+ (\\omega /\\omega _0)^2 \\;\\;...(ii)\\\\\n\nH_{de}(\\omega ) &=\\frac{1}{1+j\\omega RC} \\\\\n\n|H_{de}(\\omega )|^2 &=\\frac{1}{1+(j\\omega RC)^2} \\;\\;...(iii)\\\\\n\nfrom \\; (i)&,(ii),(iii) \\\\\n\n\\omega _0&= \\frac{1}{RC}=10^4\n\n\\end{aligned}$$\n\n$\\Rightarrow R=1k\\Omega ,C=0.1\\mu F$ satisfies only\n\nTherefore, the correct option(s) are **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2022:q42": {
       "question_uid": "ec:2022:q42",
@@ -1928,8 +1887,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
         "markdown": "Cut-off frequency.\n\n$$\\begin{aligned}\n\nf_c&=\\frac{c}{2a}\\;\\;\\;(m=1)\n\n&=\\frac{3 \\times 10^8}{2 \\times 10^{-4} \\times 10^{-2}}\\\\\n\n&=1.5 \\times 10^{14}Hz\n\n\\end{aligned}$$\n\n$f \\gt f_c$ will only propagate\n\nA and C will propage.\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2022:q43": {
       "question_uid": "ec:2022:q43",
@@ -1972,8 +1930,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\nI&=\\int_{0}^{4}\\int_{-x}^{x}(3x^2+3y^2)dydx\\\\\n\n&=\\int_{0}^{4}\\left [ 3x^y+\\frac{3y^3}{3} \\right ]_{-x}^xdx\\\\\n\n&=\\int_{0}^{4}[3x^2(2x)+2x^3]dx\\\\\n\n&=\\int_{0}^{4}8x^3 dx\\\\\n\n&=2 \\times 4^4\\\\\n\n&=512\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **512**."
-      },
-      "answer": "512"
+      }
     },
     "ec:2022:q44": {
       "question_uid": "ec:2022:q44",
@@ -2016,8 +1973,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-1dfa29b978.webp\" />\n\nCASE-1:\n\n$I_2=0$\n\n$V_{oc}=5V$\n\nCASE-2: With help of linearity\n\n$\\frac{4-5}{4-0}=\\frac{I_{sc}-5}{I_{sc}-0}\\Rightarrow I_{sc}=20mA$\n\n$R_{th}=\\frac{V_{oc}}{I_{sc}}=\\frac{5}{20}k=250\\Omega =0.25k\\Omega$\n\nCASE-3\n\n<img src=\"/question-images/ec/2022/ec-2022-26f92cd433.webp\" />\n\n$I_2=\\frac{10-5}{1.25}=4mA$\n\nTherefore, the correct answer is **4** (acceptable range: [3.9, 4.1])."
-      },
-      "answer": "4"
+      }
     },
     "ec:2022:q45": {
       "question_uid": "ec:2022:q45",
@@ -2060,8 +2016,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "$$\\begin{aligned}\n\nX[K]&=\\sum_{n=0}^{7}x[n]exp\\left ( -j\\frac{2\\pi}{8}mk \\right )\\\\\n\n\\bar{y}&=DFT(DFT(\\bar{x})) \\; \\; where\\\\\n\n\\bar{x}&=[x[0],x[1],...,x[7]]\\\\\n\ny(0)&=? \\;\\;x[n]=[1,0,0,0,2,0,0,0]\\\\\n\nx[n]&\\overset{DFT}{\\rightarrow}\\overset{DFT}{\\rightarrow}N\\cdot x(-k)=\\bar{y}(n)\\\\\n\n\\bar{y}(n)&=N\\cdot x(-k)|_{mod.N}=N\\cdot x(N.K),N=8\\\\\n\n\\bar{y}(n)&=8[1,0,0,0,2,0,0,0]\\\\\n\n\\bar{y}(n)&=[8,0,0,0,16,0,0,0]\\\\\n\ny(0)&=8\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **8** (acceptable range: [7.9, 8.1])."
-      },
-      "answer": "8"
+      }
     },
     "ec:2022:q46": {
       "question_uid": "ec:2022:q46",
@@ -2104,8 +2059,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "Given,\n\n$$\\begin{aligned}\n\n\\delta _n(x)&=R\\tau _n=10^{20}e^{-|x|/l_n}\\cdot \\tau _n\\\\\n\n\\delta (l_n)&=10^{20}e^{-1}\\tau _n \\;\\;\\;...(i)\\\\\n\nfor \\;\\; l_n\\leq x\\leq 2l_n\n\n\\end{aligned}$$\n\nContinuity equation is given by\n\n$D_n\\frac{\\partial^2 \\delta _n}{\\partial x^2}+G-R \\;\\;\\;...(ii)$\n\nG and R both are zero - for\n\n$[l_n\\leq x\\leq 2l_n]$\n\nHence Equation (i) reduced to\n\n$D_n \\frac{\\partial^n \\delta _n }{\\partial x^2}=0$\n\n$\\Rightarrow \\delta _n(x)=Ax+B$\n\nFor calculating A and B we use Boundary\n\ncondition\n\n$\\delta _n(2l_n)=0\\; \\Rightarrow A=\\frac{-B}{2l_n}$\n\n$\\therefore \\delta _n(x)=\\frac{-B}{2l_n}x+B=B\\left [ 1-\\frac{x}{2l_n} \\right ] \\;\\;\\;...(iii)$\n\nAt\n\n$x=l_n$\n\n$$\\begin{aligned}\n\n10^{20}e^{-1}\\tau _n&=B\\left [ 1-\\frac{l_n}{2l_n} \\right ] \\\\\n\nB&= 2 \\times 10^{20}e^{-1}\\tau _n\\\\\n\n\\therefore \\; \\delta _n(x) &=2 \\times 10^{20} e^{-1}\\tau _n\\left [ 1-\\frac{x}{2l_n} \\right ]\n\n\\end{aligned}$$\n\nfor $l_n \\leq x \\leq 2l_n$\n\nElectron diffusion current density is given by\n\n$|J_n|_{diff}=qD_n\\frac{d\\eta }{dx}=qD_n \\times 2 \\times 10^{20} \\times e^{-1} \\times \\tau _n\\left [ 0-\\frac{1}{2l_n} \\right ]$\n\n$=\\frac{1.6 \\times 10^{-19} \\times l_n ^2 \\times 2 \\times 10^{20} \\times e^{-1}}{2l_n}$\n\n$=1.6 \\times 10^{-19} \\times l_n  \\times 10^{20} \\times e^{-1}$\n\n$=1.6 \\times 10 \\times 1 \\times 10^{-4} \\times e^{-1}$\n\n$=0.59mA/cm^2$\n\nTherefore, the correct answer is **0.59** (acceptable range: [0.57, 0.61])."
-      },
-      "answer": "0.59"
+      }
     },
     "ec:2022:q47": {
       "question_uid": "ec:2022:q47",
@@ -2148,8 +2102,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "Replacing the given circuit with small signal equivalent.\n\n<img src=\"/question-images/ec/2022/ec-2022-8aca149e5d.webp\" />\n\nCase-I when diode is ON\n\nAs $r_d(ON)=0,$ the\n\n$2k\\Omega$ resistor in parallel to\n\nthe diode becomes open circuit.\n\n$\\therefore \\; V_{out}=V_{IN}\\times \\frac{2}{4}=\\frac{V_{in}}{2}$\n\n$\\therefore \\; \\frac{\\partial V_{out}}{\\partial V_{in}}|_{max}=\\frac{1}{2}\\;\\;\\;...(i)$\n\nCase-I: When diode is off:\n\n$r_d(off)=\\infty \\Rightarrow total \\; R_{eq}=2+2+2=6k\\Omega$\n\n$\\therefore \\; V_{out}=\\frac{V_{in} \\times 4}{6}=\\frac{2}{3}V_{in}\\Rightarrow \\frac{\\partial V_{out}}{\\partial V_{in}}|_{min}=\\frac{2}{3}\\;\\;\\;...(ii)$\n\nFrom (i) and (ii)\n\n$\\frac{\\left (\\frac{\\partial V_{out}}{\\partial V_{in}}\\right )_{min}}{\\left (\\frac{\\partial V_{out}}{\\partial V_{in}}\\right )_{max}}=\\frac{1/2}{2/3}=0.75$\n\nTherefore, the correct answer is **0.75** (acceptable range: [0.7, 0.8])."
-      },
-      "answer": "0.75"
+      }
     },
     "ec:2022:q48": {
       "question_uid": "ec:2022:q48",
@@ -2192,8 +2145,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-bec28df4ee.webp\" />\n\n$V_A=\\frac{V_R}{2} \\; and R_{th}=R$\n\n$V_B=\\frac{V_B}{2}$\n\n<img src=\"/question-images/ec/2022/ec-2022-cdf59e211f.webp\" />\n\n$V_C=\\frac{(V_R+V_R/4)}{2}=\\frac{5}{8}V_R$\n\n$R_{th}=2R||2R=R$\n\nSimilarly,\n\n$V_D=\\frac{V_C}{2}=\\frac{5}{16}V_R$\n\nSo,\n\n$\\frac{S}{16}V_R=\\frac{5}{16} \\times 1.6V$\n\n$V_o=\\frac{-3R}{(2R+R)} \\times \\frac{5}{16} \\times 1.6=-\\frac{3}{2} \\times \\frac{5}{16} \\times 1.6$\n\n$V_o=-0.5V$\n\nTherefore, the correct answer is **-0.5** (acceptable range: [-0.55, -0.45])."
-      },
-      "answer": "-0.5"
+      }
     },
     "ec:2022:q49": {
       "question_uid": "ec:2022:q49",
@@ -2236,8 +2188,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "For ac analysis\n\n<img src=\"/question-images/ec/2022/ec-2022-6b7a611842.webp\" />\n\n$$\\begin{aligned}\n\nV_A &=-i_d\\cdot 4k \\\\\n\nV_B&=i_d\\cdot 2k \\\\\n\n\\frac{V_A}{V_B}&=\\frac{-4}{2} \\\\\n\n\\frac{V_A}{V_B}&=-2\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **-2** (acceptable range: [-2.1, -1.9])."
-      },
-      "answer": "-2"
+      }
     },
     "ec:2022:q50": {
       "question_uid": "ec:2022:q50",
@@ -2280,8 +2231,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$Y(s)=\\frac{R(s)\\cdot \\frac{10}{s(s+10)}}{1+\\frac{10}{s(s+10)}} +\\frac{D(s)\\cdot \\frac{10}{s(s+10)}}{1+\\frac{10}{s(s+10)}}$\n\nWhen,\n\n$r(t)=0\\; and \\; d(t)=U(t)\\underleftrightarrow{L.T.}\\frac{1}{s}$\n\n$e(\\infty )=-\\lim_{s \\to 0}\\frac{s\\cdot \\frac{1}{s} \\times 1}{s(s+10)+10} =-1/10=-0.1\\;\\;\\;(\\because e(t)=r(t)-y(t))$\n\nTherefore, the correct answer is **-0.1** (acceptable range: [-0.11, -0.09])."
-      },
-      "answer": "-0.1"
+      }
     },
     "ec:2022:q51": {
       "question_uid": "ec:2022:q51",
@@ -2324,8 +2274,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-0dc8561565.webp\" />\n\nChannel capacity,\n\n$C_s=Max[I(X:Y)]$\n\n$I[(X:Y)]=H(Y)-H\\left ( \\frac{Y}{X} \\right )$\n\nWhere,\n\n$H\\left ( \\frac{Y}{X} \\right )=-\\sum_{i=1}^{3}\\sum_{i=1}^{3}P(x_i,y_i) \\log_2P\\left ( \\frac{y_i}{x_i} \\right )$\n\n$$P\\left ( \\frac{Y}{X} \\right )=\\begin{matrix}\n\n&y_1  & y_2 & y_3\\\\\n\nx_1 &1-\\alpha   & \\alpha  & 0\\\\\n\nx_2 &0  &1-\\alpha   &\\alpha  \\\\\n\nx_3 & \\alpha  & 0 & 1-\\alpha\n\n\\end{matrix}$$\n\nFor simplication convenience, let\n\n$[P(X)]=[1\\;\\;0\\;\\;0]$\n\n$$\\begin{aligned}\n\n[P(X,Y)]&=[P(X)]_d\\cdot \\left [ P\\left ( \\frac{Y}{X} \\right ) \\right ]\\\\\n\n[P(X,Y)]&=\\begin{bmatrix}\n\n1-\\alpha  & \\alpha  &0 \\\\\n\n0&  0&0 \\\\\n\n0 & 0 &0\n\n\\end{bmatrix}\\\\\n\nH\\left ( \\frac{Y}{X} \\right )&=-((1-\\alpha ) \\log_2 (1-\\alpha )+\\alpha  \\log _2 \\alpha )\\\\\n\nI(X:Y)&=H(Y)+(1-\\alpha ) \\log_2 (1-\\alpha )+ \\log _2 \\alpha \\\\\n\nC_s&=MAX\\left \\{ (X:Y) \\right \\}\\\\\n\n&=MAX\\left \\{ H(Y)+(1-\\alpha ) \\log_2 (1-\\alpha )+ \\log _2 \\alpha \\right \\}\\\\\n\n&=log_2 3+(1-\\alpha ) \\log_2 (1-\\alpha )+\\alpha  \\log _2 \\alpha\n\n\\end{aligned}$$\n\nPlot of\n\n$(1-\\alpha ) \\log_2 (1-\\alpha )+\\alpha  \\log _2 \\alpha$\n\n<img src=\"/question-images/ec/2022/ec-2022-318cc38c9c.webp\" />\n\n$C_s$ will be maximum at $\\alpha =0$ and 1.\n\nGiven\n\n$\\alpha \\in [0.25,1]$\n\nHence, $\\alpha =1$ is correct answer.\n\nTherefore, the correct answer is **1**."
-      },
-      "answer": "1"
+      }
     },
     "ec:2022:q52": {
       "question_uid": "ec:2022:q52",
@@ -2368,8 +2317,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "Here (7, 4) Hamming code is given\n\nP(0/1) = P(1/0) (due to bindary symmetry\n\nchannel) = 0.1\n\nWhen n bits are transmitted then probability of getting error in $\\gamma$ bits $= ^nC_rP^r(1-p)^{n-r}$\n\nP:Bit error probability\n\n$P_c=C_0(0.1)^0[1-0.1]^{7-0}+^7C_1(0.1)(1-0.1)^{7-1}=(0.9)^7+7 \\times 0.1 \\times (0.9)^6=0.85$\n\n$P_C$\n\n: Prob of all most one bit error.\n\nTherefore, the correct answer is **0.85** (acceptable range: [0.84, 0.86])."
-      },
-      "answer": "0.85"
+      }
     },
     "ec:2022:q53": {
       "question_uid": "ec:2022:q53",
@@ -2412,8 +2360,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communication Systems",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-7f985e82f9.webp\" />\n\nML decoding $\\rightarrow \\; f_{Y/X_A}(y)\\underset{\\overset{ \\lt }{X_B}}{\\overset{X_A}{ \\gt }} f_{Y/X_B}(y)$\n\n$i.e. \\;\\; f_{Y/X_A}(y)  \\gt f_{Y/X_B}(y) \\rightarrow \\text{ Decision favor of }X_A$\n\n$i.e. \\;\\; f_{Y/X_A}(y)  \\lt  f_{Y/X_B}(y) \\rightarrow \\text{ Decision favor of }X_B$\n\nFor\n\n$-1 \\lt y \\lt 0$ and\n\n$1 \\lt y \\lt \\infty \\rightarrow f_{Y/X_A}(y)  \\gt f_{Y/X_B}(y)$\n\nFor above internal decision in favor of\n\n$X_A$\n\nFor\n\n$-\\infty  \\lt y \\lt -1$ and\n\n$0\\lt y \\lt 1 \\rightarrow f_{Y/X_B}(y) \\gt f_{Y/X_A}(y)$\n\nFor above internal decision in favor of\n\n$X_B$\n\n$P_e=P(X_A)\\cdot P_{eX_A}+P(X_B)\\cdot P_{eX_A}$\n\n$P_{eX_A}\\rightarrow$ Probability of error  $X_A$ transmitted\n\n$P_{eX_B}\\rightarrow$ Probability of error $X_B$ transmitted\n\n$P_{eX_A}=\\int_{0}^{1} f_{Y/X_A}(y)dy=\\int_{0}^{1}e^{-(y+1)}u(y+1)dy= \\int_{0}^{1}e^{-(y+1)} dy=e^{-1}-e^{-2}=0.23$\n\n$P_{eX_B}=\\int_{0}^{1} f_{Y/X_B}(y)dy=\\int_{0}^{1}e^{(y-1)} [1-u(y-1)]dy= \\int_{0}^{1}e^{(y-1)} dy=e^{-1}-e^{-2}=0.23$\n\n$P_e=P(X_A) \\times 0.23+P(X_B) \\times 0.23 =0.23[P(X_A)+P(X_B)]=0.23$\n\nTherefore, the correct answer is **0.235** (acceptable range: [0.22, 0.25])."
-      },
-      "answer": "0.235"
+      }
     },
     "ec:2022:q54": {
       "question_uid": "ec:2022:q54",
@@ -2456,8 +2403,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
         "markdown": "$\\frac{1}{2} \\times K \\times 2+1 \\times K=1\\Rightarrow K=0.5$\n\n$$\\begin{aligned}\n\nf_X(x)&=mx+C \\\\\n\n&=0.25+C \\;\\;;\\;(-2\\leq x\\leq 0) \\\\\n\nwhen \\; x &=-2 \\Rightarrow f_X(x)=0\\\\\n\n0&=0.25x-2+C \\\\\n\nC&=0.5 \\\\\n\nf_X(x)&= \\frac{1}{4}x+\\frac{1}{2}=-2\\leq x\\leq 0\\\\\n\nf_X(x)&=0.5;\\;\\;0\\leq x\\leq 1 \\\\\n\nx_q&=\\alpha ;\\;\\; for\\; 0\\leq x\\leq 1 \\\\;\n\nx_q&= \\beta  ;\\;\\; for\\; -2\\leq x\\leq 0 \\\\;\n\n\\end{aligned}$$\n\nAgain,\n\n$MSQ[Q_e]=E\\left [ (X-X_q)^2 \\right ]$\n\nQuantization noise power\n\n$=N_o$\n\n$=MSQ[Q_e]=\\int (X-X_a)^2 f_X(x)dx$\n\nfor $-2 \\leq x\\leq 0\\Rightarrow N_Q=\\int_{-2}^{0}(x-\\beta )^2 \\times \\left ( \\frac{1}{4}x+\\frac{1}{2} \\right )dx$\n\n$=\\int_{-2}^{0}[x^2+\\beta ^2-2x\\beta ] \\left [ \\frac{x}{4}+\\frac{1}{2} \\right ]dx$\n\n$\\Rightarrow N_Q=\\frac{\\beta ^2}{2}+\\frac{2}{3}\\beta -\\frac{1}{3}$\n\n$N_Q$  to be minimum:\n\n$\\frac{dN_Q}{d\\beta }=0$\n\n$\\Rightarrow \\frac{1}{2} \\times 2\\beta +\\frac{2}{3}=0$\n\n$\\beta =-\\frac{2}{3}$\n\nfor\n\n$0\\leq x\\leq 1$\n\n$\\Rightarrow N_Q=\\int_{0}^{1}(x-\\alpha )^2 \\times \\frac{1}{2}dx =\\frac{1}{6} [(1-\\alpha )^3+\\alpha ^3]$\n\nSimilarly for\n\n$'\\alpha '$\n\n$\\frac{dN_Q}{d\\alpha  }=0$\n\n$\\Rightarrow \\;\\frac{1}{6} [3(1-\\alpha )^2(-1)+3\\alpha ^2]=0$\n\n$\\alpha =1/2$\n\nFor\n\n$N_q$ to be minimum\n\n$\\alpha -\\beta =\\frac{1}{2}-\\left ( -\\frac{2}{3} \\right )=\\frac{7}{6}=1.167$\n\nTherefore, the correct answer is **1.165** (acceptable range: [1.15, 1.18])."
-      },
-      "answer": "1.165"
+      }
     },
     "ec:2022:q55": {
       "question_uid": "ec:2022:q55",
@@ -2500,8 +2446,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
         "markdown": "$\\vec{D}(x,y,z)=(x^3\\vec{i}+y^3\\vec{j}+xy^2\\vec{k})c/m^2$\n\n$Q_{enc.}=\\int _v \\rho _v\\cdot dV=\\int (\\triangledown \\cdot \\vec{D})dV$\n\n$\\triangledown \\cdot \\vec{D}=3x^2+3y^2$\n\n$dV=dxdydz$\n\n$\\therefore \\; Q_{enc.}=\\int _v 3(x^2+y^2)dxdydz =3\\left [ \\int_{-0.5}^{0.5} x^2 dx  \\int_{-0.5}^{0.5}dy \\int_{-0.5}^{0.5} dz+\\int_{-0.5}^{0.5}dx\\int_{-0.5}^{0.5}y^2dy\\int_{-0.5}^{0.5}dz \\right ]$\n\n$=3\\left [ \\frac{x^3}{3}|_{-0.5}^{0.5} \\times 1 \\times 1 + \\frac{y^3}{3}|_{-0.5}^{0.5} \\times 1 \\times 1\\right ] =0.25+0.25=0.5C$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.48, 0.52])."
-      },
-      "answer": "0.5"
+      }
     },
     "ec:2022:ga:q1": {
       "question_uid": "ec:2022:ga:q1",
@@ -2545,8 +2490,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Here we will cheake tones.\n\nMr. X speaks neither Japanese nor Chinese.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:ga:q2": {
       "question_uid": "ec:2022:ga:q2",
@@ -2590,8 +2534,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "P, Q, R, and S in the\n\nproportion 5 : 2 : 4 : 3, respectively.\n\nassume proportion 1 is 1000\n\nSo, Sharing of Q is = 2 : 1000\n\n= 2000 Rs\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2022:ga:q3": {
       "question_uid": "ec:2022:ga:q3",
@@ -2635,8 +2578,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-f2f8ae6037.webp\" />\n\n$$\\begin{aligned}\n\nArea&=\\frac{1}{2}\\times B \\times H \\\\\n\n&= \\frac{1}{2}\\times 3  \\times 4\\\\\n\n\\frac{1}{2}\\times 5 \\times RT &= 6cm^2\\\\\n\nRT&=2.4cm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:ga:q4": {
       "question_uid": "ec:2022:ga:q4",
@@ -2680,8 +2622,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-2182789fe5.webp\" />\n\nTotal number of sqaures without a hole in\n\ninterior =15+5=20\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:ga:q5": {
       "question_uid": "ec:2022:ga:q5",
@@ -2725,8 +2666,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "If person will stand on 'P' than he/she can't see\n\nthe visibility side of R and vice versa.\n\nBut if security guard will be stand at Q and S\n\nthan he will se whole 360.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:ga:q6": {
       "question_uid": "ec:2022:ga:q6",
@@ -2770,8 +2710,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Using chemicals to kill mosquitoes may have\n\nundesired consequence but it is not clear if using\n\ngenetically modified mosquitoes has any negative consequence.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2022:ga:q7": {
       "question_uid": "ec:2022:ga:q7",
@@ -2815,8 +2754,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$2x-1 \\gt 7 \\Rightarrow 2x \\gt 8\\Rightarrow x \\gt 4$\n\n$2x-9 \\lt 1 \\Rightarrow 2x \\lt 10\\Rightarrow x \\lt 5$\n\nCombining both inequalities $4 \\lt x \\lt 5$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:ga:q8": {
       "question_uid": "ec:2022:ga:q8",
@@ -2860,8 +2798,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/ec/2022/ec-2022-d9643ca9f2.webp\" />\n\n$$\\begin{aligned}\n\nPS&=\\sqrt{(\\sqrt{2})^2+(-2)^2}\\\\\n\n&=\\sqrt{8}\\\\\n\nSQ&=\\sqrt{4+4}=\\sqrt{8}\\\\\n\nQS&=\\sqrt{4+4}=\\sqrt{8}\\\\\n\nPQ&=\\sqrt{16}=4\\\\\n\nRS&=\\sqrt{16}=4\\\\\n\nArear&=\\sqrt{8} \\times \\sqrt{8}=8 units\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2022:ga:q9": {
       "question_uid": "ec:2022:ga:q9",
@@ -2903,11 +2840,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Logical Reasoning - Truth-Tellers and Liars (Knights and Knaves)",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Given Facts & Statements:**\n  - Exactly one of the five students $\\{P, Q, R, S, T\\}$ copied in the exam.\n  - We are given that **$S$ never lies** $\\implies$ Statement of $S$ is **TRUE**.\n  - **Statement of S:** *\"Only one of us is telling the truth.\"*\n  - Since $S$ is telling the truth, $S$ is that unique truth-teller.\n  - Therefore, all other four students ($P, Q, R, T$) are **lying (making false statements)**.\n\n- **Deducing the Copier from False Statements:**\n  - **Statement of T:** *\"R is telling the truth.\"*\n    - Since $T$ is lying, this statement is false $\\implies$ $R$ is indeed lying (consistent with our premise).\n  - **Statement of R:** *\"P did not copy in the exam.\"*\n    - Since $R$ is lying, this statement is false.\n    - Negating *\"P did not copy\"* yields:\n      $$\\mathbf{P \\text{ copied in the exam}}$$\n  - **Statement of P:** *\"R has copied in the exam.\"*\n    - Since $P$ is lying, this is false $\\implies$ $R$ did not copy. (Consistent!)\n  - **Statement of Q:** *\"S has copied in the exam.\"*\n    - Since $Q$ is lying, this is false $\\implies$ $S$ did not copy. (Consistent!)\n\n- **Conclusion:**\n  - The unique student who copied in the exam is **$P$**.\n\nTherefore, the correct answer is **Option B (P)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ec:2022:ga:q10": {
       "question_uid": "ec:2022:ga:q10",
@@ -2949,11 +2885,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Spatial Aptitude - 3D Rotations of a Square & Group Operations",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Given Operations on Square $PQRS$ (Clockwise: $P \\to Q \\to R \\to S$):**\n  - **Operation X:** $180^\\circ$ 3D rotation about the $S-Q$ diagonal axis.\n    - Keeps vertices on the $S-Q$ diagonal ($S$ and $Q$) fixed in their positions.\n    - Swaps the other two vertices across the diagonal ($P \\leftrightarrow R$).\n    - Flips the face of the square (front to back).\n  - **Operation Y:** $180^\\circ$ 3D rotation about the $P-R$ diagonal axis.\n    - Keeps vertices on the $P-R$ diagonal fixed.\n    - Swaps the other two vertices across the diagonal.\n    - Flips the face of the square back (back to front).\n\n- **Evaluating Sequence $XY$:**\n  - Start with initial configuration: Top-Left $= P$, Top-Right $= Q$, Bottom-Right $= R$, Bottom-Left $= S$ (Front face).\n  - After $X$: Top-Left $= R$, Top-Right $= Q$, Bottom-Right $= P$, Bottom-Left $= S$ (Back face).\n  - After $Y$ applied to the result of $X$:\n    - Vertices on $P-R$ diagonal (Top-Left $= R$, Bottom-Right $= P$) remain in place.\n    - Vertices on $S-Q$ diagonal swap: Top-Right becomes $S$, Bottom-Left becomes $Q$.\n    - Face flips back to Front face.\n  - Final configuration after $XY$:\n    $$\\text{Top-Left} = R, \\quad \\text{Top-Right} = S, \\quad \\text{Bottom-Right} = P, \\quad \\text{Bottom-Left} = Q \\quad (\\text{Front face})$$\n  - Notice that every vertex has shifted two positions clockwise: this is an in-plane **$180^\\circ$ rotation**.\n\n- **Evaluating Operation Z & Sequences:**\n  - **Operation Z:** $90^\\circ$ clockwise in-plane rotation about the center $T$.\n  - Two applications ($ZZ = Z^2$) yield a $90^\\circ + 90^\\circ = 180^\\circ$ in-plane rotation.\n  - Thus, **$XY$ is exactly equivalent to $ZZ$**.\n  - **Sequence (1) $XYZZ$:**\n    $$XYZZ = (ZZ)ZZ = Z^4 = 360^\\circ \\text{ rotation} = \\text{Identity (leaves square unchanged)}$$\n  - **Sequence (2) $XY$:**\n    $$XY = 180^\\circ \\text{ rotation} \\neq \\text{Identity}$$\n  - **Sequence (3) $ZZZZ$:**\n    $$ZZZZ = Z^4 = 360^\\circ \\text{ rotation} = \\text{Identity (leaves square unchanged)}$$\n\n- **Comparing the Sequences:**\n  - Sequence (1) and Sequence (3) both result in the **Identity transformation** ($360^\\circ$ rotation).\n  - Therefore, sequence (1) and sequence (3) are equivalent.\n\nTherefore, the correct answer is **Option B (The sequence of operations (1) and (3) are equivalent)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:36.927Z",
+  "generatedAt": "2026-10-25T18:50:27.002Z",
   "shardKey": "ec-2020-s1",
   "yearSetKey": "ec-2020-s1",
   "yearSetIdentity": "ec:2020:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$v_1, v_2,..., v_6$ are six vectors in $\\mathbb{R}^4$.\n\nFor a 4-dimensional vector space,\n\n(i) any four linearly independent vectors form a basis (or)\n\n(ii) Any set of four vectors in $\\mathbb{R}^4$ spans  $\\mathbb{R}^4$,<bt> then it forms a basis.\n\nTherefore, clearly options (A), (B), (D) are true.\n\nOption (C) is FALSE\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q2": {
       "question_uid": "ec:2020:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "Divergence and curl operator is performed on a vector field $\\vec{A}$\n\nCurl operation provides a vector orthogonal to the given vector field $\\vec{A}$\n\n$\\bigtriangledown \\times(\\bigtriangledown \\times \\vec{A})=\\bigtriangledown (\\bigtriangledown \\cdot \\vec{A})-\\bigtriangledown ^2 \\vec{A}$\n\nIf a vector field is irrortational then  $\\bigtriangledown \\times \\vec{A}=0$\n\nIf a vector field is solenoidal then $\\bigtriangledown \\cdot \\vec{A}=0$\n\nIf a field is scalar A, then $\\bigtriangledown ^2  \\vec{A}=0$, is a laplacian equation.\n\nHence option (C) is incorrect\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q3": {
       "question_uid": "ec:2020:q3",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} \\text{Given, } f(x,y,z)&=e^{1-x\\cos y}+xze^{-1/(1+y^{2})} \\\\ \\frac{\\partial f}{\\partial x}&=e^{1-x\\cos y}(0-\\cos y)+ze^{-1/1+y^{2}} \\\\ \\left ( \\frac{\\partial f }{\\partial x} \\right )_{(1,0,e)}&=e^{0}(0-1)+e\\cdot e^{-1/(1+0)} \\\\ &=-1+1=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2020:q4": {
       "question_uid": "ec:2020:q4",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Taking $\\frac{\\mathrm{d} }{\\mathrm{d} x}=D$\n\nGiven, $D^{2}-6D+9=0$\n\n$(D-3)^2=0$\n\n$D=3,3$\n\nSo, Solution of the given Differential equation\n\n$y=(C_{1}+C_{2}x)e^{3x}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q5": {
       "question_uid": "ec:2020:q5",
@@ -234,11 +230,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Signals and Systems - Non-Linear Discrete-Time Systems & Impulse Response",
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "- **System Input-Output Relationship:**\n  - The discrete-time system is described by the running-maximum operator:\n    $$y[n] = \\max_{-\\infty \\le k \\le n} |x[k]|$$\n  - To determine the unit impulse response $h[n]$, the input is set to the discrete unit impulse signal:\n    $$x[n] = \\delta[n] = \\begin{cases} 1, & n = 0 \\\\ 0, & n \\neq 0 \\end{cases}$$\n\n- **Step-by-Step Response Evaluation:**\n  - **For $n < 0$:**\n    - The index set for $k$ is $(-\\infty, n]$.\n    - Since $n < 0$, $k = 0$ is not included in the interval.\n    - Thus $|x[k]| = |\\delta[k]| = 0$ for all $k \\le n$.\n    - $$y[n] = \\max_{k \\le n} (0) = 0$$\n  - **For $n \\ge 0$:**\n    - The index set includes $k = 0$, where $|x[0]| = |\\delta[0]| = 1$, and $|x[k]| = 0$ for all other $k$.\n    - The maximum over the interval $(-\\infty, n]$ is:\n      $$y[n] = \\max\\{0, 1\\} = 1$$\n  - Combining both cases:\n    $$y[n] = \\begin{cases} 0, & n < 0 \\\\ 1, & n \\ge 0 \\end{cases} = u[n]$$\n  - The unit impulse response of the system is the **unit step signal $u[n]$**.\n\n- **Distractor Analysis:**\n  - Option A ($0$ for all $n$) fails because impulse at $n=0$ is remembered for all $n \\ge 0$.\n  - Option B ($1$ for all $n$) fails for negative time indices $n < 0$.\n  - Option D ($\\delta[n]$) fails because the memory retains the peak value $1$ rather than returning to zero.\n\nTherefore, the correct answer is **Option C (unit step signal u[n].)**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q6": {
       "question_uid": "ec:2020:q6",
@@ -283,8 +278,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "$\\frac{E_{c}+E_{v}}{2}-E_{F_{i}}=\\frac{KT}{2}\\ln \\left ( \\frac{N_{C}}{N_{V}}\\right )\\, \\, \\, \\, \\, \\, \\left ( \\because N_{C}=\\frac{N_{V}}{2} \\right )$\n\n$=\\frac{0.026}{2}\\ln 0.5=-9.01\\, meV$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2020:q7": {
       "question_uid": "ec:2020:q7",
@@ -327,11 +321,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electronic Devices - Shockley-Read-Hall (SRH) Recombination Rate",
+        "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "- **Governing SRH Recombination Equation:**\n  - Recombination through intermediate trap states (recombination centers) in a semiconductor is governed by the Shockley-Read-Hall (SRH) model:\n    $$U = \\frac{v_{th} \\sigma_n \\sigma_p N_t (pn - n_i^2)}{\\sigma_n (n + n_1) + \\sigma_p (p + p_1)}$$\n    where $v_{th}$ is thermal velocity, $\\sigma$ is capture cross-section, and $N_t$ is trap density.\n  - Given $\\sigma_n = \\sigma_p = \\sigma_0$ and traps located near the intrinsic Fermi level ($n_1 = p_1 = n_i$):\n    $$U = \\frac{v_{th} \\sigma_0 N_t (pn - n_i^2)}{n + p + 2n_i}$$\n  - For forward bias $V_a > 0$, the $pn$ product inside the depletion region is $pn = n_i^2 e^{q V_a / kT}$.\n  - The recombination rate $U$ is maximized when the denominator $(n + p)$ is minimized, which occurs when **$n = p = n_i e^{q V_a / 2kT}$**:\n    $$U_{\\max} \\approx \\frac{1}{2} v_{th} \\sigma_0 N_t n_i e^{q V_a / 2kT}$$\n\n- **Evaluation of Candidate Statements:**\n  - **Statement A:** $U_{\\max} \\propto n_i$. Reducing $n_i$ directly reduces $U_{\\max}$. True.\n  - **Statement C:** $U_{\\max} \\propto e^{q V_a / 2kT}$, which depends exponentially on applied bias $V_a$. True.\n  - **Statement D:** $U_{\\max} \\propto v_{th}$. Increasing carrier thermal velocity increases $U_{\\max}$. True.\n  - **Statement B:**\n    - The condition $n = p$ occurs deep **inside the space-charge region near the metallurgical junction**, where the intrinsic Fermi level crosses mid-potential.\n    - Near the depletion edges, majority carrier concentration dominates ($n \\gg p$ on the n-edge, $p \\gg n$ on the p-edge), making $(n + p)$ large and $U$ low.\n    - Thus, $U_{\\max}$ does NOT occur at the edges of the depletion region. Statement B is **FALSE**.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ec:2020:q8": {
       "question_uid": "ec:2020:q8",
@@ -376,8 +369,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "<img src=\"/question-images/ec/2020/ec-2020-c65181150f.webp\"/>\n\nGiven circuit is a Schmitt trigger of non-inverting type.\n\n$V_{o}=\\pm 5\\, V$\n\n$V^{+}=\\frac{V_{o}\\times 1+V_{i}\\times 1}{1+1}=\\frac{V_{o}+V}{2}$\n\nlet,$V_{o}=-5\\, V,\\, \\, \\, \\,V^{+}=\\frac{-5+V_{i}}{2}$\n\n$V_{o}$\n\ncan change from -5 V to +5 V if $V^{+} \\gt 0$\n\ni.e.  $\\frac{-5+V_{i}}{2} \\gt 0\\Rightarrow V_{i} \\gt 5\\, V$\n\nsimilarly, $V_{o}$\n\ncan change from -5 V to +5 V if $V_{i} \\lt -5\\, V$\n\nBut given input has peak value 1 V. Hence output cannot change from +5 V to -5 V or -5 V to +5 V.\n\nOutput remain constant at +5 V or -5 V.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2020:q9": {
       "question_uid": "ec:2020:q9",
@@ -422,8 +414,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Network Theorems",
         "markdown": "By applying the Source Transformation\n\n<img src=\"/question-images/ec/2020/ec-2020-eaeb22f524.webp\" />\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q10": {
       "question_uid": "ec:2020:q10",
@@ -468,8 +459,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
         "markdown": "Output,$F=\\bar{P}\\bar{Q}R+P\\bar{Q}R+PQ\\, \\, \\, \\,$\n\n$F=\\bar{Q}R+PQ$\n\n<img src=\"/question-images/ec/2020/ec-2020-bf5bef21cb.webp\" />\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q11": {
       "question_uid": "ec:2020:q11",
@@ -514,8 +504,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "s-plane contour is encircling 2-poles and 3-zeros in clockwise direction hence the corresponding G(s) plane contour encircles origin 2-times in anti-clockwise direction and 3-times in clockwise direction.\n\nTherefore,  Effectively once in clockwise direction.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2020:q12": {
       "question_uid": "ec:2020:q12",
@@ -560,8 +549,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "Probability of error in decoding single bit=$\\alpha$\n\nThen probability of no error will be $1- \\alpha$.\n\nTotal N-bits transmitted, so that probability of no error in received block\n\n=$(1-\\alpha )(1-\\alpha )...N \\, \\text{ Times}$\n\n$=(1-\\alpha) ^{N}$\n\nThe Probability of received block is erroneous is $=1-(1-\\alpha) ^{N}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2020:q13": {
       "question_uid": "ec:2020:q13",
@@ -606,8 +594,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "For given impedance Normalized impedance is\n\n$$\\begin{aligned} \\frac{Z}{Z_{0}}&=\\frac{jX}{Z_{0}}\\\\ Z&=jX \\\\ \\Rightarrow \\; Z&=0+jX \\end{aligned}$$\n\nNormalized Resistance  $=0 \\; \\Rightarrow \\;  r=0$\n\n$X=-\\infty \\text{ to } \\infty$\n\n$r=0$ and X from $-\\infty \\, to\\, \\infty$ is a unit circle (radius 1) and centre (0,0) on a complex reflection coeffient plane:\n\n<img src=\"/question-images/ec/2020/ec-2020-f1531610b9.webp\" />\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q14": {
       "question_uid": "ec:2020:q14",
@@ -652,8 +639,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "$$\\begin{aligned}y(n)&=\\sum_{K=0}^{3}(-1)^K  x(n-K) \\\\ &=x(n)-x(n-1)+x(n-2)-x(n-3) \\\\ y(z)&=X(z)-z^{-1}X(z)+Z^{-2}X(z)-Z^-3X(z) \\\\ H(z)&=\\frac{Y(z)}{X(z)}=1-Z^{-1}+Z^{-2}-Z^{-3}\\\\ &=\\frac{z^{3}-z^{2}+z-1}{z^{3}}=\\frac{(z-1)(z^{2}+1)}{Z^{3}}\\end{aligned}$$\n\nPole Zero plot:\n\n<img src=\"/question-images/ec/2020/ec-2020-d641717feb.webp\" />\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q15": {
       "question_uid": "ec:2020:q15",
@@ -696,8 +682,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "From maximum power transfer theorem\n\n$Z_{L}=Z_{th}$\n\n$Z_{th}=Z_{22}-\\frac{Z_{12}\\times Z_{21}}{R_{S}+Z_{11}}$\n\nFor given data,\n\n$Z_{th}=120-\\frac{60\\times 60}{10+40}=48\\Omega$\n\n$Z_{L}=48\\Omega$\n\nTherefore, the correct answer is **48**."
-      },
-      "answer": "48"
+      }
     },
     "ec:2020:q16": {
       "question_uid": "ec:2020:q16",
@@ -740,8 +725,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "$Z=\\frac{V}{I}=\\frac{200\\angle 0^{\\circ}}{10\\angle -45^{\\circ}}=20\\angle 45^{\\circ}$\n\n$Z=10\\sqrt{2}+j10\\sqrt{2}$\n\n$X_{L}=10\\sqrt{2}$\n\n$\\omega L=10\\sqrt{2}$\n\n$L=\\frac{10\\sqrt{2}}{5}=2.828\\, H$\n\nTherefore, the correct answer is **2.825** (acceptable range: [2.8, 2.85])."
-      },
-      "answer": "2.825"
+      }
     },
     "ec:2020:q17": {
       "question_uid": "ec:2020:q17",
@@ -784,8 +768,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "Voltage Doubles, $V_{o}=2\\: V_{m}=2\\times 230\\sqrt{2}\\cong 650.4V$\n\nTherefore, the correct answer is **650.5** (acceptable range: [644, 657])."
-      },
-      "answer": "650.5"
+      }
     },
     "ec:2020:q18": {
       "question_uid": "ec:2020:q18",
@@ -828,8 +811,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "$$\\begin{aligned} V_o=(1+1) \\times 2&=4V \\\\ \\text{KCL at node } V_o & \\\\ \\frac{2-4}{1k\\Omega }I_o+\\frac{0-4}{1k\\Omega }&=0 \\\\ -2+I_o-4 &=0 \\\\ I_o&=6mA \\end{aligned}$$\n\nTherefore, the correct answer is **6**."
-      },
-      "answer": "6"
+      }
     },
     "ec:2020:q19": {
       "question_uid": "ec:2020:q19",
@@ -872,8 +854,7 @@
       "detailed_solution": {
         "concept": "Microprocessors - Basics of 8085 Microprocessor",
         "markdown": "$$\\begin{aligned}2^{n}&=N  \\\\\n\nn & \\rightarrow \\text{ Number of Address Lines} \\\\ N & \\rightarrow \\text{ Number of Memory Locations} \\\\ 2^{n}&=16 KB \\\\ &=2^{4} (2^{10}) \\\\ &=2^{14}\\\\ n&=14\\end{aligned}$$\n\nTherefore, the correct answer is **14**."
-      },
-      "answer": "14"
+      }
     },
     "ec:2020:q20": {
       "question_uid": "ec:2020:q20",
@@ -916,8 +897,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
         "markdown": "Given,  n=10\n\n$V_{FS}=10\\, V$\n\nInput Voltage=$(13A)_{16}=(314)_{10}$\n\nOutput Voltage=Resolution X Decimal Equivalent of input\n\n$V_{o}=\\frac{10}{2^{10}-1}\\times 314=3.069\\, V$\n\nTherefore, the correct answer is **3.065** (acceptable range: [3.05, 3.08])."
-      },
-      "answer": "3.065"
+      }
     },
     "ec:2020:q21": {
       "question_uid": "ec:2020:q21",
@@ -960,8 +940,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "<img src=\"/question-images/ec/2020/ec-2020-f76fa54b07.webp\" />\n\n$Z_{in}\\,\\, for \\, (l=\\lambda /4)=\\frac{Z_{0}^{2}}{Z_{L}}=\\frac{50^{2}}{400}=\\frac{25}{4}=6.25\\Omega$\n\nTherefore, the correct answer is **6.25**."
-      },
-      "answer": "6.25"
+      }
     },
     "ec:2020:q22": {
       "question_uid": "ec:2020:q22",
@@ -1004,8 +983,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "Given that, $P(X=2)=\\alpha$\n\nEntropy Will be Maximum;\n\nProvided Probabilities are equal.\n\ni.e.   $P(X=2)=P(X=-2)=\\alpha =\\frac{1}{2}$\n\n$\\alpha =\\frac{1}{2}=0.5$\n\nTherefore, the correct answer is **0.5**."
-      },
-      "answer": "0.5"
+      }
     },
     "ec:2020:q23": {
       "question_uid": "ec:2020:q23",
@@ -1048,8 +1026,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "Characteristic equation q(s) for the given open loop system will be\n\n$q(s)=s^{3}+10s^{2}+16s+Ks+11K=0$\n\nUsing R-H criteria,\n\n<img src=\"/question-images/ec/2020/ec-2020-4fc97dfb78.webp\" />\n\nFor System to be Marginally Stable\n\n$$\\begin{aligned}\\frac{10(16+K)-11K}{10}&=0 \\\\ 160+10K-11K&=0 \\\\ K&=160\\end{aligned}$$\n\nTherefore, the correct answer is **160**."
-      },
-      "answer": "160"
+      }
     },
     "ec:2020:q24": {
       "question_uid": "ec:2020:q24",
@@ -1092,8 +1069,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "$$\\begin{aligned} \\text{Given:  }\\phi (t) &=\\left\\{\\begin{matrix} 1 & 5\\leq t\\leq 7\\\\ 0 & otherwise \\end{matrix}\\right. \\\\ s_{\\omega }(f)& =3 \\text{ Watts/Hz} \\\\ R_{\\omega }(\\tau )&=3\\delta (\\tau )=3\\delta (t_{1}-t_{2})  \\\\ Var[y]&=E[y^{2}]-{E[y]}^{2} \\\\ {E[W(t)]}^{2}&=\\text{DC  power} \\\\ &=\\text{Area under PSD at }f=0  \\\\ {E[W(t)]}^{2}&=0  \\\\ E[W(t)]&=0 \\\\ y&=\\int_{-\\infty }^{\\infty }W(t)\\phi (t)dt \\\\ E[y]&=\\int_{-\\infty }^{\\infty }E[W(t)]\\phi (t)dt \\\\ y&=\\int_{-\\infty }^{\\infty }W(t)\\phi (t)dt\\rightarrow E[y^{2}]\\\\ &=S_{\\omega }(f)\\cdot Energy[\\phi (t)]\\\\ & =3 \\times 2=6\\\\ \\text{Var}[y]&=6-0=6\\end{aligned}$$\n\nDetailed Explanations for:\n\n$$\\begin{aligned}y&=\\int_{-\\infty }^{\\infty }W(t)\\phi (t)dt \\\\ E(y^{2})&=E[y \\cdot y] \\\\ &=E[\\int_{-\\infty }^{\\infty }W(t_{1})\\phi (t_{1})dt_{1}\\int_{-\\infty }^{\\infty }W(t_{2})\\phi (t_{2})dt_{2}] \\\\ &=E[\\int_{-\\infty }^{\\infty }\\int_{-\\infty }^{\\infty }W(t_{1})W(t_{2})\\phi (t_{1})\\phi (t_{2})dt_{1}\\cdot dt_{2}] \\\\ &=\\int_{-\\infty }^{\\infty }\\int_{-\\infty }^{\\infty }E[W(t_{1})W(t_{2}) \\cdot \\phi (t_{1})\\phi (t_{2})dt_{1} dt_{2}] \\\\ &=\\int_{-\\infty }^{\\infty }\\int_{-\\infty }^{\\infty }R_{W}(t_{1}-t_{2})\\phi (t_{1})\\phi (t_{2})dt_{1}dt_{2} \\\\ &=\\int_{-\\infty }^{\\infty }\\int_{-\\infty }^{\\infty }3\\delta (t_{1}-t_{2})\\phi (t_{1})\\phi (t_{2})dt_{1}dt_{2}\\end{aligned}$$\n\nAbove Integration Exists Provided\n\n$$\\begin{aligned}t_{1}&=t_{2}=t\\\\ &=\\int_{-\\infty }^{\\infty }3\\delta (0)\\phi (t)\\phi (t)dt \\, dt\\\\ &=3 \\int_{-\\infty }^{\\infty } \\delta (0) dt + \\int_{-\\infty }^{\\infty } \\phi ^2 (t) dt\\\\&=2 \\times 1 \\times \\text{Energy}[\\phi (t)] \\\\E[y^{2}]&=6\\end{aligned}$$\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ec:2020:q25": {
       "question_uid": "ec:2020:q25",
@@ -1136,8 +1112,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "s={(H,H),(H,T),(T,H),(T,T)}\n\n$$M=\\begin{bmatrix} 1 & 1 & 0 & 0 \\\\ H & H & T & T \\end{bmatrix}$$ of first toss\n\n$$N=\\begin{bmatrix} H & T & H& T \\\\ 1 & 0 & 1 & 0 \\end{bmatrix}$$ of second toss\n\nNow,X=Min{M,N}\n\n$\\therefore$\n\nX=Min{H,H}=Min{1,1}=1\n\nX=Min{H,T}=Min{1,0}=0\n\nX=Min{T,H}=Min{0,1}=0\n\nX=Min(T,T)=Min(0,0)=0\n\n$\\therefore$P(X=1)=$\\frac{1}{4}$,P(x=0)=$\\frac{3}{4}$\n\nWe Know that, $E(X)=\\sum_{i}X_{i}P(x_{i})=1\\times \\frac{1}{4}+0\\times \\frac{3}{4}=\\frac{1}{4}=0.25$\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ec:2020:q26": {
       "question_uid": "ec:2020:q26",
@@ -1182,8 +1157,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Given:\n\n$x_{1}+2x_{2}=b_{1} \\; \\; ...(i)$\n\n$2x_{1}+4X_{2}=b_{2}\\; \\; ...(ii)$\n\n$3x_{1}+7x_{2}=b_{3}\\; \\; ...(iii)$\n\n$3x_{1}+9x_{2}=b_{4}\\; \\; ...(iv)$\n\nFrom equations (ii) and (i)\n\nWe can write,\n\n$b_{2}=2[x_{1}+2x_{2}]=2b_{1}$\n\nFrom option (C):\n\n$3b_{1}-6b_{3}+b_{4}=3[x_{1}+2x_{2}]-6[3x_{1}+7x_{2}]+3x_{1}+9x_{2}\\neq 0$\n\nFrom option (A):\n\n$b_{2}=2b_{1}$\n\nand\n\n$b_{1}-3b_{3}+b_{4}=6[x_{1}+2x_{2}]-3[3x_{1}+7x_{2}]+[3x_{1}+9x_{2}]=0$\n\n$6b_{1}-3b_{3}+b_{4}=0$\n\nHence, answer is option (A).\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q27": {
       "question_uid": "ec:2020:q27",
@@ -1228,8 +1202,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} \\frac{dy}{dx}&=(y-1)x\\\\ \\frac{dy}{y-1}&=x dx\\\\ \\text{Integrating}&\\text{ both side, we get}\\\\ \\int \\frac{1}{y-1}dy&=\\int xdx\\\\ \\ln |y-1|&=\\frac{x^2}{2}+C\\; \\; \\;...(i)\\\\ \\text{Now, }&\\\\ \\frac{dy}{dx}&=0 \\text{ when y=1}\\\\ \\text{It means }y&= \\text{constant C}\\\\ \\therefore \\; y&=1\\;\\;\\;...(ii) \\end{aligned}$$\n\nSo, equation (i) and (ii) are two different solution of given differential equation.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q28": {
       "question_uid": "ec:2020:q28",
@@ -1274,8 +1247,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "<img src=\"/question-images/ec/2020/ec-2020-0788e6f079.webp\" />\n\n$I=-[I_{1}+I_{2}]$\n\n$I=-\\left [ \\frac{120\\angle -90^{\\circ}}{80-j35}+\\frac{120\\angle -30^{\\circ}}{80-j35} \\right ]$\n\n$I=2.38\\angle 143.7^{\\circ}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q29": {
       "question_uid": "ec:2020:q29",
@@ -1320,8 +1292,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "$$\\begin{aligned}x(t)&=\\cos 200\\pi t\\\\ t&=\\frac{n}{400}\\\\ x(n)&=\\cos \\left ( 200\\pi \\frac{n}{400} \\right )\\\\&=\\cos \\left ( \\frac{\\pi }{2} n\\right ); \\; \\; n=0,1,...,7\\\\ &=\\left \\{ \\cos 0,\\cos \\frac{\\pi }{2},\\cos \\pi ,\\cos \\frac{3\\pi }{2} ,\\cos 2\\pi ,\\cos \\frac{5\\pi }{2},\\cos 3\\pi ,\\cos \\frac{7\\pi }{2}\\right \\} \\\\  &={1,0,-1,0,1,0,-1,0}\\xLeftrightarrow{\\text{DFT}} X(K) \\\\ \\text{suppose, }  y(n)&={1,-1,1,-1}\\xLeftrightarrow{\\text{DFT}} Y(k)\\end{aligned}$$\n\n$$[Y(K)]=\\left.\\begin{matrix} [W_{N}] \\end{matrix}\\right|_{N=4}[y(n)]=\\begin{bmatrix} 1 &1 &1 &1 \\\\ 1 &-j &-1 &j \\\\ 1&-1 &1 &-1 \\\\ 1&j& -1 &-j \\end{bmatrix}\\begin{bmatrix} 1\\\\ -1\\\\ 1\\\\ -1 \\end{bmatrix}=\\begin{bmatrix} 0 &0 &4 &0 \\end{bmatrix}$$\n\nNow,as we know,\n\nIf for $\\, \\left \\{ a,b,c,d \\right \\}\\xLeftrightarrow{\\text{DFT}} \\left \\{ A,B,C,D \\right \\}$\n\nThen for, $\\left \\{ a,0,b,0,c,0,d,0 \\right \\}\\xLeftrightarrow{\\text{DFT}}\\left \\{A,B,C,D,A,B,C,D \\right \\}$\n\nSimilarly for $y(n)={1,-1,1,-1}\\xLeftrightarrow{\\text{DFT}}Y(k)=\\left \\{ 0,0,4,0\\right \\}$\n\nHere, for $x(n)=\\left \\{ 1,0,-1,0,1,0,-1,0 \\right \\}$\n\n$X(k)=\\left \\{ \\underset{0}{\\uparrow},0,4,0,0,0,4,0 \\right \\}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q30": {
       "question_uid": "ec:2020:q30",
@@ -1366,8 +1337,7 @@
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
         "markdown": "From source transformation,\n\n<img src=\"/question-images/ec/2020/ec-2020-1435bfafed.webp\" />\n\nKVL in loop 1,\n\n$2i_{1}=2i+0.5\\frac{\\mathrm{d} i}{\\mathrm{d} t}+V$\n\n$\\frac{\\mathrm{d} i}{\\mathrm{d} t}=-2V-4i+4i_{1}$\n\nKCL at node (a),\n\n$i=0.25\\frac{\\mathrm{d} V}{\\mathrm{d} t}+\\frac{V-i_{2}}{1}$\n\n$\\frac{\\mathrm{d} v}{\\mathrm{d} t}=-4V+4i+4i_{2}$\n\n$$\\begin{bmatrix} v\\\\ i \\end{bmatrix}=\\begin{bmatrix} -4 & 4\\\\ -2 & -4 \\end{bmatrix}\\begin{bmatrix} v\\\\ i \\end{bmatrix}+\\begin{bmatrix} 0 &4 \\\\ 4 &0 \\end{bmatrix}\\begin{bmatrix} i_{1}\\\\ i_{2} \\end{bmatrix}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q31": {
       "question_uid": "ec:2020:q31",
@@ -1412,8 +1382,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "As per GATE official answer key MTA (Marks to ALL)\n\n<img src=\"/question-images/ec/2020/ec-2020-8de895cfd5.webp\" />\n\nDepletion or transition capacitance is,\n\n$C_{D}=\\frac{A_{\\epsilon }}{W}$\n\nFor one-sided PN junction $\\left (EX:P^{+}N Junction \\right )$\n\n$W=\\sqrt{\\frac{2\\epsilon V_{B}}{eN_{D}}}=\\sqrt{\\frac{2\\epsilon \\left ( V_{bi}-V \\right )}{eN_{D}}}$\n\nwhere V is anode to cathode applied potential.\n\n$\\Rightarrow \\, \\, \\, \\, C_{D}=\\frac{A\\epsilon }{\\sqrt{\\frac{2\\, \\epsilon \\left ( V_{bi}-V \\right )}{eN_{D}}}}$\n\n$\\Rightarrow \\, \\, \\, \\, \\frac{1}{C_{D}^{2}}=\\frac{2}{A^{2}\\epsilon eN_{D}}\\left ( V_{bi}-V \\right )$\n\n$\\frac{1}{C_{D}^{2}}\\, becomes \\, zero \\, at V=V_{bi}$\n\nFrom above graph,$y=\\frac{1}{C_{D}^{2}}=0\\, at\\, x_{1}=V_{bi}$\n\n$And \\, \\, \\, y_{2}=\\frac{1}{C_{D}^{2}}=4\\times 10^{20}\\, at\\, x_{2}=-0.2V$\n\n$Slope=\\frac{y_{2}-y_{1}}{x_{2}-X_{1}}=\\frac{4\\times 10^{20}-0}{-0.2-V_{bi}}$\n\n$V_{bi}$ is not provided,slope cannot be found.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q32": {
       "question_uid": "ec:2020:q32",
@@ -1458,8 +1427,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "MOS capacitance\n\n$$\\begin{aligned}\\phi_{m}&=3.87,\\phi _{B}=4.8,\\phi _{ms}=-0.93\\\\V_{T}&=\\phi _{ms}-\\frac{{Q}'_{ox} }{{C}_{ox}}-\\frac{{Q}'_{d}}{{C}_{ox}}+2\\phi_{F_{p}}\\\\ \\phi _{F_{p}}&=E_{i}-E_{F}=0.5-0.2=0.3\\\\ -0.16&=-0.93-0-\\frac{{Q}'_{d}}{C_{ox}}+2\\times 0.3 \\\\ \\frac{{Q}'_{d}}{C_{ox}}&=0.6+0.16-0.93=-0.17\\\\ Q_{b}&=-0.17\\times C_{ox}\\\\ &=-0.17\\times 100\\times 10^{-9} \\\\ & =-1.7\\times 10^{-8}C/cm^{2}\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q33": {
       "question_uid": "ec:2020:q33",
@@ -1504,8 +1472,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "As per GATE official answer key MTA (Marks to ALL)\n\n$\\frac{\\beta _{1}}{\\beta _{2}}=\\frac{\\int_{0}^{W}N_{A_{2}}(x)dx}{\\int_{0}^{W}N_{A_{1}}(x)dx}=\\frac{W\\times 10^{17}}{\\frac{1}{2}\\times W\\times (10^{17}-10^{14})}=\\frac{2\\times 10^{17}}{10^{17}+10^{14}}\\simeq 2$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q34": {
       "question_uid": "ec:2020:q34",
@@ -1550,8 +1517,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "$$\\begin{aligned}\\eta &=\\frac{\\left ( FF \\right )V_{OC}I_{SC}}{P_{in}} \\\\ 0.15&=\\frac{0.8\\times 0.7\\times I_{SC}}{100mW} \\\\ I_{SC}&=\\frac{15}{0.56}mA \\\\ G_{L}&=\\frac{I_{SC}}{q \\times \\text{ Area } \\times \\text{ thickness } } \\\\ &=\\frac{15 \\times 10^{-3}}{0.56 \\times 1.6 \\times 10^{-19} \\times 1\\times 200\\times 10^{-4}} \\\\ &=\\frac{15}{0.56\\times 32}\\times 10^{19}\\\\ &=0.837\\times 10^{19} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q35": {
       "question_uid": "ec:2020:q35",
@@ -1596,8 +1562,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
         "markdown": "$$\\begin{aligned}I_{EQ}&=\\frac{10-0.7}{20}=0.465mA\\\\ g_{m}&=\\frac{I_{EQ}}{V_{T}}=\\frac{0.465}{26}A/V \\\\ \\frac{V_{out}}{V_{in}}&=-g_{m}(R_{e}\\parallel R_{L})\\\\ &=\\frac{0.465}{26}\\times 5000=-89.423\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q36": {
       "question_uid": "ec:2020:q36",
@@ -1642,8 +1607,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "<img src=\"/question-images/ec/2020/ec-2020-f3eda1941a.webp\" />\n\nfor holding MOSFET should be OFF.\n\n$$\\begin{aligned}V_{1\\, min}&\\rightarrow -10\\, V \\\\ V_{G}-V_{1\\, min}& \\lt 3 \\\\ V_{G}& \\lt 3-10V\\Rightarrow -7V \\\\ \\text{For Sampling, } V_{G}-V_{i\\, max}& \\gt 3\\\\ V_{G}& \\gt 3+V_{i\\, max}\\\\ V_{G}&\\gt 13\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2020:q37": {
       "question_uid": "ec:2020:q37",
@@ -1688,8 +1652,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "$$\\begin{aligned}v_{\\pi }&=-V_{x} \\\\ V_{x}&=\\left ( I_{x}-g_{m}V_{x} \\right )r_{ds}+I_{x}R\\\\ V_{x}\\left ( 1+g_{m} r_{ds}\\right )&=\\left ( r_{ds}+R \\right )I_{x} \\\\ R_{N}&=\\frac{V_{x}}{I_{x}}=\\frac{R+r_{ds}}{1+g_{m}r_{ds}}\\end{aligned}$$\n\n<img src=\"/question-images/ec/2020/ec-2020-b68d00becd.webp\" />\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2020:q38": {
       "question_uid": "ec:2020:q38",
@@ -1734,8 +1697,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Number Systems",
         "markdown": "Given, binary number 1100\n\n1's complement of 1100 = -3\n\nSign magnitude of 1100 = -4\n\n2's complement of 1100 = -4\n\nP + Q + R = -4 - 3 - 4 = -11\n\nThe 6 digit 2's complement of (-11) = 110101\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q39": {
       "question_uid": "ec:2020:q39",
@@ -1778,11 +1740,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Digital Circuits - Sequential State Diagrams & Sequence Detection",
+        "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "- **State Diagram Traversal & Transition Tracking:**\n  - Let $S_0$ denote the initial state of the finite state machine sequence detector.\n  - Inspecting the state diagram for transitions and output values ($x/y$, where $x$ is input and $y$ is output):\n    - $S_0$:\n      - on $x=1 \\to S_0$ with output $0$\n      - on $x=0 \\to S_1$ with output $0$\n    - $S_1$:\n      - on $x=0 \\to S_1$ with output $0$\n      - on $x=1 \\to S_2$ with output $0$\n    - $S_2$:\n      - on $x=1 \\to S_0$ with output $0$\n      - on $x=0 \\to S_3$ with output $0$\n    - $S_3$:\n      - on $x=0 \\to S_1$ with output $0$\n      - on $x=1 \\to S_4$ with output $0$\n    - $S_4$:\n      - on $x=1 \\to S_0$ with output $0$\n      - on $x=0 \\to S_3$ with **output 1**\n\n- **Input Sequence Tracing for Output $1$:**\n  - The ONLY transition in the entire state machine that asserts output $y = 1$ is the branch from state $S_4$ to state $S_3$ on input $x = 0$.\n  - Tracing the exact path from starting state $S_0$ to this transition:\n    $$S_0 \\xrightarrow{x=0} S_1 \\xrightarrow{x=1} S_2 \\xrightarrow{x=0} S_3 \\xrightarrow{x=1} S_4 \\xrightarrow{x=0 / y=1} S_3$$\n  - Collecting the chronological sequence of inputs applied:\n    $$\\mathbf{0} \\to \\mathbf{1} \\to \\mathbf{0} \\to \\mathbf{1} \\to \\mathbf{0} \\implies \\mathbf{01010}$$\n  - Therefore, the circuit detects the binary sequence **$01010$**.\n\n- **Distractor Analysis:**\n  - Sequences $01011$, $01110$, and $01001$ transition back to states $S_0$ or $S_1$ where the output remains $0$.\n\nTherefore, the correct answer is **Option A (the sequence 01010 is detected)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q40": {
       "question_uid": "ec:2020:q40",
@@ -1827,8 +1788,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Root Locus",
         "markdown": "$Q(s)=1+G(s)H(s)=0$\n\n$s^{3}+3s^{2}+2s+ks+3k=0$\n\n$-k=\\frac{s^{3}+3s^{2}+2s}{s+3}$\n\n$-\\frac{\\mathrm{d} k}{\\mathrm{d} s}=\\frac{(s+3)(3s^{2}+6s+2)-(s^{3}+3s^{2}+2s)}{(s+3)^{2}}=0$\n\n$3s^{3}+6s^{2}+2s+9s^{2}+18s+6-s^{3}-3s^{2}-2s=0$\n\n$2s^{3}+12s^{2}+18s+6=0$\n\n$s=-0.46,-3.87,-1.65$\n\n<img src=\"/question-images/ec/2020/ec-2020-a16ed6a9c5.webp\" />\n\n$\\therefore$\n\nBreak-away point lies between (0, -1), i.e. (-1, 0)\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q41": {
       "question_uid": "ec:2020:q41",
@@ -1873,8 +1833,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "Op-amp active filter (LPF) inverting type 3 dB cut-off frequency,\n\n$f_{c}=\\frac{1}{2\\pi RC}=\\frac{1}{2\\pi \\times 2\\times 10^{3}\\times 10^{-6}}=\\frac{500}{2\\pi }=79.58Hz$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2020:q42": {
       "question_uid": "ec:2020:q42",
@@ -1919,8 +1878,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "Output of multiplier\n\n$=x(t)\\cos 2\\pi (f_{c}+40)t=m(t)\\cos 2\\pi f_{c}t\\cdot \\cos2\\pi (f_{c}+40)t$\n\n$=\\frac{m(t)}{2}[\\cos 2\\pi (2f_{c}+40)t+\\cos 2\\pi (40)t]$\n\nGiven, $m(t)=4\\cos 1000\\pi t$\n\nSo, output of multiplier\n\n$=2\\cos 2\\pi (500)t[\\cos 2\\pi (2f_{c}+40)t+\\cos 2\\pi (40)t]$\n\n$=\\cos 2\\pi (2f_{c}+540)t+\\cos 2\\pi (2f_{c}-460)t+\\cos 2\\pi (540)t+\\cos 2\\pi (460)t$\n\nOutput of Low pass filter\n\n$=\\cos [2\\pi (460)]t$\n\n$=\\cos 920\\pi t$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2020:q43": {
       "question_uid": "ec:2020:q43",
@@ -1965,8 +1923,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
         "markdown": "<img src=\"/question-images/ec/2020/ec-2020-fdd8e15db9.webp\" />\n\n$$\\begin{aligned}\\left | \\text{Total E }\\right |&=\\left | (E_{\\text{single element}}) \\right | \\left | (A.F.) \\right | \\\\ \\left | (A.F.) \\right |&=\\frac{\\sin\\left ( N\\frac{\\psi }{2} \\right )}{\\sin (\\frac{\\psi }{2})}=\\frac{\\sin \\left ( 2\\frac{\\psi }{2} \\right )}{\\sin \\left ( \\frac{\\psi }{2} \\right )} \\\\ & =\\frac{2\\sin \\left ( \\frac{\\psi }{2} \\right )\\cos (\\frac{\\psi }{2})}{\\sin \\frac{\\psi }{2}} \\\\ & =2\\cos (\\frac{\\psi }{2})\\\\  \\left | A.F_{N} \\right | &=\\frac{A.F}{A.F_{max}}=\\frac{2\\cos (\\frac{\\psi }{2})}{2} \\\\ &=\\left | \\cos \\left ( \\frac{\\psi }{2} \\right ) \\right | \\\\\n\n\\text{where, }\\psi &=\\beta d\\cos \\theta =\\frac{2\\pi }{\\lambda }(2h)\\cos \\theta  \\\\ \\left.\\begin{matrix} \\left | A.F_{N} \\right |_{\\theta =60^{\\circ}} \\end{matrix}\\right|& =\\left | \\cos (\\frac{2\\pi }{\\lambda }h\\cos 60^{\\circ}) \\right |\\\\ &=\\left | \\cos \\left ( \\frac{\\pi h}{\\lambda } \\right ) \\right |\\\\ \\cos \\theta  \\text{ is maximum ,where   } \\theta &=n\\pi \\;\\; n=0,1,2..\\\\ \\frac{\\pi h}{\\lambda }&=n\\pi \\Rightarrow h=n\\lambda \\\\ \\Rightarrow \\; \\text{For } n=1,  \\;\\; h_{min}&=\\lambda \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2020:q44": {
       "question_uid": "ec:2020:q44",
@@ -2009,8 +1966,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
         "markdown": "$$\\begin{aligned}9\\times \\frac{R_{2}}{R_{2}+1K\\Omega }&=4 \\\\ 9R_{2}&=4R_{2}+4K\\Omega\\\\ 5R_{2}&=4K \\\\ R_{2}&=\\frac{4000}{5}=800\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **800**."
-      },
-      "answer": "800"
+      }
     },
     "ec:2020:q45": {
       "question_uid": "ec:2020:q45",
@@ -2053,8 +2009,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "For uniform plane wave\n\n$\\hat{a}_{H}\\cdot \\hat{a}_{\\rho }=0$\n\n$\\hat{a}_{H}$is unit vector in magnetic field direction $\\hat{a}_{\\rho }$ is unit vector in power flow direction\n\n$\\hat{a}_{H }=\\frac{1\\hat{a}_{x}+2\\hat{a}_{y}+b\\hat{a}_{z}}{\\sqrt{1^{2}+2^{2}+b^{2}}}$\n\n$\\hat{a}_{\\rho }=\\frac{-3\\hat{a}_{x}+\\hat{a}_{y}+\\hat{a}_{z}}{\\sqrt{3^{2}+1^{2}+1^{2}}}$\n\n$\\hat{a}_{H}\\cdot \\hat{a}_{\\rho }=0 (\\hat{a}_{x}+2\\hat{a}_{y}+b\\hat{a}_{z})\\cdot (-3\\hat{a}_{x}+\\hat{a}_{y}+\\hat{a}_{z})=0$\n\n$-3+2+b=0$\n\n$b=1$\n\nTherefore, the correct answer is **1**."
-      },
-      "answer": "1"
+      }
     },
     "ec:2020:q46": {
       "question_uid": "ec:2020:q46",
@@ -2097,8 +2052,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "For ideal transformer of n : 1, the scattering matrix is\n\n$$\\begin{bmatrix} S_{11} &S_{12} \\\\ S_{21} & S_{22} \\end{bmatrix}=\\begin{bmatrix} \\frac{n^{2}-1}{n^{2}+1} &\\frac{2n}{n6{}} \\\\ & \\end{bmatrix}$$\n\n$S_{21}=\\frac{2n}{n^{2}+1}=\\frac{2(2)}{2^2+1}=\\frac{4}{5}=0.8$\n\nTherefore, the correct answer is **0.8**."
-      },
-      "answer": "0.8"
+      }
     },
     "ec:2020:q47": {
       "question_uid": "ec:2020:q47",
@@ -2141,8 +2095,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "$$\\begin{aligned}S(t)_{pm}&=A_c \\cos [2\\pi f_{c}t+k_pm(t)]\\\\ S(t)_{Fm}&=A_c \\cos [2\\pi f_{c}t+k_{f}\\int_{0}^{\\infty }m(t)dt]\\end{aligned}$$\n\nInstantaneous frequency are equal\n\n$$\\begin{aligned}f_{i}&=\\frac{1}{2\\pi }\\frac{\\mathrm{d} }{\\mathrm{d} t}\\theta (t)\\\\f_{iPM}&=f_{c}+\\frac{K_p}{2\\pi }\\frac{\\mathrm{d} }{\\mathrm{d} t} m(t)\\\\ f_{iFM}&=f_{c}+\\frac{K_f}{2\\pi }m(t)\\\\ \\text{Given that,  } (f_{iPM})_{max}&=(f_{iFM})_{max} \\\\ f_{c}+\\frac{k_P}{2\\pi}[\\frac{\\mathrm{d} }{\\mathrm{d} t}m(t)]_{max}&=f_{c}+\\frac{K_{f}}{2\\pi }[m(t)]_{max}\\\\ \\left.\\begin{matrix} \\frac{k_P}{2\\pi}\\frac{\\mathrm{d} }{\\mathrm{d} t}m(t) \\end{matrix}\\right|_{max} &= \\left. \\begin{matrix}  \\frac{K_{f}}{2\\pi }[m(t)] \\end{matrix}\\right|_{max}\\\\ \\left.\\begin{matrix} \\frac{\\mathrm{d} }{\\mathrm{d} t}m(t) \\end{matrix}\\right|_{max} &=5,  \\left.\\begin{matrix} m(t) \\end{matrix}\\right|_{max}=10 \\\\ 5k_{p}&=10k_{f} \\\\ \\frac{k_{p}}{k_{f}}&=2\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ec:2020:q48": {
       "question_uid": "ec:2020:q48",
@@ -2185,8 +2138,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "Since the noise variable is Gaussian with zero mean and ML decoding is used, the\n\ndecision boundary between two adjacent signal points will be their arithmetic mean.\n\nIn the following graphs, the shaded area indicates the conditional probability of decoding\n\na symbol correctly when it is transmitted.\n\n<img src=\"/question-images/ec/2020/ec-2020-c806907ab6.webp\" />\n\nBy comparing the above graphs, we can conclude that $P_{3}$ is larger among the four.\n\nEnd of Solution\n\nTherefore, the correct answer is **3**."
-      },
-      "answer": "3"
+      }
     },
     "ec:2020:q49": {
       "question_uid": "ec:2020:q49",
@@ -2229,8 +2181,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "Given that,\n\n$$\\begin{aligned}G(j\\omega )&=\\frac{1}{(1+j\\omega )(\\alpha +j\\omega )} \\\\ \\left |G(j\\omega ) \\right |&=\\frac{1}{\\sqrt{(\\omega ^{2}+1)(\\omega ^{2}+\\alpha ^{2})}} \\\\ \\text{According to }& \\text{question,}\\\\ \\left | G(j\\omega ) \\right |_{\\omega =3}&=\\frac{1}{5\\sqrt{10}}\\\\ \\Rightarrow \\frac{1}{\\sqrt{(\\omega ^{2}+1)(\\omega ^{2}+\\alpha ^{2})}}&=\\frac{1}{5\\sqrt{10}} \\\\ \\Rightarrow \\frac{1}{\\sqrt{10(a^{2}+9)}}&=\\frac{1}{5\\sqrt{10}} \\alpha ^{2}+9=25 \\\\ \\alpha ^{2}&=16 \\\\ \\alpha &=4\\end{aligned}$$\n\nTherefore, the correct answer is **4** (acceptable range: [3.95, 4.05])."
-      },
-      "answer": "4"
+      }
     },
     "ec:2020:q50": {
       "question_uid": "ec:2020:q50",
@@ -2273,8 +2224,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "Total propagation delay  $=(t_{pd}+t_{set-up})_{max}=8ns+5ns=13ns$\n\n$\\therefore$ Frequency of operations $=\\frac{1000}{13}MHz=76.92MHz$\n\nTherefore, the correct answer is **76.5** (acceptable range: [76, 77])."
-      },
-      "answer": "76.5"
+      }
     },
     "ec:2020:q51": {
       "question_uid": "ec:2020:q51",
@@ -2317,8 +2267,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "x : 0 to 3\n\ny : 0 to 1\n\nz : 0 to 1-y\n\n=$\\int_{y=0}^{1}\\int_{z=0}^{1-y}\\int_{x=0}^{3}x\\, dx\\, dy\\, dz=\\int_{y=0}^{1}\\int_{0}^{1-y}\\left ( \\frac{x^{2}}{2} \\right )^{3}_{0}dz\\, dy$\n\n=$\\int_{0}^{1}\\frac{9}{2}(z)_{0}^{1-y}dy=\\frac{9}{2}\\int_{0}^{1}(1-y)dy=\\frac{9}{2}\\left ( y-\\frac{y^{2}}{2} \\right )_{0}^{1}$\n\n=$\\frac{9}{2}\\left ( 1-\\frac{1}{2} \\right )=\\frac{9}{4}= 2.25$\n\nTherefore, the correct answer is **2.25**."
-      },
-      "answer": "2.25"
+      }
     },
     "ec:2020:q52": {
       "question_uid": "ec:2020:q52",
@@ -2361,8 +2310,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
         "markdown": "$$\\begin{aligned} \\int_{-\\infty }^{\\infty }\\left | X(\\omega ) \\right |^{2}d\\omega &=2\\pi \\int_{-\\infty }^{\\infty }\\left | x(t) \\right |^{2}dt \\\\ &=2\\pi \\int_{-\\infty }^{\\infty }\\left | y(t) \\right |^{2}\\\\      &=2\\times 2\\pi \\int_{-2}^{0}\\left | y(t) \\right |^{2}dt\\\\      &=2\\times 2\\pi\\left [ \\int_{-2}^{-1}(t+2)^{2}dt+\\int_{-1}^{0}(2t+3)^{2}dt \\right ]\\\\&=4\\pi \\left [\\left \\{ \\frac{(t+2)^{3}}{3} \\right \\} _{-1}^{-2}+\\left \\{ \\frac{(2t+3)^3}{3\\times 2} \\right \\}_{0}^{-1} \\right ]\\\\&=4\\pi \\left [ \\frac{1-0}{3}+\\frac{3^{3}-1}{6} \\right ]\\\\&=4\\pi \\left [ \\frac{1}{3}+\\frac{26}{6} \\right ]\\\\&=     4\\pi \\times \\left [ \\frac{1}{3}+\\frac{26}{6} \\right ] \\\\ &=4\\pi \\times \\left [ \\frac{1}{3}+\\frac{13}{3} \\right ]\\\\&=4\\pi \\times \\frac{14}{3} \\\\&=\\frac{56\\pi }{3}=58.61\\end{aligned}$$\n\nTherefore, the correct answer is **58.65** (acceptable range: [58.5, 58.8])."
-      },
-      "answer": "58.65"
+      }
     },
     "ec:2020:q53": {
       "question_uid": "ec:2020:q53",
@@ -2405,8 +2353,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "System is all-pass filter.\n\nFor digital all-pass filter, condition is\n\n$\\text{zero}=\\frac{1}{\\text{pole}^{*}}\\; \\; ...(i)$\n\nBy given transfer function,\n\n$\\text{zero}=\\alpha$\n\n$\\text{Pole}=-0.5$\n\nusing condition(i),\n\n$\\alpha =\\frac{1}{-0.5}=-2$\n\nTherefore, the correct answer is **-2**."
-      },
-      "answer": "-2"
+      }
     },
     "ec:2020:q54": {
       "question_uid": "ec:2020:q54",
@@ -2449,8 +2396,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "$x$ follows uniform distribution over [-2, 10]\n\n$$\\begin{aligned} \\therefore \\; f(x)&=\\frac{1}{b-a}=\\frac{1}{10-(-2)}=\\frac{1}{12}\\\\ \\text{Given: } y &= 2x - 6\\\\ \\Rightarrow \\; x&=\\frac{y+6}{2}\\\\ \\text{For } y = 7 \\\\ x&=\\frac{7+6}{2}=\\frac{13}{2}=6.5\\\\ P\\left [ \\frac{y\\lt7}{x\\gt 5} \\right ]&=P\\left [ \\frac{x\\lt6.5}{x\\gt 5} \\right ] \\\\ &=\\frac{P\\left [ x\\gt 5\\, and\\, x\\lt6.5 \\right ]}{P\\left [ x\\gt 5 \\right ]} \\\\ &=\\frac{P\\left [ 5\\lt x \\lt 6.5 \\right ]}{P[x\\gt 5]} \\\\ &=\\frac{\\int_{5}^{6.5}f(x)dx}{\\int_{5}^{10}F(x)dx} \\\\ &=\\frac{\\int_{5}^{6.5}\\frac{1}{12}dx}{\\int_{5}^{10}\\frac{1}{12}dx} \\\\ &=\\frac{(x)_{6.5}^{5}}{(x)_{5}^{10}}=\\frac{1.5}{5}=0.3\\end{aligned}$$\n\nTherefore, the correct answer is **0.3** (acceptable range: [0.299, 0.301])."
-      },
-      "answer": "0.3"
+      }
     },
     "ec:2020:q55": {
       "question_uid": "ec:2020:q55",
@@ -2493,8 +2439,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "Open loop transfer function for the system $=C(s)\\times G(s)=\\frac{K(s+1)}{ (s+3)}\\times \\frac{1}{s(s+1)}$\n\nSince the system is type-1, so far a given unit ramp input steady state\n\n$e_{ss}=\\frac{1}{K_{V}}$\n\nwhere,  $K_{V}=\\lim_{s\\rightarrow 0}S\\times \\frac{K}{S(S+3)}=\\frac{K}{3}$\n\nso, $\\; e_{ss}=\\frac{1}{K/3}=\\frac{3}{K}$\n\nGiven that,  $\\; e_{ss}=0.1$\n\nSo, $0.1=\\frac{3}{K}\\Rightarrow K=30$\n\nTherefore, the correct answer is **30**."
-      },
-      "answer": "30"
+      }
     }
   }
 }

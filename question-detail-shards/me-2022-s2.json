@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:38.035Z",
+  "generatedAt": "2026-10-25T18:50:27.436Z",
   "shardKey": "me-2022-s2",
   "yearSetKey": "me-2022-s2",
   "yearSetIdentity": "me:2022:set-2",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "The constant term in the Fourier series expansion of\n\n$F(t)$ is the average value of $F(t)$ in one fundamental\n\nperiod i.e.,\n\n$\\frac{\\int_{0}^{1}4dt+\\int_{1}^{2}0dt}{2}=\\frac{4}{2}=2$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q2-s2": {
       "question_uid": "me:2022:q2-s2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "Given,\n\n$$\\begin{aligned}\n\n\\bar{F} &=3x\\bar{i}+5y\\bar{j}+6z\\bar{k} \\\\\n\n\\triangledown \\cdot \\bar{F}&= \\frac{\\partial }{\\partial x}(3x)+\\frac{\\partial }{\\partial x}(5y)+\\frac{\\partial }{\\partial x}(6z)\\\\\n\n&= 3+5+6=14\n\n\\end{aligned}$$\n\nBy gauss divers once Theorem\n\n$$\\begin{aligned}\n\n\\int_{A}^{}\\bar{F}\\cdot dA &=\\int \\int \\int (\\triangledown \\cdot F)dV\n\n=\\int \\int \\int 14\\; dv\\\\\n\n&=14 \\times \\text{volume of a cube of side 1 unit\n\n} \\\\\n\n&=14 \\times (1)^3=14\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q3-s2": {
       "question_uid": "me:2022:q3-s2",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Exact value\n\n$$\\begin{aligned}\n\n&=\\int_{1}^{2} (4x^2+2x+6)dx\\\\\n\n&=\\frac{4x^3}{3}+\\frac{2x^2}{2}+6x\\\\\n\n&=\\frac{4}{3}(\\pi) \\times (3)+6\\\\\n\n&=\\frac{28}{3}+9=\\frac{55}{3}\n\n\\end{aligned}$$\n\nApproximate value\n\nHere f(x) is a polynomial of degree 2, so Simpsons\n\nrule gives exact value with zero error\n\n$$\\begin{aligned}\n\n\\therefore  \\;\\; \\text{Approx value}&=\\frac{55}{3}\\\\\n\n\\frac{I_e-I_s}{I_e}&=0\\\\\n\n\\therefore \\;\\;e=\\left (\\frac{I_e-I_s}{I_e}  \\right )\\times 100&=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:q4-s2": {
       "question_uid": "me:2022:q4-s2",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned}\n\n&\\text{ Let }(x+b)=t\\\\\n\n&\\Rightarrow \\; dx=dt\\\\\n\n&\\text{When ,} x=-\\infty ;t=-\\infty \\\\\n\n&\\int_{-\\infty }^{-\\infty }e^{-n(x+b)^2}dx=\\int_{-\\infty }^{-\\infty }e^{-at^2}dt\\\\\n\n&\\text{Let, }at^2=y^2\\Rightarrow t=\\frac{y}{\\sqrt{a}}\\\\\n\n&2at\\;dt=3y\\;dy\\\\\n\n&dt=\\frac{ydy}{at}=\\frac{ydy}{a\\frac{y}{\\sqrt{a}}}=\\frac{y}{\\sqrt{a}}\\\\\n\n&\\int_{-\\infty }^{-\\infty }e^{-at^2}dt=\\int_{-\\infty }^{-\\infty }e^{-y^2}\\cdot \\frac{dy}{\\sqrt{a}}=\\sqrt{\\frac{\\pi}{a}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q5-s2": {
       "question_uid": "me:2022:q5-s2",
@@ -236,8 +232,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Since $\\varphi (s)$ has a triple roots at $s=-\\sigma$\n\nTherefore, $\\varphi (s)=(s+\\sigma )^3\\psi (s)$\n\nIt satisfies all the conditions in option (B) is correct.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q6-s2": {
       "question_uid": "me:2022:q6-s2",
@@ -282,8 +277,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
         "markdown": "Tensile Strength: The tensile strength, or ultimate\n\ntensile strength (UTS), is the maximum load\n\nobtained in a tensile test, divided by the original\n\ncross-sectional area of the specimen.\n\n$\\sigma _u=\\frac{P_{max}}{A_o}$\n\nwhere, $\\sigma _u=$ Ultimate tensile strength, $kg/mm^2$\n\n$P_{max}=$  Maximum load obtained in a tensile test, kg\n\n$A_o=$  Original cross-sectional area of gauge length\n\nof the test piece, $mm^2$\n\nThe tensile strength is a very familiar property and\n\nwidely used for identification of a material. It is\n\nvery easy to determine and is a quite reproducible\n\nproperty. It is used for the purposes of specifications\n\nand for quality control of a product. Tensile strength\n\ncan be empirically correlated to other properties\n\nsuch as hardness and fatigue strength. For brittle\n\nmaterials, the tensile strength is a valid criterion for\n\ndesign.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q7-s2": {
       "question_uid": "me:2022:q7-s2",
@@ -328,8 +322,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Gyroscope",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-2b81352a6f.webp\" />\n\nThe spin vector will chase the couple on torque\n\nvector and produce precision in system.\n\nHence precision will be $-y$ direction. Rotate slowly\n\n(compared to $\\omega$) about negative $z-$axis direction.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q8-s2": {
       "question_uid": "me:2022:q8-s2",
@@ -374,8 +367,7 @@
       "detailed_solution": {
         "concept": "Machine Design - Static Dynamic Loading and Failure Theories",
         "markdown": "Given,\n\n$\\sigma _x=3P$\n\n$\\sigma _y=-2P$\n\n$\\tau =\\sqrt{2}P$\n\nAccording to maximum distortion energy theory,\n\n$$\\begin{aligned}\n\n\\sqrt{\\sigma _x^2-\\sigma _x\\sigma _y+\\sigma _y^2+3\\tau _{xy}^2} &=\\frac{S_{yt}}{FOS} \\\\\n\nP\\sqrt{3^2-3(-2)+(-2)^2+3(\\sqrt{2})^2}&= \\frac{350}{1}\\\\\n\nP \\times 5&=350 \\\\\n\nP&=70\\; MPa\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q9-s2": {
       "question_uid": "me:2022:q9-s2",
@@ -420,8 +412,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Engineering Materials",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-1e58d2918f.webp\" />\n\nSolidification range $=A'B$\n\n$\\triangle ABC \\text{ and } \\triangle MB'C$ is similar\n\n$$\\begin{aligned}\n\n\\frac{MA}{MB'}&=\\frac{BC}{BC'}\\\\\n\n\\frac{700-T_A}{700-400}&=\\frac{15}{30}\\\\\n\n700-T_A&=\\frac{1}{2} \\times 300\\\\\n\nT_A&=550^{\\circ}C\n\n\\end{aligned}$$\n\nSolidification range $=T_A-T_B=550-400=150 ^{\\circ}C$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:q10-s2": {
       "question_uid": "me:2022:q10-s2",
@@ -466,8 +457,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-d0f6509afc.webp\" />\n\n(1) Allowance = Lower limit of hole - upper limit of\n\nshaft\n\nAllowance = 25.00 - 24.96 = 0.04 mm\n\n(2) Maximum clearance\n\n$C_{max}$ = Upper limit of hole - lower limit of shaft\n\n$C_{max}$ = 25.02 - 24.93 = 0.09 mm\n\n(3) Maximum material limit for hole = minimum size\n\nof hole = 25.00\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q11-s2": {
       "question_uid": "me:2022:q11-s2",
@@ -512,8 +502,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
         "markdown": "Fused-deposition modeling consists of a computercontrolled extruder, through which a polymer\n\nfilament is deposited to produce a part slice by slice.\n\nLaminated-object manufacturing uses a laser\n\nbeam or vinyl cutter to first cut the slices on paper\n\nor plastic sheets (laminations); then it applies an\n\nadhesive layer, if necessary and finally stacks the\n\nsheets to produce the part.\n\nSelective laser sintering uses a high-powered laser\n\nbeam to sinter powders or coatings on the powders\n\nin a desired pattern. Selective laser sintering has\n\nbeen applied to polymers, sand, ceramics, and\n\nmetals.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q12-s2": {
       "question_uid": "me:2022:q12-s2",
@@ -558,8 +547,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
         "markdown": "Chain and Sprocket mechanism is not used in CNC\n\nMachines.\n\nLinear Motors Recently linear motors are being\n\nincreasingly considered for use in high performance\n\nCNC machine tools. The linear motor consists of\n\na series of magnets attached to the machine base\n\nand a set of electrical coils potted around a steel\n\nlaminate core attached to the moving slide.\n\nThe fact that there are no mechanical parts in contact\n\nmeans that there is no wear periodic maintenance\n\nrequired. Linear motors are not limited in travel\n\nlike ball screws. Larger bare required to achieve\n\nhigh velocity, with a longer travel to prevent undue\n\nvibration.\n\nThis larger ball screw results in a higher inertia. This\n\nmeans a larger motor with more torque is required\n\n(introduction inertia) and the responsiveness and\n\nbandwidth of the system is reduced, resulting in\n\npoor servo performance.\n\nMachines built with linear motors and all-digital\n\ndrive systems can produce parts with higher\n\naccuracy and tighter tolerances at higher feeds\n\nand speeds. Also, they reduce significantly the\n\nnon-machining time with high acceleration and\n\ndeceleration rates.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:q13-s2": {
       "question_uid": "me:2022:q13-s2",
@@ -604,8 +592,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Thermodynamic System and Processes",
         "markdown": "Intensive property -> Density\n\nMass, energy and volume are extensive properties.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q14-s2": {
       "question_uid": "me:2022:q14-s2",
@@ -650,8 +637,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
         "markdown": "If the supersonic flow enters to the diverging duct,\n\nit will act as nozzle the pressure of the flow is\n\ndecreases in the nozzle. But it is given the pressure\n\nof the flow at B is more than that A\n\n<img src=\"/question-images/me/2022/me-2022-788ff4780a.webp\" />\n\nIt will happen only with the development of normal\n\nshoot in the diverging flow (the normal shock\n\nwave is the characteristic of only supersonic flow)\n\nBecause of normal shock wave in the diverging\n\nnozzle pressure increases and velocity decreases.\n\nBut mass flow rate remains unchanged.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q15-s2": {
       "question_uid": "me:2022:q15-s2",
@@ -696,8 +682,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Free and Forced Convection",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-3aa973f300.webp\" />\n\nLet,\n\n$$\\begin{aligned}\n\n\\theta ^*&=\\frac{T_s-T}{T_s-T_\\infty }\\\\\n\ny^*&=\\frac{y}{L}\\\\\n\n\\frac{dy^*}{dy}&=\\frac{1}{L}\\\\\n\n\\frac{d\\theta ^*}{dy}&=-\\frac{dT}{dy}\n\n\\end{aligned}$$\n\n$T_s \\text{ and } T_\\infty$ are constant\n\nAt boundary\n\n$$\\begin{aligned}\n\nq_{\\text{conduction}}&=q_{\\text{convection}}\\\\\n\n-K_f\\left.\\begin{matrix}\n\n\\frac{dT}{dy}\n\n\\end{matrix}\\right|_{y=0}&=h(T_s-T_\\infty )\\\\\n\n-K_f\\frac{d}{dy}\\left [ \\frac{T_s-T}{T_s-T_\\infty }h \\right ]&=h\\\\\n\n\\frac{d\\theta ^*}{dy}&=\\frac{h}{K_f}\\\\\n\n\\end{aligned}$$\n\nApplying chain rule\n\n$$\\begin{aligned}\n\n\\frac{d\\theta ^*}{dy^*}\\frac{dy^*}{dy}&=\\frac{h}{K_f}\\\\\n\n\\frac{d\\theta ^*}{dy^*}\\frac{1}{L}=\\frac{h}{K_f}\\\\\n\n\\frac{d\\theta ^*}{dy^*}=\\frac{hL}{K_f}=\\text{Nusselt Number}\\\\\n\nNu&=\\frac{d\\theta ^*}{dy^*}\n\n\\end{aligned}$$\n\nNu represents non dimensional temperature gradient.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q16-s2": {
       "question_uid": "me:2022:q16-s2",
@@ -742,8 +727,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "In case P it forms collinear force system. i.e., all the\n\nforce passes through the intersection point. Hence,\n\nthey can't balance couple (As they can't create\n\ncouple).\n\nTherefore, the correct option(s) are **B, C, D**."
-      },
-      "answer": "B, C, D"
+      }
     },
     "me:2022:q17-s2": {
       "question_uid": "me:2022:q17-s2",
@@ -788,8 +772,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Casting Process",
         "markdown": "Riser should take more time for solidification than\n\ncasting $\\left ( \\frac{V}{A}  \\right )_r\\geq\\left ( \\frac{V}{A} \\right )_c$\n\nFor top riser bottom area is not cooling surface and\n\nit is given that top cross section is also insulated. So\n\nonly lateral area is cooling area.\n\n$\\frac{\\frac{\\pi}{4}D^2H}{\\pi DH}\\geq \\frac{a^3}{6a^2}\\Rightarrow \\frac{D}{4}\\geq \\frac{a}{6}\\Rightarrow D\\geq \\frac{2a}{3}$\n\nTherefore, Radius $R\\geq \\frac{a}{3}$.\n\nonly answer is available $\\frac{a}{2}$.\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "me:2022:q18-s2": {
       "question_uid": "me:2022:q18-s2",
@@ -834,8 +817,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-aecca7c243.webp\" />\n\nNon traditional thermal energy process includes\n\nelectrical discharge machining (EDM), electron\n\nbeam machining (EBM), and laser beam machining\n\n(LBM). EDM removes metal by a series of discrete\n\nelectrical discharge (sparks) that cause localized\n\ntemperatures high enough to melt or vaporize the\n\nmetal in the immediate vicinity of the discharge.\n\nEBM adopts a high velocity stream of electrons\n\nfocused on the workpiece surface to remove material\n\nby melting and vaporization. LBM employs the\n\nlight energy from a laser to remove material by\n\nvaporization and ablation.\n\nTherefore, the correct option(s) are **B, C, D**."
-      },
-      "answer": "B, C, D"
+      }
     },
     "me:2022:q19-s2": {
       "question_uid": "me:2022:q19-s2",
@@ -880,8 +862,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
         "markdown": "For given flow,\n\n$u=4xy, v = 2(x^2- y^2)$\n\nAs velocity field is function of two space variables,\n\nflow is two dimensional.\n\n$\\frac{\\partial u}{\\partial x}+\\frac{\\partial v}{\\partial y}=4y-4y$\n\nTherefore, flow is incompressible.\n\n$\\omega _z=\\frac{1}{2}\\left ( \\frac{\\partial v}{\\partial x} -\\frac{\\partial u}{\\partial y}\\right )=\\frac{1}{2}(4x-4x)=0$\n\nTherefore, flow is irrotational.\n\n$$\\begin{aligned}\n\na_x &=u\\frac{\\partial u}{\\partial x} +v\\frac{\\partial u}{\\partial y}\\\\\n\n&= 4xy(4y)+2(x^2-y^2)(4x)\\\\\n\n&= 16xy^2+8x^3-8xy^2 \\\\\n\n&=16 \\times 0 \\times 0^2+8 \\times 0^3-8 \\times 0 \\times 0^2 \\\\\n\n&= 0\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\na_y &=u\\frac{\\partial v}{\\partial x} +v\\frac{\\partial v}{\\partial y}\\\\\n\n&= 4xy(4x)+2(x^2-y^2)(-4y)\\\\\n\n&= 16x^2y-8x^2y+8y^3 \\\\\n\n&=16 \\times 0^2 \\times 0-8 \\times 0^2 \\times 0+8 \\times 0^3 \\\\\n\n&= 0\\\\\n\n|\\vec{a}|&=\\sqrt{a_x^2+a_y^2}=0\n\n\\end{aligned}$$\n\nTherefore, the correct option(s) are **B, C, D**."
-      },
-      "answer": "B, C, D"
+      }
     },
     "me:2022:q20-s2": {
       "question_uid": "me:2022:q20-s2",
@@ -924,8 +905,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "F.B.D of fig.(i) :\n\n<img src=\"/question-images/me/2022/me-2022-afad83b16f.webp\" />\n\nFor upward impending motion of left side platform\n\n$T_1=n \\times 20=5 \\times 20=100N\\;\\; . . . (i)$\n\n$F=T_2=200N . . . (ii)$\n\n$\\therefore \\; \\frac{T_2}{T_1}=2$\n\nSo, ratio of tensions on two sides remains [in figure\n\n(i) and (ii)] same as 2 because it depends on $\\mu \\text{ and } \\theta$\n\nwhich is same in fig.(i) and fig.(ii).\n\nF.B.D of fig.(ii) :\n\n<img src=\"/question-images/me/2022/me-2022-7f18691c00.webp\" />\n\n$T_3=100$\n\nNow since impending motion of left side platform\n\nis downward therefore $T_3=100$\n\nis tight side tension.\n\n$T_4=\\frac{T_3}{2}=\\frac{100}{2} =50 \\; N$\n\n$T_4=m \\times 20$\n\n$50=m \\times 20$\n\n$m=2.5$\n\nHence, m = 3 (As no. of discs is integer)\n\nTherefore, the correct answer is **3**."
-      },
-      "answer": "3"
+      }
     },
     "me:2022:q21-s2": {
       "question_uid": "me:2022:q21-s2",
@@ -968,8 +948,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
         "markdown": "For a dynamic system,\n\n$\\ddot{x}+2\\zeta \\omega _n\\dot{x}+\\omega _n^2x=0$\n\nThe above equation represents a damped free\n\nvibration system.\n\nGiven damping factor,  $\\zeta=\\frac{1}{2 \\pi} \\ln (2)$\n\nGiven a peak  $x_{n-1}=4 \\; mm$\n\n$x_n=?$\n\nLogarithmic decrement is given by\n\n$\\ln\\left ( \\frac{x_{n-1}}{x_n} \\right )=\\frac{2 \\pi\\zeta }{\\sqrt{1-\\zeta ^2}}$\n\nAs question is asking to neglect the higher power of $\\zeta$, so neglecting $\\zeta ^2$, as $\\zeta \\lt 1$.\n\n$$\\begin{aligned}\n\n\\ln \\left ( \\frac{x_{n-1}}{x_n} \\right )&=2 \\pi\\zeta  \\\\\n\n2 \\pi\\zeta &= \\ln (2) \\\\\n\n\\Rightarrow\n\n\\ln \\left ( \\frac{x_{n-1}}{x_n} \\right ) &= \\ln (2)\\\\\n\n\\Rightarrow  \\frac{4}{x_n}&=2 \\\\\n\n\\Rightarrow x_n&=2\\; mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2** (acceptable range: [1.95, 2.05])."
-      },
-      "answer": "2"
+      }
     },
     "me:2022:q22-s2": {
       "question_uid": "me:2022:q22-s2",
@@ -1012,8 +991,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
         "markdown": "Actual sales in Jan ($D_{Jan}$) = 120 units\n\nUnder estimate in Jan = $D_{Jan}- F_{Jan}=20$\n\n$D_{Jan}$ = 100 units\n\nSmoothing constant ($\\alpha = 0.2$)\n\nForecast for Feb ($D_{Jan}$) = ?\n\n$F_{Feb} = F_{Jan} + \\alpha (D_{Jan} - F_{Jan})= 100 + 0.2 (120 - 100) = 104 \\;units$\n\nTherefore, the correct answer is **104**."
-      },
-      "answer": "104"
+      }
     },
     "me:2022:q23-s2": {
       "question_uid": "me:2022:q23-s2",
@@ -1056,8 +1034,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
         "markdown": "Inventory control:\n\nAnnual demand (D) = 1000 units\n\nLead time (LT) = 5 days\n\nInventory level for placing the order = Re-order\n\nlevel (ROL)\n\nRate of consumption (d) =D/365\n\n$ROL=d \\times LT=\\frac{1000}{365} \\times 5=13.69 \\approx 14 \\; units$\n\n<img src=\"/question-images/me/2022/me-2022-7f7267fbca.webp\" />\n\nTherefore, the correct answer is **14** (acceptable range: [13, 15])."
-      },
-      "answer": "14"
+      }
     },
     "me:2022:q24-s2": {
       "question_uid": "me:2022:q24-s2",
@@ -1100,8 +1077,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - First Law, Heat, Work and Energy",
         "markdown": "$m = 1 kg, P_1\n\n= 1 \\;bar, T_1\n\n= 300 \\;K$\n\n<img src=\"/question-images/me/2022/me-2022-d77d9c9df2.webp\" />\n\n$$\\begin{aligned}\n\nV &= \\text{Constant} \\\\\n\nW_{expansion}&= 0\\\\\n\nC_V &=750\\frac{J}{kgK}=0.75\\frac{kJ}{kgK} \\\\\n\nW_{stirrer}&= 225kJ\\;\\;\\;(-ve \\;\\; work)\\\\\n\nP_2&=? \\\\\n\n\\therefore W&= W_{expansion}+W_{stirrer}\\\\\n\n&=0-225=-225kJ\n\n\\end{aligned}$$\n\nUsing Ist law of thermodynamics\n\n$$\\begin{aligned}\n\nQ-W&=dU=mc_v(T_2-T_1)\\\\\n\n0-(-225)&=1 \\times 0.75(T_2-300)\\\\\n\nT_2&=600K\\\\\n\n\\therefore \\frac{P_2}{P_1}&=\\frac{T_2}{T_1}\\\\\n\nP_2&=\\frac{600}{300} \\times 1 =2\\; bar\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "me:2022:q25-s2": {
       "question_uid": "me:2022:q25-s2",
@@ -1144,8 +1120,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
         "markdown": "From the figure we can say that at  $6000 \\mathring{A}$\n\nwavelength total hemispherical emissivity is\n\nmaximum\n\n$\\lambda _m=6000 \\mathring{A} =0.6\\mu m$\n\nWein's law\n\n$\\lambda _m T=C$\n\n$\\lambda _m T=2898 \\mu mK$\n\n$T=\\frac{2898}{0.6}=4830K$\n\nNote: In this question, we need to find temperature\n\nat which total hemispherical emissivity will be\n\nhighest.\n\nBut to calculate total hemispherical emissivity\n\nwe require additional data like function chart and\n\nemissivity value at particular wavelength.\n\nWith the use of Wein's law we can find out\n\ntemperature at which spectral emissivity is highest\n\nbut in question it is asked temperature for total\n\nhemispherical emissivity.\n\nTherefore, the correct answer is **4830** (acceptable range: [4825, 4835])."
-      },
-      "answer": "4830"
+      }
     },
     "me:2022:q26-s2": {
       "question_uid": "me:2022:q26-s2",
@@ -1190,8 +1165,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Given D.E. is $\\frac{du}{dx}=\\frac{-xu^2}{2+x^2u}$\n\n$\\Rightarrow (2+x^2u)du+xu^2dx=0$\n\nHere $M=xu^2 \\;\\;\\;\\;N=2+x^2u$\n\n$\\frac{\\partial N}{\\partial x}=2xu \\;\\;\\;\\;\\;\\frac{\\partial M}{\\partial x}=2xu$\n\nThis is exact D.E\n\nGeneral solution is\n\n$\\int_{\\text{u constant}}Mdx+\\int_{\\text{term without 'x'}}Ndx=c$\n\n$\\Rightarrow \\int (xu^2)dx+\\int 2du=c$\n\n$\\therefore \\; \\frac{x^2u^2}{2}+2u=constant$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q27-s2": {
       "question_uid": "me:2022:q27-s2",
@@ -1236,8 +1210,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "Mass moment of inertia of block about hinge 'O'  $=\\frac{M}{12}(h^2+b^2)+Mr^2$\n\nwhere,    $h=0.4m,  b=0.3m$\n\n$r=\\sqrt{0.15^2+0.2^2}=0.25m$\n\n<img src=\"/question-images/me/2022/me-2022-fea3c53bb3.webp\" />\n\n$I_o=\\frac{1}{2} \\times (0.4^2+0.3^2)+1 \\times 0.25^2=0.083 kg-m^2$\n\nFor block to topple about 'O' it should just reach the\n\nposition such that centre of mass reaches from point\n\n(G) to point (G')\n\n<img src=\"/question-images/me/2022/me-2022-d0cf34a090.webp\" />\n\n[Beyond this the torque of gravity will rotate the\n\nblock itself]\n\nNow, y(increase in height of centre of mass)\n\n= OG' -  OP\n\n= OG - OP\n\n= 0.25 - 0.20 = 0.05\n\nSo the block should have initial angular velocity to\n\njust shift centre of mass at this position (i.e., G')\n\nF.B.D of block is shown below.\n\n<img src=\"/question-images/me/2022/me-2022-effec7ce44.webp\" />\n\n$\\frac{d\\vec{L}}{dt}=\\vec{\\tau _{ext}}\\;(about\\;\\;O)$\n\n[ $\\vec{L}$  is angular momentum, $\\vec{\\tau _{ext}}$ is external torque]\n\n$\\tau _{ext} dt=d \\vec{L}$\n\n$F\\Delta t \\times d=L_f-L_i$\n\n(Because,   Gravity force is small compared\n\nto impulsive force hence we neglect its torque)\n\n$I_f \\times d =I_o \\times \\omega  . .  . (i)$\n\nBy using conservation of mechanical energy\n\n$\\frac{1}{2}I_o\\omega ^2=mg\\;y$\n\n$\\frac{1}{2}0.083 \\times \\omega ^2=1 \\times 9.81 \\times 0.05$\n\n$\\Rightarrow \\omega =3.44 \\; rad/s$\n\nPutting in eq.(i)\n\n$I_F \\times 0.3 =0.083 \\times 3.44$\n\n$\\Rightarrow I_F =0.951 N-s$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q28-s2": {
       "question_uid": "me:2022:q28-s2",
@@ -1282,8 +1255,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Mohr's Circle",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-77702b042f.webp\" />\n\n<img src=\"/question-images/me/2022/me-2022-ac24103c8e.webp\" />\n\n$\\sigma _x=0,\\sigma _y=0,\\tau _{xy}=0,\\theta =-45^{\\circ}$\n\n$$\\begin{aligned}\n\n\\sigma _{xx}&=\\sigma +\\sigma _\\theta  \\\\\n\n\\sigma _\\theta&=\\left [ \\frac{\\sigma _x +\\sigma _y}{2} \\right ] +\\left [ \\frac{\\sigma _x -\\sigma _y}{2} \\right ] \\cos 2\\theta +\\tau _{xy} \\sin 2\\theta \\\\\n\n\\sigma _\\theta &= \\frac{0+\\sigma }{2} +\\left [\\frac{0-\\sigma }{2}  \\right ] \\cos 2(-45)+0\\\\\n\n\\sigma _\\theta &= \\frac{\\sigma }{2}\\\\\n\n\\sigma _{xx} &=\\sigma +\\sigma _\\theta =\\sigma +\\frac{\\sigma }{2}=\\frac{3\\sigma }{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q29-s2": {
       "question_uid": "me:2022:q29-s2",
@@ -1328,8 +1300,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Balancing",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-36c0de8b3e.webp\" />\n\n$m_1=1kg, m_2=1kg, r_1=1cm, r_2=1cm$\n\nBalancing mass, $m_b=\\sqrt{2}kg$\n\nMaking force polygon for complete balance\n\n<img src=\"/question-images/me/2022/me-2022-5ecff976a1.webp\" />\n\nFrom the right angle triangle,\n\n$$\\begin{aligned}\n\n(m_br_b)^2&=(m_1r_1)^2+(m_2r_2)^2  \\\\\n\n(\\sqrt{2}r_b)^2&=(1\\times 1)^2+(1\\times 1)^2 \\\\\n\n2r_b^2&=2 \\\\\n\nr_b&=1\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:q30-s2": {
       "question_uid": "me:2022:q30-s2",
@@ -1374,8 +1345,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
         "markdown": "FBD of mass\n\n<img src=\"/question-images/me/2022/me-2022-48957ce98e.webp\" />\n\n$m\\ddot{x}+c\\dot{x}+kx=F(t)$\n\nSolution of differential equation\n\n$x(t) = (C.F) + (P.I)$\n\nConsidering condition (P)\n\nIf C > 0 and $\\omega =\\sqrt{k/m}$\n\nFor this condition the displacement ($x$) is given by\n\n[Assume the system to be under damped]\n\n$x(t)=X_0e^{-\\zeta \\omega _nt} \\cos (\\omega _dt -\\phi )+ X \\cos (\\omega t-\\phi )$\n\nTransient response + steady state response\n\nAs $t\\rightarrow \\infty$ the transient response decays to zero and\n\nonly steady state response will remain\n\n$x(t)=X \\cos (\\omega t-\\phi )$\n\nFor this condition the response curve will be\n\n<img src=\"/question-images/me/2022/me-2022-2b0028ae25.webp\" />\n\nConsidering condition (Q)\n\n$c \\gt 0 \\text{ and } \\omega \\neq 0$\n\nThe differential equation becomes\n\n$m\\ddot{x}-c\\dot{x}+kx=F(t)$\n\nSolution of above differential equation is\n\n$x(t)=X_0e^{+c_1t} \\cos (\\omega _dt -\\phi )+ X \\cos (\\omega t-\\phi )$\n\nAs $t\\rightarrow \\infty$ the transient response approaches to $\\infty$ and increases exponentially\n\nThe plot will be\n\n<img src=\"/question-images/me/2022/me-2022-9ef6346d85.webp\" />\n\nConsidering condition (R)\n\n$C=0,\\omega =\\sqrt{\\frac{k}{m}} \\;\\;(Resonance)$\n\nThe differential equation is\n\n$m\\ddot{x}+kx=F(t)$\n\nSolution for above differential equation\n\n$x(t)=x_o \\cos \\omega _nt+\\frac{\\dot{x_0}}{\\omega _n} \\sin \\omega _n t+\\underbrace{\\frac{x_{static}\\omega _nt}{2} \\sin (\\omega _n t)}_{\\text{Incraeses with time linearly}}$\n\nSo the correct plot will be\n\n<img src=\"/question-images/me/2022/me-2022-700ef06684.webp\" />\n\nConsidering condition (S)\n\n$C=0,\\omega \\cong \\sqrt{\\frac{k}{m}}$\n\nIf the force frequency is close to, but not exactly\n\nequal to, natural frequency of the system, a\n\nphenomenon is known as beating. In this kind of\n\nvibration the amplitude buils up and then diminishes\n\nin a regular pattern.\n\nThe displacement can be expressed as\n\n$x(t)=\\left ( \\frac{B}{m} \\right )\\left [ \\frac{\\cos \\omega t- \\cos \\omega _n t}{\\omega _n^2-\\omega } \\right ]$\n\nThe correct plot will be\n\n<img src=\"/question-images/me/2022/me-2022-4bde6d65b7.webp\" />\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q31-s2": {
       "question_uid": "me:2022:q31-s2",
@@ -1420,8 +1390,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Production Planning and Control",
         "markdown": "Sequencing model :\n\n$$\\begin{array}{|c|c|c|}\\hline\n\n\\text{Part}&\\text{Milling (hours)}& \\text{Polishing (hours)}\n\n\\\\ \\hline\n\nP_1&8&6\\\\ \\hline\n\nP_2&3&2\\\\ \\hline\n\nP_3&3&4\\\\ \\hline\n\nP_4&4&6\\\\ \\hline\n\nP_5&5&7\\\\ \\hline\n\nP_6&6&4\\\\ \\hline\n\nP_7&2&1\\\\ \\hline\n\n\\end{array}$$\n\nOptimum job sequence (According to Johnson's\n\nalgorithm)\n\n$P_3,P_4,P_5,P_1,P_6,P_2,P_7$\n\nOptimum Make-span (Minimum total completion\n\ntime)\n\n$$\\begin{array}{|c|c|c|c|c|c|c|}\\hline\n\n\\text{Part}& \\text{Milling}& & &\\text{Polishing}&&\n\n\\\\ \\hline\n\n& \\text{In time}& \\text{Processing time} &\\text{Out time}&\\text{In time}& \\text{Processing time} &\\text{Out time}\\\\ \\hline\n\nP_3& 0 & 3 & 3 & 3 &4 &7\\\\ \\hline\n\nP_4& 3 & 4 & 7 & 7 &6 &13\\\\ \\hline\n\nP_5& 7 & 5 & 12 & 13 &7 &20\\\\ \\hline\n\nP_1& 12 & 8 & 20 & 20 &6 &26\\\\ \\hline\n\nP_6& 20 & 6 & 26 & 26 &4 &30\\\\ \\hline\n\nP_2& 26 & 3 & 29 & 30 &2 &32\\\\ \\hline\n\nP_7& 29 & 2 & 31 & 32 &1 &33\\\\ \\hline\n\n\\end{array}$$\n\nMinimum total completion time of all parts = 33 hours\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q32-s2": {
       "question_uid": "me:2022:q32-s2",
@@ -1466,8 +1435,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Linear Programming",
         "markdown": "Let,\n\n$x_1=$ No. of units of product   $P_1$\n\n$x_2=$ No. of units of product   $P_2$\n\nMax, $Z=150x_1+100x_2$\n\n$$\\begin{aligned}\n\ns.t.\\;\\; 2x_1+3x_2 &\\leq 70 \\\\\n\n2x_1+3x_2&\\leq 50 \\\\\n\n2x_2 &\\leq 40 \\\\\n\nx_1\\geq 0, x_2&\\geq 0\n\n\\end{aligned}$$\n\nPoint B: Intersection of\n\n$$\\begin{aligned}\n\n2x_1+3x_2 &\\leq 70 \\\\\n\n2x_2 &\\leq 40 \\\\\n\nx_2=20, x_1&=5\n\n\\end{aligned}$$\n\nPoint C: Intersection of\n\n$$\\begin{aligned}\n\n2x_1+3x_2 &\\leq 70 \\\\\n\n2x_1+x_2 &\\leq 50 \\\\\n\n\\text{By sloving }2x_2 &=20 \\\\\n\n\\Rightarrow x_2=10, x_1&=20\n\n\\end{aligned}$$\n\n<img src=\"/question-images/me/2022/me-2022-8b7fc8905f.webp\" />\n\n$$\\begin{aligned}\n\nZ_{max}&=150x_1+100x_2\\\\\n\nZ|_{A(0,20)}&=150(0)+100(20)=2000\\\\\n\nZ|_{B(5,20)}&=150(5)+100(20)=2750\\\\\n\nZ|_{C(20,10)}&=150(20)+100(10)=4000\\\\\n\nZ|_{D(25,0)}&=150(25)+100(0)=3750\\\\\n\n\\Rightarrow x_1&=20,x_2=10\\\\\n\nZ_{max}&=4000\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q33-s2": {
       "question_uid": "me:2022:q33-s2",
@@ -1512,8 +1480,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Dynamics",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-aa51a89a29.webp\" />\n\nBy applying Bernoulli's equation between (1) and (2)\n\n$$\\begin{aligned}\n\n\\frac{P_1}{\\rho g}+\\frac{V_1^2}{2g}+z_1&=\\frac{P_2}{\\rho g}+\\frac{V_2^2}{2g}+z_2\\\\\n\n\\frac{P_{atm}+\\rho gh_1}{\\rho g}+\\frac{V_1^2}{2g}+0&=\\frac{P_{atm}}{\\rho g}+\\frac{V_2^2}{2g}+h_1+h_2 \\\\\n\n&[\\because \\;\\; V_1=V]\\\\\n\n\\frac{V_1^2}{2g}&=\\frac{V}{2g}+h_2-(h_1+h_2)\\\\\n\n\\therefore \\; V_2&=\\sqrt{V^2-2gh_1}\\\\\n\n\\therefore \\; Q&=A_2V_2=\\frac{\\pi d^2}{4} \\times \\sqrt{V^2-2gh_1}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "me:2022:q34-s2": {
       "question_uid": "me:2022:q34-s2",
@@ -1558,8 +1525,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
         "markdown": "By Euler's equation of motion,\n\n$$\\begin{aligned}\n\nx:-\\frac{\\partial p}{\\partial x}+\\rho g_x&=\\rho \\frac{Du}{Dt}\\\\\n\ny:-\\frac{\\partial p}{\\partial y}+\\rho g_y&=\\rho \\frac{Dv}{Dt}\\\\\n\n\\end{aligned}$$\n\nNeglecting body forces (i.e. $g_x=g_y=0$)\n\n$$\\begin{aligned}\n\n\\frac{\\partial p}{\\partial x}&=-\\rho \\frac{Du}{Dt}=-\\rho \\left [ u\\frac{\\partial u}{\\partial x}+v\\frac{\\partial u}{\\partial y} \\right ]\\\\\n\n&=-\\rho [(y^2-x^2)(-2x)+(2xy)(2y)]\\\\\n\n&=-\\rho[-2xy^2+2x^3+4xy^2]\\\\\n\n&=-\\rho(2xy^2+2x^3)\\\\\n\n&=-1.5 \\times (2 \\times 1 \\times 1^2  +2\\times1^3 )\\\\\n\n&=-6 Pa/m\n\n\\end{aligned}$$\n\nSimilarly,\n\n$$\\begin{aligned}\n\n\\frac{\\partial p}{\\partial y}&=-\\rho \\frac{Dv}{Dt}\\\\\n\n&=-\\rho \\left [ u\\frac{\\partial v}{\\partial x}+v\\frac{\\partial v}{\\partial y} \\right ]\\\\\n\n&=-\\rho [(y^2-x^2)(2y)+(2xy)(2x)]\\\\\n\n&=-\\rho[2y^3-2x^2y+4x^2y]\\\\\n\n&=-\\rho(2y^3+2x^2y)\\\\\n\n&=-1.5 \\times (2 \\times 1^3 +2\\times1^2 \\times 1 )\\\\\n\n&=-6 Pa/m\n\n\\end{aligned}$$\n\nThe pressure gradient vector is given by\n\n$\\triangledown p=\\frac{\\partial p}{\\partial x}\\hat{i}+\\frac{\\partial p}{\\partial y}\\hat{j}=-6\\hat{i}-6\\hat{j}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:q35-s2": {
       "question_uid": "me:2022:q35-s2",
@@ -1604,8 +1570,7 @@
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Heat Pumps and Cycles",
         "markdown": "Given data,\n\nSaturated vapour refrigerant enters to compressor\n\nCOP = 3\n\n<img src=\"/question-images/me/2022/me-2022-88345152fb.webp\" />\n\nSpecific liquid enthalpy of refrigerant corresponding\n\nto evaporator pressure $(h_f)_{P_1}=50 kJ/kg$.\n\nDryness fraction of refrigerant of entry to evaporator $(x_4)=?$\n\n$$\\begin{aligned}\n\nCOP &=\\frac{h_1-h_4}{h_2-h_1} \\\\\n\n3 &=\\frac{250-h_4}{300-250} \\\\\n\nh_4&=100kJ/kg \\\\\n\n\\text{But } h_4&=(h_f)_{P_1}+x_4(h_{f_g})_{P_1} \\\\\n\n(h_{f_g})_{P_1}&= (h_{g})_{P_1} - (h_{f_1})_{P_1}\\\\\n\n\\Rightarrow h_{fg}&=250-50=200kJ/kg \\\\\n\n100&=50+x_4 \\times 200 \\\\\n\n\\Rightarrow  x_4&=0.25\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:q36-s2": {
       "question_uid": "me:2022:q36-s2",
@@ -1650,8 +1615,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Zero solution is always a solution of $Ax = 0$.\n\nOption (b) is correct.\n\nGiven A is 3x5 real matrix and $r(A) = 2$ and $Ax = 0$\n\nis a system of homogeneous linear equations since\n\n$r(A) \\lt$ number of unknown the system has infinite\n\nsolution option (c) is also correct.\n\nTherefore, the correct option(s) are **B, C**."
-      },
-      "answer": "B, C"
+      }
     },
     "me:2022:q37-s2": {
       "question_uid": "me:2022:q37-s2",
@@ -1696,8 +1660,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-b687fd1ef7.webp\" />\n\nIf at a point 3 member are meeting and two are colinear then in 3rd member force will be zero.\n\n$F_{GH}=0$\n\nTherefore, the correct option(s) are **B, D**."
-      },
-      "answer": "B, D"
+      }
     },
     "me:2022:q38-s2": {
       "question_uid": "me:2022:q38-s2",
@@ -1740,8 +1703,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "From the property of eigen values,\n\nSum of eigen values = Trace of matrix\n\n4=3+q\n\nq=1\n\nProduct of eigen values = Determinant\n\n$$\\begin{aligned}\n\n-1&=\\begin{vmatrix}\n\n3 &p \\\\\n\np& q\n\n\\end{vmatrix}\\\\\n\n3q-p^2&=-1\\\\\n\n3-p^2&=-1\\\\\n\np^2&=4\\\\\n\np&=\\pm 2\\\\\n\n\\Rightarrow |p|&=2\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "me:2022:q39-s2": {
       "question_uid": "me:2022:q39-s2",
@@ -1784,8 +1746,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "Given contour is a circle at centre (0,0) and radius\n\n2 given function is  $\\frac{1}{(z-i)(z+4i)}$  here $z = i$ is a\n\nsingular point lies now by caucus integral formula\n\n<img src=\"/question-images/me/2022/me-2022-360e08a35b.webp\" />\n\n$$\\begin{aligned}\n\n&\\int \\frac{1}{(z-i)(z+4i)}dz=\\int \\frac{\\left ( \\frac{1}{z+4} \\right )}{z-i}dz=2 \\pi i \\times f(i)\\\\\n\n&f(z)=\\frac{1}{z+4i}\\\\\n\n&f(i)=\\frac{1}{5i}\\\\\n\n&2 \\pi i \\times f(i)=2 \\pi i \\times \\frac{1}{5i}=\\frac{2\\pi}{5}\\\\\n\n&\\text{Now }\\frac{1}{2 \\pi}\\int_{c}\\frac{1}{(z-1)(z+4i)}dz=\\frac{1}{2 \\pi}+\\frac{2 \\pi}{5}=\\frac{1}{5}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.2**."
-      },
-      "answer": "0.2"
+      }
     },
     "me:2022:q40-s2": {
       "question_uid": "me:2022:q40-s2",
@@ -1828,8 +1789,7 @@
       "detailed_solution": {
         "concept": "Machine Design - Bearings, Shafts and keys",
         "markdown": "Given $G_i=3G_o, d_o=2d_i, l_i=l_o,\\theta _i=\\theta _o \\text{ (It is a rigid joint)}$\n\nFind $\\frac{T_i}{T_o}=?$\n\n$$\\begin{aligned}\n\n\\frac{T}{J}&=\\frac{\\tau }{r}=\\frac{G\\theta }{L}\\\\\n\n\\tau _{max}(\\text{in core})&=\\frac{G\\theta \\times r_{max}}{L}\\\\\n\n&=\\frac{G_i \\times \\theta _i \\times \\frac{d_i}{2}}{L_i}=\\tau _i\\\\\n\n\\tau _{max}(\\text{rim})&=\\frac{G_o \\times \\theta _o\\times \\frac{d_o}{2} }{L_o}=\\tau _o\\\\\n\n\\frac{T_i}{\\tau _o}&=\\frac{G_i \\times \\theta _i \\times \\frac{d_i}{2}}{L_i} \\times \\frac{L_o}{G_o \\times \\theta _o\\times \\frac{d_o}{2} }\\\\\n\n\\frac{T_i}{T_o}&=\\frac{G_i}{G_o} \\times \\frac{d_i}{d_o}=3 \\times \\frac{1}{2}=1.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.5** (acceptable range: [1.48, 1.52])."
-      },
-      "answer": "1.5"
+      }
     },
     "me:2022:q41-s2": {
       "question_uid": "me:2022:q41-s2",
@@ -1872,8 +1832,7 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Euler's Theory of Column",
         "markdown": "F.B.D of beam\n\n<img src=\"/question-images/me/2022/me-2022-a0052b6183.webp\" />\n\n$$\\begin{aligned}\n\n\\delta l_1:\\delta l_2:\\delta l_3&=T_1:T_2:T_3\\\\\n\n1:2:3&=T_1:T_2:T_3\\\\\n\n\\text{Let }T_1&=T\\\\\n\n\\therefore \\; T_2&=2T,T_3=3T\\\\\n\n\\Sigma M_A&=0\\\\\n\n\\therefore \\; -T \\times a-2T &\\times 2a-3T \\times 3a+F \\times 2a=0\\\\\n\n\\therefore \\;\\; F \\times 2a &=14 Ta\\\\\n\n2F&=14T\\\\\n\nT&=\\frac{F}{7}=\\frac{9}{7}kN\\\\\n\nT_2&=2T=\\frac{18}{7}=2.57kN\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.505** (acceptable range: [1.48, 1.53])."
-      },
-      "answer": "1.505"
+      }
     },
     "me:2022:q42-s2": {
       "question_uid": "me:2022:q42-s2",
@@ -1916,8 +1875,7 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-799e4b16ff.webp\" />\n\nNumber of links = 4\n\nNumber of I-centers $4c_2=6$\n\n$\\omega _2=5 \\; rad/sec$\n\n$\\omega _4=?$\n\nFor\n\n$$\\begin{aligned}\n\nV_{I_{24}}&=I_{12}I_{24}\\omega _{2}=I_{14}I_{24}\\omega_4\\\\\n\n&=2 \\times 5 =8 \\times \\omega_4\\\\\n\n\\omega_4&=1.25 \\; rad/sec\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.25** (acceptable range: [1.24, 1.26])."
-      },
-      "answer": "1.25"
+      }
     },
     "me:2022:q43-s2": {
       "question_uid": "me:2022:q43-s2",
@@ -1960,8 +1918,7 @@
       "detailed_solution": {
         "concept": "Machine Design - Bearings, Shafts and keys",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-f7b74c09e4.webp\" />\n\n$$\\begin{aligned}\n\nM_{max}&=400 \\times L =400 \\times 0.5 \\times 10^3\\\\\n\n&=200 \\times 10^3 \\; N.mm\\\\\n\nT_{max}&=M_z\\\\\n\n&=(T_1-T_1) \\times r\\\\\n\n&=(200 \\times 0.4) \\times 10^3\\\\\n\nT_{max}&=80 \\times 10^3 \\; N.mm\n\n\\end{aligned}$$\n\nHere section-B is critical due to loading,\n\nCritical particle :\n\nAccording to maximum shear stress theory,\n\n$$\\begin{aligned}\n\n\\frac{16}{\\pi d^3}\\sqrt{M_{max}^2+T_{max}^2}&=\\frac{S_{{ys}}}{FOS}\\\\\n\n\\frac{16 \\times 10^3}{\\pi d^3}\\sqrt{200^2+80^2}&=\\frac{80}{1}\\\\\n\n\\Rightarrow d&=23.94mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **23.9** (acceptable range: [23.6, 24.2])."
-      },
-      "answer": "23.9"
+      }
     },
     "me:2022:q44-s2": {
       "question_uid": "me:2022:q44-s2",
@@ -2004,8 +1961,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "Given data, No. of teeth $(n)=4$\n\nDiameter of cutter $(D) = 200 mm$\n\nRotational speed  $(N) = 100 rpm$\n\nLinear feed to work piece = 1000 mm/min\n\nWidth of work piece $(w) = 100 mm$\n\nCutting force/tooth  $= F = K t_c w$\n\nSpecific cutting force  $= K = 10 N/mm^2$\n\nDepth of cut   $(d)= D/2$\n\n$Feed(f) = 1000/100 = 10 mm/rev$\n\nUncut chip thickness $=t_c$\n\nMaximum uncut chip thickness  $(t_c)_{max}$\n\n$$\\begin{aligned}\n\n&=\\frac{2f}{n}\\sqrt{d/D(1-d/D)}\\\\\n\n&=\\frac{2 \\times 10}{4}\\sqrt{\\frac{D/2}{D}\\left ( 1- \\frac{D/2}{D}\\right )}\\\\\n\n&=5\\sqrt{1/2(1-1/2)}=2.5mm\\\\\n\n&\\text{Maximum force }\\\\\n\n(F)_{max}&=K(t_c)_{max}\\cdot w\\\\\n\n&=10 \\times 2.5 \\times 100\\\\\n\n&=2500N=2.5kN\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.5** (acceptable range: [2.4, 2.6])."
-      },
-      "answer": "2.5"
+      }
     },
     "me:2022:q45-s2": {
       "question_uid": "me:2022:q45-s2",
@@ -2048,8 +2004,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "Given, $F_C=F_T$\n\nUncut chip thickness $(t_1)=0.5mm$\n\nShear angle  $(\\phi )=15^{\\circ}$\n\nOrthogonal rake angle $\\alpha =0^{\\circ}$\n\nWidth of cut $w=2mm$\n\nShear strength $(\\tau _S) =500MPa$\n\nCutting force $f_c=$ ____N\n\n$$\\begin{aligned}\n\nF_S&=F_C \\cos \\phi -F_T \\sin \\phi \\\\\n\n&=F_C \\cos \\phi -F_C \\sin \\phi \\\\ \\\\\n\n&= F_C(\\cos \\phi - \\sin \\phi)\\\\\n\nF_C&=\\frac{F_S}{\\cos \\phi - \\sin \\phi} \\\\\n\n&= \\frac{\\tau _S\\cdot w\\cdot t_1}{\\sin \\phi (\\cos \\phi - \\sin \\phi)}\\\\\n\n&=\\frac{500 \\times 2 \\times 0.5}{\\sin 15^{\\circ}(\\cos 15^{\\circ}-\\sin 15^{\\circ})}\\\\\n\n&=2732 N\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2725** (acceptable range: [2700, 2750])."
-      },
-      "answer": "2725"
+      }
     },
     "me:2022:q46-s2": {
       "question_uid": "me:2022:q46-s2",
@@ -2092,8 +2047,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
         "markdown": "Pitch $(p) = 4 mm$\n\nThread angle  $2\\alpha =60^{\\circ}$\n\nSemi Thread Angle  $\\alpha =30^{\\circ}$\n\nDiameter of best size wire\n\n$$\\begin{aligned}\n\nd_w&=\\frac{p}{2}\\sec \\alpha \\\\\n\nd_w&=\\frac{4}{2} \\sec 30^{\\circ}\\\\\n\nd_w&=2.039 mm=2.31mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.31** (acceptable range: [2.29, 2.33])."
-      },
-      "answer": "2.31"
+      }
     },
     "me:2022:q47-s2": {
       "question_uid": "me:2022:q47-s2",
@@ -2136,8 +2090,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Joining-Welding",
         "markdown": "Given, OCV = 100 V and SCC = 1000 A\n\nVoltage Arc length characteristic $V_{arc}=10+5l$\n\nWe have,\n\n$$\\begin{aligned}\n\nV_P&=OCV-\\frac{OCV}{SCC}I\\\\\n\nV_P&=100-\\frac{100}{1000}I\\\\\n\n_P&=100-\\frac{I}{10}\n\n\\end{aligned}$$\n\nFor stable arc\n\n$$\\begin{aligned}\n\nV_{arc}&=V_P\\\\\n\n10+5l&=100-\\frac{I}{10}\\\\\n\nI&=900-50l\\\\\n\n\\text{Arc Power} (P)&=V \\times I\\\\\n\nP&=(10+5l)(900-50l)\\\\\n\nP&=9000+4000l-250l^2\n\n\\end{aligned}$$\n\nFor Maximum Arc Power\n\n$$\\begin{aligned}\n\n\\frac{dP}{dl}&=0\\\\\n\n\\frac{d}{dl}(9000+400l-250l^2)&=0\\\\\n\nl=4000/500&=8mm\n\n\\end{aligned}$$\n\nHence, for Maximum arc power, arc length is 8 mm\n\nVoltage at $l=8mm$\n\n$$\\begin{aligned}\n\nV&=10+5l\\\\\n\nV&=10+( 5 \\times 8)\\\\\n\nV&=50 \\;Volt\n\n\\end{aligned}$$\n\nCurrent at $l=8mm$\n\n$$\\begin{aligned}\n\nI&=900-50l\\\\\n\nI&=900-( 50 \\times 8)\\\\\n\nI&=500 \\;A\n\n\\end{aligned}$$\n\nMaximum Arc Power\n\n$$\\begin{aligned}\n\nP_{max}&= V \\times I\\\\\n\nP_{max}&=50 \\times 500\\\\\n\n&=25000VA\\\\\n\n&=25 kVA\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **25**."
-      },
-      "answer": "25"
+      }
     },
     "me:2022:q48-s2": {
       "question_uid": "me:2022:q48-s2",
@@ -2180,8 +2133,7 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
         "markdown": "Original length of the billet $(L_0)=100mm$\n\nOriginal diameter of billet $(d_0)=100mm$\n\nMean flow stress of billet material  $(\\sigma _m)=50MPa$\n\nDie Shape factor$K_S=1.05$\n\nOriginal Cross Sectional Area of Billet\n\n$A_0=\\frac{\\pi}{4}d_0^2=\\frac{\\pi}{4}100^2=7853.981$\n\nCross sectional area of extruded product\n\n$A_f=(10 \\times 50)+ (10 \\times 50)=1000 mm^2$\n\nExtrusion ratio $r=\\frac{A_0}{A_f}=\\frac{7853.9816}{1000}=7.854$\n\nExtrusion pressure will be maximum at the start of\n\nextrusion process where $L_0=100mm$\n\n$$\\begin{aligned}\n\nP_{max}&= K_S\\sigma _m\\left [ 0.8+1.5 \\ln (r)+\\frac{2L_0}{d_0} \\right ]\\\\\n\n&=1.05 \\times 50 \\left [ 0.8+1.5 \\ln (7.854)+\\frac{2 \\times 100}{100} \\right ]\\\\\n\n&=309.305 MPa\n\n\\end{aligned}$$\n\nMaximum Extrusion force\n\n$$\\begin{aligned}\n\nF_{max}&= P_{max} \\times A_0\\\\\n\n&=309.305 \\times \\frac{\\pi}{4}(100)^2\\\\\n\n&=2429265.97N\\\\\n\n&=2429.3kN\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2429** (acceptable range: [2426, 2432])."
-      },
-      "answer": "2429"
+      }
     },
     "me:2022:q49-s2": {
       "question_uid": "me:2022:q49-s2",
@@ -2224,8 +2176,7 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
         "markdown": "$$\\begin{array}{|c|c|}\n\n\\hline\n\n\\text{Activity}& t_e=\\frac{t_0+4t_m+t_p}{6}\\\\ \\hline\n\nA&5\\\\  \\hline\n\nB&3\\\\  \\hline\n\nC&2\\\\ \\hline\n\nD&4\\\\  \\hline\n\nE&4 \\\\ \\hline\n\n\\end{array}$$\n\n<img src=\"/question-images/me/2022/me-2022-0f424a4559.webp\" />\n\n$$\\begin{array}{|c|c|}\n\n\\hline\n\n\\text{Path}& \\text{Duration}\\\\ \\hline\n\n1-2-4-5(A-B-E)&12\\\\  \\hline\n\n1-2-3-4-5 (A-C-D-E)&15\\\\  \\hline\n\n\\end{array}$$\n\nExpected completion time of the project = critical path duration = 15 weeks\n\nTherefore, the correct answer is **15**."
-      },
-      "answer": "15"
+      }
     },
     "me:2022:q50-s2": {
       "question_uid": "me:2022:q50-s2",
@@ -2268,8 +2219,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Thermodynamic System and Processes",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-fc2bb35b16.webp\" />\n\nInitially the tank is completely evacuated ($m_1 = 0$)\n\nAfter the gas is filled with tank, the gas pressure in\n\nthe tank is 600 kPa.\n\nHeat lost to surroundings (Q) = 1000 kJ\n\n$c_p=1.005 KJ/kgK$\n\n$c_v=0.718KJ/kgK$\n\n$R=c_p-c_v=0.287 kJ/kgK$\n\n(Changes in KE and PE are negligible)\n\nFinal temperature of gas  $T_f=?$\n\nm = mass of gas entering to tank\n\nThe energy balance equation is energy carried by\n\ngas in the pipe = energy of gas in the rigid tank +\n\nHeat lost to surrounding\n\n$$\\begin{aligned}\n\nmh_i&=mu_f+Q\\\\\n\nh_i&=u_f+\\frac{Q}{m}\\\\\n\nC+pT_i&=C_vT_f+\\frac{1000}{\\frac{16724.73868}{T_f}}\n\n\\end{aligned}$$\n\nMass of gas in the tank\n\n$$\\begin{aligned}\n\nm=\\frac{P_fV_f}{RT_f}\\\\\n\n&=\\frac{600(8)}{0.287(T_f)}\\\\\n\n&=\\frac{16724.73868}{T_f}\\\\\n\n1.005(306)&=0.718T_f+\\frac{1000T_f}{16724.73868}\\\\\n\n&=0.718T_f+0.05979T_f\\\\\n\n&=0.77779T_f\\\\\n\n\\therefore \\; T_f&=\\frac{1.005 \\times 306}{0.77779}\\\\\n\n&=395.389K\\approx 395K\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **395** (acceptable range: [385, 405])."
-      },
-      "answer": "395"
+      }
     },
     "me:2022:q51-s2": {
       "question_uid": "me:2022:q51-s2",
@@ -2312,8 +2262,7 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Thermodynamic System and Processes",
         "markdown": "Mass flow rate of stem $\\dot{m}=500kg/s$\n\n$h_1=300 kJ/kg$\n\n$S_1=6.5 kJ/kgL$\n\n$h_2=2500kJ/kg$\n\n$S_2=6.3 kJ/kgK$\n\n<img src=\"/question-images/me/2022/me-2022-5077c9610d.webp\" />\n\nSurrounding temperature $T_o=500 K$\n\nWork output from turbine\n\n$$\\begin{aligned}\n\nW_T&=(h_1-h_2)-T_o(S_1-S_2)\\\\\n\n&=(3500-2500)-500(6.5-6.3)\\\\\n\n&=1000-100\\\\\n\n&=900 kJ/kg\n\n\\end{aligned}$$\n\nPower output of turbine\n\n$$\\begin{aligned}\n\nP&=\\frac{W_T}{kg} \\times \\dot{m}\\\\\n\n&=900 \\times 500\\\\\n\n&=450000 kW\\\\\n\n&=450 MW\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **450**."
-      },
-      "answer": "450"
+      }
     },
     "me:2022:q52-s2": {
       "question_uid": "me:2022:q52-s2",
@@ -2356,8 +2305,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-beb4ccaa11.webp\" />\n\nAs the system is in equilibrium,\n\n$\\Sigma M_o=0$\n\n$(F_{B1}-W_1) \\times \\frac{L}{2} \\cos \\theta +F_{B2}-W_2) \\times L \\times \\cos \\theta =0$\n\n$(\\rho gV_1-\\rho _1gV_1) \\times \\frac{1}{2}+(\\rho gV_2-\\rho _2gV_2) =0$\n\n$(\\rho -\\rho _1) \\times g \\times \\frac{\\pi d^2L}{4} \\times \\frac{1}{2}+(\\rho -\\rho _2) \\times \\frac{4}{3} \\times \\\\pi R^3 \\times g=0$\n\n$(100-600) \\times \\frac{0.04^2 \\times 8}{8} +(1000-11400) \\times \\frac{4}{3} \\times R^3=0$\n\n$\\Rightarrow R=0.03587m=3.59cm$\n\nTherefore, the correct answer is **3.59** (acceptable range: [3.48, 3.7])."
-      },
-      "answer": "3.59"
+      }
     },
     "me:2022:q53-s2": {
       "question_uid": "me:2022:q53-s2",
@@ -2400,8 +2348,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
         "markdown": "General Heat conduction equation in Cartesian\n\ncoordinates is\n\n$\\frac{\\partial }{\\partial x}\\left ( K_x\\frac{\\partial T}{\\partial x} \\right )+\\frac{\\partial }{\\partial y}\\left ( K_y\\frac{\\partial T}{\\partial y} \\right )\\frac{\\partial }{\\partial z}\\left ( K_z\\frac{\\partial T}{\\partial z} \\right )+q_g=\\rho c\\frac{\\partial T}{\\partial t}$\n\nFor one dimensional steady state heat generation\n\nwith variable thermal conductivity, the above\n\nequation can be written as\n\n$$\\begin{aligned}\n\n\\frac{\\partial }{\\partial x}\\left ( CT\\frac{\\partial T}{\\partial x} \\right )+q_g&=0\\\\\n\nC\\frac{\\partial }{\\partial x}\\left ( T\\frac{\\partial T}{\\partial x} \\right )+q_g&=0\\\\\n\n\\frac{\\partial }{\\partial x}\\left ( T\\frac{\\partial T}{\\partial x} \\right )+\\frac{q_g}{C}&=0\\\\\n\n\\frac{\\partial }{\\partial x}\\left ( T\\frac{\\partial T}{\\partial x} \\right )&=-\\frac{q_g}{C}\\\\\n\n\\int \\frac{\\partial }{\\partial x}\\left ( T\\frac{\\partial T}{\\partial x} \\right )&=-\\int \\frac{q_g}{C}\\\\\n\n\\text{For 1-D heat flow}\\\\\n\n\\frac{\\partial T}{\\partial x}&=\\frac{dT }{\\partial x}\\\\\n\nT\\frac{dT}{dx}&=-\\frac{q_gx}{C}+C_1\\\\\n\nx=0\\;\\;\\frac{dT}{dx}&=0\\;\\;C_1=0 \\text{ (At centerline)}\\\\\n\nT\\frac{dT}{dx}&=-\\frac{q_gx}{C}\\\\\n\n\\int TdT&=\\int -\\frac{q_gx}{C}dx\\\\\n\n\\frac{T^2}{2}&=\\frac{-q_gx^2}{2C}+C_2 . . . (1)\\\\\n\nT=T_s&=\\text{Outside surface temperature}\\\\\n\n\\frac{T_S^2}{2}&=\\frac{-q_gL^2}{2C}+C_2\\\\\n\nC_2&=\\frac{T-s^2}{2}+\\frac{q_gL^2}{2C}\\\\\n\n\\text{Put }&c_2 \\text{ in equation (1)}\\\\\n\n\\frac{T^2}{2}&=\\frac{-q_ax^2}{2C}+\\frac{T_s^2}{2}+\\frac{q_gL^2}{2C}\\\\\n\n\\text{At }&x=0,T=T_{max}\\\\\n\n\\frac{T_{max}^2}{2}&=\\frac{T_s^2}{2}+\\frac{q_gL^2}{2C}\\\\\n\n\\frac{T_{max}^2}{2}&=\\frac{600^2}{2}+\\frac{128010^3 \\times 1^2}{2 \\times 2}\\\\\n\nT_{max}&=1000K\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1000**."
-      },
-      "answer": "1000"
+      }
     },
     "me:2022:q54-s2": {
       "question_uid": "me:2022:q54-s2",
@@ -2444,8 +2391,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-976266a52b.webp\" />\n\nHot fluid\n\n$$\\begin{aligned}\n\nT_{h1} &=T_{h2}=200^{\\circ} C\\\\\n\n\\dot{m}_h &=150kg/s \\\\\n\n&= h_{fg}&=2400kj/kg\n\n\\end{aligned}$$\n\nCold fluid\n\n$$\\begin{aligned}\n\nT_{c1} &=100^{\\circ} C\\\\\n\n\\in &=0.9\\\\\n\n\\dot{m}_c &= ? kg/sec\n\n\\end{aligned}$$\n\nIf fluid is under phase change then that fluid have in\n\nfinite heat capacity rate.\n\nIn this case hot fluid is under phase change so\n\n$C_{max}=\\infty$\n\nIt means cold fluid have minimum heat capacity\n\nrate\n\n$$\\begin{aligned}\n\nc_{min}&=\\dot{m}_c c_c\\\\\n\n\\in &=\\frac{Q_{act}}{Q_{max}}\\\\\n\n0.9&=\\frac{\\dot{m}_c c_c(T_{c2}-T_{c1})}{c_{min}(T_{h1}-T_{c1})}\\\\\n\n0.9&=\\frac{T_{c2}-100}{200-100}\\\\\n\nT_{c2}&=190^{\\circ}C\\\\\n\nQ&=\\dot{m}_hh_{fg}=\\dot{m}_cc_c(T_{c2}-T_{c1})\\\\\n\n150 \\times 2400&=\\dot{m}_c \\times 4 \\times (190-100)\\\\\n\n\\dot{m}_c&=1000kg/sec\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1000**."
-      },
-      "answer": "1000"
+      }
     },
     "me:2022:q55-s2": {
       "question_uid": "me:2022:q55-s2",
@@ -2488,8 +2434,7 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Free and Forced Convection",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-faeb0bc78c.webp\" />\n\n$$\\begin{aligned}\n\n\\dot{m}&=1kg/sec\\\\\n\nRe&=85000\\\\\n\nPr&=5\\\\\n\nK&=0.08 W/mK\\\\\n\nC&=2600J/kgK\\\\\n\nNu&=0.023R_e^{0.8}Pr^{0.4}\\\\\n\nNu&=\\frac{hD}{k}\\\\\n\nT_s&=?\\\\\n\nNu&=\\frac{hD}{k}=0.023R_e^{0.8}Pr^{0.4}\\\\\n\n\\frac{h \\times 0.1}{0.08}&=0.023(85000)^{0.8}(5)^{0.4}\\\\\n\nh&=307.56 W/m^2K\\\\\n\nQ&=qA_s=\\dot{m}c_p(T_o-T_i)\\\\\n\nq \\pi DL&=\\dot{m}c_p(T_o-T_i)\\\\\n\n15000 \\times \\pi \\times0.1 \\times 40&=1 \\times 2600 \\times (T_o-200)\\\\\n\nT_o&=272.5^{\\circ}C\\\\\n\n&\\text{Newtons law of cooling}\\\\\n\nq&=h(T_s-T_m)\\\\\n\nT_s-T-m=\\frac{q}{h}=constant\n\n\\end{aligned}$$\n\n<img src=\"/question-images/me/2022/me-2022-0d1b49d1b7.webp\" />\n\nAt outlet, $x=LT_m=T_o. T=T_s$\n\n$$\\begin{aligned}\n\nq&=h(T_s-T_o)\\\\\n\nT_s-T_o&=\\frac{q}{h}\\\\\n\nT_s&=T_o+\\frac{q}{h}\\\\\n\nT_s&=272.5+\\frac{15000}{307.56}\\\\\n\nT_s&=321.27^{\\circ}C\\\\\n\nT_s&=321^{\\circ}C\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **320.5** (acceptable range: [317, 324])."
-      },
-      "answer": "320.5"
+      }
     },
     "me:2022:ga:q1-s2": {
       "question_uid": "me:2022:ga:q1-s2",
@@ -2533,8 +2478,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Board means a surface, frame, or device for posing\n\nnotices or writing on the blackboard. Bored means\n\nfilled with or characterized by boredom.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:ga:q2-s2": {
       "question_uid": "me:2022:ga:q2-s2",
@@ -2578,8 +2522,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\n2-5x \\leq -\\frac{6x-5}{3}\\\\\n\n1-9x\\leq 0\\\\\n\n\\Rightarrow 1\\leq 9x\\Rightarrow x\\geq \\frac{1}{9}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:ga:q3-s2": {
       "question_uid": "me:2022:ga:q3-s2",
@@ -2623,8 +2566,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\nf(x)&=2 \\ln ( \\sqrt{e^x})\\\\\n\n&=2 \\ln (e^{x/2})=2 \\log _e e^{x/2}\\\\\n\nf(x)&=2\\left ( \\frac{x}{2} \\right )=x\n\n\\end{aligned}$$\n\n<img src=\"/question-images/me/2022/me-2022-6be9025c6a.webp\" />\n\nArea =(1/2) x 2 x 2=2\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:ga:q4-s2": {
       "question_uid": "me:2022:ga:q4-s2",
@@ -2668,8 +2610,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "February month have 5 Mondays.\n\nFebruary - 29 days = 4 weeks 1 day -> Monday\n\n29th Feb is Monday\n\n1st | 8th | 15th | 22nd | 29th Feb is Mondays.\n\nSo, 2nd Feb is Tuesday.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q5-s2": {
       "question_uid": "me:2022:ga:q5-s2",
@@ -2713,8 +2654,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Priority: Shape, position and size.\n\nAs per size point of view parallelogram is not suitable.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "me:2022:ga:q6-s2": {
       "question_uid": "me:2022:ga:q6-s2",
@@ -2758,8 +2698,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Ultra-black skin advantages that avoids predators\n\nand attacks their prey.\n\nUltra-black skin disadvantage is that the skin is\n\nmore fragile means easily broken or destroyed.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:ga:q7-s2": {
       "question_uid": "me:2022:ga:q7-s2",
@@ -2803,8 +2742,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Total production = Average x No. of days\n\nP= 100 m\n\nand\n\nP + 180 = 110 (m+1)\n\nSolving, m = 7\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "me:2022:ga:q8-s2": {
       "question_uid": "me:2022:ga:q8-s2",
@@ -2848,8 +2786,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "f(2,2) = 2 x 2 = 4\n\ng(2,2) = 4\n\nf(2,2) = g(2,2)\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q9-s2": {
       "question_uid": "me:2022:ga:q9-s2",
@@ -2893,8 +2830,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "R at 7 am\n\n1 hour journey\n\nReached Q at 8 am\n\nAt Q buses available timings are 5 am, 7am, 9 am ..\n\nPerson started at Q at 9 am\n\n1 hour journey reached P at 10 am.\n\nBuses timings at P are 8 am, 9:30am, 11 am, 12:30\n\npm...\n\nPerson started at P at 11 am\n\n1 hour journey\n\nReached S at 12 noon.\n\nBuses timings at S are\n\n8am, 8:45 am, 9:30 am, 10:15 am, 11am, 11:45 am,\n\n12:30pm ....\n\nPerson started at S at 12:30 pm\n\n1 hour journey\n\nReached R at 1:30 pm\n\nMinimum Total time = 1:30 pm - 7 am\n\n= 6 hrs 30 min\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "me:2022:ga:q10-s2": {
       "question_uid": "me:2022:ga:q10-s2",
@@ -2938,8 +2874,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/me/2022/me-2022-c97394a387.webp\" />\n\n$2d=1\\Rightarrow d=\\frac{1}{2}$\n\nArea of circle $=\\frac{\\pi d^2}{4}=\\frac{\\pi}{16}$\n\nTotal circle area $= 4 \\times \\frac{\\pi}{16}=\\frac{\\pi}{4}$\n\n<img src=\"/question-images/me/2022/me-2022-a119dffb8d.webp\" />\n\n$3d=1\\Rightarrow d=\\frac{1}{3}$\n\nArea of circle $=\\frac{\\pi d^2}{4}=\\frac{\\pi}{36}$\n\nTotal circle area $= 9 \\times \\frac{\\pi}{36}=\\frac{\\pi}{4}$\n\n$\\frac{\\text{Unshaded area M}}{\\text{Unshaded area N}}=\\frac{1^2-\\frac{\\pi}{4}}{1-\\frac{\\pi}{4}}=\\frac{1}{1}=1:1$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     }
   }
 }

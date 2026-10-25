@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:36.962Z",
+  "generatedAt": "2026-10-25T18:50:27.020Z",
   "shardKey": "ec-2024-s1",
   "yearSetKey": "ec-2024-s1",
   "yearSetIdentity": "ec:2024:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$\\because$ Given\n\nComplementary function $=(A t+B) e^{-2 t} \\approx\\left(C_{1}+C_{2} t\\right) e^{-2 t}$\n\ni.e. roots of auxiliary equation are $m=-2,-2$\n\nSo, $\\mathrm{AE}$ is $(m+2)(m+2)=0$\n\n$m^{2}+4 m+4=0$\n\nReplace $m \\rightarrow D$ we get,\n\n$\\left(D^{2}+4 D+4\\right) y=0$\n\ni.e. the required different\n\n$\\frac{d^{2} y}{d x^{2}}+4 \\frac{d y}{d x}+4 y=f(t)$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q2": {
       "question_uid": "ec:2024:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "$$\\begin{aligned}\n\n20 \\times \\mathrm{ndB} / \\text { decade } & =6 \\times \\mathrm{n} \\mathrm{dB} / \\text { octave } \\\\\n\n40 \\mathrm{~dB} / \\text { decade } & =12 \\mathrm{~dB} / \\text { octave }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q3": {
       "question_uid": "ec:2024:q3",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
         "markdown": "Given system is\n\n<img src=\"/question-images/ec/2024/ec-2024-86bcd48375.webp\" />\n\n$G(s)=\\frac{6}{s(s+1)(s+2)}$\n\nThe characteristic equation,\n\n$$\\begin{aligned}\n\n1+G(s) & =0 \\\\\n\n1+\\frac{6}{s(s+1)(s+2)} & =0 \\\\\n\ns(s+1)(s+2)+6 & =0 \\\\\n\ns^{3}+3 s^{2}+2 s+6 & =0\n\n\\end{aligned}$$\n\nClearly, here the internal coefficient product is equal to external coefficient product i.e.,\n\n$3 \\times 2=6 \\times 1$\n\nHence, the given system is marginally stable system.\n\n$\\therefore e(t)$ not exist because system is oscillatory system.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2024:q4": {
       "question_uid": "ec:2024:q4",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communication Systems",
         "markdown": "For zero ISI, $x(t)$ should have zero crossings at $\\pm T, \\pm 2 T, \\pm 3 T \\ldots$\n\n<img src=\"/question-images/ec/2024/ec-2024-fc2c4433d7.webp\" />\n\n$x(t) \\sum_{m=-\\infty}^{\\infty} \\delta(t-m T)=x(0) \\delta(t)$\n\n$\\frac{1}{T} \\sum_{m=-\\infty}^{\\infty} x\\left(f-\\frac{m}{T}\\right)=x(0)$\n\n$\\sum_{m=-\\infty}^{\\infty} X\\left(f-\\frac{m}{T}\\right)=x(0) T$\n\n(or)\n\n$\\sum_{m=-\\infty}^{\\infty} X\\left(f+\\frac{m}{T}\\right)=x(0) T$\n\nAs per GATE official Answer Key-MTA\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q5": {
       "question_uid": "ec:2024:q5",
@@ -236,8 +232,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-56976a7fd9.webp\" />\n\n$Z_{s / c}=j Z_{0} \\tan \\beta l$.\n\n$\\Rightarrow$ Normalized impedance,\n\n$$\\begin{aligned}\n\n& \\bar{Z}_{S / C}=\\frac{Z_{S / C}}{Z_{0}}=j \\tan \\beta l \\\\\n\n& \\bar{Z}_{\\text {in } A}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{8}\\right)=j \\tan (\\pi / 4)=j 1 \\Omega \\\\\n\n& \\bar{Z}_{\\text {in } B}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{4}\\right)=\\infty \\\\\n\n& \\bar{Z}_{\\text {in } C}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{3 \\lambda}{8}\\right)=-j 1 \\Omega \\\\\n\n& \\bar{Z}_{\\text {in } D}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{2}\\right)=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2024:q6": {
       "question_uid": "ec:2024:q6",
@@ -282,8 +277,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
         "markdown": "For an electrostatic field, $\\nabla \\times \\bar{F}=0$\n\n$$\\begin{aligned}\n\n& \\bar{F}_{1}=A[y \\hat{i}+x \\hat{j}] \\\\\n\n& \\Rightarrow \\\\\n\n& \\Delta \\times \\bar{F}_{1}=A\\left|\\begin{array}{ccc}\n\n\\hat{i} & \\hat{j} & \\hat{k} \\\\\n\n\\partial / \\partial x & \\partial / \\partial y & \\partial / \\partial z \\\\\n\ny & x & 0\n\n\\end{array}\\right| \\\\\n\n& =A[0 \\hat{i}-0 \\hat{j}+(1-1) \\hat{k}] \\\\\n\n& =0 \\\\\n\n& \\bar{F}_{2}=A[y \\hat{i}-x \\hat{j}] \\\\\n\n& \\Rightarrow \\\\\n\n& \\Delta \\times \\bar{F}_{2}=A\\left|\\begin{array}{ccc}\n\n\\hat{i} & \\hat{j} & \\hat{k} \\\\\n\n\\partial / \\partial x & \\partial / \\partial y & \\partial / \\partial z \\\\\n\ny & -x & 0\n\n\\end{array}\\right| \\\\\n\n& =A[0 \\hat{i}-0 \\hat{j}+(-1-1) \\hat{k}] \\\\\n\n& =-2 A \\hat{k}\n\n\\end{aligned}$$\n\nHence, $\\bar{F}_{1}$ is electrostatic, $\\bar{F}_{2}$ is not electrostatic.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q7": {
       "question_uid": "ec:2024:q7",
@@ -328,8 +322,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-263f65bf98.webp\" />\n\n$$\\begin{aligned}\n\n& I_{i}=\\frac{V_{i}-V_{0}}{z_{i}}=\\frac{V_{i}}{z_{i}}-\\frac{V_{0}}{z_{i}} \\\\\n\n& V_{0}=\\left(I_{i}+g_{m} V_{g s}\\right) z_{L} \\\\\n\n& V_{0}=I_{i} Z_{L}+g_{m} V_{g S} z_{L} \\\\\n\n& V_{0}=I_{i}\\left(z_{L}+g_{m} z_{1} z_{L}\\right) \\\\\n\n& I_{i}=\\frac{V_{1}^{i}}{z_{1}}-\\frac{I_{i}\\left(z_{L}+g_{m} z_{1} z_{L}\\right)}{z_{1}} \\\\\n\n& I_{i} \\frac{\\left[z_{1}+z_{L}+g_{m} z_{1} z_{L}\\right]}{z_{1}}=\\frac{V_{L}^{i}}{z_{1}} \\\\\n\n& \\frac{V_{L}^{i}}{I_{i}}=z_{1}+z_{L}+g_{m} z_{1} z_{L} \\\\\n\n& z_{\\text {in }}=\\frac{1}{j \\omega C_{1}}+\\frac{1}{j \\omega C_{L}}-\\frac{g_{m}}{\\omega^{2} C_{1} C_{L}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q8": {
       "question_uid": "ec:2024:q8",
@@ -374,8 +367,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Frequency Response of Amplifier",
         "markdown": "$A_{O L}=40$\n\nGiven circuit is differential amplifier with current mirror active load.\n\n$$\\begin{aligned}\n\nV_{f} & =V_{\\text {out }} \\\\\n\n\\frac{V_{f}}{V_{\\text {out }}} & =\\beta=1 \\\\\n\nA_{C L} & =\\frac{A_{O L}}{1+\\beta A_{O L}}=\\frac{40}{1+1 \\times 40} \\\\\n\nA_{C L} & =0.976\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q9": {
       "question_uid": "ec:2024:q9",
@@ -420,8 +412,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
         "markdown": "$f(A, B, C, D)=\\Sigma m(0.2,5,7,8,10,12,13,14,15)$\n\n<img src=\"/question-images/ec/2024/ec-2024-54e02eeade.webp\" />\n\n$B D \\quad \\bar{B} \\bar{D}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q10": {
       "question_uid": "ec:2024:q10",
@@ -466,8 +457,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-a451396d1e.webp\" />\n\n$$\\begin{aligned}\n\nE[n(t)] & =E[W(t)] \\cdot H(0) \\\\\n\nE[n(t)] & =0 \\\\\n\nE\\left[n^{2}(t)\\right] & =\\left\\{E(n(t)\\}^{2}+\\operatorname{var}[n(t)]\\right. \\\\\n\n\\operatorname{var}[n(t)] & =E\\left[n^{2}(t)\\right]\n\n\\end{aligned}$$\n\nat $t=t_{k}$\n\n$$\\begin{aligned}\n\n\\left.\\operatorname{var}[n(t)]\\right|_{t=t_{k}} & =E\\left[n^{2}\\left(t_{k}\\right)\\right]=E\\left[n\\left(t_{k}\\right) \\cdot n\\left(t_{k}\\right)\\right]=R_{n}(0) \\\\\n\nS_{n}(f) & =S_{W}(f) \\cdot|H(f)|^{2} \\\\\n\n& =\\frac{N_{0}}{2} \\cdot \\frac{1}{1+(\\omega R C)^{2}} \\\\\n\nR_{n}(\\tau) & =\\operatorname{IFT}\\left[S_{n}(f)\\right]=\\frac{N_{0}}{4 R C} \\cdot e^{\\frac{-|\\tau|}{R C}} \\\\\n\nR_{n}(0) & =\\frac{N_{0}}{4 R C}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q11": {
       "question_uid": "ec:2024:q11",
@@ -512,8 +502,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "$y(t)=x(t) * h(t)$\n\n$x(t) \\leftrightarrow X(\\omega)$\n\n$$\\begin{aligned}\n\nx(0.5 t) & \\leftrightarrow 2 X(2 \\omega) \\\\\n\nh(0.5 t) & \\leftrightarrow 2 H(2 \\omega) \\\\\n\ny(t) & \\leftrightarrow Y(\\omega) \\\\\n\nY(\\omega) & \\leftrightarrow X(\\omega) \\times H(\\omega)\n\n\\end{aligned}$$\n\nAfter scaling,\n\n$Y_{1}(\\omega)=2 X(2 \\omega) \\times 2 H(2 \\omega)$\n\n$=4 X(2 \\omega) \\times H(2 \\omega)$\n\nAfter taking inverser Fourier transform\n\n$y_{1}(t)=2 y(0.5 t)$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q12": {
       "question_uid": "ec:2024:q12",
@@ -556,11 +545,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electronic Devices - Basic Semiconductor Physics (Carrier Concentration vs Temperature)",
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "- **Concept & Three Temperature Regimes of Doped Semiconductors:**\n  - For non-degenerately doped n-type silicon with donor concentration $N_d$, the temperature dependence of free electron concentration $n$ plotted as $\\log(n)$ versus inverse temperature $1/T$ exhibits three distinct operational regimes:\n    1. **Freeze-Out (Ionization) Regime (Low $T$, Large $1/T$):**\n       - Thermal energy $kT$ is insufficient to ionize all donor impurities.\n       - Electron concentration is governed by partial donor ionization:\n         $$n(T) \\approx \\sqrt{\\frac{N_c N_d}{2}} \\exp\\left(-\\frac{\\Delta E_d}{2kT}\\right)$$\n       - As $1/T$ increases (cooling), $\\log(n)$ decreases with slope proportional to $-\\frac{\\Delta E_d}{2k}$.\n    2. **Extrinsic (Exhaustion / Saturation) Regime (Moderate $T$, Intermediate $1/T$):**\n       - Thermal energy $kT$ is sufficient to ionize virtually all donor atoms ($n \\approx N_d$), while intrinsic thermal generation across the bandgap is negligible ($n_i \\ll N_d$).\n       - In this range, $n(T) \\approx N_d = \\text{constant}$.\n       - On the $\\log(n)$ vs $1/T$ plot, this forms a flat horizontal plateau.\n    3. **Intrinsic Regime (High $T$, Small $1/T$):**\n       - Thermally generated electron-hole pairs across the bandgap exceed donor concentration ($n_i \\gg N_d$).\n       - Carrier concentration is dominated by intrinsic behavior:\n         $$n(T) \\approx n_i = \\sqrt{N_c N_v} \\exp\\left(-\\frac{E_g}{2kT}\\right)$$\n       - As $1/T$ decreases (moving left on the abscissa toward high temperature), $\\log(n)$ rises sharply with steep slope $-\\frac{E_g}{2k}$.\n\n- **Distractor Analysis:**\n  - **Option A:** Correctly depicts the steep intrinsic rise at low $1/T$ (left), the flat exhaustion plateau at intermediate $1/T$ (middle), and the freeze-out drop at high $1/T$ (right).\n  - **Option B:** Incorrectly shows a constant carrier concentration across all temperatures, ignoring both high-temperature intrinsic generation and low-temperature freeze-out.\n  - **Option C:** Omits the high-temperature intrinsic regime entirely.\n  - **Option D:** Depicts a single straight line, incorrectly treating carrier concentration as purely intrinsic or purely freeze-out without the extrinsic saturation plateau.\n\nTherefore, the correct answer is **Option A**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q13": {
       "question_uid": "ec:2024:q13",
@@ -605,8 +593,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "Given,\n\n$V_{D C}=\\frac{2 V_{M}}{\\pi}=\\frac{2.5}{\\pi}$\n\n<img src=\"/question-images/ec/2024/ec-2024-4e01dd0fac.webp\" />\n\n$$\\begin{aligned}\n\nV_{M} & =\\frac{2.5}{2} \\\\\n\n\\therefore \\quad 2 V_{M} & =V_{S}=2.5 \\mathrm{~V} \\\\\n\nn: 1 & =\\frac{V_{P}}{V_{s}}: 1 \\\\\n\n& =\\frac{10}{2.5}: 1 \\\\\n\n& =4: 1\n\n\\end{aligned}$$\n\n$\\therefore \\quad n=4$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q14": {
       "question_uid": "ec:2024:q14",
@@ -651,8 +638,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "Given: $H(z)=\\frac{2 z^{2}+3}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}$\n\nSystem is non-minimum phase system. Since zero are lying outside the unit circle.\n\nFinal value:\n\n$h(\\infty)=\\lim _{z \\rightarrow 1}(z-1) \\frac{2 z^{2}+3}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}=0$\n\nInitial value:\n\n$$\\begin{aligned}\n\nh(0) & =\\lim _{z \\rightarrow \\infty} \\frac{\\left(2 z^{2}+3\\right)}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}=\\lim _{z \\rightarrow \\infty} \\frac{z^{2}\\left[2+\\frac{3}{z^{2}}\\right]}{z^{2}\\left[1+\\frac{1}{3 z}\\right]\\left[1-\\frac{1}{3 z}\\right]} \\\\\n\n& =\\lim _{z \\rightarrow \\infty} \\frac{\\left[2+\\frac{3}{z^{2}}\\right]}{\\left[1+\\frac{1}{3 z}\\right]\\left[1-\\frac{1}{3 z}\\right]}=\\frac{2}{1 \\times 1}=2 \\\\\n\n|z| & =\\frac{1}{3}=0.33\n\n\\end{aligned}$$\n\n$z=-\\frac{1}{3}, z=\\frac{1}{3}$\n\nSystem is stable. Since $\\mid$ pole $\\mid \\lt 1$ i.e. pole are lying inside the unit circle.\n\nTherefore, the correct option(s) are **A, C, D**."
-      },
-      "answer": "A, C, D"
+      }
     },
     "ec:2024:q15": {
       "question_uid": "ec:2024:q15",
@@ -695,11 +681,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Vector Calculus & Continuity Equation",
+        "concept": "Engineering Mathematics (EC) - Calculus",
         "markdown": "- **Governing Continuity Principle:**\n  - The differential form of the continuity equation for mass conservation in fluid mechanics or charge transport is:\n    $$\\frac{\\partial \\rho}{\\partial t} + \\nabla \\cdot (\\rho u) = 0 \\implies \\frac{\\partial \\rho}{\\partial t} = -\\nabla \\cdot (\\rho u)$$\n    where $\\rho(x, y, z, t)$ is mass/charge density and $u(x, y, z, t)$ is the velocity vector field.\n\n- **Analytical Integral Equivalences:**\n  - **Volume Integration (Statement C):**\n    - Integrating both sides over an arbitrary spatial volume $V$:\n      $$\\int_V \\frac{\\partial \\rho}{\\partial t} \\, dv = -\\int_V \\nabla \\cdot (\\rho u) \\, dv$$\n    - Hence, Statement C is **true and equivalent**.\n  - **Application of Gauss's Divergence Theorem (Statement A):**\n    - Gauss's Divergence Theorem states that for any continuously differentiable vector field $F = \\rho u$ over volume $V$ bounded by closed surface $S$ with outward unit normal $\\hat{n}$:\n      $$\\int_V \\nabla \\cdot (\\rho u) \\, dv = \\oint_S \\rho u \\cdot \\hat{n} \\, ds$$\n    - Substituting this surface flux equivalence into the volume integral yields:\n      $$\\int_V \\frac{\\partial \\rho}{\\partial t} \\, dv = -\\oint_S \\rho u \\cdot \\hat{n} \\, ds$$\n    - Physically, this states that the rate of increase of total quantity inside volume $V$ equals the negative of the net outward flux across enclosing surface $S$ (conservation law).\n    - Hence, Statement A is **true and equivalent**.\n\n- **Option & Distractor Analysis:**\n  - **Statement A:** Equivalent via the Gauss Divergence Theorem with correct negative sign.\n  - **Statement B:** Incorrect because it lacks the negative sign, violating conservation (would imply spontaneous creation of mass/charge from outward flux).\n  - **Statement C:** Directly equivalent by volume integration of the differential equation.\n  - **Statement D:** Incorrect due to a missing negative sign on the divergence term.\n\nTherefore, the correct options are **A and C**.",
         "images": []
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2024:q16": {
       "question_uid": "ec:2024:q16",
@@ -742,11 +727,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electronic Devices - Semiconductor Drift-Diffusion Equilibrium",
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "- **Equilibrium Invariants in Inhomogeneous Semiconductors:**\n  - In a doped semiconductor at thermal equilibrium with non-uniform electron concentration $n(x)$, the total net electron current density must be identically zero everywhere:\n    $$J_n(x) = J_{n,\\text{drift}}(x) + J_{n,\\text{diff}}(x) = 0 \\implies J_{n,\\text{drift}}(x) = -J_{n,\\text{diff}}(x)$$\n  - The electron diffusion current density is:\n    $$J_{n,\\text{diff}}(x) = q D_n \\frac{dn}{dx}$$\n  - The electron drift current density under internal electric field $E(x)$ is:\n    $$J_{n,\\text{drift}}(x) = q n \\mu_n E(x)$$\n\n- **Step-by-Step Spatial Evaluation:**\n  - **Analysis between points B and C:**\n    - From the given concentration profile, $n(x)$ decreases from peak $B$ toward $C$, so $\\frac{dn}{dx} < 0$.\n    - Diffusion current density: $J_{n,\\text{diff}} = q D_n \\frac{dn}{dx} < 0$. Since coordinate $x$ increases from $B$ to $C$ (rightward), a negative value means diffusion current is directed in the $-x$ direction, i.e., from **$C$ to $B$**. Hence, **Statement A is true**.\n    - For equilibrium, $q n \\mu_n E(x) = -q D_n \\frac{dn}{dx} \\implies E(x) = -\\left(\\frac{D_n}{\\mu_n}\\right) \\frac{1}{n} \\frac{dn}{dx} = -V_t \\frac{1}{n} \\frac{dn}{dx}$.\n    - Since $\\frac{dn}{dx} < 0$, $E(x) > 0$. An electric field with positive sign is directed in the $+x$ direction, i.e., from **$B$ to $C$**. Hence, **Statement C is true**.\n  - **Analysis between points A and B:**\n    - From $A$ to $B$, $n(x)$ increases with $x$, so $\\frac{dn}{dx} > 0$.\n    - Diffusion current density: $J_{n,\\text{diff}} = q D_n \\frac{dn}{dx} > 0$ (directed from $A$ to $B$).\n    - At equilibrium, drift current opposes diffusion: $J_{n,\\text{drift}} = -J_{n,\\text{diff}} < 0$. A negative drift current is directed in the $-x$ direction, i.e., from **$B$ to $A$**. Hence, **Statement B is true**.\n    - Electric field: $E(x) = -V_t \\frac{1}{n} \\frac{dn}{dx} < 0$, which is directed from $B$ to $A$ (not from $A$ to $B$). Hence, **Statement D is false**.\n\nTherefore, the correct options are **A, B, and C**.",
         "images": []
-      },
-      "answer": "A, B, C"
+      }
     },
     "ec:2024:q17": {
       "question_uid": "ec:2024:q17",
@@ -789,8 +773,7 @@
       "detailed_solution": {
         "concept": "Microprocessors - Instructions of 8085 Microprocessor",
         "markdown": "Given 32-bit architecture $\\{1$ word long instructions $\\}$\n\n$1 \\text { word }=32 \\text {-bits }$\n\nNumber of registers $=24$, bits required $\\Rightarrow 2^{n}=24$\n\n$n=\\log _{2}(24)$\n\n$\\therefore \\quad n=5 \\text {-bits }$\n\nNumber instructions $=40$\n\n$\\therefore$ Opcode bits would be $2^{n}=40$\n\n$\\therefore \\quad n=\\log _{2}(40)$\n\n$n=6 \\text {-bits }$\n\nEach register field requires 5 -bits.\n\nInstruction format would be\n\n<img src=\"/question-images/ec/2024/ec-2024-386c5fd7b6.webp\" />\n\n$\\therefore$ Immediate value bits $=32-(6+5+5+5)=32-21=11$-bits\n\nThe range of unsigned values $=0$ to $2^{n}-1$\n\n$=0 \\text { to } 2^{11}-1=0 \\text { to }(2048-1)=0 \\text { to } 2047$\n\n$\\therefore$ Maximum unsigned integer $=2047$\n\nTherefore, the correct answer is **2047**."
-      },
-      "answer": "2047"
+      }
     },
     "ec:2024:q18": {
       "question_uid": "ec:2024:q18",
@@ -833,8 +816,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
         "markdown": "$$\\begin{aligned}\n\nP_{C} & =\\frac{A^{2}}{2}=50 \\\\\n\nA & =10 \\\\\n\n\\frac{P_{S B}}{P_{t}} & =\\frac{\\mu^{2}}{2+\\mu^{2}}=\\frac{1}{9} \\\\\n\n\\mu & =\\frac{1}{2} \\\\\n\nB & =\\frac{A_{c} \\mu}{2}=\\frac{10}{2} \\times \\frac{1}{2}=2.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.5** (acceptable range: [2.49, 2.51])."
-      },
-      "answer": "2.5"
+      }
     },
     "ec:2024:q19": {
       "question_uid": "ec:2024:q19",
@@ -875,11 +857,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Digital Circuits - Number Systems & Non-Decimal Radix Equations",
+        "concept": "Digital Circuits - Number Systems",
         "markdown": "- **Given Equation & Radix Formulation:**\n  - The quadratic equation is given in base $r$ as:\n    $$x^2 - (12)_r x + (37)_r = 0$$\n  - Converting base-$r$ coefficients into standard decimal representations:\n    $$(12)_r = 1 \\cdot r^1 + 2 \\cdot r^0 = r + 2$$\n    $$(37)_r = 3 \\cdot r^1 + 7 \\cdot r^0 = 3r + 7$$\n  - The equation in decimal form becomes:\n    $$x^2 - (r + 2)x + (3r + 7) = 0$$\n\n- **Analytical Root Substitution:**\n  - Given that $x = 8$ is a root of this polynomial, substituting $x = 8$:\n    $$8^2 - (r + 2)(8) + (3r + 7) = 0$$\n    $$64 - 8r - 16 + 3r + 7 = 0$$\n    $$(64 - 16 + 7) + (-8r + 3r) = 0$$\n    $$55 - 5r = 0 \\implies 5r = 55 \\implies r = 11$$\n\n- **Radix Consistency & Validity Check:**\n  - The digits appearing in the coefficients are $1, 2, 3, 7$, and the given solution is $8$.\n  - In any positional number system of base $r$, every constituent digit must be strictly less than $r$ ($r > \\max\\{1, 2, 3, 7, 8\\} \\implies r > 8$).\n  - Since $r = 11 > 8$, the base is mathematically consistent and valid.\n\nTherefore, the correct numerical value is **11**.",
         "images": []
-      },
-      "answer": "11"
+      }
     },
     "ec:2024:q20": {
       "question_uid": "ec:2024:q20",
@@ -922,8 +903,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\because$ Given vectors form basis so there must be L.I and its condition is,\n\n$|A| \\neq 0$\n\nor\n\n$$\\left|\\begin{array}{ccc}\n\n2 & 3 & 1 \\\\\n\n-3 & -1 & -5 \\\\\n\na & 3 & 7\n\n\\end{array}\\right| \\neq 0$$\n\n$$\\begin{aligned}\n\n2[-7+15]-3[-21+5 a]+1[-9+a] & \\neq 0 \\\\\n\n16+63-15 a-9+a & \\neq 0 \\\\\n\n\\Rightarrow \\quad-14 a & \\neq-70 \\\\\n\n\\Rightarrow & a \\neq 5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5**."
-      },
-      "answer": "5"
+      }
     },
     "ec:2024:q21": {
       "question_uid": "ec:2024:q21",
@@ -966,8 +946,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-1c80f0164f.webp\" />\n\n$V_{1}$ and $V_{2}$ are super node. KCL at $V_{1}$ and $V_{2}$.\n\n$$\\begin{aligned}\n\n& \\frac{V_{1}}{10^{3}}+\\frac{V_{2}}{1 \\times 10^{3}}+2 \\times 10^{-3}=5 \\times 10^{-3} \\\\\n\n& I_{0}=\\frac{V_{1}}{10^{3}} \\\\\n\n& V_{2}-V_{1}=10^{3} I_{0}=10^{3} \\times \\frac{V_{1}}{10^{3}}=V_{1}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& V_{2}=2 V_{1} \\\\\n\n& V_{1}=\\frac{V_{2}}{2}\n\n\\end{aligned}$$\n\nPut in equation (i)\n\n$$\\begin{aligned}\n\n\\frac{1}{2} V_{2}+V_{2} & =3 \\\\\n\nV_{2} & =2 \\mathrm{~V} \\\\\n\nI_{x} & =\\frac{V_{2}}{10^{3}}=2 \\mathrm{~mA} \\\\\n\nI_{x} & =2 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ec:2024:q22": {
       "question_uid": "ec:2024:q22",
@@ -1010,8 +989,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "After the switch closed\n\n<img src=\"/question-images/ec/2024/ec-2024-5baf6ca924.webp\" />\n\nFor time constant, current source is open circuit.\n\n<img src=\"/question-images/ec/2024/ec-2024-bc3121e74e.webp\" />\n\nTherefore, the correct answer is **0.75**."
-      },
-      "answer": "0.75"
+      }
     },
     "ec:2024:q23": {
       "question_uid": "ec:2024:q23",
@@ -1054,8 +1032,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-dcefac8d8f.webp\" />\n\nLet\n\n$P(X \\geq Y)=P(X-Y \\geq 0)$\n\n$Z=X+(-Y)$\n\n$$\\begin{aligned}\n\n&P(Z \\geq 0)=\\int_0^{\\infty} f_z(Z) d_z\\\\\n\n&f_z(z)=f_x(z) \\text { * } f_{-y}(z)\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2024/ec-2024-80557b0600.webp\" />\n\n$P(Z \\geq 0)=\\frac{1}{2}$\n\nTherefore, the correct answer is **0.5**."
-      },
-      "answer": "0.5"
+      }
     },
     "ec:2024:q24": {
       "question_uid": "ec:2024:q24",
@@ -1096,11 +1073,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Communication Systems - Information Theory & Source Entropy",
+        "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "- **Given Alphabet & Definition:**\n  - Discrete memoryless source emits symbols from an alphabet $\\mathcal{A} = \\{s_1, s_2, \\dots, s_M\\}$ of size $M = 16$.\n  - The average information content (entropy) per source symbol is defined by Shannon's formula:\n    $$H(X) = -\\sum_{i=1}^{M} P(s_i) \\log_2 P(s_i) \\quad \\text{bits/symbol}$$\n\n- **Maximization Condition & Analytical Derivation:**\n  - By Jensen's inequality and the concavity of the logarithm, entropy is strictly maximized when all source symbols are equally likely (equiprobable / uniform distribution):\n    $$P(s_i) = \\frac{1}{M} = \\frac{1}{16} \\quad \\forall i \\in \\{1, 2, \\dots, 16\\}$$\n  - Substituting uniform probabilities into the entropy expression:\n    $$H_{\\max} = -\\sum_{i=1}^{16} \\frac{1}{16} \\log_2\\left(\\frac{1}{16}\\right) = \\log_2(16) = \\log_2(2^4) = 4 \\text{ bits}$$\n\n- **Conclusion:**\n  - No probability distribution over an alphabet of 16 symbols can achieve an entropy greater than 4 bits.\n\nTherefore, the correct numerical value is **4**.",
         "images": []
-      },
-      "answer": "4"
+      }
     },
     "ec:2024:q25": {
       "question_uid": "ec:2024:q25",
@@ -1143,8 +1119,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "For $t > 0$ : Capacitor starts discharging through $10 \\mathrm{~K}$ resistor and zener diode.\n\n$V_{c}(t)=10 e^{-t / R C}, R \\times C=0.1 \\mathrm{sec}$\n\nZener diode remains on till $V_{C}$ becomes $5 \\mathrm{~V}$.\n\n$5=10 e^{-t_{1} / R C} \\Rightarrow t_{1}=R C \\ln 2=0.0693 \\mathrm{sec}$\n\nCurrent in the circuit is $i(t)=I_{0} e^{-t / R C}$\n\nwhere\n\n$I_{0}=\\frac{10-5}{10 \\mathrm{k}}=0.5 \\mathrm{~mA}$\n\nTotal energy dissipated in zener diode is,\n\n$W=\\int_{0}^{t_{1}} V_{z} \\times i(t) d t$\n\n$$\\begin{aligned}\n\nW & =\\int_{0}^{0.0693} 5 \\times 0.5 e^{-t / R C} \\mathrm{~mJ} \\\\\n\n& =2.5[-0.1]\\left[e^{-t / 0.1}\\right]_{0}^{0.0693} \\\\\n\nW & =0.125 \\mathrm{~mJ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.25**."
-      },
-      "answer": "0.25"
+      }
     },
     "ec:2024:q26": {
       "question_uid": "ec:2024:q26",
@@ -1189,8 +1164,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-993be99cd5.webp\" />\n\nFrom the figure\n\nEarth's North pole $=90^{\\circ}$\n\nEarth's equator $=0^{\\circ}$\n\nIn spherical co-ordinate system\n\nEarth's North pole, $\\theta=0^{\\circ}$\n\nEarth's equator, $\\theta=90^{\\circ}$\n\nThe area of the shaded portion,\n\n$\\overline{d S}=d S \\hat{a}_{r}$\n\nHence, in spherical coordinate system\n\n$\\Rightarrow$\n\n$\\overline{d S}=r^{2} \\sin \\theta d \\theta d \\phi \\hat{a}_{r}$\n\n$$\\begin{aligned}\n\n\\Rightarrow \\quad S=\\int d & =\\int r^{2} \\sin \\theta d \\theta d \\phi \\\\\n\n& =r^{2} \\int_{\\theta=0^{\\circ}}^{30^{\\circ}} \\sin \\theta d \\theta \\int_{\\phi=0}^{2 \\pi} d \\phi \\text { at } r=R \\\\\n\n& =R^{2}-\\left.\\left[-\\left.\\cos \\theta\\right|_{0} ^{30^{\\circ}}\\right] \\cdot \\phi\\right|_{0} ^{2 \\pi} \\\\\n\n& =R^{2}\\left\\{-\\left[\\cos 30^{\\circ}-\\cos 0^{\\circ}\\right]\\right\\} \\cdot 2 \\pi \\\\\n\n& =R^{2}\\left\\{-\\left[\\frac{\\sqrt{3}}{2}-1\\right]\\right\\} \\cdot 2 \\pi=R^{2} \\cdot \\frac{2-\\sqrt{3}}{2} \\cdot 2 \\pi \\\\\n\n& =(2-\\sqrt{3}) \\pi R^{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q27": {
       "question_uid": "ec:2024:q27",
@@ -1235,8 +1209,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "Given,\n\n$G(s)=\\frac{K}{(S+1)(S+2)(S+3)}$\n\nImpulse response of system is\n\n$Y(S)=\\frac{K}{(S+1)(S+2)(S+3)+K}$\n\nGiven: At impulse response of closed loop system decay faster than $e^{-t}$ Hence, put $s=s-1$,\n\n$\\therefore$ The new characteristic equation is,\n\n$$\\begin{aligned}\n\n& (s-1+1)(s-1+2)(s-1+3)+K=0 \\\\\n\n& s(s+1)(s+2)+K=0 \\\\\n\n& s^{3}+3 s^{2}+2 s+K=0\n\n\\end{aligned}$$\n\nBy $\\mathrm{RH}$ criterion,\n\n$$\\begin{array}{c|cc}\n\ns^{3} & 1 & 2 \\\\\n\ns^{2} & 3 & K \\\\\n\ns^{1} & \\frac{6-K}{3} & \\\\\n\ns^{0} & K &\n\n\\end{array}$$\n\n$\\therefore K \\gt 0 ; \\quad \\frac{6-K}{3} \\gt 0 \\Rightarrow K \\lt 6$\n\n$\\therefore \\quad 0 \\lt K \\lt 6$\n\nHence, option satisfies above range of $K$.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q28": {
       "question_uid": "ec:2024:q28",
@@ -1281,8 +1254,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
         "markdown": "$G(S) C(s)=\\frac{1}{S^{2}} \\frac{k(S+\\alpha)}{(S+4)}$\n\nCharacteristic equation is\n\n$S^{3}+4 S^{2}+k S+\\alpha=0$\n\nPoles of the system present at $=-1 \\pm j \\sqrt{3}$\n\nCharacteristic equation is\n\n$$\\begin{aligned}\n\n&(S+a)\\left[(S+1)^{2}+3\\right]=0 \\\\\n\n&(S+a)\\left(S^{2}+2 S+4\\right)=0 \\\\\n\n& S^{3}+(2+a) S^{2}+(4+2 a) S+4 a=0\n\n\\end{aligned}$$\n\nCompare equation (I) and (II)\n\n$$\\begin{aligned}\n\n2+a & =4 \\\\\n\na & =2 \\\\\n\n4+2 a & =k \\\\\n\nk & =8 \\\\\n\nk \\alpha & =4 a \\\\\n\n\\alpha & =\\frac{8}{8}=1 \\\\\n\n\\alpha & =1\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q29": {
       "question_uid": "ec:2024:q29",
@@ -1327,8 +1299,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Uniform Plane Waves",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-afad221811.webp\" />\n\nAt perfect conductor,\n\n$$\\begin{array}{ll}\n\n& \\Gamma=-1 \\\\\n\n\\Rightarrow & \\Gamma=1 \\mid \\pi\n\n\\end{array}$$\n\nAs we know that $H_{\\min }$ occurs at $E_{\\max }$.\n\nHence,\n\n$$\\begin{aligned}\n\n& E_{\\max }=E_{0}[1+|\\Gamma|] \\\\\n\n& H_{\\min }=\\frac{E_{0}}{\\eta}[1-|\\Gamma|] \\text { at } 2 \\beta x_{\\max }=2 n \\pi+\\theta_{\\Gamma}\n\n\\end{aligned}$$\n\nSo,\n\n$2 \\beta x_{\\max }=2 n \\pi+\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\frac{4 \\pi}{\\lambda} x_{\\max }=2 n \\pi+\\pi$\n\n$\\Rightarrow \\quad x_{\\max }=(2 n+1) \\frac{\\lambda}{4} ; n=0,1,2,3 \\ldots$\n\nSo, for $1^{\\text {st }}$ value of $x$ for $\\mathrm{H}$-field to be zero is\n\n$x_{\\max }=\\frac{\\lambda}{4} \\quad[\\text { at } n=0]$\n\nNow, from the equation given,\n\n$$\\begin{array}{rlrl}\n\n\\beta & =\\frac{2 \\pi}{3} \\\\\n\n\\Rightarrow & \\frac{2 \\pi}{\\lambda} & =\\frac{2 \\pi}{3} \\\\\n\n\\Rightarrow \\quad & \\lambda & =3\n\n\\end{array}$$\n\nHence,\n\n$x_{\\max }=\\frac{3}{4}$\n\nIf the reference is not at interference then $x=-\\frac{3}{4}$.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q30": {
       "question_uid": "ec:2024:q30",
@@ -1373,8 +1344,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Boolean Algebra",
         "markdown": "Given 4-bit priority encoder has inputs $D_{3}, D_{2}, D_{1}$ and $D_{0}$ in descending order of priority.\n\n$$\\begin{array}{|cccc|c|c|}\n\n\\hline\n\nD_{3} & D_{2} & D_{1} & D_{0} & A & B \\\\\n\n\\hline\n\n0 & 0 & 0 & 1 & 0 & 0 \\\\\n\n0 & 0 & 1 & X & 0 & 1 \\\\\n\n0 & 1 & X & X & 1 & 0 \\\\\n\n1 & X & X & X & 1 & 1 \\\\\n\n\\hline\n\n\\end{array}$$\n\nThe Boolean expression of the output bit $B=\\overline{D_{3}} D_{2}+\\overline{D_{3}} \\; \\overline{D_{1}}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q31": {
       "question_uid": "ec:2024:q31",
@@ -1419,8 +1389,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-8f1d1865f0.webp\" />\n\n$$\\begin{array}{ll}\n\n\\therefore & T_{c}=10+10=20 \\mathrm{nsec} \\\\\n\n\\therefore & f_{c}=\\frac{1}{T_{C}}=\\frac{10^{9}}{20}=50 \\mathrm{MHz}\n\n\\end{array}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q32": {
       "question_uid": "ec:2024:q32",
@@ -1463,11 +1432,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Digital Circuits - Synchronous Sequential Circuits & T Flip-Flops",
+        "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "- **Circuit Formulation & Excitation Equations:**\n  - The synchronous sequential circuit contains two negative-edge triggered T flip-flops:\n    - Flip-flop 1 (MSB): state $Q_1$, output complement $\\overline{Q}_1$, input $T_1$.\n    - Flip-flop 0 (LSB): state $Q_0$, output complement $\\overline{Q}_0$, input $T_0$.\n  - Inspecting the combinational input logic:\n    - An OR gate driving $T_1$ has inputs from $Q_1$ and $\\overline{Q}_0$:\n      $$T_1 = Q_1 + \\overline{Q}_0$$\n    - An OR gate driving $T_0$ has inputs from $Q_1$ and $Q_0$:\n      $$T_0 = Q_1 + Q_0$$\n\n- **Next-State Characteristic Equations:**\n  - The characteristic equation of a T flip-flop is $Q^+ = T \\oplus Q$.\n  - For Flip-Flop 1:\n    $$Q_1^+ = T_1 \\oplus Q_1 = (Q_1 + \\overline{Q}_0) \\oplus Q_1 = (Q_1 + \\overline{Q}_0)\\overline{Q}_1 + \\overline{(Q_1 + \\overline{Q}_0)}Q_1 = \\overline{Q}_1 \\overline{Q}_0$$\n  - For Flip-Flop 0:\n    $$Q_0^+ = T_0 \\oplus Q_0 = (Q_1 + Q_0) \\oplus Q_0 = (Q_1 + Q_0)\\overline{Q}_0 + \\overline{(Q_1 + Q_0)}Q_0 = Q_1 \\overline{Q}_0$$\n\n- **State Transition Tracing:**\n  - Evaluating $(Q_1^+ Q_0^+)$ for all possible current states $(Q_1 Q_0)$:\n    1. **State $11$:**\n       - $Q_1^+ = \\overline{1} \\cdot \\overline{1} = 0$\n       - $Q_0^+ = 1 \\cdot \\overline{1} = 0$\n       - Transition: $11 \\rightarrow 00$.\n    2. **State $00$:**\n       - $Q_1^+ = \\overline{0} \\cdot \\overline{0} = 1$\n       - $Q_0^+ = 0 \\cdot \\overline{0} = 0$\n       - Transition: $00 \\rightarrow 10$.\n    3. **State $10$:**\n       - $Q_1^+ = \\overline{1} \\cdot \\overline{0} = 0$\n       - $Q_0^+ = 1 \\cdot \\overline{0} = 1$\n       - Transition: $10 \\rightarrow 01$.\n    4. **State $01$:**\n       - $Q_1^+ = \\overline{0} \\cdot \\overline{1} = 0$\n       - $Q_0^+ = 0 \\cdot \\overline{1} = 0$\n       - Transition: $01 \\rightarrow 00$.\n  - Connecting the traced sequence starting from state $11$:\n    $$11 \\rightarrow 00 \\rightarrow 10 \\rightarrow 01 \\rightarrow 00$$\n\n- **Distractor Analysis:**\n  - Option A ($00 \\rightarrow 10 \\rightarrow 11 \\rightarrow 00$) incorrectly predicts transition from $10$ to $11$.\n  - Option C ($01 \\rightarrow 10 \\rightarrow \\dots$) fails because from $01$, $Q_1^+ = 0, Q_0^+ = 0$, leading to $00$.\n  - Option D ($00 \\rightarrow 01 \\rightarrow \\dots$) fails because from $00$, $Q_1^+ = 1, Q_0^+ = 0$, leading to $10$.\n\nTherefore, the correct answer is **Option B ($11 \\rightarrow 00 \\rightarrow 10 \\rightarrow 01 \\rightarrow 00$)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q33": {
       "question_uid": "ec:2024:q33",
@@ -1512,8 +1480,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$R_{1}=$ Residue of $f(z)=$ at $(z=2)$\n\n$=\\lim _{z \\rightarrow 2} \\cdot(z-2) f(z)=\\lim _{z \\rightarrow 2} \\cdot\\left(\\frac{\\sin \\pi z}{z^{2}}\\right)=0$\n\n$R_{2}=$ Residue of $f(z)(a t(z=0, m=2)$\n\n$$\\begin{aligned}\n\nR_{2} & =\\frac{1}{2-1}\\left[\\frac{d^{2-1}}{d z^{2-1}}(z-0)^{2} f(z)\\right]_{z=0} \\\\\n\n{\\left[\\frac{d}{d z}\\left[\\frac{\\sin \\pi z}{z-2}\\right]\\right]_{z=0} } & =\\left[\\frac{(z-2) \\cos \\pi z(\\pi)-\\sin \\pi z}{(z-2)^{2}}\\right]_{z=0} \\\\\n\n& =\\frac{(0-2) \\cos (2 \\pi) \\cdot \\pi-\\sin 0}{(0-2)^{2}}=\\frac{-2 \\pi}{4}=\\frac{-\\pi}{2}\n\n\\end{aligned}$$\n\nBy $C-$ R.T.\n\n$$\\begin{aligned}\n\nI & =\\oint_{c} f(z) d z=2 \\pi j\\left(R_{1}+R_{2}\\right) \\\\\n\n& =2 \\pi i\\left(0-\\frac{\\pi}{2}\\right)=-\\pi^{2} j\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2024:q34": {
       "question_uid": "ec:2024:q34",
@@ -1558,8 +1525,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
         "markdown": "Given\n\n<img src=\"/question-images/ec/2024/ec-2024-676e2f739b.webp\" />\n\nLength of $x(t)$ is 1 and length of $y(t)$ is 4.\n\n<img src=\"/question-images/ec/2024/ec-2024-0b99464c0c.webp\" />\n\n$$\\begin{aligned}\n\n\\therefore \\quad y(t) & =-x\\left(\\frac{t-2}{4}\\right) \\\\\n\ny(t) & =-x\\left(\\frac{t}{4}-\\frac{2}{4}\\right)=-x\\left(\\frac{t}{4}-\\frac{1}{2}\\right)\n\n\\end{aligned}$$\n\nOn taking Fourier transform, we get\n\n$x(t) \\leftrightarrow X(f)$\n\n$x\\left(\\frac{t}{4}-\\frac{1}{2}\\right) \\leftrightarrow 4 X(4 f) e^{-j 4 \\pi f}$\n\n$-x\\left(\\frac{t}{4}-\\frac{1}{2}\\right) \\leftrightarrow-4 X(4 f) e^{-j 4 \\pi t}$\n\nAs per GATE official Answer Key-MTA\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q35": {
       "question_uid": "ec:2024:q35",
@@ -1604,8 +1570,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-1d68cd9330.webp\" />\n\n$$\\begin{aligned}\n\nr & =s+\\omega \\\\\n\nf_{\\omega}(\\omega) & =\\frac{1}{\\sqrt{2 \\pi}} e^{\\frac{-\\omega^{2}}{2 \\times 4}}=N(0,4)\n\n\\end{aligned}$$\n\ntransmission of $-4 \\rightarrow r=-4+\\omega$\n\n$f(r /-4)=\\frac{1}{\\sqrt{2 \\pi}} e^{\\frac{-(r+4)^{2}}{2 \\times 4}}$\n\ntransmission of $0 \\rightarrow r=\\omega$\n\n$f(r / 0)=\\frac{1}{\\sqrt{2 \\pi}} e^{-\\frac{r^{2}}{2 \\times 4}}$\n\ntransmission of $4 \\rightarrow r=4+n$\n\n$f(r / 4)=\\frac{1}{\\sqrt{2 \\pi}} e^{\\frac{-(r-4)^{2}}{2 \\times 4}}$\n\n$P_{e}=P(-4) P_{e-4}+P(0) P_{e 0}+P(4) P_{e 4}$\n\nGiven\n\n$$\\begin{aligned}\n\n& P(-4)=P(0)=P(4)=\\frac{1}{3} \\\\\n\n& P_{e-4}=P(r \\gt -2) \\\\\n\n& =1-\\left(1-F_{r}(2)\\right) \\\\\n\n& =1-\\left(1-Q\\left(\\frac{-2+4}{2}\\right)\\right) \\\\\n\n& =Q(1) \\\\\n\n& P_{e 0}=P(r \\lt -2)+P(r \\gt 2) \\\\\n\n& =F_{r}(-2)+\\left\\{1-F_{r}(2)\\right\\} \\\\\n\n& =\\left(1-Q\\left(\\frac{-2-0}{2}\\right)\\right)+Q\\left(\\frac{2-0}{2}\\right) \\\\\n\n& =[1-Q(-1)]+Q(1)=2 Q(1)\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\nP_{e 4} & =P(r \\lt 2) \\\\\n\n& =F_{r}(2) \\\\\n\n& =1-Q\\left(\\frac{2-4}{2}\\right) \\\\\n\n& =1-Q(-1) \\\\\n\n& =Q(1) \\\\\n\nP_{e} & =\\frac{1}{3} Q(1)+\\frac{2}{3} Q(1)+\\frac{1}{3} Q(1) \\\\\n\n& =\\frac{4}{3} Q(1)\n\n\\end{aligned}$$\n\nwhere, $r=N(4,4)$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q36": {
       "question_uid": "ec:2024:q36",
@@ -1650,8 +1615,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
         "markdown": "$$\\begin{aligned}\n\n\\frac{S}{N_{q}} & =\\frac{1}{10 \\times 10^{-6}} \\\\\n\n\\frac{S}{N_{q}} & =10^{5} \\\\\n\n\\left(\\frac{S}{N_{a}}\\right)_{\\mathrm{dB}} & =10 \\log _{10} 10^{5} \\\\\n\n& =50 \\mathrm{~dB} \\\\\n\n1.76+6.02 n & =50 \\\\\n\nn & =8.01\n\n\\end{aligned}$$\n\nrounded off to nearest integer $\\rightarrow n \\simeq 8$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q37": {
       "question_uid": "ec:2024:q37",
@@ -1696,8 +1660,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "Given information bit sequence $\\rightarrow d=111010101$\n\nGenerator polymial $\\rightarrow C(x)=x^{4}+x+1$\n\n$C=10011$\n\nGenerator polynomial having 5 bits, so append $5-1=4$ bits to information sequence.\n\n$d=111010101010000$\n\n<img src=\"/question-images/ec/2024/ec-2024-a28e97b647.webp\" />\n\nEncoded sequence $=1110101011100$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:q38": {
       "question_uid": "ec:2024:q38",
@@ -1742,8 +1705,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
         "markdown": "$$\\begin{aligned}\n\nx(t) & =2 \\cos \\left(8 \\pi t+\\frac{\\pi}{3}\\right), \\quad \\omega_{o}=8 \\pi \\\\\n\nf_{s} & =15 \\mathrm{~Hz} \\\\\n\nx(t) \\xrightarrow{\\text { sample }} x_{S}(t) \\xrightarrow{h(t)} & x_{0}(t) \\\\\n\n\\Rightarrow \\quad h(t) & =\\frac{\\sin 2 \\pi t}{\\pi t} \\cos \\left(38 \\pi t-\\frac{\\pi}{2}\\right)\n\n\\end{aligned}$$\n\nLet $p(t)=\\frac{\\sin 2 \\pi t}{\\pi t}$\n\n<img src=\"/question-images/ec/2024/ec-2024-b7394ab74e.webp\" />\n\nAfter sampling: $\\quad X_{s}(\\omega)=f_{s} \\sum_{n=-\\infty}^{\\infty} X\\left(\\omega-n \\omega_{s}\\right)$\n\nFrequency components present in sampler output $n \\omega_{s} \\pm \\omega_{0}$\n\n$\\omega_{o}, \\omega_{s}+ \\pm \\omega_{o}, 2 \\omega_{s} \\pm \\omega_{o}, \\ldots$\n\n$8 \\pi, 30 \\pi \\pm 8 \\pi, 60 \\pi \\pm 8 \\pi$, ..\n\n$8 \\pi, 22 \\pi, 38 \\pi, 52 \\mathrm{p}, 68 \\pi, \\ldots(\\mathrm{rad} / \\mathrm{sec})$\n\nSystem will pass '$38 \\pi$' component of input.\n\n$x_{o}(t)=2 \\times \\frac{f_{s}}{2} \\cos \\left[38 \\pi t+\\frac{\\pi}{3}-\\frac{\\pi}{2}\\right]=15 \\cos \\left(38 \\pi t-\\frac{\\pi}{6}\\right)$\n\nAs per GATE official Answer Key-MTA\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2024:q39": {
       "question_uid": "ec:2024:q39",
@@ -1788,8 +1750,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "Opamp $A_{1}$ is non-inverting type Schmitt Trigger.\n\n$$\\begin{aligned}\n\n& V_{U T}=\\frac{R_{1}}{R_{2}} \\times V_{S a t}=\\frac{10}{100} \\times 10 \\mathrm{~V}=1 \\mathrm{~V} \\\\\n\n& V_{L T}=-\\frac{R_{1}}{R_{2}} \\times V_{\\text {sat }}=\\frac{-10}{100} \\times 10=-1 \\mathrm{~V}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2024/ec-2024-154701f4e0.webp\" />\n\n$V_{01}$ is square wave. It is delayed by $1 \\mu$ s wrt input $V_{i}$.\n\nOpamp $A_{2}$ is integrator.\n\n$V_{02}$ is gettng saturated in less than half time period. Hence $V_{02}$ is a combination of ramp and constant portion. Thus $V_{02}$ resembles trapezoidal wave.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2024:q40": {
       "question_uid": "ec:2024:q40",
@@ -1834,8 +1795,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "For given circuit, frequency of oscillations is $f_{o}=\\frac{1}{2 \\pi R C}$.\n\nFor sustained oscillations, minimum gain should be 3\n\n$$\\begin{aligned} \\Rightarrow \\quad 1+\\frac{R_{1}}{R} & =3 \\\\ R_{1} & =2 R\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q41": {
       "question_uid": "ec:2024:q41",
@@ -1880,8 +1840,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-edc6bebda2.webp\" />\n\n$$\\begin{aligned}\n\nV_{0} & =-g_{m 2} V_{g s} R_{D} \\\\\n\nV_{g s} & =v_{L}^{i} \\times \\frac{R_{B}+\\frac{1}{g_{m 1}}}{R_{S}+R_{B}+\\frac{1}{g_{m 1}}} \\\\\n\n\\left|\\frac{V_{0}}{V_{i n}}\\right| & =\\frac{g_{m 2} R_{D}\\left(R_{B}+\\frac{1}{g_{m 1}}\\right)}{R_{S}+R_{B}+\\frac{1}{g_{m 1}}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:q42": {
       "question_uid": "ec:2024:q42",
@@ -1924,11 +1883,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electronic Devices - BJT DC Current Gain Factors & Breakdown",
+        "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "- **Fundamental BJT Current Gain Relationships:**\n  - The DC common-emitter current gain $\\beta$ (or $h_{FE}$) is related to emitter injection efficiency $\\gamma$ and base transport factor $\\alpha_T$:\n    $$\\beta = \\frac{\\alpha}{1 - \\alpha}, \\quad \\alpha = \\gamma \\alpha_T$$\n\n- **Option-by-Option Analytical Evaluation:**\n  - **Option A (High-Level Injection):**\n    - Under high-level injection in the base (the Webster effect), the injected minority carrier concentration becomes comparable to or exceeds the majority base doping concentration ($n_B \\ge N_B$).\n    - This increases majority carrier concentration, which reduces emitter injection efficiency $\\gamma = \\frac{I_{En}}{I_{En} + I_{Ep}}$ and increases base recombination. Consequently, $\\beta$ decreases significantly as $I_C$ increases.\n    - Hence, Statement A is **true**.\n  - **Option B (Low-Level Recombination-Generation):**\n    - At low collector current levels, space-charge region recombination in the forward-biased emitter-base junction ($I_{rec} \\propto e^{q V_{BE} / 2kT}$) accounts for a sizable fraction of base current compared to ideal diffusion ($I_C \\propto e^{q V_{BE} / kT}$).\n    - As $I_C$ increases, the ideal current rises faster than the recombination current ($e^{V/V_t}$ vs $e^{V/2V_t}$), which causes $\\beta$ to **increase** with collector current in this regime, rather than decrease.\n    - Hence, Statement B is **false**.\n  - **Option C (Saturation Region Gain):**\n    - In saturation, both the emitter-base and collector-base junctions are forward-biased.\n    - Forward biasing the collector-base junction injects reverse carrier flux back into the base, drastically reducing the effective collector current for a given base drive ($I_C < \\beta_{active} I_B$).\n    - The forced beta $\\beta_{forced} = I_{C,sat} / I_B$ is substantially lower than active region $\\beta$.\n    - Hence, Statement C is **true**.\n  - **Option D (Breakdown Voltage $BV_{CEO}$ vs $\\beta$):**\n    - The open-base collector-to-emitter breakdown voltage $BV_{CEO}$ is governed by carrier avalanche multiplication in the collector junction space charge layer:\n      $$BV_{CEO} = \\frac{BV_{CBO}}{\\sqrt[n]{\\beta + 1}} \\approx \\frac{BV_{CBO}}{\\beta^{1/n}} \\quad (n \\approx 3 \\text{ to } 6)$$\n    - Because $\\beta$ appears in the denominator, a higher $\\beta$ directly reduces $BV_{CEO}$.\n    - Hence, Statement D is **true**.\n\nTherefore, the correct options are **A, C, and D**.",
         "images": []
-      },
-      "answer": "A, C, D"
+      }
     },
     "ec:2024:q43": {
       "question_uid": "ec:2024:q43",
@@ -1973,8 +1931,7 @@
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
         "markdown": "From given state model, (observable form)\n\n$T F=C\\left[(s I-A)^{-1} B\\right]+D$\n\n$=\\frac{(2 s+1)}{s^{2}+3 s+2}$\n\nFrom this controllable form can be written as\n\n$$\\begin{aligned}\n\nX^{0} & =\\left[\\begin{array}{cc}\n\n0 & 1 \\\\\n\n-2 & -3\n\n\\end{array}\\right] X+\\left[\\begin{array}{l}\n\n0 \\\\\n\n1\n\n\\end{array}\\right] u \\\\\n\nY & =\\left[\\begin{array}{ll}\n\n1 & 2\n\n\\end{array}\\right] X+[0] u\n\n\\end{aligned}$$\n\nAnother possibility, $\\quad \\mathrm{TF}=\\frac{2 s+1}{s^{2}+3 s+2}=\\frac{-1}{s+1}+\\frac{3}{s+2}$\n\n$$\\begin{aligned}\n\nX^{0} & =\\left[\\begin{array}{cc}\n\n-1 & 0 \\\\\n\n0 & -2\n\n\\end{array}\\right] X+\\left[\\begin{array}{c}\n\n-1 \\\\\n\n3\n\n\\end{array}\\right] v \\\\\n\nY & =\\left[\\begin{array}{ll}\n\n1 & 1\n\n\\end{array}\\right] X+[0] u\n\n\\end{aligned}$$\n\nDiagonal form of state mode.\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ec:2024:q44": {
       "question_uid": "ec:2024:q44",
@@ -2019,8 +1976,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$\\because$ Given integral is independent of contour ' $C$ ' $\\int_{C}\\left(F_{1} d x+F_{2} d y+F_{3} d z\\right)=\\int_{C} \\bar{F} \\cdot \\overline{d r}$ is independent of ' $C$ '\n\nThen $\\bar{F}$ is conservative field\n\n$$\\begin{array}{ll}\n\n\\therefore & \\bar{F}=\\overline{\\nabla \\phi} \\\\\n\n\\Rightarrow & F_{1}=\\frac{\\partial \\phi}{\\partial x}, F_{2}=\\frac{\\partial \\phi}{\\partial y}, F_{3}=\\frac{\\partial \\phi}{\\partial z}\n\n\\end{array}$$\n\n$\\therefore$ Option is true.\n\n$\\because \\bar{F}$ is conservative\n\nThen,\n\n$\\nabla \\times \\bar{F}=0$\n\n$$\\Rightarrow \\quad\\left|\\begin{array}{ccc}i & j & K \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ F_{1} & F_{2} & F_{3}\\end{array}\\right|=\\overrightarrow{0}$$\n\n$=i\\left(\\frac{\\partial F_{3}}{\\partial y}-\\frac{\\partial F_{2}}{\\partial z}\\right)-j\\left(\\frac{\\partial F_{3}}{\\partial x}-\\frac{\\partial F_{1}}{\\partial z}\\right)+K\\left(\\frac{\\partial F_{2}}{\\partial x}-\\frac{\\partial F_{1}}{\\partial y}\\right)=0 \\hat{i}+0 \\hat{j}+0 \\hat{k}$\n\nEquate on both sides,\n\nWe get,\n\n$\\frac{\\partial F_{3}}{\\partial y}=\\frac{\\partial F_{2}}{\\partial z}, \\quad \\frac{\\partial F_{3}}{\\partial x}=\\frac{\\partial F_{1}}{\\partial z}, \\quad \\frac{\\partial F_{2}}{\\partial x}=\\frac{\\partial F_{1}}{\\partial y}$\n\n$\\therefore$ Option is true.\n\nIf $\\bar{F}$ is irrotational then,\n\n$\\oint_{C} F_{1} d x+F_{2} d y+F_{3} d z=0$\n\n$\\therefore$ Option is also true.\n\nBut,\n\n$\\bar{\\nabla} \\cdot \\bar{F}=\\bar{\\nabla} \\cdot(\\bar{\\nabla} \\phi) \\neq 0$\n\n$\\therefore$ Option is false.\n\nTherefore, the correct option(s) are **A, B, D**."
-      },
-      "answer": "A, B, D"
+      }
     },
     "ec:2024:q45": {
       "question_uid": "ec:2024:q45",
@@ -2065,8 +2021,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$C \\mathrm{Eq}$ is\n\n$|A-\\lambda I|=0$\n\nor $\\lambda^{2}-2 \\lambda+(1-2 K)=0$\n\n$\\lambda=1 \\pm \\sqrt{2 K}$\n\nE vector for $\\lambda=1 \\pm \\sqrt{2 K}$ :\n\n$A X=\\lambda X$\n\n$$\\begin{aligned}\n\n(A-\\lambda I) X & =0 \\\\\n\n{\\left[\\begin{array}{cc}\n\n-\\sqrt{2 K} & K \\\\\n\n2 & -\\sqrt{2 K}\n\n\\end{array}\\right]\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2}\n\n\\end{array}\\right] } & =\\left[\\begin{array}{l}\n\n0 \\\\\n\n0\n\n\\end{array}\\right] \\\\\n\n\\Rightarrow \\quad-\\sqrt{2 K} x_{1}+K x_{2} & =0\n\n\\end{aligned}$$\n\nor\n\n$$\\begin{aligned}\n\n& x_{1}=\\sqrt{\\frac{K}{2}} x_{2} \\\\\n\n& X=\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2}\n\n\\end{array}\\right]=\\left[\\begin{array}{c}\n\n\\sqrt{K / 2} \\\\\n\n1\n\n\\end{array}\\right] \\approx\\left[\\begin{array}{c}\n\n1 \\\\\n\n\\sqrt{\\frac{2}{K}}\n\n\\end{array}\\right]\n\n\\end{aligned}$$\n\nSimilarly other $E$ vector is\n\n$$X=\\left[\\begin{array}{c}\n\n-\\sqrt{\\frac{K}{2}} \\\\\n\n1\n\n\\end{array}\\right]=\\left[\\begin{array}{c}\n\n1 \\\\\n\n-\\sqrt{\\frac{2}{K}}\n\n\\end{array}\\right]$$\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "ec:2024:q46": {
       "question_uid": "ec:2024:q46",
@@ -2111,8 +2066,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
         "markdown": "$$\\begin{aligned}\n\n& x[n]=A \\cos \\left[\\Omega n+\\frac{\\pi}{3}\\right] \\\\\n\n& N=40 \\\\\n\n& \\Omega=\\text { ? } \\\\\n\n& \\frac{\\Omega}{2 \\pi}=\\frac{m}{N} \\\\\n\n& \\frac{\\Omega}{2 \\pi}=\\frac{m}{40} \\\\\n\n& \\Omega=m \\cdot \\frac{2 \\pi}{40}=\\pi \\cdot m(0.05) \\\\\n\n& \\Omega=0.05 \\pi \\\\\n\n& m=1 \\quad \\Omega=0.05 \\pi \\\\\n\n& m=2 \\quad \\Omega=0.10 \\pi \\\\\n\n& m=3 \\quad \\Omega=0.15 \\pi \\\\\n\n& m=4 \\quad \\Omega=0.20 \\pi \\\\\n\n& m=5 \\quad \\Omega=0.25 \\pi \\\\\n\n& m=6 \\quad \\Omega=0.30 \\pi \\\\\n\n& m=7 \\quad \\Omega=0.35 \\pi \\\\\n\n& m=8 \\quad \\Omega=0.40 \\pi \\\\\n\n& m=9 \\quad \\Omega=0.45 \\pi\n\n\\end{aligned}$$\n\nTherefore, the correct option(s) are **A, C, D**."
-      },
-      "answer": "A, C, D"
+      }
     },
     "ec:2024:q47": {
       "question_uid": "ec:2024:q47",
@@ -2155,8 +2109,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-323be91164.webp\" />\n\n$$\\begin{aligned}\n\nS & =R_{x}(0)=\\frac{2}{3} \\\\\n\nN_{q} & =\\frac{\\Delta^{2}}{12} \\\\\n\n\\Delta & =\\frac{2-(-2)}{2^{8}}=\\frac{4}{2^{8}}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\nN_{q} & =\\frac{4^{2}}{\\frac{2^{16}}{12}}=\\frac{2^{4}}{12 \\times 2^{16}}=\\frac{1}{12 \\times 2^{12}} \\\\\n\n\\frac{S}{N_{a}} & =\\frac{2}{3} \\times \\frac{12 \\times 2^{12}}{1}=32,768 \\\\\n\n\\left(\\frac{S}{N_{a}}\\right)_{d B} & =10 \\log 32768=45.15 \\mathrm{~dB}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **45.15** (acceptable range: [45, 45.3])."
-      },
-      "answer": "45.15"
+      }
     },
     "ec:2024:q48": {
       "question_uid": "ec:2024:q48",
@@ -2199,8 +2152,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "As we know that\n\n$Z_{\\max }=S Z_{0}$\n\nNow,\n\n$$\\begin{aligned}\n\nS & =\\frac{1+|\\Gamma|}{1-|\\Gamma|}=\\frac{1+0.6}{1-0.6}=\\frac{1.6}{0.4}=4 \\\\\n\n\\therefore \\quad Z_{\\text {max }} & =4 \\times 50=200 \\Omega .\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **200**."
-      },
-      "answer": "200"
+      }
     },
     "ec:2024:q49": {
       "question_uid": "ec:2024:q49",
@@ -2243,8 +2195,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "$$\\begin{aligned}\n\ny[n] & =N^{2} x[n] \\\\\n\ny[n] & =N^{2} x[n] \\\\\n\n\\left.Y[k]\\right|_{K=0} & =\\sum_{n=0}^{3} y[n]=\\sum_{n=0}^{3} N^{2} x[n] \\\\\n\n& =N^{2}[x[0]+x[1]+x[2]+x[3]] \\\\\n\n& =(4)^{2}[1+2+1+3]=16 \\times 7=112\n\n\\end{aligned}$$\n\n$y[n]=N^{2} x[n] \\quad \\because N=4$\n\nTherefore, the correct answer is **112**."
-      },
-      "answer": "112"
+      }
     },
     "ec:2024:q50": {
       "question_uid": "ec:2024:q50",
@@ -2287,8 +2238,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "Given two-port network,\n\n$Y_{21}=\\left.\\frac{I_{2}}{V_{1}}\\right|_{V_{2}=0}$\n\n<img src=\"/question-images/ec/2024/ec-2024-f391e45024.webp\" />\n\nby applying $\\mathrm{KVL}$ in the loop,\n\n$V_{1}-2 I_{1}-4\\left(I_{1}+I_{2}\\right)+8 V_{1}=0$\n\n$9 V_{1}-6 I_{1}-4 I_{2}=0$\n\nbut $\\quad I_{1}=\\frac{V_{1}-0}{2} \\Rightarrow \\frac{V_{1}}{2}=I_{1}$\n\n$\\therefore \\quad 9 V_{1}-6\\left(\\frac{V_{1}}{2}\\right)-4 I_{2}=0$\n\n$6 V_{1}=4 I_{2}$\n\n$\\therefore \\quad \\frac{I_{2}}{V_{1}}=\\frac{6}{4}=\\frac{3}{2}=1.5 \\mathrm{~S}$\n\nTherefore, the correct answer is **1.5**."
-      },
-      "answer": "1.5"
+      }
     },
     "ec:2024:q51": {
       "question_uid": "ec:2024:q51",
@@ -2331,8 +2281,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "$$\\begin{aligned}\n\nC_{O X} & =\\frac{\\varepsilon_{O x}}{t_{O x}}=\\frac{4 \\times 8.85 \\times 10^{-14}}{100 \\times 10^{-9} \\times 100} \\\\\n\n& =4 \\times 8.85 \\times 10^{-14} \\times 10^{5}=35.4 \\times 10^{-9} \\mathrm{~F} / \\mathrm{cm}^{2} \\\\\n\nV_{F B} & =\\frac{Q_{O x}}{C_{O x}}+\\phi_{m s} \\\\\n\n0 & =\\frac{Q_{O x}}{C_{O x}}+\\phi_{m s}\n\n\\end{aligned}$$\n\n$Q_{o x} \\rightarrow$ Positive\n\n$\\frac{Q_{O x}}{C_{o x}}=\\frac{10^{-8}}{35.4 \\times 10^{-9}}=\\frac{10}{35.4} \\text { volt }$\n\n$\\therefore \\quad \\frac{Q_{O x}}{C_{O x}} \\rightarrow$ Negative\n\n$$\\begin{aligned}\n\n0 & =\\frac{-10}{35.4}+\\phi_{\\mathrm{ms}} \\\\\n\n\\phi_{\\mathrm{ms}} & =\\frac{10}{35.4} \\\\\n\n\\phi_{m}-\\phi_{s} & =\\frac{10}{35.4} \\\\\n\n\\phi_{s} & =\\phi_{m}-\\frac{10}{35.4}=4.6-\\frac{10}{35.4}=4.317 \\text { volt } \\\\\n\n\\therefore \\quad 9 \\phi_{s} & =4.317 \\simeq 4.32 \\mathrm{eV}\n\n\\end{aligned}$$\n\nWork function energy of semiconductor.\n\nTherefore, the correct answer is **4.3** (acceptable range: [4.1, 4.5])."
-      },
-      "answer": "4.3"
+      }
     },
     "ec:2024:q52": {
       "question_uid": "ec:2024:q52",
@@ -2375,8 +2324,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Network Theorems",
         "markdown": "<img src=\"/question-images/ec/2024/ec-2024-6fda5cef2c.webp\" />\n\n$I=\\frac{V-V_{x}}{2}+\\frac{V}{5}=\\frac{V}{2}-\\frac{V_{x}}{2}+\\frac{V}{5}$\n\nBut,\n\n$V_{x}=\\frac{V}{5} \\times 3$\n\n$\\therefore \\quad I=\\frac{V}{2}-\\frac{1}{2} \\times \\frac{3 V}{5}+\\frac{V}{5}=\\frac{V}{2}-\\frac{3 V}{10}+\\frac{V}{5}$\n\n$I=\\frac{5 V-3 V+2 V}{10}=\\frac{4 V}{10}$\n\n$\\therefore \\quad \\frac{V}{I}=\\frac{10}{4}=2.5 \\Omega$\n\nTherefore, the correct answer is **2.5**."
-      },
-      "answer": "2.5"
+      }
     },
     "ec:2024:q53": {
       "question_uid": "ec:2024:q53",
@@ -2419,8 +2367,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "$5 \\%$ neutral donor atoms/dopant atoms means $95 \\%$ donor atoms are ionized.\n\nConcentration of electrons occupying the donor level is given as\n\n$n_{d}=\\frac{N_{d}}{1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)}$\n\nand $n_{d}=N_{d}-N_{d}^{+}$where $N_{d}^{+}$is ionized donor atoms concentration.\n\naccording to question\n\n$$\\begin{aligned}\n\nn_{d} & =5 \\% \\text { of } N_{d} \\\\\n\ng & =2 \\text { degeneracy factor }\n\n\\end{aligned}$$\n\n$\\frac{5}{100} N_{d}=\\frac{N_{d}}{1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)}$\n\n$\\frac{1}{20}=\\frac{1}{1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)}$\n\n$1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)=20$\n\n$\\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)=38$\n\n$$\\begin{aligned}\n\n\\frac{E_{D}-E_{F}}{k T} & =\\ln (38) \\quad\\left\\{\\text { given } V_{T}=\\frac{k T}{q}=20 \\mathrm{mV}\\right\\} \\\\\n\nE_{D}-E_{F} & =\\ln (38) \\times 0.020 \\\\\n\n& =0.07275 \\mathrm{eV}\n\n\\end{aligned}$$\n\ngiven: $\\quad E_{C}-E_{F}=0.25 \\mathrm{eV}$\n\n$\\therefore \\quad E_{C}-E_{D}+E_{D}-E_{F}=0.25 \\mathrm{eV}$\n\n$$\\begin{aligned}\n\nE_{C}-E_{D} & =0.25 \\mathrm{eV}-\\left(E_{D}-E_{F}\\right) \\\\\n\n& =0.25 \\mathrm{eV}-0.07275 \\mathrm{eV} \\\\\n\n& =0.17725 \\mathrm{eV} \\simeq 0.18 \\mathrm{eV}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.18** (acceptable range: [0.17, 0.19])."
-      },
-      "answer": "0.18"
+      }
     },
     "ec:2024:q54": {
       "question_uid": "ec:2024:q54",
@@ -2463,8 +2410,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - BJT and FET Basics",
         "markdown": "For linear region of MOS,\n\n$$\\begin{aligned}\n\nI_{D} & =\\mu_{n} C_{O X}\\left(\\frac{W}{L}\\right)\\left[\\left(V_{G S}-V_{T}\\right) V_{D S}-\\frac{1}{2} V_{D S}^{2}\\right] \\\\\n\n5 \\times 10^{-6} & =50 \\times 10^{-6}\\left[\\left(V_{G S}-V_{T}\\right) 0.1-\\frac{1}{2}(0.1)^{2}\\right] \\\\\n\n\\frac{1}{10} & =\\left(V_{G S}-V_{T}\\right) 0.1-\\frac{1}{2} \\times 0.1^{2} \\\\\n\n0.1+0.5(0.1)^{2} & =\\left(V_{G S}-V_{T}\\right) 0.1 \\\\\n\n1+0.5(0.1) & =\\left(V_{G S}-V_{T}\\right) \\\\\n\n1.05 \\text { volt } & =V_{G S}-V_{T}\n\n\\end{aligned}$$\n\nNow: $V_{G S} \\rightarrow$ fix\n\n$$\\begin{aligned}\n\nV_{D S} & =1.5 \\\\\n\nV_{D S} & >V_{G S}-V_{T} \\Rightarrow \\mathrm{MOS} \\text { is in saturation } \\\\\n\ng_{m \\text { (sat) }} & =\\mu_{n} C_{o x}\\left(\\frac{W}{L}\\right)\\left(V_{G S}-V_{T}\\right) \\\\\n\n& =50 \\times 10^{-6} \\times 1.05 \\\\\n\n& =52.5 \\times 10^{-6} \\mathrm{~A} / \\mathrm{V}=52.5 \\mu \\mathrm{A} / \\mathrm{V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **52.5** (acceptable range: [52.4, 52.6])."
-      },
-      "answer": "52.5"
+      }
     },
     "ec:2024:q55": {
       "question_uid": "ec:2024:q55",
@@ -2507,8 +2453,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "Note: In this question voltage corresponds to max. power, $V_{m}$ is given\n\ni.e., $\\quad V_{m}=0.3$ Volt\n\n( $V_{O C}$ is not given be careful)\n\n$$\\begin{aligned}\n\nI_{0} & =\\frac{I_{L}}{\\left(1+\\frac{V_{m}}{V_{T}}\\right) e^{V_{m} / V_{T}}-1}=\\frac{1 \\mathrm{~mA}}{\\left(1+\\frac{0.3}{0.03}\\right) e^{0.3 / 0.03}-1} \\\\\n\n& =4.127 \\mathrm{nA} \\simeq 4.13 \\mathrm{nA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4.13** (acceptable range: [4, 4.26])."
-      },
-      "answer": "4.13"
+      }
     },
     "ec:2024:ga:q1": {
       "question_uid": "ec:2024:ga:q1",
@@ -2550,11 +2495,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - Word Analogies & Degree of Intensity",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Analyzing the Given Word Analogy:**\n  - The relation $[\\text{charm} \\rightarrow \\text{enamor} \\rightarrow \\text{bewitch}]$ represents an increasing scale of emotional fascination/attraction:\n    - *Charm*: to attract or please mildly.\n    - *Enamor*: to fill with love, delight, or strong admiration (intermediate intensity).\n    - *Bewitch*: to enchant completely, casting a powerful spell of captivation (maximum intensity).\n\n- **Applying to the Target Progression $[\\text{bored} \\rightarrow \\text{______} \\rightarrow \\text{weary}]$:**\n  - *Bored*: feeling restless or uninterested due to a lack of stimulation (initial mild state).\n  - *Jaded*: feeling tired, dull, or lacking enthusiasm after prolonged overexposure or excess (intermediate intensified state of weariness).\n  - *Weary*: thoroughly exhausted in mind and body, completely fatigued (maximum intensity).\n  - Hence, **jaded** accurately occupies the intermediate position.\n\n- **Distractor Analysis:**\n  - **Baffled:** means perplexed or completely bewildered; unrelated to tiredness or loss of interest.\n  - **Dead:** denotes complete cessation of biological life or responsiveness; not an intermediate degree of boredom.\n  - **Worsted:** means defeated or bested in a struggle or contest; unrelated to emotional weariness.\n\nTherefore, the correct answer is **Option A (jaded)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:ga:q2": {
       "question_uid": "ec:2024:ga:q2",
@@ -2596,11 +2540,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Logical Reasoning - Constraint Satisfaction & Sibling Allocation",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Given Conditions:**\n  - Five individuals: $\\{P, Q, R, S, T\\}$ across three rooms.\n  - Exactly two of them are siblings, and all agree that the siblings cannot share the same room.\n  - $S$ and $Q$ are single children $\\implies$ neither $S$ nor $Q$ can be part of any sibling pair.\n  - This leaves only the set $\\{P, R, T\\}$ as potential siblings.\n\n- **Evaluating the Acceptable Allocations:**\n  - **Allocation 1:** Room 1 has $PR$, Room 2 has $TS$, Room 3 has $Q$.\n    - Since this allocation is acceptable, $P$ and $R$ share a room.\n    - Therefore, $P$ and $R$ **cannot be siblings**.\n  - **Allocation 2:** Room 1 has $PQ$, Room 2 has $RT$, Room 3 has $S$.\n    - Since this allocation is acceptable, $R$ and $T$ share a room.\n    - Therefore, $R$ and $T$ **cannot be siblings**.\n\n- **Conclusion:**\n  - Eliminating $(P, R)$ and $(R, T)$ from $\\{P, R, T\\}$ leaves **$P$ and $T$** as the only possible pair of siblings.\n  - Notice that in Allocation 1, $P$ is in Room 1 and $T$ is in Room 2 (separated). In Allocation 2, $P$ is in Room 1 and $T$ is in Room 2 (separated). This satisfies all constraints.\n\nTherefore, the correct answer is **Option A ($P$ and $T$)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:ga:q3": {
       "question_uid": "ec:2024:ga:q3",
@@ -2644,8 +2587,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Five year ago\n\nSon's age $=x$\n\nFather's age $=4 x$\n\nFive year after\n\n$$\\begin{aligned}\n\n\\text { Son's age } & =x+10 \\\\\n\n\\frac{x+10}{4 x+10} & =\\frac{2}{5} \\\\\n\n5 x+50 & =8 x+20 \\\\\n\n3 x & =30 \\\\\n\nx & =10\n\n\\end{aligned}$$\n\nSon's age five year ago $=10$\n\nFather's age five year age $=40$\n\nAt the time of son's birth father's age $=40-10=30$ year\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2024:ga:q4": {
       "question_uid": "ec:2024:ga:q4",
@@ -2689,8 +2631,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\n\\log _{x}^{2}+\\log _{x}^{3}+\\log _{x}^{4} & =1 \\\\\n\n\\log _{x}^{24} & =1 \\\\\n\nx & =24\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2024:ga:q5": {
       "question_uid": "ec:2024:ga:q5",
@@ -2734,8 +2675,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$=3^{196}\\left(3^{3}-1\\right)=3^{196} \\times 26=2 \\times 3^{196} \\times 13$\n\nHighest prime factors $=13$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:ga:q6": {
       "question_uid": "ec:2024:ga:q6",
@@ -2777,11 +2717,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - Parajumbles & Narrative Sequencing",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Analyzing the Individual Sentences:**\n  - **R:** *\"Shifu once proclaimed that all life is illusion.\"* (Establishes the central premise and philosophical context).\n  - **S:** *\"One day, when a bull gave him chase, Shifu began running for his life.\"* (Introduces an incident that immediately tests Shifu's philosophical proclamation).\n  - **P:** *Shifu's student exclaimed, \"Why do you run since the bull is an illusion?\"* (The student observes the apparent contradiction between Shifu's proclamation in R and action in S, questioning him).\n  - **Q:** *Shifu said, \"Surely my running away from the bull is also an illusion.\"* (Shifu delivers the witty philosophical retort resolving the student's question).\n\n- **Synthesizing the Narrative Sequence:**\n  - Statement R must come first as the thematic topic sentence.\n  - Statement S describes the inciting incident.\n  - Statement P is the student's reaction to S in light of R.\n  - Statement Q is the direct answer to P.\n  - Thus, the coherent sequence is **R $\\rightarrow$ S $\\rightarrow$ P $\\rightarrow$ Q**.\n\nTherefore, the correct answer is **Option C (RSPQ)**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ec:2024:ga:q7": {
       "question_uid": "ec:2024:ga:q7",
@@ -2823,11 +2762,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Quantitative Aptitude - Geometry of Bundled Cylinders & Surface Area",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Given Dimensions:**\n  - Number of identical cylinders: $4$ in a compact $2 \\times 2$ bundle.\n  - Cylinder radius: $r = 0.5\\text{ cm}$.\n  - Cylinder length: $l = 10\\text{ cm}$.\n  - Tape width: $W = l = 10\\text{ cm}$.\n\n- **Cross-Sectional Perimeter Calculation:**\n  - In a $2 \\times 2$ arrangement of cylinders, the tape wrapping tightly around the bundle consists of straight tangential segments and curved corner arcs:\n    1. **Four Straight Tangent Segments:**\n       - Each straight section connects tangent points between two adjacent cylinders.\n       - The distance between centers of two touching cylinders of radius $r$ is $2r$.\n       - Each straight segment has length $L_s = 2r$.\n       - Total straight length for $4$ sides:\n         $$4 \\times 2r = 8r$$\n    2. **Four Curved Corner Segments:**\n       - At each corner, the tape wraps around a quarter of a cylinder ($90^\\circ$ arc).\n       - Together, the four $90^\\circ$ arcs form the full circumference of one cylinder:\n         $$4 \\times \\left(\\frac{1}{4} \\times 2\\pi r\\right) = 2\\pi r$$\n  - **Total Perimeter of the Wrap:**\n    $$P = 8r + 2\\pi r = 2r(4 + \\pi)$$\n  - Substituting $r = 0.5\\text{ cm}$ (so $2r = 1\\text{ cm}$):\n    $$P = 8(0.5) + 2\\pi(0.5) = 4 + \\pi\\text{ cm}$$\n\n- **Area of Duct Tape Required:**\n  $$\\text{Area} = P \\times W = (4 + \\pi) \\times 10 = 10(4 + \\pi)\\text{ cm}^2$$\n\nTherefore, the correct answer is **Option D ($10(4+\\pi)$)**.",
         "images": []
-      },
-      "answer": "D"
+      }
     },
     "ec:2024:ga:q8": {
       "question_uid": "ec:2024:ga:q8",
@@ -2869,11 +2807,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Data Interpretation - Bar Chart Analysis & BMI Trends",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Data Extracted from the Bar Chart:**\n  - **Underweight:**\n    - $2003 \\approx 10\\%$\n    - $2023 \\approx 5\\%$\n  - **Normal:**\n    - $2003 \\approx 50\\%$\n    - $2023 \\approx 30\\%$\n  - **Overweight:**\n    - $2003 \\approx 25\\%$\n    - $2023 \\approx 40\\%$\n  - **Obese:**\n    - $2003 \\approx 15\\%$\n    - $2023 \\approx 25\\%$\n\n- **Evaluating Each Option:**\n  - **Option A:** $\\text{Overweight} / \\text{Normal}$\n    - In $2003$: $25 / 50 = 0.50$\n    - In $2023$: $40 / 30 \\approx 1.33$\n    - Ratio increased ($1.33 > 0.50$). Statement is **Correct**.\n  - **Option B:** $\\text{Underweight} / \\text{Normal}$\n    - In $2003$: $10 / 50 = 0.20$\n    - In $2023$: $5 / 30 \\approx 0.167$\n    - Ratio decreased ($0.167 < 0.20$). Statement is **Correct**.\n  - **Option C:** $\\text{Obese} / \\text{Normal}$\n    - In $2003$: $15 / 50 = 0.30$\n    - In $2023$: $25 / 30 \\approx 0.833$\n    - Ratio **increased** from $0.30$ to $0.833$; it did **not decrease**. Statement is **INCORRECT**.\n  - **Option D:** Normal percentage changed from $50\\%$ in $2003$ to $30\\%$ in $2023$, so it decreased. Statement is **Correct**.\n\n- The question asks for the INCORRECT option, which is Option C.\n\nTherefore, the correct answer is **Option C**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ec:2024:ga:q9": {
       "question_uid": "ec:2024:ga:q9",
@@ -2915,11 +2852,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Spatial Aptitude - Combined Reflection Transformations",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Mathematical Nature of Combined Reflections:**\n  - Reflection in a vertical mirror maps $(x, y) \\mapsto (-x, y)$ (horizontal inversion / left-right swap).\n  - Reflection in water maps $(x, y) \\mapsto (x, -y)$ (vertical inversion / top-bottom swap).\n  - The sequential combination of both reflections is:\n    $$(x, y) \\mapsto (-x, -y)$$\n  - This is geometrically equivalent to a **$180^\\circ$ rotation around the origin (point reflection)**.\n  - Because applying the transformation twice returns the original object (involution), the inverse operation to recover the original object is the identical transformation: $(x, y) \\mapsto (-x, -y)$.\n\n- **Applying Transformation to the Transformed Image:**\n  - In the transformed image, reading from left to right, we have:\n    - An inverted '5'-like glyph on the left.\n    - A central decimal dot between glyph 1 and glyph 2.\n    - A digital '2'-like glyph in the middle.\n    - A digital '4'-like glyph on the right.\n  - Applying $180^\\circ$ point reflection:\n    1. The rightmost '4'-like glyph rotates $180^\\circ$ and moves to the **far left**.\n    2. The middle '2'-like glyph rotates $180^\\circ$ into a standard digital '2'.\n    3. The decimal dot shifts to between the middle glyph and the right glyph.\n    4. The leftmost inverted '5'-like glyph rotates $180^\\circ$ into a standard digital '5' on the **far right**.\n  - The resulting configuration has the '4'-like shape on the left, followed by '2', then the decimal point, and '5' on the right.\n  - This matches **Option A** exactly.\n\nTherefore, the correct answer is **Option A**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2024:ga:q10": {
       "question_uid": "ec:2024:ga:q10",
@@ -2963,8 +2899,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Condition 1:\n\nFolding first time\n\n<img src=\"/question-images/ec/2024/ec-2024-d1717b8ef8.webp\" />\n\nFolding first time\n\n<img src=\"/question-images/ec/2024/ec-2024-f6f44636bd.webp\" />\n\nCondition 2:\n\nFolding first time\n\n<img src=\"/question-images/ec/2024/ec-2024-d9c8605a37.webp\" />\n\nFolding second time\n\n<img src=\"/question-images/ec/2024/ec-2024-fc94621215.webp\" />\n\nPerimeter $=2(16+6)=44 \\mathrm{~cm}$\n\nRatio $=56: 44=14: 11$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     }
   }
 }

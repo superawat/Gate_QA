@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:36.954Z",
+  "generatedAt": "2026-10-25T18:50:27.015Z",
   "shardKey": "ec-2023-s1",
   "yearSetKey": "ec-2023-s1",
   "yearSetIdentity": "ec:2023:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned}\n\ne & =V_{1}-\\alpha V_{2} \\\\\n\ne & =(i+2 k+0 k)-\\alpha(2 i+j+3 k) \\\\\n\n\\hat{e} & =(1-2 \\alpha) \\hat{i}+(2-\\alpha) \\hat{j}+(0-3 \\alpha) \\hat{k} \\\\\n\n|\\hat{e}| & =\\sqrt{(1-2 \\alpha)^{2}+(2-\\alpha)^{2}+(-3 \\alpha)^{2}} \\\\\n\n|\\hat{e}|^{2} & =5+14 \\alpha^{2}-8 \\alpha \\text { to be minimum at } \\frac{\\partial e^{2}}{\\partial \\alpha}=28 \\alpha-8=0 \\\\\n\n\\alpha & =\\frac{2}{7} \\text { stationary point }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:q2": {
       "question_uid": "ec:2023:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned}\n\nf(x, y, z) & =x y z \\\\\n\n\\overline{\\nabla f} & =\\hat{i} f_{x}+\\hat{j} f_{y}+\\hat{k} f_{z} \\\\\n\n& =\\hat{i}(y z)+\\hat{j}(x z)+\\hat{k}(x y) \\\\\n\n\\overline{\\nabla f}_{(0,2,1)} & =\\hat{i}(2)+0 \\hat{j}+0 \\hat{k}\n\n\\end{aligned}$$\n\nDirectional derivative,\n\n$$\\begin{aligned}\n\nD \\cdot D & =\\overline{\\nabla f} \\cdot \\frac{\\bar{a}}{|\\bar{a}|} \\\\\n\n& =(2 \\hat{i}+0 \\hat{j}+0 \\hat{k}) \\cdot \\frac{(2 \\hat{i}+\\hat{j}+2 \\hat{k})}{\\sqrt{2^{2}+1^{2}+2^{2}}}=\\frac{4}{\\sqrt{9}}=\\frac{4}{3}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q3": {
       "question_uid": "ec:2023:q3",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$w=(2) j^{1 / 4}$\n\n$w=2(0+j)^{1 / 4}$\n\n$w=2\\left[e^{j(2 n+1) \\pi / 2}\\right]^{1 / 4}$\n\n$=2\\left[e^{j(2 n+1) \\pi / 8}\\right]$\n\nFor $n=0$,\n\n$w=e^{j \\pi / 8}$\n\nFor $n=2$,\n\n$w=2 e^{5 \\pi j / 8}$\n\nFor $n=4$,\n\n$w=2 e^{9 \\pi j / 8}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q4": {
       "question_uid": "ec:2023:q4",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$I=\\oint_{c} \\frac{z+2}{z^{2}+2 z+2} d z ; \\quad c=\\left|z+1-\\frac{3}{2} i\\right|=1$\n\nPoles are given $(z+1)^{2}+1=0$\n\n$$\\begin{aligned}\n\n& z+1= \\pm \\sqrt{-1} \\\\\n\n& z=-1+j,-1-j\n\n\\end{aligned}$$\n\nwhere $-1-i$ lies outside ' $c$ '\n\n$z=(-1,1) \\text { lies inside }  'c'$.\n\nby $\\mathrm{CRT}$\n\n$$\\begin{aligned}\n\n\\oint_{c} f(z) d z & =2 \\pi i \\operatorname{Res}(f(z), z=-1+j) \\\\\n\n& =2 \\pi i\\left(\\frac{z+2}{2(z+1)}\\right)_{z=-1+i}\\\\\n\n& =2 \\pi i\\left(\\frac{-1+j+2}{2(-1+j+1)}\\right) \\\\\n\n& =\\pi(1+j)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q5": {
       "question_uid": "ec:2023:q5",
@@ -236,8 +232,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} & B & =P^{-1} A P \\\\ A & =P B P^{-1}\\end{aligned}$$\n\n$\\Rightarrow A, B$ are called matrices similar.\n\n$\\Rightarrow$ Both $A, B$ have same set 7 eigen values\n\nBut eigen vectors of $A, B$ are different.\n\nLet $B X=\\lambda X$\n\n$\\Rightarrow \\quad\\left(P^{-1} A P\\right) X=\\lambda X$\n\n$\\Rightarrow \\quad A(P X)=\\lambda(P X)$\n\n$\\therefore$ Eigen vectors of $A$ are $P X$.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:q6": {
       "question_uid": "ec:2023:q6",
@@ -282,8 +277,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "As the Fermi lies inside the conduction band hence it is degenerate $n$-type semiconductor.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q7": {
       "question_uid": "ec:2023:q7",
@@ -328,8 +322,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "Intrinsic semiconductor at $\\mathrm{T}=0 \\mathrm{~K}$ behaves as an insulator.\n\nHence, valence band is completely filled with electron and conduction band is completely empty.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q8": {
       "question_uid": "ec:2023:q8",
@@ -374,8 +367,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Network Functions",
         "markdown": "Given: $Q=1000$ and $\\omega_{0}=10^{6} \\mathrm{rad} / \\mathrm{sec}$\n\nWe know, for series $R L C$ circuit,\n\n$$\\begin{aligned}\n\nQ & =\\frac{\\omega_{0} L}{R} \\\\\n\n\\omega_{0} & =\\sqrt{\\frac{1}{L C}} \\\\\n\nQ & =\\frac{1}{\\sqrt{L C}} \\times \\frac{1}{R}=\\frac{1}{R} \\sqrt{\\frac{L}{C}}\n\n\\end{aligned}$$\n\nSo, $L=1 \\mu \\mathrm{H}, C=1 \\mu \\mathrm{F}$ and $R=0.001$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2023:q9": {
       "question_uid": "ec:2023:q9",
@@ -420,8 +412,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "$\\because$ We know $V_{G} \\lt V_{F B}$ then accumulation mode.\n\n$\\therefore$ In accumulation mode $W_{d}=0$ because there is no depletion charge.\n\nNow, $V_{F B} \\lt V_{G} \\lt V_{T} \\Rightarrow$ then depletion and inversion mode.\n\n$\\therefore$ Depletion width is available.\n\n$\\therefore V_{G} \\gt V_{T} \\Rightarrow$ Strong inversion.\n\n$\\therefore$ Depletion width $W_{d} \\Rightarrow$ Constant.\n\nAnd $W_{d}=\\sqrt{\\frac{2 \\epsilon\\left|\\phi_{S}\\right|}{q N_{S}}}$ and $\\left|\\phi_{S}\\right| \\propto V_{G}$\n\nBut after strong inversion, $W_{d}$ remains constant.\n\n$\\therefore$ Correction option is (B).\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q10": {
       "question_uid": "ec:2023:q10",
@@ -466,8 +457,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Miscellaneous Topics",
         "markdown": "Phase velocity, $V_{p}=\\frac{\\omega}{\\beta}=\\frac{\\omega}{\\omega \\sqrt{\\mu \\epsilon}}=\\frac{1}{\\sqrt{\\mu_{0} \\epsilon_{0}}}, \\frac{1}{\\sqrt{\\mu_{r} \\epsilon_{r}}}=\\frac{C}{\\sqrt{\\mu_{r} \\epsilon_{r}}}$\n\n$\\therefore \\quad V_{p} \\lt C$\n\nGroup velocity, $V_{g}=\\frac{d \\omega}{d \\beta}=\\frac{V_{p}}{1-\\frac{\\omega}{V_{p}} \\frac{d V_{p}}{d \\omega}}$\n\nHere, $\\quad V_{p} \\neq f(\\omega)$\n\n$\\therefore \\quad V_{g}=V_{p} \\lt C$\n\nHence, $\\quad V_{p} \\lt C$\n\n$\\quad \\quad V_{g} \\lt C$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2023:q11": {
       "question_uid": "ec:2023:q11",
@@ -512,8 +502,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Feedback Amplifiers",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-4142977ad7.webp\" />\n\nHere from circuit,\n\n$M_{1}$ is common-gate amplifier and $M_{2}$ behaves as an active load.\n\nBy using properties of common gate (CG) amplifier,\n\nInput impedance $\\left(R_{i}\\right)$ is low\n\nOutput impedance $\\left(R_{0}\\right)$ is high\n\nSo, it is a current amplifier.\n\nCurrent amplifier is a current controlled current source.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2023:q12": {
       "question_uid": "ec:2023:q12",
@@ -558,8 +547,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "For oscillation,\n\nLoop gain magnitude $\\geq 1$.\n\nPhase of loop gain $=360^{\\circ}$\n\nSo, correct answer is option (D).\n\nIn options, closes loop gain is mentioned technically it should be loop gain.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2023:q13": {
       "question_uid": "ec:2023:q13",
@@ -604,8 +592,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
         "markdown": "$$\\begin{aligned}\n\n\\text { Output } & =\\bar{Q} \\cdot I_{0}+Q \\cdot I_{1} \\\\\n\n& =\\bar{Q} \\cdot 0+Q \\cdot P \\\\\n\n& =P Q\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q14": {
       "question_uid": "ec:2023:q14",
@@ -650,8 +637,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "The given circuit is a type of SISO.\n\n$$\\begin{aligned} \\therefore \\quad Latency &=n \\times T_{\\text {clk }} \\ldots . .& n= \\text{number of flip flops}\\\\\n\n&=3 \\times 1 \\quad \\ldots . &T_{\\mathrm{clk}}=\\frac{1}{f_{\\mathrm{clk}}}=1 \\mathrm{~ns}\\\\\n\n&=3 \\mathrm{~ns} &\n\n\\end{aligned}$$\n\nNow,\n\n$$\\begin{aligned}\n\n\\text{Throughput}&= \\text{Number of bits/sec}\\\\\n\n\\because \\quad 1 \\;bit &=1\\; nsec\\\\\n\n\\therefore \\quad \\text{Throughput} &=10^{9} \\mathrm{bits} / \\mathrm{sec}\\\\\n\n&=1000 \\mathrm{Mbps}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q15": {
       "question_uid": "ec:2023:q15",
@@ -696,8 +682,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
         "markdown": "We know phase crossover frequency is that frequency at which phase of the open loop transfer function is $-180^{\\circ}$.\n\n$$\\begin{aligned}\n\n\\therefore \\quad G(s) & =\\frac{K}{s\\left(1+s T_{1}\\right)\\left(1+s T_{2}\\right)} \\\\\n\nG(j \\omega) & =\\frac{K}{(j \\omega)\\left(1+j \\omega T_{1}\\right)\\left(1+j \\omega T_{2}\\right)} \\\\\n\n\\text{Phase of }G(j \\omega) & =\\phi =-90-\\tan ^{-1}\\left(\\omega T_{1}\\right) - \\tan ^{-1}\\left(\\omega T_{2}\\right) \\\\\n\n\\therefore \\quad \\text { At } \\omega &=\\omega_{p c}, \\phi =-180  \\\\\n\n-180 & =-90-\\tan ^{-1}\\left(\\omega_{p c} T_{1}\\right)-\\tan ^{-1}\\left(\\omega_{p c} T_{2}\\right) \\\\\n\n9 \\quad 90 & =\\tan ^{-1}\\left(\\omega_{p c} T_{1}\\right)+\\tan ^{-1}\\left(\\omega_{p c} T_{2}\\right) \\\\\n\n\\tan ^{-1}\\left(\\frac{\\omega_{p c} T_{1}+\\omega_{p c} T_{2}}{1-\\omega_{p c}^{2} T_{1} T_{2}}\\right) & =90 \\\\\n\n1-\\omega_{p c}^{2} T_{1} T_{2} & =0 \\\\\n\n\\omega_{p c} & =\\frac{1}{\\sqrt{T_{1} T_{2}}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q16": {
       "question_uid": "ec:2023:q16",
@@ -742,8 +727,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "We have, $\\quad y(t)=x\\left(e^{t}\\right)$\n\nAt $t=0$\n\n$y(0)=x(1)$\n\ni.e. present value of output depends on future value of input, hence it is non-causal.\n\nFor Time Variant:\n\nDelay the input,\n\n$y(t)=x\\left(e^{t}-t_{0}\\right) \\quad . . . (i)$\n\nDelay the output,\n\n$y\\left(t-t_{0}\\right)=x\\left(e^{t-t_{0}}\\right) \\quad . . . (ii)$\n\ni.e. equations (i) $\\neq$ (ii)\n\nHence, it is time variant system.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q17": {
       "question_uid": "ec:2023:q17",
@@ -788,8 +772,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-30a894871c.webp\" />\n\n$$\\begin{aligned}\n\n\\text { Energy }(E)&=\\frac{1}{2 \\pi} \\int_{-B}^{B}(1)^{2} \\cdot d \\omega \\\\\n\nE&=\\frac{B}{\\pi}\\\\\n\n\\text {Now, let } y(t)&=m(t) \\cos \\omega_{0} t \\\\\n\nY(\\omega)&=\\frac{1}{2}\\left[M\\left(\\omega-\\omega_{0}\\right)+M\\left(\\omega+\\omega_{0}\\right)\\right] \\\\\n\n\\text{Here;  }\\omega_{0}&=10 B\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2023/ec-2023-46223577e1.webp\" />\n\nNow,\n\n$$\\begin{aligned}\n\nEnergy \\left(E^{\\prime}\\right)&=\\frac{1}{2 \\pi} \\int_{-\\infty}^{\\infty}|Y(\\omega)|^{2} \\cdot d \\omega\\\\\n\n&=\\frac{1}{2 \\pi}\\left[\\int_{-11 B}^{-9 B}\\left(\\frac{1}{2}\\right)^{2} \\cdot d \\omega+\\int_{9 B}^{11 B}\\left(\\frac{1}{2}\\right)^{2} \\cdot d \\omega\\right]\\\\\n\n& =\\frac{1}{2 \\pi}\\left[\\frac{1}{4} \\times 2 B+\\frac{1}{4} \\times 2 B\\right] \\\\\n\nE^{\\prime} & =\\frac{B}{2 \\pi}=\\frac{1}{2}\\left(\\frac{B}{\\pi}\\right)=\\frac{E}{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q18": {
       "question_uid": "ec:2023:q18",
@@ -834,8 +817,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
         "markdown": "We know; $\\quad e^{-a t^{2}} ; a>0 \\stackrel{F T}{\\rightleftharpoons} \\sqrt{\\frac{\\pi}{a}} \\cdot e^{-\\omega^{2} / 4 a}$\n\nHere; $a=1$\n\n$\\therefore \\quad X(\\omega)=\\sqrt{\\pi} \\cdot e^{-\\omega^{2} / 4}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:q19": {
       "question_uid": "ec:2023:q19",
@@ -848,10 +830,10 @@
       "year": "gateec-2023-set1",
       "type": "MCQ",
       "marks": 1,
-      "question": "In the table shown below, match the signal type with its spectral characteristics.\n<br><br>$$\\begin{array}{|ll|ll|}\n\\hline\n\\multicolumn{2}{|c|}{\\textbf{Signal type}} & \\multicolumn{2}{c|}{\\textbf{Spectral characteristics}} \\\\\n\\hline\n\\text{(i)} & \\text{Continuous, aperiodic} & \\text{(a)} & \\text{Continuous, aperiodic} \\\\\n\\text{(ii)} & \\text{Continuous, periodic} & \\text{(b)} & \\text{Continuous, periodic} \\\\\n\\text{(iii)} & \\text{Discrete, aperiodic} & \\text{(c)} & \\text{Discrete, aperiodic} \\\\\n\\text{(iv)} & \\text{Discrete, periodic} & \\text{(d)} & \\text{Discrete, periodic} \\\\\n\\hline\n\\end{array}$$",
+      "question": "In the table shown below, match the signal type with its spectral characteristics.\n<br><br>$$\\begin{array}{ll}\n\\textbf{Signal type} &\\textbf{Spectral Characteristics}\\\\\n\\text{(i) Continuous, aperiodic}& \\text{(i) Continuous, aperiodic}\\\\\n\\text{(ii) Continuous, periodic}& \\text{(ii) Continuous, periodic}\\\\\n\\text{(iii) Discrete, aperiodic}& \\text{(iii) Discrete, aperiodic}}\\\\\n\\text{(iv) Discrete, periodic} & \\text{(iv) Discrete, periodic}}\n\\end{array}$$",
       "options": [
         "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (b), (iii) $\\rightarrow$ (c), (iv) $\\rightarrow$ (d)",
-        "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ (b), (iv) $\\rightarrow$ (d)",
+        "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ , (iv) $\\rightarrow$ (d)",
         "(i) $\\rightarrow$ (d), (ii) $\\rightarrow$ (b), (iii) $\\rightarrow$ (c), (iv) $\\rightarrow$ (a)",
         "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ (d), (iv) $\\rightarrow$ (b)"
       ],
@@ -878,11 +860,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Signals and Systems - Fourier Transform Dualities & Spectral Representations",
+        "concept": "Signals and Systems - Basics of Signals and Systems",
         "markdown": "- **Foundational Duality of Fourier Representations:**\n  - The spectral representation of any signal obeys fundamental time-frequency duality properties:\n    1. **Continuity in time** $\\iff$ **Aperiodicity in frequency**.\n    2. **Discretization in time** $\\iff$ **Periodicity in frequency** (periodic with period $\\omega_s = 2\\pi / T_s$).\n    3. **Periodicity in time** $\\iff$ **Discretization in frequency** (harmonic line spectrum with discrete lines at $\\omega = k\\omega_0$).\n    4. **Aperiodicity in time** $\\iff$ **Continuity in frequency**.\n\n- **Matching Signal Classes with Transforms & Spectral Types:**\n  - **(i) Continuous-Time, Aperiodic Signal $[x(t)]$:**\n    - Analyzed via the **Continuous-Time Fourier Transform (CTFT)**:\n      $$X(j\\omega) = \\int_{-\\infty}^{\\infty} x(t) e^{-j\\omega t} \\, dt$$\n    - Because $x(t)$ is continuous, $X(j\\omega)$ is aperiodic; because $x(t)$ is aperiodic, $X(j\\omega)$ is continuous.\n    - Spectral characteristics: **(a) Continuous, aperiodic** $\\implies$ **(i) $\\rightarrow$ (a)**.\n  - **(ii) Continuous-Time, Periodic Signal $[x(t)]$:**\n    - Analyzed via the **Continuous-Time Fourier Series (CTFS)**:\n      $$X[k] = \\frac{1}{T} \\int_{0}^{T} x(t) e^{-j k \\omega_0 t} \\, dt$$\n    - Because $x(t)$ is continuous, $X[k]$ is aperiodic; because $x(t)$ is periodic, $X[k]$ consists of discrete spectral coefficients at discrete harmonics $k\\omega_0$.\n    - Spectral characteristics: **(c) Discrete, aperiodic** $\\implies$ **(ii) $\\rightarrow$ (c)**.\n  - **(iii) Discrete-Time, Aperiodic Signal $[x[n]]$:**\n    - Analyzed via the **Discrete-Time Fourier Transform (DTFT)**:\n      $$X(e^{j\\omega}) = \\sum_{n=-\\infty}^{\\infty} x[n] e^{-j\\omega n}$$\n    - Because $x[n]$ is discrete, $X(e^{j\\omega})$ is periodic with period $2\\pi$; because $x[n]$ is aperiodic, $X(e^{j\\omega})$ is continuous in $\\omega$.\n    - Spectral characteristics: **(b) Continuous, periodic** $\\implies$ **(iii) $\\rightarrow$ (b)**.\n  - **(iv) Discrete-Time, Periodic Signal $[x[n]]$:**\n    - Analyzed via the **Discrete Fourier Series (DFS) / Discrete Fourier Transform (DFT)**:\n      $$X[k] = \\sum_{n=0}^{N-1} x[n] e^{-j \\frac{2\\pi}{N} k n}$$\n    - Because $x[n]$ is discrete, $X[k]$ is periodic with period $N$; because $x[n]$ is periodic, $X[k]$ is discrete.\n    - Spectral characteristics: **(d) Discrete, periodic** $\\implies$ **(iv) $\\rightarrow$ (d)**.\n\n- **Conclusion:**\n  - Matching: $(i) \\rightarrow (a), (ii) \\rightarrow (c), (iii) \\rightarrow (b), (iv) \\rightarrow (d)$.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q20": {
       "question_uid": "ec:2023:q20",
@@ -927,8 +908,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Signals and Noise",
         "markdown": "(i) $S_{x}(\\omega) \\geq 0$\n\n(ii) $S_{x}(\\omega)$ is even function\n\nHence, options (A) and (B) are valid power spectral densities.\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "ec:2023:q21": {
       "question_uid": "ec:2023:q21",
@@ -971,8 +951,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
         "markdown": "We know that for sinusoidal input, the signal to noise ratio (SNR) is given as,\n\n$$\\begin{aligned}\n\n\\mathrm{SNR} & =1.76+6.02 \\mathrm{n} \\mathrm{dB} \\\\\n\n61.96 \\mathrm{~dB} & =1.76+6.02 \\mathrm{n} \\mathrm{dB} \\\\\n\n6.02 \\mathrm{n} & =61.96-1.76 \\\\\n\nn & =10 \\text { bits }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10**."
-      },
-      "answer": "10"
+      }
     },
     "ec:2023:q22": {
       "question_uid": "ec:2023:q22",
@@ -1015,8 +994,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Basics of Network Analysis",
         "markdown": "By applying source transformation,\n\n<img src=\"/question-images/ec/2023/ec-2023-85a4615a1e.webp\" />\n\nApply nodal at node $V_{A}$,\n\n$$\\begin{aligned}\n\n\\frac{V_{A}-2}{2 \\mathrm{k} \\Omega}+\\frac{V_{A}}{2 \\mathrm{k} \\Omega}+\\frac{V_{A}+1}{1.2 \\mathrm{k} \\Omega} & =1 \\mathrm{~mA} \\\\\n\nV_{A}\\left[\\frac{1}{2}+\\frac{1}{2}+\\frac{1}{1.2}\\right] & =1+\\frac{2}{2}-\\left(\\frac{1}{1.2}\\right) \\\\\n\nV_{A} & =0.636 \\mathrm{~V}\n\n\\end{aligned}$$\n\nThe current through $200 \\Omega$ resistor,\n\n$$\\begin{aligned}\n\n& i=\\frac{V_{A}+1}{1.2 \\mathrm{k} \\Omega}=\\frac{0.636+1}{1.2} \\\\\n\n& i=1.36 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.35** (acceptable range: [1.3, 1.4])."
-      },
-      "answer": "1.35"
+      }
     },
     "ec:2023:q23": {
       "question_uid": "ec:2023:q23",
@@ -1059,8 +1037,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "$$[Y]=\\left[\\begin{array}{cc}\n\n\\frac{2}{100} & -\\frac{1}{100} \\\\\n\n-\\frac{1}{100} & \\frac{4}{300}\n\n\\end{array}\\right]$$\n\nFor the given $Y$-parameter the two-port network is\n\n<img src=\"/question-images/ec/2023/ec-2023-e5a0cb556b.webp\" />\n\n$Y_{11}=Y_{a}+Y_{b}=\\frac{2}{100}$[\n\n$Y_{12}=Y_{21}=-Y_{b}=-\\frac{1}{100}$\n\n$Y_{22}=Y_{b}+Y_{c}=\\frac{4}{300}$\n\nOn solving,\n\n$\\quad Y_{b}=\\frac{1}{100} S$\n\n$Y_{a}=\\frac{1}{100} S$\n\n$Y_{c}=\\frac{1}{300} S$\n\nThe network becomes,\n\n<img src=\"/question-images/ec/2023/ec-2023-a6b3748163.webp\" />\n\nConverting $\\Delta$ - to $\\lambda$\n\n<img src=\"/question-images/ec/2023/ec-2023-de78349242.webp\" />\n\n$Z_{Th}=60+[(20+10)||60]=60+\\frac{30 \\times 60}{30+60}=80 \\Omega$\n\nFor maximum power transfer,\n\n$Z_{L}=Z_{\\text {Th }}=80 \\Omega$\n\nTherefore, the correct answer is **80**."
-      },
-      "answer": "80"
+      }
     },
     "ec:2023:q24": {
       "question_uid": "ec:2023:q24",
@@ -1103,8 +1080,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
         "markdown": "The given circuit can be drawn as;\n\n<img src=\"/question-images/ec/2023/ec-2023-38ddb06229.webp\" />\n\n$\\therefore \\quad$ The critical path delay $=1 \\mathrm{~ns}+1 \\mathrm{~ns}=2 \\mathrm{~ns}$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ec:2023:q25": {
       "question_uid": "ec:2023:q25",
@@ -1147,8 +1123,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "At $t=0^{-}$\n\n<img src=\"/question-images/ec/2023/ec-2023-481dac4808.webp\" />\n\n$i_{L}\\left(0^{-}\\right)=\\frac{2}{1}=2 \\mathrm{~A}$\n\nAt $t=0^{+}$\n\n<img src=\"/question-images/ec/2023/ec-2023-481dac4808.webp\" />\n\n$V_{R}=-2 \\times 2=-4$,\n\nMagnitude of voltage $V_{R}$,\n\n$\\left|V_{R}\\right|=4$\n\nTherefore, the correct answer is **4**."
-      },
-      "answer": "4"
+      }
     },
     "ec:2023:q26": {
       "question_uid": "ec:2023:q26",
@@ -1193,8 +1168,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$X=N(0,1)$\n\n<img src=\"/question-images/ec/2023/ec-2023-c35861807d.webp\" />\n\n$f_X(x)=\\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}$\n\n<img src=\"/question-images/ec/2023/ec-2023-750e24790c.webp\" />\n\n$$\\begin{aligned}\n\nY= & -1 ; x \\leq-2 \\\\\n\n& 0 ;-1 \\leq x \\leq 1 \\\\\n\n& 1 ; x \\geq 2 \\\\\n\n& x+1 ;-2 \\leq x \\leq-1 \\\\\n\n& x-1 ; 1 \\leq x \\leq 2\n\n\\end{aligned}$$\n\n$Y$ is taking discrete set of values and a continuous range of values, so it is mixed random variable.\n\nFrom the given options, density function of '$Y$' will be.\n\n$f_{Y}(y)=a \\delta(y+1)+b \\delta(y)+c \\delta(y-1)+g(y)$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q27": {
       "question_uid": "ec:2023:q27",
@@ -1239,8 +1213,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\int_{P}^{Q} z^{2} d x+3 y^{2} d y+2 x z d z$ along the line joining the points $P(1,1,2)$ and $Q(2,3,1)$ is\n\n$$\\begin{aligned}\n\n& =\\int_{P(1,2)}^{P(2,1)} z^{2} d x+2 x y d z+\\int_{y=1}^{3} 3 y^{2} d y \\\\\n\n& =\\left(x z^{2}\\right)_{(1,2)}^{(2,1)}+\\left(y^{3}\\right)_{1}^{3} \\\\\n\n& =\\left(2 \\times 1^{2}-1 \\times 2^{2}\\right)+\\left(3^{3}-1^{3}\\right) \\\\\n\n& =-2+26=24\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q28": {
       "question_uid": "ec:2023:q28",
@@ -1285,8 +1258,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Given,\n\n$l=\\sqrt{x^{T} x}, P=\\left(x x^{T}\\right)_{n \\times n}$\n\nLet\n\n$$\\begin{aligned}\n\n(x)_{n \\times 1} & =\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2} \\\\\n\nx_{3} \\\\\n\n\\vdots \\\\\n\nx_{n}\n\n\\end{array}\\right] \\\\\n\nl & =\\sqrt{x^{T} x}=\\sqrt{x_{1}^{2}+x_{2}^{2}+x_{3}^{2}+\\ldots x_{n}^{2}} \\\\\n\nP & =x x^{T} \\\\\n\n&=\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2} \\\\\n\nx_{3} \\\\\n\n\\cdot \\\\\n\nx_{n}\n\n\\end{array}\\right]\\left[x_{1} x_{2} x_{3} \\ldots x_{n}\\right]\\\\\n\nP&=\\left[\n\n\\begin{array}{lllll}\n\nx_{1}^{2} & & & & \\\\\n\n& x_{1}^{2} & & & \\\\\n\n& & - & & \\\\\n\n& & & - & \\\\\n\n& & & & x_{n}^{2}\n\n\\end{array}\n\n\\right]\n\n\\end{aligned}$$\n\nTrace of $P=x_{1}^{2}+x_{2}^{2}+ . . .+ x_{n}^{2}=l^2$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q29": {
       "question_uid": "ec:2023:q29",
@@ -1331,8 +1303,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-05a38b6b45.webp\" />\n\nHere, $A_{1}$ is an inverting amplifier and $A_{2}$ is a non-inverting amplifier.\n\n$$\\begin{aligned}\n\nV_{01}&=\\frac{-R_{2}}{R_{1}} V_{i n} \\\\\n\nV_{02}&=\\left(1+\\frac{R_{2}}{R_{1}}\\right) V_{i n}\n\n\\end{aligned}$$\n\nAlso, $A_{3}$ is an inverting summing amplifier,\n\n$$\\begin{aligned}\n\nV_{\\text {out }} & =\\frac{-R_{4}}{R_{3}} V_{01}-\\frac{R_{4}}{R_{3}} V_{02}=\\frac{-R_{4}}{R_{3}}\\left[\\frac{R_{2}}{R_{1}} V_{\\text {in }}+\\left(1+\\frac{R_{2}}{R_{1}}\\right) V_{\\text {in }}\\right] \\\\\n\nV_{\\text {out }} & =\\frac{-R_{4}}{R_{3}} V_{\\text {in }} \\\\\n\n\\text { Gain, } \\frac{V_{\\text {out }}}{V_{\\text {in }}} & =\\frac{-R_{4}}{R_{3}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q30": {
       "question_uid": "ec:2023:q30",
@@ -1377,8 +1348,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "Case I:\n\n$$\\begin{aligned}\n\nV_{\\gamma}&=0.7 \\mathrm{~V} \\\\\n\n\\text { For the +ve half cycle } &\\text { if input } V_{\\text {in }} \\\\\n\nD_{1} & \\rightarrow O \\mathrm{ON} \\text { and } D_{2} \\rightarrow \\text { OFF } \\\\\n\n\\text { For diode } D_{1}:& \\quad V_{\\text {in }}-1 V \\gt 0.7 \\\\\n\nV_{\\text {in }} & \\gt 1.7 \\mathrm{~V} \\\\\n\nV_{0}&=V_{\\text {in }}-0.7\n\n\\end{aligned}$$\n\nCase II:\n\nFor the + ve half cycle if input $V_{\\text {in }}$,\n\n$D_{1} \\rightarrow \\mathrm{OFF}$ and $D_{2} \\rightarrow \\mathrm{ON}$\n\nFor diode $D_{2}: \\quad 1-V_{\\text {in }} \\gt 0.7$\n\n$V_{\\text {in }} \\lt 0.3 \\mathrm{~V}$\n\n$V_{0}=V_{\\text {in }}+0.7$\n\nCase III:\n\n$$\\begin{aligned}\n\n0.3 \\mathrm{~V} &  \\lt V_{\\text {in }} \\lt 1.7 \\mathrm{~V} \\\\\n\nD_{1} & \\rightarrow \\mathrm{OFF} \\text { and } D_{2} \\rightarrow \\mathrm{OFF} \\\\\n\nV_{0} & =1 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTransfer characteristics,\n\n<img src=\"/question-images/ec/2023/ec-2023-91bdf0e2db.webp\" />\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q31": {
       "question_uid": "ec:2023:q31",
@@ -1423,8 +1393,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "Given, $\\quad$ input is $r(t)=\\alpha t u(t)$\n\n$R(s)=\\frac{\\alpha}{s^{2}}$\n\nFrom the figure,\n\n$G(s) H(s)=\\frac{K}{s(s+2)}$\n\nNow steady state error for Ramp input is\n\n$e_{s s} =\\frac{\\alpha}{K_{v}}, \\text { where } \\alpha \\text { is the magnitude of Ramp input }$\n\n$$\\begin{aligned}\n\nK_{v} & =\\lim _{s \\rightarrow 0}[s G(s) H(s)] \\\\\n\nK_{v} & =\\lim _{s \\rightarrow 0}\\left[\\frac{s \\times K}{s(s+2)}\\right]=\\frac{K}{2}\\\\\n\n\\therefore \\quad e_{s s} & =\\frac{\\alpha \\times 2}{K} \\\\\n\ne_{s s} & =\\frac{2 \\alpha}{K}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q32": {
       "question_uid": "ec:2023:q32",
@@ -1469,8 +1438,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-f4b53ce197.webp\" />\n\n$Y(s)=\\underbrace{G_{1}(s) R(s)}_{Y_{1}(s)}+\\underbrace{G_{2}(s) D(s)}_{Y_{2}(s)}$\n\nConsidering first $R(s)$ only, then $Y(s)$ is $Y_{1}(s)$\n\n<img src=\"/question-images/ec/2023/ec-2023-cef413bb5c.webp\" />\n\n<img src=\"/question-images/ec/2023/ec-2023-6f23e51717.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{Y_{1}(s)}{R(s)}&=\\frac{\\frac{G(s)}{1+G(s) H(s)}}{1+\\frac{G(s)}{1+G(s) H(s)}} \\\\\n\n\\frac{Y_{1}(s)}{R(s)}&=\\frac{G(s)}{1+G(s) H(s)+G(s)} \\\\\n\nY_{1}(s)&=\\left[\\frac{G(s)}{1+G(s)+G(s) H(s)}\\right] R(s) \\\\\n\nG_{1}(s)&=\\frac{G(s)}{1+G(s)+G(s) H(s)}\n\n\\end{aligned}$$\n\nNow considering $D(s)$ only, then $Y(s)$ is $Y_{2}(s)$\n\n<img src=\"/question-images/ec/2023/ec-2023-3db1c6ab8b.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{Y_{2}(s)}{D(s)} & =\\frac{G(s)}{1+G(s)[1+H(s)]} \\\\\n\nY_{2}(s) & =\\left[\\frac{G(s)}{1+G(s)+G(s) H(s)}\\right] D(s) \\\\\n\nG_{2}(s) & =\\frac{G(s)}{1+G(s)+G(s) H(s)}\n\n\\end{aligned}$$\n\nHence, $G_{1}(s)$ and $G_{2}(s)$ both are equal.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q33": {
       "question_uid": "ec:2023:q33",
@@ -1513,11 +1481,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linear State-Space Systems & Matrix Exponential",
+        "concept": "Engineering Mathematics (EC) - Linear Algebra",
         "markdown": "- **Given Homogeneous State Equation:**\n  - Consider the autonomous linear continuous-time system:\n    $$\\dot{x}(t) = A x(t), \\quad x(0) = x_0$$\n    where $A \\in \\mathbb{R}^{2 \\times 2}$ has two distinct eigenvalues $\\lambda_1 \\neq \\lambda_2$ and corresponding linearly independent eigenvectors $v_1, v_2$.\n\n- **Analytical State Solution via Modal Decomposition:**\n  - The general solution of the vector differential equation is:\n    $$x(t) = e^{At} x(0)$$\n  - Because $A$ has distinct eigenvalues, the eigenvectors $\\{v_1, v_2\\}$ form a complete basis for $\\mathbb{R}^2$. The initial condition $x(0)$ can be uniquely expanded as a linear combination of the eigenvectors:\n    $$x(0) = \\alpha_1 v_1 + \\alpha_2 v_2$$\n    for scalar coefficients $\\alpha_1, \\alpha_2$.\n  - By definition of eigenvectors, $A v_i = \\lambda_i v_i$, which implies that for any integer power $k$, $A^k v_i = \\lambda_i^k v_i$.\n  - Expanding the matrix exponential in its Taylor series:\n    $$e^{At} v_i = \\left(I + At + \\frac{A^2 t^2}{2!} + \\dots\\right) v_i = \\left(1 + \\lambda_i t + \\frac{\\lambda_i^2 t^2}{2!} + \\dots\\right) v_i = e^{\\lambda_i t} v_i$$\n  - Applying the matrix exponential to the modal expansion of $x(0)$:\n    $$x(t) = e^{At} (\\alpha_1 v_1 + \\alpha_2 v_2) = \\alpha_1 e^{At} v_1 + \\alpha_2 e^{At} v_2 = \\alpha_1 e^{\\lambda_1 t} v_1 + \\alpha_2 e^{\\lambda_2 t} v_2 = \\sum_{i=1}^{2} \\alpha_i e^{\\lambda_i t} v_i$$\n\n- **Distractor Analysis:**\n  - Options B, C, and D introduce unphysical scaling factors ($2\\lambda_i, 3\\lambda_i, 4\\lambda_i$) in the exponent, which violate $\\frac{d}{dt}(e^{\\lambda_i t} v_i) = \\lambda_i e^{\\lambda_i t} v_i = A(e^{\\lambda_i t} v_i)$.\n\nTherefore, the correct answer is **Option A ($\\sum_{i=1}^{2} \\alpha_{i} e^{\\lambda_{i} t} v_{i}$)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q34": {
       "question_uid": "ec:2023:q34",
@@ -1562,8 +1529,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "At $t=0^{-} ; S_{1} \\rightarrow$ closed, $S_{2} \\rightarrow$ opened\n\n<img src=\"/question-images/ec/2023/ec-2023-580d5bff9c.webp\" />\n\n$$\\begin{aligned}\n\ni_{L}\\left(0^{-}\\right)&=\\frac{1 \\times 25}{100+25}=0.2 \\mathrm{~A} \\\\\n\nv_{C}\\left(0^{-}\\right)&=\\frac{1}{5} \\times 100=20 \\mathrm{~V}\n\n\\end{aligned}$$\n\nAt $t=0^{+} ; S_{1} \\rightarrow$ opened, $S_{2} \\rightarrow$ closed\n\n<img src=\"/question-images/ec/2023/ec-2023-79c57edaf8.webp\" />\n\n$$\\begin{aligned}\n\ni_{x} & =\\frac{20}{25}=\\frac{4}{5} \\mathrm{~A}=0.8 \\mathrm{~A} \\\\\n\n\\text{By KCL:  }-i_{c} & =i_{x}+0.2=0.8+0.2 \\\\\n\n\\Rightarrow \\quad i_{c} & =-1 \\mathrm{~A}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q35": {
       "question_uid": "ec:2023:q35",
@@ -1608,8 +1574,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communication Systems",
         "markdown": "$x(t)=A \\cos \\left[\\omega_{c} t+K_{f} \\int_{-\\infty}^{t} m(\\lambda) d \\lambda\\right]$\n\nB.W. $[x(t)] \\rightarrow B T=2[\\Delta f+\\omega]$\n\n<img src=\"/question-images/ec/2023/ec-2023-5d6831a55c.webp\" />\n\n$$\\left.x^{2}(t) \\rightarrow \\begin{array}{c}\n\n\\Delta f^{\\prime}=2 \\Delta f \\\\\n\n\\omega_{c}^{\\prime}=2 \\omega_{c}\n\n\\end{array}\\right\\}$$\n\n<img src=\"/question-images/ec/2023/ec-2023-e478abedbc.webp\" />\n\n$\\mathrm{BW}\\left[x^{2}(t)\\right]=2\\left[\\Delta f^{\\prime}+\\omega\\right]$\n\n$=2[2 \\Delta f+\\omega]=B T+2 \\Delta f$\n\n$y(t)=2x(t)+5x^2(t)$\n\n<img src=\"/question-images/ec/2023/ec-2023-9845f65a24.webp\" />\n\nTo recover $x(t) \\rightarrow \\quad 2 \\omega_{C}-\\frac{B_{T}}{2}-\\Delta f \\gt \\omega_{C}+\\frac{B_{T}}{2}$\n\n$\\omega_{c} \\gt \\Delta f+B T$\n\n$\\omega_{c} \\gt \\Delta f+2 \\Delta f+2 \\omega$\n\n$\\omega_{c} \\gt 3 \\Delta f+2 \\omega$\n\n$\\omega_{c} \\gt \\frac{3}{2}\\{2[\\Delta f+\\omega]\\}-\\omega$\n\n$\\omega_{c} \\gt \\frac{3}{2} B_{T}-\\omega$\n\nCompared to FM BW, message BW is very small. So, that it can be ignored.\n\n$$\\begin{aligned}\n\n\\omega_{C} & \\gt \\frac{3}{2} B_{T} \\\\\n\n\\left[\\omega_{C}\\right]_{min } & =\\frac{3}{2} B_{T}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:q36": {
       "question_uid": "ec:2023:q36",
@@ -1654,8 +1619,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "Dependent current source should have $h_{21} I_{1}$ instead of $h_{21} V_{1}$ according to $h$-parameter.\n\n$A_{V}=\\frac{V_{\\text {out }}}{V_{s}}=\\frac{-h_{21} I_{1} \\times\\left(\\frac{1}{h_{22}} \\| R_{L}\\right)}{h_{11} I_{1}+h_{12} V_{2}}$\n\nTo achieve maximum $\\frac{V_{\\text {out }}}{V_{s}}$\n\n$$\\begin{aligned}\n\n& h_{11}=0, \\quad h_{12}=0 \\\\\n\n& h_{21}=\\text { Very high, } \\quad h_{22}=0\n\n\\end{aligned}$$\n\nHence, answer should be (A) according to $h_{21} I_{1}$.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q37": {
       "question_uid": "ec:2023:q37",
@@ -1700,8 +1664,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "Let, $I=\\sum_{n=0}^{4} x(n) \\sin \\frac{4 \\pi n}{5}$\n\n$$\\begin{aligned}\n\n& =\\frac{1}{2 j} \\sum_{n=0}^{4} x(n) \\cdot\\left[e^{j \\frac{4 \\pi n}{5}}-e^{-j \\frac{4 \\pi n}{5}}\\right] \\\\\n\n& =\\frac{1}{2 j}\\left[\\sum_{n=0}^{4} x(n) e^{j \\frac{4 \\pi n}{5}}-\\sum_{n=0}^{4} x(n) \\cdot e^{-j \\frac{4 \\pi n}{5}}\\right]  \\quad (i)\n\n\\end{aligned}$$\n\nAs we know, $\\quad a_{k}=\\frac{1}{N} \\sum_{n=0}^{4} x(n) \\cdot e^{-j k \\cdot \\frac{2 \\pi}{N} n}$\n\n$=\\frac{1}{5} \\sum_{n=0}^{4} x(n) \\cdot e^{-j \\frac{2 \\pi}{N} k n}$\n\nPut $K=2 ; \\quad a_{2}=\\frac{1}{5} \\sum_{n=0}^{4} x(n) \\cdot e^{-j \\frac{4 \\pi n}{5}}$\n\nPut $K=-2 ; \\quad a_{-2}=\\frac{1}{5} \\sum_{n=0}^{4} x(n) \\cdot e^{j \\frac{4 \\pi n}{5}}$\n\nFrom equation (i),\n\n$$\\begin{aligned}\n\nI&=\\frac{1}{2 j}\\left[5 a_{-2}-5 a_{2}\\right]\n\n& =\\frac{5}{2 j}\\left[a_{3}-a_{2}\\right] \\\\\n\nI & =\\frac{5}{2 j}[-2 j-2 j]=-10\n\n\\end{aligned}$$\n\n$$\\begin{array}{rl}\n\na_{-2} & =a_{-2+N} \\\\\n\n\\because \\quad & =a_{-2+5} \\\\\n\n& =a_{3}\n\n\\end{array}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q38": {
       "question_uid": "ec:2023:q38",
@@ -1746,8 +1709,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - DTFS, DTFT and DFT",
         "markdown": "$$\\begin{aligned}\n\ny[n] & =x[n] * h[n] \\\\\n\nY\\left(e^{j \\Omega}\\right) & =X\\left(e^{j \\Omega}\\right) H\\left(e^{j \\Omega}\\right) \\\\\n\n& =\\left[1-e^{-j \\Omega}+2 e^{-3 j \\Omega}\\right]\\left[1-\\frac{1}{2} e^{-2 j \\Omega}\\right] \\\\\n\n& =1-e^{-j \\Omega}+2.5 e^{-3 j \\Omega}-0.5 e^{-j 2 \\Omega}-e^{-j 5 \\Omega}\n\n\\end{aligned}$$\n\nTaking IDTFT;\n\n$y[n]=\\delta[n]-\\delta[n-1]-0.5 \\delta[n-2]+2.5 \\delta[n-3]-\\delta[n-5]$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:q39": {
       "question_uid": "ec:2023:q39",
@@ -1792,8 +1754,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "Given $h(t)$ is Real and Even. When sinusoidal input applied to LTI system having even impulse response, then output will also be sinusoidal.\n\nhere,\n\n$y(t)=\\left.H(W)\\right|_{W=10.5 W} \\cdot 10 \\cos (10.5 W t)$\n\nlet,\n\n$h(t)=f(t) \\cos 10 W t$\n\nwhere, $f(t)=\\pi\\left(\\frac{\\sin W t}{\\pi t}\\right)^{2}$\n\n<img src=\"/question-images/ec/2023/ec-2023-516f37c596.webp\" />\n\nNow;\n\n$H(W)=\\frac{1}{2}[F(W+10 W)+F(W-10 W)]$\n\n<img src=\"/question-images/ec/2023/ec-2023-c8040d1aef.webp\" />\n\n$\\left.\\therefore \\quad H(W)\\right|_{W=10.5 W}=\\frac{3}{8} W$\n\nHence,\n\n$$\\begin{aligned}\n\ny(t) & =\\left(\\frac{3}{8} W\\right)(10 \\cos 10.5 W t) \\\\\n\n& =\\frac{15}{4} W \\cos 10.5 W t\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q40": {
       "question_uid": "ec:2023:q40",
@@ -1838,8 +1799,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
         "markdown": "Given that, $x_{1}(t)$ and $x_{2}(t)$ are two bandlimited signals having bandwidth $B=4 \\pi \\times 10^{3} \\mathrm{rad} / \\mathrm{sec}$.\n\n<img src=\"/question-images/ec/2023/ec-2023-fa27391e0b.webp\" />\n\nand $y(t)=x_{2}(t) \\cos \\left(12 \\pi \\times 10^{3} t\\right)+x_{1}(t) \\cos \\left(4 \\pi \\times 10^{3} t\\right)$\n\n<img src=\"/question-images/ec/2023/ec-2023-f113e2d4f9.webp\" />\n\nSo, $\\text{Nyquist Rate }=2\\omega _{max}=2[16 \\pi \\times 10^3]=32 \\pi \\times 10^3\\; rad/sec$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2023:q41": {
       "question_uid": "ec:2023:q41",
@@ -1884,8 +1844,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "Let us evaluate $S_{11}$ and $S_{21}$ first at $V_{2}^{+}=0$\n\n<img src=\"/question-images/ec/2023/ec-2023-8631ce58e8.webp\" />\n\n(A) $S11:$\n\n$$\\begin{aligned}\n\nV_{1}&=V_{1}^{+}+V_{1}^{-}=\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}}+\\left(V_{1}^{-}\\right) e^{+j \\beta l_{1}} \\\\\n\n\\therefore \\quad V_{1}^{+}&=\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}} \\\\\n\nV_{1}^{-}&=\\left(V_{1}^{-}\\right) e^{+j \\beta l_{1}} \\\\\n\nS_{11}&=\\frac{V_{1}^{-}}{V_{1}^{+}}=\\frac{\\left(V_{1}^{-}\\right) e^{+j \\beta l_{1}}}{\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}}}=S_{11}^{\\prime} e^{+j 2 \\beta l_{1}} \\\\\n\n\\Rightarrow \\quad S_{11}^{\\prime}&=S_{11} e^{-j 2 \\beta l_{1}}=S_{11} e^{-j 2 \\theta_{1}} \\\\\n\n\\therefore \\quad S_{11}^{\\prime}&=S_{11} e^{-j 2 \\theta_{1}}\n\n\\end{aligned}$$\n\n(B) $S_{21}$ :\n\n$V_{2}=V_{2}^{+} e^{+j \\beta l_{2}}+V_{2}^{-} e^{-j \\beta l_{2}}=\\left(V_{2}^{+}\\right)^{\\prime}+\\left(V_{2}^{-}\\right)^{\\prime}$\n\nHere, $V_{2}^{+}=0$\n\nHence,\n\n$V_{2}=\\left(V_{2}^{-}\\right)^{\\prime}=V_{2}^{-} e^{-j \\beta l_{2}}$\n\n$\\Rightarrow  \\quad\n\nV_{2}^{-}=\\left(V_{2}^{-}\\right)^{\\prime} e^{+j \\beta l_{2}}$\n\nFrom previous discussion in $S_{11}$,\n\n$$\\begin{aligned}\n\nV_{1}^{+}&=\\left(V_{1}^{+}\\right) e^{-j l_{1}} \\\\\n\n\\therefore  \\quad S_{21}&=\\frac{V_{2}^{-}}{V_{1}^{+}}=\\frac{\\left(V_{2}^{-}\\right)^{\\prime} e^{+j \\beta l_{2}}}{\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}}}=S_{21}^{\\prime} e^{+j\\left(\\beta l_{2}+\\beta l_{1}\\right)} \\\\\n\n\\Rightarrow S_{21}^{\\prime}&=S_{21} e^{-j\\left(\\beta l_{2}+\\beta l_{1}\\right)} \\\\\n\n\\Rightarrow \\quad  S_{21}^{\\prime}&=S_{21} e^{-j\\left(\\theta_{1}+\\theta_{2}\\right)}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:q42": {
       "question_uid": "ec:2023:q42",
@@ -1930,8 +1889,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "Given $S=2, Z_{\\min }=10 \\mathrm{~cm}, Z_{0}=50 \\Omega$\n\nAs we know that, $\\quad|\\Gamma|=\\frac{S-1}{S+1}=\\frac{2-1}{2+1}=\\frac{1}{3}$\n\nNow, distance between successive voltage minima $=30 \\mathrm{~cm}$\n\n$\\Rightarrow \\quad \\frac{\\lambda}{2}=30 \\mathrm{~cm}$\n\n$\\Rightarrow \\quad \\lambda=60 \\mathrm{~cm}$\n\nAlso, for minima,\n\n$2 \\beta Z_{\\min }=(2 n+1) \\pi+\\theta_{\\Gamma}$\n\nAt $n=0,1 \\mathrm{st}$ minima, $Z_{\\text {min }}=10 \\mathrm{~cm}$\n\n$\\frac{4 \\pi}{\\lambda} Z_{\\min }=\\pi+\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\frac{4 \\pi}{60} * 10=\\pi+\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\frac{2 \\pi}{3}-\\pi=\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\theta_{\\Gamma}=\\frac{-\\pi}{3} \\quad \\therefore \\Gamma=\\frac{1}{3} \\angle-60^{\\circ}$\n\nNow,\n\n$\\Gamma=\\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}$\n\n<img src=\"/question-images/ec/2023/ec-2023-5073749f58.webp\" />\n\n$$\\begin{array}{ll}\\Rightarrow \\quad & Z_{L}=Z_{0}\\left[\\frac{1+\\Gamma}{1-\\Gamma}\\right] \\\\ \\Rightarrow & Z_{L}=50\\left[\\frac{1+0.33 e^{-j \\frac{\\pi}{3}}}{1-0.33 e^{-j \\frac{\\pi}{3}}}\\right]\\end{array}$$\n\n$\\Rightarrow \\quad Z_{L}=67.97 \\angle-32.67^{\\circ}$\n\nNow $Z_{\\text {in }}=Z_{0}\\left[\\frac{Z_{L}+j Z_{0} \\tan \\beta l}{Z_{0}+j Z_{L} \\tan \\beta l}\\right]$\n\n$\\Rightarrow \\quad Z_{\\text {in }}=50\\left[\\frac{R_{m}+j 50 \\tan \\beta l_{m}}{50+j R_{m} \\tan \\beta l_{m}}\\right]$\n\nHere, $\\quad Z_{\\text {in }}=Z_{L}=67.97 \\angle-32.67^{\\circ}$\n\nGoing through options,\n\n$$\\left.\\begin{array}{l}R_{m}=100 \\Omega \\text { and } L_{m}=5 \\mathrm{~cm} \\\\ R_{m}=25 \\Omega \\text { and } L_{m}=20 \\mathrm{~cm}\\end{array}\\right\\}$$ satisfy this identity, hence option (B) and (C) are correct.\n\nTherefore, the correct option(s) are **B, C**."
-      },
-      "answer": "B, C"
+      }
     },
     "ec:2023:q43": {
       "question_uid": "ec:2023:q43",
@@ -1976,8 +1934,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Uniform Plane Waves",
         "markdown": "Given, $\\quad \\vec{E}=\\hat{a}_{x} C_{1 x} \\cos (\\omega t-\\beta z)+\\hat{a}_{y} C_{1 y} \\cos (\\omega t-\\beta z+\\theta)$\n\nat $z=0$\n\n$\\vec{E}=C_{1 x} \\cos \\omega t \\hat{a}_{x}+C_{1 y} \\cos (\\omega t+\\theta) \\hat{a}_{y}$\n\nGoing by options,\n\nOption (A) $\\quad \\vec{E}=\\cos \\omega t \\hat{a}_{x}+\\cos (\\omega t+\\pi / 4) \\hat{a}_{y}$\n\nat $t=0, \\omega t=0, \\vec{E}=\\hat{a}_{x}+\\frac{1}{\\sqrt{2}} \\hat{a}_{y}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=0-\\frac{1}{\\sqrt{2}} \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is LHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-ed3f3f2b0c.webp\" />\n\nOption (B) $\\quad \\vec{E}=2 \\cos \\omega t \\hat{a}_{x}+\\cos (\\omega t+\\pi / 2) \\hat{a}_{y}$\n\nat $t=0, \\omega t=0, \\vec{E}=2 \\hat{a}_{x}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=-1 \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is LHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-56fd1c1b9a.webp\" />\n\nOption (C) $\\quad \\vec{E}=\\cos \\omega t \\hat{a}_{x}+2 \\cos (\\omega t+3 \\pi / 2) \\hat{a}_{y}$\n\nat $t=0, \\quad \\quad \\omega t=0, \\vec{E}=\\hat{a}_{x}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=2 \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is RHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-960bca57a6.webp\" />\n\nOption (D) $\\quad \\vec{E}=2 \\cos \\omega t \\hat{a}_{x}+\\cos (\\omega t+3 \\pi / 4) \\hat{a}_{y}$\n\nat $t=0, \\omega t=0, \\vec{E}=2 \\hat{a}_{x}-\\frac{1}{\\sqrt{2}} \\hat{a}_{y}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=0-\\frac{1}{\\sqrt{2}} \\hat{a}_{y}=\\frac{-1}{\\sqrt{2}} \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is LHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-58db51f392.webp\" />\n\n$\\therefore$ Option (A), (B) and (D) are correct.\n\nTherefore, the correct option(s) are **A, B, D**."
-      },
-      "answer": "A, B, D"
+      }
     },
     "ec:2023:q44": {
       "question_uid": "ec:2023:q44",
@@ -2020,11 +1977,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electromagnetics - Lumped Element Transmission Line Models",
+        "concept": "Electromagnetics - Transmission Lines",
         "markdown": "- **Transmission Line Equations & Parameters:**\n  - For an infinitesimal length $\\Delta z$ of a two-conductor transmission line, the per-unit-length distributed parameters are:\n    - Series resistance: $R$ ($\\Omega/\\text{m}$), producing total series resistance $R \\Delta z$.\n    - Series inductance: $L$ ($\\text{H/m}$), producing total series inductance $L \\Delta z$.\n    - Shunt conductance: $G$ ($\\text{S/m}$), producing total shunt conductance $G \\Delta z$.\n    - Shunt capacitance: $C$ ($\\text{F/m}$), producing total shunt capacitance $C \\Delta z$.\n  - As $\\Delta z \\to 0$, any valid lumped-element circuit representation must yield the standard telegrapher's equations:\n    $$-\\frac{\\partial v}{\\partial z} = R i + L \\frac{\\partial i}{\\partial t}, \\quad -\\frac{\\partial i}{\\partial z} = G v + C \\frac{\\partial v}{\\partial t}$$\n\n- **Evaluation of Equivalent Circuit Topologies:**\n  - **Circuit (a):**\n    - Features a shunt capacitance $C \\Delta z / 2$ at the input and a separate shunt conductance $G \\Delta z / 2$ at the output. It separates $C$ and $G$ into isolated halves rather than putting them in parallel across the line, failing to provide the proper total shunt admittance $(G + j\\omega C)\\Delta z$. Thus, **Circuit (a) is invalid**.\n  - **Circuit (b) (L-Section):**\n    - Consists of a parallel shunt branch $(G \\Delta z \\parallel C \\Delta z)$ followed by a series branch $(R \\Delta z + L \\Delta z)$.\n    - Applying KVL and KCL across the section and taking the limit $\\Delta z \\to 0$ recovers the exact telegrapher's equations. Thus, **Circuit (b) is valid**.\n  - **Circuit (c) (Symmetric $\\Pi$-Section):**\n    - Features a series impedance branch $(R \\Delta z + L \\Delta z)$ flanked on each side by half-shunt admittances $(G \\Delta z / 2 \\parallel C \\Delta z / 2)$.\n    - Total shunt admittance is $\\frac{Y}{2} + \\frac{Y}{2} = Y = (G + j\\omega C)\\Delta z$. Taking $\\Delta z \\to 0$ exactly converges to the transmission line differential equations. Thus, **Circuit (c) is valid**.\n  - **Circuit (d) (Symmetric T-Section):**\n    - Features two half-series impedances $(R \\Delta z / 2 + L \\Delta z / 2)$ on each side of a central full shunt branch $(G \\Delta z \\parallel C \\Delta z)$.\n    - Total series impedance is $\\frac{Z}{2} + \\frac{Z}{2} = Z = (R + j\\omega L)\\Delta z$. Taking $\\Delta z \\to 0$ exactly converges to the transmission line differential equations. Thus, **Circuit (d) is valid**.\n\nTherefore, the correct options are **B, C, and D**.",
         "images": []
-      },
-      "answer": "B, C, D"
+      }
     },
     "ec:2023:q45": {
       "question_uid": "ec:2023:q45",
@@ -2067,8 +2023,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-5c43f95e33.webp\" />\n\n$$\\begin{aligned}\n\nI & =\\iint_{R} x y d x d y \\\\\n\n& =\\int_{y=0}^{1} \\int_{x=-y}^{y} x y d x d y+\\int_{y=1}^{2} \\int_{x=y-2}^{2-y} x y d x d y \\\\\n\n& =\\int_{0}^{1} y\\left(\\frac{x^{2}}{2}\\right)_{-y}^{y} d y+\\int_{1}^{2} y\\left(\\frac{x^{2}}{2}\\right)_{y-2}^{2-y} d y \\\\\n\n& =0+0=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ec:2023:q46": {
       "question_uid": "ec:2023:q46",
@@ -2111,8 +2066,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "Given, intrinsic carrier concentration $n_{i}=1 \\times 10^{10} \\mathrm{~cm}^{-3}$\n\nHole concentration,\n\n$\\quad p=1.5 \\times n_{i}$\n\n$p=1.5 \\times 10^{10} \\mathrm{~cm}^{-3}$\n\nGiven, electron and hole current are equal\n\n$$\\begin{aligned}\n\nI_{p \\text { dritt }} & =I_{n \\text { dritt }} \\\\\n\np q \\mu_{p} E A & =n q \\mu_{n} E A \\\\\n\n1.5 \\times 10^{10} \\mu_{p} & =n \\mu_{n} \\quad ...(i)\n\n\\end{aligned}$$\n\nBut according to mass action law,\n\n$$\\begin{aligned}\n\nn p & =n_{i}^{2} \\\\\n\nn & =\\frac{n_{i}}{1.5}=\\frac{10^{10}}{1.5} \\mathrm{~cm}^{-3}\n\n\\end{aligned}$$\n\nPut in equation (i)\n\n$\\therefore \\quad 1.5 \\times 10^{10} \\mu_{p}=\\frac{10^{10}}{1.5} \\times \\mu_{n}$\n\n$\\frac{\\mu_{n}}{\\mu_{p}}=2.25$\n\nTherefore, the correct answer is **2.25** (acceptable range: [2.2, 2.3])."
-      },
-      "answer": "2.25"
+      }
     },
     "ec:2023:q47": {
       "question_uid": "ec:2023:q47",
@@ -2155,8 +2109,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "From the Bode magnitude plot, it is clear that there is one pole at origin,\n\n$\\therefore$ $b=1$\n\nand at frequency\n\n$\\omega_{1}$, system has a zero\n\n$\\therefore$ $a=1$\n\nand at frequency\n\n$\\omega_{2}$, system has a two poles\n\n$$\\begin{aligned}\n\n\\therefore \\quad c&=2 \\\\\n\n\\therefore \\quad a+b+c&=1+1+2 \\\\\n\na+b+c&=4\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4**."
-      },
-      "answer": "4"
+      }
     },
     "ec:2023:q48": {
       "question_uid": "ec:2023:q48",
@@ -2199,8 +2152,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
         "markdown": "$x_{1}(t)=u(t+1.5)-u(t-1.5)$\n\n<img src=\"/question-images/ec/2023/ec-2023-be31fcbe10.webp\" />\n\n$]\\Rightarrow x_1(t)=rect\\left ( \\frac{t}{3} \\right )$\n\n$] x_1(t)=rect\\left ( \\frac{t}{3} \\right )  \\overset{FT}{\\leftrightarrow} 3Sa(1.5\\omega )$\n\nNow,\n\n$x_{2}(t)=\\delta(t+3)+\\operatorname{rect}\\left(\\frac{t}{2}\\right)+2 \\delta(t-2)$\n\nTaking Fourier transform\n\n$$\\begin{aligned}\n\nX_{2}(\\omega) & =e^{3 j \\omega}+2 S a(\\omega)+2 e^{-2 j \\omega} \\\\\n\ny(t) & =x_{1}(t) * x_{2}(t) \\\\\n\nY(\\omega) & =X_{1}(\\omega) \\cdot X_{2}(\\omega) \\\\\n\nY(\\omega) & =\\int_{-\\infty}^{\\infty} y(t) \\cdot e^{-j \\omega t} \\cdot d t\n\n\\end{aligned}$$\n\nWe know\n\n$\\therefore \\quad \\int_{-\\infty}^{\\infty} y(t)=Y(0)$\n\n$\\therefore \\quad Y(0)=X_{1}(0) \\cdot X_{2}(0)$\n\n$=3[1+2+2]=15$\n\nTherefore, the correct answer is **15**."
-      },
-      "answer": "15"
+      }
     },
     "ec:2023:q49": {
       "question_uid": "ec:2023:q49",
@@ -2243,8 +2195,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-90bf7e3aee.webp\" />\n\n$h(t)=e^{-t} u(t)$\n\nGiven: Input PSD\n\n$\\Rightarrow \\quad S_{x}(f)=\\frac{1}{2} \\mathrm{~W} / \\mathrm{Hz}$\n\nWe know output PSD,\n\n$$\\begin{aligned}\n\nS_{Y}(f) & =S_{X}(f)|H(f)|^{2} \\\\\n\nS_{Y}(f) & =\\frac{1}{2}|H(f)|^{2} \\\\\n\n\\text { Power }[y(t)] & =\\int_{-\\infty}^{\\infty} S_{Y}(f) d f=\\int_{-\\infty}^{\\infty} \\frac{1}{2}|H(f)|^{2} d f \\\\\n\n& =\\frac{1}{2} \\int_{-\\infty}^{\\infty} h^{2}(t) d t=\\frac{1}{2} \\int_{0}^{\\infty} e^{-2 t} d t \\\\\n\n& =\\frac{1}{2} \\times \\frac{1}{2}=\\frac{1}{4}=0.25 \\mathrm{~W}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
-      },
-      "answer": "0.25"
+      }
     },
     "ec:2023:q50": {
       "question_uid": "ec:2023:q50",
@@ -2287,8 +2238,7 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
         "markdown": "For no reflection, impedance must be matched.\n\nHence, $\\eta_{2}$ acts like a quarter wave impedance transformer.\n\n<img src=\"/question-images/ec/2023/ec-2023-60c7205614.webp\" />\n\nSo,\n\n$(i) \\quad \\eta_{2}=\\sqrt{\\eta_{1} \\cdot \\eta_{3}} \\Rightarrow \\epsilon_{r_{2}}=\\sqrt{\\epsilon_{r_{1}} \\cdot \\epsilon_{r_{3}}} \\Rightarrow \\epsilon_{r_{2}}=2$\n\n(ii) For impedance matching,\n\n$$\\begin{aligned}\n\n& d=(2 n+1) \\frac{\\lambda}{4} ; n=0,1,2 \\ldots \\\\\n\n& \\lambda=\\frac{\\lambda_{0}}{\\sqrt{\\epsilon_{r}}}=\\frac{\\lambda_{0}}{\\sqrt{\\epsilon_{r_{2}}}} \\\\\n\nHere \\;\\;& \\lambda=\\frac{0.75 \\times 10^{-6}}{\\sqrt{2}}=0.53 \\times 10^{-6}\n\n\\end{aligned}$$\n\nHence, for minimum distance, $n=0$\n\nSo,\n\n$d=\\frac{\\lambda}{4}=\\frac{0.53 \\times 10^{-6}}{4}=0.133 \\mu \\mathrm{m}$\n\nTherefore, the correct answer is **0.13** (acceptable range: [0.12, 0.14])."
-      },
-      "answer": "0.13"
+      }
     },
     "ec:2023:q51": {
       "question_uid": "ec:2023:q51",
@@ -2331,8 +2281,7 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "Given,\n\n$E_{F}-E_{V}=0.35 \\mathrm{eV} \\quad \\text { [Considering it is given at } 400 \\mathrm{~K} \\text { ] }$\n\nAlso,\n\n$V_{T_{1}}=K T_{1}=0.026 \\mathrm{eV}$ at $T_{1}=300 \\mathrm{~K}$\n\n$\\therefore$\n\n$\\frac{V_{T_{1}}}{V_{T_{2}}}=\\frac{T_{1}}{T_{2}} \\Rightarrow V_{T_{2}}=\\frac{T_{2}}{T_{1}} \\times V_{T_{1}}$\n\n$\\therefore$\n\n$V_{T_{2}}=\\frac{400}{300} \\times 0.026$\n\n$V_{T_{2}}=0.03466 \\mathrm{eV}$ at $T_{2}=400 \\mathrm{~K}$\n\nNow,\n\n$N_{v}=1 \\times 10^{19} / \\mathrm{cm}^{3}$ at $T_{1}=300 \\mathrm{~K}$\n\n$N_{v} \\propto T^{3 / 2}$\n\n$\\frac{N_{V_{2}}}{N_{V_{1}}}=\\left(\\frac{T_{2}}{T_{1}}\\right)^{3 / 2}$\n\n$N_{V_{2}}=\\left(\\frac{T_{2}}{T_{1}}\\right)^{3 / 2} N V_{1}$\n\n$\\left(\\because T_{2}=400 \\mathrm{~K}\\right)$\n\n$=\\left(\\frac{400}{300}\\right)^{3 / 2} N_{V_{1}}$\n\n$N_{V_{2}}=1.5396 \\times 10^{19} / \\mathrm{cm}^{3}$\n\nNow, hole concentration at $400 \\mathrm{~K}$ is given as\n\n$$\\begin{aligned}\n\n& p=N_{V} e^{-\\left(E_{F}-E_{V}\\right) / k T_{2}}=1.5396 \\times 10^{19} \\times e^{-0.35 \\mathrm{eV} / 0.03466 \\mathrm{eV}} \\\\\n\n& p=63.36 \\times 10^{13} \\mathrm{~cm}^{-3}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **65** (acceptable range: [60, 70])."
-      },
-      "answer": "65"
+      }
     },
     "ec:2023:q52": {
       "question_uid": "ec:2023:q52",
@@ -2375,8 +2324,7 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "Given: Time constant $(\\tau)$ of $1 \\mu \\mathrm{sec}$.\n\nFull scale voltage $=1 \\mathrm{~V}$\n\n<img src=\"/question-images/ec/2023/ec-2023-21f3740d94.webp\" />\n\nThe voltage across capacitor is given as\n\n$\\quad \\quad V_{c}(t)=V_{\\text {in }}\\left(1-e^{-t / \\tau}\\right)$\n\n$\\therefore \\quad V_{c}(t)=\\left(1-e^{-t / 1 \\mu \\mathrm{sec}}\\right) \\quad ...(i)$\n\nTo calculate the voltage to stay closed to charge capacitor adequately to a full scale voltage with 12-bit accuracy is given by\n\n$$\\begin{aligned}\n\nV_{c}(t) & =V_{\\text {ref }}\\left[1-\\frac{1}{2^{n}}\\right] \\\\\n\nn & =\\text { Number of bit }=12 \\\\\n\nV_{c}(t) & =\\left[1-\\frac{1}{4096}\\right] \\quad ...(ii)\n\n\\end{aligned}$$\n\nComparing equations (i) and (ii), we get,\n\n$$\\begin{aligned}\n\ne^{-t / 1 \\mu \\mathrm{sec}} & =\\frac{1}{4096} \\\\\n\n-\\frac{t}{1 \\mu \\mathrm{sec}} & =\\ln \\left\\{\\frac{1}{4096}\\right\\} \\\\\n\nt & =8.3177 \\mu \\mathrm{sec}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **8.32** (acceptable range: [8.3, 8.34])."
-      },
-      "answer": "8.32"
+      }
     },
     "ec:2023:q53": {
       "question_uid": "ec:2023:q53",
@@ -2419,8 +2367,7 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "$$\\begin{array}{|c|c|c|c|c|}\n\n\\hline\n\nClk & {D}_{\\mathbf{1}}=\\mathbf{Q}_{\\mathbf{2}}[ & D_{\\mathbf{2}}=\\overline{\\mathbf{Q}}_{\\mathbf{1}} & {Q}_{\\mathbf{1}} & {Q}_{\\mathbf{2}} \\\\\n\n\\hline\n\nInitial &  &  & 1 & 0 \\\\\n\n\\hline\n\n1 & 0 & 0 & 0 & 0 \\\\\n\n2 & 0 & 1 & 0 & 1 \\\\\n\n3 & 1 & 1 & 1 & 1 \\\\\n\n4 & 1 & 0 & 1 & 0 \\\\\n\n\\hline\n\n\\end{array}$$\n\nTherefore, the given counter is having MOD-4\n\n$\\therefore$ The frequency of signal $Q_{2}=\\frac{f_{i}}{4}=\\frac{1000}{4} \\mathrm{kHz}=250 \\mathrm{kHz}$\n\nTherefore, the correct answer is **250**."
-      },
-      "answer": "250"
+      }
     },
     "ec:2023:q54": {
       "question_uid": "ec:2023:q54",
@@ -2463,8 +2410,7 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "<img src=\"/question-images/ec/2023/ec-2023-11c51c98d8.webp\" />\n\nWe know,\n\n$$\\begin{aligned}\n\nI_{D} & \\propto\\left(\\frac{W}{L}\\right) \\\\\n\nI_{1} & =1 \\mathrm{~mA} \\\\\n\nI_{2} & =\\frac{10}{1} \\times 1=10 \\mathrm{~mA} \\\\\n\nI_{3} & =10 \\mathrm{~mA} \\\\\n\nI_{4} & =7 \\mathrm{~mA} \\\\\n\nI_{5} & =5 \\mathrm{~mA} \\\\\n\nI_{0} & =I_{4}-I_{5}=7-5=2 \\mathrm{~mA} \\\\\n\nV_{L} & =2 \\times 1=2 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ec:2023:q55": {
       "question_uid": "ec:2023:q55",
@@ -2507,8 +2453,7 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "The average number of questions when asked in the most efficient sequence, to determine the chosen symbol $=\\min$ possible number of questions per symbol $(H)$\n\n$H=\\sum_{i} P_{x}\\left(x_{i}\\right) \\log _{2} \\frac{1}{P_{x}\\left(x_{i}\\right)}\n\n=\\frac{1}{2} \\log _{2} 2+\\frac{1}{4} \\log _{2} 4+\\frac{1}{8} \\log _{2} 8+\\frac{1}{16} \\log _{2} 16+\\frac{1}{32} \\log _{2} 32+\\frac{1}{64} \\log _{2} 64+2 \\times \\frac{1}{128} \\log _{2} 128\n\n=1.984 \\frac{\\text { Questions }}{\\text { Symbol }}$\n\nTherefore, the correct answer is **1.98** (acceptable range: [1.97, 1.99])."
-      },
-      "answer": "1.98"
+      }
     },
     "ec:2023:ga:q1": {
       "question_uid": "ec:2023:ga:q1",
@@ -2550,11 +2495,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - Vocabulary & Confusable Words",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Sentence Context:** *\"I cannot support this proposal. My ______ will not permit it.\"*\n- **Word Definitions & Grammatical Roles:**\n  - **Conscience** (noun): an inner feeling or moral sense of right and wrong that guides one's conduct and ethical decisions. When one cannot morally endorse a proposal, it is one's *conscience* that forbids it. This fits the blank grammatically and semantically.\n  - **Conscious** (adjective): awake, aware of one's surroundings. As an adjective, it cannot function as the noun subject following the possessive determiner *\"My\"*.\n  - **Consensus** (noun): general agreement among a group of people. A single individual cannot refer to \"my consensus\".\n  - **Consent** (noun): permission or agreement given to someone else. Saying *\"my consent will not permit it\"* is redundant and idiomatically incorrect.\n\nTherefore, the correct answer is **Option C (conscience)**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:ga:q2": {
       "question_uid": "ec:2023:ga:q2",
@@ -2596,11 +2540,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - Analogies (Constitutional Organs of State)",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Analyzing the Analogy Structure:**\n  - The relationship is between a specific constitutional body/institution and its overarching functional branch of the state:\n    $$\\text{Parliament} : \\text{Legislature} :: \\text{Courts} : \\text{______}$$\n  - **Parliament** is the representative body that constitutes the **Legislature** (the organ responsible for enacting and passing statutory laws).\n  - Similarly, the **Courts** (Supreme Court, High Courts, subordinate judiciary) constitute the **Judiciary** (the organ responsible for interpreting laws, adjudicating disputes, and administering justice).\n\n- **Distractor Analysis:**\n  - **Executive:** The organ of state that implements and enforces laws (headed by the President, Cabinet, Prime Minister, civil services), not the courts.\n  - **Governmental:** A general descriptive adjective, not a specific functional branch.\n  - **Legal:** An adjective indicating accordance with the law, not a constitutional branch.\n\nTherefore, the correct answer is **Option A (Judiciary)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:ga:q3": {
       "question_uid": "ec:2023:ga:q3",
@@ -2644,8 +2587,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "The digits should be distinct and smallest number is 123456789.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:ga:q4": {
       "question_uid": "ec:2023:ga:q4",
@@ -2689,8 +2631,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Let students who like Romantic Movies $=R$.\n\nStudents who like Comedy Movies $=C$.\n\nGiven $R=2 C$\n\nAlso, 30 students do not like Romantic and Comedy Movies both.\n\n$$\\begin{aligned}\n\n\\therefore \\quad 100-30&=70=n(R \\cap C) \\\\\n\n\\text{and  } n(C \\cap R)&=20 \\\\\n\nn(R \\cap C)&=n(R)+n(C)-n(C \\cap R)\\\\\n\n70&=2 C+C-20\n\n3 C & =90 \\\\\n\nC & =30 \\\\\n\nR & =2 C=60\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:ga:q5": {
       "question_uid": "ec:2023:ga:q5",
@@ -2734,8 +2675,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Number of rectangles $=10$ as square is also called as rectangle.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ec:2023:ga:q6": {
       "question_uid": "ec:2023:ga:q6",
@@ -2779,8 +2719,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Since, the given function is an even function.\n\nOption (D) is only represents the even function.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ec:2023:ga:q7": {
       "question_uid": "ec:2023:ga:q7",
@@ -2824,8 +2763,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "The given function is odd function.\n\n\nProperty of odd function.\n\n\n\n$F(-x)=-f(x)$\n\n\nTherefore, option (B) is an odd function.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:ga:q8": {
       "question_uid": "ec:2023:ga:q8",
@@ -2867,11 +2805,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - Reading Comprehension & Inference",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Analyzing the Given Excerpt:**\n  - *\"When I was a kid, I was partial to stories about other worlds and interplanetary travel. I used to imagine that I could just gaze off into space and be whisked to another planet.\"*\n- **Tense & Perspective Markers:**\n  - The dependent clause *\"When I was a kid\"* explicitly indicates that the narrator is no longer a child.\n  - The habitual past phrase *\"I used to imagine\"* describes past actions and mental habits that are no longer actively occurring.\n  - Together, these linguistic markers establish that an **adult is reminiscing about their childhood preferences**.\n\n- **Distractor Analysis:**\n  - **Option A:** Incorrect because the speaker is speaking from the present perspective of an adult, not from that of a child.\n  - **Option C:** Misinterprets the idiom *\"partial to\"* (which means having a special fondness or predilection for) as reading stories \"only in parts\".\n  - **Option D:** A normative moral conclusion (\"stories are good for children\") that is not supported or addressed by the passage.\n\nTherefore, the correct answer is **Option B (It is an adult's memory of what he or she liked as a child)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ec:2023:ga:q9": {
       "question_uid": "ec:2023:ga:q9",
@@ -2913,11 +2850,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Quantitative Aptitude - Pooled Testing & Worst-Case Analysis",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Given Parameters:**\n  - Total population: $1000$ individuals.\n  - Number of covid-positive individuals: $100$.\n  - Group size for pooling: $5$ individuals per set.\n  - Initial pooled testing: $1000 / 5 = 200$ groups.\n\n- **Testing Procedure:**\n  1. Each group of $5$ has their samples pooled and tested once $\\implies 200$ tests.\n  2. If a pool tests negative, all $5$ members are declared negative (no further testing).\n  3. If a pool tests positive, all $5$ individuals in that pool are tested separately $\\implies 5$ additional tests for that group.\n\n- **Worst-Case Scenario (Maximum Testing Kits):**\n  - To maximize the number of tests required, the $100$ positive individuals must be spread across as many distinct groups as possible, so that each positive group contains only $1$ positive individual.\n  - This causes the maximum possible number of groups to test positive:\n    $$\\text{Maximum Positive Groups} = \\min(100, 200) = 100 \\text{ groups}$$\n  - For these $100$ positive groups, all $5$ individuals must be re-tested individually:\n    $$100 \\text{ groups} \\times 5 \\text{ tests/group} = 500 \\text{ tests}$$\n\n- **Total Testing Kits Required:**\n  $$\\text{Total Kits} = \\text{Initial Pooled Tests} + \\text{Individual Re-tests} = 200 + 500 = 700$$\n\nTherefore, no more than **700** testing kits will be required.\n\nTherefore, the correct answer is **Option A (700)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ec:2023:ga:q10": {
       "question_uid": "ec:2023:ga:q10",
@@ -2961,8 +2897,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$\\therefore$ After folding 5 times $=1+2^{1}+2^{2}+2^{3}+2^{4}=1+2+4+8+16=31$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     }
   }
 }

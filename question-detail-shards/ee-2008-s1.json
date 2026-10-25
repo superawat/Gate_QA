@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:37.181Z",
+  "generatedAt": "2026-10-25T18:50:27.089Z",
   "shardKey": "ee-2008-s1",
   "yearSetKey": "ee-2008-s1",
   "yearSetIdentity": "ee:2008:set-1",
@@ -55,8 +55,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-a7cc42f1db.webp\" />\n\nNumber of branches =b =6\n\nNo. of nodes = n= 4\n\nNo. of chords =b-(n-1) =6-(4-1)=3\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q2": {
       "question_uid": "ee:2008:q2",
@@ -104,8 +103,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Network Theorems",
         "markdown": "Thevenin's Impedance:\n\n$Z_0=2.38-j0.667\\Omega$\n\nas real part is not zero, so $Z_0$ has resistor\n\n$Img[Z_0]=-j0.667$\n\nCASE-I:\n\n$Z_0$ has capacitor (as $Img[Z_0]$ is negative)\n\nCASE-II:\n\n$Z_0$ has both capacitor and inductor, but inductive reactance $\\lt$ capacitive reactance.\n\nAt,  $\\omega$=5 rad/sec\n\nFor minimal realization case-I is considered. Therefore, $Z_0$  will have a resistor and a capacitor.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q3": {
       "question_uid": "ee:2008:q3",
@@ -150,8 +148,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q4": {
       "question_uid": "ee:2008:q4",
@@ -199,8 +196,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "x is uniformly distributes in [0,1]\n\nTherefore, probability density function\n\n$$\\begin{aligned} f(x)&=\\frac{1}{b-a} =\\frac{1}{1-0}=1\\\\ \\therefore \\; f(x) &=1\\;\\;\\;0 \\lt x \\lt 1 \\\\ &=0\\;\\;\\;\\text{elsewhere} \\\\ \\text{Now, } E(x^3)&=\\int_{0}^{1}x^3f(x)\\; dx \\\\ &= \\int_{0}^{1}x^3 \\times 1 \\times dx\\\\ &= \\left [ \\frac{x^4}{4} \\right ]_0^1=\\frac{1}{4} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q5": {
       "question_uid": "ee:2008:q5",
@@ -248,8 +244,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "If characteristic equation is\n\n$\\lambda ^3+\\lambda ^2+2\\lambda +1=0$\n\nThen by cayley- hamilton theorem,\n\n$P^3+P^2+2P+I=0$\n\n$I=-P^3-P^2-2P$\n\nMultiplying by $P^{-1}$ on both sides,\n\n$P^{-1}=-P^2-P-2I=-(P^2+P+2I)$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q6": {
       "question_uid": "ee:2008:q6",
@@ -297,8 +292,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "If rank of (5 x 6) matrix is 4, then surely it must have exactly 4 linearly independent rows as will as 4 linearly independent columns.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q7": {
       "question_uid": "ee:2008:q7",
@@ -346,8 +340,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
         "markdown": "Taking (L.T.) on both sides\n\n$Y(s)(s+1)=1$\n\n$\\therefore \\;\\; Y(s)=\\frac{1}{s+1}$\n\nTaking inverse laplace transform\n\n$y(t)=e^{-t}u(t)$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q8": {
       "question_uid": "ee:2008:q8",
@@ -395,8 +388,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-755e032a6d.webp\" />\n\n$V_P=\\frac{10}{10+10}\\times 10sin\\omega t$\n\n$\\;\\; =5sin\\omega t$\n\nSince maximum voltage across at the point P may be 5 V, hence voltage across the diode always will be less than or equal to zero. So it will be reversed always.\n\n$\\therefore V_0=\\frac{10}{10+10}\\times 10sin\\omega t=5sin\\omega t$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q9": {
       "question_uid": "ee:2008:q9",
@@ -444,8 +436,7 @@
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
         "markdown": "Single slope integrating type ADC utilize digital counter techniques to measure time required for a voltage ramp to rise from zero to the input voltage.\n\nIf conversion time for input voltage $5V=T_A$\n\nSo, conversion time for input voltage $2.5V=T_A/2$\n\nConversion time in successive type ADC does not depend on input voltage. So, conversion time for input voltage 2.5V is also $T_B$.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q10": {
       "question_uid": "ee:2008:q10",
@@ -490,8 +481,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q11": {
       "question_uid": "ee:2008:q11",
@@ -539,8 +529,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "Distribution factor in distributed winding  $k_d(n^{th} \\; \\text{harmonic})=\\frac{\\sin \\left ( \\frac{mn\\gamma }{2} \\right )}{m \\sin \\left ( \\frac{n\\gamma }{2} \\right )}$\n\n$k_d$ is always less than 1, so emf reduces.\n\nIf, $mn\\gamma /2$ is chosen in such a way that $\\sin (mn\\gamma /2)=0, n^{th}$ harmonic gets eliminated.\n\nSimilarly,\n\npitch factor $=k_p(n^{th} \\;\\text{harmonic}) = \\cos \\frac{n\\alpha }{2}$\n\n$k_p$ is always less than 1, so emf reduces.\n\nIf $n\\alpha /2$ is chosen in such a way that $\\cos \\frac{n\\alpha }{2}=0, n^{th}$ harmonic gets eliminated.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q12": {
       "question_uid": "ee:2008:q12",
@@ -588,8 +577,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
         "markdown": "Phasor diagram of primary and secondary voltage.\n\n<img src=\"/question-images/ee/2008/ee-2008-8e5774f704.webp\" />\n\nIt is observed from the phasor diagram that phase to a neutral voltage (equivalent star basis) on the delta side lags by $-30^{\\circ}$ to the phase to neutral voltage on the star side. This connection is known as $-30^{\\circ}$ connection or Yd1 connection.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q13": {
       "question_uid": "ee:2008:q13",
@@ -637,8 +625,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
         "markdown": "Detent torque: It is amount of torque that the motor produces when it is not energized. No current is flowing through the windings.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q14": {
       "question_uid": "ee:2008:q14",
@@ -686,8 +673,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
         "markdown": "As the ground distance relay is located at terminals x Impedance measured by the relay $=\\frac{\\text{Bus voltage}}{\\text{current}}=\\frac{V_a}{I_a}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q15": {
       "question_uid": "ee:2008:q15",
@@ -735,8 +721,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
         "markdown": "Wave length $=\\lambda$,\n\nPropogation constant $=\\beta$\n\n$$\\begin{aligned} \\lambda &= \\frac{2 \\pi}{\\beta }=\\frac{2 \\pi}{0.00127}\\\\ &= 4947.39km\\\\ \\text{Ratio} &=\\frac{\\text{ Line length}}{wave length} \\\\ &= \\frac{300 km}{4947.39km}\\\\ &=0.0606\\\\ \\% \\text{Ratio}&=6.06\\% \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q16": {
       "question_uid": "ee:2008:q16",
@@ -784,8 +769,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "Positive sequence impedance = Negative sequence impedance\n\n$=Z_s-Z_m=15 \\;\\;...(i)$\n\nZero-sequence impedance $=Z_s+2Z_m=48\\;\\;...(ii)$\n\nSolving equation (i) and (ii), we get,\n\n$Z_s=26\\Omega$ and $Z_m=11\\Omega$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q17": {
       "question_uid": "ee:2008:q17",
@@ -833,8 +817,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Miscellaneous",
         "markdown": "Impedance of the load\n\n$$\\begin{aligned} Z_L&= R_L+jX_L\\\\ &=50+j50 \\Omega \\\\ &=50\\sqrt{2}\\angle 45^{\\circ} \\\\ \\phi _L&=45^{\\circ} \\end{aligned}$$\n\nThe output voltage ($V_0$) is controllable when $\\alpha \\geq \\phi _L$, So for $0^{\\circ} \\lt \\alpha \\lt 45^{\\circ}$, output voltage is not controllable.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q18": {
       "question_uid": "ee:2008:q18",
@@ -882,8 +865,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "In 3-phase VSI working in $180^{\\circ}$ mode\n\n<img src=\"/question-images/ee/2008/ee-2008-115fbd5e5c.webp\" />\n\nPole voltage is a squre wave.\n\nTherefore 3rd harmonic is present in pole voltage.\n\n<img src=\"/question-images/ee/2008/ee-2008-f95ccb7809.webp\" />\n\nIn line voltage waveform even and tripplen harmonics are not present.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q19": {
       "question_uid": "ee:2008:q19",
@@ -931,8 +913,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "Since, system is casual therefore its impulse response will be zero for $t \\lt 0$.\n\nSo, statement-II is correct.\n\nSince, system is linear, it also satisfies the principle of superposition.\n\nSo, both the statements are correct.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q20": {
       "question_uid": "ee:2008:q20",
@@ -980,8 +961,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
         "markdown": "Open-circuit Test: In open-circuit test, no-load current $I_0$ is very small (it is usually 2-6% of the rated current).\n\nNo-load current $I_0$ lags E by slightly less than $90^{\\circ}$, so power factor is very low.\n\nTherefore, wattmeter $W_2$ is suitable for the open-circuit test.\n\nShort-circuit Test: In short-circuit test $V_{sc}$ needed to circulate the full-load current is very low.\n\nUnder these conditions, $I_0$ is only about 0.1 to 0.5% of full load current . As $I_0$ is highly lagging but it is very small as compared to sull load current, therefore the power factor is high.\n\nSo, wattmeter $W_3$ is suitable for the short-circuit test.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q21": {
       "question_uid": "ee:2008:q21",
@@ -1029,8 +1009,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "For finding time constant, we neglect current source as a open circuit.\n\nTherefore, circuit becomes\n\n<img src=\"/question-images/ee/2008/ee-2008-4b7d8270a5.webp\" />\n\n<img src=\"/question-images/ee/2008/ee-2008-c1e2aed102.webp\" />\n\nTherefore, Time constant$=R_{eq}C_{eq}$\n\n$=6 \\times \\frac{2}{3}=4sec$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q22": {
       "question_uid": "ee:2008:q22",
@@ -1078,8 +1057,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Resonance and Locus Diagrams",
         "markdown": "Input impedance\n\n$z=j\\omega L+R||\\frac{1}{j\\omega C}$\n\n$z=j\\omega L+\\frac{R}{1+j\\omega RC}$\n\n<img src=\"/question-images/ee/2008/ee-2008-38cac22f97.webp\" />\n\n$\\therefore \\;\\; z=j0.1\\omega +\\frac{1}{1+j\\omega } \\times \\frac{1-j\\omega }{1-j\\omega }$\n\n$\\;\\;=j0.1\\omega +\\frac{1-j\\omega }{1+\\omega ^2}$\n\n$\\;\\;=\\frac{1}{1+\\omega ^2}+j \\times \\left ( 0.1\\omega -\\frac{\\omega }{1+\\omega ^2} \\right )$\n\nAt resonance, imaginary part must be zero.\n\n$0.1\\omega - \\frac{\\omega }{1+\\omega ^2}=0$\n\n$0.1=\\frac{1 }{1+\\omega ^2}$\n\n$\\omega ^2+1=10$\n\n$\\omega ^2=9$\n\n$\\omega =3 rad/sec$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q23": {
       "question_uid": "ee:2008:q23",
@@ -1127,8 +1105,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "$i=1A$\n\nApplying KVL,\n\n$V_{ab}-2i+5=0$\n\n$V_{ab}=-5+2i$\n\n$\\;\\;=-5+2 \\times 1 \\;\\;=-3 V$\n\nNOTE: KVL is based on the conservation of energy.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q24": {
       "question_uid": "ee:2008:q24",
@@ -1176,8 +1153,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
         "markdown": "$A_1=A_2=500 \\times 500 \\; mm^2 =25 \\times 10^{-2} m^2$\n\n$\\varepsilon _{r1}=8, \\varepsilon _{r2}=2, d_1=4mm, d_2=2mm$\n\n<img src=\"/question-images/ee/2008/ee-2008-ad3b528913.webp\" />\n\n$$\\begin{aligned} C_{eq} &=\\frac{C_1 \\times C_2}{C_1 +C_2}=\\frac{\\frac{A\\varepsilon _{r1}\\varepsilon _0}{d_1} \\times \\frac{A\\varepsilon _{r2}\\varepsilon _0}{d_2}}{\\frac{A\\varepsilon _{r1}\\varepsilon _0}{d_1}+\\frac{A\\varepsilon _{r2}\\varepsilon _0}{d_2}} \\\\ C_{eq}&=\\frac{A\\varepsilon _0 \\varepsilon _{r1} \\varepsilon _{r2}}{\\varepsilon _{r1} d_2 +\\varepsilon _{r2} d_1} \\\\ &=\\frac{500 \\times 500 \\times 10^{-6} \\times 8.85 \\times 10^{-12} \\times 8 \\times 2}{(8 \\times 2+2 \\times 4) \\times 10^{-3}} \\\\ &= 1475 \\; \\text{pF} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q25": {
       "question_uid": "ee:2008:q25",
@@ -1225,8 +1201,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
         "markdown": "$$\\begin{aligned} n &=300 \\\\ (I)\\; \\text{circumference}&=2 \\pi r=300\\; mm \\\\ A &=30\\; mm^2=300 \\times 10^{-6} \\; m^2 \\\\ &\\therefore \\; \\text{Inductance of coil} \\\\ L &=\\frac{\\mu _0 N^2 A}{I} \\\\ &=\\frac{4 \\pi \\times 10^{-7} \\times 300 ^3 \\times 10^{-6}}{300 \\times 10^{-3}} \\\\ &=113.04\\; \\mu H \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q26": {
       "question_uid": "ee:2008:q26",
@@ -1274,8 +1249,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-19ebbebcbd.webp\" />\n\nBy KVL in loop-1,\n\n$5-i_1-i_1=0$\n\n$i_1=2.5A$\n\n$\\therefore \\; \\; V_a=2.5V$\n\nBy KVL in loop-2,\n\n$4V_{ab}=3i_2+i_2$\n\n$i_2=V_{ab}$\n\n$\\therefore \\;\\; V_b=1 \\times i_2=V_{ab}$\n\n$V_b=V_a-V_b$\n\n$V_b=\\frac{V_a}{2}=\\frac{2.5}{2}=1.25V$\n\n$i_2=V_{ab}=V_b$\n\n$i_2=1.25A$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q27": {
       "question_uid": "ee:2008:q27",
@@ -1323,8 +1297,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
         "markdown": "Net electrical flux passing thriugh plane Z=20\n\n$Q=\\frac{Q_1+Q_2}{2}=\\frac{10+20}{2}=15\\mu C$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q28": {
       "question_uid": "ee:2008:q28",
@@ -1372,8 +1345,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
         "markdown": "$y[n]=x[3-4n]=x[-4n+3]$\n\nSo to obtain $y[n]$, we first advance $x[n]$ by 3 unit.\n\ni.e.  $z_1[n]=x[n+3]$\n\nNow we will take every fourth sample of $z_1[n]$\n\ni.e.   $z_2[n]=z_1[4n]=x[4n+3]$\n\nNow reverse (time reverse) $z_2[n]$ will give\n\n$y[n]=z_2[-n]=x[-4n+3]$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q29": {
       "question_uid": "ee:2008:q29",
@@ -1421,8 +1393,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "First of all we will check for causality,\n\n$$\\begin{aligned} y(t)&=\\int_{-\\infty }^{-2t}x(\\tau ) d\\tau \\\\ \\text{So for }t&=2 \\\\ y(-2)&=\\int_{-\\infty }^{4}x(\\tau ) d\\tau \\end{aligned}$$\n\nSo, output depends on future values of input along with past and present values of input, so system is non-casual.\n\nLet us find output for shifted input $x(t-t_0)$\n\n$$\\begin{aligned} y(t)&=\\int_{-\\infty }^{-2t}x(\\tau -t_0) d\\tau \\\\ y'(t)&=\\int_{-\\infty }^{2(t-t_0)}x(\\tau ) d\\tau\\;\\;...(i) \\end{aligned}$$\n\nNow, shift the output by $t_0$\n\nthen,\n\n$y(t-t_0)=\\int_{-\\infty }^{2(t-t_0)}x(\\tau ) d\\tau \\;\\;...(ii)$\n\nso from eq. (i) and (ii),\n\n$y'(t) \\neq y(t-t_0)$\n\nTherefore system is time varient.\n\nNon-causal and time variant is present only in option (D).\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q30": {
       "question_uid": "ee:2008:q30",
@@ -1470,8 +1441,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
         "markdown": "$$\\begin{aligned} x(t)&=\\sin c (\\alpha t)=Sa[\\pi \\alpha t]\\\\ h(t)&=\\sin c (\\beta t)=Sa[\\pi \\beta t]\\\\ x(t)&=Sa[\\pi \\alpha t] \\end{aligned}$$\n\n<img src=\"/question-images/ee/2008/ee-2008-17533b2154.webp\" />\n\n$$\\begin{aligned} y(t)&=h(t)*x(t)\\\\ Y(j\\omega )&=X(j\\omega )H(j\\omega ) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2008/ee-2008-d88ae2aaaa.webp\" />\n\n$$\\begin{aligned} y(t)&=\\frac{1}{\\beta }Sa( \\pi \\alpha t)\\;\\;\\; if \\; \\alpha \\lt \\beta \\\\ y(t)&=\\frac{1}{\\beta } \\sin c(\\alpha t)\\;\\;\\; if \\; \\alpha \\lt \\beta \\\\ y(t)&=\\frac{1}{\\alpha }\\sin c( \\beta t)\\;\\;\\; if \\; \\alpha \\gt \\beta \\\\ \\end{aligned}$$\n\nSo, output is of the form $k \\sin c (\\gamma t)$\n\nwhere,  $\\gamma =min(\\alpha ,\\beta )$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q31": {
       "question_uid": "ee:2008:q31",
@@ -1519,8 +1489,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Series",
         "markdown": "$y(t)=x(t-t_0)+x(t+x_0)$\n\nSince, $x(t)$ is periodic with period T.\n\nTherefore, $x(t-t_0)$ and $x(t+t_0)$ will also  be periodic with period T.\n\n$\\therefore \\; b_k=a_ke^{-jk\\omega _0t_0}+a_ke^{jk\\omega _0t_0}$\n\n$a_k$ is Fourier series coefficient of signal $x(t)$\n\ntherefore,\n\n$$\\begin{aligned} \\therefore \\; b_k&=a_k(e^{-jk\\omega _0t_0}+e^{jk\\omega _0t_0}) \\\\ b_k&=2a_k \\cos k\\omega _0t_0 \\\\ \\text{since, }b_k &=0 \\text{ for odd k} \\\\ \\text{i.e. } k\\omega _0t_0&=k\\frac{\\pi}{2}\\\\ \\text{ where } k&=\\pm 1,\\pm 3,\\pm 5... \\\\ \\Rightarrow \\;\\; \\omega _0t_0 &=\\frac{\\pi}{2} \\\\ t_0&=\\frac{\\pi}{2} \\times \\frac{T}{2 \\pi}=\\frac{T}{4} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q32": {
       "question_uid": "ee:2008:q32",
@@ -1565,8 +1534,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q33": {
       "question_uid": "ee:2008:q33",
@@ -1614,8 +1582,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "$$\\begin{aligned} x(z)&=\\frac{z}{(z-a)^2}\\\\ \\therefore \\; z^{n-1}X(z)&=\\frac{z^n}{(z-a)^2} \\end{aligned}$$\n\nSince, z-a is a pole of second order, therefore residue at z=a\n\n$=\\frac{d}{dz}\\left [ (z-a)^2 \\frac{z^n}{(z-a)^2}\\right ]_{at\\; z=a}=[nz^n-1]_{z=a}=na^{n-1}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q34": {
       "question_uid": "ee:2008:q34",
@@ -1663,8 +1630,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} f(x) &=(x^2-4)^2 \\\\ f'(x)&=2(x^2-4) \\times 2x \\\\ &= 4x(x^2-4)=0\\\\ & x=0, \\; x=2 \\; \\text{and} \\; x=-2 \\\\ & \\text{are the stationary points}\\\\ f''(x)&=4[x(2x)+(x^2-4) \\times 1] \\\\ &= 4[2x^2+x^2-4]\\\\ &= 12x^2-16\\\\ f''(0)&=-16 \\lt 0\\; \\text{ maxima at } x=0 \\\\ f'(2)&=(12)2^2-16 \\\\ &= 32 \\gt 0\\text{ minima at } x=2\\\\ f'(-2)&=12(-2)^2-16 \\\\ &= 32 \\gt 0\\text{ minima at } x=-2 \\end{aligned}$$\n\nTherefore, there is only one maxima and only two minima for this function.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q35": {
       "question_uid": "ee:2008:q35",
@@ -1712,8 +1678,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Here, $$\\begin{aligned} f(x)&=e^x-1\\\\ f(x)&=e^x \\end{aligned}$$\n\nThe newton raphson iterative equation is\n\n$$\\begin{aligned} x_{i+1}&=x_i-\\frac{f(x_i)}{f'(x_i)}\\\\ f(x_i)&=e^{xi}-1\\\\ f'(x_i)&=e^{xi}\\\\ \\therefore \\;\\; x_{i+1}&=x_i-\\frac{e^{x_i}-1}{e^{x_i}}\\\\ i.e.\\;\\;x_{i+1}&=\\frac{x_ie^{x_i}-(e^{x_i}-1)}{e^{x_i}}\\\\ &=\\frac{e^{x_i}(x_i-1)+1}{e^{x_i}}\\\\ \\text{Now put }i&=0\\\\ x_1&=\\frac{e^{x_0}(x_0-1)+1}{e^{x_0}}\\\\ \\text{put, }x_0&=-1 \\text{ as given,}\\\\ x_1&=[e^{-1}(-2)+1]/e^{-1}\\\\ &=0.71828 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q36": {
       "question_uid": "ee:2008:q36",
@@ -1761,8 +1726,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} \\text{Choice (A) } AA^+A&=A \\text{ is corect} \\\\ \\text{Since, } AA^+A&=A[(A^TA)^{-1}A^T]A \\\\ &=A[(A^TA)^{-1}A^TA] \\\\ \\text{Put, }A^TA&=P \\\\ &= A[P^{-1} P]\\\\ &= AI=A\\\\ \\text{Choice (C) } A^+A&=I \\text{ is also correct since} \\\\ A^+A&=(A^TA)^{-1}A^TA \\\\ &= P^{-1}P=I \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q37": {
       "question_uid": "ee:2008:q37",
@@ -1810,8 +1774,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-dc4cd11c72.webp\" />\n\n$$\\begin{aligned} \\frac{dx}{dt} &= e^{-2t}u(t)\\\\ x&=\\int e^{-2t}u(t)dt=\\int f(t)dt \\\\ At\\;\\;t&=0.015, x=\\text{Area of trapezoidal} \\\\ &=\\frac{h}{2}[f(0)+f(0.01)] \\\\ &= \\frac{0.01}{2}[1+3^{-0.02}]=0.0099 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q38": {
       "question_uid": "ee:2008:q38",
@@ -1859,8 +1822,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Let on orthogonal matrix\n\n$$P=\\begin{bmatrix} \\cos \\theta & -\\sin \\theta \\\\ \\sin \\theta & \\cos \\theta \\end{bmatrix}$$\n\nProperly of orthogonal matrix A\n\n$$\\begin{aligned} AA^T &=I \\\\ \\text{So }\\vec{P_x} &=\\begin{bmatrix} x_1 \\cos \\theta -x_2 \\sin \\theta \\\\ x_1 \\sin \\theta +x_2 \\cos \\theta \\end{bmatrix} \\\\ ||\\vec{P_x}|| &=\\sqrt{(x_1 \\cos \\theta -x_2 \\sin \\theta)^2+\\sqrt{(x_1 \\sin \\theta +x_2 \\cos \\theta )^2}} \\\\ ||\\vec{P_x}|| &=\\sqrt{x_1^2+x_2^2} \\\\ ||\\vec{P_x}|| &= ||\\bar{x}|| \\text{ for any vector }\\bar{x} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q39": {
       "question_uid": "ee:2008:q39",
@@ -1908,8 +1870,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
         "markdown": "$$\\begin{aligned}\n\nx(t)&= \\text{rect}[t-1/2]\\\\\n\nx(t)&=1 \\;\\;\\;0\\leq t\\leq 1\\\\\n\n&=0 \\;\\;\\; \\text{otherwise}\\\\\n\nF[x(t)]&=\\int_{-\\infty }^{\\infty }x(t)e^{-j\\omega t}dt\\\\\n\n&=\\int_{0}^{1}1e^{-j\\omega t}dt=\\frac{1}{j\\omega }(1-e^{-j\\omega })\\\\\n\n&=\\frac{2}{\\omega }\\left [ \\frac{e^{j\\omega t} -e^{-j\\omega /2}}{2j} \\right ]xe^{-j\\omega /2}\\\\\n\n&=\\frac{\\sin \\omega /2}{\\omega /2}\\cdot e^{-j\\omega /2}\\\\\n\nF[x(t)+x(-t)]&\\overset{F.T.}{\\rightarrow}X(\\omega )+X(-\\omega )\\\\\n\n&=\\frac{\\sin \\omega /2}{\\omega /2}[ e^{-j\\omega /2}+e^{j\\omega /2}]\\\\\n\n&=\\frac{\\sin \\omega /2}{\\omega /2} 2 \\cos \\frac{\\omega }{2}\\\\\n\n&=2 \\sin c\\left ( \\frac{\\omega }{2 \\pi} \\right ) \\cos \\left ( \\frac{\\omega }{2} \\right )\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q40": {
       "question_uid": "ee:2008:q40",
@@ -1957,8 +1918,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
         "markdown": "Since both transitor are perfectly matched,\n\nSo,  $V_{BE1}=V_{BE2}$\n\n<img src=\"/question-images/ee/2008/ee-2008-5fda44dae2.webp\" />\n\n$\\frac{I_{c1}}{I_{c2}}=exp\\left [ \\frac{V_{BE1}-V_{BE2}}{V_T} \\right ]=e^0=1$\n\nSince \\beta for both are same, therefore\n\n$I_{b1}=I_{b2}=I_{b}$\n\nApplying KVL to loop as shown,\n\n$I_R=\\frac{0-0.7-0.7-(-5)}{1k\\Omega }=3.6mA$\n\nBy KCL,\n\n$I_R=I_c+2I_b$\n\n$\\;\\; =I_c+2\\frac{I-c}{\\beta }$\n\n$\\therefore \\; I_c=\\frac{\\beta }{\\beta +2}\\times I_R$\n\n$\\;\\; \\approx I_R$  (Because $\\beta$ is very large)\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q41": {
       "question_uid": "ee:2008:q41",
@@ -2006,8 +1966,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-27b36fdbfe.webp\" />\n\nForst capacitor charge through Diode ($D_1$) upto $V_{max} (5 \\; V)$ with shown polarities.\n\n$\\therefore V_{c1}=5\\; V$\n\nNow diode $D_1$ will be reversed biased and $D_2$ will be forward biased and capacitor $C_2$ will charge in reverse direction through diode $D_2$ upto $2V_{max}$\n\n$\\therefore V_{c2}=-10\\; V$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q42": {
       "question_uid": "ee:2008:q42",
@@ -2055,8 +2014,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
         "markdown": "For $(V_{in} \\gt 0 )$,\n\n$P\\rightarrow V_{01}=negative$\n\n$Q\\rightarrow V_{02}=0$\n\n<img src=\"/question-images/ee/2008/ee-2008-f3de4d4e22.webp\" />\n\n$V_0$ will be positive due to inverting action.\n\nFor $(V_{in} \\lt 0)$,\n\n$P\\rightarrow V'_{01}=0$\n\n$Q\\rightarrow V'_{02}=positive$\n\n<img src=\"/wp-content/uploads/GATE/EE/20081/a42a.jpg\" />\n\n$V_0$ will be positive due to non-inverting action. So, output is always rectified.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q43": {
       "question_uid": "ee:2008:q43",
@@ -2104,8 +2062,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
         "markdown": "Let us consider active high input\n\n<img src=\"/question-images/ee/2008/ee-2008-20d8bed481.webp\" />\n\n$F=\\Sigma (1,3,5,6)=\\Pi M(0,2,4,7)$\n\n$\\;\\;=(Y+Z)\\cdot (X+Z)\\cdot (\\bar{X}+\\bar{Y}+\\bar{Z})$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q44": {
       "question_uid": "ee:2008:q44",
@@ -2153,8 +2110,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Miscellaneous",
         "markdown": "$f=\\frac{1}{T_{ON1}+T_{ON2}},$ $D=\\frac{T_{ON1}}{T_{ON1}+T_{ON2}}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q45": {
       "question_uid": "ee:2008:q45",
@@ -2202,8 +2158,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Microprocessors",
         "markdown": "Given,\n\n(SP) = 2700H\n\n(PC)=2100H\n\n(HL)=0000H\n\n2100H : DAD SP\n\n(SP) +(HL) $\\rightarrow$ (HL)\n\n2700H +0000H =2700H stored in HL pair.\n\n2101H : PCHL : the content of HL are transferred to (PC)\n\nSo, now (PC) =2700H and (SP) also unchanged\n\n(PC)=2700H\n\n(SP)=2700H\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q46": {
       "question_uid": "ee:2008:q46",
@@ -2248,8 +2203,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q47": {
       "question_uid": "ee:2008:q47",
@@ -2297,8 +2251,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
         "markdown": "Rotor resistance at stand still, $R=7.8\\Omega$\n\nSynchronous speed,\n\n$N_s=\\frac{120f}{P}$\n\n$\\;\\;=\\frac{120 \\times 50}{4}=1500 \\text{rpm}$\n\nThe slip(s) of rotor with respect to forward field\n\n$s=\\frac{N_s-N_r}{N_s}$\n\n$\\;\\;=\\frac{1500-1425}{1500}=0.05$\n\nThe slip of rotor with respect to backward field\n\n$=2-s=2-0.05=1.95$\n\nEffective rotor resistance\n\n$\\;\\;=\\frac{R_2}{2(2-s)}=7.8$\n\n$\\;\\;=\\frac{7.8}{2 \\times 1.95}=2\\Omega$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q48": {
       "question_uid": "ee:2008:q48",
@@ -2346,8 +2299,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "Line to line supply voltage $=V_{l-l}=400V$\n\nCurrent drawn by the motor, $I_L=50A$ at 0.8 pf\n\nInput power,\n\n$$\\begin{aligned} P &=\\sqrt{3} V_{l-l}I_L \\cos \\phi \\\\ &= \\sqrt{3} \\times 400 \\times 50 \\times 0.8\\\\ &=27.71kW \\end{aligned}$$\n\nAir-gap power $(P_g)$ in the power that is transferred from the stator to the rotor via the air-gap magnetic field.\n\n$P_g=$ Input power -Core loss -Copper loss in stator\n\n$=27.71-1.5-1.2=25.01kW$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q49": {
       "question_uid": "ee:2008:q49",
@@ -2392,8 +2344,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q50": {
       "question_uid": "ee:2008:q50",
@@ -2441,8 +2392,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
         "markdown": "Distance protection using mho relays with zoze set to 80% of the line impedance will not provide protection.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q51": {
       "question_uid": "ee:2008:q51",
@@ -2490,8 +2440,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Compensation Techniques and Voltage Profile Control",
         "markdown": "Surge impedance loading= SIL =2280 MW\n\n$$\\begin{aligned} Z_c&= \\text{Surge impedance}\\\\ \\text{SIL}_{2}&=\\frac{\\text{SIL}_{1}}{\\sqrt{1-\\gamma _{se}}}\\\\ \\text{SIL}_{2}&=\\frac{2280}{\\sqrt{1-0.3}}\\\\ &=2725.12 \\text{ MW} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q52": {
       "question_uid": "ee:2008:q52",
@@ -2539,8 +2488,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
         "markdown": "$$\\begin{aligned} C_1(P_{G1})&=P_{G1}+0.055P_{G1}^2\\\\ \\frac{dC_1}{P_{G1}}&=1+0.11P_{G1}\\\\ C_2(P_{G2})&=P_{G2}+0.03P_{G2}^2\\\\ \\frac{dC_2}{P_{G2}}&=3+0.06P_{G2} \\end{aligned}$$\n\nFor minimum cost analysis\n\n$$\\begin{aligned} \\frac{dC_1}{P_{G1}}&=\\frac{dC_2}{P_{G2}}\\\\ 1+0.11P_{G1}&=3+0.06P_{G2}\\;\\;...(i)\\\\ P_{G1}+P_{G2}&=250MW\\;\\;...(ii) \\end{aligned}$$\n\nSolving equation (i) and (ii),\n\nwe get,  $P_{G1}=100MW$ and $P_{G2}=150MW$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q53": {
       "question_uid": "ee:2008:q53",
@@ -2588,8 +2536,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Power System Stability",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-7985852f31.webp\" />\n\nFor such faults,\n\n$\\delta _{cr}$ is given by\n\n$\\delta _{cr}=\\cos ^{-1} [(\\pi-2\\delta _0) \\sin \\delta _0 -\\cos \\delta _0]\\;...(i)$\n\nand\n\n$$\\begin{aligned} t_{cr}&=\\text{critical cleaning time } \\\\ &= \\left ( \\frac{2H(\\delta _{cr}-\\delta _0)}{\\pi f P_m} \\right )^{1/2}\\;...(ii) \\end{aligned}$$\n\nCASE-1:\n\nWhen only once generator is connected\n\nMechanical input to the generator $(P_{m_1})=$ Electrical power delivered by the generator $(P_{e_1})$\n\n$\\Rightarrow \\; P_{m_1}=P_{e_1}=1p.u.$\n\nCASE-2:\n\nWhen two generator connected in parallel\n\nElectrical power delivered by each generator\n\n$P_{e_2}=0.5p.u.$\n\nMechanical inout to each generator\n\n$(P_{m_2})=P_{e_2}=0.5p.u.=\\frac{P_{m_1}}{2}$\n\nAssuming $\\delta _0$ in each case same\n\n$\\delta _{0_1}=\\delta _{0_2}=\\delta _{0}$\n\nSo, $\\delta _{cr}$  will also be same in both cases, (from equation (i)),\n\n$$\\begin{aligned} t_{cr}&\\propto \\frac{1}{\\sqrt{P_m}}\\\\ &(\\delta _{cr}, H \\text{ and } \\delta _0 \\text{ are same}) \\\\ \\therefore \\; t_{cr_2} &=\\sqrt{\\frac{P_{m_1}}{P_{m_2}}}\\times t_{cr_1} \\\\ t_{cr_2}&= \\sqrt{\\frac{P_{m_1}}{P_{m_1}/2}}\\times 0.28\\\\ &= \\sqrt{2} \\times 0.28=0.396\\;sec \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q54": {
       "question_uid": "ee:2008:q54",
@@ -2637,8 +2584,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Distribution Systems, Cables and Insulators",
         "markdown": "Assuming impedance of each branch R\n\n(i) if $e_1$ is opened\n\n<img src=\"/question-images/ee/2008/ee-2008-3a82ecd8da.webp\" />\n\nTotal losses $=8^2R+3^2R+1^2R=74R$\n\n(ii) if $e_2$ is opened\n\n<img src=\"/question-images/ee/2008/ee-2008-76105f2ab5.webp\" />\n\nTotal losses $=8^2R+7^2R+5^2R=138R$\n\n(i) if $e_3$ is opened\n\n<img src=\"/question-images/ee/2008/ee-2008-37bfa8d0ed.webp\" />\n\nTotal losses $=1^2R+7^2R+2^2R=54R$\n\n(i) if $e_4$ is opened\n\n<img src=\"/question-images/ee/2008/ee-2008-a042ff8619.webp\" />\n\nTotal losses $=5^2R+3^2R+1^2R=38R$\n\nOperation with minimum loss can be achieved by opening line $e_4$.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q55": {
       "question_uid": "ee:2008:q55",
@@ -2686,8 +2632,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-92ce5462e4.webp\" />\n\nAverage output voltage\n\n$$\\begin{aligned} V_0&=\\frac{1}{\\pi}\\int_{\\alpha }^{\\pi+\\alpha }V_m \\sin \\omega t \\cdot d(\\omega t)\\\\ V_0&=\\frac{2 V_m}{\\pi}\\cos \\alpha \\\\ \\text{For }\\alpha &=30^{\\circ}\\\\ V_0&=\\frac{\\sqrt{3}}{\\pi}V_m \\end{aligned}$$\n\nAverage output current $=I_0$ (constant)\n\nRMS value of supply current $=I_s=I_0$\n\nRMS value of supply voltage $=V_s=\\frac{V_m}{\\sqrt{2}}$\n\nInput power factor,\n\n$$\\begin{aligned} &=\\frac{\\text{Power delivered to load}}{\\text{Input VA}} \\\\ &=\\frac{V_0I_0}{V_sI_s}\\\\ &=\\frac{(\\sqrt{3}/\\pi)V_mI_0}{V_m/\\sqrt{2}\\cdot I_0}\\\\ &=\\frac{\\sqrt{6}}{\\pi}=0.78 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q56": {
       "question_uid": "ee:2008:q56",
@@ -2735,8 +2680,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-a0d0631e50.webp\" />\n\nSingle phase half controlled converter.\n\nAs load is highly inductive, it means laod current is continuous and almost constant.\n\n<img src=\"/question-images/ee/2008/ee-2008-786764b18a.webp\" />\n\n$$\\begin{aligned} &\\text{During,}\\\\ &0 \\lt \\omega t \\lt \\alpha \\\\ &\\text{freewheeling by }T_2D_1, V_0=0\\\\ &\\alpha \\lt \\omega t \\lt \\pi \\\\ &T_1D_1 \\text{ conducts }V_0=V_s\\\\ &\\pi \\lt \\omega t \\lt \\pi+\\alpha \\\\ &\\text{freewheeling by }T_1D_2, V_0=0\\\\ &\\pi+\\alpha \\lt \\omega t \\lt 2\\pi \\\\ &T_2D_2 \\text{ conducts }V_0=-V_s\\\\ &T_1 \\text{ is again triggered at }2 \\pi+\\alpha \\end{aligned}$$\n\nSo, during $2\\pi+\\alpha \\lt \\omega t \\lt 3\\pi , T_1D_1$ conducts.\n\nNow, if firing pulses are removed after $T_1$ is triggered at $2 \\pi+\\alpha$.\n\nAt $\\omega t=3 \\pi+\\alpha$, no firing pulse will be available to trigger $T_2$. So, load current will flow through $T_1D_2$ as load current is continuos. So during $3 \\pi+\\alpha \\lt \\omega t \\lt 4 \\pi,\\;\\; T_1D_2$ will continue to conduct and  $V_0=0$.\n\nAt $\\omega t=4 \\pi,\\; D_1$ will become forward biassed and $D_2$ will become reverse biased. So, $D_1$ will conduct and $T_1$ is already conducting.\n\nSo, load current will flow through $T_1D_1$ and $V_0=V_s$.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q57": {
       "question_uid": "ee:2008:q57",
@@ -2781,8 +2725,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q58": {
       "question_uid": "ee:2008:q58",
@@ -2827,8 +2770,7 @@
       "detailed_solution": {
         "concept": "EE Core Engineering",
         "markdown": null
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q59": {
       "question_uid": "ee:2008:q59",
@@ -2876,8 +2818,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-88c09185b5.webp\" />\n\nLoad current increases linearly from $-I_P \\; to \\;I_P$ during $0 \\lt \\omega t\\leq \\pi$, where $I_P=$ peak value of $i_0$\n\n$$\\begin{aligned} \\Rightarrow \\; t_1&\\frac{\\pi}{\\omega }=\\frac{\\pi}{2 \\pi 50}=\\frac{1}{100}sec \\\\ \\text{At } t&=0, i_0=-I_P \\text{ and }t=t_1, i_0=I_P \\\\ V_0 &=L\\frac{di}{dt} \\\\ \\text{During } & 0\\lt \\omega t\\leq \\pi \\\\ V_0&=V_s =200V\\\\ \\Rightarrow \\; 200 &=0.1\\left ( \\frac{I_P-(-I_P)}{t_1-0} \\right ) \\\\ \\Rightarrow \\; 2I_P&= \\frac{200}{0.1}\\times t_1\\\\ I_P &=\\frac{2000}{2}\\times \\frac{1}{100}=10A \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q60": {
       "question_uid": "ee:2008:q60",
@@ -2925,8 +2866,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "For max. torque slip $=s_m=\\frac{R'_r}{x_{sm}+s'_{rm}}$\n\nFor starting torque, $s_m=1$\n\n$x_{sm}+x'_{rm}=R'_r$\n\n$2 \\pi f_mL_s+0.2 \\pi f_mL'_r=1$\n\n(frequency at maximum torque) $f_m$\n\n$=\\frac{1}{2 \\pi (L_s+L_r)}$\n\n$$\\begin{aligned} L_s &= \\frac{x_s}{2 \\pi \\times 50}=\\frac{1.5}{2\\pi \\times 50}\\\\ L'_r &= \\frac{1.5}{2\\pi \\times 50}\\\\ \\therefore \\;\\; f_m &=\\frac{1}{1.5/50+1.5/50}=\\frac{50}{3}=16.7Hz \\end{aligned}$$\n\nIn const V/f control method,\n\n$\\frac{V_1}{f_1}=\\frac{400}{50}=8$\n\n$\\therefore \\;\\; V_2/f_2=8$\n\n$\\therefore \\;\\; V_2=f_2 \\times 8$\n\n$\\;\\;\\;\\;\\;=16.7 \\times 8=133.3$ volts\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q61": {
       "question_uid": "ee:2008:q61",
@@ -2974,8 +2914,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Electrical Drives",
         "markdown": "Average output voltage of the converter,\n\n$V_0=\\frac{2V_m}{\\pi}\\cos \\alpha$\n\nLoad current $=I_0=10A$\n\nBack emf $=E_b=150V$\n\nArmature resistance$=R_a=2\\Omega$\n\nApplying KVL,\n\n$$\\begin{aligned} &V_0-2I_0+150=0 \\\\ \\Rightarrow \\;& V_0=-150+2 \\times 10\\\\ &=-130V\\\\ \\Rightarrow \\; & \\frac{2V_m}{\\pi} \\cos \\alpha =-130\\\\ \\Rightarrow \\; &\\frac{2 \\times \\sqrt{2} \\times 230}{\\pi}\\cos \\alpha=-130 \\\\ \\Rightarrow \\;&\\alpha =129^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q62": {
       "question_uid": "ee:2008:q62",
@@ -3023,8 +2962,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "Load current $=I_0=10A$\n\nRMS value of total source current\n\n$I_s=I_0\\sqrt{\\frac{2}{3}}=10\\sqrt{\\frac{2}{3}}=8.165A$\n\nSupply current $i_s$ can be expressed by fourier series,\n\n$i_s(t)=\\sum_{n=1,3,5}^{\\infty }\\frac{4I_0}{n \\pi}\\sin \\frac{n \\pi }{3}\\sin (n\\omega t-n\\alpha )$\n\nRMS value of fundamental current,\n\n$$\\begin{aligned} I_{s1}&=\\frac{4I_0}{\\sqrt{2} \\pi} \\sin \\frac{\\pi}{3} \\\\ I_{s1}&=\\frac{4 \\times 10}{\\sqrt{2}\\pi} \\times \\frac{\\sqrt{3}}{2}=7.8A\\\\ &\\text{Total Harmonic distortion} \\\\ &= \\sqrt{\\left ( \\frac{I_s}{I_{s1}} \\right )^2-1} \\times 100\\\\ &= \\sqrt{\\left ( \\frac{8.165}{7.8} \\right )^2-1} \\times 100=31\\% \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2008:q63": {
       "question_uid": "ee:2008:q63",
@@ -3072,8 +3010,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-9c360590cf.webp\" />\n\nWhen, switch is ON, $V_0=0$ and $i_D=0$\n\nSwitch is OFF, $V_0=V_s$ and $i_D=I_L$\n\nDuty cycle $=\\alpha =\\frac{T_{ON}}{T}=0.5$\n\nThe circuit shown in the figure is step up chopper and for step up chopper, average output voltage,\n\n$V_0=\\frac{V_s}{1-\\alpha }=\\frac{20}{1-0.5}=40V$\n\nAverage current through diode\n\n$$\\begin{aligned} I_D &=\\frac{1}{T}\\int_{T_{ON}}^{T} I_L dt \\\\ &=\\frac{I_{L}}{T}(T-T_{ON}) \\\\ &=I_L(1-\\alpha ) \\\\ &= (1-0.5)\\times 4\\\\ &= 2A \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q64": {
       "question_uid": "ee:2008:q64",
@@ -3121,8 +3058,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$r(t)=$ unit impulse applied at $t=1$\n\n$=\\delta (t-1)$\n\n$R(s)=1[r(t)]=e^{-s}$\n\n$G(s)=\\frac{C(s)}{R(s)}=\\frac{1}{s^2+3s+2}$\n\n$C(s)=R(s)G(s)=\\frac{e^{-s}}{s^2+3s+2}$\n\nSteady state value of output, using final value theoram,\n\n$C_{ss}=\\lim_{s \\to 0}sC(s)$\n\n$\\;\\;=\\lim_{s \\to 0}\\frac{se^{-s}}{s^2+3s+2}=0$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q65": {
       "question_uid": "ee:2008:q65",
@@ -3170,8 +3106,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Design of Control Systems",
         "markdown": "$C_1=\\frac{10(s+1)}{(s+10)}$\n\nZero at s=-1\n\nPole at s=-10\n\n<img src=\"/question-images/ee/2008/ee-2008-f886d5874c.webp\" />\n\nAs zero is closer origin, zero dominates pole. Hence $C_1$ is lead compensator.\n\n$C_2=\\frac{s+10}{10(s+1)}$\n\nZero at s=-10\n\nPole at s=-1\n\n<img src=\"/question-images/ee/2008/ee-2008-f886d5874c.webp\" />\n\nAs pole is closer to origin, pole dominates zero. Hence $C_2$ is lag compensator.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q66": {
       "question_uid": "ee:2008:q66",
@@ -3219,8 +3154,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "Initial slope is -40 dB/decade, it means there are double pole at origin.\n\nSlope changes from -40 dB/decade to -20 dB/decade. It means there is a zero.\n\nSlope changes from -20 dB/decade to -0 dB/decade at some other frequency.eans ther is one more zero.\n\nTherefore transfer function has two poles and two zeros.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q67": {
       "question_uid": "ee:2008:q67",
@@ -3268,8 +3202,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
         "markdown": "$G(s)=\\frac{k}{s(s+3)(s+10)}$\n\nand   $H(s)=1$\n\nCharacteristic equation,\n\n$\\Rightarrow 1+G(s)H(s)=0$\n\n$\\;\\; 1+\\frac{k}{s(s+3)(s+10)}=0$\n\n$\\Rightarrow s(s+3)(s+10)+k=0$\n\n$\\Rightarrow s^3+13s^2+30s+k=0$\n\nRouth-Array\n\n<img src=\"/question-images/ee/2008/ee-2008-e54721e4c5.webp\" />\n\nAccording to Routh-Hurwitz criterian.\n\nFor stable system, signs of first column do not change\n\n$k \\gt 0$\n\nand  $\\frac{13 \\times 30-k}{13} \\gt 0$\n\nTherefore system to be stable $0 \\lt k \\lt 390.$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q68": {
       "question_uid": "ee:2008:q68",
@@ -3317,8 +3250,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$M(s)=\\frac{100}{s^2+20s+100}$\n\nComparing with standard form,\n\n$M(s)=\\frac{\\omega _n^2}{s^2+2 \\xi \\omega _n s+\\omega _n^2}$\n\n$\\therefore \\;\\;2 \\xi \\omega _n =20$\n\n$\\;\\;\\omega _n^2=100$\n\n$\\;\\; \\xi=1$\n\n$\\;\\;\\omega _n=10$\n\n$\\therefore$  The system is critically damped.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q69": {
       "question_uid": "ee:2008:q69",
@@ -3366,8 +3298,7 @@
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
         "markdown": "Here, $P(\\omega _1 t)=A \\sin \\omega _1 t$\n\n$y_1$-line cut '4' times the Lissajous pattern\n\n$x_1$-line cut '2' times the Lisaajous pattern\n\n<img src=\"/question-images/ee/2008/ee-2008-b84a9012f7.webp\" />\n\n$\\frac{\\omega _y}{\\omega _x}=$(maximum number of intersection of a horizontal line with Lissajous pattern)/(maximum number of intersection of a vertical line with Lissajous pattern)\n\n$$\\begin{aligned} \\therefore \\;\\; \\frac{\\omega _y}{\\omega _x}&= \\frac{2}{4}=\\frac{1}{2} \\\\ \\therefore \\;\\; \\omega _x &= 2 \\omega _y\\\\ \\omega _1 &= 2\\omega _2 \\end{aligned}$$\n\nand $q(\\omega _2,t)$ will lead $q(\\omega _1,t)$ by  $90^{\\circ}$ as trace is a circle\n\n$$\\begin{aligned} q(\\omega _2,t) &=A \\sin (\\omega _2 t +90^{\\circ}) \\\\ q(\\omega _2,t) &= A \\cos \\omega _2 t \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q70": {
       "question_uid": "ee:2008:q70",
@@ -3415,8 +3346,7 @@
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - A.C. Bridges",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-b250db40dd.webp\" />\n\n$Z_{AB}=500\\Omega$\n\n$Z_{CD}=Z$\n\n$Z_{BC}=R_{BC}+\\frac{1}{j\\omega C}$\n\n$\\;\\;=300-\\frac{j}{2 \\pi \\times 2 \\times 10^3 \\times 0.398 \\times 10^{-6}}$\n\n$Z_{BC}=300-j200\\Omega$\n\n$Z_{AD}=R_{AD}+j\\omega L$\n\n$Z_{AD}=300+j2\\pi\\times 2 \\times 10^3 \\times 15.91 \\times 10^{-3}$\n\n$\\;\\;=300+j200\\Omega$\n\nAt balance,\n\n$Z_{AB} \\times Z_{CD}=Z_{BC} \\times Z_{AD}$\n\n$Z_{CD}=Z$\n\n$\\;\\;=\\frac{Z_{BC} \\times Z_{AD}}{Z_{AB}}$\n\n$\\Rightarrow \\;Z=\\frac{(300-j200)\\times (300+j200)}{500}$\n\n$Z=(260+j0)\\Omega$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q71": {
       "question_uid": "ee:2008:q71",
@@ -3464,8 +3394,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-848cedfaea.webp\" />\n\nTo find $i(t)$ and $t(0^+)$ we can convert the above circuit in following way\n\n$\\text{Let, } t'=t-t_0$\n\n$\\Rightarrow \\; t=t'+t_0$\n\n<img src=\"/question-images/ee/2008/ee-2008-0e224824bc.webp\" />\n\n$i(t')=\\frac{\\sqrt{2}V}{|z|}\\cos (\\omega t'+\\omega t_0-\\alpha )+Ae^{-\\frac{t}{\\tau }}\\;\\;(t'\\geq t_0^+)$\n\nSymmetrical short circuit current,\n\n$$\\begin{aligned} |Z|&= \\sqrt{R^2+(\\omega L)^2}\\\\ \\alpha &= \\tan^{-1} \\frac{\\omega L}{R}\\\\ \\tau &=\\frac{L}{R} \\\\ \\text{Now, } &i(t'=0^-) =i(t'=0^+)=0 \\\\ \\Rightarrow \\; \\frac{\\sqrt{2}V}{|Z|} & \\cos (\\omega t_0-\\alpha )+A=0 \\\\ A&=-\\frac{\\sqrt{2}V}{|Z|}\\cos (\\omega t_0-\\alpha) \\\\ &\\text{Now change, } \\\\ t'&=t-t_0 \\\\ i(t) &=-\\frac{\\sqrt{2}V}{|Z|}\\cos (\\omega t-\\alpha) \\\\ &-\\frac{\\sqrt{2}V}{|Z|}\\cos (\\omega t_0-\\alpha)e^{-\\frac{(t-t_0)R}{L}}\\;\\; t \\geqt_0^+ \\end{aligned}$$\n\nNow, if the initial value of dc of set (A) is $-\\frac{\\sqrt{2}V}{|Z|}$\n\nit requires that $\\cos (\\omega t_0-\\alpha)=1$\n\n$\\Rightarrow \\; \\omega t_0-\\alpha =0$\n\n$\\Rightarrow \\; t_0=\\frac{\\alpha }{\\omega }=\\frac{\\tan^{-1} \\frac{\\omega L}{R}}{\\omega }$\n\nIn problem given the circuit for $3-\\phi$ fault be drawn as:\n\n<img src=\"/question-images/ee/2008/ee-2008-9f842639ab.webp\" />\n\nAccording to the derrivation\n\nFor initial value of dc off set to be $-\\frac{\\sqrt{2}V}{|Z|}$ we required\n\n$t_0=\\frac{\\tan^{-1} \\frac{\\omega L}{R}}{\\omega }=\\frac{\\tan^{-1} \\frac{0.04}{0.004}}{2 \\times 3.14 \\times 50 }=4.68msec$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q72": {
       "question_uid": "ee:2008:q72",
@@ -3513,8 +3442,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "Fault occurs at mid point 'F'\n\n<img src=\"/question-images/ee/2008/ee-2008-d02bd6f2d6.webp\" />\n\nThevenins equivalent,\n\n$$\\begin{aligned} V_s &=V_{s_1} =V_{s_2}=1.0\\angle 0\\;pu\\\\ Z_1&= \\left ( Z_{s_1}+\\frac{Z_L}{2} \\right )||\\left ( Z_{s_2}+\\frac{Z_L}{2} \\right )\\\\ \\text{as } Z_{s_1}&=Z_{s_2} =0.001+j0.1 \\; pu\\\\ \\text{and } Z_L&=0.006+j0.06 \\\\ Z_1 &=\\frac{1}{2}\\left ( Z_{s_1}+\\frac{Z_L}{2} \\right ) \\\\ &= \\frac{1}{2}\\left ( 0.001+j0.01+\\frac{0.006+j0.06}{2} \\right )\\\\ Z_1&=0.002+j0.02 \\end{aligned}$$\n\n<img src=\"/question-images/ee/2008/ee-2008-e72861320c.webp\" />\n\n$$\\begin{aligned} \\text{Fault current}&=I_f=\\frac{V_s}{Z_1}=\\frac{1\\angle 0^{\\circ}}{0.002+j0.02}\\\\ &=49.75\\angle -84.29 \\; p.u.\\\\ |I_f|p.u.&=49.75\\\\ \\text{Base current}&=\\frac{\\text{Base MVA}}{\\sqrt{3} \\times \\text{Voltage Base}}kA\\\\ I_B&=\\frac{100}{\\sqrt{3} \\times 400}kA\\\\ |I_f|&=|I_f|_{p.u.} \\times I_B\\\\ &=49.75 \\times \\frac{100}{\\sqrt{3} \\times 400}\\\\ &=7.18 kA\\\\ I_x^f&=\\frac{|I_f|}{2}=\\frac{7.18}{2}kA=3.59kA \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q73": {
       "question_uid": "ee:2008:q73",
@@ -3562,8 +3490,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "$$\\begin{aligned} Z_1&=0.002+j0.02 \\;pu\\\\ Z_2&=Z_1=0.002+j0.02 \\;pu\\\\ Z_0&=3Z_1=0.006+j0.06 \\;pu \\end{aligned}$$\n\n<img src=\"/question-images/ee/2008/ee-2008-e96a241f48.webp\" />\n\n$$\\begin{aligned} I_{a0}&=I_{a1}=I_{a2}=\\frac{V_s}{Z_1+Z_2+Z_0}\\\\ &=\\frac{V_s}{Z_1+Z_2+3Z_1}\\\\ &=\\frac{V_s}{5Z_1}=\\frac{1\\angle 0^{\\circ}}{5 \\times (0.002+j0.02)}\\\\ &=9.95\\angle -84.29\\;pu\\\\ &\\text{Fault current}\\\\ I_f|_{p.u.}&=3|I_{a0}|\\\\ &=3 \\times 9.95=29.85\\;p.u.\\\\ I_x^f&=\\frac{|I_f|_{p.u.}}{2}=\\frac{29.85}{2}=14.93\\;p.u. \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q74": {
       "question_uid": "ee:2008:q74",
@@ -3611,8 +3538,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "If the three phase supply is given to the rotor winding through an autotransformer, the three phase rotor current will generate a rotating field in the air-gap, rotating at the synchronous speed woth respect to rotor. If the rotor is kept stationary, this rotating field will also rotate in the gap at the synchronous speed voltage and current will be induced in the stator winding and a torque will be developed. If rotor is allowed to move, it will rotate as per the Lenz's law, opposing the rotation of the rotating field decreasing the induced voltage in the stator winding. Thus at a particular speed, the frequency of the stator circuit will correspond to the slip speed.\n\nSynchronous speed,\n\n$N_s=\\frac{120f}{P}=\\frac{120 \\times 50}{4}=1500 \\; \\text{rpm}$\n\nRotor speed,\n\n$N_r=1410 \\; \\text{rpm}$\n\n$\\text{Slip}=\\frac{N_s-N_r}{N_s}$\n\n$\\;\\;=\\frac{1500-1410}{1500}=0.06$\n\nSlip frequency induced in stator\n\n$sf=0.06 \\times 50=3 Hz$\n\nSlip speed $= \\frac{120 \\times 3}{4}=90\\; \\text{rpm}$\n\nAs stator magnetic field rotates 90 rpm in the opposite direction of the rotation of rotor, therefore, speed of the stator field with respect to rotor $=1410+90=1500 rpm$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q75": {
       "question_uid": "ee:2008:q75",
@@ -3660,8 +3586,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "$\\text{Slip}=\\frac{90}{1500}=0.06$\n\nTotal power input to induction motor within $=1800-200=1600W$\n\nPower output of induction motor\n\n$P_0=(1-s)P_{in}$\n\n$\\;\\;=1600(1-0.06)=1504 W$\n\nSince all the losses are neglected.\n\nInduction motor power output = d.c. generator input = d.c. generator output = 1504 W\n\n$\\therefore \\;\\;I^2R_{ex}=1504$\n\n$\\therefore \\;\\;I=\\sqrt{\\frac{1504}{10}}=12.26A$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q76": {
       "question_uid": "ee:2008:q76",
@@ -3709,8 +3634,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-d6898af0ab.webp\" />\n\nCharged stored in the capcitor =Area under i-t curve\n\n$Q=A_1+A_2$\n\n$\\;\\;=\\frac{1}{2}(2 \\times 10^{-6})\\times (4 \\times 10^{-3})$  $+\\frac{1}{2} (4+2)\\times 10^{-3}\\times (5-2)\\times 10^{-6}$\n\n$\\;\\;=\\left ( 4+\\frac{6 \\times 3}{2} \\right )\\times 10^[-9]=13nC$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q77": {
       "question_uid": "ee:2008:q77",
@@ -3758,8 +3682,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "Capacitor charge upto $5\\mu s$, so total charge stored in capacitor = Q = 13 nC.\n\nVoltage across the capacitor before connecting to inductor\n\n$V_0=\\frac{Q}{C}$\n\n$\\;\\;=\\frac{13 \\times 10^{-9}}{0.3 \\times 10^{-9}}=43.33V$\n\nVoltage across the capacitor at time $t$\n\n$V_c(t)$ at $t= 1\\mu s$\n\n$V_c(t)|_{t=1\\mu s}=[V_0 \\cos \\omega _0 t]_{t=1\\mu s}$\n\n$\\omega _0t=\\frac{1}{\\sqrt{0.6 \\times 10^3 \\times 0.3 \\times 10^{-9}}}\\times 1 \\times 10^{-6}$\n\n$\\;\\; =2.357 rad=135^{\\circ}$\n\n$V_c(t)|_{t=1\\mu s}=43.33 \\times \\cos 135^{\\circ}$\n\n$\\;\\;\\approx -30.6 V$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q78": {
       "question_uid": "ee:2008:q78",
@@ -3807,8 +3730,7 @@
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
         "markdown": "$$\\begin{aligned} \\dot{x}&=Ax+Bu \\\\ \\text{and   }y&=Cx \\\\ \\text{where, }  A&=\\begin{bmatrix} 0 &1 \\\\ 0 &-2 \\end{bmatrix} \\\\ B&=\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix} \\\\ C&=\\begin{bmatrix} 1 & 0 \\end{bmatrix} \\\\ \\text{ and  } D&=0 \\\\ [sI-A]&=\\begin{bmatrix} s & 0\\\\ 0 & s \\end{bmatrix}-\\begin{bmatrix} 0 &1 \\\\ 0 &-2 \\end{bmatrix}\\\\ &=\\begin{bmatrix} s &-1 \\\\ 0 &s+2 \\end{bmatrix} \\\\  [sI-A]^{-1}&=\\frac{1}{s(s+2)}\\begin{bmatrix} s+2 & 1\\\\ 0& s \\end{bmatrix} \\\\ & \\text{Transfer function} \\\\ &=C[sI-A]^{-1}B+D  \\\\ &=\\begin{bmatrix} 1 &0 \\end{bmatrix}\\frac{\\begin{bmatrix} s+2 & 1\\\\ 0& s \\end{bmatrix}\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}}{s(s+2)} \\\\ &=\\begin{bmatrix} 1 &0 \\end{bmatrix}\\frac{\\begin{bmatrix} 1\\\\ s \\end{bmatrix}}{s(s+2)} \\\\ &=\\frac{1}{s(s+2)} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q79": {
       "question_uid": "ee:2008:q79",
@@ -3856,8 +3778,7 @@
       "detailed_solution": {
         "concept": "Control Systems - State Variable Analysis",
         "markdown": "$G(s)=\\frac{1}{s(s+2)}$\n\nand  $H(s)=1$\n\n$r(t)=u(t)$\n\n$\\Rightarrow \\; R(s)=\\frac{1}{s}$\n\n$Error=E(s)=\\frac{R(s)}{1+G(s)H(s)}$\n\n$\\;\\;=\\frac{\\frac{1}{s}}{1+\\frac{1}{s(s+2)}}$\n\n$\\Rightarrow \\; E(s)=\\frac{s+2}{s(s+2)+1}$\n\nSteady state error, using final value theorem\n\n$e_{ss}=\\lim{s\\rightarrow 0}sE(s)$\n\n$\\;\\;\\lim{s\\rightarrow 0}\\frac{s(s+2)}{s(s+2)+1}=0$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q80": {
       "question_uid": "ee:2008:q80",
@@ -3905,8 +3826,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
         "markdown": "<img src=\"/wp-content/uploads/GATE/EE/20081/a80.jpg\" />\n\n$V_A=\\frac{R_4}{R_4+R_3} \\times V_i,$\n\n$V_A=\\frac{R_B}{R_B+R_B}\\times V_i=\\frac{V_i}{2}$\n\nLet,  $V_i$ only on onverting terminal\n\n$V_{01}=\\frac{-R_f}{R_1}V_i$\n\nHere,  $R_f=R_2||\\frac{1}{sC}=\\frac{R_2}{1+sCR_2}$\n\nLet, $V_i$ only only on non-inverting terminal\n\n$V_{02}=\\left ( 1+\\frac{R_f}{R_1} \\right )\\frac{V_i}{2}$\n\n$V_0=V_{01}+V_{02}$\n\n$\\;\\;=\\left ( 1-\\frac{R_f}{R_1} \\right )\\frac{V_i}{2}$\n\nPutting the value of $R_f$, we get\n\n$V_0=\\left ( 1-\\frac{R_2}{R_1(1+sCR_2)} \\right )\\frac{V_i}{2}$\n\nHere,   $(R_1=R_2=R_A)$\n\n$\\therefore \\;\\;\\; V_0=\\frac{1}{1+\\frac{1}{sCR_A}}\\times \\left ( \\frac{V_i}{2} \\right )$\n\nSo, it is high pass filter.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2008:q81": {
       "question_uid": "ee:2008:q81",
@@ -3954,8 +3874,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
         "markdown": "$V_{in}=\\frac{(sCR_A)}{1+sCR_A}\\times \\frac{V_i}{2}$\n\n$\\therefore \\;\\;\\; V_0=\\frac{\\frac{1}{sC}}{\\frac{1}{sC}+\\frac{R_A}{2}}V_{in}=\\frac{1}{\\left ( 1+sR_A\\frac{C}{2} \\right )}V_{in}$\n\n$\\therefore \\;\\;\\; V_{0}=\\frac{1}{\\left ( 1+sR_A\\frac{C}{2} \\right )}\\cdot \\frac{sR_AC}{1+sR_AC}V_{in}$\n\nWhich is similar to equation of a band pass filter.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q82": {
       "question_uid": "ee:2008:q82",
@@ -4003,8 +3922,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
         "markdown": "Before plugging\n\n<img src=\"/question-images/ee/2008/ee-2008-5ccc101c93.webp\" />\n\nCurrent through field winding,\n\n$$\\begin{aligned} I_f &=\\frac{V_t}{R_f} =\\frac{240}{80}=3A\\\\ I_L &=I_f+I_a \\end{aligned}$$\n\nCurrent through armature\n\n$$\\begin{aligned} I_a &=I_L-I_f\\\\ &= 15-3=12A\\\\ \\text{Back emf}&=E_a=V_t-I_aR_a\\\\ &=240-12 \\times 0.5\\\\ &=234V \\end{aligned}$$In plugging, the connection of armature winding is reversed. A strong baking torque is achieved by maintaining the supply voltage to the armature with connections reversed.\n\nSo, the net voltage across the armature resistance at the time of plugging\n\n$E_a+V=240+234=474V$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q83": {
       "question_uid": "ee:2008:q83",
@@ -4052,8 +3970,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
         "markdown": "Rated armature current= 12A\n\nArmature current during braking $I_b=1.25 \\times 12=15A$\n\nTotal armature resistance including external resistance during braking\n\n$$\\begin{aligned} R_b &=R_a+R_{ext} \\\\ R_b &= \\frac{E+V}{I_b}\\\\ &= \\frac{474}{15}=31.6\\Omega \\\\ &= R_a+R_{ext}\\\\ &= 31.6\\Omega \\\\ 0.5+R_{ext} &=31.6\\Omega \\\\ R_{ext}&= 31.1\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2008:q84": {
       "question_uid": "ee:2008:q84",
@@ -4101,8 +4018,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "<img src=\"/question-images/ee/2008/ee-2008-35eac26ff8.webp\" />\n\nMotor draws 0.6 pu current at upf\n\n$$\\begin{aligned} I_a &=0.6\\angle 0^{\\circ} \\\\ E\\angle \\delta &=V_t-jI_aX_s \\\\ &=1\\angle 0^{\\circ}-j0.6 \\times 1 \\\\ &\\approx 1.17 \\angle -30.96^{\\circ} \\\\ \\text{so}\\;\\;|E| &=1.17 pu \\\\ \\text{and}\\;\\; \\delta &=30.96^{\\circ} \\; \\text{lag} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2008:q85": {
       "question_uid": "ee:2008:q85",
@@ -4150,8 +4066,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "$$\\begin{aligned} \\text{Let power factor} &= \\cos \\phi \\; \\text{lagging} \\\\ I_a &=0.6 \\times 12=0.72pu \\\\ E\\angle \\delta &=V_t-jI_a\\angle -\\phi \\times X_s \\\\ E(\\cos \\delta +j\\sin \\delta ) &= \\\\ &=1\\angle 0^{\\circ}-jI_aX_s(\\cos \\phi -j\\sin\\phi ) \\\\ &=1-j0.72 \\times 1(\\cos \\phi -j \\sin \\phi ) \\\\ &= (1-0.72 \\sin \\phi )-j0.72 \\cos \\phi \\\\ E^2&=(1-0.72 \\sin \\phi )^2 +(0.72 \\cos \\phi )^2 \\\\ &= 1+0.72^2 \\sin ^2 \\phi -1.44 \\sin \\phi \\\\ &+0.72^2 \\cos ^2 \\phi \\\\ 1.17^2 &=1+0.72^2-1.44 \\sin \\phi \\\\ \\sin \\phi &= 0.1038\\\\ \\phi &= 5.96^{\\circ}\\\\ \\cos \\phi &=0.995 \\; \\text{lagging} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     }
   }
 }
