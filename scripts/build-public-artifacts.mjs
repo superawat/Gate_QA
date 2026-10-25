@@ -2298,8 +2298,8 @@ async function buildArtifacts() {
   writeTextIfChanged(path.join(DOCS_GENERATED_DIR, "DATA_STATUS.md"), `${dataStatusMarkdown}\n`);
   writeJsonIfChanged(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
 
-  enrichShardsWithSolutions(DETAIL_SHARDS_DIR);
   await buildDaPublicArtifacts();
+  enrichShardsWithSolutions(DETAIL_SHARDS_DIR);
   await buildHomepageSearchCatalog({ searchIndex });
 
   console.log(

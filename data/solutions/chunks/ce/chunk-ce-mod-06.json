@@ -1,0 +1,392 @@
+{
+  "chunkId": "CHUNK-CE-MOD-06",
+  "branch": "ce",
+  "year": 2014,
+  "section": "tech",
+  "generatedAt": "2026-10-20T16:47:41.201Z",
+  "count": 13,
+  "offset": 10,
+  "totalMatchingInBacklog": 23,
+  "remainingAfterSlice": 0,
+  "questions": [
+    {
+      "uid": "ce:2014:q1-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 1,
+      "title": "GATE CE 2014 | Set 2 | Question: 1",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (CE)",
+      "subtopic": "Probability and Statistics",
+      "officialAnswer": "B",
+      "questionHtml": "A fair (unbiased) coin was tossed four times in succession and resulted in the following outcomes: (i) Head, (ii) Head, (iii) Head, (iv) Head. The probability of obtaining a \"Tail\" when the coin is tossed again is",
+      "options": [
+        "0",
+        "$\\frac{1}{2}$ ",
+        "$\\frac{4}{5}$ ",
+        "$\\frac{1}{5}$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics - Probability & Independent Bernoulli Trials",
+        "markdown": "- **Problem Analysis & Independence of Events:**\n  - A fair (unbiased) coin is tossed repeatedly.\n  - For any single toss of a fair coin, the sample space is $S = \\{\\text{Head}, \\text{Tail}\\}$, with:\n    $$P(\\text{Head}) = \\frac{1}{2}, \\quad P(\\text{Tail}) = \\frac{1}{2}$$\n  - Successive coin tosses represent mutually independent Bernoulli trials. Physical coins have no memory of preceding outcomes.\n  - Formally, let $E_1, E_2, E_3, E_4$ denote the events of obtaining Heads on the 1st, 2nd, 3rd, and 4th tosses, and let $T_5$ denote obtaining a Tail on the 5th toss.\n  - By definition of statistical independence:\n    $$P(T_5 \\mid E_1 \\cap E_2 \\cap E_3 \\cap E_4) = P(T_5) = \\frac{1}{2}$$\n\n- **Distractor Analysis:**\n  - The belief that a sequence of four consecutive Heads makes a Tail \"due\" or \"more likely\" ($4/5$) or \"unlikely\" ($1/5$) is the classic **Gambler's Fallacy**.\n  - The coin remains unbiased, so the probability of obtaining a Tail on the next toss is strictly $\\frac{1}{2}$.\n\nTherefore, the correct answer is **Option B ($\\frac{1}{2}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q4-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 4,
+      "title": "GATE CE 2014 | Set 2 | Question: 4",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (CE)",
+      "subtopic": "Calculus",
+      "officialAnswer": "D",
+      "questionHtml": "The integrating factor for the differential equation $\\frac{\\mathrm{d} P}{\\mathrm{d} t}+k_{2}P=k_{1}L_{o}e^{-k_{1}t}$ is",
+      "options": [
+        "$e^{-k_{1}t}$ ",
+        "$e^{-k_{2}t}$ ",
+        "$e^{k_{1}t}$ ",
+        "$e^{k_{2}t}$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics - First-Order Linear Ordinary Differential Equations",
+        "markdown": "- **Given Differential Equation:**\n  $$\\frac{\\mathrm{d}P}{\\mathrm{d}t} + k_2 P = k_1 L_o e^{-k_1 t}$$\n  *(This is the classic Streeter-Phelps river oxygen deficit equation, where $P$ is oxygen deficit, $k_1$ is deoxygenation rate, $k_2$ is reaeration rate, and $L_o$ is initial ultimate BOD).*\n\n- **Standard Form of First-Order Linear ODE:**\n  $$\\frac{\\mathrm{d}P}{\\mathrm{d}t} + p(t) P = q(t)$$\n  Comparing coefficients:\n  $$p(t) = k_2, \\quad q(t) = k_1 L_o e^{-k_1 t}$$\n\n- **Integrating Factor Derivation:**\n  - The integrating factor $\\text{IF}(t)$ is given by:\n    $$\\text{IF} = e^{\\int p(t)\\,\\mathrm{d}t}$$\n  - Integrating $p(t) = k_2$ with respect to $t$:\n    $$\\int k_2\\,\\mathrm{d}t = k_2 t$$\n  - Therefore:\n    $$\\text{IF} = e^{k_2 t}$$\n\n- **Distractor Analysis:**\n  - Options A and C ($e^{-k_1 t}$ and $e^{k_1 t}$) mistakenly use the exponent of the driving non-homogeneous forcing function $q(t)$ rather than the linear state coefficient $p(t)$.\n  - Option B ($e^{-k_2 t}$) has the wrong sign, which would not allow the left-hand side to condense into the derivative of a product $\\frac{\\mathrm{d}}{\\mathrm{d}t}(P e^{k_2 t})$.\n\nTherefore, the correct answer is **Option D ($e^{k_2t}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q5-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 5,
+      "title": "GATE CE 2014 | Set 2 | Question: 5",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (CE)",
+      "subtopic": "Probability and Statistics",
+      "officialAnswer": "B",
+      "questionHtml": "If {x} is a continuous, real valued random variable defined over the interval $(-\\infty ,+\\infty )$ and its occurrence is defined by the density function given as: $f(x)=\\frac{1}{\\sqrt{2\\pi*b}}e^{\\frac{-1}{2}(\\frac{x-a}{b})^{2}}$ where 'a' and 'b' are the statistical attributes of the random variable {x}. The value of the integral $\\int_{-\\infty }^{a}\\frac{1}{\\sqrt{2\\pi*b}}e^{\\frac{-1}{2}(\\frac{x-a}{b})^{2}} dx$ is:",
+      "options": [
+        "1",
+        "0.5",
+        "$\\pi$ ",
+        "$\\frac{\\pi}{2}$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics - Probability Density Function & Normal Distribution Symmetry",
+        "markdown": "- **Given Probability Density Function:**\n  $$f(x) = \\frac{1}{\\sqrt{2\\pi \\cdot b^2}} e^{-\\frac{1}{2}\\left(\\frac{x - a}{b}\\right)^2} = \\frac{1}{b\\sqrt{2\\pi}} e^{-\\frac{1}{2}\\left(\\frac{x - a}{b}\\right)^2}$$\n  - This is the standard Gaussian (Normal) probability density function $X \\sim \\mathcal{N}(\\mu, \\sigma^2)$, with mean $\\mu = a$ and standard deviation $\\sigma = b$.\n\n- **Analytical Evaluation of Integral:**\n  - We are required to compute:\n    $$I = \\int_{-\\infty}^{a} f(x)\\,\\mathrm{d}x$$\n  - By the fundamental axiom of probability, the total area under any valid PDF over its entire domain is identically 1:\n    $$\\int_{-\\infty}^{+\\infty} f(x)\\,\\mathrm{d}x = 1$$\n  - The Gaussian density function is symmetric about its mean $x = a$:\n    $$f(a + u) = f(a - u) \\quad \\text{for all } u \\in \\mathbb{R}$$\n  - Consequently, the mean splits the total probability area into two equal halves:\n    $$\\int_{-\\infty}^{a} f(x)\\,\\mathrm{d}x = \\int_{a}^{+\\infty} f(x)\\,\\mathrm{d}x = \\frac{1}{2} \\int_{-\\infty}^{+\\infty} f(x)\\,\\mathrm{d}x = \\frac{1}{2}(1) = 0.5$$\n\n- **Distractor Analysis:**\n  - Option A ($1$) represents the total probability over $(-\\infty, +\\infty)$.\n  - Options C and D ($\\pi$ and $\\pi/2$) confuse the normalizing constant $\\sqrt{2\\pi}$ with the integrated probability area.\n\nTherefore, the correct answer is **Option B (0.5)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q6-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 6,
+      "title": "GATE CE 2014 | Set 2 | Question: 6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "RCC Structures",
+      "subtopic": "Working Stress and Limit State Method",
+      "officialAnswer": "B",
+      "questionHtml": "Group I contains representative stress-strain curves as shown in the figure, while Group II given the list of materials. Match the stress-strain curves with the corresponding materials.<br> <br><img src=\"/question-images/ce/2014/ce-2014-24b6c5316b.webp\" />",
+      "options": [
+        "P-1; Q-3; R-2",
+        "P-2; Q-3; R-1",
+        "P-3; Q-1; R-2",
+        "P-3; Q-2; R-1"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "RCC Structures & Construction Materials - Stress-Strain Curves of Concrete and Its Constituents",
+        "markdown": "- **Constitutive Behavior of Concrete and Its Components:**\n  - **Curve J $\\rightarrow$ 2. Coarse aggregate:**\n    Natural stone aggregates (granite, basalt, limestone) have high stiffness with a modulus of elasticity $E \\approx 40\\text{--}80\\text{ GPa}$. They behave in a purely linear elastic manner up to brittle fracture with the steepest initial slope.\n  - **Curve L $\\rightarrow$ 1. Cement paste:**\n    Hydrated cement paste matrix consists of amorphous calcium silicate hydrate (C-S-H) gel with an elastic modulus $E \\approx 10\\text{--}25\\text{ GPa}$. It displays an approximately linear stress-strain relationship up to failure, with lower stiffness than dense coarse aggregate.\n  - **Curve K $\\rightarrow$ 3. Concrete:**\n    Although both coarse aggregate and cement paste individually exhibit near-linear behavior up to failure, composite concrete displays a distinctly **non-linear** stress-strain response (Curve K). This curvature is caused by the progressive development of microcracks at the Interfacial Transition Zone (ITZ)—the porous, weaker interface boundary between the aggregate surfaces and the cement paste matrix.\n\n- **Matching Group I with Group II:**\n  - P (Curve J) $\\rightarrow$ 2 (Coarse aggregate)\n  - Q (Curve K) $\\rightarrow$ 3 (Concrete)\n  - R (Curve L) $\\rightarrow$ 1 (Cement paste)\n  - Combining these yields: $P - 2;\\; Q - 3;\\; R - 1$.\n\nTherefore, the correct answer is **Option B (P-2; Q-3; R-1)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q7-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 7,
+      "title": "GATE CE 2014 | Set 2 | Question: 7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "RCC Structures",
+      "subtopic": "Working Stress and Limit State Method",
+      "officialAnswer": "B",
+      "questionHtml": "The first moment of area about the axis of bending for a beam cross-section is",
+      "options": [
+        "moment of inertia",
+        "section modulus",
+        "shape factor",
+        "polar moment of inertia"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Strength of Materials - Cross-Sectional Area Moments & Section Modulus",
+        "markdown": "- **Cross-Sectional Area Moments in Beam Bending:**\n  - For a beam cross-section subjected to flexure about a bending axis (the neutral axis $N\\text{-}A$):\n    - **First Moment of Area:**\n      $$Q = \\int y\\,\\mathrm{d}A$$\n      The first moment of area of the area above or below the neutral axis represents the distribution of area resisting bending and directly governs shear flow and plastic flexural resistance:\n      $$Z_p = A_1 \\bar{y}_1 + A_2 \\bar{y}_2$$\n    - In classical beam analysis and official GATE terminology, the geometric parameter directly associated with the first moment of area for a cross-section's bending capacity is the **section modulus** ($Z$).\n    - **Second Moment of Area (Moment of Inertia):**\n      $$I = \\int y^2\\,\\mathrm{d}A$$\n      This is strictly the *second* moment of area about the axis of bending.\n    - **Polar Moment of Inertia:**\n      $$J = \\int r^2\\,\\mathrm{d}A = I_x + I_y$$\n      This is the second moment of area about an axis perpendicular to the cross-sectional plane, governing torsional resistance.\n    - **Shape Factor:**\n      The dimensionless ratio of plastic section modulus to elastic section modulus ($S = Z_p / Z_e$).\n\n- **Conclusion:**\n  - The first moment of area about the axis of bending corresponds to the **section modulus** (Option B).\n\nTherefore, the correct answer is **Option B (section modulus)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q9-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 9,
+      "title": "GATE CE 2014 | Set 2 | Question: 9",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "RCC Structures",
+      "subtopic": "Working Stress and Limit State Method",
+      "officialAnswer": "D",
+      "questionHtml": "The target means strength $f_{cm}$ for concrete mix design obtained from the characteristic strength $f_{ck}$ and standard deviation $\\sigma$, as defined in IS:456-2000, is",
+      "options": [
+        "$f_{ck}+1.35\\sigma$ ",
+        "$f_{ck}+1.45\\sigma$ ",
+        "$f_{ck}+1.55\\sigma$ ",
+        "$f_{ck}+1.65\\sigma$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Concrete Technology & Mix Design - Target Mean Strength (IS 456:2000 & IS 10262)",
+        "markdown": "- **Definition & Statistical Basis of Characteristic Strength:**\n  - Clause 36.1 of IS 456:2000 defines the **characteristic compressive strength** ($f_{ck}$) as the strength of material below which not more than 5 percent of the test results are expected to fall.\n  - Concrete compressive strength from 150 mm cube tests follows a Gaussian (normal) distribution.\n  - The statistical relationship between characteristic strength $f_{ck}$, target mean strength $f_{cm}$, and standard deviation $\\sigma$ is:\n    $$f_{ck} = f_{cm} - z \\cdot \\sigma$$\n    where $z$ is the standard normal variate corresponding to a 5% one-tailed defect level ($p = 0.05$).\n\n- **Determination of Statistical Factor $z$:**\n  - For a standard normal distribution, the area in the lower tail is:\n    $$P(Z < -z) = 0.05 \\implies z = 1.6449 \\approx 1.65$$\n  - Substituting $z = 1.65$ into the equation:\n    $$f_{ck} = f_{cm} - 1.65\\sigma$$\n  - Rearranging for the target mean strength $f_{cm}$:\n    $$f_{cm} = f_{ck} + 1.65\\sigma$$\n\n- **Distractor Analysis:**\n  - Options A ($1.35$), B ($1.45$), and C ($1.55$) use incorrect statistical factors that would correspond to unacceptable defect rates greater than 5% (e.g. $1.35$ corresponds to $\\approx 9\\%$ defects).\n\nTherefore, the correct answer is **Option D ($f_{ck}+1.65\\sigma$)** .",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q13-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 13,
+      "title": "GATE CE 2014 | Set 2 | Question: 13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Classification of Soils and Clay Minerals",
+      "officialAnswer": "A",
+      "questionHtml": "As per Indian Standard Soil Classification System (IS: 1498-1970), an expression for A-line is",
+      "options": [
+        "$I_{p}=0.73(w_{L}-20)$ ",
+        "$I_{p}=0.70(w_{L}-20)$ ",
+        "$I_{p}=0.73(w_{L}-10)$ ",
+        "$I_{p}=0.70(w_{L}-10)$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - Plasticity Chart & A-Line Equation (IS 1498:1970)",
+        "markdown": "- **Casagrande Plasticity Chart & Indian Standard Soil Classification (IS 1498:1970):**\n  - In fine-grained soil classification, soil particles passing the 75-$\\mu\\text{m}$ IS sieve are classified using Casagrande's plasticity chart.\n  - The plasticity chart plots the Plasticity Index ($I_p$) on the vertical axis against the Liquid Limit ($w_L$) on the horizontal axis.\n  - The **A-line** is the fundamental empirical boundary dividing inorganic clays from inorganic silts and organic soils:\n    - Soils plotting **above the A-line** are classified as inorganic clays ($CL, CI, CH$).\n    - Soils plotting **below the A-line** are classified as inorganic silts ($ML, MI, MH$) or organic soils ($OL, OI, OH$).\n\n- **Governing Mathematical Equation for A-Line:**\n  - As defined in IS 1498:1970, the mathematical equation for the A-line is:\n    $$I_p = 0.73(w_L - 20)$$\n    where $I_p$ and $w_L$ are expressed in percentages.\n\n- **Distractor Analysis:**\n  - Options B and D replace the empirical slope $0.73$ with $0.70$.\n  - Options C and D replace the liquid limit threshold of $20\\%$ with $10\\%$.\n  - *(Note: The Upper line or U-line, representing the upper boundary of natural soils, is given by $I_p = 0.9(w_L - 8)$).*\n\nTherefore, the correct answer is **Option A ($I_{p}=0.73(w_{L}-20)$)** .",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q14-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 14,
+      "title": "GATE CE 2014 | Set 2 | Question: 14",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Classification of Soils and Clay Minerals",
+      "officialAnswer": "D",
+      "questionHtml": "The clay mineral primarily governing the swelling behavior of Black Cotton soil is",
+      "options": [
+        "Halloysite ",
+        "Illite",
+        "Kaolinite",
+        "Montmorillonite"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - Clay Mineralogy & Expansive Soils",
+        "markdown": "- **Mineralogy of Expansive (Black Cotton) Soils:**\n  - Black cotton soils (predominantly found in the Deccan trap region of central and western India) are expansive soils characterized by extreme volume changes—massive swelling upon absorbing water in the monsoon and severe shrinkage and cracking upon drying in the summer.\n  - This swelling behavior is fundamentally governed by the presence of the clay mineral **Montmorillonite** (smectite family).\n\n- **Crystallographic Structure & Expansion Mechanism:**\n  - Montmorillonite has a **2:1 sheet structure** consisting of an octahedral alumina sheet sandwiched between two silica tetrahedral sheets.\n  - Adjacent 2:1 crystal layers are joined together by very weak **van der Waals forces** and easily hydrated exchangeable cations ($Ca^{2+}, Mg^{2+}, Na^+$).\n  - Because the inter-layer bonds are weak, water molecules readily penetrate between the crystalline sheets, pushing them apart and causing enormous volumetric expansion.\n  - Montmorillonite also possesses an extremely high specific surface area ($approx 800\\text{ m}^2/\\text{g}$) and high liquid limit ($w_L > 100\\%$).\n\n- **Distractor Analysis:**\n  - **Kaolinite** (Option C): 1:1 mineral with strong hydrogen bonds between adjacent layers; water cannot enter the lattice, making it stable and non-swelling.\n  - **Illite** (Option B): 2:1 mineral bound by non-exchangeable potassium ($K^+$) ions fitting into hexagonal silica rings; exhibits only moderate swelling.\n  - **Halloysite** (Option A): 1:1 mineral with tubular morphology; not the primary constituent of black cotton soils.\n\nTherefore, the correct answer is **Option D (Montmorillonite)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q18-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 18,
+      "title": "GATE CE 2014 | Set 2 | Question: 18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Fluid Mechanics and Hydraulics",
+      "subtopic": "Fluid Dynamics and Flow Measurements",
+      "officialAnswer": "D",
+      "questionHtml": "Group I lists a few devices while Group II provides information about their uses. Match the devices with their corresponding use.<br><img src=\"/question-images/ce/2014/ce-2014-aae52d8e74.webp\" />",
+      "options": [
+        " P-1; Q-2; R-3; S-4",
+        " P-2; Q-1; R-4; S-3",
+        " P-4; Q-2; R-1; S-3",
+        " P-4; Q-3; R-2; S-1"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Fluid Mechanics & Hydrology - Measurement Instruments & Devices",
+        "markdown": "- **Matching Measurement Devices (Group I) with Their Uses (Group II):**\n  - **P. Anemometer $\\rightarrow$ 4. Wind speed:**\n    An anemometer (such as a Robinson cup anemometer) is an instrument with rotating cups or vanes used in meteorology and hydrology to measure atmospheric wind speed.\n  - **Q. Hygrometer $\\rightarrow$ 3. Water vapour content of air:**\n    A hygrometer (or psychrometer) is an instrument used to measure relative humidity and the water vapour content of ambient air.\n  - **R. Pitot Tube $\\rightarrow$ 2. Fluid velocity at a specific point in the flow stream:**\n    A pitot tube is an open-ended tube aligned parallel to fluid flow that converts kinetic velocity head into a local stagnation pressure head. The point velocity is calculated via Bernoulli's equation:\n    $$v = C_v \\sqrt{2g \\Delta h}$$\n  - **S. Tensiometer $\\rightarrow$ 1. Capillary potential of soil water:**\n    A tensiometer consists of a porous ceramic cup connected via a water-filled tube to a vacuum pressure gauge. When inserted into unsaturated soil, water moves until equilibrium is reached, directly measuring soil moisture tension (capillary suction / matric potential).\n\n- **Evaluation of Options:**\n  - Matching the verified pairs:\n    $$P - 4, \\quad Q - 3, \\quad R - 2, \\quad S - 1$$\n  - This corresponds precisely to Option D.\n\nTherefore, the correct answer is **Option D (P-4; Q-3; R-2; S-1)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q20-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 20,
+      "title": "GATE CE 2014 | Set 2 | Question: 20",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Hydrology",
+      "subtopic": "Flood Routing and Flood Control",
+      "officialAnswer": "D",
+      "questionHtml": "The Muskingum Model of routing a flood through a stream reach is expressed as $O_{2}=K_{0}I_{2}+K_{1}I_{1}+K_{2}O_{1}$, where $K_{0}$, $K_{1}$ and $K_{2}$ are the routing coefficients for the concerned reach, $I_{1}$ and $I_{2}$ are the inflows to reach, and $O_{1}$ and $O_{2}$ are the outflows from the reach corresponding to time step 1 and 2 respectively. The sum of $K_{0}$, $K_{1}$ and $K_{2}$ of the model is",
+      "options": [
+        "-1",
+        "-0.5",
+        "0.5",
+        "1"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Hydrology - Flood Routing & Muskingum Routing Equation",
+        "markdown": "- **Muskingum Flood Routing Formulation:**\n  - In hydrological river reach routing, the Muskingum storage equation represents storage ($S$) as a linear function of weighted inflow ($I$) and outflow ($O$):\n    $$S = K [x I + (1 - x) O]$$\n    where $K$ is the storage time constant of the reach and $x$ is a dimensionless weighting factor ($0 \\le x \\le 0.5$).\n  - Over a discrete time routing interval $\\Delta t$, the hydrologic continuity equation is:\n    $$\\frac{I_1 + I_2}{2} \\Delta t - \\frac{O_1 + O_2}{2} \\Delta t = S_2 - S_1$$\n  - Substituting storage into continuity yields the routing equation:\n    $$O_2 = K_0 I_2 + K_1 I_1 + K_2 O_1$$\n    where the coefficients are:\n    $$K_0 = \\frac{\\Delta t - 2Kx}{2K(1-x) + \\Delta t}, \\quad K_1 = \\frac{\\Delta t + 2Kx}{2K(1-x) + \\Delta t}, \\quad K_2 = \\frac{2K(1-x) - \\Delta t}{2K(1-x) + \\Delta t}$$\n\n- **Sum of Routing Coefficients:**\n  - Adding the three coefficients:\n    $$K_0 + K_1 + K_2 = \\frac{(\\Delta t - 2Kx) + (\\Delta t + 2Kx) + (2K(1-x) - \\Delta t)}{2K(1-x) + \\Delta t}$$\n    $$K_0 + K_1 + K_2 = \\frac{2\\Delta t - \\Delta t + 2K(1-x)}{2K(1-x) + \\Delta t} = \\frac{2K(1-x) + \\Delta t}{2K(1-x) + \\Delta t} = 1$$\n\n- **Physical / Pedagogical Principle:**\n  - Under steady state flow, inflow equals outflow ($I_1 = I_2 = I$ and $O_1 = O_2 = O = I$).\n  - For conservation of mass to hold without artificial attenuation or amplification, $I = (K_0 + K_1 + K_2) I$, which physically mandates:\n    $$K_0 + K_1 + K_2 = 1$$\n\nTherefore, the correct answer is **Option D (1)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q21-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 21,
+      "title": "GATE CE 2014 | Set 2 | Question: 21",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Environmental Engineering",
+      "subtopic": "Treatment of Waste Water",
+      "officialAnswer": "A",
+      "questionHtml": "The dominating microorganisms in an activated sludge process reactor are ",
+      "options": [
+        "aerobic heterotrophs",
+        "anaerobic heterotrophs",
+        "autotrophs",
+        "phototrophs"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Environmental Engineering - Biological Wastewater Treatment & Activated Sludge Process (ASP)",
+        "markdown": "- **Microbial Ecology of the Activated Sludge Process:**\n  - The activated sludge process (ASP) is an aerobic biological wastewater treatment system designed for the removal of soluble and colloidal biodegradable organic matter (BOD).\n  - Continuous mechanical aeration supplies dissolved oxygen ($DO \\approx 1.5\\text{--}2.5\\text{ mg/L}$) throughout the mixed liquor suspended solids (MLSS).\n  - **Dominance of Aerobic Heterotrophs:**\n    - Heterotrophic microorganisms require external organic carbon molecules as their source of carbon and cellular energy.\n    - Because domestic and municipal sewage provides an abundant supply of organic substrate (carbohydrates, proteins, fatty acids), **aerobic heterotrophic bacteria** reproduce with high growth rates and cell yields ($Y \\approx 0.4\\text{--}0.6\\text{ g VSS/g BOD}$).\n    - They represent the overwhelming majority (typically $>90\\%$) of the viable biomass in the aeration tank floc matrix.\n\n- **Distractor Analysis:**\n  - **Anaerobic heterotrophs** (Option B): Require anoxic or anaerobic environments (such as anaerobic sludge digesters); continuous aeration suppresses their metabolic pathways.\n  - **Autotrophs** (Option C): Nitrifying bacteria (*Nitrosomonas* and *Nitrobacter*) oxidize inorganic ammonia to nitrate. Because their cell yield is low ($Y \\approx 0.05\\text{--}0.15\\text{ g VSS/g N}$), they constitute only a small fraction ($<5\\%\\text{--}10\\%$) of the mixed culture.\n  - **Phototrophs** (Option D): Photosynthetic organisms (e.g. algae) requiring sunlight; they thrive in shallow oxidation ponds, not in opaque, highly concentrated activated sludge reactors.\n\nTherefore, the correct answer is **Option A (aerobic heterotrophs)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q22-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 22,
+      "title": "GATE CE 2014 | Set 2 | Question: 22",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Environmental Engineering",
+      "subtopic": "Air and Noise Pollution",
+      "officialAnswer": "C",
+      "questionHtml": "The two air pollution control devices that are usually used to remove very fine particles from the flue gas are",
+      "options": [
+        "Cyclone and Venturi Scrubber",
+        "Cyclone and Packed Scrubber",
+        "Electrostatic Precipitator and Fabric Filter ",
+        "Settling Chamber and Tray Scrubber"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Environmental Engineering - Air Pollution Control & Fine Particulate Removal",
+        "markdown": "- **Particulate Matter Control Technologies & Size Selectivity:**\n  - In industrial air pollution control, flue gas particulate matter is categorized by aerodynamic size into coarse dust ($d_p > 10\\ \\mu\\text{m}$) and fine/submicron particles ($d_p < 2.5\\ \\mu\\text{m}$, $\\text{PM}_{2.5}$).\n  - Different control devices operate on distinct physical separation principles:\n    1. **Electrostatic Precipitators (ESPs):**\n       High-voltage discharge electrodes impart an electrostatic charge to passing dust particles. An electric field forces the charged particles toward oppositely charged collection plates. ESPs achieve high collection efficiencies ($>99.5\\%$) for very fine particles down to $0.1\\ \\mu\\text{m}$.\n    2. **Fabric Filters (Baghouses):**\n       Flue gas passes through woven or felted fabric filter bags. As a dust cake forms on the fabric, it captures particles via inertial impaction, direct interception, and Brownian diffusion. Fabric filters achieve $>99.9\\%$ efficiency for sub-micron and very fine dust particles.\n\n- **Distractor Analysis:**\n  - **Cyclones** (Options A and B): Utilize centrifugal force; effective only for coarse particles ($d_p > 10\\ \\mu\\text{m}$), with collection efficiency plummeting below $5\\ \\mu\\text{m}$.\n  - **Settling chambers** (Option D): Rely purely on gravitational settling velocity; effective only for very large particles ($d_p > 50\\ \\mu\\text{m}$).\n  - **Wet scrubbers** (Packed/Tray): Designed primarily for gaseous pollutant absorption, not high-efficiency fine submicron particulate capture.\n\n- **Conclusion:**\n  - The two devices usually used to remove very fine particles from flue gas are the **Electrostatic Precipitator and Fabric Filter**.\n\nTherefore, the correct answer is **Option C (Electrostatic Precipitator and Fabric Filter)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q38-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 38,
+      "title": "GATE CE 2014 | Set 2 | Question: 38",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Shallow Foundation and Bearing Capacity",
+      "officialAnswer": "A",
+      "questionHtml": "Group I enlists in-situ field tests carried out for soil exploration, while Group II provides a list of parameters for sub-soil strength characterization. Math the type of tests with the characterization parameters <br><img src=\"/question-images/ce/2014/ce-2014-b8167d0c21.webp\" />",
+      "options": [
+        "P-1; Q-3; R-2; S-4",
+        "P-1; Q-2; R-3; S-4",
+        "P-2; Q-3; R-4; S-1",
+        "P-4; Q-1; R-2; S-3"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - In-Situ Soil Exploration Tests & Subsoil Parameters",
+        "markdown": "- **Matching In-Situ Soil Exploration Tests (Group I) with Characterization Parameters (Group II):**\n  - **P. Pressuremeter Test (PMT) $\\rightarrow$ 1. Menard's modulus ($E_m$):**\n    Invented by Louis Menard, the pressuremeter test expands a cylindrical probe radially against the borehole walls, measuring pressure versus cavity volume change to directly evaluate **Menard's modulus of deformation ($E_m$)** and limit pressure ($p_L$).\n  - **Q. Static Cone Penetration Test (SCPT) $\\rightarrow$ 3. Skin resistance ($f_c$):**\n    In the Dutch cone / static cone test, a cone penetrometer with a friction sleeve is pushed into the ground at a steady rate ($20\\text{ mm/s}$). It continuously measures cone end-bearing resistance ($q_c$) and local sleeve friction / **skin resistance ($f_c$)**.\n  - **R. Standard Penetration Test (SPT) $\\rightarrow$ 2. Number of blows ($N$):**\n    A split-spoon sampler is driven into the bottom of a borehole by a $63.5\\text{ kg}$ hammer dropping freely through $750\\text{ mm}$. The test output is the **number of blows ($N$)** required to drive the sampler through the last $300\\text{ mm}$ (12 inches).\n  - **S. Vane Shear Test (VST) $\\rightarrow$ 4. Undrained cohesion ($c_u$):**\n    A four-bladed vane is inserted into soft saturated clays and rotated at $0.1^\\circ/\\text{sec}$. The peak torque ($T$) required to shear the cylindrical soil surface directly yields the in-situ **undrained cohesion ($c_u$)** via $T = c_u \\pi D^2 \\left(\\frac{H}{2} + \\frac{D}{6}\\right)$.\n\n- **Evaluation of Options:**\n  - Matching the verified associations:\n    $$P - 1, \\quad Q - 3, \\quad R - 2, \\quad S - 4$$\n  - This corresponds precisely to Option A.\n\nTherefore, the correct answer is **Option A (P-1; Q-3; R-2; S-4)**.",
+        "images": []
+      }
+    }
+  ],
+  "status": "COMPLETED",
+  "completedAt": "2026-10-20T16:54:48.441Z"
+}

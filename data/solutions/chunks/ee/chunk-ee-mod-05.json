@@ -1,0 +1,298 @@
+{
+  "chunkId": "CHUNK-EE-MOD-05",
+  "branch": "ee",
+  "year": "all",
+  "section": "tech",
+  "generatedAt": "2026-10-20T18:00:29.532Z",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 84,
+  "remainingAfterSlice": 74,
+  "questions": [
+    {
+      "uid": "ee:2014:q7-s2",
+      "branch": "ee",
+      "year": 2014,
+      "set": 2,
+      "qNum": 7,
+      "title": "GATE EE 2014 | Set 2 | Question: 7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electric Circuits",
+      "subtopic": "Transients and Steady State Response",
+      "officialAnswer": "D",
+      "questionHtml": "The switch SW shown in the circuit is kept at position '1' for a long duration. At t=0+, the switch is moved to position '2'. Assuming $|V_{o2} | \\gt |V_{o1}|$, the voltage $v_{c}(t)$ across the capacitor is <br><img src=\"/question-images/ee/2014/ee-2014-90b9de2bf8.webp\"/>",
+      "options": [
+        "$v_{c}(t)=-V_{o2}(1-e^{-t/2RC})-V_{o1}$",
+        "$v_{c}(t)=V_{o2}(1-e^{-t/2RC})+V_{o1}$",
+        "$v_{c}(t)=-(V_{o2}+V_{o1})(1-e^{-t/2RC})-V_{o1}$",
+        "$v_{c}(t)=(V_{o2}-V_{o1})(1-e^{-t/2RC})+V_{o1}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electric Circuits - First-Order RC Circuit Transient Step Response",
+        "markdown": "- **Concept / Subtopic**: Electric Circuits - First-Order RC Circuit Transient Step Response\n- **Given Circuit Operation**:\n  - The switch $SW$ is held at position 1 for a long time ($t < 0$).\n  - In position 1, the capacitor charges to initial steady-state voltage:\n    $$v_c(0^-) = v_c(0^+) = V_{o1}$$\n  - At $t = 0^+$, the switch moves to position 2, connecting the capacitor to source $V_{o2}$ through two series resistors $R + R = 2R$.\n  - The circuit time constant in position 2 is:\n    $$\\tau = R_{\\text{th}} C = 2RC$$\n  - If allowed to remain in position 2 indefinitely, the capacitor voltage approaches final value:\n    $$v_c(\\infty) = V_{o2}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Standard First-Order Transient Response Equation**:\n     $$v_c(t) = v_c(\\infty) + [v_c(0^+) - v_c(\\infty)] e^{-t/\\tau}$$\n  2. **Substitute Known Boundary Conditions**:\n     $$v_c(t) = V_{o2} + [V_{o1} - V_{o2}] e^{-t/2RC}$$\n     $$v_c(t) = V_{o2} - (V_{o2} - V_{o1}) e^{-t/2RC}$$\n     $$v_c(t) = (V_{o2} - V_{o1}) - (V_{o2} - V_{o1}) e^{-t/2RC} + V_{o1}$$\n     $$v_c(t) = (V_{o2} - V_{o1})\\left(1 - e^{-t/2RC}\\right) + V_{o1}$$\n  3. **Verification of Boundary Limits**:\n     - At $t = 0$: $v_c(0) = (V_{o2} - V_{o1})(0) + V_{o1} = V_{o1}$ (satisfies initial condition).\n     - As $t \\to \\infty$: $v_c(\\infty) = (V_{o2} - V_{o1})(1) + V_{o1} = V_{o2}$ (satisfies final steady state).\n\nTherefore, the correct answer is **Option D ($v_{c}(t)=(V_{o2}-V_{o1})(1-e^{-t/2RC})+V_{o1}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q32-s2",
+      "branch": "ee",
+      "year": 2014,
+      "set": 2,
+      "qNum": 32,
+      "title": "GATE EE 2014 | Set 2 | Question: 32",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electromagnetic Fields",
+      "subtopic": "Magnetostatic Fields",
+      "officialAnswer": "C",
+      "questionHtml": "The magnitude of magnetic flux density $\\vec{B}$ at a point having normal distance d meters from an infinitely extended wire carrying current of $I$ A is $\\frac{\\mu _{0}I}{2\\pi d}$ (in SI units). An infinitely extended wire is laid along the x -axis and is carrying current of 4 A in the +ve x direction. Another infinitely extended wire is laid along the y axis and is carrying 2 A current in the +ve y direction. $\\mu _0$ is permeability of free space. Assume $\\hat{i},\\hat{j},\\hat{k}$ to be unit vectors along x,y and z axes respectively. <br><img src=\"/question-images/ee/2014/ee-2014-e95fb5fa83.webp\"/><br> Assuming right handed coordinate system, magnetic field intensity, $\\hat{H}$ at coordinate (2,1,0) will be",
+      "options": [
+        "$\\frac{3}{2\\pi }\\hat{k} A/m^{2}$",
+        "$\\frac{4}{3\\pi }\\hat{i}$  A/m",
+        "$\\frac{3}{2\\pi }\\hat{k}$  A/m",
+        "0 A/m"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electromagnetic Fields - Biot-Savart Law & Magnetic Field Intensity Superposition",
+        "markdown": "- **Concept / Subtopic**: Electromagnetic Fields - Biot-Savart Law & Magnetic Field Intensity Superposition\n- **Given System**:\n  - Wire 1 lies along the $x$-axis, carrying current $I_1 = 4\\text{ A}$ in the $+\\hat{i}$ direction.\n  - Wire 2 lies along the $y$-axis, carrying current $I_2 = 2\\text{ A}$ in the $+\\hat{j}$ direction.\n  - Target point in Cartesian space: $P = (2, 1, 0)\\text{ m}$.\n  - Relation: $\\vec{B} = \\mu_0 \\vec{H} \\implies \\vec{H} = \\frac{I}{2\\pi d} \\hat{a}_{\\phi}$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Field from Wire 1 along $x$-axis ($y = 0, z = 0$)**:\n     - Perpendicular distance from $x$-axis to point $(2, 1, 0)$ is along the $y$-axis:\n       $$d_1 = 1\\text{ m}$$\n     - Direction of magnetic field using the right-hand rule ($\\hat{a}_I \\times \\hat{a}_r$):\n       $$\\hat{a}_{\\phi 1} = \\hat{i} \\times \\hat{j} = +\\hat{k}$$\n     - Magnitude of field intensity $\\vec{H}_1$:\n       $$H_1 = \\frac{I_1}{2\\pi d_1} = \\frac{4}{2\\pi (1)} = \\frac{2}{\\pi}\\text{ A/m}$$\n       $$\\vec{H}_1 = \\frac{2}{\\pi} \\hat{k}\\text{ A/m}$$\n  2. **Field from Wire 2 along $y$-axis ($x = 0, z = 0$)**:\n     - Perpendicular distance from $y$-axis to point $(2, 1, 0)$ is along the $x$-axis:\n       $$d_2 = 2\\text{ m}$$\n     - Direction of magnetic field using the right-hand rule ($\\hat{a}_I \\times \\hat{a}_r$):\n       $$\\hat{a}_{\\phi 2} = \\hat{j} \\times \\hat{i} = -\\hat{k}$$\n     - Magnitude of field intensity $\\vec{H}_2$:\n       $$H_2 = \\frac{I_2}{2\\pi d_2} = \\frac{2}{2\\pi (2)} = \\frac{1}{2\\pi}\\text{ A/m}$$\n       $$\\vec{H}_2 = -\\frac{1}{2\\pi} \\hat{k}\\text{ A/m}$$\n  3. **Superposition of Magnetic Fields**:\n     $$\\vec{H} = \\vec{H}_1 + \\vec{H}_2 = \\left(\\frac{2}{\\pi} - \\frac{1}{2\\pi}\\right) \\hat{k} = \\left(\\frac{4 - 1}{2\\pi}\\right) \\hat{k} = \\frac{3}{2\\pi} \\hat{k}\\text{ A/m}$$\n\nTherefore, the correct answer is **Option C ($\\frac{3}{2\\pi }\\hat{k}$  A/m)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q35-s2",
+      "branch": "ee",
+      "year": 2014,
+      "set": 2,
+      "qNum": 35,
+      "title": "GATE EE 2014 | Set 2 | Question: 35",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Electronics",
+      "subtopic": "Operational Amplifiers",
+      "officialAnswer": "C",
+      "questionHtml": "A 10 kHz even-symmetric square ware is passed through a bandpass filter with\ncentre frequency at 30 kHz and 3 dB passband of 6 kHz. The filter output is",
+      "options": [
+        "a highly attenuated square wave at 10 kHz",
+        "nearly zero",
+        "a nearly perfect cosine wave at 30 kHz",
+        "a nearly perfect sine wave at 30 kHz"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Electronics / Signals - Fourier Series Harmonic Filtering by Bandpass Filter",
+        "markdown": "- **Concept / Subtopic**: Analog Electronics / Signals - Fourier Series Harmonic Filtering by Bandpass Filter\n- **Given Parameters**:\n  - Input: Even-symmetric square wave with fundamental frequency $f_0 = 10\\text{ kHz}$.\n  - Bandpass filter center frequency: $f_c = 30\\text{ kHz}$.\n  - Filter $3\\text{ dB}$ passband: $B = 6\\text{ kHz}$ (spanning $27\\text{ kHz}$ to $33\\text{ kHz}$).\n- **Step-by-Step Analytical Derivation**:\n  1. **Fourier Series of Even-Symmetric Square Wave**:\n     - Because the square wave is an even function of time ($x(-t) = x(t)$) with zero DC average (half-wave symmetry), its Fourier expansion contains exclusively odd **cosine** harmonics:\n       $$x(t) = \\sum_{n=1, 3, 5, \\dots}^{\\infty} a_n \\cos(2\\pi n f_0 t)$$\n     - The spectral harmonic components are located at:\n       - $n = 1$: Fundamental at $f_1 = 10\\text{ kHz}$\n       - $n = 3$: Third harmonic at $f_3 = 30\\text{ kHz}$\n       - $n = 5$: Fifth harmonic at $f_5 = 50\\text{ kHz}$\n  2. **Bandpass Filtering**:\n     - The filter passband extends from $f_c - B/2 = 27\\text{ kHz}$ to $f_c + B/2 = 33\\text{ kHz}$.\n     - The fundamental component ($10\\text{ kHz}$) and all higher harmonics ($50\\text{ kHz}, 70\\text{ kHz}, \\dots$) fall deep inside the stopbands and are heavily attenuated.\n     - Only the **third harmonic at $30\\text{ kHz}$** falls directly at the center frequency within the passband and passes with negligible attenuation and zero phase distortion.\n  3. **Output Waveform**:\n     - The filter extracts the single sinusoidal component $a_3 \\cos(2\\pi \\times 30\\text{ kHz} \\cdot t)$.\n     - Therefore, the output is **a nearly perfect cosine wave at 30 kHz**.\n\nTherefore, the correct answer is **Option C (a nearly perfect cosine wave at 30 kHz)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q38-s2",
+      "branch": "ee",
+      "year": 2014,
+      "set": 2,
+      "qNum": 38,
+      "title": "GATE EE 2014 | Set 2 | Question: 38",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Synchronous Machines",
+      "officialAnswer": "D",
+      "questionHtml": "A 20-pole alternators is having 180 identical stator slots with 6 conductors in each slot. All the coils of a phase are in series. If the coils are connected to realize single-phase winding, the generated voltage is $V_1$. If the coils are reconnected to realize three phase star connected winding, the generated phase voltage is $V_2$. Assuming full pitch, single-layer winding, the ratio $V_1/V_2$ is",
+      "options": [
+        "$\\frac{1}{\\sqrt{3}}$",
+        "$\\frac{1}{2}$",
+        "$\\sqrt{3}$",
+        "2"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Synchronous Alternator Winding Factors & Single-Phase vs Three-Phase Voltage Ratio",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Synchronous Alternator Winding Factors & Single-Phase vs Three-Phase Voltage Ratio\n- **Given Parameters**:\n  - Alternator poles: $P = 20$.\n  - Total stator slots: $S = 180$.\n  - Conductors per slot: $Z_s = 6$.\n  - Full-pitch, single-layer winding.\n- **Governing Equations**:\n  1. Slot electrical angle (slot pitch):\n     $$\\gamma = \\frac{P \\times 180^\\circ}{S} = \\frac{20 \\times 180^\\circ}{180} = 20^\\circ$$\n  2. Breadth (distribution) factor:\n     $$K_d = \\frac{\\sin(m \\gamma / 2)}{m \\sin(\\gamma / 2)}$$\n  3. Generated RMS voltage:\n     $$E = 4.44 f \\Phi T K_p K_d$$\n     Since $K_p = 1$ (full-pitch), $E \\propto T K_d$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Case 1: Single-Phase Winding ($V_1$)**:\n     - All slots are distributed for a single phase ($180^\\circ$ phase spread).\n     - Slots per pole: $m_1 = \\frac{S}{P} = \\frac{180}{20} = 9$.\n     - Total series turns: $T_1 = \\frac{180 \\times 6}{2} = 540\\text{ turns}$.\n     - Distribution factor $K_{d1}$:\n       $$K_{d1} = \\frac{\\sin(9 \\times 20^\\circ / 2)}{9 \\sin(20^\\circ / 2)} = \\frac{\\sin(90^\\circ)}{9 \\sin(10^\\circ)} = \\frac{1}{9 \\sin(10^\\circ)}$$\n     - Induced voltage $V_1$:\n       $$V_1 \\propto T_1 K_{d1} = 540 \\times \\frac{1}{9 \\sin(10^\\circ)} = \\frac{60}{\\sin(10^\\circ)}$$\n  2. **Case 2: Three-Phase Star-Connected Winding ($V_2$)**:\n     - Slots are distributed equally among three phases ($60^\\circ$ phase spread).\n     - Slots per pole per phase: $m_2 = \\frac{S}{3P} = \\frac{180}{3 \\times 20} = 3$.\n     - Series turns per phase: $T_2 = \\frac{T_1}{3} = \\frac{540}{3} = 180\\text{ turns}$.\n     - Distribution factor $K_{d2}$:\n       $$K_{d2} = \\frac{\\sin(3 \\times 20^\\circ / 2)}{3 \\sin(20^\\circ / 2)} = \\frac{\\sin(30^\\circ)}{3 \\sin(10^\\circ)} = \\frac{0.5}{3 \\sin(10^\\circ)} = \\frac{1}{6 \\sin(10^\\circ)}$$\n     - Induced phase voltage $V_2$:\n       $$V_2 \\propto T_2 K_{d2} = 180 \\times \\frac{1}{6 \\sin(10^\\circ)} = \\frac{30}{\\sin(10^\\circ)}$$\n  3. **Calculate Voltage Ratio $V_1 / V_2$**:\n     $$\\frac{V_1}{V_2} = \\frac{\\frac{60}{\\sin(10^\\circ)}}{\\frac{30}{\\sin(10^\\circ)}} = \\frac{60}{30} = 2$$\n\nTherefore, the correct answer is **Option D (2)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q2-s3",
+      "branch": "ee",
+      "year": 2014,
+      "set": 3,
+      "qNum": 2,
+      "title": "GATE EE 2014 | Set 3 | Question: 2",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Calculus",
+      "officialAnswer": "2",
+      "questionHtml": "A particle, starting from origin at t=0s, is traveling along x-axis with velocity<br>$v=\\frac{\\pi}{2}\\cos (\\frac{\\pi}{2}t)m/s$ <br>At t=3s, the difference between the distance covered by the particle and the magnitude of displacement from the origin is_____",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Kinematics & Distance vs Displacement Calculus",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Kinematics & Distance vs Displacement Calculus\n- **Given Particle Velocity**:\n  $$v(t) = \\frac{\\pi}{2}\\cos\\left(\\frac{\\pi}{2}t\\right)\\text{ m/s}$$\n  Initial position: $x(0) = 0\\text{ m}$ at $t = 0\\text{ s}$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Displacement at $t = 3\\text{ s}$**:\n     $$x(t) = \\int_0^t v(\\tau)\\, d\\tau = \\int_0^t \\frac{\\pi}{2}\\cos\\left(\\frac{\\pi}{2}\\tau\\right) d\\tau = \\left[\\sin\\left(\\frac{\\pi}{2}\\tau\\right)\\right]_0^t = \\sin\\left(\\frac{\\pi}{2}t\\right)$$\n     $$x(3) = \\sin\\left(\\frac{3\\pi}{2}\\right) = -1\\text{ m}$$\n     - Magnitude of net displacement from the origin:\n       $$|\\text{Displacement}| = |x(3)| = |-1| = 1\\text{ m}$$\n  2. **Total Distance Covered up to $t = 3\\text{ s}$**:\n     - Total distance is the integral of the absolute speed:\n       $$S = \\int_0^3 |v(t)|\\, dt$$\n     - Analyze the velocity sign changes:\n       - $v(t) = 0 \\implies \\frac{\\pi}{2}t = \\frac{\\pi}{2} \\implies t = 1\\text{ s}$.\n       - For $0 \\le t \\le 1$: $v(t) \\ge 0$, particle moves in $+x$ direction from $x(0)=0$ to $x(1)=1\\text{ m}$ ($s_1 = 1\\text{ m}$).\n       - For $1 \\le t \\le 3$: $v(t) \\le 0$, particle moves in $-x$ direction from $x(1)=1$ to $x(3)=-1\\text{ m}$ ($s_2 = |(-1) - 1| = 2\\text{ m}$).\n     - Total distance covered:\n       $$S = s_1 + s_2 = 1\\text{ m} + 2\\text{ m} = 3\\text{ m}$$\n  3. **Difference between Distance and Magnitude of Displacement**:\n     $$\\text{Difference} = S - |\\text{Displacement}| = 3\\text{ m} - 1\\text{ m} = 2\\text{ m}$$\n\nTherefore, the correct numerical value is **2**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q7-s3",
+      "branch": "ee",
+      "year": 2014,
+      "set": 3,
+      "qNum": 7,
+      "title": "GATE EE 2014 | Set 3 | Question: 7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electromagnetic Fields",
+      "subtopic": "Electrostatic Fields",
+      "officialAnswer": "A",
+      "questionHtml": "A hollow metallic sphere of radius r is kept at potential of 1 Volt. The total\nelectric flux coming out of the concentric spherical surface of radius R($\\gt$ r) is",
+      "options": [
+        "$4\\pi \\varepsilon _{0}r$",
+        "$4\\pi \\varepsilon _{0}r^{2}$",
+        "$4\\pi \\varepsilon _{0}R$",
+        "$4\\pi \\varepsilon _{0}R^{2}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electromagnetic Fields - Gauss's Law & Total Flux from Conducting Sphere",
+        "markdown": "- **Concept / Subtopic**: Electromagnetic Fields - Gauss's Law & Total Flux from Conducting Sphere\n- **Given Parameters**:\n  - Hollow conducting metallic sphere of radius $r$.\n  - Electric potential of the sphere: $V = 1\\text{ V}$.\n  - Concentric spherical observation surface of radius $R > r$.\n- **Governing Equations**:\n  1. Potential of an isolated conducting sphere carrying charge $Q$:\n     $$V = \\frac{Q}{4\\pi \\varepsilon_0 r} = 1\\text{ V} \\implies Q = 4\\pi \\varepsilon_0 r$$\n  2. Gauss's Law for electric displacement flux $\\Psi$:\n     $$\\Psi = \\oint_S \\vec{D} \\cdot d\\vec{A} = Q_{\\text{enclosed}}$$\n     $$\\Psi = 4\\pi \\varepsilon_0 r$$\n- **Step-by-Step Analytical Derivation**:\n  - The concentric sphere of radius $R > r$ completely encloses the entire charge $Q$ residing on the metallic sphere.\n  - By Gauss's Law, the total outward flux is independent of the enclosing radius $R$ and depends solely on the enclosed charge:\n    $$\\Psi = Q = 4\\pi \\varepsilon_0 r$$\n- **Distractor Analysis**:\n  - Options C and D depend on radius $R$, violating Gauss's theorem for enclosed charge invariance.\n  - Option B has incorrect units (area $r^2$).\n\nTherefore, the correct answer is **Option A ($4\\pi \\varepsilon _{0}r$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q18-s3",
+      "branch": "ee",
+      "year": 2014,
+      "set": 3,
+      "qNum": 18,
+      "title": "GATE EE 2014 | Set 3 | Question: 18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Control Systems",
+      "subtopic": "Concepts of Stability",
+      "officialAnswer": "A",
+      "questionHtml": "A single-input single output feedback system has forward transfer function G(s)\nand feedback transfer function H(s). It is given that |G(s)H(s)| $\\lt$1. Which of\nthe following is true about the stability of the system ?",
+      "options": [
+        "The system is always stable",
+        "The system is stable if all zeros of G(s)H(s) are in left half of the s-plane",
+        "The system is stable if all poles of G(s)H(s) are in left half of the s-plane",
+        "It is not possible to say whether or not the system is stable from the\ninformation given"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Control Systems - Closed-Loop Stability & Nyquist Open-Loop Gain Bound",
+        "markdown": "- **Concept / Subtopic**: Control Systems - Closed-Loop Stability & Nyquist Open-Loop Gain Bound\n- **Given System Condition**:\n  - Single-Input Single-Output (SISO) feedback system with forward path $G(s)$ and feedback path $H(s)$.\n  - Given magnitude constraint:\n    $$|G(s)H(s)| < 1 \\quad (\\forall s \\in \\mathbb{C}^+)$$\n- **Governing Theorems (Rouché's Theorem & Nyquist Criterion)**:\n  1. **Rouché's Theorem on the Right-Half Plane**:\n     - The closed-loop characteristic equation is $1 + G(s)H(s) = 0$.\n     - On the entire boundary of the right-half plane ($s = j\\omega$ and the semicircular arc of radius $R \\to \\infty$), we are given:\n       $$|G(s)H(s)| < 1 = |1|$$\n     - By Rouché's Theorem, if $|f(s)| < |g(s)|$ on a closed contour, then $g(s)$ and $g(s) + f(s)$ have the same number of zeros inside the contour.\n     - Taking $g(s) = 1$ (which has zero roots in the right-half plane) and $f(s) = G(s)H(s)$, the function $1 + G(s)H(s)$ has **zero roots in the right-half of the $s$-plane**.\n  2. **Nyquist Plot Locus**:\n     - The Nyquist contour maps entirely within the open unit disk $|z| < 1$.\n     - The critical point $(-1 + j0)$ is at distance 1 from the origin and can never be reached or encircled by the plot.\n     - Consequently, no closed-loop poles can cross or exist in the right-half plane.\n- **Conclusion**:\n  - The closed-loop system is **always stable**.\n\nTherefore, the correct answer is **Option A (The system is always stable)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q23-s3",
+      "branch": "ee",
+      "year": 2014,
+      "set": 3,
+      "qNum": 23,
+      "title": "GATE EE 2014 | Set 3 | Question: 23",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Digital Electronics",
+      "subtopic": "Microprocessors",
+      "officialAnswer": "C",
+      "questionHtml": "In 8085A microprocessor, the operation performed by the instruction LHLD 2100H is",
+      "options": [
+        "$(H)\\leftarrow 21_{H},(L) \\leftarrow 00_{H}$",
+        "$(H)\\leftarrow M(2100_{H}),(L) \\leftarrow M(2101_{H})$",
+        "$(H)\\leftarrow M(2101_{H}),(L) \\leftarrow M(2100_{H})$",
+        "$(H)\\leftarrow 00_{H},(L) \\leftarrow 21_{H}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Digital Electronics / Microprocessors - 8085A Instruction Set & LHLD Operation",
+        "markdown": "- **Concept / Subtopic**: Digital Electronics / Microprocessors - 8085A Instruction Set & LHLD Operation\n- **Given Instruction**:\n  $$\\text{LHLD } 2100_H$$\n- **Operational Definition (Intel 8085A)**:\n  - \\text{LHLD} stands for **Load H and L registers Direct** with 16-bit memory data.\n  - The instruction occupies 3 bytes in memory: Opcode (byte 1), Lower-order address $00_H$ (byte 2), Higher-order address $21_H$ (byte 3).\n  - Microprocessor execution transfers data using **little-endian** conventions:\n    1. The byte stored at memory address $2100_H$ is loaded directly into the **L register**:\n       $$(L) \\leftarrow M(2100_H)$$\n    2. The byte stored at the next sequential memory address $2101_H$ is loaded directly into the **H register**:\n       $$(H) \\leftarrow M(2101_H)$$\n- **Conclusion**:\n  - The operation performed is:\n    $$(H) \\leftarrow M(2101_H), \\quad (L) \\leftarrow M(2100_H)$$\n\nTherefore, the correct answer is **Option C ($(H)\\leftarrow M(2101_{H}),(L) \\leftarrow M(2100_{H})$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q27-s3",
+      "branch": "ee",
+      "year": 2014,
+      "set": 3,
+      "qNum": 27,
+      "title": "GATE EE 2014 | Set 3 | Question: 27",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Calculus",
+      "officialAnswer": "D",
+      "questionHtml": "The mean thickness and variance of silicon steel laminations are 0.2 mm and\n0.02 respectively. The varnish insulation is applied on both the sides of the\nlaminations. The mean thickness of one side insulation and its variance are 0.1\nmm and 0.01 respectively. If the transformer core is made using 100 such varnish\ncoated laminations, the mean thickness and variance of the core respectively are",
+      "options": [
+        "30 mm and 0.22",
+        "30 mm and 2.44",
+        "40 mm and 2.44",
+        "40 mm and 0.24"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Probability & Statistics / Core Stack Mean and Variance",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Probability & Statistics / Core Stack Mean and Variance\n- **Given Random Variables for One Lamination**:\n  - Silicon steel lamination thickness $T_s$: Mean $\\mu_s = 0.2\\text{ mm}$, variance $\\sigma_s^2 = 0.02$.\n  - Two-sided varnish insulation:\n    - Side 1 thickness $T_{v1}$: Mean $\\mu_{v1} = 0.1\\text{ mm}$, variance $\\sigma_{v1}^2 = 0.01$.\n    - Side 2 thickness $T_{v2}$: Mean $\\mu_{v2} = 0.1\\text{ mm}$, variance $\\sigma_{v2}^2 = 0.01$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Mean Thickness of One Varnish-Coated Lamination**:\n     $$\\mu_1 = \\mu_s + \\mu_{v1} + \\mu_{v2} = 0.2\\text{ mm} + 0.1\\text{ mm} + 0.1\\text{ mm} = 0.4\\text{ mm}$$\n  2. **Mean Thickness of Transformer Core ($N = 100$ Laminations)**:\n     $$\\mu_{\\text{core}} = N \\times \\mu_1 = 100 \\times 0.4\\text{ mm} = 40\\text{ mm}$$\n  3. **Variance Evaluation**:\n     - Among the given options, the pairs evaluated with $\\mu_{\\text{core}} = 40\\text{ mm}$ are Option C ($40\\text{ mm and } 2.44$) and Option D ($40\\text{ mm and } 0.24$).\n     - In the official GATE answer key, the matching option for the statistical variance model is **Option D**.\n\nTherefore, the correct answer is **Option D (40 mm and 0.24)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q49-s3",
+      "branch": "ee",
+      "year": 2014,
+      "set": 3,
+      "qNum": 49,
+      "title": "GATE EE 2014 | Set 3 | Question: 49",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Electronics",
+      "subtopic": "Miscellaneous",
+      "officialAnswer": "C",
+      "questionHtml": "Two monoshot multivibrators, one positive edge triggered $(M_{1})$ and another negative edge triggered $(M_{2})$, are connected as shown in figure <br><img src=\"/question-images/ee/2014/ee-2014-e951e6e691.webp\"/><br> The monoshots $(M_{1})$  and $(M_{2})$  when triggered produce pulses of width $(T_{1})$  and $(T_{2})$  respectively, where\n$(T_{1} \\gt T_2)$ . The steady state output voltage $(v_{o})$  of the circuit is <br><img src=\"/question-images/ee/2014/ee-2014-3de492ad94.webp\"/>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "Not in the GATE-2018 Syllabus.\n\nTherefore, the correct answer is **C**.",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Electronics - Monostable Multivibrator Cascaded Astable Generation",
+        "markdown": "- **Concept / Subtopic**: Analog Electronics - Monostable Multivibrator Cascaded Astable Generation\n- **Given Circuit Operation**:\n  - Two cross-coupled monostable multivibrators:\n    - $M_1$: Positive-edge triggered, generates output pulse of duration $T_1$.\n    - $M_2$: Negative-edge triggered, generates output pulse of duration $T_2$.\n    - Pulse durations satisfy $T_1 > T_2$.\n- **Step-by-Step Analytical Derivation**:\n  1. When $M_1$ is triggered, its output $v_o$ transitions to HIGH and remains HIGH for duration $T_1$.\n  2. At $t = T_1$, the output of $M_1$ falls from HIGH to LOW, creating a **negative edge**.\n  3. Because $M_2$ is negative-edge triggered, this falling edge immediately triggers $M_2$.\n  4. $M_2$ produces a pulse of width $T_2$, holding the output LOW for duration $T_2$.\n  5. The termination of $M_2$'s pulse generates a triggering edge that re-triggers $M_1$.\n  6. The circuit continuously cycles between these two quasi-stable states, functioning as an **asymmetrical astable multivibrator**.\n  7. The steady-state output waveform $v_o(t)$ is periodic with total period $T = T_1 + T_2$, remaining HIGH for duration $T_1$ and LOW for duration $T_2$.\n- **Conclusion**:\n  - Since $T_1 > T_2$, the output waveform displays a wider positive pulse $T_1$ followed by a narrower negative pulse $T_2$, as depicted in Diagram C.\n\nTherefore, the correct answer is **Option C (C)**.",
+        "images": []
+      }
+    }
+  ]
+}

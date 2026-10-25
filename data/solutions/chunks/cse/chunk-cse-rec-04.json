@@ -1,0 +1,98 @@
+{
+  "chunkId": "CHUNK-CSE-REC-04",
+  "branch": "cse",
+  "year": 2020,
+  "section": "all",
+  "status": "COMPLETED",
+  "count": 11,
+  "questions": [
+    {
+      "uid": "go:359722",
+      "solution": {
+        "concept": "General Aptitude - Banking Regulations & NPA Holding Period",
+        "markdown": "- **Concept / Subtopic**: General Aptitude - Banking Regulations & NPA Holding Period\n- **Given Information**:\n  - Initial holding period of loans in $1993$: $4\\text{ quarters} = 360\\text{ days}$.\n  - Duration of one calendar/financial quarter: $\\frac{360}{4} = 90\\text{ days}$.\n  - The definition of NPA was revised **thrice** between $1993$ and $2004$.\n  - At each revision, the holding period was reduced by **one quarter**.\n- **Step-by-Step Analytical Derivation**:\n  1. Initial period ($1993$): $4\\text{ quarters} = 360\\text{ days}$.\n  2. After 1st revision: $4 - 1 = 3\\text{ quarters} = 270\\text{ days}$.\n  3. After 2nd revision: $3 - 1 = 2\\text{ quarters} = 180\\text{ days}$.\n  4. After 3rd revision ($2004$): $2 - 1 = 1\\text{ quarter} = 90\\text{ days}$.\n  5. Thus, following the third revision, the NPA recognition window became $90\\text{ days}$.\n\nTherefore, the correct answer is **Option B ($90$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359715",
+      "solution": {
+        "concept": "Quantitative Aptitude - Number Theory & String Pattern Frequency",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Number Theory & String Pattern Frequency\n- **Problem Statement**:\n  - Count the total number of times the digit sequence **\"37\"** appears across all 4-digit integers from $1001$ to $9999$.\n  - Note: The question asks how many times the group \"37\" appears, which is the total count of pattern occurrences across the integer range.\n- **Step-by-Step Analytical Derivation**:\n  - A 4-digit integer has four digit positions: $d_1 d_2 d_3 d_4$, where $d_1 \\in \\{1, 2, \\dots, 9\\}$ and $d_2, d_3, d_4 \\in \\{0, 1, \\dots, 9\\}$.\n  - The two-digit string \"37\" can appear in three disjoint position windows:\n    1. **Window 1: First two digits ($d_1 d_2 = 37$)**:\n       - The numbers are of the form $37 d_3 d_4$.\n       - $d_3$ can take any of the 10 values $\\{0, 1, \\dots, 9\\}$.\n       - $d_4$ can take any of the 10 values $\\{0, 1, \\dots, 9\\}$.\n       - Number of occurrences: $10 \\times 10 = 100$.\n       - All these numbers (from $3700$ to $3799$) lie strictly inside the range $[1001, 9999]$.\n    2. **Window 2: Middle two digits ($d_2 d_3 = 37$)**:\n       - The numbers are of the form $d_1 3 7 d_4$.\n       - $d_1$ can take any of the 9 non-zero values $\\{1, 2, \\dots, 9\\}$.\n       - $d_4$ can take any of the 10 values $\\{0, 1, \\dots, 9\\}$.\n       - Number of occurrences: $9 \\times 10 = 90$.\n    3. **Window 3: Last two digits ($d_3 d_4 = 37$)**:\n       - The numbers are of the form $d_1 d_2 3 7$.\n       - $d_1$ can take any of the 9 values $\\{1, 2, \\dots, 9\\}$.\n       - $d_2$ can take any of the 10 values $\\{0, 1, \\dots, 9\\}$.\n       - Number of occurrences: $9 \\times 10 = 90$.\n  - **Total Occurrences of the String \"37\"**:\n    $$\\text{Total appearances} = 100 + 90 + 90 = 280$$\n  - *(Note: In the number $3737$, the group \"37\" appears twice—once in Window 1 and once in Window 3—contributing 2 distinct occurrences to the total count of 280).*\n\nTherefore, the correct answer is **Option C ($280$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359713",
+      "solution": {
+        "concept": "Geometry - Right Triangle in Semicircle & Thales's Theorem",
+        "markdown": "- **Concept / Subtopic**: Geometry - Right Triangle in Semicircle & Thales's Theorem\n- **Given Configuration**:\n  - A semicircle with center $O$ has diameter $AB$ (which is chord $\\overline{AB}$).\n  - Let the radius of the semicircle be $R$, so the length of the diameter is $\\overline{AB} = 2R$.\n  - $C$ is a point on the circular arc of the semicircle.\n  - By Thales's Theorem, the inscribed angle subtended by the diameter is a right angle:\n    $$\\angle ACB = 90^\\circ$$\n- **Step-by-Step Analytical Derivation**:\n  1. Let $\\angle CAB = \\theta$. Since $\\angle ACB = 90^\\circ$:\n     $$\\overline{AC} = \\overline{AB} \\cos \\theta = 2R \\cos \\theta$$\n     $$\\overline{CB} = \\overline{AB} \\sin \\theta = 2R \\sin \\theta$$\n  2. Form the ratio:\n     $$F(\\theta) = \\frac{\\overline{AC} + \\overline{CB}}{\\overline{AB}} = \\frac{2R(\\cos \\theta + \\sin \\theta)}{2R} = \\cos \\theta + \\sin \\theta$$\n  3. Maximize $F(\\theta)$ over the domain $0 < \\theta < 90^\\circ$:\n     $$F(\\theta) = \\sqrt{2} \\sin\\left(\\theta + 45^\\circ\\right)$$\n     - The maximum occurs when $\\theta = 45^\\circ$ (i.e. $C$ is the midpoint of the semicircle arc, making $\\triangle ABC$ an isosceles right-angled triangle):\n     $$F_{\\max} = \\sqrt{2} \\sin(90^\\circ) = \\sqrt{2}$$\n  4. Thus, the maximum ratio is $\\sqrt{2}$.\n\nTherefore, the correct answer is **Option A ($\\sqrt{2}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359710",
+      "solution": {
+        "concept": "Data Interpretation - Revenue, Expenditure & Profit Percentage",
+        "markdown": "- **Concept / Subtopic**: Data Interpretation - Revenue, Expenditure & Profit Percentage\n- **Given Parameters**:\n  - In $2015$, Company $Q$'s revenue from the chart is $R_{2015} = 45\\text{ million rupees}$.\n  - Company $Q$'s revenue in $2015$ was $20\\%$ higher than its revenue in $2014$:\n    $$R_{2015} = 1.20 \\times R_{2014}$$\n  - In $2014$, Company $Q$ earned a profit of $10\\%$ on expenditure:\n    $$R_{2014} = 1.10 \\times E_{2014}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Calculate $2014$ Revenue**:\n     $$R_{2014} = \\frac{R_{2015}}{1.20} = \\frac{45}{1.2} = 37.5\\text{ million rupees}$$\n  2. **Calculate $2014$ Expenditure**:\n     $$E_{2014} = \\frac{R_{2014}}{1.10} = \\frac{37.5}{1.1} = \\frac{375}{11} \\approx 34.0909\\text{ million rupees}$$\n  3. Rounding to one decimal place gives **$34.1\\text{ million rupees}$**.\n\nTherefore, the correct answer is **Option C ($34.1$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359536",
+      "solution": {
+        "concept": "Verbal Aptitude - English Idiomatic Expressions",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - English Idiomatic Expressions\n- **Idiom Identification**:\n  - The standard English idiom for displaying insincere or false remorse to deceive onlookers is to shed **crocodile tears**.\n  - In this compound noun idiom, the word *crocodile* functions attributively as a noun adjunct qualifying *tears* (without any apostrophe or possessive suffix):\n    $$\\text{\"sheds crocodile tears\"}$$\n- **Distractor Analysis**:\n  - *fox's*: Incorrect idiom; the English language uses \"crocodile tears\", not \"fox tears\".\n  - *crocodile's*: Incorrect grammatical form; the idiom does not take a possessive apostrophe.\n  - *fox*: Incorrect noun.\n\nTherefore, the correct answer is **Option C (crocodile)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359534",
+      "solution": {
+        "concept": "Verbal Aptitude - Comparison of Two Adjectives in One Subject",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Comparison of Two Adjectives in One Subject\n- **Grammar Rule for Comparing Two Qualities of the Same Person**:\n  - When comparing two different qualities/adjectives belonging to the same entity (rather than comparing the same quality across two different entities), standard English uses:\n    $$\\textbf{more} + [\\text{positive degree adjective}] + \\textbf{than} + [\\text{second positive degree adjective}]$$\n  - The inflected comparative form ending in *-er* (e.g., *faster*) is used strictly when comparing two different entities on the same attribute (e.g., *Jofra is faster than Stuart*).\n- **Application to the Sentence**:\n  - Here, the bowler's own speed is being compared with his own accuracy:\n    $$\\text{\"Jofra Archer is } \\textbf{more fast } \\text{than accurate.\"}$$\n  - Therefore, *more fast* is the grammatically correct construction.\n\nTherefore, the correct answer is **Option A (more fast)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359532",
+      "solution": {
+        "concept": "Verbal Aptitude - Word Analogy & Verb-to-Noun Derivation",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Word Analogy & Verb-to-Noun Derivation\n- **Analogy Relationship**:\n  - $\\text{Base Verb} : \\text{Derived Action/Result Noun}$\n  - **Build** (verb) forms its noun denoting an edifice or physical creation as **Building**.\n  - **Grow** (verb) forms its primary abstract noun denoting the process or result of developing as **Growth**.\n- **Distractor Analysis**:\n  - *Grown*: Past participle of grow.\n  - *Grew*: Simple past tense of grow.\n  - *Growed*: Ungrammatical non-word (grow is an irregular verb).\n  - *Growth*: The correct, standard English noun.\n\nTherefore, the correct answer is **Option C (Growth)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359530",
+      "solution": {
+        "concept": "Verbal Aptitude - Idiomatic Discourse Markers",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Idiomatic Discourse Markers\n- **Sentence Analysis**:\n  - *\"I do not think you know the case well enough to have opinions. Having said that, I agree with your other point.\"*\n- **Meaning of the Discourse Marker \"Having said that\"**:\n  - The transitional phrase **\"having said that\"** is used in English discourse to signal a concession or contrast that qualifies or balances a preceding assertion.\n  - It functions identically to *nevertheless*, *nonetheless*, or **despite what I have said**.\n  - It acknowledges the speaker's initial criticism while proceeding to validate a separate, contrasting point.\n\nTherefore, the correct answer is **Option B (despite what I have said)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359528",
+      "solution": {
+        "concept": "Calculus - Definite Integral of Step Function (Floor Function)",
+        "markdown": "- **Concept / Subtopic**: Calculus - Definite Integral of Step Function (Floor Function)\n- **Problem Statement**:\n  - Let $[x]$ denote the greatest integer less than or equal to $x$ (floor function $\\lfloor x \\rfloor$).\n  - Calculate the area under the curve $y = [x]$ on the interval $x \\in [1, 4]$:\n    $$\\text{Area} = \\int_{1}^{4} [x] \\, dx$$\n- **Step-by-Step Analytical Derivation**:\n  1. Split the integral into unit intervals where $[x]$ is piecewise constant:\n     - For $x \\in [1, 2)$: $[x] = 1$\n     - For $x \\in [2, 3)$: $[x] = 2$\n     - For $x \\in [3, 4)$: $[x] = 3$\n  2. The single boundary point $x = 4$ has measure zero and does not affect the integral.\n  3. Evaluate each rectangular region:\n     $$\\int_{1}^{4} [x] \\, dx = \\int_{1}^{2} 1 \\, dx + \\int_{2}^{3} 2 \\, dx + \\int_{3}^{4} 3 \\, dx$$\n     $$= 1 \\cdot (2 - 1) + 2 \\cdot (3 - 2) + 3 \\cdot (4 - 3)$$\n     $$= 1(1) + 2(1) + 3(1) = 1 + 2 + 3 = 6$$\n\nTherefore, the correct answer is **Option D ($6$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359526",
+      "solution": {
+        "concept": "Verbal Aptitude - Business Terminology & Logical Comprehension",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Business Terminology & Logical Comprehension\n- **Passage Analysis**:\n  - *\"Crowd funding deals with mobilisation of funds for a project from a large number of people, who would be willing to invest smaller amounts through web-based platforms in the project.\"*\n- **Key Phrase Deductions**:\n  - The text explicitly states that participants are *\"willing to invest\"* smaller amounts.\n  - Willing participation represents **voluntary** contribution.\n  - This directly refutes choices involving \"unwilling\" or \"coerced\" investments.\n  - Furthermore, the passage specifies that individual investors contribute \"smaller amounts\" rather than \"large contributions\".\n  - Thus, the correct definition is funds raised through **voluntary contributions** on web-based platforms.\n\nTherefore, the correct answer is **Option D (Funds raised through voluntary contributions on web-based platforms)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359522",
+      "solution": {
+        "concept": "Quantitative Aptitude - Sequences & Series (Sum of Repdigits)",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Sequences & Series (Sum of Repdigits)\n- **Problem Statement**:\n  - Find the sum of the first $n$ terms of the sequence:\n    $$S_n = 8 + 88 + 888 + 8888 + \\dots + \\underbrace{888\\dots 8}_{n \\text{ times}}$$\n- **Step-by-Step Analytical Derivation**:\n  1. Factor out $8$:\n     $$S_n = 8 (1 + 11 + 111 + \\dots + \\underbrace{111\\dots 1}_{n})$$\n  2. Multiply and divide by $9$:\n     $$S_n = \\frac{8}{9} (9 + 99 + 999 + \\dots + \\underbrace{999\\dots 9}_{n})$$\n  3. Express each term as powers of 10:\n     $$9 = 10^1 - 1$$\n     $$99 = 10^2 - 1$$\n     $$999 = 10^3 - 1$$\n     $$\\vdots$$\n     $$\\underbrace{999\\dots 9}_{n} = 10^n - 1$$\n  4. Sum the geometric progression and constant terms:\n     $$S_n = \\frac{8}{9} \\left[ (10^1 + 10^2 + 10^3 + \\dots + 10^n) - \\underbrace{(1 + 1 + \\dots + 1)}_{n \\text{ terms}} \\right]$$\n     $$S_n = \\frac{8}{9} \\left[ \\frac{10(10^n - 1)}{10 - 1} - n \\right] = \\frac{8}{9} \\left[ \\frac{10(10^n - 1)}{9} - n \\right]$$\n  5. Expand the brackets:\n     $$S_n = \\frac{80}{81} (10^n - 1) - \\frac{8}{9} n$$\n\nTherefore, the correct answer is **Option D ($\\dfrac{80}{81}\\left ( 10^{n}-1 \\right )-\\dfrac{8}{9}n$)**.",
+        "images": []
+      }
+    }
+  ]
+}

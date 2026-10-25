@@ -1,0 +1,78 @@
+{
+  "chunkId": "CHUNK-CSE-DSA-05",
+  "branch": "cse",
+  "year": 2004,
+  "section": "tech",
+  "subject": "Algorithms, Data Structures & C Programming",
+  "paper": "GATE CSE 2004 Part 3",
+  "status": "COMPLETED",
+  "count": 8,
+  "questions": [
+    {
+      "uid": "go:1040",
+      "solution": {
+        "concept": "Data Structures & C - Recursive Tree Height Computation",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The **height of a tree** (or subtree rooted at node `ptr`) is the length of the longest path from `ptr` to any of its descendant leaf nodes.\n  - Recursively:\n    $$\\operatorname{height}(\\text{leaf}) = 0$$\n    $$\\operatorname{height}(u) = 1 + \\max(\\operatorname{height}(\\text{left}(u)), \\operatorname{height}(\\text{right}(u)))$$\n- **Given C Function**:\n  ```c\n  int DoSomething(struct CellNode *ptr) {\n      int value = 0;\n      if (ptr != NULL) {\n          if (ptr->leftChild != NULL)\n              value = 1 + DoSomething(ptr->leftChild);\n          if (ptr->rightChild != NULL)\n              value = max(value, 1 + DoSomething(ptr->rightChild));\n      }\n      return value;\n  }\n  ```\n- **Step-by-Step Logic Analysis**:\n  1. If `ptr` is a leaf node (both `leftChild == NULL` and `rightChild == NULL`):\n     - Neither inner `if` condition executes.\n     - The function returns `value = 0`.\n     - Distance from a leaf to itself is $0$ edges.\n  2. If `ptr` has only a left child:\n     - `value = 1 + DoSomething(ptr->leftChild)`.\n     - Returns $1 + \\text{height}(\\text{leftChild})$.\n  3. If `ptr` has both children:\n     - `value` is first computed for the left subtree: $1 + \\operatorname{height}(\\text{left})$.\n     - Then $\\max(\\text{value}, 1 + \\operatorname{height}(\\text{right}))$ selects the longer of the two branch depths.\n  4. When called on the root of a non-empty tree, `DoSomething` returns the maximum edge distance from the root to any leaf node, which is the **height of the tree**.\n\nTherefore, the correct answer is **Option D (The height of the tree)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1041",
+      "solution": {
+        "concept": "Graph Algorithms - Dijkstra's Shortest Path Vertex Finalization Sequence",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **Dijkstra's Algorithm** maintains a set of finalized vertices $S$ for which the shortest path distance from the source is permanently determined.\n  - In each iteration, Dijkstra greedily selects a vertex $u \\notin S$ with the minimum tentative distance $d[u]$, adds $u$ to $S$, and relaxes all outgoing edges $(u, v)$.\n- **Given Directed Graph with Source $P$**:\n  - Vertices: $\\{P, Q, R, S, T, U\\}$.\n  - Edges and weights:\n    - From $P$: edges to $Q$ (weight 2), $R$ (weight 4).\n    - From $Q$: edges to $R$ (weight 1), $U$ (weight 7).\n    - From $R$: edge to $U$ (weight 3).\n    - From $U$: edge to $S$ (weight 2), $T$ (weight 5).\n    - From $S$: edge to $T$ (weight 1).\n- **Step-by-Step Execution Trace**:\n  1. **Initialization**:\n     - Finalized set: $S = \\emptyset$.\n     - Tentative distances: $d[P] = 0$, $d[Q] = \\infty, d[R] = \\infty, d[S] = \\infty, d[T] = \\infty, d[U] = \\infty$.\n  2. **Step 1**:\n     - Minimum tentative distance is $P$ with $d[P] = 0$.\n     - **Finalize $P$**: $S = \\{P\\}$.\n     - Relax edges from $P$:\n       - $d[Q] = \\min(\\infty, 0 + 2) = 2$.\n       - $d[R] = \\min(\\infty, 0 + 4) = 4$.\n  3. **Step 2**:\n     - Minimum among unfinalized is $Q$ with $d[Q] = 2$.\n     - **Finalize $Q$**: $S = \\{P, Q\\}$.\n     - Relax edges from $Q$:\n       - $d[R] = \\min(4, 2 + 1) = 3$.\n       - $d[U] = \\min(\\infty, 2 + 7) = 9$.\n  4. **Step 3**:\n     - Minimum among unfinalized is $R$ with $d[R] = 3$.\n     - **Finalize $R$**: $S = \\{P, Q, R\\}$.\n     - Relax edges from $R$:\n       - $d[U] = \\min(9, 3 + 3) = 6$.\n  5. **Step 4**:\n     - Minimum among unfinalized is $U$ with $d[U] = 6$.\n     - **Finalize $U$**: $S = \\{P, Q, R, U\\}$.\n     - Relax edges from $U$:\n       - $d[S] = \\min(\\infty, 6 + 2) = 8$.\n       - $d[T] = \\min(\\infty, 6 + 5) = 11$.\n  6. **Step 5**:\n     - Minimum among unfinalized is $S$ with $d[S] = 8$.\n     - **Finalize $S$**: $S = \\{P, Q, R, U, S\\}$.\n     - Relax edges from $S$:\n       - $d[T] = \\min(11, 8 + 1) = 9$.\n  7. **Step 6**:\n     - Minimum among unfinalized is $T$ with $d[T] = 9$.\n     - **Finalize $T$**: $S = \\{P, Q, R, U, S, T\\}$.\n- **Final Inclusion Order**:\n  $$P, Q, R, U, S, T$$\n\nTherefore, the correct answer is **Option B ($P,Q,R,U,S,T$)**.",
+        "images": [
+          "/Gate_QA/question-images/4462792251269685359.webp"
+        ]
+      }
+    },
+    {
+      "uid": "go:1075",
+      "solution": {
+        "concept": "Graph Theory - Graph Unions, Intersections, and Cycle Existence",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Let $G_1 = (V, E_1)$ and $G_2 = (V, E_2)$ be connected graphs on the same vertex set $V$ with $|V| = n > 2$.\n  - A connected graph on $n$ vertices must contain at least $n - 1$ edges:\n    $$|E_1| \\ge n - 1 \\quad \\text{and} \\quad |E_2| \\ge n - 1$$\n  - A graph on $n$ vertices with $\\ge n$ edges **must contain at least one cycle**.\n- **Analytical Step-by-Step Derivation**:\n  1. The intersection graph is $G_1 \\cap G_2 = (V, E_1 \\cap E_2)$.\n  2. We are given that $G_1 \\cap G_2$ is **not connected**.\n  3. A graph on $n$ vertices with $k$ connected components has at most $n - k$ edges without cycles, and any disconnected graph has $k \\ge 2$ components.\n  4. Therefore, the number of edges in $E_1 \\cap E_2$ satisfies:\n     $$|E_1 \\cap E_2| \\le n - 2$$\n  5. By the Principle of Inclusion-Exclusion for edge sets:\n     $$|E_1 \\cup E_2| = |E_1| + |E_2| - |E_1 \\cap E_2|$$\n  6. Substituting the lower bounds for $|E_1|$ and $|E_2|$ and the upper bound for $|E_1 \\cap E_2|$:\n     $$|E_1 \\cup E_2| \\ge (n - 1) + (n - 1) - (n - 2) = (2n - 2) - n + 2 = n$$\n  7. Since $G_1 \\cup G_2$ is a connected graph (as both $G_1$ and $G_2$ are connected spanning subgraphs) with $|V| = n$ vertices and at least $n$ edges ($|E_1 \\cup E_2| \\ge n$), it strictly exceeds the maximum edge count of a tree ($n - 1$).\n  8. By the fundamental cycle theorem, any connected graph with $|E| \\ge |V|$ **must contain at least one cycle**.\n\nTherefore, the correct answer is **Option B (must have a cycle)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1076",
+      "solution": {
+        "concept": "Algorithms - Aggregate Analysis & Amortized Time Complexity",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We analyze the total running time of a loop over $n$ iterations using **aggregate analysis**:\n    ```c\n    counter = 0;\n    for (i = 1; i <= n; i++) {\n        if (a[i] == 1)\n            counter++;\n        else {\n            f(counter);\n            counter = 0;\n        }\n    }\n    ```\n  - We are given that $f(m)$ runs in time $\\Theta(m)$.\n- **Analytical Step-by-Step Derivation**:\n  1. Let the array $a[1 \\dots n]$ contain $k$ blocks of consecutive 1s separated by 0s.\n  2. Let the lengths of these consecutive 1-blocks be $m_1, m_2, \\dots, m_k$.\n  3. Each time an element $a[i] == 0$ is encountered, $f(\\text{counter})$ is called with $\\text{counter} = m_j$, and then `counter` is reset to $0$.\n  4. The time taken by the $j^{\\text{th}}$ call to $f$ is $c \\cdot m_j$ for some constant $c > 0$.\n  5. The sum of the lengths of all consecutive 1-blocks cannot exceed the total size of the array:\n     $$\\sum_{j=1}^{k} m_j \\le n$$\n  6. Therefore, the total time spent across **all** calls to $f$ during the entire execution of the loop is:\n     $$T_f = \\sum_{j=1}^{k} \\Theta(m_j) = \\Theta\\left(\\sum_{j=1}^{k} m_j\\right) \\le \\Theta(n)$$\n  7. The `for` loop itself iterates exactly $n$ times, performing $O(1)$ loop control and conditional checks per iteration, contributing $\\Theta(n)$ overhead.\n  8. Total running time:\n     $$T(n) = \\Theta(n) + T_f = \\Theta(n) + O(n) = \\Theta(n)$$\n- **Conclusion**:\n  - The overall time complexity of the program fragment is strictly $\\Theta(n)$ linear time.\n\nTherefore, the correct answer is **Option C ($\\Theta(n)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1077",
+      "solution": {
+        "concept": "Algorithms & Recurrences - Divide-and-Conquer Recurrence Tree Analysis",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We are given the recursive function:\n    ```c\n    int recursive(int n) {\n        if (n == 1)\n            return 1;\n        else\n            return recursive(n - 1) + recursive(n - 1);\n    }\n    ```\n- **Mathematical Recurrence Formulation**:\n  - Let $T(n)$ denote the time complexity (number of operations / recursive calls) for input $n$.\n  - For $n = 1$: $T(1) = 1 = \\Theta(1)$.\n  - For $n > 1$: the function makes two identical recursive calls with parameter $n - 1$ and adds the results:\n    $$T(n) = 2T(n - 1) + c$$\n    where $c$ is a constant representing the addition and conditional check.\n- **Solving by Repeated Substitution (Unrolling)**:\n  1. $T(n) = 2T(n - 1) + c$\n  2. $T(n) = 2(2T(n - 2) + c) + c = 2^2 T(n - 2) + c(1 + 2)$\n  3. $T(n) = 2^3 T(n - 3) + c(1 + 2 + 2^2)$\n  4. After $k$ unrolling steps:\n     $$T(n) = 2^k T(n - k) + c \\sum_{j=0}^{k-1} 2^j$$\n  5. Setting $k = n - 1$ reaches the base case $T(1)$:\n     $$T(n) = 2^{n-1} T(1) + c(2^{n-1} - 1) = (T(1) + c) 2^{n-1} - c = \\Theta(2^n) = O(2^n)$$\n- **Conclusion**:\n  - The recursion generates a complete binary call tree of depth $n$, having $2^{n-1}$ leaves and $\\Theta(2^n)$ total nodes.\n  - The time complexity is $O(2^n)$.\n\nTherefore, the correct answer is **Option D ($O(2^n)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1078",
+      "solution": {
+        "concept": "Algorithms - Solving Non-Homogeneous Linear Recurrence Relations",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We are given the recurrence relation:\n    $$T(1) = 1$$\n    $$T(n) = 2T(n - 1) + n, \\quad \\forall n \\ge 2$$\n- **Step-by-Step Derivation via Unrolling**:\n  1. Expand the recurrence:\n     $$T(n) = 2T(n - 1) + n$$\n  2. Substitute $T(n - 1) = 2T(n - 2) + (n - 1)$:\n     $$T(n) = 2[2T(n - 2) + (n - 1)] + n = 2^2 T(n - 2) + 2(n - 1) + n$$\n  3. Substitute $T(n - 2) = 2T(n - 3) + (n - 2)$:\n     $$T(n) = 2^3 T(n - 3) + 2^2(n - 2) + 2(n - 1) + n$$\n  4. In general, after $n - 1$ expansions:\n     $$T(n) = 2^{n-1} T(1) + \\sum_{k=0}^{n-2} 2^k (n - k)$$\n  5. Substituting $T(1) = 1$:\n     $$T(n) = 2^{n-1} + \\sum_{j=2}^{n} j \\cdot 2^{n-j}$$\n- **Verification via Small $n$ Values**:\n  - $n = 1$: $T(1) = 1$.\n  - $n = 2$: $T(2) = 2T(1) + 2 = 2(1) + 2 = 4$.\n  - $n = 3$: $T(3) = 2T(2) + 3 = 2(4) + 3 = 11$.\n  - $n = 4$: $T(4) = 2T(3) + 4 = 2(11) + 4 = 26$.\n- **Test Candidates against Calculated Values**:\n  - **Option A ($2^{n+1} - n - 2$)**:\n    - For $n = 1$: $2^2 - 1 - 2 = 4 - 3 = 1$. (Matches $T(1)$)\n    - For $n = 2$: $2^3 - 2 - 2 = 8 - 4 = 4$. (Matches $T(2)$)\n    - For $n = 3$: $2^4 - 3 - 2 = 16 - 5 = 11$. (Matches $T(3)$)\n    - For $n = 4$: $2^5 - 4 - 2 = 32 - 6 = 26$. (Matches $T(4)$)\n  - **Option B ($2^n - n$)**:\n    - $n = 1 \\implies 2^1 - 1 = 1$, but $n = 2 \\implies 2^2 - 2 = 2 \\ne 4$.\n  - **Option C ($2^{n+1} - 2n - 2$)**:\n    - $n = 1 \\implies 4 - 2 - 2 = 0 \\ne 1$.\n  - **Option D ($2^n + n$)**:\n    - $n = 2 \\implies 4 + 2 = 6 \\ne 4$.\n- **Conclusion**:\n  - The closed form is $2^{n+1} - n - 2$.\n\nTherefore, the correct answer is **Option A ($2^{n+1} - n - 2$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1079",
+      "solution": {
+        "concept": "Algorithms - Divide-and-Conquer Recurrence & Smaller-Subtree Amortization",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The program takes a balanced binary search tree with $n$ leaf nodes and computes $g(x)$ for each internal node $x$.\n  - The cost of computing $g(x)$ at node $x$ is:\n    $$\\operatorname{cost}(x) = \\min(L_x, R_x)$$\n    where $L_x$ and $R_x$ are the number of leaf nodes in the left and right subtrees of $x$ respectively.\n- **Analytical Step-by-Step Derivation**:\n  1. Let $T(n)$ be the total cost for a tree with $n$ leaf nodes ($L_x + R_x = n$):\n     $$T(n) = T(k) + T(n - k) + \\min(k, n - k)$$\n     where $k$ is the number of leaves in the left subtree, and $n - k$ is the number in the right subtree.\n  2. **Accounting / Token-Based Argument**:\n     - Think of charging each unit of cost to the leaf nodes.\n     - When node $x$ is processed, work of amount $\\min(k, n - k)$ is performed.\n     - We charge $1$ unit of cost to each leaf node in the **smaller** of the two subtrees.\n     - Whenever a leaf node is charged $1$ unit of work, the size of the subtree containing it is at most half the size of the parent's subtree:\n       $$\\text{New subtree size} \\le \\frac{n}{2}$$\n     - A leaf node cannot have its containing subtree size halved more than $\\log_2 n$ times before the subtree size reduces to $1$ (a single leaf).\n  3. Therefore, each of the $n$ leaf nodes is charged at most $\\log_2 n$ times across the entire tree!\n  4. Total cost over all nodes in the tree:\n     $$\\sum_{x} \\operatorname{cost}(x) \\le n \\log_2 n = \\Theta(n \\log n)$$\n- **Conclusion**:\n  - The worst-case time complexity of the program is $\\Theta(n \\log n)$.\n\nTherefore, the correct answer is **Option B ($\\Theta(n \\log n)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1084",
+      "solution": {
+        "concept": "Programming Languages - Paradigms (Functional, Logic, Object-Oriented, Imperative)",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **P. Functional Programming** (e.g., Haskell, Lisp, ML):\n    - Programs are constructed by applying and composing pure mathematical functions.\n    - Emphasizes **side-effect free evaluation, declarative syntax, and expression evaluations** (Characteristic 3).\n  - **Q. Logic Programming** (e.g., Prolog):\n    - Programs consist of logical assertions, facts, and inference rules.\n    - Characterized by **declarative Horn-clausal representation and automated theorem proving / resolution** (Characteristic 4).\n  - **R. Object-Oriented Programming** (e.g., Java, C++, Smalltalk):\n    - Programs organize state and behavior into objects with encapsulated state.\n    - Characterized by **imperative execution with abstract data types, inheritance, and dynamic dispatch** (Characteristic 2).\n  - **S. Imperative Programming** (e.g., C, Pascal, Fortran):\n    - Programs consist of state-mutating commands, sequential execution, and subroutine calls.\n    - Characterized by **command-based, procedural state transformation** (Characteristic 1).\n- **Matching Summary**:\n  $$\\begin{aligned}\n  P &\\mapsto 3 \\\\\n  Q &\\mapsto 4 \\\\\n  R &\\mapsto 2 \\\\\n  S &\\mapsto 1\n  \\end{aligned}$$\n- **Conclusion**:\n  - This corresponds to the tuple $P-3, \\; Q-4, \\; R-2, \\; S-1$.\n\nTherefore, the correct answer is **Option D ($P-3\\quad Q-4\\quad R-2\\quad S-1$)**.",
+        "images": []
+      }
+    }
+  ]
+}

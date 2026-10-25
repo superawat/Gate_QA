@@ -1,0 +1,66 @@
+{
+  "chunkId": "CHUNK-CSE-REC-10",
+  "branch": "cse",
+  "year": 2021,
+  "section": "all",
+  "status": "COMPLETED",
+  "count": 7,
+  "questions": [
+    {
+      "uid": "go:359507",
+      "solution": {
+        "concept": "Quantitative Aptitude - Lowest Common Multiple (LCM) & Periodic Events",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Lowest Common Multiple (LCM) & Periodic Events\n- **Given Parameters**:\n  - Watch $X$ beeps every $T_X = 30\\text{ seconds}$.\n  - Watch $Y$ beeps every $T_Y = 32\\text{ seconds}$.\n  - Both watches beeped together simultaneously at $\\text{10:00 AM}$.\n- **Step-by-Step Analytical Derivation**:\n  1. The time interval between successive simultaneous beeps is the Lowest Common Multiple (LCM) of the two beep intervals:\n     $$T_{\\text{together}} = \\operatorname{LCM}(30, 32)$$\n  2. Prime factorizations:\n     $$30 = 2 \\times 3 \\times 5$$\n     $$32 = 2^5$$\n  3. Compute LCM:\n     $$\\operatorname{LCM}(30, 32) = 2^5 \\times 3 \\times 5 = 32 \\times 15 = 480\\text{ seconds}$$\n  4. Convert seconds into minutes:\n     $$\\Delta t = \\frac{480}{60} = 8\\text{ minutes}$$\n  5. The immediate next time they beep together is:\n     $$\\text{10:00 AM} + 8\\text{ minutes} = \\text{10:08 AM}$$\n\nTherefore, the correct answer is **Option A ($\text{10.08 AM}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359505",
+      "solution": {
+        "concept": "Quantitative Aptitude - System of Equations with Custom Operators",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - System of Equations with Custom Operators\n- **Given System of Equations**:\n  1. $\\bigoplus \\div \\bigodot = 2 \\implies \\bigoplus = 2 \\bigodot$\n  2. $\\bigoplus \\div \\Delta = 3 \\implies \\bigoplus = 3 \\Delta$\n  3. $\\bigodot + \\Delta = 5$\n  4. $\\Delta \\times \\bigotimes = 10$\n- **Step-by-Step Analytical Derivation**:\n  1. From equations (1) and (2):\n     $$2 \\bigodot = 3 \\Delta \\implies \\bigodot = 1.5 \\Delta$$\n  2. Substitute $\\bigodot = 1.5 \\Delta$ into equation (3):\n     $$1.5 \\Delta + \\Delta = 5$$\n     $$2.5 \\Delta = 5 \\implies \\Delta = \\frac{5}{2.5} = 2$$\n  3. Find $\\bigodot$ and $\\bigoplus$:\n     $$\\bigodot = 1.5(2) = 3$$\n     $$\\bigoplus = 3 \\Delta = 3(2) = 6$$\n  4. Find $\\bigotimes$ from equation (4):\n     $$\\Delta \\times \\bigotimes = 10 \\implies 2 \\times \\bigotimes = 10 \\implies \\bigotimes = 5$$\n  5. Compute the required expression $\\left(\\bigotimes - \\bigoplus\\right)^2$:\n     $$\\left(\\bigotimes - \\bigoplus\\right)^2 = (5 - 6)^2 = (-1)^2 = 1$$\n\nTherefore, the correct answer is **Option B ($1$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359503",
+      "solution": {
+        "concept": "Spatial & Direction Reasoning - Compass Navigation & Trajectory Vector",
+        "markdown": "- **Concept / Subtopic**: Spatial & Direction Reasoning - Compass Navigation & Trajectory Vector\n- **Given Parameters**:\n  - The front door of the house faces **East**.\n  - Therefore, the back door (directly opposite to the front door) faces **West**.\n- **Step-by-Step Analytical Derivation**:\n  1. **Leg 1**: Mr. X leaves through the back door and walks straight $50\\text{ m}$.\n     - Moving through the back door means he heads due **West**:\n       $$\\vec{d}_1 = (-50, 0)\\text{ m}$$\n  2. **Leg 2**: He then turns to his **right** and walks $50\\text{ m}$.\n     - Facing West, a $90^\\circ$ right turn directs him due **North**:\n       $$\\vec{d}_2 = (0, +50)\\text{ m}$$\n  3. **Resultant Position**:\n     $$\\vec{R} = \\vec{d}_1 + \\vec{d}_2 = (-50, +50)\\text{ m}$$\n  4. With respect to the starting origin $(0, 0)$, coordinates $(-50, +50)$ lie in the second quadrant, corresponding precisely to the **North-West** compass direction.\n\nTherefore, the correct answer is **Option D (North-West)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359497",
+      "solution": {
+        "concept": "Probability - Sampling Without Replacement",
+        "markdown": "- **Concept / Subtopic**: Probability - Sampling Without Replacement\n- **Given Parameters**:\n  - Blue balls: $N_B = 15$\n  - Black balls: $N_K = 45$\n  - Total balls in the box: $N = 15 + 45 = 60$\n  - Two balls are drawn successively **without replacement**.\n- **Step-by-Step Analytical Derivation**:\n  1. Probability that the 1st ball selected is Blue:\n     $$P(B_1) = \\frac{15}{60} = \\frac{1}{4}$$\n  2. After drawing one blue ball, 59 balls remain, of which all 45 black balls are intact:\n     $$P(K_2 \\mid B_1) = \\frac{45}{59}$$\n  3. Joint probability of drawing a blue ball followed by a black ball:\n     $$P(B_1 \\cap K_2) = P(B_1) \\times P(K_2 \\mid B_1) = \\frac{1}{4} \\times \\frac{45}{59} = \\frac{45}{236}$$\n\nTherefore, the correct answer is **Option B ($\\frac{45}{236}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359494",
+      "solution": {
+        "concept": "Geometry - Incircle and Circumcircle Area Ratio in an Equilateral Triangle",
+        "markdown": "- **Concept / Subtopic**: Geometry - Incircle and Circumcircle Area Ratio in an Equilateral Triangle\n- **Governing Equations for an Equilateral Triangle of Side $a$**:\n  1. Inradius (radius of the inscribed circle):\n     $$r = \\frac{a}{2\\sqrt{3}}$$\n  2. Circumradius (radius of the circumscribed circle):\n     $$R = \\frac{a}{\\sqrt{3}}$$\n- **Step-by-Step Analytical Derivation**:\n  1. Notice that the circumradius is exactly twice the inradius:\n     $$R = 2r$$\n  2. Area of the inscribed circle:\n     $$A_{\\text{in}} = \\pi r^2$$\n  3. Area of the circumscribed circle:\n     $$A_{\\text{circum}} = \\pi R^2 = \\pi (2r)^2 = 4 \\pi r^2$$\n  4. Ratio of the area of the incircle to circumcircle:\n     $$\\frac{A_{\\text{in}}}{A_{\\text{circum}}} = \\frac{\\pi r^2}{4 \\pi r^2} = \\frac{1}{4}$$\n\nTherefore, the correct answer is **Option C ($\\dfrac{1}{4}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359490",
+      "solution": {
+        "concept": "Verbal Aptitude - Rhetorical Roles & Discourse Function",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Rhetorical Roles & Discourse Function\n- **Given Sentences**:\n  - *Sentence 1*: \"The world is going through the worst pandemic in the past hundred years.\"\n  - *Sentence 2*: \"The air travel industry is facing a crisis, as the resulting quarantine requirement for travelers led to weak demand.\"\n- **Rhetorical Relationship Analysis**:\n  - Sentence 1 introduces the global pandemic as the overarching historical cause/event.\n  - Sentence 2 details how quarantine restrictions resulting from that pandemic caused weak consumer demand, driving the aviation sector into crisis.\n  - The aviation crisis is therefore a direct consequence or byproduct triggered by the pandemic.\n  - Thus, in relation to the first sentence, the second sentence **states an effect of the first sentence**.\n\nTherefore, the correct answer is **Option D (States an effect of the first sentence)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:357446",
+      "solution": {
+        "concept": "Digital Logic & Number Representation - Base Radix Conversion",
+        "markdown": "- **Concept / Subtopic**: Digital Logic & Number Representation - Base Radix Conversion\n- **Given Representation**:\n  - A number $N$ is represented in base $3$ (ternary) as:\n    $$N = (210)_3$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Convert from Base 3 to Decimal (Base 10)**:\n     $$N_{10} = 2 \\times 3^2 + 1 \\times 3^1 + 0 \\times 3^0$$\n     $$N_{10} = 2 \\times 9 + 1 \\times 3 + 0 = 18 + 3 = 21_{10}$$\n  2. **Convert from Decimal to Hexadecimal (Base 16)**:\n     - Divide $21$ by $16$:\n       $$21 = 1 \\times 16 + 5$$\n     - Quotient = $1$, Remainder = $5$.\n     - Reading digits from most to least significant:\n       $$N_{16} = (15)_{16}$$\n  3. Direct verification:\n     $$1 \\times 16^1 + 5 \\times 16^0 = 16 + 5 = 21_{10}$$\n\nTherefore, the correct answer is **Option A ($15$)**.",
+        "images": []
+      }
+    }
+  ]
+}

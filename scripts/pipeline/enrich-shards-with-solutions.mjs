@@ -23,6 +23,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const SHARDS_DIR = path.join(ROOT, "public", "question-detail-shards");
+const DA_SHARDS_DIR = path.join(ROOT, "public", "data", "da", "shards");
 const PP_ALL_PATH = path.join(ROOT, "data", "solutions", "practicepaper", "all-solutions.json");
 const SOLUTIONS_DIR = path.join(ROOT, "data", "solutions");
 
@@ -88,10 +89,12 @@ export function loadAllSolutionsMap() {
 
   // 3. Highest Priority: Override with AUTHENTIC_PATCHES
   for (const [uid, patch] of Object.entries(AUTHENTIC_PATCHES)) {
+    const markdown = typeof patch === "string" ? patch : patch?.markdown;
+    if (!markdown) continue;
     map.set(uid, {
-      concept: patch.concept || "",
-      markdown: patch.markdown,
-      images: patch.images || [],
+      concept: typeof patch === "string" ? "" : (patch?.concept || ""),
+      markdown,
+      images: typeof patch === "string" ? [] : (patch?.images || []),
       source: "verified_patch",
     });
   }
@@ -103,7 +106,10 @@ export function enrichShardsWithSolutions(shardsDir = SHARDS_DIR) {
   const solutionsMap = loadAllSolutionsMap();
   console.log(`[SOLUTIONS] Loaded ${solutionsMap.size} detailed solutions into registry.`);
 
-  const shardFiles = fs.readdirSync(shardsDir).filter((f) => f.endsWith(".json"));
+  const targetDirs = [shardsDir];
+  if (shardsDir === SHARDS_DIR && fs.existsSync(DA_SHARDS_DIR)) {
+    targetDirs.push(DA_SHARDS_DIR);
+  }
 
   let totalQuestions = 0;
   let enrichedFromPp = 0;
@@ -111,81 +117,86 @@ export function enrichShardsWithSolutions(shardsDir = SHARDS_DIR) {
   let retainedExisting = 0;
   let purgedBoilerplateCount = 0;
   let shardsModified = 0;
+  let totalFilesScanned = 0;
 
-  for (const file of shardFiles) {
-    const filePath = path.join(shardsDir, file);
-    let shard;
-    try {
-      shard = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    } catch {
-      continue;
-    }
+  for (const dir of targetDirs) {
+    const shardFiles = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
+    totalFilesScanned += shardFiles.length;
 
-    if (!shard.recordsByQuestionUid) continue;
+    for (const file of shardFiles) {
+      const filePath = path.join(dir, file);
+      let shard;
+      try {
+        shard = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      } catch {
+        continue;
+      }
 
-    let modified = false;
+      if (!shard.recordsByQuestionUid) continue;
 
-    for (const [uid, q] of Object.entries(shard.recordsByQuestionUid)) {
-      totalQuestions++;
+      let modified = false;
 
-      const sol = solutionsMap.get(uid);
+      for (const [uid, q] of Object.entries(shard.recordsByQuestionUid)) {
+        totalQuestions++;
 
-      if (sol && (sol.source === "practicepaper_authentic" || sol.source === "verified_patch")) {
-        // Authentic derivation takes priority
-        const concept = q.taxonomy?.primary?.subtopicLabel
-          ? `${q.taxonomy.primary.subjectLabel} - ${q.taxonomy.primary.subtopicLabel}`
-          : q.taxonomy?.primary?.subjectLabel || sol.concept || "";
+        const sol = solutionsMap.get(uid);
 
-        const newSol = {
-          concept: sol.concept || concept,
-          markdown: sol.markdown,
-          images: sol.images || [],
-        };
+        if (sol && (sol.source === "practicepaper_authentic" || sol.source === "verified_patch")) {
+          // Authentic derivation takes priority
+          const concept = q.taxonomy?.primary?.subtopicLabel
+            ? `${q.taxonomy.primary.subjectLabel} - ${q.taxonomy.primary.subtopicLabel}`
+            : q.taxonomy?.primary?.subjectLabel || sol.concept || "";
 
-        if (
-          !q.detailed_solution ||
-          q.detailed_solution.markdown !== newSol.markdown ||
-          JSON.stringify(q.detailed_solution.images || []) !== JSON.stringify(newSol.images)
-        ) {
-          q.detailed_solution = newSol;
+          const newSol = {
+            concept: sol.concept || concept,
+            markdown: sol.markdown,
+            images: sol.images || [],
+          };
+
+          if (
+            !q.detailed_solution ||
+            q.detailed_solution.markdown !== newSol.markdown ||
+            JSON.stringify(q.detailed_solution.images || []) !== JSON.stringify(newSol.images)
+          ) {
+            q.detailed_solution = newSol;
+            modified = true;
+            enrichedFromPp++;
+          } else {
+            retainedExisting++;
+          }
+        } else if (q.detailed_solution && isBoilerplate(q.detailed_solution.markdown)) {
+          // Purge old synthetic boilerplate!
+          q.detailed_solution = null;
           modified = true;
-          enrichedFromPp++;
-        } else {
+          purgedBoilerplateCount++;
+        } else if (q.detailed_solution && q.detailed_solution.markdown) {
+          // Keep existing valid authentic solution
           retainedExisting++;
+        } else if (sol && sol.markdown) {
+          // Fallback to academic v1 derivation
+          q.detailed_solution = {
+            concept: sol.concept || q.taxonomy?.primary?.subjectLabel || "",
+            markdown: sol.markdown,
+            images: sol.images || [],
+          };
+          modified = true;
+          enrichedFromV1++;
         }
-      } else if (q.detailed_solution && isBoilerplate(q.detailed_solution.markdown)) {
-        // Purge old synthetic boilerplate!
-        q.detailed_solution = null;
-        modified = true;
-        purgedBoilerplateCount++;
-      } else if (q.detailed_solution && q.detailed_solution.markdown) {
-        // Keep existing valid authentic solution
-        retainedExisting++;
-      } else if (sol && sol.markdown) {
-        // Fallback to academic v1 derivation
-        q.detailed_solution = {
-          concept: sol.concept || q.taxonomy?.primary?.subjectLabel || "",
-          markdown: sol.markdown,
-          images: sol.images || [],
-        };
-        modified = true;
-        enrichedFromV1++;
+      }
+
+      if (modified) {
+        fs.writeFileSync(filePath, JSON.stringify(shard, null, 2), "utf-8");
+        shardsModified++;
       }
     }
-
-    if (modified) {
-      fs.writeFileSync(filePath, JSON.stringify(shard, null, 2), "utf-8");
-      shardsModified++;
-    }
   }
-
 
   const totalWithSolutions = enrichedFromPp + enrichedFromV1 + retainedExisting;
   const coveragePercent = totalQuestions > 0 ? ((totalWithSolutions / totalQuestions) * 100).toFixed(1) : "0.0";
 
   console.log(`\n========================================================`);
   console.log(`🎉 [SHARD ENRICHMENT COMPLETE]`);
-  console.log(`   - Total Shards Modified: ${shardsModified} / ${shardFiles.length}`);
+  console.log(`   - Total Shards Modified: ${shardsModified} / ${totalFilesScanned}`);
   console.log(`   - Total Questions Processed: ${totalQuestions}`);
   console.log(`   - Enriched with Authentic PracticePaper: ${enrichedFromPp}`);
   console.log(`   - Enriched from Academic Fallback (v1): ${enrichedFromV1}`);

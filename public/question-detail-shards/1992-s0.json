@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1992-s0",
   "yearSetKey": "1992-s0",
   "yearSetIdentity": "cse:1992:set-0",
@@ -86,6 +86,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 256,
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -126,6 +127,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -169,6 +171,10 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "B",
+        "C"
+      ],
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -209,6 +215,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -293,6 +300,10 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "A",
+        "B"
+      ],
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -378,6 +389,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 3.2,
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -432,6 +444,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Partial Order",
+        "markdown": "The set $\\{1,2,3,4,6,8,12,24\\}$ is the set of positive divisors of 24. Under divisibility, the greatest common divisor is the meet and the least common multiple is the join; both remain in the set. Thus every pair has a greatest lower bound and a least upper bound, which is exactly the definition of a lattice. These operations do not make the set a group, ring, or field.\n\n**Therefore, the correct answer is Option D (lattice).**",
+        "images": []
       }
     },
     "go:595": {
@@ -500,6 +517,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1992-s0",
       "yearSetIdentity": "cse:1992:set-0",
@@ -513,7 +531,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - First Order Logic",
+        "markdown": "For A, if $\\forall x\\,P(x)$ holds, then $P(x)\\vee Q(x)$ holds for every $x$; if $\\forall x\\,Q(x)$ holds, the same conclusion follows. Hence $(\\forall xP(x))\\vee(\\forall xQ(x))$ implies $\\forall x(P(x)\\vee Q(x))$.\n\nB is invalid because witnesses for $P$ and $Q$ can be different. C reverses the valid implication and fails when $P$ holds for one element and $Q$ for another. D fails in a nonempty domain where $P$ is true everywhere and $Q$ false everywhere.\n\n**Therefore, the only valid statement is Option A.**",
+        "images": []
+      }
     },
     "go:557": {
       "title": "GATE CSE 1992 | Question: 02.iii",
@@ -802,6 +825,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "The smallest simple nonplanar graph by number of vertices is $K_5$, which has 5 vertices and $\\binom52=10$ edges. A nonplanar simple graph with 6 vertices can have 9 edges (for example, $K_{3,3}$), but it does not have the minimum number of vertices. On 5 vertices, removing any edge from $K_5$ gives the planar graph $K_5-e$, so 10 edges are required for nonplanarity at that minimum order.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
       }
     },
     "go:564": {
@@ -978,6 +1006,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "Option B is always true: if $a\\wedge b$ is true, then $b$ is true, and therefore $b\\vee c$ is true. The other implications have counterexamples: A with $a=T,b=F$; C with $a=T,b=T,c=F$; and D with $a=T,b=T,c=F$ under the conventional right-associated implication.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
       }
     },
     "go:575": {

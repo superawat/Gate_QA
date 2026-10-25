@@ -1,0 +1,112 @@
+{
+  "chunkId": "CHUNK-CSE-DSA-06",
+  "branch": "cse",
+  "year": 2004,
+  "section": "tech",
+  "subject": "Algorithms, Data Structures & C Programming",
+  "paper": "GATE IT 2004",
+  "status": "COMPLETED",
+  "count": 12,
+  "questions": [
+    {
+      "uid": "go:3654",
+      "solution": {
+        "concept": "Data Structures - Singly Linked List Deletion Complexity Given Node Pointer",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We are given a singly linked list with head pointer $P$, and a pointer $Q$ to an intermediate node $x$ to be deleted.\n  - In a standard singly linked list, each node has only a `next` pointer; there are no backward pointers (`prev`).\n- **Algorithm Complexity Analysis**:\n  1. To delete node $x$ properly from the list:\n     - The predecessor node of $x$ (let it be $w$) must have its link updated: $w\\to\\text{next} = x\\to\\text{next}$.\n     - Because the list is singly linked, the predecessor $w$ cannot be accessed directly from $Q$.\n     - Finding $w$ requires starting at head pointer $P$ and traversing the list until a node with $\\text{node}\\to\\text{next} == Q$ is found.\n     - In the worst case (e.g., $x$ is near the end of an $n$-element list), this linear search traverses $\\Theta(n)$ nodes, taking **$O(n)$ time**.\n  2. *Note on $O(1)$ value-copying trick*: Copying $x\\to\\text{next}\\to\\text{data}$ into $x$ and deleting the successor node is an in-place value substitution that works only when $x$ is not the last node and external pointers to $x$ are not invalidated; however, in standard textbook algorithm analysis (e.g., Cormen CLRS), classical pointer-based deletion from a singly linked list requires finding the predecessor, which is $O(n)$ in the worst case.\n- **Conclusion**:\n  - The worst-case time complexity of the algorithm is $O(n)$.\n\nTherefore, the correct answer is **Option A ($O(n)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3656",
+      "solution": {
+        "concept": "C Programming - Boolean Toggling & Arithmetic Equivalence",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - We are given that integer variable $x$ can take only the binary values $0$ or $1$ ($x \\in \\{0, 1\\}$).\n  - The conditional statement is:\n    ```c\n    if (x == 0) x = 1; else x = 0;\n    ```\n- **Analytical Step-by-Step Derivation**:\n  1. This statement acts as a boolean NOT (inversion) operation:\n     - If $x = 0 \\implies x_{\\text{new}} = 1$.\n     - If $x = 1 \\implies x_{\\text{new}} = 0$.\n  2. Let us test each algebraic candidate:\n     - **Candidate A ($x = 1 + x$)**:\n       - For $x = 0 \\implies x = 1 + 0 = 1$.\n       - For $x = 1 \\implies x = 1 + 1 = 2 \\ne 0$. (Fails)\n     - **Candidate B ($x = 1 - x$)**:\n       - For $x = 0 \\implies x = 1 - 0 = 1$.\n       - For $x = 1 \\implies x = 1 - 1 = 0$.\n       - Both cases match the conditional statement perfectly!\n     - **Candidate C ($x = x - 1$)**:\n       - For $x = 0 \\implies x = -1 \\ne 1$. (Fails)\n     - **Candidate D ($x = 1 \\% x$)**:\n       - For $x = 0 \\implies 1 \\% 0$ causes a **division by zero runtime error / crash**. (Fails)\n- **Conclusion**:\n  - The statement is completely equivalent to $x = 1 - x;$.\n\nTherefore, the correct answer is **Option B ($x = 1 - x;$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3695",
+      "solution": {
+        "concept": "Data Structures - Stack Permutation Generation & Forbidden Subsequences",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The characters $a, b, c, d$ are pushed in alphabetical order onto a stack. A character can be popped at any time.\n  - A permutation is a **valid stack permutation** if and only if it does not contain the forbidden \"312\" pattern.\n  - Specifically, if element $x$ is popped, any element $y$ that was pushed before $x$ and is still in the stack must be popped in reverse order of pushing (LIFO).\n- **Evaluating Each Option**:\n  - **Option A ($abcd$)**:\n    - Push $a$, pop $a$; push $b$, pop $b$; push $c$, pop $c$; push $d$, pop $d$. **Possible**.\n  - **Option B ($dcba$)**:\n    - Push $a, b, c, d$. Then pop $d, c, b, a$. **Possible**.\n  - **Option C ($cbad$)**:\n    - Push $a, b, c$. Pop $c$, pop $b$, pop $a$. Then push $d$, pop $d$. **Possible**.\n  - **Option D ($cabd$)**:\n    - Push $a, b, c$.\n    - Pop $c$ $\\implies$ Stack now holds $[a, b]$ with $b$ at the top and $a$ below it.\n    - To output the next character $a$, we would have to access $a$. But $b$ is on top of $a$!\n    - The stack discipline (LIFO) strictly forces $b$ to be popped before $a$.\n    - Thus, $a$ cannot be popped before $b$.\n    - Hence, $cabd$ **CANNOT be generated**.\n\nTherefore, the correct answer is **Option D ($cabd$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3696",
+      "solution": {
+        "concept": "Data Structures - Bottom-Up Heap Construction (BUILD-HEAP) Time Complexity",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Converting an unorganized array of size $n$ into a heap can be done using Floyd's bottom-up `BUILD-HEAP` algorithm.\n  - The algorithm applies `MAX-HEAPIFY` (or `MIN-HEAPIFY`) to each internal node in reverse level order:\n    $$\\text{starting from node } \\left\\lfloor \\frac{n-1}{2} \\right\\rfloor \\text{ down to root } 0$$\n- **Rigorous Mathematical Derivation**:\n  1. In a complete binary tree of $n$ elements, the height of the tree is $h = \\lfloor \\log_2 n \\rfloor$.\n  2. The maximum number of nodes at height $k$ (where leaves have height $0$, parents of leaves height $1$, etc.) is:\n     $$\\left\\lceil \\frac{n}{2^{k+1}} \\right\\rceil$$\n  3. The time required to heapify a subtree rooted at a node of height $k$ is proportional to its height: $O(k)$.\n  4. The total time to construct the heap is the sum of heapify costs over all internal nodes:\n     $$T(n) = \\sum_{k=1}^{\\lfloor \\log_2 n \\rfloor} \\left\\lceil \\frac{n}{2^{k+1}} \\right\\rceil O(k) = O\\left(n \\sum_{k=1}^{\\infty} \\frac{k}{2^k}\\right)$$\n  5. The infinite arithmetico-geometric series evaluates to a constant:\n     $$\\sum_{k=1}^{\\infty} \\frac{k}{2^k} = \\frac{1/2}{(1 - 1/2)^2} = 2$$\n  6. Therefore:\n     $$T(n) = O(n \\cdot 2) = O(n)$$\n- **Conclusion**:\n  - Bottom-up heap construction runs in strictly linear $O(n)$ time.\n\nTherefore, the correct answer is **Option B ($O(n)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3697",
+      "solution": {
+        "concept": "Data Structures - Binary Tree Reconstruction from Inorder and Preorder Traversals",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Given the traversals of a binary tree:\n    - **Inorder**: $B \\ C \\ A \\ D$\n    - **Preorder**: $A \\ B \\ C \\ D$\n  - In Preorder, the first element is always the **Root** of the current tree/subtree.\n  - In Inorder, all elements appearing to the left of the root belong to the **Left Subtree**, and all elements appearing to the right belong to the **Right Subtree**.\n- **Step-by-Step Tree Reconstruction**:\n  1. **Identify Root**:\n     - Preorder begins with $A \\implies$ **$A$ is the Root**.\n  2. **Partition Inorder by Root $A$**:\n     - Inorder is $B \\ C \\; | \\; A \\; | \\; D$.\n     - Elements $\\{B, C\\}$ are in the **Left Subtree of $A$**.\n     - Element $\\{D\\}$ is in the **Right Subtree of $A$**.\n     - Since $D$ is a single element, $D$ is the right child of $A$.\n  3. **Reconstruct Left Subtree $\\{B, C\\}$**:\n     - Preorder for left subtree: nodes $B, C$. First element is $B \\implies$ **$B$ is the root of the left subtree** (left child of $A$).\n     - Inorder for left subtree: $B \\ C$. Root $B$ is first, followed by $C$.\n     - Since $C$ appears to the right of $B$ in inorder, **$C$ is the right child of $B$**.\n- **Resultant Tree Topology**:\n  - Node $A$ has:\n    - Right child: $D$.\n    - Left child: $B$.\n  - Node $B$ has:\n    - Right child: $C$.\n  - This corresponds exactly to the binary tree shown in **Option D**.\n\nTherefore, the correct answer is **Option D**.",
+        "images": [
+          "/Gate_QA/question-images/18372728060506908794.webp"
+        ]
+      }
+    },
+    {
+      "uid": "go:3698",
+      "solution": {
+        "concept": "Algorithms - Asymptotic Notation & Equivalence of Functions",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Given positive functions $f(n), g(n), h(n)$ satisfying:\n    1. $f(n) = O(g(n))$ and $g(n) \\ne O(f(n)) \\implies f(n) = o(g(n))$ (strictly smaller growth rate).\n    2. $g(n) = O(h(n))$ and $h(n) = O(g(n)) \\implies g(n) = \\Theta(h(n))$ (identical asymptotic growth rate).\n- **Evaluating Each Statement**:\n  - **Statement A ($f(n) + g(n) = O(h(n) + h(n))$)**:\n    - $f(n) + g(n) = \\Theta(g(n))$ since $f(n) = o(g(n))$.\n    - Since $g(n) = \\Theta(h(n))$ and $h(n) + h(n) = 2h(n) = \\Theta(h(n))$, the equality holds. **True**.\n  - **Statement B ($f(n) = O(h(n))$)**:\n    - By transitivity: $f(n) = O(g(n))$ and $g(n) = O(h(n)) \\implies f(n) = O(h(n))$. **True**.\n  - **Statement C ($h(n) \\ne O(f(n))$)**:\n    - Since $h(n) = \\Theta(g(n))$ and $g(n) \\ne O(f(n))$, $h(n)$ cannot be $O(f(n))$. **True**.\n  - **Statement D ($f(n)h(n) \\ne O(g(n)h(n))$)**:\n    - By assumption, $f(n) = O(g(n))$, so there exists $c > 0$ such that $f(n) \\le c \\cdot g(n)$ for large $n$.\n    - Multiplying both sides by the positive function $h(n) > 0$:\n      $$f(n)h(n) \\le c \\cdot g(n)h(n)$$\n    - This directly satisfies the definition of Big-O: $f(n)h(n) = O(g(n)h(n))$.\n    - Therefore, asserting that $f(n)h(n) \\ne O(g(n)h(n))$ is **FALSE**.\n- **Conclusion**:\n  - Statement D is the false statement.\n\nTherefore, the correct answer is **Option D ($f(n)h(n) \\neq O(g(n)h(n))$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3699",
+      "solution": {
+        "concept": "Graph Algorithms - Prim's Minimum Spanning Tree Edge Selection Sequence",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **Prim's Algorithm** grows a single tree starting from a designated source vertex (here, node $A$).\n  - At each step, it selects the minimum-weight edge connecting a vertex in the currently constructed tree to an unvisited vertex outside the tree (crossing the cut $(V_{\\text{tree}}, V \\setminus V_{\\text{tree}})$).\n- **Given Undirected Graph & Prim's Execution from Node $A$**:\n  - Vertices: $\\{A, B, C, D, E, F, G\\}$.\n  - Tree initialized to: $V_{\\text{tree}} = \\{A\\}$.\n- **Step-by-Step Prim's Execution**:\n  1. From $V_{\\text{tree}} = \\{A\\}$, the incident edges are:\n     - $(A, B)$ (weight 2), $(A, D)$ (weight 3), $(A, C)$ (weight 4).\n     - Minimum weight edge is $(A, B)$ (weight 2).\n     - Add edge **$(A, B)$**. Now $V_{\\text{tree}} = \\{A, B\\}$.\n  2. From $\\{A, B\\}$, available cut edges:\n     - $(A, D)$ (weight 3), $(A, C)$ (weight 4), $(B, D)$ (weight 5), etc.\n     - Minimum weight edge is **$(A, D)$** (weight 3).\n     - Add edge **$(A, D)$**. Now $V_{\\text{tree}} = \\{A, B, D\\}$.\n  3. From $\\{A, B, D\\}$, available cut edges:\n     - $(D, F)$ (weight 3), $(A, C)$ (weight 4), etc.\n     - Minimum weight edge is **$(D, F)$** (weight 3).\n     - Add edge **$(D, F)$**. Now $V_{\\text{tree}} = \\{A, B, D, F\\}$.\n  4. From $\\{A, B, D, F\\}$, available cut edges:\n     - $(F, G)$ (weight 2), $(F, C)$ (weight 3), $(A, C)$ (weight 4).\n     - Minimum weight edge is **$(F, G)$** (weight 2).\n     - Add edge **$(F, G)$**. Now $V_{\\text{tree}} = \\{A, B, D, F, G\\}$.\n  5. From $\\{A, B, D, F, G\\}$, available cut edges:\n     - $(G, E)$ (weight 2), $(F, C)$ (weight 3).\n     - Minimum weight edge is **$(G, E)$** (weight 2).\n     - Add edge **$(G, E)$**. Now $V_{\\text{tree}} = \\{A, B, D, E, F, G\\}$.\n  6. From $\\{A, B, D, E, F, G\\}$, the only remaining unvisited vertex is $C$:\n     - Cut edges to $C$: $(F, C)$ (weight 3), $(A, C)$ (weight 4).\n     - Minimum weight edge is **$(F, C)$** (weight 3).\n     - Add edge **$(F, C)$**.\n- **Final Sequence of Selected Edges**:\n  $$\\text{(A, B), (A, D), (D, F), (F, G), (G, E), (F, C)}$$\n- **Conclusion**:\n  - This matches Option C.\n\nTherefore, the correct answer is **Option C (\\text{(A, B), (A, D), (D, F), (F, G), (G, E), (F, C)})**.",
+        "images": [
+          "/Gate_QA/question-images/6434530301766717919.webp"
+        ]
+      }
+    },
+    {
+      "uid": "go:3700",
+      "solution": {
+        "concept": "Algorithms - Matching Classic Algorithms to Recurrence Relations",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **P. Binary Search**:\n    - Divides a sorted array of size $n$ into half and inspects the middle element with $O(1)$ comparisons:\n      $$T(n) = T(n/2) + 1 \\implies \\text{Relation IV}$$\n  - **Q. Merge Sort**:\n    - Divides array into two equal halves of size $n/2$, recursively sorts each half, and merges them in $cn$ linear time:\n      $$T(n) = 2T(n/2) + cn \\implies \\text{Relation III}$$\n  - **R. Quick Sort**:\n    - Partitions array around a pivot element into subproblems of sizes $k$ and $n - k$ with linear partition work $cn$:\n      $$T(n) = T(n - k) + T(k) + cn \\implies \\text{Relation I}$$\n  - **S. Tower of Hanoi**:\n    - To move $n$ disks: move $n-1$ disks to auxiliary peg ($T(n-1)$), move largest disk ($1$ move), then move $n-1$ disks to destination ($T(n-1)$):\n      $$T(n) = 2T(n - 1) + 1 \\implies \\text{Relation II}$$\n- **Matching Summary**:\n  $$P \\leftrightarrow \\text{IV}, \\quad Q \\leftrightarrow \\text{III}, \\quad R \\leftrightarrow \\text{I}, \\quad S \\leftrightarrow \\text{II}$$\n\nTherefore, the correct answer is **Option B (\\text{P-IV, Q-III, R-I, S-II})**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3701",
+      "solution": {
+        "concept": "C Programming - In-Place Matrix Transposition Loop Bounds",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The **transpose** of a square matrix $M$ interchanges rows and columns: $M^T[i][j] = M[j][i]$.\n  - To transpose a matrix **in-place** (without allocating a secondary array), we must swap each off-diagonal pair $(M[i][j], M[j][i])$ **exactly once**.\n- **Given Outer Loop & Candidate Replacements**:\n  ```c\n  for (i = 0; i < 4; ++i) {\n      X\n  }\n  ```\n- **Analytical Evaluation of Candidates**:\n  - **Option A & Option B ($j = 0$ to $3$)**:\n    - If the inner loop iterates over all columns $j$ from $0$ to $3$:\n      - When $i = 0, j = 1$: swaps $M[0][1]$ and $M[1][0]$.\n      - When $i = 1, j = 0$: swaps $M[1][0]$ and $M[0][1]$ back to their original positions!\n    - Every off-diagonal element is swapped twice, restoring the original matrix unaltered. Hence, $j$ starting at $0$ is incorrect.\n  - **Option C ($j = i$ to $3$ with proper swap logic)**:\n    - Restricting $j$ from $i$ to $3$ visits each off-diagonal pair in the upper triangle $(j > i)$ exactly once, swapping it with its lower-triangle counterpart:\n      ```c\n      for (j = i; j < 4; ++j) {\n          t = M[i][j];\n          M[i][j] = M[j][i];\n          M[j][i] = t;\n      }\n      ```\n    - For diagonal elements ($j = i$), swapping an element with itself is a harmless no-op.\n    - This correctly transforms $M$ into $M^T$.\n  - **Option D**: Uses broken swap assignments where $M[i][j]$ is overwritten with uninitialized $t$.\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3702",
+      "solution": {
+        "concept": "C Programming - Static Local Variables in Mutually Recursive Functions",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A variable declared `static` inside a function is initialized once and retains its state across multiple invocations throughout the program lifetime.\n- **Given C Program**:\n  ```c\n  #include <stdio.h>\n  int funcf(int x);\n  int funcg(int y);\n  int main() {\n      int x = 5, y = 10, count;\n      for (count = 1; count <= 2; ++count) {\n          y += funcf(x) + funcg(x);\n          printf(\"%d \", y);\n      }\n      return 0;\n  }\n  int funcf(int x) {\n      int y;\n      y = funcg(x);\n      return y;\n  }\n  int funcg(int x) {\n      static int y = 10;\n      y += 1;\n      return (y + x);\n  }\n  ```\n- **Step-by-Step Program Execution**:\n  1. `main` initializes $x = 5$, $y = 10$.\n  2. `funcg` contains `static int y = 10;`.\n  3. **First Iteration of Loop (`count = 1`)**:\n     - Evaluate `y += funcf(x) + funcg(x)`:\n       - Call `funcf(5)`:\n         - Inside `funcf`, calls `funcg(5)`.\n         - **1st Call to `funcg(5)`**:\n           - `static y` increments: $y = 10 + 1 = 11$.\n           - Returns $y + x = 11 + 5 = 16$.\n         - `funcf` returns $16$.\n       - Next, evaluate `funcg(x)` with $x = 5$:\n         - **2nd Call to `funcg(5)`**:\n           - `static y` increments: $y = 11 + 1 = 12$.\n           - Returns $y + x = 12 + 5 = 17$.\n       - Update $y$ in `main`:\n         $$y = 10 + 16 + 17 = 43$$\n     - `printf(\"%d \", y)` prints: **43**.\n  4. **Second Iteration of Loop (`count = 2`)**:\n     - Evaluate `y += funcf(x) + funcg(x)` with current main $y = 43$:\n       - Call `funcf(5)`:\n         - Inside `funcf`, calls `funcg(5)`.\n         - **3rd Call to `funcg(5)`**:\n           - `static y` increments: $y = 12 + 1 = 13$.\n           - Returns $y + x = 13 + 5 = 18$.\n         - `funcf` returns $18$.\n       - Next, evaluate `funcg(x)` with $x = 5$:\n         - **4th Call to `funcg(5)`**:\n           - `static y` increments: $y = 13 + 1 = 14$.\n           - Returns $y + x = 14 + 5 = 19$.\n       - Update $y$ in `main`:\n         $$y = 43 + 18 + 19 = 80$$\n     - `printf(\"%d \", y)` prints: **80**.\n- **Conclusion**:\n  - The program prints: $43 \\ 80$.\n\nTherefore, the correct answer is **Option A ($43 \\ 80$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3703",
+      "solution": {
+        "concept": "C Programming - Recursive Character Stream Reversal Using getchar and putchar",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Printing an input stream in reverse order using recursion relies on the **Call Stack** as an implicit LIFO stack:\n    1. Read the next character.\n    2. If not the terminating newline `'\\n'`, recursively call the function to read and process the remaining characters.\n    3. After the recursive call returns (unwinding phase), print the saved character.\n- **Given Skeleton**:\n  ```c\n  void wrt_it(void) {\n      int c;\n      if (?1)\n          wrt_it();\n      ?2\n  }\n  ```\n- **Analytical Evaluation of Candidates**:\n  - To read a character into local variable `c` and check if it is not `'\\n'`:\n    $$?1 \\equiv (c = \\operatorname{getchar}()) != '\\backslash n'$$\n  - Notice the crucial operator precedence: assignment `=` has lower precedence than relational inequality `!=`, so parentheses around `(c = getchar())` are mandatory.\n  - After `wrt_it()` returns, `c` must be printed using the standard output function:\n    $$?2 \\equiv \\operatorname{putchar}(c);$$\n  - Function `getchar(c);` in Options A and B is invalid C syntax (`getchar()` takes no arguments).\n  - Option C lacks the assignment `c = getchar()`, leaving `c` uninitialized.\n  - Option D correctly specifies $?1$ as `(c = getchar()) != '\\n'` and $?2$ as `putchar(c);`.\n\nTherefore, the correct answer is **Option D ($?1$ is  $(c = getchar) ! =$ '\\n', $?2$ is  $putchar(c);$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:3704",
+      "solution": {
+        "concept": "C Programming - Pass-by-Value vs Pass-by-Reference with Structures",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In C, passing a `struct` directly by value (e.g., `f1(s)`) creates a **local copy** of the structure on the stack. Modifications made to fields inside the function affect only the local copy and do not alter the caller's structure.\n  - Passing a pointer to a struct (e.g., `f2(&s)`) allows the function to dereference the pointer and modify the caller's structure in place.\n- **Given Program Trace**:\n  ```c\n  typedef struct {\n      char *a;\n      char *b;\n  } t;\n\n  int main() {\n      static t s = {\"A\", \"B\"};\n      printf(\"%s %s\n\", s.a, s.b); // Line 1\n      f1(s);                       // Pass by value\n      printf(\"%s %s\n\", s.a, s.b); // Line 3\n      f2(&s);                      // Pass by pointer\n      return 0;\n  }\n  void f1(t s) {\n      s.a = \"U\";\n      s.b = \"V\";\n      printf(\"%s %s\n\", s.a, s.b); // Line 2\n  }\n  void f2(t *p) {\n      p->a = \"V\";\n      p->b = \"W\";\n      printf(\"%s %s\n\", p->a, p->b); // Line 4\n  }\n  ```\n- **Step-by-Step Execution Output**:\n  1. **Line 1 in `main`**: `s` is initialized to `{\"A\", \"B\"}`.\n     - Prints: **$A \\ B$**.\n  2. **Call `f1(s)` (Line 2)**:\n     - `f1` receives a copy of `s`. It updates its local copy: `s.a = \"U\", s.b = \"V\"`.\n     - Prints: **$U \\ V$**.\n     - Returns to `main`.\n  3. **Line 3 in `main`**:\n     - Because `f1` operated on a pass-by-value copy, `main`'s `s` remains unchanged!\n     - Prints: **$A \\ B$**.\n  4. **Call `f2(&s)` (Line 4)**:\n     - `f2` receives the memory address `&s`.\n     - It mutates `s.a = \"V\", s.b = \"W\"`.\n     - Prints: **$V \\ W$**.\n- **Combined Output**:\n  $$\\begin{aligned}\n  &A \\ B \\\\\n  &U \\ V \\\\\n  &A \\ B \\\\\n  &V \\ W\n  \\end{aligned}$$\n- **Conclusion**:\n  - Matches Option B.\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
+    }
+  ]
+}

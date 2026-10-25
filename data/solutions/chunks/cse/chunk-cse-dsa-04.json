@@ -1,0 +1,88 @@
+{
+  "chunkId": "CHUNK-CSE-DSA-04",
+  "branch": "cse",
+  "year": 2004,
+  "section": "tech",
+  "subject": "Algorithms, Data Structures & C Programming",
+  "paper": "GATE CSE 2004 Part 2",
+  "status": "COMPLETED",
+  "count": 9,
+  "questions": [
+    {
+      "uid": "go:1030",
+      "solution": {
+        "concept": "C Programming - String Termination & Null Character Truncation",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In C, strings are null-terminated character arrays (`'\\0'`, ASCII value 0).\n  - The standard library function `printf(\"%s\", p)` starts reading at address `p` and prints characters sequentially until it encounters the first null terminator `'\\0'`. If the very first character `p[0]` is `'\\0'`, printing halts immediately.\n- **Given Program Trace**:\n  ```c\n  char p[20]; int i;\n  char *s = \"string\";\n  int length = strlen(s);\n  for (i = 0; i < length; i++)\n      p[i] = s[length - i];\n  printf(\"%s\", p);\n  ```\n  1. The string literal `\"string\"` has length:\n     $$\\text{length} = \\operatorname{strlen}(s) = 6$$\n  2. The character array $s$ occupies indices $0$ to $6$:\n     $$s[0]='s', \\; s[1]='t', \\; s[2]='r', \\; s[3]='i', \\; s[4]='n', \\; s[5]='g', \\; s[6]='\\0'$$\n  3. Now examine the first iteration of the loop ($i = 0$):\n     $$p[0] = s[\\text{length} - 0] = s[6] = '\\0'$$\n  4. The first character of array `p` is assigned the null character `'\\0'`!\n  5. Subsequent iterations assign:\n     - $i=1 \\implies p[1] = s[5] = 'g'$\n     - $i=2 \\implies p[2] = s[4] = 'n'$\n     - etc.\n  6. When `printf(\"%s\", p)` is called, it inspects `p[0]`.\n  7. Since `p[0] == '\\0'`, `printf` detects string termination at index 0 and outputs 0 visible characters.\n- **Conclusion**:\n  - No visible output is printed to stdout.\n\nTherefore, the correct answer is **Option D (no output is printed)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1032",
+      "solution": {
+        "concept": "Data Structures - Unique Binary Tree Reconstruction from Traversal Pairs",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - To reconstruct a unique binary tree from two traversal sequences:\n    - One traversal must identify the root node (e.g., **Preorder** has the root first; **Postorder** has the root last).\n    - Crucially, the **Inorder** traversal is strictly required to partition the remaining nodes into the left subtree (nodes appearing before the root in inorder) and the right subtree (nodes appearing after the root in inorder).\n- **Analysis of Traversal Pairs**:\n  - **Pair I (Preorder and Postorder)**:\n    - Can uniquely reconstruct a *strictly full* binary tree (where every node has 0 or 2 children), but **cannot** uniquely reconstruct an arbitrary binary tree with single-child nodes (a single child cannot be uniquely identified as left or right).\n  - **Pair II (Inorder and Postorder)**:\n    - Postorder gives the root as its last element.\n    - Searching for this root in the Inorder traversal splits the tree uniquely into left and right subtrees.\n    - Recursively applying this yields a **unique binary tree**.\n  - **Pair III (Preorder and Inorder)**:\n    - Preorder gives the root as its first element.\n    - Inorder partitions the elements into left and right subtrees.\n    - Recursively yields a **unique binary tree**.\n  - **Pair IV (Level order and Postorder)**:\n    - Does not uniquely partition left and right subtrees without inorder.\n- **Conclusion**:\n  - Pairs II and III uniquely identify a binary tree.\n\nTherefore, the correct answer is **Option B (II, III)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1033",
+      "solution": {
+        "concept": "Data Structures - Queue Representation using Circularly Linked List with Single Pointer",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A Queue requires two primary operations:\n    1. **$\\text{enQueue}$**: Insert an element at the rear of the queue.\n    2. **$\\text{deQueue}$**: Remove an element from the front of the queue.\n  - In a circularly linked list representing a queue of nodes:\n    - The **rear node**'s `next` pointer naturally points to the **front node** of the queue!\n- **Evaluation of Pointer Choices**:\n  - **If pointer $p$ points to the REAR node**:\n    - **Front node access**: $\\text{front} = p\\to\\text{next}$. Available in **$O(1)$ constant time**.\n    - **$\\text{enQueue}$ Operation**:\n      - Create new node `newNode`.\n      - `newNode->next = p->next` (new node points to front).\n      - `p->next = newNode` (old rear points to new node).\n      - `p = newNode` (update rear pointer to new node).\n      - Time complexity: **$O(1)$**.\n    - **$\\text{deQueue}$ Operation**:\n      - The node to remove is $\\text{front} = p\\to\\text{next}$.\n      - Update link: `p->next = p->next->next`.\n      - Free deleted node.\n      - Time complexity: **$O(1)$**.\n    - Both operations run in strictly $O(1)$ time with only a single pointer!\n  - **If pointer $p$ points to the FRONT node**:\n    - Reaching the rear node to append an element requires traversing all $n$ nodes, taking **$O(n)$ linear time**.\n- **Conclusion**:\n  - Pointer $p$ must point to the **rear node**.\n\nTherefore, the correct answer is **Option A (rear node)**.",
+        "images": [
+          "/Gate_QA/question-images/543162888522397383.webp"
+        ]
+      }
+    },
+    {
+      "uid": "go:1034",
+      "solution": {
+        "concept": "Data Structures - Max-Heap Sequential Insertion and Bubble-Up (Heapify)",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A **Max-Heap** is a complete binary tree where the key at every parent node is greater than or equal to the keys of its children.\n  - Insertion into a binary heap:\n    1. Place the new element at the next available leaf position (maintaining complete tree shape).\n    2. \"Bubble-up\" (sift-up) by repeatedly swapping with its parent while the new element is greater than its parent.\n- **Given Insertion Sequence**:\n  $$\\{32, 15, 20, 30, 12, 25, 16\\}$$\n- **Step-by-Step Array & Tree Trace**:\n  1. **Insert 32**: Array = $[32]$. Root = $32$.\n  2. **Insert 15**: Array = $[32, 15]$. Left child of $32$. ($15 \\le 32$, no swap).\n  3. **Insert 20**: Array = $[32, 15, 20]$. Right child of $32$. ($20 \\le 32$, no swap).\n  4. **Insert 30**: Left child of $15$ (index 3).\n     - Compare with parent $15$: $30 > 15 \\implies$ swap with $15$.\n     - Compare with new parent $32$: $30 \\le 32$, stop.\n     - Array = $[32, 30, 20, 15]$.\n  5. **Insert 12**: Right child of $30$ (index 4).\n     - Compare with parent $30$: $12 \\le 30$, stop.\n     - Array = $[32, 30, 20, 15, 12]$.\n  6. **Insert 25**: Left child of $20$ (index 5).\n     - Compare with parent $20$: $25 > 20 \\implies$ swap with $20$.\n     - Compare with new parent $32$: $25 \\le 32$, stop.\n     - Array = $[32, 30, 25, 15, 12, 20]$.\n  7. **Insert 16**: Right child of $25$ (index 6).\n     - Compare with parent $25$: $16 \\le 25$, stop.\n     - Array = $[32, 30, 25, 15, 12, 20, 16]$.\n- **Final Resultant Heap Structure**:\n  - Root: $32$\n  - Left subtree of $32$:\n    - Node $30$ (left child: $15$, right child: $12$)\n  - Right subtree of $32$:\n    - Node $25$ (left child: $20$, right child: $16$)\n  - This matches the tree depicted in **Option A**.\n\nTherefore, the correct answer is **Option A**.",
+        "images": [
+          "/Gate_QA/question-images/4657742569677615821.webp"
+        ]
+      }
+    },
+    {
+      "uid": "go:1035",
+      "solution": {
+        "concept": "Data Structures - Infix to Postfix Expression Conversion with Precedence and Associativity",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **Operator Precedence (Highest to Lowest)**:\n    1. Exponentiation ($^{\\wedge}$): Precedence 3, **Right-to-Left associative**.\n    2. Multiplication ($\\times$): Precedence 2, **Left-to-Right associative**.\n    3. Addition ($+$) and Subtraction ($-$): Precedence 1, **Left-to-Right associative**.\n- **Given Infix Expression**:\n  $$a + b \\times c - d \\ \\hat{} \\ e \\ \\hat{} \\ f$$\n- **Step-by-Step Parenthesization**:\n  1. **Handle Exponentiation ($^{\\wedge}$)**:\n     - Since $^{\\wedge}$ is right-associative: $d \\ \\hat{} \\ e \\ \\hat{} \\ f = (d \\ \\hat{} \\ (e \\ \\hat{} \\ f))$.\n     - Postfix for $(e \\ \\hat{} \\ f)$ is `ef^`.\n     - Postfix for $(d \\ \\hat{} \\ (ef^))$ is `def^^`.\n  2. **Handle Multiplication ($\\times$)**:\n     - $(b \\times c)$ is converted to `bc*`.\n  3. **Handle Addition and Subtraction ($+$, $-$)**:\n     - Both have equal precedence and are left-associative, so evaluate left-to-right:\n       $$((a + (b \\times c)) - (d \\ \\hat{} \\ (e \\ \\hat{} \\ f)))$$\n     - Postfix for $(a + (b \\times c))$: `abc*+`.\n     - Finally, combine with subtraction:\n       `abc*+def^^-`\n- **Distractor Analysis**:\n  - **Option A ($abc\\times+def \\ \\hat{}{} \\ \\hat{}-$ )**: Matches the exact derived postfix expression `abc*+def^^` followed by `-`.\n  - **Option B**: Uses left-associative exponentiation `de^f^-`, which violates right-associativity.\n\nTherefore, the correct answer is **Option A ($abc\\times+def \\ \\ \\hat{}{} \\ \\ \\ \\hat{}-$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1036",
+      "solution": {
+        "concept": "Algorithms & Linear Algebra - Theoretical Time Complexity of Matrix Multiplication",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The product of two matrices $M_1$ (dimension $n \\times p$) and $M_2$ (dimension $p \\times m$) is defined by:\n    $$(M_1 \\times M_2)_{ij} = \\sum_{k=1}^{p} M_1[i, k] \\cdot M_2[k, j]$$\n  - In theoretical algorithm analysis (the Random Access Machine / RAM model), any element of an array stored in contiguous memory can be accessed in **$O(1)$ constant time** using the index mapping formula:\n    - Row-major: $\\text{Address}(A[i, j]) = \\text{Base} + (i \\cdot C + j) \\times \\text{sizeof}(\\text{element})$\n    - Column-major: $\\text{Address}(A[i, j]) = \\text{Base} + (j \\cdot R + i) \\times \\text{sizeof}(\\text{element})$\n- **Complexity Analysis**:\n  1. Each of the $n \\times m$ entries in the result matrix requires computing the inner product of a row of $M_1$ and a column of $M_2$, which takes $p$ multiplications and $p - 1$ additions.\n  2. Total number of arithmetic operations:\n     $$n \\cdot m \\cdot p = \\Theta(n^3) \\quad (\\text{for } n \\times n \\text{ square matrices})$$\n  3. Because address translation for every element access takes $\\Theta(1)$ time regardless of whether row-major or column-major indexing is used, the **asymptotic time complexity** remains strictly $\\Theta(n^3)$ (or $O(n^{\\log_2 7})$ for Strassen's algorithm).\n  4. Although cache memory spatial locality impacts wall-clock runtime in practical computer architecture, the *algorithmic time complexity* is purely a function of the number of fundamental operations, which is **independent of the storage scheme**.\n\nTherefore, the correct answer is **Option D (independent of the storage scheme)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1037",
+      "solution": {
+        "concept": "Data Structures - Set Operations on Unsorted Linked Lists",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Let sets $A$ and $B$ have sizes $|A| = m$ and $|B| = n$.\n  - Both sets are represented as singly linked lists with elements stored in **arbitrary (unsorted) order**.\n- **Time Complexity Analysis of Operations**:\n  1. **Cardinality**:\n     - Traverse the linked list from head to tail to count the nodes.\n     - Time complexity: $\\Theta(m)$ linear time.\n  2. **Membership ($x \\in A$)**:\n     - Linear scan of list $A$ until $x$ is found or the end of the list is reached.\n     - Worst-case time complexity: $\\Theta(m)$ linear time.\n  3. **Union ($A \\cup B$)**:\n     - Set elements must be unique (no duplicates).\n     - To construct $A \\cup B$: copy list $A$ ($O(m)$ time).\n     - For each element $y \\in B$, check if $y$ is already in list $A$ (membership check taking $O(m)$).\n     - Total time: $m + n \\times O(m) = \\Theta(m \\cdot n)$ **quadratic time**.\n  4. **Intersection ($A \\cap B$)**:\n     - For each element $y \\in B$, perform a membership search across list $A$ ($O(m)$). If found, append to the result.\n     - Total time: $n \\times O(m) = \\Theta(m \\cdot n)$ **quadratic time**.\n- **Comparison**:\n  - Cardinality and Membership take linear time ($O(n)$ or $O(m)$).\n  - Union and Intersection require pairwise comparisons taking quadratic time ($O(m \\cdot n)$).\n  - Hence, **Union and Intersection** are the slowest operations.\n\nTherefore, the correct answer is **Option D ($\\text{union, intersection}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1038",
+      "solution": {
+        "concept": "Algorithms & C - Euclidean Algorithm for Greatest Common Divisor by Repeated Subtraction",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The **Euclidean Algorithm** is based on the fundamental mathematical principle:\n    $$\\gcd(m, n) = \\gcd(m - n, n) \\quad \\text{for } m > n$$\n  - When $m = n$, the common value is the greatest common divisor: $\\gcd(m, m) = m$.\n- **Given Program Trace**:\n  ```c\n  main() {\n      int x, y, m, n;\n      scanf(\"%d %d\", &x, &y);\n      /* Assume x > 0 and y > 0 */\n      m = x; n = y;\n      while (m != n) {\n          if (m > n)\n              m = m - n;\n          else\n              n = n - m;\n      }\n      printf(\"%d\", n);\n  }\n  ```\n  1. Variables $m$ and $n$ are initialized to positive integers $x$ and $y$.\n  2. While $m \\ne n$:\n     - If $m > n$, $m$ is reduced by $n$. By Euclid's lemma, $\\gcd(m, n) = \\gcd(m - n, n)$.\n     - If $n > m$, $n$ is reduced by $m$. By Euclid's lemma, $\\gcd(m, n) = \\gcd(m, n - m)$.\n  3. Invariant: At each iteration, $\\gcd(m, n) = \\gcd(x, y)$.\n  4. Since $m$ and $n$ are positive integers that strictly decrease at each step, the loop must terminate when $m = n$.\n  5. Upon termination, $m = n = \\gcd(x, y)$, and the program outputs $n$.\n- **Conclusion**:\n  - The program computes the **greatest common divisor (GCD)** of $x$ and $y$ using repeated subtraction.\n\nTherefore, the correct answer is **Option C (the greatest common divisor of $x$ and $y$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1039",
+      "solution": {
+        "concept": "Numerical Methods & Algorithms - Babylonian Square Root Approximation",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - The **Babylonian Method** (or Newton-Raphson iteration for the function $f(x) = x^2 - m = 0$) iteratively solves for the square root $\\sqrt{m}$.\n  - The Newton-Raphson iteration formula for roots of $f(x) = 0$ is:\n    $$x_{k+1} = x_k - \\frac{f(x_k)}{f'(x_k)} = x_k - \\frac{x_k^2 - m}{2x_k} = \\frac{2x_k^2 - x_k^2 + m}{2x_k} = \\frac{x_k + m/x_k}{2}$$\n- **Analysis of Given Code**:\n  ```c\n  x = m;\n  y = 1;\n  while (x - y > epsilon) {\n      x = (x + y) / 2;\n      y = m / x;\n  }\n  print(x);\n  ```\n  1. Initialization: $x = m$ and $y = 1$. Notice that $x \\cdot y = m \\cdot 1 = m$.\n  2. In each iteration:\n     - $x$ is updated to the arithmetic mean of $x$ and $y$: $x_{\\text{new}} = \\frac{x + y}{2} = \\frac{x + m/x}{2}$.\n     - $y$ is updated to $m / x_{\\text{new}}$, maintaining the invariant:\n       $$x \\cdot y = m$$\n  3. Convergence:\n     - As the loop progresses, $x$ and $y$ converge toward each other: $x - y \\le \\epsilon$.\n     - At convergence: $x \\approx y$.\n     - Since $x \\cdot y = m$, setting $y = x$ yields:\n       $$x^2 = m \\implies x = \\sqrt{m} = m^{1/2}$$\n- **Conclusion**:\n  - The algorithm computes the square root of $m$, which is $m^{1/2}$.\n\nTherefore, the correct answer is **Option C ($m^{\\frac{1}{2}}$)**.",
+        "images": []
+      }
+    }
+  ]
+}

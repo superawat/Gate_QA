@@ -1,0 +1,305 @@
+{
+  "chunkId": "CHUNK-CE-MOD-05",
+  "branch": "ce",
+  "year": 2014,
+  "section": "tech",
+  "generatedAt": "2026-10-20T16:47:34.754Z",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 23,
+  "remainingAfterSlice": 13,
+  "questions": [
+    {
+      "uid": "ce:2014:q6",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 6,
+      "title": "GATE CE 2014 | Set 1 | Question: 6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "RCC Structures",
+      "subtopic": "Working Stress and Limit State Method",
+      "officialAnswer": "C",
+      "questionHtml": "Match the information given in Group - I with those in Group - II.<br><img src=\"/question-images/ce/2014/ce-2014-f4783244ee.webp\">",
+      "options": [
+        "P-1; Q-2; R-3; S-4",
+        "P-2; Q- ; R-4; S-3",
+        "P-3; Q-4; R-2; S-1",
+        "P-4; Q-3; R-2; S -1"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "RCC Structures - Working Stress and Limit State Methods & Plastic Analysis",
+        "markdown": "- **Group I and Group II Matching Analysis:**\n  - **P. Factor to decrease ultimate strength to design strength $\\rightarrow$ 3. Material partial safety factor:**\n    In Limit State Design (IS 456:2000), the design strength of a material is obtained by dividing its characteristic/ultimate strength by the material partial safety factor $\\gamma_m$ ($f_d = f_k / \\gamma_m$, where $\\gamma_m = 1.5$ for concrete and $1.15$ for steel).\n  - **Q. Factor to increase working load to ultimate load for design $\\rightarrow$ 4. Load factor:**\n    The load factor is the multiplier applied to service (working) loads to compute the ultimate design load at collapse ($W_u = \\text{Load Factor} \\times W_{\\text{working}}$).\n  - **R. Statical method of ultimate load analysis $\\rightarrow$ 2. Lower bound on ultimate load:**\n    According to the static (lower bound) theorem of plastic collapse, any load distribution that satisfies static equilibrium and nowhere violates the yield condition ($M \\le M_p$) is less than or equal to the true ultimate collapse load ($P_s \\le P_u$).\n  - **S. Kinematical mechanism method of ultimate load analysis $\\rightarrow$ 1. Upper bound on ultimate load:**\n    According to the kinematic (upper bound) theorem, any assumed collapse mechanism formed by plastic hinges where external work equals internal plastic dissipation yields an estimated collapse load greater than or equal to the true collapse load ($P_k \\ge P_u$).\n\n- **Evaluation of Options:**\n  - Combining the verified pairings yields: $P - 3;\\; Q - 4;\\; R - 2;\\; S - 1$.\n  - The other options misassign safety factors to bounding theorems or reverse load factor and material partial safety factor.\n\nTherefore, the correct answer is **Option C (P-3; Q-4; R-2; S-1)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q10",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE CE 2014 | Set 1 | Question: 10",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Design of Steel Structures",
+      "subtopic": "Structural Fasteners",
+      "officialAnswer": "A",
+      "questionHtml": "A steel section is subjected to a combination of shear and bending actions. The applied shear force is V and the shear capacity of the section is $V_{s}$. For such a section, high shear force (as per IS:800-2007) is defined as",
+      "options": [
+        "$V \\gt  0.6V_{s}$ ",
+        "$V \\gt  0.7V_{s}$ ",
+        "$V \\gt  0.8V_{s}$ ",
+        "$V \\gt  0.9V_{s}$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "Clause 9.2.1 IS 800:2007\n\nTherefore, the correct answer is **A**.",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Design of Steel Structures - Combined Bending and Shear (IS 800:2007)",
+        "markdown": "- **Governing Code Provisions (IS 800:2007):**\n  - Clause 9.2 of IS 800:2007 specifies the design requirements for structural steel members subjected to combined bending moment ($M$) and shear force ($V$).\n  - **Low Shear Condition:**\n    When the applied factored shear force satisfies $V \\le 0.6 V_s$ (where $V_s$ or $V_d$ is the design shear capacity of the cross-section), the effect of shear force on the moment capacity is negligible. The design bending strength remains unreduced ($M_d$).\n  - **High Shear Condition:**\n    When the applied factored shear force exceeds $0.6 V_s$ ($V > 0.6 V_s$), the section is classified as subjected to **high shear force**. In this regime, shear stresses reduce the plastic moment capacity, and the design bending strength must be reduced to $M_{dv}$ in accordance with Clause 9.2.2:\n    $$M_{dv} = M_d - \\beta(M_d - M_{fd}) \\le 1.2 \\frac{Z_e f_y}{\\gamma_{m0}}$$\n    where $\\beta = \\left(\\frac{2V}{V_d} - 1\\right)^2$.\n\n- **Conclusion:**\n  - Therefore, as per IS 800:2007, high shear force is defined as $V > 0.6 V_s$.\n\nTherefore, the correct answer is **Option A ($V \\gt 0.6V_s$)** .",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q13",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 13,
+      "title": "GATE CE 2014 | Set 1 | Question: 13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Soil Stabilization and Soil Exploration",
+      "officialAnswer": "A",
+      "questionHtml": "The degree of disturbance of the sample collected by the sampler is expressed by a term called the \"area ratio\". If the outer diameter and inner diameter of the sampler are $D_{o}$ and $D_{i}$ respectively, the area ratio is given by",
+      "options": [
+        "$\\frac{D_{o}^{2}-D_{i}^{2}}{D_{i}^{2}}$ ",
+        "$\\frac{D_{i}^{2}-D_{o}^{2}}{D_{i}^{2}}$ ",
+        "$\\frac{D_{o}^{2}-D_{i}^{2}}{D_{o}^{2}}$ ",
+        "$\\frac{D_{i}^{2}-D_{o}^{2}}{D_{o}^{2}}$ "
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - Soil Exploration & Sampler Disturbance",
+        "markdown": "- **Definition & Governing Formula for Area Ratio ($A_r$):**\n  - In subsurface soil exploration, the degree of disturbance of a soil sample collected by a tube sampler is evaluated by the area ratio ($A_r$), inside clearance ($C_i$), and outside clearance ($C_o$) (IS 1892 / IS 2132).\n  - The area ratio represents the ratio of the volume of soil displaced by the sampler cutting edge to the volume of the soil sample recovered inside the tube:\n    $$A_r = \\frac{\\text{External Area} - \\text{Internal Area}}{\\text{Internal Area}} \\times 100\\%$$\n  - For a circular sampler with outside cutting edge diameter $D_o$ and inside cutting edge diameter $D_i$:\n    $$A_r = \\frac{\\frac{\\pi}{4} D_o^2 - \\frac{\\pi}{4} D_i^2}{\\frac{\\pi}{4} D_i^2} = \\frac{D_o^2 - D_i^2}{D_i^2}$$\n\n- **Engineering Significance:**\n  - To minimize soil displacement and obtain undisturbed samples in cohesive soils, thin-walled samplers (e.g. Shelby tubes) are designed with an area ratio $A_r \\le 10\\%$.\n  - Heavy thick-walled split-spoon samplers (used in SPT) have large area ratios ($A_r \\approx 100\\%$) and collect only disturbed samples.\n\n- **Option Analysis:**\n  - Option A matches the exact algebraic formula: $\\frac{D_o^2 - D_i^2}{D_i^2}$.\n  - Option B gives a negative quantity since $D_o > D_i$.\n  - Options C and D erroneously normalize by $D_o^2$ instead of the internal sample area $D_i^2$.\n\nTherefore, the correct answer is **Option A ($\\frac{D_o^2 - D_i^2}{D_i^2}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q14",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 14,
+      "title": "GATE CE 2014 | Set 1 | Question: 14",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Shear Strength of Soil",
+      "officialAnswer": "D",
+      "questionHtml": "For a saturated cohesive soil, a triaxial test yields the angle of internal friction ($\\phi$ ) as zero. The conducted test is",
+      "options": [
+        "Consolidated Drained (CD) test",
+        "Consolidated Undrained (CU) test",
+        "Unconfined Compression (UC) test",
+        "Unconsolidated Undrained (UU) test"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - Shear Strength & Triaxial Test Types",
+        "markdown": "- **Shear Strength of Saturated Cohesive Soils:**\n  - According to the Mohr-Coulomb failure criterion, shear strength is expressed as $\\tau_f = c + \\sigma \\tan \\phi$.\n  - In an **Unconsolidated Undrained (UU)** triaxial test on a fully saturated cohesive soil (saturated clay with degree of saturation $S_r = 100\\%$):\n    - During cell pressure application ($\\sigma_3$), drainage is prohibited.\n    - Because water is virtually incompressible compared to the soil skeleton, Skempton's pore pressure parameter $B = 1$.\n    - Any applied increment of cell pressure $\\Delta \\sigma_3$ produces an identical increment in pore water pressure:\n      $$\\Delta u = B \\Delta \\sigma_3 = \\Delta \\sigma_3$$\n    - Consequently, the effective confining stress remains completely unchanged:\n      $$\\bar{\\sigma}_3 = (\\sigma_3 + \\Delta \\sigma_3) - (u_0 + \\Delta u) = \\sigma_3 - u_0 = \\text{constant}$$\n    - During shearing, drainage remains closed. Since effective stress at failure is independent of the confining cell pressure $\\sigma_3$, every total stress Mohr circle at failure has the exact same diameter:\n      $$(\\sigma_1 - \\sigma_3)_f = 2 c_u = q_u$$\n\n- **Resulting Failure Envelope:**\n  - The total stress failure envelope tangential to these identical Mohr circles is a horizontal line with slope angle $\\phi_u = 0^\\circ$ and intercept $c_u$ (undrained shear strength).\n  - This condition is known as the $\\phi_u = 0$ concept.\n\n- **Distractor Analysis:**\n  - **Consolidated Drained (CD) test** (Option A): Allows full drainage; effective friction angle $\\phi' > 0$ (typically $20^\\circ\\text{--}30^\\circ$).\n  - **Consolidated Undrained (CU) test** (Option B): Initial consolidation strengthens the soil skeleton, giving $\\phi_{cu} > 0$.\n  - **Unconfined Compression (UC) test** (Option C): Conducted at $\\sigma_3 = 0$ only; a single test circle cannot define an envelope slope across multiple confining pressures.\n\nTherefore, the correct answer is **Option D (Unconsolidated Undrained (UU) test)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q15",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 15,
+      "title": "GATE CE 2014 | Set 1 | Question: 15",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Deep Foundation",
+      "officialAnswer": "B",
+      "questionHtml": "The action of negative skin friction on the pile is to",
+      "options": [
+        "increase the ultimate load on the pile",
+        "reduce the allowable load on the pile",
+        "maintain the working load on the pile",
+        "reduce the settlement of the pile"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - Deep Foundations & Negative Skin Friction",
+        "markdown": "- **Mechanism of Negative Skin Friction:**\n  - Negative skin friction ($Q_n$ or $F_n$) is a downward drag force exerted by settling surrounding soil along the shaft of a pile.\n  - It develops whenever the downward settlement of the surrounding soil layer exceeds the downward settlement of the pile foundation.\n  - Common field scenarios inducing negative skin friction include:\n    1. Consolidation of a newly placed soft clay layer or cohesive backfill.\n    2. Lowering of the groundwater table, which increases effective overburden pressure and induces soil settlement.\n    3. Placement of heavy surcharge loads on soft compressible ground surrounding the pile.\n\n- **Effect on Pile Capacity & Performance:**\n  - Under normal conditions, skin friction acts upwards to support external compressive loads.\n  - When soil settles faster than the pile, the relative shear displacement reverses, directing shear stresses downward.\n  - This downward drag acts as an additional imposed gravity load on the pile, which must be carried along with the superstructure load:\n    $$Q_{\\text{allowable}} = \\frac{Q_{\\text{ultimate}}}{FOS} - Q_n$$\n  - Consequently, the allowable (safe working) load that the pile can support from the structure is substantially **reduced**.\n\n- **Distractor Analysis:**\n  - **Option A is incorrect:** It does not increase the ultimate load capacity; it adds downward demand.\n  - **Option C is incorrect:** The usable working load cannot be maintained; it must be downgraded to prevent geotechnical and structural overload.\n  - **Option D is incorrect:** Downward drag increases settlement and axial compression in the pile shaft.\n\nTherefore, the correct answer is **Option B (reduce the allowable load on the pile)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q18",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 18,
+      "title": "GATE CE 2014 | Set 1 | Question: 18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Hydrology",
+      "subtopic": "Flood Routing and Flood Control",
+      "officialAnswer": "A",
+      "questionHtml": "A conventional flow duration curve is a plot between",
+      "options": [
+        "Flow and percentage time flow is exceeded",
+        "Duration of flooding and ground level elevation",
+        "Duration of water supply in a city and proportion of area receiving supply exceeding this duration",
+        "Flow rate and duration of time taken to empty a reservoir at that flow rate"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Hydrology - Flow Duration Curve (FDC)",
+        "markdown": "- **Definition of Flow Duration Curve:**\n  - A **Flow Duration Curve (FDC)** is a cumulative frequency curve that graphically depicts the percentage of time during which stream discharge equaled or exceeded specified magnitudes throughout a given historical period of observation.\n  - **Coordinate Axes:**\n    - **Ordinate ($y$-axis):** Streamflow discharge ($Q$, in $\\text{m}^3/\\text{s}$).\n    - **Abscissa ($x$-axis):** Exceedance probability or percentage of time ($P\\%$) that flow $Q$ is equaled or exceeded:\n      $$P = \\frac{m}{N + 1} \\times 100\\%$$\n      where $m$ is the numerical rank of streamflow values sorted in descending order, and $N$ is the total number of flow records.\n\n- **Hydrological Applications:**\n  - Evaluates firm power capacity in run-of-the-river hydropower planning.\n  - Determines dependable flow percentiles (e.g., $Q_{50}$ median flow, $Q_{75}$ or $Q_{90}$ for environmental low-flow and water abstraction permits).\n  - The slope of the FDC reflects catchment characteristics: a flat curve indicates substantial groundwater baseflow storage, whereas a steep curve indicates a flashy watershed with rapid surface runoff.\n\n- **Distractor Analysis:**\n  - Option B refers to flood-hazard or stage-inundation mapping.\n  - Option C relates to municipal water distribution network reliability.\n  - Option D refers to reservoir mass curves and storage-yield relationships (Rippl's method).\n\nTherefore, the correct answer is **Option A (Flow and percentage time flow is exceeded)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q21",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 21,
+      "title": "GATE CE 2014 | Set 1 | Question: 21",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Environmental Engineering",
+      "subtopic": "Quality Characteristics of Water",
+      "officialAnswer": "D",
+      "questionHtml": "Some of the nontoxic metals normally found in natural water are",
+      "options": [
+        "arsenic, lead and mercury",
+        "calcium, sodium and silver",
+        "cadmium, chromium and copper",
+        "iron, manganese and magnesium"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Environmental Engineering - Water Quality Parameters & Toxicology",
+        "markdown": "- **Classification of Metals in Natural Water:**\n  - In environmental engineering and drinking water standards (IS 10500:2012 / WHO Guidelines), metallic elements in natural water are divided into:\n    1. **Toxic Metals / Heavy Metals:** Regulated with extremely stringent maximum permissible limits (often $< 0.01\\text{ to }0.05\\text{ mg/L}$) due to high systemic toxicity, neurotoxicity, carcinogenicity, and biological accumulation in the human body. Examples: Arsenic ($As$), Lead ($Pb$), Mercury ($Hg$), Cadmium ($Cd$), Hexavalent Chromium ($Cr^{6+}$), and Silver ($Ag$).\n    2. **Non-Toxic Common Minerals & Essential Elements:** Naturally occurring earth metals that are non-toxic at normal environmental levels. They affect secondary aesthetic qualities (hardness, color, taste, or pipe staining) rather than causing toxic poisoning. Examples: Calcium ($Ca$), Magnesium ($Mg$), Sodium ($Na$), Iron ($Fe$), and Manganese ($Mn$).\n\n- **Evaluation of Options:**\n  - **Option A (arsenic, lead, mercury):** All three are classified as highly toxic heavy metals.\n  - **Option B (calcium, sodium, silver):** Silver is a toxic heavy metal with bactericidal and tissue-accumulating properties (IS 10500 limit $0.1\\text{ mg/L}$).\n  - **Option C (cadmium, chromium, copper):** Cadmium and chromium are notoriously toxic and carcinogenic.\n  - **Option D (iron, manganese, magnesium):** Iron, manganese, and magnesium are non-toxic macro-minerals normally present in natural water from mineral dissolution, responsible for aesthetic hardness and minor coloration without chemical toxicity.\n\nTherefore, the correct answer is **Option D (iron, manganese and magnesium)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q37",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 37,
+      "title": "GATE CE 2014 | Set 1 | Question: 37",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geotechnical Engineering",
+      "subtopic": "Shallow Foundation and Bearing Capacity",
+      "officialAnswer": "A",
+      "questionHtml": "Group I contains representative load-settlement curves for different modes of bearing capacity failures of sandy soil. Group II enlists the various failure characteristics. Match the load-settlement curves with the corresponding failure characteristics.<br><img src=\"/question-images/ce/2014/ce-2014-907a7fe1bc.webp\"><br><img src=\"/question-images/ce/2014/ce-2014-979db8f087.webp\">",
+      "options": [
+        "P-1, Q-3, R-2",
+        "P-3, Q-2, R-1",
+        "P-3, Q-1, R-2",
+        "P-1, Q-2, R-3"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geotechnical Engineering - Modes of Bearing Capacity Failure in Shallow Foundations",
+        "markdown": "- **Bearing Capacity Failure Modes in Sandy Soils (Vesic / Terzaghi):**\n  - **Punching Shear Failure (Curve J $\\rightarrow$ 1):**\n    - Occurs in very loose sands ($D_r < 30\\%$) and soft, highly compressible clays.\n    - Failure is characterized by continuous vertical shearing and downward plunging of the footing directly into the soil.\n    - There is **no apparent heaving of soil around the footing**, and the failure plane does not extend beyond the vertical edges of the footing base.\n    - The load-settlement curve ($J$) displays steep continuous settlement with no distinct ultimate peak.\n  - **General Shear Failure (Curve K $\\rightarrow$ 3):**\n    - Occurs in dense sand ($D_r > 70\\%$) and stiff cohesive soils.\n    - Characterized by a sudden, catastrophic collapse where a **well-defined continuous slip surface extends all the way to the ground surface**.\n    - Significant bulging and heaving of adjacent soil occurs on both sides of the footing.\n    - The load-settlement curve ($K$) demonstrates an unambiguous peak load followed by plastic softening.\n  - **Local Shear Failure (Curve L $\\rightarrow$ 2):**\n    - Occurs in medium-dense sands ($30\\% < D_r < 70\\%$) and medium-stiff clays.\n    - Characterized by substantial settlement before failure. The slip surfaces begin under the footing edges and **Rankine's passive zones develop only imperfectly**, terminating within the soil mass without cleanly reaching the ground surface.\n    - The load-settlement curve ($L$) exhibits gradual curvature without a sharp peak.\n\n- **Matching Group I with Group II:**\n  - P (Curve J) $\\rightarrow$ 1 (No apparent heaving of soil around the footing)\n  - Q (Curve K) $\\rightarrow$ 3 (Well defined slip surface extends to ground surface)\n  - R (Curve L) $\\rightarrow$ 2 (Rankine's passive zone develops imperfectly)\n\nTherefore, the correct answer is **Option A (P-1, Q-3, R-2)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q47",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 47,
+      "title": "GATE CE 2014 | Set 1 | Question: 47",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Environmental Engineering",
+      "subtopic": "Water Treatment",
+      "officialAnswer": "A",
+      "questionHtml": "The potable water is prepared from turbid surface water by adopting the following treatment sequence.",
+      "options": [
+        "Turbid surface water $\\rightarrow$ Coagulation $\\rightarrow$ Flocculation $\\rightarrow$ Sedimentation $\\rightarrow$ Filtration $\\rightarrow$  Disinfection $\\rightarrow$ Storage & Supply",
+        "Turbid surface water $\\rightarrow$ Disinfection $\\rightarrow$ Flocculation $\\rightarrow$ Sedimentation $\\rightarrow$ Filtration $\\rightarrow$ Coagulation $\\rightarrow$ Storage & Supply",
+        "Turbid surface water $\\rightarrow$ Filtration $\\rightarrow$ Sedimentation $\\rightarrow$ Disinfection $\\rightarrow$ Flocculation $\\rightarrow$ Coagulation $\\rightarrow$ Storage & Supply",
+        "Turbid surface water $\\rightarrow$ Sedimentation $\\rightarrow$ Flocculation $\\rightarrow$ Coagulation $\\rightarrow$ Disinfection $\\rightarrow$ Filtration $\\rightarrow$ Storage & Supply"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Environmental Engineering - Conventional Surface Water Treatment Sequence",
+        "markdown": "- **Conventional Surface Water Treatment Flowsheet:**\n  - Raw turbid surface water derived from rivers or lakes contains suspended mineral solids, colloidal clays, color-producing organic compounds, and pathogenic microorganisms.\n  - The standard pedagogical sequence of unit processes in a conventional municipal water treatment plant is:\n    1. **Turbid surface water intake & screening:** Removes large floating debris.\n    2. **Coagulation (Rapid Flash Mixing):** Chemical coagulants (such as alum, $\\text{Al}_2(\\text{SO}_4)_3 \\cdot 18\\text{H}_2\\text{O}$) are rapidly dispersed (30–60 seconds) to destabilize negatively charged colloidal particles by charge neutralization.\n    3. **Flocculation (Slow Gentle Mixing):** Gentle mechanical agitation (20–40 minutes) brings destabilized colloidal particles into contact, forming large, heavy, visible floc aggregates.\n    4. **Sedimentation (Clarification):** Flocculated water enters quiescent settling basins where gravity settles out the bulk ($80\\%\\text{--}90\\%$) of the floc mass.\n    5. **Filtration (Rapid Sand Filters):** Settled water passes through granular sand/anthracite beds to trap residual fine non-settleable flocs, silt, and cysts.\n    6. **Disinfection (Chlorination):** Chemical disinfectants (chlorine gas or sodium hypochlorite) are injected to kill surviving pathogenic bacteria and viruses, maintaining a protective residual in the distribution system.\n    7. **Storage & Supply:** Disinfected potable water is stored in clear water reservoirs and pumped into the municipal distribution pipe network.\n\n- **Distractor Analysis:**\n  - Options B, C, and D violate physical process sequencing:\n    - Disinfection cannot precede sedimentation and filtration because high organic matter and suspended solids consume chlorine, form toxic disinfection by-products (trihalomethanes, THMs), and shield pathogens.\n    - Filtration cannot precede sedimentation because high turbidity would instantaneously clog the filter bed.\n    - Coagulation must precede flocculation, which in turn must precede sedimentation.\n\nTherefore, the correct answer is **Option A (Turbid surface water $\\rightarrow$ Coagulation $\\rightarrow$ Flocculation $\\rightarrow$ Sedimentation $\\rightarrow$ Filtration $\\rightarrow$ Disinfection $\\rightarrow$ Storage & Supply)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:q55",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 55,
+      "title": "GATE CE 2014 | Set 1 | Question: 55",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Geomatics Engineering",
+      "subtopic": "Theodolites, Compass and Traverse Surveying",
+      "officialAnswer": "D",
+      "questionHtml": "Group I lists tool/instrument while Group II lists the method of surveying. Match the tool/instrument with the corresponding method of surveying.<br><img src=\"/question-images/ce/2014/ce-2014-4d58f803f0.webp\" />\n",
+      "options": [
+        " P-3; Q-2; R-1; S-4",
+        "P-2; Q-4; R-3; S-1",
+        "P-1 ; Q-2; R-4; S-3",
+        "P-3; Q-1; R-2; S-4"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Geomatics Engineering - Surveying Instruments & Methodologies",
+        "markdown": "- **Matching Instruments (Group I) with Surveying Methods (Group II):**\n  - **P. Alidade $\\rightarrow$ 3. Plane table surveying:**\n    An alidade is the primary sighting and plotting device used in plane table surveying. It consists of a straightedge (fiducial edge) with sight vanes (or a sighting telescope) used to sight target stations and simultaneously draw direction rays on the drafting board.\n  - **Q. Arrow $\\rightarrow$ 1. Chain surveying:**\n    Arrows (chaining pins) are tempered steel wire pins with a looped top and pointed bottom. They are inserted into the ground by the leader to mark the completion of each chain/tape length during linear measurements in chain surveying.\n  - **R. Bubble tube $\\rightarrow$ 2. Levelling:**\n    A bubble tube (spirit level vial) containing alcohol or ether is a vital component of levelling instruments (Dumpy level, Tilting level). It establishes a truly horizontal line of sight (line of collimation) perpendicular to the vertical axis of the instrument.\n  - **S. Stadia hair $\\rightarrow$ 4. Theodolite surveying:**\n    Stadia hairs are horizontal cross-hairs etched symmetrically above and below the central horizontal cross-hair on the reticle diaphragm of a theodolite telescope. They enable tacheometric distance measurement ($D = ks + c$) by reading the staff intercept ($s$).\n\n- **Evaluation of Options:**\n  - Matching the verified associations:\n    $$P - 3, \\quad Q - 1, \\quad R - 2, \\quad S - 4$$\n  - This corresponds precisely to Option D.\n\nTherefore, the correct answer is **Option D (P-3; Q-1; R-2; S-4)**.",
+        "images": []
+      }
+    }
+  ],
+  "status": "COMPLETED",
+  "completedAt": "2026-10-20T16:54:48.424Z"
+}

@@ -1,0 +1,264 @@
+{
+  "chunkId": "CHUNK-DA-04",
+  "branch": "da",
+  "year": 2024,
+  "section": "all",
+  "generatedAt": "2026-10-20T12:18:45.444Z",
+  "status": "COMPLETED",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 22,
+  "remainingAfterSlice": 12,
+  "summary": {
+    "verifiedCount": 10,
+    "integratedCount": 10,
+    "holdCount": 0,
+    "reviewDate": "2026-10-20",
+    "notes": "Phase 1 Chunk 4 (GATE DA 2024 Q36-Q45) authored, peer-verified, and integrated with 100% agreement with official IIT answer keys."
+  },
+  "questions": [
+    {
+      "uid": "go:422926",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 36,
+      "title": "GATE DA 2024 | Question: 36",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Databases",
+      "subtopic": "Functional Dependencies & Closures",
+      "officialAnswer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "goLink": "https://gateoverflow.in/422926/gate-ds%26ai-2024-question-36#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, B, D",
+        "rationale": "(VW)+ = {V, W, X, Y, Z} derived via V->X then WX->Y, WX->Z. Thus VW->YZ and VW->Y hold, but VW->U fails since U is not in closure. (WX)+ = {W, X, Y, Z} implies WX->YZ holds. Hence A, B, D.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422925",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 37,
+      "title": "GATE DA 2024 | Question: 37",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Linear Algebra",
+      "subtopic": "Vector Subspaces",
+      "officialAnswer": [
+        "A",
+        "C"
+      ],
+      "goLink": "https://gateoverflow.in/422925/gate-ds%26ai-2024-question-37#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, C",
+        "rationale": "A is the linear span of two vectors (always a subspace). C is the null space of a linear system (always a subspace). B is restricted to non-negative coefficients (not closed under negative scalar multiplication). D does not contain the origin (5(0)+2(0)+4 != 0). Hence A and C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422924",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 38,
+      "title": "GATE DA 2024 | Question: 38",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Linear Algebra",
+      "subtopic": "Solvability of Linear Systems",
+      "officialAnswer": [
+        "B",
+        "D"
+      ],
+      "goLink": "https://gateoverflow.in/422924/gate-ds%26ai-2024-question-38#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B, D",
+        "rationale": "B: Rank 2 matrix in R^(3x3) has nullity 1, giving infinite solutions for q in col(M) and no solution for p not in col(M). D: Full column rank matrix in R^(3x2) has nullity 0, giving unique solution for p in col(M) and no solution for q not in col(M). A and C are mathematically impossible by rank-nullity.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422923",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 39,
+      "title": "GATE DA 2024 | Question: 39",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Linear Algebra",
+      "subtopic": "Projection Matrices & Idempotence",
+      "officialAnswer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "goLink": "https://gateoverflow.in/422923/gate-ds%26ai-2024-question-39#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B, C, D",
+        "rationale": "dim(null(M)) = 3 - dim(U). When dim(U)=2, nullity is 3-2=1 (B holds). All projection matrices are idempotent: M^2 = M (C holds) and M^3 = M^2 * M = M * M = M (D holds). Statement A claims nullity is 1 when dim(U)=1 (actual is 2). Hence B, C, D.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422922",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 40,
+      "title": "GATE DA 2024 | Question: 40",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Calculus",
+      "subtopic": "Critical Points & Second Derivative Test",
+      "officialAnswer": [
+        "A",
+        "B"
+      ],
+      "goLink": "https://gateoverflow.in/422922/gate-ds%26ai-2024-question-40#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, B",
+        "rationale": "f'(x) = x^3 - 2x^2 - 3x = x(x-3)(x+1) = 0 at x in {-1, 0, 3}. f''(x) = 3x^2 - 4x - 3. f''(0) = -3 < 0 -> local maximum at x=0 (A). f''(3) = 12 > 0 -> local minimum at x=3 (B). f''(-1) = 4 > 0 -> local minimum at x=-1 (not maximum). Hence A, B.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422921",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 41,
+      "title": "GATE DA 2024 | Question: 41",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Topological Sort of DAG",
+      "officialAnswer": [
+        "B",
+        "D"
+      ],
+      "goLink": "https://gateoverflow.in/422921/gate-ds%26ai-2024-question-41#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B, D",
+        "rationale": "Both sequences P R Q V S U T and P R Q S V T U satisfy all directed edge dependencies in the DAG without violating precedence constraints. Hence B and D.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422920",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 42,
+      "title": "GATE DA 2024 | Question: 42",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Data Structures",
+      "subtopic": "Binary Tree Bounds & Structural Relations",
+      "officialAnswer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "goLink": "https://gateoverflow.in/422920/gate-ds%26ai-2024-question-42#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, B, C",
+        "rationale": "L = n2 + 1 and I = n1 + n2 >= n2 -> L <= I + 1 (A). Skewed vs complete tree bounds give H+1 <= N <= 2^(H+1)-1 (B) and H <= I <= 2^H - 1 (C). Statement D fails for skewed trees where L=1 but H can be large. Hence A, B, C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422919",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 43,
+      "title": "GATE DA 2024 | Question: 43",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "Linear Separability",
+      "officialAnswer": [
+        "A",
+        "D"
+      ],
+      "goLink": "https://gateoverflow.in/422919/gate-ds%26ai-2024-question-43#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, D",
+        "rationale": "Datasets (i) and (iv) have disjoint convex hulls separable by a single straight line in R^2. Datasets (ii) and (iii) represent concentric and interlocking/XOR patterns requiring nonlinear boundaries. Hence A and D.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422918",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 44,
+      "title": "GATE DA 2024 | Question: 44",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Mathematical Logic",
+      "subtopic": "First-Order Logic Translation",
+      "officialAnswer": [
+        "A",
+        "C"
+      ],
+      "goLink": "https://gateoverflow.in/422918/gate-ds%26ai-2024-question-44#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, C",
+        "rationale": "The assertion breaks into: ~G(x) -> R(x) (s1) and G(x) -> ~R(x) (s3). Since contrapositive of s1 is ~R(x) -> G(x) (s2), s1 is logically equivalent to s2. Thus s1 ^ s3 (A) and s2 ^ s3 (C) are both valid representations. Hence A and C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422917",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 45,
+      "title": "GATE DA 2024 | Question: 45",
+      "type": "MSQ",
+      "section": "Technical",
+      "subject": "Databases",
+      "subtopic": "B+ Tree vs Hash Index Capabilities",
+      "officialAnswer": [
+        "A",
+        "B"
+      ],
+      "goLink": "https://gateoverflow.in/422917/gate-ds%26ai-2024-question-45#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A, B",
+        "rationale": "Movie.CustomerRating > 3.4 is a range query. Hash indexes cannot evaluate range queries without scanning the entire relation, so any configuration placing a hash index on CustomerRating (C, D) cannot speed up the query. B+ trees support range queries and equality lookups, and hash index on Genre.Name supports equality. Hence A and B.",
+        "patchRegistered": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "chunkId": "CHUNK-EC-MOD-04",
+  "branch": "ec",
+  "year": "all",
+  "section": "tech",
+  "generatedAt": "2026-10-20T17:47:59.890Z",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 114,
+  "remainingAfterSlice": 104,
+  "questions": [
+    {
+      "uid": "ec:2015:q9",
+      "branch": "ec",
+      "year": 2015,
+      "set": 1,
+      "qNum": 9,
+      "title": "GATE EC 2015 | Set 1 | Question: 9",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "PN-Junction Diodes and Special Diodes",
+      "officialAnswer": "A",
+      "questionHtml": "A region of negative differential resistance is observed in the current voltage characteristics of a silicon PN junction if",
+      "options": [
+        "both the P-region and the N-region are heavily doped",
+        "the N-region is heavily doped compared to the P-region",
+        "the P-region is heavily doped compared to the N-region",
+        "an intrinsic silicon region is inserted between the P-region and the N-region"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - PN-Junction Diodes & Tunnel Diode Negative Differential Resistance",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - PN-Junction Diodes & Tunnel Diode Negative Differential Resistance\n- **Given Phenomenon**:\n  - Observation of a **negative differential resistance (NDR)** region ($dV/dI < 0$) in the forward current-voltage ($I-V$) characteristics of a silicon PN junction.\n- **Governing Principles**:\n  - Negative differential resistance in a simple PN junction is the definitive operational characteristic of a **Tunnel Diode** (Esaki diode).\n  - To realize quantum mechanical band-to-band tunneling:\n    1. Both the P-type and N-type sides must be **degenerately (heavily) doped**, typically exceeding $10^{19}\\text{ cm}^{-3}$ (approximately 1 impurity atom per $10^3$ to $10^4$ silicon host atoms).\n    2. Degenerate doping drives the Fermi level $E_F$ into the conduction band on the n-side ($E_{Fn} > E_C$) and into the valence band on the p-side ($E_{Fp} < E_V$).\n    3. The resulting depletion region width becomes extremely thin (on the order of $W \\approx 5\\text{ to }10\\text{ nm} = 50\\text{ to }100\\ \\text{\\AA}$).\n- **Step-by-Step Analytical Derivation**:\n  - At zero bias, the Fermi levels align, and no net current flows.\n  - When a small forward bias $V$ is applied ($0 < V < V_P$), filled electron states in the conduction band of the n-region directly align with available empty hole states in the valence band of the p-region. Electrons tunnel across the ultrathin barrier, yielding a sharp increase in tunneling current up to peak value $I_P$.\n  - As forward bias increases further beyond peak voltage $V_P$ ($V_P < V < V_V$), the band overlap decreases as the valence band edge of the p-side drops below the filled conduction band states of the n-side. Consequently, the tunneling current decreases with increasing voltage, creating the **negative differential resistance region**.\n  - Beyond the valley voltage $V_V$, regular thermal diffusion current over the barrier dominates, behaving like a conventional diode.\n  - If only one region is heavily doped (e.g., $p^+ n$ or $n^+ p$), the junction forms a Zener diode with a wider depletion width where forward tunneling cannot occur.\n- **Distractor Analysis**:\n  - **Options B and C are incorrect**: Asymmetric heavy doping ($p^+ n$ or $n^+ p$) results in conventional rectifier or Zener diodes that exhibit strictly positive dynamic resistance in forward bias.\n  - **Option D is incorrect**: Inserting an intrinsic region forms a PIN diode, which eliminates tunneling and provides high reverse breakdown voltage and RF attenuation.\n\nTherefore, the correct answer is **Option A (both the P-region and the N-region are heavily doped)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2015:q19",
+      "branch": "ec",
+      "year": 2015,
+      "set": 1,
+      "qNum": 19,
+      "title": "GATE EC 2015 | Set 1 | Question: 19",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Control Systems",
+      "subtopic": "Basics of Control Systems, Block Diagram and SFGs",
+      "officialAnswer": "B",
+      "questionHtml": "Negative feedback in a closed-loop control system DOES NOT",
+      "options": [
+        "reduce the overall gain",
+        "reduce bandwidth",
+        "improve disturbance rejection",
+        "reduce sensitivity to parameter variation"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Control Systems - Basics of Feedback Systems & Closed-Loop Properties",
+        "markdown": "- **Concept / Subtopic**: Control Systems - Basics of Feedback Systems & Closed-Loop Properties\n- **System Configuration**:\n  - Negative feedback closed-loop system with open-loop forward transfer function $G(s)$ and feedback path $H(s)$:\n    $$T(s) = \\frac{G(s)}{1 + G(s)H(s)}$$\n- **Governing Principles & Analytical Properties**:\n  1. **Gain Reduction**:\n     - The closed-loop DC gain is $A_f = \\frac{A}{1 + A\\beta}$.\n     - Because $(1 + A\\beta) > 1$, negative feedback **reduces the overall gain**. (Statement A is a true property).\n  2. **Bandwidth Expansion**:\n     - For a standard first-order low-pass system with open-loop upper cut-off frequency $\\omega_H$:\n       $$\\omega_{Hf} = \\omega_H (1 + A\\beta)$$\n     - The closed-loop bandwidth is **increased (widened)** by the factor $(1 + A\\beta)$, preserving the gain-bandwidth product.\n     - Therefore, negative feedback **DOES NOT reduce bandwidth**; it expands bandwidth. (Statement B is what negative feedback does NOT do).\n  3. **Disturbance Rejection**:\n     - Output sensitivity to an extraneous disturbance $D(s)$ introduced in the forward path is scaled down by $\\frac{1}{1 + G(s)H(s)}$. Thus, negative feedback **improves disturbance rejection**. (Statement C is a true property).\n  4. **Sensitivity Reduction**:\n     - Sensitivity of the closed-loop transfer function $T$ with respect to variations in $G$ is given by:\n       $$S_G^T = \\frac{\\partial T / T}{\\partial G / G} = \\frac{1}{1 + G(s)H(s)}$$\n     - Therefore, negative feedback **reduces sensitivity to parameter variations**. (Statement D is a true property).\n- **Conclusion**:\n  - Negative feedback increases bandwidth, so it does not reduce it.\n\nTherefore, the correct answer is **Option B (reduce bandwidth)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2015:q11-s2",
+      "branch": "ec",
+      "year": 2015,
+      "set": 2,
+      "qNum": 11,
+      "title": "GATE EC 2015 | Set 2 | Question: 11",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "Diodes Applications",
+      "officialAnswer": "D",
+      "questionHtml": "If the circuit shown has to function as a clamping circuit, then which one of the following conditions should be satisfied for the sinusoidal signal of period T ?<br><img src=\"/question-images/ec/2015/ec-2015-ce87247112.webp\"/><br>",
+      "options": [
+        "$RC\\lt \\lt T$",
+        "$RC=0.35T$",
+        "$RC\\approx T$ ",
+        "$RC\\gt \\gt T$"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits - Diode Clamping Circuit Time Constant Criterion",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits - Diode Clamping Circuit Time Constant Criterion\n- **Given Circuit Configuration**:\n  - Diode clamping circuit comprising a series capacitor $C$, a shunt resistor $R$, and a shunt diode driven by a periodic sinusoidal signal of period $T$.\n- **Governing Principles**:\n  - The objective of a clamper is to shift the DC level of a signal to a desired baseline without distorting the AC waveform profile.\n  - Operation occurs in two distinct alternating intervals:\n    1. **Charging Interval (Diode ON)**:\n       - When the input polarity forward-biases the diode, the diode conducts with very small forward resistance $R_f$.\n       - The charging time constant is $\\tau_{\\text{charge}} = R_f C$. Since $R_f$ is negligible, $\\tau_{\\text{charge}} \\ll T$, allowing the capacitor to charge rapidly to the peak input voltage.\n    2. **Holding / Discharging Interval (Diode OFF)**:\n       - During the remainder of the period (roughly duration $T$), the diode is reverse-biased (open circuit).\n       - The capacitor discharges through the shunt resistor $R$ with discharging time constant $\\tau_{\\text{discharge}} = RC$.\n- **Step-by-Step Analytical Derivation**:\n  - For the circuit to act as an effective clamper, the capacitor voltage must remain essentially constant throughout the entire OFF interval, discharging by less than $1\\%\\text{ to }5\\%$ of its stored voltage.\n  - The fractional discharge over period $T$ is:\n    $$\\Delta V_C \\approx V_{\\text{peak}} \\left(1 - e^{-T/RC}\\right) \\approx V_{\\text{peak}} \\left(\\frac{T}{RC}\\right)$$\n  - For negligible decay ($Delta V_C \\ll V_{\\text{peak}}$):\n    $$\\frac{T}{RC} \\ll 1 \\implies RC \\gg T$$\n  - As a standard design rule of thumb, $RC \\ge 5T \\text{ to } 10T$.\n- **Distractor Analysis**:\n  - If $RC \\ll T$ (Option A), the capacitor completely discharges within a fraction of a cycle, transforming the circuit into a differentiator/high-pass filter and severely distorting the waveform.\n  - If $RC \\approx T$ or $0.35T$ (Options B and C), substantial exponential voltage droop occurs, causing baseline tilt and waveform distortion.\n\nTherefore, the correct answer is **Option D ($RC\\gt \\gt T$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2015:q27-s3",
+      "branch": "ec",
+      "year": 2015,
+      "set": 3,
+      "qNum": 27,
+      "title": "GATE EC 2015 | Set 3 | Question: 27",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EC)",
+      "subtopic": "Probability and Statistics",
+      "officialAnswer": "6",
+      "questionHtml": "A fair die with faces {1, 2, 3, 4, 5, 6} is thrown repeatedly till '3' is observed for the first time. Let X denote the number of times the die is thrown. The expected value of X is ____.",
+      "options": [],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EC) - Geometric Probability Distribution & Expected Value",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EC) - Geometric Probability Distribution & Expected Value\n- **Given Parameters**:\n  - Fair 6-faced die with sample space $S = \\{1, 2, 3, 4, 5, 6\\}$.\n  - The die is rolled repeatedly and independently until the outcome '3' is observed for the first time.\n  - $X$ is the random variable representing the total number of rolls required.\n- **Governing Equations**:\n  - In each independent trial, the probability of rolling a '3' (success) is:\n    $$p = \\frac{1}{6}$$\n  - The probability of rolling any other number (failure) is:\n    $$q = 1 - p = \\frac{5}{6}$$\n  - The random variable $X$ follows a **Geometric Distribution** with parameter $p$:\n    $$P(X = k) = (1 - p)^{k-1} p = \\left(\\frac{5}{6}\\right)^{k-1} \\left(\\frac{1}{6}\\right), \\quad k = 1, 2, 3, \\dots$$\n- **Step-by-Step Analytical Derivation**:\n  - The expected value $E[X]$ is defined by:\n    $$E[X] = \\sum_{k=1}^{\\infty} k P(X = k) = \\sum_{k=1}^{\\infty} k q^{k-1} p$$\n  - Recall the standard arithmetico-geometric series summation formula for $|q| < 1$:\n    $$\\sum_{k=1}^{\\infty} k q^{k-1} = \\frac{d}{dq}\\left(\\sum_{k=0}^{\\infty} q^k\\right) = \\frac{d}{dq}\\left(\\frac{1}{1-q}\\right) = \\frac{1}{(1-q)^2} = \\frac{1}{p^2}$$\n  - Multiplying by $p$:\n    $$E[X] = p \\cdot \\frac{1}{p^2} = \\frac{1}{p}$$\n  - Substituting $p = \\frac{1}{6}$:\n    $$E[X] = \\frac{1}{1/6} = 6$$\n\nTherefore, the correct numerical value is **6**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q6",
+      "branch": "ec",
+      "year": 2014,
+      "set": 1,
+      "qNum": 6,
+      "title": "GATE EC 2014 | Set 1 | Question: 6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Network Theory",
+      "subtopic": "Transient Analysis",
+      "officialAnswer": "C",
+      "questionHtml": "For maximum power transfer between two cascaded sections of an electrical\nnetwork, the relationship between the output impedance $Z_{1}$ of the first section\nto the input impedance $Z_{2}$ of the second section is",
+      "options": [
+        "$Z_{2}=Z_{1}$",
+        "$Z_{2}=-Z_{1}$",
+        "$Z_{2}=Z_{1}^{*}$ ",
+        "$Z_{2}=-Z_{1}^{*}$ "
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Network Theory - Maximum Power Transfer Theorem for AC Networks",
+        "markdown": "- **Concept / Subtopic**: Network Theory - Maximum Power Transfer Theorem for AC Networks\n- **Given System**:\n  - Two cascaded electrical network sections:\n    - Section 1 has Thévenin output impedance $Z_1 = R_1 + j X_1$.\n    - Section 2 represents the load network with input impedance $Z_2 = R_2 + j X_2$.\n- **Governing Equations**:\n  - Let $V_{\\text{th}}$ be the open-circuit Thévenin voltage of Section 1.\n  - The total loop impedance is $Z_{\\text{total}} = Z_1 + Z_2 = (R_1 + R_2) + j(X_1 + X_2)$.\n  - The active average power delivered to the load resistive component $R_2$ is:\n    $$P_L = I_{\\text{rms}}^2 R_2 = \\frac{|V_{\\text{th}}|^2 R_2}{(R_1 + R_2)^2 + (X_1 + X_2)^2}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Reactive Impedance Optimization**:\n     - The denominator is minimized when the reactive term is eliminated:\n       $$X_1 + X_2 = 0 \\implies X_2 = -X_1$$\n     - This condition resonates out the series reactance at the operating frequency.\n  2. **Resistive Impedance Optimization**:\n     - With reactances cancelled, the power transferred simplifies to:\n       $$P_L = \\frac{|V_{\\text{th}}|^2 R_2}{(R_1 + R_2)^2}$$\n     - To maximize $P_L$ with respect to $R_2$, take the first derivative and set to zero:\n       $$\\frac{dP_L}{dR_2} = |V_{\\text{th}}|^2 \\frac{(R_1 + R_2)^2 - 2 R_2(R_1 + R_2)}{(R_1 + R_2)^4} = 0$$\n       $$(R_1 + R_2) - 2 R_2 = 0 \\implies R_2 = R_1$$\n  3. **Complex Conjugate Synthesis**:\n     - Combining both conditions:\n       $$Z_2 = R_2 + j X_2 = R_1 - j X_1 = (R_1 + j X_1)^* = Z_1^*$$\n     - Thus, maximum power transfer occurs if and only if $Z_2$ is the **complex conjugate** of $Z_1$.\n- **Distractor Analysis**:\n  - $Z_2 = Z_1$ (Option A) only holds for purely real (resistive) networks; in reactive AC networks, it leaves uncompensated reactances that diminish transferred power.\n  - $Z_2 = -Z_1$ and $Z_2 = -Z_1^*$ (Options B and D) imply negative resistances, which represent active/unstable systems rather than passive matching.\n\nTherefore, the correct answer is **Option C ($Z_{2}=Z_{1}^{*}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q11",
+      "branch": "ec",
+      "year": 2014,
+      "set": 1,
+      "qNum": 11,
+      "title": "GATE EC 2014 | Set 1 | Question: 11",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "BJT Analysis",
+      "officialAnswer": "B",
+      "questionHtml": "A good current buffer has",
+      "options": [
+        "low input impedance and low output impedance",
+        "low input impedance and high output impedance",
+        "high input impedance and low output impedance",
+        "high input impedance and high output impedance"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits - Ideal Current Buffer Specifications",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits - Ideal Current Buffer Specifications\n- **Functional Definition**:\n  - A **current buffer** is a two-port amplifier designed to transfer current from a high-impedance source to a low-impedance load with unity current gain ($A_i = I_{\\text{out}} / I_{\\text{in}} \\approx 1$) while isolating the source from load impedance variations.\n- **Governing Principles**:\n  1. **Input Impedance ($R_{\\text{in}}$)**:\n     - The input of a current buffer is driven by a Norton source ($I_s$ in parallel with source resistance $R_s$).\n     - By current division, the input current entering the buffer is:\n       $$I_{\\text{in}} = I_s \\left(\\frac{R_s}{R_s + R_{\\text{in}}}\\right)$$\n     - To ensure that all available source current enters the amplifier without attenuation ($I_{\\text{in}} \\to I_s$ regardless of $R_s$), the input impedance must be as small as possible:\n       $$R_{\\text{in}} \\ll R_s \\implies R_{\\text{in}} \\to 0\\ \\Omega \\quad \\text{(Low input impedance)}$$\n  2. **Output Impedance ($R_{\\text{out}}$)**:\n     - The output stage behaves as a current source delivering $I_{\\text{out}}$ into load resistor $R_L$.\n     - By current division at the output port:\n       $$I_L = I_{\\text{out}} \\left(\\frac{R_{\\text{out}}}{R_{\\text{out}} + R_L}\\right)$$\n     - To ensure that load fluctuations do not perturb the delivered load current ($I_L \\to I_{\\text{out}}$), the output impedance must be as large as possible:\n       $$R_{\\text{out}} \\gg R_L \\implies R_{\\text{out}} \\to \\infty \\quad \\text{(High output impedance)}$$\n- **Circuit Realization**:\n  - In bipolar and MOS analog design, a **Common-Base (CB)** or **Common-Gate (CG)** stage is universally utilized as a current buffer because it naturally provides $R_{\\text{in}} \\approx 1/g_m$ (low) and $R_{\\text{out}} \\approx r_o$ (high).\n- **Conclusion**:\n  - A good current buffer must possess **low input impedance and high output impedance**.\n\nTherefore, the correct answer is **Option B (low input impedance and high output impedance)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q22",
+      "branch": "ec",
+      "year": 2014,
+      "set": 1,
+      "qNum": 22,
+      "title": "GATE EC 2014 | Set 1 | Question: 22",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Communication Systems",
+      "subtopic": "Information Theory and Coding",
+      "officialAnswer": "A",
+      "questionHtml": "In a code-division multiple access (CDMA) system with N = 8 chips, the\nmaximum number of users who can be assigned mutually orthogonal signature\nsequences is____.",
+      "options": [
+        "8"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "7.99 to 8.01 ",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Communication Systems - CDMA Orthogonal Signature Sequences & Vector Dimension",
+        "markdown": "- **Concept / Subtopic**: Communication Systems - CDMA Orthogonal Signature Sequences & Vector Dimension\n- **Given Parameters**:\n  - Code-Division Multiple Access (CDMA) system.\n  - Spreading code length / chip duration: $N = 8\\text{ chips}$.\n- **Governing Principles**:\n  - Each user $k$ is assigned a discrete signature sequence represented as an $N$-dimensional vector:\n    $$\\mathbf{s}_k = [s_k[1], s_k[2], \\dots, s_k[N]]^T \\in \\mathbb{R}^N$$\n  - For two signature sequences $\\mathbf{s}_i$ and $\\mathbf{s}_j$ to be mutually orthogonal, their cross-correlation at zero shift must vanish:\n    $$\\langle \\mathbf{s}_i, \\mathbf{s}_j \\rangle = \\sum_{m=1}^N s_i[m] s_j[m] = 0 \\quad (\\forall i \\ne j)$$\n- **Step-by-Step Analytical Derivation**:\n  - In any $N$-dimensional vector space $\\mathbb{R}^N$, the maximum number of mutually orthogonal non-zero vectors is strictly bounded by the dimensionality of the vector space:\n    $$M_{\\max} = N$$\n  - In digital communications, such sets of mutually orthogonal binary sequences are constructed using the rows of an $N \\times N$ **Hadamard-Walsh Matrix** $H_N$.\n  - For $N = 8$:\n    $$H_1 = [1], \\quad H_2 = \\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}, \\quad H_4 = H_2 \\otimes H_2, \\quad H_8 = H_2 \\otimes H_4$$\n  - The matrix $H_8$ has dimensions $8 \\times 8$, generating exactly 8 mutually orthogonal Walsh sequences of length 8.\n  - Therefore, the maximum number of users who can simultaneously transmit with zero mutual multi-access interference (MAI) is **8**.\n\nTherefore, the correct answer is **Option A (8)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q25",
+      "branch": "ec",
+      "year": 2014,
+      "set": 1,
+      "qNum": 25,
+      "title": "GATE EC 2014 | Set 1 | Question: 25",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electromagnetics",
+      "subtopic": "Basics of Electromagnetics",
+      "officialAnswer": "C",
+      "questionHtml": "The force on a point charge $+q$ kept at a distance d from the surface of an\r\ninfinite grounded metal plate in a medium of permittivity $\\varepsilon$\r\n is",
+      "options": [
+        "0",
+        "$\\frac{q^{2}}{16\\pi \\varepsilon d^{2}}$ away from the plate",
+        "$\\frac{q^{2}}{16\\pi \\varepsilon d^{2}}$ towards the plate",
+        "$\\frac{q^{2}}{4\\pi \\varepsilon d^{2}}$ towards the plate"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electromagnetics - Method of Images & Electrostatic Force near Conducting Ground Plane",
+        "markdown": "- **Concept / Subtopic**: Electromagnetics - Method of Images & Electrostatic Force near Conducting Ground Plane\n- **Given System**:\n  - Point charge $+q$ located at distance $d$ from an infinite grounded conducting metal plate ($V = 0$).\n  - Homogeneous medium of permittivity $\\varepsilon$.\n- **Governing Principles (Method of Images)**:\n  - Let the conducting plate occupy the plane $z = 0$, with the charge $+q$ located at coordinate $(0, 0, d)$.\n  - The boundary condition requires the potential on the conducting surface to be identically zero:\n    $$V(x, y, 0) = 0$$\n  - By the uniqueness theorem of electrostatics, the induced surface charges on the conducting plane can be replaced by an equivalent **image charge** of opposite sign $-q$ placed at the mirror position $(0, 0, -d)$ in the region $z < 0$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Separation Distance**:\n     - The Euclidean distance between the real charge $+q$ and the image charge $-q$ is:\n       $$r = d - (-d) = 2d$$\n  2. **Force Calculation (Coulomb's Law)**:\n     - The net electrostatic force acting on $+q$ is identical to the Coulomb force exerted on it by the image charge $-q$:\n       $$F = \\frac{1}{4\\pi \\varepsilon} \\frac{|(+q)(-q)|}{r^2} = \\frac{1}{4\\pi \\varepsilon} \\frac{q^2}{(2d)^2} = \\frac{q^2}{16\\pi \\varepsilon d^2}$$\n  3. **Direction of Force**:\n     - Because $+q$ and $-q$ carry opposite charges, the electrostatic Coulomb force is **strictly attractive**.\n     - Therefore, the force acts **towards the plate** (in the $-\\hat{z}$ direction).\n- **Distractor Analysis**:\n  - **Option A ($0$)** ignores the electrostatic induction of surface charge density $\\sigma = -\\frac{qd}{2\\pi (r^2+d^2)^{3/2}}$.\n  - **Option B** has the correct magnitude but erroneous repulsive direction.\n  - **Option D** uses distance $d$ instead of the true charge-to-image distance $2d$, overestimating the force by a factor of 4.\n\nTherefore, the correct answer is **Option C ($\\frac{q^{2}}{16\\pi \\varepsilon d^{2}}$ towards the plate)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q9-s2",
+      "branch": "ec",
+      "year": 2014,
+      "set": 2,
+      "qNum": 9,
+      "title": "GATE EC 2014 | Set 2 | Question: 9",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "BJT Analysis",
+      "officialAnswer": "B",
+      "questionHtml": "An increase in the base recombination of a BJT will increase",
+      "options": [
+        "the common emitter dc current gain $\\beta$",
+        "the breakdown voltage $BV_{CEO}$",
+        "the unity-gain cut-off frequency $f_{T}$",
+        "the transconductance $g_{m}$"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits / Electronic Devices - BJT Base Recombination & Breakdown Voltage Scaling",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits / Electronic Devices - BJT Base Recombination & Breakdown Voltage Scaling\n- **Given Condition**:\n  - An increase in the recombination rate of minority carriers in the quasi-neutral base region of a Bipolar Junction Transistor (BJT).\n- **Governing Equations**:\n  1. Base transport factor $\\alpha_T$:\n     $$\\alpha_T = \\text{sech}\\left(\\frac{W_B}{L_B}\\right) \\approx 1 - \\frac{W_B^2}{2 L_B^2}$$\n     where $L_B = \\sqrt{D_B \\tau_B}$ is the minority carrier diffusion length in the base.\n  2. Common-base current gain $\\alpha$:\n     $$\\alpha = \\gamma \\cdot \\alpha_T$$\n  3. Common-emitter current gain $\\beta$:\n     $$\\beta = \\frac{\\alpha}{1 - \\alpha}$$\n  4. Collector-to-Emitter breakdown voltage with open base ($BV_{CEO}$):\n     $$BV_{CEO} = \\frac{BV_{CBO}}{\\sqrt[n]{\\beta + 1}} \\approx \\frac{BV_{CBO}}{\\beta^{1/n}}$$\n     where $BV_{CBO}$ is the collector-base breakdown voltage and $n$ is an empirical constant (typically $n \\approx 3\\text{ to }6$).\n- **Step-by-Step Analytical Derivation**:\n  - An increase in base recombination causes minority carrier lifetime $\\tau_B$ to decrease, reducing diffusion length $L_B$.\n  - Consequently, fewer injected carriers reach the collector depletion region, causing base transport factor $\\alpha_T$ and overall gain $\\alpha$ to **decrease**.\n  - Since $\\beta = \\frac{\\alpha}{1 - \\alpha}$, a small drop in $\\alpha$ results in a drastic **decrease in $\\beta$**.\n  - Examining the breakdown relationship:\n    $$BV_{CEO} \\approx \\frac{BV_{CBO}}{\\beta^{1/n}}$$\n  - Because $\\beta$ appears in the denominator, a decrease in $\\beta$ directly results in an **increase in $BV_{CEO}$**.\n- **Distractor Analysis**:\n  - **Option A is incorrect**: The common-emitter current gain $\\beta$ decreases, not increases.\n  - **Option C is incorrect**: The unity-gain cut-off frequency $f_T \\approx \\frac{1}{2\\pi \\tau_{ec}}$ is limited by base transit time $\\tau_B = \\frac{W_B^2}{2 D_B}$, which is governed by base width and diffusivity, not boosted by recombination.\n  - **Option D is incorrect**: Transconductance $g_m = \\frac{I_C}{V_T}$ depends directly on collector bias current, which is reduced for a given base current drive.\n\nTherefore, the correct answer is **Option B (the breakdown voltage $BV_{CEO}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q30-s2",
+      "branch": "ec",
+      "year": 2014,
+      "set": 2,
+      "qNum": 30,
+      "title": "GATE EC 2014 | Set 2 | Question: 30",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Network Theory",
+      "subtopic": "Network Theory",
+      "officialAnswer": "0.46",
+      "questionHtml": "A series LCR circuit is operated at a frequency different from its resonant\nfrequency. The operating frequency is such that the current leads the supply\nvoltage. The magnitude of current is half the value at resonance. If the values of\nL, C and R are 1H, 1 F and 1$\\Omega$ , respectively, the operating angular frequency\n(in rad/s) is ______.",
+      "options": [],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Network Theory - Series RLC Circuit Frequency Response & Leading Current Phase",
+        "markdown": "- **Concept / Subtopic**: Network Theory - Series RLC Circuit Frequency Response & Leading Current Phase\n- **Given Parameters**:\n  - Resistance $R = 1\\ \\Omega$.\n  - Inductance $L = 1\\text{ H}$.\n  - Capacitance $C = 1\\text{ F}$.\n  - Current amplitude $I = \\frac{1}{2} I_0$, where $I_0$ is the current amplitude at resonance.\n  - Operating condition: Current leads the supply voltage (capacitive phase).\n- **Governing Equations**:\n  1. Resonance frequency and resonant current:\n     $$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{1 \\times 1}} = 1\\text{ rad/s}$$\n     $$Z_0 = R = 1\\ \\Omega \\implies I_0 = \\frac{V_m}{R}$$\n  2. Impedance at frequency $\\omega$:\n     $$Z(\\omega) = R + j\\left(\\omega L - \\frac{1}{\\omega C}\\right)$$\n     $$|Z(\\omega)| = \\sqrt{R^2 + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^2}$$\n- **Step-by-Step Analytical Derivation**:\n  - Since current is half of resonant value:\n    $$I = \\frac{V_m}{|Z(\\omega)|} = \\frac{1}{2} I_0 = \\frac{1}{2} \\frac{V_m}{R} \\implies |Z(\\omega)| = 2R$$\n  - Equating impedances:\n    $$\\sqrt{R^2 + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^2} = 2R$$\n    $$R^2 + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^2 = 4R^2$$\n    $$\\left(\\omega L - \\frac{1}{\\omega C}\\right)^2 = 3R^2 \\implies \\omega L - \\frac{1}{\\omega C} = \\pm \\sqrt{3}R$$\n  - Because the **current leads the supply voltage**, the circuit must be **capacitive** ($\text{phase angle } \\phi < 0$), meaning the net reactance is negative:\n    $$\\omega L - \\frac{1}{\\omega C} = -\\sqrt{3}R$$\n  - Substituting $L = 1\\text{ H}$, $C = 1\\text{ F}$, and $R = 1\\ \\Omega$:\n    $$\\omega - \\frac{1}{\\omega} = -\\sqrt{3}$$\n    $$\\omega^2 + \\sqrt{3}\\omega - 1 = 0$$\n  - Applying the quadratic formula for positive angular frequency $\\omega > 0$:\n    $$\\omega = \\frac{-\\sqrt{3} + \\sqrt{(\\sqrt{3})^2 - 4(1)(-1)}}{2(1)} = \\frac{-\\sqrt{3} + \\sqrt{3 + 4}}{2} = \\frac{\\sqrt{7} - \\sqrt{3}}{2}$$\n  - Computing numerical value:\n    $$\\sqrt{7} \\approx 2.64575, \\quad \\sqrt{3} \\approx 1.73205$$\n    $$\\omega = \\frac{2.64575 - 1.73205}{2} = \\frac{0.91370}{2} \\approx 0.45685\\text{ rad/s} \\approx 0.46\\text{ rad/s}$$\n\nTherefore, the correct numerical value is within the official range of **[0.44 to 0.48]**, with a computed value of **0.46**.",
+        "images": []
+      }
+    }
+  ]
+}

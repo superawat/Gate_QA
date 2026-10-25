@@ -19,7 +19,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability and Statistics - Random Variables & Distributions",
+        "markdown": "- **Statement (i) Analysis (Poisson Distribution):**\n  - For a Poisson random variable $X \\sim \\operatorname{Poisson}(\\lambda)$ with parameter $\\lambda > 0$, the probability mass function is:\n    $$P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}, \\quad k \\in \\{0, 1, 2, \\dots\\}$$\n  - The expected value (mean) is $E[X] = \\lambda$.\n  - The second raw moment is $E[X^2] = \\sum_{k=0}^\\infty k^2 \\frac{\\lambda^k e^{-\\lambda}}{k!} = \\lambda^2 + \\lambda$.\n  - The variance is $\\operatorname{Var}(X) = E[X^2] - (E[X])^2 = (\\lambda^2 + \\lambda) - \\lambda^2 = \\lambda$.\n  - Because $E[X] = \\lambda$ and $\\operatorname{Var}(X) = \\lambda$, the mean and variance are equal for any Poisson distribution. Hence, statement (i) is **true**.\n\n- **Statement (ii) Analysis (Standard Normal Distribution):**\n  - By definition, a normal random variable $Z$ is standard normal, denoted $Z \\sim \\mathcal{N}(0, 1)$, when its location parameter (mean) is $\\mu = 0$ and its scale parameter (variance) is $\\sigma^2 = 1$.\n  - Its probability density function is given by:\n    $$\\phi(z) = \\frac{1}{\\sqrt{2\\pi}} e^{-z^2/2}$$\n  - Hence, statement (ii) is **true**.\n\n- **Distractor Analysis:**\n  - Option B is incorrect because statement (ii) is true.\n  - Option C is incorrect because statement (i) is true.\n  - Option D is incorrect because both statements are true.\n\nTherefore, the correct answer is **Option A (Both (i) and (ii) are true)**.",
+        "images": []
+      }
     },
     "go:422960": {
       "title": "GATE DA 2024 | Question: 2",
@@ -36,7 +41,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability and Statistics - Discrete Probability & Events",
+        "markdown": "- **Sample Space & Probability Setup:**\n  - When three fair coins are tossed independently, the sample space $\\Omega$ consists of $2^3 = 8$ equally likely outcomes:\n    $$\\Omega = \\{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\\}$$\n  - Each individual outcome has probability $P(\\omega) = \\frac{1}{8}$.\n\n- **Defining Events $T$ and $S$:**\n  - Event $T$: \"Two or more tosses result in heads\" (at least 2 heads):\n    $$T = \\{HHT, HTH, THH, HHH\\} \\implies |T| = 4$$\n  - Event $S$: \"Two or more tosses result in tails\" (at least 2 tails):\n    $$S = \\{TTH, THT, HTT, TTT\\} \\implies |S| = 4$$\n\n- **Intersection Event $T \\cap S$:**\n  - In any single sequence of 3 coin tosses, the total count of heads and tails must satisfy:\n    $$\\text{Count}(H) + \\text{Count}(T) = 3$$\n  - For an outcome to lie in $T \\cap S$, it must have $\\text{Count}(H) \\ge 2$ and $\\text{Count}(T) \\ge 2$ simultaneously.\n  - Summing these inequalities yields:\n    $$\\text{Count}(H) + \\text{Count}(T) \\ge 2 + 2 = 4$$\n  - This requires at least 4 tosses, which is impossible since exactly 3 coins are tossed.\n  - Explicitly taking the set intersection:\n    $$T \\cap S = \\{HHT, HTH, THH, HHH\\} \\cap \\{TTH, THT, HTT, TTT\\} = \\emptyset$$\n  - Therefore, $T$ and $S$ are mutually exclusive (disjoint) events.\n\n- **Calculating $P(T \\cap S)$:**\n  $$P(T \\cap S) = P(\\emptyset) = \\frac{0}{8} = 0$$\n\n- **Distractor Analysis:**\n  - Option B ($0.5$): Corresponds to individual event probabilities $P(T) = \\frac{4}{8} = 0.5$ or $P(S) = \\frac{4}{8} = 0.5$.\n  - Option C ($0.25$): Corresponds to $P(T) \\times P(S) = 0.5 \\times 0.5 = 0.25$, which would only apply if $T$ and $S$ were independent. However, they are mutually exclusive events with $P(T \\cap S) = 0 \\ne P(T)P(S)$.\n  - Option D ($1$): Represents the certainty event $P(\\Omega) = 1$.\n\nTherefore, the correct answer is **Option A (0)**.",
+        "images": []
+      }
     },
     "go:422959": {
       "title": "GATE DA 2024 | Question: 3",
@@ -53,7 +63,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Linear Algebra - Matrix Eigenvalues",
+        "markdown": "- **Given Matrix:**\n  $$M = \\begin{bmatrix} 2 & -1 \\\\ 3 & 1 \\end{bmatrix}$$\n\n- **Characteristic Equation:**\n  - The eigenvalues $\\lambda$ of $M$ are roots of the characteristic polynomial $\\det(M - \\lambda I) = 0$:\n    $$\\det \\begin{bmatrix} 2 - \\lambda & -1 \\\\ 3 & 1 - \\lambda \\end{bmatrix} = 0$$\n  - Expanding the $2 \\times 2$ determinant:\n    $$(2 - \\lambda)(1 - \\lambda) - (-1)(3) = 0$$\n    $$(2 - 3\\lambda + \\lambda^2) + 3 = 0$$\n    $$\\lambda^2 - 3\\lambda + 5 = 0$$\n  - Verification via matrix invariants:\n    - $\\operatorname{tr}(M) = 2 + 1 = 3$\n    - $\\det(M) = (2)(1) - (-1)(3) = 2 + 3 = 5$\n    - Formula $\\lambda^2 - \\operatorname{tr}(M)\\lambda + \\det(M) = 0 \\implies \\lambda^2 - 3\\lambda + 5 = 0$.\n\n- **Analytical Root Solving:**\n  - Applying the quadratic formula:\n    $$\\lambda = \\frac{-(-3) \\pm \\sqrt{(-3)^2 - 4(1)(5)}}{2(1)} = \\frac{3 \\pm \\sqrt{9 - 20}}{2} = \\frac{3 \\pm \\sqrt{-11}}{2}$$\n    $$\\lambda_1 = \\frac{3}{2} + i\\frac{\\sqrt{11}}{2}, \\quad \\lambda_2 = \\frac{3}{2} - i\\frac{\\sqrt{11}}{2}$$\n\n- **Nature of Eigenvalues:**\n  - The discriminant $\\Delta = 9 - 20 = -11 < 0$ is strictly negative.\n  - Because all entries of $M$ are real and $\\Delta < 0$, the eigenvalues must occur as a **complex conjugate pair** ($a \\pm ib$, where $a = 1.5, b = \\frac{\\sqrt{11}}{2} \\approx 1.658$).\n\n- **Distractor Analysis:**\n  - Option A: Incorrect because the eigenvalues have a non-zero imaginary component.\n  - Option C: Incorrect because zero is an eigenvalue if and only if $\\det(M) = 0$, but here $\\det(M) = 5 \\ne 0$.\n  - Option D: Incorrect because neither eigenvalue is real.\n\nTherefore, the correct answer is **Option B (The eigenvalues of $\\boldsymbol{M}$ are complex conjugate pairs)**.",
+        "images": []
+      }
     },
     "go:422958": {
       "title": "GATE DA 2024 | Question: 4",
@@ -70,7 +85,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Programming, Data Structures & Algorithms - Graph Algorithms & DFS",
+        "markdown": "- **Given Scope & Definitions:**\n  - Graph $G = (V, E)$ is an undirected and unweighted graph.\n  - Depth-First Search (DFS) begins at starting vertex $s$.\n  - $d[u]$ denotes the length (in number of edges) of the shortest path from $s$ to vertex $u$ in $G$.\n  - Edge $(u, v) \\in E$ satisfies $d[u] < d[v]$.\n  - The edge $(u, v)$ is explored **first in the direction from $u$ to $v$** during DFS.\n\n- **DFS Edge Classification Invariants on Undirected Graphs:**\n  - In an undirected graph, DFS partitions all edges into exactly two types:\n    1. **Tree edge**: An edge $(u, v)$ that leads to the initial discovery of an unvisited (WHITE) vertex $v$.\n    2. **Back edge**: An edge $(u, v)$ connecting a vertex $u$ to an ancestor $v$ in the DFS tree that was already discovered (GRAY).\n  - Undirected graph DFS **never produces forward edges or cross edges** (CLRS Theorem 22.10).\n\n- **Analytical Deduction of Edge $(u, v)$:**\n  - Suppose for contradiction that $v$ was already visited before edge $(u, v)$ is explored.\n    - If $v$ had been visited earlier, then in an undirected graph, edge $(u, v)$ would have been inspected when processing the adjacency list of $v$.\n    - This would mean the edge was explored first from $v$ to $u$, which directly contradicts the problem condition that $(u, v)$ is explored first in the direction from $u$ to $v$.\n  - Furthermore, if $(u, v)$ were a back edge explored from $u$ to an ancestor $v$, then $v$ must be an ancestor of $u$ in the DFS tree.\n    - But if $v$ is an ancestor of $u$, the DFS tree path from root $s$ to $u$ passes through $v$.\n    - In an unweighted graph, any tree path from $s$ through $v$ to $u$ implies that $d[v] \\le d[u]$ (the distance to an ancestor is less than or equal to the distance to its descendant).\n    - However, the problem explicitly states $d[u] < d[v]$, confirming that $v$ cannot be an ancestor of $u$.\n  - Consequently, at the instant $(u, v)$ is explored from $u$, vertex $v$ is completely unvisited (WHITE).\n  - Traversal from $u$ to an unvisited vertex $v$ discovers $v$ and adds $(u, v)$ to the depth-first forest as a **tree edge**.\n\n- **Distractor Analysis:**\n  - Option B (cross): Undirected graph DFS cannot have cross edges.\n  - Option C (back): A back edge would require $v$ to be an ancestor of $u$, violating $d[u] < d[v]$.\n  - Option D (gray): Gray is a vertex exploration state (in recursion stack), not an edge classification.\n\nTherefore, the correct answer is **Option A (tree)**.",
+        "images": []
+      }
     },
     "go:422957": {
       "title": "GATE DA 2024 | Question: 5",
@@ -87,7 +107,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Calculus and Optimization - Maxima & Minima",
+        "markdown": "- **Given Conditions:**\n  - $f: \\mathbb{R} \\to \\mathbb{R}$ is a twice-differentiable function.\n  - At point $x^* \\in \\mathbb{R}$, $f'(x^*) = 0$ (first derivative is zero; $x^*$ is a stationary/critical point).\n  - At the same point, $f''(x^*) > 0$ (second derivative is strictly positive).\n\n- **Taylor Series Expansion & Second Derivative Test:**\n  - Because $f$ is twice continuously differentiable around $x^*$, we apply Taylor's expansion with remainder:\n    $$f(x^* + h) = f(x^*) + f'(x^*)h + \\frac{f''(x^*)}{2}h^2 + R_2(h)$$\n    where $\\lim_{h \\to 0} \\frac{R_2(h)}{h^2} = 0$.\n  - Substituting $f'(x^*) = 0$:\n    $$f(x^* + h) - f(x^*) = \\frac{f''(x^*)}{2}h^2 + o(h^2)$$\n  - Since $f''(x^*) > 0$, there exists a sufficiently small neighborhood $\\delta > 0$ such that for all $0 < |h| < \\delta$:\n    $$\\frac{f''(x^*)}{2}h^2 > 0 \\implies f(x^* + h) > f(x^*)$$\n  - By the formal definition of local extrema, since $f(x) > f(x^*)$ for all $x$ in an open neighborhood around $x^*$ (excluding $x^*$), the function $f$ possesses a **local minimum** at $x = x^*$.\n\n- **Why \"Local Minimum\" and not \"Global Minimum\":**\n  - The condition $f''(x^*) > 0$ specifies local convexity in an infinitesimal neighborhood of $x^*$. It does not provide global information about the function's behavior across all $\\mathbb{R}$.\n  - Counterexample showing why it is not necessarily a global minimum:\n    - Consider $f(x) = 2x^3 - 3x^2$.\n    - $f'(x) = 6x^2 - 6x = 6x(x - 1) = 0 \\implies x \\in \\{0, 1\\}$.\n    - For $x^* = 1$: $f'(1) = 0$ and $f''(1) = 12(1) - 6 = 6 > 0$.\n    - Here $x^* = 1$ is a local minimum with $f(1) = -1$.\n    - However, as $x \\to -\\infty$, $f(x) \\to -\\infty$. Thus $f(x)$ has no global minimum on $\\mathbb{R}$.\n  - Hence, $f$ necessarily has a **local minimum**, but not necessarily a global minimum.\n\n- **Distractor Analysis:**\n  - Option B (global minimum): Requires global convexity ($f''(x) \\ge 0$ for all $x \\in \\mathbb{R}$), which is not given.\n  - Option C (local maximum): Would require $f''(x^*) < 0$.\n  - Option D (global maximum): Would require $f''(x^*) < 0$ and global concavity.\n\nTherefore, the correct answer is **Option A (local minimum)**.",
+        "images": []
+      }
     },
     "go:422956": {
       "title": "GATE DA 2024 | Question: 6",
@@ -104,7 +129,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Data Structures - Abstract Data Types (Queues, Stacks, Hash Tables)",
+        "markdown": "- **Analysis of Column 1 Operations and Properties:**\n  - **(p) First In First Out (FIFO):**\n    - Under the FIFO discipline, the element inserted first into the collection is the first one to be extracted.\n    - A **Queue** is the standard abstract data type implementing FIFO semantics (elements are added at the rear via *enqueue* and removed from the front via *dequeue*).\n    - Hence, **(p) matches with (ii) Queues**.\n\n  - **(q) Lookup Operation:**\n    - A lookup (or search) operation retrieves a value associated with a given key.\n    - A **Hash Table** is specifically designed for dictionary operations (insert, search/lookup, delete) by mapping keys to array indices through a hash function, achieving average-case $O(1)$ lookup time complexity.\n    - Hence, **(q) matches with (iii) Hash Tables**.\n\n  - **(r) Last In First Out (LIFO):**\n    - Under the LIFO discipline, the most recently added element is the first one to be extracted.\n    - A **Stack** is the canonical abstract data type operating on LIFO semantics (elements are added and removed from the same top end via *push* and *pop*).\n    - Hence, **(r) matches with (i) Stacks**.\n\n- **Summary of Matching:**\n  $$\\text{(p)} \\to \\text{(ii)}, \\quad \\text{(q)} \\to \\text{(iii)}, \\quad \\text{(r)} \\to \\text{(i)}$$\n\n- **Distractor Analysis:**\n  - Option B: Incorrectly pairs (q) with Stacks and (r) with Hash Tables.\n  - Option C: Inverts (p) to Stacks and (q) to Queues.\n  - Option D: Incorrectly pairs (p) to Stacks and (r) to Queues.\n\nTherefore, the correct answer is **Option A ((p) - (ii), (q) - (iii), (r) - (i))**.",
+        "images": []
+      }
     },
     "go:422955": {
       "title": "GATE DA 2024 | Question: 7",
@@ -121,7 +151,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Support Vector Machines (Hard Margin Linear SVM)",
+        "markdown": "- **Problem Formulation & Dataset Geometry:**\n  - We are given six 2D data points with binary class labels $y_i \\in \\{+1, -1\\}$:\n    - Positive class ($y_i = +1$):\n      $$\\boldsymbol{x}_1 = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix}, \\quad \\boldsymbol{x}_2 = \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix}, \\quad \\boldsymbol{x}_5 = \\begin{bmatrix} 2 \\\\ 2 \\end{bmatrix}$$\n    - Negative class ($y_i = -1$):\n      $$\\boldsymbol{x}_3 = \\begin{bmatrix} 0 \\\\ -1 \\end{bmatrix}, \\quad \\boldsymbol{x}_4 = \\begin{bmatrix} -1 \\\\ 0 \\end{bmatrix}, \\quad \\boldsymbol{x}_6 = \\begin{bmatrix} -2 \\\\ -2 \\end{bmatrix}$$\n\n- **Convex Hulls and Separating Hyperplane:**\n  - A hard margin linear SVM seeks a hyperplane $\\boldsymbol{w}^T \\boldsymbol{x} + b = 0$ that maximizes the geometric margin $\\frac{2}{\\|\\boldsymbol{w}\\|}$ subject to:\n    $$y_i (\\boldsymbol{w}^T \\boldsymbol{x}_i + b) \\ge 1, \\quad \\forall i \\in \\{1, 2, \\dots, 6\\}$$\n  - The positive points $\\boldsymbol{x}_1$ and $\\boldsymbol{x}_2$ define the boundary facing the origin: the line segment joining $(1, 0)$ and $(0, 1)$ satisfies $x^{(1)} + x^{(2)} = 1$. The point $\\boldsymbol{x}_5 = (2, 2)$ lies further into the positive half-space ($2 + 2 = 4 > 1$).\n  - The negative points $\\boldsymbol{x}_3$ and $\\boldsymbol{x}_4$ define the boundary facing the origin: the line segment joining $(-1, 0)$ and $(0, -1)$ satisfies $x^{(1)} + x^{(2)} = -1$. The point $\\boldsymbol{x}_6 = (-2, -2)$ lies further into the negative half-space ($-2 - 2 = -4 < -1$).\n  - By symmetry across the origin, the optimal decision boundary is the line passing through the origin equidistant from both classes:\n    $$x^{(1)} + x^{(2)} = 0 \\implies \\boldsymbol{w} = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}, \\quad b = 0$$\n\n- **Evaluating Margin Boundaries for Support Vectors:**\n  - Support vectors are the data points that lie exactly on the canonical margin hyperplanes $y_i(\\boldsymbol{w}^T \\boldsymbol{x}_i + b) = 1$:\n    - For $\\boldsymbol{x}_1$: $y_1(\\boldsymbol{w}^T \\boldsymbol{x}_1 + b) = 1 \\cdot (1(1) + 1(0) + 0) = 1$ (on margin).\n    - For $\\boldsymbol{x}_2$: $y_2(\\boldsymbol{w}^T \\boldsymbol{x}_2 + b) = 1 \\cdot (1(0) + 1(1) + 0) = 1$ (on margin).\n    - For $\\boldsymbol{x}_3$: $y_3(\\boldsymbol{w}^T \\boldsymbol{x}_3 + b) = (-1) \\cdot (1(0) + 1(-1) + 0) = 1$ (on margin).\n    - For $\\boldsymbol{x}_4$: $y_4(\\boldsymbol{w}^T \\boldsymbol{x}_4 + b) = (-1) \\cdot (1(-1) + 1(0) + 0) = 1$ (on margin).\n    - For $\\boldsymbol{x}_5$: $y_5(\\boldsymbol{w}^T \\boldsymbol{x}_5 + b) = 1 \\cdot (1(2) + 1(2) + 0) = 4 > 1$ (strictly inside interior).\n    - For $\\boldsymbol{x}_6$: $y_6(\\boldsymbol{w}^T \\boldsymbol{x}_6 + b) = (-1) \\cdot (1(-2) + 1(-2) + 0) = 4 > 1$ (strictly inside interior).\n  - Therefore, the four points $\\{\\boldsymbol{x}_1, \\boldsymbol{x}_2, \\boldsymbol{x}_3, \\boldsymbol{x}_4\\}$ all lie strictly on the margin boundaries and have non-zero dual Lagrange multipliers $\\alpha_i > 0$.\n\n- **Distractor Analysis:**\n  - Option A, B, and C include $\\boldsymbol{x}_5$, which is deep in the positive region ($w^T x_5 = 4 \\gg 1$) and cannot be a support vector for the minimum margin separating hyperplane.\n\nTherefore, the correct answer is **Option D (\\{\\boldsymbol{x}_{1}, \\boldsymbol{x}_{2}, \\boldsymbol{x}_{3}, \\boldsymbol{x}_{4}\\})**.",
+        "images": []
+      }
     },
     "go:422954": {
       "title": "GATE DA 2024 | Question: 8",
@@ -138,7 +173,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Model Categorization (Generative, Discriminative, Dimensionality Reduction)",
+        "markdown": "- **Model Classification Fundamentals:**\n  - **(p) Principal Component Analysis (PCA):**\n    - PCA is an unsupervised linear algebra technique that projects high-dimensional data onto orthogonal directions (eigenvectors of the covariance matrix) that maximize sample variance.\n    - Because its sole objective is to compress features while preserving the greatest amount of variance, PCA is an unsupervised **Dimensionality Reduction** technique.\n    - Hence, **(p) matches with (ii) Dimensionality Reduction**.\n\n  - **(q) Naive Bayes Classification:**\n    - Naive Bayes models the joint distribution of features and labels $P(\\boldsymbol{X}, Y) = P(Y) \\prod_{i=1}^d P(X_i \\mid Y)$ by estimating the prior $P(Y)$ and class-conditional distributions $P(X_i \\mid Y)$.\n    - Any algorithm that models the data distribution and can generate synthetic samples from the joint distribution $P(\\boldsymbol{X}, Y)$ is classified as a **Generative Model**.\n    - Hence, **(q) matches with (iii) Generative Model**.\n\n  - **(r) Logistic Regression:**\n    - Logistic Regression models the conditional probability of the class label directly given the feature vector:\n      $$P(Y = 1 \\mid \\boldsymbol{X}) = \\sigma(\\boldsymbol{w}^T \\boldsymbol{X} + b) = \\frac{1}{1 + e^{-(\\boldsymbol{w}^T \\boldsymbol{X} + b)}}$$\n    - Because it models the decision boundary / posterior probability directly without estimating the underlying distribution of features $P(\\boldsymbol{X})$, it is classified as a **Discriminative Model**.\n    - Hence, **(r) matches with (i) Discriminative Model**.\n\n- **Summary of Matching:**\n  $$\\text{(p)} \\to \\text{(ii)}, \\quad \\text{(q)} \\to \\text{(iii)}, \\quad \\text{(r)} \\to \\text{(i)}$$\n\n- **Distractor Analysis:**\n  - Option A: Erroneously labels PCA as a Generative Model and Naive Bayes as Discriminative.\n  - Option B: Inverts the roles of Naive Bayes and Logistic Regression.\n  - Option D: Inverts PCA and Naive Bayes.\n\nTherefore, the correct answer is **Option C ((p) - (ii), (q) - (iii), (r) - (i))**.",
+        "images": []
+      }
     },
     "go:422953": {
       "title": "GATE DA 2024 | Question: 9",
@@ -155,7 +195,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - K-Means Clustering & Convexity of Voronoi Cells",
+        "markdown": "- **Cluster Partitions in Euclidean $k$-Means:**\n  - Let $\\{\\boldsymbol{\\mu}_1, \\boldsymbol{\\mu}_2, \\boldsymbol{\\mu}_3\\} \\subset \\mathbb{R}^2$ be the cluster centroids resulting from the $k$-means algorithm.\n  - In standard $k$-means with Euclidean distance metric, a data point $\\boldsymbol{x}$ is assigned to cluster $3$ if and only if:\n    $$\\|\\boldsymbol{x} - \\boldsymbol{\\mu}_3\\|^2 \\le \\|\\boldsymbol{x} - \\boldsymbol{\\mu}_j\\|^2, \\quad \\forall j \\in \\{1, 2\\}$$\n  - Expanding the squared Euclidean norms:\n    $$\\boldsymbol{x}^T \\boldsymbol{x} - 2 \\boldsymbol{\\mu}_3^T \\boldsymbol{x} + \\|\\boldsymbol{\\mu}_3\\|^2 \\le \\boldsymbol{x}^T \\boldsymbol{x} - 2 \\boldsymbol{\\mu}_j^T \\boldsymbol{x} + \\|\\boldsymbol{\\mu}_j\\|^2$$\n    $$2 (\\boldsymbol{\\mu}_j - \\boldsymbol{\\mu}_3)^T \\boldsymbol{x} \\le \\|\\boldsymbol{\\mu}_j\\|^2 - \\|\\boldsymbol{\\mu}_3\\|^2$$\n  - Each such inequality defines a closed affine half-space $H_{3j} = \\{\\boldsymbol{x} \\in \\mathbb{R}^2 \\mid \\boldsymbol{a}_j^T \\boldsymbol{x} \\le b_j\\}$.\n  - The region of space assigned to cluster $3$ is the **Voronoi cell** $V_3 = H_{31} \\cap H_{32}$.\n\n- **Convexity Property of Voronoi Cells:**\n  - Every half-space is a convex set.\n  - The intersection of any collection of convex sets is always convex. Therefore, every Voronoi cell in Euclidean space is a **strictly convex region**.\n  - A set $S$ is convex if for any two points $\\boldsymbol{p}_1, \\boldsymbol{p}_2 \\in S$, the entire line segment connecting them also belongs to $S$:\n    $$\\lambda \\boldsymbol{p}_1 + (1 - \\lambda) \\boldsymbol{p}_2 \\in S, \\quad \\forall \\lambda \\in [0, 1]$$\n\n- **Evaluating Candidate Points:**\n  - We are given that $\\boldsymbol{p}_1 = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} \\in C_3$ and $\\boldsymbol{p}_2 = \\begin{bmatrix} -1 \\\\ 1 \\end{bmatrix} \\in C_3$.\n  - Setting $\\lambda = \\frac{1}{2}$, the midpoint of the segment is:\n    $$\\boldsymbol{p}_{\\text{mid}} = \\frac{1}{2} \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} + \\frac{1}{2} \\begin{bmatrix} -1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix}$$\n  - Because $\\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix}$ lies directly on the convex line segment joining $\\boldsymbol{p}_1$ and $\\boldsymbol{p}_2$, it **must necessarily belong to cluster 3**, regardless of where the other cluster centroids $\\boldsymbol{\\mu}_1, \\boldsymbol{\\mu}_2$ are situated.\n\n- **Distractor Analysis:**\n  - Points $\\begin{bmatrix} 0 \\\\ 0 \\end{bmatrix}$, $\\begin{bmatrix} 0 \\\\ 2 \\end{bmatrix}$, and $\\begin{bmatrix} 2 \\\\ 0 \\end{bmatrix}$ do not lie on the convex line segment between $\\boldsymbol{p}_1$ and $\\boldsymbol{p}_2$. Their assignment depends entirely on the unknown coordinates of $\\boldsymbol{\\mu}_1$ and $\\boldsymbol{\\mu}_2$, so they are not *necessarily* in cluster 3.\n\nTherefore, the correct answer is **Option D (\\left[\\begin{array}{l}0 \\\\ 1\\end{array}\\right])**.",
+        "images": []
+      }
     },
     "go:422952": {
       "title": "GATE DA 2024 | Question: 10",
@@ -172,7 +217,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Naive Bayes Classifier (Parameter Counting)",
+        "markdown": "- **Model Formulation:**\n  - Let $Y \\in \\{c_1, c_2\\}$ be the target class label (two-class classification, $C = 2$).\n  - Let $\\boldsymbol{X} = (X_1, X_2, \\dots, X_K)$ be the feature vector of $K$ binary-valued attributes, where each $X_i \\in \\{0, 1\\}$.\n\n- **Step 1: Class Prior Parameters:**\n  - To specify the prior distribution $P(Y)$:\n    $$P(Y = c_1) + P(Y = c_2) = 1$$\n  - Since the probabilities must sum to 1, only **1 independent parameter** is needed:\n    $$p = P(Y = c_1), \\quad \\text{with } P(Y = c_2) = 1 - p$$\n\n- **Step 2: Class-Conditional (Likelihood) Parameters:**\n  - Under the Naive Bayes assumption, the features are conditionally independent given the class label:\n    $$P(X_1, X_2, \\dots, X_K \\mid Y = c) = \\prod_{i=1}^K P(X_i \\mid Y = c)$$\n  - For each attribute $X_i$ and each class $c$:\n    $$P(X_i = 1 \\mid Y = c) + P(X_i = 0 \\mid Y = c) = 1$$\n  - Thus, for a fixed class $c$ and fixed attribute $X_i$, exactly $1$ independent parameter $\\theta_{i, c} = P(X_i = 1 \\mid Y = c)$ must be estimated (since $P(X_i = 0 \\mid Y = c) = 1 - \\theta_{i, c}$).\n  - With $K$ binary attributes and $2$ classes:\n    $$\\text{Conditional parameters} = K \\times 2 = 2K$$\n\n- **Step 3: Total Number of Independent Parameters:**\n  $$\\text{Total Parameters} = \\text{Class Prior} + \\text{Conditional Likelihoods} = 1 + 2K = 2K + 1$$\n\n- **Distractor Analysis:**\n  - Option A ($2^K + 1$): Represents the number of parameters needed without the conditional independence assumption (full Bayes joint distribution).\n  - Option C ($2^{K+1} + 1$) and Option D ($K^2 + 1$): Flawed combinatorial formulas that do not reflect the factored conditional probabilities.\n\nTherefore, the correct answer is **Option B (2K + 1)**.",
+        "images": []
+      }
     },
     "go:422951": {
       "title": "GATE DA 2024 | Question: 11",
@@ -189,7 +239,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Algorithms & Data Structures - Open Addressing & Uniform Hashing",
+        "markdown": "- **Uniform Hashing Model:**\n  - In an open-address hash table with $m$ slots storing $n$ keys, the load factor is $\\alpha = \\frac{n}{m} < 1$.\n  - Under the uniform hashing assumption, each key probe sequence is equally likely to be any of the $m!$ permutations of $\\langle 0, 1, \\dots, m-1 \\rangle$.\n\n- **Analysis of Insertion Probes:**\n  - To insert a new key into an open-address hash table, the algorithm follows the key's probe sequence until it finds the **first unoccupied (empty) slot**.\n  - Let random variable $X$ be the number of probes made during insertion.\n  - The event $\\{X \\ge i\\}$ means that the first $i - 1$ probes all encountered occupied slots.\n  - The probability that the first probe finds an occupied slot is $\\frac{n}{m} = \\alpha$.\n  - Assuming uniform hashing, the probability that the first $i - 1$ probes all find occupied slots is:\n    $$P(X \\ge i) = \\frac{n}{m} \\cdot \\frac{n-1}{m-1} \\cdot \\dots \\cdot \\frac{n - i + 2}{m - i + 2} \\le \\left(\\frac{n}{m}\\right)^{i-1} = \\alpha^{i-1}$$\n  - Using the tail-sum formula for expectation of non-negative integer random variables:\n    $$E[X] = \\sum_{i=1}^\\infty P(X \\ge i) \\le \\sum_{i=1}^\\infty \\alpha^{i-1} = \\sum_{k=0}^\\infty \\alpha^k$$\n  - Because $\\alpha < 1$, this is a convergent infinite geometric series with sum:\n    $$E[X] \\le \\frac{1}{1 - \\alpha}$$\n\n- **Relationship Between Insertion and Unsuccessful Search:**\n  - Finding an empty slot to insert a key follows exactly the same probe mechanics as an **unsuccessful search** (which terminates as soon as an empty slot is encountered).\n  - Therefore, both an unsuccessful search and an insertion require at most $\\frac{1}{1 - \\alpha}$ probes on average (CLRS Theorem 11.6 and Corollary 11.7).\n\n- **Distractor Analysis:**\n  - Option A ($\\ln \\frac{1}{1-\\alpha}$): Related to the average number of probes in a *successful* search, which is at most $\\frac{1}{\\alpha} \\ln \\left(\\frac{1}{1-\\alpha}\\right)$.\n  - Option C ($1 + \\frac{\\alpha}{2}$): Represents the expected search cost in *chaining* (closed addressing), not open addressing.\n  - Option D ($\\frac{1}{1+\\alpha}$): Mathematically incorrect; probes must increase as load factor $\\alpha$ approaches 1.\n\nTherefore, the correct answer is **Option B (\\frac{1}{1-\\alpha})**.",
+        "images": []
+      }
     },
     "go:422950": {
       "title": "GATE DA 2024 | Question: 12",
@@ -206,7 +261,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Fisher Linear Discriminant Analysis (Rayleigh Quotient Optimization)",
+        "markdown": "- **Objective Function & Definitions:**\n  - Let $S_B \\in \\mathbb{R}^{d \\times d}$ be the between-class scatter matrix and $S_W \\in \\mathbb{R}^{d \\times d}$ be the within-class scatter matrix.\n  - Both $S_B$ and $S_W$ are symmetric matrices ($S_B = S_B^T, S_W = S_W^T$). $S_W$ is given to be non-singular (positive definite) and $S_B \\ne 0$.\n  - The Fisher linear discriminant projection vector $\\boldsymbol{u}^* \\in \\mathbb{R}^d$ maximizes the generalized Rayleigh quotient:\n    $$J(\\boldsymbol{u}) = \\frac{\\boldsymbol{u}^T S_B \\boldsymbol{u}}{\\boldsymbol{u}^T S_W \\boldsymbol{u}}$$\n  - Let $\\lambda = J(\\boldsymbol{u}^*)$ be the maximum value achieved at $\\boldsymbol{u}^*$.\n\n- **Derivation of Stationary Condition via Gradient:**\n  - Setting the gradient of $J(\\boldsymbol{u})$ with respect to $\\boldsymbol{u}$ to zero:\n    $$\\nabla_{\\boldsymbol{u}} J(\\boldsymbol{u}) = \\frac{\\nabla_{\\boldsymbol{u}}(\\boldsymbol{u}^T S_B \\boldsymbol{u}) \\cdot (\\boldsymbol{u}^T S_W \\boldsymbol{u}) - (\\boldsymbol{u}^T S_B \\boldsymbol{u}) \\cdot \\nabla_{\\boldsymbol{u}}(\\boldsymbol{u}^T S_W \\boldsymbol{u})}{(\\boldsymbol{u}^T S_W \\boldsymbol{u})^2} = \\mathbf{0}$$\n  - Using standard matrix calculus for symmetric matrices:\n    $$\\nabla_{\\boldsymbol{u}}(\\boldsymbol{u}^T S_B \\boldsymbol{u}) = 2 S_B \\boldsymbol{u}, \\quad \\nabla_{\\boldsymbol{u}}(\\boldsymbol{u}^T S_W \\boldsymbol{u}) = 2 S_W \\boldsymbol{u}$$\n  - Substituting into the gradient equation:\n    $$2 S_B \\boldsymbol{u}^* (\\boldsymbol{u}^{*T} S_W \\boldsymbol{u}^*) - 2 S_W \\boldsymbol{u}^* (\\boldsymbol{u}^{*T} S_B \\boldsymbol{u}^*) = \\mathbf{0}$$\n  - Dividing by $2 (\\boldsymbol{u}^{*T} S_W \\boldsymbol{u}^*)$:\n    $$S_B \\boldsymbol{u}^* - \\left( \\frac{\\boldsymbol{u}^{*T} S_B \\boldsymbol{u}^*}{\\boldsymbol{u}^{*T} S_W \\boldsymbol{u}^*} \\right) S_W \\boldsymbol{u}^* = \\mathbf{0}$$\n  - Since $\\lambda = \\frac{\\boldsymbol{u}^{*T} S_B \\boldsymbol{u}^*}{\\boldsymbol{u}^{*T} S_W \\boldsymbol{u}^*}$:\n    $$S_B \\boldsymbol{u}^* = \\lambda S_W \\boldsymbol{u}^*$$\n\n- **Transforming to Standard Eigenvalue Form:**\n  - Because $S_W$ is non-singular, its inverse $S_W^{-1}$ exists.\n  - Pre-multiplying both sides by $S_W^{-1}$:\n    $$S_W^{-1} S_B \\boldsymbol{u}^* = \\lambda \\boldsymbol{u}^*$$\n  - This establishes that $\\boldsymbol{u}^*$ is an eigenvector of $S_W^{-1} S_B$ associated with eigenvalue $\\lambda$.\n\n- **Distractor Analysis:**\n  - Option B ($S_W \\boldsymbol{u}^* = \\lambda S_B \\boldsymbol{u}^*$): Inverts the relationship; this corresponds to maximizing the inverse quotient.\n  - Option C ($S_B S_W \\boldsymbol{u}^* = \\lambda \\boldsymbol{u}^*$): Multiplies $S_B$ by $S_W$ instead of $S_W^{-1}$.\n  - Option D ($\\boldsymbol{u}^{*T} \\boldsymbol{u}^* = \\lambda^2$): Meaningless norm condition.\n\nTherefore, the correct answer is **Option A (S_{W}^{-1} S_{B} u^{*}=\\lambda u^{*})**.",
+        "images": []
+      }
     },
     "go:422949": {
       "title": "GATE DA 2024 | Question: 13",
@@ -223,7 +283,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Artificial Intelligence - A* Search & Admissible Heuristics",
+        "markdown": "- **Definition of Admissibility in $A^*$ Search:**\n  - Let $h^*(n)$ denote the true minimal cost to reach the goal node from any state $n$. By definition, $h^*(n) \\ge 0$ for all states $n$, with $h^*(\\text{goal}) = 0$.\n  - A heuristic function $h(n)$ is **admissible** if and only if it never overestimates the true minimal cost:\n    $$0 \\le h(n) \\le h^*(n), \\quad \\forall n$$\n  - We are given two admissible heuristics $h_1$ and $h_2$:\n    $$0 \\le h_1(n) \\le h^*(n) \\quad \\text{and} \\quad 0 \\le h_2(n) \\le h^*(n), \\quad \\forall n$$\n\n- **Evaluating $|h_1 - h_2|$:**\n  - By the properties of absolute values:\n    $$|h_1(n) - h_2(n)| = \\max(h_1(n) - h_2(n), \\; h_2(n) - h_1(n))$$\n  - Because $h_1(n) \\le h^*(n)$ and $h_2(n) \\ge 0$:\n    $$h_1(n) - h_2(n) \\le h_1(n) - 0 = h_1(n) \\le h^*(n)$$\n  - Similarly, because $h_2(n) \\le h^*(n)$ and $h_1(n) \\ge 0$:\n    $$h_2(n) - h_1(n) \\le h_2(n) - 0 = h_2(n) \\le h^*(n)$$\n  - Combining these inequalities:\n    $$|h_1(n) - h_2(n)| \\le h^*(n)$$\n  - Furthermore, $|h_1(n) - h_2(n)| \\ge 0$ always holds.\n  - At the goal node, $h_1(\\text{goal}) = 0$ and $h_2(\\text{goal}) = 0$, so $|h_1(\\text{goal}) - h_2(\\text{goal})| = 0$.\n  - Therefore, $0 \\le |h_1(n) - h_2(n)| \\le h^*(n)$ for every state $n$, proving that $|h_1 - h_2|$ is **always admissible**.\n\n- **Counterexamples for Alternative Options:**\n  - Let $h^*(n) = 10$, $h_1(n) = 8$, and $h_2(n) = 7$ (both are strictly admissible since $8 \\le 10$ and $7 \\le 10$):\n    - **Option A ($h_1 + h_2$):** $8 + 7 = 15 > 10$. It overestimates $h^*(n)$, violating admissibility.\n    - **Option B ($h_1 \\times h_2$):** $8 \\times 7 = 56 > 10$. It overestimates $h^*(n)$, violating admissibility.\n  - Let $h^*(n) = 1$, $h_1(n) = 0.8$, and $h_2(n) = 0.05$ (both admissible):\n    - **Option C ($h_1 / h_2$):** $0.8 / 0.05 = 16 > 1$. It overestimates $h^*(n)$, violating admissibility.\n\nTherefore, the correct answer is **Option D (\\left|h_{1}-h_{2}\\right|)**.",
+        "images": []
+      }
     },
     "go:422948": {
       "title": "GATE DA 2024 | Question: 14",
@@ -240,7 +305,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Artificial Intelligence & Probability - Bayesian Networks (Conditional Independence & D-Separation)",
+        "markdown": "- **Bayesian Network Topology:**\n  - The joint probability distribution is factorized as:\n    $$P(U, V, W, X, Y) = P(U) \\cdot P(V) \\cdot P(W \\mid U, V) \\cdot P(X \\mid W) \\cdot P(Y \\mid W)$$\n  - Reading the parent-child relationships directly from the conditional factors:\n    - $U$ and $V$ have no parents (roots).\n    - $W$ has parents $U$ and $V$ (directed edges $U \\to W$ and $V \\to W$).\n    - $X$ has parent $W$ (directed edge $W \\to X$).\n    - $Y$ has parent $W$ (directed edge $W \\to Y$).\n  - Thus, the network forms a directed acyclic graph where $W$ is a **collider** (v-structure) between $U$ and $V$, and an **emitter/fork** to $X$ and $Y$.\n\n- **D-Separation Rules:**\n  - A path between variables is blocked (inactive) given conditioning set $\\mathcal{Z}$ if:\n    1. It contains a non-collider (chain $A \\to B \\to C$ or fork $A \\leftarrow B \\to C$) and $B \\in \\mathcal{Z}$.\n    2. It contains a collider (v-structure $A \\to B \\leftarrow C$) and neither $B$ nor any descendant of $B$ is in $\\mathcal{Z}$.\n  - Conversely, conditioning on a collider (or its descendants) **activates** the path.\n\n- **Statement Evaluation:**\n  - **Statement A ($Y \\perp V \\mid W$):**\n    - The trail between $V$ and $Y$ is $V \\to W \\to Y$ (a causal chain).\n    - Conditioning on the intermediate node $W$ blocks this chain. Hence, $Y$ is conditionally independent of $V$ given $W$ is **TRUE**.\n  - **Statement B ($X \\perp U \\mid W$):**\n    - The trail between $U$ and $X$ is $U \\to W \\to X$ (a causal chain).\n    - Conditioning on the intermediate node $W$ blocks this chain. Hence, $X$ is conditionally independent of $U$ given $W$ is **TRUE**.\n  - **Statement D ($Y \\perp X \\mid W$):**\n    - The trail between $X$ and $Y$ is $X \\leftarrow W \\to Y$ (a fork structure with common cause $W$).\n    - Conditioning on the common cause $W$ blocks the path. Hence, $Y$ and $X$ are conditionally independent given $W$ is **TRUE**.\n  - **Statement C ($U \\perp V \\mid W$):**\n    - The trail between $U$ and $V$ is $U \\to W \\leftarrow V$, where $W$ is a **collider**.\n    - When $W$ is *unconditioned*, $U$ and $V$ are marginally independent ($U \\perp V$).\n    - However, **conditioning on the collider $W$ activates (opens) the trail** between $U$ and $V$ (the \"explaining away\" phenomenon).\n    - Therefore, $U$ and $V$ are **conditionally dependent** given $W$ ($U \\not\\perp V \\mid W$).\n    - Consequently, the statement claiming conditional independence is **FALSE**.\n\nTherefore, the correct answer is **Option C (U and V are conditionally independent given W)**.",
+        "images": []
+      }
     },
     "go:422947": {
       "title": "GATE DA 2024 | Question: 15",
@@ -257,7 +327,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Artificial Intelligence - Adversarial Search (Alpha-Beta Pruning)",
+        "markdown": "- **Adversarial Search Roles and Parameters:**\n  - In a two-player zero-sum game tree, the two players alternate turns:\n    - **MAX player** aims to choose moves that lead to the highest possible terminal utility value.\n    - **MIN player** aims to choose moves that minimize the terminal utility value (to MIN's benefit).\n\n- **Definitions of $\\alpha$ and $\\beta$:**\n  - **$\\alpha$ parameter:**\n    - Represents the **highest-value (best) choice** discovered so far at any choice point along the current path for the **MAX** player.\n    - Initially, $\\alpha = -\\infty$. As MAX explores children, MAX updates $\\alpha = \\max(\\alpha, v)$.\n    - Hence, $(m) = \\text{highest}$.\n  - **$\\beta$ parameter:**\n    - Represents the **lowest-value (best for MIN, worst for MAX) choice** discovered so far at any choice point along the current path for the **MIN** player.\n    - Initially, $\\beta = +\\infty$. As MIN explores children, MIN updates $\\beta = \\min(\\beta, v)$.\n    - Hence, $(n) = \\text{lowest}$.\n\n- **Pruning Condition:**\n  - Whenever $\\alpha \\ge \\beta$, the remaining children of the current node can be pruned because the MIN player above would never allow play to reach a state giving MAX an outcome better than MAX's already guaranteed $\\alpha$ value.\n  - Thus, $(m) = \\text{highest}$ and $(n) = \\text{lowest}$.\n\n- **Distractor Analysis:**\n  - Option A: Fails because $\\beta$ tracks the lowest value choice for MIN, not highest.\n  - Option B: Inverts both roles entirely.\n  - Option D: Fails because $\\alpha$ tracks the highest value choice for MAX, not lowest.\n\nTherefore, the correct answer is **Option C ((m) = highest, (n) = lowest)**.",
+        "images": []
+      }
     },
     "go:422946": {
       "title": "GATE DA 2024 | Question: 16",
@@ -274,7 +349,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Databases - Relational Algebra (Set Difference & Inclusion Constraints)",
+        "markdown": "- **Relational Schema & Objective:**\n  - Given schemas:\n    - $\\text{Defender}(\\text{name}, \\text{rating}, \\text{side}, \\text{goals})$\n    - $\\text{Forward}(\\text{name}, \\text{rating}, \\text{assists}, \\text{goals})$\n    - $\\text{Team}(\\text{name}, \\text{club}, \\text{price})$\n  - We wish to verify the integrity constraint:\n    *\"Every name occurring in Team appears in either Defender or Forward.\"*\n\n- **Set Inclusion Condition:**\n  - Let $T = \\Pi_{\\text{name}}(\\text{Team})$ be the set of player names in Team.\n  - Let $D = \\Pi_{\\text{name}}(\\text{Defender})$ and $F = \\Pi_{\\text{name}}(\\text{Forward})$.\n  - The set of all player names that appear in either Defender or Forward is the union:\n    $$U = \\Pi_{\\text{name}}(\\text{Defender}) \\cup \\Pi_{\\text{name}}(\\text{Forward})$$\n  - The requirement that every player in $T$ belongs to $U$ is the subset relation:\n    $$T \\subseteq U$$\n\n- **Translating Subset to Relational Algebra:**\n  - In set theory, $A \\subseteq B$ is logically equivalent to $A \\setminus B = \\emptyset$ (no elements exist in $A$ that are not in $B$).\n  - Replacing $A$ with $\\Pi_{\\text{name}}(\\text{Team})$ and $B$ with $\\Pi_{\\text{name}}(\\text{Defender}) \\cup \\Pi_{\\text{name}}(\\text{Forward})$:\n    $$\\Pi_{\\text{name}}(\\text{Team}) \\setminus \\left( \\Pi_{\\text{name}}(\\text{Defender}) \\cup \\Pi_{\\text{name}}(\\text{Forward}) \\right) = \\phi$$\n  - If any player in Team is neither a Defender nor a Forward, the set difference will be non-empty, thereby violating the constraint.\n\n- **Distractor Analysis:**\n  - Option A: Uses intersection $\\cap$ instead of union $\\cup$, which would erroneously require players to be *both* a Defender and a Forward simultaneously.\n  - Option B & D: Subtracts $\\Pi_{\\text{name}}(\\text{Team})$ from the player union/intersection, testing whether all defenders/forwards belong to Team, which reverses the subset direction.\n\nTherefore, the correct answer is **Option C (\\Pi_{\\text {name }}(\\text{Team}) \\backslash(\\Pi_{\\text {name }}(\\text{Defender}) \\cup \\Pi_{\\text {name }}(\\text{Forward}))=\\phi)**.",
+        "images": []
+      }
     },
     "go:422945": {
       "title": "GATE DA 2024 | Question: 17",
@@ -291,7 +371,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability and Statistics - Data Normalization (Z-Score Standardization)",
+        "markdown": "- **Given Summary Statistics for Income:**\n  - Minimum value: $x_{\\min} = 46000$\n  - Maximum value: $x_{\\max} = 170000$\n  - Population / sample mean: $\\mu = 96000$\n  - Standard deviation: $\\sigma = 21000$\n  - Target raw value: $x = 106000$\n\n- **Z-Score Formula:**\n  - The $z$-score (standard score) transforms an attribute to have zero mean and unit variance:\n    $$z = \\frac{x - \\mu}{\\sigma}$$\n  - Note: Min-max normalization uses $x_{\\min}$ and $x_{\\max}$, but $z$-score standardization relies strictly on $\\mu$ and $\\sigma$.\n\n- **Calculation:**\n  $$z = \\frac{106000 - 96000}{21000} = \\frac{10000}{21000} = \\frac{10}{21}$$\n  $$\\frac{10}{21} = 0.476190476... \\approx 0.476$$\n\n- **Distractor Analysis:**\n  - Option A ($0.217$): Close to $\\frac{x - \\mu}{x_{\\max} - x_{\\min}} = \\frac{10000}{124000} \\approx 0.081$ or a computational mistake.\n  - Option C ($0.623$): Produced by dividing by a different denominator.\n  - Option D ($2.304$): Inversion $\\frac{21000}{10000} = 2.1$ or $z$-score with flipped components.\n\nTherefore, the correct answer is **Option B (0.476)**.",
+        "images": []
+      }
     },
     "go:422944": {
       "title": "GATE DA 2024 | Question: 18",
@@ -308,7 +393,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Data Structures - Tree Traversals & Full Binary Tree Reconstruction",
+        "markdown": "- **Definitions & Structural Properties:**\n  - A **full binary tree** (strictly binary tree or proper binary tree) is a binary tree in which every node has either strictly $0$ or strictly $2$ children. No node has exactly $1$ child.\n  - Traversals:\n    - (i) Preorder: $\\langle \\text{Root}, \\text{Left Subtree}, \\text{Right Subtree} \\rangle$\n    - (ii) Inorder: $\\langle \\text{Left Subtree}, \\text{Root}, \\text{Right Subtree} \\rangle$\n    - (iii) Postorder: $\\langle \\text{Left Subtree}, \\text{Right Subtree}, \\text{Root} \\rangle$\n\n- **Evaluation of Traversal Pairs:**\n  - **Option A ((i) Preorder and (ii) Inorder):**\n    - For any binary tree (general or full), Preorder identifies the root (first element), and Inorder partitions elements into the left and right subtrees (elements to the left and right of the root).\n    - Hence, Preorder + Inorder is **sufficient** to uniquely reconstruct the tree.\n\n  - **Option B ((ii) Inorder and (iii) Postorder):**\n    - For any binary tree, Postorder identifies the root (last element), and Inorder partitions elements into the left and right subtrees.\n    - Hence, Inorder + Postorder is **sufficient** to uniquely reconstruct the tree.\n\n  - **Option C ((i) Preorder and (iii) Postorder):**\n    - For an arbitrary binary tree, Preorder + Postorder cannot differentiate whether a single child is a left or right child.\n    - However, in a **full binary tree**, every internal node has both left and right children!\n    - In Preorder: the element immediately after the root is the root of the left subtree $L$.\n    - In Postorder: that same node $L$ appears at the end of the left subtree's postorder traversal.\n    - This uniquely identifies the exact boundary separating the left and right subtrees in both sequences without any ambiguity.\n    - Hence, Preorder + Postorder is **sufficient** to uniquely reconstruct a full binary tree.\n\n  - **Option D ((ii) Inorder only):**\n    - Inorder alone cannot determine the hierarchy or which element is the root. Insufficient.\n\n- **Conclusion:**\n  Traversals (i) & (ii), (ii) & (iii), and (i) & (iii) are all sufficient.\n\nTherefore, the correct options are **A, B, and C**.",
+        "images": []
+      }
     },
     "go:422943": {
       "title": "GATE DA 2024 | Question: 19",
@@ -325,7 +415,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Mathematical Logic - Propositional Logic & Tautologies",
+        "markdown": "- **Propositional Equivalences:**\n  - An implication $P \\implies Q$ is logically equivalent to $\\neg P \\vee Q$.\n  - A formula is a **tautology** if and only if it evaluates to True under all truth value assignments of its constituent propositions.\n\n- **Analysis of Options:**\n  - **Option A: $(\\neg x \\wedge y) \\implies (y \\implies x)$**\n    - Expand the antecedent: $\\text{LHS} = \\neg x \\wedge y$, which is True when $x = F$ and $y = T$.\n    - Under $x = F, y = T$, the consequent is:\n      $$y \\implies x \\equiv T \\implies F \\equiv F$$\n    - The implication becomes $T \\implies F \\equiv F$.\n    - Since it is False when $x = F, y = T$, Option A is **not a tautology**.\n\n  - **Option B: $(x \\wedge \\neg y) \\implies (\\neg x \\implies y)$**\n    - Rewrite the consequent: $\\neg x \\implies y \\equiv \\neg(\\neg x) \\vee y \\equiv x \\vee y$.\n    - Implication becomes:\n      $$(x \\wedge \\neg y) \\implies (x \\vee y)$$\n    - If $(x \\wedge \\neg y)$ is True, then $x$ is True.\n    - Since $x$ is True, the disjunction $(x \\vee y)$ is True.\n    - $T \\implies T$ is True for all assignments.\n    - Hence, Option B is a **tautology**.\n\n  - **Option C: $(\\neg x \\wedge y) \\implies (\\neg x \\implies y)$**\n    - Rewrite the consequent: $\\neg x \\implies y \\equiv x \\vee y$.\n    - Implication becomes:\n      $$(\\neg x \\wedge y) \\implies (x \\vee y)$$\n    - If $(\\neg x \\wedge y)$ is True, then $y$ is True.\n    - Since $y$ is True, the disjunction $(x \\vee y)$ is True.\n    - $T \\implies T$ is True for all assignments.\n    - Hence, Option C is a **tautology**.\n\n  - **Option D: $(x \\wedge \\neg y) \\implies (y \\implies x)$**\n    - Rewrite the consequent: $y \\implies x \\equiv \\neg y \\vee x \\equiv x \\vee \\neg y$.\n    - Implication becomes:\n      $$(x \\wedge \\neg y) \\implies (x \\vee \\neg y)$$\n    - If $(x \\wedge \\neg y)$ is True, both $x$ and $\\neg y$ are True, which immediately satisfies the disjunction $(x \\vee \\neg y)$.\n    - Hence, Option D is a **tautology**.\n\nTherefore, the correct options are **B, C, and D**.",
+        "images": []
+      }
     },
     "go:422942": {
       "title": "GATE DA 2024 | Question: 20",
@@ -342,7 +437,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Algorithms - Sorting (In-Place Quicksort Swap Minimization)",
+        "markdown": "- **Problem Context & Array State:**\n  - Input array: $A = [60, 70, 80, 90, 100]$.\n  - The array of size $n = 5$ is already sorted in strictly ascending order:\n    $$A[0] < A[1] < A[2] < A[3] < A[4]$$\n  - The algorithm specified is an in-place Quicksort with the pivot selected as the last element of the current subarray.\n  - Objective: Determine the **minimum number of swaps** performed during Quicksort.\n\n- **Trace of Minimum Swaps Execution:**\n  - A swap is an exchange of two distinct memory locations $(i \\ne j)$ to reorder inverted elements.\n  - **Pass 1:**\n    - Subarray: $[60, 70, 80, 90, 100]$, pivot = $100$.\n    - Because $60, 70, 80, 90$ are all smaller than $100$, they already reside strictly to the left of $100$.\n    - The pivot $100$ is already at its correct final partition position (index 4).\n    - No elements need to cross the partition boundary $\\implies 0$ swaps.\n  - **Pass 2:**\n    - Subarray: $[60, 70, 80, 90]$, pivot = $90$.\n    - All elements $60, 70, 80$ are smaller than $90$ and already to its left. Pivot is at index 3.\n    - $\\implies 0$ swaps.\n  - **Pass 3:**\n    - Subarray: $[60, 70, 80]$, pivot = $80$.\n    - Elements $60, 70$ are already to the left.\n    - $\\implies 0$ swaps.\n  - **Pass 4:**\n    - Subarray: $[60, 70]$, pivot = $70$.\n    - Element $60$ is already to the left.\n    - $\\implies 0$ swaps.\n  - **Base Case:** Subarrays of length $\\le 1$ require no processing.\n\n- **Conclusion:**\n  Since the array is already sorted and each pivot is already the maximum of its segment, no inverted pairs exist, and the minimum number of swaps performed is **0**.\n\nTherefore, the correct answer is **0**.",
+        "images": []
+      }
     },
     "go:422941": {
       "title": "GATE DA 2024 | Question: 21",
@@ -359,7 +459,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Databases - SQL Relational Joins & Predicate Evaluation",
+        "markdown": "- **Given Relational Tables:**\n  - **Raider Table:**\n    $$\\begin{array}{|c|c|c|c|} \\hline \\text{ID} & \\text{Name} & \\text{Raids} & \\text{RaidPoints} \\\\ \\hline 1 & \\text{Arjun} & 200 & 250 \\\\ 2 & \\text{Ankush} & 190 & 219 \\\\ 3 & \\text{Sunil} & 150 & 200 \\\\ 4 & \\text{Reza} & 150 & 190 \\\\ 5 & \\text{Pratham} & 175 & 220 \\\\ 6 & \\text{Gopal} & 193 & 215 \\\\ \\hline \\end{array}$$\n  - **Team Table:**\n    $$\\begin{array}{|c|c|c|} \\hline \\text{City} & \\text{ID} & \\text{BidPoints} \\\\ \\hline \\text{Jaipur} & 2 & 200 \\\\ \\text{Patna} & 3 & 195 \\\\ \\text{Hyderabad} & 5 & 175 \\\\ \\text{Jaipur} & 1 & 250 \\\\ \\text{Patna} & 4 & 200 \\\\ \\text{Jaipur} & 6 & 200 \\\\ \\hline \\end{array}$$\n\n- **SQL Query Evaluation:**\n  ```sql\n  SELECT *\n  FROM Raider, Team\n  WHERE Raider.ID = Team.ID AND City = \"Jaipur\" AND RaidPoints > 200;\n  ```\n\n- **Step-by-Step Filtering:**\n  - **Condition 1: $\\text{City} = \\text{\"Jaipur\"}$:**\n    From Team table, the matching tuples are:\n    1. Tuple with $\\text{ID} = 2$ ($\\text{BidPoints} = 200$)\n    2. Tuple with $\\text{ID} = 1$ ($\\text{BidPoints} = 250$)\n    3. Tuple with $\\text{ID} = 6$ ($\\text{BidPoints} = 200$)\n  - **Condition 2: Equi-join on $\\text{Raider.ID} = \\text{Team.ID}$ and $\\text{RaidPoints} > 200$:**\n    1. For $\\text{ID} = 2$: Raider is Ankush with $\\text{RaidPoints} = 219$. Since $219 > 200$, this row is **selected**.\n    2. For $\\text{ID} = 1$: Raider is Arjun with $\\text{RaidPoints} = 250$. Since $250 > 200$, this row is **selected**.\n    3. For $\\text{ID} = 6$: Raider is Gopal with $\\text{RaidPoints} = 215$. Since $215 > 200$, this row is **selected**.\n\n- **Row Count:**\n  Exactly $3$ tuples satisfy all WHERE clause predicates.\n\nTherefore, the correct answer is **3**.",
+        "images": []
+      }
     },
     "go:422940": {
       "title": "GATE DA 2024 | Question: 22",
@@ -376,7 +481,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Data Structures - Double-Ended Queue (Deque Operations)",
+        "markdown": "- **Double-Ended Queue (Deque) Mechanics:**\n  - A Deque $D$ allows insertions and deletions at both ends:\n    - $\\text{insertFirst}(e)$: inserts element $e$ at the front.\n    - $\\text{insertLast}(e)$: inserts element $e$ at the rear.\n    - $\\text{removeFirst}()$: removes and returns the element at the front.\n    - $\\text{removeLast}()$: removes and returns the element at the rear.\n  - Let $D$ be represented as a list where the front is at the left and the rear is at the right: $[\\text{front}, \\dots, \\text{rear}]$.\n\n- **Sequential Execution Trace:**\n  - Initially, $D = []$, empty deque.\n  - **1. $\\text{insertFirst}(10)$:**\n    Front and rear receive $10$.\n    $$D = [10]$$\n  - **2. $\\text{insertLast}(32)$:**\n    Append $32$ at the rear.\n    $$D = [10, 32]$$\n  - **3. $a \\leftarrow \\text{removeFirst}()$:**\n    Extracts element at front ($10$).\n    $$a = 10, \\quad D = [32]$$\n  - **4. $\\text{insertLast}(28)$:**\n    Append $28$ at rear.\n    $$D = [32, 28]$$\n  - **5. $\\text{insertLast}(17)$:**\n    Append $17$ at rear.\n    $$D = [32, 28, 17]$$\n  - **6. $a \\leftarrow \\text{removeFirst}()$:**\n    Extracts element at front ($32$).\n    $$a = 32, \\quad D = [28, 17]$$\n  - **7. $a \\leftarrow \\text{removeLast}()$:**\n    Extracts element at rear ($17$).\n    $$a = 17, \\quad D = [28]$$\n\n- **Final State of Variable $a$:**\n  The last assigned value to $a$ is $17$.\n\nTherefore, the correct answer is **17**.",
+        "images": []
+      }
     },
     "go:422939": {
       "title": "GATE DA 2024 | Question: 23",
@@ -393,7 +503,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Calculus - Derivative of the Logistic Sigmoid Function",
+        "markdown": "- **Function Definition:**\n  - Let $f: \\mathbb{R} \\to \\mathbb{R}$ be the standard logistic sigmoid function:\n    $$f(x) = \\frac{1}{1 + e^{-x}} = (1 + e^{-x})^{-1}$$\n\n- **Derivative Derivation:**\n  - Applying the chain rule:\n    $$f'(x) = \\frac{d}{dx}(1 + e^{-x})^{-1} = -1(1 + e^{-x})^{-2} \\cdot (-e^{-x}) = \\frac{e^{-x}}{(1 + e^{-x})^2}$$\n  - Factoring terms:\n    $$f'(x) = \\left( \\frac{1}{1 + e^{-x}} \\right) \\left( \\frac{e^{-x}}{1 + e^{-x}} \\right)$$\n  - Since $1 - f(x) = 1 - \\frac{1}{1 + e^{-x}} = \\frac{e^{-x}}{1 + e^{-x}}$, we obtain the fundamental identity:\n    $$f'(x) = f(x) \\cdot (1 - f(x))$$\n\n- **Numerical Evaluation:**\n  - We are given that at point $x$, $f(x) = 0.4$.\n  - Substituting $f(x) = 0.4$ directly into the identity:\n    $$f'(x) = 0.4 \\cdot (1 - 0.4) = 0.4 \\cdot 0.6 = 0.24$$\n\nTherefore, the correct answer is **0.24**.",
+        "images": []
+      }
     },
     "go:422938": {
       "title": "GATE DA 2024 | Question: 24",
@@ -410,7 +525,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability and Statistics - Sample Average & Incremental Mean Update",
+        "markdown": "- **Initial Sample Statistics:**\n  - Initial sample size: $n = 50$\n  - Initial sample mean: $\\bar{x}_n = 40$\n  - The sum of the initial $50$ observations is:\n    $$S_n = \\sum_{i=1}^{50} x_i = n \\cdot \\bar{x}_n = 50 \\times 40 = 2000$$\n\n- **Incorporating the New Observation:**\n  - A new data point $x_{51} = 142$ is added to the dataset.\n  - The updated total sum is:\n    $$S_{n+1} = S_n + x_{51} = 2000 + 142 = 2142$$\n  - The updated sample size is:\n    $$n_{\\text{new}} = 50 + 1 = 51$$\n\n- **Calculating the Updated Sample Average:**\n  $$\\bar{x}_{\\text{new}} = \\frac{S_{n+1}}{n_{\\text{new}}} = \\frac{2142}{51}$$\n  - Performing division:\n    $$\\frac{2142}{51} = \\frac{51 \\times 42}{51} = 42$$\n    - Verification: $51 \\times 40 = 2040$; $51 \\times 2 = 102$; $2040 + 102 = 2142$.\n\nTherefore, the correct answer is **42**.",
+        "images": []
+      }
     },
     "go:422937": {
       "title": "GATE DA 2024 | Question: 25",
@@ -427,7 +547,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Linear Algebra - Matrix Determinants & Polynomials of Matrices",
+        "markdown": "- **Given Matrix Formulation:**\n  $$\\boldsymbol{M} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 3 \\\\ 4 & 3 & 6 \\end{bmatrix}$$\n  We are tasked with computing $\\det(\\boldsymbol{M}^2 + 12\\boldsymbol{M})$.\n\n- **Step 1: Compute $\\det(\\boldsymbol{M})$:**\n  - Observe the rows of $\\boldsymbol{M}$:\n    - Row 1: $R_1 = [1, 2, 3]$\n    - Row 2: $R_2 = [3, 1, 3]$\n    - Row 3: $R_3 = [4, 3, 6]$\n  - Notice that $R_1 + R_2 = [1+3, 2+1, 3+3] = [4, 3, 6] = R_3$.\n  - Because Row 3 is a direct linear combination of Row 1 and Row 2, the rows of $\\boldsymbol{M}$ are **linearly dependent**.\n  - Any square matrix with linearly dependent rows has a determinant of zero:\n    $$\\det(\\boldsymbol{M}) = 0$$\n  - Direct expansion confirms:\n    $$\\det(\\boldsymbol{M}) = 1(6 - 9) - 2(18 - 12) + 3(9 - 4) = 1(-3) - 2(6) + 3(5) = -3 - 12 + 15 = 0$$\n\n- **Step 2: Factor the Matrix Expression:**\n  - The matrix expression $\\boldsymbol{M}^2 + 12\\boldsymbol{M}$ factors as:\n    $$\\boldsymbol{M}^2 + 12\\boldsymbol{M} = \\boldsymbol{M}(\\boldsymbol{M} + 12\\boldsymbol{I})$$\n    where $\\boldsymbol{I}$ is the $3 \\times 3$ identity matrix.\n\n- **Step 3: Apply the Multiplicative Property of Determinants:**\n  - For any two $n \\times n$ matrices $\\boldsymbol{A}$ and $\\boldsymbol{B}$, $\\det(\\boldsymbol{A}\\boldsymbol{B}) = \\det(\\boldsymbol{A}) \\cdot \\det(\\boldsymbol{B})$.\n  - Setting $\\boldsymbol{A} = \\boldsymbol{M}$ and $\\boldsymbol{B} = \\boldsymbol{M} + 12\\boldsymbol{I}$:\n    $$\\det(\\boldsymbol{M}^2 + 12\\boldsymbol{M}) = \\det(\\boldsymbol{M}) \\cdot \\det(\\boldsymbol{M} + 12\\boldsymbol{I})$$\n  - Since $\\det(\\boldsymbol{M}) = 0$:\n    $$\\det(\\boldsymbol{M}^2 + 12\\boldsymbol{M}) = 0 \\cdot \\det(\\boldsymbol{M} + 12\\boldsymbol{I}) = 0$$\n\nTherefore, the correct answer is **0**.",
+        "images": []
+      }
     },
     "go:422936": {
       "title": "GATE DA 2024 | Question: 26",
@@ -444,7 +569,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability - Discrete Markov Chains & First Step Analysis (Expected Value)",
+        "markdown": "- **Problem Formulation & State Setup:**\n  - In each independent roll of a fair six-sided die, the probability of rolling an even number ($E \\in \\{2, 4, 6\\}$) is $p = \\frac{3}{6} = \\frac{1}{2}$.\n  - The probability of rolling an odd number ($O \\in \\{1, 3, 5\\}$) is $q = 1 - p = \\frac{1}{2}$.\n  - We wish to determine the expected number of rolls until two consecutive even numbers ($EE$) are observed.\n\n- **First-Step Analysis (Markov Chain Representation):**\n  - Define states based on the number of consecutive even rolls accumulated so far:\n    - State $S_0$: $0$ consecutive even rolls (initial starting state, or after an odd roll).\n    - State $S_1$: $1$ consecutive even roll.\n    - State $S_2$: $2$ consecutive even rolls (absorbing target state).\n  - Let $E_0$ and $E_1$ denote the expected number of additional rolls needed to reach $S_2$ from $S_0$ and $S_1$, respectively:\n    - From $S_0$: With probability $1/2$ we roll an even number (transitioning to $S_1$); with probability $1/2$ we roll an odd number (remaining at $S_0$).\n      $$E_0 = 1 + \\frac{1}{2} E_1 + \\frac{1}{2} E_0 \\implies \\frac{1}{2} E_0 = 1 + \\frac{1}{2} E_1 \\implies E_0 = 2 + E_1$$\n    - From $S_1$: With probability $1/2$ we roll an even number (reaching target $S_2$ with 0 additional rolls); with probability $1/2$ we roll an odd number (resetting back to $S_0$).\n      $$E_1 = 1 + \\frac{1}{2}(0) + \\frac{1}{2} E_0 = 1 + \\frac{1}{2} E_0$$\n\n- **Solving the System of Linear Equations:**\n  - Substitute $E_1$ into the equation for $E_0$:\n    $$E_0 = 2 + \\left(1 + \\frac{1}{2} E_0\\right) = 3 + \\frac{1}{2} E_0$$\n    $$\\frac{1}{2} E_0 = 3 \\implies E_0 = 6$$\n\n- **General Formula Verification:**\n  - For a pattern of $k$ consecutive Bernoulli trials with success probability $p$, the expected waiting time is:\n    $$\\sum_{i=1}^k \\frac{1}{p^i} = \\frac{1}{1/2} + \\frac{1}{(1/2)^2} = 2 + 4 = 6$$\n\nTherefore, the correct answer is **Option C (6)**.",
+        "images": []
+      }
     },
     "go:422935": {
       "title": "GATE DA 2024 | Question: 27",
@@ -461,7 +591,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Calculus - Piecewise Continuity and Differentiability",
+        "markdown": "- **Given Piecewise Function:**\n  $$f(x) = \\begin{cases} -x, & \\text{if } x < -2 \\\\ ax^2 + bx + c, & \\text{if } x \\in [-2, 2] \\\\ x, & \\text{if } x > 2 \\end{cases}$$\n  To make $f(x)$ continuous and differentiable everywhere on $\\mathbb{R}$, it must satisfy continuity and differentiability at the two boundary points $x = -2$ and $x = 2$.\n\n- **Step 1: Enforce Continuity:**\n  - **At $x = -2$:**\n    - Left limit: $\\lim_{x \\to -2^-} (-x) = 2$\n    - Right limit & value: $f(-2) = a(-2)^2 + b(-2) + c = 4a - 2b + c$\n    - Equality: $4a - 2b + c = 2 \\quad \\text{--- (Equation 1)}$\n  - **At $x = 2$:**\n    - Left limit & value: $f(2) = a(2)^2 + b(2) + c = 4a + 2b + c$\n    - Right limit: $\\lim_{x \\to 2^+} x = 2$\n    - Equality: $4a + 2b + c = 2 \\quad \\text{--- (Equation 2)}$\n  - Subtracting Equation 1 from Equation 2:\n    $$(4a + 2b + c) - (4a - 2b + c) = 2 - 2 \\implies 4b = 0 \\implies b = 0$$\n  - Substituting $b = 0$ gives:\n    $$4a + c = 2 \\quad \\text{--- (Equation 3)}$$\n\n- **Step 2: Enforce Differentiability:**\n  - **At $x = -2$:**\n    - Left derivative: $\\lim_{x \\to -2^-} f'(x) = \\frac{d}{dx}(-x) = -1$\n    - Right derivative: $\\lim_{x \\to -2^+} f'(x) = 2a(-2) + b = -4a + 0 = -4a$\n    - Equality: $-4a = -1 \\implies a = \\frac{1}{4}$\n  - **At $x = 2$:**\n    - Left derivative: $\\lim_{x \\to 2^-} f'(x) = 2a(2) + b = 4a$\n    - Right derivative: $\\lim_{x \\to 2^+} f'(x) = \\frac{d}{dx}(x) = 1$\n    - Equality: $4a = 1 \\implies a = \\frac{1}{4}$ (completely consistent).\n\n- **Step 3: Solve for $c$:**\n  - Substituting $a = \\frac{1}{4}$ into Equation 3:\n    $$4\\left(\\frac{1}{4}\\right) + c = 2 \\implies 1 + c = 2 \\implies c = 1$$\n  - Therefore, the required values are:\n    $$a = \\frac{1}{4}, \\quad b = 0, \\quad c = 1$$\n\nTherefore, the correct answer is **Option A (a=1/4, b=0, c=1)**.",
+        "images": []
+      }
     },
     "go:422934": {
       "title": "GATE DA 2024 | Question: 28",
@@ -478,7 +613,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Programming & Data Structures - Tree Traversal & Recursion in Python",
+        "markdown": "- **Code Analysis:**\n  ```python\n  def count(child_dict, i):\n      if i not in child_dict.keys():\n          return 1\n      ans = 1\n      for j in child_dict[i]:\n          ans += count(child_dict, j)\n      return ans\n  ```\n  - The dictionary `child_dict` represents an adjacency list of a directed rooted tree:\n    - `child_dict[0] = [1, 2]` (root 0 has children 1 and 2)\n    - `child_dict[1] = [3, 4, 5]` (node 1 has children 3, 4, and 5)\n    - `child_dict[2] = [6, 7, 8]` (node 2 has children 6, 7, and 8)\n    - Nodes $3, 4, 5, 6, 7, 8$ are leaf nodes (absent from `child_dict.keys()`).\n\n- **Recursive Execution Trace:**\n  - **Base Case:**\n    When $i \\in \\{3, 4, 5, 6, 7, 8\\}$, `i not in child_dict.keys()` is True, returning $1$.\n  - **Call for Node 1:**\n    - `ans = 1`\n    - For $j = 3$: `ans += count(child_dict, 3)` $\\implies 1 + 1 = 2$\n    - For $j = 4$: `ans += count(child_dict, 4)` $\\implies 2 + 1 = 3$\n    - For $j = 5$: `ans += count(child_dict, 5)` $\\implies 3 + 1 = 4$\n    - Returns `ans = 4`.\n  - **Call for Node 2:**\n    - `ans = 1`\n    - For $j = 6$: `ans += count(child_dict, 6)` $\\implies 1 + 1 = 2$\n    - For $j = 7$: `ans += count(child_dict, 7)` $\\implies 2 + 1 = 3$\n    - For $j = 8$: `ans += count(child_dict, 8)` $\\implies 3 + 1 = 4$\n    - Returns `ans = 4`.\n  - **Top-Level Call for Node 0:**\n    - `ans = 1` (accounting for root 0 itself)\n    - For $j = 1$: `ans += count(child_dict, 1)` $\\implies 1 + 4 = 5$\n    - For $j = 2$: `ans += count(child_dict, 2)` $\\implies 5 + 4 = 9$\n    - Returns `ans = 9`.\n\n- **Semantic Meaning:**\n  The function recursively computes the total number of vertices in the subtree rooted at `i`. The entire tree consists of 9 distinct nodes $\\{0, 1, 2, 3, 4, 5, 6, 7, 8\\}$, so the output is $9$.\n\nTherefore, the correct answer is **Option D (9)**.",
+        "images": []
+      }
     },
     "go:422933": {
       "title": "GATE DA 2024 | Question: 29",
@@ -495,7 +635,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Algorithms - Array Processing & Dynamic Accumulation",
+        "markdown": "- **Algorithm Specification:**\n  ```\n  computeS(X)\n  S[1] <- 1\n  for i <- 2 to length(X)\n    S[i] <- 1\n    if X[i-1] <= X[i]\n      S[i] <- S[i] + S[i-1]\n    end if\n  end for\n  return S\n  ```\n  - Input array: $X = [6, 3, 5, 4, 10]$ with 1-based indexing ($n = 5$).\n\n- **Step-by-Step Execution Trace:**\n  - **Initialization:**\n    $S[1] = 1$\n  - **Iteration $i = 2$:**\n    - $S[2] = 1$\n    - Condition: Is $X[1] \\le X[2] \\iff 6 \\le 3$? **False**.\n    - $S[2]$ remains $1$.\n  - **Iteration $i = 3$:**\n    - $S[3] = 1$\n    - Condition: Is $X[2] \\le X[3] \\iff 3 \\le 5$? **True**.\n    - $S[3] = S[3] + S[2] = 1 + 1 = 2$.\n  - **Iteration $i = 4$:**\n    - $S[4] = 1$\n    - Condition: Is $X[3] \\le X[4] \\iff 5 \\le 4$? **False**.\n    - $S[4]$ remains $1$.\n  - **Iteration $i = 5$:**\n    - $S[5] = 1$\n    - Condition: Is $X[4] \\le X[5] \\iff 4 \\le 10$? **True**.\n    - $S[5] = S[5] + S[4] = 1 + 1 = 2$.\n\n- **Final Array Content:**\n  $$S = [1, 1, 2, 1, 2]$$\n\n- **Distractor Analysis:**\n  - Option A ($[1, 1, 2, 3, 4]$) and Option B ($[1, 1, 2, 3, 3]$) assume the condition evaluates to true at every step without checking decreasing transitions ($6 > 3$ and $5 > 4$).\n  - Option D ($[1, 1, 2, 1, 5]$) adds index values rather than $S[i-1]$.\n\nTherefore, the correct answer is **Option C ([1, 1, 2, 1, 2])**.",
+        "images": []
+      }
     },
     "go:422932": {
       "title": "GATE DA 2024 | Question: 30",
@@ -512,7 +657,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Algorithms - Binary Search Recurrence & Comparison Complexity",
+        "markdown": "- **Binary Search Mechanics:**\n  - To search for a key in a sorted array of size $n$, the algorithm compares the target with the median element at index $\\lfloor (1 + n)/2 \\rfloor$ (consuming $1$ comparison).\n  - If a match is found, the search terminates.\n  - In the worst case (e.g. unsuccessful search or key residing in a deep branch), the search is confined to one of the two halves.\n  - The size of the remaining subproblem after discarding the middle element is at most $\\lfloor n/2 \\rfloor$.\n\n- **Formulating the Recurrence Relation:**\n  - Let $F(n)$ denote the maximum number of comparisons made for an input of size $n$.\n  - Performing $1$ comparison at the root divides the problem into a subproblem of maximum size $\\lfloor n/2 \\rfloor$:\n    $$F(n) = F(\\lfloor n/2 \\rfloor) + 1$$\n  - Base case: $F(1) = 1$ (or $F(0) = 0$).\n\n- **Closed Form Solution:**\n  - Repeated expansion gives:\n    $$F(n) = \\lfloor \\log_2 n \\rfloor + 1$$\n  - This matches the height of the binary decision tree for searching $n$ elements.\n\n- **Distractor Analysis:**\n  - Option B ($F(\\lfloor n/2 \\rfloor) + F(\\lceil n/2 \\rceil)$): Recurrence for divide-and-conquer where *both* subproblems must be visited (like Merge Sort comparisons or tree traversals). Binary search eliminates one half entirely.\n  - Option C ($F(\\lfloor n/2 \\rfloor)$): Omission of the $+1$ cost for the comparison made at the current step.\n  - Option D ($F(n-1) + 1$): Recurrence for linear search, which reduces problem size by $1$ per comparison.\n\nTherefore, the correct answer is **Option A (F(n)=F(\\lfloor n / 2\\rfloor)+1)**.",
+        "images": []
+      }
     },
     "go:422931": {
       "title": "GATE DA 2024 | Question: 31",
@@ -529,7 +679,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Programming & Data Structures - Two-Pointer Recursion (In-Place Array Reversal)",
+        "markdown": "- **Code Analysis:**\n  ```python\n  def fun(D, s1, s2):\n      if s1 < s2:\n          D[s1], D[s2] = D[s2], D[s1]\n          fun(D, s1 + 1, s2 - 1)\n  ```\n\n- **Step-by-Step Function Execution:**\n  - The function takes a list $D$ and two index pointers $s_1$ and $s_2$.\n  - At each step, if $s_1 < s_2$:\n    - The elements at the boundary indices $D[s_1]$ and $D[s_2]$ are swapped.\n    - Pointer $s_1$ advances to the right ($s_1 + 1$).\n    - Pointer $s_2$ advances to the left ($s_2 - 1$).\n    - The function recurses on the smaller sublist $D[s_1+1 \\dots s_2-1]$.\n  - The recursion halts when $s_1 \\ge s_2$ (when pointers cross or meet at the center).\n  - Every symmetric pair of elements across the midpoint between indices $s_1$ and $s_2$ is swapped exactly once.\n\n- **Outcome:**\n  - This is the standard in-place recursive implementation of string/array reversal.\n  - It reverses the segment of list $D$ between indices $s_1$ and $s_2$, inclusive.\n\n- **Distractor Analysis:**\n  - Option A: Finding the minimum requires comparison operators ($<$ on elements), which are absent from the function.\n  - Option B: Merge sort requires divide-and-conquer comparisons and auxiliary array merging.\n  - Option D: The function does not leave intermediate elements unchanged; it recursively swaps all inner symmetric pairs until pointers meet.\n\nTherefore, the correct answer is **Option C (It reverses the list D between indices s1 and s2, both inclusive)**.",
+        "images": []
+      }
     },
     "go:422930": {
       "title": "GATE DA 2024 | Question: 32",
@@ -546,7 +701,14 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Single-Linkage Hierarchical Clustering",
+        "markdown": "- **Distance Matrix & Single-Linkage Definition:**\n  $$\\begin{array}{|c|c|c|c|c|c|}\n  \\hline\n  & x_1 & x_2 & x_3 & x_4 & x_5 \\\\ \\hline\n  x_1 & 0 & 1 & 4 & 3 & 6 \\\\ \\hline\n  x_2 & 1 & 0 & 3 & 5 & 3 \\\\ \\hline\n  x_3 & 4 & 3 & 0 & 2 & 5 \\\\ \\hline\n  x_4 & 3 & 5 & 2 & 0 & 1 \\\\ \\hline\n  x_5 & 6 & 3 & 5 & 1 & 0 \\\\ \\hline\n  \\end{array}$$\n  - In **single-linkage (nearest-neighbor) clustering**, the distance between two clusters $A$ and $B$ is the minimum pairwise distance between their members:\n    $$d(A, B) = \\min_{u \\in A, v \\in B} d(u, v)$$\n\n- **Step-by-Step Cluster Merges:**\n  - **Iteration 1 (Distance = 1):**\n    - The minimum distance in the matrix is $1$, occurring at $d(x_1, x_2) = 1$ and $d(x_4, x_5) = 1$.\n    - Merge $x_1$ and $x_2$ to form cluster $\\{x_1, x_2\\}$ at height $1$.\n    - Merge $x_4$ and $x_5$ to form cluster $\\{x_4, x_5\\}$ at height $1$.\n    - Active clusters: $\\{x_1, x_2\\}, \\{x_3\\}, \\{x_4, x_5\\}$.\n\n  - **Iteration 2 (Distance = 2):**\n    - Compute distances from single point $x_3$ to the existing clusters:\n      $$d(x_3, \\{x_4, x_5\\}) = \\min(d(x_3, x_4), d(x_3, x_5)) = \\min(2, 5) = 2$$\n      $$d(x_3, \\{x_1, x_2\\}) = \\min(d(x_3, x_1), d(x_3, x_2)) = \\min(4, 3) = 3$$\n      $$d(\\{x_1, x_2\\}, \\{x_4, x_5\\}) = \\min(d(x_1, x_4), d(x_1, x_5), d(x_2, x_4), d(x_2, x_5)) = \\min(3, 6, 5, 3) = 3$$\n    - The minimal distance among all pairs is $2$, occurring between $x_3$ and $\\{x_4, x_5\\}$.\n    - Thus, $x_3$ merges with $\\{x_4, x_5\\}$ at height $2$ to form $\\{x_3, x_4, x_5\\}$.\n    - Active clusters: $\\{x_1, x_2\\}, \\{x_3, x_4, x_5\\}$.\n\n  - **Iteration 3 (Distance = 3):**\n    - The remaining distance is:\n      $$d(\\{x_1, x_2\\}, \\{x_3, x_4, x_5\\}) = \\min(3, 3, 3) = 3$$\n    - The two remaining clusters merge into $\\{x_1, x_2, x_3, x_4, x_5\\}$ at height $3$.\n\n- **Dendrogram Structure:**\n  - $\\{x_1, x_2\\}$ merge at $1$.\n  - $\\{x_4, x_5\\}$ merge at $1$.\n  - $x_3$ joins $\\{x_4, x_5\\}$ at $2$.\n  - $\\{x_1, x_2\\}$ joins $\\{x_3, x_4, x_5\\}$ at $3$.\n  - This matches dendrogram **A**.\n\nTherefore, the correct answer is **Option A**.",
+        "images": [
+          "/question-images/da/9fa072dc22fdeec5326cab5a.webp"
+        ]
+      }
     },
     "go:422929": {
       "title": "GATE DA 2024 | Question: 33",
@@ -563,7 +725,14 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Deep Learning - Multilayer Perceptron & Linear Regime of ReLU",
+        "markdown": "- **Model Formulation & ReLU Properties:**\n  - We are given two neural networks with zero biases and input variables $x_1, x_2, x_3 > 0$.\n  - Activation function: $\\operatorname{ReLU}(z) = \\max\\{0, z\\}$.\n  - Because all inputs $x_1, x_2, x_3$ are strictly positive and network weights are positive, every pre-activation $z$ is strictly positive:\n    $$z > 0 \\implies \\operatorname{ReLU}(z) = z$$\n  - Consequently, both neural networks operate entirely in their linear regimes.\n\n- **Figure 1 Network Evaluation:**\n  - The first network has an input layer $[x_1, x_2, x_3]^T$, a hidden layer of neurons, and a single output $y$.\n  - By tracing the forward pass matrix multiplications $y = W_2 W_1 \\boldsymbol{x}$:\n    - For input $x_1$: the effective composite weight contributing to output $y$ is $p = 36$.\n    - For input $x_2$: the effective composite weight contributing to output $y$ is $q = 24$.\n    - For input $x_3$: the effective composite weight contributing to output $y$ is $r = 24$.\n  - Thus, the output expresses the linear combination:\n    $$y = 36 x_1 + 24 x_2 + 24 x_3$$\n\n- **Figure 2 Network Equivalence:**\n  - Figure 2 is a single-layer perceptron directly computing $y = p x_1 + q x_2 + r x_3$.\n  - For the two networks to produce identical outputs for all positive inputs, their corresponding coefficients must match identically:\n    $$p = 36, \\quad q = 24, \\quad r = 24$$\n\n- **Distractor Analysis:**\n  - Any other combination (such as $p=24, q=24, r=36$ or $p=18, q=36, r=24$) fails to balance the composite linear weights of the hidden layer projection.\n\nTherefore, the correct answer is **Option A (p=36, q=24, r=24)**.",
+        "images": [
+          "/question-images/da/10c9c67778dca45d78cdd025.webp"
+        ]
+      }
     },
     "go:422928": {
       "title": "GATE DA 2024 | Question: 34",
@@ -580,7 +749,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Artificial Intelligence - State Space Search (BFS vs DFS with Ascending Expansion)",
+        "markdown": "- **Problem Specifications & Search Rules:**\n  - Start state: $1$. Goal state: $6$.\n  - Successor function: $\\operatorname{Succ}(n) = \\{n + 1, n + 2\\}$.\n  - Expansion order rule:\n    *\"States in the unexpanded state list are expanded in the ascending order of numbers and previously expanded states are not added to the unexpanded state list (closed list / graph search).\"*\n\n- **Breadth-First Search (BFS) Execution:**\n  - **Step 1:** Expand state $1$. Successors: $2, 3$.\n    - Expanded states: $\\{1\\}$\n    - Frontier (ordered ascending): $[2, 3]$\n  - **Step 2:** Expand state $2$. Successors: $3$ (already in frontier), $4$.\n    - Expanded states: $\\{1, 2\\}$\n    - Frontier (ordered ascending): $[3, 4]$\n  - **Step 3:** Expand state $3$. Successors: $4$ (already in frontier), $5$.\n    - Expanded states: $\\{1, 2, 3\\}$\n    - Frontier (ordered ascending): $[4, 5]$\n  - **Step 4:** Expand state $4$. Successors: $5$ (already in frontier), $6$ (goal state generated!).\n    - Expanded states: $\\{1, 2, 3, 4\\}$\n    - Frontier (ordered ascending): $[5, 6]$\n  - **Step 5:** Expand state $5$. Successors: $6, 7$.\n    - Expanded states: $\\{1, 2, 3, 4, 5\\}$\n    - Frontier (ordered ascending): $[6, 7]$\n  - **Step 6:** Pop $6$. Goal reached!\n  - Total states expanded by BFS before declaring goal: $5$ states ($1, 2, 3, 4, 5$).\n\n- **Depth-First Search (DFS) Execution:**\n  - Because of the explicit problem constraint:\n    *\"states in the unexpanded state list are expanded in the ascending order of numbers\"*\n  - The selection priority from the frontier is strictly dictated by ascending numerical order.\n  - Hence, DFS with an ascending-order selection queue selects the minimal unexpanded integer at each step:\n    - From $1$, frontier has $\\{2, 3\\}$. Smallest is $2$.\n    - From $2$, frontier has $\\{3, 4\\}$. Smallest is $3$.\n    - From $3$, frontier has $\\{4, 5\\}$. Smallest is $4$.\n    - From $4$, frontier has $\\{5, 6\\}$. Smallest is $5$.\n    - From $5$, frontier has $\\{6, 7\\}$. Smallest is $6$ (Goal reached!).\n  - Total states expanded by DFS: $5$ states ($1, 2, 3, 4, 5$).\n\n- **Comparison:**\n  Both BFS and DFS expand exactly $5$ states ($1, 2, 3, 4, 5$) to reach the goal state $6$.\n\nTherefore, the correct answer is **Option C (Both BFS and DFS expand equal number of states)**.",
+        "images": []
+      }
     },
     "go:422927": {
       "title": "GATE DA 2024 | Question: 35",
@@ -597,7 +771,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Algorithms - Sorting Passes (Bubble Sort, Insertion Sort, Selection Sort)",
+        "markdown": "- **Given Problem:**\n  - Initial array: $A = [4, 3, 2, 1, 5]$\n  - Target: Determine which sorting algorithm sorts the array into strictly increasing order $[1, 2, 3, 4, 5]$ after **exactly two passes**.\n\n- **Tracing Algorithm (i): Bubble Sort:**\n  - **Pass 1:**\n    - Compare $(4, 3) \\to$ swap $\\to [3, 4, 2, 1, 5]$\n    - Compare $(4, 2) \\to$ swap $\\to [3, 2, 4, 1, 5]$\n    - Compare $(4, 1) \\to$ swap $\\to [3, 2, 1, 4, 5]$\n    - Compare $(4, 5) \\to$ no swap $\\to [3, 2, 1, 4, 5]$\n    (Element $5$ is placed at final index).\n  - **Pass 2:**\n    - Compare $(3, 2) \\to$ swap $\\to [2, 3, 1, 4, 5]$\n    - Compare $(3, 1) \\to$ swap $\\to [2, 1, 3, 4, 5]$\n    - Compare $(3, 4) \\to$ no swap $\\to [2, 1, 3, 4, 5]$\n    (Element $4$ is placed at final index).\n  - Array after 2 passes: $[2, 1, 3, 4, 5]$, which is **not sorted** ($2 > 1$).\n\n- **Tracing Algorithm (ii): Insertion Sort:**\n  - **Pass 1 ($i = 1$, key = 3):**\n    - Compare with $4 \\to [3, 4, 2, 1, 5]$.\n  - **Pass 2 ($i = 2$, key = 2):**\n    - Insert $2$ into sorted prefix $[3, 4] \\to [2, 3, 4, 1, 5]$.\n  - Array after 2 passes: $[2, 3, 4, 1, 5]$, which is **not sorted** ($4 > 1$).\n\n- **Tracing Algorithm (iii): Selection Sort:**\n  - In each pass $i \\in \\{0, 1, \\dots, n-2\\}$, Selection Sort finds the index of the minimum element in $A[i \\dots n-1]$ and swaps it with $A[i]$:\n  - **Pass 1 ($i = 0$):**\n    - Search subarray $A[0 \\dots 4] = [4, 3, 2, 1, 5]$ for minimum: minimum is $1$ at index $3$.\n    - Swap $A[0]$ and $A[3]$:\n      $$[1, 3, 2, 4, 5]$$\n  - **Pass 2 ($i = 1$):**\n    - Search subarray $A[1 \\dots 4] = [3, 2, 4, 5]$ for minimum: minimum is $2$ at index $2$.\n    - Swap $A[1]$ and $A[2]$:\n      $$[1, 2, 3, 4, 5]$$\n  - Array after 2 passes: $[1, 2, 3, 4, 5]$!\n  - The array is completely sorted in strictly increasing order.\n\n- **Conclusion:**\n  Only Selection Sort achieves sorted order after exactly two passes.\n\nTherefore, the correct answer is **Option B ((iii) only)**.",
+        "images": []
+      }
     },
     "go:422926": {
       "title": "GATE DA 2024 | Question: 36",
@@ -614,7 +793,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Databases - Relational Schema & Functional Dependency Closure",
+        "markdown": "- **Given Schema & Functional Dependencies:**\n  - Relation: $R = (U, V, W, X, Y, Z)$\n  - Given set of functional dependencies $F$:\n    $$F = \\{ U \\to V, \\; U \\to W, \\; WX \\to Y, \\; WX \\to Z, \\; V \\to X \\}$$\n\n- **Step-by-Step Closure Computation:**\n  - **Closure of $(VW)$ under $F$, denoted $(VW)^+$:**\n    - Initialize: $(VW)^+ = \\{V, W\\}$.\n    - Since $V \\to X$ and $V \\subseteq (VW)^+$, add $X$:\n      $$(VW)^+ = \\{V, W, X\\}$$\n    - Since $WX \\to Y$ and $WX \\to Z$, and $\\{W, X\\} \\subseteq (VW)^+$, add $Y$ and $Z$:\n      $$(VW)^+ = \\{V, W, X, Y, Z\\}$$\n    - No FD has $U$ on its right-hand side, so $U \\notin (VW)^+$.\n    - **Checking Candidate Dependencies with LHS $VW$:**\n      - $VW \\to YZ$: Since $\\{Y, Z\\} \\subseteq (VW)^+$, this dependency **holds** (Option A).\n      - $VW \\to Y$: Since $Y \\in (VW)^+$, this dependency **holds** (Option D).\n      - $VW \\to U$: Since $U \\notin (VW)^+$, this dependency **does not hold** (Option C is False).\n\n  - **Closure of $(WX)$ under $F$, denoted $(WX)^+$:**\n    - Initialize: $(WX)^+ = \\{W, X\\}$.\n    - Since $WX \\to Y$ and $WX \\to Z$, add $Y$ and $Z$:\n      $$(WX)^+ = \\{W, X, Y, Z\\}$$\n    - By Armstrong's union axiom, $WX \\to Y$ and $WX \\to Z$ imply $WX \\to YZ$.\n    - Since $\\{Y, Z\\} \\subseteq (WX)^+$, $WX \\to YZ$ **holds** (Option B).\n\n- **Conclusion:**\n  Functional dependencies $VW \\to YZ$, $WX \\to YZ$, and $VW \\to Y$ can all be derived from $F$.\n\nTherefore, the correct options are **A, B, and D**.",
+        "images": []
+      }
     },
     "go:422925": {
       "title": "GATE DA 2024 | Question: 37",
@@ -631,7 +815,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Linear Algebra - Vector Subspaces of R^3",
+        "markdown": "- **Vector Subspace Axioms:**\n  - A subset $S \\subseteq \\mathbb{R}^3$ is a linear subspace if and only if it satisfies three conditions:\n    1. Zero vector $\\mathbf{0} \\in S$.\n    2. Additive closure: $\\forall \\mathbf{u}, \\mathbf{v} \\in S \\implies \\mathbf{u} + \\mathbf{v} \\in S$.\n    3. Scalar multiplication closure: $\\forall \\mathbf{u} \\in S, c \\in \\mathbb{R} \\implies c\\mathbf{u} \\in S$.\n\n- **Evaluation of Candidate Sets:**\n  - **Option A:**\n    $$S_A = \\left\\{ \\mathbf{x} \\in \\mathbb{R}^3 : \\mathbf{x} = \\alpha \\begin{bmatrix} 1 \\\\ 1 \\\\ 0 \\end{bmatrix} + \\beta \\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \\end{bmatrix}, \\; \\alpha, \\beta \\in \\mathbb{R} \\right\\}$$\n    - $S_A$ is the linear span of two vectors in $\\mathbb{R}^3$.\n    - The span of any set of vectors forms a vector subspace (a 2D plane passing through the origin).\n    - Hence, $S_A$ is a **subspace**.\n\n  - **Option B:**\n    $$S_B = \\left\\{ \\mathbf{x} \\in \\mathbb{R}^3 : \\mathbf{x} = \\alpha^2 \\begin{bmatrix} 1 \\\\ 2 \\\\ 0 \\end{bmatrix} + \\beta^2 \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}, \\; \\alpha, \\beta \\in \\mathbb{R} \\right\\}$$\n    - Because $\\alpha^2 \\ge 0$ and $\\beta^2 \\ge 0$ for all real $\\alpha, \\beta$, any vector in $S_B$ has non-negative coefficients.\n    - Let $\\mathbf{x} = [1, 2, 0]^T \\in S_B$ (with $\\alpha = 1, \\beta = 0$).\n    - Multiplying by scalar $c = -1$ yields $-\\mathbf{x} = [-1, -2, 0]^T$.\n    - For $-\\mathbf{x} \\in S_B$, we would need $\\alpha^2 = -1$, which has no real solution.\n    - Thus, $S_B$ is not closed under negative scalar multiplication and is **not a subspace**.\n\n  - **Option C:**\n    $$S_C = \\left\\{ \\mathbf{x} \\in \\mathbb{R}^3 : 5x_1 + 2x_3 = 0, \\; 4x_1 - 2x_2 + 3x_3 = 0 \\right\\}$$\n    - $S_C$ represents the solution set of a system of homogeneous linear equations:\n      $$\\begin{bmatrix} 5 & 0 & 2 \\\\ 4 & -2 & 3 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ 0 \\end{bmatrix}$$\n    - The null space (kernel) of any linear transformation is always a linear subspace.\n    - Hence, $S_C$ is a **subspace**.\n\n  - **Option D:**\n    $$S_D = \\left\\{ \\mathbf{x} \\in \\mathbb{R}^3 : 5x_1 + 2x_3 + 4 = 0 \\right\\}$$\n    - Evaluating at the origin $\\mathbf{x} = [0, 0, 0]^T$:\n      $$5(0) + 2(0) + 4 = 4 \\ne 0 \\implies \\mathbf{0} \\notin S_D$$\n    - Because the zero vector is not in $S_D$, it is an affine hyperplane not containing the origin and is **not a subspace**.\n\nTherefore, the correct options are **A and C**.",
+        "images": []
+      }
     },
     "go:422924": {
       "title": "GATE DA 2024 | Question: 38",
@@ -648,7 +837,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Linear Algebra - Solvability of Linear Systems (Existence & Uniqueness)",
+        "markdown": "- **Theoretical Principles of Linear Systems:**\n  - For a system of linear equations $M\\mathbf{x} = \\mathbf{b}$ with coefficient matrix $M \\in \\mathbb{R}^{m \\times n}$:\n    - A unique solution exists if and only if $\\operatorname{nullity}(M) = 0$ (full column rank, $\\operatorname{rank}(M) = n$) and $\\mathbf{b} \\in \\operatorname{col}(M)$.\n    - Infinitely many solutions exist if and only if $\\operatorname{nullity}(M) > 0$ and $\\mathbf{b} \\in \\operatorname{col}(M)$.\n    - No solution exists if and only if $\\mathbf{b} \\notin \\operatorname{col}(M)$.\n    - **Fundamental Invariant:** The nullity of $M$ depends only on matrix $M$, not on the right-hand side vector. Therefore, a given matrix $M$ can never yield a unique solution for one vector $\\mathbf{p}$ and infinitely many solutions for another vector $\\mathbf{q}$.\n\n- **Evaluation of Statements:**\n  - **Statement A:** Claims $M \\in \\mathbb{R}^{3 \\times 3}$ has a unique solution for $\\mathbf{p}$ and infinite solutions for $\\mathbf{q}$.\n    - A unique solution for $\\mathbf{p}$ requires $\\operatorname{rank}(M) = 3 \\implies M$ is invertible.\n    - If $M$ is invertible, then for every vector $\\mathbf{q} \\in \\mathbb{R}^3$, the solution $\\mathbf{x} = M^{-1}\\mathbf{q}$ is strictly unique. Infinite solutions are impossible. Hence, Statement A is **False**.\n\n  - **Statement B:** Claims $M \\in \\mathbb{R}^{3 \\times 3}$ has no solution for $\\mathbf{p}$ and infinite solutions for $\\mathbf{q}$.\n    - Consider $M = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}$ (rank $2$, $\\operatorname{nullity}(M) = 1$).\n    - For $\\mathbf{q} = [0, 0, 0]^T \\in \\operatorname{col}(M)$: $M\\mathbf{x} = \\mathbf{q}$ has infinitely many solutions $[0, 0, t]^T, t \\in \\mathbb{R}$.\n    - For $\\mathbf{p} = [0, 0, 1]^T \\notin \\operatorname{col}(M)$: $M\\mathbf{x} = \\mathbf{p}$ has no solution.\n    - Thus, such $M, \\mathbf{p}, \\mathbf{q}$ exist. Statement B is **True**.\n\n  - **Statement C:** Claims $M \\in \\mathbb{R}^{2 \\times 3}$ has a unique solution for $\\mathbf{p}$.\n    - Here $m = 2$ and $n = 3$. The maximum rank is $\\min(2, 3) = 2$.\n    - By Rank-Nullity: $\\operatorname{nullity}(M) = n - \\operatorname{rank}(M) \\ge 3 - 2 = 1 > 0$.\n    - Since the nullity is at least 1, any consistent system must have infinitely many solutions. A unique solution is impossible. Hence, Statement C is **False**.\n\n  - **Statement D:** Claims $M \\in \\mathbb{R}^{3 \\times 2}$ has a unique solution for $\\mathbf{p}$ and no solution for $\\mathbf{q}$.\n    - Consider $M = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 0 & 0 \\end{bmatrix}$ (full column rank $2$, $\\operatorname{nullity}(M) = 0$).\n    - For $\\mathbf{p} = [1, 2, 0]^T \\in \\operatorname{col}(M)$: $M\\mathbf{x} = \\mathbf{p}$ has the unique solution $\\mathbf{x} = [1, 2]^T$.\n    - For $\\mathbf{q} = [0, 0, 1]^T \\notin \\operatorname{col}(M)$: $M\\mathbf{x} = \\mathbf{q}$ has no solution.\n    - Thus, such $M, \\mathbf{p}, \\mathbf{q}$ exist. Statement D is **True**.\n\nTherefore, the correct options are **B and D**.",
+        "images": []
+      }
     },
     "go:422923": {
       "title": "GATE DA 2024 | Question: 39",
@@ -665,7 +859,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Linear Algebra - Orthogonal Projection Matrices & Idempotence",
+        "markdown": "- **Projection Matrix Properties:**\n  - Let $U$ be a subspace of $\\mathbb{R}^3$, and let $M \\in \\mathbb{R}^{3 \\times 3}$ be the projection matrix onto $U$.\n  - The range (column space) of $M$ is the subspace $U$ itself:\n    $$\\operatorname{range}(M) = U \\implies \\operatorname{rank}(M) = \\dim(U)$$\n  - By the Rank-Nullity Theorem for linear operators on $\\mathbb{R}^3$:\n    $$\\operatorname{rank}(M) + \\operatorname{nullity}(M) = 3 \\implies \\operatorname{nullity}(M) = 3 - \\dim(U)$$\n\n- **Statement Evaluation:**\n  - **Statement A:** If $\\dim(U) = 1$, then $\\operatorname{nullity}(M) = 3 - 1 = 2$.\n    - The null space is $2$-dimensional, not $1$-dimensional. Hence, Statement A is **False**.\n  - **Statement B:** If $\\dim(U) = 2$, then $\\operatorname{nullity}(M) = 3 - 2 = 1$.\n    - The null space is indeed $1$-dimensional. Hence, Statement B is **True**.\n  - **Statement C:** Idempotence of projection operators:\n    - By definition, applying a projection twice to any vector yields the exact same projection:\n      $$M(M\\mathbf{x}) = M\\mathbf{x}, \\quad \\forall \\mathbf{x} \\implies M^2 = M$$\n    - Hence, Statement C is **True**.\n  - **Statement D:** Higher powers of idempotent matrices:\n    - Multiplying $M^2 = M$ by $M$:\n      $$M^3 = M^2 \\cdot M = M \\cdot M = M^2 = M$$\n    - Hence, Statement D is **True**.\n\nTherefore, the correct options are **B, C, and D**.",
+        "images": []
+      }
     },
     "go:422922": {
       "title": "GATE DA 2024 | Question: 40",
@@ -682,7 +881,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Calculus - Optimization (Critical Points & Local Extrema)",
+        "markdown": "- **Function & Derivative Analysis:**\n  - Given:\n    $$f(x) = \\frac{x^4}{4} - \\frac{2x^3}{3} - \\frac{3x^2}{2} + 1$$\n  - Compute the first derivative:\n    $$f'(x) = x^3 - 2x^2 - 3x = x(x^2 - 2x - 3) = x(x - 3)(x + 1)$$\n  - Setting $f'(x) = 0$ gives the three critical points:\n    $$x = -1, \\quad x = 0, \\quad x = 3$$\n\n- **Second Derivative Test:**\n  - Compute the second derivative:\n    $$f''(x) = 3x^2 - 4x - 3$$\n  - Evaluating at each critical point:\n    1. **At $x = 0$:**\n       $$f''(0) = 3(0)^2 - 4(0) - 3 = -3 < 0$$\n       Because $f'(0) = 0$ and $f''(0) < 0$, the function attains a **local maximum** at $x = 0$. (Statement A is True; Statement D is False).\n    2. **At $x = 3$:**\n       $$f''(3) = 3(3)^2 - 4(3) - 3 = 27 - 12 - 3 = 12 > 0$$\n       Because $f'(3) = 0$ and $f''(3) > 0$, the function attains a **local minimum** at $x = 3$. (Statement B is True).\n    3. **At $x = -1$:**\n       $$f''(-1) = 3(-1)^2 - 4(-1) - 3 = 3 + 4 - 3 = 4 > 0$$\n       Because $f'(-1) = 0$ and $f''(-1) > 0$, $x = -1$ is a **local minimum**, not a local maximum. (Statement C is False).\n\nTherefore, the correct options are **A and B**.",
+        "images": []
+      }
     },
     "go:422921": {
       "title": "GATE DA 2024 | Question: 41",
@@ -699,7 +903,14 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Theory & Topological Sorting of DAGs",
+        "markdown": "- **Topological Sort Invariant:**\n  - In any directed acyclic graph (DAG), a topological sort is a linear ordering of vertices such that for every directed edge $u \\to v$, vertex $u$ appears strictly before vertex $v$.\n  - We examine the edge constraints given in the graph diagram:\n    - Source vertices with in-degree 0: $P$ (can be visited first).\n    - Edges enforce the dependencies:\n      - $P \\to R, \\; P \\to Q$\n      - $R \\to V, \\; Q \\to S$\n      - Dependencies among $S, T, U, V$.\n\n- **Evaluating Candidate Sequences:**\n  - **Option B ($P \\; R \\; Q \\; V \\; S \\; U \\; T$):**\n    - $P$ precedes $R$ and $Q$.\n    - $R$ precedes $V$, and $Q$ precedes $S$.\n    - Every directed edge points from a lower index to a higher index in the sequence.\n    - Valid topological sort!\n  - **Option D ($P \\; R \\; Q \\; S \\; V \\; T \\; U$):**\n    - $P$ precedes $R$ and $Q$.\n    - All incoming edges to $S, V, T, U$ are satisfied before their respective expansions.\n    - Valid topological sort!\n  - **Options A and C:**\n    - Violate specific precedence constraints where an edge directs from a vertex placed later to an earlier position.\n\nTherefore, the correct options are **B and D**.",
+        "images": [
+          "/question-images/da/62073d05b1302430adce7a13.webp"
+        ]
+      }
     },
     "go:422920": {
       "title": "GATE DA 2024 | Question: 42",
@@ -716,7 +927,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Data Structures - Rooted Binary Tree Structural Properties & Bounds",
+        "markdown": "- **Tree Parameters & Standard Relations:**\n  - Let $H$ be the height of the rooted binary tree (edge-count convention: single root node has $H = 0$).\n  - Let $N$ be total nodes, $I$ be internal nodes, and $L$ be leaf nodes ($N = I + L$).\n  - Let $n_0 = L$ (nodes with 0 children), $n_1$ (nodes with 1 child), and $n_2$ (nodes with 2 children).\n  - Sum of node degrees in binary trees yields the fundamental relation:\n    $$n_0 = n_2 + 1 \\implies L = n_2 + 1$$\n  - Since internal nodes are $I = n_1 + n_2$, we have:\n    $$I = n_1 + (L - 1) \\implies L = I + 1 - n_1$$\n  - Since $n_1 \\ge 0$, it follows that:\n    $$L \\le I + 1$$\n    with equality holding if and only if $n_1 = 0$ (a full binary tree).\n    Hence, **Statement A is always TRUE**.\n\n- **Bounding Total Nodes $N$ by Height $H$:**\n  - In a rooted binary tree of height $H$:\n    - Minimum nodes occur in a degenerate/skewed path with exactly 1 node per level from level $0$ to $H$:\n      $$N_{\\min} = H + 1$$\n    - Maximum nodes occur in a complete binary tree where every level $0 \\dots H$ is completely filled:\n      $$N_{\\max} = \\sum_{k=0}^H 2^k = 2^{H+1} - 1$$\n    - Therefore:\n      $$H + 1 \\le N \\le 2^{H+1} - 1$$\n    - Hence, **Statement B is always TRUE**.\n\n- **Bounding Internal Nodes $I$ by Height $H$:**\n  - Any tree of height $H$ has at least one path of length $H$ from root to leaf. Every node on this path except the leaf must have at least one child, making it an internal node.\n    $$I_{\\min} = H$$\n  - Maximum internal nodes occur when all levels from $0$ to $H-1$ are full:\n    $$I_{\\max} = \\sum_{k=0}^{H-1} 2^k = 2^H - 1$$\n  - Therefore:\n    $$H \\le I \\le 2^H - 1$$\n  - Hence, **Statement C is always TRUE**.\n\n- **Disproving Statement D ($H \\le L \\le 2^{H-1}$):**\n  - Consider a skewed binary tree of height $H = 3$. It has only $L = 1$ leaf node.\n  - Statement D requires $H \\le L \\implies 3 \\le 1$, which is false.\n  - Hence, Statement D is **False**.\n\nTherefore, the correct options are **A, B, and C**.",
+        "images": []
+      }
     },
     "go:422919": {
       "title": "GATE DA 2024 | Question: 43",
@@ -733,7 +949,14 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Linear Separability of 2D Classification Datasets",
+        "markdown": "- **Definition of Linear Separability:**\n  - A two-class dataset $\\{(\\boldsymbol{x}_i, y_i)\\}_{i=1}^n$ with $y_i \\in \\{+1, -1\\}$ in $\\mathbb{R}^2$ is **linearly separable** if and only if there exists a straight line (separating hyperplane) $\\boldsymbol{w}^T \\boldsymbol{x} + b = 0$ such that all positive instances lie strictly on one side and all negative instances lie strictly on the other side:\n    $$y_i (\\boldsymbol{w}^T \\boldsymbol{x}_i + b) > 0, \\quad \\forall i$$\n  - Geometrically, this requires the convex hulls of the two classes to be completely disjoint.\n\n- **Analysis of the Four Figures:**\n  - **Figure (i):**\n    - The circles and squares form two well-separated spatial clusters that can be completely divided by a single straight line.\n    - Hence, (i) is **linearly separable**. (Option A is True).\n  - **Figure (ii):**\n    - The points form concentric distributions (e.g. circles enclosed inside a surrounding ring of squares).\n    - Any linear decision boundary will inevitably misclassify points; linear separation is impossible without a nonlinear kernel/feature transformation.\n    - Hence, (ii) is **not linearly separable**.\n  - **Figure (iii):**\n    - Demonstrates an alternating XOR-like pattern where the convex hulls of the two classes overlap.\n    - Hence, (iii) is **not linearly separable**.\n  - **Figure (iv):**\n    - The two classes are arranged such that a linear boundary can separate all circles from all squares without any intersection of their convex hulls.\n    - Hence, (iv) is **linearly separable**. (Option D is True).\n\nTherefore, the correct options are **A and D**.",
+        "images": [
+          "/question-images/da/1afcea55f5897c1b6ae8c4fd.webp"
+        ]
+      }
     },
     "go:422918": {
       "title": "GATE DA 2024 | Question: 44",
@@ -750,7 +973,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Mathematical Logic - First-Order Logic Translation & Contrapositives",
+        "markdown": "- **Predicate Definitions:**\n  - $G(x) \\equiv \\text{game}(x, \\text{rugby})$ (True if ball $x$ is used in rugby).\n  - $R(x) \\equiv \\text{shape}(x, \\text{round})$ (True if ball $x$ is round).\n\n- **Decomposing the Natural Language Assertion:**\n  - *\"All balls are round except balls used in rugby.\"*\n  - This compound English assertion states two distinct rules:\n    1. If a ball is not used in rugby, it is round:\n       $$\\forall x (\\neg G(x) \\implies R(x)) \\quad \\text{--- Sentence } s_1$$\n    2. Balls used in rugby are not round (the exception clause):\n       $$\\forall x (G(x) \\implies \\neg R(x)) \\quad \\text{--- Sentence } s_3$$\n  - Together, these two rules are expressed as $s_1 \\wedge s_3$ (Option A).\n\n- **Equivalence via Contrapositives:**\n  - The contrapositive of an implication $P \\implies Q$ is $\\neg Q \\implies \\neg P$, and both are logically equivalent ($P \\implies Q \\equiv \\neg Q \\implies \\neg P$).\n  - **Contrapositive of $s_1$:**\n    $$\\neg G(x) \\implies R(x) \\quad \\equiv \\quad \\neg R(x) \\implies \\neg(\\neg G(x)) \\quad \\equiv \\quad \\neg R(x) \\implies G(x) \\quad (s_2)$$\n    Hence, $s_1 \\equiv s_2$.\n  - **Contrapositive of $s_3$:**\n    $$G(x) \\implies \\neg R(x) \\quad \\equiv \\quad \\neg(\\neg R(x)) \\implies \\neg G(x) \\quad \\equiv \\quad R(x) \\implies \\neg G(x) \\quad (s_4)$$\n    Hence, $s_3 \\equiv s_4$.\n\n- **Evaluating Combinations:**\n  - Because $s_1 \\equiv s_2$, the combination $s_2 \\wedge s_3$ is logically equivalent to $s_1 \\wedge s_3$.\n  - Hence, both $s_1 \\wedge s_3$ (Option A) and $s_2 \\wedge s_3$ (Option C) are valid logical representations.\n\nTherefore, the correct options are **A and C**.",
+        "images": []
+      }
     },
     "go:422917": {
       "title": "GATE DA 2024 | Question: 45",
@@ -767,7 +995,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Databases - Physical Storage & Indexing (B+ Tree vs Hash Index Capabilities)",
+        "markdown": "- **Relational Schema & SQL Query:**\n  ```sql\n  SELECT *\n  FROM Movie, Genre, Movie_Genre\n  WHERE\n    Movie.CustomerRating > 3.4 AND\n    Genre.Name = \"Comedy\" AND\n    Movie_Genre.MovieID = Movie.ID AND\n    Movie_Genre.GenreID = Genre.ID;\n  ```\n\n- **Predicate Analysis:**\n  1. `Genre.Name = \"Comedy\"`: An **equality selection predicate**.\n  2. `Movie.CustomerRating > 3.4`: A **range selection predicate**.\n  3. `Movie_Genre.MovieID = Movie.ID` and `Movie_Genre.GenreID = Genre.ID`: **Equi-join predicates**.\n\n- **Index Capabilities: $B^+$ Tree vs Hash Index:**\n  - **Hash Index:**\n    - Uses a hash function to map keys to buckets.\n    - Excellent for equality lookups ($O(1)$ average time complexity).\n    - **Cannot support range queries** ($>$, $<$, BETWEEN) because hash functions destroy key order. Evaluating a range predicate with a hash index requires scanning the entire table.\n  - **$B^+$ Tree:**\n    - Keeps search keys in sorted sequential order, with leaf nodes linked together.\n    - Supports both equality lookups ($O(\\log N)$) and range queries ($O(\\log N + K)$ via linked leaf traversals).\n\n- **Evaluating Index Configurations:**\n  - Any configuration that places a **Hash index on Movie.CustomerRating** fails to accelerate the query because it cannot optimize the range predicate `CustomerRating > 3.4` (eliminating Options C and D).\n  - **Option A ($B^+$ tree on all attributes):**\n    - $B^+$ tree accelerates range search on `CustomerRating`, equality search on `Genre.Name`, and join lookups on primary/foreign keys. **Valid!**\n  - **Option B (Hash index on Genre.Name, $B^+$ tree on remaining attributes):**\n    - Hash index accelerates equality lookup `Genre.Name = \"Comedy\"`.\n    - $B^+$ tree on `CustomerRating` accelerates the range query `> 3.4`.\n    - $B^+$ trees accelerate foreign key join matching. **Valid!**\n\nTherefore, the correct options are **A and B**.",
+        "images": []
+      }
     },
     "go:422916": {
       "title": "GATE DA 2024 | Question: 46",
@@ -784,7 +1017,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Continuous Probability - Uniform Distribution & Joint Probability",
+        "markdown": "- **Given Distributions:**\n  - $X \\sim U[1, 3]$ with probability density function:\n    $$f_X(x) = \\frac{1}{3 - 1} = \\frac{1}{2}, \\quad 1 \\le x \\le 3$$\n  - $Y \\sim U[2, 4]$ with probability density function:\n    $$f_Y(y) = \\frac{1}{4 - 2} = \\frac{1}{2}, \\quad 2 \\le y \\le 4$$\n- **Joint Density of Independent Random Variables:**\n  - Since $X$ and $Y$ are independent, their joint density is:\n    $$f_{X,Y}(x, y) = f_X(x) f_Y(y) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$$\n  - The support region is the rectangle $R = [1, 3] \\times [2, 4]$ with area $(3 - 1)(4 - 2) = 4$.\n\n- **Integration Region for $X \\ge Y$:**\n  - We require points $(x, y) \\in [1, 3] \\times [2, 4]$ satisfying $y \\le x$.\n  - For $x \\in [1, 2)$, $x < 2$ while $y \\ge 2$, so $y \\le x$ has no solution.\n  - For $x \\in [2, 3]$, $y$ ranges from the lower bound $2$ up to $x$:\n    $$2 \\le x \\le 3, \\quad 2 \\le y \\le x$$\n  - Geometrically, this region is a right-angled triangle with vertices at $(2, 2)$, $(3, 2)$, and $(3, 3)$:\n    $$\\text{Base} = 3 - 2 = 1, \\quad \\text{Height} = 3 - 2 = 1$$\n    $$\\text{Area} = \\frac{1}{2} \\times 1 \\times 1 = \\frac{1}{2} = 0.5$$\n\n- **Probability Calculation:**\n  $$P(X \\ge Y) = \\iint_{y \\le x} f_{X,Y}(x, y) \\, dy \\, dx = \\frac{1}{4} \\times \\text{Area} = \\frac{1}{4} \\times 0.5 = 0.125$$\n\nTherefore, the correct answer is **0.125**.",
+        "images": []
+      }
     },
     "go:422915": {
       "title": "GATE DA 2024 | Question: 47",
@@ -801,7 +1039,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability Distributions - Exponential Distribution Moments",
+        "markdown": "- **Given PDF & Moments:**\n  - $X$ is exponentially distributed with parameter $\\lambda > 0$:\n    $$f_X(x) = \\lambda e^{-\\lambda x}, \\quad x \\ge 0$$\n  - For an exponential distribution with rate parameter $\\lambda$:\n    $$E(X) = \\frac{1}{\\lambda}, \\quad \\operatorname{Var}(X) = \\frac{1}{\\lambda^2}$$\n\n- **Applying the Given Condition:**\n  - We are given:\n    $$5 E(X) = \\operatorname{Var}(X)$$\n  - Substituting the expectation and variance formulas:\n    $$5 \\left(\\frac{1}{\\lambda}\\right) = \\frac{1}{\\lambda^2}$$\n  - Since $\\lambda > 0$, multiplying both sides by $\\lambda^2$:\n    $$5\\lambda = 1 \\implies \\lambda = \\frac{1}{5} = 0.2$$\n\nTherefore, the correct answer is **0.2**.",
+        "images": []
+      }
     },
     "go:422914": {
       "title": "GATE DA 2024 | Question: 48",
@@ -818,7 +1061,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Conditional Probability - Bayes' Theorem & Total Probability",
+        "markdown": "- **Given Probabilities:**\n  - $P(\\bar{T}) = 0.6 \\implies P(T) = 1 - P(\\bar{T}) = 1 - 0.6 = 0.4$\n  - $P(S \\mid T) = 0.3$\n  - $P(S \\mid \\bar{T}) = 0.6$\n\n- **Law of Total Probability for $P(S)$:**\n  - Using the partition formed by $T$ and $\\bar{T}$:\n    $$P(S) = P(S \\mid T) P(T) + P(S \\mid \\bar{T}) P(\\bar{T})$$\n    $$P(S) = (0.3)(0.4) + (0.6)(0.6) = 0.12 + 0.36 = 0.48$$\n\n- **Bayes' Theorem for Posterior $P(T \\mid S)$:**\n  $$P(T \\mid S) = \\frac{P(S \\mid T) P(T)}{P(S)} = \\frac{0.12}{0.48} = \\frac{1}{4} = 0.25$$\n\nTherefore, the correct answer is **0.25**.",
+        "images": []
+      }
     },
     "go:422913": {
       "title": "GATE DA 2024 | Question: 49",
@@ -835,7 +1083,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Joint Probability Distributions - Conditional Expectation",
+        "markdown": "- **Given Joint PDF:**\n  - $f_{X,Y}(x, y) = 2xy$ for $0 < x < 2$ and $0 < y < x$, and $0$ elsewhere.\n\n- **Marginal Density of $X$:**\n  $$f_X(x) = \\int_0^x f_{X,Y}(x, y) \\, dy = \\int_0^x 2xy \\, dy = 2x \\left[ \\frac{y^2}{2} \\right]_0^x = x^3 \\quad (0 < x < 2)$$\n\n- **Conditional Density $f_{Y \\mid X}(y \\mid x)$:**\n  $$f_{Y \\mid X}(y \\mid x) = \\frac{f_{X,Y}(x, y)}{f_X(x)} = \\frac{2xy}{x^3} = \\frac{2y}{x^2}, \\quad 0 < y < x$$\n\n- **Conditional Expectation $E[Y \\mid X = x]$:**\n  $$E[Y \\mid X = x] = \\int_0^x y \\cdot f_{Y \\mid X}(y \\mid x) \\, dy = \\int_0^x y \\left(\\frac{2y}{x^2}\\right) \\, dy = \\frac{2}{x^2} \\int_0^x y^2 \\, dy$$\n  $$E[Y \\mid X = x] = \\frac{2}{x^2} \\left[ \\frac{y^3}{3} \\right]_0^x = \\frac{2}{x^2} \\cdot \\frac{x^3}{3} = \\frac{2}{3}x$$\n\n- **Evaluating at $X = 1.5$:**\n  $$E[Y \\mid X = 1.5] = \\frac{2}{3} \\times 1.5 = \\frac{2}{3} \\times \\frac{3}{2} = 1$$\n\nTherefore, the correct answer is **1**.",
+        "images": []
+      }
     },
     "go:422912": {
       "title": "GATE DA 2024 | Question: 50",
@@ -852,7 +1105,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Calculus - Limits via Taylor Series Expansion",
+        "markdown": "- **Given Limit:**\n  $$L = \\lim_{x \\to 0} \\frac{\\ln\\left((x^2 + 1) \\cos x\\right)}{x^2}$$\n\n- **Logarithmic Decomposition:**\n  $$\\ln\\left((x^2 + 1) \\cos x\\right) = \\ln(1 + x^2) + \\ln(\\cos x)$$\n\n- **Taylor Series Expansions near $x = 0$:**\n  - For $\\ln(1 + u) = u - \\frac{u^2}{2} + O(u^3)$ with $u = x^2$:\n    $$\\ln(1 + x^2) = x^2 - \\frac{x^4}{2} + O(x^6) = x^2 + O(x^4)$$\n  - For $\\cos x = 1 - \\frac{x^2}{2} + \\frac{x^4}{24} - O(x^6)$:\n    $$\\ln(\\cos x) = \\ln\\left(1 - \\left(\\frac{x^2}{2} - \\frac{x^4}{24}\\right)\\right) = -\\frac{x^2}{2} + O(x^4)$$\n\n- **Summing the Expansions:**\n  $$\\ln\\left((x^2 + 1) \\cos x\\right) = x^2 - \\frac{x^2}{2} + O(x^4) = \\frac{1}{2}x^2 + O(x^4)$$\n\n- **Evaluating the Limit:**\n  $$L = \\lim_{x \\to 0} \\frac{\\frac{1}{2}x^2 + O(x^4)}{x^2} = \\frac{1}{2} = 0.5$$\n\nTherefore, the correct answer is **0.5**.",
+        "images": []
+      }
     },
     "go:422911": {
       "title": "GATE DA 2024 | Question: 51",
@@ -869,7 +1127,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Linear Algebra - Outer Product Matrices & Singular Values",
+        "markdown": "- **Given Vector & Matrix Definition:**\n  $$\\boldsymbol{u} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\\\ 4 \\\\ 5 \\end{bmatrix}, \\quad \\boldsymbol{M} = \\boldsymbol{u} \\boldsymbol{u}^T$$\n  - $\\boldsymbol{M}$ is a $5 \\times 5$ real symmetric outer-product matrix of rank $1$.\n\n- **Eigenvalues and Singular Values of $\\boldsymbol{M}$:**\n  - Because $\\boldsymbol{M}$ is real symmetric and positive semidefinite ($\\boldsymbol{v}^T \\boldsymbol{M} \\boldsymbol{v} = (\\boldsymbol{u}^T \\boldsymbol{v})^2 \\ge 0$), its singular values are identical to its eigenvalues:\n    $$\\sigma_i = \\lambda_i \\quad \\text{for all } i$$\n  - Multiplying $\\boldsymbol{M}$ by $\\boldsymbol{u}$:\n    $$\\boldsymbol{M} \\boldsymbol{u} = (\\boldsymbol{u} \\boldsymbol{u}^T) \\boldsymbol{u} = \\boldsymbol{u} (\\boldsymbol{u}^T \\boldsymbol{u}) = (\\|\\boldsymbol{u}\\|^2) \\boldsymbol{u}$$\n  - Thus, $\\boldsymbol{u}$ is an eigenvector corresponding to non-zero eigenvalue $\\lambda_1 = \\|\\boldsymbol{u}\\|^2$.\n  - Any vector orthogonal to $\\boldsymbol{u}$ satisfies $\\boldsymbol{M} \\boldsymbol{v} = \\boldsymbol{0}$, yielding four eigenvalues equal to $0$:\n    $$\\lambda_2 = \\lambda_3 = \\lambda_4 = \\lambda_5 = 0$$\n\n- **Computing $\\|\\boldsymbol{u}\\|^2$:**\n  $$\\|\\boldsymbol{u}\\|^2 = 1^2 + 2^2 + 3^2 + 4^2 + 5^2 = 1 + 4 + 9 + 16 + 25 = 55$$\n\n- **Sum of Singular Values:**\n  $$\\sum_{i=1}^5 \\sigma_i = 55 + 0 + 0 + 0 + 0 = 55$$\n\nTherefore, the correct answer is **55**.",
+        "images": []
+      }
     },
     "go:422910": {
       "title": "GATE DA 2024 | Question: 52",
@@ -886,7 +1149,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - Decision Trees & Information Gain",
+        "markdown": "- **Dataset Summary ($10$ Matches):**\n  - **Overall Target Distribution (Winner):**\n    - $\\text{Green}: \\text{Matches } \\{1, 5, 7, 10\\} \\implies 4 \\text{ matches}$\n    - $\\text{Blue}: \\text{Matches } \\{2, 3, 4, 6, 8, 9\\} \\implies 6 \\text{ matches}$\n  - **Base Entropy of Dataset $C$:**\n    $$H(C) = -\\left[\\frac{4}{10} \\log_2\\left(\\frac{4}{10}\\right) + \\frac{6}{10} \\log_2\\left(\\frac{6}{10}\\right)\\right] = -(0.4 \\log_2 0.4 + 0.6 \\log_2 0.6) \\approx 0.9710$$\n\n- **Partitioning by Attribute Pitch:**\n  - **Pitch = Spin-friendly ($S$):** $5$ matches $\\{1, 2, 4, 7, 10\\}$\n    - $\\text{Green} = 3$, $\\text{Blue} = 2$\n    - $$H(C \\mid \\text{Pitch} = S) = -\\left[\\frac{3}{5} \\log_2\\left(\\frac{3}{5}\\right) + \\frac{2}{5} \\log_2\\left(\\frac{2}{5}\\right)\\right] = -(0.6 \\log_2 0.6 + 0.4 \\log_2 0.4) \\approx 0.9710$$\n  - **Pitch = Pace-friendly ($F$):** $5$ matches $\\{3, 5, 6, 8, 9\\}$\n    - $\\text{Green} = 1$, $\\text{Blue} = 4$\n    - $$H(C \\mid \\text{Pitch} = F) = -\\left[\\frac{1}{5} \\log_2\\left(\\frac{1}{5}\\right) + \\frac{4}{5} \\log_2\\left(\\frac{4}{5}\\right)\\right] = -(0.2 \\log_2 0.2 + 0.8 \\log_2 0.8) \\approx 0.7219$$\n\n- **Conditional Entropy $H(C \\mid \\text{Pitch})$:**\n  $$H(C \\mid \\text{Pitch}) = \\frac{5}{10} H(C \\mid S) + \\frac{5}{10} H(C \\mid F) = 0.5(0.9710) + 0.5(0.7219) = 0.8465$$\n\n- **Information Gain Calculation:**\n  $$\\operatorname{IG}(C, \\text{Pitch}) = H(C) - H(C \\mid \\text{Pitch}) = 0.9710 - 0.8465 = 0.1245 \\approx 0.12$$\n\nTherefore, the correct answer is **0.12**.",
+        "images": []
+      }
     },
     "go:422909": {
       "title": "GATE DA 2024 | Question: 53",
@@ -903,7 +1171,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Machine Learning - $k$-Nearest Neighbors Classification",
+        "markdown": "- **Problem Context:**\n  - A 2D dataset with $5$ data points belonging to two classes: Circles and Squares.\n  - Query point is represented by the diamond ($\\diamond$) symbol.\n  - Euclidean distance is used to find the $k$-nearest neighbors, with odd values of $k \\in \\{1, 3, 5\\}$ evaluated under majority voting.\n\n- **Evaluating Odd Values of $k$:**\n  - **For $k = 1$:** The closest neighbor to the query diamond is a Circle. Hence, the predicted label is **Circle**.\n  - **For $k = 3$:** The three nearest neighbors consist of $2$ Circles and $1$ Square. Under majority voting ($2 > 1$), the predicted label is **Circle**.\n  - **For $k = 5$:** All five data points in the dataset are included in the neighborhood, consisting of $3$ Squares and $2$ Circles. Under majority voting ($3 > 2$), the predicted label is **Square**.\n\n- **Conclusion:**\n  - The smallest odd value of $k$ where the majority vote assigns the label Square to the query point is $5$.\n\nTherefore, the correct answer is **5**.",
+        "images": []
+      }
     },
     "go:422908": {
       "title": "GATE DA 2024 | Question: 54",
@@ -920,7 +1193,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Artificial Intelligence - Bayesian Networks Joint Probability",
+        "markdown": "- **Bayesian Network Factorization:**\n  - The joint probability distribution factorizes over the network structure according to the parents of each node:\n    $$P(U, V, W, Z) = P(U) \\cdot P(V \\mid U) \\cdot P(W \\mid U) \\cdot P(Z \\mid V, W)$$\n\n- **Extracting Values from Conditional Probability Tables:**\n  - For $U = 1$:\n    $$P(U = 1) = 0.5$$\n  - For $V = 1$ given $U = 1$:\n    $$P(V = 1 \\mid U = 1) = 0.5$$\n  - For $W = 1$ given $U = 1$:\n    $$P(W = 1 \\mid U = 1) = 1.0$$\n  - For $Z = 1$ given $V = 1, W = 1$:\n    $$P(Z = 1 \\mid V = 1, W = 1) = 0.5$$\n\n- **Computing Joint Probability:**\n  $$P(U = 1, V = 1, W = 1, Z = 1) = (0.5) \\times (0.5) \\times (1.0) \\times (0.5) = 0.125$$\n\nTherefore, the correct answer is **0.125**.",
+        "images": []
+      }
     },
     "go:422907": {
       "title": "GATE DA 2024 | Question: 55",
@@ -937,7 +1215,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Probability - Covariance of Bernoulli Indicator Variables",
+        "markdown": "- **Sample Space & Random Variables:**\n  - Tossing two fair independent coins gives $\\Omega = \\{HH, HT, TH, TT\\}$, each with probability $\\frac{1}{4}$.\n  - $X$ is the indicator that both tosses are heads:\n    $$X = 1 \\iff \\{HH\\} \\implies P(X = 1) = \\frac{1}{4}, \\quad E[X] = \\frac{1}{4}$$\n  - $Y$ is the indicator that at least one toss is head:\n    $$Y = 1 \\iff \\{HH, HT, TH\\} \\implies P(Y = 1) = \\frac{3}{4}, \\quad E[Y] = \\frac{3}{4}$$\n\n- **Joint Expectation $E[XY]$:**\n  - The product $XY = 1$ if and only if $X = 1$ and $Y = 1$.\n  - Since $X = 1$ implies both heads, it automatically satisfies having at least one head ($Y = 1$).\n  - Thus, event $\\{XY = 1\\} = \\{HH\\}$:\n    $$P(XY = 1) = \\frac{1}{4} \\implies E[XY] = \\frac{1}{4}$$\n\n- **Covariance Calculation:**\n  $$\\operatorname{Cov}(X, Y) = E[XY] - E[X]E[Y] = \\frac{1}{4} - \\left(\\frac{1}{4}\\right)\\left(\\frac{3}{4}\\right)$$\n  $$\\operatorname{Cov}(X, Y) = \\frac{1}{4} - \\frac{3}{16} = \\frac{4 - 3}{16} = \\frac{1}{16} = 0.0625 \\approx 0.062$$\n\nTherefore, the correct answer is **0.062**.",
+        "images": []
+      }
     },
     "go:422971": {
       "title": "GATE DA 2024 | Question: 56",
@@ -955,7 +1238,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "Compare $x$ and $x^3$: they are equal at $x=-1,0,1$. So\n\n$f(x)=x$ for $x\\le -1$, $x^3$ on $[-1,0]$, $x$ on $[0,1]$, $x^3$ for $x\\ge1$.\n\nAt every switching point the two pieces have different slopes ($\\frac{d}{dx}x=1$, $\\frac{d}{dx}x^3=3x^2$):\n\n- $x=-1$: slopes $1$ and $3$ $\\rightarrow$ corner\n\n- $x=0$: slopes $0$ and $1$ $\\rightarrow$ corner\n\n- $x=1$: slopes $1$ and $3$ $\\rightarrow$ corner\n\nEverywhere else $f$ is a polynomial, hence differentiable.\n\n<b>Answer: $\\{-1,0,1\\}$</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
+      }
     },
     "go:422970": {
       "title": "GATE DA 2024 | Question: 57",
@@ -973,7 +1261,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "Product of all eigenvalues $=\\det(A)$.\n\n$\\det(A)=1(45-48)-2(36-42)+3(32-35)=-3+12-9=0$\n\n(Quick check: $R_1+R_3=2R_2$, so the rows are dependent and the matrix is singular.)\n\n<b>Answer: 0</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
+      }
     },
     "go:422969": {
       "title": "GATE DA 2024 | Question: 58",
@@ -991,7 +1284,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "With 5-bit 2's complement the range is $-16$ to $+15$.\n\n$A=01010=+10$, $B=11010=-6$.\n\n- $A+B=4$ $\\rightarrow$ fits\n\n- $A-B=10+6=16$ $\\rightarrow$ <b>exceeds +15, overflow</b>\n\n- $B-A=-16$ $\\rightarrow$ fits (lowest value)\n\n- $2B=-12$ $\\rightarrow$ fits\n\n<b>Answer: A $-$ B</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
     },
     "go:422968": {
       "title": "GATE DA 2024 | Question: 59",
@@ -1009,7 +1307,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
     },
     "go:422967": {
       "title": "GATE DA 2024 | Question: 60",
@@ -1027,7 +1330,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "Checking each statement:\n\n- Cycle stealing: DMA takes one bus cycle and moves one word $\\text{---}$ TRUE.\n\n- Burst mode keeps the bus for the whole block (no repeated bus requests), so it has higher throughput for bulk transfer $\\text{---}$ TRUE.\n\n- <b>Programmed I/O has better CPU utilization than interrupt-driven I/O $\\text{---}$ FALSE.</b> In programmed I/O the CPU keeps polling the device status and wastes cycles; interrupt-driven I/O lets the CPU do other work until the device interrupts.\n\n- Vectored interrupts give the ISR address directly (no polling to find the device), so ISR starts faster $\\text{---}$ TRUE.\n\n<b>Answer: Programmed I/O has better CPU utilization than interrupt driven I/O (FALSE)</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
     },
     "go:422966": {
       "title": "GATE DA 2024 | Question: 61",
@@ -1045,7 +1353,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "Order in which the packets leave the computer:\n\n1. <b>(ii) DNS request</b> $\\text{---}$ the IP address of the server is needed before anything else (caches are empty).\n\n2. <b>(iv) TCP SYN</b> $\\text{---}$ open the TCP connection with the server.\n\n3. <b>(i) GET index page</b> $\\text{---}$ first request on the connection.\n\n4. <b>(iii) GET image</b> $\\text{---}$ the browser knows about the image only after it receives and parses the index page.\n\n<b>Answer: (ii), (iv), (i), (iii)</b>\n\nTherefore, the correct answer is **Option D**.",
+        "images": []
+      }
     },
     "go:422965": {
       "title": "GATE DA 2024 | Question: 62",
@@ -1063,7 +1376,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude: gate-ds-ai-2024",
+        "markdown": "The algorithm compares each pair of adjacent elements once: $N-1$ comparisons in the worst case (when the array is actually sorted, it must check every pair before saying YES).\n\nIt cannot do less: any element not examined could break the order. So the worst case is $\\Theta(N)$, i.e. both $O(N)$ and $\\Omega(N)$.\n\n<b>Answer: both $O(N)$ and $\\Omega(N)$</b>\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
+      }
     },
     "go:422964": {
       "title": "GATE DA 2024 | Question: 63",
@@ -1081,7 +1399,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Quantitative Aptitude: Rate of Return & Investments",
+        "markdown": "Let the annual rate of return for Mutual Fund $\\text{A}$ be $r$ (in decimal).\n\nThe annual rate of return for Mutual Funds $\\text{B}$ and $\\text{C}$ is $15\\% = 0.15$.\n\n### 1. Amount received by Person 1 after 1 year:\nPerson 1 invests ₹$10,000$ in $\\text{A}$, ₹$20,000$ in $\\text{B}$, and ₹$20,000$ in $\\text{C}$:\n$$\\begin{aligned}\n\\text{Total}_1 &= 10,000(1 + r) + 20,000(1 + 0.15) + 20,000(1 + 0.15) \\\\\n&= 10,000(1 + r) + 40,000(1.15) \\\\\n&= 10,000 + 10,000r + 46,000 \\\\\n&= 56,000 + 10,000r\n\\end{aligned}$$\n\n### 2. Amount received by Person 2 after 1 year:\nPerson 2 invests ₹$20,000$ in $\\text{A}$, ₹$15,000$ in $\\text{B}$, and ₹$15,000$ in $\\text{C}$:\n$$\\begin{aligned}\n\\text{Total}_2 &= 20,000(1 + r) + 15,000(1 + 0.15) + 15,000(1 + 0.15) \\\\\n&= 20,000 + 20,000r + 30,000(1.15) \\\\\n&= 20,000 + 20,000r + 34,500 \\\\\n&= 54,500 + 20,000r\n\\end{aligned}$$\n\n### 3. Setting up the difference:\nPerson 1 gets ₹$500$ more than Person 2:\n$$\\begin{aligned}\n\\text{Total}_1 - \\text{Total}_2 &= 500 \\\\\n(56,000 + 10,000r) - (54,500 + 20,000r) &= 500 \\\\\n1,500 - 10,000r &= 500 \\\\\n10,000r &= 1,000 \\\\\nr &= \\frac{1,000}{10,000} = 0.10 = 10\\%\n\\end{aligned}$$\n\n<b>Answer: 10%</b>\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      }
     },
     "go:422963": {
       "title": "GATE DA 2024 | Question: 64",
@@ -1099,7 +1422,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Spatial Aptitude - Cube Folding & Opposite Faces",
+        "markdown": "- **Analyzing Mutual Adjacencies from Given Dice Views:**\n  - **View 1:** Face $5$ is adjacent to faces $4$ and $1$.\n  - **View 2:** Face $4$ is adjacent to faces $6$ and $3$.\n  - **View 3:** Face $5$ is adjacent to faces $2$ and $6$.\n\n- **Deducing Opposite Face Pairs:**\n  - **Face 5:**\n    - From View 1, $5$ is adjacent to $\\{4, 1\\}$.\n    - From View 3, $5$ is adjacent to $\\{2, 6\\}$.\n    - Since face $5$ is adjacent to four faces $\\{1, 2, 4, 6\\}$, the only remaining face that can be opposite to $5$ is **$3$**:\n      $$\\text{Opposite}(5) = 3$$\n  - **Face 4:**\n    - From View 1, $4$ is adjacent to $\\{5, 1\\}$.\n    - From View 2, $4$ is adjacent to $\\{6, 3\\}$.\n    - Since face $4$ is adjacent to four faces $\\{1, 3, 5, 6\\}$, the only remaining face that can be opposite to $4$ is **$2$**:\n      $$\\text{Opposite}(4) = 2$$\n  - **Remaining Pair:**\n    - The remaining two faces are $1$ and $6$:\n      $$\\text{Opposite}(1) = 6$$\n\n- **Evaluating Cube Unfolding Nets:**\n  - In a standard cube net, two faces along a straight column/row separated by exactly one square are opposite when folded.\n  - **Option A:**\n    - Central column has squares $[1, 4, 6, 2]$ from top to bottom.\n    - Square $1$ is separated from $6$ by $4 \\implies \\text{Opposite}(1) = 6$. (Matches!)\n    - Square $4$ is separated from $2$ by $6 \\implies \\text{Opposite}(4) = 2$. (Matches!)\n    - Side tabs $5$ (attached to $1$) and $3$ (attached to $2$) fold onto opposite lateral faces $\\implies \\text{Opposite}(5) = 3$. (Matches!)\n    - Furthermore, checking chiral vertex orientations shows that $(5, 4, 1)$ meet at the corner in the identical cyclic orientation as shown in View 1.\n  - **Option B:** Shows $4$ and $6$ separated by $2$, implying $4$ is opposite $6$ (incorrect, $4$ is opposite $2$).\n  - **Option C:** Shows $1$ and $2$ separated by $3$, implying $1$ is opposite $2$ (incorrect, $1$ is opposite $6$).\n  - **Option D:** Shows $4$ and $3$ separated by $6$, implying $4$ is opposite $3$ (incorrect, $4$ is opposite $2$).\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
+      }
     },
     "go:422962": {
       "title": "GATE DA 2024 | Question: 65",
@@ -1117,7 +1445,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2024-s1",
-      "yearSetIdentity": "da:2024:set-1"
+      "yearSetIdentity": "da:2024:set-1",
+      "detailed_solution": {
+        "concept": "Spatial Aptitude - 3D Cones & Cross-Sectional Geometry",
+        "markdown": "- **Problem Geometry & Setup:**\n  - Two identical right circular cones of base radius $R$ and vertical height $h$ share a common circular base of radius $R$.\n  - Let the shared circular base lie in the $xy$-plane ($z = 0$) centered at the origin $(0, 0, 0)$.\n  - The vertex of the upper cone is located at $V_1 = (0, 0, h)$.\n  - The vertex of the inverted lower cone is located at $V_2 = (0, 0, -h)$.\n  - The assembled 3D solid is a bicone (double cone joined base-to-base).\n\n- **Plane Passing Through Both Vertices:**\n  - A cutting plane passes through both vertices $V_1(0, 0, h)$ and $V_2(0, 0, -h)$.\n  - Therefore, the cutting plane contains the line segment $V_1 V_2$, which is the central axis of rotational symmetry (the $z$-axis) for both cones.\n  - Any plane containing the central axis of a right circular cone cuts the cone in an axial cross-section bounded by two straight generators passing through the vertex.\n\n- **Boundary of the Cross-Section:**\n  - The cutting plane intersects the shared circular base ($z = 0$) along a straight line passing through the center $(0, 0, 0)$. This straight line is a diameter of the circular base, terminating at two diametrically opposite boundary points $A$ and $B$, where distance $AB = 2R$.\n  - For the upper cone, the boundary consists of the two straight generator segments $V_1 A$ and $V_1 B$.\n  - For the lower cone, the boundary consists of the two straight generator segments $V_2 A$ and $V_2 B$.\n  - The outer boundary of the complete cross-section is the 4-sided polygon (quadrilateral) with vertices $V_1, A, V_2, B$.\n\n- **Determining the Quadrilateral Properties:**\n  - Since both cones are identical right circular cones with height $h$ and base radius $R$:\n    $$V_1 A = V_1 B = V_2 A = V_2 B = \\sqrt{h^2 + R^2} = s \\quad (\\text{slant height})$$\n  - All four sides of the quadrilateral $V_1 A V_2 B$ have equal length $s$.\n  - The diagonals are:\n    1. $V_1 V_2$ along the $z$-axis of length $2h$.\n    2. $AB$ in the $xy$-plane of length $2R$.\n  - The diagonals are perpendicular ($z$-axis is normal to the $xy$-plane) and bisect each other at the origin $(0, 0, 0)$.\n  - A planar quadrilateral with all four sides of equal length and mutually perpendicular bisecting diagonals is geometrically defined as a **rhombus**.\n\n- **Distractor Analysis:**\n  - **Option B (A triangle):** The plane passes through both cones, producing four bounding straight edges, not three.\n  - **Option C (An ellipse):** An ellipse arises only when a plane cuts through a single cone at an angle without passing through its vertex.\n  - **Option D (A hexagon):** An axial plane cut through a bicone produces at most 4 straight linear edges.\n\nTherefore, the correct answer is **Option A (A rhombus)**.",
+        "images": []
+      }
     }
   }
 }

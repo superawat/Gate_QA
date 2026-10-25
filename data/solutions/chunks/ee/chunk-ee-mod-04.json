@@ -1,0 +1,283 @@
+{
+  "chunkId": "CHUNK-EE-MOD-04",
+  "branch": "ee",
+  "year": "all",
+  "section": "tech",
+  "generatedAt": "2026-10-20T17:57:44.036Z",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 94,
+  "remainingAfterSlice": 84,
+  "questions": [
+    {
+      "uid": "ee:2015:q47-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 47,
+      "title": "GATE EE 2015 | Set 2 | Question: 47",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Transformers",
+      "officialAnswer": "A",
+      "questionHtml": "A three-winding transformer is connected to an AC voltage source as shown in the figure. The number of turns are as follows: $N_{1}$=100, $N_{2}$=50, $N_{3}$=50. If the magnetizing current is neglected, and the currents in two windings are $\\bar{I_2}=2\\angle 30^{\\circ}$ A and $\\bar{I_3}=2\\angle 150^{\\circ}$ A, then what is the value of the current $\\bar{I_1}$ in Ampere? <br><img src=\"/question-images/ee/2015/ee-2015-8b64265316.webp\"/>",
+      "options": [
+        "$1\\angle 90^{\\circ}$",
+        "$1\\angle 270^{\\circ}$",
+        "$4\\angle 90^{\\circ}$",
+        "$4\\angle 270^{\\circ}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Three-Winding Transformer MMF Balance & Phasor Addition",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Three-Winding Transformer MMF Balance & Phasor Addition\n- **Given Parameters**:\n  - Number of turns: $N_1 = 100$, $N_2 = 50$, $N_3 = 50$.\n  - Secondary currents: $\\bar{I}_2 = 2\\angle 30^\\circ\\text{ A}$ and $\\bar{I}_3 = 2\\angle 150^\\circ\\text{ A}$.\n  - Magnetizing current is neglected.\n- **Governing Equations**:\n  - In an ideal multi-winding transformer, net core magnetomotive force (MMF) balance requires:\n    $$N_1 \\bar{I}_1 = N_2 \\bar{I}_2 + N_3 \\bar{I}_3$$\n  - Dividing throughout by primary turns $N_1$:\n    $$\\bar{I}_1 = \\left(\\frac{N_2}{N_1}\\right)\\bar{I}_2 + \\left(\\frac{N_3}{N_1}\\right)\\bar{I}_3$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Turns Ratios**:\n     $$\\frac{N_2}{N_1} = \\frac{50}{100} = 0.5$$\n     $$\\frac{N_3}{N_1} = \\frac{50}{100} = 0.5$$\n  2. **Reflect Secondary Currents to Primary**:\n     $$\\bar{I}_1 = 0.5\\left(2\\angle 30^\\circ\\right) + 0.5\\left(2\\angle 150^\\circ\\right) = 1\\angle 30^\\circ + 1\\angle 150^\\circ$$\n  3. **Convert to Rectangular Form & Add**:\n     $$1\\angle 30^\\circ = \\cos(30^\\circ) + j\\sin(30^\\circ) = \\frac{\\sqrt{3}}{2} + j 0.5$$\n     $$1\\angle 150^\\circ = \\cos(150^\\circ) + j\\sin(150^\\circ) = -\\frac{\\sqrt{3}}{2} + j 0.5$$\n     $$\\bar{I}_1 = \\left(\\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{3}}{2}\\right) + j(0.5 + 0.5) = 0 + j 1 = 1\\angle 90^\\circ\\text{ A}$$\n\nTherefore, the correct answer is **Option A ($1\\angle 90^{\\circ}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q48-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 48,
+      "title": "GATE EE 2015 | Set 2 | Question: 48",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "DC Machines",
+      "officialAnswer": "47.5",
+      "questionHtml": "With an armature voltage of 100 V and rated field winding voltage, the speed of a separately excited DC motor driving a fan is 1000 rpm, and its armature current is 10 A. The armature resistance is 1 $\\Omega$. The load torque of the fan load is proportional to the square of the rotor speed. Neglecting rotational losses, the value of the armature voltage (in Volt) which will reduce the rotor speed to 500 rpm is ______.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Separately Excited DC Motor Driving Fan Load",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Separately Excited DC Motor Driving Fan Load\n- **Given Parameters**:\n  - Armature resistance $R_a = 1\\ \\Omega$.\n  - Field winding voltage is rated and constant ($\\Phi = \\text{constant}$).\n  - Initial state 1: Armature voltage $V_1 = 100\\text{ V}$, speed $N_1 = 1000\\text{ rpm}$, armature current $I_{a1} = 10\\text{ A}$.\n  - Target state 2: Speed $N_2 = 500\\text{ rpm}$.\n  - Fan load torque characteristic: $T_L \\propto N^2$.\n  - Rotational losses are neglected.\n- **Governing Equations**:\n  1. Developed electromagnetic torque:\n     $$T = K \\Phi I_a \\implies T \\propto I_a \\quad (\\text{since } \\Phi = \\text{const})$$\n  2. Fan mechanical torque balance:\n     $$T = T_L \\propto N^2 \\implies I_a \\propto N^2$$\n  3. Motor back EMF:\n     $$E_b = K \\Phi \\omega_m \\propto N$$\n     $$V = E_b + I_a R_a$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Initial Back EMF $E_{b1}$**:\n     $$E_{b1} = V_1 - I_{a1} R_a = 100 - (10 \\times 1) = 90\\text{ V}$$\n  2. **Compute New Armature Current $I_{a2}$**:\n     $$I_{a2} = I_{a1} \\left(\\frac{N_2}{N_1}\\right)^2 = 10 \\times \\left(\\frac{500}{1000}\\right)^2 = 10 \\times \\left(\\frac{1}{2}\\right)^2 = 2.5\\text{ A}$$\n  3. **Compute New Back EMF $E_{b2}$**:\n     $$E_{b2} = E_{b1} \\left(\\frac{N_2}{N_1}\\right) = 90 \\times \\left(\\frac{500}{1000}\\right) = 90 \\times 0.5 = 45\\text{ V}$$\n  4. **Compute Required Armature Voltage $V_2$**:\n     $$V_2 = E_{b2} + I_{a2} R_a = 45 + (2.5 \\times 1) = 47.5\\text{ V}$$\n\nTherefore, the correct numerical value is within the official range of **[46.0 to 49.0]**, with a computed value of **47.5** V.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q49-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 49,
+      "title": "GATE EE 2015 | Set 2 | Question: 49",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Synchronous Machines",
+      "officialAnswer": "-47",
+      "questionHtml": "A three-phase, 11 kV, 50 Hz, 2 pole, star connected, cylindrical rotor synchronous motor is connected to an 11 kV, 50 Hz source. Its synchronous reactance is 50 $\\Omega$ per phase, and its stator resistance is negligible. The motor has a constant field excitation. At a particular load torque, its stator current is 100 A at unity power factor. If the load torque is increased so that the stator current is 120 A, then the load angle (in degrees) at this load is ________.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Cylindrical Rotor Synchronous Motor Load Angle Calculation",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Cylindrical Rotor Synchronous Motor Load Angle Calculation\n- **Given Parameters**:\n  - Three-phase, $11\\text{ kV}$, 50 Hz, star-connected synchronous motor.\n  - Line-to-neutral terminal phase voltage:\n    $$V = \\frac{11000}{\\sqrt{3}} \\approx 6350.85\\text{ V}$$\n  - Synchronous reactance $X_s = 50\\ \\Omega$, armature resistance $R_a \\approx 0$.\n  - Constant field excitation ($E_f = \\text{constant}$).\n  - State 1: Stator current $I_{a1} = 100\\text{ A}$ at unity power factor ($\\cos\\phi_1 = 1$).\n  - State 2: Increased load torque causes stator current $I_{a2} = 120\\text{ A}$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Determine Excitation Voltage Magnitude $E_f$ from State 1**:\n     - Motor phasor relation: $\\bar{E}_f = \\bar{V} - j I_{a1} X_s$.\n     - Taking $\\bar{V} = 6350.85\\angle 0^\\circ\\text{ V}$ and $\\bar{I}_{a1} = 100\\angle 0^\\circ\\text{ A}$:\n       $$\\bar{E}_f = 6350.85 - j(100 \\times 50) = 6350.85 - j 5000\\text{ V}$$\n       $$E_f = \\sqrt{6350.85^2 + 5000^2} = \\sqrt{40.3333 \\times 10^6 + 25 \\times 10^6} = \\sqrt{65.3333 \\times 10^6} \\approx 8082.90\\text{ V}$$\n  2. **Calculate Load Angle $\\delta$ in State 2**:\n     - The phasor triangle relating terminal voltage $\\bar{V}$, internal EMF $\\bar{E}_f$, and reactive drop $j \\bar{I}_{a2} X_s$ satisfies:\n       $$|j \\bar{I}_{a2} X_s| = I_{a2} X_s = 120 \\times 50 = 6000\\text{ V}$$\n     - By the Law of Cosines on the phasor triangle:\n       $$(I_{a2} X_s)^2 = V^2 + E_f^2 - 2 V E_f \\cos(\\delta)$$\n       $$(6000)^2 = (6350.85)^2 + (8082.90)^2 - 2(6350.85)(8082.90)\\cos(\\delta)$$\n       $$36.0 \\times 10^6 = 40.3333 \\times 10^6 + 65.3333 \\times 10^6 - 102.6667 \\times 10^6 \\cos(\\delta)$$\n       $$102.6667 \\times 10^6 \\cos(\\delta) = 105.6667 \\times 10^6 - 36.0 \\times 10^6 = 69.6667 \\times 10^6$$\n       $$\\cos(\\delta) = \\frac{69.6667}{102.6667} \\approx 0.67857$$\n       $$\\delta = \\arccos(0.67857) \\approx 47.27^\\circ \\approx 47^\\circ$$\n  3. **Sign Convention for Motor Load Angle**:\n     - In motor operation, the rotor EMF $\\bar{E}_f$ lags the terminal voltage $\\bar{V}$, so the load angle is conventionally represented as negative:\n       $$\\delta = -47^\\circ$$\n\nTherefore, the correct numerical value is within the official range of **[-49 to -45]**, with a computed value of **-47** degrees.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q50-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 50,
+      "title": "GATE EE 2015 | Set 2 | Question: 50",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
+      "officialAnswer": "0.17",
+      "questionHtml": "A 220 V, 3-phase, 4-pole, 50 Hz inductor motor of wound rotor type is supplied at rated voltage and frequency. The stator resistance, magnetizing reactance, and core loss are negligible. The maximum torque produced by the rotor is 225 % of full load torque and it occurs at 15% slip. The actual rotor resistance is 0.03 $\\Omega$/phase. The value of external resistance (in Ohm) which must be inserted in a rotor phase if the maximum torque is to occur at start is ______.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Wound Rotor Induction Motor Maximum Starting Torque Insertion Resistance",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Wound Rotor Induction Motor Maximum Starting Torque Insertion Resistance\n- **Given Parameters**:\n  - $220\\text{ V}$, 3-phase, 4-pole, 50 Hz wound-rotor induction motor.\n  - Stator resistance, core loss, and magnetizing reactance are negligible.\n  - Slip at maximum torque: $s_{mT} = 15\\% = 0.15$.\n  - Internal rotor winding resistance: $R_2 = 0.03\\ \\Omega/\\text{phase}$.\n- **Governing Equations**:\n  - For an induction motor with negligible stator impedance, the slip at which maximum torque occurs is given by:\n    $$s_{mT} = \\frac{R_2}{X_2}$$\n    where $X_2$ is the standstill rotor leakage reactance per phase.\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Standstill Rotor Leakage Reactance $X_2$**:\n     $$X_2 = \\frac{R_2}{s_{mT}} = \\frac{0.03\\ \\Omega}{0.15} = 0.20\\ \\Omega/\\text{phase}$$\n  2. **Determine Total Rotor Resistance for Maximum Torque at Start**:\n     - At startup (standstill), the rotor speed is $N = 0$, which corresponds to slip:\n       $$s_{\\text{start}} = 1.0$$\n     - For maximum torque to occur at starting ($s_{mT}' = 1.0$):\n       $$s_{mT}' = \\frac{R_{2,\\text{total}}}{X_2} = 1.0 \\implies R_{2,\\text{total}} = X_2 = 0.20\\ \\Omega/\\text{phase}$$\n  3. **Calculate Required External Resistance $R_{\\text{ext}}$**:\n     - The total rotor resistance is the sum of internal rotor resistance and external inserted resistance:\n       $$R_{2,\\text{total}} = R_2 + R_{\\text{ext}}$$\n       $$R_{\\text{ext}} = R_{2,\\text{total}} - R_2 = 0.20\\ \\Omega - 0.03\\ \\Omega = 0.17\\ \\Omega/\\text{phase}$$\n\nTherefore, the correct numerical value is within the official range of **[0.16 to 0.18]**, with a computed value of **0.17** Ohm.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q51-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 51,
+      "title": "GATE EE 2015 | Set 2 | Question: 51",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Transformers",
+      "officialAnswer": "30",
+      "questionHtml": "Two three-phase transformers are realized using single-phase transformers as shown in the figure. <br><img src=\"/question-images/ee/2015/ee-2015-f3e1f458c6.webp\"/><br> The phase difference (in degree) between voltages $V_1 \\; and \\; V_2$ is _______.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Three-Phase Transformer Connection & Angular Displacement",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Three-Phase Transformer Connection & Angular Displacement\n- **Given Transformer Configurations**:\n  - Two three-phase transformer banks realized using single-phase transformer units.\n  - Transformer 1 is connected in Star-Star ($Y-Y$) configuration with $0^\\circ$ angular displacement.\n  - Transformer 2 is connected in Star-Delta ($Y-\\Delta$) configuration.\n- **Governing Principles**:\n  - In three-phase power transformers, phase displacement is defined as the time angle by which the secondary line voltage vector lags or leads the corresponding primary line voltage vector.\n  - Connections with identical phase configurations (e.g., $Y-y0$, $D-d0$) produce zero angular phase displacement ($0^\\circ$).\n  - Connections that convert between Star and Delta (e.g., $Y-d1$, $Y-d11$) inherently introduce a phase shift of $\\pm 30^\\circ$ (or $n \\times 30^\\circ$).\n- **Analytical Evaluation**:\n  - The line voltage $V_1$ from the $Y-Y$ bank is in phase with the source phase reference ($0^\\circ$).\n  - The line voltage $V_2$ from the $Y-\\Delta$ bank is shifted by $30^\\circ$ relative to the line-to-line reference.\n  - Therefore, the magnitude of the phase angle difference between voltages $V_1$ and $V_2$ is:\n    $$|\\angle V_1 - \\angle V_2| = 30^\\circ$$\n\nTherefore, the correct numerical value is within the official range of **[29 to 31]**, with a computed value of **30** degrees.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q52-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 52,
+      "title": "GATE EE 2015 | Set 2 | Question: 52",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Signals and Systems",
+      "subtopic": "Linear Time Invariant Systems",
+      "officialAnswer": "A",
+      "questionHtml": "The following discrete-time equations result from the numerical integration of the differential equations of an un-damped simple harmonic oscillator with state variables x and y. The integration time step is h. <br><br>$\\frac{x_{k+1}-x_{k}}{h}=y_{k}$<br><br>$\\frac{y_{k+1}-y_{k}}{h}=-x_{k}$<br><br> For this discrete-time system, which one of the following statements is TRUE?",
+      "options": [
+        "The system is not stable for $h\\gt 0$",
+        "The system is stable for $h \\gt \\frac{1}{\\pi }$",
+        "The system is stable for $0 \\lt  h \\lt \\frac{1}{2\\pi }$",
+        "The system is stable for $\\frac{1}{2\\pi } \\lt h \\lt \\frac{1}{\\pi }$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Signals and Systems / Numerical Methods - Forward Euler Stability of Undamped Harmonic Oscillator",
+        "markdown": "- **Concept / Subtopic**: Signals and Systems / Numerical Methods - Forward Euler Stability of Undamped Harmonic Oscillator\n- **Given Discrete-Time Difference Equations**:\n  $$\\frac{x_{k+1} - x_k}{h} = y_k \\implies x_{k+1} = x_k + h y_k$$\n  $$\\frac{y_{k+1} - y_k}{h} = -x_k \\implies y_{k+1} = -h x_k + y_k$$\n  where $h > 0$ is the integration step size.\n- **State-Space Matrix Formulation**:\n  $$\\begin{bmatrix} x_{k+1} \\\\ y_{k+1} \\end{bmatrix} = A \\begin{bmatrix} x_k \\\\ y_k \\end{bmatrix}, \\quad A = \\begin{bmatrix} 1 & h \\\\ -h & 1 \\end{bmatrix}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Eigenvalues of Transition Matrix $A$**:\n     $$\\det(A - \\lambda I) = \\det\\begin{bmatrix} 1 - \\lambda & h \\\\ -h & 1 - \\lambda \\end{bmatrix} = (1 - \\lambda)^2 + h^2 = 0$$\n     $$(1 - \\lambda)^2 = -h^2 \\implies 1 - \\lambda = \\pm j h \\implies \\lambda = 1 \\pm j h$$\n  2. **Evaluate Eigenvalue Magnitude**:\n     $$|\\lambda|^2 = 1^2 + h^2 = 1 + h^2$$\n     $$|\\lambda| = \\sqrt{1 + h^2}$$\n  3. **Discrete-Time Stability Criterion**:\n     - For a discrete-time autonomous LTI system to be asymptotically stable, all eigenvalues must lie strictly inside the open unit disk in the complex plane:\n       $$|\\lambda| < 1$$\n     - For any positive step size $h > 0$:\n       $$1 + h^2 > 1 \\implies |\\lambda| = \\sqrt{1 + h^2} > 1$$\n     - Because the magnitude of both eigenvalues strictly exceeds unity for every $h > 0$, the state vector grows exponentially as $k \\to \\infty$.\n- **Conclusion**:\n  - The system is **not stable for any $h > 0$** (classic forward-Euler numerical instability on undamped Hamiltonian oscillators).\n\nTherefore, the correct answer is **Option A (The system is not stable for $h\\gt 0$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q1",
+      "branch": "ee",
+      "year": 2014,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE EE 2014 | Set 1 | Question: 1",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "B",
+      "questionHtml": "Given a system of equations<br>\nx + 2y + 2z = $b_1$ <br>\n5x + y + 3z = $b_2$<br>\nWhat of the following is true regarding its solutions",
+      "options": [
+        "The system has a unique solution for any given $b_1 \\; and \\; b_2$",
+        "The system will have infinitely many solutions for any given $b_1 \\; and \\; b_2$",
+        "Whether or not a solution exists depends on the given $b_1 \\; and \\; b_2$",
+        "The systems would have no solution for any values of $b_1 \\; and \\; b_2$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Linear Algebra & Underdetermined System Consistency",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Linear Algebra & Underdetermined System Consistency\n- **Given System of Linear Equations**:\n  $$x + 2y + 2z = b_1$$\n  $$5x + y + 3z = b_2$$\n- **Matrix Formulation**:\n  $$A \\mathbf{x} = \\mathbf{b}, \\quad A = \\begin{bmatrix} 1 & 2 & 2 \\\\ 5 & 1 & 3 \\end{bmatrix}, \\quad \\mathbf{b} = \\begin{bmatrix} b_1 \\\\ b_2 \\end{bmatrix}, \\quad \\mathbf{x} = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Row Rank of Coefficient Matrix $A$**:\n     - The matrix $A$ has dimension $2 \\times 3$.\n     - Row 1 ($R_1 = [1, 2, 2]$) and Row 2 ($R_2 = [5, 1, 3]$) are clearly linearly independent because neither is a scalar multiple of the other.\n     - Therefore, the coefficient matrix has full row rank:\n       $$\\text{rank}(A) = 2$$\n  2. **Rank of Augmented Matrix $[A | \\mathbf{b}]$**:\n     - The augmented matrix $[A | \\mathbf{b}]$ has 2 rows and 4 columns.\n     - Its rank cannot exceed the number of rows, so $\\text{rank}([A | \\mathbf{b}]) \\le 2$.\n     - Since $A$ is a submatrix of $[A | \\mathbf{b}]$ with rank 2, we have:\n       $$\\text{rank}([A | \\mathbf{b}]) = 2 = \\text{rank}(A) \\quad \\text{for ALL values of } b_1, b_2$$\n  3. **Application of Rouché-Capelli Theorem**:\n     - The system is guaranteed to be consistent for any arbitrary vector $\\mathbf{b}$.\n     - Number of unknowns: $n = 3$.\n     - Number of linearly independent equations (rank): $r = 2$.\n     - Since $r < n$, there are $n - r = 3 - 2 = 1$ free variables.\n     - Therefore, the system possesses **infinitely many solutions for any given $b_1$ and $b_2$**.\n\nTherefore, the correct answer is **Option B (The system will have infinitely many solutions for any given $b_1 \\; and \\; b_2$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q14",
+      "branch": "ee",
+      "year": 2014,
+      "set": 1,
+      "qNum": 14,
+      "title": "GATE EE 2014 | Set 1 | Question: 14",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Power Systems",
+      "subtopic": "Distribution Systems, Cables and Insulators",
+      "officialAnswer": "B",
+      "questionHtml": "The undesirable property of an electrical insulating material is",
+      "options": [
+        "high dielectric strength",
+        "high relative permittivity",
+        "high thermal conductivity",
+        "high insulation resistivity"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Power Systems - Insulating Materials & Undesirable High Relative Permittivity",
+        "markdown": "- **Concept / Subtopic**: Power Systems - Insulating Materials & Undesirable High Relative Permittivity\n- **Properties of Electrical Insulation Materials in Power Apparatus**:\n  1. **Dielectric Strength (Desirable - High)**:\n     - Ability to withstand high electric field gradients (kV/cm) without sparkover or puncture breakdown.\n  2. **Insulation Resistivity (Desirable - High)**:\n     - Minimizes continuous ohmic leakage current flowing through the dielectric volume.\n  3. **Thermal Conductivity (Desirable - High)**:\n     - Facilitates rapid conductive dissipation of $I^2 R$ heat generated within conductors to avoid thermal aging and thermal runaway.\n  4. **Relative Permittivity $\\varepsilon_r$ (Undesirable - High)**:\n     - In power cables and bushings, capacitance per unit length is directly proportional to permittivity:\n       $$C = \\frac{2\\pi \\varepsilon_0 \\varepsilon_r}{\\ln(R/r)}$$\n     - A high relative permittivity increases cable capacitance, which draws a heavy continuous capacitive charging current ($I_c = \\omega C V$).\n     - This excessive charging current severely degrades power transfer capability and increases continuous dielectric loss ($P_d = \\omega C V^2 \\tan\\delta$).\n- **Conclusion**:\n  - The undesirable property is **high relative permittivity**.\n\nTherefore, the correct answer is **Option B (high relative permittivity)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q21",
+      "branch": "ee",
+      "year": 2014,
+      "set": 1,
+      "qNum": 21,
+      "title": "GATE EE 2014 | Set 1 | Question: 21",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Digital Electronics",
+      "subtopic": "Sequential Logic Circuits",
+      "officialAnswer": "C",
+      "questionHtml": "A cascade of three identical modulo-5 counters has an overall modulus of",
+      "options": [
+        "5",
+        "25",
+        "125",
+        "625"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "Overall modulus =5 x 5 x 5=125\n\nTherefore, the correct answer is **C**.",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Digital Electronics - Cascaded Modulo Counters & Overall Modulus Multiplication",
+        "markdown": "- **Concept / Subtopic**: Digital Electronics - Cascaded Modulo Counters & Overall Modulus Multiplication\n- **Given Circuit Configuration**:\n  - A cascade of three identical modulo-5 counters.\n- **Governing Principles of Cascaded Counters**:\n  - In an asynchronous or ripple-cascaded digital counter architecture, each counter stage divides the input frequency by its modulus $M_i$.\n  - The terminal count output (or carry out) of stage $k$ provides the clock trigger input for stage $k+1$.\n  - The total number of distinct states through which the composite system cycles before returning to its initial state is the product of the individual stage moduli:\n    $$M_{\\text{overall}} = \\prod_{i=1}^k M_i = M_1 \\times M_2 \\times \\dots \\times M_k$$\n- **Analytical Derivation**:\n  - For $k = 3$ identical stages each having modulus $M = 5$:\n    $$M_{\\text{overall}} = 5 \\times 5 \\times 5 = 5^3 = 125$$\n  - Therefore, the composite counter has an overall modulus of **125**.\n\nTherefore, the correct answer is **Option C (125)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2014:q1-s2",
+      "branch": "ee",
+      "year": 2014,
+      "set": 2,
+      "qNum": 1,
+      "title": "GATE EE 2014 | Set 2 | Question: 1",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "A",
+      "questionHtml": "Which one of the following statements is true for all real symmetric matrices?",
+      "options": [
+        "All the eigenvalues are real.",
+        "All the eigenvalues are positive.",
+        "All the eigenvalues are distinct.",
+        "Sum of all the eigenvalues is zero."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Linear Algebra & Spectral Theorem for Real Symmetric Matrices",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Linear Algebra & Spectral Theorem for Real Symmetric Matrices\n- **Given Matrix Classification**:\n  - A real symmetric matrix $A \\in \\mathbb{R}^{n \\times n}$, satisfying $A^T = A$ and $A^* = A$.\n- **Formal Proof (Reality of Eigenvalues via Spectral Theorem)**:\n  - Let $\\lambda \\in \\mathbb{C}$ be an eigenvalue of $A$, with non-zero eigenvector $\\mathbf{x} \\in \\mathbb{C}^n$:\n    $$A \\mathbf{x} = \\lambda \\mathbf{x} \\quad (1)$$\n  - Take the conjugate transpose (Hermitian adjoint) on both sides:\n    $$(A\\mathbf{x})^H = (\\lambda \\mathbf{x})^H \\implies \\mathbf{x}^H A^H = \\bar{\\lambda} \\mathbf{x}^H$$\n  - Since $A$ is real and symmetric, $A^H = (A^*)^T = A^T = A$. Thus:\n    $$\\mathbf{x}^H A = \\bar{\\lambda} \\mathbf{x}^H \\quad (2)$$\n  - Pre-multiply equation (1) by $\\mathbf{x}^H$:\n    $$\\mathbf{x}^H A \\mathbf{x} = \\lambda \\mathbf{x}^H \\mathbf{x}$$\n  - Post-multiply equation (2) by $\\mathbf{x}$:\n    $$\\mathbf{x}^H A \\mathbf{x} = \\bar{\\lambda} \\mathbf{x}^H \\mathbf{x}$$\n  - Equating the two scalar expressions:\n    $$\\lambda (\\mathbf{x}^H \\mathbf{x}) = \\bar{\\lambda} (\\mathbf{x}^H \\mathbf{x}) \\implies (\\lambda - \\bar{\\lambda}) \\|\\mathbf{x}\\|^2 = 0$$\n  - Since $\\mathbf{x}$ is a non-zero eigenvector, $\\|\\mathbf{x}\\|^2 = \\mathbf{x}^H \\mathbf{x} > 0$.\n  - Therefore:\n    $$\\lambda - \\bar{\\lambda} = 0 \\implies \\lambda = \\bar{\\lambda} \\implies \\lambda \\in \\mathbb{R}$$\n- **Conclusion**:\n  - **All the eigenvalues are real**.\n- **Distractor Analysis**:\n  - Eigenvalues of a real symmetric matrix can be negative or zero (Option B is false unless the matrix is positive definite).\n  - A real symmetric matrix can have repeated eigenvalues, e.g., the identity matrix $I$ has repeated eigenvalue 1 (Option C is false).\n  - The sum of eigenvalues equals $\\text{trace}(A)$, which can be any real number (Option D is false).\n\nTherefore, the correct answer is **Option A (All the eigenvalues are real.)**.",
+        "images": []
+      }
+    }
+  ]
+}

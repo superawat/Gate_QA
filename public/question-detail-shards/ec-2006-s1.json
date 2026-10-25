@@ -55,7 +55,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{array}{l} R_{3} \\rightarrow R_{1}-R_{3} \\\\ {\\left[\\begin{array}{lll} 1 & 1 & 1 \\\\ 1 & -1 & 0 \\\\ 0 & 0 & 0 \\end{array}\\right]}\\\\ \\therefore \\text{Rank}=2 \\end{array}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q2": {
       "question_uid": "ec:2006:q2",
@@ -103,7 +104,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "From vector triple product.\n\n$$\\begin{aligned} A \\times(B \\times C) &=B(A . C)-C(A . B) \\\\ A &=\\nabla . B=\\nabla, C=P \\\\ \\nabla \\times \\nabla \\times P &=(\\nabla P)-P(\\nabla \\nabla)=\\nabla(\\nabla P)-\\nabla^{2} P \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q3": {
       "question_uid": "ec:2006:q3",
@@ -151,7 +153,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\iint(\\Delta x P) d s=\\oint P .d l$ (strokes Theorem)\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q4": {
       "question_uid": "ec:2006:q4",
@@ -199,7 +202,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned} \\int_{-\\infty}^{\\infty} p(x) d x&=1 \\\\ \\int_{-\\infty}^{\\infty} K e^{-\\alpha|x|} d x&=1 \\\\ \\int_{-\\infty}^{0} K e^{\\mu x} d x+\\int_{0}^{\\infty} K e^{-u x}&=1\\\\ \\Rightarrow \\quad\\frac{K}{\\alpha}\\left[e^{\\alpha x}\\right]_{-\\infty}^{0}+\\frac{K}{-\\alpha}\\left[e^{-\\alpha x}\\right]_{0}^{\\infty}&=1 \\\\ \\Rightarrow \\quad \\frac{K}{\\alpha}+\\frac{K}{\\alpha}&=1\\\\ 2 K&=\\alpha \\\\ \\Rightarrow \\quad K&=0.5 \\alpha \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q5": {
       "question_uid": "ec:2006:q5",
@@ -247,7 +251,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$\\dot{x}(t)+2 x(t)=\\delta(t)$\n\nTaking L.T. on both sides\n\n$$\\begin{aligned} s X(s)-x(0)+2 X(s)&=1 \\\\ X(s)[s+2]&=1 \\\\ X(s)&=\\frac{1}{s+2} \\\\ x(t) &=e^{-2 t} u(t) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q6": {
       "question_uid": "ec:2006:q6",
@@ -295,7 +300,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "For distortionless transmission.\n\n$\\frac{d \\phi(\\omega)}{d \\omega}=\\text { constant }$\n\nPhase response should be linear\n\n$\\phi(\\omega)=k \\omega$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q7": {
       "question_uid": "ec:2006:q7",
@@ -343,7 +349,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-674777a809.webp\" />\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q8": {
       "question_uid": "ec:2006:q8",
@@ -391,7 +398,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "$n p=n_{i}^{2}$\n\n$n_{i}=$ constant\n\nFor n -type p is minority carrier concentration\n\n$$\\begin{aligned} p&=\\frac{n_{i}^{2}}{n} \\\\ p &\\propto \\frac{1}{n} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q9": {
       "question_uid": "ec:2006:q9",
@@ -436,7 +444,8 @@
       "detailed_solution": {
         "concept": "EC Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q10": {
       "question_uid": "ec:2006:q10",
@@ -481,7 +490,8 @@
       "detailed_solution": {
         "concept": "EC Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q11": {
       "question_uid": "ec:2006:q11",
@@ -526,7 +536,8 @@
       "detailed_solution": {
         "concept": "EC Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q12": {
       "question_uid": "ec:2006:q12",
@@ -574,7 +585,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - FET and MOSFET Analysis",
         "markdown": "From the graph it is clear that as $V_{GS}$ increase\n\nconductance i.e. slope of graph increase.\n\nTransfer characteristics of n-channel 0-MOSFET.\n\n<img src=\"/question-images/ec/2006/ec-2006-4785bc0125.webp\" />\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q13": {
       "question_uid": "ec:2006:q13",
@@ -622,7 +634,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Logic Gates",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-fa0383e81b.webp\" />\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q14": {
       "question_uid": "ec:2006:q14",
@@ -670,7 +683,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
         "markdown": "$x(t) \\leftrightarrow x(j \\omega)$\n\n$x\\left[5\\left(t-\\frac{3}{5}\\right)\\right]=\\frac{1}{5} e^{-\\frac{j 3 \\omega}{5}}   X\\left(\\frac{j \\omega}{5}\\right)$\n\nUsing scaling and shifting property.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q15": {
       "question_uid": "ec:2006:q15",
@@ -718,7 +732,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-5709aea33f.webp\" />\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q16": {
       "question_uid": "ec:2006:q16",
@@ -766,7 +781,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "ROC remains the same for addition and subtraction\n\nin z-domain\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q17": {
       "question_uid": "ec:2006:q17",
@@ -814,7 +830,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "For 2nd order system G.M. $=\\infty$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q18": {
       "question_uid": "ec:2006:q18",
@@ -862,7 +879,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "$$\\begin{aligned} y(t) &=x(t) * h(t) \\\\ Y(s) &=X(s) \\cdot H(s) \\\\ H(j \\omega) &=\\frac{1}{s+1}=\\frac{1}{\\sqrt{2}} \\angle-45^{\\circ} \\\\ &=\\frac{1}{\\sqrt{2}} \\angle-\\frac{\\pi}{4} \\\\ x(t) &=\\sin (t) u(t) \\\\ \\therefore \\quad y(t) &=\\frac{1}{\\sqrt{2}} \\sin \\left(t-\\frac{\\pi}{4}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q19": {
       "question_uid": "ec:2006:q19",
@@ -910,7 +928,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "Equal amplitudes and out of phase by $90^{\\circ}$, wave\n\nis circularly polarized. Tracing the time advancing\n\nE on the z = 0 plane at t= 0, t= T/4, t = T/2 gives\n\nleft/right notations\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q20": {
       "question_uid": "ec:2006:q20",
@@ -958,7 +977,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
         "markdown": "Gain of antenna is directive gain i.e. different from\n\nthat of amplifier. It radiates same power. So 1 W.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q21": {
       "question_uid": "ec:2006:q21",
@@ -1006,7 +1026,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} \\left[\\lambda J-A\\right] &=0 \\\\ \\left[\\begin{array}{cc}\\lambda & 0 \\\\0 & \\lambda\\end{array}\\right]-\\left[\\begin{array}{cc}6 & 2 \\\\2 & 6\\end{array}\\right] &=1 \\\\ (\\lambda-6)^{2}-4 &=0 \\\\ \\lambda &=8,4 \\end{aligned}$$\n\nBy property of eigen matrix sum of diagonal elements should be equal to sum of eigen values.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q22": {
       "question_uid": "ec:2006:q22",
@@ -1054,7 +1075,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
         "markdown": "$$\\begin{aligned} W &=\\ln z \\\\ &=\\log _{e} z \\\\ u+j v &=\\log _{e}(x+j y) \\\\ &=\\frac{1}{2} \\log \\left(x^{2}+y^{2}\\right)+i \\tan ^{-1}\\left(\\frac{y}{x}\\right) \\end{aligned}$$\n\nu is constant\n\n$\\therefore \\frac{1}{2} \\log \\left(x^{2}+y^{2}\\right)=C$\n\n$x^{2}+y^{2}=C$ [equation of circle having same centre (0,0)]\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q23": {
       "question_uid": "ec:2006:q23",
@@ -1102,7 +1124,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Analysis",
         "markdown": "$\\frac{1}{z^{2}+4}=\\frac{1}{(z+2 j)(z-2 j)}$\n\nOnly pole (0,2 j) lies inside the circle |z-j|=2\n\n$\\therefore$ By Cauchy's integral formula,\n\n$$\\begin{aligned} I&=\\oint_{12-j=2} \\frac{1}{z^{2}+4} d z \\\\ &=\\frac{2 \\pi j}{2 j+2 j}=\\frac{\\pi}{2} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q24": {
       "question_uid": "ec:2006:q24",
@@ -1150,7 +1173,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{array}{c} I=\\int_{0}^{\\pi} \\sin ^{3} \\theta \\cdot d \\theta \\\\ \\int_{0}^{\\pi}\\left(1-\\cos ^{2} \\theta\\right) \\sin \\theta d \\theta \\\\ \\text { Let, } \\cos \\theta=t \\\\ \\qquad \\begin{aligned} &=-\\int_{-1}^{-1}\\left(1-t^{2}\\right) d t \\\\ -\\sin \\theta d \\theta &=d t, \\theta=0, \\cos 0=1=t \\\\ \\theta &=\\pi, \\cos \\pi=-1=t \\\\ &=-\\int_{-1}^{+1}\\left(1-t^{2}\\right) d t\\\\ &=\\left|t-\\frac{t^{3}}{3}\\right|_{-1}^{1} \\\\ &=\\left(1-\\frac{1}{3}\\right)-\\left(-1+\\frac{1}{3}\\right) \\\\ I&=\\frac{2}{3}+\\frac{2}{3}=\\frac{4}{3} \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q25": {
       "question_uid": "ec:2006:q25",
@@ -1198,7 +1222,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$S \\rightarrow$ supply by $y, d \\rightarrow$ defective\n\nProbability that the computer was supplied by y,\n\nif the product is defective\n\n$$\\begin{aligned} P(S / d)&=\\frac{P(S \\cap d)}{P(d)} \\\\ P(S \\cap d)&=0.3 \\times 0.02=0.006 \\\\ P(d)&=0.6 \\times 0.01+0.3+0.02+0.1 \\times 0.03 \\\\ &=0.015 \\\\ P(S / d)&=\\frac{0.006}{0.015}=0.4 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q26": {
       "question_uid": "ec:2006:q26",
@@ -1246,7 +1271,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned} M&=\\left[\\begin{array}{ll} 4 & 2 \\\\ 2 & 4 \\end{array}\\right] \\\\ M-\\lambda I&=\\left[\\begin{array}{cc} 4-\\lambda & 2 \\\\ 2 & 4-\\lambda \\end{array}\\right] \\end{aligned}$$\n\nGiven eigon vector\n\n$$\\begin{aligned} \\therefore \\quad\\left[\\begin{array}{cc}1-\\lambda & 2 \\\\ 2 & 1-\\lambda\\end{array}\\right]\\left[\\begin{array}{c}101 \\\\ 101\\end{array}\\right]&=0 \\\\ \\Rightarrow \\quad(4-\\lambda)(101)+2(101)&=0 \\\\ \\Rightarrow \\quad 1-\\lambda+2&=0 \\\\ \\lambda&=6 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q27": {
       "question_uid": "ec:2006:q27",
@@ -1294,7 +1320,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "$$\\begin{aligned} D^{2}+K^{2} &=0 \\\\ D &=\\pm j K \\\\ \\Rightarrow \\quad y^{\\prime} &=A \\cos K x+j B \\sin K x \\\\ \\text{At} \\quad x&=0, y^{\\prime}=0 \\\\ \\Rightarrow \\quad A&=0, y^{\\prime}=j B \\sin K r \\\\ x&=a, y=0 \\\\ \\Rightarrow \\quad \\quad0&=B\\sin Ka \\\\ \\Rightarrow \\quad B &\\neq 0 \\text { else } y=0 \\text { always } \\\\ \\sin K &=0 \\\\ \\quad K&=\\frac{m \\pi x}{a} \\\\ y &=\\sum_{m} A_{m} \\sin \\left(\\frac{m \\pi x}{a}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q28": {
       "question_uid": "ec:2006:q28",
@@ -1342,7 +1369,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-52615d8caf.webp\" />\n\n$$\\begin{aligned} L^{-1}[F(s)] &=\\sin \\omega_{0} t \\\\ f(t) &=\\sin \\omega_{0} t \\\\ -1 & \\leq f(\\infty) \\leq 1 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q29": {
       "question_uid": "ec:2006:q29",
@@ -1390,7 +1418,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f^{\\prime}(x)=\\cdot \\frac{e^{x}\\left(1+e^{x}\\right)-e^{2 x}}{\\left(1+e^{x}\\right)^{2}}=\\frac{e^{x}}{\\left(1+e^{x}\\right)^{2}}$\n\n$\\therefore$ for all $x, f^{\\prime}(x)$ is positive\n\nSo, $x \\rightarrow \\infty,$ function's value increases.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q30": {
       "question_uid": "ec:2006:q30",
@@ -1438,7 +1467,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-82de27b22d.webp\" />\n\n$$\\begin{aligned} V_{1}=&A V_{2}-B I_{2} \\\\ I_{1}=&C V_{2}-D I_{2}\\\\ V_{2}=&-I_{2} R_{L} \\\\ \\therefore \\quad \\frac{V_{1}}{I_{1}}=& \\frac{A V_{2}-B I_{2}}{C V_{2}-D I_{2}} \\\\ =& \\frac{-A \\cdot I_{2} R_{L}-B I_{2}}{-C \\cdot I_{2} R_{L}-D I_{2}} \\\\ \\text { Input impedance } =&\\frac{B+A R_{L}}{D+C R_{L}} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q31": {
       "question_uid": "ec:2006:q31",
@@ -1486,7 +1516,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Two Port Networks",
         "markdown": "$$\\begin{aligned} V_{1} &=Z_{11} I_{1}+Z_{12} I_{2} \\\\ V_{2} &=Z_{21} I_{1}+Z_{22} I_{2} \\\\ Z_{12} &=\\left.\\frac{V_{1}}{I_{2}}\\right|_{1_{1}=0} \\\\ Z_{12}&=\\left.\\frac{V_{2}}{I_{1}}\\right|_{I_{2}=0} \\\\ \\text { When }\\quad I_{1} &=0 \\\\ \\Rightarrow \\quad V_{1} &=0\\\\ \\Rightarrow \\quad \\frac{V_{1}}{I_{2}}&=0=Z_{12} \\\\ \\text{When} \\quad I_{2}&=0,V_{2}=-\\beta I_{1}r_{o}\\\\ \\Rightarrow \\quad \\frac{V_{2}}{I_{1}}&=-\\beta r_{0}=Z_{21} \\end{aligned} \\\\$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q32": {
       "question_uid": "ec:2006:q32",
@@ -1534,7 +1565,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Network Functions",
         "markdown": "RC impedance function has\n\n(1) $1^{st}$ critical frequency due to pole\n\n(2) Last critical frequency due to pole\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q33": {
       "question_uid": "ec:2006:q33",
@@ -1582,7 +1614,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "$$\\begin{aligned} V &=\\frac{L d I}{d t} \\\\ V(s) &=s L I(s)-L I\\left(0^{+}\\right) \\\\ \\Rightarrow \\quad-L I\\left(0^{+}\\right) &=-1 \\mathrm{mV} \\text { (given in question)} \\\\ I\\left(0^{+}\\right)&=\\frac{1 \\mathrm{mV}}{2 \\mathrm{mH}}=0.5 \\mathrm{A} \\end{aligned} \\\\$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q34": {
       "question_uid": "ec:2006:q34",
@@ -1630,7 +1663,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Transient Analysis",
         "markdown": "$$\\begin{aligned} z_{1} &=\\frac{R_{1} \\times \\frac{1}{C_{1} S}}{R_{1}+\\frac{1}{C_{1} S}}=\\frac{R_{1}}{R_{1} C_{1} s+1} \\\\ &=\\frac{1 \\mathrm{k}}{4 \\times 10^{-3} s+1} \\\\ Z_{2} &=\\frac{R_{2} \\times \\frac{1}{C_{2} S}}{R_{2}+\\frac{1}{C_{2} S}} \\\\ &=\\frac{R_{2}}{R_{2} C_{2} S+1}=\\frac{4 \\mathrm{k}}{4 \\times 10^{-3} s+1} \\\\ V_{o}(t) &=\\left(\\frac{Z_{2}}{Z_{1}+Z_{2}}\\right) V_{i}(t) \\\\ Z_{2} &=4 Z_{1} \\\\ \\frac{Z_{2}}{Z_{1}+Z_{2}} &=\\frac{4 Z_{1}}{Z_{1}+4 Z_{1}}=\\frac{4 Z_{1}}{5 Z_{1}}=0.8 \\\\ v_{0}(t) &=0.8 v_{1}(t)=0.8 \\times 10 u(t) \\\\ v_{0}(t) &=8 u(t) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q35": {
       "question_uid": "ec:2006:q35",
@@ -1675,7 +1709,8 @@
       "detailed_solution": {
         "concept": "EC Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q36": {
       "question_uid": "ec:2006:q36",
@@ -1723,7 +1758,8 @@
       "detailed_solution": {
         "concept": "Network Theory - Network Functions",
         "markdown": "For $Z_{2}(s)$ to be positive real,\n\n$$\\begin{aligned} \\operatorname{Re}(Z(s)) & \\geq\\left|R_{\\operatorname{nog}}\\right| \\\\ \\Rightarrow \\quad\\left|R_{\\operatorname{neg}}\\right| & \\leq \\operatorname{Re}\\left\\{Z_{1}(j \\omega)\\right\\}, \\text { for all } \\omega \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q37": {
       "question_uid": "ec:2006:q37",
@@ -1771,7 +1807,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
         "markdown": "When diode is instantaneously switched from a\n\nconduction state it needs time to return to nonconduction\n\nstate, so behaves short circuited for a\n\nsmall time period in reverse direction.\n\nStorage time: The time period for which diode\n\nremains in conduction state even in the reverse\n\ndirection so,\n\n$v_{R} = -5V$\n\nFor $t \\lt 0,$\n\n<img src=\"/question-images/ec/2006/ec-2006-9dcd8ac752.webp\" />\n\nFor $0 \\lt t \\lt t_{s},$\n\n<img src=\"/question-images/ec/2006/ec-2006-26f9e0fd09.webp\" />\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q38": {
       "question_uid": "ec:2006:q38",
@@ -1819,7 +1856,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "Hall effect\n\nElectric force + magnetic force =0\n\n$$\\begin{aligned} q E+q v \\times B &=0 \\\\ E &=-v \\times B \\\\ E &=B \\times v \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q39": {
       "question_uid": "ec:2006:q39",
@@ -1864,7 +1902,8 @@
       "detailed_solution": {
         "concept": "EC Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q40": {
       "question_uid": "ec:2006:q40",
@@ -1912,7 +1951,8 @@
       "detailed_solution": {
         "concept": "Electronic Devices - Basic Semiconductor Physics",
         "markdown": "For n-type semiconductor $\\sigma_{n}=n q \\mu_{n}$\n\nFor intrinsic semiconductor,\n\n$$\\begin{aligned} \\sigma_{i} &=n_{i} q\\left(\\mu_{n}+\\mu_{p}\\right) \\\\ \\frac{\\sigma_{n}}{\\sigma_{i}} &=\\frac{n \\mu_{n}}{n_{i}\\left(\\mu_{n}+\\mu_{p}\\right)} \\\\ &=\\frac{4.2 \\times 10^{8} \\times \\mu_{n}}{1.5 \\times 10^{4} \\times \\mu_{n}\\left(1+\\frac{\\mu_{p}}{\\mu_{n}}\\right)} \\\\ &=\\frac{4.2 \\times 10^{8}}{1.5 \\times 10^{4} \\times 1.4}=2 \\times 10^{4} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q41": {
       "question_uid": "ec:2006:q41",
@@ -1960,7 +2000,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Operational Amplifiers",
         "markdown": "$$\\begin{aligned} V_{C} &=15\\left(1-e^{-t / R C}\\right) \\\\ &=15\\left(1-e^{-1}\\right)=9.45 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q42": {
       "question_uid": "ec:2006:q42",
@@ -2008,7 +2049,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "Zener diode works as normal diode in FB. So\n\nwhen $V_{\\text {in }} \\lt 0, V_{R}=V_{\\text {in }}$\n\nWhen $0 \\lt V_{\\text {in }}\\lt 6,$ Diode is OFF and $V_{A}=0$\n\nWhen $V_{\\text {in }} \\gt 6,$ Diode conducts and $V_{R}=V_{\\text {in }}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q43": {
       "question_uid": "ec:2006:q43",
@@ -2056,7 +2098,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Number Systems",
         "markdown": "$100010011001 \\rightarrow 4231$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q44": {
       "question_uid": "ec:2006:q44",
@@ -2104,7 +2147,8 @@
       "detailed_solution": {
         "concept": "Microprocessors - Interfacing and Peripheral Devices",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-f53bbba90a.webp\" />\n\n$\\therefore$Output taken from 5th\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q45": {
       "question_uid": "ec:2006:q45",
@@ -2152,7 +2196,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "$$\\begin{array}{lllllll} &A&B&C_{i}&S&C_{o}\\\\ \\text { After } 2^{\\mathrm{nd}} \\mathrm{CP} & 1 & 1 & 0 & 0 & 1\\\\ \\text { After } 2^{\\mathrm{nd}} \\mathrm{CP} & 1 & 1 & 1 & 1 & 1 \\end{array}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q46": {
       "question_uid": "ec:2006:q46",
@@ -2200,7 +2245,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - ADC and DAC",
         "markdown": "$$\\begin{array}{ccccccccc} \\text { CP } & \\rightarrow & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\\\ & &\\downarrow & \\downarrow & \\downarrow & \\downarrow & \\downarrow & \\downarrow & \\downarrow \\\\ \\text { Counter } &\\rightarrow & 001 & 010 & 011 & 100 & 101 & 110 & 1000 \\\\ & & \\downarrow & \\dagger & \\dagger & \\downarrow & \\downarrow & \\downarrow & \\downarrow \\\\ \\text { Decoder } & \\rightarrow & 0001 & 0010 & 0011 & 1000 & 1001 & 1010 & 0000 \\\\ & & 1 & 2 & 3 & 8 & 9 & 10 & 0 \\end{array}$$\n\n$D_{2}$ is connected to ground and $Q_{2}$ to $D_{3}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q47": {
       "question_uid": "ec:2006:q47",
@@ -2248,7 +2294,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Sequential Circuits",
         "markdown": "$$\\begin{array}{cccc} Q_{1} & Q_{0} & D_{1}\\left(Q_{0}\\right) & D_{0}\\left(\\bar{Q}_{1}\\right) \\\\ 0 & 0 & 0 & 1 \\\\ 0 & 1 & 1 & 1 \\\\ 1 & 1 & 1 & 0 \\\\ 1 & 0 & 0 & 0 \\end{array}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q48": {
       "question_uid": "ec:2006:q48",
@@ -2296,7 +2343,8 @@
       "detailed_solution": {
         "concept": "Microprocessors - Microprocessor 8085 Programming",
         "markdown": "LXI SP, EFFFH\n\nCALL 3000 H\n\n$\\Rightarrow \\quad \\text { PUSH }+\\text { JMP } \\quad \\mathrm{SP} \\rightarrow \\mathrm{SP}-2$\n\n$\\Rightarrow \\quad \\mathrm{SP}=\\mathrm{EFFDH}$\n\n$$\\begin{array}{ll}\\\\ 3000 \\mathrm{H}: & \\mathrm{LXIH}, 3 \\mathrm{CF} 4 \\mathrm{H} \\\\ & \\mathrm{HL} \\leftarrow 3 \\mathrm{CF} 4 \\\\ \\text { PUSHPSW } & \\mathrm{SP} \\leftarrow \\mathrm{SP}-2=\\mathrm{EFFBH} \\\\ \\text { SPHL } & \\mathrm{SP} \\leftarrow 3 \\mathrm{CF} 4 \\\\ \\text { POP PSW } & \\mathrm{SP} \\leftarrow \\mathrm{SP}+2=3 \\mathrm{CF} 6 \\\\ \\text { RET } & \\mathrm{RET}=\\mathrm{POP}+\\mathrm{JMP} \\text { i.e. } \\\\ & \\mathrm{SP} \\leftarrow \\mathrm{SP}+2 \\\\ & \\mathrm{SP} \\leftarrow 3 \\mathrm{CF} 8 \\mathrm{H}\\end{array}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q49": {
       "question_uid": "ec:2006:q49",
@@ -2344,7 +2392,8 @@
       "detailed_solution": {
         "concept": "Digital Circuits - Finite State Machine and Miscellaneous",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-dbf23a599a.webp\" />\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q50": {
       "question_uid": "ec:2006:q50",
@@ -2392,7 +2441,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Sampling",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-261e84b4b2.webp\" />\n\n$m(t) g(t) \\leftrightarrow M(f) * G(f)$\n\n<img src=\"/question-images/ec/2006/ec-2006-fd961c71b9.webp\" />\n\n<img src=\"/question-images/ec/2006/ec-2006-a3b80b9c72.webp\" />\n\nAfter low pass filtering with $f_{c} = 1 kHz$\n\nOutput is zero.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q51": {
       "question_uid": "ec:2006:q51",
@@ -2440,7 +2490,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "$f_{s}=\\left(2 f_{m}\\right) \\times 3=(2 \\times 1000) \\times 3=6 \\times 10^{3} \\mathrm{Hz}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q52": {
       "question_uid": "ec:2006:q52",
@@ -2488,7 +2539,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "$f_{\\lambda}(x)=\\frac{1}{10}[u(x+5)-u(x-5)]$\n\n<img src=\"/question-images/ec/2006/ec-2006-343f15b238.webp\" />\n\nY is a discrete random variable takes the values\n\nof 0 and 1\n\n$$\\begin{aligned} Y &=1 ; 2.5 \\leq x \\leq 2.5 \\\\ Y &=0 ;|x| \\geq 2.5 \\\\ P(Y=0) &=P(-2.5 \\leq x \\leq 2.5)=\\frac{1}{2} \\\\ P(Y=1) &=P(|x| \\geq 2.5)=\\frac{1}{2} \\\\ f_{y}(y) &=\\frac{1}{2} \\delta(y)+\\frac{1}{2} \\delta(y-1) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q53": {
       "question_uid": "ec:2006:q53",
@@ -2536,7 +2588,8 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Basics of Signals and Systems",
         "markdown": "$$\\begin{aligned} & y(n)=\\left(\\sin \\frac{5}{6} \\pi n\\right) x(n) \\\\ \\text { Let } & x(n)=8(n) \\\\ \\therefore & y(n)=\\sin 0=0 \\text { (bounded) } \\\\ &\\text {BIBO stable } \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q54": {
       "question_uid": "ec:2006:q54",
@@ -2584,7 +2637,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$$\\begin{aligned} C(s)&=\\frac{1}{s}-\\frac{1}{s+2}=\\frac{2}{s(s+2)} \\\\ R(s)&=\\frac{1}{s} \\quad H(s)=\\frac{C(s)}{R(s)}=\\frac{2}{s+2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q55": {
       "question_uid": "ec:2006:q55",
@@ -2632,7 +2686,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "$$\\begin{array}{l} \\mathrm{G.M}=20 \\log \\frac{1}{a} \\mathrm{dB} \\\\ a=1 \\quad \\therefore \\mathrm{G} \\cdot \\mathrm{M}=0 \\end{array}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q56": {
       "question_uid": "ec:2006:q56",
@@ -2680,7 +2735,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
         "markdown": "$$\\begin{array}{l} \\text { 1+ } G(s) H(s)=1+\\frac{K(s+1)}{s^{3}+a s^{2}+2 s+1}=0 \\\\ \\Rightarrow \\frac{s^{3}+a s^{2}+2 s+1+K s+K}{s^{3}+a s^{2}+2 s+1}=0 \\end{array}$$\n\n$$\\begin{array}{c|cc} s^{3}& 1 &2+K\\\\ s^{2}&a & K+1\\\\ s&\\frac{a(2+K)-(K+1)}{a} \\end{array}$$\n\n$$\\begin{array}{l} \\text { For oscillation, } \\frac{a(2+K)-(K+1)}{a}=0 \\\\ \\qquad \\begin{array}{l} a=\\frac{K+1}{K+2} \\\\ a s^{2}+K+1=0 \\\\ s=j \\omega, s^{2}=-\\omega^{2}=-4 \\\\ \\Rightarrow-4 a+K+1=0 \\\\ a=\\frac{K+1}{4} \\Rightarrow \\frac{K+1}{4}=\\frac{K+1}{K+2} \\Rightarrow K=2 \\\\ a=0.75 \\end{array} \\end{array}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q57": {
       "question_uid": "ec:2006:q57",
@@ -2728,7 +2784,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "$$\\begin{aligned} h(t) &=e^{-t} \\\\ H(s) &=\\frac{1}{s+1} \\\\ R(s) &=\\frac{1}{s} \\\\ \\text { Output } &=H(s) \\cdot R(s)=\\frac{1}{(s+1)} \\cdot \\frac{1}{s} \\\\ \\frac{1}{s(s+1)} &=\\frac{A}{s}+\\frac{B}{s+1} \\\\ 1 &=A(s+1)+B s \\\\ s &=0,1=A \\\\ s &=-1,1=-B \\\\ \\therefore \\quad \\text{ Output }&=\\frac{1}{s}-\\frac{1}{s+1} \\\\ & =\\left(1-e^{-t}\\right) u(t) \\end{aligned}$$\n\nWhen $t=\\infty$ at steady state.\n\nOutput = 1\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q58": {
       "question_uid": "ec:2006:q58",
@@ -2776,7 +2833,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Compensators and Controllers",
         "markdown": "Maximum phase shift\n\n$$\\begin{aligned} \\phi_{m} &=\\angle G_{\\theta}(s) \\\\ \\phi &=\\tan ^{-1} 3 \\omega T-\\tan ^{-1} \\omega T \\end{aligned}$$\n\nFor maximum phase shift\n\n$$\\begin{aligned} \\frac{d \\phi}{d \\omega} &=0 \\\\ \\Rightarrow \\frac{3 T}{1+(3 T \\omega)^{2}} &=\\frac{T}{1+(T \\omega)^{2}} \\\\ 3\\left[1+(T \\omega)^{2}\\right] &=1+(3 T \\omega)^{2} \\\\ 3+3 T^{2} \\omega^{2} &=1+9 T^{2} \\omega^{2} \\\\ 2 &=6(\\omega T)^{2} \\\\ (\\omega T)^{2} &=\\frac{1}{3} \\\\ \\omega T=& \\frac{1}{\\sqrt{3}} \\\\\\phi_{\\max } &=\\tan ^{-1} 3 \\times \\frac{1}{\\sqrt{3}}-\\tan ^{-1} \\frac{1}{\\sqrt{3}} \\\\\n\n&=\\frac{\\pi}{3}-\\frac{\\pi}{6}=\\frac{\\pi}{6}\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q59": {
       "question_uid": "ec:2006:q59",
@@ -2824,7 +2882,8 @@
       "detailed_solution": {
         "concept": "Control Systems - State Space Analysis",
         "markdown": "$$\\begin{array}{l} \\phi(t)=L^{-1}[S I-A]^{-1} \\\\ =L^{-1}\\left[\\left[\\begin{array}{ll} s & 0 \\\\ 0 & s \\end{array}\\right]-\\left[\\begin{array}{cc} 0 & 1 \\\\ -1 & 0 \\end{array}\\right]\\right]^{-1}=L^{-1}\\left[\\begin{array}{cc} s & -1 \\\\ 1 & s \\end{array}\\right]^{-1} \\\\ =L^{-1}\\left[\\begin{array}{cc} \\frac{s}{s^{2}+1} & \\frac{1}{s^{2}+1} \\\\ \\frac{-1}{s^{2}+1} & \\frac{s}{s^{2}+1} \\end{array}\\right]\\left[\\begin{array}{c} D=s^{2}+1 \\\\ \\end{array}\\right] \\\\ =\\left[\\begin{array}{cc} \\cos t & \\sin t \\\\ -\\sin t & \\cos t \\end{array}\\right] \\end{array}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q60": {
       "question_uid": "ec:2006:q60",
@@ -2872,7 +2931,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "To avoid slope overload\n\n$$\\begin{aligned} \\frac{\\Delta}{T_{s}} &\\geq m^{\\prime}(t) \\\\ \\Delta .32 \\times 1024 &\\geq 125 \\\\ \\Rightarrow \\quad \\Delta .2^{15}&=125 \\\\ \\Delta &\\geq \\frac{2^{7}}{2^{15}} \\\\ \\Rightarrow \\quad \\Delta &\\geq 2^{-8} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q61": {
       "question_uid": "ec:2006:q61",
@@ -2920,7 +2980,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-221fbbc479.webp\" />\n\n$A_{x}(\\tau) \\neq 0$ at $\\tau=0.03 \\mathrm{msec}.$ So correlated\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q62": {
       "question_uid": "ec:2006:q62",
@@ -2968,7 +3029,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Information Theory and Coding",
         "markdown": "$$\\begin{aligned} \\text{Bit rate}&=H.R_b \\\\ H&= 0.25 \\log \\frac{1}{0.25} +0.25 \\log \\frac{1}{0.25}\\\\ &+0.5 \\log \\frac{1}{0.5}\\\\ H&=\\frac{1}{2}+\\frac{1}{2}+\\frac{1}{2}=\\frac{3}{2}=1.5\\\\ \\text{Bit rate}&=1.5 \\times 3000=4500\\; bits/sec \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q63": {
       "question_uid": "ec:2006:q63",
@@ -3013,7 +3075,8 @@
       "detailed_solution": {
         "concept": "EC Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q64": {
       "question_uid": "ec:2006:q64",
@@ -3061,7 +3124,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-351347cce1.webp\" />\n\nFor $Y_{1}(t)$ and $Y_{2}(t)$ to be different minimum step\n\nsize of $\\Delta/2 A,$ is needed else they will be same.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q65": {
       "question_uid": "ec:2006:q65",
@@ -3109,7 +3173,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-f623387cfc.webp\" />\n\n$f_{m}=1010 \\mathrm{kHz}$\n\nFor an NBFM signal,\n\n$$\\begin{aligned} \\mathrm{BW} &=2 f_{m}=2 \\times 1010 \\mathrm{kHz}=2020 \\mathrm{kHz} \\\\ &=2.02 \\times 10^{6} \\mathrm{Hz} \\simeq 2 \\times 10^{6} \\mathrm{Hz} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q66": {
       "question_uid": "ec:2006:q66",
@@ -3157,7 +3222,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-20f4db4091.webp\" />\n\nCircular cross-section beam for rays incident\n\nbelow critical angle.\n\nCalculating critical angle $\\sin \\theta_{c}=\\sqrt{\\frac{\\epsilon_{o}}{2 \\epsilon_{o}}}$\n\n$\\theta_{c}=45^{\\circ}$\n\n$1 \\mathrm{m}-\\mathrm{depth} ; 1 \\mathrm{m}-\\mathrm{radius}$\n\n$\\text { Area }=\\pi R^{2}=\\pi$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q67": {
       "question_uid": "ec:2006:q67",
@@ -3205,7 +3271,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Basics of Electromagnetics",
         "markdown": "$$\\begin{aligned} \\vec{E}_{t_{1}} &=3 \\hat{a}_{y}+5 \\hat{a}_{z}=\\vec{E}_{t_{2}} \\\\ \\vec{D}_{n_{1}} &=\\vec{D}_{n_{2}} \\\\ \\epsilon_{2} \\vec{E}_{n_{2}} &=\\epsilon_{1} \\vec{E}_{n_{1}} \\\\ \\vec{E}_{n_{2}} &=\\frac{3 \\times 4 \\hat{a}_{x}}{4}=3 \\hat{a}_{x} \\\\ \\therefore \\quad \\vec{E}_{2} &=\\vec{E}_{t_{2}}+\\vec{E}_{n_{2}} \\\\ &=3 \\hat{a}_{y}+5 \\hat{a}_{z}+3 \\hat{a}_{x} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q68": {
       "question_uid": "ec:2006:q68",
@@ -3253,7 +3320,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Plane waves and Properties",
         "markdown": "$$\\begin{aligned} P_{t}&=\\left(1-\\Gamma^{2}\\right) P_{t} \\\\ \\Gamma&=\\frac{\\eta_{2}-\\eta_{1}}{\\eta_{2}+\\eta_{1}}=\\frac{\\sqrt{\\frac{\\mu_{0}}{\\epsilon_{0} \\epsilon_{r}}}-\\sqrt{\\frac{\\mu_{0}}{\\epsilon_{0}}}}{\\sqrt{\\frac{\\mu_{0}}{\\epsilon_{0} \\epsilon_{r}}}+\\sqrt{\\frac{\\mu_{0}}{\\epsilon_{0}}}} \\\\ \\Gamma&=\\frac{\\frac{1}{2}-1}{\\frac{1}{2}+1}=\\frac{-1}{3} \\\\ \\tau&=1-\\Gamma^{2}=1-\\frac{1}{9}=\\frac{8}{9} \\\\ \\therefore \\quad \\quad P_{t}&=\\tau \\cdot P_{i} \\\\ \\frac{P_{t}}{P_{i}}&=\\frac{8}{9} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q69": {
       "question_uid": "ec:2006:q69",
@@ -3301,7 +3369,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Waveguides",
         "markdown": "$$\\begin{aligned} \\mathrm{TE}_{30^{\\prime}} \\quad \\lambda_{c}&=\\frac{2 a}{m}=\\frac{2 a}{3} \\\\ \\lambda_{c} &=\\frac{c}{t}=\\frac{3 \\times 10^{8}}{18 \\times 10^{9}}=\\frac{1}{60} \\\\ \\frac{1}{60} &=\\frac{2 a}{3} \\\\ \\Rightarrow \\quad a &=\\frac{1}{40}=2.5 \\mathrm{cm}=\\frac{5}{2} \\mathrm{cm} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q70": {
       "question_uid": "ec:2006:q70",
@@ -3349,7 +3418,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Antennas",
         "markdown": "A mast antenna is a tower antenna or monopole  vertically erected on the ground for low frequency  ground wave communication.\n\n$l=50 \\mathrm{m}, \\quad \\lambda=500$\n\n$l=\\frac{\\lambda}{10}$electrically short monopole\n\n$R_{r}=20 \\pi^{2}\\left(\\frac{d l}{\\lambda}\\right)^{2} \\times 2$\n\nThis 2 in the multiplication is due to image in conducting earth.\n\n$R_{r}=\\frac{2 \\pi^{2}}{5} \\simeq 4 \\Omega$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q71": {
       "question_uid": "ec:2006:q71",
@@ -3397,7 +3467,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
         "markdown": "Applying KVL in base-emitter loop,\n\n$$\\begin{aligned} 12-I_{E} R_{C}-&I_{B} \\cdot R_{f}-0.7=0 \\\\ 12-0.7&=I_{E} \\cdot 1 \\mathrm{k}+\\frac{I_{E}}{(\\beta+1)} \\cdot 53 \\mathrm{k} \\\\ I_{E}&=\\frac{11.3}{\\left(1+\\frac{53}{61}\\right) \\mathrm{k}}=\\frac{11.3}{1.87 \\mathrm{k}}\\\\ &=6.046 \\mathrm{mA}=6 \\mathrm{mA} \\\\ V_{C E} &=V_{C C}-I_{E} R_{C} \\\\ &=12-6 \\mathrm{mA} \\times 1 \\mathrm{k}=6 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q72": {
       "question_uid": "ec:2006:q72",
@@ -3445,7 +3516,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
         "markdown": "When $\\beta$ increases by 10 %, new $\\beta=66$\n\n$$\\begin{aligned} I_{E} &=\\frac{11.3}{\\left(1+\\frac{53}{67}\\right) \\mathrm{k}}=6.31 \\mathrm{mA} \\\\ V_{C E} &=V_{C C}-I_{E} \\cdot R_{C} \\\\ &=12-6.31 \\mathrm{mA} \\times 1 \\mathrm{k}=5.7\\\\ \\%\\text{ change in,}\\\\ V_{C E}&=\\frac{6-5.7}{6} \\times 100=5 \\%\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q73": {
       "question_uid": "ec:2006:q73",
@@ -3493,7 +3565,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - BJT Analysis",
         "markdown": "Given circuit is a voltage-shunt feedback amplifier.\n\nSo, the approximate voltage gain is\n\n$A_{v f}=-\\frac{R_{f}}{R_{s}}=-\\frac{53 \\mathrm{k}}{5.3 \\mathrm{k}}=-10$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q74": {
       "question_uid": "ec:2006:q74",
@@ -3541,7 +3614,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "$p(t)=u(t)-u(t-1)$\n\n<img src=\"/question-images/ec/2006/ec-2006-d39355f1a1.webp\" />\n\n$g(t) = p(t)*p(t)$\n\n<img src=\"/question-images/ec/2006/ec-2006-df3a305477.webp\" />\n\n$s(t)=g(t)-\\delta(t-2) * g(t)=g(t)-g(t-2)$\n\n<img src=\"/question-images/ec/2006/ec-2006-8681b1499b.webp\" />\n\n$s(t) = g(t) - g(t- 2)$\n\n<img src=\"/question-images/ec/2006/ec-2006-21c4804e0e.webp\" />\n\nImpulse response of match filter\n\n$h(t) = s(T - t)$\n\n<img src=\"/question-images/ec/2006/ec-2006-c6961ea179.webp\" />\n\n$h(t) = -s(t)$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q75": {
       "question_uid": "ec:2006:q75",
@@ -3589,7 +3663,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Digital Communications",
         "markdown": "$X_{A M}(t)=100[\\rho(t)+0.5 g(t)] \\cos \\omega_{c} t$\n\n<img src=\"/question-images/ec/2006/ec-2006-d7a7f89ac7.webp\" />\n\n$s(t)=100(1+m(t)) \\cos \\left(u_{c} t, p(t)=1\\right.$\n\n$m(t)=0.5 g(t)$, comparing AM equation with (i)\n\n$=0.5 t$\n\n$\\Rightarrow$ Modulating signal = t(from equation of line)\n\nModulation index =0.5\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q76": {
       "question_uid": "ec:2006:q76",
@@ -3637,7 +3712,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-595ff55e78.webp\" />\n\nVolt across $24 \\Omega=6 \\mathrm{V}$ due to virtual ground\n\nconcept. So volt across $12 \\Omega$ is $3 \\mathrm{V}$\n\n$$\\begin{aligned} V_{\\text {out }}&=V_{12 \\Omega}+V_{24 \\Omega}=3+6=9 \\mathrm{V} \\\\ V_{C E}&=15-V_{\\text {out }}=15-9=6 \\mathrm{V} \\\\ I_{C}&=\\frac{9 \\mathrm{V}}{12 \\Omega}+\\frac{9 \\mathrm{V}}{36 \\Omega}=1 \\mathrm{A}\\\\ \\therefore \\quad P&=V_{C E} I_{C}=6 \\mathrm{V} \\times 1 \\mathrm{A}\\\\ P&=6 \\text{Watts} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q77": {
       "question_uid": "ec:2006:q77",
@@ -3685,7 +3761,8 @@
       "detailed_solution": {
         "concept": "Analog Circuits - Diodes Applications",
         "markdown": "New unregulated voltage $=18 \\mathrm{V}$\n\n$$\\begin{aligned} \\therefore \\quad V_{CE}&=18-9=9V\\\\ I_{C}&=1 \\mathrm{A} \\\\ \\therefore \\quad P=9 \\times 1&=9 \\text{Watts}\\\\ \\therefore \\% \\text{increase }&=\\frac{9-6}{6} \\times 100=50 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q78": {
       "question_uid": "ec:2006:q78",
@@ -3733,7 +3810,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "$$\\begin{aligned} S(\\omega)&=\\frac{16}{16+\\omega^{2}} &\\ldots(i)\\\\ H(S)&=\\frac{4}{4+S}&\\ldots(ii) \\end{aligned}$$\n\nwhich is a LPF\n\n$\\therefore$ It is a low pass RL filter.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q79": {
       "question_uid": "ec:2006:q79",
@@ -3781,7 +3859,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Random Processes",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-939df73965.webp\" />\n\n$H(j \\omega)=\\frac{R}{R+j \\omega L}$\n\nComparing with (i) and (ii)\n\n$R=4, L=1$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ec:2006:q80": {
       "question_uid": "ec:2006:q80",
@@ -3829,7 +3908,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "$$\\begin{array}{l} P_{s}=P_{c} \\frac{m_{a}^{2}}{2}=\\frac{A_{c}^{2}}{2} \\times \\frac{m_{a}^{2}}{2} \\\\ P_{s}=\\frac{100}{2} \\times \\frac{0.25}{2}=6.25 \\mathrm{Watt} \\end{array}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q81": {
       "question_uid": "ec:2006:q81",
@@ -3877,7 +3957,8 @@
       "detailed_solution": {
         "concept": "Communication Systems - Analog Communications",
         "markdown": "$$\\begin{aligned} P_{S} &=\\frac{25}{4} \\text { Watts } \\\\ P_{N} &=N_{0} B \\\\ \\therefore \\quad S N R &=\\frac{P_{S}}{P_{N}}=\\frac{25}{4 N_{0} B} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ec:2006:q82": {
       "question_uid": "ec:2006:q82",
@@ -3925,7 +4006,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
         "markdown": "$$\\begin{aligned} \\mathrm{PM}&=\\frac{\\pi}{4} \\\\ \\Rightarrow 180+\\tan ^{-1} a \\omega-180^{\\circ}&=\\frac{\\pi}{4} \\\\ \\tan \\frac{\\pi}{4}&=\\mathrm{a} \\omega \\\\ \\Rightarrow\\quad a \\omega&=1 \\end{aligned}$$\n\nNow for gain crossover frequency,\n\n$$\\begin{aligned} |G(s)|&=1 \\\\ \\Rightarrow \\quad \\frac{\\sqrt{1+a^{2} \\omega^{2}}}{\\omega^{2}}&=1 \\\\ \\sqrt{1+1}&=\\omega^{2} \\quad(\\text { as } a \\omega=1) \\\\ f^{2}&=\\sqrt{2} \\\\ \\omega&=(2)^{1 / 4} \\\\ a&=\\frac{1}{2^{1 / 4}}=0.84 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q83": {
       "question_uid": "ec:2006:q83",
@@ -3973,7 +4055,8 @@
       "detailed_solution": {
         "concept": "Control Systems - Stability Analysis",
         "markdown": "$$\\begin{aligned} G(s)&=\\frac{0.84 s+1}{s^{2}}\\\\ H(s) &=1, R(s)=1 \\\\ c(s) &=G(s) \\cdot R(s) \\\\ \\therefore \\quad C(s) &=\\frac{0.84 s+1}{s^{2}} \\\\ c(t) &=L^{-1}\\left[\\frac{1+0.84 s}{s^{2}}\\right] \\\\ &=L^{-1}\\left[\\frac{1}{s^{2}}+\\frac{0.84}{s}\\right] \\\\ c(t) &=[t+0.84] U(t) \\\\ \\text{At}\\quad t &=1, c(t)=1+0.84=1.84 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ec:2006:q84": {
       "question_uid": "ec:2006:q84",
@@ -4021,7 +4104,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "<img src=\"/question-images/ec/2006/ec-2006-a0c2504866.webp\" />\n\n10V reflects to add to 30V in phase and gives 40V\n\n$$\\begin{aligned} \\Gamma &=\\frac{V_{r}}{V_{i}}=\\frac{10}{30}=\\frac{1}{3} \\\\ \\Gamma &=\\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}} \\\\ \\Rightarrow \\quad \\frac{1}{3} &=\\frac{Z_{L}-50}{Z_{L}+50} \\\\ \\Rightarrow \\quad Z_{L} &=100 \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ec:2006:q85": {
       "question_uid": "ec:2006:q85",
@@ -4069,7 +4153,8 @@
       "detailed_solution": {
         "concept": "Electromagnetics - Transmission Lines",
         "markdown": "In steady state, $V_{L}=30 \\mathrm{V}$\n\n$I_{L}=\\frac{30}{100}=0.3 \\mathrm{A}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     }
   }
 }

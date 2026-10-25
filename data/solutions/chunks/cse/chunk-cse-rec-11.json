@@ -1,0 +1,122 @@
+{
+  "chunkId": "CHUNK-CSE-REC-11",
+  "branch": "cse",
+  "year": 2014,
+  "section": "all",
+  "status": "COMPLETED",
+  "count": 14,
+  "questions": [
+    {
+      "uid": "go:2015",
+      "solution": {
+        "concept": "Number Theory - Prime Factorization & Divisor Count Function",
+        "markdown": "- **Concept / Subtopic**: Number Theory - Prime Factorization & Divisor Count Function\n- **Given Integer**:\n  $$N = 2014$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Prime Factorization of $2014$**:\n     - Check smallest primes:\n       - $2014$ is even:\n         $$\\frac{2014}{2} = 1007$$\n       - Test divisibility of $1007$:\n         - $\\sqrt{1007} \\approx 31.7$\n         - Not divisible by $3$ (sum of digits $1+0+0+7 = 8$).\n         - Not divisible by $5, 7, 11, 13, 17$.\n         - Testing $19$:\n           $$\\frac{1007}{19} = 53$$\n         - $53$ is a prime number.\n     - Thus, the canonical prime factorization of $2014$ is:\n       $$2014 = 2^1 \\times 19^1 \\times 53^1$$\n  2. **Total Number of Positive Integral Divisors $d(N)$**:\n     - For any positive integer $N = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}$, the number of distinct positive divisors is:\n       $$d(N) = (a_1 + 1)(a_2 + 1) \\cdots (a_k + 1)$$\n     - Substituting the prime exponents $a_1 = 1, a_2 = 1, a_3 = 1$:\n       $$d(2014) = (1 + 1)(1 + 1)(1 + 1) = 2 \\times 2 \\times 2 = 8$$\n  3. **Verification by Explicit Listing**:\n     - The $8$ distinct positive divisors of $2014$ are:\n       $$\\{1, 2, 19, 38, 53, 106, 1007, 2014\\}$$\n\nTherefore, the correct answer is **8**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:2039",
+      "solution": {
+        "concept": "Linear Algebra - Dimension Formula for Subspace Intersection",
+        "markdown": "- **Concept / Subtopic**: Linear Algebra - Dimension Formula for Subspace Intersection\n- **Given Parameters**:\n  - Ambient vector space $V$ with dimension:\n    $$\\dim(V) = 6$$\n  - Subspaces $V_1, V_2 \\subseteq V$ with dimensions:\n    $$\\dim(V_1) = 4, \\quad \\dim(V_2) = 4$$\n- **Governing Equations**:\n  - By Grassmann's dimension formula for vector subspaces:\n    $$\\dim(V_1 + V_2) = \\dim(V_1) + \\dim(V_2) - \\dim(V_1 \\cap V_2)$$\n    $$\\dim(V_1 \\cap V_2) = \\dim(V_1) + \\dim(V_2) - \\dim(V_1 + V_2)$$\n- **Step-by-Step Analytical Derivation**:\n  1. Substitute known subspace dimensions:\n     $$\\dim(V_1 \\cap V_2) = 4 + 4 - \\dim(V_1 + V_2) = 8 - \\dim(V_1 + V_2)$$\n  2. **Bounds on the Sum Subspace $(V_1 + V_2)$**:\n     - Because $V_1 + V_2$ is a subspace of the ambient 6-dimensional space $V$, its dimension cannot exceed $\\dim(V)$:\n       $$\\dim(V_1 + V_2) \\le \\dim(V) = 6$$\n  3. **Minimize $\\dim(V_1 \\cap V_2)$**:\n     - To make $\\dim(V_1 \\cap V_2) = 8 - \\dim(V_1 + V_2)$ as small as possible, $\\dim(V_1 + V_2)$ must take its maximum possible value of $6$:\n       $$\\dim(V_1 \\cap V_2)_{\\min} = 8 - 6 = 2$$\n  4. Thus, the smallest possible dimension of $V_1 \\cap V_2$ is **2**.\n\nTherefore, the correct answer is **2**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:2056",
+      "solution": {
+        "concept": "Database Management Systems (DBMS) - Relational Normalization & Prime Attributes",
+        "markdown": "- **Concept / Subtopic**: Database Management Systems (DBMS) - Relational Normalization & Prime Attributes\n- **Formal Relational Definition**:\n  - In relational database theory and normalization (Codd, Date, Elmasri & Navathe):\n    - A **Candidate Key** is a minimal superkey capable of uniquely identifying every tuple in a relation $R$.\n    - A **Prime Attribute** (or key attribute) of a relation schema $R$ is defined as any attribute that is a member of **at least one (some) candidate key** of $R$.\n    - A **Non-Prime Attribute** is an attribute that does not appear in any candidate key.\n- **Distractor Analysis**:\n  - **Option A**: Incorrect. An attribute does not need to appear in *all* candidate keys to be prime; appearing in just one is sufficient.\n  - **Option B**: Correct. Standard textbook definition of a prime attribute.\n  - **Option C**: Incorrect. Foreign keys enforce referential integrity between relations and have no bearing on the primality of an attribute.\n  - **Option D**: Incorrect. If a relation has multiple candidate keys, an attribute belonging to an alternate key is still prime even if it is not selected as the primary key.\n\nTherefore, the correct answer is **Option B (in some candidate key of $R$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:8011",
+      "solution": {
+        "concept": "Verbal Aptitude - English Idiomatic Expressions",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - English Idiomatic Expressions\n- **Sentence Analysis**:\n  - *\"The chain snatchers took to their heels when the police party arrived.\"*\n- **Idiom Definition**:\n  - The idiomatic phrase **\"to take to one's heels\"** means to run away very fast, flee, or take flight to escape capture or danger.\n- **Option Analysis**:\n  - **Option A (Took shelter in a thick jungle)**: Too specific and inaccurate.\n  - **Option B (Open indiscriminate fire)**: Irrelevant action.\n  - **Option C (Took to flight)**: Exact idiomatic meaning (fled / ran away).\n  - **Option D (Unconditionally surrendered)**: Opposite action.\n\nTherefore, the correct answer is **Option C (Took to flight)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:8092",
+      "solution": {
+        "concept": "Discrete Mathematics - Set Theory & Power Set Cardinality",
+        "markdown": "- **Concept / Subtopic**: Discrete Mathematics - Set Theory & Power Set Cardinality\n- **Given Set**:\n  $$S = \\{0, 1, 2, \\dots, 10\\}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Determine the Cardinality of Set $S$**:\n     - The set contains all integers from $0$ up to $10$ inclusive.\n     - Number of elements:\n       $$|S| = 10 - 0 + 1 = 11$$\n  2. **Power Set Cardinality Formula**:\n     - For any finite set $S$ with $|S| = n$ elements, the power set $\\mathcal{P}(S)$ is the set of all subsets of $S$.\n     - Each of the $n$ elements has two independent choices (either included or excluded in a subset), so:\n       $$|\\mathcal{P}(S)| = 2^{|S|} = 2^{11}$$\n  3. **Compute $2^{11}$**:\n     $$2^{10} = 1024$$\n     $$2^{11} = 2 \\times 1024 = 2048$$\n\nTherefore, the correct answer is **2048**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:8119",
+      "solution": {
+        "concept": "Computer Organization - Memory Hierarchy & Average Memory Access Time (AMAT)",
+        "markdown": "- **Concept / Subtopic**: Computer Organization - Memory Hierarchy & Average Memory Access Time (AMAT)\n- **Given Parameters**:\n  - Cache hit time: $T_{\\text{hit}} = 5\\text{ ns}$.\n  - Cache miss access time: $T_{\\text{miss}} = 50\\text{ ns}$.\n  - Cache hit ratio: $h = 80\\% = 0.80$.\n  - Cache miss ratio: $m = 1 - h = 1 - 0.80 = 0.20$.\n- **Governing Equations**:\n  - Average Read Access Time (AMAT) with simultaneous/total penalty specification:\n    $$T_{\\text{avg}} = h \\cdot T_{\\text{hit}} + (1 - h) \\cdot T_{\\text{miss}}$$\n- **Step-by-Step Analytical Derivation**:\n  1. Substitute the known parameters:\n     $$T_{\\text{avg}} = (0.80)(5\\text{ ns}) + (0.20)(50\\text{ ns})$$\n  2. Compute each component:\n     $$0.80 \\times 5 = 4.0\\text{ ns}$$\n     $$0.20 \\times 50 = 10.0\\text{ ns}$$\n  3. Sum the components:\n     $$T_{\\text{avg}} = 4.0 + 10.0 = 14\\text{ ns}$$\n\nTherefore, the correct answer is **14**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:8303",
+      "solution": {
+        "concept": "Quantitative Aptitude - Linear Functions & Extrapolation",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Linear Functions & Extrapolation\n- **Given Information**:\n  - $f(x)$ is a linear function:\n    $$f(x) = m x + c$$\n  - Given values:\n    $$f(-2) = 29 \\implies -2m + c = 29$$\n    $$f(3) = 39 \\implies 3m + c = 39$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute the Slope $m$**:\n     $$m = \\frac{f(3) - f(-2)}{3 - (-2)} = \\frac{39 - 29}{3 + 2} = \\frac{10}{5} = 2$$\n  2. **Compute the Intercept $c$**:\n     $$3(2) + c = 39 \\implies 6 + c = 39 \\implies c = 33$$\n     - Hence, the equation of the line is:\n       $$f(x) = 2x + 33$$\n  3. **Evaluate $f(x)$ at $x = 5$**:\n     $$f(5) = 2(5) + 33 = 10 + 33 = 43$$\n\nTherefore, the correct answer is **Option C ($43$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:8414",
+      "solution": {
+        "concept": "Data Structures & Algorithms - Hash Table Load Factor Definition",
+        "markdown": "- **Concept / Subtopic**: Data Structures & Algorithms - Hash Table Load Factor Definition\n- **Given Parameters**:\n  - Number of slots (buckets) in hash table $T$: $m = 25$.\n  - Number of elements stored in the table: $n = 2000$.\n- **Governing Equations**:\n  - By standard textbook definition (CLRS Chapter 11, *Hash Tables*), the load factor $\\alpha$ of a hash table is the average number of elements stored per slot:\n    $$\\alpha = \\frac{n}{m}$$\n- **Step-by-Step Analytical Derivation**:\n  1. Substitute $n = 2000$ and $m = 25$:\n     $$\\alpha = \\frac{2000}{25}$$\n  2. Perform the division:\n     $$\\alpha = \\frac{2000}{25} = 80$$\n\nTherefore, the correct answer is **80**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:39630",
+      "solution": {
+        "concept": "Calculus - Standard Trigonometric Limits",
+        "markdown": "- **Concept / Subtopic**: Calculus - Standard Trigonometric Limits\n- **Problem Statement**:\n  - Evaluate the limit:\n    $$L = \\lim_{x \\to 4} \\frac{\\sin(x - 4)}{x - 4}$$\n- **Step-by-Step Analytical Derivation**:\n  1. Notice that directly substituting $x = 4$ yields the indeterminate form $\\frac{\\sin(0)}{0} = \\left[\\frac{0}{0}\\right]$.\n  2. Introduce change of variable:\n     $$u = x - 4$$\n  3. As $x \\to 4$, $u \\to 0$.\n  4. The limit transforms into the fundamental trigonometric limit:\n     $$L = \\lim_{u \\to 0} \\frac{\\sin u}{u}$$\n  5. By the standard fundamental limit theorem (or applying L'Hôpital's rule: $\\lim_{u \\to 0} \\frac{\\cos u}{1} = \\cos 0 = 1$):\n     $$L = 1$$\n\nTherefore, the correct answer is **1**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:39545",
+      "solution": {
+        "concept": "Linear Algebra - Solvability of Systems of Linear Equations",
+        "markdown": "- **Concept / Subtopic**: Linear Algebra - Solvability of Systems of Linear Equations\n- **Given Setup**:\n  - System of $m$ linear equations in $n$ variables: $A x = b$, where $A$ is an $m \\times n$ matrix.\n- **Evaluation of the Three Statements**:\n  1. **Statement I: *\"If $m < n$, then all such systems have a solution.\"***\n     - **FALSE**. While an underdetermined system cannot have a unique solution, it may have **no solution** (inconsistent).\n     - Example: $m = 2, n = 3$:\n       $$x_1 + x_2 + x_3 = 1$$\n       $$x_1 + x_2 + x_3 = 2$$\n       This system has $m < n$, yet $0 = 1$, yielding no solution.\n  2. **Statement II: *\"If $m > n$, then none of these systems has a solution.\"***\n     - **FALSE**. Overdetermined systems ($m > n$) can be consistent and possess solutions.\n     - Example: Any homogeneous system $Ax = 0$ with $m > n$ always has the trivial solution $x = 0$.\n  3. **Statement III: *\"If $m = n$, then there exists a system which has a solution.\"***\n     - **TRUE**. It is trivial to construct a consistent $n \\times n$ system. For example, choose $A = I_n$ (identity matrix) and $b = (1, 1, \\dots, 1)^T$; then $Ix = b \\implies x = b$, which is a valid unique solution.\n- **Conclusion**:\n  - Only Statement **III** is true.\n\nTherefore, the correct answer is **Option C (Only $\\text{III}$ is true)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:118703",
+      "solution": {
+        "concept": "Algorithms - Asymptotic Growth Rates of Functions",
+        "markdown": "- **Concept / Subtopic**: Algorithms - Asymptotic Growth Rates of Functions\n- **Given Functions for Positive Integers $n$**:\n  $$f_1(n) = 10, \\quad f_2(n) = \\sqrt{n}, \\quad f_3(n) = n, \\quad f_4(n) = \\log_2 n, \\quad f_5(n) = \\frac{100}{n}$$\n- **Step-by-Step Analytical Derivation**:\n  1. Analyze asymptotic behavior as $n \\to \\infty$:\n     - $f_5(n) = \\frac{100}{n} \\to 0$: strictly decreasing function approaching $0$.\n     - $f_1(n) = 10$: constant function, $\\Theta(1)$.\n     - $f_4(n) = \\log_2 n$: logarithmic growth, $\\Theta(\\log n)$.\n     - $f_2(n) = \\sqrt{n} = n^{0.5}$: sub-linear polynomial growth.\n     - $f_3(n) = n = n^1$: linear polynomial growth.\n  2. Standard asymptotic hierarchy:\n     $$\\lim_{n \\to \\infty} \\frac{100/n}{10} = 0 \\implies \\frac{100}{n} = o(10)$$\n     $$\\lim_{n \\to \\infty} \\frac{10}{\\log_2 n} = 0 \\implies 10 = o(\\log_2 n)$$\n     $$\\lim_{n \\to \\infty} \\frac{\\log_2 n}{\\sqrt{n}} = 0 \\implies \\log_2 n = o(\\sqrt{n})$$\n     $$\\lim_{n \\to \\infty} \\frac{\\sqrt{n}}{n} = \\lim_{n \\to \\infty} \\frac{1}{\\sqrt{n}} = 0 \\implies \\sqrt{n} = o(n)$$\n  3. Arranging in strictly increasing order of asymptotic complexity:\n     $$\\frac{100}{n}, \\quad 10, \\quad \\log_{2}n, \\quad \\sqrt{n}, \\quad n$$\n\nTherefore, the correct answer is **Option B ($\frac{100}{n}$, $10$, $log_{2}n$, $sqrt{n}$, $n$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:118416",
+      "solution": {
+        "concept": "Verbal Aptitude - Adjective and Adverb Placement with 'Enough'",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Adjective and Adverb Placement with 'Enough'\n- **Grammar Rule**:\n  - In standard English syntax, when **enough** modifies an adjective or an adverb, it must be placed **immediately after** the adjective/adverb:\n    $$\\text{[Adjective/Adverb]} + \\textbf{enough} + \\text{[to + infinitive]}$$\n    $$\\text{\"bright\" (adjective) } + \\textbf{enough} \\implies \\text{\"bright enough to be seen\"}$$\n  - Placing *enough* before an adjective (*enough bright*) is ungrammatical.\n- **Application to the Sentence**:\n  - *\"Saturn is _______ to be seen on a clear night with the naked eye.\"*\n  - The correct adjective-adverb construction is **bright enough**.\n\nTherefore, the correct answer is **Option B (bright enough)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:204084",
+      "solution": {
+        "concept": "Operating Systems - Demand Paging & Effective Memory Access Time",
+        "markdown": "- **Concept / Subtopic**: Operating Systems - Demand Paging & Effective Memory Access Time\n- **Given Parameters**:\n  - Memory access time without page fault (page hit): $M$.\n  - Memory access time with page fault: $D$.\n  - Average (effective) memory access time: $X$.\n  - Let $p$ denote the page fault rate ($0 \\le p \\le 1$).\n- **Governing Equations**:\n  - Effective memory access time in demand paging is given by:\n    $$X = (1 - p) M + p D$$\n- **Step-by-Step Analytical Derivation**:\n  1. Expand the equation:\n     $$X = M - p M + p D$$\n     $$X = M + p (D - M)$$\n  2. Isolate the term containing page fault rate $p$:\n     $$X - M = p (D - M)$$\n  3. Divide both sides by $(D - M)$:\n     $$p = \\frac{X - M}{D - M}$$\n  4. This matches Option B identically.\n\nTherefore, the correct answer is **Option B ($(X-M) / D-M)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:302824",
+      "solution": {
+        "concept": "C Programming - Pointer Arithmetic & Array Indexing",
+        "markdown": "- **Concept / Subtopic**: C Programming - Pointer Arithmetic & Array Indexing\n- **Given C Code Snippet**:\n  ```c\n  #include <stdio.h>\n  int main() {\n      int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 5};\n      int *ip = arr + 4;\n      printf(\"%d\\n\", ip[1]);\n      return 0;\n  }\n  ```\n- **Step-by-Step Analytical Execution**:\n  1. **Array Initialization**:\n     - The array elements and their 0-based indices are:\n       - `arr[0] = 1`\n       - `arr[1] = 2`\n       - `arr[2] = 3`\n       - `arr[3] = 4`\n       - `arr[4] = 5`\n       - `arr[5] = 6`\n       - `arr[6] = 7`\n       - ...\n  2. **Pointer Arithmetic**:\n     - `arr` decays to a pointer to its first element (`&arr[0]`).\n     - `ip = arr + 4` points to `&arr[4]`, which holds the value `5`.\n  3. **Array Subscripting via Pointer**:\n     - By C definition, pointer indexing `ip[i]` is equivalent to `*(ip + i)`.\n     - Here:\n       ```c\n       ip[1] == *(ip + 1) == *(arr + 4 + 1) == *(arr + 5) == arr[5]\n       ```\n     - The element at index 5 is **`6`**.\n  4. Thus, `printf(\"%d\\n\", ip[1]);` prints **6**.\n\nTherefore, the correct answer is **6**.",
+        "images": []
+      }
+    }
+  ]
+}

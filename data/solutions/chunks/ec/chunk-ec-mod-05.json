@@ -1,0 +1,298 @@
+{
+  "chunkId": "CHUNK-EC-MOD-05",
+  "branch": "ec",
+  "year": "all",
+  "section": "tech",
+  "generatedAt": "2026-10-20T17:49:57.658Z",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 104,
+  "remainingAfterSlice": 94,
+  "questions": [
+    {
+      "uid": "ec:2014:q33-s2",
+      "branch": "ec",
+      "year": 2014,
+      "set": 2,
+      "qNum": 33,
+      "title": "GATE EC 2014 | Set 2 | Question: 33",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Network Theory",
+      "subtopic": "Network Theory",
+      "officialAnswer": "2.505",
+      "questionHtml": "In the magnetically coupled circuit shown in the figure,56% of the total flux\nemanating from one coil links the other coil. The value of the mutual inductance\n(in H) is ______.<br><img src=\"/question-images/ec/2014/ec-2014-1e8c1ebec5.webp\"/>",
+      "options": [],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Network Theory - Magnetically Coupled Circuits & Mutual Inductance",
+        "markdown": "- **Concept / Subtopic**: Network Theory - Magnetically Coupled Circuits & Mutual Inductance\n- **Given Parameters**:\n  - Self-inductances of the two coupled coils: $L_1 = 4\\text{ H}$ and $L_2 = 5\\text{ H}$ (with $L_1 L_2 = 20\\text{ H}^2$).\n  - Flux linkage percentage: $56\\%$ of the total magnetic flux emanating from one coil links the other coil.\n  - Therefore, the magnetic coupling coefficient is:\n    $$k = 0.56$$\n- **Governing Equation**:\n  - The mutual inductance $M$ between two magnetically coupled coils with self-inductances $L_1$ and $L_2$ is defined by:\n    $$M = k \\sqrt{L_1 L_2}$$\n- **Step-by-Step Analytical Derivation**:\n  - Substitute the given numerical parameters into the mutual inductance formula:\n    $$M = 0.56 \\times \\sqrt{4 \\times 5} = 0.56 \\times \\sqrt{20}$$\n  - Calculate $\\sqrt{20}$:\n    $$\\sqrt{20} = 2\\sqrt{5} \\approx 2 \\times 2.236068 = 4.472136$$\n  - Multiply by coupling factor $k = 0.56$:\n    $$M = 0.56 \\times 4.472136 \\approx 2.504396\\text{ H} \\approx 2.505\\text{ H}$$\n\nTherefore, the correct numerical value is within the official range of **[2.50 to 2.51]**, with a computed value of **2.505** H.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q3-s3",
+      "branch": "ec",
+      "year": 2014,
+      "set": 3,
+      "qNum": 3,
+      "title": "GATE EC 2014 | Set 3 | Question: 3",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EC)",
+      "subtopic": "Numerical Methods",
+      "officialAnswer": "B",
+      "questionHtml": "Match the application to appropriate numerical method.<br><img src=\"/question-images/ec/2014/ec-2014-c0a67c5229.webp\"/>",
+      "options": [
+        "P1-M3, P2-M2, P3-M4, P4-M1",
+        "P1-M3, P2-M1, P3-M4, P4-M2",
+        "P1-M4, P2-M1, P3-M3, P4-M2",
+        "P1-M2, P2-M1, P3-M3, P4-M4"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EC) - Numerical Methods & Applications Matching",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EC) - Numerical Methods & Applications Matching\n- **Group Matching Analysis**:\n  - **P1. Numerical integration $\\rightarrow$ M3. Simpson's 1/3-rule:**\n    Simpson's $1/3$-rule approximates the integrand using piecewise parabolic quadratic polynomials to compute definite integrals:\n    $$\\int_a^b f(x)\\, dx \\approx \\frac{h}{3}\\left[f(x_0) + 4\\sum f(x_{\\text{odd}}) + 2\\sum f(x_{\\text{even}}) + f(x_n)\\right]$$\n  - **P2. Solution to transcendental or non-linear equation $\\rightarrow$ M1. Newton-Raphson Method:**\n    Newton-Raphson is a widely utilized iterative gradient algorithm for locating roots of nonlinear algebraic and transcendental equations $f(x) = 0$:\n    $$x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$$\n  - **P3. Solution to a system of linear equations $\\rightarrow$ M4. Gauss Elimination Method:**\n    Gaussian elimination transforms an augmented system matrix $[A | B]$ into upper-triangular echelon form via forward elimination followed by back substitution to solve $A\\mathbf{x} = \\mathbf{b}$.\n  - **P4. Solution to a differential equation $\\rightarrow$ M2. Runge-Kutta Method:**\n    Runge-Kutta methods (such as the standard 4th-order RK4) are single-step predictor algorithms used to solve initial value problems for ordinary differential equations $\\frac{dy}{dx} = f(x, y)$.\n- **Evaluation of Options**:\n  - Combining these verified associations gives:\n    $$P_1 - M_3,\\; P_2 - M_1,\\; P_3 - M_4,\\; P_4 - M_2$$\n  - This pairing corresponds uniquely to Option B.\n\nTherefore, the correct answer is **Option B (P1-M3, P2-M1, P3-M4, P4-M2)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q9-s3",
+      "branch": "ec",
+      "year": 2014,
+      "set": 3,
+      "qNum": 9,
+      "title": "GATE EC 2014 | Set 3 | Question: 9",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "Basic Semiconductor Physics",
+      "officialAnswer": "D",
+      "questionHtml": "A thin P-type silicon sample is uniformly illuminated with light which\ngenerates excess carriers. The recombination rate is directly proportional to",
+      "options": [
+        "the minority carrier mobility",
+        "the minority carrier recombination lifetime",
+        "the majority carrier concentration",
+        "the excess minority carrier concentration"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - Recombination Rate of Excess Carriers in Extrinsic Semiconductor",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - Recombination Rate of Excess Carriers in Extrinsic Semiconductor\n- **Given Conditions**:\n  - Thin P-type silicon sample under uniform optical illumination.\n  - Optical excitation generates excess electron-hole pairs ($\\Delta n = \\Delta p$).\n- **Governing Equations**:\n  - In a P-type semiconductor, holes are the majority carriers ($p_0 = N_A$) and electrons are the minority carriers ($n_0 = n_i^2 / N_A$).\n  - Under low-level optical injection, the excess carrier concentration is much smaller than the thermal equilibrium majority carrier density:\n    $$\\Delta n = \\Delta p \\ll p_0$$\n  - According to the Shockley-Read-Hall (SRH) recombination-generation kinetics through localized recombination trap centers, the net recombination rate $U$ is:\n    $$U = \\frac{n p - n_i^2}{\\tau_n (p + p_1) + \\tau_p (n + n_1)}$$\n  - Substituting $p = p_0 + \\Delta p \\approx p_0$ and $n = n_0 + \\Delta n$:\n    $$n p - n_i^2 \\approx (n_0 + \\Delta n)p_0 - n_i^2 = n_0 p_0 + \\Delta n p_0 - n_i^2 = p_0 \\Delta n$$\n  - In p-type silicon where $p_0 \\gg p_1, n, n_1$:\n    $$U \\approx \\frac{p_0 \\Delta n}{\\tau_n p_0} = \\frac{\\Delta n}{\\tau_n}$$\n    where $\\Delta n$ is the excess minority carrier concentration and $\\tau_n$ is the minority carrier lifetime.\n- **Analytical Conclusion**:\n  - The net recombination rate is directly proportional to the **excess minority carrier concentration** ($\\Delta n$).\n- **Distractor Analysis**:\n  - Carrier mobility (Option A) determines carrier drift velocity and conductivity, not recombination rate.\n  - The recombination rate is inversely proportional (not directly proportional) to the recombination lifetime $\\tau_n$ (Option B).\n  - Majority carrier concentration (Option C) cancels out in the low-level injection SRH limit.\n\nTherefore, the correct answer is **Option D (the excess minority carrier concentration)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q11-s3",
+      "branch": "ec",
+      "year": 2014,
+      "set": 3,
+      "qNum": 11,
+      "title": "GATE EC 2014 | Set 3 | Question: 11",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "Feedback Amplifiers",
+      "officialAnswer": "A",
+      "questionHtml": "The desirable characteristics of a transconductance amplifier are",
+      "options": [
+        "high input resistance and high output resistance",
+        "high input resistance and low output resistance",
+        "low input resistance and high output resistance",
+        "low input resistance and low output resistance"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits - Ideal Transconductance Amplifier Specifications",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits - Ideal Transconductance Amplifier Specifications\n- **Functional Definition**:\n  - A **transconductance amplifier** (voltage-to-current converter) senses an input voltage $V_{\\text{in}}$ and delivers an output current $I_{\\text{out}}$:\n    $$I_{\\text{out}} = g_m V_{\\text{in}}$$\n- **Governing Principles**:\n  1. **Input Resistance ($R_{\\text{in}}$)**:\n     - The input port is driven by a voltage source $V_s$ with internal series resistance $R_s$.\n     - By voltage division at the input terminal:\n       $$V_{\\text{in}} = V_s \\left(\\frac{R_{\\text{in}}}{R_{\\text{in}} + R_s}\\right)$$\n     - To ensure that the full source voltage appears across the amplifier input terminals without attenuation ($V_{\\text{in}} \\to V_s$), the input resistance must be substantially larger than the source resistance:\n       $$R_{\\text{in}} \\gg R_s \\implies R_{\\text{in}} \\to \\infty \\quad \\text{(High input resistance)}$$\n  2. **Output Resistance ($R_{\\text{out}}$)**:\n     - The output port models a Norton current source $I_{\\text{out}} = g_m V_{\\text{in}}$ in parallel with internal output resistance $R_{\\text{out}}$, supplying load resistance $R_L$.\n     - By current division at the output node:\n       $$I_L = I_{\\text{out}} \\left(\\frac{R_{\\text{out}}}{R_{\\text{out}} + R_L}\\right)$$\n     - To ensure that load current remains unaffected by variations in load impedance $R_L$ ($I_L \\to I_{\\text{out}}$), the output resistance must be substantially larger than the load resistance:\n       $$R_{\\text{out}} \\gg R_L \\implies R_{\\text{out}} \\to \\infty \\quad \\text{(High output resistance)}$$\n- **Conclusion**:\n  - An ideal transconductance amplifier requires **high input resistance and high output resistance**.\n\nTherefore, the correct answer is **Option A (high input resistance and high output resistance)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q27-s3",
+      "branch": "ec",
+      "year": 2014,
+      "set": 3,
+      "qNum": 27,
+      "title": "GATE EC 2014 | Set 3 | Question: 27",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EC)",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "B",
+      "questionHtml": "Which one of the following statements is NOT true for a square matrix A ?",
+      "options": [
+        "If A is upper triangular, the eigenvalues of A are the diagonal elements of it",
+        "If A is real symmetric, the eigenvalues of A are always real and positive",
+        "If A is real, the eigenvalues of A and $A^{T}$ are always the same",
+        "If all the principal minors of A are positive, all the eigenvalues of A are\nalso positive"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EC) - Linear Algebra & Matrix Eigenvalue Theorems",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EC) - Linear Algebra & Matrix Eigenvalue Theorems\n- **Evaluation of Matrix Theorems**:\n  - **Statement A (True)**: For any upper-triangular (or lower-triangular) matrix $A$, the characteristic polynomial is $\\det(A - \\lambda I) = (a_{11} - \\lambda)(a_{22} - \\lambda)\\dots(a_{nn} - \\lambda) = 0$. Hence, the eigenvalues are identically the principal diagonal entries.\n  - **Statement B (NOT True / False)**: By the Spectral Theorem, all eigenvalues of a real symmetric matrix are **always real**, but they **do not need to be positive**. For example, the matrix:\n    $$A = \\begin{bmatrix} -3 & 0 \\\\ 0 & -5 \\end{bmatrix}$$\n    is real symmetric ($A^T = A$), but its eigenvalues are $\\lambda_1 = -3$ and $\\lambda_2 = -5$, which are negative. A real symmetric matrix has strictly positive eigenvalues if and only if it is **positive definite**.\n  - **Statement C (True)**: Since $\\det(M^T) = \\det(M)$ for any square matrix, $\\det(A^T - \\lambda I) = \\det((A - \\lambda I)^T) = \\det(A - \\lambda I)$. Therefore, a real matrix $A$ and its transpose $A^T$ share the identical characteristic polynomial and hence the exact same eigenvalues.\n  - **Statement D (True)**: By Sylvester's Criterion, a Hermitian or real symmetric matrix has all positive eigenvalues if and only if all its leading principal minors are strictly positive.\n- **Conclusion**:\n  - Statement B is false, making it the correct option to select.\n\nTherefore, the correct answer is **Option B (If A is real symmetric, the eigenvalues of A are always real and positive)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q6-s4",
+      "branch": "ec",
+      "year": 2014,
+      "set": 4,
+      "qNum": 6,
+      "title": "GATE EC 2014 | Set 4 | Question: 6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Network Theory",
+      "subtopic": "Basics of Network Analysis",
+      "officialAnswer": "C",
+      "questionHtml": "The circuit shown in the figure represents a <br>                                      <img src=\"/question-images/ec/2014/ec-2014-1384424bbb.webp\" />",
+      "options": [
+        "voltage controlled voltage source",
+        "voltage controlled current source",
+        "current controlled current source",
+        "current controlled voltage source"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Network Theory - Dependent Source Identification & Operational Amplifier Configurations",
+        "markdown": "- **Concept / Subtopic**: Network Theory - Dependent Source Identification & Operational Amplifier Configurations\n- **Given Circuit Analysis**:\n  - The circuit comprises an operational amplifier configured with a control input branch and an output feedback loop driving a load impedance.\n  - An input controlling current $I_{\\text{in}}$ flows into the input terminal.\n  - Due to the op-amp virtual ground / high open-loop gain, the input current is sensed directly across the input branch without developing significant terminal voltage.\n  - The negative feedback network forces an output current $I_{\\text{out}}$ through the load branch that is linearly proportional to the controlling input current:\n    $$I_{\\text{out}} = \\beta I_{\\text{in}}$$\n- **Governing Classification**:\n  - Because the output is an electrical **current** whose magnitude is governed by an input **current**, the two-port network functions as a **Current-Controlled Current Source (CCCS)**.\n- **Distractor Analysis**:\n  - A Voltage-Controlled Voltage Source (VCVS) uses voltage sensing to produce an output voltage (e.g., standard non-inverting op-amp voltage amplifier).\n  - A Voltage-Controlled Current Source (VCCS) uses input voltage to set load current (transconductance amplifier).\n  - A Current-Controlled Voltage Source (CCVS) converts input current to an output voltage (transimpedance amplifier).\n\nTherefore, the correct answer is **Option C (current controlled current source)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q9-s4",
+      "branch": "ec",
+      "year": 2014,
+      "set": 4,
+      "qNum": 9,
+      "title": "GATE EC 2014 | Set 4 | Question: 9",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "Basic Semiconductor Physics",
+      "officialAnswer": "A",
+      "questionHtml": "In the figure, $ln(\\rho _{i}$)  is plotted as a function of 1/T , where $\\rho _{i}$ is the intrinsic resistivity of silicon, T is the temperature, and the plot is almost linear. The slope of the line can be used to estimate<br><img src=\"/question-images/ec/2014/ec-2014-6e1496162e.webp\" />",
+      "options": [
+        "band gap energy of silicon $(E_{g})$",
+        "sum of electron and hole mobility in silicon $(\\mu _{n}+\\mu _{p})$",
+        "reciprocal of the sum of electron and hole mobility in silicon $(\\mu _{n}+\\mu _{p})^{-1}$",
+        "intrinsic carrier concentration of silicon $(n_{i})$"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - Semiconductor Intrinsic Resistivity vs Temperature & Bandgap Estimation",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - Semiconductor Intrinsic Resistivity vs Temperature & Bandgap Estimation\n- **Given Relationship**:\n  - A linear plot of $\\ln(\\rho_i)$ versus $1/T$, where $\\rho_i$ is the intrinsic resistivity of silicon and $T$ is temperature in Kelvin.\n- **Governing Equations**:\n  1. Intrinsic conductivity $\\sigma_i$ and resistivity $\\rho_i$:\n     $$\\sigma_i = q n_i (\\mu_n + \\mu_p) \\implies \\rho_i = \\frac{1}{q n_i (\\mu_n + \\mu_p)}$$\n  2. Intrinsic carrier concentration $n_i$:\n     $$n_i = \\sqrt{N_C N_V} \\exp\\left(-\\frac{E_g}{2 k_B T}\\right) = A T^{3/2} \\exp\\left(-\\frac{E_g}{2 k_B T}\\right)$$\n     where $k_B$ is Boltzmann's constant and $E_g$ is the energy bandgap.\n- **Step-by-Step Analytical Derivation**:\n  - Substitute $n_i$ into the expression for intrinsic resistivity:\n    $$\\rho_i = \\frac{1}{q A T^{3/2} (\\mu_n + \\mu_p)} \\exp\\left(\\frac{E_g}{2 k_B T}\\right)$$\n  - Taking the natural logarithm on both sides:\n    $$\\ln(\\rho_i) = \\frac{E_g}{2 k_B}\\left(\\frac{1}{T}\\right) - \\ln\\left[q A T^{3/2} (\\mu_n + \\mu_p)\\right]$$\n  - The temperature dependence of the exponential term $\\exp\\left(\\frac{E_g}{2 k_B T}\\right)$ is overwhelmingly dominant compared to the relatively weak algebraic variation of $T^{3/2}(\\mu_n + \\mu_p)$.\n  - Thus, a graph of $\\ln(\\rho_i)$ as a function of the reciprocal temperature $\\frac{1}{T}$ forms an almost straight line with slope:\n    $$\\text{Slope} = \\frac{E_g}{2 k_B}$$\n  - From the measured slope, one can directly compute the **band gap energy of silicon ($E_g$)**:\n    $$E_g = 2 k_B \\times \\text{Slope}$$\n- **Distractor Analysis**:\n  - The mobilities $\\mu_n, \\mu_p$ appear inside the logarithm intercept term and cannot be uniquely extracted from the slope.\n  - The intrinsic carrier concentration $n_i$ itself varies exponentially with temperature and is not a constant slope parameter.\n\nTherefore, the correct answer is **Option A (band gap energy of silicon $(E_{g})$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q13-s4",
+      "branch": "ec",
+      "year": 2014,
+      "set": 4,
+      "qNum": 13,
+      "title": "GATE EC 2014 | Set 4 | Question: 13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "Operational Amplifiers",
+      "officialAnswer": "D",
+      "questionHtml": "The circuit shown represents<br><img src=\"/question-images/ec/2014/ec-2014-6d3202154c.webp\" />",
+      "options": [
+        "a bandpass filter",
+        "a voltage controlled oscillato",
+        "an amplitude modulator",
+        "a monostable multivibrator"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits - Operational Amplifier Multivibrators & Monostable Operation",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits - Operational Amplifier Multivibrators & Monostable Operation\n- **Given Circuit Analysis**:\n  - The circuit incorporates an operational amplifier with both positive feedback and negative timing feedback:\n    1. **Positive Feedback (Schmitt Trigger)**: A resistive divider from the output to the non-inverting terminal ($+$) establishes upper and lower switching threshold voltages ($pm V_{\\text{th}}$).\n    2. **Timing & Clamping Feedback**: An $RC$ timing network connected from the output to the inverting terminal ($-$) is shunted by a semiconductor diode across capacitor $C$.\n- **Operating Principles & State Classification**:\n  - In an astable multivibrator (square-wave generator), the capacitor is free to charge and discharge symmetrically between $+V_{\\text{th}}$ and $-V_{\\text{th}}$, generating continuous oscillations with no stable state.\n  - In this circuit, the presence of the parallel diode clamps the capacitor voltage to approximately $V_D \\approx 0.7\\text{ V}$ whenever the output is in its high state ($+V_{\\text{sat}}$).\n  - Because the capacitor voltage is clamped and cannot charge up to trigger the threshold, the circuit remains latched permanently in this single condition: the **stable state**.\n  - When an external trigger pulse of appropriate polarity is applied, the output switches abruptly to the negative rail ($-V_{\\text{sat}}$).\n  - The diode is now reverse-biased (OFF), allowing capacitor $C$ to charge towards $-V_{\\text{sat}}$ through resistor $R$ for a duration determined by $\\tau = RC$: the **quasi-stable state**.\n  - Once the capacitor voltage crosses the non-inverting threshold, the regenerative positive feedback snaps the output back to $+V_{\\text{sat}}$, where the diode re-clamps it into the stable state.\n  - A circuit possessing exactly one stable state and one quasi-stable state is a **monostable multivibrator** (one-shot pulse generator).\n\nTherefore, the correct answer is **Option D (a monostable multivibrator)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q22-s4",
+      "branch": "ec",
+      "year": 2014,
+      "set": 4,
+      "qNum": 22,
+      "title": "GATE EC 2014 | Set 4 | Question: 22",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EC)",
+      "subtopic": "Probability and Statistics",
+      "officialAnswer": "A",
+      "questionHtml": "If calls arrive at a telephone exchange such that the time of arrival of any call\nis independent of the time of arrival of earlier or future calls, the probability\ndistribution function of the total number of calls in a fixed time interval will be",
+      "options": [
+        "Poisson",
+        "Gaussian",
+        "Exponential",
+        "Gamma"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EC) / Probability - Poisson Process & Event Arrival Counting",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EC) / Probability - Poisson Process & Event Arrival Counting\n- **Given Conditions**:\n  - Telephone calls arrive at an exchange such that the arrival of any individual call is statistically independent of earlier or future arrival events (memoryless property and independent increments).\n- **Governing Principles of a Poisson Process**:\n  - An arrival process with rate $\\lambda$ satisfies three fundamental postulates:\n    1. **Independent Increments**: The number of arrivals in disjoint time intervals are mutually independent.\n    2. **Stationarity**: The probability of an arrival in an interval depends only on the length of the interval $\\Delta t$.\n    3. **Orderliness**: The probability of more than one arrival in an infinitesimal interval $\\Delta t$ is negligible ($o(\\Delta t)$).\n- **Analytical Derivation**:\n  - Under these axioms, let $N(t)$ be the discrete random variable representing the **total number of call arrivals in a fixed time interval of duration $t$**.\n  - The probability mass function (PMF) of $N(t)$ is derived as:\n    $$P(N(t) = k) = \\frac{(\\lambda t)^k e^{-\\lambda t}}{k!}, \\quad k = 0, 1, 2, \\dots$$\n  - This is the definition of the **Poisson Distribution** with parameter $\\alpha = \\lambda t$.\n- **Distractor Analysis**:\n  - The **Exponential distribution** models the continuous random variable of *inter-arrival time* between consecutive calls, not the discrete *total number of calls*.\n  - **Gaussian distribution** is continuous and arises as an asymptotic limit for large mean $\\lambda t \\gg 1$, but the exact underlying distribution is Poisson.\n  - **Gamma distribution** represents the continuous waiting time until the $k$-th arrival.\n\nTherefore, the correct answer is **Option A (Poisson)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2014:q36-s4",
+      "branch": "ec",
+      "year": 2014,
+      "set": 4,
+      "qNum": 36,
+      "title": "GATE EC 2014 | Set 4 | Question: 36",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "Basic Semiconductor Physics",
+      "officialAnswer": "D",
+      "questionHtml": "An N -type semiconductor having uniform doping is biased as shown in the figure. <br><img src=\"/question-images/ec/2014/ec-2014-0598c94bd3.webp\" /><br>If $E_{C}$ is the lowest energy level of the conduction band, $E_{V}$ is the highest energy level of the valance band and $E_{F}$ is the Fermi level, which one of the following represents the energy band diagram for the biased N -type semiconductor ?<br><img src=\"/question-images/ec/2014/ec-2014-106904ada8.webp\" />",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - Energy Band Diagram of Biased N-Type Semiconductor",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - Energy Band Diagram of Biased N-Type Semiconductor\n- **Given System & Bias Configuration**:\n  - A uniformly doped N-type semiconductor bar under applied DC bias from an external battery.\n  - Band edges: Conduction band edge $E_C$, valence band edge $E_V$, and Fermi level $E_F$.\n- **Governing Physical Principles**:\n  1. **Equilibrium Fermi Level Position for N-Type**:\n     - For a uniformly doped N-type semiconductor, electron majority carrier concentration is $n_0 \\approx N_D$.\n     - The Fermi level lies in the upper half of the bandgap, close to the conduction band:\n       $$E_C - E_F = k_B T \\ln\\left(\\frac{N_C}{N_D}\\right)$$\n     - Therefore, $E_F$ is positioned near $E_C$ throughout the bulk.\n  2. **Effect of Applied Bias on Potential Energy**:\n     - The potential energy of an electron with charge $-q$ in an electrostatic potential $V(x)$ is given by:\n       $$E(x) = -q V(x)$$\n     - When a voltage is applied across the semiconductor bar, an internal uniform electric field $\\mathcal{E}$ is created directed from the positive terminal toward the negative terminal:\n       $$\\mathcal{E} = -\\frac{dV}{dx} = \\frac{1}{q}\\frac{dE_C}{dx}$$\n     - Because electron potential energy is $-qV$, higher positive electrostatic potential $V(x)$ corresponds to **lower electron energy $E(x)$**.\n     - Consequently, the energy bands ($E_C, E_i, E_V$) tilt downward toward the positive terminal of the battery.\n  3. **Uniformity & Bandgap Invariance**:\n     - Since the doping is uniform and the cross-section is constant, the electric field is uniform, yielding a constant linear slope:\n       $$\\frac{dE_C}{dx} = \\frac{dE_V}{dx} = q \\mathcal{E} = \\text{constant}$$\n     - The bandgap $E_g = E_C - E_V$ remains strictly constant along the length of the semiconductor.\n     - The quasi-Fermi level $E_F$ slopes parallel to $E_C$, maintaining its position close to $E_C$.\n- **Diagram Evaluation**:\n  - Diagram D correctly depicts parallel, linearly inclined conduction and valence band edges tilting downward toward the positive terminal, with $E_F$ running uniformly close to $E_C$.\n\nTherefore, the correct answer is **Option D (D)**.",
+        "images": []
+      }
+    }
+  ]
+}

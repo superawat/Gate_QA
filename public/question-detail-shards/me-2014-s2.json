@@ -52,7 +52,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "The characteristic equation $| A-\\lambda D=0$\n\n$$\\text{i.e.} \\left|\\begin{array}{cc}-5-\\lambda & 2 \\\\ -9 & 6-\\lambda\\end{array}\\right|=0$$\n\n$\\text{or } (\\lambda-6)(\\lambda+5)+18=0$\n\n$\\text{or } \\quad \\lambda^{2}-6 \\lambda+5 \\lambda-30+18=0$\n\n$\\text{or } \\quad \\lambda^{2}-\\lambda-12=0$\n\n$\\text{or } \\lambda=\\frac{1 \\pm \\sqrt{1+48}}{2}=\\frac{1 \\pm 7}{2}=4,-3$\n\nCorresponding to $\\lambda=4,$ we have\n\n$$\\; [A-\\lambda I] x=\\left[\\begin{array}{cc}-5-\\lambda & 2 \\\\-9 & 6-\\lambda\\end{array}\\right]\\left[\\begin{array}{l}x \\\\y\\end{array}\\right]$$\n\n$=0$\n\n$$\\text{Or, } \\left[\\begin{array}{ll}-9 & 2 \\\\ -9 & 2\\end{array}\\right]\\left[\\begin{array}{l}x \\\\ y\\end{array}\\right]=0$$which gives only one independent equation,\n\n$-9 x+2 y=0$\n\n$\\therefore \\frac{x}{2}=\\frac{y}{9}$ gives eigen vector (2,9)\n\nCorresponding to $\\lambda=-3,$\n\n$$=\\left[\\begin{array}{ll}-2 & 2 \\\\-9 & 9\\end{array}\\right]\\left[\\begin{array}{l}x \\\\y \\end{array}\\right]=0$$\n\nwhich gives -x+y=0 (only one independent equation)\n\n$\\therefore \\quad \\frac{x}{1}=\\frac{y}{1} \\quad$ which gives (1,1)\n\nSo, the eigen vectors are $$\\left\\{\\begin{array}{l}2 \\\\ 9\\end{array}\\right\\} and \\left\\{\\begin{array}{l}1 \\\\ 1\\end{array}\\right\\}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "me:2014:q2-s2": {
       "question_uid": "me:2014:q2-s2",
@@ -97,7 +98,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\lim_{x \\rightarrow 0} \\frac{\\left(e^{2 x}-1\\right)}{\\sin 4 x},$ it is of$\\left(\\frac{0}{0}\\right)$from\n\nApplying L' Hospital's rule\n\n$\\lim_{x \\rightarrow 0} \\frac{2 e^{2 x}}{4 \\cos 4 x}=\\frac{2 \\times 1}{4 \\times 1}=\\frac{1}{2}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q3-s2": {
       "question_uid": "me:2014:q3-s2",
@@ -142,7 +144,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$\\vec{F}=x^{2} z^{2} \\hat{i}-2 x y^{2} z \\hat{j}+2 y^{2} z^{3} \\hat{k}$\n\n$$\\nabla \\times \\vec{F}=\\left|\\begin{array}{ccc} \\hat{i} & \\hat{j} & \\hat{k} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ x^{2} z^{2}&-2 x y^{2} z^{2} & 2 y^{2} z^{3} \\end{array}\\right|$$\n\n$=\\hat{i}\\left[\\frac{\\partial}{\\partial y}\\left(2 y^{2} z^{3}\\right)+\\frac{\\partial}{\\partial z}\\left(2 x y^{2} z\\right)\\right]$\n\n$-\\hat{j}\\left[\\frac{\\partial}{\\partial x}\\left(2 y^{2} z^{3}\\right)-\\frac{\\partial}{\\partial z}\\left(x^{2} z^{2}\\right)\\right]$\n\n$+\\hat{k}\\left[\\frac{\\partial}{\\partial x}\\left(-2 x y^{2} z\\right)-\\frac{\\partial}{\\partial y}\\left(x^{2} z^{2}\\right)\\right]$\n\n$\\nabla \\times \\vec{F}=\\hat{i}\\left[4 y z^{3}+2 x y^{2}\\right]-\\hat{j}\\left[-2 z x^{2}\\right]$\n\n$=\\left(4 y z^{3}+2 x y^{2}\\right) \\hat{i}+\\left(2 x^{2} z\\right) \\hat{j}-\\left(2 y^{2} z\\right) \\hat{k}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q4-s2": {
       "question_uid": "me:2014:q4-s2",
@@ -187,7 +190,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "required prob $=\\frac{^{15} C_{2}}{^{25} C_{2}}=\\frac{14 \\times 15}{25 \\times 24}=\\frac{7}{20}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q5-s2": {
       "question_uid": "me:2014:q5-s2",
@@ -230,7 +234,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f(x)=e^{-x} \\sin (100 x)$\n\n$P(x)=-e^{-x} \\sin (100 x)+e^{-x} \\cos (100 x) \\times 100$\n\nfor minima $f^{\\prime}(x)=0$\n\nfrom here $\\tan (100 x)=100$\n\n$$\\begin{aligned} x &=\\frac{1}{100} \\tan ^{-1}(100)=0.0156 \\\\ f(x) &=e^{-0.0156} \\sin (100 \\times 0.0156)=-0.9844 \\end{aligned}$$\n\nTherefore, the correct answer is **-0.97** (acceptable range: [-1, -0.94])."
-      }
+      },
+      "answer": "-0.97"
     },
     "me:2014:q6-s2": {
       "question_uid": "me:2014:q6-s2",
@@ -275,7 +280,8 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
         "markdown": "As all forces are free to deform, there is no thermal\n\nstress.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q7-s2": {
       "question_uid": "me:2014:q7-s2",
@@ -318,7 +324,8 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-1e44a257a0.webp\" />\n\n$$\\begin{aligned} A B &=1 \\\\ A C &=0.5 \\mathrm{m} \\\\ B C &=\\sqrt{1^{2}+0.5^{2}} \\\\ &=\\sqrt{1.25}=1.118 \\mathrm{m} \\\\ A_{x}+C_{x} &=0 \\\\ A_{y}+C_{y} &=10 \\\\ \\;&\\qquad\\text{(from force equilibrium)}\\\\ \\Sigma M_{A}&=0 \\\\ C_{x} \\times 0.5&=10 \\times 1 \\\\ \\text{or }\\quad C_{x}&=20 \\mathrm{kN} \\\\ \\text{and }\\quad A_{x}&=-20 \\mathrm{kN} \\\\ \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-1e44a257a0.webp\" />\n\n$$\\begin{aligned} \\Sigma M_{c}&=0 \\\\ \\Rightarrow \\quad F_{A B} \\times 0.5&=20 \\times 0.5 \\\\ \\therefore \\quad F_{A B}&=20 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **20** (acceptable range: [18, 22])."
-      }
+      },
+      "answer": "20"
     },
     "me:2014:q8-s2": {
       "question_uid": "me:2014:q8-s2",
@@ -363,7 +370,8 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Planar Mechanisms",
         "markdown": "$S+L \\lt P+Q$\n\nIn this case, shortest link is fixed and hence, the\n\nresulting mechanism is double crank mechanism.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q9-s2": {
       "question_uid": "me:2014:q9-s2",
@@ -406,9 +414,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
-      }
+        "concept": "Theory of Machines - Mechanical Vibrations & Transmissibility",
+        "markdown": "- **Governing Equation for Force Transmissibility:**\n  - For a single degree-of-freedom viscously damped system subjected to harmonic excitation, the force/displacement transmissibility $T$ is given by:\n    $$T = \\frac{\\sqrt{1 + (2\\zeta r)^2}}{\\sqrt{(1 - r^2)^2 + (2\\zeta r)^2}}$$\n    where $r = \\frac{\\omega}{\\omega_n}$ is the frequency ratio and $\\zeta = \\frac{c}{c_c}$ is the damping ratio.\n\n- **Evaluation of Statements:**\n  - **Statement A:** At small frequencies ($r \\to 0$), $T = \\frac{\\sqrt{1 + 0}}{\\sqrt{1 + 0}} = 1$. True.\n  - **Statement C:** At frequency ratio $r = \\sqrt{2}$:\n    $$(1 - r^2)^2 = (1 - 2)^2 = 1 \\implies T = \\frac{\\sqrt{1 + 8\\zeta^2}}{\\sqrt{1 + 8\\zeta^2}} = 1 \\quad \\forall \\zeta$$\n    Transmissibility is identically unity regardless of the damping ratio. True.\n  - **Statement D:** For an undamped system ($\\zeta = 0$) at resonance ($r = 1$):\n    $$T = \\frac{1}{\\sqrt{(1 - 1)^2}} = \\frac{1}{0} \\to \\infty$$\n    True.\n  - **Statement B:**\n    - For effective vibration isolation, the operating frequency ratio must exceed $\\sqrt{2}$ ($r > \\sqrt{2}$).\n    - When $r > \\sqrt{2}$, differentiating $T$ with respect to $\\zeta$ shows that $\\frac{\\partial T}{\\partial \\zeta} > 0$.\n    - This means that in the isolation zone ($r > \\sqrt{2}$), **increasing damping increases transmissibility**, thereby deteriorating isolation performance. Higher damping only reduces transmissibility in the near-resonance region ($r < \\sqrt{2}$).\n    - Thus, the statement *\"T can be always reduced by using higher damping at any excitation frequency\"* is **NOT correct**.\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "me:2014:q10-s2": {
       "question_uid": "me:2014:q10-s2",
@@ -451,7 +461,8 @@
       "detailed_solution": {
         "concept": "Machine Design - Static Dynamic Loading and Failure Theories",
         "markdown": "$$\\begin{aligned} \\sigma _{min}&=200 \\; \\text{MPa} \\\\ \\sigma _{max}&=400 \\; \\text{MPa} \\\\ \\sigma _a&= \\frac{\\sigma _{max}-\\sigma _{min}}{2}\\\\ &= \\frac{400-200}{2}\\\\ &=100\\; \\text{MPa} \\end{aligned}$$\n\nTherefore, the correct answer is **100** (acceptable range: [99, 101])."
-      }
+      },
+      "answer": "100"
     },
     "me:2014:q11-s2": {
       "question_uid": "me:2014:q11-s2",
@@ -496,7 +507,8 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
         "markdown": "Thin plate of uniform thickness pertains to plane stress condition. So, stress out of plane would be zero.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q12-s2": {
       "question_uid": "me:2014:q12-s2",
@@ -541,7 +553,8 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Free and Forced Convection",
         "markdown": "For the laminar flow over flat plate,\n\n$\\mathrm{Re} \\lt 3 \\times 10^{5}$\n\nNusselt number,\n\n$$\\begin{aligned} & N_{u}=\\frac{h l}{k}=0.664 \\mathrm{Re}^{1 / 2} \\mathrm{Pr}^{1 / 3} \\\\ \\text { where } \\mathrm{Re}&=\\frac{U l}{\\mathrm{v}} \\\\ \\therefore \\qquad \\frac{h l}{k}&=0.664 \\times\\left(\\frac{U l}{\\mathrm{v}}\\right)^{1 / 2} \\times \\mathrm{Pr}^{1 / 3}\\\\ h &\\propto U^{1 / 2}\\\\ \\frac{h_{2}}{h_{1}} &=\\left(\\frac{U_{2}}{U_{1}}\\right)^{1 / 2} \\\\ &=\\left(\\frac{2 U_{2}}{U_{1}}\\right)^{1 / 2}=\\sqrt{2}\\\\ \\text{or }\\quad h_{2}&=\\sqrt{2} h_{1}\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "me:2014:q13-s2": {
       "question_uid": "me:2014:q13-s2",
@@ -586,7 +599,8 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
         "markdown": "Thermal efficiency,\n\n$$\\begin{aligned} n &=1-\\frac{T_1}{T_2} \\\\ &= 1-\\frac{1}{\\left ( \\frac{T_2}{T_1} \\right )}\\\\ \\frac{T_2}{T_1} &=\\left ( \\frac{P_2}{P_1} \\right )^{\\frac{\\gamma -1}{\\gamma }}=r_p^{\\frac{\\gamma -1}{\\gamma }} \\\\ r_p &=\\text{Pressure ratio} \\\\ So, \\;\\;n &=1-\\frac{1}{r_p^{\\frac{\\gamma -1}{\\gamma }}} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "me:2014:q14-s2": {
       "question_uid": "me:2014:q14-s2",
@@ -631,7 +645,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Kinematics",
         "markdown": "For an incompressible flow field, divergence must be zero i.e., $\\nabla \\cdot \\vec{V}=0$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q15-s2": {
       "question_uid": "me:2014:q15-s2",
@@ -674,7 +689,8 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Pure Substances",
         "markdown": "$$\\begin{aligned} p&=8 \\mathrm{MPa}=8 \\times 10^{3} \\mathrm{kPa} \\\\ T&=400^{\\circ} \\mathrm{C} \\\\ u&=2864 \\mathrm{kJ} / \\mathrm{kg} \\\\ v&=0.03432 \\mathrm{m}^{3} / \\mathrm{kg} \\end{aligned}$$\n\nBy definition of specific enthalpy,\n\n$$\\begin{aligned} h &=u+p v \\\\ &=2864+8 \\times 10^{3} \\times 0.03432 \\\\ &=3138.56 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nTherefore, the correct answer is **3137.5** (acceptable range: [3135, 3140])."
-      }
+      },
+      "answer": "3137.5"
     },
     "me:2014:q16-s2": {
       "question_uid": "me:2014:q16-s2",
@@ -719,7 +735,8 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-92186fb077.webp\">\n\n$\\theta _1=\\Delta T_1,\\; \\theta _2=\\Delta T_2$\n\n$\\Delta T_1=\\Delta T_2$ is possible in counter flow heat exchanger.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "me:2014:q17-s2": {
       "question_uid": "me:2014:q17-s2",
@@ -762,7 +779,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
         "markdown": "Forbuble, $\\quad \\Delta P=\\frac{2 \\sigma}{r}$\n\nWhere\n\n$\\Delta P$=pressure difference\n\n$Surface tension : [latex]\\sigma=0.072 \\mathrm{N} / \\mathrm{m}$\n\nRadiu Ills of bubble: $r=\\frac{0.001}{2} \\mathrm{m}=0.0005 \\mathrm{m}$\n\n$\\therefore \\quad \\Delta P=\\frac{2 \\times 0.072}{0.0005}=288 \\mathrm{N} / \\mathrm{m}^{2}$\n\nTherefore, the correct answer is **288** (acceptable range: [287, 289])."
-      }
+      },
+      "answer": "288"
     },
     "me:2014:q18-s2": {
       "question_uid": "me:2014:q18-s2",
@@ -805,9 +823,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Industrial Engineering - Queuing Theory and Transportation",
-        "markdown": "no of basic variables = n+m-1\n\nTherefore, the correct answer is **C**."
-      }
+        "concept": "Industrial Engineering - Operations Research (Transportation Problem BFS)",
+        "markdown": "- **Transportation Problem Constraints & Matrix Rank:**\n  - Consider a transportation problem with $m$ supply origins and $n$ demand destinations.\n  - The model has:\n    - $m$ supply row constraints: $\\sum_{j=1}^n x_{ij} = a_i \\quad (i = 1, \\dots, m)$\n    - $n$ demand column constraints: $\\sum_{i=1}^m x_{ij} = b_j \\quad (j = 1, \\dots, n)$\n    - Total constraint equations: $m + n$.\n  - In a balanced transportation problem, total supply equals total demand:\n    $$\\sum_{i=1}^m a_i = \\sum_{j=1}^n b_j$$\n  - Because of this balance condition, summing all row equations yields the exact same total as summing all column equations. Consequently, exactly one of the $m + n$ equations is linearly dependent (redundant).\n  - The rank of the coefficient matrix is:\n    $$\\text{Rank}(A) = m + n - 1$$\n  - According to fundamental linear programming theorem, any basic feasible solution (BFS) has a basis corresponding to linearly independent columns of full rank.\n  - Therefore, the number of basic variables in any basic feasible solution is **$m + n - 1$**.\n\nTherefore, the correct answer is **Option C (m + n - 1)**.",
+        "images": []
+      },
+      "answer": "C"
     },
     "me:2014:q19-s2": {
       "question_uid": "me:2014:q19-s2",
@@ -852,7 +872,8 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-ae5447fa8c.webp\" />\n\nTotal cost is minimum for process 2, hence process 2 is most economical.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q20-s2": {
       "question_uid": "me:2014:q20-s2",
@@ -897,7 +918,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Metrology and Inspection",
         "markdown": "Auto collimater is used to measure the flatness of the machine bed. Vernier calipers is used to measure the dimensions (dia) of component. Height gauge measures height.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q21-s2": {
       "question_uid": "me:2014:q21-s2",
@@ -942,7 +964,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Computer Integrated Manufacturing",
         "markdown": "$$\\begin{aligned} \\left[\\begin{array}{l} x^{\\prime} \\\\ y^{\\prime} \\end{array}\\right] &=\\left[\\begin{array}{ll} \\cos \\theta & -\\sin \\theta \\\\ \\sin \\theta & \\cos \\theta \\end{array}\\right]\\left[\\begin{array}{l} x \\\\ y \\end{array}\\right] \\\\ \\text { Here } \\theta &=90^{\\circ} \\\\ \\left[\\begin{array}{l} x^{\\prime} \\\\ y^{\\prime} \\end{array}\\right]&=\\left[\\begin{array}{ll} 0 & -1 \\\\ 1 & 0 \\end{array}\\right]\\left[\\begin{array}{l} 2 \\\\ 5 \\end{array}\\right]=\\left[\\begin{array}{c} -5 \\\\ 2 \\end{array}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q22-s2": {
       "question_uid": "me:2014:q22-s2",
@@ -985,9 +1008,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
-      }
+        "concept": "Manufacturing Engineering - Machine Tools & Machining Operations",
+        "markdown": "- **Machine Tool and Operation Matching:**\n  - **P. Centre Lathe $\\rightarrow$ 3. Knurling:**\n    - Knurling is a cold-forming operation performed on a centre lathe using a hardened roller tool pressed against the rotating workpiece to impart a diamond or straight textured grip pattern. $\\implies \\mathbf{P - 3}$.\n  - **Q. Milling $\\rightarrow$ 1. Slotting:**\n    - Machining keyways, T-slots, and straight channels is a standard milling operation performed using end mills or side-and-face slotting cutters. $\\implies \\mathbf{Q - 1}$.\n  - **R. Grinding $\\rightarrow$ 4. Dressing:**\n    - Dressing is the operation of sharpening and conditioning the face of a loaded or glazed grinding wheel using a diamond point dresser to expose fresh sharp abrasive grains. $\\implies \\mathbf{R - 4}$.\n  - **S. Drilling $\\rightarrow$ 2. Counter-boring:**\n    - Counter-boring is the operation of cylindrically enlarging the end of an already drilled hole to accommodate the socket head of a cap screw or bolt, performed on a drilling machine. $\\implies \\mathbf{S - 2}$.\n\n- **Synthesis:**\n  - $P \\rightarrow 3, \\; Q \\rightarrow 1, \\; R \\rightarrow 4, \\; S \\rightarrow 2$.\n  - Matches the combination: $\\mathbf{P-3, \\; Q-1, \\; R-4, \\; S-2}$.\n\nTherefore, the correct answer is **Option C (P-3, Q-1, R-4, S-2)**.",
+        "images": []
+      },
+      "answer": "C"
     },
     "me:2014:q23-s2": {
       "question_uid": "me:2014:q23-s2",
@@ -1032,7 +1057,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "EDM is most suitable process of square holes,\n\nintricate triangular holes etc.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "me:2014:q24-s2": {
       "question_uid": "me:2014:q24-s2",
@@ -1077,7 +1103,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Forming Process",
         "markdown": "$$\\begin{aligned} \\text { True strain: } d \\epsilon_{T}&=\\frac{d L}{L} \\\\ \\qquad \\epsilon_{T}&=\\int_{L_{0}}^{L} \\frac{d L}{L}=\\ln \\frac{L}{L_{0}}\\\\ \\text { As } \\quad d V&=0\\\\ A L &=A_{0} L_{0} \\\\ \\frac{L}{L_{0}} &=\\frac{A_{0}}{A} \\\\ \\epsilon_{E} &=\\frac{L-L_{0}}{L_{0}} \\\\ \\Rightarrow \\quad \\frac{L}{L_{0}} &=1+\\epsilon_{E}\\\\ \\therefore \\quad \\epsilon_{T}&=\\ln \\left(1+\\epsilon_{E}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "me:2014:q25-s2": {
       "question_uid": "me:2014:q25-s2",
@@ -1120,9 +1147,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
-      }
+        "concept": "Manufacturing Engineering - Metal Forming Defects & Specialized Rolling Mills",
+        "markdown": "- **Metal Forming Defect & Rolling Process Matching:**\n  - **P. Defect in extrusion $\\rightarrow$ III. fish tail (piping):**\n    - During direct extrusion, when the ram approaches the die, surface oxide layers and cooler peripheral billet metal are drawn toward the center, creating an internal funnel-shaped central cavity at the billet end known as **pipe / fish tail**. $\\implies \\mathbf{P - III}$.\n  - **Q. Defect in rolling $\\rightarrow$ I. alligatoring:**\n    - Alligatoring is a severe rolling defect where non-uniform longitudinal tensile deformations cause the slab to split horizontally along the mid-thickness plane, opening up like the jaws of an alligator. $\\implies \\mathbf{Q - I}$.\n  - **R. Product of skew rolling $\\rightarrow$ VI. semi-finished balls of ball bearing:**\n    - In rotary skew rolling (Mannesmann/helical roll process), a round bar is fed between two rotating rolls with helical grooves tilted at an angle, continuously forming spherical blanks for bearing balls. $\\implies \\mathbf{R - VI}$.\n  - **S. Product of rolling through cluster mill $\\rightarrow$ V. thin sheet with tight tolerance:**\n    - A cluster mill (such as the Sendzimir 20-high mill) uses small-diameter work rolls backed by a cluster of larger support rolls to eliminate roll bending under immense roll pressures, primarily used for cold rolling very thin foils and high-strength sheets with tight thickness tolerances. $\\implies \\mathbf{S - V}$.\n\n- **Synthesis:**\n  - $P \\rightarrow \\text{III}, \\; Q \\rightarrow \\text{I}, \\; R \\rightarrow \\text{VI}, \\; S \\rightarrow \\text{V}$.\n  - Matches: $\\mathbf{P-III, \\; Q-I, \\; R-VI, \\; S-V}$.\n\nTherefore, the correct answer is **Option B (P-III, Q-I, R-VI, S-V)**.",
+        "images": []
+      },
+      "answer": "B"
     },
     "me:2014:q26-s2": {
       "question_uid": "me:2014:q26-s2",
@@ -1167,7 +1196,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "As per Cauchy-Riemann equation\n\n$\\frac{\\partial u}{\\partial x}=\\frac{\\partial v}{\\partial y}$\n\n$\\text { and } \\quad \\frac{\\partial u}{\\partial y} =-\\frac{\\partial v}{\\partial x}$\n\n$\\frac{\\partial u}{\\partial x}=2 y$\n\n$\\text { and } \\frac{\\partial u}{\\partial y}=2 x$\n\n$\\frac{\\partial v}{\\partial y}=2 y$\n\n$\\Rightarrow \\quad v=y^{2}+f(x)$\n\n$\\frac{\\partial v}{\\partial x}=0+P(x)=-2 x$\n\n$\\therefore f(x)=-x^{2}+ \\text{constant}$\n\n$\\therefore \\quad v=y^{2}-x^{2}+ \\text{constant}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "me:2014:q27-s2": {
       "question_uid": "me:2014:q27-s2",
@@ -1212,7 +1242,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "Let $z =x+y$\n\n$\\frac{d z}{d x} =1+\\frac{d y}{d x}$\n\n$\\therefore \\quad \\frac{d z}{d x}-1=\\cos z$\n\n$\\text{or}\\int \\frac{d z}{1+\\cos z}=\\int d x$\n\n$\\text{or} \\frac{1}{2} \\int \\sec ^{2}\\left(\\frac{z}{2}\\right) d z=x+c$\n\n$\\text{or} \\tan \\left(\\frac{z}{2}\\right)=x+c$\n\n$\\text{or} \\tan \\left(\\frac{x+y}{2}\\right)=x+c$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "me:2014:q28-s2": {
       "question_uid": "me:2014:q28-s2",
@@ -1255,7 +1286,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-2efa1ac28b.webp\" />\n\nn=3 x: red colour\n\n$$\\begin{aligned} P&=P(\\text{Red})=\\frac{2}{6} \\\\ q&=1-P=1-\\frac{2}{6}=\\frac{4}{6} \\end{aligned}$$\n\nProb. of getting red colour on top face atleast twice is\n\n$$\\begin{aligned} &=P(x=2)+P(x=3) \\\\ &=^{n} C_{2} P^{2} q^{n-2}+^{n} C_{3} P^{3} q^{n-3} \\\\ &=^{n} C_{2}\\left(\\frac{8}{6}\\right)^{2}\\left(\\frac{1}{4}\\right)^{1}+\\frac{3}{3}\\left(\\frac{2}{6}\\right)^{2}\\left(\\frac{4}{6}\\right)^{0}\\\\ &=3 \\cdot \\frac{4}{36} \\cdot \\frac{4}{6}+1 \\cdot \\frac{8}{216} \\\\ &=\\frac{48+8}{216}=\\frac{56}{216}=0.259 \\end{aligned}$$\n\nTherefore, the correct answer is **0.26** (acceptable range: [0.25, 0.27])."
-      }
+      },
+      "answer": "0.26"
     },
     "me:2014:q29-s2": {
       "question_uid": "me:2014:q29-s2",
@@ -1298,7 +1330,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-8138f955e7.webp\" />\n\nI=\\int_{2.5}^{4} \\ln (x) d x [/latex]\n\n$=\\frac{h}{2}\\left[\\left(y_{0}+y_{5}\\right)+2\\left(y_{1}+y_{2}+y_{3}+y_{4}\\right]\\right.$\n\n$I=\\frac{0.3}{2}[(0.9163+1.3863)+2(1.0296)$\n\n$+1.1314+1.2237+1.3083)]$\n\n$I=\\frac{0.3}{2} \\times 11.6886=1.7533$\n\nTherefore, the correct answer is **1.75** (acceptable range: [1.74, 1.76])."
-      }
+      },
+      "answer": "1.75"
     },
     "me:2014:q30-s2": {
       "question_uid": "me:2014:q30-s2",
@@ -1343,7 +1376,8 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-2549056e43.webp\" />\n\n$\\theta_{1}=\\frac{P L^{2}}{2 E I}$\n\n<img src=\"/question-images/me/2014/me-2014-415c31b764.webp\" />\n\n$\\theta_{2}=\\frac{M L}{E I}=\\frac{P L^{2}}{2 E I}$\n\nBy superposition,\n\n$\\theta=\\theta_{1}+\\theta_{2}=\\frac{P L^{2}}{E I }$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q31-s2": {
       "question_uid": "me:2014:q31-s2",
@@ -1388,7 +1422,8 @@
       "detailed_solution": {
         "concept": "Strength of Materials - Bending of Beams",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-9c0499b010.webp\" />\n\n$$\\begin{aligned} y &=\\frac{w x^{2}}{24 E I}\\left(x^{2}+6 L^{2}-4 L x\\right) \\\\ \\text { and } \\delta_{\\max } &=\\frac{w L^{4}}{8 E I} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "me:2014:q32-s2": {
       "question_uid": "me:2014:q32-s2",
@@ -1433,7 +1468,8 @@
       "detailed_solution": {
         "concept": "Machine Design - Bolted, Riveted and Welded Joint",
         "markdown": "$$\\begin{aligned} \\text { Design stress } &=\\frac{\\tau_{y}}{\\mathrm{FOS}}=\\frac{200}{2} \\\\ &=100 \\mathrm{MPa} \\\\ \\text { Load } &=19 \\mathrm{kN} \\\\ \\text { Total shear area } &=\\frac{19 \\times 10^{3}}{100 \\times 10^{6}} \\\\ &=1.9 \\times 10^{-4} \\mathrm{m}^{2} \\end{aligned}$$\n\nShear area for one bolt $=\\frac{A}{3}=6.33 \\times 10^{-5} \\mathrm{m}^{2}$\n\n$$\\begin{aligned} \\therefore \\quad d&=\\left(\\frac{4 \\times 6.33 \\times 10^{-5}}{\\pi}\\right)^{1 / 2}\\\\ &=8.982 \\times 10^{-3} \\mathrm{m} \\\\ &=8.982 \\mathrm{mm} \\end{aligned}$$\n\nSo, M10\n\nAlternate:\n\n$$\\begin{aligned} P &=\\frac{\\tau_{y}}{F_{S}} \\times \\frac{\\pi}{4} d^{2} \\times n \\\\ \\Rightarrow \\quad 19000 &=\\frac{200 \\times 10^{6}}{2} \\times \\frac{\\pi}{4} \\times d^{2} \\times 3 \\\\ \\Rightarrow \\quad d &=8.98 \\times 10^{-3} \\mathrm{m}=8.98 \\mathrm{mm} \\end{aligned}$$\n\nSo, M10\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q33-s2": {
       "question_uid": "me:2014:q33-s2",
@@ -1476,7 +1512,8 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - Translation and Rotation",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-65494399d6.webp\" />\n\n$$\\begin{aligned} I &=\\frac{M}{2}(R)^{2}+\\frac{1}{2}\\left(\\frac{M}{2}\\right)\\left(\\frac{R}{2}\\right)^{2} \\\\ &=\\frac{M R^{2}}{2}+\\frac{1}{2} \\times \\frac{M}{2} \\times \\frac{R^{2}}{4} \\\\ \\Rightarrow & \\frac{M R^{2}}{2}+\\frac{M R^{2}}{16}  \\\\  I&=\\frac{9}{16} M R^{2}=\\alpha M R^{2} \\\\  \\alpha&=\\frac{9}{16}=0.5625 \\end{aligned}$$\n\nTherefore, the correct answer is **0.56** (acceptable range: [0.55, 0.57])."
-      }
+      },
+      "answer": "0.56"
     },
     "me:2014:q34-s2": {
       "question_uid": "me:2014:q34-s2",
@@ -1521,7 +1558,8 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Vibration",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-dd5e521b9d.webp\" />\n\n$$\\begin{aligned} m\\ddot{x}+\\left(k_{1}+k_{2}\\right) x&=0 \\\\ \\ddot{x}+\\left(\\frac{k_{1}+k_{2}}{m}\\right) x&=0 \\\\ \\therefore \\qquad \\omega_{n}&=\\sqrt{\\frac{k_{1}+k_{2}}{m}} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "me:2014:q35-s2": {
       "question_uid": "me:2014:q35-s2",
@@ -1564,7 +1602,8 @@
       "detailed_solution": {
         "concept": "Machine Design - Brakes and Clutches",
         "markdown": "$$\\begin{aligned} r_{1}&=0.1m;\\qquad r_{2}=0.05m\\\\ p_{\\mathrm{max}},\\times r_{2} &=C \\\\ \\Rightarrow C &=1.5 \\times 10^{6} \\times 0.05 \\\\ &=75000 \\\\ W&=2 \\pi C\\left(r_{1}-r_{2}\\right) \\\\ &=2 \\pi \\times 75000 \\times(0.1-0.05) \\\\ &=23561.94\\\\ T &=n \\mu W R \\\\ &=1 \\times 0.3 \\times 23561.94 \\times 0.075 \\\\ &=530.14 \\\\ (R&= \\left. \\frac{r_{1}+r_{2}}{2}=\\frac{0.1+0.05}{2}=0.075\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **530.5** (acceptable range: [529, 532])."
-      }
+      },
+      "answer": "530.5"
     },
     "me:2014:q36-s2": {
       "question_uid": "me:2014:q36-s2",
@@ -1607,7 +1646,8 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - Friction",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-b3b166ecaa.webp\" />\n\nCrate will acquire max acceration when $\\left(f_{s}\\right)_{\\max }$ will\n\nbe acting on crate by truck and at that condition\n\nacceleration of truck and crate wil be same.\n\nIncreasing acceleration of truck after that will cause\n\nslipping of crate on truck.\n\n$\\left[\\left(f_{s}\\right)_{\\max }\\right]_{C T}=\\mu N_{C T}$\n\n<img src=\"/question-images/me/2014/me-2014-591c494a97.webp\" />\n\n$$\\begin{aligned}\\left[\\left(f_{s}\\right)_{\\max }\\right]_{C r}-m g \\sin 10^{\\circ} &=m a \\\\ \\mu m g \\cos 10^{\\circ}-m g \\sin 10^{\\circ} &=m a \\\\ a &=1.1948 \\mathrm{m} / \\mathrm{s}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **1.15** (acceptable range: [1, 1.3])."
-      }
+      },
+      "answer": "1.15"
     },
     "me:2014:q37-s2": {
       "question_uid": "me:2014:q37-s2",
@@ -1650,7 +1690,8 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Flywheel",
         "markdown": "$$\\begin{aligned} \\Delta E &=2600 \\mathrm{J} \\\\ N_{\\text {average }} &=200 \\mathrm{rpm} \\\\ I &=? \\\\ C_{s} &=\\pm 0.5 \\% \\\\ &=2 \\times \\frac{0.5}{100}=0.01 \\\\ \\Delta E &=I \\omega^{2} C_{s} \\\\ 2600 &=I \\times\\left\\{\\frac{2 \\pi}{60} \\times 200\\right\\}^{2} \\times 0.01 \\\\ 2600 &=I \\times 438.6491 \\times 0.01 \\\\ I &=\\frac{2600}{4.3865}=592.73 \\mathrm{kgm}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **592.5** (acceptable range: [590, 595])."
-      }
+      },
+      "answer": "592.5"
     },
     "me:2014:q38-s2": {
       "question_uid": "me:2014:q38-s2",
@@ -1695,7 +1736,8 @@
       "detailed_solution": {
         "concept": "Machine Design - Static Dynamic Loading and Failure Theories",
         "markdown": "Simplified Von mises equation for general load\n\nscenario is given by\n\n$$\\begin{aligned} \\sigma_{v}=& \\sqrt{\\frac{1}{2}\\left[\\left(\\sigma_{11}-\\sigma_{22}\\right)^{2}+\\left(\\sigma_{22}-\\sigma_{33}\\right)^{2}\\right. \\left.+\\left(\\sigma_{33}-\\sigma_{11}\\right)^{2}+6\\left(\\sigma_{12}^{2}+\\sigma_{23}^{2}+\\sigma_{31}^{2}\\right)\\right]} \\end{aligned}$$\n\nCase-I[\n\n$$\\begin{aligned} \\sigma_{11} &=0 \\\\ \\sigma_{22} &=\\sigma \\\\ \\sigma_{33} &=0 \\\\ \\sigma_{12} &=0 \\\\ \\sigma_{23} &=\\tau \\\\ \\sigma_{31} &=0 \\\\ \\therefore \\quad \\sigma_{v} &=\\sqrt{\\frac{1}{2}\\left(2 \\sigma^{2}+6 \\tau^{2}\\right)}=\\sqrt{\\sigma^{2}+3 \\tau^{2}} \\end{aligned}$$\n\nCase-II\n\n$$\\begin{aligned} \\sigma_{11} &=0 \\\\ \\sigma_{22} &=\\sigma \\\\ \\sigma_{33} &=0 \\\\ \\sigma_{12} &=0 \\\\ \\sigma_{23} &=0 \\\\ \\sigma_{31} &=\\tau \\\\ \\therefore \\quad \\sigma_{v} &=\\sqrt{\\frac{1}{2}\\left(2 \\sigma^{2}+6 \\tau^{2}\\right)}=\\sqrt{\\sigma^{2}+3 \\tau^{2}} \\end{aligned}$$\n\nIn both the cases, $\\sigma_{v}$ is same, so both yield simultaneously.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "me:2014:q39-s2": {
       "question_uid": "me:2014:q39-s2",
@@ -1738,7 +1780,8 @@
       "detailed_solution": {
         "concept": "Theory of Machine - Displacement, Velocity and Acceleration",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-15e0455104.webp\" />\n\n$$\\begin{aligned} a_{T} &=r \\alpha=2 \\times 12=24 \\mathrm{m} / \\mathrm{s}^{2} \\\\ a_{R} &=\\omega^{2} r=16 \\times 2=32 \\mathrm{m} / \\mathrm{s}^{2} \\\\ a &=\\sqrt{a_{T}^{2}+a_{R}^{2}}=\\sqrt{24^{2}+32^{2}} \\\\ &=\\sqrt{1600}=40 \\mathrm{m} / \\mathrm{s}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **40** (acceptable range: [39, 41])."
-      }
+      },
+      "answer": "40"
     },
     "me:2014:q40-s2": {
       "question_uid": "me:2014:q40-s2",
@@ -1781,7 +1824,8 @@
       "detailed_solution": {
         "concept": "Machine Design - Gears",
         "markdown": "Given,\n\n$$\\begin{aligned} d&=50 \\mathrm{mm} \\\\ \\omega&=200 \\mathrm{rad} / \\mathrm{s} \\\\ P&=3000 \\mathrm{W} \\\\ \\phi&=20^{\\circ} \\\\ T&=\\frac{P}{\\omega}=\\frac{3000}{200}=15 \\mathrm{N.m} \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-a7a78309fa.webp\" />\n\n$$\\begin{aligned} F_{T} \\times r &=T \\\\ \\therefore F_{T} &=\\frac{T}{r}=\\frac{15}{0.025}=600 \\mathrm{N} \\\\ \\therefore F_{T} &=F \\cos \\phi \\\\ F &=\\frac{600}{\\cos 20^{\\circ}}=638.5 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **638.5** (acceptable range: [638, 639])."
-      }
+      },
+      "answer": "638.5"
     },
     "me:2014:q41-s2": {
       "question_uid": "me:2014:q41-s2",
@@ -1824,7 +1868,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Fluid Statics",
         "markdown": "Step-I: Mass of balloon\n\n$$\\begin{aligned} \\text { Volume: } \\quad V &=\\frac{4}{3} \\pi r^{3}=\\frac{4 \\times 3.14 \\times 5^{3}}{3} \\\\ &=523.33 \\mathrm{m}^{3} \\\\ \\rho_{He} &=\\frac{P}{R T}=\\frac{100 \\times 10^{3}}{2080 \\times 288} \\\\ &=0.16693 \\mathrm{kg} / \\mathrm{m}^{3} \\\\ \\text { Total mass } &=0.16693 \\times 523.33 \\\\ &=87.359 \\mathrm{kg} \\end{aligned}$$\n\nStep-II : Mass of air\n\n$$\\begin{aligned} \\rho &=\\frac{P}{R T}=\\frac{100 \\times 10^{3}}{289 \\times 288} \\\\ &=1.2 \\mathrm{kg} / \\mathrm{m}^{3} \\end{aligned}$$\n\nMass of displaced volume of air\n\n$=1.2 \\times 523.33=628 \\mathrm{kg}$\n\nStep-III : Net buoyant mass\n\n$=628-87.359=540.64 \\mathrm{kg}$\n\n$\\therefore$Maximum allowable weight\n\n$$\\begin{aligned} =540.64 \\times 9.81 \\\\ =5303.688 \\mathrm{N} \\end{aligned}$$\n\nTherefore, the correct answer is **5315** (acceptable range: [5300, 5330])."
-      }
+      },
+      "answer": "5315"
     },
     "me:2014:q42-s2": {
       "question_uid": "me:2014:q42-s2",
@@ -1867,7 +1912,8 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Radiation",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-f67122526f.webp\" />\n\nGiven data:\n\n$$\\begin{aligned} r&=1 \\mathrm{m} \\\\ \\epsilon_{1} &=1 \\\\ T_{1} &=800 \\mathrm{K} \\\\ \\epsilon_{2} &=0.5 \\\\ T_{2} &=600 \\mathrm{K} \\\\ \\sigma &=5.668 \\times 10^{-8} \\mathrm{W} / \\mathrm{m}^{2} \\mathrm{K}^{4} \\\\ \\left(F_{9}\\right)_{1-2} &=\\frac{1}{\\frac{1-\\epsilon_{1}}{\\epsilon_{1}}+\\frac{1}{F_{12}}+\\frac{A_{1}}{A_{2}}\\left(\\frac{1-\\epsilon_{1}}{\\epsilon_{2}}\\right)} \\\\ F_{21} &=1 \\\\ A_{1} F_{12} &=A_{2} F_{21}\\\\ \\Rightarrow \\quad F_{12}&=\\frac{A_{2}}{A_{1}}=\\frac{\\pi r^{2}}{2 \\pi r^{2}}=\\frac{1}{2} \\\\ \\therefore \\quad F&=\\frac{1}{\\left(\\frac{1-1}{1}\\right)+2+2\\left(\\frac{1-0.5}{0.5}\\right)} \\\\ \\quad=\\frac{1}{4}&=0.25 \\\\ \\therefore \\quad Q_{1-2} &=\\sigma A\\left(F_{9}\\right)_{1-2}\\left[T_{1}^{4}-T_{2}^{4}\\right] \\\\ Q_{12} &=5.668 \\times 2 \\times \\pi \\times(1)^{2} \\\\ & \\times 0.25\\left(800^{4}-600^{4}\\right) \\times 10^{-8} \\\\ Q_{12} &=24916.528 \\mathrm{W}=24.916 \\mathrm{kW} \\end{aligned}$$\n\nTherefore, the correct answer is **24.6** (acceptable range: [24, 25.2])."
-      }
+      },
+      "answer": "24.6"
     },
     "me:2014:q43-s2": {
       "question_uid": "me:2014:q43-s2",
@@ -1910,7 +1956,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Flow Through Pipes",
         "markdown": "$$\\begin{aligned} D&=10 \\mathrm{mm}=0.01 \\mathrm{m} \\\\ L&=250 \\mathrm{m} \\\\ \\bar{u}&=0.1 \\mathrm{m} / \\mathrm{s} \\\\ \\rho&=997 \\mathrm{kg} / \\mathrm{m}^{3} \\\\ \\mu &= 855 \\times 10^{-6}Ns/m^{2} \\end{aligned}$$\n\nPressure drop in the pipe,\n\n$$\\begin{aligned} \\Delta p&=\\frac{32 \\mu \\bar{u} L}{D^{2}} \\\\ &=\\frac{32 \\times 855 \\times 10^{-6} \\times 0.1 \\times 250}{(0.01)^{2}} \\ &=6840 \\mathrm{Pa} \\end{aligned}$$\n\nTherefore, the correct answer is **6850** (acceptable range: [6800, 6900])."
-      }
+      },
+      "answer": "6850"
     },
     "me:2014:q44-s2": {
       "question_uid": "me:2014:q44-s2",
@@ -1953,7 +2000,8 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Conduction",
         "markdown": "Given data:\n\n$$\\begin{aligned} x &=1 \\mathrm{mm}=0.001 \\mathrm{m} \\\\ \\mathrm{q}^{\\prime \\prime} &=10 \\mathrm{kW} / \\mathrm{m}^{2}=10000 \\mathrm{W} / \\mathrm{m}^{2} \\\\ k_{s} &=10 \\mathrm{W} / \\mathrm{mK} \\\\ \\delta &=20 \\mathrm{mm}=0.02 \\mathrm{m} \\\\ T_{1} &=500 \\mathrm{K} \\\\ T_{2} &=360 \\mathrm{K} \\end{aligned}$$\n\n<img src=\"/question-images/me/2014/me-2014-d860d6fed5.webp\" />\n\n$$\\begin{aligned} \\text { Heat flow: } Q&=\\frac{T_{1}-T_{2}}{\\frac{\\delta}{k_{\\mathrm{s}} A}+\\frac{x}{k A}+\\frac{\\delta}{k_{\\mathrm{s}} A}} \\\\ Q &=\\frac{T_{1}-T_{2}}{\\frac{2 \\delta}{k_{s} A}+\\frac{x}{k A}} \\\\ \\frac{Q}{A}&= \\frac{T_{1}-T_{2}}{\\frac{2 \\delta}{k_{s}}+\\frac{x}{k}} \\\\ q^{\\prime \\prime}&=\\frac{\\frac{T_{1}-T_{2}}{2 \\delta}+\\frac{x}{k}}{k_{s}} \\\\ or q^{\\prime \\prime}\\left(\\frac{2 \\delta}{k_{s}}+\\frac{x}{k}\\right)&=T_{1}-T_{2} \\\\ 10000\\left(\\frac{2 \\times 0.02}{10}+\\frac{0.001}{k}\\right)&=500-360 \\\\ 40+\\frac{10}{k}&=140 \\\\ or \\quad \\frac{10}{k}&=140-40=100 \\\\ or \\quad k=\\frac{10}{100}&=0.1 \\mathrm{W} / \\mathrm{mK} \\end{aligned}$$\n\nTherefore, the correct answer is **0.1** (acceptable range: [0.09, 0.11])."
-      }
+      },
+      "answer": "0.1"
     },
     "me:2014:q45-s2": {
       "question_uid": "me:2014:q45-s2",
@@ -1996,7 +2044,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
         "markdown": "$$\\begin{aligned} \\delta &\\propto \\sqrt{x} \\\\ \\frac{\\delta_{2}}{\\delta_{1}}&=\\sqrt{\\frac{x_{2}}{x_{1}}}=\\sqrt{\\frac{0.75}{0.25}}=\\sqrt{3} \\\\ \\therefore \\qquad \\delta_{2}&=\\delta_{1} \\sqrt{3}=1.732 \\times 8=13.8564 \\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **13.85** (acceptable range: [13.5, 14.2])."
-      }
+      },
+      "answer": "13.85"
     },
     "me:2014:q46-s2": {
       "question_uid": "me:2014:q46-s2",
@@ -2039,7 +2088,8 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-7ea1a95e3f.webp\" />\n\n$$\\begin{aligned} \\text { Given, } \\frac{c_{p}}{c_{v}}&=\\gamma=1.4 \\\\ c_{p} &=1.005 \\mathrm{kJ} / \\mathrm{kgK} \\\\ p_{1} &=1 \\mathrm{bar} \\\\ T_{1} &=300 \\mathrm{K} \\\\ p_{2} &=8 \\mathrm{bar} \\\\ T_{3} &=T_{\\max }=1280 \\mathrm{K} \\\\ Q_{s} &=80 \\mathrm{MW}=80 \\times 10^{3} \\mathrm{kW} \\end{aligned}$$\n\nFor process 1-2\n\n$$\\begin{aligned} \\frac{T_{2}}{T_{1}}&=\\left(\\frac{p_{2}}{p_{1}}\\right)^{\\frac{\\gamma-1}{\\gamma}}=8^{\\frac{0.4}{1.4}}=1.8114\\\\ \\text{or}\\quad T_{2} &=300 \\times 1.8114=543.43 \\mathrm{K} \\\\ Q_{s} &=m c_{p}\\left(T_{3}-T_{2}\\right) \\\\ 80 \\times 10^{3} &=m \\times 1.005(1280-543.43)\\\\ \\text{or}\\quad m&=108.07 \\mathrm{kg} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **108.5** (acceptable range: [105, 112])."
-      }
+      },
+      "answer": "108.5"
     },
     "me:2014:q47-s2": {
       "question_uid": "me:2014:q47-s2",
@@ -2082,7 +2132,8 @@
       "detailed_solution": {
         "concept": "Thermodynamics - Power System",
         "markdown": "$$\\begin{aligned} \\eta_{b, \\max } &=\\cos ^{2} \\alpha=\\left(\\cos 20^{\\circ}\\right)^{2}=0.883 \\\\ &=88.3 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **87.5** (acceptable range: [85.1, 89.9])."
-      }
+      },
+      "answer": "87.5"
     },
     "me:2014:q48-s2": {
       "question_uid": "me:2014:q48-s2",
@@ -2125,7 +2176,8 @@
       "detailed_solution": {
         "concept": "Heat Transfer - Heat Exchanger",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-48130a7617.webp\" />\n\nGiven data:\n\n$$\\begin{aligned} c_{c}=4178 \\mathrm{J} / \\mathrm{kgK} ; c_{h}&=2130 \\mathrm{J} / \\mathrm{kgK} \\\\ m_{c}=1.5 \\mathrm{kg} / \\mathrm{s} ; m_{h}&=1 \\mathrm{kg} / \\mathrm{s} \\\\ C_{\\min }=& c_{h} m_{h}=2130 \\times 1=2130 \\mathrm{W} / \\mathrm{k} \\\\ C_{\\max }=& c_{c} m_{c}=4178 \\times 1.5 \\\\ =& 6267 \\mathrm{W} / \\mathrm{K} \\\\ \\Delta T_{1}=& 100-42=58^{\\circ} \\mathrm{C} \\\\ \\Delta T_{2}=& 50-25=25^{\\circ} \\mathrm{C} \\\\ \\Delta T_{l m} =&\\frac{\\Delta T_{1}-\\Delta T_{2}}{\\ln \\left(\\frac{\\Delta T_{1}}{\\Delta T_{2}}\\right)} \\\\ =& \\ln \\left(\\frac{58}{25}\\right)=39.21^{\\circ} \\mathrm{C} \\\\ Q=& \\mathrm{UA} \\Delta T_{\\mathrm{Im}} \\\\ \\text{ also}\\quad Q=& m_{c} c_{\\mathrm{c}}\\left(T_{\\mathrm{c} 2}-T_{\\mathrm{c} 1}\\right) \\\\ \\therefore \\quad UA \\Delta T_{l m}=&m_{c} c_{c}\\left(T_{c 2}-T_{c 1}\\right) \\\\ U A =&\\frac{4178 \\times 1.5(42-25)}{39.21} \\\\ =&2717.138 \\mathrm{W} / \\mathrm{K} \\end{aligned}$$\n\n$$\\begin{aligned} \\mathrm{NTU} &=\\frac{\\mathrm{UA}}{\\mathrm{C}_{\\min }}=\\frac{2717}{2130}=1.2756 \\\\ C &=\\frac{C_{\\min }}{C_{\\max }}=\\frac{2130}{6267}=0.34 \\\\ &=\\frac{1-\\exp [-N T U(1-C)]}{1-C \\exp [-N T U(1-C)]} \\\\ &=\\frac{1-\\exp [-1.2756 \\times 0.66]}{1-0.34 \\exp [1-2756 \\times 0.66]} \\\\ &=\\frac{1-0.43}{1-0.34 \\times 0.43}=0.6676\\\\ Alternatively:\\\\ \\epsilon &=\\frac{T_{h_{1}}-T_{h_{2}}}{T_{h_{1}}-T_{c_{1}}} \\\\ &=\\frac{100-50}{100-25} \\\\ &=\\frac{50}{75}=\\frac{2}{3}=0.6667 \\end{aligned}$$\n\nTherefore, the correct answer is **0.66** (acceptable range: [0.65, 0.67])."
-      }
+      },
+      "answer": "0.66"
     },
     "me:2014:q49-s2": {
       "question_uid": "me:2014:q49-s2",
@@ -2168,7 +2220,8 @@
       "detailed_solution": {
         "concept": "Refrigeration and Air-conditioning - Heat Pumps and Cycles",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-06077ba604.webp\" />\n\n$$\\begin{aligned} s_{2}-s_{2^{\\prime}}&=c_{p} \\log _{e} \\frac{T_{2}}{T_{2^{\\prime}}} \\\\ s_{1}&=s_{2} \\quad(\\text { for isentropic process }) \\\\ s_{2} &=1.7841 \\mathrm{kJ} / \\mathrm{kgK} \\\\ s_{2} &=1.7183 \\mathrm{kJ} / \\mathrm{kgK} \\\\ c_{p} &=0.98 \\mathrm{kJ} / \\mathrm{kg} \\mathrm{K} \\\\ \\therefore \\log _{e} \\frac{T_{2}}{T_{2^{\\prime}}} &=\\frac{s_{2}-s_{2^{\\prime}}}{c_{p}} \\\\ &=\\frac{1.7841-1.7183}{0.98}=0.0671\\\\ \\text { or } \\quad T_{2} &=1.0694 \\times T_{2^{\\prime}}=\\sqrt{.0694 \\times 298} \\\\ &=318.695 \\mathrm{K} \\\\ h_{2}-h_{2^{\\prime}} &=c_{p}\\left(T_{2}-T_{2}\\right) \\\\ h_{2} &=413.02+0.98(318.695-298) \\\\ h_{2} &=433.3 \\mathrm{kJ} / \\mathrm{kg} \\end{aligned}$$\n\nTherefore, the correct answer is **435** (acceptable range: [430, 440])."
-      }
+      },
+      "answer": "435"
     },
     "me:2014:q50-s2": {
       "question_uid": "me:2014:q50-s2",
@@ -2211,7 +2264,8 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - PERT and CPM",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-7fab06cb79.webp\">\n\nPath\n\nP-Q = 10 days\n\nP-R-S = 3+4+5 = 12 days\n\nSo P-R-S is critical path\n\nNow we will crash the activity 'S' by 2 day\n\nSo now P-R = 10 day\n\nP-R-S = 10 day\n\nboth are critical paths\n\nSo Total cost of project will be\n\n= Normal cost + overhead cost + crashing cost\n\n= 10000+200*(10 day) +200*2\n\n= 10000+2000+400\n\n= 12400 Rs\n\nTherefore, the correct answer is **12500** (acceptable range: [12490, 12510])."
-      }
+      },
+      "answer": "12500"
     },
     "me:2014:q51-s2": {
       "question_uid": "me:2014:q51-s2",
@@ -2254,7 +2308,8 @@
       "detailed_solution": {
         "concept": "Industrial Engineering - Inventory Control",
         "markdown": "$$\\begin{aligned} \\mathrm{EOQ} &=\\sqrt{\\frac{2 C_{o} D}{C_{h}}} \\\\ &=\\sqrt{\\frac{2 \\times 100000 \\times 30}{1.5}} \\\\ &=2000 \\mathrm{units}\\\\ \\text { Number of orders } &=\\frac{D}{\\mathrm{EOQ}} \\\\ &=\\frac{100000}{2000}=50 \\end{aligned}$$\n\nTherefore, the correct answer is **50** (acceptable range: [49, 51])."
-      }
+      },
+      "answer": "50"
     },
     "me:2014:q52-s2": {
       "question_uid": "me:2014:q52-s2",
@@ -2297,9 +2352,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
-      }
+        "concept": "Manufacturing Engineering - CNC Part Programming G-Codes",
+        "markdown": "- **Standard ISO G-Code Definitions for CNC Machining:**\n  - **P. Circular interpolation, counter-clockwise (CCW) $\\rightarrow$ II. G03:**\n    - $\\text{G03}$ instructs the CNC machine controller to move the cutting tool along a circular arc in the counter-clockwise direction at a programmed feed rate. $\\implies \\mathbf{P - II}$.\n  - **Q. Dwell $\\rightarrow$ III. G04:**\n    - $\\text{G04}$ introduces a programmed time delay (dwell) during which axis feed motion ceases while the spindle continues rotating, ensuring bottom hole cleanup. $\\implies \\mathbf{Q - III}$.\n  - **R. Circular interpolation, clockwise (CW) $\\rightarrow$ I. G02:**\n    - $\\text{G02}$ commands circular arc interpolation in the clockwise direction. $\\implies \\mathbf{R - I}$.\n  - **S. Point-to-point positioning $\\rightarrow$ IV. G00:**\n    - $\\text{G00}$ executes rapid axis traverse at maximum motor velocity for rapid non-cutting positioning. $\\implies \\mathbf{S - IV}$.\n\n- **Synthesis:**\n  - $P \\rightarrow \\text{II}, \\; Q \\rightarrow \\text{III}, \\; R \\rightarrow \\text{I}, \\; S \\rightarrow \\text{IV}$.\n  - Matches: $\\mathbf{P-II, \\; Q-III, \\; R-I, \\; S-IV}$.\n\nTherefore, the correct answer is **Option A (P-II, Q-III, R-I, S-IV)**.",
+        "images": []
+      },
+      "answer": "A"
     },
     "me:2014:q53-s2": {
       "question_uid": "me:2014:q53-s2",
@@ -2342,7 +2399,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Sheet Metal Operation",
         "markdown": "since there is no change in metal volume at\n\na give point per unit time throughout the process.\n\ntherefore\n\n$$\\begin{aligned} b_{i} h_{i} v_{i}&=b_{f} h_{f} v_{f} \\\\ &\\begin{aligned} \\text { Given, } \\quad \\frac{h_{f}}{h_{i}}&=\\frac{2}{3} \\\\ \\frac{b_{f}}{b_{i}}&=1.02 \\end{aligned} \\\\ \\therefore v_{f}&=\\frac{b_{i}}{b_{f}} \\times \\frac{h_{i}}{h_{f}} \\times v_{i}=\\frac{1}{1.02} \\times \\frac{2}{3} \\times 10 \\\\ &=14.7 \\mathrm{m} / \\mathrm{min} \\end{aligned}$$\n\nTherefore, the correct answer is **14.7** (acceptable range: [14.6, 14.8])."
-      }
+      },
+      "answer": "14.7"
     },
     "me:2014:q54-s2": {
       "question_uid": "me:2014:q54-s2",
@@ -2387,7 +2445,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
         "markdown": "$$\\begin{aligned} \\text { Drilling time: } t &=\\frac{L}{f N} \\\\ L=\\text { thickness } &+\\text { Approach + Overrun } \\\\ &=40+10=50 \\mathrm{mm} \\\\ & f=0.1 \\mathrm{mm} / \\mathrm{reV}\\\\ N&=400 \\mathrm{rpm} \\\\ \\therefore t=\\frac{50}{0.1 \\times 400}&=\\frac{500}{400}=1.25 \\mathrm{minutes} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:q55-s2": {
       "question_uid": "me:2014:q55-s2",
@@ -2432,7 +2491,8 @@
       "detailed_solution": {
         "concept": "Manufacturing Engineering - Sheet Metal Operation",
         "markdown": "<img src=\"/question-images/me/2014/me-2014-72129d9d2a.webp\" />\n\n$$\\begin{aligned} \\text { Shear area } &=P \\times t \\\\ &=2(100+50) \\times 5=1500 \\mathrm{mm}^{2} \\end{aligned}$$\n\nPunching force:\n\n$$\\begin{aligned} F &=\\tau \\times A_{s}=300 \\times 1500 \\\\ &=450 \\times 10^{ 3} \\mathrm{N}=450 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "me:2014:ga:q1-s2": {
       "question_uid": "me:2014:ga:q1-s2",
@@ -2476,7 +2536,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "me:2014:ga:q2-s2": {
       "question_uid": "me:2014:ga:q2-s2",
@@ -2520,7 +2581,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "me:2014:ga:q3-s2": {
       "question_uid": "me:2014:ga:q3-s2",
@@ -2564,7 +2626,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "me:2014:ga:q4-s2": {
       "question_uid": "me:2014:ga:q4-s2",
@@ -2608,7 +2671,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "B"
     },
     "me:2014:ga:q5-s2": {
       "question_uid": "me:2014:ga:q5-s2",
@@ -2650,7 +2714,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "45"
     },
     "me:2014:ga:q6-s2": {
       "question_uid": "me:2014:ga:q6-s2",
@@ -2694,7 +2759,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "C"
     },
     "me:2014:ga:q7-s2": {
       "question_uid": "me:2014:ga:q7-s2",
@@ -2738,7 +2804,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "me:2014:ga:q8-s2": {
       "question_uid": "me:2014:ga:q8-s2",
@@ -2780,7 +2847,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "163"
     },
     "me:2014:ga:q9-s2": {
       "question_uid": "me:2014:ga:q9-s2",
@@ -2824,7 +2892,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "D"
     },
     "me:2014:ga:q10-s2": {
       "question_uid": "me:2014:ga:q10-s2",
@@ -2868,7 +2937,8 @@
       "detailed_solution": {
         "concept": "ME Core Engineering",
         "markdown": null
-      }
+      },
+      "answer": "A"
     }
   }
 }

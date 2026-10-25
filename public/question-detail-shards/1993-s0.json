@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1993-s0",
   "yearSetKey": "1993-s0",
   "yearSetIdentity": "cse:1993:set-0",
@@ -54,6 +54,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Eigen Value",
+        "markdown": "The matrix maps $(x,y,z)$ to $(\\alpha z,0,0)$. Since its only eigenvalue is $0$, its eigenvectors are the nonzero vectors in the nullspace, which is characterized by $\\alpha z=0$. As $\\alpha\\ne0$, this means $z=0$. Options B and D are nonzero vectors with third coordinate zero. Options A and C have nonzero third coordinate and are not in the nullspace.\n\n**Therefore, the correct answers are Options B and D.**",
+        "images": []
       }
     },
     "go:597": {
@@ -376,6 +381,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 1,
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -389,7 +395,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Limits",
+        "markdown": "Expand near $x=0$:\n\n$$x(e^x-1)=x^2+\\frac{x^3}{2}+O(x^4),\\qquad 2(\\cos x-1)=-x^2+O(x^4).$$\n\nThe numerator is therefore $x^3/2+O(x^4)$. Also, $1-\\cos x=x^2/2+O(x^4)$, so the denominator is $x^3/2+O(x^5)$. Their ratio tends to 1.\n\n**Therefore, the numerical answer is 1.**",
+        "images": []
+      }
     },
     "go:606": {
       "title": "GATE CSE 1993 | Question: 02.2",
@@ -746,6 +757,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -786,6 +798,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -831,6 +844,10 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "A",
+        "C"
+      ],
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -922,6 +939,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 90,
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1003,6 +1021,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1092,6 +1111,11 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1131,6 +1155,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1170,6 +1195,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1209,6 +1235,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1252,6 +1279,10 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": [
+        "C",
+        "D"
+      ],
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1265,7 +1296,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "For a connected graph, the cycle rank is $m-n+1$. Here $m=n$, so the cycle rank is 1: the graph has exactly one cycle. Therefore C is true and A is false. Removing an edge on the cycle leaves the graph connected, so B is false. To disconnect the graph, removing both edges must break its unique cycle or remove a bridge; in either case every pair of removed edges leaves the graph disconnected, so D is true.\n\n**Therefore, the correct answers are Options C and D.**",
+        "images": []
+      }
     },
     "go:2300": {
       "title": "GATE CSE 1993 | Question: 8.2",
@@ -1291,6 +1327,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1304,7 +1341,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "Distribute $p$ over the disjunction:\n\n$$p\\wedge(\\neg p\\vee q)=(p\\wedge\\neg p)\\vee(p\\wedge q)=\\text{False}\\vee(p\\wedge q)=p\\wedge q.$$\n\nIt is not a tautology: it is false whenever $p$ is false. It is also not a contradiction, since it is true when both $p$ and $q$ are true.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:2301": {
       "title": "GATE CSE 1993 | Question: 8.3",
@@ -1344,6 +1386,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Set Theory",
+        "markdown": "If all of $S_1,\\ldots,S_n$ were finite, their finite union would also be finite. But their union is the infinite set $S$. Therefore at least one of the finitely many sets $S_i$ must be infinite. The other options either claim a finite set must occur or incorrectly limit how many can be infinite.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
       }
     },
     "go:2302": {
@@ -1384,6 +1431,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Set Theory",
+        "markdown": "If $|A|=n$, then the Cartesian product has $|A\\times A|=n^2$ ordered pairs. A set with $n^2$ elements has $2^{n^2}$ subsets, so\n\n$$|P(A\\times A)|=2^{n^2}.$$\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
       }
     },
     "go:2304": {
@@ -1410,6 +1462,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1423,7 +1476,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Functions",
+        "markdown": "Choose distinct images for the $m$ elements of $A$. There are $n$ choices for the first element, $n-1$ for the second, continuing to $n-m+1$ for the last. Thus\n\n$$n(n-1)\\cdots(n-m+1)=\\frac{n!}{(n-m)!}={}^{n}P_m.$$\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:2311": {
       "title": "GATE CSE 1993 | Question: 14",
@@ -1452,6 +1510,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 3,
       "track": "cse",
       "yearSetKey": "1993-s0",
       "yearSetIdentity": "cse:1993:set-0",
@@ -1633,6 +1692,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics",
+        "markdown": "On the real numbers, $<$ is irreflexive ($x\\not<x$), asymmetric (if $x<y$, then not $y<x$), and transitive. A non-strict partial order must be reflexive, so $<$ is not a partial order under that definition. But option C incorrectly says it is not asymmetric, and options A, B, and D also assert false properties. Hence none of A-D is correct.\n\n**Therefore, the correct answer is Option E (none of the above).**",
+        "images": []
       }
     },
     "go:2305": {

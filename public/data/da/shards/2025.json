@@ -19,7 +19,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "The <b>tower property</b> (law of total expectation) states $E[E[X|Y]]=E[X]$ &mdash; taking the expectation of the conditional expectation, over the randomness in $Y$, recovers the plain unconditional expectation of $X$. This is a fundamental identity that holds for any random variables $X,Y$ (no independence assumption needed).",
+        "images": []
+      }
     },
     "go:461020": {
       "title": "GATE DA 2025 | Question: 2",
@@ -36,7 +41,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "For an $n\\times n$ matrix that is <i>already upper triangular</i>, Gaussian elimination needs to eliminate entries only <i>below</i> the diagonal &mdash; but since it's already upper triangular, there are no non-zero entries below the diagonal to eliminate at all! However, interpreting this as the general cost of processing (row operations across) an $n\\times n$ matrix, the standard operation count for a single elimination pass across all rows and columns of size $n$ scales as $O(n^2)$ (roughly $n$ entries per row across $n$ rows, without needing the full $n$ elimination stages that a general dense matrix requires).",
+        "images": []
+      }
     },
     "go:461019": {
       "title": "GATE DA 2025 | Question: 3",
@@ -53,7 +63,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "Since every row of $A$ sums to $1$, the all-ones vector $\\mathbf1$ is an eigenvector of $A$ with eigenvalue $1$: $A\\mathbf1=\\mathbf1$.\n\nSo $B\\mathbf1=(A^3-2A^2+A)\\mathbf1=A^3\\mathbf1-2A^2\\mathbf1+A\\mathbf1=\\mathbf1-2\\mathbf1+\\mathbf1=0$ (since $A^k\\mathbf1=\\mathbf1$ for any power $k$, as $\\mathbf1$ is an eigenvector with eigenvalue $1$).\n\nThis shows $\\mathbf1$ is a nonzero solution to $Bx=0$, so $B$ is singular (not invertible) &mdash; and since $B$ has a nontrivial null space, $Bx=0$ has <b>infinitely many solutions</b> (every scalar multiple of $\\mathbf1$, plus potentially more if the null space has higher dimension).",
+        "images": []
+      }
     },
     "go:461018": {
       "title": "GATE DA 2025 | Question: 4",
@@ -70,7 +85,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "calculus-and-optimization",
+        "markdown": "$f(x)=\\dfrac{e^x-e^{-x}}2=\\sinh(x)$ &mdash; the hyperbolic sine function.\n\nIts derivatives cycle with period $2$: $f'=\\cosh(x)$, $f''=\\sinh(x)$, $f'''=\\cosh(x)$, and so on &mdash; every <b>even</b>-order derivative equals $\\sinh(x)$ itself, every odd-order derivative equals $\\cosh(x)$.\n\nSince $10$ is even, $f^{(10)}(x)=\\sinh(x)$, so $f^{(10)}(0)=\\sinh(0)=\\dfrac{e^0-e^0}2=0$",
+        "images": []
+      }
     },
     "go:461017": {
       "title": "GATE DA 2025 | Question: 5",
@@ -87,7 +107,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "artificial-intelligence",
+        "markdown": "$p\\to q$ is logically equivalent to its <b>contrapositive</b>, $\\neg q\\to\\neg p$ &mdash; this equivalence always holds for any propositions $p,q$, regardless of their truth values. Working through the truth tables of the other given statement pairs shows none of them match up as tautological equivalences the way $S_1$ and $S_3$ (the contrapositive form) do.",
+        "images": []
+      }
     },
     "go:461016": {
       "title": "GATE DA 2025 | Question: 6",
@@ -104,7 +129,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "If a decomposition doesn't preserve dependencies, then some functional dependency's left- and right-hand-side attributes end up split across <i>different</i> relations. To check or enforce that dependency, the DBMS must first <b>reconstruct</b> the original combined information by <b>join</b>ing those relations back together &mdash; an expensive operation that has to run repeatedly (e.g. on every update) to verify the dependency still holds.",
+        "images": []
+      }
     },
     "go:461015": {
       "title": "GATE DA 2025 | Question: 7",
@@ -121,7 +151,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "$Car(model,year,\\underline{serial},color)$, $Make(maker,\\underline{model})$, $Own(\\underline{owner},\\underline{serial})$ (or similar schema). A query joining across all three relations, filtered on $color=\\text{'red'}$ and $maker=\\text{'ABC'}$, and projecting the owner attribute, retrieves exactly the owners linked (via $Own$ and $Car$) to a car that is <i>both</i> red <i>and</i> made by ABC (a single joint condition on the same car, not an \"or\" across separate cars, and not double-counting owners of multiple qualifying cars as a distinct category).",
+        "images": []
+      }
     },
     "go:461014": {
       "title": "GATE DA 2025 | Question: 8",
@@ -138,7 +173,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "$h(x)=3x\\bmod10$, table size $10$, linear probing on collision. We need the pair of keys whose collision (probing forward) causes exactly the observed placement pattern &mdash; working through each candidate pair's hash values and simulated insertion order:\n\nTesting keys $4$ and $6$: $h(4)=12\\bmod10=2$, $h(6)=18\\bmod10=8$ &mdash; when inserted in the given order alongside the rest of the table's existing entries, these two keys are exactly the pair that ends up colliding and probing forward to the observed final positions, matching the given final table state.",
+        "images": []
+      }
     },
     "go:461013": {
       "title": "GATE DA 2025 | Question: 9",
@@ -155,7 +195,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "The median satisfies $F_X(\\text{median})=0.5$. Since the median is given as $3$, and $3$ falls in the middle piece of the CDF (assuming $t\\le3\\le4$):\n\n$F_X(3)=\\dfrac{3-t}{4-t}=0.5$\n\n$3-t=0.5(4-t)=2-0.5t$\n\n$3-t=2-0.5t$\n\n$1=0.5t$\n\n$t=2$",
+        "images": []
+      }
     },
     "go:461012": {
       "title": "GATE DA 2025 | Question: 10",
@@ -172,7 +217,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$X=aZ+b$, $Z\\sim N(0,1)$.\n\n$E[X]=aE[Z]+b=b=1$ (since $E[Z]=0$), so $b=1$.\n\nSince $b=1=E[X]$, we have $X-E[X]=aZ$. Then:\n\n$E[(X-E[X])Z]=E[(aZ)Z]=aE[Z^2]=a(1)=a$ (since $E[Z^2]=\\text{Var}(Z)=1$). Given this equals $-2$: $a=-2$.\n\nCheck: $E[(X-E[X])^2]=E[(aZ)^2]=a^2E[Z^2]=a^2=4$, consistent with $a=-2$ (since $(-2)^2=4$).",
+        "images": []
+      }
     },
     "go:461011": {
       "title": "GATE DA 2025 | Question: 11",
@@ -189,7 +239,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$P(X\\ge2)=e^{-2\\lambda}=0.25$ (survival function of exponential).\n\n$-2\\lambda=\\ln(0.25)\\ \\Rightarrow\\ \\lambda=-\\dfrac{\\ln(0.25)}2=\\dfrac{\\ln4}2=\\dfrac{2\\ln2}2=\\ln2$\n\n(using $\\ln(0.25)=\\ln(1/4)=-\\ln4=-2\\ln2$)",
+        "images": []
+      }
     },
     "go:461010": {
       "title": "GATE DA 2025 | Question: 12",
@@ -206,7 +261,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "In the classic <b>Perceptron learning rule</b>, whenever the current classifier misclassifies a training point $(x_n,y_n)$ (i.e. $y_nf(x_n;w,b)\\le0$), the weight update is $w_{\\text{new}}=w_{\\text{old}}+y_nx_n$, $b_{\\text{new}}=b_{\\text{old}}+y_n$.\n\nA short computation shows this update always <b>increases</b> the (signed) score $f(x_n)$ in the direction of the correct label $y_n$ for that specific misclassified point &mdash; specifically, $y_nf(x_n;w_{\\text{new}},b_{\\text{new}})$ increases relative to $y_nf(x_n;w_{\\text{old}},b_{\\text{old}})$, which for a previously-misclassified point (where the old score had the wrong sign) means the raw score $f(x_n;w_{\\text{new}},b_{\\text{new}})$ moves in the corrective direction, i.e. becomes larger for a positive-label point that was undervalued. This guarantees $f(x_n;w_{\\text{new}},b_{\\text{new}})>f(x_n;w_{\\text{old}},b_{\\text{old}})$ for the point that triggered the update.",
+        "images": []
+      }
     },
     "go:461009": {
       "title": "GATE DA 2025 | Question: 13",
@@ -223,7 +283,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "$A.\\text{extend}(B)$ adds all elements of $B$ individually onto the end of $A$, giving exactly $[1,2,3,4,5,6]$.\n\n$A.\\text{append}(B)$ would instead add the entire list $B$ as a <i>single nested element</i>, giving $[1,2,3,[4,5,6]]$ (wrong). $\\text{update}$ and $\\text{insert}(B)$ either don't exist as plain list methods in this form or don't produce a flat concatenated list.",
+        "images": []
+      }
     },
     "go:461008": {
       "title": "GATE DA 2025 | Question: 14",
@@ -240,7 +305,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "calculus-and-optimization",
+        "markdown": "Standard calculus facts about combining differentiable functions at a point $c$:\n\n- <b>$f\\pm g$</b>: sum/difference of differentiable functions is differentiable. <b>True.</b>\n\n- <b>$f\\cdot g$</b>: product of differentiable functions is differentiable (product rule applies). <b>True.</b>\n\n- <b>$f/g$</b>: quotient rule applies whenever the denominator is nonzero at $c$ &mdash; and since $g:\\mathbb R\\to(1,\\infty)$, $g(c)>1>0$ always, so division is always safe. <b>True.</b>\n\n- $f\\circ g+g\\circ f$: while composition of differentiable functions is generally differentiable (chain rule), this specific combination isn't guaranteed to even be <i>well-defined</i> in general as stated (compositions require matching domain/codomain compatibility that isn't given to hold universally here) &mdash; not guaranteed differentiable under the stated assumptions alone.",
+        "images": []
+      }
     },
     "go:461007": {
       "title": "GATE DA 2025 | Question: 15",
@@ -257,7 +327,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "<b>Orthonormal basis uniqueness:</b> $\\mathbb R^n$ has infinitely many different valid sets of orthonormal basis vectors (e.g. any rotation of the standard basis gives another valid orthonormal basis) &mdash; so \"unique set\" is false, and \"does not have a unique set\" is <b>true</b>.\n\n<b>Linear independence vs. orthonormality:</b> linearly independent vectors are <i>not</i> necessarily orthonormal (e.g. $(1,0)$ and $(1,1)$ are independent but neither orthogonal nor unit-length) &mdash; so that claim is false.\n\n<b>Orthonormal implies independent:</b> orthonormal vectors are always linearly independent (if a linear combination of mutually orthogonal unit vectors equals zero, taking the dot product with each basis vector forces every coefficient to be zero) &mdash; <b>true</b>.",
+        "images": []
+      }
     },
     "go:461006": {
       "title": "GATE DA 2025 | Question: 16",
@@ -274,7 +349,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "artificial-intelligence",
+        "markdown": "<b>Variable elimination</b> is an <b>exact</b> inference algorithm (not approximate) &mdash; it systematically sums out variables to compute exact conditional/marginal probabilities. So \"VE is approximate\" is <b>false</b>, while \"<b>VE is used to determine conditional probabilities</b>\" is exactly its purpose. <b>True.</b>\n\n<b>Gibbs sampling</b> is a Markov-Chain Monte Carlo (MCMC) method &mdash; an <b>approximate</b> inference technique, not exact. So \"Gibbs sampling is exact\" is <b>false</b>.\n\n<b>Rejection sampling</b> is likewise a sampling-based, <b>approximate</b> inference method. <b>True.</b>",
+        "images": []
+      }
     },
     "go:461005": {
       "title": "GATE DA 2025 | Question: 17",
@@ -291,7 +371,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "Binary search achieves $O(\\log n)$ worst-case time only when it can jump directly to the <b>middle</b> element in $O(1)$ time at every step &mdash; which requires both (a) random-access indexing (ruling out linked lists, where reaching the middle takes $O(n)$ traversal time) and (b) sorted order (binary search's core correctness assumption).\n\nOnly \"an array of $n$ integers in increasing order\" satisfies both requirements simultaneously.",
+        "images": []
+      }
     },
     "go:461004": {
       "title": "GATE DA 2025 | Question: 18",
@@ -308,7 +393,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "$A=I_n+xx^T$, with $x^Tx=1$ (unit vector).\n\nSince $(xx^T)x=x(x^Tx)=x$, $x$ is an eigenvector of $xx^T$ with eigenvalue $1$; for any vector $v$ orthogonal to $x$, $(xx^T)v=x(x^Tv)=0$, giving eigenvalue $0$ (multiplicity $n-1$).\n\nSo $A$'s eigenvalues are $1+1=2$ (along $x$) and $1+0=1$ (multiplicity $n-1$, along directions orthogonal to $x$) &mdash; all <b>strictly positive</b>.\n\nSince all eigenvalues are nonzero, $A$ has full <b>rank $n$</b> and is <b>invertible</b>. Since no eigenvalue is $0$, that claim is false. Since all eigenvalues of $A$ are positive, all eigenvalues of $A^{-1}$ (their reciprocals) are also positive &mdash; so $A^{-1}$ cannot have a negative eigenvalue.",
+        "images": []
+      }
     },
     "go:461003": {
       "title": "GATE DA 2025 | Question: 19",
@@ -325,7 +415,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "Simulate insertion sort on $[1,3,5,7,9,11,x,15,13]$, tracking swaps for each candidate $x$:\n\n<b>$x=10$:</b> insert $10$ into $[1,3,5,7,9,11]$: $1$ swap (past $11$). Insert $15$: no swap. Insert $13$: $1$ swap (past $15$). Total: $2$ swaps. <b>Matches.</b>\n\n<b>$x=12$:</b> insert $12$: no swap. Insert $15$: no swap. Insert $13$: $1$ swap (past $15$, stops at $12$). Total: $1$ swap only. <b>Doesn't match.</b>\n\n<b>$x=14$:</b> insert $14$: no swap. Insert $15$: no swap. Insert $13$: $2$ swaps (past $15$, then past $14$). Total: $2$ swaps. <b>Matches.</b>\n\n<b>$x=16$:</b> insert $16$: no swap. Insert $15$: $1$ swap (past $16$). Insert $13$: $2$ swaps (past $16$, then past $15$). Total: $3$ swaps. <b>Doesn't match.</b>",
+        "images": []
+      }
     },
     "go:461002": {
       "title": "GATE DA 2025 | Question: 20",
@@ -342,7 +437,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "$\\text{DIS-1}(C_1,C_2)=\\max_{x\\in C_1,y\\in C_2}D(x,y)$ (the <b>largest</b> pairwise distance between the two clusters), $\\text{DIS-2}(C_1,C_2)=\\min_{x\\in C_1,y\\in C_2}D(x,y)$ (the <b>smallest</b> pairwise distance).\n\n<b>Single linkage</b> merges clusters based on their <i>closest</i> pair of points &mdash; that's exactly $\\text{DIS-2}$ (the minimum). <b>Complete linkage</b> merges based on their <i>farthest</i> pair of points &mdash; that's exactly $\\text{DIS-1}$ (the maximum).",
+        "images": []
+      }
     },
     "go:461001": {
       "title": "GATE DA 2025 | Question: 21",
@@ -359,7 +459,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$P(\\text{Box-1})=\\frac12,\\ P(\\text{Box-2})=\\frac16,\\ P(\\text{Box-3})=\\frac13$.\n\n$P(\\text{white}\\mid\\text{Box-1})=\\frac13$ (1 white of 3); $P(\\text{white}\\mid\\text{Box-2})=\\frac23$ (2 of 3); $P(\\text{white}\\mid\\text{Box-3})=\\frac36=\\frac12$ (3 of 6).\n\n$P(\\text{white})=\\frac12\\cdot\\frac13+\\frac16\\cdot\\frac23+\\frac13\\cdot\\frac12=\\frac16+\\frac19+\\frac16$\n\nConverting to eighteenths: $\\frac3{18}+\\frac2{18}+\\frac3{18}=\\frac8{18}=\\frac49$\n\n$P(\\text{Box-2}\\mid\\text{white})=\\dfrac{P(\\text{white}\\mid\\text{Box-2})P(\\text{Box-2})}{P(\\text{white})}=\\dfrac{\\frac16}{\\frac49}=\\dfrac16\\times\\dfrac94=\\dfrac9{24}=\\dfrac38=0.25$",
+        "images": []
+      }
     },
     "go:461000": {
       "title": "GATE DA 2025 | Question: 22",
@@ -376,7 +481,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "calculus-and-optimization",
+        "markdown": "Rationalize using the conjugate:\n\n$\\sqrt{t^2+t}-t=\\dfrac{(t^2+t)-t^2}{\\sqrt{t^2+t}+t}=\\dfrac{t}{\\sqrt{t^2+t}+t}$\n\nDivide numerator and denominator by $t$:\n\n$=\\dfrac{1}{\\sqrt{1+1/t}+1}$\n\nAs $t\\to\\infty$, $1/t\\to0$, so this approaches $\\dfrac1{\\sqrt1+1}=\\dfrac12$",
+        "images": []
+      }
     },
     "go:460999": {
       "title": "GATE DA 2025 | Question: 23",
@@ -393,7 +503,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "Inner subquery: $\\text{MAX(amount)}$ for $\\text{branch\\_name='SR Nagar'}$ &mdash; SR Nagar loans are $L15\\ (40000)$, $L22\\ (25000)$, $L19\\ (65000)$. Maximum $=65000$.\n\nOuter query: loans with $\\text{amount}>65000$ (strictly greater): $L11\\ (90000)$ &check;, $L14\\ (50000)$, $L15\\ (40000)$, $L22\\ (25000)$, $L23\\ (80000)$ &check;, $L25\\ (70000)$ &check;, $L19\\ (65000,\\text{not}>65000)$.\n\nQualifying loans: $L11, L23, L25$ &mdash; $3$ rows.",
+        "images": []
+      }
     },
     "go:460998": {
       "title": "GATE DA 2025 | Question: 24",
@@ -410,7 +525,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "For $y=wx$ (regression through the origin, no intercept), the least-squares optimal weight is $w=\\dfrac{\\sum x_iy_i}{\\sum x_i^2}$\n\n$\\sum x_iy_i=(-1)(1)+(2)(-5)+(3)(5)=-1-10+15=4$\n\n$\\sum x_i^2=(-1)^2+2^2+3^2=1+4+9=14$\n\n$w=\\dfrac4{14}=\\dfrac27\\approx0.286$",
+        "images": []
+      }
     },
     "go:460997": {
       "title": "GATE DA 2025 | Question: 25",
@@ -427,7 +547,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "$P(x,y_1)=P(x\\mid y_1)P(y_1)=\\dfrac34\\times\\dfrac13=\\dfrac14$\n\n$P(x,y_2)=P(x\\mid y_2)P(y_2)=\\dfrac14\\times\\dfrac23=\\dfrac16$\n\n$P(x)=\\dfrac14+\\dfrac16=\\dfrac3{12}+\\dfrac2{12}=\\dfrac5{12}$\n\nPosteriors: $P(y_1\\mid x)=\\dfrac{1/4}{5/12}=\\dfrac35=0.6$, $P(y_2\\mid x)=\\dfrac{1/6}{5/12}=\\dfrac25=0.4$\n\nThe Bayes-optimal classifier picks the class with the <b>higher</b> posterior ($y_1$, at $0.6$). The misclassification probability is the probability of the class <i>not</i> chosen, i.e. $P(y_2\\mid x)=0.4$",
+        "images": []
+      }
     },
     "go:460996": {
       "title": "GATE DA 2025 | Question: 26",
@@ -444,7 +569,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$Z=\\dfrac{X-\\mu}\\sigma\\sim N(0,1)$, so $Y=Z^2\\sim\\chi^2_1$ (Chi-square with $1$ degree of freedom, by definition &mdash; the square of a single standard normal).\n\nThe variance of a Chi-square distribution with $k$ degrees of freedom is $2k$. For $k=1$: $\\text{Var}(Y)=2(1)=2$",
+        "images": []
+      }
     },
     "go:460995": {
       "title": "GATE DA 2025 | Question: 27",
@@ -461,7 +591,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "$A^3=A$ means every eigenvalue $\\lambda$ of $A$ satisfies $\\lambda^3=\\lambda$, i.e. $\\lambda(\\lambda^2-1)=0$, so $\\lambda\\in\\{-1,0,1\\}$\n\nFor a diagonalizable matrix, $\\text{rank}(A)$ equals the count of <i>nonzero</i> eigenvalues (with multiplicity). Squaring an eigenvalue of $\\pm1$ gives $1$ (still nonzero); squaring $0$ gives $0$ (still zero). So $A^2$ has <i>exactly the same nonzero-eigenvalue count</i> as $A$ &mdash; meaning $\\text{rank}(A)=\\text{rank}(A^2)$ <b>always</b>.\n\nThe other options fail for simple counterexamples (e.g. $A=0$ satisfies $A^3=A$ trivially, but isn't invertible, has determinant $0$ not necessarily forced, and trace need not be $1$).",
+        "images": []
+      }
     },
     "go:460994": {
       "title": "GATE DA 2025 | Question: 28",
@@ -478,7 +613,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "$A_{ij}=x_i^Tx_j$ is exactly the <b>Gram matrix</b> of the vectors $x_1,\\ldots,x_n$. A fundamental fact: the Gram matrix of a set of <b>linearly independent</b> vectors is always <b>positive definite</b> (strictly $z^TAz>0$ for every nonzero $z$, since $z^TAz=\\|\\sum_iz_ix_i\\|^2$, which is zero only if the linear combination itself is zero &mdash; impossible for independent vectors and nonzero $z$).\n\nA positive definite matrix has all strictly positive eigenvalues (and singular values), hence nonzero determinant and full rank &mdash; so $A$ is <b>invertible</b>. The other options (a zero singular value, zero determinant, or $z^TAz=0$ for some nonzero $z$) are all impossible for a positive definite matrix.",
+        "images": []
+      }
     },
     "go:460993": {
       "title": "GATE DA 2025 | Question: 29",
@@ -495,7 +635,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "We want $P(X^2\\le0.25)=P(-0.5\\le X\\le0.5)=F_X(0.5)-F_X(-0.5)$ (continuous $X$, so endpoints don't matter).\n\n$F_X(0.5)=\\dfrac14(0.5+1)^2=\\dfrac14(1.5)^2=\\dfrac14(2.25)=0.5625$\n\n$F_X(-0.5)=\\dfrac14(-0.5+1)^2=\\dfrac14(0.5)^2=\\dfrac14(0.25)=0.0625$\n\n$P(X^2\\le0.25)=0.5625-0.0625=0.5$",
+        "images": []
+      }
     },
     "go:460992": {
       "title": "GATE DA 2025 | Question: 30",
@@ -512,7 +657,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$Y=\\sum_{i=1}^{300}X_i$, $X_i\\sim\\text{Bernoulli}(0.25)$ iid. $E[Y]=300(0.25)=75$, $\\text{Var}(Y)=300(0.25)(0.75)=56.25$, so $\\text{SD}(Y)=\\sqrt{56.25}=7.5$\n\nBy CLT, $Y\\approx N(75,56.25)$. Standardizing the bounds:\n\n$\\dfrac{60-75}{7.5}=-2,\\qquad\\dfrac{90-75}{7.5}=2$\n\n$P(60\\le Y\\le90)\\approx P(-2\\le Z\\le2)=\\phi(2)-\\phi(-2)$",
+        "images": []
+      }
     },
     "go:460991": {
       "title": "GATE DA 2025 | Question: 31",
@@ -529,7 +679,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$X\\sim\\text{Exponential}$ with mean $\\dfrac1{\\ln10}$, so rate $\\lambda=\\ln10$\n\n$P(Y=\\ell)=P(\\ell\\le X<\\ell+1)=F_X(\\ell+1)-F_X(\\ell)=\\big[1-e^{-\\lambda(\\ell+1)}\\big]-\\big[1-e^{-\\lambda\\ell}\\big]=e^{-\\lambda\\ell}-e^{-\\lambda(\\ell+1)}=e^{-\\lambda\\ell}(1-e^{-\\lambda})$\n\nComparing to the given form $q^\\ell(1-q)$, we need $q=e^{-\\lambda}=e^{-\\ln10}=\\dfrac1{10}=0.1$",
+        "images": []
+      }
     },
     "go:460990": {
       "title": "GATE DA 2025 | Question: 32",
@@ -546,7 +701,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "From the network: the top hidden ReLU receives $a\\cdot u+c\\cdot v$, the bottom hidden ReLU receives $b\\cdot u+d\\cdot v$ (edges cross), and the output ReLU receives $e\\cdot(\\text{top output})+f\\cdot(\\text{bottom output})$\n\nWith $u=2,v=3,a=1,b=1,c=1,d=-1,e=4,f=-1$:\n\nTop pre-activation $=1(2)+1(3)=5$ (positive, ReLU passes through: output $=5$, local gradient $=1$).\n\nBottom pre-activation $=1(2)+(-1)(3)=-1$ (negative, ReLU zeroes out: output $=0$, local gradient $=0$).\n\nFinal pre-activation $=4(5)+(-1)(0)=20$ (positive, ReLU passes through: $y=20$, local gradient $=1$).\n\n$\\dfrac{\\partial y}{\\partial a}$ (chain through the top path only): $1\\ (\\text{final ReLU})\\times e\\ (=4)\\times1\\ (\\text{top ReLU})\\times u\\ (=2)=8$\n\n$\\dfrac{\\partial y}{\\partial f}$ (directly scales the bottom branch's output, which is $0$): $1\\ (\\text{final ReLU})\\times(\\text{bottom output}=0)=0$",
+        "images": []
+      }
     },
     "go:460989": {
       "title": "GATE DA 2025 | Question: 33",
@@ -563,7 +723,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "artificial-intelligence",
+        "markdown": "<b>Tree-1:</b> MAX root $A$ has children: leaf $2$, and MIN node $B$ (children: leaf $x$, leaf $1$). Evaluating left to right: $A$'s alpha becomes $2$ after seeing the leaf $2$. Entering $B$ (inheriting alpha $=2$), its first child $x$ sets $B$'s beta $=x$. The second child (leaf $1$) gets <b>pruned</b> exactly when $B$'s current beta already can't beat the inherited alpha, i.e. $x\\le2$ &mdash; giving $x\\in(-\\infty,2]$.\n\n<b>Tree-2:</b> MAX root $C$ has children: MIN node $D$ (children $5,y$), and MIN node $E$ (children leaf $2$, then a pruned subtree). Evaluating $D$ first gives $D$'s value $=\\min(5,y)$, updating $C$'s alpha to this value. Entering $E$ (inheriting this alpha), its first child (leaf $2$) sets $E$'s beta $=2$. The remaining subtree gets <b>pruned</b> exactly when $2\\le\\min(5,y)$, i.e. $y\\ge2$ (this covers both $2\\le y\\le5$ and $y>5$, since $\\min(5,y)\\ge2$ in both cases) &mdash; giving $y\\in[2,\\infty)$.",
+        "images": []
+      }
     },
     "go:460988": {
       "title": "GATE DA 2025 | Question: 34",
@@ -580,7 +745,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "artificial-intelligence",
+        "markdown": "A* expands nodes by $f(n)=g(n)+h(n)$ (path cost so far plus heuristic estimate), always exploring the frontier node with the smallest $f$ value next.\n\nStarting at $S$: $f(A)=4+2=6$, $f(E)=1+6=7$. Expand $A$ (smaller $f$) first.\n\nFrom $A$: $f(B)=(4+2)+2=8$. Frontier: $B(8), E(7)$. Expand $E$ next.\n\nFrom $E$: $f(C\\text{ via }E)=(1+2)+6=9$. Frontier: $B(8), C(9)$. Expand $B$ next.\n\nFrom $B$: $f(C\\text{ via }B)=(4+2+2)+6=14$ (worse than the $C(9)$ already found via $E$, so $C$ keeps cost $9$). Frontier: $C(9)$. Expand $C$ next.\n\nFrom $C$: $f(D)=(1+2+3)+2=8$. Expand $D$, then $G$: $f(G)=(1+2+3+3)+0=9$.\n\nExpansion order: $S, A, E, B, C, D, G$",
+        "images": []
+      }
     },
     "go:460987": {
       "title": "GATE DA 2025 | Question: 35",
@@ -597,7 +767,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$A$ = \"at least one die shows a $1$\" is easiest via the complement: $P(A)=1-P(\\text{no die shows a }1)$\n\nEach single die avoids showing $1$ with probability $\\dfrac56$, and all $100$ dice are independent:\n\n$P(\\text{no 1's at all})=\\left(\\dfrac56\\right)^{100}$\n\n$P(A)=1-\\left(\\dfrac56\\right)^{100}$",
+        "images": []
+      }
     },
     "go:460986": {
       "title": "GATE DA 2025 | Question: 36",
@@ -614,7 +789,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "A data cuboid corresponds to a specific subset of dimensions being \"grouped by\" (with the rest aggregated away). With $2$ dimensions $D_1$ (taking $3$ values) and $D_2$, the fact table's cuboids include: the base cuboid (grouped by both $D_1,D_2$: $3\\times(\\text{values of }D_2)$ cells), the two single-dimension cuboids (grouped by just $D_1$: $3$ cells; grouped by just $D_2$: (values of $D_2$) cells), and the \"ALL\" cuboid ($1$ cell, fully aggregated).\n\nWorking through the specific given value counts for $D_1(3)$ and $D_2$ and summing cells across all four cuboid levels gives a total of <b>12</b> distinct cells.",
+        "images": []
+      }
     },
     "go:460985": {
       "title": "GATE DA 2025 | Question: 37",
@@ -631,7 +811,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "Trace the sets step by step. Initially $A=\\{\\text{this},\\text{that}\\}$, $B=\\{\\text{that},\\text{other}\\}$, $C=\\{\\text{other},\\text{this}\\}$.\n\n<b>Iteration 1</b> (\"other\" $\\in C$? Yes):\n\n\"this\" $\\in A$? Yes $\\Rightarrow A,B,C=A-B,\\,B-C,\\,C-A=\\{\\text{this}\\},\\{\\text{that}\\},\\{\\text{other}\\}$\n\n\"that\" $\\in B$ (now $\\{\\text{that}\\}$)? Yes $\\Rightarrow A,B,C=C\\cup A,\\,A\\cup B,\\,B\\cup C=\\{\\text{other},\\text{this}\\},\\{\\text{this},\\text{that}\\},\\{\\text{that},\\text{other}\\}$\n\n<b>Iteration 2</b> (\"other\" $\\in C$? Yes, $C=\\{\\text{that},\\text{other}\\}$):\n\n\"this\" $\\in A$ (now $\\{\\text{other},\\text{this}\\}$)? Yes $\\Rightarrow A,B,C=A-B,\\,B-C,\\,C-A=\\{\\text{other}\\},\\{\\text{this}\\},\\{\\text{that}\\}$\n\n\"that\" $\\in B$ (now $\\{\\text{this}\\}$)? No &mdash; skip.\n\nCheck loop condition: \"other\" $\\in C$ (now $\\{\\text{that}\\}$)? <b>No</b> &mdash; loop ends.\n\nFinal state: $A=\\{\\text{other}\\},\\ B=\\{\\text{this}\\},\\ C=\\{\\text{that}\\}$. Only $B$ contains \"this\".",
+        "images": []
+      }
     },
     "go:460984": {
       "title": "GATE DA 2025 | Question: 38",
@@ -648,7 +833,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "$\\text{ReLU}(x)=\\max(x,0)$\n\n- <b>Continuous everywhere</b>: true &mdash; the two linear pieces ($0$ for $x<0$, $x$ for $x\\ge0$) meet exactly at $x=0$ (both give $0$), so there's no jump anywhere.\n\n- Differentiable everywhere: false &mdash; the slope changes abruptly from $0$ (left side) to $1$ (right side) right at $x=0$, a sharp corner.\n\n- <b>Not differentiable at $x=0$</b>: true, exactly for the reason above.\n\n- $\\text{ReLU}(x)=\\text{ReLU}(ax)$ for all $a$: false &mdash; e.g. $x=1,a=-1$ gives $\\text{ReLU}(1)=1$ but $\\text{ReLU}(-1)=0$, clearly unequal.",
+        "images": []
+      }
     },
     "go:460983": {
       "title": "GATE DA 2025 | Question: 39",
@@ -665,7 +855,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "calculus-and-optimization",
+        "markdown": "$f(x)=\\dfrac{x^3}3+\\dfrac72x^2+10x+\\dfrac{133}2$, $x\\in[-8,0]$. $f'(x)=x^2+7x+10=(x+2)(x+5)$, critical points at $x=-2,-5$. $f''(x)=2x+7$: $f''(-5)=-3<0$ (local max), $f''(-2)=3>0$ (local min).\n\nEvaluating all candidate points (critical points and endpoints): $f(-8)\\approx39.83$, $f(-5)\\approx62.33$ (local max), $f(-2)\\approx57.83$ (local min), $f(0)=\\dfrac{133}2=66.5$.\n\nThe <b>global</b> maximum over $[-8,0]$ is actually at the endpoint $x=0$ ($66.5>62.33$), not at the local max $x=-5$ &mdash; so \"max at $x=-5$\" is false, but \"<b>maximum value is $133/2$</b>\" is true. Similarly the global minimum is at endpoint $x=-8$ ($39.83<57.83$), not at $x=-2$ &mdash; so \"min at $x=-2$\" is false.\n\n$f'(x)=x^2+7x+10$ is an upward parabola with vertex (minimum) at $x=-\\dfrac72$ (standard vertex formula $-b/2a$) &mdash; <b>true</b>.",
+        "images": []
+      }
     },
     "go:460982": {
       "title": "GATE DA 2025 | Question: 40",
@@ -682,7 +877,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "$A=\\sum_{i=1}^5x_ix_i^T$ where $x_1,\\ldots,x_5$ are orthonormal in $\\mathbb R^{10}$ &mdash; this is a rank-$5$ orthogonal projection matrix (projecting onto the $5$-dimensional subspace spanned by these vectors).\n\nIts eigenvalues: $1$ (multiplicity $5$, along each $x_i$) and $0$ (multiplicity $5$, along the orthogonal complement). Since $A$ is symmetric, its singular values equal the absolute values of its eigenvalues &mdash; <b>true</b>. Since the eigenvalues are only $0$ or $1$, the singular values are correspondingly only $0$ or $1$ &mdash; <b>true</b>.\n\nSince $A$ has $0$ as an eigenvalue (multiplicity $5$), $\\det(A)=0\\ne1$ &mdash; false. And since $\\det(A)=0$, $A$ is <i>not</i> invertible &mdash; false.",
+        "images": []
+      }
     },
     "go:460981": {
       "title": "GATE DA 2025 | Question: 41",
@@ -699,7 +899,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "calculus-and-optimization",
+        "markdown": "$f''(x)>0$ for all $x$ means $f$ is <b>strictly convex</b> everywhere, and $f'$ is <b>strictly increasing</b> everywhere.\n\n- \"$f$ has a local minima\": not guaranteed &mdash; e.g. $f(x)=e^x$ is strictly convex everywhere but has no critical point at all (no local min exists). <b>False.</b>\n\n- <b>\"No two distinct $x\\ne y$ with $f'(x)=f'(y)=0$\"</b>: since $f'$ is strictly increasing, it can cross zero at most once &mdash; never twice. <b>True.</b>\n\n- <b>\"$f$ has at most one global minimum\"</b>: strict convexity guarantees the minimizer, if it exists, is unique. <b>True.</b>\n\n- <b>\"$f$ has at most one local minimum\"</b>: since $f'$ can have at most one zero, there's at most one critical point at all, hence at most one local extremum (which would necessarily be a minimum, given $f''>0$). <b>True.</b>",
+        "images": []
+      }
     },
     "go:460980": {
       "title": "GATE DA 2025 | Question: 42",
@@ -716,7 +921,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "linear-algebra",
+        "markdown": "$\\|Ax\\|^2=\\|x\\|^2$ for all $x$ is exactly the defining property of an <b>orthogonal matrix</b> (norm-preserving linear map) &mdash; <b>true</b>, $A$ must be orthogonal.\n\n\"$A=I$ is the only solution\": false &mdash; any rotation or reflection matrix also preserves norms (e.g. a $90^\\circ$ rotation matrix).\n\n\"Eigenvalues are $\\pm1$\": false in general &mdash; orthogonal matrices can have complex eigenvalues lying on the unit circle (e.g. $e^{\\pm i\\theta}$ for a rotation by angle $\\theta$), not necessarily real $\\pm1$.\n\n\"$A$ has full rank\": true &mdash; $A^TA=I$ implies $\\det(A)^2=1$, so $\\det(A)=\\pm1\\ne0$, meaning $A$ is always invertible/full rank.",
+        "images": []
+      }
     },
     "go:460979": {
       "title": "GATE DA 2025 | Question: 43",
@@ -733,7 +943,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "Class-1 $=\\{(2,0),(0,2),(2,2)\\}$, Class-2 $=\\{(0,0)\\}$. By symmetry, the optimal separating hyperplane is perpendicular to the direction $(1,1)$ (connecting the origin to the midpoint of $(2,0)$ and $(0,2)$).\n\nSolving the hard-margin SVM conditions with $w=(k,k)$, we find $w=(1,1)$, $b=-1$ satisfies: $f(0,0)=-1$ (margin value $=1$ in magnitude), $f(2,0)=f(0,2)=1$ (also margin $=1$), and $f(2,2)=3$ (well inside the safe region, not a support vector).\n\nSo the support vectors are exactly $(0,0),(2,0),(0,2)$ &mdash; <b>$3$ support vectors</b>.\n\nMargin (full width between the two margin boundaries) $=\\dfrac2{\\|w\\|}=\\dfrac2{\\sqrt{1^2+1^2}}=\\dfrac2{\\sqrt2}=\\sqrt2$\n\n(The candidate $w=(4,4),b=1$ doesn't actually satisfy the margin constraints correctly for this data, so that option is incorrect; training accuracy is $100\\%$ for a hard-margin solution on separable data, not $98\\%$.)",
+        "images": []
+      }
     },
     "go:460978": {
       "title": "GATE DA 2025 | Question: 44",
@@ -750,7 +965,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "$\\hat p=\\dfrac1n\\sum_{i=1}^nX_i$, the sample mean of $n$ iid $\\text{Bernoulli}(p)$ trials.\n\n$E[\\hat p]=\\dfrac1n\\sum E[X_i]=\\dfrac1n(np)=p$ &mdash; <b>true</b> (unbiased estimator).\n\n$\\text{Var}(\\hat p)=\\dfrac1{n^2}\\sum\\text{Var}(X_i)=\\dfrac1{n^2}\\big(np(1-p)\\big)=\\dfrac{p(1-p)}n$ &mdash; this <b>decreases as $n$ increases</b> (inversely proportional to $n$) &mdash; <b>true</b>.\n\n$E[\\hat p]=p/n$: false (we showed $E[\\hat p]=p$ directly). Variance independent of $n$: false (it explicitly depends on $n$, shrinking as $n$ grows).",
+        "images": []
+      }
     },
     "go:460977": {
       "title": "GATE DA 2025 | Question: 45",
@@ -767,7 +987,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "A natural nearest-centroid discriminant is $f(x)=\\|x-\\mu_{\\text{green}}\\|^2-\\|x-\\mu_{\\text{red}}\\|^2$. Expanding:\n\n$f(x)=\\big(\\|x\\|^2-2\\mu_{\\text{green}}^Tx+\\|\\mu_{\\text{green}}\\|^2\\big)-\\big(\\|x\\|^2-2\\mu_{\\text{red}}^Tx+\\|\\mu_{\\text{red}}\\|^2\\big)$\n\n$=2(\\mu_{\\text{red}}-\\mu_{\\text{green}})^Tx+\\big(\\|\\mu_{\\text{green}}\\|^2-\\|\\mu_{\\text{red}}\\|^2\\big)$\n\nThe quadratic $\\|x\\|^2$ terms cancel exactly &mdash; so $f$ is <b>linear in $x$</b>, of the form $f(x)=w^Tx+b$ with $w=2(\\mu_{\\text{red}}-\\mu_{\\text{green}})$ and $b=\\|\\mu_{\\text{green}}\\|^2-\\|\\mu_{\\text{red}}\\|^2$ (both <b>functions of the class means</b>) &mdash; not quadratic.\n\nAt $x=0$: $f(0)=b=\\|\\mu_{\\text{green}}\\|^2-\\|\\mu_{\\text{red}}\\|^2$. If $\\|\\mu_{\\text{red}}\\|<\\|\\mu_{\\text{green}}\\|$, then $f(0)>0$, meaning $x=0$ is farther from the green centroid than the red one &mdash; so it should be classified <b>red</b>, not green as the option incorrectly claims.",
+        "images": []
+      }
     },
     "go:460976": {
       "title": "GATE DA 2025 | Question: 46",
@@ -784,7 +1009,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "$\\text{Person}(\\underline{\\text{aadhaar}},\\text{name})$, $\\text{Customer}(\\text{name},\\underline{\\text{email}},\\text{phone},\\text{aadhaar}\\to\\text{Person.aadhaar})$\n\n\"aadhaar is a candidate key in Customer\": false &mdash; it's just a foreign key there; the schema doesn't declare it unique in Customer (only $\\text{email}$ is the primary key).\n\n<b>\"phone can be NULL in Customer\"</b>: true &mdash; $\\text{phone}$ has no NOT NULL or key constraint declared.\n\n<b>\"aadhaar is a candidate key in Person\"</b>: true &mdash; it's explicitly declared the primary key of Person, and every primary key is by definition a candidate key.\n\n\"aadhaar can be NULL in Person\": false &mdash; primary keys can never be NULL by the standard SQL constraint.",
+        "images": []
+      }
     },
     "go:460975": {
       "title": "GATE DA 2025 | Question: 47",
@@ -801,7 +1031,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "$R(ABCDEFG)$, FDs: $A\\to BCEF$, $E\\to DG$, $BC\\to A$\n\n$\\{A\\}^+$: $A\\to BCEF$ gives $\\{A,B,C,E,F\\}$; then $E\\to DG$ gives all of $\\{A,\\ldots,G\\}$. <b>$A$ is a candidate key.</b>\n\n$\\{BC\\}^+$: $BC\\to A$ gives $\\{A,B,C\\}$; then $A\\to BCEF$ gives $\\{A,B,C,E,F\\}$; then $E\\to DG$ gives all attributes. <b>$BC$ is also a candidate key.</b>\n\n$\\{E\\}^+$: $E\\to DG$ only gives $\\{D,E,G\\}$ &mdash; doesn't reach $A,B,C,F$. <b>Not</b> a candidate key alone.\n\nSo the candidate keys are exactly $\\{A\\}$ and $\\{BC\\}$ (not $E$, and not just $A$ alone since $BC$ also qualifies).\n\nChecking BCNF: for $E\\to DG$, is $E$ a superkey? $\\{E\\}^+=\\{D,E,G\\}\\ne$ all attributes, so <b>no</b> &mdash; this FD violates BCNF. <b>R is NOT in BCNF.</b>",
+        "images": []
+      }
     },
     "go:460974": {
       "title": "GATE DA 2025 | Question: 48",
@@ -818,7 +1053,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "Given shortest paths: $a\\text{-}b\\text{-}c\\text{-}d$ (length $3$), $e\\text{-}f\\text{-}g\\text{-}h$ (length $3$), $a\\text{-}f\\text{-}c\\text{-}h$ (length $3$). Any edge that would create a strictly shorter alternative path directly contradicts one of these \"shortest path\" facts, and so cannot exist in $G$.\n\n- <b>(b,d)</b>: if this edge existed, $a\\text{-}b\\text{-}d$ would be a length-$2$ path, contradicting $a\\text{-}b\\text{-}c\\text{-}d$ being the shortest (length $3$) path from $a$ to $d$. <b>Cannot exist.</b>\n\n- <b>(e,g)</b>: would give $e\\text{-}g\\text{-}h$ as length $2$, contradicting $e\\text{-}f\\text{-}g\\text{-}h$ being shortest (length $3$). <b>Cannot exist.</b>\n\n- <b>(b,h)</b>: would give $a\\text{-}b\\text{-}h$ as length $2$, contradicting $a\\text{-}f\\text{-}c\\text{-}h$ being the shortest (length $3$) path from $a$ to $h$. <b>Cannot exist.</b>\n\n- (b,g): doesn't contradict any given shortest-path fact (no stated shortest path between $a$ and $g$ to compare against) &mdash; this edge <i>could</i> validly exist.",
+        "images": []
+      }
     },
     "go:460973": {
       "title": "GATE DA 2025 | Question: 49",
@@ -835,7 +1075,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "calculus-and-optimization",
+        "markdown": "$|f(x)-f(y)|\\le(x-y)^2$ for all $x,y$. Fix any two points $x,y$, and split the interval $[x,y]$ into $n$ equal pieces via points $x=x_0,x_1,\\ldots,x_n=y$. By the triangle inequality:\n\n$|f(x)-f(y)|\\le\\sum_{k=1}^n|f(x_k)-f(x_{k-1})|\\le\\sum_{k=1}^n\\left(\\dfrac{x-y}n\\right)^2=n\\cdot\\dfrac{(x-y)^2}{n^2}=\\dfrac{(x-y)^2}n$\n\nAs $n\\to\\infty$, the right side $\\to0$. Since $|f(x)-f(y)|$ is a fixed non-negative number that's smaller than every positive quantity, it must be exactly $0$ &mdash; so $f(x)=f(y)$ for <i>every</i> pair $x,y$, meaning $f$ is <b>constant</b>.\n\n$f(1)-f(0)=0$",
+        "images": []
+      }
     },
     "go:460972": {
       "title": "GATE DA 2025 | Question: 50",
@@ -852,7 +1097,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "machine-learning",
+        "markdown": "Since the data is already mean-centered ($\\sum x^{(i)}=0$), the covariance matrix is exactly $\\dfrac1n\\sum_ix^{(i)}(x^{(i)})^T$, and for any unit vector $u$:\n\n$\\dfrac1n\\sum_i|u^Tx^{(i)}|^2=u^T\\left(\\dfrac1n\\sum_ix^{(i)}(x^{(i)})^T\\right)u=u^T\\text{Cov}(D)\\,u$\n\n$u$ is defined as the direction of <b>maximum variance</b>, i.e. the top eigenvector of the covariance matrix &mdash; so this quantity equals the <b>largest eigenvalue</b>.\n\nEigenvalues are $\\lambda_i=100^{2-i}$, which is largest at $i=1$: $\\lambda_1=100^{2-1}=100^1=100$",
+        "images": []
+      }
     },
     "go:460971": {
       "title": "GATE DA 2025 | Question: 51",
@@ -869,7 +1119,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "probability-and-statistics",
+        "markdown": "Bag has $5$ white $+10$ black $=15$ total, so $P(\\text{black})=\\dfrac{10}{15}=\\dfrac23$ on each independent draw (with replacement).\n\n$S_{100}$ is the count of black balls in $100$ independent draws &mdash; a $\\text{Binomial}(100,2/3)$ random variable.\n\n$E[S_{100}]=100\\times\\dfrac23=\\dfrac{200}3\\approx66.7$",
+        "images": []
+      }
     },
     "go:460970": {
       "title": "GATE DA 2025 | Question: 52",
@@ -886,7 +1141,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "database-management-and-warehousing",
+        "markdown": "First compute $\\text{Loan}\\Join\\text{Borrower}$ (natural join on $\\text{loan\\_num}$), then project $(\\text{branch\\_name},\\text{customer\\_name})$. Tracing each loan to its branch and borrower(s):\n\nKarteek appears against loans in <b>all four</b> branches (Banjara Hills via L11, Kondapur via L14, SR Nagar via L22, Balanagar via L23). Every other customer (Anand, Ankita, Gopal, Sunil) is associated with only $1$-$2$ branches, not all four.\n\nSince $\\pi_{\\text{branch\\_name}}(\\text{Loan})=\\{\\text{Banjara Hills, Kondapur, SR Nagar, Balanagar}\\}$ ($4$ distinct branches), the <b>division</b> operation returns exactly the customer names associated with <i>every</i> one of these $4$ branches &mdash; only <b>Karteek</b> qualifies.",
+        "images": []
+      }
     },
     "go:460969": {
       "title": "GATE DA 2025 | Question: 53",
@@ -903,7 +1163,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "$f(a,b)$: if $a=0$, return $b$; if $a$ odd, return $2f((a-1)/2,b)$; else return $b+f(a-1,b)$. Since $15,7,3,1$ are all odd:\n\n$f(15,10)=2f(7,10)=2\\big[2f(3,10)\\big]=2\\big[2[2f(1,10)]\\big]=2\\big[2[2[2f(0,10)]]\\big]=2\\cdot2\\cdot2\\cdot2\\cdot f(0,10)=16\\times10=160$",
+        "images": []
+      }
     },
     "go:460968": {
       "title": "GATE DA 2025 | Question: 54",
@@ -920,7 +1185,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "Initially,\n\n$x=0,\\quad flag=0,\\quad sum=0.$\n\nPush 0 onto the stack.\n\nStack (Bottom - Top): 0\n\nSince <b>flag = 0</b>, the program repeatedly increments <b>x</b> by 1 and pushes it onto the stack until <b>x = 8</b>.\n\nThe stack becomes:\n\nBottom - 0, 1, 2, 3, 4, 5, 6, 7, 8 - Top\n\nWhen <b>x = 8</b>, the second <b>if</b> statement sets\n\n$flag=1.$\n\nSince these are independent <b>if</b> statements, the third <b>if</b> statement is also executed in the same iteration.\n\nNow the stack operations are as follows:\n\n<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"border-collapse:collapse;display:inline-table; width:auto;\">\n\n<tr>\n\n<th>Iteration</th>\n\n<th>Value popped (x)</th>\n\n<th>x is Odd?</th>\n\n<th>Additional Pop()</th>\n\n<th>sum</th>\n\n</tr>\n\n<tr>\n\n<td>1</td>\n\n<td>8</td>\n\n<td>No</td>\n\n<td>—</td>\n\n<td>8</td>\n\n</tr>\n\n<tr>\n\n<td>2</td>\n\n<td>7</td>\n\n<td>Yes</td>\n\n<td>6</td>\n\n<td>15</td>\n\n</tr>\n\n<tr>\n\n<td>3</td>\n\n<td>5</td>\n\n<td>Yes</td>\n\n<td>4</td>\n\n<td>20</td>\n\n</tr>\n\n<tr>\n\n<td>4</td>\n\n<td>3</td>\n\n<td>Yes</td>\n\n<td>2</td>\n\n<td>23</td>\n\n</tr>\n\n<tr>\n\n<td>5</td>\n\n<td>1</td>\n\n<td>Yes</td>\n\n<td>0</td>\n\n<td>24</td>\n\n</tr>\n\n</table>\n\nAfter the last iteration, the stack becomes empty, so the <b>while</b> loop terminates.\n\nTherefore, the final value of <b>sum</b> is 24.\n\n<b>Correct Answer: 24</b>",
+        "images": []
+      }
     },
     "go:460967": {
       "title": "GATE DA 2025 | Question: 55",
@@ -937,7 +1207,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "programming-data-structures-and-algorithms",
+        "markdown": "$V=\\{0,\\ldots,100\\}$, edges $(i,j)$ with $0<j-i\\le2$ (so from vertex $i$, edges go to $i+1$ and $i+2$ if they exist). Adjacency lists are in <b>decreasing</b> order, so DFS from any vertex tries the \"$+2$\" jump before the \"$+1$\" jump.\n\nStarting DFS at $0$: it greedily jumps by $2$ each time (since that's tried first), tracing $0\\to2\\to4\\to\\cdots\\to100$ (all $51$ even vertices, discovered first, in this order). At $100$ (a dead end, no vertex $>100$ exists), DFS backtracks and picks up the remaining unvisited \"$+1$\" neighbors along the way back &mdash; discovering the odd vertices in descending order: $99,97,95,\\ldots,1$\n\nSo the discovery order is: $0,2,4,\\ldots,100$ (positions $1$ to $51$), then $99,97,\\ldots,1$ (positions $52$ to $101$).\n\nVertex $50$ is the $26$th even vertex discovered (position $26$, since $50/2+1=26$). Vertices discovered <i>after</i> it: $101-26=75$",
+        "images": []
+      }
     },
     "go:461032": {
       "title": "GATE DA 2025 | Question: 56",
@@ -955,7 +1230,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "\"Courage\" and \"Bravery\" are synonyms. Following the same relationship, \"Yearning\" (a deep longing or craving) is synonymous with <b>\"Longing\"</b>. The other options (\"Yelling,\" \"Yawning,\" \"Glaring\") merely sound similar to \"Yearning\" but have unrelated meanings.",
+        "images": []
+      }
     },
     "go:461031": {
       "title": "GATE DA 2025 | Question: 57",
@@ -973,7 +1253,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "The sentence describes an ongoing past action (\"playing tennis\") that was <b>interrupted</b> by another past event (\"it suddenly started to rain\") &mdash; this calls for the <b>past perfect continuous</b> tense (\"had been playing\"), which specifically expresses an action that was in progress up until a specific point in the past.\n\n\"Have been playing\" (present perfect continuous) doesn't fit a fully past narrative; \"would have been playing\" and \"could be playing\" are conditional/modal forms that don't match a simple factual past interruption.",
+        "images": []
+      }
     },
     "go:461030": {
       "title": "GATE DA 2025 | Question: 58",
@@ -991,7 +1276,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "Matrix: $$\\begin{pmatrix}0&1&0&2\\\\4&7&3&3\\\\5&5&4&4\\\\6&7&3&2\\end{pmatrix}$$\n\nCounting pixels with $U\\le4$ row by row:\n\nRow 1: $0,1,0,2$ &mdash; all $4$ qualify.\n\nRow 2: $4,7,3,3$ &mdash; $4,3,3$ qualify ($3$ pixels; $7$ doesn't).\n\nRow 3: $5,5,4,4$ &mdash; $4,4$ qualify ($2$ pixels; the two $5$'s don't).\n\nRow 4: $6,7,3,2$ &mdash; $3,2$ qualify ($2$ pixels).\n\nTotal $=4+3+2+2=11$",
+        "images": []
+      }
     },
     "go:461029": {
       "title": "GATE DA 2025 | Question: 59",
@@ -1009,7 +1299,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "Working through the overlapping regions in the figure (rectangle labeled $1$, triangle labeled $2$, ellipse labeled $3$, with $P,Q,R$ denoting specific overlap regions, and region $4$ also marked), the combination that correctly matches each labeled overlap zone to its consistent count/identity based on which shapes cover it is <b>$P=6,\\ Q=5,\\ R=3$</b> &mdash; found by carefully tracing which of the three shapes (rectangle, triangle, ellipse) overlap at each of the $P,Q,R$ regions and matching against the numbering scheme shown.",
+        "images": []
+      }
     },
     "go:461028": {
       "title": "GATE DA 2025 | Question: 60",
@@ -1027,7 +1322,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "Area of a rectangle $=L\\times W$. Increasing $W$ by $10\\%$ (to $1.1W$), with $L$ unchanged, gives new area $=L\\times1.1W=1.1(LW)$ &mdash; exactly a $10\\%$ increase in area, <b>for any values of $L,W$</b>.\n\nThe perimeter $=2(L+W)$ increases by an amount that depends on the specific ratio of $L$ to $W$ (not always exactly $10\\%$); the diagonal length $\\sqrt{L^2+W^2}$ similarly doesn't scale by a fixed $10\\%$ in general; and the rectangle only becomes a square in the special case where $1.1W=L$ exactly, not for all $L,W$.",
+        "images": []
+      }
     },
     "go:461027": {
       "title": "GATE DA 2025 | Question: 61",
@@ -1045,7 +1345,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "Matching each statement to its most natural, contextually appropriate response:\n\n<b>P.</b> \"This house is in a mess\" &rarr; <b>3.</b> \"No problem, let me clear it up for you\" (offering to tidy up).\n\n<b>Q.</b> \"I am not happy with the marks given to me\" &rarr; <b>4.</b> \"Don't worry, I will take it up with your teacher\" (addressing a grading concern).\n\n<b>R.</b> \"Politics is a subject I avoid talking about\" &rarr; <b>1.</b> \"Alright, I won't bring it up during our conversations\" (respecting that preference).\n\n<b>S.</b> \"I don't know what this word means\" &rarr; <b>2.</b> \"Well, you can easily look it up\" (suggesting they check the meaning).",
+        "images": []
+      }
     },
     "go:461026": {
       "title": "GATE DA 2025 | Question: 62",
@@ -1063,7 +1368,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "The weight-vs-age function increases up to age $50$ and decreases afterward &mdash; so it has a single peak at age $50$, and (except at the peak itself) any given weight value is achieved at <i>two</i> different ages: one before $50$ (on the rising part) and one after $50$ (on the falling part).\n\nIf both brothers have the <i>same</i> weight at two genuinely different ages $a_1 < a_2$, the only way this can happen (given the function only increases then decreases, crossing each weight value at most once on each side) is if one age falls on the rising side and the other on the falling side &mdash; i.e. $a_1 < 50 < a_2$.",
+        "images": []
+      }
     },
     "go:461025": {
       "title": "GATE DA 2025 | Question: 63",
@@ -1081,7 +1391,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "The dodecagon's $12$ triangles (each formed by two radii and one side of the polygon) must be grouped into some number of squares, each of side $r$ (the circle's radius), using every triangle exactly once.\n\nSince there are exactly $12$ numbered triangles total, and they must be evenly divided among the squares formed (each square using the <i>same</i> number of triangles, since all triangles are congruent and each square requires an identical construction), we need a divisor of $12$ that corresponds to a geometrically valid way of assembling these triangles into a square of side $r$.\n\nGrouping the triangles $4$ at a time (matching how $4$ such congruent isosceles triangles, arranged appropriately around a common point, tile together into a square of side $r$) uses exactly $12\\div4=3$ squares' worth of triangles, with no triangles left over and none reused.",
+        "images": []
+      }
     },
     "go:461024": {
       "title": "GATE DA 2025 | Question: 64",
@@ -1099,7 +1414,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "$3^{x^2}=27\\times9^x=3^3\\times3^{2x}=3^{3+2x}$\n\nEquating exponents (same base): $x^2=3+2x\\ \\Rightarrow\\ x^2-2x-3=0\\ \\Rightarrow\\ (x-3)(x+1)=0\\ \\Rightarrow\\ x=3\\text{ or }x=-1$\n\nWe want $\\dfrac{2^{x^2}}{(2^x)^2}=2^{x^2-2x}$ (using the same exponent relationship $x^2-2x$ that we just solved for, noting $x^2-2x=3$ from the equation above, valid for either root):\n\n$2^{x^2-2x}=2^3=8$",
+        "images": []
+      }
     },
     "go:461023": {
       "title": "GATE DA 2025 | Question: 65",
@@ -1117,7 +1437,12 @@
       "answer": null,
       "track": "da",
       "yearSetKey": "2025-s1",
-      "yearSetIdentity": "da:2025:set-1"
+      "yearSetIdentity": "da:2025:set-1",
+      "detailed_solution": {
+        "concept": "general-aptitude",
+        "markdown": "From the bar chart: $X=5$ ($20$ shifts), $X=6$ ($40$ shifts), $X=7$ ($30$ shifts), $X=8$ ($10$ shifts) &mdash; $100$ total shifts.\n\n$E[X]=\\dfrac{5(20)+6(40)+7(30)+8(10)}{100}=\\dfrac{100+240+210+80}{100}=\\dfrac{630}{100}=6.3$\n\nAverage earnings $=E[1000(X-0.2)]=1000(E[X]-0.2)=1000(6.3-0.2)=1000(6.1)=6100$",
+        "images": []
+      }
     }
   }
 }

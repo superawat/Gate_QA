@@ -1,0 +1,84 @@
+{
+  "chunkId": "CHUNK-CSE-DSA-03",
+  "branch": "cse",
+  "year": 2004,
+  "section": "tech",
+  "subject": "Algorithms, Data Structures & C Programming",
+  "paper": "GATE CSE 2004 Part 1",
+  "status": "COMPLETED",
+  "count": 9,
+  "questions": [
+    {
+      "uid": "go:998",
+      "solution": {
+        "concept": "Software Engineering & C - Structured Programming Principles",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **Structured Programming** (pioneered by Edsger W. Dijkstra, C.A.R. Hoare, and Niklaus Wirth) is a programming paradigm aimed at improving software clarity, quality, and maintainability.\n  - The core premise is that program execution should follow a clean hierarchical flow governed exclusively by structured control constructs (sequence, selection [`if/else`, `switch`], and iteration [`while`, `for`]), each with a single entry and single exit point.\n- **Analytical Justification**:\n  - The foundational motivation for structured programming (as articulated in Dijkstra's seminal 1968 paper *\"Go To Statement Considered Harmful\"*) is to eliminate arbitrary jumps so that **the dynamic flow of control during execution can be directly and easily inferred from the static program text**.\n  - When control flow mirrors the textual syntax, reasoning about program correctness, proofs, and invariants becomes tractable.\n- **Distractor Analysis**:\n  - **Option A (have well indented programs)**: While indentation enhances human readability, it is merely a stylistic/formatting convention, not the theoretical goal of structured programming.\n  - **Option B (be able to infer the flow of control from the compiled code)**: Structured programming is designed for humans reading and writing high-level source code, not for reverse-engineering machine code / assembly.\n  - **Option C (be able to infer the flow of control from the program text)**: Correct. The primary objective is to make the program's runtime behavior inferable directly from its static text.\n  - **Option D (avoid the use of GOTO statements)**: Avoiding `goto` is the *mechanism* used to achieve structured control flow, not the ultimate goal itself.\n\nTherefore, the correct answer is **Option C (be able to infer the flow of control from the program text)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1000",
+      "solution": {
+        "concept": "Data Structures - Space-Efficient Double Stack Implementation in a Single Array",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Two stacks can share a single contiguous array $A[1 \\dots \\text{MAXSIZE}]$ by growing toward each other from opposite ends of the array.\n  - **Stack 1**: Starts at index $1$ and grows rightward (incrementing its top pointer $top1$: $1, 2, \\dots$).\n  - **Stack 2**: Starts at index $\\text{MAXSIZE}$ and grows leftward (decrementing its top pointer $top2$: $\\text{MAXSIZE}, \\text{MAXSIZE}-1, \\dots$).\n- **Space-Efficient Full Condition Derivation**:\n  1. Under the standard initialization:\n     $$top1 = 0 \\quad \\text{and} \\quad top2 = \\text{MAXSIZE} + 1$$\n  2. Pushing onto Stack 1 advances $top1$ by $+1$: $top1 \\leftarrow top1 + 1$.\n  3. Pushing onto Stack 2 advances $top2$ by $-1$: $top2 \\leftarrow top2 - 1$.\n  4. At all times before overflow, we maintain the invariant $top1 < top2$.\n  5. The entire array space is utilized with 100% efficiency: neither stack overflows prematurely as long as the total number of elements in both stacks does not exceed $\\text{MAXSIZE}$.\n  6. The array becomes completely full when the two top pointers become adjacent, meaning there is no free slot left between them:\n     $$top1 + 1 = top2 \\iff top1 = top2 - 1$$\n- **Distractor Analysis**:\n  - **Option A ($(top1 = \\text{MAXSIZE}/2) \\text{ and } (top2 = \\text{MAXSIZE}/2 + 1)$)**: Imposes rigid static partitioning at the exact midpoint, preventing one stack from using more than half the space even when the other is empty.\n  - **Option B ($top1 + top2 = \\text{MAXSIZE}$)**: Arithmetically incorrect; for instance, if $\\text{MAXSIZE} = 10$, and $top1 = 0, top2 = 10$, $top1 + top2 = 10 = \\text{MAXSIZE}$, but the array has 9 empty slots!\n  - **Option C**: Also relies on static midpoint partitioning.\n  - **Option D ($top1 = top2 - 1$)**: Correctly captures the collision of the two tops.\n\nTherefore, the correct answer is **Option D ($top1 = top2 - 1$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1001",
+      "solution": {
+        "concept": "Data Structures - Binary Search Tree Insertion and Height Computation",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A Binary Search Tree (BST) inserts each new key by comparing it with nodes starting at the root: navigating left if smaller, and right if larger, placing the key at the first vacant child position.\n  - The **height of a tree** is defined in this problem as the maximum distance (number of edges) from the root node to any leaf node.\n- **Given Insertion Sequence**:\n  $$\\{10, 1, 3, 5, 15, 12, 16\\}$$\n- **Step-by-Step BST Construction**:\n  1. **Insert 10**: The tree is empty, so $10$ becomes the **Root** (depth $0$).\n  2. **Insert 1**: $1 < 10 \\implies$ left child of $10$ (depth $1$).\n  3. **Insert 3**: $3 < 10 \\implies$ left to $1$; $3 > 1 \\implies$ right child of $1$ (depth $2$).\n  4. **Insert 5**: $5 < 10 \\to$ left to $1$; $5 > 1 \\to$ right to $3$; $5 > 3 \\implies$ right child of $3$ (depth $3$).\n  5. **Insert 15**: $15 > 10 \\implies$ right child of $10$ (depth $1$).\n  6. **Insert 12**: $12 > 10 \\to$ right to $15$; $12 < 15 \\implies$ left child of $15$ (depth $2$).\n  7. **Insert 16**: $16 > 10 \\to$ right to $15$; $16 > 15 \\implies$ right child of $15$ (depth $2$).\n- **Leaf Node Depths (Distance from Root)**:\n  - Leaf node $5$: Path $10 \\to 1 \\to 3 \\to 5$ has length **$3$ edges**.\n  - Leaf node $12$: Path $10 \\to 15 \\to 12$ has length **$2$ edges**.\n  - Leaf node $16$: Path $10 \\to 15 \\to 16$ has length **$2$ edges**.\n- **Conclusion**:\n  - The maximum distance from the root to a leaf node is $\\max(3, 2, 2) = 3$.\n\nTherefore, the correct answer is **Option B ($3$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1002",
+      "solution": {
+        "concept": "Data Structures - Applications of Stacks (Balanced Parentheses Parsing)",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - Checking for balanced parentheses in an expression requires matching each closing delimiter with the most recently encountered, unmatched opening delimiter of the same type.\n  - This strict Last-In, First-Out (LIFO) nesting property is the defining characteristic of a **Stack**.\n- **Algorithm Mechanism**:\n  1. Initialize an empty stack.\n  2. Scan the arithmetic expression from left to right:\n     - Whenever an opening parenthesis (`(`, `[`, `{`) is encountered, **push** it onto the stack.\n     - Whenever a closing parenthesis (`)`, `]`, `}`) is encountered:\n       - If the stack is empty, there is an unmatched closing parenthesis $\\implies$ **unbalanced**.\n       - Otherwise, **pop** the top element from the stack. If it does not match the type of the closing parenthesis, the expression is **unbalanced**.\n  3. At the end of the scan, if the stack is completely empty, all parentheses are properly balanced; otherwise, there are unclosed opening parentheses.\n  4. Time complexity: $O(n)$ with $O(n)$ space.\n- **Distractor Analysis**:\n  - **Option A (queue)**: Operates in FIFO order; it cannot match the most recent opening delimiter.\n  - **Option B (stack)**: Correct data structure.\n  - **Option C (tree)** & **Option D (list)**: A general tree or linked list does not provide the inherent LIFO abstraction needed for parenthesis matching without extra pointer manipulation.\n\nTherefore, the correct answer is **Option B (stack)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1003",
+      "solution": {
+        "concept": "Data Structures - Tree Traversals & Breadth-First Search Equivalence",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - **Level Order Traversal** of a rooted tree visits nodes level-by-level from top to bottom (level 0, level 1, level 2, ...), and from left to right within each level.\n  - **Breadth-First Search (BFS)** is a graph/tree traversal algorithm that visits all vertices at distance $k$ from the root before proceeding to vertices at distance $k+1$.\n- **Equivalence Analysis**:\n  - When BFS is initiated at the root of a tree, it discovers nodes in non-decreasing order of their depth (level):\n    1. Enqueue the root node into a FIFO queue.\n    2. While the queue is non-empty, dequeue the front node, process it, and enqueue all of its children in left-to-right order.\n  - The sequence of processed nodes produced by BFS on a rooted tree is **identical** to its level order traversal.\n- **Distractor Analysis**:\n  - **Option A (preorder)** & **Option B (inorder)**: Depth-first traversals that explore down to leaves before visiting siblings at the same level.\n  - **Option C (depth first search)**: Traverses along paths to maximal depth using a stack or recursion, not level-by-level.\n  - **Option D (breadth first search)**: Correct. BFS on a tree produces the level-order traversal.\n\nTherefore, the correct answer is **Option D (breadth first search)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1004",
+      "solution": {
+        "concept": "Data Structures - Hash Functions and Collision Analysis",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A hash function $h(k) = k \\bmod 10$ maps an integer key $k$ to the value of its least significant decimal digit (the units digit).\n  - Two distinct keys $k_1$ and $k_2$ collide if and only if $k_1 \\equiv k_2 \\pmod{10}$.\n- **Given Key Set & Hash Computations**:\n  - $4322 \\bmod 10 = 2$\n  - $1334 \\bmod 10 = 4$\n  - $1471 \\bmod 10 = 1$\n  - $9679 \\bmod 10 = 9$\n  - $1989 \\bmod 10 = 9$\n  - $6171 \\bmod 10 = 1$\n  - $6173 \\bmod 10 = 3$\n  - $4199 \\bmod 10 = 9$\n- **Evaluation of Roman Statements**:\n  - **Statement I (\"$9679, 1989, 4199$ hash to the same value\")**:\n    - $9679 \\bmod 10 = 9$, $1989 \\bmod 10 = 9$, $4199 \\bmod 10 = 9$.\n    - All three evaluate to $9$. **True**.\n  - **Statement II (\"$1471, 6171$ hash to the same value\")**:\n    - $1471 \\bmod 10 = 1$ and $6171 \\bmod 10 = 1$.\n    - Both evaluate to $1$. **True**.\n  - **Statement III (\"All elements hash to the same value\")**:\n    - False, multiple distinct hash values ($1, 2, 3, 4, 9$) are produced.\n  - **Statement IV (\"Each element hashes to a different value\")**:\n    - False, collisions exist (e.g., $1471$ and $6171$ collide).\n- **Conclusion**:\n  - Statements I and II only are true.\n\nTherefore, the correct answer is **Option C (I and II only)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1026",
+      "solution": {
+        "concept": "Algorithms - Lower Bounds for Comparison-Based Sorting (Decision Tree Model)",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In the **comparison-based sorting model**, an algorithm can gain information about the relative order of elements only through pairwise comparisons ($a_i \\le a_j$).\n  - Any comparison-based sorting algorithm can be modeled as a binary **decision tree**:\n    - Each internal node represents a comparison between two elements.\n    - Each leaf node represents a distinct permutation (ordering) of the input.\n- **Analytical Derivation**:\n  1. For an input array of $n$ distinct elements, there are $n!$ possible permutations.\n  2. To correctly sort any input, the decision tree must contain at least one leaf for each possible permutation:\n     $$L \\ge n!$$\n  3. In a binary tree of height $h$, the maximum number of leaves is $2^h$:\n     $$2^h \\ge L \\ge n! \\implies h \\ge \\log_2(n!)$$\n  4. The height $h$ represents the maximum number of comparisons performed on the worst-case path from root to leaf.\n  5. By **Stirling's Approximation** for factorials:\n     $$n! \\approx \\sqrt{2\\pi n} \\left(\\frac{n}{e}\\right)^n$$\n     $$\\log_2(n!) = \\sum_{i=1}^{n} \\log_2(i) \\ge \\sum_{i=n/2}^{n} \\log_2(i) \\ge \\frac{n}{2} \\log_2\\left(\\frac{n}{2}\\right) = \\Omega(n \\log n)$$\n  6. Hence, $h \\ge \\Omega(n \\log n)$.\n  7. Since algorithms like Merge Sort and Heap Sort achieve $O(n \\log n)$ comparisons in the worst case, the tightest lower bound is $\\Theta(n \\log n)$, of the order of $n \\log n$.\n\nTherefore, the correct answer is **Option C ($n \\log n$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1028",
+      "solution": {
+        "concept": "C Programming - Static Variables and Recursive Function Tracing",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - In C, a variable declared with the `static` storage class within a function is initialized **only once** (before program execution begins) and **preserves its value across successive function calls**.\n  - It does not get reallocated or reinitialized on recursive entries.\n- **Given Function**:\n  ```c\n  int f(int n) {\n      static int i = 1;\n      if (n >= 5) return n;\n      n = n + i;\n      i++;\n      return f(n);\n  }\n  ```\n- **Step-by-Step Execution Trace for $f(1)$**:\n  1. **Call 1: $f(1)$**:\n     - Initial value of static variable: $i = 1$.\n     - Argument: $n = 1$.\n     - Base condition check: $1 \\ge 5$ is **false**.\n     - $n = n + i = 1 + 1 = 2$.\n     - Increment static variable: $i = 2$.\n     - Recursive call: `return f(2);`.\n  2. **Call 2: $f(2)$**:\n     - Current static variable value: $i = 2$.\n     - Argument: $n = 2$.\n     - Base condition check: $2 \\ge 5$ is **false**.\n     - $n = n + i = 2 + 2 = 4$.\n     - Increment static variable: $i = 3$.\n     - Recursive call: `return f(4);`.\n  3. **Call 3: $f(4)$**:\n     - Current static variable value: $i = 3$.\n     - Argument: $n = 4$.\n     - Base condition check: $4 \\ge 5$ is **false**.\n     - $n = n + i = 4 + 3 = 7$.\n     - Increment static variable: $i = 4$.\n     - Recursive call: `return f(7);`.\n  4. **Call 4: $f(7)$**:\n     - Current static variable value: $i = 4$.\n     - Argument: $n = 7$.\n     - Base condition check: $7 \\ge 5$ is **true**!\n     - Returns $n = 7$.\n  5. The value $7$ propagates back through the recursion call stack and is returned by $f(1)$.\n\nTherefore, the correct answer is **Option C ($7$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:1029",
+      "solution": {
+        "concept": "Algorithms & Verification - Loop Invariants in Integer Digit Reversal",
+        "markdown": "- **Concept / Theoretical Foundation**:\n  - A **loop invariant** is a formal predicate that is true before the loop begins, remains true after every iteration, and upon loop termination helps prove the post-condition.\n  - Here, the algorithm reverses the decimal digits of an $m$-digit integer $n = d_1 d_2 \\dots d_m$.\n- **Given Program Segment**:\n  ```c\n  int n, rev;\n  rev = 0;\n  while (n > 0) {\n      rev = rev * 10 + n % 10;\n      n = n / 10;\n  }\n  ```\n- **Analytical Step-by-Step Derivation**:\n  1. Let the original number be $N_0 = d_1 d_2 \\dots d_m$.\n  2. In each iteration of the loop:\n     - `n % 10` extracts the current least significant digit of $n$.\n     - `rev = rev * 10 + n % 10` shifts the accumulated digits of `rev` left by one decimal place and appends the extracted digit.\n     - `n = n / 10` performs integer division, discarding the least significant digit of $n$.\n  3. **Trace across iterations**:\n     - **Iteration 1**:\n       - Extracted digit: $d_m$.\n       - Value of `rev`: $d_m$.\n       - Remaining value of `n`: $d_1 d_2 \\dots d_{m-1}$.\n     - **Iteration 2**:\n       - Extracted digit: $d_{m-1}$.\n       - Value of `rev`: $d_m d_{m-1}$.\n       - Remaining value of `n`: $d_1 d_2 \\dots d_{m-2}$.\n     - **Iteration $i$**:\n       - Exactly $i$ digits have been peeled off from the right of $n$ and accumulated into `rev` in reverse order.\n       - Value of `n`: contains the remaining $(m - i)$ prefix digits:\n         $$n = d_1 d_2 \\dots d_{m-i}$$\n       - Value of `rev`: contains the $i$ suffix digits reversed:\n         $$\\text{rev} = d_m d_{m-1} \\dots d_{m-i+1}$$\n  4. Both conditions must hold simultaneously (**and** conjunction).\n\nTherefore, the correct answer is **Option A ($n=d_1\\, d_2 \\,\\ldots\\, d_{m-i} \\qquad \\mathbf{and} \\qquad \\text{rev} = d_m\\,d_{m-1} \\,\\ldots\\, d_{m-i+1}$)**.",
+        "images": []
+      }
+    }
+  ]
+}

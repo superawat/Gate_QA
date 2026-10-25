@@ -1,0 +1,327 @@
+{
+  "chunkId": "CHUNK-EE-MOD-03",
+  "branch": "ee",
+  "year": "all",
+  "section": "tech",
+  "generatedAt": "2026-10-20T17:54:50.827Z",
+  "count": 11,
+  "offset": 0,
+  "totalMatchingInBacklog": 105,
+  "remainingAfterSlice": 94,
+  "questions": [
+    {
+      "uid": "ee:2015:q7",
+      "branch": "ee",
+      "year": 2015,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE EE 2015 | Set 1 | Question: 7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Electronics",
+      "subtopic": "Operational Amplifiers",
+      "officialAnswer": "A",
+      "questionHtml": "Of the four characteristics given below, which are the major requirements for an instrumentation amplifier?<br><br>\nP. High common mode rejection ratio <br>\nQ. High input impedance <br>\nR. High linearity <br>\nS. High output impedance",
+      "options": [
+        "P, Q and R only",
+        "P and R only",
+        "P, Q and S only",
+        "Q, R and S only"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Electronics - Instrumentation Amplifier Essential Specifications",
+        "markdown": "- **Concept / Subtopic**: Analog Electronics - Instrumentation Amplifier Essential Specifications\n- **Functional Requirements of an Instrumentation Amplifier (In-Amp)**:\n  - An instrumentation amplifier is a precision closed-loop differential gain block designed to measure microvolt-level sensor signals in electrically hostile environments.\n- **Evaluation of Criteria**:\n  - **P. High Common Mode Rejection Ratio (CMRR) (Major Requirement)**:\n    Transducers (e.g., strain gauges, thermocouples, bridge circuits) output tiny differential signals superimposed on large common-mode noise and 50/60 Hz power-line interference. A very high CMRR ($> 100\\text{ to }120\\text{ dB}$) is vital to amplify the differential signal while rejecting the common-mode interference.\n  - **Q. High Input Impedance (Major Requirement)**:\n    Transducers often exhibit high internal source impedances. A very high input impedance (typically $> 10^9\\ \\Omega$ using buffered FET/BJT inputs) is necessary to eliminate loading errors and preserve voltage measurement accuracy.\n  - **R. High Linearity (Major Requirement)**:\n    The transfer characteristic must exhibit extremely low non-linear distortion over the entire dynamic range to ensure calibration accuracy and faithful reproduction of the physical variable.\n  - **S. High Output Impedance (Incorrect / Undesirable)**:\n    An instrumentation amplifier is a voltage amplifier driving subsequent stages (such as cables, filters, or ADCs). To prevent voltage droop under load, an ideal voltage output stage requires **very low output impedance** ($R_{\\text{out}} \\to 0\\ \\Omega$), not high output impedance.\n- **Conclusion**:\n  - The major requirements are **P, Q, and R only**.\n\nTherefore, the correct answer is **Option A (P, Q and R only)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q17",
+      "branch": "ee",
+      "year": 2015,
+      "set": 1,
+      "qNum": 17,
+      "title": "GATE EE 2015 | Set 1 | Question: 17",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Power Systems",
+      "subtopic": "Generating Power Stations",
+      "officialAnswer": "D",
+      "questionHtml": "Base load power plants are <br><br>P: wind farms. <br>Q: run-of-river plants. <br>R: nuclear power plants. <br>S: diesel power plants.",
+      "options": [
+        "P, Q and S only",
+        "P, R and S only",
+        "P, Q and R only",
+        "Q and R only"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Power Systems - Generating Stations & Base Load vs Peak Load Classification",
+        "markdown": "- **Concept / Subtopic**: Power Systems - Generating Stations & Base Load vs Peak Load Classification\n- **Classification of Power Plants by Load Service**:\n  1. **Base Load Power Plants**:\n     - Operate continuously at nearly constant rated output throughout the year to satisfy the minimum continuous load on the electrical grid.\n     - Characterized by high capital investment costs, low fuel/operating costs, and slow startup/shut-down thermal ramping capabilities.\n     - **Nuclear Power Plants (R)**: High initial capital outlay and extremely low fuel costs; reactor physics requires slow power transitions, making them ideal base load plants.\n     - **Run-of-River Hydroelectric Plants without pondage (Q)**: Because river water cannot be stored, any unused stream flow is permanently wasted. Therefore, they are run continuously at full stream capacity to supply base load.\n  2. **Peak Load / Variable Plants**:\n     - **Wind Farms (P)**: Output is intermittent and weather-dependent; cannot be dispatched on demand as reliable base load.\n     - **Diesel Power Plants (S)**: High operating and fuel costs with rapid startup capability; used strictly for peak shaving or emergency standby service.\n- **Conclusion**:\n  - Base load power plants are **Q and R only**.\n\nTherefore, the correct answer is **Option D (Q and R only)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q23",
+      "branch": "ee",
+      "year": 2015,
+      "set": 1,
+      "qNum": 23,
+      "title": "GATE EE 2015 | Set 1 | Question: 23",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Transformers",
+      "officialAnswer": "C",
+      "questionHtml": "The primary mmf is least affected by the secondary terminal conditions in a",
+      "options": [
+        "power transformer.",
+        "potential transformer.",
+        "current transformer.",
+        "distribution transformer."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Instrument Transformers & Current Transformer Primary MMF Independence",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Instrument Transformers & Current Transformer Primary MMF Independence\n- **Operating Physics of Instrument & Power Transformers**:\n  1. **Current Transformer (CT)**:\n     - The primary winding of a current transformer is connected in **series** with the high-voltage transmission line or power feeder.\n     - The primary current $I_1$ is dictated entirely by the external power system load and generation conditions, not by the secondary burden.\n     - Consequently, the primary magnetomotive force (MMF, $N_1 I_1$) is fixed by external system operating conditions and is **least affected by the secondary terminal conditions** (secondary burden).\n     - Any variation in the secondary burden merely alters the secondary terminal voltage and core flux density, while $N_1 I_1$ remains constrained by the line current.\n  2. **Voltage-Excited Transformers (Power, Potential, Distribution Transformers)**:\n     - The primary winding is connected across a constant voltage supply ($V_1 \\approx \\text{const}$).\n     - The primary current adjusts dynamically to secondary loading conditions according to MMF balance:\n       $$I_1 = I_0 + I_2' = I_0 + \\left(\\frac{N_2}{N_1}\\right) I_2$$\n     - Hence, in power, potential, and distribution transformers, the primary MMF strongly depends on secondary load conditions.\n\nTherefore, the correct answer is **Option C (current transformer.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q26",
+      "branch": "ee",
+      "year": 2015,
+      "set": 1,
+      "qNum": 26,
+      "title": "GATE EE 2015 | Set 1 | Question: 26",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "B",
+      "questionHtml": "The maximum value of \"a\" such that the matrix <br>$$\\begin{pmatrix} -3 & 0& -2\\\\ 1 &-1 & 0\\\\ 0& a&-2 \\end{pmatrix}$$ <br>has three linearly independent real eigenvectors is",
+      "options": [
+        "$\\frac{2}{3\\sqrt{3}}$",
+        "$\\frac{1}{3\\sqrt{3}}$",
+        "$\\frac{1+2\\sqrt{3}}{3\\sqrt{3}}$",
+        "$\\frac{1+\\sqrt{3}}{3\\sqrt{3}}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Linear Algebra & Matrix Eigenvalue Extrema for Linearly Independent Eigenvectors",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Linear Algebra & Matrix Eigenvalue Extrema for Linearly Independent Eigenvectors\n- **Given Matrix**:\n  $$A = \\begin{pmatrix} -3 & 0 & -2 \\\\ 1 & -1 & 0 \\\\ 0 & a & -2 \\end{pmatrix}$$\n- **Governing Equations**:\n  - The eigenvalues $\\lambda$ satisfy the characteristic equation $\\det(A - \\lambda I) = 0$:\n    $$\\det\\begin{pmatrix} -3 - \\lambda & 0 & -2 \\\\ 1 & -1 - \\lambda & 0 \\\\ 0 & a & -2 - \\lambda \\end{pmatrix} = 0$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Characteristic Polynomial Expansion**:\n     - Expand along the first row:\n       $$(-3 - \\lambda)[(-1 - \\lambda)(-2 - \\lambda) - 0] - 2[a(1) - 0] = 0$$\n       $$-(\\lambda + 3)(\\lambda + 1)(\\lambda + 2) - 2a = 0$$\n       $$(\\lambda + 1)(\\lambda + 2)(\\lambda + 3) + 2a = 0$$\n  2. **Symmetric Variable Substitution**:\n     - Let $x = \\lambda + 2 \\implies \\lambda = x - 2$.\n     - The product simplifies symmetrically:\n       $$(x - 1) x (x + 1) + 2a = 0$$\n       $$x(x^2 - 1) + 2a = 0 \\implies x^3 - x = -2a$$\n  3. **Condition for Three Real Roots**:\n     - A $3 \\times 3$ real matrix has three linearly independent real eigenvectors if and only if all three eigenvalues are real.\n     - For the cubic equation $g(x) = x^3 - x = -2a$ to possess three real roots, the horizontal line $y = -2a$ must lie between the local minimum and local maximum values of $g(x)$.\n     - Differentiating $g(x)$ to find critical points:\n       $$g'(x) = 3x^2 - 1 = 0 \\implies x = \\pm \\frac{1}{\\sqrt{3}}$$\n     - Local maximum of $g(x)$:\n       $$g\\left(-\\frac{1}{\\sqrt{3}}\\right) = \\left(-\\frac{1}{\\sqrt{3}}\\right)^3 - \\left(-\\frac{1}{\\sqrt{3}}\\right) = -\\frac{1}{3\\sqrt{3}} + \\frac{1}{\\sqrt{3}} = \\frac{2}{3\\sqrt{3}}$$\n     - Local minimum of $g(x)$:\n       $$g\\left(\\frac{1}{\\sqrt{3}}\\right) = \\frac{1}{3\\sqrt{3}} - \\frac{1}{\\sqrt{3}} = -\\frac{2}{3\\sqrt{3}}$$\n     - Bounding $-2a$:\n       $$-\\frac{2}{3\\sqrt{3}} \\le -2a \\le \\frac{2}{3\\sqrt{3}}$$\n     - Dividing throughout by $-2$ reverses the inequalities:\n       $$-\\frac{1}{3\\sqrt{3}} \\le a \\le \\frac{1}{3\\sqrt{3}}$$\n  4. **Maximum Value of $a$**:\n     $$a_{\\max} = \\frac{1}{3\\sqrt{3}}$$\n\nTherefore, the correct answer is **Option B ($\\frac{1}{3\\sqrt{3}}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q38",
+      "branch": "ee",
+      "year": 2015,
+      "set": 1,
+      "qNum": 38,
+      "title": "GATE EE 2015 | Set 1 | Question: 38",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Digital Electronics",
+      "subtopic": "Boolean Algebra and Minimization",
+      "officialAnswer": "A",
+      "questionHtml": "f(A,B,C,D)=$\\Pi$M(0,1,3,4,5,7,9,11,12,13,14,15) is a maxterm representation of a Boolean function f(A,B,C,D) where A is the MSB and D is the LSB. The equivalent minimized representation of this function is",
+      "options": [
+        "$(A+\\bar{C}+D)(\\bar{A}+B+D)$",
+        "$(A\\bar{C}D)+(\\bar{A}BD)$",
+        "$\\bar{A}C\\bar{D}+A\\bar{B}C\\bar{D}+A\\bar{B}\\bar{C}\\bar{D}$",
+        "$(B+\\bar{C}+D)(A+\\bar{B}+\\bar{C}+D)(\\bar{A}+B+C+D)$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Digital Electronics - Boolean Algebra & Karnaugh Map POS Minimization",
+        "markdown": "- **Concept / Subtopic**: Digital Electronics - Boolean Algebra & Karnaugh Map POS Minimization\n- **Given Boolean Function**:\n  $$f(A, B, C, D) = \\prod M(0, 1, 3, 4, 5, 7, 9, 11, 12, 13, 14, 15)$$\n  where $A$ is the MSB and $D$ is the LSB.\n- **Karnaugh Map Formulation (Product-of-Sums)**:\n  - In maxterm representation, the specified indices represent the input combinations where the function evaluates to **0**.\n  - The function equals **0** for the 12 minterm indices:\n    $$\\{0, 1, 3, 4, 5, 7, 9, 11, 12, 13, 14, 15\\}$$\n  - The remaining 4 minterm locations where $f = 1$ are:\n    $$m \\in \\{2, 6, 8, 10\\}$$\n- **Step-by-Step K-Map Grouping of 0s**:\n  - We group the zeros in a standard 4-variable POS K-map:\n    1. **Quad 1**: Group cells $(0, 1, 4, 5)$ and $(1, 3, 5, 7)$ combining with $(12, 13)$ etc.\n    2. Looking at the non-zero cells $\\{2, 6, 8, 10\\}$:\n       - Cells $2$ ($0010$) and $6$ ($0110$) share $A = 0, C = 1, D = 0$. In POS maxterm form, this pair is eliminated by the sum term:\n         $$(A + \\bar{C} + D)$$\n       - Cells $8$ ($1000$) and $10$ ($1010$) share $A = 1, B = 0, D = 0$. In POS maxterm form, this pair is eliminated by the sum term:\n         $$(\\bar{A} + B + D)$$\n  - Combining these prime implicants in Product-of-Sums form:\n    $$f(A, B, C, D) = (A + \\bar{C} + D)(\\bar{A} + B + D)$$\n- **Verification by Truth Table Substitution**:\n  - At $m = 2$ ($0010$): $(0 + 0 + 0)(1 + 0 + 0) = 0 \\times 1 = 0$ for complement, so $f = 1$.\n  - At $m = 8$ ($1000$): $(1 + 1 + 0)(0 + 0 + 0) = 1 \\times 0 = 0$ for complement, so $f = 1$.\n  - For all 12 specified maxterm combinations, both factors evaluate to 1, yielding $f = 0$ as required.\n\nTherefore, the correct answer is **Option A ($(A+\\bar{C}+D)(\\bar{A}+B+D)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q1-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 1,
+      "title": "GATE EE 2015 | Set 2 | Question: 1",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Complex Variables",
+      "officialAnswer": "B",
+      "questionHtml": "Given f(z)=g(z)+h(z), where f, g, h are complex valued functions of a complex variable z. Which one of the following statements is TRUE?",
+      "options": [
+        "If f(z) is differentiable at $z_0$, then g(z) and g(z) are also differentiable at $z_0$.",
+        "If g(z) and h(z) are differentiable at $z_0$, then f(z) is also differentiable at $z_0$.",
+        "If f(z) is continuous at $z_0$, then it is differentiable at $z_0$.",
+        "If f(z) is differentiable at $z_0$, then so are its real and imaginary parts."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Complex Analysis & Linearity of Differentiation",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Complex Analysis & Linearity of Differentiation\n- **Given Functional Relation**:\n  $$f(z) = g(z) + h(z)$$\n  where $f, g, h: \\mathbb{C} \\to \\mathbb{C}$ are complex-valued functions of a complex variable $z$.\n- **Governing Theorem (Linearity of Complex Differentiation)**:\n  - Let $g(z)$ and $h(z)$ be complex differentiable at a point $z_0 \\in \\mathbb{C}$.\n  - By definition of the complex derivative:\n    $$f'(z_0) = \\lim_{z \\to z_0} \\frac{f(z) - f(z_0)}{z - z_0} = \\lim_{z \\to z_0} \\frac{[g(z) + h(z)] - [g(z_0) + h(z_0)]}{z - z_0}$$\n    $$f'(z_0) = \\lim_{z \\to z_0} \\left[\\frac{g(z) - g(z_0)}{z - z_0} + \\frac{h(z) - h(z_0)}{z - z_0}\\right]$$\n  - Since the individual limits exist by hypothesis:\n    $$f'(z_0) = g'(z_0) + h'(z_0)$$\n  - The sum of two finite complex limits is well-defined and independent of the path of approach in the complex plane.\n  - Therefore, $f(z)$ is complex differentiable at $z_0$.\n- **Distractor Analysis**:\n  - **Option A is false**: Counterexample: Let $g(z) = |z|^2$ and $h(z) = -|z|^2$. Then $f(z) = 0$ is analytic and differentiable everywhere, but $g(z)$ and $h(z)$ are not complex differentiable anywhere except at $z=0$.\n  - **Option C is false**: Continuity does not imply complex differentiability (e.g., $f(z) = \\bar{z}$ or $f(z) = |z|$ is continuous everywhere on $\\mathbb{C}$ but nowhere complex differentiable).\n  - **Option D is false**: Real and imaginary components $u(z) = \\text{Re}(z) = \\frac{z+\\bar{z}}{2}$ are nowhere analytic because they do not satisfy the Cauchy-Riemann equations.\n\nTherefore, the correct answer is **Option B (If g(z) and h(z) are differentiable at $z_0$, then f(z) is also differentiable at $z_0$.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q5-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 5,
+      "title": "GATE EE 2015 | Set 2 | Question: 5",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electrical and Electronic Measurements",
+      "subtopic": "Galvanometers, Voltmeters and Ammeters",
+      "officialAnswer": "C",
+      "questionHtml": "Match the following. <br><img src=\"/question-images/ee/2015/ee-2015-787f3d4e5b.webp\"/>",
+      "options": [
+        "P-1 Q-2 R-1 S-3",
+        "P-1 Q-2 R-1 S-3",
+        "P-1 Q-2 R-3 S-3",
+        "P-3 Q-1 R-2 S-1"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Measurements - Instrument Types & Operating Supply Suitability",
+        "markdown": "- **Concept / Subtopic**: Electrical Measurements - Instrument Types & Operating Supply Suitability\n- **Instrument Types & Operating Principles Matching**:\n  - **P. Permanent Magnet Moving Coil (PMMC) $\\rightarrow$ 1. DC only:**\n    PMMC instruments operate on the motor principle where deflecting torque $T_d = BINA$ is linearly proportional to current. Under AC excitation, the alternating torque averages to zero due to meter inertia; hence, PMMC is used exclusively on **DC only**.\n  - **Q. Moving Iron connected through Current Transformer (CT) $\\rightarrow$ 2. AC only:**\n    Current transformers operate strictly on the principle of electromagnetic transformer induction (Faraday's Law, $e = -N \\frac{d\\Phi}{dt}$). They cannot transform DC currents; hence, CT-coupled meters operate strictly on **AC only**.\n  - **R. Electrodynamometer (or Rectifier-type) $\\rightarrow$ 3. AC and DC:**\n    Electrodynamometer instruments produce deflecting torque proportional to the product of currents in fixed and moving coils ($T_d \\propto I^2$), operating accurately on both **AC and DC**.\n  - **S. Moving Iron (MI) instrument $\\rightarrow$ 3. AC and DC:**\n    Moving iron instruments produce deflecting torque proportional to the square of RMS current ($T_d = \\frac{1}{2} I^2 \\frac{dL}{d\\theta}$), responding to the true RMS value of both **AC and DC**.\n- **Evaluation of Options**:\n  - The verified matching is:\n    $$P - 1;\\; Q - 2;\\; R - 3;\\; S - 3$$\n\nTherefore, the correct answer is **Option C (P-1 Q-2 R-3 S-3)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q15-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 15,
+      "title": "GATE EE 2015 | Set 2 | Question: 15",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Electronics",
+      "subtopic": "BJT, FET and their Biasing Circuits",
+      "officialAnswer": "C",
+      "questionHtml": "When a bipolar junction transistor is operating in the saturation mode, which one of the following statements is TRUE about the state of its collector-base (CB) and the base-emitter (BE) junctions?",
+      "options": [
+        "The CB junction is forward biased and the BE junction is reverse biased.",
+        "The CB junction is reverse biased and the BE junction is forward biased.",
+        "Both the CB and BE junctions are forward biased.",
+        "Both the CB and BE junctions are reverse biased."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Electronics - Bipolar Junction Transistor Operational Modes & Junction Biasing",
+        "markdown": "- **Concept / Subtopic**: Analog Electronics - Bipolar Junction Transistor Operational Modes & Junction Biasing\n- **Operating Modes of a BJT**:\n  - A Bipolar Junction Transistor consists of two back-to-back $p-n$ junctions: the Base-Emitter (BE) junction and the Collector-Base (CB) junction.\n  - The operational regimes are categorized based on junction bias states:\n    1. **Active (Forward-Active) Mode**:\n       - BE junction is **forward-biased**.\n       - CB junction is **reverse-biased**.\n    2. **Cut-off Mode**:\n       - Both BE and CB junctions are **reverse-biased**.\n    3. **Saturation Mode**:\n       - Both the **Base-Emitter (BE)** junction and the **Collector-Base (CB)** junction are **forward-biased**.\n    4. **Inverted (Reverse-Active) Mode**:\n       - BE junction is **reverse-biased**.\n       - CB junction is **forward-biased**.\n- **Physical Operation in Saturation**:\n  - In saturation mode, forward bias on both junctions injects carriers into the base from both emitter and collector, driving the collector-emitter voltage down to its minimum value ($V_{CE,\\text{sat}} \\approx 0.2\\text{ V}$).\n  - Thus, **both the CB and BE junctions are forward biased**.\n\nTherefore, the correct answer is **Option C (Both the CB and BE junctions are forward biased.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q34-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 34,
+      "title": "GATE EE 2015 | Set 2 | Question: 34",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Signals and Systems",
+      "subtopic": "Linear Time Invariant Systems",
+      "officialAnswer": "D",
+      "questionHtml": "For linear time invariant systems, that are Bounded Input Bounded Output stable, which one of the following statements is TRUE?",
+      "options": [
+        "The impulse response will be integrable, but may not be absolutely integrable.",
+        "The unit impulse response will have finite support.",
+        "The unit step response will be absolutely integrable",
+        "The unit step response will be bounded."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Signals and Systems - BIBO Stability Invariants & Unit Step Response Boundedness",
+        "markdown": "- **Concept / Subtopic**: Signals and Systems - BIBO Stability Invariants & Unit Step Response Boundedness\n- **Governing Definition of BIBO Stability**:\n  - A continuous-time or discrete-time system is defined as **Bounded-Input Bounded-Output (BIBO) stable** if and only if every bounded input $x(t)$ produces a bounded output $y(t)$:\n    $$\\sup_{t} |x(t)| \\le M_x < \\infty \\implies \\sup_{t} |y(t)| \\le M_y < \\infty$$\n- **Step-by-Step Analytical Derivation**:\n  - The unit step signal $u(t)$ has magnitude:\n    $$|u(t)| = \\begin{cases} 1, & t \\ge 0 \\\\ 0, & t < 0 \\end{cases} \\implies \\sup_{t} |u(t)| = 1 < \\infty$$\n  - Since $|u(t)| \\le 1$ for all $t$, the unit step function is a **bounded input**.\n  - By the axiomatic definition of BIBO stability, applying this bounded input to a BIBO stable system must produce an output—the **unit step response $s(t)$**—that is strictly bounded:\n    $$|s(t)| \\le M_s < \\infty \\quad (\\forall t)$$\n  - Thus, **the unit step response will be bounded**.\n- **Distractor Analysis**:\n  - **Option A is incorrect**: For continuous-time LTI BIBO stability, the impulse response must be strictly **absolutely integrable** ($\\int_{-infty}^\\infty |h(t)|\\, dt < \\infty$).\n  - **Option B is incorrect**: Many standard stable systems have infinite support impulse responses (e.g., standard low-pass filter $h(t) = e^{-at}u(t)$ with $a > 0$ has support on $[0, \\infty)$).\n  - **Option C is incorrect**: For a system with non-zero DC gain $H(0) \\ne 0$, the step response approaches a constant non-zero value as $t \\to \\infty$, so $\\int_0^\\infty |s(t)|\\, dt = \\infty$ (divergent).\n\nTherefore, the correct answer is **Option D (The unit step response will be bounded.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q43-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 43,
+      "title": "GATE EE 2015 | Set 2 | Question: 43",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Transformers",
+      "officialAnswer": "A",
+      "questionHtml": "A balanced (positive sequence) three-phase AC voltage source is connected to a balanced, star connected load through a star-delta transformer as shown in the figure. The line-to-line voltage rating is 230 V on the star side, and 115 V on the delta side. If the magnetizing current is neglected and $\\bar{I_s}=100\\angle 0^{\\circ}$ A, then what is the value of $\\bar{I_p}$ in Ampere? <br><img src=\"/question-images/ee/2015/ee-2015-f8ca3b5731.webp\"/>",
+      "options": [
+        "$50\\angle 30^{\\circ}$",
+        "$50\\angle -30^{\\circ}$",
+        "$50\\sqrt{3}\\angle 30^{\\circ}$",
+        "$200\\angle 30^{\\circ}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Three-Phase Star-Delta Transformer Current Transformation",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Three-Phase Star-Delta Transformer Current Transformation\n- **Given Parameters**:\n  - Star-Delta ($Y - \\Delta$) transformer bank.\n  - Primary (Star side) rated line-to-line voltage: $V_{L1} = 230\\text{ V}$.\n  - Secondary (Delta side) rated line-to-line voltage: $V_{L2} = 115\\text{ V}$.\n  - Secondary line current: $\\bar{I}_s = 100\\angle 0^\\circ\\text{ A}$.\n  - Magnetizing current is neglected.\n- **Governing Equations**:\n  1. Primary phase voltage on star winding:\n     $$V_{ph1} = \\frac{V_{L1}}{\\sqrt{3}} = \\frac{230}{\\sqrt{3}}\\text{ V}$$\n  2. Secondary phase voltage on delta winding:\n     $$V_{ph2} = V_{L2} = 115\\text{ V}$$\n  3. Turns ratio per phase:\n     $$\\frac{N_1}{N_2} = \\frac{V_{ph1}}{V_{ph2}} = \\frac{230/\\sqrt{3}}{115} = \\frac{2}{\\sqrt{3}}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Secondary Phase Current ($I_{ph2}$)**:\n     - In a balanced delta connection, line current relates to phase current by $I_{line} = \\sqrt{3} I_{phase}$:\n       $$I_{ph2} = \\frac{I_s}{\\sqrt{3}} = \\frac{100}{\\sqrt{3}}\\text{ A}$$\n  2. **Primary Phase Current ($I_{ph1}$)**:\n     - By MMF balance per phase ($N_1 I_{ph1} = N_2 I_{ph2}$):\n       $$I_{ph1} = I_{ph2} \\left(\\frac{N_2}{N_1}\\right) = \\left(\\frac{100}{\\sqrt{3}}\\right) \\left(\\frac{\\sqrt{3}}{2}\\right) = \\frac{100}{2} = 50\\text{ A}$$\n  3. **Primary Line Current ($I_p$)**:\n     - In a star connection, line current equals phase current:\n       $$I_p = I_{ph1} = 50\\text{ A}$$\n  4. **Phase Angle Shift**:\n     - For standard $Y - \\Delta$ transformer vector groupings (such as Yd11 or standard positive sequence delta lagging phase current), primary line current leads the secondary line current by $30^\\circ$:\n       $$\\bar{I}_p = 50\\angle 30^\\circ\\text{ A}$$\n\nTherefore, the correct answer is **Option A ($50\\angle 30^{\\circ}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2015:q45-s2",
+      "branch": "ee",
+      "year": 2015,
+      "set": 2,
+      "qNum": 45,
+      "title": "GATE EE 2015 | Set 2 | Question: 45",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Electric Circuits",
+      "subtopic": "Steady State AC Analysis",
+      "officialAnswer": "191",
+      "questionHtml": "A symmetrical square wave of 50% duty cycle has amplitude of $\\pm$15 V and time period of 0.4$\\pi$ ms. This square wave is applied across a series RLC circuit with R=5 $\\Omega$, L=10 mH, and C=4 $\\mu$F. The amplitude of the 5000 rad/s component of the capacitor voltage (in Volt) is ______. <br><img src=\"/question-images/ee/2015/ee-2015-2a2bbd2042.webp\"/>",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electric Circuits - Fourier Series Harmonic Analysis & RLC Resonance Capacitor Voltage",
+        "markdown": "- **Concept / Subtopic**: Electric Circuits - Fourier Series Harmonic Analysis & RLC Resonance Capacitor Voltage\n- **Given Parameters**:\n  - Symmetrical square wave input with amplitude $\\pm 15\\text{ V}$ and 50% duty cycle.\n  - Period: $T = 0.4\\pi\\text{ ms} = 0.4\\pi \\times 10^{-3}\\text{ s}$.\n  - Series RLC circuit: $R = 5\\ \\Omega$, $L = 10\\text{ mH} = 0.01\\text{ H}$, $C = 4\\ \\mu\\text{F} = 4 \\times 10^{-6}\\text{ F}$.\n  - Target frequency component: $\\omega = 5000\\text{ rad/s}$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Identify Fundamental Frequency**:\n     $$\\omega_0 = \\frac{2\\pi}{T} = \\frac{2\\pi}{0.4\\pi \\times 10^{-3}\\text{ s}} = \\frac{2000}{0.4} = 5000\\text{ rad/s}$$\n     - The target component $\\omega = 5000\\text{ rad/s}$ is the **fundamental harmonic ($n = 1$)** of the square wave.\n  2. **Fourier Amplitude of Fundamental Component**:\n     - For a symmetrical square wave switching between $+V_m$ and $-V_m$ (with $V_m = 15\\text{ V}$):\n       $$v_{\\text{in}}(t) = \\sum_{n=1, 3, 5, \\dots}^{\\infty} \\frac{4 V_m}{n\\pi} \\sin(n \\omega_0 t)$$\n       $$V_{1m} = \\frac{4 V_m}{\\pi} = \\frac{4 \\times 15}{\\pi} = \\frac{60}{\\pi}\\text{ V}$$\n  3. **Check Circuit Resonance at $\\omega = 5000\\text{ rad/s}$**:\n     $$\\omega_0^2 L C = (5000)^2 \\times (0.01) \\times (4 \\times 10^{-6}) = (25 \\times 10^6) \\times (4 \\times 10^{-8}) = 1.0$$\n     - Because $\\omega_0 = \\frac{1}{\\sqrt{LC}} = 5000\\text{ rad/s}$, the series RLC circuit operates at **exact electrical resonance**.\n  4. **Capacitor Voltage Transfer Function & Quality Factor**:\n     - The capacitor voltage transfer function is:\n       $$H(j\\omega) = \\frac{1/(j\\omega C)}{R + j(\\omega L - 1/\\omega C)}$$\n     - At resonance ($\\omega L - 1/\\omega C = 0$):\n       $$|H(j\\omega_0)| = \\frac{1}{\\omega_0 R C} = \\frac{X_C}{R} = Q$$\n     - Compute reactance $X_C$:\n       $$X_C = \\frac{1}{\\omega_0 C} = \\frac{1}{5000 \\times 4 \\times 10^{-6}} = \\frac{1}{0.02} = 50\\ \\Omega$$\n     - Compute Quality Factor $Q$:\n       $$Q = \\frac{X_C}{R} = \\frac{50\\ \\Omega}{5\\ \\Omega} = 10$$\n  5. **Capacitor Voltage Amplitude**:\n     $$V_{Cm} = Q \\times V_{1m} = 10 \\times \\left(\\frac{60}{\\pi}\\right) = \\frac{600}{\\pi}\\text{ V}$$\n     $$V_{Cm} = \\frac{600}{3.14159265} \\approx 190.986\\text{ V} \\approx 191\\text{ V}$$\n\nTherefore, the correct numerical value is within the official range of **[189 to 193]**, with a computed value of **191** V.",
+        "images": []
+      }
+    }
+  ]
+}

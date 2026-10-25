@@ -1,0 +1,231 @@
+{
+  "chunkId": "CHUNK-DA-03",
+  "branch": "da",
+  "year": 2024,
+  "section": "all",
+  "generatedAt": "2026-10-20T12:15:18.756Z",
+  "status": "COMPLETED",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 32,
+  "remainingAfterSlice": 22,
+  "summary": {
+    "verifiedCount": 10,
+    "integratedCount": 10,
+    "holdCount": 0,
+    "reviewDate": "2026-10-20",
+    "notes": "Phase 1 Chunk 3 (GATE DA 2024 Q26-Q35) authored, peer-verified, and integrated with 100% agreement with official IIT answer keys."
+  },
+  "questions": [
+    {
+      "uid": "go:422936",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 26,
+      "title": "GATE DA 2024 | Question: 26",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Probability",
+      "subtopic": "Markov Chains & Expected Values",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422936/gate-ds%26ai-2024-question-26#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "First-step analysis on Markov chain states {0, 1, 2}: E0 = 1 + 0.5 E1 + 0.5 E0 -> E0 = 2 + E1; E1 = 1 + 0.5(0) + 0.5 E0 -> E1 = 1 + 0.5 E0. Solving gives E0 = 6. Matches Option C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422935",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 27,
+      "title": "GATE DA 2024 | Question: 27",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Calculus",
+      "subtopic": "Continuity & Differentiability",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422935/gate-ds%26ai-2024-question-27#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "Continuity at +-2 implies 4a - 2b + c = 2 and 4a + 2b + c = 2 -> b = 0, 4a + c = 2. Differentiability gives f'(-2) = -4a = -1 -> a = 1/4 and f'(2) = 4a = 1 -> a = 1/4. Then c = 2 - 4(1/4) = 1. Matches Option A.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422934",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 28,
+      "title": "GATE DA 2024 | Question: 28",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming",
+      "subtopic": "Tree Recursion in Python",
+      "officialAnswer": "D",
+      "goLink": "https://gateoverflow.in/422934/gate-ds%26ai-2024-question-28#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "D",
+        "rationale": "count(child_dict, i) computes the total number of vertices in subtree i. Tree has 9 vertices: {0, 1, 2, 3, 4, 5, 6, 7, 8}. Returns 1 + 4 + 4 = 9. Matches Option D.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422933",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 29,
+      "title": "GATE DA 2024 | Question: 29",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Pseudocode & Array Accumulation",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422933/gate-ds%26ai-2024-question-29#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "Tracing X=[6, 3, 5, 4, 10]: S[1]=1; S[2]=1 (6>3); S[3]=1+1=2 (3<=5); S[4]=1 (5>4); S[5]=1+1=2 (4<=10). Result is [1, 1, 2, 1, 2]. Matches Option C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422932",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 30,
+      "title": "GATE DA 2024 | Question: 30",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Binary Search Recurrence",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422932/gate-ds%26ai-2024-question-30#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "Binary search compares target with middle element (1 comparison) and recurses on half of size at most floor(n/2). Recurrence is F(n) = F(floor(n/2)) + 1. Matches Option A.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422931",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 31,
+      "title": "GATE DA 2024 | Question: 31",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming",
+      "subtopic": "Two-Pointer In-Place Reversal",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422931/gate-ds%26ai-2024-question-31#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "At each step, D[s1] and D[s2] are swapped and pointers move inward (s1+1, s2-1) until s1 >= s2. Reverses the list D between indices s1 and s2 inclusive. Matches Option C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422930",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 32,
+      "title": "GATE DA 2024 | Question: 32",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "Single Linkage Clustering",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422930/gate-ds%26ai-2024-question-32#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "Single linkage merges: {x1, x2} at 1, {x4, x5} at 1, x3 joins {x4, x5} at 2, and {x1, x2} joins {x3, x4, x5} at 3. Matches dendrogram A.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422929",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 33,
+      "title": "GATE DA 2024 | Question: 33",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Deep Learning",
+      "subtopic": "Multilayer Perceptron ReLU Equivalence",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422929/gate-ds%26ai-2024-question-33#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "With positive inputs x1, x2, x3 > 0 and positive weights, ReLU(z) = z. The forward pass y = W2 W1 x simplifies to 36 x1 + 24 x2 + 24 x3. Matches p=36, q=24, r=24 -> Option A.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422928",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 34,
+      "title": "GATE DA 2024 | Question: 34",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Artificial Intelligence",
+      "subtopic": "Search (BFS vs DFS State Expansion)",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422928/gate-ds%26ai-2024-question-34#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "Under ascending order expansion priority from unexpanded list, both BFS and DFS expand states in identical sequence: 1 -> 2 -> 3 -> 4 -> 5 before reaching 6. Both expand 5 states. Matches Option C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422927",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 35,
+      "title": "GATE DA 2024 | Question: 35",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Sorting Passes (Selection Sort)",
+      "officialAnswer": "B",
+      "goLink": "https://gateoverflow.in/422927/gate-ds%26ai-2024-question-35#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B",
+        "rationale": "Selection sort on [4, 3, 2, 1, 5]: Pass 1 swaps 4 and 1 -> [1, 3, 2, 4, 5]. Pass 2 swaps 3 and 2 -> [1, 2, 3, 4, 5] (sorted). Bubble sort and insertion sort require more passes. Matches Option B ((iii) only).",
+        "patchRegistered": true
+      }
+    }
+  ]
+}

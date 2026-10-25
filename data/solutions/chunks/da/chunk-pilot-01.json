@@ -1,0 +1,126 @@
+{
+  "chunkId": "CHUNK-PILOT-01",
+  "branch": "da",
+  "year": 2024,
+  "section": "all",
+  "generatedAt": "2026-10-20T11:53:07.115Z",
+  "status": "COMPLETED",
+  "count": 5,
+  "offset": 0,
+  "totalMatchingInBacklog": 57,
+  "remainingAfterSlice": 52,
+  "pilotSummary": {
+    "verifiedCount": 5,
+    "integratedCount": 5,
+    "holdCount": 0,
+    "reviewDate": "2026-10-20",
+    "notes": "Phase 0 5-question pilot completed with zero errors and 100% agreement with official GATE DA 2024 answer keys."
+  },
+  "questions": [
+    {
+      "uid": "go:422961",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE DA 2024 | Question: 1",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Probability and Statistics",
+      "subtopic": "Random Variables & Distributions",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422961/gate-ds%26ai-2024-question-1#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "Poisson mean = lambda and Var = lambda; Standard normal mu = 0 and sigma^2 = 1. Both statements true.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422960",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE DA 2024 | Question: 2",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Probability and Statistics",
+      "subtopic": "Discrete Probability & Events",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422960/gate-ds%26ai-2024-question-2#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "T requires >= 2 heads; S requires >= 2 tails. Simultaneous occurrence requires >= 4 tosses in 3 coins (impossible), so T cap S = empty set, P = 0.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422959",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 3,
+      "title": "GATE DA 2024 | Question: 3",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Linear Algebra",
+      "subtopic": "Matrix Eigenvalues",
+      "officialAnswer": "B",
+      "goLink": "https://gateoverflow.in/422959/gate-ds%26ai-2024-question-3#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B",
+        "rationale": "Characteristic equation lambda^2 - 3*lambda + 5 = 0 has discriminant Delta = 9 - 20 = -11 < 0, yielding complex conjugate pairs (3/2 +- i*sqrt(11)/2).",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422958",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 4,
+      "title": "GATE DA 2024 | Question: 4",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming, Data Structures & Algorithms",
+      "subtopic": "Graph Algorithms & DFS",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422958/gate-ds%26ai-2024-question-4#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "In undirected graph DFS, d[u] < d[v] and edge explored first u->v guarantees v is unvisited (white), making (u, v) a tree edge by definition.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422957",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 5,
+      "title": "GATE DA 2024 | Question: 5",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Calculus and Optimization",
+      "subtopic": "Maxima & Minima",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422957/gate-ds%26ai-2024-question-5#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "Second derivative test at stationary point f'(x*)=0 with f''(x*) > 0 guarantees a local minimum in a neighborhood delta > 0.",
+        "patchRegistered": true
+      }
+    }
+  ]
+}

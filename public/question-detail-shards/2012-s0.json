@@ -271,8 +271,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Boolean Algebra",
-        "markdown": "f is 1 exactly in the rows where X = 1, whatever Y is. So f = X.",
+        "concept": "Digital Logic - Truth Table and Boolean Function Identification",
+        "markdown": "### 1. Concept / Subtopic\n**Boolean Functions**: Identifying switching functions directly from truth table column mappings and minterm expansions.\n\n---\n\n### 2. Given Truth Table\n$$\\begin{array}{|c|c|c|}\n\\hline\n\\mathbf{X} & \\mathbf{Y} & \\mathbf{f(X, Y)} \\\\\n\\hline\n0 & 0 & 0 \\\\\n0 & 1 & 0 \\\\\n1 & 0 & 1 \\\\\n1 & 1 & 1 \\\\\n\\hline\n\\end{array}$$\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Minterm Expansion**:\n   * The function evaluates to $1$ for the row where $(X=1, Y=0)$ and the row where $(X=1, Y=1)$:\n     $$f(X, Y) = m_2 + m_3 = X\\bar{Y} + XY$$\n2. **Boolean Simplification**:\n   * Factor out $X$:\n     $$f(X, Y) = X(\\bar{Y} + Y)$$\n   * By the complement law, $\\bar{Y} + Y = 1$:\n     $$f(X, Y) = X \\cdot 1 = X$$\n3. **Behavioral Observation**:\n   * Whenever $X = 0$, $f(X, Y) = 0$ regardless of $Y$.\n   * Whenever $X = 1$, $f(X, Y) = 1$ regardless of $Y$.\n   * Thus, the output tracks input variable $X$ identically, representing the projection function $f(X, Y) = X$.\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($X$)**: Correct. Accurately represents the output column.\n* **Option B ($X + Y$)**: Evaluates to $1$ when $(X=0, Y=1)$, whereas the table shows $0$.\n* **Option C ($X \\oplus Y$)**: Evaluates to $0$ when $(X=1, Y=1)$, whereas the table shows $1$.\n* **Option D ($Y$)**: Evaluates to $1$ when $(X=0, Y=1)$, whereas the table shows $0$.\n\n---\n\n### 5. Final Answer\nTherefore, the correct choice is **Option A: $X$**.",
         "images": []
       }
     },

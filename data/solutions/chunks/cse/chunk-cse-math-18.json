@@ -1,0 +1,1122 @@
+{
+  "chunkId": "CHUNK-CSE-MATH-18",
+  "branch": "cse",
+  "year": "all",
+  "section": "all",
+  "generatedAt": "2026-10-22T23:22:52.573Z",
+  "count": 25,
+  "offset": 0,
+  "totalMatchingInBacklog": 59,
+  "remainingAfterSlice": 34,
+  "questions": [
+    {
+      "uid": "go:2709",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1996 | Question: 1.5",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Probability",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Two dice are thrown simultaneously. The probability that at least one of them will have $6$ facing up is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\frac{1}{36}$</p>\n</li>\n<li>\n<p>$\\frac{1}{3}$</p>\n</li>\n<li>\n<p>$\\frac{25}{36}$</p>\n</li>\n<li>\n<p>$\\frac{11}{36}$</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2709/gate-cse-1996-question-1-5",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2709/gate-cse-1996-question-1-5",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2709/gate-cse-1996-question-1-5",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Complement count: neither die shows 6 with probability (5/6)^2, so the requested probability is 11/36.",
+        "notes": "Complement count: neither die shows 6 with probability (5/6)^2, so the requested probability is 11/36.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2710",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1996 | Question: 1.6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": "D",
+      "questionHtml": "<p>The formula used to compute an approximation for the second derivative of a function $f$ at a point $X_0$ is</p>\n<ol class=\"shrink-inline-options2\" style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\dfrac{f(x_0 +h) + f(x_0 – h)}{2}$</p>\n</li>\n<li>\n<p>$\\dfrac{f(x_0 +h) - f(x_0 – h)}{2h}$</p>\n</li>\n<li>\n<p>$\\dfrac{f(x_0 +h) + 2f(x_0) + f(x_0 – h)}{h^2}$ </p>\n</li>\n<li>\n<p>$\\dfrac{f(x_0 +h) - 2f(x_0) + f(x_0 – h)}{h^2}$ </p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2710/gate-cse-1996-question-1-6",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2710/gate-cse-1996-question-1-6",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2710/gate-cse-1996-question-1-6",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Central Taylor differences cancel the first derivative and isolate f''(x0), yielding option D.",
+        "notes": "Central Taylor differences cancel the first derivative and isolate f''(x0), yielding option D.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2711",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1996 | Question: 1.7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "C",
+      "questionHtml": "<p>Let $Ax = b$ be a system of linear equations where $A$ is an $m \\times n$ matrix and $b$ is a $m \\times 1$ column vector and $X$ is an $n \\times1$ column vector of unknowns. Which of the following is false?</p>\n<ol style=\"list-style-type: upper-alpha;\"><li>\n<p>The system has a solution if and only if, both $A$ and the augmented matrix $[Ab]$ have the same rank.</p>\n</li>\n<li>\n<p>If $m &lt; n$ and $b$ is the zero vector, then the system has infinitely many solutions.</p>\n</li>\n<li>\n<p>If $m=n$ and $b$ is a non-zero vector, then the system has a unique solution.</p>\n</li>\n<li>\n<p>The system will have only a trivial solution when $m=n$, $b$ is the zero vector and $\\text{rank}(A) =n$.</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2711/gate-cse-1996-question-1-7",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2711/gate-cse-1996-question-1-7",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2711/gate-cse-1996-question-1-7",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "A square system with nonzero b need not be nonsingular or uniquely solvable; option C is false.",
+        "notes": "A square system with nonzero b need not be nonsingular or uniquely solvable; option C is false.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2730",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1996 | Question: 2.1",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Functions",
+      "officialAnswer": "C",
+      "questionHtml": "<p style=\"text-align:justify\">Let $R$ denote the set of real numbers. Let $f:R\\times R \\rightarrow R \\times R$ be a bijective function defined by $f(x,y) = (x+y, x-y)$. The inverse function of $f$ is given by<br/>\n<br/>\n</p><ol style=\"list-style-type:upper-alpha\"><li> $f^{-1} (x,y) = \\left( \\frac {1}{x+y}, \\frac{1}{x-y}\\right)$<br/>\n<br/> </li><li> $f^{ -1} (x,y) = (x-y , x+y)$<br/>\n<br/> </li> <li> $f^{-1} (x,y) = \\left( \\frac {x+y}{2}, \\frac{x-y}{2}\\right)$<br/>\n<br/> </li> <li> $f^{-1}(x,y)=\\left [ 2\\left(x-y\\right),2\\left(x+y\\right) \\right ]$ </li></ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2730/gate-cse-1996-question-2-1",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2730/gate-cse-1996-question-2-1",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2730/gate-cse-1996-question-2-1",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Solve u=x+y and v=x-y for x,y to obtain the inverse in option C.",
+        "notes": "Solve u=x+y and v=x-y for x,y to obtain the inverse in option C.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2731",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1996 | Question: 2.2",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Relations",
+      "officialAnswer": "B",
+      "questionHtml": "<p>Let $R$ be a non-empty relation on a collection of sets defined by $_{A}R_ B$ if and only if $A \\cap B = \\phi$. Then, (pick the true statement)</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$A$ is reflexive and transitive</p>\n</li>\n<li>\n<p>$R$ is symmetric and not transitive</p>\n</li>\n<li>\n<p>$R$ is an equivalence relation</p>\n</li>\n<li>\n<p>$R$ is not reflexive and not symmetric</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2731/gate-cse-1996-question-2-2",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2731/gate-cse-1996-question-2-2",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2731/gate-cse-1996-question-2-2",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Disjointness is symmetric; {1},{2},{1} is a counterexample to transitivity.",
+        "notes": "Disjointness is symmetric; {1},{2},{1} is a counterexample to transitivity.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2732",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1996 | Question: 2.3",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Propositional Logic",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Which of the following is NOT True?</p>\n<p>(Read $\\wedge$ as AND, $\\vee$ as OR, $\\neg$ as NOT,  $\\rightarrow$ as one way implication and $\\leftrightarrow$ as two way implication)</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$((x \\rightarrow y) \\wedge x) \\rightarrow y$</p>\n</li>\n<li>\n<p>$((\\neg x \\rightarrow y) \\wedge (\\neg x \\rightarrow \\neg y)) \\rightarrow x$</p>\n</li>\n<li>\n<p>$(x \\rightarrow (x \\vee y))$</p>\n</li>\n<li>\n<p>$((x \\vee y) \\leftrightarrow (\\neg x \\rightarrow \\neg y))$</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2732/gate-cse-1996-question-2-3",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2732/gate-cse-1996-question-2-3",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2732/gate-cse-1996-question-2-3",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "A, B, and C are tautologies; x=false,y=true makes the biconditional in D false.",
+        "notes": "A, B, and C are tautologies; x=false,y=true makes the biconditional in D false.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2733",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1996 | Question: 2.4",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Group Theory",
+      "officialAnswer": "C",
+      "questionHtml": "<p>Which one of the following is false?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>The set of all bijective functions on a finite set forms a group under function composition</li>\n<li>The set $\\{1, 2, \\dots p-1\\}$ forms a group under multiplication mod $p$, where $p$ is a prime number</li>\n<li>The set of all strings over a finite alphabet forms a group under concatenation</li>\n<li>A subset $S \\neq \\emptyset$ of $G$ is a subgroup of the group $\\langle G, * \\rangle$ if and only if for any pair of elements $a, b \\in S, a * b^{-1} \\in S$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2733/gate-cse-1996-question-2-4",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2733/gate-cse-1996-question-2-4",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2733/gate-cse-1996-question-2-4",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Nonempty strings lack concatenation inverses, so the set of all strings is not a group.",
+        "notes": "Nonempty strings lack concatenation inverses, so the set of all strings is not a group.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2735",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1996 | Question: 2.6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "A",
+      "questionHtml": "<p>The matrices $\\begin{bmatrix} \\cos\\theta &amp;&amp; -\\sin\\theta \\\\ \\sin\\theta &amp;&amp; \\cos\\theta \\end{bmatrix}$ and $\\begin{bmatrix} a &amp;&amp; 0\\\\ 0&amp;&amp; b \\end{bmatrix}$ commute under multiplication</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>if $a=b \\text{ or } \\theta = n\\pi, n$ an integer</li>\n<li>always</li>\n<li>never</li>\n<li>if $a \\cos\\theta = b \\sin\\theta$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2735/gate-cse-1996-question-2-6",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2735/gate-cse-1996-question-2-6",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2735/gate-cse-1996-question-2-6",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The two products commute exactly when (a-b)sin(theta)=0.",
+        "notes": "The two products commute exactly when (a-b)sin(theta)=0.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2736",
+      "branch": "cse",
+      "year": 1996,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1996 | Question: 2.7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Probability",
+      "officialAnswer": "C",
+      "questionHtml": "<p>The probability that top and bottom cards of a randomly shuffled deck are both aces is</p>\n<ol style=\"list-style-type: upper-alpha;\"><li>\n<p>$\\frac{4}{52} \\times \\frac{4}{52}$</p>\n</li>\n<li>\n<p>$\\frac{4}{52} \\times \\frac{3}{52}$</p>\n</li>\n<li>\n<p>$\\frac{4}{52} \\times \\frac{3}{51}$</p>\n</li>\n<li>\n<p>$\\frac{4}{52} \\times \\frac{4}{51}$</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2736/gate-cse-1996-question-2-7",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2736/gate-cse-1996-question-2-7",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2736/gate-cse-1996-question-2-7",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "After drawing one ace, 3 of 51 cards remain aces; the answer is 4/52 times 3/51.",
+        "notes": "After drawing one ace, 3 of 51 cards remain aces; the answer is 4/52 times 3/51.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1996-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2606",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.19",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Relations",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Let $R$ be a symmetric and transitive relation on a set $A$. Then</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$R$ is reflexive and hence an equivalence relation</li>\n<li>$R$ is reflexive and hence a partial order</li>\n<li>$R$ is reflexive and hence not an equivalence relation</li>\n<li>None of the above</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2606/gate-cse-1995-question-1-19",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2606/gate-cse-1995-question-1-19",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2606/gate-cse-1995-question-1-19",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The empty relation on a nonempty set is symmetric and transitive but not reflexive, so none of A-C follows.",
+        "notes": "The empty relation on a nonempty set is symmetric and transitive but not reflexive, so none of A-C follows.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2607",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.20",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Set Theory",
+      "officialAnswer": "C",
+      "questionHtml": "<p>The number of elements in the power set $P(S)$ of the set $S=\\{\\{\\emptyset\\}, 1, \\{2, 3\\}\\}$ is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$4$</li>\n<li>$8$</li>\n<li>None of the above</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2607/gate-cse-1995-question-1-20",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2607/gate-cse-1995-question-1-20",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2607/gate-cse-1995-question-1-20",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "S has three distinct elements and therefore its power set has 2^3=8 members.",
+        "notes": "S has three distinct elements and therefore its power set has 2^3=8 members.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2608",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.21",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": "B",
+      "questionHtml": "<p>In the interval $[0, \\pi]$ the equation $x=\\cos x$ has </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>No solution</p>\n</li>\n<li>\n<p>Exactly one solution</p>\n</li>\n<li>\n<p>Exactly two solutions</p>\n</li>\n<li>\n<p>An infinite number of solutions</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2608/gate-cse-1995-question-1-21",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2608/gate-cse-1995-question-1-21",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2608/gate-cse-1995-question-1-21",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "x-cos(x) is strictly increasing and changes sign on [0,pi], giving exactly one root.",
+        "notes": "x-cos(x) is strictly increasing and changes sign on [0,pi], giving exactly one root.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2609",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.22",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": "D",
+      "questionHtml": "<p>If at every point of a certain curve, the slope of the tangent equals [latex]\\frac{-2x}{y}[/latex] the curve is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>a straight line</p>\n</li>\n<li>\n<p>a parabola</p>\n</li>\n<li>\n<p>a circle</p>\n</li>\n<li>\n<p>an ellipse</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2609/gate-cse-1995-question-1-22",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2609/gate-cse-1995-question-1-22",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2609/gate-cse-1995-question-1-22",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Separation and integration give 2x^2+y^2=C, an ellipse for a nondegenerate real curve.",
+        "notes": "Separation and integration give 2x^2+y^2=C, an ellipse for a nondegenerate real curve.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2610",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.23",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "C",
+      "questionHtml": "<p>The value of k for which [latex]4x^2 - 8xy + ky^2 = 0[/latex] does not represent a pair of straight lines (both passing through the origin) is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>0</p>\n</li>\n<li>\n<p>2</p>\n</li>\n<li>\n<p>9</p>\n</li>\n<li>\n<p>3</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2610/gate-cse-1995-question-1-23",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2610/gate-cse-1995-question-1-23",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2610/gate-cse-1995-question-1-23",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The discriminant is 64-16k; k=9 gives no real pair of lines.",
+        "notes": "The discriminant is 64-16k; k=9 gives no real pair of lines.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2611",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.24",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "A",
+      "questionHtml": "<p>The rank of the following $(n+1) \\times (n+1)$ matrix, where $a$ is a real number is $$ \\begin{bmatrix} 1 &amp; a &amp; a^2 &amp; \\dots &amp; a^n  \\\\ 1 &amp; a &amp; a^2 &amp; \\dots &amp; a^n \\\\ \\vdots &amp; \\vdots &amp; \\vdots &amp; \\: &amp; \\vdots \\\\ \\vdots &amp; \\vdots &amp; \\vdots &amp; \\: &amp; \\vdots \\\\ 1 &amp; a &amp; a^2 &amp; \\dots &amp; a^n \\end{bmatrix}$$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1$</li>\n<li>$2$</li>\n<li>$n$</li>\n<li>Depends on the value of $a$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2611/gate-cse-1995-question-1-24",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2611/gate-cse-1995-question-1-24",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2611/gate-cse-1995-question-1-24",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "All rows equal a nonzero vector whose first coordinate is 1; rank is exactly one.",
+        "notes": "All rows equal a nonzero vector whose first coordinate is 1; rank is exactly one.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2612",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.25",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Graph Theory",
+      "officialAnswer": "B",
+      "questionHtml": "<p>The minimum number of edges in a connected cyclic graph on $n$ vertices is:</p>\n<ol start=\"1\" style=\"list-style-type: upper-alpha;\">\n<li>$n-1$</li>\n<li>$n$</li>\n<li>$n+1$</li>\n<li>None of the above</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2612/gate-cse-1995-question-1-25",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2612/gate-cse-1995-question-1-25",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2612/gate-cse-1995-question-1-25",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "A spanning tree has n-1 edges; adding one edge is necessary and sufficient for a cycle.",
+        "notes": "A spanning tree has n-1 edges; adding one edge is necessary and sufficient for a cycle.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:780",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CSE 1995 | Question: 1.18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Probability",
+      "officialAnswer": "D",
+      "questionHtml": "<p>The probability that a number selected at random between $100$ and $999$ (both inclusive) will not contain the digit $7$ is:  </p>\n<ol class=\"shrink-inline-options\" style=\"list-style-type:upper-alpha\">\n<li>$\\dfrac{16}{25}$</li>\n<li>$\\left(\\dfrac{9}{10}\\right)^{3}$</li>\n<li>$\\dfrac{27}{75}$</li>\n<li>$\\dfrac{18}{25}$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/780/gate-cse-1995-question-1-18",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/780/gate-cse-1995-question-1-18",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/780/gate-cse-1995-question-1-18",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "There are 8*9*9 valid three-digit numbers without digit 7 among 900 total.",
+        "notes": "There are 8*9*9 valid three-digit numbers without digit 7 among 900 total.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2620",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1995 | Question: 2.8",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": "C",
+      "questionHtml": "<p>If the cube roots of unity are $1, \\omega$ and $\\omega^2$, then the roots of the following equation are $$(x-1)^3 +8 =0$$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$-1, 1 + 2\\omega, 1 + 2\\omega^2$   </li>\n<li>$1, 1 - 2\\omega, 1 - 2\\omega^2$</li>\n<li>$-1, 1 - 2\\omega, 1 - 2\\omega^2$</li>\n<li>$-1, 1 + 2\\omega, -1 + 2\\omega^2$    </li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2620/gate-cse-1995-question-2-8",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2620/gate-cse-1995-question-2-8",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2620/gate-cse-1995-question-2-8",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The roots of (x-1)^3=-8 are -1, 1-2omega, and 1-2omega^2.",
+        "notes": "The roots of (x-1)^3=-8 are -1, 1-2omega, and 1-2omega^2.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2625",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1995 | Question: 2.13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "A",
+      "questionHtml": "<p>A unit vector perpendicular to both the vectors $a=2i-3j+k$ and $b=i+j-2k$ is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\frac{1}{\\sqrt{3}} (i+j+k)$</li>\n<li>$\\frac{1}{3} (i+j-k)$</li>\n<li>$\\frac{1}{3} (i-j-k)$</li>\n<li>$\\frac{1}{\\sqrt{3}} (i+j-k)$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2625/gate-cse-1995-question-2-13",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2625/gate-cse-1995-question-2-13",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2625/gate-cse-1995-question-2-13",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The cross product is (5,5,5); normalizing gives (i+j+k)/sqrt(3).",
+        "notes": "The cross product is (5,5,5); normalizing gives (i+j+k)/sqrt(3).",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2626",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1995 | Question: 2.14",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Probability",
+      "officialAnswer": "C",
+      "questionHtml": "<p>A bag contains $10$ white balls and $15$ black balls. Two balls are drawn in succession. The probability that one of them is black and the other is white is:</p>\n<ol style=\"list-style-type: upper-alpha;\"><li>\n<p>$\\frac{2}{3}$</p>\n</li>\n<li>\n<p>$\\frac{4}{5}$</p>\n</li>\n<li>\n<p>$\\frac{1}{2}$</p>\n</li>\n<li>\n<p>$\\frac{1}{3}$</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2626/gate-cse-1995-question-2-14",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2626/gate-cse-1995-question-2-14",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2626/gate-cse-1995-question-2-14",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Summing the WB and BW draw orders gives probability 1/2.",
+        "notes": "Summing the WB and BW draw orders gives probability 1/2.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2629",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1995 | Question: 2.17",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Group Theory",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Let $A$ be the set of all non-singular matrices over real number and let $*$ be the matrix multiplication operation. Then</p>\n<ol start=\"1\" style=\"list-style-type: upper-alpha;\">\n<li>$A$ is closed under $*$ but $\\langle A, *\\rangle$ is not a semigroup.</li>\n<li>$\\langle A, *\\rangle$ is a semigroup but not a monoid.</li>\n<li>$\\langle A, * \\rangle$ is a monoid but not a group.</li>\n<li>$\\langle A, *\\rangle$ is a a group but not an abelian group.</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2629/gate-cse-1995-question-2-17",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2629/gate-cse-1995-question-2-17",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2629/gate-cse-1995-question-2-17",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "GL_n(R) is a group and is nonabelian for n>=2; explicit 2x2 matrices do not commute.",
+        "notes": "GL_n(R) is a group and is nonabelian for n>=2; explicit 2x2 matrices do not commute.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2630",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1995 | Question: 2.18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": "C",
+      "questionHtml": "<p>The solution of differential equation [latex]y''+3y'+2y=0[/latex] is of the form</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>[latex]C_1e^x+C_2e^{2x}[/latex]</p>\n</li>\n<li>\n<p>[latex]C_1e^{-x}+C_2e^{3x}[/latex]</p>\n</li>\n<li>\n<p>[latex]C_1e^{-x}+C_2e^{-2x}[/latex]</p>\n</li>\n<li>\n<p>[latex]C_1e^{-2x}+C_2e^{-x}[/latex]</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2630/gate-cse-1995-question-2-18",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "HOLD",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2630/gate-cse-1995-question-2-18",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2630/gate-cse-1995-question-2-18",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The displayed choices C and D are mathematically equivalent: C1*e^(-x)+C2*e^(-2x) and C1*e^(-2x)+C2*e^(-x) describe the same two-parameter solution family because C1 and C2 are arbitrary constants. The characteristic equation has roots -1 and -2, so both listed choices are correct after renaming constants. Keep on HOLD until the duplicated option or answer record is resolved.",
+        "notes": "The displayed choices C and D are mathematically equivalent: C1*e^(-x)+C2*e^(-2x) and C1*e^(-2x)+C2*e^(-x) describe the same two-parameter solution family because C1 and C2 are arbitrary constants. The characteristic equation has roots -1 and -2, so both listed choices are correct after renaming constants. Keep on HOLD until the duplicated option or answer record is resolved.",
+        "disposition": "HOLD",
+        "answerKeySource": "Existing UID answer record and displayed question/options; independent derivation confirms the choices are equivalent.",
+        "answerKeyVerified": false,
+        "answerKeyStatus": "AMBIGUOUS_OPTIONS"
+      },
+      "specialCategory": "HOLD"
+    },
+    {
+      "uid": "go:2631",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 1995 | Question: 2.19",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Discrete Mathematics",
+      "subtopic": "Propositional Logic",
+      "officialAnswer": "D",
+      "questionHtml": "<p>If the proposition $\\lnot p \\to q$ is true, then the truth value of the proposition $\\lnot p \\lor \\left ( p \\to q \\right )$, where $\\lnot$ is negation, $\\lor$ is inclusive OR and $\\to$ is implication, is</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>True</li>\n<li>Multiple Values</li>\n<li>False</li>\n<li>Cannot be determined</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2631/gate-cse-1995-question-2-19",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2631/gate-cse-1995-question-2-19",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2631/gate-cse-1995-question-2-19",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Premise and target simplify to p or q and not-p or q respectively; satisfying assignments give different target values.",
+        "notes": "Premise and target simplify to p or q and not-p or q respectively; satisfying assignments give different target values.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:359942",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE CSE 1995 | Question: 7(B)",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": 1,
+      "questionHtml": "Compute without using power series expansion $\\displaystyle \\lim_{x \\to 0} \\frac{\\sin x}{x}.$",
+      "options": [],
+      "goLink": "https://gateoverflow.in/359942/gate-cse-1995-question-7-b",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/359942/gate-cse-1995-question-7-b",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/359942/gate-cse-1995-question-7-b",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The squeeze cos(x)<=sin(x)/x<=1 as x approaches zero gives 1 without power series.",
+        "notes": "The squeeze cos(x)<=sin(x)/x<=1 as x approaches zero gives 1 without power series.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:2664",
+      "branch": "cse",
+      "year": 1995,
+      "set": 1,
+      "qNum": 25,
+      "title": "GATE CSE 1995 | Question: 25a",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Engineering Mathematics",
+      "subtopic": "Calculus",
+      "officialAnswer": 1,
+      "questionHtml": "Find the minimum value of $3-4x+2x^2$.",
+      "options": [],
+      "goLink": "https://gateoverflow.in/2664/gate-cse-1995-question-25a",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/2664/gate-cse-1995-question-25a",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/2664/gate-cse-1995-question-25a",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Completing the square gives 2(x-1)^2+1, whose minimum is 1.",
+        "notes": "Completing the square gives 2(x-1)^2+1, whose minimum is 1.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/1995-s0.json"
+        }
+      }
+    }
+  ],
+  "status": "PARTIAL",
+  "reviewStatus": "REVIEWED",
+  "reviewedAt": "2026-10-23",
+  "acceptedCount": 24,
+  "holdCount": 1,
+  "specialCategories": {
+    "HOLD": [
+      {
+        "uid": "go:2630",
+        "reason": "The displayed choices C and D are mathematically equivalent: C1*e^(-x)+C2*e^(-2x) and C1*e^(-2x)+C2*e^(-x) describe the same two-parameter solution family because C1 and C2 are arbitrary constants. The characteristic equation has roots -1 and -2, so both listed choices are correct after renaming constants. Keep on HOLD until the duplicated option or answer record is resolved."
+      }
+    ]
+  },
+  "integratedCount": 24
+}

@@ -1,0 +1,90 @@
+{
+  "chunkId": "CHUNK-CSE-REC-03",
+  "branch": "cse",
+  "year": 2020,
+  "section": "all",
+  "status": "COMPLETED",
+  "count": 10,
+  "questions": [
+    {
+      "uid": "go:359778",
+      "solution": {
+        "concept": "Verbal Aptitude - Word Analogy & Antonyms",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Word Analogy & Antonyms\n- **Analogy Relationship**:\n  - $\\text{Word} : \\text{Antonym}$\n  - **Explicit** (clearly stated and outwardly expressed) is the direct antonym of **Implicit** (implied or hidden without being plainly expressed).\n  - Similarly, the verb **Express** (to put thoughts, feelings, or impulses outward into words or action) has as its direct antonym **Repress** (to restrain, inhibit, or force feelings inward).\n- **Distractor Analysis**:\n  - *Impress*: To make an impact on someone; not an antonym of express.\n  - *Compress*: To squeeze or flatten; relates to physical volume.\n  - *Suppress*: Means to forcefully put an end to something, but *repress* specifically mirrors the inward psychological counterpart of *express*.\n\nTherefore, the correct answer is **Option B (Repress)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359775",
+      "solution": {
+        "concept": "Verbal Aptitude - Reading Comprehension & Grievance Identification",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Reading Comprehension & Grievance Identification\n- **Passage Analysis**:\n  - *\"The Canadian constitution requires that equal importance be given to English and French. Last year, Air Canada lost a lawsuit... after they filed complaints about formal in-flight announcements in English lasting 15 seconds, as opposed to informal 5 second messages in French.\"*\n- **Deduction of the Core Grievance**:\n  - The disparity cited in the complaint was the duration and formality of the messages: English announcements lasted 15 seconds, whereas French ones were truncated to just 5 seconds.\n  - Thus, the French announcements received unequal, diminished treatment compared to the significantly longer English announcements.\n  - The couple's complaint was grounded specifically on the English announcements being **longer** than the French ones, violating equal constitutional status.\n\nTherefore, the correct answer is **Option C (the English announcements being longer than the French ones)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359771",
+      "solution": {
+        "concept": "Calculus & Real Analysis - Superadditive Functions",
+        "markdown": "- **Concept / Subtopic**: Calculus & Real Analysis - Superadditive Functions\n- **Definition of Superadditivity**:\n  - A real-valued function $f(x)$ is **superadditive** over domain $D$ if for all $x_1, x_2 \\in D$:\n    $$f(x_1 + x_2) \\ge f(x_1) + f(x_2)$$\n- **Testing the Given Candidate Functions for $x_1, x_2 > 1$**:\n  1. **For $f(x) = e^x$**:\n     $$f(x_1 + x_2) = e^{x_1 + x_2} = e^{x_1} \\cdot e^{x_2}$$\n     - Since $x_1, x_2 > 1$, we know $e^{x_1} > e^1 \\approx 2.718 > 2$ and $e^{x_2} > e^1 > 2$.\n     - For any real numbers $u, v > 2$:\n       $$(u - 1)(v - 1) > 1 \\implies uv - u - v + 1 > 1 \\implies uv > u + v$$\n     - Setting $u = e^{x_1}$ and $v = e^{x_2}$, we have:\n       $$e^{x_1 + x_2} = e^{x_1} \\cdot e^{x_2} > e^{x_1} + e^{x_2}$$\n     - Thus, $f(x_1 + x_2) > f(x_1) + f(x_2)$, confirming **$e^x$ is superadditive**.\n  2. **Distractor Analysis**:\n     - $\\sqrt{x}$: Subadditive because $\\sqrt{x_1 + x_2} < \\sqrt{x_1} + \\sqrt{x_2}$ for all positive numbers.\n     - $1/x$: Subadditive because $\\frac{1}{x_1 + x_2} < \\frac{1}{x_1} + \\frac{1}{x_2}$.\n     - $e^{-x}$: Subadditive because $e^{-(x_1 + x_2)} = e^{-x_1} e^{-x_2} < e^{-x_1} + e^{-x_2}$.\n\nTherefore, the correct answer is **Option A ($e^{x}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359768",
+      "solution": {
+        "concept": "Verbal Aptitude - Chronological Ordering & Causal Precedence",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Chronological Ordering & Causal Precedence\n- **Passage Analysis**:\n  - *\"The global financial crisis in 2008 is considered to be the most serious... which started with the sub-prime lending crisis in USA in 2007.\"*\n  - *\"The sub-prime lending crisis led to the banking crisis in 2008 with the collapse of Lehman Brothers in 2008.\"*\n  - *\"The sub-prime lending refers to the provision of loans... and it arises because of excess liquidity following the East Asian crisis.\"*\n- **Reconstructing the Temporal and Causal Sequence**:\n  1. **Root Origin**: Excess liquidity arose following the **East Asian crisis** (late 1990s).\n  2. **Second Stage**: Excess liquidity encouraged lax lending, culminating in the **subprime lending crisis** (2007).\n  3. **Third Stage**: Subprime defaults triggered a systemic **banking crisis** (collapse of Lehman Brothers, 2008).\n  4. **Final Culmination**: The banking collapse expanded into the worldwide **global financial crisis** (2008).\n- **Correct Sequence**:\n  $$\\text{East Asian crisis} \\to \\text{subprime lending crisis} \\to \\text{banking crisis} \\to \\text{global financial crisis}$$\n\nTherefore, the correct answer is **Option A (East Asain crisis$\\rightarrow$ subprime lending crisis$\\rightarrow$banking crisis$\\rightarrow$global financial crisis)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359762",
+      "solution": {
+        "concept": "Algebra - Quadratic Equation with Equal Roots",
+        "markdown": "- **Concept / Subtopic**: Algebra - Quadratic Equation with Equal Roots\n- **Given Quadratic Equation**:\n  $$a x^2 - b x + c = 0 \\quad (a \\neq 0)$$\n  with real coefficients $a, b, c$.\n- **Equal Roots Condition**:\n  - The equation has two equal roots, both equal to $\\beta$.\n  - The discriminant must be zero:\n    $$\\Delta = (-b)^2 - 4ac = 0 \\implies b^2 = 4ac$$\n- **Step-by-Step Analytical Derivation**:\n  1. The value of the repeated root is:\n     $$\\beta = \\frac{-(-b)}{2a} = \\frac{b}{2a}$$\n  2. Square both sides:\n     $$\\beta^2 = \\left(\\frac{b}{2a}\\right)^2 = \\frac{b^2}{4a^2}$$\n  3. Substitute $b^2 = 4ac$:\n     $$\\beta^2 = \\frac{4ac}{4a^2} = \\frac{c}{a}$$\n  4. Compute $\\beta^3 = \\beta \\cdot \\beta^2$:\n     $$\\beta^3 = \\left(\\frac{b}{2a}\\right) \\cdot \\left(\\frac{c}{a}\\right) = \\frac{bc}{2a^2}$$\n  5. This matches option C identically.\n\nTherefore, the correct answer is **Option C ($\\beta^{3} =bc/\\left ( 2a^{2} \\right )$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359733",
+      "solution": {
+        "concept": "Verbal Aptitude - Subject-Verb Agreement with Intervening Phrases",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Subject-Verb Agreement with Intervening Phrases\n- **Sentence 1 Analysis**:\n  - *\"This book, including all its chapters, _______ interesting.\"*\n  - The true subject is the singular noun **This book**.\n  - The parenthetical prepositional phrase *including all its chapters* set off by commas does not alter the grammatical number of the subject.\n  - Hence, the singular verb **is** must be used.\n- **Sentence 2 Analysis**:\n  - *\"The students as well as the instructor _______ in agreement about it.\"*\n  - In standard English syntax with the correlative phrase *as well as*, the verb agrees in number with the **first (primary) subject**.\n  - Here, the first subject is plural: **The students**.\n  - Hence, the plural verb **are** must be used.\n- **Combining Both Clauses**:\n  - The correct pair of verbs is **is, are**.\n\nTherefore, the correct answer is **Option C (is, are)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359730",
+      "solution": {
+        "concept": "Verbal Aptitude - Verb Complementation & Preposition Selection",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Verb Complementation & Preposition Selection\n- **Grammar Rule**:\n  - The verb **prohibit** takes the fixed preposition **from** followed by a gerund (verb + *-ing*):\n    $$\\text{prohibit } [\\text{someone}] \\textbf{ from } [\\text{doing something}]$$\n  - In passive voice:\n    $$\\text{be prohibited } \\textbf{from } [\\text{gerund}]$$\n- **Application to the Sentence**:\n  - *\"People were prohibited _______ their vehicles near the entrance of the main administrative building.\"*\n  - Applying the rule yields:\n    $$\\text{prohibited } \\textbf{from parking } \\text{their vehicles}$$\n  - The infinitive constructions (*to park*, *to have parked*) and bare participle (*parking*) are ungrammatical following *prohibited*.\n\nTherefore, the correct answer is **Option B (from parking)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359728",
+      "solution": {
+        "concept": "Verbal Aptitude - Word Analogy & Reversal Prefixes",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Word Analogy & Reversal Prefixes\n- **Analogy Relationship**:\n  - $\\text{Action} : \\text{Reversal / Negative Form}$\n  - The base verb **Do** forms its reversal/antonym by prefixing *un-* $\\to$ **Undo**.\n  - For the verb/noun **Trust**, the standard antonym denoting lack of trust or skepticism is **Distrust** (formed using the recognized negative prefix *dis-*).\n- **Distractor Analysis**:\n  - *Entrust*: Means to assign the responsibility for doing something to someone; a synonym/derivative, not an antonym.\n  - *Intrust*: Archaic spelling of entrust.\n  - *Untrust*: Non-standard, obsolete form; standard modern English exclusively uses *distrust*.\n\nTherefore, the correct answer is **Option C (Distrust)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359726",
+      "solution": {
+        "concept": "Verbal Aptitude - Vocabulary & Financial Metaphors",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Vocabulary & Financial Metaphors\n- **Sentence Context**:\n  - *\"Stock markets _______ at the news of the coup.\"*\n  - A political coup d'état creates acute instability, triggering panic selling in financial markets and causing equity indices to fall rapidly and precipitously.\n- **Option Analysis**:\n  - **Option A (poised)**: Means composed, balanced, or suspended; contradicts the violent disruption of a coup.\n  - **Option B (plunged)**: Means fell suddenly and uncontrollably; standard financial terminology for a sharp market crash.\n  - **Option C (plugged)**: Means blocked or stopped up.\n  - **Option D (probed)**: Means investigated or explored physically.\n\nTherefore, the correct answer is **Option B (plunged)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359724",
+      "solution": {
+        "concept": "Quantitative Aptitude - Combinatorics & Team Selection",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Combinatorics & Team Selection\n- **Problem Statement**:\n  - Given four individuals: $\\{P, Q, R, S\\}$.\n  - We wish to form teams containing $Q$ as a mandatory member, such that the team size strictly exceeds $1$ (team size $k \\ge 2$).\n- **Step-by-Step Analytical Derivation**:\n  1. Since $Q$ must belong to every team, selecting a team corresponds to choosing a non-empty subset of the remaining 3 individuals $\\{P, R, S\\}$ to join $Q$.\n  2. If we choose $m$ additional members from $\\{P, R, S\\}$, the total team size becomes $1 + m$.\n  3. The condition \"size exceeding one\" requires $1 + m > 1 \\implies m \\ge 1$.\n  4. The number of non-empty subsets of a 3-element set is:\n     $$2^3 - 1 = 8 - 1 = 7$$\n  5. **Explicit Enumeration of the 7 Teams**:\n     - Teams of size 2 ($m=1$): $\\{Q, P\\}, \\{Q, R\\}, \\{Q, S\\}$ (3 teams)\n     - Teams of size 3 ($m=2$): $\\{Q, P, R\\}, \\{Q, P, S\\}, \\{Q, R, S\\}$ (3 teams)\n     - Team of size 4 ($m=3$): $\\{Q, P, R, S\\}$ (1 team)\n     - Total valid teams: $3 + 3 + 1 = 7$.\n\nTherefore, the correct answer is **Option C ($7$)**.",
+        "images": []
+      }
+    }
+  ]
+}

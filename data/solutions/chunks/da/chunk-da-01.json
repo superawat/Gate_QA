@@ -1,0 +1,231 @@
+{
+  "chunkId": "CHUNK-DA-01",
+  "branch": "da",
+  "year": 2024,
+  "section": "all",
+  "generatedAt": "2026-10-20T12:05:19.512Z",
+  "status": "COMPLETED",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 52,
+  "remainingAfterSlice": 42,
+  "summary": {
+    "verifiedCount": 10,
+    "integratedCount": 10,
+    "holdCount": 0,
+    "reviewDate": "2026-10-20",
+    "notes": "Phase 1 Chunk 1 (GATE DA 2024 Q6-Q15) authored, peer-verified, and integrated with 100% agreement with official IIT answer keys."
+  },
+  "questions": [
+    {
+      "uid": "go:422956",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 6,
+      "title": "GATE DA 2024 | Question: 6",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Data Structures",
+      "subtopic": "Abstract Data Types",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422956/gate-ds%26ai-2024-question-6#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "FIFO = Queues (ii), Lookup = Hash Tables (iii), LIFO = Stacks (i). Matches (p)-(ii), (q)-(iii), (r)-(i) -> Option A.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422955",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE DA 2024 | Question: 7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "Support Vector Machines",
+      "officialAnswer": "D",
+      "goLink": "https://gateoverflow.in/422955/gate-ds%26ai-2024-question-7#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "D",
+        "rationale": "Optimal separating hyperplane is x1 + x2 = 0 with normal w = [1, 1]^T. Margin planes w^T x = +-1 are touched exactly by x1, x2, x3, x4. x5 and x6 have w^T x = +-4 (interiors). Hence {x1, x2, x3, x4} are the support vectors.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422954",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 8,
+      "title": "GATE DA 2024 | Question: 8",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "Model Categorization",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422954/gate-ds%26ai-2024-question-8#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "PCA = Dimensionality Reduction (ii); Naive Bayes = Generative Model (iii); Logistic Regression = Discriminative Model (i). Matches Option C.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422953",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 9,
+      "title": "GATE DA 2024 | Question: 9",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "K-Means Clustering",
+      "officialAnswer": "D",
+      "goLink": "https://gateoverflow.in/422953/gate-ds%26ai-2024-question-9#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "D",
+        "rationale": "Voronoi cells in Euclidean k-means are convex sets (intersections of half-spaces). Since [1, 1]^T and [-1, 1]^T are in Cluster 3, their midpoint [0, 1]^T must also necessarily lie in Cluster 3.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422952",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE DA 2024 | Question: 10",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "Naive Bayes Parameter Estimation",
+      "officialAnswer": "B",
+      "goLink": "https://gateoverflow.in/422952/gate-ds%26ai-2024-question-10#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B",
+        "rationale": "Class prior requires 1 parameter (p = P(Y=c1)). For 2 classes and K independent binary attributes, each conditional distribution P(Xi=1|Y=c) requires 1 parameter per class: K * 2 = 2K. Total parameters = 2K + 1.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422951",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 11,
+      "title": "GATE DA 2024 | Question: 11",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Hashing (Open Addressing)",
+      "officialAnswer": "B",
+      "goLink": "https://gateoverflow.in/422951/gate-ds%26ai-2024-question-11#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "B",
+        "rationale": "In open addressing with uniform hashing, an insertion probes until the first unoccupied slot is found, which is identical to an unsuccessful search. Hence expected probes <= 1/(1 - alpha).",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422950",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 12,
+      "title": "GATE DA 2024 | Question: 12",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Machine Learning",
+      "subtopic": "Linear Discriminant Analysis",
+      "officialAnswer": "A",
+      "goLink": "https://gateoverflow.in/422950/gate-ds%26ai-2024-question-12#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "A",
+        "rationale": "Maximizing Rayleigh quotient J(u) = (u^T S_B u)/(u^T S_W u) leads to gradient stationary condition S_B u* = lambda S_W u*. Since S_W is non-singular, multiplying by S_W^-1 yields S_W^-1 S_B u* = lambda u*.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422949",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 13,
+      "title": "GATE DA 2024 | Question: 13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Artificial Intelligence",
+      "subtopic": "Heuristic Search (A* Search)",
+      "officialAnswer": "D",
+      "goLink": "https://gateoverflow.in/422949/gate-ds%26ai-2024-question-13#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "D",
+        "rationale": "Since 0 <= h1(n) <= h*(n) and 0 <= h2(n) <= h*(n), |h1(n) - h2(n)| = max(h1-h2, h2-h1) <= max(h1, h2) <= h*(n). And |h1-h2| >= 0 with |h1(goal)-h2(goal)| = 0. Hence |h1 - h2| is always admissible.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422948",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 14,
+      "title": "GATE DA 2024 | Question: 14",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Artificial Intelligence",
+      "subtopic": "Probabilistic Reasoning (Bayesian Networks)",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422948/gate-ds%26ai-2024-question-14#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "W is a collider between U and V (U -> W <- V). Conditioning on collider W opens the trail ('explaining away'), making U and V conditionally dependent given W. Thus statement C is FALSE.",
+        "patchRegistered": true
+      }
+    },
+    {
+      "uid": "go:422947",
+      "branch": "da",
+      "year": 2024,
+      "set": 1,
+      "qNum": 15,
+      "title": "GATE DA 2024 | Question: 15",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Artificial Intelligence",
+      "subtopic": "Adversarial Search (Alpha-Beta Pruning)",
+      "officialAnswer": "C",
+      "goLink": "https://gateoverflow.in/422947/gate-ds%26ai-2024-question-15#a_list",
+      "status": "INTEGRATED",
+      "verification": {
+        "agreesWithOfficialKey": true,
+        "derivedAnswer": "C",
+        "rationale": "In minimax alpha-beta pruning, alpha is the highest-value choice formed so far for the MAX player (m = highest), and beta is the lowest-value choice formed so far for the MIN player (n = lowest). Pruning happens when alpha >= beta.",
+        "patchRegistered": true
+      }
+    }
+  ]
+}

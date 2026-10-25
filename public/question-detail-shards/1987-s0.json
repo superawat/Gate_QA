@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:31:38.966Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1987-s0",
   "yearSetKey": "1987-s0",
   "yearSetIdentity": "cse:1987:set-0",
@@ -74,6 +74,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -114,6 +115,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -154,6 +156,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -192,6 +195,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -231,6 +235,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -270,6 +275,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -347,6 +353,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -386,6 +393,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -424,6 +432,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -462,6 +471,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -579,6 +589,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -617,6 +628,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -779,6 +791,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -792,7 +805,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "The polynomial is continuous and has real coefficients. Its degree is 7 with positive leading coefficient, so\n\n$$f(x)\\to-\\infty\\quad(x\\to-\\infty),\\qquad f(x)\\to+\\infty\\quad(x\\to+\\infty).$$\n\nBy the intermediate value theorem, $f$ must equal zero for some real $x$. Equivalently, non-real roots of a real polynomial occur in conjugate pairs, so an odd total degree (counting multiplicity) requires at least one real root. In option A, “complex roots” is understood in the usual real-versus-non-real contrast; it cannot mean merely roots in $\\mathbb C$, which would include every real root.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:80380": {
       "title": "GATE CSE 1987 | Question: 1-xxiii",
@@ -831,6 +849,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "A square matrix is singular exactly when its determinant is zero, equivalently when its rank is less than its order. That happens exactly when its rows are linearly dependent (and, equivalently, its columns are linearly dependent).\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
       }
     },
     "go:80559": {
@@ -939,6 +962,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -1122,6 +1146,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Relations",
+        "markdown": "The statement is false in general. On $S=\\{a,b,c\\}$, let $R_1$ have equivalence classes $\\{a,b\\},\\{c\\}$ and let $R_2$ have classes $\\{a\\},\\{b,c\\}$. Each relation is reflexive, symmetric, and transitive.\n\nTheir union contains $(a,b)$ and $(b,c)$ but not $(a,c)$, so it is not transitive and therefore is not an equivalence relation. The existing true/false answer record encodes False as NAT $0$.\n\n**Therefore, the numerical answer is 0 (False).**",
+        "images": []
       }
     },
     "go:80588": {
@@ -1567,6 +1596,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -1608,6 +1638,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",
@@ -1646,6 +1677,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1987-s0",
       "yearSetIdentity": "cse:1987:set-0",

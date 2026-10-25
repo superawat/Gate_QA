@@ -1,0 +1,330 @@
+{
+  "chunkId": "CHUNK-CSE-CLASSIC-04",
+  "branch": "cse",
+  "year": 2001,
+  "section": "all",
+  "generatedAt": "2026-10-25T12:02:05.746Z",
+  "count": 7,
+  "offset": 0,
+  "totalMatchingInBacklog": 7,
+  "remainingAfterSlice": 0,
+  "questions": [
+    {
+      "uid": "go:731",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 2001 | Question: 2.13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "CO & Architecture",
+      "subtopic": "Data Path",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Consider the following data path of a simple non-pipelined CPU. The registers $A, B$, $A_{1},A_{2}, \\textsf{MDR},$ the $\\textsf{bus}$ and the $\\textsf{ALU}$ are $8$-$bit$ wide. $\\textsf{SP}$ and $\\textsf{MAR}$ are $16$-$bit$ registers. The $\\textsf{MUX}$ is of size $8 \\times (2:1)$ and the $\\textsf{DEMUX}$ is of size $8 \\times (1:2)$. Each memory operation takes $2$ $\\textsf{CPU}$ clock cycles and uses $\\textsf{MAR}$ (Memory Address Register) and $\\textsf{MDR}$ (Memory Date Register). $\\textsf{SP}$ can be decremented locally.</p>\n<p><img alt=\"\" height=\"261\" src=\"/Gate_QA/question-images/6301981403617845683.webp\" width=\"632\"/></p>\n<p>The $\\textsf{CPU}$ instruction \"<code>push r</code>\" where, $r =$ $A$ or $B$ has the specification</p>\n<ul>\n<li>$M[SP] ← r $</li>\n<li>$SP ← SP - 1$</li>\n</ul>\n<p>How many $\\textsf{CPU}$ clock cycles are required to execute the \"<code>push r</code>\" instruction?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n<li>$5$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/731/gate-cse-2001-question-2-13",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/731/gate-cse-2001-question-2-13",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/731/gate-cse-2001-question-2-13",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "Two 8-bit bus transfers for 16-bit SP->MAR, one for 8-bit r->MDR, and 2-cycle memory write; local SP decrement overlaps; total 5 cycles, Option D.",
+        "notes": "Two 8-bit bus transfers for 16-bit SP->MAR, one for 8-bit r->MDR, and 2-cycle memory write; local SP decrement overlaps; total 5 cycles, Option D.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:732",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 2001 | Question: 2.14",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Graph Algorithms",
+      "officialAnswer": "C",
+      "questionHtml": "<p>Consider an undirected, unweighted graph $G$. Let a breadth-first traversal of $G$ be done starting from a node $r$. Let $d(r,u)$ and $d(r,v)$ be the lengths of the shortest paths from $r$ to $u$ and $v$ respectively in $G$. If $u$ is visited before $v$ during the breadth-first traversal, which of the following statements is correct?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$d(r,u) &lt; d(r,v)$</li>\n<li>$d(r,u) &gt; d(r,v)$</li>\n<li>$d(r,u) \\leq d(r,v)$</li>\n<li>None of the above</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/732/gate-cse-2001-question-2-14",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/732/gate-cse-2001-question-2-14",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/732/gate-cse-2001-question-2-14",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "BFS visits vertices in non-decreasing layer order; visiting u before v implies d(r,u) <= d(r,v), Option C.",
+        "notes": "BFS visits vertices in non-decreasing layer order; visiting u before v implies d(r,u) <= d(r,v), Option C.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:734",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 2001 | Question: 2.16",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming and DS",
+      "subtopic": "Data Structures",
+      "officialAnswer": "B",
+      "questionHtml": "<p>What is the minimum number of stacks of size $n$ required to implement a queue of size $n$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>One</li>\n<li>Two</li>\n<li>Three</li>\n<li>Four</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/734/gate-cse-2001-question-2-16",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/734/gate-cse-2001-question-2-16",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/734/gate-cse-2001-question-2-16",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "Two stacks of capacity n (input and output stack) are necessary and sufficient to reverse LIFO into FIFO, Option B.",
+        "notes": "Two stacks of capacity n (input and output stack) are necessary and sufficient to reverse LIFO into FIFO, Option B.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:735",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 2001 | Question: 2.17 | UGCNET-AUG2016-III: 21",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming in C",
+      "subtopic": "Parameter Passing",
+      "officialAnswer": "B",
+      "questionHtml": "<p>What is printed by the print statements in the program $P1$ assuming call by reference parameter passing?</p>\n<pre class=\"prettyprint lang-c_cpp\" style=\"text-align: justify;\">Program P1\n{\n    x = 10;\n    y = 3;\n    func1(y,x,x);\n    print x;\n    print y;\n}\n\nfunc1(x,y,z)\n{\n    y = y + 4;\n    z = x + y + z\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{10, 3}$</li>\n<li>$\\text{31, 3}$</li>\n<li>$\\text{27, 7}$</li>\n<li>None of the above</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/735/gate-cse-2001-question-2-17-ugcnet-aug2016-iii-21",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/735/gate-cse-2001-question-2-17-ugcnet-aug2016-iii-21",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/735/gate-cse-2001-question-2-17-ugcnet-aug2016-iii-21",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "Call-by-reference with aliased formal parameters y and z bound to P1.x yields 14 after increment and 3+14+14=31 after sum; P1.y remains 3; prints 31, 3, Option B.",
+        "notes": "Call-by-reference with aliased formal parameters y and z bound to P1.x yields 14 after increment and 3+14+14=31 after sum; P1.y remains 3; prints 31, 3, Option B.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:736",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 2001 | Question: 2.18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming in C",
+      "subtopic": "Programming In C",
+      "officialAnswer": "C",
+      "questionHtml": "<p>Consider the following three C functions:</p>\n<p>$[P1]$ </p>\n<pre class=\"prettyprint lang-c_cpp\">int *g(void)\n{\n    int x = 10;\n    return (&amp;x);\n}</pre>\n<p>$[P2]$ </p>\n<pre class=\"prettyprint lang-c_cpp\">int *g(void)\n{\n    int *px;\n    *px = 10;\n    return px;\n}</pre>\n<p>$[P3]$ </p>\n<pre class=\"prettyprint lang-c_cpp\">int *g(void)\n{\n    int *px;\n    px = (int*) malloc (sizeof(int));\n    *px = 10;\n    return px;\n}</pre>\n<p>Which of the above three functions are likely to cause problems with pointers?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Only $P3$</li>\n<li>Only $P1$ and $P3$</li>\n<li>Only $P1$ and $P2$</li>\n<li>$P1, P2$ and $P3$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/736/gate-cse-2001-question-2-18",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/736/gate-cse-2001-question-2-18",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/736/gate-cse-2001-question-2-18",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "P1 returns dangling stack pointer, P2 dereferences uninitialized wild pointer, while P3 returns valid heap allocation; only P1 and P2 cause problems, Option C.",
+        "notes": "P1 returns dangling stack pointer, P2 dereferences uninitialized wild pointer, while P3 returns valid heap allocation; only P1 and P2 cause problems, Option C.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:737",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CSE 2001 | Question: 2.19",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "",
+      "officialAnswer": "D",
+      "questionHtml": "<a name=\"737\"></a><div itemprop=\"text\"><p>Consider the following program</p>\n\n<pre class=\"prettyprint lang-c_cpp\">Program P2\n    var n : int;\n    \n    procedure W(var x : int)\n    begin\n        x = x + 1;\n        print x;\n    end\n\n    procedure D\n    begin\n        var n : int;\n        n = 3;\n        W(n);\n    end\n\n    begin    \\\\begin P2\n        n=10;\n        D;\n    end</pre>\n\n<p>If the language has dynamic scooping and parameters are passed by reference, what will be printed by the program?</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>10</li>\n\t<li>11</li>\n\t<li>3</li>\n\t<li>None of the above</li>\n</ol></div>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/737/gate-cse-2001-question-2-19",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/737/gate-cse-2001-question-2-19",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/737/gate-cse-2001-question-2-19",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "Dynamic scoping resolves formal parameter x bound by reference to D.n; x is incremented from 3 to 4 and printed; output is 4, absent from A/B/C, so Option D.",
+        "notes": "Dynamic scoping resolves formal parameter x bound by reference to D.n; x is incremented from 3 to 4 and printed; output is 4, absent from A/B/C, so Option D.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:756",
+      "branch": "cse",
+      "year": 2001,
+      "set": 1,
+      "qNum": 15,
+      "title": "GATE CSE 2001 | Question: 15",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "",
+      "officialAnswer": "B",
+      "questionHtml": "<p>Consider a weighted undirected graph with vertex set <small>$V = \\{n1, n2, n3, n4, n5, n6 \\}$</small> and edge set <small>$E = \\{(n1,n2,2), (n1,n3,8), (n1,n6,3), (n2,n4,4), (n2,n5,12), (n3,n4,7), (n4,n5,9), (n4,n6,4)\\}$.</small></p>\n<p>The third value in each tuple represents the weight of the edge specified in the tuple.</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>List the edges of a minimum spanning tree of the graph.</li>\n<li>How many distinct minimum spanning trees does this graph have?</li>\n<li>Is the minimum among the edge weights of a minimum spanning tree unique over all possible minimum spanning trees of a graph?</li>\n<li>Is the maximum among the edge weights of a minimum spanning tree unique over all possible minimum spanning tree of a graph?</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/756/gate-cse-2001-question-15",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-25",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/756/gate-cse-2001-question-15",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/756/gate-cse-2001-question-15",
+            "accessedAt": "2026-10-25"
+          }
+        ],
+        "independentCheck": "Kruskal algorithm on 6 vertices selects {2, 3, 4, 7, 9} with tie at weight 4 giving exactly 2 distinct MSTs (Part B); edge weights are {2, 3, 4, 7, 9} with min 2 and max 9 invariant across all MSTs; Option B.",
+        "notes": "Kruskal algorithm on 6 vertices selects {2, 3, 4, 7, 9} with tie at weight 4 giving exactly 2 distinct MSTs (Part B); edge weights are {2, 3, 4, 7, 9} with min 2 and max 9 invariant across all MSTs; Option B.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2001-s0.json"
+        }
+      }
+    }
+  ],
+  "status": "COMPLETED",
+  "reviewStatus": "REVIEWED",
+  "reviewedAt": "2026-10-25",
+  "acceptedCount": 7,
+  "holdCount": 0,
+  "specialCategories": {
+    "HOLD": []
+  },
+  "integratedCount": 7
+}

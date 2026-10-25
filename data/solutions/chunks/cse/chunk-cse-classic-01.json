@@ -1,0 +1,1149 @@
+{
+  "chunkId": "CHUNK-CSE-CLASSIC-01",
+  "branch": "cse",
+  "year": "all",
+  "section": "all",
+  "generatedAt": "2026-10-22T23:51:03.313Z",
+  "count": 25,
+  "offset": 0,
+  "totalMatchingInBacklog": 507,
+  "remainingAfterSlice": 482,
+  "questions": [
+    {
+      "uid": "go:1338",
+      "branch": "cse",
+      "year": 2009,
+      "set": 1,
+      "qNum": 53,
+      "title": "GATE CSE 2009 | Question: 53",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Dynamic Programming",
+      "officialAnswer": "C",
+      "questionHtml": "<p>A sub-sequence of a given sequence is just the given sequence with some elements (possibly none or all) left out. We are given two sequences $X[m]$ and $Y[n]$ of lengths $m$ and $n$, respectively with indexes of $X$ and $Y$ starting from $0$.</p>\n<p>We wish to find the length of the longest common sub-sequence (LCS) of $X[m]$ and $Y[n]$ as $l(m, n)$, where an incomplete recursive definition for the function $I(i, j)$ to compute the length of the LCS of $X[m]$ and $Y[n]$ is given below:</p>\n<pre class=\"text\" style=\"text-align: justify;\">l(i,j)  = 0, if either i = 0 or j = 0\n        = expr1, if i,j &gt; 0 and X[i-1] = Y[j-1]\n        = expr2, if i,j &gt; 0 and X[i-1] ≠ Y[j-1]\n</pre>\n<p>Which one of the following options is correct?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{expr1} = l\\left(i-1, j\\right) +1$</p>\n</li>\n<li>\n<p>$\\text{expr1} = l\\left(i, j-1\\right)$</p>\n</li>\n<li>\n<p>$\\text{expr2} = \\max\\left(l\\left(i-1, j\\right), l\\left(i,j-1\\right)\\right)$</p>\n</li>\n<li>\n<p>$\\text{expr2} = \\max\\left(l\\left(i-1, j-1\\right), l\\left(i,j\\right)\\right)$</p>\n</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/1338/gate-cse-2009-question-53",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/1338/gate-cse-2009-question-53",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/1338/gate-cse-2009-question-53",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Mismatch recurrence is max(top,left); matching recurrence adds one to the diagonal. Existing key C matches.",
+        "notes": "Mismatch recurrence is max(top,left); matching recurrence adds one to the diagonal. Existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2009-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:43476",
+      "branch": "cse",
+      "year": 2009,
+      "set": 1,
+      "qNum": 54,
+      "title": "GATE CSE 2009 | Question: 54",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Algorithms",
+      "subtopic": "Dynamic Programming",
+      "officialAnswer": "B",
+      "questionHtml": "<p>A sub-sequence of a given sequence is just the given sequence with some elements (possibly none or all) left out. We are given two sequences $X[m]$ and $Y[n]$ of lengths $m$ and $n$, respectively with indexes of $X$ and $Y$ starting from $0$.</p>\n<p>We wish to find the length of the longest common sub-sequence (LCS) of $X[m]$ and $Y[n]$ as $l(m, n)$, where an incomplete recursive definition for the function $I(i, j)$ to compute the length of the LCS of $X[m]$ and $Y[n]$ is given below:</p>\n<p>$l(i,j)  = 0$, if either $i = 0$ or $j = 0$<br/>\n        $= expr1,$  if  $i,j &gt; 0$  and  $X[i-1] = Y[j-1]$<br/>\n        $= expr2,$  if  $i,j &gt; 0$  and  $X[i-1] ≠ Y[j-1]$<br/>\nThe value of $l(i,j)$ could be obtained by dynamic programming based on the correct recursive definition of $l(i,j)$ of the form given above, using an array $L[M,N]$, where $M = m+1$ and $N = n+1$, such that $L[i, j] = l(i, j)$.</p>\n<p>Which one of the following statements would be TRUE regarding the dynamic programming solution for the recursive definition of $l(i, j)$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>All elements of $L$ should be initialized to 0 for the values of $l(i, j)$ to be properly computed.</li>\n<li>The values of $l(i, j)$ may be computed in a row major order or column major order of $L[M, N]$.</li>\n<li>The values of $l(i, j)$ cannot be computed in either row major order or column major order of $L[M, N]$.</li>\n<li>$L[p, q]$ needs to be computed before $L[r, s]$ if either $p&lt;r$ or $q &lt; s$.</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/43476/gate-cse-2009-question-54",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/43476/gate-cse-2009-question-54",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/43476/gate-cse-2009-question-54",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Top, left, and diagonal predecessors allow either row-major or column-major filling after initializing the base row/column. Existing key B matches.",
+        "notes": "Top, left, and diagonal predecessors allow either row-major or column-major filling after initializing the base row/column. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2009-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:1341",
+      "branch": "cse",
+      "year": 2009,
+      "set": 1,
+      "qNum": 59,
+      "title": "GATE CSE 2009 | Question: 59",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming and DS",
+      "subtopic": "Data Structures",
+      "officialAnswer": "C",
+      "questionHtml": "<p>Consider a binary max-heap implemented using an array.<br/>\nWhich one of the following array represents a binary max-heap?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left\\{25,12,16,13,10,8,14\\right\\}$    </li>\n<li>$\\left\\{25,14,13,16,10,8,12\\right\\}$</li>\n<li>$\\left\\{25,14,16,13,10,8,12\\right\\}$</li>\n<li>$\\left\\{25,14,12,13,10,8,16\\right\\}$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/1341/gate-cse-2009-question-59",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/1341/gate-cse-2009-question-59",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/1341/gate-cse-2009-question-59",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Only option C satisfies parent >= child at every heap edge. Existing key C matches.",
+        "notes": "Only option C satisfies parent >= child at every heap edge. Existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2009-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:43466",
+      "branch": "cse",
+      "year": 2009,
+      "set": 1,
+      "qNum": 60,
+      "title": "GATE CSE 2009 | Question: 60",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Programming and DS",
+      "subtopic": "Data Structures",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Consider a binary max-heap implemented using an array.<br/>\nWhat is the content of the array after two delete operations on $\\left\\{25,14,16,13,10,8,12\\right\\}$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left\\{14,13,12,10, 8\\right\\}$</li>\n<li>$\\left\\{14,12,13,8,10\\right\\}$</li>\n<li>$\\left\\{14,13,8,12,10\\right\\}$</li>\n<li>$\\left\\{14,13,12,8,10\\right\\}$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/43466/gate-cse-2009-question-60",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/43466/gate-cse-2009-question-60",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/43466/gate-cse-2009-question-60",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Two extract-max operations produce [14,13,12,8,10]. Existing key D matches.",
+        "notes": "Two extract-max operations produce [14,13,12,8,10]. Existing key D matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2009-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3277",
+      "branch": "cse",
+      "year": 2008,
+      "set": 1,
+      "qNum": 17,
+      "title": "GATE IT 2008 | Question: 17",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Find if the following statements in the context of software testing are TRUE or FALSE.<br>\n(S1): Statement coverage cannot guarantee execution of loops in a program under test.<br>\n(S2): Use of independent path testing criterion guarantees execution of each loop in a program under test more than once.<br></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>True, True</li>\n<li>True, False</li>\n<li>False, True</li>\n<li>False, False</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3277/gate2008-it-17",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3277/gate2008-it-17",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3277/gate2008-it-17",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Conflicting interpretations and discussions; held without changing the answer record.",
+        "notes": "GateOverflow answers disagree on S1 and S2. Under literal statement coverage, executing every statement inside a loop requires entering that loop at least once; independent-path testing also does not guarantee every loop executes more than once. The stored key C is not supported consistently by the source discussion. Preserve the answer and hold pending an authoritative key/wording review.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record compared against the displayed source stem and an independent derivation; an unresolved issue remains.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "RESOLVED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json"
+        }
+      },
+      "specialCategory": null
+    },
+    {
+      "uid": "go:3278",
+      "branch": "cse",
+      "year": 2008,
+      "set": 1,
+      "qNum": 18,
+      "title": "GATE IT 2008 | Question: 18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "",
+      "officialAnswer": "B",
+      "questionHtml": "<p>How many bytes of data can be sent in 15 seconds over a serial link with baud rate of 9600 in asynchronous mode with odd parity and two stop bits in the frame?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>10,000 bytes</li>\n<li>12,000 bytes</li>\n<li>15,000 bytes</li>\n<li>27,000 bytes</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3278/gate2008-it-18",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3278/gate2008-it-18",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3278/gate2008-it-18",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Each payload byte costs 12 line bits; 9600*15/12=12000 bytes. Existing key B matches.",
+        "notes": "Each payload byte costs 12 line bits; 9600*15/12=12000 bytes. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2008-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3279",
+      "branch": "cse",
+      "year": 2008,
+      "set": 1,
+      "qNum": 19,
+      "title": "GATE IT 2008 | Question: 19, ISRO2016-76",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "Web Technologies",
+      "officialAnswer": "C",
+      "questionHtml": "<p>Which of the following is TRUE only of XML but NOT HTML?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>It is derived from SGML</li>\n<li>It describes content and layout</li>\n<li>It allows user defined tags</li>\n<li>It is restricted only to be used with web browsers<br/>\n </li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3279/gate-it-2008-question-19-isro2016-76",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3279/gate-it-2008-question-19-isro2016-76",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3279/gate-it-2008-question-19-isro2016-76",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The intended XML distinction is application-defined tags; existing key C matches.",
+        "notes": "The intended XML distinction is application-defined tags; existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2008-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:420",
+      "branch": "cse",
+      "year": 2008,
+      "set": 1,
+      "qNum": 22,
+      "title": "GATE CSE 2008 | Question: 22",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "",
+      "officialAnswer": "C",
+      "questionHtml": "<a name=\"420\"></a><div itemprop=\"text\"><p>The Newton-Raphson iteration $x_{n+1} = \\frac{1}{2}\\left(x_n+\\frac{R}{x_n}\\right)$ can be used to compute the</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>square of R &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>\n\t<li>reciprocal of R &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>\n\t<li>square root of R &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>\n\t<li>logarithm of R</li>\n</ol></div>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/420/gate-cse-2008-question-22",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/420/gate-cse-2008-question-22",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/420/gate-cse-2008-question-22",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Newton iteration for x^2-R=0 yields the displayed update and converges to sqrt(R). Existing key C matches.",
+        "notes": "Newton iteration for x^2-R=0 yields the displayed update and converges to sqrt(R). Existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2008-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3555",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 16,
+      "title": "GATE IT 2006 | Question: 16",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "C",
+      "questionHtml": "<p>The cyclomatic complexity of the flow graph of a program provides</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>an upper bound for the number of tests that must be conducted to ensure that all statements have been executed at most once</li>\n<li>a lower bound for the number of tests that must be conducted to ensure that all statements have been executed at most once</li>\n<li>an upper bound for the number of tests that must be conducted to ensure that all statements have been executed at least once</li>\n<li>a lower bound for the number of tests that must be conducted to ensure that all statements have been executed at least once</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3555/gate2006-it-16",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3555/gate2006-it-16",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3555/gate2006-it-16",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Cyclomatic complexity bounds basis-path tests used to achieve statement coverage. Existing key C matches.",
+        "notes": "Cyclomatic complexity bounds basis-path tests used to achieve statement coverage. Existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:977",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 16,
+      "title": "GATE CSE 2006 | Question: 16, ISRO-DEC2017-27",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "",
+      "officialAnswer": "B",
+      "questionHtml": "<a name=\"977\"></a><div itemprop=\"text\"><p>Let S be an NP-complete problem and Q and R be two other problems not known to be in NP. Q is polynomial time reducible to S and S is polynomial-time reducible to R. Which one of the following statements is true?</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>R is NP-complete</li>\n\t<li>R is NP-hard</li>\n\t<li>Q is NP-complete</li>\n\t<li>Q is NP-hard</li>\n</ol></div>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/977/gate-cse-2006-question-16-isro-dec2017-27",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/977/gate-cse-2006-question-16-isro-dec2017-27",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/977/gate-cse-2006-question-16-isro-dec2017-27",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Reduction transitivity makes R NP-hard, but R membership in NP is not given. Existing key B matches.",
+        "notes": "Reduction transitivity makes R NP-hard, but R membership in NP is not given. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3556",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 17,
+      "title": "GATE IT 2006 | Question: 17",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "C",
+      "questionHtml": "<p>With respect to software testing, consider a flow graph G with one connected component. Let E be the number of edges, N be the number of nodes, and P be the number of predicate nodes of G. Consider the following four expressions:<br><br>\nI. E - N + P<br>\nII. E - N + 2<br>\nIII. P +  2<br>\nIV. P + 1<br><br>\nThe cyclomatic complexity of G is given by</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I or III</li>\n<li>II or III</li>\n<li>II or IV</li>\n<li>I or IV</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3556/gate2006-it-17",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3556/gate2006-it-17",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3556/gate2006-it-17",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "For one connected component V=E-N+2=P+1. Existing key C matches.",
+        "notes": "For one connected component V=E-N+2=P+1. Existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3596",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 53,
+      "title": "GATE IT 2006 | Question: 53",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "A",
+      "questionHtml": "<p>Match the following concepts and their best possible descriptions. <br><img alt=\"\" src=\"/Gate_QA/question-images/it_go_3596_0.jpg\"/><br></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>i-b, ii-d, iii-e, iv-f, v-g, vi-a</li>\n<li>i-c, ii-a, iii-e, iv-d, v-h, vi-f</li>\n<li>i-c, ii-f, iii-h, iv-a, v-g, vi-d</li>\n<li>i-b, ii-e, iii-c, iv-f, v-g, vi-s</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3596/gate2006-it-53",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3596/gate2006-it-53",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3596/gate2006-it-53",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Held because the scan incorrectly calls protected access to private base members.",
+        "notes": "The scan's description for `protected` says a derived class can access the base class's private parts. In C++/Java-style access control, protected members may be accessed by derived classes, but private members may not. Since the only otherwise matching choice depends on this inaccurate description, hold rather than publish an unqualified derivation.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record compared against the displayed source stem and an independent derivation; an unresolved issue remains.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "RESOLVED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json"
+        }
+      },
+      "specialCategory": null
+    },
+    {
+      "uid": "go:1834",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 56,
+      "title": "GATE CSE 2006 | Question: 56, ISRO2009-58",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "",
+      "officialAnswer": "B",
+      "questionHtml": "<a name=\"1834\"></a><div itemprop=\"text\">\n<p>Consider the following code written in a pass-by-reference language like&nbsp;FORTRAN and these statements about the code.&nbsp;</p>\n\n<pre class=\"prettyprint lang-c_cpp\">subroutine swap(ix,iy) \n     it = ix \nL1 : ix = iy \nL2 : iy = it \n    end \n    ia = 3 \n    ib = 8 \n    call swap (ia, ib+5)\n    print *, ia, ib \n    end </pre>\n\n<p><strong>S1</strong>: The compiler will generate code to allocate a temporary nameless cell,&nbsp;initialize it to 13, and pass the address of the cell to swap&nbsp;<br><strong>S2</strong>: On execution the code will generate a runtime error on line L1&nbsp;<br><strong>S3</strong>: On execution the code will generate a runtime error on line L2&nbsp;<br><strong>S4</strong>: The program will print 13 and 8&nbsp;<br><strong>S5</strong>: The program will print 13 and -2&nbsp;</p>\n\n<p>Exactly the following set of statement(s) is correct:&nbsp;</p>\n\n<ol style=\"list-style-type: upper-alpha;\"><li>S1 and S2&nbsp;</li>\n\t<li>S1 and S4&nbsp;</li>\n\t<li>S3&nbsp;</li>\n\t<li>S1 and S5&nbsp;</li>\n</ol>\n</div>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/1834/gate-cse-2006-question-56-isro2009-58",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/1834/gate-cse-2006-question-56-isro2009-58",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/1834/gate-cse-2006-question-56-isro2009-58",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "The expression argument is copied into a temporary 13; swap writes ia=13, leaving ib=8. Existing key B matches.",
+        "notes": "The expression argument is copied into a temporary 13; swap writes ia=13, leaving ib=8. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3602",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 58,
+      "title": "GATE IT 2006 | Question: 58",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "D",
+      "questionHtml": "<p>A software program consists of two modules $M_1$ and $M_2$ that can fail independently, but never simultaneously. The program is considered to have failed if any of these modules fails. Both the modules are 'repairable' and so the program starts working again as soon as the repair is done. Assume that the mean time to failure (MTTF) of $M_1$ is $T_1$ with a mean time to repair (MTTR) of $R_1$. The MTTF of $M_2$ is $T_2$ with an MTTR of $R_2$. What is the availability of the overall program given that the failure and repair times are all exponentially distributed random variables?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$((T_1T_2)/(T_1R_1 + T_2R_2))$</li>\n<li>$((R_1R_2)/(T_1R_1 + T_2R_2))$</li>\n<li>$((T_1T_2)/(T_1T_2 + T_1R_1 + T_2R_2))$</li>\n<li>$((T_1T_2)/(T_1T_2 + T_1R_2 + T_2R_1))$</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3602/gate2006-it-58",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3602/gate2006-it-58",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3602/gate2006-it-58",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Steady-state uptime is 1/(1+R1/T1+R2/T2), matching option D.",
+        "notes": "Steady-state uptime is 1/(1+R1/T1+R2/T2), matching option D.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3603",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 59,
+      "title": "GATE IT 2006 | Question: 59",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "B",
+      "questionHtml": "<p>Consider the following structure chart diagram. The boxes have function names embedded in them, while the variables are indicated along the arcs.<br><img alt=\"\" src=\"/Gate_QA/question-images/it_go_3603_0.jpg\"/><br><br>Given below are a set of statements relevant to the above diagram.<br><br>\nI. F3 and F6 can be in the same module.<br>\nII. F4 and F6 can be in the same module.<br>\nIII. A4 is both an output and a control variable.<br>\nIV. It is incorrect to pass A1 as data and use it as a control variable.<br><br>\nWhich combination of these statements is TRUE?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>III and IV</li>\n<li>I and IV</li>\n<li>II and IV</li>\n<li>I, II and IV</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3603/gate2006-it-59",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3603/gate2006-it-59",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3603/gate2006-it-59",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Chart conventions classify A4 as data and A1 as both data/control; only statements I and IV hold. Existing key B matches.",
+        "notes": "Chart conventions classify A4 as data and A1 as both data/control; only statements I and IV hold. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3606",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 62,
+      "title": "GATE IT 2006 | Question: 62",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "Web Technologies",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Consider the following XML DTD describing course information in a university:<br><img alt=\"\" src=\"/Gate_QA/question-images/it_go_3606_0.jpg\"/><br>\nWhat is returned by the following XQuery?<br><pre><code> let $as := / /@Score\nfor $c in /Univ/Course[Eval]\nlet $cs := $c/Eval?@Score\nwhere min($cs) > avg($as)\nreturn $c</pre></code></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>The professor with the lowest course evaluation</li>\n<li>Professors who have all their course evaluations above the university average</li>\n<li>The course with the lowest evaluation</li>\n<li>Courses with all evaluations above the university average</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3606/gate2006-it-62",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3606/gate2006-it-62",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3606/gate2006-it-62",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Independent query reading yields option D but the stored record is C; held.",
+        "notes": "The displayed XQuery filters each course by min(course scores) > avg(all university scores), which implies every score in that course is above the university-wide average (option D). The existing answer record is C, and GateOverflow has no answer posted for this question. Preserve the key and hold pending source/key reconciliation.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record compared against the displayed source stem and an independent derivation; an unresolved issue remains.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "RESOLVED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json"
+        }
+      },
+      "specialCategory": null
+    },
+    {
+      "uid": "go:3618",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 74,
+      "title": "GATE IT 2006 | Question: 74",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "B",
+      "questionHtml": "<p><pre><code> void swap(float* A1, float* A2)\n{\n    float temp;\n    if (*A1 = = *A2) return;\n    temp = *A1;\n    *A1 = *A2;\n    *A2 = temp;\n    return;\n}</pre></code><br> The program volume for the above module using Halstead's method is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>60</li>\n<li>63</li>\n<li>66</li>\n<li>69</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3618/gate2006-it-74",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3618/gate2006-it-74",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3618/gate2006-it-74",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Using the source's explicit token convention, V=21 log2(8)=63. Existing key B matches.",
+        "notes": "Using the source's explicit token convention, V=21 log2(8)=63. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3619",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 75,
+      "title": "GATE IT 2006 | Question: 75",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "C",
+      "questionHtml": "<p><pre><code> void swap(float* A1, float* A2)\n{\n    float temp;\n    if (*A1 = = *A2) return;\n    temp = *A1;\n    *A1 = *A2;\n    *A2 = temp;\n    return;\n}</pre></code><br> The program effort for the above module using Halstead's method is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>315</li>\n<li>330</li>\n<li>393</li>\n<li>403</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3619/gate2006-it-75",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3619/gate2006-it-75",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3619/gate2006-it-75",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Source counting gives effort 420, absent from options; held.",
+        "notes": "The linked Halstead volume derivation counts n1=5, N1=13, n2=3, N2=8, so D=(n1/2)(N2/n2)=20/3 and E=D*V=420. The answer choices omit 420 while the existing record is option C (393). The source itself notes that counting conventions vary. Preserve the key and hold until the intended convention or answer key is verified.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record compared against the displayed source stem and an independent derivation; an unresolved issue remains.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "RESOLVED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json"
+        }
+      },
+      "specialCategory": null
+    },
+    {
+      "uid": "go:3638",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 82,
+      "title": "GATE IT 2006 | Question: 82",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "C",
+      "questionHtml": "<p>A software project has four phases P1, P2, P3 and P4. Of these phases, P1 Is the first one and needs to be completed before any other phase can commence. Phases P2 and P3 can be executed in parallel. Phase P4 cannot commence until both P2 and P3 are completed. The optimistic, most likely, and pessimistic estimates of the phase completion times in days, for Pl, P2, P3 and P4 are, respectively, (11, 15, 25), (7, 8, 15), (8, 9, 22), and (3, 8, 19).The critical path for the above project and the slack of P2 are, respectively,</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>P1-P2-P4, 1 day</li>\n<li>P1-P3-P4, 1 day</li>\n<li>P1-P3-P4, 2 days</li>\n<li>P1-P2-P4, 2 days</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3638/gate2006-it-82",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3638/gate2006-it-82",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3638/gate2006-it-82",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Expected phase times are 16,9,11,9; critical path P1-P3-P4 and P2 slack is 2 days. Existing key C matches.",
+        "notes": "Expected phase times are 16,9,11,9; critical path P1-P3-P4 and P2 slack is 2 days. Existing key C matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2006-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3639",
+      "branch": "cse",
+      "year": 2006,
+      "set": 1,
+      "qNum": 83,
+      "title": "GATE IT 2006 | Question: 83",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "D",
+      "questionHtml": "<p>A software project has four phases P1, P2, P3 and P4. Of these phases, P1 Is the first one and needs to be completed before any other phase can commence. Phases P2 and P3 can be executed in parallel. Phase P4 cannot commence until both P2 and P3 are completed. The optimistic, most likely, and pessimistic estimates of the phase completion times in days, for Pl, P2, P3 and P4 are, respectively, (11, 15, 25), (7, 8, 15), (8, 9, 22), and (3, 8, 19).The costs (in Rupees per day) of crashing the expected phase completion times for the four phases, respectively, are 100, 2000, 50, and 1000. Assume that the expected phase completion times of the phases cannot be crashed below their respective most likely completion times. The minimum and the maximum amounts (in Rupees) that can be spent on crashing so that ALL paths are critical are, respectively.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>100 and 1000</li>\n<li>100 and 1200</li>\n<li>150 and 1200</li>\n<li>200 and 2000</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3639/gate2006-it-83",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3639/gate2006-it-83",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3639/gate2006-it-83",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Independent crash-cost derivation gives B while stored record is D; held.",
+        "notes": "The PERT durations are 16, 9, 11, and 9 days. Equalizing the two paths requires crashing P3 by two days at 50/day ($100); with both paths critical, the common P1 and P4 phases can each be crashed one day for another $100 and $1,000, totaling $1,200 (option B). The stored record is D (200, 2000), and the discussion contains conflicting explanations. Preserve the key and hold.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record compared against the displayed source stem and an independent derivation; an unresolved issue remains.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "RESOLVED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json"
+        }
+      },
+      "specialCategory": null
+    },
+    {
+      "uid": "go:3765",
+      "branch": "cse",
+      "year": 2005,
+      "set": 1,
+      "qNum": 20,
+      "title": "GATE IT 2005 | Question: 20",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "D",
+      "questionHtml": "<p>The Function Point (FP) calculated for a software project are often used to obtain an estimate of Lines of Code (LOC) required for that project. Which of the following statements is FALSE in this context.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>The relationship between FP and LOC depends on the programming language used to implement the software.</li>\n<li>LOC requirement for an assembly language implementation will be more for a given FP value, than LOC for implementation in COBOL.</li>\n<li>On an average, one LOC of C++ provides approximately 1.6 times the functionality of a single LOC of FORTRAN</li>\n<li>FP and LOC are not related to each other</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3765/gate2005-it-20a",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3765/gate2005-it-20a",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3765/gate2005-it-20a",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "FP-to-LOC conversion depends on language, so D is false. Existing key D matches.",
+        "notes": "FP-to-LOC conversion depends on language, so D is false. Existing key D matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2005-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3776",
+      "branch": "cse",
+      "year": 2005,
+      "set": 1,
+      "qNum": 30,
+      "title": "GATE IT 2005 | Question: 30",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "Web Technologies",
+      "officialAnswer": "B",
+      "questionHtml": "<p>A HTML form is to be designed to enable purchase of office stationery. Required items are to be selected (checked). Credit card details are to be entered and then the submit button is to be pressed. Which one of the following options would be appropriate for sending the data to the server. Assume that security is handled in a way that is transparent to the form design.</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>Only GET</li>\n<li>Only POST</li>\n<li>Either of GET or POST</li>\n<li>Neither GET nor POST</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3776/gate-it-2005-question-30",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3776/gate-it-2005-question-30",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3776/gate-it-2005-question-30",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "POST submits a purchase as a state-changing request. Existing key B matches.",
+        "notes": "POST submits a purchase as a state-changing request. Existing key B matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2005-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3844",
+      "branch": "cse",
+      "year": 2005,
+      "set": 1,
+      "qNum": 80,
+      "title": "GATE IT 2005 | Question: 80",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Other / Optional",
+      "subtopic": "Web Technologies",
+      "officialAnswer": "D",
+      "questionHtml": "<p>Given below is an excerpt of an xml specification.<br><img alt=\"\" src=\"/Gate_QA/question-images/it_go_3844_0.jpg\"/><br>\nGiven below are several possible excerpts from \"library.dtd\". For which excerpt would the above specification be valid?<br><img alt=\"\" src=\"/Gate_QA/question-images/it_go_3844_1.jpg\"/><br></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>A</li>\n<li>B</li>\n<li>C</li>\n<li>D</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3844/gate2005-it-80",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3844/gate2005-it-80",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3844/gate2005-it-80",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "Displayed options are ambiguous/malformed for the shown instance; held.",
+        "notes": "The displayed DTD choices are not uniquely valid for the shown XML. Both title? and title* permit the sample's one-title/zero-title Book instances, while the shown ATTLIST declaration omits a required default declaration; option C and D otherwise appear identical. Hold pending a clean original scan or authoritative correction.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record compared against the displayed source stem and an independent derivation; an unresolved issue remains.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "RESOLVED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-25",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json"
+        }
+      },
+      "specialCategory": null
+    },
+    {
+      "uid": "go:3658",
+      "branch": "cse",
+      "year": 2004,
+      "set": 1,
+      "qNum": 17,
+      "title": "GATE IT 2004 | Question: 17",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "A",
+      "questionHtml": "<p>In a software project, COCOMO (Constructive Cost Model) is used to estimat</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>effort and duration based on the size of the software</li>\n<li>size and duration based on the effort of the software</li>\n<li>effort and cost based on the duration of the software</li>\n<li>size, effort and duration based on the cost of the software</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3658/gate2004-it-17",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3658/gate2004-it-17",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3658/gate2004-it-17",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "COCOMO estimates effort and duration from software size. Existing key A matches.",
+        "notes": "COCOMO estimates effort and duration from software size. Existing key A matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2004-s0.json"
+        }
+      }
+    },
+    {
+      "uid": "go:3659",
+      "branch": "cse",
+      "year": 2004,
+      "set": 1,
+      "qNum": 18,
+      "title": "GATE IT 2004 | Question: 18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Unknown",
+      "subtopic": "",
+      "officialAnswer": "D",
+      "questionHtml": "<p>The diagram that helps in understanding and representing user requirements for a software project using UML (Unified Modeling Language) is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Entity Relationship Diagram</li>\n<li>Deployment Diagram</li>\n<li>Data Flow Diagram</li>\n<li>Use Case Diagram</li>\n</ol>",
+      "options": [],
+      "goLink": "https://gateoverflow.in/3659/gate2004-it-18",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "INTEGRATED",
+      "review": {
+        "reviewer": "Codex",
+        "reviewedAt": "2026-10-23",
+        "identityVerified": true,
+        "stemOptionsAndDiagramChecked": true,
+        "sourceUrl": "https://gateoverflow.in/3659/gate2004-it-18",
+        "researchLinks": [
+          {
+            "url": "https://gateoverflow.in/3659/gate2004-it-18",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "independentCheck": "UML use-case diagrams express external actors' functional requirements. Existing key D matches.",
+        "notes": "UML use-case diagrams express external actors' functional requirements. Existing key D matches.",
+        "disposition": "INTEGRATED",
+        "answerKeySource": "Existing UID answer record cross-checked against the displayed question/options and independent derivation; no answer key changed.",
+        "answerKeyVerified": true,
+        "answerKeyStatus": "MATCHED",
+        "integrationResult": {
+          "status": "VERIFIED",
+          "verifiedAt": "2026-10-23",
+          "registryPath": "data/solutions/practicepaper/all-solutions.json",
+          "detailShardPath": "public/question-detail-shards/it-2004-s0.json"
+        }
+      }
+    }
+  ],
+  "status": "COMPLETED",
+  "reviewStatus": "REVIEWED",
+  "reviewedAt": "2026-10-23",
+  "acceptedCount": 25,
+  "holdCount": 6,
+  "specialCategories": {
+    "HOLD": [
+      {
+        "uid": "go:3277",
+        "reason": "GateOverflow answers disagree on S1 and S2. Under literal statement coverage, executing every statement inside a loop requires entering that loop at least once; independent-path testing also does not guarantee every loop executes more than once. The stored key C is not supported consistently by the source discussion. Preserve the answer and hold pending an authoritative key/wording review."
+      },
+      {
+        "uid": "go:3596",
+        "reason": "The scan's description for `protected` says a derived class can access the base class's private parts. In C++/Java-style access control, protected members may be accessed by derived classes, but private members may not. Since the only otherwise matching choice depends on this inaccurate description, hold rather than publish an unqualified derivation."
+      },
+      {
+        "uid": "go:3606",
+        "reason": "The displayed XQuery filters each course by min(course scores) > avg(all university scores), which implies every score in that course is above the university-wide average (option D). The existing answer record is C, and GateOverflow has no answer posted for this question. Preserve the key and hold pending source/key reconciliation."
+      },
+      {
+        "uid": "go:3619",
+        "reason": "The linked Halstead volume derivation counts n1=5, N1=13, n2=3, N2=8, so D=(n1/2)(N2/n2)=20/3 and E=D*V=420. The answer choices omit 420 while the existing record is option C (393). The source itself notes that counting conventions vary. Preserve the key and hold until the intended convention or answer key is verified."
+      },
+      {
+        "uid": "go:3639",
+        "reason": "The PERT durations are 16, 9, 11, and 9 days. Equalizing the two paths requires crashing P3 by two days at 50/day ($100); with both paths critical, the common P1 and P4 phases can each be crashed one day for another $100 and $1,000, totaling $1,200 (option B). The stored record is D (200, 2000), and the discussion contains conflicting explanations. Preserve the key and hold."
+      },
+      {
+        "uid": "go:3844",
+        "reason": "The displayed DTD choices are not uniquely valid for the shown XML. Both title? and title* permit the sample's one-title/zero-title Book instances, while the shown ATTLIST declaration omits a required default declaration; option C and D otherwise appear identical. Hold pending a clean original scan or authoritative correction."
+      }
+    ]
+  },
+  "integratedCount": 25,
+  "heldCount": 0,
+  "updatedAt": "2026-10-25"
+}

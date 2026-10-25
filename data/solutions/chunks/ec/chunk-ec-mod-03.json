@@ -1,0 +1,332 @@
+{
+  "chunkId": "CHUNK-EC-MOD-03",
+  "branch": "ec",
+  "year": 2016,
+  "section": "tech",
+  "generatedAt": "2026-10-20T17:40:41.006Z",
+  "count": 11,
+  "offset": 0,
+  "totalMatchingInBacklog": 11,
+  "remainingAfterSlice": 0,
+  "questions": [
+    {
+      "uid": "ec:2016:q4",
+      "branch": "ec",
+      "year": 2016,
+      "set": 1,
+      "qNum": 4,
+      "title": "GATE EC 2016 | Set 1 | Question: 4",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Signals and Systems",
+      "subtopic": "Laplace Transform",
+      "officialAnswer": "A",
+      "questionHtml": "Which one of the following is a property of the solutions to the Laplace equation: $\\bigtriangledown ^{2} f= 0$?",
+      "options": [
+        "The solutions have neither maxima nor minima anywhere except at the boundaries.",
+        "The solutions are not separable in the coordinates.",
+        "The solutions are not continuous",
+        "The solutions are not dependent on the boundary conditions"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Signals and Systems / Engineering Mathematics - Laplace Equation and Harmonic Functions",
+        "markdown": "- **Concept / Subtopic**: Signals and Systems / Engineering Mathematics - Laplace Equation and Harmonic Functions\n- **Given Equation & Scope**:\n  - Governing partial differential equation: Laplace's equation in a charge-free/source-free region:\n    $$\\nabla^2 f = 0$$\n- **Governing Principles**:\n  - Real-valued functions $f(x, y, z)$ satisfying Laplace's equation are known as **harmonic functions**.\n  - **Mean Value Property**: The value of a harmonic function at the center of any sphere (or circle in 2D) is exactly equal to the average of its values over the boundary of that sphere:\n    $$f(\\mathbf{x}_0) = \\frac{1}{4\\pi R^2} \\iint_{S_R} f(\\mathbf{x})\\, dS$$\n  - **Maximum-Minimum Principle**: As a direct consequence of the Mean Value Property, if a function has a local maximum (or local minimum) at an interior point $\\mathbf{x}_0$, all surrounding points must have values less than (or greater than) $f(\\mathbf{x}_0)$, which violates the Mean Value equality. Therefore, non-constant solutions to the Laplace equation have **neither maxima nor minima anywhere in the interior domain; extrema can occur only at the boundaries**. In electrostatics, this is the mathematical basis of **Earnshaw's Theorem**.\n- **Step-by-Step Analytical Derivation**:\n  - Suppose $f$ has an interior local maximum at $\\mathbf{x}_0 \\in \\Omega$. Then there exists a ball $B(\\mathbf{x}_0, R) \\subset \\Omega$ such that $f(\\mathbf{x}) \\le f(\\mathbf{x}_0)$ for all $\\mathbf{x} \\in B(\\mathbf{x}_0, R)$, with strict inequality on some open subset if $f$ is non-trivial.\n  - Then the mean value over the boundary sphere satisfies:\n    $$\\frac{1}{4\\pi R^2} \\iint_{\\partial B} f(\\mathbf{x})\\, dS < f(\\mathbf{x}_0)$$\n  - This directly contradicts the Mean Value Property $\\frac{1}{4\\pi R^2} \\iint_{\\partial B} f(\\mathbf{x})\\, dS = f(\\mathbf{x}_0)$.\n  - Thus, no local maxima or minima can exist anywhere inside the domain except at the boundary $\\partial \\Omega$.\n- **Distractor Analysis**:\n  - **Option B is incorrect**: Solutions to Laplace's equation are readily separable in standard coordinate systems (e.g., Cartesian $X(x)Y(y)Z(z)$, cylindrical $R(r)\\Phi(\\phi)Z(z)$, and spherical $R(r)Y_{lm}(\\theta, \\phi)$ coordinates via separation of variables).\n  - **Option C is incorrect**: Harmonic functions are infinitely differentiable ($C^\\infty$) and smooth everywhere in the interior of the domain; they are continuous.\n  - **Option D is incorrect**: By Dirichlet and Neumann boundary value problems, solutions to Laplace's equation are uniquely determined by their boundary conditions.\n\nTherefore, the correct answer is **Option A (The solutions have neither maxima nor minima anywhere except at the boundaries.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q11",
+      "branch": "ec",
+      "year": 2016,
+      "set": 1,
+      "qNum": 11,
+      "title": "GATE EC 2016 | Set 1 | Question: 11",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "Basic Semiconductor Physics",
+      "officialAnswer": "A",
+      "questionHtml": "A small percentage of impurity is added to an intrinsic semiconductor at 300 K. Which one of the following statements is true for the energy band diagram shown in the following figure? <br><img src=\"/question-images/ec/2016/ec-2016-0caa5ace54.webp\"/>",
+      "options": [
+        "Intrinsic semiconductor doped with pentavalent atoms to form n-type semiconductor",
+        "Intrinsic semiconductor doped with trivalent atoms to form n-type semiconductor",
+        "Intrinsic semiconductor doped with pentavalent atoms to form p-type semiconductor",
+        "Intrinsic semiconductor doped with trivalent atoms to form p-type semiconductor"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - Extrinsic Semiconductors & Energy Band Diagram",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - Extrinsic Semiconductors & Energy Band Diagram\n- **Given Parameters & Diagram Analysis**:\n  - Ambient temperature $T = 300\\text{ K}$.\n  - The energy band diagram displays the conduction band edge $E_C$, valence band edge $E_V$, and a discrete donor energy state $E_D$ located immediately below the conduction band ($E_C - E_D \\approx 0.01\\text{ to }0.05\\text{ eV}$), with the Fermi level $E_F$ positioned in the upper half of the bandgap close to $E_C$.\n- **Governing Principles**:\n  - In an intrinsic semiconductor (e.g., Silicon with 4 valence electrons), doping with **pentavalent impurity atoms** (Group V elements such as Phosphorus, Arsenic, or Antimony) introduces five valence electrons per atom.\n  - Four electrons form covalent bonds with adjacent Silicon atoms, while the fifth extra electron is loosely bound to the donor core with a tiny ionization energy.\n  - This extra electron introduces a localized discrete energy level $E_D$ located just below $E_C$.\n  - At room temperature ($300\\text{ K}$, thermal energy $k_B T \\approx 0.0259\\text{ eV}$), virtually all donor atoms are thermally ionized ($N_D^+ \\approx N_D$), donating electrons into the conduction band and creating an **n-type semiconductor** with electron majority carrier concentration $n \\approx N_D$.\n- **Distractor Analysis**:\n  - **Option B is incorrect**: Trivalent impurity atoms (Group III like Boron, Gallium) create acceptor levels $E_A$ just above the valence band $E_V$, not n-type with levels near $E_C$.\n  - **Option C is incorrect**: Doping with pentavalent atoms forms an n-type semiconductor, never a p-type semiconductor.\n  - **Option D is incorrect**: Trivalent atoms produce p-type semiconductors with acceptor states near $E_V$.\n\nTherefore, the correct answer is **Option A (Intrinsic semiconductor doped with pentavalent atoms to form n-type semiconductor)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q12",
+      "branch": "ec",
+      "year": 2016,
+      "set": 1,
+      "qNum": 12,
+      "title": "GATE EC 2016 | Set 1 | Question: 12",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "BJT and FET Basics",
+      "officialAnswer": "C",
+      "questionHtml": "Consider the following statements for a metal oxide semiconductor field effect transistor (MOSFET):                                                                               <br><br>      P: As channel length reduces, OFF-state current increases. <br>\r\nQ: As channel length reduces, output resistance increases.  <br>\r\nR: As channel length reduces, threshold voltage remains constant.  <br>\r\nS: As channel length reduces, ON current increases.       <br> <br>            \r\nWhich of the above statements are INCORRECT?",
+      "options": [
+        "P and Q",
+        "P and S",
+        "Q and R",
+        "R and S"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - MOSFET Short-Channel Effects (SCE) & Scaling",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - MOSFET Short-Channel Effects (SCE) & Scaling\n- **Given Statements**:\n  - $P$: As channel length reduces, OFF-state current increases.\n  - $Q$: As channel length reduces, output resistance increases.\n  - $R$: As channel length reduces, threshold voltage remains constant.\n  - $S$: As channel length reduces, ON current increases.\n- **Governing Principles & Analytical Evaluation**:\n  - **Statement P (Correct)**: As channel length $L$ scales down, Drain-Induced Barrier Lowering (DIBL) lowers the potential barrier between the source and channel at high drain voltages. Consequently, the subthreshold leakage and OFF-state current ($I_{\\text{off}} = I_D|_{V_{GS}=0}$) increase exponentially:\n    $$I_{\\text{off}} \\propto \\exp\\left(-\\frac{q(V_T - \\eta V_{DS})}{m k_B T}\\right)$$\n  - **Statement Q (Incorrect)**: The small-signal output resistance in saturation is governed by channel-length modulation parameter $\\lambda$:\n    $$r_o = \\frac{\\partial V_{DS}}{\\partial I_D} \\approx \\frac{1}{\\lambda I_D}$$\n    Because $\\lambda \\propto \\frac{1}{L}$, decreasing the channel length $L$ causes $\\lambda$ to increase, which directly **decreases** (not increases) the output resistance $r_o$.\n  - **Statement R (Incorrect)**: Due to two-dimensional electric field distribution, source/drain depletion charge sharing, and DIBL, the gate requires less charge to invert the channel as $L$ reduces. This phenomenon, known as **threshold voltage roll-off**, causes $V_T$ to **decrease** significantly with reduced $L$, so it does not remain constant.\n  - **Statement S (Correct)**: The saturation drain current scales inversely with channel length ($I_{\\text{on}} \\propto \\frac{W}{L}$ in long-channel theory, or $I_{\\text{on}} \\approx W C_{ox} v_{\\text{sat}}(V_{GS} - V_T)$ in velocity-saturated regimes with lower $V_T$). Therefore, reducing $L$ causes the ON-state current $I_{\\text{on}}$ to increase.\n- **Conclusion**:\n  - Statements $Q$ and $R$ are factually incorrect.\n\nTherefore, the correct answer is **Option C (Q and R)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q18",
+      "branch": "ec",
+      "year": 2016,
+      "set": 1,
+      "qNum": 18,
+      "title": "GATE EC 2016 | Set 1 | Question: 18",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "FET and MOSFET Analysis",
+      "officialAnswer": "C",
+      "questionHtml": "What is the voltage $V_{out}$ in the following circuit? <br><img src=\"/question-images/ec/2016/ec-2016-bbdb8e2a29.webp\"/>",
+      "options": [
+        "0 V",
+        "$(|V_{T} \\; of \\;PMOS|+V_{T} \\; of \\; NMOS)/2$",
+        "Switching threshold of inverter",
+        "$V_{DD}$"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits / Digital CMOS - Inverter Self-Biased Operating Point & Switching Threshold",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits / Digital CMOS - Inverter Self-Biased Operating Point & Switching Threshold\n- **Given Circuit Configuration**:\n  - The circuit is a standard complementary CMOS inverter consisting of a PMOS pull-up transistor and an NMOS pull-down transistor between $V_{DD}$ and ground.\n  - The output node is connected directly to the gate input node:\n    $$V_{\\text{in}} = V_{\\text{out}}$$\n- **Governing Principles & Step-by-Step Derivation**:\n  - When the output of a CMOS inverter is shorted to its input, the circuit is forced onto the line $V_{\\text{out}} = V_{\\text{in}}$ on the Voltage Transfer Characteristic (VTC).\n  - By definition, the unique point on the inverter VTC where $V_{\\text{out}} = V_{\\text{in}}$ is the **inverter switching threshold** (denoted as $V_M$ or $V_{\\text{th,inv}}$).\n  - At this operating point:\n    - For NMOS: $V_{GSn} = V_{\\text{in}} = V_M$ and $V_{DSn} = V_{\\text{out}} = V_M$. Since $V_{DSn} = V_{GSn} > V_{GSn} - V_{Tn}$, the NMOS is operating in the **saturation region**.\n    - For PMOS: $V_{SGp} = V_{DD} - V_M$ and $V_{SDp} = V_{DD} - V_M$. Since $V_{SDp} = V_{SGp} > V_{SGp} - |V_{Tp}|$, the PMOS is also operating in the **saturation region**.\n  - Equating the drain currents in saturation ($I_{Dn} = I_{Dp}$):\n    $$\\frac{1}{2}\\mu_n C_{ox}\\left(\\frac{W}{L}\\right)_n (V_M - V_{Tn})^2 = \\frac{1}{2}\\mu_p C_{ox}\\left(\\frac{W}{L}\\right)_p (V_{DD} - V_M - |V_{Tp}|)^2$$\n  - Solving for $V_M$ yields the precise switching threshold of the inverter:\n    $$V_M = \\frac{V_{Tn} + \\sqrt{\\frac{k_p}{k_n}}(V_{DD} - |V_{Tp}|)}{1 + \\sqrt{\\frac{k_p}{k_n}}}$$\n  - Thus, the output settles exactly at the switching threshold of the inverter.\n- **Distractor Analysis**:\n  - **Option A ($0\\text{ V}$)** and **Option D ($V_{DD}$)** correspond to the extreme rail logic outputs of an open-loop digital inverter, but cannot occur when input and output are tied together since $V_{\\text{in}} = 0\\text{ V}$ would drive $V_{\\text{out}} = V_{DD}$, violating $V_{\\text{out}} = V_{\\text{in}}$.\n  - **Option B** is an arbitrary algebraic mean of threshold voltages that does not account for $V_{DD}$ or transistor aspect ratios.\n\nTherefore, the correct answer is **Option C (Switching threshold of inverter)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q15-s2",
+      "branch": "ec",
+      "year": 2016,
+      "set": 2,
+      "qNum": 15,
+      "title": "GATE EC 2016 | Set 2 | Question: 15",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "Frequency Response of Amplifier",
+      "officialAnswer": "A",
+      "questionHtml": "Which one of the following statements is correct about an ac-coupled common-emitter amplifier operating in the mid-band region?",
+      "options": [
+        "The device parasitic capacitances behave like open circuits, whereas coupling and bypass capacitances behave like short circuits.",
+        "The device parasitic capacitances, coupling capacitances and bypass capacitances behave like open circuits.",
+        "The device parasitic capacitances, coupling capacitances and bypass capacitances behave like short circuits",
+        "The device parasitic capacitances behave like short circuits, whereas coupling and bypass capacitances behave like open circuits"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits - Frequency Response of AC-Coupled BJT Amplifiers",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits - Frequency Response of AC-Coupled BJT Amplifiers\n- **Operating Regime**:\n  - AC-coupled common-emitter (CE) amplifier operating in the **mid-band frequency region** ($f_L \\ll f \\ll f_H$).\n- **Governing Principles**:\n  - In an amplifier circuit, capacitances fall into two distinct structural categories:\n    1. **External Coupling and Bypass Capacitances ($C_C, C_E$)**:\n       - These capacitors have large values, typically in the microfarad ($\\mu\\text{F}$) range.\n       - Their impedance is given by $Z_C = \\frac{1}{j 2\\pi f C}$.\n       - At mid-band frequencies, $2\\pi f C$ is sufficiently large such that $X_C \\approx 0\\ \\Omega$. Consequently, they act as effective **AC short circuits**, allowing the AC signal to pass without attenuation and establishing an AC ground at the emitter bypass terminal.\n    2. **Internal Device Parasitic Capacitances ($C_\\pi, C_\\mu$)**:\n       - These junction/diffusion capacitances have tiny values, typically in the picofarad ($\\text{pF}$) or femtofarad ($\\text{fF}$) range.\n       - At mid-band frequencies, $2\\pi f C$ is extremely small such that their reactance $X_C \\to \\infty$. Consequently, they carry negligible current and act as effective **AC open circuits**.\n- **Distractor Analysis**:\n  - **Option B is incorrect**: If coupling and bypass capacitances were open circuits, the AC input signal would be completely blocked from reaching the base terminal.\n  - **Option C is incorrect**: If device parasitic capacitances were short circuits, the input and output nodes would be grounded/shorted to each other, destroying amplifier gain.\n  - **Option D is incorrect**: It reverses the roles of the small parasitic capacitances and the large coupling/bypass capacitances.\n\nTherefore, the correct answer is **Option A (The device parasitic capacitances behave like open circuits, whereas coupling and bypass capacitances behave like short circuits.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q16-s2",
+      "branch": "ec",
+      "year": 2016,
+      "set": 2,
+      "qNum": 16,
+      "title": "GATE EC 2016 | Set 2 | Question: 16",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Digital Circuits",
+      "subtopic": "Finite State Machine and Miscellaneous",
+      "officialAnswer": "B",
+      "questionHtml": "Transistor geometries in a CMOS inverter have been adjusted to meet the requirement for worst case charge and discharge times for driving a load capacitor C. This design is to be converted to that of a NOR circuit in the same technology, so that its worst case charge and discharge times while driving the same capacitor are similar. The channel lengths of all transistors are to be kept unchanged. Which one of the following statements is correct? <br><img src=\"/question-images/ec/2016/ec-2016-16b5f9d703.webp\"/> ",
+      "options": [
+        "Widths of PMOS transistors should be doubled, while widths of NMOS transistors should be halved.",
+        "Widths of PMOS transistors should be doubled, while widths of NMOS transistors should not be changed.",
+        "Widths of PMOS transistors should be halved, while widths of NMOS transistors should not be changed.",
+        "Widths of PMOS transistors should be unchanged, while widths of NMOS transistors should be halved."
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Digital Circuits / CMOS VLSI - Sizing of CMOS NOR Gate for Equal Propagation Delays",
+        "markdown": "- **Concept / Subtopic**: Digital Circuits / CMOS VLSI - Sizing of CMOS NOR Gate for Equal Propagation Delays\n- **Given Parameters**:\n  - A reference CMOS inverter has PMOS width $W_P$ and NMOS width $W_N$, adjusted to drive load capacitor $C$ with matched worst-case charge time ($t_{PLH}$) and discharge time ($t_{PHL}$).\n  - A 2-input CMOS NOR gate is to be designed in the same technology to drive the same capacitor $C$ with identical worst-case delay times.\n  - All channel lengths $L$ remain unchanged.\n- **Governing Principles & Analytical Derivation**:\n  1. **Pull-Up Network (PUN) of 2-Input NOR Gate**:\n     - The pull-up network consists of **two PMOS transistors connected in series** between $V_{DD}$ and the output.\n     - For the output to charge from LOW to HIGH, both PMOS transistors must be ON (inputs $A = 0, B = 0$).\n     - The total effective on-resistance of the series chain is:\n       $$R_{P,\\text{NOR}} = R_{P1} + R_{P2} = 2 R_P$$\n     - To match the charging time of the reference inverter ($R_{P,\\text{NOR}} = R_{P,\\text{inv}}$):\n       $$2 R_P = R_{P,\\text{inv}} \\implies R_P = \\frac{1}{2} R_{P,\\text{inv}}$$\n     - Since transistor on-resistance is inversely proportional to channel width ($R \\propto \\frac{L}{W}$):\n       $$\\frac{L}{\\mu_p C_{ox} W_{P,\\text{NOR}}} = \\frac{1}{2}\\left(\\frac{L}{\\mu_p C_{ox} W_{P,\\text{inv}}}\\right) \\implies W_{P,\\text{NOR}} = 2 W_{P,\\text{inv}}$$\n     - Therefore, the **widths of the PMOS transistors must be doubled**.\n  2. **Pull-Down Network (PDN) of 2-Input NOR Gate**:\n     - The pull-down network consists of **two NMOS transistors connected in parallel** between the output and ground.\n     - The **worst-case discharge time** occurs when only **one** NMOS transistor is turned ON (e.g., $A=1, B=0$ or $A=0, B=1$).\n     - In this worst-case scenario, discharge current flows through a single NMOS channel with resistance $R_N$.\n     - To match the inverter discharge resistance ($R_{N,\\text{NOR}} = R_{N,\\text{inv}}$):\n       $$W_{N,\\text{NOR}} = W_{N,\\text{inv}}$$\n     - Therefore, the **widths of the NMOS transistors should not be changed**.\n- **Distractor Analysis**:\n  - Halving NMOS width (Options A and D) would double the pull-down resistance, doubling the worst-case fall time.\n  - Halving PMOS width (Option C) would quadruple the pull-up resistance, drastically increasing the rise time.\n\nTherefore, the correct answer is **Option B (Widths of PMOS transistors should be doubled, while widths of NMOS transistors should not be changed.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q43-s2",
+      "branch": "ec",
+      "year": 2016,
+      "set": 2,
+      "qNum": 43,
+      "title": "GATE EC 2016 | Set 2 | Question: 43",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Digital Circuits",
+      "subtopic": "ADC and DAC",
+      "officialAnswer": "A",
+      "questionHtml": "In an N bit flash ADC, the analog voltage is fed simultaneously to $2^{N}-1$ comparators. The output of the comparators is then encoded to a binary format using digital circuits. Assume that the analog voltage source $V_{in}$ (whose output is being converted to digital format) has a source resistance of 75 $\\Omega$  as shown in the circuit diagram below and the input capacitance of each comparator is 8 pF.\nThe input must settle to an accuracy of 1/2 LSB even for a full scale input change for proper conversion. Assume that the time taken by the thermometer to binary encoder is negligible.<br><img src=\"/question-images/ec/2016/ec-2016-39992bb7b1.webp\"/><br> If the flash ADC has 8 bit resolution, which one of the following alternatives is closest to the maximum sampling rate ?",
+      "options": [
+        "1 megasamples per second",
+        "6 megasamples per second",
+        "64 megasamples per second",
+        "256 megasamples per second"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Digital Circuits - Flash ADC Dynamics, Comparator Array Loading & Settling Time",
+        "markdown": "- **Concept / Subtopic**: Digital Circuits - Flash ADC Dynamics, Comparator Array Loading & Settling Time\n- **Given Parameters**:\n  - Resolution $N = 8\\text{ bits}$.\n  - Source resistance of analog input $R_s = 75\\ \\Omega$.\n  - Input capacitance of each comparator $C_{\\text{comp}} = 8\\text{ pF}$.\n  - Accuracy requirement: settle to within $\\frac{1}{2}\\text{ LSB}$ for a full-scale input change $V_{\\text{FS}}$.\n  - Thermometer-to-binary encoder delay is negligible.\n- **Governing Equations**:\n  1. Number of comparators in an $N$-bit Flash ADC:\n     $$M = 2^N - 1 = 2^8 - 1 = 255$$\n  2. Total equivalent capacitive load driven by $V_{\\text{in}}$:\n     $$C_{\\text{total}} = M \\times C_{\\text{comp}} = 255 \\times 8\\text{ pF} = 2040\\text{ pF} = 2.04\\text{ nF}$$\n  3. Single-pole RC circuit time constant:\n     $$\\tau = R_s \\times C_{\\text{total}} = 75\\ \\Omega \\times 2.04 \\times 10^{-9}\\text{ F} = 153\\text{ ns} = 1.53 \\times 10^{-7}\\text{ s}$$\n  4. Step response error settling requirement:\n     $$v(t) = V_{\\text{FS}}\\left(1 - e^{-t/\\tau}\\right) \\implies \\text{Error}(t) = V_{\\text{FS}} e^{-t/\\tau}$$\n     $$\\text{Error}(t) \\le \\frac{1}{2}\\text{ LSB} = \\frac{V_{\\text{FS}}}{2 \\times 2^N} = \\frac{V_{\\text{FS}}}{2^{N+1}} = \\frac{V_{\\text{FS}}}{512}$$\n- **Step-by-Step Analytical Derivation**:\n  - Solving for the minimum settling time $t_{\\text{settle}}$:\n    $$e^{-t_{\\text{settle}}/\\tau} \\le \\frac{1}{512} \\implies \\frac{t_{\\text{settle}}}{\\tau} \\ge \\ln(512) = 9 \\ln(2) \\approx 9 \\times 0.69315 = 6.2383$$\n    $$t_{\\text{settle}} = 6.2383 \\times \\tau = 6.2383 \\times 153\\text{ ns} \\approx 954.5\\text{ ns} \\approx 0.955\\ \\mu\\text{s}$$\n  - The maximum allowable sampling rate $f_s$ is the reciprocal of the total settling interval per conversion:\n    $$f_s = \\frac{1}{t_{\\text{settle}}} = \\frac{1}{0.9545 \\times 10^{-6}\\text{ s}} \\approx 1.048 \\times 10^6\\text{ samples/second} \\approx 1\\text{ MSPS}$$\n  - Among the given options, $1\\text{ MSPS}$ is the closest alternative.\n- **Distractor Analysis**:\n  - $6\\text{ MSPS}$, $64\\text{ MSPS}$, and $256\\text{ MSPS}$ would sample far too quickly, truncating the input signal before the massive $2.04\\text{ nF}$ comparator bank can settle within $\\frac{1}{2}\\text{ LSB}$, causing severe quantization and missing-code errors.\n\nTherefore, the correct answer is **Option A (1 megasamples per second)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q53-s2",
+      "branch": "ec",
+      "year": 2016,
+      "set": 2,
+      "qNum": 53,
+      "title": "GATE EC 2016 | Set 2 | Question: 53",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electromagnetics",
+      "subtopic": "Transmission Lines",
+      "officialAnswer": "B",
+      "questionHtml": "A lossless microstrip transmission line consists of a trace of width w. It is drawn over a practically infinite ground plane and is separated by a dielectric slab of thickness t and relative permittivity $\\varepsilon _{r} \\gt 1$.  The inductance per unit length and the characteristic impedance of this line are L and $Z_{0}$, respectively.  <br><img src=\"/question-images/ec/2016/ec-2016-1fa89460d4.webp\"/><br> Which one of the following inequalities is always satisfied?",
+      "options": [
+        "$Z_{0} \\gt \\sqrt{\\frac{Lt}{\\varepsilon _{0}\\varepsilon_{r}w }}$",
+        "$Z_{0} \\lt \\sqrt{\\frac{Lt}{\\varepsilon _{0}\\varepsilon_{r} w}}$",
+        "$Z_{0} \\gt\\sqrt{\\frac{Lw}{\\varepsilon _{0}\\varepsilon_{r}t }}$",
+        "$Z_{0} \\lt \\sqrt{\\frac{Lw}{\\varepsilon _{0}\\varepsilon_{r}t }}$"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electromagnetics - Microstrip Transmission Line & Characteristic Impedance Bounds",
+        "markdown": "- **Concept / Subtopic**: Electromagnetics - Microstrip Transmission Line & Characteristic Impedance Bounds\n- **Given Parameters**:\n  - Conducting trace width: $w$.\n  - Dielectric slab thickness: $t$.\n  - Relative permittivity of dielectric: $\\varepsilon_r > 1$.\n  - Permittivity of free space: $\\varepsilon_0$.\n  - Inductance per unit length: $L$.\n  - Characteristic impedance: $Z_0$.\n- **Governing Principles**:\n  - For a lossless transmission line, the characteristic impedance is given by:\n    $$Z_0 = \\sqrt{\\frac{L}{C}}$$\n    where $C$ is the true total capacitance per unit length of the microstrip line.\n  - Consider the idealized parallel-plate capacitance per unit length under the strip of width $w$ and thickness $t$, assuming all electric field lines are purely vertical and confined strictly to the dielectric:\n    $$C_{\\text{pp}} = \\frac{\\varepsilon_0 \\varepsilon_r w}{t}$$\n  - In an actual physical microstrip geometry, the conductor edges produce **fringing fields** that extend outward into the substrate and into the air space above.\n  - Because fringing fields create additional parallel electrostatic flux paths connecting the trace to the infinite ground plane, the total capacitance per unit length $C$ is strictly **greater** than the parallel-plate component:\n    $$C > C_{\\text{pp}} = \\frac{\\varepsilon_0 \\varepsilon_r w}{t}$$\n- **Step-by-Step Analytical Derivation**:\n  - Expressing $Z_0$ in terms of the capacitance bound:\n    $$C > \\frac{\\varepsilon_0 \\varepsilon_r w}{t}$$\n  - Inverting both sides reverses the inequality sign:\n    $$\\frac{1}{C} < \\frac{t}{\\varepsilon_0 \\varepsilon_r w}$$\n  - Multiplying both sides by the positive inductance per unit length $L$:\n    $$\\frac{L}{C} < \\frac{L t}{\\varepsilon_0 \\varepsilon_r w}$$\n  - Taking the positive square root on both sides:\n    $$Z_0 = \\sqrt{\\frac{L}{C}} < \\sqrt{\\frac{L t}{\\varepsilon_0 \\varepsilon_r w}}$$\n  - Thus, the characteristic impedance $Z_0$ is always strictly bounded from above by $\\sqrt{\\frac{L t}{\\varepsilon_0 \\varepsilon_r w}}$.\n- **Distractor Analysis**:\n  - **Option A** has the reversed inequality ($Z_0 > \\sqrt{\\dots}$), which would only occur if fringing fields decreased the total capacitance (physically impossible for passive capacitive geometries).\n  - **Options C and D** erroneously invert the geometric ratio $\\frac{t}{w}$ to $\\frac{w}{t}$, violating dimensional consistency and capacitance scaling.\n\nTherefore, the correct answer is **Option B ($Z_{0} \\lt \\sqrt{\\frac{Lt}{\\varepsilon _{0}\\varepsilon_{r} w}}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q11-s3",
+      "branch": "ec",
+      "year": 2016,
+      "set": 3,
+      "qNum": 11,
+      "title": "GATE EC 2016 | Set 3 | Question: 11",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electronic Devices",
+      "subtopic": "BJT and FET Basics",
+      "officialAnswer": "A",
+      "questionHtml": "The figure shows the band diagram of a Metal Oxide Semiconductor (MOS). The surface region of this MOS is in<br><img src=\"/question-images/ec/2016/ec-2016-dec61c81df.webp\"/>",
+      "options": [
+        "inversion",
+        "accumulation",
+        "depletion",
+        "flat band"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "Substrate is N-type SC.\n\nTherefore, the correct answer is **A**.",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electronic Devices - MOS Capacitor Energy Band Diagram & Surface Regimes",
+        "markdown": "- **Concept / Subtopic**: Electronic Devices - MOS Capacitor Energy Band Diagram & Surface Regimes\n- **Given Energy Band Diagram Analysis**:\n  - The diagram displays a Metal-Oxide-Semiconductor (MOS) structure with a p-type semiconductor substrate (indicated by the bulk Fermi level $E_F$ lying below the intrinsic Fermi level $E_i$ in the semiconductor bulk, where $E_i - E_F > 0$).\n  - As we move from the bulk toward the oxide-semiconductor interface (the surface region), the conduction band $E_C$, valence band $E_V$, and intrinsic Fermi level $E_i$ bend sharply **downward**.\n  - At the semiconductor-oxide interface, the intrinsic Fermi level $E_i$ crosses **below** the constant Fermi level $E_F$ ($E_F > E_i$ at the surface).\n- **Governing Principles**:\n  - The thermal equilibrium carrier concentrations are given by:\n    $$n = n_i \\exp\\left(\\frac{E_F - E_i}{k_B T}\\right), \\quad p = n_i \\exp\\left(\\frac{E_i - E_F}{k_B T}\\right)$$\n  - In the bulk of the p-type semiconductor, $E_i > E_F$, so $p_{\\text{bulk}} \\gg n_{\\text{bulk}}$ (holes are majority carriers).\n  - When the surface bands bend downward such that $E_i$ crosses below $E_F$, we have $(E_F - E_i)_{\\text{surface}} > 0$.\n  - Consequently, at the surface, the electron concentration exceeds the hole concentration:\n    $$n_{\\text{surface}} > n_i > p_{\\text{surface}}$$\n  - The surface layer has thus converted (\"inverted\") its carrier majority from holes to electrons, forming a continuous conducting electron channel at the interface.\n  - This operating condition is the definition of **inversion**.\n- **Distractor Analysis**:\n  - **Accumulation** occurs when majority carriers (holes) accumulate at the surface, which requires upward band bending ($E_F$ moves even closer to $E_V$).\n  - **Depletion** occurs when downward band bending pushes holes away from the surface, but $E_i$ has not yet crossed below $E_F$ ($E_i > E_F$ throughout).\n  - **Flat band** occurs when there is zero band bending throughout the semiconductor ($E_C, E_i, E_V$ are perfectly horizontal).\n\nTherefore, the correct answer is **Option A (inversion)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q39-s3",
+      "branch": "ec",
+      "year": 2016,
+      "set": 3,
+      "qNum": 39,
+      "title": "GATE EC 2016 | Set 3 | Question: 39",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Analog Circuits",
+      "subtopic": "Diodes Applications",
+      "officialAnswer": "A",
+      "questionHtml": "The I-V characteristics of the zener diodes D1 and D2 are shown in Figure I. These diodes are used in the circuit given in Figure II. If the supply voltage is varied from 0 to 100 V, then breakdown occurs in <br><img src=\"/question-images/ec/2016/ec-2016-995d29c244.webp\"/>",
+      "options": [
+        "D1 only",
+        "D2 only",
+        "both D1and D2",
+        "none of D1 and D2"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analog Circuits - Zener Diode I-V Characteristics & Breakdown Operation",
+        "markdown": "- **Concept / Subtopic**: Analog Circuits - Zener Diode I-V Characteristics & Breakdown Operation\n- **Given Parameters & Characteristics**:\n  - Figure I illustrates the reverse $I-V$ breakdown characteristics of two Zener diodes, $D_1$ and $D_2$:\n    - For diode $D_1$: Breakdown occurs at reverse voltage $V_{Z1} = 70\\text{ V}$.\n    - For diode $D_2$: Breakdown occurs at reverse voltage $V_{Z2} = 80\\text{ V}$.\n  - Figure II shows diodes $D_1$ and $D_2$ connected in parallel under reverse bias across a current-limiting series resistor with a variable DC voltage supply $V_S$ ranging from $0\\text{ V}$ to $100\\text{ V}$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Region 1 ($0\\text{ V} \\le V_S < 70\\text{ V}$)**:\n     - The reverse voltage across the parallel combination is less than the breakdown voltage of both diodes ($V < 70\\text{ V} < 80\\text{ V}$).\n     - Both diodes remain in their reverse-bias OFF state, drawing only negligible reverse saturation leakage current. Neither diode is in breakdown.\n  2. **Transition at $V_S \\ge 70\\text{ V}$**:\n     - As the supply voltage increases, the voltage across the parallel diodes reaches $70\\text{ V}$.\n     - Diode $D_1$ immediately enters the **reverse Zener breakdown** region because its breakdown threshold is $V_{Z1} = 70\\text{ V}$.\n  3. **Clamping Action & Behavior of $D_2$**:\n     - Once $D_1$ undergoes breakdown, its steep low dynamic impedance clamps the voltage across the entire parallel diode branch to approximately $V_{Z1} = 70\\text{ V}$.\n     - Any further increase in the supply voltage $V_S$ up to $100\\text{ V}$ simply drops across the series resistor ($V_R = V_S - 70\\text{ V}$), increasing the current through $D_1$.\n     - Because the parallel branch voltage is tightly clamped at $70\\text{ V}$, the voltage across diode $D_2$ can **never reach its $80\\text{ V}$ breakdown threshold**.\n     - Therefore, diode $D_2$ remains OFF and never enters breakdown.\n- **Conclusion**:\n  - Throughout the entire range $0\\text{ to }100\\text{ V}$, breakdown occurs exclusively in **$D_1$ only**.\n\nTherefore, the correct answer is **Option A (D1 only)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ec:2016:q47-s3",
+      "branch": "ec",
+      "year": 2016,
+      "set": 3,
+      "qNum": 47,
+      "title": "GATE EC 2016 | Set 3 | Question: 47",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Control Systems",
+      "subtopic": "State Space Analysis",
+      "officialAnswer": "A",
+      "questionHtml": "A second-order linear time-invariant system is described by the following state equations <br><br> $\\frac{d}{dt}x_{1}(t)+2x_{1}(t)=3u(t)$ <br>$\\frac{d}{dt}x_{2}(t)+x_{2}(t)=u(t)$<br><br> where $x_{1}(t) \\; and \\;  x_{2}(t)$ are the two state variables and u(t) denotes the input. If the output c(t) = $x_{1}(t)$, then the system is",
+      "options": [
+        "controllable but not observable",
+        "observable but not controllable",
+        "both controllable and observable",
+        "neither controllable nor observable"
+      ],
+      "goLink": "https://ec.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Control Systems - State Space Analysis, Controllability and Observability",
+        "markdown": "- **Concept / Subtopic**: Control Systems - State Space Analysis, Controllability and Observability\n- **Given State Differential Equations**:\n  $$\\frac{d}{dt}x_1(t) + 2x_1(t) = 3u(t) \\implies \\dot{x}_1(t) = -2x_1(t) + 3u(t)$$\n  $$\\frac{d}{dt}x_2(t) + x_2(t) = u(t) \\implies \\dot{x}_2(t) = -x_2(t) + u(t)$$\n- **Output Equation**:\n  $$c(t) = x_1(t)$$\n- **State-Space Matrix Representation**:\n  $$\\dot{\\mathbf{x}}(t) = A\\mathbf{x}(t) + B u(t), \\quad y(t) = C\\mathbf{x}(t)$$\n  $$\\begin{bmatrix} \\dot{x}_1 \\\\ \\dot{x}_2 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -1 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} + \\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix} u(t)$$\n  $$c(t) = \\begin{bmatrix} 1 & 0 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}$$\n  where $A = \\begin{bmatrix} -2 & 0 \\\\ 0 & -1 \\end{bmatrix}$, $B = \\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix}$, and $C = \\begin{bmatrix} 1 & 0 \\end{bmatrix}$, with system order $n = 2$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Controllability Analysis (Kalman's Criterion)**:\n     - The controllability matrix is given by:\n       $$Q_c = \\begin{bmatrix} B & AB \\end{bmatrix}$$\n     - Compute $AB$:\n       $$AB = \\begin{bmatrix} -2 & 0 \\\\ 0 & -1 \\end{bmatrix} \\begin{bmatrix} 3 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} -6 \\\\ -1 \\end{bmatrix}$$\n     - Construct $Q_c$:\n       $$Q_c = \\begin{bmatrix} 3 & -6 \\\\ 1 & -1 \\end{bmatrix}$$\n     - Compute the determinant of $Q_c$:\n       $$\\det(Q_c) = (3)(-1) - (-6)(1) = -3 + 6 = 3 \\ne 0$$\n     - Since $\\det(Q_c) \\ne 0$, $\\text{rank}(Q_c) = 2 = n$.\n     - Therefore, the system is **completely controllable**.\n  2. **Observability Analysis (Kalman's Criterion)**:\n     - The observability matrix is given by:\n       $$Q_o = \\begin{bmatrix} C \\\\ CA \\end{bmatrix}$$\n     - Compute $CA$:\n       $$CA = \\begin{bmatrix} 1 & 0 \\end{bmatrix} \\begin{bmatrix} -2 & 0 \\\\ 0 & -1 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\end{bmatrix}$$\n     - Construct $Q_o$:\n       $$Q_o = \\begin{bmatrix} 1 & 0 \\\\ -2 & 0 \\end{bmatrix}$$\n     - Compute the determinant of $Q_o$:\n       $$\\det(Q_o) = (1)(0) - (0)(-2) = 0$$\n     - Since the second column is entirely zeros, $\\text{rank}(Q_o) = 1 < n = 2$.\n     - State variable $x_2(t)$ has zero coupling to the output $c(t)$, making it unobservable.\n     - Therefore, the system is **not observable**.\n- **Conclusion**:\n  - The system is **controllable but not observable**.\n\nTherefore, the correct answer is **Option A (controllable but not observable)**.",
+        "images": []
+      }
+    }
+  ]
+}

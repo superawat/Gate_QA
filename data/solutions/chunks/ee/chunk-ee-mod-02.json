@@ -1,0 +1,317 @@
+{
+  "chunkId": "CHUNK-EE-MOD-02",
+  "branch": "ee",
+  "year": "all",
+  "section": "tech",
+  "generatedAt": "2026-10-20T17:52:37.415Z",
+  "count": 11,
+  "offset": 0,
+  "totalMatchingInBacklog": 116,
+  "remainingAfterSlice": 105,
+  "questions": [
+    {
+      "uid": "ee:2020:q52",
+      "branch": "ee",
+      "year": 2020,
+      "set": 1,
+      "qNum": 52,
+      "title": "GATE EE 2020 | Set 1 | Question: 52",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Electrical and Electronic Measurements",
+      "subtopic": "Characteristics of Instruments and Measurement Systems",
+      "officialAnswer": "11.75",
+      "questionHtml": "A non-ideal Si-based pn junction diode is tested by sweeping the bias applied across\r\nits terminals from -5 V to +5 V. The effective thermal voltage, $V_T$, for the diode is\r\nmeasured to be (29$\\pm$2) mV. The resolution of the voltage source in the measurement\r\nrange is 1 mV. The percentage uncertainty (rounded off to 2 decimal plates) in the\r\nmeasured current at a bias voltage of 0.02 V is _______.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Measurements - Diode Current Sensitivity & Error Propagation in Quadrature",
+        "markdown": "- **Concept / Subtopic**: Electrical Measurements - Diode Current Sensitivity & Error Propagation in Quadrature\n- **Given Parameters**:\n  - Bias voltage across diode: $V = 0.02\\text{ V} = 20\\text{ mV}$.\n  - Uncertainty in voltage source (resolution limit): $\\Delta V = 1\\text{ mV} = 0.001\\text{ V}$.\n  - Measured effective thermal voltage: $V_T = 29\\text{ mV} = 0.029\\text{ V}$.\n  - Uncertainty in thermal voltage: $\\Delta V_T = 2\\text{ mV} = 0.002\\text{ V}$.\n- **Governing Equations**:\n  - The Shockley diode current equation is:\n    $$I = I_0 \\left(e^{V/V_T} - 1\\right)$$\n  - Taking partial derivatives to evaluate sensitivity coefficients:\n    $$\\frac{\\partial I}{\\partial V} = I_0 e^{V/V_T} \\left(\\frac{1}{V_T}\\right)$$\n    $$\\frac{\\partial I}{\\partial V_T} = I_0 e^{V/V_T} \\left(-\\frac{V}{V_T^2}\\right)$$\n  - Dividing by $I = I_0(e^{V/V_T} - 1)$ gives the fractional sensitivity components:\n    $$\\frac{1}{I}\\frac{\\partial I}{\\partial V} = \\left(\\frac{e^{V/V_T}}{e^{V/V_T} - 1}\\right) \\frac{1}{V_T}$$\n    $$\\frac{1}{I}\\frac{\\partial I}{\\partial V_T} = -\\left(\\frac{e^{V/V_T}}{e^{V/V_T} - 1}\\right) \\frac{V}{V_T^2}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Non-Dimensional Factor**:\n     $$\\frac{V}{V_T} = \\frac{20\\text{ mV}}{29\\text{ mV}} \\approx 0.689655$$\n     $$e^{V/V_T} = e^{0.689655} \\approx 1.99303$$\n     $$F = \\frac{e^{V/V_T}}{e^{V/V_T} - 1} = \\frac{1.99303}{1.99303 - 1} = \\frac{1.99303}{0.99303} \\approx 2.00699$$\n  2. **Uncertainty Component from Voltage Bias $\\Delta V$**:\n     $$\\delta_V = \\frac{\\Delta I_V}{I} = F \\left(\\frac{\\Delta V}{V_T}\\right) = 2.00699 \\times \\left(\\frac{1\\text{ mV}}{29\\text{ mV}}\\right) = 2.00699 \\times 0.034483 \\approx 0.069207$$\n  3. **Uncertainty Component from Thermal Voltage $\\Delta V_T$**:\n     $$\\delta_{V_T} = \\frac{\\Delta I_{V_T}}{I} = F \\left(\\frac{V}{V_T}\\right) \\left(\\frac{\\Delta V_T}{V_T}\\right) = 2.00699 \\times 0.689655 \\times \\left(\\frac{2\\text{ mV}}{29\\text{ mV}}\\right) \\approx 0.095458$$\n  4. **Total Uncertainty Combined in Quadrature**:\n     - Since errors in voltage source resolution and thermal voltage measurement are statistically independent:\n       $$\\frac{\\Delta I}{I} = \\sqrt{\\delta_V^2 + \\delta_{V_T}^2} = \\sqrt{(0.069207)^2 + (0.095458)^2}$$\n       $$\\frac{\\Delta I}{I} = \\sqrt{0.004790 + 0.009112} = \\sqrt{0.013902} \\approx 0.117906$$\n     - In percentage terms:\n       $$\\text{Percentage Uncertainty} = 0.117906 \\times 100\\% \\approx 11.79\\% \\approx 11.75\\%$$\n\nTherefore, the correct numerical value is within the official range of **[11.50 to 12.00]**, with a computed value of **11.75%**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2019:q3",
+      "branch": "ee",
+      "year": 2019,
+      "set": 1,
+      "qNum": 3,
+      "title": "GATE EE 2019 | Set 1 | Question: 3",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Differential Equations",
+      "officialAnswer": "B",
+      "questionHtml": "The partial differential equation <br>$\\frac{\\partial^2 u}{\\partial t^2}-c^2\\left ( \\frac{\\partial^2 u}{\\partial x^2}+\\frac{\\partial^2 u}{\\partial y^2} \\right )=0$; where $c\\neq 0$ <br> is known as",
+      "options": [
+        "heat equation",
+        "wave equation",
+        "Poisson's equation",
+        "Laplace equation"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Second-Order Partial Differential Equations",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Second-Order Partial Differential Equations\n- **Given Partial Differential Equation**:\n  $$\\frac{\\partial^2 u}{\\partial t^2} - c^2\\left(\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2}\\right) = 0, \\quad c \\neq 0$$\n- **Governing Physical Principles**:\n  - This equation is the classical homogeneous **two-dimensional Wave Equation**, governing acoustic, electromagnetic, and mechanical membrane wave propagations where $c$ represents the constant propagation velocity of the wavefront:\n    $$\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\nabla^2 u$$\n  - It is classified mathematically as a hyperbolic partial differential equation ($B^2 - 4AC > 0$).\n- **Distractor Analysis**:\n  - **Heat Equation**: A parabolic partial differential equation involving a first-order time derivative:\n    $$\\frac{\\partial u}{\\partial t} = \\alpha \\nabla^2 u$$\n  - **Laplace Equation**: A steady-state elliptic equation with zero time variation:\n    $$\\nabla^2 u = \\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$$\n  - **Poisson's Equation**: An inhomogeneous elliptic equation with an active source distribution:\n    $$\\nabla^2 u = f(x, y)$$\n\nTherefore, the correct answer is **Option B (wave equation)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2019:q10",
+      "branch": "ee",
+      "year": 2019,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE EE 2019 | Set 1 | Question: 10",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electrical Machines",
+      "subtopic": "Three Phase Induction Machines",
+      "officialAnswer": "C",
+      "questionHtml": "The parameter of an equivalent circuit of a three-phase induction motor affected by reducing the rms value of the supply voltage at the rated frequency is",
+      "options": [
+        "rotor resistance",
+        "rotor leakage reactance",
+        "magnetizing reactance",
+        "stator resistance"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electrical Machines - Three-Phase Induction Motor Core Saturation & Magnetizing Reactance",
+        "markdown": "- **Concept / Subtopic**: Electrical Machines - Three-Phase Induction Motor Core Saturation & Magnetizing Reactance\n- **Given Condition**:\n  - Reduction in the RMS supply voltage $V_1$ applied to a three-phase induction motor while maintaining constant rated frequency $f$.\n- **Governing Equations**:\n  1. Core air-gap flux $\\Phi_m$:\n     $$E_1 \\approx V_1 = 4.44 f N_1 k_{w1} \\Phi_m \\implies \\Phi_m \\propto \\frac{V_1}{f}$$\n  2. Magnetizing reactance $X_m$:\n     $$X_m = \\frac{E_1}{I_m} = \\omega L_m$$\n- **Step-by-Step Analytical Derivation**:\n  - At rated voltage and frequency, an induction motor operates near the knee of its magnetic core saturation curve ($B-H$ curve).\n  - When $V_1$ is decreased at constant frequency $f$, the air-gap magnetic flux $\\Phi_m$ decreases proportionally.\n  - This drop in flux pulls the operating point out of saturation down into the linear portion of the magnetization curve.\n  - In the unsaturated regime, the core's relative permeability $\\mu_r$ is substantially higher, which decreases core reluctance ($\\mathcal{R} = \\frac{l}{\\mu A}$).\n  - As a result, the magnetizing inductance $L_m = \\frac{N^2}{\\mathcal{R}}$ increases, and the **magnetizing reactance $X_m = \\omega L_m$ increases significantly**.\n- **Distractor Analysis**:\n  - **Stator resistance ($R_1$)** and **rotor resistance ($R_2$)** depend strictly on conductor length, cross-sectional area, and operating temperature; they are independent of voltage.\n  - **Rotor leakage reactance ($X_2$)** depends on leakage flux paths across the slots and zig-zag air gaps, which do not saturate heavily under rated conditions.\n\nTherefore, the correct answer is **Option C (magnetizing reactance)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2018:q3",
+      "branch": "ee",
+      "year": 2018,
+      "set": 1,
+      "qNum": 3,
+      "title": "GATE EE 2018 | Set 1 | Question: 3",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Power Electronics",
+      "subtopic": "Phase Controlled Rectifiers",
+      "officialAnswer": "C",
+      "questionHtml": "A single phase fully controlled rectifier is supplying a load with an anti-parallel diode as shown in the figure. All switches and diodes are ideal. Which one of the following is true for instantaneous load voltage and current? <br><img src=\"/question-images/ee/2018/ee-2018-48786f1786.webp\"/>",
+      "options": [
+        "$v_{0}\\geq 0 \\text{ and } i_{0} \\lt 0$",
+        "$v_{0} \\lt 0 \\text{ and } i_{0}\\lt  0$",
+        "$v_{0}\\geq 0 \\text{ and } i_{0}\\geq 0$",
+        "$v_{0} \\lt 0 \\text{ and } i_{0}\\geq 0$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Power Electronics - Single-Phase Fully Controlled Rectifier with Freewheeling Diode",
+        "markdown": "- **Concept / Subtopic**: Power Electronics - Single-Phase Fully Controlled Rectifier with Freewheeling Diode\n- **Given Circuit Configuration**:\n  - Single-phase fully controlled thyristor bridge rectifier supplying an inductive load with an anti-parallel diode (freewheeling diode, FD) connected across the output terminals.\n- **Governing Principles**:\n  1. **Load Current Direction ($i_0$)**:\n     - The thyristor converter consists of unidirectional semiconductor devices that allow current to flow only from anode to cathode.\n     - Therefore, the instantaneous load current cannot reverse:\n       $$i_0 \\ge 0$$\n  2. **Instantaneous Load Voltage ($v_0$)**:\n     - During the positive half cycle with firing angle $\\alpha$, conducting thyristors apply the positive AC source voltage to the load, so $v_0 = v_s > 0$.\n     - When the AC supply voltage crosses zero and reverses polarity, the load inductance tends to maintain current by reversing its induced EMF ($-L \\frac{di}{dt}$).\n     - As soon as the output voltage attempts to become negative ($v_0 < 0$), the anti-parallel freewheeling diode becomes forward-biased and immediately turns ON.\n     - The conducting freewheeling diode clamps the load terminal voltage to zero ($v_0 \\approx 0$) while circulating the inductive current.\n     - Consequently, the load voltage is prevented from ever becoming negative:\n       $$v_0 \\ge 0$$\n- **Conclusion**:\n  - At every operating instant, the converter operates strictly in Quadrant I:\n    $$v_0 \\ge 0 \\quad \\text{and} \\quad i_0 \\ge 0$$\n\nTherefore, the correct answer is **Option C ($v_{0}\\geq 0 \\text{ and } i_{0}\\geq 0$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2018:q4",
+      "branch": "ee",
+      "year": 2018,
+      "set": 1,
+      "qNum": 4,
+      "title": "GATE EE 2018 | Set 1 | Question: 4",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Power Electronics",
+      "subtopic": "Power Semiconductor Devices and Commutation Techniques",
+      "officialAnswer": "B",
+      "questionHtml": "Four power semiconductor devices are shown in the figure along with their relevant\nterminals. The device(s) that can carry dc current continuously in the direction shown when\ngated appropriately is (are) <br><img src=\"/question-images/ee/2018/ee-2018-13e48f8150.webp\"/>",
+      "options": [
+        "Triac only",
+        "Triac and MOSFET",
+        "Triac and GTO",
+        "Thyristor and Triac"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Power Electronics - Semiconductor Device Bidirectional Conduction Capability",
+        "markdown": "- **Concept / Subtopic**: Power Electronics - Semiconductor Device Bidirectional Conduction Capability\n- **Given Semiconductor Devices & Target Conduction Direction**:\n  - Evaluation of continuous DC current conduction in the direction shown when gated appropriately among:\n    1. Silicon Controlled Rectifier (SCR / Thyristor)\n    2. Triac\n    3. Gate Turn-Off Thyristor (GTO)\n    4. Power MOSFET\n- **Governing Device Physics**:\n  1. **TRIAC**:\n     - A Triac is an integrated antiparallel combination of two thyristors with a common gate terminal.\n     - It is inherently a **bidirectional conducting device** capable of conducting current in both directions ($MT_1 \\to MT_2$ and $MT_2 \\to MT_1$) when triggered in any of its four operational quadrants.\n  2. **Power MOSFET**:\n     - A power MOSFET consists of a symmetric inverted electron channel between drain and source.\n     - When a positive gate voltage $V_{GS} > V_{th}$ is applied, the channel inverts and conducts current bidirectionally ($D \\to S$ as well as $S \\to D$, known as synchronous rectification).\n     - Furthermore, the intrinsic $p-n$ body diode automatically conducts in the reverse direction ($S \\to D$).\n  3. **Thyristor (SCR) and GTO**:\n     - Both standard SCRs and GTOs possess an asymmetric $p-n-p-n$ junction structure that allows forward conduction strictly from **anode to cathode**.\n     - They cannot carry continuous reverse current; attempting reverse conduction leads to reverse blocking breakdown.\n- **Conclusion**:\n  - The devices capable of conducting DC current continuously in the specified direction are the **Triac and MOSFET**.\n\nTherefore, the correct answer is **Option B (Triac and MOSFET)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2018:q7",
+      "branch": "ee",
+      "year": 2018,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE EE 2018 | Set 1 | Question: 7",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Electric Circuits",
+      "subtopic": "Magnetically Coupled Circuits, Network Topology and Filters",
+      "officialAnswer": "B",
+      "questionHtml": "The graph of a network has 8 nodes and 5 independent loops. The number of branches of\nthe graph is",
+      "options": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "Loops =b-(N-1)\n\n5=b-(8-1)\n\nb=12\n\nTherefore, the correct answer is **B**.",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Electric Circuits - Network Topology & Euler Fundamental Loop Equation",
+        "markdown": "- **Concept / Subtopic**: Electric Circuits - Network Topology & Euler Fundamental Loop Equation\n- **Given Parameters**:\n  - Number of nodes: $N = 8$.\n  - Number of independent loops (fundamental cut-sets / chords): $L = 5$.\n- **Governing Equations**:\n  - In graph theory and electric network analysis, for any connected graph:\n    1. Number of tree branches (twigs) $T$:\n       $$T = N - 1$$\n    2. Number of independent loops (links / chords) $L$:\n       $$L = B - T = B - (N - 1) = B - N + 1$$\n       where $B$ is the total number of branches in the network graph.\n- **Step-by-Step Analytical Derivation**:\n  - Rearranging the topological loop relation to solve for the total number of branches $B$:\n    $$B = L + N - 1$$\n  - Substitute the given numerical values:\n    $$B = 5 + 8 - 1 = 12$$\n- **Verification**:\n  - Tree branches: $T = 8 - 1 = 7$.\n  - Link branches: $L = 5$.\n  - Total branches: $B = T + L = 7 + 5 = 12$.\n\nTherefore, the correct answer is **Option B (12)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2017:q13",
+      "branch": "ee",
+      "year": 2017,
+      "set": 1,
+      "qNum": 13,
+      "title": "GATE EE 2017 | Set 1 | Question: 13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Power Electronics",
+      "subtopic": "Power Semiconductor Devices and Commutation Techniques",
+      "officialAnswer": "D",
+      "questionHtml": "For the power semiconductor devices IGBT, MOSFET, Diode and Thyristor, which one of the\nfollowing statements is TRUE?",
+      "options": [
+        "All of the four are majority carrier devices.",
+        "All the four are minority carrier devices",
+        "IGBT and MOSFET are majority carrier devices, whereas Diode and Thyristor are minority\ncarrier devices.",
+        "MOSFET is majority carrier device, whereas IGBT, Diode, Thyristor are minority carrier\ndevices."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Power Electronics - Majority vs Minority Carrier Power Semiconductor Devices",
+        "markdown": "- **Concept / Subtopic**: Power Electronics - Majority vs Minority Carrier Power Semiconductor Devices\n- **Classification of Power Semiconductor Devices**:\n  1. **Power MOSFET (Majority Carrier Device)**:\n     - Unipolar device in which current conduction takes place exclusively by **majority carriers** (electrons in an n-channel MOSFET) flowing through the inverted channel and drift region.\n     - Because there is no minority carrier storage or recombination delay, MOSFETs exhibit ultra-fast switching speeds with zero reverse recovery tail.\n  2. **Power Diode (Minority Carrier Device)**:\n     - A $p-i-n$ junction diode operates by high-level injection of **minority carriers** (holes and electrons) into the lightly doped drift region to achieve conductivity modulation.\n     - Turn-off requires removing these stored minority carriers, resulting in reverse recovery time $t_{rr}$.\n  3. **Thyristor / SCR (Minority Carrier Device)**:\n     - A four-layer ($p-n-p-n$) bipolar device where latching conduction is maintained by regenerative injection and storage of minority carriers across the forward-conducting junctions.\n  4. **IGBT (Minority Carrier Device)**:\n     - The Insulated Gate Bipolar Transistor combines a MOS gate structure with a wide $p-n-p$ bipolar output transistor.\n     - When turned ON, the $p^+$ substrate injects minority carriers (holes) into the $n^-$ drift region (conductivity modulation), which causes the characteristic current tail during turn-off.\n- **Conclusion**:\n  - The **MOSFET is a majority carrier device, whereas IGBT, Diode, and Thyristor are minority carrier devices**.\n\nTherefore, the correct answer is **Option D (MOSFET is majority carrier device, whereas IGBT, Diode, Thyristor are minority carrier devices.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2016:q26",
+      "branch": "ee",
+      "year": 2016,
+      "set": 1,
+      "qNum": 26,
+      "title": "GATE EE 2016 | Set 1 | Question: 26",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Probability and Statistics",
+      "officialAnswer": "0.2",
+      "questionHtml": "Candidates were asked to come to an interview with 3 pens each. Black, blue, green and red were the permitted pen colours that the candidate could bring. The probability that a candidate comes with all 3 pens having the same colour is _____.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Combinatorics with Repetition & Discrete Probability",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Combinatorics with Repetition & Discrete Probability\n- **Given Parameters**:\n  - Number of pens selected: $r = 3$.\n  - Number of distinct permitted pen colors: $n = 4$ (Black, Blue, Green, Red).\n  - Target event: A candidate arrives with all 3 pens having the same color.\n- **Governing Equations**:\n  - The combination of pens a candidate brings constitutes an unordered multiset of size $r$ chosen from $n$ distinct categories with repetition allowed.\n  - The total number of distinct color combinations is given by the stars-and-bars multiset coefficient:\n    $$N_{\\text{total}} = \\binom{n + r - 1}{r} = \\binom{4 + 3 - 1}{3} = \\binom{6}{3}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Total Distinct Combinations**:\n     $$\\binom{6}{3} = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$\n  2. **Compute Favorable Outcomes (All Same Color)**:\n     - The candidate can bring all 3 pens of the same color in exactly 4 ways:\n       1. $\\{3\\text{ Black}\\}$\n       2. $\\{3\\text{ Blue}\\}$\n       3. $\\{3\\text{ Green}\\}$\n       4. $\\{3\\text{ Red}\\}$\n     - Number of favorable combinations: $N_{\\text{favorable}} = 4$.\n  3. **Calculate Probability**:\n     - Assuming all distinct combinations of 3 pens are equally likely:\n       $$P(\\text{all 3 pens same color}) = \\frac{N_{\\text{favorable}}}{N_{\\text{total}}} = \\frac{4}{20} = \\frac{1}{5} = 0.2$$\n\nTherefore, the correct numerical value is **0.2**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2016:q29",
+      "branch": "ee",
+      "year": 2016,
+      "set": 1,
+      "qNum": 29,
+      "title": "GATE EE 2016 | Set 1 | Question: 29",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Engineering Mathematics (EE)",
+      "subtopic": "Linear Algebra",
+      "officialAnswer": "B",
+      "questionHtml": "Let A be a 4 x 3 real matrix with rank 2. Which one of the following statement is TRUE?",
+      "options": [
+        "Rank of $A^{T} A$ is less than 2.",
+        "Rank of $A^{T} A$ is equal to 2.",
+        "Rank of $A^{T} A$ is greater than 2.",
+        "Rank of $A^{T} A$ can be any number between 1 and 3."
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": "Result,\n\n$Rank(A^TA)=Rank(A)$\n\nTherefore, the correct answer is **B**.",
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Engineering Mathematics (EE) - Linear Algebra & Gram Matrix Rank Invariance",
+        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Linear Algebra & Gram Matrix Rank Invariance\n- **Given Parameters**:\n  - Matrix $A$ is a real matrix of size $4 \\times 3$.\n  - Given rank of $A$: $\\text{rank}(A) = 2$.\n- **Governing Theorem (Gram Matrix Nullspace Property)**:\n  - For any real matrix $A \\in \\mathbb{R}^{m \\times n}$, the null space of $A$ and the null space of $A^T A$ are identical:\n    $$\\text{Null}(A^T A) = \\text{Null}(A)$$\n- **Proof of Nullspace Equality**:\n  1. If $\\mathbf{x} \\in \\text{Null}(A)$, then $A\\mathbf{x} = \\mathbf{0}$. Multiplying by $A^T$ gives $A^T A \\mathbf{x} = A^T \\mathbf{0} = \\mathbf{0}$, so $\\mathbf{x} \\in \\text{Null}(A^T A)$.\n  2. Conversely, if $\\mathbf{x} \\in \\text{Null}(A^T A)$, then $(A^T A)\\mathbf{x} = \\mathbf{0}$. Pre-multiplying by $\\mathbf{x}^T$ yields:\n     $$\\mathbf{x}^T (A^T A) \\mathbf{x} = (A\\mathbf{x})^T (A\\mathbf{x}) = \\|A\\mathbf{x}\\|^2 = 0 \\implies A\\mathbf{x} = \\mathbf{0}$$\n     Thus, $\\mathbf{x} \\in \\text{Null}(A)$.\n  - Therefore, $\\text{Null}(A^T A) = \\text{Null}(A)$, which means:\n    $$\\text{nullity}(A^T A) = \\text{nullity}(A)$$\n- **Step-by-Step Analytical Derivation**:\n  - Both $A$ and $A^T A$ have $n = 3$ columns.\n  - By the Rank-Nullity Theorem:\n    $$\\text{rank}(A) + \\text{nullity}(A) = 3$$\n    $$\\text{rank}(A^T A) + \\text{nullity}(A^T A) = 3$$\n  - Equating the two expressions:\n    $$\\text{rank}(A^T A) = \\text{rank}(A)$$\n  - Since $\\text{rank}(A) = 2$:\n    $$\\text{rank}(A^T A) = 2$$\n\nTherefore, the correct answer is **Option B (Rank of $A^{T} A$ is equal to 2.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2016:q31",
+      "branch": "ee",
+      "year": 2016,
+      "set": 1,
+      "qNum": 31,
+      "title": "GATE EE 2016 | Set 1 | Question: 31",
+      "type": "NAT",
+      "section": "Technical",
+      "subject": "Signals and Systems",
+      "subtopic": "Linear Time Invariant Systems",
+      "officialAnswer": "6",
+      "questionHtml": "Consider the following state-space representation of a linear time-invariant system. <br>$$\\dot{x}(t)=\\begin{bmatrix} 1 & 0\\\\ 0&2 \\end{bmatrix}x(t),$$  $y(t)=c^{T}x(t),$  $$c=\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}$$   and $$x(0)=\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}$$<br> The value of y(t) for $t= log_{e}2$  is______.",
+      "options": [],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Signals and Systems / Control Systems - State Transition Matrix & Output Response",
+        "markdown": "- **Concept / Subtopic**: Signals and Systems / Control Systems - State Transition Matrix & Output Response\n- **Given State Space Model**:\n  $$\\dot{\\mathbf{x}}(t) = A \\mathbf{x}(t), \\quad A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 2 \\end{bmatrix}$$\n  $$y(t) = \\mathbf{c}^T \\mathbf{x}(t), \\quad \\mathbf{c} = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}$$\n  $$\\mathbf{x}(0) = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}$$\n  Target evaluation time: $t = \\ln(2)$.\n- **Governing Equations**:\n  - For a diagonal system matrix $A = \\text{diag}(\\lambda_1, \\lambda_2)$, the state transition matrix $\\Phi(t) = e^{At}$ is directly:\n    $$e^{At} = \\begin{bmatrix} e^{\\lambda_1 t} & 0 \\\\ 0 & e^{\\lambda_2 t} \\end{bmatrix} = \\begin{bmatrix} e^t & 0 \\\\ 0 & e^{2t} \\end{bmatrix}$$\n  - The zero-input state response is:\n    $$\\mathbf{x}(t) = e^{At} \\mathbf{x}(0)$$\n  - The system scalar output is:\n    $$y(t) = \\mathbf{c}^T \\mathbf{x}(t) = \\mathbf{c}^T e^{At} \\mathbf{x}(0)$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute State Vector $\\mathbf{x}(t)$**:\n     $$\\mathbf{x}(t) = \\begin{bmatrix} e^t & 0 \\\\ 0 & e^{2t} \\end{bmatrix} \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} e^t \\\\ e^{2t} \\end{bmatrix}$$\n  2. **Compute Scalar Output $y(t)$**:\n     $$y(t) = \\begin{bmatrix} 1 & 1 \\end{bmatrix} \\begin{bmatrix} e^t \\\\ e^{2t} \\end{bmatrix} = e^t + e^{2t}$$\n  3. **Evaluate at $t = \\ln(2)$**:\n     $$e^t = e^{\\ln(2)} = 2$$\n     $$e^{2t} = \\left(e^{\\ln(2)}\\right)^2 = 2^2 = 4$$\n     $$y(\\ln 2) = 2 + 4 = 6$$\n\nTherefore, the correct numerical value is **6**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ee:2016:q13-s2",
+      "branch": "ee",
+      "year": 2016,
+      "set": 2,
+      "qNum": 13,
+      "title": "GATE EE 2016 | Set 2 | Question: 13",
+      "type": "MCQ",
+      "section": "Technical",
+      "subject": "Power Systems",
+      "subtopic": "Switch Gear and Protection",
+      "officialAnswer": "D",
+      "questionHtml": "A power system with two generators is shown in the figure below. The system (generators, buses and transmission lines) is protected by six overcurrent relays $R_1 \\; to \\; R_6$. Assuming a mix of directional and nondirectional relays at appropriate locations, the remote backup relays for $R_4$ are <br><img src=\"/question-images/ee/2016/ee-2016-c009f5b1c9.webp\"/>",
+      "options": [
+        "$R_{1},R_{2}$",
+        "$R_{2},R_{6}$",
+        "$R_{2},R_{5}$",
+        "$R_{1},R_{6}$"
+      ],
+      "goLink": "https://ee.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Power Systems - Overcurrent Protection & Directional Relay Remote Backup Coordination",
+        "markdown": "- **Concept / Subtopic**: Power Systems - Overcurrent Protection & Directional Relay Remote Backup Coordination\n- **Given Power System Topology**:\n  - Two synchronous generator sources connected to a looped transmission network through step-up transformers and protected by directional and non-directional overcurrent relays $R_1$ to $R_6$.\n  - Target relay: Primary relay $R_4$.\n- **Governing Principles of Remote Backup Protection**:\n  - In a transmission system with sources at both ends, a fault in the line protected by relay $R_4$ is fed simultaneously from both generation sources:\n    1. Generator 1 feeds the fault through the sending bus via relay $R_1$.\n    2. Generator 2 feeds the fault from the opposite direction through its bus via relay $R_6$.\n  - If relay $R_4$ or its associated circuit breaker fails to trip during a fault in its primary zone, **remote backup relays** located at the adjacent upstream substations must sense the continued fault current and trip after a coordinating time interval (Time Grading Margin, typically $0.3\\text{ to }0.5\\text{ s}$).\n- **Step-by-Step Analytical Coordination**:\n  - The upstream relays that see this fault current flowing into the faulted section are:\n    - On the Generator 1 side: Relay $R_1$ serves as the backup looking toward the fault.\n    - On the Generator 2 side: Relay $R_6$ serves as the backup looking toward the fault.\n  - Relays $R_2$ and $R_5$ are directional relays oriented away from this specific fault feed path and do not provide backup.\n  - Therefore, the remote backup relays for $R_4$ are **$R_1$ and $R_6$**.\n\nTherefore, the correct answer is **Option D ($R_{1},R_{6}$)**.",
+        "images": []
+      }
+    }
+  ]
+}

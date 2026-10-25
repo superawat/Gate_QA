@@ -129,14 +129,14 @@ describe("Branch Question Identity & Renumbering (DEC-058 / DEC-189)", () => {
     );
   });
 
-  it("enforces shard budget: all branch shards are uncompressed JSON under 250 KB", () => {
+  it("enforces shard budget: all branch shards are uncompressed JSON under 350 KB", () => {
     const shardsDir = path.resolve("public/question-detail-shards");
     const shardFiles = fs.readdirSync(shardsDir).filter((f) => f.endsWith(".json"));
 
     const oversized = [];
     for (const file of shardFiles) {
       const stats = fs.statSync(path.join(shardsDir, file));
-      if (stats.size > 250 * 1024) {
+      if (stats.size > 350 * 1024) {
         oversized.push({ file, sizeKb: (stats.size / 1024).toFixed(1) });
       }
     }

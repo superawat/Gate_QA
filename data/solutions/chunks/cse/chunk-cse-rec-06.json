@@ -1,0 +1,90 @@
+{
+  "chunkId": "CHUNK-CSE-REC-06",
+  "branch": "cse",
+  "year": 2021,
+  "section": "all",
+  "status": "COMPLETED",
+  "count": 10,
+  "questions": [
+    {
+      "uid": "go:359885",
+      "solution": {
+        "concept": "Quantitative Aptitude - Set Theory & Principle of Inclusion-Exclusion",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Set Theory & Principle of Inclusion-Exclusion\n- **Given Percentages**:\n  - Percentage of employees drinking coffee: $P(C) = 35\\%$.\n  - Percentage of employees drinking tea: $P(T) = 40\\%$.\n  - Percentage of employees drinking both: $P(C \\cap T) = 10\\%$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Union of Coffee or Tea Drinkers**:\n     - By the Principle of Inclusion-Exclusion:\n       $$P(C \\cup T) = P(C) + P(T) - P(C \\cap T)$$\n       $$P(C \\cup T) = 35\\% + 40\\% - 10\\% = 65\\%$$\n  2. **Employees Drinking Neither Coffee nor Tea**:\n     - The complement percentage is:\n       $$P(\\text{Neither}) = 100\\% - P(C \\cup T) = 100\\% - 65\\% = 35\\%$$\n\nTherefore, the correct answer is **Option C ($35$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359883",
+      "solution": {
+        "concept": "Quantitative Aptitude - Operator Definition & Algebraic Identities",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Operator Definition & Algebraic Identities\n- **Given Operators**:\n  1. $p \\bigoplus q = \\dfrac{p^2 + q^2}{pq}$\n  2. $p \\bigodot q = \\dfrac{p^2}{q}$\n- **Equation to Solve**:\n  $$x \\bigoplus y = 2 \\bigodot 2$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Evaluate the Right-Hand Side**:\n     $$2 \\bigodot 2 = \\frac{2^2}{2} = \\frac{4}{2} = 2$$\n  2. **Evaluate the Left-Hand Side**:\n     $$x \\bigoplus y = \\frac{x^2 + y^2}{xy}$$\n  3. **Equate and Simplify**:\n     $$\\frac{x^2 + y^2}{xy} = 2$$\n     $$x^2 + y^2 = 2xy$$\n     $$x^2 - 2xy + y^2 = 0$$\n     $$(x - y)^2 = 0 \\implies x - y = 0 \\implies x = y$$\n\nTherefore, the correct answer is **Option B ($y$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359881",
+      "solution": {
+        "concept": "Reasoning & Combinatorics - Restricted Linear Permutations",
+        "markdown": "- **Concept / Subtopic**: Reasoning & Combinatorics - Restricted Linear Permutations\n- **Given Constraints for Seating $\\{P, Q, R, S\\}$ in a Row**:\n  1. Four distinct individuals: $P, Q, R, S$.\n  2. $P$ and $R$ cannot sit adjacent to each other.\n  3. $S$ must sit strictly to the right of $Q$ ($Q < S$ in left-to-right order).\n- **Step-by-Step Analytical Derivation**:\n  1. **Total Linear Permutations**:\n     - Without constraints, 4 persons can be arranged in $4! = 24$ ways.\n  2. **Impose the Relative Order Constraint ($Q$ before $S$)**:\n     - In exactly half of all permutations, $Q$ precedes $S$ ($S$ is to the right of $Q$):\n       $$N(Q < S) = \\frac{24}{2} = 12\\text{ arrangements}$$\n  3. **Subtract Cases Where $P$ and $R$ Sit Adjacent**:\n     - Treat the adjacent pair $(PR)$ or $(RP)$ as a single composite block $\\mathbf{B}$.\n     - The entities to arrange are now $\\{Q, S, \\mathbf{B}\\}$ (3 entities).\n     - The number of arrangements of 3 entities where $Q$ precedes $S$ is:\n       $$\\frac{3!}{2} = \\frac{6}{2} = 3\\text{ arrangements}$$\n     - Since the block $\\mathbf{B}$ can be ordered internally as $(PR)$ or $(RP)$ ($2! = 2$ ways):\n       $$N(Q < S \\text{ and } P, R \\text{ adjacent}) = 3 \\times 2 = 6\\text{ arrangements}$$\n  4. **Calculate Valid Seating Configurations**:\n     $$N_{\\text{valid}} = N(Q < S) - N(Q < S \\text{ with } P, R \\text{ adjacent}) = 12 - 6 = 6$$\n\nTherefore, the correct answer is **Option C ($6$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359879",
+      "solution": {
+        "concept": "Mathematical Logic - Negation of Disjunction (De Morgan's Laws)",
+        "markdown": "- **Concept / Subtopic**: Mathematical Logic - Negation of Disjunction (De Morgan's Laws)\n- **Given Proposition**:\n  - Let $A$: *\"$P$ marries $Q$\"*\n  - Let $B$: *\"$X$ marries $Y$\"*\n  - The given statement *\"Either $P$ marries $Q$ or $X$ marries $Y$\"* is the inclusive disjunction:\n    $$S = A \\lor B$$\n- **Step-by-Step Analytical Derivation**:\n  1. By De Morgan's Laws of propositional logic:\n     $$\\neg(A \\lor B) \\equiv \\neg A \\land \\neg B$$\n  2. Translating $\\neg A \\land \\neg B$ into natural English:\n     - $\\neg A$: *\"$P$ does not marry $Q$\"*\n     - $\\neg B$: *\"$X$ does not marry $Y$\"*\n     - Conjunction $\\land$: *\"Neither $P$ marries $Q$ nor $X$ marries $Y$\"*\n  3. This matches Option B identically.\n\nTherefore, the correct answer is **Option B (Neither $P$ marries $Q$ nor $X$ marries $Y$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359875",
+      "solution": {
+        "concept": "Geometry - Regular Pentagram & Star Polygon Tip Angles",
+        "markdown": "- **Concept / Subtopic**: Geometry - Regular Pentagram & Star Polygon Tip Angles\n- **Given Configuration**:\n  - Five line segments of equal lengths $PR, PS, QS, QT, RT$ form a symmetrical five-pointed star (regular pentagram $\\{5/2\\}$).\n  - All five tip vertices have identical acute angles $\\theta$.\n- **Step-by-Step Analytical Derivation**:\n  1. **Sum of Angles at the Points of a Five-Pointed Star**:\n     - For any star polygon formed by extending the sides of an $n$-gon, the sum of the vertex angles at the $n$ tips is:\n       $$\\sum_{i=1}^{n} \\theta_i = (n - 4) \\times 180^\\circ$$\n  2. For $n = 5$:\n     $$\\sum_{i=1}^{5} \\theta = (5 - 4) \\times 180^\\circ = 180^\\circ$$\n  3. **Value of $\\theta$**:\n     - By regularity and symmetry, all 5 tip angles are identical:\n       $$5\\theta = 180^\\circ \\implies \\theta = \\frac{180^\\circ}{5} = 36^\\circ$$\n\nTherefore, the correct answer is **Option A ($36$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359873",
+      "solution": {
+        "concept": "Quantitative Aptitude - Piecewise Function Evaluation & Sign Rules",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Piecewise Function Evaluation & Sign Rules\n- **Given Piecewise Function**:\n  $$\\lambda(p, q) = \\begin{cases} (p - q)^2, & \\text{if } p \\ge q \\\\ p + q, & \\text{if } p < q \\end{cases}$$\n- **Expression to Evaluate**:\n  $$E = \\frac{\\lambda\\left( -(-3 + 2), (-2 + 3) \\right)}{-\\left(-(-2 + 1)\\right)}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Evaluate the Arguments $p$ and $q$**:\n     $$p = -(-3 + 2) = -(-1) = 1$$\n     $$q = (-2 + 3) = 1$$\n  2. **Evaluate $\\lambda(p, q) = \\lambda(1, 1)$**:\n     - Since $p = 1$ and $q = 1$, the condition $p \\ge q$ holds true ($1 \\ge 1$).\n     - Applying the first branch:\n       $$\\lambda(1, 1) = (p - q)^2 = (1 - 1)^2 = 0^2 = 0$$\n  3. **Evaluate the Denominator**:\n     $$\\text{Denominator} = -(-2 + 1) = -(-1) = 1$$\n     - Negated per the expression: $-(1) = -1$ or $1$ (non-zero).\n  4. **Compute the Final Quotient**:\n     $$E = \\frac{0}{\\text{non-zero}} = 0$$\n\nTherefore, the correct answer is **Option B ($0$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359909",
+      "solution": {
+        "concept": "Verbal Aptitude - Subject-Verb Agreement & Collective Nouns",
+        "markdown": "- **Concept / Subtopic**: Verbal Aptitude - Subject-Verb Agreement & Collective Nouns\n- **Analysis of Given Sentences**:\n  - **Sentence (i)**: *\"Arun and Aparna are here.\"*\n    - Two singular nouns (*Arun*, *Aparna*) joined by the coordinating conjunction *and* form a compound plural subject.\n    - Requires the plural auxiliary verb **are**.\n    - **Correct**.\n  - **Sentence (ii)**: *\"Arun and Aparna is here.\"*\n    - Incorrect; uses singular verb *is* with a compound plural subject.\n  - **Sentence (iii)**: *\"Arun’s families is here.\"*\n    - Incorrect; plural noun *families* is mismatched with singular verb *is*.\n  - **Sentence (iv)**: *\"Arun’s family is here.\"*\n    - The collective noun *family* acting as a single cohesive unit takes a singular verb **is**.\n    - **Correct**.\n- **Conclusion**:\n  - Sentences **(i) and (iv)** are grammatically correct.\n\nTherefore, the correct answer is **Option B ($\text{(i) and (iv)}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359905",
+      "solution": {
+        "concept": "Probability - Simultaneous Rolling of Independent Dice",
+        "markdown": "- **Concept / Subtopic**: Probability - Simultaneous Rolling of Independent Dice\n- **Given Parameters**:\n  - Two fair, identical standard six-sided dice numbered $1$ to $6$.\n  - Both dice are rolled simultaneously.\n- **Step-by-Step Analytical Derivation**:\n  1. For each die, the sample space is $S = \\{1, 2, 3, 4, 5, 6\\}$ with $|S| = 6$.\n  2. The even numbers on a die are $E = \\{2, 4, 6\\}$ with $|E| = 3$.\n  3. The probability of rolling an even number on a single die is:\n     $$P(\\text{Even}) = \\frac{3}{6} = \\frac{1}{2}$$\n  4. Because the outcomes of the two dice are mutually independent:\n     $$P(\\text{Even on Die 1} \\cap \\text{Even on Die 2}) = P(\\text{Even}) \\times P(\\text{Even}) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$$\n\nTherefore, the correct answer is **Option D ($\\frac{1}{4}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359903",
+      "solution": {
+        "concept": "Quantitative Aptitude - Custom Binary Operators & Order of Operations",
+        "markdown": "- **Concept / Subtopic**: Quantitative Aptitude - Custom Binary Operators & Order of Operations\n- **Given Operator Definitions**:\n  1. $p \\odot q = p - q$\n  2. $p \\oplus q = p \\times q$\n- **Target Expression**:\n  $$E = \\left( 9 \\odot (6 \\oplus 7) \\right) \\odot \\left( 7 \\oplus (6 \\odot 5) \\right)$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Evaluate Left Sub-expression**:\n     - Inside parentheses: $6 \\oplus 7 = 6 \\times 7 = 42$\n     - Apply operator $\\odot$:\n       $$9 \\odot 42 = 9 - 42 = -33$$\n  2. **Evaluate Right Sub-expression**:\n     - Inside parentheses: $6 \\odot 5 = 6 - 5 = 1$\n     - Apply operator $\\oplus$:\n       $$7 \\oplus 1 = 7 \\times 1 = 7$$\n  3. **Evaluate the Outer Operation**:\n     $$E = (-33) \\odot 7 = -33 - 7 = -40$$\n\nTherefore, the correct answer is **Option D ($-40$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "go:359901",
+      "solution": {
+        "concept": "Reasoning & Combinatorics - Permutations with Position Restrictions",
+        "markdown": "- **Concept / Subtopic**: Reasoning & Combinatorics - Permutations with Position Restrictions\n- **Problem Statement**:\n  - Four distinct individuals $\\{P, Q, R, S\\}$ are to be seated in a row of 4 chairs (positions 1, 2, 3, 4 from left to right).\n  - Restriction: $R$ must NOT occupy position 2 from the left end.\n- **Step-by-Step Analytical Derivation**:\n  1. **Total Unrestricted Permutations**:\n     $$N_{\\text{total}} = 4! = 4 \\times 3 \\times 2 \\times 1 = 24$$\n  2. **Complementary Permutations (Where $R$ is in Position 2)**:\n     - Fix $R$ at position 2: $[\\_, R, \\_, \\_]$.\n     - The remaining 3 positions can be filled by the remaining 3 individuals $\\{P, Q, S\\}$ in:\n       $$3! = 6\\text{ ways}$$\n  3. **Subtract Complement from Total**:\n     $$N_{\\text{valid}} = N_{\\text{total}} - N(R \\text{ at pos 2}) = 24 - 6 = 18$$\n\nTherefore, the correct answer is **Option C ($18$)**.",
+        "images": []
+      }
+    }
+  ]
+}

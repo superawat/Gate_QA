@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-25T12:38:14.453Z",
   "shardKey": "1995-s0",
   "yearSetKey": "1995-s0",
   "yearSetIdentity": "cse:1995:set-0",
@@ -75,6 +75,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -114,6 +115,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -153,6 +155,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -194,6 +197,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -233,6 +237,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -312,6 +317,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -352,6 +358,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -391,6 +398,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -430,6 +438,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -508,6 +517,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -547,6 +557,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -628,6 +639,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -667,6 +679,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -680,7 +693,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "There are $999-100+1=900$ three-digit integers. To avoid digit 7, the hundreds digit has 8 choices ($1$ through $9$ except $7$), and each of the tens and units digits has 9 choices (including $0$, excluding $7$). Thus $8\\cdot9\\cdot9=648$ valid numbers, and\n\n$$P=\\frac{648}{900}=\\frac{18}{25}.$$\n\n**Therefore, the correct answer is Option D ($18/25$).**",
+        "images": []
+      }
     },
     "go:2606": {
       "title": "GATE CSE 1995 | Question: 1.19",
@@ -720,6 +738,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Relations",
+        "markdown": "Symmetry and transitivity alone do not force reflexivity. On a nonempty set $A=\\{1\\}$, take $R=\\varnothing$. It is symmetric and transitive vacuously, but it is not reflexive because $(1,1)\\notin R$. Thus A, B, and C each claim reflexivity without justification; in particular, neither an equivalence relation nor a partial order follows.\n\n**Therefore, the correct answer is Option D (none of the above).**",
+        "images": []
       }
     },
     "go:2607": {
@@ -760,6 +783,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Set Theory",
+        "markdown": "The set $S=\\{\\{\\varnothing\\},1,\\{2,3\\}\\}$ has three distinct elements: the set containing the empty set, the number $1$, and the set containing $2$ and $3$. A set with $n$ elements has $2^n$ subsets, since each element is either included or excluded. Hence $|P(S)|=2^3=8$.\n\n**Therefore, the correct answer is Option C (8).**",
+        "images": []
       }
     },
     "go:2608": {
@@ -786,6 +814,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -799,7 +828,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Define $g(x)=x-\\cos x$ on $[0,\\pi]$. Its derivative is $g'(x)=1+\\sin x>0$, so $g$ is strictly increasing and can have at most one zero. Also $g(0)=-1<0$ and $g(\\pi)=\\pi+1>0$, so continuity guarantees a zero between the endpoints. There is therefore exactly one solution to $x=\\cos x$.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:2611": {
       "title": "GATE CSE 1995 | Question: 1.24",
@@ -840,6 +874,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Every row of the displayed $(n+1)\\times(n+1)$ matrix is the same vector $(1,a,a^2,\\ldots,a^n)$. This vector is nonzero because its first entry is $1$. The row space is therefore spanned by one nonzero vector, regardless of the value of $a$, and the rank is exactly $1$.\n\n**Therefore, the correct answer is Option A (1).**",
+        "images": []
       }
     },
     "go:2612": {
@@ -866,6 +905,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -879,7 +919,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Graph Theory",
+        "markdown": "A connected graph on $n$ vertices needs at least $n-1$ edges; a spanning tree attains that minimum but has no cycle. To create a cycle, at least one additional edge is necessary, giving at least $n$ edges. A cycle through all $n$ vertices is connected and has exactly $n$ edges, so this lower bound is achievable.\n\n**Therefore, the correct answer is Option B ($n$).**",
+        "images": []
+      }
     },
     "go:2613": {
       "title": "GATE CSE 1995 | Question: 2.1",
@@ -947,6 +992,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -986,6 +1032,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1026,6 +1073,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1065,6 +1113,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1104,6 +1153,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1143,6 +1193,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1182,6 +1233,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1195,7 +1247,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Set $t=x-1$. The equation becomes $t^3=-8$, whose three roots are $-2$, $-2\\omega$, and $-2\\omega^2$, where $1,\\omega,\\omega^2$ are the cube roots of unity. Adding 1 to each root gives\n\n$$x=-1,\\quad 1-2\\omega,\\quad 1-2\\omega^2.$$\n\nThe options with plus signs have the wrong signs after solving $(x-1)^3=-8$.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
+      }
     },
     "go:2621": {
       "title": "GATE CSE 1995 | Question: 2.9",
@@ -1262,6 +1319,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1341,6 +1399,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1394,6 +1453,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "A vector perpendicular to both $a=(2,-3,1)$ and $b=(1,1,-2)$ is their cross product:\n\n$$a\\times b=(5,5,5)=5(1,1,1).$$\n\nIts magnitude is $5\\sqrt3$, so normalizing gives $(1,1,1)/\\sqrt3$. Directly, its dot products with $a$ and $b$ are proportional to $2-3+1=0$ and $1+1-2=0$.\n\n**Therefore, the correct answer is Option A.**",
+        "images": []
       }
     },
     "go:2626": {
@@ -1420,6 +1484,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "C",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1433,7 +1498,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability",
+        "markdown": "The draws are without replacement. The two disjoint orders are white then black and black then white:\n\n$$P=\\frac{10}{25}\\frac{15}{24}+\\frac{15}{25}\\frac{10}{24}=\\frac{150}{600}+\\frac{150}{600}=\\frac12.$$\n\nEquivalently, either order contributes $150/600$, for total $300/600$. This matches the listed value $1/2$.\n\n**Therefore, the correct answer is Option C ($1/2$).**",
+        "images": []
+      }
     },
     "go:2627": {
       "title": "GATE CSE 1995 | Question: 2.15",
@@ -1559,6 +1629,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Group Theory",
+        "markdown": "For a fixed matrix order $n\\ge2$, the nonsingular real matrices form $GL_n(\\mathbb R)$ under multiplication: multiplication is associative, the identity matrix is included, products stay nonsingular, and every matrix has an inverse. The group is not abelian in general. For example,\n\n$$\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}\\begin{bmatrix}1&0\\\\1&1\\end{bmatrix}=\\begin{bmatrix}2&1\\\\1&1\\end{bmatrix}\\ne\\begin{bmatrix}1&1\\\\1&2\\end{bmatrix}=\\begin{bmatrix}1&0\\\\1&1\\end{bmatrix}\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}.$$\n\n**Therefore, under the standard $n\\times n$ matrix convention with $n\\ge2$, the correct answer is Option D.**",
+        "images": []
       }
     },
     "go:2631": {
@@ -1585,6 +1660,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1598,7 +1674,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Propositional Logic",
+        "markdown": "The premise $\\neg p\\to q$ is equivalent to $p\\lor q$. The target is\n\n$$\\neg p\\lor(p\\to q)=\\neg p\\lor(\\neg p\\lor q)=\\neg p\\lor q.$$\n\nThe premise does not fix the target: if $p=F,q=T$, the premise and target are both true; if $p=T,q=F$, the premise $T\\lor F$ is true but the target $F\\lor F$ is false. Since both assignments satisfy the premise and give different target values, the truth value cannot be determined.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
+      }
     },
     "go:2632": {
       "title": "GATE CSE 1995 | Question: 2.20",
@@ -1624,6 +1705,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1663,6 +1745,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1702,6 +1785,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1741,6 +1825,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "B",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1820,6 +1905,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1861,6 +1947,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 1,
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1874,7 +1961,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "For $0<x<\\pi/2$, the standard geometric squeeze gives $\\cos x\\le \\sin x/x\\le1$. As $x\\to0^+$, both bounds approach 1, so the limit from the right is 1. Since $\\sin x/x$ is even, its left-hand limit is the same. This derives the result without a power-series expansion.\n\n**Therefore, the numerical answer is 1.**",
+        "images": []
+      }
     },
     "go:2645": {
       "title": "GATE CSE 1995 | Question: 10",
@@ -1983,6 +2075,7 @@
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "answer": 1,
       "track": "cse",
       "yearSetKey": "1995-s0",
       "yearSetIdentity": "cse:1995:set-0",
@@ -1996,7 +2089,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Complete the square:\n\n$$3-4x+2x^2=2(x^2-2x)+3=2(x-1)^2+1.$$\n\nBecause $(x-1)^2\\ge0$, the expression is at least 1, with equality at $x=1$. Thus its minimum is 1.\n\n**Therefore, the numerical answer is 1.**",
+        "images": []
+      }
     },
     "go:314348": {
       "title": "GATE CSE 1995 | Question: 25b",
@@ -2038,6 +2136,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Discrete Mathematics - Set Theory",
+        "markdown": "The integers from 1 through 720 form 24 complete blocks of 30. In each block, the numbers not divisible by 2, 3, or 5 are exactly the residues coprime to 30. Their count is\n\n$$\\varphi(30)=30\\left(1-\\frac12\\right)\\left(1-\\frac13\\right)\\left(1-\\frac15\\right)=8.$$\n\nTherefore, the total is $24\\cdot8=192$.\n\n**Therefore, the numerical answer is 192.**",
+        "images": []
       }
     },
     "go:2597": {
@@ -2120,6 +2223,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Interpret the slope as $dy/dx=-2x/y$. Separating variables gives $y\\,dy=-2x\\,dx$. Integrating,\n\n$$\\frac{y^2}{2}=-x^2+C\\quad\\Longrightarrow\\quad 2x^2+y^2=C_1.$$\n\nFor a nondegenerate real curve ($C_1>0$), this is an ellipse centered at the origin. The line, parabola, and circle options do not satisfy this general quadratic level-curve equation.\n\n**Therefore, the correct answer is Option D (an ellipse).**",
+        "images": []
       }
     },
     "go:2610": {
@@ -2162,6 +2270,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "For $Ax^2+Bxy+Cy^2=0$ to represent two real lines through the origin, its discriminant must be nonnegative. Here $A=4$, $B=-8$, and $C=k$, so\n\n$$B^2-4AC=64-16k=16(4-k).$$\n\nAt $k=9$ this is $-80<0$, so the quadratic has no real line factors. The other listed values $0,2,3$ give a nonnegative discriminant and do represent real line pairs (with the zero-discriminant case a repeated line).\n\n**Therefore, the correct answer is Option C (9).**",
+        "images": []
       }
     },
     "go:2630": {

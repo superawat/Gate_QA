@@ -52,7 +52,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Key property:</b> If $\\lambda$ is an eigenvalue of matrix $A$, then $\\lambda^2$ is an eigenvalue of $A^2$.\n\n<b>Eigenvalues of A:</b> $\\lambda_1 = 1,\\ \\lambda_2 = 2,\\ \\lambda_3 = 3$\n\n<b>Eigenvalues of $A^2$:</b> $1^2 = 1,\\ 2^2 = 4,\\ 3^2 = 9$\n\n<b>Trace of $A^2$</b> = sum of eigenvalues of $A^2$:\n\n$\\text{tr}(A^2) = 1 + 4 + 9 = \\mathbf{14}$\n\n<b>Recall:</b> Trace of any matrix = sum of its eigenvalues. This holds for $A^2$ as well.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:q2-s2": {
       "question_uid": "ce:2026:q2-s2",
@@ -97,7 +98,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "Given:\n\nA fifth-degree polynomial with all positive coefficients:\n\n$f(x)=a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+a_0\n\n\\qquad (a_i>0,\\ x>0)$\n\nWe need to determine whether the first-order forward and backward difference approximations overestimate or underestimate the true derivative.\n\n<b>Step 1: Examine the second derivative</b>\n\nThe first derivative is\n\n$f'(x)\n\n=\n\n5a_5x^4+4a_4x^3+3a_3x^2+2a_2x+a_1$\n\nThe second derivative is\n\n$f''(x)\n\n=\n\n20a_5x^3+12a_4x^2+6a_3x+2a_2$\n\nSince all coefficients are positive and\n\n$x>0,$\n\nwe have\n\n$f''(x)>0.$\n\nTherefore, the function is <b>convex (concave upward)</b>.\n\n<b>Step 2: Forward difference approximation</b>\n\nThe first-order forward difference formula is\n\n$f'(x)\n\n\\approx\n\n\\frac{f(x+h)-f(x)}{h}.$\n\nFor a convex function,\n\n$\\frac{f(x+h)-f(x)}{h}\n\n>\n\nf'(x).$\n\nHence, the forward difference method <b>overestimates</b> the true derivative.\n\nTherefore, Statement (I) is <b>FALSE</b>.\n\n<b>Step 3: Backward difference approximation</b>\n\nThe first-order backward difference formula is\n\n$f'(x)\n\n\\approx\n\n\\frac{f(x)-f(x-h)}{h}.$\n\nFor a convex function,\n\n$\\frac{f(x)-f(x-h)}{h}\n\n<\n\nf'(x).$\n\nHence, the backward difference method <b>underestimates</b> the true derivative.\n\nTherefore, Statement (II) is <b>FALSE</b>.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q3-s2": {
       "question_uid": "ce:2026:q3-s2",
@@ -142,7 +144,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<b>The function is an odd function</b> (antisymmetric about $x = 0$), so its Fourier series contains only sine terms (no cosine terms, no constant).\n\n<b>Fourier sine coefficients:</b>\n\n$b_n = \\dfrac{2}{\\pi}\\int_0^{\\pi} f(x)\\sin(nx)\\,dx = \\dfrac{2}{\\pi}\\int_0^{\\pi} 1 \\cdot \\sin(nx)\\,dx = \\dfrac{2}{\\pi}\\left[-\\dfrac{\\cos(nx)}{n}\\right]_0^{\\pi} = \\dfrac{2}{n\\pi}(1 - \\cos n\\pi)$\n\n<b>For odd n:</b> $\\cos(n\\pi) = -1$ $\\rightarrow$ $b_n = \\dfrac{4}{n\\pi}$\n\n<b>For even n:</b> $\\cos(n\\pi) = 1$ $\\rightarrow$ $b_n = 0$\n\n<b>Therefore: </b> $f(x) = \\dfrac{4}{\\pi}\\left[\\sin x + \\dfrac{\\sin 3x}{3} + \\dfrac{\\sin 5x}{5} + \\cdots\\right]$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q4-s2": {
       "question_uid": "ce:2026:q4-s2",
@@ -187,7 +190,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
         "markdown": "Actual neutral axis depth $x_u = 302$ mm\n\nEffective depth $d = 550$ mm\n\n$x_{u,max}/d = 0.456$ $\\rightarrow$ $x_{u,max} = 0.456 \\times 550 = 250.8$ mm\n\n<b>Comparison:</b>\n\n$x_u = 302 \\text{ mm} > x_{u,max} = 250.8 \\text{ mm}$\n\n<b>Interpretation:</b>\n\nWhen actual neutral axis depth exceeds the limiting value, the beam is <b>over-reinforced</b>.\n\nIn an over-reinforced beam:\n\nConcrete reaches its limiting strain (0.0035) <b>before</b> steel yields\n\nFailure occurs by <b>crushing of concrete in compression</b>\n\nThis is a sudden, brittle failure mode\n\nTherefore, The most probable mode of failure is <b>compression failure</b>.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q5-s2": {
       "question_uid": "ce:2026:q5-s2",
@@ -232,7 +236,8 @@
       "detailed_solution": {
         "concept": "Design of Steel Structures - Beams",
         "markdown": "The upper bound condition is: $M_d \\leq 1.5\\, Z_e\\, \\dfrac{f_y}{\\gamma_{m0}}$\n\n<b>Explanation:</b>\n\n$Z_e \\dfrac{f_y}{\\gamma_{m0}}$ is the elastic moment capacity (moment at which extreme fibre just yields).\n\nThe plastic moment capacity is $Z_p \\dfrac{f_y}{\\gamma_{m0}}$ where $Z_p = 1.5\\, Z_e$ for a rectangular section (shape factor = 1.5).\n\nThe upper bound $1.5\\, Z_e \\dfrac{f_y}{\\gamma_{m0}}$ equals the <b>full plastic moment capacity</b>.\n\nThe reason for capping at $1.5 Z_e$ is to ensure that <b>plastic deformation does not occur under working (service) loads</b>. If the design moment exceeds this limit, the section would undergo plastic deformation at service load level (with appropriate load factors), causing permanent deformation.\n\nTherefore, The upper bound prevents <b>plastic deformation under working load</b>.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2026:q6-s2": {
       "question_uid": "ce:2026:q6-s2",
@@ -277,7 +282,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
         "markdown": "<b>Definition of Plane Strain (in X-Y plane):</b>\n\nA plane strain condition assumes that all deformation occurs in the X-Y plane and there is <b>no strain in the Z-direction</b>.\n\n<b>Conditions that MUST be satisfied:</b>\n\n$\\epsilon_{zz} = 0$ (no normal strain in Z)\n\n$\\epsilon_{xz} = 0$ (no shear strain in X-Z plane)\n\n$\\epsilon_{yz} = 0$ (no shear strain in Y-Z plane)\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:q7-s2": {
       "question_uid": "ce:2026:q7-s2",
@@ -322,7 +328,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Principal Stress and Principal Strain",
         "markdown": "<b>Pure Shear Stress:</b>\n\nA state of pure shear exists when only shear stresses act on the element and no normal stresses are present.\n\nMathematically,\n\n$\\sigma_x=0,\\qquad \\sigma_y=0$\n\nand\n\n$\\tau_{xy}=\\tau_{yx}$\n\nThe shear stresses must act on all four faces in such a way that the element remains in rotational equilibrium. These are called <b>complementary shear stresses</b>.\n\n<b>Checking Option (A)</b>\n\nIn Option (A), the shear stresses are arranged as follows:\n\n- Top face &rarr; acts towards the right\n\n- Bottom face &rarr; acts towards the left\n\n- Right face &rarr; acts upward\n\n- Left face &rarr; acts downward\n\nThus, equal shear stresses of magnitude $40$ act on all four faces and form a complementary shear stress system.\n\n$\\tau_{xy}=\\tau_{yx}=40$\n\nand\n\n$\\sigma_x=\\sigma_y=0$\n\nTherefore, the element is subjected to pure shear stress.\n\n<b>Why Other Options Are Incorrect?</b>\n\nThe directions of shear stresses shown in the other options do not satisfy the standard complementary shear stress arrangement required for pure shear. Hence, they do not represent a proper state of pure shear stress.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q8-s2": {
       "question_uid": "ce:2026:q8-s2",
@@ -367,7 +374,8 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Determinacy and Indeterminacy",
         "markdown": "<b>Step 1: Analyze the suspended span GJ</b>\n\nThe span GJ is simply supported between the two internal hinges G and J.\n\nLength:\n\n$GJ=4\\ \\text{m}$\n\nCentral load:\n\n$30\\ \\text{kN}$\n\nHence, reactions at G and J are\n\n$R_G=R_J=\\frac{30}{2}=15\\ \\text{kN}$\n\nThese reactions act downward on the adjacent spans FG and JL.\n\n<b>Step 2: Analyze the right span JL</b>\n\nLoads on JL:\n\nDownward hinge force at J:\n\n$15\\ \\text{kN}$\n\nUDL:\n\n$w=4\\ \\text{kN/m}$\n\nover\n\n$4\\ \\text{m}$\n\nEquivalent load:\n\n$W=4\\times4=16\\ \\text{kN}$\n\nacting at\n\n$2\\ \\text{m}$\n\nfrom J.\n\nLet the vertical reaction at L be\n\n$V_L.$\n\nApplying vertical equilibrium to span JL:\n\n$V_L-15-16+V_J=0$\n\nwhere\n\n$V_J$\n\nis the vertical force at the hinge J acting on span JL.\n\nSince the hinge force transmitted from the suspended span GJ is already\n\n$15\\ \\text{kN}$\n\ndownward on JL, equilibrium of JL gives\n\n$V_L=15+16-8$\n\nwhich yields\n\n$V_L=23 \\text{kN}$\n\nEquivalently, using the standard three-segment hinge analysis, the fixed support at L carries the remaining vertical load after the hinge force of 15 kN is transferred from the central suspended span.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q9-s2": {
       "question_uid": "ce:2026:q9-s2",
@@ -412,7 +420,8 @@
       "detailed_solution": {
         "concept": "Irrigation Engineering - Crop Water Requirements",
         "markdown": "<b>Duty formula:</b>\n\n$\\Delta = \\dfrac{8.64 \\times B}{\\delta}$\n\nwhere $\\Delta$ = Duty (ha/cumec), B = base period (days), $\\delta$ = delta (watering depth in m)\n\nGiven: B = 140 days, $\\delta$ = 40 cm = 0.40 m\n\n<b>Step 1  -  Calculate duty:</b>\n\n$\\Delta = \\dfrac{8.64 \\times 140}{0.40} = \\dfrac{1209.6}{0.40} = 3024 \\text{ ha/cumec}$\n\n<b>Step 2  -  Calculate discharge (outlet):</b>\n\n$Q = \\dfrac{\\text{CCA}}{\\Delta} = \\dfrac{10000}{3024} = 3.307 \\text{ m}^3/\\text{s}$\n\n<b>The outlet discharge ≈ 3.31 m³/s, which lies between 3 and 4.</b>\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q10-s2": {
       "question_uid": "ce:2026:q10-s2",
@@ -457,7 +466,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
         "markdown": "<b>Mass curve of rainfall:</b>\n\nThe mass curve is a plot of cumulative rainfall (y-axis) against time (x-axis). It is a monotonically non-decreasing curve.\n\n<b>Statement (I)  -  Slope can be positive:</b>\n\nSlope = rate of rainfall at that instant. During active rainfall, cumulative rainfall increases $\\rightarrow$ slope is <b>positive</b>.  TRUE\n\n<b>Statement (II)  -  Slope can be zero:</b>\n\nDuring periods of no rainfall (dry periods), cumulative rainfall remains constant $\\rightarrow$ slope is <b>zero</b>.  TRUE\n\n<b>Note:</b> The slope can never be negative (rainfall cannot be negative  -  the mass curve never decreases). Both statements are TRUE.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q11-s2": {
       "question_uid": "ce:2026:q11-s2",
@@ -502,7 +512,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
         "markdown": "<b>Casagrande's Plasticity Chart  -  A-line and U-line:</b>\n\nFor LL = 40%:\n\n<b>A-line equation:</b> $PI = 0.73(LL - 20) = 0.73(40 - 20) = 0.73 \\times 20 = 14.6\\%$\n\n<b>U-line equation (upper limit for natural soils):</b> $PI = 0.9(LL - 8) = 0.9(40 - 8) = 0.9 \\times 32 = 28.8\\%$\n\n<b>Interpretation:</b>\n\nInorganic clays plot <b>above the A-line</b>\n\nAll soils plot <b>below the U-line</b>\n\nTherefore, PI for inorganic clays at LL = 40% ranges between the A-line value (minimum) and U-line value (maximum)\n\n<b>Range: 14.6% to 28.8%</b>\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:q12-s2": {
       "question_uid": "ce:2026:q12-s2",
@@ -547,7 +558,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
         "markdown": "<b>Matching:</b>\n\n<b>Converse-Labarre formula (I)</b> $\\rightarrow$ <b>Pile group efficiency (Q):</b>\n\nThe Converse-Labarre formula is used to determine the efficiency of a pile group based on pile spacing, diameter, and number of piles.\n\n<b>Hiley formula (II)</b> $\\rightarrow$ <b>Pile capacity from dynamic formula (P):</b>\n\nThe Hiley formula is a dynamic pile driving formula that relates hammer blow energy, set, and losses to estimate pile capacity.\n\n<b>Newmark's influence chart (III)</b> $\\rightarrow$ <b>Increase in vertical stress below footing (S):</b>\n\nNewmark's chart is used to find vertical stress increase at a point due to any arbitrary loaded area using influence values.\n\n<b>Skempton's equation (IV)</b> $\\rightarrow$ <b>Bearing capacity factor of saturated clay (R):</b>\n\nSkempton's equation gives $N_c$ values for saturated clays ($\\phi = 0$) depending on shape and depth of foundation.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q13-s2": {
       "question_uid": "ce:2026:q13-s2",
@@ -592,7 +604,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "<b>Situation:</b> Four-lane dual carriageway (2 lanes each direction). One side blocked $\\rightarrow$ traffic diverted to opposite side through median opening. Now both directions share the remaining carriageway.\n\n<b>Original sight distance:</b> 360 m (for one-way, two-lane travel in each direction)\n\n<b>After diversion:</b> The operating section now carries <b>two-way traffic</b> (both directions on one side).\n\n<b>For two-way traffic on a single carriageway:</b>\n\nSSD must be provided for vehicles to stop safely. When two vehicles approach head-on, both must be able to stop within the available sight distance. For two-way roads, the required SSD from each direction is half of the overtaking sight distance, but the <b>safe stopping requirement</b> means:\n\nFor two-way operation on a road designed for one-way, the SSD is halved (since visibility must serve both directions):\n\n$SSD_{new} = \\dfrac{360}{2} = \\mathbf{180 \\text{ m}}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2026:q14-s2": {
       "question_uid": "ce:2026:q14-s2",
@@ -637,7 +650,8 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "<b>Definitions:</b>\n\n<b>Cant (superelevation):</b> The outer rail is raised above the inner rail to counteract centrifugal force at a given equilibrium speed.\n\n<b>Cant deficiency:</b> Occurs when a train moves <b>faster</b> than the equilibrium speed for which the cant is designed. The centrifugal force exceeds the component provided by the cant  -  the effective cant is less than needed. Train tends to overturn outward.\n\n<b>Cant excess:</b> Occurs when a train moves <b>slower</b> than the equilibrium speed. The cant provides more than needed  -  the train tends to slip inward toward the inner rail.\n\nTherefore, Option (A) is correct.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q15-s2": {
       "question_uid": "ce:2026:q15-s2",
@@ -682,7 +696,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
         "markdown": "<b>Windrose diagram:</b>\n\nA windrose diagram is a graphical tool that shows the distribution of wind speeds and directions at a location over a period of time. It appears as a circular rose chart with petals pointing in the direction the wind comes from.\n\n<b>Primary use in airport design:</b>\n\nThe runway must be aligned to take maximum advantage of prevailing winds. Aircraft prefer to take off and land <b>into the wind</b> (headwind) to minimize ground speed and reduce runway length requirements.\n\nThe windrose diagram helps determine the direction that maximizes the percentage of time aircraft can operate within acceptable crosswind limits  -  this determines the optimal <b>orientation (direction) of the runway</b>.\n\nTherefore, The primary purpose is for the design of the <b>orientation of a runway</b>.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:q16-s2": {
       "question_uid": "ce:2026:q16-s2",
@@ -727,7 +742,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "<b>(A) TRUE:</b> A level surface is an equipotential surface of gravity  -  by definition, the force of gravity (plumb line) is perpendicular (normal) to a level surface at every point.\n\n<b>(B) FALSE:</b> Two level surfaces can <b>never</b> cross each other  -  they are equipotential surfaces of the Earth's gravity field. If they crossed, a point would have two different potential values, which is impossible.\n\n<b>(C) FALSE:</b> The <b>Geoid</b> (not Ellipsoid) is the irregular surface approximating the physical surface. The Ellipsoid is a smooth mathematical surface.\n\n<b>(D) FALSE:</b> The <b>Geoid</b> is actually an <b>irregular</b> surface (it follows mean sea level including undulations). The Ellipsoid is the <b>regular</b> mathematical surface.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q17-s2": {
       "question_uid": "ce:2026:q17-s2",
@@ -772,7 +788,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
         "markdown": "<b>Matching air pollutants with treatment technologies:</b>\n\n<b>Dust $(5-25 ,\\mu\\text{m})$ $\\rightarrow$ Cyclone separator (P):</b>\n\nCyclone separators use centrifugal force to remove medium-to-large particles. They are effective for particles larger than about $5 ,\\mu\\text{m}$, making them suitable for dust in the size range $5\\text{-}25 ,\\mu\\text{m}$.\n\n<b>Carbon monoxide (CO) $\\rightarrow$ Catalytic converter (S):</b>\n\nCO is a gaseous pollutant and cannot be removed by mechanical separation. Catalytic converters oxidize CO into carbon dioxide using catalysts such as platinum, palladium, or rhodium.\n\n<b>Sulfur dioxide $(SO_2) \\rightarrow$ Wet lime-water scrubber (Q):</b>\n\n$SO_2$ is an acidic gas that can be removed by absorption in alkaline solutions. In a lime-water scrubber, the reaction is:\n\n$SO_2 + Ca(OH)_2 \\rightarrow CaSO_3 + H_2O$\n\nThus, wet scrubbers are commonly used for $SO_2$ control.\n\n<b>Fly ash $(< 2.5 ,\\mu\\text{m})$ $\\rightarrow$ Electrostatic precipitator (R):</b>\n\nFly ash consists of very fine particulate matter. Electrostatic precipitators (ESPs) charge the particles electrically and collect them on oppositely charged plates, making them highly effective for removing fine particles, including PM2.5.\n\n<b>Hence, the correct matching is:</b>\n\n$\\text{Dust} \\rightarrow P,\\quad \\text{CO} \\rightarrow S,\\quad \\text{SO}_2 \\rightarrow Q,\\quad \\text{Fly Ash} \\rightarrow R$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q18-s2": {
       "question_uid": "ce:2026:q18-s2",
@@ -817,7 +834,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "Given: Sludge with 90% water $\\rightarrow$ solid content = 10%\n\nOf solids: 1/3 = mineral (SG = 2.5), 2/3 = volatile (SG = 1.0)\n\n<b>Specific gravity of all solids combined (using volume-weighted harmonic mean):</b>\n\nConsider 1 unit mass of total solids.\n\nMass of mineral = 1/3, Mass of volatile = 2/3\n\nVolume of mineral = $\\dfrac{1/3}{2.5} = \\dfrac{1}{7.5}$\n\nVolume of volatile = $\\dfrac{2/3}{1.0} = \\dfrac{2}{3}$\n\nTotal volume of solids = $\\dfrac{1}{7.5} + \\dfrac{2}{3} = 0.1333 + 0.6667 = 0.80$\n\nTotal mass = 1 unit\n\n$G_s = \\dfrac{\\text{Total mass}}{\\text{Total volume}} = \\dfrac{1}{0.80} = \\mathbf{1.25}$\n\n1.25 lies between <b>1.2 and 1.3</b>.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q19-s2": {
       "question_uid": "ce:2026:q19-s2",
@@ -862,7 +880,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "<b>Role of algae in wastewater treatment:</b>\n\nIn an <b>oxidation pond</b> (waste stabilization pond), a natural symbiotic relationship exists between algae and bacteria.\n\n<b>Bacteria</b> decompose organic matter (BOD) in wastewater using dissolved oxygen, producing carbon dioxide, water, ammonia, and other by-products.\n\n<b>Algae</b> utilize sunlight, carbon dioxide, and nutrients released during bacterial decomposition to carry out photosynthesis and generate oxygen.\n\nThe photosynthetic reaction can be represented as:\n\n$6CO_2 + 6H_2O \\xrightarrow{\\text{sunlight}} C_6H_{12}O_6 + 6O_2$\n\nThe oxygen produced by algae is then used by bacteria for further decomposition of organic matter. Thus, the algae-bacteria symbiosis forms the fundamental mechanism of treatment in <b>oxidation ponds.</b>\n\n<b>Other options:</b>\n\n<b>Slow sand filter:</b> Purification occurs mainly due to the biological layer (schmutzdecke) formed by microorganisms; algae do not play a significant role.\n\n<b>Cyclone separator:</b> A purely physical device that removes particulate matter using centrifugal force; no biological activity is involved.\n\n<b>Septic tank:</b> Treatment occurs under anaerobic conditions. Since sunlight and oxygen are absent, algae cannot grow and therefore play no role in the process.\n\n<b>Hence, algae are mainly associated with the operation of an oxidation pond.</b>\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q20-s2": {
       "question_uid": "ce:2026:q20-s2",
@@ -907,7 +926,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "<b>The PDE is:</b> $\\dfrac{\\partial^2 u}{\\partial x^2} - \\dfrac{\\partial^2 u}{\\partial y^2} = 0$ (Wave equation type)\n\nThis is a hyperbolic PDE. General solution: $u = f(x+y) + g(x-y)$\n\n<b>Testing each option:</b>\n\n<b>(A) $u = (x+y)^5$:</b>\n\n$\\dfrac{\\partial^2 u}{\\partial x^2} = 20(x+y)^3$, $\\dfrac{\\partial^2 u}{\\partial y^2} = 20(x+y)^3$\n\nDifference = 0  <b>Valid solution</b>\n\n<b>(B) $u = (x-2y)^3$:</b>\n\n$\\dfrac{\\partial^2 u}{\\partial x^2} = 6(x-2y)$, $\\dfrac{\\partial^2 u}{\\partial y^2} = 4 \\times 6(x-2y) = 24(x-2y)$... wait: $\\dfrac{\\partial^2}{\\partial y^2}(x-2y)^3 = (-2)^2 \\times 6(x-2y) = 24(x-2y)$\n\nDifference = $6(x-2y) - 24(x-2y) \\neq 0$\n\n<b>(C) $u = \\cos(x+y)$:</b>\n\n$\\dfrac{\\partial^2 u}{\\partial x^2} = -\\cos(x+y)$, $\\dfrac{\\partial^2 u}{\\partial y^2} = -\\cos(x+y)$\n\nDifference = 0  <b>Valid solution</b>\n\n<b>(D) $u = \\sin(x-2y)$:</b>\n\n$\\dfrac{\\partial^2 u}{\\partial x^2} = -\\sin(x-2y)$, $\\dfrac{\\partial^2 u}{\\partial y^2} = -4\\sin(x-2y)$\n\nDifference $= -\\sin + 4\\sin = 3\\sin \\neq 0$\n\nTherefore, the correct option(s) are **A, C**."
-      }
+      },
+      "answer": "A, C"
     },
     "ce:2026:q21-s2": {
       "question_uid": "ce:2026:q21-s2",
@@ -950,7 +970,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Key property:</b> The determinant of a matrix equals the product of its eigenvalues.\n\n<b>Given eigenvalues:</b> $\\lambda_1 = -1.547,\\ \\lambda_2 = 12.330,\\ \\lambda_3 = 4.711$\n\n<b>Determinant:</b>\n\n$|\\det(A)| = |\\lambda_1 \\times \\lambda_2 \\times \\lambda_3|$\n\n$= |(-1.547) \\times 12.330 \\times 4.711|$\n\n$= |(-1.547) \\times 58.090|$\n\n$= |{-89.86}|$\n\n$= \\mathbf{89.87}$\n\nTherefore, the correct answer is **90** (acceptable range: [89, 91])."
-      }
+      },
+      "answer": "90"
     },
     "ce:2026:q22-s2": {
       "question_uid": "ce:2026:q22-s2",
@@ -993,7 +1014,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Flood Routing and Flood Control",
         "markdown": "Probability of a storm with return period T occurring in n years:\n\n$P = 1 - \\left(1 - \\dfrac{1}{T}\\right)^n$\n\nGiven: T = 15 years, n = 10 years\n\n$P = 1 - \\left(1 - \\dfrac{1}{15}\\right)^{10} = 1 - \\left(\\dfrac{14}{15}\\right)^{10}$\n\n$\\left(\\dfrac{14}{15}\\right)^{10} = (0.9333)^{10}$\n\n$\\ln(0.9333) = -0.06899$\n\n$10 \\times (-0.06899) = -0.6899$\n\n$e^{-0.6899} = 0.5017$\n\n$P = 1 - 0.5017 = 0.4983 = \\mathbf{49.83\\%}$\n\nTherefore, the correct answer is **50** (acceptable range: [45, 55])."
-      }
+      },
+      "answer": "50"
     },
     "ce:2026:q23-s2": {
       "question_uid": "ce:2026:q23-s2",
@@ -1036,7 +1058,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
         "markdown": "Given: Water content w = 20%, Specific gravity G = 2.65, Saturated soil $\\rightarrow$ Sr = 1\n\n<b>Step 1  -  Find void ratio e:</b>\n\nFor saturated soil: $e = w \\times G = 0.20 \\times 2.65 = 0.53$\n\n<b>Step 2  -  Critical hydraulic gradient formula:</b>\n\n$i_c = \\dfrac{G - 1}{1 + e}$\n\n<b>Step 3  -  Calculate:</b>\n\n$i_c = \\dfrac{2.65 - 1}{1 + 0.53} = \\dfrac{1.65}{1.53} = \\mathbf{1.08}$\n\nTherefore, the correct answer is **1.075** (acceptable range: [1, 1.15])."
-      }
+      },
+      "answer": "1.075"
     },
     "ce:2026:q24-s2": {
       "question_uid": "ce:2026:q24-s2",
@@ -1079,7 +1102,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
         "markdown": "Given:\n\nDowngrade: $-1/100 = -1\\%$\n\nUpgrade: $+1/125 = +0.8\\%$\n\nRate of change of grade: $r = 0.10\\%$ per 30 m\n\n<b>Step 1  -  Total change in grade (algebraic difference):</b>\n\nFrom $-1\\%$ to $+0.8\\%$:\n\n$N = g_2 - g_1 = +0.8 - (-1.0) = 1.8\\%$\n\n<b>Step 2  -  Length of vertical curve:</b>\n\n$L = \\dfrac{N}{r} \\times 30 = \\dfrac{1.8}{0.10} \\times 30 = 18 \\times 30 = \\mathbf{540 \\text{ m}}$\n\nTherefore, the correct answer is **540**."
-      }
+      },
+      "answer": "540"
     },
     "ce:2026:q25-s2": {
       "question_uid": "ce:2026:q25-s2",
@@ -1122,7 +1146,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Remote Sensing, GIS, GPS and Photogrammetry",
         "markdown": "Given:\n\nMap scale = 1 : 25000\n\nMap distance = 12.0 cm\n\n<b>Scale formula:</b>\n\n$\\text{Actual distance} = \\text{Map distance} \\times \\text{Scale factor}$\n\n<b>Calculation:</b>\n\n$\\text{Actual distance} = 12.0 \\text{ cm} \\times 25000$\n\n$= 300000 \\text{ cm}$\n\n$= 3000 \\text{ m}$\n\n$= \\mathbf{3 \\text{ km}}$\n\n<b>Interpretation:</b> Every 1 cm on the map represents 25000 cm = 250 m in reality. So 12 cm = 12 x 250 = 3000 m = 3 km.\n\nTherefore, the correct answer is **3**."
-      }
+      },
+      "answer": "3"
     },
     "ce:2026:q26-s2": {
       "question_uid": "ce:2026:q26-s2",
@@ -1167,7 +1192,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "<b>Key observation:</b> Expanding the determinant along Row 2 (constants), we get:\n\n$f(x) = 6 \\cdot M_{21} + (-1) \\cdot M_{22} + 0 \\cdot M_{23}$\n\nwhere $M_{ij}$ are cofactors.\n\nThe third derivative $\\dfrac{d^3}{dx^3}f(x)$ only acts on terms involving $x$.\n\n<b>Expanding along Row 1:</b>\n\n$f(x) = x^3(-p^3 - 0) - \\sin x(6p^3 - 0) + \\cos x(6p^2 - (-p))$\n\n$= -p^3 x^3 - 6p^3 \\sin x + \\cos x(6p^2 + p)$\n\n<b>Taking third derivative:</b>\n\n$f(x) = -p^3 x^3 - 6p^3 \\sin x + (6p^2 + p)\\cos x$\n\n$f'(x) = -3p^3 x^2 - 6p^3 \\cos x - (6p^2+p)\\sin x$\n\n$f''(x) = -6p^3 x + 6p^3 \\sin x - (6p^2+p)\\cos x$\n\n$f'''(x) = -6p^3 + 6p^3 \\cos x + (6p^2+p)\\sin x$\n\nAt $x=0$:  $f'''(0) = -6p^3 + 6p^3(1) + (6p^2+p)(0) = -6p^3 + 6p^3 = \\mathbf{0}$\n\nThe result is <b>0, which is independent of p</b>.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2026:q27-s2": {
       "question_uid": "ce:2026:q27-s2",
@@ -1212,7 +1238,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "Given: $\\vec{V} = 3x^2yz\\,\\hat{i} - 5xy\\,\\hat{j} + 6yz^2\\,\\hat{k}$\n\n<b>Curl formula:</b>\n\n$$\\nabla \\times \\vec{V} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ \\partial/\\partial x & \\partial/\\partial y & \\partial/\\partial z \\\\ V_x & V_y & V_z \\end{vmatrix}$$\n\n<b>Components:</b> $V_x = 3x^2yz,\\ V_y = -5xy,\\ V_z = 6yz^2$\n\n<b>$\\hat{i}$ component:</b>\n\n$\\dfrac{\\partial V_z}{\\partial y} - \\dfrac{\\partial V_y}{\\partial z} = \\dfrac{\\partial(6yz^2)}{\\partial y} - \\dfrac{\\partial(-5xy)}{\\partial z} = 6z^2 - 0 = 6z^2$\n\nAt (2,−1,1): $6(1)^2 = 6$\n\n<b>$\\hat{j}$ component:</b>\n\n$\\dfrac{\\partial V_x}{\\partial z} - \\dfrac{\\partial V_z}{\\partial x} = \\dfrac{\\partial(3x^2yz)}{\\partial z} - \\dfrac{\\partial(6yz^2)}{\\partial x} = 3x^2y - 0 = 3x^2y$\n\nAt (2,−1,1): $3(4)(-1) = -12$\n\n<b>$\\hat{k}$ component:</b>\n\n$\\dfrac{\\partial V_y}{\\partial x} - \\dfrac{\\partial V_x}{\\partial y} = \\dfrac{\\partial(-5xy)}{\\partial x} - \\dfrac{\\partial(3x^2yz)}{\\partial y} = -5y - 3x^2z$\n\nAt (2,−1,1): $-5(-1) - 3(4)(1) = 5 - 12 = -7$\n\n<b>Curl = $6\\hat{i} - 12\\hat{j} - 7\\hat{k}$</b>\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q28-s2": {
       "question_uid": "ce:2026:q28-s2",
@@ -1257,7 +1284,8 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
         "markdown": "<b>ILD for rotation at B of a simply supported beam:</b>\n\nUsing the conjugate beam method or moment-area theorem, the rotation at B when a unit load is at distance x from A is:\n\nFor a simply supported beam of length L with a unit load at x:\n\nReactions: $R_A = \\dfrac{L-x}{L}$, $R_B = \\dfrac{x}{L}$\n\nThe rotation at B due to unit load at x (using Mohr's theorem / standard result):\n\n$\\theta_B(x) = \\dfrac{x(L^2 - x^2)}{6EIL}$... this expands to $\\dfrac{x L^2 - x^3}{6EIL} = \\dfrac{-(x^3 - L^2x)}{6EIL}$\n\nThe ILD for $\\theta_B$:\n\n$\\theta_B(x) = \\dfrac{1}{6EIL}(x^3 - L^2x)$\n\n<b>Note:</b> This expression is negative for $0 < x < L$ (sagging beam, rotation at B is clockwise = negative by convention), confirming option (B).\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:q29-s2": {
       "question_uid": "ce:2026:q29-s2",
@@ -1302,7 +1330,8 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Trusses",
         "markdown": "<b>Step 1: Determine support reactions</b>\n\nTaking moments about support $E$:\n\n$\\sum M_E=0$\n\n$12F_y+40(3)-20(9)=0$\n\n$F_y=5\\ \\text{kN}$\n\nUsing vertical equilibrium,\n\n$\\sum V=0$\n\n$E_y+F_y-20=0$\n\n$E_y+5-20=0$\n\n$E_y=15\\ \\text{kN}$\n\n<b>Step 2: Analyze Joint F</b>\n\nAt joint $F$, the following forces act:\n\n- Upward support reaction $F_y=5\\ \\text{kN}$\n\n- Force in member $UF$ (horizontal)\n\n- Force in member $KF$ (vertical)\n\n- Force in member $JF$ inclined at $45^\\circ$\n\nFrom the equilibrium of the adjoining joint, member $KF$ contributes an additional vertical force of $5\\ \\text{kN}$.\n\nTherefore, the vertical component of force in member $JF$ must balance\n\n$5+5=10\\ \\text{kN}$\n\nThus,\n\n$F_{JF}\\sin45^\\circ=10$\n\n$F_{JF}\n\n=\n\n\\dfrac{10}{\\sin45^\\circ}$\n\n$=\n\n\\dfrac{10}{1/\\sqrt{2}}$\n\n$=\n\n10\\sqrt{2}\\ \\text{kN}$\n\n<b>Step 3: Nature of force</b>\n\nThe direction of the force indicates that member $JF$ pushes the joint rather than pulls it.\n\nHence, member $JF$ is in <b>compression</b>.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q30-s2": {
       "question_uid": "ce:2026:q30-s2",
@@ -1347,7 +1376,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
         "markdown": "<b>Statement 1  -  Bottom-up cracking (BUC):</b>\n\nBUC initiates at the bottom of the slab where tensile stresses are maximum. It is caused by:\n\n<b>Heavy axle loads</b> (single or tandem rear axle) causing bending stress  -  maximum tension at bottom\n\n<b>Positive temperature differential</b> (top > bottom) causes the slab to curl upward at edges/corners, making the slab unsupported at edges  -  this increases bottom tensile stress\n\nStatement 1 is <b>TRUE</b>.\n\n<b>Statement 2  -  Top-down fatigue cracking (TDC):</b>\n\nTDC initiates at the top surface of the slab and propagates downward. It is caused by:\n\n<b>Repeated cycles of axle loads</b> on the slab surface\n\n<b>Negative temperature differential</b> (bottom > top) causes slab to curl downward at edges  -  top surface is in tension, initiating top-down cracks\n\nStatement 2 is <b>TRUE</b>.\n\nTherefore, Both statements are TRUE.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q31-s2": {
       "question_uid": "ce:2026:q31-s2",
@@ -1392,7 +1422,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "<b>Given readings:</b>\n\nAt S1: BS on L = 1.5 m, FS on M = 2.0 m\n\nAt S2: BS on M = 1.8 m, FS on N = 1.0 m\n\n<b>Sum of Back Sights (I):</b>\n\n$\\sum BS = 1.5 + 1.8 = 3.3m$\n\nSo (I) $\\rightarrow$ (P) 3.300 m\n\n<b>Sum of Fore Sights (II):</b>\n\n$\\sum FS = 2.0 + 1.0 = 3.0m \\rightarrow$ (S) 3.000 m\n\n<b>RL of Point N (III):</b>\n\n$RL_N = RL_L + \\sum BS - \\sum FS = 150.000 + 3.3 - 3.0 = 150.300$ m $\\rightarrow$ (R) 150.300 m\n\nTherefore, Correct: (I)–(P) ; (II)–(S) ; (III)–(R) $\\rightarrow$ <b>Answer: (A)</b>\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q32-s2": {
       "question_uid": "ce:2026:q32-s2",
@@ -1437,7 +1468,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
         "markdown": "Given:\n\nVolume of raw sewage = 2.4 ml, Diluted to = 240 ml\n\nInitial DO = 8 mg/l, Final DO (after 5 days) = 6 mg/l\n\n<b>Step 1  -  Dilution factor:</b>\n\n$DF = \\dfrac{240}{2.4} = 100$\n\n<b>Step 2  -  BOD of diluted sample:</b>\n\n$BOD_{diluted} = DO_{initial} - DO_{final} = 8 - 6 = 2 \\text{ mg/l}$\n\n<b>Step 3  -  BOD of raw sewage:</b>\n\n$BOD_{raw} = BOD_{diluted} \\times DF = 2 \\times 100 = \\mathbf{200 \\text{ mg/l}}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:q33-s2": {
       "question_uid": "ce:2026:q33-s2",
@@ -1482,7 +1514,8 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Flood Routing and Flood Control",
         "markdown": "<b>Matching of Flood Routing Methods</b>\n\nHydrologic Routing:\n\n$\\text{Muskingum Method}$\n\nand\n\n$\\text{Modified Pul's Method}$\n\nare both hydrologic routing methods.\n\nHydraulic Routing:\n\n$\\text{Method of Characteristics}$\n\nis used for hydraulic routing.\n\nReservoir Routing:\n\n$\\text{Modified Pul's Method}$\n\nis commonly used for reservoir routing.\n\nChannel Routing:\n\n$\\text{Muskingum Method}$\n\nis commonly used for channel routing.\n\nTherefore, the valid matches are:\n\n$(P)\\rightarrow(i)\n\n\\quad \\text{and} \\quad\n\n(P)\\rightarrow(ii)$\n\n$(Q)\\rightarrow(iii)$\n\n$(R)\\rightarrow(ii)$\n\n$(S)\\rightarrow(i)$\n\nTherefore, the correct option(s) are **A, C, D**."
-      }
+      },
+      "answer": "A, C, D"
     },
     "ce:2026:q34-s2": {
       "question_uid": "ce:2026:q34-s2",
@@ -1527,7 +1560,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stress Distribution in the Soil",
         "markdown": "<b>Behavior of rigid vs flexible footings:</b>\n\n<b>(A) TRUE  -  Rigid footing, uniform settlement:</b>\n\nA rigid footing does not deform, so all points beneath it settle by the same amount (uniform vertical displacement), regardless of soil type (clay or sand).\n\n<b>(B) FALSE  -  Rigid footing, contact pressure:</b>\n\nContact pressure under a rigid footing is <b>NOT uniform</b>:\n\nIn clay: parabolic (higher at edges)\n\nIn sand: higher at centre, lower at edges\n\nThe contact pressure distribution varies with soil type.\n\n<b>(C) FALSE  -  Flexible footing, uniform settlement:</b>\n\nA flexible footing conforms to the soil surface, so settlement is <b>non-uniform</b>  -  higher at centre, lower at edges (in most soils).\n\n<b>(D) TRUE  -  Flexible footing, uniform contact pressure:</b>\n\nA perfectly flexible footing applies a <b>uniform contact pressure</b> equal to the applied load per unit area (like a uniformly loaded mattress).\n\nTherefore, the correct option(s) are **A, D**."
-      }
+      },
+      "answer": "A, D"
     },
     "ce:2026:q35-s2": {
       "question_uid": "ce:2026:q35-s2",
@@ -1572,7 +1606,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
         "markdown": "<b>Option A:</b>\n\nWarping stresses develop in a rigid pavement due to the temperature difference between the top and bottom surfaces of the slab during a day.\n\nThe temperature gradient causes the slab to curl upward or downward, producing warping stresses.\n\nTherefore,\n\n$\\boxed{\\text{Option A is TRUE}}$\n\n<b>Option B:</b>\n\nSeasonal changes in temperature cause the entire slab to expand or contract. Since the slab movement is restrained by subgrade friction, frictional stresses are developed.\n\nTherefore,\n\n$\\boxed{\\text{Option B is TRUE}}$\n\n<b>Option C:</b>\n\nIn rigid pavement design, the critical tensile stress is not obtained by taking the maximum of wheel load stress, warping stress, and frictional stress individually.\n\nThe design stress is generally obtained by combining the wheel load stress and temperature-related stresses at the critical location.\n\nHence, taking only the maximum of the individual stresses is incorrect.\n\nTherefore,\n\n$\\boxed{\\text{Option C is FALSE}}$\n\n<b>Option D:</b>\n\nWheel load stresses at edge, interior, and corner do not occur simultaneously at the same location.\n\nThe critical condition is obtained by considering the most critical loading position, not by summing all three stresses.\n\nTherefore,\n\n$\\boxed{\\text{Option D is FALSE}}$\n\nTherefore, the correct option(s) are **A, B**."
-      }
+      },
+      "answer": "A, B"
     },
     "ce:2026:q36-s2": {
       "question_uid": "ce:2026:q36-s2",
@@ -1615,7 +1650,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation",
         "markdown": "<b>Given ODE:</b> $\\dfrac{dy}{dx} + xy = x$, $y(0) = 0$\n\n<b>Step 1  -  This is a linear first-order ODE. Rewrite:</b>\n\n$\\dfrac{dy}{dx} + xy = x$\n\n<b>Step 2  -  Integrating factor (IF):</b>\n\n$IF = e^{\\int x\\,dx} = e^{x^2/2}$\n\n<b>Step 3  -  Multiply both sides by IF:</b>\n\n$\\dfrac{d}{dx}\\left(y \\cdot e^{x^2/2}\\right) = x \\cdot e^{x^2/2}$\n\n<b>Step 4  -  Integrate both sides:</b>\n\n$y \\cdot e^{x^2/2} = \\int x \\cdot e^{x^2/2}\\,dx$\n\nLet $t = x^2/2$, $dt = x\\,dx$:\n\n$= \\int e^t\\,dt = e^t + C = e^{x^2/2} + C$\n\n<b>Step 5  -  General solution:</b>\n\n$y = 1 + Ce^{-x^2/2}$\n\n<b>Step 6  -  Apply initial condition y(0) = 0:</b>\n\n$0 = 1 + C \\Rightarrow C = -1$\n\n$y = 1 - e^{-x^2/2}$\n\n<b>Step 7  -  Find y at x = 1:</b>\n\n$y(1) = 1 - e^{-1/2} = 1 - e^{-0.5} = 1 - 0.6065 = \\mathbf{0.39}$\n\nTherefore, the correct answer is **0.395** (acceptable range: [0.37, 0.42])."
-      }
+      },
+      "answer": "0.395"
     },
     "ce:2026:q37-s2": {
       "question_uid": "ce:2026:q37-s2",
@@ -1658,7 +1694,8 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<b>Age distribution:</b> Mean $\\mu_a = 36$, SD $\\sigma_a = 12$\n\n<b>Height distribution:</b> Mean $\\mu_h = 160$, SD $\\sigma_h = 10$\n\n<b>Step 1  -  Find z-score for age > 50:</b>\n\n$z = \\dfrac{50 - 36}{12} = \\dfrac{14}{12} = 1.1\\overline{6} \\approx 1.167$\n\n<b>Step 2  -  The probability P(age > 50) = P(Z > 1.167)</b>\n\nThis equals the same probability for height:\n\n$P(\\text{height} > h) = P(Z > 1.167)$\n\n<b>Step 3  -  Find h using the same z-score:</b>\n\n$\\dfrac{h - 160}{10} = 1.167$\n\n$h = 160 + 1.167 \\times 10 = 160 + 11.67 = \\mathbf{171.67 \\text{ cm}}$\n\nTherefore, the correct answer is **171.5** (acceptable range: [170, 173])."
-      }
+      },
+      "answer": "171.5"
     },
     "ce:2026:q38-s2": {
       "question_uid": "ce:2026:q38-s2",
@@ -1701,7 +1738,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Prestressed Concrete Beams",
         "markdown": "Given: Beam: 250 mm wide x 600 mm deep. 4 tendons of 14 mm diameter, centred 200 mm from soffit. Effective stress  $= 700 N/mm^2. \\; \\pi = 3.14$\n\n<b>Step 1  -  Area of each tendon:</b>\n\n$A_t = \\dfrac{\\pi d^2}{4} = \\dfrac{3.14 \\times 14^2}{4} = \\dfrac{3.14 \\times 196}{4} = \\dfrac{615.44}{4} = 153.86 \\text{ mm}^2$\n\n<b>Step 2  -  Total prestress force P:</b>\n\n$P = 4 \\times A_t \\times f_{pe} = 4 \\times 153.86 \\times 700 = 430808 \\text{ N} \\approx 430.8 \\text{ kN}$\n\n<b>Step 3  -  Eccentricity e (from centroid to tendon):</b>\n\nCentroid of beam from soffit = 600/2 = 300 mm\n\n$e = 300 - 200 = 100 \\text{ mm}$\n\n<b>Step 4  -  Section modulus (bottom fibre):</b>\n\n$Z_b = \\dfrac{bD^2}{6} = \\dfrac{250 \\times 600^2}{6} = \\dfrac{250 \\times 360000}{6} = 15 \\times 10^6 \\text{ mm}^3$\n\n<b>Step 5  -  Maximum BM without tension at soffit:</b>\n\nStress at soffit = $\\dfrac{P}{A} + \\dfrac{Pe}{Z_b} - \\dfrac{M}{Z_b} \\geq 0$\n\n$M \\leq \\left(\\dfrac{P}{A} + \\dfrac{Pe}{Z_b}\\right) \\times Z_b = P \\cdot \\dfrac{Z_b}{A} + P \\cdot e$\n\n$A = 250 \\times 600 = 150000 \\text{ mm}^2$\n\n$M \\leq 430.8 \\times \\dfrac{15 \\times 10^6}{150000} + 430.8 \\times 100$\n\n$M \\leq 430.8 \\times 100 + 430.8 \\times 100 = 43080 + 43080 = 86160 \\text{ kN mm} = 86.2 \\text{ kN m}$\n\nTherefore, the correct answer is **86.55** (acceptable range: [85.5, 87.6])."
-      }
+      },
+      "answer": "86.55"
     },
     "ce:2026:q39-s2": {
       "question_uid": "ce:2026:q39-s2",
@@ -1744,7 +1782,8 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
         "markdown": "<b>Step 1: Identify the collapse mechanism</b>\n\nFor the combined beam-column mechanism, plastic hinges form at:\n\n- Left column base (fixed support)\n\n- Left beam-column joint\n\n- Right beam-column joint\n\n- One plastic hinge at the mid-span of the beam\n\nThus, total plastic hinges formed:\n\n$4$\n\nSince the frame has degree of indeterminacy 3, four plastic hinges are required to form a mechanism.\n\n<b>Step 2: External work done by lateral load</b>\n\nLet the sway displacement at the beam level be\n\n$\\Delta.$\n\nLet the rotation of the columns be\n\n$\\theta.$\n\nSince column height is\n\n$L,$\n\n$\\Delta=L\\theta.$\n\nExternal work done by the lateral load:\n\n$W_P=P\\Delta$\n\n$=P(L\\theta).$\n\n<b>Step 3: External work done by UDL</b>\n\nDue to the beam mechanism, a plastic hinge forms at mid-span.\n\nThe vertical displacement at the beam center is\n\n$\\delta=\\dfrac{L}{2}\\theta.$\n\nFor a uniformly distributed load,\n\n$W_w\n\n=\n\nwL\\left(\\dfrac{\\delta}{2}\\right)$\n\nsince the average displacement of the load is\n\n$\\dfrac{\\delta}{2}.$\n\nTherefore,\n\n$W_w\n\n=\n\nwL\\left(\\dfrac{L\\theta}{4}\\right)\n\n=\n\n\\dfrac{wL^2\\theta}{4}.$\n\n<b>Step 4: Internal work</b>\n\nPlastic hinge rotations are:\n\nLeft base hinge:\n\n$\\theta$\n\nLeft beam-column joint:\n\n$\\theta$\n\nRight beam-column joint:\n\n$\\theta$\n\nMid-span beam hinge:\n\n$2\\theta$\n\nHence,\n\n$W_i\n\n=\n\nM_p(\\theta+\\theta+\\theta+2\\theta)$\n\n$=\n\n5M_p\\theta.$\n\n<b>Step 5: Apply virtual work equation</b>\n\n$W_P+W_w=W_i$\n\n$PL\\theta+\\dfrac{wL^2\\theta}{4}\n\n=\n\n5M_p\\theta.$\n\nCancelling\n\n$\\theta,$\n\n$5M_p\n\n=\n\nPL+\\dfrac{wL^2}{4}.$\n\nTherefore,\n\n$M_p\n\n=\n\n\\dfrac{1}{5}PL+\\frac{1}{20}wL^2.$\n\nComparing with\n\n$M_p=C_1PL+C_2wL^2,$\n\nwe get\n\n$C_1=\\dfrac{1}{5},\n\n\\qquad\n\nC_2=\\dfrac{1}{20}.$\n\nHence,\n\n$\\dfrac{C_1}{C_2}\n\n=\n\n\\dfrac{1/5}{1/20}\n\n=\n\n4.$\n\nTherefore, the correct answer is **4**."
-      }
+      },
+      "answer": "4"
     },
     "ce:2026:q40-s2": {
       "question_uid": "ce:2026:q40-s2",
@@ -1787,7 +1826,8 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
         "markdown": "<b>Given:</b>\n\nAxial rigidity of both bars:\n\n$AE=20000\\ \\text{kN}$\n\nApplied load:\n\n$P=20\\ \\text{kN}$\n\nGap between D and F:\n\n$g=2\\ \\text{mm}=0.002\\ \\text{m}$\n\nLengths:\n\n$BD=10\\ \\text{m}\n\n\\qquad\n\nFG=5\\ \\text{m}$\n\n<b>Step 1: Check whether the gap closes</b>\n\nIf only the left bar acts, the displacement of point D due to the 20 kN load is\n\n$\\delta_D\n\n=\n\n\\dfrac{PL}{AE}\n\n=\n\n\\dfrac{20\\times10}{20000}\n\n=\n\n0.01\\ \\text{m}\n\n=\n\n10\\ \\text{mm}$\n\nSince\n\n$10\\ \\text{mm}>2\\ \\text{mm},$\n\nthe gap closes and the right bar also starts carrying load.\n\n<b>Step 2: Let the final reactions be</b>\n\n$R_B\n\n=\n\n\\text{reaction at B}$\n\n$R_G\n\n=\n\n\\text{reaction at G}$\n\nFrom equilibrium,\n\n$R_B+R_G=20\n\n\\;\\; ...(1)$\n\n<b>Step 3: Apply compatibility condition</b>\n\nAfter contact, the displacement of D must be equal to:\n\nGap closed\n\n$(2\\ \\text{mm})$\n\nplus\n\nCompression of the right bar FG.\n\nCompression of left bar:\n\n$\\delta_L\n\n=\n\n\\dfrac{R_B(10)}{20000}$\n\nCompression of right bar:\n\n$\\delta_R\n\n=\n\n\\dfrac{R_G(5)}{20000}$\n\nHence,\n\n$\\delta_L\n\n=\n\n0.002+\\delta_R$\n\nSubstituting,\n\n$\\dfrac{10R_B}{20000}\n\n=\n\n0.002+\\dfrac{5R_G}{20000}$\n\nMultiplying by 20000,\n\n$10R_B\n\n=\n\n40+5R_G\n\n\\; \\; ...(2)$\n\nUsing Equation (1),\n\n$R_G=20-R_B$\n\nSubstituting into Equation (2),\n\n$10R_B\n\n=\n\n40+5(20-R_B)$\n\n$10R_B\n\n=\n\n140-5R_B$\n\n$15R_B=140$\n\n$R_B=15.33\\ \\text{kN}$\n\nTherefore,\n\n$R_B\\approx16\\ \\text{kN}$\n\nto the nearest integer.\n\nTherefore, the correct answer is **16**."
-      }
+      },
+      "answer": "16"
     },
     "ce:2026:q41-s2": {
       "question_uid": "ce:2026:q41-s2",
@@ -1830,7 +1870,8 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "Given: b = 250 mm, overall depth D = 600 mm, span L = 6.23 m\n\nLive load = 5 kN/m, SIDL = 5 kN/m, Unit weight of RC = 25 $kN/m^3$, Load factor = 1.5\n\n<b>Step 1  -  Self weight of beam:</b>\n\n$w_{SW} = b \\times D \\times \\gamma = 0.25 \\times 0.60 \\times 25 = 3.75 \\text{ kN/m}$\n\n<b>Step 2  -  Total factored load:</b>\n\n$w_u = 1.5 \\times (w_{LL} + w_{SIDL} + w_{SW}) = 1.5 \\times (5 + 5 + 3.75) = 1.5 \\times 13.75 = 20.625 \\text{ kN/m}$\n\n<b>Step 3  -  Design bending moment (simply supported):</b>\n\n$M_u = \\dfrac{w_u L^2}{8} = \\dfrac{20.625 \\times (6.23)^2}{8} = \\dfrac{20.625 \\times 38.81}{8} = \\dfrac{800.5}{8} = \\mathbf{100.06 \\text{ kN.m}}$\n\nTherefore, the correct answer is **100** (acceptable range: [98, 102])."
-      }
+      },
+      "answer": "100"
     },
     "ce:2026:q42-s2": {
       "question_uid": "ce:2026:q42-s2",
@@ -1873,7 +1914,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "<b>At critical depth in a rectangular channel:</b>\n\n$Q = A\\sqrt{g \\cdot y_c}$ where $A = B \\times y_c$ for rectangular channel\n\nGiven:  $Q = 96 m^3/s, y_c = 9.8 m, g = 9.8 m/s^2$\n\n<b>Formula:</b>\n\n$Q = B \\cdot y_c \\cdot \\sqrt{g \\cdot y_c}$\n\n<b>Solving for B:</b>\n\n$B = \\dfrac{Q}{y_c \\sqrt{g \\cdot y_c}} = \\dfrac{96}{9.8 \\times \\sqrt{9.8 \\times 9.8}} = \\dfrac{96}{9.8 \\times 9.8} = \\dfrac{96}{96.04} \\approx \\mathbf{1.00 \\text{ m}}$\n\nTherefore, the correct answer is **1** (acceptable range: [0.9, 1.1])."
-      }
+      },
+      "answer": "1"
     },
     "ce:2026:q43-s2": {
       "question_uid": "ce:2026:q43-s2",
@@ -1916,7 +1958,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Hydrostatic Forces",
         "markdown": "Given: Gate width = 0.5 m; Oil depth = 0.5 m (top); Water depth = 1.0 m (bottom)\n\n$γ_{oil} = 7.5 kN/m^3, γ_{water} = 10 kN/m^3$\n\n<b>Horizontal hydrostatic force = pressure at centroid x area</b>\n\n<b>Force due to oil layer (0 to 0.5 m depth):</b>\n\nCentroid of oil at depth 0.25 m from oil surface.\n\nPressure at centroid = $\\gamma_{oil} \\times 0.25 = 7.5 \\times 0.25 = 1.875 kN/m^2$\n\nArea = $0.5 \\times 0.5 = 0.25 m^2$\n\n$F_{oil} = 1.875 \\times 0.25 = 0.469$ kN\n\n<b>Force due to water layer (0.5 m to 1.5 m depth from oil surface):</b>\n\nPressure at top of water = $\\gamma_{oil} \\times 0.5 = 7.5 \\times 0.5 = 3.75 kN/m^2$\n\nPressure at bottom = $3.75 + \\gamma_w \\times 1.0 = 3.75 + 10 = 13.75 kN/m^2$\n\nAverage pressure = $(3.75 + 13.75)/2 = 8.75 kN/m^2$\n\nArea = $1.0 \\times 0.5 = 0.5 m^2$\n\n$F_{water} = 8.75 \\times 0.5 = 4.375$ kN\n\n<b>Total force:</b>\n\n$F = F_{oil} + F_{water} = 0.469 + 4.375 = \\mathbf{4.84 \\text{ kN}}$\n\nTherefore, the correct answer is **4.875** (acceptable range: [4.75, 5])."
-      }
+      },
+      "answer": "4.875"
     },
     "ce:2026:q44-s2": {
       "question_uid": "ce:2026:q44-s2",
@@ -1959,7 +2002,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Hydraulic Pumps",
         "markdown": "Given: Static head $= 35 m, L = 2000 m, D = 250 mm = 0.25 m, f = 0.04, g = 9.81 m/s^2, \\pi= 3.14$\n\nPump curve: $H = 140 - 9000Q^2$\n\n<b>Step 1  -  Friction head loss (Darcy-Weisbach):</b>\n\n$h_f = \\dfrac{fLV^2}{2gD} = \\dfrac{fL}{2gD} \\times \\dfrac{16Q^2}{\\pi^2 D^4}$...\n\nUsing: $h_f = \\dfrac{8fLQ^2}{\\pi^2 g D^5}$\n\n$h_f = \\dfrac{8 \\times 0.04 \\times 2000 \\times Q^2}{(3.14)^2 \\times 9.81 \\times (0.25)^5}$$= \\dfrac{640 Q^2}{9.8596 \\times 9.81 \\times 0.000977}$$= \\dfrac{640 Q^2}{0.09444}$$= 6778 Q^2$\n\n<b>Step 2  -  System curve:</b>\n\n$H_{sys} = 35 + 6778 Q^2$\n\n<b>Step 3  -  Operating point (pump curve = system curve):</b>\n\n$140 - 9000Q^2 = 35 + 6778Q^2$\n\n$105 = 15778 Q^2$\n\n$Q^2 = \\dfrac{105}{15778} = 0.006655$\n\n$Q = 0.08158 \\text{ m}^3/\\text{s}$\n\n<b>Step 4  -  Head generated:</b>\n\n$H = 140 - 9000 \\times 0.006655 = 140 - 59.9 = \\mathbf{80 \\text{ m}}$\n\nTherefore, the correct answer is **80** (acceptable range: [78, 82])."
-      }
+      },
+      "answer": "80"
     },
     "ce:2026:q45-s2": {
       "question_uid": "ce:2026:q45-s2",
@@ -2002,7 +2046,8 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "<b>Manning's equation for a wide rectangular channel:</b>\n\n$Q = \\dfrac{1}{n} \\times A \\times R^{2/3} \\times S^{1/2}$\n\nFor wide channel: $R \\approx y$ (hydraulic radius ≈ depth)\n\n$Q = \\dfrac{1}{n} \\times B \\times y \\times y^{2/3} \\times S^{1/2} = \\dfrac{B S^{1/2}}{n} \\times y^{5/3}$\n\nSo for a wide channel: $Q \\propto y^{5/3}$ (when B, n, S are constant)\n\nGiven: $Q_1 = 10m^3/s$  at $y_1 = 2.0$ m\n\n$Q_2 = 20$ m³/s (doubled)\n\n<b>Ratio:</b>\n\n$\\dfrac{Q_2}{Q_1} = \\left(\\dfrac{y_2}{y_1}\\right)^{5/3}$\n\n$\\dfrac{20}{10} = \\left(\\dfrac{y_2}{2.0}\\right)^{5/3}$\n\n$2 = \\left(\\dfrac{y_2}{2}\\right)^{5/3}$\n\n$\\dfrac{y_2}{2} = 2^{3/5} = 2^{0.6} = 1.5157$\n\n$y_2 = 2 \\times 1.5157 = \\mathbf{3.03 \\text{ m}}$\n\nTherefore, the correct answer is **3.1** (acceptable range: [3, 3.2])."
-      }
+      },
+      "answer": "3.1"
     },
     "ce:2026:q46-s2": {
       "question_uid": "ce:2026:q46-s2",
@@ -2045,7 +2090,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
         "markdown": "<b>Consolidation theory  -  Time factor $T_v$:</b>\n\n$T_v = \\dfrac{C_v \\cdot t}{H^2}$\n\nFor a given soil layer, $C_v/H^2$ is constant $\\rightarrow$ $t \\propto T_v$\n\n<b>Time factors for different degrees of consolidation (U):</b>\n\nFor U = 25%: $T_v = \\dfrac{\\pi}{4}\\left(\\dfrac{25}{100}\\right)^2 = \\dfrac{\\pi}{4} \\times 0.0625 = 0.04909$\n\nFor U = 50%: $T_v = \\dfrac{\\pi}{4}\\left(\\dfrac{50}{100}\\right)^2 = \\dfrac{\\pi}{4} \\times 0.25 = 0.1963$\n\nFor U = 90%: $T_v = 0.848$ (standard value)\n\n<b>Ratio $t_{90}/t_{25\\to50}$:</b>\n\nTime from 25% to 50% = 30 days corresponds to $\\Delta T_v = 0.1963 - 0.04909 = 0.1472$\n\n$\\dfrac{C_v}{H^2} = \\dfrac{0.1472}{30} = 0.004907 \\text{ day}^{-1}$\n\nTime for U = 90%:\n\n$t_{90} = \\dfrac{0.848}{0.004907} = \\mathbf{172.8 \\approx 173 \\text{ days}}$\n\nTherefore, the correct answer is **172** (acceptable range: [170, 174])."
-      }
+      },
+      "answer": "172"
     },
     "ce:2026:q47-s2": {
       "question_uid": "ce:2026:q47-s2",
@@ -2088,7 +2134,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
         "markdown": "<b>Terzaghi's bearing capacity for strip footing (cohesionless soil, c = 0):</b>\n\n$q_u = q N_q + \\dfrac{1}{2}\\gamma B N_\\gamma$\n\nwhere $q = \\gamma D_f$ (surcharge from overburden)\n\nGiven:\n\n$B = 1 m, y = 18 kN/m^3$\n\n<b>Case 1:</b> $D_f = 1$ m $\\rightarrow$ $q_1 = 18 \\times 1 = 18 kN/m^2$\n\n$532.80 = 18 N_q + \\dfrac{1}{2} \\times 18 \\times 1 \\times N_\\gamma \\quad \\cdots (1)$\n\n<b>Case 2:</b> $D_f = 2$ m $\\rightarrow$ $q_2 = 18 \\times 2 = 36 kN/m^2$\n\n$864 = 36 N_q + \\dfrac{1}{2} \\times 18 \\times 1 \\times N_\\gamma \\quad \\cdots (2)$\n\n<b>Subtracting (1) from (2):</b>\n\n$864 - 532.80 = (36 - 18)N_q$\n\n$331.20 = 18 N_q$\n\n$N_q = \\dfrac{331.20}{18} = \\mathbf{18.4}$\n\nTherefore, the correct answer is **18.4** (acceptable range: [18.2, 18.6])."
-      }
+      },
+      "answer": "18.4"
     },
     "ce:2026:q48-s2": {
       "question_uid": "ce:2026:q48-s2",
@@ -2131,7 +2178,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stress Distribution in the Soil",
         "markdown": "Given:\n\nWater table at ground surface, $\\gamma_{sat} = 18kN/m^3, \\gamma_w = 10 kN/m^3$\n\nColumn load P = 2000 kN\n\nCondition: $\\sigma_z \\leq 0.1 \\sigma'_v$ at depth z\n\n<b>Step 1  -  Effective vertical stress at depth z (water table at surface):</b>\n\n$\\sigma'_v = (\\gamma_{sat} - \\gamma_w) \\times z = (18 - 10) \\times z = 8zkN/m^2$\n\n<b>Step 2  -  Stress increase below column (Boussinesq, for circular/point load):</b>\n\nFor a point load P: $\\sigma_z = \\dfrac{3P}{2\\pi z^2}$ (at depth z directly below load)\n\n<b>Step 3  -  Apply condition:</b>\n\n$\\dfrac{3P}{2\\pi z^2} \\leq 0.1 \\times 8z$\n\n$\\dfrac{3 \\times 2000}{2\\pi z^2} \\leq 0.8z$\n\n$\\dfrac{6000}{2\\pi z^2} = 0.8z$\n\n$z^3 = \\dfrac{6000}{2\\pi \\times 0.8} = \\dfrac{6000}{5.027} = 1193.7$\n\n$z = (1193.7)^{1/3} = \\mathbf{10.61 \\text{ m}}$\n\nTherefore, the correct answer is **10.6** (acceptable range: [10, 11.2])."
-      }
+      },
+      "answer": "10.6"
     },
     "ce:2026:q49-s2": {
       "question_uid": "ce:2026:q49-s2",
@@ -2174,7 +2222,8 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
         "markdown": "Given:\n\nNatural water content $w = 30\\%$\n\nPlasticity Index $PI = 40\\%$\n\nLiquidity Index $LI = 50\\% = 0.5$\n\n<b>Liquidity Index formula:</b>\n\n$LI = \\dfrac{w - PL}{PI}$\n\n<b>Solving for Plastic Limit (PL):</b>\n\n$0.5 = \\dfrac{30 - PL}{40}$\n\n$30 - PL = 0.5 \\times 40 = 20$\n\n$PL = 30 - 20 = \\mathbf{10\\%}$\n\nTherefore, the correct answer is **10**."
-      }
+      },
+      "answer": "10"
     },
     "ce:2026:q50-s2": {
       "question_uid": "ce:2026:q50-s2",
@@ -2217,7 +2266,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "<b>Given speed-density model:</b> $v = v_o \\ln\\left(\\dfrac{k_j}{k}\\right)$\n\nwhere $v_o = 45$ km/h, $k_j = 200$ veh/km\n\n<b>Step 1  -  Flow = speed x density:</b>\n\n$q = v \\cdot k = v_o \\ln\\left(\\dfrac{k_j}{k}\\right) \\cdot k$\n\n<b>Step 2  -  Maximize flow $\\dfrac{dq}{dk} = 0$:</b>\n\n$\\dfrac{dq}{dk} = v_o\\left[\\ln\\left(\\dfrac{k_j}{k}\\right) + k \\cdot \\left(-\\dfrac{1}{k}\\right)\\right] = v_o\\left[\\ln\\left(\\dfrac{k_j}{k}\\right) - 1\\right] = 0$\n\n$\\ln\\left(\\dfrac{k_j}{k}\\right) = 1 \\Rightarrow \\dfrac{k_j}{k} = e \\Rightarrow k^* = \\dfrac{k_j}{e} = \\dfrac{200}{e} = \\dfrac{200}{2.718} = 73.57$ veh/km\n\n<b>Step 3  -  Speed at maximum flow:</b>\n\n$v^* = v_o \\ln\\left(\\dfrac{k_j}{k^*}\\right) = 45 \\times \\ln(e) = 45 \\times 1 = 45$ km/h\n\n<b>Step 4  -  Maximum flow:</b>\n\n$q_{max} = v^* \\times k^* = 45 \\times 73.57 = \\mathbf{3311 \\text{ veh/h}}$\n\nTherefore, the correct answer is **3325** (acceptable range: [3300, 3350])."
-      }
+      },
+      "answer": "3325"
     },
     "ce:2026:q51-s2": {
       "question_uid": "ce:2026:q51-s2",
@@ -2260,7 +2310,8 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
         "markdown": "<b>Given:</b>\n\nDescending gradient:\n\n$g_1=-\\frac{1}{40}=-0.025=-2.5\\%$\n\nAscending gradient:\n\n$g_2=\\frac{1}{50}=0.02=2.0\\%$\n\nAlgebraic difference of grades:\n\n$N=|g_1-g_2|\n\n=|-2.5-2.0|\n\n=4.5$\n\n(percent)\n\nStopping Sight Distance:\n\n$S=90\\ \\text{m}$\n\nHeadlight height:\n\n$h=0.75\\ \\text{m}$\n\nHeadlight beam angle:\n\n$\\phi=1.2^\\circ$\n\n<b>Step 1: Identify the type of vertical curve</b>\n\nA descending gradient meeting an ascending gradient forms a <b>sag vertical curve</b>.\n\nFor a sag curve, when sight distance is governed by headlights and\n\n$L > S,$\n\nIRC recommends\n\n$L=\\dfrac{N S^2}{200\\left(h+S\\tan\\phi\\right)}$\n\n<b>Step 2: Calculate the denominator</b>\n\n$\\tan(1.2^\\circ)\\approx 0.02095$\n\n$h+S\\tan\\phi\n\n=\n\n0.75+90(0.02095)$\n\n$=\n\n0.75+1.8855\n\n=\n\n2.6355$\n\nThus,\n\n$200(h+S\\tan\\phi)\n\n=\n\n200(2.6355)\n\n=\n\n527.1$\n\n<b>Step 3: Calculate the curve length</b>\n\n$L\n\n=\n\n\\frac{4.5\\times90^2}{527.1}$\n\n$=\n\n\\frac{4.5\\times8100}{527.1}$\n\n$=\n\n\\frac{36450}{527.1}$\n\n$\\approx69.15\\ \\text{m}$\n\nSince\n\n$L < S$,\n\nthe assumption is not valid.\n\nTherefore, use the IRC equation for\n\n$L < S:$\n\n$L\n\n=\n\n2S-\\dfrac{200(h+S\\tan\\phi)}{N}$\n\nSubstituting values,\n\n$L\n\n=\n\n2(90)-\\dfrac{200(2.6355)}{4.5}$\n\n$=\n\n180-117.13$\n\n$=\n\n62.87\\ \\text{m}$\n\nRounded to the nearest integer,\n\n$\\boxed{63\\ \\text{m}}$\n\nTherefore, the correct answer is **63.5** (acceptable range: [60, 67])."
-      }
+      },
+      "answer": "63.5"
     },
     "ce:2026:q52-s2": {
       "question_uid": "ce:2026:q52-s2",
@@ -2303,7 +2354,8 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
         "markdown": "<b>Step 1: Sum of interior angles of a closed traverse</b>\n\nFor a closed traverse with\n\n$n=4$\n\nsides, the theoretical sum of interior angles is\n\n$( n-2 )\\times 180^\\circ$\n\n$=(4-2)\\times 180^\\circ$\n\n$=360^\\circ$\n\n<b>Step 2: Sum the measured angles</b>\n\n$A=71^\\circ 1' 40''$\n\n$B=104^\\circ 54' 23''$\n\n$C=107^\\circ 54' 10''$\n\n$D=76^\\circ 20' 42''$\n\nAdding seconds:\n\n$40''+23''+10''+42''=115''=1'55''$\n\nAdding minutes:\n\n$1'+54'+54'+20'+1'=130'=2^\\circ10'$\n\nAdding degrees:\n\n$71^\\circ+104^\\circ+107^\\circ+76^\\circ+2^\\circ=360^\\circ$\n\nTherefore,\n\n$\\sum \\theta\n\n=\n\n360^\\circ 10' 55''$\n\n<b>Step 3: Determine angular error</b>\n\n$\\text{Angular Error}\n\n=\n\n360^\\circ 10' 55''\n\n-\n\n360^\\circ$\n\n$=\n\n10'55''$\n\nConvert to degrees:\n\n$10'55''\n\n=\n\n\\dfrac{10}{60}\n\n+\n\n\\dfrac{55}{3600}$\n\n$=\n\n0.166667+0.015278$\n\n$=\n\n0.181944^\\circ$\n\nTherefore,\n\n$\\boxed{0.182^\\circ}$\n\nTherefore, the correct answer is **0.182** (acceptable range: [0.18, 0.184])."
-      }
+      },
+      "answer": "0.182"
     },
     "ce:2026:q53-s2": {
       "question_uid": "ce:2026:q53-s2",
@@ -2346,7 +2398,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "<b>Step 1: Determine the pH of the water</b>\n\nUsing the carbonate system:\n\n$\\mathrm{HCO_3^- \\rightleftharpoons H^+ + CO_3^{2-}}$\n\nwith\n\n$pK_2=10.3$\n\nApplying the Henderson-Hasselbalch equation,\n\n$pH=pK_2+\\log\\left(\\dfrac{[CO_3^{2-}]}{[HCO_3^-]}\\right)$\n\nSubstituting the given concentrations,\n\n$pH=10.3+\\log\\left(\\dfrac{0.01}{1.0}\\right)$\n\n$=10.3+\\log(10^{-2})$\n\n$=10.3-2$\n\n$=8.3$\n\n<b>Step 2: Determine the fraction of HOCl</b>\n\nThe chlorine equilibrium is\n\n$\\mathrm{HOCl \\rightleftharpoons H^+ + OCl^-}$\n\nwith\n\n$pK=7.5$\n\nAgain using the Henderson-Hasselbalch equation,\n\n$pH=pK+\\log\\left(\\dfrac{[OCl^-]}{[HOCl]}\\right)$\n\n$8.3=7.5+\\log\\left(\\dfrac{[OCl^-]}{[HOCl]}\\right)$\n\n$\\log\\left(\\dfrac{[OCl^-]}{[HOCl]}\\right)=0.8$\n\n$\\dfrac{[OCl^-]}{[HOCl]}\n\n=\n\n10^{0.8}\n\n\\approx 6.31$\n\nThus,\n\n$[OCl^-]=6.31[HOCl]$\n\nTotal free chlorine is\n\n$[HOCl]+[OCl^-]\n\n=\n\n[HOCl](1+6.31)$\n\n$=\n\n7.31[HOCl]$\n\nTherefore,\n\n$\\%HOCl\n\n=\n\n\\dfrac{[HOCl]}\n\n{[HOCl]+[OCl^-]}\n\n\\times100$\n\n$=\n\n\\dfrac{1}{7.31}\\times100$\n\n$=13.68\\%$\n\nRounded to the nearest integer,\n\n$\\boxed{14\\%}$\n\nTherefore, the correct answer is **14** (acceptable range: [13, 15])."
-      }
+      },
+      "answer": "14"
     },
     "ce:2026:q54-s2": {
       "question_uid": "ce:2026:q54-s2",
@@ -2389,7 +2442,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "<b>Step 1: Calculate the molecular weight of biomass</b>\n\n$MW=(6\\times12)+(7\\times1)+(1\\times14)+(2\\times16)$\n\n$=72+7+14+32$\n\n$=125\n\n\\ \\text{g/mol}$\n\n<b>Step 2: Determine oxygen required for complete oxidation</b>\n\nThe oxidation reaction is\n\n$C_6H_7NO_2+6.25\\,O_2\n\n\\rightarrow\n\n6CO_2+2H_2O+NH_3$\n\nThus, 1 mole of biomass requires\n\n$6.25\n\n\\ \\text{moles of }O_2$\n\nfor complete oxidation.\n\nCOD equivalent of 1 mole biomass:\n\n$COD\n\n=\n\n6.25\\times32$\n\n$=200\n\n\\ \\text{g O}_2$\n\nTherefore,\n\n$1\\ \\text{g biomass}\n\n=\n\n\\dfrac{200}{125}\n\n=\n\n1.6\n\n\\ \\text{g COD}$\n\n<b>Step 3: COD stored in biomass</b>\n\nGiven,\n\n$0.06\\ \\text{g biomass}$\n\nis produced per\n\n$1\\ \\text{g COD removed}$\n\nCOD contained in the produced biomass:\n\n$0.06\\times1.6\n\n=\n\n0.096\n\n\\ \\text{g COD}$\n\nper gram of COD removed.\n\nTherefore, fraction of COD converted to biomass is\n\n$0.096$\n\nor\n\n$0.096\\times100\n\n=\n\n9.6\\%$\n\nRounded to the nearest integer,\n\n$\\boxed{10\\%}$\n\nTherefore, the correct answer is **9** (acceptable range: [8, 10])."
-      }
+      },
+      "answer": "9"
     },
     "ce:2026:q55-s2": {
       "question_uid": "ce:2026:q55-s2",
@@ -2432,7 +2486,8 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
         "markdown": "Given:\n\nInlet concentration = 10 $mg/m^3$\n\nCyclone efficiency = 80%\n\nESP efficiency = 50%\n\n<b>Step 1  -  After cyclone collector:</b>\n\nParticles removed = 80% of 10 = 8 $mg/m^3$\n\nParticles exiting cyclone = 10 − 8 = <b>2 $mg/m^3$</b>\n\n<b>Step 2  -  After electrostatic precipitator (ESP):</b>\n\nParticles entering ESP = 2 $mg/m^3$\n\nParticles removed by ESP = 50% of 2 = 1 $mg/m^3$\n\nParticles exiting ESP = 2 − 1 = <b>1.00 $mg/m^3$</b>\n\n<b>Final concentration exiting the precipitator = 1.00 $mg/m^3$</b>\n\nTherefore, the correct answer is **1** (acceptable range: [0.9, 1.1])."
-      }
+      },
+      "answer": "1"
     },
     "ce:2026:ga:q1-s2": {
       "question_uid": "ce:2026:ga:q1-s2",
@@ -2476,7 +2531,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Analysis of the sentence:</b>\n\n'The team ______ more than 300 runs in 20 overs __________ rains.'\n\n<b>Blank 1  -  verb tense:</b>\n\nThe sentence is in the past tense (indicated by 'However, some players <i>needed</i> to improve'). The correct past tense form of 'score' is <b>'scored'</b>. Options using 'scoring' or 'score' are incorrect for a finite verb in past tense.\n\n<b>Blank 2  -  conjunction/preposition:</b>\n\nThe team scored runs <i>in spite of</i> the rains  -  showing contrast/adversity. Both 'despite' and 'in spite of' express this. However, 'despite' is followed directly by a noun ('rains'), while 'in spite of' is also followed by a noun  -  both are grammatically valid here.\n\n'Despite rains' is more concise and natural. Option (C) gives <b>scored; despite</b>.\n\nOption (D) gives 'scoring; in spite of'  -  'scoring' is not a finite verb and fails the tense requirement. Therefore, <b>(C) is correct</b>.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2026:ga:q2-s2": {
       "question_uid": "ce:2026:ga:q2-s2",
@@ -2520,7 +2576,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Given: $\\log_2 x + \\log_{\\sqrt{2}} x = 48$\n\n<b>Step 1  -  Convert $\\log_{\\sqrt{2}} x$ to base 2:</b>\n\n$\\log_{\\sqrt{2}} x = \\dfrac{\\log_2 x}{\\log_2 \\sqrt{2}} = \\dfrac{\\log_2 x}{1/2} = 2\\log_2 x$\n\n<b>Step 2  -  Substitute:</b>\n\n$\\log_2 x + 2\\log_2 x = 48$\n\n$3\\log_2 x = 48$\n\n$\\log_2 x = 16$\n\n<b>Step 3  -  Solve for x:</b>\n\n$x = 2^{16}$\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:ga:q3-s2": {
       "question_uid": "ce:2026:ga:q3-s2",
@@ -2564,7 +2621,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Pattern Analysis:</b>\n\n\nObserve the sequence of grids carefully.\n\n\n<b>Grid 1:</b> Triangle at top-center Row 1 and Circle at bottom-left Row 3\n\n\n<b>Grid 2:</b> Triangle moves to middle Row 2 and Circle moves to bottom Row 3\n\n\n<b>Grid 3:</b> Circle moves to top Row 1 and Triangle moves to bottom Row 3\n\n\n<b>Pattern:</b> The shapes shift one position downward in each step and swap positions.\n\n\nIn the next figure the Circle should be at top-left and Triangle at bottom-right.\n\nTherefore, the correct answer is **A**."
-      }
+      },
+      "answer": "A"
     },
     "ce:2026:ga:q4-s2": {
       "question_uid": "ce:2026:ga:q4-s2",
@@ -2608,7 +2666,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Logic analysis using negation of universal quantifier:</b>\n\nThe original statement is: <b>'All mangoes are good'</b> $\\rightarrow$ In logic: $\\forall x: G(x)$\n\nThe negation of a universal statement $\\forall x: P(x)$ is the existential statement $\\exists x: \\neg P(x)$.\n\nSo if 'All mangoes are good' is <b>FALSE</b>, then:\n\n$\\exists x: \\neg G(x)$ = 'There exists at least one mango that is NOT good'\n\n<b>Why other options are wrong:</b>\n\n(A) 'All mangoes are not good' = None are good  -  too strong, not necessarily true\n\n(B) 'No mango is good'  -  same as (A), too extreme\n\n(C) 'Some good and some not good'  -  possible but not <i>necessarily</i> true (could be all bad)\n\nOnly (D) is the <b>logical negation</b> that is necessarily true.\n\nTherefore, the correct answer is **D**."
-      }
+      },
+      "answer": "D"
     },
     "ce:2026:ga:q5-s2": {
       "question_uid": "ce:2026:ga:q5-s2",
@@ -2652,7 +2711,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Testing each option:</b>\n\n<b>Option (A): S1 + S2 $\\rightarrow$ S3?</b>\n\nS1: average = 25, S2: each ≤ 40. Can a number be < 20? Yes  -  e.g., {5, 30, 30, 35}: avg = 25, all ≤ 40, but 5 < 20. So S3 is NOT guaranteed.\n\n<b>Option (B): S2 + S3 $\\rightarrow$ S1?</b>\n\nS2: each ≤ 40, S3: each ≥ 20. Average could be anything between 20 and 40. Not necessarily 25.\n\n<b>Option (C): S1 + S3 $\\rightarrow$ S2?</b>\n\nS1: average = 25, so sum = 100. S3: each ≥ 20.\n\nIf one number > 40, say $a > 40$, then $a + b + c + d = 100$ with $b, c, d \\geq 20$.\n\nSo $b + c + d \\geq 60$ $\\rightarrow$ $a \\leq 40$. Contradiction! Therefore no number can exceed 40.\n\n<b>Option (D): S1 $\\rightarrow$ S3?</b>\n\nAverage = 25 doesn't mean each ≥ 20 (e.g., {5, 25, 35, 35}).\n\nTherefore, <b>(C) is necessarily correct</b>.\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2026:ga:q6-s2": {
       "question_uid": "ce:2026:ga:q6-s2",
@@ -2696,7 +2756,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Filling the blanks one by one:</b>\n\n<b>Blank 1:</b> '___ pit'  -  'pit' begins with a consonant sound $\\rightarrow$ use <b>'a'</b> (not 'an')\n\n<b>Blank 2:</b> '___ elephant'  -  'elephant' begins with a vowel sound /e/ $\\rightarrow$ use <b>'an'</b>\n\n<b>Blank 3:</b> 'bewildered ___ miserable'  -  connecting two adjectives in a comparison $\\rightarrow$ use <b>'and'</b> (coordinating conjunction)\n\n<b>Blank 4:</b> 'made to look up ___ a vast crowd'  -  'look up at' is a phrasal expression meaning to gaze upward toward $\\rightarrow$ use <b>'at'</b>\n\nTherefore, Sequence: <b>a; an; and; at</b>\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:ga:q7-s2": {
       "question_uid": "ce:2026:ga:q7-s2",
@@ -2740,7 +2801,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Let quantity of T = t</b>\n\nThen: S = 2t, R = 3t, Q = 4t\n\n<b>Step 1  -  Total quantity equation:</b>\n\n$P + Q + R + S + T = 250$\n\n$P + 4t + 3t + 2t + t = 250$\n\n$P + 10t = 250 \\quad \\cdots (1)$\n\n<b>Step 2  -  Total revenue equation:</b>\n\nAverage price = Rs. 60, Total items = 250\n\nTotal revenue = $250 \\times 60 = 15000$ Rs.\n\n$100P + 50(4t) + 40(3t) + 60(2t) + 60t = 15000$\n\n$100P + 200t + 120t + 120t + 60t = 15000$\n\n$100P + 500t = 15000$\n\n$P + 5t = 150 \\quad \\cdots (2)$\n\n<b>Step 3  -  Subtract (2) from (1):</b>\n\n$(P + 10t) - (P + 5t) = 250 - 150$\n\n$5t = 100 \\Rightarrow t = 20$\n\n<b>Step 4  -  Find P:</b>\n\n$P = 250 - 10(20) = 250 - 200 = \\mathbf{50}$\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:ga:q8-s2": {
       "question_uid": "ce:2026:ga:q8-s2",
@@ -2784,7 +2846,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<b>Setup:</b>\n\nString P (diameter) has original length $l$.\n\nString K (semicircle) has original length $\\dfrac{\\pi l}{2}$ (semicircle of diameter $l$).\n\n<b>After shortening by x:</b>\n\nNew P length = $l - x$ (this is now the diameter of the full circle)\n\nNew K length = $\\dfrac{\\pi l}{2} - x$ (this now forms a full circle)\n\n<b>Condition  -  K forms a full circle with P as diameter:</b>\n\nCircumference of full circle = $\\pi \\times \\text{diameter} = \\pi(l - x)$\n\nSetting equal to new K length:\n\n$\\dfrac{\\pi l}{2} - x = \\pi(l - x)$\n\n$\\dfrac{\\pi l}{2} - x = \\pi l - \\pi x$\n\n$\\pi x - x = \\pi l - \\dfrac{\\pi l}{2}$\n\n$x(\\pi - 1) = \\dfrac{\\pi l}{2}$\n\n$\\dfrac{x}{l} = \\dfrac{\\pi}{2(\\pi - 1)}$\n\nTherefore, the correct answer is **C**."
-      }
+      },
+      "answer": "C"
     },
     "ce:2026:ga:q9-s2": {
       "question_uid": "ce:2026:ga:q9-s2",
@@ -2828,7 +2891,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Setup:</b> 2x2 grid  -  Row 1 (C1, C2), Row 2 (C1, C2). Four people: Meritorius (M), Brother (Br), Son (S), Daughter (D).\n\n<b>Clue (i):</b> Daughter and Brother are in the same column.\n\nSo {D, Br} are in Column 1 or Column 2 together (one in Row 1, one in Row 2).\n\n<b>Clue (ii):</b> Son is seated diagonally across from the sibling of the worst orator.\n\nThe siblings in this group are: Br is sibling of M; D is sibling of S... wait  -  Br and M are siblings (brothers). D and S are children of M (so siblings to each other).\n\nWorst orator's sibling: if worst = D, sibling = S; if worst = Br, sibling = M.\n\n<b>Clue (iii):</b> Best and worst orators are in the same row.\n\n<b>Working through:</b>\n\nFrom clue (i): Let D = Row1-C1, Br = Row2-C1 $\\rightarrow$ M and S fill Row1-C2 and Row2-C2.\n\nFrom clue (ii): Son is diagonal from worst's sibling. If Son = Row2-C2, diagonal = Row1-C1 = D. D is sibling of Son $\\rightarrow$ worst orator = Son? But Son can't be diagonal from his own sibling to himself. Try Son = Row1-C2 $\\rightarrow$ diagonal = Row2-C1 = Br. Br is sibling of M $\\rightarrow$ worst orator = M.\n\nFrom clue (iii): Best and worst (M) in same row. M = Row2-C2. So best is also in Row 2 $\\rightarrow$ best = Br or M. Since M = worst, best = <b>Meritorius' brother</b>\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     },
     "ce:2026:ga:q10-s2": {
       "question_uid": "ce:2026:ga:q10-s2",
@@ -2872,7 +2936,8 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "<b>Pattern Analysis:</b>\n\n\nThe large figure is formed by tiling a small pattern repeatedly.\n\n\n<b>Method:</b> Compare the top-left corner of the large figure with each of the given patterns P Q R S.\n\n\nThe large figure when divided into identical small blocks matches pattern <b>Q</b> when tiled in a 3×3 arrangement.\n\n\nPattern Q matches the repeating unit that generates the given figure when arranged side by side both horizontally and vertically.\n\nTherefore, the correct answer is **B**."
-      }
+      },
+      "answer": "B"
     }
   }
 }
