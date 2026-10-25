@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { EDITORIAL_PAGES } from "../data/editorialPages";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  FaArrowLeft,
   FaChevronRight,
   FaChevronDown,
   FaGraduationCap,
@@ -33,6 +34,8 @@ import {
 import PageShell from "../components/Layout/PageShell";
 import SEOHead, { buildBreadcrumbSchema, buildWebPageSchema } from "../components/SEO/SEOHead";
 import { SITE_URL } from "../constants/siteConfig";
+import { getAdjacentBlogArticles } from "../utils/blog";
+import { buildBlogArticlePath, BLOG_ROUTE } from "../utils/routes";
 
 /* ─── Motion variants ──────────────────────────────────────────────────────── */
 const fadeUp = {
@@ -574,13 +577,16 @@ export default function EditorialPage({ data: propData }) {
   const data = propData || EDITORIAL_PAGES.find((p) => p.path === location.pathname) || EDITORIAL_PAGES[0];
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [activeId, setActiveId] = useState("");
+  const [readingProgress, setReadingProgress] = useState(0);
   const mainRef = useRef(null);
 
   const toc = buildToC(data?.richCopy);
+  const isBlogArticle = data?.showInBlog === true;
+  const adjacentArticles = isBlogArticle ? getAdjacentBlogArticles(data.slug || "") : {};
 
   /* Intersection Observer for ToC highlight */
   useEffect(() => {
-    if (!toc.length) return;
+    if (!toc.length || typeof IntersectionObserver === "undefined") return;
     const observers = [];
     toc.forEach(({ id }) => {
       const el = document.getElementById(id);
@@ -595,19 +601,42 @@ export default function EditorialPage({ data: propData }) {
     return () => observers.forEach((o) => o.disconnect());
   }, [toc]);
 
+  useEffect(() => {
+    if (!isBlogArticle) return undefined;
+
+    let frame = 0;
+    const updateProgress = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const nextProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+        setReadingProgress(Math.min(1, Math.max(0, nextProgress)));
+      });
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+    };
+  }, [data?.path, isBlogArticle]);
+
   if (!data) return null;
 
   const canonicalUrl = `${SITE_URL}${data.path}`;
   const breadcrumbsSchema = buildBreadcrumbSchema(data.breadcrumbs);
   const webPageSchema = buildWebPageSchema({ name: data.h1, description: data.description, url: canonicalUrl });
-  const articleSchema = {
+  const articleSchema = isBlogArticle ? {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: data.h1,
     description: data.description,
     url: canonicalUrl,
-    datePublished: data.datePublished || "2026-07-07",
-    dateModified: data.dateModified || "2026-07-07",
+    ...(data.datePublished ? { datePublished: data.datePublished } : {}),
+    ...(data.dateModified ? { dateModified: data.dateModified } : {}),
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": canonicalUrl,
@@ -622,9 +651,9 @@ export default function EditorialPage({ data: propData }) {
     },
     author: {
       "@type": "Organization",
-      name: "GateQA Editorial Team",
+      name: data.author?.name || "GateQA Editorial Team",
     },
-  };
+  } : null;
 
   const faqSchema = data.faqs?.length
     ? {
@@ -643,10 +672,22 @@ export default function EditorialPage({ data: propData }) {
 
   return (
     <>
+      {isBlogArticle && (
+        <div
+          className="ep-reading-progress"
+          role="progressbar"
+          aria-label="Article reading progress"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(readingProgress * 100)}
+          style={{ transform: `scaleX(${readingProgress})` }}
+        />
+      )}
       <SEOHead
         title={`${data.keyword} | GateQA`}
         description={data.description}
         path={data.path}
+        ogType={isBlogArticle ? "article" : "website"}
         schemaOrg={schemas}
       />
 
@@ -676,6 +717,13 @@ export default function EditorialPage({ data: propData }) {
             })}
           </motion.nav>
 
+          {isBlogArticle && (
+            <Link to={BLOG_ROUTE} className="ep-back-blog">
+              <FaArrowLeft size={11} aria-hidden="true" />
+              Back to all articles
+            </Link>
+          )}
+
           {/* Hero Header */}
           <motion.header variants={fadeUp} className="ep-hero">
             <span className="ep-hero__eyebrow">
@@ -685,17 +733,19 @@ export default function EditorialPage({ data: propData }) {
             <h1 className="ep-hero__h1">{data.h1}</h1>
             {/* Metadata row */}
             <div className="ep-hero__meta">
-              {data.dateModified && (
+              {(data.datePublished || data.dateModified) && (
                 <span className="ep-hero__meta-item">
                   <FaCalendarAlt size={11} />
-                  Updated {new Date(data.dateModified).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                  <time className="tabular-nums" dateTime={data.datePublished || data.dateModified}>
+                    {data.datePublished ? "Published" : "Updated"} {new Date(data.datePublished || data.dateModified).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
+                  </time>
                 </span>
               )}
-              {data.dateModified && data.readingTime && (
+              {(data.datePublished || data.dateModified) && data.readingTime && (
                 <span className="ep-hero__meta-sep" aria-hidden="true" />
               )}
               {data.readingTime && (
-                <span className="ep-hero__meta-item">
+                <span className="ep-hero__meta-item tabular-nums">
                   <FaClock size={11} />
                   {data.readingTime} min read
                 </span>
@@ -783,12 +833,29 @@ export default function EditorialPage({ data: propData }) {
               <div className="ep-author-card">
                 <div className="ep-author-card__avatar">G</div>
                 <div className="ep-author-card__content">
-                  <h4 className="ep-author-card__name">Written by GateQA Team</h4>
+                  <h4 className="ep-author-card__name">Written by {data.author?.name || "GateQA Editorial Team"}</h4>
                   <p className="ep-author-card__bio">
-                    The GateQA editorial team creates evidence-based resources for GATE aspirants using official notifications, historical exam data, and previous-year papers.
+                    {data.author?.role || "Academic & Exam Research"}. GateQA guides are prepared using official notifications, historical exam data, and previous-year papers.
                   </p>
                 </div>
               </div>
+
+              {isBlogArticle && (adjacentArticles.prevArticle || adjacentArticles.nextArticle) && (
+                <nav aria-label="More articles" className="ep-article-neighbors">
+                  {adjacentArticles.prevArticle ? (
+                    <Link to={buildBlogArticlePath(adjacentArticles.prevArticle.slug)} className="ep-article-neighbor">
+                      <span className="ep-article-neighbor__label"><FaArrowLeft size={10} aria-hidden="true" /> Previous guide</span>
+                      <span className="ep-article-neighbor__title">{adjacentArticles.prevArticle.keyword}</span>
+                    </Link>
+                  ) : <span />}
+                  {adjacentArticles.nextArticle ? (
+                    <Link to={buildBlogArticlePath(adjacentArticles.nextArticle.slug)} className="ep-article-neighbor ep-article-neighbor--next">
+                      <span className="ep-article-neighbor__label">Next guide <FaArrowRight size={10} aria-hidden="true" /></span>
+                      <span className="ep-article-neighbor__title">{adjacentArticles.nextArticle.keyword}</span>
+                    </Link>
+                  ) : <span />}
+                </nav>
+              )}
             </motion.main>
 
             {/* Right Sidebar */}

@@ -1,4 +1,13 @@
 # Changelog
+- **Dedicated Blog Article Namespace & TypeScript Reading UI (DEC-244)**:
+  - Moved 11 editorial articles to canonical `/blog/:slug` URLs, kept the five practice landing pages at their root routes, and added SPA plus static HTML compatibility redirects for old article URLs.
+  - Normalized blog metadata, tags, categories, breadcrumbs, and internal links. Publication dates remain optional when the source date is unknown; missing reading times are estimated from rich-copy words.
+  - Added typed blog contracts/utilities and a typed blog listing/article route. The article route reuses the existing rich-copy renderer, ToC, FAQ, and CTA while adding reading progress, back navigation, and previous/next links.
+  - Separated editorial cards from subject practice hubs, added collection/article structured data, and updated `public/sitemap.xml` to contain canonical article URLs only.
+  - Kept `editorialRoutes.js` lightweight to preserve app-shell code splitting. Added unit test suites `src/utils/blog.test.ts` and `src/pages/BlogArticlePage.test.jsx`. Added `aria-label` to drawer editorial links and guarded `IntersectionObserver` in `EditorialPage.jsx` for headless test environments.
+  - Fixed axe accessibility `color-contrast` failure on Explore page (`tests/e2e/a11y.axe.spec.js`) by upgrading the "new" badge contrast in `ProgressFilterToggles.tsx` from `text-pink-600` to `text-pink-700` (5.19:1 ratio, WCAG AA compliant) and `dark:text-pink-300`.
+  - Verified 100% test pass across `npm run typecheck`, all 111 unit test files (1,443 tests), and all 21 E2E tests (`npm run test:e2e`).
+
 - **Detailed Solution Unlock Toggle (DEC-243)**:
   - Added a fourth progress filter toggle ("Unlock solutions", default: OFF) in `ProgressFilterToggles.tsx` and `FilterSidebar.jsx`.
   - When ON, bypasses the `hasAttempted` restriction on the Detailed Solution button across `AnswerPanel.jsx`, allowing learners who prefer to study solutions directly to view derivations without submitting an attempt first.

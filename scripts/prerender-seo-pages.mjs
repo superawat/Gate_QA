@@ -671,6 +671,28 @@ function webPageSchema({ name, description, url, datePublished = null, dateModif
   return schema;
 }
 
+function articleSchema(article, url) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.h1,
+    description: article.description,
+    url,
+    ...(article.datePublished ? { datePublished: article.datePublished } : {}),
+    ...(article.dateModified ? { dateModified: article.dateModified } : {}),
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    author: {
+      "@type": "Organization",
+      name: article.author?.name || "GateQA Editorial Team",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "GateQA",
+      logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/logo.png` },
+    },
+  };
+}
+
 function qaPageSchema({ question, answerText, url }) {
   const name = `${question.title || `GATE ${question.year || ""} Question`} | GateQA`;
   return {
@@ -1046,7 +1068,7 @@ function buildAliasPages() {
     const canonicalUrl = buildCanonicalUrl(alias.path);
     const breadcrumbs = alias.breadcrumbs.map((bc) => ({
       name: bc.name,
-      url: bc.url.replace("https://gateqa.in", SITE_ORIGIN),
+      url: normalizePathTrailingSlash(bc.url.replace("https://gateqa.in", SITE_ORIGIN)),
     }));
     // Build targeted keyword string from page keyword + category
     const keywords = [
@@ -1072,18 +1094,59 @@ function buildAliasPages() {
           name: alias.h1,
           description: alias.description,
           url: canonicalUrl,
-          datePublished: alias.dateModified || null,
+          datePublished: alias.datePublished || null,
           dateModified: alias.dateModified || null,
         }),
+        alias.showInBlog === true ? articleSchema(alias, canonicalUrl) : null,
         alias.faqs && alias.faqs.length > 0 ? faqPageSchema(alias.faqs) : null,
       ].filter(Boolean),
+      ogType: alias.showInBlog === true ? "article" : "website",
       links: [{ href: alias.ctaHref, label: alias.ctaLabel }],
     };
   });
 }
 
+function writeLegacyBlogRedirects() {
+  EDITORIAL_PAGES
+    .filter((article) => article.showInBlog === true && article.legacyPath && article.path)
+    .forEach((article) => {
+      const outputPath = getOutputPath(article.legacyPath);
+      const targetPath = normalizePathTrailingSlash(article.path);
+      const canonicalUrl = buildCanonicalUrl(article.path);
+      const safeTarget = escapeAttribute(targetPath);
+      const html = [
+        "<!doctype html>",
+        '<html lang="en">',
+        "<head>",
+        '  <meta charset="UTF-8">',
+        '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+        `  <meta http-equiv="refresh" content="0; url=${safeTarget}">`,
+        `  <link rel="canonical" href="${escapeAttribute(canonicalUrl)}">`,
+        `  <title>Redirecting to ${escapeHtml(article.keyword)} | GateQA</title>`,
+        `  <script>window.location.replace(${JSON.stringify(targetPath)});</script>`,
+        "</head>",
+        `<body><p>Redirecting to <a href="${safeTarget}">${escapeHtml(article.keyword)}</a>...</p></body>`,
+        "</html>",
+        "",
+      ].join("\n");
+      ensureDir(path.dirname(outputPath));
+      fs.writeFileSync(outputPath, html, "utf8");
+    });
+}
+
 function buildBlogPage() {
   const canonicalUrl = buildCanonicalUrl("/blog");
+  const blogArticles = EDITORIAL_PAGES.filter((page) => page.showInBlog === true);
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: blogArticles.map((article, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: article.h1,
+      url: buildCanonicalUrl(article.path),
+    })),
+  };
   const breadcrumbs = [
     { name: "Home", url: buildCanonicalUrl("/") },
     { name: "Blog", url: canonicalUrl },
@@ -1101,9 +1164,17 @@ function buildBlogPage() {
     faqs: [],
     schemas: [
       breadcrumbSchema(breadcrumbs),
-      webPageSchema({ name: "Prep Guides & Exam Insights", description: "Access deep-dive preparation resources, syllabus topics, patterns, cutoffs, subject weightage, and subject-wise guides for GATE CS & Aptitude.", url: canonicalUrl }),
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "GateQA Guides & Insights",
+        description: "GATE exam guides, syllabus updates, preparation strategy, and cutoff analysis.",
+        url: canonicalUrl,
+        mainEntity: itemList,
+      },
+      itemList,
     ],
-    links: EDITORIAL_PAGES.filter((page) => page.showInBlog === true).map((page) => ({ href: page.path, label: page.keyword })),
+    links: blogArticles.map((page) => ({ href: page.path, label: page.keyword })),
   };
 }
 
@@ -1225,6 +1296,7 @@ function main() {
   ];
 
   pages.forEach((page) => writePrerenderedPage(templateHtml, page));
+  writeLegacyBlogRedirects();
 
   // ── Option A: emit sitemap-questions.xml ────────────────────────────────
   // Only include question pages that were actually pre-rendered (have a static index.html).

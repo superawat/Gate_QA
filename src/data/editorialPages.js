@@ -1,4 +1,4 @@
-export const EDITORIAL_PAGES = [
+const EDITORIAL_PAGE_SOURCE = [
   {
     path: "/gate-cse-2027-syllabus-changes",
     keyword: "GATE 2027 Syllabus Changes",
@@ -1330,4 +1330,116 @@ export const EDITORIAL_PAGES = [
     ]
   }
 ];
+
+// Keep editorial data consumable by the plain Node build scripts while
+// presenting blog articles under one canonical namespace at runtime/build time.
+const BLOG_CATEGORY_MAP = {
+  "Syllabus Updates": "Syllabus Updates",
+  "Exam Guides": "Exam Guides",
+  "Exam Strategy": "Preparation Strategy",
+  "Preparation Guide": "Preparation Strategy",
+  "Admission Cutoffs": "Cutoffs & Analysis",
+  "Cutoffs & Analysis": "Cutoffs & Analysis",
+  "Preparation Strategy": "Preparation Strategy",
+};
+
+const BLOG_TAGS_BY_SLUG = {
+  "gate-cse-2027-syllabus-changes": ["GATE 2027", "Computer Science", "Syllabus"],
+  "gate-2027": ["GATE 2027", "Exam dates", "Registration"],
+  "gate-2027-syllabus": ["GATE 2027", "Computer Science", "Syllabus"],
+  "gate-cs-eligibility": ["GATE eligibility", "Computer Science", "Applications"],
+  "gate-cutoff": ["GATE cutoff", "Qualifying marks", "IIT admission"],
+  "gate-exam-pattern": ["GATE 2027", "Exam pattern", "Marks"],
+  "gate-cs-weightage": ["Computer Science", "Topic weightage", "Preparation"],
+  "who-will-conduct-gate-2027": ["GATE 2027", "IIT Madras", "Organizing institute"],
+  "gate-cs-vs-gate-da": ["Computer Science", "Data Science", "Paper choice"],
+  "gate-cutoff-iit-bombay": ["GATE cutoff", "IIT Bombay", "Admission"],
+  "best-books-for-gate-cs": ["Computer Science", "Books", "Preparation"],
+};
+
+const BLOG_CATEGORY_BY_SLUG = {
+  "gate-cse-2027-syllabus-changes": "Syllabus Updates",
+  "gate-2027": "Exam Guides",
+  "gate-2027-syllabus": "Syllabus Updates",
+  "gate-cs-eligibility": "Exam Guides",
+  "gate-cutoff": "Cutoffs & Analysis",
+  "gate-exam-pattern": "Exam Guides",
+  "gate-cs-weightage": "Preparation Strategy",
+  "who-will-conduct-gate-2027": "Exam Guides",
+  "gate-cs-vs-gate-da": "Preparation Strategy",
+  "gate-cutoff-iit-bombay": "Cutoffs & Analysis",
+  "best-books-for-gate-cs": "Preparation Strategy",
+};
+
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const BLOG_PATH_BY_LEGACY_PATH = new Map(
+  EDITORIAL_PAGE_SOURCE
+    .filter((page) => page.showInBlog === true)
+    .map((page) => {
+      const slug = page.path.replace(/^\/+|\/+$/g, "").split("/").at(-1);
+      return [page.path, `/blog/${slug}`];
+    })
+);
+
+function rewriteLegacyBlogLinks(value) {
+  if (typeof value === "string") {
+    let result = value;
+    BLOG_PATH_BY_LEGACY_PATH.forEach((canonicalPath, legacyPath) => {
+      const pattern = new RegExp(`${escapeRegExp(legacyPath)}(?=[?#'"/\\s]|$)`, "g");
+      result = result.replace(pattern, canonicalPath);
+    });
+    return result;
+  }
+  if (Array.isArray(value)) return value.map(rewriteLegacyBlogLinks);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, child]) => [key, rewriteLegacyBlogLinks(child)])
+    );
+  }
+  return value;
+}
+
+function estimateReadingTime(richCopy = []) {
+  const collectText = (value) => {
+    if (typeof value === "string") return value.replace(/<[^>]*>/g, " ");
+    if (Array.isArray(value)) return value.map(collectText).join(" ");
+    if (value && typeof value === "object") return Object.values(value).map(collectText).join(" ");
+    return "";
+  };
+  const words = collectText(richCopy).trim().match(/\S+/g)?.length || 0;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+export const EDITORIAL_PAGES = EDITORIAL_PAGE_SOURCE.map((sourcePage) => {
+  const page = rewriteLegacyBlogLinks(sourcePage);
+  if (sourcePage.showInBlog !== true) return page;
+
+  const legacyPath = sourcePage.path;
+  const path = BLOG_PATH_BY_LEGACY_PATH.get(legacyPath);
+  const slug = path.split("/").at(-1);
+  const category = BLOG_CATEGORY_BY_SLUG[slug]
+    || BLOG_CATEGORY_MAP[sourcePage.category]
+    || "Exam Guides";
+
+  return {
+    ...page,
+    slug,
+    path,
+    legacyPath,
+    category,
+    tags: BLOG_TAGS_BY_SLUG[slug] || [category],
+    datePublished: sourcePage.datePublished || undefined,
+    dateModified: sourcePage.dateModified || undefined,
+    readingTime: sourcePage.readingTime || estimateReadingTime(sourcePage.richCopy),
+    author: sourcePage.author || {
+      name: "GateQA Editorial Team",
+      role: "Academic & Exam Research",
+    },
+    breadcrumbs: [
+      { name: "Home", url: "https://gateqa.in/" },
+      { name: "Blog", url: "https://gateqa.in/blog" },
+      { name: sourcePage.keyword, url: `https://gateqa.in${path}` },
+    ],
+  };
+});
 

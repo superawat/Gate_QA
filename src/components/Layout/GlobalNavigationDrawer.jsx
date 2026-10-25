@@ -468,10 +468,16 @@ const GlobalNavigationDrawer = ({
                           to={page.path}
                           onClick={onClose}
                           title={label}
+                          aria-label={label}
                           className="flex min-h-[38px] w-full items-center gap-2.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-left text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
                         >
                           <FaBookOpen className="h-3.5 w-3.5 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
                           <span className="truncate">{label}</span>
+                          {page.showInBlog && page.readingTime ? (
+                            <span className="ml-auto shrink-0 tabular-nums text-[10px] font-medium text-[color:var(--color-text-muted)]">
+                              {page.readingTime} min
+                            </span>
+                          ) : null}
                         </Link>
                       );
                     })}

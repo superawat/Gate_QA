@@ -77,7 +77,7 @@ const ProgressFilterToggles = ({
                 checked={unlockDetailedSolutions}
                 onChange={onToggleUnlockDetailedSolutions}
                 badge={
-                    <span className="rounded-full border border-pink-300/60 bg-pink-100 px-1.5 py-0.5 text-[10px] font-bold leading-none text-pink-600 dark:border-pink-800/60 dark:bg-pink-950/60 dark:text-pink-400">
+                    <span className="rounded-full border border-pink-300/60 bg-pink-100 px-1.5 py-0.5 text-[10px] font-bold leading-none text-pink-700 dark:border-pink-800/60 dark:bg-pink-950/60 dark:text-pink-300">
                         new
                     </span>
                 }

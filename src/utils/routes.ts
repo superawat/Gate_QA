@@ -9,6 +9,7 @@ export const USER_MANUAL_ROUTE = "/manual";
 export const SUBJECTS_ROUTE = "/subjects";
 export const GATE_YEAR_ROUTE = "/gate-:year-pyq";
 export const BLOG_ROUTE = "/blog";
+export const BLOG_ARTICLE_ROUTE = `${BLOG_ROUTE}/:slug`;
 export const SUPPORT_ROUTE = "/support";
 export const PROFILE_ROUTE = "/profile";
 export const PAGE_QUERY_KEY = "page";
@@ -26,6 +27,11 @@ export const FILTER_QUERY_KEYS = [
 ] as const;
 
 export const PRACTICE_QUERY_KEYS = [...FILTER_QUERY_KEYS, PAGE_QUERY_KEY, "track"] as const;
+
+export const buildBlogArticlePath = (slug: string): string => {
+  const cleanSlug = String(slug || "").replace(/^\/+|\/+$/g, "");
+  return cleanSlug ? `${BLOG_ROUTE}/${encodeURIComponent(cleanSlug)}` : BLOG_ROUTE;
+};
 
 type LegacyRedirectKind =
   | "question"

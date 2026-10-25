@@ -11,7 +11,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import { EDITORIAL_PAGE_ROUTES } from "./data/editorialRoutes";
+import { EDITORIAL_PAGE_ROUTES, LEGACY_BLOG_REDIRECTS } from "./data/editorialRoutes";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
@@ -37,6 +37,7 @@ import {
   SUPPORT_ROUTE,
   USER_MANUAL_ROUTE,
   BLOG_ROUTE,
+  BLOG_ARTICLE_ROUTE,
   PROFILE_ROUTE,
 } from "./utils/routes";
 import { readBranchPreferences, BRANCH_PREFERENCE_EVENT } from "./utils/branchPreference";
@@ -65,6 +66,7 @@ const SubjectLandingPage = lazy(loadSubjectLandingRoute);
 const YearLandingPage = lazy(loadYearLandingRoute);
 const EditorialPage = lazy(() => import("./pages/EditorialPage"));
 const BlogListPage = lazy(() => import("./pages/BlogListPage"));
+const BlogArticlePage = lazy(() => import("./pages/BlogArticlePage"));
 const AboutPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.AboutPage })));
 const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.ContactPage })));
 const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
@@ -478,7 +480,7 @@ const PracticeRoutes = ({
             </ErrorBoundary>
           )}
         />
-        {EDITORIAL_PAGE_ROUTES.map((route) => (
+        {EDITORIAL_PAGE_ROUTES.filter((route) => !route.showInBlog).map((route) => (
           <Route
             key={route.path}
             path={route.path}
@@ -491,12 +493,25 @@ const PracticeRoutes = ({
             )}
           />
         ))}
+        {LEGACY_BLOG_REDIRECTS.map(({ from, to }) => (
+          <Route key={from} path={from} element={<Navigate to={to} replace />} />
+        ))}
         <Route
           path={BLOG_ROUTE}
           element={(
             <ErrorBoundary>
               <Suspense fallback={<RouteLoader label="Loading Blog..." />}>
                 <BlogListPage />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
+        <Route
+          path={BLOG_ARTICLE_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Article..." />}>
+                <BlogArticlePage />
               </Suspense>
             </ErrorBoundary>
           )}

@@ -131,6 +131,14 @@ The landing route now stays on a lightweight startup path:
 - Post-build step outputs `dist/sitemap-questions.xml` containing only verified static question pages.
 - Automated regression suite: `src/tests/prerenderSeo.test.js` audits generated dist files and validates JSON-LD syntax integrity across all question pages.
 
+### Editorial blog namespace (DEC-244)
+
+- The 11 editorial articles use canonical `/blog/:slug` paths. Five practice landing pages retain their existing root paths.
+- `src/data/editorialPages.js` normalizes article paths, metadata, breadcrumbs, and internal editorial links. `src/data/editorialRoutes.js` remains a compact route manifest so the eager app shell and global drawer do not import the full rich-copy corpus.
+- `src/utils/blog.ts` and `src/types/blog.ts` provide typed lookup, ordering, category, date, and reading-time helpers. `BlogArticlePage.tsx` resolves slugs and reuses `EditorialPage.jsx` for the established rich-copy renderer and table of contents.
+- The client app redirects each old article root path with `Navigate`. `scripts/prerender-seo-pages.mjs` emits a static HTML compatibility redirect for each old path and article/list JSON-LD. Unknown direct `/blog/:slug` requests receive a blog-specific not-found response from `public/404.html`.
+- The sitemap remains driven by canonical editorial `page.path` and actual `dateModified` values; legacy paths are excluded. Unknown `datePublished` values remain omitted rather than being copied from modification dates.
+
 ## LLM-Assisted Question Explanation Subsystem (AUG-014)
 
 GateQA provides an external assistance layer allowing students in Practice mode (`/practice/question/:id`) to send questions to their preferred external LLM (ChatGPT, Gemini, Claude, DeepSeek, Perplexity) for conceptual, step-by-step deconstruction with zero backend/API cost.
