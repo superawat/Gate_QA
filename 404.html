@@ -6,6 +6,21 @@
   <title>Redirecting — GateQA</title>
   <script>
     (function () {
+      if (window.location.pathname.startsWith("/blog/")) {
+        document.title = "Article Not Found | GateQA";
+        document.addEventListener("DOMContentLoaded", function () {
+          var spinner = document.querySelector(".spinner");
+          if (spinner) spinner.remove();
+          var title = document.getElementById("not-found-title");
+          var message = document.getElementById("not-found-message");
+          var link = document.getElementById("blog-not-found-link");
+          if (title) title.textContent = "Article not found";
+          if (message) message.textContent = "This GateQA guide could not be found. Browse the current articles to find what you need.";
+          if (link) link.hidden = false;
+        });
+        return;
+      }
+
       var pathSegmentsToKeep = 0;
       var locationPath = window.location.pathname.split("/").filter(Boolean);
       var basePath = locationPath.slice(0, pathSegmentsToKeep).join("/");
@@ -111,8 +126,9 @@
 </head>
 <body>
   <div class="spinner"></div>
-  <h1>Redirecting to GateQA</h1>
-  <p>Please wait while we take you to the page...</p>
+  <h1 id="not-found-title">Redirecting to GateQA</h1>
+  <p id="not-found-message">Please wait while we take you to the page...</p>
+  <p id="blog-not-found-link" hidden><a href="/blog">Browse all articles</a></p>
   <noscript>
     <p style="margin-top: 1rem;">JavaScript is disabled. <a href="/">Click here to go back to Home</a>.</p>
   </noscript>
