@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:38.582Z",
+  "generatedAt": "2026-10-25T18:50:27.689Z",
   "shardKey": "ce-2025-s1",
   "yearSetKey": "ce-2025-s1",
   "yearSetIdentity": "ce:2025:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Solution:</b>\n\nWe are given:\n\n$A x = \\lambda x$\n\nSo, $\\lambda$ is an eigenvalue of matrix $A$ and $x$ is its corresponding eigenvector\n\nWe are also told that:\n\n$B = A - 2I$, where $I$ is the identity matrix\n\nNow we need to find the eigenvalue of $B$ corresponding to the same eigenvector $x$\n\n<b>Step 1:</b> Apply $B$ on $x$:\n\n$Bx = (A - 2I)x = Ax - 2Ix$\n\n$Bx = \\lambda x - 2x = (\\lambda - 2)x$\n\n<b>Step 2:</b> Since $Bx = (\\lambda - 2)x$, this shows that $x$ is also an eigenvector of $B$, with eigenvalue:\n\n$\\lambda_B = \\lambda - 2$\n\n<b>Final Answer:</b> <b>$\\lambda - 2$</b>\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:q2": {
       "question_uid": "ce:2025:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "<b>Step 1:</b> Let $$x = \\begin{bmatrix} x_1 \\ x_2 \\end{bmatrix}$$\n\nThen $Ax = b$ means:\n\n$$\\begin{bmatrix} 1 & 1 \\ 1 & 3 \\ -2 & -3 \\end{bmatrix} \\begin{bmatrix} x_1 \\ x_2 \\end{bmatrix} = \\begin{bmatrix} b_1 \\ b_2 \\ b_3 \\end{bmatrix}$$\n\nThis leads to the system:\n\n$x_1 + x_2 = b_1 \\quad \\text{(1)}$\n\n$x_1 + 3x_2 = b_2 \\quad \\text{(2)}$\n\n$-2x_1 - 3x_2 = b_3 \\quad \\text{(3)}$\n\n<b>Step 2:</b> From equation (1), solve for $x_1 = b_1 - x_2$\n\nSubstitute into equation (2):\n\n$(b_1 - x_2) + 3x_2 = b_2 \\Rightarrow b_1 + 2x_2 = b_2$\n\nSo,\n\n$x_2 = \\frac{b_2 - b_1}{2}$ and then $x_1 = \\frac{3b_1 - b_2}{2}$\n\n<b>Step 3:</b> Plug into equation (3) to ensure consistency:\n\n$-2x_1 - 3x_2 = b_3$\n\nSubstitute values:\n\n$-2\\left( \\frac{3b_1 - b_2}{2} \\right) - 3\\left( \\frac{b_2 - b_1}{2} \\right) = b_3$\n\nSimplify:\n\n$- (3b_1 - b_2) - \\frac{3(b_2 - b_1)}{2} = b_3$\n\n$-3b_1 + b_2 - \\frac{3b_2 - 3b_1}{2} = b_3$\n\n$-3b_1 + b_2 - \\frac{3b_2}{2} + \\frac{3b_1}{2} = b_3$\n\n$(-3b_1 + \\frac{3b_1}{2}) + (b_2 - \\frac{3b_2}{2}) = b_3$\n\n$-\\frac{3b_1}{2} - \\frac{b_2}{2} = b_3$\n\nMultiply both sides by 2:\n\n$-3b_1 - b_2 = 2b_3$\n\nRearranged:\n\n$3b_1 + b_2 + 2b_3 = 0$\n\n<b>Final Answer:</b> <b>(B) $3b_1 + b_2 + 2b_3 = 0$</b>\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:q3": {
       "question_uid": "ce:2025:q3",
@@ -144,8 +142,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "$$\\begin{aligned}\n\na_0 &= \\frac{1}{L} \\int_{-L}^{L} f(x) \\, dx \\\\\n\n&= \\frac{1}{2} \\int_{-2}^{2} f(x) \\, dx \\\\\n\n&= \\frac{1}{2} \\times 2 \\int_{0}^{2} f(x) \\, dx \\\\\n\n&= \\int_{0}^{1} 2k \\, dx = 2k\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& f(x)=\\text { even function } \\\\\n\n& b_{n}=0 \\\\\n\n& \\text { Period }=4 \\text { i.e. i.n (-2, 2) } \\\\\n\n& L=2 \\\\\n\n& a_{n}=\\frac{1}{L} \\int_{-L}^{L} \\cos \\left(\\frac{n \\pi x}{2}\\right) f(x) d x \\\\\n\n& =\\frac{1}{2} \\int_{-2}^{2} \\cos \\left(\\frac{n \\pi x}{2}\\right) f(x) d x \\\\\n\n& =2 \\times \\frac{1}{2} \\int_{0}^{1} \\cos \\left(\\frac{n \\pi x}{2}\\right) 2 k \\cdot d x \\\\\n\n& =2 k \\int_{0}^{1} \\cos \\left(\\frac{n \\pi x}{2}\\right) d x \\\\\n\n& =2 k\\left[\\frac{\\sin \\left(\\frac{n \\pi x}{2}\\right)}{\\left(\\frac{n \\pi}{2}\\right)}\\right]_{0}^{1}=\\frac{4 k}{n \\pi}\\left[\\sin \\left(\\frac{n \\pi x}{2}\\right)\\right]_{0}^{1} \\\\\n\n& a_{n}=\\frac{4 k}{n \\pi} \\sin \\frac{n \\pi}{2} \\\\\n\n& f(x)=\\frac{a_{0}}{2}+\\sum_{n=1}^{\\infty} a_{n} \\cos \\left(\\frac{n \\pi x}{L}\\right) \\\\\n\n& =\\frac{2 k}{2}+\\sum_{n=1}^{\\infty} a_{n} \\cos \\left(\\frac{n \\pi x}{L}\\right) \\\\\n\n& =k+\\frac{4 k}{\\pi} \\cos \\frac{\\pi x}{2}+\\frac{4 k}{2 \\pi} \\times 0+\\frac{4 k}{3 \\pi}(-1) \\cos \\left(\\frac{3 \\pi x}{2}\\right)+0+\\frac{4 k}{5 \\pi} \\times \\cos \\frac{5 \\pi x}{2}+\\ldots \\\\\n\n& =k+\\frac{4 k}{\\pi}\\left[\\cos \\left(\\frac{\\pi x}{2}\\right)-\\frac{1}{3} \\cos \\frac{3 \\pi x}{2}+\\frac{1}{5} \\cos \\frac{5 \\pi x}{2}-. .\\right]\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:q4": {
       "question_uid": "ce:2025:q4",
@@ -190,8 +187,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "<b>Step 1: Compute the expected value $E(X)$</b>\n\n$E(X) = \\sum X_i \\cdot P(X_i)$\n\n$= 0 \\cdot 0.4 + 1 \\cdot 0.3 + 7 \\cdot 0.1 + 11 \\cdot 0.1 + 12 \\cdot 0.1$\n\n$= 0 + 0.3 + 0.7 + 1.1 + 1.2 = 3.3$\n\n<b>Step 2: Compute $E(X^2)$</b>\n\n$E(X^2) = \\sum X_i^2 \\cdot P(X_i)$\n\n$= 0^2 \\cdot 0.4 + 1^2 \\cdot 0.3 + 7^2 \\cdot 0.1 + 11^2 \\cdot 0.1 + 12^2 \\cdot 0.1$\n\n$= 0 + 1 \\cdot 0.3 + 49 \\cdot 0.1 + 121 \\cdot 0.1 + 144 \\cdot 0.1$\n\n$= 0.3 + 4.9 + 12.1 + 14.4 = 31.7$\n\n<b>Step 3: Compute Variance</b>\n\n$\\text{Var}(X) = E(X^2) - (E(X))^2$\n\n$= 31.7 - (3.3)^2 = 31.7 - 10.89 = 20.81$\n\n<b>Final Answer:</b> <b>$\\text{Var}(X) = 20.81$</b>\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:q5": {
       "question_uid": "ce:2025:q5",
@@ -236,8 +232,7 @@
       "detailed_solution": {
         "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
         "markdown": "As per IS 456:2000, in the design of two-way slabs with continuous edges, the slab is divided into middle strips and edge strips. The bending moment is primarily resisted by the middle strip, while the edge strip is provided mainly for distribution and minimum reinforcement.\n\nAccording to Clause 27.4.3 of IS 456:2000:\n\nReinforcement in the edge strip is not based on calculated moments or reinforcement in the middle strip. Instead, it is based on the prescribed minimum requirement for slabs.\n\n<b>Therefore,</b>\n\nReinforcement in edge strip = Prescribed minimum cross-sectional area of longitudinal steel for slabs\n\n<b>Final Answer:</b>\n\nThe prescribed minimum cross-sectional area of longitudinal steel for slabs\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:q6": {
       "question_uid": "ce:2025:q6",
@@ -282,8 +277,7 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "Let's examine each option to find the FALSE statement.\n\n<b>Option A:</b> The compressive strength of a concrete specimen can vary depending on its shape and size.\n\nThis is true. The shape (cube vs. cylinder) and size of a specimen affect the test results due to variations in stress distribution and failure patterns.\n\n<b>Option B:</b> Air-dried and saturated test specimens show the same compressive strength for concrete.\n\nThis is false. Air-dried specimens typically show higher compressive strength compared to saturated ones because excess moisture can weaken the internal structure during loading.\n\n<b>Option C:</b> Curing conditions, such as temperature and relative humidity, can influence the compressive strength of concrete.\n\nThis is true. Proper curing ensures complete hydration and strength development, while poor curing can reduce final strength.\n\n<b>Option D:</b> Compressive strength depends on the water-to-binder ratio used in the concrete mixture.\n\nThis is true. Lower water-to-binder ratios generally result in higher strength due to denser microstructure and improved bonding.\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{B}}$ $\\text{Air-dried and saturated test specimens show the same compressive strength for concrete}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:q7": {
       "question_uid": "ce:2025:q7",
@@ -328,8 +322,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shear Strength of Soil",
         "markdown": "For CD test, $\\quad C=0$\n\n$$\\begin{aligned}\n\n\\sigma_{1} & =\\sigma_{3} \\tan ^{2}\\left(45+\\frac{\\phi}{2}\\right) \\\\\n\n100 & =50 \\times\\left[\\frac{1+\\sin \\phi}{1-\\sin \\phi}\\right] \\\\\n\n\\sin \\phi & =\\frac{1}{3} \\\\\n\n\\Rightarrow \\quad \\phi & =\\sin ^{-1}\\left(\\frac{1}{3}\\right)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:q8": {
       "question_uid": "ce:2025:q8",
@@ -374,8 +367,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
         "markdown": "From the given plasticity chart, point X lies:\n\nAbove the $A\\text{-line}$\n\nHas a liquid limit greater than $50%$\n\nAccording to IS 1498:1970 soil classification system:\n\nSoils above the A-line are classified as clays (C)\n\nSoils below the A-line are classified as silts (M)\n\nSoils with Liquid Limit (LL) > 50% are considered high plasticity (H)\n\nSince point X is above the A-line and LL > 50%, it is classified as:\n\n$CH \\Rightarrow \\text{Inorganic Clay of High Plasticity}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:q9": {
       "question_uid": "ce:2025:q9",
@@ -420,8 +412,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Dimensional Analysis",
         "markdown": "Let us write their dimensional formulas:\n\n$[V] = LT^{-1}$\n\n$[l] = L$\n\n$[g] = LT^{-2}$\n\nNow, check the dimensional consistency of each option:\n\n<u>Option (A):</u> $\\frac{V^2}{gl}$\n\n$= \\frac{(LT^{-1})^2}{(LT^{-2})(L)} = \\frac{L^2T^{-2}}{L^2T^{-2}} = 1$\n\nThis expression is dimensionless.\n\n<u>Option (B):</u> $\\frac{Vg}{l}$\n\n$= \\frac{(LT^{-1})(LT^{-2})}{L} = \\frac{L^2T^{-3}}{L} = LT^{-3}$\n\nThis is not dimensionless.\n\n<u>Option (C):</u> $\\frac{gl^2}{V}$\n\n$= \\frac{(LT^{-2})(L^2)}{LT^{-1}} = \\frac{L^3T^{-2}}{LT^{-1}} = L^2T^{-1}$\n\nThis is not dimensionless.\n\n<u>Option (D):</u> $\\frac{l}{V^2g}$\n\n$= \\frac{L}{(LT^{-1})^2 \\cdot LT^{-2}} = \\frac{L}{L^3T^{-4}} = L^{-2}T^4$\n\nThis is not dimensionless.\n\n<b>Final Answer:</b> $\\frac{V^2}{gl}$ is the correct dimensionless combination.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:q10": {
       "question_uid": "ce:2025:q10",
@@ -466,8 +457,7 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
         "markdown": "To derive the total flood hydrograph at a catchment outlet from an isolated storm, the correct order of methods is:\n\n$\\text{Step 1: Obtain the hyetograph}$\n\n$\\text{Step 2: Estimate initial and infiltration losses to compute effective rainfall}$\n\n$\\text{Step 3: Apply unit hydrograph to derive direct runoff hydrograph (DRH)}$\n\n$\\text{Step 4: Add baseflow to DRH to get total flood hydrograph}$\n\n$\\text{Correct Order: P} \\rightarrow \\text{R} \\rightarrow \\text{S} \\rightarrow \\text{Q}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:q11": {
       "question_uid": "ce:2025:q11",
@@ -512,8 +502,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "$\\text{Initial FC concentration} = 10780 \\ \\text{cfu/100 ml}$\n\n$\\text{Final FC concentration (after treatment)} = 23 \\ \\text{cfu/100 ml}$\n\n$\\text{Log Kill} = \\log_{10} \\left( \\frac{\\text{Initial concentration}}{\\text{Final concentration}} \\right)$\n\n$\\quad = \\log_{10} \\left( \\frac{10780}{23} \\right)$\n\n$\\quad = \\log_{10} (468.7)$\n\n$\\quad \\approx 2.67$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:q12": {
       "question_uid": "ce:2025:q12",
@@ -558,8 +547,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Air and Noise Pollution",
         "markdown": "$\\text{Given hydrocarbon: } \\text{C}_n\\text{H}_m$\n\n$\\text{Air composition: O}_2 + 3.78 \\text{N}_2$\n\n$\\text{Molecular weight of air} = 28.8$\n\n$\\text{Balanced reaction:}$\n\n$\\text{C}_n\\text{H}_m + \\left(n + \\frac{m}{4}\\right)\\text{O}_2 + 3.78\\left(n + \\frac{m}{4}\\right)\\text{N}_2 \\rightarrow \\cdots$\n\n**Mass of fuel per mole:**\n\n$= 12n + m$\n\n**Mass of air required per mole of fuel:**\n\n$= \\left(n + \\frac{m}{4}\\right) \\times 4.78 \\times 28.8 = (4n + m) \\times 0.0291^{-1}$\n\n**Fuel-to-air mass ratio:**\n\n$= \\frac{12n + m}{(4n + m) \\times \\frac{1}{0.0291}} = 0.0291 \\cdot \\frac{12n + m}{4n + m}$\n\n$\\boxed{\\text{Stoichiometric fuel-to-air mass ratio} = 0.0291 \\cdot \\frac{12n + m}{4n + m}}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:q13": {
       "question_uid": "ce:2025:q13",
@@ -604,8 +592,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "<b>Given:</b>\n\nAll vehicles during the peak hour arrive within a 10-minute period.\n\n<b>To find:</b>\n\n15-minute Peak Hour Factor (PHF)\n\n<b>Formula:</b>\n\n$\\text{PHF} = \\frac{\\text{Hourly Volume}}{4 \\times \\text{Peak 15-minute Volume}}$\n\nSince all vehicles arrive within a 10-minute period, they are included within the peak 15-minute period.\n\nTherefore,\n\n$\\text{PHF} = \\frac{V}{4 \\times V} = \\frac{1}{4} = 0.25$\n\n<b>Final Answer:</b> $0.25$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:q14": {
       "question_uid": "ce:2025:q14",
@@ -650,8 +637,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Highway Materials",
         "markdown": "(A) The depth of penetration of needle in the standard penetration test is measured in the units of one-tenth of millimeter.\n\nThis statement is correct. The penetration value is expressed in tenths of a millimeter.\n\n(B) Softening point is measured using a ring and ball apparatus.\n\nThis statement is correct. The softening point test involves a steel ball and a brass ring filled with bitumen.\n\n(C) Softening point is measured in the units of time.\n\nThis statement is false. The softening point is measured in units of temperature, typically in $^\\circ \\text{C}$.\n\n(D) Ductility is measured in the units of length.\n\nThis statement is correct. Ductility is usually measured in centimeters or millimeters.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:q15": {
       "question_uid": "ce:2025:q15",
@@ -696,8 +682,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Railway and Airport Engineering",
         "markdown": "The maximum degree of the curve that can be used for railways in a mountainous region is $40^{\\circ}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:q16": {
       "question_uid": "ce:2025:q16",
@@ -742,8 +727,7 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "We know, error due to curvature\n\n$$\\begin{array}{ll}\n\n& E=+0.0785 d^{2} \\\\\n\n\\Rightarrow \\quad & E \\propto d^{2}\n\n\\end{array}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:q17": {
       "question_uid": "ce:2025:q17",
@@ -788,8 +772,7 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
         "markdown": "Given quadrantal bearing: $\\text{N}30^\\circ\\text{W}$\n\nThis lies in the 4th quadrant (North-West)\n\nWhole circle bearing (WCB) = $360^\\circ - 30^\\circ = 330^\\circ$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:q18": {
       "question_uid": "ce:2025:q18",
@@ -834,8 +817,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Partial Differential Equation",
         "markdown": "Equation 1:\n\n$\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\left( \\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} \\right) + xy$\n\n- Second-order: Yes\n\n- Linear: Yes\n\n- Homogeneous: No (due to the term $+xy$)\n\nEquation 2:\n\n$\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} + \\frac{\\partial^2 u}{\\partial z^2} = 0$\n\n- Second-order: Yes\n\n- Linear: Yes\n\n- Homogeneous: Yes\n\nEquation 3:\n\n$\\frac{\\partial u}{\\partial t} = c \\frac{\\partial u}{\\partial x}$\n\n- Second-order: No\n\nEquation 4:\n\n$\\left( \\frac{\\partial^2 u}{\\partial t^2} \\right)^2 = c^2 \\frac{\\partial^2 u}{\\partial x^2}$\n\n- Second-order: Yes\n\n- Linear: No (square of a second derivative makes it nonlinear)\n\n<b>Final Answer:</b> Only <b>Equation 2</b> belongs to the class of second-order, linear, homogeneous partial differential equations.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:q19": {
       "question_uid": "ce:2025:q19",
@@ -880,8 +862,7 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
         "markdown": "<b>Step 1:</b> Analyze the structure\n\n- It's a symmetric frame with members: AB, BC, CD, DE, EF, and FG.\n\n- Moments of $100 \\, \\text{kN} \\cdot \\text{m}$ are applied at joints B and G (clockwise and counterclockwise respectively).\n\n- All vertical columns (AB, DE, FG) have different stiffnesses as per EI values.\n\n- Assume fixed supports at A, D, and F.\n\n<b>Step 2:</b> Moment Distribution - focus on joints B, C, and D\n\nLet's denote member stiffness factors:\n\n- Stiffness of member BC from joint B is:\n\n$K_{BC} = \\frac{4EI}{L} = \\frac{4EI}{6} = \\frac{2EI}{3}$\n\n- Stiffness of member AB from joint B:\n\n$K_{BA} = \\frac{2EI}{6} = \\frac{EI}{3}$\n\n<b>Distribution Factor (DF) at Joint B:</b>\n\n$DF_{BC} = \\frac{K_{BC}}{K_{BA} + K_{BC}} = \\frac{\\frac{2EI}{3}}{\\frac{EI}{3} + \\frac{2EI}{3}} = \\frac{2}{3}$\n\n$DF_{BA} = \\frac{1}{3}$\n\nSimilarly at Joint C (connecting BC, CD, and CE):\n\nAll members have same length and stiffness $2EI$, so:\n\n$K_{CB} = \\frac{4EI}{6} = \\frac{2EI}{3}$\n\n$K_{CD} = \\frac{2EI}{8} = \\frac{EI}{4}$\n\n$DF_{CB} = \\frac{\\frac{2EI}{3}}{\\frac{2EI}{3} + \\frac{EI}{4}} = \\frac{8}{11}$\n\n$DF_{CD} = \\frac{3}{11}$\n\n<b>Step 3:</b> Apply the moment at B and perform moment distribution\n\n- Moment at B = $100 \\, \\text{kN} \\cdot \\text{m}$ (clockwise), so fixed-end moment to BC is $+100$\n\n- Apply moment distribution considering carry-over and distribution factors.\n\nAfter a few iterations (or by symmetry), we get:\n\n$M_{BC} = 50 \\, \\text{kN} \\cdot \\text{m}$\n\n$M_{CB} = 50 \\, \\text{kN} \\cdot \\text{m}$\n\nBecause of symmetric load and structure, the moment gets equally distributed between BC and CD.\n\n<b>Conclusion:</b>\n\n- Moment at joint C is exactly $50 \\, \\text{kN} \\cdot \\text{m}$, not more.\n\n- Thus, option D (\"more than 50\") is <b>False</b>.\n\n- Joint C has no rotation due to symmetry - option C is <b>True</b>.\n\n- CD has zero axial force and zero shear since there?s no direct force acting - options A and B are <b>True</b>.\n\nTherefore, the correct option(s) are **B, C**."
-      },
-      "answer": "B, C"
+      }
     },
     "ce:2025:q20": {
       "question_uid": "ce:2025:q20",
@@ -926,8 +907,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Properties and Manometry",
         "markdown": "Bernoulli's equation is applicable under the following assumptions:\n\n(A) Fluid should be frictionless - no energy loss due to viscosity.\n\n(B) Fluid should be incompressible - $\\rho = \\text{constant}$\n\n(C) Flow should be steady - $\\frac{\\partial}{\\partial t} = 0$\n\n(D) Flow should be rotational - <b>Incorrect</b>, because Bernoulli's equation assumes <i>irrotational</i> flow.\n\nHence, the correct conditions are:\n\n<b>(A), (B), and (C)</b>\n\nTherefore, the correct option(s) are **A, B, C**."
-      },
-      "answer": "A, B, C"
+      }
     },
     "ce:2025:q21": {
       "question_uid": "ce:2025:q21",
@@ -972,8 +952,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "Given:\n\nSurface Overflow Rate (SOR) = $45 \\, \\text{m}^3/\\text{m}^2/\\text{day} = \\frac{45}{86400} \\, \\text{m/s} \\approx 5.208 \\times 10^{-4} \\, \\text{m/s}$\n\nSpecific gravity of inorganic particles $(G_{in}) = 2.65$\n\nSpecific gravity of organic particles $(G_{org}) = 1.20$\n\nAcceleration due to gravity $g = 9.81 \\, \\text{m/s}^2$\n\nKinematic viscosity $\\nu = 1 \\times 10^{-6} \\, \\text{m}^2/\\text{s}$\n\nUsing Stoke?s Law for settling velocity:\n\n$V_s = \\frac{g (G - 1) d^2}{18 \\nu}$\n\nSetting $V_s = \\text{SOR} = 5.208 \\times 10^{-4} \\, \\text{m/s}$\n\nSolving for $d$:\n\n$d = \\sqrt{ \\frac{18 \\nu V_s}{g (G - 1)} }$\n\n<b>For inorganic particles (G = 2.65):</b>\n\n$d = \\sqrt{ \\frac{18 \\times 1 \\times 10^{-6} \\times 5.208 \\times 10^{-4}}{9.81 \\times (2.65 - 1)} }$\n\n$d \\approx \\sqrt{ \\frac{9.3744 \\times 10^{-9}}{16.0665} } \\approx \\sqrt{5.83 \\times 10^{-10}} \\approx 2.414 \\times 10^{-5} \\, \\text{m} = 24.14 \\, \\mu\\text{m}$\n\n<b>For organic particles (G = 1.20):</b>\n\n$d = \\sqrt{ \\frac{18 \\times 1 \\times 10^{-6} \\times 5.208 \\times 10^{-4}}{9.81 \\times (1.20 - 1)} }$\n\n$d \\approx \\sqrt{ \\frac{9.3744 \\times 10^{-9}}{1.962} } \\approx \\sqrt{4.78 \\times 10^{-9}} \\approx 6.91 \\times 10^{-5} \\, \\text{m} = 69.1 \\, \\mu\\text{m}$\n\n<b>Correct options:</b>\n\n(A) Minimum diameter of inorganic particles is 24 ?m\n\n(B) Minimum diameter of organic particles is 69 ?m\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "ce:2025:q22": {
       "question_uid": "ce:2025:q22",
@@ -1018,8 +997,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "Aeration is a process where air is introduced into water to allow oxidation reactions to occur.\n\nIt is commonly used to oxidize soluble iron and manganese into insoluble forms, which can then be removed by filtration.\n\nLet?s analyze the options:\n\n(A) Iron - Aeration oxidizes $\\text{Fe}^{2+} \\rightarrow \\text{Fe}^{3+}$, which precipitates as $\\text{Fe(OH)}_3$.\n\n(B) Cadmium - Not removed by aeration; it requires chemical precipitation or adsorption.\n\n(C) Manganese - Aeration helps oxidize $\\text{Mn}^{2+} \\rightarrow \\text{MnO}_2$ under suitable pH conditions.\n\n(D) Zinc - Not removed by aeration alone; other treatments are required.\n\n<b>Correct answer: (A) and (C)</b>\n\nTherefore, the correct option(s) are **A, C**."
-      },
-      "answer": "A, C"
+      }
     },
     "ce:2025:q23": {
       "question_uid": "ce:2025:q23",
@@ -1062,8 +1040,7 @@
       "detailed_solution": {
         "concept": "RCC Structures - Concrete Technology",
         "markdown": "To calculate the Fineness Modulus (FM), we take the cumulative percentage retained on each standard sieve and divide the sum by 100.\n\nGiven weights retained:\n\nOn 2.36 mm sieve = 30%\n\nOn 1.18 mm sieve = 35%\n\nOn 600 $\\mu m$ sieve = 15%\n\nOn 300 $\\mu m$ sieve = 20%\n\nStep 1: Compute cumulative percentages retained:\n\n- 2.36 mm sieve: $30\\%$\n\n- 1.18 mm sieve: $30 + 35 = 65\\%$\n\n- 600 $\\mu m$ sieve: $65 + 15 = 80\\%$\n\n- 300 $\\mu m$ sieve: $80 + 20 = 100\\%$\n\nStep 2: Sum of cumulative percentages retained:\n\n$30 + 65 + 80 + 100 = 275$\n\nStep 3: Fineness Modulus:\n\n$\\text{FM} = \\frac{275}{100} = 2.75$\n\n<b>Final Answer:</b> $\\boxed{2.75}$\n\nTherefore, the correct answer is **3.75** (acceptable range: [3.74, 3.76])."
-      },
-      "answer": "3.75"
+      }
     },
     "ce:2025:q24": {
       "question_uid": "ce:2025:q24",
@@ -1106,8 +1083,7 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Flood Routing and Flood Control",
         "markdown": "To find the return period (T) for a given acceptable risk (R) over the project life (n), we use the formula:\n\n$R = 1 - \\left(1 - \\frac{1}{T} \\right)^n$\n\nGiven:\n\n$R = 0.05$ (5% acceptable risk)\n\n$n = 25$ years\n\nRearranging the formula to solve for T:\n\n$0.05 = 1 - \\left(1 - \\frac{1}{T} \\right)^{25}$\n\n$\\left(1 - \\frac{1}{T} \\right)^{25} = 0.95$\n\nTaking natural log on both sides:\n\n$25 \\cdot \\ln\\left(1 - \\frac{1}{T} \\right) = \\ln(0.95)$\n\n$\\ln\\left(1 - \\frac{1}{T} \\right) = \\frac{\\ln(0.95)}{25}$\n\n$1 - \\frac{1}{T} = e^{\\frac{\\ln(0.95)}{25}}$\n\n$\\frac{1}{T} = 1 - e^{\\frac{\\ln(0.95)}{25}}$\n\nNow calculate:\n\n$\\frac{1}{T} = 1 - e^{-0.002051} \\approx 1 - 0.99795 = 0.00205$\n\n$T = \\frac{1}{0.00205} \\approx 487.8$\n\n<b>Final Answer:</b> $\\boxed{488}$\n\nTherefore, the correct answer is **488** (acceptable range: [476, 500])."
-      },
-      "answer": "488"
+      }
     },
     "ce:2025:q25": {
       "question_uid": "ce:2025:q25",
@@ -1150,8 +1126,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
         "markdown": "<b>Given:</b>\n\n$R = 200 , \\text{m}$ (radius of curve)\n\n$CE = 92 , \\text{m}$ (distance from C to E)\n\n<b>From geometry:</b>\n\n$CE = R \\cdot \\tan\\left(\\frac{\\theta}{2}\\right)$\n\n<b>Substitute values:</b>\n\n$\\tan\\left(\\frac{\\theta}{2}\\right) = \\frac{92}{200} = 0.46$\n\n$\\frac{\\theta}{2} = \\tan^{-1}(0.46) \\approx 24.8^\\circ$\n\n$\\theta = 2 \\times 24.8^\\circ = \\boxed{49.6^\\circ}$\n\n<b>Final Answer:</b> $\\theta = 49.6^\\circ$\n\nTherefore, the correct answer is **49.5** (acceptable range: [48, 51])."
-      },
-      "answer": "49.5"
+      }
     },
     "ce:2025:q26": {
       "question_uid": "ce:2025:q26",
@@ -1196,8 +1171,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "To evaluate the limit:\n\n$\\lim_{x \\to \\infty} \\left(x - \\sqrt{x^2 + x} \\right)$\n\nWe rationalize the expression by multiplying numerator and denominator by the conjugate:\n\n$$\\begin{aligned} x - \\sqrt{x^2 + x} &= \\frac{(x - \\sqrt{x^2 + x}) \\cdot (x + \\sqrt{x^2 + x})}{x + \\sqrt{x^2 + x}} \\ &= \\frac{x^2 - (x^2 + x)}{x + \\sqrt{x^2 + x}} \\ &= \\frac{-x}{x + \\sqrt{x^2 + x}} \\end{aligned}$$\n\nNow evaluate the limit:\n\n$\\lim_{x \\to \\infty} \\frac{-x}{x + \\sqrt{x^2 + x}} = \\frac{-1}{1 + \\sqrt{1 + \\frac{1}{x}}}$\n\nAs $x \\to \\infty$, $\\frac{1}{x} \\to 0$, so we get:\n\n$\\frac{-1}{1 + \\sqrt{1}} = \\frac{-1}{1 + 1} = \\boxed{-\\frac{1}{2}}$\n\n<b>Final Answer:</b> $-\\frac{1}{2}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:q27": {
       "question_uid": "ce:2025:q27",
@@ -1242,8 +1216,7 @@
       "detailed_solution": {
         "concept": "Structural Analysis - Methods of Structural Analysis",
         "markdown": "To find the distribution factor of the member AD at joint A, we use the formula:\n\n$\\text{Distribution Factor (DF)} = \\frac{\\text{Stiffness of Member}}{\\text{Sum of Stiffnesses at the Joint}}$\n\nWe need the stiffness of all members connected at joint A:\n\nMembers connected at A: AD, AC, and AF.\n\nAll are fixed at far ends, so stiffness for each is:\n\n$K = \\frac{4EI}{L}$ (for member with far end fixed)\n\nFrom the figure:\n\nFor AD: Length = $\\frac{L}{2}$, Flexural Rigidity = $EI$\n\n$\\Rightarrow K_{AD} = \\frac{4EI}{L/2} = \\frac{8EI}{L}$\n\nFor AC: Length = $L$, Flexural Rigidity = $2EI$\n\n$\\Rightarrow K_{AC} = \\frac{4(2EI)}{L} = \\frac{8EI}{L}$\n\nFor AF: Length = $L$, Flexural Rigidity = $2EI$\n\n$\\Rightarrow K_{AF} = \\frac{4(2EI)}{L} = \\frac{8EI}{L}$\n\nTotal stiffness at A:\n\n$K_{\\text{total}} = K_{AD} + K_{AC} + K_{AF} = \\frac{8EI}{L} + \\frac{8EI}{L} + \\frac{8EI}{L} = \\frac{24EI}{L}$\n\nDistribution factor for AD:\n\n$DF_{AD} = \\frac{K_{AD}}{K_{\\text{total}}} = \\frac{8EI/L}{24EI/L} = \\frac{1}{3}$\n\n<b>Final Answer:</b> $\\boxed{\\frac{1}{3}}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:q28": {
       "question_uid": "ce:2025:q28",
@@ -1288,8 +1261,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Consolidation of Soils",
         "markdown": "The clay is fully saturated and initially consolidated under a vertical pressure of:\n\n$\\sigma = 100 \\ \\text{kPa}$ (initial total stress)\n\nAt this stage, the clay is in equilibrium, meaning:\n\n$\\sigma' = 100 \\ \\text{kPa}$ (initial effective stress)\n\n$u = 0 \\ \\text{kPa}$ (initial excess pore pressure = 0, since drained)\n\nNow, the vertical pressure is increased suddenly to:\n\n$\\sigma = 150 \\ \\text{kPa}$ (new total stress)\n\nSince the loading is sudden and the soil is fully saturated, no drainage occurs immediately.\n\nSo, the entire increase in total stress is initially taken up by excess pore pressure:\n\n$\\Delta u = \\sigma_{\\text{new}} - \\sigma' = 150 - 100 = 50 \\ \\text{kPa}$\n\nThus, immediately after loading:\n\n$\\sigma' = 100 \\ \\text{kPa} \\quad (\\text{no immediate change in effective stress})$\n\n$\\Delta u = 50 \\ \\text{kPa}$\n\n<b>Final Answer:</b>\n\n$\\sigma' = 100 \\ \\text{kPa}, \\quad \\Delta u = 50 \\ \\text{kPa}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:q29": {
       "question_uid": "ce:2025:q29",
@@ -1334,8 +1306,7 @@
       "detailed_solution": {
         "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
         "markdown": "<b>Given Data:</b>\n\nRainfall (mm):\n\nP = 100, Q = 110, R = 100, S = 125\n\nThiessen Weights:\n\nP = 0.25, Q = 0.50, R = 0.10, S = 0.15\n\n<b>1. Arithmetic Mean (Only Inside the Catchment)</b>\n\nStations considered: P, Q, R\n\n$\\text{Arithmetic Mean} = \\frac{100 + 110 + 100}{3} = \\frac{310}{3} = 103.33 \\ \\text{mm}$\n\n<b>2. Thiessen Mean (All Stations with Given Weights)</b>\n\n$\\text{Thiessen Mean} = (0.25)(100) + (0.50)(110) + (0.10)(100) + (0.15)(125) \\ = 25 + 55 + 10 + 18.75 = 108.75 \\ \\text{mm}$\n\n<b>Conclusion:</b>\n\n$\\text{Thiessen Mean (108.75 mm)} > \\text{Arithmetic Mean (103.33 mm)}$\n\n<b>Correct Option:</b>\n\n(A) The estimate obtained from the Thiessen-mean method is greater than that obtained using the arithmetic-mean method.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:q30": {
       "question_uid": "ce:2025:q30",
@@ -1380,8 +1351,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "The linear speed-density relationship can be written as:\n\n$u = \\text{slope} \\cdot (k - 10) + 90$\n\n$\\text{slope} = \\frac{0 - 90}{100 - 10} = \\frac{-90}{90} = -1$\n\nSo,\n\n$u = -1(k - 10) + 90 = -k + 100$\n\nFlow $q$ is given by:\n\n$q = u \\cdot k = (100 - k) \\cdot k = 100k - k^2$\n\nTo find maximum flow:\n\nDifferentiate $q$ with respect to $k$:\n\n$\\frac{dq}{dk} = 100 - 2k$\n\nSet $\\frac{dq}{dk} = 0$:\n\n$100 - 2k = 0 \\Rightarrow k = 50\\ \\text{veh/km}$\n\nSubstitute back to find speed $u$:\n\n$u = 100 - 50 = 50\\ \\text{km/h}$\n\nNow calculate flow:\n\n$q_{\\text{max}} = u \\cdot k = 50 \\cdot 50 = 2500\\ \\text{veh/hr}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:q31": {
       "question_uid": "ce:2025:q31",
@@ -1426,8 +1396,7 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Shear Force and Bending Moment",
         "markdown": "Statement 1: Bending moment is zero between the points A and C\n\nThis is incorrect.\n\nBetween A and C, there is a fixed support at A and a point load at C. This causes a non-zero moment due to the moment resistance at the fixed support.\n\n$\\text{Bending moment} \\ne 0 \\text{ between A and C}$\n\nStatement 2: There is a sudden jump in shear force at the point D\n\nThis is correct.\n\nAt point D, there is a point load of 4 kN acting vertically downward. A point load causes a sudden change in shear force.\n\n$\\Delta V = -4 , \\text{kN at D}$\n\nStatement 3: There is a sudden jump in bending moment at the point E\n\nThis is incorrect.\n\nPoint loads do not cause a sudden change in bending moment, only in shear force.\n\nBending moment is continuous at point loads (like at E)\n\nStatement 4: Bending moment is zero somewhere between the points D and E\n\nThis is correct.\n\nSince there are multiple point loads and supports, and the bending moment is expected to vary and cross the axis, it is likely to be zero at some point between D and E.\n\nThere exists a point between D and E where  M = 0\n\nTherefore, the correct option(s) are **A, D**."
-      },
-      "answer": "A, D"
+      }
     },
     "ce:2025:q32": {
       "question_uid": "ce:2025:q32",
@@ -1472,8 +1441,7 @@
       "detailed_solution": {
         "concept": "Construction Materials and Management - Construction Materials and Management",
         "markdown": "(A) A dummy activity will consume time and resources\n\nThis is false.\n\nA dummy activity is used only to show logical relationships between activities in a network diagram (such as in CPM or PERT). It does not consume time or resources.\n\n$\\text{Dummy Activity: No time, No resource}$\n\n(B) The Programme Evaluation and Review Technique (PERT) is best suited for projects with large uncertainties in the duration of activities\n\nThis is true.\n\n$\\text{PERT is probabilistic}$, meaning it considers uncertainty in activity durations using optimistic, pessimistic, and most likely estimates.\n\n(C) A Gantt chart is commonly used for identifying the ?critical path? of activities in a project\n\nThis is false.\n\nGantt charts are used primarily for visualizing the schedule of activities over time. They are not used to find the critical path. For that, CPM (Critical Path Method) or PERT diagrams are used.\n\n$\\text{Critical Path: Identified using CPM, not Gantt}$\n\n(D) Free float is the amount of time by which the start of an activity can be delayed without causing a delay in the start of a following activity\n\nThis is true.\n\nFree float is the amount of time an activity can be delayed without affecting the early start of its successor.\n\n$\\text{Free Float = ES}{\\text{next activity}} - EF{\\text{current activity}}$\n\nTherefore, the correct option(s) are **B, D**."
-      },
-      "answer": "B, D"
+      }
     },
     "ce:2025:q33": {
       "question_uid": "ce:2025:q33",
@@ -1518,8 +1486,7 @@
       "detailed_solution": {
         "concept": "Irrigation Engineering - Design of Stable Channels",
         "markdown": "Given Lacey's regime equations:\n\n$D = 0.47 \\left( \\frac{Q}{f_s} \\right)^{1/3}$\n\n$P = 4.75 \\sqrt{Q}$\n\n$f_s = 1.76 \\sqrt{d}$\n\nWhere:\n\n$Q$ is discharge in $\\text{m}^3/\\text{s}$\n\n$f_s$ is the silt factor\n\n$d$ is the average grain size diameter in millimetres\n\n$D$ is the regime flow depth (not scour depth)\n\n$P$ is the wetted perimeter, which in regime channels is approximately the channel width\n\n(A) $D$ is the depth of scour below the existing riverbed\n\nThis is incorrect. $D$ represents the regime flow depth, not the scour depth.\n\n(B) $P$ is the Lacey's waterway width\n\nThis is correct. In regime channels, the wetted perimeter $P$ approximates the width of the channel.\n\n(C) $d$ is the average grain size diameter of the bed material in centimetres\n\nThis is incorrect. The silt factor equation uses $d$ in millimetres.\n\n(D) $D$ is the depth of scour below the design flood level\n\nThis is incorrect. $D$ is the regime depth of flow, not a scour depth.\n\nFinal correct option: $\\boxed{(B)}$\n\nTherefore, the correct option(s) are **B, D**."
-      },
-      "answer": "B, D"
+      }
     },
     "ce:2025:q34": {
       "question_uid": "ce:2025:q34",
@@ -1564,8 +1531,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Water Treatment",
         "markdown": "We are given:\n\nTDS = 500 mg/L\n\nTH = 400 mg/L (as CaCO3)\n\nVolume = 1 L\n\nOnly two salts: $\\text{MgCl}_2$ and $\\text{CaSO}_4$\n\nMolecular weight of $\\text{MgCl}_2$ = $24 + (35.5 \\times 2) = 95\\ \\text{g/mol}$\n\nMolecular weight of $\\text{CaSO}_4$ = $40 + 32 + (16 \\times 4) = 136\\ \\text{g/mol}$\n\nEquivalent weight of $\\text{Mg}^{2+}$ = $\\frac{24}{2} = 12$\n\nEquivalent weight of $\\text{Ca}^{2+}$ = $\\frac{40}{2} = 20$\n\nLet x = mg of $\\text{MgCl}_2$\n\nLet y = mg of $\\text{CaSO}_4$\n\nTDS equation: $x + y = 500$\n\nTH from $\\text{MgCl}_2$ = $\\left( \\frac{24}{95}x \\right) \\times \\frac{50}{12} = \\frac{100x}{95}$\n\nTH from $\\text{CaSO}_4$ = $\\left( \\frac{40}{136}y \\right) \\times \\frac{50}{20} = \\frac{100y}{136}$\n\nTotal TH = $\\frac{100x}{95} + \\frac{100y}{136} = 400$\n\nDivide by 100:\n\n$\\frac{x}{0.95} + \\frac{y}{1.36} = 4 \\quad \\text{(1)}$\n\n$x + y = 500 \\quad \\text{(2)}$\n\nFrom (2): $y = 500 - x$\n\nSubstitute into (1): $\\frac{x}{0.95} + \\frac{500 - x}{1.36} = 4$\n\nTry x = 103, y = 397\n\nCheck TDS: 103 + 397 = 500\n\nMg hardness: $\\frac{24}{95} \\times 103 \\times \\frac{50}{12} \\approx 108.7$\n\nCa hardness: $\\frac{40}{136} \\times 397 \\times \\frac{50}{20} \\approx 291.3$\n\nTotal hardness = 400\n\nFinal Answer:\n\n(C) Amount of $\\text{MgCl}_2$ added is 103 mg\n\n(D) Amount of $\\text{CaSO}_4$ added is 397 mg\n\nTherefore, the correct option(s) are **C, D**."
-      },
-      "answer": "C, D"
+      }
     },
     "ce:2025:q35": {
       "question_uid": "ce:2025:q35",
@@ -1610,8 +1576,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Treatment of Waste Water",
         "markdown": "(A) The dissolved oxygen concentration will be high during daytime compared to night-time\n\nReason: In a facultative pond, algae perform photosynthesis during the daytime, producing oxygen:\n\n$\\text{CO}_2 + \\text{H}_2\\text{O} \\xrightarrow{\\text{light}} \\text{O}_2 + \\text{Carbohydrates}$\n\nThus, dissolved oxygen (DO) increases during daytime. At night, photosynthesis stops and only respiration occurs, consuming oxygen, which reduces DO levels.\n\n(B) The pH will be high during daytime compared to night-time\n\nReason: During photosynthesis, algae consume $\\text{CO}_2$, which reduces carbonic acid in water and increases pH. At night, $\\text{CO}_2$ is released during respiration, forming carbonic acid and lowering pH.\n\n(C) The dissolved oxygen concentration will be low during daytime compared to night-time\n\nThis is incorrect. DO is higher during the day due to photosynthesis and lower at night due to respiration.\n\n(D) The pH will be low during daytime compared to night-time\n\nThis is incorrect. pH is higher during the day due to $\\text{CO}_2$ consumption and lower at night due to $\\text{CO}_2$ production.\n\nCorrect options: (A) and (B)\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "ce:2025:q36": {
       "question_uid": "ce:2025:q36",
@@ -1656,8 +1621,7 @@
       "detailed_solution": {
         "concept": "Environmental Engineering - Municipal Solid Waste Management",
         "markdown": "We are given:\n\nOFMSW bulk density = $315\\ \\text{kg/m}^3$, water content = $30%$\n\nSludge bulk density = $700\\ \\text{kg/m}^3$, water content = $70%$\n\nFinal mixture water content = $40%$\n\nLet $1\\ \\text{kg}$ of OFMSW be mixed with $x\\ \\text{kg}$ of sludge\n\nStep 1: Mass of water and solids in OFMSW\n\nWater in OFMSW = $1 \\times 0.30 = 0.30\\ \\text{kg}$\n\nSolids in OFMSW = $1 - 0.30 = 0.70\\ \\text{kg}$\n\nStep 2: Mass of water and solids in sludge\n\nWater in sludge = $x \\times 0.70 = 0.70x\\ \\text{kg}$\n\nSolids in sludge = $x - 0.70x = 0.30x\\ \\text{kg}$\n\nStep 3: Total water and solids in the mixture\n\nTotal water = $0.30 + 0.70x$\n\nTotal solids = $0.70 + 0.30x$\n\nTotal mass = $1 + x$\n\nWater content of mixture = $\\frac{0.30 + 0.70x}{1 + x} = 0.40$\n\nStep 4: Solve for x\n\n$\\frac{0.30 + 0.70x}{1 + x} = 0.40$\n\n$0.30 + 0.70x = 0.40(1 + x)$\n\n$0.30 + 0.70x = 0.40 + 0.40x$\n\n$0.30x = 0.10$\n\n$x = \\frac{0.10}{0.30} = 0.33$\n\nStep 5: Density of mixture\n\nTotal mass = $1 + 0.33 = 1.33\\ \\text{kg}$\n\nVolume of OFMSW = $\\frac{1}{315} = 0.00317\\ \\text{m}^3$\n\nVolume of sludge = $\\frac{0.33}{700} = 0.0004714\\ \\text{m}^3$\n\nTotal volume = $0.00317 + 0.0004714 = 0.0036414\\ \\text{m}^3$\n\nMixture density = $\\frac{1.33}{0.0036414} \\approx 365\\ \\text{kg/m}^3$\n\nTherefore, the correct option(s) are **A, B**."
-      },
-      "answer": "A, B"
+      }
     },
     "ce:2025:q37": {
       "question_uid": "ce:2025:q37",
@@ -1700,8 +1664,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Ordinary Differential Equation",
         "markdown": "We are given the second-order linear differential equation (after combining terms):\n\n$y'' + 0.8y' + 0.16y = 0$\n\nwith initial conditions:\n\n$y(0) = 3$, $y'(0) = 4.5$\n\nStep 1: Solve the characteristic equation\n\nThe auxiliary equation is:\n\n$r^2 + 0.8r + 0.16 = 0$\n\nSolve using the quadratic formula:\n\n$r = \\frac{-0.8 \\pm \\sqrt{(0.8)^2 - 4(1)(0.16)}}{2(1)}$\n\n$r = \\frac{-0.8 \\pm \\sqrt{0.64 - 0.64}}{2} = \\frac{-0.8}{2} = -0.4$\n\nThis is a repeated root: $r = -0.4$\n\nStep 2: General solution\n\n$y(t) = (A + Bt)e^{-0.4t}$\n\nStep 3: Apply initial conditions\n\n$y(0) = (A + B \\cdot 0)e^{0} = A = 3$\n\nSo, $A = 3$\n\nNow find $y'(t)$:\n\n$y'(t) = \\frac{d}{dt}[(A + Bt)e^{-0.4t}] = B e^{-0.4t} + (A + Bt)(-0.4)e^{-0.4t}$\n\n$y'(t) = \\left[B - 0.4(A + Bt)\\right]e^{-0.4t}$\n\nAt $t = 0$:\n\n$y'(0) = [B - 0.4(3)] \\cdot 1 = B - 1.2 = 4.5$\n\nSo, $B = 4.5 + 1.2 = 5.7$\n\nStep 4: Final solution\n\n$y(t) = (3 + 5.7t)e^{-0.4t}$\n\nStep 5: Find $y(1)$\n\n$y(1) = (3 + 5.7 \\cdot 1)e^{-0.4 \\cdot 1} = (8.7)e^{-0.4}$\n\n$e^{-0.4} \\approx 0.6703$\n\n$y(1) \\approx 8.7 \\cdot 0.6703 \\approx 5.83$\n\nFinal Answer:\n\n$y(1) = \\boxed{5.8}$ (rounded off to 1 decimal place)\n\nTherefore, the correct answer is **5.8** (acceptable range: [5.7, 5.9])."
-      },
-      "answer": "5.8"
+      }
     },
     "ce:2025:q38": {
       "question_uid": "ce:2025:q38",
@@ -1744,8 +1707,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "We are given the function:\n\n$h(x) = -x^3 + 2x^2$\n\nand the interval: $[-1,\\ 1.5]$\n\nStep 1: Find the derivative\n\n$h'(x) = \\frac{d}{dx}(-x^3 + 2x^2) = -3x^2 + 4x$\n\nStep 2: Find critical points by solving $h'(x) = 0$\n\n$-3x^2 + 4x = 0$\n\n$x(-3x + 4) = 0$\n\nSo, $x = 0$ or $x = \\frac{4}{3}$\n\nStep 3: Evaluate $h(x)$ at endpoints and critical points\n\nAt $x = -1$:\n\n$h(-1) = -(-1)^3 + 2(-1)^2 = 1 + 2 = 3$\n\nAt $x = 0$:\n\n$h(0) = 0$\n\nAt $x = \\frac{4}{3}$:\n\n$h\\left(\\frac{4}{3}\\right) = -\\left(\\frac{4}{3}\\right)^3 + 2\\left(\\frac{4}{3}\\right)^2$\n\n$= -\\frac{64}{27} + \\frac{32}{9} = -\\frac{64}{27} + \\frac{96}{27} = \\frac{32}{27} \\approx 1.19$\n\nAt $x = 1.5$:\n\n$h(1.5) = -(1.5)^3 + 2(1.5)^2 = -3.375 + 4.5 = 1.125$\n\nStep 4: Maximum value\n\nMaximum of ${3,\\ 0,\\ 1.19,\\ 1.125} = \\boxed{3.0}$\n\nTherefore, the correct answer is **3** (acceptable range: [2.9, 3.1])."
-      },
-      "answer": "3"
+      }
     },
     "ce:2025:q39": {
       "question_uid": "ce:2025:q39",
@@ -1788,8 +1750,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Numerical Methods",
         "markdown": "We are given the differential equation:\n\n$\\frac{dy}{dx} = y + 2x - x^2$\n\nInitial condition: $y(0) = 1$\n\nStep size: $h = 0.5$\n\nWe are to find $y(1.0)$ using Euler's Method.\n\nStep 1: At $x_0 = 0$, $y_0 = 1$\n\nCompute slope:\n\n$f(x_0, y_0) = y_0 + 2x_0 - x_0^2 = 1 + 0 - 0 = 1$\n\nApply Euler's formula:\n\n$y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0.5 \\cdot 1 = 1.5$\n\n$x_1 = x_0 + h = 0 + 0.5 = 0.5$\n\nStep 2: At $x_1 = 0.5$, $y_1 = 1.5$\n\nCompute slope:\n\n$f(x_1, y_1) = y_1 + 2x_1 - x_1^2 = 1.5 + 1.0 - 0.25 = 2.25$\n\nApply Euler's formula:\n\n$y_2 = y_1 + h \\cdot f(x_1, y_1) = 1.5 + 0.5 \\cdot 2.25 = 1.5 + 1.125 = 2.625$\n\n$x_2 = x_1 + h = 0.5 + 0.5 = 1.0$\n\nFinal Answer:\n\n$\\boxed{y(1.0) = 2.6}$ (rounded off to 1 decimal place)\n\nTherefore, the correct answer is **2.6** (acceptable range: [2.4, 2.8])."
-      },
-      "answer": "2.6"
+      }
     },
     "ce:2025:q40": {
       "question_uid": "ce:2025:q40",
@@ -1832,8 +1793,7 @@
       "detailed_solution": {
         "concept": "Solid Mechanics - Deflection of Beams",
         "markdown": "Given: A fixed beam AB with a moment $M_0$ applied at support A.\n\nSegment AC has flexural rigidity $2EI$ and length $L$.\n\nSegment CB has flexural rigidity $EI$ and length $L$.\n\nWe are to find the curvature at the midpoint of AC, i.e., $x = \\frac{L}{2}$.\n\nCurvature is given by:\n\n$$\\frac{d^2y}{dx^2} = \\frac{M(x)}{EI(x)}$$\n\nLet $M_C$ be the moment at point C (internal hinge).\n\nUsing standard structural analysis (moment distribution or compatibility methods), the moment at midpoint of AC is:\n\n$M\\left(\\frac{L}{2}\\right) = \\frac{3}{2} M_0$\n\nSince the flexural rigidity of AC is $2EI$,\n\n$$\\frac{d^2y}{dx^2}\\Big|_{x=\\frac{L}{2}} = \\frac{3M_0}{4EI}$$\n\nWe are given the form:\n\n$$\\frac{d^2y}{dx^2} = \\frac{\\alpha M_0}{8EI}$$\n\nEquating both expressions:\n\n$\\frac{3M_0}{4EI} = \\frac{\\alpha M_0}{8EI}$\n\n$\\Rightarrow \\alpha = 6$\n\nBut based on standard verified solution for such beams, the correct curvature at midpoint of AC is:\n\n$$\\frac{d^2y}{dx^2} = \\frac{3 M_0}{8EI}$$\n\nComparing:\n\n$\\Rightarrow \\alpha = 3$\n\nTherefore, the correct answer is **3**."
-      },
-      "answer": "3"
+      }
     },
     "ce:2025:q41": {
       "question_uid": "ce:2025:q41",
@@ -1876,8 +1836,7 @@
       "detailed_solution": {
         "concept": "Engineering Mechanics - Engineering Mechanics",
         "markdown": "Given:\n\nRigid bar ABC is supported by pin-jointed links BD and CE.\n\nCE elongates by $5 , \\text{mm}$.\n\nAxial rigidity of BD = $22500 , \\text{kN}$, CE = $15000 , \\text{kN}$.\n\nGeometry:\n\nAB = BC = $200 , \\text{mm}$\n\nBD = $200 , \\text{mm}$, CE = $300 , \\text{mm}$\n\nStep 1: Use geometry to compute rotation\n\nLet the bar rotate clockwise by angle $\\theta$.\n\nThen, vertical displacement at point C = $\\theta \\times 300$\n\nThis equals elongation in CE:\n\n$\\Rightarrow \\theta = \\frac{5}{300} = \\frac{1}{60} , \\text{rad}$\n\nStep 2: Vertical displacement at point A\n\nFrom geometry, A is at horizontal distance $200 , \\text{mm}$ from B\n\nSo vertical deflection at A:\n\n$\\Delta_A = \\theta \\times 200 = \\frac{1}{60} \\times 200 = \\frac{200}{60} \\approx 3.33 , \\text{mm}$\n\nThis is if only CE is active. But both BD and CE are axial links with given stiffness.\n\nLet:\n\n$\\Delta_D =$ elongation in BD\n\n$\\Delta_E = 5 , \\text{mm}$ (given)\n\nFrom similar triangles formed by rotation about point B:\n\n$\\frac{\\Delta_D}{200} = \\frac{5}{300} \\Rightarrow \\Delta_D = \\frac{200}{300} \\times 5 = \\frac{10}{3} \\approx 3.33 , \\text{mm}$\n\nStep 3: Use force balance using stiffness\n\nForce in BD = $k_1 \\Delta_D = 22500 \\times \\frac{10}{3} = 75000 , \\text{N}$\n\nForce in CE = $k_2 \\Delta_E = 15000 \\times 5 = 75000 , \\text{N}$\n\nSo both members carry same force, balance is maintained.\n\nStep 4: Displacement of point A\n\n$\\theta = \\frac{\\Delta_D}{200} = \\frac{10}{3 \\times 200} = \\frac{1}{60} , \\text{rad}$\n\nDistance from rotation center (B) to point A = $200 + 200 + 200 + 250 = 850 , \\text{mm}$\n\nDisplacement of A = $\\theta \\times 850 = \\frac{1}{60} \\times 850 = 14.17 \\approx 14 , \\text{mm}$\n\nFinal Answer:\n\n$\\boxed{14 , \\text{mm}}$\n\nTherefore, the correct answer is **14**."
-      },
-      "answer": "14"
+      }
     },
     "ce:2025:q42": {
       "question_uid": "ce:2025:q42",
@@ -1920,8 +1879,7 @@
       "detailed_solution": {
         "concept": "RCC Structures - Working Stress and Limit State Method",
         "markdown": "Given:\n\nWidth of beam, $b = 300 , \\text{mm}$\n\nDepth of beam, $D = 700 , \\text{mm}$\n\nEffective cover, $d' = 50 , \\text{mm}$ ? Effective depth to steel, $d = 700 - 50 = 650 , \\text{mm}$\n\nArea of steel, $A_s = 2000 , \\text{mm}^2$\n\nModular ratio, $m = 12$\n\nYoung?s modulus of steel, $E_s = 200 , \\text{GPa}$\n\nStrain at extreme compression fibre, $\\varepsilon_c = 0.0004$\n\nStep 1: Let the neutral axis be at a depth $x$ from the top.\n\nBy similar triangles from the strain diagram:\n\n$\\frac{0.0004}{x} = \\frac{\\varepsilon_s}{650 - x}$ ? $\\varepsilon_s = 0.0004 \\times \\frac{650 - x}{x}$\n\nStep 2: Take moment of area about NA using transformed section\n\nConcrete in tension is cracked ? Use equivalent area method:\n\nSteel area transformed = $m A_s = 12 \\times 2000 = 24000 , \\text{mm}^2$\n\nEquating compressive and tensile forces for equilibrium:\n\nCompression force = $C = 0.5 \\times b \\times x \\times \\varepsilon_c E_c$\n\nTension force = $T = A_s E_s \\varepsilon_s$\n\nBut easier to use moments using equivalent area:\n\nStep 3: Take moment of area about neutral axis to locate $x$\n\nMoment of compression block about NA:\n\n$M_c = b x \\times \\left(\\frac{x}{2}\\right) = 300 x \\times \\frac{x}{2} = 150 x^2$\n\nMoment of steel area about NA:\n\n$M_s = m A_s (d - x) = 24000 (650 - x)$\n\nSet total moment of compression and transformed steel equal:\n\n$150 x^2 = 24000 (650 - x)$\n\n$150 x^2 + 24000 x - 15600000 = 0$\n\nDivide entire equation by 150:\n\n$x^2 + 160 x - 104000 = 0$\n\nSolving using quadratic formula:\n\n$x = \\frac{-160 \\pm \\sqrt{160^2 + 4 \\times 104000}}{2} = \\frac{-160 \\pm \\sqrt{25600 + 416000}}{2}$\n\n$= \\frac{-160 \\pm \\sqrt{441600}}{2} = \\frac{-160 \\pm 664.6}{2}$\n\nTaking positive root:\n\n$x = \\frac{504.6}{2} = 252.3 , \\text{mm}$\n\nStep 4: Strain in steel\n\n$\\varepsilon_s = 0.0004 \\times \\frac{650 - x}{x} = 0.0004 \\times \\frac{650 - 252.3}{252.3}$\n\n$= 0.0004 \\times \\frac{397.7}{252.3} \\approx 0.0004 \\times 1.576 = 0.0006305$\n\nStep 5: Stress in steel\n\n$\\sigma_s = E_s \\varepsilon_s = 200 \\times 10^3 \\times 0.0006305 = 126.1 , \\text{MPa}$\n\nFinal Answer:\n\n$\\boxed{126 , \\text{MPa}}$\n\nTherefore, the correct answer is **126** (acceptable range: [125, 127])."
-      },
-      "answer": "126"
+      }
     },
     "ce:2025:q43": {
       "question_uid": "ce:2025:q43",
@@ -1964,8 +1922,7 @@
       "detailed_solution": {
         "concept": "Design of Steel Structures - Plastic Analysis",
         "markdown": "For plastic section modulus $\\left(Z_{p}\\right)=\\frac{A}{2}\\left(y_{c}+y_{t}\\right)$\n\n<img src=\"/question-images/ce/2025/ce-2025-6268fa25b7.webp\"/>\n\n$$\\begin{aligned}\n\nZ_p&=\\frac{A}{2}(Y_0+y_1)\\\\\n\n&=\\frac{2 \\times 60 \\times 5}{2}(2.5+30)=9750mm^3\n\n\\end{aligned}$$\n\nFor elastic section modulus $\\left(Z_{e}\\right)=\\frac{I_{N A}}{y_{\\text {max }}}$\n\n<img src=\"/question-images/ce/2025/ce-2025-fa68a2fe70.webp\"/>\n\nArea moment of inertia about NA\n\n$$\\begin{aligned}\n\n& I_{N A}=\\left[\\frac{60 \\times 5^{3}}{12}+60 \\times 5(16.25)^{2}\\right]+\\left[\\frac{5 \\times 60^{3}}{12}+5 \\times 60 \\times(16.25)^{2}\\right] \\\\\n\n& I_{N A}=249062.5 \\mathrm{~mm}^{4} \\\\\n\n& Y_{\\max }=46.25 \\mathrm{~mm} \\\\\n\n& Z_{e}=\\frac{I_{N A}}{Y_{\\max }}=\\frac{249062.5 \\mathrm{~mm}^{4}}{46.25 \\mathrm{~mm}} \\\\\n\n& Z_{e}=5385.135 \\mathrm{~mm}^{3} \\\\\n\n& \\text { Now, shape factor } \\quad \\begin{aligned}\n\nS & =\\frac{M_{P}}{M_{y}}=\\frac{f_{y} Z_{p}}{f_{y} Z_{e}} \\\\\n\n& =\\frac{9750 \\mathrm{~mm}^{3}}{5385.135 \\mathrm{~mm}^{3}} \\\\\n\nS & =1.81\n\n\\end{aligned}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.81** (acceptable range: [1.8, 1.82])."
-      },
-      "answer": "1.81"
+      }
     },
     "ce:2025:q44": {
       "question_uid": "ce:2025:q44",
@@ -2008,8 +1965,7 @@
       "detailed_solution": {
         "concept": "Design of Steel Structures - Structural Fasteners",
         "markdown": "$$\\begin{aligned}\n\nr_{\\max } & =\\sqrt{140^{2}+35^{2}}=144.31 \\mathrm{~mm} \\\\\n\nV_{b} & =70 \\mathrm{kN} \\text { (Longitudinal shear) } \\\\\n\nM_{b} & =10 \\mathrm{kN}-\\mathrm{m} \\text { (Moment) }\n\n\\end{aligned}$$\n\nMinimum bolt value required $=$ ?\n\nConcept: The bolt value $<$ Maximum resultant shear force on bolt.\n\n(1) Direct shear force on bolt,\n\n$F_{1}=\\frac{V_{L}}{n}=\\frac{70}{6}=11.67 \\mathrm{kN}$\n\n(2) Maximum torsional shear on bolt,\n\n$F_{2}=\\frac{(T . M .) r_{\\max }}{\\sum r_{i}^{2}}=\\frac{10 \\times 10^{3} \\times 144.31}{4 \\times 144.31^{2}+2 \\times 35^{2}}=16.82 \\mathrm{kN}$\n\n(3) Minimum angle of inclination between $F_{1}$ and $F_{2}$ will be\n\n<img src=\"/question-images/ce/2025/ce-2025-08b3e8c564.webp\"/>\n\n$\\theta=\\tan ^{-1}\\left(\\frac{140}{35}\\right)=75.96^{\\circ}$\n\n(4) Maximum resultant shear force on bolt,\n\n$$\\begin{aligned}\n\nF_{R \\max } & =\\sqrt{F_{1}^{2}+F_{2}^{2}+2 F_{1} F_{2} \\cos \\theta} \\\\\n\n& =\\sqrt{11.67^{2}+16.82^{2}+2 \\times 11.67 \\times 16.82 \\times \\cos 75.96^{\\circ}} \\\\\n\n& =22.67 \\mathrm{kN} \\simeq 23 \\mathrm{kN} \\quad \\text { (Nearest integer) } .\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **22.5** (acceptable range: [21, 24])."
-      },
-      "answer": "22.5"
+      }
     },
     "ce:2025:q45": {
       "question_uid": "ce:2025:q45",
@@ -2052,8 +2008,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
         "markdown": "For long term, effective shear parameters will be used,\n\n$$\\begin{aligned}\n\n\\mathrm{FOS} & =\\frac{C^{\\prime}+\\bar{\\sigma}_{n} \\tan \\phi^{\\prime}}{\\tau} \\\\\n\n\\bar{\\sigma}_{n} & =\\left(5 \\gamma_{B}+6.5 \\gamma_{\\text {sat }}\\right)-6.5 \\gamma_{w} \\\\\n\n& =5 \\times 19+6.5 \\times 20-6.5 \\times 9.81 \\\\\n\n& =161.235 \\mathrm{kN} / \\mathrm{m}^{2} \\\\\n\n\\mathrm{FOS} & =\\frac{15+161.235 \\tan 15^{\\circ}}{60} \\\\\n\n& =0.97\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.97** (acceptable range: [0.96, 0.98])."
-      },
-      "answer": "0.97"
+      }
     },
     "ce:2025:q46": {
       "question_uid": "ce:2025:q46",
@@ -2096,8 +2051,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
         "markdown": "$$\\begin{aligned}\n\nQ_{\\text {safe }} & =\\frac{Q_{u}-\\bar{\\sigma}}{F O S}+\\bar{\\sigma} \\\\\n\n& =\\frac{Q_{u}-\\gamma D_{f}}{F O S}+\\gamma D_{f}\n\n\\end{aligned}$$\n\nHere, $\\quad$ Applied load $=\\frac{2500}{6 \\times 6}+\\gamma_{c} \\times 2$\n\n$=66.67+24 \\times 2=117.44 \\mathrm{kN} / \\mathrm{m}^{2}$\n\nFor square footing, $Q_{u}=1.3 \\mathrm{CN}_{c}+\\gamma D_{f} N_{q}+0.4 B \\gamma N_{r}$\n\n$=1.3 \\times 50 \\times 5.7+19 \\times 2 \\times 1+0$\n\n$=370.5+38=408.5$\n\n$\\Rightarrow \\quad Q_{\\text {safe }}=\\frac{408.5-38}{F O S}+38$\n\n$117.44=\\frac{370.5}{F O S}+38$\n\n$F O S=4.66$\n\nTherefore, the correct answer is **4.66** (acceptable range: [4.62, 4.7])."
-      },
-      "answer": "4.66"
+      }
     },
     "ce:2025:q47": {
       "question_uid": "ce:2025:q47",
@@ -2140,8 +2094,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Properties of Soils",
         "markdown": "Given:\n\nInitial moisture content, $w_1 = 18% = 0.18$\n\nSpecific gravity, $G = 2.74$\n\nInitial degree of saturation, $S_1 = 65% = 0.65$\n\nFinal degree of saturation, $S_2 = 85.2% = 0.852$\n\nAssuming negligible change in volume, the void ratio $e$ remains constant.\n\nThe relation between moisture content, saturation, and void ratio is:\n\n$w = \\frac{S \\cdot e}{G}$\n\nRearranging to find $e$:\n\n$e = \\frac{w_1 \\cdot G}{S_1}$\n\n$e = \\frac{0.18 \\cdot 2.74}{0.65} = 0.75877$\n\nNow calculate the new moisture content $w_2$:\n\n$w_2 = \\frac{S_2 \\cdot e}{G}$\n\n$w_2 = \\frac{0.852 \\cdot 0.75877}{2.74} = 0.2361$\n\n$w_2 = 23.61%$\n\nTherefore, the correct answer is **23.465** (acceptable range: [23.3, 23.63])."
-      },
-      "answer": "23.465"
+      }
     },
     "ce:2025:q48": {
       "question_uid": "ce:2025:q48",
@@ -2184,8 +2137,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Deep Foundation",
         "markdown": "Given:\n\nPile diameter, $D = 450\\ \\text{mm} = 0.45\\ \\text{m}$\n\nUndrained cohesion, $c_u = 20\\ \\text{kPa}$\n\nUnit weight, $\\gamma = 18\\ \\text{kN/m}^3$\n\n$\\alpha = 0.95$, $N_c = 9$\n\nColumn load, $Q_{working} = 144\\ \\text{kN}$\n\nFactor of safety, $FOS = 3.0$\n\nFirst, compute the ultimate load capacity:\n\n$Q_{ult} = Q_{working} \\times FOS = 144 \\times 3 = 432\\ \\text{kN}$\n\nUltimate capacity of a pile in clay:\n\n$Q_{ult} = Q_b + Q_s$\n\n$Q_b = A_b \\cdot c_u \\cdot N_c$ (base resistance)\n\n$Q_s = \\alpha \\cdot c_u \\cdot P \\cdot L$ (skin friction)\n\nBase area:\n\n$A_b = \\frac{\\pi D^2}{4} = \\frac{\\pi (0.45)^2}{4} = 0.1590\\ \\text{m}^2$\n\nPerimeter:\n\n$P = \\pi D = \\pi \\cdot 0.45 = 1.4137\\ \\text{m}$\n\n$Q_b = 0.1590 \\cdot 20 \\cdot 9 = 28.62\\ \\text{kN}$\n\nLet $L$ be the required embedment depth. Then:\n\n$Q_s = 0.95 \\cdot 20 \\cdot 1.4137 \\cdot L = 26.26 \\cdot L$\n\nTotal ultimate capacity:\n\n$Q_{ult} = Q_b + Q_s = 28.62 + 26.26L$\n\nSet equal to required ultimate capacity:\n\n$28.62 + 26.26L = 432$\n\n$26.26L = 403.38$\n\n$L = \\frac{403.38}{26.26} = 15.36\\ \\text{m}$\n\nRounded to the nearest integer:\n\nAnswer: $\\boxed{15\\ \\text{m}}$\n\nTherefore, the correct answer is **15**."
-      },
-      "answer": "15"
+      }
     },
     "ce:2025:q49": {
       "question_uid": "ce:2025:q49",
@@ -2228,8 +2180,7 @@
       "detailed_solution": {
         "concept": "Geotechnical Engineering - Seepage Analysis",
         "markdown": "For series arrangement of soil 1 and soil 2,\n\n$$\\begin{aligned}\n\n\\text { Discharge, } q & =k_{e q} i \\cdot A \\\\\n\n&=\\frac{\\Sigma z_{i}}{\\Sigma \\frac{z_{i}}{k_{i}}} \\times\\left(\\frac{H_{L}}{\\text { Length }}\\right) \\times A \\\\\n\n&=\\frac{50+30}{\\frac{50}{0.055}+\\frac{30}{0.035}} \\times \\frac{150}{80} \\times 100=8.49 \\mathrm{~cm}^{3} / \\mathrm{s}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **8.52** (acceptable range: [8.48, 8.56])."
-      },
-      "answer": "8.52"
+      }
     },
     "ce:2025:q50": {
       "question_uid": "ce:2025:q50",
@@ -2272,8 +2223,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
         "markdown": "Given: rectangular channel.\n\n$$\\begin{aligned}\n\n\\text { width } B & =5 \\mathrm{~m} \\\\\n\n\\text { Discharge } Q & =15 \\mathrm{~m}^{3} / \\mathrm{sec} \\\\\n\n\\text { Prejump depth } y_{1} & =0.5 \\mathrm{~m} \\\\\n\n\\text { Power dissipated } & =? \\\\\n\n\\Delta P & =\\rho g Q \\Delta E \\\\\n\n\\Delta E & =\\frac{\\left(y_{2}-y_{1}\\right)^{3}}{4 y_{1} y_{2}}\n\n\\end{aligned}$$\n\nFor Froude number at upstream\n\n$$\\begin{aligned}\n\nF r_{1}^{2} & =\\frac{V_{1}^{2}}{g y_{1}}=\\frac{q^{2}}{g y_{1}^{3}} \\\\\n\n& =\\frac{3^{2}}{9.81 \\times 0.5^{3}} \\\\\n\nF r_{1}^{2} & =7.34 \\\\\n\n\\frac{y_{2}}{y_{1}} & =\\frac{-1+\\sqrt{1+8 F_{1}^{2}}}{2} \\\\\n\n\\frac{y_{2}}{0.5} & =\\frac{-1+\\sqrt{1+8 \\times 7.34}}{2} \\\\\n\ny_{2} & =1.68 \\mathrm{~m}\n\n\\mathrm{~m}\n\n\\end{aligned}$$\n\nNow,\n\n$\\Delta E  =\\frac{(1.68-0.5)^{3}}{4 \\times 1.68 \\times 0.5}=0.49$\n\nFrom above equation\n\n$$\\begin{aligned}\n\n\\Delta P & =10^{3} \\times 9.81 \\times 15 \\times 0.49 \\\\\n\n& =72.10 \\mathrm{kWatt} \\simeq 72 \\mathrm{~kW} \\quad \\text { (Nearest integer) } .\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **72** (acceptable range: [69, 75])."
-      },
-      "answer": "72"
+      }
     },
     "ce:2025:q51": {
       "question_uid": "ce:2025:q51",
@@ -2316,8 +2266,7 @@
       "detailed_solution": {
         "concept": "Irrigation Engineering - Design of Stable Channels",
         "markdown": "In the month of April, number of days $=30$\n\nPan evaporation (in terms of depth) $=0.5 \\mathrm{~cm} /$ day $\\times 30$ day\n\n$=15 \\mathrm{~cm}$\n\nFor trapezoidal canal of length 10 km ,\n\n$\\text { Area of free surface of canal }=15 \\mathrm{~m} \\times 100 \\times 10^3 \\mathrm{~m}$\n\n$=15 \\times 10^5 \\mathrm{~m}^2$\n\n$$\\begin{aligned}\n\n\\text { Pan evaporation } & =0.15 \\mathrm{~m} \\\\\n\n\\text { Evaporation loss in canal } & =C_P \\times \\text { Pan evaporation } \\\\\n\n& =0.7 \\times 0.15 \\mathrm{~m}=0.105 \\mathrm{~m}\n\n\\end{aligned}$$\n\n$\\text { (For class A pan, } C_P=0.7 \\text { ) }$\n\nEvaporation loss from canal in terms of volurne of water $=0.105 \\mathrm{~m} \\times 15 \\times 10^5 \\mathrm{~m}^2$\n\n$=157.5 \\times 10^9 \\mathrm{~m}^3$\n\nTherefore, the correct answer is **150** (acceptable range: [120, 180])."
-      },
-      "answer": "150"
+      }
     },
     "ce:2025:q52": {
       "question_uid": "ce:2025:q52",
@@ -2360,8 +2309,7 @@
       "detailed_solution": {
         "concept": "Fluid Mechanics and Hydraulics - Fluid Kinematics",
         "markdown": "Given:\n\nChannel width, $b = 5.0\\ \\text{m}$\n\nDischarge, $Q = 10\\ \\text{m}^3/\\text{s}$\n\nInitial flow depth, $y = 1.5\\ \\text{m}$\n\n$g = 9.81\\ \\text{m/s}^2$\n\nStep 1: Calculate flow per unit width:\n\n$q = \\frac{Q}{b} = \\frac{10}{5} = 2.0\\ \\text{m}^2/\\text{s}$\n\nStep 2: Critical depth for rectangular channel:\n\n$y_c = \\left( \\frac{q^2}{g} \\right)^{1/3} = \\left( \\frac{2.0^2}{9.81} \\right)^{1/3} = (0.4077)^{1/3} = 0.740\\ \\text{m}$\n\nStep 3: Specific energy at initial condition:\n\n$E_1 = y + \\frac{v^2}{2g}$\n\n$v = \\frac{Q}{A} = \\frac{10}{5 \\times 1.5} = 1.33\\ \\text{m/s}$\n\n$E_1 = 1.5 + \\frac{(1.33)^2}{2 \\cdot 9.81} = 1.5 + \\frac{1.7689}{19.62} = 1.5 + 0.0902 = 1.5902\\ \\text{m}$\n\nStep 4: Specific energy at critical condition:\n\n$E_c = \\frac{3}{2} y_c = \\frac{3}{2} \\cdot 0.740 = 1.11\\ \\text{m}$\n\nStep 5: Bottom raise required:\n\n$z = E_1 - E_c = 1.5902 - 1.11 = 0.48\\ \\text{m}$\n\nAnswer: $\\boxed{0.48\\ \\text{m}}$\n\nTherefore, the correct answer is **0.48** (acceptable range: [0.45, 0.51])."
-      },
-      "answer": "0.48"
+      }
     },
     "ce:2025:q53": {
       "question_uid": "ce:2025:q53",
@@ -2404,8 +2352,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Traffic Engineering",
         "markdown": "$$\\begin{aligned}\n\n& x=\\text { Truck }=30 \\% \\\\\n\n& y=\\text { Car }=70 \\%\n\n\\end{aligned}$$\n\n$x \\in(30,60)$\n\n$y \\in(40,80)$\n\n$$\\begin{aligned}\n\n& x=\\text { Unifoem R.V } N(x)=\\frac{1}{60-30}=\\frac{1}{30} \\\\\n\n& y=\\text { Unilgem R.M }=\\frac{1}{80-40}=\\frac{1}{40}\n\n\\end{aligned}$$\n\nProbability of Truck exceeding the limit\n\n$$\\begin{aligned}\n\nP(50 < x < 60) & =\\int_{60}^0 f(x) d x=\\int_{50}^6 \\frac{1}{30} d x \\\\\n\n& =\\frac{60-50}{30}=\\frac{1}{3}\n\n\\end{aligned}$$\n\nProbability of Car axceeding the limit\n\n$$\\begin{aligned}\n\n\\mathrm{P}(60 < x < 80) & =\\int_{60}^0 f(y) d y=\\int_{50}^0 \\frac{1}{40} d y \\\\\n\n& =\\frac{3}{4} \\\\\n\n\\% \\text { of vehicle time } & =\\frac{1}{3} \\times 30 \\%+\\frac{3}{4} \\times 70 \\% \\\\\n\n& =10+52.5 =62.5 \\%\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **62** (acceptable range: [61, 63])."
-      },
-      "answer": "62"
+      }
     },
     "ce:2025:q54": {
       "question_uid": "ce:2025:q54",
@@ -2448,8 +2395,7 @@
       "detailed_solution": {
         "concept": "Geomatics Engineering - Levelling and Contouring",
         "markdown": "Here,\n\n$H_{s e}=\\frac{(1.8-1.35)+(1.45-0.85)}{2}=0.475 \\mathrm{~m}$\n\n$\\therefore$\n\n$$\\begin{aligned}\n\nR L \\text { of } B & =R L \\text { of } A+H_{w g} \\\\\n\n& =150+0.475=150.475 \\mathrm{~m}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **150.475** (acceptable range: [150.47, 150.48])."
-      },
-      "answer": "150.475"
+      }
     },
     "ce:2025:q55": {
       "question_uid": "ce:2025:q55",
@@ -2492,8 +2438,7 @@
       "detailed_solution": {
         "concept": "Transportation Engineering - Pavement Design",
         "markdown": "Given:\n\nMass in air, $M = 1260\\ \\text{g}$\n\nVolume, $V = 525\\ \\text{cm}^3$\n\nDensity of water, $\\rho = 1.0\\ \\text{g/cm}^3$\n\nTheoretical maximum specific gravity, $G_{mm} = 2.510$\n\nStep 1: Bulk specific gravity of specimen:\n\n$G_{mb} = \\frac{M}{V \\cdot \\rho} = \\frac{1260}{525 \\cdot 1} = 2.4$\n\nStep 2: Air voids percentage:\n\n$\\text{Air Voids} (%) = \\left( \\frac{G_{mm} - G_{mb}}{G_{mm}} \\right) \\times 100$\n\n$= \\left( \\frac{2.510 - 2.4}{2.510} \\right) \\times 100 = \\left( \\frac{0.11}{2.510} \\right) \\times 100 = 4.38%$\n\nTherefore, the correct answer is **4.39** (acceptable range: [4.22, 4.56])."
-      },
-      "answer": "4.39"
+      }
     },
     "ce:2025:ga:q1": {
       "question_uid": "ce:2025:ga:q1",
@@ -2537,8 +2482,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "In English, we commonly use the preposition \"on\" with television and radio when referring to something being broadcast.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:ga:q2": {
       "question_uid": "ce:2025:ga:q2",
@@ -2582,8 +2526,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "Summarily means: immediately and without the usual formalities or procedures.\n\nThis fits perfectly in the context of disciplinary action taken according to service rules.\n\nSumptuously means: luxuriously or richly -  does not fit the context.\n\nBrazenly means: in a bold and shameless manner -  describes behavior, not the way someone is dismissed.\n\nUnintentionally means: not done on purpose -  contradicts the deliberate action of dismissal.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ce:2025:ga:q3": {
       "question_uid": "ce:2025:ga:q3",
@@ -2627,8 +2570,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "The infinite series given is:\n\n$\\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nWe know that the exponential function $e^x$ has the Taylor series expansion:\n\n$e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$\n\nSo, for $x = 1$:\n\n$e^1 = \\sum_{n=0}^{\\infty} \\frac{1}{n!} = 1 + \\frac{1}{1!} + \\frac{1}{2!} + \\frac{1}{3!} + \\cdots$\n\nNow, subtract 1 from both sides:\n\n$e - 1 = \\sum_{n=1}^{\\infty} \\frac{1}{n!}$\n\nSo the sum of the given series is: $e - 1$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:ga:q4": {
       "question_uid": "ce:2025:ga:q4",
@@ -2672,8 +2614,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "We can construct the cube using 4 bent pieces of wire, each forming a connected path of 3 edges (like a \"U\" shape or three edges of a face). This covers all 12 edges:\n\n$12 \\text{ m} \\div 4 = 3 \\text{ m}$ per piece\n\nSo, we can cut the wire into 4 pieces of 3 m each.\n\nThat requires 3 cuts (1 cut gives 2 pieces, so 3 cuts give 4 pieces)\n\nThus, the minimum number of cuts required is:\n\n$\\boxed{3}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:ga:q5": {
       "question_uid": "ce:2025:ga:q5",
@@ -2715,11 +2656,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Spatial Aptitude (Sequence & Rotational Progression)",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Given Sequence & Observations:**\n  - Figure I: The shaded sector is in the top-left quadrant with central angle $\\theta_1 = 90^\\circ = \\frac{\\pi}{2}\\text{ rad}$ ($1/4$ of the circle), spanning from 9:00 to 12:00.\n  - Figure II: The shaded sector has central angle $\\theta_2 = 135^\\circ = \\frac{3\\pi}{4}\\text{ rad}$ ($3/8$ of the circle), spanning from 12:00 to 4:30.\n  - Figure III: The shaded sector has central angle $\\theta_3 = 180^\\circ = \\pi\\text{ rad}$ ($1/2$ of the circle), spanning the lower semicircle from 3:00 to 9:00.\n\n- **Analytical Progression & Governing Rule:**\n  - **Sector Magnitude Progression:**\n    - The central angle of the shaded sector increases by an arithmetic increment of $+45^\\circ$ ($+\\frac{\\pi}{4}\\text{ rad}$) at each step:\n      $$\\theta_2 - \\theta_1 = 135^\\circ - 90^\\circ = +45^\\circ$$\n      $$\\theta_3 - \\theta_2 = 180^\\circ - 135^\\circ = +45^\\circ$$\n    - Therefore, the shaded sector in Figure IV must have central angle:\n      $$\\theta_4 = 180^\\circ + 45^\\circ = 225^\\circ = \\frac{5\\pi}{4}\\text{ rad}$$\n      This corresponds to $\\frac{5}{8}$ of the circle being shaded (and $\\frac{3}{8}$ or $135^\\circ$ unshaded).\n  - **Rotational Shift Progression:**\n    - Notice the boundary shifts clockwise through each step: the trailing boundary rotates by $+90^\\circ$ clockwise from 9:00 (Figure I) to 12:00 (Figure II) to 3:00 (Figure III).\n    - In Figure IV, following this cyclic clockwise boundary advance, the shaded sector of $225^\\circ$ starts at 6:00 and sweeps clockwise through 9:00, 12:00, to 1:30.\n    - This leaves an unshaded sector of $135^\\circ$ between 1:30 and 6:00 in the lower-right region.\n    - Matching this with the options, Figure (B) depicts this configuration with a $225^\\circ$ shaded sector bounded at 6:00 and 1:30.\n\n- **Distractor Analysis:**\n  - Option A shows a semicircle ($180^\\circ$) covering the top half, failing the angle increment requirement ($\\theta = 225^\\circ$).\n  - Option C shows a sector of $135^\\circ$, which is smaller than Figure III.\n  - Option D shows an inverted orientation with the unshaded wedge in the top-left quadrant rather than following the cyclic clockwise boundary advance.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:ga:q6": {
       "question_uid": "ce:2025:ga:q6",
@@ -2763,8 +2703,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Verbal Ability",
         "markdown": "(A) The author of the passage takes delight in wondering.\n\nThe passage does not suggest that the author takes delight in wondering. Instead, the author is questioning and expressing dissatisfaction with the actions of wealthier nations. Hence, this option is incorrect.\n\n(B) The wealthier nations are pulling down the crooked streets in their capitals.\n\nThe passage clearly states: \"Every day the wealthier nations are pulling down one or another in their capitals and their great towns.\" This directly confirms that wealthier nations are indeed pulling down crooked streets in their capitals, making this option correct.\n\n(C) In the past, crooked streets were only built on islands.\n\nThe passage mentions \"the islands of the past,\" but this is a metaphorical reference to the historical and human elements that are being destroyed, not literal islands. Therefore, this option is not supported by the passage.\n\n(D) Great broad ways are needed to protect commerce and history.\n\nWhile the passage acknowledges that broad ways are needed for commerce, it also criticizes the destruction of history and humanity in the process. The author believes that broad ways should not come at the cost of losing historical value, so this option is incorrect.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:ga:q7": {
       "question_uid": "ce:2025:ga:q7",
@@ -2808,8 +2747,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "For R.G of 1 minute hand goes $\\frac{12}{11}$\n\n$\\text { For R.G of } 60=60 \\times \\frac{12}{11}=\\frac{720}{11}=65 \\frac{5}{11}$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ce:2025:ga:q8": {
       "question_uid": "ce:2025:ga:q8",
@@ -2851,11 +2789,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Spatial Aptitude (Venn Diagrams & Subtractive CMYK Color Model)",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Given Color Model & Principle:**\n  - The figure defines a standard subtractive color mixing model with primary colors Yellow ($Y$), Magenta ($M$), and Cyan ($Cy$):\n    - Yellow $\\cap$ Magenta $=$ Red ($R$)\n    - Yellow $\\cap$ Cyan $=$ Green ($G$)\n    - Magenta $\\cap$ Cyan $=$ Blue ($Bl$)\n    - Three-way overlap Yellow $\\cap$ Magenta $\\cap$ Cyan $=$ Black ($K$)\n\n- **Analytical Verification of Option (A):**\n  - Option (A) consists of three overlapping geometric regions:\n    1. A horizontal rectangle representing Yellow ($Y$).\n    2. A rounded shape representing Magenta ($M$).\n    3. A tilted square/diamond representing Cyan ($Cy$).\n  - Evaluating each overlapping intersection:\n    - **Intersection between Rectangle ($Y$) and Diamond ($Cy$) outside $M$:** Labeled as $G$ (Green). Since Yellow $\\cap$ Cyan $=$ Green, this matches $Y \\cap Cy \\setminus M = G$.\n    - **Intersection between Rectangle ($Y$) and Rounded shape ($M$) outside $Cy$:** Labeled as $R$ (Red). Since Yellow $\\cap$ Magenta $=$ Red, this matches $Y \\cap M \\setminus Cy = R$.\n    - **Three-way intersection among Rectangle ($Y$), Rounded shape ($M$), and Diamond ($Cy$):** The central intersection is labeled as $K$ (Black). Since $Y \\cap M \\cap Cy = K$, this matches the subtractive model.\n    - **Intersection between Rounded shape ($M$) and Diamond ($Cy$) outside $Y$:** Labeled as $Bl$ (Blue), matching $M \\cap Cy \\setminus Y = Bl$.\n  - All labeled regions in Option (A) strictly adhere to the governing color model.\n\n- **Distractor Analysis:**\n  - In Option (B), the overlap of Yellow and Magenta inside the rectangle is incorrectly labeled $Bl$ (Blue) instead of Red ($R$).\n  - In Option (C), the overlap region is incorrectly labeled $Bl$ instead of Black ($K$).\n  - In Option (D), the three-set intersection is incorrectly labeled $R$ instead of Black ($K$).\n\nTherefore, the correct answer is **Option A**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ce:2025:ga:q9": {
       "question_uid": "ce:2025:ga:q9",
@@ -2899,8 +2836,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "Equation of the circles,\n\n$$\\begin{aligned}\n\n(x-0.5)^{2}+y^{2} & =0.5 \\\\\n\n(x-1)^{2}+(y-1)^{2} & =1\n\n\\end{aligned}$$\n\nFrom above equations ,\n\nPoints of intersection are $(0.2,0.4)$ and $(1,0)$.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ce:2025:ga:q10": {
       "question_uid": "ce:2025:ga:q10",
@@ -2942,11 +2878,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Spatial Aptitude (Rotational Symmetry)",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Definition of $n$-Fold Rotational Symmetry:**\n  - An object exhibits $n$-fold rotational symmetry if rotating it about an axis by an angle of:\n    $$\\theta = \\frac{2\\pi}{n} = \\frac{360^\\circ}{n}$$\n    produces a figure indistinguishable from the original.\n  - For $n = 4$ (4-fold rotational symmetry), the angle of rotation is:\n    $$\\theta = \\frac{360^\\circ}{4} = 90^\\circ$$\n\n- **Symmetry Analysis of Option (B):**\n  - The object consists of a cross formed by 5 unit squares (which has inherent 4-fold rotational symmetry) with 4 dot markers in the outer squares:\n    - **Top arm:** Dot located in the **top-right** corner.\n    - **Right arm:** Dot located in the **bottom-right** corner.\n    - **Bottom arm:** Dot located in the **bottom-left** corner.\n    - **Left arm:** Dot located in the **top-left** corner.\n  - Applying a $90^\\circ$ clockwise rotation about the center:\n    - Top arm $\\to$ Right arm: $(x, y) \\mapsto (y, -x)$, mapping the top-right corner to the bottom-right corner (where the right arm's dot resides).\n    - Right arm $\\to$ Bottom arm: bottom-right corner maps to the bottom-left corner (where the bottom arm's dot resides).\n    - Bottom arm $\\to$ Left arm: bottom-left corner maps to the top-left corner (where the left arm's dot resides).\n    - Left arm $\\to$ Top arm: top-left corner maps back to the top-right corner.\n  - Because all arms and markers map onto one another under a $90^\\circ$ rotation, Option (B) possesses genuine 4-fold rotational symmetry.\n\n- **Distractor Analysis:**\n  - In Option A, the right arm's dot is at the top-right instead of the bottom-right; rotating by $90^\\circ$ does not preserve the figure.\n  - In Option C, dots on opposite arms mirror each other, creating reflectional and 2-fold symmetry ($180^\\circ$), but not 4-fold symmetry ($90^\\circ$).\n  - In Option D, the top arm has its dot at the top-left and the bottom arm at the bottom-right, giving 2-fold rotational symmetry only.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
-      },
-      "answer": "B"
+      }
     }
   }
 }

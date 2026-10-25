@@ -2819,8 +2819,8 @@
       "upper": 0
     },
     "is_mta": false,
-    "concept_summary": "Signals and Systems - LTI Systems Continuous and Discrete",
-    "solution_markdown": "For a causal system\n\n$h(t)=0 \\text{ for }t \\lt 0$\n\nTherefore, the correct answer is **D**."
+    "concept_summary": "Signals and Systems - Causal LTI Impulse Response",
+    "solution_markdown": "### 1. Definition of a Causal Continuous-Time System\nA continuous-time Linear Time-Invariant (LTI) system is **causal** if and only if its impulse response $h(t)$ is strictly zero for all negative time:\n$h(t) = 0 \\quad \\text{for } t < 0$\nThis means the system output cannot anticipate future inputs or respond before an input impulse is applied at $t = 0$.\n\n### 2. Analysis of the Given Waveforms\n- **Waveform (a):** The signal is non-zero for both $t < 0$ and $t > 0$. Because $h(t) \\neq 0$ for $t < 0$, it represents a non-causal system.\n- **Waveform (b):** $h(t) = 0$ for all $t < 0$, and the pulse begins strictly at $t \\ge 0$. Therefore, system (b) is **causal**.\n- **Waveform (c):** The pulse begins before $t = 0$ (extends into negative time $t < 0$). Thus, it is non-causal.\n- **Waveform (d):** The signal exists exclusively for $t < 0$ and is zero for $t > 0$, making it an anti-causal system.\n\n### 3. Conclusion\nOnly waveform (b) satisfies $h(t) = 0$ for $t < 0$.\n\n**Therefore, the correct answer is Option B.**"
   },
   "pp:ec:2005:q21": {
     "question_uid": "pp:ec:2005:q21",

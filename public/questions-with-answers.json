@@ -26125,8 +26125,8 @@
     "question": "<p>How many distinct binary search trees can be created out of $4$ distinct keys?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$5$</li>\n<li>$14$</li>\n<li>$24$</li>\n<li>$42$</li>\n</ol>",
     "tags": [
       "gatecse-2005",
-      "graph-theory",
-      "counting",
+      "data-structures",
+      "binary-search-tree",
       "normal"
     ],
     "question_uid": "go:1371",
@@ -84287,7 +84287,7 @@
     "title": "GATE CSE 2025 | Set 2 | Question: 11",
     "year": "gatecse-2025-set2",
     "link": "https://gateoverflow.in/460824/gate-cse-2025-set-2-question-11",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460824\"></a><div itemprop=\"text\"><p>​​​​Consider the following statements about the use of backpatching in a compiler for intermediate code generation:</p><ol start=\"1\" style=\"list-style-type: upper-roman;\"><li>Backpatching can be used to generate code for Boolean expression in one pass.</li><li>Back[atching can be used to generate code for flow-of-control statements in one pass.</li></ol><div>Which ONE of the folloeing options is CORRECT?</div><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>Only I is correct</li><li>Only II is correct</li><li>Both I and II are correct</li><li>Neither I nor II is correct </li></ol></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460824\"></a><div itemprop=\"text\"><p>​​​​Consider the following statements about the use of backpatching in a compiler for intermediate code generation:</p><ol start=\"1\" style=\"list-style-type: upper-roman;\"><li>Backpatching can be used to generate code for Boolean expression in one pass.</li><li>Backpatching can be used to generate code for flow-of-control statements in one pass.</li></ol><div>Which ONE of the following options is CORRECT?</div><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>Only I is correct</li><li>Only II is correct</li><li>Both I and II are correct</li><li>Neither I nor II is correct </li></ol></div>\n</div>",
     "tags": [
       "compiler-design",
       "backpatching",
@@ -87069,7 +87069,7 @@
     "answer_uid": "v2:1.32.1",
     "answer_meta": {
       "type": "MCQ",
-      "answer": "B",
+      "answer": "C",
       "tolerance": null,
       "source": "question_uid"
     },
@@ -87079,7 +87079,7 @@
     "source_session": null,
     "branch": "IT",
     "paper": "IT",
-    "answer": "B"
+    "answer": "C"
   },
   {
     "title": "GATE IT 2008 | Question: 44",
@@ -91339,7 +91339,7 @@
     "title": "GATE IT 2006 | Question: 51",
     "year": 2006,
     "link": "https://gateoverflow.in/3594/gate-it-2006-question-51",
-    "question": "<p>Which one of the choices given below would be printed when the following program is executed?        </p>\n<pre class=\"prettyprint lang-c_cpp\">#include &lt;stdio.h&gt;\nint a1 = {6, 7, 8, 18, 34, 67};\nint a2 = {23, 56, 28, 29};\nint a3 = {-12, 27, -31};\nint *x = {a1, a2, a3};\nvoid print(int *a)\n{\n            printf(\"%d,\", a[0][2]);\n            printf(\"%d,\", *a[2]);\n            printf(\"%d,\", *++a[0]);\n            printf(\"%d,\", *(++a)[0]);\n            printf(\"%d\\n\", a[-1][+1]);\n}\nmain\n{\n             print(x);\n}\n\n</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8, -12, 7, 23, 8$</li>\n<li>$8, 8, 7, 23, 7$</li>\n<li>$-12, -12, 27, -31, 23$</li>\n<li>$-12, -12, 27, -31, 56$</li>\n</ol>",
+    "question": "<p>Which one of the choices given below would be printed when the following program is executed?        </p>\n<pre class=\"prettyprint lang-c_cpp\">#include &lt;stdio.h&gt;\nint a1[] = {6, 7, 8, 18, 34, 67};\nint a2[] = {23, 56, 28, 29};\nint a3[] = {-12, 27, -31};\nint *x[] = {a1, a2, a3};\nvoid print(int *a[])\n{\n            printf(\"%d,\", a[0][2]);\n            printf(\"%d,\", *a[2]);\n            printf(\"%d,\", *++a[0]);\n            printf(\"%d,\", *(++a)[0]);\n            printf(\"%d\\n\", a[-1][+1]);\n}\nint main()\n{\n             print(x);\n}\n\n</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8, -12, 7, 23, 8$</li>\n<li>$8, 8, 7, 23, 7$</li>\n<li>$-12, -12, 27, -31, 23$</li>\n<li>$-12, -12, 27, -31, 56$</li>\n</ol>",
     "tags": [
       "gateit-2006",
       "programming",

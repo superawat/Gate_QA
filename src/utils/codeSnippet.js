@@ -22,6 +22,8 @@ export function normalizeCodeText(code) {
   normalized = normalized.replace(/\bvoid\s+fX(?!\s*\()/g, "void fX()");
   normalized = normalized.replace(/\b(void|int)\s+main[^\S\r\n]*\{/g, "$1 main() {");
   normalized = normalized.replace(/\b(void|int)\s+main(?!\s*\()/g, "$1 main()");
+  normalized = normalized.replace(/(^|\n)\s*main[^\S\r\n]*\{/g, "$1int main() {");
+  normalized = normalized.replace(/(^|\n)\s*main[^\S\r\n]*\r?\n\s*\{/g, "$1int main()\n{");
 
   // 2. Restore fX invocation if missing parens
   normalized = normalized.replace(/\bfX\s*;/g, "fX();");

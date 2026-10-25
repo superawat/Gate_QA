@@ -28,6 +28,11 @@ describe("codeSnippet utility", () => {
       expect(normalizeCodeText(input)).toBe("int main()\n{\n    return 0;\n}");
     });
 
+    it("should restore missing parentheses in bare main before { on next line", () => {
+      const input = "main\n{\n    print(x);\n}";
+      expect(normalizeCodeText(input)).toBe("int main()\n{\n    print(x);\n}");
+    });
+
     it("should normalize function invocation fX; to fX();", () => {
       const input = "    fX;\n";
       expect(normalizeCodeText(input)).toBe("    fX();\n");

@@ -1,4 +1,34 @@
 # Changelog
+- **October 25 Question Data Corrections & Calculator Precedence Engine (DEC-246)**:
+  - **Calculator Operator Precedence & Precision Cleanup (`go:357396`)**:
+    - Replaced the calculator's legacy immediate evaluation model with a two-stack operator precedence engine (`src/components/Calculator/calculatorEngine.js` and `public/calculator/calculator.js`) enforcing standard BODMAS / PEMDAS rules (`*`, `/` take precedence over `+`, `-`).
+    - Fixed the reported floating-point precision issue (`0.1 * 0.3 + 0.9 * 0.8`), which previously evaluated to `0.744` instead of `0.75` due to immediate left-to-right evaluation (`(0.1 * 0.3 + 0.9) * 0.8`).
+    - Added floating-point precision cleanup via `toPrecisionClean(val, 14)` to eliminate IEEE-754 binary floating-point rounding artifacts like `0.30000000000000004`.
+    - Added comprehensive unit tests in `src/components/Calculator/calculatorEngine.test.js`.
+  - **EC 2005 Q20 Answer Key Correction (`ec:2005:q20`)**:
+    - Corrected official answer key in `audit/ec/raw-ec-2005.json`, `data/answers/manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json`, and static shards from Option D (raw 3) to Option B (waveform starting at $t=0$, satisfying $h(t) = 0$ for $t < 0$).
+    - Added complete step-by-step mathematical derivation of causal LTI impulse responses.
+  - **GATE IT 2006 Q51 Code & Symbol Rendering (`go:3594`)**:
+    - Restored missing 1D array brackets `[]` across `int a1[]`, `int a2[]`, `int a3[]`, `int *x[]`, `void print(int *a[])`, and normalized bare `main` to `int main()` in question text.
+    - Updated `src/index.css` to disable font ligatures (`font-feature-settings: "liga" 0;`) inside code blocks so brackets, arrows, and relational operators never collapse.
+    - Added `shape-rendering: geometricPrecision;` for crisp rendering of MathJax SVG complement overlines, bars, and brackets in TOC and question views.
+  - **GATE CSE 1995 Q2.6 Process Scheduling Pedagogical Derivation (`go:2618`)**:
+    - Retained verified official key Option A (`{3, 2, 1}`, 1 unit idle time).
+    - Added detailed step-by-step turnaround time comparison demonstrating why intentionally idling the CPU from $t=0 \to 1$ yields an optimal average turnaround of $7.8$ units vs $10.8$ units for the work-conserving schedule without idle time.
+  - **GATE CSE 2005 Q35 Taxonomy Reclassification (`go:1371`)**:
+    - Reclassified BST count question ($C_4 = 14$) from Discrete Mathematics (`graph-theory`, `counting`) to primary taxonomy Subject: Programming and DS (`prog-ds`), Topic: Trees & Heaps (`trees-heaps`), Subtopic: Binary Search Tree (`binary-search-tree`), with Combinatorics/Counting as secondary.
+  - **GATE Civil 2023 Set 2 GA Q2 Solution Replacement (`go:411922`)**:
+    - Retained official key Option A (Cruel).
+    - Removed mismatched max-heap detailed solution injected by legacy batch tooling and replaced with authentic verbal aptitude antonym analogy solution ("Kind : Cruel :: Often : Seldom").
+  - **GATE IT 2008 Q43 Radix Sort Complexity Key Correction (`go:3353`)**:
+    - Corrected answer key in `manual-answers-patch-v1.json`, IT datasets, and static shards from Option B ($\Theta(kn)$) to verified official Option C ($\Theta(n \log n)$).
+    - Added full derivation for standard fixed-radix sort requiring $d = \Theta(\log n)$ passes over $n$ elements.
+  - **GATE CSE 2002 Q2.10 Randomized Search Comparisons Harmonization (`go:840`)**:
+    - Kept verified answer key Option A ($n$).
+    - Harmonized detailed solution text which erroneously concluded Option C, explaining Bernoulli trials and geometric distribution expected value $E[N] = 1/p = n$.
+  - **GATE CSE 2025 Set 2 Compiler Design Typo Fixes (`go:460824`)**:
+    - Corrected typographical errors in question stem: `Back[atching` $\to$ `Backpatching`, and `folloeing` $\to$ `following`.
+
 - **Default Detailed Solution Unlock for MTA (Marks to All) Questions (DEC-245)**:
   - Made an automatic exception to the Detailed Solution attempt lock for questions classified as MTA (Marks to All).
   - Because MTA questions are non-interactive and have no valid answer to submit, detailed solutions are now unlocked by default even if the user has never attempted the question.

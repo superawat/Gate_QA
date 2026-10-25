@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:37.315Z",
+  "generatedAt": "2026-10-25T18:50:27.153Z",
   "shardKey": "ee-2016-s1",
   "yearSetKey": "ee-2016-s1",
   "yearSetIdentity": "ee:2016:set-1",
@@ -50,8 +50,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$$\\begin{aligned} f(x) &=x^3-3x^2+2x \\\\ f'(x)&=3x^2-6x+2\\\\ f'(x)&=0 \\;\\text{for stationary point} \\end{aligned}$$\n\nstationary points are $1+\\frac{1}{\\sqrt{3}}$\n\nonly $1+\\frac{1}{\\sqrt{3}}$ lies in [1,2]\n\n$$\\begin{aligned} f(1) &=0 \\\\ f(2)&=0 \\\\ f\\left ( 1+\\frac{1}{\\sqrt{3}} \\right )&=-\\frac{2}{3\\sqrt{3}} \\end{aligned}$$\n\nMaximum value is 0.\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ee:2016:q2": {
       "question_uid": "ee:2016:q2",
@@ -94,8 +93,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$A=\\begin{bmatrix} 1 & 1 &1 \\\\ 1 & 1 &1 \\\\ 1& 1 & 1 \\end{bmatrix}$$ Eigen value are 0,0,3\n\nTherefore, the correct answer is **3**."
-      },
-      "answer": "3"
+      }
     },
     "ee:2016:q3": {
       "question_uid": "ee:2016:q3",
@@ -140,8 +138,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
         "markdown": "Laplace transform of $\\sin 5t u(t)\\rightarrow \\frac{5}{s^2+25}$\n\n$e^{2t}\\sin 5t u(t)\\rightarrow \\frac{5}{(s-2)^2+25}=\\frac{5}{s^2-4s+29}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q4": {
       "question_uid": "ee:2016:q4",
@@ -186,8 +183,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "Auxiliary equation,\n\n$$\\begin{aligned} m^2+2m+1&=0 \\\\ m&= -1,-1\\\\ y&=(c_1+c_2t)e^{-t} \\\\ y(0) &=1 \\\\ c_1&=1 \\\\ y&= (1+c_2t)e^{-t}\\\\ y(1)&=3e^{-1} \\\\ \\Rightarrow \\; (1+c_2)e^{-3} &=3e^{-3} \\\\ c_2&=2 \\\\ y&=(1+2t)e^{-t} \\\\ y(2)&=5e^{-2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q5": {
       "question_uid": "ee:2016:q5",
@@ -232,8 +228,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "Singlarilies,  $Z=\\frac{1}{2}, 2\\pm i$\n\nOnly, $Z=\\frac{1}{2}$ lies inside C\n\nBy residue theorem,\n\n$\\oint _C=2 \\pi i(R)=\\frac{48 \\pi i}{13}$\n\nResidue at $\\frac{1}{2}$\n\n$=R_{1/2}=\\lim_{Z \\to 1/2}\\left [ \\left ( Z-\\frac{1}{2} \\right )\\cdot \\frac{2Z+5}{\\left ( Z-\\frac{1}{2} \\right )(Z^2+4Z+5)} \\right ]=\\frac{24}{13}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q6": {
       "question_uid": "ee:2016:q6",
@@ -278,8 +273,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
         "markdown": "$$\\begin{aligned}\n\n\\frac{Y(s)}{R(s)}&=\\frac{s}{s+2} \\\\\n\ny(t)&=A \\cos (2t+\\phi ),  \\\\\n\nr(t)&=\\cos 2t \\\\\n\n\\because \\;H(s) &=\\frac{s}{(s+2)} \\\\\n\nH(j\\omega )&=\\frac{j\\omega }{j\\omega +2} \\\\\n\n|H(j\\omega )| &=\\frac{\\omega }{\\sqrt{\\omega ^2+4 }} \\\\\n\n\\angle H(j\\omega ) &=90^{\\circ} -\\tan ^{-1}\\left ( \\frac{\\omega }{2} \\right ) \\\\\n\n\\because \\; \\omega &= 2 \\text{  (as given)}\\\\\n\n|H(j\\omega )| &=\\frac{2}{\\sqrt{4+4}}=\\frac{1}{\\sqrt{2}} \\\\\n\n|H(j\\omega )| &=90^{\\circ} -\\tan ^{-1}(1)=45^{\\circ} \\\\\n\n\\because \\; \\text{hence, }A &=1 \\times |H(j\\omega )|_{\\omega =2}\\\\\n\n&=1 \\times \\frac{1}{\\sqrt{2}}=0.707\\\\\n\n\\phi &= 45^{\\circ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q7": {
       "question_uid": "ee:2016:q7",
@@ -324,8 +318,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "$G(s)=\\frac{100}{(s+1)^3}$\n\n$G(j\\omega )=\\frac{100}{(1+j\\omega )^3}$\n\n$\\;\\;=\\frac{100}{1+(j\\omega )^3+3(j\\omega )^2+3j\\omega }$\n\n$\\;\\;=\\frac{100}{(1-3\\omega^2 )+j(3\\omega-\\omega^3)}$\n\n$\\;\\;=\\frac{100[(1-3\\omega^2 )+j\\omega(3-\\omega^2)^2]}{[ (1-3\\omega^2 )+\\omega^2(3-\\omega^2)^2]}$\n\nFor phase corssover frequency $\\omega_{ph} Img[G(j \\omega )]=0;$\n\nHence, $\\omega (3-\\omega ^2)=0$\n\n$\\omega =0; \\pm \\sqrt{3}$\n\nTherefore, $\\omega _{ph}=\\sqrt{3}$ rad/sec\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q8": {
       "question_uid": "ee:2016:q8",
@@ -370,8 +363,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "$$\\begin{aligned} y(t)&=x(t)\\cos (t)\\\\ &\\text{To check linearity,}\\\\ y_1(t)&=x_1(t)\\cos (t)\\\\ &[y_1(t) \\text{ is output for }x_1(t)]\\\\ y_2(t)&=x_2(t) \\cos (t)\\\\ &[y_2(t) \\text{ is output for }x_2(t)]\\\\ \\text{so, the}& \\text{ output for }(x_1(t)+ x_2(t)) \\text{ will be}\\\\ y(t)&=[x_1(t)+ x_2(t)]\\cos (t)\\\\ &=y_1(t)+y_2(t) \\end{aligned}$$\n\nSo, the system is linear, to check time invariance.\n\nThe delayed output,\n\n$y(t-t_0)=x(t-t_0)\\cos (t-t_0)$\n\nThe output for delayed input,\n\n$y(t, t_0)=x(t-t_0)\\cos (t)$\n\nSince,  $y(t-t_0)\\neq y(t,t_0)$\n\nSystem is time varying.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q9": {
       "question_uid": "ee:2016:q9",
@@ -416,8 +408,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
         "markdown": "To find the value of $\\int_{-\\infty }^{\\infty }e^{-t}\\delta (2t-2)dt$\n\nSince, $\\delta (2t-2)=\\frac{1}{2}\\delta (1t-1)$  above integral can be written as\n\n$\\int_{-\\infty }^{\\infty }e^{-t}\\frac{1}{2}\\delta (t-1)dt=\\frac{1}{2}e^{-1}=\\frac{1}{2e}$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q10": {
       "question_uid": "ee:2016:q10",
@@ -462,8 +453,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - A-D and D-A Converters",
         "markdown": "Temperature range of $-40^{\\circ}C \\; to \\; 55^{\\circ}C$\n\nSo. Total range in $95^{\\circ}C$\n\nSince, resolution is $0.1^{\\circ}C$\n\nSo, number of steps will be 950\n\nTo have 950 steps, we need at least 10 bits.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q11": {
       "question_uid": "ee:2016:q11",
@@ -508,8 +498,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Combinational Logic Circuits",
         "markdown": "In the given multiplexer,\n\n$I=0=\\bar{A}, I_1=A$\n\n$Select =B$\n\n$F=\\bar{B}I_0+BI_1$\n\n$F=\\bar{B}\\bar{A}+AB=\\overline{A\\oplus B}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2016:q12": {
       "question_uid": "ee:2016:q12",
@@ -552,8 +541,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-06eeceb1ca.webp\" />\n\n$V_B=5.3 V$\n\n$V_E=V_B-0.6=4.7V$\n\n$I_E=\\frac{V_E}{470\\Omega }=10mA$\n\n$I_1=\\frac{10-5.3}{4.7k}=1mA$\n\n$I_B=I_1-I_2=0.5mA$\n\n$\\frac{I_E}{I_B}=\\beta +1=20$\n\n$\\beta =19$\n\nTherefore, the correct answer is **19** (acceptable range: [18, 20])."
-      },
-      "answer": "19"
+      }
     },
     "ee:2016:q13": {
       "question_uid": "ee:2016:q13",
@@ -598,8 +586,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Coordinate Systems and Vector Calculus",
         "markdown": "V is given as static field in time invariant.\n\nHence,  $\\triangledown \\times E=0$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q14": {
       "question_uid": "ee:2016:q14",
@@ -642,8 +629,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Magnetostatic Fields",
         "markdown": "Toroid has field,\n\n$$\\begin{aligned} B &\\propto \\mu \\\\ As\\;\\; \\mu &=100 \\;(\\text{inside field}) \\end{aligned}$$\n\nMagnetic field density B at any point at a distance at r is\n\n$$\\begin{aligned} B &=\\frac{\\mu I}{2 \\pi r} \\\\ Now\\;\\;B_{at\\; r^-}&=\\frac{\\mu_0 \\mu_r I}{2 \\pi r^-}\\;(\\text{just inside toroid})\\\\ Now\\;\\;B_{at\\; r^+}&=\\frac{\\mu_0 I}{2 \\pi r^+}\\;(\\text{just outside toroid})\\\\ \\frac{B_{at\\; r^-}}{B_{at\\; r^+}}&=\\mu _r=100 \\end{aligned}$$\n\nTherefore, the correct answer is **100** (acceptable range: [99, 101])."
-      },
-      "answer": "100"
+      }
     },
     "ee:2016:q15": {
       "question_uid": "ee:2016:q15",
@@ -688,8 +674,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "If the equavalent resistance of first figure is $R_A$ then from the second figure, we can see that $R_B=R_A||1\\Omega$.\n\n$R_B=\\frac{R_A}{R_A+1}$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2016:q16": {
       "question_uid": "ee:2016:q16",
@@ -734,8 +719,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "$$\\begin{aligned} f_0 &=\\text{nominal frequency} \\\\ \\omega _s &=\\left ( \\frac{f}{f_0} \\right )\\omega _{s0}\\;\\;...(i) \\\\ S_{max,T}&=\\left ( \\frac{f}{f_0} \\right ) \\left ( \\frac{R_2}{X_{20}^1} \\right )\\;\\;...(ii) \\\\ &\\text{From (i) and (ii)} \\\\ S_{max,T} &= \\left ( \\frac{\\omega _{s0}}{\\omega _s} \\right )\\left ( \\frac{R_2}{X_{20}^1} \\right )\\\\ S_{max,T} &\\propto \\frac{1}{\\omega _s} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q17": {
       "question_uid": "ee:2016:q17",
@@ -778,8 +762,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-6eded600e5.webp\" />\n\n$(2I)^2 \\times 5 =10$\n\n$\\Rightarrow \\; I^2=\\frac{10}{5 \\times 5}=0.5$\n\nSo, $I^2 \\times 4 =2 cal/sec.$\n\nTherefore, the correct answer is **2** (acceptable range: [1.9, 2.1])."
-      },
-      "answer": "2"
+      }
     },
     "ee:2016:q18": {
       "question_uid": "ee:2016:q18",
@@ -822,8 +805,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-aee97fef50.webp\" />\n\nApplying KCL at node A,\n\n$-I_1+I_2+I_2=0$\n\n$2I_2=I_1\\;\\;...(i)$\n\nand applying KVL in loop ABCD,\n\n$1-I_1-I_2-I_2=0$\n\n$I_1+2I_2=1\\;\\;...(ii)$\n\nFrom equation (i) and (ii),\n\n$\\Rightarrow \\; 2I_2+2I_2=1$\n\n$\\Rightarrow \\; 4I_2=1$\n\n$\\Rightarrow \\; I_2=\\frac{1}{4}A$\n\n$\\Rightarrow \\; I_1=2 \\times \\frac{1}{4}=\\frac{1}{2}A$\n\nTherefore, the correct answer is **0.5**."
-      },
-      "answer": "0.5"
+      }
     },
     "ee:2016:q19": {
       "question_uid": "ee:2016:q19",
@@ -868,8 +850,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Load Flow Studies",
         "markdown": "The voltage angle is the commom variable for both PV and PQ buses si it remains unchanged. Where as voltage magnitude is specified in PV bus and not specified in PQ bus, so it increases by two.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q20": {
       "question_uid": "ee:2016:q20",
@@ -912,8 +893,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "Voltage at bus B after 3-phase fault at A=0.8 p.u.\n\n$$\\begin{aligned} V_B &=V_{(prefault)}-Z_{12} \\times I_{f(A)} \\\\ 0.8&= 1.0-Z_{12} \\times 10 \\\\ Z_{12} &=0.02 p.u. \\\\ V_A &=V_{(prefault)}-Z_{12}I_{f(B)} \\\\ V_A&=1.0-(0.02 \\times 8) \\\\ &= 0.84p.u. \\end{aligned}$$\n\nTherefore, the correct answer is **0.84** (acceptable range: [0.83, 0.85])."
-      },
-      "answer": "0.84"
+      }
     },
     "ee:2016:q21": {
       "question_uid": "ee:2016:q21",
@@ -958,8 +938,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "Synchronous generator working at a lagging power factor, will supply active power and lagging reactive power, so this is source.\n\nSynchronous motor working at an overexcited condition i.e. leading p.f. operation so it will take active power and leading reactve power in other words taking active power and supplying lagging reactive power.\n\nInduction generates active power but as there is no dc excitation in rotor so it takes lagging reactive power.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q22": {
       "question_uid": "ee:2016:q22",
@@ -1002,8 +981,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
         "markdown": "Average voltage across inductor is zero.\n\n$$\\begin{aligned} V_{L(avg)} &=0 \\\\ 30(T_{on})-20(T_{off})&=0 \\\\ 30(\\alpha T)&=20(1-a)T \\\\ 30a+2\\alpha &= 20\\\\ 50\\alpha &=20 \\\\ \\alpha &=\\frac{2}{5}=0.4 \\end{aligned}$$\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.39, 0.41])."
-      },
-      "answer": "0.4"
+      }
     },
     "ee:2016:q23": {
       "question_uid": "ee:2016:q23",
@@ -1046,8 +1024,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
         "markdown": "No current flows through IGBT. So current flows only in diode. Equivalent circuit of diode is as shown below,\n\n<img src=\"/question-images/ee/2016/ee-2016-0b7fc61263.webp\" />\n\n$$\\begin{aligned} V&=IR+0.7\\\\ &=(100 \\times 0.01)+0.7\\\\ V&=1.7V \\end{aligned}$$\n\nPower loss during conduction,\n\n$$\\begin{aligned} P&=V \\times I\\\\ &= 1.7 \\times 100=170W \\end{aligned}$$\n\nTherefore, the correct answer is **170** (acceptable range: [169, 171])."
-      },
-      "answer": "170"
+      }
     },
     "ee:2016:q24": {
       "question_uid": "ee:2016:q24",
@@ -1092,8 +1069,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
         "markdown": "4 pole, lap-connected, separatelt excited dc motor, N= 600 rpm\n\n$I_{total=40A}$\n\nParallel path= 4 = no. of poles\n\nCurrent in each parallel path $=\\frac{40}{4}=10A$\n\nCurrent in armature conductor =10A\n\n<img src=\"/question-images/ee/2016/ee-2016-1a24fe40f3.webp\" />\n\n$$\\begin{aligned} \\text{Speed} &=600 \\;\\text{rpm} \\\\ N &= \\frac{120\\times f}{4}=600\\\\ f&= \\frac{600 \\times 4}{120}=20Hz\\\\ & \\text{Time period,}\\\\ T&=\\frac{1}{f}=\\frac{1}{20}=50msec \\end{aligned}$$\n\nSo,\n\n<img src=\"/question-images/ee/2016/ee-2016-e54b8e59b0.webp\" />\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q25": {
       "question_uid": "ee:2016:q25",
@@ -1138,8 +1114,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-7acbf4970f.webp\" />\n\nAt port 1 i.e. high voltage side impedance will be high and current will be low. So, $n^2L$.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q26": {
       "question_uid": "ee:2016:q26",
@@ -1180,11 +1155,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Combinatorics with Repetition & Discrete Probability",
+        "concept": "Engineering Mathematics (EE) - Probability and Statistics",
         "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Combinatorics with Repetition & Discrete Probability\n- **Given Parameters**:\n  - Number of pens selected: $r = 3$.\n  - Number of distinct permitted pen colors: $n = 4$ (Black, Blue, Green, Red).\n  - Target event: A candidate arrives with all 3 pens having the same color.\n- **Governing Equations**:\n  - The combination of pens a candidate brings constitutes an unordered multiset of size $r$ chosen from $n$ distinct categories with repetition allowed.\n  - The total number of distinct color combinations is given by the stars-and-bars multiset coefficient:\n    $$N_{\\text{total}} = \\binom{n + r - 1}{r} = \\binom{4 + 3 - 1}{3} = \\binom{6}{3}$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute Total Distinct Combinations**:\n     $$\\binom{6}{3} = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$\n  2. **Compute Favorable Outcomes (All Same Color)**:\n     - The candidate can bring all 3 pens of the same color in exactly 4 ways:\n       1. $\\{3\\text{ Black}\\}$\n       2. $\\{3\\text{ Blue}\\}$\n       3. $\\{3\\text{ Green}\\}$\n       4. $\\{3\\text{ Red}\\}$\n     - Number of favorable combinations: $N_{\\text{favorable}} = 4$.\n  3. **Calculate Probability**:\n     - Assuming all distinct combinations of 3 pens are equally likely:\n       $$P(\\text{all 3 pens same color}) = \\frac{N_{\\text{favorable}}}{N_{\\text{total}}} = \\frac{4}{20} = \\frac{1}{5} = 0.2$$\n\nTherefore, the correct numerical value is **0.2**.",
         "images": []
-      },
-      "answer": "0.2"
+      }
     },
     "ee:2016:q27": {
       "question_uid": "ee:2016:q27",
@@ -1227,8 +1201,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "The Z-transform of\n\n$$\\begin{aligned} \\alpha ^n u(n)&\\rightarrow \\frac{1}{(1-\\alpha Z^{-1})}\\\\ n\\alpha ^n u(n)&\\rightarrow \\frac{\\alpha Z^{-1}}{(1-\\alpha Z^{-1})^2}\\\\ \\frac{\\alpha Z^{-1}}{(1-\\alpha Z^{-1})^2}&=\\sum_{n=0}^{\\infty }n\\alpha ^nZ^{-n} \\end{aligned}$$\n\nIf we put Z=1 in above equation, we get,\n\n$$\\begin{aligned} \\frac{\\alpha }{(1-\\alpha )^2}&=\\sum_{n=0}^{\\infty }n\\alpha ^n\\\\ \\text{Since, }\\sum_{n=0}^{\\infty }n\\alpha ^n&=2\\alpha =\\frac{\\alpha }{(1-\\alpha )^2}\\\\ \\text{So,}2&=\\frac{1}{(1-\\alpha )^2}\\\\ \\Rightarrow \\;\\;\\alpha &=0.29 \\end{aligned}$$\n\nTherefore, the correct answer is **0.295** (acceptable range: [0.28, 0.31])."
-      },
-      "answer": "0.295"
+      }
     },
     "ee:2016:q28": {
       "question_uid": "ee:2016:q28",
@@ -1273,8 +1246,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Eigen value of $A^2-3A+4I$ are\n\n$(1)^2-3(1)+4$ and $(-2)^2-3(-2)+4$\n\n=2, 14\n\nNote:  $A^2X=l^2X$\n\n$\\Rightarrow \\;X$is eigen vector for $A^2$ corresponding to eigen value $l^2$\n\n$X_1$ and $X_2$ are eigen vector of A corresponding to 1, -2\n\nThen $X_1$ and $X_2$ are eigen vector of $A^2-3+4I$ corresponding to 2, 14.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q29": {
       "question_uid": "ee:2016:q29",
@@ -1317,11 +1289,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EE) - Linear Algebra & Gram Matrix Rank Invariance",
+        "concept": "Engineering Mathematics (EE) - Linear Algebra",
         "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EE) - Linear Algebra & Gram Matrix Rank Invariance\n- **Given Parameters**:\n  - Matrix $A$ is a real matrix of size $4 \\times 3$.\n  - Given rank of $A$: $\\text{rank}(A) = 2$.\n- **Governing Theorem (Gram Matrix Nullspace Property)**:\n  - For any real matrix $A \\in \\mathbb{R}^{m \\times n}$, the null space of $A$ and the null space of $A^T A$ are identical:\n    $$\\text{Null}(A^T A) = \\text{Null}(A)$$\n- **Proof of Nullspace Equality**:\n  1. If $\\mathbf{x} \\in \\text{Null}(A)$, then $A\\mathbf{x} = \\mathbf{0}$. Multiplying by $A^T$ gives $A^T A \\mathbf{x} = A^T \\mathbf{0} = \\mathbf{0}$, so $\\mathbf{x} \\in \\text{Null}(A^T A)$.\n  2. Conversely, if $\\mathbf{x} \\in \\text{Null}(A^T A)$, then $(A^T A)\\mathbf{x} = \\mathbf{0}$. Pre-multiplying by $\\mathbf{x}^T$ yields:\n     $$\\mathbf{x}^T (A^T A) \\mathbf{x} = (A\\mathbf{x})^T (A\\mathbf{x}) = \\|A\\mathbf{x}\\|^2 = 0 \\implies A\\mathbf{x} = \\mathbf{0}$$\n     Thus, $\\mathbf{x} \\in \\text{Null}(A)$.\n  - Therefore, $\\text{Null}(A^T A) = \\text{Null}(A)$, which means:\n    $$\\text{nullity}(A^T A) = \\text{nullity}(A)$$\n- **Step-by-Step Analytical Derivation**:\n  - Both $A$ and $A^T A$ have $n = 3$ columns.\n  - By the Rank-Nullity Theorem:\n    $$\\text{rank}(A) + \\text{nullity}(A) = 3$$\n    $$\\text{rank}(A^T A) + \\text{nullity}(A^T A) = 3$$\n  - Equating the two expressions:\n    $$\\text{rank}(A^T A) = \\text{rank}(A)$$\n  - Since $\\text{rank}(A) = 2$:\n    $$\\text{rank}(A^T A) = 2$$\n\nTherefore, the correct answer is **Option B (Rank of $A^{T} A$ is equal to 2.)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ee:2016:q30": {
       "question_uid": "ee:2016:q30",
@@ -1366,8 +1337,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "From the given Bode plot, it is evident that there are 3(three) poles in the transfer function, out of which there are double poles at corner frequency near but less than $\\omega=8$ rad/sec and one pole is near but greater than $\\omega=0.5$ rad/sec. The initial slope is +20 dB/dec. Therefore one zero exist at s=0. So from all the given options, option (A) satisfies all the conditions. Therefore Option (A) is correct.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q31": {
       "question_uid": "ee:2016:q31",
@@ -1408,11 +1378,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Signals and Systems / Control Systems - State Transition Matrix & Output Response",
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "- **Concept / Subtopic**: Signals and Systems / Control Systems - State Transition Matrix & Output Response\n- **Given State Space Model**:\n  $$\\dot{\\mathbf{x}}(t) = A \\mathbf{x}(t), \\quad A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 2 \\end{bmatrix}$$\n  $$y(t) = \\mathbf{c}^T \\mathbf{x}(t), \\quad \\mathbf{c} = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}$$\n  $$\\mathbf{x}(0) = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}$$\n  Target evaluation time: $t = \\ln(2)$.\n- **Governing Equations**:\n  - For a diagonal system matrix $A = \\text{diag}(\\lambda_1, \\lambda_2)$, the state transition matrix $\\Phi(t) = e^{At}$ is directly:\n    $$e^{At} = \\begin{bmatrix} e^{\\lambda_1 t} & 0 \\\\ 0 & e^{\\lambda_2 t} \\end{bmatrix} = \\begin{bmatrix} e^t & 0 \\\\ 0 & e^{2t} \\end{bmatrix}$$\n  - The zero-input state response is:\n    $$\\mathbf{x}(t) = e^{At} \\mathbf{x}(0)$$\n  - The system scalar output is:\n    $$y(t) = \\mathbf{c}^T \\mathbf{x}(t) = \\mathbf{c}^T e^{At} \\mathbf{x}(0)$$\n- **Step-by-Step Analytical Derivation**:\n  1. **Compute State Vector $\\mathbf{x}(t)$**:\n     $$\\mathbf{x}(t) = \\begin{bmatrix} e^t & 0 \\\\ 0 & e^{2t} \\end{bmatrix} \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} e^t \\\\ e^{2t} \\end{bmatrix}$$\n  2. **Compute Scalar Output $y(t)$**:\n     $$y(t) = \\begin{bmatrix} 1 & 1 \\end{bmatrix} \\begin{bmatrix} e^t \\\\ e^{2t} \\end{bmatrix} = e^t + e^{2t}$$\n  3. **Evaluate at $t = \\ln(2)$**:\n     $$e^t = e^{\\ln(2)} = 2$$\n     $$e^{2t} = \\left(e^{\\ln(2)}\\right)^2 = 2^2 = 4$$\n     $$y(\\ln 2) = 2 + 4 = 6$$\n\nTherefore, the correct numerical value is **6**.",
         "images": []
-      },
-      "answer": "6"
+      }
     },
     "ee:2016:q32": {
       "question_uid": "ee:2016:q32",
@@ -1457,8 +1426,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "Nyquist plot of $G(s)H(s)=\\frac{s+3}{s^2(s-3)}$ is as shown below\n\n<img src=\"/question-images/ee/2016/ee-2016-cde7a57a1c.webp\" />\n\nFrom the Nyquist plot G(s)H(s) encircle -1+j0 once in clockwise direction.\n\nAlternate Solution:\n\nCharacteristic equation,\n\n$1+G(s)H(s)=0$\n\n$s^2(s-3)+(s+3)=0$\n\n$s^3-3s^2+s+3=0$\n\nusing Routh's array\n\n$$\\left.\\begin{matrix} s^3\\\\ s^2\\\\ s^1\\\\ s \\end{matrix}\\right|\\begin{matrix} 1 &1 \\\\ -3& 3\\\\ 2& 0\\\\ 3& \\end{matrix}$$\n\nThere are two sign changes, hence two poles in right side of s-plane exist.\n\n$Z=2, \\; P=1$\n\n$N=P-Z=-1$\n\nOne encirclement in clockwise direction.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q33": {
       "question_uid": "ee:2016:q33",
@@ -1501,8 +1469,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Concepts of Stability",
         "markdown": "$s^3+5.5s^2+8.5s+3=0$\n\nPutting,  $s=s_1-1$\n\n$(s_1-1)^3+5.5(s_1-1)^2+(8.5)(s_1-1)+3=0$\n\n$s_1^3+2.5s_1^2+0.5s_1-1=1$\n\n<img src=\"/question-images/ee/2016/ee-2016-9b819fcf69.webp\" />\n\nAs there is one sign change, hence, two roots of given polynomial will lie to the left of $s=-1$.\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ee:2016:q34": {
       "question_uid": "ee:2016:q34",
@@ -1547,8 +1514,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
         "markdown": "By observing $X_1(j \\omega )$ and $X_2(j \\omega )$, we can say that they are not conjugate symmetric. Since, the fourier transform is not conjugate symmetric the signal will not be real. So, $x_1(t), x_2(t)$ are not real. Now the fourier transform of $x_1(t) \\cdot x_2(t)$ will be $\\frac{1}{2\\pi}X_1(j \\omega )*X_2(j \\omega )$ and by looking at $X_1(j \\omega )$ and $X_2(j \\omega )$, we can say that $X_1(j \\omega ) *X_2(j \\omega )$ will be conjugate symmetric and thus $x_1(t) \\cdot x_2(t)$ will be real.\n\nBy observing $X_1(j \\omega )$ and $X_2(j \\omega )$, we can say,\n\n$X_2( \\omega )=X_1(- \\omega )\\overset{IFT}{\\rightarrow}x_2(t)=x_1(-t)\\;\\;...(i)$\n\nNow, $X_1(j \\omega )$ is real. Therefore, $x_1(t)$ will be conjugate symmetric.\n\n$$\\begin{aligned} \\text{i.e., } x_1(t)&=x_1^*(-t) \\\\ \\downarrow t&= -t\\\\ x_1(-t)&= x_1^*(t)\\\\ \\text{Now, }x_1(t)\\cdot x_2(t) &= x_1(t)\\cdot x_1(-t) \\;\\;(from \\;(i))\\\\ &= x_1(t)\\cdot x_1^*(t)\\\\ &= |x_1(t)|^2=\\text{real function} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q35": {
       "question_uid": "ee:2016:q35",
@@ -1593,8 +1559,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "Given that impulse response is real and even, Thus $H(j\\omega )$ will also be real and even.\n\n<img src=\"/question-images/ee/2016/ee-2016-1d1c0ee954.webp\" />\n\nSince, $H(j\\omega )$ is real and even thus,\n\n$H(j\\omega )=H(-j\\omega )$\n\nNow, $\\cos (t)$ is input i.e. $\\frac{e^{jt}+e^{-jt}}{2}$ is input\n\nOutput will be\n\n$\\frac{H(j1)e^{jt}+H(-j1)e^{-jt}}{2}=H(j1)\\left ( \\frac{e^{jt}+e^{-jt}}{2} \\right )= H(j1) \\cos (t)$\n\nIf, $\\sin (t)$ is input i.e. $\\frac{e^{jt}+e^{-jt}}{2}$ is input\n\nOutput will be\n\n$\\frac{H(j1)e^{jt}+H(-j1)e^{-jt}}{2}=H(j1)\\left ( \\frac{e^{jt}-e^{-jt}}{2j} \\right )= H(j1) \\sin (t)$\n\nSo, $\\sin (t)$ and $\\cos (t)$ are eigen signal with same eigen values.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2016:q36": {
       "question_uid": "ee:2016:q36",
@@ -1639,8 +1604,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
         "markdown": "From the figure we get\n\n$J_A=K_A=1$\n\n$J_B=K_B=\\bar{Q_A}$\n\n<img src=\"/question-images/ee/2016/ee-2016-63a538969a.webp\" />\n\nSo, next state will be 11.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q37": {
       "question_uid": "ee:2016:q37",
@@ -1685,8 +1649,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - A-D and D-A Converters",
         "markdown": "The input to digital circuuit is $X_2,X_1,X_0$ and output is $B_1,B_0$\n\n<img src=\"/question-images/ee/2016/ee-2016-2909af3764.webp\" />\n\n$B_0=\\bar{X_2}\\bar{X_1}X_0+X_2X_1X_0$\n\n$\\;\\;=X_0(\\bar{X_2}\\bar{X_1}+X_2X_1)$\n\n$\\;\\;=X_0(\\overline{X_2\\oplus X_1})$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q38": {
       "question_uid": "ee:2016:q38",
@@ -1731,8 +1694,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Fields - Electrostatic Fields",
         "markdown": "Charge, Q is located at (0,0) and $-2\\theta$ is located at (6,0).\n\nTo find V at any point $(x,y)$\n\n$$\\begin{aligned} V_Q &= \\frac{Q}{4 \\pi \\in \\sqrt{x^2+y^2}}\\\\ V_{-2Q}&=\\frac{-2Q}{4 \\pi \\in (\\sqrt{(x-6)^2 +y^2})} \\\\ V_{total}&=0 \\\\ &= \\frac{Q}{4 \\pi \\in \\sqrt{x^2+y^2}} \\\\ & +\\frac{-2Q}{4 \\pi \\in (\\sqrt{(x-6)^2 +y^2})} \\\\ \\sqrt{(x-6)^2 +y^2}&=2(\\sqrt{x^2+y^2}) \\\\ x^2+36-12x+y^2&=4x^2+4y^2 \\\\ 3x^2+3y^2+12x&=36 \\\\ x^2+y^2+4x&=12 \\\\ (x+2)^2+y^2&=16 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2016:q39": {
       "question_uid": "ee:2016:q39",
@@ -1775,8 +1737,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-2cff00b12b.webp\" />\n\nKCL at node A,\n\n$\\frac{V_A-3}{1}+\\frac{3}{2}+\\frac{V_A-3}{2}=0$\n\n$2(V_A-3)+3+(V_A-3)=0$\n\n$3V_A=6$\n\n$V_A=2$\n\n$V_A=L\\frac{di(0^+)}{dt}=2$\n\n$\\frac{di(0^+)}{dt}=\\frac{2}{L}=\\frac{2}{1}=2A/sec$\n\nTherefore, the correct answer is **2** (acceptable range: [1.9, 2.1])."
-      },
-      "answer": "2"
+      }
     },
     "ee:2016:q40": {
       "question_uid": "ee:2016:q40",
@@ -1819,8 +1780,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Distribution Systems, Cables and Insulators",
         "markdown": "$\\text{KVA}_1=\\sqrt{800^2+600^2}=100 \\text{ KVA}$\n\nWithout excessive heat dissipation means current should be constant (i.e.) KVA erating must be constatn.\n\nIn second case active power,\n\nP=800+100=900 KW\n\nReactive power in second case,\n\n$Q_2=\\sqrt{1000^2-900^2}=435.889 \\text{ KVAR}$\n\nReactive power supplied by the three phase bank = 600-435.889 =164.44 KVAR\n\n$$\\begin{aligned} Q_{bank}/ph&=\\frac{164.11}{3}=54.7 \\text{ KVAR} \\\\ V/ph&= \\frac{3.3}{\\sqrt{3}}=1.9051 \\text{ KV}\\\\ Q_c/ph&=\\frac{(V/ph)^2}{X_C} \\\\ X_C&=\\frac{(1.9052 \\times 10^3)^2}{54.7 \\times 10^3} \\\\ &= 66.36\\; W\\\\ C&= \\frac{1}{2 \\pi f X_C}\\\\ &=\\frac{1}{2 \\pi \\times 50 \\times 66.36}\\\\ &=47.96 \\mu F \\end{aligned}$$\n\nTherefore, the correct answer is **48** (acceptable range: [47, 49])."
-      },
-      "answer": "48"
+      }
     },
     "ee:2016:q41": {
       "question_uid": "ee:2016:q41",
@@ -1863,8 +1823,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "Base current,\n\n$$\\begin{aligned} I_B&=\\frac{30 \\times 10^3}{\\sqrt{3} \\times 13.8}=1255.109A\\\\ I_f&=4270A\\\\ I_{p.u.}&=\\frac{4270}{1255.109}=3.402p.u.\\\\ I_{g1}&=\\frac{E_a}{X_1+(X_2||X_0)}\\\\ &\\text{where, }\\\\ X_0&=X_0+3(Z_n+Z_f)\\\\ X_0&=3Z_n+0.35\\\\ 3.402&=\\frac{1.0}{0.15+\\frac{0.15 \\times (3Z_n+0.35)}{0.15+3Z_n+0.35}}\\\\ &\\text{Solving the equation,}\\\\ Z_n&=1.07 \\;p.u. \\end{aligned}$$\n\nTherefore, the correct answer is **1.1** (acceptable range: [1.05, 1.15])."
-      },
-      "answer": "1.1"
+      }
     },
     "ee:2016:q42": {
       "question_uid": "ee:2016:q42",
@@ -1909,8 +1868,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "According to negative sequence phasors.\n\n<img src=\"/question-images/ee/2016/ee-2016-921d235fe3.webp\" />\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2016:q43": {
       "question_uid": "ee:2016:q43",
@@ -1955,8 +1913,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "Input  power factor = power factor at ac mains =$C.D.F. \\times D.F.$\n\n$=\\frac{2\\sqrt{2}}{\\pi}\\cos \\alpha =\\frac{2\\sqrt{2}}{\\pi}\\cos 30^{\\circ}=0.78$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q44": {
       "question_uid": "ee:2016:q44",
@@ -1999,8 +1956,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "$$\\begin{aligned} m_a&=0.8\\\\ (V_{01})_{peak}&=m_a\\frac{V_d}{2}\\;\\;[m_a\\leq 1]\\\\ &=0.8 \\times 250=200V\\\\ (I_{01})_{peak}&=\\frac{(V_{01})_{peak}}{Z_1}\\\\ &=\\frac{200}{\\sqrt{R^2}+(\\omega L)^2}\\\\ &=\\frac{200}{\\sqrt{12^2+16^2}}=10A \\end{aligned}$$\n\nTherefore, the correct answer is **10** (acceptable range: [9.9, 10.1])."
-      },
-      "answer": "10"
+      }
     },
     "ee:2016:q45": {
       "question_uid": "ee:2016:q45",
@@ -2043,8 +1999,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
         "markdown": "$$\\begin{aligned} \\text{Energy}&=\\int_{0}^{T_1}V\\cdot i dt+\\int_{0}^{T_2}V\\cdot i dt\\\\ &=V\\left [ \\frac{1}{2}IT_1 \\right ]+I\\left [ \\frac{1}{2}VT_2 \\right ]\\\\ &=600\\left [ \\frac{150}{2}\\times 1 \\times 10^{-6} \\right ]\\\\ &+100\\left [ \\frac{1}{2} \\times 600 \\times 1 \\times 10^{-6} \\right ]\\\\ \\text{ Energy}&=75mJ \\end{aligned}$$\n\nTherefore, the correct answer is **75** (acceptable range: [74, 76])."
-      },
-      "answer": "75"
+      }
     },
     "ee:2016:q46": {
       "question_uid": "ee:2016:q46",
@@ -2087,8 +2042,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
         "markdown": "400V, 50Hz transformer, $P_i=5000Watt$\n\nWhen,\n\n200V, 25Hz,\n\n$P_i=2000 Watt$\n\n416V, 52Hz,  $\\frac{P_h}{P_e}=?$\n\n$$\\begin{aligned} P_i &=P_h+P_e \\\\ P_h & \\propto f B_m^x \\\\ P_e& \\propto f^2B_m^2 \\end{aligned}$$\n\nas in the problem\n\n$$\\begin{aligned} \\frac{V}{f}&=\\frac{400}{50}=\\frac{416}{52}=8 \\\\ P_h&=Af \\\\ P_e&=Bf^2 \\end{aligned}$$\n\nFrom given data,\n\n$$\\begin{aligned} 2000 &=(P_{25hZ})){i} \\\\ &= A(25)+B(25)^2\\;\\;...(i)\\\\ 5000 &=(P_{50Hz})_i \\\\ &= A(50)+B(50)^2\\;\\;...(ii) \\end{aligned}$$\n\nSolving equation (i) and (ii),\n\n$$\\begin{aligned} A &=60,\\;\\; B=0.8 \\\\ (P_h)_{52Hz}&=Af=60 \\times 52 \\\\ &= 3120 Watt\\\\ (P_e)_{52Hz}&=Bf^2=0.8 \\times (52)^2 \\\\ &= 2163.2 Watt\\\\ \\frac{(P_h)_{52Hz}}{(P_e)_{52Hz}}&=\\frac{3120}{2163.2}=1.4423 \\end{aligned}$$\n\nTherefore, the correct answer is **1.45** (acceptable range: [1.4, 1.5])."
-      },
-      "answer": "1.45"
+      }
     },
     "ee:2016:q47": {
       "question_uid": "ee:2016:q47",
@@ -2131,8 +2085,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-7823dca8a7.webp\" />\n\n$$\\begin{aligned} \\text{Stay losses} &= 375 \\; \\text{Watt}\\\\ & \\text{Total copper losses}\\\\ &= I_a^2R_a+I_{sh}^2R_{sh}\\\\ &= 50^2 \\times (0.01)+(5^2)\\times 44\\\\ &= 1125\\; \\text{Watt}\\\\ h &=\\frac{\\text{Output}}{\\text{Output}+\\text{losses}} \\\\ &= \\frac{220 \\times 45}{220 \\times 45+(1125)+375}\\\\ &= 0.86842 \\;\\text{or} \\; 86.84\\% \\end{aligned}$$\n\nTherefore, the correct answer is **87** (acceptable range: [86, 88])."
-      },
-      "answer": "87"
+      }
     },
     "ee:2016:q48": {
       "question_uid": "ee:2016:q48",
@@ -2175,8 +2128,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "Synchronous motor at leading p.f.\n\n$$\\begin{aligned} X_d &=0.8 \\\\ \\phi &= 36.86\\\\ X_q&= 0.6\\\\ R_q&= 0\\\\ \\tan \\psi &=\\frac{V \\sin \\phi +I_aX_a}{V \\cos \\phi }\\\\ \\psi &=56.30 \\end{aligned}$$\n\nFor synchronous motor at leading p.f.\n\n$$\\begin{aligned} \\psi &=\\phi +\\delta \\\\ \\delta &=19.70^{\\circ} \\\\ E&=V \\cos \\delta +I_dX_d \\\\ I_d&=I_a \\sin f=0.831 \\\\ E&=(1)\\cos (19.7)+(0.831)(0.8) \\\\ &=1.606 \\end{aligned}$$\n\nTherefore, the correct answer is **1.6** (acceptable range: [1.58, 1.62])."
-      },
-      "answer": "1.6"
+      }
     },
     "ee:2016:q49": {
       "question_uid": "ee:2016:q49",
@@ -2221,8 +2173,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Transformers",
         "markdown": "22 KVA, 2200 V/220 V, 50Hz\n\nDistribution transformer is to be connected as on auto transformer to get an output voltage of 2420V.\n\n$(kVA)_{maximum}$ as an auto transformer=?\n\nas voltage rating is 2420 i.e. (2200+220)V additive polarity,\n\n$$\\begin{aligned} (kVA)_{auto} &= (a_{2winding}+1) \\times (kVA)_{2 winding}\\\\ \\text{where, } \\;\\; a_{2winding}&=\\frac{2200}{220}=10 \\\\ (kVA)_{auto} &= (10+1) \\times 22 =242 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2016:q50": {
       "question_uid": "ee:2016:q50",
@@ -2267,8 +2218,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "$$\\begin{aligned} V_{01(rms)}&=\\frac{2\\sqrt{2}}{\\pi}V_s \\cdot \\sin d\\\\ \\text{Pulse width} & \\text{ where } 2d=120^{\\circ}\\\\ d=60^{\\circ}\\\\ V_{01(rms)}&=\\frac{2\\sqrt{2}}{\\pi}V_s \\sin 60^{\\circ}\\\\ &=\\frac{2\\sqrt{2}}{\\pi}V_s \\frac{\\sqrt{3}}{2}=234V \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2016:q51": {
       "question_uid": "ee:2016:q51",
@@ -2311,8 +2261,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
         "markdown": "In first case,\n\n<img src=\"/question-images/ee/2016/ee-2016-1f3a254d95.webp\" />\n\n$$\\begin{aligned} L_1&=2 \\times 10^{-7} \\ln \\frac{D}{r}\\\\ &=2 \\times 10^{-7} \\ln \\left ( \\frac{100}{0.7788} \\right )\\\\ &=0.97\\mu H/m\\\\ L_2&=1.05 \\times 0.97=1.0185 \\mu H/m\\\\ L_2&=2 \\times 10^{-7} \\ln \\left ( \\frac{\\sqrt[3]{D^2 \\times 100}}{0.7788} \\right ) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2016/ee-2016-ed30ebf497.webp\" />\n\n$$\\begin{aligned} \\ln \\left ( \\frac{\\sqrt[3]{D^2 \\times 100}}{0.7788} \\right )&=\\frac{1.0185 \\times 10^{-6}}{2 \\times 10^{-7}}\\\\ &=5.0925\\\\ e^{5.0925}&= \\frac{\\sqrt[3]{D^2 \\times 100}}{0.7788} \\\\ D&=142.7cm=1.427m \\end{aligned}$$\n\nTherefore, the correct answer is **1.44** (acceptable range: [1.41, 1.47])."
-      },
-      "answer": "1.44"
+      }
     },
     "ee:2016:q52": {
       "question_uid": "ee:2016:q52",
@@ -2355,8 +2304,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Steady State AC Analysis",
         "markdown": "If we observe the parallel LC combination, we get that at $\\omega$=1000 rad/sec the parallel LC is at resonance, thus it is open circuited.\n\nThe circuit given in question can be redrawn as\n\n<img src=\"/question-images/ee/2016/ee-2016-f95f11f2d6.webp\" />\n\nSo, $I=\\frac{10 \\sin 1000t}{10}=\\sin 100t$\n\nSo, peak value is 1 Amp.\n\nTherefore, the correct answer is **1**."
-      },
-      "answer": "1"
+      }
     },
     "ee:2016:q53": {
       "question_uid": "ee:2016:q53",
@@ -2399,8 +2347,7 @@
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
         "markdown": "$V(t)=100+10 \\sin (\\omega t)-5 \\sin (3\\omega t) \\;\\;\\text{volt}$\n\nmoving coil,\n\n$V_1=V_{avg.}=100V$\n\nmoving iron,\n\n$V_2=v_{rms}=\\sqrt{100^2+\\frac{1}{2}(10^2+5^2)}$\n\n$\\;\\;=100.312$\n\n$V_2-V_1=0.312$\n\nTherefore, the correct answer is **0.315** (acceptable range: [0.3, 0.33])."
-      },
-      "answer": "0.315"
+      }
     },
     "ee:2016:q54": {
       "question_uid": "ee:2016:q54",
@@ -2443,8 +2390,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Resonance and Locus Diagrams",
         "markdown": "The resonant frequency for the circuit is\n\n$\\omega _0=\\frac{1}{\\sqrt{LC}}\\sqrt{\\frac{R_L^2-L/C}{R_C^2-L/C}}$\n\nSince, $(R_L=R_C=R)$\n\nSo the circuit will have zero real part of admittance\n\nwhen, $R=\\sqrt{\\frac{L}{C}}=\\sqrt{\\frac{0.02}{100\\mu F}}=14.14\\Omega$\n\nTherefore, the correct answer is **14.1** (acceptable range: [14, 14.2])."
-      },
-      "answer": "14.1"
+      }
     },
     "ee:2016:q55": {
       "question_uid": "ee:2016:q55",
@@ -2487,8 +2433,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "<img src=\"/question-images/ee/2016/ee-2016-557c85ac02.webp\" />\n\nApplying KCL at node A, we get\n\n$\\frac{V_A}{5}+\\frac{V_A-10}{10}+\\frac{V_A+10I_1}{5}=5$\n\nSo, $2V_A+V_A-10+2V_A+20I_1=5$\n\n$5V_A+20I_1=60$\n\nSince,  $I_1=\\frac{V_A-10}{10}$\n\nSo, $5V_A+2V_A-20=60$\n\n$7V_A=80$\n\n$V_A=11.42 volt$\n\nTherefore, the correct answer is **11.375** (acceptable range: [11.25, 11.5])."
-      },
-      "answer": "11.375"
+      }
     }
   }
 }

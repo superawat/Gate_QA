@@ -51,7 +51,7 @@
           "connected-components"
         ]
       },
-      "rationale": "GATE CSE 2004 Q81 examines intersection and union connectivity of graphs on the same vertex set. If G1 \u2229 G2 is disconnected, then G1 \u222a G2 must contain a cycle. It bridges algorithm graph properties with discrete mathematics graph connectivity.",
+      "rationale": "GATE CSE 2004 Q81 examines intersection and union connectivity of graphs on the same vertex set. If G1 ∩ G2 is disconnected, then G1 ∪ G2 must contain a cycle. It bridges algorithm graph properties with discrete mathematics graph connectivity.",
       "syllabusRef": "GATE 2025 CSE Section 1 (Discrete Mathematics) and Section 2 (Algorithms)"
     },
     "go:1073": {
@@ -80,6 +80,31 @@
       },
       "rationale": "GATE CSE 2004 Q79 asks for the number of simple graphs on n labeled vertices having at least (n^2 - 3n)/2 edges. Out of N = C(n,2) = (n^2 - n)/2 possible edges, selecting at least (n^2 - 3n)/2 is equivalent to omitting at most n edges, giving sum_{k=0}^n C(N, k) (Option D). It bridges combinatorics and counting with graph theory.",
       "syllabusRef": "GATE 2025 CSE Section 1 (Discrete Mathematics: Combinatorics and Graph Theory)"
+    },
+    "go:1371": {
+      "question_uid": "go:1371",
+      "exam_uid": "cse:2005:set1:main:q35",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "prog-ds",
+          "topicSlug": "trees-heaps",
+          "subtopicSlug": "binary-search-tree"
+        },
+        "secondary": [
+          {
+            "subjectSlug": "discrete-math",
+            "topicSlug": "combinatorics",
+            "subtopicSlug": "counting"
+          }
+        ],
+        "conceptTags": [
+          "binary-search-tree",
+          "catalan-number",
+          "counting"
+        ]
+      },
+      "rationale": "Counts distinct binary search tree structures on 4 distinct keys (C_4 = 14) under Programming & Data Structures (Binary Search Tree), evaluated via Catalan numbers under Combinatorics.",
+      "syllabusRef": "GATE CSE Section 2 (Programming and Data Structures / Trees)"
     }
   }
 }

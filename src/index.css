@@ -5469,6 +5469,7 @@ pre.prettyprint,
   margin: 1rem 0;
   padding: 1rem 1.25rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-feature-settings: "liga" 0;
   font-size: 1rem;
   line-height: 1.65;
   border-radius: 0.5rem;
@@ -5479,6 +5480,11 @@ pre.prettyprint,
   background-color: #f6f8fa;
   border: 1px solid #d0d7de;
   color: inherit !important;
+}
+
+/* TOC & Math symbols: ensure complement bars (overline), brackets, and primes render distinctly */
+mjx-container svg {
+  shape-rendering: geometricPrecision;
 }
 
 /* Ensure code element and inner text strictly inherit the question text color */

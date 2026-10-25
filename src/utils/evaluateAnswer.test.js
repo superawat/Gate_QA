@@ -3480,6 +3480,61 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
         expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
       });
+
+      test("evaluates ec:2005:q20 (GATE EC 2005 Q20) as MCQ Option B (causal system impulse response)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "B",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:3353 (GATE IT 2008 Q43) as MCQ Option C (radix sort time complexity Theta(n log n))", () => {
+        const record = {
+          type: "MCQ",
+          answer: "C",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "c")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:840 (GATE CSE 2002 Q2.10) as MCQ Option A (randomized search expected comparisons n)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:2618 (GATE CSE 1995 Q2.6) as MCQ Option A (optimal non-preemptive schedule with 1 idle time)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:411922 (GATE Civil 2023 Set 2 GA Q2) as MCQ Option A (antonym analogy Kind:Cruel)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T16:30:37.436Z",
+  "generatedAt": "2026-10-25T18:50:27.201Z",
   "shardKey": "ee-2024-s1",
   "yearSetKey": "ee-2024-s1",
   "yearSetIdentity": "ee:2024:set-1",
@@ -52,8 +52,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "Option :A\n\n$\\text { det }=0$\n\nCannot have inverse.\n\nOption :B\n\n$\\text { det }=0$\n\nCannot have inverse.\n\nOption : D\n\n$\\text { det }=0$\n\nIt cannot have inverse.\n\nOption : C\n\n$|A| \\neq 0$\n\n$\\therefore$ It has inverse.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q2": {
       "question_uid": "ee:2024:q2",
@@ -98,8 +97,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Basics of Electric Circuit",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-695509cfbc.webp\" />\n\nA point at which more than two elements are joints together is called Junction.\n\n$A, B, C, D, E$ and $F$ are junction.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q3": {
       "question_uid": "ee:2024:q3",
@@ -142,11 +140,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electric Circuits - Network Theorems & Ideal Source Power Delivery",
+        "concept": "Electric Circuits - Network Theorems",
         "markdown": "- **Circuit Representation & Node Voltage Analysis:**\n  - The circuit comprises:\n    - Left branch: Ideal $10\\text{ V}$ independent voltage source in series with resistance $\\alpha\\ \\Omega$.\n    - Middle branch: $1\\ \\Omega$ shunt resistor connected to common ground.\n    - Right branch: Series combination of $2\\ \\Omega$ resistor and ideal $10\\text{ A}$ current source directed upwards into the central node.\n  - Let $V_1$ denote the node voltage at the junction between the $\\alpha\\ \\Omega$, $1\\ \\Omega$, and $2\\ \\Omega$ resistors, with the bottom conductor taken as $0\\text{ V}$ reference ground.\n\n- **KCL at Node $V_1$:**\n  - Let current leaving the $10\\text{ V}$ source be $I$ (flowing through $\\alpha\\ \\Omega$ from left to right):\n    $$I = \\frac{10 - V_1}{\\alpha}$$\n  - Applying Kirchhoff's Current Law at node $V_1$:\n    $$I + 10 = \\frac{V_1}{1}$$\n  - Substituting $V_1 = 10 - \\alpha I$ into the KCL relation:\n    $$I + 10 = 10 - \\alpha I \\implies I(1 + \\alpha) = 0$$\n  - For any physical positive resistance $\\alpha > 0$ (or $\\alpha \\neq -1$):\n    $$I = 0\\text{ A}$$\n\n- **Power Delivered by the $10\\text{ V}$ Source:**\n  - Since $I = 0\\text{ A}$, the entire $10\\text{ A}$ from the current source flows down through the $1\\ \\Omega$ shunt resistor, establishing node voltage $V_1 = (10\\text{ A})(1\\ \\Omega) = 10\\text{ V}$.\n  - The voltage across $\\alpha\\ \\Omega$ is $10\\text{ V} - 10\\text{ V} = 0\\text{ V}$, confirming zero current through the source.\n  - The power delivered by the ideal $10\\text{ V}$ source is:\n    $$P = V \\times I = 10\\text{ V} \\times 0\\text{ A} = 0\\text{ W}$$\n\nTherefore, the correct answer is **Option A (0)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q4": {
       "question_uid": "ee:2024:q4",
@@ -191,8 +188,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Transients and Steady State Response",
         "markdown": "$$\\begin{aligned}\n\n& L_{e q}=1+1+(1 \\| 1)=2.5 \\mathrm{H} \\\\\n\n& R_{e q}=2 \\Omega\n\n\\end{aligned}$$\n\nTime constant, $\\tau=\\frac{L_{e q}}{R_{e q}}=\\frac{2.5}{2}=1.25$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q5": {
       "question_uid": "ee:2024:q5",
@@ -237,8 +233,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
         "markdown": "$$\\begin{aligned}\n\n& z(t)=x[t] * y[t] \\\\\n\n& z(t)=x[t] * x[-t]\n\n\\end{aligned}$$\n\nReplace $t$ with $-t$\n\n$$\\begin{aligned}\n\n& z[-t]=x[-t]^{*} x[t] \\\\\n\n& z[-t]=x[t] * x[-t] \\\\\n\n& z[-t]=z[t]\n\n\\end{aligned}$$\n\neven function.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q6": {
       "question_uid": "ee:2024:q6",
@@ -283,8 +278,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Laplace Transform",
         "markdown": "Since $x(t)$ is finite duration signal. So ROC will be $-\\infty \\lt \\sigma \\lt \\infty$.\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q7": {
       "question_uid": "ee:2024:q7",
@@ -329,8 +323,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "$s=\\frac{1000-960}{1000}=0.04$\n\n$\\frac{\\text { Rotor output }}{\\text { Rotor input }}=1-s$\n\n$\\eta=1-0.04=0.96$ or $96 \\%$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q8": {
       "question_uid": "ee:2024:q8",
@@ -373,11 +366,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electrical Machines - Single-Phase Transformer Terminal Polarities",
+        "concept": "Electrical Machines - Transformers",
         "markdown": "- **Dot Convention & Induced Voltage Fundamentals:**\n  - In a two-winding transformer:\n    1. **Dot Placement & Induced EMFs ($E_p, E_s$):**\n       - The dot marking convention specifies that the induced voltages in magnetically coupled windings must have identical instantaneous polarities at the dotted terminals.\n       - In the given diagrams, the primary dot is at the **bottom terminal**, and the secondary dot is at the **top terminal**.\n       - Therefore, whenever the bottom primary terminal is positive, the top secondary terminal must simultaneously be positive.\n    2. **Secondary Terminal Open-Circuit Voltage ($V_s$):**\n       - With the secondary open-circuited ($I_s = 0$), the terminal voltage $V_s$ equals the induced secondary emf ($V_s = E_s$). The polarities assigned to $V_s$ and $E_s$ at the secondary terminals must match.\n    3. **Primary Counter-EMF ($E_p$):**\n       - By Lenz's law, the induced primary back-emf $E_p$ opposes the applied voltage $V_p$ ($V_p \\approx -E_p$).\n\n- **Evaluation of Diagram Options:**\n  - In **Option B**:\n    - Primary dot (bottom terminal) is positive ($E_p$ has $-$ at top, $+$ at bottom).\n    - Secondary dot (top terminal) is positive ($E_s$ has $+$ at top, $-$ at bottom).\n    - Hence, both dotted terminals have identical positive polarity, completely satisfying the dot convention.\n    - Open-circuit secondary terminal voltage $V_s$ has $+$ at top and $-$ at bottom, precisely matching $E_s$.\n    - Primary applied voltage $V_p$ has $-$ at top and $+$ at bottom, aligned with counter-emf $E_p$.\n  - In diagrams A and C, one dotted terminal is positive while the other is negative, violating the fundamental dot rule. In diagram D, $V_s$ opposes $E_s$.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q9": {
       "question_uid": "ee:2024:q9",
@@ -422,8 +414,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Switch Gear and Protection",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-2a79aafd7c.webp\" />\n\nAssume,\n\n$$\\begin{aligned}\n\n|z| & =|r+j X|=1 \\text { p.u., } \\\\\n\nI & =1 \\text { p.u. }\n\n\\end{aligned}$$\n\nBy opening branches ring becomes radial open $b_{1}$\n\n<img src=\"/question-images/ee/2024/ee-2024-9cf6062eaf.webp\" />\n\nTotal power loss,\n\n$$\\begin{aligned}\n\nP_{L 1} & =1^{2} \\times 2+2^{2} \\times 4+3^{2} \\times 1 \\\\\n\n& =27 \\text { p.u. }\n\n\\end{aligned}$$\n\nOpen $b_{2}$\n\n<img src=\"/question-images/ee/2024/ee-2024-7ece891b26.webp\" />\n\n$$\\begin{aligned}\n\nP_{L 2} & =\\left(3^{2} \\times 4+2^{2} \\times 2+1^{2} \\times 4\\right) \\\\\n\n& =48 \\text { p.u. }\n\n\\end{aligned}$$\n\nOpen $b_{3}$\n\n<img src=\"/question-images/ee/2024/ee-2024-f09ee6b2c3.webp\" />\n\n$P_{L 3}=\\left(2^{2} \\times 1+1^{2} \\times 4+1^{2} \\times 4\\right)$\n\n$=12 \\text { p.u. } \\leftarrow \\text { mininum power loss }$\n\nOpen $b_{4}$\n\n<img src=\"/question-images/ee/2024/ee-2024-e4512880e8.webp\" />\n\nBy opening branch $b_{3}$ Power loss is minimum.\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q10": {
       "question_uid": "ee:2024:q10",
@@ -468,8 +459,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Mathematical Models of Physical Systems",
         "markdown": "Transfer function\n\n$$\\begin{aligned}\n\n\\frac{C(s)}{-R(s)} & =\\frac{G(s)}{1-G(s)-G(s)}=\\frac{G(s)}{1-2 G(s)} \\\\\n\n\\frac{C(s)}{R(s)} & =\\frac{-G(s)}{1-2 G(s)}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2024:q11": {
       "question_uid": "ee:2024:q11",
@@ -514,8 +504,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Time Response Analysis",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-a866a17f57.webp\" />\n\nIn system -1\n\n$$\\begin{aligned}\n\n\\xi_{1} & =\\cos \\theta=\\cos 60^{\\circ}=0.5 \\\\\n\n\\omega_{n 1} & =3 \\mathrm{rad} / \\mathrm{sec}\n\n\\end{aligned}$$\n\nSettling time $-t_{s 1}=\\frac{4}{\\xi \\omega_{n}}=\\frac{4}{0.5 \\times 3}=\\frac{8}{3}=2.67 \\mathrm{sec}$\n\nIn system -2\n\n$$\\begin{aligned}\n\n\\xi_{2} & =\\cos \\theta_{2}=\\cos 70^{\\circ} \\\\\n\n\\omega_{n 2} & =1 \\mathrm{rad} / \\mathrm{sec}\n\n\\end{aligned}$$\n\nSettling time $-t_{s 2}=\\frac{4}{\\xi \\omega_{n}}=\\frac{4}{\\cos 70^{\\circ} \\times 1}=11.69 \\mathrm{sec}$\n\nSo,\n\n$t_{s 2} > t_{s 1}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q12": {
       "question_uid": "ee:2024:q12",
@@ -560,8 +549,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Feedback Characteristics of Control Systems",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-99b97b8e6d.webp\" />\n\nTransfer function $\\rightarrow \\frac{40\\left(1+\\frac{s}{40}\\right)}{20\\left(1+\\frac{s}{40}\\right)(1+s)}$\n\nAnswer $=\\frac{2}{s+1}$\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q13": {
       "question_uid": "ee:2024:q13",
@@ -604,11 +592,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electrical Measurements - Current Transformers (CT) vs Potential Transformers (PT)",
+        "concept": "Electrical and Electronic Measurements - Instrument Transformers",
         "markdown": "- **Operational Features of Current Transformers (CT):**\n  - **(R) Primary current is the line current:** The primary winding of a CT is connected in series with the power transmission line; hence the line current flows directly through it, determined solely by system load.\n  - **(Q) Open circuited secondary is not desirable:** If the secondary of a CT is open-circuited while line current flows, the demagnetizing secondary ampere-turns vanish, causing the entire primary current to act as magnetizing current. This produces extreme core saturation, induces lethally high voltages across secondary terminals, and causes severe overheating.\n  - Thus, **$X$ (CT) matches with $Q$ and $R$**.\n\n- **Operational Features of Potential Transformers (PT):**\n  - **(P) Primary is connected in parallel to the grid:** The primary winding of a PT is connected across the high-voltage line/grid to step down voltage for metering.\n  - **(S) Secondary burden affects the primary current:** A PT operates essentially as a conventional step-down voltage transformer; the impedance of connected voltmeters/relays (secondary burden) draws current that is reflected into the primary winding.\n  - Thus, **$Y$ (PT) matches with $P$ and $S$**.\n\n- **Conclusion:**\n  - $X$ matches with $Q$ and $R$; $Y$ matches with $P$ and $S$.\n\nTherefore, the correct answer is **Option C ($X$ matches with $Q$ and $R ; Y$ matches with $P$ and $S$)**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q14": {
       "question_uid": "ee:2024:q14",
@@ -653,8 +640,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Boolean Algebra and Minimization",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-ea285750ef.webp\" />\n\nMinimize function $=\\bar{Q} \\bar{S}+\\bar{P} S$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q15": {
       "question_uid": "ee:2024:q15",
@@ -699,8 +685,7 @@
       "detailed_solution": {
         "concept": "Digital Electronics - Sequential Logic Circuits",
         "markdown": "Based on this trick\n\n$$\\begin{array}{ll|lll}\n\nx & \\oplus & x & = & 0 \\\\\n\nx & \\oplus & \\bar{x} & = & 1 \\\\\n\nx & \\oplus & 1 & = & \\bar{x} \\\\\n\nx & \\oplus & 0 & = & x\n\n\\end{array}$$\n\n$\\overline{x \\oplus y}=x \\odot y=0 \\odot 1=0$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q16": {
       "question_uid": "ee:2024:q16",
@@ -743,11 +728,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Digital Electronics - 4:1 Multiplexer Realization of Boolean Functions",
+        "concept": "Digital Electronics - Combinational Logic Circuits",
         "markdown": "- **Multiplexer Structure & Target Function:**\n  - A 4:1 multiplexer with select lines $S_1 = X$ (MSB) and $S_0 = Y$ (LSB) implements the canonical output:\n    $$F(X, Y) = P \\bar{X}\\bar{Y} + Q \\bar{X}Y + R X\\bar{Y} + S XY$$\n  - Target Boolean function to realize:\n    $$F(X, Y) = X \\bar{Y} + \\bar{X}$$\n\n- **Minimization & Minterm Expansion:**\n  - Expanding $F(X, Y)$ using Boolean algebra:\n    $$F(X, Y) = \\bar{X} + X\\bar{Y} = (\\bar{X} + X)(\\bar{X} + \\bar{Y}) = 1 \\cdot (\\bar{X} + \\bar{Y}) = \\bar{X} + \\bar{Y}$$\n  - In terms of minterms $m(X, Y)$:\n    $$\\bar{X} = \\bar{X}\\bar{Y} + \\bar{X}Y = m_0 + m_1$$\n    $$X\\bar{Y} = m_2$$\n    $$F(X, Y) = m_0 + m_1 + m_2 = \\sum m(0, 1, 2)$$\n\n- **Determining Data Inputs $P, Q, R, S$:**\n  - For input combination $(X, Y) = (0, 0)$: $F(0, 0) = \\bar{0} + \\bar{0} = 1 \\implies \\mathbf{P = 1}$.\n  - For input combination $(X, Y) = (0, 1)$: $F(0, 1) = \\bar{0} + \\bar{1} = 1 \\implies \\mathbf{Q = 1}$.\n  - For input combination $(X, Y) = (1, 0)$: $F(1, 0) = \\bar{1} + \\bar{0} = 1 \\implies \\mathbf{R = 1}$.\n  - For input combination $(X, Y) = (1, 1)$: $F(1, 1) = \\bar{1} + \\bar{1} = 0 \\implies \\mathbf{S = 0}$.\n  - Therefore, the input vector $PQRS$ must be **$1110$**.\n\nTherefore, the correct answer is **Option B ($1110$)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q17": {
       "question_uid": "ee:2024:q17",
@@ -790,11 +774,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Power Electronics - Switching Speed Comparison of Power Semiconductor Devices",
+        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
         "markdown": "- **Device Physics & Switching Speed Comparison:**\n  - The switching speed of power semiconductor devices is governed by whether charge conduction relies on majority carriers (unipolar) or minority carrier injection (bipolar):\n    1. **Power MOSFET (Fastest):**\n       - Unipolar, majority carrier device. Conduction is governed strictly by electric fields creating an inversion channel without minority carrier storage.\n       - Turn-on and turn-off times are determined solely by parasitic gate-source and gate-drain capacitances ($10 - 100\\text{ ns}$), operating effortlessly at high switching frequencies ($> 100\\text{ kHz}$).\n    2. **IGBT:**\n       - Hybrid device (MOS gate controlling a bipolar transistor). Features conductivity modulation by minority carrier injection in the drift region, which results in a **current tail** during turn-off, restricting switching frequencies to $20 - 50\\text{ kHz}$.\n    3. **GTO & SCR:**\n       - Four-layer ($pnpn$) minority carrier latching thyristor devices. Turn-off requires sweeping out stored minority charge via long carrier lifetime recombination ($t_q \\approx 5 - 100\\ \\mu\\text{s}$), restricting switching frequencies to below $1 - 2\\text{ kHz}$.\n\n- **Conclusion:**\n  - For comparable power ratings, the **Power MOSFET** is the fastest switching device.\n\nTherefore, the correct answer is **Option D (Power MOSFET)**.",
         "images": []
-      },
-      "answer": "D"
+      }
     },
     "ee:2024:q18": {
       "question_uid": "ee:2024:q18",
@@ -839,8 +822,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Phase Controlled Rectifiers",
         "markdown": "Output voltage is controlled if\n\n$\\alpha>\\theta$\n\nGiven: $f=50 \\mathrm{~Hz}, R=10 \\Omega, L=18.37 \\mathrm{mH}$\n\n$$\\begin{aligned}\n\n& \\theta=\\tan ^{-1}\\left(\\frac{\\omega L}{R}\\right) \\\\\n\n& \\theta=\\tan ^{-1}\\left(\\frac{2 \\pi \\times 50 \\times 18.37 \\times 10^{-3}}{10}\\right)\n\n\\end{aligned}$$\n\n$\\theta=29.989^{\\circ}$\n\nSo, $\\alpha_{\\min }$ can be $30^{\\circ}$.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q19": {
       "question_uid": "ee:2024:q19",
@@ -885,8 +867,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Probability and Statistics",
         "markdown": "$$\\begin{aligned}\n\nX^{2} & =\\{100,81,64, \\ldots, 4,1,0,1,4,9, \\ldots, 81,100\\} \\\\\n\nP(\\text { Choosing } 0) & =\\frac{1}{21}, P(\\text { choosing } 1)=\\frac{2}{21}\n\n\\end{aligned}$$\n\nSo, $X^{2}$ is not uniformly distributed.\n\n$(X-5)^{2}=\\{225,199, \\ldots .4,1,0,1,4,9,16,25\\}$\n\nAgain probability of choosing any number is not equal so\n\n$(X-5)^{2}$ is also not uniformly - distributed.\n\n$(X+10)^{2}=\\{0,1,4,9,16, \\ldots 81,100,121, \\ldots .400\\}$\n\n$P($ Choosing any number $)=\\frac{1}{21}$ so is it uniformly-distributed\n\nNow, $\\quad X^{3}=\\{-1000,-729,-512, \\ldots,-8,-1,0,1,8, \\ldots 729,1000\\}$\n\nAgain $\\mathrm{P}($ Choosing any number $)=\\frac{1}{21}=$ Constant\n\nSo, it is also uniformly-distributed.\n\nTherefore, the correct option(s) are **B, D**."
-      },
-      "answer": "B, D"
+      }
     },
     "ee:2024:q20": {
       "question_uid": "ee:2024:q20",
@@ -931,8 +912,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$$\\begin{aligned}\n\n& \\text { Let us take }(a), \\quad f(z)=z^{2}-z \\\\\n\n& u+i v=x^{2}-y^{2}+i(2 x y)-x-i y \\\\\n\n& \\Rightarrow \\quad u=x^{2}-y^{2}-x, V=2 x y-y\n\n\\end{aligned}$$\n\nNow by $\\mathrm{C}-\\mathrm{R}$ equation,\n\n$u_{x}=V_{y}$ and $u_{y}=-V_{x}$\n\n$\\Rightarrow \\quad(2 x-1)=(2 x-1)$ and $-2 y=-(2 y)$\n\ni.e. C-R equation are satisfied.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2024:q21": {
       "question_uid": "ee:2024:q21",
@@ -975,8 +955,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Complex Variables",
         "markdown": "$f(z)=\\left(1+z^{2}+\\frac{z^{4}}{\\underline{2}}+\\frac{z^{6}}{\\underline{6}}+\\ldots .\\right)+\\left(1-\\frac{z^{2}}{\\underline{2}}+\\frac{z^{4}}{\\underline{4}}+\\ldots . .\\right)$\n\nIt is series is of even powers.\n\n$\\therefore$ Coefficient of $z^{5}=0$.\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ee:2024:q22": {
       "question_uid": "ee:2024:q22",
@@ -1019,8 +998,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "$$\\begin{aligned}\n\nA & =\\left[\\begin{array}{ll}\n\n1 & 2 \\\\\n\n3 & 4\n\n\\end{array}\\right]\\left[\\begin{array}{ll}\n\n1 & 2 \\\\\n\n3 & 4\n\n\\end{array}\\right]=\\left[\\begin{array}{cc}\n\n7 & 10 \\\\\n\n15 & 22\n\n\\end{array}\\right] \\\\\n\n\\lambda_{1}+\\lambda_{2} & =\\operatorname{Trace}\\\\\n\n& =22+7 \\\\\n\n& =29\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **29**."
-      },
-      "answer": "29"
+      }
     },
     "ee:2024:q23": {
       "question_uid": "ee:2024:q23",
@@ -1063,8 +1041,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Fourier Transform",
         "markdown": "$$\\begin{aligned}\n\nt x(t) & \\rightleftarrows j \\frac{d X(\\omega)}{d \\omega} \\\\\n\nf(t) & =\\frac{t x(t)}{j} \\rightleftarrows \\frac{d X(\\omega)}{d \\omega}=F(\\omega) \\\\\n\n\\left.\\frac{d X(\\omega)}{d \\omega}\\right|_{\\omega=0} & =\\left.F(\\omega)\\right|_{\\omega=0}=\\text { area of } f(t) \\\\\n\n& =\\int_{-\\infty}^{\\infty} \\frac{t x(t)}{j} d t=\\text { area of odd-function } \\\\\n\n& =0\n\n\\end{aligned}$$\n\n$$\\left[\\begin{array}{l}\n\n\\because x(t)=\\text { even-function } \\\\\n\n\\therefore \\frac{t}{j} x(t)=\\text { odd-function }\n\n\\end{array}\\right]$$\n\nTherefore, the correct answer is **0**."
-      },
-      "answer": "0"
+      }
     },
     "ee:2024:q24": {
       "question_uid": "ee:2024:q24",
@@ -1107,8 +1084,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Economic Power Generation and Load Dispatch",
         "markdown": "$\\lambda=7400 \\mathrm{Rs} / \\mathrm{MWhr}$\n\n$I_{C A}\\left(P_{G A}\\right)=\\frac{2000}{100} P_{G A}+8000$\n\n$$\\begin{aligned}\n\nI_{C B}\\left(P_{G B}\\right) & =40 P_{G B}+6000 \\\\\n\n\\lambda & =I_{C A}=I_{C B}=7400 \\\\\n\n200 P_{G A}+8000 & =7400 \\\\\n\nP_{G A} & =-600 \\\\\n\nP_{G A} & \\\\lt0 \\\\\n\nP_{G B} & =\\frac{7400-6000}{40}=35 \\\\\n\nP_{G A}+P_{G B} & =35 \\mathrm{MW}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **35**."
-      },
-      "answer": "35"
+      }
     },
     "ee:2024:q25": {
       "question_uid": "ee:2024:q25",
@@ -1151,8 +1127,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Choppers",
         "markdown": "$$\\begin{aligned}\n\nt_{\\mathrm{cm}} & =\\frac{C}{I_{0}} V_{s} \\\\\n\n& =\\frac{10 \\cdot 10^{-6}}{10} \\cdot 50 \\\\\n\n& =50 \\mu \\mathrm{s}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **50**."
-      },
-      "answer": "50"
+      }
     },
     "ee:2024:q26": {
       "question_uid": "ee:2024:q26",
@@ -1197,8 +1172,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "We know that: directional derivative of '$f$' at $P(1,1,1)$ in the direction of $\\vec{a}$ is given by\n\n$$\\begin{aligned}\n\n\\text { Directional derivative } & =\\nabla f \\cdot \\frac{\\hat{a}}{|\\bar{a}|} \\\\\n\n\\nabla f & =\\hat{i} \\frac{\\partial f}{\\partial x}+\\hat{j} \\frac{\\partial f}{\\partial y}+\\hat{k} \\frac{\\partial f}{\\partial z} \\\\\n\n\\nabla f & =i \\frac{5}{x}+j \\frac{3}{y}+k \\frac{4}{z} \\\\\n\n(\\nabla f)_{(1,1,1)} & =5 i+3 j+4 k\n\n\\end{aligned}$$\n\n$\\therefore$ Directional derivative $=\\overline{\\nabla f} \\cdot \\frac{\\bar{a}}{|\\bar{a}|}=(5 i+3 j+4 k) \\cdot \\frac{(2 i+j+2 k)}{\\sqrt{2^{2}+1^{2}+2^{2}}}=\\frac{21}{3}=7$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q27": {
       "question_uid": "ee:2024:q27",
@@ -1243,8 +1217,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Linear Time Invariant Systems",
         "markdown": "System will follow law of superposition. Therefore, system will be linear.\n\nTime-invariance check:\n\n$y\\left(t-t_{0}\\right)=e^{-\\left(t-t_{0}\\right)} \\int_{-\\infty}^{t-t_{0}} e^{\\tau} \\cdot x(\\tau) d \\tau$\n\nFor input $x\\left(t-t_{0}\\right)$, output will be\n\n$y(t)=e^{-t} \\int_{-\\infty}^{t} e^{\\tau} \\cdot x\\left(\\tau-t_{0}\\right) d \\tau$\n\nPut $\\tau-t_{o}=k$, then $d \\tau=d k$ and for $\\tau=t, k=t-t_{0}$\n\n$$\\begin{aligned}\n\n& =e^{-t} \\int_{-\\infty}^{t-t_{0}} e^{k+t_{0}} \\cdot x(k) d k \\\\\n\n& =e^{-t} \\times e^{t o} \\times \\int_{-\\infty}^{t-t_{0}} e^{k} \\cdot x(k) d k=e^{-\\left(t-t_{0}\\right)} \\times \\int_{-\\infty}^{t-t_{0}} e^{k} \\cdot x(k) d k \\\\\n\n& =e^{-\\left(t-t_{0}\\right)} \\times \\int_{-\\infty}^{t-t_{0}} e^{\\tau} \\cdot x(\\tau) d \\tau\n\n\\end{aligned}$$\n\nSince,\n\n$y(t)=y\\left(t-t_{0}\\right)$\n\nSo, the system is time-invariant.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q28": {
       "question_uid": "ee:2024:q28",
@@ -1289,8 +1262,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
         "markdown": "$$\\begin{aligned}\n\n\\left\\{T_{1} x\\right\\}[n] & =x[0]+x[1]+\\ldots+x[n] \\\\\n\n\\left\\{T_{1} x\\right\\}[n]^{-} & =\\sum_{K=0}^{n} x[K]\n\n\\end{aligned}$$\n\nLet,\n\n$$\\begin{aligned}\n\nx[K] & =u[K] \\\\\n\n\\mid x[K] & =|u[K]| \\\\\n\n\\left|\\left\\{T_{1} x\\right\\}[n]\\right| & =\\left|\\sum_{K=0}^{n} u[K]\\right|=\\sum_{K=0}^{n} 1=n\n\n\\end{aligned}$$\n\n$\\mid\\left[\\left.T_{1} x(n)\\right|_{n=\\infty}=\\infty\\right.$ system is not BIBO stable\n\n$$\\begin{aligned}\n\n\\left\\{T_{2} x\\right\\}[n] & =x[0]+\\frac{1}{2} x[1]+\\cdots+\\frac{1}{2^{n}} x[n] \\\\\n\n& =\\sum_{K=0}^{n}\\left(\\frac{1}{2}\\right)^{K} x(K)\n\n\\end{aligned}$$\n\nLet,\n\n$$\\begin{aligned}\n\nx(K) & =u[K] \\\\\n\n|x[K]| & =\\mid u[K] \\\\\n\n\\left\\{T_{2} x\\right\\}[n] & =\\sum_{K=0}^{n}\\left|\\left(\\frac{1}{2}\\right)^{K} u(K)\\right| \\\\\n\n\\left\\{T_{2} x\\right\\}[n] & =\\sum_{K=0}^{n}\\left(\\frac{1}{2}\\right)^{K} \\\\\n\n\\mid\\left[\\left.T_{2} x(n)\\right|_{n=\\infty}\\right. & =\\sum_{K=0}^{\\infty}\\left(\\frac{1}{2}\\right)^{K}=\\frac{1}{1-\\frac{1}{2}}=2 \\text { stable }\n\n\\end{aligned}$$\n\n$T_{1}$ is not BIBO stable but $T_{2}$ is $\\mathrm{BIBO}$ stable.\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2024:q29": {
       "question_uid": "ee:2024:q29",
@@ -1335,8 +1307,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Z-Transform",
         "markdown": "$Y(z)=\\sum_{n=-\\infty}^{\\infty} y(n) z^{-n}=\\sum_{n=-\\infty}^{\\infty} x(2 n) z^{-n}$\n\nLet\n\n$2 n=m$\n\nthen\n\n$$\\begin{aligned}\n\nn & =\\frac{m}{2}=\\sum_{m=\\text { even-int. }} x(m) z^{-m / 2} \\\\\n\n& =\\sum_{m=-\\infty}^{\\infty}\\left[\\frac{x(m)+(-1)^{m} x(m)}{2}\\right] z^{-m / 2}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& =\\frac{1}{2}\\left[\\sum_{m=-\\infty}^{\\infty} x(m) z^{-m / 2}+\\sum_{m=-\\infty}^{\\infty}(-1)^{m} x(m) z^{-m / 2}\\right] \\\\\n\n& =\\frac{1}{2}\\left[\\sum_{m=-\\infty}^{\\infty} x(m)\\left(z^{1 / 2}\\right)^{-m}+\\sum_{m=-\\infty}^{\\infty} x(m)\\left(-z^{1 / 2}\\right)^{m}\\right] \\\\\n\n& =\\frac{1}{2}\\left[x\\left(z^{1 / 2}\\right)+x\\left(-z^{1 / 2}\\right)\\right]\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:q30": {
       "question_uid": "ee:2024:q30",
@@ -1381,8 +1352,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-906531fdce.webp\" />\n\n$\\mathrm{pF}=\\frac{\\sqrt{3}}{2}=30^{\\circ} \\text { lagging }$\n\n$$\\begin{aligned}\n\nE & =\\sqrt{(V \\cos 30+I R)^2+\\left(V \\sin 30^{\\circ}+I X\\right)^2} \\\\\n\nE & =\\sqrt{(V \\cos +I R)^2+(V \\sin +I X)} \\\\\n\n\\frac{11 \\mathrm{~K}}{\\sqrt{3}} & =\\sqrt{\\left(V \\cdot \\frac{\\sqrt{3}}{2}\\right)^2+\\left(\\frac{V}{2}+524.86(5)\\right)^2} \\\\\n\n\\left(\\frac{11 \\mathrm{~K}}{\\sqrt{3}}\\right)^2 & =V^2 \\cdot \\frac{3}{4}+\\left(\\frac{V}{2}+2624.319\\right)^2 \\\\\n\n\\left(\\frac{11 \\mathrm{~K}}{\\sqrt{3}}\\right)^2 & =\\frac{3}{4} V^2+\\frac{V^2}{4}+2624.319 \\mathrm{~V}+2624.319^2 \\\\\n\nV_t & =4618.105 \\mathrm{~V} \\\\\n\n(I Z)^2 & =E^2+V^2-2 E V \\cos \\delta \\\\\n\n(2624.319)^2 & =\\left(\\frac{11 \\mathrm{~K}}{\\sqrt{3}}\\right)^2+(4618.105)^2-2\\left(\\frac{11 \\mathrm{~K}}{\\sqrt{3}}\\right)(4618.105) \\cos \\delta \\\\\n\n\\delta & =20.96 \\\\\n\n\\mathrm{pF} & =\\cos (20.96+30)=0.629 \\text { lagging }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q31": {
       "question_uid": "ee:2024:q31",
@@ -1427,8 +1397,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Per Unit System",
         "markdown": "$$\\begin{aligned}\n\nP_{1} & =m P_{2} \\\\\n\nP_{1} & =\\frac{1 \\times 1}{\\beta x} \\sin \\theta \\\\\n\nP_{2} & =\\frac{1 \\times 1}{\\gamma x} \\sin \\theta \\\\\n\n\\frac{1 \\times 1}{\\beta x} \\sin \\theta & =m \\frac{1 \\times 1}{\\gamma x} \\sin \\theta \\\\\n\n\\frac{1}{\\beta} & =\\frac{m}{\\gamma} \\Rightarrow \\gamma=m \\beta\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q32": {
       "question_uid": "ee:2024:q32",
@@ -1473,8 +1442,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-268d4bcdfd.webp\" />\n\n$$\\begin{aligned}\n\n& V_{\\text {Th }}=\\frac{12 \\times 50 k}{150 k}=4 \\mathrm{~V} \\\\\n\n& R_{\\text {Th }}=50 \\mathrm{k} \\| 100 \\mathrm{k}=\\frac{50 \\mathrm{k} \\times 100 \\mathrm{k}}{150 \\mathrm{k}}=33.33 \\mathrm{k} \\Omega\n\n\\end{aligned}$$\n\n$\\mathrm{KVL}$ in input loop,\n\n$4-33.33 k \\times I_{B}-0.7-I_{E} R_{E}=0$\n\n$3.3-33.33 k \\times I_{B}-(1+\\beta) I_{B} \\times 1 k=0$\n\n$\\therefore \\quad I_{B}=\\frac{3.3}{33.33 \\mathrm{k}+101 \\mathrm{k}}=24.56 \\mu \\mathrm{A}$\n\n$I_{C}=\\beta I_{B}=100 \\times 24.56 \\times 10^{-6}=2.46 \\mathrm{~mA}$\n\n$I_{E}=(1+\\beta) I_{B}=2.47 \\mathrm{~mA}$\n\n$\\mathrm{KVL}$ in outer loop :\n\n$$\\begin{aligned}\n\n12-2 k \\times I_{C}- & V_{C E}-I_{E} R_{E}=0 \\\\\n\n& 12-V_{C E}=2 \\mathrm{k} \\times I_{C}+I_{E} \\times 1 \\mathrm{k} \\\\\n\n& 12-V_{C E}=7.39 \\Rightarrow V_{C E}=4.61 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:q33": {
       "question_uid": "ee:2024:q33",
@@ -1519,8 +1487,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Calculus",
         "markdown": "$f^{\\prime \\prime}(t) > 0$\n\nIf $t \\in(-\\infty, \\infty)$\n\n$\\Rightarrow f(t)$ is a parabola open upwards. So, it has only one minima at its stationary point.\n\n$\\therefore f(t)$ cannot have two distinct local minima.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q34": {
       "question_uid": "ee:2024:q34",
@@ -1565,8 +1532,7 @@
       "detailed_solution": {
         "concept": "Engineering Mathematics - Differential Equations",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-97f2db08b7.webp\" />\n\n$\\therefore f(x)$ is differential and $f^{\\prime}(x)$ is continuous but $f^{\\prime}(x)$ is not continuous.\n\nTherefore, the correct answer is **B**."
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:q35": {
       "question_uid": "ee:2024:q35",
@@ -1609,11 +1575,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Linearity of Ordinary Differential Equations",
+        "concept": "Engineering Mathematics (EE) - Differential Equations",
         "markdown": "- **Mathematical Criteria for Linear Differential Equations:**\n  - An ordinary differential equation in dependent variable $x(t)$ is **linear** if and only if:\n    1. The dependent variable $x(t)$ and all its derivatives appear only to the first degree.\n    2. No products of the dependent variable and its derivatives (e.g., $x \\cdot \\frac{dx}{dt}$) exist.\n    3. No transcendental/nonlinear functions of $x(t)$ or its derivatives (e.g., $\\sin(x)$, $e^{dx/dt}$) are present.\n\n- **Option-by-Option Evaluation:**\n  - **Equation A:** $t x(t) + \\frac{dx(t)}{dt} = t^2 e^t$\n    - Standard first-order linear ODE: $\\frac{dx}{dt} + P(t) x = Q(t)$ where $P(t) = t$ and $Q(t) = t^2 e^t$. Linearity holds.\n  - **Equation B:** $\\frac{1}{2} e^t + x(t) \\left(\\frac{dx(t)}{dt}\\right) = 0$\n    - Contains the product $x(t) \\cdot \\frac{dx(t)}{dt}$ of the dependent variable and its derivative. Therefore, it is **nonlinear**.\n  - **Equation C:** $x(t) \\cos t - \\frac{dx(t)}{dt} \\sin t = 1$\n    - Can be written as $-\\sin t \\frac{dx}{dt} + \\cos t x = 1$. The coefficients depend purely on independent variable $t$, and $x, dx/dt$ appear linearly. Linearity holds.\n  - **Equation D:** $x(t) + e^{\\left(\\frac{dx(t)}{dt}\\right)} = 1$\n    - The derivative appears in the exponent of a transcendental function ($e^{dx/dt} = 1 + \\frac{dx}{dt} + \\frac{1}{2!} (\\frac{dx}{dt})^2 + \\dots$), introducing higher-order powers of the derivative. Therefore, it is **nonlinear**.\n\n- **Conclusion:**\n  - Equations B and D are nonlinear.\n\nTherefore, the correct options are **B and D**.",
         "images": []
-      },
-      "answer": "B, D"
+      }
     },
     "ee:2024:q36": {
       "question_uid": "ee:2024:q36",
@@ -1656,11 +1621,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electric Circuits - Symmetrical Components & Sequence Transformations for Two-Phase Networks",
+        "concept": "Electric Circuits - Three-Phase Circuits",
         "markdown": "- **Two-Phase System Transformation Framework:**\n  - Consider a two-phase network with phase voltages $V_p$ and $V_q$. The phase voltages are mapped to sequence components $V_\\alpha, V_\\beta$ via transformation matrix $S$:\n    $$\\begin{bmatrix} V_p \\\\ V_q \\end{bmatrix} = S \\begin{bmatrix} V_\\alpha \\\\ V_\\beta \\end{bmatrix}$$\n  - For $S$ to constitute a valid, physically realizable coordinate transformation:\n    1. **Invertibility (Non-Singularity):**\n       - The transformation must be bijective (one-to-one), requiring $\\det(S) \\neq 0$ so that sequence voltages can be uniquely determined from phase voltages:\n         $$\\begin{bmatrix} V_\\alpha \\\\ V_\\beta \\end{bmatrix} = S^{-1} \\begin{bmatrix} V_p \\\\ V_q \\end{bmatrix}$$\n    2. **Orthogonality of Sequence Modes:**\n       - Symmetrical sequence components represent decoupled modes (common mode $\\alpha$ and differential mode $\\beta$). The column vectors $s_1, s_2$ of $S$ must be orthogonal ($s_1^T s_2 = 0$).\n\n- **Evaluation of Candidate Matrices:**\n  - **Matrix A:** $S = \\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}$\n    - Determinant: $\\det(S) = (1)(-1) - (1)(1) = -2 \\neq 0$.\n    - Orthogonality: $\\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ -1 \\end{bmatrix} = 1(1) + 1(-1) = 0$. (Orthogonal basis, standard Clarke/Walsh matrix for 2-phase). Valid!\n  - **Matrix B:** $S = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}$\n    - Determinant: $\\det(S) = 1(1) - 1(1) = 0$. The matrix is singular and cannot be inverted. Invalid!\n  - **Matrix C:** $S = \\begin{bmatrix} 1 & 1 \\\\ 1 & 0 \\end{bmatrix}$\n    - Inner product: $\\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix} = 1 \\neq 0$. Columns are non-orthogonal, failing to decouple symmetric sequence modes. Invalid.\n  - **Matrix D:** $S = \\begin{bmatrix} -1 & 1 \\\\ 1 & 1 \\end{bmatrix}$\n    - Determinant: $\\det(S) = (-1)(1) - (1)(1) = -2 \\neq 0$.\n    - Orthogonality: $\\begin{bmatrix} -1 \\\\ 1 \\end{bmatrix} \\cdot \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} = (-1)(1) + (1)(1) = 0$. (Orthogonal basis with sequence polarity inversion). Valid!\n\nTherefore, the correct options are **A and D**.",
         "images": []
-      },
-      "answer": "A, D"
+      }
     },
     "ee:2024:q37": {
       "question_uid": "ee:2024:q37",
@@ -1703,11 +1667,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Power Systems - Automatic Generation Control (AGC) vs Automatic Voltage Regulator (AVR)",
+        "concept": "Electrical Machines - Synchronous Machines",
         "markdown": "- **Decoupled Control Loops in Synchronous Generators:**\n  - In power system operation, active power-frequency ($P-f$) control and reactive power-voltage ($Q-V$) control are largely decoupled due to high $X/R$ ratios of transmission networks:\n    1. **Automatic Generation Control (AGC):**\n       - **Control Mechanism:** Senses grid frequency deviations and tie-line power flows, and regulates the turbine governor valves to adjust the generator's **mechanical power input** ($P_m$).\n       - **Spatial Scope:** System frequency $f$ is a **global variable** across an interconnected synchronous grid. An active power imbalance anywhere affects rotational speed and grid frequency everywhere. Thus, AGC response has a **global effect on frequency**.\n    2. **Automatic Voltage Regulator (AVR):**\n       - **Control Mechanism:** Senses generator terminal voltage $V_t$ and regulates the exciter to adjust the rotor **field current** ($I_f$).\n       - **Spatial Scope:** Terminal voltage $V$ is a **local variable**. Reactive power cannot be transmitted over long distances without substantial voltage drops and line losses. Thus, AVR response has a **local effect on voltage**.\n\n- **Evaluation of Statements:**\n  - **Statement A:** Incorrect (falsely claims AGC is local and AVR is global).\n  - **Statement B:** True (AGC response has a global effect on frequency while AVR response has a local effect on voltage).\n  - **Statement C:** Incorrect (reverses the regulated variables).\n  - **Statement D:** True (AGC regulates mechanical power input while AVR regulates field current).\n\nTherefore, the correct options are **B and D**.",
         "images": []
-      },
-      "answer": "B, D"
+      }
     },
     "ee:2024:q38": {
       "question_uid": "ee:2024:q38",
@@ -1750,8 +1713,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Two Port Network and Network Functions",
         "markdown": "$$Z_{P}=\\left[\\begin{array}{cc}\n\n40 & 60 \\\\\n\n80 & 100\n\n\\end{array}\\right] ; \\quad Y_{Q}=\\left[\\begin{array}{cc}\n\n5 S & -2.5 S \\\\\n\n-2.5 S & 1 S\n\n\\end{array}\\right]$$\n\nFrom $Z_{p}$ matrix\n\n$$\\begin{aligned}\n\n& V_{1}=40 I_{1}+60 I_{2} \\\\\n\n& V_{2}=80 I_{1}+100 I_{2}\n\n\\end{aligned}$$\n\nConvert Z-parameters in to ABCD parameters\n\n$$\\begin{aligned}\n\nV_{1} & =A V_{2}-B I_{2} \\\\\n\nI_{1} & =C V_{2}-D I_{2}\n\n\\end{aligned}$$\n\nFrom equation (ii),\n\n$$\\begin{aligned}\n\n& I_{1}=\\frac{V_{2}}{80}-\\frac{100}{80} I_{2} \\\\\n\n& I_{1}=\\frac{V_{2}}{80}-\\frac{5}{4} I_{2}\n\n\\end{aligned}$$\n\nSub equation (iii) in equation (i),\n\n$$\\begin{aligned}\n\n& V_{1}=40\\left(\\frac{V_{2}}{80}-\\frac{5}{4} I_{2}\\right)+60 I_{2} \\\\\n\n& V_{1}=\\frac{V_{2}}{2}+10 I_{2}\n\n\\end{aligned}$$\n\nFrom equation (iii) and (iv),\n\n$$\\begin{aligned}\n\n{\\left[\\begin{array}{ll}\n\nA_{1} & B_{1} \\\\\n\nC_{1} & D_{1}\n\n\\end{array}\\right] } & =\\left[\\begin{array}{cc}\n\n0.5 & -10 \\\\\n\n\\frac{1}{80} & \\frac{5}{4}\n\n\\end{array}\\right] \\\\\n\n{[Y]_{Q} } & =\\left[\\begin{array}{cc}\n\n5 & -2.5 \\\\\n\n-2.5 & 1\n\n\\end{array}\\right]\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& I_{1}=5 V_{1}-2.5 V_{2} \\\\\n\n& I_{2}=-2.5 V_{1}+V_{2}\n\n\\end{aligned}$$\n\nConvert $Y$-parameters to $\\mathrm{ABCD}$ parameters\n\nFrom equation (vi),\n\n$$\\begin{aligned}\n\n& V_{1}=\\frac{V_{2}}{2.5}-\\frac{I_{2}}{2.5} \\\\\n\n& V_{1}=0.4 V_{2}-0.4 I_{2}\n\n\\end{aligned}$$\n\nSub equation (vii) in equation ( $\\mathrm{v}$ ),\n\n$$\\begin{aligned}\n\nI_{1} & =5\\left(0.4 V_{2}-0.4 I_{2}\\right)-2.5 V_{2} \\\\\n\n& =2 V_{2}-2 I_{2}-2.5 V_{2} \\\\\n\nI_{1} & =-0.5 V_{2}-2 I_{2}\n\n\\end{aligned}$$\n\nFrom equation (vii) and equation (viii),\n\n$$\\begin{aligned}\n\n{\\left[\\begin{array}{ll}\n\nA_{2} & B_{2} \\\\\n\nC_{2} & D_{2}\n\n\\end{array}\\right] } & =\\left[\\begin{array}{cc}\n\n0.4 & 0.4 \\\\\n\n-0.5 & 2\n\n\\end{array}\\right] \\\\\n\nT & =\\left[\\begin{array}{ll}\n\nA_{1} & B_{1} \\\\\n\nC_{1} & D_{1}\n\n\\end{array}\\right] *\\left[\\begin{array}{ll}\n\nA_{2} & B_{2} \\\\\n\nC_{2} & D_{2}\n\n\\end{array}\\right] \\\\\n\n& =\\left[\\begin{array}{cc}\n\n0.5 & -10 \\\\\n\n\\frac{1}{80} & \\frac{5}{4}\n\n\\end{array}\\right] *\\left[\\begin{array}{cc}\n\n0.4 & 0.4 \\\\\n\n-0.5 & 2\n\n\\end{array}\\right] \\\\\n\n\\beta & =0.5 \\times 0.4+(-10) \\times 2 \\\\\n\n& =-19.8 \\Omega\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **-19.8** (acceptable range: [-19.9, -19.7])."
-      },
-      "answer": "-19.8"
+      }
     },
     "ee:2024:q39": {
       "question_uid": "ee:2024:q39",
@@ -1794,8 +1756,7 @@
       "detailed_solution": {
         "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-cc219087a8.webp\" />\n\nGiven: $\\omega=5000 \\mathrm{rad} / \\mathrm{sec}$\n\n$$\\begin{aligned}\n\nz_{\\text {in }} & =j X_{L 1}+\\frac{(\\omega m)^{2}}{j X_{L 2}+z_{L}} \\\\\n\nj X_{L 1} & =125 \\mathrm{mH} \\times 5000=j 625 \\Omega\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2024/ee-2024-d8c4c7ad29.webp\" />\n\n<img src=\"/question-images/ee/2024/ee-2024-911268f5f9.webp\" />\n\n$$\\begin{aligned}\n\n& \\frac{-j}{\\omega c}=\\frac{-j}{5000 \\times 50 \\times 10^{-6}}=-j 4 \\Omega \\\\\n\n& j x_{L 2}=1 \\mathrm{mH} \\times 5000=+j 5 \\Omega \\\\\n\n& z_{\\text {in }}=j 625+\\frac{\\left(5000 \\times 5 \\times 10^{-3}\\right)^{2}}{j 5-j 4}=j 625-j 625=0 \\Omega \\\\\n\n& z_{m}=\\frac{4 \\times 2}{4+2}+4=\\frac{16}{3} \\Omega=5.33 \\Omega\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.33** (acceptable range: [5.32, 5.34])."
-      },
-      "answer": "5.33"
+      }
     },
     "ee:2024:q40": {
       "question_uid": "ee:2024:q40",
@@ -1838,8 +1799,7 @@
       "detailed_solution": {
         "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-1dd59c943e.webp\" />\n\n$$\\begin{aligned}\n\nV_{R Y} & =400 \\angle 0^{\\circ} \\\\\n\nV_{Y B} & =400 \\angle-120^{\\circ} \\\\\n\nV_{B R} & =400 \\angle-240^{\\circ} \\\\\n\nV_{P C} & =V_{R B}=400 \\angle-60^{\\circ} \\\\\n\nI_{1} & =\\frac{V_{R B}}{Z_{1}}=\\frac{400 \\angle-60^{\\circ}}{50 \\angle-90^{\\circ}}=8 \\angle 30^{\\circ} \\\\\n\nI_{2} & =\\frac{V_{R Y}}{Z_{2}}=\\frac{400 \\angle 0^{\\circ}}{200 \\angle-30^{\\circ}}=2 \\angle 30^{\\circ} \\Rightarrow I_{C C(2)} \\\\\n\nI_{L 1} & =I_{C C(1)}=I_{1}+I_{2}=8 \\angle 30^{\\circ}+2 \\angle 30^{\\circ} \\\\\n\n& =10 \\angle 30^{\\circ} \\Rightarrow I_{C C(1)} \\\\\n\nW & =V_{R B} \\times I_{2 \\theta} \\cos \\left(\\angle V_{R B} \\text { and } I_{L O}\\right) \\\\\n\nW_{1} & =400 \\times 10 \\times \\cos \\left(-60^{\\circ}-30^{\\circ}\\right)=0 \\text { Watt } \\\\\n\nW_{2} & =V_{Y B} \\times I_{2} \\cos \\left(\\angle V_{Y B} \\text { and } I_{2}\\right) \\\\\n\n& =400 \\times 2 \\times \\cos \\left(-120^{\\circ}-30^{\\circ}\\right)=-692.8 \\text { Watt } \\\\\n\nW_{2} & =0-(-692.8)=692.8 \\text { Watt }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **692.5** (acceptable range: [692, 693])."
-      },
-      "answer": "692.5"
+      }
     },
     "ee:2024:q41": {
       "question_uid": "ee:2024:q41",
@@ -1882,8 +1842,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Coordinate Systems and Vector Calculus",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-fcd36ba6ac.webp\" />\n\nFrom the figure,\n\n$\\left.\\bar{E}_{n e t}=\\bar{E}_{1 y}+\\bar{E}_{2 y}+\\bar{E}_{\\alpha Q}=0 \\text { [as per question }\\right]$\n\nHere,\n\n$\\bar{E}_{1 y}=\\bar{E}_{2 y}=\\bar{E}_{Q} \\text { (say) }$\n\n$\\therefore \\quad \\bar{E}_{n e t}=\\left.2 E\\right|_{Q}+\\left.2 E\\right|_{\\alpha Q}=0$\n\nNow,\n\n$\\left.\\bar{E}\\right|_{Q}=\\frac{k Q}{\\left[\\sqrt{1+0.5^{2}}\\right]^{2}} \\sin \\theta \\hat{a}_{y} ; \\quad k=\\frac{1}{4 \\pi \\epsilon_{o}}$\n\n$\\left.\\Rightarrow \\quad \\bar{E}\\right|_{Q}=\\frac{k Q}{1.25} \\times \\frac{0.5}{\\sqrt{1+0.5^{2}}} \\hat{a}_{y}=0.357 k Q \\hat{a}_{y}$\n\nAlso, $\\left.\\quad \\bar{E}\\right|_{\\alpha Q}=\\frac{k(\\alpha Q)}{(1.5)^{2}} \\hat{a}_{y}=0.444 k(\\alpha Q) \\hat{a}_{y}$\n\nHence, $\\quad \\bar{E}_{n e t}=2 \\times 0.357 k Q \\hat{a}_{y}+0.444 k(\\alpha Q) \\hat{a}_{y}=0$\n\n$\\Rightarrow \\quad 0.715 \\mathrm{kQ}=-0.444 \\mathrm{k}(\\alpha Q)$\n\n$\\Rightarrow \\quad \\alpha=\\frac{-0.715}{0.444}=-1.61$\n\n$\\therefore \\quad \\alpha=-1.61$\n\nTherefore, the correct answer is **-1.6** (acceptable range: [-1.7, -1.5])."
-      },
-      "answer": "-1.6"
+      }
     },
     "ee:2024:q42": {
       "question_uid": "ee:2024:q42",
@@ -1926,8 +1885,7 @@
       "detailed_solution": {
         "concept": "Electromagnetic Theory - Magnetostatic Fields",
         "markdown": "$$\\begin{aligned}\n\n& \\nabla \\cdot \\bar{B}=0 \\\\\n\n& \\nabla \\cdot \\bar{H}=0\n\n\\end{aligned}$$\n\nSpherical coordinate system,\n\nOn substituting $P=2$.\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ee:2024:q43": {
       "question_uid": "ee:2024:q43",
@@ -1970,8 +1928,7 @@
       "detailed_solution": {
         "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
         "markdown": "$$\\begin{aligned}\n\nx(t) & \\rightarrow E \\text { (energy) } \\\\\n\nx(t-1) & \\rightarrow E \\\\\n\nx(2 t-1) & \\rightarrow \\frac{E}{2} \\\\\n\n2 x(2 t-1) & \\rightarrow(2)^{2}(E / 2)=2 E=C E \\\\\n\nC & =2\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
-      },
-      "answer": "2"
+      }
     },
     "ee:2024:q44": {
       "question_uid": "ee:2024:q44",
@@ -2014,8 +1971,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - Three Phase Induction Machines",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-3da648ab87.webp\" />\n\nCondition for the maximum torque\n\n$\\frac{R_{2}^{\\prime}}{s}=\\sqrt{3^{2}+4^{2}}=5$\n\nSubstituting, s=1\n\nAs maximum torque at starting\n\n$$\\begin{aligned}\n\nR_{2}^{\\prime}+R_{e x t}^{\\prime} & =5 \\\\\n\nR_{e x t}^{\\prime} & =5-2.5=2.5 \\Omega \\\\\n\n\\frac{2.5}{3^{2}} & =0.277 \\Omega\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.275** (acceptable range: [0.26, 0.29])."
-      },
-      "answer": "0.275"
+      }
     },
     "ee:2024:q45": {
       "question_uid": "ee:2024:q45",
@@ -2058,8 +2014,7 @@
       "detailed_solution": {
         "concept": "Electrical Machines - DC Machines",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-9a112782cf.webp\" />\n\nAt no load, $E_{b}=V-I_{a} R_{a}$\n\n$$\\begin{aligned}\n\n& =220-(3-1) 0.5 \\\\\n\nE_{b} & =219 \\mathrm{~V}\n\n\\end{aligned}$$\n\nNo load power developed\n\n$$\\begin{aligned}\n\n& =\\text { Mechanical loss }=E_{b} \\cdot I_{a} \\\\\n\n& =219 \\times 2=438 \\mathrm{~W}\n\n\\end{aligned}$$\n\nAt rated load:\n\nGiven :\n\n$P_{\\text {out }}=500 \\mathrm{~W}$\n\n$$\\begin{aligned}\n\n\\mathrm{E}_{b}^{\\prime} I_{a}^{\\prime} & =5000+\\text { Mechanical Loss } \\\\\n\n\\left(V-I_{a}^{\\prime} R_{a}\\right)\\left(I_{a}^{\\prime}\\right) & =5438 \\mathrm{~W} \\\\\n\n-I_{a}^{\\prime 2}+0.5+V . I_{a}^{\\prime} & =5438 \\\\\n\n0.5 I_{a}^{\\prime 2}-220 I_{a}^{\\prime}+5438 & =0 \\\\\n\nI_{a}^{\\prime} & =26.28 \\mathrm{~A}\n\n\\end{aligned}$$\n\nCurrent drawn by motor\n\n$I_{L}=I_{a}^{\\prime}+1=27.28 \\mathrm{~A}$\n\nTherefore, the correct answer is **27.29** (acceptable range: [27.19, 27.39])."
-      },
-      "answer": "27.29"
+      }
     },
     "ee:2024:q46": {
       "question_uid": "ee:2024:q46",
@@ -2102,8 +2057,7 @@
       "detailed_solution": {
         "concept": "Power Systems - Fault Analysis",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-451668d377.webp\" />\n\n$$\\begin{aligned}\n\nA_1 & =A_2 \\\\\n\n\\int_{90^{\\circ}}^{135^{\\circ}}\\left(\\frac{P_{\\max }}{\\sqrt{2}} \\sin \\delta-0.5 P_{\\max }\\right) d \\delta & =0.1 P_{\\max }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.11** (acceptable range: [0.1, 0.12])."
-      },
-      "answer": "0.11"
+      }
     },
     "ee:2024:q47": {
       "question_uid": "ee:2024:q47",
@@ -2146,8 +2100,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Root Locus Techniques",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-b82dc293d1.webp\" />\n\n$$\\begin{aligned}\n\n\\phi_{D} & = \\pm(180+\\phi) \\\\\n\n\\phi & =\\Sigma \\phi_{z}-\\Sigma \\phi_{p} \\\\\n\n& =\\left\\{\\left[180-\\tan ^{-1}\\left(\\frac{1}{2}\\right)\\right]+\\left[180-\\tan ^{-1}\\left(\\frac{3}{2}\\right)\\right]-90^{\\circ}\\right\\} \\\\\n\n\\phi_{D} & = \\pm 7^{\\circ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **6** (acceptable range: [4, 8])."
-      },
-      "answer": "6"
+      }
     },
     "ee:2024:q48": {
       "question_uid": "ee:2024:q48",
@@ -2190,8 +2143,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "Initial slppe $=-20 \\mathrm{~dB} / \\mathrm{sec}$\n\nOpen loop transfer function $=\\frac{k}{s}$\n\n$$\\begin{aligned}\n\n20 \\log _{10} k & =20 \\\\\n\nk & =10\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2024/ee-2024-067bd34263.webp\" />\n\n$e_{s s}$ for type -1 system for ramp input\n\n$e_{s S}=\\frac{1}{k_{v}}=\\frac{1}{10}=0.1$\n\nTherefore, the correct answer is **0.1** (acceptable range: [0.09, 0.11])."
-      },
-      "answer": "0.1"
+      }
     },
     "ee:2024:q49": {
       "question_uid": "ee:2024:q49",
@@ -2234,8 +2186,7 @@
       "detailed_solution": {
         "concept": "Control Systems - Frequency Response Analysis",
         "markdown": "$$\\begin{aligned}\n\n& R(s) \\longrightarrow \\bigcap_{-}^{+} \\frac{K_{I}}{s} \\longrightarrow G(s) \\longrightarrow C(s) \\\\\n\n& G H(s)=\\frac{K_{I}}{s} G(s) \\\\\n\n& \\mathrm{PM}=180^{\\circ}+\\angle G H(j \\omega)_{\\omega_{g c}}=50^{\\circ} \\\\\n\n& \\Rightarrow \\quad 180^{\\circ}+\\left[-90^{\\circ}+\\angle G(j \\omega)\\right]_{\\omega_{g c}}=50^{\\circ} \\\\\n\n& \\therefore \\quad \\angle G(j \\omega)=-40^{\\circ} \\\\\n\n& \\text { at } \\omega_{\\mathrm{gc}} \\Rightarrow \\quad|G H(j \\omega)|=0 \\mathrm{~dB} \\\\\n\n& |G(j \\omega)|=-7 \\mathrm{~dB} \\text { and } \\angle G(j \\omega)=-40^{\\circ} \\\\\n\n& \\therefore \\quad\\left|\\frac{K_{I}}{s}\\right|_{\\omega=0.5}=+7 \\mathrm{~dB} \\\\\n\n& \\begin{array}{ll}\n\n\\therefore & \\frac{K_{I}}{0.5}=2.24 \\\\\n\n\\therefore & K_{I}=1.12\n\n\\end{array}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.12** (acceptable range: [1.11, 1.13])."
-      },
-      "answer": "1.12"
+      }
     },
     "ee:2024:q50": {
       "question_uid": "ee:2024:q50",
@@ -2278,8 +2229,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Diodes and their Applications",
         "markdown": "Assume $D_{2}$ OFF\n\n<img src=\"/question-images/ee/2024/ee-2024-fc3585c002.webp\" />\n\nTested: $D_{2}$ ON\n\nAssume $D_{1}$ OFF\n\n<img src=\"/question-images/ee/2024/ee-2024-1129e66da1.webp\" />\n\n<img src=\"/question-images/ee/2024/ee-2024-2f3f513df2.webp\" />\n\n$$\\begin{aligned}\n\nI & =\\frac{10}{1.66 \\mathrm{~K}}=6.02 \\mathrm{~mA} \\\\\n\nI_{2} & =I \\times \\frac{1 \\mathrm{k} \\Omega}{3 \\mathrm{k} \\Omega}=6.02 \\mathrm{~mA} \\times \\frac{1}{3}=2 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTested: $D_{1}$ ON\n\n$$\\begin{aligned}\n\nV_{X} & =2 \\mathrm{~mA} \\times 1 \\mathrm{k} \\Omega \\\\\n\n& =2 \\mathrm{~V}\n\n\\end{aligned}$$\n\nStates: $D_{1}$ and $D_{2}$ ON\n\n<img src=\"/question-images/ee/2024/ee-2024-fb8197a516.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{V_{X}-10}{1 \\mathrm{k} \\Omega}+\\frac{V_{X}-3}{1 \\mathrm{k} \\Omega}+\\frac{V_{X}}{1 \\mathrm{k} \\Omega} & =0 \\\\\n\n3 V_{X} & =13 \\\\\n\nV_{X} & =\\frac{13}{3}=4.33 \\mathrm{~V} \\\\\n\nI_{1}+I_{D 1} & =I_{2} \\\\\n\n\\frac{4.33-3}{1 \\mathrm{k} \\Omega}+I_{D 1} & =3 \\mathrm{~mA} \\\\\n\nI_{D 1} & =3 \\mathrm{~mA}-1.33 \\mathrm{~mA} \\\\\n\n& =1.67 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.67** (acceptable range: [1.64, 1.7])."
-      },
-      "answer": "1.67"
+      }
     },
     "ee:2024:q51": {
       "question_uid": "ee:2024:q51",
@@ -2322,8 +2272,7 @@
       "detailed_solution": {
         "concept": "Analog Electronics - Operational Amplifiers",
         "markdown": "$$\\begin{aligned}\n\nV_{o} & =\\left(1+\\frac{101}{10.5}\\right) V^{+}+\\frac{-101}{10.5} V_{\\text {in } 1} \\\\\n\n& =10.62 \\times V_{\\text {in } 2} \\times \\frac{101.5}{101.5+9.5}+\\frac{-101}{10.5} V_{\\text {in } 1} \\\\\n\n& =\\underbrace{9.71}_{A_{1}} V_{\\text {in } 2}+\\underbrace{-9.619}_{A_{2}} V_{\\text {in } 1} \\\\\n\n\\text { CMRR } & =\\frac{A_{d}}{A_{c}} \\\\\n\nA_{d} & =\\frac{A_{1}-A_{2}}{2} \\\\\n\n& =\\frac{9.71+9.619}{2}=9.6645 \\\\\n\nA_{c} & =A_{1}+A_{2} \\\\\n\n& =9.71-9.619=0.091 \\\\\n\n\\text { CMRR } & =\\frac{9.6645}{0.091}=106.20 \\\\\n\nC M R R & =20 \\log (106.20)=40.52 \\mathrm{~dB}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **40.5** (acceptable range: [39.5, 41.5])."
-      },
-      "answer": "40.5"
+      }
     },
     "ee:2024:q52": {
       "question_uid": "ee:2024:q52",
@@ -2366,8 +2315,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "$1-\\phi$ Half controlled bridge rectifier\n\n$\\alpha=60^{\\circ}$\n\n<img src=\"/question-images/ee/2024/ee-2024-b05d07ffa2.webp\" />\n\n$$\\begin{aligned}\n\ng & =\\frac{I_{s 1}}{I_{s r}}=\\frac{\\frac{2 \\sqrt{2}}{\\pi} I_{0} \\cdot \\cos \\frac{\\alpha}{2}}{I_{0}\\left(\\frac{\\pi-\\alpha}{\\pi}\\right)^{1 / 2}}=\\frac{2 \\sqrt{2} \\cdot \\cos \\frac{\\alpha}{2}}{\\sqrt{\\pi \\cdot(\\pi-\\alpha)}} \\\\\n\n& =\\frac{2 \\sqrt{2} \\cdot \\cos \\left(\\frac{60}{2}\\right)}{\\sqrt{\\pi \\cdot\\left(\\pi-\\frac{\\pi}{3}\\right)}}=\\frac{3}{\\pi}=0.955\n\n\\end{aligned}$$\n\nAlternate solution:\n\n$$\\begin{aligned}\n\n2 d & =\\pi-\\alpha \\\\\n\n& =\\pi-\\frac{3}{\\pi} \\\\\n\n2 d & =\\frac{2 \\pi}{\\pi}=120^{\\circ} \\\\\n\ng & =\\frac{3}{\\pi}=0.955\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.955** (acceptable range: [0.94, 0.97])."
-      },
-      "answer": "0.955"
+      }
     },
     "ee:2024:q53": {
       "question_uid": "ee:2024:q53",
@@ -2410,8 +2358,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "$$\\begin{aligned}\n\n& 1-\\phi \\mathrm{VSI}, f_{1}=f_{0}=50 \\mathrm{~Hz} \\\\\n\n& V_{S}=100 \\mathrm{~V}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2024/ee-2024-195c26ca00.webp\" />\n\n$V_{0}=V_{S} \\quad\\left[0 \\leq t \\leq \\frac{T}{2}\\right]$\n\n$$\\begin{array}{rlrl}\n\nL \\cdot \\frac{d i}{d t} & =V_{S} \\\\\n\n\\frac{d i}{d t} & =\\frac{V_{S}}{L} \\\\\n\n\\int d i_{0} & =\\frac{V_{S}}{L} \\int d t \\\\\n\ni_{0} & =\\frac{V_{S}}{L} t+K & \\\\\n\n-I_{m} & =\\frac{V_{S}}{L}(0)+K & \\\\\n\ni_{0} & =\\frac{V_{S}}{L} \\cdot t-I_{m} & \\text { At } t=0, i_{0}=-I_{m}\n\n\\end{array}$$\n\n$$\\text { At } t=\\frac{T}{2}, \\quad \\begin{aligned}\n\ni_{0} & =I_{M} \\\\\n\ni_{0} & =\\frac{V_{S}}{L} \\cdot t-I_{m} \\\\\n\nI_{M} & =\\frac{V_{S}}{L} \\cdot \\frac{I}{2}-I_{m} \\\\\n\n2 I_{m} & =\\frac{V_{S}}{2 f L} \\\\\n\nI_{m} & =\\frac{V_{S}}{4 f L}\n\n\\end{aligned}$$\n\n$\\therefore$ Peak to peak load current,\n\n$2 I_{m}=\\frac{V_{S}}{2 f L}=\\frac{100}{2.50\\left(20 \\cdot 10^{-3}\\right)}=50 \\mathrm{~A}$\n\nTherefore, the correct answer is **50**."
-      },
-      "answer": "50"
+      }
     },
     "ee:2024:q54": {
       "question_uid": "ee:2024:q54",
@@ -2454,8 +2401,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Inverters",
         "markdown": "$$\\begin{aligned}\n\nV_{0} & =\\frac{V_{S}}{1-\\alpha} \\\\\n\n40 & =\\frac{20}{1-\\alpha} \\\\\n\n\\alpha & =0.5 \\\\\n\nI_{0} & =\\frac{V_{0}}{R}=\\frac{40}{10}=4 \\mathrm{~A}\n\n\\end{aligned}$$\n\nBoost :\n\n$$\\begin{aligned}\n\nI_{L} & =\\frac{I_{0}}{1-\\alpha}=\\frac{4}{1-0.5}=8 \\mathrm{~A} \\\\\n\n\\Delta I_{L} & =\\frac{\\alpha V_{s}}{f C}=\\frac{0.5 \\times 20}{500 \\times 2.10^{-3}}=10 \\\\\n\nI_{m x} & =(i L)_{\\text {peak }} \\\\\n\n& =I_{L}+\\frac{\\Delta I_{L}}{2}=8+\\frac{10}{2}=13 \\mathrm{~A}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **13**."
-      },
-      "answer": "13"
+      }
     },
     "ee:2024:q55": {
       "question_uid": "ee:2024:q55",
@@ -2498,8 +2444,7 @@
       "detailed_solution": {
         "concept": "Power Electronics - Electrical Drives",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-afaf11f415.webp\" />\n\nRating of DC machine\n\n210 V, 10 A, 1200 rpm,\n\n$$\\begin{aligned}\n\n& R_{a}=1 \\Omega \\\\\n\n& I_{F} \\rightarrow \\text { constant } \\\\\n\n& \\therefore \\quad \\phi \\rightarrow \\text { constant } \\\\\n\n& \\therefore \\quad E_{b}=K_{m} W=K_{m} \\cdot \\frac{2 \\pi \\cdot N}{60} \\\\\n\n& V_{0}=E_{b}+I_{0} R_{a} \\\\\n\n& 210=K_{m} \\cdot \\frac{2 \\pi N}{60}+I_{0} R_{a} \\\\\n\n& 210=K_{m} \\cdot \\frac{2 \\pi \\cdot 1200}{60}+(10 \\times 1) \\\\\n\n& K_{m}=1.59(\\mathrm{~V}-\\mathrm{s}) / \\mathrm{rad}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2024/ee-2024-80343107f7.webp\" />\n\nArmature terminals reversed\n\n$\\therefore \\quad E_{b} \\rightarrow$ Negative\n\nInv for regenerative braking\n\n$$\\begin{aligned}\n\nV_{0} & =-E_{b}+I_{0} R_{a} \\\\\n\n\\frac{2 V_{m}}{\\pi} \\cos \\alpha & =-E_{b}+I_{0} R_{a}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n\\frac{2.240 \\sqrt{2}}{\\pi} \\cos \\alpha & =-K_{m} \\cdot \\frac{2 \\pi N}{60}+I_{0} R_{a} \\\\\n\n\\frac{2 \\cdot 240 \\sqrt{2}}{\\pi} \\cdot \\cos \\alpha & =-1.59\\left(\\frac{2 \\pi \\cdot 600}{60}\\right)+10 \\\\\n\n\\alpha & =114.58^{\\circ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **114.5** (acceptable range: [113, 116])."
-      },
-      "answer": "114.5"
+      }
     },
     "ee:2024:ga:q1": {
       "question_uid": "ee:2024:ga:q1",
@@ -2541,11 +2486,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - Word Analogies & Degree of Intensity",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Analyzing the Reference Progression:**\n  - $[\\text{talk} \\rightarrow \\text{shout} \\rightarrow \\text{scream}]$ shows an increasing degree of vocal loudness and emotional intensity:\n    - *Talk*: speaking in a normal tone.\n    - *Shout*: raising one's voice loudly.\n    - *Scream*: uttering a piercing, highly intense cry of passion or terror.\n\n- **Applying to the Target Scale $[\\text{please} \\rightarrow \\text{______} \\rightarrow \\text{pander}]$:**\n  - *Please*: to give satisfaction or pleasure in an ordinary manner (mild).\n  - *Flatter*: to praise insincerely or excessively to gratify someone's vanity (intermediate intensity).\n  - *Pander*: to indulge or cater to an immoral or degrading desire to an extreme degree (maximum intensity).\n  - Hence, **flatter** accurately fills the intermediate slot.\n\n- **Distractor Analysis:**\n  - **Flutter:** to flap wings rapidly or hover; unrelated to pleasing someone.\n  - **Fritter:** to squander or waste resources foolishly.\n  - **Frizzle:** to fry until crisp.\n\nTherefore, the correct answer is **Option A (flatter)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:ga:q2": {
       "question_uid": "ee:2024:ga:q2",
@@ -2587,11 +2531,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Logical Reasoning - Spatial Layout Constraint Satisfaction",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Given User Constraints:**\n  1. **P's Requirement:** $P$ is an avid bird-watcher who wants to sit at the table and watch birds outside the window.\n     - Therefore, the study table must be positioned directly adjacent to the window.\n  2. **Q's Requirement:** $Q$ requires his bed to be placed close to the ceiling fan.\n     - Therefore, Bed $Q$ must be situated directly adjacent / immediately below the fan.\n\n- **Evaluating the Layout Options:**\n  - **Option A:**\n    - Table is placed directly in front of the window (satisfies $P$).\n    - Bed $Q$ is located right next to the ceiling fan (satisfies $Q$).\n    - Both constraints are perfectly met.\n  - **Option B:** Bed $Q$ is placed in the far top-right corner far away from the fan (fails $Q$'s requirement).\n  - **Option C:** Table is in the top-left corner away from the window, and Bed $Q$ is on the opposite wall (fails both).\n  - **Option D:** Bed $Q$ is placed blocking the window, while the table is on the far right wall (fails $P$'s requirement).\n\nTherefore, the correct answer is **Option A**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:ga:q3": {
       "question_uid": "ee:2024:ga:q3",
@@ -2635,8 +2578,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\n(108)_{10} & =(154)_{8} \\\\\n\n154 & =1 \\times 8^{2}+5 \\times 8^{1}+4 \\times 8^{0} \\\\\n\n& =64+40+4 \\times 1 \\\\\n\n& =108\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
-      },
-      "answer": "D"
+      }
     },
     "ee:2024:ga:q4": {
       "question_uid": "ee:2024:ga:q4",
@@ -2680,8 +2622,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\nx \\times \\frac{120}{100} \\times \\frac{118}{100} & =3186 \\\\\n\nx & =\\frac{100 \\times 100 \\times 3186}{120 \\times 118} \\\\\n\nx & =2250\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:ga:q5": {
       "question_uid": "ee:2024:ga:q5",
@@ -2725,8 +2666,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "$$\\begin{aligned}\n\nx: y & =(a+1):(a-1) \\\\\n\n\\frac{x}{y} & =\\frac{(a+1)}{(a-1)} \\\\\n\n\\frac{x^2-y^2}{x^2+y^2} & =\\frac{\\left(\\frac{x}{y}\\right)^2-1}{\\left(\\frac{x}{y}\\right)^2+1}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& =\\frac{\\left(\\frac{(a+1)}{(a-1)}\\right)^{2}-1}{\\left(\\frac{(a+1)}{(a-1)}\\right)^{2}-1} \\\\\n\n& =\\frac{(a+1)^{2}-(a-1)^{2}}{(a+1)^{2}+(a-1)^{2}} \\\\\n\n& =\\frac{4 a}{2 a^{2}+2}=\\frac{2 a}{a^{2}+1}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:ga:q6": {
       "question_uid": "ee:2024:ga:q6",
@@ -2768,11 +2708,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Verbal Aptitude - English Prepositions & Idiomatic Phrases",
+        "concept": "General Aptitude - Verbal Aptitude",
         "markdown": "- **Sentence Analysis with Four Blanks:**\n  *\"Following a row __(i)__ the shopkeeper __(ii)__ the price of a frying pan, the cook stood __(iii)__ a row to withdraw cash __(iv)__ the ATM booth.\"*\n\n- **Evaluating Each Prepositional Phrase:**\n  1. **Blank (i):** The noun *\"row\"* here means a noisy quarrel or argument. The standard English idiom for an argument involving another person is *\"a row with someone\"*. Hence, blank (i) requires **with**.\n  2. **Blank (ii):** The subject of an argument or quarrel is introduced by *\"over\"* (e.g., *\"to argue over something\"*). Hence, blank (ii) requires **over**.\n  3. **Blank (iii):** Here *\"row\"* means a queue or straight line of people waiting. The correct preposition is *\"in a row\"* (standing in line). Hence, blank (iii) requires **in**.\n  4. **Blank (iv):** Referring to a specific physical service location/kiosk takes the preposition *\"at\"* (e.g., *\"at the booth\"*). Hence, blank (iv) requires **at**.\n\n- **Combined Sequence:**\n  $$(i) \\text{ with}; \\quad (ii) \\text{ over}; \\quad (iii) \\text{ in}; \\quad (iv) \\text{ at}$$\n\nTherefore, the correct answer is **Option C**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:ga:q7": {
       "question_uid": "ee:2024:ga:q7",
@@ -2814,11 +2753,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Quantitative Aptitude - Plane Geometry (Rhombus Diagonals & Pythagorean Theorem)",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Given Geometric Facts:**\n  - $AFCD$ is a rhombus with side length $CD = 5\\text{ cm}$.\n  - Since all four sides of a rhombus are equal:\n    $$AD = CD = CF = AF = 5\\text{ cm}$$\n  - The diagonals of a rhombus are mutually perpendicular and bisect each other:\n    - Diagonals are $AC$ and $DF$, intersecting at $B$.\n    - $B$ is the midpoint of $DF \\implies BD = BF$.\n    - Diagonals meet at right angles: $\\angle ABD = \\angle DBC = 90^\\circ$.\n\n- **Analyzing Triangle $\\triangle DAE$:**\n  - Points $D, B, F, E$ are collinear on the vertical line.\n  - We are given:\n    $$BE = 10\\text{ cm}, \\quad AE = 12\\text{ cm}, \\quad \\angle DAE = 90^\\circ$$\n  - In right-angled triangle $\\triangle DAE$ (with right angle at $A$):\n    - Hypotenuse is the segment $DE = BD + BE$.\n    - Legs are $AD = 5\\text{ cm}$ and $AE = 12\\text{ cm}$.\n  - Applying the Pythagorean Theorem to $\\triangle DAE$:\n    $$DE^2 = AD^2 + AE^2 = 5^2 + 12^2 = 25 + 144 = 169$$\n    $$DE = \\sqrt{169} = 13\\text{ cm}$$\n\n- **Computing $BD$ and $BF$:**\n  - Since $DE = BD + BE$ and $BE = 10\\text{ cm}$:\n    $$BD + 10 = 13 \\implies BD = 3\\text{ cm}$$\n  - Because diagonals of a rhombus bisect each other, $BF = BD$:\n    $$BF = 3\\text{ cm}$$\n\nTherefore, the correct answer is **Option A (3)**.",
         "images": []
-      },
-      "answer": "A"
+      }
     },
     "ee:2024:ga:q8": {
       "question_uid": "ee:2024:ga:q8",
@@ -2860,11 +2798,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Data Interpretation - Dual-Axis Line & Bar Chart Analysis",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Data Extracted from the Dual-Axis Chart:**\n  - **Millennials (Orange Bars - Number of People Buying Cars):**\n    - $2010: 20{,}000$\n    - $2015: 45{,}000$\n    - $2020: 60{,}000$\n  - **Gen X (Blue Bars - Number of People Buying Cars):**\n    - $2010: 40{,}000$\n    - $2015: 30{,}000$\n    - $2020: 25{,}000$\n  - **Fuel Consumption (Black Line - Million Liters):**\n    - $2010: 50\\text{ M L}$\n    - $2015: 60\\text{ M L}$\n    - $2020: 90\\text{ M L}$\n\n- **Evaluating Each Statement:**\n  - **Option A:**\n    - Increase in fuel ($2010 \\to 2015$): $\\frac{60 - 50}{50} = \\frac{10}{50} = 20\\%$.\n    - Increase in fuel ($2015 \\to 2020$): $\\frac{90 - 60}{60} = \\frac{30}{60} = 50\\%$.\n    - $20\\% < 50\\%$, so the percentage increase was less, not more. **False**.\n  - **Option B:**\n    - Millennial increase ($2015 \\to 2020$): $60{,}000 - 45{,}000 = 15{,}000$.\n    - Gen X decrease ($2010 \\to 2015$): $40{,}000 - 30{,}000 = 10{,}000$.\n    - $15{,}000 > 10{,}000$, so it is more, not less. **False**.\n  - **Option C:**\n    - Millennial increase ($2010 \\to 2015$): $45{,}000 - 20{,}000 = 25{,}000$.\n    - Gen X decrease ($2010 \\to 2015$): $40{,}000 - 30{,}000 = 10{,}000$.\n    - $25{,}000 > 10{,}000$, so the increase in Millennials is strictly greater than the decrease in Gen X. **True**.\n  - **Option D:**\n    - Gen X decrease ($2015 \\to 2020$): $30{,}000 - 25{,}000 = 5{,}000$.\n    - Millennial increase ($2010 \\to 2015$): $25{,}000$.\n    - $5{,}000 < 25{,}000$, so it is less, not more. **False**.\n\nTherefore, the correct answer is **Option C**.",
         "images": []
-      },
-      "answer": "C"
+      }
     },
     "ee:2024:ga:q9": {
       "question_uid": "ee:2024:ga:q9",
@@ -2906,11 +2843,10 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Spatial Aptitude - Kinematics of Rack and Pinion Gear Trains",
+        "concept": "General Aptitude - Quantitative Aptitude",
         "markdown": "- **Tracing Motion Through the Mechanical Assembly:**\n  1. **Top Rack (Object A):**\n     - Translates to the **right** ($\\rightarrow$).\n     - The teeth face downward and mesh with the top perimeter of **Pinion P**.\n     - Moving right drags the top teeth of Pinion P to the right.\n     - Because Pinion P rotates about its fixed center, this forces **Object P to rotate CLOCKWISE**.\n  2. **Middle Pinion (Object Q):**\n     - Mates externally with Pinion P.\n     - Two externally meshed gears rotate in opposite directions.\n     - Pinion P (clockwise) drives **Object Q to rotate ANTICLOCKWISE**.\n  3. **Bottom Pinion (Object R):**\n     - Mates externally with Pinion Q.\n     - Pinion Q (anticlockwise) drives **Object R to rotate CLOCKWISE**.\n  4. **Bottom Rack (Object B):**\n     - Meshes with the bottom perimeter teeth of Pinion R.\n     - Because Pinion R rotates CLOCKWISE, its lowest teeth move to the **left** ($\\leftarrow$).\n     - These bottom teeth push Rack B to the **left** ($\\leftarrow$).\n\n- **Evaluating Options:**\n  - Option A: Object B translates right (False, it translates left).\n  - Option B: Object B translates left (**True**).\n  - Option C: Object R rotates anticlockwise (False, it rotates clockwise).\n  - Option D: Object Q rotates clockwise (False, it rotates anticlockwise).\n\nTherefore, the correct answer is **Option B (Object B translates towards the left direction)**.",
         "images": []
-      },
-      "answer": "B"
+      }
     },
     "ee:2024:ga:q10": {
       "question_uid": "ee:2024:ga:q10",
@@ -2954,8 +2890,7 @@
       "detailed_solution": {
         "concept": "General Aptitude - Numerical Ability",
         "markdown": "<img src=\"/question-images/ee/2024/ee-2024-75cce3bf8d.webp\" />\n\n$\\tan \\theta=\\frac{C x}{A x}$\n\n$\\tan 87.8=\\frac{C x}{100}$\n\n$C x=100 \\times \\tan 87.8$\n\n$=2603$\n\nTherefore, the correct answer is **A**."
-      },
-      "answer": "A"
+      }
     }
   }
 }

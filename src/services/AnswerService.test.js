@@ -2975,6 +2975,105 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
             answer: "A",
           });
         });
+
+        test("resolves ec:2005:q20 as MCQ Option B", () => {
+          AnswerService.answersByQuestionUid = {
+            "ec:2005:q20": {
+              answer_uid: "ec:2005:q20",
+              type: "MCQ",
+              answer: "B",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "ec:2005:q20",
+            title: "GATE EC 2005 | Set 1 | Question: 20",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "B",
+          });
+        });
+
+        test("resolves go:3353 (GATE IT 2008 Q43) as MCQ Option C", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:3353": {
+              answer_uid: "it:2008:q43",
+              type: "MCQ",
+              answer: "C",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:3353",
+            link: "https://gateoverflow.in/3353/gate-it-2008-question-43",
+            title: "GATE IT 2008 | Question: 43",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "C",
+          });
+        });
+
+        test("resolves go:840 (GATE CSE 2002 Q2.10) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:840": {
+              answer_uid: "manual:go:840",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:840",
+            link: "https://gateoverflow.in/840/gate-cse-2002-question-2-10",
+            title: "GATE CSE 2002 | Question: 2.10",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
+
+        test("resolves go:2618 (GATE CSE 1995 Q2.6) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:2618": {
+              answer_uid: "v2:7.19.6",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:2618",
+            link: "https://gateoverflow.in/2618/gate-cse-1995-question-2-6",
+            title: "GATE CSE 1995 | Question: 2.6",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
+
+        test("resolves go:411922 (GATE Civil 2023 Set 2 GA Q2) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:411922": {
+              answer_uid: "manual:go:411922",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:411922",
+            link: "https://gateoverflow.in/411922/gate-civil-2023-set-2-ga-question-2",
+            title: "GATE Civil 2023 Set 2 | General Aptitude Question: 2",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
       });
     });
   });

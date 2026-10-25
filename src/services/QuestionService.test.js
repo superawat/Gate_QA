@@ -1018,6 +1018,46 @@ describe("QuestionService", () => {
         expect(options[0].label).toBe("A");
         expect(options[0].text).toContain("remain");
       });
+
+      test("verifies go:1371 taxonomy resolution under Programming and DS / Binary Search Tree", () => {
+        const question = {
+          question_uid: "go:1371",
+          exam_uid: "cse:2005:set1:main:q35",
+          title: "GATE CSE 2005 | Question: 35",
+          taxonomy: {
+            primary: {
+              subjectSlug: "prog-ds",
+              topicSlug: "trees-heaps",
+              subtopicSlug: "binary-search-tree",
+              subjectLabel: "Programming and DS",
+            },
+            secondary: [
+              {
+                subjectSlug: "discrete-math",
+                topicSlug: "combinatorics",
+                subtopicSlug: "counting",
+                subjectLabel: "Discrete Mathematics",
+              },
+            ],
+            conceptTags: ["binary-search-tree", "catalan-number", "counting"],
+          },
+        };
+        expect(question.taxonomy.primary.subjectSlug).toBe("prog-ds");
+        expect(question.taxonomy.primary.subtopicSlug).toBe("binary-search-tree");
+        expect(question.taxonomy.secondary[0].subjectSlug).toBe("discrete-math");
+      });
+
+      test("verifies go:3594 options normalization with 4 choices", () => {
+        const question = {
+          question_uid: "go:3594",
+          title: "GATE IT 2006 | Question: 51",
+          question: "<p>Which one of the choices given below would be printed?</p><ol style=\"list-style-type:upper-alpha\"><li>$8, -12, 7, 23, 8$</li><li>$8, 8, 7, 23, 7$</li><li>$-12, -12, 27, -31, 23$</li><li>$-12, -12, 27, -31, 56$</li></ol>",
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options[0].label).toBe("A");
+        expect(options[0].text).toContain("8, -12, 7, 23, 8");
+      });
     });
   });
 });
