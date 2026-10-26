@@ -18,6 +18,7 @@ import {
     buildTrackYearSetKey,
     getQuestionTrack,
     getQuestionYearSetIdentity,
+    isBranchGaQuestion,
     isDaQuestion as isDaQuestionByMetadata,
     isIsroQuestion as isIsroQuestionByMetadata,
     parseTrackYearSetKey,
@@ -676,6 +677,7 @@ export const FilterProvider = ({
         yearRange: [manifestStructuredTags.minYear, manifestStructuredTags.maxYear],
         selectedSubjects: [],
         selectedSubtopics: [],
+        selectedGaBranches: [],
         selectedTypes: [...defaultSelectedTypes],
         hideSolved: false,
         showOnlySolved: false,
@@ -890,7 +892,7 @@ export const FilterProvider = ({
             setIncludeEeState(false);
             setIncludeMeState(false);
             setIncludeCeState(false);
-            setFilters(prev => (prev.selectedYearSets.length > 0 ? { ...prev, selectedYearSets: [] } : prev));
+            setFilters(prev => (prev.selectedYearSets.length > 0 || (prev.selectedGaBranches && prev.selectedGaBranches.length > 0) ? { ...prev, selectedYearSets: [], selectedGaBranches: [] } : prev));
             if (!aptitudeEnabled) {
                 setAptitudeEnabled(true);
             }
@@ -902,6 +904,7 @@ export const FilterProvider = ({
             setIncludeEeState(false);
             setIncludeMeState(false);
             setIncludeCeState(false);
+            setFilters(prev => (prev.selectedGaBranches && prev.selectedGaBranches.length > 0 ? { ...prev, selectedGaBranches: [] } : prev));
             if (aptitudeEnabled) {
                 setAptitudeEnabled(false);
             }
@@ -913,6 +916,7 @@ export const FilterProvider = ({
             setIncludeEeState(false);
             setIncludeMeState(false);
             setIncludeCeState(false);
+            setFilters(prev => (prev.selectedGaBranches && prev.selectedGaBranches.length > 0 ? { ...prev, selectedGaBranches: [] } : prev));
             if (aptitudeEnabled) {
                 setAptitudeEnabled(false);
             }
@@ -924,6 +928,7 @@ export const FilterProvider = ({
             setIncludeEeState(trackParam === 'ee');
             setIncludeMeState(trackParam === 'me');
             setIncludeCeState(trackParam === 'ce');
+            setFilters(prev => (prev.selectedGaBranches && prev.selectedGaBranches.some(b => b !== trackParam) ? { ...prev, selectedGaBranches: prev.selectedGaBranches.filter(b => b === trackParam) } : prev));
             if (aptitudeEnabled) {
                 setAptitudeEnabled(false);
             }
@@ -1198,10 +1203,12 @@ export const FilterProvider = ({
                 const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('ec-') && !String(s || '').startsWith('ec:'));
                 const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('ec-') && !String(st || '').startsWith('ec:'));
                 const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('ec:'));
+                const nextGaBranches = (prev.selectedGaBranches || []).filter((b) => b !== 'ec');
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
                     && nextSubtopics.length === prev.selectedSubtopics.length
                     && nextYearSets.length === prev.selectedYearSets.length
+                    && nextGaBranches.length === (prev.selectedGaBranches || []).length
                 ) {
                     return prev;
                 }
@@ -1210,6 +1217,7 @@ export const FilterProvider = ({
                     selectedSubjects: nextSubjects,
                     selectedSubtopics: nextSubtopics,
                     selectedYearSets: nextYearSets,
+                    selectedGaBranches: nextGaBranches,
                 };
             });
             setEcQuestions([]);
@@ -1248,10 +1256,12 @@ export const FilterProvider = ({
                 const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('ee-') && !String(s || '').startsWith('ee:'));
                 const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('ee-') && !String(st || '').startsWith('ee:'));
                 const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('ee:'));
+                const nextGaBranches = (prev.selectedGaBranches || []).filter((b) => b !== 'ee');
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
                     && nextSubtopics.length === prev.selectedSubtopics.length
                     && nextYearSets.length === prev.selectedYearSets.length
+                    && nextGaBranches.length === (prev.selectedGaBranches || []).length
                 ) {
                     return prev;
                 }
@@ -1260,6 +1270,7 @@ export const FilterProvider = ({
                     selectedSubjects: nextSubjects,
                     selectedSubtopics: nextSubtopics,
                     selectedYearSets: nextYearSets,
+                    selectedGaBranches: nextGaBranches,
                 };
             });
             setEeQuestions([]);
@@ -1298,10 +1309,12 @@ export const FilterProvider = ({
                 const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('me-') && !String(s || '').startsWith('me:'));
                 const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('me-') && !String(st || '').startsWith('me:'));
                 const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('me:'));
+                const nextGaBranches = (prev.selectedGaBranches || []).filter((b) => b !== 'me');
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
                     && nextSubtopics.length === prev.selectedSubtopics.length
                     && nextYearSets.length === prev.selectedYearSets.length
+                    && nextGaBranches.length === (prev.selectedGaBranches || []).length
                 ) {
                     return prev;
                 }
@@ -1310,6 +1323,7 @@ export const FilterProvider = ({
                     selectedSubjects: nextSubjects,
                     selectedSubtopics: nextSubtopics,
                     selectedYearSets: nextYearSets,
+                    selectedGaBranches: nextGaBranches,
                 };
             });
             setMeQuestions([]);
@@ -1348,10 +1362,12 @@ export const FilterProvider = ({
                 const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('ce-') && !String(s || '').startsWith('ce:'));
                 const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('ce-') && !String(st || '').startsWith('ce:'));
                 const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('ce:'));
+                const nextGaBranches = (prev.selectedGaBranches || []).filter((b) => b !== 'ce');
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
                     && nextSubtopics.length === prev.selectedSubtopics.length
                     && nextYearSets.length === prev.selectedYearSets.length
+                    && nextGaBranches.length === (prev.selectedGaBranches || []).length
                 ) {
                     return prev;
                 }
@@ -1360,6 +1376,7 @@ export const FilterProvider = ({
                     selectedSubjects: nextSubjects,
                     selectedSubtopics: nextSubtopics,
                     selectedYearSets: nextYearSets,
+                    selectedGaBranches: nextGaBranches,
                 };
             });
             setCeQuestions([]);
@@ -1705,12 +1722,15 @@ export const FilterProvider = ({
             || params.get('topics')?.split(',').filter(Boolean)
             || [];
         const rawSubtopicTokens = params.get('subtopics')?.split(',').filter(Boolean) || [];
+        const rawGaBranchTokens = params.get('gaBranches')?.split(',').map(b => b.trim().toLowerCase()).filter(Boolean) || [];
+        const validGaBranches = rawGaBranchTokens.filter(b => ['ec', 'ee', 'me', 'ce'].includes(b));
 
         const urlFilters = {
             selectedYearSets: normalizeYearSetTokens(rawYearTokens, questionService),
             yearRange: params.get('range')?.split('-').map(Number) || null,
             selectedSubjects: normalizeSubjectSlugs(rawSubjectTokens, questionService),
             selectedSubtopics: normalizeSubtopicSlugs(rawSubtopicTokens, questionService),
+            selectedGaBranches: validGaBranches,
             selectedTypes: urlTypes === null
                 ? [...defaultSelectedTypes]
                 : normalizeSelectedTypes(urlTypes.split(',').filter(Boolean), { allowedTypes: defaultSelectedTypes }),
@@ -1726,6 +1746,7 @@ export const FilterProvider = ({
             // Copy explicitly so we don't drop types accidentally
             merged.selectedTypes = urlFilters.selectedTypes;
             merged.selectedYearSets = urlFilters.selectedYearSets;
+            merged.selectedGaBranches = urlFilters.selectedGaBranches;
             merged.hideSolved = urlFilters.hideSolved;
             merged.showOnlySolved = urlFilters.showOnlySolved;
             merged.showOnlyBookmarked = urlFilters.showOnlyBookmarked;
@@ -1777,6 +1798,9 @@ export const FilterProvider = ({
         }
         if (selectedSubjects.length) params.set('subjects', selectedSubjects.join(','));
         if (selectedSubtopics.length) params.set('subtopics', selectedSubtopics.join(','));
+        if (Array.isArray(filters.selectedGaBranches) && filters.selectedGaBranches.length > 0) {
+            params.set('gaBranches', filters.selectedGaBranches.join(','));
+        }
         if (hasValidYearRange && !isDefaultYearRange) {
             params.set('range', normalizedYearRange.join('-'));
         }
@@ -2083,6 +2107,7 @@ export const FilterProvider = ({
             selectedYearSets,
             selectedSubjects,
             selectedSubtopics,
+            selectedGaBranches = [],
             yearRange,
             hideSolved,
             showOnlySolved,
@@ -2156,39 +2181,52 @@ export const FilterProvider = ({
                 }
             }
 
-            // Taxonomy path matching (Same-path rule)
-            // If subject and/or subtopic filters are active, at least one approved path must satisfy all active taxonomy constraints.
-            if (selectedSubjects.length > 0 || selectedSubtopics.length > 0) {
-                const paths = meta?.paths;
-                if (paths && paths.length > 0) {
-                    const subtopicSlugs = meta?.subtopicSlugs || [];
-                    const hasMatchingPath = paths.some((path, pathIdx) => {
-                        if (selectedSubjects.length > 0 && !selectedSubjectSet.has(path.subjectSlug)) {
+            // Subject and Branch-GA filtering with OR composition
+            const qTrack = meta?.track || getQuestionTrack(q);
+            const isGaMatch = selectedGaBranches.length > 0
+                && selectedGaBranches.includes(qTrack)
+                && isBranchGaQuestion(q);
+
+            const hasSubjectOrSubtopicFilters = selectedSubjects.length > 0 || selectedSubtopics.length > 0;
+            const hasGaBranchFilters = selectedGaBranches.length > 0;
+
+            if (hasSubjectOrSubtopicFilters || hasGaBranchFilters) {
+                if (!isGaMatch) {
+                    if (!hasSubjectOrSubtopicFilters) {
+                        return false;
+                    }
+
+                    const paths = meta?.paths;
+                    if (paths && paths.length > 0) {
+                        const subtopicSlugs = meta?.subtopicSlugs || [];
+                        const hasMatchingPath = paths.some((path, pathIdx) => {
+                            if (selectedSubjects.length > 0 && !selectedSubjectSet.has(path.subjectSlug)) {
+                                return false;
+                            }
+                            if (selectedSubtopics.length > 0) {
+                                const isPrimary = pathIdx === 0;
+                                const matchesSubtopic = (path.subtopicSlug && selectedSubtopicSet.has(path.subtopicSlug))
+                                    || (isPrimary && subtopicSlugs.some(slug => selectedSubtopicSet.has(slug)));
+                                if (!matchesSubtopic) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        });
+                        if (!hasMatchingPath) {
+                            return false;
+                        }
+                    } else {
+                        const qSubjectSlug = meta?.subjectSlug || q.subjectSlug || 'unknown';
+                        if (selectedSubjects.length > 0 && !selectedSubjectSet.has(qSubjectSlug)) {
                             return false;
                         }
                         if (selectedSubtopics.length > 0) {
-                            const isPrimary = pathIdx === 0;
-                            const matchesSubtopic = (path.subtopicSlug && selectedSubtopicSet.has(path.subtopicSlug))
-                                || (isPrimary && subtopicSlugs.some(slug => selectedSubtopicSet.has(slug)));
-                            if (!matchesSubtopic) {
+                            const qSubtopicSlugs = meta?.subtopicSlugs || [];
+                            const hasMatchingSubtopic = qSubtopicSlugs.some(slug => selectedSubtopicSet.has(slug));
+                            if (!hasMatchingSubtopic) {
                                 return false;
                             }
-                        }
-                        return true;
-                    });
-                    if (!hasMatchingPath) {
-                        return false;
-                    }
-                } else {
-                    const qSubjectSlug = meta?.subjectSlug || q.subjectSlug || 'unknown';
-                    if (selectedSubjects.length > 0 && !selectedSubjectSet.has(qSubjectSlug)) {
-                        return false;
-                    }
-                    if (selectedSubtopics.length > 0) {
-                        const qSubtopicSlugs = meta?.subtopicSlugs || [];
-                        const hasMatchingSubtopic = qSubtopicSlugs.some(slug => selectedSubtopicSet.has(slug));
-                        if (!hasMatchingSubtopic) {
-                            return false;
                         }
                     }
                 }
@@ -2220,6 +2258,7 @@ export const FilterProvider = ({
         filters.selectedTypes,
         filters.selectedSubtopics,
         filters.selectedSubjects,
+        filters.selectedGaBranches,
         filters.selectedYearSets,
         filters.yearRange,
         filters.hideSolved,
@@ -2253,6 +2292,11 @@ export const FilterProvider = ({
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'searchQuery')) {
                 merged.searchQuery = normalizeSearchQuery(newFilters.searchQuery);
+            }
+            if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedGaBranches')) {
+                merged.selectedGaBranches = Array.isArray(newFilters.selectedGaBranches)
+                    ? Array.from(new Set(newFilters.selectedGaBranches.map(b => String(b).toLowerCase().trim()).filter(Boolean)))
+                    : [];
             }
             return reconcileSubjectAndSubtopicFilters(merged, newFilters, subtopicToSubjectSlug, questionService);
         });
@@ -2751,6 +2795,7 @@ export const FilterProvider = ({
             yearRange: [minYear, maxYear],
             selectedSubjects: [],
             selectedSubtopics: [],
+            selectedGaBranches: [],
             selectedTypes: [...defaultSelectedTypes],
             hideSolved: false,
             showOnlySolved: false,

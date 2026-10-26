@@ -229,6 +229,28 @@ export const isDaQuestion = (question = {}) => (
   getQuestionTrack(question) === EXAM_TRACKS.DA
 );
 
+export function isBranchGaQuestion(question = {}) {
+  const subjectSlug = String(question?.subjectSlug || "").toLowerCase();
+  const section = String(question?.section || "").toLowerCase();
+  const subject = String(question?.subject || "").toLowerCase();
+  const subjectLabel = String(question?.subjectLabel || "").toLowerCase();
+  const primarySubjectSlug = String(question?.taxonomy?.primary?.subjectSlug || "").toLowerCase();
+  const primarySubjectLabel = String(question?.taxonomy?.primary?.subjectLabel || "").toLowerCase();
+  const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t).toLowerCase()) : [];
+  return (
+    subjectSlug === "ga" ||
+    subjectSlug === "general-aptitude" ||
+    section === "ga" ||
+    subject === "general aptitude" ||
+    subjectLabel === "general aptitude" ||
+    primarySubjectSlug === "ga" ||
+    primarySubjectSlug === "general-aptitude" ||
+    primarySubjectLabel === "general aptitude" ||
+    tags.includes("ga") ||
+    tags.includes("general-aptitude")
+  );
+}
+
 export function isItQuestion(question = {}) {
   if (
     question?.branch === "IT" ||

@@ -62,6 +62,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
     const hasActiveFilters = filters.selectedYearSets.length > 0
         || filters.selectedSubjects.length > 0
         || filters.selectedSubtopics.length > 0
+        || (Array.isArray(filters.selectedGaBranches) && filters.selectedGaBranches.length > 0)
         || selectedTypes.length < questionTypes.length
         || (!hideYearFilters && isRangeActive)
         || filters.hideSolved

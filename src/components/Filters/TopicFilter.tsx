@@ -52,6 +52,8 @@ const TopicFilter = () => {
             slug
             && slug !== LEGACY_OPTIONAL_SUBJECT_SLUG
             && !APTITUDE_SUBJECT_SLUGS.has(slug)
+            && slug !== 'ga'
+            && !slug.includes('general-aptitude')
             && !slug.startsWith('da:')
             && !slug.startsWith('isro:')
             && !slug.startsWith('ec:')

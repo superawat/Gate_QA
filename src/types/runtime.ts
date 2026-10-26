@@ -223,6 +223,7 @@ export interface FilterSelectionState {
   selectedYearSets: string[];
   selectedTypes: QuestionType[];
   selectedSubtopics: string[];
+  selectedGaBranches?: string[];
   searchQuery: string;
   progressFilter: ProgressFilter;
   difficultyFilter: DifficultyFilter;

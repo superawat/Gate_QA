@@ -16,6 +16,7 @@ const ActiveFilterChips = () => {
         selectedYearSets = [],
         selectedSubjects = [],
         selectedSubtopics = [],
+        selectedGaBranches = [],
         selectedTypes = [],
         yearRange,
         hideSolved = false,
@@ -74,6 +75,10 @@ const ActiveFilterChips = () => {
         updateFilters({ selectedSubtopics: selectedSubtopics.filter((s) => s !== subtopicSlug) });
     };
 
+    const removeGaBranch = (branch: string) => {
+        updateFilters({ selectedGaBranches: selectedGaBranches.filter((b) => b !== branch) });
+    };
+
     const resetRange = () => {
         updateFilters({ yearRange: [minYear, maxYear] });
     };
@@ -103,6 +108,7 @@ const ActiveFilterChips = () => {
     const hasActiveFilters = selectedYearSets.length > 0
         || selectedSubjects.length > 0
         || selectedSubtopics.length > 0
+        || selectedGaBranches.length > 0
         || isTypeConstrained
         || isRangeActive
         || hideSolved
@@ -215,6 +221,29 @@ const ActiveFilterChips = () => {
                     </button>
                 </span>
             ))}
+
+            {selectedGaBranches.map((branch) => {
+                const branchUpper = branch.toUpperCase();
+                return (
+                    <span
+                        key={`ga-${branch}`}
+                        className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-success-text)] shadow-sm"
+                    >
+                        General Aptitude
+                        <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-sky-700 dark:text-sky-300">
+                            {branchUpper}
+                        </span>
+                        <button
+                            type="button"
+                            aria-label={`Remove ${branchUpper} General Aptitude filter`}
+                            onClick={() => removeGaBranch(branch)}
+                            className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-success-text)] transition hover:bg-[color:var(--color-success-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]"
+                        >
+                            <FaTimes />
+                        </button>
+                    </span>
+                );
+            })}
 
             {selectedSubtopics.map((subtopicSlug) => (
                 <span key={subtopicSlug} className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-warning-text)] shadow-sm">

@@ -18,6 +18,7 @@ export const FILTER_QUERY_KEYS = [
   "years",
   "subjects",
   "subtopics",
+  "gaBranches",
   "range",
   "types",
   "search",

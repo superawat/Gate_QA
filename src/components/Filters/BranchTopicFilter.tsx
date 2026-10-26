@@ -70,6 +70,9 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
 
   const [expandedSubjectSlugs, setExpandedSubjectSlugs] = useState<Set<string>>(() => new Set());
 
+  const selectedGaBranches: string[] = filters.selectedGaBranches || [];
+  const isGaSelected = selectedGaBranches.includes(track);
+
   // Filter subjects belonging to this branch (e.g. starting with "ec-" or "ec:")
   const branchSubjects = useMemo(() => {
     if (BranchQuestionService.isLoaded(track)) {
@@ -88,6 +91,48 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
       return slug.startsWith(`${track}-`) || slug.startsWith(`${track}:`);
     });
   }, [subjects, track, isLoading]);
+
+  const hasGaSubject = useMemo(() => {
+    const isGaCandidate = (s: any) => {
+      const slug = String(s?.slug || "").toLowerCase();
+      const label = String(s?.label || "").toLowerCase();
+      return (
+        slug === "ga" ||
+        slug === "general-aptitude" ||
+        slug === `${track}-ga` ||
+        slug === `${track}:ga` ||
+        label === "general aptitude"
+      );
+    };
+
+    if (BranchQuestionService.isLoaded(track)) {
+      const branchTags = BranchQuestionService.getStructuredTags(track);
+      if (Array.isArray(branchTags?.subjects) && branchTags.subjects.length > 0) {
+        if (branchTags.subjects.some(isGaCandidate)) return true;
+      }
+      const questions = BranchQuestionService.getQuestions(track);
+      if (questions.length > 0) {
+        return questions.some((q: any) => {
+          const sSlug = String(q?.subjectSlug || "").toLowerCase();
+          const sec = String(q?.section || "").toLowerCase();
+          const sLabel = String(q?.subjectLabel || q?.subject || "").toLowerCase();
+          return sSlug === "ga" || sSlug === "general-aptitude" || sec === "ga" || sLabel === "general aptitude";
+        });
+      }
+    }
+    const checkList = Array.isArray(subjects) ? subjects : [];
+    return checkList.some((s: any) => {
+      if (!isGaCandidate(s)) return false;
+      return !s?.track || s.track === track;
+    });
+  }, [subjects, track, isLoading]);
+
+  const handleGaToggle = () => {
+    const nextGaBranches = isGaSelected
+      ? selectedGaBranches.filter((b: string) => b !== track)
+      : [...selectedGaBranches, track];
+    updateFilters({ selectedGaBranches: nextGaBranches });
+  };
 
   const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
   const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
@@ -251,8 +296,33 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
       {error ? <p className="mt-2 text-xs font-medium text-[color:var(--color-danger-text)]">{error}</p> : null}
 
       {/* ── Expanded Branch Subjects Section (visible only when includeBranch is ON) ── */}
-      {includeBranch && branchSubjects.length > 0 ? (
+      {includeBranch && (branchSubjects.length > 0 || hasGaSubject) ? (
         <div className="mt-3 border-t border-[color:var(--color-border)]/50 pt-3 space-y-1">
+          {hasGaSubject && (
+            <div className="flex min-w-0 flex-col">
+              <div className="flex items-center justify-between gap-2 py-1">
+                <label className="flex min-w-0 cursor-pointer items-center">
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    checked={isGaSelected}
+                    onChange={handleGaToggle}
+                    aria-label="General Aptitude"
+                  />
+                  <span
+                    className={`ml-3 truncate text-sm ${
+                      isGaSelected
+                        ? "font-medium text-[color:var(--color-text)]"
+                        : "text-[color:var(--color-text-muted)]"
+                    }`}
+                    title="General Aptitude"
+                  >
+                    General Aptitude
+                  </span>
+                </label>
+              </div>
+            </div>
+          )}
           {branchSubjects.map((subject: any) => {
             const subjectSlug = subject.slug;
             const isSelected = selectedSubjectSet.has(subjectSlug);

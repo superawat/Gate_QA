@@ -13,6 +13,7 @@ import YearFilter from '../components/Filters/YearFilter';
 import YearRangeFilter from '../components/Filters/YearRangeFilter';
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
+import { BranchQuestionService } from '../services/BranchQuestionService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { writeBranchPreferences } from '../utils/branchPreference';
 
@@ -1873,6 +1874,327 @@ describe('FilterContext', () => {
 
             fireEvent.click(getByTestId('reset-filters'));
             expect(getByTestId('unlock-status').textContent).toBe('false');
+        });
+    });
+
+    describe('Branch-scoped General Aptitude (GA) filtering in FilterContext', () => {
+        const mockEcQuestions = [
+            {
+                question_uid: 'ec:2021:ga:q1',
+                title: 'GATE EC 2021 | GA | Question: 1',
+                searchText: 'ec aptitude quantitative',
+                subjectSlug: 'ga',
+                subject: 'General Aptitude',
+                subjectLabel: 'General Aptitude',
+                section: 'ga',
+                type: 'MCQ',
+                tags: ['ec-2021', 'ga'],
+                exam: { year: 2021, set: 1, yearSetKey: 'ec-2021-s1', yearSetIdentity: 'ec:2021:set-1' },
+                yearSetIdentity: 'ec:2021:set-1',
+                track: 'ec',
+            },
+            {
+                question_uid: 'ec:2021:ga:q2',
+                title: 'GATE EC 2021 | GA | Question: 2',
+                searchText: 'ec aptitude nat calculation',
+                subjectSlug: 'ga',
+                subject: 'General Aptitude',
+                subjectLabel: 'General Aptitude',
+                section: 'ga',
+                type: 'NAT',
+                tags: ['ec-2021', 'ga'],
+                exam: { year: 2021, set: 1, yearSetKey: 'ec-2021-s1', yearSetIdentity: 'ec:2021:set-1' },
+                yearSetIdentity: 'ec:2021:set-1',
+                track: 'ec',
+            },
+            {
+                question_uid: 'ec:2020:ga:q1',
+                title: 'GATE EC 2020 | GA | Question: 1',
+                searchText: 'ec aptitude 2020',
+                subjectSlug: 'ga',
+                subject: 'General Aptitude',
+                subjectLabel: 'General Aptitude',
+                section: 'ga',
+                type: 'MCQ',
+                tags: ['ec-2020', 'ga'],
+                exam: { year: 2020, set: 1, yearSetKey: 'ec-2020-s1', yearSetIdentity: 'ec:2020:set-1' },
+                yearSetIdentity: 'ec:2020:set-1',
+                track: 'ec',
+            },
+            {
+                question_uid: 'ec:2021:tech:q1',
+                title: 'GATE EC 2021 | Question: 1',
+                searchText: 'analog circuits opamp gain',
+                subjectSlug: 'ec-analog-circuits',
+                subject: 'Analog Circuits',
+                subjectLabel: 'Analog Circuits',
+                section: 'ec',
+                type: 'MCQ',
+                tags: ['ec-2021', 'ec-analog-circuits'],
+                exam: { year: 2021, set: 1, yearSetKey: 'ec-2021-s1', yearSetIdentity: 'ec:2021:set-1' },
+                yearSetIdentity: 'ec:2021:set-1',
+                track: 'ec',
+            },
+        ];
+
+        const mockMeQuestions = [
+            {
+                question_uid: 'me:2021:ga:q1',
+                title: 'GATE ME 2021 | GA | Question: 1',
+                searchText: 'me aptitude verbal logic',
+                subjectSlug: 'ga',
+                subject: 'General Aptitude',
+                subjectLabel: 'General Aptitude',
+                section: 'ga',
+                type: 'MCQ',
+                tags: ['me-2021', 'ga'],
+                exam: { year: 2021, set: 1, yearSetKey: 'me-2021-s1', yearSetIdentity: 'me:2021:set-1' },
+                yearSetIdentity: 'me:2021:set-1',
+                track: 'me',
+            },
+            {
+                question_uid: 'me:2021:tech:q1',
+                title: 'GATE ME 2021 | Question: 1',
+                searchText: 'thermodynamics carnot cycle',
+                subjectSlug: 'me-thermodynamics',
+                subject: 'Thermodynamics',
+                subjectLabel: 'Thermodynamics',
+                section: 'me',
+                type: 'MCQ',
+                tags: ['me-2021', 'me-thermodynamics'],
+                exam: { year: 2021, set: 1, yearSetKey: 'me-2021-s1', yearSetIdentity: 'me:2021:set-1' },
+                yearSetIdentity: 'me:2021:set-1',
+                track: 'me',
+            },
+        ];
+
+        beforeEach(() => {
+            vi.spyOn(BranchQuestionService, 'isLoaded').mockImplementation((track) => track === 'ec' || track === 'me');
+            vi.spyOn(BranchQuestionService, 'getQuestions').mockImplementation((track) => {
+                if (track === 'ec') return mockEcQuestions;
+                if (track === 'me') return mockMeQuestions;
+                return [];
+            });
+            vi.spyOn(BranchQuestionService, 'init').mockImplementation(async (track) => {
+                if (track === 'ec') return mockEcQuestions;
+                if (track === 'me') return mockMeQuestions;
+                return [];
+            });
+        });
+
+        const BranchGaTestComponent = () => {
+            const { filteredQuestions, filters, allQuestions } = useFilterState();
+            const { updateFilters, clearFilters, setIncludeEc, setIncludeMe } = useFilterActions();
+
+            return (
+                <div>
+                    <div data-testid="all-question-uids">{allQuestions.map(q => q.question_uid).join(',')}</div>
+                    <div data-testid="filtered-question-uids">{filteredQuestions.map(q => q.question_uid).join(',')}</div>
+                    <div data-testid="selected-ga-branches">{(filters.selectedGaBranches || []).join(',')}</div>
+                    <button data-testid="select-ec-ga" onClick={() => updateFilters({ selectedGaBranches: ['ec'] })}>Select EC GA</button>
+                    <button data-testid="select-me-ga" onClick={() => updateFilters({ selectedGaBranches: ['me'] })}>Select ME GA</button>
+                    <button data-testid="select-both-ga" onClick={() => updateFilters({ selectedGaBranches: ['ec', 'me'] })}>Select Both GA</button>
+                    <button data-testid="select-ec-tech" onClick={() => updateFilters({ selectedSubjects: ['ec-analog-circuits'] })}>Select EC Tech</button>
+                    <button data-testid="select-ec-tech-and-ga" onClick={() => updateFilters({ selectedSubjects: ['ec-analog-circuits'], selectedGaBranches: ['ec'] })}>Select EC Tech & GA</button>
+                    <button data-testid="select-year-2021" onClick={() => updateFilters({ selectedYearSets: ['ec:2021:set-1'] })}>Select 2021</button>
+                    <button data-testid="select-mcq-only" onClick={() => updateFilters({ selectedTypes: ['MCQ'] })}>Select MCQ</button>
+                    <button data-testid="clear-all-filters" onClick={clearFilters}>Clear Filters</button>
+                    <button data-testid="disable-ec" onClick={() => setIncludeEc(false)}>Disable EC</button>
+                </div>
+            );
+        };
+
+        test('selecting EC GA returns only EC GA questions (and excludes technical and ME questions)', async () => {
+            writeBranchPreferences(['ec', 'me'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BranchGaTestComponent />
+                </FilterProvider>
+            );
+
+            // Wait for both branch pools to load
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('ec:2021:ga:q1');
+                expect(getByTestId('all-question-uids').textContent).toContain('me:2021:ga:q1');
+            });
+
+            // Filter to only EC GA
+            act(() => {
+                fireEvent.click(getByTestId('select-ec-ga'));
+            });
+
+            await waitFor(() => {
+                const uids = getByTestId('filtered-question-uids').textContent.split(',').filter(Boolean);
+                // EC GA questions are returned
+                expect(uids).toContain('ec:2021:ga:q1');
+                expect(uids).toContain('ec:2021:ga:q2');
+                expect(uids).toContain('ec:2020:ga:q1');
+
+                // EC technical question is excluded
+                expect(uids).not.toContain('ec:2021:tech:q1');
+
+                // ME questions are excluded
+                expect(uids).not.toContain('me:2021:ga:q1');
+                expect(uids).not.toContain('me:2021:tech:q1');
+
+                // CSE questions are excluded
+                expect(uids).not.toContain('go:1');
+            });
+        });
+
+        test('selecting both EC GA and ME GA returns GA questions for both active branches independently', async () => {
+            writeBranchPreferences(['ec', 'me'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BranchGaTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('ec:2021:ga:q1');
+            });
+
+            act(() => {
+                fireEvent.click(getByTestId('select-both-ga'));
+            });
+
+            await waitFor(() => {
+                const uids = getByTestId('filtered-question-uids').textContent.split(',').filter(Boolean);
+                expect(uids).toContain('ec:2021:ga:q1');
+                expect(uids).toContain('ec:2021:ga:q2');
+                expect(uids).toContain('ec:2020:ga:q1');
+                expect(uids).toContain('me:2021:ga:q1');
+
+                // Technical questions from both branches remain excluded
+                expect(uids).not.toContain('ec:2021:tech:q1');
+                expect(uids).not.toContain('me:2021:tech:q1');
+            });
+        });
+
+        test('combines branch GA with technical subjects using OR composition', async () => {
+            writeBranchPreferences(['ec', 'me'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BranchGaTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('ec:2021:ga:q1');
+            });
+
+            act(() => {
+                fireEvent.click(getByTestId('select-ec-tech-and-ga'));
+            });
+
+            await waitFor(() => {
+                const uids = getByTestId('filtered-question-uids').textContent.split(',').filter(Boolean);
+                // Both EC GA and EC Analog Circuits are returned
+                expect(uids).toContain('ec:2021:ga:q1');
+                expect(uids).toContain('ec:2021:tech:q1');
+
+                // ME GA and ME technical remain excluded
+                expect(uids).not.toContain('me:2021:ga:q1');
+                expect(uids).not.toContain('me:2021:tech:q1');
+            });
+        });
+
+        test('composes branch GA with year and question-type constraints', async () => {
+            writeBranchPreferences(['ec'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BranchGaTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('ec:2021:ga:q1');
+            });
+
+            // Select EC GA
+            act(() => {
+                fireEvent.click(getByTestId('select-ec-ga'));
+            });
+
+            // Constrain by year 2021
+            act(() => {
+                fireEvent.click(getByTestId('select-year-2021'));
+            });
+
+            await waitFor(() => {
+                const uids = getByTestId('filtered-question-uids').textContent.split(',').filter(Boolean);
+                expect(uids).toContain('ec:2021:ga:q1');
+                expect(uids).toContain('ec:2021:ga:q2');
+                // 2020 GA question is filtered out by year constraint
+                expect(uids).not.toContain('ec:2020:ga:q1');
+            });
+
+            // Constrain by question type MCQ
+            act(() => {
+                fireEvent.click(getByTestId('select-mcq-only'));
+            });
+
+            await waitFor(() => {
+                const uids = getByTestId('filtered-question-uids').textContent.split(',').filter(Boolean);
+                expect(uids).toContain('ec:2021:ga:q1');
+                // NAT GA question is filtered out by type constraint
+                expect(uids).not.toContain('ec:2021:ga:q2');
+            });
+        });
+
+        test('clearFilters resets selectedGaBranches', async () => {
+            writeBranchPreferences(['ec'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BranchGaTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('ec:2021:ga:q1');
+            });
+
+            act(() => {
+                fireEvent.click(getByTestId('select-ec-ga'));
+            });
+            expect(getByTestId('selected-ga-branches').textContent).toBe('ec');
+
+            act(() => {
+                fireEvent.click(getByTestId('clear-all-filters'));
+            });
+            expect(getByTestId('selected-ga-branches').textContent).toBe('');
+        });
+
+        test('disabling EC branch removes ec from selectedGaBranches while preserving others', async () => {
+            writeBranchPreferences(['ec', 'me'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BranchGaTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('ec:2021:ga:q1');
+            });
+
+            act(() => {
+                fireEvent.click(getByTestId('select-both-ga'));
+            });
+            expect(getByTestId('selected-ga-branches').textContent).toBe('ec,me');
+
+            act(() => {
+                fireEvent.click(getByTestId('disable-ec'));
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('selected-ga-branches').textContent).toBe('me');
+            });
         });
     });
 });

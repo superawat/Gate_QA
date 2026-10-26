@@ -225,5 +225,97 @@ describe("BranchFilterIntegration in FilterSidebar", () => {
       selectedSubjects: ["ec-analog-circuits"],
     });
   });
+
+  test("selecting General Aptitude on EC card triggers updateFilters with selectedGaBranches", () => {
+    writeBranchPreferences(["ec", "cse"], "ec");
+
+    const mockUpdateFilters = vi.fn();
+    const mockFilterState = {
+      filteredQuestions: [],
+      totalQuestions: 10,
+      filters: {
+        selectedTypes: ["MCQ"],
+        selectedSubjects: [],
+        selectedSubtopics: [],
+        selectedYearSets: [],
+        selectedGaBranches: [],
+      },
+      structuredTags: {
+        subjects: [
+          { slug: "ec-analog-circuits", label: "Analog Circuits" },
+          { slug: "ga", label: "General Aptitude" },
+        ],
+      },
+      isCseEnrolled: true,
+      isEcEnrolled: true,
+      includeCse: true,
+      includeEc: true,
+      selectedBranches: ["ec", "cse"],
+      activeBranch: "ec",
+    };
+
+    render(
+      <BrowserRouter>
+        <FilterStateContext.Provider value={mockFilterState}>
+          <FilterActionsContext.Provider value={{ updateFilters: mockUpdateFilters }}>
+            <FilterSidebar />
+          </FilterActionsContext.Provider>
+        </FilterStateContext.Provider>
+      </BrowserRouter>
+    );
+
+    const gaCheckbox = screen.getByRole("checkbox", { name: "General Aptitude" });
+    fireEvent.click(gaCheckbox);
+
+    expect(mockUpdateFilters).toHaveBeenCalledWith({
+      selectedGaBranches: ["ec"],
+    });
+  });
+
+  test("activates Reset button when only selectedGaBranches is active", () => {
+    writeBranchPreferences(["ec"], "ec");
+
+    const mockClearFilters = vi.fn();
+    const mockFilterState = {
+      filteredQuestions: [],
+      totalQuestions: 10,
+      filters: {
+        selectedTypes: ["MCQ", "MSQ", "NAT"],
+        selectedSubjects: [],
+        selectedSubtopics: [],
+        selectedYearSets: [],
+        selectedGaBranches: ["ec"],
+      },
+      structuredTags: {
+        questionTypes: ["MCQ", "MSQ", "NAT"],
+        subjects: [
+          { slug: "ec-analog-circuits", label: "Analog Circuits" },
+          { slug: "ga", label: "General Aptitude" },
+        ],
+      },
+      isCseEnrolled: false,
+      isEcEnrolled: true,
+      includeEc: true,
+      selectedBranches: ["ec"],
+      activeBranch: "ec",
+    };
+
+    render(
+      <BrowserRouter>
+        <FilterStateContext.Provider value={mockFilterState}>
+          <FilterActionsContext.Provider value={{ clearFilters: mockClearFilters, updateFilters: vi.fn() }}>
+            <FilterSidebar />
+          </FilterActionsContext.Provider>
+        </FilterStateContext.Provider>
+      </BrowserRouter>
+    );
+
+    const resetButton = screen.getByRole("button", { name: "Reset" });
+    expect(resetButton).toBeDefined();
+    expect(resetButton.disabled).toBe(false);
+
+    fireEvent.click(resetButton);
+    expect(mockClearFilters).toHaveBeenCalled();
+  });
 });
 

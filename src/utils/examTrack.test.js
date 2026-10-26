@@ -7,6 +7,7 @@ import {
   getQuestionYearSetIdentity,
   isAptitudeQuestion,
   isAptitudeSubjectSlug,
+  isBranchGaQuestion,
   isDaQuestion,
   isIsroQuestion,
   isItQuestion,
@@ -224,5 +225,42 @@ describe("exam track identity", () => {
     expect(isAptitudeSubjectSlug("dbms")).toBe(false);
     expect(isAptitudeSubjectSlug("da:python")).toBe(false);
     expect(isAptitudeSubjectSlug("ga")).toBe(false);
+  });
+
+  test("accurately identifies branch General Aptitude (GA) questions", () => {
+    const ecGaQuestion = {
+      question_uid: "ec:2021:ga:q1",
+      section: "ga",
+      subjectSlug: "ga",
+      subject: "General Aptitude",
+      subjectLabel: "General Aptitude",
+      track: "ec",
+    };
+    const meGaQuestion = {
+      question_uid: "me:2020:ga:q1",
+      section: "ga",
+      subjectSlug: "general-aptitude",
+      track: "me",
+    };
+    const eeTechQuestion = {
+      question_uid: "ee:2021:q1",
+      section: "ee",
+      subjectSlug: "ee-power-systems",
+      subject: "Power Systems",
+      track: "ee",
+    };
+    const cseTechQuestion = {
+      question_uid: "go:12345",
+      subjectSlug: "algorithms",
+      subject: "Algorithms",
+      track: "cse",
+    };
+
+    expect(isBranchGaQuestion(ecGaQuestion)).toBe(true);
+    expect(isBranchGaQuestion(meGaQuestion)).toBe(true);
+    expect(isBranchGaQuestion(eeTechQuestion)).toBe(false);
+    expect(isBranchGaQuestion(cseTechQuestion)).toBe(false);
+    expect(isBranchGaQuestion(null)).toBe(false);
+    expect(isBranchGaQuestion({})).toBe(false);
   });
 });
