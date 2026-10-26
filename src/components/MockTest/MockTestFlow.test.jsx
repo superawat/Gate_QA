@@ -276,4 +276,57 @@ describe("MockTest smoke flow", () => {
       expect(screen.getByTestId("mock-question-content").textContent).toContain("cs:1");
     });
   }, 15000);
+
+  test("submitting a mock test with both GA and core questions renders result screen and diagnostic without error", async () => {
+    const gaQuestion = buildQuestion("ga:1", "MCQ", [
+      { label: "A", text: "Opt A", html: "Opt A" },
+      { label: "B", text: "Opt B", html: "Opt B" },
+    ]);
+    const csQuestion = buildQuestion("cs:1", "MCQ", [
+      { label: "A", text: "Opt A", html: "Opt A" },
+      { label: "B", text: "Opt B", html: "Opt B" },
+    ]);
+
+    mockAllQuestions = [gaQuestion, csQuestion];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:1": { questionUid: "ga:1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:1": { questionUid: "cs:1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 2, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:1", "cs:1"],
+    });
+    MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid = {
+      "ga:1": { type: "MCQ", answer: "A" },
+      "cs:1": { type: "MCQ", answer: "A" },
+    };
+
+    renderShell();
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    const countInput = screen
+      .getAllByRole("spinbutton")
+      .find((element) => element.getAttribute("max") === "65");
+    fireEvent.change(countInput, { target: { value: "2" } });
+    fireEvent.click(screen.getByRole("button", { name: "Start Mock" }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("mock-question-content")).toBeTruthy();
+      expect(screen.getByTestId("mock-submit-button")).toBeTruthy();
+    });
+
+    fireEvent.click(screen.getByTestId("mock-submit-button"));
+    fireEvent.click(screen.getAllByRole("button", { name: /^submit$/i }).at(-1));
+
+    await waitFor(() => {
+      expect(screen.getByText("Exam Submitted Successfully")).toBeTruthy();
+      expect(screen.getByText("Structured Performance Diagnostic")).toBeTruthy();
+    });
+
+    expect(screen.queryByText(/Something went wrong/i)).toBeNull();
+  }, 20000);
 });

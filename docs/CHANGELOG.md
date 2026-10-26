@@ -1,4 +1,14 @@
 # Changelog
+- **Mock Test Full-Paper Submission & Performance Diagnostic Scope Resolution (DEC-247)**:
+  - **ReferenceError: attemptMeta is not defined Fix**:
+    - Fixed an unhandled render crash in `MockTestResults.jsx` where `generatePerformanceAnalysis()` referenced undeclared variable `attemptMeta` when comparing General Aptitude and Core Section performance on full official papers containing both sections (`ga.total > 0 && cs.total > 0`).
+    - Propagated `attemptMeta` from `useMockTest()` in `MockTestResults` into `<StructuredReviewSection attemptMeta={attemptMeta} />` and into `generatePerformanceAnalysis(questions, summary, attemptMeta = null)`, retaining safe `null` fallback.
+    - Verified that in guest mode and authenticated mode alike, submitting a full multi-section paper resolves branch status and displays "Exam Submitted Successfully" and "Structured Performance Diagnostic" without crashing or falling back to the `ErrorBoundary`.
+  - **Regression Test Coverage**:
+    - Added dedicated unit test suite in `src/components/MockTest/MockTestResults.test.jsx` covering multi-section diagnostics, branch observation generation across EC, ME, and EE, and null `attemptMeta` fallbacks.
+    - Added end-to-end multi-section test paper submission regression test in `src/components/MockTest/MockTestFlow.test.jsx`.
+    - 100% test pass across 114 test files (1,486 tests).
+
 - **October 25 Question Data Corrections & Calculator Precedence Engine (DEC-246)**:
   - **Calculator Operator Precedence & Precision Cleanup (`go:357396`)**:
     - Replaced the calculator's legacy immediate evaluation model with a two-stack operator precedence engine (`src/components/Calculator/calculatorEngine.js` and `public/calculator/calculator.js`) enforcing standard BODMAS / PEMDAS rules (`*`, `/` take precedence over `+`, `-`).

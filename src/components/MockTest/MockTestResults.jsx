@@ -105,7 +105,7 @@ const TimeDistributionSummary = ({ questions = [], summary }) => {
 
 /* ── Performance Analysis Generator ────────────────────────────────────────── */
 
-const generatePerformanceAnalysis = (questions = [], summary = {}) => {
+const generatePerformanceAnalysis = (questions = [], summary = {}, attemptMeta = null) => {
     const incorrectList = [];
     const slowList = [];
     const weakTopicsMap = new Map();
@@ -227,8 +227,8 @@ const generatePerformanceAnalysis = (questions = [], summary = {}) => {
     };
 };
 
-const StructuredReviewSection = ({ questions = [], summary = {} }) => {
-    const { incorrectList, weakTopics, observations, improvementAreas } = generatePerformanceAnalysis(questions, summary);
+const StructuredReviewSection = ({ questions = [], summary = {}, attemptMeta = null }) => {
+    const { incorrectList, weakTopics, observations, improvementAreas } = generatePerformanceAnalysis(questions, summary, attemptMeta);
     const hasPerfectAttempt = Number(summary.attempted || 0) > 0
         && Number(summary.incorrect || 0) === 0
         && Number(summary.unanswered || 0) === 0
@@ -442,7 +442,7 @@ const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
 
                 <TimeDistributionSummary questions={questions} summary={summary} />
 
-                <StructuredReviewSection questions={questions} summary={summary} />
+                <StructuredReviewSection questions={questions} summary={summary} attemptMeta={attemptMeta} />
 
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                     <button
@@ -474,4 +474,5 @@ const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
     );
 };
 
+export { generatePerformanceAnalysis, StructuredReviewSection };
 export default MockTestResults;
