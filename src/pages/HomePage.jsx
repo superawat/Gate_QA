@@ -36,7 +36,6 @@ import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { HomeSearchBar } from "../components/HomeSearch";
-import HomeMarquee from "../components/Home/HomeMarquee";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 import { getQuoteForToday, parseQuote } from "../utils/motivationalQuotes";
 import { FaQuoteLeft, FaSpinner } from "react-icons/fa";
@@ -288,7 +287,6 @@ const HomePage = ({
         contentClassName="home-dashboard-shell"
         onResume={hasResumeRoute ? onResumePractice : null}
         resumeLabel="Continue"
-        subHeader={<HomeMarquee />}
       >
         <div
           className="home-dashboard-content home-dashboard-content--ready"

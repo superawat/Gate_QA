@@ -403,20 +403,26 @@ describe("HomePage", () => {
     expect(loadStudyActivityFastMock.mock.calls.length).toBe(callCountBefore + 5);
   });
 
-  test("renders platform updates marquee ribbon in subHeader with announcement chips and profile action", () => {
+  test("does not render marquee ribbon on homepage", () => {
     renderHomePage();
 
-    // Verify marquee region and label
-    const marqueeRegion = screen.getByRole("region", { name: "Platform Updates — Multi-branch support and Profile introduced" });
-    expect(marqueeRegion).toBeTruthy();
-    expect(screen.getByText("WHAT'S NEW")).toBeTruthy();
+    // Verify marquee region and label are not rendered
+    const marqueeRegion = screen.queryByRole("region", { name: "Platform Updates — Multi-branch support and Profile introduced" });
+    expect(marqueeRegion).toBeNull();
+    expect(screen.queryByText("WHAT'S NEW")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Open Profile and Disciplines" })).toBeNull();
+  });
 
-    // Verify announcement items are rendered
-    expect(screen.getAllByText(/New Branches:/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Profile Hub:/i).length).toBeGreaterThan(0);
+  test("renders search bar without moving light (border beam) on homepage", () => {
+    const { container } = renderHomePage();
 
-    // Verify profile action
-    expect(screen.getByRole("button", { name: "Open Profile and Disciplines" })).toBeTruthy();
+    const searchInput = screen.getByPlaceholderText("Search topics, subjects, questions...");
+    expect(searchInput).toBeTruthy();
+
+    const inputBox = container.querySelector(".home-search-input-box");
+    expect(inputBox).toBeTruthy();
+    const beamEl = inputBox.querySelector(".border-beam-element");
+    expect(beamEl).toBeNull();
   });
 
   test("renders Practice Map section heading and activity heatmap on dashboard", () => {
