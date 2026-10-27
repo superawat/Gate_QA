@@ -1,4 +1,36 @@
 # Changelog
+- **October 27 Question Audit & Data Maintenance Resolution (DEC-256)**:
+  - **`go:87191` (GATE CSE 2006 Q77 - Linked Question Clarification)**:
+    - Added an italic disclaimer near the beginning of Question 77:
+      `<em>Note: Questions 76 and 77 are linked. Please solve Question 76 first, then use its result to answer Question 77.</em>`
+    - Preserved existing linked question context, options, answer key (Option A), and layout across `public/questions-with-answers.json`, `public/questions-filtered-with-ids.json`, `public/questions-filtered.json`, and static detail shard `2006-s0.json`.
+  - **`go:118388` (GATE CSE 2017 Set 2 Q43 - Programming in C Output Verification)**:
+    - Inspected and traced the C code execution step by step: the bidirectional cocktail shaker sort produces descending array `[6, 5, 4, 3, 2, 1]`.
+    - Verified that zero-based indexing yields `array[3] == 3`. Retained verified official NAT answer `3`.
+    - Registered in `data/answers/manual-answers-patch-v1.json` and enhanced detailed solution markdown with complete multi-pass loop trace and 0-based indexing proof in `cse-solutions.json` and shard `2017-s2.json`.
+    - Added simulation regression test verifying array state and answer.
+  - **`isro:cs:2023:q39` (ISRO CS 2023 Q39 - Digital Logic Answer Correction)**:
+    - Audited question: "A logic circuit that provides a LOW output when both inputs are HIGH or both inputs are LOW is".
+    - Evaluated truth table: LOW output when inputs are identical ($(0, 0) \to 0$ and $(1, 1) \to 0$) is the definition of the XOR gate (Option D). Corrected answer key from Option C (XNOR) to Option D.
+    - Synchronized across `answers-isro.json`, `isro-2023.json`, and `isro-all.json` (both `data/` and `public/data/`) and `manual-answers-patch-v1.json`.
+  - **`ec:2018:q26` (GATE EC 2018 Q26 - Mismatched Diagram Replacement)**:
+    - Identified that Question 26 (Zener diode voltage regulator across $1\text{ k}\Omega$ resistor) was mistakenly displaying Question 25's two-port network diagram (`ec-2018-2090824674.webp`).
+    - Retrieved verified authentic circuit diagram for Question 26 from GateOverflow, cropped and optimized to clean lossless WebP `public/question-images/ec/2018/ec-2018-q26-circuit.webp`.
+    - Updated `audit/ec/raw-ec-2018.json` and static detail shard `ec-2018-s1.json`, while ensuring Question 25 retains its own correct diagram.
+  - **`APT-QNT-5862` (Aptitude 2021 Mensuration - Answer Key Correction & Solution)**:
+    - Audited question: melting three cubes of sides 6 cm, 8 cm, and 10 cm to form a new cube.
+    - Verified volume conservation: $6^3 + 8^3 + 10^3 = 216 + 512 + 1000 = 1728\text{ cm}^3 \implies a = \sqrt[3]{1728} = 12\text{ cm}$ (Option D).
+    - Corrected answer key in `public/data/aptitude/quant/mensuration.json` from Option B (24 cm) to Option D (12 cm).
+    - Added full detailed derivation to question object and updated `AptitudeQuestionService.ts` to normalize and pass `detailed_solution`.
+  - **`go:422935` (GATE DA 2024 Q27 - Incomplete Piecewise Function Definition Restoration)**:
+    - Diagnosed root cause: `cleanHtmlTagsInMath` in `src/utils/latexClean.js` used an overly broad tag regex `/<\/?[^>]+>/g`, which matched mathematical inequalities `<-2 ... >` inside LaTeX display math and erased the middle piecewise branch $ax^2 + bx + c$.
+    - Fixed `latexClean.js` with precise HTML tag matching `/<\/?(?:[a-zA-Z][a-zA-Z0-9]*\b[^>]*|!--[\s\S]*?--)>/gi`, preventing any false stripping of math inequalities.
+    - Fixed `cleanText` in `scripts/da-pipeline/da-utils.mjs` similarly.
+    - Updated `go:422935` in `public/data/da/questions-with-answers.json`, shards, search index, and solutions using standard TeX `x \lt -2` and `x \gt 2`, ensuring complete render fidelity and official answer Option A.
+  - **Pipeline Builds & Regression Testing**:
+    - Rebuilt all static shards, manifests, search indices, and mock catalogs via `precompute-subtopics.mjs`, `build-public-artifacts.mjs`, `buildDaPublicArtifacts()`, and `build-branch-search-indices.mjs`.
+    - Added comprehensive regression tests in `src/utils/evaluateAnswer.test.js`, `src/utils/latexClean.test.js`, and `src/services/AptitudeQuestionService.test.js`.
+
 - **Profile Popover & Candidate Profile Hub UI Modernization Across Web & Mobile (DEC-255)**:
   - **UserProfileMenu Popover UI & Mobile Hardening**:
     - Re-architected `UserProfileMenu.jsx` and `.user-profile-dropdown` in `src/index.css` into an ergonomic, high-density candidate card.

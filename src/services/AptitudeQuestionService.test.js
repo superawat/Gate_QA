@@ -192,4 +192,26 @@ describe("AptitudeQuestionService", () => {
     expect(AptitudeQuestionService.getCacheKey()).toContain(APTITUDE_INIT_CACHE_VERSION);
     expect(AptitudeQuestionService.getCacheKey()).toContain("aptitude");
   });
+
+  test("normalizes detailed_solution when present on aptitude row", () => {
+    const row = {
+      uid: "APT-QNT-5862",
+      questionHtml: "<p>Three cubes melted.</p><ol><li>13 cm</li><li>24 cm</li><li>25 cm</li><li>12 cm</li></ol>",
+      options: ["13 cm", "24 cm", "25 cm", "12 cm"],
+      answer: "D",
+      type: "MCQ",
+      subject: "Quant",
+      subtopic: "Mensuration",
+      detailed_solution: {
+        concept: "Mensuration - Solid Cubes Recasting (Volume Conservation)",
+        markdown: "Total volume = 216 + 512 + 1000 = 1728 -> a = 12 cm (Option D).",
+        images: [],
+      },
+    };
+
+    const normalized = AptitudeQuestionService.normalizeQuestion(row);
+    expect(normalized.answer).toBe("D");
+    expect(normalized.answerMeta.answer).toBe("D");
+    expect(normalized.detailed_solution).toEqual(row.detailed_solution);
+  });
 });

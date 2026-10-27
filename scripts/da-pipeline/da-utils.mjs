@@ -53,7 +53,7 @@ export function decodeHtmlEntities(value = "") {
 }
 
 export function cleanText(value = "") {
-  return decodeHtmlEntities(String(value || "").replace(/<[^>]*>/g, " "))
+  return decodeHtmlEntities(String(value || "").replace(/<\/?(?:[a-zA-Z][a-zA-Z0-9]*\b[^>]*|!--[\s\S]*?--)>/gi, " "))
     .replace(/\s+/g, " ")
     .trim();
 }

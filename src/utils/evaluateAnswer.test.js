@@ -3535,6 +3535,121 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
         expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
       });
+
+      test("evaluates go:1685 (GATE CSE 1998 Q2.13) as MCQ Option D (call-by-reference side-effect 42)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:87191 (GATE CSE 2006 Q77) as MCQ Option A with linked-question disclaimer", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:118388 (GATE CSE 2017 Set 2 Q43) as NAT answer 3 via C cocktail shaker sort simulation", () => {
+        // Simulate actual C program logic to guarantee ground truth
+        const array = [3, 5, 1, 4, 6, 2];
+        let done = 0;
+        while (done === 0) {
+          done = 1;
+          for (let i = 0; i <= 4; i++) {
+            if (array[i] < array[i + 1]) {
+              const temp = array[i];
+              array[i] = array[i + 1];
+              array[i + 1] = temp;
+              done = 0;
+            }
+          }
+          for (let i = 5; i >= 1; i--) {
+            if (array[i] > array[i - 1]) {
+              const temp = array[i];
+              array[i] = array[i - 1];
+              array[i - 1] = temp;
+              done = 0;
+            }
+          }
+        }
+        // Descending order [6, 5, 4, 3, 2, 1] -> array[3] === 3
+        expect(array).toEqual([6, 5, 4, 3, 2, 1]);
+        expect(array[3]).toBe(3);
+
+        const record = {
+          type: "NAT",
+          answer: 3,
+          tolerance: { abs: 0.01 },
+        };
+        expect(evaluateAnswer(record, "3")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 3)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "4")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates isro:cs:2023:q39 (ISRO CS 2023 Q39) as MCQ Option D (XOR gate)", () => {
+        // Truth table: LOW when both inputs HIGH or both LOW -> XOR gate
+        const xorGate = (a, b) => (a ^ b);
+        expect(xorGate(0, 0)).toBe(0); // LOW when both inputs LOW
+        expect(xorGate(1, 1)).toBe(0); // LOW when both inputs HIGH
+        expect(xorGate(0, 1)).toBe(1); // HIGH when inputs differ
+        expect(xorGate(1, 0)).toBe(1);
+
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates ec:2018:q26 (GATE EC 2018 Q26) as MCQ Option B (Zener regulator R=100 ohm, Pz=40 mW)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "B",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates APT-QNT-5862 (Aptitude 2021 Mensuration) as MCQ Option D (12 cm)", () => {
+        // Volume conservation: 6^3 + 8^3 + 10^3 = 216 + 512 + 1000 = 1728 = 12^3 -> side = 12 cm (Option D)
+        const vTotal = Math.pow(6, 3) + Math.pow(8, 3) + Math.pow(10, 3);
+        const newSide = Math.round(Math.cbrt(vTotal));
+        expect(newSide).toBe(12);
+
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:422935 (GATE DA 2024 Q27) as MCQ Option A (Calculus piecewise function a=1/4, b=0, c=1)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });

@@ -36,38 +36,42 @@ export const cleanHtmlTagsInMath = (text) => {
       str
     );
 
+  // Helper regex to match actual HTML tags (e.g. <span>, <br/>) and comments,
+  // preventing false-positive stripping of mathematical inequalities like "x < -2 ... x > 2"
+  const HTML_TAG_REGEX = /<\/?(?:[a-zA-Z][a-zA-Z0-9]*\b[^>]*|!--[\s\S]*?--)>/gi;
+
   // Clean display math: $$ ... $$
   tokenized = tokenized.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => {
     if (hasBlockHtml(math)) return match;
-    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+>/g, "");
+    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(HTML_TAG_REGEX, "");
     return `$$${stripped}$$`;
   });
 
   // Clean display math: \[ ... \]
   tokenized = tokenized.replace(/\\\[([\s\S]*?)\\\]/g, (match, math) => {
     if (hasBlockHtml(math)) return match;
-    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+>/g, "");
+    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(HTML_TAG_REGEX, "");
     return `\\[${stripped}\\]`;
   });
 
   // Clean inline math: \( ... \)
   tokenized = tokenized.replace(/\\\(([\s\S]*?)\\\)/g, (match, math) => {
     if (hasBlockHtml(math)) return match;
-    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+>/g, "");
+    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(HTML_TAG_REGEX, "");
     return `\\(${stripped}\\)`;
   });
 
   // Clean and convert BBCode [latex] ... [/latex] tags to standard inline math $ ... $
   tokenized = tokenized.replace(/\[latex\]([\s\S]*?)\[\/latex\]/gi, (match, math) => {
     if (hasBlockHtml(math)) return match;
-    const stripped = math.replace(/<br\s*\/?>/gi, " ").replace(/<\/?[^>]+>/g, "").trim();
+    const stripped = math.replace(/<br\s*\/?>/gi, " ").replace(HTML_TAG_REGEX, "").trim();
     return `$${stripped}$`;
   });
 
   // Clean inline math: $ ... $ (non-greedy, single line for $)
   tokenized = tokenized.replace(/\$([^\$\n]+?)\$/g, (match, math) => {
     if (hasBlockHtml(math)) return match;
-    const stripped = math.replace(/<br\s*\/?>/gi, " ").replace(/<\/?[^>]+>/g, "");
+    const stripped = math.replace(/<br\s*\/?>/gi, " ").replace(HTML_TAG_REGEX, "");
     return `$${stripped}$`;
   });
 

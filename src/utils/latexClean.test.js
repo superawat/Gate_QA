@@ -81,4 +81,20 @@ describe("latexClean utility", () => {
     const cleaned = cleanLatexHtml(raw);
     expect(cleaned).toBe("Let $r=1(1+0)^*, s=11^*0 \\text{ and } t=1^*0$ be three regular expressions.");
   });
+
+  it("should preserve piecewise function definitions containing < and > inequalities (e.g. go:422935)", () => {
+    const raw = "$$f(x)=\\left\\{\\begin{array}{cl} -x, & \\text { if } x<-2 \\\\ a x^{2}+b x+c, & \\text { if } x \\in[-2,2] \\\\ x, & \\text { if } x>2 \\end{array}\\right.$$";
+    const cleaned = cleanLatexHtml(raw);
+    expect(cleaned).toContain("x<-2");
+    expect(cleaned).toContain("a x^{2}+b x+c");
+    expect(cleaned).toContain("x>2");
+  });
+
+  it("should preserve LaTeX \\lt and \\gt inequalities inside math blocks", () => {
+    const raw = "$$f(x)=\\left\\{\\begin{array}{cl} -x, & \\text { if } x \\lt -2 \\\\ a x^{2}+b x+c, & \\text { if } x \\in[-2,2] \\\\ x, & \\text { if } x \\gt 2 \\end{array}\\right.$$";
+    const cleaned = cleanLatexHtml(raw);
+    expect(cleaned).toContain("x \\lt -2");
+    expect(cleaned).toContain("a x^{2}+b x+c");
+    expect(cleaned).toContain("x \\gt 2");
+  });
 });

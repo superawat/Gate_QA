@@ -283,6 +283,7 @@ export class AptitudeQuestionService {
         subtopics: [{ slug: subtopicSlug, label: subtopicLabel }],
         options: normalizedOptions,
       },
+      detailed_solution: row.detailed_solution || null,
       _detailShard: String(row.shard || row.sh || row.detailShard || "").trim(),
     };
   }
