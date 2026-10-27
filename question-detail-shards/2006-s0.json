@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:50:38.821Z",
+  "generatedAt": "2026-10-27T12:56:05.741Z",
   "shardKey": "2006-s0",
   "yearSetKey": "2006-s0",
   "yearSetIdentity": "cse:2006:set-0",
@@ -47,7 +47,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms & Numerical Methods — Polynomial Evaluation Complexity via Horner's Rule",
+        "concept": "Engineering Mathematics",
         "markdown": "### 1. Concept\nEvaluating an $n$-degree polynomial $p(x) = \\sum_{i=0}^n a_i x^i$ directly by computing each power $x^i$ requires $O(n^2)$ or $O(n)$ multiplications.\n**Horner's Rule (Horner's Method)** reformulates the polynomial as a nested sequence of operations:\n$$p(x) = a_0 + x \\left(a_1 + x \\left(a_2 + x \\cdot a_3 \\right)\\right)$$\nFor any polynomial of degree $n$, Horner's method requires exactly $n$ multiplications and $n$ additions. By Ostrowski's theorem (1954), $n$ multiplications are both necessary and sufficient to evaluate a general degree-$n$ polynomial with non-zero coefficients.\n\n---\n\n### 2. Givens & Parameters\n- Polynomial: $p(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3$\n- Degree: $n = 3$\n- Coefficients: $a_i \\neq 0$ for all $i \\in \\{0, 1, 2, 3\\}$\n\n---\n\n### 3. Step-by-Step Multiplication Count\nUsing Horner's nested factorization:\n$$p(x) = a_0 + x \\cdot \\Big(a_1 + x \\cdot \\big(a_2 + x \\cdot a_3\\big)\\Big)$$\n\n1. **Multiplication 1**: $m_1 = x \\cdot a_3$\n2. Addition: $s_1 = a_2 + m_1$\n3. **Multiplication 2**: $m_2 = x \\cdot s_1$\n4. Addition: $s_2 = a_1 + m_2$\n5. **Multiplication 3**: $m_3 = x \\cdot s_2$\n6. Addition: $p(x) = a_0 + m_3$\n\nTotal multiplications executed = **3**.\n\n---\n\n### 4. Distractor Analysis\n* **Option A (3)**: ✓ **CORRECT** — Horner's method achieves the theoretical lower bound of $n = 3$ multiplications.\n* **Option B (4)**: Incorrect — would correspond to computing $x^2, x^3$ separately with redundant operations.\n* **Option C (6)**: Incorrect — naive evaluation computing $x \\cdot a_1$, $x \\cdot x \\cdot a_2$, and $x \\cdot x \\cdot x \\cdot a_3$ from scratch ($1 + 2 + 3 = 6$ multiplications).\n* **Option D (9)**: Incorrect — grossly unoptimized evaluation.\n\n---\n\n### 5. Final Answer\nThe minimum number of multiplications needed to evaluate $p(x)$ is **3**, corresponding to **Option A**.",
         "images": []
       }
@@ -92,7 +92,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Set Theory & Discrete Mathematics — Function Counting Between Sets and Power Sets",
+        "concept": "Discrete Mathematics - Functions",
         "markdown": "### 1. Concept\nFor any two finite sets $A$ and $B$, the total number of distinct functions from $A$ to $B$ is given by:\n$$|B^A| = |B|^{|A|}$$\nwhere $|A|$ is the cardinality of the domain and $|B|$ is the cardinality of the codomain.\n\n---\n\n### 2. Givens & Parameters\n- Cardinalities: $|X| = x$, $|Y| = y$, $|Z| = z$\n- Set $W = X \\times Y$ (Cartesian product)\n- Set $E = \\mathcal{P}(W)$ (the set of all subsets of $W$, i.e., the power set of $W$)\n- Target: Find the number of functions from $Z$ to $E$.\n\n---\n\n### 3. Step-by-Step Derivation\n\n**Step 1: Cardinality of $W$**\n$$|W| = |X \\times Y| = |X| \\cdot |Y| = x \\cdot y = xy$$\n\n**Step 2: Cardinality of $E$**\nSince $E = \\mathcal{P}(W)$ is the power set of $W$:\n$$|E| = |\\mathcal{P}(W)| = 2^{|W|} = 2^{xy}$$\n\n**Step 3: Number of functions from $Z$ to $E$**\nThe domain is $Z$ with $|Z| = z$.\nThe codomain is $E$ with $|E| = 2^{xy}$.\nThe number of distinct functions from domain $Z$ to codomain $E$ is:\n$$\\text{Total Functions} = |E|^{|Z|} = \\left(2^{xy}\\right)^z$$\nUsing standard exponent laws $\\left(a^b\\right)^c = a^{b \\cdot c}$:\n$$\\text{Total Functions} = 2^{(xy) \\cdot z} = \\mathbf{2^{xyz}}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($z^{2^{xy}}$)**: Incorrect — reverses domain and codomain ($|Z|^{|E|}$ instead of $|E|^{|Z|}$).\n* **Option B ($z \\times 2^{xy}$)**: Incorrect — multiplies the set sizes rather than exponentiating ($|Z| \\cdot |E|$).\n* **Option C ($z^{2^{x+y}}$)**: Incorrect — uses addition in the exponent rather than multiplication for Cartesian product, and reverses domain/codomain.\n* **Option D ($2^{xyz}$)**: ✓ **CORRECT** — $|E|^{|Z|} = (2^{xy})^z = 2^{xyz}$.\n\n---\n\n### 5. Final Answer\nThe number of functions from $Z$ to $E$ is **$2^{xyz}$**, corresponding to **Option D**.",
         "images": []
       }
@@ -137,7 +137,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Abstract Algebra & Group Theory — Multiplicative Inverses and Group Axioms Modulo $n$",
+        "concept": "Discrete Mathematics - Group Theory",
         "markdown": "### 1. Concept\nA set $S$ with an operation $\\cdot_{10}$ (multiplication modulo 10) forms a group only if it satisfies:\n1. **Closure**: $\\forall a, b \\in S, (a \\cdot b) \\bmod 10 \\in S$.\n2. **Associativity**: Holds generally for integer modular arithmetic.\n3. **Identity Element**: An element $e \\in S$ such that $(a \\cdot e) \\bmod 10 = a$ for all $a \\in S$ (here $e = 1$).\n4. **Inverses**: For every $a \\in S$, there exists $b \\in S$ such that $(a \\cdot b) \\bmod 10 = 1$.\nAn element $a$ has a multiplicative inverse modulo $m$ if and only if $\\gcd(a, m) = 1$.\n\n---\n\n### 2. Givens & Parameters\n- Set: $S = \\{1, 2, 3, 5, 7, 8, 9\\}$\n- Operation: Multiplication modulo 10\n- Identity element: $e = 1$\n- Target: Identify which of the four given assertions is **false**.\n\n---\n\n### 3. Evaluating Each Statement\n\n1. **Option A (\"It is not closed\")**:\n   - Take $a = 2 \\in S$ and $b = 5 \\in S$.\n   - $(2 \\cdot 5) \\bmod 10 = 10 \\bmod 10 = 0$.\n   - Since $0 \\notin S$, the set is **not closed**.\n   - Therefore, Statement A is **true**.\n\n2. **Option B (\"2 does not have an inverse\")**:\n   - $\\gcd(2, 10) = 2 \\neq 1$.\n   - Multiples of 2 modulo 10: $\\{2, 4, 6, 8, 0\\}$, none of which equals 1.\n   - Thus, 2 has no inverse in $S$.\n   - Therefore, Statement B is **true**.\n\n3. **Option D (\"8 does not have an inverse\")**:\n   - $\\gcd(8, 10) = 2 \\neq 1$.\n   - Multiples of 8 modulo 10: $\\{8, 6, 4, 2, 0\\}$, none of which equals 1.\n   - Thus, 8 has no inverse in $S$.\n   - Therefore, Statement D is **true**.\n\n4. **Option C (\"3 does not have an inverse\")**:\n   - $\\gcd(3, 10) = 1$, so 3 is coprime to 10 and must possess a multiplicative inverse modulo 10.\n   - Testing elements in $S$:\n     $$(3 \\cdot 7) \\bmod 10 = 21 \\bmod 10 = 1$$\n   - Since $7 \\in S$, the element $7$ is the multiplicative inverse of $3$.\n   - Thus, **3 DOES have an inverse** in $S$.\n   - Therefore, Statement C is **FALSE**.\n\n---\n\n### 4. Final Answer\nThe false statement is **Option C (\"3 does not have an inverse\")**.",
         "images": []
       }
@@ -182,7 +182,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Set Theory & Relations — Reflexivity and Taxonomy of Binary Relations on $\\mathbb{Z} \\times \\mathbb{Z}$",
+        "concept": "Discrete Mathematics - Relations",
         "markdown": "### 1. Concept\nLet $S = \\mathbb{Z} \\times \\mathbb{Z}$. A binary relation $R$ on $S$ is:\n- **Reflexive**: if $(x, y) R (x, y)$ for all $(x, y) \\in S$.\n- **Symmetric**: if $(x, y) R (u, v) \\implies (u, v) R (x, y)$.\n- **Antisymmetric**: if $(x, y) R (u, v)$ and $(u, v) R (x, y) \\implies (x, y) = (u, v)$.\n- **Transitive**: if $(x, y) R (u, v)$ and $(u, v) R (w, z) \\implies (x, y) R (w, z)$.\n\nClassification:\n- An **Equivalence Relation** must be reflexive, symmetric, and transitive.\n- A **Partial Order** must be reflexive, antisymmetric, and transitive.\n- A **Total Order** must be a partial order where every pair of elements is comparable.\n\n---\n\n### 2. Definition & Axiomatic Verification\nThe relation $R$ is defined on $\\mathbb{Z} \\times \\mathbb{Z}$ by:\n$$(x, y) R (u, v) \\iff x < u \\quad \\text{and} \\quad y > v$$\n\n#### Test 1: Reflexivity\nFor $R$ to be reflexive, we must have $(x, y) R (x, y)$ for every $(x, y) \\in \\mathbb{Z} \\times \\mathbb{Z}$.\nApplying the definition:\n$$x < x \\quad \\text{and} \\quad y > y$$\nSince strict inequality $x < x$ is false for all integers $x$, $(x, y) \\not R (x, y)$ for any pair.\nIn fact, $R$ is strictly **irreflexive**.\n\n**Consequences of failing reflexivity:**\n1. Since an Equivalence Relation requires reflexivity, $R$ **cannot be an equivalence relation**.\n2. Since a Partial Order requires reflexivity, $R$ **cannot be a partial order** (nor can it be a total order).\n\n---\n\n### 3. Distractor Analysis\n* **Option A (Neither a Partial Order nor an Equivalence Relation)**: ✓ **CORRECT** — because $R$ violates reflexivity, it can be neither a partial order nor an equivalence relation.\n* **Option B (A Partial Order but not a Total Order)**: Incorrect — violates the reflexivity requirement of partial orders. (Note: strict partial orders omit reflexivity, but standard mathematical terminology and GATE syllabus specify partial orders as non-strict reflexive relations).\n* **Option C (A total Order)**: Incorrect — cannot be a total order without being a partial order.\n* **Option D (An Equivalence Relation)**: Incorrect — violates reflexivity and symmetry.\n\n---\n\n### 4. Final Answer\nThe relation $R$ is **Neither a Partial Order nor an Equivalence Relation**, corresponding to **Option A**.",
         "images": []
       }
@@ -228,7 +228,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Internet Protocol (IP) - Time-to-Live (TTL) Field",
+        "concept": "Computer Networks - IP Addressing",
         "markdown": "- **Role of the Time-to-Live (TTL) Field:**\n  - The IPv4 header includes an $8$-bit **Time-to-Live (TTL)** field (replaced by the *Hop Limit* field in IPv6).\n  - Its primary purpose is to **prevent datagrams from circulating indefinitely** in the network due to routing loops (which can arise during routing convergence or misconfiguration).\n  - Each intermediate router that forwards the IP datagram decrements the TTL field by at least $1$. If the TTL field reaches $0$ before the packet reaches its final destination, the router discards the packet and sends an ICMP *Time Exceeded* (Type 11, Code 0) message back to the source IP address.\n\n- **Distractor Analysis:**\n  - **Option A & Option B:** IP is an unreliable, best-effort datagram service. The TTL field does not represent wall-clock time for real-time delivery guarantees or discarding late-arriving packets.\n  - **Option D:** Queuing time at intermediate routers is managed by buffer management algorithms (such as Drop Tail or RED), not by the TTL hop counter.\n\nTherefore, the correct answer is **Option C (Prevent packets from looping indefinitely)**.",
         "images": []
       }
@@ -274,7 +274,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Operating Systems - Shortest Remaining Time First (SRTF) Scheduling",
+        "concept": "Operating System - Process Scheduling",
         "markdown": "- **Givens & Process Parameters:**\n  - Three CPU-intensive processes:\n    - $P_1$: Arrival time $= 0$, CPU Burst $= 10$\n    - $P_2$: Arrival time $= 2$, CPU Burst $= 20$\n    - $P_3$: Arrival time $= 6$, CPU Burst $= 30$\n  - Scheduling Algorithm: Preemptive Shortest Remaining Time First (SRTF).\n  - Constraint: Context switches at time $t = 0$ and at the end of execution are **not** counted.\n\n- **Simulation Trace:**\n  - **$t = 0$:** $P_1$ arrives with remaining burst $10$. $P_1$ starts running on the CPU.\n  - **$t = 2$:** $P_2$ arrives with burst $20$.\n    - Remaining burst of $P_1 = 10 - 2 = 8$.\n    - Since $\\text{Remaining}(P_1) = 8 < \\text{Remaining}(P_2) = 20$, $P_1$ is **not** preempted and continues executing.\n  - **$t = 6$:** $P_3$ arrives with burst $30$.\n    - Remaining burst of $P_1 = 10 - 6 = 4$.\n    - Since $\\text{Remaining}(P_1) = 4 < \\text{Remaining}(P_3) = 30$, $P_1$ is **not** preempted and continues executing.\n  - **$t = 10$:** $P_1$ completes its burst of $10$.\n    - Ready processes: $P_2$ (remaining $= 20$), $P_3$ (remaining $= 30$).\n    - $P_2$ has the shortest remaining time ($20 < 30$).\n    - CPU switches from $P_1$ to $P_2$ $\\implies$ **Context Switch 1**.\n  - **$t = 10 \\text{ to } 30$:** $P_2$ executes without interruption for $20$ units.\n  - **$t = 30$:** $P_2$ completes.\n    - Only $P_3$ remains in the ready queue (remaining $= 30$).\n    - CPU switches from $P_2$ to $P_3$ $\\implies$ **Context Switch 2**.\n  - **$t = 30 \\text{ to } 60$:** $P_3$ executes for $30$ units and terminates at $t = 60$.\n\n- **Context Switch Count:**\n  - Context switches occurred at $t = 10$ ($P_1 \\to P_2$) and $t = 30$ ($P_2 \\to P_3$).\n  - Total context switches (excluding start and finish) $= 2$.\n\nTherefore, the correct answer is **Option B ($2$)**.",
         "images": []
       }
@@ -319,7 +319,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Compiler Design - LR(0) Parsing Items & Kernel/Non-Kernel Classification",
+        "concept": "Compiler Design - Parsing",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider grammar:\n    $$S \\to S * E \\mid E$$\n    $$E \\to F + E \\mid F$$\n    $$F \\to \\mathbf{id}$$\n- **Item Set Analysis**:\n  - Identifying the valid LR(0) items matching the problem's specified item set shows **Option D**.\n\nTherefore, the correct answer is **Option D**.",
         "images": []
       }
@@ -364,7 +364,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Clocked D Flip-Flop Phase Shifting & Edge Triggering",
+        "concept": "Digital Logic - Circuit Output",
         "markdown": "### 1. Concept / Subtopic\n**Sequential Circuit Timing & Phase Delay**: Using edge-triggered D flip-flops to delay a digital waveform by a specified phase angle relative to a periodic clock signal.\n\n---\n\n### 2. Given Parameters & Operating Principles\n* **Clock Signal**: Free-running symmetric periodic square wave with $50\\%$ duty cycle:\n  * Clock period $= T$.\n  * High duration $T_{\\text{high}} = T/2$, low duration $T_{\\text{low}} = T/2$.\n  * Phase duration corresponding to $360^\\circ$ is $T$.\n  * A phase shift of $180^\\circ$ corresponds strictly to a time delay of:\n    $$\\Delta t = \\frac{180^\\circ}{360^\\circ} \\times T = \\frac{T}{2}$$\n* **Input Waveform $f$**:\n  * Digital signal $f$ transitions exclusively at the **negative edge (falling edge)** of the clock.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Timing Reference**:\n   * Let a negative edge of the clock occur at reference time $t = 0$.\n   * The input signal $f$ changes state at $t = 0$.\n   * To delay the phase of waveform $f$ by $180^\\circ$, the circuit's output waveform must transition at:\n     $$t = 0 + \\frac{T}{2} = \\frac{T}{2}$$\n2. **Clock Edge Positions within Cycle**:\n   * For a clock with $50\\%$ duty cycle starting from a falling edge at $t = 0$:\n     * Falling edges occur at $t = 0, T, 2T, \\dots$\n     * Rising edges (positive edges) occur precisely at $t = \\frac{T}{2}, \\frac{3T}{2}, \\frac{5T}{2}, \\dots$\n3. **Flip-Flop Behavior**:\n   * Consider a positive edge-triggered D flip-flop with input $D = f$ clocked directly by the clock signal (without an input clock inverter):\n     * The flip-flop samples the data input $f$ at every **positive edge** ($t = T/2, 3T/2, \\dots$).\n     * The output $Q$ updates at $t = T/2$, capturing the value of $f$ established at $t = 0$.\n     * Thus, the transition of $f$ is reproduced at the output after an exact delay of $T/2$, representing a $180^\\circ$ phase lag.\n4. **Circuit Matching**:\n   * Circuit (C) shows a positive edge-triggered D flip-flop with data input $D = f$ and clock terminal connected directly to the clock line. This circuit latches $f$ at the rising edge ($T/2$), providing the required $180^\\circ$ delay.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Circuit connects through an inverting clock or latch arrangement that introduces race conditions or delays by a full period $T$ ($360^\\circ$).\n* **Option B**: Uses negative edge triggering, reproducing the transition at the next falling edge ($t = T$), giving a $360^\\circ$ delay rather than $180^\\circ$.\n* **Option C**: **Correct**. A positive edge-triggered D flip-flop samples $f$ at $t = T/2$, delaying the waveform by exactly $180^\\circ$.\n* **Option D**: Uses feedback logic or inverted data that alters the logical polarity rather than providing a pure phase delay.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (C)**",
         "images": []
       }
@@ -408,7 +408,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Instruction Alignment & Program Counter Constraints",
+        "concept": "CO & Architecture",
         "markdown": "### 1. Concept / Subtopic\n**Memory Addressing & Instruction Alignment**: Determining valid Program Counter (PC) values for a byte-addressable processor with multi-byte instruction words.\n\n---\n\n### 2. Given Parameters\n* **Instruction Width**: $24\\text{ bits}$.\n* **Memory Addressing Unit**: Byte-addressable (1 byte $= 8\\text{ bits}$).\n* **Instruction Size in Bytes**:\n  $$\\text{Size} = \\frac{24\\text{ bits}}{8\\text{ bits/byte}} = 3\\text{ bytes}$$\n* **Program Starting Address**: Base address $= 300_{10}$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Instruction Boundary Formulation**:\n   * Each instruction occupies exactly $3$ consecutive bytes of physical memory.\n   * If the first instruction begins at address $300$, the subsequent sequential instructions begin at addresses:\n     $$\\text{Address}_k = 300 + 3 \\times k, \\quad k \\in \\{0, 1, 2, 3, \\dots\\}$$\n2. **Modulo Constraint**:\n   * Since $300 = 3 \\times 100$, we have $300 \\equiv 0 \\pmod 3$.\n   * Therefore, every legal instruction boundary address $A$ must be a multiple of $3$:\n     $$A \\equiv 0 \\pmod 3$$\n3. **Evaluating the Candidate Options**:\n   * **$400$**: $400 = 3 \\times 133 + 1 \\implies 400 \\equiv 1 \\pmod 3$ (Illegal boundary; points to the interior of an instruction).\n   * **$500$**: $500 = 3 \\times 166 + 2 \\implies 500 \\equiv 2 \\pmod 3$ (Illegal boundary).\n   * **$600$**: $600 = 3 \\times 200 \\implies 600 \\equiv 0 \\pmod 3$.\n     $$600 = 300 + 3 \\times 100$$\n     This represents the legal start of the $101^{\\text{st}}$ instruction ($k = 100$).\n   * **$700$**: $700 = 3 \\times 233 + 1 \\implies 700 \\equiv 1 \\pmod 3$ (Illegal boundary).\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($400$)**: Incorrect. Leaves remainder $1$ when divided by $3$.\n* **Option B ($500$)**: Incorrect. Leaves remainder $2$ when divided by $3$.\n* **Option C ($600$)**: **Correct**. Exactly divisible by $3$ ($300 + 3 \\times 100 = 600$).\n* **Option D ($700$)**: Incorrect. Leaves remainder $1$ when divided by $3$.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (C) 600**",
         "images": []
       }
@@ -453,7 +453,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Data Structures - Finding Minimum Element in a Binary Max-Heap",
+        "concept": "Programming and DS - Data Structures",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - In a binary max-heap of $n$ elements, for every node $x$ with children, the key at $x$ is greater than or equal to the keys at its children.\n  - Consequently, the maximum element is always at the root ($O(1)$ time), while the smallest element cannot be an internal node that has children smaller than itself—it must reside at one of the **leaf nodes**.\n- **Analytical Derivation**:\n  1. In a complete binary tree with $n$ nodes, the number of leaf nodes is:\n     $$L = \\left\\lceil \\frac{n}{2} \\right\\rceil$$\n  2. The leaves occupy array indices from $\\lfloor n/2 \\rfloor + 1$ to $n$.\n  3. Because a max-heap maintains no relative ordering among its leaves, the minimum element can be any of these $\\lceil n/2 \\rceil$ leaves.\n  4. Finding the minimum among the leaves requires a linear scan over all $\\lceil n/2 \\rceil$ leaf elements:\n     $$\\text{Time} = \\Theta\\left(\\left\\lceil \\frac{n}{2} \\right\\rceil\\right) = \\Theta(n) = O(n)$$\n\nTherefore, the correct answer is **Option A (O(n))**.",
         "images": []
       }
@@ -496,7 +496,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Graph Theory - Minimum Spanning Tree on Metric Complete Graph",
+        "concept": "Algorithms",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Let $G = (V, E)$ be a weighted complete graph with $V = \\{v_1, v_2, \\dots, v_n\\}$.\n  - The weight of edge $(v_i, v_j)$ is defined as:\n    $$w(v_i, v_j) = 2|i - j|$$\n- **Analytical Derivation**:\n  1. The minimum possible edge weight in $G$ occurs when $|i - j| = 1$ (adjacent indexed vertices):\n     $$w(v_i, v_{i+1}) = 2|i - (i+1)| = 2(1) = 2$$\n  2. For any other pair of vertices with $|i - j| \\ge 2$, the edge weight is $w(v_i, v_j) = 2|i - j| \\ge 4$.\n  3. Any spanning tree of a graph on $n$ vertices must contain exactly $n - 1$ edges.\n  4. Since the absolute minimum weight of any edge in $G$ is $2$, the total weight of any spanning tree $T$ is bounded below by:\n     $$\\text{Weight}(T) = \\sum_{e \\in T} w(e) \\ge (n - 1) \\times 2 = 2n - 2$$\n  5. Consider the simple path spanning tree:\n     $$P = \\{(v_1, v_2), (v_2, v_3), \\dots, (v_{n-1}, v_n)\\}$$\n     - It connects all $n$ vertices with $n - 1$ edges.\n     - Each edge $(v_i, v_{i+1})$ has weight $2$.\n     - Total weight:\n       $$\\text{Weight}(P) = \\sum_{i=1}^{n-1} 2 = 2(n - 1) = 2n - 2$$\n  6. Since this achieves the theoretical minimum bound, $P$ is an MST of $G$ with weight $2n - 2$.\n\nTherefore, the correct answer is **Option B (2n - 2)**.",
         "images": []
       }
@@ -541,7 +541,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Linear-Time Single-Source Shortest Paths on Unweighted Graphs",
+        "concept": "Algorithms - Graph Algorithms",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - In an unweighted graph (or graph with uniform positive edge weights $w = 1$), the shortest path distance from a source $s$ to any vertex $v$ equals the minimum number of edges on a path between them.\n- **Data Structure Optimization**:\n  1. Dijkstra's general algorithm uses a priority queue (heap) to extract the vertex of minimum tentative distance.\n  2. When edge weights are uniform, tentative distances from the source increase monotonically in discrete unit steps ($0, 1, 2, \\dots$).\n  3. A standard First-In-First-Out (**Queue**) naturally maintains vertices ordered by non-decreasing distance without any comparison or heap re-balancing overhead.\n  4. Replacing the priority queue with a **Queue** transforms Dijkstra's algorithm into **Breadth-First Search (BFS)**, which explores every vertex and edge in linear time:\n     $$\\text{Time} = O(|V| + |E|)$$\n\nTherefore, the correct answer is **Option A (Queue)**.",
         "images": []
       }
@@ -586,7 +586,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Data Structures - Array Representation of General Binary Trees Space Bound",
+        "concept": "Programming and DS - Data Structures",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - In the standard 1-based array representation of a binary tree:\n    - Root is stored at $X[1]$.\n    - Left child of node at $X[i]$ is stored at $X[2i]$.\n    - Right child of node at $X[i]$ is stored at $X[2i + 1]$.\n- **Worst-Case Node Index Analysis**:\n  1. To be able to store *any* binary tree on $n$ vertices, the array must be large enough to accommodate the worst-case configuration that pushes a node to the maximum possible index.\n  2. The maximum index occurs in a degenerate, strictly right-skewed binary tree of depth $n$:\n     - Level 1 (depth 1, root): index $1 = 2^1 - 1$.\n     - Level 2 (right child): index $2(1) + 1 = 3 = 2^2 - 1$.\n     - Level 3 (right child): index $2(3) + 1 = 7 = 2^3 - 1$.\n     - Level $k$ (right child): index $2^k - 1$.\n  3. The $n$-th node at depth $n$ is stored at array index:\n     $$\\text{Index}(n) = 2^n - 1$$\n  4. Therefore, to safely store any arbitrary binary tree of $n$ vertices without index out-of-bounds, the array size must be at least $2^n - 1$.\n\nTherefore, the correct answer is **Option D (2^n - 1)**.",
         "images": []
       }
@@ -632,7 +632,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - In-Place Sorting Comparison and Swap Minimization",
+        "concept": "Algorithms - Sorting",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We compare the number of element swaps (write operations) performed by standard in-place comparison sorts in the worst case on an array of $n$ elements:\n- **Swap Complexity Comparison**:\n  1. **Selection Sort**:\n     - In each of the $n - 1$ passes, it scans the unsorted suffix to find the minimum element and performs **at most 1 swap**.\n     - Total swaps in worst/average/best case:\n       $$\\text{Swaps} \\le n - 1 = O(n)$$\n  2. **Insertion Sort**:\n     - Shifts/swaps elements adjacent to each other.\n     - Worst-case swaps (reverse sorted array):\n       $$\\frac{n(n - 1)}{2} = \\Theta(n^2)$$\n  3. **Quick Sort**:\n     - Partitions elements around a pivot.\n     - Worst-case and average swaps:\n       $$\\Theta(n \\log n) \\text{ to } \\Theta(n^2)$$\n  4. **Heap Sort**:\n     - Swaps root with the last element during each of the $n$ extractions:\n       $$\\Theta(n \\log n)$$\n- **Conclusion**:\n  - Selection sort guarantees the absolute minimum number of swaps ($O(n)$ swaps).\n\nTherefore, the correct answer is **Option C (Selection sort)**.",
         "images": []
       }
@@ -677,7 +677,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Geometric Series Analysis of Halving Loop",
+        "concept": "Algorithms - Time Complexity",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider the loop:\n    ```c\n    for (i = n, j = 0; i > 0; i /= 2, j += i);\n    ```\n  - Note the comma operator in the update expression: `i /= 2` executes first, updating $i$, and then `j += i` adds the newly updated value of $i$ to $j$.\n- **Analytical Derivation**:\n  1. Let $k = \\lfloor \\log_2 n \\rfloor$ be the total number of iterations.\n  2. In iteration 1: $i$ is updated to $\\lfloor n/2 \\rfloor$, so $j$ receives $\\lfloor n/2 \\rfloor$.\n  3. In iteration 2: $i$ becomes $\\lfloor n/4 \\rfloor$, added to $j$.\n  4. Summing the values added to $j$:\n     $$val(j) = \\sum_{m=1}^{\\lfloor \\log_2 n \\rfloor} \\left\\lfloor \\frac{n}{2^m} \\right\\rfloor$$\n  5. Applying the standard geometric series bounds:\n     $$n \\sum_{m=1}^{\\infty} \\frac{1}{2^m} - \\log_2 n \\le val(j) \\le n \\sum_{m=1}^{\\infty} \\frac{1}{2^m}$$\n     $$n(1) - \\log_2 n \\le val(j) \\le n(1) = n$$\n  6. Thus, $val(j)$ is tightly bounded by:\n     $$val(j) = \\Theta(n)$$\n\nTherefore, the correct answer is **Option C (val(j) = \\Theta(n))**.",
         "images": []
       }
@@ -728,7 +728,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Complexity theory - transitivity of polynomial reductions",
+        "concept": "Other / Optional",
         "markdown": "Because $S$ is NP-complete, every language $L\\in NP$ has a polynomial-time reduction $L\\le_p S$. The premise also gives $S\\le_p R$. Polynomial-time reductions compose, so $L\\le_p R$ for every $L\\in NP$; therefore $R$ is NP-hard.\n\nThe premise does not establish $R\\in NP$, which would also be needed to conclude NP-completeness. The reduction $Q\\le_p S$ only says that $Q$ is no harder than $S$; it does not prove that $Q$ is NP-hard or NP-complete.\n\n**Therefore, the correct answer is Option B.**",
         "images": []
       }
@@ -773,7 +773,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Array Leaders Problem Optimal Single-Pass Scan",
+        "concept": "Algorithms - Algorithm Design",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - An element $X[i]$ in array $X[0 \\dots n-1]$ is a **leader** if:\n    $$X[i] > X[k] \\quad \\forall k \\in \\{i + 1, i + 2, \\dots, n - 1\\}$$\n    (i.e., $X[i]$ is strictly greater than the maximum of all elements to its right).\n  - The rightmost element $X[n-1]$ is always trivially a leader.\n- **Directional Complexity Comparison**:\n  1. **Left-to-Right Scan**:\n     - For each element $X[i]$, to know if it is greater than all elements to its right requires either looking ahead ($O(n^2)$ total) or preprocessing suffix maximums using extra $O(n)$ space.\n  2. **Right-to-Left Scan**:\n     - Maintain a single running variable:\n       $$\\text{max\\_from\\_right} = X[n - 1]$$\n     - Record $X[n - 1]$ as a leader.\n     - Iterate backwards from $i = n - 2$ down to $0$:\n       - If $X[i] > \\text{max\\_from\\_right}$, then $X[i]$ is strictly greater than all elements to its right!\n       - Mark $X[i]$ as a leader, and update $\\text{max\\_from\\_right} = X[i]$.\n     - This examines each element exactly once in $\\Theta(n)$ time using only $O(1)$ auxiliary space.\n\nTherefore, the correct answer is **Option B (solves it in linear time using a right to left pass of the array)**.",
         "images": []
       }
@@ -863,7 +863,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Pumping Lemma for Context-Free Languages & Comparisons",
+        "concept": "Theory of Computation - Context Free Language",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider the three languages:\n    $$L_1 = \\{0^{n+m} 1^n 0^m \\mid n, m \\ge 0\\}$$\n    $$L_2 = \\{0^{n+m} 1^{n+m} 0^m \\mid n, m \\ge 0\\}$$\n    $$L_3 = \\{0^{n+m} 1^{n+m} 0^{n+m} \\mid n, m \\ge 0\\}$$\n- **Language Classifications**:\n  1. **$L_1 = \\{0^m 0^n 1^n 0^m\\}$**:\n     - Can be written as $0^m (0^n 1^n) 0^m$.\n     - A PDA can push $0^m$, then push $0^n$, pop on $1^n$ matching $n$, then pop remaining zeros matching $m$.\n     - Thus $L_1$ is **context-free**.\n  2. **$L_2 = \\{0^k 1^k 0^m\\}$ where $k = n+m$**:\n     - The first block has $k$ zeros, followed by $k$ ones, followed by $m$ zeros where $m \\le k$.\n     - Since $m = k - n$, the number of trailing zeros must be constrained by $m \\le k$, requiring tracking two separate constraints simultaneously. By Ogden's lemma, $L_2$ is **NOT context-free**.\n  3. **$L_3 = \\{0^k 1^k 0^k\\}$ where $k = n+m$**:\n     - This is the classic language $\\{0^k 1^k 0^k \\mid k \\ge 0\\}$, which is well-known to be **NOT context-free**.\n  4. Therefore, both $L_2$ and $L_3$ are NOT context-free.\n\nTherefore, the correct answer is **Option D (L_2 and L_3)**.",
         "images": []
       }
@@ -909,7 +909,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Database Recovery - Log-Based Undo/Redo Operations",
+        "concept": "Databases - Transaction and Concurrency",
         "markdown": "- **Log Sequence & State Analysis:**\n  - Initial balance: $B = 12000$.\n  - 1. `T1 start`\n  - 2. `T1 B old = 12000 new = 10000`\n  - 3. `T1 M old = 0 new = 2000`\n  - 4. `T1 commit`\n  - 5. `T2 start`\n  - 6. `T2 B old = 10000 new = 10500`\n  - *(System crashes just before log record 7 (`T2 commit`) is written).*\n\n- **Recovery Classification:**\n  - **Transaction $T_1$:** Both `start` (record 1) and `commit` (record 4) appear in the log prior to the crash. Under the write-ahead logging (WAL) / immediate update recovery protocol without a checkpoint, committed transactions must be **REDONE** to guarantee durability (in case dirty buffer frames were not yet written to disk). Thus, log records $2$ and $3$ must be redone.\n  - **Transaction $T_2$:** The log contains `T2 start` (record 5) and an update (record 6), but **no `commit` record**. Thus, $T_2$ was active at crash time. To guarantee atomicity, $T_2$ must be **UNDONE** by rolling back its updates in reverse order, reverting $B$ from $10500$ back to its pre-$T_2$ value $10000$.\n\n- **Recovery Sequence:**\n  - Undo log record $6$ to restore $B = 10000$.\n  - Redo log records $2$ and $3$ to ensure $T_1$'s updates persist.\n\nTherefore, the correct answer is **Option B (We must undo log record $6$ to set B to $10000$ and then redo log records $2$ and $3$)**.",
         "images": []
       }
@@ -954,7 +954,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Probability — binomial distribution",
+        "concept": "Engineering Mathematics - Probability",
         "markdown": "### Derivation\nThe number of selected elements is binomial with 2n independent trials and success probability 1/2. For exactly n selected elements, choose which n trials are heads in $$\\binom{2n}{n}$$ ways; each complete sequence of 2n coin tosses has probability $$(1/2)^{2n}=1/4^n.$$\nTherefore $$P(\\text{exactly }n)=\\frac{\\binom{2n}{n}}{4^n}.$$\n\n### Final answer\n**Option A.**",
         "images": []
       }
@@ -999,7 +999,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Set theory — simplifying set differences",
+        "concept": "Discrete Mathematics - Set Theory",
         "markdown": "### Derivation\nFirst, $$X=(E \\cap F)\\setminus(F \\cap G)=E \\cap F \\cap G^c.$$\nFor Y, $$E\\setminus(E\\cap G)=E\\cap G^c.$$ Also $$E\\setminus F=E\\cap F^c.$$ Removing E-F from E intersect G-complement leaves $$E\\cap G^c\\cap(E\\cap F^c)^c,$$ which simplifies to $$E\\cap G^c\\cap F.$$\nThus both sets equal E intersect F intersect G^c.\n\n### Final answer\n**Option C (X=Y).**",
         "images": []
       }
@@ -1044,7 +1044,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Linear algebra — null spaces and non-unique solutions",
+        "concept": "Engineering Mathematics - Linear Algebra",
         "markdown": "### Derivation\nSubtract $$Fu=b$$ and $$Fv=b$$ to obtain $$F(u-v)=0.$$ Since $$u\\ne v,$$ the vector u-v is nonzero, so the null space contains a nonzero vector. Therefore F is singular and $$\\det(F)=0.$$\nEvery vector $$u+t(v-u),$$ for real t, is also a solution because $$F(u+t(v-u))=b+t(0)=b.$$ There are infinitely many solutions, and a nonzero vector in the null space satisfies $$Fx=0.$$\nBut singularity does not require two identical rows. For example, F=diag(1,0) has distinct rows and a nontrivial null space. Hence the statement that F must have two identical rows is false.\n\n### Final answer\n**Option D.**",
         "images": []
       }
@@ -1089,7 +1089,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Combinatorics — minima under a uniformly random permutation",
+        "concept": "Discrete Mathematics - Set Theory",
         "markdown": "### Derivation\nAssume A and B are nonempty, as required for both minima to be defined. The equality $$\\min(\\pi(A))=\\min(\\pi(B))$$ holds exactly when the smallest image among elements of $$A\\cup B$$ comes from $$A\\cap B.$$\nUnder a uniformly random permutation, each element of A union B is equally likely to receive the smallest image value. Therefore the probability of this event is $$\\frac{|A\\cap B|}{|A\\cup B|}.$$ Of all n! permutations, the required count is $$n!\\frac{|A\\cap B|}{|A\\cup B|}.$$\n\n### Final answer\n**Option C: n! |A intersect B| / |A union B|.**",
         "images": []
       }
@@ -1134,7 +1134,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Discrete mathematics - double counting",
+        "concept": "Discrete Mathematics - Functions",
         "markdown": "### Count the incidences\nCount the ordered pairs $(i,j)$ for which element $i$ belongs to set $X_j$.\n\nCounting first by element gives $\\sum_{i=1}^{m}f(i)$. Counting by set gives $\\sum_{j=1}^{n}|X_j|$. Each $X_j$ has exactly three elements, so\n$$\\sum_{i=1}^{m}f(i)=\\sum_{j=1}^{n}3=3n.$$\nOverlap between the sets does not change this incidence count: an element in two sets contributes twice, once for each set.\n\n### Option check\nThe sum depends on the number and size of the $X_j$, not on $m$ or a fixed parity expression.\n\n### Final answer\n**Option B ($3n$).**",
         "images": []
       }
@@ -1179,7 +1179,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Logic - first-order translation",
+        "concept": "Discrete Mathematics - First Order Logic",
         "markdown": "### Translate the condition\nThe subject of the sentence is every individual that is a tiger or a lion, so use $\\operatorname{tiger}(x)\\lor\\operatorname{lion}(x)$. The phrase “attack if they are hungry or threatened” means that hunger or threat is a sufficient condition for attacking:\n$$\\forall x\\bigl[(\\operatorname{tiger}(x)\\lor\\operatorname{lion}(x))\\to((\\operatorname{hungry}(x)\\lor\\operatorname{threatened}(x))\\to\\operatorname{attacks}(x))\\bigr].$$\n\n### Option check\nOption A incorrectly requires an individual to be both a tiger and a lion. Option B asserts hunger-or-threat and attack unconditionally for every tiger or lion. Option C reverses the implication. Option D preserves both the subject and the “if” direction.\n\n### Final answer\n**Option D.**",
         "images": []
       }
@@ -1224,7 +1224,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Logic - testing propositional equivalences",
+        "concept": "Discrete Mathematics - Propositional Logic",
         "markdown": "### Test $P_1$\nTake $A=T$, $B=F$, and $C=F$. Then $(A\\land B)\\to C$ is true, while $(A\\to C)\\land(B\\to C)=F\\land T=F$. The two sides differ, so $P_1$ is not a tautology.\n\n### Test $P_2$\nWith the same assignment, $(A\\lor B)\\to C=F$, while $(A\\to C)\\lor(B\\to C)=F\\lor T=T$. The two sides again differ, so $P_2$ is not a tautology.\n\n### Final answer\nNeither proposition is a tautology: **Option D**.",
         "images": []
       }
@@ -1268,7 +1268,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Logic - truth tables and operator composition",
+        "concept": "Discrete Mathematics - Binary Operation",
         "markdown": "### Identify the binary operator\nFrom the four rows, $A\\odot B$ is true whenever $A$ is true, and when $A$ is false it is true only when $B$ is false. Therefore\n$$A\\odot B=A\\lor\\neg B.$$\n\nEvaluate option D using the stated precedence:\n$$\\neg(\\neg A\\odot B)=\\neg(\\neg A\\lor\\neg B)=A\\land B.$$\n\n### Option check\nOptions A, B, and C simplify respectively to $\\neg(A\\land B)$, $\\neg A\\land\\neg B$, and $A\\land\\neg B$; none equals conjunction for all inputs.\n\n### Final answer\n**Option D: $\\neg(\\neg A\\odot B)$.**",
         "images": []
       }
@@ -1313,7 +1313,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Regularity Criteria & Unbounded Memory Constraints",
+        "concept": "Theory of Computation - Regular Language",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We examine which language over $\\{0, 1\\}^*$ is **NOT regular**.\n- **Analysis of Options**:\n  - **Option A ($n_0(s)$ is a 3-digit prime)**:\n    - 3-digit primes are bounded between 100 and 999 (a finite set of integers).\n    - An automaton can count up to 999. Since the condition is finite, the language is **regular**.\n  - **Option B**:\n    - Regular when constrained by finite modular or bounded arithmetic.\n  - **Option C**:\n    - Requires matching counts between two unbounded variables ($n_0(s) = n_1(s)$ or similar unbounded dependency).\n    - By the Pumping Lemma, recognizing this language requires unbounded memory, so it is **NOT regular**.\n\nTherefore, the correct answer is **Option C**.",
         "images": []
       }
@@ -1358,7 +1358,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Binary Value Modular Arithmetic & Regular Languages",
+        "concept": "Theory of Computation - Identify Class Language",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Let $d(s)$ denote the decimal integer value of binary string $s$.\n  - Consider language:\n    $$L = \\left\\{s \\in (0+1)^* \\mid d(s) \\bmod 5 = 2 \\quad \\text{and} \\quad d(s) \\bmod 7 \\ne 4\\right\\}$$\n- **DFA Construction for Value Modulo $m$**:\n  1. For any fixed modulus $k$, tracking the decimal value of an incoming binary stream modulo $k$ can be implemented with a $k$-state DFA using the Horner update rule:\n     $$\\text{val}_{\\text{new}} = (2 \\times \\text{val}_{\\text{old}} + \\text{bit}) \\bmod k$$\n  2. Language $L_1 = \\{s \\mid d(s) \\equiv 2 \\pmod 5\\}$ is accepted by a 5-state DFA.\n  3. Language $L_2 = \\{s \\mid d(s) \\equiv 4 \\pmod 7\\}$ is accepted by a 7-state DFA.\n  4. Since regular languages are closed under complementation, $L_2^c$ is regular.\n  5. Since regular languages are closed under intersection:\n     $$L = L_1 \\cap \\overline{L_2}$$\n     $L$ is regular!\n  6. A regular language can be accepted by a Deterministic Finite Automaton with at most $5 \\times 7 = 35$ states.\n\nTherefore, the correct answer is **Option D (L can be recognized by a deterministic finite state automaton)**.",
         "images": []
       }
@@ -1401,7 +1401,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Computational Complexity - Hamiltonian Cycle Restricted Graphs & NP-Completeness",
+        "concept": "Theory of Computation",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - $\\text{HAM}$ is the standard NP-complete Hamiltonian Cycle problem.\n  - $\\text{DHAM}_3$: Determining if a Hamiltonian cycle exists in graphs with $|V|$ divisible by 3.\n  - $\\text{SHAM}_3$: Finding the Hamiltonian cycle in such graphs.\n- **Complexity Analysis**:\n  1. Restricting $|V|$ to be a multiple of 3 does not make the problem polynomial:\n     - Given an arbitrary graph $G$ with $n$ vertices, we can pad it by adding an auxiliary triangle (3 vertices) or gadget connected appropriately, or adding 1 or 2 isolated vertices or specific reductions that preserve Hamiltonicity while ensuring $|V'| \\equiv 0 \\pmod 3$.\n     - Thus $\\text{DHAM}_3$ remains **NP-complete**.\n  2. $\\text{SHAM}_3$ is the search version of the NP-complete decision problem $\\text{DHAM}_3$.\n  3. Both problems are computationally intractable (NP-complete / NP-hard).\n\nTherefore, the correct answer is **Option A (Both DHAM_3 and SHAM_3 are NP-hard)**.",
         "images": []
       }
@@ -1445,7 +1445,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Ambiguous Grammar Generating Equal Substrings",
+        "concept": "Compiler Design",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider context-free grammar:\n    $$G = \\{S \\to SS, \\; S \\to ab, \\; S \\to ba, \\; S \\to \\epsilon\\}$$\n- **Properties of $G$**:\n  1. **Ambiguity**:\n     - The production $S \\to SS$ allows multiple parse trees for any composite string (e.g. $abba$ can be derived as $(ab)(ba)$ via $S \\implies SS \\implies abS \\implies abba$).\n     - Thus $G$ is **ambiguous** (Statement 1 is TRUE).\n  2. **Language Generated**:\n     - Every non-empty terminal production introduces either $ab$ or $ba$.\n     - In both productions, exactly one 'a' and one 'b' are added.\n     - Therefore, every string generated by $G$ has an equal number of $a$'s and $b$'s ($N_a(w) = N_b(w)$).\n     - However, $G$ does NOT generate ALL strings with $N_a = N_b$ (for example, the string $aabb$ cannot be generated by $G$ because $a$'s and $b$'s must be generated in adjacent pairs $ab$ or $ba$).\n     - Thus Statement 2 is FALSE.\n  3. Statement 1 is true and statement 2 is false.\n\nTherefore, the correct answer is **Option B (1 is true and 2 is false)**.",
         "images": []
       }
@@ -1490,7 +1490,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Closure Properties Across Chomsky Hierarchy Classes",
+        "concept": "Theory of Computation - Identify Class Language",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Let $L_1$ be Regular, $L_2$ be DCFL, $L_3$ be Recursively Enumerable but not Recursive ($L_3 \\in \\text{RE} \\setminus \\text{R}$).\n- **Evaluating Each Option**:\n  - **Option A ($L_1 \\cap L_2$ is a deterministic CFL)**:\n    - **True**. DCFLs are closed under intersection with regular languages.\n  - **Option B ($L_3 \\cap L_1$ is recursive)**:\n    - **FALSE**.\n    - If $L_1 = \\Sigma^*$ (which is regular), then $L_3 \\cap L_1 = L_3$, which is given to be **not recursive**!\n    - Therefore, the intersection of an RE language with a regular language is not necessarily recursive.\n  - **Option C**:\n    - True.\n  - **Option D**:\n    - True.\n\nTherefore, the correct answer is **Option B (L_3 \\cap L_1 is recursive)**.",
         "images": []
       }
@@ -1536,7 +1536,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Minimal DFA for Frobenius Coin Problem Language",
+        "concept": "Theory of Computation - Finite Automata",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider language $L = (111 + 11111)^* = (1^3 + 1^5)^*$.\n  - The length of any string generated by $L$ is of the form:\n    $$n = 3a + 5b \\quad \\text{for non-negative integers } a, b \\ge 0$$\n- **Coin Problem / Length Enumeration**:\n  1. Evaluating reachable string lengths:\n     - $n = 0$: $a=0, b=0$ (accepted: $\\epsilon$)\n     - $n = 1$: impossible\n     - $n = 2$: impossible\n     - $n = 3$: $a=1, b=0$ (accepted: $111$)\n     - $n = 4$: impossible\n     - $n = 5$: $a=0, b=1$ (accepted: $1^5$)\n     - $n = 6$: $a=2, b=0$ (accepted: $1^6$)\n     - $n = 7$: impossible\n     - $n = 8$: $a=1, b=1$ (accepted: $1^8$)\n     - $n = 9$: $a=3, b=0$ (accepted: $1^9$)\n     - $n = 10$: $a=0, b=2$ (accepted: $1^{10}$)\n  2. By the Frobenius Coin Problem for coprime integers 3 and 5, the largest integer that cannot be expressed as $3a + 5b$ is:\n     $$g(3, 5) = 3 \\times 5 - 3 - 5 = 7$$\n  3. Therefore, every length $n \\ge 8$ can be formed and is accepted!\n- **Minimal DFA State Construction**:\n  - We require distinct states for each prefix length up to 8:\n    - $q_0$ (length 0, **Accepting**)\n    - $q_1$ (length 1, Non-accepting)\n    - $q_2$ (length 2, Non-accepting)\n    - $q_3$ (length 3, **Accepting**)\n    - $q_4$ (length 4, Non-accepting)\n    - $q_5$ (length 5, **Accepting**)\n    - $q_6$ (length 6, **Accepting**)\n    - $q_7$ (length 7, Non-accepting)\n    - $q_8$ (length $\\ge 8$, **Accepting**, with self-loop on 1)\n  - States $q_0, q_1, \\dots, q_7, q_8$ are pairwise distinguishable under the Myhill-Nerode relation.\n  - Total states in minimal DFA = **9 states**.\n\nTherefore, the correct answer is **Option D (9)**.",
         "images": []
       }
@@ -1581,7 +1581,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Combinational Multiplexer Circuit Function Representation",
+        "concept": "Digital Logic - Circuit Output",
         "markdown": "### 1. Concept / Subtopic\n**Multiplexer-Based Logic Circuit Analysis**: Deriving the canonical Boolean switching function realized by a combinational network consisting of 2-to-1 multiplexers.\n\n---\n\n### 2. Circuit Analysis & Boolean Equations\nFrom the given circuit diagram:\n* The circuit cascades 2-to-1 multiplexers controlled by select lines $x, y, z$.\n* A 2-to-1 MUX with select line $S$ and data inputs $I_0, I_1$ implements:\n  $$\\text{Out} = \\bar{S} I_0 + S I_1$$\n* Evaluating the output $f(x, y, z)$ from the interconnected multiplexer stages:\n  * For $x = 1$, the network routes $y + \\bar{z}$.\n  * For $x = 0$, the network routes $\\bar{y}z$.\n  * Combining the terms:\n    $$f(x, y, z) = x(y + \\bar{z}) + \\bar{x}(\\bar{y}z) = xy + x\\bar{z} + \\bar{x}\\bar{y}z$$\n\n---\n\n### 3. Step-by-Step Algebraic Simplification\nApply the consensus theorem and Boolean absorption:\n1. Expand the product terms:\n   $$f(x, y, z) = x\\bar{z} + xy + \\bar{x}\\bar{y}z$$\n2. Add the redundant consensus term between $xy$ and $\\bar{x}\\bar{y}z$ (which is $y \\cdot \\bar{y}z = 0$), and between $x\\bar{z}$ and $\\bar{x}\\bar{y}z$ (using $\\bar{y}z = \\bar{y}z(x + \\bar{x}) = x\\bar{y}z + \\bar{x}\\bar{y}z$):\n   $$\\bar{y}z = x\\bar{y}z + \\bar{x}\\bar{y}z$$\n3. Combine $x\\bar{z} + x\\bar{y}z$:\n   $$x\\bar{z} + x\\bar{y}z = x(\\bar{z} + \\bar{y}z) = x(\\bar{z} + \\bar{y})$$\n4. Regrouping to match standard sum-of-products options:\n   $$f(x, y, z) = x\\bar{z} + xy + \\bar{y}z$$\n5. Verification via truth table for minterm coverage:\n   * $x\\bar{z}$: covers minterms $m_4(100), m_6(110)$.\n   * $xy$: covers minterms $m_6(110), m_7(111)$.\n   * $\\bar{y}z$: covers minterms $m_1(001), m_5(101)$.\n   * Total minterm set: $f = \\sum m(1, 4, 5, 6, 7)$.\n   * Option A ($x\\bar{z} + xy + \\bar{y}z$) covers precisely ${1, 4, 5, 6, 7}$.\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($x\\bar{z} + xy + \\bar{y}z$)**: **Correct**. Represents the minimal sum of products for the circuit.\n* **Option B ($x\\bar{z} + xy + \\overline{yz}$)**: Incorrect. $\\overline{yz} = \\bar{y} + \\bar{z}$, which incorrectly covers minterm $m_0 (000)$ where circuit output is $0$.\n* **Option C ($xz + xy + \\overline{yz}$)**: Incorrect. Erroneously uses $xz$ instead of $x\\bar{z}$.\n* **Option D ($xz + x\\bar{y} + \\bar{y}z$)**: Incorrect. Fails to cover minterm $m_6 (110)$ which evaluates to $1$ in the circuit.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (A) xz̄ + xy + ȳz**",
         "images": []
       }
@@ -1626,7 +1626,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Carry Generate Function in Multi-Bit Binary Addition",
+        "concept": "Digital Logic - Carry Generator",
         "markdown": "### 1. Concept / Subtopic\n**Arithmetic Circuits - Carry Lookahead Generation**: Formulating the overall carry-out function for the parallel addition of two 3-bit binary numbers.\n\n---\n\n### 2. Given Parameters & Definitions\n* Operands: Two 3-bit unsigned binary numbers $A = a_2 a_1 a_0$ and $B = b_2 b_1 b_0$.\n* Carry-in: $c = 0$ (or internal generation within the operands).\n* Bit-level Carry Generate and Propagate definitions:\n  * Generate: $G_i = a_i b_i$\n  * Propagate: $P_i = a_i + b_i$ (or $a_i \\oplus b_i$)\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Carry-Out at Stage 0 ($C_1$)**:\n   A carry is generated from bit position 0 if both $a_0$ and $b_0$ are $1$:\n   $$C_1 = a_0 b_0$$\n2. **Carry-Out at Stage 1 ($C_2$)**:\n   A carry is generated at stage 1 if generated locally ($a_1 b_1$) or propagated from stage 0:\n   $$C_2 = a_1 b_1 + (a_1 + b_1) C_1 = a_1 b_1 + (a_1 + b_1) a_0 b_0$$\n   $$C_2 = a_1 b_1 + a_1 a_0 b_0 + b_1 a_0 b_0$$\n3. **Carry-Out at Stage 2 ($C_3$, Final Carry Generate)**:\n   A carry is generated out of the 3-bit adder if generated locally at bit 2 ($a_2 b_2$) or propagated through bit 2 from stage 1:\n   $$C_3 = a_2 b_2 + (a_2 + b_2) C_2$$\n   Substitute the expression for $C_2$:\n   $$C_3 = a_2 b_2 + (a_2 + b_2) \\left[ a_1 b_1 + (a_1 + b_1) a_0 b_0 \\right]$$\n4. **Expanding the Boolean Product Terms**:\n   $$C_3 = a_2 b_2 + a_2 a_1 b_1 + b_2 a_1 b_1 + (a_2 a_1 + a_2 b_1 + b_2 a_1 + b_2 b_1) a_0 b_0$$\n   $$C_3 = a_2 b_2 + a_2 a_1 b_1 + a_1 b_2 b_1 + a_2 a_1 a_0 b_0 + a_2 a_0 b_1 b_0 + a_1 a_0 b_2 b_0 + a_0 b_2 b_1 b_0$$\n5. **Term Count & Verification**:\n   The expanded expression contains exactly $7$ product terms:\n   1. $a_2 b_2$\n   2. $a_2 a_1 b_1$\n   3. $a_1 b_2 b_1$\n   4. $a_2 a_1 a_0 b_0$\n   5. $a_2 a_0 b_1 b_0$\n   6. $a_1 a_0 b_2 b_0$\n   7. $a_0 b_2 b_1 b_0$\n\nThis matches Option A term for term.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: **Correct**. Exactly matches the sum of all prime implicants for carry-out generation of a 3-bit adder.\n* **Option B**: Incorrect. Duplicates terms and omits $a_1 b_2 b_1$.\n* **Option C**: Incorrect. Uses factored XOR forms with unbalanced parenthesis and missing products.\n* **Option D**: Incorrect. Unnecessarily introduces inverted literals ($\\\\bar{a_2}, \\\\bar{b_2}$), which represent exclusive rather than inclusive carry conditions.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (A)**",
         "images": []
       }
@@ -1671,7 +1671,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Linear Feedback Shift Register Serial Data Processing",
+        "concept": "Digital Logic - Circuit Output",
         "markdown": "### 1. Concept / Subtopic\n**Sequential Circuits - D Flip-Flop Shift Register with XOR Feedback**: Tracing the state evolution of a 3-bit shift register receiving a serial binary stream over 9 clock cycles.\n\n---\n\n### 2. Circuit Configuration & Feedback Equations\nFrom the circuit diagram:\n* Three positive edge-triggered D flip-flops: $FF_2, FF_1, FF_0$ with state outputs $q_2, q_1, q_0$.\n* Initial State: Cleared to zero:\n  $$q_2 q_1 q_0 = 000$$\n* Inputs to flip-flops:\n  $$D_2 = \\text{Data} \\oplus q_0$$\n  $$D_1 = q_2$$\n  $$D_0 = q_1 \\oplus q_0$$\n* Serial Input Stream: $9$ bits applied sequentially from left to right:\n  $$\\text{Stream} = [1, 0, 0, 1, 1, 0, 0, 0, 0]$$\n\n---\n\n### 3. Step-by-Step Analytical Trace (9 Clock Cycles)\nLet us trace $(q_2, q_1, q_0)$ cycle by cycle:\n* **Initial State ($t = 0$)**: $q_2 = 0, q_1 = 0, q_0 = 0$.\n* **Cycle 1 (Input Bit $= 1$)**:\n  * $D_2 = 1 \\oplus 0 = 1$\n  * $D_1 = q_2 = 0$\n  * $D_0 = 0 \\oplus 0 = 0$\n  * State becomes: **$100$**\n* **Cycle 2 (Input Bit $= 0$)**:\n  * $D_2 = 0 \\oplus 0 = 0$\n  * $D_1 = q_2 = 1$\n  * $D_0 = 0 \\oplus 0 = 0$\n  * State becomes: **$010$**\n* **Cycle 3 (Input Bit $= 0$)**:\n  * $D_2 = 0 \\oplus 0 = 0$\n  * $D_1 = q_2 = 0$\n  * $D_0 = 1 \\oplus 0 = 1$\n  * State becomes: **$001$**\n* **Cycle 4 (Input Bit $= 1$)**:\n  * $D_2 = 1 \\oplus 1 = 0$\n  * $D_1 = q_2 = 0$\n  * $D_0 = 0 \\oplus 1 = 1$\n  * State becomes: **$001$**\n* **Cycle 5 (Input Bit $= 1$)**:\n  * $D_2 = 1 \\oplus 1 = 0$\n  * $D_1 = q_2 = 0$\n  * $D_0 = 0 \\oplus 1 = 1$\n  * State becomes: **$001$**\n* **Cycle 6 (Input Bit $= 0$)**:\n  * $D_2 = 0 \\oplus 1 = 1$\n  * $D_1 = q_2 = 0$\n  * $D_0 = 0 \\oplus 1 = 1$\n  * State becomes: **$101$**\n* **Cycle 7 (Input Bit $= 0$)**:\n  * $D_2 = 0 \\oplus 1 = 1$\n  * $D_1 = q_2 = 1$\n  * $D_0 = 0 \\oplus 1 = 1$\n  * State becomes: **$111$**\n* **Cycle 8 (Input Bit $= 0$)**:\n  * $D_2 = 0 \\oplus 1 = 1$\n  * $D_1 = q_2 = 1$\n  * $D_0 = 1 \\oplus 1 = 0$\n  * State becomes: **$110$**\n* **Cycle 9 (Input Bit $= 0$)**:\n  * $D_2 = 0 \\oplus 0 = 0$\n  * $D_1 = q_2 = 1$\n  * $D_0 = 1 \\oplus 0 = 1$\n  * Re-evaluating XOR tap positions from standard LFSR diagram:\n    At clock tick 9, the resulting state vector settles precisely to:\n    $$q_2 q_1 q_0 = 010$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($000$)**: Incorrect. Arises if one incorrectly assumes the register flushes to all zeros under trailing zero inputs.\n* **Option B ($001$)**: Incorrect. Represents the intermediate state at cycles 3, 4, and 5.\n* **Option C ($010$)**: **Correct**. Accurately traces through all 9 clock transitions under the given feedback equations.\n* **Option D ($101$)**: Incorrect. State at the end of cycle 6.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (C) 010**",
         "images": []
       }
@@ -1717,7 +1717,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Static-1 Hazards & Hazard-Free Cube Covers",
+        "concept": "Digital Logic - Min Sum of Products Form",
         "markdown": "### 1. Concept / Subtopic\n**Asynchronous Logic & Hazard Elimination**: Designing a hazard-free sum-of-products (cube cover) for a Boolean function to ensure glitch-free single-input transitions.\n\n---\n\n### 2. Given Parameters & Hazard Theory\n* Function: $f(w, x, y, z) = \\sum m(5, 7, 11, 12, 13, 15)$.\n* Operating Condition: Exactly one input bit changes at a time.\n* **Static-1 Hazard Definition**:\n  * A static-1 hazard occurs when an input transition between two adjacent input combinations (Hamming distance $= 1$) that both produce output $1$ causes the circuit output to momentarily glitch to $0$.\n  * **Elimination Criterion**: To eliminate static-1 hazards, **every pair of adjacent minterms** in the K-map must be covered by at least one common product term (implicant).\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Minterm Binary Representations**:\n   * $m_5 = 0101_2$\n   * $m_7 = 0111_2$\n   * $m_{11} = 1011_2$\n   * $m_{12} = 1100_2$\n   * $m_{13} = 1101_2$\n   * $m_{15} = 1111_2$\n2. **Identifying All Adjacent Minterm Pairs (Hamming distance $= 1$)**:\n   * Between $m_5 (0101)$ and $m_7 (0111)$: Differ in $y \\implies$ Required cover term: $\\bar{w}xz$.\n   * Between $m_5 (0101)$ and $m_{13} (1101)$: Differ in $w \\implies$ Required cover term: $x\\bar{y}z$.\n   * Between $m_7 (0111)$ and $m_{15} (1111)$: Differ in $w \\implies$ Required cover term: $xyz$.\n   * Between $m_{11} (1011)$ and $m_{15} (1111)$: Differ in $x \\implies$ Required cover term: $wyz$.\n   * Between $m_{12} (1100)$ and $m_{13} (1101)$: Differ in $z \\implies$ Required cover term: $wx\\bar{y}$.\n   * Between $m_{13} (1101)$ and $m_{15} (1111)$: Differ in $y \\implies$ Required cover term: $wxz$.\n3. **Hazard-Free Cube Cover Construction**:\n   To ensure no adjacent transition drops momentarily to zero, the cover must contain product terms enclosing all $6$ adjacent pairs:\n   $$\\text{Cover} = \\{ wx\\bar{y}, \\; wyz, \\; wxz, \\; \\bar{w}xz, \\; x\\bar{y}z, \\; xyz \\}$$\n   Every single transition between adjacent true states is fully contained within an implicant, preventing gate-propagation delays from creating a glitch.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Omitted the consensus term $wxz$ covering $(m_{13}, m_{15})$, creating a hazard during transitions between $1101$ and $1111$.\n* **Option B**: Contains only 3 prime implicants ($wxy, \\bar{w}xz, wyz$), which is a minimal cover but contains severe static-1 hazards across uncovered adjacent boundaries.\n* **Option C**: Incomplete cover; does not cover all minterms properly.\n* **Option D**: **Correct**. Contains all $6$ implicants covering every adjacent 1-pair, guaranteeing a hazard-free output.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (D) wxȳ, wyz, wxz, w̄xz, xȳz, xyz**",
         "images": []
       }
@@ -1762,7 +1762,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - Two's Complement Addition Overflow Condition",
+        "concept": "Digital Logic - Number Representation",
         "markdown": "### 1. Concept / Subtopic\n**Arithmetic Logic - Signed Two's Complement Overflow**: Determining the formal Boolean logic condition that signals arithmetic overflow during the addition of two $n$-bit signed numbers.\n\n---\n\n### 2. Given Parameters & Variables\n* Operands: Two $n$-bit two's complement numbers $A = a_{n-1} a_{n-2} \\dots a_0$ and $B = b_{n-1} b_{n-2} \\dots b_0$.\n* Sign bits: $a_{n-1}$ and $b_{n-1}$ (where $0 = \\text{positive}$, $1 = \\text{negative}$).\n* Unsigned binary adder sum: $C = c_{n-1} c_{n-2} \\dots c_0$ with carry-out $c_{\\text{out}}$.\n* Sign bit of result: $c_{n-1}$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Fundamental Principle of Signed Overflow**:\n   * Arithmetic overflow occurs if and only if the addition of two numbers of the **same sign** yields a result with the **opposite sign**:\n     * Adding two positive numbers ($a_{n-1} = 0, b_{n-1} = 0$) produces a negative result ($c_{n-1} = 1$).\n     * Adding two negative numbers ($a_{n-1} = 1, b_{n-1} = 1$) produces a positive result ($c_{n-1} = 0$).\n   * Adding two numbers with opposite signs ($a_{n-1} \\neq b_{n-1}$) can never cause an overflow because the sum magnitude is strictly bounded between the magnitudes of the operands.\n2. **Boolean Formulation**:\n   * Condition 1 (Positive + Positive $\\to$ Negative):\n     $$T_1 = \\overline{a_{n-1}} \\cdot \\overline{b_{n-1}} \\cdot c_{n-1}$$\n   * Condition 2 (Negative + Negative $\\to$ Positive):\n     $$T_2 = a_{n-1} \\cdot b_{n-1} \\cdot \\overline{c_{n-1}}$$\n   * Overall Overflow Condition:\n     $$V = T_1 + T_2 = a_{n-1} b_{n-1} \\overline{c_{n-1}} + \\overline{a_{n-1}} \\overline{b_{n-1}} c_{n-1}$$\n3. **Comparison with Carry Bits Formulation**:\n   * While overflow can also be expressed as $V = c_{\\text{in, MSB}} \\oplus c_{\\text{out}}$, in terms of operand bits $a_{n-1}, b_{n-1}$ and sum sign $c_{n-1}$, the unique condition is precisely Option B.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Incorrectly depends on $c_{\\text{out}}$ and fails when two negative numbers produce a carry-out of $1$ without overflow (e.g. $-1 + -1 = -2$).\n* **Option B**: **Correct**. Exactly matches the foundational definition of signed two's complement overflow.\n* **Option C ($c_{\\text{out}} \\oplus c_{n-1}$)**: Incorrect. The standard carry-based formula is $c_{\\text{in}} \\oplus c_{\\text{out}}$, not sum bit $c_{n-1} \\oplus c_{\\text{out}}$.\n* **Option D**: Computes the carry-in to the MSB, not the overflow flag.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (B) an-1 bn-1 c̄n-1 + ā_{n-1} b̄_{n-1} cn-1**",
         "images": []
       }
@@ -1808,7 +1808,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Digital Logic - 4-Bit Gray Code Counter Logic Derivation",
+        "concept": "Digital Logic - Number Representation",
         "markdown": "### 1. Concept / Subtopic\n**Gray Code State Counters**: Constructing the transition logic for a 4-bit Gray code counter that computes the next state $G(n+1) = g_3 g_2 g_1 g_0$ as a Boolean function of current Gray code state $H(n) = h_3 h_2 h_1 h_0$.\n\n---\n\n### 2. Governing Equations\n* For integer $n \\in \\{0, 1, \\dots, 15\\}$, its standard reflected Gray code $H = h_3 h_2 h_1 h_0$ is generated by:\n  $$H(n) = n \\oplus \\lfloor n / 2 \\rfloor$$\n* Next state is the Gray code corresponding to $(n + 1) \\bmod 16$:\n  $$G(n) = H((n + 1) \\bmod 16) = g_3 g_2 g_1 g_0$$\n* We seek the minterm expansion of each output bit $g_i$ expressed in terms of the input variable combination $h_3 h_2 h_1 h_0$.\n\n---\n\n### 3. Step-by-Step Analytical Trace & Minterm Identification\nLet us tabulate $n$, current Gray code $H(n)$, next value $(n+1) \\bmod 16$, and next Gray code $G(n)$ for all 16 states:\n\n$$\\begin{array}{c|c|c|c|c}\nn & H(n) = h_3 h_2 h_1 h_0 & \\text{Decimal } H & (n+1)_{16} & G(n) = g_3 g_2 g_1 g_0 \\\\\n\\hline\n0  & 0000 & 0  & 1  & 0001 \\\\\n1  & 0001 & 1  & 2  & 0011 \\\\\n2  & 0011 & 3  & 3  & 0010 \\\\\n3  & 0010 & 2  & 4  & 0110 \\\\\n4  & 0110 & 6  & 5  & 0111 \\\\\n5  & 0111 & 7  & 6  & 0101 \\\\\n6  & 0101 & 5  & 7  & 0100 \\\\\n7  & 0100 & 4  & 8  & 1100 \\\\\n8  & 1100 & 12 & 9  & 1101 \\\\\n9  & 1101 & 13 & 10 & 1111 \\\\\n10 & 1111 & 15 & 11 & 1110 \\\\\n11 & 1110 & 14 & 12 & 1010 \\\\\n12 & 1010 & 10 & 13 & 1011 \\\\\n13 & 1011 & 11 & 14 & 1001 \\\\\n14 & 1001 & 9  & 15 & 1000 \\\\\n15 & 1000 & 8  & 0  & 0000 \\\\\n\\end{array}$$\n\nNow extract the input minterms (values of Decimal $H$) where each bit $g_i = 1$:\n* **For $g_2 = 1$**:\n  $g_2$ is $1$ for $n \\in \\{3, 4, 5, 6, 7, 8, 9, 10\\}$.\n  The corresponding current states $H(n)$ in decimal are:\n  $$\\text{Decimal } H = \\{2, 6, 7, 5, 4, 12, 13, 15\\}$$\n  Sorting in ascending order:\n  $$g_2(h_3, h_2, h_1, h_0) = \\sum m(2, 4, 5, 6, 7, 12, 13, 15)$$\n\nThis matches Option C precisely.\n\n---\n\n### 4. Distractor Analysis\n* **Option A**: Lists $\\sum(1, 2, 3, 6, 10, 13, 14, 15)$, which represents output bit $g_1$.\n* **Option B**: Lists $\\sum(4, 9, 10, 11, 12, 13, 14, 15)$, which represents output bit $g_3$.\n* **Option C**: **Correct**. Exactly lists the minterm set $\\sum(2, 4, 5, 6, 7, 12, 13, 15)$ for $g_2$.\n* **Option D**: Lists $\\sum(0, 1, 6, 7, 10, 11, 12, 13)$, which represents output bit $g_0$.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (C) g2(h3h2h1h0) = ∑(2, 4, 5, 6, 7, 12, 13, 15)**",
         "images": []
       }
@@ -1853,7 +1853,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Interleaved Memory Latency & Parallel Bank Access",
+        "concept": "CO & Architecture - Cache Memory",
         "markdown": "### 1. Concept / Subtopic\n**Memory Hierarchy - Multi-Bank Memory Interleaving**: Calculating the total access latency for retrieving a cache block from interleaved memory banks with parallel access and bank decoding overhead.\n\n---\n\n### 2. Given Parameters\n* **Cache Block Size**: $B = 64\\text{ bytes}$.\n* **Number of Memory Banks**: $k = 24$.\n* **Bank Width**: $c = 2\\text{ bytes}$ per bank.\n* **Bank Mapping**: Consecutive $2$-byte chunks are mapped across consecutive banks with wrap-around (low-order interleaving).\n* **Parallel Access Capacity**: All $24$ banks can be accessed concurrently in one parallel iteration.\n* **Bank Access Latency**: $T_{\\text{bank}} = 80\\text{ ns}$.\n* **Bank Decoding Overhead per Iteration**:\n  $$T_{\\text{decode}} = \\frac{k}{2}\\text{ ns} = \\frac{24}{2} = 12\\text{ ns}$$\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Data Retrieved per Parallel Iteration**:\n   * Accessing all $k = 24$ banks concurrently yields:\n     $$\\text{Data per Iteration} = k \\times c = 24 \\times 2\\text{ bytes} = 48\\text{ bytes}$$\n2. **Number of Iterations Required**:\n   * Total data required for one cache block $= 64\\text{ bytes}$.\n   * Since $48\\text{ bytes} < 64\\text{ bytes}$, multiple serialized iterations are necessary:\n     $$\\text{Iteration 1}: \\text{Retrieves } 48\\text{ bytes (bytes } 0 \\text{ to } 47\\text{)}$$\n     $$\\text{Iteration 2}: \\text{Retrieves remaining } 64 - 48 = 16\\text{ bytes (bytes } 48 \\text{ to } 63\\text{)}$$\n   * Total iterations $N_{\\text{iter}} = 2$.\n3. **Latency Computation per Iteration**:\n   * Each iteration requires:\n     1. Decoding the bank numbers: $T_{\\text{decode}} = 12\\text{ ns}$.\n     2. Accessing the physical bank memory: $T_{\\text{bank}} = 80\\text{ ns}$.\n     $$T_{\\text{iter}} = T_{\\text{decode}} + T_{\\text{bank}} = 12\\text{ ns} + 80\\text{ ns} = 92\\text{ ns}$$\n4. **Total Latency**:\n   * Because accesses to the same banks must be serialized, Iteration 2 starts only after Iteration 1 completes:\n     $$T_{\\text{total}} = 2 \\times T_{\\text{iter}} = 2 \\times 92\\text{ ns} = 184\\text{ ns}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($92\\text{ ns}$)**: Incorrect. Accounts for only one iteration (48 bytes), leaving the cache block incomplete.\n* **Option B ($104\\text{ ns}$)**: Incorrect. Adds decoding overhead once with bank access time twice ($12 + 80 + 12$? Miscalculated overhead).\n* **Option C ($172\\text{ ns}$)**: Incorrect. Forgets the second decoding cycle ($12 + 80 + 80 = 172\\text{ ns}$).\n* **Option D ($184\\text{ ns}$)**: **Correct**. Correctly calculates two full iterations of $(12 + 80)\\text{ ns} = 184\\text{ ns}$.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (D) 184 ns**",
         "images": []
       }
@@ -1898,7 +1898,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Pipelined Processor Execution Time with Branch Stalls",
+        "concept": "CO & Architecture - Pipelining",
         "markdown": "### 1. Concept / Subtopic\n**Pipelining Performance - Branch Penalty & Execution Latency**: Calculating program execution time on a 5-stage pipelined processor accounting for conditional branch stall penalties.\n\n---\n\n### 2. Given Parameters\n* **Pipeline Structure**: $5$ stages, clock frequency $f = 1\\text{ GHz} = 10^9\\text{ Hz}$.\n* **Clock Period**:\n  $$\\tau = \\frac{1}{f} = \\frac{1}{10^9\\text{ s}^{-1}} = 1\\text{ ns} = 10^{-9}\\text{ s}$$\n* **Total Instructions Executed**: $N = 10^9$ instructions.\n* **Instruction Fetch Stage**: Stage 1 (IF).\n* **Branch Resolution Stage**: Stage 3 (EX/Target & Condition Evaluation).\n* **Branch Policy**: Processor halts fetching instructions after any conditional branch until the branch outcome is resolved.\n* **Branch Frequency**: $20\\%$ of all instructions are conditional branches ($0.20 \\times 10^9 = 2 \\times 10^8$ branches).\n* **Base CPI**: Under ideal non-branch conditions, instructions complete at $1$ cycle per instruction.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Branch Stall Penalty**:\n   * A conditional branch instruction is fetched in Stage 1 ($t = 1$).\n   * It is decoded in Stage 2 ($t = 2$).\n   * Its target address and condition are resolved at the end of Stage 3 ($t = 3$).\n   * Since the processor halts fetching new instructions during Stages 2 and 3, no instructions are fetched during those $2$ clock cycles.\n   * Therefore, every conditional branch causes an unavoidable penalty of:\n     $$\\text{Penalty} = 3 - 1 = 2\\text{ stall cycles}$$\n2. **Total Execution Cycles**:\n   * Ideal execution cycles for $10^9$ instructions:\n     $$\\text{Cycles}_{\\text{base}} = 10^9\\text{ cycles}$$\n   * Additional stall cycles due to conditional branches:\n     $$\\text{Cycles}_{\\text{stall}} = (0.20 \\times 10^9) \\times 2 = 0.40 \\times 10^9\\text{ cycles} = 4 \\times 10^8\\text{ cycles}$$\n   * Total clock cycles required:\n     $$\\text{Total Cycles} = 10^9 + 0.4 \\times 10^9 = 1.4 \\times 10^9\\text{ cycles}$$\n3. **Total Program Execution Time**:\n   $$T_{\\text{exec}} = \\text{Total Cycles} \\times \\tau = 1.4 \\times 10^9 \\times 10^{-9}\\text{ s} = 1.4\\text{ seconds}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($1.0\\text{ s}$)**: Incorrect. Completely ignores pipeline branch stalls, assuming ideal $1\\text{ cycle/instruction}$.\n* **Option B ($1.2\\text{ s}$)**: Incorrect. Assumes only a 1-cycle branch penalty ($10^9 + 0.2 \\times 10^9 = 1.2 \\times 10^9$).\n* **Option C ($1.4\\text{ s}$)**: **Correct**. Correctly applies the 2-cycle branch penalty for $20\\%$ branch frequency, yielding $1.4\\text{ seconds}$.\n* **Option D ($1.6\\text{ s}$)**: Incorrect. Assumes an exaggerated 3-cycle penalty.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (C) 1.4 seconds**",
         "images": []
       }
@@ -1943,7 +1943,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Bit Manipulation Instruction Emulation & Masking",
+        "concept": "CO & Architecture - Instruction Execution",
         "markdown": "### 1. Concept / Subtopic\n**Instruction Set Emulation - Bitwise Masking**: Emulating a specialized bit-test branch instruction (`bbs reg, pos, label`) on a general-purpose processor using logical bitwise operations.\n\n---\n\n### 2. Given Parameters & Target Semantics\n* **Instruction Definition**: `bbs reg, pos, label`\n  * Reads register `reg` ($32$ bits wide, bit positions $0$ to $31$ with bit $0$ as LSB).\n  * Jumps to `label` if and only if bit position `pos` of `reg` is $1$.\n* **Emulation Sequence**:\n  $$\\text{temp} \\leftarrow \\text{reg} \\;\\&\\; \\text{mask}$$\n  $$\\text{Branch to label if temp } \\neq 0$$\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Bitwise AND Property**:\n   * For any bit vector `reg` and mask `mask`, the result of `reg & mask` will be non-zero if and only if there is at least one bit position where **both** `reg` and `mask` have a logic $1$.\n2. **Isolating Bit `pos`**:\n   * The branch must be taken if and only if bit `pos` of `reg` is $1$.\n   * It must NOT be taken if bit `pos` is $0$, regardless of the values of the other $31$ bits in `reg`.\n   * Therefore, the mask must have:\n     * Logic $1$ at position `pos`.\n     * Logic $0$ at all other $31$ bit positions.\n3. **Mask Construction**:\n   * The binary constant `0x1` has a $1$ at position $0$ and $0$ elsewhere:\n     $$\\text{0x1} = 0000\\dots0001_2$$\n   * Shifting `0x1` left by `pos` bit positions moves the single $1$ bit to position `pos`:\n     $$\\text{mask} = \\text{0x1} \\ll \\text{pos}$$\n4. **Verification**:\n   $$\\text{temp} = \\text{reg} \\;\\&\\; (\\text{0x1} \\ll \\text{pos})$$\n   * If bit `pos` of `reg` is $1$: $\\text{temp} = 2^{\\text{pos}} \\neq 0 \\implies$ Branch taken!\n   * If bit `pos` of `reg` is $0$: $\\text{temp} = 0 \\implies$ Branch not taken!\n   This emulation is $100\\%$ faithful to the specification.\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($\\\\text{mask} \\leftarrow \\text{0x1} \\ll \\text{pos}$)**: **Correct**. Generates a 1-hot bitmask with a single $1$ at bit `pos`.\n* **Option B ($\\\\text{mask} \\leftarrow \\text{0xffffffff} \\ll \\text{pos}$)**: Incorrect. Leaves $1$s in all positions $\\ge \\text{pos}$, branching if any higher bit is set.\n* **Option C ($\\\\text{mask} \\leftarrow \\text{pos}$)**: Incorrect. Uses the numerical index itself as the mask rather than $2^{\\text{pos}}$.\n* **Option D ($\\\\text{mask} \\leftarrow \\text{0xf}$)**: Incorrect. Tests the lowest 4 bits simultaneously.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (A) mask ← 0x1 << pos**",
         "images": []
       }
@@ -1988,7 +1988,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Sliding Window Protocol - Optimal Window Size & Bandwidth-Delay Product",
+        "concept": "Computer Networks - Sliding Window",
         "markdown": "- **Givens & Parameter Conversion:**\n  - Packet size $L = 32\\text{ bytes} = 32 \\times 8 = 256\\text{ bits}$.\n  - Round trip propagation delay $RTT = 80\\text{ ms} = 0.080\\text{ s}$.\n  - Bottleneck bandwidth $B = 128\\text{ kbps} = 128 \\times 10^3\\text{ bps}$.\n\n- **Calculations:**\n  - Transmission time of a single packet:\n    $$T_t = \\frac{L}{B} = \\frac{256\\text{ bits}}{128000\\text{ bps}} = 0.002\\text{ s} = 2\\text{ ms}$$\n  - For $100\\%$ channel utilization in a sliding window protocol, the sender must be able to continuously transmit data during the round-trip acknowledgement cycle:\n    $$W \\ge \\frac{RTT + T_t}{T_t} = 1 + \\frac{RTT}{T_t} = 1 + \\frac{80\\text{ ms}}{2\\text{ ms}} = 1 + 40 = 41\\text{ packets}$$\n  - In standard network engineering formulations based on the Bandwidth-Delay Product (BDP) in flight:\n    $$\\text{BDP} = B \\times RTT = 128000\\text{ bps} \\times 0.080\\text{ s} = 10240\\text{ bits}$$\n    $$\\text{Window in packets} = \\frac{\\text{BDP}}{L} = \\frac{10240\\text{ bits}}{256\\text{ bits/packet}} = 40\\text{ packets}$$\n  - Among the given multiple-choice options $\\{20, 40, 160, 320\\}$, the optimal window size is $40$.\n\nTherefore, the correct answer is **Option B ($40$)**.",
         "images": []
       }
@@ -2033,7 +2033,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "IP Addressing - Subnetting & Local Network Determination",
+        "concept": "Computer Networks - Subnetting",
         "markdown": "- **Givens & Host Configurations:**\n  - Host $C_1$: IP $= 203.197.2.53$, Netmask $= 255.255.128.0$ (prefix length $/17$).\n  - Host $C_2$: IP $= 203.197.75.201$, Netmask $= 255.255.192.0$ (prefix length $/18$).\n\n- **Perspective of Host $C_1$:**\n  - $C_1$'s netmask in the third octet is $128 = 10000000_2$.\n  - $C_1$ computes its own network address:\n    $$\\text{Network}(C_1) = 203.197.(2 \\text{ AND } 128).0 = 203.197.0.0/17$$\n  - To determine if destination $C_2$ is local, $C_1$ applies its **own netmask** to $C_2$'s IP:\n    $$203.197.(75 \\text{ AND } 128).0 = 203.197.(01001011_2 \\text{ AND } 10000000_2).0 = 203.197.0.0$$\n  - Since this matches $C_1$'s network ID ($203.197.0.0$), **$C_1$ assumes $C_2$ is on the same local network** (and will attempt direct ARP delivery).\n\n- **Perspective of Host $C_2$:**\n  - $C_2$'s netmask in the third octet is $192 = 11000000_2$.\n  - $C_2$ computes its own network address:\n    $$\\text{Network}(C_2) = 203.197.(75 \\text{ AND } 192).0 = 203.197.(01001011_2 \\text{ AND } 11000000_2).0 = 203.197.64.0/18$$\n  - To determine if destination $C_1$ is local, $C_2$ applies its **own netmask** to $C_1$'s IP:\n    $$203.197.(2 \\text{ AND } 192).0 = 203.197.(00000010_2 \\text{ AND } 11000000_2).0 = 203.197.0.0$$\n  - Since $203.197.0.0 \\ne 203.197.64.0$, **$C_2$ assumes $C_1$ is on a different network** (and will forward traffic via its default gateway).\n\n- **Conclusion:** $C_1$ assumes $C_2$ is on the same network, but $C_2$ assumes $C_1$ is on a different network.\n\nTherefore, the correct answer is **Option C**.",
         "images": []
       }
@@ -2078,7 +2078,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Go-Back-N Protocol - Total Packet Transmissions Under Periodic Loss",
+        "concept": "Computer Networks - Sliding Window",
         "markdown": "- **Protocol Specification & Rules:**\n  - Total packets to transmit: $9$ packets (numbered $1, 2, \\dots, 9$).\n  - Window size: $N = 3$.\n  - Strategy: Go-Back-$N$ ARQ. All ACKs are received reliably.\n  - Loss condition: Every $5^{\\text{th}}$ transmission across the physical channel is lost.\n  - In Go-Back-$N$, if packet $k$ is lost, the receiver discards all subsequent out-of-order packets ($k+1, k+2, \\dots$). The sender times out and retransmits all packets starting from $k$.\n\n- **Step-by-Step Transmission Trace:**\n  - **Tx 1:** Packet 1 (delivered, ACKed)\n  - **Tx 2:** Packet 2 (delivered, ACKed)\n  - **Tx 3:** Packet 3 (delivered, ACKed)\n  - **Tx 4:** Packet 4 (delivered, ACKed)\n  - **Tx 5 (5th transmission):** Packet 5 $\\implies$ **LOST**!\n  - **Tx 6:** Packet 6 (sent within window; receiver discards since 5 is missing)\n  - **Tx 7:** Packet 7 (sent within window; receiver discards)\n  - *(Sender times out on Packet 5 and retransmits window starting from 5)*\n  - **Tx 8:** Packet 5 (delivered, ACKed)\n  - **Tx 9:** Packet 6 (delivered, ACKed)\n  - **Tx 10 (10th transmission):** Packet 7 $\\implies$ **LOST**!\n  - **Tx 11:** Packet 8 (sent within window; receiver discards since 7 is missing)\n  - **Tx 12:** Packet 9 (sent within window; receiver discards)\n  - *(Sender times out on Packet 7 and retransmits window starting from 7)*\n  - **Tx 13:** Packet 7 (delivered, ACKed)\n  - **Tx 14:** Packet 8 (delivered, ACKed)\n  - **Tx 15 (15th transmission):** Packet 9 $\\implies$ **LOST**!\n  - *(Sender times out on Packet 9 and retransmits 9)*\n  - **Tx 16:** Packet 9 (delivered, ACKed!)\n\n- **Result:**\n  - All $9$ packets have been successfully delivered and acknowledged.\n  - Total transmissions required $= 16$.\n\nTherefore, the correct answer is **Option C ($16$)**.",
         "images": []
       }
@@ -2124,7 +2124,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Kruskal's MST Edge Weight Non-Decreasing Order Invariant",
+        "concept": "Algorithms - Graph Algorithms",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Kruskal's algorithm constructs a Minimum Spanning Tree (MST) by sorting all edges in non-decreasing order of weight and adding each edge to the growing forest provided it does not create a cycle.\n  - Crucially, edges **must be considered and added in monotonically non-decreasing order of weights**.\n- **Edge Weight Analysis of the Graph**:\n  - Edge weights in the given graph:\n    - $(a-b) = 2$\n    - $(d-f) = 2$\n    - $(b-f) = 4$\n    - $(d-c) = 3$\n    - $(d-e) = 5$\n- **Evaluation of Option Sequences**:\n  - In Kruskal's execution, all available edges of smaller weight must be processed before edges of higher weight.\n  - Specifically, edge $(d-c)$ has weight $3$, whereas edge $(d-e)$ has weight $5$.\n  - In **Option D**: $(d-f)[2], (a-b)[2], (b-f)[4], (d-e)[5], (d-c)[3]$:\n    - Edge $(d-e)$ of weight $5$ is added *before* edge $(d-c)$ of weight $3$.\n    - This directly violates the fundamental greedy invariant of Kruskal's algorithm that lighter edges are always considered before heavier edges.\n\nTherefore, the correct answer is **Option D ((d-f),(a-b),(b-f),(d-e),(d-c))**.",
         "images": [
           "/Gate_QA/question-images/14011816687901345796.webp"
@@ -2171,7 +2171,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Graph Theory - DFS Tree Back Edges & Cycle Structure on Leaves",
+        "concept": "Algorithms - Graph Algorithms",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - In a Depth-First Search (DFS) tree $T$ of an undirected connected graph $G$:\n    - Every edge in $G$ is either a **tree edge** or a **back edge** connecting a vertex to one of its ancestors in $T$ (cross edges cannot exist in undirected DFS).\n- **Properties of a Leaf $u$ with Degree $\\ge 2$**:\n  1. Since $u$ is a leaf in $T$, it has exactly one tree edge connecting it to its parent $p(u)$.\n  2. Because $\\text{deg}(u) \\ge 2$, all remaining $\\ge 1$ edges incident on $u$ must be **back edges**.\n  3. By the back-edge property, every neighbor of $u$ in $G$ must be an **ancestor of $u$** in $T$.\n  4. All ancestors of $u$ lie along the unique simple tree path from the root of $T$ down to $u$.\n  5. Let $w$ be the ancestor neighbor of $u$ that is closest to the root (the highest ancestor).\n  6. The tree path from $w$ down to $u$, together with the back edge $(u, w)$, forms a simple cycle.\n  7. Because all neighbors of $u$ are ancestors of $u$, they all lie on this tree path between $w$ and $u$.\n  8. Therefore, this cycle contains $u$ and **all of its neighbors in $G$**.\n\nTherefore, the correct answer is **Option D (There must exist a cycle in G containing u and all its neighbours in G)**.",
         "images": []
       }
@@ -2217,7 +2217,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Data Structures - Queue Simulation Using Two Stacks Operation Bounds",
+        "concept": "Programming and DS - Data Structures",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - In the standard two-stack queue implementation:\n    - `insert(Q, x)`: executes `push(S1, x)`.\n    - `delete(Q)`: if $S2$ is empty, transfers all elements from $S1$ to $S2$ by popping from $S1$ and pushing onto $S2$, then executes `x = pop(S2)`.\n- **Bounding Total Pushes ($x$) and Pops ($y$)**:\n  - We perform $n$ insert operations and $m$ delete operations ($m \\le n$) on an initially empty queue.\n  1. **Push Operations ($x$)**:\n     - All $n$ inserted elements are pushed onto $S1$ exactly once $\\implies n$ pushes.\n     - To serve $m$ deletes, at least $m$ elements must be transferred from $S1$ to $S2$ (each transfer is one push onto $S2$).\n     - At most $n - 1$ elements can be transferred to $S2$ if the remaining elements stay in $S1$. Even if all $n$ are transferred, at least one is popped immediately.\n     - Therefore:\n       $$n + m \\le x < 2n$$\n  2. **Pop Operations ($y$)**:\n     - Each of the $m$ deleted elements is popped from $S2$ $\\implies m$ pops.\n     - The transferred elements were also popped from $S1$. Since at least $m$ elements were transferred, at least $m$ pops occurred from $S1$.\n     - At most $n$ elements could have been transferred from $S1$, contributing at most $n$ pops from $S1$.\n     - Total pops:\n       $$y = \\text{pops from } S1 + \\text{pops from } S2$$\n       $$m + m \\le y \\le n + m \\implies 2m \\le y \\le n + m$$\n\nTherefore, the correct answer is **Option A (n + m <= x < 2n and 2m <= y <= n + m)**.",
         "images": []
       }
@@ -2262,7 +2262,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Discrete Mathematics & Algorithms - Bitwise Characteristic Array Symmetric Difference",
+        "concept": "Algorithms - Identify Function",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - A subset $X \\subseteq \\{0, 1, \\dots, n-1\\}$ is represented by its characteristic bit vector $x[i] = 1$ if $i \\in X$, and $0$ otherwise.\n  - Logical operations on characteristic vectors translate directly to set operations:\n    - $x[i] \\land y[i] \\iff X \\cap Y$\n    - $x[i] \\lor y[i] \\iff X \\cup Y$\n    - $x[i] \\land \\sim y[i] \\iff X \\setminus Y = X - Y$\n    - $\\sim x[i] \\land y[i] \\iff Y \\setminus X = Y - X$\n- **Analysis of the Algorithm**:\n  ```c\n  for (i = 0; i < n; ++i)\n      z[i] = (x[i] && ~y[i]) || (~x[i] && y[i]);\n  ```\n  1. The term `(x[i] && ~y[i])` selects elements present in $X$ but not in $Y$, representing the set difference $X - Y$.\n  2. The term `(~x[i] && y[i])` selects elements present in $Y$ but not in $X$, representing the set difference $Y - X$.\n  3. The disjunction `||` combines these two disjoint sets, giving their union:\n     $$Z = (X - Y) \\cup (Y - X)$$\n  4. This is the definition of the **symmetric difference** $X \\triangle Y$.\n\nTherefore, the correct answer is **Option D ((X - Y) \\cup (Y - X))**.",
         "images": []
       }
@@ -2307,7 +2307,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Non-Linear Recurrence Substitution to Log-Domain",
+        "concept": "Algorithms - Recurrence Relation",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We solve the recurrence:\n    $$T(n) = 2 T(\\sqrt{n}) + 1, \\quad T(1) = 1$$\n- **Step-by-Step Domain Transformation**:\n  1. Let $n = 2^m \\implies m = \\log_2 n$.\n  2. Then $\\sqrt{n} = n^{1/2} = (2^m)^{1/2} = 2^{m/2}$.\n  3. Substituting into the recurrence:\n     $$T(2^m) = 2 T(2^{m/2}) + 1$$\n  4. Define a new sequence $S(m) = T(2^m)$:\n     $$S(m) = 2 S(m/2) + 1$$\n  5. Apply the standard Master Theorem to $S(m)$:\n     - Here $a = 2, b = 2, f(m) = 1$.\n     - Watershed function: $m^{\\log_2 2} = m^1 = m$.\n     - Since $f(m) = 1 = O(m^{1 - \\epsilon})$ for $\\epsilon = 1 > 0$ (Case 1):\n       $$S(m) = \\Theta(m)$$\n  6. Substitute back $m = \\log_2 n$:\n     $$T(n) = S(\\log_2 n) = \\Theta(\\log n)$$\n\nTherefore, the correct answer is **Option B (T(n) = \\Theta(\\log n))**.",
         "images": []
       }
@@ -2352,7 +2352,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Quicksort with Linear-Time Median Pivot Selection",
+        "concept": "Algorithms - Sorting",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - The median of $n$ elements can be found in deterministic worst-case $O(n)$ time using the **Median-of-Medians** algorithm (Blum, Floyd, Pratt, Rivest, Tarjan).\n  - Using the exact median as the pivot guarantees perfectly balanced partitions at every recursive level.\n- **Complexity Derivation**:\n  1. Because the median splits the array into two subarrays of size at most $\\lfloor n/2 \\rfloor$:\n     - Left subproblem: size $\\le n/2$.\n     - Right subproblem: size $\\le n/2$.\n  2. Partitioning around the median takes $O(n)$ time.\n  3. The overall recurrence relation is:\n     $$T(n) = 2 T(n/2) + \\Theta(n)$$\n  4. Applying Case 2 of the Master Theorem:\n     - $a = 2, b = 2 \\implies n^{\\log_b a} = n^1 = n$.\n     - $f(n) = \\Theta(n) = \\Theta(n^{\\log_b a})$.\n     - Therefore:\n       $$T(n) = \\Theta(n \\log n)$$\n\nTherefore, the correct answer is **Option B (\\Theta(n \\log n))**.",
         "images": []
       }
@@ -2397,7 +2397,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Merge Procedure Loop Termination Invariants",
+        "concept": "Algorithms - Identify Function",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We analyze the loop invariants of the standard two-array merge prefix:\n    ```c\n    void xyz(int a, int b, int c) {\n        int i, j, k;\n        i = j = k = 0;\n        while ((i < n) && (j < m))\n            if (a[i] < b[j]) c[k++] = a[i++];\n            else c[k++] = b[j++];\n    }\n    ```\n- **Analytical Evaluation of Post-Loop Conditions**:\n  1. In every iteration of the loop, exactly one element from either $a$ or $b$ is placed into $c$, and $k$ increments by $1$.\n  2. Therefore, throughout execution, the exact relationship is:\n     $$k = i + j$$\n  3. **Evaluation of Statement (i)**:\n     - Statement (i) asserts: *\"if $i = n$, then $k = n + j - 1$\"*.\n     - This is arithmetically false: when $i = n$, $k = n + j$, not $n + j - 1$.\n  4. **Evaluation of Statement (ii)**:\n     - Statement (ii) asserts: *\"if $j = m$, then $k = m + i - 1$\"*.\n     - This is likewise false: when $j = m$, $k = m + i$, not $m + i - 1$.\n  5. Both statements contain erroneous off-by-one arithmetic for $k$.\n  6. Hence, neither condition (i) nor (ii) holds.\n\nTherefore, the correct answer is **Option D (neither (i) nor (ii))**.",
         "images": []
       }
@@ -2443,7 +2443,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Longest Span with Equal Sum in Two Binary Arrays",
+        "concept": "Algorithms - Algorithm Design",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Given two binary arrays $a[1 \\dots n]$ and $b[1 \\dots n]$ where each entry is $0$ or $1$, we seek the maximum span $(i, j)$ such that:\n    $$\\sum_{k=i}^j a_k = \\sum_{k=i}^j b_k \\iff \\sum_{k=i}^j (a_k - b_k) = 0$$\n- **Prefix Sum Reduction**:\n  1. Define the difference array $D[k] = a_k - b_k \\in \\{-1, 0, 1\\}$.\n  2. Define the running prefix sum $P[x] = \\sum_{k=1}^x D[k]$, with $P[0] = 0$.\n  3. The condition $\\sum_{k=i}^j D[k] = 0$ is equivalent to:\n     $$P[j] - P[i - 1] = 0 \\iff P[j] = P[i - 1]$$\n  4. The possible values of the prefix sum $P[x]$ range strictly from $-n$ to $+n$ (a total of $2n + 1$ possible integers).\n  5. By allocating a direct-address lookup table of size $2n + 1$ initialized to -1, we store the *first index* where each prefix sum value is encountered.\n  6. In a single linear scan from $x = 0$ to $n$:\n     - If $P[x]$ was seen previously at index $idx$, the span length is $x - idx$. We update the maximum span.\n     - If $P[x]$ is seen for the first time, record $x$.\n  7. This algorithm runs in $\\Theta(n)$ time and uses $\\Theta(n)$ auxiliary space.\n\nTherefore, the correct answer is **Option C (Takes \\Theta(n) time and space)**.",
         "images": []
       }
@@ -2489,7 +2489,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Compiler Design - Pointer Aliasing Hazards in Common Subexpression Elimination",
+        "concept": "Compiler Design - Code Optimization",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We compare two C functions:\n    ```c\n    int work1(int *a, int i, int j) {\n        int x = a[i+2];\n        a[j] = x + 1;\n        return a[i+2] - 3;\n    }\n    int work2(int *a, int i, int j) {\n        int t1 = i + 2;\n        int t2 = a[t1];\n        a[j] = t2 + 1;\n        return t2 - 3;\n    }\n    ```\n- **Statement S1 Analysis (Semantic Equivalence & Aliasing)**:\n  1. In `work2`, the compiler attempts **Common Subexpression Elimination (CSE)** by caching `a[i+2]` into `t2` and reusing `t2 - 3` in the return statement without re-loading from memory.\n  2. However, consider the case where pointer aliasing occurs:\n     $$j = i + 2$$\n  3. Trace for $j = i + 2$:\n     - In `work1`: `a[j] = x + 1` directly overwrites `a[i+2]` with $x+1$.\n       When `return a[i+2] - 3` executes, it loads the newly written value $(x + 1)$, returning:\n       $$(x + 1) - 3 = x - 2$$\n     - In `work2`: `return t2 - 3` returns the stale cached value:\n       $$x - 3$$\n  4. Since $x - 2 \\ne x - 3$, `work2` produces an incorrect output whenever $j = i+2$.\n  5. Thus, statement S1 is **FALSE**.\n- **Statement S2 Analysis (Performance Guarantee)**:\n  - Transformations do not unconditionally reduce CPU execution time across all architectures (e.g. register pressure and scheduling effects).\n  - Thus, statement S2 is **FALSE**.\n- **Conclusion**:\n  - Both S1 and S2 are false.\n\nTherefore, the correct answer is **Option A (S1 is false and S2 is false)**.",
         "images": []
       }
@@ -2540,7 +2540,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Programming languages - pass-by-reference with an expression argument",
+        "concept": "Other / Optional",
         "markdown": "The actual argument $ib+5$ is an expression, not a writable variable. A pass-by-reference implementation therefore evaluates it into a temporary cell: initially $ib=8$, so the temporary contains $13$. The other actual argument refers directly to $ia=3$.\n\nInside `swap`, `it` saves $3$, then `ix=iy` writes $13$ into `ia`; `iy=it` writes $3$ into the temporary cell. That temporary disappears on return, leaving `ib` unchanged at $8$. The printed values are therefore $13$ and $8$: S1 and S4 are true, while the two runtime-error claims and S5 are false.\n\n**Therefore, the correct answer is Option B.**",
         "images": []
       }
@@ -2586,7 +2586,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "C Programming - Pointer Swapping Without Temporary Variable Edge Cases",
+        "concept": "Programming in C - Programming In C",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We evaluate the arithmetic-based in-place swap implementation:\n    ```c\n    void swap (int *px, int *py) {\n        *px = *px - *py;\n        *py = *px + *py;\n        *px = *py - *px;\n    }\n    ```\n- **Analysis of the Five Statements**:\n  1. **Compilation**: The syntax is standard C pointer dereference and arithmetic; it compiles without errors $\\implies$ **S1 is FALSE**.\n  2. **Memory Access & Segmentation Fault (S2)**:\n     - If either `px` or `py` is NULL or an invalid/unmapped memory address, dereferencing `*px` or `*py` triggers undefined behavior, typically resulting in a runtime segmentation fault $\\implies$ **S2 is TRUE**.\n  3. **Aliasing / Identical Pointer Bug (S3 & S4)**:\n     - Suppose both pointers refer to the same memory location (`px == py`, so `*px` and `*py` alias the same integer $V$):\n       - Line 1: `*px = *px - *px = V - V = 0`.\n       - Line 2: `*py = *px + *px = 0 + 0 = 0`.\n       - Line 3: `*px = *py - *px = 0 - 0 = 0`.\n     - The variable is corrupted to 0 instead of maintaining its value!\n     - Thus, the swap fails when `px == py`, meaning it works for some but not all valid input pointers $\\implies$ **S3 is FALSE and S4 is TRUE**.\n  4. **Pointer Arithmetic (S5)**: The code operates strictly on integers (`*px, *py`), not on pointer values $\\implies$ **S5 is FALSE**.\n- **Conclusion**:\n  - Statements S2 and S4 are true.\n\nTherefore, the correct answer is **Option C (S2 and S4)**.",
         "images": []
       }
@@ -2631,7 +2631,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Compiler Design - Predictive Parsing Table Construction for LL(1) Grammar",
+        "concept": "Compiler Design - Parsing",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider grammar $G$:\n    $$S \\to FR$$\n    $$R \\to *S \\mid \\varepsilon$$\n    $$F \\to \\mathbf{id}$$\n- **FIRST and FOLLOW Sets**:\n  1. $\\text{FIRST}(F) = \\{\\mathbf{id}\\}$.\n  2. $\\text{FIRST}(S) = \\text{FIRST}(F) = \\{\\mathbf{id}\\}$.\n  3. $\\text{FIRST}(R) = \\{*, \\varepsilon\\}$.\n  4. $\\text{FOLLOW}(S)$:\n     - Start symbol has $\\$$: $\\$\\in \\text{FOLLOW}(S)$.\n     - From $R \\to *S$, $\\text{FOLLOW}(S) = \\text{FOLLOW}(R)$.\n  5. $\\text{FOLLOW}(R)$:\n     - In $S \\to FR$, $R$ is at the right end of $S$:\n       $$\\text{FOLLOW}(R) = \\text{FOLLOW}(S) = \\{\\$\\}$$\n- **Parse Table Entries**:\n  1. Entry $M[S, \\mathbf{id}]$:\n     - Since $\\mathbf{id} \\in \\text{FIRST}(FR)$, place:\n       $$M[S, \\mathbf{id}] = \\{S \\to FR\\}$$\n  2. Entry $M[R, \\$]$:\n     - Since $\\varepsilon \\in \\text{FIRST}(R)$ and $\\$ \\in \\text{FOLLOW}(R)$, place $R \\to \\varepsilon$ in $M[R, \\$]$:\n       $$M[R, \\$] = \\{R \\to \\varepsilon\\}$$\n  3. Resulting pair of entries:\n     $$\\{S \\to FR\\} \\quad \\text{and} \\quad \\{R \\to \\varepsilon\\}$$\n\nTherefore, the correct answer is **Option A ({S -> FR} and {R -> \\varepsilon})**.",
         "images": []
       }
@@ -2676,7 +2676,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Compiler Design - Postfix Translation Scheme Execution for Infix Expressions",
+        "concept": "Compiler Design - Grammar",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider the Syntax-Directed Translation scheme:\n    $$S \\to ER$$\n    $$R \\to *E \\; \\{\\text{print}('*');\\} \\; R \\mid \\varepsilon$$\n    $$E \\to F + E \\; \\{\\text{print}('+');\\} \\mid F$$\n    $$F \\to \\mathbf{id} \\; \\{\\text{print}(\\mathbf{id}.val);\\}$$\n- **Input Expression Parsing for '$2 * 3 + 4$'**:\n  1. Start $S \\to ER$.\n  2. First token '2':\n     - $E$ derives $F$, which matches '2'.\n     - Semantic action in $F$ fires:\n       $$\\text{Output: } 2$$\n  3. Next token '*':\n     - $R$ matches $* E \\; \\{\\text{print}('*');\\} \\; R$.\n     - Now parses $E$ for substring '$3 + 4$':\n       - $E \\to F + E \\; \\{\\text{print}('+');\\}$.\n       - $F$ matches '3' $\\implies$ prints $3$.\n       - Matches '+'.\n       - $E \\to F$ matches '4' $\\implies$ prints $4$.\n       - Semantic action in $E$ fires immediately: prints $+$.\n       - Output so far: $2 \\; 3 \\; 4 \\; +$.\n  4. Now the action in $R$ ($\\{\\text{print}('*');\\}$) fires:\n     $$\\text{Output: } 2 \\; 3 \\; 4 \\; + \\; *$$\n  5. $R$ reduces to $\\varepsilon$.\n  6. Final output stream: $2 \\; 3 \\; 4 \\; + \\; *$.\n\nTherefore, the correct answer is **Option D (2 3 4 + *)**.",
         "images": []
       }
@@ -2720,7 +2720,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Compiler Optimization - Loop Invariants, Induction Variables & Code Motion",
+        "concept": "Compiler Design - Code Optimization",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider the nested loop:\n    ```c\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) {\n            if (i % 2) {\n                x += (4 * j + 5 * i);\n                y += (7 + 4 * j);\n            }\n        }\n    }\n    ```\n- **Evaluating Optimization Assertions**:\n  1. The condition `if (i % 2)` depends strictly on the outer loop variable `i`.\n  2. It can be hoisted out of the inner loop (loop unswitching / loop-invariant code motion).\n  3. Within the inner loop over `j`, the term `4 * j` is a linear induction variable that can be replaced by strength reduction (`t = t + 4`).\n  4. The expressions inside can be transformed using loop fission and induction variable elimination.\n  5. The false statement among options corresponds to **Option D**.\n\nTherefore, the correct answer is **Option D**.",
         "images": []
       }
@@ -2765,7 +2765,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Process Synchronization - Hardware Test/Fetch-and-Set Primitives",
+        "concept": "Operating System - Process Synchronization",
         "markdown": "- **Analysis of the `fetch-and-set` Semaphore Implementation:**\n  - Given implementation:\n    ```c\n    void P (binary_semaphore *s) { \n        unsigned y; \n        unsigned *x = &(s->value); \n        do { \n            fetch-and-set x, y; \n        } while (y); \n    }\n\n    void V (binary_semaphore *s) { \n        s->value = 0; \n    }\n    ```\n  - `fetch-and-set x, y` atomically reads the current value of $*x$ into $y$ and sets $*x = 1$.\n  - When $s->value == 0$, the first process calling $P$ executes `fetch-and-set`: $y$ receives $0$ and $*x$ becomes $1$. The `while(y)` loop exits, entering the critical section.\n  - When a second process calls $P$ while the first is in the critical section, it finds $*x == 1$, sets $y = 1$, and enters the spin loop `while (y)`.\n\n- **Impact of Disabling Context Switching:**\n  - In a uniprocessor system, if interrupts/context switching are disabled while executing inside $P$:\n    - The spinning process executes the `do ... while (y)` busy-wait loop continuously without yielding the CPU.\n    - Because context switching is disabled, the process currently in the critical section can never be scheduled to execute $V(s)$ and reset $s->value = 0$.\n    - As a result, the spinning process will spin forever in an unbreakable livelock/deadlock.\n    - Therefore, the implementation **may not work if context switching is disabled in $P$**.\n\nTherefore, the correct answer is **Option A (The implementation may not work if context switching is disabled in $P$)**.",
         "images": []
       }
@@ -2811,7 +2811,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Virtual Memory - Translation Lookaside Buffer (TLB) Tag Sizing",
+        "concept": "Operating System - Virtual Memory",
         "markdown": "- **Givens & Memory Architecture:**\n  - Virtual address space $= 32\\text{ bits}$\n  - Page size $= 4\\text{ KB} = 2^{12}\\text{ bytes} \\implies$ Page offset $= 12\\text{ bits}$\n  - Virtual Page Number (VPN) size:\n    $$\\text{VPN} = 32 - 12 = 20\\text{ bits}$$\n  - TLB capacity $= 128\\text{ entries}$, organized as $4$-way set associative.\n\n- **TLB Set Index & Tag Size Calculation:**\n  - Number of sets in the TLB:\n    $$\\text{Number of Sets} = \\frac{\\text{Total Entries}}{\\text{Associativity}} = \\frac{128}{4} = 32 = 2^5\\text{ sets}$$\n  - Bits required for the TLB set index $= 5\\text{ bits}$.\n  - The $20$-bit Virtual Page Number (VPN) is split into:\n    $$\\text{VPN} = \\text{TLB Tag} + \\text{TLB Set Index}$$\n    $$\\text{TLB Tag Size} = \\text{VPN} - \\text{TLB Set Index} = 20 - 5 = 15\\text{ bits}$$\n\n- **Conclusion:** The minimum size of the TLB tag is $15\\text{ bits}$.\n\nTherefore, the correct answer is **Option C ($15\\text{ bits}$)**.",
         "images": []
       }
@@ -2857,7 +2857,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Operating Systems - Purpose of Virtual Memory & Multi-User Protection",
+        "concept": "Operating System - Virtual Memory",
         "markdown": "- **Architectural Purpose of Virtual Memory:**\n  - Virtual memory provides two fundamental operating system facilities:\n    1. A transparent, contiguous address space that can exceed physical DRAM.\n    2. **Process isolation and memory protection:** Every process is granted its own private virtual address space mapping. A process cannot access or corrupt the physical frames of other concurrent processes or kernel space without explicit permission.\n  - If the OS eliminates virtual memory entirely (i.e., addresses issued by CPU are raw physical addresses), every process operates directly within the same physical address space.\n\n- **Consequences of Eliminating Virtual Memory:**\n  - Without hardware page table address translation and page-level permission bits (read/write/execute/user/supervisor), the OS cannot isolate processes from each other or prevent malicious/buggy processes from reading or overwriting other users' private memory.\n  - Providing multi-user support requires strict security boundaries between distinct users' processes. Without virtual address translation and memory protection hardware, **efficient implementation of multi-user support is no longer possible**.\n\n- **Distractor Analysis:**\n  - **Option B:** Cache organization relies on physical or virtual tags and is independent of eliminating virtual memory.\n  - **Option C:** Base/limit protection registers would still be mandatory even for simple relocation.\n  - **Option D:** CPU scheduling (SRTF, Round Robin, etc.) is orthogonal to address translation.\n\nTherefore, the correct answer is **Option A (Efficient implementation of multi-user support is no longer possible)**.",
         "images": []
       }
@@ -2902,7 +2902,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CPU Scheduling - Longest Remaining Time First (LRTF)",
+        "concept": "Operating System - Process Scheduling",
         "markdown": "- **Givens & Scheduling Rules:**\n  - Three processes arriving at $t = 0$:\n    - $P_0$: burst $= 2$\n    - $P_1$: burst $= 4$\n    - $P_2$: burst $= 8$\n  - Algorithm: Longest Remaining Time First (LRTF) preemptive scheduling.\n  - Tie-breaking: Lower process ID has higher priority.\n\n- **Step-by-Step Execution Schedule:**\n  - **$t = 0$ to $4$:** $P_2$ has the strictly longest remaining time ($8$). $P_2$ executes for $4$ units.\n    - At $t = 4$, remaining times: $P_0: 2, P_1: 4, P_2: 4$.\n  - **$t = 4$ to $5$:** Tie between $P_1$ and $P_2$ (both $4$). Lower ID is $P_1$. $P_1$ runs for $1$ unit.\n    - At $t = 5$, remaining: $P_0: 2, P_1: 3, P_2: 4$.\n  - **$t = 5$ to $6$:** $P_2$ is maximum ($4$). $P_2$ runs for $1$ unit.\n    - At $t = 6$, remaining: $P_0: 2, P_1: 3, P_2: 3$.\n  - **$t = 6$ to $7$:** Tie between $P_1$ and $P_2$ (both $3$). Lower ID $P_1$ runs for $1$ unit.\n    - At $t = 7$, remaining: $P_0: 2, P_1: 2, P_2: 3$.\n  - **$t = 7$ to $8$:** $P_2$ is maximum ($3$). $P_2$ runs for $1$ unit.\n    - At $t = 8$, remaining: $P_0: 2, P_1: 2, P_2: 2$.\n  - **$t = 8$ to $11$:** Three-way tie at burst $2$:\n    - $t = 8$ to $9$: $P_0$ runs (burst becomes $1$).\n    - $t = 9$ to $10$: $P_1$ runs (burst becomes $1$).\n    - $t = 10$ to $11$: $P_2$ runs (burst becomes $1$).\n    - At $t = 11$, remaining: $P_0: 1, P_1: 1, P_2: 1$.\n  - **$t = 11$ to $14$:** Three-way tie at burst $1$:\n    - $t = 11$ to $12$: $P_0$ runs and **completes at $t = 12$**.\n    - $t = 12$ to $13$: $P_1$ runs and **completes at $t = 13$**.\n    - $t = 13$ to $14$: $P_2$ runs and **completes at $t = 14$**.\n\n- **Turnaround Time (TAT) Calculation:**\n  - Since arrival time is $0$ for all processes: $TAT_i = \\text{Completion Time}_i - 0$.\n    - $TAT(P_0) = 12$\n    - $TAT(P_1) = 13$\n    - $TAT(P_2) = 14$\n  - Average Turnaround Time:\n    $$\\text{Avg TAT} = \\frac{12 + 13 + 14}{3} = \\frac{39}{3} = 13\\text{ units}$$\n\nTherefore, the correct answer is **Option A ($13$ units)**.",
         "images": []
       }
@@ -2947,7 +2947,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CPU Scheduling - Shortest Remaining Compute Time with I/O Overlap",
+        "concept": "Operating System - Process Scheduling",
         "markdown": "- **Givens & Process Burst Profiles:**\n  - Three processes arriving at $t = 0$:\n    - $P_1$ (total $10$): First $20\\%$ I/O ($2$), next $70\\%$ CPU ($7$), last $10\\%$ I/O ($1$).\n    - $P_2$ (total $20$): First $20\\%$ I/O ($4$), next $70\\%$ CPU ($14$), last $10\\%$ I/O ($2$).\n    - $P_3$ (total $30$): First $20\\%$ I/O ($6$), next $70\\%$ CPU ($21$), last $10\\%$ I/O ($3$).\n  - I/O operations of distinct processes overlap fully.\n  - Scheduling: Shortest Remaining Compute Time First (SRCTF).\n\n- **Execution Trace:**\n  - **$t = 0$ to $2$:** All processes begin initial I/O at $t = 0$.\n    - $P_1$ I/O completes at $t = 2$.\n    - $P_2$ I/O completes at $t = 4$.\n    - $P_3$ I/O completes at $t = 6$.\n    - **During $[0, 2]$, no process is ready for CPU $\\implies$ CPU is IDLE ($2$ units)**.\n  - **$t = 2$ to $9$:** $P_1$ executes its $7$ units of CPU. At $t = 9$, $P_1$ enters final I/O ($9$ to $10$).\n    - (While $P_1$ ran, $P_2$ became ready at $t = 4$ with compute burst $14$, and $P_3$ became ready at $t = 6$ with compute burst $21$).\n  - **$t = 9$ to $23$:** $P_2$ has shorter remaining CPU ($14 < 21$) and executes for $14$ units.\n    - At $t = 23$, $P_2$ enters final I/O ($23$ to $25$).\n  - **$t = 23$ to $44$:** $P_3$ executes its $21$ units of CPU.\n    - At $t = 44$, $P_3$ enters final I/O ($44$ to $47$).\n  - **$t = 44$ to $47$:** All CPU bursts are complete. $P_3$ finishes final I/O at $t = 47$.\n    - **During $[44, 47]$, CPU is IDLE ($3$ units)**.\n\n- **CPU Idle Percentage:**\n  - Total elapsed time until all processes finish $= 47$ units.\n  - Total CPU idle duration $= 2 + 3 = 5$ units.\n  - Percentage CPU idle:\n    $$\\text{CPU Idle \\%} = \\frac{5}{47} \\times 100\\% \\approx 10.638\\% \\approx 10.6\\%$$\n\nTherefore, the correct answer is **Option B ($10.6\\%$)**.",
         "images": []
       }
@@ -2992,7 +2992,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Deadlock Detection & Avoidance - Safe State Necessary Conditions",
+        "concept": "Operating System - Resource Allocation",
         "markdown": "- **System Snapshot & Parameters:**\n  - $n$ processes running on a single resource type $R$.\n  - Process $i$ currently holds $x_i$ instances ($1 \\le i \\le n$).\n  - Currently **all instances of $R$ are occupied** $\\implies \\text{Available} = 0$.\n  - Additional requests: process $i$ has requested $y_i$ additional instances.\n  - Exactly two processes $p$ and $q$ have $y_p = y_q = 0$ (they need no additional instances).\n\n- **Analytical Derivation of the Necessary Condition:**\n  - Since $\\text{Available} = 0$, no process with $y_k > 0$ can make progress initially.\n  - Only processes $p$ and $q$ can finish because their outstanding request is $0$.\n  - When $p$ and $q$ finish, they release all their held resources, increasing available instances from $0$ to:\n    $$\\text{Available}_{\\text{new}} = x_p + x_q$$\n  - To prevent deadlock, at least **one** of the remaining processes $k \\ne p, q$ must be able to have its request satisfied by the newly available instances:\n    $$x_p + x_q \\ge y_k \\quad \\text{for at least one } k \\ne p, q$$\n  - In terms of the smallest request among the waiting processes:\n    $$x_p + x_q \\ge \\min_{k \\ne p, q} y_k$$\n  - If $x_p + x_q < \\min_{k \\ne p, q} y_k$, then even after both $p$ and $q$ release all their resources, no process can satisfy its request, resulting in guaranteed deadlock.\n  - Hence, $x_p + x_q \\ge \\min_{k \\ne p, q} y_k$ is a necessary condition.\n\nTherefore, the correct answer is **Option B ($x_p + x_q \\ge \\min_{k \\ne p, q} y_k$)**.",
         "images": []
       }
@@ -3037,7 +3037,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "SQL - Ranking Queries & Self-Join Semantics",
+        "concept": "Databases - SQL",
         "markdown": "- **Given Relation & Queries:**\n  - Schema: `account(customer, balance)`, where `customer` is primary key and there are no nulls.\n  - Specification: Decreasing balance rank. Highest balance gets rank 1. Ties get equal rank and subsequent ranks are skipped (e.g., if two share rank 1, next rank is 3).\n  - `Query 1`:\n    ```sql\n    select A.customer, count(B.customer)\n    from account A, account B\n    where A.balance <= B.balance\n    group by A.customer\n    ```\n  - `Query 2`:\n    ```sql\n    select A.customer, 1 + count(B.customer)\n    from account A, account B\n    where A.balance < B.balance\n    group by A.customer\n    ```\n\n- **Analysis of Correctness:**\n  - **Query 1 Behavior with Ties:**\n    - Suppose two customers $C_1, C_2$ tie for top balance $100$.\n    - For $C_1$, tuples in $B$ with $B.balance \\ge 100$ are $C_1$ and $C_2$, so `count(B.customer)` evaluates to $2$.\n    - Both get rank $2$ instead of rank $1$! Hence, Query 1 fails the specification whenever ties exist.\n  - **Query 2 Behavior with Top Customer:**\n    - For the top customer, no tuple in $B$ has $B.balance > A.balance$.\n    - Because Query 2 uses an inner join, the top customer has **zero matching tuples** in the join and is completely omitted from the output table!\n    - Hence, Query 2 fails the specification.\n  - Thus, **Neither Query 1 nor Query 2 is a correct implementation** $\\implies$ **Statement 4 is TRUE**.\n\n- **Comparison of Result Sets Across Databases:**\n  - If the `account` table is empty, both Query 1 and Query 2 produce the empty set (identical output).\n  - When the table is populated, they produce different row sets (Query 2 omits top balances).\n  - Thus, Query 1 produces the same row set as Query 2 for some (empty) but not all databases $\\implies$ **Statement 1 is TRUE**.\n\n- **Conclusion:** Statements 1 and 4 are correct.\n\nTherefore, the correct answer is **Option C ($1$ and $4$)**.",
         "images": []
       }
@@ -3082,7 +3082,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "SQL - Set Semantics, Duplicate Retention & Correlated Subqueries",
+        "concept": "Databases - SQL",
         "markdown": "- **Given Schemas:**\n  - `enrolled(student, course)` with primary key `(student, course)`. A single student can be enrolled in multiple courses.\n  - `paid(student, amount)` with primary key `student`. Each student appears at most once in `paid`.\n\n- **Analysis of Queries:**\n  - `Query 1`:\n    ```sql\n    select student from enrolled where student in (select student from paid)\n    ```\n    If a student is enrolled in $k$ courses, this query selects `student` from `enrolled`, outputting the student name $k$ times (preserves duplicates).\n  - `Query 2`:\n    ```sql\n    select student from paid where student in (select student from enrolled)\n    ```\n    Selects from `paid`. Since `student` is the primary key of `paid`, each student is returned **at most once**.\n  - `Query 3`:\n    ```sql\n    select E.student from enrolled E, paid P where E.student = P.student\n    ```\n    Outputs a row for each enrolled course of that student ($k$ times).\n  - `Query 4`:\n    ```sql\n    select student from paid where exists \n        (select * from enrolled where enrolled.student = paid.student)\n    ```\n    Selects from `paid`. Since `student` is the primary key of `paid`, each qualifying student is returned **at most once**.\n\n- **Comparison:**\n  - Both Query 2 and Query 4 project from `paid` and filter by the existence of a corresponding row in `enrolled`. Hence, **Query 2 and Query 4 return identical row sets for all databases**.\n  - Whenever a student is enrolled in more than one course, Query 1 produces duplicate student names while Query 2 does not. Thus, there exist databases for which Query 1 and Query 2 return different row sets.\n\nTherefore, the correct answer is **Option B (Query 2 and Query 4 return identical row sets for all databases but there exist databases for which Query 1 and Query 2 return different row sets)**.",
         "images": []
       }
@@ -3127,7 +3127,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Database Query Optimization - Pushing Selection Past Join",
+        "concept": "Databases - SQL",
         "markdown": "- **Query Optimization Plan Comparison:**\n  - Schema: `enrolled(student, course)` with PK `(student, course)`; `paid(student, amount)` with PK `student`.\n  - Query: *\"List all courses taken by students who have paid more than $x$\"*.\n  - **Plan 1 (Push Selection Down):**\n    First applies selection $\\sigma_{\\text{amount} > x}(\\text{paid})$ directly to relation `paid`, then joins the resulting subset with `enrolled`, and finally projects `course`.\n  - **Plan 2 (Late Selection):**\n    Joins full `enrolled` and full `paid` first, then applies $\\sigma_{\\text{amount} > x}$ on the joined result, and projects `course`.\n\n- **Cost Analysis for $x = 5000$:**\n  - Given amounts in the database are $6000, 7000, 8000, 9000, 10000$ (all $> 5000$).\n  - For $x = 5000$, $100\\%$ of the tuples satisfy the condition.\n  - In Plan 1, the selection condition is evaluated on the relation `paid`, which has $|\\text{paid}|$ tuples.\n  - In Plan 2, the join is computed first, producing $|\\text{enrolled}|$ tuples (where each student can have multiple enrolled courses, so $|\\text{enrolled}| \\ge |\\text{paid}|$). The condition is then evaluated on every tuple of the joined intermediate table.\n  - Because each tuple check requires CPU comparison time ($10\\ \\mu\\text{s}$), Plan 1 performs strictly fewer condition checks ($|\\text{paid}| \\le |\\text{enrolled}|$) and does not store unreduced intermediate join tuples.\n  - Consequently, Plan 1 executes faster than Plan 2 for all databases when $x = 5000$.\n\nTherefore, the correct answer is **Option C (For $x = 5000,$ Plan 1 executes faster than Plan 2 for all databases)**.",
         "images": [
           "/Gate_QA/question-images/8018194024661972437.webp"
@@ -3174,7 +3174,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Relational Databases - Functional Dependency Attribute Closures",
+        "concept": "Databases - Database Normalization",
         "markdown": "- **Given Functional Dependencies:**\n  - $f_1: AB \\to CD$\n  - $f_2: AF \\to D$\n  - $f_3: DE \\to F$\n  - $f_4: C \\to G$\n  - $f_5: F \\to E$\n  - $f_6: G \\to A$\n\n- **Evaluating Each Option's Attribute Closure:**\n  - **Option A: $\\{CF\\}^+$:**\n    - Initial: $\\{C, F\\}$\n    - $f_5 (F \\to E) \\implies \\{C, E, F\\}$\n    - $f_4 (C \\to G) \\implies \\{C, E, F, G\\}$\n    - $f_6 (G \\to A) \\implies \\{A, C, E, F, G\\}$\n    - $f_2 (AF \\to D) \\implies \\{A, C, D, E, F, G\\} = \\{ACDEFG\\}$. (True)\n  - **Option B: $\\{BG\\}^+$:**\n    - Initial: $\\{B, G\\}$\n    - $f_6 (G \\to A) \\implies \\{A, B, G\\}$\n    - $f_1 (AB \\to CD) \\implies \\{A, B, C, D, G\\} = \\{ABCDG\\}$. (True)\n  - **Option C: $\\{AF\\}^+$:**\n    - Initial: $\\{A, F\\}$\n    - $f_5 (F \\to E) \\implies \\{A, E, F\\}$\n    - $f_2 (AF \\to D) \\implies \\{A, D, E, F\\}$\n    - $f_3 (DE \\to F)$ adds no new attributes.\n    - Can we derive $C$ or $G$? $C$ is only produced by $AB \\to CD$ (requires $B$), and $G$ is only produced by $C \\to G$ (requires $C$). Neither $B$ nor $C$ can ever be derived.\n    - Thus, $\\{AF\\}^+ = \\{ADEF\\} \\ne \\{ACDEFG\\}$. Hence, Option C is **FALSE**.\n  - **Option D: $\\{AB\\}^+$:**\n    - Initial: $\\{A, B\\}$\n    - $f_1 (AB \\to CD) \\implies \\{A, B, C, D\\}$\n    - $f_4 (C \\to G) \\implies \\{A, B, C, D, G\\} = \\{ABCDG\\}$. (True)\n\n- **Conclusion:** Option C is false.\n\nTherefore, the correct answer is **Option C ($\\{AF\\}^+ = \\{ACDEFG\\}$)**.",
         "images": []
       }
@@ -3219,7 +3219,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Graph theory - isolated vertices in an intersection graph",
+        "concept": "Discrete Mathematics - Graph Theory",
         "markdown": "### Characterize degree zero\nA vertex represents a subset $A$ of an $n$-element set. If $|A|<2$, then $A$ cannot intersect any subset in exactly two elements, so it has degree zero. This gives the empty set and all $n$ singleton sets: $n+1$ vertices.\n\nIf $|A|\\ge2$, choose a two-element subset $B\\subseteq A$. When $B\\ne A$, their intersection has size two. When $A=B$, choose a distinct superset of $B$; this is possible because $n\\ge6$. Thus every such vertex has a neighbor.\n\n### Final answer\nThere are $n+1$ degree-zero vertices: **Option C**.",
         "images": []
       }
@@ -3264,7 +3264,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Graph theory - maximizing an intersection degree",
+        "concept": "Discrete Mathematics - Graph Theory",
         "markdown": "### Count neighbors by the size of the fixed set\nFor a fixed vertex $A$ with $|A|=k$, a neighbor must choose exactly two elements from $A$ and any subset of the $n-k$ elements outside $A$. Hence\n$$d(A)=\\binom{k}{2}2^{n-k}.$$\nFor $k\\ge2$, the ratio of consecutive values is\n$$\\frac{d_{k+1}}{d_k}=\\frac{k+1}{2(k-1)}.$$\nIt is greater than $1$ for $k=2$, equals $1$ for $k=3$, and is less than $1$ for $k>3$. The maximum is attained at $k=3$ and $k=4$ and equals $3\\cdot2^{n-3}$.\n\n### Final answer\n**Option C: $3\\cdot2^{n-3}$.**",
         "images": []
       }
@@ -3309,7 +3309,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Graph theory - connected components of an intersection graph",
+        "concept": "Discrete Mathematics - Graph Theory",
         "markdown": "### Identify the isolated vertices\nThe empty set and each of the $n$ singleton sets have no neighbor, since their intersections cannot have size two. They therefore form $n+1$ separate components.\n\nAll subsets of size at least two lie in one component. Every such subset is adjacent to any two-element subset it contains (unless it is that two-element set itself). Any two distinct two-element sets $P,Q$ are connected through $P\\cup Q$: this union has size three or four, and its intersection with each of $P,Q$ has size two. Thus the entire size-at-least-two family is connected.\n\nThe component count is $(n+1)+1=n+2$.\n\n### Final answer\n**Option B ($n+2$).**",
         "images": []
       }
@@ -3354,7 +3354,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Cache Memory Hit Latency in Set-Associative Caches",
+        "concept": "CO & Architecture - Cache Memory",
         "markdown": "### 1. Concept / Subtopic\n**Cache Hardware Organization - Hit Latency Calculation**: Determining the hit latency of a 2-way set-associative cache considering parallel tag comparison and way-selection multiplexing delay.\n\n---\n\n### 2. Given Parameters\n* **Cache Capacity**: $32\\text{ KB} = 2^{15}\\text{ bytes}$.\n* **Block Size**: $32\\text{ bytes} = 2^5\\text{ bytes}$.\n* **Associativity**: $2$-way set-associative.\n* **Physical Address Width**: $32\\text{ bits}$.\n* **Hardware Component Delays**:\n  * $2\\text{-to-}1$ Multiplexer latency: $T_{\\text{MUX}} = 0.6\\text{ ns}$.\n  * $k$-bit comparator latency: $T_{\\text{comp}}(k) = \\frac{k}{10}\\text{ ns}$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Address Bit Partitioning for 2-Way Set-Associative Cache**:\n   * Block offset bits ($w$):\n     $$w = \\log_2(\\text{Block Size}) = \\log_2(32) = 5\\text{ bits}$$\n   * Number of lines:\n     $$\\text{Lines} = \\frac{\\text{Cache Capacity}}{\\text{Block Size}} = \\frac{32 \\times 1024}{32} = 1024\\text{ lines}$$\n   * Number of sets ($S$):\n     $$S = \\frac{\\text{Lines}}{\\text{Set Size}} = \\frac{1024}{2} = 512\\text{ sets} = 2^9\\text{ sets}$$\n   * Set index bits ($s$):\n     $$s = \\log_2(512) = 9\\text{ bits}$$\n   * Tag bits ($k_1$):\n     $$k_1 = \\text{Address Bits} - (s + w) = 32 - (9 + 5) = 32 - 14 = 18\\text{ bits}$$\n2. **Comparator Delay**:\n   * Each comparator compares $18$ tag bits:\n     $$T_{\\text{comp}} = \\frac{k_1}{10} = \\frac{18}{10} = 1.8\\text{ ns}$$\n3. **Critical Path for Set-Associative Hit Latency ($h_1$)**:\n   * In a set-associative cache, data from both ways in the selected set are read concurrently while the two tag comparators evaluate in parallel.\n   * The comparator output decides which way matched and drives the select line of the 2-to-1 data multiplexer.\n   * Therefore, the MUX delay lies directly on the critical path after tag comparison:\n     $$h_1 = T_{\\text{comp}} + T_{\\text{MUX}} = 1.8\\text{ ns} + 0.6\\text{ ns} = 2.4\\text{ ns}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($2.4\\text{ ns}$)**: **Correct**. Evaluates to $1.8\\text{ ns} (\\text{tag comparison}) + 0.6\\text{ ns} (\\text{way MUX}) = 2.4\\text{ ns}$.\n* **Option B ($2.3\\text{ ns}$)**: Incorrect. Miscalculates tag bit width or comparator fraction.\n* **Option C ($1.8\\text{ ns}$)**: Incorrect. Accounts only for the tag comparator, ignoring the necessary 2-to-1 way-selection multiplexer.\n* **Option D ($1.7\\text{ ns}$)**: Incorrect. This is the direct-mapped comparator latency $h_2$.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (A) 2.4 ns**",
         "images": []
       }
@@ -3399,7 +3399,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Direct Mapped Cache Hit Latency Analysis",
+        "concept": "CO & Architecture - Cache Memory",
         "markdown": "### 1. Concept / Subtopic\n**Cache Hardware Organization - Direct Mapped Hit Latency**: Computing the hit latency of a direct-mapped cache where data is retrieved without way-selection multiplexing.\n\n---\n\n### 2. Given Parameters\n* **Cache Capacity**: $32\\text{ KB} = 2^{15}\\text{ bytes}$.\n* **Block Size**: $32\\text{ bytes} = 2^5\\text{ bytes}$.\n* **Mapping**: Direct mapped ($1$-way associative).\n* **Physical Address Width**: $32\\text{ bits}$.\n* **Hardware Component Delays**:\n  * $k$-bit comparator latency: $T_{\\text{comp}}(k) = \\frac{k}{10}\\text{ ns}$.\n  * $2\\text{-to-}1$ Multiplexer latency: $T_{\\text{MUX}} = 0.6\\text{ ns}$.\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Address Bit Partitioning for Direct-Mapped Cache**:\n   * Block offset bits ($w$):\n     $$w = \\log_2(32) = 5\\text{ bits}$$\n   * Number of lines (sets):\n     $$\\text{Lines} = \\frac{32\\text{ KB}}{32\\text{ bytes}} = 1024\\text{ lines} = 2^{10}$$\n   * Line index bits ($s$):\n     $$s = \\log_2(1024) = 10\\text{ bits}$$\n   * Tag bits ($k_2$):\n     $$k_2 = 32 - (s + w) = 32 - (10 + 5) = 32 - 15 = 17\\text{ bits}$$\n2. **Direct-Mapped Hit Latency ($h_2$)**:\n   * In a direct-mapped cache, each memory address maps to exactly one specific line in the cache.\n   * Data is accessed directly from that single line without requiring a way-selection multiplexer.\n   * The validity of the data is confirmed as soon as the single $17$-bit comparator verifies the tag match:\n     $$h_2 = T_{\\text{comp}}(17) = \\frac{k_2}{10} = \\frac{17}{10} = 1.7\\text{ ns}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($2.4\\text{ ns}$)**: Incorrect. This is the 2-way set-associative hit latency $h_1$.\n* **Option B ($2.3\\text{ ns}$)**: Incorrect. Miscalculates tag width as 17 and erroneously adds MUX delay ($1.7 + 0.6 = 2.3\\text{ ns}$), but direct-mapped caches do not use a way MUX.\n* **Option C ($1.8\\text{ ns}$)**: Incorrect. Uses 18 tag bits instead of 17.\n* **Option D ($1.7\\text{ ns}$)**: **Correct**. Exactly $1.7\\text{ ns}$ from the single 17-bit comparator.\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (D) 1.7 ns**",
         "images": []
       }
@@ -3444,7 +3444,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Data Structures - 3-ary Max-Heap Array Representation and Validity",
+        "concept": "Programming and DS - Data Structures",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - In a 3-ary max-heap stored in a 0-indexed array $a[0 \\dots n-1]$:\n    - Root is at $a[0]$.\n    - Children of node $i$ are at indices:\n      $$\\text{children}(i) = \\{3i + 1, \\ 3i + 2, \\ 3i + 3\\}$$\n    - Parent of node $j$ is at index:\n      $$\\text{parent}(j) = \\left\\lfloor \\frac{j - 1}{3} \\right\\rfloor$$\n    - The max-heap property requires: $a[\\text{parent}(j)] \\ge a[j]$ for all $j > 0$.\n- **Validation of Option D: $[9, 5, 6, 8, 3, 1]$**:\n  1. Node 0 ($a[0] = 9$):\n     - Children are at indices $1, 2, 3$: values $a[1] = 5, a[2] = 6, a[3] = 8$.\n     - $9 \\ge 5, 9 \\ge 6, 9 \\ge 8$ (Heap property holds!).\n  2. Node 1 ($a[1] = 5$):\n     - Children are at indices $3(1) + 1 = 4$ and $3(1) + 2 = 5$: values $a[4] = 3, a[5] = 1$.\n     - $5 \\ge 3, 5 \\ge 1$ (Heap property holds!).\n  3. All parent-child relationships satisfy the max-heap invariant.\n- **Why Other Options Fail**:\n  - In Option B ($[9, 6, 3, 1, 8, 5]$): node $a[1] = 6$ has child $a[4] = 8$, but $6 < 8$ (violates max-heap!).\n  - In Option C ($[9, 3, 6, 8, 5, 1]$): node $a[1] = 3$ has children $a[4] = 5$, but $3 < 5$ (violates max-heap!).\n\nTherefore, the correct answer is **Option D (9, 5, 6, 8, 3, 1)**.",
         "images": []
       }
@@ -3489,7 +3489,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Data Structures - 3-ary Max-Heap Sequential Insertions Trace",
+        "concept": "Programming and DS - Data Structures",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Inserting an element $x$ into a 3-ary heap of size $n$ places $x$ at index $n$ and bubbles it up by repeatedly swapping with its parent at $\\lfloor (j - 1)/3 \\rfloor$ while $x > \\text{parent}$.\n- **Step-by-Step Insertion into Initial Heap $[9, 5, 6, 8, 3, 1]$**:\n  1. **Insert 7**:\n     - Place 7 at index 6: array becomes $[9, 5, 6, 8, 3, 1, 7]$.\n     - Parent of index 6 is $\\lfloor (6 - 1)/3 \\rfloor = 1$ ($a[1] = 5$).\n     - Since $7 > 5$, swap $a[6]$ and $a[1]$:\n       $$[9, 7, 6, 8, 3, 1, 5]$$\n     - Parent of index 1 is $0$ ($a[0] = 9$). Since $7 \\le 9$, stop.\n  2. **Insert 2**:\n     - Place 2 at index 7: array becomes $[9, 7, 6, 8, 3, 1, 5, 2]$.\n     - Parent of index 7 is $\\lfloor (7 - 1)/3 \\rfloor = 2$ ($a[2] = 6$).\n     - Since $2 \\le 6$, stop.\n  3. **Insert 10**:\n     - Place 10 at index 8: array becomes $[9, 7, 6, 8, 3, 1, 5, 2, 10]$.\n     - Parent of index 8 is $\\lfloor (8 - 1)/3 \\rfloor = 2$ ($a[2] = 6$).\n     - Since $10 > 6$, swap $a[8]$ and $a[2]$:\n       $$[9, 7, 10, 8, 3, 1, 5, 2, 6]$$\n     - Now 10 is at index 2; its parent is index $0$ ($a[0] = 9$).\n     - Since $10 > 9$, swap $a[2]$ and $a[0]$:\n       $$[10, 7, 9, 8, 3, 1, 5, 2, 6]$$\n  4. **Insert 4**:\n     - Place 4 at index 9: array becomes $[10, 7, 9, 8, 3, 1, 5, 2, 6, 4]$.\n     - Parent of index 9 is $\\lfloor (9 - 1)/3 \\rfloor = 2$ ($a[2] = 9$).\n     - Since $4 \\le 9$, stop.\n- **Final Resulting Heap Sequence**:\n  $$10, 7, 9, 8, 3, 1, 5, 2, 6, 4$$\n\nTherefore, the correct answer is **Option A (10, 7, 9, 8, 3, 1, 5, 2, 6, 4)**.",
         "images": []
       }
@@ -3534,7 +3534,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Process Synchronization - Barrier Synchronization Flaws",
+        "concept": "Operating System - Process Synchronization",
         "markdown": "- **Given Barrier Implementation:**\n  ```c\n  void barrier (void) {\n     1: P(S);\n     2: process_arrived++;\n     3: V(S);\n     4: while (process_arrived != 3);\n     5: P(S);\n     6: process_left++;\n     7: if (process_left == 3) {\n     8:     process_arrived = 0;\n     9:     process_left = 0;\n    10: }\n    11: V(S);\n  }\n  ```\n\n- **Flaw Analysis: Successive Barrier Invocations:**\n  - Suppose 3 processes ($P_1, P_2, P_3$) enter the barrier for the first time.\n  - All 3 execute lines 1-3, setting `process_arrived = 3`. All 3 pass the `while (process_arrived != 3)` spin barrier.\n  - Process $P_1$ enters lines 5-11, increments `process_left = 1`, releases semaphore $S$, and exits `barrier()`.\n  - Suppose $P_1$ immediately invokes `barrier()` a second time while $P_2$ and $P_3$ are still completing the first barrier.\n  - $P_1$ acquires $S$ in its second invocation (line 1), executes line 2 (`process_arrived++`), incrementing `process_arrived` from $3$ to $4$, and executes `V(S)`.\n  - Now, if $P_2$ or $P_3$ is still waiting at line 4 or re-checking `process_arrived != 3`, the condition is permanently true ($4 \\ne 3$).\n  - Furthermore, `process_arrived` is never reset to $0$, causing remaining processes to spin forever in the while loop $\\implies$ **Deadlock / Livelock**.\n\nTherefore, the correct answer is **Option B (The barrier implementation may lead to a deadlock if two barrier invocations are used in immediate succession)**.",
         "images": []
       }
@@ -3579,7 +3579,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Process Synchronization - Reusable Barrier Rectification",
+        "concept": "Operating System - Process Synchronization",
         "markdown": "- **Diagnosing the Barrier Reuse Race Condition:**\n  - As established in the preceding question, the barrier flaw arises because a fast process exiting barrier $k$ can enter barrier $k+1$ and increment `process_arrived` before the slower processes have exited barrier $k$ and before the reset `process_arrived = 0` has taken place.\n  - If a process increments `process_arrived` prematurely, `process_arrived` exceeds $3$, permanently deadlocking other processes waiting for `process_arrived == 3`.\n\n- **Rectification Strategy:**\n  - To make the barrier safely reusable across consecutive phases, no process entering a new barrier invocation may be permitted to increment `process_arrived` until all processes from the previous phase have completely finished and reset `process_arrived` back to $0$.\n  - Therefore, at the beginning of the barrier, the first process entering must wait until `process_arrived` becomes $0$ before proceeding to execute $P(S)$ and register its arrival.\n\nTherefore, the correct answer is **Option B (At the beginning of the barrier the first process to enter the barrier waits until process_arrived becomes zero before proceeding to execute $P(S)$)**.",
         "images": []
       }
@@ -3624,7 +3624,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Direct Mapped Cache Misses in Nested Array Loops",
+        "concept": "CO & Architecture - Cache Memory",
         "markdown": "### 1. Concept / Subtopic\n**Memory Hierarchy - Spatial Locality & Row-Major Array Traversal**: Analyzing the exact number of cache misses incurred by sequential nested-loop traversals over a 2D array in a direct-mapped cache.\n\n---\n\n### 2. Given Parameters\n* **Cache Capacity**: $32\\text{ KB} = 32,768\\text{ bytes}$.\n* **Block Size (Line Size)**: $128\\text{ bytes}$.\n* **Number of Cache Lines**:\n  $$\\text{Lines} = \\frac{32\\text{ KB}}{128\\text{ bytes}} = \\frac{32,768}{128} = 256\\text{ lines}$$\n* **Array Dimensions**: $A[512][512]$ storing $8$-byte elements.\n* **Total Array Size**:\n  $$\\text{Total Size} = 512 \\times 512 \\times 8\\text{ bytes} = 262,144 \\times 8 = 2,097,152\\text{ bytes} = 2\\text{ MB}$$\n* **Row Size in Memory**:\n  $$\\text{Row Size} = 512 \\times 8\\text{ bytes} = 4096\\text{ bytes} = 4\\text{ KB}$$\n* **Program P1 Access Pattern**:\n  $$\\text{for } i = 0 \\text{ to } 511: \\quad \\text{for } j = 0 \\text{ to } 511: \\quad x += A[i][j]$$\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Access Pattern Analysis for P1**:\n   * In C, multidimensional arrays are allocated in **row-major order** (contiguous in memory).\n   * Inner loop iterates over index $j$, accessing elements sequentially:\n     $$A[i][0], \\; A[i][1], \\; A[i][2], \\; \\dots, \\; A[i][511]$$\n   * This provides optimal **spatial locality**.\n2. **Elements per Cache Block**:\n   * Each cache block is $128$ bytes wide and holds:\n     $$\\text{Elements per Block} = \\frac{128\\text{ bytes}}{8\\text{ bytes/element}} = 16\\text{ elements}$$\n3. **Miss Evaluation for P1 ($M_1$)**:\n   * Accessing the first element $A[i][0]$ incurs a compulsory (cold) cache miss.\n   * The cache controller fetches the entire $128$-byte block, bringing in the next $15$ consecutive elements ($A[i][0]$ through $A[i][15]$).\n   * The subsequent $15$ loop iterations ($j = 1$ to $15$) are guaranteed **cache hits**.\n   * Then $A[i][16]$ causes another compulsory miss, loading $A[i][16]$ through $A[i][31]$, and so forth.\n   * Since memory is accessed strictly monotonically forward, no useful cache blocks are evicted prematurely during row processing.\n   * Therefore, exactly $1$ out of every $16$ array accesses is a cache miss:\n     $$M_1 = \\frac{512 \\times 512}{16} = \\frac{262,144}{16} = 16,384\\text{ misses}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($0$)**: Impossible; cold array starting in unpopulated cache must experience compulsory misses.\n* **Option B ($2048$)**: Incorrect. Arises if one mistakenly assumes $128$ elements per block ($262144 / 128$).\n* **Option C ($16384$)**: **Correct**. Exactly $262,144 / 16 = 16,384$ misses.\n* **Option D ($262144$)**: Incorrect. Assumes zero cache hits (as occurs in column-major traversal P2).\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (C) 16384**",
         "images": []
       }
@@ -3669,7 +3669,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "CO & Architecture - Cache Miss Ratio for Row-Major vs Column-Major Loops",
+        "concept": "CO & Architecture - Cache Memory",
         "markdown": "### 1. Concept / Subtopic\n**Memory Hierarchy - Cache Conflict Misses & Strided Access**: Comparing the cache miss counts of row-major traversal ($P1$) versus column-major traversal ($P2$) on a direct-mapped cache.\n\n---\n\n### 2. Given Parameters & Loop Comparison\n* **Direct Mapped Cache**: $32\\text{ KB}$, $128$-byte block size ($256$ lines).\n* **Array $A$**: $512 \\times 512$ with $8$-byte elements ($4\\text{ KB}$ per row).\n* **Code Segment P1 (Row-major)**:\n  $$\\text{Inner loop on } j: \\quad A[i][j]$$\n  $$M_1 = 16,384\\text{ misses (from previous question)}$$\n* **Code Segment P2 (Column-major)**:\n  $$\\text{Inner loop on } j: \\quad A[j][i]$$\n\n---\n\n### 3. Step-by-Step Analytical Derivation\n1. **Stride Analysis for P2**:\n   * The inner loop iterates on $j$, while $i$ remains fixed.\n   * Successive memory addresses accessed are:\n     $$\\text{Addr}(A[j][i]) = \\text{Base} + (j \\times 512 + i) \\times 8\\text{ bytes}$$\n   * The stride between successive inner-loop accesses is:\n     $$\\text{Stride} = 512 \\times 8\\text{ bytes} = 4096\\text{ bytes} = 4\\text{ KB}$$\n2. **Cache Line Mapping for Stride of $4\\text{ KB}$**:\n   * Each cache block is $128\\text{ bytes} = 2^7\\text{ bytes}$.\n   * Cache set index for an address is given by:\n     $$\\text{Line Index} = \\left( \\frac{\\text{Address}}{128} \\right) \\bmod 256$$\n   * For consecutive row indices $j$ and $j + 1$:\n     $$\\Delta \\text{Line Index} = \\frac{4096\\text{ bytes}}{128\\text{ bytes/line}} = 32\\text{ lines}$$\n   * Since $\\gcd(32, 256) = 32$, consecutive accesses only cycle through:\n     $$\\frac{256}{32} = 8\\text{ unique cache lines}$$\n   * After $8$ iterations of $j$, index $j = 8$ maps to:\n     $$(8 \\times 32) \\bmod 256 = 256 \\bmod 256 = 0$$\n   * This maps directly onto the same line as $j = 0$, evicting the block brought in at $j = 0$!\n3. **Miss Count for P2 ($M_2$)**:\n   * By the time the outer loop moves to the next column $i + 1$, all previously fetched cache blocks have been repeatedly overwritten by conflict misses.\n   * Consequently, **every single access in P2 experiences a cache miss**:\n     $$M_2 = 512 \\times 512 = 262,144\\text{ misses}$$\n4. **Ratio $\\frac{M_1}{M_2}$**:\n   $$\\frac{M_1}{M_2} = \\frac{16,384}{262,144} = \\frac{1}{16}$$\n\n---\n\n### 4. Distractor Analysis\n* **Option A ($0$)**: Incorrect. Both $M_1$ and $M_2$ are strictly positive non-zero integers.\n* **Option B ($\\frac{1}{16}$)**: **Correct**. Accurately compares $16,384 / 262,144 = 1/16$.\n* **Option C ($\\frac{1}{8}$)**: Incorrect. Miscalculates elements per block as 8 instead of 16.\n* **Option D ($16$)**: Incorrect. Inverts the ratio ($\\\\frac{M_2}{M_1} = 16$).\n\n---\n\n### 5. Concluding Answer\n**Correct Answer: (B) 1/16**",
         "images": []
       }
@@ -3714,7 +3714,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Computer Networks - Transparent Bridges Spanning Tree Protocol (STP)",
+        "concept": "Computer Networks - Bridges",
         "markdown": "- **Spanning Tree Protocol (IEEE 802.1D) Rules:**\n  - 1. **Root Bridge Selection:** The bridge with the smallest ID/serial number is selected as the root bridge. Here, $B_1$ has the smallest serial number $\\implies B_1$ is the **Root Bridge**.\n  - 2. **Shortest Path & Root Ports:** Each bridge selects its root port with the lowest path cost to $B_1$. Ties are broken in favor of lower port index.\n  - 3. **Designated Bridge Selection:** For each LAN segment, the bridge offering the shortest path to the root bridge is chosen as the designated bridge. If paths are equidistant, the bridge with the lower serial number wins.\n\n- **Topology & Spanning Tree Structure:**\n  - $B_1$ connects to $\\text{LAN}_1$ and $\\text{LAN}_2$.\n  - $B_5$ connects to $\\text{LAN}_1$ and $\\text{LAN}_3$. Distance to root $B_1$ is $1$ hop via $\\text{LAN}_1$.\n  - $B_3$ connects to $\\text{LAN}_2, \\text{LAN}_3, \\text{LAN}_4$. Distance to root $B_1$ is $1$ hop via $\\text{LAN}_2$.\n  - Between $B_5$ and $B_3$ on $\\text{LAN}_3$: both are $1$ hop from $B_1$. $B_3$ has lower serial number than $B_5$, but $B_5$ forwards to $B_3$ via $\\text{LAN}_3$.\n  - Depth-First Search (DFS) traversal of the resulting spanning tree starting from root $B_1$ visits:\n    $$B_1 \\to B_5 \\to B_3 \\to B_4 \\to B_2$$\n\nTherefore, the correct answer is **Option A ($B_1, B_5, B_3, B_4, B_2$)**.",
         "images": [
           "/Gate_QA/question-images/4271443320414911605.webp",
@@ -3762,7 +3762,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Computer Networks - Transparent Bridge Forwarding Tables",
+        "concept": "Computer Networks - Bridges",
         "markdown": "- **Givens & Bridge Forwarding Topology:**\n  - Spanning tree sequence: $B_1, B_5, B_3, B_4, B_2$.\n  - Bridge $B_3$ connects to three LAN segments via its physical ports:\n    - **Port 3:** Connected to $\\text{LAN}_2$ (connected to Root Bridge $B_1$ and hosts $H_1, H_2, H_3, H_4$).\n    - **Port 1:** Connected to $\\text{LAN}_3$ (connected to hosts $H_5, H_6, H_9, H_{10}$).\n    - **Port 2:** Connected to $\\text{LAN}_4$ (connected to hosts $H_7, H_8, H_{11}, H_{12}$).\n\n- **Host Reachability from $B_3$:**\n  - Frames destined to or originating from hosts on $\\text{LAN}_2$ ($H_1, H_2, H_3, H_4$) traverse **Port 3**.\n  - Frames destined to or originating from hosts on $\\text{LAN}_3$ ($H_5, H_6, H_9, H_{10}$) traverse **Port 1**.\n  - Frames destined to or originating from hosts on $\\text{LAN}_4$ ($H_7, H_8, H_{11}, H_{12}$) traverse **Port 2**.\n\n- **Matching Forwarding Table on $B_3$:**\n  $$\\begin{array}{|l|c|} \\hline \\textbf{Hosts} & \\textbf{Port} \\\\ \\hline H_1, H_2, H_3, H_4 & 3 \\\\ \\hline H_5, H_6, H_9, H_{10} & 1 \\\\ \\hline H_7, H_8, H_{11}, H_{12} & 2 \\\\ \\hline \\end{array}$$\n\nTherefore, the correct answer is **Option A**.",
         "images": [
           "/Gate_QA/question-images/4271443320414911605.webp"
@@ -3810,7 +3810,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Theory of Computation - Context-Free Grammar for Non-Equal Exponents",
+        "concept": "Compiler Design - Grammar",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - We seek a grammar generating:\n    $$L = \\left\\{ a^i b^j \\mid i \\ne j \\right\\}$$\n- **Language Partitioning**:\n  1. The condition $i \\ne j$ partitions naturally into two disjoint cases:\n     $$L = \\{a^i b^j \\mid i > j\\} \\; \\cup \\; \\{a^i b^j \\mid i < j\\}$$\n  2. **Case $i > j$ (More $a$'s than $b$'s)**:\n     - Can be written as $a^k (a^j b^j)$ with $k \\ge 1$.\n     - Generated by matching equal counts of $a$'s and $b$'s with one or more extra leading $a$'s.\n  3. **Case $i < j$ (More $b$'s than $a$'s)**:\n     - Can be written as $(a^i b^i) b^k$ with $k \\ge 1$.\n     - Generated by matching equal counts of $a$'s and $b$'s with one or more extra trailing $b$'s.\n  4. Inspecting the grammars, the grammar in **Option D** correctly enforces the strict inequality without accidentally allowing $i = j$.\n\nTherefore, the correct answer is **Option D**.",
         "images": []
       }
@@ -3855,7 +3855,7 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Compiler Design & TOC - Derivation Step Length in Context-Free Grammars",
+        "concept": "Compiler Design - Grammar",
         "markdown": "- **Concept / Theoretical Foundation**:\n  - Consider grammar $G$:\n    $$S \\to AC \\mid CB$$\n    $$C \\to aCb \\mid \\epsilon$$\n    $$A \\to aA \\mid a$$\n    $$B \\to Bb \\mid b$$\n  - Generates $L = \\{a^i b^j \\mid i \\ne j\\}$.\n- **Derivation Length Calculation**:\n  1. For string $w = a^i b^j$ with $i > j$:\n     - $S \\implies AC$ (1 step).\n     - $A \\implies a^{i-j}$ takes $(i - j)$ steps.\n     - $C \\implies a^j b^j$ takes $j$ steps plus 1 step for $C \\to \\epsilon$.\n  2. Summing all derivation steps confirms the derivation length is $i + j + 1$ (or matches Option A).\n\nTherefore, the correct answer is **Option A**.",
         "images": []
       }
