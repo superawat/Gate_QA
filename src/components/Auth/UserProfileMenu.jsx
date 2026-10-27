@@ -2,18 +2,23 @@
  * UserProfileMenu.jsx
  * --------------------
  * Header avatar button that shows the signed-in user's profile
- * and provides sign-out. Replaces the "Sign In" button when authenticated.
- *
- * Features:
- *  - Shows avatar (from Google) or initials fallback
- *  - Dropdown: user's name, email, sign-out button
- *  - Click outside to close
- *  - Accessible: aria-expanded, aria-label
+ * and provides quick access to discipline hub, cloud sync status,
+ * and sign-out. Optimized for both desktop and mobile viewports.
  */
 import React, { useEffect, useRef, useState } from "react";
-import { FiLogOut, FiCheck, FiRefreshCw, FiCloud, FiUser } from "react-icons/fi";
+import {
+  FiLogOut,
+  FiCheck,
+  FiRefreshCw,
+  FiCloud,
+  FiUser,
+  FiChevronRight,
+  FiCheckSquare,
+  FiShield,
+} from "react-icons/fi";
 import { useAuth } from "../../contexts/AuthContext";
-import { PROFILE_ROUTE } from "../../utils/routes";
+import { PROFILE_ROUTE, TRACKER_ROUTE } from "../../utils/routes";
+import { readBranchPreferences } from "../../utils/branchPreference";
 
 function formatSyncTime(date) {
   if (!date) return null;
@@ -44,9 +49,13 @@ function UserProfileMenu() {
   const initials = displayName
     .split(" ")
     .map((n) => n[0])
+    .filter(Boolean)
     .slice(0, 2)
     .join("")
-    .toUpperCase();
+    .toUpperCase() || "U";
+
+  // Active branch preferences for contextual candidate badge
+  const { activeBranch } = readBranchPreferences();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -83,11 +92,11 @@ function UserProfileMenu() {
   };
 
   return (
-    <div className="user-profile-menu" ref={menuRef}>
+    <div className="user-profile-menu relative" ref={menuRef}>
       {/* Avatar Button */}
       <button
         id="user-profile-menu-btn"
-        className="user-avatar-btn"
+        className="user-avatar-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -110,6 +119,15 @@ function UserProfileMenu() {
         <span className="user-avatar-online-dot" aria-hidden="true" />
       </button>
 
+      {/* Mobile Backdrop Overlay */}
+      {isOpen && (
+        <div
+          className="user-profile-backdrop sm:hidden"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Dropdown Menu */}
       {isOpen && (
         <div
@@ -117,36 +135,69 @@ function UserProfileMenu() {
           role="menu"
           aria-label="Profile menu"
         >
-          {/* User Info */}
+          {/* User Info Header Card */}
           <div className="user-profile-info">
-            <p className="user-profile-name">{displayName}</p>
-            <p className="user-profile-email">{user?.email}</p>
+            <div className="user-profile-avatar-row">
+              {avatarUrl ? (
+                <img
+                  src={avatarUrl}
+                  alt={displayName}
+                  className="user-profile-thumb-img"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <span className="user-profile-thumb-initials" aria-hidden="true">
+                  {initials}
+                </span>
+              )}
+              <div className="user-profile-details">
+                <p className="user-profile-name" title={displayName}>
+                  {displayName}
+                </p>
+                <p className="user-profile-email" title={user?.email}>
+                  {user?.email}
+                </p>
+                {activeBranch && (
+                  <span className="user-profile-branch-badge">
+                    {activeBranch.toUpperCase()} Aspirant
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Cloud Sync Status Indicator */}
           <div className="user-profile-sync-status">
             {isSyncing ? (
               <>
-                <FiRefreshCw className="h-3.5 w-3.5 animate-spin text-sky-400 shrink-0" />
-                <div className="user-sync-text-group" style={{ flex: 1, minWidth: 0 }}>
-                  <span className="user-sync-title">Syncing to cloud...</span>
+                <div className="user-sync-icon-pill syncing">
+                  <FiRefreshCw className="h-3.5 w-3.5 animate-spin shrink-0" />
+                </div>
+                <div className="user-sync-text-group">
+                  <span className="user-sync-title text-sky-600 dark:text-sky-400">
+                    Syncing to cloud...
+                  </span>
                   <span className="user-sync-subtitle">Updating progress</span>
                 </div>
               </>
             ) : (
               <>
-                <div className="user-sync-icon-wrapper">
-                  <FiCloud className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                <div className="user-sync-icon-pill">
+                  <FiCloud className="h-3.5 w-3.5 shrink-0" />
                   <FiCheck className="user-sync-check-icon" />
                 </div>
-                <div className="user-sync-text-group" style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.25rem" }}>
+                <div className="user-sync-text-group">
+                  <div className="user-sync-title-row">
                     <span className="user-sync-title">Data Synced to Cloud</span>
                     {lastSyncedAt && (
-                      <span className="user-sync-time">{formatSyncTime(lastSyncedAt)}</span>
+                      <span className="user-sync-time">
+                        {formatSyncTime(lastSyncedAt)}
+                      </span>
                     )}
                   </div>
-                  <span className="user-sync-subtitle">Notes, bookmarks & tests backed up</span>
+                  <span className="user-sync-subtitle">
+                    Notes, bookmarks &amp; tests backed up
+                  </span>
                 </div>
                 <button
                   type="button"
@@ -157,7 +208,7 @@ function UserProfileMenu() {
                   title="Sync now"
                   aria-label="Sync with cloud now"
                 >
-                  <FiRefreshCw className="h-3 w-3" />
+                  <FiRefreshCw className="h-3.5 w-3.5" />
                 </button>
               </>
             )}
@@ -165,32 +216,71 @@ function UserProfileMenu() {
 
           <div className="user-profile-divider" role="separator" />
 
-          {/* Profile & Disciplines Hub */}
-          <a
-            id="user-profile-hub-link"
-            href={PROFILE_ROUTE}
-            className="user-profile-menu-item flex items-center gap-2 px-3 py-2 text-xs font-medium text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] rounded-lg transition"
-            onClick={() => setIsOpen(false)}
-            role="menuitem"
-          >
-            <FiUser className="h-4 w-4 shrink-0 text-sky-500" />
-            <span>Profile &amp; Disciplines</span>
-          </a>
+          {/* Navigation Action Group */}
+          <div className="user-profile-nav-group">
+            {/* Profile & Disciplines Hub */}
+            <a
+              id="user-profile-hub-link"
+              href={PROFILE_ROUTE}
+              className="user-profile-menu-item group"
+              onClick={() => setIsOpen(false)}
+              role="menuitem"
+            >
+              <div className="user-profile-item-icon bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400">
+                <FiUser className="h-4 w-4 shrink-0" />
+              </div>
+              <div className="user-profile-item-text">
+                <span className="user-profile-item-title">Profile &amp; Disciplines</span>
+                <span className="user-profile-item-desc">Change papers &amp; track settings</span>
+              </div>
+              <FiChevronRight className="user-profile-item-arrow" />
+            </a>
+
+            {/* Preparation Tracker Quick Action */}
+            <a
+              id="user-profile-tracker-link"
+              href={TRACKER_ROUTE}
+              className="user-profile-menu-item group"
+              onClick={() => setIsOpen(false)}
+              role="menuitem"
+            >
+              <div className="user-profile-item-icon bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400">
+                <FiCheckSquare className="h-4 w-4 shrink-0" />
+              </div>
+              <div className="user-profile-item-text">
+                <span className="user-profile-item-title">Preparation Tracker</span>
+                <span className="user-profile-item-desc">Syllabus checklist &amp; coverage</span>
+              </div>
+              <FiChevronRight className="user-profile-item-arrow" />
+            </a>
+          </div>
+
+          <div className="user-profile-divider" role="separator" />
 
           {/* Sign Out */}
           <button
             id="user-signout-btn"
-            className="user-signout-btn"
+            className="user-signout-btn group"
             onClick={handleSignOut}
             role="menuitem"
           >
-            <FiLogOut className="h-4 w-4 shrink-0" />
-            Sign out
+            <div className="user-profile-item-icon bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:bg-rose-50 dark:group-hover:bg-rose-950/40 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+              <FiLogOut className="h-4 w-4 shrink-0" />
+            </div>
+            <div className="user-profile-item-text">
+              <span className="user-profile-item-title group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                Sign out
+              </span>
+            </div>
           </button>
 
-          <p className="user-profile-note">
-            Your local progress is preserved after sign-out.
-          </p>
+          {/* Local-first Zero Data Loss Reassurance */}
+          <div className="user-profile-note-wrapper">
+            <FiShield className="user-profile-note-icon" aria-hidden="true" />
+            <p className="user-profile-note">
+              Your local progress is preserved after sign-out.
+            </p>
+          </div>
         </div>
       )}
     </div>

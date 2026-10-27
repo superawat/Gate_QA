@@ -1,4 +1,52 @@
 # Changelog
+- **Profile Popover & Candidate Profile Hub UI Modernization Across Web & Mobile (DEC-255)**:
+  - **UserProfileMenu Popover UI & Mobile Hardening**:
+    - Re-architected `UserProfileMenu.jsx` and `.user-profile-dropdown` in `src/index.css` into an ergonomic, high-density candidate card.
+    - Integrated candidate avatar thumbnail with monogram initials fallback, aspirant email, display name, and active examination track pill (`[BRANCH] Aspirant`).
+    - Fixed cramped layout and awkward line wrapping for "Data Synced to Cloud" / "just now" by expanding default dropdown width to 300px and clamping responsive mobile width (`calc(100vw - 1.25rem)` up to 320px).
+    - Upgraded Cloud Sync status card with high-density pill indicators, tabular numeral sync timestamps (`tabular-nums`), and smooth spinning state.
+    - Added touch-friendly interactive navigation items with 42px minimum heights (`Profile & Disciplines` and `Preparation Tracker`), styled with subtle iconography and hover states.
+    - Added backdrop overlay (`.user-profile-backdrop`) on mobile screens to smoothly dismiss the dropdown upon outside tap.
+    - Reassured candidate with a sleek local-first guarantee badge: "Your local progress is preserved after sign-out."
+  - **Candidate Profile Hub (`UserProfileHub.jsx`) Modernization**:
+    - Designed a rich Aspirant Profile Card header displaying candidate monogram/avatar, credentials, real-time authenticated status badge, and enrolled paper pills.
+    - Added a 3-tile Progress Metric Strip (Solved Questions, Bookmarks, and Mock Tests completed) computed safely from local storage with `tabular-nums`.
+    - Enhanced the Enrolled GATE Disciplines section with refined discipline cards, clean syllabus topics summary, clear Primary vs Secondary paper visual hierarchy, and accessible keyboard focus navigation.
+    - Divided Cloud Sync & Offline Backup into two structured sub-panels: Cloud Synchronization (Zero Data Loss additive union-merge) and Local Workstation & Data Portability.
+    - Added JSON Backup Restore feature with safe file upload input, allowing candidates to transfer or restore local progress instantly.
+  - **Test & Type Integrity**:
+    - All unit tests in `UserProfileMenu.test.jsx`, `UserProfileHub.test.jsx`, `ProfilePage.test.jsx`, `GlobalNavigationDrawer.test.jsx`, and `BranchSelectionWall.test.jsx` pass 100%.
+    - `npm run typecheck` passed with 0 errors.
+
+  - **CHUNK-CSE-VIN-05 Authored & Integrated (25 Authentic Solutions)**:
+    - Authored, verified, and integrated all 25 solutions in `CHUNK-CSE-VIN-05` (GATE CSE 1998: `go:1658`, `go:1659`, `go:1661`, `go:1662`, `go:1663`, `go:1664`, `go:1665`, `go:1666`, `go:1667`, `go:1668`, `go:1669`, `go:1670`, `go:1671`, `go:1672`, `go:1677`, `go:1678`, `go:1679`, `go:1680`, `go:1681`, `go:1682`, `go:1683`, `go:1684`, `go:1685`, `go:1686`, `go:1687`) with complete 6-part pedagogical KaTeX step-by-step derivations, K-map visual analysis, McCarthy 91 recursion traces, and distractor analyses matching verified official IIT answer keys.
+    - Excluded all 6 shared HOLD UIDs (`go:648`, `go:653`, `go:2218`, `go:2630`, `go:87141`, `go:80571`); zero new questions held.
+  - **Official Answer Key Reconciliation (`go:1685`)**:
+    - Reconciled answer key for `go:1685` (GATE CSE 1998 Q2.13) from legacy volume OCR error Option C (36) to authentic Option D (42). In Pascal call-by-reference semantics (`var x: integer`), `f(x) * f(x)` evaluates sequentially to $6 \times 7 = 42$.
+    - Synchronized across authoritative stores: `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (both `data/` and `public/data/`), `public/questions-with-answers.json`, and static detail shards.
+    - Added regression test in `src/utils/evaluateAnswer.test.js`.
+  - **Platform Solution Coverage**:
+    - Platform accepted solutions increased to **12,157 / 13,194 (92.1% platform coverage)**.
+    - GATE CSE accepted solutions rose to **3,355 / 3,674 (91.3% coverage on GATE CSE)**.
+    - Missing solutions reduced to **1,037** platform-wide.
+    - Vintage CSE backlog reduced from 330 to **305** (299 unassigned + 6 holds).
+    - Removed redundant plan file `plan/oct_26/20th_oct_missinganswer.md`, maintaining only `plan/20th_oct_missinganswer.md`.
+
+- **Branch-Scoped General Aptitude (GA) Filtering in Multi-Branch Filter Cards (DEC-252)**:
+  - **Dedicated Branch GA Filter**:
+    - Exposed "General Aptitude" in `BranchTopicFilter.tsx` for EC, EE, ME, and CE branches as a first-class subject checkbox in their respective branch filter cards.
+    - Preserved complete branch isolation by modeling branch GA selections via a typed `selectedGaBranches: string[]` state in `FilterSelectionState` (`src/types/runtime.ts`) and serialized to URL query param `gaBranches` (`FILTER_QUERY_KEYS`). Toggling GA on EC strictly isolates to EC without selecting GA on ME, EE, or CE.
+  - **Question Filtering & Evaluation**:
+    - Added `isBranchGaQuestion(question)` utility in `src/utils/examTrack.js` to reliably identify branch-specific GA questions via `subjectSlug`, `section`, `subjectLabel`, `taxonomy.primary`, and `tags`.
+    - Integrated branch GA evaluation into `FilterContext.tsx` `filteredQuestions`: supports standalone GA branch filtering as well as OR-composition with selected technical subjects and subtopics.
+    - Updated branch toggles (`setIncludeEc`, `setIncludeEe`, `setIncludeMe`, `setIncludeCe`), track switches, and `clearFilters` to cleanly prune deactivated branch GA selections.
+  - **Active Filter Chips & Reset Integration**:
+    - Wired `selectedGaBranches` into `ActiveFilterChips.tsx` with upper-case branch badges (`General Aptitude` `[EC]`) and individual chip removal.
+    - Wired `selectedGaBranches` into `hasActiveFilters` in `FilterSidebar.jsx` and `ActiveFilterChips.tsx`, ensuring the "Reset Filters" button activates and resets properly.
+  - **Test Coverage**:
+    - Added comprehensive unit tests in `src/utils/examTrack.test.js`, `src/components/Filters/BranchTopicFilter.test.tsx`, `src/components/Filters/BranchFilterIntegration.test.jsx`, and `src/contexts/FilterContext.test.jsx`.
+    - Verified 100% test pass across all 114 test files (1,499 unit tests) and 0 TypeScript errors.
+
 - **Mock Test Full-Paper Submission & Performance Diagnostic Scope Resolution (DEC-247)**:
   - **ReferenceError: attemptMeta is not defined Fix**:
     - Fixed an unhandled render crash in `MockTestResults.jsx` where `generatePerformanceAnalysis()` referenced undeclared variable `attemptMeta` when comparing General Aptitude and Core Section performance on full official papers containing both sections (`ga.total > 0 && cs.total > 0`).
