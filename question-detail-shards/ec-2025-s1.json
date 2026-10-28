@@ -2656,7 +2656,7 @@
       ],
       "answer_meta": {
         "type": "MCQ",
-        "answer": "A",
+        "answer": "B",
         "tolerance": null,
         "source": "official_key"
       },
@@ -2676,8 +2676,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Numerical Ability",
-        "markdown": "We are given:\n\n$f(x) = -\\dfrac{|x|}{x}$ for $x \\ne 0$\n\nLet's analyze the function:\n\nFor $x > 0$:\n\n$|x| = x$\n\nSo, $f(x) = -\\dfrac{x}{x} = -1$\n\nFor $x < 0$:\n\n$|x| = -x$\n\nSo, $f(x) = -\\dfrac{-x}{x} = 1$\n\nTherefore,\n\n$$f(x) = \\begin{cases}\n\n1 & \\text{if } x < 0 \\\\\n\n-1 & \\text{if } x > 0\n\n\\end{cases}$$\n\nThis function has:\n\nValue $1$ for all negative $x$\n\nValue $-1$ for all positive $x$\n\nNot defined at $x = 0$\n\nFrom the options:\n\nOption (A) shows $f(x) = -1$ for $x > 0$ and $f(x) = 1$ for $x < 0$, which matches our analysis.\n\nHence, the correct plot is Option (A).\n\nTherefore, the correct answer is **A**."
+        "concept": "General Aptitude - Quantitative Aptitude & Functions",
+        "markdown": "### 1. Problem Formulation & Scope\nWe are required to identify the plot representing the function:\n$$f(x) = \\frac{|x|}{x}$$\nwhere $x$ is a non-zero real number ($x \\in \\mathbb{R} \\setminus \\{0\\}$).\n\n### 2. Definition & Evaluation of the Absolute Value Function\nBy definition of the absolute value function:\n$$|x| = \\begin{cases} x & \\text{if } x > 0 \\\\ -x & \\text{if } x < 0 \\end{cases}$$\n\nEvaluating $f(x)$ for each domain:\n1. **For $x > 0$ (positive real numbers):**\n   $$|x| = x \\implies f(x) = \\frac{x}{x} = +1$$\n   The function is constant with value $+1$ for all $x > 0$. On the Cartesian plane, this is represented by a horizontal line segment along $y = +1$ spanning $x \\in (0, \\infty)$.\n\n2. **For $x < 0$ (negative real numbers):**\n   $$|x| = -x \\implies f(x) = \\frac{-x}{x} = -1$$\n   The function is constant with value $-1$ for all $x < 0$. On the Cartesian plane, this is represented by a horizontal line segment along $y = -1$ spanning $x \\in (-\\infty, 0)$.\n\n3. **At $x = 0$:**\n   The function is undefined because the denominator is zero.\n\nThus, $f(x)$ is the standard **signum function** $\\text{sgn}(x)$ (restricted to $x \\ne 0$):\n$$f(x) = \\begin{cases} +1 & \\text{if } x > 0 \\\\ -1 & \\text{if } x < 0 \\end{cases}$$\n\n### 3. Option Plot Verification\n- **Plot (A):** Shows $y = +1$ for $x < 0$ and $y = -1$ for $x > 0$. This corresponds to $f(x) = -\\frac{|x|}{x}$, not $+\\frac{|x|}{x}$.\n- **Plot (B):** Shows $y = +1$ for $x > 0$ with an open circle/intercept near $(0, 1)$ and $y = -1$ for $x < 0$ with an intercept near $(0, -1)$. This accurately and correctly represents $f(x) = \\frac{|x|}{x}$.\n- **Plot (C) & (D):** Do not represent constant horizontal piecewise segments of $\\pm 1$.\n\n### 4. Conclusion\nTherefore, the plot representing $f(x) = \\frac{|x|}{x}$ is **Plot (B)**.\n\n**Correct Answer: Option B**",
+        "images": []
       }
     },
     "ec:2025:ga:q6": {
