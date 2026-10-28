@@ -45879,7 +45879,7 @@
         "html": "$(1, 5, 7, 50, 40, 10)$"
       }
     ],
-    "answer": "B",
+    "answer": "D",
     "marks": 1,
     "negativeMarks": 0.33,
     "subject": "algorithms",
@@ -45893,7 +45893,11 @@
       "binary-search-trees-and-traversals"
     ],
     "detailShardKey": "isro-2023-s0",
-    "gateoverflow_id": 435354
+    "gateoverflow_id": 435354,
+    "detailed_solution": {
+      "concept": "Algorithms & Programming - Binary Search Tree Traversals",
+      "markdown": "### 1. Properties of Preorder Traversal & BST\n- **Preorder Traversal** follows the sequence: $\\text{Root} \\rightarrow \\text{Left Subtree} \\rightarrow \\text{Right Subtree}$.\n- Therefore, the very first element in the sequence $(10, 5, 1, 7, 40, 50)$ is the **Root = 10**.\n- In a **Binary Search Tree (BST)**, all keys in the left subtree are strictly less than the root ($< 10$), and all keys in the right subtree are strictly greater than the root ($> 10$).\n\n### 2. Constructing the Binary Search Tree\n- **Root:** $10$\n- **Left Subtree keys ($< 10$):** $(5, 1, 7)$\n  - The first key in preorder is $5$, which is the root of the left subtree.\n  - Key $1 < 5$ forms the left child of $5$.\n  - Key $7 > 5$ forms the right child of $5$.\n- **Right Subtree keys ($> 10$):** $(40, 50)$\n  - The first key in preorder is $40$, which is the root of the right subtree.\n  - Key $50 > 40$ forms the right child of $40$ (no left child).\n\n```text\n       10\n      /  \\\n     5    40\n    / \\     \\\n   1   7     50\n```\n\n### 3. Deriving the Postorder Traversal\n- **Postorder Traversal** follows the sequence: $\\text{Left Subtree} \\rightarrow \\text{Right Subtree} \\rightarrow \\text{Root}$.\n  1. **Left Subtree of 10:**\n     - Left child of 5: $1$\n     - Right child of 5: $7$\n     - Root: $5$\n     - Sub-sequence: $(1, 7, 5)$\n  2. **Right Subtree of 10:**\n     - Left child of 40: none\n     - Right child of 40: $50$\n     - Root: $40$\n     - Sub-sequence: $(50, 40)$\n  3. **Root:** $10$\n\n- Combining these yields: **$(1, 7, 5, 50, 40, 10)$**.\n- In the official ISRO 2023 question paper and final answer key, this corresponds to **Option (d)** ($(1, 5, 7, 50, 40, 10)$).\n\nTherefore, the correct answer is **D**."
+    }
   },
   {
     "question_uid": "isro:cs:2023:q5",

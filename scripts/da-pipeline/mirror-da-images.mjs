@@ -235,7 +235,7 @@ export async function mirrorDaImages() {
   return report;
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   mirrorDaImages().catch((error) => {
     console.error(`[mirror-da-images] ${error.stack || error.message}`);
     process.exitCode = 1;

@@ -175,7 +175,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and Data Structures - List Concatenation in O(1) Time",
+        "markdown": "### 1. Problem Formulation & Scope\nWe are required to identify which list implementation allows the concatenation of two independent lists to be performed in **$O(1)$ constant time**.\n\n### 2. Analytical Comparison of List Implementations\n1. **Singly Linked List:**\n   - With a standard representation having only a pointer to the head of each list, concatenating $L_1$ and $L_2$ requires setting the `next` pointer of the last node of $L_1$ to point to the first node of $L_2$.\n   - Locating the last node of $L_1$ requires traversing all $n_1$ elements from the head:\n     $$T(n) = \\Theta(n_1)$$\n   - Hence, a standard singly linked list cannot perform concatenation in $O(1)$ time.\n\n2. **Standard Doubly Linked List (Head pointer only):**\n   - Similar to a singly linked list, without a dedicated tail pointer, locating the last node of $L_1$ requires linear traversal $\\Theta(n_1)$.\n\n3. **Array Implementation of List:**\n   - In an array, elements are stored in contiguous physical memory.\n   - Concatenating two arrays of sizes $n_1$ and $n_2$ requires copying elements of $L_2$ into contiguous locations after $L_1$ (and potentially reallocating memory for $n_1 + n_2$ elements), requiring $\\Theta(n_1 + n_2)$ time.\n\n4. **Circular Doubly Linked List:**\n   - In a circular doubly linked list referenced by a single head pointer $H$, the list wraps around cyclically:\n     - $H\\to\\text{next}$ points to the first successor node.\n     - **$H\\to\\text{prev}$ points directly to the last node (tail) of the list in $O(1)$ time.**\n   - Let $L_1$ and $L_2$ be two circular doubly linked lists with head pointers $H_1$ and $H_2$.\n   - Their respective tail nodes are:\n     $$T_1 = H_1\\to\\text{prev}, \\quad T_2 = H_2\\to\\text{prev}$$\n   - Concatenation is achieved through exactly four pointer updates:\n     $$T_1\\to\\text{next} = H_2$$\n     $$H_2\\to\\text{prev} = T_1$$\n     $$T_2\\to\\text{next} = H_1$$\n     $$H_1\\to\\text{prev} = T_2$$\n   - These four pointer assignments execute in strictly **$O(1)$ constant time** with zero node traversal.\n\n### 3. Conclusion\nTherefore, a **Circular doubly linked list** enables concatenation in $O(1)$ time.\n\n**Correct Answer: Option C (Circular doubly linked list)**",
+        "images": []
+      }
     },
     "go:2221": {
       "title": "GATE CSE 1997 | Question: 1.5",
@@ -213,7 +218,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Core Algorithm Paradigms and Graph Problems Matching",
+        "markdown": "### 1. Problem Formulation & Scope\nWe need to match the following computational problems with their primary algorithm design paradigms:\n- **Problems:**\n  - (A) All pairs shortest path\n  - (B) Quick Sort\n  - (C) Minimum weight spanning tree\n  - (D) Connected Components\n- **Paradigms / Techniques:**\n  - (1) Greedy\n  - (2) Depth-First Search\n  - (3) Dynamic Programming\n  - (4) Divide and Conquer\n\n### 2. Analytical Evaluation of Each Pair\n1. **(A) All Pairs Shortest Path $\\to$ (3) Dynamic Programming:**\n   - The canonical algorithm for the All-Pairs Shortest Path problem on general weighted graphs without negative cycles is the **Floyd-Warshall algorithm**.\n   - It solves overlapping subproblems using the dynamic programming recurrence:\n     $$d_{ij}^{(k)} = \\min\\left(d_{ij}^{(k-1)}, \\ d_{ik}^{(k-1)} + d_{kj}^{(k-1)}\\right)$$\n   - Hence, **A matches 3** ($\\text{A-3}$).\n\n2. **(B) Quick Sort $\\to$ (4) Divide and Conquer:**\n   - Quick Sort partitions an array of $n$ elements into two sub-arrays around a pivot element (Divide), recursively sorts the sub-arrays (Conquer), and trivially concatenates them (Combine).\n   - Hence, **B matches 4** ($\\text{B-4}$).\n\n3. **(C) Minimum Weight Spanning Tree $\\to$ (1) Greedy:**\n   - Standard algorithms for finding a Minimum Spanning Tree (MST)—such as **Kruskal's algorithm** and **Prim's algorithm**—make locally optimal choices at each step by selecting the minimum-weight safe edge without backtracking.\n   - Hence, **C matches 1** ($\\text{C-1}$).\n\n4. **(D) Connected Components $\\to$ (2) Depth-First Search:**\n   - Finding all connected components of an undirected graph is accomplished by repeatedly launching graph traversals such as **Depth-First Search (DFS)** from an unvisited vertex. Each full DFS traversal visits and labels all vertices belonging to a single connected component in $O(|V| + |E|)$ time.\n   - Hence, **D matches 2** ($\\text{D-2}$).\n\n### 3. Conclusion & Match Verification\nCombining the four matches:\n$$\\text{A-3, \\quad B-4, \\quad C-1, \\quad D-2}$$\nThis matches **Option B**.\n\n**Correct Answer: Option B**",
+        "images": []
+      }
     },
     "go:2222": {
       "title": "GATE CSE 1997 | Question: 1.6",
@@ -253,7 +263,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Context-Free Grammar Structure and Operator Associativity",
+        "markdown": "### 1. Problem Formulation & Given Grammar\nWe are given the following context-free grammar:\n- $X ::= X \\oplus Y \\mid Y$\n- $Y ::= Z * Y \\mid Z$\n- $Z ::= id$\n\nWe must determine the associativity of operators '$\\oplus$' and '$*$'.\n\n### 2. Theoretical Principles of Associativity in Grammars\nIn context-free grammars defining arithmetic expressions:\n- **Left Recursion $\\iff$ Left Associativity:**\n  When a production rule contains the defined non-terminal as its leftmost symbol ($A \\to A \\ \\text{op} \\ B$), parse trees branch to the left, enforcing that operations are grouped from left to right:\n  $$(a \\ \\text{op} \\ b) \\ \\text{op} \\ c$$\n- **Right Recursion $\\iff$ Right Associativity:**\n  When a production rule contains the defined non-terminal as its rightmost symbol ($A \\to B \\ \\text{op} \\ A$), parse trees branch to the right, enforcing that operations are grouped from right to left:\n  $$a \\ \\text{op} \\ (b \\ \\text{op} \\ c)$$\n\n### 3. Step-by-Step Grammar Derivation\n1. **Analysis of Operator $\\oplus$:**\n   - Production: $X \\to X \\oplus Y \\mid Y$.\n   - The recursive call to $X$ is on the left side of $\\oplus$. This is **left recursive**.\n   - Consider the string $id_1 \\oplus id_2 \\oplus id_3$:\n     $$X \\implies X \\oplus Y \\implies (X \\oplus Y) \\oplus Y \\implies (Y \\oplus Y) \\oplus Y \\implies (id_1 \\oplus id_2) \\oplus id_3$$\n   - The expression is grouped as $(id_1 \\oplus id_2) \\oplus id_3$.\n   - Therefore, '$\\oplus$' is **left associative**.\n\n2. **Analysis of Operator $*$:**\n   - Production: $Y \\to Z * Y \\mid Z$.\n   - The recursive call to $Y$ is on the right side of $*$. This is **right recursive**.\n   - Consider the string $id_1 * id_2 * id_3$:\n     $$Y \\implies Z * Y \\implies Z * (Z * Y) \\implies Z * (Z * Z) \\implies id_1 * (id_2 * id_3)$$\n   - The expression is grouped as $id_1 * (id_2 * id_3)$.\n   - Therefore, '$*$' is **right associative**.\n\n### 4. Conclusion\nTherefore, **‘$\\oplus$’ is left associative while ‘$*$’ is right associative**.\n\n**Correct Answer: Option A**",
+        "images": []
+      }
     },
     "go:2223": {
       "title": "GATE CSE 1997 | Question: 1.7",
@@ -294,7 +309,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming and Data Structures - Infix to Postfix Conversion & Operator Stack",
+        "markdown": "### 1. Conceptual Framework: Infix to Postfix Conversion\nInfix notation places operators between operands ($A + B$), requiring operator precedence and parentheses to eliminate ambiguity.\nPostfix (Reverse Polish) notation places operators immediately after their operands ($A B +$), which is evaluated deterministically without parentheses.\n\n### 2. Operational Invariants of the Conversion Algorithm\nIn Dijkstra's classic **Shunting-Yard algorithm** for converting an infix expression to postfix form in a single linear pass ($O(n)$):\n1. **Handling Operands:**\n   - In both infix and postfix expressions, operands appear in the exact same relative sequence.\n   - Whenever an operand is encountered in the input, it is immediately written directly to the output stream.\n   - **No operand stack is required.**\n2. **Handling Operators & Parentheses:**\n   - An operator cannot be output immediately because subsequent operators may have higher precedence (e.g., in $A + B * C$, the multiplication $*$ must be executed before addition $+$).\n   - Thus, operators must be stored temporarily until an operator of lower or equal precedence, or a closing parenthesis, signals that they can be safely popped and appended to the output.\n   - A Last-In-First-Out (LIFO) stack—specifically an **operator stack**—is indispensable for managing this precedence and associativity ordering.\n\n### 3. Distractor Analysis\n- **Option A (An operator stack):** Correct; only an operator stack is essential to convert infix to postfix efficiently.\n- **Option B (An operand stack):** An operand stack is used during the *evaluation* of a postfix expression, not during infix-to-postfix conversion.\n- **Option C (An operand stack and an operator stack):** Redundant; operands do not need to be stacked during conversion.\n- **Option D (A parse tree):** Constructing a full parse tree incurs unnecessary $O(n)$ heap allocation and multiple tree passes, which is inefficient compared to the direct single-pass stack algorithm.\n\n**Therefore, the correct answer is Option A (An operator stack).**",
+        "images": []
+      }
     },
     "go:2224": {
       "title": "GATE CSE 1997 | Question: 1.8",
@@ -334,7 +354,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Runtime Memory Allocation for Dynamically Sized Arrays",
+        "markdown": "### 1. Problem Formulation & Scope\nA programming language $L$ permits the declaration of arrays whose bounds/sizes are not known at compile time (e.g., dynamically dimensioned arrays or variable-length arrays), with the objective of maximizing memory efficiency.\nWe must identify the correct statement regarding compiler construction and memory management for language $L$.\n\n### 2. Static vs. Dynamic Memory Allocation\n1. **Static Memory Allocation:**\n   - In static allocation, all data objects are assigned fixed, absolute memory addresses at compile time (such as in early FORTRAN).\n   - Because the size of an array is determined by runtime variables or user input, a static allocator would have to either allocate an arbitrary maximum upper bound (leading to extreme internal memory waste, violating efficiency) or fail entirely. Thus, Statement A is false.\n\n2. **Feasibility of Compiler Construction:**\n   - Language features whose properties depend on runtime execution do not require an interpreter. Compilers routinely generate machine code for languages with dynamically sized arrays (such as C99 Variable Length Arrays, Pascal dynamic arrays, Ada, Java, and C++). Thus, Statement B is false.\n\n3. **Dynamic Memory Allocation by a Compiler:**\n   - A compiler can emit code that computes array dimensions dynamically at runtime upon entering a scope or procedure.\n   - Memory is then allocated dynamically:\n     - On the **runtime stack** using activation records with dynamic dope vectors (allocating a variable-size frame via a frame pointer).\n     - Or on the **heap** using dynamic memory allocators (e.g., runtime library routines equivalent to `malloc` / `new`).\n   - This ensures exact-fit memory allocation without wasting physical RAM.\n\n### 3. Conclusion\nTherefore, a **compiler using dynamic memory allocation can be written for $L$**.\n\n**Correct Answer: Option C**",
+        "images": []
+      }
     },
     "go:2225": {
       "title": "GATE CSE 1997 | Question: 1.9",
@@ -374,7 +399,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "System Software / Compiler Design - Macro Processor Conditional Expansion",
+        "markdown": "### 1. Conceptual Framework: Macro Processors\nA **macro processor** is a language processing tool that replaces macro calls with macro definitions (macro expansion).\nIt operates as a pre-processing phase prior to assembly or compilation.\n\n### 2. Mechanism of Conditional Macro Expansion\n- In macro definitions, programmers can include conditional directives (such as `AIF` [Arithmetic If], `AGO` [Arithmetic Go To] in assembly language macro processors, or `#if`, `#ifdef` in C preprocessors).\n- These directives evaluate expressions involving macro arguments, internal macro variables, or system attributes.\n- **Expansion Time vs. Execution Time:**\n  - The macro processor runs **strictly during macro expansion time** (before the program is assembled or executed).\n  - The conditional directives do not generate runtime CPU conditional jump instructions; instead, the macro processor evaluates the condition internally during expansion.\n  - If the condition is true, the macro processor emits one set of model statements; if false, it emits an alternative set (or skips them).\n  - This selectively customizes the emitted source text based on expansion-time parameters.\n\n### 3. Distractor Analysis\n- **Option A & Option B:** Incorrect; these describe runtime conditions evaluated during program execution on the CPU.\n- **Option C:** While conditional expansion can be used to terminate macro-level recursive expansion, recursion is not the general defining purpose.\n- **Option D:** Correct; precisely states the textbook definition: conditional expansion allows certain model statements to be expanded depending upon the value of a condition during the process of macro expansion.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
+      }
     },
     "go:2226": {
       "title": "GATE CSE 1997 | Question: 1.10",
@@ -414,7 +444,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Storage Organization and Heap Allocation Requirements",
+        "markdown": "### 1. Conceptual Framework: Runtime Memory Organization\nAn executing program organizes its logical address space into distinct memory regions:\n1. **Code (Text) Segment:** Stores executable machine instructions (fixed size, read-only).\n2. **Static (Data) Segment:** Stores global and static variables whose lifetime spans the entire program execution.\n3. **Call Stack:** Manages activation records (stack frames) for procedure calls, local variables, and return addresses.\n4. **Heap:** Manages dynamic memory allocation with arbitrary lifetimes.\n\n### 2. Analysis of Language Features\n1. **Recursion (Option A):**\n   - Procedure calls and returns operate in a strict Last-In-First-Out (LIFO) order.\n   - When a recursive function calls itself, a new activation record is pushed onto the **call stack**. When it returns, the record is popped.\n   - A stack is both necessary and sufficient for recursion; heap allocation is not required.\n\n2. **Dynamic Scope Rules (Option C):**\n   - Dynamic scoping resolves non-local variable references by searching down the dynamic chain of activation records on the call stack. A stack with access/control links or a display is sufficient.\n\n3. **Dynamic Data Structures (Option B):**\n   - Dynamic data structures (such as linked lists, binary trees, graphs, and dynamically sized objects) allocate and deallocate memory blocks of arbitrary sizes at arbitrary times during execution.\n   - Crucially, dynamically allocated nodes frequently outlive the activation of the procedure that instantiated them (non-LIFO lifetime).\n   - Because allocation and deallocation requests occur in an arbitrary sequence, stack management is impossible and memory fragmentation must be handled.\n   - This fundamentally mandates a **heap allocation** manager.\n\n### 3. Conclusion\nTherefore, heap allocation is required for languages **that support dynamic data structure**.\n\n**Correct Answer: Option B**",
+        "images": []
+      }
     },
     "go:2227": {
       "title": "GATE CSE 1997 | Question: 2-1",
@@ -454,7 +489,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Boolean Algebra Binary Operator Evaluation",
+        "markdown": "### 1. Problem Formulation & Definitions\nWe are given a custom binary operation $*$ defined on Boolean variables as:\n$$x * y = \\bar{x} + y$$\nwhere $\\bar{x}$ denotes the Boolean NOT (complement) of $x$, and $+$ denotes Boolean OR.\n\nWe are given:\n$$z = x * y = \\bar{x} + y$$\nWe are required to determine the value of the composite expression:\n$$z * x$$\n\n### 2. Step-by-Step Analytical Derivation\n1. **Apply the Definition of $*$ to $z * x$:**\n   In the expression $z * x$, the first operand is $z$ and the second operand is $x$:\n   $$z * x = \\bar{z} + x$$\n\n2. **Compute the Complement $\\bar{z}$:**\n   Substitute the definition $z = \\bar{x} + y$:\n   $$\\bar{z} = \\overline{\\bar{x} + y}$$\n   Applying De Morgan's Law ($\\overline{A + B} = \\bar{A} \\cdot \\bar{B}$):\n   $$\\bar{z} = \\overline{\\bar{x}} \\cdot \\bar{y} = x \\cdot \\bar{y}$$\n\n3. **Substitute $\\bar{z}$ back into $z * x$:**\n   $$z * x = (x \\cdot \\bar{y}) + x$$\n\n4. **Simplify using Boolean Algebra Laws:**\n   - **Method A (Factoring):**\n     $$z * x = x(\\bar{y} + 1)$$\n     Since $\\bar{y} + 1 = 1$ for any Boolean variable $y$:\n     $$z * x = x \\cdot 1 = x$$\n   - **Method B (Absorption Law):**\n     By the standard Boolean Absorption Law:\n     $$A + AB = A$$\n     Setting $A = x$ and $B = \\bar{y}$:\n     $$x + x\\bar{y} = x$$\n\n### 3. Distractor Analysis\n- **Option A ($\\bar{x} + y$):** Value of $z$, not $z * x$.\n- **Option B ($x$):** Correct; simplifies strictly to $x$.\n- **Option C ($0$):** Incorrect; depends on the value of $x$.\n- **Option D ($1$):** Incorrect; if $x = 0$, $z * x = 0 \\ne 1$.\n\n**Therefore, the correct answer is Option B ($x$).**",
+        "images": []
+      }
     },
     "go:2228": {
       "title": "GATE CSE 1997 | Question: 2.2",
@@ -497,6 +537,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Intel 8085 Vectored Interrupt Memory Addresses",
+        "markdown": "### 1. Conceptual Framework: Vectored Interrupts in 8085\nIn the Intel 8085 microprocessor, hardware interrupts (TRAP, RST 7.5, RST 6.5, RST 5.5) and software restart instructions (RST 0 through RST 7) are **vectored interrupts**.\nWhen an enabled interrupt is acknowledged, the microprocessor automatically pushes the current Program Counter onto the stack and transfers control to a hardwired, fixed memory location known as the **interrupt vector location**.\n\n### 2. Governing Formula for Vector Address\nThe 16-bit vector memory address for any restart interrupt $\\text{RST } n$ is computed by multiplying the restart number $n$ by $8$ (since each vector location historically provided 8 bytes of memory to place a jump instruction):\n$$\\text{Vector Address (in decimal)} = n \\times 8$$\n\n### 3. Step-by-Step Calculation for RST 7.5\n1. **Multiply by 8:**\n   $$\\text{Decimal Address} = 7.5 \\times 8 = 60_{10}$$\n\n2. **Convert to Hexadecimal:**\n   Divide $60$ by $16$:\n   $$60 = 3 \\times 16 + 12$$\n   - Quotient: $3$\n   - Remainder: $12_{10} = \\text{C}_{16}$\n   Therefore:\n   $$60_{10} = 003\\text{C}_{16} = 003\\text{CH}$$\n\n### 4. Reference Table of 8085 Hardware Interrupt Vectors\n$$\\begin{array}{|l|c|c|c|}\n\\hline\n\\textbf{Interrupt} & \\textbf{Vector Factor ($n$)} & \\textbf{Address (Decimal)} & \\textbf{Address (Hexadecimal)} \\\\\n\\hline\n\\text{TRAP (RST 4.5)} & 4.5 & 4.5 \\times 8 = 36 & 0024\\text{H} \\\\\n\\text{RST 5.5} & 5.5 & 5.5 \\times 8 = 44 & 002\\text{CH} \\\\\n\\text{RST 6.5} & 6.5 & 6.5 \\times 8 = 52 & 0034\\text{H} \\\\\n\\textbf{RST 7.5} & \\mathbf{7.5} & \\mathbf{7.5 \\times 8 = 60} & \\mathbf{003CH} \\\\\n\\hline\n\\end{array}$$\n\n**Therefore, the correct answer is Option C ($003\\text{CH}$).**",
+        "images": []
       }
     },
     "go:2230": {
@@ -537,6 +582,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Subsystem Functions and Component Pairing",
+        "markdown": "### 1. Problem Formulation & Scope\nWe must match the following computer architecture subsystems and registers with their corresponding components:\n- **Subsystems / Registers:**\n  - (A) DMA I/O\n  - (B) Cache\n  - (C) Interrupt I/O\n  - (D) Condition Code Register\n- **Associated Components:**\n  - (1) High speed RAM\n  - (2) Disk\n  - (3) Printer\n  - (4) ALU\n\n### 2. Analytical Evaluation of Pairs\n1. **(A) DMA I/O $\\to$ (2) Disk:**\n   - Direct Memory Access (DMA) is designed for high-speed secondary storage peripherals like magnetic hard disks, where large blocks of data must be streamed directly between the peripheral controller and main memory at bus speed without CPU instruction intervention. Hence, **A matches 2**.\n\n2. **(B) Cache $\\to$ (1) High speed RAM:**\n   - Cache memory is high-speed temporary storage located between the CPU registers and main memory. It is implemented using fast Static Random-Access Memory (SRAM) chips to provide single-cycle access times. Hence, **B matches 1**.\n\n3. **(C) Interrupt I/O $\\to$ (3) Printer:**\n   - Slow-to-medium speed character devices such as line printers operate using interrupt-driven I/O. The CPU sends a character or buffer and proceeds with other tasks; when the printer is ready to accept the next character, it generates an interrupt request. Hence, **C matches 3**.\n\n4. **(D) Condition Code Register $\\to$ (4) ALU:**\n   - The Condition Code Register (CCR / Processor Status Word / Flags register) contains status flags (Zero, Carry, Sign, Overflow, Parity) that are set or cleared directly by the Arithmetic and Logic Unit (ALU) as the outcome of arithmetic and logic computations. Hence, **D matches 4**.\n\n### 3. Conclusion & Match Verification\n$$\\text{A-2, \\quad B-1, \\quad C-3, \\quad D-4}$$\nThis corresponds to **Option B**.\n\n**Correct Answer: Option B**",
+        "images": []
       }
     },
     "go:2231": {
@@ -577,7 +627,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Carry Lookahead Adder Tree Hierarchy Propagation Delay",
+        "markdown": "### 1. Problem Formulation & Given Parameters\nWe have an $N$-bit Carry Lookahead Adder (CLA), where $N$ is a multiple of $4$.\nThe adder is constructed hierarchically using standard modular integrated circuits:\n- **74181:** 4-bit Arithmetic Logic Unit (ALU) generating group generate ($G^*$) and group propagate ($P^*$) terms.\n- **74182:** 4-bit Carry Lookahead Generator producing lookahead carries for four 4-bit ALUs.\n\nWe are required to determine the minimum addition time using the best architecture.\n\n### 2. Multi-Level Carry Lookahead Architecture\n1. **Single-Level 4-bit Block:**\n   - A single 74181 ALU processes $4$ bits. In parallel, it generates the individual carry propagate ($p_i$) and carry generate ($g_i$) bits, as well as the block group terms:\n     $$P^* = p_3 p_2 p_1 p_0, \\quad G^* = g_3 + p_3 g_2 + p_3 p_2 g_1 + p_3 p_2 p_1 g_0$$\n   - These group signals are produced in $O(1)$ constant time (typically $2$ to $3$ gate delays).\n\n2. **Hierarchical Tree Construction:**\n   - A single 74182 IC accepts group generate and propagate signals from up to four 74181 ALUs (handling $4 \\times 4 = 16$ bits) and generates lookahead carries in $O(1)$ constant time. It also generates super-group $G^{**}$ and $P^{**}$ signals.\n   - For an $N$-bit adder, we construct a tree of 74182 lookahead generators where each level has a fan-in of $k = 4$.\n   - The number of levels $h$ in this hierarchical tree is given by:\n     $$4^h = \\frac{N}{4} \\implies h = \\log_4\\left(\\frac{N}{4}\\right) = \\Theta(\\log N)$$\n\n3. **Delay Analysis:**\n   - Carry generation signals propagate up through the tree levels: $\\Theta(\\log N)$ gate delays.\n   - Carry signals propagate back down through the tree levels to the individual 4-bit adder units: $\\Theta(\\log N)$ gate delays.\n   - Because each level in the tree contributes a fixed constant delay, the total addition time of this tree architecture is:\n     $$\\text{Addition Time} = \\Theta(\\log N)$$\n\n### 3. Distractor Analysis\n- **Option A (proportional to $N$):** Corresponds to a simple ripple-carry adder, where carry propagates sequentially through all $N$ full adders ($O(N)$).\n- **Option B (proportional to $\\log N$):** Correct; the best hierarchical lookahead tree achieves $O(\\log N)$ addition time.\n- **Option C (a constant):** Impossible for arbitrary $N$ because physical fan-in constraints prevent unbounded single-stage lookahead.\n\n**Therefore, the correct answer is Option B (proportional to $\\log N$).**",
+        "images": []
+      }
     },
     "go:2232": {
       "title": "GATE CSE 1997 | Question: 3.1",
@@ -754,7 +809,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Countable and Uncountable Sets of Languages",
+        "markdown": "### 1. Conceptual Framework: Countability & Cardinality\n- A set $S$ is **countably infinite** if there exists a bijective mapping between $S$ and the set of natural numbers $\\mathbb{N}$ (cardinality $|S| = \\aleph_0$).\n- A set is **uncountable** if its cardinality is strictly greater than $\\aleph_0$ (such as $2^{\\aleph_0} = \\mathfrak{c}$, the cardinality of the real numbers $\\mathbb{R}$).\n\nLet $\\Sigma = \\{a, b\\}$ be a finite alphabet.\n\n### 2. Analytical Evaluation of Each Set\n1. **Option A: Set of all strings over $\\Sigma$ ($\\Sigma^*$):**\n   - $\\Sigma^* = \\bigcup_{k=0}^\\infty \\Sigma^k = \\{\\varepsilon, a, b, aa, ab, ba, bb, aaa, \\dots\\}$.\n   - It is a countable union of finite sets. Strings can be uniquely enumerated in canonical length-lexicographic order.\n   - Therefore, $\\Sigma^*$ is **countably infinite** ($|\\Sigma^*| = \\aleph_0$).\n\n2. **Option B: Set of all languages over $\\Sigma$ ($\\mathcal{P}(\\Sigma^*)$):**\n   - A language over $\\Sigma$ is defined as any arbitrary subset of $\\Sigma^*$.\n   - The set of all possible languages over $\\Sigma$ is the power set of strings:\n     $$\\mathcal{L} = \\mathcal{P}(\\Sigma^*)$$\n   - By **Cantor's Theorem**, the power set of any countably infinite set has cardinality:\n     $$|\\mathcal{P}(\\Sigma^*)| = 2^{|\\Sigma^*|} = 2^{\\aleph_0} = \\mathfrak{c}$$\n   - This cardinality is strictly greater than $\\aleph_0$ and is **uncountably infinite**.\n   - Hence, this set is **not countable**.\n\n3. **Option C: Set of all regular languages over $\\Sigma$:**\n   - Every regular language is uniquely specified by at least one valid regular expression.\n   - A regular expression is a finite string over the finite alphabet $\\Sigma \\cup \\{(, ), +, *, \\varepsilon, \\emptyset\\}$.\n   - The set of all valid regular expressions is a subset of a countable string set, and hence is **countably infinite**.\n\n4. **Option D: Set of all languages over $\\Sigma$ accepted by Turing machines:**\n   - The languages accepted by Turing machines are the recursively enumerable languages.\n   - Every Turing machine can be encoded as a finite binary string description $\\langle M \\rangle \\in \\{0, 1\\}^*$.\n   - Because the set of all Turing machine encodings is countable, the set of languages accepted by Turing machines is **countably infinite**.\n\n### 3. Conclusion\nThe only set that is not countable is the **Set of all languages over $\\Sigma$**.\n\n**Correct Answer: Option B**",
+        "images": []
+      }
     },
     "go:2236": {
       "title": "GATE CSE 1997 | Question: 3.5",
@@ -794,6 +854,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating Systems - Virtual Memory and Locality of Reference",
+        "markdown": "### 1. Conceptual Framework: Locality of Reference\nThe **Principle of Locality of Reference** is a fundamental heuristic in computer systems and virtual memory architectures (formalized by Peter Denning in his Working Set model):\n- Computer programs do not reference memory locations uniformly or randomly over time.\n- Instead, during any short phase of execution, memory accesses are heavily concentrated within a relatively small subset of addresses.\n\n### 2. Two Dimensions of Locality\n1. **Temporal Locality:**\n   - If a memory address or instruction is referenced at time $t$, it is highly likely to be referenced again in the near future ($t + \\Delta t$).\n   - *Underlying causes:* Execution loops, iteration counters, subroutines, and stack frames.\n2. **Spatial Locality:**\n   - If a memory location $A$ is referenced, locations with nearby addresses ($A \\pm \\delta$) are likely to be referenced in the near future.\n   - *Underlying causes:* Sequential instruction execution, linear array traversals, and contiguous data record processing.\n\n### 3. Application to Page References\nIn a paged virtual memory system:\n- High temporal and spatial locality means that a process confines its operations to a cluster of pages (the *working set*).\n- Therefore, the next page reference being made by a process is **statistically likely to be to one of the pages used in the last few page references**.\n\n### 4. Distractor Analysis\n- **Option A:** Incorrect; programs execute sequential instructions and branch across routines, so references are not *always* identical to the immediately preceding page.\n- **Option B:** Correct; precisely captures the probabilistic, temporal working-set nature of locality.\n- **Option C:** Incorrect; virtual memory allows processes to reference pages that currently reside on swap disk, which causes a page fault.\n- **Option D:** Incorrect; page fault rates in well-behaved systems are extremely low ($< 1\\%$).\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
       }
     },
     "go:2237": {
@@ -835,7 +900,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - Scheduling Policies and System Architecture Matching",
+        "markdown": "### 1. Problem Formulation & Scope\nWe must match each operating system activity/subsystem with its primary scheduling or processing policy:\n- **Activities / Subsystems:**\n  - (A) Disk Scheduling\n  - (B) Batch Processing\n  - (C) Time-sharing\n  - (D) Interrupt processing\n- **Scheduling / Processing Policies:**\n  - (1) Round robin\n  - (2) SCAN\n  - (3) LIFO\n  - (4) FIFO\n\n### 2. Analytical Evaluation of Each Pair\n1. **(A) Disk Scheduling $\\to$ (2) SCAN:**\n   - **SCAN** (commonly known as the elevator algorithm) is a classic magnetic disk arm scheduling algorithm where the read/write head sweeps across disk cylinders in one direction servicing pending track requests, reverses upon reaching the boundary, and sweeps back. Hence, **A matches 2**.\n\n2. **(B) Batch Processing $\\to$ (4) FIFO:**\n   - In traditional non-interactive batch processing systems, jobs submitted on card decks or batch queues are scheduled and processed strictly in the sequential order they arrive: First-In, First-Out (**FIFO**). Hence, **B matches 4**.\n\n3. **(C) Time-sharing $\\to$ (1) Round Robin:**\n   - In interactive multi-user time-sharing systems, the CPU allocates fixed time slices cyclically among all active ready processes using **Round Robin** scheduling to guarantee equitable responsiveness. Hence, **C matches 1**.\n\n4. **(D) Interrupt Processing $\\to$ (3) LIFO:**\n   - When an interrupt occurs, the hardware pushes the current CPU program counter and status register onto the system control stack. If nested, higher-priority interrupts occur, each subsequent interrupt frame is pushed on top. When handlers complete, states are restored in Last-In, First-Out (**LIFO**) order. Hence, **D matches 3**.\n\n### 3. Conclusion & Match Verification\n$$\\text{A-2, \\quad B-4, \\quad C-1, \\quad D-3}$$\nThis corresponds to **Option C**.\n\n**Correct Answer: Option C**",
+        "images": []
+      }
     },
     "go:2238": {
       "title": "GATE CSE 1997 | Question: 3.7",
@@ -875,7 +945,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - Standard I/O Redirection Mechanisms",
+        "markdown": "### 1. Conceptual Framework: Standard I/O in Operating Systems\nIn modern operating systems (such as UNIX, Linux, and POSIX environments), every executing process is initialized with three standard I/O file descriptors:\n- `stdin` (Standard Input, file descriptor 0) — default: keyboard\n- `stdout` (Standard Output, file descriptor 1) — default: terminal display\n- `stderr` (Standard Error, file descriptor 2) — default: terminal display\n\n### 2. Meaning and Mechanism of I/O Redirection\n- **I/O Redirection** is an operating system and shell facility that alters the source or destination of a program's standard input/output streams.\n- **Input Redirection (`<`):**\n  - Syntactically invoked as: `command < input_file`\n  - The shell opens `input_file` and duplicates its descriptor onto file descriptor 0 (using system calls such as `dup2(fd, 0)`).\n  - As a result, when the program invokes standard input routines (such as `scanf`, `getchar`, or `read(0, ...)`), it seamlessly reads data from the existing file on disk rather than waiting for keyboard input from the user.\n- **Output Redirection (`>` or `>>`):**\n  - Syntactically invoked as: `command > output_file`\n  - Replaces `stdout` (descriptor 1) so that program outputs are written directly to a specified disk file.\n\n### 3. Distractor Analysis\n- **Option A (implies changing the name of a file):** Incorrect; renaming a file is performed via the `mv` command or `rename()` system call, which is independent of I/O redirection.\n- **Option B (can be employed to use an existing file as input file for a program):** Correct; standard definition of input redirection.\n- **Option C (implies connecting 2 programs through a pipe):** Incorrect; connecting the stdout of one program to the stdin of another uses a **pipe** (`|`), which is an inter-process communication (IPC) channel, distinct from file redirection.\n\n**Therefore, the correct answer is Option B.**",
+        "images": []
+      }
     },
     "go:2239": {
       "title": "GATE CSE 1997 | Question: 3.8",
@@ -915,7 +990,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - Interrupt Handling and Process State Transitions",
+        "markdown": "### 1. Conceptual Framework: Interrupt Handling Lifecycle\nWhen a hardware or software interrupt occurs during program execution:\n1. The CPU hardware suspends the currently running process, saves its Program Counter (PC) and processor status registers onto the kernel stack, and switches from user mode to supervisor/kernel mode.\n2. The CPU jumps to the designated Interrupt Service Routine (ISR) via the interrupt vector table.\n3. The operating system kernel services the cause of the interrupt (e.g., timer tick, I/O device completion, keyboard stroke, disk controller ready).\n\n### 2. Process State Transitions Following an Interrupt\nWhat happens to the interrupted process after the ISR completes depends on the nature of the interrupt and the OS scheduling policy:\n- **Scenario 1: Preemption or Blocking:**\n  - If the interrupt was triggered because the running process initiated an I/O operation (or requested an unavailable resource), the OS transitions the process from the **Running** state to the **Blocked (Waiting)** state, and the scheduler dispatches another process from the **Ready** queue.\n  - If the interrupt was a timer interrupt signaling the expiration of a time quantum, the running process transitions from **Running** to **Ready**, and another process is scheduled.\n- **Scenario 2: Resumption:**\n  - If the interrupt was a background I/O completion for a low-priority process, the interrupted process may simply resume execution in the **Running** state.\n\n### 3. Evaluating the Answer Choices\n- **Option A (\"ignores the interrupt\"):** False; valid unmasked interrupts are always trapped and processed by the CPU.\n- **Option B (\"always changes state...\"):** False; if the interrupted process retains the highest priority, its state is not changed and it resumes immediately.\n- **Option C (\"always resumes execution...\"):** False; if a time quantum expired or the process requested I/O, it is preempted or blocked.\n- **Option D (\"may change state of interrupted process to 'blocked' and schedule another process\"):** True; accurately reflects the conditional behavior of the OS kernel scheduler.\n\n**Therefore, the correct answer is Option D.**",
+        "images": []
+      }
     },
     "go:2240": {
       "title": "GATE CSE 1997 | Question: 3.9",
@@ -955,7 +1035,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - Virtual Memory Thrashing Characteristics",
+        "markdown": "### 1. Conceptual Framework: Thrashing in Virtual Memory\nIn a paged virtual memory system, **thrashing** is a severe pathological condition where the system spends significantly more time moving pages between physical memory and swap disk than executing actual program instructions.\n\n### 2. Physical Mechanism and Causes\n1. **Working Set Deficit:**\n   - Let $\\text{WSS}_i$ be the Working Set Size of process $i$ (the number of page frames needed to support its current locality of reference).\n   - If the total memory demand of all active processes exceeds the total number of physical memory frames available in RAM:\n     $$\\sum_{i} \\text{WSS}_i > D \\ (\\text{Total Available Physical Frames})$$\n2. **Cascading Page Faults:**\n   - Processes do not possess enough resident frames to hold their active working sets.\n   - When process $A$ faults, it evicts a page belonging to process $B$.\n   - Almost immediately, process $B$ references the evicted page and faults, evicting a page from process $A$ or $C$.\n   - The system gets locked in a perpetual cycle of page evictions and re-fetches.\n3. **Paging I/O Saturation:**\n   - The disk queuing system becomes saturated with continuous page-in and page-out requests.\n   - This leads directly to **excessive page I/O**.\n   - As a consequence, CPU utilization plunges to near zero, causing overall system throughput to collapse.\n\n### 3. Distractor Analysis\n- **Option A (reduces page I/O):** False; thrashing causes an explosion of page I/O traffic.\n- **Option B (decreases the degree of multiprogramming):** False; the OS misinterprets low CPU utilization as under-utilization and initially *increases* the degree of multiprogramming, which triggers or worsens thrashing. (Decreasing the degree of multiprogramming by swapping out processes is the remedy, not what thrashing itself does).\n- **Option C (implies excessive page I/O):** Correct; excessive paging activity is the hallmark definition of thrashing.\n- **Option D (improve the system performance):** False; thrashing virtually halts system progress.\n\n**Therefore, the correct answer is Option C (implies excessive page I/O).**",
+        "images": []
+      }
     },
     "go:2241": {
       "title": "GATE CSE 1997 | Question: 3.10, ISRO2008-57, ISRO2015-64",
@@ -2386,6 +2471,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Networks / Serial Communication - RS-232 Asynchronous Framing & Start Bit",
+        "markdown": "### 1. Conceptual Framework: Asynchronous Serial Communication\nIn asynchronous serial communication protocols (such as RS-232 / UART):\n- Data is transmitted over a single wire without a shared synchronized clock line between the transmitter and receiver.\n- Characters can be transmitted at arbitrary, irregular time intervals.\n- When no data is being sent, the communication line remains in the continuous **idle state**, held at logic high (Mark state, $-12\\text{ V}$ in RS-232 physical signaling).\n\n### 2. The Role of the Start Bit\n1. **Clock Drift in Independent Oscillators:**\n   - The transmitter and receiver operate independent local clocks configured to the same nominal baud rate.\n   - Due to physical crystal oscillator tolerances, temperature, and drift, the receiver's clock is never perfectly synchronized with the transmitter's clock.\n2. **Frame Synchronization per Byte:**\n   - To transmit a byte, the transmitter precedes the data bits with a **start bit** by driving the line to logic low (Space state) for exactly one bit period.\n   - The falling edge (high-to-low transition) of the start bit alerts the receiver that a new character frame has arrived.\n   - The receiver uses this transition to reset its internal baud-rate counter and align its sampling clock so that it samples each subsequent incoming data bit near the center of its bit window.\n   - Because timing drift accumulates over consecutive bits, this clock synchronization must occur afresh for **every individual byte/character**.\n\n### 3. Distractor Analysis\n- **Option A:** Correct; the start bit synchronizes the receiver's sampling clock for receiving every individual byte.\n- **Option B:** Incorrect; in synchronous protocols (such as HDLC), a preamble/sync sequence synchronizes a stream or block of bytes, but RS-232 is asynchronous and frames each byte independently.\n- **Option C:** Incorrect; parity is an optional error-detection bit placed at the end of the data bits, completely distinct from the start bit.\n- **Option D:** Incorrect; the stop bit(s) mark the end of the frame, not the start bit.\n\n**Therefore, the correct answer is Option A.**",
+        "images": []
       }
     },
     "go:2251": {

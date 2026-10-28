@@ -240,7 +240,15 @@ export class IsroQuestionService {
   static getAnswerForQuestion(question: any = {}) {
     const uid = clean(question.question_uid || question.uid || question.id);
     if (!uid) return null;
-    return normalizeAnswer(this.answersByQuestionUid[uid], question as QuestionRow);
+    const embeddedAnswer = question.answer != null ? question.answer : question.answer_meta?.answer;
+    const record = this.answersByQuestionUid[uid] || (embeddedAnswer != null ? {
+      answer_uid: clean(question.answer_uid || uid),
+      question_uid: uid,
+      type: question.type || question.answer_meta?.type || "MCQ",
+      answer: embeddedAnswer,
+      tolerance: question.tolerance ?? question.answer_meta?.tolerance ?? null,
+    } : null);
+    return normalizeAnswer(record, question as QuestionRow);
   }
 
   static getStorageKeyForQuestion(question: any = {}) {

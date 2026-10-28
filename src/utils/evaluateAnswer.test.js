@@ -3650,6 +3650,57 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
         expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
       });
+
+      test("evaluates ec:2025:ga:q5 (GATE EC 2025 GA Q5) as MCQ Option B (signum function f(x) = |x|/x)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "B",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates ec:2022:q47 (GATE EC 2022 Q47) as NAT 0.75 within [0.7, 0.8]", () => {
+        const record = {
+          type: "NAT",
+          answer: 0.75,
+          tolerance: { lower: 0.7, upper: 0.8 },
+        };
+        expect(evaluateAnswer(record, "0.75")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 0.75)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "0.7")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "0.8")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "0.65")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "0.85")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:1328 (GATE CSE 2009 Q42) as MCQ Option B (Statements I and IV true)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "B",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates isro:cs:2023:q4 (ISRO CS 2023 Q4) as MCQ Option D (BST postorder traversal)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });

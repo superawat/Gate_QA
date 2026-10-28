@@ -3074,6 +3074,79 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
             answer: "A",
           });
         });
+
+        test("resolves ec:2025:ga:q5 (GATE EC 2025 GA Q5) as MCQ Option B", () => {
+          AnswerService.answersByQuestionUid = {
+            "ec:2025:ga:q5": {
+              answer_uid: "ec:2025:ga:q5",
+              type: "MCQ",
+              answer: "B",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "ec:2025:ga:q5",
+            title: "GATE EC 2025 | Set 1 | GA | Question: 5",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "B",
+          });
+        });
+
+        test("resolves ec:2022:q47 (GATE EC 2022 Q47) as NAT 0.75", () => {
+          AnswerService.answersByQuestionUid = {
+            "ec:2022:q47": {
+              answer_uid: "ec:2022:q47",
+              type: "NAT",
+              answer: 0.75,
+              tolerance: { lower: 0.7, upper: 0.8 },
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "ec:2022:q47",
+            title: "GATE EC 2022 | Set 1 | Question: 47",
+          });
+          expect(answer).toMatchObject({
+            type: "NAT",
+            answer: 0.75,
+          });
+        });
+
+        test("resolves go:1328 (GATE CSE 2009 Q42) as MCQ Option B", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:1328": {
+              answer_uid: "v2:3.17.18",
+              type: "MCQ",
+              answer: "B",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:1328",
+            title: "GATE CSE 2009 | Question: 42",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "B",
+          });
+        });
+
+        test("resolves isro:cs:2023:q4 (ISRO CS 2023 Q4) as MCQ Option D", () => {
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "isro:cs:2023:q4",
+            title: "ISRO CS 2023 | Question 4",
+            answer_meta: {
+              type: "MCQ",
+              answer: "D",
+              tolerance: null,
+            },
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "D",
+          });
+        });
       });
     });
   });

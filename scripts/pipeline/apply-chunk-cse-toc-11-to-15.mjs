@@ -791,15 +791,50 @@ Therefore, the correct answer is **Option C (end with 00)**.`,
   },
 
   "go:1328": {
-    concept: "Compiler Design - Parsing Algorithms Time Complexity Comparison",
-    markdown: `- **Concept / Theoretical Foundation**:
-  - We evaluate statements on parsing complexities:
-    1. For arbitrary context-free grammars, general parsing algorithms (such as the CYK or Earley algorithm) have a worst-case time complexity of $O(n^3)$.
-    2. However, for deterministic subclasses of context-free languages used in actual programming languages (such as LL(1), LR(1), and LALR(1) grammars), predictive top-down and shift-reduce bottom-up parsers run in strictly **linear time $\\Theta(n)$**!
-    3. Since $\\Theta(n) < \\Theta(n^3)$, there indeed exist parsing algorithms for programming languages with complexities strictly less than $\\Theta(n^3)$.
-  - Matches **Option B**.
+    concept: "Compiler Design - Parsing Algorithms Time Complexity, Runtime Storage Allocation, and Code Optimization",
+    markdown: `### 1. Statement-by-Statement Analysis
 
-Therefore, the correct answer is **Option B**.`,
+#### Statement I: "There exist parsing algorithms for some programming languages whose complexities are less than $\\Theta(n^3)$"
+- **Analysis:**
+  - For arbitrary, unrestricted Context-Free Grammars (CFGs), general parsing algorithms such as the **CYK (Cocke-Younger-Kasami) algorithm** and the **Earley algorithm** have a worst-case time complexity of $\\Theta(n^3)$ (or $O(n^{2.373})$ using fast matrix multiplication).
+  - However, actual programming languages are specifically designed using deterministic subclasses of context-free grammars (such as **LL(1)**, **LR(0)**, **SLR(1)**, **LALR(1)**, and **LR(1)** grammars).
+  - For these deterministic grammars, predictive top-down parsers and shift-reduce bottom-up parsers parse any input string of length $n$ in strictly **linear time $\\Theta(n)$**.
+  - Since linear time $\\Theta(n)$ is strictly less than $\\Theta(n^3)$, there indeed exist parsing algorithms for programming languages with complexities strictly less than $\\Theta(n^3)$.
+  - **Verdict:** **TRUE**.
+
+#### Statement II: "A programming language which allows recursion can be implemented with static storage allocation."
+- **Analysis:**
+  - In a programming language that allows recursive procedure calls, a function can invoke itself directly or indirectly while previous invocations have not yet completed execution.
+  - This requires multiple distinct **activation records (stack frames)** for the same procedure to coexist simultaneously in memory at runtime (each retaining its own instance of local variables, parameters, and return addresses).
+  - **Static storage allocation** binds names to fixed storage locations in memory at compile time prior to execution. Because each procedure is allocated only a single fixed memory location for its local data, a recursive call would overwrite the values belonging to the previous active invocation.
+  - Therefore, recursion fundamentally requires **dynamic storage allocation** (specifically, stack-based runtime storage management).
+  - **Verdict:** **FALSE**.
+
+#### Statement III: "No L-attributed definition can be evaluated in the framework of bottom-up parsing."
+- **Analysis:**
+  - An **L-attributed Syntax-Directed Definition (SDD)** is one where every attribute is either synthesized, or inherited such that the inherited attribute for a symbol $X_j$ in production $A \\to X_1 X_2 \\dots X_n$ depends only on the inherited attributes of $A$ or the attributes of symbols $X_1, X_2, \\dots, X_{j-1}$ appearing to the left of $X_j$.
+  - While S-attributed definitions (synthesized attributes only) are directly evaluated during bottom-up LR parsing reductions, **almost all L-attributed definitions can also be evaluated in a bottom-up parsing framework**:
+    1. By modifying the underlying grammar with **marker non-terminals** ($M \\to \\varepsilon$) that execute embedded semantic actions to compute inherited values before the remaining right-hand side symbols are parsed.
+    2. By executing translation schemes during bottom-up parsing where inherited attributes are copied directly from known positions on the LR parser stack.
+  - Therefore, the categorical claim that *"No L-attributed definition can be evaluated in the framework of bottom-up parsing"* is incorrect.
+  - **Verdict:** **FALSE**.
+
+#### Statement IV: "Code improving transformations can be performed at both source language and intermediate code level."
+- **Analysis:**
+  - Code-improving (optimization) transformations are applied at multiple distinct stages of compiler design:
+    1. **Source language / High-Level AST level:** Transformations such as **constant folding**, **function inlining**, **loop unrolling**, and high-level algebraic simplifications can be performed directly on the Abstract Syntax Tree (AST) before or during intermediate code generation.
+    2. **Intermediate code level:** Machine-independent transformations such as **Common Subexpression Elimination (CSE)**, **Dead Code Elimination**, **Loop-Invariant Code Motion (code hoisting)**, **copy propagation**, and strength reduction are standardly performed on three-address code (3AC) and Control Flow Graphs (CFGs).
+  - Thus, optimizations are legitimately and routinely performed at both levels.
+  - **Verdict:** **TRUE**.
+
+---
+
+### 2. Conclusion & Option Matching
+- Statements **I** and **IV** are **TRUE**.
+- Statements **II** and **III** are **FALSE**.
+- This directly matches **Option B (I and IV)**.
+
+**Correct Answer: Option B**`,
     images: []
   }
 };

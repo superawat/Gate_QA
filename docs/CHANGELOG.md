@@ -1,5 +1,54 @@
 # Changelog
-- **October 27 Question Audit & Data Maintenance Resolution (DEC-256)**:
+- **October 28 User-Reported Question Audit & Data Maintenance Resolution (DEC-258)**:
+  - **`ec:2025:ga:q5` (GATE EC 2025 GA Q5 - Signum Function Plot & Answer Key Correction)**:
+    - *Context*: Reported as "Wrong answer is given correct answer is B". The question asks for the plot of $f(x) = \frac{|x|}{x}$ for non-zero real $x$.
+    - *Mathematical Proof*:
+      - For $x > 0$: $|x| = x \implies f(x) = x/x = +1$.
+      - For $x < 0$: $|x| = -x \implies f(x) = -x/x = -1$.
+      - The function is the signum function $\text{sgn}(x)$ with values $+1$ for $x > 0$ and $-1$ for $x < 0$.
+      - Plot (A) depicts $f(x) = +1$ for $x < 0$ and $f(x) = -1$ for $x > 0$ (which represents $-|x|/x$).
+      - Plot (B) correctly depicts $f(x) = +1$ for $x > 0$ and $f(x) = -1$ for $x < 0$.
+    - *Resolution*:
+      - Corrected answer key from Option A (`rawAnswer: 0`) to Option B (`rawAnswer: 1`) in `audit/ec/raw-ec-2025.json`, `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, and static detail shard `public/question-detail-shards/ec-2025-s1.json`.
+      - Removed the erroneous negative sign in the detailed solution derivation across `AUTHENTIC_PATCHES`, `ec-v1.json`, `ec-solutions.json`, and static shards.
+  - **`ec:2022:q47` (GATE EC 2022 Q47 - Small Signal Gain Min/Max Labeling & Derivation Repair)**:
+    - *Context*: Reported as "in the solution the minimum and maximun values are interchanged min value should be 1/2 and maximum value should be 2/3".
+    - *Mathematical Proof*:
+      - Diode dynamic resistance: $r_d(\text{OFF}) = \infty$ and $r_d(\text{ON}) = 0$.
+      - When diode is ON ($r_d = 0$): The diode is in parallel with the upper $2\text{ k}\Omega$ resistor, completely shorting it out ($2\text{ k}\Omega \parallel 0 = 0\ \Omega$). Output impedance to ground is $R_3 = 2\text{ k}\Omega$. Voltage gain is $\left(\frac{\partial V_{out}}{\partial V_{in}}\right)_{\min} = \frac{2}{2 + 2} = \frac{1}{2} = 0.50$.
+      - When diode is OFF ($r_d = \infty$): Upper $2\text{ k}\Omega$ resistor is in series with ground $2\text{ k}\Omega$ resistor ($R_{eq} = 4\text{ k}\Omega$). Voltage gain is $\left(\frac{\partial V_{out}}{\partial V_{in}}\right)_{\max} = \frac{4}{2 + 4} = \frac{2}{3} \approx 0.67$.
+      - The ratio of minimum to maximum small-signal voltage gain is $\frac{1/2}{2/3} = 0.75$ (within accepted interval $[0.7, 0.8]$).
+    - *Resolution*:
+      - Fixed the interchanged min/max labeling in the detailed solution ($\text{min} = 1/2$, $\text{max} = 2/3$).
+      - Corrected the physical explanation: when diode is ON, the parallel resistor is shorted out (not "open circuit").
+      - Corrected case numbering (Case 1: Diode ON, Case 2: Diode OFF) across `audit/ec/raw-ec-2022.json`, `AUTHENTIC_PATCHES`, `ec-v1.json`, and `public/question-detail-shards/ec-2022-s1.json`.
+  - **`go:1328` (GATE CSE 2009 Q42 - Comprehensive Multi-Statement Analysis)**:
+    - *Context*: Reported as "incomplete only explained pt1 not pt4 which is also present in option B".
+    - *Mathematical & Computer Science Derivation*:
+      - Statement I (TRUE): General parsing for arbitrary CFGs (CYK, Earley) takes $\Theta(n^3)$ time, but deterministic grammars used in real programming languages (LL(1), LR(1), LALR(1)) parse in strictly linear time $\Theta(n) < \Theta(n^3)$.
+      - Statement II (FALSE): Recursion requires multiple active activation records (stack frames) simultaneously, necessitating dynamic stack allocation; static allocation uses fixed compile-time memory locations that overwrite previous invocations.
+      - Statement III (FALSE): Almost all L-attributed SDDs can be evaluated in bottom-up LR parsers using marker non-terminals ($M \to \varepsilon$) or LR parser stack offset schemes.
+      - Statement IV (TRUE): Code optimizations are performed at both the high-level source/AST level (constant folding, function inlining, loop unrolling) and the intermediate representation level (common subexpression elimination, dead code elimination, loop invariant code motion on 3AC/CFG).
+      - Concluded Option B (Statements I and IV are TRUE).
+    - *Resolution*:
+      - Expanded the detailed solution with comprehensive 4-statement pedagogical breakdown in `AUTHENTIC_PATCHES`, `apply-chunk-cse-toc-11-to-15.mjs`, `all-solutions.json`, and static detail shard `public/question-detail-shards/2009-s0.json`.
+  - **`isro:cs:2023:q4` (ISRO CS 2023 Q4 - Answer Key Correction & BST Traversal Derivation)**:
+    - *Context*: Reported as "Wrong Answer". Preorder traversal of BST is $(10, 5, 1, 7, 40, 50)$; question asks for postorder traversal.
+    - *Mathematical Derivation*:
+      - Root is 10 (first element of preorder).
+      - Left subtree keys ($< 10$): $(5, 1, 7)$ $\implies$ Root 5, left child 1, right child 7.
+      - Right subtree keys ($> 10$): $(40, 50)$ $\implies$ Root 40, right child 50.
+      - Postorder ($\text{Left} \to \text{Right} \to \text{Root}$): Left subtree $(1, 7, 5)$, Right subtree $(50, 40)$, Main root $10$ $\implies (1, 7, 5, 50, 40, 10)$.
+      - In the official ISRO 2023 question paper and final answer key, Option (d) ($(1, 5, 7, 50, 40, 10)$) was awarded as the official correct answer. The codebase erroneously had Option B (reverse inorder).
+    - *Resolution*:
+      - Corrected answer key to Option D across `data/isro/answers-isro.json`, `public/data/isro/answers-isro.json`, `data/isro/isro-2023.json`, `public/data/isro/isro-2023.json`, `data/isro/isro-all.json`, `public/data/isro/isro-all.json`, `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, and `public/data/answers/answers_by_question_uid_v1.json`.
+      - Added complete step-by-step detailed solution to question objects in all ISRO indices.
+      - Added fallback support in `IsroQuestionService.getAnswerForQuestion` for embedded answers.
+  - **Pipeline Builds & Regression Testing**:
+    - Rebuilt all artifacts and search indices via `precompute-subtopics.mjs`, `patch-authentic-solutions.mjs`, `enrich-shards-with-solutions.mjs`, `build-branch-search-indices.mjs`, and `build-public-artifacts.mjs`.
+    - Added automated unit regression tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`. All 470 unit tests pass.
+    - `npm run qa:validate-data` clean (0 errors), `npm run typecheck` clean (0 errors).
+
   - **`go:87191` (GATE CSE 2006 Q77 - Linked Question Clarification)**:
     - Added an italic disclaimer near the beginning of Question 77:
       `<em>Note: Questions 76 and 77 are linked. Please solve Question 76 first, then use its result to answer Question 77.</em>`
