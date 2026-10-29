@@ -7,6 +7,7 @@
  */
 
 import type { SubjectNode } from "./trackerTaxonomy";
+import { createGeneralAptitudeSubject } from "./generalAptitudeTaxonomy";
 
 export const CE_SUBJECTS: SubjectNode[] = [
   {
@@ -545,5 +546,6 @@ export const CE_SUBJECTS: SubjectNode[] = [
         ]
       }
     ]
-  }
+  },
+  createGeneralAptitudeSubject("ce"),
 ];

@@ -324,8 +324,23 @@ async function buildNewBranchShards() {
         totalQuestionsBuilt++;
       }
 
+      const shardOutPath = path.join(SHARDS_DIR, `${shardKey}.json`);
+      let generatedAt = new Date().toISOString();
+      if (fs.existsSync(shardOutPath)) {
+        try {
+          const existing = JSON.parse(fs.readFileSync(shardOutPath, "utf-8"));
+          if (
+            existing?.recordsByQuestionUid &&
+            existing.questionCount === Object.keys(recordsByQuestionUid).length &&
+            JSON.stringify(existing.recordsByQuestionUid) === JSON.stringify(recordsByQuestionUid)
+          ) {
+            generatedAt = existing.generatedAt || generatedAt;
+          }
+        } catch (_) {}
+      }
+
       const shardPayload = {
-        generatedAt: new Date().toISOString(),
+        generatedAt,
         shardKey,
         yearSetKey,
         yearSetIdentity,
@@ -337,16 +352,27 @@ async function buildNewBranchShards() {
         recordsByQuestionUid,
       };
 
-      // Write shard
-      const shardOutPath = path.join(SHARDS_DIR, `${shardKey}.json`);
-      fs.writeFileSync(shardOutPath, JSON.stringify(shardPayload, null, 2), "utf-8");
+      // Only write shard if content actually changed
+      const nextContent = JSON.stringify(shardPayload, null, 2).replace(/\r\n/g, "\n");
+      let wrote = true;
+      if (fs.existsSync(shardOutPath)) {
+        try {
+          const currentContent = fs.readFileSync(shardOutPath, "utf-8").replace(/\r\n/g, "\n");
+          if (currentContent === nextContent) {
+            wrote = false;
+          }
+        } catch (_) {}
+      }
+      if (wrote) {
+        fs.writeFileSync(shardOutPath, nextContent, "utf-8");
+      }
 
       // Verify uncompressed size is under 250 KB
       const sizeBytes = fs.statSync(shardOutPath).size;
       const sizeKb = (sizeBytes / 1024).toFixed(1);
       if (sizeBytes > 250 * 1024) {
         console.warn(`[SIZE_WARN] Shard ${shardKey} exceeds 250 KB budget: ${sizeKb} KB`);
-      } else {
+      } else if (wrote) {
         console.log(`📦 Built shard: ${shardKey}.json (${sizeKb} KB, ${shardPayload.questionCount} Qs)`);
       }
 

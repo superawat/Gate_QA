@@ -230,6 +230,7 @@ export const isDaQuestion = (question = {}) => (
 );
 
 export function isBranchGaQuestion(question = {}) {
+  if (!question || typeof question !== "object") return false;
   const subjectSlug = String(question?.subjectSlug || "").toLowerCase();
   const section = String(question?.section || "").toLowerCase();
   const subject = String(question?.subject || "").toLowerCase();
@@ -237,6 +238,10 @@ export function isBranchGaQuestion(question = {}) {
   const primarySubjectSlug = String(question?.taxonomy?.primary?.subjectSlug || "").toLowerCase();
   const primarySubjectLabel = String(question?.taxonomy?.primary?.subjectLabel || "").toLowerCase();
   const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t).toLowerCase()) : [];
+  const examUid = String(question?.exam_uid || question?.examUid || "").toLowerCase();
+  const title = String(question?.title || "").toLowerCase();
+  const paperScope = String(question?.paper_scope || question?.paperScope || "").toLowerCase();
+
   return (
     subjectSlug === "ga" ||
     subjectSlug === "general-aptitude" ||
@@ -247,7 +252,13 @@ export function isBranchGaQuestion(question = {}) {
     primarySubjectSlug === "general-aptitude" ||
     primarySubjectLabel === "general aptitude" ||
     tags.includes("ga") ||
-    tags.includes("general-aptitude")
+    tags.includes("general-aptitude") ||
+    examUid.includes(":ga:") ||
+    title.includes("ga question") ||
+    /question:\s*ga-/i.test(title) ||
+    /\|\s*ga\s*\|/i.test(title) ||
+    paperScope === "official_ga" ||
+    paperScope === "additional_ga"
   );
 }
 

@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import React from 'react';
-import { render, act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { render, act, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider, normalizeStoredIds, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
@@ -501,9 +501,12 @@ describe('FilterContext', () => {
             expect(getByTestId('subject-options').textContent).toContain('da:linear-algebra');
         });
 
+        const daWrapper = document.querySelector('.gate-da-section-wrapper');
+        const daScope = daWrapper ? within(daWrapper) : screen;
+
         for (const [label, subjectKey, questionUid] of daSubjects) {
             act(() => {
-                screen.getByLabelText(new RegExp(label, 'i')).click();
+                daScope.getByLabelText(new RegExp(label, 'i')).click();
             });
 
             await waitFor(() => {
@@ -512,7 +515,7 @@ describe('FilterContext', () => {
             });
 
             act(() => {
-                screen.getByLabelText(new RegExp(label, 'i')).click();
+                daScope.getByLabelText(new RegExp(label, 'i')).click();
             });
 
             await waitFor(() => {

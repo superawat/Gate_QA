@@ -317,5 +317,97 @@ describe("BranchFilterIntegration in FilterSidebar", () => {
     fireEvent.click(resetButton);
     expect(mockClearFilters).toHaveBeenCalled();
   });
+
+  test("selecting General Aptitude on CSE card triggers updateFilters with selectedGaBranches: ['cse']", () => {
+    writeBranchPreferences(["cse"], "cse");
+
+    const mockUpdateFilters = vi.fn();
+    const mockFilterState = {
+      filteredQuestions: [],
+      totalQuestions: 10,
+      filters: {
+        selectedTypes: ["MCQ"],
+        selectedSubjects: [],
+        selectedSubtopics: [],
+        selectedYearSets: [],
+        selectedGaBranches: [],
+      },
+      structuredTags: {
+        subjects: [
+          { slug: "algorithms", label: "Algorithms" },
+          { slug: "databases", label: "Databases" },
+        ],
+      },
+      isCseEnrolled: true,
+      includeCse: true,
+      selectedBranches: ["cse"],
+      activeBranch: "cse",
+    };
+
+    render(
+      <BrowserRouter>
+        <FilterStateContext.Provider value={mockFilterState}>
+          <FilterActionsContext.Provider value={{ updateFilters: mockUpdateFilters }}>
+            <FilterSidebar />
+          </FilterActionsContext.Provider>
+        </FilterStateContext.Provider>
+      </BrowserRouter>
+    );
+
+    const cseGaCheckbox = screen.getByRole("checkbox", { name: "General Aptitude for CSE" });
+    expect(cseGaCheckbox).toBeDefined();
+    fireEvent.click(cseGaCheckbox);
+
+    expect(mockUpdateFilters).toHaveBeenCalledWith({
+      selectedGaBranches: ["cse"],
+    });
+  });
+
+  test("selecting General Aptitude on DA card triggers updateFilters with selectedSubjects: ['da:general-aptitude']", () => {
+    writeBranchPreferences(["da"], "da");
+
+    const mockUpdateFilters = vi.fn();
+    const mockFilterState = {
+      filteredQuestions: [],
+      totalQuestions: 10,
+      filters: {
+        selectedTypes: ["MCQ"],
+        selectedSubjects: [],
+        selectedSubtopics: [],
+        selectedYearSets: [],
+        selectedGaBranches: [],
+      },
+      structuredTags: {
+        subjects: [
+          { slug: "da:probability-and-statistics", label: "Probability & Statistics" },
+          { slug: "da:general-aptitude", label: "General Aptitude" },
+        ],
+      },
+      isCseEnrolled: false,
+      isDaEnrolled: true,
+      includeDa: true,
+      selectedBranches: ["da"],
+      activeBranch: "da",
+    };
+
+    render(
+      <BrowserRouter>
+        <FilterStateContext.Provider value={mockFilterState}>
+          <FilterActionsContext.Provider value={{ updateFilters: mockUpdateFilters }}>
+            <FilterSidebar />
+          </FilterActionsContext.Provider>
+        </FilterStateContext.Provider>
+      </BrowserRouter>
+    );
+
+    const daGaCheckbox = screen.getByRole("checkbox", { name: "General Aptitude" });
+    expect(daGaCheckbox).toBeDefined();
+    fireEvent.click(daGaCheckbox);
+
+    expect(mockUpdateFilters).toHaveBeenCalledWith({
+      selectedSubjects: ["da:general-aptitude"],
+    });
+  });
 });
+
 

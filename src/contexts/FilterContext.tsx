@@ -1723,7 +1723,7 @@ export const FilterProvider = ({
             || [];
         const rawSubtopicTokens = params.get('subtopics')?.split(',').filter(Boolean) || [];
         const rawGaBranchTokens = params.get('gaBranches')?.split(',').map(b => b.trim().toLowerCase()).filter(Boolean) || [];
-        const validGaBranches = rawGaBranchTokens.filter(b => ['ec', 'ee', 'me', 'ce'].includes(b));
+        const validGaBranches = rawGaBranchTokens.filter(b => ['cse', 'da', 'ec', 'ee', 'me', 'ce'].includes(b));
 
         const urlFilters = {
             selectedYearSets: normalizeYearSetTokens(rawYearTokens, questionService),
@@ -2702,10 +2702,12 @@ export const FilterProvider = ({
                     const parsed = parseTrackYearSetKey(ys);
                     return parsed?.track === 'da' || parsed?.track === 'isro';
                 });
+                const nextGaBranches = (prev.selectedGaBranches || []).filter((b) => b !== 'cse');
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
                     && nextSubtopics.length === prev.selectedSubtopics.length
                     && nextYearSets.length === prev.selectedYearSets.length
+                    && nextGaBranches.length === (prev.selectedGaBranches || []).length
                 ) {
                     return prev;
                 }
@@ -2714,6 +2716,7 @@ export const FilterProvider = ({
                     selectedSubjects: nextSubjects,
                     selectedSubtopics: nextSubtopics,
                     selectedYearSets: nextYearSets,
+                    selectedGaBranches: nextGaBranches,
                 };
             });
         }
@@ -2728,10 +2731,12 @@ export const FilterProvider = ({
                 const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('da:'));
                 const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('da:'));
                 const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('da:'));
+                const nextGaBranches = (prev.selectedGaBranches || []).filter((b) => b !== 'da');
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
                     && nextSubtopics.length === prev.selectedSubtopics.length
                     && nextYearSets.length === prev.selectedYearSets.length
+                    && nextGaBranches.length === (prev.selectedGaBranches || []).length
                 ) {
                     return prev;
                 }
@@ -2740,6 +2745,7 @@ export const FilterProvider = ({
                     selectedSubjects: nextSubjects,
                     selectedSubtopics: nextSubtopics,
                     selectedYearSets: nextYearSets,
+                    selectedGaBranches: nextGaBranches,
                 };
             });
         }

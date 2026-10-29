@@ -49,6 +49,316 @@ export const AUTHENTIC_PATCHES = {
 **Correct Answer: Option B**`,
     images: []
   },
+  "ec:2016:q44-s3": {
+    concept: "Digital Circuits - Combinational Circuit Timing & Critical Path Propagation Delay",
+    markdown: `### 1. Problem Formulation & Component Delays
+We are given a combinational logic circuit with inputs $P, Q, R, S, T$ applied simultaneously at $t = 0$.
+The gate propagation delays are:
+- **NOR gates ($t_{\\text{NOR}}$):** $2\\text{ ns}$
+- **Multiplexers ($t_{\\text{MUX}}$):** $1.5\\text{ ns}$
+- **Inverters ($t_{\\text{INV}}$):** $1\\text{ ns}$
+
+We are required to determine the **maximum propagation delay** (critical path delay) to output $Y$.
+
+---
+
+### 2. Signal Propagation & Delay Analysis by Stage
+
+#### Stage 1: First Multiplexer (MUX 1) Inputs
+- **Data Input '0':** Fed by the output of **NOR gate 1** with inputs $Q$ and $R$:
+  $$t_{\\text{in0, MUX1}} = t_{\\text{NOR}} = 2\\text{ ns}$$
+- **Data Input '1':** Fed by the output of an **inverter** with input $S$:
+  $$t_{\\text{in1, MUX1}} = t_{\\text{INV}} = 1\\text{ ns}$$
+- **Select Input $S_0$:** Directly connected to primary input $T$:
+  $$t_{\\text{sel, MUX1}} = 0\\text{ ns}$$
+
+For MUX 1, the latest arriving data input is at $t = 2\\text{ ns}$ (via NOR gate 1).
+Adding the multiplexer propagation delay ($1.5\\text{ ns}$), the output of MUX 1 is valid at:
+$$t_{\\text{out, MUX1}} = 2\\text{ ns} + 1.5\\text{ ns} = 3.5\\text{ ns}$$
+
+#### Stage 2: Second NOR Gate (NOR 2)
+- Input 1 is primary input $P$ (arrives at $t = 0\\text{ ns}$).
+- Input 2 is the output of MUX 1 (arrives at $t = 3.5\\text{ ns}$).
+The propagation through NOR gate 2 ($2\\text{ ns}$) gives:
+$$t_{\\text{out, NOR2}} = 3.5\\text{ ns} + 2\\text{ ns} = 5.5\\text{ ns}$$
+
+#### Stage 3: Second Multiplexer (MUX 2) Inputs & Final Output $Y$
+- **Data Input '0':** Fed by the output of NOR gate 2:
+  $$t_{\\text{in0, MUX2}} = 5.5\\text{ ns}$$
+- **Data Input '1':** Directly connected to the output of MUX 1:
+  $$t_{\\text{in1, MUX2}} = 3.5\\text{ ns}$$
+- **Select Input $S_0$:** Fed by the inverter driven by $T$:
+  $$t_{\\text{sel, MUX2}} = t_{\\text{INV}} = 1\\text{ ns}$$
+
+The critical signal arriving at the inputs of MUX 2 is through data input '0' at $t = 5.5\\text{ ns}$.
+Adding the propagation delay of MUX 2 ($1.5\\text{ ns}$):
+$$t_{\\text{max}} = 5.5\\text{ ns} + 1.5\\text{ ns} = 7.0\\text{ ns}$$
+
+---
+
+### 3. Critical Path Summary
+$$\\text{Critical Path} = \\text{NOR}_1 \\rightarrow \\text{MUX}_1 \\rightarrow \\text{NOR}_2 \\rightarrow \\text{MUX}_2$$
+$$\\text{Total Delay} = 2\\text{ ns} + 1.5\\text{ ns} + 2\\text{ ns} + 1.5\\text{ ns} = 7\\text{ ns}$$
+
+**Correct Answer: 7**`,
+    images: []
+  },
+  "pp:ec:2016:q44-s3": {
+    concept: "Digital Circuits - Combinational Circuit Timing & Critical Path Propagation Delay",
+    markdown: `### 1. Problem Formulation & Component Delays
+We are given a combinational logic circuit with inputs $P, Q, R, S, T$ applied simultaneously at $t = 0$.
+The gate propagation delays are:
+- **NOR gates ($t_{\\text{NOR}}$):** $2\\text{ ns}$
+- **Multiplexers ($t_{\\text{MUX}}$):** $1.5\\text{ ns}$
+- **Inverters ($t_{\\text{INV}}$):** $1\\text{ ns}$
+
+We are required to determine the **maximum propagation delay** (critical path delay) to output $Y$.
+
+---
+
+### 2. Signal Propagation & Delay Analysis by Stage
+
+#### Stage 1: First Multiplexer (MUX 1) Inputs
+- **Data Input '0':** Fed by the output of **NOR gate 1** with inputs $Q$ and $R$:
+  $$t_{\\text{in0, MUX1}} = t_{\\text{NOR}} = 2\\text{ ns}$$
+- **Data Input '1':** Fed by the output of an **inverter** with input $S$:
+  $$t_{\\text{in1, MUX1}} = t_{\\text{INV}} = 1\\text{ ns}$$
+- **Select Input $S_0$:** Directly connected to primary input $T$:
+  $$t_{\\text{sel, MUX1}} = 0\\text{ ns}$$
+
+For MUX 1, the latest arriving data input is at $t = 2\\text{ ns}$ (via NOR gate 1).
+Adding the multiplexer propagation delay ($1.5\\text{ ns}$), the output of MUX 1 is valid at:
+$$t_{\\text{out, MUX1}} = 2\\text{ ns} + 1.5\\text{ ns} = 3.5\\text{ ns}$$
+
+#### Stage 2: Second NOR Gate (NOR 2)
+- Input 1 is primary input $P$ (arrives at $t = 0\\text{ ns}$).
+- Input 2 is the output of MUX 1 (arrives at $t = 3.5\\text{ ns}$).
+The propagation through NOR gate 2 ($2\\text{ ns}$) gives:
+$$t_{\\text{out, NOR2}} = 3.5\\text{ ns} + 2\\text{ ns} = 5.5\\text{ ns}$$
+
+#### Stage 3: Second Multiplexer (MUX 2) Inputs & Final Output $Y$
+- **Data Input '0':** Fed by the output of NOR gate 2:
+  $$t_{\\text{in0, MUX2}} = 5.5\\text{ ns}$$
+- **Data Input '1':** Directly connected to the output of MUX 1:
+  $$t_{\\text{in1, MUX2}} = 3.5\\text{ ns}$$
+- **Select Input $S_0$:** Fed by the inverter driven by $T$:
+  $$t_{\\text{sel, MUX2}} = t_{\\text{INV}} = 1\\text{ ns}$$
+
+The critical signal arriving at the inputs of MUX 2 is through data input '0' at $t = 5.5\\text{ ns}$.
+Adding the propagation delay of MUX 2 ($1.5\\text{ ns}$):
+$$t_{\\text{max}} = 5.5\\text{ ns} + 1.5\\text{ ns} = 7.0\\text{ ns}$$
+
+---
+
+### 3. Critical Path Summary
+$$\\text{Critical Path} = \\text{NOR}_1 \\rightarrow \\text{MUX}_1 \\rightarrow \\text{NOR}_2 \\rightarrow \\text{MUX}_2$$
+$$\\text{Total Delay} = 2\\text{ ns} + 1.5\\text{ ns} + 2\\text{ ns} + 1.5\\text{ ns} = 7\\text{ ns}$$
+
+**Correct Answer: 7**`,
+    images: []
+  },
+  "ec:2003:q19": {
+    concept: "Digital Circuits - Multiplexer Realization of Boolean Functions",
+    markdown: `### 1. Problem Formulation
+We are asked what functions can be implemented using an **8:1 Multiplexer (MUX)** **without any additional circuitry** (i.e. using only the multiplexer, tie-offs to logic $0$ and logic $1$, and true variable inputs, with no external inverters or logic gates).
+
+---
+
+### 2. Functional Capacity of an 8:1 MUX
+
+An $8:1$ MUX has:
+- $n = 3$ select lines ($S_2, S_1, S_0$)
+- $2^n = 8$ data inputs ($I_0, I_1, \\dots, I_7$)
+
+#### Case 1: 3-Variable Functions $f(A, B, C)$
+- Connect the 3 variables $A, B, C$ directly to the select lines $S_2, S_1, S_0$.
+- Each of the 8 minterms corresponds uniquely to one data input $I_k$ ($k \\in \\{0, 1, \\dots, 7\\}$).
+- By tying each data input line $I_k$ directly to either constant **logic 1** ($V_{CC}$) or constant **logic 0** (GND), **every possible Boolean function of 3 variables** ($2^{2^3} = 256$ functions) can be implemented.
+- No external gates or inverters are needed.
+- **Result:** **All functions of 3 variables can be implemented.**
+
+#### Case 2: 4-Variable Functions $f(A, B, C, D)$
+- Connect 3 of the variables (say $A, B, C$) to the select lines $S_2, S_1, S_0$.
+- For each combination of $(A, B, C)$, the function value depends on the fourth variable $D$.
+- Thus, each data input $I_k$ must be set to one of four possibilities:
+  1. $0$ (constant low, GND)
+  2. $1$ (constant high, $V_{CC}$)
+  3. $D$ (direct variable connection)
+  4. $\\bar{D}$ (complemented variable)
+- Connecting $0, 1$, or $D$ requires **no additional circuitry**.
+- However, generating the complemented literal $\\bar{D}$ requires an **inverter (NOT gate)**, which constitutes additional external circuitry.
+- Therefore, only those 4-variable functions whose Shannon expansion terms do not require $\\bar{D}$ on any data line can be implemented without an external inverter.
+- **Result:** **Some but not all functions of 4 variables can be implemented.**
+
+---
+
+### 3. Conclusion & Option Matching
+- Without additional circuitry, an 8:1 MUX can implement **all functions of 3 variables and some but not all of 4 variables**.
+- This directly matches **Option C**.
+
+**Correct Answer: Option C**`,
+    images: []
+  },
+  "pp:ec:2003:q19": {
+    concept: "Digital Circuits - Multiplexer Realization of Boolean Functions",
+    markdown: `### 1. Problem Formulation
+We are asked what functions can be implemented using an **8:1 Multiplexer (MUX)** **without any additional circuitry** (i.e. using only the multiplexer, tie-offs to logic $0$ and logic $1$, and true variable inputs, with no external inverters or logic gates).
+
+---
+
+### 2. Functional Capacity of an 8:1 MUX
+
+An $8:1$ MUX has:
+- $n = 3$ select lines ($S_2, S_1, S_0$)
+- $2^n = 8$ data inputs ($I_0, I_1, \\dots, I_7$)
+
+#### Case 1: 3-Variable Functions $f(A, B, C)$
+- Connect the 3 variables $A, B, C$ directly to the select lines $S_2, S_1, S_0$.
+- Each of the 8 minterms corresponds uniquely to one data input $I_k$ ($k \\in \\{0, 1, \\dots, 7\\}$).
+- By tying each data input line $I_k$ directly to either constant **logic 1** ($V_{CC}$) or constant **logic 0** (GND), **every possible Boolean function of 3 variables** ($2^{2^3} = 256$ functions) can be implemented.
+- No external gates or inverters are needed.
+- **Result:** **All functions of 3 variables can be implemented.**
+
+#### Case 2: 4-Variable Functions $f(A, B, C, D)$
+- Connect 3 of the variables (say $A, B, C$) to the select lines $S_2, S_1, S_0$.
+- For each combination of $(A, B, C)$, the function value depends on the fourth variable $D$.
+- Thus, each data input $I_k$ must be set to one of four possibilities:
+  1. $0$ (constant low, GND)
+  2. $1$ (constant high, $V_{CC}$)
+  3. $D$ (direct variable connection)
+  4. $\\bar{D}$ (complemented variable)
+- Connecting $0, 1$, or $D$ requires **no additional circuitry**.
+- However, generating the complemented literal $\\bar{D}$ requires an **inverter (NOT gate)**, which constitutes additional external circuitry.
+- Therefore, only those 4-variable functions whose Shannon expansion terms do not require $\\bar{D}$ on any data line can be implemented without an external inverter.
+- **Result:** **Some but not all functions of 4 variables can be implemented.**
+
+---
+
+### 3. Conclusion & Option Matching
+- Without additional circuitry, an 8:1 MUX can implement **all functions of 3 variables and some but not all of 4 variables**.
+- This directly matches **Option C**.
+
+**Correct Answer: Option C**`,
+    images: []
+  },
+  "ec:2014:q46-s3": {
+    concept: "Control Systems - Non-Unity Feedback Steady-State Error & Static Error Constants",
+    markdown: `### 1. Problem Formulation & System Description
+We are given the closed-loop control system with:
+- **Forward Path Transfer Function:**
+  $$G(s) = \\frac{K}{s + 2} = \\frac{4}{s + 2} \\quad (\\text{with } K = 4)$$
+- **Feedback Path Transfer Function:**
+  $$H(s) = \\frac{2}{s + 4}$$
+- **Input:** Unit step input $r(t) = u(t) \\implies R(s) = \\frac{1}{s}$
+
+The error signal $e(t)$ with Laplace transform $E(s)$ is explicitly indicated on the block diagram as the output of the summing junction (the actuating signal). We are required to find the **steady-state error $e_{ss}$**.
+
+---
+
+### 2. Derivation of the Actuating Error Signal $E(s)$
+From the block diagram summing junction:
+$$E(s) = R(s) - B(s) = R(s) - C(s)H(s)$$
+
+Since the plant output is related to $E(s)$ by:
+$$C(s) = G(s) E(s)$$
+
+Substituting $C(s)$ into the summing junction relation:
+$$E(s) = R(s) - G(s)H(s)E(s)$$
+$$E(s)[1 + G(s)H(s)] = R(s)$$
+$$E(s) = \\frac{R(s)}{1 + G(s)H(s)}$$
+
+---
+
+### 3. Loop Transfer Function & System Type
+The open-loop transfer function in the feedback loop is:
+$$G(s)H(s) = \\left(\\frac{4}{s + 2}\\right) \\left(\\frac{2}{s + 4}\\right) = \\frac{8}{(s + 2)(s + 4)}$$
+
+- The poles of the open-loop transfer function $G(s)H(s)$ are at $s = -2$ and $s = -4$.
+- There are **no open-loop poles at the origin ($s = 0$)**.
+- Therefore, the system feedback loop is **Type 0** (NOT Type 1).
+
+---
+
+### 4. Static Positional Error Constant ($K_p$) & Steady-State Error
+For a Type 0 system subjected to a unit step input:
+$$K_p = \\lim_{s \\to 0} G(s)H(s) = \\frac{8}{(0 + 2)(0 + 4)} = \\frac{8}{8} = 1$$
+
+Applying the Final Value Theorem to the actuating error $E(s)$:
+$$e_{ss} = \\lim_{t \\to \\infty} e(t) = \\lim_{s \\to 0} s E(s)$$
+$$e_{ss} = \\lim_{s \\to 0} s \\left[\\frac{1/s}{1 + G(s)H(s)}\\right] = \\frac{1}{1 + K_p} = \\frac{1}{1 + 1} = \\frac{1}{2} = 0.5$$
+
+---
+
+### 5. Clarification on Common Student Misconception (System Type)
+- **Misconception:** *"Converting the non-unity feedback system to an equivalent unity feedback system gives $G_{eq}(s) = \\frac{T(s)}{1 - T(s)} = \\frac{4(s + 4)}{s(s + 2)}$, which has an open-loop pole at $s = 0$ (Type 1), so steady-state error must be 0."*
+- **Resolution:**
+  1. In standard control systems engineering (and specifically in this GATE exam problem), the error signal $e(t)$ is **explicitly labeled on the schematic** at the comparator output: $e(t) = r(t) - b(t) = r(t) - h(t)*c(t)$.
+  2. For this labeled actuating error, $e_{ss} = \\frac{1}{1 + G(0)H(0)} = 0.5$.
+  3. The conversion $G_{eq}(s)$ tracks the difference between input and output $r(t) - c(t)$ (system error), for which $c(\\infty) = 1 \\implies r(\\infty) - c(\\infty) = 0$. However, $c(t)$ is not directly subtracted from $r(t)$ in this circuit because $H(0) = \\frac{2}{4} = 0.5 \\ne 1$. The diagram specifically inquires about the labeled signal $e(t)$.
+  4. The official GATE organizing institute key definitively specifies the numerical range **0.49 to 0.51** (nominal **0.5**).
+
+**Correct Answer: 0.5**`,
+    images: []
+  },
+  "pp:ec:2014:q46-s3": {
+    concept: "Control Systems - Non-Unity Feedback Steady-State Error & Static Error Constants",
+    markdown: `### 1. Problem Formulation & System Description
+We are given the closed-loop control system with:
+- **Forward Path Transfer Function:**
+  $$G(s) = \\frac{K}{s + 2} = \\frac{4}{s + 2} \\quad (\\text{with } K = 4)$$
+- **Feedback Path Transfer Function:**
+  $$H(s) = \\frac{2}{s + 4}$$
+- **Input:** Unit step input $r(t) = u(t) \\implies R(s) = \\frac{1}{s}$
+
+The error signal $e(t)$ with Laplace transform $E(s)$ is explicitly indicated on the block diagram as the output of the summing junction (the actuating signal). We are required to find the **steady-state error $e_{ss}$**.
+
+---
+
+### 2. Derivation of the Actuating Error Signal $E(s)$
+From the block diagram summing junction:
+$$E(s) = R(s) - B(s) = R(s) - C(s)H(s)$$
+
+Since the plant output is related to $E(s)$ by:
+$$C(s) = G(s) E(s)$$
+
+Substituting $C(s)$ into the summing junction relation:
+$$E(s) = R(s) - G(s)H(s)E(s)$$
+$$E(s)[1 + G(s)H(s)] = R(s)$$
+$$E(s) = \\frac{R(s)}{1 + G(s)H(s)}$$
+
+---
+
+### 3. Loop Transfer Function & System Type
+The open-loop transfer function in the feedback loop is:
+$$G(s)H(s) = \\left(\\frac{4}{s + 2}\\right) \\left(\\frac{2}{s + 4}\\right) = \\frac{8}{(s + 2)(s + 4)}$$
+
+- The poles of the open-loop transfer function $G(s)H(s)$ are at $s = -2$ and $s = -4$.
+- There are **no open-loop poles at the origin ($s = 0$)**.
+- Therefore, the system feedback loop is **Type 0** (NOT Type 1).
+
+---
+
+### 4. Static Positional Error Constant ($K_p$) & Steady-State Error
+For a Type 0 system subjected to a unit step input:
+$$K_p = \\lim_{s \\to 0} G(s)H(s) = \\frac{8}{(0 + 2)(0 + 4)} = \\frac{8}{8} = 1$$
+
+Applying the Final Value Theorem to the actuating error $E(s)$:
+$$e_{ss} = \\lim_{t \\to \\infty} e(t) = \\lim_{s \\to 0} s E(s)$$
+$$e_{ss} = \\lim_{s \\to 0} s \\left[\\frac{1/s}{1 + G(s)H(s)}\\right] = \\frac{1}{1 + K_p} = \\frac{1}{1 + 1} = \\frac{1}{2} = 0.5$$
+
+---
+
+### 5. Clarification on Common Student Misconception (System Type)
+- **Misconception:** *"Converting the non-unity feedback system to an equivalent unity feedback system gives $G_{eq}(s) = \\frac{T(s)}{1 - T(s)} = \\frac{4(s + 4)}{s(s + 2)}$, which has an open-loop pole at $s = 0$ (Type 1), so steady-state error must be 0."*
+- **Resolution:**
+  1. In standard control systems engineering (and specifically in this GATE exam problem), the error signal $e(t)$ is **explicitly labeled on the schematic** at the comparator output: $e(t) = r(t) - b(t) = r(t) - h(t)*c(t)$.
+  2. For this labeled actuating error, $e_{ss} = \\frac{1}{1 + G(0)H(0)} = 0.5$.
+  3. The conversion $G_{eq}(s)$ tracks the difference between input and output $r(t) - c(t)$ (system error), for which $c(\\infty) = 1 \\implies r(\\infty) - c(\\infty) = 0$. However, $c(t)$ is not directly subtracted from $r(t)$ in this circuit because $H(0) = \\frac{2}{4} = 0.5 \\ne 1$. The diagram specifically inquires about the labeled signal $e(t)$.
+  4. The official GATE organizing institute key definitively specifies the numerical range **0.49 to 0.51** (nominal **0.5**).
+
+**Correct Answer: 0.5**`,
+    images: []
+  },
   "ec:2025:ga:q5": {
     concept: "General Aptitude - Quantitative Aptitude & Functions",
     markdown: `### 1. Problem Formulation & Scope

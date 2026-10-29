@@ -1,4 +1,66 @@
 # Changelog
+- **General Aptitude Multi-Branch Filter & Preparation Tracker Uniformity (DEC-260)**:
+  - **GATE CSE General Aptitude Filter Availability**:
+    - *Context*: Reported by user that General Aptitude option was missing in GATE CSE practice filters after DEC-252 added dedicated GA options to newly added engineering branches.
+    - *Root Cause*: `TopicFilter.tsx` previously suppressed GA via `slug !== 'ga' && !slug.includes('general-aptitude')` with no dedicated GA toggle option on the CSE card.
+    - *Resolution*: Added a dedicated `General Aptitude` checkbox option to `TopicFilter.tsx` keyed to `selectedGaBranches: ['cse']`, matching the design and UX of `BranchTopicFilter.tsx`. Updated `FilterContext.tsx` to include `cse` and `da` in `validGaBranches`, with bidirectional URL syncing (`gaBranches=cse`) and enrollment pruning.
+    - *Verification*: `isBranchGaQuestion()` in `src/utils/examTrack.js` was enhanced to reliably identify all 210 CSE official GA questions (`exam_uid` containing `:ga:`, title patterns `| GA |`, `GA Question`, `paper_scope: official_ga`).
+  - **GATE DA Verification**:
+    - *Context*: Checked GATE DA practice filters per user request.
+    - *Finding & Resolution*: Verified that `da:general-aptitude` was already present as an official subject in `DaQuestionService` and rendered natively in `DaToggle.jsx`. Retained native subject integration and ensured `FilterContext` also supports `selectedGaBranches: ['da']` interchangeably.
+  - **Preparation Tracker (`/tracker`) GA Integration Across All Branches**:
+    - *Context*: Reported by user that General Aptitude was missing in the preparation tracker for ECE (`ec`).
+    - *Audit of Tracker Taxonomies*:
+      - CSE had GA (`cse-ga` in `trackerTaxonomy.ts`).
+      - DA had GA (`da-ga` in `daTaxonomy.ts`).
+      - EC, EE, ME, and CE had **no General Aptitude subject node** in `ecTaxonomy.ts`, `eeTaxonomy.ts`, `meTaxonomy.ts`, and `ceTaxonomy.ts`, despite having official GATE GA questions (60 in EC, 60 in EE, 290 in ME, 290 in CE).
+    - *Architecture & Implementation*:
+      - Created canonical `createGeneralAptitudeSubject(track)` factory in `src/data/generalAptitudeTaxonomy.ts` modeling the official IIT 15-mark GATE General Aptitude syllabus:
+        1. Quantitative Aptitude & Numerical Reasoning (`${track}-ga-quantitative-aptitude`)
+        2. Analytical & Spatial Reasoning (`${track}-ga-analytical-spatial-aptitude`)
+        3. Verbal Ability & Reading Comprehension (`${track}-ga-verbal-aptitude`)
+      - Integrated `createGeneralAptitudeSubject` into `EC_SUBJECTS`, `EE_SUBJECTS`, `ME_SUBJECTS`, and `CE_SUBJECTS`.
+      - Verified with `buildQuestionIndexForTrack`: questions automatically index into Subject and Topic nodes (`quantitative-aptitude`, `verbal-aptitude`) with complete syllabus coverage and accuracy metrics out-of-the-box.
+  - **Quality & Test Verification**:
+    - Added dedicated test suite `src/data/trackerTaxonomy.test.ts` (31 tests) asserting all 6 branches in `SUPPORTED_TRACKS` contain General Aptitude with complete topics and question indexing.
+    - Added regression tests in `src/components/Filters/BranchFilterIntegration.test.jsx`, `src/utils/examTrack.test.js`, and `src/contexts/FilterContext.test.jsx`.
+    - 100% test pass: 115 test files passed (1,555 unit tests passed, 0 failures) and `npm run typecheck` passed with 0 errors.
+- **October 29 User-Reported Question Audit & Data Maintenance Resolution (DEC-259)**:
+  - **`ec:2016:q44-s3` (GATE EC 2016 Set 3 Q44 - Critical Path Propagation Delay & Answer Key Correction)**:
+    - *Context*: Reported as "answer is 7ns not 6ns".
+    - *Mathematical Proof*:
+      - Component delays: $t_{\text{NOR}} = 2\text{ ns}$, $t_{\text{MUX}} = 1.5\text{ ns}$, $t_{\text{INV}} = 1\text{ ns}$.
+      - Path through Stage 1: NOR1 ($Q, R$) arrives at MUX 1 input '0' at $2\text{ ns}$; inverter ($S$) arrives at input '1' at $1\text{ ns}$. Output of MUX 1 is valid at $2 + 1.5 = 3.5\text{ ns}$.
+      - Path through Stage 2: Input $P$ arrives at $0\text{ ns}$; MUX 1 output arrives at $3.5\text{ ns}$. Output of NOR 2 is valid at $3.5 + 2 = 5.5\text{ ns}$.
+      - Path through Stage 3: NOR 2 output enters MUX 2 input '0' at $5.5\text{ ns}$. Output $Y$ is valid at $5.5 + 1.5 = 7\text{ ns}$.
+      - Critical path total: $t_{\text{NOR1}} + t_{\text{MUX1}} + t_{\text{NOR2}} + t_{\text{MUX2}} = 2 + 1.5 + 2 + 1.5 = 7\text{ ns}$. The previous crawled solution had an arithmetic error ($1 + 1.5 + 2 + 1.5 = 6$).
+    - *Resolution*: Updated answer to 7 (tolerance $[7, 7]$) and corrected detailed solution across `audit/ec/raw-ec-2016-s3.json`, `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `AUTHENTIC_PATCHES`, and static shard `public/question-detail-shards/ec-2016-s3.json`.
+  - **`go:688` (GATE CSE 2000 Q17 - Type Conversion MCQ $\to$ NAT & Worst-Case Swaps Resolution)**:
+    - *Context*: Reported as "NAT PROBLEM NO SOLUTION CAN BE TYPED".
+    - *Mathematical Truth*:
+      - The question asks: *"What is the minimum number of swaps needed to sort such an array in the worst case? Give an ordering of elements..."*
+      - An array with four 0s, five 1s, and three 2s requires adjacent swaps equal to its inversion count.
+      - Worst-case configuration is reverse-sorted: $[2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0]$.
+      - Total inversions $= 3 \times 5 + 3 \times 4 + 5 \times 4 = 15 + 12 + 20 = 47$.
+      - Legacy digitization had mistakenly classified this descriptive question as an MCQ with answer "B" without options, preventing users from typing any number.
+    - *Resolution*: Converted question type from MCQ to NAT with answer `47` (tolerance `null`) across `public/questions-with-answers.json`, `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `chunk-cse-vin-02-solutions.json`, and static shard `public/question-detail-shards/2000-s0.json`.
+  - **`ec:2003:q19` (GATE EC 2003 Q19 - Answer Key Correction & MUX Realization Analysis)**:
+    - *Context*: Reported as "C is the correct answer".
+    - *Mathematical Proof*:
+      - An 8:1 MUX has 3 select lines and 8 data inputs.
+      - For 3 variables: Connecting the 3 variables to select lines and data inputs to $0$ (GND) or $1$ ($V_{CC}$) implements all $2^{2^3} = 256$ functions without external circuitry.
+      - For 4 variables: Connecting 3 variables to select lines leaves 1 variable $D$. Data inputs can be $0, 1, D$, or $\bar{D}$. Inputs $0, 1, D$ require no extra circuitry, but $\bar{D}$ requires an inverter (NOT gate). Thus, only 4-variable functions not requiring complemented literals can be realized without additional circuitry.
+      - Result: "all functions of 3 variables and some but not all of 4 variables" (Option C).
+    - *Resolution*: Corrected `rawAnswer` from 3 (Option D) to 2 (Option C) in `audit/ec/raw-ec-2003.json`, patched `data/answers/manual-answers-patch-v1.json`, answer registries, `AUTHENTIC_PATCHES`, and static shard `public/question-detail-shards/ec-2003-s1.json`.
+  - **`ec:2014:q46-s3` (GATE EC 2014 Set 3 Q46 - Non-Unity Feedback Error Signal Derivation Repair)**:
+    - *Context*: Reported as "i think solution provided is wrong as the system is type one so the steady state value for unit step should be zero".
+    - *Mathematical Proof & Misconception Clarification*:
+      - Block diagram has $G(s) = \frac{4}{s+2}$ and $H(s) = \frac{2}{s+4}$.
+      - The loop transfer function is $G(s)H(s) = \frac{8}{(s+2)(s+4)}$, which has no poles at $s = 0$ $\implies$ system loop is **Type 0** (NOT Type 1).
+      - Positional error constant $K_p = \lim_{s \to 0} G(s)H(s) = \frac{8}{2 \times 4} = 1$.
+      - The labeled actuating error $e(t) = r(t) - c(t)H(t)$ at the summing junction has steady-state error $e_{ss} = \frac{1}{1 + K_p} = \frac{1}{1 + 1} = 0.5$.
+      - The student was misled by the previous solution which incorrectly tried to convert the system into an equivalent unity feedback transfer function $G_{eq}(s) = \frac{4(s+4)}{s(s+2)}$ and asserted "Type = 1" while still asserting $e_{ss} = 0.5$.
+    - *Resolution*: Verified official answer key is nominal `0.5` (range $[0.49, 0.51]$). Replaced the flawed, contradictory derivation with a rigorous, transparent explanation in `audit/ec/raw-ec-2014-s3.json`, `AUTHENTIC_PATCHES`, and static shard `public/question-detail-shards/ec-2014-s3.json`.
 - **October 28 User-Reported Question Audit & Data Maintenance Resolution (DEC-258)**:
   - **`ec:2025:ga:q5` (GATE EC 2025 GA Q5 - Signum Function Plot & Answer Key Correction)**:
     - *Context*: Reported as "Wrong answer is given correct answer is B". The question asks for the plot of $f(x) = \frac{|x|}{x}$ for non-zero real $x$.

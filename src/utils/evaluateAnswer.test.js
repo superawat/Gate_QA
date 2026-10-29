@@ -3701,6 +3701,58 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
         expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
       });
+
+      test("evaluates ec:2016:q44-s3 (GATE EC 2016 Set 3 Q44) as NAT 7 ns critical path delay", () => {
+        const record = {
+          type: "NAT",
+          answer: 7,
+          tolerance: { lower: 7, upper: 7 },
+        };
+        expect(evaluateAnswer(record, "7")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 7)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "6")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "8")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:688 (GATE CSE 2000 Q17) as NAT 47 worst-case swaps", () => {
+        const record = {
+          type: "NAT",
+          answer: 47,
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "47")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 47)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "46")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "48")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates ec:2003:q19 (GATE EC 2003 Q19) as MCQ Option C (8:1 MUX functional capacity)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "C",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "c")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates ec:2014:q46-s3 (GATE EC 2014 Set 3 Q46) as NAT 0.5 within [0.49, 0.51]", () => {
+        const record = {
+          type: "NAT",
+          answer: 0.5,
+          tolerance: { lower: 0.49, upper: 0.51 },
+        };
+        expect(evaluateAnswer(record, "0.5")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 0.5)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "0.49")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "0.51")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "0")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "0.48")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "0.52")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });

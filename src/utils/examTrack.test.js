@@ -256,8 +256,29 @@ describe("exam track identity", () => {
       track: "cse",
     };
 
+    const cseGaQuestion1 = {
+      question_uid: "go:357476",
+      exam_uid: "cse:2021:set1:ga:q1",
+      title: "GATE CSE 2021 Set 1 | GA Question: 1",
+      track: "cse",
+    };
+    const cseGaQuestion2 = {
+      question_uid: "go:111",
+      title: "GATE CSE 2014 Set 1 | Question: GA-1",
+      track: "cse",
+    };
+    const daGaQuestion = {
+      question_uid: "go:422971",
+      subjectSlug: "general-aptitude",
+      subject: "General Aptitude",
+      track: "da",
+    };
+
     expect(isBranchGaQuestion(ecGaQuestion)).toBe(true);
     expect(isBranchGaQuestion(meGaQuestion)).toBe(true);
+    expect(isBranchGaQuestion(cseGaQuestion1)).toBe(true);
+    expect(isBranchGaQuestion(cseGaQuestion2)).toBe(true);
+    expect(isBranchGaQuestion(daGaQuestion)).toBe(true);
     expect(isBranchGaQuestion(eeTechQuestion)).toBe(false);
     expect(isBranchGaQuestion(cseTechQuestion)).toBe(false);
     expect(isBranchGaQuestion(null)).toBe(false);

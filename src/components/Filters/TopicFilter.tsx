@@ -27,6 +27,16 @@ const TopicFilter = () => {
     const { selectedSubjects = [], selectedSubtopics = [] } = filters;
     const [expandedSubjectSlugs, setExpandedSubjectSlugs] = useState<Set<string>>(() => new Set());
 
+    const selectedGaBranches: string[] = filters.selectedGaBranches || [];
+    const isGaSelected = selectedGaBranches.includes('cse');
+
+    const handleGaToggle = () => {
+        const nextGaBranches = isGaSelected
+            ? selectedGaBranches.filter((b: string) => b !== 'cse')
+            : [...selectedGaBranches, 'cse'];
+        updateFilters({ selectedGaBranches: nextGaBranches });
+    };
+
     const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
     const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
     const sortedSubtopicsBySubject = useMemo(() => {
@@ -235,6 +245,20 @@ const TopicFilter = () => {
             {/* ── Expanded Topics Section (when includeCse is ON) ── */}
             {includeCse && subjectGroups.length > 0 && (
                 <div className="mt-3 border-t border-[color:var(--color-border)] pt-3 space-y-3">
+                    {/* General Aptitude Filter Checkbox */}
+                    <div className="pt-1 pb-1 border-b border-[color:var(--color-border)] mb-1">
+                        <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[color:var(--color-text)] hover:text-[color:var(--color-primary-text)]">
+                            <input
+                                type="checkbox"
+                                checked={isGaSelected}
+                                onChange={handleGaToggle}
+                                className="h-3.5 w-3.5 rounded border-[color:var(--color-border)] text-blue-600 focus:ring-blue-500"
+                                aria-label="General Aptitude for CSE"
+                            />
+                            <span>General Aptitude</span>
+                        </label>
+                    </div>
+
                     {subjectGroups.map((group) => (
                         <section key={group.key} className={group.className}>
                             {group.heading && (

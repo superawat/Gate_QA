@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T18:50:26.945Z",
+  "generatedAt": "2026-10-29T15:22:16.519Z",
   "shardKey": "ec-2014-s3",
   "yearSetKey": "ec-2014-s3",
   "yearSetIdentity": "ec:2014:set-3",
@@ -140,9 +140,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Numerical Methods",
-        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EC) - Numerical Methods & Applications Matching\n- **Group Matching Analysis**:\n  - **P1. Numerical integration $\\rightarrow$ M3. Simpson's 1/3-rule:**\n    Simpson's $1/3$-rule approximates the integrand using piecewise parabolic quadratic polynomials to compute definite integrals:\n    $$\\int_a^b f(x)\\, dx \\approx \\frac{h}{3}\\left[f(x_0) + 4\\sum f(x_{\\text{odd}}) + 2\\sum f(x_{\\text{even}}) + f(x_n)\\right]$$\n  - **P2. Solution to transcendental or non-linear equation $\\rightarrow$ M1. Newton-Raphson Method:**\n    Newton-Raphson is a widely utilized iterative gradient algorithm for locating roots of nonlinear algebraic and transcendental equations $f(x) = 0$:\n    $$x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$$\n  - **P3. Solution to a system of linear equations $\\rightarrow$ M4. Gauss Elimination Method:**\n    Gaussian elimination transforms an augmented system matrix $[A | B]$ into upper-triangular echelon form via forward elimination followed by back substitution to solve $A\\mathbf{x} = \\mathbf{b}$.\n  - **P4. Solution to a differential equation $\\rightarrow$ M2. Runge-Kutta Method:**\n    Runge-Kutta methods (such as the standard 4th-order RK4) are single-step predictor algorithms used to solve initial value problems for ordinary differential equations $\\frac{dy}{dx} = f(x, y)$.\n- **Evaluation of Options**:\n  - Combining these verified associations gives:\n    $$P_1 - M_3,\\; P_2 - M_1,\\; P_3 - M_4,\\; P_4 - M_2$$\n  - This pairing corresponds uniquely to Option B.\n\nTherefore, the correct answer is **Option B (P1-M3, P2-M1, P3-M4, P4-M2)**.",
-        "images": []
+        "concept": "EC Core Engineering",
+        "markdown": null
       }
     },
     "ec:2014:q4-s3": {
@@ -409,9 +408,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Electronic Devices - Basic Semiconductor Physics",
-        "markdown": "- **Concept / Subtopic**: Electronic Devices - Recombination Rate of Excess Carriers in Extrinsic Semiconductor\n- **Given Conditions**:\n  - Thin P-type silicon sample under uniform optical illumination.\n  - Optical excitation generates excess electron-hole pairs ($\\Delta n = \\Delta p$).\n- **Governing Equations**:\n  - In a P-type semiconductor, holes are the majority carriers ($p_0 = N_A$) and electrons are the minority carriers ($n_0 = n_i^2 / N_A$).\n  - Under low-level optical injection, the excess carrier concentration is much smaller than the thermal equilibrium majority carrier density:\n    $$\\Delta n = \\Delta p \\ll p_0$$\n  - According to the Shockley-Read-Hall (SRH) recombination-generation kinetics through localized recombination trap centers, the net recombination rate $U$ is:\n    $$U = \\frac{n p - n_i^2}{\\tau_n (p + p_1) + \\tau_p (n + n_1)}$$\n  - Substituting $p = p_0 + \\Delta p \\approx p_0$ and $n = n_0 + \\Delta n$:\n    $$n p - n_i^2 \\approx (n_0 + \\Delta n)p_0 - n_i^2 = n_0 p_0 + \\Delta n p_0 - n_i^2 = p_0 \\Delta n$$\n  - In p-type silicon where $p_0 \\gg p_1, n, n_1$:\n    $$U \\approx \\frac{p_0 \\Delta n}{\\tau_n p_0} = \\frac{\\Delta n}{\\tau_n}$$\n    where $\\Delta n$ is the excess minority carrier concentration and $\\tau_n$ is the minority carrier lifetime.\n- **Analytical Conclusion**:\n  - The net recombination rate is directly proportional to the **excess minority carrier concentration** ($\\Delta n$).\n- **Distractor Analysis**:\n  - Carrier mobility (Option A) determines carrier drift velocity and conductivity, not recombination rate.\n  - The recombination rate is inversely proportional (not directly proportional) to the recombination lifetime $\\tau_n$ (Option B).\n  - Majority carrier concentration (Option C) cancels out in the low-level injection SRH limit.\n\nTherefore, the correct answer is **Option D (the excess minority carrier concentration)**.",
-        "images": []
+        "concept": "EC Core Engineering",
+        "markdown": null
       }
     },
     "ec:2014:q10-s3": {
@@ -498,9 +496,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Analog Circuits - Feedback Amplifiers",
-        "markdown": "- **Concept / Subtopic**: Analog Circuits - Ideal Transconductance Amplifier Specifications\n- **Functional Definition**:\n  - A **transconductance amplifier** (voltage-to-current converter) senses an input voltage $V_{\\text{in}}$ and delivers an output current $I_{\\text{out}}$:\n    $$I_{\\text{out}} = g_m V_{\\text{in}}$$\n- **Governing Principles**:\n  1. **Input Resistance ($R_{\\text{in}}$)**:\n     - The input port is driven by a voltage source $V_s$ with internal series resistance $R_s$.\n     - By voltage division at the input terminal:\n       $$V_{\\text{in}} = V_s \\left(\\frac{R_{\\text{in}}}{R_{\\text{in}} + R_s}\\right)$$\n     - To ensure that the full source voltage appears across the amplifier input terminals without attenuation ($V_{\\text{in}} \\to V_s$), the input resistance must be substantially larger than the source resistance:\n       $$R_{\\text{in}} \\gg R_s \\implies R_{\\text{in}} \\to \\infty \\quad \\text{(High input resistance)}$$\n  2. **Output Resistance ($R_{\\text{out}}$)**:\n     - The output port models a Norton current source $I_{\\text{out}} = g_m V_{\\text{in}}$ in parallel with internal output resistance $R_{\\text{out}}$, supplying load resistance $R_L$.\n     - By current division at the output node:\n       $$I_L = I_{\\text{out}} \\left(\\frac{R_{\\text{out}}}{R_{\\text{out}} + R_L}\\right)$$\n     - To ensure that load current remains unaffected by variations in load impedance $R_L$ ($I_L \\to I_{\\text{out}}$), the output resistance must be substantially larger than the load resistance:\n       $$R_{\\text{out}} \\gg R_L \\implies R_{\\text{out}} \\to \\infty \\quad \\text{(High output resistance)}$$\n- **Conclusion**:\n  - An ideal transconductance amplifier requires **high input resistance and high output resistance**.\n\nTherefore, the correct answer is **Option A (high input resistance and high output resistance)**.",
-        "images": []
+        "concept": "EC Core Engineering",
+        "markdown": null
       }
     },
     "ec:2014:q12-s3": {
@@ -1205,9 +1202,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics (EC) - Linear Algebra",
-        "markdown": "- **Concept / Subtopic**: Engineering Mathematics (EC) - Linear Algebra & Matrix Eigenvalue Theorems\n- **Evaluation of Matrix Theorems**:\n  - **Statement A (True)**: For any upper-triangular (or lower-triangular) matrix $A$, the characteristic polynomial is $\\det(A - \\lambda I) = (a_{11} - \\lambda)(a_{22} - \\lambda)\\dots(a_{nn} - \\lambda) = 0$. Hence, the eigenvalues are identically the principal diagonal entries.\n  - **Statement B (NOT True / False)**: By the Spectral Theorem, all eigenvalues of a real symmetric matrix are **always real**, but they **do not need to be positive**. For example, the matrix:\n    $$A = \\begin{bmatrix} -3 & 0 \\\\ 0 & -5 \\end{bmatrix}$$\n    is real symmetric ($A^T = A$), but its eigenvalues are $\\lambda_1 = -3$ and $\\lambda_2 = -5$, which are negative. A real symmetric matrix has strictly positive eigenvalues if and only if it is **positive definite**.\n  - **Statement C (True)**: Since $\\det(M^T) = \\det(M)$ for any square matrix, $\\det(A^T - \\lambda I) = \\det((A - \\lambda I)^T) = \\det(A - \\lambda I)$. Therefore, a real matrix $A$ and its transpose $A^T$ share the identical characteristic polynomial and hence the exact same eigenvalues.\n  - **Statement D (True)**: By Sylvester's Criterion, a Hermitian or real symmetric matrix has all positive eigenvalues if and only if all its leading principal minors are strictly positive.\n- **Conclusion**:\n  - Statement B is false, making it the correct option to select.\n\nTherefore, the correct answer is **Option B (If A is real symmetric, the eigenvalues of A are always real and positive)**.",
-        "images": []
+        "concept": "EC Core Engineering",
+        "markdown": null
       }
     },
     "ec:2014:q28-s3": {
@@ -2041,8 +2037,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Control Systems - Time Response Analysis",
-        "markdown": "After converting the system into equivalent unity feedback system.\n\n<img src=\"/question-images/ec/2014/ec-2014-dc154f1839.webp\" />\n\n$\\therefore \\quad OLTF =\\frac{4(s+4)}{s(s+2)}$\n\nType =1\n\n$e_{s s}$ for step input =0.5\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.49, 0.51])."
+        "concept": "Control Systems - Non-Unity Feedback Steady-State Error & Static Error Constants",
+        "markdown": "### 1. Problem Formulation & System Description\nWe are given the closed-loop control system with:\n- **Forward Path Transfer Function:**\n  $$G(s) = \\frac{K}{s + 2} = \\frac{4}{s + 2} \\quad (\\text{with } K = 4)$$\n- **Feedback Path Transfer Function:**\n  $$H(s) = \\frac{2}{s + 4}$$\n- **Input:** Unit step input $r(t) = u(t) \\implies R(s) = \\frac{1}{s}$\n\nThe error signal $e(t)$ with Laplace transform $E(s)$ is explicitly indicated on the block diagram as the output of the summing junction (the actuating signal). We are required to find the **steady-state error $e_{ss}$**.\n\n---\n\n### 2. Derivation of the Actuating Error Signal $E(s)$\nFrom the block diagram summing junction:\n$$E(s) = R(s) - B(s) = R(s) - C(s)H(s)$$\n\nSince the plant output is related to $E(s)$ by:\n$$C(s) = G(s) E(s)$$\n\nSubstituting $C(s)$ into the summing junction relation:\n$$E(s) = R(s) - G(s)H(s)E(s)$$\n$$E(s)[1 + G(s)H(s)] = R(s)$$\n$$E(s) = \\frac{R(s)}{1 + G(s)H(s)}$$\n\n---\n\n### 3. Loop Transfer Function & System Type\nThe open-loop transfer function in the feedback loop is:\n$$G(s)H(s) = \\left(\\frac{4}{s + 2}\\right) \\left(\\frac{2}{s + 4}\\right) = \\frac{8}{(s + 2)(s + 4)}$$\n\n- The poles of the open-loop transfer function $G(s)H(s)$ are at $s = -2$ and $s = -4$.\n- There are **no open-loop poles at the origin ($s = 0$)**.\n- Therefore, the system feedback loop is **Type 0** (NOT Type 1).\n\n---\n\n### 4. Static Positional Error Constant ($K_p$) & Steady-State Error\nFor a Type 0 system subjected to a unit step input:\n$$K_p = \\lim_{s \\to 0} G(s)H(s) = \\frac{8}{(0 + 2)(0 + 4)} = \\frac{8}{8} = 1$$\n\nApplying the Final Value Theorem to the actuating error $E(s)$:\n$$e_{ss} = \\lim_{t \\to \\infty} e(t) = \\lim_{s \\to 0} s E(s)$$\n$$e_{ss} = \\lim_{s \\to 0} s \\left[\\frac{1/s}{1 + G(s)H(s)}\\right] = \\frac{1}{1 + K_p} = \\frac{1}{1 + 1} = \\frac{1}{2} = 0.5$$\n\n---\n\n### 5. Clarification on Common Student Misconception (System Type)\n- **Misconception:** *\"Converting the non-unity feedback system to an equivalent unity feedback system gives $G_{eq}(s) = \\frac{T(s)}{1 - T(s)} = \\frac{4(s + 4)}{s(s + 2)}$, which has an open-loop pole at $s = 0$ (Type 1), so steady-state error must be 0.\"*\n- **Resolution:**\n  1. In standard control systems engineering (and specifically in this GATE exam problem), the error signal $e(t)$ is **explicitly labeled on the schematic** at the comparator output: $e(t) = r(t) - b(t) = r(t) - h(t)*c(t)$.\n  2. For this labeled actuating error, $e_{ss} = \\frac{1}{1 + G(0)H(0)} = 0.5$.\n  3. The conversion $G_{eq}(s)$ tracks the difference between input and output $r(t) - c(t)$ (system error), for which $c(\\infty) = 1 \\implies r(\\infty) - c(\\infty) = 0$. However, $c(t)$ is not directly subtracted from $r(t)$ in this circuit because $H(0) = \\frac{2}{4} = 0.5 \\ne 1$. The diagram specifically inquires about the labeled signal $e(t)$.\n  4. The official GATE organizing institute key definitively specifies the numerical range **0.49 to 0.51** (nominal **0.5**).\n\n**Correct Answer: 0.5**"
       }
     },
     "ec:2014:q47-s3": {

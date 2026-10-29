@@ -155,9 +155,28 @@ export function generateBranchSearchIndices() {
       );
     }
 
+    const outPath = path.join(branchDir, "search-index.json");
+    let generatedAt = new Date().toISOString();
+    if (fs.existsSync(outPath)) {
+      try {
+        const existing = JSON.parse(fs.readFileSync(outPath, "utf-8"));
+        if (
+          existing.questionCount === questions.length &&
+          existing.minYear === minYear &&
+          existing.maxYear === maxYear &&
+          JSON.stringify(existing.questions) === JSON.stringify(questions) &&
+          JSON.stringify(existing.subjects) === JSON.stringify(subjectsList) &&
+          JSON.stringify(existing.structuredSubtopics) === JSON.stringify(structuredSubtopics) &&
+          JSON.stringify(existing.yearSets) === JSON.stringify(Array.from(yearSetsMap.values()).sort((a, b) => b.year - a.year || b.set - a.set))
+        ) {
+          generatedAt = existing.generatedAt || generatedAt;
+        }
+      } catch (_) {}
+    }
+
     const payload = {
       version: `${branch}-v1`,
-      generatedAt: new Date().toISOString(),
+      generatedAt,
       track: branch,
       questionCount: questions.length,
       minYear,
@@ -169,10 +188,25 @@ export function generateBranchSearchIndices() {
       questions,
     };
 
-    const outPath = path.join(branchDir, "search-index.json");
-    fs.writeFileSync(outPath, JSON.stringify(payload, null, 2), "utf-8");
+    const nextContent = JSON.stringify(payload, null, 2).replace(/\r\n/g, "\n");
+    let wrote = true;
+    if (fs.existsSync(outPath)) {
+      try {
+        const currentContent = fs.readFileSync(outPath, "utf-8").replace(/\r\n/g, "\n");
+        if (currentContent === nextContent) {
+          wrote = false;
+        }
+      } catch (_) {}
+    }
+    if (wrote) {
+      fs.writeFileSync(outPath, nextContent, "utf-8");
+    }
     const sizeMb = (fs.statSync(outPath).size / 1024 / 1024).toFixed(2);
-    console.log(`✅ [${branch.toUpperCase()}] Built search index: ${outPath} (${questions.length} Qs, ${sizeMb} MB)`);
+    if (wrote) {
+      console.log(`✅ [${branch.toUpperCase()}] Built search index: ${outPath} (${questions.length} Qs, ${sizeMb} MB)`);
+    } else {
+      console.log(`⚡ [${branch.toUpperCase()}] Unchanged search index: ${outPath} (${questions.length} Qs, ${sizeMb} MB)`);
+    }
 
     stats[branch] = {
       questions: questions.length,

@@ -1,0 +1,147 @@
+import type { SubjectNode } from "./trackerTaxonomy";
+
+/**
+ * Creates canonical General Aptitude SubjectNode for any GATE engineering branch.
+ * General Aptitude carries 15 marks (10 questions) in all GATE papers (organizing IIT standard).
+ */
+export function createGeneralAptitudeSubject(track: string): SubjectNode {
+  const tr = track.toLowerCase();
+  return {
+    id: `${tr}-ga`,
+    slug: "general-aptitude",
+    canonicalSubjectSlugs: [
+      "general-aptitude",
+      `${tr}-general-aptitude`,
+      `${tr}:general-aptitude`,
+      "ga",
+      `${tr}-ga`,
+      `${tr}:ga`,
+      "english",
+      "quant",
+      "reasoning",
+      "mathematics",
+    ],
+    track: tr,
+    label: "General Aptitude",
+    shortLabel: "GA",
+    marksRange: "15 Marks",
+    estimatedHours: 25,
+    weightageTier: "tier-1-high",
+    recommendedTextbook: "Quantitative Aptitude for Competitive Examinations (R.S. Aggarwal)",
+    topics: [
+      {
+        id: `${tr}-ga-quantitative-aptitude`,
+        label: "Quantitative Aptitude & Numerical Reasoning",
+        subjectSlug: "general-aptitude",
+        canonicalSubjectSlugs: [
+          "general-aptitude",
+          `${tr}-general-aptitude`,
+          `${tr}:general-aptitude`,
+          "ga",
+          `${tr}-ga`,
+          `${tr}:ga`,
+          "quant",
+          "mathematics",
+        ],
+        primaryTopicTag: "quantitative-aptitude",
+        secondaryTopicTags: [
+          "arithmetic-percentages-ratios",
+          "algebra-geometry",
+          "permutations-combinations",
+          "data-interpretation-charts",
+          "numerical-computation",
+          "powers-exponents",
+          "logarithms",
+          "ratios-percentages",
+          "data-interpretation",
+        ],
+        estimatedHours: 10,
+        weightageTier: "tier-1-high",
+        marksRange: "5–7 Marks",
+        keyConcepts: [
+          "Numerical computation: ratios, percentages, powers, exponents and logarithms, permutations and combinations",
+          "Numerical reasoning, data interpretation, geometry and trigonometry",
+        ],
+        recommendedTextbook: "Quantitative Aptitude — R.S. Aggarwal",
+        subtopics: [
+          { id: `${tr}-ga-quant-numerical`, label: "Numerical Computation & Estimation", subtopicSlug: "numerical-computation", tags: ["numerical-computation", "powers-exponents", "logarithms"] },
+          { id: `${tr}-ga-quant-ratios`, label: "Ratios, Percentages & Powers", subtopicSlug: "ratios-percentages", tags: ["ratios-percentages", "profit-loss", "speed-distance-time"] },
+          { id: `${tr}-ga-quant-permutations`, label: "Permutations & Combinations", subtopicSlug: "permutations-combinations", tags: ["permutations-combinations", "probability-basics"] },
+          { id: `${tr}-ga-quant-data-interpretation`, label: "Data Interpretation (Charts & Graphs)", subtopicSlug: "data-interpretation", tags: ["data-interpretation", "bar-charts-pie-charts-tables"] },
+        ],
+      },
+      {
+        id: `${tr}-ga-analytical-spatial-aptitude`,
+        label: "Analytical & Spatial Reasoning",
+        subjectSlug: "general-aptitude",
+        canonicalSubjectSlugs: [
+          "general-aptitude",
+          `${tr}-general-aptitude`,
+          `${tr}:general-aptitude`,
+          "ga",
+          `${tr}-ga`,
+          `${tr}:ga`,
+          "reasoning",
+        ],
+        primaryTopicTag: "analytical-aptitude",
+        secondaryTopicTags: [
+          "logical-deduction-syllogism",
+          "analogies-patterns",
+          "spatial-rotation-folding-paper-cuts",
+          "spatial-transformations",
+          "spatial-aptitude",
+          "deductive-logic",
+          "analogies-series",
+        ],
+        estimatedHours: 8,
+        weightageTier: "tier-1-high",
+        marksRange: "4–5 Marks",
+        keyConcepts: [
+          "Logic: deduction and induction, Analogy, Numerical relations and reasoning",
+          "Spatial aptitude: transformation of shapes, translation, rotation, scaling, mirroring, paper folding and assembling",
+        ],
+        recommendedTextbook: "Non-Verbal Reasoning — R.S. Aggarwal",
+        subtopics: [
+          { id: `${tr}-ga-ana-logic`, label: "Deductive & Inductive Logic", subtopicSlug: "deductive-logic", tags: ["deductive-logic", "logical-reasoning", "truth-statements"] },
+          { id: `${tr}-ga-ana-analogies`, label: "Analogies & Series Completion", subtopicSlug: "analogies-series", tags: ["analogies-series", "pattern-recognition", "number-letter-series"] },
+          { id: `${tr}-ga-ana-spatial`, label: "Shape Transformations & Reflections", subtopicSlug: "spatial-transformations", tags: ["spatial-transformations", "shape-rotation", "mirroring", "paper-folding-cutting"] },
+        ],
+      },
+      {
+        id: `${tr}-ga-verbal-aptitude`,
+        label: "Verbal Ability & Reading Comprehension",
+        subjectSlug: "general-aptitude",
+        canonicalSubjectSlugs: [
+          "general-aptitude",
+          `${tr}-general-aptitude`,
+          `${tr}:general-aptitude`,
+          "ga",
+          `${tr}-ga`,
+          `${tr}:ga`,
+          "english",
+        ],
+        primaryTopicTag: "verbal-aptitude",
+        secondaryTopicTags: [
+          "grammar-sentence-completion",
+          "vocabulary-synonyms-antonyms",
+          "reading-comprehension",
+          "english-grammar",
+          "vocabulary",
+        ],
+        estimatedHours: 7,
+        weightageTier: "tier-2-medium",
+        marksRange: "3–5 Marks",
+        keyConcepts: [
+          "Basic English grammar: tenses, articles, adjectives, prepositions, conjunctions, verb-noun agreement",
+          "Basic vocabulary: words, idioms, and phrases in context, Reading and comprehension",
+        ],
+        recommendedTextbook: "Word Power Made Easy — Norman Lewis",
+        subtopics: [
+          { id: `${tr}-ga-verb-grammar`, label: "Basic English Grammar", subtopicSlug: "english-grammar", tags: ["english-grammar", "tenses", "prepositions", "subject-verb-agreement"] },
+          { id: `${tr}-ga-verb-vocab`, label: "Vocabulary & Sentence Completion", subtopicSlug: "vocabulary", tags: ["vocabulary", "synonyms-antonyms", "idioms-phrases", "sentence-completion"] },
+          { id: `${tr}-ga-verb-comprehension`, label: "Reading Comprehension", subtopicSlug: "reading-comprehension", tags: ["reading-comprehension", "passage-inference", "critical-reasoning"] },
+        ],
+      },
+    ],
+  };
+}
