@@ -239,6 +239,8 @@ describe("BranchTopicFilter", () => {
       fireEvent.click(gaCheckbox);
       expect(mockActions.updateFilters).toHaveBeenCalledWith({
         selectedGaBranches: [],
+        selectedSubjects: [],
+        selectedSubtopics: [],
       });
     });
 

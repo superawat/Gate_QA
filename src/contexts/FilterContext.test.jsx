@@ -1504,11 +1504,11 @@ describe('FilterContext', () => {
             expect(cseText).not.toContain('ISRO');
             // Check that the number of subject labels in cseSection matches only the CSE subjects (databases, os)
             const cseSubjectLabels = Array.from(cseSection.querySelectorAll('label span[title]')).map(el => el.getAttribute('title'));
-            expect(cseSubjectLabels).toEqual(['Databases', 'Operating System']);
+            expect(cseSubjectLabels).toEqual(['General Aptitude', 'Databases', 'Operating System']);
             expect(cseSubjectLabels).not.toContain('isro:algorithms');
             expect(cseSubjectLabels).not.toContain('isro:os');
-            // Total subjects in CSE section should be exactly 2 from mock (Databases, Operating System)
-            expect(cseSubjectLabels.length).toBe(2);
+            // The CSE section also includes its dedicated General Aptitude filter.
+            expect(cseSubjectLabels.length).toBe(3);
         });
 
         test('isolates question pool and subjects when track=aptitude is passed in URL', async () => {
