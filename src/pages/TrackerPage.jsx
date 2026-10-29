@@ -5,7 +5,6 @@ import {
   FiArrowLeft,
   FiCpu,
   FiTrendingUp,
-  FiLayers,
   FiSearch,
   FiAward,
   FiAlertCircle,
@@ -771,16 +770,7 @@ export default function TrackerPage() {
         </section>
 
         {/* Hierarchical Syllabus Table Section */}
-        <section aria-label="Syllabus Breakdown" className="space-y-1.5 mb-6 sm:mb-8">
-          <div className="flex items-center justify-between px-1">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <FiLayers className="w-4 h-4 text-[color:var(--color-text-muted)]" />
-              <h2 className="text-xs sm:text-sm font-bold text-[color:var(--color-text)]">
-                Subject Breakdown <span className="text-[11px] font-normal text-[color:var(--color-text-muted)]">({filteredSubjects.length} of {taxonomy.subjects.length} Subjects)</span>
-              </h2>
-            </div>
-          </div>
-
+        <section aria-label="Syllabus Breakdown" className="mb-6 sm:mb-8">
           <TrackerHierarchicalTable
             subjects={filteredSubjects}
             topicMetricsMap={topicMetricsMap}

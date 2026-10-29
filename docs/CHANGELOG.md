@@ -1,4 +1,13 @@
 # Changelog
+- **Preparation Tracker Table Header Redundancy & Spacing Optimization (DEC-263)**:
+  - Removed redundant "Subject Breakdown (X of Y Subjects)" section header above the syllabus table in `TrackerPage.jsx` since the table toolbar already displays "Syllabus & Preparation Table (X Subjects)".
+  - Removed `space-y-1.5` section gap to eliminate wasted vertical whitespace and dock the table directly beneath the search and filter bar.
+  - Cleaned up unused `FiLayers` import and updated test assertions in `TrackerPage.test.jsx`.
+- **CSE Filter GA Row Spacing (DEC-262)**: Reduced the CSE filter list's vertical spacing so the gap between General Aptitude and Algorithms matches the gap between other adjacent subjects.
+- **General Aptitude Filter Styling & Topic Breakdown (DEC-261)**:
+  - Matched the CSE General Aptitude row's font size, selected/unselected colors, and checkbox size to regular subject rows; removed the divider below it.
+  - Added expandable GA subtopic lists with Select All / Clear All controls to CSE and engineering branch filters, using each question bank's available GA taxonomy.
+  - Exposed CSE GA primary taxonomy labels in `SubjectTaxonomy.getStructuredTags()` and made active GA branch filters respect selected GA subtopics.
 - **General Aptitude Multi-Branch Filter & Preparation Tracker Uniformity (DEC-260)**:
   - **GATE CSE General Aptitude Filter Availability**:
     - *Context*: Reported by user that General Aptitude option was missing in GATE CSE practice filters after DEC-252 added dedicated GA options to newly added engineering branches.

@@ -1076,7 +1076,7 @@ export function getStructuredTags(this: IQuestionService): StructuredTags {
 
     const canonicalSubtopics = Array.isArray(question.subtopics) ? question.subtopics : [];
 
-    if (!structuredSubtopics[subjectSlug] || !canonicalSubtopics.length) {
+    if (!structuredSubtopics[subjectSlug]) {
       return;
     }
 
@@ -1093,6 +1093,22 @@ export function getStructuredTags(this: IQuestionService): StructuredTags {
         structuredSubtopics[subjectSlug].set(slug, { slug, label });
       }
     });
+
+    // Official CSE GA rows carry their subtopic in the resolved primary path
+    // instead of the legacy `question.subtopics` array. Include those labels
+    // so the GA filter can expose the same subtopic controls as other subjects.
+    if (subjectSlug === "ga") {
+      const primary = question.taxonomy?.primary;
+      const slug = this.slugifyToken(primary?.subtopicSlug || "");
+      const label = String(primary?.subtopicLabel || "").trim();
+      if (slug && label && !structuredSubtopics[subjectSlug].has(slug)) {
+        structuredSubtopics[subjectSlug].set(slug, { slug, label });
+      }
+    }
+
+    if (!canonicalSubtopics.length) {
+      return;
+    }
 
     if (Array.isArray(question.taxonomy?.secondary)) {
       question.taxonomy.secondary.forEach((sec: any) => {

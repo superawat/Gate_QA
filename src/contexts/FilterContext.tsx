@@ -2119,6 +2119,9 @@ export const FilterProvider = ({
         const selectedYearSet = new Set(selectedYearSets);
         const selectedSubjectSet = new Set(selectedSubjects);
         const selectedSubtopicSet = new Set(selectedSubtopics);
+        const selectedGaSubjectSlugs = new Set(
+            selectedGaBranches.map((branch) => branch === 'da' ? 'da:general-aptitude' : 'ga')
+        );
         const isTypeConstrained = selectedTypes.length < defaultSelectedTypes.length;
         const isRangeConstrained = yearRange
             && yearRange.length === 2
@@ -2186,6 +2189,21 @@ export const FilterProvider = ({
             const isGaMatch = selectedGaBranches.length > 0
                 && selectedGaBranches.includes(qTrack)
                 && isBranchGaQuestion(q);
+
+            if (isGaMatch) {
+                const gaPath = meta?.paths?.find((path) => selectedGaSubjectSlugs.has(path.subjectSlug));
+                const gaSubtopicFilters = gaPath
+                    ? subtopicsByParentSubject.get(gaPath.subjectSlug)
+                    : undefined;
+                if (gaSubtopicFilters?.size) {
+                    const matchesSelectedGaSubtopic = Boolean(
+                        gaPath?.subtopicSlug && gaSubtopicFilters.has(gaPath.subtopicSlug)
+                    );
+                    if (!matchesSelectedGaSubtopic) {
+                        return false;
+                    }
+                }
+            }
 
             const hasSubjectOrSubtopicFilters = selectedSubjects.length > 0 || selectedSubtopics.length > 0;
             const hasGaBranchFilters = selectedGaBranches.length > 0;

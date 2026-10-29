@@ -254,7 +254,8 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     renderTrackerPage();
     expect(screen.getByRole("heading", { name: /gate cse preparation tracker/i })).toBeTruthy();
     expect(screen.getByRole("button", { name: /preparation summary/i })).toBeTruthy();
-    expect(screen.getByText(/subject breakdown/i)).toBeTruthy();
+    expect(screen.getByText(/syllabus & preparation table/i)).toBeTruthy();
+    expect(screen.queryByText(/subject breakdown/i)).toBeNull();
     expect(screen.getAllByText(/engineering mathematics/i).length).toBeGreaterThan(0);
   });
 

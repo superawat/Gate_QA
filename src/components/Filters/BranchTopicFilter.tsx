@@ -69,6 +69,7 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
   const { selectedSubjects = [], selectedSubtopics = [] } = filters;
 
   const [expandedSubjectSlugs, setExpandedSubjectSlugs] = useState<Set<string>>(() => new Set());
+  const [isGaExpanded, setIsGaExpanded] = useState(false);
 
   const selectedGaBranches: string[] = filters.selectedGaBranches || [];
   const isGaSelected = selectedGaBranches.includes(track);
@@ -91,6 +92,19 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
       return slug.startsWith(`${track}-`) || slug.startsWith(`${track}:`);
     });
   }, [subjects, track, isLoading]);
+
+  const gaSubtopics = useMemo(() => {
+    let subtopicsSource = structuredSubtopics || {};
+    if (BranchQuestionService.isLoaded(track)) {
+      const branchTags = BranchQuestionService.getStructuredTags(track);
+      if (branchTags?.structuredSubtopics?.ga?.length) {
+        subtopicsSource = { ...subtopicsSource, ...branchTags.structuredSubtopics };
+      }
+    }
+    return [...(subtopicsSource.ga || [])].sort((left: any, right: any) =>
+      String(left?.label || left?.slug || "").localeCompare(String(right?.label || right?.slug || ""))
+    );
+  }, [structuredSubtopics, track, isLoading]);
 
   const hasGaSubject = useMemo(() => {
     const isGaCandidate = (s: any) => {
@@ -128,10 +142,35 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
   }, [subjects, track, isLoading]);
 
   const handleGaToggle = () => {
-    const nextGaBranches = isGaSelected
-      ? selectedGaBranches.filter((b: string) => b !== track)
-      : [...selectedGaBranches, track];
-    updateFilters({ selectedGaBranches: nextGaBranches });
+    if (isGaSelected) {
+      const nextGaBranches = selectedGaBranches.filter((b: string) => b !== track);
+      setIsGaExpanded(false);
+      if (nextGaBranches.length === 0) {
+        const gaSubtopicSet = new Set([
+          ...(structuredSubtopics.ga || []).map((subtopic: any) => subtopic?.slug),
+          ...gaSubtopics.map((subtopic: any) => subtopic?.slug),
+        ].filter(Boolean));
+        const nextSelectedSubjects = selectedSubjects.filter((slug: string) => slug !== "ga");
+        const otherSubjectSubtopics = new Set(
+          nextSelectedSubjects.flatMap((subjectSlug: string) =>
+            (structuredSubtopics[subjectSlug] || []).map((subtopic: any) => subtopic?.slug)
+          )
+        );
+        updateFilters({
+          selectedGaBranches: nextGaBranches,
+          selectedSubjects: nextSelectedSubjects,
+          selectedSubtopics: selectedSubtopics.filter(
+            (slug: string) => !gaSubtopicSet.has(slug) || otherSubjectSubtopics.has(slug)
+          ),
+        });
+        return;
+      }
+      updateFilters({ selectedGaBranches: nextGaBranches });
+      return;
+    }
+
+    setIsGaExpanded(true);
+    updateFilters({ selectedGaBranches: [...selectedGaBranches, track] });
   };
 
   const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
@@ -161,6 +200,11 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
     });
     return nextMap;
   }, [branchSubjects, structuredSubtopics, track]);
+
+  const gaSubtopicSlugs = gaSubtopics.map((subtopic: any) => subtopic?.slug).filter(Boolean);
+  const showGaSubtopics = isGaSelected && gaSubtopics.length > 0 && isGaExpanded;
+  const allGaSubtopicsSelected = showGaSubtopics
+    && gaSubtopicSlugs.every((slug: string) => selectedSubtopicSet.has(slug));
 
   useEffect(() => {
     const activeSelected = selectedSubjects.filter((slug: string) =>
@@ -243,7 +287,9 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
   };
 
   const handleSubjectBulkToggle = (subjectSlug: string) => {
-    const subjectSubtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
+    const subjectSubtopics = subjectSlug === "ga"
+      ? gaSubtopics
+      : sortedSubtopicsBySubject.get(subjectSlug) || [];
     const subjectSubtopicSlugs = subjectSubtopics
       .map((subtopic: any) => subtopic?.slug)
       .filter(Boolean);
@@ -320,7 +366,49 @@ export default function BranchTopicFilter({ branch = "ec" }: { branch: string })
                     General Aptitude
                   </span>
                 </label>
+                <div className="flex shrink-0 items-center gap-1.5">
+                  {isGaSelected && gaSubtopics.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setIsGaExpanded((expanded) => !expanded)}
+                      aria-label={isGaExpanded ? "Hide General Aptitude subtopics" : "Show General Aptitude subtopics"}
+                      className="rounded border border-[color:var(--color-neutral-border)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[color:var(--color-neutral-text)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2"
+                    >
+                      {isGaExpanded ? "Hide" : "Show"}
+                    </button>
+                  )}
+                  {showGaSubtopics && (
+                    <button
+                      type="button"
+                      onClick={() => handleSubjectBulkToggle("ga")}
+                      aria-label={allGaSubtopicsSelected ? "Clear all General Aptitude subtopics" : "Select all General Aptitude subtopics"}
+                      className="rounded border border-[color:var(--color-primary-border)] px-2 py-0.5 text-xs font-semibold text-[color:var(--color-primary-text)] hover:bg-[color:var(--color-primary-soft)] focus:outline-none focus:ring-2"
+                    >
+                      {allGaSubtopicsSelected ? "Clear All" : "Select All"}
+                    </button>
+                  )}
+                </div>
               </div>
+              {showGaSubtopics && (
+                <div className="ml-6 mt-1 space-y-1 border-l-2 border-[color:var(--color-border)] pl-2 pr-1">
+                  {gaSubtopics.map((subtopic: any) => (
+                    <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
+                      <input
+                        type="checkbox"
+                        className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400"
+                        checked={selectedSubtopicSet.has(subtopic.slug)}
+                        onChange={() => handleSubtopicChange(subtopic.slug)}
+                      />
+                      <span
+                        className="ml-2 truncate text-xs text-[color:var(--color-text-muted)] group-hover/sub:text-[color:var(--color-text)]"
+                        title={subtopic.label}
+                      >
+                        {subtopic.label}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              )}
             </div>
           )}
           {branchSubjects.map((subject: any) => {

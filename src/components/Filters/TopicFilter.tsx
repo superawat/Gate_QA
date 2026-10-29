@@ -26,16 +26,10 @@ const TopicFilter = () => {
     const { subjects = [], structuredSubtopics = {} } = structuredTags;
     const { selectedSubjects = [], selectedSubtopics = [] } = filters;
     const [expandedSubjectSlugs, setExpandedSubjectSlugs] = useState<Set<string>>(() => new Set());
+    const [isGaExpanded, setIsGaExpanded] = useState(false);
 
     const selectedGaBranches: string[] = filters.selectedGaBranches || [];
     const isGaSelected = selectedGaBranches.includes('cse');
-
-    const handleGaToggle = () => {
-        const nextGaBranches = isGaSelected
-            ? selectedGaBranches.filter((b: string) => b !== 'cse')
-            : [...selectedGaBranches, 'cse'];
-        updateFilters({ selectedGaBranches: nextGaBranches });
-    };
 
     const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
     const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
@@ -56,6 +50,41 @@ const TopicFilter = () => {
 
         return nextMap;
     }, [structuredSubtopics, subjects]);
+
+    const gaSubtopics = sortedSubtopicsBySubject.get('ga') || [];
+    const gaSubtopicSlugs = gaSubtopics.map((subtopic) => subtopic.slug).filter(Boolean);
+    const showGaSubtopics = isGaSelected && gaSubtopics.length > 0 && isGaExpanded;
+    const allGaSubtopicsSelected = showGaSubtopics
+        && gaSubtopicSlugs.every((slug) => selectedSubtopicSet.has(slug));
+
+    const handleGaToggle = () => {
+        if (isGaSelected) {
+            const nextGaBranches = selectedGaBranches.filter((b: string) => b !== 'cse');
+            setIsGaExpanded(false);
+            if (nextGaBranches.length === 0) {
+                const gaSubtopicSet = new Set(gaSubtopicSlugs);
+                const nextSelectedSubjects = (selectedSubjects as string[]).filter((slug) => slug !== 'ga');
+                const otherSubjectSubtopics = new Set(
+                    nextSelectedSubjects.flatMap((subjectSlug) =>
+                        ((structuredSubtopics as StructuredSubtopics)[subjectSlug] || []).map((subtopic) => subtopic.slug)
+                    )
+                );
+                updateFilters({
+                    selectedGaBranches: nextGaBranches,
+                    selectedSubjects: nextSelectedSubjects,
+                    selectedSubtopics: (selectedSubtopics as string[]).filter(
+                        (slug) => !gaSubtopicSet.has(slug) || otherSubjectSubtopics.has(slug)
+                    ),
+                });
+                return;
+            }
+            updateFilters({ selectedGaBranches: nextGaBranches });
+            return;
+        }
+
+        setIsGaExpanded(true);
+        updateFilters({ selectedGaBranches: [...selectedGaBranches, 'cse'] });
+    };
 
     const isCseSubjectSlug = (slug?: string) =>
         Boolean(
@@ -244,19 +273,66 @@ const TopicFilter = () => {
 
             {/* ── Expanded Topics Section (when includeCse is ON) ── */}
             {includeCse && subjectGroups.length > 0 && (
-                <div className="mt-3 border-t border-[color:var(--color-border)] pt-3 space-y-3">
-                    {/* General Aptitude Filter Checkbox */}
-                    <div className="pt-1 pb-1 border-b border-[color:var(--color-border)] mb-1">
-                        <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[color:var(--color-text)] hover:text-[color:var(--color-primary-text)]">
-                            <input
-                                type="checkbox"
-                                checked={isGaSelected}
-                                onChange={handleGaToggle}
-                                className="h-3.5 w-3.5 rounded border-[color:var(--color-border)] text-blue-600 focus:ring-blue-500"
-                                aria-label="General Aptitude for CSE"
-                            />
-                            <span>General Aptitude</span>
-                        </label>
+                <div className="mt-3 border-t border-[color:var(--color-border)] pt-3 space-y-1">
+                    <div className="flex min-w-0 flex-col">
+                        <div className="flex items-center justify-between gap-2 py-1">
+                            <label className="flex min-w-0 cursor-pointer items-center">
+                                <input
+                                    type="checkbox"
+                                    checked={isGaSelected}
+                                    onChange={handleGaToggle}
+                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    aria-label="General Aptitude for CSE"
+                                />
+                                <span
+                                    className={`ml-3 truncate text-sm ${isGaSelected ? 'font-medium text-[color:var(--color-primary-text)]' : 'text-[color:var(--color-text-muted)]'}`}
+                                    title="General Aptitude"
+                                >
+                                    General Aptitude
+                                </span>
+                            </label>
+
+                            <div className="flex shrink-0 items-center gap-1.5">
+                                {isGaSelected && gaSubtopics.length > 0 && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsGaExpanded((expanded) => !expanded)}
+                                        aria-label={isGaExpanded ? 'Hide General Aptitude subtopics' : 'Show General Aptitude subtopics'}
+                                        className="rounded border border-[color:var(--color-neutral-border)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[color:var(--color-neutral-text)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                                    >
+                                        {isGaExpanded ? 'Hide' : 'Show'}
+                                    </button>
+                                )}
+                                {showGaSubtopics && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleSubjectBulkToggle('ga')}
+                                        aria-label={allGaSubtopicsSelected ? 'Clear all General Aptitude subtopics' : 'Select all General Aptitude subtopics'}
+                                        className="rounded border border-[color:var(--color-primary-border)] px-2 py-0.5 text-xs font-semibold text-[color:var(--color-primary-text)] hover:bg-[color:var(--color-primary-soft)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                                    >
+                                        {allGaSubtopicsSelected ? 'Clear All' : 'Select All'}
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        {showGaSubtopics && (
+                            <div className="ml-6 mt-1 space-y-1 border-l-2 border-[color:var(--color-border)] pl-2 pr-1">
+                                {gaSubtopics.map((subtopic) => (
+                                    <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
+                                        <input
+                                            type="checkbox"
+                                            className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400"
+                                            checked={selectedSubtopicSet.has(subtopic.slug)}
+                                            onChange={() => handleSubtopicChange(subtopic.slug)}
+                                        />
+                                        <span className="ml-2 truncate text-xs text-[color:var(--color-text-muted)] group-hover/sub:text-[color:var(--color-text)]" title={subtopic.label}>
+                                            {subtopic.label}
+                                        </span>
+                                    </label>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {subjectGroups.map((group) => (
