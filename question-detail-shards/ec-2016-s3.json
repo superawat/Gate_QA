@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T18:50:26.978Z",
+  "generatedAt": "2026-10-29T15:22:16.577Z",
   "shardKey": "ec-2016-s3",
   "yearSetKey": "ec-2016-s3",
   "yearSetIdentity": "ec:2016:set-3",
@@ -1925,10 +1925,10 @@
       "options": [],
       "answer_meta": {
         "type": "NAT",
-        "answer": "6",
+        "answer": "7",
         "tolerance": {
-          "lower": 6,
-          "upper": 6
+          "lower": 7,
+          "upper": 7
         },
         "source": "official_key"
       },
@@ -1949,8 +1949,8 @@
         ]
       },
       "detailed_solution": {
-        "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "When, $T=\\text{logic} 0$, the path followed by the circuit would be,\n\nNOR gate $\\rightarrow \\text{MUX} 1 \\rightarrow \\text{MUX} 2$\n\n$\\Rightarrow 2 \\mathrm{ns} \\rightarrow 1.5 \\mathrm{ns} \\rightarrow 1.5 \\mathrm{ns}$\n\n$\\Rightarrow 5 \\mathrm{ns}$\n\nWhen, $T=\\text{logic} 1$, the path followed by the circuit would be,\n\nNOR gate $\\rightarrow MUX 1 \\rightarrow NOR gate \\rightarrow MUX 2$\n\n$\\Rightarrow 1 \\mathrm{ns} \\rightarrow 1.5 \\mathrm{ns} \\rightarrow 2 \\mathrm{ns} \\rightarrow 1.5 \\mathrm{ns}$\n\n$\\Rightarrow 6 \\mathrm{ns}$\n\n$\\therefore \\quad$ Maximum propagation delay is 6 ns\n\nTherefore, the correct answer is **6**."
+        "concept": "Digital Circuits - Combinational Circuit Timing & Critical Path Propagation Delay",
+        "markdown": "### 1. Problem Formulation & Component Delays\nWe are given a combinational logic circuit with inputs $P, Q, R, S, T$ applied simultaneously at $t = 0$.\nThe gate propagation delays are:\n- **NOR gates ($t_{\\text{NOR}}$):** $2\\text{ ns}$\n- **Multiplexers ($t_{\\text{MUX}}$):** $1.5\\text{ ns}$\n- **Inverters ($t_{\\text{INV}}$):** $1\\text{ ns}$\n\nWe are required to determine the **maximum propagation delay** (critical path delay) to output $Y$.\n\n---\n\n### 2. Signal Propagation & Delay Analysis by Stage\n\n#### Stage 1: First Multiplexer (MUX 1) Inputs\n- **Data Input '0':** Fed by the output of **NOR gate 1** with inputs $Q$ and $R$:\n  $$t_{\\text{in0, MUX1}} = t_{\\text{NOR}} = 2\\text{ ns}$$\n- **Data Input '1':** Fed by the output of an **inverter** with input $S$:\n  $$t_{\\text{in1, MUX1}} = t_{\\text{INV}} = 1\\text{ ns}$$\n- **Select Input $S_0$:** Directly connected to primary input $T$:\n  $$t_{\\text{sel, MUX1}} = 0\\text{ ns}$$\n\nFor MUX 1, the latest arriving data input is at $t = 2\\text{ ns}$ (via NOR gate 1).\nAdding the multiplexer propagation delay ($1.5\\text{ ns}$), the output of MUX 1 is valid at:\n$$t_{\\text{out, MUX1}} = 2\\text{ ns} + 1.5\\text{ ns} = 3.5\\text{ ns}$$\n\n#### Stage 2: Second NOR Gate (NOR 2)\n- Input 1 is primary input $P$ (arrives at $t = 0\\text{ ns}$).\n- Input 2 is the output of MUX 1 (arrives at $t = 3.5\\text{ ns}$).\nThe propagation through NOR gate 2 ($2\\text{ ns}$) gives:\n$$t_{\\text{out, NOR2}} = 3.5\\text{ ns} + 2\\text{ ns} = 5.5\\text{ ns}$$\n\n#### Stage 3: Second Multiplexer (MUX 2) Inputs & Final Output $Y$\n- **Data Input '0':** Fed by the output of NOR gate 2:\n  $$t_{\\text{in0, MUX2}} = 5.5\\text{ ns}$$\n- **Data Input '1':** Directly connected to the output of MUX 1:\n  $$t_{\\text{in1, MUX2}} = 3.5\\text{ ns}$$\n- **Select Input $S_0$:** Fed by the inverter driven by $T$:\n  $$t_{\\text{sel, MUX2}} = t_{\\text{INV}} = 1\\text{ ns}$$\n\nThe critical signal arriving at the inputs of MUX 2 is through data input '0' at $t = 5.5\\text{ ns}$.\nAdding the propagation delay of MUX 2 ($1.5\\text{ ns}$):\n$$t_{\\text{max}} = 5.5\\text{ ns} + 1.5\\text{ ns} = 7.0\\text{ ns}$$\n\n---\n\n### 3. Critical Path Summary\n$$\\text{Critical Path} = \\text{NOR}_1 \\rightarrow \\text{MUX}_1 \\rightarrow \\text{NOR}_2 \\rightarrow \\text{MUX}_2$$\n$$\\text{Total Delay} = 2\\text{ ns} + 1.5\\text{ ns} + 2\\text{ ns} + 1.5\\text{ ns} = 7\\text{ ns}$$\n\n**Correct Answer: 7**"
       }
     },
     "ec:2016:q45-s3": {
