@@ -44,7 +44,7 @@ const FilterModal = ({ isOpen, onClose }) => {
             >
                 <div className="filter-sheet-drag-handle" aria-hidden="true" />
                 <div className="flex items-center justify-between border-b border-[color:var(--color-border)] px-4 py-4 pt-[calc(1rem+env(safe-area-inset-top,0px))]">
-                    <h2 id="filter-modal-title" className="text-lg font-semibold text-[color:var(--color-text)]">Filters</h2>
+                    <h2 id="filter-modal-title" className="font-display text-xl font-normal text-[color:var(--color-text)]">Filters</h2>
                     <button
                         ref={closeButtonRef}
                         type="button"
@@ -57,7 +57,7 @@ const FilterModal = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="min-h-0 flex-1 overflow-hidden">
-                    <FilterSidebar className="h-full w-full border-r-0 bg-[color:var(--color-surface)]" />
+                    <FilterSidebar className="h-full w-full border-r-0 bg-[color:var(--color-surface)]" isDrawer={true} />
                 </div>
 
                 <div className="border-t border-[color:var(--color-border)] px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
@@ -65,7 +65,7 @@ const FilterModal = ({ isOpen, onClose }) => {
                         onClick={onClose}
                         className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl bg-[color:var(--color-primary)] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500"
                     >
-                        See {filteredQuestions.length} Matching Questions
+                        See <span className="tabular-nums font-bold mx-1">{filteredQuestions.length}</span> Matching Questions
                     </button>
                 </div>
             </div>

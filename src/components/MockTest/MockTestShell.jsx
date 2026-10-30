@@ -1602,7 +1602,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     ) : null;
 
     const renderPreExamShell = (content) => (
-        <div className="mocktest-root flex min-h-screen w-full flex-col bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.08),_transparent_24%),linear-gradient(180deg,#eef4fb_0%,#f8fbff_18%,#f4f7fb_100%)] text-sm selection:bg-sky-100">
+        <div className="mocktest-root flex min-h-screen w-full flex-col bg-[color:var(--color-bg,#f8fafc)] text-sm selection:bg-sky-100">
             <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
                 {setupBanner}
                 {content}

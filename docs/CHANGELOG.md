@@ -1,4 +1,89 @@
 # Changelog
+- **Custom Builder 2-Column Rearrangement & Unified Heading Font Consistency (DEC-270)**:
+  - **Custom Builder Column Organization**:
+    - **Right Column (in exact order)**:
+      1. *Duration Mode* (`renderDurationModeCard`): Placed at the top with Adaptive/Custom duration toggle and minutes input.
+      2. *Question Count* (`renderQuestionCountCard`): Placed directly below Duration Mode with preset chips (15, 25, 65) and custom count input.
+      3. *Year Scope* (`renderYearScopeCard`): Placed below Question Count with All/Recent/Custom range controls and pool span chips.
+      4. *Available Pool* (`PreviewCard`): Placed at the bottom with live count breakdown (Total, GA, Technical, MCQ, MSQ, NAT), followed by validation messaging.
+    - **Left Column (in exact order)**:
+      1. *Question Type* (`renderQuestionTypesCard`): MCQ, MSQ, NAT selection chips with live counts.
+      2. *Solved Question Policy* (`renderSolvedPolicyCard`): Unsolved Only, Include Solved, Solved Only, Bookmarked Only chips with helper notes.
+      3. *Subjects & Subtopics* (`renderSubjectsHierarchyCard`): Full subject tree and topic breakdowns with multi-branch track tabs and Aptitude options.
+    - **Responsive Layout**: Reconfigured desktop grid template to `lg:grid-cols-[minmax(0,1.15fr)_380px]` for Custom Builder, giving ample space to the 2-column subjects grid on the left and a comfortable 380px width to the right column controls without text clipping or awkward wraps. Automatically stacks into a clean single column on tablet and mobile viewports.
+  - **Unified Editorial Heading Font Consistency (`DM Serif Display`)**:
+    - Inspected homepage typography implementation: uses Google Font `DM Serif Display` (`--font-display: 'DM Serif Display', Georgia, serif;`) with regular weight (`font-normal` / 400).
+    - Reused the exact same heading font family and weight across:
+      - *Filter Questions Page* (`ExplorePage.jsx`): Main "Explore questions" title (`h1.practice-explore-title`).
+      - *Filter Drawer* (`FilterModal.jsx`): Drawer title "Filters" (`h2#filter-modal-title`).
+      - *Mock Test Portal* (`MockTestPortal.jsx`): Main page heading "Choose Attempt Type" (`h1`) and mode option titles ("Past Papers", "Custom Builder" `h2`).
+      - *Mock Test Setup & Custom Builder* (`MockTestSetup.jsx`): "Mock Test Setup" page title (`h2`), Attempt Summary (`h3`), Mode Description (`h3`), and card headers (`h4` across Duration Mode, Question Count, Year Scope, Available Pool, Question Types, Solved Questions Policy, and Subjects & Subtopics).
+      - Scoped CSS helper in `MockTest.css` (`.mocktest-root .mocktest-portal-head h1, .mocktest-root .mocktest-setup-card h2, .mocktest-root .font-display { font-family: var(--font-display); }`).
+  - **Zero Regressions & Invariant Preservation**: All sampling calculations, question eligibility filters, branch track isolation, and test IDs preserved 100%. Live timed TCS iON exam shell (`MockTestExam.jsx`) and review/results remain frozen.
+  - **Verification**: TypeScript clean (`tsc --noEmit`); all 11 unit test suites in `src/components/MockTest/` and `src/pages/ExplorePage.test.jsx` (129 tests) passed; browser subagent visual audit verified desktop (1280x800) and mobile (375x812) viewports.
+- **Mock Test Setup, Custom Builder & Past Papers Layout Integration & Header Compaction (DEC-269)**:
+  - **Initial Selection Page Integration (`MockTestPortal.jsx`)**: Removed outer rectangular floating card container, artificial min-height, and drop shadow. Converted from a centered floating card with excessive padding (`p-3.5 sm:p-5 lg:p-6`) to a seamless page-integrated layout (`w-full max-w-6xl mx-auto flex flex-1 flex-col justify-between`) with clean header (`border-b`) and bottom action bar (`border-t`). All selection states, fact chips (`tabular-nums`), and test IDs preserved.
+  - **Single-Line Header Compaction (`MockTestSetup.jsx`)**: Placed "Mock Test Setup" title and mode pill badge ("Custom Builder" / "Past Papers") onto the exact same horizontal line (`<div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">`), saving vertical space and eliminating disjointed stacked headers.
+  - **Custom Builder Section Rearrangement**:
+    - *Attempt Summary*: Completely removed from Custom Builder (conditionally rendered only for Past Papers via `isPaperMode ? (...) : null`), leaving the sticky aside clean with the live `PreviewCard` pool breakdown and validation messaging.
+    - *Question Count*: Moved from left to right side in Row 1.
+    - *Duration Mode*: Moved from right to left side in Row 1.
+    - *Year Scope*: Moved from right to left side in Row 2.
+    - *Question Type*, *Solved Question Policy*, *Subjects*, and *Subtopics*: Kept strictly in their existing positions.
+  - **Past Papers Page Integration**: Removed popup-like container and excessive wrapper padding, integrating the view directly into the page. Preserved all button positions, track filters, paper cards, Attempt Summary, and Start Mock CTA.
+  - **Shell & CSS Coordination (`MockTestShell.jsx`, `MockTest.css`)**: Updated `renderPreExamShell` background from modal radial gradient to page token `bg-[color:var(--color-bg,#f8fafc)]`. Removed `min-height`, `border`, `border-radius`, and `box-shadow` on `.mocktest-portal-card` and `.mocktest-setup-card` in `MockTest.css`.
+  - **Zero Regressions & Invariant Preservation**: Timed TCS iON exam shell (`MockTestExam.jsx`) and review (`MockTestReview.jsx`) remain 100% frozen. Question sampling, branch isolation, and all test IDs (`mock-portal-option-*`, `mock-setup-count-preset-*`, `duration-mode-*`, `preview-*`, etc.) remain intact.
+  - **Verification**: TypeScript typecheck 100% clean; all 116 test files (1,561 tests) passed in Vitest; browser subagent visual audit verified desktop (1280x800) and mobile (375x812) viewports.
+- **Filter Sidebar & Drawer Density, Mobile Drawer Tabular Counters & Responsive Polish (Phase 2 & Phase 6 - DEC-268)**:
+  - **Count & Reset Strip Compacted**: Reduced reset bar padding from `p-4` to `px-4 py-2.5` in `FilterSidebar.jsx` and formatted the counter with `tabular-nums` (`{filteredQuestions.length} / {totalQuestions} results`) to eliminate layout jitter.
+  - **Progress Toggles Section Density**: Compacted outer container from `px-4 py-3` to `px-4 py-2`, inner card from `p-3` to `p-2.5`, and each toggle item from `py-1.5` to `py-1` in `ProgressFilterToggles.tsx`, saving ~16px of vertical height while keeping all 4 toggles (*Hide Solved, Solved Only, Bookmarked Only, Unlock Solutions* with `new` badge) scannable and accessible.
+  - **Question Type Section Density**: Compacted container padding from `p-4 mb-2` to `px-4 py-3 mb-1.5` and button vertical padding from `py-2` to `py-1.5`, aligning with the rest of the application.
+  - **Desktop Sidebar Scroll Padding Trimming**: Replaced blanket `pb-24` on scrollable filter content with dynamic `${isDrawer || onClose ? 'pb-24' : 'pb-6'}`, saving ~72px of dead vertical scroll padding on desktop while preserving `pb-24` in `FilterModal.jsx` for mobile safe-area button clearance.
+  - **Mobile Drawer Live Count Tabular Numerals**: Enhanced bottom action button in `FilterModal.jsx` to `See <span className="tabular-nums font-bold mx-1">{filteredQuestions.length}</span> Matching Questions` with dynamic live updates on filter change.
+  - **Keyboard Shortcut Discoverability**: Added an inline desktop `<kbd>F</kbd>` badge inside the Filters button in `ExplorePage.jsx` to visually surface the existing shortcut without cluttering mobile screens.
+  - **Tabular Numerals on Pagination Controls**: Applied `tabular-nums` to pagination page pills, "Page X of Y" counters, and the jump-to-page input in `PaginationControls.jsx`, eliminating width jumping when navigating across digit boundaries.
+  - **Zero Regressions & Invariant Preservation**: Enrolled branch isolation (`CSE`, `DA`, `EC`, `EE`, `ME`, `CE`), aptitude topic filters, ISRO CS toggles, and URL param synchronization remain 100% intact. Timed TCS iON live exam screen (`MockTestExam.jsx`) and mock results/review (`MockTestReview.jsx`) remain 100% frozen and untouched.
+  - **Verification**: All 116 test files (1,561 tests) passed; TypeScript clean (`npm run typecheck`); browser subagent visual validation confirmed flawless desktop (1280x800) and mobile (375x812) layout and behavior.
+- **Past Paper Mock Setup Density, Pinned Track Filters & Responsive Scroll Region (Phase 4 - DEC-267)**:
+  - **Pinned & Tightened Track Filter Toolbar**: Pinned and tightened the track filter pill row (`All Papers`, `GATE DA`, `GATE CSE`, etc.) with `tabular-nums` for paper counts and live "Showing X papers" indicator, allowing branch switching without losing scroll state.
+  - **Predictable Paper List Scroll Region**: Encapsulated the 58-paper list inside a dedicated responsive scroll region (`max-h-[380px] sm:max-h-[460px] lg:max-h-[calc(100vh-255px)] overflow-y-auto`). Completely eliminated the 4,000px page blowout on mobile and tablet screens, keeping the Attempt Summary, PreviewCard, and Start Mock footer actions immediately visible and accessible.
+  - **High-Density & Readable Paper Cards**: Tightened card padding from `p-4` to `p-3 sm:p-3.5`, rendered in a responsive `grid-cols-1 sm:grid-cols-2` layout (1 readable full-width column on mobile < 640px to eliminate awkward text line wraps; 2 columns on tablet/desktop). Added `tabular-nums` to paper labels, GA/technical question counts, and missing question indices, plus a checkmark badge on selection.
+  - **Balanced 2-Column Attempt Summary**: Restructured the summary tile grid in the sticky aside: `Requested` (65 Questions) and `Duration` (180 min) side-by-side, with `Selected paper` spanning full width directly below, followed by the paper note and `PreviewCard`. Saved ~80px vertical height in the aside, ensuring zero clipping or aside scrolling on desktop.
+  - **CSS & Layout Coordination**: Relaxed `.mocktest-setup-card` min-height from `540px` to `480px` in `MockTest.css` and added `scrollbar-gutter: stable` to `.mocktest-paper-grid`.
+  - **Zero Regressions & Invariant Preservation**: 100% preserved all test IDs (`mock-paper-option-*`, `mock-paper-filter-*`, `preview-*`), paper selection/eligibility semantics, disabled start states, and Back/Reset/Start Mock handlers. The live timed TCS iON exam shell (`MockTestExam.jsx`) and review/results (`MockTestReview.jsx`) remain 100% frozen and untouched.
+  - **Verification**: All 110 tests in `src/components/MockTest/` pass; full unit test suite passes (116 test files, 1,561 tests passed); TypeScript clean (`npm run typecheck`). Browser subagent visual inspection verified desktop (1280x800) and mobile (375x812) viewports.
+- **Custom Mock Builder Density, Reorganized Option Hierarchy & Aside Stickiness (Phase 5 - DEC-266)**:
+  - Reorganized Custom Mock Builder options into 4 compact, high-density groups in `MockTestSetup.jsx`:
+    1. **Exam Parameters**: Question count presets (`[15, 25, 65]`) & custom count input (`1–65`) grouped with Duration mode (`Adaptive` / `Custom minutes` toggle) in a 2-column grid.
+    2. **Time Window**: Year scope selection (`All years`, `Recent years`, `Custom range` with `From` and `To` inputs) with pool span indicators and `tabular-nums`.
+    3. **Question Filters**: Question types (`MCQ`, `MSQ`, `NAT`) paired side-by-side with Solved Questions Policy (`Unsolved Only`, `Include Solved`, `Solved Only`, `Bookmarked Only`) in a 2-column grid. Moving Solved Policy from the sidebar to the main builder content eliminates massive scroll distance on mobile and shrinks desktop aside height from ~620px to ~330px.
+    4. **Subjects & Subtopics**: Compact card featuring "All Subjects (Broad Mix)" shortcut, 3-level taxonomy hierarchy for enrolled branch tracks (`CSE`, `DA`, `EC`, `EE`, `ME`, `CE`), Aptitude track with category filtering, and optional legacy topics.
+  - Balanced `<aside>` container with a 2-column summary tile grid (`Requested Questions`, `Duration`, `Available Pool`, `Year Scope`) alongside live `PreviewCard` and validation feedback, completely eliminating nested double-scrollbar clipping and ensuring the sticky sidebar stays fully visible without scrolling on standard desktop viewports.
+  - Added `tabular-nums` throughout: count inputs, year scope labels, summary stats, topic counts (`Topics (X)`), selection badges, and `PreviewCard` breakdowns (Total, GA, Technical, MCQ, MSQ, NAT).
+  - Compacted setup card outer padding (`p-3.5 sm:p-5 lg:p-6`), header (`px-4 py-3 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4`), and sticky footer (`px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8`). Reduced primary CTA to `min-h-[38px]` and secondary actions to `min-h-[36px]`.
+  - Updated `MockTest.css`: Compacted `.mocktest-primary-btn` (`min-height: 38px`), `.mocktest-secondary-btn` (`min-height: 36px`), `.mocktest-filter-chip` (`min-height: 34px`), and `.mocktest-input` (`min-height: 36px`).
+  - Preserved 100% of all data attributes, test IDs (`preview-total`, `preview-ga`, `preview-cs`, `preview-mcq`, `preview-msq`, `preview-nat`, `mock-setup-count-preset-*`, `duration-mode-*`, `solved-filter-*`, `mock-setup-year-scope-*`), and selection states.
+  - Live timed TCS iON exam stage (`MockTestExam.jsx`) and mock results/review (`MockTestReview.jsx`) remain 100% frozen and untouched.
+  - Verified all 10 mock test suites (110 tests passed) and complete test suite (116 test files, 1561 tests passed 100%). TypeScript clean (`npm run typecheck`).
+  - Browser subagent visual audit verified desktop (1280x800) and mobile (375x812) viewports: pristine density, zero horizontal overflow, dynamic live preview updates, and instant responsiveness.
+- **Phase 3 Mock Attempt-Type Portal Density & Tabular Numerals (DEC-265)**:
+  - Tightened `MockTestPortal.jsx` container padding from `p-4 sm:p-6 lg:p-8` to `p-3.5 sm:p-5 lg:p-6` and portal header padding from `px-6 py-6 lg:px-8` to `px-5 py-4 sm:px-6 lg:px-8 lg:py-5`.
+  - Scaled Back to Home button to `min-h-[36px] min-w-[36px]` (desktop `min-h-[38px]`) and tightened Selected Mode badge to `px-3.5 py-2`.
+  - Reduced option card body padding from `p-6 lg:p-8` to `p-5 lg:p-6`, card grid gap to `gap-4 sm:gap-5`, and card internal padding from `p-5 sm:p-6` to `p-4 sm:p-5`.
+  - Added `tabular-nums` class to fact chips ("65 Questions", "180 min", "1 to 65 Questions", "Adaptive") to prevent digit misalignment.
+  - Tightened helper footer spacing from `mt-5 pt-3.5` to `mt-3.5 pt-2.5` and action footer button to `min-h-[38px] sm:min-h-[40px] px-5 sm:px-6 py-2`.
+  - Updated `MockTest.css` to relax `.mocktest-portal-card` min-height from `540px` to `480px` and `.mocktest-portal-option` min-height from `270px` to `230px`, preventing artificial whitespace inflation while preserving full responsive mobile stacking.
+  - Added dedicated unit test suite `MockTestPortal.test.jsx` (6 tests). All 110 mock test unit tests and full suite pass 100%; TypeScript clean.
+- **Phase 0 Control Inventory & Phase 1 Compact Explore Header and Question Rows (DEC-264)**:
+  - **Phase 0 (Baseline & Control Inventory)**: Documented complete control and data inventory across `ExplorePage.jsx`, `QuestionPickerList.jsx`, `PaginationControls.jsx`, `FilterSidebar.jsx`, `FilterModal.jsx`, and `MockTestPortal/Setup`. Confirmed strict boundary demarcation: live timed TCS iON exam (`MockTestExam.jsx`) and mock results/review (`MockTestReview.jsx`) remain 100% frozen.
+  - **Phase 1 (Compact Explore Header & Question Rows)**:
+    - Tightened Explore header card padding from `px-4 py-3 sm:px-5 sm:py-3.5` to `px-3.5 py-2.5 sm:px-4 sm:py-3`.
+    - Compacted primary actions: Start Practice button from `min-h-[42px]` to `min-h-[36px]`, mobile Filters trigger to `min-h-[36px]`, and Theme toggle to `36px x 36px`.
+    - Added `tabular-nums` to result summary, active filter counter, apply-filters toggle, sequence numbers (`#sequenceNumber`), year indicators (`yearSetLabel`), and pagination pill numbers (`PaginationControls.jsx`) to eliminate layout jitter.
+    - Tightened desktop table head from `py-2 sm:py-2.5` to `py-1.5 sm:py-2`, and question row padding from `py-3` to `py-2.5` (saving ~100px across 25 rows, allowing 8 full rows to fit in standard viewports without scrolling).
+    - Reduced desktop Open button height from `min-h-[40px]` to `min-h-[36px]` (`py-1.5 px-3.5`) while preserving touch safety on mobile.
+    - Added `line-clamp-2 md:line-clamp-3` to question titles to prevent long stems from expanding row heights.
+    - Verified all 115 test files (1,555 unit tests) pass; TypeScript typecheck 100% clean.
 - **Preparation Tracker Table Header Redundancy & Spacing Optimization (DEC-263)**:
   - Removed redundant "Subject Breakdown (X of Y Subjects)" section header above the syllabus table in `TrackerPage.jsx` since the table toolbar already displays "Syllabus & Preparation Table (X Subjects)".
   - Removed `space-y-1.5` section gap to eliminate wasted vertical whitespace and dock the table directly beneath the search and filter bar.

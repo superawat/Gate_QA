@@ -45,7 +45,7 @@ const PaginationControls = ({
       className="practice-pagination flex flex-col gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3.5 py-1.5 sm:px-4 sm:py-1.5 shadow-[var(--shadow-soft)] sm:flex-row sm:items-center sm:justify-between"
     >
       <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
-        <p className="text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">
+        <p className="text-xs sm:text-sm font-medium tabular-nums text-[color:var(--color-text-muted)]">
           Page <span className="font-semibold text-[color:var(--color-text)]">{currentPage}</span> of{" "}
           <span className="font-semibold text-[color:var(--color-text)]">{totalPages}</span>
         </p>
@@ -61,7 +61,7 @@ const PaginationControls = ({
             max={totalPages}
             value={jumpPage}
             onChange={(e) => setJumpPage(e.target.value)}
-            className="h-7 w-12 sm:w-14 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1.5 py-0.5 text-center text-xs font-medium text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+            className="h-7 w-12 sm:w-14 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1.5 py-0.5 text-center text-xs font-medium tabular-nums text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
             placeholder="No."
           />
           <button
@@ -121,7 +121,7 @@ const PaginationControls = ({
                 aria-current={isActive ? "page" : undefined}
                 aria-label={`Page ${page}`}
                 onClick={() => onPageChange(page)}
-                className={`inline-flex h-8 sm:h-7.5 min-h-[34px] sm:min-h-[30px] min-w-[32px] sm:min-w-[30px] touch-manipulation active:scale-95 items-center justify-center rounded-lg px-2 text-xs font-semibold transition ${
+                className={`inline-flex h-8 sm:h-7.5 min-h-[34px] sm:min-h-[30px] min-w-[32px] sm:min-w-[30px] touch-manipulation active:scale-95 items-center justify-center rounded-lg px-2 text-xs font-semibold tabular-nums transition ${
                   isActive
                     ? "bg-[color:var(--color-primary)] text-white shadow-sm"
                     : "border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"

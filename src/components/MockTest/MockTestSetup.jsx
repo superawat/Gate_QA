@@ -184,9 +184,11 @@ const ACCENT_CLASSES = {
 };
 
 const SummaryStat = ({ label, value }) => (
-    <div className="mocktest-stat-tile border border-slate-200 bg-white px-4 py-2.5 shadow-[var(--shadow-soft)]">
-        <div className="text-[11px] font-semibold uppercase text-slate-500">{label}</div>
-        <div className="mt-1 text-lg font-semibold text-slate-950">{value}</div>
+    <div className="mocktest-stat-tile rounded-lg border border-slate-200 bg-white px-3 py-2 shadow-[var(--shadow-soft)]">
+        <div className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500">{label}</div>
+        <div className="mt-0.5 text-sm sm:text-base font-semibold text-slate-950 tabular-nums truncate" title={typeof value === "string" ? value : undefined}>
+            {value}
+        </div>
     </div>
 );
 
@@ -217,7 +219,7 @@ const FilterChip = ({
             type="button"
             onClick={onClick}
             className={joinClasses(
-                "mocktest-filter-chip border px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2",
+                "mocktest-filter-chip border px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-semibold transition focus:outline-none focus:ring-2",
                 focusRing,
                 active
                     ? toneClass
@@ -269,31 +271,31 @@ const PreviewCard = ({ livePreview }) => {
     }
 
     return (
-        <div className="mocktest-preview-card rounded-[var(--radius-card)] border border-slate-200 bg-slate-50/80 p-4">
+        <div className="mocktest-preview-card rounded-[var(--radius-card)] border border-slate-200 bg-slate-50/80 p-3 sm:p-3.5">
             <div className="flex items-center justify-between gap-3">
                 <div>
-                    <p className="text-xs font-semibold uppercase text-slate-500">Available pool</p>
-                    <p className="mt-1 text-sm text-slate-600">The questions currently eligible for this attempt.</p>
+                    <h4 className="font-display text-base font-normal text-slate-950">Available pool</h4>
+                    <p className="mt-0.5 text-xs text-slate-600">The questions currently eligible for this attempt.</p>
                 </div>
-                <div className="mocktest-mini-total bg-white px-3 py-2 text-right shadow-[var(--shadow-soft)]">
-                    <div className="text-2xl font-semibold text-slate-950" data-testid="preview-total">{livePreview.total}</div>
-                    <div className="text-[11px] font-semibold uppercase text-slate-500">Total</div>
+                <div className="mocktest-mini-total bg-white px-2.5 py-1 text-right shadow-[var(--shadow-soft)]">
+                    <div className="text-xl sm:text-2xl font-semibold text-slate-950 tabular-nums" data-testid="preview-total">{livePreview.total}</div>
+                    <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Total</div>
                 </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="mt-3 grid grid-cols-2 gap-2">
                 <SummaryStat label="GA" value={<span data-testid="preview-ga">{livePreview.gaCount}</span>} />
                 <SummaryStat label="Technical" value={<span data-testid="preview-cs">{livePreview.csCount}</span>} />
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
-                <span className="mocktest-inline-fact bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
+            <div className="mt-3 flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
+                <span className="mocktest-inline-fact bg-white px-2.5 py-1 shadow-[var(--shadow-soft)] tabular-nums">
                     <span data-testid="preview-mcq">{livePreview.mcqCount}</span> MCQ
                 </span>
-                <span className="mocktest-inline-fact bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
+                <span className="mocktest-inline-fact bg-white px-2.5 py-1 shadow-[var(--shadow-soft)] tabular-nums">
                     <span data-testid="preview-msq">{livePreview.msqCount}</span> MSQ
                 </span>
-                <span className="mocktest-inline-fact bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
+                <span className="mocktest-inline-fact bg-white px-2.5 py-1 shadow-[var(--shadow-soft)] tabular-nums">
                     <span data-testid="preview-nat">{livePreview.natCount}</span> NAT
                 </span>
             </div>
@@ -406,7 +408,7 @@ const SubjectHierarchyCard = ({
                         {subject.label}
                     </span>
                     {selectedSubtopicsCount > 0 && (
-                        <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${styles.badge}`}>
+                        <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold tabular-nums ${styles.badge}`}>
                             {selectedSubtopicsCount} selected
                         </span>
                     )}
@@ -444,7 +446,7 @@ const SubjectHierarchyCard = ({
             {showTopics && (
                 <div className="mt-2.5 space-y-2 border-t border-slate-100 pt-2">
                     <div className="flex items-center justify-between px-0.5 text-[11px] text-slate-500 font-medium">
-                        <span>Topics ({topics.length}) &bull; {allSubjectSubtopicSlugs.length} Subtopics</span>
+                        <span className="tabular-nums">Topics ({topics.length}) &bull; {allSubjectSubtopicSlugs.length} Subtopics</span>
                         {topics.length > 1 && (
                             <button
                                 type="button"
@@ -492,7 +494,7 @@ const SubjectHierarchyCard = ({
                                             {topic.label}
                                         </span>
                                         {hasSubtopics && (
-                                            <span className="text-[10px] text-slate-500">
+                                            <span className="text-[10px] text-slate-500 tabular-nums">
                                                 ({selectedInTopic > 0 ? `${selectedInTopic}/${topic.subtopics.length}` : `${topic.subtopics.length}`})
                                             </span>
                                         )}
@@ -772,7 +774,6 @@ const MockTestSetup = ({
             ? `${setupState.yearRangeStart} - ${setupState.yearRangeEnd}`
             : `All years (${setupState.minYear} - ${setupState.maxYear})`;
     const showReset = Boolean(onReset) && (isCustom || isPaperMode);
-    const showPreviewInAside = true;
 
     const renderOverviewPanel = () => (
         kindMeta.description || kindMeta.note ? (
@@ -786,7 +787,7 @@ const MockTestSetup = ({
                         {kindMeta.title}
                     </span>
                     {kindMeta.description ? (
-                        <h3 className="mt-3 text-xl font-semibold text-slate-950">{kindMeta.description}</h3>
+                        <h3 className="mt-3 font-display text-xl font-normal text-slate-950">{kindMeta.description}</h3>
                     ) : null}
                     {kindMeta.note ? (
                         <p className="mt-2 text-sm leading-6 text-slate-600">{kindMeta.note}</p>
@@ -805,133 +806,143 @@ const MockTestSetup = ({
         });
 
         return (
-            <div className="space-y-4">
+            <div className="space-y-2.5 sm:space-y-3">
                 {renderOverviewPanel()}
 
                 {paperOptions.length === 0 ? (
-                    <div className="rounded-[var(--radius-card)] border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800">
+                    <div className="rounded-[var(--radius-card)] border border-amber-200 bg-amber-50 p-4 text-xs sm:text-sm text-amber-800">
                         No release-ready papers are available yet.
                     </div>
                 ) : (
                     <>
-                        <div className="flex flex-wrap items-center gap-2 pb-1">
-                            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mr-1">Track:</span>
-                            <button
-                                type="button"
-                                data-testid="mock-paper-filter-all"
-                                onClick={() => setPaperTrackFilter("all")}
-                                className={joinClasses(
-                                    "rounded-full px-3 py-1 text-xs font-semibold transition",
-                                    paperTrackFilter === "all"
-                                        ? "bg-slate-900 text-white shadow-sm"
-                                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                                )}
-                            >
-                                All Papers ({paperOptions.length})
-                            </button>
-                            {effectiveBranches.map((branchId) => {
-                                const conf = BRANCH_CONFIG[branchId] || { shortLabel: `GATE ${branchId.toUpperCase()}`, activePillClass: "bg-slate-900 text-white shadow-sm" };
-                                const branchPaperCount = paperOptions.filter((p) => {
-                                    const raw = p.track || "cse";
-                                    return normalizeBranchId(raw) === branchId;
-                                }).length;
-                                const isSelected = paperTrackFilter === branchId;
-                                return (
-                                    <button
-                                        key={branchId}
-                                        type="button"
-                                        data-testid={`mock-paper-filter-${branchId}`}
-                                        onClick={() => setPaperTrackFilter(branchId)}
-                                        className={joinClasses(
-                                            "rounded-full px-3 py-1 text-xs font-semibold transition",
-                                            isSelected
-                                                ? conf.activePillClass
-                                                : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                                        )}
-                                    >
-                                        {conf.shortLabel} ({branchPaperCount})
-                                    </button>
-                                );
-                            })}
+                        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mr-0.5">Track:</span>
+                                <button
+                                    type="button"
+                                    data-testid="mock-paper-filter-all"
+                                    onClick={() => setPaperTrackFilter("all")}
+                                    className={joinClasses(
+                                        "rounded-full px-2.5 py-1 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-slate-400",
+                                        paperTrackFilter === "all"
+                                            ? "bg-slate-900 text-white shadow-xs"
+                                            : "border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                                    )}
+                                >
+                                    All Papers <span className="tabular-nums">({paperOptions.length})</span>
+                                </button>
+                                {effectiveBranches.map((branchId) => {
+                                    const conf = BRANCH_CONFIG[branchId] || { shortLabel: `GATE ${branchId.toUpperCase()}`, activePillClass: "bg-slate-900 text-white shadow-xs" };
+                                    const branchPaperCount = paperOptions.filter((p) => {
+                                        const raw = p.track || "cse";
+                                        return normalizeBranchId(raw) === branchId;
+                                    }).length;
+                                    const isSelected = paperTrackFilter === branchId;
+                                    return (
+                                        <button
+                                            key={branchId}
+                                            type="button"
+                                            data-testid={`mock-paper-filter-${branchId}`}
+                                            onClick={() => setPaperTrackFilter(branchId)}
+                                            className={joinClasses(
+                                                "rounded-full px-2.5 py-1 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-slate-400",
+                                                isSelected
+                                                    ? conf.activePillClass
+                                                    : "border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                                            )}
+                                        >
+                                            {conf.shortLabel} <span className="tabular-nums">({branchPaperCount})</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            <span className="text-[11px] text-slate-400 font-medium tabular-nums hidden sm:inline">
+                                Showing {displayedPapers.length} paper{displayedPapers.length === 1 ? "" : "s"}
+                            </span>
                         </div>
 
-                        <div className="grid gap-3 md:grid-cols-2 auto-rows-fr">
-                            {displayedPapers.map((paper) => {
-                                const paperIdentity = getMockPaperYearSetIdentity(paper);
-                                const rawTrack = paper.track || "cse";
-                                const normTrack = normalizeBranchId(rawTrack);
-                                const isItPaper = paper.track === "it" || paper.paperScope === "official_it" || (paper.label && paper.label.includes("IT"));
-                                const conf = BRANCH_CONFIG[normTrack] || BRANCH_CONFIG.cse;
-                                const paperTestToken = paper.yearSetKey || paperIdentity;
-                                const isSelected = paperIdentity === selectedPaperYearSetKey;
-                                const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
-                                const statusLabel = paper.paperReady
-                                    ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
-                                    : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
-                                const badgeLabel = isItPaper ? "GATE IT" : conf.badgeTrack;
-                                const badgeClass = isItPaper ? "bg-cyan-50 text-cyan-700 border-cyan-200" : conf.badgeClass;
-                                const cardSelectedClass = isItPaper
-                                    ? "border-cyan-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfeff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-cyan-100"
-                                    : conf.btnSelectedClass;
-                                const trackShort = isItPaper ? "IT" : conf.shortLabel.replace("GATE ", "");
+                        <div className="mocktest-paper-grid max-h-[380px] sm:max-h-[460px] lg:max-h-[calc(100vh-255px)] overflow-y-auto pr-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 auto-rows-fr">
+                                {displayedPapers.map((paper) => {
+                                    const paperIdentity = getMockPaperYearSetIdentity(paper);
+                                    const rawTrack = paper.track || "cse";
+                                    const normTrack = normalizeBranchId(rawTrack);
+                                    const isItPaper = paper.track === "it" || paper.paperScope === "official_it" || (paper.label && paper.label.includes("IT"));
+                                    const conf = BRANCH_CONFIG[normTrack] || BRANCH_CONFIG.cse;
+                                    const paperTestToken = paper.yearSetKey || paperIdentity;
+                                    const isSelected = paperIdentity === selectedPaperYearSetKey;
+                                    const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
+                                    const statusLabel = paper.paperReady
+                                        ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
+                                        : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
+                                    const badgeLabel = isItPaper ? "GATE IT" : conf.badgeTrack;
+                                    const badgeClass = isItPaper ? "bg-cyan-50 text-cyan-700 border-cyan-200" : conf.badgeClass;
+                                    const cardSelectedClass = isItPaper
+                                        ? "border-cyan-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfeff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-cyan-100"
+                                        : conf.btnSelectedClass;
+                                    const trackShort = isItPaper ? "IT" : conf.shortLabel.replace("GATE ", "");
 
-                                return (
-                                    <button
-                                        key={paperIdentity}
-                                        data-testid={`mock-paper-option-${paperTestToken}`}
-                                        type="button"
-                                        onClick={() => onSelectPaper?.(paperIdentity)}
-                                        className={joinClasses(
-                                            "flex h-full w-full flex-col justify-between rounded-[var(--radius-card)] border p-4 text-left transition",
-                                            isSelected
-                                                ? cardSelectedClass
-                                                : (paper.paperReady
-                                                    ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
-                                                    : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
-                                        )}
-                                    >
-                                        <div className="flex w-full items-start justify-between gap-3">
-                                            <div>
-                                                <div className="flex items-center gap-2 flex-wrap">
-                                                    <span className={joinClasses(
-                                                        "inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide border",
-                                                        badgeClass
-                                                    )}>
-                                                        {badgeLabel}
-                                                    </span>
-                                                    <span className="text-base font-semibold text-slate-950">{paper.label}</span>
+                                    return (
+                                        <button
+                                            key={paperIdentity}
+                                            data-testid={`mock-paper-option-${paperTestToken}`}
+                                            type="button"
+                                            onClick={() => onSelectPaper?.(paperIdentity)}
+                                            className={joinClasses(
+                                                "group relative flex w-full flex-col justify-between rounded-xl border p-3 sm:p-3.5 text-left transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-500/40",
+                                                isSelected
+                                                    ? cardSelectedClass
+                                                    : (paper.paperReady
+                                                        ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm"
+                                                        : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-sm")
+                                            )}
+                                        >
+                                            <div className="flex w-full items-start justify-between gap-2.5">
+                                                <div className="min-w-0 flex-1">
+                                                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                                                        <span className={joinClasses(
+                                                            "inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border shrink-0",
+                                                            badgeClass
+                                                        )}>
+                                                            {badgeLabel}
+                                                        </span>
+                                                        <span className="text-sm sm:text-base font-semibold text-slate-950 tabular-nums truncate">
+                                                            {paper.label}
+                                                        </span>
+                                                    </div>
+                                                    <p className="mt-1 text-xs text-slate-600 leading-relaxed tabular-nums">
+                                                        <span className="tabular-nums font-medium text-slate-700">{paper.gaCount}</span> GA and{" "}
+                                                        <span className="tabular-nums font-medium text-slate-700">{paper.csCount || paper.daCount || paper.questionCount || 55}</span> {trackShort} questions in paper order.
+                                                    </p>
+                                                    {!paper.paperReady && paper.statusReason ? (
+                                                        <p className="mt-1 text-xs font-medium text-amber-700">
+                                                            {paper.statusReason}
+                                                        </p>
+                                                    ) : null}
+                                                    {!paper.paperReady && blockedQuestions.length > 0 ? (
+                                                        <p className="mt-0.5 text-[11px] text-slate-500 tabular-nums">
+                                                            Missing:{" "}
+                                                            {blockedQuestions.slice(0, 3).map((question) => `${question.section} Q${question.orderIndex}`).join(", ")}
+                                                            {blockedQuestions.length > 3 ? "..." : ""}
+                                                        </p>
+                                                    ) : null}
                                                 </div>
-                                                <p className="mt-1.5 text-[13px] text-slate-600">
-                                                    {paper.gaCount} GA and {paper.csCount || paper.daCount || paper.questionCount || 55} {trackShort} questions in paper order.
-                                                </p>
-                                                {!paper.paperReady && paper.statusReason ? (
-                                                    <p className="mt-1 text-[13px] font-medium text-amber-700">
-                                                        {paper.statusReason}
-                                                    </p>
-                                                ) : null}
-                                                {!paper.paperReady && blockedQuestions.length > 0 ? (
-                                                    <p className="mt-1 text-[11px] text-slate-500">
-                                                        Missing:
-                                                        {" "}
-                                                        {blockedQuestions.slice(0, 3).map((question) => `${question.section} Q${question.orderIndex}`).join(", ")}
-                                                        {blockedQuestions.length > 3 ? "..." : ""}
-                                                    </p>
+                                                {isSelected || !paper.paperReady ? (
+                                                    <span className={joinClasses(
+                                                        "mocktest-pill inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider shrink-0 mt-0.5",
+                                                        isSelected
+                                                            ? badgeClass
+                                                            : "bg-amber-50 text-amber-700 border border-amber-200"
+                                                    )}>
+                                                        {isSelected && <FaCheckCircle className="text-[9px] shrink-0" />}
+                                                        <span>{isSelected ? "Selected" : statusLabel}</span>
+                                                    </span>
                                                 ) : null}
                                             </div>
-                                            {isSelected || !paper.paperReady ? (
-                                                <span className={joinClasses(
-                                                    "mocktest-pill inline-flex px-2 py-0.5 text-[10px] font-semibold uppercase shrink-0 mt-0.5",
-                                                    isSelected
-                                                        ? badgeClass
-                                                        : "bg-amber-50 text-amber-700"
-                                                )}>
-                                                    {isSelected ? "Selected" : statusLabel}
-                                                </span>
-                                            ) : null}
-                                        </div>
-                                    </button>
-                                );
-                            })}
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </>
                 )}
@@ -939,49 +950,12 @@ const MockTestSetup = ({
         );
     };
 
-    const renderCustomContent = () => (
-        <div className="space-y-4">
-            {renderOverviewPanel()}
-
-            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                <div className="flex items-center justify-between gap-3">
-                    <div>
-                        <h4 className="text-base font-semibold text-slate-950">Question count</h4>
-                        <p className="mt-1 text-sm text-slate-600">Use a preset for quick practice or enter your own value.</p>
-                    </div>
-                    <div className="w-28">
-                        <input
-                            type="number"
-                            min={1}
-                            max={65}
-                            value={setupState.customCount}
-                            onChange={(event) => onPatchState({ customCount: Number(event.target.value) })}
-                            className="mocktest-input w-full border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
-                        />
-                    </div>
-                </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {COUNT_PRESETS.map((count) => (
-                        <FilterChip
-                            key={count}
-                            active={Number(setupState.customCount) === count}
-                            tone="purple"
-                            data-testid={`mock-setup-count-preset-${count}`}
-                            onClick={() => onPatchState({ customCount: count })}
-                        >
-                            {count} Questions
-                        </FilterChip>
-                    ))}
-                </div>
-            </div>
-
-            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                <div className="flex items-center justify-between gap-3">
-                    <div>
-                        <h4 className="text-base font-semibold text-slate-950">Duration mode</h4>
-                        <p className="mt-1 text-sm text-slate-600">Choose how the test duration is set.</p>
-                    </div>
-                    <div className="flex gap-2">
+    const renderDurationModeCard = () => (
+        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-3.5 sm:p-4 flex flex-col justify-between">
+            <div>
+                <div className="flex items-center justify-between gap-2">
+                    <h4 className="font-display text-base font-normal text-slate-950">Duration mode</h4>
+                    <div className="flex gap-1.5">
                         <FilterChip
                             active={setupState.customDurationMode === "adaptive"}
                             tone="purple"
@@ -1000,53 +974,97 @@ const MockTestSetup = ({
                         </FilterChip>
                     </div>
                 </div>
-                {setupState.customDurationMode === "manual" && (
-                    <div className="mt-4 flex flex-col gap-2 border-t border-slate-100 pt-4">
-                        <div className="flex items-center justify-between gap-3">
-                            <div>
-                                <h5 className="text-sm font-semibold text-slate-900">Custom minutes</h5>
-                                <p className="mt-1 text-xs text-slate-500">Enter a duration between 1 and 180 minutes.</p>
-                            </div>
-                            <div className="w-28">
-                                <input
-                                    type="number"
-                                    min={1}
-                                    max={180}
-                                    data-testid="mock-setup-custom-duration"
-                                    value={setupState.customDurationMinutes === "" || setupState.customDurationMinutes === null || setupState.customDurationMinutes === undefined ? "" : setupState.customDurationMinutes}
-                                    onChange={(event) => {
-                                        const rawVal = event.target.value;
-                                        if (rawVal === "") {
-                                            onPatchState({ customDurationMinutes: "" });
-                                            return;
-                                        }
-                                        const parsed = Number(rawVal);
-                                        if (Number.isFinite(parsed)) {
-                                            onPatchState({ customDurationMinutes: parsed > 180 ? 180 : parsed });
-                                        }
-                                    }}
-                                    className={`mocktest-input w-full border bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:outline-none ${
-                                        (!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "")
-                                            ? "border-rose-400 focus:border-rose-500 ring-2 ring-rose-100"
-                                            : "border-slate-300 focus:border-purple-400 focus:ring-2 focus:ring-purple-100"
-                                    }`}
-                                />
-                            </div>
-                        </div>
-                        {(!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "") && (
-                            <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900" data-testid="custom-duration-warning">
-                                <span className="text-sm">⚠️</span>
-                                <span>Please set duration to at least 1 minute (up to 180 minutes).</span>
-                            </div>
-                        )}
-                    </div>
-                )}
+                <p className="mt-0.5 text-xs text-slate-500">
+                    {setupState.customDurationMode === "adaptive"
+                        ? "Auto-scaled to question count (~2.7 min/Q)."
+                        : "Enter fixed minutes (1–180 min)."}
+                </p>
             </div>
 
-            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                <h4 className="text-base font-semibold text-slate-950">Year scope</h4>
-                <p className="mt-1 text-sm text-slate-600">Choose the time window for the question pool.</p>
-                <div className="mt-4 flex flex-wrap gap-2">
+            {setupState.customDurationMode === "manual" && (
+                <div className="mt-2.5 flex flex-col gap-1.5 border-t border-slate-100 pt-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                        <div>
+                            <h5 className="text-xs sm:text-sm font-semibold text-slate-900">Custom minutes</h5>
+                            <p className="text-[11px] text-slate-500">Duration (1–180 min).</p>
+                        </div>
+                        <div className="w-24 sm:w-28">
+                            <input
+                                type="number"
+                                min={1}
+                                max={180}
+                                data-testid="mock-setup-custom-duration"
+                                value={setupState.customDurationMinutes === "" || setupState.customDurationMinutes === null || setupState.customDurationMinutes === undefined ? "" : setupState.customDurationMinutes}
+                                onChange={(event) => {
+                                    const rawVal = event.target.value;
+                                    if (rawVal === "") {
+                                        onPatchState({ customDurationMinutes: "" });
+                                        return;
+                                    }
+                                    const parsed = Number(rawVal);
+                                    if (Number.isFinite(parsed)) {
+                                        onPatchState({ customDurationMinutes: parsed > 180 ? 180 : parsed });
+                                    }
+                                }}
+                                className={`mocktest-input w-full border bg-white px-2.5 py-1 text-sm sm:text-base font-semibold text-slate-950 tabular-nums shadow-[var(--shadow-soft)] focus:outline-none ${
+                                    (!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "")
+                                        ? "border-rose-400 focus:border-rose-500 ring-2 ring-rose-100"
+                                        : "border-slate-300 focus:border-purple-400 focus:ring-2 focus:ring-purple-100"
+                                }`}
+                            />
+                        </div>
+                    </div>
+                    {(!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "") && (
+                        <div className="flex items-center gap-1.5 rounded border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-medium text-amber-900" data-testid="custom-duration-warning">
+                            <span>⚠️</span>
+                            <span>Please set duration to at least 1 minute (up to 180 minutes).</span>
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+
+    const renderQuestionCountCard = () => (
+        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-3.5 sm:p-4 flex flex-col justify-between">
+            <div>
+                <div className="flex items-center justify-between gap-2">
+                    <h4 className="font-display text-base font-normal text-slate-950">Question count</h4>
+                    <div className="w-24 sm:w-28">
+                        <input
+                            type="number"
+                            min={1}
+                            max={65}
+                            value={setupState.customCount}
+                            onChange={(event) => onPatchState({ customCount: Number(event.target.value) })}
+                            className="mocktest-input w-full border border-slate-300 bg-white px-2.5 py-1 text-sm sm:text-base font-semibold text-slate-950 tabular-nums shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
+                        />
+                    </div>
+                </div>
+                <p className="mt-0.5 text-xs text-slate-500">Preset questions or custom value (1–65).</p>
+            </div>
+            <div className="mt-3 flex flex-wrap items-center gap-1.5">
+                {COUNT_PRESETS.map((count) => (
+                    <FilterChip
+                        key={count}
+                        active={Number(setupState.customCount) === count}
+                        tone="purple"
+                        data-testid={`mock-setup-count-preset-${count}`}
+                        onClick={() => onPatchState({ customCount: count })}
+                    >
+                        <span className="tabular-nums">{count}</span> Questions
+                    </FilterChip>
+                ))}
+            </div>
+        </div>
+    );
+
+    const renderYearScopeCard = () => (
+        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-3.5 sm:p-4">
+            <div>
+                <h4 className="font-display text-base font-normal text-slate-950">Year scope</h4>
+                <p className="mt-0.5 text-xs text-slate-500">Choose the time window for the question pool.</p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
                     {YEAR_SCOPE_OPTIONS.map((option) => (
                         <FilterChip
                             key={option.id}
@@ -1059,46 +1077,136 @@ const MockTestSetup = ({
                         </FilterChip>
                     ))}
                 </div>
-                {setupState.yearFilterMode === "custom" ? (
-                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                        <label className="text-sm font-semibold text-slate-700">
-                            From
-                            <input
-                                type="number"
-                                min={setupState.minYear}
-                                max={setupState.maxYear}
-                                value={setupState.yearRangeStart}
-                                onChange={(event) => onPatchState({ yearRangeStart: Number(event.target.value) })}
-                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
-                            />
-                        </label>
-                        <label className="text-sm font-semibold text-slate-700">
-                            To
-                            <input
-                                type="number"
-                                min={setupState.minYear}
-                                max={setupState.maxYear}
-                                value={setupState.yearRangeEnd}
-                                onChange={(event) => onPatchState({ yearRangeEnd: Number(event.target.value) })}
-                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
-                            />
-                        </label>
-                    </div>
-                ) : (
-                    <p className="mt-4 text-sm text-slate-600">
-                        {setupState.yearFilterMode === "recent"
-                            ? `Using ${recentYearRangeLabel || "the most recent years"} from the validated pool.`
-                            : `Using the full validated span from ${setupState.minYear} to ${setupState.maxYear}.`}
-                    </p>
-                )}
             </div>
 
-            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                <div className="flex flex-wrap items-center justify-between gap-3">
+            {setupState.yearFilterMode === "custom" ? (
+                <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-2.5 sm:max-w-md">
+                    <label className="text-xs font-semibold text-slate-700">
+                        From
+                        <input
+                            type="number"
+                            min={setupState.minYear}
+                            max={setupState.maxYear}
+                            value={setupState.yearRangeStart}
+                            onChange={(event) => onPatchState({ yearRangeStart: Number(event.target.value) })}
+                            className="mocktest-input mt-1 w-full border border-slate-300 bg-white px-2.5 py-1 text-xs text-slate-950 tabular-nums shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
+                        />
+                    </label>
+                    <label className="text-xs font-semibold text-slate-700">
+                        To
+                        <input
+                            type="number"
+                            min={setupState.minYear}
+                            max={setupState.maxYear}
+                            value={setupState.yearRangeEnd}
+                            onChange={(event) => onPatchState({ yearRangeEnd: Number(event.target.value) })}
+                            className="mocktest-input mt-1 w-full border border-slate-300 bg-white px-2.5 py-1 text-xs text-slate-950 tabular-nums shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
+                        />
+                    </label>
+                </div>
+            ) : (
+                <p className="mt-2 text-xs text-slate-600 tabular-nums">
+                    {setupState.yearFilterMode === "recent"
+                        ? `Using ${recentYearRangeLabel || "the most recent years"} from the validated pool.`
+                        : `Using the full validated span from ${setupState.minYear} to ${setupState.maxYear}.`}
+                </p>
+            )}
+        </div>
+    );
+
+    const renderQuestionTypesCard = () => (
+        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-3.5 sm:p-4 flex flex-col justify-between">
+            <div>
+                <h4 className="font-display text-base font-normal text-slate-950">Question types</h4>
+                <p className="mt-0.5 text-xs text-slate-500">Keep the mix broad or focus on specific formats.</p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                    {TYPE_OPTIONS.map((type) => (
+                        <FilterChip
+                            key={type}
+                            active={selectedTypeSet.has(type)}
+                            tone="purple"
+                            onClick={() => onToggleSelection("selectedTypes", type)}
+                        >
+                            {type}
+                        </FilterChip>
+                    ))}
+                </div>
+            </div>
+            <p className="mt-2 text-[11px] text-slate-500">
+                {selectedTypeSet.size === 0 || selectedTypeSet.size === 3
+                    ? "All objective formats enabled."
+                    : `Active: ${Array.from(selectedTypeSet).join(", ")}.`}
+            </p>
+        </div>
+    );
+
+    const renderSolvedPolicyCard = () => (
+        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-3.5 sm:p-4 flex flex-col justify-between">
+            <div>
+                <h4 className="font-display text-base font-normal text-slate-900">Solved Questions Policy</h4>
+                <p className="mt-0.5 text-xs text-slate-500">Choose how to handle questions you have already solved.</p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                    <FilterChip
+                        active={setupState.solvedFilter === "unsolved"}
+                        tone="purple"
+                        data-testid="solved-filter-unsolved"
+                        onClick={() => onPatchState({ solvedFilter: "unsolved" })}
+                    >
+                        Unsolved Only
+                    </FilterChip>
+                    <FilterChip
+                        active={setupState.solvedFilter === "all"}
+                        tone="purple"
+                        data-testid="solved-filter-all"
+                        onClick={() => onPatchState({ solvedFilter: "all" })}
+                    >
+                        Include Solved
+                    </FilterChip>
+                    <FilterChip
+                        active={setupState.solvedFilter === "solved_only"}
+                        tone="purple"
+                        data-testid="solved-filter-solved-only"
+                        onClick={() => onPatchState({ solvedFilter: "solved_only" })}
+                    >
+                        Solved Only
+                    </FilterChip>
+                    <FilterChip
+                        active={setupState.solvedFilter === "bookmarked_only"}
+                        tone="emerald"
+                        data-testid="solved-filter-bookmarked-only"
+                        onClick={() => onPatchState({ solvedFilter: "bookmarked_only" })}
+                    >
+                        Bookmarked Only
+                    </FilterChip>
+                </div>
+            </div>
+            {setupState.solvedFilter === "bookmarked_only" && (
+                <p className="mt-2 text-xs text-emerald-700 tabular-nums">
+                    {bookmarkedCount > 0
+                        ? `Pool restricted to your ${bookmarkedCount} bookmarked question${bookmarkedCount === 1 ? "" : "s"} — other filters still apply.`
+                        : "You have no bookmarked questions yet. Bookmark questions during practice to use this mode."}
+                </p>
+            )}
+        </div>
+    );
+
+    const renderCustomContent = () => (
+        <div className="space-y-3 sm:space-y-3.5">
+            {renderOverviewPanel()}
+
+            {/* 1. Left Column: Question Types */}
+            {renderQuestionTypesCard()}
+
+            {/* 2. Left Column: Solved Questions Policy */}
+            {renderSolvedPolicyCard()}
+
+            {/* 3. Left Column: Subjects & Subtopics Hierarchy */}
+            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-3.5 sm:p-4">
+                <div className="flex flex-wrap items-center justify-between gap-2.5">
                     <div>
-                        <h4 className="text-base font-semibold text-slate-950">Subjects &amp; subtopics</h4>
-                        <p className="mt-1 text-sm text-slate-600">
-                            Configure Computer Science / CSE, Data Science and AI, and Aptitude.
+                        <h4 className="font-display text-base sm:text-lg font-normal text-slate-950">Subjects &amp; subtopics</h4>
+                        <p className="mt-0.5 text-xs text-slate-500">
+                            Configure branches, technical subjects, and Aptitude.
                         </p>
                     </div>
 
@@ -1114,12 +1222,12 @@ const MockTestSetup = ({
 
                 {/* Warning if all tracks are disabled */}
                 {effectiveBranches.every((b) => !enabledTracks.includes(b)) && !includeGeneralAptitude && (
-                    <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs font-semibold text-amber-800">
+                    <div className="mt-2.5 rounded-lg border border-amber-200 bg-amber-50 p-2.5 text-xs font-semibold text-amber-800">
                         Please enable at least one section to create a valid test.
                     </div>
                 )}
 
-                <div className="mt-4 space-y-4">
+                <div className="mt-3 space-y-3">
                     {effectiveBranches.map((branchId) => {
                         const branchSubjects = getBranchSubjects(subjects, branchId);
                         if (!branchSubjects || branchSubjects.length === 0) return null;
@@ -1133,19 +1241,19 @@ const MockTestSetup = ({
                                 key={branchId}
                                 className={`rounded-xl border transition-all duration-200 ${
                                     isTrackEnabled
-                                        ? `${conf.borderClass || "border-sky-200"} bg-white shadow-sm`
+                                        ? `${conf.borderClass || "border-sky-200"} bg-white shadow-xs`
                                         : "border-slate-200 bg-slate-50/70"
                                 }`}
                             >
-                                <div className={`flex flex-wrap items-center justify-between gap-3 p-4 ${isTrackEnabled ? "border-b border-slate-100" : ""}`}>
+                                <div className={`flex flex-wrap items-center justify-between gap-2.5 p-3 sm:p-3.5 ${isTrackEnabled ? "border-b border-slate-100" : ""}`}>
                                     <div
-                                        className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 select-none"
+                                        className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 select-none"
                                         onClick={() => onToggleTrack(branchId)}
                                     >
                                         <span className="text-sm font-bold text-slate-900">
                                             {conf.label || conf.shortLabel}
                                         </span>
-                                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+                                        <span className={`rounded-full px-2 py-0.5 text-[10px] sm:text-[11px] font-semibold tabular-nums ${
                                             !isTrackEnabled
                                                 ? "bg-slate-200 text-slate-600"
                                                 : selectedBranchCount > 0
@@ -1160,20 +1268,20 @@ const MockTestSetup = ({
                                         </span>
                                     </div>
 
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-2.5">
                                         {isTrackEnabled && (
                                             <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
                                                 <button
                                                     type="button"
                                                     onClick={() => onBulkToggleTrackSubjects(branchId, branchSubjectSlugs, true)}
-                                                    className="rounded-md border border-slate-300 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                                                    className="rounded border border-slate-300 bg-white px-2 py-0.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
                                                 >
                                                     Select All
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={() => onBulkToggleTrackSubjects(branchId, branchSubjectSlugs, false)}
-                                                    className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                                                    className="rounded border border-slate-200 bg-white px-2 py-0.5 text-xs font-semibold text-slate-600 hover:bg-slate-50"
                                                 >
                                                     Clear All
                                                 </button>
@@ -1190,7 +1298,7 @@ const MockTestSetup = ({
                                 </div>
 
                                 {isTrackEnabled && (
-                                    <div className="p-4">
+                                    <div className="p-2.5 sm:p-3">
                                         <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-2">
                                             {branchSubjects.map((subject) => (
                                                 <SubjectHierarchyCard
@@ -1221,25 +1329,25 @@ const MockTestSetup = ({
                     {/* Aptitude track */}
                     <div className={`rounded-xl border transition-all duration-200 ${
                         includeGeneralAptitude
-                            ? "border-emerald-200 bg-white shadow-sm"
+                            ? "border-emerald-200 bg-white shadow-xs"
                             : "border-slate-200 bg-slate-50/70"
                     }`}>
-                        <div className={`flex flex-wrap items-center justify-between gap-3 p-4 ${includeGeneralAptitude && aptitudeSubjects.length > 0 ? "border-b border-slate-100" : ""}`}>
+                        <div className={`flex flex-wrap items-center justify-between gap-2.5 p-3 sm:p-3.5 ${includeGeneralAptitude && aptitudeSubjects.length > 0 ? "border-b border-slate-100" : ""}`}>
                             <div
-                                className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 select-none"
+                                className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 select-none"
                                 onClick={() => onToggleGeneralAptitude()}
                             >
                                 <span className="text-sm font-bold text-slate-900">
                                     Aptitude
                                 </span>
-                                <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+                                <span className={`rounded-full px-2 py-0.5 text-[10px] sm:text-[11px] font-semibold ${
                                     includeGeneralAptitude ? "bg-emerald-100 text-emerald-800" : "bg-slate-200 text-slate-600"
                                 }`}>
                                     {includeGeneralAptitude ? "Section 1 Active" : "Disabled"}
                                 </span>
                             </div>
 
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2.5">
                                 <ToggleSwitch
                                     id="mock-toggle-ga"
                                     checked={includeGeneralAptitude}
@@ -1251,8 +1359,8 @@ const MockTestSetup = ({
                         </div>
 
                         {includeGeneralAptitude && aptitudeSubjects.length > 0 && (
-                            <div className="bg-slate-50/50 px-4 py-3">
-                                <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                            <div className="bg-slate-50/50 px-3 py-2.5 sm:px-3.5 sm:py-2.5">
+                                <p className="mb-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                                     Aptitude Categories (Optional Narrowing)
                                 </p>
                                 <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
@@ -1272,7 +1380,7 @@ const MockTestSetup = ({
                                                 <span className={`truncate text-xs ${isSelected ? "font-semibold text-slate-900" : "text-slate-600"}`}>
                                                     {subject.label}
                                                     {typeof subject.count === "number" && (
-                                                        <span className="ml-1 text-[11px] font-normal text-slate-400">
+                                                        <span className="ml-1 text-[11px] font-normal text-slate-400 tabular-nums">
                                                             ({subject.count.toLocaleString()})
                                                         </span>
                                                     )}
@@ -1287,9 +1395,9 @@ const MockTestSetup = ({
 
                     {/* Legacy-optional subjects */}
                     {legacySubjects.map((subject) => (
-                        <div key={subject.slug} className="rounded-xl border border-amber-200 bg-amber-50/60 p-3">
-                            <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-amber-700">Optional legacy topics</p>
-                            <p className="mb-2 text-xs text-amber-700/80">Older or out-of-syllabus questions from past papers.</p>
+                        <div key={subject.slug} className="rounded-xl border border-amber-200 bg-amber-50/60 p-2.5 sm:p-3">
+                            <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-amber-700">Optional legacy topics</p>
+                            <p className="mb-1.5 text-xs text-amber-700/80">Older or out-of-syllabus questions from past papers.</p>
                             <label className="flex min-w-0 cursor-pointer items-center gap-2">
                                 <input
                                     type="checkbox"
@@ -1297,7 +1405,7 @@ const MockTestSetup = ({
                                     checked={selectedSubjectSet.has(subject.slug)}
                                     onChange={() => onToggleSelection("selectedSubjects", subject.slug)}
                                 />
-                                <span className={`truncate text-sm ${selectedSubjectSet.has(subject.slug) ? "font-medium text-slate-900" : "text-slate-500"}`}>
+                                <span className={`truncate text-xs sm:text-sm ${selectedSubjectSet.has(subject.slug) ? "font-medium text-slate-900" : "text-slate-500"}`}>
                                     {subject.label}
                                 </span>
                             </label>
@@ -1305,154 +1413,110 @@ const MockTestSetup = ({
                     ))}
                 </div>
             </div>
-
-            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                <h4 className="text-base font-semibold text-slate-950">Question types</h4>
-                <p className="mt-1 text-sm text-slate-600">Keep the mix broad or focus on the format you want to practice.</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {TYPE_OPTIONS.map((type) => (
-                        <FilterChip
-                            key={type}
-                            active={selectedTypeSet.has(type)}
-                            tone="purple"
-                            onClick={() => onToggleSelection("selectedTypes", type)}
-                        >
-                            {type}
-                        </FilterChip>
-                    ))}
-                </div>
-            </div>
         </div>
     );
 
     return (
-        <div className="mocktest-setup-wrap flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-4 sm:p-5">
-            <div className="mocktest-setup-card w-full max-w-6xl border border-[color:var(--color-border)] bg-white shadow-[var(--shadow-card)]">
-                <div className="border-b border-[color:var(--color-border)] px-6 py-5 lg:px-8">
-                    <div className="flex flex-wrap items-start justify-between gap-4">
-                        <div>
-                            <span className={joinClasses("mocktest-pill inline-flex px-2.5 py-1 text-[11px] font-semibold uppercase", accent.badge)}>
+        <div className="mocktest-setup-wrap flex min-h-0 flex-1 flex-col overflow-y-auto bg-[color:var(--color-bg,#f8fafc)]">
+            <div className="mocktest-setup-card w-full max-w-6xl mx-auto flex flex-1 flex-col justify-between">
+                <div className="border-b border-slate-200/80 bg-white px-4 py-3 sm:px-6 sm:py-3.5 lg:px-8">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+                            <h2 className="font-display text-2xl sm:text-3xl font-normal text-slate-950">Mock Test Setup</h2>
+                            <span className={joinClasses("mocktest-pill inline-flex items-center px-2.5 py-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider", accent.badge)}>
                                 {kindMeta.title}
                             </span>
-                            <h2 className="mt-3 text-3xl font-semibold text-slate-950">Mock Test Setup</h2>
                         </div>
                     </div>
                 </div>
 
-                <div className="grid items-stretch gap-5 p-5 lg:gap-8 lg:p-8 lg:grid-cols-[minmax(0,1.15fr)_380px]" style={{minHeight: 0}}>
+                <div className={`grid items-stretch gap-4 p-3.5 sm:p-4 lg:gap-6 lg:p-6 ${isCustom ? "lg:grid-cols-[minmax(0,1.15fr)_380px]" : "lg:grid-cols-[minmax(0,1.2fr)_360px]"}`} style={{minHeight: 0}}>
                     <section className="min-w-0 min-h-0">
-                        <div className="h-full max-h-[calc(100vh-260px)] overflow-y-auto pr-1">
+                        <div className={joinClasses(
+                            "h-full pr-1",
+                            isCustom ? "lg:max-h-[calc(100vh-210px)] lg:overflow-y-auto" : ""
+                        )}>
                             {isPaperMode ? renderPaperModeContent() : null}
                             {isCustom ? renderCustomContent() : null}
                         </div>
                     </section>
 
-                    <aside className="sticky top-6 space-y-4 self-start overflow-y-auto max-h-[calc(100vh-260px)]">
-                        <div className={joinClasses("rounded-[var(--radius-card)] border border-slate-200 p-4 shadow-[var(--shadow-soft)]", isCustom ? "bg-[linear-gradient(180deg,#ffffff_0%,#faf5ff_100%)]" : "bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]")}>
-                            <div className="flex items-start gap-3">
-                                <span className={joinClasses("mocktest-icon-box inline-flex h-11 w-11 shrink-0 items-center justify-center", accent.icon)}>
-                                    <Icon />
-                                </span>
-                                <div>
-                                    <p className="text-xs font-semibold uppercase text-slate-500">Attempt summary</p>
-                                    <h3 className="mt-1 text-lg font-semibold text-slate-950">{kindMeta.title}</h3>
+                    <aside className="lg:sticky lg:top-4 space-y-3 self-start lg:overflow-y-auto lg:max-h-[calc(100vh-210px)]">
+                        {isPaperMode ? (
+                            <>
+                                <div className="rounded-[var(--radius-card)] border border-slate-200 p-3.5 sm:p-4 shadow-[var(--shadow-soft)] bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
+                                    <div className="flex items-start gap-2.5">
+                                        <span className={joinClasses("mocktest-icon-box inline-flex h-9 w-9 shrink-0 items-center justify-center text-sm", accent.icon)}>
+                                            <Icon />
+                                        </span>
+                                        <div>
+                                            <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500">Attempt summary</p>
+                                            <h3 className="font-display text-base font-normal text-slate-950">{kindMeta.title}</h3>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-3 grid grid-cols-2 gap-2">
+                                        <SummaryStat label="Requested" value={requestedCount} />
+                                        <SummaryStat label="Duration" value={durationLabel} />
+                                        <div className="col-span-2">
+                                            <SummaryStat
+                                                label="Selected paper"
+                                                value={selectedPaper?.label || "Choose a paper"}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {summaryNote ? (
+                                        <div className="mocktest-summary-note mt-2.5 border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 rounded-md leading-relaxed tabular-nums">
+                                            <p>{summaryNote}</p>
+                                        </div>
+                                    ) : null}
                                 </div>
-                            </div>
 
-                            <div className="mt-4 grid gap-3">
-                                <SummaryStat label="Requested" value={requestedCount} />
-                                <SummaryStat label="Duration" value={durationLabel} />
-                                <SummaryStat
-                                    label={isPaperMode ? "Selected paper" : "Available"}
-                                    value={isPaperMode ? (selectedPaper?.label || "Choose a paper") : availableSummary}
-                                />
-                                {isCustom ? (
-                                    <SummaryStat label="Year scope" value={yearScopeLabel} />
-                                ) : null}
-                            </div>
-
-                            {summaryNote ? (
-                                <div className="mocktest-summary-note mt-4 border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
-                                    <p>{summaryNote}</p>
-                                </div>
-                            ) : null}
-
-                        </div>
-
-                        {showSolvedQuestionToggle ? (
-                            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4 shadow-[var(--shadow-soft)]">
-                                <h4 className="text-sm font-semibold text-slate-900">Solved Questions Policy</h4>
-                                <p className="mt-1 text-xs text-slate-500">Choose how to handle questions you have already solved.</p>
-                                <div className="mt-3 flex flex-wrap gap-2">
-                                    <FilterChip
-                                        active={setupState.solvedFilter === "unsolved"}
-                                        tone={isCustom ? "purple" : "sky"}
-                                        data-testid="solved-filter-unsolved"
-                                        onClick={() => onPatchState({ solvedFilter: "unsolved" })}
-                                    >
-                                        Unsolved Only
-                                    </FilterChip>
-                                    <FilterChip
-                                        active={setupState.solvedFilter === "all"}
-                                        tone={isCustom ? "purple" : "sky"}
-                                        data-testid="solved-filter-all"
-                                        onClick={() => onPatchState({ solvedFilter: "all" })}
-                                    >
-                                        Include Solved
-                                    </FilterChip>
-                                    <FilterChip
-                                        active={setupState.solvedFilter === "solved_only"}
-                                        tone={isCustom ? "purple" : "sky"}
-                                        data-testid="solved-filter-solved-only"
-                                        onClick={() => onPatchState({ solvedFilter: "solved_only" })}
-                                    >
-                                        Solved Only
-                                    </FilterChip>
-                                    <FilterChip
-                                        active={setupState.solvedFilter === "bookmarked_only"}
-                                        tone="emerald"
-                                        data-testid="solved-filter-bookmarked-only"
-                                        onClick={() => onPatchState({ solvedFilter: "bookmarked_only" })}
-                                    >
-                                        Bookmarked Only
-                                    </FilterChip>
-                                </div>
-                                {setupState.solvedFilter === "bookmarked_only" && (
-                                    <p className="mt-2 text-xs text-emerald-700">
-                                        {bookmarkedCount > 0
-                                            ? `Pool restricted to your ${bookmarkedCount} bookmarked question${bookmarkedCount === 1 ? "" : "s"} — other filters still apply.`
-                                            : "You have no bookmarked questions yet. Bookmark questions during practice to use this mode."}
-                                    </p>
-                                )}
-                            </div>
+                                <PreviewCard livePreview={livePreview} />
+                            </>
                         ) : null}
 
-                        {showPreviewInAside ? <PreviewCard livePreview={livePreview} /> : null}
+                        {isCustom ? (
+                            <>
+                                {/* 1. Right Column: Duration Mode - at the top */}
+                                {renderDurationModeCard()}
+
+                                {/* 2. Right Column: Question Count */}
+                                {renderQuestionCountCard()}
+
+                                {/* 3. Right Column: Year Scope */}
+                                {renderYearScopeCard()}
+
+                                {/* 4. Right Column: Available Pool - at the bottom */}
+                                <PreviewCard livePreview={livePreview} />
+                            </>
+                        ) : null}
 
                         {!canStart && validationMessage ? (
-                            <div className="rounded-[var(--radius-card)] border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
+                            <div className="rounded-[var(--radius-card)] border border-rose-200 bg-rose-50 p-3 text-xs sm:text-sm text-rose-700">
                                 {validationMessage}
                             </div>
                         ) : null}
                     </aside>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[color:var(--color-border)] px-6 py-4 lg:px-8">
+                <div className="flex flex-wrap items-center justify-between gap-2.5 border-t border-slate-200/80 bg-white px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8">
                     {showBackButton ? (
                         <button
                             type="button"
                             onClick={onBack}
-                            className="mocktest-secondary-btn border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                            className="mocktest-secondary-btn border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
                         >
                             {backLabel}
                         </button>
                     ) : <span />}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2.5">
                         {showReset ? (
                             <button
                                 type="button"
                                 onClick={onReset}
-                                className="mocktest-secondary-btn border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                                className="mocktest-secondary-btn border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
                             >
                                 Reset
                             </button>
@@ -1462,7 +1526,7 @@ const MockTestSetup = ({
                             onClick={onStart}
                             disabled={!canStart}
                             className={joinClasses(
-                                "mocktest-primary-btn px-6 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:bg-slate-300",
+                                "mocktest-primary-btn px-5 sm:px-6 py-2 text-xs sm:text-sm font-semibold transition disabled:cursor-not-allowed disabled:bg-slate-300",
                                 accent.button
                             )}
                         >

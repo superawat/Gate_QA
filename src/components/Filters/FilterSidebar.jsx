@@ -25,7 +25,7 @@ const TYPE_BUTTON_STYLES = {
 };
 const QUESTION_TYPES = ['MCQ', 'MSQ', 'NAT'];
 
-const FilterSidebar = ({ className = "", onClose }) => {
+const FilterSidebar = ({ className = "", onClose, isDrawer = false }) => {
     const {
         filteredQuestions,
         totalQuestions,
@@ -74,8 +74,8 @@ const FilterSidebar = ({ className = "", onClose }) => {
     return (
         <aside className={`flex min-h-0 flex-shrink-0 flex-col overflow-y-auto border-r border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] ${className}`}>
             {/* Reset / Clean filters (if needed) */}
-            <div className="z-10 flex flex-shrink-0 items-center justify-between border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
-                <span className="text-sm font-semibold text-[color:var(--color-text)]">
+            <div className="z-10 flex flex-shrink-0 items-center justify-between border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5">
+                <span className="text-sm font-semibold tabular-nums text-[color:var(--color-text)]">
                     {filteredQuestions.length} / {totalQuestions} results
                 </span>
                 <div className="flex min-w-[3.75rem] items-center justify-end gap-2">
@@ -99,8 +99,8 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
 
-            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3">
-                <div className="flex-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3">
+            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2">
+                <div className="flex-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-2.5">
                     <ProgressFilterToggles
                         hideSolved={filters.hideSolved}
                         showOnlySolved={filters.showOnlySolved}
@@ -115,8 +115,8 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             {/* Question Type Filter (Horizontal Toggles) */}
-            <div className="relative z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
-                <div className="mb-2">
+            <div className="relative z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 mb-1.5">
+                <div className="mb-1.5">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Question Type</h3>
                 </div>
                 <div className="flex gap-2">
@@ -140,7 +140,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                                     updateFilters({ selectedTypes: next });
                                 }}
                                 aria-pressed={isSelected}
-                                className={`flex-1 rounded-lg border px-1 py-2 text-sm font-semibold transition-all duration-150 ease-out active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-400 cursor-pointer pointer-events-auto relative z-20 ${isSelected ? typeStyle.selected : typeStyle.unselected}`}
+                                className={`flex-1 rounded-lg border px-1 py-1.5 text-sm font-semibold transition-all duration-150 ease-out active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-400 cursor-pointer pointer-events-auto relative z-20 ${isSelected ? typeStyle.selected : typeStyle.unselected}`}
                             >
                                 {type}
                             </button>
@@ -150,7 +150,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             {/* Scrollable Filter Content */}
-            <div className="p-3 pb-24">
+            <div className={`p-3 ${isDrawer || onClose ? 'pb-24' : 'pb-6'}`}>
                 <div className="flex flex-col gap-4">
 
                     {/* ── GATE CSE Section (distinct card with toggle + subjects) ── */}

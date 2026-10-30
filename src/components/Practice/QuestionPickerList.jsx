@@ -72,7 +72,7 @@ const QuestionPickerList = ({
   className = "",
 }) => (
   <section className={`practice-question-list overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)] xl:flex xl:min-h-0 xl:flex-col ${className}`}>
-    <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 sm:px-5 py-2 sm:py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
+    <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_135px_175px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 sm:px-5 py-1.5 sm:py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
       <span>Index</span>
       <span>Question</span>
       <span>Year</span>
@@ -101,15 +101,15 @@ const QuestionPickerList = ({
             onPointerEnter={() => prefetchQuestionShard(question)}
             onFocus={() => prefetchQuestionShard(question)}
             onTouchStart={() => prefetchQuestionShard(question)}
-            className="practice-question-row group block w-full px-4 sm:px-5 py-3 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+            className="practice-question-row group block w-full px-4 sm:px-5 py-2.5 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
           >
-            <div className="practice-question-row-grid flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
+            <div className="practice-question-row-grid flex flex-col gap-2.5 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_135px_175px_150px] md:items-center md:gap-4">
               <div className="practice-question-kicker flex items-center justify-between gap-3 md:block">
-                <span className="text-sm font-semibold text-[color:var(--color-text)]">#{sequenceNumber}</span>
+                <span className="text-sm font-semibold tabular-nums text-[color:var(--color-text)]">#{sequenceNumber}</span>
                 {typeToken ? (
                   <span
                     title={typeToken === "mta" ? MTA_EXPLANATION_TEXT : undefined}
-                    className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}
+                    className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}
                   >
                     {typeToken === "multi_nat" ? "Multi-NAT" : typeToken}
                   </span>
@@ -117,10 +117,10 @@ const QuestionPickerList = ({
               </div>
 
               <div className="min-w-0">
-                <p className="practice-question-title text-base font-semibold leading-6 text-[color:var(--color-text)]">
+                <p className="practice-question-title text-sm sm:text-[15px] font-semibold leading-snug text-[color:var(--color-text)] line-clamp-2 md:line-clamp-3">
                   {question?.title || "Untitled question"}
                 </p>
-                <div className="practice-question-meta mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)] md:hidden">
+                <div className="practice-question-meta mt-1.5 flex flex-wrap items-center gap-1.5 text-xs text-[color:var(--color-text-muted)] md:hidden">
                   {isIsroQuestionByMetadata(question) ? (
                     <span
                       data-testid="isro-badge-mobile"
@@ -142,7 +142,7 @@ const QuestionPickerList = ({
                       GATE IT
                     </span>
                   ) : null}
-                  <span>{question?.yearSetLabel || "Unknown Year"}</span>
+                  <span className="tabular-nums">{question?.yearSetLabel || "Unknown Year"}</span>
                   <span className="h-1 w-1 rounded-full bg-[color:var(--color-neutral-border)]" />
                   <span>{subjectLabel}</span>
                   {subtopicLabel ? (
@@ -162,20 +162,20 @@ const QuestionPickerList = ({
                     ))
                   ) : null}
                 </div>
-                <div className="practice-question-mobile-actions mt-3 flex flex-wrap items-center gap-2 md:hidden">
-                  <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${status.className}`}>
+                <div className="practice-question-mobile-actions mt-2 flex flex-wrap items-center gap-2 md:hidden">
+                  <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset ${status.className}`}>
                     <StatusIcon className={status.iconClassName} />
                     {status.label}
                   </span>
-                  <span className="inline-flex min-h-[36px] items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
+                  <span className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
                     Open
                     <FaArrowRight className="text-[0.7rem]" />
                   </span>
                 </div>
               </div>
 
-              <div className="hidden text-sm font-medium text-[color:var(--color-text)] md:flex md:flex-col md:items-start md:gap-1">
-                <span>{question?.yearSetLabel || "Unknown Year"}</span>
+              <div className="hidden text-sm font-medium text-[color:var(--color-text)] md:flex md:flex-col md:items-start md:gap-0.5">
+                <span className="tabular-nums">{question?.yearSetLabel || "Unknown Year"}</span>
                 {isIsroQuestionByMetadata(question) ? (
                   <span
                     data-testid="isro-badge"
@@ -204,7 +204,7 @@ const QuestionPickerList = ({
                   {subjectLabel}
                 </p>
                 {subtopicLabel ? (
-                  <p className="mt-1 truncate text-xs text-[color:var(--color-text-muted)]">{subtopicLabel}</p>
+                  <p className="mt-0.5 truncate text-xs text-[color:var(--color-text-muted)]">{subtopicLabel}</p>
                 ) : null}
                 {Array.isArray(question?.taxonomy?.secondary) && question.taxonomy.secondary.length > 0 ? (
                   <p className="mt-0.5 truncate text-[11px] text-indigo-600 dark:text-indigo-400">
@@ -212,18 +212,18 @@ const QuestionPickerList = ({
                   </p>
                 ) : null}
                 {!subtopicLabel && (!question?.taxonomy?.secondary || question.taxonomy.secondary.length === 0) && typeToken ? (
-                  <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
+                  <span className={`mt-1.5 inline-flex rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
                     {typeToken === "multi_nat" ? "Multi-NAT" : typeToken}
                   </span>
                 ) : null}
               </div>
 
               <div className="hidden items-center justify-end gap-2 md:flex">
-                <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${status.className}`}>
+                <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset ${status.className}`}>
                   <StatusIcon className={status.iconClassName} />
                   {status.label}
                 </span>
-                <span className="inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-[color:var(--color-primary-hover)]">
+                <span className="inline-flex min-h-[36px] items-center gap-1.5 rounded-xl bg-[color:var(--color-primary)] px-3.5 py-1.5 text-sm font-semibold text-white transition group-hover:bg-[color:var(--color-primary-hover)]">
                   Open
                   <FaArrowRight className="text-xs" />
                 </span>

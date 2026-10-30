@@ -1023,17 +1023,26 @@
 
 .mocktest-root .mocktest-portal-wrap,
 .mocktest-root .mocktest-setup-wrap {
-  background:
-    linear-gradient(180deg, #eef6fb 0%, #f8fbfd 52%, #eef2f7 100%);
+  background: var(--color-bg, #f8fafc);
 }
 
 .mocktest-root .mocktest-portal-card,
 .mocktest-root .mocktest-setup-card {
-  min-height: 540px;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.03);
+  min-height: auto;
+  overflow: visible;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.mocktest-root .mocktest-portal-head h1,
+.mocktest-root .mocktest-setup-card h2,
+.mocktest-root .font-display {
+  font-family: var(--font-display);
+}
+
+.mocktest-root .mocktest-paper-grid {
+  scrollbar-gutter: stable;
 }
 
 .mocktest-root .mocktest-portal-head {
@@ -1054,7 +1063,7 @@
 
 .mocktest-root .mocktest-portal-option {
   position: relative;
-  min-height: 270px;
+  min-height: 230px;
   overflow: hidden;
   border-radius: 14px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1104,16 +1113,16 @@
 
 .mocktest-root .mocktest-primary-btn,
 .mocktest-root .mocktest-secondary-btn {
-  min-height: 40px;
+  min-height: 38px;
   white-space: nowrap;
 }
 
 .mocktest-root .mocktest-filter-chip {
-  min-height: 36px;
+  min-height: 34px;
 }
 
 .mocktest-root .mocktest-input {
-  min-height: 40px;
+  min-height: 36px;
 }
 
 .mocktest-root .mocktest-preview-card {

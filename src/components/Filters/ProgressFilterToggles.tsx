@@ -21,7 +21,7 @@ interface ProgressFilterTogglesProps {
 
 const ToggleRow = ({ id, label, checked, onChange, badge }: ToggleRowProps) => {
     return (
-        <label htmlFor={id} className="flex cursor-pointer items-center justify-between gap-3 py-1.5">
+        <label htmlFor={id} className="flex cursor-pointer items-center justify-between gap-3 py-1">
             <span className="flex items-center gap-1.5 text-sm font-medium text-[color:var(--color-text)]">
                 <span>{label}</span>
                 {badge}

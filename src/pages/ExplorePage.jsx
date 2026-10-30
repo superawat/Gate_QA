@@ -448,7 +448,7 @@ const ExplorePage = ({
           </div>
         </aside>
 
-        <section className="practice-explore-content min-w-0 space-y-3 xl:flex xl:h-[calc(100dvh-2.5rem)] sm:xl:h-[calc(100dvh-3rem)] xl:flex-col xl:overflow-hidden">
+        <section className="practice-explore-content min-w-0 space-y-2.5 xl:flex xl:h-[calc(100dvh-2.5rem)] sm:xl:h-[calc(100dvh-3rem)] xl:flex-col xl:overflow-hidden">
           {(pullDistance > 0 || isPullRefreshing) ? (
             <div className="sticky top-4 z-20 -mb-2 flex justify-center md:hidden">
               <div className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 shadow-[var(--shadow-soft)]">
@@ -457,14 +457,14 @@ const ExplorePage = ({
             </div>
           ) : null}
 
-          <header className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 sm:px-5 sm:py-3.5 shadow-[var(--shadow-card)]">
-            <div className="practice-explore-heading flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <header className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-[var(--shadow-card)]">
+            <div className="practice-explore-heading flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
+              <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                 <nav aria-label="Breadcrumb" className="inline-flex items-center gap-1.5 sm:gap-2 shrink-0">
                   <button
                     type="button"
                     onClick={handleBackHome}
-                    className="inline-flex min-h-[36px] sm:min-h-[40px] items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 sm:px-3 text-xs sm:text-sm font-semibold text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0 shadow-[var(--shadow-soft)]"
+                    className="inline-flex min-h-[34px] sm:min-h-[36px] items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 sm:px-3 text-xs sm:text-sm font-semibold text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0 shadow-[var(--shadow-soft)]"
                     aria-label="Back to Home"
                     title="Home"
                   >
@@ -476,9 +476,9 @@ const ExplorePage = ({
                     Filter
                   </span>
                 </nav>
-                <div className="min-w-0 pl-2 sm:pl-3 border-l border-[color:var(--color-border)]/60">
-                  <h1 className="practice-explore-title text-xl sm:text-2xl font-semibold text-[color:var(--color-text)]">Explore questions</h1>
-                  <p className="practice-result-summary mt-0.5 text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
+                <div className="min-w-0 pl-2 sm:pl-2.5 border-l border-[color:var(--color-border)]/60">
+                  <h1 className="practice-explore-title font-display text-xl sm:text-2xl font-normal tracking-tight text-[color:var(--color-text)] leading-tight">Explore questions</h1>
+                  <p className="practice-result-summary mt-0.5 text-xs sm:text-sm font-medium tabular-nums text-[color:var(--color-text-muted)] leading-tight">{resultSummary}</p>
                 </div>
               </div>
 
@@ -488,7 +488,7 @@ const ExplorePage = ({
                   onClick={handleStartFilteredPractice}
                   disabled={!filteredQuestions.length}
                   aria-label={quickStartLabel}
-                  className="inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary)] px-2.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 min-w-0"
+                  className="inline-flex min-h-[36px] sm:min-h-[36px] flex-1 sm:flex-initial items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary)] px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 min-w-0"
                 >
                   <FaPlay className="text-[10px] sm:text-xs shrink-0" aria-hidden="true" />
                   <span className="truncate hidden sm:inline">{quickStartLabel}</span>
@@ -498,14 +498,17 @@ const ExplorePage = ({
                   type="button"
                   onClick={handleOpenFilters}
                   aria-keyshortcuts="F"
-                  className="practice-filter-trigger inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center gap-1.5 sm:gap-2.5 rounded-xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden min-w-0"
+                  className="practice-filter-trigger inline-flex min-h-[36px] sm:min-h-[36px] flex-1 sm:flex-initial items-center gap-1.5 sm:gap-2 rounded-xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-2.5 sm:px-3 py-1 sm:py-1.5 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden min-w-0"
                 >
-                  <span className="practice-filter-trigger-icon inline-flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-white shadow-sm">
-                    <FaFilter className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                  <span className="practice-filter-trigger-icon inline-flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-white shadow-sm">
+                    <FaFilter className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                   </span>
                   <span className="flex flex-col min-w-0 leading-tight">
-                    <span className="truncate">Filters</span>
-                    <span className="text-[10px] sm:text-xs font-medium text-[color:var(--color-text-muted)] truncate">
+                    <span className="truncate flex items-center">
+                      <span>Filters</span>
+                      <kbd className="hidden sm:inline ml-1.5 rounded border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-1 py-0.5 text-[10px] font-mono leading-none">F</kbd>
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-medium text-[color:var(--color-text-muted)] truncate tabular-nums">
                       {activeFilterCount > 0 ? `${activeFilterCount} active` : "All questions"}
                     </span>
                   </span>
@@ -517,21 +520,21 @@ const ExplorePage = ({
                   aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                   aria-checked={isDarkMode}
                   title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                  className="inline-flex min-h-[40px] sm:min-h-[42px] min-w-[40px] sm:min-w-[42px] w-[40px] sm:w-[42px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                  className="inline-flex min-h-[36px] sm:min-h-[36px] min-w-[36px] sm:min-w-[36px] w-[36px] sm:w-[36px] h-[36px] sm:h-[36px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                 >
                   {isDarkMode ? (
-                    <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                    <FiSun className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
                   ) : (
-                    <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                    <FiMoon className="h-3.5 w-3.5 text-slate-600" aria-hidden="true" />
                   )}
                 </button>
               </div>
             </div>
 
             {/* ── Practice mode toggles & Search ───────────────────────────────────────────── */}
-            <div className="practice-mode-and-search mt-2.5 flex flex-col gap-2.5 border-t border-[color:var(--color-border)]/60 pt-2.5 sm:flex-row sm:items-center sm:gap-3">
-              <div className="practice-mode-toggles flex flex-wrap shrink-0 items-center gap-2 sm:gap-2.5">
-                <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
+            <div className="practice-mode-and-search mt-2 flex flex-col gap-2 border-t border-[color:var(--color-border)]/60 pt-2 sm:flex-row sm:items-center sm:gap-2.5">
+              <div className="practice-mode-toggles flex flex-wrap shrink-0 items-center gap-1.5 sm:gap-2">
+                <span className="shrink-0 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
                   Practice mode
                 </span>
 
@@ -559,7 +562,7 @@ const ExplorePage = ({
                     id="practice-apply-filters-toggle"
                     aria-pressed={applyFiltersToPractice}
                     onClick={handleToggleApplyFilters}
-                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold tabular-nums transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                       applyFiltersToPractice
                         ? "border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)]"
                         : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"
@@ -573,7 +576,7 @@ const ExplorePage = ({
               </div>
 
               {/* Vertical divider on desktop */}
-              <div className="hidden sm:block h-5 w-px bg-[color:var(--color-border)]/80 shrink-0" aria-hidden="true" />
+              <div className="hidden sm:block h-4 w-px bg-[color:var(--color-border)]/80 shrink-0" aria-hidden="true" />
 
               {/* Search bar filling remaining width */}
               <div className="practice-search-row min-w-0 flex-1">
