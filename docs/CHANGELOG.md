@@ -1,4 +1,45 @@
 # Changelog
+- **Question Data Integrity & Answer Key Corrections for October 31 Audit (DEC-271)**:
+  - **Context & Verification**: Investigated and resolved 5 user-reported questions across GATE EC and GATE IT tracks (`ec:2014:q47`, `go:3699`, `go:3813`, `go:3406`, and `go:3814`):
+    1. **`ec:2014:q47` (GATE EC 2014 Set 1 Q47, Control Systems)**:
+       - *Context*: Reported that both question and solution were incorrect.
+       - *Root Cause*: The transfer function in the question stem had a typographical error: numerator was transcribed as `1` instead of `10` ($G(s) = \\frac{1}{(s+0.1)(s+1)(s+10)}$ instead of $G(s) = \\frac{10}{(s+0.1)(s+1)(s+10)}$). The detailed solution also suffered from severe OCR corruptions (`0.7` for `0.1`, `Amount of shitt = 2010 g K = 20 log 10 = 20 dB`, and `\\omega_{wc}` for `\\omega_{gc}`).
+       - *Mathematical & Official Derivation*: With $G(s) = \\frac{10}{(s+0.1)(s+1)(s+10)}$, time-constant form is $G(s) = \\frac{10}{(1+10s)(1+s)(1+0.1s)}$. DC gain $K = \\frac{10}{0.1 \\times 1 \\times 10} = 10 \\implies 20\\log_{10}(10) = 20\\text{ dB}$. At corner frequency $\\omega_{c1} = 0.1\\text{ rad/s}$, slope transitions from $0$ to $-20\\text{ dB/decade}$. Over the decade from $\\omega = 0.1$ to $\\omega = 1$, magnitude drops by $20\\text{ dB}$ to $0\\text{ dB}$, yielding gain crossover frequency $\\omega_{gc} = 1\\text{ rad/s}$. Phase angle at $\\omega_{gc} = 1$ is $\\angle G(j1) = -\\tan^{-1}(10) - \\tan^{-1}(1) - \\tan^{-1}(0.1) = -90^\\circ - 45^\\circ = -135^\\circ$. Phase margin $\\text{PM} = 180^\\circ - 135^\\circ = 45^\\circ$. Official GATE accepted range is $[42, 48]$ degrees.
+       - *Resolution*: Repaired stem in `audit/ec/raw-ec-2014-s1.json`, `public/question-detail-shards/ec-2014-s1.json`, and `public/data/ec/search-index.json`. Replaced detailed solution with rigorous LaTeX derivation and registered dual-key entries in `AUTHENTIC_PATCHES` (`scripts/pipeline/patch-authentic-solutions.mjs`) and `manual-answers-patch-v1.json`.
+    2. **`go:3699` (GATE IT 2004 Q56, Algorithms)**:
+       - *Context*: Reported that Option D is the correct answer instead of currently marked Option C.
+       - *Root Cause*: Graph image `6434530301766717919.webp` has edge weights: $(A, D) = 7$, $(A, B) = 10$, $(A, C) = 22$, $(B, C) = 30$, $(B, E) = 49$, $(C, D) = 26$, $(C, E) = 10$, $(C, F) = 4$, $(D, F) = 22$, $(E, G) = 2$, $(F, G) = 5$.
+       - *Mathematical Derivation*: Prim's algorithm starting from node $A$ greedily selects the minimum cut edge:
+         - From $\\{A\\}$: cut edges are $(A, D)=7$, $(A, B)=10$, $(A, C)=22$. Minimum is $(A, D)$ (weight 7). First edge is $(A, D)$. Option C starts with $(A, B)$ (weight 10), which violates the greedy choice ($7 < 10$).
+         - Tracing Prim's step-by-step: $(A, D) \\to (A, B) \\to (D, F) \\to (F, C) \\to (F, G) \\to (G, E)$.
+         - This exact sequence matches **Option D** (`(A, D), (A, B), (D, F), (F, C), (F, G), (G, E)`).
+       - *Resolution*: Updated answer key to `D` across all source and public registries; fixed image path from `/Gate_QA/question-images/` to `/question-images/6434530301766717919.webp`; added authentic step-by-step derivation.
+    3. **`go:3813` (GATE IT 2005 Q52, Algorithms)**:
+       - *Context*: Reported that Option A is the correct answer instead of currently marked Option D.
+       - *Root Cause*: An earlier volume answer key marked Option D ("All edges in G have the same weight"), attempting to explain that identical weights trivially allow the max-weight edge into an MST, but missing the general theorem.
+       - *Mathematical Derivation*: By the Cut Property of MSTs (CLRS Theorem 23.1), if edge $e = (u, v)$ is in an MST $T$, removing $e$ creates a cut $(S, V \\setminus S)$ such that $e$ is a minimum-weight edge crossing the cut: $\\forall e' \\in \\text{cut}, w(e') \\ge w(e)$. However, the problem specifies that $e$ is an edge of maximum weight across the entire graph $G$: $\\forall e' \\in E, w(e') \\le w(e)$. Combining both inequalities yields $w(e') = w(e)$ for every edge $e'$ in this cutset. Thus, there exists a cutset in $G$ having all edges of maximum weight (**Option A is always TRUE**). Options B, C, and D are disproven by simple counterexamples (e.g. tree graphs have no cycles; a 3-vertex path graph with weights 1 and 10 has an MST containing the weight-10 edge without all edges being equal).
+       - *Resolution*: Updated answer key from `D` to `A` across all answer datasets and shards; provided complete Cut Property proof in detailed solution.
+    4. **`go:3406` (GATE IT 2008 Q82, Algorithms)**:
+       - *Context*: Reported that Option D is the correct answer instead of Option C.
+       - *Root Cause*: Previous detailed solution correctly evaluated $128 + 32 + 8 + 4 + 1 = 173$, but had a typographical error in the binary string and mistakenly copied Option C (`10110101` = 181) instead of Option D (`10101101` = 173).
+       - *Mathematical & Code Derivation*: `f(n)` calls `f(n / 2)` before printing `n % 2`. Recursion unwinds from base case $n \\le 1$ to print binary representation from MSB to LSB. For $n = 173$: $173 = 2^7 + 2^5 + 2^3 + 2^2 + 2^0 = (10101101)_2$. Call stack unwinds: $f(1) \\to 1$, $f(2) \\to 0$, $f(5) \\to 1$, $f(10) \\to 0$, $f(21) \\to 1$, $f(43) \\to 1$, $f(86) \\to 0$, $f(173) \\to 1$, producing output `10101101` (**Option D**).
+       - *Resolution*: Updated answer key from `C` to `D` across all registries; fixed derivation steps.
+    5. **`go:3814` (GATE IT 2005 Q53, Algorithms)**:
+       - *Context*: Reported that Option D is the correct answer instead of Option C.
+       - *Root Cause*: Previous answer key marked Option C (`A: count[a[j++]]++` and `B: count[b[j]]--`).
+       - *Language Semantics & Derivation*: In C (ISO/IEC 9899 Section 6.8), full expressions ending in semicolons contain a sequence point. In Option C, statement A post-increments $j$, completing the side effect before statement B executes. Thus, statement B accesses `b[j+1]` while statement A accessed `a[j]`. Character `b[0]` is completely skipped, causing an anagram mismatch. In Option D (`A: count[a[j]]++` and `B: count[b[j++]]--`), statement A evaluates `a[j]` with no modification to $j$; statement B evaluates `b[j]` at the exact same index $j$, and only then increments $j$ to $j+1$ via post-increment. Both strings are processed in lockstep at each index. Hence, **Option D** is the only correct alternative.
+       - *Resolution*: Updated answer key from `C` to `D` across all answer datasets and shards; provided C sequence point and index progression analysis in detailed solution.
+  - **Registries & Pipeline Synchronization**:
+    - Synchronized `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, and `public/data/answers/answers_by_question_uid_v1.json`.
+    - Synchronized `public/data/answers/answers_master_v1.json`, `data/it/answers-gateit.json`, `public/data/it/answers-gateit.json`, and `public/questions-with-answers.json`.
+    - Integrated all 5 questions (`ec:2014:q47`, `go:3699`, `go:3813`, `go:3406`, `go:3814`) with authentic derivations into `AUTHENTIC_PATCHES` (`scripts/pipeline/patch-authentic-solutions.mjs`), `data/solutions/practicepaper/all-solutions.json`, and `data/solutions/chunks/cse/chunk-cse-dsa-06.json`.
+    - Synchronized static shards (`public/question-detail-shards/it-2004-s0.json`, `it-2005-s0.json`, `it-2008-s0.json`, `ec-2014-s1.json`) and `public/mock_catalog_v1.json`.
+    - Updated upstream branch sources (`audit/ec/raw-ec-2014-s1.json`, `public/data/ec/search-index.json`).
+  - **Verification**:
+    - Regression unit tests added in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js` (all 321 evaluator tests and 160 service tests passing).
+    - Full Vitest suite passing (116 test files, 1,571 passed, 6 skipped, 0 failures).
+    - `npm run qa:validate-data` passed with 0 errors.
+    - `npm run typecheck` passed cleanly with 0 TypeScript errors.
 - **Custom Builder 2-Column Rearrangement & Unified Heading Font Consistency (DEC-270)**:
   - **Custom Builder Column Organization**:
     - **Right Column (in exact order)**:

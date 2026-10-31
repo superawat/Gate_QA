@@ -3753,6 +3753,73 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "0.48")).toEqual({ status: "evaluated", correct: false });
         expect(evaluateAnswer(record, "0.52")).toEqual({ status: "evaluated", correct: false });
       });
+
+      test("evaluates ec:2014:q47 (GATE EC 2014 Set 1 Q47) as NAT 45 within [42, 48]", () => {
+        const record = {
+          type: "NAT",
+          answer: 45,
+          tolerance: { lower: 42, upper: 48 },
+        };
+        expect(evaluateAnswer(record, "45")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, 45)).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "42")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "48")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "41.9")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "48.1")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "0")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:3699 (GATE IT 2004 Q56) as MCQ Option D (Prim MST order from node A)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:3813 (GATE IT 2005 Q52) as MCQ Option A (Cutset having all edges of max weight)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "A",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:3406 (GATE IT 2008 Q82) as MCQ Option D (Binary representation of 173 is 10101101)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:3814 (GATE IT 2005 Q53) as MCQ Option D (Anagram post-increment in statement B)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });

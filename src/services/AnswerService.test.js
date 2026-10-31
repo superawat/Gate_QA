@@ -3147,6 +3147,102 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
             answer: "D",
           });
         });
+
+        test("resolves ec:2014:q47 (GATE EC 2014 Set 1 Q47) as NAT 45 within [42, 48]", () => {
+          AnswerService.answersByQuestionUid = {
+            "ec:2014:q47": {
+              answer_uid: "ec:2014:q47",
+              type: "NAT",
+              answer: 45,
+              tolerance: { lower: 42, upper: 48 },
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "ec:2014:q47",
+            title: "GATE EC 2014 | Set 1 | Question: 47",
+          });
+          expect(answer).toMatchObject({
+            type: "NAT",
+            answer: 45,
+            tolerance: { lower: 42, upper: 48 },
+          });
+        });
+
+        test("resolves go:3699 (GATE IT 2004 Q56) as MCQ Option D", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:3699": {
+              answer_uid: "manual:go:3699",
+              type: "MCQ",
+              answer: "D",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:3699",
+            title: "GATE IT 2004 | Question: 56",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "D",
+          });
+        });
+
+        test("resolves go:3813 (GATE IT 2005 Q52) as MCQ Option A", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:3813": {
+              answer_uid: "manual:go:3813",
+              type: "MCQ",
+              answer: "A",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:3813",
+            title: "GATE IT 2005 | Question: 52",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "A",
+          });
+        });
+
+        test("resolves go:3406 (GATE IT 2008 Q82) as MCQ Option D", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:3406": {
+              answer_uid: "manual:go:3406",
+              type: "MCQ",
+              answer: "D",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:3406",
+            title: "GATE IT 2008 | Question: 82",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "D",
+          });
+        });
+
+        test("resolves go:3814 (GATE IT 2005 Q53) as MCQ Option D", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:3814": {
+              answer_uid: "manual:go:3814",
+              type: "MCQ",
+              answer: "D",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:3814",
+            title: "GATE IT 2005 | Question: 53",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "D",
+          });
+        });
       });
     });
   });

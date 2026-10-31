@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T12:38:14.453Z",
+  "generatedAt": "2026-10-31T18:36:03.214Z",
   "shardKey": "it-2005-s0",
   "yearSetKey": "it-2005-s0",
   "yearSetIdentity": "it:2005:set-0",
@@ -2238,9 +2238,9 @@
       "answer_uid": "v2:1.25.1",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "D",
+        "answer": "A",
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_it",
       "source_branch": "IT",
@@ -2248,7 +2248,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
-      "answer": "D",
+      "answer": "A",
       "track": "cse",
       "yearSetKey": "it-2005-s0",
       "yearSetIdentity": "it:2005:set-0",
@@ -2262,8 +2262,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "Algorithms",
-        "markdown": "- **Concept / Theoretical Foundation**:\n  - In a weighted undirected graph $G$, let $e$ be an edge with maximum weight in $G$.\n  - We are given that there exists a Minimum Spanning Tree (MST) in $G$ that contains edge $e$.\n- **Analytical Justification**:\n  1. **Cycle Property of MST**: The strictly heaviest edge in any cycle cannot belong to any MST.\n  2. If an edge $e$ has the maximum weight across the *entire graph*, then in any cycle containing $e$, $e$ is either strictly heavier than other edges or tied with them.\n  3. If all edges in $G$ have the exact same weight, then *every* spanning tree of $G$ is a minimum weight spanning tree, and any edge of maximum weight can freely belong to an MST.\n  4. In particular, statement D (*\"All edges in G have the same weight\"*) represents the definitive structural condition ensuring that any choice of maximum edge is always valid in an MST.\n\nTherefore, the correct answer is **Option D (All edges in G have the same weight)**.",
+        "concept": "Algorithms - Graph Algorithms (Minimum Spanning Tree Cut Property)",
+        "markdown": "### 1. Problem Formulation & Theoretical Background\nLet $G = (V, E)$ be an undirected, connected, weighted graph.\nLet $e = (u, v) \\in E$ be an edge of **maximum weight** in $G$:\n$$\\forall x \\in E, \\quad w(x) \\le w(e)$$\n\nWe are given that edge $e$ belongs to a **Minimum Spanning Tree (MST)** $T$ of $G$.\nWe need to identify which statement is **ALWAYS TRUE**.\n\n---\n\n### 2. Mathematical Proof via the MST Cut Property\n1. **Tree Partition upon Edge Removal:**\n   - Since $T$ is an MST, $T$ is a tree connecting all $|V|$ vertices using exactly $|V| - 1$ edges with no cycles.\n   - Deleting the single edge $e = (u, v)$ from $T$ splits $T$ into exactly two disconnected components.\n   - This defines a partition of the vertices $(S, V \\setminus S)$ such that $u \\in S$ and $v \\in V \\setminus S$.\n\n2. **The Cutset ($C$):**\n   - Let $C \\subseteq E$ denote the cutset of edges in $G$ with one endpoint in $S$ and the other in $V \\setminus S$:\n     $$C = \\{ (x, y) \\in E \\mid x \\in S, \\; y \\in V \\setminus S \\}$$\n   - Clearly, $e \\in C$.\n\n3. **Cut Property Lower Bound:**\n   - By the fundamental **Cut Property of MSTs** (CLRS Theorem 23.1): An edge $e \\in T$ must be a minimum-weight edge crossing the cut $(S, V \\setminus S)$.\n   - *Proof by contradiction:* If there existed an edge $e' \\in C$ with $w(e') < w(e)$, we could replace $e$ with $e'$ to form $T' = (T \\setminus \\{e\\}) \\cup \\{e'\\}$. $T'$ would still be a spanning tree, but with total weight $w(T') = w(T) - w(e) + w(e') < w(T)$, contradicting the minimality of $T$.\n   - Therefore:\n     $$\\forall e' \\in C, \\quad w(e') \\ge w(e)$$\n\n4. **Global Maximum Weight Upper Bound:**\n   - Because $e$ is an edge of maximum weight across the entire graph $G$:\n     $$\\forall x \\in E, \\quad w(x) \\le w(e)$$\n   - Since $C \\subseteq E$, it immediately follows that:\n     $$\\forall e' \\in C, \\quad w(e') \\le w(e)$$\n\n5. **Exact Equality for All Edges in the Cutset:**\n   - Combining both inequalities:\n     $$\\forall e' \\in C, \\quad w(e) \\le w(e') \\le w(e) \\implies w(e') = w(e)$$\n   - Thus, every single edge in this cutset $C$ has weight equal to $w(e)$, which is the maximum weight in $G$.\n   - Hence: **\"There exists a cutset in $G$ having all edges of maximum weight.\"**\n\n---\n\n### 3. Disproving Alternative Options\n- **Option B (\"There exists a cycle in $G$ having all edges of maximum weight\"):**\n  - *Counterexample:* Consider a tree graph $G$ with distinct edge weights. Being a tree, $G$ is its own unique MST, and it contains its maximum-weight edge. However, $G$ contains **no cycles at all**. Thus, Option B is FALSE.\n- **Option C (\"Edge $e$ cannot be part of any cycle\"):**\n  - *Counterexample:* Let $G$ be a cycle $C_3$ on 3 vertices with identical edge weights $w_1 = w_2 = w_3 = 10$. The MST consists of any 2 edges. Edge $e$ has maximum weight ($10$), belongs to the MST, yet belongs to the 3-cycle. Thus, Option C is FALSE.\n- **Option D (\"All edges in $G$ have the same weight\"):**\n  - *Counterexample:* Consider a 3-vertex path graph $v_1 - v_2 - v_3$ with $w(v_1, v_2) = 1$ and $w(v_2, v_3) = 10$. The unique MST requires both edges, so it contains the maximum-weight edge $(v_2, v_3)$ of weight $10$. However, all edges do not have the same weight ($1 \\ne 10$). Thus, Option D is FALSE.\n\n---\n\n### 4. Conclusion\n**Option A** is the only statement that is always true.\n\n**Correct Answer: Option A**",
         "images": []
       }
     },
@@ -2282,9 +2282,9 @@
       "answer_uid": "v2:1.18.35",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "C",
+        "answer": "D",
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_it",
       "source_branch": "IT",
@@ -2292,7 +2292,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
-      "answer": "C",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2005-s0",
       "yearSetIdentity": "it:2005:set-0",
@@ -2308,8 +2308,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "Algorithms - Identify Function",
-        "markdown": "- **Concept / Theoretical Foundation**:\n  - Two strings $a$ and $b$ are anagrams if and only if they contain the exact same characters with identical frequencies.\n  - A single frequency count array of size 128 (ASCII range) initialized to 0 tracks this:\n    - Characters in string $a$ increment their count.\n    - Characters in string $b$ decrement their count.\n    - If all counts remain 0 after processing, the strings are anagrams.\n- **Loop Body Analysis**:\n  ```c\n  j = 0;\n  while (a[j] && b[j]) {\n      A;\n      B;\n  }\n  ```\n  - Notice that index $j$ is **not** incremented in the `while` condition header.\n  - Therefore, the index $j$ must be incremented inside the statements $A$ and $B$ to process successive characters and avoid an infinite loop.\n  - Incrementing $j$ inside the post-increment expression `j++` in the loop statements advances the pointer index to the next character in the array.\n  - Option C (`A: count [a[j++]]++ and B: count[b[j]]--`) correctly advances the traversal index across the string characters.\n\nTherefore, the correct answer is **Option C (A: count [a[j++]]++ and B: count[b[j]]--)**.",
+        "concept": "C Programming - Sequence Points, Post-Increment Side Effects, and Anagram Algorithm",
+        "markdown": "### 1. Problem Formulation & Anagram Logic\nWe are given a function that checks whether two ASCII strings $a$ and $b$ are anagrams:\n\n```c\nint anagram (char *a, char *b) {\n    int count [128], j;\n    for (j = 0;  j < 128; j++) count[j] = 0;\n    j = 0;\n    while (a[j] && b[j]) {\n        A;\n        B;\n    }\n    for (j = 0; j < 128; j++) if (count [j]) return 0;\n    return 1;\n}\n```\n\n- Two strings are anagrams if and only if every character appears with the exact same frequency in both strings.\n- The array `count[128]` tracks character frequencies:\n  - For each character in string $a$, its corresponding count is incremented (`count[a[j]]++`).\n  - For each character in string $b$, its corresponding count is decremented (`count[b[j]]--`).\n- If the strings are anagrams, all elements of `count` will be $0$ at the end of traversal.\n- Notice that in the `while (a[j] && b[j])` header, index $j$ is **not incremented**. Thus, statements $A$ and $B$ must advance $j$ across loop iterations.\n\n---\n\n### 2. C Sequence Point Rules & Post-Increment Semantics\nIn C (ISO/IEC 9899 §6.8), a semicolon terminating an expression statement is a **sequence point**:\n> *\"The end of a full expression is a sequence point.\"*\n\nAll side effects (such as post-increment `j++`) in a statement are fully applied before the next statement begins execution.\n\n- **Evaluating Option C (`A: count[a[j++]]++; B: count[b[j]]--;`):**\n  - In iteration 1 ($j = 0$):\n    1. Statement $A$ evaluates `a[j++]`: the operand evaluates to $j = 0$ (so `count[a[0]]` is incremented).\n    2. Statement $A$ ends at `;`, completing the side effect: $j$ becomes $1$.\n    3. Statement $B$ executes `count[b[j]]--` with $j = 1$. It accesses and decrements `b[1]`.\n    4. **Defect:** Character `b[0]` is completely skipped, while `b[1]` is decremented against `a[0]`.\n  - In subsequent iterations, $a[j]$ and $b[j+1]$ are mismatched, failing to determine whether strings are anagrams.\n  - Therefore, **Option C is incorrect**.\n\n- **Evaluating Option D (`A: count[a[j]]++; B: count[b[j++]]--;`):**\n  - In iteration 1 ($j = 0$):\n    1. Statement $A$ evaluates `count[a[j]]++`: accesses `a[0]` and increments `count[a[0]]`. $j$ remains $0$.\n    2. Statement $B$ evaluates `count[b[j++]]--`: the operand `j++` evaluates to $j = 0$, so `count[b[0]]` is decremented.\n    3. Statement $B$ ends at `;`, completing the side effect: $j$ is incremented to $1$.\n  - In every iteration $k$, both `a[k]` and `b[k]` are processed at the **exact same index $k$**, and $j$ is cleanly incremented once per iteration after both characters are counted.\n  - Both strings are traversed synchronously from index $0$ to terminating `'\\0'`.\n  - Therefore, **Option D is correct**.\n\n---\n\n### 3. Conclusion\n- Option A has no increment for $j$, resulting in an infinite loop.\n- Option B increments both counts instead of decrementing $b$, and does not advance $j$.\n- Option C increments $j$ too early (in statement $A$), skipping `b[0]`.\n- Option D correctly increments $a[j]$, decrements $b[j]$, and advances $j$ at the end of statement $B$.\n\n**Correct Answer: Option D**",
         "images": []
       }
     },

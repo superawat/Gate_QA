@@ -1631,6 +1631,430 @@ The algorithm searches for a key $x$ in an unsorted array $A[1..n]$ having $n$ d
   "markdown": "### 1. Conceptual Framework: Thrashing in Virtual Memory\nIn a paged virtual memory system, **thrashing** is a severe pathological condition where the system spends significantly more time moving pages between physical memory and swap disk than executing actual program instructions.\n\n### 2. Physical Mechanism and Causes\n1. **Working Set Deficit:**\n   - Let $\\text{WSS}_i$ be the Working Set Size of process $i$ (the number of page frames needed to support its current locality of reference).\n   - If the total memory demand of all active processes exceeds the total number of physical memory frames available in RAM:\n     $$\\sum_{i} \\text{WSS}_i > D \\ (\\text{Total Available Physical Frames})$$\n2. **Cascading Page Faults:**\n   - Processes do not possess enough resident frames to hold their active working sets.\n   - When process $A$ faults, it evicts a page belonging to process $B$.\n   - Almost immediately, process $B$ references the evicted page and faults, evicting a page from process $A$ or $C$.\n   - The system gets locked in a perpetual cycle of page evictions and re-fetches.\n3. **Paging I/O Saturation:**\n   - The disk queuing system becomes saturated with continuous page-in and page-out requests.\n   - This leads directly to **excessive page I/O**.\n   - As a consequence, CPU utilization plunges to near zero, causing overall system throughput to collapse.\n\n### 3. Distractor Analysis\n- **Option A (reduces page I/O):** False; thrashing causes an explosion of page I/O traffic.\n- **Option B (decreases the degree of multiprogramming):** False; the OS misinterprets low CPU utilization as under-utilization and initially *increases* the degree of multiprogramming, which triggers or worsens thrashing. (Decreasing the degree of multiprogramming by swapping out processes is the remedy, not what thrashing itself does).\n- **Option C (implies excessive page I/O):** Correct; excessive paging activity is the hallmark definition of thrashing.\n- **Option D (improve the system performance):** False; thrashing virtually halts system progress.\n\n**Therefore, the correct answer is Option C (implies excessive page I/O).**",
   "images": []
 },
+  "ec:2014:q47": {
+    concept: "Control Systems - Frequency Response Analysis (Bode Phase Margin)",
+    markdown: `### 1. Problem Statement & System Transfer Function
+We are given the open-loop transfer function of a unity feedback system:
+$G(s) = \\frac{10}{(s + 0.1)(s + 1)(s + 10)}$
+
+We need to calculate the **phase margin (PM)** in degrees using the **asymptotic Bode plot**.
+
+---
+
+### 2. Time-Constant (Bode) Standard Form & Corner Frequencies
+Rewrite $G(s)$ in standard time-constant form by factoring out the pole constants:
+$G(s) = \\frac{10}{0.1\\left(1 + \\frac{s}{0.1}\\right) \\cdot 1(1 + s) \\cdot 10\\left(1 + \\frac{s}{10}\\right)} = \\frac{10}{(0.1 \\times 1 \\times 10) \\left(1 + \\frac{s}{0.1}\\right)(1 + s)\\left(1 + \\frac{s}{10}\\right)}$
+$G(s) = \\frac{10}{1 \\cdot (1 + 10s)(1 + s)(1 + 0.1s)} = \\frac{10}{(1 + 10s)(1 + s)(1 + 0.1s)}$
+
+From this standard form:
+- **DC Gain ($K$):** $K = 10 \\implies 20\\log_{10}(K) = 20\\log_{10}(10) = 20\\text{ dB}$.
+- **Corner Frequencies:**
+  - $\\omega_{c1} = 0.1\\text{ rad/s}$ (due to simple pole at $s = -0.1$)
+  - $\\omega_{c2} = 1\\text{ rad/s}$ (due to simple pole at $s = -1$)
+  - $\\omega_{c3} = 10\\text{ rad/s}$ (due to simple pole at $s = -10$)
+
+---
+
+### 3. Asymptotic Magnitude Plot & Gain Crossover Frequency ($\\omega_{gc}$)
+We trace the magnitude asymptotes across frequency decades:
+1. **For $\\omega < 0.1\\text{ rad/s}$:**
+   - No poles or zeros are active yet.
+   - Initial slope $= 0\\text{ dB/decade}$.
+   - Magnitude $= 20\\log_{10}(10) = 20\\text{ dB}$.
+2. **At $\\omega_{c1} = 0.1\\text{ rad/s}$:**
+   - The first simple pole enters, introducing a slope change of $-20\\text{ dB/decade}$.
+   - New slope $= 0 - 20 = -20\\text{ dB/decade}$.
+3. **Between $\\omega = 0.1\\text{ rad/s}$ and $\\omega = 1\\text{ rad/s}$:**
+   - The frequency spans exactly 1 decade: $\\log_{10}(1) - \\log_{10}(0.1) = 1$.
+   - Drop in magnitude $= (-20\\text{ dB/decade}) \\times 1\\text{ decade} = -20\\text{ dB}$.
+   - Magnitude at $\\omega = 1\\text{ rad/s}$:
+     $|G(j\\cdot 1)|_{\\text{dB}} = 20\\text{ dB} - 20\\text{ dB} = 0\\text{ dB}$
+4. **Gain Crossover Frequency:**
+   - The gain crossover frequency $\\omega_{gc}$ is defined as the frequency where the asymptotic magnitude equals $0\\text{ dB}$.
+   - Therefore, from the asymptotic magnitude plot:
+     $\\omega_{gc} = 1\\text{ rad/s}$
+
+---
+
+### 4. Phase Angle at $\\omega_{gc}$ & Phase Margin Calculation
+The phase angle $\\angle G(j\\omega)$ of the open-loop transfer function is:
+$\\angle G(j\\omega) = -\\tan^{-1}\\left(\\frac{\\omega}{0.1}\\right) - \\tan^{-1}\\left(\\frac{\\omega}{1}\\right) - \\tan^{-1}\\left(\\frac{\\omega}{10}\\right)$
+
+Evaluating at the gain crossover frequency $\\omega_{gc} = 1\\text{ rad/s}$:
+$\\angle G(j\\cdot 1) = -\\tan^{-1}\\left(\\frac{1}{0.1}\\right) - \\tan^{-1}\\left(\\frac{1}{1}\\right) - \\tan^{-1}\\left(\\frac{1}{10}\\right)$
+$\\angle G(j\\cdot 1) = -\\tan^{-1}(10) - \\tan^{-1}(1) - \\tan^{-1}(0.1)$
+
+Using the standard trigonometric identity $\\tan^{-1}(x) + \\tan^{-1}\\left(\\frac{1}{x}\\right) = 90^\\circ$ for any $x > 0$:
+$\\tan^{-1}(10) + \\tan^{-1}(0.1) = 90^\\circ$
+$\\tan^{-1}(1) = 45^\\circ$
+
+Therefore:
+$\\angle G(j\\cdot 1) = -(90^\\circ) - 45^\\circ = -135^\\circ$
+
+The **Phase Margin (PM)** is:
+$\\text{PM} = 180^\\circ + \\angle G(j\\omega_{gc}) = 180^\\circ + (-135^\\circ) = 45^\\circ$
+
+---
+
+### 5. Official GATE Key Parity
+- **Calculated Asymptotic Value:** $45^\\circ$
+- **Official GATE Accepted Range:** $[42, 48]$ degrees.
+
+**Correct Answer: 45** (acceptable range: [42, 48])`,
+    images: []
+  },
+  "pp:ec:2014:q47": {
+    concept: "Control Systems - Frequency Response Analysis (Bode Phase Margin)",
+    markdown: `### 1. Problem Statement & System Transfer Function
+We are given the open-loop transfer function of a unity feedback system:
+$G(s) = \\frac{10}{(s + 0.1)(s + 1)(s + 10)}$
+
+We need to calculate the **phase margin (PM)** in degrees using the **asymptotic Bode plot**.
+
+---
+
+### 2. Time-Constant (Bode) Standard Form & Corner Frequencies
+Rewrite $G(s)$ in standard time-constant form by factoring out the pole constants:
+$G(s) = \\frac{10}{0.1\\left(1 + \\frac{s}{0.1}\\right) \\cdot 1(1 + s) \\cdot 10\\left(1 + \\frac{s}{10}\\right)} = \\frac{10}{(0.1 \\times 1 \\times 10) \\left(1 + \\frac{s}{0.1}\\right)(1 + s)\\left(1 + \\frac{s}{10}\\right)}$
+$G(s) = \\frac{10}{1 \\cdot (1 + 10s)(1 + s)(1 + 0.1s)} = \\frac{10}{(1 + 10s)(1 + s)(1 + 0.1s)}$
+
+From this standard form:
+- **DC Gain ($K$):** $K = 10 \\implies 20\\log_{10}(K) = 20\\log_{10}(10) = 20\\text{ dB}$.
+- **Corner Frequencies:**
+  - $\\omega_{c1} = 0.1\\text{ rad/s}$ (due to simple pole at $s = -0.1$)
+  - $\\omega_{c2} = 1\\text{ rad/s}$ (due to simple pole at $s = -1$)
+  - $\\omega_{c3} = 10\\text{ rad/s}$ (due to simple pole at $s = -10$)
+
+---
+
+### 3. Asymptotic Magnitude Plot & Gain Crossover Frequency ($\\omega_{gc}$)
+We trace the magnitude asymptotes across frequency decades:
+1. **For $\\omega < 0.1\\text{ rad/s}$:**
+   - No poles or zeros are active yet.
+   - Initial slope $= 0\\text{ dB/decade}$.
+   - Magnitude $= 20\\log_{10}(10) = 20\\text{ dB}$.
+2. **At $\\omega_{c1} = 0.1\\text{ rad/s}$:**
+   - The first simple pole enters, introducing a slope change of $-20\\text{ dB/decade}$.
+   - New slope $= 0 - 20 = -20\\text{ dB/decade}$.
+3. **Between $\\omega = 0.1\\text{ rad/s}$ and $\\omega = 1\\text{ rad/s}$:**
+   - The frequency spans exactly 1 decade: $\\log_{10}(1) - \\log_{10}(0.1) = 1$.
+   - Drop in magnitude $= (-20\\text{ dB/decade}) \\times 1\\text{ decade} = -20\\text{ dB}$.
+   - Magnitude at $\\omega = 1\\text{ rad/s}$:
+     $|G(j\\cdot 1)|_{\\text{dB}} = 20\\text{ dB} - 20\\text{ dB} = 0\\text{ dB}$
+4. **Gain Crossover Frequency:**
+   - The gain crossover frequency $\\omega_{gc}$ is defined as the frequency where the asymptotic magnitude equals $0\\text{ dB}$.
+   - Therefore, from the asymptotic magnitude plot:
+     $\\omega_{gc} = 1\\text{ rad/s}$
+
+---
+
+### 4. Phase Angle at $\\omega_{gc}$ & Phase Margin Calculation
+The phase angle $\\angle G(j\\omega)$ of the open-loop transfer function is:
+$\\angle G(j\\omega) = -\\tan^{-1}\\left(\\frac{\\omega}{0.1}\\right) - \\tan^{-1}\\left(\\frac{\\omega}{1}\\right) - \\tan^{-1}\\left(\\frac{\\omega}{10}\\right)$
+
+Evaluating at the gain crossover frequency $\\omega_{gc} = 1\\text{ rad/s}$:
+$\\angle G(j\\cdot 1) = -\\tan^{-1}\\left(\\frac{1}{0.1}\\right) - \\tan^{-1}\\left(\\frac{1}{1}\\right) - \\tan^{-1}\\left(\\frac{1}{10}\\right)$
+$\\angle G(j\\cdot 1) = -\\tan^{-1}(10) - \\tan^{-1}(1) - \\tan^{-1}(0.1)$
+
+Using the standard trigonometric identity $\\tan^{-1}(x) + \\tan^{-1}\\left(\\frac{1}{x}\\right) = 90^\\circ$ for any $x > 0$:
+$\\tan^{-1}(10) + \\tan^{-1}(0.1) = 90^\\circ$
+$\\tan^{-1}(1) = 45^\\circ$
+
+Therefore:
+$\\angle G(j\\cdot 1) = -(90^\\circ) - 45^\\circ = -135^\\circ$
+
+The **Phase Margin (PM)** is:
+$\\text{PM} = 180^\\circ + \\angle G(j\\omega_{gc}) = 180^\\circ + (-135^\\circ) = 45^\\circ$
+
+---
+
+### 5. Official GATE Key Parity
+- **Calculated Asymptotic Value:** $45^\\circ$
+- **Official GATE Accepted Range:** $[42, 48]$ degrees.
+
+**Correct Answer: 45** (acceptable range: [42, 48])`,
+    images: []
+  },
+  "go:3699": {
+    concept: "Algorithms - Graph Algorithms (Prim's Minimum Spanning Tree)",
+    markdown: `### 1. Problem Formulation & Graph Specification
+We are given an undirected weighted graph with 7 vertices $V = \\{A, B, C, D, E, F, G\\}$ and edge weights:
+- $(A, D) = 7$
+- $(A, B) = 10$
+- $(A, C) = 22$
+- $(B, C) = 30$
+- $(B, E) = 49$
+- $(C, E) = 10$
+- $(C, D) = 26$
+- $(C, F) = 4$
+- $(D, F) = 22$
+- $(E, G) = 2$
+- $(F, G) = 5$
+
+We need to determine a valid edge sequence generated by **Prim's Algorithm** starting from **Node A**.
+
+---
+
+### 2. Prim's Algorithm Execution Trace from Node A
+Prim's algorithm maintains a growing tree $V_{\\text{tree}}$ and at each step greedily adds the minimum-weight edge crossing the cut $(V_{\\text{tree}}, V \\setminus V_{\\text{tree}})$.
+
+1. **Step 1 (Initialize with Node A):**
+   - $V_{\\text{tree}} = \\{A\\}$.
+   - Cut edges crossing into $V \\setminus V_{\\text{tree}}$:
+     - $(A, D)$ with weight $7$
+     - $(A, B)$ with weight $10$
+     - $(A, C)$ with weight $22$
+   - Minimum weight edge is **$(A, D)$** (weight $7$).
+   - **Edge 1 added:** $(A, D)$. Tree vertices: $\\{A, D\\}$.
+
+2. **Step 2:**
+   - $V_{\\text{tree}} = \\{A, D\\}$.
+   - Available cut edges:
+     - From $A$: $(A, B) = 10$, $(A, C) = 22$
+     - From $D$: $(D, F) = 22$, $(D, C) = 26$
+   - Minimum weight cut edge is **$(A, B)$** (weight $10$).
+   - **Edge 2 added:** $(A, B)$. Tree vertices: $\\{A, B, D\\}$.
+
+3. **Step 3:**
+   - $V_{\\text{tree}} = \\{A, B, D\\}$.
+   - Available cut edges:
+     - From $A$: $(A, C) = 22$
+     - From $B$: $(B, C) = 30$, $(B, E) = 49$
+     - From $D$: $(D, F) = 22$, $(D, C) = 26$
+   - Minimum weight among cut edges is $22$, with a tie between $(A, C)$ and $(D, F)$.
+   - Choosing **$(D, F)$** (weight $22$).
+   - **Edge 3 added:** $(D, F)$. Tree vertices: $\\{A, B, D, F\\}$.
+
+4. **Step 4:**
+   - $V_{\\text{tree}} = \\{A, B, D, F\\}$.
+   - Available cut edges connecting to unvisited vertices $\\{C, E, G\\}$:
+     - From $F$: $(F, C) = 4$, $(F, G) = 5$
+     - From $A$: $(A, C) = 22$
+     - From $D$: $(D, C) = 26$
+     - From $B$: $(B, C) = 30$, $(B, E) = 49$
+   - Minimum weight cut edge is **$(F, C)$** (weight $4$).
+   - **Edge 4 added:** $(F, C)$ (or $(C, F)$). Tree vertices: $\\{A, B, C, D, F\\}$.
+
+5. **Step 5:**
+   - $V_{\\text{tree}} = \\{A, B, C, D, F\\}$.
+   - Available cut edges connecting to unvisited vertices $\\{E, G\\}$:
+     - From $F$: $(F, G) = 5$
+     - From $C$: $(C, E) = 10$
+     - From $B$: $(B, E) = 49$
+   - Minimum weight cut edge is **$(F, G)$** (weight $5$).
+   - **Edge 5 added:** $(F, G)$. Tree vertices: $\\{A, B, C, D, F, G\\}$.
+
+6. **Step 6:**
+   - $V_{\\text{tree}} = \\{A, B, C, D, F, G\\}$.
+   - Available cut edges connecting to remaining unvisited vertex $\\{E\\}$:
+     - From $G$: $(G, E) = 2$
+     - From $C$: $(C, E) = 10$
+     - From $B$: $(B, E) = 49$
+   - Minimum weight cut edge is **$(G, E)$** (weight $2$).
+   - **Edge 6 added:** $(G, E)$. All 7 vertices now span the tree.
+
+---
+
+### 3. Option Evaluation
+The derived sequence of edges is:
+$$(A, D), (A, B), (D, F), (F, C), (F, G), (G, E)$$
+
+- **Option A:** Starts with $(E, G)$, which does not begin from node $A$. *(Incorrect)*
+- **Option B:** Picks $(A, C)$ third, then jumps to $(C, F)$, $(G, E)$, which fails because $G$ and $E$ are not yet in the tree. *(Incorrect)*
+- **Option C:** Starts with $(A, B)$ (weight $10$), violating the greedy choice since $(A, D)$ has weight $7 < 10$. *(Incorrect)*
+- **Option D:** Exactly matches the valid Prim execution order: $(A, D), (A, B), (D, F), (F, C), (F, G), (G, E)$. *(Correct)*
+
+**Correct Answer: Option D**`,
+    images: ["/question-images/6434530301766717919.webp"]
+  },
+  "go:3813": {
+    concept: "Algorithms - Graph Algorithms (Minimum Spanning Tree Cut Property)",
+    markdown: `### 1. Problem Formulation & Theoretical Background
+Let $G = (V, E)$ be an undirected, connected, weighted graph.
+Let $e = (u, v) \\in E$ be an edge of **maximum weight** in $G$:
+$$\\forall x \\in E, \\quad w(x) \\le w(e)$$
+
+We are given that edge $e$ belongs to a **Minimum Spanning Tree (MST)** $T$ of $G$.
+We need to identify which statement is **ALWAYS TRUE**.
+
+---
+
+### 2. Mathematical Proof via the MST Cut Property
+1. **Tree Partition upon Edge Removal:**
+   - Since $T$ is an MST, $T$ is a tree connecting all $|V|$ vertices using exactly $|V| - 1$ edges with no cycles.
+   - Deleting the single edge $e = (u, v)$ from $T$ splits $T$ into exactly two disconnected components.
+   - This defines a partition of the vertices $(S, V \\setminus S)$ such that $u \\in S$ and $v \\in V \\setminus S$.
+
+2. **The Cutset ($C$):**
+   - Let $C \\subseteq E$ denote the cutset of edges in $G$ with one endpoint in $S$ and the other in $V \\setminus S$:
+     $$C = \\{ (x, y) \\in E \\mid x \\in S, \\; y \\in V \\setminus S \\}$$
+   - Clearly, $e \\in C$.
+
+3. **Cut Property Lower Bound:**
+   - By the fundamental **Cut Property of MSTs** (CLRS Theorem 23.1): An edge $e \\in T$ must be a minimum-weight edge crossing the cut $(S, V \\setminus S)$.
+   - *Proof by contradiction:* If there existed an edge $e' \\in C$ with $w(e') < w(e)$, we could replace $e$ with $e'$ to form $T' = (T \\setminus \\{e\\}) \\cup \\{e'\\}$. $T'$ would still be a spanning tree, but with total weight $w(T') = w(T) - w(e) + w(e') < w(T)$, contradicting the minimality of $T$.
+   - Therefore:
+     $$\\forall e' \\in C, \\quad w(e') \\ge w(e)$$
+
+4. **Global Maximum Weight Upper Bound:**
+   - Because $e$ is an edge of maximum weight across the entire graph $G$:
+     $$\\forall x \\in E, \\quad w(x) \\le w(e)$$
+   - Since $C \\subseteq E$, it immediately follows that:
+     $$\\forall e' \\in C, \\quad w(e') \\le w(e)$$
+
+5. **Exact Equality for All Edges in the Cutset:**
+   - Combining both inequalities:
+     $$\\forall e' \\in C, \\quad w(e) \\le w(e') \\le w(e) \\implies w(e') = w(e)$$
+   - Thus, every single edge in this cutset $C$ has weight equal to $w(e)$, which is the maximum weight in $G$.
+   - Hence: **"There exists a cutset in $G$ having all edges of maximum weight."**
+
+---
+
+### 3. Disproving Alternative Options
+- **Option B ("There exists a cycle in $G$ having all edges of maximum weight"):**
+  - *Counterexample:* Consider a tree graph $G$ with distinct edge weights. Being a tree, $G$ is its own unique MST, and it contains its maximum-weight edge. However, $G$ contains **no cycles at all**. Thus, Option B is FALSE.
+- **Option C ("Edge $e$ cannot be part of any cycle"):**
+  - *Counterexample:* Let $G$ be a cycle $C_3$ on 3 vertices with identical edge weights $w_1 = w_2 = w_3 = 10$. The MST consists of any 2 edges. Edge $e$ has maximum weight ($10$), belongs to the MST, yet belongs to the 3-cycle. Thus, Option C is FALSE.
+- **Option D ("All edges in $G$ have the same weight"):**
+  - *Counterexample:* Consider a 3-vertex path graph $v_1 - v_2 - v_3$ with $w(v_1, v_2) = 1$ and $w(v_2, v_3) = 10$. The unique MST requires both edges, so it contains the maximum-weight edge $(v_2, v_3)$ of weight $10$. However, all edges do not have the same weight ($1 \\ne 10$). Thus, Option D is FALSE.
+
+---
+
+### 4. Conclusion
+**Option A** is the only statement that is always true.
+
+**Correct Answer: Option A**`,
+    images: []
+  },
+  "go:3406": {
+    concept: "Algorithms - Recursion & Binary Representation",
+    markdown: `### 1. Program Analysis & Recursion Mechanics
+We are given the following C recursive function:
+
+\`\`\`c
+void f (int n) {
+    if (n <= 1) {
+        printf("%d", n);
+    } else {
+        f(n / 2);
+        printf("%d", n % 2);
+    }
+}
+\`\`\`
+
+- **Base Case ($n \\le 1$):**
+  When $n$ reduces to $0$ or $1$, the function prints $n$ and returns immediately without further recursive calls.
+- **Recursive Step ($n > 1$):**
+  The function makes the recursive call \`f(n / 2)\` **before** executing \`printf("%d", n % 2)\`.
+  Because the recursive call precedes the print statement, execution descends down the call stack until reaching the base case, and prints the remainders as the stack **unwinds**.
+  This unwinding order outputs the binary digits of $n$ from **Most Significant Bit (MSB)** to **Least Significant Bit (LSB)**.
+
+---
+
+### 2. Execution Trace for $n = 173$
+1. **Recursive Call Tree:**
+   - \`f(173)\` calls \`f(173 / 2) = f(86)\`
+   - \`f(86)\` calls \`f(86 / 2) = f(43)\`
+   - \`f(43)\` calls \`f(43 / 2) = f(21)\`
+   - \`f(21)\` calls \`f(21 / 2) = f(10)\`
+   - \`f(10)\` calls \`f(10 / 2) = f(5)\`
+   - \`f(5)\` calls \`f(5 / 2) = f(2)\`
+   - \`f(2)\` calls \`f(2 / 2) = f(1)\`
+   - \`f(1)\` hits the base case $n \\le 1$.
+
+2. **Call Stack Unwinding & Output:**
+   - \`f(1)\`: prints $1$ (MSB)
+   - \`f(2)\`: prints $2 \\pmod 2 = 0$
+   - \`f(5)\`: prints $5 \\pmod 2 = 1$
+   - \`f(10)\`: prints $10 \\pmod 2 = 0$
+   - \`f(21)\`: prints $21 \\pmod 2 = 1$
+   - \`f(43)\`: prints $43 \\pmod 2 = 1$
+   - \`f(86)\`: prints $86 \\pmod 2 = 0$
+   - \`f(173)\`: prints $173 \\pmod 2 = 1$ (LSB)
+
+3. **Concatenated Output:**
+   $$\\mathbf{10101101}$$
+
+---
+
+### 3. Verification via Powers of 2
+Convert binary \`10101101\` back to decimal:
+$$1 \\cdot 2^7 + 0 \\cdot 2^6 + 1 \\cdot 2^5 + 0 \\cdot 2^4 + 1 \\cdot 2^3 + 1 \\cdot 2^2 + 0 \\cdot 2^1 + 1 \\cdot 2^0$$
+$$= 128 + 0 + 32 + 0 + 8 + 4 + 0 + 1 = 173$$
+
+- **Option A:** \`10101100\` ($= 172$)
+- **Option B:** \`10101001\` ($= 169$)
+- **Option C:** \`10110101\` ($= 181$)
+- **Option D:** \`10101101\` ($= 173$)
+
+Therefore, the output is \`10101101\`, which corresponds to **Option D**.
+
+**Correct Answer: Option D**`,
+    images: []
+  },
+  "go:3814": {
+    concept: "C Programming - Sequence Points, Post-Increment Side Effects, and Anagram Algorithm",
+    markdown: `### 1. Problem Formulation & Anagram Logic
+We are given a function that checks whether two ASCII strings $a$ and $b$ are anagrams:
+
+\`\`\`c
+int anagram (char *a, char *b) {
+    int count [128], j;
+    for (j = 0;  j < 128; j++) count[j] = 0;
+    j = 0;
+    while (a[j] && b[j]) {
+        A;
+        B;
+    }
+    for (j = 0; j < 128; j++) if (count [j]) return 0;
+    return 1;
+}
+\`\`\`
+
+- Two strings are anagrams if and only if every character appears with the exact same frequency in both strings.
+- The array \`count[128]\` tracks character frequencies:
+  - For each character in string $a$, its corresponding count is incremented (\`count[a[j]]++\`).
+  - For each character in string $b$, its corresponding count is decremented (\`count[b[j]]--\`).
+- If the strings are anagrams, all elements of \`count\` will be $0$ at the end of traversal.
+- Notice that in the \`while (a[j] && b[j])\` header, index $j$ is **not incremented**. Thus, statements $A$ and $B$ must advance $j$ across loop iterations.
+
+---
+
+### 2. C Sequence Point Rules & Post-Increment Semantics
+In C (ISO/IEC 9899 §6.8), a semicolon terminating an expression statement is a **sequence point**:
+> *"The end of a full expression is a sequence point."*
+
+All side effects (such as post-increment \`j++\`) in a statement are fully applied before the next statement begins execution.
+
+- **Evaluating Option C (\`A: count[a[j++]]++; B: count[b[j]]--;\`):**
+  - In iteration 1 ($j = 0$):
+    1. Statement $A$ evaluates \`a[j++]\`: the operand evaluates to $j = 0$ (so \`count[a[0]]\` is incremented).
+    2. Statement $A$ ends at \`;\`, completing the side effect: $j$ becomes $1$.
+    3. Statement $B$ executes \`count[b[j]]--\` with $j = 1$. It accesses and decrements \`b[1]\`.
+    4. **Defect:** Character \`b[0]\` is completely skipped, while \`b[1]\` is decremented against \`a[0]\`.
+  - In subsequent iterations, $a[j]$ and $b[j+1]$ are mismatched, failing to determine whether strings are anagrams.
+  - Therefore, **Option C is incorrect**.
+
+- **Evaluating Option D (\`A: count[a[j]]++; B: count[b[j++]]--;\`):**
+  - In iteration 1 ($j = 0$):
+    1. Statement $A$ evaluates \`count[a[j]]++\`: accesses \`a[0]\` and increments \`count[a[0]]\`. $j$ remains $0$.
+    2. Statement $B$ evaluates \`count[b[j++]]--\`: the operand \`j++\` evaluates to $j = 0$, so \`count[b[0]]\` is decremented.
+    3. Statement $B$ ends at \`;\`, completing the side effect: $j$ is incremented to $1$.
+  - In every iteration $k$, both \`a[k]\` and \`b[k]\` are processed at the **exact same index $k$**, and $j$ is cleanly incremented once per iteration after both characters are counted.
+  - Both strings are traversed synchronously from index $0$ to terminating \`'\\0'\`.
+  - Therefore, **Option D is correct**.
+
+---
+
+### 3. Conclusion
+- Option A has no increment for $j$, resulting in an infinite loop.
+- Option B increments both counts instead of decrementing $b$, and does not advance $j$.
+- Option C increments $j$ too early (in statement $A$), skipping \`b[0]\`.
+- Option D correctly increments $a[j]$, decrements $b[j]$, and advances $j$ at the end of statement $B$.
+
+**Correct Answer: Option D**`,
+    images: []
+  },
 };
 
 export function applyAuthenticPatches() {
