@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T18:50:38.210Z",
+  "generatedAt": "2026-10-31T18:36:03.214Z",
   "shardKey": "it-2008-s0",
   "yearSetKey": "it-2008-s0",
   "yearSetIdentity": "it:2008:set-0",
@@ -3336,9 +3336,9 @@
       "answer_uid": "v2:1.18.38",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "C",
+        "answer": "D",
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_it",
       "source_branch": "IT",
@@ -3346,7 +3346,7 @@
       "source_session": null,
       "branch": "IT",
       "paper": "IT",
-      "answer": "C",
+      "answer": "D",
       "track": "cse",
       "yearSetKey": "it-2008-s0",
       "yearSetIdentity": "it:2008:set-0",
@@ -3362,8 +3362,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "Algorithms - Recursion",
-        "markdown": "- **Concept / Theoretical Foundation**:\n  - We trace the recursive function:\n    ```c\n    void f (int n) {\n        if (n <= 1) {\n            printf(\"%d\", n);\n        } else {\n            f(n / 2);\n            printf(\"%d\", n % 2);\n        }\n    }\n    ```\n  - This function recursively prints the binary expansion of $n$ from most significant bit (MSB) to least significant bit (LSB).\n- **Evaluation for $n = 173$**:\n  1. Perform repeated division by 2:\n     - $173 / 2 = 86$, remainder **1** (LSB)\n     - $86 / 2 = 43$, remainder **0**\n     - $43 / 2 = 21$, remainder **1**\n     - $21 / 2 = 10$, remainder **1**\n     - $10 / 2 = 5$, remainder **0**\n     - $5 / 2 = 2$, remainder **1**\n     - $2 / 2 = 1$, remainder **0**\n     - $1 \\le 1$: prints **1** (MSB)\n  2. Unwinding prints remainders in MSB to LSB order:\n     $$\\mathbf{10110101}$$\n  3. Verification:\n     $$128 + 32 + 8 + 4 + 1 = 173$$\n\nTherefore, the correct answer is **Option C (10110101)**.",
+        "concept": "Algorithms - Recursion & Binary Representation",
+        "markdown": "### 1. Program Analysis & Recursion Mechanics\nWe are given the following C recursive function:\n\n```c\nvoid f (int n) {\n    if (n <= 1) {\n        printf(\"%d\", n);\n    } else {\n        f(n / 2);\n        printf(\"%d\", n % 2);\n    }\n}\n```\n\n- **Base Case ($n \\le 1$):**\n  When $n$ reduces to $0$ or $1$, the function prints $n$ and returns immediately without further recursive calls.\n- **Recursive Step ($n > 1$):**\n  The function makes the recursive call `f(n / 2)` **before** executing `printf(\"%d\", n % 2)`.\n  Because the recursive call precedes the print statement, execution descends down the call stack until reaching the base case, and prints the remainders as the stack **unwinds**.\n  This unwinding order outputs the binary digits of $n$ from **Most Significant Bit (MSB)** to **Least Significant Bit (LSB)**.\n\n---\n\n### 2. Execution Trace for $n = 173$\n1. **Recursive Call Tree:**\n   - `f(173)` calls `f(173 / 2) = f(86)`\n   - `f(86)` calls `f(86 / 2) = f(43)`\n   - `f(43)` calls `f(43 / 2) = f(21)`\n   - `f(21)` calls `f(21 / 2) = f(10)`\n   - `f(10)` calls `f(10 / 2) = f(5)`\n   - `f(5)` calls `f(5 / 2) = f(2)`\n   - `f(2)` calls `f(2 / 2) = f(1)`\n   - `f(1)` hits the base case $n \\le 1$.\n\n2. **Call Stack Unwinding & Output:**\n   - `f(1)`: prints $1$ (MSB)\n   - `f(2)`: prints $2 \\pmod 2 = 0$\n   - `f(5)`: prints $5 \\pmod 2 = 1$\n   - `f(10)`: prints $10 \\pmod 2 = 0$\n   - `f(21)`: prints $21 \\pmod 2 = 1$\n   - `f(43)`: prints $43 \\pmod 2 = 1$\n   - `f(86)`: prints $86 \\pmod 2 = 0$\n   - `f(173)`: prints $173 \\pmod 2 = 1$ (LSB)\n\n3. **Concatenated Output:**\n   $$\\mathbf{10101101}$$\n\n---\n\n### 3. Verification via Powers of 2\nConvert binary `10101101` back to decimal:\n$$1 \\cdot 2^7 + 0 \\cdot 2^6 + 1 \\cdot 2^5 + 0 \\cdot 2^4 + 1 \\cdot 2^3 + 1 \\cdot 2^2 + 0 \\cdot 2^1 + 1 \\cdot 2^0$$\n$$= 128 + 0 + 32 + 0 + 8 + 4 + 0 + 1 = 173$$\n\n- **Option A:** `10101100` ($= 172$)\n- **Option B:** `10101001` ($= 169$)\n- **Option C:** `10110101` ($= 181$)\n- **Option D:** `10101101` ($= 173$)\n\nTherefore, the output is `10101101`, which corresponds to **Option D**.\n\n**Correct Answer: Option D**",
         "images": []
       }
     },
