@@ -92,6 +92,24 @@ describe("AnswerService", () => {
     expect(answer.type).toBe("MSQ");
   });
 
+  test("resolves converted GATE CSE 1990 Q2-vi (go:83988) as MCQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:83988": {
+        answer_uid: "manual_res:go:83988",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+
+    expect(AnswerService.getAnswerForQuestion({ question_uid: "go:83988" })).toEqual({
+      answer_uid: "manual_res:go:83988",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
   test("returns embedded answers for isolated aptitude questions", () => {
     const answer = AnswerService.getAnswerForQuestion({
       question_uid: "APT-ENG-0001",

@@ -16,6 +16,20 @@ describe("evaluateAnswer", () => {
     });
   });
 
+  test("evaluates GATE CSE 1990 Q2-vi (go:83988) as MCQ Option C", () => {
+    const record = { type: "MCQ", answer: "C", tolerance: null };
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    for (const answer of ["A", "B", "D"]) {
+      expect(evaluateAnswer(record, answer)).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    }
+  });
+
   test("evaluates official NAT lower and upper ranges", () => {
     expect(evaluateAnswer({ type: "NAT", answer: 66.6, tolerance: { lower: 66.6, upper: 66.7 } }, "66.65").correct).toBe(true);
     expect(evaluateAnswer({ type: "NAT", answer: 66.6, tolerance: { lower: 66.6, upper: 66.7 } }, "66.8").correct).toBe(false);

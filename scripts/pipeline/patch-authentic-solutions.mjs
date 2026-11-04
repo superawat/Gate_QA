@@ -1,7 +1,29 @@
 import fs from "fs";
 import path from "path";
 
+const EC2017_Q1_S2_SOLUTION = String.raw`<img src="/question-images/ec/2017/ec-2017-eb6ef3b623.webp" />
+
+$$\begin{aligned}
+F_{1} &= \bar{X}Y \\
+F &= \bar{Z}F_{1}+Z\bar{F}_{1} \\
+&= \bar{X}Y\bar{Z}+Z\overline{(\bar{X}Y)} \\
+&= \bar{X}Y\bar{Z}+Z(X+\bar{Y}) \\
+F &= \bar{X}Y\bar{Z}+XZ+\bar{Y}Z
+\end{aligned}$$
+
+Therefore, the correct answer is **B**.`;
+
 export const AUTHENTIC_PATCHES = {
+  "ec:2017:q1-s2": {
+    concept: "Digital Circuits - Combinational Circuits",
+    markdown: EC2017_Q1_S2_SOLUTION,
+    images: ["/question-images/ec/2017/ec-2017-eb6ef3b623.webp"],
+  },
+  "pp:ec:2017:q1-s2": {
+    concept: "Digital Circuits - Combinational Circuits",
+    markdown: EC2017_Q1_S2_SOLUTION,
+    images: ["/question-images/ec/2017/ec-2017-eb6ef3b623.webp"],
+  },
   "go:1328": {
     concept: "Compiler Design - Parsing Algorithms Time Complexity, Runtime Storage Allocation, and Code Optimization",
     markdown: `### 1. Statement-by-Statement Analysis

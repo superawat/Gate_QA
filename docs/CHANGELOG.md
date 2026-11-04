@@ -1,4 +1,11 @@
 # Changelog
+- **Four-Question User Report Audit Resolution (DEC-272, 2026-11-04)**:
+  - **`ec:2017:q1-s2` (GATE EC 2017 Shift 2, Digital Circuits):** Cross-checked the option set against a reproduction of the original GATE question and restored the affected transcriptions; all four choices are distinct. Option B remains correct. Fixed the Boolean derivation to complement the full product, $\overline{(\bar X Y)} = X + \bar Y$.
+  - **`ec:2023:q29` (GATE EC 2023, Analog Circuits):** Compared the copied op-amp figure with the official EC paper. Corrected the lower op-amp polarity marks in a local image asset while preserving the circuit wiring. The existing answer key and solution were checked against the corrected feedback topology and retained.
+  - **`go:83988` (GATE CSE 1990 Q2-vi):** Verified the matches Smalltalk→OOP, LISP→functional, Prolog→logic, and VAL→data-flow. Converted the subjective record into an MCQ with four distinct combinations and Option C keyed. Updated answer registries, solution, search/public records, and generated shard; added evaluator and AnswerService regression tests.
+  - **`go:426494` (GATE Civil 2024 Set 1 GA Q1):** The answer key B (“obliterate”) was correct. Replaced an unrelated piecewise-calculus explanation with the verbal-intensity progression from break to raze to obliterate.
+  - **Pipeline & verification:** Added the EC 2017 solution to `AUTHENTIC_PATCHES`; regenerated public question/search artifacts and detail shards. `npm run test:unit` passed (1,573 passed, 6 skipped), `npm run qa:validate-data` reported zero errors, and `npm run typecheck` passed.
+
 - **Question Data Integrity & Answer Key Corrections for October 31 Audit (DEC-271)**:
   - **Context & Verification**: Investigated and resolved 5 user-reported questions across GATE EC and GATE IT tracks (`ec:2014:q47`, `go:3699`, `go:3813`, `go:3406`, and `go:3814`):
     1. **`ec:2014:q47` (GATE EC 2014 Set 1 Q47, Control Systems)**:
