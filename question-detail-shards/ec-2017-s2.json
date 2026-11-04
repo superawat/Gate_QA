@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T18:50:26.988Z",
+  "generatedAt": "2026-11-04T10:23:27.242Z",
   "shardKey": "ec-2017-s2",
   "yearSetKey": "ec-2017-s2",
   "yearSetIdentity": "ec:2017:set-2",
@@ -23,9 +23,9 @@
       "question": "Consider the circuit shown in the figure.<br><img src=\"/question-images/ec/2017/ec-2017-b244343cd7.webp\">  <br>The Boolean expression F implemented by the circuit is",
       "options": [
         "$\\bar{X}\\bar{Y}\\bar{Z}+XY+\\bar{Y}Z$ ",
-        "$\\bar{X}Y \\bar{Z}+XY+\\bar{Y}Z$ ",
-        "$\\bar{X}Y \\bar{Z}+XY+\\bar{Y}Z$ ",
-        "$\\bar{X}\\bar{Y}\\bar{Z} +XY+\\bar{Y}Z$ "
+        "$\\bar{X}Y\\bar{Z}+XZ+\\bar{Y}Z$ ",
+        "$\\bar{X}Y\\bar{Z}+XY+\\bar{Y}Z$ ",
+        "$\\bar{X}\\bar{Y}\\bar{Z}+XZ+\\bar{Y}Z$ "
       ],
       "answer_meta": {
         "type": "MCQ",
@@ -51,7 +51,10 @@
       },
       "detailed_solution": {
         "concept": "Digital Circuits - Combinational Circuits",
-        "markdown": "<img src=\"/question-images/ec/2017/ec-2017-eb6ef3b623.webp\" />\n\n$$\\begin{aligned} F_{1} &=\\bar{X} Y \\\\ F &=\\bar{Z} F_{1}+Z \\bar{F}_{1} \\\\ &=(\\bar{X} Y) \\bar{Z}+(\\bar{X} Y) Z \\\\ &=\\bar{X} Y \\bar{Z}+(X+\\bar{Y}) Z \\\\ F &=\\bar{X} Y \\bar{Z}+X Z+\\bar{Y} Z \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+        "markdown": "<img src=\"/question-images/ec/2017/ec-2017-eb6ef3b623.webp\" />\n\n$$\\begin{aligned}\nF_{1} &= \\bar{X}Y \\\\\nF &= \\bar{Z}F_{1}+Z\\bar{F}_{1} \\\\\n&= \\bar{X}Y\\bar{Z}+Z\\overline{(\\bar{X}Y)} \\\\\n&= \\bar{X}Y\\bar{Z}+Z(X+\\bar{Y}) \\\\\nF &= \\bar{X}Y\\bar{Z}+XZ+\\bar{Y}Z\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**.",
+        "images": [
+          "/question-images/ec/2017/ec-2017-eb6ef3b623.webp"
+        ]
       }
     },
     "ec:2017:q2-s2": {
