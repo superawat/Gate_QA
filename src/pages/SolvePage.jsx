@@ -513,6 +513,13 @@ const SolvePage = ({
 
   const handleQuestionTouchStart = (e) => {
     if (e.touches && e.touches.length === 1) {
+      const scrollableParent = e.target.closest(
+        'mjx-container, pre, code, table, .overflow-x-auto, [data-scrollable="true"]'
+      );
+      if (scrollableParent && scrollableParent.scrollWidth > scrollableParent.clientWidth) {
+        touchStartRef.current = null;
+        return;
+      }
       touchStartRef.current = {
         x: e.touches[0].clientX,
         y: e.touches[0].clientY,

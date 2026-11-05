@@ -129,7 +129,7 @@ function Question({
               key={question.question_uid || sanitizedQuestionHtml}
               as="div"
               dynamic
-              className="question-stem-content mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
+              className="question-stem-content mt-1 overflow-auto whitespace-normal text-lg sm:text-xl leading-relaxed text-[color:var(--color-text)]"
             >
               <div
                 className="question-html-body"

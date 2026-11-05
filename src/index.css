@@ -5621,8 +5621,8 @@ canvas {
 }
 
 /* Mobile MathJax & LaTeX touch overflow hardening */
-.MathJax,
-mjx-container,
+.MathJax[display="true"],
+mjx-container[display="true"],
 mjx-container[jax="CHTML"][display="true"],
 mjx-container[jax="SVG"][display="true"] {
   max-width: 100% !important;
@@ -5630,6 +5630,59 @@ mjx-container[jax="SVG"][display="true"] {
   overflow-y: hidden !important;
   -webkit-overflow-scrolling: touch !important;
   scrollbar-width: thin;
+  touch-action: pan-x pan-y;
+}
+
+mjx-container:not([display="true"]) {
+  max-width: 100%;
+}
+
+/* Responsive question tables (match-the-following, data matrices) */
+.question-html-body table,
+.mocktest-html-body table,
+.gateqa-match-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+
+.question-html-body table td,
+.question-html-body table th,
+.mocktest-html-body table td,
+.mocktest-html-body table th,
+.gateqa-match-table td,
+.gateqa-match-table th {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  vertical-align: top;
+  color: inherit;
+}
+
+.question-html-body ol,
+.mocktest-html-body ol {
+  padding-left: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .question-html-body table td,
+  .question-html-body table th,
+  .mocktest-html-body table td,
+  .mocktest-html-body table th,
+  .gateqa-match-table td,
+  .gateqa-match-table th {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.875rem;
+  }
+
+  .question-html-body ol,
+  .mocktest-html-body ol,
+  .shrink-inline-options,
+  .shrink-inline-options2 {
+    padding-left: 1.25rem !important;
+  }
 }
 
 /* Mobile pre/code block horizontal scroll */

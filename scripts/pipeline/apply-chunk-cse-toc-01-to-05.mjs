@@ -990,31 +990,57 @@ Therefore, the correct answer is **Option C (Both deterministic and non-determin
   "go:3683": {
     concept: "Theory of Computation - Pushdown Automata State Transition & String Acceptance",
     markdown: `- **Concept / Theoretical Foundation**:
-  - We analyze Pushdown Automaton $M = (K, \\Sigma, \\Gamma, \\Delta, s, F)$ with:
-    - States $K = \\{s, f\\}$, start state $s$, final state $F = \\{f\\}$.
-    - Alphabet $\\Sigma = \\{a, b\\}$, stack alphabet $\\Gamma = \\{a\\}$.
+  - We analyze Pushdown Automaton $M = (K, \\Sigma, \\Gamma, \\Delta, s, F)$ where:
+    - Set of states: $K = \\{s, f\\}$, with start state $s$ and final (accepting) state set $F = \\{f\\}$.
+    - Input alphabet: $\\Sigma = \\{a, b\\}$, Stack alphabet: $\\Gamma = \\{a\\}$.
     - Transition set $\\Delta$:
-      1. $((s, a, \\epsilon), (s, a))$: in state $s$, on reading 'a', push 'a'.
-      2. $((s, b, \\epsilon), (s, a))$: in state $s$, on reading 'b', push 'a'.
-      3. $((s, a, \\epsilon), (f, \\epsilon))$: in state $s$, on reading 'a', transition to $f$ without changing stack.
-      4. $((f, a, a), (f, \\epsilon))$: in state $f$, on reading 'a', pop 'a'.
-      5. $((f, b, a), (f, \\epsilon))$: in state $f$, on reading 'b', pop 'a'.
-- **Language Properties $L(M)$**:
-  1. **Phase 1 (State $s$)**: Every input symbol ('a' or 'b') pushes an 'a' onto the stack. If $k$ symbols are read, the stack contains $k$ copies of 'a'.
-  2. **Phase 2 (Midpoint Transition $s \\to f$)**: The automaton transitions from $s$ to $f$ strictly by consuming an input symbol **'a'**. This separating midpoint symbol MUST be 'a'.
-  3. **Phase 3 (State $f$)**: Every input symbol ('a' or 'b') pops one 'a' from the stack until the stack is empty. This requires reading exactly $k$ symbols in state $f$.
-  4. Thus, accepted strings have the structure $w_1 \\cdot a \\cdot w_2$, where $|w_1| = |w_2| = k$, making the total length odd ($2k+1$) and requiring the middle symbol to be strictly **'a'**.
-- **Evaluating Options**:
-  - **Option A ("aaa")**: Length 3. $w_1 = "a"$, midpoint $= 'a'$, $w_2 = "a"$. Accepted.
-  - **Option B ("aabab")**: Length 5.
-    - First half $w_1 = "aa"$ (length 2).
-    - Middle symbol (at index 3) is **'b'**!
-    - Since transitioning to $f$ strictly requires input symbol 'a', the string "aabab" cannot trigger the transition to final state $f$.
-    - Therefore, **"aabab" is NOT a member of $L(M)$**.
-  - **Option C ("baaba")**: Length 5. $w_1 = "ba"$, midpoint $= 'a'$, $w_2 = "ba"$. Accepted.
-  - **Option D ("bab")**: Length 3. $w_1 = "b"$, midpoint $= 'a'$, $w_2 = "b"$. Accepted.
+      1. $((s, a, \\epsilon), (s, a))$: In state $s$, on reading input symbol $a$, push $a$ onto stack, remain in state $s$.
+      2. $((s, b, \\epsilon), (s, a))$: In state $s$, on reading input symbol $b$, push $a$ onto stack, remain in state $s$.
+      3. $((s, a, a), (f, \\epsilon))$: In state $s$, on reading input symbol $a$ with stack top $a$, pop $a$ from stack and transition to state $f$.
+      4. $((f, a, a), (f, \\epsilon))$: In state $f$, on reading input symbol $a$ with stack top $a$, pop $a$ from stack, remain in state $f$.
+      5. $((f, b, a), (f, \\epsilon))$: In state $f$, on reading input symbol $b$ with stack top $a$, pop $a$ from stack, remain in state $f$.
 
-Therefore, the correct answer is **Option B (aabab)**.`,
+- **Language Acceptance Criterion & Operational Rules**:
+  1. The automaton accepts by **final state**: a string $w$ is accepted if there exists a valid sequence of transitions processing $w$ completely and terminating in state $f \\in F$.
+  2. While in state $s$, reading any input symbol ($a$ or $b$) pushes $a$ onto the stack.
+  3. The **only** way to reach the final state $f$ from state $s$ is via Transition 3: $((s, a, a), (f, \\epsilon))$. This requires:
+     - The current input symbol must be **'a'**.
+     - The stack must **not be empty** and its top symbol must be **'a'**.
+     - It **pops** this 'a' from the stack upon entering state $f$.
+  4. Once in state $f$, every subsequent input symbol ($a$ or $b$) must pop one 'a' from the stack. If the stack is empty while in state $f$ and input symbols remain, the automaton cannot make any further moves and gets stuck.
+
+- **Option-by-Option Trace**:
+  - **Option A ("aaa")**:
+    - Symbol 1 ('a'): In state $s$, apply Rule 1 $\\implies$ pushes $a$. Configuration: $(s, \\text{stack}=[a])$.
+    - Symbol 2 ('a'): In state $s$, apply Rule 1 $\\implies$ pushes $a$. Configuration: $(s, \\text{stack}=[a, a])$.
+    - Symbol 3 ('a'): In state $s$, apply Rule 3 $\\implies$ pops $a$, transitions to state $f$. Configuration: $(f, \\text{stack}=[a])$.
+    - Input is fully consumed, and machine is in final state $f \\in F$. **Accepted ($aaa \\in L(M)$)**.
+
+  - **Option B ("aabab")**:
+    - Symbol 1 ('a'): In state $s$, apply Rule 1 $\\implies$ pushes $a$. Stack: $[a]$.
+    - Symbol 2 ('a'): In state $s$, apply Rule 1 $\\implies$ pushes $a$. Stack: $[a, a]$.
+    - Symbol 3 ('b'): In state $s$, apply Rule 2 $\\implies$ pushes $a$. Stack: $[a, a, a]$.
+    - Symbol 4 ('a'): In state $s$, apply Rule 3 $\\implies$ pops $a$, transitions to $f$. Stack: $[a, a]$, State: $f$.
+    - Symbol 5 ('b'): In state $f$, apply Rule 5 $\\implies$ pops $a$. Stack: $[a]$, State: $f$.
+    - Input is fully consumed, terminating in final state $f \\in F$. **Accepted ($aabab \\in L(M)$)**.
+
+  - **Option C ("baaba")**:
+    - Symbol 1 ('b'): In state $s$, apply Rule 2 $\\implies$ pushes $a$. Stack: $[a]$.
+    - Symbol 2 ('a'): In state $s$, apply Rule 1 $\\implies$ pushes $a$. Stack: $[a, a]$.
+    - Symbol 3 ('a'): In state $s$, apply Rule 1 $\\implies$ pushes $a$. Stack: $[a, a, a]$.
+    - Symbol 4 ('b'): In state $s$, apply Rule 2 $\\implies$ pushes $a$. Stack: $[a, a, a, a]$.
+    - Symbol 5 ('a'): In state $s$, apply Rule 3 $\\implies$ pops $a$, transitions to $f$. Stack: $[a, a, a]$, State: $f$.
+    - Input is fully consumed, terminating in final state $f \\in F$. **Accepted ($baaba \\in L(M)$)**.
+
+  - **Option D ("bab")**:
+    - Symbol 1 ('b'): In state $s$, stack is empty $\\epsilon$. Only Rule 2 can be applied $\\implies$ pushes $a$. State: $s$, Stack: $[a]$.
+    - Symbol 2 ('a'): We are in state $s$ with stack $[a]$. Two possible non-deterministic branches:
+      - *Branch 1 (Stay in $s$)*: Apply Rule 1 $\\implies$ pushes $a$. State: $s$, Stack: $[a, a]$. Then for Symbol 3 ('b'), only Rule 2 applies $\\implies$ pushes $a$. State: $s$, Stack: $[a, a, a]$. All input is consumed, but the automaton is in state $s \\notin F$. **Rejected**.
+      - *Branch 2 (Transition to $f$)*: Apply Rule 3 $((s, a, a), (f, \\epsilon)) \\implies$ pops $a$ and transitions to state $f$. The stack is now **empty** $\\epsilon$, and state is $f$. Next, for Symbol 3 ('b') in state $f$, both Rule 4 and Rule 5 require popping 'a' from the stack. Because the stack is empty, no transition is defined. The automaton hangs/crashes without reading 'b'. **Rejected**.
+    - No execution path exists that completely processes the string \"bab\" and ends in state $f$.
+    - Therefore, **\"bab\" is NOT a member of $L(M)$**.
+
+Therefore, the correct answer is **Option D (bab)**.`,
     images: []
   },
 

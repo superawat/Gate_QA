@@ -466,7 +466,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                 as="div"
                                 key={questionUid}
                                 dynamic
-                                className="mt-1 max-w-full overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
+                                className="mt-1 max-w-full overflow-auto whitespace-normal text-lg sm:text-xl leading-relaxed text-[color:var(--color-text)]"
                             >
                                 <div
                                     className="mocktest-html-body"

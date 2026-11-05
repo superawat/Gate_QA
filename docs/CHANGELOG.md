@@ -1,4 +1,69 @@
 # Changelog
+- **Two-Question User Report Audit Resolution: Theory of Computation PDA & Compiler Design Mobile Layout (DEC-274, 2026-11-06)**:
+  - **`go:3683` (GATE IT 2004, Theory of Computation – Pushdown Automata)**:
+    - *Reported Issue*: Reporter claimed Option D is the correct answer.
+    - *Mathematical Verification & Derivation*:
+      - Automaton specification: $K = \{s, f\}$, $F = \{f\}$, $\Sigma = \{a, b\}$, $\Gamma = \{a\}$.
+      - Transitions:
+        1. $((s, a, \epsilon), (s, a))$: reads $a$ in $s$, pushes $a$.
+        2. $((s, b, \epsilon), (s, a))$: reads $b$ in $s$, pushes $a$.
+        3. $((s, a, a), (f, \epsilon))$: reads $a$ in $s$ with stack top $a$, pops $a$, transitions to $f$.
+        4. $((f, a, a), (f, \epsilon))$: reads $a$ in $f$ with stack top $a$, pops $a$.
+        5. $((f, b, a), (f, \epsilon))$: reads $b$ in $f$ with stack top $a$, pops $a$.
+      - String verification:
+        - For string `bab`: Symbol 1 is $b$, reads in $s \implies$ pushes $a$ (stack: $[a]$). Symbol 2 is $a$, transitions to state $f$ via Transition 3, popping $a$ (stack: $\epsilon$). (Staying in $s$ via Transition 1 pushes another $a$, but any branch in state $s$ ends in non-final state $s \notin F$). Symbol 3 is $b$ in state $f$; Transition 5 requires stack top $a$, but the stack is empty $\epsilon \implies$ halts and rejects. Thus `bab` is strictly NOT in $L(M)$. Option D is definitively correct.
+        - Strings `aaa`, `aabab`, and `baaba` each have valid paths ending in final state $f$.
+      - *Root Cause Analysis*: Secondary scrapers (e.g. GeeksforGeeks) misprinted Transition 3 as $((s, a, \epsilon), (f, \epsilon))$, erroneously claiming Option B was not accepted. The official GATE IT 2004 paper defines Transition 3 as $((s, a, a), (f, \epsilon))$, which requires stack top $a$ and pops it.
+      - *Resolution*: Updated answer key to Option `D` across all source and public registries (`manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json`, `it/answers-gateit.json`, `it/gateit-2004.json`, `it/gateit-all.json`, and `it-2004-s0.json` shard). Added complete step-by-step KaTeX derivation in `all-solutions.json` and static shard. Added regression test in `src/utils/evaluateAnswer.test.js`.
+  - **`go:39548` (GATE CSE 2016 Set 2, Compiler Design – Compilation Phases Match the Following)**:
+    - *Reported Issue*: Question not fully visible when accessed on mobile devices.
+    - *Root Cause Analysis*:
+      1. Fixed-width multi-column KaTeX array `$$\begin{array}{ll|ll}...$$` rendered an unbreakable 568px wide table. On mobile screens (320px–375px), 40–45% of the table (the entire right column: `(i) Leftmost derivation`, `(ii) Type checking`, etc.) was pushed off-screen.
+      2. Horizontal touch gesture hijacking: `SolvePage.jsx` swipe listener captured horizontal touches across `.question-card` to navigate questions (`handleGoNext()` / `handleGoPrevious()`). Any attempt by the user to scroll or pan wide content horizontally triggered navigation away from the question.
+      3. Option text line overflow: Options formatted inside list items as single inline math blocks `$\text{P $\leftrightarrow$ i, Q $\leftrightarrow$ ii, R $\leftrightarrow$ iv, S $\leftrightarrow$ iii}$` rendered as an unbreakable 289px box with default 40px left padding, overflowing on 320px, 360px, and 375px mobile viewports.
+      4. Typography sizing: `.question-stem-content` had fixed `text-xl` (20px) which inflated table and math dimensions on mobile.
+    - *Resolution*:
+      1. Replaced the 568px KaTeX table array with `.gateqa-match-table` using responsive HTML and CSS.
+      2. Replaced unbroken LaTeX option text with wrapped text using `&harr;` and flexible spans, allowing individual match pairs to wrap onto the next line gracefully.
+      3. Updated `SolvePage.jsx`: `handleQuestionTouchStart` checks `e.target.closest('mjx-container, pre, code, table, .overflow-x-auto, [data-scrollable="true"]')` and verifies if `scrollWidth > clientWidth`. If so, touch swipe navigation is disabled so user pans the element natively.
+      4. Updated responsive typography in `src/components/Question/Question.jsx` and `src/components/MockTest/MockTestQuestion.jsx` from `text-xl` to `text-lg sm:text-xl leading-relaxed`.
+      5. Enhanced `src/index.css`: Added responsive table styling (`.gateqa-match-table`), compact mobile padding for option lists, isolated `overflow-x: auto` to display math, and enabled `touch-action: pan-x pan-y`.
+      6. Verified across viewports (320px, 360px, 375px, 412px) using Playwright headless browser: Zero overflow (`scrollWidth == clientWidth`), all columns and options 100% visible and readable without horizontal scrolling.
+
+- **Vintage CSE Batch 07 Solution Authoring & Verification (DEC-273, 2026-11-05)**:
+  - **Context & Verification**: Authored, verified, and integrated 25 detailed mathematical and conceptual solutions for `CHUNK-CSE-VIN-07` covering GATE CSE 1997 (`go:2241`, `go:2244`, `go:2246`, `go:2247`, `go:2248`, `go:2249`, `go:2250`, `go:2251`, `go:2252`, `go:2253`, `go:2254`, `go:2255`, `go:2256`, `go:2258`, `go:2260`, `go:2261`, `go:2262`, `go:2263`, `go:2264`, `go:2265`, `go:2266`, `go:2267`, `go:2268`, `go:2269`, `go:2270`).
+  - **Key Solutions & Analytical Derivations**:
+    - `go:2241` (Operating Systems): Page table dirty bit purpose $\implies$ Option A (avoids unnecessary writes on paging device).
+    - `go:2244` (Numerical Methods): Forward Euler for $y''(t) = f(t)$ with $y'(0)=0 \implies y_0=0, y_1=0, y_2=h^2f(0), y_3=2h^2f(0)+h^2f(h) \implies$ Option B.
+    - `go:2246` (Data Structures): BST pre-order traversal invariant validation $\implies$ Option D ($5\ 3\ 1\ 2\ 4\ 7\ 6\ 8$).
+    - `go:2247` (Algorithms): Divide-and-conquer recurrence $T(n) = 2T(n/2) + \sqrt{n} \implies \Theta(n)$ via Master Theorem Case 1 $\implies$ Option B ($T(n) = O(n)$).
+    - `go:2248` (Data Structures): Stack implementation using priority queue $\text{DELETEMIN} \implies$ keys in strictly decreasing order $\implies$ Option D.
+    - `go:2249` (Compiler Design): Pascal static scoping in nested procedures $\implies$ Option C ($x$ of B, $z$, and $y$ in $S_1$; $x$ of A, $i$, and $y$ in $S_2$).
+    - `go:2250` (Compiler Design): Single accumulator CPU expression evaluation without storing $(a*b) \implies$ Option A (‘op’ is ‘$+$’ or ‘$*$’).
+    - `go:2251` (Numerical Methods): Trapezoidal rule error bound on $\ln 7 = \int_1^7 dx/x$ for $E \le 10^{-4} \implies n \ge 600 \implies$ Option C.
+    - `go:2252` (Digital Logic): Switching function $f = \bar{x} + \bar{y}x + xz \implies$ Option C ($xz$ is an implicant of $f$).
+    - `go:2253` (Microprocessors): 8085 BCD addition with `DAA` ($55\text{H} + 25\text{H} = 7\text{AH} \to 80\text{H}$) $\implies$ Option B ($80\text{H}$).
+    - `go:2254` (Computer Organization): Microinstruction field bit allocation for exclusive (2 bits) and concurrent (6 bits) operations $\implies 2 + 6 = 8 \implies$ Option C ($8$).
+    - `go:2255` (Digital Logic): Positional radix equation $\sqrt{(224)_r} = (13)_r \implies 2r^2 + 2r + 4 = (r+3)^2 \implies r = 5 \implies$ Option C ($5$).
+    - `go:2256` (Digital Logic): Logic circuit output $f = (f_1 \cdot f_2) + f_3 \implies f_3 = \sum(9) \implies$ Option B.
+    - `go:2258` (Discrete Mathematics): Graph component partitioning via $\gcd(8, 12) = 4 \implies 4$ residue classes $\implies$ Option B ($4$).
+    - `go:2260` (Theory of Computation): Regular expression for binary strings omitting $100 \implies$ Option D ($0^*(10+1)^*$).
+    - `go:2261` (Theory of Computation): Undecidable properties of Turing machines $\implies$ Option B (Equivalence of two Turing machines).
+    - `go:2262` (Theory of Computation): DPDA deterministic center marker palindrome acceptance $\implies$ Option A ($\{wcw^R \mid w \in \{a,b\}^*\}$).
+    - `go:2263` (Operating Systems): Deadlock-free resource bound $3(2-1) + 1 = 4 \implies$ Option C ($4$).
+    - `go:2264` (Operating Systems): Flawed mutual exclusion with rogue $V(\text{mutex})$ entry $\implies 10$ processes inside concurrently $\implies$ Option D (None).
+    - `go:2265` (Databases): Normal form of $R(a,b,c,d)$ with partial dependencies $a \to c, b \to d \implies$ Option A (1NF but not 2NF).
+    - `go:2266` (Databases): Referential integrity foreign key violation conditions $\implies$ Option B (Both II and III).
+    - `go:2267` (Microprocessors): 8085 port FFH interfacing with 10-input NAND, NOT, and D flip-flop, plus 7-T-state square wave assembly routine $\implies$ Full subjective derivation.
+    - `go:2268` (Data Structures): Singly linked list pairwise element interchange in Pascal $\implies$ Line 5: `p`, Line 8: `change`, Line 10: `q^.next`, Line 11: `p^.next`.
+    - `go:2269` (Algorithms): 2D grid graph spanning tree weights $\implies$ MinST Weight: $n^2 - 1$; MaxST Weight: $(n^2 - 2)\sqrt{2} + 1$ (or $(n^2 - n)\sqrt{2} + n - 1$).
+    - `go:2270` (Programming Languages): Recursive procedure call by value ($z = 30$, 5 calls) and call by reference ($z = 110$, 4 calls).
+  - **Metrics & Public Shard Synchronization**:
+    - Appended 25 patches to `AUTHENTIC_PATCHES` in `scripts/pipeline/patch-authentic-solutions.mjs`.
+    - Enriched static detail shards and rebuilt public artifacts (`scripts/build-public-artifacts.mjs`).
+    - Platform accepted solutions increased to **12,209 / 13,194 (92.5%)**; CSE accepted increased to **3,406 / 3,674 (92.7%)**; vintage CSE missing reduced to 255.
+    - Generated `CHUNK-CSE-VIN-08` manifest (`data/solutions/chunks/cse/chunk-cse-vin-08.json`) for the next 25 vintage questions.
+
 - **Four-Question User Report Audit Resolution (DEC-272, 2026-11-04)**:
   - **`ec:2017:q1-s2` (GATE EC 2017 Shift 2, Digital Circuits):** Cross-checked the option set against a reproduction of the original GATE question and restored the affected transcriptions; all four choices are distinct. Option B remains correct. Fixed the Boolean derivation to complement the full product, $\overline{(\bar X Y)} = X + \bar Y$.
   - **`ec:2023:q29` (GATE EC 2023, Analog Circuits):** Compared the copied op-amp figure with the official EC paper. Corrected the lower op-amp polarity marks in a local image asset while preserving the circuit wiring. The existing answer key and solution were checked against the corrected feedback topology and retained.

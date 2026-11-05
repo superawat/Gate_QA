@@ -3834,6 +3834,19 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
         expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
       });
+
+      test("evaluates go:3683 (GATE IT 2004 Q40) as MCQ Option D (String bab not accepted by PDA)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });
