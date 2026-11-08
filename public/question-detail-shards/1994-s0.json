@@ -97,6 +97,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Methods - Backward Euler Method for Differential Equations",
+        "markdown": "### 1. Initial Value Problem Formulation\nConsider the first-order ordinary differential equation (ODE):\n$$\\frac{dy}{dx} = f(x, y), \\quad y(x_0) = y_0$$\nwith uniform step size $h = x_{n+1} - x_n$.\n\n---\n\n### 2. Forward vs Backward Euler Comparison\n1. **Forward (Explicit) Euler Method:**\n   Approximates the derivative at the current point $x_n$ using a forward difference quotient:\n   $$\\frac{y_{n+1} - y_n}{h} \\approx f(x_n, y_n) \\implies y_{n+1} = y_n + h f(x_n, y_n)$$\n   Forward Euler is an explicit method; it can become numerically unstable unless $h$ is very small.\n\n2. **Backward (Implicit) Euler Method:**\n   Approximates the derivative at the next time point $x_{n+1}$ using a backward difference quotient:\n   $$\\frac{y_{n+1} - y_n}{h} \\approx f(x_{n+1}, y_{n+1})$$\n   Multiplying by $h$ and rearranging:\n   $$\\mathbf{y_{n+1} = y_n + h f(x_{n+1}, y_{n+1})}$$\n   Because the unknown value $y_{n+1}$ appears on both sides of the equation inside $f$, it is an **implicit method**. It has the critical advantage of being $A$-stable (unconditionally stable), making it the method of choice for stiff differential equations.\n\n---\n\n### 3. Option & Distractor Analysis\n- **Option A ($y_{n+1}=y_n+hf(x_n, y_n)$):** The Forward (Explicit) Euler method.\n- **Option B ($y_{n+1}=y_n+hf(x_{n+1}, y_{n+1})$):** The standard mathematical definition of the Backward (Implicit) Euler method.\n- **Option C ($y_{n+1}=y_{n-1}+2hf(x_n, y_n)$):** The midpoint method (a multi-step method).\n- **Option D ($y_{n+1}= (1+h)f(x_{n+1}, y_{n+1})$):** Invalid dimensionally and mathematically.\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option B ($y_{n+1}=y_n+hf(x_{n+1}, y_{n+1})$)**.",
+        "images": []
       }
     },
     "go:2441": {
@@ -183,7 +188,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming in C & Software Engineering - Harmfulness of Unrestricted Goto",
+        "markdown": "### 1. Historical & Theoretical Background\nIn 1968, Edsger W. Dijkstra published the landmark paper *\"Go To Statement Considered Harmful\"*. In it, he argued that unrestricted branching via `goto` statements severely degrades code quality, understandability, and maintainability.\n\n---\n\n### 2. Why Unrestricted `goto` is Harmful\n1. **Destruction of Control Flow Correspondence:**\n   Program verification and formal reasoning (such as Hoare logic, pre-conditions, post-conditions, and loop invariants) require that a block of code have a **single entry point** and a **single exit point**.\n2. **Loss of Static-to-Dynamic Traceability:**\n   With structured programming constructs (`if-then-else`, `while`, `for`), the static textual layout of the program directly mirrors its dynamic execution progress. Unrestricted `goto` statements create arbitrary \"spaghetti code\", allowing jumps into and out of arbitrary loop bodies and blocks, making static formal verification nearly impossible.\n3. **Execution Time & Memory:**\n   `goto` statements do not increase runtime or memory. In fact, a `goto` compiles into a single unconditional jump instruction (`JMP`), which is extremely fast and compact. The harm is strictly **intellectual and verifiable**—it makes reasoning about program correctness exponentially harder.\n\n---\n\n### 3. Option & Distractor Analysis\n- **Option A (it makes it more difficult to verify programs):** Directly captures Dijkstra's central thesis on program verification and structural invariants.\n- **Option B (it increases the running time of the programs):** Incorrect; machine jump instructions execute in minimal clock cycles.\n- **Option C (it increases the memory required for the programs):** Incorrect; `goto` uses no additional memory.\n- **Option D (it results in the compiler generating longer machine code):** Incorrect; `goto` maps directly to single machine-level branch instructions.\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option A (it makes it more difficult to verify programs)**.",
+        "images": []
+      }
     },
     "go:2443": {
       "title": "GATE CSE 1994 | Question: 1.6, ISRO2008-29",
@@ -274,6 +284,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Binary Search Recurrence Relation",
+        "markdown": "### 1. Algorithmic Mechanics of Binary Search\nBinary search operates on a sorted array $A[0 \\dots n-1]$:\n1. It compares the target key $x$ with the middle element $A[\\lfloor n/2 \\rfloor]$. This comparison and index calculation require $O(1)$ constant time (denoted by a constant $k$).\n2. If $x == A[\\text{mid}]$, the search terminates successfully.\n3. If $x < A[\\text{mid}]$, the search recurses on the left half of the array of size $\\approx n/2$.\n4. If $x > A[\\text{mid}]$, the search recurses on the right half of the array of size $\\approx n/2$.\n\nNotice that binary search **never** recurses on both halves; it discards one half and recurses on **strictly one subarray** of size $n/2$.\n\n---\n\n### 2. Recurrence Relation\nThe time complexity $T(n)$ for an input of size $n$ satisfies:\n$$\\mathbf{T(n) = T\\left(\\frac{n}{2}\\right) + k}$$\nwhere $k$ is a constant representing the comparison and indexing overhead at each level.\n\n---\n\n### 3. Solving the Recurrence\nUsing the Master Theorem ($T(n) = a T(n/b) + f(n)$):\n- $a = 1$ (one subproblem)\n- $b = 2$ (subproblem size halved)\n- $f(n) = k = \\Theta(n^0)$\n- Critical exponent: $\\log_b a = \\log_2 1 = 0$.\nSince $f(n) = \\Theta(n^{\\log_b a}) = \\Theta(1)$, by Case 2 of the Master Theorem:\n$$T(n) = \\Theta(n^{\\log_2 1} \\log n) = \\Theta(\\log n)$$\n\n---\n\n### 4. Distractor Analysis\n- **Option A ($T(n) = 2T(n/2) + k$):** Recurrence for divide-and-conquer searching both halves (yielding $T(n) = O(n)$).\n- **Option B ($T(n) = T(n/2) + k$):** The exact recurrence relation for binary search.\n- **Option C ($T(n) = T(n/2) + \\log n$):** Incorrect partitioning overhead.\n- **Option D ($T(n) = T(n/2) + n$):** Recurrence for algorithms requiring linear work at each step (yielding $O(n)$).\n\n---\n\n### 5. Conclusion\nTherefore, the correct answer is **Option B ($T(n) = T(n/2) + k, \\text{ k is a constant}$)**.",
+        "images": []
       }
     },
     "go:2445": {
@@ -314,7 +329,14 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Boolean Expression of NAND Gate Circuit",
+        "markdown": "### 1. Circuit Schematic Breakdown\nThe circuit consists of four 2-input NAND gates interconnected as follows:\n- **Gate 1 (top-left):** Inputs $A$ and $B$.\n  $$\\text{Output } G_1 = \\overline{AB}$$\n- **Gate 2 (top-middle):** Inputs are the output of Gate 1 ($G_1 = \\overline{AB}$) and input $C$.\n  $$\\text{Output } G_2 = \\overline{G_1 \\cdot C} = \\overline{\\overline{AB} \\cdot C}$$\n- **Gate 3 (bottom-middle):** Inputs are $C$ and $D$.\n  $$\\text{Output } G_3 = \\overline{CD}$$\n- **Gate 4 (output right):** Inputs are the outputs of Gate 2 ($G_2$) and Gate 3 ($G_3$).\n  $$\\text{Final Output } Y = \\overline{G_2 \\cdot G_3}$$\n\n---\n\n### 2. Step-by-Step Boolean Derivation\nSubstitute $G_2$ and $G_3$ into the expression for $Y$:\n$$Y = \\overline{\\overline{\\overline{AB} \\cdot C} \\cdot \\overline{CD}}$$\n\nApply De Morgan's Law ($\\overline{X \\cdot Y} = \\overline{X} + \\overline{Y}$):\n$$Y = \\overline{\\overline{\\overline{AB} \\cdot C}} + \\overline{\\overline{CD}}$$\n\nBy the involution law ($\\overline{\\overline{Z}} = Z$):\n$$Y = (\\overline{AB} \\cdot C) + CD$$\n\nNow expand $\\overline{AB}$ using De Morgan's Law ($\\overline{AB} = \\overline{A} + \\overline{B}$):\n$$Y = (\\overline{A} + \\overline{B})C + CD$$\n\nDistribute $C$:\n$$Y = \\mathbf{\\overline{A}C + \\overline{B}C + CD}$$\n\n---\n\n### 3. Distractor Analysis\n- **Option A ($\\overline{AC} + \\overline{BC} + CD$):** Inverts the product terms $AC$ and $BC$ rather than the single variables $A$ and $B$.\n- **Option B ($\\overline{A}C + \\overline{B}C + CD$):** Exactly matches the derived Boolean expression.\n- **Option C ($ABC + \\overline{C}\\overline{D}$):** Incorrect dual form.\n- **Option D ($\\overline{A}\\overline{B} + \\overline{B}\\overline{C} + CD$):** Incorrect simplification.\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option B ($\\overline{A}C + \\overline{B}C + CD$)**.",
+        "images": [
+          "/question-images/9049819705361334855.webp"
+        ]
+      }
     },
     "go:2446": {
       "title": "GATE CSE 1994 | Question: 1.9",
@@ -445,7 +467,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming & Data Structures - Lower Triangular Matrix Compact 1D Array Mapping",
+        "markdown": "### 1. Matrix Structure & Compact 1D Storage\nIn an $n \\times n$ **lower triangular matrix**, all elements above the main diagonal are zero ($A[i, j] = 0$ for $j > i$).\nNon-zero elements exist only where $1 \\le j \\le i$.\n\nThe non-zero elements are mapped into a single-dimensional array row-by-row (row-major order):\n- **Row 1 ($i = 1$):** Contains $1$ element $\\to A[1, 1]$\n- **Row 2 ($i = 2$):** Contains $2$ elements $\\to A[2, 1], A[2, 2]$\n- **Row 3 ($i = 3$):** Contains $3$ elements $\\to A[3, 1], A[3, 2], A[3, 3]$\n- $\\dots$\n- **Row $k$:** Contains $k$ elements.\n\n---\n\n### 2. Analytical Index Derivation\nTo find the 0-based offset index of element $(i, j)$ in the 1D representation:\n\n1. **Count Elements in Preceding Rows:**\n   All elements in rows $1$ through $i - 1$ must be stored before any element of row $i$.\n   The total number of elements in the first $i - 1$ rows is the sum of the first $i - 1$ positive integers:\n   $$\\text{Elements before row } i = \\sum_{k=1}^{i-1} k = \\frac{(i - 1)i}{2} = \\frac{i(i - 1)}{2}$$\n\n2. **Count Offset Within Row $i$:**\n   Within row $i$, elements are stored sequentially starting from column $1$ up to column $j$.\n   For 0-based indexing, the number of elements in row $i$ preceding element $(i, j)$ is:\n   $$j - 1$$\n\n3. **Total Index in the 1D Array:**\n   Summing the preceding row count and the intra-row offset:\n   $$\\text{Index}(i, j) = (j - 1) + \\frac{i(i - 1)}{2}$$\n\n---\n\n### 3. Concrete Example Verification\nLet $i = 3, j = 2$:\n- Elements before row 3: Row 1 ($1$ item) + Row 2 ($2$ items) $= 3$ items.\n  Formula: $\\frac{3(2)}{2} = 3$.\n- Offset within row 3 for $j=2$: $j - 1 = 1$.\n- 0-based Index $= 3 + 1 = 4$.\n- Matches: $A[1,1]=0, A[2,1]=1, A[2,2]=2, A[3,1]=3, A[3,2]=4$.\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option C ($(j-1)+\\frac{i(i-1)}{2}$)**.",
+        "images": []
+      }
     },
     "go:2453": {
       "title": "GATE CSE 1994 | Question: 1.12",
@@ -485,7 +512,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Intermediate Code Representation & Portability",
+        "markdown": "### 1. Compiler Architecture: Front End vs Back End\nA modern compiler is decoupled into two primary subsystems:\n1. **Front End (Language-Dependent, Machine-Independent):**\n   Handles lexical analysis, syntax analysis (parsing), semantic analysis, and translates the high-level source code into an **Intermediate Representation (IR)** (e.g., Three-Address Code, Quadruples, Abstract Syntax Trees).\n2. **Back End (Machine-Dependent, Language-Independent):**\n   Takes the Intermediate Representation as input, performs target-independent and target-dependent code optimizations, and emits native assembly/machine code for a specific CPU architecture.\n\n---\n\n### 2. The $M \\times N$ Portability Advantage\nSuppose we wish to support $M$ different high-level source programming languages (e.g., C, Fortran, Pascal) across $N$ different target hardware architectures (e.g., x86, ARM, RISC-V, MIPS):\n- Without an Intermediate Representation, we would need to write $M \\times N$ distinct compilers from scratch.\n- With an intermediate code representation based on an abstract machine model:\n  - We write $M$ front ends (translating each source language into the common IR).\n  - We write $N$ back ends (translating the common IR into machine code for each target).\n  - Total compiler modules required drops from $M \\times N$ to **$M + N$**.\n- This directly enhances the **portability** and retargetability of the compiler front end: a front end written once can be coupled with any existing back end.\n\n---\n\n### 3. Option & Distractor Analysis\n- **Option A:** Lexical and syntax analysis are independent of intermediate code; they precede IR generation.\n- **Option B:** While true that SDTs generate IR, this does not explain why an abstract machine model is uniquely useful.\n- **Option C (\"it enhances the portability of the front end of the compiler\"):** Correctly identifies the fundamental architectural motivation of compiler retargetability.\n- **Option D:** Direct code generation is technically possible (early compilers did so), but highly non-portable and difficult to optimize.\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option C (it enhances the portability of the front end of the compiler)**.",
+        "images": []
+      }
     },
     "go:2454": {
       "title": "GATE CSE 1994 | Question: 1.13",
@@ -525,7 +557,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - FIFO Page Replacement Anomaly with Early Initialized Variables",
+        "markdown": "### 1. Mechanism of Page Replacement Algorithms\nWhen a page fault occurs and no free physical page frames exist, the operating system's page replacement algorithm selects a victim frame to evict:\n1. **FIFO (First-In, First-Out):**\n   Associates a timestamp or queue position with each page when it is brought into memory. When a victim is needed, FIFO **always evicts the oldest page** in the queue, regardless of how frequently or how recently it has been accessed.\n2. **LRU (Least Recently Used):**\n   Replaces the page that has not been referenced for the longest period of time in the past.\n3. **LFU (Least Frequently Used):**\n   Replaces the page with the lowest reference count.\n\n---\n\n### 2. Problem Scenario Analysis\n- A variable is initialized **very early** in program execution and is in **constant, heavy use** (e.g., a global symbol table, loop index, or root data structure).\n- Because it was loaded early, its page entered the FIFO queue at the very beginning.\n- Over time, subsequent page faults push this page to the front of the FIFO queue.\n- Under **FIFO**, the algorithm blindly evicts this page solely because of its arrival time, completely ignoring that the CPU is actively reading and writing to it every few instructions!\n- This causes an immediate subsequent page fault, leading to severe thrashing.\n- Under **LRU**, the page's constant use continuously refreshes its recency, so LRU will never evict it.\n- Under **LFU**, its frequent access accumulates a massive reference count, shielding it from eviction.\n- Therefore, only **FIFO** exhibits the disastrous behavior of evicting a heavily used, early-initialized page.\n\n---\n\n### 3. Conclusion\nTherefore, the correct answer is **Option B (FIFO page replacement algorithm is used)**.",
+        "images": []
+      }
     },
     "go:2457": {
       "title": "GATE CSE 1994 | Question: 1.14",
@@ -565,7 +602,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming & Data Structures - Stack Permutations",
+        "markdown": "### 1. Stack Permutation Theorem\nGiven an input sequence arriving in the fixed order:\n$$\\langle 1, 2, 3, 4, 5 \\rangle$$\nA permutation of these numbers can be output by a stack if and only if it **does not contain any forbidden subsequence of the pattern $\\mathbf{3 - 1 - 2}$**.\nThat is, for any three elements appearing in the output permutation in order $a, b, c$, we cannot have $b < c < a$ if $b$ was pushed before $c$.\n\n---\n\n### 2. Evaluation of Candidate Permutations\n\n- **Option A: $\\langle 3, 4, 5, 1, 2 \\rangle$**\n  - Push 1, Push 2, Push 3 $\\to$ Pop 3 (Output: 3)\n  - Push 4 $\\to$ Pop 4 (Output: 3, 4)\n  - Push 5 $\\to$ Pop 5 (Output: 3, 4, 5)\n  - Stack now contains $[1, 2]$ with $2$ on top.\n  - The next element popped MUST be $2$. It is physically impossible to pop $1$ before $2$.\n  - Hence, Option A is **impossible**.\n\n- **Option B: $\\langle 3, 4, 5, 2, 1 \\rangle$**\n  1. `Push 1` (Stack: $[1]$)\n  2. `Push 2` (Stack: $[1, 2]$)\n  3. `Push 3` (Stack: $[1, 2, 3]$)\n  4. `Pop` $\\to$ **Output: 3** (Stack: $[1, 2]$)\n  5. `Push 4` (Stack: $[1, 2, 4]$)\n  6. `Pop` $\\to$ **Output: 4** (Stack: $[1, 2]$)\n  7. `Push 5` (Stack: $[1, 2, 5]$)\n  8. `Pop` $\\to$ **Output: 5** (Stack: $[1, 2]$)\n  9. `Pop` $\\to$ **Output: 2** (Stack: $[1]$)\n  10. `Pop` $\\to$ **Output: 1** (Stack: empty)\n  Full output sequence: $\\langle 3, 4, 5, 2, 1 \\rangle$. Valid!\n\n- **Option C: $\\langle 1, 5, 2, 3, 4 \\rangle$**\n  - Push 1 $\\to$ Pop 1.\n  - To output 5 next, must push 2, 3, 4, 5, then pop 5.\n  - Stack now has $[2, 3, 4]$ with 4 on top. The next elements must be popped in reverse order ($4, 3, 2$). Outputting $2, 3, 4$ is impossible.\n\n- **Option D: $\\langle 5, 4, 3, 1, 2 \\rangle$**\n  - After popping 5, 4, 3, the stack has $[1, 2]$ with 2 on top. 1 cannot be popped before 2.\n\n---\n\n### 3. Conclusion\nTherefore, the correct answer is **Option B (3, 4, 5, 2, 1)**.",
+        "images": []
+      }
     },
     "go:2458": {
       "title": "GATE CSE 1994 | Question: 1.15",
@@ -650,7 +692,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Determinism vs Non-Determinism in Automata",
+        "markdown": "### 1. Equivalence of Deterministic and Non-Deterministic Models\nIn automata theory, we evaluate whether adding non-determinism strictly increases the computational power (the class of accepted languages) of an automaton:\n\n1. **Finite State Automata (FSA):**\n   $$\\mathcal{L}(\\text{DFA}) = \\mathcal{L}(\\text{NFA}) = \\text{Regular Languages}$$\n   The **Subset Construction (Powerset Construction)** algorithm converts any non-deterministic FSA with $n$ states into an equivalent deterministic FSA with at most $2^n$ states. Conversion is **always possible**.\n\n2. **Turing Machines (TM):**\n   $$\\mathcal{L}(\\text{DTM}) = \\mathcal{L}(\\text{NTM}) = \\text{Recursively Enumerable Languages}$$\n   A deterministic Turing machine can simulate a non-deterministic Turing machine by performing a breadth-first search of its configuration tree. Conversion is **always possible**.\n\n3. **Regular Grammar to Context-Free Grammar:**\n   Every regular grammar is by definition a context-free grammar ($V_N \\rightarrow V_T^* V_N \\mid V_T^*$). Conversion is trivial and **always possible**.\n\n---\n\n### 2. The Non-Deterministic Pushdown Automata (PDA) Exception\nFor Pushdown Automata:\n$$\\mathcal{L}(\\text{DPDA}) = \\text{Deterministic Context-Free Languages (DCFL)}$$\n$$\\mathcal{L}(\\text{NPDA}) = \\text{Context-Free Languages (CFL)}$$\n\n- The class of DCFLs is a **strict proper subset** of CFLs:\n  $$\\mathcal{L}(\\text{DPDA}) \\subsetneq \\mathcal{L}(\\text{NPDA})$$\n- For example, the language of even-length palindromes:\n  $$L = \\{w w^R \\mid w \\in \\{a, b\\}^*\\}$$\n  is a context-free language accepted by an NPDA (the non-deterministic choice guesses the midpoint of the string).\n- However, $L$ cannot be accepted by any deterministic PDA because a DPDA cannot detect the center of the palindrome deterministically without lookahead.\n- Therefore, it is **algorithmically impossible** to convert an arbitrary NPDA into an equivalent DPDA.\n\n---\n\n### 3. Conclusion\nTherefore, the correct answer is **Option C (Non-deterministic PDA to deterministic PDA)**.",
+        "images": []
+      }
     },
     "go:2460": {
       "title": "GATE CSE 1994 | Question: 1.17, UGCNET-Sep2013-II: 32",
@@ -693,6 +740,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming & Data Structures - Applicability of Linked Lists to Algorithms",
+        "markdown": "### 1. Fundamental Properties of Linked Lists\nA linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next via a reference pointer.\n- **Advantages:** $O(1)$ constant-time node insertion and deletion once the position is located; dynamic resizing without memory reallocation.\n- **Limitation:** **Lack of random access**. Accessing the $k^{\\text{th}}$ element requires sequential traversal from the head pointer, taking $O(k)$ time.\n\n---\n\n### 2. Evaluation of the Given Problems\n- **Insertion Sort:**\n  Well-suited for linked lists. When sorting a list, an extracted node can be spliced into its sorted position in $O(1)$ pointer operations without shifting array elements.\n- **Radix Sort:**\n  Extremely well-suited for linked lists. Radix sort groups elements into buckets (0–9) and concatenates them; bucket queues implemented via linked lists allow $O(1)$ appending and splicing without preallocating arrays.\n- **Polynomial Manipulation:**\n  Standard application of linked lists. Each term $(c_i, e_i)$ forms a node ($c_i x^{e_i}$), allowing dynamic addition, multiplication, and term insertion.\n- **Binary Search:**\n  **Completely unsuitable.**\n  Binary search achieves $O(\\log n)$ complexity in arrays because it accesses the middle element $A[\\text{mid}]$ in $O(1)$ time. In a linked list, locating the middle node requires traversing $n/2$ pointers in $O(n)$ time.\n  The recurrence becomes:\n  $$T(n) = T(n/2) + O(n) = O(n)$$\n  Thus, binary search on a linked list takes linear time, offering zero benefit over a trivial sequential scan.\n\n---\n\n### 3. Conclusion\nTherefore, the correct answer is **Option B (Binary search)**.",
+        "images": []
       }
     },
     "go:2461": {
@@ -733,7 +785,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design & Formal Languages - Limitations of Context-Free Grammars",
+        "markdown": "### 1. Theoretical Scope of Context-Free Grammars\nA **Context-Free Grammar (CFG)** produces languages generated by production rules of the form $A \\rightarrow \\alpha$, where $A \\in V_N$ and $\\alpha \\in (V_N \\cup V_T)^*$.\n- CFGs can capture hierarchical syntactic nested structures, matching delimiters, operator precedence, and recursive syntactic patterns.\n- CFGs **cannot** capture cross-serial dependencies or enforce non-local equality constraints over arbitrarily separated tokens.\n\n---\n\n### 2. Analysis of Language Features\n- **Option A (\"Syntax of if-then-else statements\"):**\n  Easily defined by CFG rules: $S \\rightarrow \\text{`if`} \\; E \\; \\text{`then`} \\; S \\mid \\text{`if`} \\; E \\; \\text{`then`} \\; S \\; \\text{`else`} \\; S$.\n- **Option B (\"Syntax of recursive procedures\"):**\n  Easily specified via recursive non-terminal productions: $P \\rightarrow \\text{`proc`} \\; \\text{id} \\; \\text{`(`}\\,\\dots\\,\\text{`)`} \\dots$.\n- **Option D (\"Variable names of arbitrary length\"):**\n  Easily generated via regular/CFG productions: $\\text{Id} \\rightarrow \\text{Letter} \\; \\text{Rest}, \\; \\text{Rest} \\rightarrow \\text{Letter} \\; \\text{Rest} \\mid \\text{Digit} \\; \\text{Rest} \\mid \\epsilon$.\n- **Option C (\"Whether a variable has been declared before its use\"):**\n  - Checking that an identifier used in an expression has been previously declared requires verifying membership in a language of the form:\n    $$L = \\{w c w \\mid w \\in \\Sigma^*\\}$$\n    where the first $w$ represents the identifier declaration, and the second $w$ represents its subsequent use.\n  - By the Pumping Lemma for CFLs, $L = \\{wcw\\}$ is a known **context-sensitive language** and is **not context-free**.\n  - Therefore, this requirement cannot be enforced syntactically by a CFG; it must be handled during the **semantic analysis phase** using a compiler **symbol table**.\n\n---\n\n### 3. Conclusion\nTherefore, the correct answer is **Option C (Whether a variable has been declared before its use)**.",
+        "images": []
+      }
     },
     "go:2462": {
       "title": "GATE CSE 1994 | Question: 1.19, ISRO2016-31",
@@ -775,7 +832,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Algorithmic Paradigm of Quicksort",
+        "markdown": "### 1. The Divide-and-Conquer Algorithmic Paradigm\nThe **Divide-and-Conquer** strategy solves a problem by breaking it into three structural phases:\n1. **Divide:** Partition the problem into one or more smaller subproblems of the same type.\n2. **Conquer:** Solve the subproblems recursively (or solve directly if they are small enough).\n3. **Combine:** Combine the solutions of the subproblems into the solution for the original problem.\n\n---\n\n### 2. Quicksort Partitioning Mechanism\nInvented by C.A.R. Hoare in 1959, **Quicksort** sorts an array $A[p \\dots r]$ using divide-and-conquer:\n1. **Divide:**\n   The array is partitioned around a chosen pivot element $x = A[r]$ into two subarrays $A[p \\dots q-1]$ and $A[q+1 \\dots r]$ such that:\n   $$\\text{Every element in } A[p \\dots q-1] \\le x \\le \\text{every element in } A[q+1 \\dots r]$$\n2. **Conquer:**\n   Recursively sort the two subarrays by invoking quicksort on $A[p \\dots q-1]$ and $A[q+1 \\dots r]$.\n3. **Combine:**\n   Because partitioning is done in-place, the entire array is already sorted once the subproblems return; no combination step is necessary.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (Dynamic programming):** Solves problems with overlapping subproblems and optimal substructure by memoizing intermediate states (e.g., Floyd-Warshall, Matrix Chain).\n- **Option B (Backtracking):** Systematically searches state spaces via depth-first trial-and-error (e.g., $N$-Queens).\n- **Option C (Divide and conquer):** The foundational design principle of Quicksort.\n- **Option D (Greedy method):** Constructs a solution through locally optimal choices without backtracking (e.g., Kruskal's, Huffman).\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option C (Divide and conquer)**.",
+        "images": []
+      }
     },
     "go:305": {
       "title": "GATE CSE 1994 | Question: 1.20",
@@ -815,7 +877,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Programming Languages - Parameter Passing Semantics (Call-by-Reference vs Call-by-Name)",
+        "markdown": "### 1. Theoretical Foundations of Parameter Passing\n1. **Call-by-Reference:**\n   - The memory address (l-value) of the actual argument is evaluated **once** at the point of the procedure call and bound to the formal parameter.\n   - All subsequent references and assignments through the formal parameter operate directly on this single fixed address throughout the subroutine's execution.\n2. **Call-by-Name (Algol 60 / Thunks):**\n   - The actual parameter expression is textually substituted into the procedure body.\n   - Each time the formal parameter is evaluated or assigned, the argument expression (both its l-value and r-value) is dynamically re-evaluated in the caller's environment.\n\n---\n\n### 2. Analytical Comparison of Argument Categories\n- **A. Passing a constant value:**\n  Constants have no modifiable l-value; in languages supporting call-by-reference with constants, a temporary address is bound once, giving identical read behavior as call-by-name.\n- **B. Passing the address of an array:**\n  The address of an array base pointer remains constant throughout procedure execution; both methods manipulate the same pointer target.\n- **C. Passing an array element (e.g., $A[i]$):**\n  Consider the canonical example (**Jensen's Device**):\n  ```pascal\n  procedure P(var x: integer);\n  begin\n    i := i + 1;\n    x := 0;\n  end;\n  // Invocation:\n  i := 1;\n  P(A[i]);\n  ```\n  - **Under Call-by-Reference:** The address of $A[1]$ is evaluated at the start and bound to $x$. When $x := 0$ executes, it updates $A[1]$, even though $i$ has been incremented to $2$.\n  - **Under Call-by-Name:** The argument expression $A[i]$ is re-evaluated when $x := 0$ is reached. Because $i$ is now $2$, the assignment updates $A[2]$ instead of $A[1]$!\n  - Hence, call-by-reference and call-by-name produce distinctly different outputs.\n- **D. Passing an entire array:**\n  Evaluates to passing the whole structure reference; subscript re-evaluation side-effects do not occur.\n\n---\n\n### 3. Conclusion\nTherefore, passing an **array element as a parameter (Option C)** can yield different results under call-by-reference and call-by-name.",
+        "images": []
+      }
     },
     "go:2464": {
       "title": "GATE CSE 1994 | Question: 1.21",
@@ -855,6 +922,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Systems Programming & Operating Systems - Macro Definitions & Virtual Memory vs Address Space",
+        "markdown": "### 1. Analysis of Each Statement\n\n- **Statement A: \"Macro definitions cannot appear within other macro definitions in assembly language programs\"**\n  - In standard macro processors (such as classic two-pass macro assemblers), macro definitions are global templates defined at the top level of the program.\n  - Macro definitions cannot be nested inside the body of another macro definition, as the macro processor treats statements between `MACRO` and `MEND` as pure model statement templates without re-entering the macro definition phase.\n  - Therefore, in the classic curriculum of systems programming, **Statement A is true**.\n\n- **Statement B: \"Overlaying is used to run a program which is longer than the address space of a computer\"**\n  - **False.** Overlays allow a program that is larger than the available **physical main memory (RAM)** to run by swapping code modules. A program can never exceed the **address space** (the logical addressable range determined by CPU address lines).\n\n- **Statement C: \"Virtual memory can be used to accommodate a program which is longer than the address space of a computer\"**\n  - **False.** Virtual memory expands execution beyond physical RAM up to the limit of the **virtual address space** ($2^{\\text{address bits}}$). A program cannot exceed the address space of the processor because instructions cannot address memory beyond the architectural address limit.\n\n- **Statement D: \"It is not possible to write interrupt service routines in a high level language\"**\n  - **False.** Modern C and C++ compilers frequently support writing ISRs using compiler extensions and attributes (e.g., `__interrupt` keyword or `#pragma interrupt`).\n\n---\n\n### 2. Conclusion\nTherefore, the correct answer is **Option A (Macro definitions cannot appear within other macro definitions in assembly language programs)**.",
+        "images": []
       }
     },
     "go:2465": {
@@ -895,7 +967,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms - Graph Traversal & Connected Components",
+        "markdown": "### 1. Detailed Statement Evaluation\n\n- **Statement A: \"Optimal binary search tree construction can be performed efficiently using dynamic programming\"**\n  - **True.** The classic $O(n^3)$ algorithm by Gilbert and Moore (optimized to $O(n^2)$ by Knuth) computes the optimal BST using dynamic programming with optimal substructure $e[i, j] = \\min_r \\{e[i, r-1] + e[r+1, j] + w(i, j)\\}$.\n\n- **Statement B: \"Breadth-first search cannot be used to find connected components of a graph\"**\n  - **FALSE (The target statement).**\n  - **Breadth-First Search (BFS)** systematically visits all reachable vertices layer by layer starting from any vertex $s$.\n  - To find all connected components of an undirected graph:\n    1. Initialize all vertices as unvisited.\n    2. For each unvisited vertex $v \\in V$, launch a BFS traversal.\n    3. All vertices reached during that BFS run belong to the same connected component.\n    4. Repeat until all vertices are visited.\n  - The total time complexity is $O(V + E)$, exactly matching DFS.\n  - Therefore, the assertion that BFS *cannot* be used to find connected components is completely false.\n\n- **Statement C: \"Given the prefix and postfix walks over a binary tree, the binary tree cannot be uniquely constructed.\"**\n  - **True.** Preorder and postorder traversals alone cannot uniquely reconstruct a general binary tree when internal nodes have only one child (for instance, a node with a single left child vs a single right child yields identical preorder and postorder sequences). A unique reconstruction requires the **inorder** walk.\n\n- **Statement D: \"Depth-first search can be used to find connected components of a graph\"**\n  - **True.** Standard DFS traversal visits all vertices in a connected component in $O(V + E)$ time.\n\n---\n\n### 2. Conclusion\nThe false statement is **Option B**.\n\nTherefore, the correct answer is **Option B (Breadth-first search cannot be used to find connected components of a graph)**.",
+        "images": []
+      }
     },
     "go:2466": {
       "title": "GATE CSE 1994 | Question: 1.23",
@@ -942,7 +1019,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Asymptotic Notation - Big-O Upper Bound and Dominant Terms",
+        "markdown": "### 1. Mathematical Formulation\nWe are given two piecewise functions defined for non-negative integers $n$:\n$g_1(n) = \\begin{cases} n^3 & 0 \\leq n \\leq 10,000 \\\\ n^2 & n > 10,000 \\end{cases}$\n$g_2(n) = \\begin{cases} n & 0 \\leq n \\leq 100 \\\\ n^3 & n > 100 \\end{cases}$\n\nBy definition of **asymptotic upper bound** ($O$-notation):\n$f(n) = O(g(n)) \\iff \\exists c > 0, n_0 \\in \\mathbb{N} \\text{ such that } 0 \\leq f(n) \\leq c \\cdot g(n) \\quad \\forall n \\geq n_0$\nAsymptotic properties depend strictly on the limiting behavior as $n \\to \\infty$, meaning only values of $n$ beyond the transition threshold ($n > 10,000$) determine the asymptotic relationships.\n\n---\n\n### 2. Analytical Evaluation of Statements\nFor all $n > 10,000$:\n$g_1(n) = n^2 \\quad \\text{and} \\quad g_2(n) = n^3$\n\n1. **Statement A ($g_1(n) \\text{ is } O(g_2(n))$):**\n   Evaluating the limit quotient:\n   $\\lim_{n \\to \\infty} \\frac{g_1(n)}{g_2(n)} = \\lim_{n \\to \\infty} \\frac{n^2}{n^3} = \\lim_{n \\to \\infty} \\frac{1}{n} = 0$\n   Because the limit is $0 < \\infty$, $g_1(n) = O(g_2(n))$ holds with $c = 1$ and $n_0 = 10,001$.\n   $\\implies$ **Statement A is TRUE**.\n\n2. **Statement B ($g_1(n) \\text{ is } O(n^3)$):**\n   For all $n > 10,000$, $g_1(n) = n^2 \\leq 1 \\cdot n^3$.\n   Because $n^2$ grows strictly slower than $n^3$, $g_1(n) \\in O(n^2) \\subset O(n^3)$.\n   $\\implies$ **Statement B is TRUE**.\n\n3. **Statement C ($g_2(n) \\text{ is } O(g_1(n))$):**\n   Evaluating the limit quotient:\n   $\\lim_{n \\to \\infty} \\frac{g_2(n)}{g_1(n)} = \\lim_{n \\to \\infty} \\frac{n^3}{n^2} = \\lim_{n \\to \\infty} n = \\infty$\n   Because the ratio grows without bound, there is no constant $c$ such that $g_2(n) \\leq c \\cdot g_1(n)$.\n   $\\implies$ **Statement C is FALSE**.\n\n4. **Statement D ($g_2(n) \\text{ is } O(n)$):**\n   For $n > 100$, $g_2(n) = n^3$. Clearly, $\\lim_{n \\to \\infty} \\frac{n^3}{n} = \\lim_{n \\to \\infty} n^2 = \\infty$.\n   $\\implies$ **Statement D is FALSE**.\n\n---\n\n### 3. Option & Distractor Analysis\n- **Option A:** Correct; $n^2 \\in O(n^3)$ asymptotically.\n- **Option B:** Correct; any function that is $O(n^2)$ is automatically $O(n^3)$ by subset inclusion.\n- **Option C:** Incorrect; $n^3$ cannot be asymptotically bounded above by $c n^2$.\n- **Option D:** Incorrect; $g_2(n)$ is cubic, not linear, for large $n$.\n\n---\n\n### 4. Conclusion\nTherefore, the correct options are **A** and **B**.",
+        "images": []
+      }
     },
     "go:2467": {
       "title": "GATE CSE 1994 | Question: 1.24",
@@ -982,7 +1064,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Memory Management - Dynamic Allocation Policies (First-Fit vs Best-Fit)",
+        "markdown": "### 1. Initial State & Hole Map Formulation\nFrom the provided heap layout with increasing physical addresses from left to right:\n- Address region 1: Hatched (in use), size $50$\n- Address region 2: Blank (**Free Hole 1**), size $150$\n- Address region 3: Hatched (in use), size $300$\n- Address region 4: Blank (**Free Hole 2**), size $350$\n- Address region 5: Hatched (in use), size $600$\n\nInitial available free list ordered by address:\n$\\text{Holes} = [H_1: 150, \\; H_2: 350]$\n\nRequest sequence to satisfy: **$300, 25, 125, 50$**.\n\n---\n\n### 2. Simulation of Allocation Policies\n\n#### A. First-Fit Allocation\nFirst-fit scans the free list from the beginning and allocates in the first hole that is $\\ge$ requested size.\n1. **Request 300:**\n   - Check $H_1 (150)$: $150 < 300$ (insufficient).\n   - Check $H_2 (350)$: $350 \\ge 300$ (fits).\n   - Allocate $300$ from $H_2$. Leftover: $350 - 300 = 50$.\n   - Available holes: $[H_1: 150, \\; H_2: 50]$.\n2. **Request 25:**\n   - Check $H_1 (150)$: $150 \\ge 25$ (fits).\n   - Allocate $25$ from $H_1$. Leftover: $150 - 25 = 125$.\n   - Available holes: $[H_1: 125, \\; H_2: 50]$.\n3. **Request 125:**\n   - Check $H_1 (125)$: $125 \\ge 125$ (exact fit).\n   - Allocate $125$ from $H_1$. Leftover: $0$.\n   - Available holes: $[H_2: 50]$.\n4. **Request 50:**\n   - Check $H_2 (50)$: $50 \\ge 50$ (exact fit).\n   - Allocate $50$ from $H_2$. Leftover: $0$.\n   - **All requests are successfully satisfied by First-Fit.**\n\n#### B. Best-Fit Allocation\nBest-fit searches the entire free list and allocates from the smallest hole that is $\\ge$ requested size.\n1. **Request 300:**\n   - Candidate holes: $H_1 (150 < 300)$ cannot fit; $H_2 (350 \\ge 300)$ fits.\n   - Allocate in $H_2$. Leftover: $350 - 300 = 50$.\n   - Available holes: $[150, 50]$.\n2. **Request 25:**\n   - Candidate holes: $150$ and $50$.\n   - Smallest hole $\\ge 25$ is the $50$-byte hole.\n   - Allocate in the $50$-byte hole. Leftover: $50 - 25 = 25$.\n   - Available holes: $[150, 25]$.\n3. **Request 125:**\n   - Smallest hole $\\ge 125$ is the $150$-byte hole.\n   - Allocate in $150$. Leftover: $150 - 125 = 25$.\n   - Available holes: $[25, 25]$.\n4. **Request 50:**\n   - Requires a contiguous block of size $\\ge 50$.\n   - Available holes are only $25$ and $25$. Neither hole is large enough, and memory is non-contiguous (external fragmentation).\n   - **Allocation fails under Best-Fit.**\n\n---\n\n### 3. Option & Distractor Analysis\n- **Option A:** Incorrect; Best-Fit fails on the 4th request.\n- **Option B:** Correct; First-Fit successfully satisfies all requests, while Best-Fit fails.\n- **Option C:** Incorrect; Best-Fit fails, not First-Fit.\n- **Option D:** Incorrect; Option B is verified.\n\n---\n\n### 4. Conclusion\nTherefore, the request sequence can be satisfied by **first fit but not best fit policy (Option B)**.",
+        "images": []
+      }
     },
     "go:2475": {
       "title": "GATE CSE 1994 | Question: 2.8",
@@ -1118,6 +1205,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Intel 8085 Bus Multiplexing Architecture",
+        "markdown": "### 1. Statement Analysis\nThe question asks to evaluate whether the following statement is True or False:\n> *\"Multiplexing of address/data lines in 8085 microprocessor reduces the instruction execution time.\"*\n\n---\n\n### 2. Architectural Analysis of the Intel 8085 Bus\nIn the Intel 8085 microprocessor, the lower 8 bits of the address bus ($A_0 - A_7$) are time-multiplexed with the 8-bit bidirectional data bus ($D_0 - D_7$) on pins $AD_0 - AD_7$:\n1. **Primary Motivation:**\n   Multiplexing was adopted strictly to reduce the **physical pin count** of the integrated circuit package, allowing the 8085 CPU to fit inside an industry-standard, cost-effective 40-pin Dual Inline Package (DIP).\n2. **Impact on Execution Timing:**\n   - Multiplexing does **not** accelerate instruction execution.\n   - In fact, it requires dedications of bus timing: during the first clock state ($T_1$) of every machine cycle, the CPU outputs the lower address byte and asserts the Address Latch Enable (ALE) signal.\n   - An external transparent latch (e.g., IC 74LS373) must capture the address bits during $T_1$ before the lines switch to data transmission during $T_2, T_3$.\n   - Demultiplexing adds synchronization overhead and hardware decoding latency rather than reducing execution time.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE**.\n- **Explanation:** Multiplexing was implemented solely to conserve IC pins (fitting a 40-pin package) and actually requires dedicating the $T_1$ state with ALE to demultiplex the address/data lines via an external latch, thereby not reducing instruction execution time.",
+        "images": []
       }
     },
     "go:2479": {
@@ -1162,6 +1254,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Architecture - RISC vs CISC Instruction Formats & Expanding Opcodes",
+        "markdown": "### 1. Statement Analysis\nThe question asks to evaluate whether the following statement is True or False:\n> *\"Expanding opcode instruction formats are commonly employed in RISC (Reduced Instruction Set Computers) machines.\"*\n\n---\n\n### 2. Principles of Instruction Set Design\n1. **Expanding Opcode Technique:**\n   - In an expanding opcode scheme, the length of the opcode bit-field varies: instructions with fewer operands allocate more bits to the opcode, while instructions with more operands use fewer bits for the opcode.\n   - This scheme maximizes encoding efficiency within short or variable-length words.\n   - It is a defining hallmark of **CISC** (Complex Instruction Set Computers, e.g., PDP-11, VAX, Intel x86) where saving main memory was the paramount constraint.\n2. **RISC Architecture Principles:**\n   - RISC design (MIPS, SPARC, ARM, RISC-V) prioritizes simple, single-cycle, hardwired instruction decoding to facilitate deep pipelining.\n   - RISC architectures enforce **strictly fixed instruction lengths** (e.g., universally 32 bits).\n   - In RISC, opcode fields occupy uniform, fixed bit positions across all instruction formats (e.g., bits [31:26] or [6:0]), eliminating the variable-length decoding logic required by expanding opcodes.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE** (numerical answer: **0**; legacy answer keys occasionally encode this as 1).\n- **Explanation:** RISC machines employ fixed-length instruction formats with opcodes located at fixed bit positions to enable fast single-cycle hardware decoding; expanding opcodes are characteristic of CISC machines.",
+        "images": []
       }
     },
     "go:2480": {
@@ -1205,6 +1302,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Serial Binary Adder using Finite State Machine (Mealy Machine)",
+        "markdown": "### 1. Statement Analysis\nThe question asks to evaluate whether the following statement is True or False:\n> *\"A FSM (Finite State Machine) can be designed to add two integers of any arbitrary length (arbitrary number of digits).\"*\n\n---\n\n### 2. Construction of a Serial Binary Adder\nA Finite State Machine with output (a Mealy or Moore machine) can perform addition of two unbounded integers supplied serially bit-by-bit from least significant bit (LSB) to most significant bit (MSB):\n1. **Input Alphabet:**\n   At each discrete clock tick, the FSM receives a pair of bits $(a_i, b_i) \\in \\{0, 1\\} \\times \\{0, 1\\}$.\n2. **State Space:**\n   The only information from preceding bits necessary to compute the current sum bit and propagate the carry is the **carry value**, which can only be $0$ or $1$.\n   Thus, the machine requires exactly **two states**:\n   - State $q_0$: Carry-in is $0$ ($c_i = 0$)\n   - State $q_1$: Carry-in is $1$ ($c_i = 1$)\n3. **Transition & Output Functions (Mealy Model):**\n   $\\text{Sum } s_i = a_i \\oplus b_i \\oplus c_i$\n   $\\text{Carry-out } c_{i+1} = a_i b_i + c_i(a_i + b_i)$\n   - From $q_0$:\n     - Input $(0, 0) \\to$ output $0$, stay in $q_0$\n     - Input $(0, 1)$ or $(1, 0) \\to$ output $1$, stay in $q_0$\n     - Input $(1, 1) \\to$ output $0$, transition to $q_1$\n   - From $q_1$:\n     - Input $(0, 0) \\to$ output $1$, transition to $q_0$\n     - Input $(0, 1)$ or $(1, 0) \\to$ output $0$, stay in $q_1$\n     - Input $(1, 1) \\to$ output $1$, stay in $q_1$\n\nBecause the state count (2 states) is finite and completely independent of the length $n$ of the operands, the serial FSM can add two numbers of **any arbitrary length**.\n\n---\n\n### 3. Conclusion\nThe statement is **TRUE** (numerical answer: **1**).",
+        "images": []
       }
     },
     "go:2481": {
@@ -1244,6 +1346,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Methods - Classification of Numerical Algorithms",
+        "markdown": "### 1. Problem Formulation\nWe are asked to match four fundamental numerical analysis algorithms with their primary computational domains:\n- (i) Newton-Raphson\n- (ii) Runge-Kutta\n- (iii) Gauss-Seidel\n- (iv) Simpson's Rule\n\nDomain options:\n- (a) Integration\n- (b) Root finding\n- (c) Ordinary Differential Equations\n- (d) Solution of Systems of Linear Equations\n\n---\n\n### 2. Algorithmic Breakdown & Matching\n1. **(i) Newton-Raphson Method:**\n   - An open iterative method using the tangent slope to find roots of a non-linear algebraic equation $f(x) = 0$:\n     $x_{k+1} = x_k - \\frac{f(x_k)}{f'(x_k)}$\n   - Field: **(b) Root finding**.\n2. **(ii) Runge-Kutta Method:**\n   - A family of single-step explicit and implicit methods (e.g., RK2, RK4) for numerically solving initial value problems of ordinary differential equations (ODEs):\n     $\\frac{dy}{dx} = f(x, y), \\quad y(x_0) = y_0$\n   - Field: **(c) Ordinary Differential Equations**.\n3. **(iii) Gauss-Seidel Method:**\n   - An iterative technique for solving diagonally dominant systems of linear algebraic equations $A\\mathbf{x} = \\mathbf{b}$:\n     $x_i^{(k+1)} = \\frac{1}{a_{ii}} \\left( b_i - \\sum_{j < i} a_{ij} x_j^{(k+1)} - \\sum_{j > i} a_{ij} x_j^{(k)} \\right)$\n   - Field: **(d) Solution of Systems of Linear Equations**.\n4. **(iv) Simpson's Rule:**\n   - A Newton-Cotes numerical quadrature formula approximating definite integrals by fitting quadratic parabolas (1/3 rule) or cubic polynomials (3/8 rule):\n     $\\int_a^b f(x) \\, dx \\approx \\frac{h}{3} \\left[ f(x_0) + 4\\sum f(x_{\\text{odd}}) + 2\\sum f(x_{\\text{even}}) + f(x_n) \\right]$\n   - Field: **(a) Integration**.\n\n---\n\n### 3. Conclusion\nThe correct matching is:\n- **(i) $\\to$ (b)**\n- **(ii) $\\to$ (c)**\n- **(iii) $\\to$ (d)**\n- **(iv) $\\to$ (a)**",
+        "images": []
       }
     },
     "go:2492": {
@@ -1287,6 +1394,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Database Management Systems - BCNF Decomposition & Dependency Preservation",
+        "markdown": "### 1. Statement Analysis\nThe question asks to evaluate whether the following statement is True or False:\n> *\"There is always a decomposition into Boyce-Codd normal form (BCNF) that is lossless and dependency preserving.\"*\n\n---\n\n### 2. Normal Form Decomposition Properties\nIn relational database design theory:\n1. **Lossless-Join Property:**\n   - A decomposition of relation $R$ into $R_1, R_2, \\dots, R_k$ is lossless if $R = \\pi_{R_1}(R) \\bowtie \\pi_{R_2}(R) \\bowtie \\dots \\bowtie \\pi_{R_k}(R)$.\n   - It is **always possible** to achieve a lossless-join decomposition into BCNF.\n2. **Dependency Preservation Property:**\n   - A decomposition preserves dependencies if the union of functional dependencies enforceable within individual projections $(\\bigcup F_{R_i})^+$ equals $F^+$.\n   - It is **NOT always possible** to achieve a decomposition into BCNF that is simultaneously lossless AND dependency preserving.\n\n#### Counterexample:\nConsider relation $R(A, B, C)$ with functional dependencies:\n$F = \\{ AB \\to C, \\; C \\to B \\}$\n- The candidate keys of $R$ are $AB$ and $AC$.\n- In $C \\to B$, the determinant $C$ is not a superkey, so $R$ violates BCNF.\n- To eliminate the BCNF violation, we must decompose $R$:\n  $R_1(C, B) \\quad \\text{and} \\quad R_2(A, C)$\n  - $R_1 \\cap R_2 = \\{C\\}$, which is a key of $R_1$ $\\implies$ Lossless join is preserved.\n  - However, the functional dependency $AB \\to C$ involves attributes spanning both relations and cannot be checked within $R_1$ or $R_2$ alone.\n  - Hence, $AB \\to C$ is lost, and the decomposition fails dependency preservation.\n- In contrast, a decomposition into **3NF** can *always* be guaranteed to be both lossless and dependency-preserving.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE** (numerical answer: **0**).\n- **Explanation:** While a lossless decomposition into BCNF is always possible, dependency preservation cannot always be guaranteed in BCNF (unlike 3NF).",
+        "images": []
       }
     },
     "go:2495": {
@@ -1378,6 +1490,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Semiconductor Logic Families & Technology Characteristics",
+        "markdown": "### 1. Problem Formulation\nWe are asked to match four digital integrated circuit logic families with their distinctive physical and electrical characteristics:\n- (i) ECL\n- (ii) GaAs\n- (iii) TTL\n- (iv) CMOS\n\nCharacteristics:\n- (a) Unipolar; very high speed; difficult to fabricate; good resistance to radiation\n- (b) Unipolar; low power; modest speed and packing density\n- (c) Bipolar; highest speed silicon IC; low packing density\n- (d) Bipolar, modest packing density, inexpensive\n\n---\n\n### 2. Technological Breakdown & Matching\n1. **(i) ECL (Emitter-Coupled Logic):**\n   - Fabricated with bipolar junction transistors (BJTs) operating exclusively in the active (non-saturated) region, eliminating transistor storage time delay.\n   - It is the fastest silicon-based logic family, but its high current consumption results in high power dissipation and low packing density.\n   - Matches: **(c) Bipolar; highest speed silicon IC; low packing density**.\n2. **(ii) GaAs (Gallium Arsenide):**\n   - Compound semiconductor technology using unipolar majority-carrier MESFETs.\n   - Has electron mobility 5 to 6 times higher than silicon, enabling ultra-high speeds ($> 10\\text{ GHz}$).\n   - High substrate defect density makes crystal growth difficult; offers intrinsically superior radiation tolerance.\n   - Matches: **(a) Unipolar; very high speed; difficult to fabricate; good resistance to radiation**.\n3. **(iii) TTL (Transistor-Transistor Logic):**\n   - Standard saturated bipolar logic family using multi-emitter transistors.\n   - Widely standardized (7400 series), simple and inexpensive to produce, with modest packing density.\n   - Matches: **(d) Bipolar, modest packing density, inexpensive**.\n4. **(iv) CMOS (Complementary Metal-Oxide Semiconductor):**\n   - Unipolar technology employing complementary pairs of NMOS and PMOS field-effect transistors.\n   - Known for virtually zero static power consumption and high packing density, with modest switching speeds in vintage fabrication nodes.\n   - Matches: **(b) Unipolar; low power; modest speed and packing density**.\n\n---\n\n### 3. Conclusion\nThe correct matching is:\n- **(i) $\\to$ (c)**\n- **(ii) $\\to$ (a)**\n- **(iii) $\\to$ (d)**\n- **(iv) $\\to$ (b)**",
+        "images": []
       }
     },
     "go:2497": {
@@ -1419,6 +1536,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Database Architecture - Physical vs Logical Data Independence",
+        "markdown": "### 1. Statement Analysis\nThe question asks to evaluate whether the following statement is True or False:\n> *\"Logical data independence is easier to achieve than physical data independence.\"*\n\n---\n\n### 2. Definitions under the ANSI/SPARC Three-Schema Architecture\n1. **Physical Data Independence:**\n   - The capacity to modify the internal/physical schema (such as file storage structures, indexing schemes, hashing algorithms, or disk partitioning) without requiring changes to the conceptual schema or application programs.\n   - In modern DBMSs, physical data independence is straightforward to achieve because the query optimizer and storage engine encapsulate physical access paths automatically.\n2. **Logical Data Independence:**\n   - The capacity to modify the conceptual schema (such as adding, altering, or removing entities, attributes, or table relationships) without forcing rewrites of existing external schemas (user views) and application programs.\n   - Logical data independence is **substantially more difficult to achieve** because changes to conceptual relationships often directly alter the semantic view upon which external queries, application forms, and business logic depend.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE** (numerical answer: **0**).\n- **Explanation:** Physical data independence is much easier to achieve than logical data independence because application programs depend directly on the logical structure of data, whereas physical storage changes are insulated by the DBMS storage engine.",
+        "images": []
       }
     },
     "go:2499": {
@@ -1512,7 +1634,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Digital Electronics - Synchronous Sequential Circuit State Tracing",
+        "markdown": "### 1. Circuit & Component Formulation\nWe are given a synchronous sequential circuit with three flip-flops controlled by a common clock line:\n- Flip-Flop 2 ($Q_2$): **JK Flip-Flop**\n  - Inputs: $J_2 = Q'_0$ (complement output of flip-flop 0), $K_2 = 1$.\n  - Characteristic equation:\n    $Q_2^+ = J_2 Q'_2 + \\bar{K}_2 Q_2 = Q'_0 Q'_2 + (0) Q_2 = Q'_0 Q'_2$\n- Flip-Flop 1 ($Q_1$): **D Flip-Flop**\n  - Input: $D_1 = Q_2$.\n  - Characteristic equation:\n    $Q_1^+ = D_1 = Q_2$\n- Flip-Flop 0 ($Q_0$): **T Flip-Flop**\n  - Input: $T_0 = Q_1$.\n  - Characteristic equation:\n    $Q_0^+ = T_0 \\oplus Q_0 = Q_1 \\oplus Q_0$\n\nInitial state: $Q_2 Q_1 Q_0 = 000$ (so $Q'_0 = 1$).\n\n---\n\n### 2. Clock-by-Clock State Tracing\n\n#### Initial State ($t = 0$):\n$Q_2 = 0, \\quad Q_1 = 0, \\quad Q_0 = 0 \\implies Q'_0 = 1$\n\n#### Clock Pulse 1:\n- Inputs before clock:\n  - $J_2 = Q'_0 = 1, \\; K_2 = 1 \\implies$ Toggle $Q_2$: $Q_2^+ = \\bar{0} = 1$.\n  - $D_1 = Q_2 = 0 \\implies Q_1^+ = 0$.\n  - $T_0 = Q_1 = 0 \\implies Q_0^+ = 0 \\oplus 0 = 0$.\n- State after CP 1:\n  $Q_2 Q_1 Q_0 = 100 \\quad (Q'_0 = 1)$\n\n#### Clock Pulse 2:\n- Inputs before clock:\n  - $J_2 = Q'_0 = 1, \\; K_2 = 1 \\implies$ Toggle $Q_2$: $Q_2^+ = \\bar{1} = 0$.\n  - $D_1 = Q_2 = 1 \\implies Q_1^+ = 1$.\n  - $T_0 = Q_1 = 0 \\implies Q_0^+ = 0 \\oplus 0 = 0$.\n- State after CP 2:\n  $Q_2 Q_1 Q_0 = 010 \\quad (Q'_0 = 1)$\n\n#### Clock Pulse 3:\n- Inputs before clock:\n  - $J_2 = Q'_0 = 1, \\; K_2 = 1 \\implies$ Toggle $Q_2$: $Q_2^+ = \\bar{0} = 1$.\n  - $D_1 = Q_2 = 0 \\implies Q_1^+ = 0$.\n  - $T_0 = Q_1 = 1 \\implies$ Toggle $Q_0$: $Q_0^+ = 1 \\oplus 0 = 1$.\n- State after CP 3:\n  $Q_2 Q_1 Q_0 = 101 \\quad (Q'_0 = 0)$\n\n#### Clock Pulse 4:\n- Inputs before clock:\n  - $J_2 = Q'_0 = 0, \\; K_2 = 1 \\implies$ Reset $Q_2$: $Q_2^+ = 0$.\n  - $D_1 = Q_2 = 1 \\implies Q_1^+ = 1$.\n  - $T_0 = Q_1 = 0 \\implies$ Hold $Q_0$: $Q_0^+ = 0 \\oplus 1 = 1$.\n- State after CP 4:\n  $Q_2 Q_1 Q_0 = 011 \\quad (Q'_0 = 0)$\n\n---\n\n### 3. Conclusion\nAfter four clock pulses, the contents of the flip-flops are:\n$Q_2 = 0, \\quad Q_1 = 1, \\quad Q_0 = 1$\nIn binary: **$011_2$** (numerical answer: **11** or decimal value **3**).",
+        "images": []
+      }
     },
     "go:2517": {
       "title": "GATE CSE 1994 | Question: 21",
@@ -1555,7 +1682,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Compilers & Runtime Environments - Activation Record Overhead & Recursion Stack Depth",
+        "markdown": "### 1. Problem Formulation\nConsider the recursive Fibonacci implementation:\n```pascal\nfunction fib (n: integer): integer;\nbegin\n  if (n = 0) or (n = 1) then fib := 1\n  else fib := fib(n-1) + fib(n-2)\nend;\n```\n\nSystem Specifications:\n- Total stack memory capacity $= 64 \\text{ bytes}$.\n- Each activation frame contains only:\n  - Parameter $n$: integer $= 2 \\text{ bytes}$.\n  - Return address: address $= 2 \\text{ bytes}$.\n- Frame size per invocation:\n  $\\text{Frame Size} = 2 + 2 = 4 \\text{ bytes}$\n\n---\n\n### 2. Maximum Concurrent Frame Capacity\nThe maximum number of simultaneous activation records the stack can hold without causing a stack overflow is:\n$\\text{Max Concurrent Frames} = \\frac{\\text{Total Stack Memory}}{\\text{Frame Size}} = \\frac{64 \\text{ bytes}}{4 \\text{ bytes/frame}} = 16 \\text{ frames}$\n\n---\n\n### 3. Recursion Depth Analysis\nWhen evaluating `fib(n)`, the depth of the call stack reaches its absolute maximum along the leftmost chain of recursive descent:\n$\\text{fib}(n) \\to \\text{fib}(n-1) \\to \\text{fib}(n-2) \\to \\dots \\to \\text{fib}(1) \\to \\text{fib}(0)$\n\nAt the point of deepest recursion:\n- The stack contains activation frames for each active function call along this path.\n- The depth of active frames for a call with parameter $n$ equals $n$ simultaneous activation records.\n- To avoid exceeding the 16-frame stack ceiling:\n  $n \\leq 16$\n- If the initial caller's activation record or the base-case leaf frame is strictly bounded by 16 frames, the maximum input value of $n$ is $16$ (with boundary evaluation accommodating $n = 15$).\n\n---\n\n### 4. Conclusion\nThe maximum value of $n$ for which the stack will not overflow is **16** (acceptable range: **15 to 16**).",
+        "images": []
+      }
     },
     "go:2437": {
       "title": "GATE CSE 1994 | Question: 1.1",
@@ -1597,6 +1729,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design & Programming Languages - Static Storage Allocation in FORTRAN",
+        "markdown": "### 1. Storage Allocation Paradigms\nProgramming language runtime environments manage data storage through three primary allocation strategies:\n1. **Static Allocation:**\n   Storage locations for all program variables and subroutines are bound at compile/link time before execution begins. Each variable occupies a single fixed memory location throughout the entire program lifespan.\n2. **Stack-Based Dynamic Allocation:**\n   Storage is allocated dynamically as activation records (stack frames) on a runtime call stack when a procedure is entered, and deallocated when it returns.\n3. **Heap Allocation:**\n   Storage is dynamically managed at runtime for variables whose lifetimes are independent of procedure invocation hierarchy.\n\n---\n\n### 2. Why Classic FORTRAN Prohibited Recursion\nIn early FORTRAN standards (FORTRAN 66, FORTRAN 77):\n- All memory management was strictly **static**.\n- Each subroutine was allocated exactly one fixed activation block in memory to hold its return address, parameters, and local variables.\n- If subroutine $P$ were allowed to call itself recursively:\n  - The new invocation would overwrite the single static memory location holding the return address of the active invocation.\n  - The new invocation would also overwrite the local variables of the caller.\n  - When returning, the subroutine would jump into an infinite loop or crash due to corrupted return pointers.\n- Supporting recursion requires a **dynamic runtime stack** where each recursive call instantiates a fresh activation record. Because classic FORTRAN implementations used static allocation, recursion could not be permitted.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (they use static allocation for variables):** Directly identifies the architectural reason why classic FORTRAN does not permit recursion.\n- **Option B (they use dynamic allocation for variables):** Incorrect; dynamic stack allocation is precisely what enables recursion.\n- **Option C (stacks are not available on all machines):** Hardware stacks or simulated software stacks can be implemented on any Turing-complete machine.\n- **Option D (it is not possible to implement recursion on all machines):** Recursion can be simulated on any machine with sufficient memory.\n\n---\n\n### 4. Conclusion\nTherefore, the correct answer is **Option A (they use static allocation for variables)**.",
+        "images": []
       }
     }
   }

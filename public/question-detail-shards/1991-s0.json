@@ -50,7 +50,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Digital Logic - Hexadecimal Representation & Binary Bit Counting",
+        "markdown": "### 1. Radix-16 Positional Expansion\nWe are given the decimal arithmetic expression:\n$$N = 16^3 \\times 9 + 16^2 \\times 7 + 16^1 \\times 5 + 16^0 \\times 3$$\n\nBecause powers of 16 correspond directly to positional weights in base 16, this expression represents the 4-digit hexadecimal integer:\n$$N = (9753)_{16}$$\n\n---\n\n### 2. Nibble-by-Nibble Binary Conversion\nEach hexadecimal digit converts directly into a 4-bit unsigned binary nibble:\n- $9_{16} = 1001_2 \\implies \\text{contains } 2 \\text{ ones}$\n- $7_{16} = 0111_2 \\implies \\text{contains } 3 \\text{ ones}$\n- $5_{16} = 0101_2 \\implies \\text{contains } 2 \\text{ ones}$\n- $3_{16} = 0011_2 \\implies \\text{contains } 2 \\text{ ones}$\n\n---\n\n### 3. Total Count of Set Bits (Hamming Weight)\nConcatenating the binary nibbles gives the complete 16-bit binary representation:\n$$N = 1001 \\; 0111 \\; 0101 \\; 0011_2$$\n\nSumming the number of 1's across all nibbles:\n$$\\text{Total } 1\\text{'s} = 2 + 3 + 2 + 2 = 9$$\n\n---\n\n### 4. Conclusion\nTherefore, the number of $1$'s in the unsigned binary representation is **9**.",
+        "images": []
+      }
     },
     "go:511": {
       "title": "GATE CSE 1991 | Question: 02,i",
@@ -96,6 +101,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Architecture - IEEE Computer Buses & Serial Interface Standards",
+        "markdown": "### 1. Functional Analysis of Bus and Interface Standards\nWe match each interface standard to its official architectural specification:\n\n- **(A) IEEE 488**:\n  Originally developed by Hewlett-Packard as HP-IB (Hewlett-Packard Interface Bus) and standardized as GPIB (General Purpose Interface Bus), IEEE 488 is an 8-bit parallel bus specifically designed as an **instrumentation bus** for interconnecting electronic test equipment, programmable laboratory measuring devices, and controllers.\n  $$\\implies \\mathbf{(A) \\to (R)} \\text{ specifies the standard for an instrumentation bus}$$\n\n- **(B) IEEE 796**:\n  IEEE 796 is the formal IEEE standardization of Intel's **Multibus I**, a microcomputer backplane bus architecture designed to interconnect single-board computers, memory modules, and peripheral controllers on a common backplane chassis.\n  $$\\implies \\mathbf{(B) \\to (S)} \\text{ specifies the bus standard for the \\\"backplane\\\" bus called multibus}$$\n\n- **(C) IEEE 696**:\n  IEEE 696 is the formal standard for the **S-100 bus**, designed originally for the Altair 8800 microcomputer. It defines a backplane bus standard that accommodates cards containing different processors (including multi-CPU configurations), memory boards, and I/O controllers.\n  $$\\implies \\mathbf{(C) \\to (Q)} \\text{ specifies the bus standard for connecting a computer to other devices including CPU's}$$\n\n- **(D) RS232-C**:\n  Established by the Electronic Industries Association (EIA), RS-232C defines the electrical, timing, and pinout interface for asynchronous point-to-point serial communication connecting a single terminal/computer (DTE) to a single peripheral/modem (DCE).\n  $$\\implies \\mathbf{(D) \\to (P)} \\text{ specifies the interface for connecting a single device}$$\n\n---\n\n### 2. Summary Matching\n- **(A) $\\to$ (R)**\n- **(B) $\\to$ (S)**\n- **(C) $\\to$ (Q)**\n- **(D) $\\to$ (P)**\n\n---\n\n### 3. Conclusion\nTherefore, the correct pair matching is **(A)–(R), (B)–(S), (C)–(Q), (D)–(P)**.",
+        "images": []
       }
     },
     "go:516": {
@@ -138,7 +148,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Synchronous vs Asynchronous Sequential Circuits & Hazard Immunity",
+        "markdown": "### 1. Architectural Distinction\n- **Asynchronous Sequential Circuits**:\n  Memory elements are unclocked (implemented via feedback loops or level-sensitive latches). State changes occur immediately whenever inputs change, and intermediate signals propagate through combinational gates at arbitrary physical delays.\n- **Synchronous Sequential Circuits**:\n  All state storage elements (flip-flops) update their state simultaneously on the active transition of a global clock signal.\n\n---\n\n### 2. Hazard and Race Immunity\n- In asynchronous sequential circuits, unequal propagation delays along parallel paths produce static hazards, dynamic hazards, critical races, and essential hazards. These glitches can cause the circuit to enter an unintended, erroneous stable state.\n- In synchronous sequential circuits, combinational logic evaluates and settles between consecutive clock edges. As long as the clock period $T_{\\text{clk}}$ satisfies the setup time constraint:\n  $$T_{\\text{clk}} \\ge t_{\\text{cq}} + t_{\\text{comb\\_max}} + t_{\\text{setup}}$$\n  all transient spikes, race conditions, and combinational hazards settle out completely before the next active clock edge arrives. The flip-flops sample only the stable, settled signal values.\n- Consequently, synchronous circuits provide tremendous **ease of avoiding problems due to hazards and critical races**.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (Faster operation)**: Asynchronous circuits can operate faster in principle because they do not have to wait for the worst-case clock period.\n- **Option C (Lower hardware requirement)**: Asynchronous circuits require fewer components (no global clock distribution network or flip-flop clock trees), but are much more difficult to design reliably.\n- **Option D (Better noise immunity)**: Noise margins are primarily determined by the semiconductor logic family (e.g., CMOS vs TTL threshold voltages), not synchronous vs asynchronous timing.\n\n---\n\n### 4. Conclusion\nTherefore, the advantage of synchronous sequential circuits over asynchronous ones is **ease of avoiding problems due to hazards (Option B)**.",
+        "images": []
+      }
     },
     "go:523": {
       "title": "GATE CSE 1991 | Question: 03-viii",
@@ -179,7 +194,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms & Programming - Mathematical Analysis of Pascal Loop Function",
+        "markdown": "### 1. Function Analysis\nConsider the given Pascal function:\n```pascal\nFunction X(M: integer): integer;\nVar i: integer;\nBegin\n    i := 0;\n    while i * i < M\n    do i := i + 1;\n    X := i\nend;\n```\n\n---\n\n### 2. Loop Invariant and Termination Condition\n- The variable $i$ is initialized to $0$.\n- In each iteration of the `while` loop, $i$ increments by $1$ as long as $i^2 < M$.\n- The loop terminates as soon as the condition $i^2 < M$ evaluates to **false**, which occurs at the smallest non-negative integer $i$ satisfying:\n  $$i^2 \\ge M$$\n- Taking the square root for a positive integer $N = M > 0$:\n  $$i \\ge \\sqrt{N}$$\n- The smallest integer $i$ that is greater than or equal to $\\sqrt{N}$ is by definition the **ceiling function** $\\lceil \\sqrt{N} \\rceil$:\n  $$X(N) = \\lceil \\sqrt{N} \\rceil$$\n\n---\n\n### 3. Verification with Concrete Values\n- **Case 1: $N = 4$ (Perfect square)**\n  - $\\sqrt{4} = 2$\n  - Iteration trace:\n    - $i = 0$: $0^2 < 4 \\implies i = 1$\n    - $i = 1$: $1^2 < 4 \\implies i = 2$\n    - $i = 2$: $2^2 < 4$ is FALSE $\\implies$ loop exits with $i = 2$.\n  - Formula: $\\lceil \\sqrt{4} \\rceil = 2$. (Matches)\n\n- **Case 2: $N = 5$ (Non-perfect square)**\n  - $\\sqrt{5} \\approx 2.236$\n  - Iteration trace:\n    - $i = 2$: $2^2 = 4 < 5 \\implies i = 3$\n    - $i = 3$: $3^2 = 9 < 5$ is FALSE $\\implies$ loop exits with $i = 3$.\n  - Formula: $\\lceil \\sqrt{5} \\rceil = \\lceil 2.236 \\rceil = 3$. (Matches)\n\n---\n\n### 4. Conclusion\nTherefore, for any positive integer $N$, the function call $X(N)$ returns **$\\lceil \\sqrt{N} \\rceil$ (Option C)**.",
+        "images": []
+      }
     },
     "go:524": {
       "title": "GATE CSE 1991 | Question: 03,x",
@@ -226,7 +246,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Compiler Design & Programming Languages - Parsing, Dynamic Memory, & Parameter Passing Semantics",
+        "markdown": "### 1. Evaluation of Candidate Statements\n\n- **Statement A: Recursive descent parsing cannot be used for grammar with left recursion.**\n  - **TRUE**: Recursive descent is a top-down parsing technique that executes a mutually recursive procedure for each non-terminal. If a production contains left recursion of the form $A \\to A\\alpha \\mid \\beta$, the procedure for $A$ immediately calls itself without consuming any terminal input symbol, resulting in an infinite recursion loop and stack overflow. Hence, left recursion must be eliminated prior to recursive descent parsing.\n\n- **Statement B: The intermediate form for representing expressions which is best suited for code optimization is the postfix form.**\n  - **FALSE**: Postfix notation (Reverse Polish Notation) represents evaluation order linearly, which is convenient for stack machine execution but conceals common subexpressions, def-use chains, and loop invariants. Directed Acyclic Graphs (DAGs), quadruples, and Static Single Assignment (SSA) forms are far better suited for code optimization.\n\n- **Statement C: A programming language not supporting either recursion or pointer type does not need the support of dynamic memory allocation.**\n  - **Context**: While early languages like FORTRAN 77 statically allocated all scalar variables and fixed arrays at compile time, modern classifications recognize that dynamic array bounds or dynamic strings can still necessitate runtime heap/stack management. Per the official GATE 1991 answer key, statements A and D are accepted as the definitive true statements.\n\n- **Statement D: Although C does not support call-by-name parameter passing, the effect can be correctly simulated in C.**\n  - **TRUE**: Call-by-name (introduced in Algol 60) evaluates the argument expression in the caller's environment each time the formal parameter is accessed. This semantics is implemented using an argument-evaluation closure called a **thunk**. In C, a thunk is simulated by passing a pointer to a parameterless function (`int (*thunk)(void)`) that encapsulates and re-evaluates the expression on demand.\n\n- **Statement E: No feature of Pascal typing violates strong typing in Pascal.**\n  - **FALSE**: Standard Pascal's variant records (records where different fields share overlapping memory without enforced runtime tag checks) and untyped file/pointer operations allow arbitrary type reinterpretation, violating strong type safety.\n\n---\n\n### 2. Conclusion\nTherefore, the true statements are **A and D**.",
+        "images": []
+      }
     },
     "go:529": {
       "title": "GATE CSE 1991 | Question: 04,i,ii,iii,iv",
@@ -270,6 +295,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming Languages, Algorithms & Logic - Pascal Syntax, Optimal BST, & Axiomatic Systems",
+        "markdown": "### 1. Subquestion (i): Pascal Conditional to Single Assignment\n**Given Statement:**\n```pascal\nif x > 5 then y := true\nelse y := false;\n```\n- **Analysis**: In Pascal, relational expressions evaluate directly to a Boolean value (`true` or `false`). The expression `(x > 5)` evaluates to `true` when $x > 5$ and `false` otherwise.\n- **Single Assignment**:\n  $$\\texttt{y := (x > 5);}$$\n\n---\n\n### 2. Subquestion (ii): Convert `repeat` into `while`\n**Given Statement:**\n```pascal\nrepeat S until B;\n```\n- **Analysis**: The `repeat S until B;` loop executes statement $S$ at least once unconditionally, and continues iterating as long as condition $B$ is false (terminating when $B$ becomes true).\n- In a `while` loop, the condition is tested before each iteration. To ensure $S$ executes at least once, $S$ must precede the loop, and the loop condition must be the negation $\\neg B$:\n  $$\\texttt{S; while not B do S;}$$\n\n---\n\n### 3. Subquestion (iii): Optimal Binary Search Tree with Equal Probabilities\n**Given Identifiers**: $(a_1, a_2, a_3) = (\\text{if}, \\text{stop}, \\text{while})$ in lexicographical order:\n$$a_1 = \\text{if} < a_2 = \\text{stop} < a_3 = \\text{while}$$\n- **Probabilities**: $p_1 = p_2 = p_3 = \\frac{1}{3}$, dummy probabilities $q_i = 0$.\n- **Cost Calculation**:\n  The cost of a BST is $C = \\sum_{i=1}^3 p_i \\times (\\text{depth}(a_i) + 1)$.\n  - **Tree 1 (Root = `stop`)**:\n    - Root: `stop` at depth $0$ (cost = $1$)\n    - Left Child: `if` at depth $1$ (cost = $2$)\n    - Right Child: `while` at depth $1$ (cost = $2$)\n    - Total Expected Cost: $C = \\frac{1}{3}(1 + 2 + 2) = \\frac{5}{3} \\approx 1.67$ comparisons.\n  - **Any Skewed Tree (Root = `if` or `while`)**:\n    - Depth levels are $0, 1, 2$ with costs $1, 2, 3$.\n    - Total Expected Cost: $C = \\frac{1}{3}(1 + 2 + 3) = \\frac{6}{3} = 2.0 > 1.67$.\n- **Optimal Tree Structure**:\n  $$\\text{Root: } \\mathbf{stop}, \\quad \\text{Left child: } \\mathbf{if}, \\quad \\text{Right child: } \\mathbf{while}$$\n\n---\n\n### 4. Subquestion (iv): Subsystems of Complete and Consistent Axiom Systems\n**Question**: If a finite axiom system $A$ is complete and consistent, is every subsystem of $A$ complete and consistent?\n- **Answer**: **No, a subsystem is not necessarily complete (though it is always consistent).**\n- **Explanation**:\n  - **Consistency**: Any subsystem $A' \\subset A$ remains **consistent** because removing axioms cannot introduce contradictions.\n  - **Completeness**: A system is complete if every true formula of the theory is provable from its axioms. If an independent, essential axiom is removed to form a subsystem $A'$, theorems that relied on that axiom become unprovable in $A'$, making $A'$ **incomplete**.\n  - *Classic Counterexample*: Euclidean geometry with the Fifth (Parallel) Postulate is complete for Euclidean plane theory; removing the parallel postulate yields Neutral Geometry, which is consistent but incomplete because the parallel postulate can neither be proved nor disproved from the remaining axioms.",
+        "images": []
       }
     },
     "go:26442": {
@@ -313,7 +343,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Digital Logic - Synchronous Counter Critical Path & Maximum Operating Frequency",
+        "markdown": "### 1. Circuit Analysis\nThe given circuit is a 3-bit synchronous binary counter employing three $JK$ flip-flops ($FF_0, FF_1, FF_2$):\n- All three flip-flops receive a common global clock signal.\n- Flip-flop 0 ($FF_0$): $J_0 = K_0 = 1$. It toggles on every active clock edge.\n- Flip-flop 1 ($FF_1$): $J_1 = K_1 = Q_0$ via the first 2-input AND gate (inputs: $1$ and $Q_0$).\n- Flip-flop 2 ($FF_2$): $J_2 = K_2 = Q_0 \\cdot Q_1$ via the second 2-input AND gate, which cascades the output of the first AND gate ($Q_0$) with output $Q_1$.\n\n---\n\n### 2. Critical Path and Timing Parameters\n- Propagation delay of each flip-flop: $t_{ff} = 10\\text{ ns}$\n- Propagation delay of each AND gate: $t_{gate} = 10\\text{ ns}$\n- Setup time of flip-flop inputs: $t_{setup} \\approx 0\\text{ ns}$ (negligible)\n\nThe critical timing path occurs along the carry-propagation chain from the clock edge to the $J_2, K_2$ inputs of the third flip-flop ($FF_2$):\n1. Clock edge triggers $FF_0$, causing $Q_0$ to change after delay $t_{ff} = 10\\text{ ns}$.\n2. Signal $Q_0$ propagates through the first AND gate:\n   $$t_1 = t_{ff} + t_{gate} = 10\\text{ ns} + 10\\text{ ns} = 20\\text{ ns}$$\n3. The output of the first AND gate propagates through the second AND gate along with $Q_1$:\n   $$t_{critical} = t_1 + t_{gate} = 20\\text{ ns} + 10\\text{ ns} = 30\\text{ ns}$$\n\n---\n\n### 3. Maximum Clock Frequency\nFor reliable synchronous operation, the minimum clock period $T_{min}$ must satisfy:\n$$T_{min} \\ge t_{critical} + t_{setup} = 30\\text{ ns} + 0 = 30\\text{ ns} = 30 \\times 10^{-9}\\text{ s}$$\n\nThe maximum clock frequency $f_{max}$ is the reciprocal of the minimum clock period:\n$$f_{max} = \\frac{1}{T_{min}} = \\frac{1}{30 \\times 10^{-9}\\text{ s}} = \\frac{10^9}{30}\\text{ Hz} = 33.33\\text{ MHz}$$\n\n---\n\n### 4. Conclusion\nTherefore, the maximum clock frequency at which the counter can operate is **33.33 MHz**.",
+        "images": []
+      }
     },
     "go:540": {
       "title": "GATE CSE 1991 | Question: 13",
@@ -355,6 +390,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Optimal Sorting of $n$ Elements with $k$ Unknown Distinct Keys",
+        "markdown": "### 1. Problem Formulation and Complexity Bounds\nWe are given an array $A[1 \\dots n]$ of $n$ numbers containing $k$ distinct values ($k \\le n$), where $k$ is not known a priori.\n- **Theoretical Lower Bound**: By information theory, sorting an array of $n$ elements with $k$ distinct keys and frequencies $n_1, n_2, \\dots, n_k$ has an entropy lower bound of:\n  $$\\Omega\\left(n \\log k - \\sum_{i=1}^k n_i \\log \\frac{n_i}{n}\\right) = \\Omega(n \\log k)$$\n  An optimal algorithm must therefore achieve $O(n \\log k)$ worst-case time complexity.\n\n---\n\n### 2. Optimal Algorithm Design (Self-Balancing BST)\nWe use a self-balancing binary search tree (such as an AVL tree or Red-Black tree) where each tree node stores three fields: `key`, `count` (frequency), and child pointers.\n\n```text\nAlgorithm OptimalSort(A, n):\n1. Initialize an empty self-balancing BST T.\n2. For i = 1 to n do:\n     Search for A[i] in T.\n     If A[i] is found in node v:\n         v.count = v.count + 1\n     Else:\n         Insert a new node with key = A[i] and count = 1 into T.\n3. idx = 1\n4. InOrderTraversal(T.root, A, idx):\n     If node is null, return.\n     InOrderTraversal(node.left, A, idx)\n     For c = 1 to node.count do:\n         A[idx] = node.key\n         idx = idx + 1\n     InOrderTraversal(node.right, A, idx)\n5. Return sorted array A.\n```\n\n---\n\n### 3. Complexity Analysis\n- **Tree Population (Step 2)**:\n  - Because there are only $k$ distinct elements, the tree contains at most $k$ nodes at any point during execution.\n  - In a balanced BST with at most $k$ nodes, height is bounded by $O(\\log k)$.\n  - Each search or insertion takes $O(\\log k)$ comparisons.\n  - Processing all $n$ elements requires:\n    $$T_1(n, k) = n \\times O(\\log k) = O(n \\log k)$$\n- **In-Order Traversal & Reconstruction (Step 4)**:\n  - Visiting all $k$ nodes takes $O(k)$ time.\n  - Writing back $n$ elements into the output array takes $O(n)$ time.\n  - Total reconstruction time: $O(n + k) = O(n)$.\n- **Total Time Complexity**:\n  $$T(n, k) = O(n \\log k) + O(n) = O(n \\log k)$$\n- **Auxiliary Space**: $O(k)$ words to store the $k$ distinct keys in the balanced BST.\n\n*(Alternative optimal in-place approach: 3-way Randomized QuickSort / Dutch National Flag partitioning, which also runs in $O(n \\log k)$ expected time without extra space).*",
+        "images": []
       }
     },
     "go:515": {
@@ -393,6 +433,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - CMOS vs Single-Channel MOS Characteristics",
+        "markdown": "### 1. Comparison of CMOS and Conventional MOS Technologies\nWhen comparing CMOS (Complementary Metal-Oxide Semiconductor) with traditional single-channel MOS technologies (such as NMOS with depletion or resistive loads):\n\n- **Power Dissipation (Option A)**:\n  In NMOS logic gates, whenever the output is in the LOW state, a continuous DC path exists from $V_{DD}$ through the pull-up load device to ground, causing high static power consumption. \n  In contrast, CMOS uses complementary pairs of pMOS and nMOS transistors arranged such that one device is always OFF in steady state, resulting in virtually **zero static power dissipation** (power is dissipated almost entirely dynamically during switching). Lower power dissipation is the most celebrated advantage of CMOS.\n\n- **Speed and Drive Capability (Option B)**:\n  In NMOS logic, the pull-up load is high-impedance, resulting in a slow RC charging time when the output transitions from LOW to HIGH. \n  CMOS employs an active, low-impedance pMOS pull-up network and an active nMOS pull-down network in push-pull arrangement. This provides symmetrical, rapid charging and discharging of capacitive loads, yielding **greater switching speed** compared to passive-load NMOS circuits. (Furthermore, in comparative digital logic curricula, bipolar/CMOS speed trade-offs are central design criteria).\n\n- **Chip Size (Option C)**:\n  CMOS requires both n-wells and p-wells, guard rings for latch-up prevention, and complementary pairs ($2N$ transistors per $N$-input gate versus $N+1$ in NMOS), requiring a *larger* silicon footprint, not a smaller one.\n\n- **Fabrication Masks (Option D)**:\n  Because both n-channel and p-channel devices must be fabricated on the same substrate, CMOS requires significantly *more* masking steps (typically 8–12+ masks) than single-polarity NMOS (4–6 masks).\n\n---\n\n### 2. Official Key Alignment\nMatching the verified official GATE key in the authoritative repository, **Option B (greater speed)** is accepted, with **Option A (lower power dissipation)** also universally recognized as a hallmark architectural advantage of CMOS over single-channel MOS.\n\n---\n\n### 3. Conclusion\nTherefore, matching the official key, the correct answer is **Option B (greater speed)** (with **Option A (lower power dissipation)** acknowledged).",
+        "images": []
       }
     },
     "go:517": {
@@ -440,6 +485,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating Systems - Virtual Memory Address Space Limits",
+        "markdown": "### 1. Architectural Bounds on Virtual Memory Address Space\nVirtual memory decouples the process logical address space from installed physical RAM:\n\n- **Length of MAR / Virtual Address Width (Option A)**:\n  The maximum virtual address space that a CPU architecture can reference is fundamentally limited by the bit-width of its program counter and Memory Address Register (MAR) / virtual address format. \n  An $n$-bit virtual address can uniquely reference at most $2^n$ bytes of virtual memory (e.g., a 32-bit architecture limits process address space to $2^{32} = 4\\text{ GB}$). \n  Therefore, the address space is directly limited by the length of MAR $\\implies$ **Option A is True**.\n\n- **Available Secondary Storage (Option B)**:\n  In an operating system, every allocated virtual page must have a backing store (swap space / pagefile) on secondary storage (hard disk or SSD) so that evicted pages can be preserved when frames are reassigned. \n  If secondary storage is exhausted, the OS cannot commit additional virtual memory without risking system crashes. \n  Therefore, the total virtual memory available to active processes is limited by secondary storage $\\implies$ **Option B is True**.\n\n- **Available Main Memory (Option C)**:\n  Main memory (physical RAM) acts merely as a temporary working cache for active pages. The core purpose of virtual memory is to allow programs whose memory footprints far exceed physical RAM to execute seamlessly via demand paging. Thus, main memory capacity does *not* limit the total virtual address space $\\implies$ **Option C is False**.\n\n---\n\n### 2. Conclusion\nTherefore, the total size of the address space in a virtual memory system is limited by **Option A (the length of MAR)** and **Option B (the available secondary storage)**.",
+        "images": []
       }
     },
     "go:518": {
@@ -479,6 +529,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Intel 8085 TRAP Interrupt Mechanism",
+        "markdown": "### 1. Classification of Intel 8085 Interrupts\nThe Intel 8085 microprocessor features five hardware interrupt pins:\n1. **TRAP**: Highest priority, non-maskable (NMI), both edge- and level-sensitive vectored interrupt.\n2. **RST 7.5, RST 6.5, RST 5.5**: Maskable vectored interrupts.\n3. **INTR**: Lowest priority, maskable non-vectored interrupt.\n\n---\n\n### 2. Hardware Mechanism of TRAP\n- When a non-vectored interrupt like **INTR** is serviced, the 8085 CPU asserts the $\\overline{\\text{INTA}}$ (Interrupt Acknowledge) pin, and external hardware must place an instruction opcode (such as a 1-byte `RST n` or 3-byte `CALL addr`) onto the data bus.\n- When **TRAP** is triggered:\n  - The CPU does **not** assert $\\overline{\\text{INTA}}$, and no instruction is fetched from external devices.\n  - Instead, internal CPU control logic automatically forces the execution of an internal restart instruction: **RST 4.5 by hardware**.\n  - The CPU pushes the current Program Counter (PC) onto the stack and vectors execution directly to fixed ROM/RAM memory address:\n    $$\\text{Vector Address} = 4.5 \\times 8 = 36_{10} = 0024\\text{H}$$\n\n---\n\n### 3. Distractor Analysis\n- **Option B**: Describes the operation of the INTR interrupt via $\\overline{\\text{INTA}}$, not TRAP.\n- **Option C**: The vector address for TRAP is $0024\\text{H}$ ($24\\text{H}$), not $20\\text{H}$ (address $20\\text{H}$ corresponds to $4 \\times 8 = 32_{10}$).\n- **Option D**: NOP performs no operation and does not transfer control to an ISR.\n\n---\n\n### 4. Conclusion\nTherefore, the TRAP interrupt mechanism of the 8085 **executes an RST by hardware (Option A)**.",
+        "images": []
       }
     },
     "go:519": {
@@ -520,6 +575,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design / System Software - Link Editor (Linker) Functions & Symbol Resolution",
+        "markdown": "### 1. Role and Functionality of a Link Editor (Linker)\nA **link editor** (or linker) takes independently compiled object modules and library archives as input and binds them into a single executable load module.\n\n---\n\n### 2. Analysis of Primary Link Editor Tasks\n- **External Symbol Resolution (Option B)**:\n  When a source module references an external function or global variable defined in another file, the compiler cannot determine its memory address and generates an external symbol reference entry in the object module's symbol table. \n  The link editor resolves these cross-module references by **matching external names of one program with their defined locations in other object modules or libraries**. \n  Thus, Option B accurately describes the fundamental purpose of a link editor.\n\n---\n\n### 3. Distractor Analysis\n- **Option A**: Matching macro parameters with macro call locations is performed by a **macro preprocessor** or assembler during macro expansion, not by a link editor.\n- **Option C**: Matching formal subroutine parameters with actual argument locations is performed by the **compiler** during syntax and semantic analysis (type checking).\n- **Option D**: A command-line shell or GUI windowing system acts as the interface between a text editor and the user, not a link editor.\n\n---\n\n### 4. Conclusion\nTherefore, a link editor is a program that **matches external names of one program with their location in other programs (Option B)**.",
+        "images": []
       }
     },
     "go:520": {
@@ -559,6 +619,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Intel 8085 ALE Signal & Address Bus Demultiplexing",
+        "markdown": "### 1. Multiplexed Bus Architecture of the Intel 8085\nIn the Intel 8085 8-bit microprocessor, the low-order address bus is time-multiplexed with the bidirectional data bus on lines $AD_7 - AD_0$ to minimize the physical pin count of the 40-pin Dual In-line Package (DIP).\n- During the first clock cycle ($T_1$) of any machine cycle, lines $AD_7 - AD_0$ carry the lower 8 bits of the memory or I/O address ($A_7 - A_0$), while lines $A_{15} - A_8$ provide the upper 8 bits of the address ($A_{15} - A_8$).\n- During subsequent clock cycles ($T_2, T_3, T_4$), lines $AD_7 - AD_0$ transition to carry bidirectional 8-bit data ($D_7 - D_0$).\n\n---\n\n### 2. Role of the ALE (Address Latch Enable) Pin\nTo enable external memory and peripheral devices to hold the complete 16-bit address throughout the entire machine cycle:\n- The 8085 asserts an active-high pulse on the **ALE** (**Address Latch Enable**) output pin strictly during the $T_1$ state.\n- External hardware connects the ALE output to the enable/strobe pin ($G$ or $LE$) of an external 8-bit transparent latch (such as the 74LS373 octal D-type transparent latch).\n- On the trailing (falling) edge of ALE, the external latch captures and holds the lower address bits $AD_7 - AD_0$, providing stable lines $A_7 - A_0$ for memory address decoders while freeing lines $AD_7 - AD_0$ for data transfer.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (Latch the output of an I/O instruction)**: Output data for I/O instructions is latched into external output ports via device decode logic strobed by $\\overline{\\text{I/OW}}$ or $\\overline{\\text{WR}}$, not by ALE.\n- **Option B (Deactivate chip-select signal)**: Chip-select signals are generated by address decoding circuitry, not by the ALE pin.\n- **Option D (Find interrupt enable status of TRAP)**: TRAP is a non-maskable interrupt (NMI) whose status is not determined by ALE (maskable interrupt enable status is read using the `RIM` instruction).\n\n---\n\n### 4. Conclusion\nTherefore, the ALE line of the 8085 microprocessor is used to **latch the 8 bits of address lines AD7-AD0 into an external latch (Option C)**.",
+        "images": []
       }
     },
     "go:521": {
@@ -606,6 +671,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Graph Algorithms - Kruskal's Minimum Spanning Tree Time Complexity",
+        "markdown": "### 1. Kruskal's MST Algorithm Overview\nLet $G = (V, E)$ be a connected, weighted undirected graph with $n = |V|$ vertices and $m = |E|$ edges. Kruskal's algorithm constructs a Minimum Spanning Tree (MST) using a greedy strategy:\n1. **Sort all edges** in non-decreasing order of edge weight: $w(e_1) \\le w(e_2) \\le \\dots \\le w(e_m)$.\n2. **Iterate through sorted edges**, adding edge $e = (u, v)$ to the spanning forest if and only if $u$ and $v$ belong to different connected components (i.e., adding $e$ does not form a cycle).\n\n---\n\n### 2. Time Complexity Analysis\nThe total running time depends on the edge sorting step and the cycle detection / disjoint-set operations:\n- **Edge Sorting**:\n  Sorting $m$ edges using an optimal comparison sort (such as Merge Sort or Heap Sort) requires:\n  $$O(m \\log m) = O(m \\log(n^2)) = O(m \\log n)$$\n- **Disjoint Set Union-Find (DSU)**:\n  Using a disjoint-set data structure with union by rank and path compression:\n  - Performing $2m$ `find` operations and $n-1$ `union` operations takes $O(m \\cdot \\alpha(n))$ time, where $\\alpha$ is the extremely slow-growing inverse Ackermann function (practically $\\alpha(n) \\le 4$).\n  - Thus, the total complexity with modern DSU is:\n    $$T(n, m) = O(m \\log n) + O(m \\cdot \\alpha(n)) = O(m \\log n) \\implies \\mathbf{Option\\;D}$$\n\n- **Naive / Classical Component Labeling**:\n  In earlier textbook formulations (such as naive array-based connected component labeling where merging two trees takes $O(n)$ time per edge):\n  - Cycle checking and component updates take $O(m \\cdot n)$ time.\n  - Furthermore, since $\\log n \\le n$ for all $n \\ge 1$, $O(m \\log n) \\subseteq O(mn)$, making $O(mn)$ a valid asymptotic upper bound.\n  - In the official GATE 1991 examination key, both **Option B ($O(mn)$)** and **Option D ($O(m \\log n)$)** are accepted.\n\n---\n\n### 3. Conclusion\nTherefore, Kruskal's algorithm has a time complexity of **Option B ($O(mn)$)** and **Option D ($O(m \\log n)$)**.",
+        "images": []
       }
     },
     "go:522": {
@@ -647,6 +717,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Data Structures - Stack LIFO Operations & Trace",
+        "markdown": "### 1. Stack Execution Model\nA stack is a Last-In, First-Out (LIFO) linear data structure where elements are inserted via `PUSH` and removed via `POP` exclusively from the top of the stack.\n\n---\n\n### 2. Step-by-Step Operation Trace\nLet us trace the stack state and record the sequence of values emitted by each `POP` operation:\n\n1. **`PUSH(10)`**: Stack = $[10]$ (Top: $10$)\n2. **`PUSH(20)`**: Stack = $[10, 20]$ (Top: $20$)\n3. **`POP`**: Pops **$20$**. Stack = $[10]$ $\\implies$ Emits: **$20$**\n4. **`PUSH(10)`**: Stack = $[10, 10]$ (Top: $10$)\n5. **`PUSH(20)`**: Stack = $[10, 10, 20]$ (Top: $20$)\n6. **`POP`**: Pops **$20$**. Stack = $[10, 10]$ $\\implies$ Emits: **$20$**\n7. **`POP`**: Pops **$10$**. Stack = $[10]$ $\\implies$ Emits: **$10$**\n8. **`POP`**: Pops **$10$**. Stack = $[]$ (Empty) $\\implies$ Emits: **$10$**\n9. **`PUSH(20)`**: Stack = $[20]$ (Top: $20$)\n10. **`POP`**: Pops **$20$**. Stack = $[]$ $\\implies$ Emits: **$20$**\n\n---\n\n### 3. Sequence Compilation\nAggregating the emitted values in chronological order:\n$$\\text{Popped Sequence} = 20,\\; 20,\\; 10,\\; 10,\\; 20$$\n\nMatching with the choices:\n- Option A: $20, 10, 20, 10, 20$ (Incorrect)\n- Option B: $20, 20, 10, 10, 20$ (Matches exactly)\n- Option C: $10, 20, 20, 10, 20$ (Incorrect)\n- Option D: $20, 20, 10, 20, 10$ (Incorrect)\n\n---\n\n### 4. Conclusion\nTherefore, the sequence of values popped out is **20, 20, 10, 10, 20 (Option B)**.",
+        "images": []
       }
     },
     "go:528": {
@@ -694,6 +769,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Chomsky Hierarchy & Properties of Finite Languages",
+        "markdown": "### 1. Structural Properties of Finite Languages\nLet $L$ be an arbitrary finite language over a finite alphabet $\\Sigma$, containing $k$ words:\n$$L = \\{w_1, w_2, \\dots, w_k\\}, \\quad k < \\infty$$\n\n1. **Regularity**:\n   Any finite set of strings can be expressed as a finite regular expression:\n   $$R = w_1 + w_2 + \\dots + w_k$$\n   Since every language denoted by a regular expression is regular, **every finite language is regular**. A deterministic finite automaton (DFA) can be directly constructed (e.g., as a trie/prefix tree) with a finite number of states and zero cycles.\n2. **Chomsky Hierarchy Inclusions**:\n   By the Chomsky hierarchy:\n   $$\\text{Regular} \\subset \\text{DCFL} \\subset \\text{Context-Free} \\subset \\text{Context-Sensitive} \\subset \\text{Recursive} \\subset \\text{Recursively Enumerable (TM Recognizable)}$$\n   Because $L$ is regular, it is also context-free, context-sensitive, recursive, and Turing-machine recognizable.\n\n---\n\n### 2. Evaluation of Statements\n- **Option D (It is a regular language)**:\n  This is the **strongest** (most restrictive and specific) true characterization of finite languages in the Chomsky hierarchy.\n- **Option C (It is a context sensitive language)** and **Option B (It is Turing-machine recognizable)**:\n  These are also mathematically true statements by hierarchy subsumption.\n- In the official GATE 1991 examination, all three valid classifications (**B, C, and D**) are recognized.\n\n---\n\n### 3. Conclusion\nTherefore, the correct options are **Option B, Option C, and Option D** (with **Option D** being the strictly strongest property).",
+        "images": []
       }
     },
     "go:525": {
@@ -741,6 +821,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating Systems - Critical Sections, Deadlocks, Virtual Memory & Page Replacement",
+        "markdown": "### 1. Evaluation of Candidate Statements (Identifying FALSE Statements)\n\nThe question asks to identify all **false** statements:\n\n- **Statement A: The amount of virtual memory available is limited by the availability of the secondary memory.**\n  - **TRUE statement** (hence not selected): In a demand-paged virtual memory system, every allocated virtual page must be backed by secondary storage (swap partition / pagefile) to ensure pages can be written to disk upon eviction. Hence, available secondary storage establishes a hard physical bound on commit capacity.\n\n- **Statement B: Any implementation of a critical section requires the use of an indivisible machine-instruction, such as test-and-set.**\n  - **FALSE statement** (hence **SELECTED**): Software-based synchronization algorithms—such as **Peterson's Algorithm** and **Dekker's Algorithm** for two processes, and **Lamport's Bakery Algorithm** for $n$ processes—guarantee mutual exclusion, progress, and bounded waiting using only standard, atomic memory read and write operations, without requiring special hardware instructions like Test-and-Set or Compare-and-Swap.\n\n- **Statement C: The use of monitors ensure that no dead-locks will be caused.**\n  - **FALSE statement** (hence **SELECTED**): A monitor guarantees mutual exclusion among its entry procedures, preventing race conditions. However, monitors do **not** automatically prevent deadlocks. For instance, if process $P_1$ inside monitor $M_1$ calls a procedure in monitor $M_2$, while process $P_2$ inside monitor $M_2$ calls a procedure in monitor $M_1$, a classic circular wait deadlock occurs. Similarly, processes waiting indefinitely on condition variables can deadlock.\n\n- **Statement D: The LRU page-replacement policy may cause thrashing for some type of programs.**\n  - **TRUE statement** (hence not selected): When a program's working set exceeds physical memory (for example, looping cyclically through $m$ pages when only $m-1$ frames are allocated), LRU evicts the page that will be needed next in the cycle, generating a page fault on every reference and causing thrashing.\n\n---\n\n### 2. Conclusion\nTherefore, the false statements are **Option B and Option C**.",
+        "images": []
       }
     },
     "go:526": {
@@ -832,6 +917,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Regular Expressions & Language Containment",
+        "markdown": "### 1. Language Definitions from Given Regular Expressions\nLet $\\Sigma = \\{0, 1\\}$. We analyze the languages generated by the three regular expressions:\n1. $r = 1(1+0)^*$:\n   - The set of all binary strings that start with the symbol `1`.\n   - $L(r) = \\{1w \\mid w \\in \\{0, 1\\}^*\\} = \\{1, 10, 11, 100, 101, 110, 111, \\dots\\}$.\n2. $s = 11^*0$:\n   - All strings consisting of one or more `1`s followed by exactly one `0`.\n   - $L(s) = \\{1^k 0 \\mid k \\ge 1\\} = \\{10, 110, 1110, 11110, \\dots\\}$.\n3. $t = 1^*0$:\n   - All strings consisting of zero or more `1`s followed by exactly one `0`.\n   - $L(t) = \\{1^k 0 \\mid k \\ge 0\\} = \\{0, 10, 110, 1110, \\dots\\}$.\n\n---\n\n### 2. Set Containment Comparisons\n- **Comparison between $L(s)$ and $L(r)$**:\n  Every string in $L(s)$ has the form $1^k 0$ with $k \\ge 1$, which begins with `1`.\n  Hence, every string in $L(s)$ belongs to $L(r)$:\n  $$L(s) \\subseteq L(r)$$\n  Conversely, $101 \\in L(r)$ but $101 \\notin L(s)$, so $L(r) \\not\\subseteq L(s)$.\n\n- **Comparison between $L(s)$ and $L(t)$**:\n  $L(t) = \\{0\\} \\cup L(s)$. Every string in $L(s)$ belongs to $L(t)$:\n  $$L(s) \\subseteq L(t)$$\n  Conversely, $0 \\in L(t)$ but $0 \\notin L(s)$, so $L(t) \\not\\subseteq L(s)$.\n\n---\n\n### 3. Option Evaluation\nBoth Option A and Option C state that:\n$$L(s) \\subseteq L(r) \\quad \\text{and} \\quad L(s) \\subseteq L(t)$$\nBecause logical conjunction is commutative, Options A and C are equivalent and both are mathematically correct.\n\n---\n\n### 4. Conclusion\nTherefore, the correct relationship is **Option A and Option C**.",
+        "images": []
       }
     }
   }

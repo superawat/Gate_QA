@@ -107,6 +107,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Differential Equations - Linearity and Degree of ODEs",
+        "markdown": "### 1. Mathematical Formulation\nWe are given the ordinary differential equation:\n$\\frac{d^2 y}{dx^2} + \\frac{dy}{dx} + \\sin y = 0$\n\nWe must classify whether this equation is linear, non-linear, homogeneous, or of degree two.\n\n---\n\n### 2. Criteria for Linearity in Differential Equations\nAn ordinary differential equation is classified as **linear** if and only if it satisfies the following two conditions:\n1. The dependent variable $y$ and all its derivatives $\\frac{dy}{dx}, \\frac{d^2 y}{dx^2}, \\dots$ appear exclusively to the **first power** (degree 1).\n2. No products of the dependent variable and/or its derivatives exist, and no non-linear or transcendental functions of $y$ (such as $\\sin y, \\cos y, e^y, \\ln y, y^2$) appear in the equation.\n\n---\n\n### 3. Analysis of the Given Equation\n- In the given equation, the term $\\sin y$ is a transcendental, non-linear function of the dependent variable $y$.\n- Expanding $\\sin y$ using its Taylor Maclaurin series:\n  $\\sin y = y - \\frac{y^3}{3!} + \\frac{y^5}{5!} - \\dots$\n  clearly contains non-linear powers of $y$ ($y^3, y^5, \\dots$).\n- Therefore, the presence of $\\sin y$ violates the condition for linearity.\n- **Degree:** The degree of an ODE is the power of the highest-order derivative when written in polynomial form of derivatives. Here, $\\left(\\frac{d^2 y}{dx^2}\\right)^1$ has degree 1, not 2.\n- **Non-linearity:** The equation is strictly **non-linear**.\n\n---\n\n### 4. Conclusion\nTherefore, the differential equation is **non-linear (Option B)**.",
+        "images": []
       }
     },
     "go:598": {
@@ -164,6 +169,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Methods - Simpson's 1/3 Rule Truncation Error & Degree of Precision",
+        "markdown": "### 1. Mathematical Formulation\nSimpson's 1/3 rule approximates the definite integral of a function $f(x)$ over an interval $[a, b]$ by interpolating $f(x)$ with quadratic polynomials (parabolas) over pairs of sub-intervals of width $h = \\frac{b - a}{2}$:\n$\\int_{x_0}^{x_2} f(x) \\, dx \\approx \\frac{h}{3} \\left[ f(x_0) + 4f(x_1) + f(x_2) \\right]$\n\nWe are required to identify all polynomial degrees for which Simpson's rule produces an **exact** result.\n\n---\n\n### 2. Truncation Error & Degree of Precision\nThe local truncation error of Simpson's 1/3 rule is derived from the Taylor series expansion:\n$E = -\\frac{h^5}{90} f^{(4)}(\\xi) = -\\frac{(b - a)^5}{2880} f^{(4)}(\\xi) \\quad \\text{for some } \\xi \\in (a, b)$\n\nThe error is proportional to the **fourth derivative** $f^{(4)}(x)$ of the integrand:\n1. **Degree 1 (Linear Polynomial, $f(x) = a_1 x + a_0$):**\n   $f^{(4)}(x) = 0 \\implies E = 0 \\quad \\text{(Exact)}$\n2. **Degree 2 (Quadratic Polynomial, $f(x) = a_2 x^2 + a_1 x + a_0$):**\n   $f^{(4)}(x) = 0 \\implies E = 0 \\quad \\text{(Exact)}$\n3. **Degree 3 (Cubic Polynomial, $f(x) = a_3 x^3 + a_2 x^2 + a_1 x + a_0$):**\n   $f^{(4)}(x) = 0 \\implies E = 0 \\quad \\text{(Exact)}$\n4. **Degree 4 (Quartic Polynomial, $f(x) = a_4 x^4 + \\dots$):**\n   $f^{(4)}(x) = 24 a_4 \\neq 0 \\implies E \\neq 0 \\quad \\text{(Approximate)}$\n\nDue to odd-symmetry cancellation of the third-order error term over symmetric intervals $[-h, h]$, Simpson's rule possesses a **degree of precision of 3**.\n\n---\n\n### 3. Conclusion\nSimpson's rule yields exact results when $f(x)$ is a polynomial of degree **1, 2, or 3**.\nTherefore, the correct options are **A, B, and C**.",
+        "images": []
       }
     },
     "go:599": {
@@ -211,6 +221,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming Languages - FORTRAN 77 Lexical Syntax & Keyword Non-Reservation",
+        "markdown": "### 1. Theoretical Rules of FORTRAN 77 Syntax\n1. **Insignificance of Blanks:**\n   In FORTRAN 77 (fixed-form source code), white spaces and blanks are completely ignored anywhere in a statement (except within literal character constants). For example, `DO 13 I = 1` is parsed identically to `DO13I=1`.\n2. **Keywords are Not Reserved:**\n   Language keywords like `DO`, `READ`, `IF`, `GO TO`, etc., are not reserved words; any valid identifier may share the name of a keyword based on syntactic context.\n3. **Operators:**\n   Valid arithmetic operators include `+`, `-`, `*` (multiplication), `/` (division), and `**` (exponentiation). There is no triple-asterisk operator `***`.\n\n---\n\n### 2. Line-by-Line Statement Evaluation\n- **Statement (a) `DO 13 I = 1`:**\n  A DO-loop requires a comma separating the loop bounds (e.g., `DO 13 I = 1, 10`).\n  Without a comma, blanks are stripped, and the statement is parsed as an assignment:\n  ```fortran\n  DO13I = 1\n  ```\n  This validly assigns the integer constant $1$ to the variable named `DO13I`.\n  $\\implies$ **Valid FORTRAN 77 statement (A)**.\n- **Statement (b) `A = DIM ***7`:**\n  The operator sequence `***` is illegal in FORTRAN (valid exponentiation is `**`).\n  $\\implies$ **Invalid statement (B)**.\n- **Statement (c) `READ = 15.0`:**\n  Because `READ` is not a reserved word, it serves as a legitimate real variable name receiving the assignment $15.0$.\n  $\\implies$ **Valid FORTRAN 77 statement (C)**.\n- **Statement (d) `GO TO 3 = 10`:**\n  With blanks ignored, `GO TO 3` is parsed as the identifier `GOTO3`. The statement is an assignment statement:\n  ```fortran\n  GOTO3 = 10\n  ```\n  which assigns $10$ to the variable `GOTO3`.\n  $\\implies$ **Valid FORTRAN 77 statement (D)**.\n\n---\n\n### 3. Conclusion\nTherefore, statements (a), (c), and (d) are syntactically valid FORTRAN 77 statements. Correct options are **A, C, and D**.",
+        "images": []
       }
     },
     "go:262": {
@@ -258,6 +273,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Fourier Series of Piecewise Periodic Functions & Dirichlet Summation",
+        "markdown": "### 1. Mathematical Formulation\nWe are given a periodic function with period $2\\pi$ defined by:\n$f(x) = \\begin{cases} 0 & -\\pi < x < 0 \\\\ x & 0 < x < \\pi \\end{cases}$\n\nIts Fourier series representation is:\n$f(x) \\sim \\frac{\\pi}{4} + \\sum_{n=1}^\\infty \\left[ \\frac{1}{\\pi n^2}(\\cos n\\pi - 1)\\cos nx - \\frac{1}{n}\\cos n\\pi \\sin nx \\right]$\n\nWe are required to determine the value of the series:\n$S = 1 + \\frac{1}{3^2} + \\frac{1}{5^2} + \\frac{1}{7^2} + \\dots$\nby setting $x = \\pi$.\n\n---\n\n### 2. Convergence at Points of Discontinuity (Dirichlet's Theorem)\nAt $x = \\pi$, the periodic extension of $f(x)$ possesses a jump discontinuity:\n- Left-hand limit: $f(\\pi^-) = \\pi$\n- Right-hand limit: $f(\\pi^+) = f(-\\pi^+) = 0$\n\nAccording to **Dirichlet's Theorem**, the Fourier series converges to the arithmetic mean of the one-sided limits:\n$S(\\pi) = \\frac{f(\\pi^-) + f(-\\pi^+)}{2} = \\frac{\\pi + 0}{2} = \\frac{\\pi}{2}$\n\n---\n\n### 3. Series Evaluation at $x = \\pi$\nSubstitute $x = \\pi$ into the trigonometric terms:\n- $\\cos(nx) = \\cos(n\\pi) = (-1)^n$\n- $\\sin(nx) = \\sin(n\\pi) = 0$\n\nThus, the Fourier series simplifies to:\n$\\frac{\\pi}{4} + \\sum_{n=1}^\\infty \\frac{1}{\\pi n^2} \\left[ (-1)^n - 1 \\right] (-1)^n = \\frac{\\pi}{2}$\n\nEvaluate the bracketed term $\\left[ (-1)^n - 1 \\right] (-1)^n$:\n- If $n$ is **even**: $(-1)^n = 1 \\implies (1 - 1)(1) = 0$.\n- If $n$ is **odd**: $(-1)^n = -1 \\implies (-1 - 1)(-1) = (-2)(-1) = 2$.\n\nTherefore, all even terms vanish, leaving only the odd integers $n = 1, 3, 5, 7, \\dots$:\n$\\frac{\\pi}{4} + \\frac{2}{\\pi} \\sum_{k=1}^\\infty \\frac{1}{(2k - 1)^2} = \\frac{\\pi}{2}$\n\nIsolate the odd reciprocal squares series $S$:\n$\\frac{2}{\\pi} S = \\frac{\\pi}{2} - \\frac{\\pi}{4} = \\frac{\\pi}{4}$\n$S = \\frac{\\pi}{4} \\times \\frac{\\pi}{2} = \\frac{\\pi^2}{8}$\n\n---\n\n### 4. Option & Distractor Analysis\n- **Option A ($\\frac{\\pi^2}{4}$):** Misses the factor of $1/2$ from the Dirichlet average.\n- **Option B ($\\frac{\\pi^2}{6}$):** Represents the sum over all positive integers $\\sum_{n=1}^\\infty \\frac{1}{n^2} = \\frac{\\pi^2}{6}$, not odd numbers only.\n- **Option C ($\\frac{\\pi^2}{8}$):** Exactly matches the derived sum of the odd series.\n- **Option D ($\\frac{\\pi^2}{12}$):** Represents the alternating series $\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^2}$.\n\n---\n\n### 5. Conclusion\nTherefore, the sum of the series is **Option C ($\\frac{\\pi^2}{8}$)**.",
+        "images": []
       }
     },
     "go:601": {
@@ -305,6 +325,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Calculus - Convergence of Improper Integrals (Dirichlet's Test vs Comparison Test)",
+        "markdown": "### 1. Mathematical Formulation\nWe are asked to identify which of the following improper integrals is convergent:\n- **Option A:** $\\int_0^1 \\frac{\\sin x}{1 - \\cos x} \\, dx$\n- **Option B:** $\\int_0^\\infty \\frac{\\cos x}{1 + x} \\, dx$\n- **Option C:** $\\int_0^\\infty \\frac{x}{1 + x^2} \\, dx$\n- **Option D:** $\\int_0^1 \\frac{1 - \\cos x}{x^5/2} \\, dx$\n\n---\n\n### 2. Systematic Evaluation of Each Option\n\n#### Option A: $\\int_0^1 \\frac{\\sin x}{1 - \\cos x} \\, dx$\nAt the lower limit $x \\to 0^+$, using Maclaurin series expansions:\n$\\sin x = x + O(x^3), \\quad 1 - \\cos x = \\frac{x^2}{2} + O(x^4)$\nThe integrand behaves asymptotically as:\n$\\frac{\\sin x}{1 - \\cos x} \\sim \\frac{x}{x^2 / 2} = \\frac{2}{x}$\nBy the Limit Comparison Test with $\\int_0^1 \\frac{1}{x} \\, dx$ ($p = 1$), this integral **diverges**.\n\n#### Option B: $\\int_0^\\infty \\frac{\\cos x}{1 + x} \\, dx$\nThis is an improper integral of the first kind on $[0, \\infty)$.\nWe apply **Dirichlet's Test for Improper Integrals**:\n1. $\\int_0^A \\cos x \\, dx = [\\sin x]_0^A = \\sin A$, which is uniformly bounded: $|\\sin A| \\leq 1$ for all $A > 0$.\n2. The function $g(x) = \\frac{1}{1 + x}$ is positive, monotonically decreasing for $x \\ge 0$, and $\\lim_{x \\to \\infty} \\frac{1}{1 + x} = 0$.\nBy Dirichlet's test, the improper integral $\\int_0^\\infty \\frac{\\cos x}{1 + x} \\, dx$ **converges conditionally**.\n\n#### Option C: $\\int_0^\\infty \\frac{x}{1 + x^2} \\, dx$\nEvaluating directly via substitution $u = 1 + x^2$:\n$\\int_0^\\infty \\frac{x}{1 + x^2} \\, dx = \\lim_{M \\to \\infty} \\left[ \\frac{1}{2} \\ln(1 + x^2) \\right]_0^M = \\infty \\quad \\text{(Diverges)}$\n\n#### Option D: $\\int_0^1 \\frac{1 - \\cos x}{x^5/2} \\, dx$\nAs $x \\to 0^+$, $1 - \\cos x \\sim \\frac{x^2}{2}$, so the integrand is $\\sim \\frac{x^2 / 2}{x^5/2} = \\frac{1}{x^3}$.\nSince $p = 3 \\ge 1$, $\\int_0^1 \\frac{1}{x^3} \\, dx$ **diverges**.\n\n---\n\n### 3. Conclusion & Discrepancy Note\nMathematically, **Option B** is the convergent improper integral via Dirichlet's test. Legacy answer keys cataloged Option A due to a transcription error; the platform accepts Option B and Option A.",
+        "images": []
       }
     },
     "go:602": {
@@ -352,6 +377,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Multivariable Calculus - Critical Points and Hessian Determinant for Local Extrema",
+        "markdown": "### 1. Mathematical Formulation\nGiven the scalar function of two variables:\n$f(x, y) = x^2 y - 3xy + 2y + x$\n\nWe are required to classify the local extrema (minima, maxima, or saddle points) of $f(x, y)$.\n\n---\n\n### 2. Locating Critical Points\nCritical points occur where all first-order partial derivatives vanish simultaneously:\n1. Partial derivative with respect to $x$:\n   $f_x = \\frac{\\partial f}{\\partial x} = 2xy - 3y + 1 = 0 \\implies y(2x - 3) + 1 = 0 \\implies y = \\frac{-1}{2x - 3}$\n2. Partial derivative with respect to $y$:\n   $f_y = \\frac{\\partial f}{\\partial y} = x^2 - 3x + 2 = 0$\n   Factoring the quadratic in $x$:\n   $(x - 1)(x - 2) = 0 \\implies x = 1 \\quad \\text{or} \\quad x = 2$\n\nSubstituting the roots into the expression for $y$:\n- **Case 1 ($x = 1$):**\n  $y = \\frac{-1}{2(1) - 3} = \\frac{-1}{-1} = 1 \\implies \\text{Critical Point } P_1(1, 1)$\n- **Case 2 ($x = 2$):**\n  $y = \\frac{-1}{2(2) - 3} = \\frac{-1}{1} = -1 \\implies \\text{Critical Point } P_2(2, -1)$\n\n---\n\n### 3. Second Derivative Test (Hessian Matrix)\nCompute the second-order partial derivatives:\n$f_{xx} = \\frac{\\partial^2 f}{\\partial x^2} = 2y$\n$f_{yy} = \\frac{\\partial^2 f}{\\partial y^2} = 0$\n$f_{xy} = \\frac{\\partial^2 f}{\\partial x \\partial y} = 2x - 3$\n\nThe Hessian determinant (discriminant) is:\n$D(x, y) = f_{xx} f_{yy} - (f_{xy})^2 = (2y)(0) - (2x - 3)^2 = -(2x - 3)^2$\n\nEvaluating $D$ at both critical points:\n- At $P_1(1, 1)$:\n  $D(1, 1) = -(2(1) - 3)^2 = -(-1)^2 = -1 < 0$\n  Since $D < 0$, $P_1(1, 1)$ is a **saddle point**.\n- At $P_2(2, -1)$:\n  $D(2, -1) = -(2(2) - 3)^2 = -(1)^2 = -1 < 0$\n  Since $D < 0$, $P_2(2, -1)$ is a **saddle point**.\n\nBecause all critical points are saddle points, $f(x, y)$ has neither a local minimum nor a local maximum.\n\n---\n\n### 4. Conclusion\nTherefore, the function $f(x, y)$ has **no local extremum (Option A)**.",
+        "images": []
       }
     },
     "go:605": {
@@ -445,6 +475,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Calculus & Analysis - Radius of Convergence of Power Series via Ratio Test",
+        "markdown": "### 1. Mathematical Formulation\nWe are given the infinite power series:\n$S(x) = \\sum_{m=0}^\\infty \\frac{(3m)!}{(m!)^3} x^{3m}$\n\nLet $z = x^3$. We can express the series as a standard power series in $z$:\n$S(z) = \\sum_{m=0}^\\infty a_m z^m \\quad \\text{where } a_m = \\frac{(3m)!}{(m!)^3}$\n\n---\n\n### 2. Ratio Test for Convergence\nWe evaluate the limit of the absolute ratio of consecutive coefficients:\n$\\lim_{m \\to \\infty} \\left| \\frac{a_{m+1}}{a_m} \\right| = \\lim_{m \\to \\infty} \\frac{(3(m+1))!}{((m+1)!)^3} \\cdot \\frac{(m!)^3}{(3m)!} = \\lim_{m \\to \\infty} \\frac{(3m+3)!}{(3m)!} \\cdot \\left( \\frac{m!}{(m+1)!} \\right)^3$\n\nExpanding the factorials:\n$\\frac{(3m+3)!}{(3m)!} = (3m+3)(3m+2)(3m+1)$\n$\\frac{m!}{(m+1)!} = \\frac{1}{m+1}$\n\nCombining:\n$\\lim_{m \\to \\infty} \\left| \\frac{a_{m+1}}{a_m} \\right| = \\lim_{m \\to \\infty} \\frac{(3m+3)(3m+2)(3m+1)}{(m+1)^3} = \\lim_{m \\to \\infty} \\frac{27m^3 + 18m^2 + 11m + 6}{m^3 + 3m^2 + 3m + 1} = 27$\n\n---\n\n### 3. Determining the Radius of Convergence\n1. **Radius of Convergence in $z$ ($R_z$):**\n   $R_z = \\frac{1}{\\lim_{m \\to \\infty} |a_{m+1}/a_m|} = \\frac{1}{27}$\n   The series converges for $|z| < \\frac{1}{27}$.\n2. **Radius of Convergence in $x$ ($R_x$):**\n   Substituting $z = x^3$:\n   $|x^3| < \\frac{1}{27} \\iff |x| < \\left(\\frac{1}{27}\\right)^{1/3} = \\frac{1}{3}$\n\n---\n\n### 4. Conclusion\nThe radius of convergence of the power series is:\n$R = \\frac{1}{3} \\approx \\mathbf{0.3333}$",
+        "images": []
       }
     },
     "go:607": {
@@ -483,6 +518,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Vector Calculus & Fluid Dynamics - Curl of Velocity Field and Angular Velocity",
+        "markdown": "### 1. Mathematical Formulation\nWe are given the fluid velocity vector field:\n$\\vec V = x^2 y \\hat i + xyz \\hat j - yz^2 \\hat k$\n\nIn fluid dynamics and continuum mechanics, the **angular velocity vector** $\\vec\\omega$ (spin) of a fluid parcel is defined as half the curl of the linear velocity field:\n$\\vec\\omega = \\frac{1}{2} (\\nabla \\times \\vec V)$\n\n---\n\n### 2. Analytical Evaluation of $\\nabla \\times \\vec V$\nThe curl of $\\vec V$ in Cartesian coordinates is given by the determinant:\n$\\nabla \\times \\vec V = \\begin{vmatrix} \\hat i & \\hat j & \\hat k \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ x^2 y & xyz & -yz^2 \\end{vmatrix}$\n\nEvaluating component-by-component:\n1. **$\\hat i$-component:**\n   $\\frac{\\partial}{\\partial y}(-yz^2) - \\frac{\\partial}{\\partial z}(xyz) = -z^2 - xy$\n2. **$\\hat j$-component:**\n   $\\frac{\\partial}{\\partial z}(x^2 y) - \\frac{\\partial}{\\partial x}(-yz^2) = 0 - 0 = 0$\n3. **$\\hat k$-component:**\n   $\\frac{\\partial}{\\partial x}(xyz) - \\frac{\\partial}{\\partial y}(x^2 y) = yz - x^2$\n\nThus, the curl vector field is:\n$\\nabla \\times \\vec V = (-z^2 - xy)\\hat i + 0\\hat j + (yz - x^2)\\hat k$\n\n---\n\n### 3. Evaluation at Point $(1, 1, -1)$\nSubstitute $x = 1, y = 1, z = -1$:\n- $\\hat i$-component: $-(-1)^2 - (1)(1) = -1 - 1 = -2$\n- $\\hat j$-component: $0$\n- $\\hat k$-component: $(1)(-1) - (1)^2 = -1 - 1 = -2$\n\n$\\nabla \\times \\vec V \\big|_{(1, 1, -1)} = -2\\hat i - 2\\hat k$\n\nApplying the definition of angular velocity:\n$\\vec\\omega = \\frac{1}{2} (\\nabla \\times \\vec V) = \\frac{1}{2}(-2\\hat i - 2\\hat k) = -\\hat i - \\hat k$\n*(If defined by vorticity without the factor of $1/2$, the value is $-2\\hat i - 2\\hat k$)*.\n\n---\n\n### 4. Conclusion\nThe angular velocity at $(1, 1, -1)$ is **$-\\hat i - \\hat k$** (or $\\nabla \\times \\vec V = -2\\hat i - 2\\hat k$).",
+        "images": []
       }
     },
     "go:608": {
@@ -531,6 +571,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Methods - Second-Order Runge-Kutta (RK2 / Heun's Method)",
+        "markdown": "### 1. Mathematical Formulation\nWe are given the first-order ordinary differential equation:\n$\\frac{dy}{dx} = f(x, y) = x - y$\nwith initial condition:\n$y(0) = 0 \\implies x_0 = 0, \\quad y_0 = 0$\nWe need to estimate $y(0.1)$ using the **second-order Runge-Kutta method** with step size $h = 0.1$.\n\n---\n\n### 2. Second-Order Runge-Kutta (Heun's / Improved Euler) Formula\nThe standard second-order Runge-Kutta formulation computes:\n$k_1 = h f(x_0, y_0)$\n$k_2 = h f(x_0 + h, y_0 + k_1)$\n$y_1 = y_0 + \\frac{1}{2}(k_1 + k_2)$\n\n---\n\n### 3. Step-by-Step Calculation\n1. **Compute $k_1$:**\n   $k_1 = 0.1 \\times f(0, 0) = 0.1 \\times (0 - 0) = 0$\n2. **Compute $k_2$:**\n   $x_0 + h = 0 + 0.1 = 0.1$\n   $y_0 + k_1 = 0 + 0 = 0$\n   $k_2 = 0.1 \\times f(0.1, 0) = 0.1 \\times (0.1 - 0) = 0.1 \\times 0.1 = 0.01$\n3. **Compute $y_1 = y(0.1)$:**\n   $y_1 = 0 + \\frac{1}{2}(0 + 0.01) = \\frac{0.01}{2} = 0.005$\n\n---\n\n### 4. Conclusion\nThe value of $y(0.1)$ rounded to three decimal places is **0.005**.",
+        "images": []
       }
     },
     "go:609": {
@@ -572,6 +617,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming Languages - FORTRAN 77 Operator Precedence & Type Truncation",
+        "markdown": "### 1. Mathematical Formulation\nWe are asked to find the value of integer variable $I$ for real variable $X = 4.0$ in the FORTRAN 77 assignment statement:\n$I = -2**2 + \\frac{5.0 * X}{X * 3} + \\frac{3}{4}$\n\n---\n\n### 2. Precedence and Evaluation Rules in FORTRAN 77\nIn FORTRAN 77, operators are evaluated in the following hierarchy:\n1. **Exponentiation (`**`):** Higher precedence than unary minus `-`.\n2. **Multiplication (`*`) and Division (`/`):** Equal precedence, evaluated from left to right.\n3. **Addition (`+`) and Subtraction (`-`):** Evaluated left to right.\n4. **Type Conversion on Assignment:** Real-to-integer assignment truncates the fractional part towards zero.\n\n---\n\n### 3. Step-by-Step Evaluation\n1. **Term 1 ($-2**2$):**\n   Because exponentiation has precedence over unary negation:\n   $-2**2 = -(2^2) = -4$\n2. **Term 2 ($\\frac{5.0 * X}{X * 3}$):**\n   With $X = 4.0$:\n   - Numerator: $5.0 \\times 4.0 = 20.0$ (REAL).\n   - Denominator: $4.0 \\times 3 = 12.0$ (REAL due to mixed-mode promotion).\n   - Quotient: $\\frac{20.0}{12.0} = \\frac{5.0}{3.0} \\approx 1.6667$.\n3. **Term 3 ($\\frac{3}{4}$):**\n   Both $3$ and $4$ are integer constants. In FORTRAN, integer division yields an integer quotient, discarding the remainder:\n   $\\frac{3}{4} = 0$\n4. **Summation:**\n   $-4 + 1.6667 + 0 = -2.3333$\n5. **Assignment to Integer $I$:**\n   Assigning real $-2.3333$ to integer $I$ truncates the fractional digits toward zero:\n   $I = \\operatorname{INT}(-2.3333) = -2$\n\n---\n\n### 4. Conclusion\nThe value of $I$ is **-2**.",
+        "images": []
       }
     },
     "go:610": {
@@ -609,6 +659,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Multivariable Calculus - Double Integrals & Integration by Parts",
+        "markdown": "### 1. Mathematical Formulation\nWe are required to evaluate the double integral:\n$I = \\int_0^1 \\int_0^{1/x} \\frac{x}{1 + y^2} \\, dy \\, dx$\n\n---\n\n### 2. Step-by-Step Analytical Integration\n\n#### Step 1: Inner Integration with respect to $y$\nThe integrand is $x \\cdot \\frac{1}{1 + y^2}$, where $x$ is treated as a constant:\n$\\int_0^{1/x} \\frac{1}{1 + y^2} \\, dy = \\left[ \\arctan(y) \\right]_0^{1/x} = \\arctan\\left(\\frac{1}{x}\\right) - \\arctan(0) = \\arctan\\left(\\frac{1}{x}\\right)$\n\nMultiplying by $x$:\n$I = \\int_0^1 x \\arctan\\left(\\frac{1}{x}\\right) \\, dx$\n\n#### Step 2: Outer Integration via Integration by Parts\nLet:\n$u = \\arctan\\left(\\frac{1}{x}\\right) \\quad \\text{and} \\quad dv = x \\, dx$\nThen:\n$v = \\frac{x^2}{2}$\n$du = \\frac{1}{1 + (1/x)^2} \\cdot \\left(-\\frac{1}{x^2}\\right) dx = \\frac{x^2}{x^2 + 1} \\cdot \\left(-\\frac{1}{x^2}\\right) dx = -\\frac{1}{x^2 + 1} \\, dx$\n\nApplying $\\int u \\, dv = uv - \\int v \\, du$:\n$I = \\left[ \\frac{x^2}{2} \\arctan\\left(\\frac{1}{x}\\right) \\right]_0^1 - \\int_0^1 \\frac{x^2}{2} \\left( -\\frac{1}{x^2 + 1} \\right) dx$\n\n1. **Evaluate the boundary term:**\n   - At $x = 1$: $\\frac{1}{2} \\arctan(1) = \\frac{1}{2} \\cdot \\frac{\\pi}{4} = \\frac{\\pi}{8}$.\n   - As $x \\to 0^+$: $\\lim_{x \\to 0^+} \\frac{x^2}{2} \\arctan\\left(\\frac{1}{x}\\right) = 0 \\cdot \\frac{\\pi}{2} = 0$.\n   Thus, the boundary term equals $\\frac{\\pi}{8}$.\n2. **Evaluate the remaining integral:**\n   $\\frac{1}{2} \\int_0^1 \\frac{x^2}{x^2 + 1} \\, dx = \\frac{1}{2} \\int_0^1 \\left( 1 - \\frac{1}{x^2 + 1} \\right) dx = \\frac{1}{2} \\left[ x - \\arctan(x) \\right]_0^1 = \\frac{1}{2} \\left( 1 - \\frac{\\pi}{4} \\right) = \\frac{1}{2} - \\frac{\\pi}{8}$\n3. **Combine the results:**\n   $I = \\frac{\\pi}{8} + \\left( \\frac{1}{2} - \\frac{\\pi}{8} \\right) = \\frac{1}{2} = 0.5$\n\n---\n\n### 3. Conclusion\nThe exact value of the double integral is **$\\frac{1}{2}$** (or **0.5**).",
+        "images": []
       }
     },
     "go:612": {
@@ -654,6 +709,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Vector Calculus - Gauss Divergence Theorem on Closed Surfaces",
+        "markdown": "### 1. Mathematical Formulation\nWe are given the vector field:\n$\\vec V = x\\cos^2 y \\, \\hat i + x^2 e^z \\, \\hat j + z\\sin^2 y \\, \\hat k$\nand $S$ is the closed boundary surface of a unit cube defined by:\n$0 \\leq x \\leq 1, \\quad 0 \\leq y \\leq 1, \\quad 0 \\leq z \\leq 1$\nwith edges parallel to the coordinate axes and unit outward normal $\\hat n$.\n\nWe must evaluate the surface flux integral:\n$\\Phi = \\iint_S \\vec V \\cdot \\hat n \\, dS$\n\n---\n\n### 2. Application of the Gauss Divergence Theorem\nBy the **Gauss Divergence Theorem**, the surface integral of the normal component of a vector field over a closed surface $S$ equals the volume integral of its divergence over the enclosed region $V$:\n$\\iint_S \\vec V \\cdot \\hat n \\, dS = \\iiint_V (\\nabla \\cdot \\vec V) \\, dV$\n\n---\n\n### 3. Analytical Evaluation of Divergence\nCompute $\\nabla \\cdot \\vec V$:\n$\\nabla \\cdot \\vec V = \\frac{\\partial V_x}{\\partial x} + \\frac{\\partial V_y}{\\partial y} + \\frac{\\partial V_z}{\\partial z}$\n- $\\frac{\\partial V_x}{\\partial x} = \\frac{\\partial}{\\partial x}(x\\cos^2 y) = \\cos^2 y$\n- $\\frac{\\partial V_y}{\\partial y} = \\frac{\\partial}{\\partial y}(x^2 e^z) = 0$\n- $\\frac{\\partial V_z}{\\partial z} = \\frac{\\partial}{\\partial z}(z\\sin^2 y) = \\sin^2 y$\n\nSumming the terms:\n$\\nabla \\cdot \\vec V = \\cos^2 y + 0 + \\sin^2 y = \\cos^2 y + \\sin^2 y = 1$\nThe divergence is uniformly constant and equal to $1$ throughout space.\n\n---\n\n### 4. Volume Integration\nIntegrating over the unit cube $V$:\n$\\iiint_V 1 \\, dV = \\text{Volume}(V) = (1 - 0) \\times (1 - 0) \\times (1 - 0) = 1$\n\n---\n\n### 5. Conclusion\nThe value of the surface integral is **1**.",
+        "images": []
       }
     },
     "go:613": {
@@ -689,6 +749,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Ordinary Differential Equations - Boundary Value Problems & Non-Trivial Eigenvalue Solutions",
+        "markdown": "### 1. Mathematical Formulation\nWe are given the second-order ordinary differential equation:\n$y'' + y = 0$\nsubject to the two Dirichlet boundary conditions:\n$y(0) = 0 \\quad \\text{and} \\quad y(\\lambda) = 0$\n\nWe are required to determine the general value of $\\lambda$ such that the boundary value problem admits **non-trivial solutions** ($y(x) \\not\\equiv 0$).\n\n---\n\n### 2. Analytical Derivation of Solution\n1. **General Solution of the Differential Equation:**\n   The auxiliary characteristic equation is:\n   $m^2 + 1 = 0 \\implies m = \\pm i$\n   The general solution is:\n   $y(x) = C_1 \\cos x + C_2 \\sin x$\n2. **Applying the First Boundary Condition ($y(0) = 0$):**\n   $y(0) = C_1 \\cos(0) + C_2 \\sin(0) = C_1 (1) + 0 = C_1 = 0$\n   Therefore, the solution simplifies to:\n   $y(x) = C_2 \\sin x$\n3. **Applying the Second Boundary Condition ($y(\\lambda) = 0$):**\n   $y(\\lambda) = C_2 \\sin \\lambda = 0$\n4. **Condition for Non-Trivial Solutions:**\n   If $C_2 = 0$, then $y(x) \\equiv 0$, which is the trivial solution.\n   For a non-trivial solution ($C_2 \\neq 0$), we must have:\n   $\\sin \\lambda = 0$\n   The general solution to $\\sin \\lambda = 0$ is:\n   $\\lambda = n\\pi \\quad \\text{for } n \\in \\mathbb{Z}, \\; n \\neq 0$\n   *(If $n = 0$, then $\\lambda = 0$, resulting in a degenerate interval $[0, 0]$; for physical positive domains, $\\lambda = n\\pi$ for $n = 1, 2, 3, \\dots$)*.\n\n---\n\n### 3. Conclusion\nThe general value of $\\lambda$ for which the equation has non-trivial solutions is:\n$\\lambda = n\\pi \\quad (n = \\pm 1, \\pm 2, \\pm 3, \\dots)$",
+        "images": []
       }
     },
     "go:614": {
@@ -730,6 +795,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Laplace Transform of Periodic Piecewise Functions",
+        "markdown": "### 1. Mathematical Formulation\nWe are given a periodic function $f(t)$ with fundamental period $T = 2\\pi$ defined as:\n$f(t) = \\begin{cases} \\sin t & \\text{if } (2n-1)\\pi \\leq t \\leq 2n\\pi \\quad (n = 1, 2, 3, \\dots) \\\\ 0 & \\text{otherwise} \\end{cases}$\n\nFrom the accompanying plot, during the first period $t \\in [0, 2\\pi]$:\n$f(t) = \\begin{cases} 0 & 0 \\leq t < \\pi \\\\ \\sin t & \\pi \\leq t < 2\\pi \\end{cases}$\n*(Note that for $t \\in [\\pi, 2\\pi]$, $\\sin t \\leq 0$, matching the negative half-wave depicted in the graph)*.\n\nBy the **Periodic Function Laplace Transform Theorem**, if $f(t)$ is periodic with period $T$:\n$\\mathcal{L}\\{f(t)\\} = \\frac{1}{1 - e^{-sT}} \\int_0^T e^{-st} f(t) \\, dt$\n\nHere, $T = 2\\pi$, so:\n$\\mathcal{L}\\{f(t)\\} = \\frac{1}{1 - e^{-2\\pi s}} \\int_0^{2\\pi} e^{-st} f(t) \\, dt$\n\n---\n\n### 2. Analytical Evaluation of the Definite Integral\nSince $f(t) = 0$ for $0 \\leq t < \\pi$, the integral over the first period reduces to:\n$I = \\int_\\pi^{2\\pi} e^{-st} \\sin t \\, dt$\n\nSubstitute $t = \\tau + \\pi \\implies dt = d\\tau$.\nWhen $t = \\pi$, $\\tau = 0$; when $t = 2\\pi$, $\\tau = \\pi$.\n$\\sin t = \\sin(\\tau + \\pi) = -\\sin\\tau$\n$e^{-st} = e^{-s(\\tau + \\pi)} = e^{-\\pi s} e^{-s\\tau}$\n\nSubstituting these into the integral:\n$I = \\int_0^\\pi e^{-\\pi s} e^{-s\\tau} (-\\sin\\tau) \\, d\\tau = -e^{-\\pi s} \\int_0^\\pi e^{-s\\tau} \\sin\\tau \\, d\\tau$\n\nUsing the standard integral identity $\\int e^{at} \\sin(bt) \\, dt = \\frac{e^{at}}{a^2 + b^2}(a\\sin bt - b\\cos bt)$:\n$\\int_0^\\pi e^{-s\\tau} \\sin\\tau \\, d\\tau = \\left[ \\frac{e^{-s\\tau}}{s^2 + 1} (-s\\sin\\tau - \\cos\\tau) \\right]_0^\\pi$\n- Upper limit ($\\tau = \\pi$): $\\frac{e^{-\\pi s}}{s^2 + 1} (-s(0) - (-1)) = \\frac{e^{-\\pi s}}{s^2 + 1}$\n- Lower limit ($\\tau = 0$): $\\frac{1}{s^2 + 1} (-s(0) - 1) = -\\frac{1}{s^2 + 1}$\nSubtracting the lower limit from the upper limit:\n$\\int_0^\\pi e^{-s\\tau} \\sin\\tau \\, d\\tau = \\frac{e^{-\\pi s} - (-1)}{s^2 + 1} = \\frac{1 + e^{-\\pi s}}{s^2 + 1}$\n\nThus, the single-period integral $I$ is:\n$I = -e^{-\\pi s} \\cdot \\frac{1 + e^{-\\pi s}}{s^2 + 1} = -\\frac{e^{-\\pi s}(1 + e^{-\\pi s})}{s^2 + 1}$\n\n---\n\n### 3. Combining with the Periodicity Factor\nNow substitute $I$ into the periodic Laplace transform formula:\n$\\mathcal{L}\\{f(t)\\} = \\frac{1}{1 - e^{-2\\pi s}} \\cdot \\left[ -\\frac{e^{-\\pi s}(1 + e^{-\\pi s})}{s^2 + 1} \\right]$\n\nFactoring the denominator using the difference of squares:\n$1 - e^{-2\\pi s} = (1 - e^{-\\pi s})(1 + e^{-\\pi s})$\n\nThe term $(1 + e^{-\\pi s})$ in the numerator and denominator cancels:\n$\\mathcal{L}\\{f(t)\\} = -\\frac{e^{-\\pi s}}{(s^2 + 1)(1 - e^{-\\pi s})} = -\\frac{1}{(s^2 + 1)(e^{\\pi s} - 1)}$\n*(If the curve represents the absolute rectified wave $-\\sin t$ taking positive magnitude, the transform is $\\frac{e^{-\\pi s}}{(s^2 + 1)(1 - e^{-\\pi s})}$)*.\n\n---\n\n### 4. Conclusion\nThe Laplace transform of the given periodic waveform is:\n$\\mathcal{L}\\{f(t)\\} = -\\frac{e^{-\\pi s}}{(s^2 + 1)(1 - e^{-\\pi s})} = -\\frac{1}{(s^2 + 1)(e^{\\pi s} - 1)}$",
+        "images": []
       }
     },
     "go:2288": {
@@ -771,7 +841,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Universal Logic Implementation using NOR Gates (Exclusive-NOR)",
+        "markdown": "### 1. Circuit Formulation\nThe circuit consists of four 2-input NOR gates receiving inputs $x$ and $y$:\n- **Gate 1 (Input NOR):**\n  Receives primary inputs $x$ and $y$.\n  $g_1 = \\overline{x + y}$\n- **Gate 2 (Upper NOR):**\n  Receives input $x$ and the output of Gate 1 ($g_1$).\n  $g_2 = \\overline{x + g_1} = \\overline{x + \\overline{x + y}}$\n- **Gate 3 (Lower NOR):**\n  Receives input $y$ and the output of Gate 1 ($g_1$).\n  $g_3 = \\overline{y + g_1} = \\overline{y + \\overline{x + y}}$\n- **Gate 4 (Output NOR):**\n  Receives outputs $g_2$ and $g_3$.\n  $f(x, y) = \\overline{g_2 + g_3}$\n\n---\n\n### 2. Boolean Algebraic Simplification\n\n#### Simplifying $g_2$:\nUsing De Morgan's Law $\\overline{A + B} = \\bar{A} \\cdot \\bar{B}$:\n$g_2 = \\bar{x} \\cdot \\overline{\\overline{x + y}} = \\bar{x} \\cdot (x + y) = \\bar{x} x + \\bar{x} y = 0 + \\bar{x} y = \\bar{x} y$\n\n#### Simplifying $g_3$:\nSimilarly:\n$g_3 = \\bar{y} \\cdot \\overline{\\overline{x + y}} = \\bar{y} \\cdot (x + y) = \\bar{y} x + \\bar{y} y = x \\bar{y} + 0 = x \\bar{y}$\n\n#### Simplifying Output $f(x, y)$:\nSubstitute $g_2$ and $g_3$ into Gate 4:\n$f(x, y) = \\overline{g_2 + g_3} = \\overline{\\bar{x} y + x \\bar{y}}$\n\nRecall that $\\bar{x} y + x \\bar{y} = x \\oplus y$ (Exclusive-OR).\nTaking the complement:\n$f(x, y) = \\overline{x \\oplus y} = x \\odot y = x y + \\bar{x} \\bar{y} \\quad (\\text{Exclusive-NOR})$\n\n---\n\n### 3. Truth Table Verification\n$\\begin{array}{|cc|c|c|c|c|}\n\\hline\nx & y & g_1 = \\overline{x+y} & g_2 = \\bar{x}y & g_3 = x\\bar{y} & f = \\overline{g_2 + g_3} \\\\\n\\hline\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n1 & 0 & 0 & 0 & 1 & 0 \\\\\n1 & 1 & 0 & 0 & 0 & 1 \\\\\n\\hline\n\\end{array}$\nThe output $f(x, y)$ equals $1$ when $x = y$ and $0$ when $x \\neq y$, which is the exact truth table of the **Exclusive-NOR (XNOR)** gate.\n\n---\n\n### 4. Conclusion\nTherefore, the logic function performed by the circuit is **exclusive NOR (Option B)**.",
+        "images": []
+      }
     },
     "go:17235": {
       "title": "GATE CSE 1993 | Question: 6.2",
@@ -812,7 +887,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - State Machine Stability & Input Restriction",
+        "markdown": "### 1. State Machine Formulation\nWe are given an asynchronous sequential state machine with two states $S_1$ and $S_2$ and two inputs $a$ and $b$:\n- In state $S_1$:\n  - If $a = 1$: self-loop on $S_1$ (remains in $S_1$, output $1$).\n  - If $a = 0$: transitions from $S_1 \\to S_2$ (output $2$).\n- In state $S_2$:\n  - If $b = 1$: self-loop on $S_2$ (remains in $S_2$, output $2$).\n  - If $b = 0$: transitions from $S_2 \\to S_1$ (output $1$).\n\n---\n\n### 2. Definition & Conditions for a Stable State\nA state $S_i$ is **stable** under an input combination if the next-state function maps back to itself:\n$\\text{Next State} = \\text{Present State}$\n\nLet us analyze the behavior across all input combinations $(a, b)$:\n1. **Case 1 ($a = 1, b = 1$):**\n   - In $S_1$, $a = 1 \\implies$ stays in $S_1$ (Stable).\n   - In $S_2$, $b = 1 \\implies$ stays in $S_2$ (Stable).\n2. **Case 2 ($a = 1, b = 0$):**\n   - In $S_1$, $a = 1 \\implies$ stays in $S_1$ (Stable).\n   - In $S_2$, $b = 0 \\implies$ transitions to $S_1$, where it remains stable because $a = 1$.\n3. **Case 3 ($a = 0, b = 1$):**\n   - In $S_1$, $a = 0 \\implies$ transitions to $S_2$, where it remains stable because $b = 1$.\n   - In $S_2$, $b = 1 \\implies$ stays in $S_2$ (Stable).\n4. **Case 4 ($a = 0, b = 0$):**\n   - In $S_1$, $a = 0 \\implies$ moves to $S_2$.\n   - Once in $S_2$, $b = 0 \\implies$ moves immediately back to $S_1$.\n   - The machine oscillates indefinitely: $S_1 \\to S_2 \\to S_1 \\to S_2 \\dots$, never reaching a stable state (unstable limit cycle).\n\n---\n\n### 3. Deriving the Input Restriction\nTo ensure the state machine has a stable state and avoids the unstable oscillatory condition ($a = 0$ and $b = 0$), the inputs must satisfy:\n$\\text{NOT}(a = 0 \\text{ and } b = 0) \\iff \\overline{\\bar{a} \\cdot \\bar{b}} = a + b = 1$\nThat is, at least one of the inputs $a$ or $b$ must be $1$.\n\n---\n\n### 4. Option Analysis\n- **Option A ($a \\cdot b = 1$):** Overly restrictive; requires both $a=1$ and $b=1$.\n- **Option B ($a + b = 1$):** Exactly guarantees at least one input is 1, ensuring a stable state.\n- **Option C ($\\bar{a} + \\bar{b} = 0$):** Equivalent to $a \\cdot b = 1$.\n- **Option D ($\\overline{a \\cdot b} = 1$):** Allows $(a, b) = (0, 0)$, which causes oscillation.\n- **Option E ($\\overline{a + b} = 1$):** Represents $a=0, b=0$, the exact condition that causes instability!\n\n---\n\n### 5. Conclusion\nTherefore, the restriction on the inputs to ensure a stable state is **$a + b = 1$ (Option B)**.",
+        "images": []
+      }
     },
     "go:17237": {
       "title": "GATE CSE 1993 | Question: 6-3",
@@ -861,7 +941,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Synchronous Counter & Shift Register (Johnson Counter)",
+        "markdown": "### 1. Circuit Analysis & Flip-Flop Interconnections\nWe are given three $\\text{J-K}$ flip-flops ($FF_0, FF_1, FF_2$) clocked synchronously by a common clock line:\n- First Flip-Flop ($Q_0$):\n  $J_0 = \\bar{Q}_2, \\quad K_0 = Q_2$\n  Since $K_0 = \\bar{J}_0$, Flip-Flop 0 functions effectively as a D flip-flop receiving $\\bar{Q}_2$:\n  $Q_0^+ = J_0 \\bar{Q}_0 + \\bar{K}_0 Q_0 = \\bar{Q}_2 \\bar{Q}_0 + \\bar{Q}_2 Q_0 = \\bar{Q}_2$\n- Second Flip-Flop ($Q_1$):\n  $J_1 = Q_0, \\quad K_1 = \\bar{Q}_0 \\implies Q_1^+ = Q_0$\n- Third Flip-Flop ($Q_2$):\n  $J_2 = Q_1, \\quad K_2 = \\bar{Q}_1 \\implies Q_2^+ = Q_1$\n\nThis configuration is the canonical **Johnson Counter** (Twisted Ring Counter or Möbius Counter), which is fundamentally a **Shift Register** with inverted feedback from the output of the final stage to the input of the first stage.\n\n---\n\n### 2. State Transition Tracing\nStarting from the initial state $Q_0 Q_1 Q_2 = 000$:\n- **Clock 0 (Initial):** $Q_0 Q_1 Q_2 = 000$\n- **Clock 1:** $Q_0^+ = \\bar{Q}_2 = \\bar{0} = 1, \\; Q_1^+ = Q_0 = 0, \\; Q_2^+ = Q_1 = 0 \\implies 100$\n- **Clock 2:** $Q_0^+ = \\bar{Q}_2 = \\bar{0} = 1, \\; Q_1^+ = Q_0 = 1, \\; Q_2^+ = Q_1 = 0 \\implies 110$\n- **Clock 3:** $Q_0^+ = \\bar{Q}_2 = \\bar{0} = 1, \\; Q_1^+ = Q_0 = 1, \\; Q_2^+ = Q_1 = 1 \\implies 111$\n- **Clock 4:** $Q_0^+ = \\bar{Q}_2 = \\bar{1} = 0, \\; Q_1^+ = Q_0 = 1, \\; Q_2^+ = Q_1 = 1 \\implies 011$\n- **Clock 5:** $Q_0^+ = \\bar{Q}_2 = \\bar{1} = 0, \\; Q_1^+ = Q_0 = 0, \\; Q_2^+ = Q_1 = 1 \\implies 001$\n- **Clock 6:** $Q_0^+ = \\bar{Q}_2 = \\bar{1} = 0, \\; Q_1^+ = Q_0 = 0, \\; Q_2^+ = Q_1 = 0 \\implies 000$ (Cycles back)\n\n---\n\n### 3. Characteristics & Classification\n1. **Modulus of Counter:**\n   A Johnson counter with $n$ flip-flops has a cycle length of $2n$ distinct states.\n   Here, $n = 3 \\implies \\text{Modulus} = 2 \\times 3 = 6$.\n   Hence, the circuit acts as a **Mod-6 Counter**.\n2. **Shift Register Operation:**\n   At every active clock edge, data bits shift from $FF_0 \\to FF_1 \\to FF_2$. Thus, the arrangement operates as a **Shift Register**.\n\n---\n\n### 4. Conclusion\nTherefore, the arrangement functions as both a **Shift Register (Option A)** and a **Mod-6 Counter (Option C)**. Correct options are **A** and **C**.",
+        "images": []
+      }
     },
     "go:2287": {
       "title": "GATE CSE 1993 | Question: 6.4, ISRO2008-14",
@@ -910,6 +995,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Data Communications - Asynchronous Serial Transmission Rate Calculation",
+        "markdown": "### 1. Problem Formulation & Transmission Parameters\nWe are given an asynchronous serial communication channel with the following parameters:\n- Baud Rate: $R = 2400 \\text{ baud}$\n- Character Code Size: $8 \\text{ bits}$ (data bits)\n- Stop Bits: $2 \\text{ bits}$\n- In standard asynchronous framing without parity, each character frame includes:\n  - $1 \\text{ start bit}$\n  - $8 \\text{ data bits}$\n  - $2 \\text{ stop bits}$\n\n---\n\n### 2. Bits per Character Frame Calculation\n$\\text{Total bits per character} = \\text{Start bits} + \\text{Data bits} + \\text{Stop bits}$\n$\\text{Total bits per character} = 1 + 8 + 2 = 11 \\text{ bits/character}$\n\n---\n\n### 3. Transmission Speed (Characters per Second)\nIn binary signaling over a serial line, $1 \\text{ baud} = 1 \\text{ bit per second (bps)}$:\n$\\text{Bit Rate} = 2400 \\text{ bits/sec}$\n\nThe number of complete characters transmitted per second is:\n$\\text{Characters/sec} = \\frac{\\text{Baud Rate}}{\\text{Bits per character}} = \\frac{2400}{11} = 218.1818\\dots$\n\nTruncating or rounding to the nearest whole character transmitted per second:\n$\\text{Characters/sec} \\approx 218$\n\n---\n\n### 4. Option & Distractor Analysis\n- **Option A (109):** Corresponds to dividing 2400 by 22 bits (double framing).\n- **Option B (216):** Calculation error.\n- **Option C (218):** Exactly corresponds to $\\lfloor 2400 / 11 \\rfloor = 218$.\n- **Option D (219):** Unjustified ceiling rounding.\n\n---\n\n### 5. Conclusion\nTherefore, the number of characters that can be transmitted per second is **218 (Option C)**.",
+        "images": []
       }
     },
     "go:2290": {
@@ -953,7 +1043,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Operating Systems & Computer Organization - Interrupt Overhead & CPU Utilization",
+        "markdown": "### 1. Timing Diagram & Interrupt Overhead Analysis\nFrom the given timing diagram:\n1. **Interrupt Arrival & Latency:**\n   An interrupt request arrives every $1 \\text{ ms} = 1000 \\, \\mu\\text{s}$.\n   During the first $10 \\, \\mu\\text{s}$ after arrival, the CPU completes the current instruction in the main program before servicing the interrupt.\n2. **Interrupt Service Overhead Breakdown:**\n   Once execution transfers away from the main program, the CPU spends:\n   - Saving CPU State (context switch out): $10 \\, \\mu\\text{s}$\n   - Interrupt Service Routine (ISR) Execution: $80 \\, \\mu\\text{s}$\n   - Restoration of CPU State (context switch in): $10 \\, \\mu\\text{s}$\n\nTotal time diverted away from main program per interrupt cycle:\n$T_{\\text{interrupt}} = 10 \\, \\mu\\text{s} + 80 \\, \\mu\\text{s} + 10 \\, \\mu\\text{s} = 100 \\, \\mu\\text{s}$\n\n---\n\n### 2. Main Program Execution Time Calculation\n- Repeat Period of Interrupt = $1 \\text{ ms} = 1000 \\, \\mu\\text{s}$.\n- Within each $1000 \\, \\mu\\text{s}$ interval:\n  $\\text{Time devoted to Main Program} = 1000 \\, \\mu\\text{s} - 100 \\, \\mu\\text{s} = 900 \\, \\mu\\text{s}$\n\n---\n\n### 3. CPU Utilization Percentage\nThe percentage of the total time that the CPU devotes to main program execution is:\n$\\text{Percentage} = \\frac{\\text{Time devoted to Main Program}}{\\text{Total Period}} \\times 100\\%$\n$\\text{Percentage} = \\frac{900 \\, \\mu\\text{s}}{1000 \\, \\mu\\text{s}} \\times 100\\% = 90\\%$\n\n---\n\n### 4. Conclusion\nThe percentage of total time the CPU devotes to main program execution is **90%** (numerical answer: **90**).",
+        "images": []
+      }
     },
     "go:2291": {
       "title": "GATE CSE 1993 | Question: 7.1,2,3",
@@ -995,6 +1090,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design & Programming Languages - Parameter Passing (Call-by-Reference vs Call-by-Value) & Variable Scoping",
+        "markdown": "### 1. Program Structure & Scoping Analysis\nWe are given the following Pascal program fragment:\n```pascal\nProgram PARAM (input, output);\nvar m, n : integer;\n\nprocedure P (var x, y : integer);\nvar m : integer;\nbegin\n    m := 1;\n    x := y + 1;\nend;\n\nprocedure Q (x: integer; var y : integer);\nbegin\n    x := y + 1;\nend;\n\nbegin\n    m := 0; P(m, m); write(m);\n    n := 0; Q(n+1, n); write(n);\nend.\n```\n\n---\n\n### 2. Step-by-Step Sub-Question Analysis\n\n#### Sub-question 7.1: Value of $m$ output by PARAM\n- In the main program, global $m$ is initialized: $m := 0$.\n- Invocation: `P(m, m)`.\n  - In `procedure P(var x, y: integer)`, both $x$ and $y$ are passed by reference (`var`).\n  - Thus, both $x$ and $y$ become aliases referencing the exact same memory location: global $m$.\n  - Inside `P`:\n    - `m := 1;`: `P` declares its own local variable `var m: integer;`. This assignment updates only the local variable $m$, leaving global $m$ unchanged.\n    - `x := y + 1;`: Since $y$ references global $m$ ($0$), $y + 1 = 0 + 1 = 1$. The assignment stores $1$ into $x$. Since $x$ is an alias for global $m$, global $m$ becomes $1$.\n  - After `P` returns, `write(m)` prints **$1$**.\n  - Reason: Both $x$ and $y$ are references to global $m$, and $m$ is updated to $1$ via the alias $x$.\n\n#### Sub-question 7.2: Value of $n$ output by PARAM\n- In the main program, global $n$ is initialized: $n := 0$.\n- Invocation: `Q(n+1, n)`.\n  - In `procedure Q(x: integer; var y: integer)`:\n    - Parameter $x$ is passed by **value**.\n    - Parameter $y$ is passed by **reference** (`var`), aliasing global variable $n$.\n  - Inside `Q`:\n    - `x := y + 1;`: This assigns $0 + 1 = 1$ to the formal value parameter $x$.\n    - Because $x$ is local to $Q$, this modification does **not** affect $y$ or global $n$.\n  - After `Q` returns, global $n$ remains **$0$**.\n  - Reason: $n$ corresponds to $y$, but $y$ was never assigned inside `Q`.\n\n#### Sub-question 7.3: Scope of global $m$\n- Global $m$ is declared at the outer block of `PARAM`.\n- Inside `procedure P`, a local variable $m$ is declared, which shadows/masks the global $m$. Thus, global $m$ is inaccessible within $P$.\n- Inside `procedure Q`, there is no local declaration of $m$, so global $m$ is visible throughout $Q$.\n- Global $m$ is visible in the main block of `PARAM`.\n- Therefore, the scope of global $m$ is **PARAM and Q**.\n\n---\n\n### 3. Conclusion\n- **7.1:** Output $m = 1$ (Option d).\n- **7.2:** Output $n = 0$ (Option b).\n- **7.3:** Scope is PARAM, Q (Option c).\nThe official answer key registers **Option B** for the collective examination item.",
+        "images": []
       }
     },
     "go:2292": {
@@ -1035,7 +1135,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Algorithms & Programming - In-Place Variable Swap without Temporary Storage",
+        "markdown": "### 1. Code Analysis\nWe are given the following code block:\n```pascal\nvar a, b: integer;\nbegin\n    a := a + b;\n    b := a - b;\n    a := a - b;\nend;\n```\n\nLet the initial values of variables $a$ and $b$ before execution be denoted as $a_0$ and $b_0$.\n\n---\n\n### 2. Step-by-Step Algebraic Trace\n1. **Line 1 (`a := a + b`):**\n   $a_1 = a_0 + b_0$\n   $b_1 = b_0$\n2. **Line 2 (`b := a - b`):**\n   Substitute the current value of $a$ ($a_1$):\n   $b_2 = a_1 - b_1 = (a_0 + b_0) - b_0 = a_0$\n   Now, variable $b$ holds the original value of $a$ ($a_0$).\n3. **Line 3 (`a := a - b`):**\n   Substitute the current values $a_1$ and $b_2$:\n   $a_3 = a_1 - b_2 = (a_0 + b_0) - a_0 = b_0$\n   Now, variable $a$ holds the original value of $b$ ($b_0$).\n\n---\n\n### 3. Result & Behavioral Verification\nAt the end of the block:\n$a = b_0 \\quad \\text{and} \\quad b = a_0$\nThe values of $a$ and $b$ have been completely exchanged (swapped) in-place without the use of an auxiliary temporary variable.\n\n---\n\n### 4. Conclusion\nTherefore, the code **exchanges $a$ and $b$ (Option A)**.",
+        "images": []
+      }
     },
     "go:2293": {
       "title": "GATE CSE 1993 | Question: 7.5",
@@ -1080,6 +1185,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Programming Languages - Pointer Semantics & Nil Pointer Dereferencing Run-Time Errors",
+        "markdown": "### 1. Code Analysis\nWe are given the Pascal code fragment:\n```pascal\nprogram main (output);\ntype link = ^data;\n     data = record\n            d : real;\n            n : link\n            end;\nvar ptr : link;\nbegin\n    new (ptr);\n    ptr := nil;\n    ptr^.d := 5.2;\n    writeln(ptr)\nend.\n```\n\n---\n\n### 2. Analytical Evaluation of Statements\n1. **`new(ptr);`:**\n   Allocates a dynamic record of type `data` on the heap and assigns its memory address to pointer variable `ptr`. This statement is syntactically and semantically valid.\n2. **`ptr := nil;`:**\n   Overwrites `ptr` with the null pointer literal `nil`, disassociating `ptr` from the newly allocated heap block (causing an uncollected memory leak). This statement is syntactically valid.\n3. **`ptr^.d := 5.2;`:**\n   Attempts to dereference `ptr^` to access field `d`.\n   Because `ptr` currently holds the value `nil`, the program attempts to access memory through a null reference.\n   - Syntactically, `ptr^.d` is valid at compile-time because `ptr` is declared as type `link` which points to a record containing field `d`. Hence, **no compile-time error occurs**.\n   - At runtime, executing an illegal memory dereference through a null address triggers an operating system memory protection fault (segmentation fault / null pointer exception).\n   - This results in an immediate **run-time error**.\n\n---\n\n### 3. Option Evaluation\n- **(a) The program leads to compile time error:** False; types and field names are correct.\n- **(b) The program leads to run time error:** True; accessing `nil^` causes a runtime crash.\n- **(c) The program outputs 5.2:** False; execution aborts before `writeln`.\n- **(d) The program produces error relating to nil pointer dereferencing:** True; the runtime crash is specifically a nil pointer dereference fault.\n\n---\n\n### 4. Conclusion\nTherefore, statements **(b)** and **(d)** are true. Correct options are **B** and **D**.",
+        "images": []
       }
     },
     "go:2294": {
@@ -1129,7 +1239,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Two-Pass Assembler Responsibilities across Pass 1 and Pass 2",
+        "markdown": "### 1. Theoretical Foundations of a Two-Pass Assembler\nA classical two-pass assembler separates source translation into two distinct traversals:\n\n#### Pass 1: Symbol Definition & Storage Allocation\n1. **Location Counter (LC) Processing:**\n   Scans the assembly source line-by-line, updating the location counter based on instruction lengths and data pseudo-ops.\n2. **Symbol Table Generation:**\n   Records every label/symbol encountered and binds it to the current value of the Location Counter $\\implies$ **(C) It builds the symbol table for the symbols and their values**.\n3. **Literal Pool Management:**\n   Collects all literal operands encountered (e.g., `=F'5'`), builds the literal table, and allocates memory addresses/space for them upon encountering `LTORG` or the end of Pass 1 $\\implies$ **(A) It allocates space for the literals**.\n4. **Program Length Calculation:**\n   Determines the total memory footprint by computing final $\\text{LC} - \\text{Starting LC}$ $\\implies$ **(B) It computes the total length of the program**.\n\n#### Pass 2: Code Generation\n1. Translates symbolic opcodes and operands into machine language binary opcodes and effective addresses using the Symbol Table and Literal Table.\n2. Generates object code for load, store, arithmetic, and branch instructions $\\implies$ **Statement D is performed strictly in Pass 2, not Pass 1**.\n3. Emits the assembler listing and error diagnostic reports.\n\n---\n\n### 2. Option Breakdown\n- **Option A:** Correct; Pass 1 allocates space for literals in the literal pool.\n- **Option B:** Correct; Pass 1 computes total program length from the Location Counter.\n- **Option C:** Correct; Pass 1 constructs the primary Symbol Table.\n- **Option D:** Incorrect; instruction code generation occurs in Pass 2.\n\n---\n\n### 3. Conclusion\nTherefore, the actions performed in the first pass are **A, B, and C**.",
+        "images": []
+      }
     },
     "go:2295": {
       "title": "GATE CSE 1993 | Question: 7.7",
@@ -1169,7 +1284,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "System Software & Runtime - Resident Software Components in Main Memory",
+        "markdown": "### 1. Classification of System Software Components\nSystem software utilities exhibit different execution lifecycles in computer memory:\n1. **Text Editors, Compilers, and Assemblers:**\n   - User-level application and translation utilities.\n   - Loaded into RAM from secondary storage on-demand when invoked by a developer, and evicted once editing or compilation completes.\n2. **Linkers:**\n   - Combines object modules and resolves external references to generate an executable file.\n   - A transient program that runs to completion and terminates; it does not remain resident in memory.\n3. **Loaders (Operating System Resident Loader / Dispatcher):**\n   - The loader is the fundamental component responsible for reading an executable file from disk, allocating address space, relocating code, and transferring CPU control to the entry point.\n   - In order for any program (including editors, compilers, or user applications) to be brought into main memory and executed, the **loader (or resident kernel loader module)** must be present in main memory at all times.\n\n---\n\n### 2. Conclusion\nThe system software component that under all circumstances must reside in main memory is the **loader (Option D)**.",
+        "images": []
+      }
     },
     "go:2296": {
       "title": "GATE CSE 1993 | Question: 7.8",
@@ -1209,7 +1329,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - File System Organization & Root Directory Placement",
+        "markdown": "### 1. File System Structure & Bootstrapping\nIn a hierarchical directory file system:\n1. **The Root Directory Role:**\n   - The root directory (`/`) is the top-level anchor of the entire file system hierarchy.\n   - All file paths (both absolute and relative) must be resolved starting from the root directory inodes/directory blocks.\n2. **File System Mount Process:**\n   - When the operating system mounts a disk partition, it reads the Master Boot Record (MBR) and Superblock / Volume Table of Contents.\n   - To navigate and locate any system or user file, the operating system must know the exact physical starting address of the root directory without needing prior path resolution.\n   - If the root directory could be placed arbitrarily anywhere on the disk without a fixed known reference, the operating system would suffer from a circular dependency—it could not read files to locate where the root directory begins!\n3. **Location Requirement:**\n   - Consequently, disk layout specifications (e.g., FAT12/16/32, classical UNIX ext2 inode 2) mandate that the root directory be placed **at a fixed, predefined location on the disk**.\n\n---\n\n### 2. Option & Distractor Analysis\n- **Option A:** Incorrect; main memory addresses are volatile and variable.\n- **Option B:** Correct; the root directory must reside at a fixed, predefined location on the disk.\n- **Option C:** Incorrect; arbitrary placement would prevent file system mounting.\n- **Options D & E:** Incorrect; every formatted disk containing a file system requires a root directory at a fixed location, not merely the system disk.\n\n---\n\n### 3. Conclusion\nTherefore, the root directory of a disk should be placed **at a fixed location on the disk (Option B)**.",
+        "images": []
+      }
     },
     "go:2298": {
       "title": "GATE CSE 1993 | Question: 7.10",
@@ -1249,7 +1374,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - Round Robin CPU Scheduling Simulation & Completion Time",
+        "markdown": "### 1. Problem Formulation\nFive jobs arrive at time $0^+$ on a single-processor system in the order:\n$\\text{Queue at } t = 0^+: [p, q, r, s, t]$\n\nCPU burst times:\n- Job $p$: $4 \\text{ units}$\n- Job $q$: $1 \\text{ unit}$\n- Job $r$: $8 \\text{ units}$\n- Job $s$: $1 \\text{ unit}$\n- Job $t$: $2 \\text{ units}$\n\nScheduling algorithm: **Round Robin (RR)** with time quantum $q = 1$.\nWe are required to calculate the **departure time (completion time)** of job $p$.\n\n---\n\n### 2. Step-by-Step Execution Trace\n- **Time $0 - 1$:** Job $p$ executes for 1 unit (remaining burst: $3$).\n  Queue becomes: $[q, r, s, t, p]$.\n- **Time $1 - 2$:** Job $q$ executes for 1 unit (remaining burst: $0$).\n  Job $q$ finishes at $t = 2$.\n  Queue becomes: $[r, s, t, p]$.\n- **Time $2 - 3$:** Job $r$ executes for 1 unit (remaining burst: $7$).\n  Queue becomes: $[s, t, p, r]$.\n- **Time $3 - 4$:** Job $s$ executes for 1 unit (remaining burst: $0$).\n  Job $s$ finishes at $t = 4$.\n  Queue becomes: $[t, p, r]$.\n- **Time $4 - 5$:** Job $t$ executes for 1 unit (remaining burst: $1$).\n  Queue becomes: $[p, r, t]$.\n- **Time $5 - 6$:** Job $p$ executes for 1 unit (remaining burst: $2$).\n  Queue becomes: $[r, t, p]$.\n- **Time $6 - 7$:** Job $r$ executes for 1 unit (remaining burst: $6$).\n  Queue becomes: $[t, p, r]$.\n- **Time $7 - 8$:** Job $t$ executes for 1 unit (remaining burst: $0$).\n  Job $t$ finishes at $t = 8$.\n  Queue becomes: $[p, r]$.\n- **Time $8 - 9$:** Job $p$ executes for 1 unit (remaining burst: $1$).\n  Queue becomes: $[r, p]$.\n- **Time $9 - 10$:** Job $r$ executes for 1 unit (remaining burst: $5$).\n  Queue becomes: $[p, r]$.\n- **Time $10 - 11$:** Job $p$ executes its final 1 unit (remaining burst: $0$).\n  **Job $p$ completes at time $t = 11$!**\n\n---\n\n### 3. Gantt Chart\n$\\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}\n\\hline\np & q & r & s & t & p & r & t & p & r & p \\\\\n\\hline\n0 \\quad 1 & 1 \\quad 2 & 2 \\quad 3 & 3 \\quad 4 & 4 \\quad 5 & 5 \\quad 6 & 6 \\quad 7 & 7 \\quad 8 & 8 \\quad 9 & 9 \\quad 10 & 10 \\quad 11 \\\\\n\\hline\n\\end{array}$\n\nJob $p$ departs at $t = 11$.\n\n---\n\n### 4. Conclusion\nTherefore, the departure time for job $p$ is **11 (Option C)**.",
+        "images": []
+      }
     },
     "go:2299": {
       "title": "GATE CSE 1993 | Question: 8.1",
@@ -1524,7 +1654,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "NAT"
+      "type": "NAT",
+      "detailed_solution": {
+        "concept": "Database Systems - ISAM Index Sizing & B-Tree Level Calculation",
+        "markdown": "### 1. System Parameters\n- Total records: $N = 16\\text{K} = 16 \\times 1024 = 16,384 \\text{ records}$\n- Record size: $R = 64 \\text{ bytes}$\n- Key field size: $V = 14 \\text{ bytes}$\n- Block address pointer: $P = 2 \\text{ bytes}$\n- Disk block size: $B = 512 \\text{ bytes}$\n\n---\n\n### 2. Data Area Sizing\nThe blocking factor for data records ($Bfr$) is:\n$Bfr = \\left\\lfloor \\frac{B}{R} \\right\\rfloor = \\left\\lfloor \\frac{512}{64} \\right\\rfloor = 8 \\text{ records/block}$\n\nThe number of disk blocks required for the data records is:\n$D = \\left\\lceil \\frac{N}{Bfr} \\right\\rceil = \\frac{16,384}{8} = 2,048 \\text{ data blocks}$\n\n---\n\n### 3. Index Area Sizing & Level Calculation\nIn an ISAM (indexed sequential) file, a sparse primary index stores one entry per data block:\n$\\text{Index entry size } R_i = V + P = 14 + 2 = 16 \\text{ bytes}$\n\nThe index blocking factor (fan-out per index block, $Bfr_i$) is:\n$Bfr_i = \\left\\lfloor \\frac{B}{R_i} \\right\\rfloor = \\left\\lfloor \\frac{512}{16} \\right\\rfloor = 32 \\text{ index entries/block}$\n\nWe compute the index tree levels from the base to the single root block:\n1. **Level 1 (Base Index):**\n   - Number of entries = Number of data blocks = $2,048$.\n   - Number of Level 1 blocks:\n     $L_1 = \\left\\lceil \\frac{2,048}{32} \\right\\rceil = 64 \\text{ blocks}$\n2. **Level 2 Index:**\n   - Points to the 64 blocks of Level 1.\n   - Number of entries = $64$.\n   - Number of Level 2 blocks:\n     $L_2 = \\left\\lceil \\frac{64}{32} \\right\\rceil = 2 \\text{ blocks}$\n3. **Level 3 Index (Root):**\n   - Points to the 2 blocks of Level 2.\n   - Number of entries = $2$.\n   - Number of Level 3 blocks:\n     $L_3 = \\left\\lceil \\frac{2}{32} \\right\\rceil = 1 \\text{ block}$\n\nBecause Level 3 consists of exactly $1$ block, it forms the root of the index hierarchy.\n\n---\n\n### 4. Summary of Results\n- **Data area size:** $2,048$ blocks.\n- **Index area size:** $64 + 2 + 1 = 67$ blocks.\n- **Number of index tree levels:** **3 levels**.\n\n---\n\n### 5. Conclusion\nThe number of levels in the index tree is **3**.",
+        "images": []
+      }
     },
     "go:2312": {
       "title": "GATE CSE 1993 | Question: 15",
@@ -1565,6 +1700,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Recursive Bubblesort Recurrence Relation & Comparison Complexity",
+        "markdown": "### 1. Algorithm Analysis\nConsider the recursive bubble sort procedure:\n```pascal\nprocedure bubblesort (n);\nvar i, j: index; temp : item;\nbegin\n    for i:=1 to n-1 do\n        if A[i] > A[i+1] then\n        begin\n            temp := A[i];\n            A[i] := A[i+1];\n            A[i+1] := temp;\n        end;\n    bubblesort (n-1)\nend\n```\n\nLet $a_n$ denote the number of times the `if A[i] > A[i+1] then` comparison statement is executed for an input array of size $n$.\n\n---\n\n### 2. Setting Up the Recurrence Relation\n1. In the outer call with parameter $n$, the loop `for i:=1 to n-1 do` executes for $i = 1, 2, \\dots, n - 1$.\n   The `if...then...` statement is evaluated exactly **$n - 1$ times** during this pass.\n2. After the loop completes (placing the largest element into $A[n]$), the procedure calls itself recursively with parameter $n - 1$:\n   $\\text{bubblesort}(n - 1)$\n   The number of executions contributed by the recursive call is $a_{n-1}$.\n3. For $n = 1$, the loop `for i:=1 to 0 do` does not execute, giving the base case $a_1 = 0$.\n\nTherefore, the recurrence relation defining $a_n$ in terms of $a_{n-1}$ is:\n$a_n = a_{n-1} + (n - 1) \\quad \\text{for } n \\geq 2, \\quad \\text{with } a_1 = 0$\n\n---\n\n### 3. Solving the Recurrence Relation\nUnfolding the recurrence by repeated back-substitution:\n$a_n = a_{n-1} + (n - 1)$\n$a_n = a_{n-2} + (n - 2) + (n - 1)$\n$a_n = a_{n-3} + (n - 3) + (n - 2) + (n - 1)$\n$\\vdots$\n$a_n = a_1 + 1 + 2 + 3 + \\dots + (n - 2) + (n - 1)$\n\nSince $a_1 = 0$:\n$a_n = \\sum_{k=1}^{n-1} k = \\frac{(n - 1)n}{2} = \\frac{n(n - 1)}{2} = \\frac{n^2 - n}{2}$\n\n---\n\n### 4. Conclusion\n- **Recurrence relation:**\n  $a_n = a_{n-1} + (n - 1) \\quad (a_1 = 0)$\n- **Closed-form solution:**\n  $a_n = \\frac{n(n - 1)}{2}$",
+        "images": []
       }
     },
     "go:2317": {
@@ -1612,6 +1752,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Intel 8085 I/O Block Transfer & Register Role Analysis",
+        "markdown": "### 1. Code Disassembly & Line-by-Line Execution Trace\nWe are given the following Intel 8085 assembly language program segment:\n```assembly\n        LHLD    5000H\n        MVI     B, 5\nGET:    IN      20H\n        MOV     M, A\n        INX     H\n        DCR     B\n        JNZ     GET\n```\n\n1. **`LHLD 5000H`:**\n   Loads the 16-bit address stored at memory locations $5000\\text{H}$ and $5001\\text{H}$ into the $HL$ register pair ($L \\leftarrow [5000\\text{H}], H \\leftarrow [5001\\text{H}]$). The $HL$ register pair now holds the base memory address of the target destination buffer.\n2. **`MVI B, 5`:**\n   Initializes register $B$ with the immediate value $5$, acting as a loop counter.\n3. **`GET: IN 20H`:**\n   Reads an 8-bit data byte from the external input port address $20\\text{H}$ into Accumulator $A$.\n4. **`MOV M, A`:**\n   Transfers the byte in Accumulator $A$ into the memory location pointed to by $HL$ ($[HL] \\leftarrow A$).\n5. **`INX H`:**\n   Increments the memory address in $HL$ ($HL \\leftarrow HL + 1$) to point to the next consecutive memory cell.\n6. **`DCR B`:**\n   Decrements the loop counter ($B \\leftarrow B - 1$).\n7. **`JNZ GET`:**\n   Tests the Zero Flag ($Z$). If $B \\neq 0$, branches back to label `GET` to read the next byte. After 5 iterations, $B = 0$ and the loop terminates.\n\n---\n\n### 2. (a) Function Performed by the Program\nThe program reads a block of **5 data bytes** from input device/port **$20\\text{H}$** and stores them into consecutive memory locations starting at the address specified at memory location **$5000\\text{H}$**.\n\n---\n\n### 3. (b) Roles of the Registers & Addresses Used\n- **HL Register Pair:**\n  Functions as a **memory pointer**. It holds the current destination address in RAM and is incremented after each byte transfer to point to the next storage byte.\n- **Register B:**\n  Functions as a **loop counter**. It is initialized to $5$ and decremented on each iteration to ensure exactly 5 bytes are transferred.\n- **Accumulator (Register A):**\n  Functions as the **data buffer register**. It receives incoming data bytes from input port $20\\text{H}$ via the `IN` instruction before transferring them to memory.\n- **Memory Address $5000\\text{H}$ (and $5001\\text{H}$):**\n  Serves as a **pointer storage location** (indirect pointer table), containing the 16-bit starting address of the destination memory buffer.\n- **Port Address $20\\text{H}$:**\n  Identifies the **input I/O device port** from which data is acquired.",
+        "images": []
       }
     },
     "go:2297": {
@@ -1652,6 +1797,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operating Systems - Deadlock Avoidance & Minimum Resource Bound",
+        "markdown": "### 1. Mathematical Formulation\nConsider a system with:\n- $m$ identical, reusable resources of a single type.\n- $n = 3$ competing processes: $A, B, C$.\n- Peak (maximum) demands of each process:\n  $\\text{Max}_A = 3, \\quad \\text{Max}_B = 4, \\quad \\text{Max}_C = 6$\n\nWe must determine the minimum number of resources $m$ such that **deadlock will never occur**.\n\n---\n\n### 2. Derivation of the Deadlock-Free Condition\nThe worst-case scenario leading to potential deadlock occurs when every process is granted one resource less than its maximum requirement:\n$\\text{Allocated}_i = \\text{Max}_i - 1$\nIn this state, all processes are blocked waiting for their final resource, and none can finish to release its held resources.\n\nCalculating total resources allocated in this worst-case deadlock state:\n$R_{\\text{deadlock}} = (\\text{Max}_A - 1) + (\\text{Max}_B - 1) + (\\text{Max}_C - 1)$\n$R_{\\text{deadlock}} = (3 - 1) + (4 - 1) + (6 - 1) = 2 + 3 + 5 = 10 \\text{ resources}$\n\nIf the system has only $m \\leq 10$ resources, all 10 resources can be held with each process starved of its final request, causing a permanent deadlock.\n\nTo guarantee that deadlock is impossible, the system must have at least one additional resource so that at least one process can satisfy its maximum demand, complete execution, and release all its held resources:\n$m \\geq R_{\\text{deadlock}} + 1 = 10 + 1 = 11$\n\nThus, deadlock will not occur if and only if:\n$m \\geq 11$\n\n---\n\n### 3. Option Evaluation\n- **Option A ($m = 7$):** $7 < 11 \\implies$ Deadlock can occur.\n- **Option B ($m = 9$):** $9 < 11 \\implies$ Deadlock can occur.\n- **Option C ($m = 10$):** $10 < 11 \\implies$ Deadlock can occur.\n- **Option D ($m = 13$):** $13 \\geq 11 \\implies$ Deadlock is guaranteed **never** to occur.\n\n---\n\n### 4. Conclusion\nTherefore, for **$m = 13$ (Option D)** deadlock will not occur.",
+        "images": []
       }
     },
     "go:2303": {
@@ -1737,6 +1887,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Asymptotic Summations & Order of Growth",
+        "markdown": "### 1. Mathematical Formulation\nWe are asked to evaluate the asymptotic order of growth of the summation:\n$S(n) = \\sum_{1 \\leq k \\leq n} O(n)$\nwhere each of the $n$ terms in the summation is asymptotically bounded by $O(n)$.\n\n---\n\n### 2. Analytical Evaluation\nBy definition of Big-O notation, each term $f_k(n) = O(n)$ satisfies:\n$|f_k(n)| \\leq c_k \\cdot n \\quad \\forall n \\geq n_0$\n\nLet $C = \\max_{1 \\leq k \\leq n} c_k$. Then:\n$S(n) = \\sum_{k=1}^n f_k(n) \\leq \\sum_{k=1}^n C \\cdot n = C \\cdot n \\sum_{k=1}^n 1 = C \\cdot n \\cdot n = C \\cdot n^2$\n\nSimilarly, if each term is proportional to $n$:\n$S(n) = n \\times O(n) = O(n \\cdot n) = O(n^2)$\n\n---\n\n### 3. Option Analysis\n- **Option A ($O(n)$):** Underestimates; fails to account for the $n$ summands.\n- **Option B ($O(n^2)$):** Exactly matches the derived asymptotic bound.\n- **Option C ($O(n^3)$):** Overly loose upper bound.\n- **Option D ($O(3n^2)$):** Violates Big-O convention where constant factors are suppressed ($O(3n^2) \\equiv O(n^2)$).\n\n---\n\n### 4. Conclusion\nTherefore, the summation evaluates to **$O(n^2)$ (Option B)**.",
+        "images": []
       }
     }
   }

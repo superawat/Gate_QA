@@ -333,12 +333,10 @@
         3,
         4
       ],
-      "tolerance": {
-        "abs": 0
-      },
+      "tolerance": null,
       "source": {
-        "kind": "manual_patch",
-        "note": "gate_cse_1992:q1_ii:multi_blank_nat:hamming_code_parity_and_distance"
+        "kind": "official_key",
+        "note": "gate_cse_1992_q01_ii:parity_bits_3_distance_4"
       }
     },
     "go:749": {
@@ -5827,11 +5825,16 @@
       }
     },
     "go:2479": {
+      "answer_uid": "manual:go:2479",
       "type": "NAT",
-      "answer": 1,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/2479/gate-cse-1994-question-3-2",
-      "tolerance": {
-        "abs": 0.01
+      "answer": [
+        0,
+        1
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "official_key",
+        "note": "gate_cse_1994_q3_2:statement_is_false_encoded_0_legacy_1_accepted"
       }
     },
     "go:2480": {
@@ -7397,10 +7400,17 @@
       "note": "gate_cse_batch_audit:Fourier series sum pi^2 / 8"
     },
     "go:601": {
+      "answer_uid": "manual:go:601",
       "type": "MCQ",
-      "answer": "A",
+      "answer": [
+        "B",
+        "A"
+      ],
       "tolerance": null,
-      "note": "gate_cse_batch_audit:Convergent improper integral"
+      "source": {
+        "kind": "official_key",
+        "note": "gate_cse_1993_q01_6:option_b_converges_by_dirichlet_option_a_legacy_key"
+      }
     },
     "go:602": {
       "type": "MCQ",
@@ -7868,11 +7878,15 @@
     "go:2291": {
       "answer_uid": "manual:go:2291",
       "type": "MCQ",
-      "answer": "B",
+      "answer": [
+        "B",
+        "D",
+        "C"
+      ],
       "tolerance": null,
       "source": {
-        "kind": "manual_patch",
-        "note": "gatecse1993:q7_1:image_options"
+        "kind": "official_key",
+        "note": "gate_cse_1993_q7_1_2_3:composite_item_option_b_official_with_subquestion_options"
       }
     },
     "go:2293": {
@@ -12612,11 +12626,14 @@
     "go:558": {
       "answer_uid": "manual:go:558",
       "type": "MCQ",
-      "answer": "D",
+      "answer": [
+        "D",
+        "C"
+      ],
       "tolerance": null,
       "source": {
-        "kind": "manual_verified",
-        "note": "dec_101:batch_1992_1989_audit:1992"
+        "kind": "official_key",
+        "note": "gate_cse_1992_q02_iv:call_and_case_constructs_via_pchl"
       }
     },
     "go:561": {
@@ -13720,9 +13737,62 @@
         "kind": "official_key",
         "note": "isro_cs_2023_q39:low_when_both_high_or_both_low:xor_gate_option_d"
       }
+    },
+    "go:2507": {
+      "answer_uid": "manual:go:2507",
+      "type": "NAT",
+      "answer": [
+        11,
+        3
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "official_key",
+        "note": "gate_cse_1994_q11:binary_011_stored_as_11_or_decimal_3"
+      }
+    },
+    "go:2517": {
+      "answer_uid": "manual:go:2517",
+      "type": "NAT",
+      "answer": [
+        16,
+        15
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "official_key",
+        "note": "gate_cse_1994_q21:stack_depth_16_frames"
+      }
+    },
+    "go:17237": {
+      "answer_uid": "manual:go:17237",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "official_key",
+        "note": "gate_cse_1993_q6_3:shift_register_and_mod_6_counter"
+      }
+    },
+    "go:556": {
+      "answer_uid": "manual:go:556",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "official_key",
+        "note": "gate_cse_1992_q02_ii:multiplexers_and_half_adders_functionally_complete"
+      }
     }
   },
   "stats": {
-    "records": 1944
+    "records": 1944,
+    "total_records": 1948
   }
 }
