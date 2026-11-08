@@ -3261,6 +3261,43 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
             answer: "D",
           });
         });
+        test("resolves go:426482 (GATE Civil 2024 Set 1 GA Q10) as MCQ Option B", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:426482": {
+              answer_uid: "manual:go:426482",
+              type: "MCQ",
+              answer: "B",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:426482",
+            title: "GATE Civil 2024 Set 1 | General Aptitude Question: 10",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "B",
+          });
+        });
+
+        test("resolves go:2371 (GATE CSE 2010 Q63) as MCQ Option C", () => {
+          AnswerService.answersByQuestionUid = {
+            "go:2371": {
+              answer_uid: "v1:11.10.3",
+              type: "MCQ",
+              answer: "C",
+              tolerance: null,
+            },
+          };
+          const answer = AnswerService.getAnswerForQuestion({
+            question_uid: "go:2371",
+            title: "GATE CSE 2010 | Question: 63",
+          });
+          expect(answer).toMatchObject({
+            type: "MCQ",
+            answer: "C",
+          });
+        });
       });
     });
   });

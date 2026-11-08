@@ -3847,6 +3847,31 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
         expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
       });
+      test("evaluates go:426482 (GATE Civil 2024 Set 1 GA Q10) as MCQ Option B (Distance ratio 382)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "B",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
+
+      test("evaluates go:2371 (GATE CSE 2010 Q63) as MCQ Option C (Use of chemical agents in warfare would be undesirable)", () => {
+        const record = {
+          type: "MCQ",
+          answer: "C",
+          tolerance: null,
+        };
+        expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "c")).toEqual({ status: "evaluated", correct: true });
+        expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+        expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+      });
     });
   });
 });

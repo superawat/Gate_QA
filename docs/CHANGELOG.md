@@ -1,4 +1,84 @@
 # Changelog
+- **General Aptitude Question Audit & Detailed Solution Correction (DEC-277, 2026-11-09)**:
+  - **Context & User Reports**: Resolved two reported General Aptitude questions:
+    1. `go:426482` (GATE Civil 2024 Set 1 GA Q10 / 2024 Additional Questions): User reported *"The solution is of some other problem, not this one"*. Root cause: `data/solutions/cse-v1.json` mistakenly contained an ER diagram explanation for an unrelated DBMS problem. Computed authentic trigonometry derivation: during half-moon phase, $\triangle EMS$ is a right triangle with right angle at Moon, $\angle MES = 89.85^\circ$. Distance ratio $\frac{d_{ES}}{d_{EM}} = \sec(89.85^\circ) = \frac{1}{\sin(0.15^\circ)} \approx \frac{1}{0.002618} \approx 381.97 \approx 382$, matching verified **Option B**. Added authentic derivation to `AUTHENTIC_PATCHES`, `data/solutions/cse-v1.json`, and rebuilt static shard `2024-additional.json`.
+    2. `go:2371` (GATE CSE 2010 Q63 / Verbal Aptitude Passage Reading): User reported *"wrong answer"*. Root cause: Option C (*"Use of chemical agents in warfare would be undesirable"*) and Option D (*"People in military establishments like to use chemical agents in war"*) were inverted in `public/questions-with-answers.json` relative to the official GATE 2010 paper and `public/questions-filtered-with-ids.json`. Consequently, candidates selecting the correct conclusion (undesirability of chemical weapons, which appeared as Option D) were marked incorrect against the official answer key (`C`). Restored authentic option order in `public/questions-with-answers.json`, retained verified official key **Option C**, authored rigorous reading comprehension derivation analyzing authorial stance and evaluative adverb *regretfully*, and synchronized across `data/solutions/cse-v1.json`, `all-solutions.json`, `cse-solutions.json`, `AUTHENTIC_PATCHES`, and static shard `2010-s0.json`.
+  - **Verification & Testing**:
+    - Added 2 new unit regression tests in `src/utils/evaluateAnswer.test.js` (325 tests passed).
+    - Added 2 new service resolution tests in `src/services/AnswerService.test.js` (163 tests passed).
+    - Rebuilt all public artifacts with `build-public-artifacts.mjs` (shard enrichment complete, 12,305 / 13,202 accepted solutions).
+    - Validated data parity via `qa:validate-data` (0 errors).
+    - Executed full Vitest suite: 1,578 tests across 116 test files passed (0 failures).
+    - Verified TypeScript type check via `npm run typecheck` (0 errors).
+
+- **Vintage CSE Batch 09 Solution Authoring & Verification (DEC-276, 2026-11-09)**:
+  - **Context & Verification**: Authored, verified, and integrated 25 detailed mathematical and conceptual solutions for `CHUNK-CSE-VIN-09` covering GATE CSE 1996 & 1995 (`go:2738`, `go:2739`, `go:2740`, `go:2741`, `go:2742`, `go:2743`, `go:2744`, `go:2745`, `go:2746`, `go:2747`, `go:2748`, `go:2749`, `go:2750`, `go:2751`, `go:2752`, `go:2753`, `go:2754`, `go:2758`, `go:2766`, `go:2770`, `go:2771`, `go:2777`, `go:2778`, `go:2588`, `go:2589`).
+  - **Key Solutions & Analytical Derivations**:
+    - `go:2738` (Theory of Computation): Prefix closure $\text{init}(L)$ for language of strings with equal $0$s and $1$s: Every binary string $u \in \{0, 1\}^*$ can be extended with additional 1s or 0s to reach equal counts $\implies$ Option B (the set of all binary strings including null string).
+    - `go:2739` (Compiler Design): Dangling else grammar ambiguity: Sentence `if a then if b then c:= d else c:= f` has exactly two distinct parse trees $\implies$ Option D.
+    - `go:2740` (Data Structures): Max-heap restoration: Array $[89, 19, 40, 17, 12, 10, 2, 5, 7, 11, 6, 9, 70]$. Heapify swaps $A[6]=10 \leftrightarrow A[13]=70$, then $A[3]=40 \leftrightarrow A[6]=70 \implies$ Option C ($2$ interchanges).
+    - `go:2741` (Algorithms): Recurrence $T(n) = 3T(n/4) + n$: Critical exponent $\log_4 3 \approx 0.7925 < 1 \implies f(n) = n$ dominates by Case 3 of Master Theorem $\implies$ Option A ($O(n)$).
+    - `go:2742` (Algorithms): Average key comparisons for successful sequential search on $n$ items: $\frac{1}{n} \sum_{i=1}^n i = \frac{n(n+1)}{2n} = \frac{n+1}{2} \implies$ Option C ($\frac{n+1}{2}$).
+    - `go:2743` (Data Structures): Binary search tree insertion partition: Root is $50$; keys $< 50$ ($15, 5, 20, 3, 8, 37, 24 \implies 7$) form left subtree; keys $> 50$ ($62, 58, 91, 60 \implies 4$) form right subtree $\implies$ Option B ($(7, 4)$).
+    - `go:2744` (Algorithms): Quicksort comparisons on sorted vs reverse-sorted arrays: Both inputs result in completely unbalanced partitions of size $0$ and $k-1$, yielding $C_1 = C_2 = \frac{n(n-1)}{2} \implies$ Option C ($C_1 = C_2$).
+    - `go:2745` (Compiler Design): Macro expansion infinite loops: Macro M2 with $X=0$ recursively calls `M2 X` with unmutated argument $X=0 \implies$ Option A ((ii) only).
+    - `go:2746` (Operating Systems): System software matching: Activation record $\to$ Subroutine call (3); Location counter $\to$ Assembler (4); Reference counts $\to$ Garbage collection (2); Address relocation $\to$ Linking loader (1) $\implies$ Option D (A-3 B-4 C-2 D-1).
+    - `go:2747` (Operating Systems): Dynamic memory allocation worst-case fragmentation: Two allocated partitions ($200$ KB, $260$ KB) leave $540$ KB free across at most 3 holes. Minimum maximum hole is $\frac{540}{3} = 180$ KB. Any request $> 180$ KB can be denied $\implies$ Option B ($181$ KB).
+    - `go:2748` (Operating Systems): Dining Philosophers deadlock avoidance: Breaking circular wait asymmetry requires one philosopher to pick left fork before right, while all others pick right before left $\implies$ Option C.
+    - `go:2749` (Operating Systems): Round Robin scheduling completion: Job bursts $A:4, B:1, C:8, D:1$, quantum $= 1$. Execution trace: $A(1) \to B(2) \to C(3) \to D(4) \to A(5) \to C(6) \to A(7) \to C(8) \to A(9)$. Job $A$ finishes at $t = 9 \implies$ Option D ($9$).
+    - `go:2750` (Digital Logic): 4-bit binary adder with $4(b_3 b_2)$ offset: For $B \ge 12$, adds $4$ producing carry $d_4 = 1$ and sum $B - 12 \pmod{16}$, computing duodecimal digits $\implies$ Option D (Binary to radix-12 conversion).
+    - `go:2751` (Digital Logic): 4:1 Multiplexer Boolean function: Select inputs $A, B$; data inputs $C, \bar{C}, \bar{C}, C$. Output is $f = \bar{A}\bar{B}C + \bar{A}B\bar{C} + A\bar{B}\bar{C} + ABC = A \oplus B \oplus C \implies$ Option C ($A \oplus B \oplus C$).
+    - `go:2752` (Theory of Computation): Mealy machine state minimization: Input 0 distinguishes $D$ (output 1) from $\{A, B, C\}$ (output 0). In $\{A, B, C\}$, $A \to D$ while $B, C \to A$. States $B \equiv C$. Minimized states: $\{[A], [B, C], [D]\} \implies$ Option B ($3$).
+    - `go:2753` (Digital Logic): 4-variable K-map POS minimization: 1s form $B\bar{D} + \bar{B}D = B \oplus D$. Grouping 0s yields maxterms $(B + D)(\bar{B} + \bar{D}) \implies$ Option C ($(B + D)(\bar{B} + \bar{D})$).
+    - `go:2754` (COA): Microprogrammed control word encoding: 25 signals with at most 2 active concurrently. Two independent encoded fields each handling 25 signals + 1 NOP require $\lceil \log_2 26 \rceil = 5$ bits each: $5 + 5 = 10 \implies$ Option C ($10$).
+    - `go:2758` (Microprocessors): 8052 assembly loop `OUT 00H; INR A; PCHL` (where $HL=0105\text{H}$): Accumulator increments endlessly and outputs to port $00\text{H} \implies$ 8-bit binary up-counter at port $00\text{H}$. $D_0, D_1, D_2$ produce square waves with periods $2T, 4T, 8T$ ($T = 20$ T-states).
+    - `go:2766` (Algorithms): Young Tableau: (a) Smallest item is at $A[1][1]$ ($i=1, j=1$). (b) Insert $x$ into vacated root compares down and right neighbors, swapping with smaller neighbor down the path in $O(n)$ time $\implies$ Option B.
+    - `go:2770` (Algorithms): Binary search correctness bug: Loop update `if a[k] < x then i:= k` fails to advance $i$ past $k$ when $j - i = 1$ and $x > a[k]$, causing an infinite loop $\implies$ Full Correctness & Counterexample Derivation.
+    - `go:2771` (Compiler Design): Parameter passing semantics in pseudo-Pascal: (i) Call-by-reference aliases $a$ with $b$, printing `point 1: 5 5`, `point 2: 10 10`, `point 3: 10`. (ii) Call-by-value-result maintains local copy, printing `point 1: 5 3`, `point 2: 5 10`, `point 3: 5` (copy-out overwrites global $b$) $\implies$ Full Parameter Passing Trace.
+    - `go:2777` (COA): 50 MHz CPU DMA overhead: 4 KB block at $2000$ KB/s takes $2$ ms $= 100{,}000$ clock cycles. Setup (1000) + interrupt (500) $= 1500$ cycles. Processor fraction $= \frac{1500}{100{,}000} = 0.015 = 1.5\%$ (official key benchmark: 1.45% / 1.5%).
+    - `go:2778` (COA): 3-level memory hierarchy access time: $T_1 = 50$ ns, $T_2 = 200$ ns, $T_3 = 5000$ ns. With $L_1 = 64$ MB ($H_1 = 0.95$) and $L_2 = 64$ MB ($H_2 = 0.995$): $T_{\text{avg}} = 50 + 0.05[200 + 0.005(5000)] = 50 + 11.25 = 61.25\text{ ns} < 100\text{ ns} \implies$ 61.25 (NAT).
+    - `go:2588` (Microprocessors): 8085 instruction to clear lower 4 bits of accumulator: Bitwise AND with mask `11110000_2` ($\text{F0H}$) $\implies$ `ANI F0H` $\implies$ Option B.
+    - `go:2589` (COA): Processor and memory fundamentals: ROM is read-only; PC points to next instruction; many instructions don't affect flags; stack operates strictly on LIFO $\implies$ Option C (Stack works on the principle of LIFO).
+  - **Milestone & Coverage Update**:
+    - CSE accepted solutions reached **3,456 / 3,674 (94.1% coverage)**.
+    - Platform accepted solutions reached **12,259 / 13,194 (92.9% platform coverage)**.
+    - Missing solutions reduced to **935** platform-wide.
+    - Rebuilt static artifacts and verified shard enrichment. Unit tests deferred per user instruction.
+
+- **Vintage CSE Batch 08 Solution Authoring & Verification (DEC-275, 2026-11-08)**:
+  - **Context & Verification**: Authored, verified, and integrated 25 detailed mathematical and conceptual solutions for `CHUNK-CSE-VIN-08` covering GATE CSE 1997 & 1996 (`go:2275`, `go:2282`, `go:2284`, `go:19701`, `go:19704`, `go:2712`, `go:2713`, `go:2714`, `go:2715`, `go:2716`, `go:2717`, `go:2718`, `go:2719`, `go:2720`, `go:2721`, `go:2722`, `go:2723`, `go:2724`, `go:2725`, `go:2726`, `go:2727`, `go:2728`, `go:2729`, `go:2734`, `go:2737`).
+  - **Key Solutions & Analytical Derivations**:
+    - `go:2275` (Algorithms / Discrete Math): Recurrence relation $F(n, m) = F(n-1, m) + F(n, m-1) \implies$ (a) $F(n, 2) = \binom{n+2}{2} = \frac{(n+1)(n+2)}{2}$, (b) $F(n, m) = \binom{n+m}{m} = \frac{(n+m)!}{n! m!}$, (c) Recursive calls $= 2\binom{n+m}{m} - 1$.
+    - `go:2282` (Compiler Design): Unambiguous context-free grammar for Pascal subset (expressions with $+$, $<$, assignments, while loops, begin...end compound statements) enforcing operator precedence and left-associativity.
+    - `go:2284` (Compiler Design): Runtime stack configuration for 5 concurrent activation records in nested Pascal procedures (`Main` $\to A_1 \to B_1 \to A_2 \to B_2$) $\implies$ Top of stack: $B_2$; Dynamic Links: $B_2 \to A_2 \to B_1 \to A_1 \to \text{Main}$; Static Links: $B_2 \to A_2 \to \text{Main}$ and $B_1 \to A_1 \to \text{Main}$.
+    - `go:19701` (Digital Logic): Boolean function POS minimization $f = (\bar{w}+y)(\bar{x}+y)(w+\bar{x}+z)(\bar{w}+z)(\bar{x}+z) \implies f = \bar{w}\bar{x} + yz$; Stuck-at-0 fault outputs correct value for $16 - 7 = 9$ input combinations $\implies$ 9 (NAT).
+    - `go:19704` (Operating Systems): Sequential file record access time on device $D$ (3200-byte record, 10 ms access, 800 B/ms transfer, 3 ms CPU): Part A (unblocked, no buffer) $= 17.000$ s; Part B (unblocked, 1 buffer) $= 14.003$ s; Part C (blocking factor 2, 1 buffer) $= 9.006$ s $\implies$ 9.006 (NAT).
+    - `go:2712` (Theory of Computation): Equivalent regular expressions over $\{0\}$: $(00)^*(\varepsilon + 0) \equiv 0^* \implies$ Option C ((i) and (iii)).
+    - `go:2713` (Theory of Computation): Formal language decidability: Regular grammar equivalence $L(G_1) = L(G_2)$ is decidable $\implies$ Option D (Given two regular grammars $G_1$ and $G_2$ it is undecidable whether $L(G_1) = L(G_2)$).
+    - `go:2714` (Theory of Computation): Regular languages: $L = \{a^m b^n \mid m \ge 1, n \ge 1\} = a^+ b^+$ is regular $\implies$ Option D.
+    - `go:2715` (Algorithms): Asymptotic growth rates: $\sqrt{\log n} \neq O(\log\log n)$ as $\lim_{u \to \infty} \frac{\sqrt{u}}{\log u} = \infty \implies$ Option B ($\sqrt{\log n} = O(\log\log n)$).
+    - `go:2716` (Data Structures): Linear data structures: Linked lists efficient for basic mutations, circular arrays prevent drift in queues $\implies$ Option A ($(ii)$ and $(iii)$ are true).
+    - `go:2717` (Data Structures): Chained hash table advantage over open addressing: Deletion is clean without tombstones or probe sequence corruption $\implies$ Option C (Deletion is easier).
+    - `go:2718` (Data Structures): AVL tree balance factor on inserting child of $g$: Nodes $c, b, a$ have $|BF| = 2$ and become unbalanced $\implies$ Option B (3).
+    - `go:2719` (Data Structures): Binary tree post-order traversal (Left $\to$ Right $\to$ Root) $\implies$ Option C ($g\ c\ d\ b\ f\ e\ a$).
+    - `go:2720` (COA): PC-relative addressing mode enables position-independent code (PIC) by encoding branch offsets $\implies$ Option B (Position – independent code).
+    - `go:2721` (Compiler Design): Two-pass assembler pass numbers: Object code (2), Literals (1), Listing (2), Local symbol resolution (1) $\implies$ Option B ($2, 1, 2, 1$).
+    - `go:2722` (Operating Systems): Process state transition diagram with Running $\to$ Ready transition indicates preemption $\implies$ Option B (an operating system with a preemptive scheduler).
+    - `go:2723` (Operating Systems): Critical section definition: Program segment where shared resources are accessed concurrently $\implies$ Option C (where shared resources are accessed).
+    - `go:2724` (Operating Systems): Spooled device example: Shared line printer queuing multiple job files to disk $\implies$ Option A (A line printer used to print the output of a number of jobs).
+    - `go:2725` (Digital Logic): ROM table size for multiplication of two 8-bit unsigned integers: 16 address bits ($64\text{ K}$) and 16 data bits $\implies$ Option D ($64\text{ K} \times 16$).
+    - `go:2726` (Microprocessors): Intel 8085 `RET` instruction machine cycles: 1 Opcode Fetch (4T) + 2 Memory Reads (3T each) $= 3$ machine cycles (10T) $\implies$ Option C (3).
+    - `go:2727` (COA): Booth's algorithm worst-case multiplier pattern: Alternating $101010\dots1010$ maximizes bit transitions and operations $\implies$ Option A ($101010\dots1010$).
+    - `go:2728` (COA): Daisy chain interrupt arbitration: Priority strictly decreases with physical distance from CPU $\implies$ Option A (It gives non-uniform priority to various devices).
+    - `go:2729` (Digital Logic): 32-bit floating point normalized mantissa magnitude range: Leading fractional bit normalized to $1 \implies 0.5$ to $1 - 2^{-23} \implies$ Option D ($0.5$ to $(1 - 2^{-23})$).
+    - `go:2734` (Numerical Methods): Newton-Raphson formula for $\sqrt[3]{c}$: $f(x) = x^3 - c \implies x_{n+1} = \frac{2x_n^3 + c}{3x_n^2} \implies$ Option C ($x_{n+1}=\frac{2x_n^3 + c}{3x_n^2}$).
+    - `go:2737` (Theory of Computation): Context-free language closure: Intersection of two CFLs is not necessarily CFL ($L_1 \cap L_2$) $\implies$ Option B ($L_1 \cap L_2$).
+  - **Milestone & Coverage Update**:
+    - CSE accepted solutions reached **3,431 / 3,674 (93.4% coverage)**.
+    - Platform accepted solutions reached **12,234 / 13,194 (92.7% platform coverage)**.
+    - Missing solutions reduced to **960** platform-wide.
+    - Rebuilt static artifacts and verified shard enrichment. Unit tests deferred per user instruction.
+
 - **Two-Question User Report Audit Resolution: Theory of Computation PDA & Compiler Design Mobile Layout (DEC-274, 2026-11-06)**:
   - **`go:3683` (GATE IT 2004, Theory of Computation – Pushdown Automata)**:
     - *Reported Issue*: Reporter claimed Option D is the correct answer.
