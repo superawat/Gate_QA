@@ -49,6 +49,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - 8085 Instruction Set & Bit Masking Operations",
+        "markdown": "### 1. Problem Statement & Register Bit Layout\nIn the 8085 microprocessor, the accumulator is an 8-bit register consisting of bits:\n$$A = [D_7 \\; D_6 \\; D_5 \\; D_4 \\; D_3 \\; D_2 \\; D_1 \\; D_0]$$\n\nWe wish to **clear the lower four bits** ($D_3, D_2, D_1, D_0 \\leftarrow 0$) while preserving the upper four bits ($D_7, D_6, D_5, D_4$) unchanged.\n\n---\n\n### 2. Principles of Boolean Bit Manipulation\n\nRecall the bitwise truth rules:\n1. **Bitwise AND with $0$:** $b \\land 0 = 0$ (clears the bit).\n2. **Bitwise AND with $1$:** $b \\land 1 = b$ (preserves the bit).\n3. **Bitwise XOR with $1$:** $b \\oplus 1 = \\overline{b}$ (inverts/toggles the bit).\n4. **Bitwise XOR with $0$:** $b \\oplus 0 = b$ (preserves the bit).\n\nTo preserve the upper 4 bits and clear the lower 4 bits:\n- Upper 4 mask bits must be $1111_2 = \\text{F}_{16}$.\n- Lower 4 mask bits must be $0000_2 = 0_{16}$.\n- The mask byte is therefore $\\text{F0H}$ ($11110000_2$).\n\nApplying bitwise AND with immediate operand $\\text{F0H}$:\n$$A_{\\text{new}} = A \\land \\text{F0H} = [D_7 \\; D_6 \\; D_5 \\; D_4 \\; 0 \\; 0 \\; 0 \\; 0]$$\n\nThe corresponding 8085 assembly instruction is:\n```asm\nANI F0H\n```\n\n---\n\n### 3. Evaluation of Options\n- **Option A (`XRI 0FH`):** Inverts the lower 4 bits instead of clearing them.\n- **Option B (`ANI F0H`):** **Correct.** Clears lower 4 bits and preserves upper 4 bits.\n- **Option C (`XRI F0H`):** Inverts the upper 4 bits.\n- **Option D (`ANI 0FH`):** Clears the upper 4 bits and preserves the lower 4 bits.\n\n**Therefore, the correct answer is Option B (`ANI F0H`).**",
+        "images": []
       }
     },
     "go:2589": {
@@ -89,7 +94,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Organization - Memory & Processor Architecture Fundamentals",
+        "markdown": "### 1. Evaluation of Statements\n\n- **Option A: \"ROM is a Read/Write memory\"**\n  - **False.** ROM stands for **Read-Only Memory**. Its contents are written during manufacture or programmed via specialized PROM/EPROM/EEPROM programmers. During normal CPU execution cycles, data can only be read from ROM, not written.\n\n- **Option B: \"PC points to the last instruction that was executed\"**\n  - **False.** The **Program Counter (PC)** holds the memory address of the **next** instruction to be fetched and executed. As soon as the current instruction byte is fetched during the opcode fetch cycle, the PC is automatically incremented.\n\n- **Option C: \"Stack works on the principle of LIFO\"**\n  - **True.** A stack is fundamentally a **Last-In, First-Out (LIFO)** data structure. The most recently pushed item (via `PUSH` or subroutine `CALL`) resides at the top of the stack and is the first item to be retrieved (via `POP` or `RET`).\n\n- **Option D: \"All instructions affect the flags\"**\n  - **False.** In standard microprocessor architectures (such as the 8085, 8086, or ARM), many instructions do not affect any flags at all. For instance, in the 8085:\n    - Data transfer instructions (`MOV`, `MVI`, `LXI`, `LDA`, `STA`)\n    - Branching instructions (`JMP`, `JC`, `CALL`, `RET`)\n    - Stack operations (`PUSH`, `POP`)\n    do not modify condition flags.\n\n---\n\n### 2. Conclusion\nOnly Statement C is factually correct.\n\n**Therefore, the correct answer is Option C.**",
+        "images": []
+      }
     },
     "go:2590": {
       "title": "GATE CSE 1995 | Question: 1.3",
