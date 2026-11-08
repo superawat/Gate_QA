@@ -97,6 +97,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Algorithmic Paradigms & Algorithm Classification",
+        "markdown": "### 1. Analysis of Algorithm Paradigms\n\nWe match each foundational algorithm to its underlying algorithmic design paradigm:\n\n- **(a) Strassen's Matrix Multiplication Algorithm**:\n  Strassen's algorithm computes the product of two $n \\times n$ matrices by recursively dividing each matrix into four $n/2 \\times n/2$ submatrices, computing $7$ submatrix products (instead of $8$), and combining the results:\n  $$T(n) = 7T(n/2) + O(n^2) = O(n^{\\log_2 7}) \\approx O(n^{2.81})$$\n  $$\\implies \\mathbf{(a) \\to (r)} \\text{ Divide and Conquer}$$\n\n- **(b) Kruskal's Minimum Spanning Tree Algorithm**:\n  Kruskal's algorithm sorts all edges in non-decreasing order of weight and iteratively adds the lightest available edge that does not form a cycle. This locally optimal choice at each step guarantees a global minimum weight spanning tree.\n  $$\\implies \\mathbf{(b) \\to (p)} \\text{ Greedy method}$$\n\n- **(c) Biconnected Components Algorithm**:\n  Hopcroft and Tarjan's algorithm decomposes an undirected graph into maximal biconnected components by conducting a Depth-First Search (DFS) traversal, tracking vertex discovery numbers $d[u]$ and low-link values $low[u]$ to locate articulation points and bridges in linear time $O(V+E)$.\n  $$\\implies \\mathbf{(c) \\to (s)} \\text{ Depth-first search}$$\n\n- **(d) Floyd's Shortest Path Algorithm (Floyd-Warshall)**:\n  Floyd's algorithm solves the all-pairs shortest paths problem on a directed graph using the dynamic programming recurrence:\n  $$d^{(k)}[i, j] = \\min\\left(d^{(k-1)}[i, j],\\; d^{(k-1)}[i, k] + d^{(k-1)}[k, j]\\right)$$\n  which builds optimal paths using intermediate vertices from $\\{1, \\dots, k\\}$.\n  $$\\implies \\mathbf{(d) \\to (q)} \\text{ Dynamic programming}$$\n\n---\n\n### 2. Summary Matching\n$$(a) \\to (r), \\quad (b) \\to (p), \\quad (c) \\to (s), \\quad (d) \\to (q)$$\n\n---\n\n### 3. Conclusion\nTherefore, the correct pair matching is **(a)–(r), (b)–(p), (c)–(s), (d)–(q)**.",
+        "images": []
       }
     },
     "go:84051": {
@@ -137,6 +142,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Open-Collector NAND Gates & Wired-AND Logic",
+        "markdown": "### 1. Circuit Configuration\nThe given schematic consists of two TTL NAND gates with **open-collector outputs** connected directly together at node $Y$:\n- **Gate 1**: A 3-input NAND gate with inputs $A, B, C$. Its output function is:\n  $$Y_1 = \\overline{A \\cdot B \\cdot C}$$\n- **Gate 2**: A 2-input NAND gate with inputs $D, E$. Its output function is:\n  $$Y_2 = \\overline{D \\cdot E}$$\n\n---\n\n### 2. Wired-AND Operation of Open-Collector Gates\nIn open-collector TTL (or open-drain in CMOS) outputs:\n- The internal pull-up transistor is omitted; outputs are tied to an external pull-up resistor connected to $V_{CC}$.\n- If either gate's output transistor turns ON (pulling low), the shared line is pulled to logic $0$ (GND).\n- The output node $Y$ remains at logic $1$ (HIGH) if and only if **both** gates allow their outputs to stay HIGH.\n- Consequently, tying open-collector outputs together performs a **wired-AND** logic function:\n  $$Y = Y_1 \\cdot Y_2 = (\\overline{A \\cdot B \\cdot C}) \\cdot (\\overline{D \\cdot E})$$\n\n---\n\n### 3. Boolean Simplification using De Morgan's Law\nApplying De Morgan's Law ($\\overline{X} \\cdot \\overline{Z} = \\overline{X + Z}$):\n$$Y = \\overline{ABC + DE}$$\n\nThis configuration implements the classic **AND-OR-INVERT (AOI)** function.\n\n---\n\n### 4. Conclusion\nTherefore, the logic function implemented by the circuit is **$Y = \\overline{ABC + DE}$ (Option B)**.",
+        "images": []
       }
     },
     "go:84054": {
@@ -184,6 +194,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Relational Normalization & 3NF Data Redundancy Anomalies",
+        "markdown": "### 1. Normal Form Definitions\nLet $R$ be a relational schema with functional dependencies $F$:\n- **Third Normal Form (3NF)**:\n  $R$ is in 3NF if for every non-trivial functional dependency $X \\to Y \\in F^+$:\n  1. $X$ is a **superkey**, OR\n  2. Every attribute in $Y$ is a **prime attribute** (i.e., a constituent attribute of at least one candidate key).\n- **Boyce-Codd Normal Form (BCNF)**:\n  $R$ is in BCNF if for every non-trivial functional dependency $X \\to Y \\in F^+$:\n  1. $X$ is a **superkey**.\n\n---\n\n### 2. Origin of Undesirable Redundancy in 3NF\n3NF relaxes the strict superkey requirement of BCNF by permitting dependencies $X \\to Y$ where $X$ is **not a superkey**, provided that $Y$ is prime.\n- Because $X$ is not a superkey, multiple distinct tuples can share the same value of $X$.\n- Since $X \\to Y$ holds, the value of $Y$ must be repeated for every occurrence of $X$, creating **data redundancy**, update anomalies, and deletion anomalies.\n- This condition occurs specifically when:\n  - **Option B**: There are non-trivial dependencies where the right-hand side contains prime attributes (allowing $X$ to not be a superkey under 3NF).\n  - **Option D**: There are non-trivial dependencies where all attributes involved are prime (for example, in schema $R(A, B, C)$ with candidate keys $AB$ and $BC$, the dependency $C \\to B$ involves only prime attributes, but $C$ is not a superkey, causing redundancy).\n\n---\n\n### 3. Distractor Analysis\n- **Option A (Transitive dependencies)**: In 3NF, transitive dependencies of non-prime attributes on candidate keys are strictly forbidden.\n- **Option C (Prime attributes only on the left-side)**: A dependency $X \\to Y$ where $X$ is prime and $Y$ contains non-prime attributes violates 3NF unless $X$ is a superkey.\n\n---\n\n### 4. Conclusion\nTherefore, a relational database in 3NF may still suffer from redundancy due to **Option B and Option D**.",
+        "images": []
       }
     },
     "go:84060": {
@@ -277,7 +292,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Data Structures - External Path Length Bounds of Binary Trees",
+        "markdown": "### 1. Definitions\nIn an extended binary tree (2-tree):\n- Every internal node has exactly $2$ children.\n- There are $n$ external nodes (leaves).\n- The **External Path Length (EPL)** is the sum of the depths of all $n$ external nodes:\n  $$\\text{EPL} = \\sum_{w=1}^n I_w$$\n  where $I_w$ is the path length (depth) from the root to external node $w$.\n\n---\n\n### 2. Theoretical Lower Bound\nTo minimize the sum $\\sum I_w$, the external nodes must be placed as close to the root as possible, which occurs in a completely balanced binary tree:\n- In a balanced binary tree with $n$ leaves, the height is $\\lceil \\log_2 n \\rceil$, and every leaf is located at depth $\\lfloor \\log_2 n \\rfloor$ or $\\lceil \\log_2 n \\rceil$.\n- By Kraft's inequality and Jensen's inequality (or Shannon entropy bounds):\n  $$\\text{EPL} = \\sum_{w=1}^n I_w \\ge n \\log_2 n$$\n- Equality holds when $n$ is a power of $2$ ($n = 2^k$) and all leaves are at depth $k = \\log_2 n$:\n  $$\\text{EPL}_{min} = n \\log_2 n$$\n- For any arbitrary binary tree with $n$ external nodes:\n  $$\\text{EPL} \\ge n \\log_2 n \\quad \\text{always}$$\n\n---\n\n### 3. Distractor Analysis\n- **Option A ($\\le n^2$)**: For a degenerate (skewed) binary tree, depths are $1, 2, \\dots, n-1, n-1$, giving $\\text{EPL} = \\frac{n(n-1)}{2} + (n-1) = \\Theta(n^2)$. While this is $\\le n^2$, $n \\log_2 n$ is the fundamental lower bound.\n- **Option D ($O(n)$)**: Since each leaf is at depth $\\ge 1$ and depth grows logarithmically, $\\text{EPL} = \\Omega(n \\log n)$, which is strictly $\\omega(n)$; it can never be $O(n)$ for large $n$.\n\n---\n\n### 4. Conclusion\nTherefore, the external path length of a binary tree with $n$ external nodes is **$\\ge n \\log_2 n$ always (Option B)**.",
+        "images": []
+      }
     },
     "go:84841": {
       "title": "GATE CSE 1990 | Question: 3-ix",
@@ -364,6 +384,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Comparison-Based Sorting Theoretical Complexity Bounds",
+        "markdown": "### 1. Decision Tree Model for Comparison Sorting\nIn a comparison-based sorting algorithm, elements of the input array $A = \\langle a_1, a_2, \\dots, a_n \\rangle$ are accessed and ordered exclusively through pairwise comparisons ($a_i \\le a_j$):\n- Any such algorithm can be represented as a **binary decision tree**:\n  - Each internal node represents a comparison between two elements $a_i$ and $a_j$.\n  - Each leaf node represents a distinct permutation of the $n$ elements.\n- Since an array of $n$ distinct elements has $n!$ possible permutations, the decision tree must have at least $n!$ leaves:\n  $$\\text{Leaves} \\ge n!$$\n\n---\n\n### 2. Derivation of the Lower Bound\nA binary tree of height $h$ can have at most $2^h$ leaves:\n$$2^h \\ge n! \\implies h \\ge \\log_2(n!)$$\n\nApplying Stirling's approximation ($\\ln(n!) = n \\ln n - n + O(\\ln n)$):\n$$\\log_2(n!) = \\sum_{i=1}^n \\log_2 i \\ge \\sum_{i=n/2}^n \\log_2(n/2) = \\frac{n}{2} \\log_2\\left(\\frac{n}{2}\\right) = \\Omega(n \\log n)$$\nThus, the worst-case number of comparisons in any comparison-based sort is:\n$$\\Omega(n \\log n)$$\n\n---\n\n### 3. Tight Asymptotic Complexity\nStandard comparison-based algorithms (such as **Merge Sort** and **Heap Sort**) sort $n$ elements using at most $O(n \\log n)$ comparisons in the worst case:\n- Since the lower bound is $\\Omega(n \\log n)$ and the achievable upper bound is $O(n \\log n)$, the tight asymptotic complexity is:\n  $$\\Theta(n \\log n)$$\n\n---\n\n### 4. Conclusion\nTherefore, the complexity of comparison-based sorting algorithms is **$\\Theta(n \\log n)$ (Option A)**.",
+        "images": []
       }
     },
     "go:84833": {
@@ -412,7 +437,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Chomsky Hierarchy & Recursive Language Properties",
+        "markdown": "### 1. Classification of Recursive Languages\nIn automata theory and computability:\n- A language $L$ is **recursive** (or decidable) if there exists a Total Turing Machine (a decider) that halts on all inputs, accepting strings $w \\in L$ and rejecting strings $w \\notin L$.\n- In the Chomsky Hierarchy:\n  $$\\text{Regular (Type 3)} \\subset \\text{DCFL} \\subset \\text{Context-Free (Type 2)} \\subset \\text{Context-Sensitive (Type 1)} \\subset \\text{Recursive} \\subset \\text{Type 0 (RE)}$$\n\n---\n\n### 2. Evaluation of Statements\n- **Statement A: A proper superset of context free languages.**\n  - **TRUE**: Every context-free language is decidable (e.g., membership decidable in $O(n^3)$ via the CYK algorithm), so $\\text{CFL} \\subseteq \\text{Recursive}$. Moreover, non-context-free languages such as $L = \\{a^n b^n c^n \\mid n \\ge 0\\}$ and $L = \\{a^{2^n} \\mid n \\ge 0\\}$ are recursive. Thus, recursive languages form a **proper superset** of context-free languages ($\\text{CFL} \\subsetneq \\text{Recursive}$).\n- **Statement B: Always recognizable by pushdown automata.**\n  - **FALSE**: Pushdown automata recognize only context-free languages. They cannot recognize non-CFL recursive languages like $\\{a^n b^n c^n\\}$.\n- **Statement C: Also called type 0 languages.**\n  - **FALSE**: Type 0 languages are the **Recursively Enumerable (RE)** languages, recognized by Turing machines that are not guaranteed to halt on strings not in the language. Recursive languages are a proper subset of Type 0 languages.\n- **Statement D: Recognizable by Turing machines.**\n  - **TRUE**: By definition, recursive languages are decided by halting Turing machines. Since deciders are Turing machines, recursive languages are Turing-machine recognizable.\n\n---\n\n### 3. Conclusion\nTherefore, recursive languages are **Option A and Option D**.",
+        "images": []
+      }
     },
     "go:84835": {
       "title": "GATE CSE 1990 | Question: 3-vii",
@@ -459,7 +489,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Decidability, Halting Problem & Rice's Theorem",
+        "markdown": "### 1. Decidability vs Undecidability\nA problem is **decidable** if there exists an algorithm (a Turing machine that halts on all inputs) that correctly answers yes or no for every instance. Otherwise, it is **undecidable**.\n\n---\n\n### 2. Evaluation of Candidate Problems\n- **A. An arbitrary Turing machine halts after 100 steps:**\n  - **DECIDABLE**: A universal Turing machine or interpreter can simulate the given machine for up to $100$ steps. If the machine enters a halting state within $100$ steps, answer YES; otherwise, answer NO. Because the simulation is bounded by a fixed number of steps ($100$), it is guaranteed to terminate.\n\n- **B. A Turing machine prints a specific letter:**\n  - **UNDECIDABLE**: Determining whether a Turing machine will ever write a designated symbol (e.g., 'a') on its tape during computation is undecidable by reduction from the Halting Problem. Given an arbitrary Turing machine $M$ and input $w$, we can construct a modified machine $M'$ that replaces any transition entering a halt state with an instruction to write the symbol 'a'. Then $M'$ prints 'a' if and only if $M$ halts on $w$.\n\n- **C. A Turing machine computes the products of two numbers:**\n  - **UNDECIDABLE**: By **Rice's Theorem**, any non-trivial semantic property of the language recognized (or function computed) by a Turing machine is undecidable. The property of computing the arithmetic multiplication function $f(x, y) = x \\cdot y$ is non-trivial (some Turing machines compute multiplication, while others do not). Hence, it is undecidable.\n\n---\n\n### 3. Conclusion\nTherefore, the undecidable problems are **Option B and Option C**.",
+        "images": []
+      }
     },
     "go:84837": {
       "title": "GATE CSE 1990 | Question: 3-viii",
@@ -506,6 +541,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Closure Properties of Regular Sets",
+        "markdown": "### 1. Foundational Closure Properties of Regular Languages\nRegular languages (sets) are closed under all Boolean operations, concatenation, and Kleene star:\n\n- **Union**: If $R_1$ and $R_2$ are regular, their union $R_1 \\cup R_2$ is accepted by an NFA formed by creating a new start state with $\\epsilon$-transitions to the start states of $R_1$ and $R_2$. Thus, $R_1 \\cup R_2$ is **regular** $\\implies$ **Statement B is True**.\n- **Complement**: The complement $\\Sigma^* - R_1 = \\overline{R_1}$ is recognized by taking the deterministic finite automaton (DFA) for $R_1$ and swapping its accepting and non-accepting states ($F' = Q \\setminus F$). Thus, $\\Sigma^* - R_1$ is **regular** $\\implies$ **Statement C is True**.\n- **Intersection**: By De Morgan's Law, $R_1 \\cap R_2 = \\overline{\\overline{R_1} \\cup \\overline{R_2}}$, or by constructing the cross-product DFA ($M = M_1 \\times M_2$). Thus, $R_1 \\cap R_2$ is **always regular**. Statement A asserts it is *not* regular, which is **False**.\n- **Kleene Star**: The family of regular sets is closed under Kleene closure ($R_1^*$). Statement D asserts it is *not* regular, which is **False**.\n\n---\n\n### 2. Conclusion\nTherefore, the true statements are **Option B and Option C**.",
+        "images": []
       }
     },
     "go:84861": {
@@ -639,6 +679,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Memory & Programmable Logic Classification (RAM vs PLA)",
+        "markdown": "### 1. Classification of Digital Circuits\nDigital circuits are divided into two fundamental classes:\n1. **Combinational Circuits**: Outputs depend purely on current input values. They contain no memory elements (latches, flip-flops, or storage capacitors) and no feedback loops.\n2. **Sequential Circuits**: Outputs depend on both current inputs and past history (stored internal state). They incorporate memory storage elements.\n\n---\n\n### 2. Analysis of RAM and PLA\n- **RAM (Random Access Memory)**:\n  RAM consists of an array of storage cells (cross-coupled inverters/flip-flops in SRAM, or charge storage capacitors in DRAM). Because RAM retains stored binary data across time, its read output depends directly on previously stored state. Therefore, RAM is inherently a **sequential circuit / memory device**, NOT a combinational circuit.\n- **PLA (Programmable Logic Array)**:\n  A standard PLA consists of an array of programmable AND gates (generating product terms) followed by an array of programmable OR gates (generating sum-of-products terms). It contains no clock lines, latches, or internal state feedback. Therefore, a standard PLA is purely a **combinational circuit**, NOT a sequential circuit.\n\n---\n\n### 3. Conclusion\nThe statement claims that *\"RAM is a combinational circuit and PLA is a sequential circuit\"*, which is completely false for both devices.\n\nTherefore, the statement is **FALSE** (encoded as **0**).",
+        "images": []
       }
     },
     "go:85390": {
@@ -682,6 +727,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Organization - Programmed I/O vs Interrupt-Driven I/O & DMA",
+        "markdown": "### 1. Mechanisms of Input/Output Data Transfer\n- **Programmed I/O (Polling)**:\n  The CPU continuously executes instructions in a busy-wait loop testing the status flag of an I/O device until the peripheral is ready. Every single byte or word transfer must pass explicitly through CPU internal registers (such as the Accumulator via `IN`/`OUT` instructions). The CPU is completely consumed and stalled by the polling loop.\n- **Interrupt-Driven I/O**:\n  The CPU issues an I/O command and continues executing other processing tasks concurrently. When the peripheral device completes data preparation, it asserts a hardware interrupt signal, causing the CPU to service the transfer via an Interrupt Service Routine (ISR) only when data is genuinely available.\n- **Direct Memory Access (DMA)**:\n  For high-speed block transfers, DMA bypasses the CPU entirely, transferring blocks directly between device and main memory at bus speeds.\n\n---\n\n### 2. Relative Speed and Efficiency\n- Programmed I/O imposes extreme software overhead and latency because slow mechanical/peripheral speeds force the CPU to waste thousands of cycles in polling loops.\n- Interrupt-driven I/O allows effective overlap of computation and peripheral operation, providing substantially higher system throughput.\n- Therefore, programmed I/O is **not faster** than interrupt-driven I/O.\n\n---\n\n### 3. Conclusion\nTherefore, the statement is **FALSE** (encoded as **0**).",
+        "images": []
       }
     },
     "go:85391": {
@@ -724,6 +774,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Conditional Branch Instructions & Flag Register Behavior",
+        "markdown": "### 1. Role of Condition Flags in Microprocessors\nIn standard processor architectures (such as the Intel 8085, 8086, ARM, or MIPS):\n- Condition flags in the Program Status Word (PSW / Flag Register)—such as Zero ($Z$), Carry ($CY$), Sign ($S$), and Parity ($P$)—record the status of results produced by the **Arithmetic Logic Unit (ALU)**.\n- Flags are updated exclusively by arithmetic instructions (`ADD`, `SUB`, `INR`, `DCR`), logical instructions (`ANA`, `ORA`, `XRA`, `CMP`), and explicit flag-control instructions (`STC`, `CMC`).\n\n---\n\n### 2. Behavior of Conditional Branch Instructions\n- Conditional branch instructions—including conditional jump instructions (`JZ`, `JNZ`, `JC`, `JNC`, `JM`, `JP`) and conditional call instructions (`CZ`, `CNZ`, `CC`, `CNC`):\n  1. **Read/test** the state of the relevant flag bit to decide whether the branching condition is met.\n  2. If satisfied, they modify the **Program Counter (PC)** (and push PC onto the stack for `CALL`).\n  3. **They never modify, alter, or reset any condition flag in the Flag Register.**\n\n---\n\n### 3. Conclusion\nBecause flags are tested but never altered by conditional jump or call instructions, the statement is **FALSE** (encoded as **0**).",
+        "images": []
       }
     },
     "go:85394": {
@@ -766,6 +821,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "System Software - Link-Load-and-Go vs Link-and-Go Loading Schemes",
+        "markdown": "### 1. Definitions of Loading Schemes\n- **Link-and-Go (or Link-Then-Go)**:\n  Independently compiled object modules are processed by a linker to produce a complete executable binary image file stored on **secondary storage** (disk). A separate loader then loads this executable module from disk into main memory for execution.\n- **Link-Load-and-Go (Compile-and-Go / Load-and-Go)**:\n  The linking and loading phases are performed simultaneously in main memory. The linker/loader directly resolves external symbol references, binds addresses, and places the resulting executable code directly into its execution memory locations without generating an intermediate executable image on secondary disk storage.\n\n---\n\n### 2. Storage Space Comparison\nBecause the link-load-and-go scheme generates and executes code directly in primary memory, it eliminates the need to create, allocate, and preserve linked executable binary files on external secondary disk storage. Consequently, it requires **less secondary storage space** than the link-and-go scheme.\n\n---\n\n### 3. Conclusion\nTherefore, the statement is **TRUE** (encoded as **1**).",
+        "images": []
       }
     }
   }

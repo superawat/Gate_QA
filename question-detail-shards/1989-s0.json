@@ -48,7 +48,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Data Structures & Algorithms - Hash Table Search with Linear Probing (Unsuccessful Search)",
+        "markdown": "### 1. Hash Table Configuration\nA hash table has $M = 10$ buckets indexed $0$ through $9$ with linear probing. The occupancy status is:\n- Index $0$: $S_7$ (Occupied)\n- Index $1$: $S_1$ (Occupied)\n- Index $2$: **Empty**\n- Index $3$: $S_4$ (Occupied)\n- Index $4$: $S_2$ (Occupied)\n- Index $5$: **Empty**\n- Index $6$: $S_5$ (Occupied)\n- Index $7$: **Empty**\n- Index $8$: $S_6$ (Occupied)\n- Index $9$: $S_3$ (Occupied)\n\n---\n\n### 2. Mechanism of Unsuccessful Search in Linear Probing\nWhen searching for a key $K$ that is not present in the table:\n1. The search begins at bucket $h(K)$.\n2. If bucket $h(K)$ is occupied, the key is compared with the occupant, and probing continues sequentially to bucket $(h(K) + 1) \\bmod 10$.\n3. Probing terminates when an **empty bucket** is reached, confirming the key is absent.\n4. The number of comparisons equals the number of occupied buckets inspected along the probe sequence plus $1$ (for the empty bucket that terminates the search).\n\n---\n\n### 3. Analysis of All Possible Hash Starting Locations\n- **Hash starts at index $8$**:\n  Probes $8$ ($S_6$), $9$ ($S_3$), wraps to $0$ ($S_7$), $1$ ($S_1$), and terminates at $2$ (**Empty**).\n  $$\\text{Comparisons} = 1 + 1 + 1 + 1 + 1 = 5$$\n- **Hash starts at index $9$**:\n  Probes $9$ ($S_3$), $0$ ($S_7$), $1$ ($S_1$), and terminates at $2$ (**Empty**).\n  $$\\text{Comparisons} = 1 + 1 + 1 + 1 = 4$$\n- **Hash starts at index $0$**:\n  Probes $0$ ($S_7$), $1$ ($S_1$), and terminates at $2$ (**Empty**).\n  $$\\text{Comparisons} = 1 + 1 + 1 = 3$$\n- **Hash starts at index $3$**:\n  Probes $3$ ($S_4$), $4$ ($S_2$), and terminates at $5$ (**Empty**).\n  $$\\text{Comparisons} = 1 + 1 + 1 = 3$$\n- **Hash starts at index $6$**:\n  Probes $6$ ($S_5$), and terminates at $7$ (**Empty**).\n  $$\\text{Comparisons} = 1 + 1 = 2$$\n- **Hash starts at an empty slot ($2, 5, 7$)**:\n  Terminates immediately after $1$ comparison.\n\n---\n\n### 4. Maximum Comparisons\nThe longest cluster wraps around the end of the table ($8 \\to 9 \\to 0 \\to 1 \\to 2$), requiring **5 comparisons**.\n\n---\n\n### 5. Conclusion\nTherefore, the maximum number of comparisons needed in searching an item that is not present is **5 (Option B)**.",
+        "images": []
+      }
     },
     "go:87095": {
       "title": "GATE CSE 1989 | Question: 3-i",
@@ -332,7 +337,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ"
+      "type": "MSQ",
+      "detailed_solution": {
+        "concept": "Compiler Design & Programming Languages - Call-by-Reference vs Call-by-Name Discrepancies",
+        "markdown": "### 1. Semantic Differences between Call-by-Reference and Call-by-Name\n- **Call-by-Reference**:\n  The l-value (memory address) of the actual parameter is evaluated **once** at the procedure call site. The formal parameter is bound to this fixed memory address throughout the execution of the subroutine.\n- **Call-by-Name (Algol 60)**:\n  The formal parameter is textually substituted with the actual argument expression (implemented via an executable closure called a **thunk**). The argument's l-value and r-value are **re-evaluated in the caller's environment every time** the formal parameter is accessed.\n\n---\n\n### 2. Evaluation of Candidate Cases\n- **Case A: Passing an expression as a parameter (e.g., $x + y$)**\n  - In *call-by-reference*, an expression has no existing l-value; the compiler evaluates $x + y$ once, places the result in a temporary memory location, and passes its address. Even if the procedure alters $x$ or $y$ via side effects, the parameter retains the initial value.\n  - In *call-by-name*, the expression $x + y$ is re-evaluated dynamically on every access. If $x$ or $y$ changes during execution, subsequent reads yield new values. Hence, different results can occur $\\implies$ **Option A is correct**.\n\n- **Case D: Passing an array element as a parameter (e.g., $A[i]$)**\n  - This is the famous **Jensen's Device / Swap Anomaly**.\n  - Suppose a procedure `swap(x, y)` assigns $x$ and $y$, and is invoked with `swap(i, A[i])`.\n  - In *call-by-reference*, the index $i$ is evaluated once at procedure entry (say $i = 1$), fixing the address of $A[1]$.\n  - In *call-by-name*, formal parameter $y$ is replaced by $A[i]$. If the procedure updates $i$ (e.g., $i$ becomes $2$), a subsequent assignment to $y$ writes to $A[2]$ rather than $A[1]$! Hence, different results occur $\\implies$ **Option D is correct**.\n\n- **Cases B & C: Passing an entire array or a simple pointer**\n  - Passing an entire array or pointer simply passes the base address, which remains invariant under repeated evaluation unless indexed by dynamically changing expressions.\n\n---\n\n### 3. Conclusion\nTherefore, different results can be obtained when **passing an expression as a parameter (Option A)** and **passing an array element as a parameter (Option D)**.",
+        "images": []
+      }
     },
     "go:93172": {
       "title": "GATE CSE 1989 | Question: 13a",
