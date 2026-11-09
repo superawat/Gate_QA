@@ -46,6 +46,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Worst-Case Time Complexity Comparison: Quicksort vs Heapsort",
+        "markdown": "### 1. Worst-Case Complexity Analysis of Quicksort\nQuicksort is a divide-and-conquer sorting algorithm based on partitioning around a pivot element:\n- **Worst-Case Behavior**:\n  - Occurs when the partitioning step consistently produces the most unbalanced splits possible (i.e., one subproblem of size $n - 1$ and one of size $0$).\n  - For example, when the input array is already sorted in ascending order and the first or last element is chosen as the pivot without randomization.\n  - The recurrence relation becomes:\n    $$T(n) = T(n - 1) + \\Theta(n) \\implies T(n) = \\Theta(n^2)$$\n  - Thus, Quicksort has a worst-case time complexity of **$\\Theta(n^2)$**.\n\n---\n\n### 2. Worst-Case Complexity Analysis of Heapsort\nHeapsort is a comparison-based algorithm utilizing a binary max-heap data structure:\n- **Heap Construction (Build-Max-Heap)**:\n  Constructing a binary max-heap of $n$ elements takes $O(n)$ time using Floyd's bottom-up sift-down algorithm.\n- **Repeated Root Deletion & Sift-Down**:\n  The algorithm performs $n - 1$ successive deletions of the maximum element at the root, swapping it with the last leaf and restoring the heap property via `Max-Heapify`.\n  Each `Max-Heapify` operation traverses down the tree of height $\\lfloor \\log_2 n \\rfloor$, requiring at most $O(\\log n)$ comparisons.\n- **Worst-Case Bound**:\n  Total running time is strictly bounded on all inputs:\n  $$T(n) = O(n) + \\sum_{i=1}^{n-1} O(\\log i) = \\Theta(n \\log n)$$\n  Thus, Heapsort guarantees a worst-case time complexity of **$\\Theta(n \\log n)$**.\n\n---\n\n### 3. Comparison\n- Comparing the asymptotic growth rates in the worst case:\n  $$\\Theta(n^2) \\gg \\Theta(n \\log n)$$\n- While Quicksort is often faster on average due to small constant factors and excellent cache locality, in the **worst case** its quadratic $\\Theta(n^2)$ behavior requires dramatically more operations than Heapsort's guaranteed $\\Theta(n \\log n)$ performance.\n\n---\n\n### 4. Conclusion\nTherefore:\n$$\\text{Quicksort is } \\mathbf{less} \\text{ (or } \\textit{slower / inferior}\\text{) efficient than heapsort in the worst case.}$$",
+        "images": []
       }
     },
     "go:91687": {
@@ -89,6 +94,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic - Positional Radix Number Representation & Square Root Equation",
+        "markdown": "### 1. Positional Number System Definition\nIn a positional numeral system with base (radix) $r$, a number $(d_k d_{k-1} \\dots d_0)_r$ represents the numerical value:\n$$(d_k d_{k-1} \\dots d_0)_r = \\sum_{i=0}^k d_i \\cdot r^i$$\nwhere each digit satisfies $0 \\le d_i < r$.\n\n---\n\n### 2. Formulating and Solving the Equation\nWe are given:\n$$\\sqrt{(41)_r} = (7)_{10}$$\n\nSquaring both sides of the equation:\n$$(41)_r = 7^2 = 49_{10}$$\n\nExpressing $(41)_r$ in polynomial form in base $r$:\n$$(41)_r = 4 \\cdot r^1 + 1 \\cdot r^0 = 4r + 1$$\n\nEquating the decimal values:\n$$4r + 1 = 49$$\n$$4r = 48$$\n$$r = \\frac{48}{4} = 12$$\n\n---\n\n### 3. Verification of Constraints\n- In base $r = 12$ (duodecimal), all constituent digits must satisfy $d_i < r$.\n- Digits '4' and '1' are both strictly less than 12 ($4 < 12$ and $1 < 12$), so $(41)_{12}$ is a valid representation.\n- Computing $(41)_{12}$:\n  $$(41)_{12} = 4 \\times 12 + 1 = 48 + 1 = 49$$\n- Taking the square root:\n  $$\\sqrt{49} = 7$$\n  which matches $(7)_{10}$ exactly.\n\n---\n\n### 4. Conclusion\nThe value of the radix $r$ is **12**.",
+        "images": []
       }
     },
     "go:94333": {
@@ -133,6 +143,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design & Runtime Environments - Call-by-Reference Parameter Aliasing",
+        "markdown": "### 1. Semantics of Call-by-Reference\nIn **call-by-reference** parameter passing:\n- The actual parameter's memory address (l-value) is passed to the procedure.\n- The formal parameter becomes an **alias** (direct reference) to the actual parameter's storage location. Any assignment to the formal parameter directly mutates the actual variable in the caller's environment.\n- When an expression like $a + b$ is passed by reference, the compiler evaluates the expression once, stores the result in a temporary memory location, and passes the address of that temporary location to the formal parameter.\n\n---\n\n### 2. Program Execution Trace\nGiven program code:\n```pascal\nprogram Main(inout, output);\nvar a, b: integer;\n    procedure P(x, y, z: integer);\n    begin\n        y := y + 1;\n        z := x + x;\n    end P;\nbegin\n    a := 2; b := 3;\n    P(a + b, a, a);\n    Write(a);\nend.\n```\n\n1. **Initial State**:\n   $$a = 2, \\quad b = 3$$\n\n2. **Procedure Invocation `P(a + b, a, a)`**:\n   - **Parameter $x$**: Passed expression $a + b = 2 + 3 = 5$. A temporary variable is allocated with value $5$, and $x$ references this temporary.\n   - **Parameter $y$**: Passed variable $a$. Thus, $y$ is an alias for variable $a$ ($\\&y = \\&a$).\n   - **Parameter $z$**: Passed variable $a$. Thus, $z$ is also an alias for variable $a$ ($\\&z = \\&a$).\n   - *Critical Observation*: Both formal parameters $y$ and $z$ bind to the exact same storage cell $a$ (**parameter aliasing**).\n\n3. **Executing Procedure Body**:\n   - Statement 1: `y := y + 1`\n     Since $y$ refers to $a$:\n     $$a \\leftarrow a + 1 = 2 + 1 = 3$$\n     Now $a = 3$.\n   - Statement 2: `z := x + x`\n     The parameter $x$ evaluates to $5$.\n     $$x + x = 5 + 5 = 10$$\n     The value $10$ is assigned to $z$.\n     Since $z$ is an alias for variable $a$:\n     $$a \\leftarrow 10$$\n\n4. **Return and Output**:\n   - The procedure terminates and control returns to `Main`.\n   - `Write(a)` prints the current value of variable $a$, which is **10**.\n\n---\n\n### 3. Conclusion\nThe program prints **10**.",
+        "images": []
       }
     }
   }

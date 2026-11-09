@@ -274,8 +274,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Algorithms - Sorting",
-        "markdown": "Selection sort does at most one swap per pass, so at most n $-$ 1 swaps.",
+        "concept": "Algorithms - Sorting: Selection Sort Asymptotic Swap Complexity Bound",
+        "markdown": "### 1. Selection Sort Algorithm Review\nSelection sort sorts an array $A[0 \\dots n-1]$ of $n$ elements through $n-1$ passes:\n```text\nfor i = 0 to n - 2:\n    min_idx = i\n    for j = i + 1 to n - 1:\n        if A[j] < A[min_idx]:\n            min_idx = j\n    swap(A[i], A[min_idx])\n```\n\nIn each pass $i$:\n1. It scans the unsorted subarray $A[i \\dots n-1]$ to locate the index of the minimum element.\n2. It performs **at most one swap** to place that minimum element into its correct final sorted position $A[i]$.\n\n---\n\n### 2. Analysis of the Number of Swaps\n- The outer loop runs for $i = 0, 1, \\dots, n - 2$, which executes exactly $n - 1$ times.\n- In each iteration of the outer loop, exactly one `swap` operation is executed (or at most one if self-swaps when `min_idx == i` are avoided).\n- Therefore, the total number of swaps $S(n)$ performed in the worst, best, and average cases satisfies:\n  $$S(n) \\le n - 1$$\n\n---\n\n### 3. Asymptotic Tightness\n- The upper bound on the number of swaps is $O(n)$.\n- In the worst case (e.g., when the minimum element is never at position $i$), exactly $n - 1$ swaps are executed, so $S(n) = \\Theta(n)$.\n- Thus, the **tightest upper bound** on the number of swaps is **$O(n)$**.\n\n---\n\n### 4. Key Distinction: Comparisons vs. Swaps\nIt is essential to distinguish between comparisons and swaps in selection sort:\n- **Number of key comparisons**: $\\sum_{i=0}^{n-2} (n - 1 - i) = \\frac{n(n-1)}{2} = \\Theta(n^2)$ in all cases.\n- **Number of element swaps**: At most $n - 1 = O(n)$.\n\nThis makes selection sort advantageous in architectures where memory write operations (such as EEPROM / Flash writes) are substantially more expensive than read/comparison operations.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
       }
     },
@@ -319,8 +319,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "Programming and DS - Data Structures",
-        "markdown": "A BST may be skewed (height n $-$ 1), so insertion may walk all n nodes.",
+        "concept": "Programming and Data Structures - Binary Search Trees: Worst-Case Insertion Time Complexity",
+        "markdown": "### 1. Binary Search Tree (BST) Insertion Mechanics\nIn a standard Binary Search Tree (BST), inserting a new node involves:\n1. Starting at the root node.\n2. Comparing the search key of the new node with the current node's key:\n   - If smaller, branch to the left subtree.\n   - If larger, branch to the right subtree.\n3. Repeating this process until a `NULL` pointer (empty leaf position) is reached, where the new node is attached.\n\nThe time complexity of inserting a key is proportional to the length of the path from the root to the insertion point, which is bounded by the height of the tree $h$:\n$$T(n) = O(h)$$\n\n---\n\n### 2. Worst-Case Tree Topology\nFor a general (unbalanced) BST containing $n$ nodes:\n- In the best and average cases (balanced tree), the height is $h = \\Theta(\\log n)$, yielding an insertion time of $O(\\log n)$.\n- However, without self-balancing mechanisms (such as in AVL or Red-Black trees), the tree can degenerate into a **skewed binary search tree** (effectively a singly linked list).\n- A skewed tree occurs when keys are inserted in monotonically increasing or decreasing order.\n- In a skewed tree of $n$ nodes, the height is:\n  $$h = n$$\n\n---\n\n### 3. Tightest Worst-Case Upper Bound\nBecause the problem asks for the tightest upper bound representing the time complexity of insertion into an arbitrary binary search tree of $n$ nodes, the bound must hold across **all valid BST instances**, including the worst case:\n$$T_{\\text{worst}}(n) = O(h_{\\text{worst}}) = O(n)$$\n\nHence, the tightest upper bound is **$O(n)$**.\n\nTherefore, the correct answer is **Option C**.",
         "images": []
       }
     },
@@ -2565,8 +2565,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
-        "markdown": "Nadir = the lowest point (opposite of zenith).",
+        "concept": "General Aptitude - Verbal Ability Synonyms: Nadir vs Lowest",
+        "markdown": "### 1. Etymology and Astronomical Origin\nThe noun **nadir** (/ˈneɪdɪər/) entered English via Old French, originating from the Arabic phrase *naẓīr as-samt* (نظير السمت), which literally translates to \"counterpart of the zenith\" or \"opposite the zenith\" (*naẓīr* meaning \"opposite\" and *samt* meaning \"direction/zenith\").\n\nIn astronomy, the **nadir** is the point on the celestial sphere directly beneath an observer, located diametrically opposite the **zenith** (the point directly overhead).\n\n---\n\n### 2. Figurative Meaning and Synonymy\nIn general and figurative usage:\n- **Nadir** represents the lowest point in a person's or organization's fortunes, career, vitality, or happiness (e.g., *\"the nadir of relations between the two countries\"*).\n- Its direct synonym is **lowest point** or **lowest**.\n\n---\n\n### 3. Evaluation of Options\n- **Option A (Highest)**: This is the antonym of nadir (synonymous with *zenith*, *apex*, *pinnacle*, or *acme*).\n- **Option B (Lowest)**: Accurately and directly captures the synonymous meaning of nadir.\n- **Option C (Medium)**: Denotes an intermediate or average level, not the extreme bottom.\n- **Option D (Integration)**: Refers to unifying components, completely unrelated.\n\n---\n\n### 4. Conclusion\nAmong the given options, **Lowest** is the closest in meaning to **Nadir**.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
       }
     },
