@@ -47,6 +47,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Digital Logic & Hardware Interfacing - TTL Gate Output Asymmetry & LED Driving",
+        "markdown": "### 1. Operating Characteristics of TTL Totem-Pole Outputs\nStandard Bipolar Transistor-Transistor Logic (TTL) gates (such as 7400/7404 series) employ a totem-pole output stage:\n- **Current Sinking Capability (LOW Output State, $V_{OL} \\approx 0.2\\text{--}0.4\\text{ V}$)**:\n  When the gate output is LOW, the lower pull-down transistor saturates to ground, safely sinking up to:\n  $$I_{OL(\\max)} \\approx 16\\text{ mA}$$\n- **Current Sourcing Capability (HIGH Output State, $V_{OH} \\approx 2.4\\text{--}3.4\\text{ V}$)**:\n  When the gate output is HIGH, current flows through an upper pull-up transistor and a $130\\,\\Omega$ current-limiting resistor, capable of sourcing only:\n  $$I_{OH(\\max)} \\approx 0.4\\text{ mA}$$\n\n---\n\n### 2. LED Drive Requirements\nA standard gallium-arsenide (GaAs) indicator LED requires approximately **5 mA to 15 mA** of forward current ($I_F$) with a forward voltage drop of $V_F \\approx 1.7\\text{ V} - 2.0\\text{ V}$ to achieve visible illumination.\n- **Sourcing Mode (Circuits B and C)**:\n  TTL gates can source at most $0.4\\text{ mA}$. Connecting an LED in source mode results in an unlit or very dim LED, and severely pulls down the HIGH output level out of TTL specification.\n- **Sinking Mode (Active-LOW, Circuits A and D)**:\n  Connecting the LED cathode to the gate output and anode towards $+5\\text{ V}$ utilizes the gate's strong $16\\text{ mA}$ sinking capability, fully lighting the LED when the gate output is LOW.\n\n---\n\n### 3. Evaluation of Candidate Circuits\n- **Circuit (A)**:\n  - Anode is connected through a $470\\,\\Omega$ resistor to $+5\\text{ V}$, and cathode is connected to the TTL inverter output.\n  - Sinking current calculation:\n    $$I = \\frac{V_{CC} - V_F - V_{OL}}{R} = \\frac{5.0\\text{ V} - 1.8\\text{ V} - 0.4\\text{ V}}{470\\,\\Omega} = \\frac{2.8\\text{ V}}{470\\,\\Omega} \\approx 5.96\\text{ mA}$$\n  - $5.96\\text{ mA}$ is well within $I_{OL(\\max)} = 16\\text{ mA}$ and illuminates the LED brightly and safely.\n- **Circuit (B)**: LED connected directly from output to ground (source mode, no current limiting resistor; gate cannot supply enough current).\n- **Circuit (C)**: LED in series with $470\\,\\Omega$ resistor to ground (source mode; current restricted to $< 0.4\\text{ mA}$, failing to illuminate).\n- **Circuit (D)**: LED connected directly between $+5\\text{ V}$ and output without any series resistor. When output goes LOW, infinite/destructive surge current will destroy the LED and burn out the output transistor.\n\n---\n\n### 4. Conclusion\nTherefore, the most satisfactory LED driver circuit using a TTL gate is **Circuit (A)**.",
+        "images": []
       }
     },
     "go:80032": {
@@ -88,7 +93,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Total Number of Boolean Functions of n Variables",
+        "markdown": "### 1. Combinatorics of Boolean Switching Functions\nLet $f(x_1, x_2, \\dots, x_n)$ be a Boolean function of $n$ binary variables where each $x_i \\in \\{0, 1\\}$.\n- The input space consists of all possible $n$-bit binary combinations (minterms), giving:\n  $$M = 2^n \\text{ possible input combinations}$$\n- A specific Boolean function is defined by assigning an output value (either $0$ or $1$) to each of these $2^n$ distinct truth table rows.\n- Because the assignment for each row is independent, the total number of distinct Boolean functions $N$ that can be realized with $n$ variables is:\n  $$N = 2^{(2^n)}$$\n\n---\n\n### 2. Computation for Four Variables ($n = 4$)\nFor $n = 4$ variables:\n1. Number of truth table combinations:\n   $$2^4 = 16$$\n2. Total number of possible Boolean functions:\n   $$N = 2^{16}$$\n3. Evaluating $2^{16}$:\n   $$2^{10} = 1024$$\n   $$2^{16} = 2^6 \\times 2^{10} = 64 \\times 1024 = 65,536$$\n\n---\n\n### 3. Distractor Analysis\n- **Option A (4)**: This is simply the number of variables $n$.\n- **Option B (17)**: Corresponds to $2^4 + 1$, an arithmetic distractor.\n- **Option C (256)**: Corresponds to $2^{2^3} = 2^8 = 256$, which is the total number of Boolean functions of **3** variables.\n- **Option D (65,536)**: Correctly evaluates $2^{2^4} = 2^{16} = 65,536$.\n\n---\n\n### 4. Conclusion\nThe total number of Boolean functions that can be realised with four variables is **65,536 (Option D)**.",
+        "images": []
+      }
     },
     "go:80034": {
       "title": "GATE CSE 1987 | Question: 1-III",
@@ -129,7 +139,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Linear Feedback Shift Register (LFSR) State Trace & PRBS Generation",
+        "markdown": "### 1. Circuit Architecture\nThe circuit consists of four JK flip-flops ($FF_0, FF_1, FF_2, FF_3$ from left to right) operating synchronously on a common clock:\n- In each stage, the $K$ input is driven by the inversion of $J$ ($K = \\overline{J}$), which configures each JK flip-flop as a standard **D flip-flop** ($D_i = J_i$).\n- The shift register shifts state rightward:\n  $$D_1 = Q_0, \\quad D_2 = Q_1, \\quad D_3 = Q_2$$\n- The serial input to the leftmost stage ($FF_0$) is driven by an XOR gate taking inputs from $Q_2$ and $Q_3$:\n  $$D_0 = Q_2 \\oplus Q_3$$\n- The system output is tapped from $Q_3$ (the output of the rightmost stage).\n- This circuit implements a 4-bit **Linear Feedback Shift Register (LFSR)** with feedback polynomial $f(x) = 1 + x^3 + x^4$, generating a maximal-length pseudo-random sequence of period $2^4 - 1 = 15$ states.\n\n---\n\n### 2. Step-by-Step Clock Trace\nAll candidate options start with the 4-bit sequence `1111`, indicating the initial state of the shift register at Clock 0 is:\n$$(Q_0, Q_1, Q_2, Q_3) = (1, 1, 1, 1)$$\n\nTracing the register state $(Q_0, Q_1, Q_2, Q_3)$, the feedback $D_0 = Q_2 \\oplus Q_3$, and the emitted output $Q_3$:\n\n| Clock | $Q_0$ | $Q_1$ | $Q_2$ | $Q_3$ (Output) | Feedback $D_0 = Q_2 \\oplus Q_3$ |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| **0** | 1 | 1 | 1 | **1** | $1 \\oplus 1 = 0$ |\n| **1** | 0 | 1 | 1 | **1** | $1 \\oplus 1 = 0$ |\n| **2** | 0 | 0 | 1 | **1** | $1 \\oplus 1 = 0$ |\n| **3** | 0 | 0 | 0 | **1** | $0 \\oplus 1 = 1$ |\n| **4** | 1 | 0 | 0 | **0** | $0 \\oplus 0 = 0$ |\n| **5** | 0 | 1 | 0 | **0** | $0 \\oplus 0 = 0$ |\n| **6** | 0 | 0 | 1 | **0** | $1 \\oplus 0 = 1$ |\n| **7** | 1 | 0 | 0 | **1** | $0 \\oplus 1 = 1$ |\n| **8** | 1 | 1 | 0 | **0** | $0 \\oplus 0 = 0$ |\n| **9** | 0 | 1 | 1 | **0** | $1 \\oplus 0 = 1$ |\n| **10** | 1 | 0 | 1 | **1** | $1 \\oplus 1 = 0$ |\n| **11** | 0 | 1 | 0 | **1** | $0 \\oplus 1 = 1$ |\n| **12** | 1 | 0 | 1 | **0** | $1 \\oplus 0 = 1$ |\n| **13** | 1 | 1 | 0 | **1** | $0 \\oplus 1 = 1$ |\n| **14** | 1 | 1 | 1 | **0** | $1 \\oplus 0 = 1$ |\n| **15** | 1 | 1 | 1 | **1** | (Cycle repeats) |\n\n---\n\n### 3. Emitted Output Sequence Compilation\nAggregating the output bits $Q_3$ in groups of four:\n- Clocks 0 to 3: $1111$\n- Clocks 4 to 7: $0001$\n- Clocks 8 to 11: $0011$\n- Clocks 12 to 15: $0101$\n\n$$\\text{Output Sequence} = 1111 \\quad 0001 \\quad 0011 \\quad 0101$$\n\n---\n\n### 4. Conclusion\nThis sequence matches **Option C** exactly.",
+        "images": []
+      }
     },
     "go:80193": {
       "title": "GATE CSE 1987 | Question: 1-IV",
@@ -170,7 +185,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - Multiplexer Function Implementation & 3-Variable XOR Parity",
+        "markdown": "### 1. Multiplexer Configuration & Boolean Expression\nA 4-to-1 multiplexer has four data inputs ($I_0, I_1, I_2, I_3$) and two select inputs ($S_1, S_0$). Its characteristic function is:\n$$F = \\overline{S_1}\\,\\overline{S_0} I_0 + \\overline{S_1} S_0 I_1 + S_1 \\overline{S_0} I_2 + S_1 S_0 I_3$$\n\nFrom the given schematic:\n- Select inputs: $S_1 = B$, $S_0 = A$\n- Data inputs:\n  $$I_0 = C, \\quad I_1 = \\overline{C}, \\quad I_2 = \\overline{C}, \\quad I_3 = C$$\n\n---\n\n### 2. Algebraic Derivation\nSubstituting the inputs into the multiplexer equation:\n$$F = \\overline{B}\\,\\overline{A}(C) + \\overline{B}A(\\overline{C}) + B\\overline{A}(\\overline{C}) + BA(C)$$\n\nGroup the terms by $C$ and $\\overline{C}$:\n$$F = C(\\overline{A}\\,\\overline{B} + AB) + \\overline{C}(\\overline{A}B + A\\overline{B})$$\n\nRecall the standard definitions of the XOR and XNOR equivalence functions:\n$$\\overline{A}B + A\\overline{B} = A \\oplus B$$\n$$\\overline{A}\\,\\overline{B} + AB = \\overline{A \\oplus B} = A \\odot B$$\n\nSubstituting these expressions:\n$$F = C \\cdot \\overline{(A \\oplus B)} + \\overline{C} \\cdot (A \\oplus B)$$\n\nLet $X = A \\oplus B$. Then:\n$$F = C \\cdot \\overline{X} + \\overline{C} \\cdot X = X \\oplus C$$\n\nExpanding $X$:\n$$F = (A \\oplus B) \\oplus C = A \\oplus B \\oplus C$$\n\n*(Note: Even if the select lines were arranged as $S_1 = A, S_0 = B$, the symmetry $I_1 = I_2 = \\overline{C}$ and $I_0 = I_3 = C$ yields the exact same expression $A \\oplus B \\oplus C$).*\n\n---\n\n### 3. Conclusion\nTherefore, the output $F$ represents **$A \\oplus B \\oplus C$ (Option B)**.",
+        "images": []
+      }
     },
     "go:80194": {
       "title": "GATE CSE 1987 | Question: 1-V",
@@ -209,7 +229,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Position-Independent Code & PC-Relative Addressing",
+        "markdown": "### 1. Definition of Position-Independent Code (PIC)\n**Position-Independent Code (PIC)** is machine code that executes correctly regardless of the absolute memory address at which it is loaded, without requiring link-time or load-time address relocation patching.\n- PIC is essential for shared libraries, dynamic linkers (`.so` / `.dll`), and operating system kernel modules where multiple programs map the same physical code pages into different virtual address spaces.\n\n---\n\n### 2. Role of Relative Addressing Mode\nIn **Program Counter Relative (PC-Relative) Addressing Mode**:\n- The effective address ($EA$) of an operand or jump target is calculated as an offset (displacement) added to the current contents of the Program Counter ($PC$):\n  $$EA = (PC) + \\text{Displacement}$$\n- When a code block is relocated to a different location in memory, both the instruction itself and its target branch or data reference move by the exact same distance:\n  $$\\Delta EA = \\Delta (PC) \\implies \\text{Displacement} = EA - PC = \\text{Invariant}$$\n- Because the displacement between the instruction and the target remains completely invariant, the compiled machine code requires zero modification upon relocation.\n\n---\n\n### 3. Distractor Analysis\n- **Direct Mode (Option A)**: Encodes the absolute memory address directly into the instruction word ($EA = \\text{Address}$). If the program is relocated, the address points to invalid locations unless modified by a relocating loader.\n- **Indirect Mode (Option B)**: Fetches the address from another memory word or register; unless the pointer table itself is dynamically relocated, it does not achieve position independence.\n- **Indexed Mode (Option D)**: Adds an index register to an absolute base address; requires loading base registers with absolute addresses.\n\n---\n\n### 4. Conclusion\nTherefore, the most relevant addressing mode to write position-independent codes is **Relative mode (Option C)**.",
+        "images": []
+      }
     },
     "go:80199": {
       "title": "GATE CSE 1987 | Question: 1-vi",
@@ -249,7 +274,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Microprogrammed vs Hardwired Control Units",
+        "markdown": "### 1. Hardwired vs. Microprogrammed Control Units\nA CPU control unit directs the fetching, decoding, and execution of instructions:\n- **Hardwired Control Unit**:\n  - Implemented using fixed combinational logic gates, decoders, and sequential state flip-flops.\n  - Generates control signals directly with minimal propagation delay, resulting in maximum operational speed.\n  - Disadvantage: Extremely rigid. Any modification to the instruction set architecture (ISA) or bug fix requires physical redesign and refabrication of silicon masks.\n- **Microprogrammed Control Unit (Wilkes, 1951)**:\n  - Treats control signal generation as a software program stored in a dedicated high-speed **control memory** (ROM / PROM / WCS).\n  - Each machine instruction initiates a sequence of **microinstructions** (control words), where each bit directly activates an internal datapath control gate.\n\n---\n\n### 2. Primary Advantage: Flexibility and Extensibility\nThe paramount advantage of a microprogrammed control unit is that **it facilitates easy implementation of new instructions**:\n- Adding a new machine instruction, updating addressing modes, or supporting emulated ISAs simply requires appending new microcode routines into the control ROM.\n- It requires **zero changes** to the physical datapath or silicon wiring.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (Is faster than a hard-wired control unit)**: Incorrect. Hardwired control units are inherently faster because they avoid the memory access cycle time of the control ROM.\n- **Option C (Is useful when very small programs are to be run)**: Incorrect. Control unit design is an internal CPU hardware architecture choice independent of user program sizes.\n- **Option D (Usually refers to the control unit of a microprocessor)**: Incorrect. Microprogrammed control units were widely used across mainframes (e.g., IBM System/360) and complex minicomputers (e.g., DEC VAX) as well as CISC microprocessors; modern RISC microprocessors predominantly use hardwired control.\n\n---\n\n### 4. Conclusion\nTherefore, a microprogrammed control unit **facilitates easy implementation of new instruction (Option B)**.",
+        "images": []
+      }
     },
     "go:80201": {
       "title": "GATE CSE 1987 | Question: 1-vii",
@@ -289,7 +319,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Floating-Point Representation & Excess-N (Biased) Exponent",
+        "markdown": "### 1. Floating-Point Exponent Representation\nIn floating-point number representation (including IEEE 754 and earlier standards):\n- A number is represented as $\\pm M \\times B^E$, where $M$ is the mantissa (significand), $B$ is the base, and $E$ is the signed exponent.\n- The exponent can be both positive (for large numbers) and negative (for small fractional numbers).\n\n---\n\n### 2. Mechanism and Purpose of Excess-$N$ (Biased) Coding\nIn **Excess-$N$ code** (also known as biased representation with bias $N = 2^{k-1} - 1$ for a $k$-bit field):\n$$\\text{Biased Exponent} = E + N$$\n\n1. **Mapping to Unsigned Integers**:\n   - The most negative exponent $-N$ is encoded as $-N + N = 0 = (000\\dots0)_2$ (all zeros).\n   - An exponent of zero is encoded as $0 + N = N$.\n   - The most positive exponent $+N$ is encoded as $N + N = 2N = (111\\dots1)_2$ (all ones).\n2. **Simplified Hardware Comparison**:\n   - By shifting the signed range $[-N, N]$ entirely into non-negative values $[0, 2N]$, exponents preserve standard lexicographical / unsigned magnitude ordering:\n     $$E_1 < E_2 \\iff (E_1 + N) < (E_2 + N)$$\n   - This allows high-speed integer hardware comparators to compare the relative magnitudes of two floating-point numbers without dedicated sign-magnitude or two's-complement arithmetic circuitry.\n   - Specifically, the smallest possible exponent corresponds to **all zeros**.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (The dynamic range is large)**: Dynamic range is determined strictly by the number of bits allocated to the exponent field, not by whether bias or two's complement is used.\n- **Option B (The precision is high)**: Precision is determined by the number of bits allocated to the mantissa (fraction) field.\n- **Option D (Overflow is avoided)**: Overflow depends on the magnitude bounds of the number, which are identical under any bijective encoding of the exponent range.\n\n---\n\n### 4. Conclusion\nTherefore, the exponent is represented in excess-$N$ code so that **the smallest number is represented by all zeros (Option C)**.",
+        "images": []
+      }
     },
     "go:80274": {
       "title": "GATE CSE 1987 | Question: 1-viii",
@@ -328,6 +363,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Interrupt Lifecycle & Instruction Boundary Servicing",
+        "markdown": "### 1. Instruction Cycle & Interrupt Handling\nThe basic CPU instruction cycle consists of sequential phases:\n$$\\text{Fetch} \\longrightarrow \\text{Decode} \\longrightarrow \\text{Execute} \\longrightarrow \\text{Interrupt Check}$$\n\n1. **Asynchronous Interrupt Arrival**:\n   - An I/O device can assert an interrupt request signal (e.g., `INTR`) at any arbitrary point in time during the instruction cycle.\n2. **Preservation of Architectural State**:\n   - If the CPU were to immediately halt or jump to an interrupt service routine mid-instruction, the internal state of the processor (pipeline stages, temporary ALU registers, condition flags) would be left in an inconsistent, non-recoverable state.\n   - Therefore, hardware architecture requires the CPU to **complete the execution of the currently executing instruction**.\n3. **Interrupt Servicing**:\n   - At the end of the execution phase, during the *Interrupt Check* stage, the CPU samples the interrupt request lines.\n   - If interrupts are enabled, the CPU saves the Program Counter ($PC$) and Program Status Word ($PSW$) onto the stack, acknowledges the interrupt, and branches to the vector address of the Interrupt Service Routine (ISR).\n\n---\n\n### 2. Distractor Analysis\n- **Option A (Halts for a predetermined time)**: False. The CPU does not halt; it continues active execution by running the ISR.\n- **Option B (Hands over control of address bus and data bus to the interrupting device)**: False. Tri-stating and releasing the buses occurs during **Direct Memory Access (DMA)** in response to `HOLD`, not during standard CPU interrupt servicing.\n- **Option C (Branches off to the interrupt service routine immediately)**: False. Immediate branching would abort the current instruction mid-cycle and corrupt instruction execution.\n\n---\n\n### 3. Conclusion\nTherefore, on receiving an interrupt from an I/O device, the CPU **branches off to the interrupt service routine after completion of the current instruction (Option D)**.",
+        "images": []
       }
     },
     "go:80282": {
@@ -367,7 +407,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Front-End Phases: Lexical Analysis vs Syntax Analysis",
+        "markdown": "### 1. Phased Structure of a Compiler Front-End\nA compiler translates source code into machine code across sequential logical phases:\n$$\\text{Source Text} \\xrightarrow{} \\text{Lexical Analysis} \\xrightarrow{\\text{Tokens}} \\text{Syntax Analysis} \\xrightarrow{\\text{Parse Tree}} \\text{Semantic Analysis}$$\n\n---\n\n### 2. Role of the Lexical Analyser (Scanner)\n- The **Lexical Analyser** is the entry module of the compiler front-end.\n- It reads the source program as a raw, continuous stream of individual input characters.\n- It examines **every single character** of the source text to:\n  1. Strip out unnecessary whitespaces, tabs, and newlines.\n  2. Strip out source code comments.\n  3. Recognize character patterns (lexemes) according to regular grammar rules using finite automata.\n  4. Aggregate valid lexemes into typed atomic units called **tokens** (e.g., `id`, `num`, `if`, `+`).\n  5. Enter identifiers into the symbol table.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (The code generator)**: A back-end phase that generates target machine or assembly code from intermediate representation; it has zero access to source text characters.\n- **Option B (The code optimiser)**: Transforms intermediate representation into functionally equivalent, faster/smaller intermediate code.\n- **Option D (The syntax analyser)**: Operates strictly on the stream of **tokens** produced by the lexical analyzer; it does not read individual source characters.\n\n---\n\n### 4. Conclusion\nTherefore, the module that checks every character of the source text is **The lexical analyser (Option C)**.",
+        "images": []
+      }
     },
     "go:80291": {
       "title": "GATE CSE 1987 | Question: 1-xii",
@@ -407,7 +452,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation - Ambiguity in Context-Free Grammars",
+        "markdown": "### 1. Formal Definition of Grammar Ambiguity\nIn formal language theory, let $G = (V, \\Sigma, R, S)$ be a Context-Free Grammar (CFG).\n- A grammar $G$ is formally defined to be **ambiguous** if there exists at least one string (sentence) $w \\in L(G)$ for which there can be constructed:\n  1. **More than one distinct parse tree** (derivation tree), or equivalently\n  2. **More than one distinct leftmost derivation**, or\n  3. **More than one distinct rightmost derivation**.\n\n---\n\n### 2. Significance in Programming Languages\nAmbiguity implies semantic uncertainty: if an arithmetic expression like `a - b - c` has two different parse trees, the compiler cannot deterministically know whether it means `(a - b) - c` or `a - (b - c)`. Hence, compiler grammars must be unambiguous to guarantee unique syntax tree generation.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (The grammar contains useless non-terminals)**: Useless symbols (unreachable or non-generating non-terminals) can be eliminated without altering the language generated, but they do not cause ambiguity.\n- **Option C (Some production has two non terminals side by side on the right-hand side)**: Productions with adjacent non-terminals (e.g., $A \\to BC$) are standard in Chomsky Normal Form (CNF) and standard CFGs; they do not imply multiple parse trees.\n- **Option D (None of the above)**: Incorrect, since Option B is the textbook definition.\n\n---\n\n### 4. Conclusion\nTherefore, a context-free grammar is ambiguous if **it produces more than one parse tree for some sentence (Option B)**.",
+        "images": []
+      }
     },
     "go:80293": {
       "title": "GATE CSE 1987 | Question: 1-xiii",
@@ -446,7 +496,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Theory of Computation & Compilers - Context-Sensitive Constraints in Programming Languages",
+        "markdown": "### 1. Context-Free vs. Context-Sensitive Features\nWhile the syntactic skeleton of programming languages (nested control blocks, balanced parentheses, expressions) can be described by Context-Free Grammars (e.g., via Backus-Naur Form - BNF), actual programming languages like FORTRAN, C, and Pascal possess semantic rules that violate context-freeness:\n1. **Declaration Before Use**:\n   An identifier must be declared with a specific data type and array dimension before being referenced in an executable statement.\n   - Deciding that every occurrence of an identifier matches its declaration is fundamentally equivalent to recognizing the language:\n     $$L = \\{w c w \\mid w \\in \\Sigma^*\\}$$\n   - By the Pumping Lemma for Context-Free Languages, $L$ is strictly non-context-free because a single pushdown stack cannot compare two arbitrary strings across an intervening separator.\n2. **Dimension and Argument Matching**:\n   Verifying that the number of subscripts applied to an array matches its declared dimensionality, or that subroutine argument types match their formal parameter signatures, requires context-sensitive validation.\n3. **FORTRAN Hollerith Constants**:\n   In FORTRAN, Hollerith literal strings of the form `nH...` (where exactly $n$ characters must follow the 'H') cannot be recognized by a context-free pushdown automaton.\n\n---\n\n### 2. Chomsky Hierarchy Classification\nBecause complete compiler validation of FORTRAN programs requires enforcing dependencies across disjoint statements that exceed the capabilities of any Pushdown Automaton (PDA), FORTRAN as a complete formal language is classified as a **Context-Sensitive Language (Type 1)**.\n\n---\n\n### 3. Conclusion\nTherefore, FORTRAN is a **Context-sensitive language (Option C)**.",
+        "images": []
+      }
     },
     "go:80295": {
       "title": "GATE CSE 1987 | Question: 1-xiv",
@@ -485,7 +540,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Bottom-Up Parsing & Operator Precedence Grammars",
+        "markdown": "### 1. Operator Precedence Parsing Principles\nAn **Operator Precedence Parser** is a specialized, shift-reduce parsing technique applied to a class of grammars known as **operator grammars**.\n- **Operator Grammar Properties**:\n  1. No production has an empty right-hand side (no $\\epsilon$-productions).\n  2. No two non-terminals appear adjacent to each other on the right-hand side of any production.\n- **Parsing Direction**:\n  - The parser reads the input from left to right and constructs the parse tree from the bottom (terminals / leaves) up toward the start symbol (root).\n  - Hence, it belongs strictly to the family of **Bottom-Up Parsers**.\n\n---\n\n### 2. Precedence Relations and Handle Identification\nThe parser defines three precedence relations between pairs of terminals:\n- $a \\lessdot b$: $a$ yields precedence to $b$ (triggers **shift**).\n- $a \\doteq b$: $a$ has the same precedence as $b$.\n- $a \\gtrdot b$: $a$ takes precedence over $b$ (delimit the right end of the handle and trigger **reduce**).\nBy scanning the stack and input for these relations, the parser identifies the handle at the bottom of the tree and reduces it without needing a full canonical collection of LR states.\n\n---\n\n### 3. Distractor Analysis\n- **Option B (Top-down parser)**: Top-down parsers (e.g., LL(1), recursive descent) construct parse trees from the root downward; operator precedence works in reverse.\n- **Option C (Back tracking parser)**: Operator precedence parsing is deterministic; precedence relations uniquely determine whether to shift or reduce without backtracking.\n\n---\n\n### 4. Conclusion\nTherefore, an operator precedence parser is a **Bottom-up parser (Option A)**.",
+        "images": []
+      }
     },
     "go:80373": {
       "title": "GATE CSE 1987 | Question: 1-xix",
@@ -525,6 +585,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design & Programming Languages - Static (Lexical) Scoping Variable Resolution",
+        "markdown": "### 1. Principles of Static (Lexical) Scoping\nUnder **static (lexical) scoping**:\n- The scope and binding of an identifier are determined at **compile time** strictly by the textual nesting of procedure blocks in the source code.\n- If an identifier is referenced within a procedure and is not declared locally within that procedure, the compiler searches outward through enclosing lexical blocks according to the program's static nesting structure, **completely ignoring the dynamic call chain**.\n\n---\n\n### 2. Lexical Hierarchy of the Program\nAnalyzing the textual structure of the program:\n```pascal\nVar x, y: integer; { Global declarations: Level 0 }\n\nprocedure P(n: integer); { Enclosing scope: Global (Level 0) }\nbegin\n     x := (n + 2) / (n - 3);\nend;\n\nprocedure Q; { Enclosing scope: Global (Level 0) }\nVar x, y: integer; { Local declarations: Level 1 }\nbegin   \n    x := 3;\n    y := 4; \n    P(y);\n    Write(x); -- (1)\nend;\n \nbegin { Main Program: Level 0 }\n    x := 7;\n    y := 8;\n    Q; \n    Write(x); -- (2)\nend.\n```\n\n- Both procedure `P` and procedure `Q` are declared at the **outermost global level** (neither is nested inside the other).\n- The identifier `x` in procedure `P` is not declared locally in `P`. Therefore, in static scoping, `x` in `P` refers to the **global variable `x`** declared at Level 0.\n\n---\n\n### 3. Step-by-Step Execution Trace\n1. **Main Program Initial State**:\n   - Global variables: $x = 7, y = 8$.\n2. **Main Calls Procedure `Q`**:\n   - Inside `Q`, local variables $x$ and $y$ are allocated on the activation record:\n     $$x_{\\text{local}} = 3, \\quad y_{\\text{local}} = 4$$\n3. **`Q` Calls Procedure `P(y)`**:\n   - Argument passed is $y_{\\text{local}} = 4$, so formal parameter $n = 4$.\n   - Procedure `P` executes:\n     $$x := (n + 2) / (n - 3) = (4 + 2) / (4 - 3) = 6 / 1 = 6$$\n   - Since `P`'s static parent is the global scope, this assignment updates the **global variable `x`**:\n     $$x_{\\text{global}} \\leftarrow 6$$\n   - Notice that `Q`'s local variable $x_{\\text{local}}$ remains completely untouched ($x_{\\text{local}} = 3$).\n4. **Statement (1) in `Q`: `Write(x)`**:\n   - Within `Q`, `x` refers to `Q`'s local variable:\n     $$\\text{Output (1)} = 3$$\n5. **Control Returns to Main**:\n   - Statement (2) in `Main`: `Write(x)`.\n   - In `Main`, `x` refers to the global variable $x_{\\text{global}}$, which was updated to $6$ by procedure `P`:\n     $$\\text{Output (2)} = 6$$\n\n---\n\n### 4. Conclusion\nThe values printed by the write statements marked (1) and (2) are **3, 6 (Option A)**.",
+        "images": []
       }
     },
     "go:80298": {
@@ -564,6 +629,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Data Structures - Singly Circular Linked List Node Insertion",
+        "markdown": "### 1. Pointer Mechanics in a Singly Circular Linked List\nIn a singly linked circular list:\n- Each node contains a data field and a single `next` pointer.\n- The `next` pointer of the last node points back to the first node (head), maintaining a closed circular chain.\n\n---\n\n### 2. Node Insertion Procedure\nSuppose we wish to insert a new node $N$ into the list between an existing predecessor node $P$ and its successor node $S$ (where initially $P \\to \\text{next} = S$):\n\n1. **Step 1 (Initialize New Node's Link)**:\n   Point the new node's `next` pointer to the successor node $S$:\n   $$N \\to \\text{next} = P \\to \\text{next}$$\n   *(1 pointer modified)*\n\n2. **Step 2 (Redirect Predecessor's Link)**:\n   Update the predecessor node's `next` pointer to point to the new node $N$:\n   $$P \\to \\text{next} = N$$\n   *(1 pointer modified)*\n\nTotal list pointers modified:\n$$1 + 1 = 2 \\text{ pointers}$$\n\n---\n\n### 3. Boundary Cases\n- **Inserting at the Beginning or End**:\n  When maintained with an external `tail` pointer:\n  1. $N \\to \\text{next} = \\text{tail} \\to \\text{next}$\n  2. $\\text{tail} \\to \\text{next} = N$\n  (For insert at end, the external reference is simply updated $\\text{tail} = N$).\n- In all standard insertion scenarios, exactly **two list link pointers** are modified to splice the new record into the circular chain.\n\n---\n\n### 4. Conclusion\nTherefore, insertion of a record involves modification of **Two pointers (Option B)**.",
+        "images": []
       }
     },
     "go:80362": {
@@ -603,7 +673,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Operating Systems - Process Synchronization & Critical Section Definition",
+        "markdown": "### 1. Definition of a Critical Region / Critical Section\nIn concurrent computing and operating systems theory (Dijkstra, Hansen, Silberschatz):\n- A **critical section** (or **critical region**) is a designated segment of code in a concurrent program that accesses one or more **shared resources** (such as shared variables, memory, tables, files, or I/O peripherals).\n- If multiple processes were allowed to execute their critical sections concurrently, their operations could interleave unpredictably, resulting in **race conditions** and data inconsistency.\n\n---\n\n### 2. Synchronization Requirements\nTo guarantee system correctness, access to a critical region must satisfy three fundamental criteria:\n1. **Mutual Exclusion**: If process $P_i$ is executing in its critical section, no other processes can be executing in their critical sections.\n2. **Progress**: If no process is executing in its critical section and some processes wish to enter, only those processes not in their remainder sections can participate in deciding who enters next.\n3. **Bounded Waiting**: There must exist a bound on the number of times other processes are allowed to enter their critical sections after a process has made a request to enter.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (One which is enclosed by a pair of P and V operations on semaphores)**: While semaphores are one common mechanism used to *protect* critical sections, the definition of a critical region is about **what it does** (accessing shared resources), not the specific synchronization primitive used to guard it (it could equally be protected by mutexes, monitors, test-and-set hardware, or Peterson's algorithm).\n- **Options B & C (A program segment that has not been proved bug-free / causes crashes)**: Informal colloquial descriptions unrelated to operating system theory.\n\n---\n\n### 4. Conclusion\nTherefore, a critical region is **a program segment where shared resources are accessed (Option D)**.",
+        "images": []
+      }
     },
     "go:80364": {
       "title": "GATE CSE 1987 | Question: 1-xvii",
@@ -642,7 +717,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Compiler Design - Lexical Analysis Overhead & Symbol Table String Matching",
+        "markdown": "### 1. Impact of Longer Identifiers on Compilation\nDuring the compilation of a high-level language program:\n1. **Lexical Analysis (Scanner)**:\n   - The scanner reads the source program character by character.\n   - For every identifier, it must scan every character, maintain internal buffer states, and verify identifier termination. Longer identifiers require more character reads and buffer operations.\n2. **Symbol Table Management**:\n   - Every user-defined identifier must be inserted into and looked up within the compiler's **symbol table** (usually organized as a hash table).\n   - Computing a hash function over a string of length $L$ requires $O(L)$ operations.\n   - Resolving collisions and verifying identifier identity requires string comparisons, where comparing two identifiers takes time proportional to their character length $O(L)$.\n   - Longer identifiers thus directly increase the computational work required during lexical scanning and symbol table lookups, necessarily resulting in **somewhat slower compilation**.\n\n---\n\n### 2. Distractor Analysis\n- **Option B (A program that is easier to understand)**: While descriptive identifiers often improve code clarity, the word *necessarily* makes this statement false. Overly verbose, convoluted, or poorly named long identifiers can impair readability.\n- **Option C (An incorrect program)**: False. Language standards allow long identifiers (often up to hundreds of characters or unlimited in modern compilers); length does not cause grammatical or semantic errors.\n- **Option D (None of the above)**: Incorrect, since Option A is a direct consequence of compiler mechanics.\n\n---\n\n### 3. Conclusion\nTherefore, using longer identifiers in a program will necessarily lead to **somewhat slower compilation (Option A)**.",
+        "images": []
+      }
     },
     "go:80366": {
       "title": "GATE CSE 1987 | Question: 1-xviii",
@@ -682,6 +762,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Algorithms - Quicksort Worst-Case Complexity on Ordered Inputs",
+        "markdown": "### 1. Quicksort Partitioning Behavior on Ordered Arrays\nStandard Quicksort selects a pivot element (traditionally the first or last element of the sub-array) and partitions the remaining elements:\n- When the input array is already sorted in ascending order or reverse-sorted in descending order:\n  - Every partitioning step yields an extremely unbalanced split: one subproblem contains $0$ elements, while the other contains $n - 1$ elements.\n  - The number of element comparisons executed across the recursive tree is:\n    $$C(n) = \\sum_{i=1}^{n-1} i = \\frac{n(n-1)}{2} = \\Theta(n^2)$$\n  - This represents the classical worst-case running time of standard Quicksort.\n\n---\n\n### 2. Comparing Running Times $t_1$ and $t_2$\nWe are given two inputs:\n1. **Input 1**: $[1,\\; 2,\\; 3,\\; 4]$ has size $n_1 = 4$.\n   - The array is sorted in ascending order.\n   - Comparisons required:\n     $$C(4) = \\frac{4 \\times 3}{2} = 6 \\text{ comparisons}$$\n   - Execution time $t_1$ is proportional to $C(4)$.\n2. **Input 2**: $[5,\\; 4,\\; 3,\\; 2,\\; 1]$ has size $n_2 = 5$.\n   - The array is sorted in descending order (reverse-sorted).\n   - Comparisons required:\n     $$C(5) = \\frac{5 \\times 4}{2} = 10 \\text{ comparisons}$$\n   - Execution time $t_2$ is proportional to $C(5)$.\n\nBecause $n_1 = 4 < 5 = n_2$ and both trigger the worst-case partitioning recurrence $T(n) = \\Theta(n^2)$:\n$$t_1 < t_2$$\n\n---\n\n### 3. Distractor Analysis\n- **Option A ($t_1 = t_2$)**: Incorrect. The input sizes differ ($n_1 = 4$ vs $n_2 = 5$); a larger array requires more partitioning steps and comparisons.\n- **Option B ($t_1 > t_2$)**: Incorrect. Processing 4 elements cannot take longer than processing 5 elements under the same worst-case recurrence.\n- **Option D ($t_1 = t_2 + 5 \\log 5$)**: Incorrect. The running times follow a quadratic recurrence $\\Theta(n^2)$, not an additive logarithmic difference.\n\n---\n\n### 4. Conclusion\nTherefore, the relationship that holds is **$t_1 < t_2$ (Option C)**.",
+        "images": []
       }
     },
     "go:80374": {
@@ -722,6 +807,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Compiler Design & Programming Languages - Dynamic Scoping Variable Resolution",
+        "markdown": "### 1. Principles of Dynamic Scoping\nUnder **dynamic scoping**:\n- The binding of an identifier is resolved at **run time** by searching up the dynamic activation call stack.\n- When an undeclared non-local variable is referenced, the runtime environment searches through active procedure activation records in reverse chronological order (from the most recent caller back toward `Main`).\n- Whichever active activation record most recently declared the variable provides its storage binding.\n\n---\n\n### 2. Runtime Call Stack and Scoping Chain\nGiven execution path:\n$$\\text{Main} \\longrightarrow \\text{Calls } Q \\longrightarrow \\text{Calls } P$$\n\n1. **Main Activation Record**:\n   - Declares global variables: $x_{\\text{global}} = 7, y_{\\text{global}} = 8$.\n2. **`Q` Activation Record** (pushed onto stack):\n   - Declares local variables: $x_Q = 3, y_Q = 4$.\n3. **`P` Activation Record** (pushed onto stack):\n   - Formal parameter $n = y_Q = 4$.\n   - `P` executes statement:\n     $$x := (n + 2) / (n - 3) = (4 + 2) / (4 - 3) = 6$$\n   - `P` does not declare $x$ locally. Under **dynamic scoping**, the runtime inspects the caller's stack frame.\n   - The immediate caller is **procedure `Q`**, which contains an active declaration of $x$ ($x_Q$).\n   - Therefore, procedure `P` mutates **`Q`'s local variable $x_Q$**:\n     $$x_Q \\leftarrow 6$$\n   - The global variable $x_{\\text{global}}$ in `Main` remains unchanged ($x_{\\text{global}} = 7$).\n\n---\n\n### 3. Evaluating Output Statements\n- **Statement (1) in `Q`: `Write(x)`**:\n  - `P` returns control to `Q`.\n  - `Q` prints its local variable $x_Q$, which was updated to $6$:\n    $$\\text{Output (1)} = 6$$\n- **Statement (2) in `Main`: `Write(x)`**:\n  - `Q` terminates and its stack frame is popped.\n  - Control returns to `Main`.\n  - `Main` prints its variable $x_{\\text{global}}$, which retains its value $7$:\n    $$\\text{Output (2)} = 7$$\n\n---\n\n### 4. Conclusion\nUnder dynamic scoping, the write statements print **6, 7 (Option B)**.",
+        "images": []
       }
     },
     "go:80377": {
@@ -766,6 +856,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Linear Algebra & Optimization - Linear Inequalities in Two Variables",
+        "markdown": "### 1. Mathematical Definition of a Linear Inequality\nLet $x$ and $y$ be variables, and let $a, b, c, \\dots$ be real constants:\n1. **Inequality**: A mathematical statement asserting a relationship between two expressions using an inequality relation: $<, \\le, >, \\ge$, or $\\ne$. An equation using strict equality ($=$) is **not** an inequality.\n2. **Linearity**: An expression is linear in variables $x$ and $y$ if:\n   - Each variable appears strictly with power $1$ (first degree).\n   - No products of variables (e.g., $xy$) appear.\n   - No transcendental, roots, or nonlinear functions of variables appear.\n   - The general canonical form of a linear inequality in two variables is:\n     $$A x + B y \\;\\{\\le, <, \\ge, >\\}\\; C$$\n     where $A, B, C$ are constants.\n\n---\n\n### 2. Evaluation of Candidate Choices\n- **Option A: $ax + bcy = 0$**\n  - Contains an equality sign ($=$); this is a **linear equation**, not an inequality.\n- **Option B: $ax^2 + cy^2 = 21$**\n  - Contains an equality sign ($=$) and quadratic second-degree terms ($x^2, y^2$); this is a **second-degree nonlinear equation** (ellipse/hyperbola).\n- **Option C: $abx + a^2 y \\ge 15$**\n  - Uses the inequality operator $\\ge$.\n  - The coefficients are $A = ab$, $B = a^2$, and $C = 15$, all of which are scalar constants.\n  - The variables $x$ and $y$ are both strictly of degree $1$ with no product terms.\n  - This satisfies all requirements of a **linear inequality $\\implies$ Option C**.\n- **Option D: $xy + ax \\ge 20$**\n  - Contains the product term $xy$, which has degree $1 + 1 = 2$ (bilinear/nonlinear).\n\n---\n\n### 3. Conclusion\nTherefore, the only linear inequality is **$abx + a^2 y \\ge 15$ (Option C)**.",
+        "images": []
       }
     },
     "go:80379": {
@@ -895,6 +990,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Operations Research & Optimization - History & Etymology of the Simplex Method",
+        "markdown": "### 1. Historical Background of Linear Programming\nThe **Simplex Algorithm** was formulated in 1947 by the American mathematician **George B. Dantzig** to solve general linear programming problems of the form:\n$$\\text{Maximize } c^T x \\quad \\text{subject to } Ax \\le b, \\; x \\ge 0$$\n\n---\n\n### 2. Etymology and Geometric Origin\n- **Geometric Definition of a Simplex**:\n  In geometry and algebraic topology, an $n$-dimensional **simplex** (plural: *simplices*) is the simplest possible polytope in $n$-dimensional Euclidean space, formed by the convex hull of $n + 1$ affinely independent points:\n  - 0-simplex: Point\n  - 1-simplex: Line segment\n  - 2-simplex: Triangle\n  - 3-simplex: Tetrahedron\n- **Simplicial and Algebraic Complexes**:\n  A collection of simplices joined together along their faces forms a **simplicial complex** (or **algebraic complex**).\n- When Dantzig was developing the geometric framework for tracing adjacent extreme points across the feasible polytope, mathematician **Theodore Motzkin** suggested the name \"Simplex Method\" based on the underlying theory of simplices and algebraic complexes in polyhedral geometry.\n\n---\n\n### 3. Distractor Analysis\n- **Option A (It is simple)**: Colloquial myth. The algorithm is conceptually sophisticated and computationally involved; Dantzig explicitly documented that it was not named for simplicity.\n- **Option C (The simple pendulum works on this method)**: Wholly unrelated physics distraction.\n- **Option D (No one thought of a better name)**: False historical claim.\n\n---\n\n### 4. Conclusion\nThe simplex method is so named because **it is based on the theory of algebraic complexes (Option B)**.",
+        "images": []
       }
     },
     "go:80562": {
@@ -937,6 +1037,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Analysis - Convergence Conditions of the Newton-Raphson Method",
+        "markdown": "### 1. Newton-Raphson Iteration Formula\nThe Newton-Raphson method finds roots of a differentiable function $f(x) = 0$ via the iteration scheme:\n$$x_{k+1} = x_k - \\frac{f(x_k)}{f'(x_k)}$$\n\n---\n\n### 2. Evaluation of Candidate Statements\n\n#### Statement A: \"It converges always under all circumstances.\"\n- **False**. Newton-Raphson is a local convergence method, not a global one.\n- Convergence fails if:\n  1. $f'(x_k) = 0$ (division by zero / horizontal tangent).\n  2. The initial guess $x_0$ is outside the basin of attraction, causing divergence to infinity.\n  3. The iteration enters an infinite periodic limit cycle (e.g., $f(x) = x^3 - 5x$ with $x_0 = 1$ oscillates between $1$ and $-1$).\n\n#### Statement B: \"It does not converge to a root where the second differential coefficient changes sign.\"\n- **False**. A point where the second derivative changes sign ($f''(x) = 0$) is an **inflection point**.\n- While an inflection point between the starting guess and the root can sometimes cause overshooting, the method frequently converges to roots located at inflection points.\n- For example, for $f(x) = x^3 = 0$, $f''(0) = 0$ (second derivative changes sign across $x=0$), yet $x_{k+1} = x_k - x_k^3/(3x_k^2) = \\frac{2}{3}x_k$, which monotonically and steadily converges to the root $x = 0$.\n\n#### Statement C: \"It does not converge to a root where the second differential coefficient vanishes.\"\n- **False**. If $f''(r) = 0$ at a simple root $r$ (e.g., $f(x) = x + x^5 = 0$ at $r = 0$, where $f'(0) = 1 \\ne 0$ and $f''(0) = 0$), Newton-Raphson converges exceptionally fast (quadratic or higher-order convergence).\n\n---\n\n### 3. Conclusion\nBecause Statements A, B, and C are all demonstrably false, the correct choice is **None of the above (Option D)**.",
+        "images": []
       }
     },
     "go:80571": {
@@ -976,7 +1081,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Calculus - Intermediate Value Theorem (Bolzano's Theorem) & Root Bracketing",
+        "markdown": "### 1. Intermediate Value Theorem (Bolzano's Theorem)\nLet $f: [x_i, x_{i+1}] \\to \\mathbb{R}$ be a real-valued continuous function on the closed interval $[x_i, x_{i+1}]$.\n- **Bolzano's Root Theorem**: If the function values at the endpoints have opposite signs:\n  $$f(x_i) \\cdot f(x_{i+1}) < 0$$\n  then there exists at least one real number $c$ strictly inside the open interval $(x_i, x_{i+1})$ such that:\n  $$f(c) = 0$$\n- Geometrically, because the curve of a continuous function is unbroken and continuous, it cannot transition from a negative value to a positive value (or vice-versa) without crossing the horizontal $x$-axis. Hence, there must exist at least one root between $x_i$ and $x_{i+1}$.\n\n---\n\n### 2. Application in Numerical Computing\nThis fundamental property is the theoretical basis for bracketed root-finding numerical algorithms:\n- **Bisection Method**: Repeatedly halves the interval $[x_i, x_{i+1}]$ that satisfies $f(x_i) \\cdot f(x_{i+1}) < 0$, guaranteeing convergence to a root.\n- **Regula-Falsi (False Position) Method**: Interpolates linear secants between bracketed endpoints.\n\n---\n\n### 3. Distractor Analysis\n- **Option B (There need not be a root of f(x) between x_i and x_{i+1})**: Contradicts the Intermediate Value Theorem for continuous functions.\n- **Options C & D (The fourth derivative of f(x) vanishes at x_i / x_{i+1})**: Completely unrelated distractors; higher-order derivatives have no bearing on sign changes or root existence.\n\n---\n\n### 4. Conclusion\nTherefore, if $f(x_i) \\cdot f(x_{i+1}) < 0$, **there must be a root of $f(x)$ between $x_i$ and $x_{i+1}$ (Option A)**.",
+        "images": []
+      }
     },
     "go:80572": {
       "title": "GATE CSE 1987 | Question: 2a",
@@ -1019,6 +1129,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Architecture - DMA vs Interrupt Bus Request Priority",
+        "markdown": "### 1. Bus Arbitration vs. Interrupt Requests\nIn a microprocessor system, external devices communicate with the CPU via two primary hardware signaling mechanisms:\n1. **Bus Request (DMA via `HOLD`)**:\n   A high-speed peripheral (e.g., disk controller or network interface) asserts `HOLD` to request control of the system address, data, and control buses to perform direct memory transfers without CPU intervention.\n2. **Interrupt Request (`INTR`)**:\n   A peripheral requests the CPU to pause normal program execution and branch to an Interrupt Service Routine (ISR).\n\n---\n\n### 2. Priority Resolution\nWhen a bus (DMA) request and an interrupt request arrive simultaneously:\n- **Time Sensitivity of DMA**: DMA transfers typically involve real-time high-bandwidth data streams. Delaying a DMA cycle can result in permanent device data overruns (buffer overflow and lost packets).\n- **Servicing Boundary**:\n  - The microprocessor checks and acknowledges a DMA `HOLD` request at the end of the **current machine cycle ($T$-state)** by asserting `HLDA` and tri-stating its buses.\n  - Conversely, an interrupt request (`INTR`) is only checked and serviced at the end of the **entire multi-cycle instruction**.\n- Therefore, the microprocessor invariably attends **first to the bus request**.\n\n---\n\n### 3. Conclusion\nThe statement is **TRUE** $\\implies$ **1**.",
+        "images": []
       }
     },
     "go:80576": {
@@ -1061,6 +1176,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Architecture - Memory-Mapped vs Isolated I/O Scheme Speed",
+        "markdown": "### 1. Memory-Mapped vs. Isolated (I/O-Mapped) I/O\n- **I/O-Mapped (Isolated) I/O**:\n  - Employs a separate I/O address space (e.g., Intel 8085/x86 `IN` and `OUT` instructions).\n  - All data transfers are strictly channeled through the accumulator register ($A$), requiring multi-step instructions to move data from the peripheral to the accumulator, and then from the accumulator into memory.\n- **Memory-Mapped I/O**:\n  - Treats I/O port registers as standard memory locations within the unified address space.\n  - The CPU can utilize its complete instruction set—including direct memory-to-register transfers, pointer indirect operations, indexed addressing modes, and block memory transfer instructions—directly on I/O ports.\n\n---\n\n### 2. Transfer Efficiency\nBecause memory-mapped I/O allows direct manipulation and transfer of device data using complex addressing modes and multi-byte registers without mandatory bottlenecking through the accumulator, data transfer routines can be executed with fewer instructions and higher throughput.\nIn classical computer architecture curricula, this efficiency advantage is recognized as making data transfers faster.\n\n---\n\n### 3. Conclusion\nThe statement is **TRUE** $\\implies$ **1**.",
+        "images": []
       }
     },
     "go:80579": {
@@ -1104,6 +1224,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Data Structures - Binary Tree Reconstruction Ambiguity from Preorder and Postorder",
+        "markdown": "### 1. Binary Tree Traversals\n- **Preorder Traversal**: $\\text{Root} \\longrightarrow \\text{Left Subtree} \\longrightarrow \\text{Right Subtree}$\n- **Postorder Traversal**: $\\text{Left Subtree} \\longrightarrow \\text{Right Subtree} \\longrightarrow \\text{Root}$\n\n---\n\n### 2. Why Preorder + Postorder Traversals Are Ambiguous\nTo uniquely reconstruct a general binary tree, one must know which nodes belong to the left subtree and which belong to the right subtree:\n- Preorder identifies the root as the first element.\n- Postorder confirms the root as the last element.\n- However, if an internal node has only **one child**, preorder and postorder cannot determine whether that child is a left child or a right child!\n\n#### Counterexample:\nConsider two distinct binary trees with nodes $A$ and $B$:\n- **Tree 1**: Root $A$ with **left** child $B$.\n  - Preorder: $A, B$\n  - Postorder: $B, A$\n- **Tree 2**: Root $A$ with **right** child $B$.\n  - Preorder: $A, B$\n  - Postorder: $B, A$\n\nBoth trees produce identical preorder ($A, B$) and postorder ($B, A$) sequences, making unique reconstruction impossible.\n*(Unique reconstruction from preorder and postorder is possible if and only if the tree is strictly a **full binary tree**, where every internal node has exactly two children, or if an **inorder** traversal is provided).*\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE** $\\implies$ **0**.",
+        "images": []
       }
     },
     "go:80583": {
@@ -1193,6 +1318,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Data Structures - Tree Properties & Leaf Counts in General Binary Trees",
+        "markdown": "### 1. Formal Definition of a Binary Tree\nIn computer science, a **binary tree** is a hierarchical data structure defined recursively as a finite set of nodes that:\n- Is either empty, or\n- Consists of a root node and two disjoint binary trees, called the **left subtree** and the **right subtree**.\n\nThe only structural invariant is that **every node has at most two children** ($0, 1,$ or $2$ child nodes).\n\n---\n\n### 2. Evaluation of the Leaf Count Assertion\nThe statement asserts: *\"If the number of leaves in a tree is not a power of 2, then the tree is not a binary tree.\"*\n\nThis assertion is demonstrably false:\n- Only a **perfect binary tree** of height $h$ (where all interior nodes have two children and all leaves are at the same depth) has exactly $2^h$ leaves (a power of 2).\n- A general binary tree can have **any arbitrary positive integer number of leaves**:\n  - A degenerate binary tree (linked list structure) has exactly **$1$ leaf** ($2^0$).\n  - A root with two leaf children has **$2$ leaves** ($2^1$).\n  - A root whose left child has two leaves and right child has one leaf has **$3$ leaves** ($3$ is not a power of $2$, yet the tree is a valid binary tree).\n  - Similarly, binary trees with $5, 6, 7, 9, 10, \\dots$ leaves are trivial to construct.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE** $\\implies$ **0**.",
+        "images": []
       }
     },
     "go:80589": {
@@ -1235,6 +1365,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Kleene's Theorem: Regular Languages & Regular Expressions",
+        "markdown": "### 1. Kleene's Theorem (1956)\n**Kleene's Theorem** is the foundational result establishing the mathematical equivalence between operational automata and algebraic language descriptors:\n$$\\text{A language } L \\text{ is Regular} \\iff L \\text{ is accepted by a DFA/NFA} \\iff L \\text{ is described by a Regular Expression}$$\n\n---\n\n### 2. Converting Regular Languages to Regular Expressions\nGiven any regular language $L$, there exists a Deterministic Finite Automaton (DFA) $M = (Q, \\Sigma, \\delta, q_0, F)$ that accepts $L$.\nWe can always construct an equivalent regular expression from $M$ using algorithmic procedures such as:\n1. **The State Elimination Algorithm**: Systematically eliminating internal states from a Generalized Transition Graph (GTG) until only start and accept states remain, yielding a regular expression.\n2. **Arden's Theorem**: Setting up and solving linear language equations of the form $X = XA + B \\implies X = BA^*$.\n\nBecause every regular language is accepted by a finite automaton, and every finite automaton can be transformed into a regular expression, **any regular language has an equivalent regular expression**.\n\n---\n\n### 3. Conclusion\nThe statement is **TRUE** $\\implies$ **1**.",
+        "images": []
       }
     },
     "go:80590": {
@@ -1277,6 +1412,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Non-Closure of Regular Sets Under Arbitrary Subsets",
+        "markdown": "### 1. Set Subsets vs. Language Closure\nThe statement asserts: *\"All subsets of regular sets are regular.\"*\n\nIn language theory:\n- A language over an alphabet $\\Sigma$ is simply any subset of $\\Sigma^*$:\n  $$L \\subseteq \\Sigma^*$$\n- The universal language $\\Sigma^*$ is recognized by a trivial 1-state DFA, and is therefore a **regular set**.\n- If every subset of a regular set were regular, then every subset of $\\Sigma^*$ would be regular.\n- That would imply that **all languages in existence are regular**!\n\n---\n\n### 2. Counterexample\nLet $\\Sigma = \\{a, b\\}$.\n- The set $\\Sigma^*$ is regular.\n- Consider the classic subset:\n  $$L = \\{a^n b^n \\mid n \\ge 0\\} \\subset \\Sigma^*$$\n- While $\\Sigma^*$ is regular, $L$ is a well-known non-regular context-free language (proven via the Pumping Lemma).\n- Furthermore, undecidable and non-recursively enumerable languages (such as the Halting Problem $A_{TM}$) are also subsets of $\\Sigma^*$, but are far outside the regular class.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE** $\\implies$ **0**.",
+        "images": []
       }
     },
     "go:80594": {
@@ -1317,6 +1457,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - NFA to Minimal DFA State Count Bounds",
+        "markdown": "### 1. Powerset (Subset) Construction Bounds\nLet $M_N = (Q_N, \\Sigma, \\delta_N, q_0, F_N)$ be a Non-deterministic Finite Automaton (NFA) with $|Q_N| = n$ states.\n- By Rabin-Scott subset construction, each state of the equivalent DFA corresponds to a subset of states of the NFA.\n- The powerset $2^{Q_N}$ contains $2^n$ possible subsets.\n- Therefore, the equivalent DFA has **at most** $2^n$ states in the worst case:\n  $$|Q_D| \\le 2^n$$\n\n---\n\n### 2. Minimal DFA State Count\nThe statement asserts: *\"A minimal DFA that is equivalent to an NDFA with $n$ nodes has always $2^n$ states.\"*\n\nThis is completely false:\n1. **Upper Bound vs. Universal Truth**: $2^n$ is a worst-case theoretical upper bound (achieved only for specific worst-case language families, such as strings where the $n$-th symbol from the end is a $1$).\n2. **Typical Case**: In the vast majority of practical NFAs, most subsets in $2^n$ are unreachable from the initial state, or are equivalent under the Myhill-Nerode equivalence relation.\n3. **Extreme Counterexample**:\n   - Consider an NFA with $n$ states that accepts the universal language $\\Sigma^*$.\n   - The minimal equivalent DFA has **exactly 1 state**, regardless of how large $n$ is ($1 \\ll 2^n$).\n\n---\n\n### 3. Conclusion\nThe minimal DFA does not always have $2^n$ states.\nThe statement is **FALSE (Option B)**.",
+        "images": []
       }
     },
     "go:80599": {
@@ -1357,6 +1502,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Non-Closure of Context-Free Languages Under Intersection",
+        "markdown": "### 1. Closure Properties of Context-Free Languages\nThe statement asserts: *\"The intersection of two CFL's is also a CFL.\"*\n\nContext-Free Languages ($CFL$) are recognized by Pushdown Automata (PDA), which possess a single LIFO stack storage mechanism.\n- While CFLs are closed under union ($L_1 \\cup L_2$), concatenation ($L_1 L_2$), and Kleene star ($L^*$), they are **NOT closed under intersection**.\n\n---\n\n### 2. Classic Counterexample\nConsider the following two languages over $\\Sigma = \\{a, b, c\\}$:\n$$L_1 = \\{a^n b^n c^m \\mid n, m \\ge 0\\}$$\n$$L_2 = \\{a^m b^n c^n \\mid m, n \\ge 0\\}$$\n\n1. **$L_1$ is Context-Free**: A PDA pushes $a$'s onto the stack, pops an $a$ for each $b$, and simply consumes $c$'s without stack constraints.\n2. **$L_2$ is Context-Free**: A PDA consumes $a$'s without stack constraints, pushes $b$'s onto the stack, and pops a $b$ for each $c$.\n3. **Intersection $L_1 \\cap L_2$**:\n   $$L_1 \\cap L_2 = \\{a^n b^n c^n \\mid n \\ge 0\\}$$\n   This language requires simultaneously verifying that the number of $a$'s equals the number of $b$'s, AND the number of $b$'s equals the number of $c$'s.\n   A single pushdown stack cannot compare three independent quantities. By the Pumping Lemma for CFLs, $\\{a^n b^n c^n\\}$ is strictly **Context-Sensitive and non-context-free**.\n\n---\n\n### 3. Conclusion\nThe statement is **FALSE (Option B)**.",
+        "images": []
       }
     },
     "go:80603": {
@@ -1400,6 +1550,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Post's Theorem: Decidable / Recursive Language Characterization",
+        "markdown": "### 1. Formal Language Definitions\n- **Recursively Enumerable (Turing-Recognizable)**: A language $L$ is recursively enumerable if there exists a Turing Machine $M$ such that for any string $w \\in L$, $M$ halts and accepts. (For $w \\notin L$, $M$ may either reject or loop infinitely).\n- **Recursive (Turing-Decidable)**: A language $L$ is recursive if there exists a Turing Machine $M$ that **halts on all inputs**, accepting if $w \\in L$ and rejecting if $w \\notin L$.\n\n---\n\n### 2. Post's Theorem\n**Theorem (Post, 1944; Sipser Theorem 4.22)**:\n$$\\text{A language } A \\text{ is recursive (decidable)} \\iff A \\text{ is RE and } \\overline{A} \\text{ is RE.}$$\n\n#### Proof of Construction:\nLet $M_1$ be a Turing machine that accepts $A$, and let $M_2$ be a Turing machine that accepts $\\overline{A}$.\nWe construct a decider $M$ for $A$:\n```text\nDecider M on input w:\n1. Run M1 and M2 in parallel on input w (alternating execution steps).\n2. If M1 halts and accepts w:\n     Halt and ACCEPT.\n3. If M2 halts and accepts w:\n     Halt and REJECT.\n```\n- Since every string $w$ belongs either to $A$ or to $\\overline{A}$ (and not both), exactly one of $M_1$ or $M_2$ must halt and accept after a finite number of steps.\n- Therefore, decider $M$ is guaranteed to halt on all inputs, correctly deciding membership in $A$.\n\n---\n\n### 3. Conclusion\nThe statement is **TRUE** $\\implies$ **1**.",
+        "images": []
       }
     },
     "go:80606": {
@@ -1443,6 +1598,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Theory of Computation - Undecidability of Turing Machine Acceptance Problem",
+        "markdown": "### 1. The Acceptance Problem for Turing Machines ($A_{TM}$)\nThe problem of determining whether an arbitrary Turing machine $M$ accepts an arbitrary input string $w$ is defined as the language:\n$$A_{TM} = \\{\\langle M, w \\rangle \\mid M \\text{ is a Turing Machine that accepts input } w\\}$$\n\n---\n\n### 2. Proof of Undecidability (Turing, 1936)\nSuppose for contradiction that there exists a decider $H$ for $A_{TM}$ such that:\n$$H(\\langle M, w \\rangle) = \\begin{cases} \\text{Accept} & \\text{if } M \\text{ accepts } w \\\\ \\text{Reject} & \\text{if } M \\text{ does not accept } w \\end{cases}$$\n\nUsing $H$, construct a new Turing machine $D$:\n```text\nMachine D on input <M>:\n1. Run H on input <M, <M>>.\n2. If H accepts, then REJECT / LOOP FOREVER.\n3. If H rejects, then ACCEPT.\n```\n\nNow run $D$ on its own description $\\langle D \\rangle$:\n$$D(\\langle D \\rangle) = \\begin{cases} \\text{Accept} & \\text{if } D \\text{ does not accept } \\langle D \\rangle \\\\ \\text{Reject} & \\text{if } D \\text{ accepts } \\langle D \\rangle \\end{cases}$$\nThis produces a direct logical contradiction ($D$ accepts $\\langle D \\rangle \\iff D$ does not accept $\\langle D \\rangle$).\nTherefore, no such decider $H$ can exist, proving that the acceptance problem is **undecidable**.\n\n---\n\n### 3. Conclusion\nThe statement is **TRUE** $\\implies$ **1**.",
+        "images": []
       }
     },
     "go:80609": {
@@ -1485,6 +1645,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Databases - Functional Dependency Invariants & Many-to-One Tuples",
+        "markdown": "### 1. Formal Definition of Functional Dependency\nLet $R$ be a relational schema, and let $X, Y \\subseteq R$.\nA relation instance $r(R)$ satisfies the **functional dependency** $X \\to Y$ if and only if for every pair of tuples $t_1, t_2 \\in r$:\n$$t_1[X] = t_2[X] \\implies t_1[Y] = t_2[Y]$$\n\nIn words: if two tuples have the same value for attribute $X$, they must have the same value for attribute $Y$.\n\n---\n\n### 2. Analysis of the Given Tuples\nWe are given schema $(X, Y)$ satisfying $X \\to Y$ with two tuples:\n$$t_1 = \\langle 1, 2 \\rangle \\implies t_1[X] = 1, \\; t_1[Y] = 2$$\n$$t_2 = \\langle 2, 2 \\rangle \\implies t_2[X] = 2, \\; t_2[Y] = 2$$\n\nLet us test the condition:\n- Are the $X$-values identical?\n  $$t_1[X] = 1 \\ne 2 = t_2[X]$$\n- Because $t_1[X] \\ne t_2[X]$, the antecedent of the implication is false ($F \\implies P$ is vacuously true).\n- Functional dependency $X \\to Y$ permits **many-to-one** relationships: multiple distinct $X$ values (here $1$ and $2$) are fully allowed to map to the same $Y$ value ($2$).\n- (A violation would only occur if there were two tuples with identical $X$ but different $Y$, e.g., $\\langle 1, 2 \\rangle$ and $\\langle 1, 3 \\rangle$).\n\n---\n\n### 3. Conclusion\nBoth tuples $\\langle 1, 2 \\rangle$ and $\\langle 2, 2 \\rangle$ can simultaneously exist in relation $r$.\nThe statement is **TRUE** $\\implies$ **1**.",
+        "images": []
       }
     },
     "go:82548": {
@@ -1526,6 +1691,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Analysis - Lagrange Polynomial Interpolation",
+        "markdown": "### 1. Lagrange Interpolation Formula\nGiven $n + 1$ data points $(x_0, y_0), (x_1, y_1), \\dots, (x_n, y_n)$, the interpolating polynomial $P(x)$ is given by:\n$$P(x) = \\sum_{i=0}^n L_i(x) \\cdot y_i$$\nwhere each Lagrange basis polynomial $L_i(x)$ is defined as:\n$$L_i(x) = \\prod_{j=0, j \\ne i}^n \\frac{x - x_j}{x_i - x_j}$$\n\n---\n\n### 2. Given Data Points\nWe are given four data points:\n- $(x_0, y_0) = (300, 2.4771)$\n- $(x_1, y_1) = (304, 2.4829)$\n- $(x_2, y_2) = (305, 2.4843)$\n- $(x_3, y_3) = (307, 2.4871)$\n\nWe wish to evaluate $f(301)$ at $x = 301$.\n\n---\n\n### 3. Calculating Lagrange Basis Coefficients at $x = 301$\n- **For $i = 0$ ($x_0 = 300$)**:\n  $$L_0(301) = \\frac{(301 - 304)(301 - 305)(301 - 307)}{(300 - 304)(300 - 305)(300 - 307)} = \\frac{(-3)(-4)(-6)}{(-4)(-5)(-7)} = \\frac{-72}{-140} = \\frac{18}{35} \\approx 0.5142857$$\n\n- **For $i = 1$ ($x_1 = 304$)**:\n  $$L_1(301) = \\frac{(301 - 300)(301 - 305)(301 - 307)}{(304 - 300)(304 - 305)(304 - 307)} = \\frac{(1)(-4)(-6)}{(4)(-1)(-3)} = \\frac{24}{12} = 2.0$$\n\n- **For $i = 2$ ($x_2 = 305$)**:\n  $$L_2(301) = \\frac{(301 - 300)(301 - 304)(301 - 307)}{(305 - 300)(305 - 304)(305 - 307)} = \\frac{(1)(-3)(-6)}{(5)(1)(-2)} = \\frac{18}{-10} = -1.8$$\n\n- **For $i = 3$ ($x_3 = 307$)**:\n  $$L_3(301) = \\frac{(301 - 300)(301 - 304)(301 - 305)}{(307 - 300)(307 - 304)(307 - 305)} = \\frac{(1)(-3)(-4)}{(7)(3)(2)} = \\frac{12}{42} = \\frac{2}{7} = \\frac{10}{35} \\approx 0.2857143$$\n\n*Weight Check*:\n$$\\sum L_i(301) = \\frac{18}{35} + 2.0 - 1.8 + \\frac{10}{35} = \\frac{28}{35} + 0.2 = 0.8 + 0.2 = 1.0$$\n\n---\n\n### 4. Evaluating $f(301)$\n$$f(301) = L_0(301) y_0 + L_1(301) y_1 + L_2(301) y_2 + L_3(301) y_3$$\n$$f(301) = \\frac{18}{35}(2.4771) + 2(2.4829) - 1.8(2.4843) + \\frac{10}{35}(2.4871)$$\n$$f(301) = \\frac{18 \\times 2.4771 + 10 \\times 2.4871}{35} + 4.9658 - 4.47174$$\n$$f(301) = \\frac{44.5878 + 24.8710}{35} + 0.49406 = \\frac{69.4588}{35} + 0.49406$$\n$$f(301) = 1.98453714 + 0.49406 = 2.47859714\\dots$$\n\n---\n\n### 5. Conclusion\nUsing Lagrange's interpolation formula, $f(301) \\approx \\mathbf{2.4786}$ (stored as **2.478597**).",
+        "images": []
       }
     },
     "go:82550": {
@@ -1570,6 +1740,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Numerical Analysis - Simpson's 1/3rd Rule Numerical Integration",
+        "markdown": "### 1. Problem Formulation\nWe are asked to evaluate the definite integral:\n$$V = \\int_0^1 \\frac{1}{1 + x}\\, dx$$\nusing **Simpson's 1/3rd rule** with step size $h = 0.25$, correct to three decimal places.\n\n*(Note: The exact analytical value is $\\int_0^1 \\frac{1}{1+x} dx = [\\ln(1+x)]_0^1 = \\ln 2 \\approx 0.693147$).*\n\n---\n\n### 2. Discretization Table\nWith $a = 0, b = 1,$ and $h = 0.25$, the number of subintervals is $n = (1 - 0)/0.25 = 4$ (an even integer, satisfying Simpson's rule requirements):\n\n$$\\begin{array}{c|c|l}\n\\hline\ni & x_i & y_i = f(x_i) = \\frac{1}{1 + x_i} \\\\\n\\hline\n0 & 0.00 & y_0 = \\frac{1}{1} = 1.00000 \\\\\n1 & 0.25 & y_1 = \\frac{1}{1.25} = 0.80000 \\\\\n2 & 0.50 & y_2 = \\frac{1}{1.50} = \\frac{2}{3} \\approx 0.66667 \\\\\n3 & 0.75 & y_3 = \\frac{1}{1.75} = \\frac{4}{7} \\approx 0.57143 \\\\\n4 & 1.00 & y_4 = \\frac{1}{2.00} = 0.50000 \\\\\n\\hline\n\\end{array}$$\n\n---\n\n### 3. Simpson's 1/3rd Rule Calculation\nSimpson's composite formula for $n = 4$ subintervals:\n$$V \\approx \\frac{h}{3} \\left[ (y_0 + y_4) + 4(y_1 + y_3) + 2(y_2) \\right]$$\n\nSubstitute the computed values:\n1. Extremes sum:\n   $$y_0 + y_4 = 1.00000 + 0.50000 = 1.50000$$\n2. Odd terms sum:\n   $$4(y_1 + y_3) = 4(0.80000 + 0.57143) = 4(1.37143) = 5.48572$$\n3. Even terms sum:\n   $$2(y_2) = 2(0.66667) = 1.33334$$\n4. Bracket total:\n   $$\\text{Sum} = 1.50000 + 5.48572 + 1.33334 = 8.31906$$\n5. Multiply by $\\frac{h}{3} = \\frac{0.25}{3} = \\frac{1}{12}$:\n   $$V \\approx \\frac{8.31906}{12} \\approx 0.693255$$\n\nRounding to three decimal places:\n$$V \\approx \\mathbf{0.693}$$\n\n---\n\n### 4. Conclusion\nThe value of the integral correct to three decimal places is **0.693**.",
+        "images": []
       }
     },
     "go:82556": {
@@ -1610,7 +1785,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - XOR Algebraic Properties & Self-Inverse Identity",
+        "markdown": "### 1. Boolean XOR Operator Properties\nThe Exclusive-OR (XOR) operator $\\oplus$ exhibits the following algebraic properties:\n1. **Commutativity**:\n   $$X \\oplus Y = Y \\oplus X$$\n2. **Associativity**:\n   $$(X \\oplus Y) \\oplus Z = X \\oplus (Y \\oplus Z)$$\n3. **Self-Inverse (Nilpotence on Equality)**:\n   Any variable XORed with itself equals $0$:\n   $$X \\oplus X = X\\overline{X} + \\overline{X}X = 0 + 0 = 0$$\n4. **Identity Element**:\n   Any variable XORed with $0$ equals itself:\n   $$X \\oplus 0 = X\\overline{0} + \\overline{X}(0) = X(1) + 0 = X$$\n\n---\n\n### 2. Algebraic Reduction of the Expression\nWe are given:\n$$F = A \\oplus B \\oplus A$$\n\nApply commutativity to group identical literals together:\n$$F = (A \\oplus A) \\oplus B$$\n\nApply the self-inverse property ($A \\oplus A = 0$):\n$$F = 0 \\oplus B$$\n\nApply the identity element property ($0 \\oplus B = B$):\n$$F = B$$\n\n---\n\n### 3. Distractor Analysis\n- **Option A ($AB + \\overline{A}\\,\\overline{B}$)**: This is the XNOR (equivalence) function $A \\odot B = \\overline{A \\oplus B}$.\n- **Option B ($\\overline{A}B + A\\overline{B}$)**: This is the 2-variable XOR function $A \\oplus B$.\n- **Option C ($B$)**: Matches the simplified result $B$ exactly.\n- **Option D ($\\overline{A}$)**: Incorrect Boolean reduction.\n\n---\n\n### 4. Conclusion\nTherefore, the expression is equivalent to **$B$ (Option C)**.",
+        "images": []
+      }
     },
     "go:82607": {
       "title": "GATE CSE 1987 | Question: 13-a",
@@ -1652,7 +1832,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - 4-Bit LFSR Shift Register State Transition",
+        "markdown": "### 1. Circuit Architecture\nThe circuit consists of four D-type flip-flops ($A, B, C, D$) connected as a shift register:\n- State vector: $(Q_A, Q_B, Q_C, Q_D)$.\n- Shift connections:\n  $$D_B = Q_A, \\quad D_C = Q_B, \\quad D_D = Q_C$$\n- Serial feedback input into the first stage ($D_A$) is driven by an XOR gate receiving inputs from $Q_C$ and $Q_D$:\n  $$D_A = Q_C \\oplus Q_D$$\n\n---\n\n### 2. State Evolution Trace\nWe are provided the sequence for the first three clock pulses:\n1. **Initial State**:\n   $$Q_A Q_B Q_C Q_D = 1\\;1\\;1\\;1$$\n   Feedback: $D_A = Q_C \\oplus Q_D = 1 \\oplus 1 = 0$\n2. **After 1st Clock Pulse**:\n   $$Q_A Q_B Q_C Q_D = 0\\;1\\;1\\;1$$\n   Feedback: $D_A = Q_C \\oplus Q_D = 1 \\oplus 1 = 0$\n3. **After 2nd Clock Pulse**:\n   $$Q_A Q_B Q_C Q_D = 0\\;0\\;1\\;1$$\n   Feedback: $D_A = Q_C \\oplus Q_D = 1 \\oplus 1 = 0$\n4. **After 3rd Clock Pulse**:\n   $$Q_A Q_B Q_C Q_D = 0\\;0\\;0\\;1$$\n   Feedback: $D_A = Q_C \\oplus Q_D = 0 \\oplus 1 = 1$\n\n---\n\n### 3. State After the 4th Clock Pulse\nApplying the 4th clock transition:\n- $Q_A$ captures $D_A = 1$\n- $Q_B$ captures previous $Q_A = 0$\n- $Q_C$ captures previous $Q_B = 0$\n- $Q_D$ captures previous $Q_C = 0$\n\n$$\\mathbf{Q_A Q_B Q_C Q_D = 1\\;0\\;0\\;0}$$\n\n---\n\n### 4. Conclusion\nThe state after the fourth clock pulse is **1000 (Option D)**.",
+        "images": []
+      }
     },
     "go:82698": {
       "title": "GATE CSE 1987 | Question: 16-a",
@@ -1691,7 +1876,12 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MCQ"
+      "type": "MCQ",
+      "detailed_solution": {
+        "concept": "Digital Logic - K-Map POS Minimization & NOR-NOR Implementation",
+        "markdown": "### 1. Reading the Karnaugh Map\nWe are given a 3-variable K-map with row variable $c$ ($c=0, 1$) and column variables $ab$ ($00, 01, 11, 10$):\n$$\\begin{array}{c|c|c|c|c}\nc \\backslash ab & 00 & 01 & 11 & 10 \\\\\n\\hline\n0 & 0 & 0 & 1 & 1 \\\\\n1 & 0 & 1 & 1 & 1 \\\\\n\\hline\n\\end{array}$$\n\n---\n\n### 2. Product-of-Sums (POS) Minimization\nBecause the function must be implemented using **only NOR gates**, we group the **$0$s** of the K-map to determine the minimal Product-of-Sums (POS) expression:\nThe $0$-cells are:\n- $(c=0, ab=00) \\implies M_0$\n- $(c=0, ab=01) \\implies M_2$\n- $(c=1, ab=00) \\implies M_1$\n\nWe form two prime implicant maxterm groups:\n1. **Group 1 (Vertical pair of $0$s in column $ab = 00$)**:\n   - Covers cells $(0, 00)$ and $(1, 00)$.\n   - $a = 0$ and $b = 0$, while $c$ varies.\n   - Maxterm sum: $(a + b)$.\n2. **Group 2 (Horizontal pair of $0$s in row $c = 0$, columns $00$ and $01$)**:\n   - Covers cells $(0, 00)$ and $(0, 01)$.\n   - $a = 0$ and $c = 0$, while $b$ varies.\n   - Maxterm sum: $(a + c)$.\n\nCombining these maxterms gives the minimal POS expression:\n$$f = (a + b)(a + c)$$\n\n*(Verification via Boolean distributive law: $(a + b)(a + c) = a + bc$, which matches minterms $m_3, m_4, m_5, m_6, m_7$).*\n\n---\n\n### 3. Realization with NOR Gates\nA 2-level NOR-NOR logic circuit directly implements a Product-of-Sums (POS) expression:\n- **Level 1**:\n  - NOR Gate 1 with inputs $a$ and $b$ produces: $\\overline{a + b}$\n  - NOR Gate 2 with inputs $a$ and $c$ produces: $\\overline{a + c}$\n- **Level 2**:\n  - Output NOR Gate combines the two intermediate inverted sums:\n    $$f = \\overline{\\overline{a + b} + \\overline{a + c}}$$\n  - By De Morgan's Law:\n    $$f = \\overline{\\overline{a + b}} \\cdot \\overline{\\overline{a + c}} = (a + b)(a + c)$$\n\nThis exactly matches the gate schematic in **Option D**.\n\n---\n\n### 4. Conclusion\nTherefore, the NOR gate realization of the given K-map is **Option D**.",
+        "images": []
+      }
     },
     "go:82656": {
       "title": "GATE CSE 1987 | Question: 15",
@@ -1728,6 +1918,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Wien Bridge Oscillator Barkhausen Oscillation Condition",
+        "markdown": "### 1. Wien Bridge Oscillator Principle\nA Wien Bridge oscillator consists of an operational amplifier in a non-inverting amplifier configuration paired with a frequency-selective lead-lag $RC$ bridge feedback network:\n- **Resonant Frequency**:\n  At the natural frequency:\n  $$f_0 = \\frac{1}{2\\pi RC}$$\n  the series-parallel $RC$ network produces **zero phase shift** between the amplifier output and the non-inverting input ($+$).\n- **Network Attenuation (Feedback Factor $\\beta$)**:\n  Evaluating the transfer function of the voltage divider formed by the series $RC$ and parallel $RC$ branches at $\\omega_0 = 1/(RC)$:\n  $$\\beta = \\frac{Z_p}{Z_s + Z_p} = \\frac{1}{3}$$\n  Thus, the bridge attenuates the signal by a factor of $3$.\n\n---\n\n### 2. Barkhausen Criterion for Oscillation\nFor sustained sinusoidal oscillations, the total loop gain $A_v \\beta$ must satisfy **Barkhausen's criteria**:\n1. Loop phase shift must be an integer multiple of $360^\\circ$ ($0^\\circ$).\n2. Loop gain magnitude must be at least unity:\n   $$|A_v \\cdot \\beta| \\ge 1 \\implies A_v \\cdot \\frac{1}{3} \\ge 1 \\implies A_v \\ge 3$$\n\n---\n\n### 3. Closed-Loop Gain and Resistor Ratio\nFor an op-amp in non-inverting configuration with feedback resistor $R_2$ and ground resistor $R_1$:\n$$A_v = 1 + \\frac{R_2}{R_1}$$\n\nSubstituting into the gain condition:\n$$1 + \\frac{R_2}{R_1} \\ge 3 \\implies \\frac{R_2}{R_1} \\ge 2$$\n\n- For borderline steady-state sinusoidal oscillations with constant amplitude, $\\frac{R_2}{R_1} = 2$.\n- In practical oscillator circuits, to initiate oscillations spontaneously from thermal noise, the gain is set slightly higher than $3$ (any value $\\frac{R_2}{R_1} \\ge 2$, with non-linear automatic gain control or diode limiting to stabilize amplitude).\n- In the official GATE 1987 answer key, **Option D (Any value)** is registered.\n\n---\n\n### 4. Conclusion\nTherefore, to sustain oscillations the theoretical ratio must satisfy $R_2/R_1 \\ge 2$, with **Option D** accepted in the official key.",
+        "images": []
       }
     },
     "go:80278": {
@@ -1765,6 +1960,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Organization & Architecture - Dynamic RAM (DRAM) Capacitor Leakage & Refresh Period",
+        "markdown": "### 1. Operating Principle of Dynamic RAM\nDynamic Random-Access Memory (DRAM) stores each bit of binary data as an electrical charge on a microscopic MOS capacitor within a single-transistor, single-capacitor ($1T$-$1C$) memory cell:\n- Presence of charge represents binary $1$; absence of charge represents binary $0$.\n- **Capacitor Leakage**:\n  Due to unavoidable subthreshold conduction and reverse-bias p-n junction leakage currents across the silicon substrate, the stored charge bleeds off over time.\n- **Refresh Operation**:\n  To prevent data corruption, every row of memory cells must be periodically read out, amplified by internal sense amplifiers, and rewritten back into the storage capacitors.\n\n---\n\n### 2. Standard DRAM Refresh Rates\n- In classical semiconductor memory standards (such as the standard 4116, 4164, and early DRAM ICs established during the 1980s), the maximum time a cell can reliably retain charge without degradation is typically **2 milliseconds** ($2\\text{ ms}$).\n- A typical 1980s DRAM required 128 refresh cycles every $2\\text{ ms}$ (one refresh operation approximately every $15.6\\,\\mu\\text{s}$).\n- *(In modern high-density SDRAM/DDR standards, retention times have been extended to 32 ms or 64 ms at room temperature, but 2 ms remains the classic foundational benchmark).*\n\n---\n\n### 3. Distractor Analysis\n- **Option A (2 microseconds)**: Far too fast. A $2\\,\\mu\\text{s}$ full refresh cycle would saturate memory bus bandwidth, leaving no time for normal read/write operations.\n- **Options C & D (50 ms / 500 ms)**: Far too slow. By 50 to 500 milliseconds, leakage currents in classical DRAM cells would completely dissipate the stored charge, causing catastrophic data loss.\n\n---\n\n### 4. Conclusion\nThe refreshing rate of dynamic RAMs is in the range of **2 milliseconds (Option B)**.",
+        "images": []
       }
     },
     "go:80281": {
@@ -1802,6 +2002,11 @@
         },
         "secondary": [],
         "conceptTags": []
+      },
+      "detailed_solution": {
+        "concept": "Computer Organization & Systems - Magnetic Storage & Floppy Disk Data Transfer Rates",
+        "markdown": "### 1. Floppy Disk Encoding and Formats\nMagnetic floppy disk storage utilizes serial magnetic flux reversals to record data on concentric tracks:\n- **Single Density (SD)**:\n  - Uses Frequency Modulation (FM) encoding.\n  - Standard transfer rate: $125\\text{ kbps}$ (for $5.25$-inch) and $250\\text{ kbps}$ (for $8$-inch).\n- **Double Density (DD) / High Density (HD)**:\n  - Uses Modified Frequency Modulation (MFM) encoding, doubling the bit density without increasing magnetic flux transitions.\n  - Standard raw data transfer rate for double-density $8$-inch drives and standard $3.5$-inch high-density drives (governed by the IBM 3740 / System 34 architecture and standard floppy disk controllers such as Intel 8272 / NEC $\\mu\\text{PD765}$) is **$500\\text{ kilobits/second}$** ($500\\text{ kbps}$).\n\n---\n\n### 2. Order of Magnitude Evaluation\nEvaluating the choices by scale:\n- **5K bits/sec**: Teleprinter / early telegraphic rate.\n- **50K bits/sec**: Analog dial-up modem rate (e.g., V.90 at 56 kbps).\n- **500K bits/sec (500 kbps)**: Standard double-density / high-density floppy disk controller channel data transfer rate.\n- **5000K bits/sec (5 Mbps)**: Winchester hard disk drive interface rate (ST-506 / early IDE).\n\n---\n\n### 3. Conclusion\nTherefore, the data transfer rate of a double-density floppy disk system is about **500K bits/sec (Option C)**.",
+        "images": []
       }
     }
   }

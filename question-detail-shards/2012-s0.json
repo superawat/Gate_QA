@@ -948,8 +948,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "Engineering Mathematics - Probability",
-        "markdown": "$F(x)=P(X\\le x)$:\n\n- F($-$1) = P(X = $-$1) = 0.5\n\n- F(1) = 0.5 + 0.5 = 1",
+        "concept": "Engineering Mathematics - Probability & Statistics: Cumulative Distribution Function (CDF)",
+        "markdown": "### 1. Cumulative Distribution Function (CDF) Definition\nFor any real random variable $X$, the cumulative distribution function (CDF) $F(x)$ is formally defined as:\n$$F(x) = P(X \\le x)$$\n\n---\n\n### 2. Given Probability Mass Function\nThe random variable $X$ is discrete, taking values $+1$ and $-1$ with equal probability:\n$$P(X = -1) = 0.5, \\quad P(X = +1) = 0.5$$\nFor all $x \\notin \\{-1, +1\\}$, $P(X = x) = 0$.\n\n---\n\n### 3. Evaluating CDF at $x = -1$ and $x = +1$\n1. At $x = -1$:\n   $$F(-1) = P(X \\le -1)$$\n   The only support value satisfying $X \\le -1$ is $X = -1$. Therefore:\n   $$F(-1) = P(X = -1) = 0.5$$\n\n2. At $x = +1$:\n   $$F(+1) = P(X \\le +1)$$\n   The support values satisfying $X \\le +1$ are both $X = -1$ and $X = +1$. Therefore:\n   $$F(+1) = P(X = -1) + P(X = +1) = 0.5 + 0.5 = 1.0$$\n\n---\n\n### 4. Full CDF Representation\nFor completeness, the step function across the real line is:\n$$F(x) = \\begin{cases} \n0, & x < -1 \\\\\n0.5, & -1 \\le x < 1 \\\\\n1.0, & x \\ge 1\n\\end{cases}$$\n\nEvaluating at the specific boundary points yields $F(-1) = 0.5$ and $F(+1) = 1$.\n\nTherefore, the correct answer is **Option C**.",
         "images": []
       }
     },
@@ -2521,8 +2521,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
-        "markdown": "Profit = 50q $-$ 5q$^2$. $\\frac{d}{dq}=50-10q=0\\Rightarrow q=5$",
+        "concept": "General Aptitude & Engineering Mathematics - Optimization & Calculus: Profit Maximization",
+        "markdown": "### 1. Economic Formulation of Profit\nLet $q$ denote the quantity produced and sold by the firm ($q \\ge 0$):\n- **Total Cost Function**: $C(q) = 5q^2$\n- **Selling Price per unit**: $p = \\text{₹ } 50$\n- **Total Revenue Function**: $R(q) = p \\cdot q = 50q$\n\nThe total profit function $P(q)$ is the difference between total revenue and total cost:\n$$P(q) = R(q) - C(q) = 50q - 5q^2$$\n\n---\n\n### 2. Profit Maximization via Calculus\nTo find the quantity $q$ that maximizes profit, we apply the first-order necessary condition:\n$$\\frac{dP}{dq} = 0$$\n\nDifferentiating $P(q)$ with respect to $q$:\n$$\\frac{dP}{dq} = 50 - 10q = 0 \\implies 10q = 50 \\implies q = 5$$\n\nEquivalently, this occurs where Marginal Revenue equals Marginal Cost:\n$$\\text{MR} = \\frac{dR}{dq} = 50, \\quad \\text{MC} = \\frac{dC}{dq} = 10q \\implies 10q = 50 \\implies q = 5$$\n\n---\n\n### 3. Verification of Second-Order Condition\nEvaluating the second derivative:\n$$\\frac{d^2P}{dq^2} = \\frac{d}{dq}(50 - 10q) = -10 < 0$$\nSince the second derivative is strictly negative everywhere, the profit function is strictly concave, confirming that $q = 5$ is the unique global maximum.\n\n---\n\n### 4. Evaluation of Maximum Profit\nAt $q = 5$ units:\n$$P(5) = 50(5) - 5(5^2) = 250 - 125 = \\text{₹ } 125$$\n\nTherefore, the number of units to be produced is $5$.\n\nTherefore, the correct answer is **Option A**.",
         "images": []
       }
     },
@@ -2566,8 +2566,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
-        "markdown": "\"Despite\" needs something negative that the mission overcame: setbacks.",
+        "concept": "General Aptitude - Verbal Ability Sentence Completion: Setbacks",
+        "markdown": "### 1. Grammatical and Rhetorical Structure\nThe sentence is:\n> *\"Despite several _________ the mission succeeded in its attempt to resolve the conflict.\"*\n\nThe sentence uses the preposition **Despite**, which introduces a concessive clause denoting adversity, unexpected difficulty, or opposition that stands in contrast to the successful resolution described in the main clause (*\"the mission succeeded\"*).\n\n---\n\n### 2. Evaluation of Options\n- **Option A (attempts)**: Results in redundant tautology (*\"Despite several attempts the mission succeeded in its attempt\"*), and \"attempts\" does not inherently denote an adverse hindrance.\n- **Option B (setbacks)**: A **setback** is an unexpected reversal or arrest in progress; a difficulty or complication. Placing *setbacks* creates a meaningful, standard rhetorical contrast: *Despite several obstacles and reversals of progress, the mission nevertheless succeeded*.\n- **Option C (meetings)**: Neutral events. Holding meetings is part of diplomatic negotiation, not a hardship or obstacle.\n- **Option D (delegations)**: Refers to groups of delegates or representatives; neutral and contextually inappropriate.\n\n---\n\n### 3. Conclusion\n*Setbacks* provides the precise contrasting polarity demanded by the concessive marker *Despite*.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
       }
     },
@@ -2611,8 +2611,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
-        "markdown": "Mitigate = make less severe $\\rightarrow$ diminish.",
+        "concept": "General Aptitude - Verbal Ability Synonyms: Mitigate vs Diminish",
+        "markdown": "### 1. Etymology and Definition of the Target Word\nThe verb **mitigate** (/ˈmɪtɪɡeɪt/) comes from the Latin *mitigatus*, past participle of *mitigare* (\"to soften, make mild\"), from *mitis* (\"mild, soft\") + *agere* (\"to do, drive\").\n\nIn standard English usage, **mitigate** means:\n- To make less severe, harmful, intense, or painful.\n- To lessen the gravity or harshness of an offense, mistake, or adversity.\n- Examples: *\"mitigate risks\"*, *\"mitigate the impact of climate change\"*.\n\n---\n\n### 2. Analysis of the Options\n- **Option A (Diminish)**: Means to make or become less; reduce in size, extent, severity, or importance. This directly matches the core reductive meaning of *mitigate*.\n- **Option B (Divulge)**: Means to reveal, disclose, or make known confidential or private information.\n- **Option C (Dedicate)**: Means to devote time, effort, or oneself entirely to a specific cause, person, or purpose.\n- **Option D (Denote)**: Means to indicate, be a sign of, or signify a literal meaning.\n\n---\n\n### 3. Conclusion\nAmong the choices, **Diminish** is the closest synonym to **Mitigate**.\n\nTherefore, the correct answer is **Option A**.",
         "images": []
       }
     },
@@ -2791,8 +2791,8 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "General Aptitude - Quantitative Aptitude",
-        "markdown": "$\\frac{dy}{dx}=2-0.2x=0\\Rightarrow x=10$\n\ny = 2(10) $-$ 0.1(100) = 10 m",
+        "concept": "General Aptitude & Engineering Mathematics - Calculus & Quadratic Functions: Arch Height Maximization",
+        "markdown": "### 1. Profile of the Arch and Mathematical Model\nThe height profile of the arch is given by the quadratic equation:\n$$y = 2x - 0.1x^2$$\nwhere:\n- $x$ is the horizontal distance in meters.\n- $y$ is the vertical height of the arch in meters.\n\nSince the coefficient of $x^2$ is negative ($a = -0.1 < 0$), the graph is a downward-opening parabola with a unique global maximum at its vertex.\n\n---\n\n### 2. Method 1: Optimization via Differential Calculus\nTo determine the point of maximum height, find the critical point where the first derivative equals zero:\n$$\\frac{dy}{dx} = \\frac{d}{dx}(2x - 0.1x^2) = 2 - 0.2x$$\n\nSetting $\\frac{dy}{dx} = 0$:\n$$2 - 0.2x = 0 \\implies 0.2x = 2 \\implies x = \\frac{2}{0.2} = 10\\text{ meters}$$\n\nCheck the second derivative to confirm a maximum:\n$$\\frac{d^2y}{dx^2} = -0.2 < 0$$\nSince $\\frac{d^2y}{dx^2} < 0$, the height is strictly maximized at $x = 10\\text{ m}$.\n\nSubstitute $x = 10$ into the height equation:\n$$y_{\\text{max}} = 2(10) - 0.1(10^2) = 20 - 0.1(100) = 20 - 10 = 10\\text{ meters}$$\n\n---\n\n### 3. Method 2: Completing the Square\nRewriting the parabola in standard vertex form $y = a(x - h)^2 + k$:\n$$y = -0.1(x^2 - 20x) = -0.1\\left[(x - 10)^2 - 100\\right] = 10 - 0.1(x - 10)^2$$\n\nBecause $(x - 10)^2 \\ge 0$ for all real $x$, the term $-0.1(x - 10)^2 \\le 0$. Hence, the maximum possible value of $y$ is $10\\text{ meters}$, attained when $x = 10$.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
       }
     },

@@ -2202,8 +2202,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "Algorithms - Recursion",
-        "markdown": "foo(n, r) adds the digits of n in base r.\n\nfoo(345, 10) = 5 + 4 + 3 = 12",
+        "concept": "Programming and Data Structures - Recursion & Radix Representation: Digit Sum",
+        "markdown": "### 1. Function Logic and Algorithmic Role\nConsider the recursive function:\n```c\nunsigned int foo(unsigned int n, unsigned int r) {\n    if (n > 0) return ((n % r) + foo(n / r, r));\n    else return 0;\n}\n```\nFor any positive integers $n$ and radix $r$, the expression `n % r` isolates the least significant digit of $n$ in base $r$, and `n / r` performs integer division, discarding the least significant digit. Hence, $\\text{foo}(n, r)$ computes the **sum of the digits of $n$ when represented in base $r$**.\n\n---\n\n### 2. Step-by-Step Recursive Execution Trace\nWe are given the initial invocation `foo(345, 10)`:\n\n1. **Call 1**: `foo(345, 10)`\n   - Since $n = 345 > 0$:\n   - Remainder: $345 \\pmod{10} = 5$\n   - Quotient: $345 / 10 = 34$\n   - Expression: $5 + \\text{foo}(34, 10)$\n\n2. **Call 2**: `foo(34, 10)`\n   - Since $n = 34 > 0$:\n   - Remainder: $34 \\pmod{10} = 4$\n   - Quotient: $34 / 10 = 3$\n   - Expression: $4 + \\text{foo}(3, 10)$\n\n3. **Call 3**: `foo(3, 10)`\n   - Since $n = 3 > 0$:\n   - Remainder: $3 \\pmod{10} = 3$\n   - Quotient: $3 / 10 = 0$\n   - Expression: $3 + \\text{foo}(0, 10)$\n\n4. **Call 4 (Base Case)**: `foo(0, 10)`\n   - Since $n = 0 \\ngtr 0$, the `else` branch executes:\n   - Returns $0$.\n\n---\n\n### 3. Call Stack Unwinding\nSubstituting the return values back up the call stack:\n- `foo(3, 10)` $= 3 + 0 = 3$\n- `foo(34, 10)` $= 4 + 3 = 7$\n- `foo(345, 10)` $= 5 + 7 = 12$\n\nThus, the return value is $3 + 4 + 5 = 12$.\n\nTherefore, the correct answer is **Option B**.",
         "images": []
       }
     },
@@ -2749,8 +2749,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "General Aptitude - Verbal Aptitude",
-        "markdown": "Amalgamate = combine into one. Opposite: separate.",
+        "concept": "General Aptitude - Verbal Ability Antonyms: Amalgamate vs Separate",
+        "markdown": "### 1. Meaning of the Target Word\nThe verb **amalgamate** (/əˈmælɡəmeɪt/) means to combine, merge, or unite multiple distinct elements, organizations, or substances into a unified, single whole.\n- Derived from *amalgam*, an alloy of mercury with other metals, historically signifying a homogenous blend.\n- Example: *\"The two regional colleges amalgamated to form a comprehensive university.\"*\n\n---\n\n### 2. Antonym Analysis\nWe seek the word that is **most nearly opposite** in meaning to *amalgamate*:\n- **Option A (merge)**: This is a direct synonym, meaning to blend or combine together.\n- **Option B (split)**: Means to divide longitudinally into parts, typically along a natural grain or crack. While it denotes division, \"split\" is more specialized in context compared to separating joined entities.\n- **Option C (collect)**: Means to gather together, which is synonymous with aggregation.\n- **Option D (separate)**: Means to set apart, disunite, disconnect, or divide a previously unified entity into distinct, independent parts. In standard English lexicography, *separate* is the primary, direct antonym of *amalgamate* / *combine*.\n\n---\n\n### 3. Conclusion\nBecause *separate* is the direct opposite of bringing parts together into a unified whole, Option D is the uniquely correct choice.\n\nTherefore, the correct answer is **Option D**.",
         "images": []
       }
     },
