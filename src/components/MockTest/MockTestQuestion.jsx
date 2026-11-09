@@ -12,7 +12,7 @@ import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { countStructuredEmbeddedOptions, stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 import { cleanLatexHtml } from "../../utils/latexClean";
-import { formatCodeSnippets } from "../../utils/codeSnippet";
+import { formatCodeSnippets, formatInlineCode } from "../../utils/codeSnippet";
 import { MTA_EXPLANATION_TEXT } from "../../utils/questionType";
 import { resolveQuestionType } from "../../utils/questionTypeResolution.js";
 
@@ -232,10 +232,12 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const sanitizedQuestionHtml = useMemo(() => {
         try {
             const rawHtml = String(currentQuestion?.question || "");
-            const rawQuestionHtml = formatCodeSnippets(
-                normalizeHtmlAssetUrls(cleanLatexHtml(rawHtml))
-                    .replace(/\n\n/g, "<br />")
-                    .replace(/\n<li>/g, "<br><li>")
+            const rawQuestionHtml = formatInlineCode(
+                formatCodeSnippets(
+                    normalizeHtmlAssetUrls(cleanLatexHtml(rawHtml))
+                        .replace(/\n\n/g, "<br />")
+                        .replace(/\n<li>/g, "<br><li>")
+                )
             );
             const questionHtmlForDisplay = (displayOptions.length > 0 && isTypeResolved && !isNAT && !isMultiNAT)
                 ? stripEmbeddedOptions(rawQuestionHtml)

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { normalizeCodeText, formatCodeSnippets } from "./codeSnippet";
+import { normalizeCodeText, formatCodeSnippets, formatInlineCode, createGateQaCodeBlock } from "./codeSnippet";
 
 describe("codeSnippet utility", () => {
   describe("normalizeCodeText", () => {
@@ -86,10 +86,78 @@ describe("codeSnippet utility", () => {
       expect(formatted).toContain("<strong>E1</strong>");
     });
 
+    it("should format markdown fenced code blocks into GateOverflow-style code block", () => {
+      const raw = "Analyzing the program:\n```pascal\nVar x, y: integer;\nprocedure P(n: integer);\nbegin\n    x := (n + 2) / (n - 3);\nend;\n```\nTherefore C.";
+      const formatted = formatCodeSnippets(raw);
+
+      expect(formatted).toContain('<pre class="gateqa-code-block prettyprint" data-lang="pascal">');
+      expect(formatted).toContain('<code class="gateqa-code-content">');
+      expect(formatted).toContain("Var x, y: integer;");
+      expect(formatted).toContain("procedure P(n: integer);");
+      expect(formatted).toContain("Therefore C.");
+    });
+
+    it("should strip common leading indentation when code fence is indented inside list items", () => {
+      const raw = "- **SQL Query:**\n  ```sql\n  SELECT *\n  FROM Raider\n  WHERE RaidPoints > 200;\n  ```\n- Next step";
+      const formatted = formatCodeSnippets(raw);
+
+      expect(formatted).toContain('<pre class="gateqa-code-block prettyprint" data-lang="sql">');
+      expect(formatted).toContain("SELECT *\nFROM Raider\nWHERE RaidPoints &gt; 200;");
+      expect(formatted).toContain("- Next step");
+    });
+
+    it("should default to language 'c' when markdown fence has no language tag", () => {
+      const raw = "```\ncomputeS(X)\nS[1] <- 1\n```";
+      const formatted = formatCodeSnippets(raw);
+
+      expect(formatted).toContain('<pre class="gateqa-code-block prettyprint" data-lang="c">');
+      expect(formatted).toContain("computeS(X)");
+    });
+
+    it("should not double-process existing gateqa-code-block elements", () => {
+      const raw = '<pre class="gateqa-code-block prettyprint" data-lang="python"><code class="gateqa-code-content">def f(): pass</code></pre>';
+      const formatted = formatCodeSnippets(raw);
+
+      expect(formatted).toBe(raw);
+    });
+
     it("should handle empty or non-string inputs safely", () => {
       expect(formatCodeSnippets("")).toBe("");
       expect(formatCodeSnippets(null)).toBe("");
       expect(formatCodeSnippets(undefined)).toBe("");
+    });
+  });
+
+  describe("formatInlineCode", () => {
+    it("should format inline backticks into gateqa-inline-code", () => {
+      const text = "The variable `child_dict` stores the tree and `printf` prints output.";
+      const formatted = formatInlineCode(text);
+
+      expect(formatted).toContain('<code class="gateqa-inline-code">child_dict</code>');
+      expect(formatted).toContain('<code class="gateqa-inline-code">printf</code>');
+    });
+
+    it("should escape special characters inside inline code", () => {
+      const text = "Check condition `x < y && y > 0`.";
+      const formatted = formatInlineCode(text);
+
+      expect(formatted).toContain('<code class="gateqa-inline-code">x &lt; y &amp;&amp; y &gt; 0</code>');
+    });
+
+    it("should not modify backticks inside existing <pre> code blocks", () => {
+      const text = '<pre class="gateqa-code-block prettyprint" data-lang="bash"><code class="gateqa-code-content">echo `date`</code></pre>\nAnd run `date` in terminal.';
+      const formatted = formatInlineCode(text);
+
+      // The pre block must retain echo `date` untouched
+      expect(formatted).toContain("echo `date`");
+      // The prose inline code must be converted
+      expect(formatted).toContain('<code class="gateqa-inline-code">date</code>');
+    });
+
+    it("should handle empty or non-string inputs safely", () => {
+      expect(formatInlineCode("")).toBe("");
+      expect(formatInlineCode(null)).toBe("");
+      expect(formatInlineCode(undefined)).toBe("");
     });
   });
 });

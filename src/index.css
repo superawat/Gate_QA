@@ -5756,7 +5756,7 @@ pre.prettyprint,
   border-radius: 0.5rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  white-space: pre;
+  white-space: pre !important;
   tab-size: 4;
   background-color: #f6f8fa;
   border: 1px solid #d0d7de;
@@ -5827,6 +5827,34 @@ pre.prettyprint b,
 .dark .gateqa-code-block *,
 .dark pre.prettyprint *,
 .dark .math-content pre * {
+  color: inherit !important;
+}
+
+/* Inline code in question and solution */
+.gateqa-inline-code,
+.solution-body code:not(pre code),
+.question-html-body code:not(pre code),
+.math-content code:not(pre code) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.88em;
+  padding: 0.125rem 0.35rem;
+  border-radius: 0.25rem;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: inherit !important;
+  vertical-align: baseline;
+}
+
+:root[data-theme="dark"] .gateqa-inline-code,
+:root[data-theme="dark"] .solution-body code:not(pre code),
+:root[data-theme="dark"] .question-html-body code:not(pre code),
+:root[data-theme="dark"] .math-content code:not(pre code),
+.dark .gateqa-inline-code,
+.dark .solution-body code:not(pre code),
+.dark .question-html-body code:not(pre code),
+.dark .math-content code:not(pre code) {
+  background-color: #1e293b;
+  border-color: #334155;
   color: inherit !important;
 }
 

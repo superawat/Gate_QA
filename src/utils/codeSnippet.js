@@ -1,7 +1,7 @@
 /**
- * Utility for formatting and normalizing code snippets in GATE questions.
+ * Utility for formatting and normalizing code snippets in GATE questions and answers.
  * Preserves authentic exam syntax (GateOverflow style) with clean code blocks,
- * correct indentation, and uniform text color matching the surrounding question text.
+ * correct indentation, and uniform text color matching the surrounding text.
  */
 
 /**
@@ -44,7 +44,7 @@ export function normalizeCodeText(code) {
  * @param {string} text
  * @returns {string}
  */
-function escapeHtml(text) {
+export function escapeHtml(text) {
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -69,9 +69,63 @@ function decodeHtmlEntities(text) {
 }
 
 /**
- * Transforms <pre> code blocks in question HTML into clean, GateOverflow-style
- * code blocks that preserve lines, brackets, and indentation, keeping the
- * text color identical to the surrounding question text.
+ * Creates a normalized GateOverflow-style code block with clean indentation,
+ * escaped HTML characters, and uniform text color matching surrounding text.
+ *
+ * @param {string} content
+ * @param {string} lang
+ * @param {number} indent
+ * @returns {string}
+ */
+export function createGateQaCodeBlock(content, lang = "c", indent = 0) {
+  if (!content && content !== "") return "";
+
+  // Convert <br> tags to newlines
+  let text = String(content).replace(/<br\s*\/?>/gi, "\n");
+
+  // If fence was indented inside markdown, strip up to that many spaces from line beginnings
+  if (indent > 0) {
+    const stripRegex = new RegExp(`^[ \\t]{1,${indent}}`, "gm");
+    text = text.replace(stripRegex, "");
+  }
+
+  // Temporarily protect allowed inline formatting tags so they are not escaped into literal text
+  const preservedTags = [];
+  text = text.replace(/<\/?(strong|b|em|i|u|mark|span\b[^>]*)>/gi, (tag) => {
+    const token = `__GATEQA_PRESERVED_TAG_${preservedTags.length}__`;
+    preservedTags.push(tag);
+    return token;
+  });
+
+  // Strip internal code wrapper tags
+  text = text.replace(/<\/?code\b[^>]*>/gi, "");
+
+  // Decode HTML entities before normalization so code has real characters
+  text = decodeHtmlEntities(text);
+
+  // Trim leading/trailing blank lines but preserve indentation
+  text = text.replace(/^\r?\n+|\r?\n+$/g, "");
+
+  // Normalize code text (restore parentheses for main, fX, getchar, etc.)
+  text = normalizeCodeText(text);
+
+  // Escape HTML to prevent injection and guarantee valid code symbols (like <stdio.h>, if (x < y))
+  let escapedCode = escapeHtml(text);
+
+  // Restore protected inline tags (now safe and valid HTML)
+  escapedCode = escapedCode.replace(/__GATEQA_PRESERVED_TAG_(\d+)__/g, (token, idx) => {
+    return preservedTags[Number(idx)] || "";
+  });
+
+  const cleanLang = (lang || "c").replace(/^lang-/, "").trim().toLowerCase() || "c";
+  return `<pre class="gateqa-code-block prettyprint" data-lang="${cleanLang}"><code class="gateqa-code-content">${escapedCode}</code></pre>`;
+}
+
+/**
+ * Transforms both markdown code fences (```lang ... ```) and HTML <pre> blocks in
+ * question and answer text into clean, GateOverflow-style code blocks that preserve
+ * lines, brackets, and indentation, keeping the text color identical to the
+ * surrounding text.
  *
  * It safely preserves intentional inline formatting markup like <strong>, <b>, <em>,
  * and <span ...> (used in GateOverflow for corrections and fill-in-the-blank blanks)
@@ -83,52 +137,81 @@ function decodeHtmlEntities(text) {
 export function formatCodeSnippets(html) {
   if (!html || typeof html !== "string") return "";
 
-  // Pattern matches <pre ...>...</pre>
-  const preRegex = /<pre\b([^>]*)>([\s\S]*?)<\/pre>/gi;
+  let result = html;
 
-  return html.replace(preRegex, (match, attrs, content) => {
-    // Extract language if present (e.g. lang-c_cpp or data-pbcklang="c_cpp")
+  // 1. Process markdown code fences: ```lang\ncode\n``` or ```\ncode\n```
+  // Handles:
+  // - ```c ... ```
+  // - ``` ... ``` (unspecified language)
+  // - Indented fences (e.g. inside list items "  ```sql ...   ```")
+  // - Windows (\r\n) or Unix (\n) line endings
+  const fenceRegex = /(^|\n)([ \t]*)`{3,}([a-zA-Z0-9_#+-]*)[^\S\r\n]*\r?\n([\s\S]*?)(?:\r?\n)?[ \t]*`{3,}[^\S\r\n]*(?=\r?\n|$)/g;
+  result = result.replace(fenceRegex, (match, leadingNewline, indent, rawLang, codeContent) => {
+    const lang = rawLang || "c";
+    const indentLen = indent ? indent.length : 0;
+    const block = createGateQaCodeBlock(codeContent, lang, indentLen);
+    return `${leadingNewline}${block}\n`;
+  });
+
+  // 2. Process HTML <pre>...</pre> blocks (e.g. from scraped HTML)
+  // Skip blocks that already have the gateqa-code-block class to avoid double-processing
+  const preRegex = /<pre(?!\s+class=["'][^"']*gateqa-code-block)\b([^>]*)>([\s\S]*?)<\/pre>/gi;
+  result = result.replace(preRegex, (match, attrs, content) => {
     let lang = "c";
     const langMatch = attrs.match(/lang(?:uage)?-([a-zA-Z0-9_-]+)/i) || attrs.match(/data-pbcklang=["']([^"']+)["']/i);
     if (langMatch && langMatch[1]) {
       lang = langMatch[1].replace(/^lang-/, "");
     }
 
-    // Convert <br> tags to newlines
-    let text = content.replace(/<br\s*\/?>/gi, "\n");
-
-    // Temporarily protect allowed inline formatting tags so they are not escaped into literal text
-    const preservedTags = [];
-    text = text.replace(/<\/?(strong|b|em|i|u|mark|span\b[^>]*)>/gi, (tag) => {
-      const token = `__GATEQA_PRESERVED_TAG_${preservedTags.length}__`;
-      preservedTags.push(tag);
-      return token;
-    });
-
-    // Strip internal code wrapper tags
-    text = text.replace(/<\/?code\b[^>]*>/gi, "");
-
-    // Decode HTML entities before normalization so code has real characters
-    text = decodeHtmlEntities(text);
-
-    // Trim leading/trailing blank lines but preserve indentation
-    text = text.replace(/^\r?\n+|\r?\n+$/g, "");
-
-    // Normalize code text (restore parentheses for main, fX, getchar, etc.)
-    text = normalizeCodeText(text);
-
-    // Escape HTML to prevent injection and guarantee valid code symbols (like <stdio.h>, if (x < y))
-    let escapedCode = escapeHtml(text);
-
-    // Restore protected inline tags (now safe and valid HTML)
-    escapedCode = escapedCode.replace(/__GATEQA_PRESERVED_TAG_(\d+)__/g, (token, idx) => {
-      return preservedTags[Number(idx)] || "";
-    });
-
-    // Wrap in GateOverflow-style code block.
-    // Text color strictly inherits from question text - no color changing syntax spans.
-    return `<pre class="gateqa-code-block prettyprint" data-lang="${lang}"><code class="gateqa-code-content">${escapedCode}</code></pre>`;
+    return createGateQaCodeBlock(content, lang);
   });
+
+  return result;
+}
+
+/**
+ * Formats inline backtick code snippets (e.g. `variable` or `printf(...)`)
+ * into <code class="gateqa-inline-code"> elements, safely protecting existing
+ * <pre>...</pre> code blocks and HTML tags.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+export function formatInlineCode(text) {
+  if (!text || typeof text !== "string") return "";
+
+  // 1. Temporarily protect <pre> blocks so code inside code blocks is never modified
+  const preBlocks = [];
+  let tokenized = text.replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, (match) => {
+    const token = `__GATEQA_PRE_BLOCK_${preBlocks.length}__`;
+    preBlocks.push(match);
+    return token;
+  });
+
+  // 2. Also protect existing <code>...</code> blocks if any
+  const codeBlocks = [];
+  tokenized = tokenized.replace(/<code\b[^>]*>[\s\S]*?<\/code>/gi, (match) => {
+    const token = `__GATEQA_EXISTING_CODE_${codeBlocks.length}__`;
+    codeBlocks.push(match);
+    return token;
+  });
+
+  // 3. Format inline code `code` (single backtick, not multi-line)
+  tokenized = tokenized.replace(/`([^`\r\n]+)`/g, (match, code) => {
+    return `<code class="gateqa-inline-code">${escapeHtml(code)}</code>`;
+  });
+
+  // 4. Restore protected existing <code> blocks
+  tokenized = tokenized.replace(/__GATEQA_EXISTING_CODE_(\d+)__/g, (match, idx) => {
+    return codeBlocks[Number(idx)] || match;
+  });
+
+  // 5. Restore protected <pre> blocks
+  tokenized = tokenized.replace(/__GATEQA_PRE_BLOCK_(\d+)__/g, (match, idx) => {
+    return preBlocks[Number(idx)] || match;
+  });
+
+  return tokenized;
 }
 
 /**

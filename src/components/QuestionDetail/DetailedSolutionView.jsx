@@ -1,9 +1,13 @@
 import React, { useMemo } from "react";
+import DOMPurify from "dompurify";
 import { FiBookOpen, FiMessageSquare } from "react-icons/fi";
 import { FaFlag } from "react-icons/fa";
 import { MathContent } from "../Math/MathRuntime";
 import { buildReportIssueUrl } from "../../utils/reportIssue";
 import { getQuestionSolutionLink, getGateOverflowSearchUrl } from "../../utils/solutionLink";
+import { formatCodeSnippets, formatInlineCode } from "../../utils/codeSnippet";
+import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
+import { cleanLatexHtml } from "../../utils/latexClean";
 
 export default function DetailedSolutionView({
   solution,
@@ -34,6 +38,45 @@ export default function DetailedSolutionView({
   }, [customSolutionLink, question]);
 
   const hasSolutionContent = Boolean(markdown && markdown.trim().length > 0);
+
+  const sanitizedSolutionHtml = useMemo(() => {
+    if (!markdown || typeof markdown !== "string") return "";
+
+    // 1. Format code blocks (both ```lang code fences and <pre> tags) into authentic GateOverflow code blocks
+    let formatted = formatCodeSnippets(markdown);
+
+    // 2. Temporarily protect <pre class="gateqa-code-block ..."> blocks so subsequent markdown
+    // transformations (headers, bold, list items, inline code) never alter code inside the block
+    const preservedBlocks = [];
+    formatted = formatted.replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, (match) => {
+      const token = `__GATEQA_SOLUTION_BLOCK_${preservedBlocks.length}__`;
+      preservedBlocks.push(match);
+      return token;
+    });
+
+    // 3. Format markdown headers, dividers, bold text, and list items
+    formatted = formatted
+      .replace(/^### (.*$)/gim, '<h4 class="font-bold text-base text-[color:var(--color-text)] mt-4 mb-2">$1</h4>')
+      .replace(/^---$/gim, '<hr class="my-4 border-[color:var(--color-border)]" />')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc">$1</li>');
+
+    // 4. Format inline code `...` outside code blocks
+    formatted = formatInlineCode(formatted);
+
+    // 5. Restore protected code blocks
+    formatted = formatted.replace(/__GATEQA_SOLUTION_BLOCK_(\d+)__/g, (match, idx) => {
+      return preservedBlocks[Number(idx)] || match;
+    });
+
+    // 6. Clean LaTeX and normalize asset URLs
+    formatted = normalizeHtmlAssetUrls(cleanLatexHtml(formatted));
+
+    // 7. Sanitize HTML, ensuring data-lang and style attributes are preserved (exact same as Question)
+    return DOMPurify.sanitize(formatted, {
+      ADD_ATTR: ["data-lang", "style"],
+    });
+  }, [markdown]);
 
   const renderHeader = () => (
     <div className="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-[color:var(--color-border)]">
@@ -105,12 +148,9 @@ export default function DetailedSolutionView({
       <div className="text-base text-[color:var(--color-text)] leading-relaxed space-y-4">
         <MathContent dynamic>
           <div
-            className="solution-body whitespace-pre-line text-base leading-relaxed text-[color:var(--color-text)] [&_h4]:font-bold [&_h4]:text-base [&_h4]:text-[color:var(--color-text)] [&_h4]:mt-4 [&_h4]:mb-2 [&_li]:ml-4 [&_li]:list-disc [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-3 [&_img]:bg-transparent [&_img]:border [&_img]:border-[color:var(--color-border)]"
+            className="solution-body whitespace-pre-line text-base leading-relaxed text-[color:var(--color-text)] [&_h4]:font-bold [&_h4]:text-base [&_h4]:text-[color:var(--color-text)] [&_h4]:mt-4 [&_h4]:mb-2 [&_li]:ml-4 [&_li]:list-disc [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-3 [&_img]:bg-transparent [&_img]:border [&_img]:border-[color:var(--color-border)] [&_pre]:whitespace-pre"
             dangerouslySetInnerHTML={{
-              __html: markdown
-                .replace(/^### (.*$)/gim, '<h4 class="font-bold text-base text-[color:var(--color-text)] mt-4 mb-2">$1</h4>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc">$1</li>'),
+              __html: sanitizedSolutionHtml,
             }}
           />
         </MathContent>

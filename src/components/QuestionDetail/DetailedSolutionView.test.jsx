@@ -162,4 +162,78 @@ describe("DetailedSolutionView", () => {
       );
     });
   });
+
+  describe("Code representation in detailed solution", () => {
+    test("renders markdown fenced code block with exact same gateqa-code-block representation as practice questions", () => {
+      const solutionWithCode = {
+        concept: "Tree Traversal",
+        markdown: "Analyzing the recursive traversal:\n```c\nvoid traverse(Node *root) {\n    if (root == NULL) return;\n    printf(\"%d \", root->val);\n    traverse(root->left);\n    traverse(root->right);\n}\n```\nTherefore, the traversal prints pre-order.",
+      };
+      const { container } = render(
+        <DetailedSolutionView solution={solutionWithCode} isVisible={true} />
+      );
+
+      const codeBlock = container.querySelector("pre.gateqa-code-block");
+      expect(codeBlock).not.toBeNull();
+      expect(codeBlock.getAttribute("data-lang")).toBe("c");
+      expect(codeBlock.className).toContain("prettyprint");
+
+      const codeContent = codeBlock.querySelector("code.gateqa-code-content");
+      expect(codeContent).not.toBeNull();
+      expect(codeContent.textContent).toContain("void traverse(Node *root)");
+      expect(codeContent.textContent).toContain('printf("%d ", root->val);');
+
+      // Surrounding markdown text should also be rendered
+      expect(screen.getByText(/Analyzing the recursive traversal:/i)).toBeDefined();
+      expect(screen.getByText(/Therefore, the traversal prints pre-order\./i)).toBeDefined();
+    });
+
+    test("renders indented code block inside list items with correct data-lang", () => {
+      const solutionWithPython = {
+        concept: "Graph Theory",
+        markdown: "- **Algorithm**:\n  ```python\n  def count(dict, i):\n      if i not in dict:\n          return 1\n      return 0\n  ```",
+      };
+      const { container } = render(
+        <DetailedSolutionView solution={solutionWithPython} isVisible={true} />
+      );
+
+      const codeBlock = container.querySelector("pre.gateqa-code-block");
+      expect(codeBlock).not.toBeNull();
+      expect(codeBlock.getAttribute("data-lang")).toBe("python");
+
+      const codeContent = codeBlock.querySelector("code.gateqa-code-content");
+      expect(codeContent).not.toBeNull();
+      expect(codeContent.textContent).toContain("def count(dict, i):");
+    });
+
+    test("renders HTML <pre> code blocks from scraped solutions", () => {
+      const solutionWithHtmlPre = {
+        concept: "Pointers",
+        markdown: `<pre class="prettyprint lang-c_cpp">int *p = &amp;x;\nprintf("%d", *p);</pre>`,
+      };
+      const { container } = render(
+        <DetailedSolutionView solution={solutionWithHtmlPre} isVisible={true} />
+      );
+
+      const codeBlock = container.querySelector("pre.gateqa-code-block");
+      expect(codeBlock).not.toBeNull();
+      expect(codeBlock.getAttribute("data-lang")).toBe("c_cpp");
+      expect(codeBlock.textContent).toContain("int *p = &x;");
+    });
+
+    test("renders inline code using <code class='gateqa-inline-code'>", () => {
+      const solutionWithInlineCode = {
+        concept: "Data Structures",
+        markdown: "The variable `child_dict` holds the tree, and `printf` prints the root.",
+      };
+      const { container } = render(
+        <DetailedSolutionView solution={solutionWithInlineCode} isVisible={true} />
+      );
+
+      const inlineCodeElements = container.querySelectorAll("code.gateqa-inline-code");
+      expect(inlineCodeElements.length).toBe(2);
+      expect(inlineCodeElements[0].textContent).toBe("child_dict");
+      expect(inlineCodeElements[1].textContent).toBe("printf");
+    });
+  });
 });

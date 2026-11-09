@@ -8,7 +8,7 @@ import QuestionNotes from "./QuestionNotes";
 import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { cleanLatexHtml } from "../../utils/latexClean";
 import { getQuestionSolutionLink } from "../../utils/solutionLink";
-import { formatCodeSnippets } from "../../utils/codeSnippet";
+import { formatCodeSnippets, formatInlineCode } from "../../utils/codeSnippet";
 import DetailedSolutionView from "../QuestionDetail/DetailedSolutionView";
 import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 
@@ -65,10 +65,12 @@ function Question({
     }
 
     if (!rawContent) return "";
-    const questionHtml = formatCodeSnippets(
-      normalizeHtmlAssetUrls(cleanLatexHtml(rawContent))
-        .replace(/\n\n/g, "<br />")
-        .replace(/\n<li>/g, "<br><li>")
+    const questionHtml = formatInlineCode(
+      formatCodeSnippets(
+        normalizeHtmlAssetUrls(cleanLatexHtml(rawContent))
+          .replace(/\n\n/g, "<br />")
+          .replace(/\n<li>/g, "<br><li>")
+      )
     );
     return DOMPurify.sanitize(questionHtml, {
       ADD_ATTR: ["data-lang", "style"],

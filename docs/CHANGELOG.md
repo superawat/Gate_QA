@@ -1,4 +1,25 @@
 # Changelog
+- **Code Block & Inline Code Representation Support in Detailed Solutions & Answers (DEC-287, 2026-11-09)**:
+  - **Context & Root Cause**: In the Practice section, question stems rendered code blocks with authentic GateOverflow styling via `<pre class="gateqa-code-block prettyprint"><code>`, but the answer section (`DetailedSolutionView.jsx`) lacked code block and inline code processing. When solutions contained markdown code fences (e.g. ```` ```c ````, ```` ```python ````, ```` ```sql ````, ```` ```pascal ````) or HTML `<pre>` tags, they were either rendered as raw plain text with backticks or rendered without proper formatting and styling due to missing `formatCodeSnippets` invocation and unescaped HTML characters.
+  - **Unified Code Formatting Engine (`src/utils/codeSnippet.js`)**:
+    - Enhanced `formatCodeSnippets(html)` to support both markdown fenced code blocks (` ```lang ... ``` ` and ` ``` ... ``` `) and HTML `<pre\b[^>]*>...</pre>` blocks.
+    - Added indentation-aware stripping for code blocks indented inside markdown list items (e.g. `  ```sql ...   ````).
+    - Added `createGateQaCodeBlock(content, lang, indent)` helper ensuring uniform exam styling, HTML escaping (preventing `<stdio.h>` and `<` from being swallowed), entity decoding, parenthesis restoration for C functions, and preservation of intentional inline formatting tags (`<strong>`, `<b>`).
+    - Added `formatInlineCode(text)` utility converting single backtick snippets (`` `variable` ``) to `<code class="gateqa-inline-code">` with entity escaping, while protecting code blocks from accidental double-processing.
+  - **Answer & Solution View Integration (`src/components/QuestionDetail/DetailedSolutionView.jsx`)**:
+    - Integrated `formatCodeSnippets` and `formatInlineCode` in `DetailedSolutionView.jsx` using `useMemo`.
+    - Protected `<pre class="gateqa-code-block">` blocks with temporary tokens during markdown transformation (`###` headers, `---` horizontal rules, `**` bolding, and `- ` list items) so code syntax is never corrupted.
+    - Integrated `cleanLatexHtml`, `normalizeHtmlAssetUrls`, and `DOMPurify.sanitize(..., { ADD_ATTR: ["data-lang", "style"] })` matching Question component sanitization.
+    - Added `[&_pre]:whitespace-pre` to `solution-body` to ensure code indentation is strictly preserved.
+  - **CSS Design Tokens & Inline Code Typography (`src/index.css`)**:
+    - Added `white-space: pre !important;` to `.gateqa-code-block, pre.prettyprint, .math-content pre`.
+    - Added `.gateqa-inline-code` and `code:not(pre code)` styles in light mode (`#f1f5f9` surface, `#e2e8f0` border) and dark mode (`#1e293b` surface, `#334155` border) with monospace font and text color inheritance.
+  - **Verification & Test Coverage**:
+    - Added 8 new unit tests in `src/utils/codeSnippet.test.js` (21 tests passing).
+    - Added 4 new unit tests in `src/components/QuestionDetail/DetailedSolutionView.test.jsx` (14 tests passing).
+    - Verified full suites for `Question.test.jsx`, `AnswerPanel.test.jsx`, and `MockTestQuestion.test.jsx` (83 tests passing).
+    - Clean TypeScript compilation (`npm run typecheck`).
+
 - **Classic CSE Final Batch 01 Solution Authoring & Verification (DEC-286, 2026-11-09) - 100% Eligible GATE CSE Coverage Complete**:
   - **Context & Verification**: Authored, verified, and integrated 14 detailed mathematical and conceptual solutions for `CHUNK-CSE-CLS-01` covering the final classic-era GATE CSE backlog from 2005 to 2013 (`go:1376`, `go:2365`, `go:2366`, `go:2367`, `go:2154`, `go:2170`, `go:1577`, `go:2193`, `go:2195`, `go:2197`, `go:2210`, `go:1415`, `go:1416`, `go:1559`).
   - **Key Solutions & Analytical Derivations**:
