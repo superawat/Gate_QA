@@ -544,8 +544,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "gatecse-2024-set2: co-and-architecture",
-        "markdown": "Cycles used by DMA per second $=1\\%\\times4\\times10^6=4\\times10^4$.\n\nEach cycle moves 8 bytes = 64 bits.\n\nRate $=4\\times10^4\\times64=2.56\\times10^6$ bits/s = 25,60,000 bps",
+        "concept": "Computer Organization & Architecture - DMA Data Transfer Rate",
+        "markdown": "### 1. Given Parameters\n- Processor clock frequency: $f = 4\\text{ MHz} = 4 \\times 10^6\\text{ cycles/second}$.\n- DMA bus transfer capacity: $8\\text{ bytes}$ transferred in $1\\text{ cycle}$.\n- CPU cycle stealing fraction: $1\\% = 0.01$.\n\n---\n\n### 2. Calculation of Transfer Rate\n1. **Cycles allocated to DMA per second:**\n   $$N_{\\text{cycles}} = 1\\% \\times 4 \\times 10^6 = 0.01 \\times 4\\text{ MHz} = 40,000\\text{ cycles/second}$$\n\n2. **Bytes transferred per second:**\n   $$\\text{Bytes/sec} = 40,000\\text{ cycles/sec} \\times 8\\text{ bytes/cycle} = 320,000\\text{ bytes/sec}$$\n\n3. **Data transfer rate in bits per second (bps):**\n   $$\\text{Rate} = 320,000\\text{ bytes/sec} \\times 8\\text{ bits/byte} = 2,560,000\\text{ bits per second}$$\n   In standard Indian numeral grouping: $25,60,000\\text{ bps}$.\n\nTherefore, the correct answer is **Option C (25,60,000)**.",
         "images": []
       }
     },
@@ -806,8 +806,8 @@
       },
       "type": "MCQ",
       "detailed_solution": {
-        "concept": "gatecse-2024-set2: calculus",
-        "markdown": "Let $I=\\int_0^2 f(x)\\,dx$. Substituting $x\\to2-x$ gives $I=\\int_0^2 f(2-x)\\,dx$.\n\nAdding both: $2I=\\int_0^2\\big(f(x)+f(2-x)\\big)dx=\\int_0^2 1\\,dx=2$\n\n$I=1$",
+        "concept": "Engineering Mathematics - Definite Integrals (King's Rule)",
+        "markdown": "### 1. Problem Formulation\nLet $f(x)$ be a continuous function on $\\mathbb{R}$ satisfying:\n$$f(x) + f(2-x) = 2 \\quad \\forall x \\in \\mathbb{R}$$\nWe seek the value of the definite integral:\n$$I = \\int_{0}^{2} f(x)\\,dx$$\n\n---\n\n### 2. Application of King's Property\nUsing the standard definite integral identity $\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a+b-x)\\,dx$ with $a = 0$ and $b = 2$:\n$$I = \\int_{0}^{2} f(2-x)\\,dx$$\n\nAdding the two equivalent expressions for $I$:\n$$2I = \\int_{0}^{2} f(x)\\,dx + \\int_{0}^{2} f(2-x)\\,dx = \\int_{0}^{2} \\big[f(x) + f(2-x)\\big]\\,dx$$\n\nSubstitute the given relation $f(x) + f(2-x) = 2$:\n$$2I = \\int_{0}^{2} 2\\,dx = 2 [x]_{0}^{2} = 2(2 - 0) = 4$$\n$$I = \\frac{4}{2} = 2$$\n\nTherefore, the correct answer is **Option B (2)**.",
         "images": []
       }
     },
