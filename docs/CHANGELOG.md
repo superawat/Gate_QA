@@ -1,4 +1,30 @@
 # Changelog
+- **16 November 2026 Question Audit & Data Integrity Resolutions (DEC-288, 2026-11-16)**:
+  - **Context & Scope**: Executed the comprehensive 6-phase resolution runbook from `plan/nov_26/16th_nov_questionresolve.md` across 8 reported questions (`go:411907`, `go:460069`, `go:422971`, `APT-RSN-6474`, `go:359522`, `go:426495`, `go:426530`, `go:8227`), as well as fixing a batch of 14 related questions exposed during the shared solution mapping audit (`go:411893`, `go:411924`, `go:411863`, `go:411843`, `go:411878`, `go:411825`, `go:422891`, `go:422896`, `go:426496`, `go:426508`, `go:426522`, `go:426493`, `go:422966`, `go:426507`).
+  - **Option Extraction Parser Fix (`src/utils/stripEmbeddedOptions.js`)**:
+    - Diagnosed the reported option selection failure on `go:359522` (GATE Mechanical 2020 Set 1 GA Q8).
+    - Root cause: `OPTION_LINE_RE` and `OPTION_LINE_CAPTURE_RE` regular expressions used lookahead `(?=\s*(?:<br\s*\/?>|\n|$))`. Because Option D was the last line before a closing `</div>` tag rather than a `<br>` or newline, Option D was dropped by the option parser. As a consequence, runtime option extraction yielded only choices `[A, B, C]`, hiding Option D from UI controls and preventing submission of the correct answer D.
+    - Updated lookahead to `(?=\s*(?:<br\s*\/?>|<\/(?:p|div|li|section|article)>|\n|$))` and ensured inline option matching is evaluated prior to line options with $\ge 2$ choice threshold. All four choices A–D are now cleanly extracted, rendered, and selectable.
+  - **Authentic Solutions & Key Verification**:
+    - `go:411907` (GATE Civil 2023 Set 1 GA Q1): Verified official answer key is Option C ("might"). Replaced mismatched compiler front-end/back-end explanation with authentic modal auxiliary derivation. Verified AnswerService evaluation resolves C across branch contexts.
+    - `go:460069` (GATE CSE 2025 Set 1 Q11): Inspected local image and confirmed parity with published IIT Roorkee exam paper (including root `[6, 12, 19]` and leaf 1 `[1, 4, 3]`). Verified official key B, D. Authored rigorous step-by-step $B^+$ tree derivation tracing key 23 insertion into rightmost leaf `[20, 21, 22]`, leaf overflow/split with key 22 promotion, root overflow/split, and tree height increase by 1.
+    - `go:422971` (GATE DA 2024 GA Q1): Verified official answer key Option D ("vain"). Replaced piecewise calculus explanation with word-intensity analogy derivation (`[sick -> infirm -> moribund]` :: `[silly -> vain -> daft]`). Enriched DA shard `public/data/da/shards/2024.json`.
+    - `APT-RSN-6474` (Aptitude Series): Verified series $28, 32, 41, 57, ?$ follows differences $2^2, 3^2, 4^2, 5^2 \implies 57 + 25 = 82$. Both stored answer B and option 82 are 100% correct. Closed report with zero data mutation.
+    - `go:359522` (GATE Mechanical 2020 Set 1 GA Q8): Verified sum of repdigits $8, 88, 888, \dots = \frac{80}{81}(10^n - 1) - \frac{8}{9}n$. Official answer key is Option D. Stored key D confirmed.
+    - `go:426495` (GATE Civil 2024 Set 2 GA Q6): Verified official answer key Option D (*stands out*, *standing down*, *stood by*, *stand for*). Replaced packet-ordering explanation with comprehensive phrasal verbs derivation.
+    - `go:426530` (GATE ECE 2024 GA Q1): Verified official answer key Option A ("jaded"). Replaced calculus explanation with word-intensity analogy derivation (`[charm -> enamor -> bewitch]` :: `[bored -> jaded -> weary]`).
+    - `go:8227` (GATE CSE 2015 Set 1 Q30): Reconciled SSTF seek distance (130 tracks) with standard boundary SCAN (140 tracks, $|140 - 130| = 10$) and LOOK-style elevator SCAN (120 tracks, $130 - 120 = 10$). Reconciled official key 10. Updated `all-solutions.json`, `cse-v1.json`, and `AUTHENTIC_PATCHES` with both perspectives.
+  - **Shared Solution Audit Batch**:
+    - Replaced compiler solutions on 2023 GA questions: `go:411893` (Option B: your), `go:411924` (Option A: across), `go:411863` (Option C: conscience), `go:411843` (Option D: was thinking), `go:411878` (Option D: between), `go:411825` (Option A: got it fixed).
+    - Replaced packet solutions on 2024 questions: `go:422891` (Option B: integral = 2 via King's rule), `go:426522` (Option C: row with, over, in, at), `go:426493` (Option D: holds, waits, culminate, pivots), `go:422966` (Option D: dairy farming mutated gene inference), `go:426507` (Option B: wasn't, Even, was, Only).
+    - Replaced calculus solutions on 2024 questions: `go:422896` (Option C: DMA rate 25,60,000 bps), `go:426496` (Option A: bicker -> quarrel -> feud), `go:426508` (Option A: reprove -> chide).
+  - **Verification & Testing**:
+    - Added unit test in `src/utils/stripEmbeddedOptions.test.js` verifying line-separated options followed by closing HTML tags extract all four choices A–D.
+    - Added unit test in `src/services/QuestionService.test.js` verifying `go:359522` normalized options extract choices A–D.
+    - Added 7 unit tests in `src/utils/evaluateAnswer.test.js` under DEC-288.
+    - Added 7 unit tests in `src/services/AnswerService.test.js` under DEC-288.
+    - All 1,606 unit tests passed (`npm run test:unit`). Clean TypeScript compilation (`npm run typecheck`). Clean data integrity (`npm run qa:validate-data`). Clean aptitude validations (`qa:validate-aptitude` & `qa:verify-aptitude`).
+
 - **Code Block & Inline Code Representation Support in Detailed Solutions & Answers (DEC-287, 2026-11-09)**:
   - **Context & Root Cause**: In the Practice section, question stems rendered code blocks with authentic GateOverflow styling via `<pre class="gateqa-code-block prettyprint"><code>`, but the answer section (`DetailedSolutionView.jsx`) lacked code block and inline code processing. When solutions contained markdown code fences (e.g. ```` ```c ````, ```` ```python ````, ```` ```sql ````, ```` ```pascal ````) or HTML `<pre>` tags, they were either rendered as raw plain text with backticks or rendered without proper formatting and styling due to missing `formatCodeSnippets` invocation and unescaped HTML characters.
   - **Unified Code Formatting Engine (`src/utils/codeSnippet.js`)**:

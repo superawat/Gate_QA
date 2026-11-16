@@ -22,9 +22,9 @@ const OPTION_PRE_RE =
 const OPTION_PRE_CAPTURE_RE =
   /<pre\b[^>]*>\s*\(?([A-E])\)?[\.\):]\s*([\s\S]*?)<\/pre>/gi;
 const OPTION_LINE_RE =
-  /(?:^|\n|<br\s*\/?>)\s*(?:\(?[A-E]\)?[\.\):])\s+[^\n<]+(?=\s*(?:<br\s*\/?>|\n|$))/gi;
+  /(?:^|\n|<br\s*\/?>)\s*(?:\(?[A-E]\)?[\.\):])\s+[^\n<]+(?=\s*(?:<br\s*\/?>|<\/(?:p|div|li|section|article)>|\n|$))/gi;
 const OPTION_LINE_CAPTURE_RE =
-  /(?:^|\n|<br\s*\/?>)\s*\(?([A-E])\)?[\.\):]\s+([^\n<]+)(?=\s*(?:<br\s*\/?>|\n|$))/gi;
+  /(?:^|\n|<br\s*\/?>)\s*\(?([A-E])\)?[\.\):]\s+([^\n<]+)(?=\s*(?:<br\s*\/?>|<\/(?:p|div|li|section|article)>|\n|$))/gi;
 const OPTION_LIST_RE =
   /<(ol|ul)\b[^>]*>\s*(?:<li\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-E]\)?[\.\):])\s*[\s\S]*?<\/li>\s*){2,5}<\/\1>/gi;
 const ALPHA_OPTION_LIST_RE =
@@ -261,13 +261,6 @@ export function extractEmbeddedOptions(html = "") {
     return options;
   }
 
-  for (const match of raw.matchAll(OPTION_LINE_CAPTURE_RE)) {
-    pushOption(options, seen, match[1], match[2]);
-  }
-  if (options.length > 0) {
-    return options;
-  }
-
   const inlineMatch = raw.match(OPTION_INLINE_CAPTURE_RE);
   if (inlineMatch) {
     pushOption(options, seen, "A", inlineMatch[2].replace(/&nbsp;/gi, " ").trim());
@@ -278,6 +271,15 @@ export function extractEmbeddedOptions(html = "") {
   if (options.length > 0) {
     return options;
   }
+
+  for (const match of raw.matchAll(OPTION_LINE_CAPTURE_RE)) {
+    pushOption(options, seen, match[1], match[2]);
+  }
+  if (options.length >= 2) {
+    return options;
+  }
+  options.length = 0;
+  seen.clear();
 
   const genericTrailingListMatch = raw.match(GENERIC_TRAILING_OPTION_LIST_CAPTURE_RE);
   if (genericTrailingListMatch) {

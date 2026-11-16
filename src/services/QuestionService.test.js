@@ -1058,6 +1058,28 @@ describe("QuestionService", () => {
         expect(options[0].label).toBe("A");
         expect(options[0].text).toContain("8, -12, 7, 23, 8");
       });
+
+      test("verifies go:359522 options normalization extracts all 4 choices including Option D", () => {
+        const question = {
+          question_uid: "go:359522",
+          title: "GATE Mechanical 2020 Set 1 | General Aptitude Question: 8",
+          question: `<a name="359522"></a><div itemprop="text">The sum of the first $n$ terms in the sequence $8,\\:88,\\:888,\\:8888,\\dots$ is ________.<br>
+<br>
+A. $\\dfrac{81}{80}\\left ( 10^{n}-1 \\right )+\\dfrac{9}{8}n$<br>
+<br>
+B. $\\dfrac{81}{80}\\left ( 10^{n}-1 \\right )-\\dfrac{9}{8}n$<br>
+<br>
+C. $\\dfrac{80}{81}\\left ( 10^{n}-1 \\right )+\\dfrac{8}{9}n$<br>
+<br>
+D. $\\dfrac{80}{81}\\left ( 10^{n}-1 \\right )-\\dfrac{8}{9}n$</div>`,
+        };
+        const options = QuestionService.getNormalizedOptions(question);
+        expect(options).toHaveLength(4);
+        expect(options.map((opt) => opt.label)).toEqual(["A", "B", "C", "D"]);
+        expect(options[3].label).toBe("D");
+        expect(options[3].text).toContain("\\dfrac{80}{81}");
+        expect(options[3].text).toContain("-\\dfrac{8}{9}n");
+      });
     });
   });
 });

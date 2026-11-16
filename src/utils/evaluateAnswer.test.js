@@ -3872,6 +3872,103 @@ describe("evaluateAnswer", () => {
         expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
         expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
       });
+
+      describe("DEC-288: 16 Nov 2026 Question Audit & Data Integrity Resolutions", () => {
+        test("evaluates go:411907 (GATE Civil 2023 Set 1 GA Q1) as MCQ Option C (might)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "C",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "c")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:460069 (GATE CSE 2025 Set 1 Q11) as MSQ Options B, D (B+ tree insertion)", () => {
+          const record = {
+            type: "MSQ",
+            answer: ["B", "D"],
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, ["B", "D"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["D", "B"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["b", "d"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["B"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["B", "C"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["A", "B", "D"])).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:422971 (GATE DA 2024 GA Q1) as MCQ Option D (vain)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "D",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:359522 (GATE ME 2020 GA Q8) as MCQ Option D (Sum of repdigits 8, 88...)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "D",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:426495 (GATE Civil 2024 Set 2 GA Q6) as MCQ Option D (stands out, down, by, for)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "D",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:426530 (GATE ECE 2024 GA Q1) as MCQ Option A (jaded)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:8227 (GATE CSE 2015 Set 1 Q30) as NAT 10 (SSTF vs SCAN disk seek distance)", () => {
+          const record = {
+            type: "NAT",
+            answer: 10,
+            tolerance: { abs: 0.01 },
+          };
+          expect(evaluateAnswer(record, "10")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, 10)).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "10.0")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "10.01")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "9.99")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "140")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "130")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "20")).toEqual({ status: "evaluated", correct: false });
+        });
+      });
     });
   });
 });

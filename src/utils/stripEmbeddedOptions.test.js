@@ -192,5 +192,28 @@ describe("stripEmbeddedOptions", () => {
     expect(cleaned).toContain("The value of");
     expect(cleaned).not.toContain("(A) 8.983");
   });
+
+  test("extracts all four choices A-D for line-separated options followed by closing tag (GATE ME 2020 GA Q8 - go:359522)", () => {
+    const html = `<a name="359522"></a><div itemprop="text">The sum of the first $n$ terms in the sequence $8,\\:88,\\:888,\\:8888,\\dots$ is ________.<br>
+<br>
+A. $\\dfrac{81}{80}\\left ( 10^{n}-1 \\right )+\\dfrac{9}{8}n$<br>
+<br>
+B. $\\dfrac{81}{80}\\left ( 10^{n}-1 \\right )-\\dfrac{9}{8}n$<br>
+<br>
+C. $\\dfrac{80}{81}\\left ( 10^{n}-1 \\right )+\\dfrac{8}{9}n$<br>
+<br>
+D. $\\dfrac{80}{81}\\left ( 10^{n}-1 \\right )-\\dfrac{8}{9}n$</div>`;
+
+    const options = extractEmbeddedOptions(html);
+    const cleaned = stripEmbeddedOptions(html);
+
+    expect(options.map((option) => option.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options[0].text).toContain("10^{n}-1");
+    expect(options[3].label).toBe("D");
+    expect(options[3].text).toContain("\\dfrac{80}{81}");
+    expect(cleaned).toContain("The sum of the first");
+    expect(cleaned).not.toContain("A. $\\dfrac{81}{80}");
+    expect(cleaned).not.toContain("D. $\\dfrac{80}{81}");
+  });
 });
 

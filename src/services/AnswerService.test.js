@@ -3298,6 +3298,142 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
             answer: "C",
           });
         });
+
+        describe("DEC-288: 16 Nov 2026 Question Audit & Data Integrity Resolutions", () => {
+          test("resolves go:411907 (GATE Civil 2023 Set 1 GA Q1) as MCQ Option C under any context", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:411907": {
+                answer_uid: "manual:go:411907",
+                type: "MCQ",
+                answer: "C",
+                tolerance: null,
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:411907",
+              title: "GATE Civil 2023 Set 1 | General Aptitude Question: 1",
+            });
+            expect(answer).toMatchObject({
+              type: "MCQ",
+              answer: "C",
+            });
+          });
+
+          test("resolves go:460069 (GATE CSE 2025 Set 1 Q11) as MSQ Options B, D", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:460069": {
+                answer_uid: "v2:5.1.25",
+                type: "MSQ",
+                answer: ["B", "D"],
+                tolerance: null,
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:460069",
+              title: "GATE CSE 2025 | Set 1 | Question: 11",
+            });
+            expect(answer).toMatchObject({
+              type: "MSQ",
+              answer: ["B", "D"],
+            });
+          });
+
+          test("resolves go:422971 (GATE DA 2024 GA Q1) as MCQ Option D", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:422971": {
+                answer_uid: "manual:go:422971",
+                type: "MCQ",
+                answer: "D",
+                tolerance: null,
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:422971",
+              title: "GATE DS&AI 2024 | General Aptitude Question: 1",
+            });
+            expect(answer).toMatchObject({
+              type: "MCQ",
+              answer: "D",
+            });
+          });
+
+          test("resolves go:359522 (GATE Mechanical 2020 GA Q8) as MCQ Option D", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:359522": {
+                answer_uid: "manual:go:359522",
+                type: "MCQ",
+                answer: "D",
+                tolerance: null,
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:359522",
+              title: "GATE Mechanical 2020 Set 1 | General Aptitude Question: 8",
+            });
+            expect(answer).toMatchObject({
+              type: "MCQ",
+              answer: "D",
+            });
+          });
+
+          test("resolves go:426495 (GATE Civil 2024 Set 2 GA Q6) as MCQ Option D", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:426495": {
+                answer_uid: "manual:go:426495",
+                type: "MCQ",
+                answer: "D",
+                tolerance: null,
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:426495",
+              title: "GATE Civil 2024 Set 2 | General Aptitude Question: 6",
+            });
+            expect(answer).toMatchObject({
+              type: "MCQ",
+              answer: "D",
+            });
+          });
+
+          test("resolves go:426530 (GATE ECE 2024 GA Q1) as MCQ Option A", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:426530": {
+                answer_uid: "manual:go:426530",
+                type: "MCQ",
+                answer: "A",
+                tolerance: null,
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:426530",
+              title: "GATE ECE 2024 | General Aptitude Question: 1",
+            });
+            expect(answer).toMatchObject({
+              type: "MCQ",
+              answer: "A",
+            });
+          });
+
+          test("resolves go:8227 (GATE CSE 2015 Set 1 Q30) as NAT 10 with tolerance", () => {
+            AnswerService.answersByQuestionUid = {
+              "go:8227": {
+                answer_uid: "v2:7.4.9",
+                type: "NAT",
+                answer: 10,
+                tolerance: { abs: 0.01 },
+              },
+            };
+            const answer = AnswerService.getAnswerForQuestion({
+              question_uid: "go:8227",
+              title: "GATE CSE 2015 Set 1 | Question: 30",
+            });
+            expect(answer).toMatchObject({
+              type: "NAT",
+              answer: 10,
+              tolerance: { abs: 0.01 },
+            });
+          });
+        });
       });
     });
   });
