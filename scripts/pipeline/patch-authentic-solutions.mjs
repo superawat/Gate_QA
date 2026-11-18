@@ -192,6 +192,257 @@ export const AUTHENTIC_PATCHES = {
     images: [],
   },
 
+  "go:426512": {
+    concept: "General Aptitude - Quantitative Aptitude (Algebraic Identities & Ratios)",
+    markdown: `### 1. Problem Formulation & Ratio Property
+We are given that the real variables $x, y, z$ and real constants $p, q, r$ satisfy the continuous equality:
+$$\\frac{x}{pq - r^2} = \\frac{y}{qr - p^2} = \\frac{z}{rp - q^2}$$
+where all denominators are non-zero. Let this common ratio be $k$:
+$$\\frac{x}{pq - r^2} = \\frac{y}{qr - p^2} = \\frac{z}{rp - q^2} = k$$
+
+---
+
+### 2. Expressing Variables in Terms of $k$
+From the common ratio $k$, we obtain:
+$$x = k(pq - r^2)$$
+$$y = k(qr - p^2)$$
+$$z = k(rp - q^2)$$
+
+---
+
+### 3. Evaluating $px + qy + rz$
+Substitute the expressions for $x$, $y$, and $z$ into $px + qy + rz$:
+$$px + qy + rz = p\\big[k(pq - r^2)\\big] + q\\big[k(qr - p^2)\\big] + r\\big[k(rp - q^2)\\big]$$
+Factor out the common scalar $k$:
+$$px + qy + rz = k \\big[ p(pq - r^2) + q(qr - p^2) + r(rp - q^2) \\big]$$
+Expand each term inside the bracket:
+$$= k \\big[ (p^2q - pr^2) + (q^2r - qp^2) + (r^2p - rq^2) \\big]$$
+Group corresponding pairs of terms:
+$$= k \\big[ (p^2q - qp^2) + (q^2r - rq^2) + (r^2p - pr^2) \\big]$$
+Observe that every pair sums identically to zero:
+$$p^2q - qp^2 = 0$$
+$$q^2r - rq^2 = 0$$
+$$r^2p - pr^2 = 0$$
+Therefore:
+$$px + qy + rz = k \\times 0 = 0$$
+
+---
+
+### 4. Conclusion
+The value of $px + qy + rz$ is $0$, regardless of the non-zero value of $k$.
+
+Therefore, the correct answer is **Option A (0)**.`,
+    images: [],
+  },
+
+  "go:422893": {
+    concept: "Computer Organization & Architecture - IEEE 754 Floating-Point Representation",
+    markdown: `### 1. IEEE 754 Single-Precision Format Overview
+In the IEEE 754 32-bit single-precision floating-point standard:
+- **Sign bit ($S$):** $1$ bit ($0$ for positive, $1$ for negative).
+- **Biased Exponent ($E$):** $8$ bits, with bias $B = 127$.
+- **Mantissa / Fraction ($M$):** $23$ bits (representing the fractional part $f$ with an implicit leading $1$, i.e., $1.f$).
+
+---
+
+### 2. Evaluation of Options
+All options have sign bit $S = 0$, indicating positive values.
+
+1. **Option A:**
+   - Exponent: $01111111_2 = 127 \\implies \\text{unbiased exponent } E - 127 = 0$.
+   - Mantissa: all $1$s $\\implies 1 + (1 - 2^{-23}) \\approx 2$.
+   - Value: $\\approx 2 \\times 2^0 = 2$.
+
+2. **Option B:**
+   - Exponent: $11111110_2 = 254 \\implies \\text{unbiased exponent } E - 127 = 254 - 127 = 127$.
+   - Mantissa: all $1$s $\\implies 1.111\\dots1_2 = 2 - 2^{-23}$.
+   - Value: $(2 - 2^{-23}) \\times 2^{127} \\approx 3.4028 \\times 10^{38}$.
+   - This represents the **maximum finite representable positive number** in IEEE 754 single precision.
+
+3. **Option C:**
+   - Exponent: $11111111_2 = 255$ (all $1$s) with non-zero mantissa.
+   - Under the IEEE 754 standard, an exponent of all $1$s with a non-zero fraction represents **$\\text{NaN}$ (Not a Number)**, not a valid finite numerical value.
+
+4. **Option D:**
+   - Exponent: $01111111_2 = 127 \\implies E - 127 = 0$.
+   - Mantissa: all $0$s $\\implies 1.0_2 = 1$.
+   - Value: $1.0 \\times 2^0 = 1$.
+
+---
+
+### 3. Conclusion
+Comparing the finite numbers, $(2 - 2^{-23}) \\times 2^{127}$ (Option B) is strictly the largest floating-point number.
+
+Therefore, the correct answer is **Option B**.`,
+    images: [],
+  },
+
+  "go:426520": {
+    concept: "General Aptitude - Quantitative Aptitude (Profit and Loss with Taxes)",
+    markdown: `### 1. Problem Formulation
+- A shopkeeper buys shirts from a producer at cost price $CP$.
+- The shopkeeper adds a $20\\%$ profit markup to determine the selling price before tax, $SP$.
+- The customer pays the selling price plus $18\\%$ tax, totaling ₹$3,186.00$.
+
+---
+
+### 2. Step-by-Step Calculation
+1. **Find Selling Price before Tax ($SP$):**
+   The final price paid by the customer includes $18\\%$ tax on $SP$:
+   $$\\text{Final Price} = SP \\times (1 + 0.18) = 1.18 \\times SP$$
+   $$1.18 \\times SP = 3186.00$$
+   $$SP = \\frac{3186}{1.18} = 2700.00\\text{ ₹}$$
+
+2. **Find Cost Price from Producer ($CP$):**
+   The shopkeeper's profit is $20\\%$ on the purchase price $CP$:
+   $$SP = CP \\times (1 + 0.20) = 1.20 \\times CP$$
+   $$1.20 \\times CP = 2700.00$$
+   $$CP = \\frac{2700}{1.20} = 2250.00\\text{ ₹}$$
+
+---
+
+### 3. Conclusion
+The shopkeeper bought each shirt from the producer for ₹$2,250.00$.
+
+Therefore, the correct answer is **Option C (₹ 2,250.00)**.`,
+    images: [],
+  },
+
+  "go:426498": {
+    concept: "General Aptitude - Quantitative Aptitude (Number Series)",
+    markdown: `### 1. Pattern Identification
+Given the sequence:
+$$3,\\; 7,\\; 15,\\; x,\\; 63,\\; 127,\\; 255$$
+
+Observe the relationship between consecutive terms and powers of $2$:
+- Term 1: $3 = 2^2 - 1 = 4 - 1$
+- Term 2: $7 = 2^3 - 1 = 8 - 1$
+- Term 3: $15 = 2^4 - 1 = 16 - 1$
+- Term 4 ($x$): $2^5 - 1 = 32 - 1 = 31$
+- Term 5: $63 = 2^6 - 1 = 64 - 1$
+- Term 6: $127 = 2^7 - 1 = 128 - 1$
+- Term 7: $255 = 2^8 - 1 = 256 - 1$
+
+---
+
+### 2. Alternative Difference Method
+Examine the successive first differences:
+$$7 - 3 = 4 = 2^2$$
+$$15 - 7 = 8 = 2^3$$
+$$x - 15 = 16 = 2^4 \\implies x = 15 + 16 = 31$$
+$$63 - x = 63 - 31 = 32 = 2^5$$
+$$127 - 63 = 64 = 2^6$$
+$$255 - 127 = 128 = 2^7$$
+
+Both approaches yield $x = 31$ consistently.
+
+---
+
+### 3. Conclusion
+The value of $x$ in the sequence is $31$.
+
+Therefore, the correct answer is **Option D (31)**.`,
+    images: [],
+  },
+
+  "go:426491": {
+    concept: "General Aptitude - Quantitative Aptitude (Sum of Odd Numbers)",
+    markdown: `### 1. Sum of First $n$ Positive Odd Numbers
+The first $n$ consecutive positive odd numbers form an arithmetic progression with first term $a = 1$ and common difference $d = 2$:
+$$1, 3, 5, 7, \\dots, (2n - 1)$$
+The sum $S_n$ of this progression is:
+$$S_n = \\sum_{k=1}^n (2k - 1) = \\frac{n}{2} \\big[ 1 + (2n - 1) \\big] = \\frac{n}{2} (2n) = n^2$$
+
+---
+
+### 2. Application for $n = 20$
+Here $n = 20$, so the sum of the first $20$ consecutive positive odd numbers is:
+$$S_{20} = 20^2 = 400$$
+
+---
+
+### 3. Division by $20^2$
+The problem asks for the result when this sum is divided by $20^2$:
+$$\\text{Result} = \\frac{S_{20}}{20^2} = \\frac{20^2}{20^2} = 1$$
+
+Therefore, the correct answer is **Option A (1)**.`,
+    images: [],
+  },
+
+  "go:422968": {
+    concept: "General Aptitude - Quantitative Aptitude (Infinite Geometric Series)",
+    markdown: `### 1. Analysis of the Infinite Series
+We are given the infinite series:
+$$S = 2 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{9} + \\frac{1}{16} + \\frac{1}{27} + \\dots$$
+
+Notice that the denominators are powers of $2$ and powers of $3$:
+- Powers of $2$: $\\frac{1}{2^1}, \\frac{1}{2^2}, \\frac{1}{2^3}, \\frac{1}{2^4}, \\dots$
+- Powers of $3$: $\\frac{1}{3^1}, \\frac{1}{3^2}, \\frac{1}{3^3}, \\dots$
+
+---
+
+### 2. Decomposition into Two Geometric Series
+We can split the initial term $2$ into $1 + 1$ and group the series into two independent infinite geometric progressions:
+$$S_1 = 1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16} + \\dots = \\sum_{k=0}^\\infty \\left(\\frac{1}{2}\\right)^k$$
+$$S_2 = 1 + \\frac{1}{3} + \\frac{1}{9} + \\frac{1}{27} + \\dots = \\sum_{k=0}^\\infty \\left(\\frac{1}{3}\\right)^k$$
+
+Summing $S_1$ and $S_2$:
+$$S_1 + S_2 = (1 + 1) + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{9} + \\dots = S$$
+
+---
+
+### 3. Evaluating the Infinite Geometric Sums
+Using the standard infinite GP sum formula $S_\\infty = \\frac{a}{1 - r}$ where $|r| < 1$:
+1. For $S_1$ ($a = 1, r = \\frac{1}{2}$):
+   $$S_1 = \\frac{1}{1 - \\frac{1}{2}} = \\frac{1}{\\frac{1}{2}} = 2$$
+
+2. For $S_2$ ($a = 1, r = \\frac{1}{3}$):
+   $$S_2 = \\frac{1}{1 - \\frac{1}{3}} = \\frac{1}{\\frac{2}{3}} = \\frac{3}{2}$$
+
+---
+
+### 4. Total Sum
+$$S = S_1 + S_2 = 2 + \\frac{3}{2} = \\frac{7}{2}$$
+
+Therefore, the correct answer is **Option B (7/2)**.`,
+    images: [],
+  },
+
+  "go:426536": {
+    concept: "General Aptitude - Quantitative Aptitude (Logarithm Properties)",
+    markdown: `### 1. Problem Statement & Logarithm Properties
+We are given that for a real number $x > 1$:
+$$\\frac{1}{\\log_2 x} + \\frac{1}{\\log_3 x} + \\frac{1}{\\log_4 x} = 1$$
+
+Recall the logarithmic change-of-base identity:
+$$\\frac{1}{\\log_b a} = \\log_a b$$
+
+---
+
+### 2. Simplifying the Equation
+Applying this identity to each term:
+$$\\frac{1}{\\log_2 x} = \\log_x 2$$
+$$\\frac{1}{\\log_3 x} = \\log_x 3$$
+$$\\frac{1}{\\log_4 x} = \\log_x 4$$
+
+The equation becomes:
+$$\\log_x 2 + \\log_x 3 + \\log_x 4 = 1$$
+
+Using the product rule of logarithms $\\log_x a + \\log_x b + \\log_x c = \\log_x(a \\cdot b \\cdot c)$:
+$$\\log_x (2 \\times 3 \\times 4) = 1$$
+$$\\log_x (24) = 1$$
+
+---
+
+### 3. Solving for $x$
+By the definition of logarithms:
+$$\\log_x (24) = 1 \\iff x^1 = 24 \\implies x = 24$$
+Since $x = 24 > 1$, this solution is valid and satisfies the initial domain condition.
+
+Therefore, the correct answer is **Option C (24)**.`,
+    images: [],
+  },
+
   "ec:2017:q1-s2": {
     concept: "Digital Circuits - Combinational Circuits",
     markdown: EC2017_Q1_S2_SOLUTION,

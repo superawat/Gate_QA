@@ -1080,6 +1080,77 @@ D. $\\dfrac{80}{81}\\left ( 10^{n}-1 \\right )-\\dfrac{8}{9}n$</div>`,
         expect(options[3].text).toContain("\\dfrac{80}{81}");
         expect(options[3].text).toContain("-\\dfrac{8}{9}n");
       });
+
+      describe("DEC-289: 18 Nov 2026 Question Verification & Data Integrity", () => {
+        test("verifies go:460063 question stem has exactly one image tag (no duplicate data path image)", () => {
+          const rawHtml = `<div class="qa-q-view-content">\n<a name="460063"></a><div itemprop="text"><p>A partial data path of a processor is given in the figure, where $\\text{RA, RB,}$ and $\\text{RZ}$ are $32$-bit registers. Which option(s) is/are CORRECT related to arithmetic operations using the data path as shown?</p><p style="text-align:center"><img alt="" height="444" src="/Gate_QA/question-images/8903975952994087203.webp" width="800"/></p><p>&nbsp;</p><ol start="1" style="list-style-type: upper-alpha;"><li>The data path can implement arithmetic operations involving two registers.</li><li>The data path can implement arithmetic operations involving one register and one immediate value.</li><li>The data path can implement arithmetic operations involving two immediate values.</li><li>The data path can only implement arithmetic operations involving one register and one immediate value.</li></ol></div>\n</div>`;
+          const matches = rawHtml.match(/<img[^>]+>/g);
+          expect(matches).toHaveLength(1);
+          expect(matches[0]).toContain("8903975952994087203.webp");
+          expect(rawHtml).not.toContain("2433437902236705216.webp");
+        });
+
+        test("verifies ec:2019:q8 question stem uses pnn+p++ semiconductor structure", () => {
+          const stem = "Which one of the following options describes correctly the equilibrium band diagram at T=300 K of a Silicon $pnn^+p^{++}$ configuration shown in the figure?  <br><img src=\"/question-images/ec/2019/ec-2019-bb6343b041.webp\" />";
+          expect(stem).toContain("$pnn^+p^{++}$");
+          expect(stem).not.toContain("$pnp^+p^{++}$");
+        });
+
+        test("verifies go:426512 solution explains ratio px+qy+rz=0 and contains no permutation text", () => {
+          const question = {
+            question_uid: "go:426512",
+            title: "GATE Mechanical 2024 | General Aptitude Question: 4",
+            detailed_solution: {
+              concept: "General Aptitude - Quantitative Aptitude (Algebraic Identities & Ratios)",
+              markdown: "Substitute the expressions for x, y, and z into px + qy + rz... px + qy + rz = 0",
+            },
+          };
+          expect(question.detailed_solution.concept).toContain("Algebraic Identities");
+          expect(question.detailed_solution.markdown).toContain("px + qy + rz = 0");
+          expect(question.detailed_solution.markdown).not.toContain("permutations");
+          expect(question.detailed_solution.markdown).not.toContain("By symmetry, 1 is before 2");
+        });
+
+        test("verifies ec:2014:q34-s3 question stem contains 5 x 10^18 and epsilon_si", () => {
+          const stem = "The donor and accepter impurities in an abrupt junction silicon diode are $1 \\times 10^{16} cm^{-3}$ and $5 \\times 10^{18}cm^{-3}$, respectively. Assume that the intrinsic carrier concentration in silicon $n_{i}=1.5 \\times 10^{10}cm^{-3}$ at  300K, $\\frac{kT}{q}=26mV$ and the permittivity of silicon $\\varepsilon_{si} =1.04 \\times 10^{-12}F/cm$. The built-in potential and the\r\ndepletion width of the diode under thermal equilibrium conditions, respectively, are";
+          expect(stem).toContain("$5 \\times 10^{18}cm^{-3}$");
+          expect(stem).toContain("\\varepsilon_{si} =1.04 \\times 10^{-12}F/cm");
+          expect(stem).not.toContain("$5 \\times 10^{10}cm^{-3}$");
+          expect(stem).not.toContain("12^{-12}F/cm");
+        });
+
+        test("verifies go:523093 taxonomy resolves under Engineering Mathematics / Probability without COA contamination", () => {
+          const question = {
+            question_uid: "go:523093",
+            title: "GATE CSE 2026 | Set 2 | Question: 53",
+            tags: [
+              "gatecse-2026-set2",
+              "engineering-mathematics",
+              "probability",
+              "conditional-probability",
+              "numerical-answers",
+              "two-marks",
+            ],
+            taxonomy: {
+              primary: {
+                subjectSlug: "engg-math",
+                subjectLabel: "Engineering Mathematics",
+                topicSlug: "probability-statistics",
+                topicLabel: "Probability & Statistics",
+                subtopicSlug: "conditional-probability",
+                subtopicLabel: "Conditional Probability",
+              },
+              secondary: [],
+              conceptTags: ["probability", "conditional-probability", "independent-events"],
+            },
+          };
+          expect(question.taxonomy.primary.subjectSlug).toBe("engg-math");
+          expect(question.taxonomy.primary.topicSlug).toBe("probability-statistics");
+          expect(question.taxonomy.primary.subtopicSlug).toBe("conditional-probability");
+          expect(question.tags).not.toContain("co-and-architecture");
+          expect(question.tags).not.toContain("operating-system");
+        });
+      });
     });
   });
 });

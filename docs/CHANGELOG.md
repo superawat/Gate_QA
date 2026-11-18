@@ -1,4 +1,32 @@
 # Changelog
+- **18 November 2026 Question Audit & Data Integrity Resolutions (DEC-289, 2026-11-18)**:
+  - **Context & Scope**: Executed the 6-phase resolution runbook from `plan/nov_26/18th_nov_questionresolve.md` across 5 reported questions (`go:460063`, `ec:2019:q8`, `go:426512`, `ec:2014:q34-s3`, `go:523093`) and audited 6 additional questions that inherited shared solution mappings on 2024 GA Q4 (`go:422893`, `go:426520`, `go:426498`, `go:426491`, `go:422968`, `go:426536`).
+  - **Image Deduplication & Parity (`go:460063`)**:
+    - Investigated duplicate data path diagram rendered in the stem of `go:460063` (GATE CSE 2025 Set 1 Q17).
+    - Verified against original IIT Roorkee exam paper and authentic GateOverflow post cache (`0c9837c723ddd6dfad3e49efb8ff2f8b.html` containing `qa_blobid=8903975952994087203`).
+    - Removed duplicate lower-resolution image tag (`2433437902236705216.webp`), cleanly preserving authentic 1200x666 diagram (`8903975952994087203.webp`) across `public/questions-with-answers.json`, `public/questions-filtered-with-ids.json`, and `public/questions-filtered.json`.
+  - **Semiconductor Typo Corrections (`ec:2019:q8` & `ec:2014:q34-s3`)**:
+    - `ec:2019:q8` (GATE EC 2019 Q8): Repaired transcription typo in 4-layer doping structure `$pnp^+p^{++}$` to `$pnn^+p^{++}$` across `audit/ec/raw-ec-2019.json`, `public/question-detail-shards/ec-2019-s1.json`, `public/data/ec/search-index.json`, and `data/solutions/chunks/ec/chunk-ec-mod-02.json`. Verified official answer key is Option A.
+    - `ec:2014:q34-s3` (GATE EC 2014 Set 3 Q34): Repaired transcription typo in acceptor impurity concentration (`$5 \times 10^{18}cm^{-3}$` instead of `$5 \times 10^{10}cm^{-3}$`) and silicon permittivity (`\varepsilon_{si} = 1.04 \times 10^{-12}F/cm` instead of `12^{-12}`) across `audit/ec/raw-ec-2014-s3.json`, `public/question-detail-shards/ec-2014-s3.json`, and `public/data/ec/search-index.json`. Verified built-in potential $V_{bi} = 0.86\text{ V}$ and depletion width $W = 3.3 \times 10^{-5}\text{ cm}$ matching official answer key Option D.
+  - **Authentic Solutions & Shared 2024 GA Q4 Audit (`go:426512` + 6 questions)**:
+    - `go:426512` (GATE ME 2024 GA Q4): Verified official key is Option A. Solved algebraic identity $(px + qy + rz = 0)$ from $\frac{p}{x-a} = \frac{q}{y-b} = \frac{r}{z-c} = 1$ and $\frac{a}{x} + \frac{b}{y} + \frac{c}{z} = 0$. Replaced mismatched permutation solution with step-by-step derivation.
+    - Audited other 2024 GA Q4 questions that inherited the copied permutation solution from `go:422838`:
+      - `go:422893` (GATE CSE 2024 Set 2 GA Q4): IEEE-754 single precision maximum finite float derivation ($2^{128}(1 - 2^{-24})$, Option B).
+      - `go:426520` (GATE CE 2024 Set 1 GA Q4): Retail profit and discount arithmetic ($CP = ₹2,250.00$, Option C).
+      - `go:426498` (GATE CE 2024 Set 2 GA Q4): Exponential powers of 2 sequence ($x = 31$, Option D).
+      - `go:426491` (GATE DA 2024 GA Q4): Sum of first $n$ odd integers divided by $20^2$ ($S_{20}/20^2 = 1$, Option A).
+      - `go:422968` (GATE EC 2024 GA Q4): Infinite geometric series summation ($S_\infty = 7/2$, Option B).
+      - `go:426536` (GATE EE 2024 GA Q4): Logarithm product and change-of-base rule ($x = 24$, Option C).
+    - Patched authentic derivations across `data/solutions/cse-v1.json`, `scripts/pipeline/patch-authentic-solutions.mjs`, and static detail shards.
+  - **Taxonomy Resolution & Tag Sanitization (`go:523093`)**:
+    - `go:523093` (GATE CSE 2026 Set 2 Q53): Repaired taxonomy misclassification from `coa` (CO & Architecture) to Engineering Mathematics. Cleaned contaminated tag metadata (`co-and-architecture`, `bit-vector`, `operating-system`, etc.) in `audit/normalised-2026.json`, `public/questions-with-answers.json`, `public/questions-filtered.json`, and `public/questions-filtered-with-ids.json`.
+    - Added curated taxonomy entry in `data/taxonomy/curated-question-taxonomy-v1.json` mapping to `engg-math` / `probability-statistics` / `conditional-probability`. Rebuilt detail shards and search index. Verified official key NAT 0.5.
+  - **Verification & Testing**:
+    - Added unit test suite in `src/utils/evaluateAnswer.test.js` under DEC-289 covering evaluation of all 5 reported questions.
+    - Added unit test suite in `src/services/QuestionService.test.js` verifying image deduplication, stem typography, taxonomy isolation, and solution content.
+    - Added unit test suite in `src/services/AnswerService.test.js` verifying answer key resolution across branch contexts.
+    - All 116 test files (1,621 tests) passed in `npm run test:unit`. Clean TypeScript compilation (`npm run typecheck`). Clean data integrity validation (`npm run qa:validate-data`).
+
 - **16 November 2026 Question Audit & Data Integrity Resolutions (DEC-288, 2026-11-16)**:
   - **Context & Scope**: Executed the comprehensive 6-phase resolution runbook from `plan/nov_26/16th_nov_questionresolve.md` across 8 reported questions (`go:411907`, `go:460069`, `go:422971`, `APT-RSN-6474`, `go:359522`, `go:426495`, `go:426530`, `go:8227`), as well as fixing a batch of 14 related questions exposed during the shared solution mapping audit (`go:411893`, `go:411924`, `go:411863`, `go:411843`, `go:411878`, `go:411825`, `go:422891`, `go:422896`, `go:426496`, `go:426508`, `go:426522`, `go:426493`, `go:422966`, `go:426507`).
   - **Option Extraction Parser Fix (`src/utils/stripEmbeddedOptions.js`)**:

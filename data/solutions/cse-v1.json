@@ -2290,8 +2290,8 @@
   "go:422893": {
     "question_uid": "go:422893",
     "verified_answer": "B",
-    "concept_summary": "gatecse-2024-set2: digital-logic",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **B**."
+    "concept_summary": "Computer Organization & Architecture - IEEE 754 Floating-Point Representation",
+    "solution_markdown": "### 1. IEEE 754 Single-Precision Format Overview\nIn the IEEE 754 32-bit single-precision floating-point standard:\n- **Sign bit ($S$):** $1$ bit ($0$ for positive, $1$ for negative).\n- **Biased Exponent ($E$):** $8$ bits, with bias $B = 127$.\n- **Mantissa / Fraction ($M$):** $23$ bits (representing the fractional part $f$ with an implicit leading $1$, i.e., $1.f$).\n\n---\n\n### 2. Evaluation of Options\nAll options have sign bit $S = 0$, indicating positive values.\n\n1. **Option A:**\n   - Exponent: $01111111_2 = 127 \\implies \\text{unbiased exponent } E - 127 = 0$.\n   - Mantissa: all $1$s $\\implies 1 + (1 - 2^{-23}) \\approx 2$.\n   - Value: $\\approx 2 \\times 2^0 = 2$.\n\n2. **Option B:**\n   - Exponent: $11111110_2 = 254 \\implies \\text{unbiased exponent } E - 127 = 254 - 127 = 127$.\n   - Mantissa: all $1$s $\\implies 1.111\\dots1_2 = 2 - 2^{-23}$.\n   - Value: $(2 - 2^{-23}) \\times 2^{127} \\approx 3.4028 \\times 10^{38}$.\n   - This represents the **maximum finite representable positive number** in IEEE 754 single precision.\n\n3. **Option C:**\n   - Exponent: $11111111_2 = 255$ (all $1$s) with non-zero mantissa.\n   - Under the IEEE 754 standard, an exponent of all $1$s with a non-zero fraction represents **$\\text{NaN}$ (Not a Number)**, not a valid finite numerical value.\n\n4. **Option D:**\n   - Exponent: $01111111_2 = 127 \\implies E - 127 = 0$.\n   - Mantissa: all $0$s $\\implies 1.0_2 = 1$.\n   - Value: $1.0 \\times 2^0 = 1$.\n\n---\n\n### 3. Conclusion\nComparing the finite numbers, $(2 - 2^{-23}) \\times 2^{127}$ (Option B) is strictly the largest floating-point number.\n\nTherefore, the correct answer is **Option B**."
   },
   "go:422892": {
     "question_uid": "go:422892",
@@ -3549,8 +3549,8 @@
   "go:426520": {
     "question_uid": "go:426520",
     "verified_answer": "C",
-    "concept_summary": "general-aptitude: gate2024-ee",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option C**."
+    "concept_summary": "General Aptitude - Quantitative Aptitude (Profit and Loss with Taxes)",
+    "solution_markdown": "### 1. Problem Formulation\n- A shopkeeper buys shirts from a producer at cost price $CP$.\n- The shopkeeper adds a $20\\%$ profit markup to determine the selling price before tax, $SP$.\n- The customer pays the selling price plus $18\\%$ tax, totaling ₹$3,186.00$.\n\n---\n\n### 2. Step-by-Step Calculation\n1. **Find Selling Price before Tax ($SP$):**\n   The final price paid by the customer includes $18\\%$ tax on $SP$:\n   $$\\text{Final Price} = SP \\times (1 + 0.18) = 1.18 \\times SP$$\n   $$1.18 \\times SP = 3186.00$$\n   $$SP = \\frac{3186}{1.18} = 2700.00\\text{ ₹}$$\n\n2. **Find Cost Price from Producer ($CP$):**\n   The shopkeeper's profit is $20\\%$ on the purchase price $CP$:\n   $$SP = CP \\times (1 + 0.20) = 1.20 \\times CP$$\n   $$1.20 \\times CP = 2700.00$$\n   $$CP = \\frac{2700}{1.20} = 2250.00\\text{ ₹}$$\n\n---\n\n### 3. Conclusion\nThe shopkeeper bought each shirt from the producer for ₹$2,250.00$.\n\nTherefore, the correct answer is **Option C (₹ 2,250.00)**."
   },
   "go:426518": {
     "question_uid": "go:426518",
@@ -3603,8 +3603,8 @@
   "go:426498": {
     "question_uid": "go:426498",
     "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatecivil-2024-set1",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option D**."
+    "concept_summary": "General Aptitude - Quantitative Aptitude (Number Series)",
+    "solution_markdown": "### 1. Pattern Identification\nGiven the sequence:\n$$3,\\; 7,\\; 15,\\; x,\\; 63,\\; 127,\\; 255$$\n\nObserve the relationship between consecutive terms and powers of $2$:\n- Term 1: $3 = 2^2 - 1 = 4 - 1$\n- Term 2: $7 = 2^3 - 1 = 8 - 1$\n- Term 3: $15 = 2^4 - 1 = 16 - 1$\n- Term 4 ($x$): $2^5 - 1 = 32 - 1 = 31$\n- Term 5: $63 = 2^6 - 1 = 64 - 1$\n- Term 6: $127 = 2^7 - 1 = 128 - 1$\n- Term 7: $255 = 2^8 - 1 = 256 - 1$\n\n---\n\n### 2. Alternative Difference Method\nExamine the successive first differences:\n$$7 - 3 = 4 = 2^2$$\n$$15 - 7 = 8 = 2^3$$\n$$x - 15 = 16 = 2^4 \\implies x = 15 + 16 = 31$$\n$$63 - x = 63 - 31 = 32 = 2^5$$\n$$127 - 63 = 64 = 2^6$$\n$$255 - 127 = 128 = 2^7$$\n\nBoth approaches yield $x = 31$ consistently.\n\n---\n\n### 3. Conclusion\nThe value of $x$ in the sequence is $31$.\n\nTherefore, the correct answer is **Option D (31)**."
   },
   "go:426485": {
     "question_uid": "go:426485",
@@ -3663,8 +3663,8 @@
   "go:426491": {
     "question_uid": "go:426491",
     "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatecivil-2024-set2",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option A**."
+    "concept_summary": "General Aptitude - Quantitative Aptitude (Sum of Odd Numbers)",
+    "solution_markdown": "### 1. Sum of First $n$ Positive Odd Numbers\nThe first $n$ consecutive positive odd numbers form an arithmetic progression with first term $a = 1$ and common difference $d = 2$:\n$$1, 3, 5, 7, \\dots, (2n - 1)$$\nThe sum $S_n$ of this progression is:\n$$S_n = \\sum_{k=1}^n (2k - 1) = \\frac{n}{2} \\big[ 1 + (2n - 1) \\big] = \\frac{n}{2} (2n) = n^2$$\n\n---\n\n### 2. Application for $n = 20$\nHere $n = 20$, so the sum of the first $20$ consecutive positive odd numbers is:\n$$S_{20} = 20^2 = 400$$\n\n---\n\n### 3. Division by $20^2$\nThe problem asks for the result when this sum is divided by $20^2$:\n$$\\text{Result} = \\frac{S_{20}}{20^2} = \\frac{20^2}{20^2} = 1$$\n\nTherefore, the correct answer is **Option A (1)**."
   },
   "go:426490": {
     "question_uid": "go:426490",
@@ -3711,8 +3711,8 @@
   "go:422968": {
     "question_uid": "go:422968",
     "verified_answer": "B",
-    "concept_summary": "general-aptitude: gate-ds-ai-2024",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option B**."
+    "concept_summary": "General Aptitude - Quantitative Aptitude (Infinite Geometric Series)",
+    "solution_markdown": "### 1. Analysis of the Infinite Series\nWe are given the infinite series:\n$$S = 2 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{9} + \\frac{1}{16} + \\frac{1}{27} + \\dots$$\n\nNotice that the denominators are powers of $2$ and powers of $3$:\n- Powers of $2$: $\\frac{1}{2^1}, \\frac{1}{2^2}, \\frac{1}{2^3}, \\frac{1}{2^4}, \\dots$\n- Powers of $3$: $\\frac{1}{3^1}, \\frac{1}{3^2}, \\frac{1}{3^3}, \\dots$\n\n---\n\n### 2. Decomposition into Two Geometric Series\nWe can split the initial term $2$ into $1 + 1$ and group the series into two independent infinite geometric progressions:\n$$S_1 = 1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16} + \\dots = \\sum_{k=0}^\\infty \\left(\\frac{1}{2}\\right)^k$$\n$$S_2 = 1 + \\frac{1}{3} + \\frac{1}{9} + \\frac{1}{27} + \\dots = \\sum_{k=0}^\\infty \\left(\\frac{1}{3}\\right)^k$$\n\nSumming $S_1$ and $S_2$:\n$$S_1 + S_2 = (1 + 1) + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{9} + \\dots = S$$\n\n---\n\n### 3. Evaluating the Infinite Geometric Sums\nUsing the standard infinite GP sum formula $S_\\infty = \\frac{a}{1 - r}$ where $|r| < 1$:\n1. For $S_1$ ($a = 1, r = \\frac{1}{2}$):\n   $$S_1 = \\frac{1}{1 - \\frac{1}{2}} = \\frac{1}{\\frac{1}{2}} = 2$$\n\n2. For $S_2$ ($a = 1, r = \\frac{1}{3}$):\n   $$S_2 = \\frac{1}{1 - \\frac{1}{3}} = \\frac{1}{\\frac{2}{3}} = \\frac{3}{2}$$\n\n---\n\n### 4. Total Sum\n$$S = S_1 + S_2 = 2 + \\frac{3}{2} = \\frac{7}{2}$$\n\nTherefore, the correct answer is **Option B (7/2)**."
   },
   "go:422967": {
     "question_uid": "go:422967",
@@ -3759,8 +3759,8 @@
   "go:426536": {
     "question_uid": "go:426536",
     "verified_answer": "C",
-    "concept_summary": "general-aptitude: gateece-2024",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option C**."
+    "concept_summary": "General Aptitude - Quantitative Aptitude (Logarithm Properties)",
+    "solution_markdown": "### 1. Problem Statement & Logarithm Properties\nWe are given that for a real number $x > 1$:\n$$\\frac{1}{\\log_2 x} + \\frac{1}{\\log_3 x} + \\frac{1}{\\log_4 x} = 1$$\n\nRecall the logarithmic change-of-base identity:\n$$\\frac{1}{\\log_b a} = \\log_a b$$\n\n---\n\n### 2. Simplifying the Equation\nApplying this identity to each term:\n$$\\frac{1}{\\log_2 x} = \\log_x 2$$\n$$\\frac{1}{\\log_3 x} = \\log_x 3$$\n$$\\frac{1}{\\log_4 x} = \\log_x 4$$\n\nThe equation becomes:\n$$\\log_x 2 + \\log_x 3 + \\log_x 4 = 1$$\n\nUsing the product rule of logarithms $\\log_x a + \\log_x b + \\log_x c = \\log_x(a \\cdot b \\cdot c)$:\n$$\\log_x (2 \\times 3 \\times 4) = 1$$\n$$\\log_x (24) = 1$$\n\n---\n\n### 3. Solving for $x$\nBy the definition of logarithms:\n$$\\log_x (24) = 1 \\iff x^1 = 24 \\implies x = 24$$\nSince $x = 24 > 1$, this solution is valid and satisfies the initial domain condition.\n\nTherefore, the correct answer is **Option C (24)**."
   },
   "go:426533": {
     "question_uid": "go:426533",
@@ -3801,8 +3801,8 @@
   "go:426512": {
     "question_uid": "go:426512",
     "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateme-2024",
-    "solution_markdown": "By symmetry, 1 is before 2 in half of all permutations, so $P(X)=\\frac12$; similarly $P(Y)=\\frac12$.\n\nThe relative order of {1,2} and the relative order of {3,4} involve different elements, and all 4 combinations (12/21 with 34/43) are equally likely, so $P(X\\cap Y)=\\frac14=P(X)P(Y)$ $\\rightarrow$ <b>independent</b>.\n\n- Not mutually exclusive: 1 2 3 4 $\\ldots$ satisfies both.\n\n- Neither must occur: 2 1 4 3 $\\ldots$ satisfies none.\n\n- Equally likely, so X is not more likely than Y.\n\n<b>Answer: X and Y are independent</b>\n\nTherefore, the correct answer is **Option A**."
+    "concept_summary": "General Aptitude - Quantitative Aptitude (Algebraic Identities & Ratios)",
+    "solution_markdown": "### 1. Problem Formulation & Ratio Property\nWe are given that the real variables $x, y, z$ and real constants $p, q, r$ satisfy the continuous equality:\n$$\\frac{x}{pq - r^2} = \\frac{y}{qr - p^2} = \\frac{z}{rp - q^2}$$\nwhere all denominators are non-zero. Let this common ratio be $k$:\n$$\\frac{x}{pq - r^2} = \\frac{y}{qr - p^2} = \\frac{z}{rp - q^2} = k$$\n\n---\n\n### 2. Expressing Variables in Terms of $k$\nFrom the common ratio $k$, we obtain:\n$$x = k(pq - r^2)$$\n$$y = k(qr - p^2)$$\n$$z = k(rp - q^2)$$\n\n---\n\n### 3. Evaluating $px + qy + rz$\nSubstitute the expressions for $x$, $y$, and $z$ into $px + qy + rz$:\n$$px + qy + rz = p\\big[k(pq - r^2)\\big] + q\\big[k(qr - p^2)\\big] + r\\big[k(rp - q^2)\\big]$$\nFactor out the common scalar $k$:\n$$px + qy + rz = k \\big[ p(pq - r^2) + q(qr - p^2) + r(rp - q^2) \\big]$$\nExpand each term inside the bracket:\n$$= k \\big[ (p^2q - pr^2) + (q^2r - qp^2) + (r^2p - rq^2) \\big]$$\nGroup corresponding pairs of terms:\n$$= k \\big[ (p^2q - qp^2) + (q^2r - rq^2) + (r^2p - pr^2) \\big]$$\nObserve that every pair sums identically to zero:\n$$p^2q - qp^2 = 0$$\n$$q^2r - rq^2 = 0$$\n$$r^2p - pr^2 = 0$$\nTherefore:\n$$px + qy + rz = k \\times 0 = 0$$\n\n---\n\n### 4. Conclusion\nThe value of $px + qy + rz$ is $0$, regardless of the non-zero value of $k$.\n\nTherefore, the correct answer is **Option A (0)**."
   },
   "go:426511": {
     "question_uid": "go:426511",

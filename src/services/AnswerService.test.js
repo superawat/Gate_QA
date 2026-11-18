@@ -3433,6 +3433,104 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
               tolerance: { abs: 0.01 },
             });
           });
+
+          describe("DEC-289: 18 Nov 2026 Question Audit & Data Integrity Resolutions", () => {
+            test("resolves go:460063 (GATE CSE 2025 Set 1 Q17) as MSQ Options A, B, C", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:460063": {
+                  answer_uid: "manual:go:460063",
+                  type: "MSQ",
+                  answer: ["A", "B", "C"],
+                  tolerance: null,
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:460063",
+                title: "GATE CSE 2025 Set 1 | Question: 17",
+              });
+              expect(answer).toMatchObject({
+                type: "MSQ",
+                answer: ["A", "B", "C"],
+              });
+            });
+
+            test("resolves ec:2019:q8 (GATE EC 2019 Q8) as MCQ Option A", () => {
+              AnswerService.answersByQuestionUid = {
+                "ec:2019:q8": {
+                  answer_uid: "ec:2019:q8",
+                  type: "MCQ",
+                  answer: "A",
+                  tolerance: null,
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "ec:2019:q8",
+                title: "GATE EC 2019 | Set 1 | Question: 8",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "A",
+              });
+            });
+
+            test("resolves go:426512 (GATE ME 2024 GA Q4) as MCQ Option A", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:426512": {
+                  answer_uid: "manual:go:426512",
+                  type: "MCQ",
+                  answer: "A",
+                  tolerance: null,
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:426512",
+                title: "GATE Mechanical 2024 | General Aptitude Question: 4",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "A",
+              });
+            });
+
+            test("resolves ec:2014:q34-s3 (GATE EC 2014 Set 3 Q34) as MCQ Option D", () => {
+              AnswerService.answersByQuestionUid = {
+                "ec:2014:q34-s3": {
+                  answer_uid: "ec:2014:q34-s3",
+                  type: "MCQ",
+                  answer: "D",
+                  tolerance: null,
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "ec:2014:q34-s3",
+                title: "GATE EC 2014 | Set 3 | Question: 34",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "D",
+              });
+            });
+
+            test("resolves go:523093 (GATE CSE 2026 Set 2 Q53) as NAT 0.5 with tolerance", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:523093": {
+                  answer_uid: "manual:go:523093",
+                  type: "NAT",
+                  answer: 0.5,
+                  tolerance: { abs: 0.01 },
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:523093",
+                title: "GATE CSE 2026 Set 2 | Question: 53",
+              });
+              expect(answer).toMatchObject({
+                type: "NAT",
+                answer: 0.5,
+                tolerance: { abs: 0.01 },
+              });
+            });
+          });
         });
       });
     });

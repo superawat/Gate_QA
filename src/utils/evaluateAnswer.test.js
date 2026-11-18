@@ -3969,6 +3969,75 @@ describe("evaluateAnswer", () => {
           expect(evaluateAnswer(record, "20")).toEqual({ status: "evaluated", correct: false });
         });
       });
+
+      describe("DEC-289: 18 Nov 2026 Question Audit & Data Integrity Resolutions", () => {
+        test("evaluates go:460063 (GATE CSE 2025 Set 1 Q17) as MSQ Options A, B, C (partial data path)", () => {
+          const record = {
+            type: "MSQ",
+            answer: ["A", "B", "C"],
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, ["A", "B", "C"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["C", "A", "B"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["a", "b", "c"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["A", "B"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["A", "B", "C", "D"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["D"])).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates ec:2019:q8 (GATE EC 2019 Q8) as MCQ Option A (equilibrium band diagram)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:426512 (GATE ME 2024 GA Q4) as MCQ Option A (ratio px + qy + rz = 0)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates ec:2014:q34-s3 (GATE EC 2014 Set 3 Q34) as MCQ Option D (built-in potential 0.86V & width 3.3e-5 cm)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "D",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "d")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:523093 (GATE CSE 2026 Set 2 Q53) as NAT 0.5 (conditional probability P(E1|E2))", () => {
+          const record = {
+            type: "NAT",
+            answer: 0.5,
+            tolerance: { abs: 0.01 },
+          };
+          expect(evaluateAnswer(record, "0.5")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, 0.5)).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "0.50")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "0.25")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "0.75")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, 1)).toEqual({ status: "evaluated", correct: false });
+        });
+      });
     });
   });
 });
