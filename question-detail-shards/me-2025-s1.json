@@ -2780,8 +2780,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
+        "concept": "General Aptitude - Spatial Aptitude (2D Rigid Transformations: Reflection & Rotation)",
+        "markdown": "### 1. Conceptual Framework & Transformation Sequence\nWe analyze the sequential geometric transformations applied to the planar figure:\n1. **Reflection across the Horizontal Dashed Line**: A mirror reflection across a horizontal axis ($y = y_0$) inverts vertical coordinates while preserving horizontal ($x$) coordinates:\n   $$(x, y) \\xrightarrow{\\text{horizontal reflection}} (x, -y)$$\n   Any feature pointing vertically upward becomes downward-pointing, and vice versa.\n2. **Clockwise Rotation by $90^\\circ$**: A $90^\\circ$ clockwise rotation about an axis perpendicular to the plane maps coordinates as:\n   $$(x, y) \\xrightarrow{\\text{rotate } 90^\\circ \\text{ clockwise}} (y, -x)$$\n\n---\n\n### 2. Composite Transformation Analysis\nCombining the two operations in sequence:\n$$(x, y) \\xrightarrow{\\text{Reflect}} (x, -y) \\xrightarrow{\\text{Rotate } 90^\\circ} (-y, -x)$$\n\nLet us trace specific directional features of the initial figure:\n- **Upward-pointing features ($+y$ direction)**: Under horizontal reflection, they flip to point downward ($-y$). Rotating $90^\\circ$ clockwise turns a downward-pointing vector to point **leftward** ($-x$).\n- **Rightward-pointing features ($+x$ direction)**: Under horizontal reflection, they continue to point rightward ($+x$). Rotating $90^\\circ$ clockwise turns a rightward-pointing vector to point **downward** ($-y$).\n\n---\n\n### 3. Option Evaluation\n- **Option A**: Shows an incorrect vertical inversion without the proper $90^\\circ$ rotation.\n- **Option B**: Correctly portrays the resultant figure where the inverted vertical components extend to the left and rightward components extend downward.\n- **Options C & D**: Fail to preserve the proper chirality produced by a single reflection followed by planar rotation.\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "me:2025:ga:q9": {

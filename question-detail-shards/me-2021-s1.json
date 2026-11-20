@@ -2735,8 +2735,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
+        "concept": "General Aptitude - Spatial Aptitude (2D Geometry: Complementary Puzzle Pieces)",
+        "markdown": "### 1. Principle of Jigsaw Puzzle Complementarity\nThe problem requires finding the missing piece $P_2$ such that when combined with the given piece $P_1$, the union forms a solid rectangle $R$:\n$$P_1 \\cup P_2 = R, \\quad P_1 \\cap P_2 = \\emptyset$$\n\nThe rules permit moving, rotating ($90^\\circ, 180^\\circ, 270^\\circ$), or flipping (reflecting) the candidate piece.\n\n---\n\n### 2. Boundary Feature & Step Profile Analysis\nAnalyzing the mating boundary of the given piece $P_1$:\n- $P_1$ has a flat vertical right edge and an irregular stepped left edge.\n- The stepped left profile consists of specific horizontal tab projections and rectangular slot indentations.\n- For $P_2$ to fit flush against $P_1$ to form an outer rectangle:\n  - Every outward projection (tab) of $P_1$ requires a complementary inward notch (slot) of identical width and depth in $P_2$.\n  - Every inward slot of $P_1$ requires a matching outward projection from $P_2$.\n\n---\n\n### 3. Option Verification\n- **Option A**: When rotated by $180^\\circ$ and placed adjacent to $P_1$, the profile of tabs and slots matches the stepped boundary of $P_1$ identically, creating an unbroken rectangular perimeter without overlaps or empty voids.\n- **Options B, C, and D**: Display incorrect slot widths, mismatched step numbers, or asymmetric cutouts that prevent the formation of a flush outer rectangle.\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "me:2021:ga:q8": {

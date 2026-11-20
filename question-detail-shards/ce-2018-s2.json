@@ -2474,8 +2474,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Confusable Verbs: Intransitive 'Shone' vs Passive 'Shown'",
+        "markdown": "### 1. The Two Verbs\n- **shine** (intransitive, of a face, light, star): past tense **shone** — \"her face shone\".\n- **show** (transitive): past participle **shown** — \"the answer was shown to him\".\n\n\"Shone\" and \"shown\" are easily confused because they differ by one letter, but they belong to different verbs and different grammatical roles.\n\n### 2. First Blank: intransitive, subject is \"his face\"\n\"His face ______ with joy.\"\n\nThe face is the **doer** of the action, and there is no object: the verb is intransitive. That requires the past tense of <em>shine</em>:\n$$\\text{His face } \\textbf{shone} \\text{ with joy.}$$\n\n\"Shown\" is a passive participle and cannot take \"with joy\" as a complement here (\"his face was shown with joy\" would be nonsense).\n\n### 3. Second Blank: passive, \"was ___ to him\"\n\"...when the solution of the puzzle was ______ to him.\"\n\nThe structure is **be + past participle + to + person**, the passive of \"show the solution to him\". The past participle of <em>show</em> is **shown**:\n$$\\text{the solution was } \\textbf{shown} \\text{ to him}$$\n\n\"Shone to him\" is impossible: <em>shine</em> does not take an indirect object.\n\n### 4. Option Evaluation\n- **Option A (shone, shown):** both correct. **Correct.**\n- **Option B (shone, shone):** first blank right, but \"was shone to him\" is ungrammatical.\n- **Option C (shown, shone):** \"his face shown with joy\" is wrong (needs \"was shown\"), and \"was shone to him\" is wrong.\n- **Option D (shown, shown):** first blank wrong.\n\n### 5. Completed Sentence\n\"His face **shone** with joy when the solution of the puzzle was **shown** to him.\"\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "ce:2018:ga:q2-s2": {
@@ -2518,8 +2519,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Sentence Completion: Concessive 'Although' and Contrast Logic",
+        "markdown": "### 1. Structure of the Sentence\n\"**Although** it does contain some pioneering ideas, one would **hardly** characterize the work as ______.\"\n\nTwo concessive signals work together:\n\n- \"Although it does contain some pioneering ideas\" — a **concession**: the work does have original elements.\n- \"one would **hardly** characterize the work as ___\" — a **denial**: despite that concession, the overall label does not apply.\n\nSo the blank must be a word that <em>would</em> be justified by \"pioneering ideas\" but is being withheld. The blank has to mean roughly \"pioneering/original\".\n\n### 2. Option Evaluation\n- **Option A (innovative):** the direct adjectival counterpart of \"pioneering ideas\". The sentence then reads: although it has pioneering ideas, one would hardly call it innovative — a coherent, pointed judgement. **Correct.**\n- **Option B (simple):** \"pioneering ideas\" gives no reason to call the work simple, so \"although\" has nothing to concede; the contrast collapses.\n- **Option C (dull):** \"although it has pioneering ideas, one would hardly call it dull\" is self-defeating — pioneering ideas argue <em>against</em> dullness, so \"hardly\" would be wrong.\n- **Option D (boring):** same failure as C; the concession would support \"not boring\", making \"hardly\" contradictory.\n\n### 3. Why A and Not C/D\nThe concessive \"although\" must concede something that <em>points toward</em> the withheld label. \"Pioneering ideas\" points toward **innovative**, and only that option makes the \"hardly\" denial meaningful.\n\n### 4. Completed Sentence\n\"Although it does contain some pioneering ideas, one would hardly characterize the work as **innovative**.\"\n\nTherefore, the correct answer is **Option A**.",
+        "images": []
       }
     },
     "ce:2018:ga:q3-s2": {
@@ -2562,8 +2564,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Algebraic Manipulations & Exponent Properties",
+        "markdown": "### 1. Algebraic Decomposition of Given Equations\nWe are given two summation identities with repeated addition of variables:\n$$\\underbrace{a+a+a+ \\dots +a}_{n\\text{ times}} = a^2b$$\n$$\\underbrace{b+b+b+ \\dots +b}_{m\\text{ times}} = ab^2$$\nwhere $a, b, n, m$ are natural numbers ($a, b, n, m \\in \\mathbb{N}$). Repeated addition of a term $k$ times is simply multiplication:\n\n1. From the first equation:\n   $$n \\cdot a = a^2 b$$\n   Dividing both sides by $a$ (since $a \\ge 1$):\n   $$n = ab$$\n\n2. From the second equation:\n   $$m \\cdot b = a b^2$$\n   Dividing both sides by $b$ (since $b \\ge 1$):\n   $$m = ab$$\n\nThus, both $n$ and $m$ are identical in value: $n = m = ab$.\n\n---\n\n### 2. Evaluating the Target Expression\nWe need to determine the value of the product:\n$$P = \\Bigg( \\underbrace{m+m+m+ \\dots +m}_{n\\text{ times}} \\Bigg) \\Bigg( \\underbrace{n+n+n+ \\dots +n}_{m\\text{ times}} \\Bigg)$$\n\nExpressing each repeated summation as a product:\n$$\\underbrace{m+m+ \\dots +m}_{n\\text{ times}} = n \\cdot m$$\n$$\\underbrace{n+n+ \\dots +n}_{m\\text{ times}} = m \\cdot n$$\n\nMultiplying both factors together:\n$$P = (n \\cdot m) \\cdot (m \\cdot n) = (nm)^2$$\n\nSubstitute $n = ab$ and $m = ab$:\n$$nm = (ab)(ab) = a^2 b^2$$\n$$P = (a^2 b^2)^2 = a^4 b^4$$\n\n---\n\n### 3. Option Evaluation\n* **Option A ($2a^2b^2$)**: Incorrectly adds the terms instead of multiplying ($nm + mn$).\n* **Option B ($a^4b^4$)**: **Correct**; matches $(nm)^2 = (a^2b^2)^2 = a^4b^4$.\n* **Option C ($ab(a+b)$)**: Dimensionally incorrect.\n* **Option D ($a^2+b^2$)**: Incorrect algebraic form.\n\nTherefore, the correct answer is **Option B ($a^{4}b^{4}$)**.",
+        "images": []
       }
     },
     "ce:2018:ga:q4-s2": {
@@ -2606,8 +2609,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Combinatorics (Combinations of Unordered Subsets)",
+        "markdown": "### 1. Mathematical Formulation\nWe are required to form a committee of $r = 3$ members selected from a pool of $n = 9$ distinct people.\n\nIn a committee, the order in which members are chosen does not matter (selecting Alice, Bob, and Charlie is identical to selecting Charlie, Alice, and Bob). Therefore, the number of distinct committees corresponds to the number of combinations of $n$ distinct objects taken $r$ at a time: $\\binom{n}{r}$.\n\n---\n\n### 2. Step-by-Step Calculation\nApplying the standard combination formula:\n$$\\binom{n}{r} = \\frac{n!}{r!(n - r)!}$$\n\nFor $n = 9$ and $r = 3$:\n$$\\binom{9}{3} = \\frac{9!}{3!(9 - 3)!} = \\frac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1}$$\n$$\\binom{9}{3} = \\frac{504}{6} = 84$$\n\n---\n\n### 3. Option Evaluation\n* **Option A ($27$)**: Incorrect; represents $9 \\times 3$.\n* **Option B ($72$)**: Incorrect; represents $9 \\times 8$.\n* **Option C ($81$)**: Incorrect; represents $9^2$.\n* **Option D ($84$)**: **Correct**; evaluates $\\binom{9}{3} = 84$.\n\nTherefore, the correct answer is **Option D (84)**.",
+        "images": []
       }
     },
     "ce:2018:ga:q5-s2": {
@@ -2650,8 +2654,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Number Theory & Logarithmic Properties",
+        "markdown": "### 1. Logarithmic Domain and Simplification\nWe are given the logarithmic equation:\n$$\\log a + \\log b + \\log c = 0$$\nwhere $a, b, c$ are specified as non-negative integers ($a, b, c \\in \\{0, 1, 2, 3, \\dots\\}$).\n\nBecause the logarithm function $\\log(x)$ is defined strictly for positive real arguments ($x > 0$), none of $a, b, c$ can be zero ($a, b, c \\neq 0$). Thus, $a, b, c$ must be strictly positive integers ($a, b, c \\in \\mathbb{Z}^+$).\n\nApplying the product rule of logarithms:\n$$\\log a + \\log b + \\log c = \\log(a \\cdot b \\cdot c) = 0$$\n\nExponentiating both sides (for any valid logarithmic base $b > 0, b \\neq 1$):\n$$a \\cdot b \\cdot c = 1$$\n\n---\n\n### 2. Integer Factorization of 1\nSince $a, b, c$ are positive integers ($a, b, c \\ge 1$):\n* If any variable were greater than $1$, the product would exceed $1$.\n* The only positive integer factors of $1$ are $1$ itself.\n\nTherefore, the unique solution in positive integers is:\n$$a = 1, \\quad b = 1, \\quad c = 1$$\n\n---\n\n### 3. Sum Calculation\n$$a + b + c = 1 + 1 + 1 = 3$$\n\n---\n\n### 4. Option Evaluation\n* **Option A ($3$)**: **Correct**; $1 + 1 + 1 = 3$.\n* **Option B ($1$)**: Fails to sum all three terms.\n* **Option C ($0$)**: Disregards the domain constraint that $\\log(0)$ is undefined.\n* **Option D ($-1$)**: Negative sum for non-negative integers is impossible.\n\nTherefore, the correct answer is **Option A (3)**.",
+        "images": []
       }
     },
     "ce:2018:ga:q6-s2": {
@@ -2694,8 +2699,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Ratio and Proportionality (Quadratic Loss Function)",
+        "markdown": "### 1. Formulating the Relationship\nIn quality control and industrial manufacturing (Taguchi Loss Function), the financial loss $L$ is directly proportional to the square of the deviation $d$ from a nominal target value:\n$$L \\propto d^2 \\implies L = k \\cdot d^2$$\nwhere $k$ is a positive constant of proportionality.\n\n---\n\n### 2. Calculating the Proportionality Constant $k$\nWe are given that when the deviation is $d_1 = 7\\text{ units}$, the loss is $L_1 = \\text{Rs. } 4900$:\n$$4900 = k \\cdot (7)^2$$\n$$4900 = 49k \\implies k = \\frac{4900}{49} = 100\\text{ Rs/unit}^2$$\n\n---\n\n### 3. Calculating the Loss for Deviation of 4 Units\nFor a deviation of $d_2 = 4\\text{ units}$:\n$$L_2 = k \\cdot (d_2)^2 = 100 \\times (4)^2 = 100 \\times 16 = 1600\\text{ Rupees}$$\n\nAlternatively, using direct proportions:\n$$\\frac{L_2}{L_1} = \\left(\\frac{d_2}{d_1}\\right)^2 = \\left(\\frac{4}{7}\\right)^2 = \\frac{16}{49}$$\n$$L_2 = 4900 \\times \\frac{16}{49} = 100 \\times 16 = 1600\\text{ Rupees}$$\n\n---\n\n### 4. Option Evaluation\n* **Option A ($400$)**: Calculation error.\n* **Option B ($1200$)**: Incorrect scaling.\n* **Option C ($1600$)**: **Correct**; matches $100 \\times 4^2 = 1600$.\n* **Option D ($2800$)**: Assumes linear proportionality ($4900 \\times 4/7 = 2800$), ignoring the square dependence.\n\nTherefore, the correct answer is **Option C (1600)**.",
+        "images": []
       }
     },
     "ce:2018:ga:q7-s2": {
@@ -2738,8 +2744,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Clocks & Rates of Gain",
+        "markdown": "### 1. Clock Rate of Gain and Time Ratio\nA faulty wall clock gains $15\\text{ minutes}$ every $24\\text{ hours}$ ($1\\text{ day}$). \n* In $24\\text{ hours}$ of true time, the faulty clock indicates:\n  $$24\\text{ hours} + 15\\text{ minutes} = 24 + \\frac{15}{60} = 24.25\\text{ hours} = \\frac{97}{4}\\text{ hours}$$\n* Therefore, the ratio of True Time to Faulty Clock Time is:\n  $$\\frac{\\text{True Time}}{\\text{Faulty Time}} = \\frac{24}{\\frac{97}{4}} = \\frac{96}{97}$$\n\n---\n\n### 2. Elapsed Faulty Time\nThe clock is synchronized to the correct time at **9:00 AM on 11th July**.\nWe need to find the correct time when the clock reads **2:00 PM on 15th July**:\n* From 9:00 AM on 11th July to 9:00 AM on 15th July: $4\\text{ full days} = 4 \\times 24 = 96\\text{ hours}$.\n* From 9:00 AM on 15th July to 2:00 PM on 15th July: $5\\text{ hours}$.\n* Total elapsed time on faulty clock:\n  $$T_{\\text{faulty}} = 96 + 5 = 101\\text{ hours}$$\n\n---\n\n### 3. Calculating the True Elapsed Time\n$$T_{\\text{true}} = 101 \\times \\frac{96}{97} = \\frac{9696}{97}\\text{ hours}$$\n\nPerforming the division:\n$$\\frac{9696}{97} = 99 + \\frac{93}{97}\\text{ hours}$$\n\nConverting the fractional hour to minutes:\n$$\\frac{93}{97} \\times 60 = \\frac{5580}{97} \\approx 57.5258\\text{ minutes} \\approx 58\\text{ minutes}$$\n\nThus, the true elapsed time is approximately **$99\\text{ hours and } 58\\text{ minutes}$**.\n\n---\n\n### 4. Determining the Actual Clock Time\n* Starting from 9:00 AM on 11th July:\n  - Adding $96\\text{ hours}$ (4 days) reaches **9:00 AM on 15th July**.\n  - Remaining time to add: $99\\text{ hours } 58\\text{ min} - 96\\text{ hours} = 3\\text{ hours and } 58\\text{ minutes}$.\n  - Adding $3\\text{ hours } 58\\text{ minutes}$ to 9:00 AM gives:\n    $$9:00\\text{ AM} + 3\\text{ h } 58\\text{ min} = \\mathbf{12:58\\text{ PM}}$$\n\n---\n\n### 5. Option Evaluation\n* **Option A ($12:45\\text{ PM}$)**: Over-corrects for gain.\n* **Option B ($12:58\\text{ PM}$)**: **Correct**; true elapsed time is $99\\text{ h } 58\\text{ min}$, yielding 12:58 PM.\n* **Option C ($1:00\\text{ PM}$)**: Approximation error.\n* **Option D ($2:00\\text{ PM}$)**: Uncorrected faulty clock reading.\n\nTherefore, the correct answer is **Option B (12:58 PM)**.",
+        "images": []
       }
     },
     "ce:2018:ga:q8-s2": {
@@ -2782,8 +2789,11 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Data Interpretation & Water Volume Harvesting",
+        "markdown": "### 1. Extracting Data from Problem and Graph\n* Rooftop catchment area: $A = 50\\text{ m}^2$ (obstruction-free).\n* Rainwater harvesting collection efficiency: $\\eta = 50\\% = 0.50$.\n* From the cumulative rainfall graph over the $24$-hour period:\n  - At $t = 24\\text{ hours}$, the cumulative rainfall curve reaches and flattens at a total depth of:\n    $$P = 300\\text{ mm} = 0.30\\text{ m}$$\n\n---\n\n### 2. Volume of Rainwater Harvested\n1. Total volume of rainwater that fell on the rooftop area:\n   $$V_{\\text{total}} = A \\times P = 50\\text{ m}^2 \\times 0.30\\text{ m} = 15.0\\text{ m}^3$$\n\n2. Effective volume of water collected into the storage tank (50% efficiency):\n   $$V_{\\text{tank}} = \\eta \\times V_{\\text{total}} = 0.50 \\times 15.0\\text{ m}^3 = 7.5\\text{ m}^3$$\n\n3. Convert cubic meters to liters ($1\\text{ m}^3 = 1000\\text{ liters}$):\n   $$V_{\\text{liters}} = 7.5\\text{ m}^3 \\times 1000\\text{ liters/m}^3 = 7500\\text{ liters}$$\n\n---\n\n### 3. Option Evaluation\n* **Option A ($25000$)**: Uses full annual average rainfall ($1000\\text{ mm} \\times 50\\text{ m}^2 \\times 0.50 = 25000\\text{ L}$), confusing the annual average with the specific single-day event.\n* **Option B ($18750$)**: Computation error.\n* **Option C ($7500$)**: **Correct**; $50\\text{ m}^2 \\times 0.30\\text{ m} \\times 0.50 \\times 1000 = 7500\\text{ liters}$.\n* **Option D ($3.125$)**: Unit conversion error.\n\nTherefore, the correct answer is **Option C (7500)**.",
+        "images": [
+          "/question-images/ce/2018/ce-2018-9673e43522.webp"
+        ]
       }
     },
     "ce:2018:ga:q9-s2": {
@@ -2826,8 +2836,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Logarithms & Cyclic Algebraic Identities",
+        "markdown": "### 1. Formulating Logarithmic Relations\nWe are given the system of equal ratios:\n$$\\frac{\\log P}{y-z} = \\frac{\\log Q}{z-x} = \\frac{\\log R}{x-y} = 10$$\nfor pairwise distinct variables $x, y, z$.\n\nExpressing each logarithm in terms of the cyclic denominators:\n$$\\log P = 10(y - z)$$\n$$\\log Q = 10(z - x)$$\n$$\\log R = 10(x - y)$$\n\n---\n\n### 2. Logarithm of the Product $PQR$\nUsing the fundamental property of logarithms that the logarithm of a product equals the sum of logarithms:\n$$\\log(PQR) = \\log P + \\log Q + \\log R$$\n\nSubstitute the linear expressions:\n$$\\log(PQR) = 10(y - z) + 10(z - x) + 10(x - y)$$\n$$\\log(PQR) = 10\\big[ (y - z) + (z - x) + (x - y) \\big]$$\n\nSumming the terms inside the bracket:\n$$(y - z) + (z - x) + (x - y) = y - y + z - z + x - x = 0$$\n\nTherefore:\n$$\\log(PQR) = 10 \\times 0 = 0$$\n\n---\n\n### 3. Solving for the Product $PQR$\nTaking the antilogarithm on both sides (for any consistent base $b > 0, b \\neq 1$):\n$$PQR = b^0 = 1$$\n\n---\n\n### 4. Option Evaluation\n* **Option A ($0$)**: Incorrect.\n* **Option B ($1$)**: **Correct**; $\\log(PQR) = 0 \\implies PQR = 1$.\n* **Option C ($xyz$)**: Incorrect.\n* **Option D ($10^{xyz}$)**: Incorrect.\n\nTherefore, the correct answer is **Option B (1)**.",
+        "images": []
       }
     },
     "ce:2018:ga:q10-s2": {
@@ -2870,8 +2881,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Discrete Puzzle & System of Diophantine Equations",
+        "markdown": "### 1. Setup and Global Sum Identity\nThe nine letters $\\{A, B, C, D, E, F, G, H, K\\}$ represent a permutation of the nine distinct integers from $1$ to $9$:\n$$\\{A, B, C, D, E, F, G, H, K\\} = \\{1, 2, 3, 4, 5, 6, 7, 8, 9\\}$$\n\nThe sum of all nine integers is:\n$$\\sum_{i=1}^9 i = \\frac{9 \\times 10}{2} = 45$$\n\nWe are given four three-term sums along the overlapping linear segments:\n$$S_1: A + B + C = 13$$\n$$S_2: C + D + E = 13$$\n$$S_3: E + F + G = 13$$\n$$S_4: G + H + K = 13$$\n\n---\n\n### 2. Identifying the Intersecting Nodes ($C, E, G$)\nSumming all four equations:\n$$(A + B + C) + (C + D + E) + (E + F + G) + (G + H + K) = 13 \\times 4 = 52$$\n\nNotice that the junction variables $C, E, G$ appear twice in this sum, while all other letters appear exactly once:\n$$(A + B + C + D + E + F + G + H + K) + (C + E + G) = 52$$\n$$45 + (C + E + G) = 52$$\n$$C + E + G = 52 - 45 = 7$$\n\nSince $C, E, G$ must be distinct positive integers from $\\{1, 2, \\dots, 9\\}$, the only combination of three distinct positive integers whose sum equals $7$ is:\n$$\\{C, E, G\\} = \\{1, 2, 4\\}$$\n\n---\n\n### 3. Uniquely Determining the Central Variable $E$\nNow add the two inner equations containing $E$ ($S_2$ and $S_3$):\n$$(C + D + E) + (E + F + G) = 13 + 13 = 26$$\n$$(C + E + G) + E + (D + F) = 26$$\n\nSubstitute $C + E + G = 7$:\n$$7 + E + (D + F) = 26 \\implies E + (D + F) = 19$$\n\nThe variables $D$ and $F$ must be distinct integers selected from the remaining available numbers $\\{3, 5, 6, 7, 8, 9\\}$.\n* The maximum possible sum of two distinct remaining numbers is:\n  $$\\max(D + F) = 8 + 9 = 17$$\n* Therefore:\n  $$E = 19 - (D + F) \\ge 19 - 17 = 2$$\n  This completely eliminates $E = 1$ (which would require $D + F = 18$, impossible for distinct integers $\\le 9$).\n\n* If $E = 2$:\n  Then $D + F = 19 - 2 = 17 \\implies \\{D, F\\} = \\{8, 9\\}$.\n  Since $E = 2$, $\\{C, G\\} = \\{1, 4\\}$.\n  - If $C = 1$, then $C + D + E = 1 + D + 2 = 13 \\implies D = 10$, which violates $D \\le 9$.\n  - If $G = 1$, then $E + F + G = 2 + F + 1 = 13 \\implies F = 10$, which also violates $F \\le 9$.\n  Thus, $E \\neq 2$.\n\n* Therefore, $E$ must be **$4$**.\n\n---\n\n### 4. Verification of the Solution ($E = 4$)\nWith $E = 4$, $\\{C, G\\} = \\{1, 2\\}$:\n* Set $C = 1$ and $G = 2$:\n  - $C + D + E = 13 \\implies 1 + D + 4 = 13 \\implies D = 8$.\n  - $E + F + G = 13 \\implies 4 + F + 2 = 13 \\implies F = 7$.\n* The remaining unused numbers from $\\{1, \\dots, 9\\}$ are $\\{3, 5, 6, 9\\}$:\n  - $A + B + C = 13 \\implies A + B + 1 = 13 \\implies A + B = 12 \\implies \\{A, B\\} = \\{3, 9\\}$.\n  - $G + H + K = 13 \\implies 2 + H + K = 13 \\implies H + K = 11 \\implies \\{H, K\\} = \\{5, 6\\}$.\nAll numbers from $1$ to $9$ are placed uniquely and all conditions hold.\n\nTherefore, the correct answer is **Option B (4)**.",
+        "images": []
       }
     }
   }
