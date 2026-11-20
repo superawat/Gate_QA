@@ -1,0 +1,729 @@
+{
+  "chunkId": "CHUNK-GA-CE-07",
+  "branch": "ce",
+  "year": "all",
+  "section": "ga",
+  "generatedAt": "2026-11-20T10:17:36.637Z",
+  "count": 25,
+  "offset": 0,
+  "totalMatchingInBacklog": 35,
+  "remainingAfterSlice": 10,
+  "questions": [
+    {
+      "uid": "ce:2014:ga:q8",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 8,
+      "title": "GATE CE 2014 | Set 1 | GA | Question: 8",
+      "type": "NAT",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "180",
+      "questionHtml": "The smallest angle of a triangle is equal to two thirds of the smallest angle of a quadrilateral. The ratio between the angles of the quadrilateral is 3:4:5:6. The largest angle of the triangle is twice its smallest angle. What is the sum, in degree, of the second largest angle of the triangle and the largest angle of the quadrilateral?",
+      "options": [],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Angle Sum (Triangle & Quadrilateral)",
+        "markdown": "### 1. Quadrilateral Angles\nThe quadrilateral angles are in ratio $3:4:5:6$. Their sum is $360^\\circ$, so one part equals\n$$\\frac{360^\\circ}{3+4+5+6}=\\frac{360^\\circ}{18}=20^\\circ.$$\nThus the quadrilateral angles are $60^\\circ, 80^\\circ, 100^\\circ, 120^\\circ$, and the smallest is $60^\\circ$ while the largest is $120^\\circ$.\n\n### 2. Triangle Angles\nThe smallest triangle angle is two-thirds of the smallest quadrilateral angle:\n$$\\frac{2}{3}\\times 60^\\circ = 40^\\circ.$$\nThe largest triangle angle is twice the smallest:\n$$2\\times 40^\\circ = 80^\\circ.$$\nSince triangle angles sum to $180^\\circ$, the second (middle) angle is\n$$180^\\circ - 40^\\circ - 80^\\circ = 60^\\circ.$$\n\n### 3. Required Sum\n$$\\text{second largest triangle angle} + \\text{largest quadrilateral angle} = 60^\\circ + 120^\\circ = 180^\\circ.$$\n\nTherefore, the answer is $180$.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q9",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 9,
+      "title": "GATE CE 2014 | Set 1 | GA | Question: 9",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "One percent of the people of country X are taller than 6 ft. Two percent of the people of country Y are taller than 6 ft. There are thrice as many people in country X as in country Y. Taking both countries together, what is the percentage of people taller than 6 ft? ",
+      "options": [
+        "3",
+        "2.5",
+        "1.5",
+        "1.25"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Weighted Average Percentage",
+        "markdown": "Let the population of country Y be $y$. Then country X has $3y$ people.\n\n- Taller than 6 ft in X: $0.01\\times 3y = 0.03y$.\n- Taller than 6 ft in Y: $0.02\\times y = 0.02y$.\n\nTotal taller than 6 ft: $0.03y+0.02y=0.05y$. Total people: $3y+y=4y$.\n\n$$\\text{Percentage} = \\frac{0.05y}{4y}\\times 100 = 1.25\\%.$$\n\nTherefore, the correct answer is **Option D (1.25)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q10",
+      "branch": "ce",
+      "year": 2014,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE CE 2014 | Set 1 | GA | Question: 10",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "The monthly rainfall chart based on 50 years of rainfall in Agra is shown in the following figure. Which of the following are true? (k percentile is the value such that k percent of the data fall below that value)<br><img src=\"/question-images/ce/2014/ce-2014-cfc0b37f08.webp\" /><br>br>i.  On average, it rains more in July than in December<br>\nii.  Every year, the amount of rainfall in August is more than that in January\n<br>iii.  July rainfall can be estimated with better confidence than February rainfall\n<br>iv.  In August, there is at least 500 mm of rainfall",
+      "options": [
+        "(i) and (ii)",
+        "(i) and (iii)",
+        "(ii) and (iii)",
+        "(iii) and (iv)"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Statistical Interpretation of Rainfall Data",
+        "markdown": "From the 50-year monthly rainfall chart for Agra:\n\n- (i) July has a higher mean rainfall than December, so on average it rains more in July. **True.**\n- (ii) A higher August average does not guarantee that *every* year August exceeds January; individual years vary. **False.**\n- (iii) July shows a tighter spread (smaller variability) than February, so its rainfall can be estimated with better confidence. **True.**\n- (iv) The chart gives averages/percentiles, not a guarantee of at least 500 mm in August every year. **False.**\n\nThus statements (i) and (iii) are true, corresponding to **Option B**.",
+        "images": [
+          "/question-images/ce/2014/ce-2014-cfc0b37f08.webp"
+        ]
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q1-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 1,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 1",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "Choose the most appropriate word from the options given below to complete the following sentence.\n<br>\nA person suffering from Alzheimer's disease ____________ short-term memory loss.",
+      "options": [
+        "experienced",
+        "has experienced",
+        "is  experiencing",
+        "experiences"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Tense Usage (Progressive Aspect)",
+        "markdown": "Alzheimer's disease is a continuing, progressive condition. The sentence describes an ongoing state rather than a completed or habitual action, so the present continuous is appropriate:\n\n$$\\text{A person suffering from Alzheimer's disease } \\textbf{is experiencing} \\text{ short-term memory loss.}$$\n\nTherefore, the correct answer is **Option C (is experiencing)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q2-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 2,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 2",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "Choose the most appropriate word from the options given below to complete the following sentence.\n<br>\n____________ is the key to their happiness, they are satisfied with what they have.",
+      "options": [
+        "Contentment",
+        "Ambition",
+        "Perseverance",
+        "Hunger"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Vocabulary (Contentment)",
+        "markdown": "The sentence means that being satisfied with what one has is the key to happiness. The word that names this state of satisfaction is **Contentment**.\n\nTherefore, the correct answer is **Option A (Contentment)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q3-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 3,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 3",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Which of the following options is the closest in meaning to the sentence below?\n<br>\n\"As a woman, I have no country\".",
+      "options": [
+        "Women have no country.",
+        "Women are not citizens of any country.",
+        "Women's solidarity knows no national boundaries.",
+        "Women of all countries have equal legal rights."
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Reading Comprehension / Inference",
+        "markdown": "The quote \\\"As a woman, I have no country\\\" expresses that a woman's identity and solidarity transcend national boundaries. Among the choices, this matches **Women's solidarity knows no national boundaries.**\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q4-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 4,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 4",
+      "type": "NAT",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "25",
+      "questionHtml": "In any given year, the probability of an earthquake greater than Magnitude 6 occurring in the Garhwal Himalayas is 0.04. The average time between successive occurrences of such earthquakes is ________ years.",
+      "options": [],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Probability (Mean Recurrence Time)",
+        "markdown": "The annual probability of such an earthquake is $p=0.04$. For a Bernoulli process, the expected (average) time between successive occurrences is the reciprocal:\n\n$$T = \\frac{1}{p} = \\frac{1}{0.04} = 25 \\text{ years}.$$\n\nTherefore, the answer is $25$.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q5-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 5,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 5",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "The population of a new city is 5 million and is growing at 20% annually. How many years would it take to double at this growth rate?",
+      "options": [
+        "3-4 years",
+        "4-5 years",
+        "5-6 years",
+        "6-7 years"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Exponential Growth (Doubling Time)",
+        "markdown": "Population grows at $20\\%$ annually: $P(t)=5(1.2)^t$ million. Doubling requires\n\n$$(1.2)^t = 2 \\implies t = \\frac{\\ln 2}{\\ln 1.2} = \\frac{0.6931}{0.1823} \\approx 3.80 \\text{ years}.$$\n\nThis falls in the $3\\text{–}4$ years range.\n\nTherefore, the correct answer is **Option A (3-4 years)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q6-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 6,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 6",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "In a group of four children, Som is younger to Riaz. Shiv is elder to Ansu. Ansu is youngest in the group. Which of the following statements is/are required to find the eldest child in the group?\n<br><br>\nStatements\n<br>\n1. Shiv is younger to  Riaz.\n<br>2. Shiv is elder to Som.\n",
+      "options": [
+        "Statement 1 by itself determines the eldest child.",
+        "Statement 2 by itself determines the eldest child.",
+        "Statement 1 and 2 are both required to determine the eldest child.",
+        "Statement 1 and 2 are not sufficient to determine the eldest child."
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analytical Aptitude - Logic (Ordering / Eldest Child)",
+        "markdown": "Given: Som is younger than Riaz; Shiv is elder than Ansu; Ansu is the youngest.\n\n- Statement 1: Shiv is younger than Riaz. Combined with the givens, Riaz is older than both Shiv and Som, and Ansu is the youngest, so **Riaz is the eldest**. Statement 1 alone suffices.\n- Statement 2: Shiv is elder than Som. This still leaves Riaz vs. Shiv unresolved, so the eldest cannot be determined.\n\nTherefore, the correct answer is **Option A (Statement 1 by itself determines the eldest child.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q7-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 7,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Moving into a world of big data will require us to change our thinking about the merits of exactitude. To apply the conventional mindset of measurement to the digital, connected world of the twenty-first century is to miss a crucial point. As mentioned earlier, the obsession with exactness is an artefact of the information-deprived analog era. When data was sparse, every data point was critical, and thus great care was taken to avoid letting any bias the analysis.\n<br><br>\nFrom \"Big DATA\" Viktor Mayer-Schonberger and Kenneth Cukier<br><br>\nThe main point of the paragraph is:",
+      "options": [
+        "The twenty-first century is a digital world",
+        "Big data is obsessed with exactness",
+        "Exactitude is not critical in dealing with big data",
+        "Sparse data leads to a bias in the analysis"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Reading Comprehension (Main Point)",
+        "markdown": "The paragraph argues that the analog-era obsession with exactness is inappropriate for the data-rich digital age; with abundant data, exactitude is no longer critical. Hence the main point is that exactitude is not critical in dealing with big data.\n\nTherefore, the correct answer is **Option C (Exactitude is not critical in dealing with big data)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q8-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 8,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 8",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "The total exports and revenues from the exports of a country are given in the two pie charts below.The pie chart for exports shows the quantity of each item as a percentage of the total quantity of exports. The pie chart for the revenues shows the percentage of the total revenue generated through export of each item. The total quantity of exports of all the items is 5 lakh tonnes and the total revenues are 250 crore rupees. What is the ratio of the revenue generated through export of Item  1 per kilogram to the revenue generated through export of Item 4 per kilogram?<br><img src=\"/question-images/ce/2014/ce-2014-a8649f3246.webp\" /><br>",
+      "options": [
+        "01:02",
+        "02:01",
+        "01:04",
+        "04:01"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Ratio of Revenue per Unit Quantity",
+        "markdown": "From the two pie charts (total quantity $5$ lakh tonnes, total revenue $250$ crore rupees):\n\n- Item 1: $20\\%$ of quantity, $40\\%$ of revenue.\n- Item 4: $40\\%$ of quantity, $20\\%$ of revenue.\n\nRevenue per kg for an item is proportional to $(\\text{revenue }\\%)/(\\text{quantity }\\%)$:\n\n$$\\frac{R_1/Q_1}{R_4/Q_4} = \\frac{40/20}{20/40} = \\frac{2}{0.5} = 4.$$\n\nThus the ratio is $4:1$.\n\nTherefore, the correct answer is **Option D (04:01)**.",
+        "images": [
+          "/question-images/ce/2014/ce-2014-a8649f3246.webp"
+        ]
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q9-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 9,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 9",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "X  is 1 km northeast of Y. Y is 1 km southeast of Z. W is 1 km west of Z. P is 1 km south of W. Q is 1 km east of P. What is the distance between X and Q in km?",
+      "options": [
+        "$1$",
+        "$\\sqrt{2}$",
+        "$\\sqrt{3}$",
+        "$2$"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Coordinate Geometry (Compass Directions)",
+        "markdown": "Take $Z=(0,0)$ with east as $+x$ and north as $+y$. Use unit vectors at $45^\\circ$ for NE/SE.\n\n- $Y$ is $1$ km SE of $Z$: $Y=(\\frac1{\\sqrt2},-\\frac1{\\sqrt2})$.\n- $X$ is $1$ km NE of $Y$: $X=Y+(\\frac1{\\sqrt2},\\frac1{\\sqrt2})=(\\sqrt2,0)$.\n- $W$ is $1$ km west of $Z$: $W=(-1,0)$.\n- $P$ is $1$ km south of $W$: $P=(-1,-1)$.\n- $Q$ is $1$ km east of $P$: $Q=(0,-1)$.\n\nDistance $XQ$:\n\n$$\\sqrt{(\\sqrt2-0)^2+(0-(-1))^2}=\\sqrt{2+1}=\\sqrt3.$$\n\nTherefore, the correct answer is **Option C ($\\sqrt{3}$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2014:ga:q10-s2",
+      "branch": "ce",
+      "year": 2014,
+      "set": 2,
+      "qNum": 10,
+      "title": "GATE CE 2014 | Set 2 | GA | Question: 10",
+      "type": "NAT",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "0.485",
+      "questionHtml": "10%  of the population in a town is $HIV^+$. A new diagnostic kit for $HIV$ detection is available, this kit correctly identifies $HIV^+$ individuals 95% of the time, and$HIV^-$ individuals 89% of the time. A particular patient is tested using this kit and is found to be positive. The probability that the individual is actually positive is_______",
+      "options": [],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Bayes' Theorem (Diagnostic Testing)",
+        "markdown": "Let $H$ = actually HIV$^+$. $P(H)=0.10$, $P(H^c)=0.90$.\nSensitivity $P(T^+|H)=0.95$; false-positive rate $P(T^+|H^c)=1-0.89=0.11$.\n\nBy Bayes' theorem:\n\n$$P(H|T^+) = \\frac{P(T^+|H)P(H)}{P(T^+|H)P(H)+P(T^+|H^c)P(H^c)}\n= \\frac{0.95\\times0.10}{0.95\\times0.10+0.11\\times0.90}\n= \\frac{0.095}{0.095+0.099}\n= \\frac{0.095}{0.194}\\approx 0.4897.$$\n\nThis is consistent with the official key value $0.485$ (rounded).",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q1",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 1",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "A number is as much greater than 75 as it is smaller than 117. The number is:",
+      "options": [
+        "91",
+        "93",
+        "89",
+        "96"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Algebra (Symmetric Difference)",
+        "markdown": "Let the number be $x$. It is as much greater than $75$ as it is smaller than $117$:\n\n$$x-75 = 117-x \\implies 2x = 192 \\implies x = 96.$$\n\nTherefore, the correct answer is **Option D (96)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q2",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 2",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "$\\underset{I}{\\underline{\\text{The professor }}} \\underset{II}{\\underline{\\text{ ordered to }}} \\underset{III}{\\underline{\\text{ the student to go }}} \\underset{IV}{\\underline{\\text{ out of the class}}}$<br>Which of the above underlined parts of the sentence is grammatically incorrect?",
+      "options": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Grammar (Incorrect Preposition/Complement)",
+        "markdown": "The sentence reads \\\"The professor ordered to the student to go out of the class.\\\" The correct construction is \\\"ordered the student\\\" (direct object), not \\\"ordered to the student.\\\" Hence part II is grammatically incorrect.\n\nTherefore, the correct answer is **Option B (II)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q3",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 3,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 3",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Which of the following options is the closest in meaning to the word given below: Primeval",
+      "options": [
+        "Modern",
+        "Historic",
+        "Primitive",
+        "Antique"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Vocabulary (Primeval)",
+        "markdown": "Primeval means relating to the earliest ages; the closest synonym among the choices is **Primitive**.\n\nTherefore, the correct answer is **Option C (Primitive)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q4",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 4,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 4",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "Friendship, no matter how _________it is, has its limitations.",
+      "options": [
+        "cordial",
+        "intimate",
+        "secret",
+        "pleasant"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Vocabulary (Intimate Friendship)",
+        "markdown": "The sentence means that even the closest of friendships has limits. The word that best fits is **intimate**.\n\nTherefore, the correct answer is **Option B (intimate)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q5",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 5,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 5",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Select the pair that best expresses a relationship similar to that expressed in the pair:\n<br>\nMedicine: Health",
+      "options": [
+        "Science: Experiment",
+        "Wealth: Peace",
+        "Education: Knowledge",
+        "Money: Happiness"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Analogy (Medicine:Health)",
+        "markdown": "Medicine leads to health; analogously, education leads to knowledge. Thus the best matching pair is Education: Knowledge.\n\nTherefore, the correct answer is **Option C (Education: Knowledge)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q6",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 6,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 6",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "$X$  and $Y$ are two positive real numbers such that $2X+Y \\leq 6$ and $X+2Y \\leq 8$. For which of the following values of  $(X,Y)$ the function $f(X,Y)=3X+6Y$ will give maximum value ?",
+      "options": [
+        "$\\left(\\frac{4}{3} , \\frac{10}{3}\\right)$",
+        "$\\left(\\frac{8}{3} , \\frac{20}{3}\\right)$",
+        "$\\left(\\frac{8}{3} , \\frac{10}{3}\\right)$",
+        "$\\left(\\frac{4}{3} , \\frac{20}{3}\\right)$"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Linear Programming (Maximizing Linear Objective)",
+        "markdown": "Maximize $f=3X+6Y$ subject to $2X+Y\\le6$, $X+2Y\\le8$, $X,Y\\ge0$.\n\nFeasible vertices: $(0,0)$, $(3,0)$, $(0,4)$, and the intersection of the two constraints:\n$$2X+Y=6,\\quad X+2Y=8 \\implies X=\\frac43,\\ Y=\\frac{10}{3}.$$\n\nEvaluating $f$: at $(0,4)$, $f=24$; at $(\\frac43,\\frac{10}{3})$, $f=4+20=24$. Both are maxima; the listed option is $(\\frac43,\\frac{10}{3})$.\n\nTherefore, the correct answer is **Option A ($\\left(\\frac{4}{3},\\frac{10}{3}\\right)$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q7",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "If $| 4X-7 |=5$ then the values of $2|X|-|-X|$ is:",
+      "options": [
+        "2,1/3",
+        "1/2,3",
+        "3/2,9",
+        "2/3,9"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Absolute Value Equations",
+        "markdown": "Solve $|4X-7|=5$:\n\n$$4X-7=5 \\implies X=3,\\quad 4X-7=-5 \\implies X=\\frac12.$$\n\nThen $2|X|-|-X| = 2|X|-|X| = |X|$, giving values $3$ and $\\frac12$.\n\nTherefore, the correct answer is **Option B ($1/2, 3$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q8",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 8,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 8",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "Following table provides figures(in rupees) on annual expenditure of a firm for two years -2010 and 2011.<br>$$\\begin{array}{|l|r|r|} \\hline \\textbf{Category} & \\textbf{2010} &\\textbf{2011 }\\\\ \\hline \\text{Raw material} & \\text{5200} &\\text{6240}\\\\\\hline \\text{Power and fuel} & \\text{7000} &\\text{9450}\\\\ \\hline \\text{Salary and wages} & \\text{9000} &\\text{12600}\\\\ \\hline \\text{Plant and machinery} & \\text{20000} &\\text{25000}\\\\ \\hline \\text{Advertising} & \\text{15000} &\\text{19500}\\\\\\hline \\text{Research and Development} & \\text{22000} &\\text{26400}\\\\ \\hline \\end{array}$$\n<br>In 2011, which of the two categories have registered increase by same percentage?",
+      "options": [
+        "Raw material and Salary & wages.",
+        "Salary & wages and Advertising.",
+        "Power & fuel and Advertising.",
+        "Raw material and research & Development."
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Percentage Increase (Expenditure Table)",
+        "markdown": "Percentage increases from 2010 to 2011:\n\n- Raw material: $(6240-5200)/5200 = 20\\%$.\n- Power \\& fuel: $(9450-7000)/7000 = 35\\%$.\n- Salary \\& wages: $(12600-9000)/9000 = 40\\%$.\n- Plant \\& machinery: $(25000-20000)/20000 = 25\\%$.\n- Advertising: $(19500-15000)/15000 = 30\\%$.\n- R\\&D: $(26400-22000)/22000 = 20\\%$.\n\nRaw material and R\\&D both increased by $20\\%$.\n\nTherefore, the correct answer is **Option D (Raw material and research \\& Development.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q9",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 9,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 9",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "A firm is selling its product at Rs. 60 per unit. The total cost of production is Rs. 100 and firm is earning total profit of Rs. 500. Later, the total cost increased by 30%. By what percentage the price should be increased to maintain the same profit level.",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "30"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Commercial Mathematics (Profit & Price Revision)",
+        "markdown": "Selling price Rs. 60/unit, total cost Rs. 100, profit Rs. 500. Revenue = cost + profit = 600, so units sold = $600/60 = 10$.\n\nAfter a $30\\%$ cost increase, new cost = $100\\times1.30 = 130$. To keep profit Rs. 500, revenue must be $130+500=630$, so new price = $630/10 = 63$.\n\nPercentage increase in price = $(63-60)/60\\times100 = 5\\%$.\n\nTherefore, the correct answer is **Option A (5)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2013:ga:q10",
+      "branch": "ce",
+      "year": 2013,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE CE 2013 | Set 1 | GA | Question: 10",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "Abhishek is elder to Savar.\n<br>\nSavar is younger to Anshul.\n<br><br>\nWhich of the given conclusions is logically valid and is inferred from the above statements?",
+      "options": [
+        "Abhishek is elder to Anshul",
+        "Anshul is elder to Abhishek",
+        "Abhishek and Anshul are of the same age",
+        "No conclusion follows"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Analytical Aptitude - Logical Deduction (Age Ordering)",
+        "markdown": "Given: Abhishek is elder to Savar; Savar is younger than Anshul (so Anshul is elder to Savar). No information links Abhishek and Anshul directly, so no valid conclusion follows.\n\nTherefore, the correct answer is **Option D (No conclusion follows)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2012:ga:q1",
+      "branch": "ce",
+      "year": 2012,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 1",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "Choose the most appropriate alternative from the options given below to complete the following sentence:\n<br>\nDespite several _________ the mission succeeded in its attempt to resolve the conflict.",
+      "options": [
+        "attempts",
+        "setbacks",
+        "meetings",
+        "delegations"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Aptitude - Vocabulary (Setbacks)",
+        "markdown": "Despite several obstacles, the mission succeeded. The word meaning obstacles/hindrances is **setbacks**.\n\nTherefore, the correct answer is **Option B (setbacks)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "ce:2012:ga:q2",
+      "branch": "ce",
+      "year": 2012,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE CE 2012 | Set 1 | GA | Question: 2",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "The cost function for a  product in a firm is given by $5q^2$,where $q$ is the amount of production. The firm can sell the product at a market price of Rs.50 per unit. The number of units to be produced by the firm such that the profit is maximized is",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "25"
+      ],
+      "goLink": "https://ce.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Quantitative Aptitude - Profit Maximization (Quadratic)",
+        "markdown": "Profit $P(q)=50q-5q^2$. Maximizing:\n\n$$\\frac{dP}{dq}=50-10q=0 \\implies q=5.$$\n\nSecond derivative $-10<0$, confirming a maximum.\n\nTherefore, the correct answer is **Option A (5)**.",
+        "images": []
+      }
+    }
+  ],
+  "chunkStatus": "COMPLETED",
+  "completedAt": "2026-11-20T10:27:50.514Z"
+}

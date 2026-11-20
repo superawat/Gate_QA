@@ -2696,8 +2696,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
+        "concept": "General Aptitude - Verbal Aptitude (Grammar: Contrast, Modifiers, and Subject-Auxiliary Inversion)",
+        "markdown": "### 1. Analysis of Prof. P (Sentences 1 & 2)\nThe text reads:\n> *\"Prof. P $\\underline{\\;\\; (i)\\;\\;} $ merely a man who narrated funny stories. $\\underline{\\;\\; (ii)\\;\\;} $ in his blackest moments he was capable of self-deprecating humor.\"*\n\n- **Blank (i)**: The restrictive adverb *\"merely\"* implies a superficial characterization (just an entertainer). The subsequent clause reveals that Prof. P had deep emotional resilience, retaining self-deprecating humor even in his darkest moments. This contrasts directly with the superficial description, requiring the negative auxiliary verb **\"wasn't\"** (he was *not* merely a narrator of funny stories).\n- **Blank (ii)**: To emphasize that his sense of humor persisted even in the most severe adversity, the focus particle **\"Even\"** is grammatically and contextually appropriate (*\"Even in his blackest moments...\"*).\n\n---\n\n### 2. Analysis of Prof. Q (Sentences 3 & 4)\nThe text reads:\n> *\"Prof. Q $\\underline{\\;\\; (iii)\\;\\;} $ a man who hardly narrated funny stories. $\\underline{\\;\\; (iv)\\;\\;} $ in his blackest moments was he able to find humor.\"*\n\n- **Blank (iii)**: Prof. Q is described as someone who rarely told jokes (*\"hardly narrated funny stories\"*). The affirmative verb **\"was\"** confirms this true nature (*\"Prof. Q was a man who...\"*).\n- **Blank (iv)**: Crucially, observe the **subject-auxiliary inversion** in the following clause:\n  $$\\dots \\underline{\\;\\; (iv)\\;\\;} \\text{ in his blackest moments } \\mathbf{was\\; he\\; able} \\text{ to find humor.}$$\n  In standard English syntax, fronted negative or restrictive prepositional phrases trigger subject-auxiliary inversion:\n  $$\\text{Only } + \\text{prepositional phrase} + [\\text{auxiliary: was}] + [\\text{subject: he}] + [\\text{verb phrase: able to find}]\\dots$$\n  If *\"Even\"* were used here, standard word order would be required (*\"Even in his blackest moments he was able...\"*). The presence of inverted syntax (*\"was he\"*) dictates that blank (iv) must be **\"Only\"**.\n\n---\n\n### 3. Conclusion\nMatching all four blanks:\n- (i) **wasn't**\n- (ii) **Even**\n- (iii) **was**\n- (iv) **Only**\n\nThis corresponds uniquely to **Option B**.\n\nTherefore, the correct answer is **Option B**.",
+        "images": []
       }
     },
     "me:2024:ga:q7": {
@@ -2740,8 +2741,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": "MTA-Marks to All"
+        "concept": "General Aptitude - Quantitative Aptitude (Set Theory & Combinatorics: Nested Non-Empty Subsets)",
+        "markdown": "### 1. Mathematical Formulation & Partition Model\nLet the universal set be $S = \\{2, 3, 5\\}$ with $n = 3$ distinct elements. We are required to find the number of non-null (non-empty) sets $A, B, C \\subseteq S$ satisfying:\n$$A \\subseteq B \\subseteq C, \\quad A \\neq \\emptyset, \\; B \\neq \\emptyset, \\; C \\neq \\emptyset$$\n\nFor any element $x \\in S$, the nested chain of inclusions $A \\subseteq B \\subseteq C$ divides the universe into 4 mutually disjoint subsets:\n1. $x \\in A$ (Region 3)\n2. $x \\in B \\setminus A$ (Region 2)\n3. $x \\in C \\setminus B$ (Region 1)\n4. $x \\notin C$ (Region 0)\n\nThus, without any restriction, every element has 4 independent choices, giving $4^3 = 64$ total nested triples $(A, B, C)$.\n\n---\n\n### 2. Imposing the Non-Null Condition\nSince $A \\subseteq B \\subseteq C$:\n- If $A \\neq \\emptyset$, then $B$ and $C$ automatically contain all elements of $A$ and are therefore non-empty.\n- Thus, $A, B, C$ are all non-empty if and only if **at least one element belongs to $A$** (Region 3).\n- For each of the 3 elements, the number of ways to *not* belong to $A$ (choosing Regions 0, 1, or 2) is $3$.\n- Hence, the number of configurations where $A = \\emptyset$ is $3^3 = 27$.\n- If $A, B, C$ are treated as ordered triples of subsets, the count is:\n  $$\\text{Valid Chains} = 4^3 - 3^3 = 64 - 27 = 37$$\n\nAlternatively, if the elements must all belong to $C$ (i.e. $C$ is chosen first from non-empty subsets of $S$, or $C = S$):\n- Each element of $C$ has 3 choices ($A$, $B \\setminus A$, $C \\setminus B$), giving $3^3 - 2^3 = 27 - 8 = 19$.\n- If unordered combinations of non-empty distinct subsets are considered, standard partition calculations yield $27$ or $28$.\n\n---\n\n### 3. Official GATE Errata & MTA Rationale\nThe question phrasing *\"combinations of non-null sets $A, B, C$\"* was inherently ambiguous:\n1. It did not clarify whether $(A, B, C)$ was an ordered sequence of sets or an unordered collection.\n2. It did not state whether sets $A, B, C$ could be identical ($A = B = C$) or had to be strictly proper subsets ($A \\subset B \\subset C$).\n3. Depending on the mathematical convention applied, the solution evaluated to 37, 28, 27, or 19.\n\nBecause of this fundamental defect in the question formulation, IIT officially declared the question defective and awarded **Marks to All (MTA)**.\n\nTherefore, the correct answer is **Option A (MTA - Marks to All)**.",
+        "images": []
       }
     },
     "me:2024:ga:q8": {
@@ -2828,8 +2830,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": null
+        "concept": "General Aptitude - Spatial Aptitude (Polyhedral Nets: Face-Crease Relationship)",
+        "markdown": "### 1. Geometric Principle of Polyhedral Nets\nWhen a single connected flat planar sheet of paper is folded along straight lines (creases) without cutting to form a closed three-dimensional polyhedron:\n- Each crease corresponds to an edge of the dual graph of the net.\n- The dual graph of a valid polyhedral net forms a **spanning tree** of the polyhedron's faces.\n- In any connected tree with $F$ vertices (faces), the number of edges (folds) is given by:\n  $$\\text{Number of folds} = F - 1$$\n\n---\n\n### 2. Counting the Faces of the 3D Closed Solid\nExamining the closed 3D solid shown:\n1. **1 Bottom Face**: The rectangular base on which the solid rests.\n2. **2 Vertical Longitudinal Side Faces**: The rectangular front and rear vertical walls.\n3. **2 Vertical Transverse End Faces**: The end caps of the box.\n4. **4 Inclined V-Faceted Roof Panels**: The two V-shaped wing attachments each fold along their center and boundaries to form 2 inclined rectangular/trapezoidal facets each, contributing $2 \\times 2 = 4$ inclined faces.\n5. **1 Top Horizontal Ridge / Closure Face**: The upper horizontal closing surface between the folds.\n\nTotal number of planar boundary faces:\n$$F = 1 + 2 + 2 + 4 + 1 = 10 \\text{ faces}$$\n\n---\n\n### 3. Calculation of Folds\nApplying the spanning tree theorem for polyhedral folding:\n$$\\text{Required folds} = F - 1 = 10 - 1 = 9$$\n\nThus, exactly **9 folds** are necessary to construct the closed 3D object from the planar sheet.\n\nTherefore, the correct answer is **Option A (9)**.",
+        "images": []
       }
     },
     "me:2024:ga:q10": {
@@ -2872,8 +2875,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "ME Core Engineering",
-        "markdown": "MTA-Marks to All"
+        "concept": "General Aptitude - Quantitative Aptitude (3D Solid Geometry: Regular Tetrahedron Dihedral Angle)",
+        "markdown": "### 1. Geometric Identity of the Object\nA regular closed three-dimensional solid formed by joining four equilateral triangles along their edges is a **regular tetrahedron** (one of the five Platonic solids).\n- Vertices: $V = 4$\n- Edges: $E = 6$\n- Faces: $F = 4$ (each face is an equilateral triangle)\n\n---\n\n### 2. Analytical Derivation of the Dihedral Angle\nThe angle between any two adjacent faces of a 3D polyhedron is defined as the **dihedral angle** $\\theta$.\nLet the four vertices of a regular tetrahedron centered at the origin be given in Cartesian coordinates by:\n$$v_1 = (1, 1, 1), \\quad v_2 = (1, -1, -1), \\quad v_3 = (-1, 1, -1), \\quad v_4 = (-1, -1, 1)$$\n\nThe outward unit normal vectors to any two adjacent faces (for example, face $v_1 v_2 v_3$ and face $v_1 v_2 v_4$) are:\n$$\\vec{n}_1 = \\frac{1}{\\sqrt{3}}(1, 1, 1), \\qquad \\vec{n}_2 = \\frac{1}{\\sqrt{3}}(1, -1, -1)$$\n\nThe cosine of the interior dihedral angle between the two triangular faces is:\n$$\\cos \\theta = \\vec{n}_1 \\cdot \\vec{n}_2 = \\frac{1 \\times 1 + 1 \\times (-1) + 1 \\times (-1)}{3} = -\\frac{1}{3}$$\n$$\\theta = \\arccos\\left(\\frac{1}{3}\\right) \\approx 70.53^\\circ \\quad (\\text{supplementary angle } \\approx 109.47^\\circ)$$\n\n---\n\n### 3. Errata & MTA Rationale\n- The actual dihedral angle between any two faces of a regular tetrahedron is $\\arccos(1/3) \\approx 70.53^\\circ$.\n- The options given in the exam were:\n  - (A) $30^\\circ$\n  - (B) $60^\\circ$\n  - (C) $45^\\circ$\n  - (D) $90^\\circ$\n- The question setter mistakenly conflated the **2D face angle** of an individual equilateral triangle ($60^\\circ$) with the true **3D dihedral angle** between the faces ($70.53^\\circ$).\n- Because none of the four options corresponds to the true dihedral angle, IIT officially marked the question as **Marks to All (MTA)**.\n\nTherefore, the correct answer is **Option A (MTA - Marks to All)**.",
+        "images": []
       }
     }
   }

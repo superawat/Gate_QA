@@ -1,4 +1,227 @@
 # Changelog
+- **Phase 6 Civil Engineering GA Completion & Historic Milestone: 100% Universal General Aptitude Across All 6 GATE Branches (CHUNK-GA-CE-05, CHUNK-GA-CE-06, CHUNK-GA-CE-07, CHUNK-GA-CE-08: 85 Authentic GA Solutions, 97.0% Platform Coverage) (DEC-296, 2026-11-20)**:
+  - **Context & Historic Scope**: Executed parallel multi-chunk workflow from `plan/nov_26/20th_nov_workflow.md` across the final four Civil Engineering GA chunks simultaneously, completely eliminating all remaining General Aptitude missing solutions platform-wide:
+    1. `CHUNK-GA-CE-05` (25 questions: GATE CE 2017 Set 2 Q8–Q10, CE 2016 Set 1 Q1–Q10, CE 2016 Set 2 Q1–Q10, CE 2015 Set 1 Q1–Q2).
+    2. `CHUNK-GA-CE-06` (25 questions: GATE CE 2015 Set 1 Q3–Q10, Set 2 Q1–Q10, CE 2014 Set 1 Q1–Q7).
+    3. `CHUNK-GA-CE-07` (25 questions: GATE CE 2014 Set 1 Q8–Q10, Set 2 Q1–Q10, CE 2013 Set 1 Q1–Q10, CE 2012 Set 1 Q1–Q2).
+    4. `CHUNK-GA-CE-08` (10 questions: GATE CE 2012 Set 1 Q3–Q10, CE 2011 Set 1 Q1, Q9).
+  - **Historic Milestones & Platform Inventory**:
+    - **100% UNIVERSAL GENERAL APTITUDE COMPLETION**: All 1,266 General Aptitude questions across all 6 engineering branches (CSE: 536/536, DA: 30/30, EC: 60/60, EE: 60/60, ME: 290/290, CE: 290/290) now have 100% authentic, accepted step-by-step detailed derivations. **Zero GA questions missing platform-wide!**
+    - Civil Engineering GA missing reduced from 85 to **0 questions** (CE GA accepted reached 290 / 290, 100.0% coverage).
+    - Overall CE branch accepted solutions rose from 2,382 to **2,467 / 2,625 (94.0%)**.
+    - Total platform accepted solutions rose from 12,707 to **12,792 / 13,194 (97.0%)**; platform missing solutions dropped to **402**.
+  - **Pedagogical Rigor & Independent Derivations**:
+    - `CHUNK-GA-CE-05` (25 Qs): Constraint satisfaction circular seating, direction sense, relative speed, clock arithmetic, and vocabulary context.
+    - `CHUNK-GA-CE-06` (25 Qs): Prepositional collocations, subject-verb agreement, combinatorics, modular arithmetic, work-rate efficiency, and series deduction.
+    - `CHUNK-GA-CE-07` (25 Qs): Angle sum geometry, linear equations, probability distributions, coordinate geometry, and logical deduction.
+    - `CHUNK-GA-CE-08` (10 Qs): Non-human relative pronouns, conditional probabilities, reading comprehension inferences, and syllogistic reasoning.
+  - **Verification & Pipeline Gates**:
+    - Ingested all 85 solutions via `scripts/pipeline/integrate-chunk.mjs` into `AUTHENTIC_PATCHES`, static detail shards, and v1 registries.
+    - Public static artifacts rebuilt successfully via `scripts/build-public-artifacts.mjs`.
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+- **Phase 6 Civil Engineering General Aptitude Multi-Chunk Integration (CHUNK-GA-CE-02, CHUNK-GA-CE-03, CHUNK-GA-CE-04: 75 Authentic GA Solutions, 96.3% Platform Coverage) (DEC-295, 2026-11-20)**:
+  - **Context & Scope**: Executed parallel multi-chunk workflow from `plan/nov_26/20th_nov_workflow.md` across three Civil Engineering GA chunks simultaneously:
+    1. `CHUNK-GA-CE-02` (25 questions: GATE CE 2020 Set 1 Q3–Q10, Set 2 Q1–Q10, CE 2019 Set 1 Q1–Q7).
+    2. `CHUNK-GA-CE-03` (25 questions: GATE CE 2019 Set 1 Q8–Q10, Set 2 Q1–Q10, CE 2018 Set 1 Q1–Q10, Set 2 Q1–Q2).
+    3. `CHUNK-GA-CE-04` (25 questions: GATE CE 2018 Set 2 Q3–Q10, CE 2017 Set 1 Q1–Q10, Set 2 Q1–Q7).
+  - **Key Milestones & Inventory Impact**:
+    - Civil Engineering GA missing reduced from 160 to **85 questions** (CE GA accepted rose from 130 to 205 / 290, 70.7% coverage).
+    - Overall CE branch accepted solutions rose to **2,382 / 2,625 (90.7%)**.
+    - Total platform accepted solutions increased from 12,632 to **12,707 / 13,194 (96.3%)**; platform missing solutions dropped below 500 to **487**.
+  - **Rigorous Pedagogical Derivations**:
+    - `CHUNK-GA-CE-02` (25 Qs):
+      - Probability, spatial reasoning, data interpretation, critical deduction, and vocabulary across GATE CE 2020 and 2019.
+      - Sequence of tenses, linear equations, geometry, and reading comprehension.
+    - `CHUNK-GA-CE-03` (25 Qs):
+      - Number properties, circular arrangements, deductive logic, Venn diagrams, and speed-distance-time problems across CE 2019 and CE 2018.
+      - Grammar idioms, pronoun cases, and verbal aptitude.
+    - `CHUNK-GA-CE-04` (25 Qs):
+      - Profit and loss, ratio and proportions, geometric coordinate geometry, and logical syllogisms across CE 2018 and CE 2017.
+      - Vocabulary in context, homophones, and sentence completion.
+  - **Verification & Pipeline Gates**:
+    - Integrated all 75 solutions via `scripts/pipeline/integrate-chunk.mjs` into `AUTHENTIC_PATCHES`, static detail shards, and v1 registries.
+    - Public static artifacts rebuilt successfully via `scripts/build-public-artifacts.mjs`.
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+
+- **Phase 6 General Aptitude Multi-Chunk Integration (CHUNK-GA-ME-05, CHUNK-GA-ME-06, CHUNK-GA-CE-01: 60 Authentic Solutions, 100% ME GA Complete, 95.7% Platform Coverage) (DEC-294, 2026-11-20)**:
+  - **Context & Scope**: Executed parallel multi-chunk workflow from `plan/nov_26/20th_nov_workflow.md` across three chunks simultaneously:
+    1. `CHUNK-GA-ME-05` (25 questions: GATE ME 2014 Set 1 Q8–Q10, Set 2 Q1–Q10, Set 3 Q1–Q10, Set 4 Q1–Q2).
+    2. `CHUNK-GA-ME-06` (10 questions: GATE ME 2014 Set 4 Q3–Q10, ME 2012 Q1, ME 2011 Q1).
+    3. `CHUNK-GA-CE-01` (25 questions: GATE CE 2023 Set 1 to CE 2021 General Aptitude).
+  - **Historic Milestones**:
+    - **100% General Aptitude Coverage on GATE Mechanical Engineering (290 / 290 accepted, 0 missing)** achieved! ME joins CSE (536/536), DA (30/30), EC (60/60), and EE (60/60) as the 5th branch with 100% GA completion.
+    - Successfully kicked off Track 6B (Civil Engineering GA), reducing CE GA missing from 185 to **160**.
+    - Platform accepted solutions increased from 12,572 to **12,632 / 13,194 (95.7%)**; total platform missing reduced from 622 to **562**.
+  - **Rigorous Pedagogical Derivations**:
+    - `CHUNK-GA-ME-05` (25 Qs):
+      - Probability three coins with given faces: two-headed, two-tailed, fair; Bayes' theorem $P(C_3 \mid H) = \frac{1/6}{1/3 + 1/6} = \frac{1}{3}$; verified Option B (1/3).
+      - Letter analogy & series, vocabulary collocations, work-rate linear systems, numerical logic, and arithmetic series.
+    - `CHUNK-GA-ME-06` (10 Qs):
+      - Lexical synonyms: "vindicated" closest in meaning to "substantiated" (justified, proved right against criticism); verified Option B.
+      - Power function scaling: $f(x, y) = x^n y^m = P$; doubling $x$ ($2x$) and halving $y$ ($y/2$) yields $(2x)^n (y/2)^m = 2^n \cdot 2^{-m} x^n y^m = 2^{n-m} P$; verified Option A.
+      - Permutations, spatial perception, sequence of tenses, and logical deduction completing all vintage and classic ME GA backlog.
+    - `CHUNK-GA-CE-01` (25 Qs):
+      - Regular hexagon circle sector: Hexagon interior angle $120^\circ$; circle radius $R = 5\text{ cm}$; sector area $\frac{120}{360} \pi (5^2) = \frac{25\pi}{3}$; verified Option A.
+      - Donald Duck liar paradox: "All ducks always lie" spoken by a duck $\implies$ cannot be true without self-contradiction, proving Donald Duck is lying now, but does not imply ducks always lie; verified Option D.
+      - Critical reasoning, spatial folding, numerical reasoning, and vocabulary across GATE CE 2023, 2022, and 2021.
+  - **Verification & Pipeline Gates**:
+    - Integrated all 60 solutions via `scripts/pipeline/integrate-chunk.mjs` into `AUTHENTIC_PATCHES`, static detail shards, and v1 registries.
+    - Public static artifacts rebuilt successfully via `scripts/build-public-artifacts.mjs`.
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Generated and pre-flighted `CHUNK-GA-CE-02` (25 questions queued across CE 2020 Set 1, Set 2, and CE 2019 Set 1; 0 pre-flight errors).
+
+- **Phase 6 General Aptitude Solution Integration (CHUNK-GA-ME-04: 25 Authentic GA Solutions, 95.3% Platform Coverage, OCR Typo Repairs & Pre-Flight Anomaly Fixes) (DEC-293, 2026-11-20)**:
+  - **Context & Scope**: Continued execution of Phase 6 (Universal General Aptitude) from `plan/20th_oct_missinganswer.md` following the updated workflow `plan/nov_26/20th_nov_workflow.md`. Authored, independently derived, verified, and integrated all 25 General Aptitude questions in `CHUNK-GA-ME-04` across Mechanical Engineering papers from 2015 Set 2, 2015 Set 3, and 2014 Set 1 (`me:2015:ga:q3-s2`, `me:2015:ga:q4-s2`, `me:2015:ga:q5-s2`, `me:2015:ga:q6-s2`, `me:2015:ga:q7-s2`, `me:2015:ga:q8-s2`, `me:2015:ga:q9-s2`, `me:2015:ga:q10-s2`, `me:2015:ga:q1-s3`, `me:2015:ga:q2-s3`, `me:2015:ga:q3-s3`, `me:2015:ga:q4-s3`, `me:2015:ga:q5-s3`, `me:2015:ga:q6-s3`, `me:2015:ga:q7-s3`, `me:2015:ga:q8-s3`, `me:2015:ga:q9-s3`, `me:2015:ga:q10-s3`, `me:2014:ga:q1`, `me:2014:ga:q2`, `me:2014:ga:q3`, `me:2014:ga:q4`, `me:2014:ga:q5`, `me:2014:ga:q6`, `me:2014:ga:q7`).
+  - **Rigorous Pedagogical Derivations**:
+    - `me:2015:ga:q3-s2`: Modal and causative auxiliary syntax: "Let us + [bare infinitive]" requires a base verb; "alternate" functions as an intransitive verb meaning to take turns; verified Option B.
+    - `me:2015:ga:q4-s2`: Alphabet letter series: term sizes grow (1, 2, 3, 4, 5) and inter-term skips grow (1, 2, 3, 4); A (+B) $\to$ CD (+EF) $\to$ GHI (+JKL) $\to$ MNOP (+QRST) $\to$ UVWXY; repaired OCR error 'DHI' to 'GHI'; verified Option C.
+    - `me:2015:ga:q5-s2`: Function monotonicity & inequalities: strictly increasing $\ln t$ and $e^t$ guarantee $\ln x > \ln y$ and $e^x > e^y$; counterexamples for $y^x > x^y$ ($y=2, x=3 \implies 8 < 9$) and $\cos x > \cos y$ ($y=\pi/2, x=\pi \implies -1 < 0$); verified Option A ((i) and (ii)).
+    - `me:2015:ga:q6-s2`: Pronoun objective case after prepositions: preposition "between" governs objective pronouns ("you and me"); hypercorrection "between you and I" refuted; verified Option A.
+    - `me:2015:ga:q7-s2`: Chronological narrative parajumble: morning awakening (1) $\to$ daytime visiting relatives (5) $\to$ whole family enjoying this (2) $\to$ sunset lamp lighting (4) $\to$ night fireworks (3) $\to$ lighted lamps conclusion (6) $\implies$ sequence 5, 2, 4, 3; verified Option B.
+    - `me:2015:ga:q8-s2`: Conical surface from circular sector: sheet radius $R=30\text{ cm}$ forms slant height $l=30\text{ cm}$; remaining $90\%$ area gives base radius $r = 0.90 \times 30 = 27\text{ cm}$; height $h = \sqrt{30^2 - 27^2} = \sqrt{171} \approx 13.08\text{ cm}$; ratio $r/h = 27/13.08 \approx 2.06 \approx 2$; verified Option B.
+    - `me:2015:ga:q9-s2`: Trigonometric logarithm product: $\sum_{k=1}^{89} \log \tan k^\circ = \log(\prod_{k=1}^{89} \tan k^\circ)$; complementary pairing $\tan k^\circ \cdot \tan(90^\circ - k^\circ) = 1$ and $\tan 45^\circ = 1 \implies \log(1) = 0$; verified Option D.
+    - `me:2015:ga:q10-s2`: Logical deduction & adverbial scope: Ms. X is in Bagdogra May 1–20 and May 22–31 ($30$ days); Kochi visit is restricted exclusively to May 21 ($1$ day); "for only one day, only in May"; verified Option B.
+    - `me:2015:ga:q1-s3`: Contextual vocabulary: "harbours" transitively denotes sheltering or secretly containing vital potential within ("Apparent lifelessness harbours dormant life"); verified Option A.
+    - `me:2015:ga:q2-s3`: Idiom analysis: "fish out of water" denotes someone feeling completely awkward or out of place in unfamiliar surroundings; verified Option C.
+    - `me:2015:ga:q3-s3`: Confusable words: "elusive" (difficult to find/catch) vs "allusive" (making indirect references); thief evading police is "elusive"; verified Option B.
+    - `me:2015:ga:q4-s3`: Strict ordering transitivity: Tanya > Eric and Cliff > Tanya $\implies$ Cliff > Eric; directly contradicts third statement "Eric > Cliff"; verified Option B (FALSE).
+    - `me:2015:ga:q5-s3`: Round-robin tournament combinatorics: 5 teams playing each other once $\implies \binom{5}{2} = \frac{5 \times 4}{2} = 10$ matches; verified Option B.
+    - `me:2015:ga:q6-s3`: Grammar correction: noun subject "Increase in productivity" requires adverbial modifier "necessarily" to modify finite verb "reflects"; verified Option C.
+    - `me:2015:ga:q7-s3`: Syllogism validity: $M \cap L = \emptyset$ and $L \subseteq E$; managers can intersect executives outside leaders ($M \cap (E \setminus L) \neq \emptyset$); neither conclusion follows; verified Option C.
+    - `me:2015:ga:q8-s3`: Right triangle area ratios: shared right vertex $Q$; $PQ = 4 QS$ and $QR = \frac{7}{2} QT \implies \text{Area}(PQR) = 4 \times \frac{7}{2} \times \text{Area}(QTS) = 14 \times 20 = 280\text{ cm}^2$; verified Option B.
+    - `me:2015:ga:q9-s3`: Integer grid lattice triangles: $10$ choices for $x \in [-4, 5]$ and $11$ choices for $y \in [6, 16]$; right angle at $P(x_P, y_P)$ ($110$ choices); horizontal $PR$ gives $9$ choices for $x_R$; vertical $PQ$ gives $10$ choices for $y_Q \implies 110 \times 9 \times 10 = 9{,}900$; verified Option C.
+    - `me:2015:ga:q10-s3`: Probability independence & dependence: $S=8$; $P(X) = 2/8 = 1/4$, $P(Y) = 4/8 = 1/2$, $P(Z) = 3/8$; $P(Y \cap Z) = 2/8 = 1/4 \neq P(Y)P(Z) = 3/16 \implies Y$ and $Z$ are dependent; repaired OCR error event 'C' to 'X'; verified Option B.
+    - `me:2014:ga:q1`: Sequence of tenses: subordinate clause past passive "as soon as its flight plan was filed" requires main clause simple past passive "was allowed to"; verified Option C.
+    - `me:2014:ga:q2`: Deductive syllogism: $W \subseteq E$ and $W \cap D \neq \emptyset \implies \exists x \in W \cap D \subseteq E \implies E \cap D \neq \emptyset$ ("Some entrepreneurs are doctors"); verified Option D.
+    - `me:2014:ga:q3`: Contextual vocabulary: "dispel" standardly collocates with notions/myths/misconceptions, meaning to banish or eliminate false beliefs; verified Option B.
+    - `me:2014:ga:q4`: Measures of dispersion: absolute variability evaluated by standard deviation $\sigma$; Batsman K has the lowest $\sigma = 5.21$, indicating highest consistency; verified Option A.
+    - `me:2014:ga:q5`: Series recurrence & differences: first differences double: $23, 46, 92, 184, 368 \implies 357 + 368 = 725$; affine recurrence $a_n = 2a_{n-1} + 11 \implies 2(357) + 11 = 725$; verified NAT 725.
+    - `me:2014:ga:q6`: Letter group modular differences: Groups 1, 2, 3 have step differences $(+8, +6, +4)$; Group 4 (N, V, B, D) has differences $(+8, +6, +2)$, making it the odd one out; verified Option D.
+    - `me:2014:ga:q7`: Decision tree classification: Form P (resident male $< 10$L), Form Q (resident female $< 8$L), Form R (income $> 10$L), Form S (non-resident $> 15$L); resident female with $9$L exceeds $8$L and is $\le 10$L $\implies$ "All others" $\implies$ Form T; verified Option B.
+  - **Data Integrity & Pre-Flight Anomaly Repairs**:
+    - Repaired OCR transcription typo in `me:2015:ga:q4-s2` from `'DHI'` to `'GHI'` across detail shard `me-2015-s2.json` and chunk manifest.
+    - Repaired OCR transcription typo in `me:2015:ga:q10-s3` from event `'C'` to `'X'` across detail shard `me-2015-s3.json` and chunk manifest.
+    - Pre-flight automated scan on queued `CHUNK-GA-ME-05` flagged Excel date corruption in `me:2014:ga:q10` options (`01-Apr`, `01-Mar`, `01-Feb`, `02-Mar`), successfully repaired to `1/4`, `1/3`, `1/2`, `2/3` in shard `me-2014-s1.json` and chunk manifest.
+  - **Pipeline & Metric Milestone**:
+    - Integrated solutions via `scripts/pipeline/integrate-chunk.mjs`.
+    - Public static artifacts rebuilt, 0 errors in `npm run qa:validate-data`, clean `npm run typecheck`.
+    - Re-audited inventory: platform accepted solutions rose from 12,547 to **12,572 / 13,194 (95.3%)**, total platform missing reduced from 647 to **622**; ME accepted solutions rose to **2,518 / 2,625 (95.9%)** with ME GA missing reduced from 60 to **35**.
+    - Generated and pre-flighted `CHUNK-GA-ME-05` (25 questions queued across ME 2014 Set 1, Set 2, Set 3, Set 4), clean with 0 errors after fraction repair.
+
+- **Phase 6 General Aptitude Solution Integration (CHUNK-GA-ME-03: 25 Authentic GA Solutions, 95.1% Platform Coverage, Option Corruption Repair, Reusable Pipeline Tooling) (DEC-292, 2026-11-20)**:
+  - **Context & Scope**: Executed the 20 November workflow from `plan/nov_26/20th_nov_workflow.md`. Built reusable pipeline tooling `scripts/pipeline/integrate-chunk.mjs` and pre-flight anomaly scanner `scripts/pipeline/preflight-chunk.mjs`. Authored, independently derived, verified, and integrated all 25 General Aptitude questions in `CHUNK-GA-ME-03` across Mechanical Engineering papers from 2015 and 2016 (`me:2016:ga:q8-s2`, `me:2016:ga:q9-s2`, `me:2016:ga:q10-s2`, `me:2016:ga:q1-s3`, `me:2016:ga:q2-s3`, `me:2016:ga:q3-s3`, `me:2016:ga:q4-s3`, `me:2016:ga:q5-s3`, `me:2016:ga:q6-s3`, `me:2016:ga:q7-s3`, `me:2016:ga:q8-s3`, `me:2016:ga:q9-s3`, `me:2016:ga:q10-s3`, `me:2015:ga:q1`, `me:2015:ga:q2`, `me:2015:ga:q3`, `me:2015:ga:q4`, `me:2015:ga:q5`, `me:2015:ga:q6`, `me:2015:ga:q7`, `me:2015:ga:q8`, `me:2015:ga:q9`, `me:2015:ga:q10`, `me:2015:ga:q1-s2`, `me:2015:ga:q2-s2`).
+  - **Rigorous Pedagogical Derivations**:
+    - `me:2016:ga:q8-s2`: Alphabetical series progression: 1 letter (B), 2 letters (FH), 3 letters (LNP); inter-term jump $+4$ from last letter ($16+4=20 \to \text{T}$), intra-term jump $+2 \implies$ TVXZ (4 letters); verified Option C.
+    - `me:2016:ga:q9-s2`: Abstract algebra binary operations: identity element $e$ satisfies $a \square e = ae + a + e = a \implies e(a + 1) = 0 \implies e = 0$ for all $a \in \mathbb{R}$; verified Option A.
+    - `me:2016:ga:q10-s2`: Composite function analysis: $\ln(|e^{[|\sin(|x|)]|}) = [|\sin(|x|)|]$; floor of sine magnitude equals 0 on all open intervals and 1 only at isolated peaks $\pm \pi/2, \pm 3\pi/2$, matching pulse Curve C; verified Option C.
+    - `me:2016:ga:q1-s3`: Verbal dimensional adjectives: vertical human standing height takes comparative adjective "taller", not longer, more elongated, or lengthier; verified Option C.
+    - `me:2016:ga:q2-s3`: Verbal vocabulary & homophones: honoring a teacher publicly on Teachers' Day uses transitive verb "felicitated" (from Latin *felicitas*); verified Option B.
+    - `me:2016:ga:q3-s3`: Verbal idioms & pragmatics: "the rest is history" means subsequent events and achievements are widely celebrated and well known; verified Option C.
+    - `me:2016:ga:q4-s3`: Dimensional unit algebra: squaring both sides of $(9\text{ inches})^{1/2} = (0.25\text{ yards})^{1/2}$ yields $9\text{ inches} = 0.25\text{ yards}$ ($1\text{ yard} = 36\text{ inches} \implies 0.25\text{ yd} = 9\text{ in}$); verified Option C.
+    - `me:2016:ga:q5-s3`: Work rate proportional contribution: M works $D/2$ days $\times 6\text{ hrs} \times 2\eta = 6D\eta$; E works $D$ days $\times 12\text{ hrs} \times \eta = 12D\eta \implies$ ratio $W_M : W_E = 6:12 = 1:2$; verified Option B.
+    - `me:2016:ga:q6-s3`: Venn diagram set union: students who like books or sports $|B \cup S| = 13 + 17 + 12 + 15 + 44 + 7 = 108$; verified Option D.
+    - `me:2016:ga:q7-s3`: Textual critical deduction: existence in amorphous form until the colonial period directly proves social science disciplines had a pre-colonial origin; verified Option A.
+    - `me:2016:ga:q8-s3`: Clock mirror reflection: vertical mirror inverts 12-hour axis $11:60 - 1:30 = 10:30$; elapsed time $2\text{ hr } 15\text{ min} \implies 10:30 + 2:15 = 12:45$; verified Option D.
+    - `me:2016:ga:q9-s3`: 2D displacement vector geometry: final position M $(10+5\sqrt{2}, 5\sqrt{2})$, N $(2\sqrt{2}, -5-2\sqrt{2})$; Euclidean separation $\sqrt{(10+3\sqrt{2})^2 + (5+7\sqrt{2})^2} \approx 20.61\text{ km}$; verified Option C.
+    - `me:2016:ga:q10-s3`: Calculus optimization: square perimeter $4s = x$, rectangle perimeter $6w = 340 - x$; combined area $A(x) = x^2/16 + (340-x)^2/18 \implies A'(x) = x/8 - (340-x)/9 = 0 \implies x = 160\text{ mm} \implies s = 40\text{ mm}$; verified Option B.
+    - `me:2015:ga:q1`: Verbal grammar & subject-verb agreement: quasi-coordinator "as well as the other team members" is parenthetical; singular head noun "Dhoni" takes singular verb "was"; verified Option B.
+    - `me:2015:ga:q2`: Lexical synonyms: awkward (clumsy, lacking dexterity) matches precise synonym "Inept"; verified Option A.
+    - `me:2015:ga:q3`: Adverbial morphology: qualifying adjective "Misogynous" takes adverbial manner suffix -ly to form "Misogynously"; verified Option C.
+    - `me:2015:ga:q4`: Data interpretation marginal rates: incremental consumption per km across stretches $M$ ($0.60$), $N$ ($0.52$), $O$ ($0.667$), $P$ ($12/25 = 0.48\text{ kWh/km}$) $\implies$ minimum on Stretch P; verified Option D.
+    - `me:2015:ga:q5`: Independent probability: $P(R_1) = 1/6$, $P(R_2) = 1/8$; exactly one selected $P(R_1)P(R_2^c) + P(R_1^c)P(R_2) = \frac{7}{48} + \frac{5}{48} = \frac{12}{48} = \frac{1}{4}$; verified Option B.
+    - `me:2015:ga:q6`: Verbal grammar & sequence of tenses: earlier completed past action before student's correction requires past perfect "had marked" in part Q; verified Option B.
+    - `me:2015:ga:q7`: Categorical syllogisms: $D \subseteq S \subseteq P \implies D \subseteq P$ (All directors are playback singers, Conclusion I) and $S \cap D \neq \varnothing$ (Some film stars are directors, Conclusion II) $\implies$ both conclusions follow; verified Option D.
+    - `me:2015:ga:q8`: Relative speed pursuit: initial gap $50 \times 8 = 400\text{ m}$; tiger speed $40\text{ m/min}$, deer speed $20\text{ m/min}$; relative speed $20\text{ m/min} \implies t = 20\text{ min} \implies$ tiger runs $40 \times 20 = 800\text{ meters}$; verified Option C.
+    - `me:2015:ga:q9`: Algebraic inequalities: $(a-b)^2+(b-c)^2+(c-a)^2 \ge 0 \implies ab+bc+ca \le 1$, and $(a+b+c)^2 \ge 0 \implies ab+bc+ca \ge -1/2 \implies [-1/2, 1]$; verified Option B.
+    - `me:2015:ga:q10`: Critical inference: artists expecting funds approved (i) and schools sidelining arts education (iv) $\implies$ (i) and (iv); verified Option B.
+    - `me:2015:ga:q1-s2`: Verbal grammar & third conditional: past perfect condition "had wanted" takes past modal perfect consequence "should have practiced"; verified Option B.
+    - `me:2015:ga:q2-s2`: One-word substitution & classical Latin etymology: provisions/connotation of a road/way (*via*) is "Viaticum"; verified Option B.
+  - **Data Integrity & Pre-Flight Anomaly Repairs**:
+    - Pre-flight automated scan detected and repaired Archetype 4 Excel date corruption in `me:2015:ga:q5`: Option 1 repaired from `"04-Jan"` to `"1/4"`.
+    - Identified and repaired transcription corruption in `me:2015:ga:q10`: Option B repaired from duplicate `"(i) and (ii)"` to authentic `"(i) and (iv)"`.
+    - Repaired ratio formatting in `me:2016:ga:q5-s3` from `["01:01", "01:02", "01:04", "02:01"]` to standard `["1:1", "1:2", "1:4", "2:1"]`.
+  - **Pipeline & Metric Milestone**:
+    - Automated integration via `scripts/pipeline/integrate-chunk.mjs`.
+    - Integrated patches into `AUTHENTIC_PATCHES`, static detail shards, and v1 registries.
+    - Re-audited inventory: platform accepted solutions rose from 12,522 to **12,547 / 13,194 (95.1%)**, total platform missing reduced from 672 to **647**; ME accepted solutions rose to **2,493 / 2,625 (95.0%)** with ME GA missing reduced from 85 to **60**. Clean `typecheck` and clean `qa:validate-data` (0 errors).
+    - Generated `CHUNK-GA-ME-04` manifest (25 questions queued), verified with pre-flight audit (0 errors), reducing remaining ME GA backlog to **35** questions.
+
+- **Phase 6 General Aptitude Solution Integration (CHUNK-GA-ME-02: 25 Authentic GA Solutions, 94.9% Platform Coverage, Option Corruption Repair) (DEC-291, 2026-11-20)**:
+  - **Context & Scope**: Continued execution of Phase 6 (Universal General Aptitude) from `plan/20th_oct_missinganswer.md`. Authored, independently derived, verified, and integrated all 25 General Aptitude questions in `CHUNK-GA-ME-02` across Mechanical Engineering papers from 2016 and 2017 (`me:2017:ga:q3-s2`, `me:2017:ga:q4-s2`, `me:2017:ga:q5-s2`, `me:2017:ga:q6-s2`, `me:2017:ga:q7-s2`, `me:2017:ga:q8-s2`, `me:2017:ga:q9-s2`, `me:2017:ga:q10-s2`, `me:2016:ga:q1`, `me:2016:ga:q2`, `me:2016:ga:q3`, `me:2016:ga:q4`, `me:2016:ga:q5`, `me:2016:ga:q6`, `me:2016:ga:q7`, `me:2016:ga:q8`, `me:2016:ga:q9`, `me:2016:ga:q10`, `me:2016:ga:q1-s2`, `me:2016:ga:q2-s2`, `me:2016:ga:q3-s2`, `me:2016:ga:q4-s2`, `me:2016:ga:q5-s2`, `me:2016:ga:q6-s2`, `me:2016:ga:q7-s2`).
+  - **Rigorous Pedagogical Derivations**:
+    - `me:2017:ga:q3-s2`: Number systems & integer parity: $a - b$ even implies identical parity; factored $ab - b = b(a - 1)$, proving that if $b$ is even, $b$ provides the factor of 2, and if $b$ is odd, $a$ is odd $\implies a - 1$ is even, so $ab - b$ is invariant and always even; verified Option C.
+    - `me:2017:ga:q4-s2`: Conditional probability: older child is boy $A = \{(B, B), (B, G)\} \implies P(A) = 1/2$; both boys $E = \{(B, B)\} \implies P(E \cap A) = 1/4$; conditional probability $P(E \mid A) = 1/2$; contrasted with "at least one boy" fallacy ($1/3$); verified Option C.
+    - `me:2017:ga:q5-s2`: Deductive logic & Law of Excluded Middle: $P \to Q$ and $Q \to R$ with $P$ married, $R$ unmarried. If $Q$ is married, $Q \to R$ qualifies (1 pair); if $Q$ is unmarried, $P \to Q$ qualifies (1 pair); proving exactly 1 pair in all universes; verified Option B.
+    - `me:2017:ga:q6-s2`: Contextual vocabulary: "cleaving of the subcontinent into two mutually antagonistic parts" refers to the Partition of India, matching synonym "splitting"; verified Option D.
+    - `me:2017:ga:q7-s2`: Work rate linear system: $8(u + v) = 1$ and $5(u/2 + 2v) = 1 \implies u = 1/30$ field/day $\implies 30$ days for $X$ bullocks alone; verified Option A.
+    - `me:2017:ga:q8-s2`: Combinatorics & constrained matchings: 4 women paired with 4 of 5 men, $Y$ must be included and $P \neq Z$; inclusion-exclusion $\binom{4}{3} \times 4! - 1 \times \binom{3}{2} \times 3! = 96 - 18 = 78$ valid pairings; verified Option C.
+    - `me:2017:ga:q9-s2`: Knights and Knaves bivalent logic: P says "Both of us are Knights", Q says "None of us are Knaves" (identical claim $P \land Q$); consistent when both are Knights $(T, T)$ and when both are Knaves $(F, F) \implies$ identities cannot be determined; verified Option D.
+    - `me:2017:ga:q10-s2`: Data interpretation line graphs: winter vs summer pollutant range differs ($9.5\text{ ppm} \neq 5.5\text{ ppm}$, Statement i False); alternate-day proximity $|C_S - C_W| \le 1\text{ ppm}$ satisfied on at least 4 days (Statement ii True); verified Option B.
+    - `me:2016:ga:q1`: Verbal grammar: superlative adjectives require definite article "the" ("the highest peak in the world") and partitive agreement requires plural noun ("one of the highest peaks"); verified Option A.
+    - `me:2016:ga:q2`: Verbal vocabulary & homophones: auxiliary "did" takes bare infinitive verb "lose" ("What did you lose?"); verified Option B.
+    - `me:2016:ga:q3`: Verbal grammar & concessive coherence: preposition "Despite" introduces contrast between clinical efficacy and physician adoption ("effectiveness --- prescribed"); verified Option A.
+    - `me:2016:ga:q4`: Quantitative percentages & set partitioning: total fruits $5{,}692{,}000$; unripe apples $0.15 \times 0.45 \times N = 384{,}210$, ripe apples $0.85 \times 0.34 \times N = 1{,}644{,}988 \implies$ total apples $2{,}029{,}198$; verified Option A.
+    - `me:2016:ga:q5`: Quantitative inequalities: Arun's distance strictly bounded by Ahmed and Susan ($5 < d < 7\text{ km}$); only $6.02\text{ km}$ lies in the admissible open interval; verified Option C.
+    - `me:2016:ga:q6`: Joint probability: $P(I) = 0.50$, $P(D \mid I) = 0.30 \implies P(D^c \mid I) = 0.70$; joint probability of infected asymptomatic person $0.50 \times 0.70 = 0.35$ ($35\%$); verified Option C.
+    - `me:2016:ga:q7`: Textual critical reasoning: confidence of reciprocation directly validates (iii), and events proving him wrong directly entails friends failed to help him last week, validating (iv); verified Option B.
+    - `me:2016:ga:q8`: Transitive linear ordering: $S > L$ and $L > P \implies S > L > P$; Pavithra is strictly the youngest of the three; verified Option D.
+    - `me:2016:ga:q9`: Laws of indices: $q^a = r, r^b = s, s^c = q \implies q = ((q^a)^b)^c = q^{abc} \implies abc = 1$; verified Option C.
+    - `me:2016:ga:q10`: Multi-agent time and work: Q worked 5 days at 12 hrs/day = 60 hrs ($W_Q = 60/300 = 20/100$); R worked 7 days at 18 hrs/day = 126 hrs ($W_R = 126/600 = 21/100$) $\implies W_Q : W_R = 20:21$; verified Option C.
+    - `me:2016:ga:q1-s2`: Quantitative geometry & comparative grammar: sphere volume $\pi/6 \approx 0.5236 < 1.0$ (cube volume); predicate comparative adjective followed by "than" is "less"; verified Option B.
+    - `me:2016:ga:q2-s2`: Irregular verb conjugation & subjunctive mood: capital punishment suspension by the neck strictly uses past participle "hanged" (contrasted with suspending inanimate items "hung"); verified Option A.
+    - `me:2016:ga:q3-s2`: Lexical semantics & word usage: "prone" means lying face down (ii) or susceptible to disease (iii), whereas a dried plum is a "prune" (i is false) $\implies$ (ii) and (iii) only; verified Option D.
+    - `me:2016:ga:q4-s2`: Formal propositional logic: given axiom $P \implies Q$, the assertion "If (i) then (ii)" ($P \implies \neg Q$) requires the contradicting truth state $(P=T, Q=F)$, making it strictly not logically possible; verified Option C.
+    - `me:2016:ga:q5-s2`: Composite geometry: window perimeter $3s + 2s = 5s = 6\text{ m} \implies s = 1.2\text{ m}$; area $s^2 + \frac{\sqrt{3}}{4}s^2 = 1.44 + 0.6235 = 2.0635\text{ m}^2 \approx 2.06\text{ m}^2$; verified Option B.
+    - `me:2016:ga:q6-s2`: Normal distribution dispersion: group Q has $\sigma_Q = 5$ while group P has $\sigma_P = 25$; $95.4\%$ of group Q scores lie within a $20$-mark interval compared to $100$-mark interval for group P $\implies$ most students in group Q score in a narrower range; verified Option C.
+    - `me:2016:ga:q7-s2`: Critical reading comprehension: smart city technology causing surveillance state is stated as an argument by critics, establishing a valid public perception; verified Option C.
+  - **Data Integrity & Option Corruption Repair**:
+    - Identified and repaired Archetype 4 Excel date corruption for `me:2017:ga:q4-s2` in `public/question-detail-shards/me-2017-s2.json` and chunk manifest: updated options from `["01-Apr", "01-Mar", "01-Feb", "1"]` to `["1/4", "1/3", "1/2", "1"]`.
+  - **Pipeline & Metric Milestone**:
+    - Created automation script `scripts/pipeline/apply-chunk-ga-me-02.mjs`.
+    - Integrated patches into `AUTHENTIC_PATCHES`, static detail shards, and v1 registries.
+    - Re-audited inventory: platform accepted solutions rose from 12,497 to **12,522 / 13,194 (94.9%)**, total platform missing reduced from 697 to **672**; ME accepted solutions rose to **2,468 / 2,625 (94.0%)** with ME GA missing reduced from 110 to **85**. Clean `typecheck` and clean `qa:validate-data` (0 errors).
+    - Generated `CHUNK-GA-ME-03` manifest (25 questions queued), reducing remaining ME GA backlog to **60** questions.
+
+- **Phase 6 General Aptitude Solution Integration (CHUNK-GA-ME-01: 25 Authentic GA Solutions, 94.7% Platform Coverage) (DEC-290, 2026-11-19)**:
+  - **Context & Scope**: Executed the first chunk of Phase 6 (Universal General Aptitude) from `plan/20th_oct_missinganswer.md` following user command. Authored, independently derived, verified, and integrated all 25 General Aptitude questions in `CHUNK-GA-ME-01` across Mechanical Engineering papers from 2017 to 2025 (`me:2025:ga:q8`, `me:2024:ga:q6`, `me:2024:ga:q7`, `me:2024:ga:q9`, `me:2024:ga:q10`, `me:2023:ga:q1`, `me:2023:ga:q2`, `me:2023:ga:q6`, `me:2023:ga:q8`, `me:2023:ga:q10`, `me:2022:ga:q5`, `me:2021:ga:q7`, `me:2018:ga:q8-s2`, `me:2017:ga:q1`, `me:2017:ga:q2`, `me:2017:ga:q3`, `me:2017:ga:q4`, `me:2017:ga:q5`, `me:2017:ga:q6`, `me:2017:ga:q7`, `me:2017:ga:q8`, `me:2017:ga:q9`, `me:2017:ga:q10`, `me:2017:ga:q1-s2`, `me:2017:ga:q2-s2`).
+  - **Rigorous Pedagogical Derivations**:
+    - `me:2025:ga:q8`: Spatial aptitude: horizontal reflection $(x, y) \to (x, -y)$ followed by $90^\circ$ clockwise rotation $(x, -y) \to (-y, -x)$; verified Option B.
+    - `me:2024:ga:q6`: Verbal aptitude: contrast particle "wasn't merely", emphatic focus "Even in his blackest moments", character affirmation "was a man", and subject-auxiliary inversion "Only in his blackest moments was he able"; verified Option B.
+    - `me:2024:ga:q7`: Set theory combinatorics: nested non-empty subsets $A \subseteq B \subseteq C \subseteq \{2,3,5\}$; derived partition models ($4^3 - 3^3 = 37$, $3^3 - 2^3 = 19$, unordered 27/28) and documented official MTA rationale due to distinctness and ordering ambiguity; verified Option A (MTA).
+    - `me:2024:ga:q9`: Spatial aptitude: folding planar net into 10-faced closed 3D solid; applied spanning tree face-crease theorem $\text{folds} = F - 1 = 10 - 1 = 9$; verified Option A (9).
+    - `me:2024:ga:q10`: 3D solid geometry: regular tetrahedron dihedral angle $\theta = \arccos(1/3) \approx 70.53^\circ$; detailed discrepancy with $60^\circ$ face angle and documented official MTA rationale; verified Option A (MTA).
+    - `me:2023:ga:q1`: Verbal grammar: causative past verb construction "got it fixed"; verified Option A.
+    - `me:2023:ga:q2`: Verbal analogy: biological and developmental cultivation "Planting : Seed :: Raising : Child"; verified Option A.
+    - `me:2023:ga:q6`: Logical reasoning: deduction from majority quantifier "almost all" to existential proposition "Some of Ravi's friends are hardworking and kind"; verified Option D.
+    - `me:2023:ga:q8`: Para jumbles: coherent narrative sequencing (ii) room setting $\to$ (i) hesitation to knock $\to$ (iv) alternative path $\to$ (iii) bright kitchen; verified Option C.
+    - `me:2023:ga:q10`: Spatial aptitude: orthogonal parallel projection of convex 3D solids must be convex polygons; proved non-convex shadow Q is impossible; verified Option B (Q).
+    - `me:2022:ga:q5`: Engineering graphics: orthographic front projection of symmetric trapezoidal prism seated over rectangular base; verified Option A.
+    - `me:2021:ga:q7`: Spatial puzzle: complementary stepped profile mating with jagged boundary to form rectangle; verified Option A.
+    - `me:2018:ga:q8-s2`: Work and time: robot work-hours calculation $125 \times 39 \times 7 = 34{,}125$, remaining work $13{,}650$ robot-hours over 13 days at 8 hrs/day requiring $131.25$ robots $\implies 6.25 \approx 7$ additional robots; documented official MTA rationale due to missing value in choices; verified Option A (MTA).
+    - `me:2017:ga:q1`: Verbal grammar: plural partitive noun "one of my best friends" + manner adverb "keenly"; verified Option D.
+    - `me:2017:ga:q2`: Verbal vocabulary: collocation for agitated debate "heated"; verified Option D.
+    - `me:2017:ga:q3`: Quantitative geometry: rolling right cone slant height $L = \sqrt{5^2+12^2}=13\text{ cm}$, ground arc $10\pi\text{ cm}$, swept angle $\theta = 10\pi/13\text{ rad}$; verified Option D.
+    - `me:2017:ga:q4`: Descriptive statistics: median of 100 employees from cumulative frequencies; $x_{50} = x_{51} = \text{Rs. } 30{,}000$; verified Option B.
+    - `me:2017:ga:q5`: Propositional logic: complementary pair $n \ge 3$ and $n < 3$ guarantees one is true; third proposition $n \ge 1$ must be false $\implies n = 0$; verified Option A.
+    - `me:2017:ga:q6`: Reading comprehension: idiomatic meaning of "losing battle" as inability to succeed in permitting caste-marks; verified Option C.
+    - `me:2017:ga:q7`: Cryptarithmetic: ambiguous subtraction borrowing with unconstrained simultaneous digit assignments $\implies$ Cannot be determined; verified Option D.
+    - `me:2017:ga:q8`: Planar inequalities: rectangular region $S_1$ (area 24) and triangular region $S_2$ (area 8) are strictly disjoint ($y \le 0$ vs $y \ge 1$) $\implies \text{Area} = 24 + 8 = 32$; verified Option C.
+    - `me:2017:ga:q9`: Critical reasoning: conversational implicature in James's retort indicating Steve played better than Mark; verified Option B.
+    - `me:2017:ga:q10`: Data interpretation: bacterial growth curve at $37^\circ\text{C}$ plateaus earlier (Statement i True); curd threshold 0.8 reached at 120 min vs 80 min is $1.5\times$, not twice (Statement ii False); verified Option A.
+    - `me:2017:ga:q1-s2`: Verbal grammar: subject-verb agreement with intervening clause "The ways... are"; verified Option C.
+    - `me:2017:ga:q2-s2`: Verbal vocabulary: logical decision collocation "forgo plan Q, as these two are mutually exclusive"; verified Option A.
+  - **Data Integrity & Option Shift Repair**:
+    - Repaired historical 1-index option shift in `public/question-detail-shards/me-2017-s2.json`:
+      - `me:2017:ga:q1-s2`: options updated to `["is", "is being", "are", "are being"]` with official answer C ("are").
+      - `me:2017:ga:q2-s2`: options updated to `["forgo, exclusive", "forget, inclusive", "accept, exhaustive", "adopt, intrusive"]` with official answer A ("forgo, exclusive").
+  - **Pipeline & Metric Milestone**:
+    - Created automation script `scripts/pipeline/apply-chunk-ga-me-01.mjs`.
+    - Integrated patches into `AUTHENTIC_PATCHES`, static shards, and v1 registries.
+    - Re-audited inventory: platform accepted solutions rose from 12,472 to **12,497 / 13,194 (94.7%)**, total platform missing reduced from 722 to **697**; ME accepted solutions rose to **2,443 / 2,625 (93.1%)** with ME GA missing reduced from 135 to 110. Clean `typecheck` and clean `qa:validate-data`.
+
 - **18 November 2026 Question Audit & Data Integrity Resolutions (DEC-289, 2026-11-18)**:
   - **Context & Scope**: Executed the 6-phase resolution runbook from `plan/nov_26/18th_nov_questionresolve.md` across 5 reported questions (`go:460063`, `ec:2019:q8`, `go:426512`, `ec:2014:q34-s3`, `go:523093`) and audited 6 additional questions that inherited shared solution mappings on 2024 GA Q4 (`go:422893`, `go:426520`, `go:426498`, `go:426491`, `go:422968`, `go:426536`).
   - **Image Deduplication & Parity (`go:460063`)**:

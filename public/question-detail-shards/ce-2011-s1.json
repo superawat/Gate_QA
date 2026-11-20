@@ -2524,8 +2524,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Logarithmic Equations and Exponent Relations",
+        "markdown": "### 1. Translating the Logarithmic Relation\nGiven:\n$$\\log(P) = \\frac{1}{2}\\log(Q) = \\frac{1}{3}\\log(R)$$\n\nLet the common value be $k$ (using any consistent logarithmic base). Then:\n$$\\log(P) = k \\implies P = b^k$$\n$$\\frac{1}{2}\\log(Q) = k \\implies \\log(Q) = 2k \\implies Q = b^{2k} = (b^k)^2 = P^2$$\n$$\\frac{1}{3}\\log(R) = k \\implies \\log(R) = 3k \\implies R = b^{3k} = (b^k)^3 = P^3$$\n\nSo the relations are:\n$$Q = P^2,\\quad R = P^3$$\n\n---\n\n### 2. Testing the Options\n\n* **Option A**: $P^2 = Q^3 R^2$. Substitute: LHS $= P^2$; RHS $= (P^2)^3(P^3)^2 = P^6 \\cdot P^6 = P^{12}$. False.\n\n* **Option B**: $Q^2 = PR$. Substitute: LHS $= (P^2)^2 = P^4$; RHS $= P \\cdot P^3 = P^4$. **True.**\n\n* **Option C**: $Q^2 = R^3 P$. Substitute: LHS $= P^4$; RHS $= (P^3)^3 \\cdot P = P^{10}$. False.\n\n* **Option D**: $R = P^2 Q^2$. Substitute: LHS $= P^3$; RHS $= P^2 \\cdot (P^2)^2 = P^6$. False.\n\n---\n\n### 3. Conclusion\nThe only true option is $Q^2 = PR$.\n\nTherefore, the correct answer is **Option B ($Q^2=PR$)**.",
+        "images": []
       }
     },
     "ce:2011:ga:q2": {
@@ -2876,8 +2877,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Quantitative Aptitude - Linear Equations (Work Rate / Backlog Clearing)",
+        "markdown": "### 1. Variable Definitions\nLet the daily incoming orders be $d$ (in truck-loads per day) and the initial backlog be $B$ (in truck-loads). Each truck clears $1$ truck-load per day.\n\n---\n\n### 2. Setting Up Equations\nUsing 7 trucks, all orders are cleared by the end of the 4th day:\n$$B + 4d = 7 \\times 4 = 28 \\quad \\text{...(1)}$$\n\nUsing 3 trucks, all orders are cleared by the end of the 10th day:\n$$B + 10d = 3 \\times 10 = 30 \\quad \\text{...(2)}$$\n\nSubtract (1) from (2):\n$$6d = 2 \\implies d = \\frac{1}{3}$$\n\nSubstitute into (1):\n$$B + 4\\left(\\frac{1}{3}\\right) = 28 \\implies B = 28 - \\frac{4}{3} = \\frac{84 - 4}{3} = \\frac{80}{3}$$\n\n---\n\n### 3. Minimum Trucks for 5-Day Clearance\nWe need the smallest integer $t$ such that after 5 days no backlog remains:\n$$B + 5d \\le 5t$$\n$$\\frac{80}{3} + 5\\left(\\frac{1}{3}\\right) = \\frac{80 + 5}{3} = \\frac{85}{3} \\approx 28.333$$\n\nSo:\n$$5t \\ge \\frac{85}{3} \\implies t \\ge \\frac{85}{15} = \\frac{17}{3} \\approx 5.667$$\n\nThe smallest integer satisfying this is:\n$$t = 6$$\n\n---\n\n### 4. Option Evaluation\n* **Option A (4)**: Insufficient capacity ($5\\times4=20 < 28.33$).\n* **Option B (5)**: Insufficient ($5\\times5=25 < 28.33$).\n* **Option C (6)**: **Correct** ($5\\times6=30 \\ge 28.33$).\n* **Option D (7)**: Sufficient but not the minimum.\n\nTherefore, the correct answer is **Option C (6)**.",
+        "images": []
       }
     },
     "ce:2011:ga:q10": {

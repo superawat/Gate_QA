@@ -1,0 +1,297 @@
+{
+  "chunkId": "CHUNK-GA-ME-06",
+  "branch": "me",
+  "year": "all",
+  "section": "ga",
+  "generatedAt": "2026-11-20T08:45:18.930Z",
+  "count": 10,
+  "offset": 0,
+  "totalMatchingInBacklog": 10,
+  "remainingAfterSlice": 0,
+  "questions": [
+    {
+      "uid": "me:2014:ga:q3-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 3,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 3",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "While receiving the award, the scientist said, \"I feel vindicated\". Which of the following is closest in meaning to the word 'vindicated'?",
+      "options": [
+        "punished",
+        "substantiated",
+        "appreciated",
+        "chastened"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Vocabulary in Context: Meaning of 'Vindicated'",
+        "markdown": "### **Key Concept**\n**Vindicate** (from Latin <em>vindicare</em>, \"to claim, to set free, to avenge\") means two closely linked things:\n1. to **clear someone of blame or suspicion** (exonerate);\n2. to **prove that a claim, belief, or course of action that had been doubted or criticised was right** (justify, validate).\n\nThe word therefore always carries a sense of **prior doubt that has now been answered**.\n\n---\n\n### **Step-by-Step Analysis**\n\n1. **Sentence frame:**\n   $$\\text{While receiving the award, the scientist said, }\\textit{I feel vindicated}$$\n   - The award is external, public confirmation of the scientist's work.\n   - \"I feel vindicated\" therefore reports: <em>\"my work/position — which had been questioned — has now been proved correct.\"</em> The feeling is not gratitude but **justification**.\n\n2. **Testing each option against that sense:**\n\n   - **(A) punished:** This exploits a false friend. <em>Vindictive</em> (from the same root <em>vindicta</em>, revenge) means spiteful, but <em>vindicated</em> never means \"punished\". The polarity is opposite — vindication is a **release** from blame, not the imposition of it.\n\n   - **(B) substantiated:** <em>To substantiate</em> = to support a claim with evidence, to establish it as valid. This is precisely \"proved right / shown to be justified\", and it preserves the essential idea that an earlier doubt has been defeated by proof. **Closest in meaning.**\n\n   - **(C) appreciated:** The award does imply appreciation, but <em>appreciated</em> = \"valued, thanked, recognised for worth\". It lacks the decisive component of **being cleared of doubt and proved correct**. A scientist whose theory was rejected for years feels vindicated, not merely appreciated, when the evidence finally arrives.\n\n   - **(D) chastened:** <em>To chasten</em> = to discipline, humble, or subdue someone through criticism or suffering. This is the direct opposite of being proved right.\n\n3. **Semantic field check:** the standard synonyms of <em>vindicated</em> are <em>justified, exonerated, validated, upheld, substantiated</em> — option (B) is the only member of this set.\n\n---\n\n### **Conclusion**\nThe scientist feels that her previously doubted position has been **proved right**, i.e. **substantiated**.\n\n**Correct Option: (B)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2014:ga:q4-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 4,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 4",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "Let $f(x,y)=x^n y^m=P$ If $x$ is doubled and $y$ is halved, the new value of $f$ is",
+      "options": [
+        "$2^{n-m}P$",
+        "$2^{m-n}P$",
+        "$2(n-m)P$",
+        "$2(m-n)P$"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Homogeneous Functions: Effect of Scaling the Arguments",
+        "markdown": "### **Key Concept**\nFor a product-form function $f(x,y)=x^{n}y^{m}$, scaling the arguments scales the output **multiplicatively by the scaled factors raised to their own exponents**. If $x \\mapsto \\lambda x$ and $y \\mapsto \\mu y$, then\n$$f(\\lambda x,\\mu y)=\\lambda^{n}\\mu^{m}\\,f(x,y).$$\n\n---\n\n### **Step-by-Step Derivation**\n\n1. **Given:**\n   $$f(x,y)=x^{n}y^{m}=P$$\n\n2. **Apply the transformation** $x \\mapsto 2x$ and $y \\mapsto \\dfrac{y}{2}$, i.e. $\\lambda = 2$ and $\\mu = \\dfrac{1}{2}$:\n   $$f\\!\\left(2x,\\ \\frac{y}{2}\\right)=(2x)^{n}\\left(\\frac{y}{2}\\right)^{m}$$\n\n3. **Distribute the exponents over the constants** (using $(ab)^{n}=a^{n}b^{n}$ and $\\left(\\tfrac{1}{2}\\right)^{m}=2^{-m}$):\n   $$(2x)^{n}\\left(\\frac{y}{2}\\right)^{m}=2^{n}x^{n}\\cdot \\frac{y^{m}}{2^{m}}=2^{n}\\cdot 2^{-m}\\cdot x^{n}y^{m}$$\n\n4. **Collect the powers of $2$ and substitute $P=x^{n}y^{m}$:**\n   $$f\\!\\left(2x,\\ \\frac{y}{2}\\right)=2^{\\,n-m}\\,x^{n}y^{m}=2^{\\,n-m}P$$\n\n---\n\n### **Numerical Sanity Checks**\n\n- **$n=m=1$:** $f=xy$ is a rectangle's area. Doubling one side and halving the other leaves the area unchanged, and indeed $2^{1-1}P=P$. ✔\n- **$n=2,\\ m=1$:** the formula predicts $2^{2-1}P=2P$. Directly: $(2x)^{2}\\left(\\tfrac{y}{2}\\right)=4x^{2}\\cdot\\tfrac{y}{2}=2x^{2}y=2P$. ✔\n\n---\n\n### **Elimination of Distractors**\n\n- **$2^{m-n}P$:** this is what results if $x$ is **halved** and $y$ is **doubled** — the exponents have been swapped.\n- **$2(n-m)P$ and $2(m-n)P$:** these replace the <em>exponential</em> factor $2^{\\,n-m}$ by a <em>linear</em> one. They fail the simplest check $n=m=1$, where they give $0$ instead of the correct factor $1$.\n\n---\n\n### **Conclusion**\n$$f\\!\\left(2x,\\frac{y}{2}\\right)=2^{\\,n-m}P$$\n\n**Correct Option: (A)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2014:ga:q5-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 5,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 5",
+      "type": "NAT",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "495",
+      "questionHtml": "In a sequence of 12 consecutive odd numbers, the sum of the first 5 numbers is 425. What is the sum of the last 5 numbers in the sequence?",
+      "options": [],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Arithmetic Progression of Consecutive Odd Numbers",
+        "markdown": "### **Key Concept**\nConsecutive odd numbers form an **arithmetic progression with common difference $2$**. If the first term is $a$, the $k$-th term is\n$$t_k = a + 2(k-1),$$\nso the 12-term sequence is $a,\\ a+2,\\ a+4,\\ \\dots,\\ a+22$.\n\n---\n\n### **Step-by-Step Derivation**\n\n1. **Write the first five terms:**\n   $$a,\\quad a+2,\\quad a+4,\\quad a+6,\\quad a+8$$\n\n2. **Use the given sum of the first five:**\n   $$a+(a+2)+(a+4)+(a+6)+(a+8)=425$$\n   $$5a+20=425 \\implies 5a=405 \\implies a=81$$\n\n3. **Write out the full 12-term sequence:**\n   $$81,\\ 83,\\ 85,\\ 87,\\ 89,\\ 91,\\ 93,\\ 95,\\ 97,\\ 99,\\ 101,\\ 103$$\n   (Check: $t_{12}=81+2(11)=103$.)\n\n4. **Sum the last five terms** (positions 8 to 12):\n   $$95+97+99+101+103=5\\times 99=495$$\n\n---\n\n### **Shortcut (Shift Argument)**\n\nEvery term of the last block is exactly **7 positions ahead** of the corresponding term of the first block, i.e. larger by\n$$2\\times 7 = 14.$$\nHence\n$$\\text{Sum}_{\\text{last }5}=\\text{Sum}_{\\text{first }5}+5\\times 14=425+70=495.$$\n\n---\n\n### **Cross-Check**\n\nTotal of all 12 terms by the AP sum formula:\n$$S_{12}=\\frac{12}{2}\\big(81+103\\big)=6\\times 184=1104.$$\nThe middle two terms are $t_6=91$ and $t_7=93$, so\n$$425+495+91+93=1104 \\quad \\checkmark$$\n\n---\n\n### **Conclusion**\nThe sum of the last five numbers is **495**.\n\n**Correct Answer: 495**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2014:ga:q6-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 6,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 6",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Find the next term in the sequence: 13M, 17Q, 19S, ___",
+      "options": [
+        "21W",
+        "21V",
+        "23W",
+        "23V"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Letter–Number Series: Consecutive Primes and Alphabet Positions",
+        "markdown": "### **Key Concept**\nEach term of the series is a **number followed by the letter occupying that same position in the English alphabet** ($A=1, B=2, \\dots, Z=26$). The numbers themselves follow a familiar sequence.\n\n---\n\n### **Step-by-Step Derivation**\n\n1. **Decode the letter half of each term:**\n\n$$\\begin{array}{|c|c|c|c|}\n\\hline\n\\text{Term} & \\text{Number} & \\text{Letter} & \\text{Letter's rank} \\\\\n\\hline\n13M & 13 & M & 13 \\\\\n17Q & 17 & Q & 17 \\\\\n19S & 19 & S & 19 \\\\\n\\hline\n\\end{array}$$\n\n   In every term the letter's rank **equals the number**. So the rule for the letter is fixed: <em>letter = the alphabet letter whose rank is the number.</em>\n\n2. **Identify the number sequence:**\n   $$13,\\ 17,\\ 19,\\ \\dots$$\n   These are the **consecutive prime numbers** starting from $13$:\n   $$13,\\ 17,\\ 19,\\ 23,\\ 29,\\ 31,\\dots$$\n   (The primes skipped are $2,3,5,7,11$; note $21=3\\times 7$ and $25=5\\times5$ are not prime, so the gap $19 \\to 23$ is correct.)\n\n3. **Form the next term:**\n   - Next prime after $19$ is $23$.\n   - The $23^{\\text{rd}}$ letter is $W$ ($A=1,\\dots, W=23$).\n\n   $$\\text{Next term} = 23W$$\n\n---\n\n### **Elimination of Distractors**\n\n- **$21W$ and $21V$:** both use $21$, which is composite ($21=3\\times 7$) and therefore breaks the prime sequence.\n- **$23V$:** the number $23$ is right, but $V=22$, so the letter no longer matches the number.\n\n---\n\n### **Conclusion**\nThe series continues as $13M,\\ 17Q,\\ 19S,\\ \\mathbf{23W}$.\n\n**Correct Option: (C)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2014:ga:q7-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 7,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "If 'KCLFTSB' stands for 'best of luck' and 'SHSWDG' stands for 'good wishes', which of the following indicates 'ace the exam'?",
+      "options": [
+        "MCHTX",
+        "MXHTC",
+        "XMHCT",
+        "XMHTC"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Letter Coding: Vowel Deletion Followed by Reversal",
+        "markdown": "### **Key Concept**\nA substitution code must be **derived from the given examples, not guessed**. Here the transformation has exactly two steps applied to the plain phrase:\n1. **delete every vowel** ($a,e,i,o,u$);\n2. **reverse** the remaining string of consonants.\n\n---\n\n### **Step 1 — Decode the rule from the first example**\n\nPlain: $\\text{b e s t  o f  l u c k}$ (spaces ignored)\n$$\\text{bestofluck} \\;\\xrightarrow{\\ \\text{delete vowels } e,o,u\\ }\\; \\text{b s t f l c k} = \\text{BSTFLCK}$$\n$$\\text{BSTFLCK} \\;\\xrightarrow{\\ \\text{reverse}\\ }\\; \\text{KCLFTSB} \\quad \\checkmark$$\n\n### **Step 2 — Confirm the rule on the second example**\n\n$$\\text{goodwishes} \\;\\xrightarrow{\\ \\text{delete } o,o,i,e\\ }\\; \\text{g d w s h s} = \\text{GDWSHS}$$\n$$\\text{GDWSHS} \\;\\xrightarrow{\\ \\text{reverse}\\ }\\; \\text{SHSWDG} \\quad \\checkmark$$\n\nThe rule is confirmed by both samples, so it is safe to apply.\n\n---\n\n### **Step 3 — Encode \"ace the exam\"**\n\n1. **Remove spaces:**\n   $$\\text{acetheexam}$$\n2. **Delete the vowels $a, e, e, e, a$:**\n   $$\\text{a c e t h e e x a m} \\;\\xrightarrow{\\ \\text{keep only consonants}\\ }\\; \\text{c t h x m} = \\text{CTHXM}$$\n3. **Reverse the five consonants:**\n   $$\\text{CTHXM} \\;\\longrightarrow\\; \\text{MXHTC}$$\n\n---\n\n### **Elimination of Distractors**\n\n- **MCHTX:** it keeps the correct leading $M$ (the last consonant of the phrase) but then rotates the remaining four consonants instead of reversing them — the order $m,c,h,t,x$ is a cyclic shift, not a reversal.\n- **XMHTC and XMHCT:** both put $X$ first. Under the verified rule the front of the code is the **last consonant of the phrase**, which is $M$ (from \"exa**m**\"), never $X$. These options come from reversing the **word order** (\"exam the ace\") instead of reversing the **letter string**, which also scrambles the internal order of the consonants.\n\n---\n\n### **Conclusion**\n$$\\text{\"ace the exam\"} \\longrightarrow \\mathbf{MXHTC}$$\n\n**Correct Option: (B)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2014:ga:q8-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 8,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 8",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "Industrial consumption of power doubled from 2000-2001 to 2010-2011. Find the annual rate of increase in percent assuming it to be uniform over the years.",
+      "options": [
+        "5.6",
+        "7.2",
+        "10",
+        "12.2"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Compound Annual Growth Rate (CAGR) from a Doubling",
+        "markdown": "### **Key Concept**\n\"Annual rate of increase, uniform over the years\" means a **compound (geometric) growth rate** $r$: each year's consumption is $(1+r)$ times the previous year's. Over $n$ years,\n$$V_n = V_0(1+r)^{n}.$$\nDoubling means $\\dfrac{V_n}{V_0}=2$.\n\n---\n\n### **Step-by-Step Derivation**\n\n1. **Count the years:** 2000-01 to 2010-11 is a span of\n   $$n = 2010-2000 = 10 \\text{ annual steps}.$$\n\n2. **Set up the doubling equation:**\n   $$(1+r)^{10}=2$$\n\n3. **Solve for $1+r$:**\n   $$1+r = 2^{1/10}$$\n\n4. **Evaluate numerically.** Using $2^{1/10}=e^{\\ln 2/10}$ with $\\ln 2 = 0.693147$:\n   $$2^{1/10}=e^{0.0693147}=1+0.0693147+\\frac{0.0693147^{2}}{2}+\\dots \\approx 1.0718$$\n   $$r \\approx 0.0718 = 7.18\\% \\approx 7.2\\%$$\n\n5. **Verification:**\n   $$1.072^{10}=2.004 \\approx 2 \\quad \\checkmark$$\n\n---\n\n### **Why the other options fail**\n\n- **$5.6\\%$** — this rate would double consumption only after about $72/5.6 \\approx 12.9$ years; check: $1.056^{10}=1.72 \\neq 2$.\n- **$10\\%$** — this is the **simple (linear)** answer $100\\%/10$; it ignores compounding: $1.10^{10}=2.59 \\neq 2$.\n- **$12.2\\%$** — far too fast: $1.122^{10}=3.16$, i.e. more than a tripling in ten years.\n\nThe trap is the linear estimate $100\\%/10=10\\%$, which overstates the rate because each year's growth is applied to an already-increased base. The **Rule of 72** ($r \\approx 72/n = 72/10 = 7.2\\%$) confirms the compounded value.\n\n---\n\n### **Conclusion**\nThe uniform annual rate of increase is approximately **7.2%**.\n\n**Correct Option: (B)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2014:ga:q9-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 9,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 9",
+      "type": "NAT",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "22",
+      "questionHtml": "A firm producing air purifiers sold 200 units in 2012. The following pie chart presents the share of raw material, labour, energy, plant & machinery, and transportation costs in the total manufacturing cost of the firm in 2012. The expenditure on labour in 2012 is Rs. 4,50,000. In 2013, the raw material expenses increased by 30% and all other expenses increased by 20%. What is the percentage increase in total cost for the company in 2013?<br><img src=\"/question-images/me/2014/me-2014-7058ae15f1.webp\" /><br>",
+      "options": [],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Pie Chart Interpretation with a Weighted Percentage Change",
+        "markdown": "### **Key Concept**\nWhen the total splits into shares $w_i$ (with $\\sum w_i = 1$) and each share grows by a factor $f_i$, the total grows by the **weighted average factor**\n$$\\frac{C_{2013}}{C_{2012}}=\\sum_i w_i f_i .$$\nOnly the **mix** of costs matters — the absolute cost base cancels out.\n\n---\n\n### **Step 1 — Read the pie chart**\n\n$$\\begin{array}{|l|c|}\n\\hline\n\\text{Cost head} & \\text{Share of total cost} \\\\\n\\hline\n\\text{Raw material} & 20\\% \\\\\n\\text{Labour} & 15\\% \\\\\n\\text{Energy} & 25\\% \\\\\n\\text{Plant and machinery} & 30\\% \\\\\n\\text{Transportation} & 10\\% \\\\\n\\hline\n\\text{Total} & 100\\% \\\\\n\\hline\n\\end{array}$$\n\n---\n\n### **Step 2 — Fix the 2012 cost base**\n\nLabour expenditure in 2012 is ₹$4{,}50{,}000$, which is $15\\%$ of the total:\n$$0.15\\,C_{2012}=4{,}50{,}000 \\implies C_{2012}=\\frac{4{,}50{,}000}{0.15}=\\text{Rs. }30{,}00{,}000$$\n\nConsequently:\n- Raw material $=0.20\\times 30{,}00{,}000=\\text{Rs. }6{,}00{,}000$\n- All other heads together $=0.80\\times 30{,}00{,}000=\\text{Rs. }24{,}00{,}000$\n\n---\n\n### **Step 3 — Apply the 2013 increases**\n\nRaw material rises by $30\\%$, everything else by $20\\%$:\n$$C_{\\text{raw}}^{2013}=6{,}00{,}000\\times 1.30=\\text{Rs. }7{,}80{,}000$$\n$$C_{\\text{other}}^{2013}=24{,}00{,}000\\times 1.20=\\text{Rs. }28{,}80{,}000$$\n$$C_{2013}=7{,}80{,}000+28{,}80{,}000=\\text{Rs. }36{,}60{,}000$$\n\n---\n\n### **Step 4 — Percentage increase**\n\n$$\\frac{C_{2013}-C_{2012}}{C_{2012}}\\times 100=\\frac{36{,}60{,}000-30{,}00{,}000}{30{,}00{,}000}\\times 100=\\frac{6{,}60{,}000}{30{,}00{,}000}\\times 100=22\\%$$\n\n**Shortcut (no need for the cost base at all):**\n$$0.20(1.30)+0.80(1.20)=0.26+0.96=1.22 \\implies +22\\%$$\n\n---\n\n### **Note on the distractor**\n\nThe \"200 units sold in 2012\" is irrelevant: the question asks for the percentage increase in **total manufacturing cost**, not in cost per unit or in revenue. Since volume is unchanged, unit-level and total-level percentage changes are identical anyway.\n\n---\n\n### **Conclusion**\nThe total manufacturing cost rises by **22%** in 2013.\n\n**Correct Answer: 22**",
+        "images": [
+          "/question-images/me/2014/me-2014-7058ae15f1.webp"
+        ]
+      }
+    },
+    {
+      "uid": "me:2014:ga:q10-s4",
+      "branch": "me",
+      "year": 2014,
+      "set": 4,
+      "qNum": 10,
+      "title": "GATE ME 2014 | Set 4 | GA | Question: 10",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "A five digit number is formed using the digits 1, 3, 5, 7 and 9 without repeating any of them. What is the sum of all such possible five digit numbers?",
+      "options": [
+        "6666660",
+        "6666600",
+        "6666666",
+        "6666606"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Sum of All Numbers Formed by Permuting Given Digits",
+        "markdown": "### **Key Concept**\nFor $n$ distinct non-zero digits, every permutation is a valid $n$-digit number, and **each digit occurs equally often in each place value**. With $n!$ total permutations, each digit appears in each column exactly\n$$\\frac{n!}{n}=(n-1)! \\text{ times.}$$\n\n---\n\n### **Step-by-Step Derivation**\n\n1. **Count the numbers:** five digits $1,3,5,7,9$, no repetition, all non-zero, so every arrangement is a genuine five-digit number:\n   $$5! = 120 \\text{ numbers}$$\n\n2. **Count the appearances of each digit in each column.** Fix a digit in a fixed place (say $1$ in the ten-thousands place). The remaining four places can be filled by the other four digits in\n   $$4! = 24 \\text{ ways.}$$\n   The same count holds for every digit and every column.\n\n3. **Column sum.** In any single column (units, tens, hundreds, thousands, ten-thousands), the digits $1,3,5,7,9$ each appear $24$ times, so the column adds to\n   $$24\\times(1+3+5+7+9)=24\\times 25=600.$$\n\n4. **Weight each column by its place value:**\n   $$S=600\\left(10^{4}+10^{3}+10^{2}+10^{1}+10^{0}\\right)=600\\times 11{,}111$$\n   $$S=6{,}666{,}600$$\n\n---\n\n### **Cross-Check by Complementary Pairing**\n\nEach number $N$ pairs with its digit-reversal $N'$ (e.g. $13579$ with $97531$), and\n$$N+N'=111{,}110$$\nbecause every column of the pair sums to $10$ ($1+9$, $3+7$, $5+5$, $7+3$, $9+1$), so the pair total is $111{,}110$. There are $120/2=60$ such pairs:\n$$60\\times 111{,}110=6{,}666{,}600 \\quad \\checkmark$$\n\n---\n\n### **Elimination of Distractors**\n\n- **$6{,}666{,}660$:** this comes from pairing with $111{,}111$ instead of $111{,}110$ — i.e. ignoring the carry produced by the middle column ($5+5=10$) of each complementary pair.\n- **$6{,}666{,}666$:** a string of sixes cannot arise, since the column sum is $600$ and $600\\times 11{,}111$ ends in two zeros.\n- **$6{,}666{,}606$:** the units and tens digits have been interchanged, i.e. a column-sum error, not a place-value error.\n\n---\n\n### **Conclusion**\nThe sum of all such five-digit numbers is **$6{,}666{,}600$**.\n\n**Correct Option: (B)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2012:ga:q7",
+      "branch": "me",
+      "year": 2012,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE ME 2012 | Set 1 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Wanted Temporary, Part-time persons for the post of Field Interviewer to conduct personal interviews to collect and collate economic data. Requirements: High-school pass, must be available for the Day, Evening and Saturday work. Transportation paid, expenses reimbursed.\n<br>\nWhich of the following is the best inference from the above advertisement?",
+      "options": [
+        "Gender-discriminatory",
+        "Xenophobic",
+        "Not designed to make the post attractive",
+        "Not gender-discriminatory"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Verbal Reasoning: Best Inference from an Advertisement",
+        "markdown": "### **Key Concept**\nAn **inference** is a conclusion drawn from the <em>content</em> of the passage. The best inference must be (i) supported by what the advertisement actually says, and (ii) substantive — it should tell us something about the post or the employer's intent, not merely restate a neutral fact about the wording.\n\n---\n\n### **Step 1 — Catalogue what the advertisement offers and demands**\n\n- **Nature of post:** <em>temporary</em>, <em>part-time</em>.\n- **Work:** personal interviews to collect and collate economic data.\n- **Eligibility:** only \"high-school pass\".\n- **Availability:** must be available for **day, evening <em>and</em> Saturday** work.\n- **Benefits:** transportation paid, expenses reimbursed.\n\nTwo features stand out:\n\n1. **Every stated term is a burden or a bare minimum.** The post is temporary and part-time, yet the candidate must be available across a <em>split</em> schedule (day $+$ evening $+$ Saturday). The only qualification demanded is high-school level, which places the post in the lowest pay band. No salary, scale, or allowance is advertised — only reimbursement of expenses.\n2. **Nothing in the advertisement is written as a selling point.** There is no mention of pay, prospects, training, or working conditions that would draw applicants in.\n\nThe advertisement is therefore a **minimum-obligation, low-cost notice** — drafted to fill the post quickly and cheaply, not to attract candidates.\n\n---\n\n### **Step 2 — Evaluate each option**\n\n- **(A) Gender-discriminatory:** Unsupported. The advertisement asks for \"**persons**\" and imposes no sex-specific condition anywhere (no \"male/female only\", no marital or family-status clause). Nothing in the text restricts by gender.\n\n- **(B) Xenophobic:** Unsupported. Xenophobia is hostility to foreigners or people of other nationalities; the advertisement says nothing about nationality, origin, or language.\n\n- **(C) Not designed to make the post attractive:** **Supported.** Temporary $+$ part-time $+$ compulsory day/evening/Saturday availability $+$ only high-school qualification $+$ no salary mentioned, with mere expense reimbursement as the sole inducement. Each clause lowers the appeal of the post; none raises it. This is a genuine conclusion about <em>why the notice is written the way it is</em>.\n\n- **(D) Not gender-discriminatory:** This is an accurate description of the wording (\"persons\" is generic), but it is a **statement about what the advertisement does not say**, not an inference about the post. It gives no information about the job, and the neutral wording is standard boilerplate in any public notice. Between two candidate answers, (C) is the one that follows from the <em>content</em> of the advertisement, which is what \"best inference\" asks for.\n\n---\n\n### **Conclusion**\nThe advertisement's cumulative terms — temporary, part-time, fragmented hours, minimal qualification, no pay stated — show that it was **not framed to make the post attractive**.\n\n**Correct Option: (C)**",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2011:ga:q10",
+      "branch": "me",
+      "year": 2011,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE ME 2011 | Set 1 | GA | Question: 10",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "A transporter receives the same number of orders each day. Currently, he has\nsome pending orders (backlog) to be shipped. If he uses 7 trucks, then at the\nend of the 4th day he can clear all the orders. Alternatively, if he uses only 3\ntrucks, then all the orders are cleared at the end of the 10th day. What is the\nminimum number of trucks required so that there will be no pending order at the\nend of the 5th day?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "Linear Equations: Clearing a Backlog with Daily Order Arrivals",
+        "markdown": "### **Key Concept**\nTwo flows act simultaneously:\n- **Inflow:** a constant $d$ orders arrive **every day**.\n- **Outflow:** each truck ships a fixed capacity $c$ orders per day, and $n$ trucks working in parallel ship $nc$ orders per day.\n\nIf the backlog today is $B$, then after $k$ days with $n$ trucks the uncleared quantity is\n$$B + kd - knc .$$\n\"All orders are cleared at the end of day $k$\" means this quantity reaches zero exactly at day $k$:\n$$B + kd = knc .$$\n\n---\n\n### **Step-by-Step Derivation**\n\n1. **Translate the two given scenarios:**\n\n   - $7$ trucks, cleared at the end of day $4$:\n     $$B + 4d = 7 \\times 4c = 28c \\tag{1}$$\n\n   - $3$ trucks, cleared at the end of day $10$:\n     $$B + 10d = 3 \\times 10c = 30c \\tag{2}$$\n\n2. **Subtract (1) from (2)** to eliminate the unknown backlog $B$:\n   $$(B + 10d) - (B + 4d) = 30c - 28c$$\n   $$6d = 2c \\implies c = 3d$$\n   So one truck ships **three days' worth of incoming orders per day**.\n\n3. **Recover the backlog** from (1):\n   $$B = 28c - 4d = 28(3d) - 4d = 84d - 4d = 80d$$\n   The pending backlog equals **80 days of orders**.\n\n4. **Impose the new requirement:** with $n$ trucks, cleared at the end of day $5$:\n   $$B + 5d = 5nc$$\n   $$80d + 5d = 5n(3d)$$\n   $$85d = 15nd \\implies n = \\frac{85}{15} = 5.67$$\n\n5. **Round up to a whole number of trucks** (trucks cannot be fractional, and \"no pending order\" is a hard constraint):\n   - $n = 5$: capacity $= 5\\times 5\\times 3d = 75d < 85d$ — a shortfall of $10d$ orders. **Not enough.**\n   - $n = 6$: capacity $= 6\\times 5\\times 3d = 90d \\ge 85d$ — clears with $5d$ to spare. **Sufficient.**\n\n   Therefore the minimum is\n   $$n_{\\min}=6$$\n\n---\n\n### **Elimination of Distractors**\n\n- **$4$ trucks:** capacity $4\\times5\\times3d=60d$, far below the required $85d$.\n- **$5$ trucks:** the exact algebraic value is $5.67$; truncating to $5$ leaves orders pending, so the constraint fails.\n- **$7$ trucks:** works, but the question asks for the **minimum**, and $6$ already suffices.\n\n---\n\n### **Conclusion**\nA minimum of **6 trucks** is required so that no order remains pending at the end of the 5th day.\n\n**Correct Option: (C)**",
+        "images": []
+      }
+    }
+  ],
+  "chunkStatus": "COMPLETED",
+  "completedAt": "2026-11-20T09:27:50.359Z"
+}

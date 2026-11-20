@@ -1,0 +1,742 @@
+{
+  "chunkId": "CHUNK-GA-ME-02",
+  "branch": "me",
+  "year": "all",
+  "section": "ga",
+  "generatedAt": "2026-11-20T07:38:46.447Z",
+  "count": 25,
+  "offset": 0,
+  "totalMatchingInBacklog": 110,
+  "remainingAfterSlice": 85,
+  "questions": [
+    {
+      "uid": "me:2017:ga:q3-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 3,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 3",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "If $a \\text{ and } b$ are integers and $a-b$ is even, which of the following must always be even?",
+      "options": [
+        "$a^2+b^2+1$",
+        "$a^2+b+1$",
+        "$ab-b$",
+        "$ab$"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Number Systems & Parity of Integers)",
+        "markdown": "### 1. Conceptual Framework & Parity Rules\nFor any two integers $a, b \\in \\mathbb{Z}$, the difference $a - b$ is an even integer if and only if $a$ and $b$ possess the identical parity (that is, both $a$ and $b$ are even, or both $a$ and $b$ are odd):\n$$a - b = 2k \\iff a \\equiv b \\pmod{2}$$\n\nWe evaluate the algebraic expression in each option under both possible parity assignments:\n* **Parity Product Rule**:\n  $$\\text{even} \\times \\text{even} = \\text{even}$$\n  $$\\text{odd} \\times \\text{odd} = \\text{odd}$$\n  $$\\text{even} \\times \\text{odd} = \\text{even}$$\n* **Parity Sum/Difference Rule**:\n  $$\\text{even} \\pm \\text{even} = \\text{even}$$\n  $$\\text{odd} \\pm \\text{odd} = \\text{even}$$\n  $$\\text{even} \\pm \\text{odd} = \\text{odd}$$\n\n---\n\n### 2. Rigorous Algebraic Analysis of Options\n\nLet us analyze the algebraic behavior of each option:\n\n1. **Option A: $a^2 + b^2 + 1$**\n   - **Case 1 (Both Even)**: Let $a = 2m, b = 2n$.\n     $$a^2 + b^2 + 1 = 4m^2 + 4n^2 + 1 = 2(2m^2 + 2n^2) + 1 = \\text{odd}$$\n   - **Case 2 (Both Odd)**: Let $a = 2m + 1, b = 2n + 1$.\n     $$a^2 + b^2 + 1 = (\\text{odd}) + (\\text{odd}) + 1 = \\text{even} + 1 = \\text{odd}$$\n   - In both cases, $a^2 + b^2 + 1$ is strictly odd.\n\n2. **Option B: $a^2 + b + 1$**\n   - **Case 1 (Both Even)**:\n     $$a^2 + b + 1 = (2m)^2 + 2n + 1 = 4m^2 + 2n + 1 = 2(2m^2 + n) + 1 = \\text{odd}$$\n   - **Case 2 (Both Odd)**:\n     $$a^2 + b + 1 = (\\text{odd}) + (\\text{odd}) + 1 = \\text{even} + 1 = \\text{odd}$$\n   - In both cases, $a^2 + b + 1$ is strictly odd.\n\n3. **Option C: $ab - b$**\n   We factor the expression directly:\n   $$ab - b = b(a - 1)$$\n   - **Case 1 (Both $a, b$ are Even)**:\n     Since $b$ is an even integer ($b = 2n$), the product $b(a - 1) = 2n(a - 1)$ has a factor of 2, so $ab - b$ is **even**.\n   - **Case 2 (Both $a, b$ are Odd)**:\n     Since $a$ is an odd integer ($a = 2m + 1$), the term $a - 1$ becomes:\n     $$a - 1 = (2m + 1) - 1 = 2m \\quad (\\text{which is even})$$\n     Therefore:\n     $$b(a - 1) = (2n + 1)(2m) = 2m(2n + 1) = \\text{even}$$\n   - In every possible case, $ab - b$ is an integer multiple of 2, and hence **must always be even**.\n\n4. **Option D: $ab$**\n   - If both $a$ and $b$ are odd (e.g., $a = 3, b = 1 \\implies a - b = 2$, which is even):\n     $$ab = 3 \\times 1 = 3 \\quad (\\text{odd})$$\n   - Thus, $ab$ is not necessarily even.\n\n---\n\n### 3. Alternative Verification via Specific Values\nLet $a = 3, b = 1$ (both odd, $a - b = 2$ is even):\n* $a^2 + b^2 + 1 = 9 + 1 + 1 = 11$ (odd)\n* $a^2 + b + 1 = 9 + 1 + 1 = 11$ (odd)\n* $ab - b = 3(1) - 1 = 2$ (**even**)\n* $ab = 3(1) = 3$ (odd)\n\nLet $a = 4, b = 2$ (both even, $a - b = 2$ is even):\n* $a^2 + b^2 + 1 = 16 + 4 + 1 = 21$ (odd)\n* $a^2 + b + 1 = 16 + 2 + 1 = 19$ (odd)\n* $ab - b = 8 - 2 = 6$ (**even**)\n* $ab = 8$ (even)\n\nOnly $ab - b$ evaluates to an even integer under all valid assignments.\n\n---\n\n### 4. Conclusion & Final Takeaway\nThe algebraic factoring $ab - b = b(a - 1)$ guarantees that when $b$ is even, $b$ provides the factor of 2; and when $b$ is odd, the equal parity condition forces $a$ to be odd, making $(a - 1)$ even and providing the factor of 2.\n\nTherefore, the correct answer is **Option C ($ab-b$)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q4-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 4,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 4",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "A couple has 2 children. The probability that both children are boys if the older one is a boy is",
+      "options": [
+        "1/4",
+        "1/3",
+        "1/2",
+        "1"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Conditional Probability & Independence)",
+        "markdown": "### 1. Conceptual Framework & Sample Space Formulation\nLet the two children in the family be ordered chronologically by birth:\n$$(C_1, C_2) = (\\text{Older Child}, \\text{Younger Child})$$\n\nAssuming that the sex of any child is equally likely to be a Boy ($B$) or a Girl ($G$) with probability $\\frac{1}{2}$, and that successive births are mutually independent events, the unconditioned sample space $S$ consists of 4 equally likely outcomes:\n$$S = \\{ (B, B), (B, G), (G, B), (G, G) \\}, \\quad P(\\omega) = \\frac{1}{4} \\quad \\forall \\omega \\in S$$\n\n---\n\n### 2. Definition of Given Condition and Target Event\n\n* **Condition Event $A$**: \"The older child is a boy.\"\n  Here, $C_1 = B$. The subset of outcomes satisfying event $A$ is:\n  $$A = \\{ (B, B), (B, G) \\}$$\n  The number of favorable outcomes for $A$ is $|A| = 2$, and its prior probability is:\n  $$P(A) = \\frac{2}{4} = \\frac{1}{2}$$\n\n* **Target Event $E$**: \"Both children are boys.\"\n  Both $C_1 = B$ and $C_2 = B$:\n  $$E = \\{ (B, B) \\}$$\n\nNotice that $E \\subseteq A$, which implies:\n$$E \\cap A = \\{ (B, B) \\}, \\quad P(E \\cap A) = \\frac{1}{4}$$\n\n---\n\n### 3. Conditional Probability Calculation\nBy Kolmogorov's definition of conditional probability:\n$$P(E \\mid A) = \\frac{P(E \\cap A)}{P(A)} = \\frac{1/4}{2/4} = \\frac{1}{2}$$\n\n---\n\n### 4. Critical Distinction: The Boy-or-Girl Problem (Well-Known Fallacy)\nIt is crucial to distinguish this question from the classic conditional probability ambiguity where the condition is *\"at least one child is a boy\"*:\n* **If the condition were \"at least one child is a boy\"**:\n  $$A_{\\text{at least one}} = \\{ (B, B), (B, G), (G, B) \\} \\implies P(E \\mid A_{\\text{at least one}}) = \\frac{1}{3}$$\n* **In this problem**:\n  The older child is explicitly identified as a boy ($C_1 = B$). Because the sex of the second child ($C_2$) is completely independent of the first child:\n  $$P(C_2 = B \\mid C_1 = B) = P(C_2 = B) = \\frac{1}{2}$$\n\n---\n\n### 5. Option Breakdown & Final Takeaway\n* Option A (1/4): Incorrect; this is the unconditioned prior probability $P(B, B)$.\n* Option B (1/3): Incorrect; this would be the answer only if the condition had been \"at least one child is a boy\" without specifying which child.\n* Option C (1/2): **Correct**; since the older child is fixed as a boy, the probability that the younger child is also a boy is $\\frac{1}{2}$.\n* Option D (1): Incorrect; deterministic outcome.\n\nTherefore, the correct answer is **Option C (1/2)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q5-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 5,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 5",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "P  looks at Q while Q looks at R. P is married, R is not. The number of pairs of people in which a married person is looking at an unmarried person is \n\n",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Cannot be determined."
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Analytical Aptitude (Deductive Logic & Law of Excluded Middle)",
+        "markdown": "### 1. Problem Formulation & Given Relations\nWe are given three individuals, $P, Q, R$, with the following two directed looking actions:\n1. $P$ looks at $Q$ ($P \\to Q$)\n2. $Q$ looks at $R$ ($Q \\to R$)\n\nThe marital statuses of the endpoints are:\n* $P$ is **married** (True).\n* $R$ is **unmarried** (False).\n* $Q$'s marital status is **unspecified** in the premise.\n\nWe are asked to determine the exact number of pairs $(X, Y)$ such that $X$ looks at $Y$, $X$ is married, and $Y$ is unmarried.\n\n---\n\n### 2. Case Analysis via the Law of the Excluded Middle\nIn classical bivalent logic, any individual's marital status is binary: $Q$ is either married or not married. We evaluate both mutually exclusive and exhaustive cases:\n\n#### Case 1: $Q$ is married\n* **Pair 1 ($P \\to Q$)**: $P$ is married, $Q$ is married.\n  Does a married person look at an unmarried person? **No** (both are married).\n* **Pair 2 ($Q \\to R$)**: $Q$ is married, $R$ is unmarried.\n  Does a married person look at an unmarried person? **Yes** ($Q$ is married, $R$ is unmarried).\n* **Total qualifying pairs in Case 1**: **1 pair** ($Q \\to R$).\n\n#### Case 2: $Q$ is unmarried (not married)\n* **Pair 1 ($P \\to Q$)**: $P$ is married, $Q$ is unmarried.\n  Does a married person look at an unmarried person? **Yes** ($P$ is married, $Q$ is unmarried).\n* **Pair 2 ($Q \\to R$)**: $Q$ is unmarried, $R$ is unmarried.\n  Does a married person look at an unmarried person? **No** (neither is married).\n* **Total qualifying pairs in Case 2**: **1 pair** ($P \\to Q$).\n\n---\n\n### 3. Conclusion & Invariance\nBecause the number of qualifying pairs equals exactly **1** in both Case 1 and Case 2, the answer is completely invariant with respect to $Q$'s marital status. Even though $Q$'s marital status cannot be determined, the number of pairs **can** be uniquely determined.\n\n---\n\n### 4. Option Analysis & Final Takeaway\n* Option A (0): Incorrect; at least one pair always satisfies the condition.\n* Option B (1): **Correct**; in all logical states of the system, exactly 1 married-looking-at-unmarried pair exists.\n* Option C (2): Incorrect; both pairs cannot qualify simultaneously since that would require $Q$ to be simultaneously married and unmarried.\n* Option D (Cannot be determined): Incorrect; this is a common cognitive trap. While $Q$'s status is indeterminate, the target count is invariant.\n\nTherefore, the correct answer is **Option B (1)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q6-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 6,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 6",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "\"If you are looking for a history of India, or for an account of the rise and fall of the British Raj, or for the reason of the cleaving of the subcontinent into two mutually antagonistic parts and the effects this mutilation will have in the respective sections, and ultimately on Asia, you will not find it in these pages; for though I have spent lifetime in the country, I lived too near the seat of events, and was too intimately associated with the actors, to get the perspective needed for the impartial recording of these matters.\"\n<br>\nWhich of the following is closest in meaning to 'cleaving' ?",
+      "options": [
+        "deteriorating",
+        "arguing",
+        "departing",
+        "splitting"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Contextual Vocabulary & Semantic Equivalence)",
+        "markdown": "### 1. Passage Context & Etymological Definition\nThe excerpt states:\n> *\"If you are looking for a history of India, or for an account of the rise and fall of the British Raj, or for the reason of the **cleaving** of the subcontinent into two mutually antagonistic parts and the effects this mutilation will have in the respective sections... you will not find it in these pages...\"*\n\nThe noun/gerund **cleaving** is derived from the verb *to cleave* (Old English *clēofan*), which means:\n* To split or sever something forcefully, especially along a natural line, division, or boundary.\n* To divide or separate into distinct parts.\n\nIn the historical context of the text, \"cleaving of the subcontinent into two mutually antagonistic parts\" directly refers to the **Partition of India in 1947**, which fractured and divided the subcontinent into India and Pakistan. The author immediately reinforces this meaning with the parallel term *\"this mutilation\"*, describing physical tearing apart or dismemberment.\n\n---\n\n### 2. Contextual Synonym Analysis\nLet us examine each option in relation to the context:\n1. **deteriorating**: Means becoming progressively worse in condition or quality. While the political situation deteriorated, \"cleaving into two parts\" specifies a physical/political partition into pieces, not merely decline.\n2. **arguing**: Means verbal disputation or disagreement. A landmass cannot \"argue into two parts\".\n3. **departing**: Means leaving, going away, or deviating. It does not mean dividing a whole entity into separate geographical segments.\n4. **splitting**: Means dividing or separating something into two or more parts, factions, or pieces. \"Splitting of the subcontinent into two mutually antagonistic parts\" is a direct, precise semantic equivalent to \"cleaving\".\n\n---\n\n### 3. Final Conclusion\nAmong the given choices, **splitting** is the closest and most accurate synonym for **cleaving**.\n\nTherefore, the correct answer is **Option D (splitting)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q7-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 7,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "X  bullocks and Y tractors take 8 days to plough a field. If we have the number of bullocks and double the number of tractors, it takes 5 days to plough the same field. How many days will it take X bullocks alone to plough the field?",
+      "options": [
+        "30",
+        "35",
+        "40",
+        "45"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Time, Work & Linear Rate Systems)",
+        "markdown": "### 1. Definition of Variables & Work-Rate Formulation\nLet the total work of ploughing the field be $W = 1$ unit.\nDefine:\n* $b$ = Work done by $1$ bullock in $1$ day (work rate of one bullock).\n* $t$ = Work done by $1$ tractor in $1$ day (work rate of one tractor).\n\nThen:\n* Daily work done by $X$ bullocks: $u = X \\cdot b$\n* Daily work done by $Y$ tractors: $v = Y \\cdot t$\n\n---\n\n### 2. Setting Up the System of Linear Equations\n\nFrom the first given condition:\n\"$X$ bullocks and $Y$ tractors take 8 days to plough a field.\"\n$$8(X b + Y t) = 1 \\implies u + v = \\frac{1}{8} \\quad \\text{--- (Equation 1)}$$\n\nFrom the second given condition:\n\"If we halve the number of bullocks ($\\frac{X}{2}$) and double the number of tractors ($2Y$), it takes 5 days to plough the same field.\"\n$$5\\left(\\frac{X}{2} b + 2Y t\\right) = 1 \\implies \\frac{u}{2} + 2v = \\frac{1}{5} \\quad \\text{--- (Equation 2)}$$\n\n---\n\n### 3. Solving for $u$ (Daily Work of $X$ Bullocks)\nWe eliminate $v$ by multiplying Equation 1 by 2:\n$$2(u + v) = 2\\left(\\frac{1}{8}\\right) \\implies 2u + 2v = \\frac{1}{4} \\quad \\text{--- (Equation 3)}$$\n\nSubtract Equation 2 from Equation 3:\n$$(2u + 2v) - \\left(\\frac{u}{2} + 2v\\right) = \\frac{1}{4} - \\frac{1}{5}$$\n$$\\left(2 - \\frac{1}{2}\\right)u = \\frac{5 - 4}{20}$$\n$$\\frac{3}{2}u = \\frac{1}{20}$$\n$$u = \\frac{1}{20} \\times \\frac{2}{3} = \\frac{2}{60} = \\frac{1}{30}$$\n\n---\n\n### 4. Determining Time Required for $X$ Bullocks Alone\nThe daily work rate of $X$ bullocks alone is $u = X b = \\frac{1}{30}$ of the field per day.\nThus, the total number of days $D$ required for $X$ bullocks alone to complete 1 full unit of work is:\n$$D = \\frac{W}{u} = \\frac{1}{1/30} = 30 \\text{ days}$$\n\n---\n\n### 5. Verification\n* $u = \\frac{1}{30}$\n* From Equation 1: $v = \\frac{1}{8} - \\frac{1}{30} = \\frac{15 - 4}{120} = \\frac{11}{120}$\n* Check Equation 2:\n  $$\\frac{u}{2} + 2v = \\frac{1}{60} + 2\\left(\\frac{11}{120}\\right) = \\frac{2}{120} + \\frac{22}{120} = \\frac{24}{120} = \\frac{1}{5}$$\n  Since $\\frac{1}{5} \\times 5 = 1$, the solution is verified and exact.\n\nTherefore, the correct answer is **Option A (30)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q8-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 8,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 8",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "There are 4 women P, Q, R, S and 5 men V, W, X, Y, Z in a group. We are required to form pairs each consisting of one woman and one man. P is not to be paired with Z, and Y must necessarily be paired with someone. In how many ways can 4 such pairs be formed?",
+      "options": [
+        "74",
+        "76",
+        "78",
+        "80"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Combinatorics (Constrained Matchings & Principle of Inclusion-Exclusion)",
+        "markdown": "### 1. Problem Formulation & Set Specifications\nWe have:\n* Set of 4 women: $\\mathcal{W} = \\{P, Q, R, S\\}$, with $|\\mathcal{W}| = 4$.\n* Set of 5 men: $\\mathcal{M} = \\{V, W, X, Y, Z\\}$, with $|\\mathcal{M}| = 5$.\n\nWe need to form 4 disjoint heterosexual couples/pairs $(w, m)$ where each woman is paired with a distinct man. This is equivalent to:\n1. Selecting a subset of 4 men from $\\mathcal{M}$ (1 man will be left unpaired).\n2. Constructing a bijection (one-to-one matching) between the 4 women and the 4 chosen men.\n\nSubject to two constraints:\n* **Constraint 1**: Man $Y$ must necessarily be paired with someone (meaning $Y$ cannot be the leftover man).\n* **Constraint 2**: Woman $P$ must NOT be paired with man $Z$ ($P \\neq Z$).\n\n---\n\n### 2. Analytical Counting Strategy\nWe use the subtraction principle (complementary counting):\n$$\\text{Valid Pairings} = \\text{Total Pairings where } Y \\text{ is paired} - \\text{Pairings where } Y \\text{ is paired AND } P \\text{ is paired with } Z$$\n\n---\n\n### 3. Step-by-Step Step Computation\n\n#### Step 3.1: Total pairings where $Y$ is included\nSince $Y$ must be selected, we must choose 3 additional men from the remaining 4 men $\\{V, W, X, Z\\}$:\n$$\\text{Ways to choose remaining 3 men} = \\binom{4}{3} = 4$$\n\nFor any chosen set of 4 men (which includes $Y$), the number of ways to assign them to the 4 distinct women $\\{P, Q, R, S\\}$ is:\n$$4! = 24$$\n\nTherefore:\n$$N_{\\text{total}} = \\binom{4}{3} \\times 4! = 4 \\times 24 = 96$$\n\n#### Step 3.2: Pairings where $P$ is paired with $Z$ AND $Y$ is included\nNow consider the prohibited configurations:\n1. $P$ is paired with $Z$ (1 way).\n2. Woman $P$ and man $Z$ are now fixed.\n3. The remaining 3 women to be paired are $\\{Q, R, S\\}$.\n4. The remaining men must include $Y$. Since we need 3 men for the 3 remaining women and $Y$ is mandatory, we must select 2 more men from the 3 remaining men $\\{V, W, X\\}$:\n   $$\\text{Ways to choose 2 men from } \\{V, W, X\\} = \\binom{3}{2} = 3$$\n5. For each choice of these 3 men (which includes $Y$), the number of ways to pair them with the 3 women $\\{Q, R, S\\}$ is:\n   $$3! = 6$$\n\nTherefore:\n$$N_{\\text{prohibited}} = 1 \\times \\binom{3}{2} \\times 3! = 1 \\times 3 \\times 6 = 18$$\n\n---\n\n### 4. Total Number of Valid Pairings\n$$N_{\\text{valid}} = N_{\\text{total}} - N_{\\text{prohibited}} = 96 - 18 = 78$$\n\n---\n\n### 5. Alternative Verification by Conditioning on $P$'s Partner\n* **Case A: $P$ is paired with $Y$**\n  - $P$ takes $Y$ (1 way).\n  - Now 3 women $\\{Q, R, S\\}$ must be paired with 3 men chosen from $\\{V, W, X, Z\\}$ (4 available men).\n  - Ways $= \\binom{4}{3} \\times 3! = 4 \\times 6 = 24$.\n* **Case B: $P$ is paired with someone other than $Y$ or $Z$**\n  - $P$ must be paired with someone from $\\{V, W, X\\}$: 3 choices.\n  - Suppose $P$ is paired with one of them (say $V$).\n  - Now $Y$ MUST be among the men for the remaining 3 women $\\{Q, R, S\\}$.\n  - The remaining pool of men consists of $Y$ plus 2 others chosen from the remaining 3 men $\\{W, X, Z\\}$: $\\binom{3}{2} = 3$ choices.\n  - The 3 women can be paired with these 3 men in $3! = 6$ ways.\n  - Subtotal for Case B $= 3 \\times 3 \\times 6 = 54$.\n\n$$\\text{Total Valid Pairings} = 24 + 54 = 78$$\nBoth counting methods produce identically **78**.\n\nTherefore, the correct answer is **Option C (78)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q9-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 9,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 9",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "All people in a certain island are either 'Knights' or 'Knaves' and each person knows every other person's identity. Knights never lie, and Knaves ALWAYS lie.\n<br>\nP says \"Both of us are Knights\". Q says \"None of us are Knaves\".\n<br>\nWhich one of the following can be logically inferred from the above?",
+      "options": [
+        "Both P and Q are knights.",
+        "P is a knight; Q is a Knave.",
+        "Both P and Q are Knaves.",
+        "The identities of P, Q cannot be determined."
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Logical Deduction (Knights and Knaves Island Puzzle)",
+        "markdown": "### 1. Conceptual Framework & Axiomatic Rules\nOn the island, every inhabitant belongs to one of two mutually exclusive classes:\n* **Knight ($T$)**: Always speaks the absolute truth ($P \\iff \\text{Statement is True}$).\n* **Knave ($F$)**: Always lies ($P \\iff \\text{Statement is False}$).\n\nLet $P$ and $Q$ denote the propositions that person $P$ and person $Q$ are Knights, respectively:\n* $P = 1$ if P is a Knight, and $P = 0$ if P is a Knave.\n* $Q = 1$ if Q is a Knight, and $Q = 0$ if Q is a Knave.\n\n---\n\n### 2. Formalization of Statements\n\n1. **P's Statement**: *\"Both of us are Knights.\"*\n   The truth-functional representation is:\n   $$S_P \\equiv P \\land Q$$\n   Since P's identity dictates the truth value of their statement:\n   $$P \\iff (P \\land Q)$$\n\n2. **Q's Statement**: *\"None of us are Knaves.\"*\n   \"None of us are Knaves\" means neither P nor Q is a Knave, which is logically equivalent to saying both P and Q are Knights:\n   $$S_Q \\equiv (\\neg(\\text{P is Knave})) \\land (\\neg(\\text{Q is Knave})) \\equiv P \\land Q$$\n   Since Q's identity dictates the truth value of their statement:\n   $$Q \\iff (P \\land Q)$$\n\n---\n\n### 3. Truth Table Analysis Across All 4 Possibilities\n\nWe test all $2^2 = 4$ possible assignments of $(P, Q)$:\n\n| Case | $P$ | $Q$ | Statement $(P \\land Q)$ | P's consistency: $P \\iff (P \\land Q)$ | Q's consistency: $Q \\iff (P \\land Q)$ | Valid State? |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n| **1** | Knight (T) | Knight (T) | **True** | $T \\iff T$ (Consistent) | $T \\iff T$ (Consistent) | **YES** |\n| **2** | Knight (T) | Knave (F) | **False** | $T \\iff F$ (Contradiction!) | $F \\iff F$ (Consistent) | **NO** |\n| **3** | Knave (F) | Knight (T) | **False** | $F \\iff F$ (Consistent) | $T \\iff F$ (Contradiction!) | **NO** |\n| **4** | Knave (F) | Knave (F) | **False** | $F \\iff F$ (Consistent) | $F \\iff F$ (Consistent) | **YES** |\n\n---\n\n### 4. Interpretation of Results\n* In **Case 1**: Both are Knights. Both speak truth by asserting that both are Knights. Everything is consistent.\n* In **Case 4**: Both are Knaves. Both lie by falsely asserting that both are Knights. Everything is consistent.\n\nBecause there are **two distinct valid configurations** (either both are Knights, or both are Knaves), the given statements do not provide sufficient information to uniquely determine who is a Knight and who is a Knave.\n\n---\n\n### 5. Option Analysis & Final Takeaway\n* Option A (\"Both P and Q are knights\"): Could be true, but cannot be inferred with certainty because Case 4 is equally valid.\n* Option B (\"P is a knight; Q is a Knave\"): Logically impossible; generates an immediate contradiction.\n* Option C (\"Both P and Q are Knaves\"): Could be true, but cannot be inferred with certainty because Case 1 is equally valid.\n* Option D (\"The identities of P, Q cannot be determined\"): **Correct**; since both $(T, T)$ and $(F, F)$ satisfy all rules, the identities remain ambiguous.\n\nTherefore, the correct answer is **Option D (The identities of P, Q cannot be determined.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2017:ga:q10-s2",
+      "branch": "me",
+      "year": 2017,
+      "set": 2,
+      "qNum": 10,
+      "title": "GATE ME 2017 | Set 2 | GA | Question: 10",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "In the graph below, the concentration of a particular pollutant in a lake is plotted over (alternate) days of a month in winter (average temperature 10$^{\\circ}C$) and a month in summer (average temperature 30$^{\\circ}C$).<br><img src=\"/question-images/me/2017/me-2017-913435d65b.webp\" /><br>Consider the following statements based on the data shown above:<br>\n<br>\ni.  Over the given months, the difference between the maximum and the minimum pollutant concentrations is the same in both winter and summer<br>\nii.  There are atleast four days in the summer month such that the pollutant concentrations on those days are within 1 ppm of the pollutant concentrations on the corresponding days in the winter month.<br><br>\nWhich one of the following options is correct?",
+      "options": [
+        "Only i",
+        "Only ii",
+        "Both i and ii",
+        "Neither i nor ii"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Data Interpretation (Line Graphs & Range Comparison)",
+        "markdown": "### 1. Problem Statement & Graph Overview\nThe line graph depicts the pollutant concentration (in ppm) measured on alternate days of a month for two distinct seasonal conditions:\n* **Winter Month** (average temperature $10^\\circ\\text{C}$, plotted as solid circles/line).\n* **Summer Month** (average temperature $30^\\circ\\text{C}$, plotted as open squares/line).\n\nWe are tasked with evaluating the logical validity of two assertions:\n* **Statement i**: Over the given months, the difference between the maximum and the minimum pollutant concentrations is the same in both winter and summer.\n* **Statement ii**: There are at least four days in the summer month such that the pollutant concentrations on those days are within $1\\text{ ppm}$ of the pollutant concentrations on the corresponding days in the winter month.\n\n---\n\n### 2. Evaluation of Statement i: Range Comparison\nThe range of concentration is defined as:\n$$\\Delta C = C_{\\max} - C_{\\min}$$\n\nFrom the graph values across the observation days:\n* **Winter Month**:\n  - The maximum concentration reaches a peak of approximately $C_{\\max, W} \\approx 10.5\\text{ ppm}$.\n  - The minimum concentration drops to approximately $C_{\\min, W} \\approx 1.0\\text{ ppm}$.\n  - Range in winter: $\\Delta C_W \\approx 10.5 - 1.0 = 9.5\\text{ ppm}$.\n* **Summer Month**:\n  - The peak concentration reaches approximately $C_{\\max, S} \\approx 8.0\\text{ ppm}$.\n  - The minimum concentration is around $C_{\\min, S} \\approx 2.5\\text{ ppm}$.\n  - Range in summer: $\\Delta C_S \\approx 8.0 - 2.5 = 5.5\\text{ ppm}$.\n\nSince $\\Delta C_W \\neq \\Delta C_S$ ($9.5\\text{ ppm} \\neq 5.5\\text{ ppm}$), the difference between the maximum and minimum concentrations is **not the same**.\nThus, **Statement i is FALSE**.\n\n---\n\n### 3. Evaluation of Statement ii: Proximity of Daily Concentrations\nStatement ii requires that on at least four corresponding measurement days:\n$$|C_{\\text{summer}}(d) - C_{\\text{winter}}(d)| \\le 1\\text{ ppm}$$\n\nInspecting the data points on alternate days across the month:\n* On multiple days (specifically around day 3, day 7, day 19, and day 27), the winter curve and summer curve intersect or come exceedingly close, with vertical separation noticeably smaller than 1 vertical unit ($1\\text{ ppm}$).\n* Counting these instances confirms that there are at least 4 such days where the absolute difference is within $1\\text{ ppm}$.\nThus, **Statement ii is TRUE**.\n\n---\n\n### 4. Conclusion & Final Takeaway\n* Statement i is False.\n* Statement ii is True.\nHence, the correct assessment is \"Only ii\".\n\nTherefore, the correct answer is **Option B (Only ii)**.",
+        "images": [
+          "/question-images/me/2017/me-2017-913435d65b.webp"
+        ]
+      }
+    },
+    {
+      "uid": "me:2016:ga:q1",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 1,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 1",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "Which of the following is CORRECT with respect to grammar and usage?\n<br>\nMount Everest is ______",
+      "options": [
+        "the highest peak in the world",
+        "highest peak in the world",
+        "one of highest peak in the world",
+        "one of the highest peak in the world"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Grammar: Superlative Degree & Partitive Number Agreement)",
+        "markdown": "### 1. Conceptual Framework & Grammatical Rules\nThe sentence requires the correct predicate noun phrase to complete the statement about Mount Everest:\n$$\\text{Mount Everest is } \\underline{\\hspace{3cm}}$$\n\nTwo fundamental grammatical principles govern this construction:\n\n1. **Definite Article with Superlatives**:\n   A superlative adjective describes an entity that stands uniquely at the extreme of an attribute. Because Mount Everest is the unique highest peak on the globe, it requires the definite article **\"the\"**:\n   $$\\text{\"the highest peak\"}$$\n   Omission of the definite article (*\"highest peak\"*) is grammatically incomplete and incorrect in standard English prose.\n\n2. **Agreement in Partitive \"One of...\" Constructions**:\n   The partitive phrase *\"one of the [plural noun]\"* denotes a single item selected from a larger set:\n   $$\\text{one of the } + \\text{plural noun} \\quad (\\text{e.g., \"one of the highest peak\\textbf{s}\"}) $$\n   If the noun is singular (*\"one of the highest peak\"*), it violates plural number agreement.\n\n---\n\n### 2. Comprehensive Option Evaluation\n\n* **Option A: \"the highest peak in the world\"**\n  - Uses the obligatory definite article *\"the\"* before the superlative adjective *\"highest\"*.\n  - Uses the correct singular noun *\"peak\"* directly modified by *\"the highest\"*.\n  - Accurately conveys the geographical fact that Mount Everest is the single top peak.\n  - **Grammatically and semantically flawless.**\n\n* **Option B: \"highest peak in the world\"**\n  - Lacks the required definite article *\"the\"*. Grammatically incorrect.\n\n* **Option C: \"one of highest peak in the world\"**\n  - Lacks the definite article *\"the\"* and uses singular *\"peak\"* instead of plural *\"peaks\"*. Grammatically doubly flawed.\n\n* **Option D: \"one of the highest peak in the world\"**\n  - Fails plural agreement after *\"one of the\"*; it must be *\"peaks\"*, not *\"peak\"*. Furthermore, Mount Everest is not merely \"one of\" the highest; it is uniquely *the* highest. Grammatically incorrect.\n\n---\n\n### 3. Conclusion & Final Takeaway\nThe only grammatically valid choice is **Option A**.\n\nTherefore, the correct answer is **Option A (the highest peak in the world)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q2",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 2,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 2",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "The policeman asked the victim of a theft, \"What did you __________?\"",
+      "options": [
+        "loose",
+        "lose",
+        "loss",
+        "louse"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Vocabulary & Homophone Distinction: Loose vs Lose vs Loss)",
+        "markdown": "### 1. Syntactic Context & Required Part of Speech\nThe sentence to complete is:\n$$\\text{The policeman asked the victim of a theft, \"What did you } \\underline{\\hspace{2.5cm}} \\text{?\"}$$\n\nSyntactic breakdown of the interrogative clause:\n* **Interrogative pronoun**: *What* (direct object of the main verb)\n* **Auxiliary verb**: *did* (past tense of do-support)\n* **Subject**: *you*\n* **Target blank**: Must be the **bare infinitive (base form)** of a transitive verb, because English syntax strictly requires the base form of the main verb following the auxiliary *did*:\n  $$\\text{did} + \\text{subject} + \\mathbf{V}_{\\text{base}}$$\n\n---\n\n### 2. Semantic and Grammatical Analysis of the Choices\n\n1. **loose** (Option A):\n   - Primary usage: Adjective meaning not firmly fixed in place, not fitting tightly, or unfastened (e.g., *a loose screw*, *loose clothing*).\n   - Verb usage: Means to untie, unleash, or set free (e.g., *to loose the hounds*).\n   - In the context of a theft, the victim did not \"set free\" an object; thus *loose* is contextually and semantically invalid.\n\n2. **lose** (Option B):\n   - Pronunciation: /luːz/.\n   - Part of speech: Transitive verb in base form.\n   - Definition: To suffer the loss of, to be deprived of, or to cease to have or retain (especially through theft, accident, or misplacement).\n   - In the context of a theft, asking *\"What did you lose?\"* is syntactically and semantically the exact appropriate question.\n\n3. **loss** (Option C):\n   - Part of speech: Noun (e.g., *the loss of property*).\n   - Cannot function as the main verb after auxiliary *did*.\n\n4. **louse** (Option D):\n   - Part of speech: Singular noun referring to a parasitic insect of the order Phthiraptera (plural: *lice*).\n   - Completely irrelevant and semantically absurd in this context.\n\n---\n\n### 3. Conclusion & Final Takeaway\nThe base verb required by the auxiliary construction $\\text{did} + \\text{you} + V_{\\text{base}}$ in the context of theft is **lose**.\n\nTherefore, the correct answer is **Option B (lose)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q3",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 3,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 3",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "Despite the new medicine's _______ in treating diabetes, it is not ________widely.",
+      "options": [
+        "effectiveness --- prescribed",
+        "availability --- used",
+        "prescription --- available",
+        "acceptance --- proscribed"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Concessive Coherence & Medical Vocabulary)",
+        "markdown": "### 1. Discourse Analysis & Sentence Structure\nThe sentence to be completed is:\n$$\\text{\"Despite the new medicine's } \\underline{\\hspace{2.5cm}} \\text{ in treating diabetes, it is not } \\underline{\\hspace{2.5cm}} \\text{ widely.\"}$$\n\n* **Concessive Marker (\"Despite\")**: The preposition *despite* introduces a subordinate noun phrase expressing an expectation, followed by an independent clause showing a contrasting or unexpected reality:\n  $$\\text{Despite } [\\text{Positive Quality } X], \\quad [\\text{Unfavorable Outcome } Y]$$\n* **First Blank**: Must be a positive medicinal virtue or therapeutic success in treating diabetes.\n* **Second Blank**: Must be a standard clinical action that doctors perform with medications that, surprisingly, is *not* occurring widely.\n\n---\n\n### 2. Evaluation of Pair Options\n\n1. **effectiveness --- prescribed** (Option A):\n   - *Effectiveness* (noun): The capability of producing a desired therapeutic result or cure.\n   - *Prescribed* (verb participle): Recommended and authorized by medical practitioners for use by patients.\n   - Reading: *\"Despite the new medicine's effectiveness in treating diabetes, it is not prescribed widely.\"*\n   - This perfectly captures the natural clinical paradox: although the drug works well, doctors are not prescribing it widely (perhaps due to cost, side effects, or lack of awareness). The concessive structure is flawlessly coherent.\n\n2. **availability --- used** (Option B):\n   - *Availability* denotes mere physical presence, not clinical performance. If a medicine is widely available, asserting that it is not used widely does not form the standard clinical contrast expected with *despite*.\n\n3. **prescription --- available** (Option C):\n   - *\"the medicine's prescription in treating diabetes\"* is unidiomatic and grammatically unnatural. Furthermore, medicines are prescribed, not \"a medicine's prescription\".\n\n4. **acceptance --- proscribed** (Option D):\n   - *Proscribed* means prohibited, condemned, or banned by law/authority (from Latin *proscribere*).\n   - If it is *not proscribed widely*, that means it is *not banned*, which fails to form a negative contrast with *acceptance*.\n\n---\n\n### 3. Conclusion & Final Takeaway\nThe only word pair that satisfies both grammatical constraints and logical concessive meaning is **effectiveness --- prescribed**.\n\nTherefore, the correct answer is **Option A (effectiveness --- prescribed)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q4",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 4,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 4",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "In a huge pile of apples and oranges, both ripe and unripe mixed together, 15% are unripe fruits. Of the unripe fruits, 45% are apples. Of the ripe ones, 66% are oranges. If the pile contains a total of 5692000 fruits, how many of them are apples?",
+      "options": [
+        "2029198",
+        "2467482",
+        "2789080",
+        "3577422"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Percentages & Hierarchical Set Partitioning)",
+        "markdown": "### 1. Problem Formulation & Given Data\nWe are given a collection of fruits with:\n* Total number of fruits: $N = 5,692,000$\n* Unripe percentage: $15\\%$\n* Ripe percentage: $100\\% - 15\\% = 85\\%$\n\nSub-distribution by fruit type (apples vs. oranges):\n* Among unripe fruits: $45\\%$ are apples.\n* Among ripe fruits: $66\\%$ are oranges $\\implies 100\\% - 66\\% = 34\\%$ are apples.\n\nWe are required to determine the total number of apples ($A_{\\text{total}}$) in the pile.\n\n---\n\n### 2. Step-by-Step Mathematical Derivation\n\n#### Step 2.1: Count of Unripe and Ripe Fruits\n* **Unripe fruits ($N_{\\text{unripe}}$)**:\n  $$N_{\\text{unripe}} = 0.15 \\times 5,692,000 = 853,800$$\n\n* **Ripe fruits ($N_{\\text{ripe}}$)**:\n  $$N_{\\text{ripe}} = 0.85 \\times 5,692,000 = 4,838,200$$\n\n*(Sanity check: $853,800 + 4,838,200 = 5,692,000$.)*\n\n#### Step 2.2: Count of Apples in Each Category\n* **Unripe Apples ($A_{\\text{unripe}}$)**:\n  $$A_{\\text{unripe}} = 45\\% \\text{ of } 853,800 = 0.45 \\times 853,800 = 384,210$$\n\n* **Ripe Apples ($A_{\\text{ripe}}$)**:\n  Since $66\\%$ of ripe fruits are oranges, the remaining $34\\%$ are apples:\n  $$A_{\\text{ripe}} = 34\\% \\text{ of } 4,838,200 = 0.34 \\times 4,838,200 = 1,644,988$$\n\n#### Step 2.3: Total Apples in the Pile\n$$A_{\\text{total}} = A_{\\text{unripe}} + A_{\\text{ripe}} = 384,210 + 1,644,988 = 2,029,198$$\n\n---\n\n### 3. Alternative Unified Percentage Calculation\nWe can express $A_{\\text{total}}$ as an overall fraction of the total pile:\n$$P(\\text{Apple}) = P(\\text{Unripe}) \\times P(\\text{Apple} \\mid \\text{Unripe}) + P(\\text{Ripe}) \\times P(\\text{Apple} \\mid \\text{Ripe})$$\n$$P(\\text{Apple}) = (0.15 \\times 0.45) + (0.85 \\times 0.34)$$\n$$P(\\text{Apple}) = 0.0675 + 0.2890 = 0.3565 = 35.65\\%$$\n\nNow apply this percentage directly to the total population:\n$$A_{\\text{total}} = 0.3565 \\times 5,692,000 = 2,029,198$$\n\nBoth methods yield the exact integer $2,029,198$.\n\n---\n\n### 4. Option Analysis & Final Takeaway\n* Option A: $2,029,198$ (**Correct**)\n* Option B: $2,467,482$ (Incorrect)\n* Option C: $2,789,080$ (Incorrect)\n* Option D: $3,577,422$ (Incorrect)\n\nTherefore, the correct answer is **Option A (2029198)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q5",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 5,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 5",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Michael lives 10 km away from where I live. Ahmed lives 5 km away and Susan lives 7 km away from where I live. Arun is farther away than Ahmed but closer than Susan from where I live. From the information provided here, what is one possible distance (in km) at which I live from Arun's place?",
+      "options": [
+        "3",
+        "4.99",
+        "6.02",
+        "7.01"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (1D Distance Intervals & Inequality Bounds)",
+        "markdown": "### 1. Problem Formulation & Coordinate System\nLet my home be located at the origin of reference ($d = 0$).\nThe radial distances from my home to the houses of the respective individuals are given as:\n* Ahmed's distance: $d(\\text{Ahmed}) = 5\\text{ km}$\n* Susan's distance: $d(\\text{Susan}) = 7\\text{ km}$\n* Michael's distance: $d(\\text{Michael}) = 10\\text{ km}$\n\nWe are given the relative distance relationship for Arun's house:\n$$\\text{\"Arun is farther away than Ahmed but closer than Susan from where I live.\"}$$\n\n---\n\n### 2. Establishing the Strict Distance Inequality\nTranslating the given verbal statement into an algebraic double inequality:\n$$d(\\text{Ahmed}) < d(\\text{Arun}) < d(\\text{Susan})$$\n\nSubstituting the numerical distances:\n$$5\\text{ km} < d(\\text{Arun}) < 7\\text{ km}$$\n\nThus, any possible distance $d$ between my home and Arun's place must lie strictly inside the open interval:\n$$d(\\text{Arun}) \\in (5, 7)$$\n\n---\n\n### 3. Option Evaluation Against the Admissible Interval\n* **Option A ($3\\text{ km}$)**:\n  $3 < 5$, which violates $d(\\text{Arun}) > 5$. Arun would be closer than Ahmed.\n* **Option B ($4.99\\text{ km}$)**:\n  $4.99 < 5$, which also violates the lower bound.\n* **Option C ($6.02\\text{ km}$)**:\n  $$5 < 6.02 < 7$$\n  This value lies strictly inside the admissible open interval $(5, 7)$. Hence, $6.02\\text{ km}$ is a valid possible distance.\n* **Option D ($7.01\\text{ km}$)**:\n  $7.01 > 7$, which violates $d(\\text{Arun}) < 7$. Arun would be farther than Susan.\n\n---\n\n### 4. Conclusion & Final Takeaway\nOnly $6.02\\text{ km}$ satisfies the bounding inequality $5 < d < 7$.\n\nTherefore, the correct answer is **Option C (6.02)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q6",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 6,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 6",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "A person moving through a tuberculosis prone zone has a 50% probability of becoming infected. However, only 30% of infected people develop the disease. What percentage of people moving through a tuberculosis prone zone remains infected but does not show symptoms of disease?",
+      "options": [
+        "15",
+        "33",
+        "35",
+        "37"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Conditional Probability & Joint Event Probability)",
+        "markdown": "### 1. Event Formalization & Given Probabilities\nLet the random experiment be a person moving through a tuberculosis (TB) prone zone.\nDefine the events:\n* $I$: Event that the person becomes infected with TB.\n* $D$: Event that an infected person develops the disease (shows symptoms).\n* $D^c$: Event that an infected person does *not* develop the disease (remains asymptomatic / does not show symptoms).\n\nFrom the problem statement:\n* Prior probability of infection:\n  $$P(I) = 50\\% = 0.50$$\n* Conditional probability of developing the disease given infection:\n  $$P(D \\mid I) = 30\\% = 0.30$$\n\n---\n\n### 2. Mathematical Derivation of the Joint Probability\nWe are asked to find:\n$$\\text{\"What percentage of people moving through the zone remains infected but does not show symptoms of disease?\"}$$\n\nThis corresponds to the joint probability of being infected AND being symptom-free:\n$$P(I \\cap D^c)$$\n\nBy the law of complement in conditional probability:\n$$P(D^c \\mid I) = 1 - P(D \\mid I) = 1 - 0.30 = 0.70 \\quad (70\\%)$$\n\nBy the multiplication rule of probability:\n$$P(I \\cap D^c) = P(I) \\times P(D^c \\mid I)$$\n$$P(I \\cap D^c) = 0.50 \\times 0.70 = 0.35$$\n\nConverting to percentage:\n$$\\text{Percentage} = 0.35 \\times 100\\% = 35\\%$$\n\n---\n\n### 3. Tree Diagram / Frequential Interpretation\nConsider a sample population of 100 people moving through the zone:\n1. $50\\%$ become infected $\\implies 50$ infected individuals, $50$ uninfected.\n2. Among the $50$ infected individuals:\n   - $30\\%$ develop symptoms: $0.30 \\times 50 = 15$ people.\n   - $70\\%$ do not show symptoms: $0.70 \\times 50 = 35$ people.\n3. Therefore, out of the initial 100 people, exactly $35$ people ($35\\%$) are infected and symptom-free.\n\n---\n\n### 4. Option Analysis & Final Takeaway\n* Option A ($15\\%$): This is the percentage that becomes infected *and* develops the disease ($0.50 \\times 0.30 = 0.15$).\n* Option B ($33\\%$): Incorrect calculation.\n* Option C ($35\\%$): **Correct**; $0.50 \\times 0.70 = 0.35$.\n* Option D ($37\\%$): Incorrect calculation.\n\nTherefore, the correct answer is **Option C (35)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q7",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 7,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "In a world filled with uncertainty, he was glad to have many good friends. He had always assisted them in times of need and was confident that they would reciprocate. However, the events of the last week proved him wrong. Which of the following inference(s) is/are logically valid and can be inferred from the above passage?\n<br><br>\ni.  His friends were always asking him to help them.<br>\nii.  He felt that when in need of help, his friends would let him down.<br>\niii.  He was sure that his friends would help him when in need.<br>\niv.  His friends did not help him last week.",
+      "options": [
+        "(i) and (ii)",
+        "(iii) and (iv)",
+        "(iii) only",
+        "(iv) only"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Critical Reasoning & Logical Textual Inferences)",
+        "markdown": "### 1. Textual Analysis & Premise Decomposition\nThe passage presents the following statements:\n1. *\"In a world filled with uncertainty, he was glad to have many good friends.\"*\n2. *\"He had always assisted them in times of need and was confident that they would reciprocate.\"*\n3. *\"However, the events of the last week proved him wrong.\"*\n\nLet us deconstruct the logical content of each premise:\n* **Premise 2**: He always helped his friends when they were in need, and held the firm subjective conviction (*\"was confident\"*) that they would reciprocate (help him when he was in need).\n* **Premise 3**: The adversity or events of last week contradicted his belief (*\"proved him wrong\"*). Proving him wrong about their reciprocation means that when an opportunity arose last week for his friends to assist him, they did **not** assist him.\n\n---\n\n### 2. Systematic Evaluation of Candidate Inferences\n\n* **Statement (i): \"His friends were always asking him to help them.\"**\n  - **Invalid**: The passage states he assisted them in times of need, but gives no indication that they were *\"always asking\"* him. This is an unjustified, extreme extrapolation.\n\n* **Statement (ii): \"He felt that when in need of help, his friends would let him down.\"**\n  - **Invalid**: The text explicitly states the exact opposite: he *\"was confident that they would reciprocate\"*. He did not anticipate being let down prior to last week's events.\n\n* **Statement (iii): \"He was sure that his friends would help him when in need.\"**\n  - **Logically Valid**: Direct paraphrase of *\"was confident that they would reciprocate\"* (reciprocate = provide reciprocal help).\n\n* **Statement (iv): \"His friends did not help him last week.\"**\n  - **Logically Valid**: The phrase *\"the events of the last week proved him wrong\"* directly entails that his expectation of reciprocal help was shattered because his friends failed to help him when the need arose last week.\n\n---\n\n### 3. Conclusion & Option Matching\nStatements **(iii)** and **(iv)** are both logically valid and directly supported by the text.\n\nTherefore, the correct answer is **Option B ((iii) and (iv))**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q8",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 8,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 8",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "Leela is older than her cousin Pavithra. Pavithra's brother Shiva is older than Leela. When Pavithra and Shiva are visiting Leela, all three like to play chess. Pavithra wins more often than Leela does.\n<br>\nWhich one of the following statements must be TRUE based on the above?",
+      "options": [
+        "When Shiva plays chess with Leela and Pavithra, he often loses.",
+        "Leela is the oldest of the three.",
+        "Shiva is a better chess player than Pavithra.",
+        "Pavithra is the youngest of the three."
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Analytical Aptitude (Transitive Order Relations & Deductive Logic)",
+        "markdown": "### 1. Formalization of Given Facts\nWe are provided with information regarding three cousins: Leela ($L$), Pavithra ($P$), and Shiva ($S$).\n\n#### Information Set 1: Age Relationships\n1. *\"Leela is older than her cousin Pavithra.\"*\n   $$L > P$$\n2. *\"Pavithra's brother Shiva is older than Leela.\"*\n   $$S > L$$\n\n#### Information Set 2: Chess Playing\n* All three like to play chess.\n* Pavithra wins more often than Leela does.\n\n---\n\n### 2. Deductive Analysis of Age Order\nBy the transitive property of strict linear orders on the set of real numbers:\n$$\\text{If } S > L \\quad \\text{and} \\quad L > P, \\quad \\text{then } S > L > P$$\n\nThis establishes a unique, complete, and unambiguous descending age hierarchy:\n1. **Shiva ($S$)**: Strictly the oldest of the three.\n2. **Leela ($L$)**: Strictly in the middle.\n3. **Pavithra ($P$)**: Strictly the youngest of the three.\n\nHence, the proposition **\"Pavithra is the youngest of the three\"** is necessarily and unconditionally **TRUE**.\n\n---\n\n### 3. Critical Analysis of Chess Assertions\n* The text states only that Pavithra wins more often than Leela.\n* No data is provided regarding Shiva's chess game outcomes, win/loss percentages, or comparative skill against Leela or Pavithra.\n* Therefore, claims such as *\"When Shiva plays chess... he often loses\"* (Option A) or *\"Shiva is a better chess player than Pavithra\"* (Option C) cannot be deduced and may be entirely false.\n\n---\n\n### 4. Option Analysis & Final Takeaway\n* Option A: Indeterminate based on the passage.\n* Option B (\"Leela is the oldest of the three\"): False; Shiva is older than Leela ($S > L$).\n* Option C: Indeterminate based on the passage.\n* Option D (\"Pavithra is the youngest of the three\"): **Must be TRUE** ($S > L > P$).\n\nTherefore, the correct answer is **Option D (Pavithra is the youngest of the three.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q9",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 9,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 9",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "If $q^{-a}=\\frac{1}{r}$, $r^{-b}=\\frac{1}{s}$ and $s^{-c}=\\frac{1}{q}$, the value of $abc$ is",
+      "options": [
+        "$(rqs)^{-1}$",
+        "0",
+        "1",
+        "$(r+q+s)$"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Laws of Indices & Exponential Substitution)",
+        "markdown": "### 1. Problem Formulation & Given Relations\nWe are given three exponential relations involving positive real variables $q, r, s$ and non-zero exponents $a, b, c$:\n1. $$q^{-a} = \\frac{1}{r}$$\n2. $$r^{-b} = \\frac{1}{s}$$\n3. $$s^{-c} = \\frac{1}{q}$$\n\nWe are required to determine the numerical value of the product of the exponents:\n$$abc = ?$$\n\n---\n\n### 2. Algebraic Manipulation using Laws of Indices\nRecall the negative exponent identity:\n$$x^{-k} = \\frac{1}{x^k}$$\n\nApplying this identity to each of the three given equations:\n1. $$\\frac{1}{q^a} = \\frac{1}{r} \\implies q^a = r \\quad \\text{--- (Equation 1)}$$\n2. $$\\frac{1}{r^b} = \\frac{1}{s} \\implies r^b = s \\quad \\text{--- (Equation 2)}$$\n3. $$\\frac{1}{s^c} = \\frac{1}{q} \\implies s^c = q \\quad \\text{--- (Equation 3)}$$\n\n---\n\n### 3. Successive Cyclic Substitution\nSubstitute Equation 2 into Equation 3:\n$$q = s^c = (r^b)^c = r^{bc}$$\n\nNow substitute Equation 1 ($r = q^a$) into this expression:\n$$q = (q^a)^{bc} = q^{a \\cdot b \\cdot c} = q^{abc}$$\n\nEquating the powers of base $q$ (for $q > 0, q \\neq 1$):\n$$q^1 = q^{abc} \\implies abc = 1$$\n\n---\n\n### 4. Alternative Method via Logarithms\nTaking the natural logarithm (or log to any consistent base) of both sides of Equations 1, 2, and 3:\n$$\\ln(q^a) = \\ln(r) \\implies a \\ln(q) = \\ln(r) \\implies a = \\frac{\\ln(r)}{\\ln(q)}$$\n$$\\ln(r^b) = \\ln(s) \\implies b \\ln(r) = \\ln(s) \\implies b = \\frac{\\ln(s)}{\\ln(r)}$$\n$$\\ln(s^c) = \\ln(q) \\implies c \\ln(s) = \\ln(q) \\implies c = \\frac{\\ln(q)}{\\ln(s)}$$\n\nMultiplying the three expressions together:\n$$abc = \\left(\\frac{\\ln(r)}{\\ln(q)}\\right) \\times \\left(\\frac{\\ln(s)}{\\ln(r)}\\right) \\times \\left(\\frac{\\ln(q)}{\\ln(s)}\\right)$$\nAll logarithmic terms cancel out pairwise:\n$$abc = \\frac{\\ln(r) \\cdot \\ln(s) \\cdot \\ln(q)}{\\ln(q) \\cdot \\ln(r) \\cdot \\ln(s)} = 1$$\n\n---\n\n### 5. Conclusion & Final Takeaway\nBoth index substitution and logarithmic expansion conclusively establish that $abc = 1$.\n\nTherefore, the correct answer is **Option C (1)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q10",
+      "branch": "me",
+      "year": 2016,
+      "set": 1,
+      "qNum": 10,
+      "title": "GATE ME 2016 | Set 1 | GA | Question: 10",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "P , Q, R and S are working on a project. Q can finish the task in 25 days, working alone for 12 hours a day. R can finish the task in 50 days, working alone for 12 hours per day. Q worked 12 hours a day but took sick leave in the beginning for two days. R worked 18 hours a day on all days. What is the ratio of work done by Q and R after 7 days from the start of the project?",
+      "options": [
+        "10:11",
+        "11:10",
+        "20:21",
+        "21:20"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Time and Work: Multi-Agent Work Rates)",
+        "markdown": "### 1. Problem Formulation & Base Work Capacities\nLet the total project task be normalized to $W = 1$ unit of work.\n\n#### Work Rate of Q:\n* $Q$ can finish the task working alone in:\n  $$T_Q = 25 \\text{ days} \\times 12 \\text{ hours/day} = 300 \\text{ hours}$$\n* Therefore, the hourly work rate of $Q$ is:\n  $$r_Q = \\frac{1}{300} \\text{ task/hour}$$\n\n#### Work Rate of R:\n* $R$ can finish the task working alone in:\n  $$T_R = 50 \\text{ days} \\times 12 \\text{ hours/day} = 600 \\text{ hours}$$\n* Therefore, the hourly work rate of $R$ is:\n  $$r_R = \\frac{1}{600} \\text{ task/hour}$$\n\n---\n\n### 2. Computing Work Done by Q and R after 7 Days\n\n#### Work Done by Q ($W_Q$):\n* Time elapsed: $7$ days from the start.\n* $Q$ took sick leave for the first $2$ days, so $Q$ only worked for:\n  $$d_Q = 7 - 2 = 5 \\text{ days}$$\n* $Q$ worked $12$ hours per day:\n  $$H_Q = 5 \\text{ days} \\times 12 \\text{ hours/day} = 60 \\text{ hours}$$\n* Work completed by $Q$:\n  $$W_Q = H_Q \\times r_Q = 60 \\times \\frac{1}{300} = \\frac{60}{300} = \\frac{1}{5} = \\frac{20}{100}$$\n\n#### Work Done by R ($W_R$):\n* $R$ worked on all $7$ days without any leave:\n  $$d_R = 7 \\text{ days}$$\n* $R$ worked $18$ hours per day:\n  $$H_R = 7 \\text{ days} \\times 18 \\text{ hours/day} = 126 \\text{ hours}$$\n* Work completed by $R$:\n  $$W_R = H_R \\times r_R = 126 \\times \\frac{1}{600} = \\frac{126}{600} = \\frac{21}{100}$$\n\n---\n\n### 3. Ratio of Work Done by Q to R\nWe compute the ratio of work done:\n$$\\frac{W_Q}{W_R} = \\frac{20 / 100}{21 / 100} = \\frac{20}{21}$$\n\nThus, the ratio is:\n$$W_Q : W_R = 20 : 21$$\n\n---\n\n### 4. Option Analysis & Final Takeaway\n* Option A ($10:11$): Incorrect.\n* Option B ($11:10$): Incorrect.\n* Option C ($20:21$): **Correct**; matches $W_Q : W_R = \\frac{60/300}{126/600} = \\frac{1/5}{21/100} = \\frac{20}{21}$.\n* Option D ($21:20$): Inverted ratio.\n\nTherefore, the correct answer is **Option C (20:21)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q1-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 1,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 1",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "The volume of a sphere of diameter 1 unit is ________ than the volume of a cube of side 1 unit.",
+      "options": [
+        "least",
+        "less",
+        "lesser",
+        "low"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude & Verbal Usage (Geometric Mensuration & Comparative Forms)",
+        "markdown": "### 1. Mathematical Evaluation of Volumes\nWe compute and compare the volumes of the two geometric bodies:\n\n1. **Volume of the Sphere ($V_{\\text{sphere}}$)**:\n   Given diameter $d = 1\\text{ unit} \\implies \\text{radius } r = \\frac{d}{2} = 0.5\\text{ units}$.\n   $$V_{\\text{sphere}} = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi \\left(\\frac{1}{2}\\right)^3 = \\frac{4}{3}\\pi \\left(\\frac{1}{8}\\right) = \\frac{\\pi}{6}\\text{ units}^3$$\n   Using $\\pi \\approx 3.14159$:\n   $$V_{\\text{sphere}} \\approx \\frac{3.14159}{6} \\approx 0.5236\\text{ units}^3$$\n\n2. **Volume of the Cube ($V_{\\text{cube}}$)**:\n   Given side length $s = 1\\text{ unit}$.\n   $$V_{\\text{cube}} = s^3 = 1^3 = 1.0\\text{ units}^3$$\n\n3. **Comparison**:\n   $$V_{\\text{sphere}} (\\approx 0.5236) < V_{\\text{cube}} (1.0)$$\n   Thus, the volume of the sphere is strictly smaller than the volume of the cube.\n\n---\n\n### 2. Grammatical Analysis of Comparative Adjectives\nThe sentence structure is:\n$$\\text{\"The volume of a sphere... is } \\underline{\\hspace{2cm}} \\text{ than the volume of a cube...\"}$$\n\n* **than**: Functions as a comparative conjunction that requires a preceding comparative-degree adjective.\n* **less** (Option B): The standard comparative adjective for uncountables/magnitudes when directly followed by \"than\" (*\"is less than\"*).\n* **least** (Option A): Superlative degree; used only when comparing three or more items with the definite article (*\"the least\"*).\n* **lesser** (Option C): Attributive adjective used predominantly before nouns (e.g., *\"the lesser of two evils\"*, *\"to a lesser extent\"*). In modern English grammar, *lesser* is not used as a predicate adjective with *than* (*\"X is lesser than Y\"* is grammatically non-standard).\n* **low** (Option D): Positive degree adjective; its comparative form is *lower*, not *low*.\n\n---\n\n### 3. Conclusion & Final Takeaway\nBoth the quantitative fact ($0.5236 < 1.0$) and syntactic rules dictate the comparative adjective **less**.\n\nTherefore, the correct answer is **Option B (less)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q2-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 2,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 2",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "A",
+      "questionHtml": "The unruly crowd demanded that the accused be _______ without trial.",
+      "options": [
+        "hanged",
+        "hanging",
+        "hankering",
+        "hung"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Irregular Verb Conjugation & Passive Subjunctive: Hang)",
+        "markdown": "### 1. Syntactic Structure & The Subjunctive Mood\nThe sentence is:\n$$\\text{\"The unruly crowd demanded that the accused be } \\underline{\\hspace{2.5cm}} \\text{ without trial.\"}$$\n\nThis sentence employs the mandative subjunctive construction (*\"demanded that [subject] be + past participle\"*). The blank requires the **past participle** of the verb *hang*.\n\n---\n\n### 2. Semantic Distinction: Hanged vs. Hung\nIn English lexicography and legal jurisprudence, the verb *to hang* has two completely distinct principal forms depending on its meaning:\n\n1. **Capital Punishment / Execution (Suspension by the Neck)**:\n   * Base form: *hang*\n   * Past tense: **hanged**\n   * Past participle: **hanged**\n   * Usage: Refers exclusively to judicial execution or death by strangulation via a gallows or rope (e.g., *\"The convict was hanged at dawn\"*).\n\n2. **Suspending Objects (Inanimate Items, Clothing, Pictures)**:\n   * Base form: *hang*\n   * Past tense: **hung**\n   * Past participle: **hung**\n   * Usage: Refers to suspending an object from above (e.g., *\"The portrait was hung on the wall\"*).\n\n---\n\n### 3. Application to the Context\n* The sentence concerns an accused person facing capital punishment (*\"demanded that the accused be... without trial\"*).\n* Therefore, the correct legal and grammatical past participle is strictly **hanged**.\n* The other options:\n  - *hanging* is a present participle/gerund.\n  - *hankering* is a completely unrelated verb meaning longing or yearning.\n  - *hung* is grammatically incorrect for human execution.\n\n---\n\n### 4. Conclusion & Final Takeaway\nThe only correct past participle for execution by hanging is **hanged**.\n\nTherefore, the correct answer is **Option A (hanged)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q3-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 3,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 3",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "D",
+      "questionHtml": "Choose the statement (s) where the underlined word is used correctly:\n<br><br>\ni.  A prone is a dried plum.<br>\nIi.  He was lying prone on the floor.<br>\niii.  People who eat a lot of fat are prone to heart disease.\n",
+      "options": [
+        "(i) and (iii) only",
+        "(iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Lexical Semantics & Word Usage: Prone vs Prune)",
+        "markdown": "### 1. Semantic Definition of \"Prone\"\nThe word **prone** (adjective) has two primary standard definitions in the English language:\n1. **Physical Posture**: Lying flat with the chest downward and face pointing to the ground (opposite of *supine*, which means lying on the back).\n2. **Tendency / Susceptibility**: Having a natural inclination, vulnerability, or predisposition toward something undesirable or adverse (e.g., *prone to error*, *prone to injury*).\n\n---\n\n### 2. Analysis of the Given Statements\n\n* **Statement i: \"A prone is a dried plum.\"**\n  - **INCORRECT**. A dried plum is known as a **prune** (from Old French *prune*, Latin *prunum*). Confusing *prone* with *prune* is a malapropism/phonetic confusion.\n\n* **Statement ii: \"He was lying prone on the floor.\"**\n  - **CORRECT**. Directly utilizes definition (1): lying face down, horizontally on the ground.\n\n* **Statement iii: \"People who eat a lot of fat are prone to heart disease.\"**\n  - **CORRECT**. Directly utilizes definition (2): being predisposed, vulnerable, or susceptible to a pathology or medical condition.\n\n---\n\n### 3. Conclusion & Option Matching\nStatements **(ii)** and **(iii)** represent correct, standard English usage, whereas statement **(i)** is incorrect.\n\nTherefore, the correct answer is **Option D ((ii) and (iii) only)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q4-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 4,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 4",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Fact: If it rains, then the field is wet.<br>\nRead the following statements:<br><br>\n\ni.  It rains\n<br>ii.  The field is not wet\n<br>iii.  The field is wet\n<br> iv.  It did not rain\n<br><br>Which one of the options given below is NOT logically possible, based on the given fact?",
+      "options": [
+        "If (iii), then (iv).",
+        "If (i), then (iii).",
+        "If (i), then (ii).",
+        "If (ii), then (iv)."
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Logical Reasoning (Propositional Calculus & Material Implication)",
+        "markdown": "### 1. Propositional Formulation & Given Fact\nLet the atomic propositions be:\n* $P$: *\"It rains.\"* (Statement i)\n* $\\neg P$: *\"It did not rain.\"* (Statement iv)\n* $Q$: *\"The field is wet.\"* (Statement iii)\n* $\\neg Q$: *\"The field is not wet.\"* (Statement ii)\n\nThe problem provides an immutable empirical/axiomatic **Fact**:\n$$\\text{Fact: } P \\implies Q \\quad (\\text{\"If it rains, then the field is wet\"})$$\n\n---\n\n### 2. Truth Table Analysis of Material Implication\nIn classical logic, the implication $P \\implies Q$ is logically equivalent to $\\neg P \\lor Q$. Its truth table is:\n\n| $P$ (It rains) | $Q$ (Field wet) | $P \\implies Q$ | Status under given Fact |\n| :---: | :---: | :---: | :---: |\n| **T** | **T** | **T** | Logically Possible |\n| **T** | **F** | **F** | **LOGICALLY IMPOSSIBLE (Direct Contradiction)** |\n| **F** | **T** | **T** | Logically Possible |\n| **F** | **F** | **T** | Logically Possible |\n\nNotice that the **ONLY** situation that is impossible when $P \\implies Q$ holds is the second row:\n$$P \\land \\neg Q = \\text{True} \\implies \\text{Contradicts Fact}$$\n\n---\n\n### 3. Detailed Evaluation of the Options\n\n1. **Option A: \"If (iii), then (iv)\" ($Q \\implies \\neg P$)**:\n   - Meaning: *\"If the field is wet, then it did not rain.\"*\n   - Is it logically possible? **Yes**. The field could be wet for reasons other than rain (e.g., irrigation sprinklers, flooding). When $P = F$ and $Q = T$, the given fact $P \\implies Q$ is completely satisfied ($F \\implies T$ is True). Thus, this scenario is logically possible.\n\n2. **Option B: \"If (i), then (iii)\" ($P \\implies Q$)**:\n   - Meaning: *\"If it rains, then the field is wet.\"*\n   - This is the exact given fact itself! Hence, perfectly valid and possible.\n\n3. **Option C: \"If (i), then (ii)\" ($P \\implies \\neg Q$)**:\n   - Meaning: *\"If it rains, then the field is not wet.\"*\n   - If it rains ($P = T$), the given fact mandates that the field must be wet ($Q = T$).\n   - Asserting that raining implies the field is *not wet* ($P \\implies \\neg Q$) requires that whenever $P$ is true, $\\neg Q$ is true, creating the state $(P = T, Q = F)$.\n   - But $(P = T, Q = F)$ directly falsifies the given fact $P \\implies Q$!\n   - Therefore, this conditional statement is strictly **NOT logically possible**.\n\n4. **Option D: \"If (ii), then (iv)\" ($\\neg Q \\implies \\neg P$)**:\n   - This is the **contrapositive** of the given fact:\n     $$P \\implies Q \\iff \\neg Q \\implies \\neg P$$\n   - Since an implication and its contrapositive are logically equivalent, this is unconditionally true and valid.\n\n---\n\n### 4. Conclusion & Final Takeaway\nThe only scenario that contradicts the given premise is **If (i), then (ii)**.\n\nTherefore, the correct answer is **Option C (If (i), then (ii).)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q5-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 5,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 5",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "B",
+      "questionHtml": "A window is made up of a square portion and an equilateral triangle portion above it. The base of the triangular portion coincides with the upper side of the square. If the perimeter of the window is 6 $m$, the area of the window in $m^2$ is ___",
+      "options": [
+        "1.43",
+        "2.06",
+        "2.68",
+        "2.88"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Composite Geometry: Area & Perimeter)",
+        "markdown": "### 1. Geometric Configuration & Boundary Breakdown\nThe window is composed of:\n1. A bottom portion: A square of side length $s$.\n2. A top portion: An equilateral triangle of side length $s$, whose base is contiguous with the top horizontal edge of the square.\n\n---\n\n### 2. Perimeter Analysis & Side Calculation\nThe perimeter of the composite window is the total length of its **external boundary**:\n* The square contributes $3$ outer edges (left vertical side, right vertical side, and bottom horizontal side):\n  $$\\text{Square outer boundary} = 3s$$\n* The equilateral triangle contributes $2$ outer edges (left sloped edge and right sloped edge):\n  $$\\text{Triangle outer boundary} = 2s$$\n* Note: The common interface between the square and the triangle lies strictly inside the interior of the window and does **not** contribute to the perimeter.\n\nTherefore, the total perimeter $P$ is:\n$$P = 3s + 2s = 5s$$\n\nWe are given that $P = 6\\text{ m}$:\n$$5s = 6 \\implies s = \\frac{6}{5} = 1.2\\text{ m}$$\n\n---\n\n### 3. Step-by-Step Area Calculation\nThe total area $A_{\\text{window}}$ of the window is the sum of the areas of the square and the equilateral triangle:\n$$A_{\\text{window}} = A_{\\text{square}} + A_{\\text{triangle}}$$\n\n1. **Area of the Square ($A_{\\text{square}}$)**:\n   $$A_{\\text{square}} = s^2 = (1.2)^2 = 1.44\\text{ m}^2$$\n\n2. **Area of the Equilateral Triangle ($A_{\\text{triangle}}$)**:\n   $$A_{\\text{triangle}} = \\frac{\\sqrt{3}}{4} s^2 = \\frac{\\sqrt{3}}{4} (1.2)^2 = \\frac{\\sqrt{3}}{4} \\times 1.44 = 0.36\\sqrt{3}\\text{ m}^2$$\n   Using the numerical value $\\sqrt{3} \\approx 1.73205$:\n   $$A_{\\text{triangle}} \\approx 0.36 \\times 1.73205 \\approx 0.62354\\text{ m}^2$$\n\n3. **Total Combined Area ($A_{\\text{window}}$)**:\n   $$A_{\\text{window}} = 1.44 + 0.62354 = 2.06354\\text{ m}^2 \\approx 2.06\\text{ m}^2$$\n\n---\n\n### 4. Option Analysis & Final Takeaway\n* Option A ($1.43\\text{ m}^2$): Corresponds to the square area alone rounded down, omitting the roof.\n* Option B ($2.06\\text{ m}^2$): **Correct**; matches $1.44 + 0.6235 = 2.0635\\text{ m}^2$.\n* Option C ($2.68\\text{ m}^2$): Arithmetic error in side computation.\n* Option D ($2.88\\text{ m}^2$): Overcounting interior edge.\n\nTherefore, the correct answer is **Option B (2.06)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q6-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 6,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 6",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Quantitative Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "Students taking an exam are divided into two groups, P and Q such that each group has the same number of students. The performance of each of the students in a test was evaluated out of 200 marks. It was observed that the mean of group P was 105, while that of group Q was 85. The standard deviation of group P was 25, while that of group Q was 5. Assuming that the marks were distributed on a normal distribution, which of the following statements will have the highest probability of being TRUE?",
+      "options": [
+        "No student in group Q scored less marks than any student in group P.",
+        "No student in group P scored less marks than any student in group Q.",
+        "Most students of group Q scored marks in a narrower range than students in group P.",
+        "The median of the marks of group P is 100100."
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Quantitative Aptitude (Normal Distribution: Variance & Dispersion Comparison)",
+        "markdown": "### 1. Problem Formulation & Statistical Parameters\nWe are given two independent cohorts of students, $P$ and $Q$, with equal sample sizes ($N_P = N_Q$) evaluated out of 200 marks.\nTheir performances follow normal distributions:\n* **Group P**:\n  - Mean: $\\mu_P = 105$\n  - Standard deviation: $\\sigma_P = 25$\n  - Distribution: $X_P \\sim \\mathcal{N}(105, 25^2)$\n* **Group Q**:\n  - Mean: $\\mu_Q = 85$\n  - Standard deviation: $\\sigma_Q = 5$\n  - Distribution: $X_Q \\sim \\mathcal{N}(85, 5^2)$\n\n---\n\n### 2. Analysis of Dispersion (Spread of Marks)\nThe standard deviation $\\sigma$ is the primary measure of dispersion of a Gaussian distribution around its central tendency:\n* For Group Q, $\\sigma_Q = 5$ is very small compared to Group P's $\\sigma_P = 25$ (a ratio of $1 : 5$).\n* By the empirical 68--95--99.7 rule for normal distributions:\n  - **For Group Q**:\n    $$[\\mu_Q - 2\\sigma_Q, \\mu_Q + 2\\sigma_Q] = [85 - 10, 85 + 10] = [75, 95]$$\n    Approximately **$95.45\\%$** of students in Group Q score within an interval of width **$20\\text{ marks}$**.\n  - **For Group P**:\n    $$[\\mu_P - 2\\sigma_P, \\mu_P + 2\\sigma_P] = [105 - 50, 105 + 50] = [55, 155]$$\n    Approximately **$95.45\\%$** of students in Group P score within an interval of width **$100\\text{ marks}$**.\n\nThe interval containing \"most students\" ($\\approx 95\\%$) for Group Q is five times narrower ($20$ vs $100$) than that for Group P. Thus, the statement that *\"Most students of group Q scored marks in a narrower range than students in group P\"* has the highest probability of being true (approaching certainty).\n\n---\n\n### 3. Critical Flaws in the Other Options\n* **Option A: \"No student in group Q scored less marks than any student in group P.\"**\n  - False. For a normal distribution, values span $(-\\infty, \\infty)$ in theory. Furthermore, $\\mu_Q = 85$ is significantly lower than $\\mu_P = 105$, so many students in Q score lower than students in P.\n* **Option B: \"No student in group P scored less marks than any student in group Q.\"**\n  - False. In Group P, a score $2\\sigma$ below the mean is $55$, whereas in Group Q, a score $2\\sigma$ above the mean is $95$. Students in P can readily score below students in Q.\n* **Option D: \"The median of the marks of group P is 100100.\"**\n  - False. For any normal distribution, the distribution is symmetric about its mean, so $\\text{Median} = \\text{Mean} = 105$.\n\n---\n\n### 4. Conclusion & Final Takeaway\nBecause $\\sigma_Q = 5 \\ll \\sigma_P = 25$, the marks in Group Q are tightly clustered about $\\mu_Q$, ensuring that most students in Group Q lie in a vastly narrower score range than Group P.\n\nTherefore, the correct answer is **Option C (Most students of group Q scored marks in a narrower range than students in group P.)**.",
+        "images": []
+      }
+    },
+    {
+      "uid": "me:2016:ga:q7-s2",
+      "branch": "me",
+      "year": 2016,
+      "set": 2,
+      "qNum": 7,
+      "title": "GATE ME 2016 | Set 2 | GA | Question: 7",
+      "type": "MCQ",
+      "section": "General Aptitude",
+      "subject": "General Aptitude",
+      "subtopic": "Verbal Aptitude",
+      "officialAnswer": "C",
+      "questionHtml": "\nA smart city integrates all modes of transport, uses clean energy and promotes sustainable use of resources. It also uses technology to ensure safety and security of the city, something which critics argue, will lead to a surveillance state.<br><br>\nWhich of the following can be logically inferred from the above paragraph?<br><br>\n\ni.  All smart cities encourage the formation of surveillance states.\n<br>ii.  Surveillance is an integral part of a smart city.\n<br>iii.  Sustainability and surveillance go hand in hand in a smart city.\n<br>iv.  There is a perception that smart cities promote surveillance.",
+      "options": [
+        "(i) and (iv) only",
+        "(ii) and (iii) only",
+        "(iv) only",
+        "(i) only"
+      ],
+      "goLink": "https://me.gateoverflow.in",
+      "images": [],
+      "existingSolutionSnippet": null,
+      "status": "ACCEPTED",
+      "solution": {
+        "concept": "General Aptitude - Verbal Aptitude (Reading Comprehension & Critical Logical Deduction)",
+        "markdown": "### 1. Textual Premise & Structure\nThe passage states:\n> *\"A smart city integrates all modes of transport, uses clean energy and promotes sustainable use of resources. It also uses technology to ensure safety and security of the city, something which critics argue, will lead to a surveillance state.\"*\n\nLet us isolate the factual premises asserted by the author:\n1. **Fact 1**: A smart city integrates transport, uses clean energy, and promotes sustainability.\n2. **Fact 2**: A smart city uses technology to ensure safety and security.\n3. **Fact 3**: Critics argue that the use of safety technology will lead to a surveillance state.\n\n---\n\n### 2. Systematic Evaluation of Candidate Inferences\n\n* **Statement i: \"All smart cities encourage the formation of surveillance states.\"**\n  - **Cannot be inferred**. The passage mentions that smart cities use technology for safety and security. The creation of a surveillance state is a hazard pointed out by *critics*, not an objective that smart cities *encourage*.\n\n* **Statement ii: \"Surveillance is an integral part of a smart city.\"**\n  - **Cannot be inferred**. Transport integration, clean energy, and sustainability are described as integral aspects. Surveillance is not stated to be an integral component, but rather an adverse side-effect claimed by critics.\n\n* **Statement iii: \"Sustainability and surveillance go hand in hand in a smart city.\"**\n  - **Cannot be inferred**. No causal or correlated relationship is established in the text between sustainability and surveillance.\n\n* **Statement iv: \"There is a perception that smart cities promote surveillance.\"**\n  - **Logically Inferred**. The passage states explicitly that *\"critics argue, will lead to a surveillance state\"*. An argument advanced by critics constitutes a distinct public perception or viewpoint. Therefore, the existence of such a perception is directly supported and established by the text.\n\n---\n\n### 3. Conclusion & Option Matching\nOnly statement **(iv)** is a strictly valid deduction from the passage.\n\nTherefore, the correct answer is **Option C ((iv) only)**.",
+        "images": []
+      }
+    }
+  ],
+  "chunkStatus": "COMPLETED",
+  "completedAt": "2026-11-20T07:47:25.946Z"
+}

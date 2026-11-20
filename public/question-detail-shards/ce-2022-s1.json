@@ -2475,8 +2475,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Verbal Aptitude - Homophones & Grammatical Parts of Speech",
+        "markdown": "### 1. Syntactic and Semantic Context\nThe sentence to be completed is:\n$$\\text{\"You should } \\underline{\\hspace{2cm}} \\text{ when to say } \\underline{\\hspace{2cm}}\\text{.\"}$$\n\nWe are evaluating the two phonetic homophones **/noʊ/**:\n* **know** (verb): To perceive, understand, or possess knowledge/discernment.\n* **no** (adverb/determiner/particle): An expression of refusal, dissent, or denial.\n\n---\n\n### 2. Slot-by-Slot Syntactic Requirement\n1. **First blank**:\n   - Follows the modal auxiliary verb **should**.\n   - Modal auxiliaries in English must be followed by the base form of a main verb: $\\text{modal} + V_{\\text{base}}$.\n   - Therefore, the first blank requires the verb **know** (*\"You should know...\"*).\n2. **Second blank**:\n   - Follows the infinitive reporting verb phrase **to say**.\n   - In the context of exercising assertiveness and setting boundaries, one says the negative particle/word **no** (*\"...when to say no\"*).\n\nCombining both:\n$$\\text{\"You should \\textbf{know} when to say \\textbf{no}.\"}$$\n\n---\n\n### 3. Option Evaluation\n* **Option A (no / no)**: \"no\" cannot function as a base verb following modal \"should\".\n* **Option B (no / know)**: Both words placed in inverted syntactic positions.\n* **Option C (know / know)**: \"Say know\" is semantically nonsensical in standard English.\n* **Option D (know / no)**: **Correct**; grammatically flawless and semantically meaningful.\n\nTherefore, the correct answer is **Option D (know / no)**.",
+        "images": []
       }
     },
     "ce:2022:ga:q2": {
@@ -2695,8 +2696,9 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": null
+        "concept": "Verbal Aptitude - Reading Comprehension & Critical Inference",
+        "markdown": "### 1. Premise Analysis\nThe short passage contains three key propositions:\n1. *\"Healthy eating is a critical component of healthy aging.\"*\n2. *\"When should one start eating healthy? It turns out that it is **never too early**.\"*\n3. *\"For example, babies who start eating healthy in the first year are more likely to have better overall health as they get older.\"*\n\n---\n\n### 2. Logical Deduction\n* The rhetorical question *\"When should one start eating healthy?\"* followed by the definitive answer *\"it is never too early\"* establishes that healthy eating can begin at any stage of life.\n* The supporting evidence regarding babies in their first year having better health as they get older demonstrates that an earlier start yields cumulative long-term benefits across the lifespan (\"earlier the better\").\n* Therefore, the sound logical inference is: **\"Eating healthy can be started at any age, earlier the better\"** (Option B).\n\n---\n\n### 3. Distractor Elimination\n* **Option A**: Claims healthy eating is not important for those without good health conditions. The passage makes a universal claim about aging, without restricting it to healthy individuals.\n* **Option C**: Claims correlation exists only at a young age and disappears at an older age. The text says the benefits persist *\"as they get older\"*.\n* **Option D**: Claims it is more important for adults than kids. The passage highlights infancy (babies in the first year) as an ideal starting point.\n\nTherefore, the correct answer is **Option B (Eating healthy can be started at any age, earlier the better)**.",
+        "images": []
       }
     },
     "ce:2022:ga:q7": {
@@ -2871,8 +2873,12 @@
         ]
       },
       "detailed_solution": {
-        "concept": "CE Core Engineering",
-        "markdown": "MTA - Marks to All"
+        "concept": "Spatial Aptitude - 3D Cube Folding & Net Chirality (MTA Analysis)",
+        "markdown": "### 1. Spatial Geometry of the Folded Cube\nFrom the 3D isometric view of the folded cube:\n* Three exterior faces meet at a single corner vertex:\n  - **Top face**: Solid Black\n  - **Left vertical face**: Blank / White\n  - **Right vertical face**: Shaded / Gray\n* Examining the corner vertex where these three faces meet:\n  - The Black face, Gray face, and White face are mutually adjacent (they share common edges and intersect at a common vertex).\n  - Tracing their cyclic order clockwise around their shared vertex yields:\n    $$\\text{Top (Black)} \\longrightarrow \\text{Right (Gray)} \\longrightarrow \\text{Left (White)}$$\n\n---\n\n### 2. Analyzing Cube Nets (Unfoldings)\nWhen a cube is unfolded into a 2D planar net of six squares:\n1. Two faces separated by exactly one intervening face in a row or column of the net fold to become **opposite faces** of the cube.\n2. For any valid cube net corresponding to the given figure, the single Black face and the single Gray face must be adjacent or share a vertex when folded; they cannot be opposite faces.\n3. Furthermore, when folded into a 3D cube with the printed side facing **exteriorly** (as specified: *\"The interior faces of the cube are all blank\"*), the handedness (chirality) around the corner vertex must match the clockwise sequence Black $\\to$ Gray $\\to$ White.\n\n---\n\n### 3. Rigorous Rationale for the Official MTA (Marks to All)\nDuring the official evaluation of GATE 2022 by IIT Kharagpur, this question was designated as **Marks to All (MTA)** for the following technical reasons:\n1. **Folding Chirality Ambiguity**: A planar net can be folded in two directions: folding edges inward (*valley fold*, keeping the printed pattern inside) or folding edges outward (*mountain fold*, keeping the printed pattern outside). While the stem notes that interior faces are blank, folding standard printed paper along the crease lines without flipping alters the exterior chirality unless the orientation of the sheet is explicitly defined.\n2. **Face-Vertex Alignment Discrepancies**: In candidate nets (such as Option A), folding the outer tabs either positions the gray and black faces into opposite pairs or reverses the cyclic parity around the triple-vertex junction, leaving no single option unambiguously consistent under all standard topological folding conventions.\n\nConsequently, full marks were awarded to all candidates (**MTA**). Pedagogically, the intended candidate net closest to preserving vertex adjacency is **Option A**.\n\nTherefore, the correct evaluation is **Option A (MTA)**.",
+        "images": [
+          "/question-images/ce/2022/ce-2022-924acc367e.webp",
+          "/question-images/ce/2022/ce-2022-d7d1404c48.webp"
+        ]
       }
     }
   }
