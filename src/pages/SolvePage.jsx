@@ -245,7 +245,7 @@ const SolvePage = ({
             }
           }
 
-          if (isDaQuestion({ question_uid: questionUid })) {
+          if (isDaQuestion({ question_uid: questionUid }) || questionUid.startsWith("da:") || questionUid.startsWith("go:")) {
             const daDetail = await DaQuestionService.ensureQuestionDetail({ question_uid: questionUid });
             if (daDetail && active) {
               setResolvedQuestion(daDetail);

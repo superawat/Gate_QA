@@ -4037,6 +4037,39 @@ describe("evaluateAnswer", () => {
           expect(evaluateAnswer(record, "0.75")).toEqual({ status: "evaluated", correct: false });
           expect(evaluateAnswer(record, 1)).toEqual({ status: "evaluated", correct: false });
         });
+
+        test("evaluates go:422913 (GATE DA 2024 Q49) as NAT 1 (conditional expectation E[Y|X=1.5])", () => {
+          const record = {
+            type: "NAT",
+            answer: 1,
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "1")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, 1)).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "1.0")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "1.00")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "0")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, 0)).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "1.5")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:371891 (GATE CSE 2022 Q45) as MSQ Options B and D (CIDR aggregation)", () => {
+          const record = {
+            type: "MSQ",
+            answer: ["B", "D"],
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, ["B", "D"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["D", "B"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "B, D")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "D, B")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "B,D")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["B"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["D"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["A", "B", "D"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["B", "C", "D"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["A"])).toEqual({ status: "evaluated", correct: false });
+        });
       });
     });
   });

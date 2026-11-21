@@ -3530,6 +3530,44 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
                 tolerance: { abs: 0.01 },
               });
             });
+
+            test("resolves go:371891 (GATE CSE 2022 Q45) as MSQ with options B and D", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:371891": {
+                  answer_uid: "manual:go:371891",
+                  type: "MSQ",
+                  answer: ["B", "D"],
+                  tolerance: null,
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:371891",
+                title: "GATE CSE 2022 | Question: 45",
+              });
+              expect(answer).toMatchObject({
+                type: "MSQ",
+                answer: ["B", "D"],
+              });
+            });
+
+            test("resolves go:422913 (GATE DA 2024 Q49) as NAT 1", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:422913": {
+                  answer_uid: "manual:go:422913",
+                  type: "NAT",
+                  answer: 1,
+                  tolerance: null,
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:422913",
+                title: "GATE DA 2024 | Question: 49",
+              });
+              expect(answer).toMatchObject({
+                type: "NAT",
+                answer: 1,
+              });
+            });
           });
         });
       });

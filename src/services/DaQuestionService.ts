@@ -292,6 +292,9 @@ export class DaQuestionService {
     const uid = typeof questionOrUid === "string" ? clean(questionOrUid) : clean(questionOrUid?.question_uid);
     if (!uid) return null;
     if (this.detailCache.has(uid)) return this.detailCache.get(uid) || null;
+    if (!this.loaded) {
+      await this.init();
+    }
     const indexed = this.questionsByUid.get(uid) || (typeof questionOrUid === "object" ? questionOrUid : null);
     if (!indexed) return null;
     const records = await this.loadDetailShard(this.getDetailShardKey(indexed));

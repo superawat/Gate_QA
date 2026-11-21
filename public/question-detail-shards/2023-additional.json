@@ -107,10 +107,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411890": {
@@ -210,10 +206,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411887": {
@@ -259,10 +251,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411885": {
@@ -364,10 +352,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411883": {
@@ -415,10 +399,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411881": {
@@ -468,10 +448,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411880": {
@@ -520,8 +496,9 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "general-aptitude: gatech-2023",
-        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option D**."
+        "concept": "general-aptitude: spatial-aptitude (plane tessellation / tiling)",
+        "markdown": "### 1. Geometric Principle of Plane Tiling (Tessellation)\n\nA monohedral tiling of the Euclidean plane requires identical copies of a shape to cover the entire two-dimensional flat surface extending to infinity without leaving any gaps and without any shapes overlapping.\n\nAt every shared vertex where copies meet, the sum of the interior angles of the touching shapes must equal exactly:\n$\\sum \\theta_i = 360^\\circ \\quad (2\\pi\\text{ radians})$\n\n---\n\n### 2. Evaluating the Given Shapes\n\n1. **Option A (Circle):**\n   - Circles possess curved boundaries of constant curvature.\n   - When identical circles are packed tangent to one another on a flat plane (even in the densest hexagonal close packing), empty regions known as interstitial voids (gaps) are inevitably left between adjacent circles.\n   - Therefore, circles cannot tile a flat plane.\n   - **Option A is incorrect.**\n\n2. **Option B (Regular Octagon):**\n   - A regular octagon has $n = 8$ equal sides and 8 equal angles.\n   - The interior angle of a regular $n$-sided polygon is given by:\n     $\\theta = \\frac{(n - 2) \\times 180^\\circ}{n} = \\frac{(8 - 2) \\times 180^\\circ}{8} = \\frac{6 \\times 180^\\circ}{8} = 135^\\circ$\n   - For $k$ identical regular octagons to meet at a single vertex without gaps:\n     $k \\times 135^\\circ = 360^\\circ \\implies k = \\frac{360^\\circ}{135^\\circ} = \\frac{8}{3} \\approx 2.67$\n   - Since $k$ is not an integer ($2 \\times 135^\\circ = 270^\\circ$, leaving a $90^\\circ$ gap; $3 \\times 135^\\circ = 405^\\circ > 360^\\circ$), identical regular octagons cannot tile a flat plane by themselves.\n   - **Option B is incorrect.**\n\n3. **Option C (Regular Pentagon):**\n   - A regular pentagon has $n = 5$ equal sides.\n   - The interior angle of a regular pentagon is:\n     $\\theta = \\frac{(5 - 2) \\times 180^\\circ}{5} = \\frac{3 \\times 180^\\circ}{5} = 108^\\circ$\n   - For $k$ regular pentagons to meet at a vertex:\n     $k \\times 108^\\circ = 360^\\circ \\implies k = \\frac{360^\\circ}{108^\\circ} = \\frac{10}{3} \\approx 3.33$\n   - Since $k$ is not an integer ($3 \\times 108^\\circ = 324^\\circ$, leaving a $36^\\circ$ gap; $4 \\times 108^\\circ = 432^\\circ > 360^\\circ$), regular pentagons cannot tile a plane.\n   - **Option C is incorrect.**\n\n4. **Option D (Rhombus):**\n   - A rhombus is a quadrilateral with 4 sides of equal length.\n   - In any quadrilateral, the sum of all four interior angles is always $360^\\circ$.\n   - A rhombus has two pairs of equal opposite angles: say acute angle $\\alpha$ and obtuse angle $\\beta$, where $\\alpha + \\beta = 180^\\circ$ (supplementary consecutive angles).\n   - Arranging four copies of the rhombus around a common vertex such that alternating angles $\\alpha, \\beta, \\alpha, \\beta$ meet yields:\n     $\\alpha + \\beta + \\alpha + \\beta = 2(\\alpha + \\beta) = 2(180^\\circ) = 360^\\circ$\n   - Because their angles sum to exactly $360^\\circ$ and their equal opposite parallel sides match upon translation, identical copies of any rhombus can tessellate (tile) an infinite flat plane seamlessly without empty spaces and without overlapping.\n   - **Option D is correct.**\n\n---\n\n<b>Answer: Option D (rhombus)</b>",
+        "images": []
       }
     },
     "go:411907": {
@@ -623,10 +600,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set1",
-        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411904": {
@@ -725,10 +698,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set1",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411899": {
@@ -827,10 +796,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set1",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411897": {
@@ -877,10 +842,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set1",
-        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411896": {
@@ -928,10 +889,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set1",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411895": {
@@ -980,10 +937,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set1",
-        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411924": {
@@ -1185,10 +1138,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set2",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411915": {
@@ -1287,10 +1236,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set2",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411912": {
@@ -1337,10 +1282,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set2",
-        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411910": {
@@ -1388,10 +1329,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set2",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411909": {
@@ -1439,10 +1376,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2023-set2",
-        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411863": {
@@ -1595,10 +1528,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2023",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411855": {
@@ -1645,10 +1574,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2023",
-        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411852": {
@@ -1748,10 +1673,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2023",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411849": {
@@ -1800,10 +1721,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2023",
-        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411847": {
@@ -1853,10 +1770,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2023",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411846": {
@@ -1906,10 +1819,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2023",
-        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411843": {
@@ -2009,10 +1918,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2023-ee",
-        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411839": {
@@ -2114,10 +2019,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2023-ee",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411835": {
@@ -2164,10 +2065,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2023-ee",
-        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411833": {
@@ -2269,10 +2166,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2023-ee",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411830": {
@@ -2322,10 +2215,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2023-ee",
-        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411828": {
@@ -2375,10 +2264,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2023-ee",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411878": {
@@ -2477,10 +2362,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411874": {
@@ -2577,10 +2458,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411871": {
@@ -2627,10 +2504,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411868": {
@@ -2677,10 +2550,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411867": {
@@ -2728,10 +2597,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411866": {
@@ -2778,10 +2643,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411865": {
@@ -2829,10 +2690,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatein-2023",
-        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411825": {
@@ -2932,10 +2789,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2023",
-        "markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411821": {
@@ -3034,10 +2887,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2023",
-        "markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411816": {
@@ -3088,10 +2937,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2023",
-        "markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411814": {
@@ -3190,10 +3035,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2023",
-        "markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411809": {
@@ -3242,10 +3083,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2023",
-        "markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411807": {
@@ -3293,10 +3130,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2023",
-        "markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option B**."
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T12:38:14.453Z",
+  "generatedAt": "2026-11-21T13:30:56.595Z",
   "shardKey": "2022-s0",
   "yearSetKey": "2022-s0",
   "yearSetIdentity": "cse:2022:set-0",
@@ -2622,7 +2622,7 @@
           "D"
         ],
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
@@ -2632,6 +2632,7 @@
         "B",
         "D"
       ],
+      "type": "MSQ",
       "track": "cse",
       "yearSetKey": "2022-s0",
       "yearSetIdentity": "cse:2022:set-0",
@@ -2645,10 +2646,9 @@
         "secondary": [],
         "conceptTags": []
       },
-      "type": "MSQ",
       "detailed_solution": {
-        "concept": "gatecse-2022: computer-networks",
-        "markdown": "Third-octet ranges of the subnets:\n\n- 164.0/22 $\\rightarrow$ 164-167\n\n- 166.0/23 $\\rightarrow$ 166-167 (inside the first)\n\n- 168.0/23 $\\rightarrow$ 168-169\n\n- 170.0/23 $\\rightarrow$ 170-171\n\nTogether they cover 164-171. 12.20.164.0/22 covers 164-167 and 12.20.168.0/22 covers 168-171, exactly the needed range.\n\n164.0/21 is really 160-167 (not aligned) and /20 is 160-175, both covering addresses that are not in the table.",
+        "concept": "computer-networks: ip-addressing & cidr-subnet-aggregation",
+        "markdown": "### 1. Analysis of Routing Table Subnets\n\nAll entries in the routing table share the first two octets $\\text{12.20}$. We analyze the third octet and subnet masks:\n\n- **Subnet 1:** $\\text{12.20.164.0}$, Mask $\\text{255.255.252.0}$\n  - In binary, $252 = 11111100_2 \\implies 8 + 8 + 6 = 22$ network bits ($\\text{/22}$).\n  - Block size in the 3rd octet: $2^{24-22} = 2^2 = 4$.\n  - IP range: $\\text{12.20.164.0}$ to $\\text{12.20.167.255}$ (covers 3rd octet values **164 to 167**).\n\n- **Subnet 2:** $\\text{12.20.170.0}$, Mask $\\text{255.255.254.0}$\n  - In binary, $254 = 11111110_2 \\implies 8 + 8 + 7 = 23$ network bits ($\\text{/23}$).\n  - Block size in the 3rd octet: $2^{24-23} = 2^1 = 2$.\n  - IP range: $\\text{12.20.170.0}$ to $\\text{12.20.171.255}$ (covers 3rd octet values **170 to 171**).\n\n- **Subnet 3:** $\\text{12.20.168.0}$, Mask $\\text{255.255.254.0}$\n  - Prefix is $\\text{/23}$, block size is $2$.\n  - IP range: $\\text{12.20.168.0}$ to $\\text{12.20.169.255}$ (covers 3rd octet values **168 to 169**).\n\n- **Subnet 4:** $\\text{12.20.166.0}$, Mask $\\text{255.255.254.0}$\n  - Prefix is $\\text{/23}$, block size is $2$.\n  - IP range: $\\text{12.20.166.0}$ to $\\text{12.20.167.255}$ (covers 3rd octet values **166 to 167**).\n  - *(Note: This range is fully nested within Subnet 1. By longest prefix match, traffic for 166-167 goes to Interface 1, while 164-165 goes to R1).*\n\n---\n\n### 2. Total Range to Aggregate\n\nCombining all four subnets:\n$$\\text{Total Span} = [164, 167] \\cup [168, 169] \\cup [170, 171] = [164, 171]$$\nWe need CIDR prefix(es) that collectively cover all addresses from $\\text{12.20.164.0}$ through $\\text{12.20.171.255}$ (a span of 8 contiguous third-octet blocks) without advertising unallocated external address space.\n\n---\n\n### 3. Evaluating CIDR Aggregation Options\n\n1. **Option B: $\\text{12.20.164.0/22}$**\n   - $164 = 10100100_2$. A $\\text{/22}$ mask keeps the first 6 bits fixed ($101001_2$) with block size $4$.\n   - Range: $164$ to $167$. Exactly covers Subnet 1 and Subnet 4.\n   - **Valid aggregation component (Option B is correct).**\n\n2. **Option D: $\\text{12.20.168.0/22}$**\n   - $168 = 10101000_2$. A $\\text{/22}$ mask keeps the first 6 bits fixed ($101010_2$) with block size $4$.\n   - Range: $168$ to $171$. Exactly covers Subnet 3 ($168-169$) and Subnet 2 ($170-171$).\n   - **Valid aggregation component (Option D is correct).**\n\n   - Collectively, **Option B + Option D** cover $[164, 167] \\cup [168, 171] = [164, 171]$, matching the entire routing table.\n\n3. **Why Option C ($\\text{12.20.164.0/21}$) is INCORRECT:**\n   - A $\\text{/21}$ block requires $24 - 21 = 3$ bits in the 3rd octet, giving a block size of $2^3 = 8$.\n   - For a valid CIDR network boundary, the base octet must be a multiple of $8$ ($0, 8, \\dots, 160, 168, \\dots$).\n   - $164$ is not divisible by $8$ ($164 = 20 \\times 8 + 4$). In binary, $164 = 10100\\mathbf{100}_2$, which has a 1 in the host portion.\n   - The valid $\\text{/21}$ block containing 164 is $\\text{12.20.160.0/21}$ ($160-167$), which improperly includes $160-163$ not in the routing table.\n\n4. **Why Option A ($\\text{12.20.164.0/20}$) is INCORRECT:**\n   - A $\\text{/20}$ block requires the 3rd octet base to be a multiple of $2^4 = 16$ ($160, 176, \\dots$).\n   - $164$ is not a multiple of 16. The $\\text{/20}$ block is $\\text{12.20.160.0/20}$ ($160-175$), erroneously including unallocated addresses $160-163$ and $172-175$.\n\n---\n\n<b>Answer: Option B and Option D</b>",
         "images": []
       }
     },

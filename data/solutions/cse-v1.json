@@ -1291,8 +1291,8 @@
       "B",
       "D"
     ],
-    "concept_summary": "gatecse-2022: computer-networks",
-    "solution_markdown": "Third-octet ranges of the subnets:\n\n- 164.0/22 $\\rightarrow$ 164-167\n\n- 166.0/23 $\\rightarrow$ 166-167 (inside the first)\n\n- 168.0/23 $\\rightarrow$ 168-169\n\n- 170.0/23 $\\rightarrow$ 170-171\n\nTogether they cover 164-171. 12.20.164.0/22 covers 164-167 and 12.20.168.0/22 covers 168-171, exactly the needed range.\n\n164.0/21 is really 160-167 (not aligned) and /20 is 160-175, both covering addresses that are not in the table.\n\n<b>Answer: 12.20.164.0/22 and 12.20.168.0/22</b>\n\nTherefore, the correct option(s) are **B,D**."
+    "concept_summary": "computer-networks: ip-addressing & cidr-subnet-aggregation",
+    "solution_markdown": "### 1. Analysis of Routing Table Subnets\n\nAll entries in the routing table share the first two octets $\\text{12.20}$. We analyze the third octet and subnet masks:\n\n- **Subnet 1:** $\\text{12.20.164.0}$, Mask $\\text{255.255.252.0}$\n  - In binary, $252 = 11111100_2 \\implies 8 + 8 + 6 = 22$ network bits ($\\text{/22}$).\n  - Block size in the 3rd octet: $2^{24-22} = 2^2 = 4$.\n  - IP range: $\\text{12.20.164.0}$ to $\\text{12.20.167.255}$ (covers 3rd octet values **164 to 167**).\n\n- **Subnet 2:** $\\text{12.20.170.0}$, Mask $\\text{255.255.254.0}$\n  - In binary, $254 = 11111110_2 \\implies 8 + 8 + 7 = 23$ network bits ($\\text{/23}$).\n  - Block size in the 3rd octet: $2^{24-23} = 2^1 = 2$.\n  - IP range: $\\text{12.20.170.0}$ to $\\text{12.20.171.255}$ (covers 3rd octet values **170 to 171**).\n\n- **Subnet 3:** $\\text{12.20.168.0}$, Mask $\\text{255.255.254.0}$\n  - Prefix is $\\text{/23}$, block size is $2$.\n  - IP range: $\\text{12.20.168.0}$ to $\\text{12.20.169.255}$ (covers 3rd octet values **168 to 169**).\n\n- **Subnet 4:** $\\text{12.20.166.0}$, Mask $\\text{255.255.254.0}$\n  - Prefix is $\\text{/23}$, block size is $2$.\n  - IP range: $\\text{12.20.166.0}$ to $\\text{12.20.167.255}$ (covers 3rd octet values **166 to 167**).\n  - *(Note: This range is fully nested within Subnet 1. By longest prefix match, traffic for 166-167 goes to Interface 1, while 164-165 goes to R1).*\n\n---\n\n### 2. Total Range to Aggregate\n\nCombining all four subnets:\n$$\\text{Total Span} = [164, 167] \\cup [168, 169] \\cup [170, 171] = [164, 171]$$\nWe need CIDR prefix(es) that collectively cover all addresses from $\\text{12.20.164.0}$ through $\\text{12.20.171.255}$ (a span of 8 contiguous third-octet blocks) without advertising unallocated external address space.\n\n---\n\n### 3. Evaluating CIDR Aggregation Options\n\n1. **Option B: $\\text{12.20.164.0/22}$**\n   - $164 = 10100100_2$. A $\\text{/22}$ mask keeps the first 6 bits fixed ($101001_2$) with block size $4$.\n   - Range: $164$ to $167$. Exactly covers Subnet 1 and Subnet 4.\n   - **Valid aggregation component (Option B is correct).**\n\n2. **Option D: $\\text{12.20.168.0/22}$**\n   - $168 = 10101000_2$. A $\\text{/22}$ mask keeps the first 6 bits fixed ($101010_2$) with block size $4$.\n   - Range: $168$ to $171$. Exactly covers Subnet 3 ($168-169$) and Subnet 2 ($170-171$).\n   - **Valid aggregation component (Option D is correct).**\n\n   - Collectively, **Option B + Option D** cover $[164, 167] \\cup [168, 171] = [164, 171]$, matching the entire routing table.\n\n3. **Why Option C ($\\text{12.20.164.0/21}$) is INCORRECT:**\n   - A $\\text{/21}$ block requires $24 - 21 = 3$ bits in the 3rd octet, giving a block size of $2^3 = 8$.\n   - For a valid CIDR network boundary, the base octet must be a multiple of $8$ ($0, 8, \\dots, 160, 168, \\dots$).\n   - $164$ is not divisible by $8$ ($164 = 20 \\times 8 + 4$). In binary, $164 = 10100\\mathbf{100}_2$, which has a 1 in the host portion.\n   - The valid $\\text{/21}$ block containing 164 is $\\text{12.20.160.0/21}$ ($160-167$), which improperly includes $160-163$ not in the routing table.\n\n4. **Why Option A ($\\text{12.20.164.0/20}$) is INCORRECT:**\n   - A $\\text{/20}$ block requires the 3rd octet base to be a multiple of $2^4 = 16$ ($160, 176, \\dots$).\n   - $164$ is not a multiple of 16. The $\\text{/20}$ block is $\\text{12.20.160.0/20}$ ($160-175$), erroneously including unallocated addresses $160-163$ and $172-175$.\n\n---\n\n<b>Answer: Option B and Option D</b>"
   },
   "go:371890": {
     "question_uid": "go:371890",
@@ -3828,29 +3828,11 @@
     "concept_summary": "General Aptitude - Verbal Aptitude (Possessive Determiners)",
     "solution_markdown": "- **Problem Statement:**\n  *\"You are delaying the completion of the task. Send _________ contributions at the earliest.\"*\n\n- **Grammatical Analysis:**\n  - The blank directly modifies the plural noun *\"contributions\"*, requiring a **possessive determiner (possessive adjective)** to indicate ownership.\n  - The correct second-person possessive determiner is **\"your\"**.\n\n- **Distractor Analysis:**\n  - **Option A (\"you are\"):** Subject pronoun and auxiliary verb; creates an ungrammatical sequence *\"Send you are contributions\"*.\n  - **Option B (\"your\"):** Correct possessive determiner modifying *\"contributions\"*.\n  - **Option C (\"you're\"):** Contraction of *\"you are\"*; grammatically identical to Option A.\n  - **Option D (\"yore\"):** Archaic noun referring to time long past (as in *days of yore*); irrelevant.\n\nTherefore, the correct answer is **Option B (your)**."
   },
-  "go:411891": {
-    "question_uid": "go:411891",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**."
-  },
   "go:411890": {
     "question_uid": "go:411890",
     "verified_answer": "B",
     "concept_summary": "general-aptitude: gatech-2023",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option B**."
-  },
-  "go:411888": {
-    "question_uid": "go:411888",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411887": {
-    "question_uid": "go:411887",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**."
   },
   "go:411885": {
     "question_uid": "go:411885",
@@ -3858,29 +3840,11 @@
     "concept_summary": "general-aptitude: gatech-2023",
     "solution_markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**."
   },
-  "go:411884": {
-    "question_uid": "go:411884",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411883": {
-    "question_uid": "go:411883",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option C**."
-  },
-  "go:411881": {
-    "question_uid": "go:411881",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
-  },
   "go:411880": {
     "question_uid": "go:411880",
     "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option D**."
+    "concept_summary": "general-aptitude: spatial-aptitude (plane tessellation / tiling)",
+    "solution_markdown": "### 1. Geometric Principle of Plane Tiling (Tessellation)\n\nA monohedral tiling of the Euclidean plane requires identical copies of a shape to cover the entire two-dimensional flat surface extending to infinity without leaving any gaps and without any shapes overlapping.\n\nAt every shared vertex where copies meet, the sum of the interior angles of the touching shapes must equal exactly:\n$\\sum \\theta_i = 360^\\circ \\quad (2\\pi\\text{ radians})$\n\n---\n\n### 2. Evaluating the Given Shapes\n\n1. **Option A (Circle):**\n   - Circles possess curved boundaries of constant curvature.\n   - When identical circles are packed tangent to one another on a flat plane (even in the densest hexagonal close packing), empty regions known as interstitial voids (gaps) are inevitably left between adjacent circles.\n   - Therefore, circles cannot tile a flat plane.\n   - **Option A is incorrect.**\n\n2. **Option B (Regular Octagon):**\n   - A regular octagon has $n = 8$ equal sides and 8 equal angles.\n   - The interior angle of a regular $n$-sided polygon is given by:\n     $\\theta = \\frac{(n - 2) \\times 180^\\circ}{n} = \\frac{(8 - 2) \\times 180^\\circ}{8} = \\frac{6 \\times 180^\\circ}{8} = 135^\\circ$\n   - For $k$ identical regular octagons to meet at a single vertex without gaps:\n     $k \\times 135^\\circ = 360^\\circ \\implies k = \\frac{360^\\circ}{135^\\circ} = \\frac{8}{3} \\approx 2.67$\n   - Since $k$ is not an integer ($2 \\times 135^\\circ = 270^\\circ$, leaving a $90^\\circ$ gap; $3 \\times 135^\\circ = 405^\\circ > 360^\\circ$), identical regular octagons cannot tile a flat plane by themselves.\n   - **Option B is incorrect.**\n\n3. **Option C (Regular Pentagon):**\n   - A regular pentagon has $n = 5$ equal sides.\n   - The interior angle of a regular pentagon is:\n     $\\theta = \\frac{(5 - 2) \\times 180^\\circ}{5} = \\frac{3 \\times 180^\\circ}{5} = 108^\\circ$\n   - For $k$ regular pentagons to meet at a vertex:\n     $k \\times 108^\\circ = 360^\\circ \\implies k = \\frac{360^\\circ}{108^\\circ} = \\frac{10}{3} \\approx 3.33$\n   - Since $k$ is not an integer ($3 \\times 108^\\circ = 324^\\circ$, leaving a $36^\\circ$ gap; $4 \\times 108^\\circ = 432^\\circ > 360^\\circ$), regular pentagons cannot tile a plane.\n   - **Option C is incorrect.**\n\n4. **Option D (Rhombus):**\n   - A rhombus is a quadrilateral with 4 sides of equal length.\n   - In any quadrilateral, the sum of all four interior angles is always $360^\\circ$.\n   - A rhombus has two pairs of equal opposite angles: say acute angle $\\alpha$ and obtuse angle $\\beta$, where $\\alpha + \\beta = 180^\\circ$ (supplementary consecutive angles).\n   - Arranging four copies of the rhombus around a common vertex such that alternating angles $\\alpha, \\beta, \\alpha, \\beta$ meet yields:\n     $\\alpha + \\beta + \\alpha + \\beta = 2(\\alpha + \\beta) = 2(180^\\circ) = 360^\\circ$\n   - Because their angles sum to exactly $360^\\circ$ and their equal opposite parallel sides match upon translation, identical copies of any rhombus can tessellate (tile) an infinite flat plane seamlessly without empty spaces and without overlapping.\n   - **Option D is correct.**\n\n---\n\n<b>Answer: Option D (rhombus)</b>"
   },
   "go:411907": {
     "question_uid": "go:411907",
@@ -3888,53 +3852,17 @@
     "concept_summary": "General Aptitude - Verbal Aptitude (Modal Auxiliaries)",
     "solution_markdown": "- **Problem Statement:**\n  *\"I have not yet decided what I will do this evening; I ______ visit a friend.\"*\n\n- **Grammatical Principle & Modal Auxiliaries:**\n  - Modal auxiliary verbs express degrees of possibility, intention, certainty, or obligation.\n  - The preceding independent clause, *\"I have not yet decided what I will do this evening\"*, explicitly establishes an uncertain, tentative future possibility rather than a firm, pre-planned decision or habitual action.\n\n- **Option & Distractor Analysis:**\n  - **Option A (\"mite\"):** A noun denoting a minute arachnid or a tiny amount; a phonetic homophone and grammatically invalid.\n  - **Option B (\"would\"):** Expresses definite conditional intent or past habit, conflicting with the undecided premise.\n  - **Option C (\"might\"):** Correct modal auxiliary indicating a tentative possibility or likelihood (*it is possible that I will visit a friend*), perfectly aligning with *\"not yet decided\"*.\n  - **Option D (\"didn't\"):** Simple past tense negative auxiliary (*did not*), which creates a tense clash with the future time marker *\"this evening\"*.\n\nTherefore, the correct answer is **Option C (might)**."
   },
-  "go:411905": {
-    "question_uid": "go:411905",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatecivil-2023-set1",
-    "solution_markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**."
-  },
   "go:411904": {
     "question_uid": "go:411904",
     "verified_answer": "A",
     "concept_summary": "general-aptitude: gatecivil-2023-set1",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option A**."
   },
-  "go:411902": {
-    "question_uid": "go:411902",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatecivil-2023-set1",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option D**."
-  },
   "go:411899": {
     "question_uid": "go:411899",
     "verified_answer": "D",
     "concept_summary": "general-aptitude: gatecivil-2023-set1",
     "solution_markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411898": {
-    "question_uid": "go:411898",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatecivil-2023-set1",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411897": {
-    "question_uid": "go:411897",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatecivil-2023-set1",
-    "solution_markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411896": {
-    "question_uid": "go:411896",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatecivil-2023-set1",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411895": {
-    "question_uid": "go:411895",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatecivil-2023-set1",
-    "solution_markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option A**."
   },
   "go:411924": {
     "question_uid": "go:411924",
@@ -3954,41 +3882,11 @@
     "concept_summary": "general-aptitude: gatecivil-2023-set2",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option D**."
   },
-  "go:411918": {
-    "question_uid": "go:411918",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatecivil-2023-set2",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option A**."
-  },
   "go:411915": {
     "question_uid": "go:411915",
     "verified_answer": "D",
     "concept_summary": "general-aptitude: gatecivil-2023-set2",
     "solution_markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411913": {
-    "question_uid": "go:411913",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatecivil-2023-set2",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411912": {
-    "question_uid": "go:411912",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatecivil-2023-set2",
-    "solution_markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411910": {
-    "question_uid": "go:411910",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatecivil-2023-set2",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option C**."
-  },
-  "go:411909": {
-    "question_uid": "go:411909",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatecivil-2023-set2",
-    "solution_markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option C**."
   },
   "go:411863": {
     "question_uid": "go:411863",
@@ -4002,47 +3900,11 @@
     "concept_summary": "general-aptitude: gateece-2023",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option C**."
   },
-  "go:411857": {
-    "question_uid": "go:411857",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gateece-2023",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option C**."
-  },
-  "go:411855": {
-    "question_uid": "go:411855",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gateece-2023",
-    "solution_markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**."
-  },
   "go:411852": {
     "question_uid": "go:411852",
     "verified_answer": "D",
     "concept_summary": "general-aptitude: gateece-2023",
     "solution_markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411851": {
-    "question_uid": "go:411851",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateece-2023",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411849": {
-    "question_uid": "go:411849",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gateece-2023",
-    "solution_markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option B**."
-  },
-  "go:411847": {
-    "question_uid": "go:411847",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateece-2023",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411846": {
-    "question_uid": "go:411846",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gateece-2023",
-    "solution_markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option C**."
   },
   "go:411843": {
     "question_uid": "go:411843",
@@ -4050,29 +3912,11 @@
     "concept_summary": "General Aptitude - Verbal Aptitude (Direct to Indirect Speech)",
     "solution_markdown": "- **Direct Statement:**\n  *Rafi told Mary, \"I am thinking of watching a film this weekend.\"*\n\n- **Rules of Indirect (Reported) Speech:**\n  1. **Reporting Verb:** Since the reporting verb *\"told\"* is in the past tense, the verb tense in the reported clause must backshift accordingly.\n  2. **Tense Backshift:** Present continuous (*\"am thinking\"*) changes to past continuous (*\"was thinking\"*).\n  3. **Pronoun Shift:** First-person pronoun *\"I\"* refers to Rafi, changing to third-person singular masculine pronoun *\"he\"*.\n  4. **Time Expression Shift:** Proximal demonstrative *\"this weekend\"* shifts to distal demonstrative *\"that weekend\"*.\n\n- **Transformed Sentence:**\n  *\"Rafi told Mary that he was thinking of watching a film that weekend.\"*\n\nTherefore, the correct answer is **Option D (was thinking)**."
   },
-  "go:411841": {
-    "question_uid": "go:411841",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gate2023-ee",
-    "solution_markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option B**."
-  },
   "go:411839": {
     "question_uid": "go:411839",
     "verified_answer": "A",
     "concept_summary": "general-aptitude: gate2023-ee",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411837": {
-    "question_uid": "go:411837",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gate2023-ee",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option B**."
-  },
-  "go:411835": {
-    "question_uid": "go:411835",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gate2023-ee",
-    "solution_markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option C**."
   },
   "go:411833": {
     "question_uid": "go:411833",
@@ -4080,35 +3924,11 @@
     "concept_summary": "general-aptitude: gate2023-ee",
     "solution_markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**."
   },
-  "go:411832": {
-    "question_uid": "go:411832",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gate2023-ee",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option B**."
-  },
-  "go:411830": {
-    "question_uid": "go:411830",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gate2023-ee",
-    "solution_markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411828": {
-    "question_uid": "go:411828",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gate2023-ee",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
-  },
   "go:411878": {
     "question_uid": "go:411878",
     "verified_answer": "D",
     "concept_summary": "General Aptitude - Verbal Aptitude (Prepositions)",
     "solution_markdown": "- **Problem Statement:**\n  *\"The village was nestled in a green spot, __________ the ocean and the hills.\"*\n\n- **Grammatical Principle:**\n  - When indicating a location situated in the intermediate space connecting or separating **two** distinct entities (*\"the ocean\"* and *\"the hills\"*), the appropriate preposition is **\"between\"**.\n\n- **Distractor Analysis:**\n  - **Option A (\"through\"):** Indicates movement in at one end and out at the other; incorrect for physical static location between two geographic landmarks.\n  - **Option B (\"in\"):** Indicates containment inside a single enclosure; cannot coordinate two distinct boundary features.\n  - **Option C (\"at\"):** Specifies a single exact point, not intermediate positioning.\n  - **Option D (\"between\"):** Correctly identifies the spatial interval bounded by the ocean on one side and the hills on the other.\n\nTherefore, the correct answer is **Option D (between)**."
-  },
-  "go:411876": {
-    "question_uid": "go:411876",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option C**."
   },
   "go:411874": {
     "question_uid": "go:411874",
@@ -4116,53 +3936,11 @@
     "concept_summary": "general-aptitude: gatein-2023",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option D**."
   },
-  "go:411872": {
-    "question_uid": "go:411872",
-    "verified_answer": "C",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option C**."
-  },
-  "go:411871": {
-    "question_uid": "go:411871",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option B**."
-  },
-  "go:411868": {
-    "question_uid": "go:411868",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411867": {
-    "question_uid": "go:411867",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "Rows of B are rows of A in the order $R_3,R_2,R_1,R_4$, i.e. B is A with rows 1 and 3 swapped.\n\nOne row swap changes the sign of the determinant: $\\det(B)=-\\det(A)$.\n\n<b>Answer: det(B) = $-$det(A)</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411866": {
-    "question_uid": "go:411866",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411865": {
-    "question_uid": "go:411865",
-    "verified_answer": "D",
-    "concept_summary": "general-aptitude: gatein-2023",
-    "solution_markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option D**."
-  },
   "go:411825": {
     "question_uid": "go:411825",
     "verified_answer": "A",
     "concept_summary": "General Aptitude - Verbal Aptitude (Causative Verb Structures)",
     "solution_markdown": "- **Problem Statement:**\n  *\"He did not manage to fix the car himself, so he ________ in the garage.\"*\n\n- **Causative Grammar Structure:**\n  - The sentence states that the subject was unable to perform the repair personalty and arranged for someone else (the garage mechanic) to do it.\n  - In English grammar, this arrangement is expressed using the **causative structure**:\n    $$\\text{Subject} + \\text{get/have} + \\text{Object} + \\text{Past Participle (V3)}$$\n  - Since the context is in the past tense (*\"did not manage\"*), the past tense form is **\"got it fixed\"** (*got* + pronoun object *it* + past participle *fixed*).\n\n- **Distractor Analysis:**\n  - **Option A (\"got it fixed\"):** Correct past-tense causative construction.\n  - **Option B (\"getting it fixed\"):** Present participle without finite auxiliary verb; grammatically incomplete as a main predicate.\n  - **Option C (\"gets fixed\"):** Present tense passive; clashes with past tense context and omits the object *it*.\n  - **Option D (\"got fixed\"):** Intransitive/passive construction without the target object *it*, implying the subject himself was repaired.\n\nTherefore, the correct answer is **Option A (got it fixed)**."
-  },
-  "go:411823": {
-    "question_uid": "go:411823",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateme-2023",
-    "solution_markdown": "Max-heap: every parent $A[i]\\ge$ its children $A[2i]$, $A[2i+1]$.\n\n- Option 1: A[3] = 10 has child A[6] = 14 False\n\n- <b>Option 2</b>: 23 $\\ge$ 17, 14; 17 $\\ge$ 7, 13; 14 $\\ge$ 10, 1; 7 $\\ge$ 5, 6; 13 $\\ge$ 12 True\n\n- Option 3: A[5] = 13 has child A[10] = 15 False\n\n- Option 4: A[4] = 1 has children 12, 7 False\n\n<b>Answer: 23, 17, 14, 7, 13, 10, 1, 5, 6, 12</b>\n\nTherefore, the correct answer is **Option A**."
   },
   "go:411821": {
     "question_uid": "go:411821",
@@ -4170,41 +3948,11 @@
     "concept_summary": "general-aptitude: gateme-2023",
     "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option A**."
   },
-  "go:411819": {
-    "question_uid": "go:411819",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateme-2023",
-    "solution_markdown": "From s: 0 goes to dead state r, so a string must start with <b>1</b> (reaching final state p).\n\nAt p: 0 loops on p; 1 goes to q, and from q only another 1 returns to p (0 goes to r).\n\nSo after the first 1, we repeat \"0\" or \"11\": $1(0+11)^*$.\n\n<b>Answer: $1(0+11)^*$</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411816": {
-    "question_uid": "go:411816",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gateme-2023",
-    "solution_markdown": "Let $\\varphi=\\frac{1+\\sqrt5}{2}$ and $\\psi=\\frac{1-\\sqrt5}{2}$. They satisfy $x^2=x+1$, $\\varphi+\\psi=1$, $\\varphi\\psi=-1$.\n\nCheck $L_n=\\varphi^n+\\psi^n$:\n\n- $L_1=\\varphi+\\psi=1$ True\n\n- $L_2=(\\varphi+\\psi)^2-2\\varphi\\psi=1+2=3$ True\n\n- It satisfies $L_n=L_{n-1}+L_{n-2}$ because both $\\varphi,\\psi$ satisfy $x^2=x+1$.\n\n<b>Answer: $L_n=\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\left(\\frac{1-\\sqrt5}{2}\\right)^n$</b>\n\nTherefore, the correct answer is **Option B**."
-  },
   "go:411814": {
     "question_uid": "go:411814",
     "verified_answer": "D",
     "concept_summary": "general-aptitude: gateme-2023",
     "solution_markdown": "<b>Degree (arity)</b> = number of attributes (columns) in the relation schema.\n\nThe number of tuples (rows) is called the <b>cardinality</b>.\n\n<b>Answer: Number of attributes of its relation schema</b>\n\nTherefore, the correct answer is **Option D**."
-  },
-  "go:411813": {
-    "question_uid": "go:411813",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateme-2023",
-    "solution_markdown": "Stop-and-wait utilization $=\\frac{T_t}{T_t+2T_p}=\\frac{1}{1+2a}$, where $a=\\frac{T_p}{T_t}$.\n\nUtilization is lowest when $a$ is largest:\n\n- longer link $\\rightarrow$ larger $T_p$\n\n- higher transmission rate $\\rightarrow$ smaller $T_t$\n\n<b>Answer: Longer link length and higher transmission rate</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411809": {
-    "question_uid": "go:411809",
-    "verified_answer": "A",
-    "concept_summary": "general-aptitude: gateme-2023",
-    "solution_markdown": "An identifier is one letter followed by <b>any mix</b> of letters and digits.\n\n- (A): the $\\epsilon$ edge lets the string skip the first letter, e.g. \"1\" or the empty string is accepted $\\text{---}$ wrong.\n\n- (B): after choosing a branch you stay with only letters or only digits; \"a1b\" is rejected $\\text{---}$ wrong.\n\n- <b>(C)</b>: letter, then from the final state any number of letter-or-digit steps through the loop $\\text{---}$ correct.\n\n- (D): forces \"letter digit\" pairs; \"ab\" is rejected $\\text{---}$ wrong.\n\n<b>Answer: C</b>\n\nTherefore, the correct answer is **Option A**."
-  },
-  "go:411807": {
-    "question_uid": "go:411807",
-    "verified_answer": "B",
-    "concept_summary": "general-aptitude: gateme-2023",
-    "solution_markdown": "Any fixed hash function (division or multiplication) is known to the adversary, who can pick keys that all collide.\n\n<b>Universal hashing</b> picks the hash function at random from a family at run time, so the adversary cannot predict it, and the expected number of collisions stays small.\n\n<b>Answer: Universal hashing method</b>\n\nTherefore, the correct answer is **Option B**."
   },
   "go:411722": {
     "question_uid": "go:411722",
@@ -4619,5 +4367,23 @@
     "verified_answer": 10,
     "concept_summary": "Operating Systems - Disk Scheduling Algorithms (SSTF vs SCAN)",
     "solution_markdown": "### 1. Problem Formulation & Given Parameters\n- **Disk Size:** $100$ tracks (numbered $0$ to $99$, or $1$ to $100$ with upper boundary at $100$).\n- **Request Queue:** $45, 20, 90, 10, 50, 60, 80, 25, 70$.\n- **Initial Head Position:** Track $50$.\n- **SCAN Direction:** Moves towards track $100$ initially.\n- **Objective:** Compute the additional distance traversed by the Shortest Seek Time First (SSTF) algorithm compared to the SCAN (Elevator) algorithm.\n\n---\n\n### 2. SSTF (Shortest Seek Time First) Execution\nAt each step, SSTF chooses the pending request with the minimum absolute seek distance from the current head position.\n\n1. **Start at $50$:**\n   - Pending requests: $45$ (dist 5), $60$ (dist 10), others farther.\n   - Move to $45$: $|50 - 45| = 5$.\n2. **From $45$:**\n   - Closest unvisited request is $50$ (if treated as arriving request) or $60$ (dist 15), $25$ (dist 20).\n   - Servicing duplicate $50$ at distance $|45 - 50| = 5$, then moving to $60$: $|50 - 60| = 10$.\n     *(Alternatively, if $50$ is already serviced at start: from $45$, closest is $60$ with seek $|45 - 60| = 15$.)*\n3. **From $60$ upwards:**\n   - Move to $70$: $|60 - 70| = 10$.\n   - Move to $80$: $|70 - 80| = 10$.\n   - Move to $90$: $|80 - 90| = 10$.\n4. **From $90$ downwards:**\n   - Remaining requests: $25, 20, 10$.\n   - Move to $25$: $|90 - 25| = 65$.\n   - Move to $20$: $|25 - 20| = 5$.\n   - Move to $10$: $|20 - 10| = 10$.\n\n$$\\text{Total SSTF Seek Distance} = 5 + 15 + 10 + 10 + 10 + 65 + 5 + 10 = \\mathbf{130 \\text{ tracks}}$$\n*(Both standard step orderings evaluate to exactly $130$ tracks).*\n\n---\n\n### 3. SCAN (Elevator) Algorithm Execution\nThe SCAN algorithm services requests in the direction of motion until reaching the disk boundary, then reverses direction.\n\n- **Phase 1 (Upward towards $100$):**\n  - Moves from $50$ through $60 \\rightarrow 70 \\rightarrow 80 \\rightarrow 90 \\rightarrow 100$ (boundary).\n  - Distance $= |100 - 50| = 50$ tracks.\n- **Phase 2 (Downward towards $10$):**\n  - Reverses at $100$ and services remaining requests: $45, 25, 20, 10$.\n  - Distance from $100$ down to lowest request $10$: $|100 - 10| = 90$ tracks.\n\n$$\\text{Total SCAN Seek Distance (Boundary 100)} = 50 + 90 = \\mathbf{140 \\text{ tracks}}$$\n\n---\n\n### 4. Comparison & Reconciliation with Official Key\n- **Standard Boundary SCAN:**\n  $$\\text{SCAN Distance} = 140 \\text{ tracks}, \\quad \\text{SSTF Distance} = 130 \\text{ tracks}$$\n  $$\\text{Magnitude of Difference} = |140 - 130| = \\mathbf{10 \\text{ tracks}}$$\n\n- **LOOK Variant (Reversing at highest request 90):**\n  If the elevator reverses at the highest pending request ($90$) without proceeding to track $100$:\n  $$\\text{Distance} = (90 - 50) + (90 - 10) = 40 + 80 = 120 \\text{ tracks}$$\n  $$\\text{Additional distance by SSTF} = 130 - 120 = \\mathbf{10 \\text{ tracks}}$$\n\nUnder both standard interpretations, the difference between the two algorithms is **10** tracks. The official GATE 2015 key accepted **10**.\n\nTherefore, the final answer is **10**."
+  },
+  "go:1052": {
+    "question_uid": "go:1052",
+    "verified_answer": "D",
+    "concept_summary": "computer-networks: ipv4-fragmentation-mtu-calculation",
+    "solution_markdown": "### 1. Initial Packet Assembly at Host $H_A$\n- Application data = $180\\text{ bytes}$.\n- The TCP layer prefixes a $20\\text{ byte}$ TCP header:\n  $$\\text{TCP Segment Size} = 180 + 20 = 200\\text{ bytes}$$\n- This $200\\text{ byte}$ segment becomes the IP payload at Host $H_A$.\n- Host $H_A$ prefixes a $20\\text{ byte}$ IP header:\n  $$\\text{Total Initial IP Packet Size} = 200 + 20 = 220\\text{ bytes}$$\n- Network $A$ MTU is $1000\\text{ bytes}$. Since $220 \\le 1000$, the packet traverses Network $A$ intact without fragmentation.\n\n---\n\n### 2. Fragmentation in Intermediate Network $B$\n- Network $B$ has a maximum packet size (MTU) of $100\\text{ bytes}$ (including $20\\text{ byte}$ IP header).\n- Maximum IP data payload per fragment in Network $B$:\n  $$\\text{Max Payload} = \\text{MTU} - \\text{IP Header} = 100 - 20 = 80\\text{ bytes}$$\n- **8-Byte Alignment Rule:**\n  In IPv4, the Fragment Offset field is expressed in units of $8\\text{ bytes}$ ($64\\text{ bits}$). Consequently, the data payload of every fragment (except the last fragment) must be an integer multiple of $8\\text{ bytes}$.\n  Here, $80\\text{ bytes}$ is divisible by $8$ ($80 / 8 = 10$), which satisfies the alignment rule.\n- Total payload to be transmitted = $200\\text{ bytes}$ (TCP header + application data).\n\nWe break the $200\\text{ bytes}$ into fragments:\n1. **Fragment 1:**\n   - IP Payload: $80\\text{ bytes}$ (bytes $0$ to $79$; Offset $= 0$, $\\text{MF} = 1$)\n   - IP Header: $20\\text{ bytes}$\n   - Fragment Total Size: $80 + 20 = 100\\text{ bytes}$\n\n2. **Fragment 2:**\n   - IP Payload: $80\\text{ bytes}$ (bytes $80$ to $159$; Offset $= 80/8 = 10$, $\\text{MF} = 1$)\n   - IP Header: $20\\text{ bytes}$\n   - Fragment Total Size: $80 + 20 = 100\\text{ bytes}$\n\n3. **Fragment 3:**\n   - Remaining IP Payload: $200 - (80 + 80) = 40\\text{ bytes}$ (bytes $160$ to $199$; Offset $= 160/8 = 20$, $\\text{MF} = 0$)\n   - IP Header: $20\\text{ bytes}$\n   - Fragment Total Size: $40 + 20 = 60\\text{ bytes}$\n\n---\n\n### 3. Delivery to Destination Host $H_C$\n- Network $C$ MTU is $1000\\text{ bytes}$. All three fragments pass through Network $C$ without further fragmentation.\n- The question asks: *\"how many bytes, including headers, are delivered to the IP layer at the destination for one application message, in the best case? Consider only data packets.\"*\n- The IP layer at the destination receives all 3 fragments:\n  $$\\text{Total Bytes Delivered} = \\text{Fragment 1} + \\text{Fragment 2} + \\text{Fragment 3}$$\n  $$\\text{Total Bytes Delivered} = 100\\text{ bytes} + 100\\text{ bytes} + 60\\text{ bytes} = 260\\text{ bytes}$$\n  *(Alternatively: Original payload of $200\\text{ bytes} + 3 \\text{ fragments} \\times 20\\text{ bytes of IP header} = 200 + 60 = 260\\text{ bytes}$).*\n\n---\n\n<b>Answer: Option D (260)</b>"
+  },
+  "go:43572": {
+    "question_uid": "go:43572",
+    "verified_answer": "B",
+    "concept_summary": "computer-networks: ipv4-fragmentation-throughput-rate",
+    "solution_markdown": "### 1. Application Data Transfer Rate Analysis\n- From the previous linked question (Q56):\n  - Application data per message = $180\\text{ bytes}$.\n  - Over Network $B$, the message is split into 3 fragments of total size $100 + 100 + 60 = 260\\text{ bytes}$.\n- Link bandwidths:\n  - Link between $A$ and $B$: $1\\text{ Mbps} = 1000\\text{ Kbps}$.\n  - Link between $B$ and $C$: $512\\text{ Kbps}$.\n- The bottleneck link along the end-to-end path is the $B-C$ link with bandwidth $C = 512\\text{ Kbps}$.\n\n---\n\n### 2. Computing the Application Throughput\n- For every $260\\text{ bytes}$ transmitted across the bottleneck link, exactly $180\\text{ bytes}$ corresponds to application data:\n  $$\\text{Efficiency} = \\frac{\\text{Application Data Bytes}}{\\text{Total Transmitted Bytes}} = \\frac{180}{260} = \\frac{9}{13} \\approx 0.6923$$\n- Therefore, the effective transfer rate of application data is:\n  $$\\text{Rate} = \\frac{180}{260} \\times 512\\text{ Kbps} = \\frac{9}{13} \\times 512\\text{ Kbps} \\approx 354.46\\text{ Kbps} \\approx 354.5\\text{ Kbps}$$\n\n---\n\n<b>Answer: Option B (354.5 Kbps)</b>"
+  },
+  "go:1051": {
+    "question_uid": "go:1051",
+    "verified_answer": "A",
+    "concept_summary": "computer-networks: longest-prefix-matching-routing-table",
+    "solution_markdown": "### 1. Longest Prefix Matching Principle\nA router evaluates destination IP addresses against its routing table using **Longest Prefix Matching**: when a destination IP address matches multiple prefixes, the packet is forwarded to the interface corresponding to the entry with the longest subnet mask (most specific network prefix). If no specific entry matches, the packet is sent via the default interface.\n\n---\n\n### 2. Packet 1: Destination $128.75.43.16$\n- Convert the 4th octet ($16$) to 8-bit binary:\n  $$16 = 00010000_2$$\n- Checking entries:\n  1. Entry 1: $128.75.43.0$ with mask $255.255.255.0$ ($\\text{/24}$).\n     - Subnet: $128.75.43.0$ to $128.75.43.255$.\n     - $128.75.43.16$ matches this $/24$ prefix (interface $\\text{Eth0}$).\n  2. Entry 2: $128.75.43.0$ with mask $255.255.255.128$ ($\\text{/25}$).\n     - Mask in binary: $128 = 10000000_2$.\n     - Subnet range: $128.75.43.0$ to $128.75.43.127$.\n     - Since $16 \\le 127$, $128.75.43.16$ also matches this $/25$ prefix (interface $\\text{Eth1}$).\n- By Longest Prefix Matching, $\\text{/25} > \\text{/24}$. Thus, the packet is forwarded on **$\\text{Eth1}$**.\n\n---\n\n### 3. Packet 2: Destination $192.12.17.10$\n- Checking entries:\n  1. Entry 3: $192.12.17.5$ with mask $255.255.255.255$ ($\\text{/32}$, host-specific route).\n     - Does not match ($192.12.17.10 \\neq 192.12.17.5$).\n  2. Entries 1 and 2: Destination network $128.75.43.0$ does not match $192.12.17.10$.\n  3. Default route: Matches any address with interface **$\\text{Eth2}$**.\n- Thus, the packet is forwarded on **$\\text{Eth2}$**.\n\n---\n\n<b>Answer: Option A (Eth1 and Eth2)</b>"
   }
 }

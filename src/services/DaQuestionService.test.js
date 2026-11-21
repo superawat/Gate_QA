@@ -64,6 +64,60 @@ describe("DaQuestionService", () => {
     expect(detail.answerMeta.answer).toBe(10);
   });
 
+  test("initializes automatically if ensureQuestionDetail is called before init()", async () => {
+    global.fetch = vi.fn((url) => {
+      if (String(url).endsWith("manifest.json")) {
+        return Promise.resolve({ ok: true, json: async () => ({ categories: [{ year: 2024, label: "GATE DA 2024", count: 1 }] }) });
+      }
+      if (String(url).endsWith("search-index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            questions: [{
+              question_uid: "go:422913",
+              title: "GATE DA 2024 | Question: 49",
+              link: "https://gateoverflow.in/422913/gate-ds%26ai-2024-question-49",
+              year: 2024,
+              subjectSlug: "probability-and-statistics",
+              type: "NAT",
+              detailShardKey: "2024",
+              tags: ["gateda-2024", "nat"],
+            }],
+          }),
+        });
+      }
+      if (String(url).endsWith("2024.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            recordsByQuestionUid: {
+              "go:422913": {
+                question_uid: "go:422913",
+                title: "GATE DA 2024 | Question: 49",
+                question: "Conditional expectation calculation",
+              },
+            },
+          }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        json: async () => ({
+          records_by_question_uid: {
+            "go:422913": { answer_uid: "go:422913", type: "NAT", answer: 1 },
+          },
+        }),
+      });
+    });
+
+    expect(DaQuestionService.loaded).toBe(false);
+    const detail = await DaQuestionService.ensureQuestionDetail("go:422913");
+    expect(detail).toBeDefined();
+    expect(detail.question_uid).toBe("go:422913");
+    expect(detail.answerMeta.answer).toBe(1);
+    expect(DaQuestionService.loaded).toBe(true);
+  });
+
   test("keeps the synthetic DA 2026 UID when a GateOverflow link is present", async () => {
     const searchWithLink = {
       questions: [{
