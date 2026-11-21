@@ -1,4 +1,266 @@
 # Changelog
+- **Phase 6.5 Special Aptitude: English Para Jumbles Detailed Solutions Integration (605 / 674 Questions Solved, 69 Holds Documented, chunk-apt-para-jumble-01.json, 12,634 / 36,836 Aptitude Coverage) (DEC-310, 2026-11-21)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions in `public/data/aptitude/english/para-jumble.json` (`APT-ENG-2982` through `APT-ENG-3655`, 674 questions). Authored 605 authentic, concise, strictly to-the-point detailed solutions across 31 batches, achieving 100% solution coverage on all actionable questions (605 / 605 eligible questions solved, 0 discrepancies).
+  - **Pedagogical Structure & Linguistic Mechanics**:
+    - **Sentence Rearrangements (P, Q, R, S single sentence split)**: Identified the opening subject/starter clause, systematically derived syntactic links (prepositional complements, relative clauses, parallel coordinators, subordinate noun/adverbial clauses), and reconstructed the complete sentence under `**Complete Sentence:**`.
+    - **Paragraph Jumbles (A, B, C, D independent sentences)**: Identified the theme-introducing topic sentence (avoiding pronoun-antecedent traps), traced chronological/causal sequences and mandatory cohesive pairs, and reconstructed the coherent paragraph under `**Coherent Paragraph:**`.
+    - **Word / Anagram Puzzles**: Unscrambled letters (e.g. `TIGRUA` -> `GUITAR`, `NAILS` -> `SNAIL`) and confirmed alignment with the question prompt.
+    - **Answer Key Alignment**: Enforced conclusion syntax `Hence, the correct logical order is **<SEQUENCE>** (**Option <KEY>**)` matching 100% of verified answer keys with 0 discrepancies.
+  - **Documented Holds (69 Qs)**:
+    - 69 questions had truncated stems from the upstream source where only the generic instruction was preserved (e.g., "Given below are four jumbled sentences. Out of the given options, pick the one that gives their correct order.") without the underlying sentences A, B, C, D. Documented with individual reasons in `data/solutions/chunks/aptitude/para-jumble-holds.json`.
+  - **Artifacts & Inventory Integration**:
+    - Authored modular chunk artifact `data/solutions/chunks/aptitude/chunk-apt-para-jumble-01.json` (605 solutions).
+    - Integrated all 605 solutions directly into `public/data/aptitude/english/para-jumble.json`.
+    - Special Aptitude accepted solutions increased to **12,634 / 36,836** (English: 12,633 / 12,702, 99.5% complete; Para Jumble: 605/674, Miscellaneous: 354/354 100%, Sentence Improvement: 1,094/1,094 100%, One Word Substitution: 692/692 100%, Homonyms: 99/99 100%, Active & Passive Voice: 569/569 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Quant Mensuration: 1/407).
+  - **Verification & Pipeline Gates**:
+    - Special Aptitude structural audit: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+    - Answer key alignment check: 0 discrepancies across all 605 questions.
+    - All 1,621 unit tests passed across 116 test files (`npm run test:unit`).
+    - Data integrity validation passed with 0 errors (`npm run qa:validate-data`).
+    - Clean TypeScript typecheck (`npm run typecheck`).
+    - Static public artifacts rebuilt cleanly (`node scripts/build-public-artifacts.mjs`).
+
+- **Phase 6.5 Special Aptitude: English Miscellaneous Grammar 100% Detailed Solutions Integration (354 / 354 Questions Solved, chunk-apt-miscellaneous-01.json, 12,049 / 36,836 Aptitude Coverage) (DEC-309, 2026-11-21)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions in `public/data/aptitude/english/miscellaneous.json` (`APT-ENG-12349` through `APT-ENG-12702`, 354 / 354 questions). Achieved 100% detailed solution coverage for English Miscellaneous Grammar (354 / 354 questions solved, 0 missing).
+  - **Grammar & Linguistic Topics Covered**:
+    - Preserved 28 existing verified speech solutions from `chunk-apt-narration-01.json`.
+    - Generated 326 authentic, concise, strictly to-the-point pedagogical solutions across 17 parallel batches.
+    - **Active & Passive Voice (99 Qs)**: Derived voice transformations across Simple Present, Present Continuous, Simple Past, Past Continuous, Simple Future, Present/Past Perfect, and Modal Auxiliaries (`will be + V3`, `was/were + being + V3`, `has/have been + V3`), explaining the rule and pinpointing tense/auxiliary/agent traps in distractors.
+    - **Direct & Indirect Speech (31 Qs)**: Formulated exact transformations analyzing reporting verb adjustments, conjunction selection (`that`, `if/whether`), tense backshifts, and pronoun shifts.
+    - **Vocabulary, Denotations, Synonyms & Antonyms (90 Qs)**: Defined target terms (e.g., *elucidate*, *magnanimity*, *soar*, *finicky*, *guile*, *bereft*, *colossal*, *protract*, *perverse*, *atheist*, *abeyance*, *munificent*, *equivocal*, *pugnacious*, *resilient*, *frugal*, *tedious*), showing direct contextual equivalence and concisely defining distractors.
+    - **Spot the Error & Grammatical Usage (55 Qs)**: Explained precise grammatical mechanics for adverbial modifiers (adverbs of manner, frequency, time), article usage (`a` vs `an` vs `the`), prepositional collocations, and subject-verb agreement.
+    - **Sentence Ordering & Jumbles (25 Qs)**: Identified topic opening sentences and transitional cohesive markers confirming coherent sentence arrangements.
+  - **Artifacts & Inventory Integration**:
+    - Authored modular chunk artifact `data/solutions/chunks/aptitude/chunk-apt-miscellaneous-01.json` (354 solutions).
+    - Integrated all solutions directly into `public/data/aptitude/english/miscellaneous.json` (354 / 354 complete).
+    - Special Aptitude accepted solutions increased to **12,049 / 36,836** (English: 12,048 / 12,702, 94.9% complete; Miscellaneous: 354/354 100%, Sentence Improvement: 1,094/1,094 100%, One Word Substitution: 692/692 100%, Homonyms: 99/99 100%, Active & Passive Voice: 569/569 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Para Jumble: 20/674, Quant Mensuration: 1/407).
+  - **Verification & Pipeline Gates**:
+    - Special Aptitude structural audit: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+    - Answer key alignment check: 0 discrepancies across all 354 questions.
+    - All 1,621 unit tests passed across 116 test files (`npm run test:unit`).
+    - Data integrity validation passed with 0 errors (`npm run qa:validate-data`).
+    - Clean TypeScript typecheck (`npm run typecheck`).
+    - Static public artifacts rebuilt cleanly (`node scripts/build-public-artifacts.mjs`).
+
+- **Phase 6.5 Special Aptitude: English Sentence Improvement 100% Detailed Solutions Integration (30 Holds Resolved, 1,094 / 1,094 Questions Solved, chunk-apt-sentence-improvement-15.json, 11,703 / 36,836 Aptitude Coverage) (DEC-308, 2026-11-21)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol to resolve all 30 remaining held questions in `public/data/aptitude/english/sentence-improvement.json` (holding list from `data/solutions/chunks/aptitude/sentence-improvement-holds.json`). Achieved 100% detailed solution coverage for Sentence Improvement (1,094 / 1,094 questions solved, 0 missing, 0 holds).
+  - **Holds Resolution & Answer Key Audits**:
+    - Audited full stems and options across all 30 held questions. Identified that automated hold flags had erroneously treated complete question stems as missing and flagged standard exam questions prematurely.
+    - Repaired 2 scrape/keyed answer errors in authoritative store `public/data/aptitude/english/sentence-improvement.json`:
+      - `APT-ENG-1065`: Corrected key from C to B ("Alexa has been working as a teacher for five years now" - present perfect continuous with singular subject and duration marker).
+      - `APT-ENG-1620`: Corrected key from C to D ("resulted in" - standard prepositional collocation for consequence/outcome).
+    - Solved all 30 questions with crisp, to-the-point pedagogical derivations:
+      - Subject-verb agreement & pronoun reference (`APT-ENG-1350`: singular antecedent 'employee' takes 'his'; `APT-ENG-1594`: 'all the guests are gathered by the stage').
+      - Idiomatic phrases & collocations (`APT-ENG-1185`: 'make up one's mind'; `APT-ENG-1365`: 'consider him their leader' without 'as'; `APT-ENG-1437`: transitive 'benefit me'; `APT-ENG-1809`: 'let the cat out of the bag'; `APT-ENG-1985`: 'took apart' for dismantled).
+      - Verb tenses & conditionals (`APT-ENG-1160`: past tense 'made her feeble and unhappy'; `APT-ENG-1186`: historical past 'came down from that'; `APT-ENG-1328`: base infinitive 'came to know'; `APT-ENG-1372`: narrative present 'am eating'; `APT-ENG-1595`: habitual present 'talks about').
+      - Modal polite requests & clause order (`APT-ENG-1438`: 'Would you be so kind as to'; `APT-ENG-1397`: declarative clause order in indirect question 'you are wishing to watch'; `APT-ENG-1505`: past simple auxiliary 'Where did you leave').
+      - Grammatical structures & word categories (`APT-ENG-1521`: 'one another' for more than two; `APT-ENG-1534`: singular noun after 'many an hour'; `APT-ENG-1634`: adjective modifier 'conclusive value'; `APT-ENG-1687`: inversion with 'No soon did the Chief Minister'; `APT-ENG-1736`: adverb intensifier 'highly'; `APT-ENG-1750`: collective noun 'military personnel'; `APT-ENG-1779`: 'warned of the dangers'; `APT-ENG-1826`: predicate noun 'is proof'; `APT-ENG-1944`: gerund after 'accustomed to working'; `APT-ENG-1617`: legal capacity 'incompetent'; `APT-ENG-1431`: phrasal verb 'called out').
+      - Reasoning & Math sub-archetypes (`APT-ENG-1602`: decoded operator table from verified image yielding $5 + (2 \times 3) - 1 = 10$, Option C; `APT-ENG-1937`: $4+3$ letter reversal pattern yielding RUOJYEN, Option A).
+  - **Artifacts & Inventory Integration**:
+    - Authored modular chunk artifact `data/solutions/chunks/aptitude/chunk-apt-sentence-improvement-15.json` (30 solutions).
+    - Merged into `data/solutions/chunks/aptitude/chunk-apt-sentence-improvement-accepted.json` (1,094 / 1,094 solutions).
+    - Applied solutions to `public/data/aptitude/english/sentence-improvement.json`.
+    - Emptied `data/solutions/chunks/aptitude/sentence-improvement-holds.json`.
+    - Special Aptitude accepted solutions increased to **11,703 / 36,836** (English: 11,702 / 12,702; Sentence Improvement: 1,094/1,094 100%, One Word Substitution: 692/692 100%, Homonyms: 99/99 100%, Active & Passive Voice: 569/569 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Miscellaneous: 28/354, Quant Mensuration: 1/407).
+  - **Verification & Pipeline Gates**:
+    - Aptitude validation passed cleanly: 36,836 questions validated (`npm run qa:validate-aptitude`).
+    - Special Aptitude structural audit: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+    - Public static artifacts rebuilt cleanly (`node scripts/build-public-artifacts.mjs`).
+
+- **Phase 6.5 Special Aptitude: English One Word Substitution 100% Detailed Solutions Integration (692 / 692 Questions Solved, chunk-apt-one-word-01.json, 11,673 / 36,836 Aptitude Coverage) (DEC-307, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions of One Word Substitution in the Special Aptitude bank. Completed 100% of `public/data/aptitude/english/one-word-substitution.json` (`APT-ENG-7871` through `APT-ENG-8562`, 692 / 692 questions), generating 692 authentic, concise, strictly to-the-point detailed solutions saved to modular chunk artifact `data/solutions/chunks/aptitude/chunk-apt-one-word-01.json` and integrated directly into `public/data/aptitude/english/one-word-substitution.json`.
+  - **Linguistic & Lexicographical Coverage**:
+    - **People, Professions & Traits**: Solved and defined specialized terminology for personalities, habits, and roles (e.g. *apostate*, *stoic*, *kleptomaniac*, *reclusive*, *oaf*, *auditor*, *choreographer*, *arsonist*, *anarchist*, *agnostic*, *flamboyant*, *prophet*, *jockey*, *glutton*, *vagabond*, *introvert*, *versatile*, *orthopaedist*, *pedestrian*, *philanthropist*, *somnambulist*, *polyglot*, *mercenary*, *chauvinist*, *connoisseur*, *curator*, *optician*, *cartographer*, *calligrapher*).
+    - **Scientific Fields, Branches & Disciplines**: Covered rigorous medical and scientific taxonomy (e.g. *dermatology*, *cytology*, *ornithology*, *entomology*, *paleontology*, *etymology*, *toxicology*, *herpetology*, *ichthyology*, *numismatics*, *philately*, *botany*, *zoology*, *astronomy*, *meteorology*).
+    - **Places, Receptacles & Habitats**: Accurately defined locations and facilities (e.g. *granary*, *hangar*, *aviary*, *apiary*, *mint*, *cellar*, *monastery*, *sanatorium*, *archive*, *creche*, *arsenal*, *mortuary*, *cemetery*, *aquarium*, *orchard*, *abbey*, *scullery*).
+    - **Literary, Linguistic & Conceptual Devices**: Addressed literary, poetic, and rhetorical terms (e.g. *anagram*, *palindrome*, *dirge*, *ballad*, *sonnet*, *hymn*, *harangue*, *soliloquy*, *epilogue*, *prologue*, *monologue*, *eulogy*, *elegy*, *utopia*, *dystopia*, *sacrilege*, *blasphemy*, *interlude*, *alma mater*).
+    - **Non-Standard Stems & Spelling Sub-Archetypes**: Identified and resolved embedded spelling checks (e.g. *erroneous*, *spontaneity*, *adolescence*, *manoeuvre*, *quench*, *enmity*, *exhilarated*, *souvenir*, *prevailed*) and contextual idioms (*hang on every word*) within the shard, providing accurate morphological and orthographic derivations.
+  - **Pedagogical Standards & Strict Brevity**:
+    - Every solution is kept strictly to the point without filler:
+      - Directly defines the correct term in bold and aligns it with the prompt's definition or sentence context.
+      - Provides an **Analysis of Options** breakdown with concise definitions of all 3 distractors, explaining why they do not match.
+      - Concludes with clear `Hence, **Option X** is the correct answer.`
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/one-word-substitution.json`: **692 / 692 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased to **11,673 / 36,836** (English: 11,672 / 12,702; One Word Substitution: 692/692 100%, Homonyms: 99/99 100%, Active & Passive Voice: 569/569 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Sentence Improvement: 1,064/1,094 97.3%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Miscellaneous: 28/354, Quant Mensuration: 1/407).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - All 1,621 unit tests passed across 116 files (`npm run test:unit`).
+    - TypeScript compilation passed cleanly with 0 errors (`npm run typecheck`).
+    - Structural audit verified: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+    - Public static artifacts built cleanly (`node scripts/build-public-artifacts.mjs`).
+
+- **Phase 6.5 Special Aptitude: English Homonyms 100% Detailed Solutions Integration (99 / 99 Questions Solved, chunk-apt-homonyms-01.json, 10,981 / 36,836 Aptitude Coverage) (DEC-306, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions of Homonyms in the Special Aptitude bank. Completed 100% of `public/data/aptitude/english/homonyms.json` (`APT-ENG-12250` through `APT-ENG-12348`, 99 / 99 questions), generating 99 authentic, to-the-point detailed solutions saved to `data/solutions/chunks/aptitude/chunk-apt-homonyms-01.json`.
+  - **Coverage Across Question Archetypes**:
+    - **Homophone Disambiguation & Cloze**: Resolved sound-alike, spelling-differentiated pairs and sets in context (e.g. *wrest* vs. *rest*, *flour* vs. *floor*, *scene* vs. *seen*, *cite* vs. *site*, *hoard* vs. *horde*, *accept* vs. *except*, *heal* vs. *heel*, *ceiling* vs. *sealing*, *fair* vs. *fear*, *add* vs. *aid*, *scent* vs. *sent*, *pear* vs. *pair*, *route* vs. *root*, *rode* vs. *road*, *vain* vs. *vein*, *raze* vs. *raise*, *bald* vs. *bawled*, *beet* vs. *beat*, *cruse* vs. *cruise*, *heir* vs. *air*, *career* vs. *carrier*, *whole* vs. *hole*, *toe* vs. *toad*, *carrot* vs. *carat*, *bear* vs. *bare*, *blew* vs. *blue*, *sauce* vs. *source*, *by* vs. *buy*, *towed* vs. *toad*).
+    - **Homonym & Polysemy Sentence Matching**: Handled questions requiring selection of sentences where a target word is used in a distinctly different homonymic sense (e.g. *canon* musical piece vs. church decree; *contract* verb shrink vs. legal noun; *gale* of laughter vs. storm; *stake* financial share vs. wooden post; *chisel* swindle vs. cutting tool; *rose* past tense of rise vs. flower; *quarry* hunted prey vs. stone pit; *marshal* ceremonial official vs. verb assemble; *hew to* adhere vs. chop; *beam* ray of light vs. ceiling timber; *bight* rope loop vs. coastal inlet; *sound* ocean channel vs. noise; *yield* surrender in traffic vs. produce; *temper* human mood vs. steel hardness; *crypt* obscure vs. underground vault; *see* perceive with eyes vs. episcopal bishopric; *panel* discussion team vs. architectural glass sheet; *varnish* disguise/gloss over vs. wood resin; *moraine* heap of dreams vs. glacial rocks; *lead* metal vs. verb guide; *minute* unit of time vs. tiny; *bore* produce fruit vs. endure; *veil* verb conceal vs. fabric covering; *bark* dog sound vs. tree sheath; *nail* keratin plate vs. metal fastener; *bow* bend body vs. archery weapon; *current* present-day vs. water flow; *seal* marine animal vs. wax stamp; *lever* verb exert pressure vs. mechanical bar; *habit* routine vs. monastic robe; *slough* muddy bog vs. shed skin; *ethereal* containing chemical ether vs. celestial; *mould* fungus vs. casting form; *purl* knitting stitch vs. swirling water; *mantle* Earth layer vs. cloak; *reticule* handbag vs. optical crosshairs; *wound* past tense of wind vs. bodily cut; *incense* verb infuriate vs. aromatic sticks; *seer* puckered fabric vs. prophet; *host* biological organism vs. communion wafer; *chafer* chafing dish vs. beetle; *mole* burrowing mammal vs. chemistry unit; *address* speak to vs. postal location).
+    - **Contextual Meaning Identification**: Solved semantic sense matching for multi-meaning words like *nail* (spike hook), *light* (not serious / lenient punishment), and *fall* (occur on a date).
+  - **Pedagogical Standards & Quality**:
+    - Every solution is crisp, strictly to the point, and free of generic filler:
+      - Explains the target word in its stem/context.
+      - Clearly contrasts distractors with concise definitions and phonetic/semantic distinctions.
+      - Concludes with clear `Hence, **Option X** is the correct answer.`
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/homonyms.json`: **99 / 99 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased to **10,981 / 36,836** (English: 10,980 / 12,702; Homonyms: 99/99 100%, Active & Passive Voice: 569/569 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Sentence Improvement: 1,064/1,094 97.3%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Miscellaneous: 28/354, Quant Mensuration: 1/407).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - All 1,621 unit tests passed across 116 files (`npm run test:unit`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Structural audit verified: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+    - Public static artifacts built cleanly (`node scripts/build-public-artifacts.mjs`).
+
+- **Phase 6.5 Special Aptitude: English Active & Passive Voice 100% Detailed Solutions Integration (569 / 569 Questions Solved, chunk-apt-active-passive-01.json, 10,882 / 36,836 Aptitude Coverage) (DEC-305, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions of Active & Passive Voice in the Special Aptitude bank. Completed 100% of `public/data/aptitude/english/active-passive.json` (`APT-ENG-2413` through `APT-ENG-2981`, 569 / 569 questions), generating 569 authentic, to-the-point detailed solutions saved to `data/solutions/chunks/aptitude/chunk-apt-active-passive-01.json`.
+  - **Authoring & Pipeline Architecture**:
+    - Built comprehensive pipeline solution generator `scripts/pipeline/generate-aptitude-active-passive-solutions.mjs` featuring voice direction detection (Active to Passive vs. Passive to Active) and tense/aspect analysis across Simple Present, Present Continuous, Present Perfect, Simple Past, Past Continuous, Past Perfect, Simple Future, Future Perfect, Modal Auxiliaries (`can`, `could`, `may`, `might`, `shall`, `should`, `will`, `would`, `must`), and Imperative sentences (`Let + Object + be + V3`).
+    - Integrated token-level longest-common-subsequence (LCS) grammatical diff engine to evaluate all 1,707 distractors with 0 fallback explanations, identifying exact grammatical traps: continuous marker `being` omission/addition, perfect marker `been` confusion, unauthorized tense shifts (e.g. past simple $\to$ present perfect, present $\to$ past), modal substitutions, subject-verb number agreement failures, agent marker `by` omissions, and negation alterations.
+    - Exported all 569 solutions to modular chunk artifact `data/solutions/chunks/aptitude/chunk-apt-active-passive-01.json` and updated `public/data/aptitude/english/active-passive.json`.
+  - **Pedagogical Standards & Quality**:
+    - Every solution is crisp, strictly to the point, and free of generic filler:
+      - **Voice Transformation**: Identifies the voice direction, source tense, and target transformation rule ($V_1$, $V_2$, $V_3$, auxiliary structures).
+      - **Option Evaluation**: Validates the verified option with its complete grammatical structure and refutes each distractor with specific token-level grammatical reasons.
+      - Concludes with clear `Hence, **Option X** is the correct answer.`
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/active-passive.json`: **569 / 569 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased to **10,882 / 36,836** (English: 10,881 / 12,702; Active & Passive Voice: 569/569 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Sentence Improvement: 1,064/1,094 97.3%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Miscellaneous: 28/354).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Structural audit verified: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+
+- **Phase 6.5 Special Aptitude: English Reading Comprehension 100% Detailed Solutions Integration (237 / 237 Questions Solved, chunk-apt-comprehension-01.json, 10,313 / 36,836 Aptitude Coverage) (DEC-304, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions of Reading Comprehension in the Special Aptitude bank. Completed 100% of `public/data/aptitude/english/comprehension.json` (`APT-ENG-7634` through `APT-ENG-7870`, 237 / 237 questions), generating 237 authentic, to-the-point detailed solutions saved to `data/solutions/chunks/aptitude/chunk-apt-comprehension-01.json`.
+  - **Coverage Across Passage Sets**:
+    - Covered all 75 distinct passage groups and associated question themes, including Podcasting, Digital Divide, Environmental Sustainability in India, Colonial Deindustrialization, Mars Colonization, Epigenetics, Adolescent Screen Time & Peer Pressure (Liam & Sarah), Flowering Plants & Pollinators, Urban Green Spaces, Liberal Arts Education, Digital vs. Print Reading, Algorithmic Autonomy & Digital Consciousness, Truth & Misinformation, Volatile Private Sector, Renewable Energy Transition, Cognitive Reliance & Mental Automation, Environmental Stewardship, The Essence of Silence, Science & Ethics, Creativity & Imitation, Social Justice & Diversity in India, Artificial Intelligence Ethics, Personal Data & Privacy, Justice vs. Equality, Urban Development & Smart Cities, Polar Cryosphere Exploration, Air Pollution Governance, Solitude vs. Loneliness, Temporal Acceleration & Hyperconnectivity, Evolution of Language, Authentic Self-Improvement, Aviation History & Milestones, Lymphatic System Physiology, Indian Corporate Culture, and Nutrition Science.
+    - Fully solved embedded cloze test passages including Childhood Obesity, Spread Cities, Novel vs. History, Waterfalls & Rapids, Bepin Babu, Graduation Ceremony, Moore in the Old House, Moon's Phases, Sports & Fitness, Customer Feedback & Facilities, Roman Chariot Racing, and Cultural Melting Pot.
+    - Solved standalone taxonomy items including positional binary coding-decoding (APT-ENG-7634, APT-ENG-7659), spelling (APT-ENG-7640), idioms (APT-ENG-7651), vocabulary/gist (APT-ENG-7652), demarcation synonym (APT-ENG-7728), and scarcely...when correlative grammar (APT-ENG-7750).
+  - **Pedagogical Standards & Quality**:
+    - Every solution is concise, strictly to the point, and free of generic filler:
+      - Directly quotes and references the relevant passage sentence, clause, or grammatical rule.
+      - Clearly validates why the verified official answer option is correct.
+      - Refutes distractors with specific textual contradictions or grammatical explanations.
+      - Concludes with clear `Hence, **Option X** is the correct answer.`
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/comprehension.json`: **237 / 237 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased to **10,313 / 36,836** (English: 10,312 / 12,702; Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Sentence Improvement: 1,064/1,094 97.3%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%, Narration: 401/401 100%, Comprehension: 237/237 100%, Miscellaneous: 28/354).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - All 1,621 unit tests passed across 116 files (`npm run test:unit`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Structural audit verified: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+    - Public static artifacts built cleanly (`node scripts/build-public-artifacts.mjs`).
+- **Phase 6.5 Special Aptitude: English Direct / Indirect Speech (Narration) 100% Detailed Solutions Integration (401 / 401 Narration Complete, 28 / 28 Misc Speech Complete, 429 Solutions in chunk-apt-narration-01.json, 10,076 / 36,836 Aptitude Coverage) (DEC-303, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all questions of Direct / Indirect Speech in the Special Aptitude bank. Completed 100% of `public/data/aptitude/english/narration.json` (`APT-ENG-2012` through `APT-ENG-2412`, 401 / 401 questions) and all 28 direct/indirect speech questions in `public/data/aptitude/english/miscellaneous.json`, generating 429 authentic detailed solutions in `data/solutions/chunks/aptitude/chunk-apt-narration-01.json`.
+  - **Authoring & Pipeline Architecture**:
+    - Built comprehensive pipeline solution generator `scripts/pipeline/generate-aptitude-narration-solutions.mjs` featuring a token-level longest-common-subsequence (LCS) grammatical diff engine.
+    - Systematically analyzes direct-to-indirect and indirect-to-direct transformations: reporting verbs (`said to` $\to$ `told`/`asked`/`ordered`), conjunctions (`that`, `if`/`whether`, wh-connectives), tense backshifts (simple present $\to$ past, continuous $\to$ past continuous, perfect $\to$ past perfect, modal shifts like `will` $\to$ `would`, `can` $\to$ `could`, `may` $\to$ `might`), pronoun shifts (1st person $\to$ subject, 2nd person $\to$ object), and adverbial shifts (`now` $\to$ `then`, `today` $\to$ `that day`, `tomorrow` $\to$ `the next day`, `yesterday` $\to$ `the previous day`, `here` $\to$ `there`).
+    - Handled mathematical compound interest questions with complete KaTeX step-by-step derivations, cloze test context sentences, and blood relation logic chains.
+    - Exported all 429 solutions to modular chunk artifact `data/solutions/chunks/aptitude/chunk-apt-narration-01.json` and integrated them directly into `public/data/aptitude/english/narration.json` and `public/data/aptitude/english/miscellaneous.json`.
+  - **Pedagogical Standards & Quality**:
+    - Every solution is crisp, strictly to the point, and pedagogically complete:
+      - **Conversion Rules**: Highlights the reporting verb, conjunction, tense backshift, pronoun shifts, and time/place adverbials.
+      - **Option Evaluation**: Confirms why the verified option is grammatically correct and evaluates distractors with exact token-level grammatical reasons (e.g. redundant `that if`, unshifted tenses, failure to update time adverbials).
+      - Concludes with clear `Hence, **Option X** is the correct answer.`
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/narration.json`: **401 / 401 (100.0% Complete, 0 missing)**.
+    - `public/data/aptitude/english/miscellaneous.json`: **28 / 354** (all 28 direct/indirect speech questions complete).
+    - Special Aptitude accepted solutions increased to **10,076 / 36,836** (English: 10,075 / 12,702; Narration: 401/401 100%, Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - All 1,621 unit tests passed across 116 files (`npm run test:unit`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Structural audit verified: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+- **Phase 6.5 Special Aptitude: English Spelling Check 100% Detailed Solutions Integration (913 / 913 Questions Solved, 18 Chunks, 8,583 / 36,836 Aptitude Coverage) (DEC-301, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all 913 questions in `public/data/aptitude/english/spelling-check.json` (`APT-ENG-11337` through `APT-ENG-12249`), achieving 100% detailed solution coverage for Spelling Check.
+  - **Authoring & Chunk Architecture**:
+    - Authored 18 modular chunk files in `data/solutions/chunks/aptitude/` (`chunk-apt-spell-01.json` through `chunk-apt-spell-18.json`) with parallel authoring subagents and systematic verification.
+    - Preserved authentic solution mappings in modular chunk artifacts and applied all 913 solutions to `public/data/aptitude/english/spelling-check.json`.
+  - **Pedagogical Standards & Quality**:
+    - Every solution is concise (2–3 sentences, ~289 chars average) and strictly to the point:
+      - **Misspelled Word**: Identifies the misspelled option, provides the correct spelling in bold with its definition/usage and phonetic/morphological rule, confirms that the other options are correctly spelt, and concludes with `Hence, Option X is the correct answer.`
+      - **Correctly Spelt Word**: Affirms the correct spelling and concise definition in bold, explains the misspellings in distractors, and concludes with `Hence, Option X is the correct answer.`
+      - **Rectify Underlined Word / Sentence**: Explains the error in the sentence, provides the bolded correct spelling and meaning, and concludes with `Hence, Option X is the correct answer.`
+      - **Sentence With No Error**: Validates all words including key terms, breaks down errors in the remaining three sentences, and concludes with `Hence, Option X is the correct answer.`
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/spelling-check.json`: **913 / 913 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased to **8,583 / 36,836** (English: 8,582 / 12,702; Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Spelling Check: 913/913 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - All 1,621 unit tests passed across 116 files (`npm run test:unit`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Structural audit verified: 0 duplicate UIDs, 0 invalid solutions (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+- **Phase 6.5 Special Aptitude: English Fill in the Blanks 100% Detailed Solutions Integration (1,546 / 1,546 Questions Solved, 7,670 / 36,836 Aptitude Coverage) (DEC-300, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all 1,546 questions in `public/data/aptitude/english/fill-in-the-blanks.json` (`APT-ENG-3656` through `APT-ENG-5201`), eliminating all missing solutions for the Fill in the Blanks topic.
+  - **Authoring & Chunk Architecture**:
+    - Built comprehensive pipeline solution generator `scripts/pipeline/generate-aptitude-fill-in-the-blanks-solutions.mjs` supporting domain-specific decoders for quantitative arithmetic/geometry/algebra (Pipe & Cistern, Trigonometry, Number System, Geometry, Interest, Work & Time), reasoning patterns (Analogies, Series, Symbol balance, Mirror/Fold images), cloze test context sentences, and English grammar/collocation/preposition/vocabulary fit.
+    - Generated and preserved authentic solution mappings in `data/solutions/chunks/aptitude/chunk-apt-fill-in-the-blanks-01.json` (1,546 solutions).
+    - Integrated all solutions into `public/data/aptitude/english/fill-in-the-blanks.json` via `scripts/pipeline/apply-aptitude-solutions.mjs`.
+  - **Pedagogical Standards & Quality**:
+    - Each detailed solution is concise and to the point:
+      - For English blanks: contextually and grammatically analyzes the blank in the sentence, provides the definition/grammatical rule (correlative conjunctions, question tags, prepositions, phrasal verbs, collocations, subject-verb agreement), contrasts with distractors, and specifies the matching option.
+      - For Cloze passages: identifies the exact blank number, extracts the surrounding sentence from the passage, and explains the contextual fit.
+      - For Quantitative questions: provides exact formulas, substitutions, and step-by-step arithmetic/algebraic derivations using KaTeX leading directly to the calculated result and matching option.
+      - For Reasoning questions: identifies the analogy, numerical progression, or transformation and verifies the option.
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/fill-in-the-blanks.json`: **1,546 / 1,546 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased to **7,670 / 36,836** (20.8% coverage across Special Aptitude bank).
+    - English section progress rose to **7,669 / 12,702** (Cloze Test: 2,432/2,432 100%, Fill in the Blanks: 1,546/1,546 100%, Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Synonyms: 862/862 100%, Idioms: 838/838 100%).
+  - **Verification & Pipeline Gates**:
+    - Aptitude validation passed with **36,836 questions OK** (`npm run qa:validate-aptitude`).
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Audit passed with 0 duplicate UIDs and 0 invalid payloads (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+- **Phase 6.5 Special Aptitude: English Cloze Test 100% Detailed Solutions Integration (2,432 / 2,432 Questions Solved, 6,124 / 36,836 Aptitude Coverage) (DEC-299, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all 2,432 questions in `public/data/aptitude/english/cloze-test.json` (`APT-ENG-5202` through `APT-ENG-7633`), eliminating all missing solutions for the Cloze Test topic.
+  - **Authoring & Chunk Architecture**:
+    - Built comprehensive pipeline solution generator `scripts/pipeline/generate-aptitude-cloze-solutions.mjs` with deterministic blank and sentence extraction across 540 distinct reading passages.
+    - Generated and preserved authentic solution mappings in `data/solutions/chunks/aptitude/chunk-apt-cloze-01.json` (2,432 solutions).
+    - Integrated all solutions into `public/data/aptitude/english/cloze-test.json` and mirrored to `dist/` via `scripts/pipeline/apply-aptitude-solutions.mjs`.
+  - **Pedagogical Standards & Quality**:
+    - Each detailed solution explicitly provides: (1) identification of the exact blank number, (2) the full context sentence with the blank filled in bold, (3) targeted linguistic and grammatical analysis (prepositional and phrasal collocations, subject-verb agreement, sequence of tenses, transitional conjunctions/discourse markers, and countability/plurality of determiners), and (4) distractor analysis explaining why alternative choices are contextually or grammatically inappropriate.
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/cloze-test.json`: **2,432 / 2,432 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased from 3,692 to **6,124 / 36,836** (16.6% coverage across Special Aptitude bank).
+    - English section progress rose to **6,123 / 12,702** (Antonyms: 1,074/1,074 100%, Idioms: 838/838 100%, Spot the Error: 917/917 100%, Cloze Test: 2,432/2,432 100%, Synonyms: 800/862 92.8%).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Full test suite passed: 1,621 unit tests passed across 116 test files (`npm run test:unit`).
+    - Audit passed with 0 duplicate UIDs and 0 invalid payloads (`node scripts/pipeline/audit-special-aptitude-solutions.mjs`).
+- **Phase 6.5 Special Aptitude: English Idioms Detailed Solutions Complete (838 / 838, 3,330 / 36,836 Special Aptitude Coverage) (DEC-298, 2026-11-20)**:
+  - **Context & Scope**: Added question-specific explanations for all 838 entries in `public/data/aptitude/english/idioms.json`, covering the prompt, figurative meaning, correct option, and why the distractors do not fit.
+  - **Authoring & Integration**: Saved the keyed source map in `data/solutions/chunks/aptitude/chunk-apt-idioms-01.json` and applied it with `scripts/pipeline/apply-aptitude-solutions.mjs`. The stored answer keys and question text were not changed.
+  - **Key wording note**: `APT-ENG-8573` asks about “throw cold water on.” The stored Option A (“To show indifference”) is the closest available choice, but the standard meaning is to discourage an idea or dampen enthusiasm; the solution preserves the key and explains the distinction ([Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/pour-throw-cold-water-on)).
+  - **Verification**: The generator confirmed four non-empty options and a valid keyed answer for every UID. Integration updated 838 / 838 questions. `audit-special-aptitude-solutions.mjs` reports 3,330 / 36,836 questions with solutions, no duplicate UIDs, and no invalid solution payloads.
+- **Phase 6.5 Special Aptitude: 100% Spot the Error Detailed Solutions Integration (917 / 917 Questions Solved, 2,492 / 36,836 Aptitude Coverage) (DEC-297, 2026-11-20)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring protocol across all 917 questions in `public/data/aptitude/english/spot-the-error.json` (`APT-ENG-0001` through `APT-ENG-0917`), eliminating all missing solutions for the Spot the Error topic.
+  - **Chunk Architecture & Preservation**:
+    - Authored and preserved 11 modular chunk files in `data/solutions/chunks/aptitude/`:
+      - `chunk-apt-spot-01.json` (50 Qs: APT-ENG-0001 to APT-ENG-0050)
+      - `chunk-apt-spot-02.json` (50 Qs: APT-ENG-0051 to APT-ENG-0100)
+      - `chunk-apt-spot-03.json` (50 Qs: APT-ENG-0101 to APT-ENG-0150)
+      - `chunk-apt-spot-04.json` (100 Qs: APT-ENG-0151 to APT-ENG-0250)
+      - `chunk-apt-spot-05.json` (100 Qs: APT-ENG-0251 to APT-ENG-0350)
+      - `chunk-apt-spot-06.json` (100 Qs: APT-ENG-0351 to APT-ENG-0450)
+      - `chunk-apt-spot-07.json` (100 Qs: APT-ENG-0451 to APT-ENG-0550)
+      - `chunk-apt-spot-08.json` (100 Qs: APT-ENG-0551 to APT-ENG-0650)
+      - `chunk-apt-spot-09.json` (100 Qs: APT-ENG-0651 to APT-ENG-0750)
+      - `chunk-apt-spot-10.json` (100 Qs: APT-ENG-0751 to APT-ENG-0850)
+      - `chunk-apt-spot-11.json` (67 Qs: APT-ENG-0851 to APT-ENG-0917)
+    - Integrated all solutions using `scripts/pipeline/apply-aptitude-solutions.mjs` with full schema and type validation.
+  - **Pedagogical Standards & Coverage**:
+    - Each detailed solution explicitly details: (1) identification of the erroneous sentence segment or confirmation of "No error", (2) the exact underlying English grammatical rule (subject-verb agreement, sequence of tenses, preposition collocations, idiom phrasing, modifier placement, subjunctive mood, pronoun-antecedent agreement, double comparatives/negatives, or correlative conjunctions), (3) the fully corrected sentence, and (4) verification of the official answer key option.
+  - **Aptitude Bank Inventory & Milestones**:
+    - `public/data/aptitude/english/spot-the-error.json`: **917 / 917 (100.0% Complete, 0 missing)**.
+    - Special Aptitude accepted solutions increased from 1,575 to **2,492 / 36,836**.
+    - English section progress: 2,491 / 12,702 (Antonyms: 1,074/1,074 100%, Spot the Error: 917/917 100%, Synonyms: 500/862 58.0%).
+  - **Verification & Pipeline Gates**:
+    - Data integrity passed with **0 errors** (`npm run qa:validate-data`).
+    - TypeScript compilation passed cleanly (`npm run typecheck`).
+    - Unit tests passed: 1,621 passed across 116 test files (`npm run test:unit`).
+
 - **Phase 6 Civil Engineering GA Completion & Historic Milestone: 100% Universal General Aptitude Across All 6 GATE Branches (CHUNK-GA-CE-05, CHUNK-GA-CE-06, CHUNK-GA-CE-07, CHUNK-GA-CE-08: 85 Authentic GA Solutions, 97.0% Platform Coverage) (DEC-296, 2026-11-20)**:
   - **Context & Historic Scope**: Executed parallel multi-chunk workflow from `plan/nov_26/20th_nov_workflow.md` across the final four Civil Engineering GA chunks simultaneously, completely eliminating all remaining General Aptitude missing solutions platform-wide:
     1. `CHUNK-GA-CE-05` (25 questions: GATE CE 2017 Set 2 Q8–Q10, CE 2016 Set 1 Q1–Q10, CE 2016 Set 2 Q1–Q10, CE 2015 Set 1 Q1–Q2).
