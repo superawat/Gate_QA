@@ -4070,9 +4070,38 @@ describe("evaluateAnswer", () => {
           expect(evaluateAnswer(record, ["B", "C", "D"])).toEqual({ status: "evaluated", correct: false });
           expect(evaluateAnswer(record, ["A"])).toEqual({ status: "evaluated", correct: false });
         });
+
+        test("evaluates go:490 (GATE CSE 2008 Q67) as MCQ Option B (multilevel page table pointer widths 24, 24, 24)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "B",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:523039 (GATE CSE 2026 Set 1 Q41) as MSQ Option C (closure property: complement of regular L2 is context-free)", () => {
+          const record = {
+            type: "MSQ",
+            answer: ["C"],
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, ["C"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "c")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["A"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["B"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["D"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["A", "C"])).toEqual({ status: "evaluated", correct: false });
+        });
       });
     });
   });
 });
+
 
 

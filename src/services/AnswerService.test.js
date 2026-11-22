@@ -3568,6 +3568,26 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
                 answer: 1,
               });
             });
+
+            test("resolves go:490 (GATE CSE 2008 Q67) as MCQ Option B", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:490": {
+                  answer_uid: "manual:go:490",
+                  type: "MCQ",
+                  answer: "B",
+                  tolerance: null,
+                  source: "verified_reference_key",
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:490",
+                title: "GATE CSE 2008 | Question: 67",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "B",
+              });
+            });
           });
         });
       });
