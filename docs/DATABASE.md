@@ -107,11 +107,16 @@ One row per user containing the cloud backup. `user_id` is both the primary key 
 | `aptitude_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical Aptitude bookmarked question IDs array |
 | `da_solved` | `jsonb` | **No** | `'[]'::jsonb` | Canonical GATE DA question IDs solved by the user |
 | `da_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical GATE DA question IDs bookmarked by the user |
+| `isro_solved` | `jsonb` | **No** | `'[]'::jsonb` | Canonical ISRO CS question IDs solved by the user |
+| `isro_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical ISRO CS question IDs bookmarked by the user |
 | `bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked GATE CSE question IDs (DEC-111; migration `20260915000000_add_bookmark_removals.sql`) |
 | `aptitude_bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked Aptitude question IDs (DEC-111; migration `20260915000000_add_bookmark_removals.sql`) |
 | `da_bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked GATE DA question IDs (DEC-111; migration `20260915000000_add_bookmark_removals.sql`) |
+| `isro_bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked ISRO CS question IDs |
+| `isro_solved_removals` | `jsonb` | Yes | `null` | ISRO CS unsolve tombstones mapping question UID to removal epoch timestamp |
+| `isro_solved_timestamps` | `jsonb` | Yes | `null` | ISRO CS solve timestamps mapping question UID to solve epoch timestamp |
 
-The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns. The client includes resilient schema fallback that safely embeds DA progress inside `progress_records` if the remote table schema lacks optional top-level columns, and gracefully treats `null` or missing removal columns as empty sets (`[]`).
+ISRO attempt histories live under `progress_records.isro`. Migration `20261123091644_add_isro_progress_sync.sql` adds the five native ISRO ID/removal columns. Until that migration is applied, the client falls back to embedding ISRO IDs and tombstones inside `progress_records`, alongside the existing DA fallback. The migration is present locally but has not been applied to the hosted database; the captured `supabase/db-schema/` snapshots therefore remain unchanged. The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns, and treats null or missing removal columns as empty sets.
 
 ### `public.sync_log`
 
@@ -258,7 +263,7 @@ All database functions in the cluster adhere to the Supabase Database Advisor & 
 
 The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running. Sync requests are debounced by 750 ms and routine syncs are throttled to one per 120 seconds (2 minutes) per user (`MIN_SYNC_INTERVAL_MS`). Changes remain in the local offline queue and dirty timestamps remain persistent in `localStorage`, surviving browser restarts. Lifecycle events (`visibilitychange`) attempt a best-effort sync on tab hidden and catch up on tab visible. Multiple open tabs coordinate via `BroadcastChannel("gateqa_sync_channel")` to cancel redundant sync timers.
 
-`sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude/da progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
+`sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude/da/isro progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
 
 ---
 
@@ -271,9 +276,10 @@ The sync is single-flight: a user must not generate overlapping sync requests wh
 | Solved questions | Additive union of canonical string IDs; legacy object rows are recovered during sync |
 | Aptitude solved/bookmarked IDs | Additive union of solved IDs; bookmarks merged minus `aptitude_bookmark_removals` tombstones (DEC-111) |
 | GATE DA solved/bookmarked IDs | Additive union of solved IDs; bookmarks merged minus `da_bookmark_removals` tombstones (DEC-111) |
-| ISRO CS solved/bookmarked IDs | Local-first additive sets (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`) with LWW-tombstone removal protection (`gate_qa_isro_solved_removals`, `gate_qa_isro_bookmark_removals`) (DEC-142) |
+| ISRO CS solved IDs | LWW solve/unsolve merge using `isro_solved`, `isro_solved_removals`, and `isro_solved_timestamps`; legacy schemas store these fields inside `progress_records` |
+| ISRO CS bookmarks | Local/cloud union minus `isro_bookmark_removals`; legacy schemas store both IDs and removals inside `progress_records` |
 | Mock history | Combine records, deduplicate by test identity, and sort chronologically |
-| Practice progress | Merge attempt histories by timestamp and preserve the union of activity dates used by streaks |
+| Practice progress | Merge standard, aptitude, DA, and ISRO attempt histories by timestamp and preserve the union of activity dates used by streaks |
 
 Before a merge, the client stores a timestamped local snapshot using keys like `gate_qa_backup_<timestamp>`. A failed cloud operation must leave the original local data available.
 
@@ -288,7 +294,7 @@ GateQA uses strict key namespacing in browser `localStorage` to guarantee comple
 | **GATE CSE** (3,682 Qs) | `gate_qa_solved_questions` | `gate_qa_bookmarked_questions` | `gate_qa_bookmark_removals` | `gateqa_progress_v1` | *(Core / Default)* |
 | **GATE DA** (195 Qs) | `gate_qa_da_solved_questions` | `gate_qa_da_bookmarked_questions` | `gate_qa_da_bookmark_removals` | `gateqa_da_progress_v1` | `gateqa_include_da` |
 | **Aptitude** (36,836 Qs) | `gateqa-apt-solved-questions` | `gateqa-apt-bookmarked-questions` | `gateqa-apt-bookmark-removals` | `gateqa_apt_progress_v1` | `gateqa-aptitude-enabled` |
-| **ISRO CS** (1,070 Qs) | `gate_qa_isro_solved_questions` | `gate_qa_isro_bookmarked_questions` | `gate_qa_isro_solved_removals`, `gate_qa_isro_bookmark_removals` | `gateqa_isro_progress_v1` | `gateqa_include_isro` |
+| **ISRO CS** (1,070 Qs) | `gate_qa_isro_solved_questions` | `gate_qa_isro_bookmarked_questions` | `gate_qa_isro_solved_removals`, `gate_qa_isro_solved_timestamps`, `gate_qa_isro_bookmark_removals` | `gateqa_isro_progress_v1` | `gateqa_include_isro` |
 
 ### Static Data Files Registry
 

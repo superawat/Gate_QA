@@ -229,6 +229,12 @@ function readLocalData() {
   let daBookmarks = [];
   let daBookmarkRemovals = [];
   let daProgress = {};
+  let isroSolved = [];
+  let isroSolvedRemovals = {};
+  let isroSolvedTimestamps = {};
+  let isroBookmarks = [];
+  let isroBookmarkRemovals = [];
+  let isroProgress = {};
   let streakFreeze = {};
 
   try {
@@ -274,6 +280,19 @@ function readLocalData() {
   try { daBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks) || "[]"); } catch {}
   try { daBookmarkRemovals = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals) || "[]"); } catch {}
   try { daProgress = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress) || "{}"); } catch {}
+
+  try { isroSolved = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroSolved) || "[]"); } catch {}
+  try {
+    const rawIsroSolvedRemovals = localStorage.getItem(LOCAL_STORAGE_KEYS.isroSolvedRemovals);
+    isroSolvedRemovals = extractTimestampMap(rawIsroSolvedRemovals);
+  } catch {}
+  try {
+    const rawIsroSolvedTimestamps = localStorage.getItem(LOCAL_STORAGE_KEYS.isroSolvedTimestamps);
+    isroSolvedTimestamps = extractTimestampMap(rawIsroSolvedTimestamps);
+  } catch {}
+  try { isroBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroBookmarks) || "[]"); } catch {}
+  try { isroBookmarkRemovals = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroBookmarkRemovals) || "[]"); } catch {}
+  try { isroProgress = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroProgress) || "{}"); } catch {}
 
   try {
     const rawAptitudeBookmarks = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarks);
@@ -345,6 +364,12 @@ function readLocalData() {
     daBookmarks,
     daBookmarkRemovals,
     daProgress,
+    isroSolved,
+    isroSolvedRemovals,
+    isroSolvedTimestamps,
+    isroBookmarks,
+    isroBookmarkRemovals,
+    isroProgress,
     streakFreeze,
   };
 }
@@ -680,16 +705,34 @@ function mergeProgressRecords(localProgress = {}, cloudProgress = {}) {
 }
 
 function normalizeCloudProgress(cloudProgress) {
-  if (cloudProgress && (cloudProgress.standard || cloudProgress.aptitude || cloudProgress.da || cloudProgress.streak_freeze)) {
+  const hasNamedNamespaces = Boolean(cloudProgress && (
+    cloudProgress.standard
+    || cloudProgress.aptitude
+    || cloudProgress.da
+    || cloudProgress.isro
+    || cloudProgress.streak_freeze
+  ));
+  const hasEmbeddedIsroState = Boolean(cloudProgress && (
+    cloudProgress.isro_solved
+    || cloudProgress.isro_solved_removals
+    || cloudProgress.isro_solved_timestamps
+    || cloudProgress.isro_bookmarks
+    || cloudProgress.isro_bookmark_removals
+  ));
+
+  if (hasNamedNamespaces || hasEmbeddedIsroState) {
     return {
       standard: cloudProgress.standard || {},
       aptitude: cloudProgress.aptitude || {},
       da: cloudProgress.da || {},
+      isro: cloudProgress.isro || {},
       streak_freeze: cloudProgress.streak_freeze || {},
       aptitude_solved: extractQuestionIdArray(cloudProgress.aptitude_solved || cloudProgress.aptitude?.solved),
       aptitude_bookmarks: extractQuestionIdArray(cloudProgress.aptitude_bookmarks || cloudProgress.aptitude?.bookmarks),
       da_solved: extractQuestionIdArray(cloudProgress.da_solved || cloudProgress.da?.solved),
       da_bookmarks: extractQuestionIdArray(cloudProgress.da_bookmarks || cloudProgress.da?.bookmarks),
+      isro_solved: extractQuestionIdArray(cloudProgress.isro_solved || cloudProgress.isro?.solved),
+      isro_bookmarks: extractQuestionIdArray(cloudProgress.isro_bookmarks || cloudProgress.isro?.bookmarks),
     };
   }
   // Older rows have no namespace; treat a flat object as standard progress.
@@ -697,11 +740,14 @@ function normalizeCloudProgress(cloudProgress) {
     standard: cloudProgress || {},
     aptitude: {},
     da: {},
+    isro: {},
     streak_freeze: {},
     aptitude_solved: [],
     aptitude_bookmarks: [],
     da_solved: [],
     da_bookmarks: [],
+    isro_solved: [],
+    isro_bookmarks: [],
   };
 }
 
@@ -729,6 +775,10 @@ export function unionMergeData(localData, cloudData) {
   const mergedDaBookmarkRemovals = Array.from(new Set([
     ...extractQuestionIdArray(localData.daBookmarkRemovals),
     ...extractQuestionIdArray(cloudData.da_bookmark_removals),
+  ]));
+  const mergedIsroBookmarkRemovals = Array.from(new Set([
+    ...extractQuestionIdArray(localData.isroBookmarkRemovals),
+    ...extractQuestionIdArray(cloudData.isro_bookmark_removals || cloudData.progress_records?.isro_bookmark_removals),
   ]));
 
   // ── Bookmarks — union MINUS removals ─────────────────────────────────────────
@@ -824,8 +874,38 @@ export function unionMergeData(localData, cloudData) {
     ...extractQuestionIdArray(cloudDaBookmarkIds),
   ])).filter(id => !daBookmarkRemovalSet.has(id));
 
+  const cloudIsroSolvedIds = [
+    ...extractQuestionIdArray(cloudData.isro_solved),
+    ...extractQuestionIdArray(cloudProgress.isro_solved),
+  ];
+  const cloudIsroBookmarkIds = [
+    ...extractQuestionIdArray(cloudData.isro_bookmarks),
+    ...extractQuestionIdArray(cloudProgress.isro_bookmarks),
+  ];
+
+  // ISRO solved questions use the same LWW solve/unsolve set as other tracks.
+  const isroLww = mergeLwwElementSet(
+    localData.isroSolved,
+    cloudIsroSolvedIds,
+    localData.isroSolvedRemovals,
+    cloudData.isro_solved_removals || cloudData.progress_records?.isro_solved_removals,
+    localData.isroSolvedTimestamps,
+    cloudData.isro_solved_timestamps || cloudData.progress_records?.isro_solved_timestamps
+  );
+  const mergedIsroSolved = isroLww.mergedSolved;
+  const mergedIsroSolvedRemovals = isroLww.mergedRemovals;
+  const mergedIsroSolvedTimestamps = isroLww.mergedTimestamps;
+
+  // ISRO bookmarks are a union with explicit unbookmark tombstones subtracted.
+  const isroBookmarkRemovalSet = new Set(mergedIsroBookmarkRemovals);
+  const mergedIsroBookmarks = Array.from(new Set([
+    ...extractQuestionIdArray(localData.isroBookmarks),
+    ...extractQuestionIdArray(cloudIsroBookmarkIds),
+  ])).filter(id => !isroBookmarkRemovalSet.has(id));
+
   const cloudDaProgress = cloudData.progress_records?.da || cloudProgress.da || {};
   const mergedDaProgress = mergeProgressRecords(localData.daProgress, cloudDaProgress);
+  const mergedIsroProgress = mergeProgressRecords(localData.isroProgress, cloudProgress.isro);
 
   const mergedStreakFreeze = mergeStreakFreeze(
     localData.streakFreeze,
@@ -836,6 +916,7 @@ export function unionMergeData(localData, cloudData) {
     standard: mergedProgress,
     aptitude: mergedAptitudeProgress,
     da: mergedDaProgress,
+    isro: mergedIsroProgress,
     streak_freeze: mergedStreakFreeze,
   };
 
@@ -856,6 +937,11 @@ export function unionMergeData(localData, cloudData) {
     da_solved_timestamps: mergedDaSolvedTimestamps,
     da_bookmarks: mergedDaBookmarks,
     da_bookmark_removals: mergedDaBookmarkRemovals,
+    isro_solved: mergedIsroSolved,
+    isro_solved_removals: mergedIsroSolvedRemovals,
+    isro_solved_timestamps: mergedIsroSolvedTimestamps,
+    isro_bookmarks: mergedIsroBookmarks,
+    isro_bookmark_removals: mergedIsroBookmarkRemovals,
     mock_history: mergedMockHistory,
     progress_records: progressRecords,
     streakFreeze: mergedStreakFreeze,
@@ -945,8 +1031,13 @@ export async function syncUserData(userId, options = {}) {
         da_solved_removals: {},
         da_solved_timestamps: {},
         da_bookmarks: [],
+        isro_solved: [],
+        isro_solved_removals: {},
+        isro_solved_timestamps: {},
+        isro_bookmarks: [],
+        isro_bookmark_removals: [],
         mock_history: [],
-        progress_records: { standard: {}, aptitude: {}, da: {} },
+        progress_records: { standard: {}, aptitude: {}, da: {}, isro: {} },
       };
 
       // 4. Run the Additive Union-Merge Algorithm (with LWW-Element-Set for Solved)
@@ -979,6 +1070,11 @@ export async function syncUserData(userId, options = {}) {
           da_solved_timestamps: merged.da_solved_timestamps,
           da_bookmarks: merged.da_bookmarks,
           da_bookmark_removals: merged.da_bookmark_removals,
+          isro_solved: merged.isro_solved,
+          isro_solved_removals: merged.isro_solved_removals,
+          isro_solved_timestamps: merged.isro_solved_timestamps,
+          isro_bookmarks: merged.isro_bookmarks,
+          isro_bookmark_removals: merged.isro_bookmark_removals,
           mock_history: merged.mock_history,
           progress_records: merged.progress_records,
           data_version: 1,
@@ -1011,6 +1107,11 @@ export async function syncUserData(userId, options = {}) {
               da_solved_timestamps: merged.da_solved_timestamps,
               da_bookmarks: merged.da_bookmarks,
               da_bookmark_removals: merged.da_bookmark_removals,
+              isro_solved: merged.isro_solved,
+              isro_solved_removals: merged.isro_solved_removals,
+              isro_solved_timestamps: merged.isro_solved_timestamps,
+              isro_bookmarks: merged.isro_bookmarks,
+              isro_bookmark_removals: merged.isro_bookmark_removals,
             },
             data_version: 1,
             last_synced_at: new Date().toISOString(),
@@ -1041,6 +1142,11 @@ export async function syncUserData(userId, options = {}) {
                 da_solved_timestamps: merged.da_solved_timestamps,
                 da_bookmarks: merged.da_bookmarks,
                 da_bookmark_removals: merged.da_bookmark_removals,
+                isro_solved: merged.isro_solved,
+                isro_solved_removals: merged.isro_solved_removals,
+                isro_solved_timestamps: merged.isro_solved_timestamps,
+                isro_bookmarks: merged.isro_bookmarks,
+                isro_bookmark_removals: merged.isro_bookmark_removals,
               },
               data_version: 1,
               last_synced_at: new Date().toISOString(),
@@ -1089,6 +1195,7 @@ export async function syncUserData(userId, options = {}) {
                 standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
                 aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
                 daProgressCount:       Object.keys(merged.progress_records?.da || {}).length,
+                isroProgressCount:     Object.keys(merged.progress_records?.isro || {}).length,
               },
               device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
             });
@@ -1165,6 +1272,12 @@ export async function syncUserData(userId, options = {}) {
       localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarks, JSON.stringify(merged.da_bookmarks));
       localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals, JSON.stringify(merged.da_bookmark_removals || []));
       localStorage.setItem(LOCAL_STORAGE_KEYS.daProgress, JSON.stringify(merged.progress_records.da || {}));
+      localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolved, JSON.stringify(merged.isro_solved));
+      localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolvedRemovals, JSON.stringify(merged.isro_solved_removals || {}));
+      localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolvedTimestamps, JSON.stringify(merged.isro_solved_timestamps || {}));
+      localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarks, JSON.stringify(merged.isro_bookmarks));
+      localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarkRemovals, JSON.stringify(merged.isro_bookmark_removals || []));
+      localStorage.setItem(LOCAL_STORAGE_KEYS.isroProgress, JSON.stringify(merged.progress_records.isro || {}));
       if (merged.streakFreeze) {
         localStorage.setItem(LOCAL_STORAGE_KEYS.streakFreeze, JSON.stringify(merged.streakFreeze));
       }

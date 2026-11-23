@@ -1,4 +1,9 @@
 # Changelog
+- **ISRO Progress Cloud Sync (DEC-314, 2026-11-23)**:
+  - Confirmed ISRO solve/bookmark writes already enqueue sync requests, but the sync manager omitted ISRO data from local reads, merges, upserts, and local write-back.
+  - Added ISRO LWW solved-ID merge, bookmark union-minus-tombstone merge, and `progress_records.isro` attempt-history merge. Added all fields to Tier 1 and embedded fallback payloads for older schemas.
+  - Added local migration `20261123091644_add_isro_progress_sync.sql` for five native ISRO columns. It has not been applied to the hosted database; existing schema snapshots remain unchanged.
+  - Added merge and cloud-sync regression coverage for LWW conflicts, bookmark removals, attempts, fallback payloads, and localStorage restoration.
 - **Phase 6.6 Question Audit & Data Integrity Resolutions (go:1019, go:399247, go:411678, go:411706) (DEC-313, 2026-11-23)**:
   - **Context & Scope**: Executed the 6-phase resolution runbook from `docs/QUESTION_DATA_CORRECTION_RUNBOOK.md` to investigate and resolve 4 user-reported question issues from `plan/nov_26/23rd_nov_questionissues.md` across Computer Networks (CN) and General Aptitude (GA).
   - **1. `go:1019` (GATE CSE 2004 Question 22, Computer Networks)**:

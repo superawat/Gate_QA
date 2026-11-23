@@ -53,12 +53,13 @@ GateQA follows a **Local-First Hybrid Architecture**:
    - Local device data is never deleted or overwritten during sync.
    - An automatic pre-merge JSON snapshot is stored in `localStorage` before any cloud sync starts.
 2. **Additive-Only Union-Merge Algorithm & Bookmark Tombstone Sets (DEC-111):**
-   - **Bookmarks with Tombstone Removal Sets:** To prevent cloud sync from resurrecting deliberately unbookmarked questions, GateQA uses an LWW-tombstone set model. Unbookmark actions write question IDs to local tombstone removal sets (`gate_qa_bookmark_removals`, `gateqa-apt-bookmark-removals`, `gate_qa_da_bookmark_removals`) and sync them to Supabase (`bookmark_removals`, `aptitude_bookmark_removals`, `da_bookmark_removals`). The union-merge algorithm additively merges the tombstone sets across local and cloud, then subtracts the combined tombstones from the unified bookmarks:
+   - **Bookmarks with Tombstone Removal Sets:** To prevent cloud sync from resurrecting deliberately unbookmarked questions, GateQA uses an LWW-tombstone set model. Unbookmark actions write question IDs to local tombstone removal sets (`gate_qa_bookmark_removals`, `gateqa-apt-bookmark-removals`, `gate_qa_da_bookmark_removals`, `gate_qa_isro_bookmark_removals`) and sync them to Supabase (`bookmark_removals`, `aptitude_bookmark_removals`, `da_bookmark_removals`, `isro_bookmark_removals`). The union-merge algorithm additively merges the tombstone sets across local and cloud, then subtracts the combined tombstones from the unified bookmarks:
      $$\text{Merged Bookmarks} = (\text{Local} \cup \text{Cloud}) \setminus (\text{Local Removals} \cup \text{Cloud Removals})$$
      If a user deliberately re-bookmarks a question, the ID is immediately removed from the tombstone set before the next sync write.
    - **Personal Notes:** Longest Note Wins policy (preserves student effort; falls back to newer timestamp).
    - **Solved Questions:** Deduplicated union of canonical string IDs; legacy attempt maps and numeric-index corruption are recovered.
    - **Aptitude Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`aptitude_solved`, `aptitude_bookmarks`), with `aptitude_bookmark_removals` tombstone protection.
+   - **ISRO CS Progress (DEC-314):** Solved IDs use LWW solve/unsolve timestamps; bookmarks use union-minus-removals. Native `isro_*` ID/tombstone columns are added by migration `20261123091644_add_isro_progress_sync.sql`; attempt histories use `progress_records.isro`. Until the migration is applied, older schemas retain these values inside `progress_records` through the schema fallback path.
    - **Mock Test History & Automatic Snapshot Recovery (DEC-121):** Production mock attempts store `id`, `testType`, `title`, and `submittedAt`. Merging uses `getMockAttemptIdentityKey(item)` to uniquely identify attempts across `id`, `testId`, and fallback timestamps, preventing key collisions (such as legacy `"undefined_undefined"`). The merge algorithm filters out empty objects, preserves richer question arrays across local/cloud duplicates, sorts chronologically descending by submission date, and caps history at 50 items. In addition, `recoverMockHistoryFromBackups(storage)` scans `localStorage` pre-merge snapshots (`gate_qa_backup_*`) to automatically resurrect and sync any mock attempts previously lost to cloud sync collisions.
 3. **Offline Resilience:**
    - All mutations while offline are queued in `localStorage` (`gate_qa_sync_queue`) with exponential backoff retry and automatic reconnect flushing.
@@ -319,7 +320,7 @@ When optional tracks are toggled:
   - When enabled, `structuredTags.yearSets` dynamically includes ISRO examination years (2007–2025) and `structuredTags.subjects` presents the 12 ISRO subjects.
   - ISRO subjects (`isro:<slug>`) are strictly isolated to the dedicated `IsroToggle.jsx` card and never leak into `TopicFilter.tsx` or GATE CSE auto-expansion states (DEC-147).
   - When disabled, ISRO filter tokens are automatically pruned from active filter state (`selectedYearSets`, `selectedSubjects`, `selectedSubtopics`) so student views are never corrupted.
-  - Progress tracking operates independently via dedicated local storage keys (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, `gateqa_isro_progress_v1`).
+  - Progress tracking operates independently via dedicated local storage keys (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, `gateqa_isro_progress_v1`); optional cloud sync mirrors this state without changing the local-first source of truth (DEC-314).
 
 ### Actions (`FilterActionsContext`)
 
@@ -547,6 +548,7 @@ Synchronized params:
 - `gateqa-apt-bookmarked-questions`
 - `gateqa_include_isro` (toggle state for ISRO CS stream)
 - `gate_qa_isro_solved_questions`
+- `gate_qa_isro_solved_timestamps`
 - `gate_qa_isro_bookmarked_questions`
 - `gate_qa_isro_solved_removals`
 - `gate_qa_isro_bookmark_removals`

@@ -89,6 +89,13 @@ playwright-report/
 plan/
 supabase/
 
+# Track the ISRO cloud-sync migration while keeping other local Supabase state ignored.
+!supabase/
+supabase/*
+!supabase/migrations/
+supabase/migrations/*
+!supabase/migrations/20261123091644_add_isro_progress_sync.sql
+
 aptitude-ssc/
 artifacts/aptitude-pipeline/
 artifacts/review/

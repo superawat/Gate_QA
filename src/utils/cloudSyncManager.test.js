@@ -357,6 +357,80 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     expect(result.progress_records.da["da:2026:set1:main:q2"].history).toHaveLength(2);
   });
 
+  test("merges ISRO solved IDs with LWW solve and unsolve timestamps", () => {
+    const result = unionMergeData(
+      {
+        isroSolved: ["isro:solve", "isro:unsolve", "isro:resolve"],
+        isroSolvedRemovals: { "isro:unsolve": 200, "isro:resolve": 200 },
+        isroSolvedTimestamps: { "isro:solve": 100, "isro:resolve": 300 },
+      },
+      {
+        isro_solved: ["isro:solve", "isro:unsolve"],
+        isro_solved_removals: { "isro:unsolve": 250, "isro:resolve": 250 },
+        isro_solved_timestamps: { "isro:solve": 150, "isro:unsolve": 100 },
+      }
+    );
+
+    expect(result.isro_solved).toEqual(["isro:resolve", "isro:solve"]);
+    expect(result.isro_solved_removals).toEqual({ "isro:unsolve": 250 });
+    expect(result.isro_solved_timestamps).toEqual({ "isro:resolve": 300, "isro:solve": 150 });
+  });
+
+  test("merges ISRO bookmarks by union minus local and cloud removals", () => {
+    const result = unionMergeData(
+      {
+        isroBookmarks: ["isro:local", "isro:remove-local"],
+        isroBookmarkRemovals: ["isro:remove-local"],
+      },
+      {
+        isro_bookmarks: ["isro:cloud", "isro:remove-cloud"],
+        isro_bookmark_removals: ["isro:remove-cloud"],
+      }
+    );
+
+    expect(result.isro_bookmarks).toEqual(["isro:local", "isro:cloud"]);
+    expect(result.isro_bookmark_removals).toEqual(["isro:remove-local", "isro:remove-cloud"]);
+  });
+
+  test("merges ISRO attempt histories and reads IDs embedded by legacy schema fallbacks", () => {
+    const localAttempt = {
+      attempts: 1,
+      lastSubmittedAt: "2026-11-20T10:00:00Z",
+      history: [{ submittedAt: "2026-11-20T10:00:00Z", correct: true }],
+    };
+    const cloudAttempt = {
+      attempts: 2,
+      lastSubmittedAt: "2026-11-21T10:00:00Z",
+      history: [{ submittedAt: "2026-11-21T10:00:00Z", correct: false }],
+    };
+    const result = unionMergeData(
+      {
+        isroProgress: { "isro:cs:2025:q1": localAttempt },
+      },
+      {
+        progress_records: {
+          standard: {},
+          aptitude: {},
+          da: {},
+          isro: { "isro:cs:2025:q1": cloudAttempt },
+          isro_solved: ["isro:cs:2025:q2"],
+          isro_bookmarks: ["isro:cs:2025:q3"],
+        },
+      }
+    );
+
+    expect(result.progress_records.isro["isro:cs:2025:q1"].attempts).toBe(2);
+    expect(result.progress_records.isro["isro:cs:2025:q1"].history).toHaveLength(2);
+    expect(result.isro_solved).toContain("isro:cs:2025:q2");
+    expect(result.isro_bookmarks).toContain("isro:cs:2025:q3");
+
+    const tombstoneOnlyFallback = unionMergeData({}, {
+      progress_records: { isro_solved_removals: { "isro:cs:2025:q4": 50 } },
+    });
+    expect(tombstoneOnlyFallback.isro_solved_removals).toEqual({ "isro:cs:2025:q4": 50 });
+    expect(tombstoneOnlyFallback.progress_records.standard).toEqual({});
+  });
+
   test("merges mock test history with chronological deduplication", () => {
     const local = {
       mockHistory: [
@@ -542,6 +616,18 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     localStorage.setItem("gate_qa_solved_questions", JSON.stringify({ "go:1": { solved: true } }));
     localStorage.setItem("gate_qa_bookmarked_questions", JSON.stringify(["go:1"]));
     localStorage.setItem("gate_qa_user_notes", JSON.stringify({ "go:1": { text: "Note 1" } }));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolved, JSON.stringify(["isro:cs:2025:q1"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolvedRemovals, JSON.stringify({}));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolvedTimestamps, JSON.stringify({ "isro:cs:2025:q1": 100 }));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarks, JSON.stringify(["isro:cs:2025:q2", "isro:cs:2025:q4"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarkRemovals, JSON.stringify(["isro:cs:2025:q4"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroProgress, JSON.stringify({
+      "isro:cs:2025:q1": {
+        attempts: 1,
+        lastSubmittedAt: "2026-11-20T10:00:00Z",
+        history: [{ submittedAt: "2026-11-20T10:00:00Z", correct: true }],
+      },
+    }));
 
     // Mock Supabase client
     const mockUpsert = vi.fn().mockResolvedValue({ error: null });
@@ -552,8 +638,24 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
         bookmarks: ["go:2"],
         notes: {},
         solved_questions: {},
+        isro_solved: ["isro:cs:2025:q3"],
+        isro_solved_removals: {},
+        isro_solved_timestamps: { "isro:cs:2025:q3": 200 },
+        isro_bookmarks: ["isro:cs:2025:q4", "isro:cs:2025:q5"],
+        isro_bookmark_removals: [],
         mock_history: [],
-        progress_records: { standard: {}, aptitude: {} },
+        progress_records: {
+          standard: {},
+          aptitude: {},
+          da: {},
+          isro: {
+            "isro:cs:2025:q1": {
+              attempts: 2,
+              lastSubmittedAt: "2026-11-21T10:00:00Z",
+              history: [{ submittedAt: "2026-11-21T10:00:00Z", correct: false }],
+            },
+          },
+        },
       },
       error: null,
     });
@@ -596,6 +698,18 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     expect(mergedBookmarks).toEqual(["go:1", "go:2"]);
     expect(JSON.parse(localStorage.getItem("gate_qa_solved_questions"))).toEqual(["go:1"]);
     expect(Array.isArray(JSON.parse(localStorage.getItem("gate_qa_solved_questions")))).toBe(true);
+    expect(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroSolved))).toEqual([
+      "isro:cs:2025:q1",
+      "isro:cs:2025:q3",
+    ]);
+    expect(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroBookmarks))).toEqual([
+      "isro:cs:2025:q2",
+      "isro:cs:2025:q5",
+    ]);
+    expect(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroBookmarkRemovals))).toEqual([
+      "isro:cs:2025:q4",
+    ]);
+    expect(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.isroProgress))["isro:cs:2025:q1"].history).toHaveLength(2);
 
     expect(mockUpsert).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -605,7 +719,9 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
         aptitude_bookmarks: expect.any(Array),
         da_solved: expect.any(Array),
         da_bookmarks: expect.any(Array),
-        progress_records: expect.objectContaining({ standard: {}, aptitude: {}, da: {} }),
+        isro_solved: ["isro:cs:2025:q1", "isro:cs:2025:q3"],
+        isro_bookmarks: ["isro:cs:2025:q2", "isro:cs:2025:q5"],
+        progress_records: expect.objectContaining({ standard: {}, aptitude: {}, da: {}, isro: expect.any(Object) }),
       })
     );
 
@@ -623,6 +739,7 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
           standardProgressCount: expect.any(Number),
           aptitudeProgressCount: expect.any(Number),
           daProgressCount:       expect.any(Number),
+          isroProgressCount:     1,
         }),
       })
     );
@@ -680,17 +797,22 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     );
   });
 
-  test("recovers via Tier 2 fallback preserving Aptitude columns when DA column is missing", async () => {
+  test("recovers via Tier 2 fallback when ISRO columns are missing", async () => {
     localStorage.setItem("gate_qa_solved_questions", JSON.stringify(["cse:2026:set1:q1"]));
     localStorage.setItem("gateqa-apt-solved-questions", JSON.stringify(["apt:2026:q1"]));
     localStorage.setItem("gate_qa_da_solved_questions", JSON.stringify(["da:2026:set1:q1"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolved, JSON.stringify(["isro:cs:2025:q1"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolvedRemovals, JSON.stringify({ "isro:cs:2025:q2": 20 }));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolvedTimestamps, JSON.stringify({ "isro:cs:2025:q1": 30 }));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarks, JSON.stringify(["isro:cs:2025:q3"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarkRemovals, JSON.stringify(["isro:cs:2025:q4"]));
 
     let upsertPayloads = [];
     const mockUpsert = vi.fn().mockImplementation((payload) => {
       upsertPayloads.push(payload);
       if (upsertPayloads.length === 1) {
         return Promise.resolve({
-          error: { code: "PGRST204", message: "Could not find column 'da_solved' in schema" },
+          error: { code: "PGRST204", message: "Could not find column 'isro_solved' in schema" },
         });
       }
       return Promise.resolve({ error: null });
@@ -745,6 +867,11 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     expect(upsertPayloads[1]).toHaveProperty("aptitude_solved", ["apt:2026:q1"]);
     expect(upsertPayloads[1]).toHaveProperty("aptitude_bookmarks");
     expect(upsertPayloads[1].progress_records.da_solved).toEqual(["da:2026:set1:q1"]);
+    expect(upsertPayloads[1].progress_records.isro_solved).toEqual(["isro:cs:2025:q1"]);
+    expect(upsertPayloads[1].progress_records.isro_solved_removals).toEqual({ "isro:cs:2025:q2": 20 });
+    expect(upsertPayloads[1].progress_records.isro_solved_timestamps).toEqual({ "isro:cs:2025:q1": 30 });
+    expect(upsertPayloads[1].progress_records.isro_bookmarks).toEqual(["isro:cs:2025:q3"]);
+    expect(upsertPayloads[1].progress_records.isro_bookmark_removals).toEqual(["isro:cs:2025:q4"]);
 
     // Merged return data keeps all fields intact
     expect(result.data.aptitude_solved).toEqual(["apt:2026:q1"]);
@@ -755,6 +882,8 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     localStorage.setItem("gate_qa_solved_questions", JSON.stringify(["cse:2026:set1:q1"]));
     localStorage.setItem("gateqa-apt-solved-questions", JSON.stringify(["apt:2026:q1"]));
     localStorage.setItem("gate_qa_da_solved_questions", JSON.stringify(["da:2026:set1:q1"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroSolved, JSON.stringify(["isro:cs:2025:q1"]));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.isroBookmarks, JSON.stringify(["isro:cs:2025:q3"]));
 
     let callCount = 0;
     const mockUpsert = vi.fn().mockImplementation((payload) => {
@@ -801,6 +930,8 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     const tier3Payload = mockUpsert.mock.calls[2][0];
     expect(tier3Payload.progress_records.aptitude_solved).toEqual(["apt:2026:q1"]);
     expect(tier3Payload.progress_records.da_solved).toEqual(["da:2026:set1:q1"]);
+    expect(tier3Payload.progress_records.isro_solved).toEqual(["isro:cs:2025:q1"]);
+    expect(tier3Payload.progress_records.isro_bookmarks).toEqual(["isro:cs:2025:q3"]);
     expect(result.data.aptitude_solved).toEqual(["apt:2026:q1"]);
     expect(result.data.da_solved).toEqual(["da:2026:set1:q1"]);
   });
