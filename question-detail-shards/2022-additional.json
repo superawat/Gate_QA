@@ -56,10 +56,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "Checking each option:\n\n- <b>Polynomial</b> $f(n)=n^k$: $f(n^2)=n^{2k}$ and $f(n)^2=n^{2k}$, so $f(n^2)=\\Theta(f(n)^2)$ $\\text{---}$ TRUE.\n\n- $f(n^2)=o(f(n)^2)$ fails for polynomials (they are equal, not strictly smaller).\n\n- For $f(n)=2^n$: $f(n^2)=2^{n^2}$ but $f(n)^2=2^{2n}$; $2^{n^2}$ grows much faster, so $O$ fails.\n\n- For $f(n)=2^{-n}$: $f(n^2)=2^{-n^2}$ is much smaller than $f(n)^2=2^{-2n}$, so $\\Omega$ fails.\n\n<b>Answer: $f(n^2)=\\Theta(f(n)^2)$, where f(n) is a polynomial</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411718": {
@@ -108,10 +104,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "Checking each statement:\n\n- LALR(1) merges LR(1) states with the same core; this merging can create a <b>new reduce-reduce conflict</b> $\\text{---}$ FALSE.\n\n- The symbol table is used in almost every phase (semantic analysis, code generation, $\\ldots$) $\\text{---}$ FALSE.\n\n- Data flow analysis is used for code optimization, not run-time memory management $\\text{---}$ FALSE.\n\n- Every deterministic CFL has an LR(1) grammar, so LR(1) parsing is sufficient for DCFLs $\\text{---}$ TRUE.\n\n<b>Answer: LR(1) parsing is sufficient for deterministic context-free languages</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411716": {
@@ -159,10 +151,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411714": {
@@ -210,10 +198,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "Walk the list once with three pointers (prev, curr, next), reversing each link as you go:\n\nnext = curr$\\rightarrow$next; curr$\\rightarrow$next = prev; prev = curr; curr = next.\n\nEach node is visited once and only 3 extra pointers are used, so it takes $\\Theta(n)$ time in $O(1)$ space. It cannot be faster, because every link must be changed.\n\n<b>Answer: The best algorithm takes $\\theta(n)$ time in the worst case</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411712": {
@@ -260,10 +244,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "Both $h_1$ and $h_2$ are simple uniform hash functions, so <b>every key</b> (odd or even) lands in any given slot with probability $\\frac{1}{m}$.\n\nExpected keys in a slot $=n\\times\\frac{1}{m}=\\frac{n}{m}$ (which hash function is used does not matter).\n\n<b>Answer: $\\frac{n}{m}$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411710": {
@@ -312,10 +292,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411708": {
@@ -364,10 +340,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "4-bit 2's complement range: $-8$ to $+7$.\n\n- 1011 + 1110 = $(-5)+(-2)=-7$ $\\rightarrow$ fits\n\n- 1100 + 1010 = $(-4)+(-6)=-10$ $\\rightarrow$ <b>overflow</b>\n\n- 0011 + 0100 = $3+4=7$ $\\rightarrow$ fits\n\n- 1001 + 1111 = $(-7)+(-1)=-8$ $\\rightarrow$ fits\n\n<b>Answer: R1 = 1100 and R2 = 1010</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411706": {
@@ -416,8 +388,9 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "general-aptitude: gatech-2022",
-        "markdown": "From the code: T2 prints B (needs $S_1$, then signals $S_3$), T1 prints C (needs $S_3$, signals $S_2$), T3 prints A (needs $S_2$, signals $S_1$).\n\nThe output must start with B, so only T2 may run first: $S_1=1$ and $S_2=S_3=0$. Then the chain B $\\rightarrow$ C $\\rightarrow$ A $\\rightarrow$ B $\\ldots$ repeats forever.\n\n(If $S_2$ or $S_3$ were 1, A or C could be printed first.)\n\n<b>Answer: $S_1=1;\\ S_2=0;\\ S_3=0$</b>\n\nTherefore, the correct answer is **Option C**."
+        "concept": "verbal-aptitude: syllogisms-deductive-logic",
+        "markdown": "### 1. Formal Logical Representation of Premises\nLet $E$ denote the set of engineers, $W$ denote the set of writers, and $A$ denote the set of actors.\nThe given statements are:\n1. **Statement 1**: *\"Some engineers are writers.\"*\n   $$\\exists x : x \\in (E \\cap W) \\implies E \\cap W \\neq \\emptyset$$\n2. **Statement 2**: *\"No writer is an actor.\"*\n   $$W \\cap A = \\emptyset \\quad (\\text{equivalently, if } x \\in W \\implies x \\notin A)$$\n3. **Statement 3**: *\"All actors are engineers.\"*\n   $$A \\subseteq E \\quad (\\text{equivalently, if } x \\in A \\implies x \\in E)$$\n\n---\n\n### 2. Systematic Evaluation of Conclusions\n\n- **Conclusion I: \"Some writers are engineers.\"**\n  - From Statement 1, $E \\cap W \\neq \\emptyset$.\n  - Set intersection is commutative: $E \\cap W = W \\cap E$.\n  - Therefore, $W \\cap E \\neq \\emptyset$, which translates directly to *\"Some writers are engineers\"*.\n  - **Conclusion I is logically VALID.**\n\n- **Conclusion II: \"All engineers are actors.\"**\n  - Statement 3 asserts $A \\subseteq E$ (every actor is an engineer). The subset relation is not generally symmetric ($A \\subseteq E \\not\\implies E \\subseteq A$).\n  - Moreover, by Statement 1, there exist engineers who are writers ($x \\in E \\cap W$). Since no writer is an actor ($W \\cap A = \\emptyset$), these engineer-writers cannot be actors ($x \\notin A$).\n  - Hence, not all engineers are actors.\n  - **Conclusion II is INVALID.**\n\n- **Conclusion III: \"No actor is a writer.\"**\n  - Statement 2 asserts $W \\cap A = \\emptyset$.\n  - Set disjointness is symmetric: $W \\cap A = \\emptyset \\iff A \\cap W = \\emptyset$.\n  - Therefore, no actor is a writer.\n  - **Conclusion III is logically VALID.**\n\n- **Conclusion IV: \"Some actors are writers.\"**\n  - Statement 2 explicitly establishes that $W$ and $A$ are completely disjoint ($W \\cap A = \\emptyset$).\n  - Thus, there cannot exist any actor who is a writer ($A \\cap W = \\emptyset$).\n  - **Conclusion IV is INVALID (and directly contradicts Statement 2).**\n\n---\n\n### 3. Conclusion & Option Matching\n- Both **Conclusion I** and **Conclusion III** are strictly valid, while Conclusions II and IV are false.\n- This directly matches **Option C: \"Only conclusion I and conclusion III are correct\"**.\n\nTherefore, the correct answer is **Option C**.",
+        "images": []
       }
     },
     "go:411743": {
@@ -466,10 +439,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "Checking each option:\n\n- <b>Polynomial</b> $f(n)=n^k$: $f(n^2)=n^{2k}$ and $f(n)^2=n^{2k}$, so $f(n^2)=\\Theta(f(n)^2)$ $\\text{---}$ TRUE.\n\n- $f(n^2)=o(f(n)^2)$ fails for polynomials (they are equal, not strictly smaller).\n\n- For $f(n)=2^n$: $f(n^2)=2^{n^2}$ but $f(n)^2=2^{2n}$; $2^{n^2}$ grows much faster, so $O$ fails.\n\n- For $f(n)=2^{-n}$: $f(n^2)=2^{-n^2}$ is much smaller than $f(n)^2=2^{-2n}$, so $\\Omega$ fails.\n\n<b>Answer: $f(n^2)=\\Theta(f(n)^2)$, where f(n) is a polynomial</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411739": {
@@ -520,10 +489,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "Checking each statement:\n\n- LALR(1) merges LR(1) states with the same core; this merging can create a <b>new reduce-reduce conflict</b> $\\text{---}$ FALSE.\n\n- The symbol table is used in almost every phase (semantic analysis, code generation, $\\ldots$) $\\text{---}$ FALSE.\n\n- Data flow analysis is used for code optimization, not run-time memory management $\\text{---}$ FALSE.\n\n- Every deterministic CFL has an LR(1) grammar, so LR(1) parsing is sufficient for DCFLs $\\text{---}$ TRUE.\n\n<b>Answer: LR(1) parsing is sufficient for deterministic context-free languages</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411737": {
@@ -571,10 +536,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411735": {
@@ -624,10 +585,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "Walk the list once with three pointers (prev, curr, next), reversing each link as you go:\n\nnext = curr$\\rightarrow$next; curr$\\rightarrow$next = prev; prev = curr; curr = next.\n\nEach node is visited once and only 3 extra pointers are used, so it takes $\\Theta(n)$ time in $O(1)$ space. It cannot be faster, because every link must be changed.\n\n<b>Answer: The best algorithm takes $\\theta(n)$ time in the worst case</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411733": {
@@ -675,10 +632,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "Both $h_1$ and $h_2$ are simple uniform hash functions, so <b>every key</b> (odd or even) lands in any given slot with probability $\\frac{1}{m}$.\n\nExpected keys in a slot $=n\\times\\frac{1}{m}=\\frac{n}{m}$ (which hash function is used does not matter).\n\n<b>Answer: $\\frac{n}{m}$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411731": {
@@ -729,10 +682,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411729": {
@@ -782,10 +731,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "4-bit 2's complement range: $-8$ to $+7$.\n\n- 1011 + 1110 = $(-5)+(-2)=-7$ $\\rightarrow$ fits\n\n- 1100 + 1010 = $(-4)+(-6)=-10$ $\\rightarrow$ <b>overflow</b>\n\n- 0011 + 0100 = $3+4=7$ $\\rightarrow$ fits\n\n- 1001 + 1111 = $(-7)+(-1)=-8$ $\\rightarrow$ fits\n\n<b>Answer: R1 = 1100 and R2 = 1010</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411726": {
@@ -835,10 +780,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set1",
-        "markdown": "From the code: T2 prints B (needs $S_1$, then signals $S_3$), T1 prints C (needs $S_3$, signals $S_2$), T3 prints A (needs $S_2$, signals $S_1$).\n\nThe output must start with B, so only T2 may run first: $S_1=1$ and $S_2=S_3=0$. Then the chain B $\\rightarrow$ C $\\rightarrow$ A $\\rightarrow$ B $\\ldots$ repeats forever.\n\n(If $S_2$ or $S_3$ were 1, A or C could be printed first.)\n\n<b>Answer: $S_1=1;\\ S_2=0;\\ S_3=0$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411763": {
@@ -886,10 +827,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "Checking each option:\n\n- <b>Polynomial</b> $f(n)=n^k$: $f(n^2)=n^{2k}$ and $f(n)^2=n^{2k}$, so $f(n^2)=\\Theta(f(n)^2)$ $\\text{---}$ TRUE.\n\n- $f(n^2)=o(f(n)^2)$ fails for polynomials (they are equal, not strictly smaller).\n\n- For $f(n)=2^n$: $f(n^2)=2^{n^2}$ but $f(n)^2=2^{2n}$; $2^{n^2}$ grows much faster, so $O$ fails.\n\n- For $f(n)=2^{-n}$: $f(n^2)=2^{-n^2}$ is much smaller than $f(n)^2=2^{-2n}$, so $\\Omega$ fails.\n\n<b>Answer: $f(n^2)=\\Theta(f(n)^2)$, where f(n) is a polynomial</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411761": {
@@ -936,10 +873,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "The start state is not final. From start:\n\n- on <b>a</b> go to the upper final state (loops on b, returns to start on b) $\\rightarrow$ one round trip is $ab^*b$;\n\n- on <b>b</b> go to the lower final state (loops on a, returns to start on a) $\\rightarrow$ one round trip is $ba^*a$.\n\nSo: any number of round trips $(ab^*b+ba^*a)^*$, and then finish in one of the final states: $ab^*$ or $ba^*$.\n\n<b>Answer: $(ba^*a+ab^*b)^*(ab^*+ba^*)$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411759": {
@@ -986,10 +919,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "Checking each statement:\n\n- LALR(1) merges LR(1) states with the same core; this merging can create a <b>new reduce-reduce conflict</b> $\\text{---}$ FALSE.\n\n- The symbol table is used in almost every phase (semantic analysis, code generation, $\\ldots$) $\\text{---}$ FALSE.\n\n- Data flow analysis is used for code optimization, not run-time memory management $\\text{---}$ FALSE.\n\n- Every deterministic CFL has an LR(1) grammar, so LR(1) parsing is sufficient for DCFLs $\\text{---}$ TRUE.\n\n<b>Answer: LR(1) parsing is sufficient for deterministic context-free languages</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411757": {
@@ -1036,10 +965,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411753": {
@@ -1087,10 +1012,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "Both $h_1$ and $h_2$ are simple uniform hash functions, so <b>every key</b> (odd or even) lands in any given slot with probability $\\frac{1}{m}$.\n\nExpected keys in a slot $=n\\times\\frac{1}{m}=\\frac{n}{m}$ (which hash function is used does not matter).\n\n<b>Answer: $\\frac{n}{m}$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411751": {
@@ -1137,10 +1058,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411749": {
@@ -1187,10 +1104,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "4-bit 2's complement range: $-8$ to $+7$.\n\n- 1011 + 1110 = $(-5)+(-2)=-7$ $\\rightarrow$ fits\n\n- 1100 + 1010 = $(-4)+(-6)=-10$ $\\rightarrow$ <b>overflow</b>\n\n- 0011 + 0100 = $3+4=7$ $\\rightarrow$ fits\n\n- 1001 + 1111 = $(-7)+(-1)=-8$ $\\rightarrow$ fits\n\n<b>Answer: R1 = 1100 and R2 = 1010</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411747": {
@@ -1238,10 +1151,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "From the code: T2 prints B (needs $S_1$, then signals $S_3$), T1 prints C (needs $S_3$, signals $S_2$), T3 prints A (needs $S_2$, signals $S_1$).\n\nThe output must start with B, so only T2 may run first: $S_1=1$ and $S_2=S_3=0$. Then the chain B $\\rightarrow$ C $\\rightarrow$ A $\\rightarrow$ B $\\ldots$ repeats forever.\n\n(If $S_2$ or $S_3$ were 1, A or C could be printed first.)\n\n<b>Answer: $S_1=1;\\ S_2=0;\\ S_3=0$</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411745": {
@@ -1290,10 +1199,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gatecivil-2022-set2",
-        "markdown": "$tr(AB)=\\sum_i\\sum_k a_{ik}b_{ki}=\\sum_k\\sum_i b_{ki}a_{ik}=tr(BA)$. This holds for any $A_{m\\times n}$, $B_{n\\times m}$ (AB is $m\\times m$, BA is $n\\times n$).\n\nStatement 2 is the special case of square matrices, so it is also true.\n\n<b>Answer: Both Statement 1 and Statement 2 are correct</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411700": {
@@ -1343,10 +1248,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2022",
-        "markdown": "The start state is not final. From start:\n\n- on <b>a</b> go to the upper final state (loops on b, returns to start on b) $\\rightarrow$ one round trip is $ab^*b$;\n\n- on <b>b</b> go to the lower final state (loops on a, returns to start on a) $\\rightarrow$ one round trip is $ba^*a$.\n\nSo: any number of round trips $(ab^*b+ba^*a)^*$, and then finish in one of the final states: $ab^*$ or $ba^*$.\n\n<b>Answer: $(ba^*a+ab^*b)^*(ab^*+ba^*)$</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411698": {
@@ -1396,10 +1297,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2022",
-        "markdown": "Checking each statement:\n\n- LALR(1) merges LR(1) states with the same core; this merging can create a <b>new reduce-reduce conflict</b> $\\text{---}$ FALSE.\n\n- The symbol table is used in almost every phase (semantic analysis, code generation, $\\ldots$) $\\text{---}$ FALSE.\n\n- Data flow analysis is used for code optimization, not run-time memory management $\\text{---}$ FALSE.\n\n- Every deterministic CFL has an LR(1) grammar, so LR(1) parsing is sufficient for DCFLs $\\text{---}$ TRUE.\n\n<b>Answer: LR(1) parsing is sufficient for deterministic context-free languages</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411696": {
@@ -1446,10 +1343,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2022",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411694": {
@@ -1496,10 +1389,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2022",
-        "markdown": "Walk the list once with three pointers (prev, curr, next), reversing each link as you go:\n\nnext = curr$\\rightarrow$next; curr$\\rightarrow$next = prev; prev = curr; curr = next.\n\nEach node is visited once and only 3 extra pointers are used, so it takes $\\Theta(n)$ time in $O(1)$ space. It cannot be faster, because every link must be changed.\n\n<b>Answer: The best algorithm takes $\\theta(n)$ time in the worst case</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411690": {
@@ -1549,10 +1438,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2022",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411686": {
@@ -1600,10 +1485,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateece-2022",
-        "markdown": "From the code: T2 prints B (needs $S_1$, then signals $S_3$), T1 prints C (needs $S_3$, signals $S_2$), T3 prints A (needs $S_2$, signals $S_1$).\n\nThe output must start with B, so only T2 may run first: $S_1=1$ and $S_2=S_3=0$. Then the chain B $\\rightarrow$ C $\\rightarrow$ A $\\rightarrow$ B $\\ldots$ repeats forever.\n\n(If $S_2$ or $S_3$ were 1, A or C could be printed first.)\n\n<b>Answer: $S_1=1;\\ S_2=0;\\ S_3=0$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411682": {
@@ -1652,10 +1533,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "Checking each option:\n\n- <b>Polynomial</b> $f(n)=n^k$: $f(n^2)=n^{2k}$ and $f(n)^2=n^{2k}$, so $f(n^2)=\\Theta(f(n)^2)$ $\\text{---}$ TRUE.\n\n- $f(n^2)=o(f(n)^2)$ fails for polynomials (they are equal, not strictly smaller).\n\n- For $f(n)=2^n$: $f(n^2)=2^{n^2}$ but $f(n)^2=2^{2n}$; $2^{n^2}$ grows much faster, so $O$ fails.\n\n- For $f(n)=2^{-n}$: $f(n^2)=2^{-n^2}$ is much smaller than $f(n)^2=2^{-2n}$, so $\\Omega$ fails.\n\n<b>Answer: $f(n^2)=\\Theta(f(n)^2)$, where f(n) is a polynomial</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411680": {
@@ -1701,10 +1578,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "The start state is not final. From start:\n\n- on <b>a</b> go to the upper final state (loops on b, returns to start on b) $\\rightarrow$ one round trip is $ab^*b$;\n\n- on <b>b</b> go to the lower final state (loops on a, returns to start on a) $\\rightarrow$ one round trip is $ba^*a$.\n\nSo: any number of round trips $(ab^*b+ba^*a)^*$, and then finish in one of the final states: $ab^*$ or $ba^*$.\n\n<b>Answer: $(ba^*a+ab^*b)^*(ab^*+ba^*)$</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411678": {
@@ -1752,8 +1625,9 @@
         "conceptTags": []
       },
       "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "Checking each statement:\n\n- LALR(1) merges LR(1) states with the same core; this merging can create a <b>new reduce-reduce conflict</b> $\\text{---}$ FALSE.\n\n- The symbol table is used in almost every phase (semantic analysis, code generation, $\\ldots$) $\\text{---}$ FALSE.\n\n- Data flow analysis is used for code optimization, not run-time memory management $\\text{---}$ FALSE.\n\n- Every deterministic CFL has an LR(1) grammar, so LR(1) parsing is sufficient for DCFLs $\\text{---}$ TRUE.\n\n<b>Answer: LR(1) parsing is sufficient for deterministic context-free languages</b>\n\nTherefore, the correct answer is **Option A**."
+        "concept": "quantitative-aptitude: lcm-periodic-events",
+        "markdown": "### 1. Problem Formulation\nWe are given the periodic ringing intervals of three school bells:\n- Bell $P$: rings every $20\\text{ minutes}$\n- Bell $Q$: rings every $30\\text{ minutes}$\n- Bell $R$: rings every $50\\text{ minutes}$\n\nAll three bells ring simultaneously at $12:00\\text{ PM}$. To find the next time all three bells ring together, we must determine the Least Common Multiple ($\\text{LCM}$) of their individual ringing intervals.\n\n---\n\n### 2. Computing the LCM\nFind the prime factorizations of $20$, $30$, and $50$:\n$$\\begin{aligned}\n20 &= 2^2 \\times 5^1 \\\\\n30 &= 2^1 \\times 3^1 \\times 5^1 \\\\\n50 &= 2^1 \\times 5^2\n\\end{aligned}$$\n\nThe LCM is obtained by taking the highest power of each prime factor present:\n$$\\begin{aligned}\n\\text{LCM}(20, 30, 50) &= 2^{\\max(2, 1, 1)} \\times 3^{\\max(0, 1, 0)} \\times 5^{\\max(1, 1, 2)} \\\\\n&= 2^2 \\times 3^1 \\times 5^2 \\\\\n&= 4 \\times 3 \\times 25 \\\\\n&= 300\\text{ minutes}\n\\end{aligned}$$\n\n---\n\n### 3. Converting to Hours & Determining the Next Ringing Time\nConvert $300\\text{ minutes}$ into hours:\n$$\\text{Time interval} = \\frac{300\\text{ minutes}}{60\\text{ minutes/hour}} = 5\\text{ hours}$$\n\nThe bells will ring together again exactly $5\\text{ hours}$ after $12:00\\text{ PM}$:\n$$12:00\\text{ PM} + 5\\text{ hours} = 5:00\\text{ PM}$$\n\n---\n\n### 4. Conclusion & Option Matching\n- The calculated time of $5:00\\text{ PM}$ corresponds to **Option A**.\n\nTherefore, the correct answer is **Option A (5:00 PM)**.",
+        "images": []
       }
     },
     "go:411676": {
@@ -1802,10 +1676,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411674": {
@@ -1851,10 +1721,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "Walk the list once with three pointers (prev, curr, next), reversing each link as you go:\n\nnext = curr$\\rightarrow$next; curr$\\rightarrow$next = prev; prev = curr; curr = next.\n\nEach node is visited once and only 3 extra pointers are used, so it takes $\\Theta(n)$ time in $O(1)$ space. It cannot be faster, because every link must be changed.\n\n<b>Answer: The best algorithm takes $\\theta(n)$ time in the worst case</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411671": {
@@ -1901,10 +1767,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "Both $h_1$ and $h_2$ are simple uniform hash functions, so <b>every key</b> (odd or even) lands in any given slot with probability $\\frac{1}{m}$.\n\nExpected keys in a slot $=n\\times\\frac{1}{m}=\\frac{n}{m}$ (which hash function is used does not matter).\n\n<b>Answer: $\\frac{n}{m}$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411669": {
@@ -1950,10 +1812,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411667": {
@@ -1999,10 +1857,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gate2022-ee",
-        "markdown": "4-bit 2's complement range: $-8$ to $+7$.\n\n- 1011 + 1110 = $(-5)+(-2)=-7$ $\\rightarrow$ fits\n\n- 1100 + 1010 = $(-4)+(-6)=-10$ $\\rightarrow$ <b>overflow</b>\n\n- 0011 + 0100 = $3+4=7$ $\\rightarrow$ fits\n\n- 1001 + 1111 = $(-7)+(-1)=-8$ $\\rightarrow$ fits\n\n<b>Answer: R1 = 1100 and R2 = 1010</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411783": {
@@ -2051,10 +1905,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "Checking each option:\n\n- <b>Polynomial</b> $f(n)=n^k$: $f(n^2)=n^{2k}$ and $f(n)^2=n^{2k}$, so $f(n^2)=\\Theta(f(n)^2)$ $\\text{---}$ TRUE.\n\n- $f(n^2)=o(f(n)^2)$ fails for polynomials (they are equal, not strictly smaller).\n\n- For $f(n)=2^n$: $f(n^2)=2^{n^2}$ but $f(n)^2=2^{2n}$; $2^{n^2}$ grows much faster, so $O$ fails.\n\n- For $f(n)=2^{-n}$: $f(n^2)=2^{-n^2}$ is much smaller than $f(n)^2=2^{-2n}$, so $\\Omega$ fails.\n\n<b>Answer: $f(n^2)=\\Theta(f(n)^2)$, where f(n) is a polynomial</b>\n\nTherefore, the correct answer is **Option D**."
       }
     },
     "go:411781": {
@@ -2102,10 +1952,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "The start state is not final. From start:\n\n- on <b>a</b> go to the upper final state (loops on b, returns to start on b) $\\rightarrow$ one round trip is $ab^*b$;\n\n- on <b>b</b> go to the lower final state (loops on a, returns to start on a) $\\rightarrow$ one round trip is $ba^*a$.\n\nSo: any number of round trips $(ab^*b+ba^*a)^*$, and then finish in one of the final states: $ab^*$ or $ba^*$.\n\n<b>Answer: $(ba^*a+ab^*b)^*(ab^*+ba^*)$</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411779": {
@@ -2153,10 +1999,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "Checking each statement:\n\n- LALR(1) merges LR(1) states with the same core; this merging can create a <b>new reduce-reduce conflict</b> $\\text{---}$ FALSE.\n\n- The symbol table is used in almost every phase (semantic analysis, code generation, $\\ldots$) $\\text{---}$ FALSE.\n\n- Data flow analysis is used for code optimization, not run-time memory management $\\text{---}$ FALSE.\n\n- Every deterministic CFL has an LR(1) grammar, so LR(1) parsing is sufficient for DCFLs $\\text{---}$ TRUE.\n\n<b>Answer: LR(1) parsing is sufficient for deterministic context-free languages</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411777": {
@@ -2206,10 +2048,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411773": {
@@ -2258,10 +2096,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "Both $h_1$ and $h_2$ are simple uniform hash functions, so <b>every key</b> (odd or even) lands in any given slot with probability $\\frac{1}{m}$.\n\nExpected keys in a slot $=n\\times\\frac{1}{m}=\\frac{n}{m}$ (which hash function is used does not matter).\n\n<b>Answer: $\\frac{n}{m}$</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411771": {
@@ -2309,10 +2143,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411769": {
@@ -2362,10 +2192,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "4-bit 2's complement range: $-8$ to $+7$.\n\n- 1011 + 1110 = $(-5)+(-2)=-7$ $\\rightarrow$ fits\n\n- 1100 + 1010 = $(-4)+(-6)=-10$ $\\rightarrow$ <b>overflow</b>\n\n- 0011 + 0100 = $3+4=7$ $\\rightarrow$ fits\n\n- 1001 + 1111 = $(-7)+(-1)=-8$ $\\rightarrow$ fits\n\n<b>Answer: R1 = 1100 and R2 = 1010</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411767": {
@@ -2415,10 +2241,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set1",
-        "markdown": "From the code: T2 prints B (needs $S_1$, then signals $S_3$), T1 prints C (needs $S_3$, signals $S_2$), T3 prints A (needs $S_2$, signals $S_1$).\n\nThe output must start with B, so only T2 may run first: $S_1=1$ and $S_2=S_3=0$. Then the chain B $\\rightarrow$ C $\\rightarrow$ A $\\rightarrow$ B $\\ldots$ repeats forever.\n\n(If $S_2$ or $S_3$ were 1, A or C could be printed first.)\n\n<b>Answer: $S_1=1;\\ S_2=0;\\ S_3=0$</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411805": {
@@ -2467,10 +2289,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "Checking each option:\n\n- <b>Polynomial</b> $f(n)=n^k$: $f(n^2)=n^{2k}$ and $f(n)^2=n^{2k}$, so $f(n^2)=\\Theta(f(n)^2)$ $\\text{---}$ TRUE.\n\n- $f(n^2)=o(f(n)^2)$ fails for polynomials (they are equal, not strictly smaller).\n\n- For $f(n)=2^n$: $f(n^2)=2^{n^2}$ but $f(n)^2=2^{2n}$; $2^{n^2}$ grows much faster, so $O$ fails.\n\n- For $f(n)=2^{-n}$: $f(n^2)=2^{-n^2}$ is much smaller than $f(n)^2=2^{-2n}$, so $\\Omega$ fails.\n\n<b>Answer: $f(n^2)=\\Theta(f(n)^2)$, where f(n) is a polynomial</b>\n\nTherefore, the correct answer is **Option B**."
       }
     },
     "go:411803": {
@@ -2518,10 +2336,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "The start state is not final. From start:\n\n- on <b>a</b> go to the upper final state (loops on b, returns to start on b) $\\rightarrow$ one round trip is $ab^*b$;\n\n- on <b>b</b> go to the lower final state (loops on a, returns to start on a) $\\rightarrow$ one round trip is $ba^*a$.\n\nSo: any number of round trips $(ab^*b+ba^*a)^*$, and then finish in one of the final states: $ab^*$ or $ba^*$.\n\n<b>Answer: $(ba^*a+ab^*b)^*(ab^*+ba^*)$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411799": {
@@ -2569,10 +2383,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "Checking each statement:\n\n- Relation R(A, B): the only possible non-trivial FDs are $A\\rightarrow B$ or $B\\rightarrow A$. In each case the left side is a key, so R is always in BCNF $\\text{---}$ TRUE.\n\n- All attributes prime guarantees 3NF, not BCNF (e.g. $AB\\rightarrow C,\\ C\\rightarrow B$) $\\text{---}$ FALSE.\n\n- A relation can have no non-prime attribute (e.g. all attributes form the key) $\\text{---}$ FALSE.\n\n- BCNF decomposition does not always preserve FDs $\\text{---}$ FALSE.\n\n<b>Answer: A relation with only two attributes is always in BCNF</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411795": {
@@ -2620,10 +2430,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "Both $h_1$ and $h_2$ are simple uniform hash functions, so <b>every key</b> (odd or even) lands in any given slot with probability $\\frac{1}{m}$.\n\nExpected keys in a slot $=n\\times\\frac{1}{m}=\\frac{n}{m}$ (which hash function is used does not matter).\n\n<b>Answer: $\\frac{n}{m}$</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411793": {
@@ -2671,10 +2477,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "In DMA, the DMA controller moves the whole block between disk and memory directly, without the CPU handling every word. Interrupt-driven, polling and programmed I/O all need the CPU for each word, so they are much slower for bulk data.\n\n<b>Answer: DMA based I/O transfer</b>\n\nTherefore, the correct answer is **Option C**."
       }
     },
     "go:411789": {
@@ -2722,10 +2524,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "4-bit 2's complement range: $-8$ to $+7$.\n\n- 1011 + 1110 = $(-5)+(-2)=-7$ $\\rightarrow$ fits\n\n- 1100 + 1010 = $(-4)+(-6)=-10$ $\\rightarrow$ <b>overflow</b>\n\n- 0011 + 0100 = $3+4=7$ $\\rightarrow$ fits\n\n- 1001 + 1111 = $(-7)+(-1)=-8$ $\\rightarrow$ fits\n\n<b>Answer: R1 = 1100 and R2 = 1010</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411787": {
@@ -2775,10 +2573,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "From the code: T2 prints B (needs $S_1$, then signals $S_3$), T1 prints C (needs $S_3$, signals $S_2$), T3 prints A (needs $S_2$, signals $S_1$).\n\nThe output must start with B, so only T2 may run first: $S_1=1$ and $S_2=S_3=0$. Then the chain B $\\rightarrow$ C $\\rightarrow$ A $\\rightarrow$ B $\\ldots$ repeats forever.\n\n(If $S_2$ or $S_3$ were 1, A or C could be printed first.)\n\n<b>Answer: $S_1=1;\\ S_2=0;\\ S_3=0$</b>\n\nTherefore, the correct answer is **Option A**."
       }
     },
     "go:411785": {
@@ -2829,10 +2623,6 @@
         },
         "secondary": [],
         "conceptTags": []
-      },
-      "detailed_solution": {
-        "concept": "general-aptitude: gateme-2022-set2",
-        "markdown": "$tr(AB)=\\sum_i\\sum_k a_{ik}b_{ki}=\\sum_k\\sum_i b_{ki}a_{ik}=tr(BA)$. This holds for any $A_{m\\times n}$, $B_{n\\times m}$ (AB is $m\\times m$, BA is $n\\times n$).\n\nStatement 2 is the special case of square matrices, so it is also true.\n\n<b>Answer: Both Statement 1 and Statement 2 are correct</b>\n\nTherefore, the correct answer is **Option B**."
       }
     }
   }
