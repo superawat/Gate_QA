@@ -80,7 +80,176 @@ The statement that best sums up the meaning of the passage is **Option C**.
 
 Therefore, the correct answer is **Option C**.`;
 
+const GO1019_SOLUTION = String.raw`### 1. Transmission Link Parameters
+- **Baud Rate**: $9600\text{ baud}$. In standard digital serial communication (such as RS-232), binary signaling is used ($1\text{ baud} = 1\text{ bit per second}$). Thus, the link line rate is:
+  $$\text{Data Rate} = 9600\text{ bits per second (bps)}$$
+
+---
+
+### 2. Framing Structure per Character (Asynchronous Mode)
+In asynchronous serial transmission, each character frame is delimited by start and stop bits to maintain character-level synchronization:
+- Start bits: $1\text{ bit}$
+- Data bits: $8\text{ bits}$ (for an 8-bit character)
+- Parity bit: $1\text{ bit}$
+- Stop bits: $2\text{ bits}$
+
+Total bits required to transmit a single $8$-bit character:
+$$\text{Total bits per character} = 1\text{ (start)} + 8\text{ (data)} + 1\text{ (parity)} + 2\text{ (stop)} = 12\text{ bits/character}$$
+
+---
+
+### 3. Characters Transmitted per Second
+The number of complete $8$-bit characters transmitted per second is:
+$$\text{Characters per second} = \frac{\text{Total transmission rate in bits/second}}{\text{Total bits per character}} = \frac{9600\text{ bits/second}}{12\text{ bits/character}} = 800\text{ characters/second}$$
+
+---
+
+### 4. Conclusion & Option Matching
+- Calculating $\frac{9600}{12}$ yields exactly **$800$**, which matches **Option B**.
+
+Therefore, the correct answer is **Option B (800)**.`;
+
+const GO399247_SOLUTION = String.raw`### 1. Functional Relation Analysis
+We are given two single-variable functions $f(x)$ and $g(y)$ defined for all real values of $x$ and $y$, satisfying:
+$$f(x) = g(y) \quad \text{for all } x, y \in \mathbb{R}$$
+
+Notice that the left-hand side $f(x)$ depends strictly on the independent variable $x$ and is independent of $y$. Conversely, the right-hand side $g(y)$ depends strictly on the independent variable $y$ and is independent of $x$.
+
+---
+
+### 2. Mathematical Deduction
+Fix any arbitrary constant value for $y$, say $y = y_0 \in \mathbb{R}$. Since $g(y)$ is a well-defined function, $g(y_0)$ evaluates to a specific real constant $C = g(y_0)$.
+
+Substituting $y = y_0$ into the given equation:
+$$f(x) = g(y_0) = C \quad \text{for all } x \in \mathbb{R}$$
+
+This proves that $f(x)$ must be a constant function equal to $C$ for all $x$.
+
+Similarly, fix any arbitrary value for $x$, say $x = x_0 \in \mathbb{R}$. Then $f(x_0) = C$, which implies:
+$$g(y) = f(x_0) = C \quad \text{for all } y \in \mathbb{R}$$
+
+Thus, both $f(x)$ and $g(y)$ must be identically equal to the same constant $C$:
+$$f(x) = g(y) = C = \text{constant}$$
+
+---
+
+### 3. Evaluation of Options
+- **Option A ($f(x)=0$ and $g(y)=0$):** Not necessarily true. The constant $C$ can be any real number (e.g., $f(x) = 5$ and $g(y) = 5$ satisfies the condition).
+- **Option B ($f(x)=g(y)=\text{constant}$):** **Necessarily true.** As derived above, both functions must be identical constants.
+- **Option C ($f(x) \neq \text{constant}$ and $g(y) \neq \text{constant}$):** False, as both functions must be constants.
+- **Option D ($f(x)+g(y)=f(x)-g(y)$):** Subtracting $f(x)$ from both sides gives $g(y) = -g(y) \implies 2g(y) = 0 \implies g(y) = 0$. This forces the constant to be $0$, which is not necessarily true for general nonzero constants.
+
+Therefore, the correct answer is **Option B ($f(x)=g(y)=\text{constant}$)**.`;
+
+const GO411678_SOLUTION = String.raw`### 1. Problem Formulation
+We are given the periodic ringing intervals of three school bells:
+- Bell $P$: rings every $20\text{ minutes}$
+- Bell $Q$: rings every $30\text{ minutes}$
+- Bell $R$: rings every $50\text{ minutes}$
+
+All three bells ring simultaneously at $12:00\text{ PM}$. To find the next time all three bells ring together, we must determine the Least Common Multiple ($\text{LCM}$) of their individual ringing intervals.
+
+---
+
+### 2. Computing the LCM
+Find the prime factorizations of $20$, $30$, and $50$:
+$$\begin{aligned}
+20 &= 2^2 \times 5^1 \\
+30 &= 2^1 \times 3^1 \times 5^1 \\
+50 &= 2^1 \times 5^2
+\end{aligned}$$
+
+The LCM is obtained by taking the highest power of each prime factor present:
+$$\begin{aligned}
+\text{LCM}(20, 30, 50) &= 2^{\max(2, 1, 1)} \times 3^{\max(0, 1, 0)} \times 5^{\max(1, 1, 2)} \\
+&= 2^2 \times 3^1 \times 5^2 \\
+&= 4 \times 3 \times 25 \\
+&= 300\text{ minutes}
+\end{aligned}$$
+
+---
+
+### 3. Converting to Hours & Determining the Next Ringing Time
+Convert $300\text{ minutes}$ into hours:
+$$\text{Time interval} = \frac{300\text{ minutes}}{60\text{ minutes/hour}} = 5\text{ hours}$$
+
+The bells will ring together again exactly $5\text{ hours}$ after $12:00\text{ PM}$:
+$$12:00\text{ PM} + 5\text{ hours} = 5:00\text{ PM}$$
+
+---
+
+### 4. Conclusion & Option Matching
+- The calculated time of $5:00\text{ PM}$ corresponds to **Option A**.
+
+Therefore, the correct answer is **Option A (5:00 PM)**.`;
+
+const GO411706_SOLUTION = String.raw`### 1. Formal Logical Representation of Premises
+Let $E$ denote the set of engineers, $W$ denote the set of writers, and $A$ denote the set of actors.
+The given statements are:
+1. **Statement 1**: *"Some engineers are writers."*
+   $$\exists x : x \in (E \cap W) \implies E \cap W \neq \emptyset$$
+2. **Statement 2**: *"No writer is an actor."*
+   $$W \cap A = \emptyset \quad (\text{equivalently, if } x \in W \implies x \notin A)$$
+3. **Statement 3**: *"All actors are engineers."*
+   $$A \subseteq E \quad (\text{equivalently, if } x \in A \implies x \in E)$$
+
+---
+
+### 2. Systematic Evaluation of Conclusions
+
+- **Conclusion I: "Some writers are engineers."**
+  - From Statement 1, $E \cap W \neq \emptyset$.
+  - Set intersection is commutative: $E \cap W = W \cap E$.
+  - Therefore, $W \cap E \neq \emptyset$, which translates directly to *"Some writers are engineers"*.
+  - **Conclusion I is logically VALID.**
+
+- **Conclusion II: "All engineers are actors."**
+  - Statement 3 asserts $A \subseteq E$ (every actor is an engineer). The subset relation is not generally symmetric ($A \subseteq E \not\implies E \subseteq A$).
+  - Moreover, by Statement 1, there exist engineers who are writers ($x \in E \cap W$). Since no writer is an actor ($W \cap A = \emptyset$), these engineer-writers cannot be actors ($x \notin A$).
+  - Hence, not all engineers are actors.
+  - **Conclusion II is INVALID.**
+
+- **Conclusion III: "No actor is a writer."**
+  - Statement 2 asserts $W \cap A = \emptyset$.
+  - Set disjointness is symmetric: $W \cap A = \emptyset \iff A \cap W = \emptyset$.
+  - Therefore, no actor is a writer.
+  - **Conclusion III is logically VALID.**
+
+- **Conclusion IV: "Some actors are writers."**
+  - Statement 2 explicitly establishes that $W$ and $A$ are completely disjoint ($W \cap A = \emptyset$).
+  - Thus, there cannot exist any actor who is a writer ($A \cap W = \emptyset$).
+  - **Conclusion IV is INVALID (and directly contradicts Statement 2).**
+
+---
+
+### 3. Conclusion & Option Matching
+- Both **Conclusion I** and **Conclusion III** are strictly valid, while Conclusions II and IV are false.
+- This directly matches **Option C: "Only conclusion I and conclusion III are correct"**.
+
+Therefore, the correct answer is **Option C**.`;
+
 export const AUTHENTIC_PATCHES = {
+  "go:1019": {
+    concept: "computer-networks: asynchronous-serial-transmission-baud-rate",
+    markdown: GO1019_SOLUTION,
+    images: [],
+  },
+  "go:399247": {
+    concept: "quantitative-aptitude: functional-equations",
+    markdown: GO399247_SOLUTION,
+    images: [],
+  },
+  "go:411678": {
+    concept: "quantitative-aptitude: lcm-periodic-events",
+    markdown: GO411678_SOLUTION,
+    images: [],
+  },
+  "go:411706": {
+    concept: "verbal-aptitude: syllogisms-deductive-logic",
+    markdown: GO411706_SOLUTION,
+    images: [],
+  },
+
   "go:1051": {
     concept: "computer-networks: longest-prefix-matching-routing-table",
     markdown: "### 1. Longest Prefix Matching Principle\nA router evaluates destination IP addresses against its routing table using **Longest Prefix Matching**: when a destination IP address matches multiple prefixes, the packet is forwarded to the interface corresponding to the entry with the longest subnet mask (most specific network prefix). If no specific entry matches, the packet is sent via the default interface.\n\n---\n\n### 2. Packet 1: Destination $128.75.43.16$\n- Convert the 4th octet ($16$) to 8-bit binary:\n  $$16 = 00010000_2$$\n- Checking entries:\n  1. Entry 1: $128.75.43.0$ with mask $255.255.255.0$ ($\\text{/24}$).\n     - Subnet: $128.75.43.0$ to $128.75.43.255$.\n     - $128.75.43.16$ matches this $/24$ prefix (interface $\\text{Eth0}$).\n  2. Entry 2: $128.75.43.0$ with mask $255.255.255.128$ ($\\text{/25}$).\n     - Mask in binary: $128 = 10000000_2$.\n     - Subnet range: $128.75.43.0$ to $128.75.43.127$.\n     - Since $16 \\le 127$, $128.75.43.16$ also matches this $/25$ prefix (interface $\\text{Eth1}$).\n- By Longest Prefix Matching, $\\text{/25} > \\text{/24}$. Thus, the packet is forwarded on **$\\text{Eth1}$**.\n\n---\n\n### 3. Packet 2: Destination $192.12.17.10$\n- Checking entries:\n  1. Entry 3: $192.12.17.5$ with mask $255.255.255.255$ ($\\text{/32}$, host-specific route).\n     - Does not match ($192.12.17.10 \\neq 192.12.17.5$).\n  2. Entries 1 and 2: Destination network $128.75.43.0$ does not match $192.12.17.10$.\n  3. Default route: Matches any address with interface **$\\text{Eth2}$**.\n- Thus, the packet is forwarded on **$\\text{Eth2}$**.\n\n---\n\n<b>Answer: Option A (Eth1 and Eth2)</b>",

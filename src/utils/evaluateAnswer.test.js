@@ -4098,6 +4098,58 @@ describe("evaluateAnswer", () => {
           expect(evaluateAnswer(record, ["D"])).toEqual({ status: "evaluated", correct: false });
           expect(evaluateAnswer(record, ["A", "C"])).toEqual({ status: "evaluated", correct: false });
         });
+
+        test("evaluates go:1019 (GATE CSE 2004 Q22) as MCQ Option B (9600 baud serial async transmission: 800 char/sec)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "B",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:399247 (GATE CSE 2023 Set 1 GA Q9) as MCQ Option B (functional equation f(x)=g(y)=constant)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "B",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:411678 (GATE 2022 Additional GA Q3) as MCQ Option A (LCM of 20, 30, 50 min bells: 5:00 PM)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates go:411706 (GATE 2022 Additional GA Q9) as MCQ Option C (syllogisms: only conclusions I and III correct)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "C",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "c")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
       });
     });
   });

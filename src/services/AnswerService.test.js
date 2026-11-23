@@ -3588,6 +3588,86 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
                 answer: "B",
               });
             });
+
+            test("resolves go:1019 (GATE CSE 2004 Q22) as MCQ Option B", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:1019": {
+                  answer_uid: "v1:go:1019",
+                  type: "MCQ",
+                  answer: "B",
+                  tolerance: null,
+                  source: "verified_reference_key",
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:1019",
+                title: "GATE CSE 2004 | Question: 22",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "B",
+              });
+            });
+
+            test("resolves go:399247 (GATE CSE 2023 Set 1 GA Q9) as MCQ Option B", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:399247": {
+                  answer_uid: "v1:9.27.5",
+                  type: "MCQ",
+                  answer: "B",
+                  tolerance: null,
+                  source: "verified_reference_key",
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:399247",
+                title: "GATE CSE 2023 | GA Question: 9",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "B",
+              });
+            });
+
+            test("resolves go:411678 (GATE 2022 Additional GA Q3) as MCQ Option A", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:411678": {
+                  answer_uid: "manual:go:411678",
+                  type: "MCQ",
+                  answer: "A",
+                  tolerance: null,
+                  source: "verified_reference_key",
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:411678",
+                title: "GATE Electrical 2022 | General Aptitude Question: 3",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "A",
+              });
+            });
+
+            test("resolves go:411706 (GATE 2022 Additional GA Q9) as MCQ Option C", () => {
+              AnswerService.answersByQuestionUid = {
+                "go:411706": {
+                  answer_uid: "manual:go:411706",
+                  type: "MCQ",
+                  answer: "C",
+                  tolerance: null,
+                  source: "verified_reference_key",
+                },
+              };
+              const answer = AnswerService.getAnswerForQuestion({
+                question_uid: "go:411706",
+                title: "GATE CH 2022 | General Aptitude Question: 9",
+              });
+              expect(answer).toMatchObject({
+                type: "MCQ",
+                answer: "C",
+              });
+            });
           });
         });
       });
