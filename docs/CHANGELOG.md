@@ -1,4 +1,35 @@
 # Changelog
+- **MathJax `\overline{...}` CHTML Rendering Fix & `go:523069` Option A Clarification (DEC-316, 2026-11-25)**:
+  - **Issue (`go:523069`, GATE CSE 2026 Set 1 Q11, Digital Logic)**: Reported by `lalithsaidabbiru@gmail.com`. Option A (`$\overline{P \oplus Q}$`) appeared without its overline bar, making it look identical to Option B (`$P \oplus Q$`).
+  - **Root Cause**: `better-react-mathjax` loads MathJax v3 CHTML (`jax="CHTML"`) by default, which renders `\overline{...}` using `<mjx-stretchy-h class="mjx-c2013">` with a `500x`-scaled en-dash glyph (`transform: matrix(500, 0, 0, 1, 0, 0)`). On 1x DPI / mobile viewports, that thin stretched glyph can render subpixel-thin or vanish.
+  - **Resolution**:
+    - Added a global CSS rule in `src/index.css` for `mjx-over > mjx-mo > mjx-stretchy-h.mjx-c2013` that hides the flaky stretched glyph and draws a crisp `min-height: 1.25px` `currentColor` bar via `::after` across all `\overline{...}` expressions platform-wide.
+    - Clarified Option A markup in `public/questions-with-answers.json`, `audit/normalised-2026.json`, and rebuilt `public/question-detail-shards/2026-s1.json` to `$\overline{P \oplus Q}$ (complement of $P \oplus Q$)` (consistent with DEC-312).
+    - Verified official MSQ key `["A", "C"]` and added a regression test in `src/utils/evaluateAnswer.test.js`.
+- **Phase 6.5 Special Aptitude Wave 1 Reasoning Detailed Solutions Completion (DEC-315, 2026-11-24)**:
+  - **Context & Scope**: Executed the Phase 6.5 detailed solution authoring pipeline across all 263 questions in Wave 1 Reasoning (`public/data/aptitude/reasoning/`).
+  - **Topics Completed (100% Coverage)**:
+    - `decision-making.json`: 8 / 8 questions (100%)
+    - `syllogism.json`: 25 / 25 questions (100%)
+    - `puzzle.json`: 29 / 29 questions (100%)
+    - `directions.json`: 38 / 38 questions (100%)
+    - `address.json`: 64 / 64 questions (100%)
+    - `calendar.json`: 99 / 99 questions (100%)
+  - **Pedagogical Standards & Derivation Guidelines**:
+    - *Calendar*: Completed century odd days ($2000 = 0$), leap vs. ordinary year progression, month modular arithmetic ($31 \pmod 7 = 3$), day-of-week mapping ($0 = \text{Sunday}$ to $6 = \text{Saturday}$), and date-shift advancement.
+    - *Directions & Distance*: Sequential cardinal vector movement tracing, left/right turns, and Pythagorean displacement ($\sqrt{\Delta x^2 + \Delta y^2}$).
+    - *Address Matching*: Reference address character-by-character distractor discrepancy isolation (PIN code digits, apartment numbers, street typos) and 100% match verification.
+    - *Decision Making*: Core civic/ethical principle, lawful/empathetic reasoning, and distractor refutation.
+    - *Puzzles & Arrangements*: Clue-by-clue constraint deduction, explicit final order, and target entity identification.
+    - *Syllogism & Logic*: Direct deductive logic and set-theoretic / algorithmic analysis.
+  - **Artifacts & Ingestion**:
+    - Authored modular chunk file `data/solutions/chunks/aptitude/chunk-apt-wave1-reasoning-01.json` (263 solutions).
+    - Ingested directly into `public/data/aptitude/reasoning/`.
+    - Special Aptitude total accepted solutions rose to 12,897 / 36,836.
+  - **Verification & Pipeline Gates**:
+    - Verified 100% answer key alignment across all 263 solutions (0 mismatches, 0 short stubs).
+    - `npm run qa:validate-aptitude`: All 36,836 aptitude questions validated cleanly.
+    - `npm run test:unit`: All 1,640 unit tests passed across 116 test files.
 - **ISRO Progress Cloud Sync (DEC-314, 2026-11-23)**:
   - Confirmed ISRO solve/bookmark writes already enqueue sync requests, but the sync manager omitted ISRO data from local reads, merges, upserts, and local write-back.
   - Added ISRO LWW solved-ID merge, bookmark union-minus-tombstone merge, and `progress_records.isro` attempt-history merge. Added all fields to Tier 1 and embedded fallback payloads for older schemas.

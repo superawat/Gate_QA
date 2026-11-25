@@ -4150,6 +4150,19 @@ describe("evaluateAnswer", () => {
           expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
           expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
         });
+
+        test("evaluates go:523069 (GATE CSE 2026 Set 1 Q11) as MSQ Options A & C (XNOR equivalent forms)", () => {
+          const record = {
+            type: "MSQ",
+            answer: ["A", "C"],
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, ["A", "C"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["c", "a"])).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, ["A"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["B", "C"])).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, ["A", "B", "C"])).toEqual({ status: "evaluated", correct: false });
+        });
       });
     });
   });

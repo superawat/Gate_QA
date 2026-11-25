@@ -5768,6 +5768,29 @@ mjx-container svg {
   shape-rendering: geometricPrecision;
 }
 
+/* MathJax CHTML \overline{...} uses a 500x-scaled en-dash glyph (mjx-c2013) that can
+   render subpixel-thin or vanish on 1x/mobile viewports. Replace with a crisp CSS bar. */
+mjx-over > mjx-mo > mjx-stretchy-h.mjx-c2013 {
+  position: relative;
+}
+
+mjx-over > mjx-mo > mjx-stretchy-h.mjx-c2013 > mjx-ext {
+  visibility: hidden;
+}
+
+mjx-over > mjx-mo > mjx-stretchy-h.mjx-c2013::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 0.065em;
+  min-height: 1.25px;
+  background-color: currentColor;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 /* Ensure code element and inner text strictly inherit the question text color */
 .gateqa-code-block code,
 .gateqa-code-block .gateqa-code-content,
