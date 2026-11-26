@@ -1,4 +1,21 @@
 # Changelog
+- **26 November 2026 Question Audit & Data Integrity Resolutions (`go:411890`, `isro:cs:2020:q20`, `go:490`, `ec:2014:q21-s3`) (DEC-317, 2026-11-26)**:
+  - **1. `go:411890` (GATE CH 2023 GA Q3, General Aptitude)**:
+    - *Issue*: Reported by `isaheliroy@gmail.com` ("wrong sltn given").
+    - *Root Cause*: `data/solutions/cse-v1.json` and `public/question-detail-shards/2023-additional.json` contained a mismatched linked-list deletion solution (`SLLdel`/`DLLdel`) instead of the parallelogram area geometry derivation.
+    - *Resolution*: Authored authentic step-by-step geometry solution ($QR = PS = 7\text{ cm}$, $\text{Area} = 7 \times 4 = 28 = RS \times 5 \implies RS = \frac{28}{5}\text{ cm}$, Option B) in `data/solutions/cse-v1.json` and rebuilt `public/question-detail-shards/2023-additional.json`.
+  - **2. `isro:cs:2020:q20` (ISRO CS 2020 Q20, AVL Tree)**:
+    - *Issue*: Reported by `ishankumra104@gmail.com` ("answer for this question is NOT C").
+    - *Root Cause*: Legacy ISRO key held `"C"` ($\lfloor \log_2(n+1) \rfloor$), which fails mathematically under both node-count height ($n=2 \implies 1 < 2$) and edge-count height ($n=1 \implies 1 \neq 0$, $n=3 \implies 2 \neq 1$). Under the node-count height convention, $h_{\min} = \lceil \log_2(n+1) \rceil$ (**Option A**).
+    - *Resolution*: Updated `"answer": "A"` across `data/isro/isro-2020.json`, `public/data/isro/isro-2020.json`, `data/isro/isro-all.json`, `public/data/isro/isro-all.json`, `data/isro/answers-isro.json`, and `public/data/isro/answers-isro.json`.
+  - **3. `go:490` (GATE CSE 2008 Q67, Operating System)**:
+    - *Issue*: Reported twice (`samanfarzana4@gmail.com` and anonymous) claiming Option B is marked incorrect.
+    - *Verification*: Confirmed already resolved in **DEC-312 (2026-11-22)** across all authoritative registries (`manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json`, `answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, `public/question-detail-shards/2008-s0.json`, and `public/mock_catalog_v1.json`) with Option B (`24, 24, 24`) and full 3-level PTE derivation.
+  - **4. `ec:2014:q21-s3` (GATE EC 2014 Set 3 Q21, Signals and Systems)**:
+    - *Issue*: Reported by `adityarandom2@gmail.com` ("the value of x(t) should have negative sign for the exponential term").
+    - *Root Cause*: `audit/ec/raw-ec-2014-s3.json` (`qNum: 21`) stem had `$-3e^{2t}u(t)$` (missing the minus sign in the exponent) while the solution already used $x(t) = -3e^{-2t}u(t)$ to yield $y(\infty) = 0$.
+    - *Resolution*: Fixed stem to `$-3e^{-2t}u(t)$` in `audit/ec/raw-ec-2014-s3.json`, cleaned minor OCR typos (`\text{Also, }` and `Y(s)`) in `data/solutions/ec-v1.json`, and rebuilt EC branch shards (`ec-2014-s3.json`) and `public/data/ec/search-index.json`.
+  - **Verification**: Added regression tests for `go:411890`, `isro:cs:2020:q20`, and `ec:2014:q21-s3` in `src/utils/evaluateAnswer.test.js`.
 - **MathJax `\overline{...}` CHTML Rendering Fix & `go:523069` Option A Clarification (DEC-316, 2026-11-25)**:
   - **Issue (`go:523069`, GATE CSE 2026 Set 1 Q11, Digital Logic)**: Reported by `lalithsaidabbiru@gmail.com`. Option A (`$\overline{P \oplus Q}$`) appeared without its overline bar, making it look identical to Option B (`$P \oplus Q$`).
   - **Root Cause**: `better-react-mathjax` loads MathJax v3 CHTML (`jax="CHTML"`) by default, which renders `\overline{...}` using `<mjx-stretchy-h class="mjx-c2013">` with a `500x`-scaled en-dash glyph (`transform: matrix(500, 0, 0, 1, 0, 0)`). On 1x DPI / mobile viewports, that thin stretched glyph can render subpixel-thin or vanish.

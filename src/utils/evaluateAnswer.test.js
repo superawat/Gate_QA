@@ -4163,6 +4163,44 @@ describe("evaluateAnswer", () => {
           expect(evaluateAnswer(record, ["B", "C"])).toEqual({ status: "evaluated", correct: false });
           expect(evaluateAnswer(record, ["A", "B", "C"])).toEqual({ status: "evaluated", correct: false });
         });
+
+        test("evaluates go:411890 (GATE CH 2023 GA Q3) as MCQ Option B (parallelogram side RS = 28/5 cm)", () => {
+          const record = {
+            type: "MCQ",
+            answer: "B",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "b")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates isro:cs:2020:q20 (ISRO CS 2020 Q20) as MCQ Option A (minimum height of AVL tree is Ceil(log2(n+1)))", () => {
+          const record = {
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          };
+          expect(evaluateAnswer(record, "A")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "a")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "C")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "B")).toEqual({ status: "evaluated", correct: false });
+          expect(evaluateAnswer(record, "D")).toEqual({ status: "evaluated", correct: false });
+        });
+
+        test("evaluates ec:2014:q21-s3 (GATE EC 2014 Set 3 Q21) as NAT 0 within [-0.01, 0.01]", () => {
+          const record = {
+            type: "NAT",
+            answer: "0",
+            tolerance: { lower: -0.01, upper: 0.01 },
+          };
+          expect(evaluateAnswer(record, "0")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "0.01")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "-0.01")).toEqual({ status: "evaluated", correct: true });
+          expect(evaluateAnswer(record, "0.02")).toEqual({ status: "evaluated", correct: false });
+        });
       });
     });
   });

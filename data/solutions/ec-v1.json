@@ -9972,7 +9972,7 @@
     },
     "is_mta": false,
     "concept_summary": "Signals and Systems - Laplace Transform",
-    "solution_markdown": "Given, $x(t)=-3 e^{-2 t}$\n\nLaplace transform of\n\n$x(t) \\longleftrightarrow X(s)$\n\nWhere,\n\n$$\\begin{aligned} X(s) &=\\frac{-3}{s+2} \\\\ A \\mid s 0, H(s) &=\\frac{s-2}{(s+3)} \\\\ \\therefore \\quad Y(s) &=X(s) H(s) \\\\ \\gamma(s) &=\\frac{-3(s-2)}{(s+3)(s+2)} \\end{aligned}$$\n\nUsing final value theorem, the steady state value\n\nof Y(s) is\n\n$$\\begin{aligned} y(\\infty) &=\\lim _{s \\rightarrow 0} s Y(s) \\\\ &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0** (acceptable range: [-0.01, 0.01])."
+    "solution_markdown": "Given, $x(t)=-3 e^{-2 t}$\n\nLaplace transform of\n\n$x(t) \\longleftrightarrow X(s)$\n\nWhere,\n\n$$\\begin{aligned} X(s) &=\\frac{-3}{s+2} \\\\ \\text{Also, } H(s) &=\\frac{s-2}{(s+3)} \\\\ \\therefore \\quad Y(s) &=X(s) H(s) \\\\ Y(s) &=\\frac{-3(s-2)}{(s+3)(s+2)} \\end{aligned}$$\n\nUsing final value theorem, the steady state value\n\nof Y(s) is\n\n$$\\begin{aligned} y(\\infty) &=\\lim _{s \\rightarrow 0} s Y(s) \\\\ &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0** (acceptable range: [-0.01, 0.01])."
   },
   "pp:ec:2014:q22-s3": {
     "question_uid": "pp:ec:2014:q22-s3",

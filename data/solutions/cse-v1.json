@@ -3831,8 +3831,8 @@
   "go:411890": {
     "question_uid": "go:411890",
     "verified_answer": "B",
-    "concept_summary": "general-aptitude: gatech-2023",
-    "solution_markdown": "To delete a node we must update its <b>predecessor's</b> next pointer.\n\n- Singly linked list: the predecessor is found only by walking from the head $\\rightarrow$ $O(n)$.\n\n- Doubly linked list: the node's prev pointer gives the predecessor directly $\\rightarrow$ $O(1)$.\n\n<b>Answer: SLLdel is O(n) and DLLdel is O(1)</b>\n\nTherefore, the correct answer is **Option B**."
+    "concept_summary": "General Aptitude - Geometry (Parallelogram Area)",
+    "solution_markdown": "- **Given:**\n  - $PQRS$ is a parallelogram with $PS = 7\\text{ cm}$.\n  - $PT \\perp QR$ with $PT = 4\\text{ cm}$ (altitude to base $QR$).\n  - $PV \\perp RS$ with $PV = 5\\text{ cm}$ (altitude to base $RS$).\n\n- **Step 1: Find the base $QR$**\n  - Opposite sides of a parallelogram are equal in length:\n    $$QR = PS = 7\\text{ cm}$$\n\n- **Step 2: Equate the area of parallelogram $PQRS$ using two base-altitude pairs**\n  - Using base $QR$ and corresponding height $PT$:\n    $$\\text{Area}(PQRS) = QR \\times PT = 7 \\times 4 = 28\\text{ cm}^2$$\n  - Using base $RS$ and corresponding height $PV$:\n    $$\\text{Area}(PQRS) = RS \\times PV = RS \\times 5$$\n\n- **Step 3: Solve for $RS$**\n  $$5 \\times RS = 28 \\implies RS = \\frac{28}{5}\\text{ cm}$$\n\n- **Why other options are incorrect:**\n  - **Option A ($\\frac{20}{7}$):** Incorrectly computes $\\frac{PT \\times PV}{PS} = \\frac{4 \\times 5}{7}$.\n  - **Option C ($\\frac{9}{2}$):** Does not satisfy $\\text{base} \\times \\text{height} = 28$.\n  - **Option D ($\\frac{35}{4}$):** Swaps the altitudes ($\\frac{7 \\times 5}{4}$).\n\nTherefore, the correct answer is **Option B**."
   },
   "go:411885": {
     "question_uid": "go:411885",
